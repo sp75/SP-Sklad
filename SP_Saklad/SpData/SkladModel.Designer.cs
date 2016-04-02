@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\WinVSProjects\SP_Saklad\SP_Saklad\SpData\SkladModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\WinVSProjects\SP-Saklad\SP_Saklad\SpData\SkladModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

@@ -2997,6 +2997,9 @@ warning 6002: The table/view 'sp_base.dbo.v_GetDocsTree' does not have a primary
           <Parameter Name="ONDATE" Type="datetime" Mode="In" />
           <Parameter Name="WH" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="GetCounter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="GetMatGroupTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="root_cat_id" Type="int" Mode="In" />
           <ReturnType>
@@ -5578,6 +5581,9 @@ warning 6002: The table/view 'sp_base.dbo.v_GetDocsTree' does not have a primary
             <Parameter Name="OnDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <EntitySet Name="MaterialsList" EntityType="BaseModel.MaterialsList" />
+          <FunctionImport Name="GetCounter" ReturnType="Collection(String)">
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="GetMatGroupTree_Result">
           <Property Name="GRPID" Type="Int32" />
@@ -11028,6 +11034,7 @@ warning 6002: The table/view 'sp_base.dbo.v_GetDocsTree' does not have a primary
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetCounter" FunctionName="BaseModel.Store.GetCounter" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

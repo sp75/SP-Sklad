@@ -967,5 +967,14 @@ namespace SP_Saklad.SpData
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SP_MAT_REMAIN_GET_SIMPLE_Result>("[BaseEntities].[SP_MAT_REMAIN_GET_SIMPLE](@MatId, @OnDate)", matIdParameter, onDateParameter);
         }
+    
+        public virtual ObjectResult<string> GetCounter(string name)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetCounter", nameParameter);
+        }
     }
 }

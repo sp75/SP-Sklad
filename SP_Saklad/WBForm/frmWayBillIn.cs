@@ -37,8 +37,16 @@ namespace SP_Saklad.WBForm
         {
             if (_wbill_id == null)
             {
-                wb = _db.WaybillList.Add(new WaybillList() { WType = _wtype, OnDate = DateTime.Now });
-                _db.SaveChanges();
+                wb = _db.WaybillList.Add(new WaybillList() { WType = _wtype, OnDate = DateTime.Now, Num = _db.GetCounter("wb_in").FirstOrDefault() });
+                try
+                {
+                    _db.SaveChanges();
+                }
+                catch ( Exception )
+                {
+                    throw;
+                }
+                
             }
             else
             {

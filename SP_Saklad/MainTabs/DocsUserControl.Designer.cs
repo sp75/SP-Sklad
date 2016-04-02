@@ -696,7 +696,7 @@
             this.xtraTabPage1.Controls.Add(this.vGridControl1);
             this.xtraTabPage1.ImageIndex = 1;
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(759, 170);
+            this.xtraTabPage1.Size = new System.Drawing.Size(759, 168);
             this.xtraTabPage1.Text = "Інформація про накладну";
             // 
             // vGridControl1
@@ -710,7 +710,7 @@
             this.vGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.row,
             this.category});
-            this.vGridControl1.Size = new System.Drawing.Size(759, 170);
+            this.vGridControl1.Size = new System.Drawing.Size(759, 168);
             this.vGridControl1.TabIndex = 0;
             // 
             // row
@@ -761,7 +761,7 @@
             this.xtraTabPage2.Controls.Add(this.gridControl3);
             this.xtraTabPage2.ImageIndex = 2;
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(759, 170);
+            this.xtraTabPage2.Size = new System.Drawing.Size(759, 168);
             this.xtraTabPage2.Text = "Зв\'язані документи";
             // 
             // gridControl3
@@ -770,7 +770,7 @@
             this.gridControl3.Location = new System.Drawing.Point(0, 0);
             this.gridControl3.MainView = this.gridView3;
             this.gridControl3.Name = "gridControl3";
-            this.gridControl3.Size = new System.Drawing.Size(759, 170);
+            this.gridControl3.Size = new System.Drawing.Size(759, 168);
             this.gridControl3.TabIndex = 0;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -784,43 +784,43 @@
             // xtraTabPage6
             // 
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(765, 693);
+            this.xtraTabPage6.Size = new System.Drawing.Size(765, 691);
             this.xtraTabPage6.Text = "ViewList";
             // 
             // xtraTabPage8
             // 
             this.xtraTabPage8.Name = "xtraTabPage8";
-            this.xtraTabPage8.Size = new System.Drawing.Size(765, 693);
+            this.xtraTabPage8.Size = new System.Drawing.Size(765, 691);
             this.xtraTabPage8.Text = "Рахунки";
             // 
             // xtraTabPage9
             // 
             this.xtraTabPage9.Name = "xtraTabPage9";
-            this.xtraTabPage9.Size = new System.Drawing.Size(765, 693);
+            this.xtraTabPage9.Size = new System.Drawing.Size(765, 691);
             this.xtraTabPage9.Text = "Рахунки фактури";
             // 
             // xtraTabPage10
             // 
             this.xtraTabPage10.Name = "xtraTabPage10";
-            this.xtraTabPage10.Size = new System.Drawing.Size(765, 693);
+            this.xtraTabPage10.Size = new System.Drawing.Size(765, 691);
             this.xtraTabPage10.Text = "Платіжні документи";
             // 
             // xtraTabPage11
             // 
             this.xtraTabPage11.Name = "xtraTabPage11";
-            this.xtraTabPage11.Size = new System.Drawing.Size(765, 693);
+            this.xtraTabPage11.Size = new System.Drawing.Size(765, 691);
             this.xtraTabPage11.Text = "Прайс-листи";
             // 
             // xtraTabPage12
             // 
             this.xtraTabPage12.Name = "xtraTabPage12";
-            this.xtraTabPage12.Size = new System.Drawing.Size(765, 693);
+            this.xtraTabPage12.Size = new System.Drawing.Size(765, 691);
             this.xtraTabPage12.Text = "Договора";
             // 
             // xtraTabPage13
             // 
             this.xtraTabPage13.Name = "xtraTabPage13";
-            this.xtraTabPage13.Size = new System.Drawing.Size(765, 693);
+            this.xtraTabPage13.Size = new System.Drawing.Size(765, 691);
             this.xtraTabPage13.Text = "Податкові накладні";
             // 
             // standaloneBarDockControl1

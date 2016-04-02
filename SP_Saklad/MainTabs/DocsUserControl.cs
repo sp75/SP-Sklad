@@ -17,7 +17,7 @@ namespace SP_Saklad.MainTabs
 {
     public partial class DocsUserControl : UserControl
     {
-        const int user_id = 0;
+        const int USER_ID = 0;
         int cur_wtype = 0;
         int show_null_balance = 1;
         BaseEntities _db { get; set; }
@@ -45,13 +45,15 @@ namespace SP_Saklad.MainTabs
             wbStartDate.EditValue = DateTime.Now.AddDays(-30);
             wbEndDate.EditValue = DateTime.Now;
 
-            DocsTreeList.DataSource = _db.v_GetDocsTree.Where(w => w.USERID == null || w.USERID == user_id).OrderBy(o => o.NUM).ToList();
+            DocsTreeList.DataSource = _db.v_GetDocsTree.Where(w => w.USERID == null || w.USERID == USER_ID).OrderBy(o => o.NUM).ToList();
             DocsTreeList.ExpandAll();
         }
 
         void GetWBlist(int wtyp)
         {
-            if (wbSatusList.EditValue == null || wbKagentList.EditValue == null)
+            var ff = DocsTreeList.FocusedNode;
+
+            if (wbSatusList.EditValue == null || wbKagentList.EditValue == null || DocsTreeList.FocusedNode==null)
             {
                 return;
             }
@@ -59,8 +61,8 @@ namespace SP_Saklad.MainTabs
             var satrt_date = wbStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : wbStartDate.DateTime;
             var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
             var bookmark = WbGridView.FocusedRowHandle;
-            
-            gridControl1.DataSource = _db.GetWayBillList(satrt_date, end_date, wtyp, (int)wbSatusList.EditValue, (int)wbKagentList.EditValue, show_null_balance, "*", 0).OrderByDescending(o => o.OnDate);
+
+            gridControl1.DataSource = _db.GetWayBillList(satrt_date.Date, end_date.Date.AddDays(1), wtyp, (int)wbSatusList.EditValue, (int)wbKagentList.EditValue, show_null_balance, "*", 0).OrderByDescending(o => o.OnDate);
 
             WbGridView.FocusedRowHandle = bookmark;
         }
