@@ -104,6 +104,7 @@ namespace SP_Saklad.WBForm
             wb.Checked = (int)TurnDocCheckBox.EditValue;
             wb.Reason = ReasonEdit.Text;
             wb.Notes = NotesEdit.Text;
+            wb.UpdatedAt = DateTime.Now;
 
             _db.SaveChanges();
             current_transaction.Commit();

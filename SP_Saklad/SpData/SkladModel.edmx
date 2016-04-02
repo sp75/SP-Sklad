@@ -1064,6 +1064,7 @@ warning 6002: The table/view 'sp_base.dbo.WAYBILLDETTAXES' does not have a prima
           <Property Name="SummInCurr" Type="numeric" Precision="15" Scale="2" />
           <Property Name="EntId" Type="int" />
           <Property Name="OnValue" Type="numeric" Precision="15" Scale="8" />
+          <Property Name="UpdatedAt" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.WAYBILLMAKE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -5582,7 +5583,7 @@ warning 6002: The table/view 'sp_base.dbo.v_GetDocsTree' does not have a primary
           </FunctionImport>
           <EntitySet Name="MaterialsList" EntityType="BaseModel.MaterialsList" />
           <FunctionImport Name="GetCounter" ReturnType="Collection(String)">
-            <Parameter Name="name" Mode="In" Type="String" />
+          <Parameter Name="name" Mode="In" Type="String" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="GetMatGroupTree_Result">
@@ -8771,6 +8772,7 @@ warning 6002: The table/view 'sp_base.dbo.v_GetDocsTree' does not have a primary
           <NavigationProperty Name="WAYBILLMOVE" Relationship="BaseModel.FK_WBM_WBILLID" FromRole="WaybillList" ToRole="WAYBILLMOVE" />
           <NavigationProperty Name="WAYBILLSVC" Relationship="BaseModel.FK_WBS_WBILLID" FromRole="WaybillList" ToRole="WAYBILLSVC" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WBD_WBILLID" FromRole="WaybillList" ToRole="WaybillDet" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
         </EntityType>
         <Association Name="FK_COMMISSION_WBILLID">
           <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
@@ -10925,6 +10927,7 @@ warning 6002: The table/view 'sp_base.dbo.v_GetDocsTree' does not have a primary
           <EntitySetMapping Name="WaybillList">
             <EntityTypeMapping TypeName="BaseModel.WaybillList">
               <MappingFragment StoreEntitySet="WaybillList">
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
                 <ScalarProperty Name="OnValue" ColumnName="OnValue" />
                 <ScalarProperty Name="EntId" ColumnName="EntId" />
                 <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />

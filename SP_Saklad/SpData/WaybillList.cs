@@ -49,6 +49,7 @@ namespace SP_Saklad.SpData
         public Nullable<decimal> SummInCurr { get; set; }
         public Nullable<int> EntId { get; set; }
         public Nullable<decimal> OnValue { get; set; }
+        public Nullable<System.DateTime> UpdatedAt { get; set; }
     
         public virtual ICollection<COMMISSION> COMMISSION { get; set; }
         public virtual CURRENCY CURRENCY { get; set; }
