@@ -242,7 +242,7 @@ namespace SP_Saklad.MainTabs
                         return;
                     }
 
-                    var wb = _db.WaybillList.Find(dr.WbillId);
+                    var wb = new BaseEntities().WaybillList.FirstOrDefault(w => w.WbillId == dr.WbillId);
                     if (wb != null)
                     {
                         if (wb.Checked == 1)
@@ -257,9 +257,9 @@ namespace SP_Saklad.MainTabs
                             {
                                 try
                                 {
-                                    using (var wbIn = new frmWayBillIn(cur_wtype, wb.WbillId))
+                                    using (var wb_in = new frmWayBillIn(cur_wtype, wb.WbillId))
                                     {
-                                        wbIn.ShowDialog();
+                                        wb_in.ShowDialog();
                                     }
                                 }
                                 catch
@@ -493,6 +493,26 @@ namespace SP_Saklad.MainTabs
         private void WbGridView_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
             
+        }
+
+        private void DeleteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        private void ExecuteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        private void PrintItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
         }
     }
 }

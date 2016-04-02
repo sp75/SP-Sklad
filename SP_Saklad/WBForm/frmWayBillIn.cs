@@ -37,21 +37,21 @@ namespace SP_Saklad.WBForm
         {
             if (_wbill_id == null)
             {
-                wb = _db.WaybillList.Add(new WaybillList() { WType = _wtype, OnDate = DateTime.Now, Num = _db.GetCounter("wb_in").FirstOrDefault() });
+                wb = _db.WaybillList.Add(new WaybillList() { WType = _wtype, OnDate = DateTime.Now, Num = _db.GetCounter("wb_in").FirstOrDefault(), CurrId = 2 });
                 try
                 {
                     _db.SaveChanges();
                 }
-                catch ( Exception )
+                catch (Exception)
                 {
                     throw;
                 }
-                
+
             }
             else
             {
                 wb = _db.WaybillList.Find(_wbill_id);
-             }
+            }
 
             if (wb != null)
             {
@@ -105,8 +105,16 @@ namespace SP_Saklad.WBForm
             wb.Reason = ReasonEdit.Text;
             wb.Notes = NotesEdit.Text;
             wb.UpdatedAt = DateTime.Now;
-
+            wb.Checked = Convert.ToInt32(TurnDocCheckBox.Checked);
             _db.SaveChanges();
+            current_transaction.Commit();
+
+            if (TurnDocCheckBox.Checked)
+            {
+                _db.EXECUTE_WAYBILL(wb.WbillId, null);
+            }
+          
+
             current_transaction.Commit();
 
             Close();
@@ -153,6 +161,19 @@ namespace SP_Saklad.WBForm
                 {
                     WaybillDetInGridControl.DataSource = _db.GetWaybillDetIn(_wbill_id);
                 }
+            }
+        }
+
+        private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var dr = WaybillDetInGridView.GetRow(WaybillDetInGridView.FocusedRowHandle) as GetWaybillDetIn_Result;
+
+            if (dr != null)
+            {
+                _db.WaybillDet.Remove(_db.WaybillDet.Find(dr.PosId));
+                _db.SaveChanges();
+
+                WaybillDetInGridControl.DataSource = _db.GetWaybillDetIn(_wbill_id);
             }
         }
     }

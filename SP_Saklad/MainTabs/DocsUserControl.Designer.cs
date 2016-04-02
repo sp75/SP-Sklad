@@ -901,6 +901,7 @@
             this.DeleteItemBtn.Id = 3;
             this.DeleteItemBtn.ImageIndex = 3;
             this.DeleteItemBtn.Name = "DeleteItemBtn";
+            this.DeleteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeleteItemBtn_ItemClick);
             // 
             // RefrechItemBtn
             // 
@@ -908,6 +909,7 @@
             this.RefrechItemBtn.Id = 4;
             this.RefrechItemBtn.ImageIndex = 4;
             this.RefrechItemBtn.Name = "RefrechItemBtn";
+            this.RefrechItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RefrechItemBtn_ItemClick);
             // 
             // ExecuteItemBtn
             // 
@@ -915,6 +917,7 @@
             this.ExecuteItemBtn.Id = 5;
             this.ExecuteItemBtn.ImageIndex = 5;
             this.ExecuteItemBtn.Name = "ExecuteItemBtn";
+            this.ExecuteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExecuteItemBtn_ItemClick);
             // 
             // PrintItemBtn
             // 
@@ -922,6 +925,7 @@
             this.PrintItemBtn.Id = 6;
             this.PrintItemBtn.ImageIndex = 6;
             this.PrintItemBtn.Name = "PrintItemBtn";
+            this.PrintItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrintItemBtn_ItemClick);
             // 
             // barDockControlTop
             // 
