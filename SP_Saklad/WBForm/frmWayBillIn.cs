@@ -111,11 +111,11 @@ namespace SP_Saklad.WBForm
 
             if (TurnDocCheckBox.Checked)
             {
-                _db.EXECUTE_WAYBILL(wb.WbillId, null);
+                using (var db = new BaseEntities())
+                {
+                    db.EXECUTE_WAYBILL(wb.WbillId, null);
+                }
             }
-          
-
-            current_transaction.Commit();
 
             Close();
         }

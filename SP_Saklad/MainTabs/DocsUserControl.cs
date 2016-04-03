@@ -149,9 +149,9 @@ namespace SP_Saklad.MainTabs
 
                     if (cur_wtype == 1 || ID == 16)  //Прибткова накладна , замовлення постачальникам
                     {
-                        using (var wbIn = new frmWayBillIn(cur_wtype, null))
+                        using (var wb_in = new frmWayBillIn(cur_wtype, null))
                         {
-                            wbIn.ShowDialog();
+                            wb_in.ShowDialog();
                         }
                     }
 
@@ -502,12 +502,46 @@ namespace SP_Saklad.MainTabs
 
         private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            GetWBlist(cur_wtype);
         }
 
         private void ExecuteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            String NotFind = "Документ не знайдено.";
+            var g_type = (int)DocsTreeList.FocusedNode.GetValue("GTYPE");
 
+            switch (g_type)
+            {
+                case 1:
+                    var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
+                    if (dr == null)
+                    {
+                        return;
+                    }
+
+                    var wb = new BaseEntities().WaybillList.Find(dr.WbillId);
+                    if (wb != null)
+                    {
+                        if (wb.Checked == 1)
+                        {
+                            new BaseEntities().STORNO_WAYBILL(wb.WbillId);
+
+                            /*if(MessageDlg(msg1,mtConfirmation,TMsgDlgButtons() << mbYes << mbNo ,0)==mrYes)
+                                ExecuteBtn->Click();*/
+                        }
+                        else 
+                        {
+                            new BaseEntities().EXECUTE_WAYBILL(wb.WbillId, null);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(NotFind);
+                    }
+                    break;
+            }
+
+            RefrechItemBtn.PerformClick();
         }
 
         private void PrintItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
