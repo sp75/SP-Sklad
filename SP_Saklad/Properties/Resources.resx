@@ -148,4 +148,10 @@
   <data name="not_find_wb" xml:space="preserve">
     <value>Документ не знайдено.</value>
   </data>
+  <data name="deadlock" xml:space="preserve">
+    <value>Не можливо переглянути властивості, документ вже відкрито на одній із робочих станцій!</value>
+  </data>
+  <data name="edit_info" xml:space="preserve">
+    <value>Для редагування документа потрібно скасувати проводку. Ви упевнені що прагнете цього?</value>
+  </data>
 </root>

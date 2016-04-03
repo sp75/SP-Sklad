@@ -893,7 +893,7 @@
             this.EditItemBtn.Id = 2;
             this.EditItemBtn.ImageIndex = 2;
             this.EditItemBtn.Name = "EditItemBtn";
-            this.EditItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
+            this.EditItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.EditItemBtn_ItemClick);
             // 
             // DeleteItemBtn
             // 

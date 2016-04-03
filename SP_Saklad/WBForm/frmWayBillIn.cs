@@ -28,6 +28,7 @@ namespace SP_Saklad.WBForm
             _wtype = wtype;
             _wbill_id = wbill_id;
             _db = new BaseEntities();
+            _db.Database.CommandTimeout = 1;
             current_transaction = _db.Database.BeginTransaction(IsolationLevel.RepeatableRead);
 
             WaybillDetInGridControl.DataSource = _db.GetWaybillDetIn(wbill_id);

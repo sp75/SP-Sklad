@@ -121,6 +121,24 @@ namespace SP_Saklad.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Не можливо переглянути властивості, документ вже відкрито на одній із робочих станцій!.
+        /// </summary>
+        internal static string deadlock {
+            get {
+                return ResourceManager.GetString("deadlock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Для редагування документа потрібно скасувати проводку. Ви упевнені що прагнете цього?.
+        /// </summary>
+        internal static string edit_info {
+            get {
+                return ResourceManager.GetString("edit_info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap factory {

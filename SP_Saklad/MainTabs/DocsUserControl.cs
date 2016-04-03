@@ -226,251 +226,257 @@ namespace SP_Saklad.MainTabs
 
         }
 
-        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void EditItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            int GTYPE = (int)DocsTreeList.FocusedNode.GetValue("GTYPE");
-          
-            String msg1 = "Для редагування документа потрібно скасувати проводку.\nВи упевнені що прагнете цього? ";
-            String Deadlock = "Не можливо переглянути властивості, \nдокумент вже відкрито на одній із робочих станцій!";
-            String NotFind = "Документ не знайдено.";
+            int gtype = (int)DocsTreeList.FocusedNode.GetValue("GTYPE");
 
-            switch (GTYPE)
+            using (var db = new BaseEntities())
             {
-                case 1:
-                    var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
-                    if (dr == null)
-                    {
-                        return;
-                    }
-
-                    var wb = new BaseEntities().WaybillList.FirstOrDefault(w => w.WbillId == dr.WbillId);
-                    if (wb != null)
-                    {
-                        if (wb.Checked == 1)
+      
+             //   var current_transaction = db.Database.BeginTransaction(IsolationLevel.RepeatableRead);
+                switch (gtype)
+                {
+                    case 1:
+                        var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
+                        if (dr == null)
                         {
-                            /*if(MessageDlg(msg1,mtConfirmation,TMsgDlgButtons() << mbYes << mbNo ,0)==mrYes)
-                                ExecuteBtn->Click();*/
+                            return;
                         }
 
-                        if (wb.Checked == 0)
+                        var wb = db.WaybillList.AsNoTracking().FirstOrDefault(w => w.WbillId == dr.WbillId);
+                   //      wb.UpdatedAt = DateTime.Now;
+                     //  _db.SaveChanges();
+                      
+                        //db.Entry( wb )
+                        if (wb != null)
                         {
-                            if (cur_wtype == 1 || cur_wtype == 16)
+                            if ( wb.Checked == 1 && MessageBox.Show(Resources.edit_info, "Відміна проводки", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes )
                             {
+                                ExecuteItemBtn.PerformClick();
+                                dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
+                            }
+
+                            if (dr != null && dr.Checked == 0)
+                            {
+                                if (cur_wtype == 1 || cur_wtype == 16)
+                                {
+                                    try
+                                    {
+                                        using (var wb_in = new frmWayBillIn(cur_wtype, wb.WbillId))
+                                        {
+                                            wb_in.ShowDialog();
+                                        }
+                                    }
+                                    catch
+                                    {
+                                        MessageBox.Show(Resources.deadlock);
+                                    }
+                                }
+
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show(Resources.not_find_wb);
+                        }
+
+                        /*	if(DocsTreeDataID->Value == 27 || DocsTreeDataID->Value == 39 || DocsTreeDataID->Value == 107)
+                             {
                                 try
                                 {
-                                    using (var wb_in = new frmWayBillIn(cur_wtype, wb.WbillId))
-                                    {
-                                        wb_in.ShowDialog();
-                                    }
-                                }
-                                catch
-                                {
-                                    ; //	ShowMessage(Deadlock) ;
-                                }
-                            }
-
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show(NotFind);
-                    }
-
-                    /*	if(DocsTreeDataID->Value == 27 || DocsTreeDataID->Value == 39 || DocsTreeDataID->Value == 107)
-                         {
-                            try
-                            {
-                              try
-                              {
-                                frmWayBillOut = new  TfrmWayBillOut(Application);
-                                frmWayBillOut->WayBillList->ParamByName("WBILLID")->Value = WayBillListWBILLID->Value;
-                                frmWayBillOut->WayBillList->Open();
-                                frmWayBillOut->WayBillList->Edit();
-                                frmWayBillOut->WayBillList->LockRecord(true)  ;
-                                frmWayBillOut->ShowModal();
-                              }
-                              catch(const Exception& e)
-                              {
-                                frmWayBillOut->Close();
-                                if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
-                                else   ShowMessage(e.Message) ;
-                              }
-                            }
-                            __finally
-                            {
-                               delete frmWayBillOut ;
-                            }
-
-                         }
-
-                        if(DocsTreeDataID->Value == 57) // Повернення від кліента
-                         {
-                            try
-                            {
-                              try
-                              {
-                                frmWBReturnIn  = new TfrmWBReturnIn(Application);
-                                frmWBReturnIn->WayBillList->ParamByName("WBILLID")->Value = WayBillListWBILLID->Value;
-                                frmWBReturnIn->WayBillList->Open();
-                                frmWBReturnIn->WayBillList->Edit();
-                                frmWBReturnIn->WayBillList->LockRecord()  ;
-                                frmWBReturnIn->ShowModal();
-                              }
-                              catch(const Exception& e)
-                              {
-                                frmWBReturnIn->Close();
-                                if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
-                                else   ShowMessage(e.Message) ;
-                              }
-                            }
-                            __finally
-                            {
-                                delete frmWBReturnIn ;
-                            }
-                         }
-
-                        if(DocsTreeDataID->Value == 56) //Повернення постачальнику
-                         {
-                            try
-                            {
-                              try
-                              {
-                                frmWBReturnOut  = new  TfrmWBReturnOut(Application);
-                                frmWBReturnOut->WayBillList->ParamByName("WBILLID")->Value = WayBillListWBILLID->Value;
-                                frmWBReturnOut->WayBillList->Open();
-                                frmWBReturnOut->WayBillList->Edit();
-                                frmWBReturnOut->WayBillList->LockRecord()  ;
-                                frmWBReturnOut->ShowModal();
-                              }
-                              catch(const Exception& e)
-                              {
-                                frmWBReturnOut->Close();
-                                if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
-                                  else ShowMessage(e.Message) ;
-                              }
-                            }
-                            __finally
-                            {
-                                  delete frmWBReturnOut ;
-                            }
-                         }*/
-
-                    break;
-                /*
-                        case 4: PayDoc->Refresh();
-                                if(PayDocCHECKED->Value == 1)
-                                    if(MessageDlg(msg1,mtConfirmation,TMsgDlgButtons() << mbYes << mbNo ,0)==mrYes)
-                                       ExecuteBtn->Click();
-                                if(PayDocCHECKED->Value == 0)
-                                 {
-                                     TfrmPayDoc *frmPD = new  TfrmPayDoc(Application);
-                                     try
-                                     {
-                                        try
-                                        {
-                                          frmPD = new  TfrmPayDoc(Application);
-                                          frmPD->PayDoc->ParamByName("PAYDOCID")->Value = PayDocPAYDOCID->Value;
-                                          frmPD->PayDoc->Open();
-                                          frmPD->PayDoc->Edit();
-                                          frmPD->PayDoc->LockRecord()  ;
-                                          frmPD->ShowModal() ;
-                                        }
-                                        catch(const Exception& e)
-                                        {
-                                            if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
-                                               else  ShowMessage(e.Message) ;
-                                        }
-                                     }
-                                     __finally
-                                     {
-                                          delete frmPD ;
-                                     }
-                                 }
-                                break;
-
-                        case 5: {
                                   try
                                   {
-                                    try
-                                    {
-                                       frmPriceList = new  TfrmPriceList(Application);
-                                       frmPriceList->PriceList->ParamByName("PLID")->Value = PriceListPLID->Value;
-                                       frmPriceList->PriceList->Open();
-                                       frmPriceList->PriceList->Edit();
-                                       frmPriceList->PriceList->LockRecord()  ;
-                                       frmPriceList->ShowModal() ;
-                                    }
-                                    catch(const Exception& e)
-                                    {
-                                       frmPriceList->Close();
-                                       if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
-                                           else ShowMessage(e.Message) ;
-                                    }
+                                    frmWayBillOut = new  TfrmWayBillOut(Application);
+                                    frmWayBillOut->WayBillList->ParamByName("WBILLID")->Value = WayBillListWBILLID->Value;
+                                    frmWayBillOut->WayBillList->Open();
+                                    frmWayBillOut->WayBillList->Edit();
+                                    frmWayBillOut->WayBillList->LockRecord(true)  ;
+                                    frmWayBillOut->ShowModal();
                                   }
-                                  __finally
+                                  catch(const Exception& e)
                                   {
-                                     delete frmPriceList ;
+                                    frmWayBillOut->Close();
+                                    if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
+                                    else   ShowMessage(e.Message) ;
                                   }
-                                }
-                                break;
-
-                        case 6: ContractsList->Refresh();
-                                if(ContractsListCHECKED->Value == 1)
-                                    if(MessageDlg(msg1,mtConfirmation,TMsgDlgButtons() << mbYes << mbNo ,0)==mrYes)
-                                       ExecuteBtn->Click();
-
-                                if(ContractsListCHECKED->Value == 0)
-                                 {
-                                    try
-                                    {
-                                      try
-                                      {
-                                        frmContr = new  TfrmContr(Application);
-                                        frmContr->CONTRACTS->ParamByName("CONTRID")->Value = ContractsListCONTRID->Value;
-                                        frmContr->CONTRACTS->Open();
-                                        frmContr->CONTRACTS->Edit();
-                                        frmContr->CONTRACTS->LockRecord()  ;
-                                        frmContr->ShowModal() ;
-
-                                      }
-                                      catch(const Exception& e)
-                                      {
-                                         frmContr->Close();
-                                         if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
-                                            else   ShowMessage(e.Message) ;
-                                      }
-                                    }
-                                    __finally
-                                    {
-                                        delete frmContr;
-                                    }
-                                 }
-                                break;
-
-                        case 7: try
-                                {
-                                   try
-                                   {
-                                     frmTaxWB = new  TfrmTaxWB(Application);
-                                     frmTaxWB->TaxWB->ParamByName("TWBID")->Value = TaxWBListTWBID->Value;
-                                     frmTaxWB->TaxWB->Open();
-                                     frmTaxWB->TaxWB->Edit();
-                                     frmTaxWB->TaxWB->LockRecord()  ;
-                                     frmTaxWB->ShowModal() ;
-                                   }
-                                   catch(const Exception& e)
-                                   {
-                                      frmTaxWB->Close();
-                                      if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
-                                            else   ShowMessage(e.Message) ;
-                                   }
                                 }
                                 __finally
                                 {
-                                    delete frmTaxWB;
+                                   delete frmWayBillOut ;
                                 }
-                                break;*/
 
+                             }
+
+                            if(DocsTreeDataID->Value == 57) // Повернення від кліента
+                             {
+                                try
+                                {
+                                  try
+                                  {
+                                    frmWBReturnIn  = new TfrmWBReturnIn(Application);
+                                    frmWBReturnIn->WayBillList->ParamByName("WBILLID")->Value = WayBillListWBILLID->Value;
+                                    frmWBReturnIn->WayBillList->Open();
+                                    frmWBReturnIn->WayBillList->Edit();
+                                    frmWBReturnIn->WayBillList->LockRecord()  ;
+                                    frmWBReturnIn->ShowModal();
+                                  }
+                                  catch(const Exception& e)
+                                  {
+                                    frmWBReturnIn->Close();
+                                    if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
+                                    else   ShowMessage(e.Message) ;
+                                  }
+                                }
+                                __finally
+                                {
+                                    delete frmWBReturnIn ;
+                                }
+                             }
+
+                            if(DocsTreeDataID->Value == 56) //Повернення постачальнику
+                             {
+                                try
+                                {
+                                  try
+                                  {
+                                    frmWBReturnOut  = new  TfrmWBReturnOut(Application);
+                                    frmWBReturnOut->WayBillList->ParamByName("WBILLID")->Value = WayBillListWBILLID->Value;
+                                    frmWBReturnOut->WayBillList->Open();
+                                    frmWBReturnOut->WayBillList->Edit();
+                                    frmWBReturnOut->WayBillList->LockRecord()  ;
+                                    frmWBReturnOut->ShowModal();
+                                  }
+                                  catch(const Exception& e)
+                                  {
+                                    frmWBReturnOut->Close();
+                                    if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
+                                      else ShowMessage(e.Message) ;
+                                  }
+                                }
+                                __finally
+                                {
+                                      delete frmWBReturnOut ;
+                                }
+                             }*/
+
+                        break;
+                    /*
+                            case 4: PayDoc->Refresh();
+                                    if(PayDocCHECKED->Value == 1)
+                                        if(MessageDlg(msg1,mtConfirmation,TMsgDlgButtons() << mbYes << mbNo ,0)==mrYes)
+                                           ExecuteBtn->Click();
+                                    if(PayDocCHECKED->Value == 0)
+                                     {
+                                         TfrmPayDoc *frmPD = new  TfrmPayDoc(Application);
+                                         try
+                                         {
+                                            try
+                                            {
+                                              frmPD = new  TfrmPayDoc(Application);
+                                              frmPD->PayDoc->ParamByName("PAYDOCID")->Value = PayDocPAYDOCID->Value;
+                                              frmPD->PayDoc->Open();
+                                              frmPD->PayDoc->Edit();
+                                              frmPD->PayDoc->LockRecord()  ;
+                                              frmPD->ShowModal() ;
+                                            }
+                                            catch(const Exception& e)
+                                            {
+                                                if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
+                                                   else  ShowMessage(e.Message) ;
+                                            }
+                                         }
+                                         __finally
+                                         {
+                                              delete frmPD ;
+                                         }
+                                     }
+                                    break;
+
+                            case 5: {
+                                      try
+                                      {
+                                        try
+                                        {
+                                           frmPriceList = new  TfrmPriceList(Application);
+                                           frmPriceList->PriceList->ParamByName("PLID")->Value = PriceListPLID->Value;
+                                           frmPriceList->PriceList->Open();
+                                           frmPriceList->PriceList->Edit();
+                                           frmPriceList->PriceList->LockRecord()  ;
+                                           frmPriceList->ShowModal() ;
+                                        }
+                                        catch(const Exception& e)
+                                        {
+                                           frmPriceList->Close();
+                                           if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
+                                               else ShowMessage(e.Message) ;
+                                        }
+                                      }
+                                      __finally
+                                      {
+                                         delete frmPriceList ;
+                                      }
+                                    }
+                                    break;
+
+                            case 6: ContractsList->Refresh();
+                                    if(ContractsListCHECKED->Value == 1)
+                                        if(MessageDlg(msg1,mtConfirmation,TMsgDlgButtons() << mbYes << mbNo ,0)==mrYes)
+                                           ExecuteBtn->Click();
+
+                                    if(ContractsListCHECKED->Value == 0)
+                                     {
+                                        try
+                                        {
+                                          try
+                                          {
+                                            frmContr = new  TfrmContr(Application);
+                                            frmContr->CONTRACTS->ParamByName("CONTRID")->Value = ContractsListCONTRID->Value;
+                                            frmContr->CONTRACTS->Open();
+                                            frmContr->CONTRACTS->Edit();
+                                            frmContr->CONTRACTS->LockRecord()  ;
+                                            frmContr->ShowModal() ;
+
+                                          }
+                                          catch(const Exception& e)
+                                          {
+                                             frmContr->Close();
+                                             if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
+                                                else   ShowMessage(e.Message) ;
+                                          }
+                                        }
+                                        __finally
+                                        {
+                                            delete frmContr;
+                                        }
+                                     }
+                                    break;
+
+                            case 7: try
+                                    {
+                                       try
+                                       {
+                                         frmTaxWB = new  TfrmTaxWB(Application);
+                                         frmTaxWB->TaxWB->ParamByName("TWBID")->Value = TaxWBListTWBID->Value;
+                                         frmTaxWB->TaxWB->Open();
+                                         frmTaxWB->TaxWB->Edit();
+                                         frmTaxWB->TaxWB->LockRecord()  ;
+                                         frmTaxWB->ShowModal() ;
+                                       }
+                                       catch(const Exception& e)
+                                       {
+                                          frmTaxWB->Close();
+                                          if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
+                                                else   ShowMessage(e.Message) ;
+                                       }
+                                    }
+                                    __finally
+                                    {
+                                        delete frmTaxWB;
+                                    }
+                                    break;*/
+
+                }
+            //    current_transaction.Rollback();
             }
 
             GetWBlist(cur_wtype);
@@ -499,6 +505,38 @@ namespace SP_Saklad.MainTabs
         private void DeleteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
+            /*
+            	try
+	{
+	  switch (DocsTreeDataGTYPE->Value)
+	  {
+		case 1: WayBillList->LockRecord(); break;
+		case 4: PayDoc->LockRecord();  break;
+		case 5: PriceList->LockRecord();  break;
+		case 6: ContractsList->LockRecord();  break;
+		case 7: TaxWBList->LockRecord();  break;
+	  }
+
+	  if(frmMain->ShowConfirm("Ви дійсно бажаєте відалити цей документ ?", "Підтвердіть операцію") == mrOk)
+	   {
+		 switch (DocsTreeDataGTYPE->Value)
+		 {
+		   case 1: WayBillList->Delete(); break;
+		   case 4: PayDoc->Delete();  break;
+		   case 5: PriceList->Delete();  break;
+		   case 6: ContractsList->Delete();  break;
+		   case 7: TaxWBList->Delete();  break;
+		 }
+	   }
+	  DocPAnelTransaction->CommitRetaining() ;
+	  RefreshBarBtn->Click();
+	}
+	catch(const Exception& e)
+	{
+		if(e.Message.Pos("Deadlock") > 0) 	ShowMessage("Видалення не можливе, документ зайнятий на одній із робочих станцій!") ;
+			else  ShowMessage(e.Message) ;
+	}*/
+
         }
 
         private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -526,11 +564,11 @@ namespace SP_Saklad.MainTabs
                         {
                             if (wb.Checked == 1)
                             {
-                                var result = db.StornoWayBill (wb.WbillId).FirstOrDefault();
-                           
+                                var result = db.StornoWayBill(wb.WbillId).FirstOrDefault();
+
                                 if (result == 1)
                                 {
-                                    MessageBox.Show("Відміна проводки", Resources.not_storno_wb, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    MessageBox.Show(Resources.not_storno_wb, "Відміна проводки", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
                             }
                             else
@@ -543,7 +581,7 @@ namespace SP_Saklad.MainTabs
                                 var result = db.ExecuteWayBill(wb.WbillId, null).FirstOrDefault();
                                 if (result != null && result.Checked == 0)
                                 {
-                                    MessageBox.Show("Проведення документа", Resources.not_execute_wb, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    MessageBox.Show(Resources.not_execute_wb, "Проведення документа", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
                             }
                         }
@@ -562,5 +600,6 @@ namespace SP_Saklad.MainTabs
         {
 
         }
+
     }
 }
