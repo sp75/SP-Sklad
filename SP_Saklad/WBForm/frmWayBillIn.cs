@@ -113,7 +113,7 @@ namespace SP_Saklad.WBForm
             {
                 using (var db = new BaseEntities())
                 {
-                    db.EXECUTE_WAYBILL(wb.WbillId, null);
+                    db.ExecuteWayBill(wb.WbillId, null);
                 }
             }
 

@@ -157,6 +157,9 @@
     <Compile Include="SpData\EXECUTESQL_EXAMPLER_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SpData\ExecuteWayBill_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SpData\FUNCTIONS.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>

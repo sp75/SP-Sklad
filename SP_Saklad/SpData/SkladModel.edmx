@@ -2989,14 +2989,14 @@ warning 6002: The table/view 'sp_base.dbo.v_GetDocsTree' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="EXECUTE_WAYBILL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="WBILLID" Type="int" Mode="In" />
-          <Parameter Name="NEW_WTYPE" Type="int" Mode="In" />
-        </Function>
         <Function Name="EXECUTESQL_EXAMPLER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IN_MATID" Type="int" Mode="In" />
           <Parameter Name="ONDATE" Type="datetime" Mode="In" />
           <Parameter Name="WH" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ExecuteWayBill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="WBILLID" Type="int" Mode="In" />
+          <Parameter Name="NEW_WTYPE" Type="int" Mode="In" />
         </Function>
         <Function Name="GetCounter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="name" Type="nvarchar" Mode="In" />
@@ -3708,7 +3708,7 @@ warning 6002: The table/view 'sp_base.dbo.v_GetDocsTree' does not have a primary
             </CollectionType>
           </ReturnType>
         </Function>
-        <Function Name="STORNO_WAYBILL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="StornoWayBill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="WBILLID" Type="int" Mode="In" />
         </Function>
         <Function Name="WBDGetOut" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -5303,10 +5303,6 @@ warning 6002: The table/view 'sp_base.dbo.v_GetDocsTree' does not have a primary
             <Parameter Name="sep" Mode="In" Type="String" />
             <Parameter Name="s" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="EXECUTE_WAYBILL" ReturnType="Collection(Int32)">
-            <Parameter Name="WBILLID" Mode="In" Type="Int32" />
-            <Parameter Name="NEW_WTYPE" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="EXECUTESQL_EXAMPLER" ReturnType="Collection(BaseModel.EXECUTESQL_EXAMPLER_Result)">
             <Parameter Name="IN_MATID" Mode="In" Type="Int32" />
             <Parameter Name="ONDATE" Mode="In" Type="DateTime" />
@@ -5414,9 +5410,6 @@ warning 6002: The table/view 'sp_base.dbo.v_GetDocsTree' does not have a primary
           <FunctionImport Name="SP_WMATTURN_UPD">
             <Parameter Name="WBILLID" Mode="In" Type="Int32" />
             <Parameter Name="TURNTYPE" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="STORNO_WAYBILL">
-          <Parameter Name="WBILLID" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="v_GetDocsTree" EntityType="BaseModel.v_GetDocsTree" />
           <EntitySet Name="USERACCESS" EntityType="BaseModel.USERACCESS" />
@@ -5584,6 +5577,13 @@ warning 6002: The table/view 'sp_base.dbo.v_GetDocsTree' does not have a primary
           <EntitySet Name="MaterialsList" EntityType="BaseModel.MaterialsList" />
           <FunctionImport Name="GetCounter" ReturnType="Collection(String)">
           <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ExecuteWayBill" ReturnType="Collection(BaseModel.ExecuteWayBill_Result)">
+            <Parameter Name="WBILLID" Mode="In" Type="Int32" />
+            <Parameter Name="NEW_WTYPE" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="StornoWayBill" ReturnType="Collection(Int32)">
+            <Parameter Name="WBILLID" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="GetMatGroupTree_Result">
@@ -9205,6 +9205,10 @@ warning 6002: The table/view 'sp_base.dbo.v_GetDocsTree' does not have a primary
           <Property Type="Int32" Name="Deleted" Nullable="false" />
           <Property Type="Int32" Name="Archived" />
         </EntityType>
+        <ComplexType Name="ExecuteWayBill_Result">
+          <Property Type="Int32" Name="Checked" Nullable="false" />
+          <Property Type="Int32" Name="NewDocId" Nullable="true" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -10666,7 +10670,6 @@ warning 6002: The table/view 'sp_base.dbo.v_GetDocsTree' does not have a primary
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="EXECUTE_WAYBILL" FunctionName="BaseModel.Store.EXECUTE_WAYBILL" />
           <FunctionImportMapping FunctionImportName="EXECUTESQL_EXAMPLER" FunctionName="BaseModel.Store.EXECUTESQL_EXAMPLER">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.EXECUTESQL_EXAMPLER_Result">
@@ -10706,7 +10709,6 @@ warning 6002: The table/view 'sp_base.dbo.v_GetDocsTree' does not have a primary
           <FunctionImportMapping FunctionImportName="SP_UPD_DATE" FunctionName="BaseModel.Store.SP_UPD_DATE" />
           <FunctionImportMapping FunctionImportName="SP_WMATTURN_DEL" FunctionName="BaseModel.Store.SP_WMATTURN_DEL" />
           <FunctionImportMapping FunctionImportName="SP_WMATTURN_UPD" FunctionName="BaseModel.Store.SP_WMATTURN_UPD" />
-          <FunctionImportMapping FunctionImportName="STORNO_WAYBILL" FunctionName="BaseModel.Store.STORNO_WAYBILL" />
           <EntitySetMapping Name="v_GetDocsTree">
             <EntityTypeMapping TypeName="BaseModel.v_GetDocsTree">
               <MappingFragment StoreEntitySet="v_GetDocsTree">
@@ -11038,6 +11040,15 @@ warning 6002: The table/view 'sp_base.dbo.v_GetDocsTree' does not have a primary
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="GetCounter" FunctionName="BaseModel.Store.GetCounter" />
+          <FunctionImportMapping FunctionImportName="ExecuteWayBill" FunctionName="BaseModel.Store.ExecuteWayBill">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.ExecuteWayBill_Result">
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="NewDocId" ColumnName="NewDocId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="StornoWayBill" FunctionName="BaseModel.Store.StornoWayBill" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -12,6 +12,7 @@ using SP_Saklad;
 using SP_Saklad.WBForm;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
+using SP_Saklad.Properties;
 
 namespace SP_Saklad.MainTabs
 {
@@ -507,38 +508,51 @@ namespace SP_Saklad.MainTabs
 
         private void ExecuteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            String NotFind = "Документ не знайдено.";
             var g_type = (int)DocsTreeList.FocusedNode.GetValue("GTYPE");
 
-            switch (g_type)
+            using (var db = new BaseEntities())
             {
-                case 1:
-                    var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
-                    if (dr == null)
-                    {
-                        return;
-                    }
-
-                    var wb = new BaseEntities().WaybillList.Find(dr.WbillId);
-                    if (wb != null)
-                    {
-                        if (wb.Checked == 1)
+                switch (g_type)
+                {
+                    case 1:
+                        var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
+                        if (dr == null)
                         {
-                            new BaseEntities().STORNO_WAYBILL(wb.WbillId);
+                            return;
+                        }
 
-                            /*if(MessageDlg(msg1,mtConfirmation,TMsgDlgButtons() << mbYes << mbNo ,0)==mrYes)
-                                ExecuteBtn->Click();*/
-                        }
-                        else 
+                        var wb = db.WaybillList.Find(dr.WbillId);
+                        if (wb != null)
                         {
-                            new BaseEntities().EXECUTE_WAYBILL(wb.WbillId, null);
+                            if (wb.Checked == 1)
+                            {
+                                var result = db.StornoWayBill (wb.WbillId).FirstOrDefault();
+                           
+                                if (result == 1)
+                                {
+                                    MessageBox.Show("Відміна проводки", Resources.not_storno_wb, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                            else
+                            {
+                                if (wb.WType == -1)
+                                {
+                                    //   if (!SkladData->CheckActiveSuppliers(WayBillListWBILLID->Value, DocPAnelTransaction)) return;
+                                }
+
+                                var result = db.ExecuteWayBill(wb.WbillId, null).FirstOrDefault();
+                                if (result != null && result.Checked == 0)
+                                {
+                                    MessageBox.Show("Проведення документа", Resources.not_execute_wb, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show(NotFind);
-                    }
-                    break;
+                        else
+                        {
+                            MessageBox.Show(Resources.not_find_wb);
+                        }
+                        break;
+                }
             }
 
             RefrechItemBtn.PerformClick();

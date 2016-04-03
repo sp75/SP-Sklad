@@ -510,19 +510,6 @@ namespace SP_Saklad.SpData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Split_Result>("[BaseEntities].[Split](@sep, @s)", sepParameter, sParameter);
         }
     
-        public virtual ObjectResult<Nullable<int>> EXECUTE_WAYBILL(Nullable<int> wBILLID, Nullable<int> nEW_WTYPE)
-        {
-            var wBILLIDParameter = wBILLID.HasValue ?
-                new ObjectParameter("WBILLID", wBILLID) :
-                new ObjectParameter("WBILLID", typeof(int));
-    
-            var nEW_WTYPEParameter = nEW_WTYPE.HasValue ?
-                new ObjectParameter("NEW_WTYPE", nEW_WTYPE) :
-                new ObjectParameter("NEW_WTYPE", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("EXECUTE_WAYBILL", wBILLIDParameter, nEW_WTYPEParameter);
-        }
-    
         public virtual ObjectResult<EXECUTESQL_EXAMPLER_Result> EXECUTESQL_EXAMPLER(Nullable<int> iN_MATID, Nullable<System.DateTime> oNDATE, string wH)
         {
             var iN_MATIDParameter = iN_MATID.HasValue ?
@@ -867,15 +854,6 @@ namespace SP_Saklad.SpData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_WMATTURN_UPD", wBILLIDParameter, tURNTYPEParameter);
         }
     
-        public virtual int STORNO_WAYBILL(Nullable<int> wBILLID)
-        {
-            var wBILLIDParameter = wBILLID.HasValue ?
-                new ObjectParameter("WBILLID", wBILLID) :
-                new ObjectParameter("WBILLID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STORNO_WAYBILL", wBILLIDParameter);
-        }
-    
         [EdmFunction("BaseEntities", "WBDGetOut")]
         public virtual IQueryable<WBDGetOut_Result> WBDGetOut(Nullable<int> wbill_id)
         {
@@ -975,6 +953,28 @@ namespace SP_Saklad.SpData
                 new ObjectParameter("name", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetCounter", nameParameter);
+        }
+    
+        public virtual ObjectResult<ExecuteWayBill_Result> ExecuteWayBill(Nullable<int> wBILLID, Nullable<int> nEW_WTYPE)
+        {
+            var wBILLIDParameter = wBILLID.HasValue ?
+                new ObjectParameter("WBILLID", wBILLID) :
+                new ObjectParameter("WBILLID", typeof(int));
+    
+            var nEW_WTYPEParameter = nEW_WTYPE.HasValue ?
+                new ObjectParameter("NEW_WTYPE", nEW_WTYPE) :
+                new ObjectParameter("NEW_WTYPE", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ExecuteWayBill_Result>("ExecuteWayBill", wBILLIDParameter, nEW_WTYPEParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> StornoWayBill(Nullable<int> wBILLID)
+        {
+            var wBILLIDParameter = wBILLID.HasValue ?
+                new ObjectParameter("WBILLID", wBILLID) :
+                new ObjectParameter("WBILLID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("StornoWayBill", wBILLIDParameter);
         }
     }
 }
