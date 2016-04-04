@@ -107,6 +107,11 @@ namespace SP_Saklad.WBForm
             wb.Notes = NotesEdit.Text;
             wb.UpdatedAt = DateTime.Now;
             wb.Checked = Convert.ToInt32(TurnDocCheckBox.Checked);
+            if (!CheckDate())
+            {
+                return;
+            }
+
             _db.SaveChanges();
             current_transaction.Commit();
 
@@ -119,6 +124,29 @@ namespace SP_Saklad.WBForm
             }
 
             Close();
+        }
+
+        private bool CheckDate()
+        {
+            var q = _db.WMATTURN.Where(w => w.WaybillDet.WbillId == _wbill_id).Select(s => new { s.ONDATE, s.WaybillDet.MATERIALS.NAME }).Distinct().FirstOrDefault();
+            /*  select first 1 distinct wmt.ondate, m.name
+   from WMATTURN wmt, waybilldet wbd , materials m
+   where wbd.wbillid=:WBILLID and m.matid = wbd.matid and wbd.posid=wmt.posid
+     and wmt.turntype = 2
+  order by wmt.ondate */
+
+            if (q != null && OnDateDBEdit.DateTime > q.ONDATE)
+            {
+                String msg = "Дата документа не може бути більшою за дату видаткової партії! \nПозиція: " + q.NAME + " \nДата: " + q.ONDATE + " \nЗмінити дату докомента на " + q.ONDATE + "?";
+                if (MessageBox.Show(msg, "Інформація", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                {
+                    wb.OnDate = q.ONDATE;
+                    return true;
+                }
+                else return false;
+            }
+
+            return true;
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -148,6 +176,7 @@ namespace SP_Saklad.WBForm
             if (df.ShowDialog() == DialogResult.OK)
             {
                 WaybillDetInGridControl.DataSource = _db.GetWaybillDetIn(_wbill_id); 
+              _db.update_rice
             }
         }
 
