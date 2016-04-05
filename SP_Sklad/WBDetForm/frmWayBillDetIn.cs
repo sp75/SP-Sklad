@@ -37,24 +37,24 @@ namespace SP_Sklad.WBDetForm
         {
             if (_wbd == null)
             {
-               _wbd= _db.WaybillDet.Add(new WaybillDet()
-                {
-                    WbillId = _wb.WbillId,
-                    MatId = (int)MatComboBox.EditValue,
-                    WId = (int)WHComboBox.EditValue,
-                    Amount = (decimal)AmountEdit.EditValue,
-                    Price = (decimal)PriceEdit.EditValue,
-                    Discount = 0,
-                    Nds = (decimal)NdsEdit.EditValue,
-                    CurrId = _wb.CurrId,
-                    OnDate = _wb.OnDate,
-                    Num = _wb.WaybillDet.Count() + 1,
-                    OnValue = _wb.OnValue,
-                    BasePrice = (decimal)BasePriceEdit.EditValue,
-                    PosKind = 0,
-                    PosParent = 0,
-                    DiscountKind = 0
-                });
+                _wbd = _db.WaybillDet.Add(new WaybillDet()
+                 {
+                     WbillId = _wb.WbillId,
+                     MatId = Convert.ToInt32(MatComboBox.EditValue),
+                     WId = Convert.ToInt32(WHComboBox.EditValue),
+                     Amount = Convert.ToDecimal(AmountEdit.EditValue),
+                     Price = Convert.ToDecimal(PriceEdit.EditValue),
+                     Discount = 0,
+                     Nds = Convert.ToDecimal(NdsEdit.EditValue),
+                     CurrId = _wb.CurrId,
+                     OnDate = _wb.OnDate,
+                     Num = _wb.WaybillDet.Count() + 1,
+                     OnValue = _wb.OnValue,
+                     BasePrice = Convert.ToDecimal(BasePriceEdit.EditValue),
+                     PosKind = 0,
+                     PosParent = 0,
+                     DiscountKind = 0
+                 });
             }
             else
             {
@@ -64,7 +64,6 @@ namespace SP_Sklad.WBDetForm
                 _wbd.Price = (decimal)PriceEdit.EditValue;
                 _wbd.Nds = (decimal)NdsEdit.EditValue;
                 _wbd.BasePrice = (decimal)BasePriceEdit.EditValue;
-              
             }
 
             if (_wb.WType == 16)

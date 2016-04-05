@@ -12,6 +12,7 @@ using SP_Sklad.SkladData;
 using SP_Sklad.WBDetForm;
 using System.Data.SqlClient;
 using System.Data.Linq;
+using EntityState = System.Data.Entity.EntityState;
 
 namespace SP_Sklad.WBForm
 {
@@ -31,7 +32,7 @@ namespace SP_Sklad.WBForm
             _wbill_id = wbill_id;
             _db = new BaseEntities();
       //      _db.Database.CommandTimeout = 1;
-            current_transaction = _db.Database.BeginTransaction(IsolationLevel.Snapshot);
+            current_transaction = _db.Database.BeginTransaction(IsolationLevel.RepeatableRead);
 
             WaybillDetInGridControl.DataSource = _db.GetWaybillDetIn(wbill_id);
         }
@@ -133,6 +134,7 @@ namespace SP_Sklad.WBForm
                 return;
             }
 
+            _db.Entry<WaybillList>(  wb).State  = EntityState.Modified;
             _db.SaveChanges();
             current_transaction.Commit();
 
