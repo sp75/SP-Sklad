@@ -460,6 +460,12 @@
     <Compile Include="WBForm\frmWayBillIn.Designer.cs">
       <DependentUpon>frmWayBillIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBForm\WayBillOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\WayBillOut.Designer.cs">
+      <DependentUpon>WayBillOut.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="mainForm.resx">
       <DependentUpon>mainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -482,6 +488,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWayBillIn.resx">
       <DependentUpon>frmWayBillIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\WayBillOut.resx">
+      <DependentUpon>WayBillOut.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

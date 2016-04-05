@@ -260,17 +260,17 @@ namespace SP_Sklad.MainTabs
                             {
                                 if (cur_wtype == 1 || cur_wtype == 16)
                                 {
-                                    try
-                                    {
+                            //        try
+                               //     {
                                         using (var wb_in = new frmWayBillIn(cur_wtype, wb.WbillId))
                                         {
                                             wb_in.ShowDialog();
                                         }
-                                    }
-                                    catch
-                                    {
-                                        MessageBox.Show(Resources.deadlock);
-                                    }
+                           //         }
+                            //        catch
+                           //         {
+                            //            MessageBox.Show(Resources.deadlock);
+                           //         }
                                 }
 
                             }

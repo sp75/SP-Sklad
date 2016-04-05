@@ -22,5 +22,41 @@ namespace SP_Sklad.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ch_view1 {
+            get {
+                return ((bool)(this["ch_view1"]));
+            }
+            set {
+                this["ch_view1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ch_view2 {
+            get {
+                return ((bool)(this["ch_view2"]));
+            }
+            set {
+                this["ch_view2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ch_view3 {
+            get {
+                return ((bool)(this["ch_view3"]));
+            }
+            set {
+                this["ch_view3"] = value;
+            }
+        }
     }
 }

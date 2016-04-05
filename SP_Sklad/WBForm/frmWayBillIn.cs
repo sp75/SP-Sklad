@@ -28,7 +28,7 @@ namespace SP_Sklad.WBForm
             _wtype = wtype;
             _wbill_id = wbill_id;
             _db = new BaseEntities();
-            _db.Database.CommandTimeout = 1;
+      //      _db.Database.CommandTimeout = 1;
             current_transaction = _db.Database.BeginTransaction(IsolationLevel.RepeatableRead);
 
             WaybillDetInGridControl.DataSource = _db.GetWaybillDetIn(wbill_id);
@@ -38,7 +38,7 @@ namespace SP_Sklad.WBForm
         {
             if (_wbill_id == null)
             {
-                wb = _db.WaybillList.Add(new WaybillList() { WType = _wtype, OnDate = DateTime.Now, Num = _db.GetCounter("wb_in").FirstOrDefault(), CurrId = 2 });
+                wb = _db.WaybillList.Add(new WaybillList() { WType = _wtype, OnDate = DateTime.Now, Num = _db.GetCounter("wb_in").FirstOrDefault(), CurrId = 2, OnValue = 1 });
                 try
                 {
                     _db.SaveChanges();

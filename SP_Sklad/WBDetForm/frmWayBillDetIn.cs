@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
+using SP_Sklad.Properties;
 using SP_Sklad.SkladData;
 
 namespace SP_Sklad.WBDetForm
@@ -35,7 +37,7 @@ namespace SP_Sklad.WBDetForm
         {
             if (_wbd == null)
             {
-                _db.WaybillDet.Add(new WaybillDet()
+               _wbd= _db.WaybillDet.Add(new WaybillDet()
                 {
                     WbillId = _wb.WbillId,
                     MatId = (int)MatComboBox.EditValue,
@@ -65,11 +67,22 @@ namespace SP_Sklad.WBDetForm
               
             }
 
+            if (_wb.WType == 16)
+            {
+                var q = _db.WMatTurn.Where(w => w.PosId == _wbd.PosId);
+                _db.WMatTurn.RemoveRange(q);
+                _db.WMatTurn.Add(new WMatTurn() { WId = _wbd.WId.Value, MatId = _wbd.MatId, OnDate = _wbd.OnDate.Value, TurnType = 3, Amount = _wbd.Amount });
+            }
+
+         //   if (Serials->State == dsInsert || Serials->State == dsEdit) Serials->Post();
+      //      if (WayBillDetAddProps->State == dsInsert || WayBillDetAddProps->State == dsEdit) WayBillDetAddProps->Post();
+
+
             _db.SaveChanges();
 
             if (_wb.WType == 1)
             {
-                //_db.upd;
+                _db.UpdWaybillDetPrice(_wb.WbillId);
             }
         }
 
@@ -79,7 +92,9 @@ namespace SP_Sklad.WBDetForm
             
             NdsEdit.EditValue =  row.Nds;
             WHComboBox.EditValue = row.Wid;
-            
+            labelControl24.Text = row.MeasuresName;
+            labelControl27.Text = row.MeasuresName;
+
             GetRemains();
             
             GetOk();
@@ -113,6 +128,8 @@ namespace SP_Sklad.WBDetForm
 
         private void PriceEdit_EditValueChanged(object sender, EventArgs e)
         {
+            BotBasePriceEdit.EditValue = PriceEdit.EditValue;
+
             if ( Convert.ToDecimal(NdsEdit.EditValue) > 0)
             {
                 var p = Convert.ToDecimal(PriceEdit.EditValue);
@@ -128,6 +145,11 @@ namespace SP_Sklad.WBDetForm
             bool recult = (MatComboBox.EditValue != null && WHComboBox.EditValue != null && BasePriceEdit.EditValue != null && PriceEdit.EditValue != null && AmountEdit.EditValue != null);
 
             OkButton.Enabled = recult;
+            BotAmountEdit.Text = AmountEdit.Text;
+            TotalSumEdit.EditValue = Convert.ToDecimal(AmountEdit.EditValue) * Convert.ToDecimal(PriceEdit.EditValue);
+            SummAllEdit.EditValue = Convert.ToDecimal(AmountEdit.EditValue) * Convert.ToDecimal(BasePriceEdit.EditValue);
+            TotalNdsEdit.EditValue = Convert.ToDecimal(SummAllEdit.EditValue) - Convert.ToDecimal(TotalSumEdit.EditValue); 
+
             return recult;
         }
 
@@ -143,6 +165,16 @@ namespace SP_Sklad.WBDetForm
 
         private void frmWayBillDetIn_Load(object sender, EventArgs e)
         {
+            panel3.Visible = barCheckItem1.Checked;
+            if (!barCheckItem1.Checked) Height -= panel3.Height;
+
+            panel4.Visible = barCheckItem2.Checked;
+            if (!barCheckItem2.Checked) Height -= panel4.Height;
+
+            panel5.Visible = barCheckItem3.Checked;
+            if (!barCheckItem3.Checked) Height -= panel5.Height;
+
+
             if (_wbd != null)
             {
                 MatComboBox.EditValue = _wbd.MatId;
@@ -152,8 +184,48 @@ namespace SP_Sklad.WBDetForm
                 NdsEdit.EditValue = _wbd.Nds;
                 BasePriceEdit.EditValue = _wbd.BasePrice;
             }
+            else
+            {
+                AmountEdit.EditValue = 1;
+                PriceEdit.EditValue = 0;
+            }
 
             GetOk();
+        }
+
+        private void barCheckItem1_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var item = e.Item as BarCheckItem;
+
+            bool ch = item.Checked;
+            int ItemIndex = Convert.ToInt32(e.Item.Tag);
+            if (ItemIndex == 0)
+            {
+                panel3.Visible = ch;
+                if (ch) Height += panel3.Height;
+                else Height -= panel3.Height;
+                Settings.Default.ch_view1 = ch;
+            }
+            if (ItemIndex == 1)
+            {
+                panel4.Visible = ch;
+                if (ch) Height += panel4.Height;
+                else Height -= panel4.Height;
+                Settings.Default.ch_view2 = ch;
+            }
+
+            if (ItemIndex == 2)
+            {
+                panel5.Visible = ch;
+                if (ch) Height += panel5.Height;
+                else Height -= panel5.Height;
+                Settings.Default.ch_view3 = ch;
+            }
+        }
+
+        private void frmWayBillDetIn_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Settings.Default.Save();
         }
     }
 }
