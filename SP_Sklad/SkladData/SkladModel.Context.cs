@@ -971,5 +971,19 @@ namespace SP_Sklad.SkladData
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdWaybillDetPrice", wbill_idParameter);
         }
+    
+        [EdmFunction("BaseEntities", "SP_GET_ACTIVES")]
+        public virtual IQueryable<SP_GET_ACTIVES_Result> SP_GET_ACTIVES(Nullable<System.DateTime> fROMDATE, Nullable<System.DateTime> tODATE)
+        {
+            var fROMDATEParameter = fROMDATE.HasValue ?
+                new ObjectParameter("FROMDATE", fROMDATE) :
+                new ObjectParameter("FROMDATE", typeof(System.DateTime));
+    
+            var tODATEParameter = tODATE.HasValue ?
+                new ObjectParameter("TODATE", tODATE) :
+                new ObjectParameter("TODATE", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SP_GET_ACTIVES_Result>("[BaseEntities].[SP_GET_ACTIVES](@FROMDATE, @TODATE)", fROMDATEParameter, tODATEParameter);
+        }
     }
 }

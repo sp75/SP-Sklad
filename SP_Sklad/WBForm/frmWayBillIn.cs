@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SP_Sklad.SkladData;
 using SP_Sklad.WBDetForm;
+using System.Data.SqlClient;
+using System.Data.Linq;
 
 namespace SP_Sklad.WBForm
 {
@@ -29,7 +31,7 @@ namespace SP_Sklad.WBForm
             _wbill_id = wbill_id;
             _db = new BaseEntities();
       //      _db.Database.CommandTimeout = 1;
-            current_transaction = _db.Database.BeginTransaction(IsolationLevel.RepeatableRead);
+            current_transaction = _db.Database.BeginTransaction(IsolationLevel.Snapshot);
 
             WaybillDetInGridControl.DataSource = _db.GetWaybillDetIn(wbill_id);
         }
@@ -38,7 +40,7 @@ namespace SP_Sklad.WBForm
         {
             if (_wbill_id == null)
             {
-                wb = _db.WaybillList.Add(new WaybillList() { WType = _wtype, OnDate = DateTime.Now, Num = _db.GetCounter("wb_in").FirstOrDefault(), CurrId = 2, OnValue = 1 });
+                wb = _db.WaybillList.Add(new WaybillList() { WType = _wtype, OnDate = DBHelper.ServerDateTime(), Num = _db.GetCounter("wb_in").FirstOrDefault(), CurrId = 2, OnValue = 1 });
                 try
                 {
                     _db.SaveChanges();
@@ -51,7 +53,26 @@ namespace SP_Sklad.WBForm
             }
             else
             {
-                wb = _db.WaybillList.Find(_wbill_id);
+             //   wb = _db.WaybillList.Find(_wbill_id);
+                try
+                {
+                    wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK) where WbillId = {0}", _wbill_id).FirstOrDefault();
+                }
+                catch (SqlException exception)
+                {
+                    if (!exception.Errors.Cast<SqlError>().Any(error =>
+                        (error.Number == DeadlockErrorNumber) ||
+                        (error.Number == LockingErrorNumber) ||
+                        (error.Number == UpdateConflictErrorNumber)))
+                    {
+                        Close();
+                    }
+                    else 
+                    {
+                        Close();
+                    }
+                }
+               
             }
 
             if (wb != null)
@@ -176,7 +197,6 @@ namespace SP_Sklad.WBForm
             if (df.ShowDialog() == DialogResult.OK)
             {
                 WaybillDetInGridControl.DataSource = _db.GetWaybillDetIn(_wbill_id); 
-          //    _db.update_rice
             }
         }
 
@@ -206,5 +226,51 @@ namespace SP_Sklad.WBForm
                 WaybillDetInGridControl.DataSource = _db.GetWaybillDetIn(_wbill_id);
             }
         }
+
+        private const int DefaultRetryCount = 6;
+
+        private const int DeadlockErrorNumber = 1205;
+        private const int LockingErrorNumber = 1222;
+        private const int UpdateConflictErrorNumber = 3960;
+
+    /*    private void RetryOnDeadlock(
+            Action<DataContext> action,
+            int retryCount = DefaultRetryCount)
+        {
+            if (action == null)
+                throw new ArgumentNullException("action");
+
+            var attemptNumber = 1;
+            while (true)
+            {
+                var dataContext = CreateDataContext();
+                try
+                {
+                    action(dataContext);
+                    break;
+                }
+                catch (SqlException exception)
+                {
+                    if (!exception.Errors.Cast<SqlError>().Any(error =>
+                        (error.Number == DeadlockErrorNumber) ||
+                        (error.Number == LockingErrorNumber) ||
+                        (error.Number == UpdateConflictErrorNumber)))
+                    {
+                        throw;
+                    }
+                    else if (attemptNumber == retryCount + 1)
+                    {
+                        throw;
+                    }
+                }
+                finally
+                {
+                    dataContext.Dispose();
+                }
+
+                attemptNumber++;
+            }
+        }*/
+
     }
 }

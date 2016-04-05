@@ -13,5 +13,10 @@ namespace SP_Sklad.SkladData
             return new BaseEntities().WAREHOUSE.Where(w => w.DELETED == 0).ToList();
         }
 
+        public static DateTime ServerDateTime()
+        {
+            return  new BaseEntities().Database.SqlQuery<DateTime>("SELECT getdate()").FirstOrDefault();
+        }
+
     }
 }
