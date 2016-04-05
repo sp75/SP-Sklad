@@ -6,7 +6,6 @@
     <edmx:Diagrams>
       <Diagram DiagramId="5e7c272d2512446f8ce1b9cffb9ff8cd" Name="Diagram1" ZoomLevel="72">
         <EntityTypeShape EntityType="BaseModel.ACCOUNTTYPE" Width="1.5" PointX="0.75" PointY="50.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.ACTIVES" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.BANKS" Width="1.5" PointX="0.75" PointY="53.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.BANKSPERSONS" Width="1.5" PointX="3" PointY="70.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.BLOBS" Width="1.5" PointX="9.75" PointY="8.5" IsExpanded="true" />
@@ -83,7 +82,6 @@
         <EntityTypeShape EntityType="BaseModel.WAYBILLMAKE" Width="1.5" PointX="16.25" PointY="47" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.WAYBILLMOVE" Width="1.5" PointX="19.25" PointY="42.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.WAYBILLSVC" Width="1.5" PointX="19.25" PointY="46.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.WMATTURN" Width="1.5" PointX="19.25" PointY="35.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.KAGENT_LIST" Width="1.5" PointX="13.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.USER_TREE_ACCESS" Width="1.5" PointX="13.75" PointY="11.5" IsExpanded="true" />
         <AssociationConnector Association="BaseModel.FK_AGENTACC_FK_AGENTA_ACCOUNTT" ManuallyRouted="false" />
@@ -159,7 +157,6 @@
         <AssociationConnector Association="BaseModel.FK__MATERIALS__WID__65370702" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK__MATREMAIN__MATID__04AFB25B" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" ManuallyRouted="false" />
-        <AssociationConnector Association="BaseModel.FK__WMATTURN__MATID__3AD6B8E2" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_MATERIAL_REFERENCE_MEASURES" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_MATRECIPE_1" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_MP_MATID" ManuallyRouted="false" />
@@ -186,7 +183,6 @@
         <AssociationConnector Association="BaseModel.FK_TECHPROCDET_TECHPROCESS" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_USERTREE_FK_USERTR_USERTREE" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK__VIEWLNG__ID__2022C2A6" ManuallyRouted="false" />
-        <AssociationConnector Association="BaseModel.FK__WMATTURN__WID__3BCADD1B" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLM_FK_WBM_DE_WAREHOUS" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLM_FK_WBM_SO_WAREHOUS" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLMAKE_WAREHOUSE" ManuallyRouted="false" />
@@ -223,10 +219,14 @@
         <AssociationConnector Association="BaseModel.FK_WBD_WBILLID" />
         <AssociationConnector Association="BaseModel.FK_WBDAP_POSID" />
         <AssociationConnector Association="BaseModel.FK_WBDTAXES_POSID" />
-        <AssociationConnector Association="BaseModel.FK_WMT_POSID" />
-        <AssociationConnector Association="BaseModel.FK_WMT_SRCID" />
         <AssociationConnector Association="BaseModel.EXTREL" />
         <AssociationConnector Association="BaseModel.POSREL" />
+        <EntityTypeShape EntityType="BaseModel.Actives" Width="1.5" PointX="10.80921667200011" PointY="4.88526056934393" />
+        <EntityTypeShape EntityType="BaseModel.WMatTurn" Width="1.5" PointX="2.2089209529612774" PointY="7.7624033874657021" />
+        <AssociationConnector Association="BaseModel.FK__WMATTURN__MATID__3AD6B8E2" />
+        <AssociationConnector Association="BaseModel.FK__WMATTURN__WID__3BCADD1B" />
+        <AssociationConnector Association="BaseModel.FK_WMT_POSID" />
+        <AssociationConnector Association="BaseModel.FK_WMT_SRCID" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="9.3737582309980674" PointY="19.3610017687832" />

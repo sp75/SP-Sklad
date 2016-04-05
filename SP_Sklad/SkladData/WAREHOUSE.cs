@@ -20,12 +20,12 @@ namespace SP_Sklad.SkladData
             this.MATERIALS1 = new HashSet<MATERIALS>();
             this.MATERIALS2 = new HashSet<MATERIALS>();
             this.POSREMAINS = new HashSet<POSREMAINS>();
-            this.WMATTURN = new HashSet<WMATTURN>();
             this.WAYBILLMOVE = new HashSet<WAYBILLMOVE>();
             this.WAYBILLMOVE1 = new HashSet<WAYBILLMOVE>();
             this.WAYBILLMAKE = new HashSet<WAYBILLMAKE>();
             this.USERACCESSWH = new HashSet<USERACCESSWH>();
             this.WaybillDet = new HashSet<WaybillDet>();
+            this.WMatTurn = new HashSet<WMatTurn>();
         }
     
         public int WID { get; set; }
@@ -39,11 +39,11 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<MATERIALS> MATERIALS1 { get; set; }
         public virtual ICollection<MATERIALS> MATERIALS2 { get; set; }
         public virtual ICollection<POSREMAINS> POSREMAINS { get; set; }
-        public virtual ICollection<WMATTURN> WMATTURN { get; set; }
         public virtual ICollection<WAYBILLMOVE> WAYBILLMOVE { get; set; }
         public virtual ICollection<WAYBILLMOVE> WAYBILLMOVE1 { get; set; }
         public virtual ICollection<WAYBILLMAKE> WAYBILLMAKE { get; set; }
         public virtual ICollection<USERACCESSWH> USERACCESSWH { get; set; }
         public virtual ICollection<WaybillDet> WaybillDet { get; set; }
+        public virtual ICollection<WMatTurn> WMatTurn { get; set; }
     }
 }

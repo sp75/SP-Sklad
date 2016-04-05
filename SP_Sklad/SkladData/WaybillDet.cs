@@ -23,12 +23,12 @@ namespace SP_Sklad.SkladData
             this.RETURNREL3 = new HashSet<RETURNREL>();
             this.SERIALS = new HashSet<SERIALS>();
             this.WAYBILLDETTAXES = new HashSet<WAYBILLDETTAXES>();
-            this.WMATTURN = new HashSet<WMATTURN>();
-            this.WMATTURN1 = new HashSet<WMATTURN>();
             this.WaybillDet1 = new HashSet<WaybillDet>();
             this.WaybillDet2 = new HashSet<WaybillDet>();
             this.WaybillDet11 = new HashSet<WaybillDet>();
             this.WaybillDet3 = new HashSet<WaybillDet>();
+            this.WMatTurn = new HashSet<WMatTurn>();
+            this.WMatTurn1 = new HashSet<WMatTurn>();
         }
     
         public int PosId { get; set; }
@@ -67,11 +67,11 @@ namespace SP_Sklad.SkladData
         public virtual WaybillList WaybillList { get; set; }
         public virtual WAYBILLDETADDPROPS WAYBILLDETADDPROPS { get; set; }
         public virtual ICollection<WAYBILLDETTAXES> WAYBILLDETTAXES { get; set; }
-        public virtual ICollection<WMATTURN> WMATTURN { get; set; }
-        public virtual ICollection<WMATTURN> WMATTURN1 { get; set; }
         public virtual ICollection<WaybillDet> WaybillDet1 { get; set; }
         public virtual ICollection<WaybillDet> WaybillDet2 { get; set; }
         public virtual ICollection<WaybillDet> WaybillDet11 { get; set; }
         public virtual ICollection<WaybillDet> WaybillDet3 { get; set; }
+        public virtual ICollection<WMatTurn> WMatTurn { get; set; }
+        public virtual ICollection<WMatTurn> WMatTurn1 { get; set; }
     }
 }

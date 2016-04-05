@@ -29,7 +29,6 @@ namespace SP_Sklad.SkladData
         }
     
         public DbSet<ACCOUNTTYPE> ACCOUNTTYPE { get; set; }
-        public DbSet<ACTIVES> ACTIVES { get; set; }
         public DbSet<BANKS> BANKS { get; set; }
         public DbSet<BANKSPERSONS> BANKSPERSONS { get; set; }
         public DbSet<BLOBS> BLOBS { get; set; }
@@ -106,7 +105,6 @@ namespace SP_Sklad.SkladData
         public DbSet<WAYBILLMAKE> WAYBILLMAKE { get; set; }
         public DbSet<WAYBILLMOVE> WAYBILLMOVE { get; set; }
         public DbSet<WAYBILLSVC> WAYBILLSVC { get; set; }
-        public DbSet<WMATTURN> WMATTURN { get; set; }
         public DbSet<KAGENT_LIST> KAGENT_LIST { get; set; }
         public DbSet<USER_TREE_ACCESS> USER_TREE_ACCESS { get; set; }
         public DbSet<v_GetDocsTree> v_GetDocsTree { get; set; }
@@ -115,6 +113,8 @@ namespace SP_Sklad.SkladData
         public DbSet<WaybillList> WaybillList { get; set; }
         public DbSet<WaybillDet> WaybillDet { get; set; }
         public DbSet<MaterialsList> MaterialsList { get; set; }
+        public DbSet<Actives> Actives { get; set; }
+        public DbSet<WMatTurn> WMatTurn { get; set; }
     
         [EdmFunction("BaseEntities", "GetMatGroupTree")]
         public virtual IQueryable<GetMatGroupTree_Result> GetMatGroupTree(Nullable<int> root_cat_id)
@@ -170,20 +170,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("IN_CHECKED", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SP_CONTRACTS_LIST_Result>("[BaseEntities].[SP_CONTRACTS_LIST](@IN_DOCTYPE, @IN_FROMDATE, @IN_TODATE, @IN_KAID, @IN_CHECKED)", iN_DOCTYPEParameter, iN_FROMDATEParameter, iN_TODATEParameter, iN_KAIDParameter, iN_CHECKEDParameter);
-        }
-    
-        [EdmFunction("BaseEntities", "SP_GET_ACTIVES")]
-        public virtual IQueryable<SP_GET_ACTIVES_Result> SP_GET_ACTIVES(Nullable<System.DateTime> fROMDATE, Nullable<System.DateTime> tODATE)
-        {
-            var fROMDATEParameter = fROMDATE.HasValue ?
-                new ObjectParameter("FROMDATE", fROMDATE) :
-                new ObjectParameter("FROMDATE", typeof(System.DateTime));
-    
-            var tODATEParameter = tODATE.HasValue ?
-                new ObjectParameter("TODATE", tODATE) :
-                new ObjectParameter("TODATE", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SP_GET_ACTIVES_Result>("[BaseEntities].[SP_GET_ACTIVES](@FROMDATE, @TODATE)", fROMDATEParameter, tODATEParameter);
         }
     
         [EdmFunction("BaseEntities", "SP_GET_AVG_PRICE")]
@@ -975,6 +961,15 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("WBILLID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("StornoWayBill", wBILLIDParameter);
+        }
+    
+        public virtual int UpdWaybillDetPrice(Nullable<int> wbill_id)
+        {
+            var wbill_idParameter = wbill_id.HasValue ?
+                new ObjectParameter("wbill_id", wbill_id) :
+                new ObjectParameter("wbill_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdWaybillDetPrice", wbill_idParameter);
         }
     }
 }

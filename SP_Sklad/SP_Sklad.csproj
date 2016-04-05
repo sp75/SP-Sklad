@@ -82,7 +82,7 @@
     <Compile Include="SkladData\ACCOUNTTYPE.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\ACTIVES.cs">
+    <Compile Include="SkladData\Actives.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\BANKS.cs">
@@ -319,9 +319,6 @@
     <Compile Include="SkladData\SP_CONTRACTS_LIST_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\SP_GET_ACTIVES_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SkladData\SP_GET_AVG_PRICE_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -448,7 +445,7 @@
     <Compile Include="SkladData\WBDGetOut_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\WMATTURN.cs">
+    <Compile Include="SkladData\WMatTurn.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="WBDetForm\frmWayBillDetIn.cs">

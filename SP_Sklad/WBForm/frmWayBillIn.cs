@@ -128,19 +128,19 @@ namespace SP_Sklad.WBForm
 
         private bool CheckDate()
         {
-            var q = _db.WMATTURN.Where(w => w.WaybillDet.WbillId == _wbill_id).Select(s => new { s.ONDATE, s.WaybillDet.MATERIALS.NAME }).Distinct().FirstOrDefault();
+            var q = _db.WMatTurn.Where(w => w.WaybillDet.WbillId == _wbill_id).Select(s => new { s.OnDate, s.WaybillDet.MATERIALS.NAME }).Distinct().FirstOrDefault();
             /*  select first 1 distinct wmt.ondate, m.name
    from WMATTURN wmt, waybilldet wbd , materials m
    where wbd.wbillid=:WBILLID and m.matid = wbd.matid and wbd.posid=wmt.posid
      and wmt.turntype = 2
   order by wmt.ondate */
 
-            if (q != null && OnDateDBEdit.DateTime > q.ONDATE)
+            if (q != null && OnDateDBEdit.DateTime > q.OnDate)
             {
-                String msg = "Дата документа не може бути більшою за дату видаткової партії! \nПозиція: " + q.NAME + " \nДата: " + q.ONDATE + " \nЗмінити дату докомента на " + q.ONDATE + "?";
+                String msg = "Дата документа не може бути більшою за дату видаткової партії! \nПозиція: " + q.NAME + " \nДата: " + q.OnDate + " \nЗмінити дату докомента на " + q.OnDate + "?";
                 if (MessageBox.Show(msg, "Інформація", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                 {
-                    wb.OnDate = q.ONDATE;
+                    wb.OnDate = q.OnDate;
                     return true;
                 }
                 else return false;

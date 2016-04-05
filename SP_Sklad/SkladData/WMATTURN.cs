@@ -12,16 +12,16 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class WMATTURN
+    public partial class WMatTurn
     {
-        public int ID { get; set; }
-        public int POSID { get; set; }
-        public int WID { get; set; }
-        public int MATID { get; set; }
-        public System.DateTime ONDATE { get; set; }
-        public int TURNTYPE { get; set; }
-        public decimal AMOUNT { get; set; }
-        public Nullable<int> SOURCEID { get; set; }
+        public int Id { get; set; }
+        public int PosId { get; set; }
+        public int WId { get; set; }
+        public int MatId { get; set; }
+        public System.DateTime OnDate { get; set; }
+        public int TurnType { get; set; }
+        public decimal Amount { get; set; }
+        public Nullable<int> SourceId { get; set; }
     
         public virtual MATERIALS MATERIALS { get; set; }
         public virtual WAREHOUSE WAREHOUSE { get; set; }

@@ -66,6 +66,11 @@ namespace SP_Sklad.WBDetForm
             }
 
             _db.SaveChanges();
+
+            if (_wb.WType == 1)
+            {
+                //_db.upd;
+            }
         }
 
         private void MatComboBox_Properties_EditValueChanged(object sender, EventArgs e)

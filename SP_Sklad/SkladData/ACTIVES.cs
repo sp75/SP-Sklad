@@ -12,13 +12,14 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class ACTIVES
+    public partial class Actives
     {
-        public byte[] ONDATE { get; set; }
-        public decimal WHSUMM { get; set; }
-        public decimal DEBTORS { get; set; }
-        public decimal CREDITORS { get; set; }
-        public decimal CASH { get; set; }
-        public decimal CASHLESS { get; set; }
+        public int Id { get; set; }
+        public byte[] OnDate { get; set; }
+        public decimal WhSumm { get; set; }
+        public decimal Debitors { get; set; }
+        public decimal Creditors { get; set; }
+        public decimal Cash { get; set; }
+        public decimal CashLess { get; set; }
     }
 }
