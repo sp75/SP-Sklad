@@ -229,8 +229,8 @@
         <AssociationConnector Association="BaseModel.FK_WMT_SRCID" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" >
-        <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="9.3737582309980674" PointY="19.3610017687832" />
         <EntityTypeShape EntityType="BaseModel.MaterialsList" Width="1.5" PointX="8.3328528592050315" PointY="13.042403614633905" />
+        <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="6.0946835177460139" PointY="6.6090350628872567" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

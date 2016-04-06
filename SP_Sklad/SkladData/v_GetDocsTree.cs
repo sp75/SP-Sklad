@@ -14,23 +14,23 @@ namespace SP_Sklad.SkladData
     
     public partial class v_GetDocsTree
     {
-        public int ID { get; set; }
-        public Nullable<int> FUNID { get; set; }
-        public int PID { get; set; }
-        public int NUM { get; set; }
-        public Nullable<int> IMAGEINDEX { get; set; }
-        public int ISGROUP { get; set; }
-        public Nullable<int> SHOWINTREE { get; set; }
-        public Nullable<int> GTYPE { get; set; }
-        public Nullable<int> DISABLEDINDEX { get; set; }
-        public int SHOWEXPANDED { get; set; }
-        public string NAME { get; set; }
-        public Nullable<int> CANVIEW { get; set; }
-        public Nullable<int> CANINSERT { get; set; }
-        public Nullable<int> CANMODIFY { get; set; }
-        public Nullable<int> CANDELETE { get; set; }
-        public Nullable<int> CANPOST { get; set; }
-        public Nullable<int> USERID { get; set; }
-        public Nullable<int> WTYPE { get; set; }
+        public int Id { get; set; }
+        public Nullable<int> FunId { get; set; }
+        public int Pid { get; set; }
+        public int Num { get; set; }
+        public Nullable<int> ImageIndex { get; set; }
+        public int IsGroup { get; set; }
+        public Nullable<int> ShowInTree { get; set; }
+        public Nullable<int> GType { get; set; }
+        public Nullable<int> DisabledIndex { get; set; }
+        public int ShowExpanded { get; set; }
+        public string Name { get; set; }
+        public Nullable<int> CanView { get; set; }
+        public Nullable<int> CanInsert { get; set; }
+        public Nullable<int> CanModify { get; set; }
+        public Nullable<int> CanDelete { get; set; }
+        public Nullable<int> CanPost { get; set; }
+        public Nullable<int> UserId { get; set; }
+        public Nullable<int> WType { get; set; }
     }
 }

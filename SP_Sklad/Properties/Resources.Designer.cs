@@ -130,6 +130,15 @@ namespace SP_Sklad.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ви дійсно бажаєте відалити цей документ ?.
+        /// </summary>
+        internal static string delete_wb {
+            get {
+                return ResourceManager.GetString("delete_wb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Для редагування документа потрібно скасувати проводку. Ви упевнені що прагнете цього?.
         /// </summary>
         internal static string edit_info {

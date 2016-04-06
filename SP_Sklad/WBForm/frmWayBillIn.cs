@@ -34,27 +34,27 @@ namespace SP_Sklad.WBForm
       //      _db.Database.CommandTimeout = 1;
             current_transaction = _db.Database.BeginTransaction(IsolationLevel.RepeatableRead);
 
-            WaybillDetInGridControl.DataSource = _db.GetWaybillDetIn(wbill_id);
+            RefreshDet();
         }
 
         private void frmWayBillIn_Load(object sender, EventArgs e)
         {
             if (_wbill_id == null)
             {
-                wb = _db.WaybillList.Add(new WaybillList() { WType = _wtype, OnDate = DBHelper.ServerDateTime(), Num = _db.GetCounter("wb_in").FirstOrDefault(), CurrId = 2, OnValue = 1 });
-                try
+                wb = _db.WaybillList.Add(new WaybillList()
                 {
-                    _db.SaveChanges();
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
+                    WType = _wtype,
+                    OnDate = DBHelper.ServerDateTime(),
+                    Num = _db.GetCounter("wb_in").FirstOrDefault(),
+                    CurrId = 2,
+                    OnValue = 1
+                });
 
+                _db.SaveChanges();
             }
             else
             {
-             //   wb = _db.WaybillList.Find(_wbill_id);
+                //wb = _db.WaybillList.Find(_wbill_id);
                 try
                 {
                     wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK) where WbillId = {0}", _wbill_id).FirstOrDefault();
@@ -68,12 +68,12 @@ namespace SP_Sklad.WBForm
                     {
                         Close();
                     }
-                    else 
+                    else
                     {
                         Close();
                     }
                 }
-               
+
             }
 
             if (wb != null)
@@ -111,9 +111,7 @@ namespace SP_Sklad.WBForm
             checkEdit2.Visible = (_wtype == 16);
             dateEdit2.Visible = (_wtype == 16);
 
-         /*   WhTemp->Edit();
-            WhTempWID->Value = SkladData->Warehouse->Lookup("DEF", 1, "WID");
-
+         /*  
             OnDateDBEdit->Enabled = (SkladData->CurentUserENABLEEDITDATE->Value == 1);
             NowDateBtn->Enabled = OnDateDBEdit->Enabled;*/
         }
@@ -134,7 +132,7 @@ namespace SP_Sklad.WBForm
                 return;
             }
 
-            _db.Entry<WaybillList>(  wb).State  = EntityState.Modified;
+            _db.Entry<WaybillList>(wb).State = EntityState.Modified;
             _db.SaveChanges();
             current_transaction.Commit();
 
@@ -190,7 +188,7 @@ namespace SP_Sklad.WBForm
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            OnDateDBEdit.DateTime = DateTime.Now;
+            OnDateDBEdit.DateTime = DBHelper.ServerDateTime();
         }
 
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -198,7 +196,7 @@ namespace SP_Sklad.WBForm
             var df = new frmWayBillDetIn(_db, null,  wb);
             if (df.ShowDialog() == DialogResult.OK)
             {
-                WaybillDetInGridControl.DataSource = _db.GetWaybillDetIn(_wbill_id); 
+                RefreshDet();
             }
         }
 
@@ -211,7 +209,7 @@ namespace SP_Sklad.WBForm
                 var df = new frmWayBillDetIn(_db, dr.PosId, wb);
                 if (df.ShowDialog() == DialogResult.OK)
                 {
-                    WaybillDetInGridControl.DataSource = _db.GetWaybillDetIn(_wbill_id);
+                    RefreshDet();
                 }
             }
         }
@@ -225,8 +223,26 @@ namespace SP_Sklad.WBForm
                 _db.WaybillDet.Remove(_db.WaybillDet.Find(dr.PosId));
                 _db.SaveChanges();
 
-                WaybillDetInGridControl.DataSource = _db.GetWaybillDetIn(_wbill_id);
+                RefreshDet();
             }
+        }
+
+        private void RefreshDet()
+        {
+            WaybillDetInGridControl.DataSource = _db.GetWaybillDetIn(_wbill_id);
+            GetOk();
+        }
+
+        bool GetOk()
+        {
+            bool recult = (NUMDBTextEdit.EditValue != null  && KagentComboBox.EditValue != null && OnDateDBEdit.EditValue != null && WaybillDetInGridView.DataRowCount > 0);
+            barSubItem1.Enabled = KagentComboBox.EditValue != null;
+
+            OkButton.Enabled = recult;
+            EditMaterialBtn.Enabled = WaybillDetInGridView.DataRowCount > 0;
+            DelMaterialBtn.Enabled = WaybillDetInGridView.DataRowCount > 0;
+
+            return recult;
         }
 
         private const int DefaultRetryCount = 6;
@@ -235,44 +251,33 @@ namespace SP_Sklad.WBForm
         private const int LockingErrorNumber = 1222;
         private const int UpdateConflictErrorNumber = 3960;
 
-    /*    private void RetryOnDeadlock(
-            Action<DataContext> action,
-            int retryCount = DefaultRetryCount)
+        private void NUMDBTextEdit_EditValueChanged(object sender, EventArgs e)
         {
-            if (action == null)
-                throw new ArgumentNullException("action");
+            GetOk();
+        }
 
-            var attemptNumber = 1;
-            while (true)
+        private void WHComboBox_EditValueChanged(object sender, EventArgs e)
+        {
+            if (WaybillDetInGridView.DataRowCount > 0 && WHComboBox.Focused)
             {
-                var dataContext = CreateDataContext();
-                try
+                if (MessageBox.Show("Оприходувати весь товар на склад <" + WHComboBox.Text + ">?", "Інформація", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                 {
-                    action(dataContext);
-                    break;
-                }
-                catch (SqlException exception)
-                {
-                    if (!exception.Errors.Cast<SqlError>().Any(error =>
-                        (error.Number == DeadlockErrorNumber) ||
-                        (error.Number == LockingErrorNumber) ||
-                        (error.Number == UpdateConflictErrorNumber)))
+                    foreach (var item in _db.WaybillDet.Where(w => w.WbillId == _wbill_id))
                     {
-                        throw;
-                    }
-                    else if (attemptNumber == retryCount + 1)
-                    {
-                        throw;
-                    }
-                }
-                finally
-                {
-                    dataContext.Dispose();
-                }
+                        item.WId = Convert.ToInt32(WHComboBox.EditValue);
 
-                attemptNumber++;
+                        foreach (var turn in _db.WMatTurn.Where(w => w.SourceId == item.PosId))
+                        {
+                            turn.WId = Convert.ToInt32(WHComboBox.EditValue);
+                        }
+                    }
+                    _db.SaveChanges();
+                    RefreshDet();
+                }
             }
-        }*/
+        }
+
+
 
     }
 }

@@ -107,7 +107,6 @@ namespace SP_Sklad.SkladData
         public DbSet<WAYBILLSVC> WAYBILLSVC { get; set; }
         public DbSet<KAGENT_LIST> KAGENT_LIST { get; set; }
         public DbSet<USER_TREE_ACCESS> USER_TREE_ACCESS { get; set; }
-        public DbSet<v_GetDocsTree> v_GetDocsTree { get; set; }
         public DbSet<USERACCESS> USERACCESS { get; set; }
         public DbSet<USERACCESSWH> USERACCESSWH { get; set; }
         public DbSet<WaybillList> WaybillList { get; set; }
@@ -115,6 +114,7 @@ namespace SP_Sklad.SkladData
         public DbSet<MaterialsList> MaterialsList { get; set; }
         public DbSet<Actives> Actives { get; set; }
         public DbSet<WMatTurn> WMatTurn { get; set; }
+        public DbSet<v_GetDocsTree> v_GetDocsTree { get; set; }
     
         [EdmFunction("BaseEntities", "GetMatGroupTree")]
         public virtual IQueryable<GetMatGroupTree_Result> GetMatGroupTree(Nullable<int> root_cat_id)
@@ -288,16 +288,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("ADOCID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SP_GET_RELDOCIDS_Result>("[BaseEntities].[SP_GET_RELDOCIDS](@ADOCID)", aDOCIDParameter);
-        }
-    
-        [EdmFunction("BaseEntities", "SP_GET_RELDOCLIST")]
-        public virtual IQueryable<SP_GET_RELDOCLIST_Result> SP_GET_RELDOCLIST(Nullable<int> aDOCID)
-        {
-            var aDOCIDParameter = aDOCID.HasValue ?
-                new ObjectParameter("ADOCID", aDOCID) :
-                new ObjectParameter("ADOCID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SP_GET_RELDOCLIST_Result>("[BaseEntities].[SP_GET_RELDOCLIST](@ADOCID)", aDOCIDParameter);
         }
     
         [EdmFunction("BaseEntities", "SP_MATCHANGE_GET_WP")]
@@ -984,6 +974,16 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("TODATE", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SP_GET_ACTIVES_Result>("[BaseEntities].[SP_GET_ACTIVES](@FROMDATE, @TODATE)", fROMDATEParameter, tODATEParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetRelDocList")]
+        public virtual IQueryable<GetRelDocList_Result> GetRelDocList(Nullable<int> doc_id)
+        {
+            var doc_idParameter = doc_id.HasValue ?
+                new ObjectParameter("doc_id", doc_id) :
+                new ObjectParameter("doc_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetRelDocList_Result>("[BaseEntities].[GetRelDocList](@doc_id)", doc_idParameter);
         }
     }
 }

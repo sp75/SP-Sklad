@@ -13,6 +13,8 @@ using SP_Sklad.WBForm;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using SP_Sklad.Properties;
+using System.Data.SqlClient;
+using DevExpress.XtraGrid;
 
 namespace SP_Sklad.MainTabs
 {
@@ -22,6 +24,7 @@ namespace SP_Sklad.MainTabs
         int cur_wtype = 0;
         int show_null_balance = 1;
         BaseEntities _db { get; set; }
+        v_GetDocsTree focused_tree_node { get; set; }
 
         public DocsUserControl()
         {
@@ -46,13 +49,17 @@ namespace SP_Sklad.MainTabs
             wbStartDate.EditValue = DateTime.Now.AddDays(-30);
             wbEndDate.EditValue = DateTime.Now;
 
-            DocsTreeList.DataSource = _db.v_GetDocsTree.Where(w => w.USERID == null || w.USERID == USER_ID).OrderBy(o => o.NUM).ToList();
+            DocsTreeList.DataSource = _db.v_GetDocsTree.Where(w => w.UserId == null || w.UserId == USER_ID).OrderBy(o => o.Num).ToList();
             DocsTreeList.ExpandAll();
         }
 
-        void GetWBlist(int wtyp)
+        void GetWayBillList(int wtyp)
         {
-            var ff = DocsTreeList.FocusedNode;
+            DeleteItemBtn.Enabled = false;
+            ExecuteItemBtn.Enabled = false;
+            EditItemBtn.Enabled = false;
+            CopyItemBtn.Enabled = false;
+            PrintItemBtn.Enabled = false;
 
             if (wbSatusList.EditValue == null || wbKagentList.EditValue == null || DocsTreeList.FocusedNode==null)
             {
@@ -61,23 +68,41 @@ namespace SP_Sklad.MainTabs
 
             var satrt_date = wbStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : wbStartDate.DateTime;
             var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
-            var bookmark = WbGridView.FocusedRowHandle;
+         
+            var dr = WbGridView.GetRow(WbGridView.FocusedRowHandle) as GetWayBillList_Result;
 
             gridControl1.DataSource = _db.GetWayBillList(satrt_date.Date, end_date.Date.AddDays(1), wtyp, (int)wbSatusList.EditValue, (int)wbKagentList.EditValue, show_null_balance, "*", 0).OrderByDescending(o => o.OnDate);
 
-            WbGridView.FocusedRowHandle = bookmark;
+            WbGridView.FocusedRowHandle = FindRowHandleByRowObject(WbGridView, dr);
+        }
+
+        private int FindRowHandleByRowObject(GridView view, GetWayBillList_Result dr)
+        {
+            if (dr != null)
+            {
+                for (int i = 0; i < view.DataRowCount; i++)
+                {
+                    if (dr.WbillId == (view.GetRow(i) as GetWayBillList_Result).WbillId)
+                    {
+                        return i;
+                    }
+                }
+            }
+            return GridControl.InvalidRowHandle;
         }
 
 
         private void DocsTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
-            cur_wtype = e.Node.GetValue("WTYPE") != null ? Convert.ToInt32(e.Node.GetValue("WTYPE")) : 0;
-            var typ = Convert.ToInt32(e.Node.GetValue("GTYPE"));
-            switch (typ)
+            focused_tree_node = DocsTreeList.GetDataRecordByNode(e.Node) as v_GetDocsTree;
+
+            cur_wtype = focused_tree_node.WType != null ? focused_tree_node.WType.Value : 0;
+           
+            switch (focused_tree_node.GType)
             {
                 case 1:
                     //GET_RelDocList->DataSource = WayBillListDS;
-                    GetWBlist(cur_wtype);
+                    GetWayBillList(cur_wtype);
                     //                    WayBillListAfterScroll(WayBillList);
                     break;
 
@@ -106,13 +131,14 @@ namespace SP_Sklad.MainTabs
                             TaxWBList->CloseOpen(true);
                             break;*/
             }
-            wbContentTab.SelectedTabPageIndex = typ;
+
+            wbContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
 
         }
 
         private void wbStartDate_Properties_EditValueChanged(object sender, EventArgs e)
         {
-            GetWBlist(cur_wtype);
+            GetWayBillList(cur_wtype);
         }
 
         private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -122,16 +148,25 @@ namespace SP_Sklad.MainTabs
             if (dr != null)
             {
                 gridControl2.DataSource = _db.GetWaybillDetIn(dr.WbillId);
+                gridControl3.DataSource = _db.GetRelDocList(dr.DocId);
             }
+
+            var tree_row = DocsTreeList.GetDataRecordByNode(DocsTreeList.FocusedNode) as v_GetDocsTree;
+
+            DeleteItemBtn.Enabled = (dr!= null && dr.Checked == 0 && tree_row.CanDelete == 1);
+            ExecuteItemBtn.Enabled = (dr != null && dr.WType != 2 && dr.WType != -16 && dr.WType != 16 && tree_row.CanPost == 1);
+            EditItemBtn.Enabled = (dr != null && tree_row.CanModify == 1);
+            CopyItemBtn.Enabled = EditItemBtn.Enabled;
+            PrintItemBtn.Enabled = (dr != null);
         }
 
 
         private void NewItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            int GTYPE = (int)DocsTreeList.FocusedNode.GetValue("GTYPE");
-            int ID = (int)DocsTreeList.FocusedNode.GetValue("ID");
+            //int GTYPE = (int)DocsTreeList.FocusedNode.GetValue("GTYPE");
+     //       int ID = (int)DocsTreeList.FocusedNode.GetValue("ID");
 
-            switch (GTYPE)
+            switch (focused_tree_node.GType)
             {
                 case 1:	/*if(DocsTreeDataID->Value == 27 ||DocsTreeDataID->Value == 39 || DocsTreeDataID->Value == 107)
 				 {
@@ -148,7 +183,7 @@ namespace SP_Sklad.MainTabs
 					delete frmWayBillOut;
 				 }*/
 
-                    if (cur_wtype == 1 || ID == 16)  //Прибткова накладна , замовлення постачальникам
+                    if (cur_wtype == 1 || focused_tree_node.Id == 16)  //Прибткова накладна , замовлення постачальникам
                     {
                         using (var wb_in = new frmWayBillIn(cur_wtype, null))
                         {
@@ -220,65 +255,72 @@ namespace SP_Sklad.MainTabs
                             delete frmTaxWB;
                             break;*/
             }
-            // DocsTreeData->Refresh();
-            // RefreshBarBtn->Click();
 
-
+            GetWayBillList(cur_wtype);
         }
 
         private void EditItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            int gtype = (int)DocsTreeList.FocusedNode.GetValue("GTYPE");
+            int gtype = (int)DocsTreeList.FocusedNode.GetValue("GType");
 
             using (var db = new BaseEntities())
             {
-      
-             //   var current_transaction = db.Database.BeginTransaction(IsolationLevel.RepeatableRead);
+
+                //   var current_transaction = db.Database.BeginTransaction(IsolationLevel.RepeatableRead);
                 switch (gtype)
                 {
                     case 1:
                         var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
+                        int? result = 0;
+
                         if (dr == null)
                         {
-                            return;
+                            break;
                         }
 
-                        var wb = db.WaybillList.AsNoTracking().FirstOrDefault(w => w.WbillId == dr.WbillId);
-                   //      wb.UpdatedAt = DateTime.Now;
-                     //  _db.SaveChanges();
-                      
-                        //db.Entry( wb )
-                        if (wb != null)
+                        var wb = new WaybillList();
+                        try
                         {
-                            if ( wb.Checked == 1 && MessageBox.Show(Resources.edit_info, "Відміна проводки", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes )
-                            {
-                                ExecuteItemBtn.PerformClick();
-                                dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
-                            }
-
-                            if (dr != null && dr.Checked == 0)
-                            {
-                                if (cur_wtype == 1 || cur_wtype == 16)
-                                {
-                            //        try
-                               //     {
-                                        using (var wb_in = new frmWayBillIn(cur_wtype, wb.WbillId))
-                                        {
-                                            wb_in.ShowDialog();
-                                        }
-                           //         }
-                            //        catch
-                           //         {
-                            //            MessageBox.Show(Resources.deadlock);
-                           //         }
-                                }
-
-                            }
+                            wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK) where WbillId = {0}", dr.WbillId).FirstOrDefault();//  db.WaybillList.AsNoTracking().FirstOrDefault(w => w.WbillId == dr.WbillId);
                         }
-                        else
+                        catch (SqlException exception)
+                        {
+                            MessageBox.Show(Resources.deadlock);
+                            break;
+                        }
+
+                        if (wb == null)
                         {
                             MessageBox.Show(Resources.not_find_wb);
+                            break;
                         }
+
+                        if (wb.Checked == 1)
+                        {
+                            if (MessageBox.Show(Resources.edit_info, "Відміна проводки", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                            {
+                                result = DBHelper.StornoOrder(db, dr.WbillId);
+                            }
+                            else
+                            {
+                                result = 1;
+                            }
+                        }
+
+                        if (result == 1)
+                        {
+                            break;
+                        }
+
+                        if (cur_wtype == 1 || cur_wtype == 16)
+                        {
+                            using (var wb_in = new frmWayBillIn(cur_wtype, wb.WbillId))
+                            {
+                                wb_in.ShowDialog();
+                            }
+                        }
+                       
+
 
                         /*	if(DocsTreeDataID->Value == 27 || DocsTreeDataID->Value == 39 || DocsTreeDataID->Value == 107)
                              {
@@ -476,13 +518,11 @@ namespace SP_Sklad.MainTabs
                                     break;*/
 
                 }
-            //    current_transaction.Rollback();
+                //    current_transaction.Rollback();
             }
 
-            GetWBlist(cur_wtype);
-            // RefreshBarBtn->Click();
-
-        }
+            GetWayBillList(cur_wtype);
+          }
 
         private void WbGridView_DoubleClick(object sender, EventArgs e)
         {
@@ -504,49 +544,49 @@ namespace SP_Sklad.MainTabs
 
         private void DeleteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
-            /*
-            	try
-	{
-	  switch (DocsTreeDataGTYPE->Value)
-	  {
-		case 1: WayBillList->LockRecord(); break;
-		case 4: PayDoc->LockRecord();  break;
-		case 5: PriceList->LockRecord();  break;
-		case 6: ContractsList->LockRecord();  break;
-		case 7: TaxWBList->LockRecord();  break;
-	  }
-
-	  if(frmMain->ShowConfirm("Ви дійсно бажаєте відалити цей документ ?", "Підтвердіть операцію") == mrOk)
-	   {
-		 switch (DocsTreeDataGTYPE->Value)
-		 {
-		   case 1: WayBillList->Delete(); break;
-		   case 4: PayDoc->Delete();  break;
-		   case 5: PriceList->Delete();  break;
-		   case 6: ContractsList->Delete();  break;
-		   case 7: TaxWBList->Delete();  break;
-		 }
-	   }
-	  DocPAnelTransaction->CommitRetaining() ;
-	  RefreshBarBtn->Click();
-	}
-	catch(const Exception& e)
-	{
-		if(e.Message.Pos("Deadlock") > 0) 	ShowMessage("Видалення не можливе, документ зайнятий на одній із робочих станцій!") ;
-			else  ShowMessage(e.Message) ;
-	}*/
+            int gtype = (int)DocsTreeList.FocusedNode.GetValue("GType");
+            var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
+            try
+            {
+                switch (gtype)
+                {
+                    case 1: _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK) where WbillId = {0}", dr.WbillId).FirstOrDefault(); break;
+                    //	case 4: PayDoc->LockRecord();  break;
+                    //	case 5: PriceList->LockRecord();  break;
+                    //	case 6: ContractsList->LockRecord();  break;
+                    //	case 7: TaxWBList->LockRecord();  break;
+                }
+                if (MessageBox.Show(Resources.delete_wb, "Відалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                {
+                    switch (gtype)
+                    {
+                        case 1:
+                            _db.WaybillList.Remove(_db.WaybillList.Find(dr.WbillId));
+                            break;
+                        //	   case 4: PayDoc->Delete();  break;
+                        //	   case 5: PriceList->Delete();  break;
+                        //	   case 6: ContractsList->Delete();  break;
+                        //	   case 7: TaxWBList->Delete();  break;
+                    }
+                }
+                _db.SaveChanges();
+                GetWayBillList(cur_wtype);
+            }
+            catch
+            {
+                MessageBox.Show(Resources.deadlock);
+            }
 
         }
 
         private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            GetWBlist(cur_wtype);
+            GetWayBillList(cur_wtype);
         }
 
         private void ExecuteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var g_type = (int)DocsTreeList.FocusedNode.GetValue("GTYPE");
+            var g_type = (int)DocsTreeList.FocusedNode.GetValue("GType");
 
             using (var db = new BaseEntities())
             {
@@ -564,12 +604,7 @@ namespace SP_Sklad.MainTabs
                         {
                             if (wb.Checked == 1)
                             {
-                                var result = db.StornoWayBill(wb.WbillId).FirstOrDefault();
-
-                                if (result == 1)
-                                {
-                                    MessageBox.Show(Resources.not_storno_wb, "Відміна проводки", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
+                                DBHelper.StornoOrder(db, dr.WbillId);
                             }
                             else
                             {
@@ -577,12 +612,7 @@ namespace SP_Sklad.MainTabs
                                 {
                                     //   if (!SkladData->CheckActiveSuppliers(WayBillListWBILLID->Value, DocPAnelTransaction)) return;
                                 }
-
-                                var result = db.ExecuteWayBill(wb.WbillId, null).FirstOrDefault();
-                                if (result != null && result.Checked == 0)
-                                {
-                                    MessageBox.Show(Resources.not_execute_wb, "Проведення документа", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
+                                DBHelper.ExecuteOrder(db, dr.WbillId);
                             }
                         }
                         else
@@ -593,7 +623,7 @@ namespace SP_Sklad.MainTabs
                 }
             }
 
-            RefrechItemBtn.PerformClick();
+            GetWayBillList(cur_wtype);
         }
 
         private void PrintItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
