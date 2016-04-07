@@ -18,6 +18,6 @@ namespace SP_Sklad.SkladData
         public System.DateTime ONDATE { get; set; }
         public decimal SALDO { get; set; }
     
-        public virtual KAGENT KAGENT { get; set; }
+        public virtual Kagent Kagent { get; set; }
     }
 }

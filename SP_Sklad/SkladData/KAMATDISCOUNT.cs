@@ -19,7 +19,7 @@ namespace SP_Sklad.SkladData
         public int MATID { get; set; }
         public decimal ONVALUE { get; set; }
     
-        public virtual KAGENT KAGENT { get; set; }
         public virtual MATERIALS MATERIALS { get; set; }
+        public virtual Kagent Kagent { get; set; }
     }
 }

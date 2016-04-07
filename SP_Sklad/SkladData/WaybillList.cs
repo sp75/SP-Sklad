@@ -55,14 +55,14 @@ namespace SP_Sklad.SkladData
         public virtual CURRENCY CURRENCY { get; set; }
         public virtual ICollection<DEBONINGDET> DEBONINGDET { get; set; }
         public virtual DOCS DOCS { get; set; }
-        public virtual KAGENT KAGENT { get; set; }
-        public virtual KAGENT KAGENT1 { get; set; }
-        public virtual KAGENT KAGENT2 { get; set; }
         public virtual ICollection<TECHPROCDET> TECHPROCDET { get; set; }
         public virtual ICollection<WAYBILLDETADDPROPS> WAYBILLDETADDPROPS { get; set; }
         public virtual ICollection<WAYBILLMAKE> WAYBILLMAKE { get; set; }
         public virtual ICollection<WAYBILLMOVE> WAYBILLMOVE { get; set; }
         public virtual ICollection<WAYBILLSVC> WAYBILLSVC { get; set; }
         public virtual ICollection<WaybillDet> WaybillDet { get; set; }
+        public virtual Kagent Kagent { get; set; }
+        public virtual Kagent Kagent1 { get; set; }
+        public virtual Kagent Kagent2 { get; set; }
     }
 }

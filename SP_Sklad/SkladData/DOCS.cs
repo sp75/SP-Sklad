@@ -19,10 +19,10 @@ namespace SP_Sklad.SkladData
             this.CONTRACTS = new HashSet<CONTRACTS>();
             this.CONTRACTS1 = new HashSet<CONTRACTS>();
             this.DOCSREL = new HashSet<DOCSREL>();
-            this.PAYDOC = new HashSet<PAYDOC>();
             this.PRICELIST = new HashSet<PRICELIST>();
             this.TAXWB = new HashSet<TAXWB>();
             this.WaybillList = new HashSet<WaybillList>();
+            this.PayDoc = new HashSet<PayDoc>();
         }
     
         public int DOCID { get; set; }
@@ -31,9 +31,9 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<CONTRACTS> CONTRACTS { get; set; }
         public virtual ICollection<CONTRACTS> CONTRACTS1 { get; set; }
         public virtual ICollection<DOCSREL> DOCSREL { get; set; }
-        public virtual ICollection<PAYDOC> PAYDOC { get; set; }
         public virtual ICollection<PRICELIST> PRICELIST { get; set; }
         public virtual ICollection<TAXWB> TAXWB { get; set; }
         public virtual ICollection<WaybillList> WaybillList { get; set; }
+        public virtual ICollection<PayDoc> PayDoc { get; set; }
     }
 }

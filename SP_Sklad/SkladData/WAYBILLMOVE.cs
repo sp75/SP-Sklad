@@ -19,9 +19,9 @@ namespace SP_Sklad.SkladData
         public Nullable<int> DESTWID { get; set; }
         public Nullable<int> PERSONID { get; set; }
     
-        public virtual KAGENT KAGENT { get; set; }
         public virtual WAREHOUSE WAREHOUSE { get; set; }
         public virtual WAREHOUSE WAREHOUSE1 { get; set; }
         public virtual WaybillList WaybillList { get; set; }
+        public virtual Kagent Kagent { get; set; }
     }
 }

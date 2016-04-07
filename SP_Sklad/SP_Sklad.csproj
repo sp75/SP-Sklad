@@ -100,7 +100,7 @@
     <Compile Include="SkladData\BLOBS.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\CASHDESKS.cs">
+    <Compile Include="SkladData\CashDesks.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\CHARGETYPE.cs">
@@ -185,7 +185,7 @@
     <Compile Include="SkladData\KADISCOUNT.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\KAGENT.cs">
+    <Compile Include="SkladData\Kagent.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\KAGENTACCOUNT.cs">
@@ -260,13 +260,13 @@
     <Compile Include="SkladData\OPERLOG.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\PAYDOC.cs">
+    <Compile Include="SkladData\PayDoc.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\PAYDOCTYPE.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\PAYTYPE.cs">
+    <Compile Include="SkladData\PayType.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\POSREMAINS.cs">

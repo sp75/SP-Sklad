@@ -16,13 +16,13 @@ namespace SP_Sklad.SkladData
     {
         public CHARGETYPE()
         {
-            this.PAYDOC = new HashSet<PAYDOC>();
+            this.PayDoc = new HashSet<PayDoc>();
         }
     
         public int CTYPEID { get; set; }
         public string NAME { get; set; }
         public int DELETED { get; set; }
     
-        public virtual ICollection<PAYDOC> PAYDOC { get; set; }
+        public virtual ICollection<PayDoc> PayDoc { get; set; }
     }
 }

@@ -32,7 +32,6 @@ namespace SP_Sklad.SkladData
         public DbSet<BANKS> BANKS { get; set; }
         public DbSet<BANKSPERSONS> BANKSPERSONS { get; set; }
         public DbSet<BLOBS> BLOBS { get; set; }
-        public DbSet<CASHDESKS> CASHDESKS { get; set; }
         public DbSet<CHARGETYPE> CHARGETYPE { get; set; }
         public DbSet<CITYTYPE> CITYTYPE { get; set; }
         public DbSet<COMMISSION> COMMISSION { get; set; }
@@ -54,7 +53,6 @@ namespace SP_Sklad.SkladData
         public DbSet<FUNCTIONS> FUNCTIONS { get; set; }
         public DbSet<KAADDR> KAADDR { get; set; }
         public DbSet<KADISCOUNT> KADISCOUNT { get; set; }
-        public DbSet<KAGENT> KAGENT { get; set; }
         public DbSet<KAGENTACCOUNT> KAGENTACCOUNT { get; set; }
         public DbSet<KAGENTDOC> KAGENTDOC { get; set; }
         public DbSet<KAGENTPERSONS> KAGENTPERSONS { get; set; }
@@ -75,9 +73,7 @@ namespace SP_Sklad.SkladData
         public DbSet<MEASURES> MEASURES { get; set; }
         public DbSet<MONEYSALDO> MONEYSALDO { get; set; }
         public DbSet<OPERLOG> OPERLOG { get; set; }
-        public DbSet<PAYDOC> PAYDOC { get; set; }
         public DbSet<PAYDOCTYPE> PAYDOCTYPE { get; set; }
-        public DbSet<PAYTYPE> PAYTYPE { get; set; }
         public DbSet<POSREMAINS> POSREMAINS { get; set; }
         public DbSet<PRICELIST> PRICELIST { get; set; }
         public DbSet<PRICELISTDET> PRICELISTDET { get; set; }
@@ -115,6 +111,10 @@ namespace SP_Sklad.SkladData
         public DbSet<Actives> Actives { get; set; }
         public DbSet<WMatTurn> WMatTurn { get; set; }
         public DbSet<v_GetDocsTree> v_GetDocsTree { get; set; }
+        public DbSet<PayDoc> PayDoc { get; set; }
+        public DbSet<CashDesks> CashDesks { get; set; }
+        public DbSet<PayType> PayType { get; set; }
+        public DbSet<Kagent> Kagent { get; set; }
     
         [EdmFunction("BaseEntities", "GetMatGroupTree")]
         public virtual IQueryable<GetMatGroupTree_Result> GetMatGroupTree(Nullable<int> root_cat_id)

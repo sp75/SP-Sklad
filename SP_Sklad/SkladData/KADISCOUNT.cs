@@ -19,6 +19,6 @@ namespace SP_Sklad.SkladData
         public decimal ONVALUE { get; set; }
         public int DISCCUSTOM { get; set; }
     
-        public virtual KAGENT KAGENT { get; set; }
+        public virtual Kagent Kagent { get; set; }
     }
 }

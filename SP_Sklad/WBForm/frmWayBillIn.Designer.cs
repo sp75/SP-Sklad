@@ -75,7 +75,7 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.TurnDocCheckBox = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.NUMDBTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.NumEdit = new DevExpress.XtraEditors.TextEdit();
             this.OnDateDBEdit = new DevExpress.XtraEditors.DateEdit();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
@@ -111,7 +111,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ContrEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KagentComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TurnDocCheckBox.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NUMDBTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
@@ -362,7 +362,7 @@
             this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.TurnDocCheckBox);
             this.panelControl1.Controls.Add(this.labelControl1);
-            this.panelControl1.Controls.Add(this.NUMDBTextEdit);
+            this.panelControl1.Controls.Add(this.NumEdit);
             this.panelControl1.Controls.Add(this.OnDateDBEdit);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(5, 5);
@@ -386,11 +386,11 @@
             this.PersonComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.PersonComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NAME", "Назва")});
-            this.PersonComboBox.Properties.DisplayMember = "NAME";
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.PersonComboBox.Properties.DisplayMember = "Name";
             this.PersonComboBox.Properties.ShowFooter = false;
             this.PersonComboBox.Properties.ShowHeader = false;
-            this.PersonComboBox.Properties.ValueMember = "KAID";
+            this.PersonComboBox.Properties.ValueMember = "KaId";
             this.PersonComboBox.Size = new System.Drawing.Size(175, 22);
             this.PersonComboBox.StyleController = this.styleController1;
             this.PersonComboBox.TabIndex = 23;
@@ -541,11 +541,11 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.KagentComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NAME", "Назва")});
-            this.KagentComboBox.Properties.DisplayMember = "NAME";
+            this.KagentComboBox.Properties.DisplayMember = "Name";
             this.KagentComboBox.Properties.ShowFooter = false;
             this.KagentComboBox.Properties.ShowHeader = false;
             this.KagentComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.KagentComboBox.Properties.ValueMember = "KAID";
+            this.KagentComboBox.Properties.ValueMember = "KaId";
             this.KagentComboBox.Size = new System.Drawing.Size(423, 22);
             this.KagentComboBox.StyleController = this.styleController1;
             this.KagentComboBox.TabIndex = 9;
@@ -608,15 +608,15 @@
             this.labelControl1.TabIndex = 1;
             this.labelControl1.Text = "Номер:";
             // 
-            // NUMDBTextEdit
+            // NumEdit
             // 
-            this.NUMDBTextEdit.Location = new System.Drawing.Point(105, 41);
-            this.NUMDBTextEdit.MenuManager = this.barManager1;
-            this.NUMDBTextEdit.Name = "NUMDBTextEdit";
-            this.NUMDBTextEdit.Size = new System.Drawing.Size(166, 22);
-            this.NUMDBTextEdit.StyleController = this.styleController1;
-            this.NUMDBTextEdit.TabIndex = 0;
-            this.NUMDBTextEdit.EditValueChanged += new System.EventHandler(this.NUMDBTextEdit_EditValueChanged);
+            this.NumEdit.Location = new System.Drawing.Point(105, 41);
+            this.NumEdit.MenuManager = this.barManager1;
+            this.NumEdit.Name = "NumEdit";
+            this.NumEdit.Size = new System.Drawing.Size(166, 22);
+            this.NumEdit.StyleController = this.styleController1;
+            this.NumEdit.TabIndex = 0;
+            this.NumEdit.EditValueChanged += new System.EventHandler(this.NUMDBTextEdit_EditValueChanged);
             // 
             // OnDateDBEdit
             // 
@@ -880,7 +880,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ContrEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KagentComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TurnDocCheckBox.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NUMDBTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
@@ -921,7 +921,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.CheckEdit TurnDocCheckBox;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.TextEdit NUMDBTextEdit;
+        private DevExpress.XtraEditors.TextEdit NumEdit;
         private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraEditors.PanelControl panelControl5;
         private DevExpress.XtraBars.BarDockControl barDockControl1;

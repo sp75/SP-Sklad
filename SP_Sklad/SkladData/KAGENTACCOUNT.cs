@@ -17,7 +17,7 @@ namespace SP_Sklad.SkladData
         public KAGENTACCOUNT()
         {
             this.MONEYSALDO = new HashSet<MONEYSALDO>();
-            this.PAYDOC = new HashSet<PAYDOC>();
+            this.PayDoc = new HashSet<PayDoc>();
         }
     
         public int ACCID { get; set; }
@@ -29,8 +29,8 @@ namespace SP_Sklad.SkladData
     
         public virtual ACCOUNTTYPE ACCOUNTTYPE { get; set; }
         public virtual BANKS BANKS { get; set; }
-        public virtual KAGENT KAGENT { get; set; }
         public virtual ICollection<MONEYSALDO> MONEYSALDO { get; set; }
-        public virtual ICollection<PAYDOC> PAYDOC { get; set; }
+        public virtual ICollection<PayDoc> PayDoc { get; set; }
+        public virtual Kagent Kagent { get; set; }
     }
 }

@@ -30,8 +30,8 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> TOTAL { get; set; }
     
         public virtual CURRENCY CURRENCY { get; set; }
-        public virtual KAGENT KAGENT { get; set; }
         public virtual SERVICES SERVICES { get; set; }
         public virtual WaybillList WaybillList { get; set; }
+        public virtual Kagent Kagent { get; set; }
     }
 }

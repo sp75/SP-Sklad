@@ -12,38 +12,37 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class PAYDOC
+    public partial class PayDoc
     {
-        public int PAYDOCID { get; set; }
-        public int DOCTYPE { get; set; }
-        public System.DateTime ONDATE { get; set; }
-        public Nullable<int> KAID { get; set; }
-        public decimal TOTAL { get; set; }
-        public int PTYPEID { get; set; }
-        public int CURRID { get; set; }
-        public int DELETED { get; set; }
-        public string DOCNUM { get; set; }
-        public int CHECKED { get; set; }
-        public int WITHNDS { get; set; }
-        public string REASON { get; set; }
-        public string NOTES { get; set; }
-        public Nullable<int> MPERSONID { get; set; }
-        public int CTYPEID { get; set; }
-        public Nullable<int> ACCID { get; set; }
-        public Nullable<int> CASHID { get; set; }
-        public Nullable<int> OPERID { get; set; }
-        public Nullable<int> DOCID { get; set; }
-        public Nullable<decimal> ONVALUE { get; set; }
-        public string SCHET { get; set; }
+        public int PayDocId { get; set; }
+        public int DocType { get; set; }
+        public System.DateTime OnDate { get; set; }
+        public Nullable<int> KaId { get; set; }
+        public decimal Total { get; set; }
+        public int PTypeId { get; set; }
+        public int CurrId { get; set; }
+        public int Deleted { get; set; }
+        public string DocNum { get; set; }
+        public int Checked { get; set; }
+        public int WithNDS { get; set; }
+        public string Reason { get; set; }
+        public string Notes { get; set; }
+        public Nullable<int> MPersonId { get; set; }
+        public int CTypeId { get; set; }
+        public Nullable<int> AccId { get; set; }
+        public Nullable<int> CashId { get; set; }
+        public Nullable<int> OperId { get; set; }
+        public Nullable<int> DocId { get; set; }
+        public Nullable<decimal> OnValue { get; set; }
+        public string Schet { get; set; }
     
-        public virtual CASHDESKS CASHDESKS { get; set; }
         public virtual CHARGETYPE CHARGETYPE { get; set; }
         public virtual CURRENCY CURRENCY { get; set; }
         public virtual DOCS DOCS { get; set; }
-        public virtual KAGENT KAGENT { get; set; }
-        public virtual KAGENT KAGENT1 { get; set; }
-        public virtual KAGENT KAGENT2 { get; set; }
         public virtual KAGENTACCOUNT KAGENTACCOUNT { get; set; }
-        public virtual PAYTYPE PAYTYPE { get; set; }
+        public virtual CashDesks CashDesks { get; set; }
+        public virtual PayType PayType { get; set; }
+        public virtual Kagent Kagent { get; set; }
+        public virtual Kagent Kagent1 { get; set; }
     }
 }

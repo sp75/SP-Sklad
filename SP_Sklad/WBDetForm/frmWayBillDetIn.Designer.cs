@@ -123,7 +123,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -903,10 +902,10 @@
             this.groupControl2.Controls.Add(this.lookUpEdit1);
             this.groupControl2.Controls.Add(this.labelControl20);
             this.groupControl2.Controls.Add(this.textEdit16);
-            this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl2.Location = new System.Drawing.Point(273, 0);
+            this.groupControl2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.groupControl2.Location = new System.Drawing.Point(279, 0);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(322, 118);
+            this.groupControl2.Size = new System.Drawing.Size(316, 118);
             this.groupControl2.TabIndex = 15;
             this.groupControl2.Text = "Сертифікат:";
             // 
@@ -926,7 +925,7 @@
             this.textEdit17.Location = new System.Drawing.Point(87, 86);
             this.textEdit17.MenuManager = this.barManager1;
             this.textEdit17.Name = "textEdit17";
-            this.textEdit17.Size = new System.Drawing.Size(224, 22);
+            this.textEdit17.Size = new System.Drawing.Size(218, 22);
             this.textEdit17.StyleController = this.styleController1;
             this.textEdit17.TabIndex = 24;
             // 
@@ -971,7 +970,7 @@
             this.lookUpEdit1.Properties.ShowFooter = false;
             this.lookUpEdit1.Properties.ShowHeader = false;
             this.lookUpEdit1.Properties.ValueMember = "WID";
-            this.lookUpEdit1.Size = new System.Drawing.Size(224, 22);
+            this.lookUpEdit1.Size = new System.Drawing.Size(218, 22);
             this.lookUpEdit1.StyleController = this.styleController1;
             this.lookUpEdit1.TabIndex = 19;
             // 
@@ -1002,7 +1001,7 @@
             this.textEdit16.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.textEdit16.Properties.Mask.EditMask = "";
             this.textEdit16.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.textEdit16.Size = new System.Drawing.Size(93, 22);
+            this.textEdit16.Size = new System.Drawing.Size(87, 22);
             this.textEdit16.StyleController = this.styleController1;
             this.textEdit16.TabIndex = 23;
             // 
@@ -1186,7 +1185,6 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.panel6);
             this.panel4.Controls.Add(this.groupControl2);
             this.panel4.Controls.Add(this.groupControl1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1195,14 +1193,6 @@
             this.panel4.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
             this.panel4.Size = new System.Drawing.Size(600, 123);
             this.panel4.TabIndex = 25;
-            // 
-            // panel6
-            // 
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel6.Location = new System.Drawing.Point(273, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(5, 118);
-            this.panel6.TabIndex = 16;
             // 
             // panel5
             // 
@@ -1390,6 +1380,5 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel6;
     }
 }

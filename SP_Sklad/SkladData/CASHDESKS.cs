@@ -12,20 +12,20 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class CASHDESKS
+    public partial class CashDesks
     {
-        public CASHDESKS()
+        public CashDesks()
         {
             this.MONEYSALDO = new HashSet<MONEYSALDO>();
-            this.PAYDOC = new HashSet<PAYDOC>();
+            this.PayDoc = new HashSet<PayDoc>();
         }
     
-        public int CASHID { get; set; }
-        public string NAME { get; set; }
-        public int DELETED { get; set; }
-        public Nullable<int> DEF { get; set; }
+        public int CashId { get; set; }
+        public string Name { get; set; }
+        public int Deleted { get; set; }
+        public Nullable<int> Def { get; set; }
     
         public virtual ICollection<MONEYSALDO> MONEYSALDO { get; set; }
-        public virtual ICollection<PAYDOC> PAYDOC { get; set; }
+        public virtual ICollection<PayDoc> PayDoc { get; set; }
     }
 }

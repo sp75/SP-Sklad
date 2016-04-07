@@ -40,7 +40,7 @@ namespace SP_Sklad.MainTabs
         {
             _db = new BaseEntities();
 
-            wbKagentList.Properties.DataSource = new List<object>() { new { KAID = 0, NAME = "Усі" } }.Concat(_db.KAGENT.Select(s => new { s.KAID, s.NAME }));
+            wbKagentList.Properties.DataSource = new List<object>() { new { KAID = 0, NAME = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
             wbKagentList.EditValue = 0;
 
             wbSatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };

@@ -26,14 +26,13 @@ namespace SP_Sklad.WBForm
 
         public frmWayBillIn(int wtype, int? wbill_id)
         {
-            InitializeComponent();
-
             _wtype = wtype;
             _wbill_id = wbill_id;
             _db = new BaseEntities();
       //      _db.Database.CommandTimeout = 1;
             current_transaction = _db.Database.BeginTransaction(IsolationLevel.RepeatableRead);
 
+            InitializeComponent();
             RefreshDet();
         }
 
@@ -58,6 +57,7 @@ namespace SP_Sklad.WBForm
                 try
                 {
                     wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK) where WbillId = {0}", _wbill_id).FirstOrDefault();
+                    _db.Entry<WaybillList>(wb).State = EntityState.Modified;
                 }
                 catch (SqlException exception)
                 {
@@ -80,26 +80,28 @@ namespace SP_Sklad.WBForm
             {
                 GetDocValue(wb);
             }
-
-            KagentComboBox.Properties.DataSource = _db.KAGENT.Select(s => new { s.KAID, s.NAME }).ToList();
+            
+            KagentComboBox.Properties.DataSource = _db.Kagent.Select(s => new { s.KaId, s.Name }).ToList();
 
             var wh_list = DBHelper.WhList();
             WHComboBox.Properties.DataSource = wh_list;
             WHComboBox.EditValue = wh_list.Where(w => w.DEF == 1).Select(s => s.WID).FirstOrDefault();
 
-            PersonComboBox.Properties.DataSource = _db.KAGENT.Where(w => w.KTYPE == 2).Select(s => new { s.KAID, s.NAME }).ToList();
+            PersonComboBox.Properties.DataSource = DBHelper.Persons; // _db.Kagent.Where(w => w.KType == 2).Select(s => new { s.KaId, s.Name }).ToList();
         }
 
         private void GetDocValue(WaybillList wb)
         {
             _wbill_id = wb.WbillId;
-            NUMDBTextEdit.Text = wb.Num;
+            NumEdit.Text = wb.Num;
             OnDateDBEdit.DateTime = wb.OnDate;
             KagentComboBox.EditValue = wb.KaId;
             PersonComboBox.EditValue = wb.PersonId;
             TurnDocCheckBox.Checked = Convert.ToBoolean(wb.Checked);
             ReasonEdit.Text = wb.Reason;
             NotesEdit.Text = wb.Notes;
+
+            payDocUserControl1.OnLoad(_db, wb);
         }
 
         private void frmWayBillIn_Shown(object sender, EventArgs e)
@@ -118,7 +120,7 @@ namespace SP_Sklad.WBForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            wb.Num = NUMDBTextEdit.Text;
+            wb.Num = NumEdit.Text;
             wb.OnDate = OnDateDBEdit.DateTime;
             wb.KaId = (int?)KagentComboBox.EditValue;
             wb.PersonId = (int?)PersonComboBox.EditValue;
@@ -131,9 +133,9 @@ namespace SP_Sklad.WBForm
             {
                 return;
             }
-
-            _db.Entry<WaybillList>(wb).State = EntityState.Modified;
+           
             _db.SaveChanges();
+
             current_transaction.Commit();
 
             if (TurnDocCheckBox.Checked)
@@ -235,7 +237,7 @@ namespace SP_Sklad.WBForm
 
         bool GetOk()
         {
-            bool recult = (NUMDBTextEdit.EditValue != null  && KagentComboBox.EditValue != null && OnDateDBEdit.EditValue != null && WaybillDetInGridView.DataRowCount > 0);
+            bool recult = (NumEdit.EditValue != null  && KagentComboBox.EditValue != null && OnDateDBEdit.EditValue != null && WaybillDetInGridView.DataRowCount > 0);
             barSubItem1.Enabled = KagentComboBox.EditValue != null;
 
             OkButton.Enabled = recult;

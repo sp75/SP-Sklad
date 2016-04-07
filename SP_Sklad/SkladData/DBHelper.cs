@@ -8,8 +8,51 @@ using SP_Sklad.Properties;
 
 namespace SP_Sklad.SkladData
 {
+
     public static class DBHelper
     {
+        private static List<PersonList> _person;
+        private static List<PayType> _pay_type;
+        private static List<CashDesks> _cash_desks;
+
+        public static List<PersonList> Persons
+        {
+            get
+            {
+                if (_person == null)
+                {
+                    _person = new BaseEntities().Kagent.Where(w => w.KType == 2).Select(s => new PersonList() { KaId = s.KaId, Name = s.Name }).ToList();
+                }
+                return _person;
+            }
+
+        }
+
+        public static List<PayType> PayTypes
+        {
+            get
+            {
+                if (_pay_type == null)
+                {
+                    _pay_type = new BaseEntities().PayType.ToList();
+                }
+                return _pay_type;
+            }
+        }
+
+        public static List<CashDesks> CashDesks
+        {
+            get
+            {
+                if (_cash_desks == null)
+                {
+                    _cash_desks = new BaseEntities().CashDesks.ToList();
+                }
+                return _cash_desks;
+            }
+        }
+
+ 
         public static List<WAREHOUSE> WhList()
         {
             return new BaseEntities().WAREHOUSE.Where(w => w.DELETED == 0).ToList();
@@ -17,7 +60,7 @@ namespace SP_Sklad.SkladData
 
         public static DateTime ServerDateTime()
         {
-            return  new BaseEntities().Database.SqlQuery<DateTime>("SELECT getdate()").FirstOrDefault();
+            return new BaseEntities().Database.SqlQuery<DateTime>("SELECT getdate()").FirstOrDefault();
         }
 
         public static int? StornoOrder(BaseEntities db, int wbill_id)
@@ -42,5 +85,18 @@ namespace SP_Sklad.SkladData
             return result;
         }
 
+        /*    public static void Person()
+            {
+                _person = new BaseEntities().Kagent.Where(w => w.KType == 2).Select(s => new Kagent() { KaId = s.KaId, Name = s.Name }).ToList();
+            }*/
+
+       
+
+    }
+
+    public class PersonList
+    {
+        public int KaId { get; set; }
+        public String Name { get; set; }
     }
 }

@@ -12,9 +12,9 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class KAGENT
+    public partial class Kagent
     {
-        public KAGENT()
+        public Kagent()
         {
             this.COMMISSION = new HashSet<COMMISSION>();
             this.COMMISSION1 = new HashSet<COMMISSION>();
@@ -26,10 +26,10 @@ namespace SP_Sklad.SkladData
             this.KAADDR = new HashSet<KAADDR>();
             this.KAMATDISCOUNT = new HashSet<KAMATDISCOUNT>();
             this.KAMATGROUPDISCOUNT = new HashSet<KAMATGROUPDISCOUNT>();
-            this.PAYDOC = new HashSet<PAYDOC>();
-            this.PAYDOC1 = new HashSet<PAYDOC>();
-            this.PAYDOC2 = new HashSet<PAYDOC>();
+            this.PayDoc = new HashSet<PayDoc>();
+            this.PayDoc1 = new HashSet<PayDoc>();
             this.TAXWB = new HashSet<TAXWB>();
+            this.WaybillList = new HashSet<WaybillList>();
             this.WAYBILLMOVE = new HashSet<WAYBILLMOVE>();
             this.KAGENTACCOUNT = new HashSet<KAGENTACCOUNT>();
             this.KAGENTDOC = new HashSet<KAGENTDOC>();
@@ -37,42 +37,41 @@ namespace SP_Sklad.SkladData
             this.KAGENTSALDO = new HashSet<KAGENTSALDO>();
             this.TAXWB1 = new HashSet<TAXWB>();
             this.TECHPROCDET = new HashSet<TECHPROCDET>();
-            this.WAYBILLMAKE = new HashSet<WAYBILLMAKE>();
-            this.WAYBILLSVC = new HashSet<WAYBILLSVC>();
-            this.WaybillList = new HashSet<WaybillList>();
             this.WaybillList1 = new HashSet<WaybillList>();
+            this.WAYBILLMAKE = new HashSet<WAYBILLMAKE>();
             this.WaybillList2 = new HashSet<WaybillList>();
+            this.WAYBILLSVC = new HashSet<WAYBILLSVC>();
         }
     
-        public int KAID { get; set; }
-        public string NAME { get; set; }
-        public string FULLNAME { get; set; }
+        public int KaId { get; set; }
+        public string Name { get; set; }
+        public string FullName { get; set; }
         public string INN { get; set; }
         public string OKPO { get; set; }
-        public string CERTNUM { get; set; }
-        public string PHONE { get; set; }
-        public string EMAIL { get; set; }
-        public string WWW { get; set; }
-        public string FAX { get; set; }
-        public int DELETED { get; set; }
-        public string NOTES { get; set; }
+        public string CertNum { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+        public string www { get; set; }
+        public string Fax { get; set; }
+        public int Deleted { get; set; }
+        public string Notes { get; set; }
         public string KPP { get; set; }
-        public int NDSPAYER { get; set; }
-        public Nullable<System.DateTime> BIRTHDATE { get; set; }
-        public int KTYPE { get; set; }
-        public int KAKIND { get; set; }
-        public string JOB { get; set; }
-        public Nullable<decimal> STARTSALDO { get; set; }
-        public Nullable<System.DateTime> STARTSALDODATE { get; set; }
-        public Nullable<int> PTYPEID { get; set; }
-        public Nullable<int> JOBTYPE { get; set; }
-        public Nullable<int> DEF { get; set; }
-        public Nullable<int> USERID { get; set; }
-        public Nullable<int> ARCHIVED { get; set; }
+        public int NdsPayer { get; set; }
+        public Nullable<System.DateTime> BirthDate { get; set; }
+        public int KType { get; set; }
+        public int KaKind { get; set; }
+        public string Job { get; set; }
+        public Nullable<decimal> StartSaldo { get; set; }
+        public Nullable<System.DateTime> StartSaldoDate { get; set; }
+        public Nullable<int> PTypeId { get; set; }
+        public Nullable<int> JobType { get; set; }
+        public Nullable<int> Def { get; set; }
+        public Nullable<int> UserId { get; set; }
+        public Nullable<int> Archived { get; set; }
         public string KAU { get; set; }
-        public string CONTRACT_TYPE { get; set; }
-        public Nullable<System.DateTime> CONTRACT_DATE { get; set; }
-        public string CONTRACT_NUM { get; set; }
+        public string ContractType { get; set; }
+        public Nullable<System.DateTime> ContractDate { get; set; }
+        public string ContractNum { get; set; }
     
         public virtual ICollection<COMMISSION> COMMISSION { get; set; }
         public virtual ICollection<COMMISSION> COMMISSION1 { get; set; }
@@ -85,10 +84,10 @@ namespace SP_Sklad.SkladData
         public virtual KADISCOUNT KADISCOUNT { get; set; }
         public virtual ICollection<KAMATDISCOUNT> KAMATDISCOUNT { get; set; }
         public virtual ICollection<KAMATGROUPDISCOUNT> KAMATGROUPDISCOUNT { get; set; }
-        public virtual ICollection<PAYDOC> PAYDOC { get; set; }
-        public virtual ICollection<PAYDOC> PAYDOC1 { get; set; }
-        public virtual ICollection<PAYDOC> PAYDOC2 { get; set; }
+        public virtual ICollection<PayDoc> PayDoc { get; set; }
+        public virtual ICollection<PayDoc> PayDoc1 { get; set; }
         public virtual ICollection<TAXWB> TAXWB { get; set; }
+        public virtual ICollection<WaybillList> WaybillList { get; set; }
         public virtual ICollection<WAYBILLMOVE> WAYBILLMOVE { get; set; }
         public virtual ICollection<KAGENTACCOUNT> KAGENTACCOUNT { get; set; }
         public virtual ICollection<KAGENTDOC> KAGENTDOC { get; set; }
@@ -96,10 +95,9 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<KAGENTSALDO> KAGENTSALDO { get; set; }
         public virtual ICollection<TAXWB> TAXWB1 { get; set; }
         public virtual ICollection<TECHPROCDET> TECHPROCDET { get; set; }
-        public virtual ICollection<WAYBILLMAKE> WAYBILLMAKE { get; set; }
-        public virtual ICollection<WAYBILLSVC> WAYBILLSVC { get; set; }
-        public virtual ICollection<WaybillList> WaybillList { get; set; }
         public virtual ICollection<WaybillList> WaybillList1 { get; set; }
+        public virtual ICollection<WAYBILLMAKE> WAYBILLMAKE { get; set; }
         public virtual ICollection<WaybillList> WaybillList2 { get; set; }
+        public virtual ICollection<WAYBILLSVC> WAYBILLSVC { get; set; }
     }
 }

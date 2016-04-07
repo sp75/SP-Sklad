@@ -22,13 +22,13 @@ namespace SP_Sklad.SkladData
             this.MATGROUPPRICES = new HashSet<MATGROUPPRICES>();
             this.MATPRICES = new HashSet<MATPRICES>();
             this.MATPRICES1 = new HashSet<MATPRICES>();
-            this.PAYDOC = new HashSet<PAYDOC>();
             this.MONEYSALDO = new HashSet<MONEYSALDO>();
             this.PRICELIST = new HashSet<PRICELIST>();
             this.SERVICES = new HashSet<SERVICES>();
             this.WAYBILLSVC = new HashSet<WAYBILLSVC>();
             this.WaybillList = new HashSet<WaybillList>();
             this.WaybillDet = new HashSet<WaybillDet>();
+            this.PayDoc = new HashSet<PayDoc>();
         }
     
         public int CURRID { get; set; }
@@ -46,12 +46,12 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<MATGROUPPRICES> MATGROUPPRICES { get; set; }
         public virtual ICollection<MATPRICES> MATPRICES { get; set; }
         public virtual ICollection<MATPRICES> MATPRICES1 { get; set; }
-        public virtual ICollection<PAYDOC> PAYDOC { get; set; }
         public virtual ICollection<MONEYSALDO> MONEYSALDO { get; set; }
         public virtual ICollection<PRICELIST> PRICELIST { get; set; }
         public virtual ICollection<SERVICES> SERVICES { get; set; }
         public virtual ICollection<WAYBILLSVC> WAYBILLSVC { get; set; }
         public virtual ICollection<WaybillList> WaybillList { get; set; }
         public virtual ICollection<WaybillDet> WaybillDet { get; set; }
+        public virtual ICollection<PayDoc> PayDoc { get; set; }
     }
 }

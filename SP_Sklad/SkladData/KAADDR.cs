@@ -25,6 +25,6 @@ namespace SP_Sklad.SkladData
         public string REGION { get; set; }
         public Nullable<int> CITYTYPE { get; set; }
     
-        public virtual KAGENT KAGENT { get; set; }
+        public virtual Kagent Kagent { get; set; }
     }
 }

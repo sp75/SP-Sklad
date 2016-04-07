@@ -12,16 +12,16 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class PAYTYPE
+    public partial class PayType
     {
-        public PAYTYPE()
+        public PayType()
         {
-            this.PAYDOC = new HashSet<PAYDOC>();
+            this.PayDoc = new HashSet<PayDoc>();
         }
     
-        public int PTYPEID { get; set; }
-        public string NAME { get; set; }
+        public int PTypeId { get; set; }
+        public string Name { get; set; }
     
-        public virtual ICollection<PAYDOC> PAYDOC { get; set; }
+        public virtual ICollection<PayDoc> PayDoc { get; set; }
     }
 }

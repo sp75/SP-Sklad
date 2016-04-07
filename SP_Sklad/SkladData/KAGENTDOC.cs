@@ -21,6 +21,6 @@ namespace SP_Sklad.SkladData
         public string DOCWHOPRODUCE { get; set; }
         public System.DateTime DOCDATE { get; set; }
     
-        public virtual KAGENT KAGENT { get; set; }
+        public virtual Kagent Kagent { get; set; }
     }
 }
