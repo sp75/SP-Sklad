@@ -537,11 +537,6 @@ namespace SP_Sklad.MainTabs
 
         }
 
-        private void WbGridView_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
-        {
-            
-        }
-
         private void DeleteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             int gtype = (int)DocsTreeList.FocusedNode.GetValue("GType");

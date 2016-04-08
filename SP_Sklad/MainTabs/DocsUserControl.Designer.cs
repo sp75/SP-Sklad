@@ -318,7 +318,6 @@
             this.WbGridView.OptionsBehavior.ReadOnly = true;
             this.WbGridView.OptionsView.EnableAppearanceEvenRow = true;
             this.WbGridView.OptionsView.EnableAppearanceOddRow = true;
-            this.WbGridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.WbGridView_RowClick);
             this.WbGridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
             this.WbGridView.DoubleClick += new System.EventHandler(this.WbGridView_DoubleClick);
             // 

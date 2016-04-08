@@ -13,6 +13,8 @@ using SP_Sklad.WBDetForm;
 using System.Data.SqlClient;
 using System.Data.Linq;
 using EntityState = System.Data.Entity.EntityState;
+using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 
 namespace SP_Sklad.WBForm
 {
@@ -274,6 +276,26 @@ namespace SP_Sklad.WBForm
                     RefreshDet();
                 }
             }
+        }
+
+        private void WaybillDetInGridView_DoubleClick(object sender, EventArgs e)
+        {
+            GridView view = (GridView)sender;
+            Point pt = view.GridControl.PointToClient(Control.MousePosition);
+            GridHitInfo info = view.CalcHitInfo(pt);
+
+            if (info.InRow || info.InRowCell)
+            {
+                EditMaterialBtn.PerformClick();
+            }
+        }
+
+        private void WaybillDetInGridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            var dr = WaybillDetInGridView.GetRow(e.RowHandle) as GetWaybillDetIn_Result;
+            var wbd = _db.WaybillDet.Find(dr.PosId);
+
+            wbd.Amount = Convert.ToDecimal(e.Value);
         }
 
 

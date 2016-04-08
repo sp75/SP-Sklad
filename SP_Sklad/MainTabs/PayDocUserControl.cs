@@ -58,32 +58,34 @@ namespace SP_Sklad.MainTabs
 
         private void ExecPayCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (_pd == null)
+            if ( _pd != null )
             {
-                SumEdit.EditValue = _wb.SummAll;
-                if (NumEdit.EditValue == null)
-                {
-                    NumEdit.EditValue = new BaseEntities().GetCounter("pay_doc").FirstOrDefault();
-                }
-                var cd = _db.CashDesks.FirstOrDefault(w => w.Def == 1);
-                if (cd != null)
-                {
-                    CashEdit.EditValue = cd.CashId; // За товар
-                }
+                return;
+            }
 
-                PTypeComboBox.EditValue = 1;  // Наличкой
-           }
+            SumEdit.EditValue = _wb.SummAll;
+            if (NumEdit.EditValue == null)
+            {
+                NumEdit.EditValue = new BaseEntities().GetCounter("pay_doc").FirstOrDefault();
+            }
+            var cd = _db.CashDesks.FirstOrDefault(w => w.Def == 1);
+            if (cd != null)
+            {
+                CashEdit.EditValue = cd.CashId; // За товар
+            }
+            PTypeComboBox.EditValue = 1;  // Наличкой
+            PersonEdit.EditValue = _wb.PersonId ?? _wb.KaId;// Виконавець
         }
 
-        public void Execute(int _wbill_id)
+        public void Execute(int wbill_id)
         {
-            _wb = _db.WaybillList.AsNoTracking().FirstOrDefault(s => s.WbillId == _wbill_id);
+            _wb = _db.WaybillList.AsNoTracking().FirstOrDefault(s => s.WbillId == wbill_id);
             if (_wb == null)
             {
                 return;
             }
 
-            if (_pd == null)
+            if (_pd == null && ExecPayCheckBox.Checked)
             {
                 _pd = _db.PayDoc.Add(new PayDoc()
                 {
@@ -91,13 +93,12 @@ namespace SP_Sklad.MainTabs
                     Total = Convert.ToDecimal(SumEdit.EditValue),
                     Checked = Convert.ToInt32(ExecPayCheckBox.EditValue),
                     OnDate = _wb.OnDate,
-                    CTypeId = Convert.ToInt32(CashEdit.EditValue),  // За товар
                     WithNDS = 1,  // З НДС
-                    PTypeId = Convert.ToInt32(PTypeComboBox.EditValue),  // Наличкой
+                    PTypeId = Convert.ToInt32(PTypeComboBox.EditValue),  // Вид оплати
                     CashId = Convert.ToInt32(CashEdit.EditValue),  // Каса по умолчанию
                     CurrId = 2,  //Валюта по умолчанию
                     OnValue = 1,  //Курс валюти
-                    MPersonId = _wb.PersonId ?? _wb.KaId // Виконавець
+                    MPersonId = Convert.ToInt32(PersonEdit.EditValue)
                 });
 
                 if (new int[] { 1, 6, 16 }.Contains(_wb.WType)) _pd.DocType = -1;   // Вихідний платіж
@@ -111,9 +112,8 @@ namespace SP_Sklad.MainTabs
                 {
                     _db.SP_SET_DOCREL(_wb.DocId, new_pd.DocId);
                 }
-
             }
-            else
+            else if (_pd != null)
             {
                 if (_pd.Checked == 1)
                 {
@@ -128,7 +128,7 @@ namespace SP_Sklad.MainTabs
                 _pd.CTypeId = Convert.ToInt32(CashEdit.EditValue);
                 _pd.PTypeId = Convert.ToInt32(PTypeComboBox.EditValue);
                 _pd.CashId = Convert.ToInt32(CashEdit.EditValue);
-                _pd.MPersonId = _wb.PersonId ?? _wb.KaId;
+                _pd.MPersonId = Convert.ToInt32(PersonEdit.EditValue);
             }
 
             _db.SaveChanges();
