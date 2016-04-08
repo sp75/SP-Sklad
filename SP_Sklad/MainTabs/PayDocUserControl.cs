@@ -32,30 +32,24 @@ namespace SP_Sklad.MainTabs
             if (rel != null)
             {
                 _pd = db.Database.SqlQuery<PayDoc>("select * from  PayDoc WITH (UPDLOCK) where DocId = {0}", rel.DocId).FirstOrDefault();
-                _db.Entry<PayDoc>(_pd).State = System.Data.Entity.EntityState.Modified;
 
-                ExecPayCheckBox.EditValue = _pd.Checked;
-                SetValue();
+                if ( _pd != null )
+                {
+                    _db.Entry<PayDoc>(_pd).State = System.Data.Entity.EntityState.Modified;
+
+                    ExecPayCheckBox.EditValue = _pd.Checked;
+                    NumEdit.EditValue = _pd.DocNum;
+                    PTypeComboBox.EditValue = _pd.PTypeId;
+                    CashEdit.EditValue = _pd.CashId;
+                    PersonEdit.EditValue = _pd.MPersonId;
+                    SumEdit.EditValue = _pd.Total;
+                    CurrEdit.EditValue = _pd.CurrId;
+                }
             }
             else
             {
                 ExecPayCheckBox.EditValue = 0;
             }
-        }
-
-        public void SetValue()
-        {
-            if (_pd == null)
-            {
-                return;
-            }
-
-            NumEdit.EditValue = _pd.DocNum;
-            PTypeComboBox.EditValue = _pd.PTypeId;
-            CashEdit.EditValue = _pd.CashId;
-            PersonEdit.EditValue = _pd.MPersonId;
-            SumEdit.EditValue = _pd.Total;
-            CurrEdit.EditValue = _pd.CurrId;
 
             PTypeComboBox.Properties.DataSource = DBHelper.PayTypes;
             CashEdit.Properties.DataSource = DBHelper.CashDesks;
@@ -64,104 +58,80 @@ namespace SP_Sklad.MainTabs
 
         private void ExecPayCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (_pd != null && ExecPayCheckBox.Focused)
+            if (_pd == null)
             {
-                _pd.Checked = Convert.ToInt32(ExecPayCheckBox.EditValue);
-                _db.SaveChanges();
-            }
-
-
-        /*    if (ExecPayCheckBox.Checked && _pd == null)
-            {
-                int wtype = _wb.WType;
-
-                _pd = new PayDoc()
+                SumEdit.EditValue = _wb.SummAll;
+                if (NumEdit.EditValue == null)
                 {
-                    DocNum = new BaseEntities().GetCounter("pay_doc").FirstOrDefault(), //Номер документа
-                    Total = _wb.SummAll.Value,
-                    Checked = 0,
-                    OnDate = DateTime.Now,
-                    CTypeId = 1,  // За товар
-                    WithNDS = 1,  // З НДС
-                    PTypeId = 1,  // Наличкой
-                    CashId = _db.CashDesks.FirstOrDefault(w => w.Def == 1).CashId,  // Каса по умолчанию
-                    CurrId = 2,  //Валюта по умолчанию
-                    OnValue = 1,  //Курс валюти
-                    MPersonId = 0 // Виконавець
-                };
+                    NumEdit.EditValue = new BaseEntities().GetCounter("pay_doc").FirstOrDefault();
+                }
+                var cd = _db.CashDesks.FirstOrDefault(w => w.Def == 1);
+                if (cd != null)
+                {
+                    CashEdit.EditValue = cd.CashId; // За товар
+                }
 
-                if (new int[] { 1, 6, 16 }.Contains(wtype)) _pd.DocType = -1;   // Вихідний платіж
-                if (new int[] { -1, -6, 2, -16 }.Contains(wtype)) _pd.DocType = 1;  // Вхідний платіж
-
-                SetValue();
-            }
-            else if (!ExecPayCheckBox.Checked && _pd != null)
-            {
-
-            }*/
+                PTypeComboBox.EditValue = 1;  // Наличкой
+           }
         }
 
         public void Execute(int _wbill_id)
         {
-        /*    _wb = _db.WaybillList.AsNoTracking().FirstOrDefault(s => s.WbillId == _wbill_id);
-
-            var rel = _db.GetRelDocList(_wb.DocId).FirstOrDefault(w => w.DocType == -3 || w.DocType == 3);
-
-            if (rel != null)
+            _wb = _db.WaybillList.AsNoTracking().FirstOrDefault(s => s.WbillId == _wbill_id);
+            if (_wb == null)
             {
-                if (_db.PayDoc.Any(w => w.DocId == rel.DocId))
-                {
-                    _db.Entry<PayDoc>(_pd).State = System.Data.Entity.EntityState.Modified;
-                   // _db.Entry<PayDoc>(_pd).Property(p => p.DocId).IsModified = false;
-                }
+                return;
             }
-            else if (ExecPayCheckBox.Checked)
+
+            if (_pd == null)
             {
-                _pd.KaId = _wb.KaId;
-                _pd.OnDate = _wb.OnDate;
-                _pd.Checked = Convert.ToInt32(ExecPayCheckBox.EditValue);
-                _pd.MPersonId = _wb.KaId;
-                var dfdf =_db.PayDoc.Add(_pd);
+                _pd = _db.PayDoc.Add(new PayDoc()
+                {
+                    DocNum = NumEdit.EditValue.ToString(), //Номер документа
+                    Total = Convert.ToDecimal(SumEdit.EditValue),
+                    Checked = Convert.ToInt32(ExecPayCheckBox.EditValue),
+                    OnDate = _wb.OnDate,
+                    CTypeId = Convert.ToInt32(CashEdit.EditValue),  // За товар
+                    WithNDS = 1,  // З НДС
+                    PTypeId = Convert.ToInt32(PTypeComboBox.EditValue),  // Наличкой
+                    CashId = Convert.ToInt32(CashEdit.EditValue),  // Каса по умолчанию
+                    CurrId = 2,  //Валюта по умолчанию
+                    OnValue = 1,  //Курс валюти
+                    MPersonId = _wb.PersonId ?? _wb.KaId // Виконавець
+                });
+
+                if (new int[] { 1, 6, 16 }.Contains(_wb.WType)) _pd.DocType = -1;   // Вихідний платіж
+                if (new int[] { -1, -6, 2, -16 }.Contains(_wb.WType)) _pd.DocType = 1;  // Вхідний платіж
+
                 _db.SaveChanges();
 
-               var ddd = _db.PayDoc.AsNoTracking().FirstOrDefault(w => w.PayDocId == _pd.PayDocId);
+                var new_pd = _db.PayDoc.AsNoTracking().FirstOrDefault(w => w.PayDocId == _pd.PayDocId);
 
-               _db.SP_SET_DOCREL(_wb.DocId, ddd.DocId);
-            }*/
+                if (new_pd != null)
+                {
+                    _db.SP_SET_DOCREL(_wb.DocId, new_pd.DocId);
+                }
 
+            }
+            else
+            {
+                if (_pd.Checked == 1)
+                {
+                    _pd.Checked = 0;
+                    _db.SaveChanges();
+                }
 
-    //        if (_pd == null) return;
-
-
+                _pd.DocNum = NumEdit.EditValue.ToString();
+                _pd.Total = Convert.ToDecimal(SumEdit.EditValue);
+                _pd.KaId = _wb.KaId;
+                _pd.Checked = Convert.ToInt32(ExecPayCheckBox.EditValue);
+                _pd.CTypeId = Convert.ToInt32(CashEdit.EditValue);
+                _pd.PTypeId = Convert.ToInt32(PTypeComboBox.EditValue);
+                _pd.CashId = Convert.ToInt32(CashEdit.EditValue);
+                _pd.MPersonId = _wb.PersonId ?? _wb.KaId;
+            }
 
             _db.SaveChanges();
-
-            /*
-            if (PayDoc->State == dsInsert || (PayDocCHECKED->Value == 0 && !PayDocCHECKED->IsNull))
-            {
-                PayDoc->Edit();
-                PayDocONDATE->Value = wayBillList->FieldByName("ONDATE")->Value;
-                PayDocKAID->Value = wayBillList->FieldByName("KAID")->Value;
-            }
-
-            if (cxCheckBox1->Checked && cxCheckBox1->Enabled)
-            {
-                PayDoc->Edit();
-                PayDocCHECKED->Value = 1;
-            }
-            else if (!cxCheckBox1->Checked && PayDoc->RecordCount > 0)
-            {
-                //		 PayDoc->Delete();
-            }
-
-            if (PayDoc->State == dsInsert || PayDoc->State == dsEdit) PayDoc->Post();
-
-            if (PayDocCHECKED->Value == 1 && cxCheckBox1->Enabled)
-            {
-                SET_DOCREL->ParamByName("DOCID")->Value = wayBillList->FieldByName("DOCID")->Value;
-                SET_DOCREL->ParamByName("RDOCID")->Value = PayDocDOCID->Value;
-                SET_DOCREL->ExecProc();
-            }*/
         }
     }
 }
