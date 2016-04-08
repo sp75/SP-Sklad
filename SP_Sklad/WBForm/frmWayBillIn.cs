@@ -53,11 +53,11 @@ namespace SP_Sklad.WBForm
             }
             else
             {
-                //wb = _db.WaybillList.Find(_wbill_id);
                 try
                 {
                     wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK) where WbillId = {0}", _wbill_id).FirstOrDefault();
                     _db.Entry<WaybillList>(wb).State = EntityState.Modified;
+                    _db.Entry<WaybillList>(wb).Property(f => f.SummPay).IsModified = false;
                 }
                 catch (SqlException exception)
                 {
@@ -124,26 +124,23 @@ namespace SP_Sklad.WBForm
             wb.OnDate = OnDateDBEdit.DateTime;
             wb.KaId = (int?)KagentComboBox.EditValue;
             wb.PersonId = (int?)PersonComboBox.EditValue;
-            wb.Checked = (int)TurnDocCheckBox.EditValue;
             wb.Reason = ReasonEdit.Text;
             wb.Notes = NotesEdit.Text;
             wb.UpdatedAt = DateTime.Now;
-            wb.Checked = Convert.ToInt32(TurnDocCheckBox.Checked);
+
             if (!CheckDate())
             {
                 return;
             }
            
             _db.SaveChanges();
+            payDocUserControl1.Execute(wb.WbillId);
 
             current_transaction.Commit();
 
             if (TurnDocCheckBox.Checked)
             {
-                using (var db = new BaseEntities())
-                {
-                    db.ExecuteWayBill(wb.WbillId, null);
-                }
+                _db.ExecuteWayBill(wb.WbillId, null);
             }
 
             Close();

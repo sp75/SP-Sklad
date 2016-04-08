@@ -149,7 +149,7 @@
     <Compile Include="SkladData\DOCS.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\DOCSREL.cs">
+    <Compile Include="SkladData\DocsRel.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\DOCTYP.cs">

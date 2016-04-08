@@ -20,7 +20,6 @@ namespace SP_Sklad.MainTabs
         public PayDocUserControl()
         {
             InitializeComponent();
-          
         }
 
         public void OnLoad(BaseEntities db, WaybillList wb)
@@ -33,6 +32,8 @@ namespace SP_Sklad.MainTabs
             if (rel != null)
             {
                 _pd = db.Database.SqlQuery<PayDoc>("select * from  PayDoc WITH (UPDLOCK) where DocId = {0}", rel.DocId).FirstOrDefault();
+                _db.Entry<PayDoc>(_pd).State = System.Data.Entity.EntityState.Modified;
+
                 ExecPayCheckBox.EditValue = _pd.Checked;
                 SetValue();
             }
@@ -63,7 +64,14 @@ namespace SP_Sklad.MainTabs
 
         private void ExecPayCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (ExecPayCheckBox.Checked && _pd == null)
+            if (_pd != null && ExecPayCheckBox.Focused)
+            {
+                _pd.Checked = Convert.ToInt32(ExecPayCheckBox.EditValue);
+                _db.SaveChanges();
+            }
+
+
+        /*    if (ExecPayCheckBox.Checked && _pd == null)
             {
                 int wtype = _wb.WType;
 
@@ -86,20 +94,45 @@ namespace SP_Sklad.MainTabs
                 if (new int[] { -1, -6, 2, -16 }.Contains(wtype)) _pd.DocType = 1;  // Вхідний платіж
 
                 SetValue();
-
             }
+            else if (!ExecPayCheckBox.Checked && _pd != null)
+            {
+
+            }*/
         }
 
-        public void Execute(WaybillList wb)
+        public void Execute(int _wbill_id)
         {
-            if (_pd == null) return;
+        /*    _wb = _db.WaybillList.AsNoTracking().FirstOrDefault(s => s.WbillId == _wbill_id);
 
-            _pd.KaId = wb.KaId;
-            _pd.OnDate = wb.OnDate;
-            _pd.Checked = Convert.ToInt32(ExecPayCheckBox.EditValue);
-            _db.PayDoc.Add(_pd);
-            _db.Entry<PayDoc>(_pd).State = System.Data.Entity.EntityState.Modified;
-            _db.Entry<PayDoc>(_pd).Property(p => p.DocId).IsModified = false;
+            var rel = _db.GetRelDocList(_wb.DocId).FirstOrDefault(w => w.DocType == -3 || w.DocType == 3);
+
+            if (rel != null)
+            {
+                if (_db.PayDoc.Any(w => w.DocId == rel.DocId))
+                {
+                    _db.Entry<PayDoc>(_pd).State = System.Data.Entity.EntityState.Modified;
+                   // _db.Entry<PayDoc>(_pd).Property(p => p.DocId).IsModified = false;
+                }
+            }
+            else if (ExecPayCheckBox.Checked)
+            {
+                _pd.KaId = _wb.KaId;
+                _pd.OnDate = _wb.OnDate;
+                _pd.Checked = Convert.ToInt32(ExecPayCheckBox.EditValue);
+                _pd.MPersonId = _wb.KaId;
+                var dfdf =_db.PayDoc.Add(_pd);
+                _db.SaveChanges();
+
+               var ddd = _db.PayDoc.AsNoTracking().FirstOrDefault(w => w.PayDocId == _pd.PayDocId);
+
+               _db.SP_SET_DOCREL(_wb.DocId, ddd.DocId);
+            }*/
+
+
+    //        if (_pd == null) return;
+
+
 
             _db.SaveChanges();
 

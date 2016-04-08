@@ -26,8 +26,6 @@ namespace SP_Sklad.SkladData
             this.KAADDR = new HashSet<KAADDR>();
             this.KAMATDISCOUNT = new HashSet<KAMATDISCOUNT>();
             this.KAMATGROUPDISCOUNT = new HashSet<KAMATGROUPDISCOUNT>();
-            this.PayDoc = new HashSet<PayDoc>();
-            this.PayDoc1 = new HashSet<PayDoc>();
             this.TAXWB = new HashSet<TAXWB>();
             this.WaybillList = new HashSet<WaybillList>();
             this.WAYBILLMOVE = new HashSet<WAYBILLMOVE>();
@@ -41,6 +39,8 @@ namespace SP_Sklad.SkladData
             this.WAYBILLMAKE = new HashSet<WAYBILLMAKE>();
             this.WaybillList2 = new HashSet<WaybillList>();
             this.WAYBILLSVC = new HashSet<WAYBILLSVC>();
+            this.PayDoc = new HashSet<PayDoc>();
+            this.PayDoc1 = new HashSet<PayDoc>();
         }
     
         public int KaId { get; set; }
@@ -84,8 +84,6 @@ namespace SP_Sklad.SkladData
         public virtual KADISCOUNT KADISCOUNT { get; set; }
         public virtual ICollection<KAMATDISCOUNT> KAMATDISCOUNT { get; set; }
         public virtual ICollection<KAMATGROUPDISCOUNT> KAMATGROUPDISCOUNT { get; set; }
-        public virtual ICollection<PayDoc> PayDoc { get; set; }
-        public virtual ICollection<PayDoc> PayDoc1 { get; set; }
         public virtual ICollection<TAXWB> TAXWB { get; set; }
         public virtual ICollection<WaybillList> WaybillList { get; set; }
         public virtual ICollection<WAYBILLMOVE> WAYBILLMOVE { get; set; }
@@ -99,5 +97,7 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<WAYBILLMAKE> WAYBILLMAKE { get; set; }
         public virtual ICollection<WaybillList> WaybillList2 { get; set; }
         public virtual ICollection<WAYBILLSVC> WAYBILLSVC { get; set; }
+        public virtual ICollection<PayDoc> PayDoc { get; set; }
+        public virtual ICollection<PayDoc> PayDoc1 { get; set; }
     }
 }

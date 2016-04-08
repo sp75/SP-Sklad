@@ -50,5 +50,6 @@ namespace SP_Sklad.SkladData
         public int DefNum { get; set; }
         public Nullable<int> EntId { get; set; }
         public string EntName { get; set; }
+        public Nullable<decimal> Balans { get; set; }
     }
 }

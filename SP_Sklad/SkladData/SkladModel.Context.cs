@@ -47,7 +47,6 @@ namespace SP_Sklad.SkladData
         public DbSet<DISCCARDGRP> DISCCARDGRP { get; set; }
         public DbSet<DISCCARDS> DISCCARDS { get; set; }
         public DbSet<DOCS> DOCS { get; set; }
-        public DbSet<DOCSREL> DOCSREL { get; set; }
         public DbSet<DOCTYP> DOCTYP { get; set; }
         public DbSet<ENTPARAMS> ENTPARAMS { get; set; }
         public DbSet<FUNCTIONS> FUNCTIONS { get; set; }
@@ -111,10 +110,11 @@ namespace SP_Sklad.SkladData
         public DbSet<Actives> Actives { get; set; }
         public DbSet<WMatTurn> WMatTurn { get; set; }
         public DbSet<v_GetDocsTree> v_GetDocsTree { get; set; }
-        public DbSet<PayDoc> PayDoc { get; set; }
         public DbSet<CashDesks> CashDesks { get; set; }
         public DbSet<PayType> PayType { get; set; }
         public DbSet<Kagent> Kagent { get; set; }
+        public DbSet<DocsRel> DocsRel { get; set; }
+        public DbSet<PayDoc> PayDoc { get; set; }
     
         [EdmFunction("BaseEntities", "GetMatGroupTree")]
         public virtual IQueryable<GetMatGroupTree_Result> GetMatGroupTree(Nullable<int> root_cat_id)
@@ -860,44 +860,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWaybillDetIn_Result>("[BaseEntities].[GetWaybillDetIn](@wbill_id)", wbill_idParameter);
         }
     
-        [EdmFunction("BaseEntities", "GetWayBillList")]
-        public virtual IQueryable<GetWayBillList_Result> GetWayBillList(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> w_type, Nullable<int> @checked, Nullable<int> ka_id, Nullable<int> show_null_balance, string wh, Nullable<int> ent_id)
-        {
-            var from_dateParameter = from_date.HasValue ?
-                new ObjectParameter("from_date", from_date) :
-                new ObjectParameter("from_date", typeof(System.DateTime));
-    
-            var to_dateParameter = to_date.HasValue ?
-                new ObjectParameter("to_date", to_date) :
-                new ObjectParameter("to_date", typeof(System.DateTime));
-    
-            var w_typeParameter = w_type.HasValue ?
-                new ObjectParameter("w_type", w_type) :
-                new ObjectParameter("w_type", typeof(int));
-    
-            var checkedParameter = @checked.HasValue ?
-                new ObjectParameter("checked", @checked) :
-                new ObjectParameter("checked", typeof(int));
-    
-            var ka_idParameter = ka_id.HasValue ?
-                new ObjectParameter("ka_id", ka_id) :
-                new ObjectParameter("ka_id", typeof(int));
-    
-            var show_null_balanceParameter = show_null_balance.HasValue ?
-                new ObjectParameter("show_null_balance", show_null_balance) :
-                new ObjectParameter("show_null_balance", typeof(int));
-    
-            var whParameter = wh != null ?
-                new ObjectParameter("wh", wh) :
-                new ObjectParameter("wh", typeof(string));
-    
-            var ent_idParameter = ent_id.HasValue ?
-                new ObjectParameter("ent_id", ent_id) :
-                new ObjectParameter("ent_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillList_Result>("[BaseEntities].[GetWayBillList](@from_date, @to_date, @w_type, @checked, @ka_id, @show_null_balance, @wh, @ent_id)", from_dateParameter, to_dateParameter, w_typeParameter, checkedParameter, ka_idParameter, show_null_balanceParameter, whParameter, ent_idParameter);
-        }
-    
         [EdmFunction("BaseEntities", "SP_GET_MAT_NDS")]
         public virtual IQueryable<SP_GET_MAT_NDS_Result> SP_GET_MAT_NDS(Nullable<int> mATID)
         {
@@ -984,6 +946,44 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("doc_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetRelDocList_Result>("[BaseEntities].[GetRelDocList](@doc_id)", doc_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetWayBillList")]
+        public virtual IQueryable<GetWayBillList_Result> GetWayBillList(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> w_type, Nullable<int> @checked, Nullable<int> ka_id, Nullable<int> show_null_balance, string wh, Nullable<int> ent_id)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var w_typeParameter = w_type.HasValue ?
+                new ObjectParameter("w_type", w_type) :
+                new ObjectParameter("w_type", typeof(int));
+    
+            var checkedParameter = @checked.HasValue ?
+                new ObjectParameter("checked", @checked) :
+                new ObjectParameter("checked", typeof(int));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var show_null_balanceParameter = show_null_balance.HasValue ?
+                new ObjectParameter("show_null_balance", show_null_balance) :
+                new ObjectParameter("show_null_balance", typeof(int));
+    
+            var whParameter = wh != null ?
+                new ObjectParameter("wh", wh) :
+                new ObjectParameter("wh", typeof(string));
+    
+            var ent_idParameter = ent_id.HasValue ?
+                new ObjectParameter("ent_id", ent_id) :
+                new ObjectParameter("ent_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillList_Result>("[BaseEntities].[GetWayBillList](@from_date, @to_date, @w_type, @checked, @ka_id, @show_null_balance, @wh, @ent_id)", from_dateParameter, to_dateParameter, w_typeParameter, checkedParameter, ka_idParameter, show_null_balanceParameter, whParameter, ent_idParameter);
         }
     }
 }

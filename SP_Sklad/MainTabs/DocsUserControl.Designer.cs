@@ -84,6 +84,14 @@
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl3 = new DevExpress.XtraGrid.GridControl();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage9 = new DevExpress.XtraTab.XtraTabPage();
@@ -107,14 +115,6 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.BarImageList = new System.Windows.Forms.ImageList(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
-            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -468,6 +468,7 @@
             // gridColumn8
             // 
             this.gridColumn8.Caption = "Баланс";
+            this.gridColumn8.FieldName = "Balans";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 7;
@@ -798,6 +799,102 @@
             this.gridView3.Name = "gridView3";
             this.gridView3.OptionsView.ShowGroupPanel = false;
             // 
+            // gridColumn14
+            // 
+            this.gridColumn14.Caption = "gridColumn14";
+            this.gridColumn14.FieldName = "RelType";
+            this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.OptionsColumn.AllowEdit = false;
+            this.gridColumn14.OptionsColumn.AllowFocus = false;
+            this.gridColumn14.OptionsColumn.AllowMove = false;
+            this.gridColumn14.OptionsColumn.AllowSize = false;
+            this.gridColumn14.OptionsColumn.FixedWidth = true;
+            this.gridColumn14.OptionsColumn.ReadOnly = true;
+            this.gridColumn14.OptionsColumn.ShowCaption = false;
+            this.gridColumn14.OptionsColumn.TabStop = false;
+            this.gridColumn14.Visible = true;
+            this.gridColumn14.VisibleIndex = 0;
+            this.gridColumn14.Width = 25;
+            // 
+            // gridColumn15
+            // 
+            this.gridColumn15.Caption = "gridColumn15";
+            this.gridColumn15.FieldName = "DocType";
+            this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.OptionsColumn.AllowEdit = false;
+            this.gridColumn15.OptionsColumn.AllowFocus = false;
+            this.gridColumn15.OptionsColumn.AllowMove = false;
+            this.gridColumn15.OptionsColumn.AllowSize = false;
+            this.gridColumn15.OptionsColumn.FixedWidth = true;
+            this.gridColumn15.OptionsColumn.ReadOnly = true;
+            this.gridColumn15.OptionsColumn.ShowCaption = false;
+            this.gridColumn15.OptionsColumn.TabStop = false;
+            this.gridColumn15.Visible = true;
+            this.gridColumn15.VisibleIndex = 1;
+            this.gridColumn15.Width = 25;
+            // 
+            // gridColumn16
+            // 
+            this.gridColumn16.Caption = "gridColumn16";
+            this.gridColumn16.FieldName = "Checked";
+            this.gridColumn16.Name = "gridColumn16";
+            this.gridColumn16.OptionsColumn.AllowEdit = false;
+            this.gridColumn16.OptionsColumn.AllowFocus = false;
+            this.gridColumn16.OptionsColumn.AllowMove = false;
+            this.gridColumn16.OptionsColumn.AllowSize = false;
+            this.gridColumn16.OptionsColumn.FixedWidth = true;
+            this.gridColumn16.OptionsColumn.ReadOnly = true;
+            this.gridColumn16.OptionsColumn.ShowCaption = false;
+            this.gridColumn16.OptionsColumn.TabStop = false;
+            this.gridColumn16.Visible = true;
+            this.gridColumn16.VisibleIndex = 2;
+            this.gridColumn16.Width = 25;
+            // 
+            // gridColumn17
+            // 
+            this.gridColumn17.Caption = "Номер";
+            this.gridColumn17.FieldName = "Num";
+            this.gridColumn17.Name = "gridColumn17";
+            this.gridColumn17.Visible = true;
+            this.gridColumn17.VisibleIndex = 3;
+            this.gridColumn17.Width = 71;
+            // 
+            // gridColumn18
+            // 
+            this.gridColumn18.Caption = "Дата";
+            this.gridColumn18.FieldName = "OnDate";
+            this.gridColumn18.Name = "gridColumn18";
+            this.gridColumn18.Visible = true;
+            this.gridColumn18.VisibleIndex = 4;
+            this.gridColumn18.Width = 151;
+            // 
+            // gridColumn19
+            // 
+            this.gridColumn19.Caption = "Тип документу";
+            this.gridColumn19.FieldName = "DocTypeName";
+            this.gridColumn19.Name = "gridColumn19";
+            this.gridColumn19.Visible = true;
+            this.gridColumn19.VisibleIndex = 5;
+            this.gridColumn19.Width = 218;
+            // 
+            // gridColumn20
+            // 
+            this.gridColumn20.Caption = "Сума";
+            this.gridColumn20.FieldName = "Summ";
+            this.gridColumn20.Name = "gridColumn20";
+            this.gridColumn20.Visible = true;
+            this.gridColumn20.VisibleIndex = 6;
+            this.gridColumn20.Width = 116;
+            // 
+            // gridColumn21
+            // 
+            this.gridColumn21.Caption = "Валюта";
+            this.gridColumn21.FieldName = "CurrencyName";
+            this.gridColumn21.Name = "gridColumn21";
+            this.gridColumn21.Visible = true;
+            this.gridColumn21.VisibleIndex = 7;
+            this.gridColumn21.Width = 110;
+            // 
             // xtraTabPage6
             // 
             this.xtraTabPage6.Name = "xtraTabPage6";
@@ -994,102 +1091,6 @@
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
-            // 
-            // gridColumn14
-            // 
-            this.gridColumn14.Caption = "gridColumn14";
-            this.gridColumn14.FieldName = "RelType";
-            this.gridColumn14.Name = "gridColumn14";
-            this.gridColumn14.OptionsColumn.AllowEdit = false;
-            this.gridColumn14.OptionsColumn.AllowFocus = false;
-            this.gridColumn14.OptionsColumn.AllowMove = false;
-            this.gridColumn14.OptionsColumn.AllowSize = false;
-            this.gridColumn14.OptionsColumn.FixedWidth = true;
-            this.gridColumn14.OptionsColumn.ReadOnly = true;
-            this.gridColumn14.OptionsColumn.ShowCaption = false;
-            this.gridColumn14.OptionsColumn.TabStop = false;
-            this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 0;
-            this.gridColumn14.Width = 25;
-            // 
-            // gridColumn15
-            // 
-            this.gridColumn15.Caption = "gridColumn15";
-            this.gridColumn15.FieldName = "DocType";
-            this.gridColumn15.Name = "gridColumn15";
-            this.gridColumn15.OptionsColumn.AllowEdit = false;
-            this.gridColumn15.OptionsColumn.AllowFocus = false;
-            this.gridColumn15.OptionsColumn.AllowMove = false;
-            this.gridColumn15.OptionsColumn.AllowSize = false;
-            this.gridColumn15.OptionsColumn.FixedWidth = true;
-            this.gridColumn15.OptionsColumn.ReadOnly = true;
-            this.gridColumn15.OptionsColumn.ShowCaption = false;
-            this.gridColumn15.OptionsColumn.TabStop = false;
-            this.gridColumn15.Visible = true;
-            this.gridColumn15.VisibleIndex = 1;
-            this.gridColumn15.Width = 25;
-            // 
-            // gridColumn16
-            // 
-            this.gridColumn16.Caption = "gridColumn16";
-            this.gridColumn16.FieldName = "Checked";
-            this.gridColumn16.Name = "gridColumn16";
-            this.gridColumn16.OptionsColumn.AllowEdit = false;
-            this.gridColumn16.OptionsColumn.AllowFocus = false;
-            this.gridColumn16.OptionsColumn.AllowMove = false;
-            this.gridColumn16.OptionsColumn.AllowSize = false;
-            this.gridColumn16.OptionsColumn.FixedWidth = true;
-            this.gridColumn16.OptionsColumn.ReadOnly = true;
-            this.gridColumn16.OptionsColumn.ShowCaption = false;
-            this.gridColumn16.OptionsColumn.TabStop = false;
-            this.gridColumn16.Visible = true;
-            this.gridColumn16.VisibleIndex = 2;
-            this.gridColumn16.Width = 25;
-            // 
-            // gridColumn17
-            // 
-            this.gridColumn17.Caption = "Номер";
-            this.gridColumn17.FieldName = "Num";
-            this.gridColumn17.Name = "gridColumn17";
-            this.gridColumn17.Visible = true;
-            this.gridColumn17.VisibleIndex = 3;
-            this.gridColumn17.Width = 71;
-            // 
-            // gridColumn18
-            // 
-            this.gridColumn18.Caption = "Дата";
-            this.gridColumn18.FieldName = "OnDate";
-            this.gridColumn18.Name = "gridColumn18";
-            this.gridColumn18.Visible = true;
-            this.gridColumn18.VisibleIndex = 4;
-            this.gridColumn18.Width = 151;
-            // 
-            // gridColumn19
-            // 
-            this.gridColumn19.Caption = "Тип документу";
-            this.gridColumn19.FieldName = "DocTypeName";
-            this.gridColumn19.Name = "gridColumn19";
-            this.gridColumn19.Visible = true;
-            this.gridColumn19.VisibleIndex = 5;
-            this.gridColumn19.Width = 218;
-            // 
-            // gridColumn20
-            // 
-            this.gridColumn20.Caption = "Сума";
-            this.gridColumn20.FieldName = "Summ";
-            this.gridColumn20.Name = "gridColumn20";
-            this.gridColumn20.Visible = true;
-            this.gridColumn20.VisibleIndex = 6;
-            this.gridColumn20.Width = 116;
-            // 
-            // gridColumn21
-            // 
-            this.gridColumn21.Caption = "Валюта";
-            this.gridColumn21.FieldName = "CurrencyName";
-            this.gridColumn21.Name = "gridColumn21";
-            this.gridColumn21.Visible = true;
-            this.gridColumn21.VisibleIndex = 7;
-            this.gridColumn21.Width = 110;
             // 
             // DocsUserControl
             // 

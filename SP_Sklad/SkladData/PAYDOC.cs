@@ -36,13 +36,13 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> OnValue { get; set; }
         public string Schet { get; set; }
     
+        public virtual CashDesks CashDesks { get; set; }
         public virtual CHARGETYPE CHARGETYPE { get; set; }
         public virtual CURRENCY CURRENCY { get; set; }
         public virtual DOCS DOCS { get; set; }
-        public virtual KAGENTACCOUNT KAGENTACCOUNT { get; set; }
-        public virtual CashDesks CashDesks { get; set; }
-        public virtual PayType PayType { get; set; }
         public virtual Kagent Kagent { get; set; }
         public virtual Kagent Kagent1 { get; set; }
+        public virtual KAGENTACCOUNT KAGENTACCOUNT { get; set; }
+        public virtual PayType PayType { get; set; }
     }
 }

@@ -12,10 +12,10 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class DOCSREL
+    public partial class DocsRel
     {
-        public int DOCID { get; set; }
-        public int RDOCID { get; set; }
+        public int DocId { get; set; }
+        public int RDocId { get; set; }
     
         public virtual DOCS DOCS { get; set; }
     }
