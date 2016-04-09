@@ -103,7 +103,7 @@
     <Compile Include="SkladData\CashDesks.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\CHARGETYPE.cs">
+    <Compile Include="SkladData\ChargeType.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\CITYTYPE.cs">
@@ -194,6 +194,9 @@
     <Compile Include="SkladData\KAGENTDOC.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\KagentList.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\KAGENTPERSONS.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -201,9 +204,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\KAGENTTYP.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\KAGENT_LIST.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\KAKIND.cs">
@@ -406,10 +406,10 @@
     <Compile Include="SkladData\USERACCESSWH.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\v_GetDocsTree.cs">
+    <Compile Include="SkladData\Users.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\USERS.cs">
+    <Compile Include="SkladData\v_GetDocsTree.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\USERTREE.cs">

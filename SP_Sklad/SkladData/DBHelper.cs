@@ -12,22 +12,57 @@ namespace SP_Sklad.SkladData
     public static class DBHelper
     {
         private static List<PersonList> _person;
+        private static List<PersonList> _company;
         private static List<PayType> _pay_type;
         private static List<CashDesks> _cash_desks;
+        private static List<ChargeType> _charge_type;
+        private static LoginUser _current_user;
+        public static LoginUser CurrentUser
+        {
+            get
+            {
+                if (_current_user != null)
+                {
+                    return _current_user;
+                }
+
+                return _current_user = new BaseEntities().Users.Where(w => w.Name == "admin" && w.Pass == "1").Select(s => new LoginUser
+                {
+                    UserId = s.UserId,
+                    Name = s.Name,
+                    Pass = s.Pass,
+                    FullName = s.FullName,
+                    SysName = s.SysName,
+                    ShowBalance = s.ShowBalance,
+                    ShowPrice = s.ShowPrice,
+                    EnableEditDate = s.EnableEditDate,
+                    KaId = s.Kagent.FirstOrDefault().KaId
+                }).FirstOrDefault();
+            }
+        }
 
         public static List<PersonList> Persons
         {
             get
             {
-                if (_person == null)
+                if (_person != null)
                 {
-                    _person = new BaseEntities().Kagent.Where(w => w.KType == 2).Select(s => new PersonList() { KaId = s.KaId, Name = s.Name }).ToList();
+                    return _person;
                 }
-                return _person;
+                return new BaseEntities().Kagent.Where(w => w.KType == 2).Select(s => new PersonList() { KaId = s.KaId, Name = s.Name }).ToList();
             }
-
         }
-
+        public static List<PersonList> Company
+        {
+            get
+            {
+                if ( _company != null )
+                {
+                    return _company;
+                }
+                return _company = new BaseEntities().Kagent.Where(w => w.KType == 3).Select(s => new PersonList() { KaId = s.KaId, Name = s.Name }).ToList();
+            }
+        }
         public static List<PayType> PayTypes
         {
             get
@@ -51,7 +86,17 @@ namespace SP_Sklad.SkladData
                 return _cash_desks;
             }
         }
-
+        public static List<ChargeType> ChargeTypes
+        {
+            get
+            {
+                if (_charge_type == null)
+                {
+                    _charge_type = new BaseEntities().ChargeType.ToList();
+                }
+                return _charge_type;
+            }
+        }
  
         public static List<WAREHOUSE> WhList()
         {
@@ -85,12 +130,7 @@ namespace SP_Sklad.SkladData
             return result;
         }
 
-        /*    public static void Person()
-            {
-                _person = new BaseEntities().Kagent.Where(w => w.KType == 2).Select(s => new Kagent() { KaId = s.KaId, Name = s.Name }).ToList();
-            }*/
-
-       
+      
 
     }
 
@@ -99,4 +139,9 @@ namespace SP_Sklad.SkladData
         public int KaId { get; set; }
         public String Name { get; set; }
     }
+
+     public class LoginUser : Users
+     {
+         public int KaId { get; set; }
+     }
 }

@@ -24,6 +24,6 @@ namespace SP_Sklad.SkladData
         public int CANPOST { get; set; }
     
         public virtual FUNCTIONS FUNCTIONS { get; set; }
-        public virtual USERS USERS { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

@@ -46,9 +46,10 @@ namespace SP_Sklad.WBForm
                 {
                     WType = _wtype,
                     OnDate = DBHelper.ServerDateTime(),
-                    Num = _db.GetCounter("wb_in").FirstOrDefault(),
+                    Num =  new BaseEntities().GetCounter("wb_in").FirstOrDefault(),
                     CurrId = 2,
-                    OnValue = 1
+                    OnValue = 1,
+                    PersonId = DBHelper.CurrentUser.KaId
                 });
 
                 _db.SaveChanges();
@@ -89,7 +90,8 @@ namespace SP_Sklad.WBForm
             WHComboBox.Properties.DataSource = wh_list;
             WHComboBox.EditValue = wh_list.Where(w => w.DEF == 1).Select(s => s.WID).FirstOrDefault();
 
-            PersonComboBox.Properties.DataSource = DBHelper.Persons; // _db.Kagent.Where(w => w.KType == 2).Select(s => new { s.KaId, s.Name }).ToList();
+            PersonComboBox.Properties.DataSource = DBHelper.Persons;
+            
         }
 
         private void GetDocValue(WaybillList wb)
@@ -102,6 +104,7 @@ namespace SP_Sklad.WBForm
             TurnDocCheckBox.Checked = Convert.ToBoolean(wb.Checked);
             ReasonEdit.Text = wb.Reason;
             NotesEdit.Text = wb.Notes;
+            PersonComboBox.EditValue = wb.PersonId;
 
             payDocUserControl1.OnLoad(_db, wb);
         }

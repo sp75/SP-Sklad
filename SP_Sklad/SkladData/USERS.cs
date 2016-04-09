@@ -12,26 +12,28 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class USERS
+    public partial class Users
     {
-        public USERS()
+        public Users()
         {
             this.PRINTLOG = new HashSet<PRINTLOG>();
             this.USERACCESS = new HashSet<USERACCESS>();
             this.USERACCESSWH = new HashSet<USERACCESSWH>();
+            this.Kagent = new HashSet<Kagent>();
         }
     
-        public int USERID { get; set; }
-        public string NAME { get; set; }
-        public string PASS { get; set; }
-        public string FULLNAME { get; set; }
-        public string SYSNAME { get; set; }
-        public Nullable<int> SHOWBALANCE { get; set; }
-        public Nullable<int> SHOWPRICE { get; set; }
-        public Nullable<int> ENABLEEDITDATE { get; set; }
+        public int UserId { get; set; }
+        public string Name { get; set; }
+        public string Pass { get; set; }
+        public string FullName { get; set; }
+        public string SysName { get; set; }
+        public Nullable<int> ShowBalance { get; set; }
+        public Nullable<int> ShowPrice { get; set; }
+        public Nullable<int> EnableEditDate { get; set; }
     
         public virtual ICollection<PRINTLOG> PRINTLOG { get; set; }
         public virtual ICollection<USERACCESS> USERACCESS { get; set; }
         public virtual ICollection<USERACCESSWH> USERACCESSWH { get; set; }
+        public virtual ICollection<Kagent> Kagent { get; set; }
     }
 }

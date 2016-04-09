@@ -4,12 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5e7c272d2512446f8ce1b9cffb9ff8cd" Name="Diagram1" ZoomLevel="49">
+      <Diagram DiagramId="5e7c272d2512446f8ce1b9cffb9ff8cd" Name="Diagram1" ZoomLevel="94">
         <EntityTypeShape EntityType="BaseModel.ACCOUNTTYPE" Width="1.5" PointX="0.75" PointY="50.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.BANKS" Width="1.5" PointX="0.75" PointY="53.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.BANKSPERSONS" Width="1.5" PointX="3" PointY="70.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.BLOBS" Width="1.5" PointX="9.75" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.CHARGETYPE" Width="1.5" PointX="6" PointY="57.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.CITYTYPE" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.COMMISSION" Width="1.5" PointX="3" PointY="41.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.COMMONPARAMS" Width="1.5" PointX="9.75" PointY="11.5" IsExpanded="true" />
@@ -67,7 +66,6 @@
         <EntityTypeShape EntityType="BaseModel.TAXWBDET" Width="1.5" PointX="11.25" PointY="34.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.TECHPROCDET" Width="1.5" PointX="16.25" PointY="38.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.TECHPROCESS" Width="1.5" PointX="14" PointY="37.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.USERS" Width="1.5" PointX="1.25" PointY="27.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.USERTREE" Width="1.5" PointX="5" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.USERTREEVIEW" Width="1.5" PointX="7.25" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.VIEWLNG" Width="1.5" PointX="9.5" PointY="4.875" IsExpanded="true" />
@@ -77,7 +75,6 @@
         <EntityTypeShape EntityType="BaseModel.WAYBILLMAKE" Width="1.5" PointX="16.25" PointY="47" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.WAYBILLMOVE" Width="1.5" PointX="19.25" PointY="42.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.WAYBILLSVC" Width="1.5" PointX="19.25" PointY="46.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.KAGENT_LIST" Width="1.5" PointX="13.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.USER_TREE_ACCESS" Width="1.5" PointX="13.75" PointY="11.5" IsExpanded="true" />
         <AssociationConnector Association="BaseModel.FK_AGENTACC_FK_AGENTA_ACCOUNTT" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_AGENTACC_FK_AGENTA_BANKS" ManuallyRouted="false" />
@@ -137,7 +134,6 @@
         <AssociationConnector Association="BaseModel.FK__POSREMAINS__WID__2EA5EC27" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_PRICELISTDET_PRICELIST" ManuallyRouted="false" />
-        <AssociationConnector Association="BaseModel.FK_PRINTLOG_2" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_REPLNG_REPID" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_SERVICES_1" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_WBS_SVCID" ManuallyRouted="false" />
@@ -151,9 +147,7 @@
         <AssociationConnector Association="BaseModel.FK_WAYBILLMAKE_WAREHOUSE" ManuallyRouted="false" />
         <EntityTypeShape EntityType="BaseModel.USERACCESS" Width="1.5" PointX="2.3625325552944711" PointY="27.735571054618607" />
         <AssociationConnector Association="BaseModel.FK_USERACCE_FK_USERAC_FUNCTION" />
-        <AssociationConnector Association="BaseModel.FK_USERACCESS_1" />
         <EntityTypeShape EntityType="BaseModel.USERACCESSWH" Width="1.5" PointX="0.21846595230440885" PointY="11.803432902229686" />
-        <AssociationConnector Association="BaseModel.FK_UAWH_USERID" />
         <AssociationConnector Association="BaseModel.FK_UAWH_WID" />
         <EntityTypeShape EntityType="BaseModel.WaybillList" Width="1.5" PointX="5.9715476436407986" PointY="24.577040057898053" />
         <AssociationConnector Association="BaseModel.FK_COMMISSION_WBILLID" />
@@ -190,7 +184,7 @@
         <EntityTypeShape EntityType="BaseModel.CashDesks" Width="1.5" PointX="5.4358159105460233" PointY="15.156837589646148" />
         <EntityTypeShape EntityType="BaseModel.PayType" Width="1.5" PointX="10.82716750112696" PointY="18.358269968236922" />
         <AssociationConnector Association="BaseModel.FK_MS_CASHID" />
-        <EntityTypeShape EntityType="BaseModel.Kagent" Width="1.5" PointX="2.0765050212277587" PointY="8.89710797783784" />
+        <EntityTypeShape EntityType="BaseModel.Kagent" Width="1.5" PointX="17.5" PointY="1.625" />
         <AssociationConnector Association="BaseModel.FK_COMMISSI_REFERENCE_KAGENT" />
         <AssociationConnector Association="BaseModel.FK_COMMISSION_1" />
         <AssociationConnector Association="BaseModel.FK_COMMISSION_2" />
@@ -219,17 +213,24 @@
         <AssociationConnector Association="BaseModel.FK_DOCSREL_REFERENCE_DOCS" />
         <EntityTypeShape EntityType="BaseModel.PayDoc" Width="1.5" PointX="2.4413153931690914" PointY="14.741952113221377" />
         <AssociationConnector Association="BaseModel.FK_PD_CASHID" />
-        <AssociationConnector Association="BaseModel.FK__PAYDOC__CTYPEID__2334397B" />
         <AssociationConnector Association="BaseModel.FK__PAYDOC__CURRID__214BF109" />
         <AssociationConnector Association="BaseModel.FK_PAYDOC_REF_PD_DO_DOCS" />
         <AssociationConnector Association="BaseModel.FK__PAYDOC__KAID__19AACF41" />
         <AssociationConnector Association="BaseModel.FK__PAYDOC__MPERSONI__22401542" />
         <AssociationConnector Association="BaseModel.FK_PD_ACCID" />
         <AssociationConnector Association="BaseModel.FK__PAYDOC__PTYPEID__2057CCD0" />
+        <EntityTypeShape EntityType="BaseModel.ChargeType" Width="1.5" PointX="0.75" PointY="0.875" />
+        <AssociationConnector Association="BaseModel.FK__PAYDOC__CTYPEID__2334397B" />
+        <EntityTypeShape EntityType="BaseModel.Users" Width="1.5" PointX="0.75" PointY="37.125" />
+        <AssociationConnector Association="BaseModel.FK_PRINTLOG_2" />
+        <AssociationConnector Association="BaseModel.FK_USERACCESS_1" />
+        <AssociationConnector Association="BaseModel.FK_UAWH_USERID" />
+        <AssociationConnector Association="BaseModel.FK_Kagent_Users" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" >
         <EntityTypeShape EntityType="BaseModel.MaterialsList" Width="1.5" PointX="8.3328528592050315" PointY="13.042403614633905" />
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="6.0946835177460139" PointY="6.6090350628872567" />
+        <EntityTypeShape EntityType="BaseModel.KagentList" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

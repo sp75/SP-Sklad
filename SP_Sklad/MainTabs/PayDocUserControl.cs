@@ -62,8 +62,10 @@ namespace SP_Sklad.MainTabs
             {
                 return;
             }
+         //   _db.SaveChanges();
+        //    _wb = _db.WaybillList.AsNoTracking().FirstOrDefault(s => s.WbillId == _wb.WbillId);
 
-            SumEdit.EditValue = _wb.SummAll;
+            SumEdit.EditValue = _db.WaybillDet.Where(w => w.WbillId == _wb.WbillId).Sum(s => s.Total);
             if (NumEdit.EditValue == null)
             {
                 NumEdit.EditValue = new BaseEntities().GetCounter("pay_doc").FirstOrDefault();
@@ -74,7 +76,7 @@ namespace SP_Sklad.MainTabs
                 CashEdit.EditValue = cd.CashId; // За товар
             }
             PTypeComboBox.EditValue = 1;  // Наличкой
-            PersonEdit.EditValue = _wb.PersonId ?? _wb.KaId;// Виконавець
+           /*добавить текущего пользователя*/ PersonEdit.EditValue = _wb.PersonId ?? _wb.KaId;// Виконавець
         }
 
         public void Execute(int wbill_id)
@@ -96,6 +98,7 @@ namespace SP_Sklad.MainTabs
                     WithNDS = 1,  // З НДС
                     PTypeId = Convert.ToInt32(PTypeComboBox.EditValue),  // Вид оплати
                     CashId = Convert.ToInt32(CashEdit.EditValue),  // Каса по умолчанию
+                    CTypeId = 1, // За товар
                     CurrId = 2,  //Валюта по умолчанию
                     OnValue = 1,  //Курс валюти
                     MPersonId = Convert.ToInt32(PersonEdit.EditValue)
@@ -125,7 +128,6 @@ namespace SP_Sklad.MainTabs
                 _pd.Total = Convert.ToDecimal(SumEdit.EditValue);
                 _pd.KaId = _wb.KaId;
                 _pd.Checked = Convert.ToInt32(ExecPayCheckBox.EditValue);
-                _pd.CTypeId = Convert.ToInt32(CashEdit.EditValue);
                 _pd.PTypeId = Convert.ToInt32(PTypeComboBox.EditValue);
                 _pd.CashId = Convert.ToInt32(CashEdit.EditValue);
                 _pd.MPersonId = Convert.ToInt32(PersonEdit.EditValue);

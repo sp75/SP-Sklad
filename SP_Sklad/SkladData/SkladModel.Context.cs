@@ -32,7 +32,6 @@ namespace SP_Sklad.SkladData
         public DbSet<BANKS> BANKS { get; set; }
         public DbSet<BANKSPERSONS> BANKSPERSONS { get; set; }
         public DbSet<BLOBS> BLOBS { get; set; }
-        public DbSet<CHARGETYPE> CHARGETYPE { get; set; }
         public DbSet<CITYTYPE> CITYTYPE { get; set; }
         public DbSet<COMMISSION> COMMISSION { get; set; }
         public DbSet<COMMONPARAMS> COMMONPARAMS { get; set; }
@@ -90,7 +89,6 @@ namespace SP_Sklad.SkladData
         public DbSet<TAXWBDET> TAXWBDET { get; set; }
         public DbSet<TECHPROCDET> TECHPROCDET { get; set; }
         public DbSet<TECHPROCESS> TECHPROCESS { get; set; }
-        public DbSet<USERS> USERS { get; set; }
         public DbSet<USERTREE> USERTREE { get; set; }
         public DbSet<USERTREEVIEW> USERTREEVIEW { get; set; }
         public DbSet<VIEWLNG> VIEWLNG { get; set; }
@@ -100,7 +98,6 @@ namespace SP_Sklad.SkladData
         public DbSet<WAYBILLMAKE> WAYBILLMAKE { get; set; }
         public DbSet<WAYBILLMOVE> WAYBILLMOVE { get; set; }
         public DbSet<WAYBILLSVC> WAYBILLSVC { get; set; }
-        public DbSet<KAGENT_LIST> KAGENT_LIST { get; set; }
         public DbSet<USER_TREE_ACCESS> USER_TREE_ACCESS { get; set; }
         public DbSet<USERACCESS> USERACCESS { get; set; }
         public DbSet<USERACCESSWH> USERACCESSWH { get; set; }
@@ -115,6 +112,9 @@ namespace SP_Sklad.SkladData
         public DbSet<Kagent> Kagent { get; set; }
         public DbSet<DocsRel> DocsRel { get; set; }
         public DbSet<PayDoc> PayDoc { get; set; }
+        public DbSet<ChargeType> ChargeType { get; set; }
+        public DbSet<Users> Users { get; set; }
+        public DbSet<KagentList> KagentList { get; set; }
     
         [EdmFunction("BaseEntities", "GetMatGroupTree")]
         public virtual IQueryable<GetMatGroupTree_Result> GetMatGroupTree(Nullable<int> root_cat_id)

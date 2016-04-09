@@ -99,5 +99,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<WAYBILLSVC> WAYBILLSVC { get; set; }
         public virtual ICollection<PayDoc> PayDoc { get; set; }
         public virtual ICollection<PayDoc> PayDoc1 { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

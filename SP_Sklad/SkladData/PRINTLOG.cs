@@ -20,6 +20,6 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> ONDATE { get; set; }
         public Nullable<int> PRINTTYPE { get; set; }
     
-        public virtual USERS USERS { get; set; }
+        public virtual Users Users { get; set; }
     }
 }
