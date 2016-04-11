@@ -73,6 +73,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FinanseForm\frmPayDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinanseForm\frmPayDoc.Designer.cs">
+      <DependentUpon>frmPayDoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainTabs\DocsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -168,6 +174,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetMatGroupTree_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetPayDocList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetRelDocList_Result.cs">

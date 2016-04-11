@@ -62,8 +62,6 @@ namespace SP_Sklad.MainTabs
             {
                 return;
             }
-         //   _db.SaveChanges();
-        //    _wb = _db.WaybillList.AsNoTracking().FirstOrDefault(s => s.WbillId == _wb.WbillId);
 
             SumEdit.EditValue = _db.WaybillDet.Where(w => w.WbillId == _wb.WbillId).Sum(s => s.Total);
             if (NumEdit.EditValue == null)

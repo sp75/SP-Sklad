@@ -33,14 +33,14 @@ namespace SP_Sklad.MainTabs
 
         private void DocumentsPanel_Load(object sender, EventArgs e)
         {
-
+            wbContentTab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
         }
 
         public void OnLoad()
         {
             _db = new BaseEntities();
 
-            wbKagentList.Properties.DataSource = new List<object>() { new { KAID = 0, NAME = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
+            wbKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
             wbKagentList.EditValue = 0;
 
             wbSatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
@@ -49,18 +49,21 @@ namespace SP_Sklad.MainTabs
             wbStartDate.EditValue = DateTime.Now.AddDays(-30);
             wbEndDate.EditValue = DateTime.Now;
 
+            PDStartDate.EditValue = DateTime.Now.AddDays(-30);
+            PDEndDate.EditValue = DateTime.Now;
+
+            PDKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
+            PDKagentList.EditValue = 0;
+
+            PDSatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
+            PDSatusList.EditValue = -1;
+
             DocsTreeList.DataSource = _db.v_GetDocsTree.Where(w => w.UserId == null || w.UserId == USER_ID).OrderBy(o => o.Num).ToList();
             DocsTreeList.ExpandAll();
         }
 
         void GetWayBillList(int wtyp)
         {
-            DeleteItemBtn.Enabled = false;
-            ExecuteItemBtn.Enabled = false;
-            EditItemBtn.Enabled = false;
-            CopyItemBtn.Enabled = false;
-            PrintItemBtn.Enabled = false;
-
             if (wbSatusList.EditValue == null || wbKagentList.EditValue == null || DocsTreeList.FocusedNode==null)
             {
                 return;
@@ -74,6 +77,39 @@ namespace SP_Sklad.MainTabs
             gridControl1.DataSource = _db.GetWayBillList(satrt_date.Date, end_date.Date.AddDays(1), wtyp, (int)wbSatusList.EditValue, (int)wbKagentList.EditValue, show_null_balance, "*", 0).OrderByDescending(o => o.OnDate);
 
             WbGridView.FocusedRowHandle = FindRowHandleByRowObject(WbGridView, dr);
+        }
+
+        void GetPayDocList(int doc_typ)
+        {
+            if (PDSatusList.EditValue == null || PDKagentList.EditValue == null || DocsTreeList.FocusedNode == null)
+            {
+                return;
+            }
+
+            var satrt_date = PDStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : PDStartDate.DateTime;
+            var end_date = PDEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : PDEndDate.DateTime;
+
+            var dr = PayDocGridView.GetRow(PayDocGridView.FocusedRowHandle) as GetPayDocList_Result;
+
+            PDgridControl.DataSource = _db.GetPayDocList(doc_typ, satrt_date.Date, end_date.Date.AddDays(1), (int)PDKagentList.EditValue, (int)PDSatusList.EditValue, -1).OrderByDescending(o => o.OnDate).ToList();
+
+            PayDocGridView.FocusedRowHandle = FindPayDocRow(PayDocGridView, dr);
+
+        }
+
+        private int FindPayDocRow(GridView view, GetPayDocList_Result dr)
+        {
+            if (dr != null)
+            {
+                for (int i = 0; i < view.DataRowCount; i++)
+                {
+                    if (dr.PayDocId == (view.GetRow(i) as GetPayDocList_Result).PayDocId)
+                    {
+                        return i;
+                    }
+                }
+            }
+            return GridControl.InvalidRowHandle;
         }
 
         private int FindRowHandleByRowObject(GridView view, GetWayBillList_Result dr)
@@ -94,46 +130,47 @@ namespace SP_Sklad.MainTabs
 
         private void DocsTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
+            DeleteItemBtn.Enabled = false;
+            ExecuteItemBtn.Enabled = false;
+            EditItemBtn.Enabled = false;
+            CopyItemBtn.Enabled = false;
+            PrintItemBtn.Enabled = false;
+
             focused_tree_node = DocsTreeList.GetDataRecordByNode(e.Node) as v_GetDocsTree;
 
             cur_wtype = focused_tree_node.WType != null ? focused_tree_node.WType.Value : 0;
-           
-            switch (focused_tree_node.GType)
+            RefrechItemBtn.PerformClick();
+
+         /*   switch (focused_tree_node.GType)
             {
                 case 1:
                     //GET_RelDocList->DataSource = WayBillListDS;
                     GetWayBillList(cur_wtype);
-                    //                    WayBillListAfterScroll(WayBillList);
                     break;
 
-                /*        case 4: GET_RelDocList->DataSource = PayDocDS;
-                            PayDocTopPanelDate->Edit();
-                            if (DocsTreeDataID->Value == 103) PayDocTopPanelDateDOCTYPE->Value = -2;
-                            if (DocsTreeDataID->Value == 30) PayDocTopPanelDateDOCTYPE->Value = -1;
-                            if (DocsTreeDataID->Value == 29) PayDocTopPanelDateDOCTYPE->Value = 1;
-                            PayDocTopPanelDate->Post();
-                            PayDoc->FullRefresh();
-                            PayDocAfterScroll(PayDoc);
-                            break;
+                case 4:
+                    if (cur_wtype == -2) GetPayDocList(-2);
+                    else GetPayDocList(cur_wtype / 3);
 
-                        case 5: PriceList->CloseOpen(true);
-                            PriceListAfterScroll(PriceList);
-                            break;
+                    break;*/
 
-                        case 6: GET_RelDocList->DataSource = ContractsListDS;
-                            if (DocsTreeDataID->Value == 47) ContractsList->ParamByName("IN_DOCTYPE")->AsVariant = -1;
-                            if (DocsTreeDataID->Value == 46) ContractsList->ParamByName("IN_DOCTYPE")->AsVariant = 1;
-                            ContractsList->CloseOpen(true);
-                            ContractsListAfterScroll(ContractsList);
-                            break;
+                /*      case 5: PriceList->CloseOpen(true);
+                          PriceListAfterScroll(PriceList);
+                          break;
 
-                        case 7: GET_RelDocList->DataSource = TaxWBListDS;
-                            TaxWBList->CloseOpen(true);
-                            break;*/
-            }
+                      case 6: GET_RelDocList->DataSource = ContractsListDS;
+                          if (DocsTreeDataID->Value == 47) ContractsList->ParamByName("IN_DOCTYPE")->AsVariant = -1;
+                          if (DocsTreeDataID->Value == 46) ContractsList->ParamByName("IN_DOCTYPE")->AsVariant = 1;
+                          ContractsList->CloseOpen(true);
+                          ContractsListAfterScroll(ContractsList);
+                          break;
+
+                      case 7: GET_RelDocList->DataSource = TaxWBListDS;
+                          TaxWBList->CloseOpen(true);
+                          break;*/
+       /*     }*/
 
             wbContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
-
         }
 
         private void wbStartDate_Properties_EditValueChanged(object sender, EventArgs e)
@@ -576,7 +613,42 @@ namespace SP_Sklad.MainTabs
 
         private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            GetWayBillList(cur_wtype);
+            if (focused_tree_node == null)
+            {
+                return;
+            }
+
+            switch (focused_tree_node.GType)
+            {
+                case 1:
+                    //GET_RelDocList->DataSource = WayBillListDS;
+                    GetWayBillList(cur_wtype);
+                    break;
+
+                case 4:
+                    if (cur_wtype == -2) GetPayDocList(-2);
+                    else GetPayDocList(cur_wtype / 3);
+                    break;
+
+          /*      case 5: PriceList->Refresh();
+                    PriceList->FullRefresh();
+                    PLDetTree->FullRefresh();
+                    break;
+
+                case 6: ContractsList->Refresh();
+                    ContractsList->FullRefresh();
+                    ContrDet->FullRefresh();
+                    break;
+
+                case 7: TaxWBList->Refresh();
+                    TaxWBList->FullRefresh();
+                    TaxWBDet->FullRefresh();
+                    break;*/
+            }
+        //    GET_RelDocList->CloseOpen(true);
+
+
+            
         }
 
         private void ExecuteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -624,6 +696,29 @@ namespace SP_Sklad.MainTabs
         private void PrintItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
+        }
+
+        private void PayDocGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            var dr = PayDocGridView.GetRow(e.FocusedRowHandle) as GetPayDocList_Result;
+
+            if (dr != null)
+            {
+                RelPayDocGridControl.DataSource = _db.GetRelDocList(dr.DocId);
+            }
+
+            var tree_row = DocsTreeList.GetDataRecordByNode(DocsTreeList.FocusedNode) as v_GetDocsTree;
+
+            DeleteItemBtn.Enabled = (dr != null && dr.Checked == 0 && tree_row.CanDelete == 1);
+            ExecuteItemBtn.Enabled = (dr != null && tree_row.CanPost == 1);
+            EditItemBtn.Enabled = (dr != null && tree_row.CanModify == 1);
+            CopyItemBtn.Enabled = EditItemBtn.Enabled;
+            PrintItemBtn.Enabled = (dr != null);
+        }
+
+        private void PDStartDate_EditValueChanged(object sender, EventArgs e)
+        {
+            RefrechItemBtn.PerformClick();
         }
 
     }
