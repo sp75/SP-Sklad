@@ -31,11 +31,9 @@ namespace SP_Sklad.WBForm
             _wtype = wtype;
             _wbill_id = wbill_id;
             _db = new BaseEntities();
-      //      _db.Database.CommandTimeout = 1;
             current_transaction = _db.Database.BeginTransaction(IsolationLevel.RepeatableRead);
 
             InitializeComponent();
-            RefreshDet();
         }
 
         private void frmWayBillIn_Load(object sender, EventArgs e)
@@ -58,23 +56,14 @@ namespace SP_Sklad.WBForm
             {
                 try
                 {
-                    wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK) where WbillId = {0}", _wbill_id).FirstOrDefault();
+                    wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0}", _wbill_id).FirstOrDefault();
                     _db.Entry<WaybillList>(wb).State = EntityState.Modified;
                     _db.Entry<WaybillList>(wb).Property(f => f.SummPay).IsModified = false;
                 }
-                catch (SqlException exception)
+                catch
                 {
-                    if (!exception.Errors.Cast<SqlError>().Any(error =>
-                        (error.Number == DeadlockErrorNumber) ||
-                        (error.Number == LockingErrorNumber) ||
-                        (error.Number == UpdateConflictErrorNumber)))
-                    {
-                        Close();
-                    }
-                    else
-                    {
-                        Close();
-                    }
+
+                    Close();
                 }
 
             }
@@ -83,15 +72,15 @@ namespace SP_Sklad.WBForm
             {
                 GetDocValue(wb);
             }
-            
-            KagentComboBox.Properties.DataSource = _db.Kagent.Select(s => new { s.KaId, s.Name }).ToList();
+
+            KagentComboBox.Properties.DataSource = DBHelper.Kagents;
+            PersonComboBox.Properties.DataSource = DBHelper.Persons;
 
             var wh_list = DBHelper.WhList();
             WHComboBox.Properties.DataSource = wh_list;
             WHComboBox.EditValue = wh_list.Where(w => w.DEF == 1).Select(s => s.WID).FirstOrDefault();
 
-            PersonComboBox.Properties.DataSource = DBHelper.Persons;
-            
+            RefreshDet();
         }
 
         private void GetDocValue(WaybillList wb)
@@ -153,7 +142,11 @@ namespace SP_Sklad.WBForm
 
         private bool CheckDate()
         {
-            var q = _db.WMatTurn.Where(w => w.WaybillDet.WbillId == _wbill_id).Select(s => new { s.OnDate, s.WaybillDet.MATERIALS.NAME }).Distinct().FirstOrDefault();
+            var q = _db.WMatTurn.Where(w => w.WaybillDet.WbillId == _wbill_id).Select(s => new
+            {
+                s.OnDate,
+                s.WaybillDet.MATERIALS.NAME
+            }).Distinct().FirstOrDefault();
             /*  select first 1 distinct wmt.ondate, m.name
    from WMATTURN wmt, waybilldet wbd , materials m
    where wbd.wbillid=:WBILLID and m.matid = wbd.matid and wbd.posid=wmt.posid
@@ -248,12 +241,6 @@ namespace SP_Sklad.WBForm
 
             return recult;
         }
-
-        private const int DefaultRetryCount = 6;
-
-        private const int DeadlockErrorNumber = 1205;
-        private const int LockingErrorNumber = 1222;
-        private const int UpdateConflictErrorNumber = 3960;
 
         private void NUMDBTextEdit_EditValueChanged(object sender, EventArgs e)
         {

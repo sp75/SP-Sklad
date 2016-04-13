@@ -29,9 +29,9 @@ namespace SP_Sklad.SkladData
         public Nullable<int> DOCID { get; set; }
         public Nullable<int> PTYPEID { get; set; }
     
-        public virtual CURRENCY CURRENCY { get; set; }
         public virtual DOCS DOCS { get; set; }
         public virtual PRICETYPES PRICETYPES { get; set; }
         public virtual ICollection<PRICELISTDET> PRICELISTDET { get; set; }
+        public virtual Currency Currency { get; set; }
     }
 }

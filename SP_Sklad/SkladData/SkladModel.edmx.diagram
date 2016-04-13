@@ -17,7 +17,6 @@
         <EntityTypeShape EntityType="BaseModel.CONTRPARAMS" Width="1.5" PointX="8.25" PointY="48.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.CONTRRESULTS" Width="1.5" PointX="8.25" PointY="51.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.COUNTRIES" Width="1.5" PointX="6.75" PointY="17.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.CURRENCY" Width="1.5" PointX="8.75" PointY="54.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.CURRENCYRATE" Width="1.5" PointX="11" PointY="58.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.DEBONINGDET" Width="1.5" PointX="16.25" PointY="43.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.DISCCARDGRP" Width="1.5" PointX="0.75" PointY="32.625" IsExpanded="true" />
@@ -81,21 +80,11 @@
         <AssociationConnector Association="BaseModel.FK_BANKSPERSONS_1" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_CONTRACT_REF_CONTR_DOCS" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_CONTRACT_REF_CONTR_PDOCS" ManuallyRouted="false" />
-        <AssociationConnector Association="BaseModel.FK_CONTRACT_REFERENCE_CURRENCY" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_CONTRDET_REFERENCE_CONTRACTS" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_CONTRPARAMS_CONTRACTS" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_CONTRRESULTS_CONTRACTS" ManuallyRouted="false" />
-        <AssociationConnector Association="BaseModel.FK_CONTRDET_REFERENCE_CURRENCY" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_CONTRDET_REFERENCE_MATERIAL" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK__MATERIALS__CID__662B2B3B" ManuallyRouted="false" />
-        <AssociationConnector Association="BaseModel.FK__CURRENCYR__CURRI__5EBF139D" ManuallyRouted="false" />
-        <AssociationConnector Association="BaseModel.FK__MATGROUPP__CURRI__6EC0713C" ManuallyRouted="false" />
-        <AssociationConnector Association="BaseModel.FK__MATPRICES__CURRI__73852659" ManuallyRouted="false" />
-        <AssociationConnector Association="BaseModel.FK__MATPRICES__CURRI__74794A92" ManuallyRouted="false" />
-        <AssociationConnector Association="BaseModel.FK_MS_CURRID" ManuallyRouted="false" />
-        <AssociationConnector Association="BaseModel.FK_PRICELIS_REFERENCE_CURRENCY" ManuallyRouted="false" />
-        <AssociationConnector Association="BaseModel.FK_SVC_CURRID" ManuallyRouted="false" />
-        <AssociationConnector Association="BaseModel.FK_WBS_CURRID" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_DEBONINGDET_MATERIALS" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_DISCCARDS_GRPID" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_WBDAP_CARDID" ManuallyRouted="false" />
@@ -151,7 +140,6 @@
         <AssociationConnector Association="BaseModel.FK_UAWH_WID" />
         <EntityTypeShape EntityType="BaseModel.WaybillList" Width="1.5" PointX="5.9715476436407986" PointY="24.577040057898053" />
         <AssociationConnector Association="BaseModel.FK_COMMISSION_WBILLID" />
-        <AssociationConnector Association="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY" />
         <AssociationConnector Association="BaseModel.FK_DEBONINGDET_WAYBILLLIST" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLL_REF_WBL_D_DOCS" />
         <AssociationConnector Association="BaseModel.FK_TECHPROCDET_WAYBILLLIST" />
@@ -160,7 +148,6 @@
         <AssociationConnector Association="BaseModel.FK_WBM_WBILLID" />
         <AssociationConnector Association="BaseModel.FK_WBS_WBILLID" />
         <EntityTypeShape EntityType="BaseModel.WaybillDet" Width="1.5" PointX="9.3776064745046224" PointY="11.874754240678044" />
-        <AssociationConnector Association="BaseModel.FK_WAYBILLD_REFERENCE_CURRENCY" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" />
         <AssociationConnector Association="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP" />
@@ -213,7 +200,6 @@
         <AssociationConnector Association="BaseModel.FK_DOCSREL_REFERENCE_DOCS" />
         <EntityTypeShape EntityType="BaseModel.PayDoc" Width="1.5" PointX="2.4413153931690914" PointY="14.741952113221377" />
         <AssociationConnector Association="BaseModel.FK_PD_CASHID" />
-        <AssociationConnector Association="BaseModel.FK__PAYDOC__CURRID__214BF109" />
         <AssociationConnector Association="BaseModel.FK_PAYDOC_REF_PD_DO_DOCS" />
         <AssociationConnector Association="BaseModel.FK__PAYDOC__KAID__19AACF41" />
         <AssociationConnector Association="BaseModel.FK__PAYDOC__MPERSONI__22401542" />
@@ -226,6 +212,20 @@
         <AssociationConnector Association="BaseModel.FK_USERACCESS_1" />
         <AssociationConnector Association="BaseModel.FK_UAWH_USERID" />
         <AssociationConnector Association="BaseModel.FK_Kagent_Users" />
+        <EntityTypeShape EntityType="BaseModel.Currency" Width="1.5" PointX="7.6469049209947251" PointY="22.547881896862705" />
+        <AssociationConnector Association="BaseModel.FK_CONTRACT_REFERENCE_CURRENCY" />
+        <AssociationConnector Association="BaseModel.FK_CONTRDET_REFERENCE_CURRENCY" />
+        <AssociationConnector Association="BaseModel.FK__CURRENCYR__CURRI__5EBF139D" />
+        <AssociationConnector Association="BaseModel.FK__MATGROUPP__CURRI__6EC0713C" />
+        <AssociationConnector Association="BaseModel.FK__MATPRICES__CURRI__73852659" />
+        <AssociationConnector Association="BaseModel.FK__MATPRICES__CURRI__74794A92" />
+        <AssociationConnector Association="BaseModel.FK__PAYDOC__CURRID__214BF109" />
+        <AssociationConnector Association="BaseModel.FK_MS_CURRID" />
+        <AssociationConnector Association="BaseModel.FK_PRICELIS_REFERENCE_CURRENCY" />
+        <AssociationConnector Association="BaseModel.FK_SVC_CURRID" />
+        <AssociationConnector Association="BaseModel.FK_WAYBILLD_REFERENCE_CURRENCY" />
+        <AssociationConnector Association="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY" />
+        <AssociationConnector Association="BaseModel.FK_WBS_CURRID" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" >
         <EntityTypeShape EntityType="BaseModel.MaterialsList" Width="1.5" PointX="8.3328528592050315" PointY="13.042403614633905" />

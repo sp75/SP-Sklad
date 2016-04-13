@@ -32,9 +32,9 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> NORM { get; set; }
         public Nullable<int> MID { get; set; }
     
-        public virtual CURRENCY CURRENCY { get; set; }
         public virtual MEASURES MEASURES { get; set; }
         public virtual SVCGROUP SVCGROUP { get; set; }
         public virtual ICollection<WAYBILLSVC> WAYBILLSVC { get; set; }
+        public virtual Currency Currency { get; set; }
     }
 }

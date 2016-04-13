@@ -40,7 +40,6 @@ namespace SP_Sklad.SkladData
         public DbSet<CONTRPARAMS> CONTRPARAMS { get; set; }
         public DbSet<CONTRRESULTS> CONTRRESULTS { get; set; }
         public DbSet<COUNTRIES> COUNTRIES { get; set; }
-        public DbSet<CURRENCY> CURRENCY { get; set; }
         public DbSet<CURRENCYRATE> CURRENCYRATE { get; set; }
         public DbSet<DEBONINGDET> DEBONINGDET { get; set; }
         public DbSet<DISCCARDGRP> DISCCARDGRP { get; set; }
@@ -115,6 +114,7 @@ namespace SP_Sklad.SkladData
         public DbSet<ChargeType> ChargeType { get; set; }
         public DbSet<Users> Users { get; set; }
         public DbSet<KagentList> KagentList { get; set; }
+        public DbSet<Currency> Currency { get; set; }
     
         [EdmFunction("BaseEntities", "GetMatGroupTree")]
         public virtual IQueryable<GetMatGroupTree_Result> GetMatGroupTree(Nullable<int> root_cat_id)
@@ -830,16 +830,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_WMATTURN_UPD", wBILLIDParameter, tURNTYPEParameter);
         }
     
-        [EdmFunction("BaseEntities", "WBDGetOut")]
-        public virtual IQueryable<WBDGetOut_Result> WBDGetOut(Nullable<int> wbill_id)
-        {
-            var wbill_idParameter = wbill_id.HasValue ?
-                new ObjectParameter("wbill_id", wbill_id) :
-                new ObjectParameter("wbill_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<WBDGetOut_Result>("[BaseEntities].[WBDGetOut](@wbill_id)", wbill_idParameter);
-        }
-    
         [EdmFunction("BaseEntities", "WBDGetOutP2")]
         public virtual IQueryable<WBDGetOutP2_Result> WBDGetOutP2(Nullable<int> wbill_id)
         {
@@ -1013,6 +1003,16 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("pay_type", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPayDocList_Result>("GetPayDocList", doc_typeParameter, from_dateParameter, to_dateParameter, ka_idParameter, checkedParameter, pay_typeParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetWayBillDetOut")]
+        public virtual IQueryable<GetWayBillDetOut_Result> GetWayBillDetOut(Nullable<int> wbill_id)
+        {
+            var wbill_idParameter = wbill_id.HasValue ?
+                new ObjectParameter("wbill_id", wbill_id) :
+                new ObjectParameter("wbill_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillDetOut_Result>("[BaseEntities].[GetWayBillDetOut](@wbill_id)", wbill_idParameter);
         }
     }
 }

@@ -11,12 +11,16 @@ namespace SP_Sklad.SkladData
 
     public static class DBHelper
     {
-        private static List<PersonList> _person;
+        private static List<PersonList> _persons;
         private static List<PersonList> _company;
         private static List<PayType> _pay_type;
         private static List<CashDesks> _cash_desks;
         private static List<ChargeType> _charge_type;
         private static LoginUser _current_user;
+        private static List<PersonList> _kagents;
+        private static List<Currency> _currency;
+        private static PersonList _enterprise;
+
         public static LoginUser CurrentUser
         {
             get
@@ -40,27 +44,50 @@ namespace SP_Sklad.SkladData
                 }).FirstOrDefault();
             }
         }
-
+        public static List<PersonList> Kagents
+        {
+            get
+            {
+                if (_kagents == null)
+                {
+                    _kagents = new BaseEntities().Kagent.Select(s => new PersonList() { KaId = s.KaId, Name = s.Name }).ToList();
+                }
+                return _kagents;
+            }
+        }
         public static List<PersonList> Persons
         {
             get
             {
-                if (_person != null)
+                if (_persons == null)
                 {
-                    return _person;
+                    _persons = new BaseEntities().Kagent.Where(w => w.KType == 2).Select(s => new PersonList() { KaId = s.KaId, Name = s.Name }).ToList();
                 }
-                return new BaseEntities().Kagent.Where(w => w.KType == 2).Select(s => new PersonList() { KaId = s.KaId, Name = s.Name }).ToList();
+                return _persons;
             }
         }
+
+        public static PersonList Enterprise
+        {
+            get
+            {
+                if (_enterprise == null)
+                {
+                    _enterprise = new BaseEntities().Kagent.Where(w => w.KType == 3).Select(s => new PersonList() { KaId = s.KaId, Name = s.Name }).FirstOrDefault();
+                }
+                return _enterprise;
+            }
+        }
+
         public static List<PersonList> Company
         {
             get
             {
-                if ( _company != null )
+                if (_company != null)
                 {
-                    return _company;
+                    _company = new BaseEntities().Kagent.Where(w => w.KType == 3).Select(s => new PersonList() { KaId = s.KaId, Name = s.Name }).ToList();
                 }
-                return _company = new BaseEntities().Kagent.Where(w => w.KType == 3).Select(s => new PersonList() { KaId = s.KaId, Name = s.Name }).ToList();
+                return _company;
             }
         }
         public static List<PayType> PayTypes
@@ -74,7 +101,6 @@ namespace SP_Sklad.SkladData
                 return _pay_type;
             }
         }
-
         public static List<CashDesks> CashDesks
         {
             get
@@ -92,16 +118,28 @@ namespace SP_Sklad.SkladData
             {
                 if (_charge_type == null)
                 {
-                    _charge_type = new BaseEntities().ChargeType.ToList();
+                    _charge_type = new BaseEntities().ChargeType.Where(w => w.Deleted == 0).ToList();
                 }
                 return _charge_type;
             }
         }
- 
         public static List<WAREHOUSE> WhList()
         {
             return new BaseEntities().WAREHOUSE.Where(w => w.DELETED == 0).ToList();
         }
+
+        public static List<Currency> Currency
+        {
+            get
+            {
+                if (_currency == null)
+                {
+                    _currency = new BaseEntities().Currency.ToList();
+                }
+                return _currency;
+            }
+        }
+
 
         public static DateTime ServerDateTime()
         {
@@ -130,8 +168,45 @@ namespace SP_Sklad.SkladData
             return result;
         }
 
-      
+        public static bool CheckInDate(WaybillList wb, BaseEntities db, DateTime date)
+        {
+            bool r = true;
+            var query = (from wmt1 in db.WMatTurn
+                         from wmt2 in db.WMatTurn
+                         from wbd in db.WaybillDet
+                         from m in db.MATERIALS
+                         where wbd.WbillId == wb.WbillId && m.MATID == wbd.MatId && wbd.PosId == wmt1.SourceId && wmt1.PosId == wmt2.SourceId && wmt1.TurnType != wmt2.TurnType
+                         orderby wmt2.OnDate descending
+                         select new
+                         {
+                             wmt2.OnDate,
+                             m.NAME
+                         }
+                         ).FirstOrDefault();
 
+            /*
+                            select first 1 distinct wmt2.ondate, m.name
+             from WMATTURN wmt1, WMATTURN wmt2, waybilldet wbd , materials m
+             where wbd.wbillid=:WBILLID and m.matid = wbd.matid and wbd.posid=wmt1.sourceid
+                 and wmt1.posid=wmt2.sourceid  and wmt1.turntype <> wmt2.turntype
+            order by wmt2.ondate desc
+             */
+
+            if (query != null && date < query.OnDate)
+            {
+                if (MessageBox.Show("Дата документа не може бути меншою за дату прибуткової партії! \nПозиція: " + query.NAME + " \nДата: " + query.OnDate.ToString() + " \nЗмінити дату докомента на " + query.OnDate.ToString() + "?", "Зміна дати докуманта", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                {
+                    wb.OnDate = query.OnDate;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    r = false;
+                }
+            }
+
+            return r;
+        }
     }
 
     public class PersonList

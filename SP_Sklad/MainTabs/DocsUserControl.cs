@@ -15,6 +15,8 @@ using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using SP_Sklad.Properties;
 using System.Data.SqlClient;
 using DevExpress.XtraGrid;
+using SP_Sklad.FinanseForm;
+using SP_Sklad.Common;
 
 namespace SP_Sklad.MainTabs
 {
@@ -64,6 +66,8 @@ namespace SP_Sklad.MainTabs
 
         void GetWayBillList(int wtyp)
         {
+            WBGridControl.DataSource = null;
+
             if (wbSatusList.EditValue == null || wbKagentList.EditValue == null || DocsTreeList.FocusedNode==null)
             {
                 return;
@@ -74,13 +78,15 @@ namespace SP_Sklad.MainTabs
          
             var dr = WbGridView.GetRow(WbGridView.FocusedRowHandle) as GetWayBillList_Result;
 
-            gridControl1.DataSource = _db.GetWayBillList(satrt_date.Date, end_date.Date.AddDays(1), wtyp, (int)wbSatusList.EditValue, (int)wbKagentList.EditValue, show_null_balance, "*", 0).OrderByDescending(o => o.OnDate);
+            WBGridControl.DataSource = _db.GetWayBillList(satrt_date.Date, end_date.Date.AddDays(1), wtyp, (int)wbSatusList.EditValue, (int)wbKagentList.EditValue, show_null_balance, "*", 0).OrderByDescending(o => o.OnDate);
 
             WbGridView.FocusedRowHandle = FindRowHandleByRowObject(WbGridView, dr);
         }
 
         void GetPayDocList(int doc_typ)
         {
+            PDgridControl.DataSource = null;
+
             if (PDSatusList.EditValue == null || PDKagentList.EditValue == null || DocsTreeList.FocusedNode == null)
             {
                 return;
@@ -200,27 +206,18 @@ namespace SP_Sklad.MainTabs
 
         private void NewItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //int GTYPE = (int)DocsTreeList.FocusedNode.GetValue("GTYPE");
-     //       int ID = (int)DocsTreeList.FocusedNode.GetValue("ID");
-
             switch (focused_tree_node.GType)
             {
-                case 1:	/*if(DocsTreeDataID->Value == 27 ||DocsTreeDataID->Value == 39 || DocsTreeDataID->Value == 107)
-				 {
-					frmWayBillOut = new  TfrmWayBillOut(Application);
-					frmWayBillOut->WayBillList->Open();
-					frmWayBillOut->WayBillList->Append();
-					if(DocsTreeDataID->Value == 27) frmWayBillOut->WayBillListWTYPE->Value = -1 ;
-					if(DocsTreeDataID->Value == 39) frmWayBillOut->WayBillListWTYPE->Value = 2 ;
-					if(DocsTreeDataID->Value == 107) frmWayBillOut->WayBillListWTYPE->Value  = -16;
-					frmWayBillOut->WayBillListENTID->Value = SkladData->EnterpriseKAID->Value ;
-					frmWayBillOut->WayBillList->Post();
-					frmWayBillOut->WayBillList->Edit();
-					frmWayBillOut->ShowModal() ;
-					delete frmWayBillOut;
-				 }*/
+                case 1:
+                    if (cur_wtype == -1 || cur_wtype == -16 || cur_wtype == 2) //Відаткова , замолення клиента , рахунок
+                    {
+                        using (var wb_in = new frmWayBillOut(cur_wtype, null))
+                        {
+                            wb_in.ShowDialog();
+                        }
 
-                    if (cur_wtype == 1 || focused_tree_node.Id == 16)  //Прибткова накладна , замовлення постачальникам
+                    }
+                    if (cur_wtype == 1 || cur_wtype == 16)  //Прибткова накладна , замовлення постачальникам
                     {
                         using (var wb_in = new frmWayBillIn(cur_wtype, null))
                         {
@@ -250,47 +247,46 @@ namespace SP_Sklad.MainTabs
                             }*/
                     break;
 
-                /*	case 4: frmPayDoc = new  TfrmPayDoc(Application);
-                            frmPayDoc->PayDoc->Open();
-                            frmPayDoc->PayDoc->Append();
-                            if(DocsTreeDataID->Value == 103) frmPayDoc->PayDocDOCTYPE->Value = -2;
-                            if(DocsTreeDataID->Value == 30) frmPayDoc->PayDocDOCTYPE->Value = -1;
-                            if(DocsTreeDataID->Value == 29) frmPayDoc->PayDocDOCTYPE->Value = 1;
-                            frmPayDoc->ShowModal() ;
-                            delete frmPayDoc;
-                            break;
+                case 4:
 
-                    case 5: frmPriceList = new  TfrmPriceList(Application);
-                            frmPriceList->PriceList->Open();
-                            frmPriceList->PriceList->Append();
-                            frmPriceList->ShowModal() ;
-                            delete frmPriceList;
-                            break;
+                    int? w_type = focused_tree_node.WType != -2 ? focused_tree_node.WType / 3 : focused_tree_node.WType;
+                    using (var pd = new frmPayDoc(w_type, null))
+                    {
+                        pd.ShowDialog();
+                    }
+                    break;
 
-                    case 6: frmContr = new  TfrmContr(Application);
-                            frmContr->CONTRACTS->Open();
-                            frmContr->CONTRACTS->Append();
-                            if(DocsTreeDataID->Value == 47) frmContr->CONTRACTSDOCTYPE->Value = -1;
-                            if(DocsTreeDataID->Value == 46) frmContr->CONTRACTSDOCTYPE->Value = 1;
-                            frmContr->CONTRACTS->Post();
-                            frmContr->CONTRACTS->Edit();
+                /*        case 5: frmPriceList = new  TfrmPriceList(Application);
+                                frmPriceList->PriceList->Open();
+                                frmPriceList->PriceList->Append();
+                                frmPriceList->ShowModal() ;
+                                delete frmPriceList;
+                                break;
 
-                            frmContr->CONTRPARAMS->Append();
-                            frmContr->CONTRPARAMS->Post();
-                            frmContr->CONTRRESULTS->Append();
+                        case 6: frmContr = new  TfrmContr(Application);
+                                frmContr->CONTRACTS->Open();
+                                frmContr->CONTRACTS->Append();
+                                if(DocsTreeDataID->Value == 47) frmContr->CONTRACTSDOCTYPE->Value = -1;
+                                if(DocsTreeDataID->Value == 46) frmContr->CONTRACTSDOCTYPE->Value = 1;
+                                frmContr->CONTRACTS->Post();
+                                frmContr->CONTRACTS->Edit();
 
-                            frmContr->ShowModal() ;
-                            delete frmContr;
-                            break;
+                                frmContr->CONTRPARAMS->Append();
+                                frmContr->CONTRPARAMS->Post();
+                                frmContr->CONTRRESULTS->Append();
 
-                    case 7: frmTaxWB = new  TfrmTaxWB(Application);
-                            frmTaxWB->TaxWB->Open();
-                            frmTaxWB->TaxWB->Append();
-                            frmTaxWB->TaxWB->Post();
-                            frmTaxWB->TaxWB->Edit();
-                            frmTaxWB->ShowModal() ;
-                            delete frmTaxWB;
-                            break;*/
+                                frmContr->ShowModal() ;
+                                delete frmContr;
+                                break;
+
+                        case 7: frmTaxWB = new  TfrmTaxWB(Application);
+                                frmTaxWB->TaxWB->Open();
+                                frmTaxWB->TaxWB->Append();
+                                frmTaxWB->TaxWB->Post();
+                                frmTaxWB->TaxWB->Edit();
+                                frmTaxWB->ShowModal() ;
+                                delete frmTaxWB;
+                                break;*/
             }
 
             GetWayBillList(cur_wtype);
@@ -302,264 +298,105 @@ namespace SP_Sklad.MainTabs
 
             using (var db = new BaseEntities())
             {
-
-                //   var current_transaction = db.Database.BeginTransaction(IsolationLevel.RepeatableRead);
                 switch (gtype)
                 {
                     case 1:
-                        var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
-                        int? result = 0;
-
-                        if (dr == null)
-                        {
-                            break;
-                        }
-
-                        var wb = new WaybillList();
-                        try
-                        {
-                            wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK) where WbillId = {0}", dr.WbillId).FirstOrDefault();//  db.WaybillList.AsNoTracking().FirstOrDefault(w => w.WbillId == dr.WbillId);
-                        }
-                        catch (SqlException exception)
-                        {
-                            MessageBox.Show(Resources.deadlock);
-                            break;
-                        }
-
-                        if (wb == null)
-                        {
-                            MessageBox.Show(Resources.not_find_wb);
-                            break;
-                        }
-
-                        if (wb.Checked == 1)
-                        {
-                            if (MessageBox.Show(Resources.edit_info, "Відміна проводки", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                            {
-                                result = DBHelper.StornoOrder(db, dr.WbillId);
-                            }
-                            else
-                            {
-                                result = 1;
-                            }
-                        }
-
-                        if (result == 1)
-                        {
-                            break;
-                        }
-
-                        if (cur_wtype == 1 || cur_wtype == 16)
-                        {
-                            using (var wb_in = new frmWayBillIn(cur_wtype, wb.WbillId))
-                            {
-                                wb_in.ShowDialog();
-                            }
-                        }
-                       
-
-
-                        /*	if(DocsTreeDataID->Value == 27 || DocsTreeDataID->Value == 39 || DocsTreeDataID->Value == 107)
-                             {
-                                try
-                                {
-                                  try
-                                  {
-                                    frmWayBillOut = new  TfrmWayBillOut(Application);
-                                    frmWayBillOut->WayBillList->ParamByName("WBILLID")->Value = WayBillListWBILLID->Value;
-                                    frmWayBillOut->WayBillList->Open();
-                                    frmWayBillOut->WayBillList->Edit();
-                                    frmWayBillOut->WayBillList->LockRecord(true)  ;
-                                    frmWayBillOut->ShowModal();
-                                  }
-                                  catch(const Exception& e)
-                                  {
-                                    frmWayBillOut->Close();
-                                    if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
-                                    else   ShowMessage(e.Message) ;
-                                  }
-                                }
-                                __finally
-                                {
-                                   delete frmWayBillOut ;
-                                }
-
-                             }
-
-                            if(DocsTreeDataID->Value == 57) // Повернення від кліента
-                             {
-                                try
-                                {
-                                  try
-                                  {
-                                    frmWBReturnIn  = new TfrmWBReturnIn(Application);
-                                    frmWBReturnIn->WayBillList->ParamByName("WBILLID")->Value = WayBillListWBILLID->Value;
-                                    frmWBReturnIn->WayBillList->Open();
-                                    frmWBReturnIn->WayBillList->Edit();
-                                    frmWBReturnIn->WayBillList->LockRecord()  ;
-                                    frmWBReturnIn->ShowModal();
-                                  }
-                                  catch(const Exception& e)
-                                  {
-                                    frmWBReturnIn->Close();
-                                    if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
-                                    else   ShowMessage(e.Message) ;
-                                  }
-                                }
-                                __finally
-                                {
-                                    delete frmWBReturnIn ;
-                                }
-                             }
-
-                            if(DocsTreeDataID->Value == 56) //Повернення постачальнику
-                             {
-                                try
-                                {
-                                  try
-                                  {
-                                    frmWBReturnOut  = new  TfrmWBReturnOut(Application);
-                                    frmWBReturnOut->WayBillList->ParamByName("WBILLID")->Value = WayBillListWBILLID->Value;
-                                    frmWBReturnOut->WayBillList->Open();
-                                    frmWBReturnOut->WayBillList->Edit();
-                                    frmWBReturnOut->WayBillList->LockRecord()  ;
-                                    frmWBReturnOut->ShowModal();
-                                  }
-                                  catch(const Exception& e)
-                                  {
-                                    frmWBReturnOut->Close();
-                                    if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
-                                      else ShowMessage(e.Message) ;
-                                  }
-                                }
-                                __finally
-                                {
-                                      delete frmWBReturnOut ;
-                                }
-                             }*/
-
+                        DocEdit.WBEdit(WbGridView.GetFocusedRow() as GetWayBillList_Result);
                         break;
-                    /*
-                            case 4: PayDoc->Refresh();
-                                    if(PayDocCHECKED->Value == 1)
-                                        if(MessageDlg(msg1,mtConfirmation,TMsgDlgButtons() << mbYes << mbNo ,0)==mrYes)
-                                           ExecuteBtn->Click();
-                                    if(PayDocCHECKED->Value == 0)
-                                     {
-                                         TfrmPayDoc *frmPD = new  TfrmPayDoc(Application);
-                                         try
-                                         {
+
+                    case 4:
+                        DocEdit.PDEdit(PayDocGridView.GetFocusedRow() as GetPayDocList_Result);
+                        break;
+
+                    /*            case 5: {
+                                          try
+                                          {
                                             try
                                             {
-                                              frmPD = new  TfrmPayDoc(Application);
-                                              frmPD->PayDoc->ParamByName("PAYDOCID")->Value = PayDocPAYDOCID->Value;
-                                              frmPD->PayDoc->Open();
-                                              frmPD->PayDoc->Edit();
-                                              frmPD->PayDoc->LockRecord()  ;
-                                              frmPD->ShowModal() ;
+                                               frmPriceList = new  TfrmPriceList(Application);
+                                               frmPriceList->PriceList->ParamByName("PLID")->Value = PriceListPLID->Value;
+                                               frmPriceList->PriceList->Open();
+                                               frmPriceList->PriceList->Edit();
+                                               frmPriceList->PriceList->LockRecord()  ;
+                                               frmPriceList->ShowModal() ;
                                             }
                                             catch(const Exception& e)
                                             {
-                                                if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
-                                                   else  ShowMessage(e.Message) ;
+                                               frmPriceList->Close();
+                                               if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
+                                                   else ShowMessage(e.Message) ;
+                                            }
+                                          }
+                                          __finally
+                                          {
+                                             delete frmPriceList ;
+                                          }
+                                        }
+                                        break;
+
+                                case 6: ContractsList->Refresh();
+                                        if(ContractsListCHECKED->Value == 1)
+                                            if(MessageDlg(msg1,mtConfirmation,TMsgDlgButtons() << mbYes << mbNo ,0)==mrYes)
+                                               ExecuteBtn->Click();
+
+                                        if(ContractsListCHECKED->Value == 0)
+                                         {
+                                            try
+                                            {
+                                              try
+                                              {
+                                                frmContr = new  TfrmContr(Application);
+                                                frmContr->CONTRACTS->ParamByName("CONTRID")->Value = ContractsListCONTRID->Value;
+                                                frmContr->CONTRACTS->Open();
+                                                frmContr->CONTRACTS->Edit();
+                                                frmContr->CONTRACTS->LockRecord()  ;
+                                                frmContr->ShowModal() ;
+
+                                              }
+                                              catch(const Exception& e)
+                                              {
+                                                 frmContr->Close();
+                                                 if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
+                                                    else   ShowMessage(e.Message) ;
+                                              }
+                                            }
+                                            __finally
+                                            {
+                                                delete frmContr;
                                             }
                                          }
-                                         __finally
-                                         {
-                                              delete frmPD ;
-                                         }
-                                     }
-                                    break;
+                                        break;
 
-                            case 5: {
-                                      try
-                                      {
-                                        try
+                                case 7: try
                                         {
-                                           frmPriceList = new  TfrmPriceList(Application);
-                                           frmPriceList->PriceList->ParamByName("PLID")->Value = PriceListPLID->Value;
-                                           frmPriceList->PriceList->Open();
-                                           frmPriceList->PriceList->Edit();
-                                           frmPriceList->PriceList->LockRecord()  ;
-                                           frmPriceList->ShowModal() ;
-                                        }
-                                        catch(const Exception& e)
-                                        {
-                                           frmPriceList->Close();
-                                           if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
-                                               else ShowMessage(e.Message) ;
-                                        }
-                                      }
-                                      __finally
-                                      {
-                                         delete frmPriceList ;
-                                      }
-                                    }
-                                    break;
-
-                            case 6: ContractsList->Refresh();
-                                    if(ContractsListCHECKED->Value == 1)
-                                        if(MessageDlg(msg1,mtConfirmation,TMsgDlgButtons() << mbYes << mbNo ,0)==mrYes)
-                                           ExecuteBtn->Click();
-
-                                    if(ContractsListCHECKED->Value == 0)
-                                     {
-                                        try
-                                        {
-                                          try
-                                          {
-                                            frmContr = new  TfrmContr(Application);
-                                            frmContr->CONTRACTS->ParamByName("CONTRID")->Value = ContractsListCONTRID->Value;
-                                            frmContr->CONTRACTS->Open();
-                                            frmContr->CONTRACTS->Edit();
-                                            frmContr->CONTRACTS->LockRecord()  ;
-                                            frmContr->ShowModal() ;
-
-                                          }
-                                          catch(const Exception& e)
-                                          {
-                                             frmContr->Close();
-                                             if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
-                                                else   ShowMessage(e.Message) ;
-                                          }
+                                           try
+                                           {
+                                             frmTaxWB = new  TfrmTaxWB(Application);
+                                             frmTaxWB->TaxWB->ParamByName("TWBID")->Value = TaxWBListTWBID->Value;
+                                             frmTaxWB->TaxWB->Open();
+                                             frmTaxWB->TaxWB->Edit();
+                                             frmTaxWB->TaxWB->LockRecord()  ;
+                                             frmTaxWB->ShowModal() ;
+                                           }
+                                           catch(const Exception& e)
+                                           {
+                                              frmTaxWB->Close();
+                                              if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
+                                                    else   ShowMessage(e.Message) ;
+                                           }
                                         }
                                         __finally
                                         {
-                                            delete frmContr;
+                                            delete frmTaxWB;
                                         }
-                                     }
-                                    break;
-
-                            case 7: try
-                                    {
-                                       try
-                                       {
-                                         frmTaxWB = new  TfrmTaxWB(Application);
-                                         frmTaxWB->TaxWB->ParamByName("TWBID")->Value = TaxWBListTWBID->Value;
-                                         frmTaxWB->TaxWB->Open();
-                                         frmTaxWB->TaxWB->Edit();
-                                         frmTaxWB->TaxWB->LockRecord()  ;
-                                         frmTaxWB->ShowModal() ;
-                                       }
-                                       catch(const Exception& e)
-                                       {
-                                          frmTaxWB->Close();
-                                          if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
-                                                else   ShowMessage(e.Message) ;
-                                       }
-                                    }
-                                    __finally
-                                    {
-                                        delete frmTaxWB;
-                                    }
-                                    break;*/
+                                        break;*/
 
                 }
                 //    current_transaction.Rollback();
             }
 
-            GetWayBillList(cur_wtype);
-          }
+            RefrechItemBtn.PerformClick();
+        }
 
         private void WbGridView_DoubleClick(object sender, EventArgs e)
         {
@@ -578,37 +415,51 @@ namespace SP_Sklad.MainTabs
         {
             int gtype = (int)DocsTreeList.FocusedNode.GetValue("GType");
             var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
-            try
+            var pd_row = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
+
+        //    var trans = _db.Database.BeginTransaction(IsolationLevel.RepeatableRead);
+            using (var db = new BaseEntities())
             {
-                switch (gtype)
-                {
-                    case 1: _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK) where WbillId = {0}", dr.WbillId).FirstOrDefault(); break;
-                    //	case 4: PayDoc->LockRecord();  break;
-                    //	case 5: PriceList->LockRecord();  break;
-                    //	case 6: ContractsList->LockRecord();  break;
-                    //	case 7: TaxWBList->LockRecord();  break;
-                }
-                if (MessageBox.Show(Resources.delete_wb, "Відалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+
+                try
                 {
                     switch (gtype)
                     {
-                        case 1:
-                            _db.WaybillList.Remove(_db.WaybillList.Find(dr.WbillId));
-                            break;
-                        //	   case 4: PayDoc->Delete();  break;
-                        //	   case 5: PriceList->Delete();  break;
-                        //	   case 6: ContractsList->Delete();  break;
-                        //	   case 7: TaxWBList->Delete();  break;
+                        case 1: db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK) where WbillId = {0}", dr.WbillId).FirstOrDefault(); break;
+                        case 4: db.Database.SqlQuery<PayDoc>("SELECT * from PayDoc WITH (UPDLOCK) where PayDocId = {0}", pd_row.PayDocId).FirstOrDefault(); break;
+                        //	case 5: PriceList->LockRecord();  break;
+                        //	case 6: ContractsList->LockRecord();  break;
+                        //	case 7: TaxWBList->LockRecord();  break;
+                    }
+                    if (MessageBox.Show(Resources.delete_wb, "Відалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    {
+                        switch (gtype)
+                        {
+                            case 1:
+                                db.WaybillList.Remove(_db.WaybillList.Find(dr.WbillId));
+                                break;
+
+                            case 4:
+                                db.PayDoc.Remove(_db.PayDoc.Find(pd_row.PayDocId));
+                                break;
+                            //	   case 5: PriceList->Delete();  break;
+                            //	   case 6: ContractsList->Delete();  break;
+                            //	   case 7: TaxWBList->Delete();  break;
+                        }
+                        db.SaveChanges();
                     }
                 }
-                _db.SaveChanges();
-                GetWayBillList(cur_wtype);
-            }
-            catch
-            {
-                MessageBox.Show(Resources.deadlock);
+                catch
+                {
+                    MessageBox.Show(Resources.deadlock);
+                }
+            /*    finally
+                {
+           //         trans.Commit();
+                }*/
             }
 
+            RefrechItemBtn.PerformClick();
         }
 
         private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -687,10 +538,17 @@ namespace SP_Sklad.MainTabs
                             MessageBox.Show(Resources.not_find_wb);
                         }
                         break;
+
+                    case 4:
+                        var pd_row = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
+                        var pd = _db.PayDoc.Find(pd_row.PayDocId);
+                        pd.Checked = pd_row.Checked == 0 ? 1 : 0;
+                        _db.SaveChanges();
+                        break;
                 }
             }
 
-            GetWayBillList(cur_wtype);
+            RefrechItemBtn.PerformClick();
         }
 
         private void PrintItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

@@ -21,7 +21,7 @@
           <EntitySet Name="CONTRPARAMS" EntityType="BaseModel.Store.CONTRPARAMS" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CONTRRESULTS" EntityType="BaseModel.Store.CONTRRESULTS" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="COUNTRIES" EntityType="BaseModel.Store.COUNTRIES" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="CURRENCY" EntityType="BaseModel.Store.CURRENCY" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Currency" EntityType="BaseModel.Store.Currency" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CURRENCYRATE" EntityType="BaseModel.Store.CURRENCYRATE" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DEBONINGDET" EntityType="BaseModel.Store.DEBONINGDET" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DISCCARDGRP" EntityType="BaseModel.Store.DISCCARDGRP" store:Type="Tables" Schema="dbo" />
@@ -335,7 +335,7 @@
       FROM [dbo].[v_GetDocsTree] AS [v_GetDocsTree]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK__CURRENCYR__CURRI__5EBF139D" Association="BaseModel.Store.FK__CURRENCYR__CURRI__5EBF139D">
-            <End Role="CURRENCY" EntitySet="CURRENCY" />
+            <End Role="Currency" EntitySet="Currency" />
             <End Role="CURRENCYRATE" EntitySet="CURRENCYRATE" />
           </AssociationSet>
           <AssociationSet Name="FK__FUNCTIONS__TABID__123EB7A3" Association="BaseModel.Store.FK__FUNCTIONS__TABID__123EB7A3">
@@ -391,7 +391,7 @@
             <End Role="MATERIALS" EntitySet="MATERIALS" />
           </AssociationSet>
           <AssociationSet Name="FK__MATGROUPP__CURRI__6EC0713C" Association="BaseModel.Store.FK__MATGROUPP__CURRI__6EC0713C">
-            <End Role="CURRENCY" EntitySet="CURRENCY" />
+            <End Role="Currency" EntitySet="Currency" />
             <End Role="MATGROUPPRICES" EntitySet="MATGROUPPRICES" />
           </AssociationSet>
           <AssociationSet Name="FK__MATGROUPP__PTYPE__6DCC4D03" Association="BaseModel.Store.FK__MATGROUPP__PTYPE__6DCC4D03">
@@ -399,11 +399,11 @@
             <End Role="MATGROUPPRICES" EntitySet="MATGROUPPRICES" />
           </AssociationSet>
           <AssociationSet Name="FK__MATPRICES__CURRI__73852659" Association="BaseModel.Store.FK__MATPRICES__CURRI__73852659">
-            <End Role="CURRENCY" EntitySet="CURRENCY" />
+            <End Role="Currency" EntitySet="Currency" />
             <End Role="MATPRICES" EntitySet="MATPRICES" />
           </AssociationSet>
           <AssociationSet Name="FK__MATPRICES__CURRI__74794A92" Association="BaseModel.Store.FK__MATPRICES__CURRI__74794A92">
-            <End Role="CURRENCY" EntitySet="CURRENCY" />
+            <End Role="Currency" EntitySet="Currency" />
             <End Role="MATPRICES" EntitySet="MATPRICES" />
           </AssociationSet>
           <AssociationSet Name="FK__MATPRICES__PTYPE__72910220" Association="BaseModel.Store.FK__MATPRICES__PTYPE__72910220">
@@ -423,7 +423,7 @@
             <End Role="PayDoc" EntitySet="PayDoc" />
           </AssociationSet>
           <AssociationSet Name="FK__PAYDOC__CURRID__214BF109" Association="BaseModel.Store.FK__PAYDOC__CURRID__214BF109">
-            <End Role="CURRENCY" EntitySet="CURRENCY" />
+            <End Role="Currency" EntitySet="Currency" />
             <End Role="PayDoc" EntitySet="PayDoc" />
           </AssociationSet>
           <AssociationSet Name="FK__PAYDOC__KAID__19AACF41" Association="BaseModel.Store.FK__PAYDOC__KAID__19AACF41">
@@ -535,7 +535,7 @@
             <End Role="CONTRACTS" EntitySet="CONTRACTS" />
           </AssociationSet>
           <AssociationSet Name="FK_CONTRACT_REFERENCE_CURRENCY" Association="BaseModel.Store.FK_CONTRACT_REFERENCE_CURRENCY">
-            <End Role="CURRENCY" EntitySet="CURRENCY" />
+            <End Role="Currency" EntitySet="Currency" />
             <End Role="CONTRACTS" EntitySet="CONTRACTS" />
           </AssociationSet>
           <AssociationSet Name="FK_CONTRACT_REFERENCE_KAGENT" Association="BaseModel.Store.FK_CONTRACT_REFERENCE_KAGENT">
@@ -547,7 +547,7 @@
             <End Role="CONTRDET" EntitySet="CONTRDET" />
           </AssociationSet>
           <AssociationSet Name="FK_CONTRDET_REFERENCE_CURRENCY" Association="BaseModel.Store.FK_CONTRDET_REFERENCE_CURRENCY">
-            <End Role="CURRENCY" EntitySet="CURRENCY" />
+            <End Role="Currency" EntitySet="Currency" />
             <End Role="CONTRDET" EntitySet="CONTRDET" />
           </AssociationSet>
           <AssociationSet Name="FK_CONTRDET_REFERENCE_MATERIAL" Association="BaseModel.Store.FK_CONTRDET_REFERENCE_MATERIAL">
@@ -647,7 +647,7 @@
             <End Role="MONEYSALDO" EntitySet="MONEYSALDO" />
           </AssociationSet>
           <AssociationSet Name="FK_MS_CURRID" Association="BaseModel.Store.FK_MS_CURRID">
-            <End Role="CURRENCY" EntitySet="CURRENCY" />
+            <End Role="Currency" EntitySet="Currency" />
             <End Role="MONEYSALDO" EntitySet="MONEYSALDO" />
           </AssociationSet>
           <AssociationSet Name="FK_PAYDOC_REF_PD_DO_DOCS" Association="BaseModel.Store.FK_PAYDOC_REF_PD_DO_DOCS">
@@ -671,7 +671,7 @@
             <End Role="POSREL" EntitySet="POSREL" />
           </AssociationSet>
           <AssociationSet Name="FK_PRICELIS_REFERENCE_CURRENCY" Association="BaseModel.Store.FK_PRICELIS_REFERENCE_CURRENCY">
-            <End Role="CURRENCY" EntitySet="CURRENCY" />
+            <End Role="Currency" EntitySet="Currency" />
             <End Role="PRICELIST" EntitySet="PRICELIST" />
           </AssociationSet>
           <AssociationSet Name="FK_PRICELIS_REFERENCE_DOCS" Association="BaseModel.Store.FK_PRICELIS_REFERENCE_DOCS">
@@ -723,7 +723,7 @@
             <End Role="SERVICES" EntitySet="SERVICES" />
           </AssociationSet>
           <AssociationSet Name="FK_SVC_CURRID" Association="BaseModel.Store.FK_SVC_CURRID">
-            <End Role="CURRENCY" EntitySet="CURRENCY" />
+            <End Role="Currency" EntitySet="Currency" />
             <End Role="SERVICES" EntitySet="SERVICES" />
           </AssociationSet>
           <AssociationSet Name="FK_SVC_MID" Association="BaseModel.Store.FK_SVC_MID">
@@ -791,7 +791,7 @@
             <End Role="WaybillDet" EntitySet="WaybillDet" />
           </AssociationSet>
           <AssociationSet Name="FK_WAYBILLD_REFERENCE_CURRENCY" Association="BaseModel.Store.FK_WAYBILLD_REFERENCE_CURRENCY">
-            <End Role="CURRENCY" EntitySet="CURRENCY" />
+            <End Role="Currency" EntitySet="Currency" />
             <End Role="WaybillDet" EntitySet="WaybillDet" />
           </AssociationSet>
           <AssociationSet Name="FK_WAYBILLD_REFERENCE_PRICETYP" Association="BaseModel.Store.FK_WAYBILLD_REFERENCE_PRICETYP">
@@ -803,7 +803,7 @@
             <End Role="WAYBILLDETADDPROPS" EntitySet="WAYBILLDETADDPROPS" />
           </AssociationSet>
           <AssociationSet Name="FK_WAYBILLL_FK_WBLIST_CURRENCY" Association="BaseModel.Store.FK_WAYBILLL_FK_WBLIST_CURRENCY">
-            <End Role="CURRENCY" EntitySet="CURRENCY" />
+            <End Role="Currency" EntitySet="Currency" />
             <End Role="WaybillList" EntitySet="WaybillList" />
           </AssociationSet>
           <AssociationSet Name="FK_WAYBILLL_FK_WBLIST_KAGENT" Association="BaseModel.Store.FK_WAYBILLL_FK_WBLIST_KAGENT">
@@ -863,7 +863,7 @@
             <End Role="WAYBILLMOVE" EntitySet="WAYBILLMOVE" />
           </AssociationSet>
           <AssociationSet Name="FK_WBS_CURRID" Association="BaseModel.Store.FK_WBS_CURRID">
-            <End Role="CURRENCY" EntitySet="CURRENCY" />
+            <End Role="Currency" EntitySet="Currency" />
             <End Role="WAYBILLSVC" EntitySet="WAYBILLSVC" />
           </AssociationSet>
           <AssociationSet Name="FK_WBS_PERSONID" Association="BaseModel.Store.FK_WBS_PERSONID">
@@ -1053,18 +1053,18 @@
           <Property Name="DELETED" Type="int" Nullable="false" />
           <Property Name="DEF" Type="int" />
         </EntityType>
-        <EntityType Name="CURRENCY">
+        <EntityType Name="Currency">
           <Key>
-            <PropertyRef Name="CURRID" />
+            <PropertyRef Name="CurrId" />
           </Key>
-          <Property Name="CURRID" Type="int" Nullable="false" />
-          <Property Name="NAME" Type="nvarchar" Nullable="false" MaxLength="24" />
-          <Property Name="SHORTNAME" Type="nvarchar" Nullable="false" MaxLength="3" />
-          <Property Name="DEF" Type="int" Nullable="false" />
-          <Property Name="DELETED" Type="int" Nullable="false" />
-          <Property Name="REPSHORTNAME" Type="nvarchar" MaxLength="10" />
-          <Property Name="REPFRACNAME" Type="nvarchar" MaxLength="10" />
-          <Property Name="CURTYPE" Type="int" Nullable="false" />
+          <Property Name="CurrId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="24" />
+          <Property Name="ShortName" Type="nvarchar" Nullable="false" MaxLength="3" />
+          <Property Name="Def" Type="int" Nullable="false" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+          <Property Name="RepShortName" Type="nvarchar" MaxLength="10" />
+          <Property Name="RepFracName" Type="nvarchar" MaxLength="10" />
+          <Property Name="CurType" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="CURRENCYRATE">
           <Key>
@@ -2151,11 +2151,11 @@
           <Property Name="WType" Type="int" />
         </EntityType>
         <Association Name="FK__CURRENCYR__CURRI__5EBF139D">
-          <End Role="CURRENCY" Type="BaseModel.Store.CURRENCY" Multiplicity="1" />
+          <End Role="Currency" Type="BaseModel.Store.Currency" Multiplicity="1" />
           <End Role="CURRENCYRATE" Type="BaseModel.Store.CURRENCYRATE" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CURRENCY">
-              <PropertyRef Name="CURRID" />
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
             </Principal>
             <Dependent Role="CURRENCYRATE">
               <PropertyRef Name="CURRID" />
@@ -2329,11 +2329,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__MATGROUPP__CURRI__6EC0713C">
-          <End Role="CURRENCY" Type="BaseModel.Store.CURRENCY" Multiplicity="0..1" />
+          <End Role="Currency" Type="BaseModel.Store.Currency" Multiplicity="0..1" />
           <End Role="MATGROUPPRICES" Type="BaseModel.Store.MATGROUPPRICES" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CURRENCY">
-              <PropertyRef Name="CURRID" />
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
             </Principal>
             <Dependent Role="MATGROUPPRICES">
               <PropertyRef Name="CURRID" />
@@ -2353,11 +2353,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__MATPRICES__CURRI__73852659">
-          <End Role="CURRENCY" Type="BaseModel.Store.CURRENCY" Multiplicity="0..1" />
+          <End Role="Currency" Type="BaseModel.Store.Currency" Multiplicity="0..1" />
           <End Role="MATPRICES" Type="BaseModel.Store.MATPRICES" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CURRENCY">
-              <PropertyRef Name="CURRID" />
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
             </Principal>
             <Dependent Role="MATPRICES">
               <PropertyRef Name="CURRID" />
@@ -2365,11 +2365,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__MATPRICES__CURRI__74794A92">
-          <End Role="CURRENCY" Type="BaseModel.Store.CURRENCY" Multiplicity="0..1" />
+          <End Role="Currency" Type="BaseModel.Store.Currency" Multiplicity="0..1" />
           <End Role="MATPRICES" Type="BaseModel.Store.MATPRICES" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CURRENCY">
-              <PropertyRef Name="CURRID" />
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
             </Principal>
             <Dependent Role="MATPRICES">
               <PropertyRef Name="CURRID" />
@@ -2425,11 +2425,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__PAYDOC__CURRID__214BF109">
-          <End Role="CURRENCY" Type="BaseModel.Store.CURRENCY" Multiplicity="1" />
+          <End Role="Currency" Type="BaseModel.Store.Currency" Multiplicity="1" />
           <End Role="PayDoc" Type="BaseModel.Store.PayDoc" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CURRENCY">
-              <PropertyRef Name="CURRID" />
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
             </Principal>
             <Dependent Role="PayDoc">
               <PropertyRef Name="CurrId" />
@@ -2773,11 +2773,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CONTRACT_REFERENCE_CURRENCY">
-          <End Role="CURRENCY" Type="BaseModel.Store.CURRENCY" Multiplicity="0..1" />
+          <End Role="Currency" Type="BaseModel.Store.Currency" Multiplicity="0..1" />
           <End Role="CONTRACTS" Type="BaseModel.Store.CONTRACTS" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CURRENCY">
-              <PropertyRef Name="CURRID" />
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
             </Principal>
             <Dependent Role="CONTRACTS">
               <PropertyRef Name="CURRID" />
@@ -2811,11 +2811,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CONTRDET_REFERENCE_CURRENCY">
-          <End Role="CURRENCY" Type="BaseModel.Store.CURRENCY" Multiplicity="0..1" />
+          <End Role="Currency" Type="BaseModel.Store.Currency" Multiplicity="0..1" />
           <End Role="CONTRDET" Type="BaseModel.Store.CONTRDET" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CURRENCY">
-              <PropertyRef Name="CURRID" />
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
             </Principal>
             <Dependent Role="CONTRDET">
               <PropertyRef Name="CURRID" />
@@ -3135,11 +3135,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MS_CURRID">
-          <End Role="CURRENCY" Type="BaseModel.Store.CURRENCY" Multiplicity="1" />
+          <End Role="Currency" Type="BaseModel.Store.Currency" Multiplicity="1" />
           <End Role="MONEYSALDO" Type="BaseModel.Store.MONEYSALDO" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CURRENCY">
-              <PropertyRef Name="CURRID" />
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
             </Principal>
             <Dependent Role="MONEYSALDO">
               <PropertyRef Name="CURRID" />
@@ -3209,11 +3209,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PRICELIS_REFERENCE_CURRENCY">
-          <End Role="CURRENCY" Type="BaseModel.Store.CURRENCY" Multiplicity="1" />
+          <End Role="Currency" Type="BaseModel.Store.Currency" Multiplicity="1" />
           <End Role="PRICELIST" Type="BaseModel.Store.PRICELIST" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CURRENCY">
-              <PropertyRef Name="CURRID" />
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
             </Principal>
             <Dependent Role="PRICELIST">
               <PropertyRef Name="CURRID" />
@@ -3371,11 +3371,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SVC_CURRID">
-          <End Role="CURRENCY" Type="BaseModel.Store.CURRENCY" Multiplicity="0..1" />
+          <End Role="Currency" Type="BaseModel.Store.Currency" Multiplicity="0..1" />
           <End Role="SERVICES" Type="BaseModel.Store.SERVICES" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CURRENCY">
-              <PropertyRef Name="CURRID" />
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
             </Principal>
             <Dependent Role="SERVICES">
               <PropertyRef Name="CURRID" />
@@ -3587,11 +3587,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_WAYBILLD_REFERENCE_CURRENCY">
-          <End Role="CURRENCY" Type="BaseModel.Store.CURRENCY" Multiplicity="0..1" />
+          <End Role="Currency" Type="BaseModel.Store.Currency" Multiplicity="0..1" />
           <End Role="WaybillDet" Type="BaseModel.Store.WaybillDet" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CURRENCY">
-              <PropertyRef Name="CURRID" />
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
             </Principal>
             <Dependent Role="WaybillDet">
               <PropertyRef Name="CurrId" />
@@ -3623,11 +3623,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_WAYBILLL_FK_WBLIST_CURRENCY">
-          <End Role="CURRENCY" Type="BaseModel.Store.CURRENCY" Multiplicity="0..1" />
+          <End Role="Currency" Type="BaseModel.Store.Currency" Multiplicity="0..1" />
           <End Role="WaybillList" Type="BaseModel.Store.WaybillList" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CURRENCY">
-              <PropertyRef Name="CURRID" />
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
             </Principal>
             <Dependent Role="WaybillList">
               <PropertyRef Name="CurrId" />
@@ -3811,11 +3811,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_WBS_CURRID">
-          <End Role="CURRENCY" Type="BaseModel.Store.CURRENCY" Multiplicity="1" />
+          <End Role="Currency" Type="BaseModel.Store.Currency" Multiplicity="1" />
           <End Role="WAYBILLSVC" Type="BaseModel.Store.WAYBILLSVC" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CURRENCY">
-              <PropertyRef Name="CURRID" />
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
             </Principal>
             <Dependent Role="WAYBILLSVC">
               <PropertyRef Name="CURRID" />
@@ -3979,6 +3979,54 @@
                 <Property Name="WbMaked" Type="int" />
                 <Property Name="Total" Type="numeric" Precision="15" Scale="2" />
                 <Property Name="BasePrice" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="SumNds" Type="numeric" Precision="35" Scale="10" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="GetWayBillDetOut" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="wbill_id" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Num" Type="int" Nullable="false" />
+                <Property Name="PosId" Type="int" />
+                <Property Name="WbillId" Type="int" Nullable="false" />
+                <Property Name="MatId" Type="int" Nullable="false" />
+                <Property Name="Wid" Type="int" />
+                <Property Name="Amount" Type="numeric" Nullable="false" Precision="15" Scale="8" />
+                <Property Name="Price" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="Discount" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="NDS" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="CurrId" Type="int" />
+                <Property Name="OnDate" Type="datetime" />
+                <Property Name="PtypeId" Type="int" />
+                <Property Name="Checked" Type="int" />
+                <Property Name="MatName" Type="nvarchar" MaxLength="255" />
+                <Property Name="MsrName" Type="nvarchar" Nullable="false" MaxLength="6" />
+                <Property Name="WhName" Type="nvarchar" MaxLength="64" />
+                <Property Name="Artikul" Type="varchar" MaxLength="255" />
+                <Property Name="CurrName" Type="nvarchar" MaxLength="3" />
+                <Property Name="OnValue" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="PosType" Type="int" />
+                <Property Name="Norm" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="Producer" Type="varchar" MaxLength="255" />
+                <Property Name="Gtd" Type="varchar" MaxLength="64" />
+                <Property Name="CertNum" Type="varchar" MaxLength="64" />
+                <Property Name="CertDate" Type="datetime" />
+                <Property Name="Serials" Type="int" />
+                <Property Name="BarCode" Type="varchar" MaxLength="64" />
+                <Property Name="WarrantyPeriod" Type="int" />
+                <Property Name="WarrantyPeriodType" Type="int" />
+                <Property Name="GrpId" Type="int" />
+                <Property Name="Country" Type="varchar" MaxLength="128" />
+                <Property Name="CardId" Type="int" />
+                <Property Name="CardNum" Type="varchar" MaxLength="24" />
+                <Property Name="Holder" Type="nvarchar" MaxLength="64" />
+                <Property Name="SerialNo" Type="varchar" MaxLength="64" />
+                <Property Name="GroupName" Type="varchar" Nullable="false" MaxLength="64" />
+                <Property Name="BasePrice" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="Total" Type="numeric" Precision="15" Scale="2" />
                 <Property Name="SumNds" Type="numeric" Precision="35" Scale="10" />
               </RowType>
             </CollectionType>
@@ -4621,53 +4669,6 @@
         <Function Name="UpdWaybillDetPrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="wbill_id" Type="int" Mode="In" />
         </Function>
-        <Function Name="WBDGetOut" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="wbill_id" Type="int" Mode="In" />
-          <ReturnType>
-            <CollectionType>
-              <RowType>
-                <Property Name="Num" Type="int" Nullable="false" />
-                <Property Name="PosId" Type="int" />
-                <Property Name="WbillId" Type="int" Nullable="false" />
-                <Property Name="MatId" Type="int" Nullable="false" />
-                <Property Name="Wid" Type="int" />
-                <Property Name="Amount" Type="numeric" Nullable="false" Precision="15" Scale="8" />
-                <Property Name="Price" Type="numeric" Precision="15" Scale="4" />
-                <Property Name="Discount" Type="numeric" Precision="15" Scale="4" />
-                <Property Name="NDS" Type="numeric" Precision="15" Scale="4" />
-                <Property Name="CurrId" Type="int" />
-                <Property Name="OnDate" Type="datetime" />
-                <Property Name="PtypeId" Type="int" />
-                <Property Name="Checked" Type="int" />
-                <Property Name="MatName" Type="nvarchar" MaxLength="255" />
-                <Property Name="MsrName" Type="nvarchar" Nullable="false" MaxLength="6" />
-                <Property Name="WhName" Type="nvarchar" MaxLength="64" />
-                <Property Name="Artikul" Type="varchar" MaxLength="255" />
-                <Property Name="CurrName" Type="nvarchar" MaxLength="3" />
-                <Property Name="OnValue" Type="numeric" Precision="15" Scale="8" />
-                <Property Name="PosType" Type="int" />
-                <Property Name="Norm" Type="numeric" Precision="15" Scale="8" />
-                <Property Name="Producer" Type="varchar" MaxLength="255" />
-                <Property Name="Gtd" Type="varchar" MaxLength="64" />
-                <Property Name="CertNum" Type="varchar" MaxLength="64" />
-                <Property Name="CertDate" Type="datetime" />
-                <Property Name="Serials" Type="int" />
-                <Property Name="BarCode" Type="varchar" MaxLength="64" />
-                <Property Name="WarrantyPeriod" Type="int" />
-                <Property Name="WarrantyPeriodType" Type="int" />
-                <Property Name="GrpId" Type="int" />
-                <Property Name="Country" Type="varchar" MaxLength="128" />
-                <Property Name="CardId" Type="int" />
-                <Property Name="CardNum" Type="varchar" MaxLength="24" />
-                <Property Name="Holder" Type="nvarchar" MaxLength="64" />
-                <Property Name="SerialNo" Type="varchar" MaxLength="64" />
-                <Property Name="GroupName" Type="varchar" Nullable="false" MaxLength="64" />
-                <Property Name="BasePrice" Type="numeric" Precision="15" Scale="4" />
-                <Property Name="Total" Type="numeric" Precision="15" Scale="2" />
-              </RowType>
-            </CollectionType>
-          </ReturnType>
-        </Function>
         <Function Name="WBDGetOutP2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="wbill_id" Type="int" Mode="In" />
           <ReturnType>
@@ -4728,7 +4729,6 @@
           <EntitySet Name="CONTRPARAMS" EntityType="BaseModel.CONTRPARAMS" />
           <EntitySet Name="CONTRRESULTS" EntityType="BaseModel.CONTRRESULTS" />
           <EntitySet Name="COUNTRIES" EntityType="BaseModel.COUNTRIES" />
-          <EntitySet Name="CURRENCY" EntityType="BaseModel.CURRENCY" />
           <EntitySet Name="CURRENCYRATE" EntityType="BaseModel.CURRENCYRATE" />
           <EntitySet Name="DEBONINGDET" EntityType="BaseModel.DEBONINGDET" />
           <EntitySet Name="DISCCARDGRP" EntityType="BaseModel.DISCCARDGRP" />
@@ -4807,10 +4807,6 @@
             <End Role="DOCS" EntitySet="DOCS" />
             <End Role="CONTRACTS" EntitySet="CONTRACTS" />
           </AssociationSet>
-          <AssociationSet Name="FK_CONTRACT_REFERENCE_CURRENCY" Association="BaseModel.FK_CONTRACT_REFERENCE_CURRENCY">
-            <End Role="CURRENCY" EntitySet="CURRENCY" />
-            <End Role="CONTRACTS" EntitySet="CONTRACTS" />
-          </AssociationSet>
           <AssociationSet Name="FK_CONTRDET_REFERENCE_CONTRACTS" Association="BaseModel.FK_CONTRDET_REFERENCE_CONTRACTS">
             <End Role="CONTRACTS" EntitySet="CONTRACTS" />
             <End Role="CONTRDET" EntitySet="CONTRDET" />
@@ -4823,10 +4819,6 @@
             <End Role="CONTRACTS" EntitySet="CONTRACTS" />
             <End Role="CONTRRESULTS" EntitySet="CONTRRESULTS" />
           </AssociationSet>
-          <AssociationSet Name="FK_CONTRDET_REFERENCE_CURRENCY" Association="BaseModel.FK_CONTRDET_REFERENCE_CURRENCY">
-            <End Role="CURRENCY" EntitySet="CURRENCY" />
-            <End Role="CONTRDET" EntitySet="CONTRDET" />
-          </AssociationSet>
           <AssociationSet Name="FK_CONTRDET_REFERENCE_MATERIAL" Association="BaseModel.FK_CONTRDET_REFERENCE_MATERIAL">
             <End Role="MATERIALS" EntitySet="MATERIALS" />
             <End Role="CONTRDET" EntitySet="CONTRDET" />
@@ -4834,38 +4826,6 @@
           <AssociationSet Name="FK__MATERIALS__CID__662B2B3B" Association="BaseModel.FK__MATERIALS__CID__662B2B3B">
             <End Role="COUNTRIES" EntitySet="COUNTRIES" />
             <End Role="MATERIALS" EntitySet="MATERIALS" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CURRENCYR__CURRI__5EBF139D" Association="BaseModel.FK__CURRENCYR__CURRI__5EBF139D">
-            <End Role="CURRENCY" EntitySet="CURRENCY" />
-            <End Role="CURRENCYRATE" EntitySet="CURRENCYRATE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MATGROUPP__CURRI__6EC0713C" Association="BaseModel.FK__MATGROUPP__CURRI__6EC0713C">
-            <End Role="CURRENCY" EntitySet="CURRENCY" />
-            <End Role="MATGROUPPRICES" EntitySet="MATGROUPPRICES" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MATPRICES__CURRI__73852659" Association="BaseModel.FK__MATPRICES__CURRI__73852659">
-            <End Role="CURRENCY" EntitySet="CURRENCY" />
-            <End Role="MATPRICES" EntitySet="MATPRICES" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MATPRICES__CURRI__74794A92" Association="BaseModel.FK__MATPRICES__CURRI__74794A92">
-            <End Role="CURRENCY" EntitySet="CURRENCY" />
-            <End Role="MATPRICES" EntitySet="MATPRICES" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MS_CURRID" Association="BaseModel.FK_MS_CURRID">
-            <End Role="CURRENCY" EntitySet="CURRENCY" />
-            <End Role="MONEYSALDO" EntitySet="MONEYSALDO" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PRICELIS_REFERENCE_CURRENCY" Association="BaseModel.FK_PRICELIS_REFERENCE_CURRENCY">
-            <End Role="CURRENCY" EntitySet="CURRENCY" />
-            <End Role="PRICELIST" EntitySet="PRICELIST" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SVC_CURRID" Association="BaseModel.FK_SVC_CURRID">
-            <End Role="CURRENCY" EntitySet="CURRENCY" />
-            <End Role="SERVICES" EntitySet="SERVICES" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WBS_CURRID" Association="BaseModel.FK_WBS_CURRID">
-            <End Role="CURRENCY" EntitySet="CURRENCY" />
-            <End Role="WAYBILLSVC" EntitySet="WAYBILLSVC" />
           </AssociationSet>
           <AssociationSet Name="FK_DEBONINGDET_MATERIALS" Association="BaseModel.FK_DEBONINGDET_MATERIALS">
             <End Role="MATERIALS" EntitySet="MATERIALS" />
@@ -5283,9 +5243,6 @@
             <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
             <End Role="USERACCESSWH" EntitySet="USERACCESSWH" />
           </AssociationSet>
-          <FunctionImport Name="WBDGetOut" IsComposable="true" ReturnType="Collection(BaseModel.WBDGetOut_Result)">
-          <Parameter Name="wbill_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="WBDGetOutP2" IsComposable="true" ReturnType="Collection(BaseModel.WBDGetOutP2_Result)">
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -5296,10 +5253,6 @@
           <AssociationSet Name="FK_COMMISSION_WBILLID" Association="BaseModel.FK_COMMISSION_WBILLID">
             <End Role="WaybillList" EntitySet="WaybillList" />
             <End Role="COMMISSION" EntitySet="COMMISSION" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WAYBILLL_FK_WBLIST_CURRENCY" Association="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY">
-            <End Role="CURRENCY" EntitySet="CURRENCY" />
-            <End Role="WaybillList" EntitySet="WaybillList" />
           </AssociationSet>
           <AssociationSet Name="FK_DEBONINGDET_WAYBILLLIST" Association="BaseModel.FK_DEBONINGDET_WAYBILLLIST">
             <End Role="WaybillList" EntitySet="WaybillList" />
@@ -5330,10 +5283,6 @@
             <End Role="WAYBILLSVC" EntitySet="WAYBILLSVC" />
           </AssociationSet>
           <EntitySet Name="WaybillDet" EntityType="BaseModel.WaybillDet" />
-          <AssociationSet Name="FK_WAYBILLD_REFERENCE_CURRENCY" Association="BaseModel.FK_WAYBILLD_REFERENCE_CURRENCY">
-            <End Role="CURRENCY" EntitySet="CURRENCY" />
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-          </AssociationSet>
           <AssociationSet Name="FK_WAYBILLD_FK_WBDET__MATERIAL" Association="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL">
             <End Role="MATERIALS" EntitySet="MATERIALS" />
             <End Role="WaybillDet" EntitySet="WaybillDet" />
@@ -5550,10 +5499,6 @@
             <End Role="CashDesks" EntitySet="CashDesks" />
             <End Role="PayDoc" EntitySet="PayDoc" />
           </AssociationSet>
-          <AssociationSet Name="FK__PAYDOC__CURRID__214BF109" Association="BaseModel.FK__PAYDOC__CURRID__214BF109">
-            <End Role="CURRENCY" EntitySet="CURRENCY" />
-            <End Role="PayDoc" EntitySet="PayDoc" />
-          </AssociationSet>
           <AssociationSet Name="FK_PAYDOC_REF_PD_DO_DOCS" Association="BaseModel.FK_PAYDOC_REF_PD_DO_DOCS">
             <End Role="DOCS" EntitySet="DOCS" />
             <End Role="PayDoc" EntitySet="PayDoc" />
@@ -5614,6 +5559,62 @@
             <Parameter Name="ka_id" Mode="In" Type="Int32" />
             <Parameter Name="checked" Mode="In" Type="Int32" />
             <Parameter Name="pay_type" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Currency" EntityType="BaseModel.Currency" />
+          <AssociationSet Name="FK_CONTRACT_REFERENCE_CURRENCY" Association="BaseModel.FK_CONTRACT_REFERENCE_CURRENCY">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="CONTRACTS" EntitySet="CONTRACTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CONTRDET_REFERENCE_CURRENCY" Association="BaseModel.FK_CONTRDET_REFERENCE_CURRENCY">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="CONTRDET" EntitySet="CONTRDET" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CURRENCYR__CURRI__5EBF139D" Association="BaseModel.FK__CURRENCYR__CURRI__5EBF139D">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="CURRENCYRATE" EntitySet="CURRENCYRATE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MATGROUPP__CURRI__6EC0713C" Association="BaseModel.FK__MATGROUPP__CURRI__6EC0713C">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="MATGROUPPRICES" EntitySet="MATGROUPPRICES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MATPRICES__CURRI__73852659" Association="BaseModel.FK__MATPRICES__CURRI__73852659">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="MATPRICES" EntitySet="MATPRICES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MATPRICES__CURRI__74794A92" Association="BaseModel.FK__MATPRICES__CURRI__74794A92">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="MATPRICES" EntitySet="MATPRICES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PAYDOC__CURRID__214BF109" Association="BaseModel.FK__PAYDOC__CURRID__214BF109">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="PayDoc" EntitySet="PayDoc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MS_CURRID" Association="BaseModel.FK_MS_CURRID">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="MONEYSALDO" EntitySet="MONEYSALDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRICELIS_REFERENCE_CURRENCY" Association="BaseModel.FK_PRICELIS_REFERENCE_CURRENCY">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="PRICELIST" EntitySet="PRICELIST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SVC_CURRID" Association="BaseModel.FK_SVC_CURRID">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="SERVICES" EntitySet="SERVICES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAYBILLD_REFERENCE_CURRENCY" Association="BaseModel.FK_WAYBILLD_REFERENCE_CURRENCY">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAYBILLL_FK_WBLIST_CURRENCY" Association="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="WaybillList" EntitySet="WaybillList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WBS_CURRID" Association="BaseModel.FK_WBS_CURRID">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="WAYBILLSVC" EntitySet="WAYBILLSVC" />
+          </AssociationSet>
+          <FunctionImport Name="GetWayBillDetOut" IsComposable="true" ReturnType="Collection(BaseModel.GetWayBillDetOut_Result)">
+            <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="GetMatGroupTree_Result">
@@ -5972,12 +5973,12 @@
           <Property Name="DOCTYPE" Type="Int32" Nullable="false" />
           <NavigationProperty Name="DOCS" Relationship="BaseModel.FK_CONTRACT_REF_CONTR_DOCS" FromRole="CONTRACTS" ToRole="DOCS" />
           <NavigationProperty Name="DOCS1" Relationship="BaseModel.FK_CONTRACT_REF_CONTR_PDOCS" FromRole="CONTRACTS" ToRole="DOCS" />
-          <NavigationProperty Name="CURRENCY" Relationship="BaseModel.FK_CONTRACT_REFERENCE_CURRENCY" FromRole="CONTRACTS" ToRole="CURRENCY" />
           <NavigationProperty Name="CONTRDET" Relationship="BaseModel.FK_CONTRDET_REFERENCE_CONTRACTS" FromRole="CONTRACTS" ToRole="CONTRDET" />
           <NavigationProperty Name="CONTRPARAMS" Relationship="BaseModel.FK_CONTRPARAMS_CONTRACTS" FromRole="CONTRACTS" ToRole="CONTRPARAMS" />
           <NavigationProperty Name="CONTRRESULTS" Relationship="BaseModel.FK_CONTRRESULTS_CONTRACTS" FromRole="CONTRACTS" ToRole="CONTRRESULTS" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_CONTRACT_REF_CONTR_KAGENT" FromRole="CONTRACTS" ToRole="Kagent" />
           <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_CONTRACT_REFERENCE_KAGENT" FromRole="CONTRACTS" ToRole="Kagent" />
+          <NavigationProperty Name="Currency" Relationship="BaseModel.FK_CONTRACT_REFERENCE_CURRENCY" FromRole="CONTRACTS" ToRole="Currency" />
         </EntityType>
         <EntityType Name="CONTRDET">
           <Key>
@@ -5992,8 +5993,8 @@
           <Property Name="SHIPPEDAMOUNT" Type="Decimal" Precision="15" Scale="8" />
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="CONTRACTS" Relationship="BaseModel.FK_CONTRDET_REFERENCE_CONTRACTS" FromRole="CONTRDET" ToRole="CONTRACTS" />
-          <NavigationProperty Name="CURRENCY" Relationship="BaseModel.FK_CONTRDET_REFERENCE_CURRENCY" FromRole="CONTRDET" ToRole="CURRENCY" />
           <NavigationProperty Name="MATERIALS" Relationship="BaseModel.FK_CONTRDET_REFERENCE_MATERIAL" FromRole="CONTRDET" ToRole="MATERIALS" />
+          <NavigationProperty Name="Currency" Relationship="BaseModel.FK_CONTRDET_REFERENCE_CURRENCY" FromRole="CONTRDET" ToRole="Currency" />
         </EntityType>
         <EntityType Name="CONTRPARAMS">
           <Key>
@@ -6028,32 +6029,6 @@
           <Property Name="DEF" Type="Int32" />
           <NavigationProperty Name="MATERIALS" Relationship="BaseModel.FK__MATERIALS__CID__662B2B3B" FromRole="COUNTRIES" ToRole="MATERIALS" />
         </EntityType>
-        <EntityType Name="CURRENCY">
-          <Key>
-            <PropertyRef Name="CURRID" />
-          </Key>
-          <Property Name="CURRID" Type="Int32" Nullable="false" />
-          <Property Name="NAME" Type="String" Nullable="false" MaxLength="24" Unicode="true" FixedLength="false" />
-          <Property Name="SHORTNAME" Type="String" Nullable="false" MaxLength="3" Unicode="true" FixedLength="false" />
-          <Property Name="DEF" Type="Int32" Nullable="false" />
-          <Property Name="DELETED" Type="Int32" Nullable="false" />
-          <Property Name="REPSHORTNAME" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
-          <Property Name="REPFRACNAME" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
-          <Property Name="CURTYPE" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="CONTRACTS" Relationship="BaseModel.FK_CONTRACT_REFERENCE_CURRENCY" FromRole="CURRENCY" ToRole="CONTRACTS" />
-          <NavigationProperty Name="CONTRDET" Relationship="BaseModel.FK_CONTRDET_REFERENCE_CURRENCY" FromRole="CURRENCY" ToRole="CONTRDET" />
-          <NavigationProperty Name="CURRENCYRATE" Relationship="BaseModel.FK__CURRENCYR__CURRI__5EBF139D" FromRole="CURRENCY" ToRole="CURRENCYRATE" />
-          <NavigationProperty Name="MATGROUPPRICES" Relationship="BaseModel.FK__MATGROUPP__CURRI__6EC0713C" FromRole="CURRENCY" ToRole="MATGROUPPRICES" />
-          <NavigationProperty Name="MATPRICES" Relationship="BaseModel.FK__MATPRICES__CURRI__73852659" FromRole="CURRENCY" ToRole="MATPRICES" />
-          <NavigationProperty Name="MATPRICES1" Relationship="BaseModel.FK__MATPRICES__CURRI__74794A92" FromRole="CURRENCY" ToRole="MATPRICES" />
-          <NavigationProperty Name="MONEYSALDO" Relationship="BaseModel.FK_MS_CURRID" FromRole="CURRENCY" ToRole="MONEYSALDO" />
-          <NavigationProperty Name="PRICELIST" Relationship="BaseModel.FK_PRICELIS_REFERENCE_CURRENCY" FromRole="CURRENCY" ToRole="PRICELIST" />
-          <NavigationProperty Name="SERVICES" Relationship="BaseModel.FK_SVC_CURRID" FromRole="CURRENCY" ToRole="SERVICES" />
-          <NavigationProperty Name="WAYBILLSVC" Relationship="BaseModel.FK_WBS_CURRID" FromRole="CURRENCY" ToRole="WAYBILLSVC" />
-          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY" FromRole="CURRENCY" ToRole="WaybillList" />
-          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_CURRENCY" FromRole="CURRENCY" ToRole="WaybillDet" />
-          <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK__PAYDOC__CURRID__214BF109" FromRole="CURRENCY" ToRole="PayDoc" />
-        </EntityType>
         <EntityType Name="CURRENCYRATE">
           <Key>
             <PropertyRef Name="RATEID" />
@@ -6062,7 +6037,7 @@
           <Property Name="ONDATE" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ONVALUE" Type="Decimal" Nullable="false" Precision="15" Scale="8" />
           <Property Name="RATEID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="CURRENCY" Relationship="BaseModel.FK__CURRENCYR__CURRI__5EBF139D" FromRole="CURRENCYRATE" ToRole="CURRENCY" />
+          <NavigationProperty Name="Currency" Relationship="BaseModel.FK__CURRENCYR__CURRI__5EBF139D" FromRole="CURRENCYRATE" ToRole="Currency" />
         </EntityType>
         <EntityType Name="DEBONINGDET">
           <Key>
@@ -6390,10 +6365,10 @@
           <Property Name="PPTYPEID" Type="Int32" />
           <Property Name="WITHNDS" Type="Int32" />
           <Property Name="DIS" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="CURRENCY" Relationship="BaseModel.FK__MATGROUPP__CURRI__6EC0713C" FromRole="MATGROUPPRICES" ToRole="CURRENCY" />
           <NavigationProperty Name="MATGROUP" Relationship="BaseModel.FK_MGP_MATID" FromRole="MATGROUPPRICES" ToRole="MATGROUP" />
           <NavigationProperty Name="PRICETYPES" Relationship="BaseModel.FK__MATGROUPP__PTYPE__6DCC4D03" FromRole="MATGROUPPRICES" ToRole="PRICETYPES" />
           <NavigationProperty Name="PRICETYPES1" Relationship="BaseModel.FK_MGP_PPTYPEID" FromRole="MATGROUPPRICES" ToRole="PRICETYPES" />
+          <NavigationProperty Name="Currency" Relationship="BaseModel.FK__MATGROUPP__CURRI__6EC0713C" FromRole="MATGROUPPRICES" ToRole="Currency" />
         </EntityType>
         <EntityType Name="MATPRICES">
           <Key>
@@ -6411,11 +6386,11 @@
           <Property Name="DIS" Type="Int32" Nullable="false" />
           <Property Name="WITHNDS" Type="Int32" />
           <Property Name="PPTYPEID" Type="Int32" />
-          <NavigationProperty Name="CURRENCY" Relationship="BaseModel.FK__MATPRICES__CURRI__73852659" FromRole="MATPRICES" ToRole="CURRENCY" />
-          <NavigationProperty Name="CURRENCY1" Relationship="BaseModel.FK__MATPRICES__CURRI__74794A92" FromRole="MATPRICES" ToRole="CURRENCY" />
           <NavigationProperty Name="MATERIALS" Relationship="BaseModel.FK_MP_MATID" FromRole="MATPRICES" ToRole="MATERIALS" />
           <NavigationProperty Name="PRICETYPES" Relationship="BaseModel.FK__MATPRICES__PTYPE__72910220" FromRole="MATPRICES" ToRole="PRICETYPES" />
           <NavigationProperty Name="PRICETYPES1" Relationship="BaseModel.FK_MATPRICES_PPTYPEID" FromRole="MATPRICES" ToRole="PRICETYPES" />
+          <NavigationProperty Name="Currency" Relationship="BaseModel.FK__MATPRICES__CURRI__73852659" FromRole="MATPRICES" ToRole="Currency" />
+          <NavigationProperty Name="Currency1" Relationship="BaseModel.FK__MATPRICES__CURRI__74794A92" FromRole="MATPRICES" ToRole="Currency" />
         </EntityType>
         <EntityType Name="MATRECDET">
           <Key>
@@ -6490,9 +6465,9 @@
           <Property Name="SALDO" Type="Decimal" Nullable="false" Precision="15" Scale="8" />
           <Property Name="CASHID" Type="Int32" />
           <Property Name="SALDODEF" Type="Decimal" Precision="15" Scale="8" />
-          <NavigationProperty Name="CURRENCY" Relationship="BaseModel.FK_MS_CURRID" FromRole="MONEYSALDO" ToRole="CURRENCY" />
           <NavigationProperty Name="KAGENTACCOUNT" Relationship="BaseModel.FK_MS_ACCID" FromRole="MONEYSALDO" ToRole="KAGENTACCOUNT" />
           <NavigationProperty Name="CashDesks" Relationship="BaseModel.FK_MS_CASHID" FromRole="MONEYSALDO" ToRole="CashDesks" />
+          <NavigationProperty Name="Currency" Relationship="BaseModel.FK_MS_CURRID" FromRole="MONEYSALDO" ToRole="Currency" />
         </EntityType>
         <EntityType Name="OPERLOG">
           <Key>
@@ -6552,10 +6527,10 @@
           <Property Name="USELOGO" Type="Int32" Nullable="false" />
           <Property Name="DOCID" Type="Int32" />
           <Property Name="PTYPEID" Type="Int32" />
-          <NavigationProperty Name="CURRENCY" Relationship="BaseModel.FK_PRICELIS_REFERENCE_CURRENCY" FromRole="PRICELIST" ToRole="CURRENCY" />
           <NavigationProperty Name="DOCS" Relationship="BaseModel.FK_PRICELIS_REFERENCE_DOCS" FromRole="PRICELIST" ToRole="DOCS" />
           <NavigationProperty Name="PRICETYPES" Relationship="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP" FromRole="PRICELIST" ToRole="PRICETYPES" />
           <NavigationProperty Name="PRICELISTDET" Relationship="BaseModel.FK_PRICELISTDET_PRICELIST" FromRole="PRICELIST" ToRole="PRICELISTDET" />
+          <NavigationProperty Name="Currency" Relationship="BaseModel.FK_PRICELIS_REFERENCE_CURRENCY" FromRole="PRICELIST" ToRole="Currency" />
         </EntityType>
         <EntityType Name="PRICELISTDET">
           <Key>
@@ -6663,10 +6638,10 @@
           <Property Name="ISNORMED" Type="Int32" Nullable="false" />
           <Property Name="NORM" Type="Decimal" Precision="15" Scale="8" />
           <Property Name="MID" Type="Int32" />
-          <NavigationProperty Name="CURRENCY" Relationship="BaseModel.FK_SVC_CURRID" FromRole="SERVICES" ToRole="CURRENCY" />
           <NavigationProperty Name="MEASURES" Relationship="BaseModel.FK_SVC_MID" FromRole="SERVICES" ToRole="MEASURES" />
           <NavigationProperty Name="SVCGROUP" Relationship="BaseModel.FK_SERVICES_1" FromRole="SERVICES" ToRole="SVCGROUP" />
           <NavigationProperty Name="WAYBILLSVC" Relationship="BaseModel.FK_WBS_SVCID" FromRole="SERVICES" ToRole="WAYBILLSVC" />
+          <NavigationProperty Name="Currency" Relationship="BaseModel.FK_SVC_CURRID" FromRole="SERVICES" ToRole="Currency" />
         </EntityType>
         <EntityType Name="SVCGROUP">
           <Key>
@@ -6910,10 +6885,10 @@
           <Property Name="PERSONID" Type="Int32" />
           <Property Name="SVCTOPRICE" Type="Int32" />
           <Property Name="TOTAL" Type="Decimal" Precision="15" Scale="2" />
-          <NavigationProperty Name="CURRENCY" Relationship="BaseModel.FK_WBS_CURRID" FromRole="WAYBILLSVC" ToRole="CURRENCY" />
           <NavigationProperty Name="SERVICES" Relationship="BaseModel.FK_WBS_SVCID" FromRole="WAYBILLSVC" ToRole="SERVICES" />
           <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WBS_WBILLID" FromRole="WAYBILLSVC" ToRole="WaybillList" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_WBS_PERSONID" FromRole="WAYBILLSVC" ToRole="Kagent" />
+          <NavigationProperty Name="Currency" Relationship="BaseModel.FK_WBS_CURRID" FromRole="WAYBILLSVC" ToRole="Currency" />
         </EntityType>
         <EntityType Name="USER_TREE_ACCESS">
           <Key>
@@ -7006,18 +6981,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CONTRACT_REFERENCE_CURRENCY">
-          <End Role="CURRENCY" Type="BaseModel.CURRENCY" Multiplicity="0..1" />
-          <End Role="CONTRACTS" Type="BaseModel.CONTRACTS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CURRENCY">
-              <PropertyRef Name="CURRID" />
-            </Principal>
-            <Dependent Role="CONTRACTS">
-              <PropertyRef Name="CURRID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_CONTRDET_REFERENCE_CONTRACTS">
           <End Role="CONTRACTS" Type="BaseModel.CONTRACTS" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -7060,18 +7023,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CONTRDET_REFERENCE_CURRENCY">
-          <End Role="CURRENCY" Type="BaseModel.CURRENCY" Multiplicity="0..1" />
-          <End Role="CONTRDET" Type="BaseModel.CONTRDET" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CURRENCY">
-              <PropertyRef Name="CURRID" />
-            </Principal>
-            <Dependent Role="CONTRDET">
-              <PropertyRef Name="CURRID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_CONTRDET_REFERENCE_MATERIAL">
           <End Role="MATERIALS" Type="BaseModel.MATERIALS" Multiplicity="0..1" />
           <End Role="CONTRDET" Type="BaseModel.CONTRDET" Multiplicity="*" />
@@ -7093,102 +7044,6 @@
             </Principal>
             <Dependent Role="MATERIALS">
               <PropertyRef Name="CID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__CURRENCYR__CURRI__5EBF139D">
-          <End Role="CURRENCY" Type="BaseModel.CURRENCY" Multiplicity="1" />
-          <End Role="CURRENCYRATE" Type="BaseModel.CURRENCYRATE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CURRENCY">
-              <PropertyRef Name="CURRID" />
-            </Principal>
-            <Dependent Role="CURRENCYRATE">
-              <PropertyRef Name="CURRID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MATGROUPP__CURRI__6EC0713C">
-          <End Role="CURRENCY" Type="BaseModel.CURRENCY" Multiplicity="0..1" />
-          <End Role="MATGROUPPRICES" Type="BaseModel.MATGROUPPRICES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CURRENCY">
-              <PropertyRef Name="CURRID" />
-            </Principal>
-            <Dependent Role="MATGROUPPRICES">
-              <PropertyRef Name="CURRID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MATPRICES__CURRI__73852659">
-          <End Role="CURRENCY" Type="BaseModel.CURRENCY" Multiplicity="0..1" />
-          <End Role="MATPRICES" Type="BaseModel.MATPRICES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CURRENCY">
-              <PropertyRef Name="CURRID" />
-            </Principal>
-            <Dependent Role="MATPRICES">
-              <PropertyRef Name="CURRID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MATPRICES__CURRI__74794A92">
-          <End Role="CURRENCY" Type="BaseModel.CURRENCY" Multiplicity="0..1" />
-          <End Role="MATPRICES" Type="BaseModel.MATPRICES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CURRENCY">
-              <PropertyRef Name="CURRID" />
-            </Principal>
-            <Dependent Role="MATPRICES">
-              <PropertyRef Name="CURRID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MS_CURRID">
-          <End Role="CURRENCY" Type="BaseModel.CURRENCY" Multiplicity="1" />
-          <End Role="MONEYSALDO" Type="BaseModel.MONEYSALDO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CURRENCY">
-              <PropertyRef Name="CURRID" />
-            </Principal>
-            <Dependent Role="MONEYSALDO">
-              <PropertyRef Name="CURRID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PRICELIS_REFERENCE_CURRENCY">
-          <End Role="CURRENCY" Type="BaseModel.CURRENCY" Multiplicity="1" />
-          <End Role="PRICELIST" Type="BaseModel.PRICELIST" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CURRENCY">
-              <PropertyRef Name="CURRID" />
-            </Principal>
-            <Dependent Role="PRICELIST">
-              <PropertyRef Name="CURRID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SVC_CURRID">
-          <End Role="CURRENCY" Type="BaseModel.CURRENCY" Multiplicity="0..1" />
-          <End Role="SERVICES" Type="BaseModel.SERVICES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CURRENCY">
-              <PropertyRef Name="CURRID" />
-            </Principal>
-            <Dependent Role="SERVICES">
-              <PropertyRef Name="CURRID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WBS_CURRID">
-          <End Role="CURRENCY" Type="BaseModel.CURRENCY" Multiplicity="1" />
-          <End Role="WAYBILLSVC" Type="BaseModel.WAYBILLSVC" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CURRENCY">
-              <PropertyRef Name="CURRID" />
-            </Principal>
-            <Dependent Role="WAYBILLSVC">
-              <PropertyRef Name="CURRID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7863,46 +7718,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="WBDGetOut_Result">
-          <Property Type="Int32" Name="Num" Nullable="false" />
-          <Property Type="Int32" Name="PosId" Nullable="true" />
-          <Property Type="Int32" Name="WbillId" Nullable="false" />
-          <Property Type="Int32" Name="MatId" Nullable="false" />
-          <Property Type="Int32" Name="Wid" Nullable="true" />
-          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="8" />
-          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Discount" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="NDS" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="CurrId" Nullable="true" />
-          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="PtypeId" Nullable="true" />
-          <Property Type="Int32" Name="Checked" Nullable="true" />
-          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
-          <Property Type="String" Name="WhName" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
-          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="Int32" Name="PosType" Nullable="true" />
-          <Property Type="Decimal" Name="Norm" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="String" Name="Producer" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="Gtd" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="CertNum" Nullable="true" MaxLength="64" />
-          <Property Type="DateTime" Name="CertDate" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="Serials" Nullable="true" />
-          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
-          <Property Type="Int32" Name="WarrantyPeriod" Nullable="true" />
-          <Property Type="Int32" Name="WarrantyPeriodType" Nullable="true" />
-          <Property Type="Int32" Name="GrpId" Nullable="true" />
-          <Property Type="String" Name="Country" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="CardId" Nullable="true" />
-          <Property Type="String" Name="CardNum" Nullable="true" MaxLength="24" />
-          <Property Type="String" Name="Holder" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="SerialNo" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="GroupName" Nullable="false" MaxLength="64" />
-          <Property Type="Decimal" Name="BasePrice" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Total" Nullable="true" Precision="15" Scale="2" />
-        </ComplexType>
         <ComplexType Name="WBDGetOutP2_Result">
           <Property Type="Int32" Name="Num" Nullable="false" />
           <Property Type="Int32" Name="PosId" Nullable="true" />
@@ -8006,7 +7821,6 @@
           <Property Type="Int32" Name="EntId" />
           <Property Type="Decimal" Name="OnValue" Precision="15" Scale="8" />
           <NavigationProperty Name="COMMISSION" Relationship="BaseModel.FK_COMMISSION_WBILLID" FromRole="WaybillList" ToRole="COMMISSION" />
-          <NavigationProperty Name="CURRENCY" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY" FromRole="WaybillList" ToRole="CURRENCY" />
           <NavigationProperty Name="DEBONINGDET" Relationship="BaseModel.FK_DEBONINGDET_WAYBILLLIST" FromRole="WaybillList" ToRole="DEBONINGDET" />
           <NavigationProperty Name="DOCS" Relationship="BaseModel.FK_WAYBILLL_REF_WBL_D_DOCS" FromRole="WaybillList" ToRole="DOCS" />
           <NavigationProperty Name="TECHPROCDET" Relationship="BaseModel.FK_TECHPROCDET_WAYBILLLIST" FromRole="WaybillList" ToRole="TECHPROCDET" />
@@ -8019,6 +7833,7 @@
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__WAYBILLLI__PERSO__6E01572D" FromRole="WaybillList" ToRole="Kagent" />
           <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" FromRole="WaybillList" ToRole="Kagent" />
           <NavigationProperty Name="Kagent2" Relationship="BaseModel.FK_WBL_ENTID" FromRole="WaybillList" ToRole="Kagent" />
+          <NavigationProperty Name="Currency" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY" FromRole="WaybillList" ToRole="Currency" />
         </EntityType>
         <Association Name="FK_COMMISSION_WBILLID">
           <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
@@ -8031,18 +7846,6 @@
             </Principal>
             <Dependent Role="COMMISSION">
               <PropertyRef Name="WBILLID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WAYBILLL_FK_WBLIST_CURRENCY">
-          <End Type="BaseModel.CURRENCY" Role="CURRENCY" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CURRENCY">
-              <PropertyRef Name="CURRID" />
-            </Principal>
-            <Dependent Role="WaybillList">
-              <PropertyRef Name="CurrId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -8166,7 +7969,6 @@
           <Property Type="Int32" Name="MsrUnitId" />
           <Property Type="Int32" Name="DiscountKind" />
           <Property Type="Decimal" Name="AVG_IN_PICE" Precision="15" Scale="4" />
-          <NavigationProperty Name="CURRENCY" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_CURRENCY" FromRole="WaybillDet" ToRole="CURRENCY" />
           <NavigationProperty Name="MATERIALS" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" FromRole="WaybillDet" ToRole="MATERIALS" />
           <NavigationProperty Name="POSREMAINS" Relationship="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" FromRole="WaybillDet" ToRole="POSREMAINS" />
           <NavigationProperty Name="PRICETYPES" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP" FromRole="WaybillDet" ToRole="PRICETYPES" />
@@ -8185,19 +7987,8 @@
           <NavigationProperty Name="WaybillDet3" Relationship="BaseModel.POSREL" FromRole="WaybillDet1" ToRole="WaybillDet" />
           <NavigationProperty Name="WMatTurn" Relationship="BaseModel.FK_WMT_POSID" FromRole="WaybillDet" ToRole="WMatTurn" />
           <NavigationProperty Name="WMatTurn1" Relationship="BaseModel.FK_WMT_SRCID" FromRole="WaybillDet" ToRole="WMatTurn" />
+          <NavigationProperty Name="Currency" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_CURRENCY" FromRole="WaybillDet" ToRole="Currency" />
           </EntityType>
-        <Association Name="FK_WAYBILLD_REFERENCE_CURRENCY">
-          <End Type="BaseModel.CURRENCY" Role="CURRENCY" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CURRENCY">
-              <PropertyRef Name="CURRID" />
-            </Principal>
-            <Dependent Role="WaybillDet">
-              <PropertyRef Name="CurrId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_WAYBILLD_FK_WBDET__MATERIAL">
           <End Type="BaseModel.MATERIALS" Role="MATERIALS" Multiplicity="1" />
           <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
@@ -8966,13 +8757,13 @@
           <Property Type="Decimal" Name="OnValue" Precision="15" Scale="8" />
           <Property Type="String" Name="Schet" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CashDesks" Relationship="BaseModel.FK_PD_CASHID" FromRole="PayDoc" ToRole="CashDesks" />
-          <NavigationProperty Name="CURRENCY" Relationship="BaseModel.FK__PAYDOC__CURRID__214BF109" FromRole="PayDoc" ToRole="CURRENCY" />
           <NavigationProperty Name="DOCS" Relationship="BaseModel.FK_PAYDOC_REF_PD_DO_DOCS" FromRole="PayDoc" ToRole="DOCS" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__PAYDOC__KAID__19AACF41" FromRole="PayDoc" ToRole="Kagent" />
           <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK__PAYDOC__MPERSONI__22401542" FromRole="PayDoc" ToRole="Kagent" />
           <NavigationProperty Name="KAGENTACCOUNT" Relationship="BaseModel.FK_PD_ACCID" FromRole="PayDoc" ToRole="KAGENTACCOUNT" />
           <NavigationProperty Name="PayType" Relationship="BaseModel.FK__PAYDOC__PTYPEID__2057CCD0" FromRole="PayDoc" ToRole="PayType" />
           <NavigationProperty Name="ChargeType" Relationship="BaseModel.FK__PAYDOC__CTYPEID__2334397B" FromRole="PayDoc" ToRole="ChargeType" />
+          <NavigationProperty Name="Currency" Relationship="BaseModel.FK__PAYDOC__CURRID__214BF109" FromRole="PayDoc" ToRole="Currency" />
         </EntityType>
         <Association Name="FK_PD_CASHID">
           <End Type="BaseModel.CashDesks" Role="CashDesks" Multiplicity="0..1" />
@@ -8983,18 +8774,6 @@
             </Principal>
             <Dependent Role="PayDoc">
               <PropertyRef Name="CashId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PAYDOC__CURRID__214BF109">
-          <End Type="BaseModel.CURRENCY" Role="CURRENCY" Multiplicity="1" />
-          <End Type="BaseModel.PayDoc" Role="PayDoc" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CURRENCY">
-              <PropertyRef Name="CURRID" />
-            </Principal>
-            <Dependent Role="PayDoc">
-              <PropertyRef Name="CurrId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -9279,6 +9058,229 @@
           <Property Type="String" Name="AccNum" Nullable="true" MaxLength="64" />
           <Property Type="String" Name="BankName" Nullable="true" MaxLength="128" />
         </ComplexType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="CurrId" />
+          </Key>
+          <Property Type="Int32" Name="CurrId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ShortName" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Def" Nullable="false" />
+          <Property Type="Int32" Name="Deleted" Nullable="false" />
+          <Property Type="String" Name="RepShortName" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RepFracName" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CurType" Nullable="false" />
+          <NavigationProperty Name="CONTRACTS" Relationship="BaseModel.FK_CONTRACT_REFERENCE_CURRENCY" FromRole="Currency" ToRole="CONTRACTS" />
+          <NavigationProperty Name="CONTRDET" Relationship="BaseModel.FK_CONTRDET_REFERENCE_CURRENCY" FromRole="Currency" ToRole="CONTRDET" />
+          <NavigationProperty Name="CURRENCYRATE" Relationship="BaseModel.FK__CURRENCYR__CURRI__5EBF139D" FromRole="Currency" ToRole="CURRENCYRATE" />
+          <NavigationProperty Name="MATGROUPPRICES" Relationship="BaseModel.FK__MATGROUPP__CURRI__6EC0713C" FromRole="Currency" ToRole="MATGROUPPRICES" />
+          <NavigationProperty Name="MATPRICES" Relationship="BaseModel.FK__MATPRICES__CURRI__73852659" FromRole="Currency" ToRole="MATPRICES" />
+          <NavigationProperty Name="MATPRICES1" Relationship="BaseModel.FK__MATPRICES__CURRI__74794A92" FromRole="Currency" ToRole="MATPRICES" />
+          <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK__PAYDOC__CURRID__214BF109" FromRole="Currency" ToRole="PayDoc" />
+          <NavigationProperty Name="MONEYSALDO" Relationship="BaseModel.FK_MS_CURRID" FromRole="Currency" ToRole="MONEYSALDO" />
+          <NavigationProperty Name="PRICELIST" Relationship="BaseModel.FK_PRICELIS_REFERENCE_CURRENCY" FromRole="Currency" ToRole="PRICELIST" />
+          <NavigationProperty Name="SERVICES" Relationship="BaseModel.FK_SVC_CURRID" FromRole="Currency" ToRole="SERVICES" />
+          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_CURRENCY" FromRole="Currency" ToRole="WaybillDet" />
+          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY" FromRole="Currency" ToRole="WaybillList" />
+          <NavigationProperty Name="WAYBILLSVC" Relationship="BaseModel.FK_WBS_CURRID" FromRole="Currency" ToRole="WAYBILLSVC" />
+        </EntityType>
+        <Association Name="FK_CONTRACT_REFERENCE_CURRENCY">
+          <End Type="BaseModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="BaseModel.CONTRACTS" Role="CONTRACTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
+            </Principal>
+            <Dependent Role="CONTRACTS">
+              <PropertyRef Name="CURRID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CONTRDET_REFERENCE_CURRENCY">
+          <End Type="BaseModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="BaseModel.CONTRDET" Role="CONTRDET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
+            </Principal>
+            <Dependent Role="CONTRDET">
+              <PropertyRef Name="CURRID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CURRENCYR__CURRI__5EBF139D">
+          <End Type="BaseModel.Currency" Role="Currency" Multiplicity="1" />
+          <End Type="BaseModel.CURRENCYRATE" Role="CURRENCYRATE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
+            </Principal>
+            <Dependent Role="CURRENCYRATE">
+              <PropertyRef Name="CURRID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MATGROUPP__CURRI__6EC0713C">
+          <End Type="BaseModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="BaseModel.MATGROUPPRICES" Role="MATGROUPPRICES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
+            </Principal>
+            <Dependent Role="MATGROUPPRICES">
+              <PropertyRef Name="CURRID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MATPRICES__CURRI__73852659">
+          <End Type="BaseModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="BaseModel.MATPRICES" Role="MATPRICES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
+            </Principal>
+            <Dependent Role="MATPRICES">
+              <PropertyRef Name="CURRID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MATPRICES__CURRI__74794A92">
+          <End Type="BaseModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="BaseModel.MATPRICES" Role="MATPRICES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
+            </Principal>
+            <Dependent Role="MATPRICES">
+              <PropertyRef Name="CURRID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PAYDOC__CURRID__214BF109">
+          <End Type="BaseModel.Currency" Role="Currency" Multiplicity="1" />
+          <End Type="BaseModel.PayDoc" Role="PayDoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
+            </Principal>
+            <Dependent Role="PayDoc">
+              <PropertyRef Name="CurrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MS_CURRID">
+          <End Type="BaseModel.Currency" Role="Currency" Multiplicity="1" />
+          <End Type="BaseModel.MONEYSALDO" Role="MONEYSALDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
+            </Principal>
+            <Dependent Role="MONEYSALDO">
+              <PropertyRef Name="CURRID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRICELIS_REFERENCE_CURRENCY">
+          <End Type="BaseModel.Currency" Role="Currency" Multiplicity="1" />
+          <End Type="BaseModel.PRICELIST" Role="PRICELIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
+            </Principal>
+            <Dependent Role="PRICELIST">
+              <PropertyRef Name="CURRID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SVC_CURRID">
+          <End Type="BaseModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="BaseModel.SERVICES" Role="SERVICES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
+            </Principal>
+            <Dependent Role="SERVICES">
+              <PropertyRef Name="CURRID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAYBILLD_REFERENCE_CURRENCY">
+          <End Type="BaseModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
+            </Principal>
+            <Dependent Role="WaybillDet">
+              <PropertyRef Name="CurrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAYBILLL_FK_WBLIST_CURRENCY">
+          <End Type="BaseModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
+            </Principal>
+            <Dependent Role="WaybillList">
+              <PropertyRef Name="CurrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WBS_CURRID">
+          <End Type="BaseModel.Currency" Role="Currency" Multiplicity="1" />
+          <End Type="BaseModel.WAYBILLSVC" Role="WAYBILLSVC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
+            </Principal>
+            <Dependent Role="WAYBILLSVC">
+              <PropertyRef Name="CURRID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GetWayBillDetOut_Result">
+          <Property Type="Int32" Name="Num" Nullable="false" />
+          <Property Type="Int32" Name="PosId" Nullable="true" />
+          <Property Type="Int32" Name="WbillId" Nullable="false" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="Int32" Name="Wid" Nullable="true" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Discount" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="NDS" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="PtypeId" Nullable="true" />
+          <Property Type="Int32" Name="Checked" Nullable="true" />
+          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="WhName" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
+          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="Int32" Name="PosType" Nullable="true" />
+          <Property Type="Decimal" Name="Norm" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="String" Name="Producer" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Gtd" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="CertNum" Nullable="true" MaxLength="64" />
+          <Property Type="DateTime" Name="CertDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Serials" Nullable="true" />
+          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="WarrantyPeriod" Nullable="true" />
+          <Property Type="Int32" Name="WarrantyPeriodType" Nullable="true" />
+          <Property Type="Int32" Name="GrpId" Nullable="true" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="CardId" Nullable="true" />
+          <Property Type="String" Name="CardNum" Nullable="true" MaxLength="24" />
+          <Property Type="String" Name="Holder" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="SerialNo" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="GroupName" Nullable="false" MaxLength="64" />
+          <Property Type="Decimal" Name="BasePrice" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Total" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="SumNds" Nullable="true" Precision="35" Scale="10" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -9431,20 +9433,6 @@
                 <ScalarProperty Name="SHORTNAME" ColumnName="SHORTNAME" />
                 <ScalarProperty Name="DELETED" ColumnName="DELETED" />
                 <ScalarProperty Name="DEF" ColumnName="DEF" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CURRENCY">
-            <EntityTypeMapping TypeName="BaseModel.CURRENCY">
-              <MappingFragment StoreEntitySet="CURRENCY">
-                <ScalarProperty Name="CURRID" ColumnName="CURRID" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="SHORTNAME" ColumnName="SHORTNAME" />
-                <ScalarProperty Name="DEF" ColumnName="DEF" />
-                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
-                <ScalarProperty Name="REPSHORTNAME" ColumnName="REPSHORTNAME" />
-                <ScalarProperty Name="REPFRACNAME" ColumnName="REPFRACNAME" />
-                <ScalarProperty Name="CURTYPE" ColumnName="CURTYPE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -10591,50 +10579,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="WBDGetOut" FunctionName="BaseModel.Store.WBDGetOut">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.WBDGetOut_Result">
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="PosId" ColumnName="PosId" />
-                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="Wid" ColumnName="Wid" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="NDS" ColumnName="NDS" />
-                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="PtypeId" ColumnName="PtypeId" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="MatName" ColumnName="MatName" />
-                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
-                <ScalarProperty Name="WhName" ColumnName="WhName" />
-                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
-                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
-                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
-                <ScalarProperty Name="PosType" ColumnName="PosType" />
-                <ScalarProperty Name="Norm" ColumnName="Norm" />
-                <ScalarProperty Name="Producer" ColumnName="Producer" />
-                <ScalarProperty Name="Gtd" ColumnName="Gtd" />
-                <ScalarProperty Name="CertNum" ColumnName="CertNum" />
-                <ScalarProperty Name="CertDate" ColumnName="CertDate" />
-                <ScalarProperty Name="Serials" ColumnName="Serials" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="WarrantyPeriod" ColumnName="WarrantyPeriod" />
-                <ScalarProperty Name="WarrantyPeriodType" ColumnName="WarrantyPeriodType" />
-                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="CardId" ColumnName="CardId" />
-                <ScalarProperty Name="CardNum" ColumnName="CardNum" />
-                <ScalarProperty Name="Holder" ColumnName="Holder" />
-                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
-                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
-                <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="WBDGetOutP2" FunctionName="BaseModel.Store.WBDGetOutP2">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.WBDGetOutP2_Result">
@@ -11166,6 +11110,65 @@
                 <ScalarProperty Name="CashdName" ColumnName="CashdName" />
                 <ScalarProperty Name="AccNum" ColumnName="AccNum" />
                 <ScalarProperty Name="BankName" ColumnName="BankName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Currency">
+            <EntityTypeMapping TypeName="BaseModel.Currency">
+              <MappingFragment StoreEntitySet="Currency">
+                <ScalarProperty Name="CurType" ColumnName="CurType" />
+                <ScalarProperty Name="RepFracName" ColumnName="RepFracName" />
+                <ScalarProperty Name="RepShortName" ColumnName="RepShortName" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Def" ColumnName="Def" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetWayBillDetOut" FunctionName="BaseModel.Store.GetWayBillDetOut">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetWayBillDetOut_Result">
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="Wid" ColumnName="Wid" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="NDS" ColumnName="NDS" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="PtypeId" ColumnName="PtypeId" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="PosType" ColumnName="PosType" />
+                <ScalarProperty Name="Norm" ColumnName="Norm" />
+                <ScalarProperty Name="Producer" ColumnName="Producer" />
+                <ScalarProperty Name="Gtd" ColumnName="Gtd" />
+                <ScalarProperty Name="CertNum" ColumnName="CertNum" />
+                <ScalarProperty Name="CertDate" ColumnName="CertDate" />
+                <ScalarProperty Name="Serials" ColumnName="Serials" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="WarrantyPeriod" ColumnName="WarrantyPeriod" />
+                <ScalarProperty Name="WarrantyPeriodType" ColumnName="WarrantyPeriodType" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="CardId" ColumnName="CardId" />
+                <ScalarProperty Name="CardNum" ColumnName="CardNum" />
+                <ScalarProperty Name="Holder" ColumnName="Holder" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="SumNds" ColumnName="SumNds" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

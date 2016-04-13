@@ -12,9 +12,9 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class CURRENCY
+    public partial class Currency
     {
-        public CURRENCY()
+        public Currency()
         {
             this.CONTRACTS = new HashSet<CONTRACTS>();
             this.CONTRDET = new HashSet<CONTRDET>();
@@ -22,23 +22,23 @@ namespace SP_Sklad.SkladData
             this.MATGROUPPRICES = new HashSet<MATGROUPPRICES>();
             this.MATPRICES = new HashSet<MATPRICES>();
             this.MATPRICES1 = new HashSet<MATPRICES>();
+            this.PayDoc = new HashSet<PayDoc>();
             this.MONEYSALDO = new HashSet<MONEYSALDO>();
             this.PRICELIST = new HashSet<PRICELIST>();
             this.SERVICES = new HashSet<SERVICES>();
-            this.WAYBILLSVC = new HashSet<WAYBILLSVC>();
-            this.WaybillList = new HashSet<WaybillList>();
             this.WaybillDet = new HashSet<WaybillDet>();
-            this.PayDoc = new HashSet<PayDoc>();
+            this.WaybillList = new HashSet<WaybillList>();
+            this.WAYBILLSVC = new HashSet<WAYBILLSVC>();
         }
     
-        public int CURRID { get; set; }
-        public string NAME { get; set; }
-        public string SHORTNAME { get; set; }
-        public int DEF { get; set; }
-        public int DELETED { get; set; }
-        public string REPSHORTNAME { get; set; }
-        public string REPFRACNAME { get; set; }
-        public int CURTYPE { get; set; }
+        public int CurrId { get; set; }
+        public string Name { get; set; }
+        public string ShortName { get; set; }
+        public int Def { get; set; }
+        public int Deleted { get; set; }
+        public string RepShortName { get; set; }
+        public string RepFracName { get; set; }
+        public int CurType { get; set; }
     
         public virtual ICollection<CONTRACTS> CONTRACTS { get; set; }
         public virtual ICollection<CONTRDET> CONTRDET { get; set; }
@@ -46,12 +46,12 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<MATGROUPPRICES> MATGROUPPRICES { get; set; }
         public virtual ICollection<MATPRICES> MATPRICES { get; set; }
         public virtual ICollection<MATPRICES> MATPRICES1 { get; set; }
+        public virtual ICollection<PayDoc> PayDoc { get; set; }
         public virtual ICollection<MONEYSALDO> MONEYSALDO { get; set; }
         public virtual ICollection<PRICELIST> PRICELIST { get; set; }
         public virtual ICollection<SERVICES> SERVICES { get; set; }
-        public virtual ICollection<WAYBILLSVC> WAYBILLSVC { get; set; }
-        public virtual ICollection<WaybillList> WaybillList { get; set; }
         public virtual ICollection<WaybillDet> WaybillDet { get; set; }
-        public virtual ICollection<PayDoc> PayDoc { get; set; }
+        public virtual ICollection<WaybillList> WaybillList { get; set; }
+        public virtual ICollection<WAYBILLSVC> WAYBILLSVC { get; set; }
     }
 }

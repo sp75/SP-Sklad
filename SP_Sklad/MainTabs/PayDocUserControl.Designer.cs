@@ -123,7 +123,6 @@
             this.SumEdit.Name = "SumEdit";
             this.SumEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.SumEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
             this.SumEdit.Size = new System.Drawing.Size(104, 22);
             this.SumEdit.StyleController = this.styleController1;
             this.SumEdit.TabIndex = 24;

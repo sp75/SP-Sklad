@@ -36,11 +36,11 @@ namespace SP_Sklad.SkladData
     
         public virtual DOCS DOCS { get; set; }
         public virtual DOCS DOCS1 { get; set; }
-        public virtual CURRENCY CURRENCY { get; set; }
         public virtual ICollection<CONTRDET> CONTRDET { get; set; }
         public virtual CONTRPARAMS CONTRPARAMS { get; set; }
         public virtual CONTRRESULTS CONTRRESULTS { get; set; }
         public virtual Kagent Kagent { get; set; }
         public virtual Kagent Kagent1 { get; set; }
+        public virtual Currency Currency { get; set; }
     }
 }

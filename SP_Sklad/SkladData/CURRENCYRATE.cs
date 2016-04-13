@@ -19,6 +19,6 @@ namespace SP_Sklad.SkladData
         public decimal ONVALUE { get; set; }
         public int RATEID { get; set; }
     
-        public virtual CURRENCY CURRENCY { get; set; }
+        public virtual Currency Currency { get; set; }
     }
 }

@@ -73,6 +73,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\DocEdit.cs" />
     <Compile Include="FinanseForm\frmPayDoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,7 +137,7 @@
     <Compile Include="SkladData\COUNTRIES.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\CURRENCY.cs">
+    <Compile Include="SkladData\Currency.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\CURRENCYRATE.cs">
@@ -183,6 +184,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetWaybillDetIn_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetWayBillDetOut_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetWayBillList_Result.cs">
@@ -460,9 +464,6 @@
     <Compile Include="SkladData\WBDGetOutP2_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\WBDGetOut_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SkladData\WMatTurn.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -472,18 +473,27 @@
     <Compile Include="WBDetForm\frmWayBillDetIn.Designer.cs">
       <DependentUpon>frmWayBillDetIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBDetForm\frmWayBillDetOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBDetForm\frmWayBillDetOut.Designer.cs">
+      <DependentUpon>frmWayBillDetOut.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBForm\frmWayBillIn.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="WBForm\frmWayBillIn.Designer.cs">
       <DependentUpon>frmWayBillIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="WBForm\WayBillOut.cs">
+    <Compile Include="WBForm\frmWayBillOut.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WBForm\WayBillOut.Designer.cs">
-      <DependentUpon>WayBillOut.cs</DependentUpon>
+    <Compile Include="WBForm\frmWayBillOut.Designer.cs">
+      <DependentUpon>frmWayBillOut.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FinanseForm\frmPayDoc.resx">
+      <DependentUpon>frmPayDoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="mainForm.resx">
       <DependentUpon>mainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -507,13 +517,17 @@
     <EmbeddedResource Include="WBDetForm\frmWayBillDetIn.resx">
       <DependentUpon>frmWayBillDetIn.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WBDetForm\frmWayBillDetOut.resx">
+      <DependentUpon>frmWayBillDetOut.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWayBillIn.resx">
       <DependentUpon>frmWayBillIn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WBForm\WayBillOut.resx">
-      <DependentUpon>WayBillOut.cs</DependentUpon>
+    <EmbeddedResource Include="WBForm\frmWayBillOut.resx">
+      <DependentUpon>frmWayBillOut.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.DBHelper.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

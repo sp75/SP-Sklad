@@ -11,7 +11,7 @@ namespace SP_Sklad.SkladData
 {
     using System;
     
-    public partial class WBDGetOut_Result
+    public partial class GetWayBillDetOut_Result
     {
         public int Num { get; set; }
         public Nullable<int> PosId { get; set; }
@@ -51,5 +51,6 @@ namespace SP_Sklad.SkladData
         public string GroupName { get; set; }
         public Nullable<decimal> BasePrice { get; set; }
         public Nullable<decimal> Total { get; set; }
+        public Nullable<decimal> SumNds { get; set; }
     }
 }

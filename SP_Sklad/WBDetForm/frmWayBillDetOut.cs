@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SP_Sklad.WBForm
+namespace SP_Sklad.WBDetForm
 {
-    public partial class WayBillOut : Form
+    public partial class frmWayBillDetOut : Form
     {
-        public WayBillOut()
+        public frmWayBillDetOut()
         {
             InitializeComponent();
+        }
+
+        private void MatComboBox_Properties_EditValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

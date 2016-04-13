@@ -38,7 +38,7 @@
             this.wbContentTab = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.WBGridControl = new DevExpress.XtraGrid.GridControl();
             this.WbGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -176,7 +176,7 @@
             this.xtraTabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
             this.splitContainerControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WBGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheckedItemImageComboBox)).BeginInit();
@@ -355,7 +355,7 @@
             this.splitContainerControl2.Horizontal = false;
             this.splitContainerControl2.Location = new System.Drawing.Point(0, 0);
             this.splitContainerControl2.Name = "splitContainerControl2";
-            this.splitContainerControl2.Panel1.Controls.Add(this.gridControl1);
+            this.splitContainerControl2.Panel1.Controls.Add(this.WBGridControl);
             this.splitContainerControl2.Panel1.Controls.Add(this.panelControl2);
             this.splitContainerControl2.Panel1.Text = "Panel1";
             this.splitContainerControl2.Panel2.Controls.Add(this.xtraTabControl2);
@@ -365,18 +365,18 @@
             this.splitContainerControl2.TabIndex = 0;
             this.splitContainerControl2.Text = "splitContainerControl2";
             // 
-            // gridControl1
+            // WBGridControl
             // 
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 44);
-            this.gridControl1.MainView = this.WbGridView;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.WBGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WBGridControl.Location = new System.Drawing.Point(0, 44);
+            this.WBGridControl.MainView = this.WbGridView;
+            this.WBGridControl.Name = "WBGridControl";
+            this.WBGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1,
             this.CheckedItemImageComboBox});
-            this.gridControl1.Size = new System.Drawing.Size(765, 443);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.WBGridControl.Size = new System.Drawing.Size(765, 443);
+            this.WBGridControl.TabIndex = 0;
+            this.WBGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WbGridView});
             // 
             // WbGridView
@@ -392,7 +392,7 @@
             this.gridColumn6,
             this.gridColumn7,
             this.gridColumn8});
-            this.WbGridView.GridControl = this.gridControl1;
+            this.WbGridView.GridControl = this.WBGridControl;
             this.WbGridView.Name = "WbGridView";
             this.WbGridView.OptionsBehavior.Editable = false;
             this.WbGridView.OptionsBehavior.ReadOnly = true;
@@ -1090,6 +1090,7 @@
             this.PayDocGridView.OptionsView.EnableAppearanceOddRow = true;
             this.PayDocGridView.OptionsView.ShowGroupPanel = false;
             this.PayDocGridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.PayDocGridView_FocusedRowChanged);
+            this.PayDocGridView.DoubleClick += new System.EventHandler(this.WbGridView_DoubleClick);
             // 
             // gridColumn22
             // 
@@ -1774,7 +1775,7 @@
             this.xtraTabPage7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
             this.splitContainerControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WBGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheckedItemImageComboBox)).EndInit();
@@ -1845,7 +1846,7 @@
         private DevExpress.XtraTab.XtraTabControl wbContentTab;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage6;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage7;
-        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.GridControl WBGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView WbGridView;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
