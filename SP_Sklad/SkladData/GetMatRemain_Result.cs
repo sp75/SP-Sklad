@@ -10,18 +10,15 @@
 namespace SP_Sklad.SkladData
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class DEBONINGDET
+    public partial class GetMatRemain_Result
     {
-        public int DEBID { get; set; }
-        public int WBILLID { get; set; }
-        public int MATID { get; set; }
-        public decimal AMOUNT { get; set; }
-        public decimal PRICE { get; set; }
-        public int WID { get; set; }
-    
-        public virtual WaybillList WaybillList { get; set; }
-        public virtual Materials Materials { get; set; }
+        public System.DateTime OnDate { get; set; }
+        public Nullable<decimal> Remain { get; set; }
+        public Nullable<decimal> AvgPrice { get; set; }
+        public Nullable<decimal> MinPrice { get; set; }
+        public Nullable<decimal> MaxPrice { get; set; }
+        public Nullable<decimal> RemainInWh { get; set; }
+        public Nullable<decimal> Rsv { get; set; }
     }
 }

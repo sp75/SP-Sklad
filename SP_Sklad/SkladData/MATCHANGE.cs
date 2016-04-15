@@ -18,7 +18,7 @@ namespace SP_Sklad.SkladData
         public int CHANGEID { get; set; }
         public string NOTES { get; set; }
     
-        public virtual MATERIALS MATERIALS { get; set; }
-        public virtual MATERIALS MATERIALS1 { get; set; }
+        public virtual Materials Materials { get; set; }
+        public virtual Materials Materials1 { get; set; }
     }
 }

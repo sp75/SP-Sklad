@@ -25,6 +25,6 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> ORDERED { get; set; }
         public Nullable<decimal> ORSV { get; set; }
     
-        public virtual MATERIALS MATERIALS { get; set; }
+        public virtual Materials Materials { get; set; }
     }
 }

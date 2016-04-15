@@ -119,7 +119,7 @@
     <Compile Include="SkladData\COMMISSION.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\COMMONPARAMS.cs">
+    <Compile Include="SkladData\CommonParams.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\CONTRACTS.cs">
@@ -177,7 +177,13 @@
     <Compile Include="SkladData\GetMatGroupTree_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetMatRemain_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetPayDocList_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetPosIn_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetRelDocList_Result.cs">
@@ -240,7 +246,7 @@
     <Compile Include="SkladData\MATCHANGE.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\MATERIALS.cs">
+    <Compile Include="SkladData\Materials.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\MaterialsList.cs">

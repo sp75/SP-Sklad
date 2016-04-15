@@ -67,34 +67,15 @@ namespace SP_Sklad.Common
                        }
                    }
 
-                   /*	if(DocsTreeDataID->Value == 27 || DocsTreeDataID->Value == 39 || DocsTreeDataID->Value == 107)
-                        {
-                           try
-                           {
-                             try
-                             {
-                               frmWayBillOut = new  TfrmWayBillOut(Application);
-                               frmWayBillOut->WayBillList->ParamByName("WBILLID")->Value = WayBillListWBILLID->Value;
-                               frmWayBillOut->WayBillList->Open();
-                               frmWayBillOut->WayBillList->Edit();
-                               frmWayBillOut->WayBillList->LockRecord(true)  ;
-                               frmWayBillOut->ShowModal();
-                             }
-                             catch(const Exception& e)
-                             {
-                               frmWayBillOut->Close();
-                               if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
-                               else   ShowMessage(e.Message) ;
-                             }
-                           }
-                           __finally
-                           {
-                              delete frmWayBillOut ;
-                           }
+                   if (dr.WType == -1 || dr.WType == -16 || dr.WType == 2)
+                   {
+                       using (var wb_in = new frmWayBillOut(dr.WType, wb.WbillId))
+                       {
+                           wb_in.ShowDialog();
+                       }
+                   }
 
-                        }
-
-                       if(DocsTreeDataID->Value == 57) // Повернення від кліента
+            /*           if(DocsTreeDataID->Value == 57) // Повернення від кліента
                         {
                            try
                            {

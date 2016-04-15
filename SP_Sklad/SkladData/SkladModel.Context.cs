@@ -34,7 +34,6 @@ namespace SP_Sklad.SkladData
         public DbSet<BLOBS> BLOBS { get; set; }
         public DbSet<CITYTYPE> CITYTYPE { get; set; }
         public DbSet<COMMISSION> COMMISSION { get; set; }
-        public DbSet<COMMONPARAMS> COMMONPARAMS { get; set; }
         public DbSet<CONTRACTS> CONTRACTS { get; set; }
         public DbSet<CONTRDET> CONTRDET { get; set; }
         public DbSet<CONTRPARAMS> CONTRPARAMS { get; set; }
@@ -60,7 +59,6 @@ namespace SP_Sklad.SkladData
         public DbSet<KAMATGROUPDISCOUNT> KAMATGROUPDISCOUNT { get; set; }
         public DbSet<LANGUAGES> LANGUAGES { get; set; }
         public DbSet<MATCHANGE> MATCHANGE { get; set; }
-        public DbSet<MATERIALS> MATERIALS { get; set; }
         public DbSet<MATGROUP> MATGROUP { get; set; }
         public DbSet<MATGROUPPRICES> MATGROUPPRICES { get; set; }
         public DbSet<MATPRICES> MATPRICES { get; set; }
@@ -115,6 +113,8 @@ namespace SP_Sklad.SkladData
         public DbSet<Users> Users { get; set; }
         public DbSet<KagentList> KagentList { get; set; }
         public DbSet<Currency> Currency { get; set; }
+        public DbSet<Materials> Materials { get; set; }
+        public DbSet<CommonParams> CommonParams { get; set; }
     
         [EdmFunction("BaseEntities", "GetMatGroupTree")]
         public virtual IQueryable<GetMatGroupTree_Result> GetMatGroupTree(Nullable<int> root_cat_id)
@@ -896,15 +896,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ExecuteWayBill_Result>("ExecuteWayBill", wBILLIDParameter, nEW_WTYPEParameter);
         }
     
-        public virtual ObjectResult<Nullable<int>> StornoWayBill(Nullable<int> wBILLID)
-        {
-            var wBILLIDParameter = wBILLID.HasValue ?
-                new ObjectParameter("WBILLID", wBILLID) :
-                new ObjectParameter("WBILLID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("StornoWayBill", wBILLIDParameter);
-        }
-    
         public virtual int UpdWaybillDetPrice(Nullable<int> wbill_id)
         {
             var wbill_idParameter = wbill_id.HasValue ?
@@ -1013,6 +1004,49 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("wbill_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillDetOut_Result>("[BaseEntities].[GetWayBillDetOut](@wbill_id)", wbill_idParameter);
+        }
+    
+        public virtual ObjectResult<GetMatRemain_Result> GetMatRemain(Nullable<int> wid, Nullable<int> mat_id)
+        {
+            var widParameter = wid.HasValue ?
+                new ObjectParameter("wid", wid) :
+                new ObjectParameter("wid", typeof(int));
+    
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetMatRemain_Result>("GetMatRemain", widParameter, mat_idParameter);
+        }
+    
+        public virtual ObjectResult<GetPosIn_Result> GetPosIn(Nullable<System.DateTime> on_data, Nullable<int> mat_id, Nullable<int> wid, Nullable<int> ka_id)
+        {
+            var on_dataParameter = on_data.HasValue ?
+                new ObjectParameter("on_data", on_data) :
+                new ObjectParameter("on_data", typeof(System.DateTime));
+    
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            var widParameter = wid.HasValue ?
+                new ObjectParameter("wid", wid) :
+                new ObjectParameter("wid", typeof(int));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPosIn_Result>("GetPosIn", on_dataParameter, mat_idParameter, widParameter, ka_idParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> StornoWayBill(Nullable<int> wbill_id)
+        {
+            var wbill_idParameter = wbill_id.HasValue ?
+                new ObjectParameter("wbill_id", wbill_id) :
+                new ObjectParameter("wbill_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("StornoWayBill", wbill_idParameter);
         }
     }
 }

@@ -29,8 +29,8 @@ namespace SP_Sklad.SkladData
         public int MATID { get; set; }
         public Nullable<int> RTYPE { get; set; }
     
-        public virtual MATERIALS MATERIALS { get; set; }
         public virtual ICollection<MATRECDET> MATRECDET { get; set; }
         public virtual ICollection<WAYBILLMAKE> WAYBILLMAKE { get; set; }
+        public virtual Materials Materials { get; set; }
     }
 }

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SP_Sklad.SkladData;
+using SP_Sklad.WBDetForm;
 using EntityState = System.Data.Entity.EntityState;
 
 namespace SP_Sklad.WBForm
@@ -86,7 +87,11 @@ namespace SP_Sklad.WBForm
 
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            var df = new frmWayBillDetOut(_db, null, wb);
+            if (df.ShowDialog() == DialogResult.OK)
+            {
+                RefreshDet();
+            }
         }
 
         private void frmWayBillOut_Shown(object sender, EventArgs e)
@@ -145,7 +150,7 @@ namespace SP_Sklad.WBForm
             bool recult = (NumEdit.EditValue != null && KagentComboBox.EditValue != null && OnDateDBEdit.EditValue != null && WaybillDetInGridView.DataRowCount > 0);
             barSubItem1.Enabled = KagentComboBox.EditValue != null;
 
-            OkButton.Enabled = recult;
+          //  OkButton.Enabled = recult;
             EditMaterialBtn.Enabled = WaybillDetInGridView.DataRowCount > 0;
             DelMaterialBtn.Enabled = WaybillDetInGridView.DataRowCount > 0;
 
@@ -161,6 +166,43 @@ namespace SP_Sklad.WBForm
 
             _db.Dispose();
             current_transaction.Dispose();
+        }
+
+        private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var dr = WaybillDetInGridView.GetRow(WaybillDetInGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
+
+            if (dr != null)
+            {
+           //     DeleteRsv(dr.PosId);
+                _db.WaybillDet.Remove(_db.WaybillDet.Find(dr.PosId));
+                _db.SaveChanges();
+
+                RefreshDet();
+            }
+        }
+
+        private void DeleteRsv(int? pos_id) 
+        {
+            _db.WMatTurn.RemoveRange(_db.WMatTurn.Where(w => w.SourceId == pos_id));
+        }
+
+        private void KagentComboBox_EditValueChanged(object sender, EventArgs e)
+        {
+            var row = (KagentList)KagentComboBox.GetSelectedDataRow();
+            if (row == null)
+            {
+                return;
+            }
+
+            if (row.NdsPayer == 1)
+            {
+                wb.Nds = DBHelper.CommonParam.Nds;
+            }
+            else
+            {
+                wb.Nds = 0;
+            }
         }
 
     }

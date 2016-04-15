@@ -23,7 +23,7 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> NDS { get; set; }
         public Nullable<decimal> TOTAL { get; set; }
     
-        public virtual MATERIALS MATERIALS { get; set; }
         public virtual TAXWB TAXWB { get; set; }
+        public virtual Materials Materials { get; set; }
     }
 }

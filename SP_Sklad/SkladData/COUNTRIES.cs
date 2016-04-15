@@ -16,7 +16,7 @@ namespace SP_Sklad.SkladData
     {
         public COUNTRIES()
         {
-            this.MATERIALS = new HashSet<MATERIALS>();
+            this.Materials = new HashSet<Materials>();
         }
     
         public int CID { get; set; }
@@ -25,6 +25,6 @@ namespace SP_Sklad.SkladData
         public int DELETED { get; set; }
         public Nullable<int> DEF { get; set; }
     
-        public virtual ICollection<MATERIALS> MATERIALS { get; set; }
+        public virtual ICollection<Materials> Materials { get; set; }
     }
 }

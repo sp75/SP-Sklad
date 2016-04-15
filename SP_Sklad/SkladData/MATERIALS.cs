@@ -12,9 +12,9 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class MATERIALS
+    public partial class Materials
     {
-        public MATERIALS()
+        public Materials()
         {
             this.CONTRDET = new HashSet<CONTRDET>();
             this.DEBONINGDET = new HashSet<DEBONINGDET>();
@@ -23,42 +23,37 @@ namespace SP_Sklad.SkladData
             this.MATCHANGE1 = new HashSet<MATCHANGE>();
             this.MATREMAINS = new HashSet<MATREMAINS>();
             this.POSREMAINS = new HashSet<POSREMAINS>();
+            this.WMatTurn = new HashSet<WMatTurn>();
             this.MATRECIPE = new HashSet<MATRECIPE>();
             this.MATPRICES = new HashSet<MATPRICES>();
             this.TAXWBDET = new HashSet<TAXWBDET>();
             this.WaybillDet = new HashSet<WaybillDet>();
-            this.WMatTurn = new HashSet<WMatTurn>();
         }
     
-        public int MATID { get; set; }
-        public string NAME { get; set; }
-        public int MID { get; set; }
-        public Nullable<int> NUM { get; set; }
-        public int DEF { get; set; }
-        public int DELETED { get; set; }
-        public Nullable<int> GRPID { get; set; }
-        public Nullable<int> WID { get; set; }
-        public Nullable<decimal> MINRESERV { get; set; }
-        public Nullable<int> CID { get; set; }
-        public Nullable<int> DEMANDCAT { get; set; }
-        public string BARCODE { get; set; }
-        public string PRODUCER { get; set; }
-        public Nullable<decimal> WEIGHT { get; set; }
-        public Nullable<decimal> MSIZE { get; set; }
+        public int MatId { get; set; }
+        public string Name { get; set; }
+        public int MId { get; set; }
+        public Nullable<int> Num { get; set; }
+        public int Def { get; set; }
+        public int Deleted { get; set; }
+        public Nullable<int> GrpId { get; set; }
+        public Nullable<int> WId { get; set; }
+        public Nullable<decimal> MinRserv { get; set; }
+        public Nullable<int> CId { get; set; }
+        public Nullable<int> DemandCat { get; set; }
+        public string BarCode { get; set; }
+        public string Producer { get; set; }
+        public Nullable<decimal> Weight { get; set; }
+        public Nullable<decimal> MSize { get; set; }
         public Nullable<decimal> NDS { get; set; }
-        public Nullable<int> SERIALS { get; set; }
-        public Nullable<int> ARCHIVED { get; set; }
-        public string ARTIKUL { get; set; }
-        public string LABELDESCR { get; set; }
-        public Nullable<int> TYPEID { get; set; }
-        public Nullable<System.DateTime> DATEADDED { get; set; }
-        public Nullable<System.DateTime> DATEMODIFIED { get; set; }
-        public string NOTES { get; set; }
-        public string CF1 { get; set; }
-        public string CF2 { get; set; }
-        public string CF3 { get; set; }
-        public string CF4 { get; set; }
-        public string CF5 { get; set; }
+        public Nullable<int> Serials { get; set; }
+        public Nullable<int> Archived { get; set; }
+        public string Artikul { get; set; }
+        public string LabelDescr { get; set; }
+        public Nullable<int> TypeId { get; set; }
+        public Nullable<System.DateTime> DateAdded { get; set; }
+        public Nullable<System.DateTime> DateModified { get; set; }
+        public string Notes { get; set; }
         public byte[] BMP { get; set; }
     
         public virtual ICollection<CONTRDET> CONTRDET { get; set; }
@@ -75,11 +70,11 @@ namespace SP_Sklad.SkladData
         public virtual WAREHOUSE WAREHOUSE2 { get; set; }
         public virtual ICollection<MATREMAINS> MATREMAINS { get; set; }
         public virtual ICollection<POSREMAINS> POSREMAINS { get; set; }
+        public virtual ICollection<WMatTurn> WMatTurn { get; set; }
         public virtual MEASURES MEASURES { get; set; }
         public virtual ICollection<MATRECIPE> MATRECIPE { get; set; }
         public virtual ICollection<MATPRICES> MATPRICES { get; set; }
         public virtual ICollection<TAXWBDET> TAXWBDET { get; set; }
         public virtual ICollection<WaybillDet> WaybillDet { get; set; }
-        public virtual ICollection<WMatTurn> WMatTurn { get; set; }
     }
 }

@@ -17,9 +17,22 @@ namespace SP_Sklad.SkladData
         private static List<CashDesks> _cash_desks;
         private static List<ChargeType> _charge_type;
         private static LoginUser _current_user;
-        private static List<PersonList> _kagents;
+        private static List<KagentList> _kagents;
         private static List<Currency> _currency;
         private static PersonList _enterprise;
+        private static CommonParams _common_param;
+
+        public static CommonParams CommonParam
+        {
+            get
+            {
+                if (_common_param == null)
+                {
+                    _common_param = new BaseEntities().CommonParams.FirstOrDefault();
+                }
+                return _common_param;
+            }
+        }
 
         public static LoginUser CurrentUser
         {
@@ -44,13 +57,13 @@ namespace SP_Sklad.SkladData
                 }).FirstOrDefault();
             }
         }
-        public static List<PersonList> Kagents
+        public static List<KagentList> Kagents
         {
             get
             {
                 if (_kagents == null)
                 {
-                    _kagents = new BaseEntities().Kagent.Select(s => new PersonList() { KaId = s.KaId, Name = s.Name }).ToList();
+                    _kagents = new BaseEntities().KagentList.ToList();
                 }
                 return _kagents;
             }
@@ -148,19 +161,20 @@ namespace SP_Sklad.SkladData
 
         public static int? StornoOrder(BaseEntities db, int wbill_id)
         {
-            var result = db.StornoWayBill(wbill_id).FirstOrDefault();
+            var result = db.StornoWayBill(wbill_id);
 
-            if (result == 1)
+
+         /*   if (result != null && result == 1)
             {
                 MessageBox.Show(Resources.not_storno_wb, "Відміна проводки", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            }*/
 
-            return result;
+            return 1;
         }
 
         public static ExecuteWayBill_Result ExecuteOrder(BaseEntities db, int wbill_id)
         {
-            var result = db.ExecuteWayBill(wbill_id, null).FirstOrDefault();
+            var result = db.ExecuteWayBill(wbill_id, null).ToList().FirstOrDefault();
             if (result != null && result.Checked == 0)
             {
                 MessageBox.Show(Resources.not_execute_wb, "Проведення документа", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -174,13 +188,13 @@ namespace SP_Sklad.SkladData
             var query = (from wmt1 in db.WMatTurn
                          from wmt2 in db.WMatTurn
                          from wbd in db.WaybillDet
-                         from m in db.MATERIALS
-                         where wbd.WbillId == wb.WbillId && m.MATID == wbd.MatId && wbd.PosId == wmt1.SourceId && wmt1.PosId == wmt2.SourceId && wmt1.TurnType != wmt2.TurnType
+                         from m in db.Materials
+                         where wbd.WbillId == wb.WbillId && m.MatId == wbd.MatId && wbd.PosId == wmt1.SourceId && wmt1.PosId == wmt2.SourceId && wmt1.TurnType != wmt2.TurnType
                          orderby wmt2.OnDate descending
                          select new
                          {
                              wmt2.OnDate,
-                             m.NAME
+                             m.Name
                          }
                          ).FirstOrDefault();
 
@@ -194,7 +208,7 @@ namespace SP_Sklad.SkladData
 
             if (query != null && date < query.OnDate)
             {
-                if (MessageBox.Show("Дата документа не може бути меншою за дату прибуткової партії! \nПозиція: " + query.NAME + " \nДата: " + query.OnDate.ToString() + " \nЗмінити дату докомента на " + query.OnDate.ToString() + "?", "Зміна дати докуманта", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                if (MessageBox.Show("Дата документа не може бути меншою за дату прибуткової партії! \nПозиція: " + query.Name + " \nДата: " + query.OnDate.ToString() + " \nЗмінити дату докомента на " + query.OnDate.ToString() + "?", "Зміна дати докуманта", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                 {
                     wb.OnDate = query.OnDate;
                     db.SaveChanges();

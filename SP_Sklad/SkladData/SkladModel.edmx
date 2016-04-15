@@ -15,7 +15,7 @@
           <EntitySet Name="ChargeType" EntityType="BaseModel.Store.ChargeType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CITYTYPE" EntityType="BaseModel.Store.CITYTYPE" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="COMMISSION" EntityType="BaseModel.Store.COMMISSION" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="COMMONPARAMS" EntityType="BaseModel.Store.COMMONPARAMS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CommonParams" EntityType="BaseModel.Store.CommonParams" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CONTRACTS" EntityType="BaseModel.Store.CONTRACTS" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CONTRDET" EntityType="BaseModel.Store.CONTRDET" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CONTRPARAMS" EntityType="BaseModel.Store.CONTRPARAMS" store:Type="Tables" Schema="dbo" />
@@ -70,7 +70,7 @@
           <EntitySet Name="KAMATGROUPDISCOUNT" EntityType="BaseModel.Store.KAMATGROUPDISCOUNT" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="LANGUAGES" EntityType="BaseModel.Store.LANGUAGES" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MATCHANGE" EntityType="BaseModel.Store.MATCHANGE" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="MATERIALS" EntityType="BaseModel.Store.MATERIALS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Materials" EntityType="BaseModel.Store.Materials" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MATGROUP" EntityType="BaseModel.Store.MATGROUP" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MATGROUPPRICES" EntityType="BaseModel.Store.MATGROUPPRICES" store:Type="Tables" store:Schema="dbo" store:Name="MATGROUPPRICES">
             <DefiningQuery>SELECT 
@@ -347,7 +347,7 @@
             <End Role="KADISCOUNT" EntitySet="KADISCOUNT" />
           </AssociationSet>
           <AssociationSet Name="FK__KAMATDISC__MATID__32AB8735" Association="BaseModel.Store.FK__KAMATDISC__MATID__32AB8735">
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
+            <End Role="Materials" EntitySet="Materials" />
             <End Role="KAMATDISCOUNT" EntitySet="KAMATDISCOUNT" />
           </AssociationSet>
           <AssociationSet Name="FK__KAMATDISCO__KAID__31B762FC" Association="BaseModel.Store.FK__KAMATDISCO__KAID__31B762FC">
@@ -364,31 +364,31 @@
           </AssociationSet>
           <AssociationSet Name="FK__MATERIALS__CID__662B2B3B" Association="BaseModel.Store.FK__MATERIALS__CID__662B2B3B">
             <End Role="COUNTRIES" EntitySet="COUNTRIES" />
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
+            <End Role="Materials" EntitySet="Materials" />
           </AssociationSet>
           <AssociationSet Name="FK__MATERIALS__GRPID__58D1301D" Association="BaseModel.Store.FK__MATERIALS__GRPID__58D1301D">
             <End Role="MATGROUP" EntitySet="MATGROUP" />
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
+            <End Role="Materials" EntitySet="Materials" />
           </AssociationSet>
           <AssociationSet Name="FK__MATERIALS__GRPID__5D95E53A" Association="BaseModel.Store.FK__MATERIALS__GRPID__5D95E53A">
             <End Role="MATGROUP" EntitySet="MATGROUP" />
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
+            <End Role="Materials" EntitySet="Materials" />
           </AssociationSet>
           <AssociationSet Name="FK__MATERIALS__GRPID__6442E2C9" Association="BaseModel.Store.FK__MATERIALS__GRPID__6442E2C9">
             <End Role="MATGROUP" EntitySet="MATGROUP" />
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
+            <End Role="Materials" EntitySet="Materials" />
           </AssociationSet>
           <AssociationSet Name="FK__MATERIALS__WID__59C55456" Association="BaseModel.Store.FK__MATERIALS__WID__59C55456">
             <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
+            <End Role="Materials" EntitySet="Materials" />
           </AssociationSet>
           <AssociationSet Name="FK__MATERIALS__WID__5E8A0973" Association="BaseModel.Store.FK__MATERIALS__WID__5E8A0973">
             <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
+            <End Role="Materials" EntitySet="Materials" />
           </AssociationSet>
           <AssociationSet Name="FK__MATERIALS__WID__65370702" Association="BaseModel.Store.FK__MATERIALS__WID__65370702">
             <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
+            <End Role="Materials" EntitySet="Materials" />
           </AssociationSet>
           <AssociationSet Name="FK__MATGROUPP__CURRI__6EC0713C" Association="BaseModel.Store.FK__MATGROUPP__CURRI__6EC0713C">
             <End Role="Currency" EntitySet="Currency" />
@@ -411,7 +411,7 @@
             <End Role="MATPRICES" EntitySet="MATPRICES" />
           </AssociationSet>
           <AssociationSet Name="FK__MATREMAIN__MATID__04AFB25B" Association="BaseModel.Store.FK__MATREMAIN__MATID__04AFB25B">
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
+            <End Role="Materials" EntitySet="Materials" />
             <End Role="MATREMAINS" EntitySet="MATREMAINS" />
           </AssociationSet>
           <AssociationSet Name="FK__OPERLOG__TABID__0D44F85C" Association="BaseModel.Store.FK__OPERLOG__TABID__0D44F85C">
@@ -439,7 +439,7 @@
             <End Role="PayDoc" EntitySet="PayDoc" />
           </AssociationSet>
           <AssociationSet Name="FK__POSREMAIN__MATID__2CBDA3B5" Association="BaseModel.Store.FK__POSREMAIN__MATID__2CBDA3B5">
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
+            <End Role="Materials" EntitySet="Materials" />
             <End Role="POSREMAINS" EntitySet="POSREMAINS" />
           </AssociationSet>
           <AssociationSet Name="FK__POSREMAIN__POSID__2DB1C7EE" Association="BaseModel.Store.FK__POSREMAIN__POSID__2DB1C7EE">
@@ -471,7 +471,7 @@
             <End Role="WAYBILLMOVE" EntitySet="WAYBILLMOVE" />
           </AssociationSet>
           <AssociationSet Name="FK__WMATTURN__MATID__3AD6B8E2" Association="BaseModel.Store.FK__WMATTURN__MATID__3AD6B8E2">
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
+            <End Role="Materials" EntitySet="Materials" />
             <End Role="WMatTurn" EntitySet="WMatTurn" />
           </AssociationSet>
           <AssociationSet Name="FK__WMATTURN__WID__3BCADD1B" Association="BaseModel.Store.FK__WMATTURN__WID__3BCADD1B">
@@ -551,7 +551,7 @@
             <End Role="CONTRDET" EntitySet="CONTRDET" />
           </AssociationSet>
           <AssociationSet Name="FK_CONTRDET_REFERENCE_MATERIAL" Association="BaseModel.Store.FK_CONTRDET_REFERENCE_MATERIAL">
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
+            <End Role="Materials" EntitySet="Materials" />
             <End Role="CONTRDET" EntitySet="CONTRDET" />
           </AssociationSet>
           <AssociationSet Name="FK_CONTRPARAMS_CONTRACTS" Association="BaseModel.Store.FK_CONTRPARAMS_CONTRACTS">
@@ -563,7 +563,7 @@
             <End Role="CONTRRESULTS" EntitySet="CONTRRESULTS" />
           </AssociationSet>
           <AssociationSet Name="FK_DEBONINGDET_MATERIALS" Association="BaseModel.Store.FK_DEBONINGDET_MATERIALS">
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
+            <End Role="Materials" EntitySet="Materials" />
             <End Role="DEBONINGDET" EntitySet="DEBONINGDET" />
           </AssociationSet>
           <AssociationSet Name="FK_DEBONINGDET_WAYBILLLIST" Association="BaseModel.Store.FK_DEBONINGDET_WAYBILLLIST">
@@ -603,16 +603,16 @@
             <End Role="KAGENTSALDO" EntitySet="KAGENTSALDO" />
           </AssociationSet>
           <AssociationSet Name="FK_MATCHANGE_CHANGEID" Association="BaseModel.Store.FK_MATCHANGE_CHANGEID">
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
+            <End Role="Materials" EntitySet="Materials" />
             <End Role="MATCHANGE" EntitySet="MATCHANGE" />
           </AssociationSet>
           <AssociationSet Name="FK_MATCHANGE_MATID" Association="BaseModel.Store.FK_MATCHANGE_MATID">
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
+            <End Role="Materials" EntitySet="Materials" />
             <End Role="MATCHANGE" EntitySet="MATCHANGE" />
           </AssociationSet>
           <AssociationSet Name="FK_MATERIAL_REFERENCE_MEASURES" Association="BaseModel.Store.FK_MATERIAL_REFERENCE_MEASURES">
             <End Role="MEASURES" EntitySet="MEASURES" />
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
+            <End Role="Materials" EntitySet="Materials" />
           </AssociationSet>
           <AssociationSet Name="FK_MATPRICES_PPTYPEID" Association="BaseModel.Store.FK_MATPRICES_PPTYPEID">
             <End Role="PRICETYPES" EntitySet="PRICETYPES" />
@@ -623,7 +623,7 @@
             <End Role="MATRECDET" EntitySet="MATRECDET" />
           </AssociationSet>
           <AssociationSet Name="FK_MATRECIPE_1" Association="BaseModel.Store.FK_MATRECIPE_1">
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
+            <End Role="Materials" EntitySet="Materials" />
             <End Role="MATRECIPE" EntitySet="MATRECIPE" />
           </AssociationSet>
           <AssociationSet Name="FK_MGP_MATID" Association="BaseModel.Store.FK_MGP_MATID">
@@ -635,7 +635,7 @@
             <End Role="MATGROUPPRICES" EntitySet="MATGROUPPRICES" />
           </AssociationSet>
           <AssociationSet Name="FK_MP_MATID" Association="BaseModel.Store.FK_MP_MATID">
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
+            <End Role="Materials" EntitySet="Materials" />
             <End Role="MATPRICES" EntitySet="MATPRICES" />
           </AssociationSet>
           <AssociationSet Name="FK_MS_ACCID" Association="BaseModel.Store.FK_MS_ACCID">
@@ -739,7 +739,7 @@
             <End Role="TAXWB" EntitySet="TAXWB" />
           </AssociationSet>
           <AssociationSet Name="FK_TAXWBDET_REFERENCE_MATERIAL" Association="BaseModel.Store.FK_TAXWBDET_REFERENCE_MATERIAL">
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
+            <End Role="Materials" EntitySet="Materials" />
             <End Role="TAXWBDET" EntitySet="TAXWBDET" />
           </AssociationSet>
           <AssociationSet Name="FK_TAXWBDET_TWBID" Association="BaseModel.Store.FK_TAXWBDET_TWBID">
@@ -783,7 +783,7 @@
             <End Role="USERTREEVIEW" EntitySet="USERTREEVIEW" />
           </AssociationSet>
           <AssociationSet Name="FK_WAYBILLD_FK_WBDET__MATERIAL" Association="BaseModel.Store.FK_WAYBILLD_FK_WBDET__MATERIAL">
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
+            <End Role="Materials" EntitySet="Materials" />
             <End Role="WaybillDet" EntitySet="WaybillDet" />
           </AssociationSet>
           <AssociationSet Name="FK_WAYBILLD_FK_WBDET__WAREHOUS" Association="BaseModel.Store.FK_WAYBILLD_FK_WBDET__WAREHOUS">
@@ -979,17 +979,17 @@
           <Property Name="SECOND_KAID" Type="int" />
           <Property Name="THIRD_KAID" Type="int" />
         </EntityType>
-        <EntityType Name="COMMONPARAMS">
+        <EntityType Name="CommonParams">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="NDS" Type="numeric" Precision="15" Scale="8" />
-          <Property Name="CHARGETYPE" Type="int" />
-          <Property Name="POTYPE" Type="int" />
-          <Property Name="PRINTTYPE" Type="int" />
-          <Property Name="DELTOBIN" Type="int" />
-          <Property Name="VER" Type="varchar" MaxLength="10" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Nds" Type="numeric" Precision="15" Scale="8" />
+          <Property Name="ChargeType" Type="int" />
+          <Property Name="PoType" Type="int" />
+          <Property Name="PrintType" Type="int" />
+          <Property Name="DelToBin" Type="int" />
+          <Property Name="Ver" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="CONTRACTS">
           <Key>
@@ -1341,40 +1341,35 @@
           <Property Name="CHANGEID" Type="int" Nullable="false" />
           <Property Name="NOTES" Type="varchar" MaxLength="255" />
         </EntityType>
-        <EntityType Name="MATERIALS">
+        <EntityType Name="Materials">
           <Key>
-            <PropertyRef Name="MATID" />
+            <PropertyRef Name="MatId" />
           </Key>
-          <Property Name="MATID" Type="int" Nullable="false" />
-          <Property Name="NAME" Type="nvarchar" MaxLength="255" />
-          <Property Name="MID" Type="int" Nullable="false" />
-          <Property Name="NUM" Type="int" />
-          <Property Name="DEF" Type="int" Nullable="false" />
-          <Property Name="DELETED" Type="int" Nullable="false" />
-          <Property Name="GRPID" Type="int" />
-          <Property Name="WID" Type="int" />
-          <Property Name="MINRESERV" Type="numeric" Precision="15" Scale="8" />
-          <Property Name="CID" Type="int" />
-          <Property Name="DEMANDCAT" Type="int" />
-          <Property Name="BARCODE" Type="varchar" MaxLength="64" />
-          <Property Name="PRODUCER" Type="varchar" MaxLength="255" />
-          <Property Name="WEIGHT" Type="numeric" Precision="15" Scale="8" />
-          <Property Name="MSIZE" Type="numeric" Precision="15" Scale="8" />
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="MId" Type="int" Nullable="false" />
+          <Property Name="Num" Type="int" />
+          <Property Name="Def" Type="int" Nullable="false" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+          <Property Name="GrpId" Type="int" />
+          <Property Name="WId" Type="int" />
+          <Property Name="MinRserv" Type="numeric" Precision="15" Scale="8" />
+          <Property Name="CId" Type="int" />
+          <Property Name="DemandCat" Type="int" />
+          <Property Name="BarCode" Type="nvarchar" MaxLength="64" />
+          <Property Name="Producer" Type="nvarchar" MaxLength="255" />
+          <Property Name="Weight" Type="numeric" Precision="15" Scale="8" />
+          <Property Name="MSize" Type="numeric" Precision="15" Scale="8" />
           <Property Name="NDS" Type="numeric" Precision="15" Scale="8" />
-          <Property Name="SERIALS" Type="int" />
-          <Property Name="ARCHIVED" Type="int" />
-          <Property Name="ARTIKUL" Type="varchar" MaxLength="255" />
-          <Property Name="LABELDESCR" Type="varchar" MaxLength="255" />
-          <Property Name="TYPEID" Type="int" />
-          <Property Name="DATEADDED" Type="datetime" />
-          <Property Name="DATEMODIFIED" Type="datetime" />
-          <Property Name="NOTES" Type="varchar" MaxLength="255" />
-          <Property Name="CF1" Type="varchar" MaxLength="64" />
-          <Property Name="CF2" Type="varchar" MaxLength="64" />
-          <Property Name="CF3" Type="varchar" MaxLength="128" />
-          <Property Name="CF4" Type="varchar" MaxLength="128" />
-          <Property Name="CF5" Type="varchar" MaxLength="128" />
-          <Property Name="BMP" Type="image" />
+          <Property Name="Serials" Type="int" />
+          <Property Name="Archived" Type="int" />
+          <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
+          <Property Name="LabelDescr" Type="nvarchar" MaxLength="255" />
+          <Property Name="TypeId" Type="int" />
+          <Property Name="DateAdded" Type="datetime" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+          <Property Name="BMP" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="MATGROUP">
           <Key>
@@ -2189,13 +2184,13 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__KAMATDISC__MATID__32AB8735">
-          <End Role="MATERIALS" Type="BaseModel.Store.MATERIALS" Multiplicity="1">
+          <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="KAMATDISCOUNT" Type="BaseModel.Store.KAMATDISCOUNT" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MATERIALS">
-              <PropertyRef Name="MATID" />
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
             </Principal>
             <Dependent Role="KAMATDISCOUNT">
               <PropertyRef Name="MATID" />
@@ -2246,85 +2241,85 @@
         </Association>
         <Association Name="FK__MATERIALS__CID__662B2B3B">
           <End Role="COUNTRIES" Type="BaseModel.Store.COUNTRIES" Multiplicity="0..1" />
-          <End Role="MATERIALS" Type="BaseModel.Store.MATERIALS" Multiplicity="*" />
+          <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="COUNTRIES">
               <PropertyRef Name="CID" />
             </Principal>
-            <Dependent Role="MATERIALS">
-              <PropertyRef Name="CID" />
+            <Dependent Role="Materials">
+              <PropertyRef Name="CId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__MATERIALS__GRPID__58D1301D">
           <End Role="MATGROUP" Type="BaseModel.Store.MATGROUP" Multiplicity="0..1" />
-          <End Role="MATERIALS" Type="BaseModel.Store.MATERIALS" Multiplicity="*" />
+          <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MATGROUP">
               <PropertyRef Name="GRPID" />
             </Principal>
-            <Dependent Role="MATERIALS">
-              <PropertyRef Name="GRPID" />
+            <Dependent Role="Materials">
+              <PropertyRef Name="GrpId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__MATERIALS__GRPID__5D95E53A">
           <End Role="MATGROUP" Type="BaseModel.Store.MATGROUP" Multiplicity="0..1" />
-          <End Role="MATERIALS" Type="BaseModel.Store.MATERIALS" Multiplicity="*" />
+          <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MATGROUP">
               <PropertyRef Name="GRPID" />
             </Principal>
-            <Dependent Role="MATERIALS">
-              <PropertyRef Name="GRPID" />
+            <Dependent Role="Materials">
+              <PropertyRef Name="GrpId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__MATERIALS__GRPID__6442E2C9">
           <End Role="MATGROUP" Type="BaseModel.Store.MATGROUP" Multiplicity="0..1" />
-          <End Role="MATERIALS" Type="BaseModel.Store.MATERIALS" Multiplicity="*" />
+          <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MATGROUP">
               <PropertyRef Name="GRPID" />
             </Principal>
-            <Dependent Role="MATERIALS">
-              <PropertyRef Name="GRPID" />
+            <Dependent Role="Materials">
+              <PropertyRef Name="GrpId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__MATERIALS__WID__59C55456">
           <End Role="WAREHOUSE" Type="BaseModel.Store.WAREHOUSE" Multiplicity="0..1" />
-          <End Role="MATERIALS" Type="BaseModel.Store.MATERIALS" Multiplicity="*" />
+          <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="WAREHOUSE">
               <PropertyRef Name="WID" />
             </Principal>
-            <Dependent Role="MATERIALS">
-              <PropertyRef Name="WID" />
+            <Dependent Role="Materials">
+              <PropertyRef Name="WId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__MATERIALS__WID__5E8A0973">
           <End Role="WAREHOUSE" Type="BaseModel.Store.WAREHOUSE" Multiplicity="0..1" />
-          <End Role="MATERIALS" Type="BaseModel.Store.MATERIALS" Multiplicity="*" />
+          <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="WAREHOUSE">
               <PropertyRef Name="WID" />
             </Principal>
-            <Dependent Role="MATERIALS">
-              <PropertyRef Name="WID" />
+            <Dependent Role="Materials">
+              <PropertyRef Name="WId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__MATERIALS__WID__65370702">
           <End Role="WAREHOUSE" Type="BaseModel.Store.WAREHOUSE" Multiplicity="0..1" />
-          <End Role="MATERIALS" Type="BaseModel.Store.MATERIALS" Multiplicity="*" />
+          <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="WAREHOUSE">
               <PropertyRef Name="WID" />
             </Principal>
-            <Dependent Role="MATERIALS">
-              <PropertyRef Name="WID" />
+            <Dependent Role="Materials">
+              <PropertyRef Name="WId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2389,11 +2384,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__MATREMAIN__MATID__04AFB25B">
-          <End Role="MATERIALS" Type="BaseModel.Store.MATERIALS" Multiplicity="1" />
+          <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="1" />
           <End Role="MATREMAINS" Type="BaseModel.Store.MATREMAINS" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MATERIALS">
-              <PropertyRef Name="MATID" />
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
             </Principal>
             <Dependent Role="MATREMAINS">
               <PropertyRef Name="MATID" />
@@ -2473,11 +2468,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__POSREMAIN__MATID__2CBDA3B5">
-          <End Role="MATERIALS" Type="BaseModel.Store.MATERIALS" Multiplicity="1" />
+          <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="1" />
           <End Role="POSREMAINS" Type="BaseModel.Store.POSREMAINS" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MATERIALS">
-              <PropertyRef Name="MATID" />
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
             </Principal>
             <Dependent Role="POSREMAINS">
               <PropertyRef Name="MATID" />
@@ -2569,11 +2564,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__WMATTURN__MATID__3AD6B8E2">
-          <End Role="MATERIALS" Type="BaseModel.Store.MATERIALS" Multiplicity="1" />
+          <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="1" />
           <End Role="WMatTurn" Type="BaseModel.Store.WMatTurn" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MATERIALS">
-              <PropertyRef Name="MATID" />
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
             </Principal>
             <Dependent Role="WMatTurn">
               <PropertyRef Name="MatId" />
@@ -2823,11 +2818,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CONTRDET_REFERENCE_MATERIAL">
-          <End Role="MATERIALS" Type="BaseModel.Store.MATERIALS" Multiplicity="0..1" />
+          <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="0..1" />
           <End Role="CONTRDET" Type="BaseModel.Store.CONTRDET" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MATERIALS">
-              <PropertyRef Name="MATID" />
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
             </Principal>
             <Dependent Role="CONTRDET">
               <PropertyRef Name="MATID" />
@@ -2863,11 +2858,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DEBONINGDET_MATERIALS">
-          <End Role="MATERIALS" Type="BaseModel.Store.MATERIALS" Multiplicity="1" />
+          <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="1" />
           <End Role="DEBONINGDET" Type="BaseModel.Store.DEBONINGDET" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MATERIALS">
-              <PropertyRef Name="MATID" />
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
             </Principal>
             <Dependent Role="DEBONINGDET">
               <PropertyRef Name="MATID" />
@@ -2993,13 +2988,13 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MATCHANGE_CHANGEID">
-          <End Role="MATERIALS" Type="BaseModel.Store.MATERIALS" Multiplicity="1">
+          <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="MATCHANGE" Type="BaseModel.Store.MATCHANGE" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MATERIALS">
-              <PropertyRef Name="MATID" />
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
             </Principal>
             <Dependent Role="MATCHANGE">
               <PropertyRef Name="CHANGEID" />
@@ -3007,11 +3002,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MATCHANGE_MATID">
-          <End Role="MATERIALS" Type="BaseModel.Store.MATERIALS" Multiplicity="1" />
+          <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="1" />
           <End Role="MATCHANGE" Type="BaseModel.Store.MATCHANGE" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MATERIALS">
-              <PropertyRef Name="MATID" />
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
             </Principal>
             <Dependent Role="MATCHANGE">
               <PropertyRef Name="MATID" />
@@ -3020,13 +3015,13 @@
         </Association>
         <Association Name="FK_MATERIAL_REFERENCE_MEASURES">
           <End Role="MEASURES" Type="BaseModel.Store.MEASURES" Multiplicity="1" />
-          <End Role="MATERIALS" Type="BaseModel.Store.MATERIALS" Multiplicity="*" />
+          <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MEASURES">
               <PropertyRef Name="MID" />
             </Principal>
-            <Dependent Role="MATERIALS">
-              <PropertyRef Name="MID" />
+            <Dependent Role="Materials">
+              <PropertyRef Name="MId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3057,13 +3052,13 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MATRECIPE_1">
-          <End Role="MATERIALS" Type="BaseModel.Store.MATERIALS" Multiplicity="1">
+          <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="MATRECIPE" Type="BaseModel.Store.MATRECIPE" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MATERIALS">
-              <PropertyRef Name="MATID" />
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
             </Principal>
             <Dependent Role="MATRECIPE">
               <PropertyRef Name="MATID" />
@@ -3097,13 +3092,13 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MP_MATID">
-          <End Role="MATERIALS" Type="BaseModel.Store.MATERIALS" Multiplicity="1">
+          <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="MATPRICES" Type="BaseModel.Store.MATPRICES" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MATERIALS">
-              <PropertyRef Name="MATID" />
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
             </Principal>
             <Dependent Role="MATPRICES">
               <PropertyRef Name="MATID" />
@@ -3419,11 +3414,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TAXWBDET_REFERENCE_MATERIAL">
-          <End Role="MATERIALS" Type="BaseModel.Store.MATERIALS" Multiplicity="1" />
+          <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="1" />
           <End Role="TAXWBDET" Type="BaseModel.Store.TAXWBDET" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MATERIALS">
-              <PropertyRef Name="MATID" />
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
             </Principal>
             <Dependent Role="TAXWBDET">
               <PropertyRef Name="MATID" />
@@ -3563,11 +3558,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_WAYBILLD_FK_WBDET__MATERIAL">
-          <End Role="MATERIALS" Type="BaseModel.Store.MATERIALS" Multiplicity="1" />
+          <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="1" />
           <End Role="WaybillDet" Type="BaseModel.Store.WaybillDet" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MATERIALS">
-              <PropertyRef Name="MATID" />
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
             </Principal>
             <Dependent Role="WaybillDet">
               <PropertyRef Name="MatId" />
@@ -3910,6 +3905,10 @@
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="GetMatRemain" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="wid" Type="int" Mode="In" />
+          <Parameter Name="mat_id" Type="int" Mode="In" />
+        </Function>
         <Function Name="GetPayDocList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="doc_type" Type="int" Mode="In" />
           <Parameter Name="from_date" Type="datetime" Mode="In" />
@@ -3917,6 +3916,12 @@
           <Parameter Name="ka_id" Type="int" Mode="In" />
           <Parameter Name="checked" Type="int" Mode="In" />
           <Parameter Name="pay_type" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetPosIn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="on_data" Type="datetime" Mode="In" />
+          <Parameter Name="mat_id" Type="int" Mode="In" />
+          <Parameter Name="wid" Type="int" Mode="In" />
+          <Parameter Name="ka_id" Type="int" Mode="In" />
         </Function>
         <Function Name="GetRelDocList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="doc_id" Type="int" Mode="In" />
@@ -4664,7 +4669,7 @@
           </ReturnType>
         </Function>
         <Function Name="StornoWayBill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="WBILLID" Type="int" Mode="In" />
+          <Parameter Name="wbill_id" Type="int" Mode="In" />
         </Function>
         <Function Name="UpdWaybillDetPrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="wbill_id" Type="int" Mode="In" />
@@ -4723,7 +4728,6 @@
           <EntitySet Name="BLOBS" EntityType="BaseModel.BLOBS" />
           <EntitySet Name="CITYTYPE" EntityType="BaseModel.CITYTYPE" />
           <EntitySet Name="COMMISSION" EntityType="BaseModel.COMMISSION" />
-          <EntitySet Name="COMMONPARAMS" EntityType="BaseModel.COMMONPARAMS" />
           <EntitySet Name="CONTRACTS" EntityType="BaseModel.CONTRACTS" />
           <EntitySet Name="CONTRDET" EntityType="BaseModel.CONTRDET" />
           <EntitySet Name="CONTRPARAMS" EntityType="BaseModel.CONTRPARAMS" />
@@ -4749,7 +4753,6 @@
           <EntitySet Name="KAMATGROUPDISCOUNT" EntityType="BaseModel.KAMATGROUPDISCOUNT" />
           <EntitySet Name="LANGUAGES" EntityType="BaseModel.LANGUAGES" />
           <EntitySet Name="MATCHANGE" EntityType="BaseModel.MATCHANGE" />
-          <EntitySet Name="MATERIALS" EntityType="BaseModel.MATERIALS" />
           <EntitySet Name="MATGROUP" EntityType="BaseModel.MATGROUP" />
           <EntitySet Name="MATGROUPPRICES" EntityType="BaseModel.MATGROUPPRICES" />
           <EntitySet Name="MATPRICES" EntityType="BaseModel.MATPRICES" />
@@ -4819,18 +4822,6 @@
             <End Role="CONTRACTS" EntitySet="CONTRACTS" />
             <End Role="CONTRRESULTS" EntitySet="CONTRRESULTS" />
           </AssociationSet>
-          <AssociationSet Name="FK_CONTRDET_REFERENCE_MATERIAL" Association="BaseModel.FK_CONTRDET_REFERENCE_MATERIAL">
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
-            <End Role="CONTRDET" EntitySet="CONTRDET" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MATERIALS__CID__662B2B3B" Association="BaseModel.FK__MATERIALS__CID__662B2B3B">
-            <End Role="COUNTRIES" EntitySet="COUNTRIES" />
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DEBONINGDET_MATERIALS" Association="BaseModel.FK_DEBONINGDET_MATERIALS">
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
-            <End Role="DEBONINGDET" EntitySet="DEBONINGDET" />
-          </AssociationSet>
           <AssociationSet Name="FK_DISCCARDS_GRPID" Association="BaseModel.FK_DISCCARDS_GRPID">
             <End Role="DISCCARDGRP" EntitySet="DISCCARDGRP" />
             <End Role="DISCCARDS" EntitySet="DISCCARDS" />
@@ -4859,10 +4850,6 @@
             <End Role="KAGENTACCOUNT" EntitySet="KAGENTACCOUNT" />
             <End Role="MONEYSALDO" EntitySet="MONEYSALDO" />
           </AssociationSet>
-          <AssociationSet Name="FK__KAMATDISC__MATID__32AB8735" Association="BaseModel.FK__KAMATDISC__MATID__32AB8735">
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
-            <End Role="KAMATDISCOUNT" EntitySet="KAMATDISCOUNT" />
-          </AssociationSet>
           <AssociationSet Name="FK__KAMATGROU__GRPID__395884C4" Association="BaseModel.FK__KAMATGROU__GRPID__395884C4">
             <End Role="MATGROUP" EntitySet="MATGROUP" />
             <End Role="KAMATGROUPDISCOUNT" EntitySet="KAMATGROUPDISCOUNT" />
@@ -4874,62 +4861,6 @@
           <AssociationSet Name="FK_REPLNG_LANGID" Association="BaseModel.FK_REPLNG_LANGID">
             <End Role="LANGUAGES" EntitySet="LANGUAGES" />
             <End Role="REPLNG" EntitySet="REPLNG" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MATCHANGE_CHANGEID" Association="BaseModel.FK_MATCHANGE_CHANGEID">
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
-            <End Role="MATCHANGE" EntitySet="MATCHANGE" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MATCHANGE_MATID" Association="BaseModel.FK_MATCHANGE_MATID">
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
-            <End Role="MATCHANGE" EntitySet="MATCHANGE" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MATERIALS__GRPID__58D1301D" Association="BaseModel.FK__MATERIALS__GRPID__58D1301D">
-            <End Role="MATGROUP" EntitySet="MATGROUP" />
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MATERIALS__GRPID__5D95E53A" Association="BaseModel.FK__MATERIALS__GRPID__5D95E53A">
-            <End Role="MATGROUP" EntitySet="MATGROUP" />
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MATERIALS__GRPID__6442E2C9" Association="BaseModel.FK__MATERIALS__GRPID__6442E2C9">
-            <End Role="MATGROUP" EntitySet="MATGROUP" />
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MATERIALS__WID__59C55456" Association="BaseModel.FK__MATERIALS__WID__59C55456">
-            <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MATERIALS__WID__5E8A0973" Association="BaseModel.FK__MATERIALS__WID__5E8A0973">
-            <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MATERIALS__WID__65370702" Association="BaseModel.FK__MATERIALS__WID__65370702">
-            <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MATREMAIN__MATID__04AFB25B" Association="BaseModel.FK__MATREMAIN__MATID__04AFB25B">
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
-            <End Role="MATREMAINS" EntitySet="MATREMAINS" />
-          </AssociationSet>
-          <AssociationSet Name="FK__POSREMAIN__MATID__2CBDA3B5" Association="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5">
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
-            <End Role="POSREMAINS" EntitySet="POSREMAINS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MATERIAL_REFERENCE_MEASURES" Association="BaseModel.FK_MATERIAL_REFERENCE_MEASURES">
-            <End Role="MEASURES" EntitySet="MEASURES" />
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MATRECIPE_1" Association="BaseModel.FK_MATRECIPE_1">
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
-            <End Role="MATRECIPE" EntitySet="MATRECIPE" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MP_MATID" Association="BaseModel.FK_MP_MATID">
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
-            <End Role="MATPRICES" EntitySet="MATPRICES" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TAXWBDET_REFERENCE_MATERIAL" Association="BaseModel.FK_TAXWBDET_REFERENCE_MATERIAL">
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
-            <End Role="TAXWBDET" EntitySet="TAXWBDET" />
           </AssociationSet>
           <AssociationSet Name="FK_MGP_MATID" Association="BaseModel.FK_MGP_MATID">
             <End Role="MATGROUP" EntitySet="MATGROUP" />
@@ -5283,10 +5214,6 @@
             <End Role="WAYBILLSVC" EntitySet="WAYBILLSVC" />
           </AssociationSet>
           <EntitySet Name="WaybillDet" EntityType="BaseModel.WaybillDet" />
-          <AssociationSet Name="FK_WAYBILLD_FK_WBDET__MATERIAL" Association="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL">
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-          </AssociationSet>
           <AssociationSet Name="FK__POSREMAIN__POSID__2DB1C7EE" Association="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE">
             <End Role="WaybillDet" EntitySet="WaybillDet" />
             <End Role="POSREMAINS" EntitySet="POSREMAINS" />
@@ -5354,15 +5281,8 @@
             <Parameter Name="WBILLID" Mode="In" Type="Int32" />
             <Parameter Name="NEW_WTYPE" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="StornoWayBill" ReturnType="Collection(Int32)">
-          <Parameter Name="WBILLID" Mode="In" Type="Int32" />
-          </FunctionImport>
           <EntitySet Name="Actives" EntityType="BaseModel.Actives" />
           <EntitySet Name="WMatTurn" EntityType="BaseModel.WMatTurn" />
-          <AssociationSet Name="FK__WMATTURN__MATID__3AD6B8E2" Association="BaseModel.FK__WMATTURN__MATID__3AD6B8E2">
-            <End Role="MATERIALS" EntitySet="MATERIALS" />
-            <End Role="WMatTurn" EntitySet="WMatTurn" />
-          </AssociationSet>
           <AssociationSet Name="FK__WMATTURN__WID__3BCADD1B" Association="BaseModel.FK__WMATTURN__WID__3BCADD1B">
             <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
             <End Role="WMatTurn" EntitySet="WMatTurn" />
@@ -5614,6 +5534,101 @@
             <End Role="WAYBILLSVC" EntitySet="WAYBILLSVC" />
           </AssociationSet>
           <FunctionImport Name="GetWayBillDetOut" IsComposable="true" ReturnType="Collection(BaseModel.GetWayBillDetOut_Result)">
+          <Parameter Name="wbill_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Materials" EntityType="BaseModel.Materials" />
+          <AssociationSet Name="FK_CONTRDET_REFERENCE_MATERIAL" Association="BaseModel.FK_CONTRDET_REFERENCE_MATERIAL">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="CONTRDET" EntitySet="CONTRDET" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MATERIALS__CID__662B2B3B" Association="BaseModel.FK__MATERIALS__CID__662B2B3B">
+            <End Role="COUNTRIES" EntitySet="COUNTRIES" />
+            <End Role="Materials" EntitySet="Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEBONINGDET_MATERIALS" Association="BaseModel.FK_DEBONINGDET_MATERIALS">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="DEBONINGDET" EntitySet="DEBONINGDET" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KAMATDISC__MATID__32AB8735" Association="BaseModel.FK__KAMATDISC__MATID__32AB8735">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="KAMATDISCOUNT" EntitySet="KAMATDISCOUNT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MATCHANGE_CHANGEID" Association="BaseModel.FK_MATCHANGE_CHANGEID">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="MATCHANGE" EntitySet="MATCHANGE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MATCHANGE_MATID" Association="BaseModel.FK_MATCHANGE_MATID">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="MATCHANGE" EntitySet="MATCHANGE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MATERIALS__GRPID__58D1301D" Association="BaseModel.FK__MATERIALS__GRPID__58D1301D">
+            <End Role="MATGROUP" EntitySet="MATGROUP" />
+            <End Role="Materials" EntitySet="Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MATERIALS__GRPID__5D95E53A" Association="BaseModel.FK__MATERIALS__GRPID__5D95E53A">
+            <End Role="MATGROUP" EntitySet="MATGROUP" />
+            <End Role="Materials" EntitySet="Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MATERIALS__GRPID__6442E2C9" Association="BaseModel.FK__MATERIALS__GRPID__6442E2C9">
+            <End Role="MATGROUP" EntitySet="MATGROUP" />
+            <End Role="Materials" EntitySet="Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MATERIALS__WID__59C55456" Association="BaseModel.FK__MATERIALS__WID__59C55456">
+            <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
+            <End Role="Materials" EntitySet="Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MATERIALS__WID__5E8A0973" Association="BaseModel.FK__MATERIALS__WID__5E8A0973">
+            <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
+            <End Role="Materials" EntitySet="Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MATERIALS__WID__65370702" Association="BaseModel.FK__MATERIALS__WID__65370702">
+            <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
+            <End Role="Materials" EntitySet="Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MATREMAIN__MATID__04AFB25B" Association="BaseModel.FK__MATREMAIN__MATID__04AFB25B">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="MATREMAINS" EntitySet="MATREMAINS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__POSREMAIN__MATID__2CBDA3B5" Association="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="POSREMAINS" EntitySet="POSREMAINS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WMATTURN__MATID__3AD6B8E2" Association="BaseModel.FK__WMATTURN__MATID__3AD6B8E2">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="WMatTurn" EntitySet="WMatTurn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MATERIAL_REFERENCE_MEASURES" Association="BaseModel.FK_MATERIAL_REFERENCE_MEASURES">
+            <End Role="MEASURES" EntitySet="MEASURES" />
+            <End Role="Materials" EntitySet="Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MATRECIPE_1" Association="BaseModel.FK_MATRECIPE_1">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="MATRECIPE" EntitySet="MATRECIPE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MP_MATID" Association="BaseModel.FK_MP_MATID">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="MATPRICES" EntitySet="MATPRICES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TAXWBDET_REFERENCE_MATERIAL" Association="BaseModel.FK_TAXWBDET_REFERENCE_MATERIAL">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="TAXWBDET" EntitySet="TAXWBDET" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAYBILLD_FK_WBDET__MATERIAL" Association="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+          </AssociationSet>
+          <FunctionImport Name="GetMatRemain" ReturnType="Collection(BaseModel.GetMatRemain_Result)">
+            <Parameter Name="wid" Mode="In" Type="Int32" />
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetPosIn" ReturnType="Collection(BaseModel.GetPosIn_Result)">
+            <Parameter Name="on_data" Mode="In" Type="DateTime" />
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
+            <Parameter Name="wid" Mode="In" Type="Int32" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="CommonParams" EntityType="BaseModel.CommonParams" />
+          <FunctionImport Name="StornoWayBill" ReturnType="Collection(Int32)">
             <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
@@ -5941,18 +5956,6 @@
           <NavigationProperty Name="Kagent2" Relationship="BaseModel.FK_COMMISSION_2" FromRole="COMMISSION" ToRole="Kagent" />
           <NavigationProperty Name="Kagent3" Relationship="BaseModel.FK_COMMISSION_3" FromRole="COMMISSION" ToRole="Kagent" />
         </EntityType>
-        <EntityType Name="COMMONPARAMS">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="NDS" Type="Decimal" Precision="15" Scale="8" />
-          <Property Name="CHARGETYPE" Type="Int32" />
-          <Property Name="POTYPE" Type="Int32" />
-          <Property Name="PRINTTYPE" Type="Int32" />
-          <Property Name="DELTOBIN" Type="Int32" />
-          <Property Name="VER" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
-        </EntityType>
         <EntityType Name="CONTRACTS">
           <Key>
             <PropertyRef Name="CONTRID" />
@@ -5993,8 +5996,8 @@
           <Property Name="SHIPPEDAMOUNT" Type="Decimal" Precision="15" Scale="8" />
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="CONTRACTS" Relationship="BaseModel.FK_CONTRDET_REFERENCE_CONTRACTS" FromRole="CONTRDET" ToRole="CONTRACTS" />
-          <NavigationProperty Name="MATERIALS" Relationship="BaseModel.FK_CONTRDET_REFERENCE_MATERIAL" FromRole="CONTRDET" ToRole="MATERIALS" />
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK_CONTRDET_REFERENCE_CURRENCY" FromRole="CONTRDET" ToRole="Currency" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_CONTRDET_REFERENCE_MATERIAL" FromRole="CONTRDET" ToRole="Materials" />
         </EntityType>
         <EntityType Name="CONTRPARAMS">
           <Key>
@@ -6027,7 +6030,7 @@
           <Property Name="SHORTNAME" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
           <Property Name="DELETED" Type="Int32" Nullable="false" />
           <Property Name="DEF" Type="Int32" />
-          <NavigationProperty Name="MATERIALS" Relationship="BaseModel.FK__MATERIALS__CID__662B2B3B" FromRole="COUNTRIES" ToRole="MATERIALS" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK__MATERIALS__CID__662B2B3B" FromRole="COUNTRIES" ToRole="Materials" />
         </EntityType>
         <EntityType Name="CURRENCYRATE">
           <Key>
@@ -6049,8 +6052,8 @@
           <Property Name="AMOUNT" Type="Decimal" Nullable="false" Precision="15" Scale="8" />
           <Property Name="PRICE" Type="Decimal" Nullable="false" Precision="15" Scale="8" />
           <Property Name="WID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="MATERIALS" Relationship="BaseModel.FK_DEBONINGDET_MATERIALS" FromRole="DEBONINGDET" ToRole="MATERIALS" />
           <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_DEBONINGDET_WAYBILLLIST" FromRole="DEBONINGDET" ToRole="WaybillList" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_DEBONINGDET_MATERIALS" FromRole="DEBONINGDET" ToRole="Materials" />
         </EntityType>
         <EntityType Name="DISCCARDGRP">
           <Key>
@@ -6241,8 +6244,8 @@
           <Property Name="KAID" Type="Int32" Nullable="false" />
           <Property Name="MATID" Type="Int32" Nullable="false" />
           <Property Name="ONVALUE" Type="Decimal" Nullable="false" Precision="15" Scale="8" />
-          <NavigationProperty Name="MATERIALS" Relationship="BaseModel.FK__KAMATDISC__MATID__32AB8735" FromRole="KAMATDISCOUNT" ToRole="MATERIALS" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__KAMATDISCO__KAID__31B762FC" FromRole="KAMATDISCOUNT" ToRole="Kagent" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK__KAMATDISC__MATID__32AB8735" FromRole="KAMATDISCOUNT" ToRole="Materials" />
         </EntityType>
         <EntityType Name="KAMATGROUPDISCOUNT">
           <Key>
@@ -6274,63 +6277,8 @@
           <Property Name="MATID" Type="Int32" Nullable="false" />
           <Property Name="CHANGEID" Type="Int32" Nullable="false" />
           <Property Name="NOTES" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="MATERIALS" Relationship="BaseModel.FK_MATCHANGE_CHANGEID" FromRole="MATCHANGE" ToRole="MATERIALS" />
-          <NavigationProperty Name="MATERIALS1" Relationship="BaseModel.FK_MATCHANGE_MATID" FromRole="MATCHANGE" ToRole="MATERIALS" />
-        </EntityType>
-        <EntityType Name="MATERIALS">
-          <Key>
-            <PropertyRef Name="MATID" />
-          </Key>
-          <Property Name="MATID" Type="Int32" Nullable="false" />
-          <Property Name="NAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
-          <Property Name="MID" Type="Int32" Nullable="false" />
-          <Property Name="NUM" Type="Int32" />
-          <Property Name="DEF" Type="Int32" Nullable="false" />
-          <Property Name="DELETED" Type="Int32" Nullable="false" />
-          <Property Name="GRPID" Type="Int32" />
-          <Property Name="WID" Type="Int32" />
-          <Property Name="MINRESERV" Type="Decimal" Precision="15" Scale="8" />
-          <Property Name="CID" Type="Int32" />
-          <Property Name="DEMANDCAT" Type="Int32" />
-          <Property Name="BARCODE" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="PRODUCER" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="WEIGHT" Type="Decimal" Precision="15" Scale="8" />
-          <Property Name="MSIZE" Type="Decimal" Precision="15" Scale="8" />
-          <Property Name="NDS" Type="Decimal" Precision="15" Scale="8" />
-          <Property Name="SERIALS" Type="Int32" />
-          <Property Name="ARCHIVED" Type="Int32" />
-          <Property Name="ARTIKUL" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="LABELDESCR" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="TYPEID" Type="Int32" />
-          <Property Name="DATEADDED" Type="DateTime" Precision="3" />
-          <Property Name="DATEMODIFIED" Type="DateTime" Precision="3" />
-          <Property Name="NOTES" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="CF1" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="CF2" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="CF3" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
-          <Property Name="CF4" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
-          <Property Name="CF5" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
-          <Property Name="BMP" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="CONTRDET" Relationship="BaseModel.FK_CONTRDET_REFERENCE_MATERIAL" FromRole="MATERIALS" ToRole="CONTRDET" />
-          <NavigationProperty Name="COUNTRIES" Relationship="BaseModel.FK__MATERIALS__CID__662B2B3B" FromRole="MATERIALS" ToRole="COUNTRIES" />
-          <NavigationProperty Name="DEBONINGDET" Relationship="BaseModel.FK_DEBONINGDET_MATERIALS" FromRole="MATERIALS" ToRole="DEBONINGDET" />
-          <NavigationProperty Name="KAMATDISCOUNT" Relationship="BaseModel.FK__KAMATDISC__MATID__32AB8735" FromRole="MATERIALS" ToRole="KAMATDISCOUNT" />
-          <NavigationProperty Name="MATCHANGE" Relationship="BaseModel.FK_MATCHANGE_CHANGEID" FromRole="MATERIALS" ToRole="MATCHANGE" />
-          <NavigationProperty Name="MATCHANGE1" Relationship="BaseModel.FK_MATCHANGE_MATID" FromRole="MATERIALS" ToRole="MATCHANGE" />
-          <NavigationProperty Name="MATGROUP" Relationship="BaseModel.FK__MATERIALS__GRPID__58D1301D" FromRole="MATERIALS" ToRole="MATGROUP" />
-          <NavigationProperty Name="MATGROUP1" Relationship="BaseModel.FK__MATERIALS__GRPID__5D95E53A" FromRole="MATERIALS" ToRole="MATGROUP" />
-          <NavigationProperty Name="MATGROUP2" Relationship="BaseModel.FK__MATERIALS__GRPID__6442E2C9" FromRole="MATERIALS" ToRole="MATGROUP" />
-          <NavigationProperty Name="WAREHOUSE" Relationship="BaseModel.FK__MATERIALS__WID__59C55456" FromRole="MATERIALS" ToRole="WAREHOUSE" />
-          <NavigationProperty Name="WAREHOUSE1" Relationship="BaseModel.FK__MATERIALS__WID__5E8A0973" FromRole="MATERIALS" ToRole="WAREHOUSE" />
-          <NavigationProperty Name="WAREHOUSE2" Relationship="BaseModel.FK__MATERIALS__WID__65370702" FromRole="MATERIALS" ToRole="WAREHOUSE" />
-          <NavigationProperty Name="MATREMAINS" Relationship="BaseModel.FK__MATREMAIN__MATID__04AFB25B" FromRole="MATERIALS" ToRole="MATREMAINS" />
-          <NavigationProperty Name="POSREMAINS" Relationship="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" FromRole="MATERIALS" ToRole="POSREMAINS" />
-          <NavigationProperty Name="MEASURES" Relationship="BaseModel.FK_MATERIAL_REFERENCE_MEASURES" FromRole="MATERIALS" ToRole="MEASURES" />
-          <NavigationProperty Name="MATRECIPE" Relationship="BaseModel.FK_MATRECIPE_1" FromRole="MATERIALS" ToRole="MATRECIPE" />
-          <NavigationProperty Name="MATPRICES" Relationship="BaseModel.FK_MP_MATID" FromRole="MATERIALS" ToRole="MATPRICES" />
-          <NavigationProperty Name="TAXWBDET" Relationship="BaseModel.FK_TAXWBDET_REFERENCE_MATERIAL" FromRole="MATERIALS" ToRole="TAXWBDET" />
-          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" FromRole="MATERIALS" ToRole="WaybillDet" />
-          <NavigationProperty Name="WMatTurn" Relationship="BaseModel.FK__WMATTURN__MATID__3AD6B8E2" FromRole="MATERIALS" ToRole="WMatTurn" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_MATCHANGE_CHANGEID" FromRole="MATCHANGE" ToRole="Materials" />
+          <NavigationProperty Name="Materials1" Relationship="BaseModel.FK_MATCHANGE_MATID" FromRole="MATCHANGE" ToRole="Materials" />
         </EntityType>
         <EntityType Name="MATGROUP">
           <Key>
@@ -6344,10 +6292,10 @@
           <Property Name="NOTES" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="NUM" Type="Decimal" Precision="5" Scale="1" />
           <NavigationProperty Name="KAMATGROUPDISCOUNT" Relationship="BaseModel.FK__KAMATGROU__GRPID__395884C4" FromRole="MATGROUP" ToRole="KAMATGROUPDISCOUNT" />
-          <NavigationProperty Name="MATERIALS" Relationship="BaseModel.FK__MATERIALS__GRPID__58D1301D" FromRole="MATGROUP" ToRole="MATERIALS" />
-          <NavigationProperty Name="MATERIALS1" Relationship="BaseModel.FK__MATERIALS__GRPID__5D95E53A" FromRole="MATGROUP" ToRole="MATERIALS" />
-          <NavigationProperty Name="MATERIALS2" Relationship="BaseModel.FK__MATERIALS__GRPID__6442E2C9" FromRole="MATGROUP" ToRole="MATERIALS" />
           <NavigationProperty Name="MATGROUPPRICES" Relationship="BaseModel.FK_MGP_MATID" FromRole="MATGROUP" ToRole="MATGROUPPRICES" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK__MATERIALS__GRPID__58D1301D" FromRole="MATGROUP" ToRole="Materials" />
+          <NavigationProperty Name="Materials1" Relationship="BaseModel.FK__MATERIALS__GRPID__5D95E53A" FromRole="MATGROUP" ToRole="Materials" />
+          <NavigationProperty Name="Materials2" Relationship="BaseModel.FK__MATERIALS__GRPID__6442E2C9" FromRole="MATGROUP" ToRole="Materials" />
         </EntityType>
         <EntityType Name="MATGROUPPRICES">
           <Key>
@@ -6386,11 +6334,11 @@
           <Property Name="DIS" Type="Int32" Nullable="false" />
           <Property Name="WITHNDS" Type="Int32" />
           <Property Name="PPTYPEID" Type="Int32" />
-          <NavigationProperty Name="MATERIALS" Relationship="BaseModel.FK_MP_MATID" FromRole="MATPRICES" ToRole="MATERIALS" />
           <NavigationProperty Name="PRICETYPES" Relationship="BaseModel.FK__MATPRICES__PTYPE__72910220" FromRole="MATPRICES" ToRole="PRICETYPES" />
           <NavigationProperty Name="PRICETYPES1" Relationship="BaseModel.FK_MATPRICES_PPTYPEID" FromRole="MATPRICES" ToRole="PRICETYPES" />
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK__MATPRICES__CURRI__73852659" FromRole="MATPRICES" ToRole="Currency" />
           <NavigationProperty Name="Currency1" Relationship="BaseModel.FK__MATPRICES__CURRI__74794A92" FromRole="MATPRICES" ToRole="Currency" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_MP_MATID" FromRole="MATPRICES" ToRole="Materials" />
         </EntityType>
         <EntityType Name="MATRECDET">
           <Key>
@@ -6415,9 +6363,9 @@
           <Property Name="NOTES" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="MATID" Type="Int32" Nullable="false" />
           <Property Name="RTYPE" Type="Int32" />
-          <NavigationProperty Name="MATERIALS" Relationship="BaseModel.FK_MATRECIPE_1" FromRole="MATRECIPE" ToRole="MATERIALS" />
           <NavigationProperty Name="MATRECDET" Relationship="BaseModel.FK_MATRECDET_MATRECIPE" FromRole="MATRECIPE" ToRole="MATRECDET" />
           <NavigationProperty Name="WAYBILLMAKE" Relationship="BaseModel.FK_WAYBILLMAKE_MATRECIPE" FromRole="MATRECIPE" ToRole="WAYBILLMAKE" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_MATRECIPE_1" FromRole="MATRECIPE" ToRole="Materials" />
         </EntityType>
         <EntityType Name="MATREMAINS">
           <Key>
@@ -6436,7 +6384,7 @@
           <Property Name="INWAY" Type="Decimal" Precision="15" Scale="8" />
           <Property Name="ORDERED" Type="Decimal" Precision="15" Scale="8" />
           <Property Name="ORSV" Type="Decimal" Precision="15" Scale="8" />
-          <NavigationProperty Name="MATERIALS" Relationship="BaseModel.FK__MATREMAIN__MATID__04AFB25B" FromRole="MATREMAINS" ToRole="MATERIALS" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK__MATREMAIN__MATID__04AFB25B" FromRole="MATREMAINS" ToRole="Materials" />
         </EntityType>
         <EntityType Name="MEASURES">
           <Key>
@@ -6448,8 +6396,8 @@
           <Property Name="DEF" Type="Int32" Nullable="false" />
           <Property Name="DELETED" Type="Int32" Nullable="false" />
           <Property Name="CODE" Type="String" MaxLength="14" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="MATERIALS" Relationship="BaseModel.FK_MATERIAL_REFERENCE_MEASURES" FromRole="MEASURES" ToRole="MATERIALS" />
           <NavigationProperty Name="SERVICES" Relationship="BaseModel.FK_SVC_MID" FromRole="MEASURES" ToRole="SERVICES" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_MATERIAL_REFERENCE_MEASURES" FromRole="MEASURES" ToRole="Materials" />
         </EntityType>
         <EntityType Name="MONEYSALDO">
           <Key>
@@ -6510,9 +6458,9 @@
           <Property Name="AVGPRICE" Type="Decimal" Precision="15" Scale="8" />
           <Property Name="INWAY" Type="Decimal" Precision="15" Scale="8" />
           <Property Name="ORDERED" Type="Decimal" Precision="15" Scale="8" />
-          <NavigationProperty Name="MATERIALS" Relationship="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" FromRole="POSREMAINS" ToRole="MATERIALS" />
           <NavigationProperty Name="WAREHOUSE" Relationship="BaseModel.FK__POSREMAINS__WID__2EA5EC27" FromRole="POSREMAINS" ToRole="WAREHOUSE" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" FromRole="POSREMAINS" ToRole="WaybillDet" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" FromRole="POSREMAINS" ToRole="Materials" />
         </EntityType>
         <EntityType Name="PRICELIST">
           <Key>
@@ -6719,8 +6667,8 @@
           <Property Name="PRICE" Type="Decimal" Nullable="false" Precision="15" Scale="8" />
           <Property Name="NDS" Type="Decimal" Precision="15" Scale="8" />
           <Property Name="TOTAL" Type="Decimal" Precision="15" Scale="8" />
-          <NavigationProperty Name="MATERIALS" Relationship="BaseModel.FK_TAXWBDET_REFERENCE_MATERIAL" FromRole="TAXWBDET" ToRole="MATERIALS" />
           <NavigationProperty Name="TAXWB" Relationship="BaseModel.FK_TAXWBDET_TWBID" FromRole="TAXWBDET" ToRole="TAXWB" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_TAXWBDET_REFERENCE_MATERIAL" FromRole="TAXWBDET" ToRole="Materials" />
         </EntityType>
         <EntityType Name="TECHPROCDET">
           <Key>
@@ -6795,9 +6743,6 @@
           <Property Name="NOTES" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="DELETED" Type="Int32" Nullable="false" />
           <Property Name="DEF" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="MATERIALS" Relationship="BaseModel.FK__MATERIALS__WID__59C55456" FromRole="WAREHOUSE" ToRole="MATERIALS" />
-          <NavigationProperty Name="MATERIALS1" Relationship="BaseModel.FK__MATERIALS__WID__5E8A0973" FromRole="WAREHOUSE" ToRole="MATERIALS" />
-          <NavigationProperty Name="MATERIALS2" Relationship="BaseModel.FK__MATERIALS__WID__65370702" FromRole="WAREHOUSE" ToRole="MATERIALS" />
           <NavigationProperty Name="POSREMAINS" Relationship="BaseModel.FK__POSREMAINS__WID__2EA5EC27" FromRole="WAREHOUSE" ToRole="POSREMAINS" />
           <NavigationProperty Name="WAYBILLMOVE" Relationship="BaseModel.FK_WAYBILLM_FK_WBM_DE_WAREHOUS" FromRole="WAREHOUSE" ToRole="WAYBILLMOVE" />
           <NavigationProperty Name="WAYBILLMOVE1" Relationship="BaseModel.FK_WAYBILLM_FK_WBM_SO_WAREHOUS" FromRole="WAREHOUSE" ToRole="WAYBILLMOVE" />
@@ -6805,6 +6750,9 @@
           <NavigationProperty Name="USERACCESSWH" Relationship="BaseModel.FK_UAWH_WID" FromRole="WAREHOUSE" ToRole="USERACCESSWH" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__WAREHOUS" FromRole="WAREHOUSE" ToRole="WaybillDet" />
           <NavigationProperty Name="WMatTurn" Relationship="BaseModel.FK__WMATTURN__WID__3BCADD1B" FromRole="WAREHOUSE" ToRole="WMatTurn" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK__MATERIALS__WID__59C55456" FromRole="WAREHOUSE" ToRole="Materials" />
+          <NavigationProperty Name="Materials1" Relationship="BaseModel.FK__MATERIALS__WID__5E8A0973" FromRole="WAREHOUSE" ToRole="Materials" />
+          <NavigationProperty Name="Materials2" Relationship="BaseModel.FK__MATERIALS__WID__65370702" FromRole="WAREHOUSE" ToRole="Materials" />
         </EntityType>
         <EntityType Name="WAYBILLDETADDPROPS">
           <Key>
@@ -7023,42 +6971,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CONTRDET_REFERENCE_MATERIAL">
-          <End Role="MATERIALS" Type="BaseModel.MATERIALS" Multiplicity="0..1" />
-          <End Role="CONTRDET" Type="BaseModel.CONTRDET" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MATERIALS">
-              <PropertyRef Name="MATID" />
-            </Principal>
-            <Dependent Role="CONTRDET">
-              <PropertyRef Name="MATID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MATERIALS__CID__662B2B3B">
-          <End Role="COUNTRIES" Type="BaseModel.COUNTRIES" Multiplicity="0..1" />
-          <End Role="MATERIALS" Type="BaseModel.MATERIALS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="COUNTRIES">
-              <PropertyRef Name="CID" />
-            </Principal>
-            <Dependent Role="MATERIALS">
-              <PropertyRef Name="CID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_DEBONINGDET_MATERIALS">
-          <End Role="MATERIALS" Type="BaseModel.MATERIALS" Multiplicity="1" />
-          <End Role="DEBONINGDET" Type="BaseModel.DEBONINGDET" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MATERIALS">
-              <PropertyRef Name="MATID" />
-            </Principal>
-            <Dependent Role="DEBONINGDET">
-              <PropertyRef Name="MATID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_DISCCARDS_GRPID">
           <End Role="DISCCARDGRP" Type="BaseModel.DISCCARDGRP" Multiplicity="1" />
           <End Role="DISCCARDS" Type="BaseModel.DISCCARDS" Multiplicity="*" />
@@ -7143,20 +7055,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__KAMATDISC__MATID__32AB8735">
-          <End Role="MATERIALS" Type="BaseModel.MATERIALS" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="KAMATDISCOUNT" Type="BaseModel.KAMATDISCOUNT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MATERIALS">
-              <PropertyRef Name="MATID" />
-            </Principal>
-            <Dependent Role="KAMATDISCOUNT">
-              <PropertyRef Name="MATID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__KAMATGROU__GRPID__395884C4">
           <End Role="MATGROUP" Type="BaseModel.MATGROUP" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -7192,180 +7090,6 @@
             </Principal>
             <Dependent Role="REPLNG">
               <PropertyRef Name="LANGID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MATCHANGE_CHANGEID">
-          <End Role="MATERIALS" Type="BaseModel.MATERIALS" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="MATCHANGE" Type="BaseModel.MATCHANGE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MATERIALS">
-              <PropertyRef Name="MATID" />
-            </Principal>
-            <Dependent Role="MATCHANGE">
-              <PropertyRef Name="CHANGEID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MATCHANGE_MATID">
-          <End Role="MATERIALS" Type="BaseModel.MATERIALS" Multiplicity="1" />
-          <End Role="MATCHANGE" Type="BaseModel.MATCHANGE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MATERIALS">
-              <PropertyRef Name="MATID" />
-            </Principal>
-            <Dependent Role="MATCHANGE">
-              <PropertyRef Name="MATID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MATERIALS__GRPID__58D1301D">
-          <End Role="MATGROUP" Type="BaseModel.MATGROUP" Multiplicity="0..1" />
-          <End Role="MATERIALS" Type="BaseModel.MATERIALS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MATGROUP">
-              <PropertyRef Name="GRPID" />
-            </Principal>
-            <Dependent Role="MATERIALS">
-              <PropertyRef Name="GRPID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MATERIALS__GRPID__5D95E53A">
-          <End Role="MATGROUP" Type="BaseModel.MATGROUP" Multiplicity="0..1" />
-          <End Role="MATERIALS" Type="BaseModel.MATERIALS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MATGROUP">
-              <PropertyRef Name="GRPID" />
-            </Principal>
-            <Dependent Role="MATERIALS">
-              <PropertyRef Name="GRPID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MATERIALS__GRPID__6442E2C9">
-          <End Role="MATGROUP" Type="BaseModel.MATGROUP" Multiplicity="0..1" />
-          <End Role="MATERIALS" Type="BaseModel.MATERIALS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MATGROUP">
-              <PropertyRef Name="GRPID" />
-            </Principal>
-            <Dependent Role="MATERIALS">
-              <PropertyRef Name="GRPID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MATERIALS__WID__59C55456">
-          <End Role="WAREHOUSE" Type="BaseModel.WAREHOUSE" Multiplicity="0..1" />
-          <End Role="MATERIALS" Type="BaseModel.MATERIALS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WAREHOUSE">
-              <PropertyRef Name="WID" />
-            </Principal>
-            <Dependent Role="MATERIALS">
-              <PropertyRef Name="WID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MATERIALS__WID__5E8A0973">
-          <End Role="WAREHOUSE" Type="BaseModel.WAREHOUSE" Multiplicity="0..1" />
-          <End Role="MATERIALS" Type="BaseModel.MATERIALS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WAREHOUSE">
-              <PropertyRef Name="WID" />
-            </Principal>
-            <Dependent Role="MATERIALS">
-              <PropertyRef Name="WID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MATERIALS__WID__65370702">
-          <End Role="WAREHOUSE" Type="BaseModel.WAREHOUSE" Multiplicity="0..1" />
-          <End Role="MATERIALS" Type="BaseModel.MATERIALS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WAREHOUSE">
-              <PropertyRef Name="WID" />
-            </Principal>
-            <Dependent Role="MATERIALS">
-              <PropertyRef Name="WID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MATREMAIN__MATID__04AFB25B">
-          <End Role="MATERIALS" Type="BaseModel.MATERIALS" Multiplicity="1" />
-          <End Role="MATREMAINS" Type="BaseModel.MATREMAINS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MATERIALS">
-              <PropertyRef Name="MATID" />
-            </Principal>
-            <Dependent Role="MATREMAINS">
-              <PropertyRef Name="MATID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__POSREMAIN__MATID__2CBDA3B5">
-          <End Role="MATERIALS" Type="BaseModel.MATERIALS" Multiplicity="1" />
-          <End Role="POSREMAINS" Type="BaseModel.POSREMAINS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MATERIALS">
-              <PropertyRef Name="MATID" />
-            </Principal>
-            <Dependent Role="POSREMAINS">
-              <PropertyRef Name="MATID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MATERIAL_REFERENCE_MEASURES">
-          <End Role="MEASURES" Type="BaseModel.MEASURES" Multiplicity="1" />
-          <End Role="MATERIALS" Type="BaseModel.MATERIALS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MEASURES">
-              <PropertyRef Name="MID" />
-            </Principal>
-            <Dependent Role="MATERIALS">
-              <PropertyRef Name="MID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MATRECIPE_1">
-          <End Role="MATERIALS" Type="BaseModel.MATERIALS" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="MATRECIPE" Type="BaseModel.MATRECIPE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MATERIALS">
-              <PropertyRef Name="MATID" />
-            </Principal>
-            <Dependent Role="MATRECIPE">
-              <PropertyRef Name="MATID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MP_MATID">
-          <End Role="MATERIALS" Type="BaseModel.MATERIALS" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="MATPRICES" Type="BaseModel.MATPRICES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MATERIALS">
-              <PropertyRef Name="MATID" />
-            </Principal>
-            <Dependent Role="MATPRICES">
-              <PropertyRef Name="MATID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TAXWBDET_REFERENCE_MATERIAL">
-          <End Role="MATERIALS" Type="BaseModel.MATERIALS" Multiplicity="1" />
-          <End Role="TAXWBDET" Type="BaseModel.TAXWBDET" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MATERIALS">
-              <PropertyRef Name="MATID" />
-            </Principal>
-            <Dependent Role="TAXWBDET">
-              <PropertyRef Name="MATID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7969,7 +7693,6 @@
           <Property Type="Int32" Name="MsrUnitId" />
           <Property Type="Int32" Name="DiscountKind" />
           <Property Type="Decimal" Name="AVG_IN_PICE" Precision="15" Scale="4" />
-          <NavigationProperty Name="MATERIALS" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" FromRole="WaybillDet" ToRole="MATERIALS" />
           <NavigationProperty Name="POSREMAINS" Relationship="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" FromRole="WaybillDet" ToRole="POSREMAINS" />
           <NavigationProperty Name="PRICETYPES" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP" FromRole="WaybillDet" ToRole="PRICETYPES" />
           <NavigationProperty Name="RETURNREL" Relationship="BaseModel.FK_RETREL_DPOSID" FromRole="WaybillDet" ToRole="RETURNREL" />
@@ -7988,19 +7711,8 @@
           <NavigationProperty Name="WMatTurn" Relationship="BaseModel.FK_WMT_POSID" FromRole="WaybillDet" ToRole="WMatTurn" />
           <NavigationProperty Name="WMatTurn1" Relationship="BaseModel.FK_WMT_SRCID" FromRole="WaybillDet" ToRole="WMatTurn" />
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_CURRENCY" FromRole="WaybillDet" ToRole="Currency" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" FromRole="WaybillDet" ToRole="Materials" />
           </EntityType>
-        <Association Name="FK_WAYBILLD_FK_WBDET__MATERIAL">
-          <End Type="BaseModel.MATERIALS" Role="MATERIALS" Multiplicity="1" />
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MATERIALS">
-              <PropertyRef Name="MATID" />
-            </Principal>
-            <Dependent Role="WaybillDet">
-              <PropertyRef Name="MatId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__POSREMAIN__POSID__2DB1C7EE">
           <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
           <End Type="BaseModel.POSREMAINS" Role="POSREMAINS" Multiplicity="*" />
@@ -8208,23 +7920,11 @@
           <Property Type="Int32" Name="TurnType" Nullable="false" />
           <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="8" />
           <Property Type="Int32" Name="SourceId" />
-          <NavigationProperty Name="MATERIALS" Relationship="BaseModel.FK__WMATTURN__MATID__3AD6B8E2" FromRole="WMatTurn" ToRole="MATERIALS" />
           <NavigationProperty Name="WAREHOUSE" Relationship="BaseModel.FK__WMATTURN__WID__3BCADD1B" FromRole="WMatTurn" ToRole="WAREHOUSE" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WMT_POSID" FromRole="WMatTurn" ToRole="WaybillDet" />
           <NavigationProperty Name="WaybillDet1" Relationship="BaseModel.FK_WMT_SRCID" FromRole="WMatTurn" ToRole="WaybillDet" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK__WMATTURN__MATID__3AD6B8E2" FromRole="WMatTurn" ToRole="Materials" />
         </EntityType>
-        <Association Name="FK__WMATTURN__MATID__3AD6B8E2">
-          <End Type="BaseModel.MATERIALS" Role="MATERIALS" Multiplicity="1" />
-          <End Type="BaseModel.WMatTurn" Role="WMatTurn" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MATERIALS">
-              <PropertyRef Name="MATID" />
-            </Principal>
-            <Dependent Role="WMatTurn">
-              <PropertyRef Name="MatId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__WMATTURN__WID__3BCADD1B">
           <End Type="BaseModel.WAREHOUSE" Role="WAREHOUSE" Multiplicity="1" />
           <End Type="BaseModel.WMatTurn" Role="WMatTurn" Multiplicity="*" />
@@ -9281,6 +8981,355 @@
           <Property Type="Decimal" Name="Total" Nullable="true" Precision="15" Scale="2" />
           <Property Type="Decimal" Name="SumNds" Nullable="true" Precision="35" Scale="10" />
         </ComplexType>
+        <EntityType Name="Materials">
+          <Key>
+            <PropertyRef Name="MatId" />
+          </Key>
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="String" Name="Name" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="MId" Nullable="false" />
+          <Property Type="Int32" Name="Num" />
+          <Property Type="Int32" Name="Def" Nullable="false" />
+          <Property Type="Int32" Name="Deleted" Nullable="false" />
+          <Property Type="Int32" Name="GrpId" />
+          <Property Type="Int32" Name="WId" />
+          <Property Type="Decimal" Name="MinRserv" Precision="15" Scale="8" />
+          <Property Type="Int32" Name="CId" />
+          <Property Type="Int32" Name="DemandCat" />
+          <Property Type="String" Name="BarCode" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Producer" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Weight" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="MSize" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="NDS" Precision="15" Scale="8" />
+          <Property Type="Int32" Name="Serials" />
+          <Property Type="Int32" Name="Archived" />
+          <Property Type="String" Name="Artikul" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LabelDescr" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="TypeId" />
+          <Property Type="DateTime" Name="DateAdded" Precision="3" />
+          <Property Type="DateTime" Name="DateModified" Precision="3" />
+          <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Binary" Name="BMP" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="CONTRDET" Relationship="BaseModel.FK_CONTRDET_REFERENCE_MATERIAL" FromRole="Materials" ToRole="CONTRDET" />
+          <NavigationProperty Name="COUNTRIES" Relationship="BaseModel.FK__MATERIALS__CID__662B2B3B" FromRole="Materials" ToRole="COUNTRIES" />
+          <NavigationProperty Name="DEBONINGDET" Relationship="BaseModel.FK_DEBONINGDET_MATERIALS" FromRole="Materials" ToRole="DEBONINGDET" />
+          <NavigationProperty Name="KAMATDISCOUNT" Relationship="BaseModel.FK__KAMATDISC__MATID__32AB8735" FromRole="Materials" ToRole="KAMATDISCOUNT" />
+          <NavigationProperty Name="MATCHANGE" Relationship="BaseModel.FK_MATCHANGE_CHANGEID" FromRole="Materials" ToRole="MATCHANGE" />
+          <NavigationProperty Name="MATCHANGE1" Relationship="BaseModel.FK_MATCHANGE_MATID" FromRole="Materials" ToRole="MATCHANGE" />
+          <NavigationProperty Name="MATGROUP" Relationship="BaseModel.FK__MATERIALS__GRPID__58D1301D" FromRole="Materials" ToRole="MATGROUP" />
+          <NavigationProperty Name="MATGROUP1" Relationship="BaseModel.FK__MATERIALS__GRPID__5D95E53A" FromRole="Materials" ToRole="MATGROUP" />
+          <NavigationProperty Name="MATGROUP2" Relationship="BaseModel.FK__MATERIALS__GRPID__6442E2C9" FromRole="Materials" ToRole="MATGROUP" />
+          <NavigationProperty Name="WAREHOUSE" Relationship="BaseModel.FK__MATERIALS__WID__59C55456" FromRole="Materials" ToRole="WAREHOUSE" />
+          <NavigationProperty Name="WAREHOUSE1" Relationship="BaseModel.FK__MATERIALS__WID__5E8A0973" FromRole="Materials" ToRole="WAREHOUSE" />
+          <NavigationProperty Name="WAREHOUSE2" Relationship="BaseModel.FK__MATERIALS__WID__65370702" FromRole="Materials" ToRole="WAREHOUSE" />
+          <NavigationProperty Name="MATREMAINS" Relationship="BaseModel.FK__MATREMAIN__MATID__04AFB25B" FromRole="Materials" ToRole="MATREMAINS" />
+          <NavigationProperty Name="POSREMAINS" Relationship="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" FromRole="Materials" ToRole="POSREMAINS" />
+          <NavigationProperty Name="WMatTurn" Relationship="BaseModel.FK__WMATTURN__MATID__3AD6B8E2" FromRole="Materials" ToRole="WMatTurn" />
+          <NavigationProperty Name="MEASURES" Relationship="BaseModel.FK_MATERIAL_REFERENCE_MEASURES" FromRole="Materials" ToRole="MEASURES" />
+          <NavigationProperty Name="MATRECIPE" Relationship="BaseModel.FK_MATRECIPE_1" FromRole="Materials" ToRole="MATRECIPE" />
+          <NavigationProperty Name="MATPRICES" Relationship="BaseModel.FK_MP_MATID" FromRole="Materials" ToRole="MATPRICES" />
+          <NavigationProperty Name="TAXWBDET" Relationship="BaseModel.FK_TAXWBDET_REFERENCE_MATERIAL" FromRole="Materials" ToRole="TAXWBDET" />
+          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" FromRole="Materials" ToRole="WaybillDet" />
+        </EntityType>
+        <Association Name="FK_CONTRDET_REFERENCE_MATERIAL">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="0..1" />
+          <End Type="BaseModel.CONTRDET" Role="CONTRDET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="CONTRDET">
+              <PropertyRef Name="MATID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MATERIALS__CID__662B2B3B">
+          <End Type="BaseModel.COUNTRIES" Role="COUNTRIES" Multiplicity="0..1" />
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COUNTRIES">
+              <PropertyRef Name="CID" />
+            </Principal>
+            <Dependent Role="Materials">
+              <PropertyRef Name="CId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEBONINGDET_MATERIALS">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
+          <End Type="BaseModel.DEBONINGDET" Role="DEBONINGDET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="DEBONINGDET">
+              <PropertyRef Name="MATID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KAMATDISC__MATID__32AB8735">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.KAMATDISCOUNT" Role="KAMATDISCOUNT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="KAMATDISCOUNT">
+              <PropertyRef Name="MATID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MATCHANGE_CHANGEID">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.MATCHANGE" Role="MATCHANGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="MATCHANGE">
+              <PropertyRef Name="CHANGEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MATCHANGE_MATID">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
+          <End Type="BaseModel.MATCHANGE" Role="MATCHANGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="MATCHANGE">
+              <PropertyRef Name="MATID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MATERIALS__GRPID__58D1301D">
+          <End Type="BaseModel.MATGROUP" Role="MATGROUP" Multiplicity="0..1" />
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MATGROUP">
+              <PropertyRef Name="GRPID" />
+            </Principal>
+            <Dependent Role="Materials">
+              <PropertyRef Name="GrpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MATERIALS__GRPID__5D95E53A">
+          <End Type="BaseModel.MATGROUP" Role="MATGROUP" Multiplicity="0..1" />
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MATGROUP">
+              <PropertyRef Name="GRPID" />
+            </Principal>
+            <Dependent Role="Materials">
+              <PropertyRef Name="GrpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MATERIALS__GRPID__6442E2C9">
+          <End Type="BaseModel.MATGROUP" Role="MATGROUP" Multiplicity="0..1" />
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MATGROUP">
+              <PropertyRef Name="GRPID" />
+            </Principal>
+            <Dependent Role="Materials">
+              <PropertyRef Name="GrpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MATERIALS__WID__59C55456">
+          <End Type="BaseModel.WAREHOUSE" Role="WAREHOUSE" Multiplicity="0..1" />
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WAREHOUSE">
+              <PropertyRef Name="WID" />
+            </Principal>
+            <Dependent Role="Materials">
+              <PropertyRef Name="WId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MATERIALS__WID__5E8A0973">
+          <End Type="BaseModel.WAREHOUSE" Role="WAREHOUSE" Multiplicity="0..1" />
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WAREHOUSE">
+              <PropertyRef Name="WID" />
+            </Principal>
+            <Dependent Role="Materials">
+              <PropertyRef Name="WId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MATERIALS__WID__65370702">
+          <End Type="BaseModel.WAREHOUSE" Role="WAREHOUSE" Multiplicity="0..1" />
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WAREHOUSE">
+              <PropertyRef Name="WID" />
+            </Principal>
+            <Dependent Role="Materials">
+              <PropertyRef Name="WId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MATREMAIN__MATID__04AFB25B">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
+          <End Type="BaseModel.MATREMAINS" Role="MATREMAINS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="MATREMAINS">
+              <PropertyRef Name="MATID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__POSREMAIN__MATID__2CBDA3B5">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
+          <End Type="BaseModel.POSREMAINS" Role="POSREMAINS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="POSREMAINS">
+              <PropertyRef Name="MATID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WMATTURN__MATID__3AD6B8E2">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
+          <End Type="BaseModel.WMatTurn" Role="WMatTurn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="WMatTurn">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MATERIAL_REFERENCE_MEASURES">
+          <End Type="BaseModel.MEASURES" Role="MEASURES" Multiplicity="1" />
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEASURES">
+              <PropertyRef Name="MID" />
+            </Principal>
+            <Dependent Role="Materials">
+              <PropertyRef Name="MId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MATRECIPE_1">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.MATRECIPE" Role="MATRECIPE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="MATRECIPE">
+              <PropertyRef Name="MATID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MP_MATID">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.MATPRICES" Role="MATPRICES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="MATPRICES">
+              <PropertyRef Name="MATID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TAXWBDET_REFERENCE_MATERIAL">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
+          <End Type="BaseModel.TAXWBDET" Role="TAXWBDET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="TAXWBDET">
+              <PropertyRef Name="MATID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAYBILLD_FK_WBDET__MATERIAL">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="WaybillDet">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GetMatRemain_Result">
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="Remain" Nullable="true" Precision="17" Scale="8" />
+          <Property Type="Decimal" Name="AvgPrice" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="MinPrice" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="MaxPrice" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="RemainInWh" Nullable="true" Precision="38" Scale="8" />
+          <Property Type="Decimal" Name="Rsv" Nullable="true" Precision="16" Scale="8" />
+        </ComplexType>
+        <ComplexType Name="GetPosIn_Result">
+          <Property Type="Int32" Name="GetAll" Nullable="false" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="Int32" Name="WId" Nullable="false" />
+          <Property Type="Int32" Name="PosId" Nullable="false" />
+          <Property Type="Decimal" Name="CurRemain" Nullable="true" Precision="16" Scale="8" />
+          <Property Type="Decimal" Name="CurOrdered" Nullable="true" Precision="16" Scale="8" />
+          <Property Type="Decimal" Name="Rsv" Nullable="false" Precision="15" Scale="8" />
+          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="Nds" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Discount" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="DocNum" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="DocDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="WhName" Nullable="false" MaxLength="64" />
+          <Property Type="String" Name="SerialNo" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="WType" Nullable="false" />
+          <Property Type="Int32" Name="WbillId" Nullable="false" />
+          <Property Type="String" Name="gtd" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="CertNum" Nullable="true" MaxLength="64" />
+          <Property Type="DateTime" Name="CertDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Producer" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="PosType" Nullable="true" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="BasePrice" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="FullRemain" Nullable="true" Precision="17" Scale="8" />
+        </ComplexType>
+        <EntityType Name="CommonParams">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Decimal" Name="Nds" Precision="15" Scale="8" />
+          <Property Type="Int32" Name="ChargeType" />
+          <Property Type="Int32" Name="PoType" />
+          <Property Type="Int32" Name="PrintType" />
+          <Property Type="Int32" Name="DelToBin" />
+          <Property Type="String" Name="Ver" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -9353,19 +9402,6 @@
                 <ScalarProperty Name="FIRST_KAID" ColumnName="FIRST_KAID" />
                 <ScalarProperty Name="SECOND_KAID" ColumnName="SECOND_KAID" />
                 <ScalarProperty Name="THIRD_KAID" ColumnName="THIRD_KAID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="COMMONPARAMS">
-            <EntityTypeMapping TypeName="BaseModel.COMMONPARAMS">
-              <MappingFragment StoreEntitySet="COMMONPARAMS">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="NDS" ColumnName="NDS" />
-                <ScalarProperty Name="CHARGETYPE" ColumnName="CHARGETYPE" />
-                <ScalarProperty Name="POTYPE" ColumnName="POTYPE" />
-                <ScalarProperty Name="PRINTTYPE" ColumnName="PRINTTYPE" />
-                <ScalarProperty Name="DELTOBIN" ColumnName="DELTOBIN" />
-                <ScalarProperty Name="VER" ColumnName="VER" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -9662,42 +9698,6 @@
                 <ScalarProperty Name="MATID" ColumnName="MATID" />
                 <ScalarProperty Name="CHANGEID" ColumnName="CHANGEID" />
                 <ScalarProperty Name="NOTES" ColumnName="NOTES" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MATERIALS">
-            <EntityTypeMapping TypeName="BaseModel.MATERIALS">
-              <MappingFragment StoreEntitySet="MATERIALS">
-                <ScalarProperty Name="MATID" ColumnName="MATID" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="MID" ColumnName="MID" />
-                <ScalarProperty Name="NUM" ColumnName="NUM" />
-                <ScalarProperty Name="DEF" ColumnName="DEF" />
-                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
-                <ScalarProperty Name="GRPID" ColumnName="GRPID" />
-                <ScalarProperty Name="WID" ColumnName="WID" />
-                <ScalarProperty Name="MINRESERV" ColumnName="MINRESERV" />
-                <ScalarProperty Name="CID" ColumnName="CID" />
-                <ScalarProperty Name="DEMANDCAT" ColumnName="DEMANDCAT" />
-                <ScalarProperty Name="BARCODE" ColumnName="BARCODE" />
-                <ScalarProperty Name="PRODUCER" ColumnName="PRODUCER" />
-                <ScalarProperty Name="WEIGHT" ColumnName="WEIGHT" />
-                <ScalarProperty Name="MSIZE" ColumnName="MSIZE" />
-                <ScalarProperty Name="NDS" ColumnName="NDS" />
-                <ScalarProperty Name="SERIALS" ColumnName="SERIALS" />
-                <ScalarProperty Name="ARCHIVED" ColumnName="ARCHIVED" />
-                <ScalarProperty Name="ARTIKUL" ColumnName="ARTIKUL" />
-                <ScalarProperty Name="LABELDESCR" ColumnName="LABELDESCR" />
-                <ScalarProperty Name="TYPEID" ColumnName="TYPEID" />
-                <ScalarProperty Name="DATEADDED" ColumnName="DATEADDED" />
-                <ScalarProperty Name="DATEMODIFIED" ColumnName="DATEMODIFIED" />
-                <ScalarProperty Name="NOTES" ColumnName="NOTES" />
-                <ScalarProperty Name="CF1" ColumnName="CF1" />
-                <ScalarProperty Name="CF2" ColumnName="CF2" />
-                <ScalarProperty Name="CF3" ColumnName="CF3" />
-                <ScalarProperty Name="CF4" ColumnName="CF4" />
-                <ScalarProperty Name="CF5" ColumnName="CF5" />
-                <ScalarProperty Name="BMP" ColumnName="BMP" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -10784,7 +10784,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="StornoWayBill" FunctionName="BaseModel.Store.StornoWayBill" />
           <EntitySetMapping Name="Actives">
             <EntityTypeMapping TypeName="BaseModel.Actives">
               <MappingFragment StoreEntitySet="Actives">
@@ -11172,6 +11171,98 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="Materials">
+            <EntityTypeMapping TypeName="BaseModel.Materials">
+              <MappingFragment StoreEntitySet="Materials">
+                <ScalarProperty Name="BMP" ColumnName="BMP" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="LabelDescr" ColumnName="LabelDescr" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
+                <ScalarProperty Name="Serials" ColumnName="Serials" />
+                <ScalarProperty Name="NDS" ColumnName="NDS" />
+                <ScalarProperty Name="MSize" ColumnName="MSize" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Producer" ColumnName="Producer" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="DemandCat" ColumnName="DemandCat" />
+                <ScalarProperty Name="CId" ColumnName="CId" />
+                <ScalarProperty Name="MinRserv" ColumnName="MinRserv" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Def" ColumnName="Def" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="MId" ColumnName="MId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetMatRemain" FunctionName="BaseModel.Store.GetMatRemain">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetMatRemain_Result">
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
+                <ScalarProperty Name="AvgPrice" ColumnName="AvgPrice" />
+                <ScalarProperty Name="MinPrice" ColumnName="MinPrice" />
+                <ScalarProperty Name="MaxPrice" ColumnName="MaxPrice" />
+                <ScalarProperty Name="RemainInWh" ColumnName="RemainInWh" />
+                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetPosIn" FunctionName="BaseModel.Store.GetPosIn">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetPosIn_Result">
+                <ScalarProperty Name="GetAll" ColumnName="GetAll" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="CurRemain" ColumnName="CurRemain" />
+                <ScalarProperty Name="CurOrdered" ColumnName="CurOrdered" />
+                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="Nds" ColumnName="Nds" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+                <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="gtd" ColumnName="gtd" />
+                <ScalarProperty Name="CertNum" ColumnName="CertNum" />
+                <ScalarProperty Name="CertDate" ColumnName="CertDate" />
+                <ScalarProperty Name="Producer" ColumnName="Producer" />
+                <ScalarProperty Name="PosType" ColumnName="PosType" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
+                <ScalarProperty Name="FullRemain" ColumnName="FullRemain" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="CommonParams">
+            <EntityTypeMapping TypeName="BaseModel.CommonParams">
+              <MappingFragment StoreEntitySet="CommonParams">
+                <ScalarProperty Name="Ver" ColumnName="Ver" />
+                <ScalarProperty Name="DelToBin" ColumnName="DelToBin" />
+                <ScalarProperty Name="PrintType" ColumnName="PrintType" />
+                <ScalarProperty Name="PoType" ColumnName="PoType" />
+                <ScalarProperty Name="ChargeType" ColumnName="ChargeType" />
+                <ScalarProperty Name="Nds" ColumnName="Nds" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="StornoWayBill" FunctionName="BaseModel.Store.StornoWayBill" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -54,7 +54,6 @@ namespace SP_Sklad.SkladData
         public Nullable<int> DiscountKind { get; set; }
         public Nullable<decimal> AVG_IN_PICE { get; set; }
     
-        public virtual MATERIALS MATERIALS { get; set; }
         public virtual ICollection<POSREMAINS> POSREMAINS { get; set; }
         public virtual PRICETYPES PRICETYPES { get; set; }
         public virtual ICollection<RETURNREL> RETURNREL { get; set; }
@@ -73,5 +72,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<WMatTurn> WMatTurn { get; set; }
         public virtual ICollection<WMatTurn> WMatTurn1 { get; set; }
         public virtual Currency Currency { get; set; }
+        public virtual Materials Materials { get; set; }
     }
 }

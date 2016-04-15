@@ -145,7 +145,7 @@ namespace SP_Sklad.WBForm
             var q = _db.WMatTurn.Where(w => w.WaybillDet.WbillId == _wbill_id).Select(s => new
             {
                 s.OnDate,
-                s.WaybillDet.MATERIALS.NAME
+                s.WaybillDet.Materials.Name
             }).Distinct().FirstOrDefault();
             /*  select first 1 distinct wmt.ondate, m.name
    from WMATTURN wmt, waybilldet wbd , materials m
@@ -155,7 +155,7 @@ namespace SP_Sklad.WBForm
 
             if (q != null && OnDateDBEdit.DateTime > q.OnDate)
             {
-                String msg = "Дата документа не може бути більшою за дату видаткової партії! \nПозиція: " + q.NAME + " \nДата: " + q.OnDate + " \nЗмінити дату докомента на " + q.OnDate + "?";
+                String msg = "Дата документа не може бути більшою за дату видаткової партії! \nПозиція: " + q.Name + " \nДата: " + q.OnDate + " \nЗмінити дату докомента на " + q.OnDate + "?";
                 if (MessageBox.Show(msg, "Інформація", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                 {
                     wb.OnDate = q.OnDate;

@@ -436,11 +436,11 @@ namespace SP_Sklad.MainTabs
                         switch (gtype)
                         {
                             case 1:
-                                db.WaybillList.Remove(_db.WaybillList.Find(dr.WbillId));
+                                db.WaybillList.Remove(db.WaybillList.Find(dr.WbillId));
                                 break;
 
                             case 4:
-                                db.PayDoc.Remove(_db.PayDoc.Find(pd_row.PayDocId));
+                                db.PayDoc.Remove(db.PayDoc.Find(pd_row.PayDocId));
                                 break;
                             //	   case 5: PriceList->Delete();  break;
                             //	   case 6: ContractsList->Delete();  break;

@@ -24,7 +24,7 @@ namespace SP_Sklad.SkladData
         public int CONTRID { get; set; }
     
         public virtual CONTRACTS CONTRACTS { get; set; }
-        public virtual MATERIALS MATERIALS { get; set; }
         public virtual Currency Currency { get; set; }
+        public virtual Materials Materials { get; set; }
     }
 }

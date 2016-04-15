@@ -12,14 +12,14 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class COMMONPARAMS
+    public partial class CommonParams
     {
-        public int ID { get; set; }
-        public Nullable<decimal> NDS { get; set; }
-        public Nullable<int> CHARGETYPE { get; set; }
-        public Nullable<int> POTYPE { get; set; }
-        public Nullable<int> PRINTTYPE { get; set; }
-        public Nullable<int> DELTOBIN { get; set; }
-        public string VER { get; set; }
+        public int Id { get; set; }
+        public Nullable<decimal> Nds { get; set; }
+        public Nullable<int> ChargeType { get; set; }
+        public Nullable<int> PoType { get; set; }
+        public Nullable<int> PrintType { get; set; }
+        public Nullable<int> DelToBin { get; set; }
+        public string Ver { get; set; }
     }
 }
