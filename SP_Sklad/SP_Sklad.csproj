@@ -143,6 +143,7 @@
     <Compile Include="SkladData\CURRENCYRATE.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\Database.cs" />
     <Compile Include="SkladData\DBHelper.cs" />
     <Compile Include="SkladData\DEBONINGDET.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>

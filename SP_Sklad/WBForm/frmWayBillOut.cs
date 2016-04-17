@@ -23,6 +23,7 @@ namespace SP_Sklad.WBForm
         private int? _wbill_id { get; set; }
         private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
+        private GetWayBillDetOut_Result wbd_row { get; set; }
 
         public frmWayBillOut(int wtype, int? wbill_id)
         {
@@ -144,6 +145,7 @@ namespace SP_Sklad.WBForm
 
         private void RefreshDet()
         {
+            WaybillDetInGridControl.DataSource = null;
             WaybillDetInGridControl.DataSource = _db.GetWayBillDetOut(_wbill_id);
             GetOk();
         }
@@ -253,18 +255,26 @@ namespace SP_Sklad.WBForm
 
         private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = WaybillDetInGridView.GetRow(WaybillDetInGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
-
-            if (dr.Rsv == 1 && dr.PosId > 0)
+            if (wbd_row.Rsv == 1 && wbd_row.PosId > 0)
             {
-                _db.WMatTurn.Remove(_db.WMatTurn.Single(w => w.SourceId == dr.PosId));
-
-                _db.SaveChanges();
-                current_transaction.Commit();
-                current_transaction = _db.Database.BeginTransaction(IsolationLevel.RepeatableRead);
+              //  DB.SkladBase().SetRsvPos(wbd_row.PosId);
+                _db.DeleteWhere<WMatTurn>(w => w.SourceId == wbd_row.PosId); 
+             //   db.SaveChanges();
+                current_transaction.CommitRetaining(_db);
 
                 RefreshDet();
             }
+        }
+
+        private void RsvBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            DB.SkladBase().SP_AUTO_RSV(wbd_row.PosId);
+            RefreshDet();
+        }
+
+        private void WaybillDetInGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            wbd_row = WaybillDetInGridView.GetRow(WaybillDetInGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
         }
 
     }

@@ -368,6 +368,7 @@
             this.RsvBarBtn.Id = 12;
             this.RsvBarBtn.ImageIndex = 12;
             this.RsvBarBtn.Name = "RsvBarBtn";
+            this.RsvBarBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RsvBarBtn_ItemClick);
             // 
             // barButtonItem5
             // 
@@ -754,6 +755,7 @@
             this.WaybillDetInGridView.Name = "WaybillDetInGridView";
             this.WaybillDetInGridView.OptionsView.ShowGroupPanel = false;
             this.WaybillDetInGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WaybillDetInGridView_PopupMenuShowing);
+            this.WaybillDetInGridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.WaybillDetInGridView_FocusedRowChanged);
             this.WaybillDetInGridView.DoubleClick += new System.EventHandler(this.WaybillDetInGridView_DoubleClick);
             // 
             // gridColumn1

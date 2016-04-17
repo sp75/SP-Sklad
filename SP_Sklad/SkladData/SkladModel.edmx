@@ -5609,7 +5609,7 @@ warning 6002: The table/view 'sp_base.dbo.v_GetDocsTree' does not have a primary
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetWayBillDetOut" IsComposable="true" ReturnType="Collection(BaseModel.GetWayBillDetOut_Result)">
-            <Parameter Name="wbill_id" Mode="In" Type="Int32" />
+          <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="GetMatGroupTree_Result">
