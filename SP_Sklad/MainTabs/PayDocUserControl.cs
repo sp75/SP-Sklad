@@ -31,7 +31,7 @@ namespace SP_Sklad.MainTabs
 
             if (rel != null)
             {
-                _pd = db.Database.SqlQuery<PayDoc>("select * from  PayDoc WITH (UPDLOCK) where DocId = {0}", rel.DocId).FirstOrDefault();
+                _pd = db.Database.SqlQuery<PayDoc>("select * from  PayDoc WITH (UPDLOCK, NOWAIT) where DocId = {0}", rel.DocId).FirstOrDefault();
 
                 if ( _pd != null )
                 {
