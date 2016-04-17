@@ -450,6 +450,7 @@
             this.RSVCheckBox.Size = new System.Drawing.Size(203, 20);
             this.RSVCheckBox.StyleController = this.styleController1;
             this.RSVCheckBox.TabIndex = 20;
+            this.RSVCheckBox.CheckedChanged += new System.EventHandler(this.RSVCheckBox_CheckedChanged);
             // 
             // MatComboBox
             // 

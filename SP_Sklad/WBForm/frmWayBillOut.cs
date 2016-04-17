@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using SP_Sklad.SkladData;
 using SP_Sklad.WBDetForm;
 using EntityState = System.Data.Entity.EntityState;
+using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 
 namespace SP_Sklad.WBForm
 {
@@ -117,6 +119,7 @@ namespace SP_Sklad.WBForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
+            wb.UpdatedAt = DateTime.Now; wb.UpdatedAt = DateTime.Now;
             _db.SaveChanges();
 
             if (!DBHelper.CheckInDate(wb, _db, OnDateDBEdit.DateTime))
@@ -202,6 +205,65 @@ namespace SP_Sklad.WBForm
             else
             {
                 wb.Nds = 0;
+            }
+        }
+
+        private void WaybillDetInGridView_DoubleClick(object sender, EventArgs e)
+        {
+            GridView view = (GridView)sender;
+            Point pt = view.GridControl.PointToClient(Control.MousePosition);
+            GridHitInfo info = view.CalcHitInfo(pt);
+
+            if (info.InRow || info.InRowCell)
+            {
+                EditMaterialBtn.PerformClick();
+            }
+        }
+
+        private void EditMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var dr = WaybillDetInGridView.GetRow(WaybillDetInGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
+
+            if (dr != null)
+            {
+                if (dr.PosId > 0)
+                {
+                    var df = new frmWayBillDetOut(_db, dr.PosId, wb);
+                    if (df.ShowDialog() == DialogResult.OK)
+                    {
+                        RefreshDet();
+                    }
+                }
+            }
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void WaybillDetInGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                this.WbDetPopupMenu.ShowPopup(p2);
+            }
+        }
+
+        private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var dr = WaybillDetInGridView.GetRow(WaybillDetInGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
+
+            if (dr.Rsv == 1 && dr.PosId > 0)
+            {
+                _db.WMatTurn.Remove(_db.WMatTurn.Single(w => w.SourceId == dr.PosId));
+
+                _db.SaveChanges();
+                current_transaction.Commit();
+                current_transaction = _db.Database.BeginTransaction(IsolationLevel.RepeatableRead);
+
+                RefreshDet();
             }
         }
 

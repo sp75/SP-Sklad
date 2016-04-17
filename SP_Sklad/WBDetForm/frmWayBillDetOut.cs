@@ -41,7 +41,7 @@ namespace SP_Sklad.WBDetForm
                 _wbd = new WaybillDet()
                 {
                     WbillId = _wb.WbillId,
-                    Amount = 1,
+                    Amount = 0,
                     Discount = 0,
                     Nds = _wb.Nds,
                     CurrId = _wb.CurrId,
@@ -66,23 +66,25 @@ namespace SP_Sklad.WBDetForm
                 if (modified_dataset)
                 {
                     var w_mat_turn = _db.WMatTurn.Where(w => w.SourceId == _wbd.PosId).ToList();
-                    pos_in = _db.GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, 0).OrderByDescending(o => o.OnDate).ToList();
-
-                    foreach (var item in w_mat_turn)
+                    if (w_mat_turn.Count > 0)
                     {
-                        if (pos_in.Any(a => a.PosId == item.PosId))
-                        {
-                            pos_in.FirstOrDefault(a => a.PosId == item.PosId).Amount = item.Amount;
-                        }
-                    }
+                        pos_in = _db.GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, 0).OrderByDescending(o => o.OnDate).ToList();
 
-                    _db.WMatTurn.RemoveRange(w_mat_turn);
-                    _db.SaveChanges();
+                        foreach (var item in w_mat_turn)
+                        {
+                            if (pos_in.Any(a => a.PosId == item.PosId))
+                            {
+                                pos_in.FirstOrDefault(a => a.PosId == item.PosId).Amount = item.Amount;
+                            }
+                        }
+                        _db.WMatTurn.RemoveRange(w_mat_turn);
+                        _db.SaveChanges();
+                    }
                 }
 
 
-          //      MatComboBox.DataBindings.Add(new Binding("EditValue", _wbd, "MatId"));
-         //       WHComboBox.DataBindings.Add(new Binding("EditValue", _wbd, "WId", true, DataSourceUpdateMode.OnValidation));
+                MatComboBox.DataBindings.Add(new Binding("EditValue", _wbd, "MatId"));
+                WHComboBox.DataBindings.Add(new Binding("EditValue", _wbd, "WId", true, DataSourceUpdateMode.OnValidation));
                 AmountEdit.DataBindings.Add(new Binding("EditValue", _wbd, "Amount"));
                 PriceTypesEdit.DataBindings.Add(new Binding("EditValue", _wbd, "PtypeId", true, DataSourceUpdateMode.OnValidation));
                 BasePriceEdit.DataBindings.Add(new Binding("EditValue", _wbd, "BasePrice", true, DataSourceUpdateMode.OnValidation));
@@ -224,7 +226,10 @@ namespace SP_Sklad.WBDetForm
                 WayBIllDetPTYPEID->Clear();
 */
             _wbd.Price = _wbd.BasePrice;
-            _db.WaybillDet.Add(_wbd);
+            if (!modified_dataset)
+            {
+                _db.WaybillDet.Add(_wbd);
+            }
             _db.SaveChanges();
 
             if (RSVCheckBox.Checked && !_db.WMatTurn.Any(w => w.SourceId == _wbd.PosId))
@@ -259,6 +264,11 @@ namespace SP_Sklad.WBDetForm
 
             _wbd.WId = (int)WHComboBox.EditValue;
             GetRemains();
+            GetOk();
+        }
+
+        private void RSVCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
             GetOk();
         }
 
