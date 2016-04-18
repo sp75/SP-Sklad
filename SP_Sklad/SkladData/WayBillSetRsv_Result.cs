@@ -11,10 +11,10 @@ namespace SP_Sklad.SkladData
 {
     using System;
     
-    public partial class SP_AUTO_RSV_WB_Result
+    public partial class WayBillSetRsv_Result
     {
-        public string MATNAME { get; set; }
-        public Nullable<int> POSID { get; set; }
-        public Nullable<int> RSV { get; set; }
+        public string MatName { get; set; }
+        public Nullable<int> PosId { get; set; }
+        public Nullable<int> Rsv { get; set; }
     }
 }

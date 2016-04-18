@@ -52,9 +52,9 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.WBImgList = new System.Windows.Forms.ImageList(this.components);
             this.RsvBarBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
+            this.RsvAllBarBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.DelRsvBarBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.DelAllRsvBarBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
@@ -162,9 +162,9 @@
             this.barButtonItem2,
             this.barButtonItem3,
             this.RsvBarBtn,
-            this.barButtonItem5,
-            this.barButtonItem9,
-            this.barButtonItem10,
+            this.RsvAllBarBtn,
+            this.DelRsvBarBtn,
+            this.DelAllRsvBarBtn,
             this.barButtonItem11});
             this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 17;
@@ -370,27 +370,29 @@
             this.RsvBarBtn.Name = "RsvBarBtn";
             this.RsvBarBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RsvBarBtn_ItemClick);
             // 
-            // barButtonItem5
+            // RsvAllBarBtn
             // 
-            this.barButtonItem5.Caption = "Зарезервувати все";
-            this.barButtonItem5.Id = 13;
-            this.barButtonItem5.ImageIndex = 13;
-            this.barButtonItem5.Name = "barButtonItem5";
+            this.RsvAllBarBtn.Caption = "Зарезервувати все";
+            this.RsvAllBarBtn.Id = 13;
+            this.RsvAllBarBtn.ImageIndex = 13;
+            this.RsvAllBarBtn.Name = "RsvAllBarBtn";
+            this.RsvAllBarBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RsvAllBarBtn_ItemClick);
             // 
-            // barButtonItem9
+            // DelRsvBarBtn
             // 
-            this.barButtonItem9.Caption = "Зняти з резерву";
-            this.barButtonItem9.Id = 14;
-            this.barButtonItem9.ImageIndex = 14;
-            this.barButtonItem9.Name = "barButtonItem9";
-            this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick);
+            this.DelRsvBarBtn.Caption = "Зняти з резерву";
+            this.DelRsvBarBtn.Id = 14;
+            this.DelRsvBarBtn.ImageIndex = 14;
+            this.DelRsvBarBtn.Name = "DelRsvBarBtn";
+            this.DelRsvBarBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick);
             // 
-            // barButtonItem10
+            // DelAllRsvBarBtn
             // 
-            this.barButtonItem10.Caption = "Зняти з резерву все";
-            this.barButtonItem10.Id = 15;
-            this.barButtonItem10.ImageIndex = 15;
-            this.barButtonItem10.Name = "barButtonItem10";
+            this.DelAllRsvBarBtn.Caption = "Зняти з резерву все";
+            this.DelAllRsvBarBtn.Id = 15;
+            this.DelAllRsvBarBtn.ImageIndex = 15;
+            this.DelAllRsvBarBtn.Name = "DelAllRsvBarBtn";
+            this.DelAllRsvBarBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DelAllRsvBarBtn_ItemClick);
             // 
             // barButtonItem11
             // 
@@ -956,15 +958,16 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.DelMaterialBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.RsvBarBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RsvAllBarBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DelRsvBarBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DelAllRsvBarBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
             new DevExpress.XtraBars.LinkPersistInfo(this.EditMaterialBtn, true)});
             this.WbDetPopupMenu.Manager = this.barManager1;
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
+            this.WbDetPopupMenu.Popup += new System.EventHandler(this.WbDetPopupMenu_Popup);
             // 
             // frmWayBillOut
             // 
@@ -1093,9 +1096,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox2;
         private DevExpress.XtraBars.BarButtonItem RsvBarBtn;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem9;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem10;
+        private DevExpress.XtraBars.BarButtonItem RsvAllBarBtn;
+        private DevExpress.XtraBars.BarButtonItem DelRsvBarBtn;
+        private DevExpress.XtraBars.BarButtonItem DelAllRsvBarBtn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
         private DevExpress.XtraBars.PopupMenu WbDetPopupMenu;
     }

@@ -66,8 +66,6 @@ namespace SP_Sklad.MainTabs
 
         void GetWayBillList(int wtyp)
         {
-            WBGridControl.DataSource = null;
-
             if (wbSatusList.EditValue == null || wbKagentList.EditValue == null || DocsTreeList.FocusedNode==null)
             {
                 return;
@@ -78,6 +76,7 @@ namespace SP_Sklad.MainTabs
          
             var dr = WbGridView.GetRow(WbGridView.FocusedRowHandle) as GetWayBillList_Result;
 
+            WBGridControl.DataSource = null;
             WBGridControl.DataSource = _db.GetWayBillList(satrt_date.Date, end_date.Date.AddDays(1), wtyp, (int)wbSatusList.EditValue, (int)wbKagentList.EditValue, show_null_balance, "*", 0).OrderByDescending(o => o.OnDate);
 
             WbGridView.FocusedRowHandle = FindRowHandleByRowObject(WbGridView, dr);

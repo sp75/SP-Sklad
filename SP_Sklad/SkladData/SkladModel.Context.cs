@@ -126,16 +126,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatGroupTree_Result>("[BaseEntities].[GetMatGroupTree](@root_cat_id)", root_cat_idParameter);
         }
     
-        [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB")]
-        public virtual IQueryable<SP_AUTO_RSV_WB_Result> SP_AUTO_RSV_WB(Nullable<int> wBILLID)
-        {
-            var wBILLIDParameter = wBILLID.HasValue ?
-                new ObjectParameter("WBILLID", wBILLID) :
-                new ObjectParameter("WBILLID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SP_AUTO_RSV_WB_Result>("[BaseEntities].[SP_AUTO_RSV_WB](@WBILLID)", wBILLIDParameter);
-        }
-    
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)
         {
@@ -503,15 +493,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EXECUTESQL_EXAMPLER_Result>("EXECUTESQL_EXAMPLER", iN_MATIDParameter, oNDATEParameter, wHParameter);
         }
     
-        public virtual ObjectResult<Nullable<int>> SP_AUTO_RSV(Nullable<int> wBD_POSID)
-        {
-            var wBD_POSIDParameter = wBD_POSID.HasValue ?
-                new ObjectParameter("WBD_POSID", wBD_POSID) :
-                new ObjectParameter("WBD_POSID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SP_AUTO_RSV", wBD_POSIDParameter);
-        }
-    
         public virtual int SP_AUTO_RSV_2(Nullable<int> wBD_POSID, ObjectParameter rSV)
         {
             var wBD_POSIDParameter = wBD_POSID.HasValue ?
@@ -808,15 +789,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UPD_DATE", wBILLIDParameter, nEW_ONDATEParameter, oLD_ONDATEParameter);
         }
     
-        public virtual int SP_WMATTURN_DEL(Nullable<int> wBILLID)
-        {
-            var wBILLIDParameter = wBILLID.HasValue ?
-                new ObjectParameter("WBILLID", wBILLID) :
-                new ObjectParameter("WBILLID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_WMATTURN_DEL", wBILLIDParameter);
-        }
-    
         public virtual int SP_WMATTURN_UPD(Nullable<int> wBILLID, Nullable<int> tURNTYPE)
         {
             var wBILLIDParameter = wBILLID.HasValue ?
@@ -1047,6 +1019,33 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("wbill_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillDetOut_Result>("[BaseEntities].[GetWayBillDetOut](@wbill_id)", wbill_idParameter);
+        }
+    
+        public virtual ObjectResult<WayBillSetRsv_Result> WayBillSetRsv(Nullable<int> wbill_id)
+        {
+            var wbill_idParameter = wbill_id.HasValue ?
+                new ObjectParameter("wbill_id", wbill_id) :
+                new ObjectParameter("wbill_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WayBillSetRsv_Result>("WayBillSetRsv", wbill_idParameter);
+        }
+    
+        public virtual int WayBillDelRsv(Nullable<int> wbill_id)
+        {
+            var wbill_idParameter = wbill_id.HasValue ?
+                new ObjectParameter("wbill_id", wbill_id) :
+                new ObjectParameter("wbill_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("WayBillDelRsv", wbill_idParameter);
+        }
+    
+        public virtual int SP_AUTO_RSV(Nullable<int> wBD_POSID, ObjectParameter rSV)
+        {
+            var wBD_POSIDParameter = wBD_POSID.HasValue ?
+                new ObjectParameter("WBD_POSID", wBD_POSID) :
+                new ObjectParameter("WBD_POSID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_AUTO_RSV", wBD_POSIDParameter, rSV);
         }
     }
 }
