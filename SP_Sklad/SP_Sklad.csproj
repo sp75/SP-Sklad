@@ -312,6 +312,9 @@
     <Compile Include="SkladData\REPORTS.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\ReservedAllPosition_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\RETURNREL.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -460,9 +463,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\WAYBILLMOVE.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\WayBillSetRsv_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\WAYBILLSVC.cs">

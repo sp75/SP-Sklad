@@ -25,6 +25,7 @@ namespace SP_Sklad.WBForm
         private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
         private GetWayBillDetOut_Result wbd_row { get; set; }
+        private IQueryable<GetWayBillDetOut_Result> wbd_list { get; set; }
 
         public frmWayBillOut(int wtype, int? wbill_id)
         {
@@ -74,9 +75,10 @@ namespace SP_Sklad.WBForm
 
             if (wb != null)
             {
+                TurnDocCheckBox.EditValue = wb.Checked;
+
                 KagentComboBox.DataBindings.Add(new Binding("EditValue", wb, "KaId", true, DataSourceUpdateMode.OnValidation));
                 PersonComboBox.DataBindings.Add(new Binding("EditValue", wb, "PersonId", true, DataSourceUpdateMode.OnValidation));
-                TurnDocCheckBox.DataBindings.Add(new Binding("EditValue", wb, "Checked"));
                 NumEdit.DataBindings.Add(new Binding("EditValue", wb, "Num"));
                 OnDateDBEdit.DataBindings.Add(new Binding("EditValue", wb, "OnDate"));
                 ToDateEdit.DataBindings.Add(new Binding("EditValue", wb, "ToDate"));
@@ -121,16 +123,13 @@ namespace SP_Sklad.WBForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            wb.UpdatedAt = DateTime.Now; wb.UpdatedAt = DateTime.Now;
-            _db.SaveChanges();
-
             if (!DBHelper.CheckInDate(wb, _db, OnDateDBEdit.DateTime))
             {
                 return;
             }
 
+            wb.UpdatedAt = DateTime.Now;
             _db.SaveChanges();
-
 
             payDocUserControl1.Execute(wb.WbillId);
 
@@ -146,20 +145,31 @@ namespace SP_Sklad.WBForm
 
         private void RefreshDet()
         {
-            WaybillDetInGridControl.DataSource = null;
-            WaybillDetInGridControl.DataSource = _db.GetWayBillDetOut(_wbill_id);
+            wbd_list = _db.GetWayBillDetOut(_wbill_id);
+
+            WaybillDetOutGridControl.DataSource = null;
+            WaybillDetOutGridControl.DataSource = wbd_list;
+
             GetOk();
         }
 
         bool GetOk()
         {
-            bool recult = (NumEdit.EditValue != null && KagentComboBox.EditValue != null && OnDateDBEdit.EditValue != null && WaybillDetInGridView.DataRowCount > 0);
+            bool recult = ( !String.IsNullOrEmpty(NumEdit.Text) && KagentComboBox.EditValue != null && OnDateDBEdit.EditValue != null && WaybillDetOutGridView.DataRowCount > 0);
+
+            if (recult && wb.WType == -1 && TurnDocCheckBox.Checked)
+            {
+                recult = !wbd_list.Any(w => w.Rsv == 0 && w.PosType == 0);
+            }
+
             barSubItem1.Enabled = KagentComboBox.EditValue != null;
 
-          //  OkButton.Enabled = recult;
-            EditMaterialBtn.Enabled = WaybillDetInGridView.DataRowCount > 0;
-            DelMaterialBtn.Enabled = WaybillDetInGridView.DataRowCount > 0;
+            EditMaterialBtn.Enabled = WaybillDetOutGridView.DataRowCount > 0;
+            DelMaterialBtn.Enabled = EditMaterialBtn.Enabled;
+            RsvInfoBtn.Enabled = EditMaterialBtn.Enabled;
+            MatInfoBtn.Enabled = EditMaterialBtn.Enabled;
 
+            OkButton.Enabled = recult;
             return recult;
         }
 
@@ -176,7 +186,7 @@ namespace SP_Sklad.WBForm
 
         private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = WaybillDetInGridView.GetRow(WaybillDetInGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
+            var dr = WaybillDetOutGridView.GetRow(WaybillDetOutGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
 
             if (dr != null)
             {
@@ -208,6 +218,8 @@ namespace SP_Sklad.WBForm
             {
                 wb.Nds = 0;
             }
+
+            GetOk();
         }
 
         private void WaybillDetInGridView_DoubleClick(object sender, EventArgs e)
@@ -224,7 +236,7 @@ namespace SP_Sklad.WBForm
 
         private void EditMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = WaybillDetInGridView.GetRow(WaybillDetInGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
+            var dr = WaybillDetOutGridView.GetRow(WaybillDetOutGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
 
             if (dr != null)
             {
@@ -253,64 +265,94 @@ namespace SP_Sklad.WBForm
             }
         }
 
-        private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            if (wbd_row.Rsv == 1 && wbd_row.PosId > 0)
-            {
-                _db.DeleteWhere<WMatTurn>(w => w.SourceId == wbd_row.PosId);
-                current_transaction = current_transaction.CommitRetaining(_db);
-                wbd_row.Rsv = 0;
-                WaybillDetInGridView.RefreshRow(WaybillDetInGridView.FocusedRowHandle);
-            }
-        }
-
         private void RsvBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var r = new ObjectParameter("RSV", typeof(Int32));
 
-            DB.SkladBase().SP_AUTO_RSV(wbd_row.PosId, r);
+            _db.ReservedPosition(wbd_row.PosId, r);
+            current_transaction = current_transaction.CommitRetaining(_db);
 
             if (r.Value != null)
             {
                 wbd_row.Rsv = (int)r.Value;
-                WaybillDetInGridView.RefreshRow(WaybillDetInGridView.FocusedRowHandle);
+                WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
             }
         }
 
         private void WaybillDetInGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            wbd_row = WaybillDetInGridView.GetRow(WaybillDetInGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
+            wbd_row = WaybillDetOutGridView.GetRow(WaybillDetOutGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
         }
 
         private void WbDetPopupMenu_Popup(object sender, EventArgs e)
         {
             RsvBarBtn.Enabled = (wbd_row.Rsv == 0 && wbd_row.PosId > 0);
             DelRsvBarBtn.Enabled = (wbd_row.Rsv == 1 && wbd_row.PosId > 0);
-            RsvAllBarBtn.Enabled = (WaybillDetInGridView.FocusedRowHandle >= 0);
-            DelAllRsvBarBtn.Enabled = (WaybillDetInGridView.FocusedRowHandle >= 0);
+            RsvAllBarBtn.Enabled = (WaybillDetOutGridView.FocusedRowHandle >= 0);
+            DelAllRsvBarBtn.Enabled = (WaybillDetOutGridView.FocusedRowHandle >= 0);
         }
 
         private void RsvAllBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var res = DB.SkladBase().WayBillSetRsv(wb.WbillId);
+            var res = DB.SkladBase().ReservedAllPosition(wb.WbillId);
 
             if (res.Any())
             {
                 MessageBox.Show("Не вдалося зарезервувати деякі товари!");
             }
-
+           
             RefreshDet();
+        }
+
+        private void DelRsvBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (wbd_row.Rsv == 1 && wbd_row.PosId > 0)
+            {
+                _db.DeleteWhere<WMatTurn>(w => w.SourceId == wbd_row.PosId);
+                current_transaction = current_transaction.CommitRetaining(_db);
+                wbd_row.Rsv = 0;
+                WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
+            }
         }
 
         private void DelAllRsvBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
          //   _db.DeleteWhere<WMatTurn>(w => w.SourceId == wbd_row.PosId);
 
-            _db.WayBillDelRsv(wb.WbillId);
+            _db.DeleteAllReservePosition(wb.WbillId);
             current_transaction = current_transaction.CommitRetaining(_db);
          
             RefreshDet();
         }
+
+        private void MarkBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var wbd = _db.WaybillDet.Find(wbd_row.PosId);
+            if (wbd.Checked == 1)
+            {
+                wbd.Checked = 0;
+                wbd_row.Checked = 0;
+            }
+            else
+            {
+                wbd.Checked = 1;
+                wbd_row.Checked = 1;
+            }
+
+            WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
+        }
+
+        private void NumEdit_Validated(object sender, EventArgs e)
+        {
+            GetOk();
+        }
+
+        private void NowDateBtn_Click(object sender, EventArgs e)
+        {
+            OnDateDBEdit.DateTime = DBHelper.ServerDateTime();
+        }
+
+
 
     }
 }

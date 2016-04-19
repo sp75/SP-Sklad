@@ -3881,6 +3881,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="DeleteAllReservePosition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="wbill_id" Type="int" Mode="In" />
+        </Function>
         <Function Name="EXECUTESQL_EXAMPLER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IN_MATID" Type="int" Mode="In" />
           <Parameter Name="ONDATE" Type="datetime" Mode="In" />
@@ -4092,9 +4095,12 @@
             </CollectionType>
           </ReturnType>
         </Function>
-        <Function Name="SP_AUTO_RSV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="WBD_POSID" Type="int" Mode="In" />
-          <Parameter Name="RSV" Type="int" Mode="InOut" />
+        <Function Name="ReservedAllPosition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="wbill_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ReservedPosition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pos_id" Type="int" Mode="In" />
+          <Parameter Name="rsv" Type="int" Mode="InOut" />
         </Function>
         <Function Name="SP_AUTO_RSV_2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="WBD_POSID" Type="int" Mode="In" />
@@ -4659,12 +4665,6 @@
           <Parameter Name="wbill_id" Type="int" Mode="In" />
         </Function>
         <Function Name="UpdWaybillDetPrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="wbill_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="WayBillDelRsv" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="wbill_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="WayBillSetRsv" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="wbill_id" Type="int" Mode="In" />
         </Function>
         <Function Name="WBDGetOutP2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -5615,15 +5615,15 @@
           <FunctionImport Name="GetWayBillDetOut" IsComposable="true" ReturnType="Collection(BaseModel.GetWayBillDetOut_Result)">
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="WayBillSetRsv" ReturnType="Collection(BaseModel.WayBillSetRsv_Result)">
+          <FunctionImport Name="ReservedPosition">
+            <Parameter Name="pos_id" Mode="In" Type="Int32" />
+            <Parameter Name="rsv" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ReservedAllPosition" ReturnType="Collection(BaseModel.ReservedAllPosition_Result)">
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="WayBillDelRsv">
-          <Parameter Name="wbill_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_AUTO_RSV">
-            <Parameter Name="WBD_POSID" Mode="In" Type="Int32" />
-            <Parameter Name="RSV" Mode="InOut" Type="Int32" />
+          <FunctionImport Name="DeleteAllReservePosition">
+            <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="GetMatGroupTree_Result">
@@ -9320,7 +9320,7 @@
           <Property Type="Decimal" Name="SumNds" Nullable="true" Precision="35" Scale="10" />
           <Property Type="Int32" Name="Rsv" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="WayBillSetRsv_Result">
+        <ComplexType Name="ReservedAllPosition_Result">
           <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
           <Property Type="Int32" Name="PosId" Nullable="true" />
           <Property Type="Int32" Name="Rsv" Nullable="true" />
@@ -11248,17 +11248,17 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="WayBillSetRsv" FunctionName="BaseModel.Store.WayBillSetRsv" >
+          <FunctionImportMapping FunctionImportName="ReservedPosition" FunctionName="BaseModel.Store.ReservedPosition" />
+          <FunctionImportMapping FunctionImportName="ReservedAllPosition" FunctionName="BaseModel.Store.ReservedAllPosition">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.WayBillSetRsv_Result">
+              <ComplexTypeMapping TypeName="BaseModel.ReservedAllPosition_Result">
                 <ScalarProperty Name="MatName" ColumnName="MatName" />
                 <ScalarProperty Name="PosId" ColumnName="PosId" />
                 <ScalarProperty Name="Rsv" ColumnName="Rsv" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="WayBillDelRsv" FunctionName="BaseModel.Store.WayBillDelRsv" />
-          <FunctionImportMapping FunctionImportName="SP_AUTO_RSV" FunctionName="BaseModel.Store.SP_AUTO_RSV" />
+          <FunctionImportMapping FunctionImportName="DeleteAllReservePosition" FunctionName="BaseModel.Store.DeleteAllReservePosition" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

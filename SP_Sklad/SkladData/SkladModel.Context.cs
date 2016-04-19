@@ -1021,31 +1021,31 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillDetOut_Result>("[BaseEntities].[GetWayBillDetOut](@wbill_id)", wbill_idParameter);
         }
     
-        public virtual ObjectResult<WayBillSetRsv_Result> WayBillSetRsv(Nullable<int> wbill_id)
+        public virtual int ReservedPosition(Nullable<int> pos_id, ObjectParameter rsv)
+        {
+            var pos_idParameter = pos_id.HasValue ?
+                new ObjectParameter("pos_id", pos_id) :
+                new ObjectParameter("pos_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ReservedPosition", pos_idParameter, rsv);
+        }
+    
+        public virtual ObjectResult<ReservedAllPosition_Result> ReservedAllPosition(Nullable<int> wbill_id)
         {
             var wbill_idParameter = wbill_id.HasValue ?
                 new ObjectParameter("wbill_id", wbill_id) :
                 new ObjectParameter("wbill_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WayBillSetRsv_Result>("WayBillSetRsv", wbill_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReservedAllPosition_Result>("ReservedAllPosition", wbill_idParameter);
         }
     
-        public virtual int WayBillDelRsv(Nullable<int> wbill_id)
+        public virtual int DeleteAllReservePosition(Nullable<int> wbill_id)
         {
             var wbill_idParameter = wbill_id.HasValue ?
                 new ObjectParameter("wbill_id", wbill_id) :
                 new ObjectParameter("wbill_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("WayBillDelRsv", wbill_idParameter);
-        }
-    
-        public virtual int SP_AUTO_RSV(Nullable<int> wBD_POSID, ObjectParameter rSV)
-        {
-            var wBD_POSIDParameter = wBD_POSID.HasValue ?
-                new ObjectParameter("WBD_POSID", wBD_POSID) :
-                new ObjectParameter("WBD_POSID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_AUTO_RSV", wBD_POSIDParameter, rSV);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteAllReservePosition", wbill_idParameter);
         }
     }
 }

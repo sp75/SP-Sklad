@@ -35,8 +35,8 @@
             this.PrevievBtn = new DevExpress.XtraBars.BarButtonItem();
             this.KagBalBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.RsvInfoBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.MatInfoBtn = new DevExpress.XtraBars.BarButtonItem();
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.AddMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -55,7 +55,7 @@
             this.RsvAllBarBtn = new DevExpress.XtraBars.BarButtonItem();
             this.DelRsvBarBtn = new DevExpress.XtraBars.BarButtonItem();
             this.DelAllRsvBarBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
+            this.MarkBtn = new DevExpress.XtraBars.BarButtonItem();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -85,8 +85,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.payDocUserControl1 = new SP_Sklad.MainTabs.PayDocUserControl();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
-            this.WaybillDetInGridControl = new DevExpress.XtraGrid.GridControl();
-            this.WaybillDetInGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.WaybillDetOutGridControl = new DevExpress.XtraGrid.GridControl();
+            this.WaybillDetOutGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -127,8 +129,9 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
             this.panelControl5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
@@ -159,13 +162,13 @@
             this.barButtonItem7,
             this.barButtonItem8,
             this.barButtonItem1,
-            this.barButtonItem2,
-            this.barButtonItem3,
+            this.RsvInfoBtn,
+            this.MatInfoBtn,
             this.RsvBarBtn,
             this.RsvAllBarBtn,
             this.DelRsvBarBtn,
             this.DelAllRsvBarBtn,
-            this.barButtonItem11});
+            this.MarkBtn});
             this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 17;
             // 
@@ -181,8 +184,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.PrevievBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.KagBalBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.RsvInfoBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.MatInfoBtn)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -208,19 +211,19 @@
             this.barButtonItem1.ImageIndex = 2;
             this.barButtonItem1.Name = "barButtonItem1";
             // 
-            // barButtonItem2
+            // RsvInfoBtn
             // 
-            this.barButtonItem2.Caption = "Інформація про резерв товару";
-            this.barButtonItem2.Id = 10;
-            this.barButtonItem2.ImageIndex = 3;
-            this.barButtonItem2.Name = "barButtonItem2";
+            this.RsvInfoBtn.Caption = "Інформація про резерв товару";
+            this.RsvInfoBtn.Id = 10;
+            this.RsvInfoBtn.ImageIndex = 3;
+            this.RsvInfoBtn.Name = "RsvInfoBtn";
             // 
-            // barButtonItem3
+            // MatInfoBtn
             // 
-            this.barButtonItem3.Caption = "Інформація про товар";
-            this.barButtonItem3.Id = 11;
-            this.barButtonItem3.ImageIndex = 4;
-            this.barButtonItem3.Name = "barButtonItem3";
+            this.MatInfoBtn.Caption = "Інформація про товар";
+            this.MatInfoBtn.Id = 11;
+            this.MatInfoBtn.ImageIndex = 4;
+            this.MatInfoBtn.Name = "MatInfoBtn";
             // 
             // bar1
             // 
@@ -380,27 +383,28 @@
             // 
             // DelRsvBarBtn
             // 
-            this.DelRsvBarBtn.Caption = "Зняти з резерву";
+            this.DelRsvBarBtn.Caption = "Видалити з резерву";
             this.DelRsvBarBtn.Id = 14;
             this.DelRsvBarBtn.ImageIndex = 14;
             this.DelRsvBarBtn.Name = "DelRsvBarBtn";
-            this.DelRsvBarBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick);
+            this.DelRsvBarBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DelRsvBarBtn_ItemClick);
             // 
             // DelAllRsvBarBtn
             // 
-            this.DelAllRsvBarBtn.Caption = "Зняти з резерву все";
+            this.DelAllRsvBarBtn.Caption = "Видалити з резерву все";
             this.DelAllRsvBarBtn.Id = 15;
             this.DelAllRsvBarBtn.ImageIndex = 15;
             this.DelAllRsvBarBtn.Name = "DelAllRsvBarBtn";
             this.DelAllRsvBarBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DelAllRsvBarBtn_ItemClick);
             // 
-            // barButtonItem11
+            // MarkBtn
             // 
-            this.barButtonItem11.Caption = "Позначити";
-            this.barButtonItem11.Id = 16;
-            this.barButtonItem11.ImageIndex = 16;
-            this.barButtonItem11.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F2);
-            this.barButtonItem11.Name = "barButtonItem11";
+            this.MarkBtn.Caption = "Позначити";
+            this.MarkBtn.Id = 16;
+            this.MarkBtn.ImageIndex = 16;
+            this.MarkBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F2);
+            this.MarkBtn.Name = "MarkBtn";
+            this.MarkBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MarkBtn_ItemClick);
             // 
             // styleController1
             // 
@@ -593,6 +597,7 @@
             this.NowDateBtn.Name = "NowDateBtn";
             this.NowDateBtn.Size = new System.Drawing.Size(22, 22);
             this.NowDateBtn.TabIndex = 10;
+            this.NowDateBtn.Click += new System.EventHandler(this.NowDateBtn_Click);
             // 
             // KagentComboBox
             // 
@@ -659,6 +664,7 @@
             this.TurnDocCheckBox.Size = new System.Drawing.Size(203, 20);
             this.TurnDocCheckBox.StyleController = this.styleController1;
             this.TurnDocCheckBox.TabIndex = 3;
+            this.TurnDocCheckBox.EditValueChanged += new System.EventHandler(this.NumEdit_Validated);
             // 
             // labelControl1
             // 
@@ -677,6 +683,7 @@
             this.NumEdit.Size = new System.Drawing.Size(179, 22);
             this.NumEdit.StyleController = this.styleController1;
             this.NumEdit.TabIndex = 0;
+            this.NumEdit.EditValueChanged += new System.EventHandler(this.NumEdit_Validated);
             // 
             // OnDateDBEdit
             // 
@@ -715,7 +722,7 @@
             // 
             // panelControl5
             // 
-            this.panelControl5.Controls.Add(this.WaybillDetInGridControl);
+            this.panelControl5.Controls.Add(this.WaybillDetOutGridControl);
             this.panelControl5.Controls.Add(this.barDockControl1);
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl5.Location = new System.Drawing.Point(0, 271);
@@ -723,24 +730,26 @@
             this.panelControl5.Size = new System.Drawing.Size(969, 223);
             this.panelControl5.TabIndex = 13;
             // 
-            // WaybillDetInGridControl
+            // WaybillDetOutGridControl
             // 
-            this.WaybillDetInGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.WaybillDetInGridControl.Location = new System.Drawing.Point(2, 2);
-            this.WaybillDetInGridControl.MainView = this.WaybillDetInGridView;
-            this.WaybillDetInGridControl.MenuManager = this.barManager1;
-            this.WaybillDetInGridControl.Name = "WaybillDetInGridControl";
-            this.WaybillDetInGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.WaybillDetOutGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WaybillDetOutGridControl.Location = new System.Drawing.Point(2, 2);
+            this.WaybillDetOutGridControl.MainView = this.WaybillDetOutGridView;
+            this.WaybillDetOutGridControl.MenuManager = this.barManager1;
+            this.WaybillDetOutGridControl.Name = "WaybillDetOutGridControl";
+            this.WaybillDetOutGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1,
-            this.repositoryItemImageComboBox2});
-            this.WaybillDetInGridControl.Size = new System.Drawing.Size(965, 219);
-            this.WaybillDetInGridControl.TabIndex = 1;
-            this.WaybillDetInGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.WaybillDetInGridView});
+            this.repositoryItemImageComboBox2,
+            this.repositoryItemImageComboBox3});
+            this.WaybillDetOutGridControl.Size = new System.Drawing.Size(965, 219);
+            this.WaybillDetOutGridControl.TabIndex = 1;
+            this.WaybillDetOutGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.WaybillDetOutGridView});
             // 
-            // WaybillDetInGridView
+            // WaybillDetOutGridView
             // 
-            this.WaybillDetInGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.WaybillDetOutGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn12,
             this.gridColumn1,
             this.gridColumn2,
             this.gridColumn11,
@@ -752,13 +761,40 @@
             this.gridColumn7,
             this.gridColumn8,
             this.gridColumn9});
-            this.WaybillDetInGridView.GridControl = this.WaybillDetInGridControl;
-            this.WaybillDetInGridView.Images = this.WBImgList;
-            this.WaybillDetInGridView.Name = "WaybillDetInGridView";
-            this.WaybillDetInGridView.OptionsView.ShowGroupPanel = false;
-            this.WaybillDetInGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WaybillDetInGridView_PopupMenuShowing);
-            this.WaybillDetInGridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.WaybillDetInGridView_FocusedRowChanged);
-            this.WaybillDetInGridView.DoubleClick += new System.EventHandler(this.WaybillDetInGridView_DoubleClick);
+            this.WaybillDetOutGridView.GridControl = this.WaybillDetOutGridControl;
+            this.WaybillDetOutGridView.Images = this.WBImgList;
+            this.WaybillDetOutGridView.Name = "WaybillDetOutGridView";
+            this.WaybillDetOutGridView.OptionsView.ShowGroupPanel = false;
+            this.WaybillDetOutGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WaybillDetInGridView_PopupMenuShowing);
+            this.WaybillDetOutGridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.WaybillDetInGridView_FocusedRowChanged);
+            this.WaybillDetOutGridView.DoubleClick += new System.EventHandler(this.WaybillDetInGridView_DoubleClick);
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "gridColumn12";
+            this.gridColumn12.ColumnEdit = this.repositoryItemImageComboBox3;
+            this.gridColumn12.FieldName = "Checked";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.OptionsColumn.AllowEdit = false;
+            this.gridColumn12.OptionsColumn.AllowFocus = false;
+            this.gridColumn12.OptionsColumn.AllowMove = false;
+            this.gridColumn12.OptionsColumn.AllowSize = false;
+            this.gridColumn12.OptionsColumn.FixedWidth = true;
+            this.gridColumn12.OptionsColumn.ShowCaption = false;
+            this.gridColumn12.OptionsColumn.ShowInCustomizationForm = false;
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 0;
+            this.gridColumn12.Width = 25;
+            // 
+            // repositoryItemImageComboBox3
+            // 
+            this.repositoryItemImageComboBox3.AutoHeight = false;
+            this.repositoryItemImageComboBox3.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox3.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 16)});
+            this.repositoryItemImageComboBox3.Name = "repositoryItemImageComboBox3";
+            this.repositoryItemImageComboBox3.SmallImages = this.WBImgList;
             // 
             // gridColumn1
             // 
@@ -777,7 +813,7 @@
             this.gridColumn1.OptionsColumn.ShowInCustomizationForm = false;
             this.gridColumn1.OptionsColumn.TabStop = false;
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.VisibleIndex = 1;
             this.gridColumn1.Width = 25;
             // 
             // repositoryItemImageComboBox1
@@ -799,8 +835,8 @@
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.OptionsColumn.ReadOnly = true;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 2;
-            this.gridColumn2.Width = 39;
+            this.gridColumn2.VisibleIndex = 3;
+            this.gridColumn2.Width = 36;
             // 
             // gridColumn11
             // 
@@ -818,7 +854,7 @@
             this.gridColumn11.OptionsColumn.ShowInCustomizationForm = false;
             this.gridColumn11.OptionsColumn.TabStop = false;
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 1;
+            this.gridColumn11.VisibleIndex = 2;
             this.gridColumn11.Width = 25;
             // 
             // repositoryItemImageComboBox2
@@ -839,8 +875,8 @@
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.OptionsColumn.ReadOnly = true;
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 3;
-            this.gridColumn3.Width = 262;
+            this.gridColumn3.VisibleIndex = 4;
+            this.gridColumn3.Width = 253;
             // 
             // gridColumn4
             // 
@@ -848,8 +884,8 @@
             this.gridColumn4.FieldName = "Amount";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 4;
-            this.gridColumn4.Width = 62;
+            this.gridColumn4.VisibleIndex = 5;
+            this.gridColumn4.Width = 59;
             // 
             // gridColumn5
             // 
@@ -859,8 +895,8 @@
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.OptionsColumn.ReadOnly = true;
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 5;
-            this.gridColumn5.Width = 51;
+            this.gridColumn5.VisibleIndex = 6;
+            this.gridColumn5.Width = 49;
             // 
             // gridColumn6
             // 
@@ -870,8 +906,8 @@
             this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.OptionsColumn.ReadOnly = true;
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 7;
-            this.gridColumn6.Width = 68;
+            this.gridColumn6.VisibleIndex = 8;
+            this.gridColumn6.Width = 64;
             // 
             // gridColumn10
             // 
@@ -879,8 +915,8 @@
             this.gridColumn10.FieldName = "Discount";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 8;
-            this.gridColumn10.Width = 62;
+            this.gridColumn10.VisibleIndex = 9;
+            this.gridColumn10.Width = 59;
             // 
             // gridColumn7
             // 
@@ -890,8 +926,8 @@
             this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.OptionsColumn.ReadOnly = true;
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 9;
-            this.gridColumn7.Width = 62;
+            this.gridColumn7.VisibleIndex = 10;
+            this.gridColumn7.Width = 59;
             // 
             // gridColumn8
             // 
@@ -901,8 +937,8 @@
             this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.OptionsColumn.ReadOnly = true;
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 10;
-            this.gridColumn8.Width = 124;
+            this.gridColumn8.VisibleIndex = 11;
+            this.gridColumn8.Width = 132;
             // 
             // gridColumn9
             // 
@@ -912,8 +948,8 @@
             this.gridColumn9.OptionsColumn.AllowEdit = false;
             this.gridColumn9.OptionsColumn.ReadOnly = true;
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 6;
-            this.gridColumn9.Width = 167;
+            this.gridColumn9.VisibleIndex = 7;
+            this.gridColumn9.Width = 161;
             // 
             // barDockControl1
             // 
@@ -958,12 +994,12 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.DelMaterialBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.RsvBarBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.RsvAllBarBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.DelRsvBarBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DelRsvBarBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RsvAllBarBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.DelAllRsvBarBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
+            new DevExpress.XtraBars.LinkPersistInfo(this.MarkBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.MatInfoBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RsvInfoBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.EditMaterialBtn, true)});
             this.WbDetPopupMenu.Manager = this.barManager1;
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
@@ -1012,8 +1048,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
             this.panelControl5.ResumeLayout(false);
             this.panelControl5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
@@ -1031,8 +1068,8 @@
         private DevExpress.XtraBars.BarButtonItem PrevievBtn;
         private DevExpress.XtraBars.BarButtonItem KagBalBtn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.BarButtonItem RsvInfoBtn;
+        private DevExpress.XtraBars.BarButtonItem MatInfoBtn;
         private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraBars.BarButtonItem AddMaterialBtn;
@@ -1075,8 +1112,8 @@
         private System.Windows.Forms.Panel panel1;
         private MainTabs.PayDocUserControl payDocUserControl1;
         private DevExpress.XtraEditors.PanelControl panelControl5;
-        private DevExpress.XtraGrid.GridControl WaybillDetInGridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView WaybillDetInGridView;
+        private DevExpress.XtraGrid.GridControl WaybillDetOutGridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView WaybillDetOutGridView;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
@@ -1099,7 +1136,9 @@
         private DevExpress.XtraBars.BarButtonItem RsvAllBarBtn;
         private DevExpress.XtraBars.BarButtonItem DelRsvBarBtn;
         private DevExpress.XtraBars.BarButtonItem DelAllRsvBarBtn;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem11;
+        private DevExpress.XtraBars.BarButtonItem MarkBtn;
         private DevExpress.XtraBars.PopupMenu WbDetPopupMenu;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox3;
     }
 }

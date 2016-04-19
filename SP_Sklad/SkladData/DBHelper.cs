@@ -161,15 +161,15 @@ namespace SP_Sklad.SkladData
 
         public static int? StornoOrder(BaseEntities db, int wbill_id)
         {
-            var result = db.StornoWayBill(wbill_id);
+            var result = db.StornoWayBill(wbill_id).FirstOrDefault();
 
 
-         /*   if (result != null && result == 1)
+            if (result != null && result.Value == 1)
             {
                 MessageBox.Show(Resources.not_storno_wb, "Відміна проводки", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }*/
+            }
 
-            return 1;
+            return result.Value;
         }
 
         public static ExecuteWayBill_Result ExecuteOrder(BaseEntities db, int wbill_id)

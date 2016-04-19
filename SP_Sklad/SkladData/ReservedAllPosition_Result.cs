@@ -11,7 +11,7 @@ namespace SP_Sklad.SkladData
 {
     using System;
     
-    public partial class WayBillSetRsv_Result
+    public partial class ReservedAllPosition_Result
     {
         public string MatName { get; set; }
         public Nullable<int> PosId { get; set; }
