@@ -31,6 +31,7 @@ namespace SP_Sklad.WBDetForm
 
             WHComboBox.Properties.DataSource = DBHelper.WhList();
             MatComboBox.Properties.DataSource = db.MaterialsList.ToList();
+            PriceTypesEdit.Properties.DataSource = DB.SkladBase().PriceTypes.ToList();
             _wbd = db.WaybillDet.Find(_PosId);
         }
 
@@ -82,21 +83,21 @@ namespace SP_Sklad.WBDetForm
                     }
                 }
 
-
                 MatComboBox.DataBindings.Add(new Binding("EditValue", _wbd, "MatId"));
                 WHComboBox.DataBindings.Add(new Binding("EditValue", _wbd, "WId", true, DataSourceUpdateMode.OnValidation));
                 AmountEdit.DataBindings.Add(new Binding("EditValue", _wbd, "Amount"));
                 PriceTypesEdit.DataBindings.Add(new Binding("EditValue", _wbd, "PtypeId", true, DataSourceUpdateMode.OnValidation));
                 BasePriceEdit.DataBindings.Add(new Binding("EditValue", _wbd, "BasePrice", true, DataSourceUpdateMode.OnValidation));
+                DiscountEdit.DataBindings.Add(new Binding("EditValue", _wbd, "Discount", true, DataSourceUpdateMode.OnValidation));
+                CheckCustomEdit.DataBindings.Add(new Binding("EditValue", _wbd, "DiscountKind", true, DataSourceUpdateMode.OnValidation));
+
+                GetOk();
             }
-
-
-
         }
 
         bool GetOk()
         {
-            bool recult = (MatComboBox.EditValue != null && WHComboBox.EditValue != null && BasePriceEdit.EditValue != null && AmountEdit.EditValue != null);
+            bool recult = (MatComboBox.EditValue != DBNull.Value && WHComboBox.EditValue != DBNull.Value && BasePriceEdit.EditValue != DBNull.Value && AmountEdit.EditValue != DBNull.Value);
 
             OkButton.Enabled = recult;
 
@@ -116,9 +117,14 @@ namespace SP_Sklad.WBDetForm
             btnShowRemainByWH.Enabled = (MatComboBox.EditValue != null);
 
             BotAmountEdit.Text = AmountEdit.Text;
-          //  TotalSumEdit.EditValue = Convert.ToDecimal(AmountEdit.EditValue) * Convert.ToDecimal(PriceEdit.EditValue);
-        //    SummAllEdit.EditValue = Convert.ToDecimal(AmountEdit.EditValue) * Convert.ToDecimal(BasePriceEdit.EditValue);
-         //   TotalNdsEdit.EditValue = Convert.ToDecimal(SummAllEdit.EditValue) - Convert.ToDecimal(TotalSumEdit.EditValue);
+
+            if (DiscountCheckBox.Checked) DiscountPriceEdit.EditValue = _wbd.BasePrice - (_wbd.BasePrice * _wbd.Discount / 100);
+            else DiscountPriceEdit.EditValue = _wbd.BasePrice;
+
+            PriceNotNDSEdit.EditValue = Convert.ToDecimal(DiscountPriceEdit.EditValue) * 100 / (100 + _wbd.Nds);
+            TotalSumEdit.EditValue = Convert.ToDecimal(AmountEdit.EditValue) * Convert.ToDecimal(PriceNotNDSEdit.EditValue);
+            SummAllEdit.EditValue = Convert.ToDecimal(AmountEdit.EditValue) * Convert.ToDecimal(DiscountPriceEdit.EditValue);
+            TotalNdsEdit.EditValue = Convert.ToDecimal(SummAllEdit.EditValue) - Convert.ToDecimal(TotalSumEdit.EditValue);
 
             return recult;
         }
@@ -140,12 +146,33 @@ namespace SP_Sklad.WBDetForm
              labelControl24.Text = row.MeasuresName;
              labelControl27.Text = row.MeasuresName;
 
-             GetRemains();
+             if (PriceTypesEdit.EditValue != null && PriceTypesEdit.EditValue != DBNull.Value)
+             {
+                 var list_price = _db.GetListMatPrices(row.MatId, _wb.CurrId).FirstOrDefault(w => w.PType == (int)PriceTypesEdit.EditValue);
+                 if (list_price != null)
+                 {
+                     _wbd.BasePrice = Math.Round(list_price.Price.Value, 4);
+                     BasePriceEdit.Value = _wbd.BasePrice.Value;
+                 }
+             }
 
-             GetOk();
+             GetDiscount(row.MatId);
+             GetContent();
         }
 
-        private void GetRemains()
+        private void GetDiscount(int? MatId)
+        {
+            var disc = DB.SkladBase().GetDiscount(_wb.KaId, MatId).FirstOrDefault();
+            DiscountCheckBox.Checked = (disc > 0);
+
+            if (_wbd.DiscountKind == 0)
+            {
+                DiscountEdit.EditValue = disc;
+                _wbd.Discount = disc;
+            }
+        }
+
+        private void GetContent()
         {
             if (_wbd.WId == null || _wbd.MatId == 0)
             {
@@ -165,7 +192,7 @@ namespace SP_Sklad.WBDetForm
             }
 
             pos_in = _db.GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, 0).OrderByDescending(o => o.OnDate).ToList();
-
+            SetAmount();
         }
 
         private void SetAmount()
@@ -218,14 +245,10 @@ namespace SP_Sklad.WBDetForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-          /*  WayBIllDet->Edit();
-            if (!DiscountCheckBox->Checked) WayBIllDetDISCOUNT->Value = 0;
+            if (!DiscountCheckBox.Checked) _wbd.Discount = 0;
 
-            WayBIllDetPRICE->Value = WayBIllDetPRICENOTNDS->Value;
-            if (RoundTo(ListMatPricesPRICE->Value, -2) != RoundTo(PriceEdit->EditValue.VDouble, -2))
-                WayBIllDetPTYPEID->Clear();
-*/
-            _wbd.Price = _wbd.BasePrice;
+            _wbd.Price = Convert.ToDecimal( PriceNotNDSEdit.EditValue);
+
             if (!modified_dataset)
             {
                 _db.WaybillDet.Add(_wbd);
@@ -263,13 +286,74 @@ namespace SP_Sklad.WBDetForm
             if (WHComboBox.EditValue == DBNull.Value || !WHComboBox.ContainsFocus) return;
 
             _wbd.WId = (int)WHComboBox.EditValue;
-            GetRemains();
+            GetContent();
             GetOk();
+        }
+
+        private void PriceTypesEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            if (!PriceTypesEdit.ContainsFocus || MatComboBox.EditValue == null || PriceTypesEdit.EditValue == null || PriceTypesEdit.EditValue == DBNull.Value)
+            {
+                return;
+            }
+
+            var list_price = _db.GetListMatPrices((int)MatComboBox.EditValue, _wb.CurrId).FirstOrDefault(w => w.PType == (int)PriceTypesEdit.EditValue);
+            if (list_price != null)
+            {
+              _wbd.BasePrice   = Math.Round(list_price.Price.Value, 4);
+              BasePriceEdit.Value = _wbd.BasePrice.Value;
+            }
+
+            GetOk();
+        }
+
+        private void BasePriceEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            if (!BasePriceEdit.ContainsFocus)
+            {
+                return;
+            }
+
+            _wbd.PtypeId = null;
+            PriceTypesEdit.EditValue = null;
+
+            GetOk();
+        }
+
+        private void RSVCheckBox_Click(object sender, EventArgs e)
+        {
+            if (!RSVCheckBox.Checked) GetOk();
         }
 
         private void RSVCheckBox_CheckedChanged(object sender, EventArgs e)
         {
+            if (RSVCheckBox.Checked && RSVCheckBox.ContainsFocus)
+            {
+                GetOk();
+            }
+        }
+
+        private void DiscountCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
             GetOk();
+        }
+
+        private void CheckCustomEdit_CheckedChanged(object sender, EventArgs e)
+        {
+            DiscountEdit.Enabled = CheckCustomEdit.Checked;
+
+            if (!CheckCustomEdit.Checked && CheckCustomEdit.ContainsFocus)
+            {
+                GetDiscount(Convert.ToInt32( MatComboBox.EditValue));
+            }
+        }
+
+        private void DiscountEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            if (DiscountEdit.ContainsFocus)
+            {
+                GetOk();
+            }
         }
 
     }

@@ -85,11 +85,15 @@
             this.AmountEdit = new DevExpress.XtraEditors.CalcEdit();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
-            this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
+            this.DiscountPriceEdit = new DevExpress.XtraEditors.CalcEdit();
+            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.CheckDiscontCartEdit = new DevExpress.XtraEditors.CheckEdit();
+            this.CheckCustomEdit = new DevExpress.XtraEditors.CheckEdit();
+            this.DiscountEdit = new DevExpress.XtraEditors.CalcEdit();
+            this.DiscountCheckBox = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit6 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit5 = new DevExpress.XtraEditors.TextEdit();
             this.panel4 = new System.Windows.Forms.Panel();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.labelControl23 = new DevExpress.XtraEditors.LabelControl();
@@ -120,7 +124,7 @@
             this.labelControl29 = new DevExpress.XtraEditors.LabelControl();
             this.TotalNdsEdit = new DevExpress.XtraEditors.TextEdit();
             this.TotalSumEdit = new DevExpress.XtraEditors.TextEdit();
-            this.BotBasePriceEdit = new DevExpress.XtraEditors.TextEdit();
+            this.PriceNotNDSEdit = new DevExpress.XtraEditors.TextEdit();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -146,9 +150,13 @@
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DiscountPriceEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CheckDiscontCartEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CheckCustomEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DiscountEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DiscountCheckBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit6.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
@@ -169,7 +177,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.SummAllEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TotalNdsEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TotalSumEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BotBasePriceEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceNotNDSEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             this.SuspendLayout();
@@ -583,6 +591,7 @@
             this.BasePriceEdit.Size = new System.Drawing.Size(138, 22);
             this.BasePriceEdit.StyleController = this.styleController1;
             this.BasePriceEdit.TabIndex = 6;
+            this.BasePriceEdit.EditValueChanged += new System.EventHandler(this.BasePriceEdit_EditValueChanged);
             // 
             // PriceTypesEdit
             // 
@@ -591,15 +600,16 @@
             this.PriceTypesEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.PriceTypesEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NAME", "Назва")});
-            this.PriceTypesEdit.Properties.DisplayMember = "NAME";
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.PriceTypesEdit.Properties.DisplayMember = "Name";
             this.PriceTypesEdit.Properties.ShowFooter = false;
             this.PriceTypesEdit.Properties.ShowHeader = false;
             this.PriceTypesEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.PriceTypesEdit.Properties.ValueMember = "WID";
+            this.PriceTypesEdit.Properties.ValueMember = "PTypeId";
             this.PriceTypesEdit.Size = new System.Drawing.Size(138, 22);
             this.PriceTypesEdit.StyleController = this.styleController1;
             this.PriceTypesEdit.TabIndex = 28;
+            this.PriceTypesEdit.EditValueChanged += new System.EventHandler(this.PriceTypesEdit_EditValueChanged);
             // 
             // simpleButton6
             // 
@@ -681,6 +691,8 @@
             this.CurRemainEdit.Location = new System.Drawing.Point(477, 41);
             this.CurRemainEdit.MenuManager = this.barManager1;
             this.CurRemainEdit.Name = "CurRemainEdit";
+            this.CurRemainEdit.Properties.DisplayFormat.FormatString = "0.0000";
+            this.CurRemainEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.CurRemainEdit.Size = new System.Drawing.Size(148, 22);
             this.CurRemainEdit.StyleController = this.styleController1;
             this.CurRemainEdit.TabIndex = 12;
@@ -693,6 +705,8 @@
             this.RsvEdit.Location = new System.Drawing.Point(477, 70);
             this.RsvEdit.MenuManager = this.barManager1;
             this.RsvEdit.Name = "RsvEdit";
+            this.RsvEdit.Properties.DisplayFormat.FormatString = "0.0000";
+            this.RsvEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.RsvEdit.Size = new System.Drawing.Size(148, 22);
             this.RsvEdit.StyleController = this.styleController1;
             this.RsvEdit.TabIndex = 11;
@@ -705,6 +719,8 @@
             this.RemainWHEdit.Location = new System.Drawing.Point(477, 12);
             this.RemainWHEdit.MenuManager = this.barManager1;
             this.RemainWHEdit.Name = "RemainWHEdit";
+            this.RemainWHEdit.Properties.DisplayFormat.FormatString = "0.0000";
+            this.RemainWHEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.RemainWHEdit.Size = new System.Drawing.Size(148, 22);
             this.RemainWHEdit.StyleController = this.styleController1;
             this.RemainWHEdit.TabIndex = 10;
@@ -753,11 +769,15 @@
             // 
             // panelControl4
             // 
-            this.panelControl4.Controls.Add(this.checkEdit1);
+            this.panelControl4.Controls.Add(this.DiscountPriceEdit);
+            this.panelControl4.Controls.Add(this.textEdit1);
+            this.panelControl4.Controls.Add(this.CheckDiscontCartEdit);
+            this.panelControl4.Controls.Add(this.CheckCustomEdit);
+            this.panelControl4.Controls.Add(this.DiscountEdit);
+            this.panelControl4.Controls.Add(this.DiscountCheckBox);
             this.panelControl4.Controls.Add(this.labelControl11);
             this.panelControl4.Controls.Add(this.textEdit6);
             this.panelControl4.Controls.Add(this.labelControl12);
-            this.panelControl4.Controls.Add(this.textEdit5);
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl4.Location = new System.Drawing.Point(5, 0);
             this.panelControl4.Name = "panelControl4";
@@ -765,26 +785,95 @@
             this.panelControl4.TabIndex = 14;
             this.panelControl4.Tag = "";
             // 
-            // checkEdit1
+            // DiscountPriceEdit
             // 
-            this.checkEdit1.Location = new System.Drawing.Point(12, 6);
-            this.checkEdit1.MenuManager = this.barManager1;
-            this.checkEdit1.Name = "checkEdit1";
-            this.checkEdit1.Properties.Caption = "Застосувати знижку";
-            this.checkEdit1.Properties.ValueChecked = 1;
-            this.checkEdit1.Properties.ValueUnchecked = 0;
-            this.checkEdit1.Size = new System.Drawing.Size(159, 20);
-            this.checkEdit1.StyleController = this.styleController1;
-            this.checkEdit1.TabIndex = 22;
+            this.DiscountPriceEdit.Enabled = false;
+            this.DiscountPriceEdit.Location = new System.Drawing.Point(453, 62);
+            this.DiscountPriceEdit.MenuManager = this.barManager1;
+            this.DiscountPriceEdit.Name = "DiscountPriceEdit";
+            this.DiscountPriceEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DiscountPriceEdit.Properties.DisplayFormat.FormatString = "0.00";
+            this.DiscountPriceEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.DiscountPriceEdit.Size = new System.Drawing.Size(172, 22);
+            this.DiscountPriceEdit.StyleController = this.styleController1;
+            this.DiscountPriceEdit.TabIndex = 27;
+            // 
+            // textEdit1
+            // 
+            this.textEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textEdit1.Location = new System.Drawing.Point(170, 33);
+            this.textEdit1.MenuManager = this.barManager1;
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Size = new System.Drawing.Size(148, 22);
+            this.textEdit1.StyleController = this.styleController1;
+            this.textEdit1.TabIndex = 26;
+            // 
+            // CheckDiscontCartEdit
+            // 
+            this.CheckDiscontCartEdit.Location = new System.Drawing.Point(39, 34);
+            this.CheckDiscontCartEdit.MenuManager = this.barManager1;
+            this.CheckDiscontCartEdit.Name = "CheckDiscontCartEdit";
+            this.CheckDiscontCartEdit.Properties.AutoWidth = true;
+            this.CheckDiscontCartEdit.Properties.Caption = "Дисконтна карта";
+            this.CheckDiscontCartEdit.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
+            this.CheckDiscontCartEdit.Properties.ValueChecked = 1;
+            this.CheckDiscontCartEdit.Properties.ValueUnchecked = 0;
+            this.CheckDiscontCartEdit.Size = new System.Drawing.Size(121, 20);
+            this.CheckDiscontCartEdit.StyleController = this.styleController1;
+            this.CheckDiscontCartEdit.TabIndex = 25;
+            // 
+            // CheckCustomEdit
+            // 
+            this.CheckCustomEdit.EditValue = 1;
+            this.CheckCustomEdit.Location = new System.Drawing.Point(39, 63);
+            this.CheckCustomEdit.MenuManager = this.barManager1;
+            this.CheckCustomEdit.Name = "CheckCustomEdit";
+            this.CheckCustomEdit.Properties.AutoWidth = true;
+            this.CheckCustomEdit.Properties.Caption = "Вручну";
+            this.CheckCustomEdit.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
+            this.CheckCustomEdit.Properties.ValueChecked = 1;
+            this.CheckCustomEdit.Properties.ValueUnchecked = 0;
+            this.CheckCustomEdit.Size = new System.Drawing.Size(62, 20);
+            this.CheckCustomEdit.StyleController = this.styleController1;
+            this.CheckCustomEdit.TabIndex = 24;
+            this.CheckCustomEdit.CheckedChanged += new System.EventHandler(this.CheckCustomEdit_CheckedChanged);
+            // 
+            // DiscountEdit
+            // 
+            this.DiscountEdit.Location = new System.Drawing.Point(170, 62);
+            this.DiscountEdit.MenuManager = this.barManager1;
+            this.DiscountEdit.Name = "DiscountEdit";
+            this.DiscountEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DiscountEdit.Size = new System.Drawing.Size(147, 22);
+            this.DiscountEdit.StyleController = this.styleController1;
+            this.DiscountEdit.TabIndex = 23;
+            this.DiscountEdit.EditValueChanged += new System.EventHandler(this.DiscountEdit_EditValueChanged);
+            // 
+            // DiscountCheckBox
+            // 
+            this.DiscountCheckBox.Location = new System.Drawing.Point(12, 6);
+            this.DiscountCheckBox.MenuManager = this.barManager1;
+            this.DiscountCheckBox.Name = "DiscountCheckBox";
+            this.DiscountCheckBox.Properties.AutoWidth = true;
+            this.DiscountCheckBox.Properties.Caption = "Застосувати знижку";
+            this.DiscountCheckBox.Properties.ValueChecked = 1;
+            this.DiscountCheckBox.Properties.ValueUnchecked = 0;
+            this.DiscountCheckBox.Size = new System.Drawing.Size(140, 20);
+            this.DiscountCheckBox.StyleController = this.styleController1;
+            this.DiscountCheckBox.TabIndex = 22;
+            this.DiscountCheckBox.CheckedChanged += new System.EventHandler(this.DiscountCheckBox_CheckedChanged);
             // 
             // labelControl11
             // 
-            this.labelControl11.Location = new System.Drawing.Point(300, 35);
+            this.labelControl11.Location = new System.Drawing.Point(366, 35);
             this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(117, 16);
+            this.labelControl11.Size = new System.Drawing.Size(48, 16);
             this.labelControl11.StyleController = this.styleController1;
             this.labelControl11.TabIndex = 21;
-            this.labelControl11.Text = "Инвентарний номер";
+            this.labelControl11.Text = "Власник";
             // 
             // textEdit6
             // 
@@ -799,21 +888,12 @@
             // 
             // labelControl12
             // 
-            this.labelControl12.Location = new System.Drawing.Point(266, 63);
+            this.labelControl12.Location = new System.Drawing.Point(366, 65);
             this.labelControl12.Name = "labelControl12";
-            this.labelControl12.Size = new System.Drawing.Size(93, 16);
+            this.labelControl12.Size = new System.Drawing.Size(77, 16);
             this.labelControl12.StyleController = this.styleController1;
             this.labelControl12.TabIndex = 19;
-            this.labelControl12.Text = "Серійний номер";
-            // 
-            // textEdit5
-            // 
-            this.textEdit5.Location = new System.Drawing.Point(374, 60);
-            this.textEdit5.MenuManager = this.barManager1;
-            this.textEdit5.Name = "textEdit5";
-            this.textEdit5.Size = new System.Drawing.Size(176, 22);
-            this.textEdit5.StyleController = this.styleController1;
-            this.textEdit5.TabIndex = 18;
+            this.labelControl12.Text = "Кінцева ціна ";
             // 
             // panel4
             // 
@@ -1041,7 +1121,7 @@
             this.groupControl3.Controls.Add(this.labelControl29);
             this.groupControl3.Controls.Add(this.TotalNdsEdit);
             this.groupControl3.Controls.Add(this.TotalSumEdit);
-            this.groupControl3.Controls.Add(this.BotBasePriceEdit);
+            this.groupControl3.Controls.Add(this.PriceNotNDSEdit);
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl3.Location = new System.Drawing.Point(5, 0);
             this.groupControl3.Name = "groupControl3";
@@ -1124,12 +1204,12 @@
             // 
             // labelControl17
             // 
-            this.labelControl17.Location = new System.Drawing.Point(380, 53);
+            this.labelControl17.Location = new System.Drawing.Point(328, 53);
             this.labelControl17.Name = "labelControl17";
-            this.labelControl17.Size = new System.Drawing.Size(34, 16);
+            this.labelControl17.Size = new System.Drawing.Size(86, 16);
             this.labelControl17.StyleController = this.styleController1;
             this.labelControl17.TabIndex = 24;
-            this.labelControl17.Text = "Сума:";
+            this.labelControl17.Text = "Сума без ПДВ:";
             // 
             // labelControl29
             // 
@@ -1148,6 +1228,8 @@
             this.TotalNdsEdit.Location = new System.Drawing.Point(420, 71);
             this.TotalNdsEdit.MenuManager = this.barManager1;
             this.TotalNdsEdit.Name = "TotalNdsEdit";
+            this.TotalNdsEdit.Properties.DisplayFormat.FormatString = "0.00";
+            this.TotalNdsEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.TotalNdsEdit.Size = new System.Drawing.Size(161, 22);
             this.TotalNdsEdit.StyleController = this.styleController1;
             this.TotalNdsEdit.TabIndex = 22;
@@ -1160,21 +1242,25 @@
             this.TotalSumEdit.Location = new System.Drawing.Point(420, 50);
             this.TotalSumEdit.MenuManager = this.barManager1;
             this.TotalSumEdit.Name = "TotalSumEdit";
+            this.TotalSumEdit.Properties.DisplayFormat.FormatString = "0.00";
+            this.TotalSumEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.TotalSumEdit.Size = new System.Drawing.Size(161, 22);
             this.TotalSumEdit.StyleController = this.styleController1;
             this.TotalSumEdit.TabIndex = 21;
             // 
-            // BotBasePriceEdit
+            // PriceNotNDSEdit
             // 
-            this.BotBasePriceEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.PriceNotNDSEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.BotBasePriceEdit.Enabled = false;
-            this.BotBasePriceEdit.Location = new System.Drawing.Point(420, 29);
-            this.BotBasePriceEdit.MenuManager = this.barManager1;
-            this.BotBasePriceEdit.Name = "BotBasePriceEdit";
-            this.BotBasePriceEdit.Size = new System.Drawing.Size(161, 22);
-            this.BotBasePriceEdit.StyleController = this.styleController1;
-            this.BotBasePriceEdit.TabIndex = 20;
+            this.PriceNotNDSEdit.Enabled = false;
+            this.PriceNotNDSEdit.Location = new System.Drawing.Point(420, 29);
+            this.PriceNotNDSEdit.MenuManager = this.barManager1;
+            this.PriceNotNDSEdit.Name = "PriceNotNDSEdit";
+            this.PriceNotNDSEdit.Properties.DisplayFormat.FormatString = "0.00";
+            this.PriceNotNDSEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.PriceNotNDSEdit.Size = new System.Drawing.Size(161, 22);
+            this.PriceNotNDSEdit.StyleController = this.styleController1;
+            this.PriceNotNDSEdit.TabIndex = 20;
             // 
             // panelControl2
             // 
@@ -1253,9 +1339,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
             this.panelControl4.ResumeLayout(false);
             this.panelControl4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DiscountPriceEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CheckDiscontCartEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CheckCustomEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DiscountEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DiscountCheckBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit6.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).EndInit();
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
@@ -1279,7 +1369,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.SummAllEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TotalNdsEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TotalSumEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BotBasePriceEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceNotNDSEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -1342,11 +1432,10 @@
         private DevExpress.XtraEditors.CalcEdit AmountEdit;
         private System.Windows.Forms.Panel panel3;
         private DevExpress.XtraEditors.PanelControl panelControl4;
-        private DevExpress.XtraEditors.CheckEdit checkEdit1;
+        private DevExpress.XtraEditors.CheckEdit DiscountCheckBox;
         private DevExpress.XtraEditors.LabelControl labelControl11;
         private DevExpress.XtraEditors.TextEdit textEdit6;
         private DevExpress.XtraEditors.LabelControl labelControl12;
-        private DevExpress.XtraEditors.TextEdit textEdit5;
         private System.Windows.Forms.Panel panel4;
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private DevExpress.XtraEditors.LabelControl labelControl23;
@@ -1377,11 +1466,16 @@
         private DevExpress.XtraEditors.LabelControl labelControl29;
         private DevExpress.XtraEditors.TextEdit TotalNdsEdit;
         private DevExpress.XtraEditors.TextEdit TotalSumEdit;
-        private DevExpress.XtraEditors.TextEdit BotBasePriceEdit;
+        private DevExpress.XtraEditors.TextEdit PriceNotNDSEdit;
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.SimpleButton OkButton;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.SimpleButton simpleButton6;
         private DevExpress.XtraEditors.SimpleButton simpleButton5;
+        private DevExpress.XtraEditors.CalcEdit DiscountPriceEdit;
+        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.CheckEdit CheckDiscontCartEdit;
+        private DevExpress.XtraEditors.CheckEdit CheckCustomEdit;
+        private DevExpress.XtraEditors.CalcEdit DiscountEdit;
     }
 }

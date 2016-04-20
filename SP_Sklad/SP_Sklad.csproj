@@ -175,6 +175,12 @@
     <Compile Include="SkladData\FUNCTIONS.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetListMatPrices_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetMatExtra_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetMatGroupTree_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -220,7 +226,7 @@
     <Compile Include="SkladData\KAGENTPERSONS.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\KAGENTSALDO.cs">
+    <Compile Include="SkladData\KAgentSaldo.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\KAGENTTYP.cs">
@@ -298,7 +304,7 @@
     <Compile Include="SkladData\PRICELISTDET.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\PRICETYPES.cs">
+    <Compile Include="SkladData\PriceTypes.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\PRINTLOG.cs">

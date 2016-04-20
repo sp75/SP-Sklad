@@ -32,7 +32,6 @@ namespace SP_Sklad.SkladData
             this.KAGENTACCOUNT = new HashSet<KAGENTACCOUNT>();
             this.KAGENTDOC = new HashSet<KAGENTDOC>();
             this.KAGENTPERSONS = new HashSet<KAGENTPERSONS>();
-            this.KAGENTSALDO = new HashSet<KAGENTSALDO>();
             this.TAXWB1 = new HashSet<TAXWB>();
             this.TECHPROCDET = new HashSet<TECHPROCDET>();
             this.WaybillList1 = new HashSet<WaybillList>();
@@ -41,6 +40,7 @@ namespace SP_Sklad.SkladData
             this.WAYBILLSVC = new HashSet<WAYBILLSVC>();
             this.PayDoc = new HashSet<PayDoc>();
             this.PayDoc1 = new HashSet<PayDoc>();
+            this.KAgentSaldo = new HashSet<KAgentSaldo>();
         }
     
         public int KaId { get; set; }
@@ -90,7 +90,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<KAGENTACCOUNT> KAGENTACCOUNT { get; set; }
         public virtual ICollection<KAGENTDOC> KAGENTDOC { get; set; }
         public virtual ICollection<KAGENTPERSONS> KAGENTPERSONS { get; set; }
-        public virtual ICollection<KAGENTSALDO> KAGENTSALDO { get; set; }
         public virtual ICollection<TAXWB> TAXWB1 { get; set; }
         public virtual ICollection<TECHPROCDET> TECHPROCDET { get; set; }
         public virtual ICollection<WaybillList> WaybillList1 { get; set; }
@@ -100,5 +99,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<PayDoc> PayDoc { get; set; }
         public virtual ICollection<PayDoc> PayDoc1 { get; set; }
         public virtual Users Users { get; set; }
+        public virtual ICollection<KAgentSaldo> KAgentSaldo { get; set; }
     }
 }

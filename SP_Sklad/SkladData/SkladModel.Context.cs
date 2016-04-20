@@ -52,7 +52,6 @@ namespace SP_Sklad.SkladData
         public DbSet<KAGENTACCOUNT> KAGENTACCOUNT { get; set; }
         public DbSet<KAGENTDOC> KAGENTDOC { get; set; }
         public DbSet<KAGENTPERSONS> KAGENTPERSONS { get; set; }
-        public DbSet<KAGENTSALDO> KAGENTSALDO { get; set; }
         public DbSet<KAGENTTYP> KAGENTTYP { get; set; }
         public DbSet<KAKIND> KAKIND { get; set; }
         public DbSet<KAMATDISCOUNT> KAMATDISCOUNT { get; set; }
@@ -72,7 +71,6 @@ namespace SP_Sklad.SkladData
         public DbSet<POSREMAINS> POSREMAINS { get; set; }
         public DbSet<PRICELIST> PRICELIST { get; set; }
         public DbSet<PRICELISTDET> PRICELISTDET { get; set; }
-        public DbSet<PRICETYPES> PRICETYPES { get; set; }
         public DbSet<PRINTLOG> PRINTLOG { get; set; }
         public DbSet<REPLNG> REPLNG { get; set; }
         public DbSet<REPORTS> REPORTS { get; set; }
@@ -115,6 +113,8 @@ namespace SP_Sklad.SkladData
         public DbSet<Currency> Currency { get; set; }
         public DbSet<Materials> Materials { get; set; }
         public DbSet<CommonParams> CommonParams { get; set; }
+        public DbSet<KAgentSaldo> KAgentSaldo { get; set; }
+        public DbSet<PriceTypes> PriceTypes { get; set; }
     
         [EdmFunction("BaseEntities", "GetMatGroupTree")]
         public virtual IQueryable<GetMatGroupTree_Result> GetMatGroupTree(Nullable<int> root_cat_id)
@@ -1046,6 +1046,64 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("wbill_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteAllReservePosition", wbill_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetMatExtra")]
+        public virtual IQueryable<GetMatExtra_Result> GetMatExtra(Nullable<int> matId, Nullable<int> pTypeId, Nullable<System.DateTime> onDate, Nullable<decimal> price, Nullable<int> in_CurrId, Nullable<decimal> onValue)
+        {
+            var matIdParameter = matId.HasValue ?
+                new ObjectParameter("MatId", matId) :
+                new ObjectParameter("MatId", typeof(int));
+    
+            var pTypeIdParameter = pTypeId.HasValue ?
+                new ObjectParameter("PTypeId", pTypeId) :
+                new ObjectParameter("PTypeId", typeof(int));
+    
+            var onDateParameter = onDate.HasValue ?
+                new ObjectParameter("OnDate", onDate) :
+                new ObjectParameter("OnDate", typeof(System.DateTime));
+    
+            var priceParameter = price.HasValue ?
+                new ObjectParameter("Price", price) :
+                new ObjectParameter("Price", typeof(decimal));
+    
+            var in_CurrIdParameter = in_CurrId.HasValue ?
+                new ObjectParameter("in_CurrId", in_CurrId) :
+                new ObjectParameter("in_CurrId", typeof(int));
+    
+            var onValueParameter = onValue.HasValue ?
+                new ObjectParameter("OnValue", onValue) :
+                new ObjectParameter("OnValue", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatExtra_Result>("[BaseEntities].[GetMatExtra](@MatId, @PTypeId, @OnDate, @Price, @in_CurrId, @OnValue)", matIdParameter, pTypeIdParameter, onDateParameter, priceParameter, in_CurrIdParameter, onValueParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetListMatPrices")]
+        public virtual IQueryable<GetListMatPrices_Result> GetListMatPrices(Nullable<int> mat_id, Nullable<int> in_curr_id)
+        {
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            var in_curr_idParameter = in_curr_id.HasValue ?
+                new ObjectParameter("in_curr_id", in_curr_id) :
+                new ObjectParameter("in_curr_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetListMatPrices_Result>("[BaseEntities].[GetListMatPrices](@mat_id, @in_curr_id)", mat_idParameter, in_curr_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetDiscount")]
+        public virtual IQueryable<Nullable<decimal>> GetDiscount(Nullable<int> ka_id, Nullable<int> mat_id)
+        {
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<decimal>>("[BaseEntities].[GetDiscount](@ka_id, @mat_id)", ka_idParameter, mat_idParameter);
         }
     }
 }

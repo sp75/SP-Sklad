@@ -12,9 +12,9 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class PRICETYPES
+    public partial class PriceTypes
     {
-        public PRICETYPES()
+        public PriceTypes()
         {
             this.MATGROUPPRICES = new HashSet<MATGROUPPRICES>();
             this.MATGROUPPRICES1 = new HashSet<MATGROUPPRICES>();
@@ -24,14 +24,14 @@ namespace SP_Sklad.SkladData
             this.WaybillDet = new HashSet<WaybillDet>();
         }
     
-        public int PTYPEID { get; set; }
-        public string NAME { get; set; }
-        public decimal ONVALUE { get; set; }
-        public int NUM { get; set; }
-        public int DEF { get; set; }
-        public int DELETED { get; set; }
-        public Nullable<int> PPTYPEID { get; set; }
-        public Nullable<int> EXTRATYPE { get; set; }
+        public int PTypeId { get; set; }
+        public string Name { get; set; }
+        public decimal OnValue { get; set; }
+        public int Num { get; set; }
+        public int Def { get; set; }
+        public int Deleted { get; set; }
+        public Nullable<int> PPTypeId { get; set; }
+        public Nullable<int> ExtraType { get; set; }
     
         public virtual ICollection<MATGROUPPRICES> MATGROUPPRICES { get; set; }
         public virtual ICollection<MATGROUPPRICES> MATGROUPPRICES1 { get; set; }

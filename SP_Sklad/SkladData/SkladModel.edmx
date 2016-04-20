@@ -57,12 +57,12 @@
       FROM [dbo].[KAGENTDOC] AS [KAGENTDOC]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="KAGENTPERSONS" EntityType="BaseModel.Store.KAGENTPERSONS" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="KAGENTSALDO" EntityType="BaseModel.Store.KAGENTSALDO" store:Type="Tables" store:Schema="dbo" store:Name="KAGENTSALDO">
+          <EntitySet Name="KAgentSaldo" EntityType="BaseModel.Store.KAgentSaldo" store:Type="Tables" store:Schema="dbo" store:Name="KAgentSaldo">
             <DefiningQuery>SELECT 
-      [KAGENTSALDO].[KAID] AS [KAID], 
-      [KAGENTSALDO].[ONDATE] AS [ONDATE], 
-      [KAGENTSALDO].[SALDO] AS [SALDO]
-      FROM [dbo].[KAGENTSALDO] AS [KAGENTSALDO]</DefiningQuery>
+      [KAgentSaldo].[KAID] AS [KAID], 
+      [KAgentSaldo].[ONDATE] AS [ONDATE], 
+      [KAgentSaldo].[SALDO] AS [SALDO]
+      FROM [dbo].[KAgentSaldo] AS [KAgentSaldo]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="KAGENTTYP" EntityType="BaseModel.Store.KAGENTTYP" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="KAKIND" EntityType="BaseModel.Store.KAKIND" store:Type="Tables" Schema="dbo" />
@@ -149,7 +149,7 @@
           </EntitySet>
           <EntitySet Name="PRICELIST" EntityType="BaseModel.Store.PRICELIST" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PRICELISTDET" EntityType="BaseModel.Store.PRICELISTDET" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="PRICETYPES" EntityType="BaseModel.Store.PRICETYPES" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PriceTypes" EntityType="BaseModel.Store.PriceTypes" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PRINTLOG" EntityType="BaseModel.Store.PRINTLOG" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="REPLNG" EntityType="BaseModel.Store.REPLNG" store:Type="Tables" store:Schema="dbo" store:Name="REPLNG">
             <DefiningQuery>SELECT 
@@ -342,10 +342,6 @@
             <End Role="TABLES" EntitySet="TABLES" />
             <End Role="FUNCTIONS" EntitySet="FUNCTIONS" />
           </AssociationSet>
-          <AssociationSet Name="FK__KADISCOUNT__KAID__19DFD96B" Association="BaseModel.Store.FK__KADISCOUNT__KAID__19DFD96B">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KADISCOUNT" EntitySet="KADISCOUNT" />
-          </AssociationSet>
           <AssociationSet Name="FK__KAMATDISC__MATID__32AB8735" Association="BaseModel.Store.FK__KAMATDISC__MATID__32AB8735">
             <End Role="Materials" EntitySet="Materials" />
             <End Role="KAMATDISCOUNT" EntitySet="KAMATDISCOUNT" />
@@ -395,7 +391,7 @@
             <End Role="MATGROUPPRICES" EntitySet="MATGROUPPRICES" />
           </AssociationSet>
           <AssociationSet Name="FK__MATGROUPP__PTYPE__6DCC4D03" Association="BaseModel.Store.FK__MATGROUPP__PTYPE__6DCC4D03">
-            <End Role="PRICETYPES" EntitySet="PRICETYPES" />
+            <End Role="PriceTypes" EntitySet="PriceTypes" />
             <End Role="MATGROUPPRICES" EntitySet="MATGROUPPRICES" />
           </AssociationSet>
           <AssociationSet Name="FK__MATPRICES__CURRI__73852659" Association="BaseModel.Store.FK__MATPRICES__CURRI__73852659">
@@ -407,7 +403,7 @@
             <End Role="MATPRICES" EntitySet="MATPRICES" />
           </AssociationSet>
           <AssociationSet Name="FK__MATPRICES__PTYPE__72910220" Association="BaseModel.Store.FK__MATPRICES__PTYPE__72910220">
-            <End Role="PRICETYPES" EntitySet="PRICETYPES" />
+            <End Role="PriceTypes" EntitySet="PriceTypes" />
             <End Role="MATPRICES" EntitySet="MATPRICES" />
           </AssociationSet>
           <AssociationSet Name="FK__MATREMAIN__MATID__04AFB25B" Association="BaseModel.Store.FK__MATREMAIN__MATID__04AFB25B">
@@ -600,7 +596,7 @@
           </AssociationSet>
           <AssociationSet Name="FK_KAS_KAID" Association="BaseModel.Store.FK_KAS_KAID">
             <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAGENTSALDO" EntitySet="KAGENTSALDO" />
+            <End Role="KAgentSaldo" EntitySet="KAgentSaldo" />
           </AssociationSet>
           <AssociationSet Name="FK_MATCHANGE_CHANGEID" Association="BaseModel.Store.FK_MATCHANGE_CHANGEID">
             <End Role="Materials" EntitySet="Materials" />
@@ -615,7 +611,7 @@
             <End Role="Materials" EntitySet="Materials" />
           </AssociationSet>
           <AssociationSet Name="FK_MATPRICES_PPTYPEID" Association="BaseModel.Store.FK_MATPRICES_PPTYPEID">
-            <End Role="PRICETYPES" EntitySet="PRICETYPES" />
+            <End Role="PriceTypes" EntitySet="PriceTypes" />
             <End Role="MATPRICES" EntitySet="MATPRICES" />
           </AssociationSet>
           <AssociationSet Name="FK_MATRECDET_MATRECIPE" Association="BaseModel.Store.FK_MATRECDET_MATRECIPE">
@@ -631,7 +627,7 @@
             <End Role="MATGROUPPRICES" EntitySet="MATGROUPPRICES" />
           </AssociationSet>
           <AssociationSet Name="FK_MGP_PPTYPEID" Association="BaseModel.Store.FK_MGP_PPTYPEID">
-            <End Role="PRICETYPES" EntitySet="PRICETYPES" />
+            <End Role="PriceTypes" EntitySet="PriceTypes" />
             <End Role="MATGROUPPRICES" EntitySet="MATGROUPPRICES" />
           </AssociationSet>
           <AssociationSet Name="FK_MP_MATID" Association="BaseModel.Store.FK_MP_MATID">
@@ -679,7 +675,7 @@
             <End Role="PRICELIST" EntitySet="PRICELIST" />
           </AssociationSet>
           <AssociationSet Name="FK_PRICELIST_REFERENCE_PRICETYP" Association="BaseModel.Store.FK_PRICELIST_REFERENCE_PRICETYP">
-            <End Role="PRICETYPES" EntitySet="PRICETYPES" />
+            <End Role="PriceTypes" EntitySet="PriceTypes" />
             <End Role="PRICELIST" EntitySet="PRICELIST" />
           </AssociationSet>
           <AssociationSet Name="FK_PRICELISTDET_PRICELIST" Association="BaseModel.Store.FK_PRICELISTDET_PRICELIST">
@@ -795,7 +791,7 @@
             <End Role="WaybillDet" EntitySet="WaybillDet" />
           </AssociationSet>
           <AssociationSet Name="FK_WAYBILLD_REFERENCE_PRICETYP" Association="BaseModel.Store.FK_WAYBILLD_REFERENCE_PRICETYP">
-            <End Role="PRICETYPES" EntitySet="PRICETYPES" />
+            <End Role="PriceTypes" EntitySet="PriceTypes" />
             <End Role="WaybillDet" EntitySet="WaybillDet" />
           </AssociationSet>
           <AssociationSet Name="FK_WAYBILLDETADDPROPS_WBILLID" Association="BaseModel.Store.FK_WAYBILLDETADDPROPS_WBILLID">
@@ -1279,9 +1275,9 @@
           <Property Name="JOBTYPE" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'sp_base.dbo.KAGENTSALDO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'sp_base.dbo.KAgentSaldo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
-        <EntityType Name="KAGENTSALDO">
+        <EntityType Name="KAgentSaldo">
           <Key>
             <PropertyRef Name="KAID" />
             <PropertyRef Name="ONDATE" />
@@ -1309,7 +1305,7 @@
           <Key>
             <PropertyRef Name="DISCID" />
           </Key>
-          <Property Name="DISCID" Type="int" Nullable="false" />
+          <Property Name="DISCID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="KAID" Type="int" Nullable="false" />
           <Property Name="MATID" Type="int" Nullable="false" />
           <Property Name="ONVALUE" Type="numeric" Nullable="false" Precision="15" Scale="8" />
@@ -1609,18 +1605,18 @@
           <Property Name="GRPID" Type="int" />
           <Property Name="PLDETTYPE" Type="int" />
         </EntityType>
-        <EntityType Name="PRICETYPES">
+        <EntityType Name="PriceTypes">
           <Key>
-            <PropertyRef Name="PTYPEID" />
+            <PropertyRef Name="PTypeId" />
           </Key>
-          <Property Name="PTYPEID" Type="int" Nullable="false" />
-          <Property Name="NAME" Type="varchar" Nullable="false" MaxLength="64" />
-          <Property Name="ONVALUE" Type="numeric" Nullable="false" Precision="15" Scale="8" />
-          <Property Name="NUM" Type="int" Nullable="false" />
-          <Property Name="DEF" Type="int" Nullable="false" />
-          <Property Name="DELETED" Type="int" Nullable="false" />
-          <Property Name="PPTYPEID" Type="int" />
-          <Property Name="EXTRATYPE" Type="int" />
+          <Property Name="PTypeId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="OnValue" Type="numeric" Nullable="false" Precision="15" Scale="8" />
+          <Property Name="Num" Type="int" Nullable="false" />
+          <Property Name="Def" Type="int" Nullable="false" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+          <Property Name="PPTypeId" Type="int" />
+          <Property Name="ExtraType" Type="int" />
         </EntityType>
         <EntityType Name="PRINTLOG">
           <Key>
@@ -2169,20 +2165,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__KADISCOUNT__KAID__19DFD96B">
-          <End Role="Kagent" Type="BaseModel.Store.Kagent" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="KADISCOUNT" Type="BaseModel.Store.KADISCOUNT" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="KADISCOUNT">
-              <PropertyRef Name="KAID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__KAMATDISC__MATID__32AB8735">
           <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -2336,11 +2318,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__MATGROUPP__PTYPE__6DCC4D03">
-          <End Role="PRICETYPES" Type="BaseModel.Store.PRICETYPES" Multiplicity="1" />
+          <End Role="PriceTypes" Type="BaseModel.Store.PriceTypes" Multiplicity="1" />
           <End Role="MATGROUPPRICES" Type="BaseModel.Store.MATGROUPPRICES" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PRICETYPES">
-              <PropertyRef Name="PTYPEID" />
+            <Principal Role="PriceTypes">
+              <PropertyRef Name="PTypeId" />
             </Principal>
             <Dependent Role="MATGROUPPRICES">
               <PropertyRef Name="PTYPEID" />
@@ -2372,11 +2354,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__MATPRICES__PTYPE__72910220">
-          <End Role="PRICETYPES" Type="BaseModel.Store.PRICETYPES" Multiplicity="1" />
+          <End Role="PriceTypes" Type="BaseModel.Store.PriceTypes" Multiplicity="1" />
           <End Role="MATPRICES" Type="BaseModel.Store.MATPRICES" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PRICETYPES">
-              <PropertyRef Name="PTYPEID" />
+            <Principal Role="PriceTypes">
+              <PropertyRef Name="PTypeId" />
             </Principal>
             <Dependent Role="MATPRICES">
               <PropertyRef Name="PTYPEID" />
@@ -2977,12 +2959,12 @@
           <End Role="Kagent" Type="BaseModel.Store.Kagent" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="KAGENTSALDO" Type="BaseModel.Store.KAGENTSALDO" Multiplicity="*" />
+          <End Role="KAgentSaldo" Type="BaseModel.Store.KAgentSaldo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Kagent">
               <PropertyRef Name="KaId" />
             </Principal>
-            <Dependent Role="KAGENTSALDO">
+            <Dependent Role="KAgentSaldo">
               <PropertyRef Name="KAID" />
             </Dependent>
           </ReferentialConstraint>
@@ -3026,11 +3008,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MATPRICES_PPTYPEID">
-          <End Role="PRICETYPES" Type="BaseModel.Store.PRICETYPES" Multiplicity="0..1" />
+          <End Role="PriceTypes" Type="BaseModel.Store.PriceTypes" Multiplicity="0..1" />
           <End Role="MATPRICES" Type="BaseModel.Store.MATPRICES" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PRICETYPES">
-              <PropertyRef Name="PTYPEID" />
+            <Principal Role="PriceTypes">
+              <PropertyRef Name="PTypeId" />
             </Principal>
             <Dependent Role="MATPRICES">
               <PropertyRef Name="PPTYPEID" />
@@ -3080,11 +3062,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MGP_PPTYPEID">
-          <End Role="PRICETYPES" Type="BaseModel.Store.PRICETYPES" Multiplicity="0..1" />
+          <End Role="PriceTypes" Type="BaseModel.Store.PriceTypes" Multiplicity="0..1" />
           <End Role="MATGROUPPRICES" Type="BaseModel.Store.MATGROUPPRICES" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PRICETYPES">
-              <PropertyRef Name="PTYPEID" />
+            <Principal Role="PriceTypes">
+              <PropertyRef Name="PTypeId" />
             </Principal>
             <Dependent Role="MATGROUPPRICES">
               <PropertyRef Name="PPTYPEID" />
@@ -3228,11 +3210,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PRICELIST_REFERENCE_PRICETYP">
-          <End Role="PRICETYPES" Type="BaseModel.Store.PRICETYPES" Multiplicity="0..1" />
+          <End Role="PriceTypes" Type="BaseModel.Store.PriceTypes" Multiplicity="0..1" />
           <End Role="PRICELIST" Type="BaseModel.Store.PRICELIST" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PRICETYPES">
-              <PropertyRef Name="PTYPEID" />
+            <Principal Role="PriceTypes">
+              <PropertyRef Name="PTypeId" />
             </Principal>
             <Dependent Role="PRICELIST">
               <PropertyRef Name="PTYPEID" />
@@ -3594,11 +3576,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_WAYBILLD_REFERENCE_PRICETYP">
-          <End Role="PRICETYPES" Type="BaseModel.Store.PRICETYPES" Multiplicity="0..1" />
+          <End Role="PriceTypes" Type="BaseModel.Store.PriceTypes" Multiplicity="0..1" />
           <End Role="WaybillDet" Type="BaseModel.Store.WaybillDet" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PRICETYPES">
-              <PropertyRef Name="PTYPEID" />
+            <Principal Role="PriceTypes">
+              <PropertyRef Name="PTypeId" />
             </Principal>
             <Dependent Role="WaybillDet">
               <PropertyRef Name="PtypeId" />
@@ -3895,6 +3877,50 @@
         </Function>
         <Function Name="GetCounter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetDiscount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ka_id" Type="int" Mode="In" />
+          <Parameter Name="mat_id" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Discount" Type="numeric" Precision="15" Scale="8" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="GetListMatPrices" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mat_id" Type="int" Mode="In" />
+          <Parameter Name="in_curr_id" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="PType" Type="int" />
+                <Property Name="Price" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="CurrId" Type="int" />
+                <Property Name="CurrName" Type="varchar" MaxLength="16" />
+                <Property Name="Dis" Type="float" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="GetMatExtra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MatId" Type="int" Mode="In" />
+          <Parameter Name="PTypeId" Type="int" Mode="In" />
+          <Parameter Name="OnDate" Type="datetime" Mode="In" />
+          <Parameter Name="Price" Type="numeric" Mode="In" />
+          <Parameter Name="in_CurrId" Type="int" Mode="In" />
+          <Parameter Name="OnValue" Type="numeric" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Extra" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="WithNds" Type="int" />
+                <Property Name="CurrId" Type="int" />
+                <Property Name="CurrName" Type="varchar" MaxLength="24" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
         </Function>
         <Function Name="GetMatGroupTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="root_cat_id" Type="int" Mode="In" />
@@ -4204,10 +4230,6 @@
         <Function Name="SP_GET_AVG_PRICE_TEST" ReturnType="numeric" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IN_POSID" Type="int" Mode="In" />
         </Function>
-        <Function Name="SP_GET_DISCOUNT" ReturnType="numeric" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="KAID" Type="int" Mode="In" />
-          <Parameter Name="MATID" Type="int" Mode="In" />
-        </Function>
         <Function Name="SP_GET_DOC_LIST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IN_FROMDATE" Type="datetime" Mode="In" />
           <Parameter Name="IN_TODATE" Type="datetime" Mode="In" />
@@ -4243,24 +4265,6 @@
               <RowType>
                 <Property Name="AMOUNT_OUT" Type="numeric" Precision="15" Scale="8" />
                 <Property Name="ONDATE" Type="datetime" />
-              </RowType>
-            </CollectionType>
-          </ReturnType>
-        </Function>
-        <Function Name="SP_GET_MAT_EXTRA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="MATID" Type="int" Mode="In" />
-          <Parameter Name="PTYPEID" Type="int" Mode="In" />
-          <Parameter Name="ONDATE" Type="datetime" Mode="In" />
-          <Parameter Name="PRICE" Type="numeric" Mode="In" />
-          <Parameter Name="IN_CURRID" Type="int" Mode="In" />
-          <Parameter Name="ONVALUE" Type="numeric" Mode="In" />
-          <ReturnType>
-            <CollectionType>
-              <RowType>
-                <Property Name="EXTRA" Type="numeric" Precision="15" Scale="8" />
-                <Property Name="WITHNDS" Type="int" />
-                <Property Name="CURRID" Type="int" />
-                <Property Name="CURRNAME" Type="varchar" MaxLength="24" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -4739,7 +4743,6 @@
           <EntitySet Name="KAGENTACCOUNT" EntityType="BaseModel.KAGENTACCOUNT" />
           <EntitySet Name="KAGENTDOC" EntityType="BaseModel.KAGENTDOC" />
           <EntitySet Name="KAGENTPERSONS" EntityType="BaseModel.KAGENTPERSONS" />
-          <EntitySet Name="KAGENTSALDO" EntityType="BaseModel.KAGENTSALDO" />
           <EntitySet Name="KAGENTTYP" EntityType="BaseModel.KAGENTTYP" />
           <EntitySet Name="KAKIND" EntityType="BaseModel.KAKIND" />
           <EntitySet Name="KAMATDISCOUNT" EntityType="BaseModel.KAMATDISCOUNT" />
@@ -4759,7 +4762,6 @@
           <EntitySet Name="POSREMAINS" EntityType="BaseModel.POSREMAINS" />
           <EntitySet Name="PRICELIST" EntityType="BaseModel.PRICELIST" />
           <EntitySet Name="PRICELISTDET" EntityType="BaseModel.PRICELISTDET" />
-          <EntitySet Name="PRICETYPES" EntityType="BaseModel.PRICETYPES" />
           <EntitySet Name="PRINTLOG" EntityType="BaseModel.PRINTLOG" />
           <EntitySet Name="REPLNG" EntityType="BaseModel.REPLNG" />
           <EntitySet Name="REPORTS" EntityType="BaseModel.REPORTS" />
@@ -4859,22 +4861,6 @@
             <End Role="MATGROUP" EntitySet="MATGROUP" />
             <End Role="MATGROUPPRICES" EntitySet="MATGROUPPRICES" />
           </AssociationSet>
-          <AssociationSet Name="FK__MATGROUPP__PTYPE__6DCC4D03" Association="BaseModel.FK__MATGROUPP__PTYPE__6DCC4D03">
-            <End Role="PRICETYPES" EntitySet="PRICETYPES" />
-            <End Role="MATGROUPPRICES" EntitySet="MATGROUPPRICES" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MGP_PPTYPEID" Association="BaseModel.FK_MGP_PPTYPEID">
-            <End Role="PRICETYPES" EntitySet="PRICETYPES" />
-            <End Role="MATGROUPPRICES" EntitySet="MATGROUPPRICES" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MATPRICES__PTYPE__72910220" Association="BaseModel.FK__MATPRICES__PTYPE__72910220">
-            <End Role="PRICETYPES" EntitySet="PRICETYPES" />
-            <End Role="MATPRICES" EntitySet="MATPRICES" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MATPRICES_PPTYPEID" Association="BaseModel.FK_MATPRICES_PPTYPEID">
-            <End Role="PRICETYPES" EntitySet="PRICETYPES" />
-            <End Role="MATPRICES" EntitySet="MATPRICES" />
-          </AssociationSet>
           <AssociationSet Name="FK_MATRECDET_MATRECIPE" Association="BaseModel.FK_MATRECDET_MATRECIPE">
             <End Role="MATRECIPE" EntitySet="MATRECIPE" />
             <End Role="MATRECDET" EntitySet="MATRECDET" />
@@ -4894,10 +4880,6 @@
           <AssociationSet Name="FK__POSREMAINS__WID__2EA5EC27" Association="BaseModel.FK__POSREMAINS__WID__2EA5EC27">
             <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
             <End Role="POSREMAINS" EntitySet="POSREMAINS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PRICELIST_REFERENCE_PRICETYP" Association="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP">
-            <End Role="PRICETYPES" EntitySet="PRICETYPES" />
-            <End Role="PRICELIST" EntitySet="PRICELIST" />
           </AssociationSet>
           <AssociationSet Name="FK_PRICELISTDET_PRICELIST" Association="BaseModel.FK_PRICELISTDET_PRICELIST">
             <End Role="PRICELIST" EntitySet="PRICELIST" />
@@ -5202,10 +5184,6 @@
             <End Role="WaybillDet" EntitySet="WaybillDet" />
             <End Role="POSREMAINS" EntitySet="POSREMAINS" />
           </AssociationSet>
-          <AssociationSet Name="FK_WAYBILLD_REFERENCE_PRICETYP" Association="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP">
-            <End Role="PRICETYPES" EntitySet="PRICETYPES" />
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-          </AssociationSet>
           <AssociationSet Name="FK_RETREL_DPOSID" Association="BaseModel.FK_RETREL_DPOSID">
             <End Role="WaybillDet" EntitySet="WaybillDet" />
             <End Role="RETURNREL" EntitySet="RETURNREL" />
@@ -5364,10 +5342,6 @@
           <AssociationSet Name="FK_AP_KAID" Association="BaseModel.FK_AP_KAID">
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="KAGENTPERSONS" EntitySet="KAGENTPERSONS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_KAS_KAID" Association="BaseModel.FK_KAS_KAID">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAGENTSALDO" EntitySet="KAGENTSALDO" />
           </AssociationSet>
           <AssociationSet Name="FK_TAXWB_REFERENCE_KAGENT" Association="BaseModel.FK_TAXWB_REFERENCE_KAGENT">
             <End Role="Kagent" EntitySet="Kagent" />
@@ -5623,7 +5597,53 @@
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DeleteAllReservePosition">
-            <Parameter Name="wbill_id" Mode="In" Type="Int32" />
+          <Parameter Name="wbill_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="KAgentSaldo" EntityType="BaseModel.KAgentSaldo" />
+          <AssociationSet Name="FK_KAS_KAID" Association="BaseModel.FK_KAS_KAID">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KAgentSaldo" EntitySet="KAgentSaldo" />
+          </AssociationSet>
+          <FunctionImport Name="GetMatExtra" IsComposable="true" ReturnType="Collection(BaseModel.GetMatExtra_Result)">
+            <Parameter Name="MatId" Mode="In" Type="Int32" />
+            <Parameter Name="PTypeId" Mode="In" Type="Int32" />
+            <Parameter Name="OnDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Price" Mode="In" Type="Decimal" />
+            <Parameter Name="in_CurrId" Mode="In" Type="Int32" />
+            <Parameter Name="OnValue" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <EntitySet Name="PriceTypes" EntityType="BaseModel.PriceTypes" />
+          <AssociationSet Name="FK__MATGROUPP__PTYPE__6DCC4D03" Association="BaseModel.FK__MATGROUPP__PTYPE__6DCC4D03">
+            <End Role="PriceTypes" EntitySet="PriceTypes" />
+            <End Role="MATGROUPPRICES" EntitySet="MATGROUPPRICES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MGP_PPTYPEID" Association="BaseModel.FK_MGP_PPTYPEID">
+            <End Role="PriceTypes" EntitySet="PriceTypes" />
+            <End Role="MATGROUPPRICES" EntitySet="MATGROUPPRICES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MATPRICES__PTYPE__72910220" Association="BaseModel.FK__MATPRICES__PTYPE__72910220">
+            <End Role="PriceTypes" EntitySet="PriceTypes" />
+            <End Role="MATPRICES" EntitySet="MATPRICES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MATPRICES_PPTYPEID" Association="BaseModel.FK_MATPRICES_PPTYPEID">
+            <End Role="PriceTypes" EntitySet="PriceTypes" />
+            <End Role="MATPRICES" EntitySet="MATPRICES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRICELIST_REFERENCE_PRICETYP" Association="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP">
+            <End Role="PriceTypes" EntitySet="PriceTypes" />
+            <End Role="PRICELIST" EntitySet="PRICELIST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAYBILLD_REFERENCE_PRICETYP" Association="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP">
+            <End Role="PriceTypes" EntitySet="PriceTypes" />
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+          </AssociationSet>
+          <FunctionImport Name="GetListMatPrices" IsComposable="true" ReturnType="Collection(BaseModel.GetListMatPrices_Result)">
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
+            <Parameter Name="in_curr_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetDiscount" IsComposable="true" ReturnType="Collection(Decimal)">
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="GetMatGroupTree_Result">
@@ -6200,17 +6220,6 @@
           <Property Name="JOBTYPE" Type="Int32" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_AP_KAID" FromRole="KAGENTPERSONS" ToRole="Kagent" />
         </EntityType>
-        <EntityType Name="KAGENTSALDO">
-          <Key>
-            <PropertyRef Name="KAID" />
-            <PropertyRef Name="ONDATE" />
-            <PropertyRef Name="SALDO" />
-          </Key>
-          <Property Name="KAID" Type="Int32" Nullable="false" />
-          <Property Name="ONDATE" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="SALDO" Type="Decimal" Nullable="false" Precision="15" Scale="8" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_KAS_KAID" FromRole="KAGENTSALDO" ToRole="Kagent" />
-        </EntityType>
         <EntityType Name="KAGENTTYP">
           <Key>
             <PropertyRef Name="ID" />
@@ -6303,10 +6312,10 @@
           <Property Name="WITHNDS" Type="Int32" />
           <Property Name="DIS" Type="Int32" Nullable="false" />
           <NavigationProperty Name="MATGROUP" Relationship="BaseModel.FK_MGP_MATID" FromRole="MATGROUPPRICES" ToRole="MATGROUP" />
-          <NavigationProperty Name="PRICETYPES" Relationship="BaseModel.FK__MATGROUPP__PTYPE__6DCC4D03" FromRole="MATGROUPPRICES" ToRole="PRICETYPES" />
-          <NavigationProperty Name="PRICETYPES1" Relationship="BaseModel.FK_MGP_PPTYPEID" FromRole="MATGROUPPRICES" ToRole="PRICETYPES" />
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK__MATGROUPP__CURRI__6EC0713C" FromRole="MATGROUPPRICES" ToRole="Currency" />
-        </EntityType>
+          <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK__MATGROUPP__PTYPE__6DCC4D03" FromRole="MATGROUPPRICES" ToRole="PriceTypes" />
+          <NavigationProperty Name="PriceTypes1" Relationship="BaseModel.FK_MGP_PPTYPEID" FromRole="MATGROUPPRICES" ToRole="PriceTypes" />
+          </EntityType>
         <EntityType Name="MATPRICES">
           <Key>
             <PropertyRef Name="PTYPEID" />
@@ -6323,12 +6332,12 @@
           <Property Name="DIS" Type="Int32" Nullable="false" />
           <Property Name="WITHNDS" Type="Int32" />
           <Property Name="PPTYPEID" Type="Int32" />
-          <NavigationProperty Name="PRICETYPES" Relationship="BaseModel.FK__MATPRICES__PTYPE__72910220" FromRole="MATPRICES" ToRole="PRICETYPES" />
-          <NavigationProperty Name="PRICETYPES1" Relationship="BaseModel.FK_MATPRICES_PPTYPEID" FromRole="MATPRICES" ToRole="PRICETYPES" />
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK__MATPRICES__CURRI__73852659" FromRole="MATPRICES" ToRole="Currency" />
           <NavigationProperty Name="Currency1" Relationship="BaseModel.FK__MATPRICES__CURRI__74794A92" FromRole="MATPRICES" ToRole="Currency" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK_MP_MATID" FromRole="MATPRICES" ToRole="Materials" />
-        </EntityType>
+          <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK__MATPRICES__PTYPE__72910220" FromRole="MATPRICES" ToRole="PriceTypes" />
+          <NavigationProperty Name="PriceTypes1" Relationship="BaseModel.FK_MATPRICES_PPTYPEID" FromRole="MATPRICES" ToRole="PriceTypes" />
+          </EntityType>
         <EntityType Name="MATRECDET">
           <Key>
             <PropertyRef Name="DETID" />
@@ -6465,9 +6474,9 @@
           <Property Name="DOCID" Type="Int32" />
           <Property Name="PTYPEID" Type="Int32" />
           <NavigationProperty Name="DOCS" Relationship="BaseModel.FK_PRICELIS_REFERENCE_DOCS" FromRole="PRICELIST" ToRole="DOCS" />
-          <NavigationProperty Name="PRICETYPES" Relationship="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP" FromRole="PRICELIST" ToRole="PRICETYPES" />
           <NavigationProperty Name="PRICELISTDET" Relationship="BaseModel.FK_PRICELISTDET_PRICELIST" FromRole="PRICELIST" ToRole="PRICELISTDET" />
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK_PRICELIS_REFERENCE_CURRENCY" FromRole="PRICELIST" ToRole="Currency" />
+          <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP" FromRole="PRICELIST" ToRole="PriceTypes" />
         </EntityType>
         <EntityType Name="PRICELISTDET">
           <Key>
@@ -6480,25 +6489,6 @@
           <Property Name="GRPID" Type="Int32" />
           <Property Name="PLDETTYPE" Type="Int32" />
           <NavigationProperty Name="PRICELIST" Relationship="BaseModel.FK_PRICELISTDET_PRICELIST" FromRole="PRICELISTDET" ToRole="PRICELIST" />
-        </EntityType>
-        <EntityType Name="PRICETYPES">
-          <Key>
-            <PropertyRef Name="PTYPEID" />
-          </Key>
-          <Property Name="PTYPEID" Type="Int32" Nullable="false" />
-          <Property Name="NAME" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="ONVALUE" Type="Decimal" Nullable="false" Precision="15" Scale="8" />
-          <Property Name="NUM" Type="Int32" Nullable="false" />
-          <Property Name="DEF" Type="Int32" Nullable="false" />
-          <Property Name="DELETED" Type="Int32" Nullable="false" />
-          <Property Name="PPTYPEID" Type="Int32" />
-          <Property Name="EXTRATYPE" Type="Int32" />
-          <NavigationProperty Name="MATGROUPPRICES" Relationship="BaseModel.FK__MATGROUPP__PTYPE__6DCC4D03" FromRole="PRICETYPES" ToRole="MATGROUPPRICES" />
-          <NavigationProperty Name="MATGROUPPRICES1" Relationship="BaseModel.FK_MGP_PPTYPEID" FromRole="PRICETYPES" ToRole="MATGROUPPRICES" />
-          <NavigationProperty Name="MATPRICES" Relationship="BaseModel.FK__MATPRICES__PTYPE__72910220" FromRole="PRICETYPES" ToRole="MATPRICES" />
-          <NavigationProperty Name="MATPRICES1" Relationship="BaseModel.FK_MATPRICES_PPTYPEID" FromRole="PRICETYPES" ToRole="MATPRICES" />
-          <NavigationProperty Name="PRICELIST" Relationship="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP" FromRole="PRICETYPES" ToRole="PRICELIST" />
-          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP" FromRole="PRICETYPES" ToRole="WaybillDet" />
         </EntityType>
         <EntityType Name="PRINTLOG">
           <Key>
@@ -7096,54 +7086,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MATGROUPP__PTYPE__6DCC4D03">
-          <End Role="PRICETYPES" Type="BaseModel.PRICETYPES" Multiplicity="1" />
-          <End Role="MATGROUPPRICES" Type="BaseModel.MATGROUPPRICES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PRICETYPES">
-              <PropertyRef Name="PTYPEID" />
-            </Principal>
-            <Dependent Role="MATGROUPPRICES">
-              <PropertyRef Name="PTYPEID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MGP_PPTYPEID">
-          <End Role="PRICETYPES" Type="BaseModel.PRICETYPES" Multiplicity="0..1" />
-          <End Role="MATGROUPPRICES" Type="BaseModel.MATGROUPPRICES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PRICETYPES">
-              <PropertyRef Name="PTYPEID" />
-            </Principal>
-            <Dependent Role="MATGROUPPRICES">
-              <PropertyRef Name="PPTYPEID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MATPRICES__PTYPE__72910220">
-          <End Role="PRICETYPES" Type="BaseModel.PRICETYPES" Multiplicity="1" />
-          <End Role="MATPRICES" Type="BaseModel.MATPRICES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PRICETYPES">
-              <PropertyRef Name="PTYPEID" />
-            </Principal>
-            <Dependent Role="MATPRICES">
-              <PropertyRef Name="PTYPEID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MATPRICES_PPTYPEID">
-          <End Role="PRICETYPES" Type="BaseModel.PRICETYPES" Multiplicity="0..1" />
-          <End Role="MATPRICES" Type="BaseModel.MATPRICES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PRICETYPES">
-              <PropertyRef Name="PTYPEID" />
-            </Principal>
-            <Dependent Role="MATPRICES">
-              <PropertyRef Name="PPTYPEID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_MATRECDET_MATRECIPE">
           <End Role="MATRECIPE" Type="BaseModel.MATRECIPE" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -7203,18 +7145,6 @@
             </Principal>
             <Dependent Role="POSREMAINS">
               <PropertyRef Name="WID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PRICELIST_REFERENCE_PRICETYP">
-          <End Role="PRICETYPES" Type="BaseModel.PRICETYPES" Multiplicity="0..1" />
-          <End Role="PRICELIST" Type="BaseModel.PRICELIST" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PRICETYPES">
-              <PropertyRef Name="PTYPEID" />
-            </Principal>
-            <Dependent Role="PRICELIST">
-              <PropertyRef Name="PTYPEID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7683,7 +7613,6 @@
           <Property Type="Int32" Name="DiscountKind" />
           <Property Type="Decimal" Name="AVG_IN_PICE" Precision="15" Scale="4" />
           <NavigationProperty Name="POSREMAINS" Relationship="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" FromRole="WaybillDet" ToRole="POSREMAINS" />
-          <NavigationProperty Name="PRICETYPES" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP" FromRole="WaybillDet" ToRole="PRICETYPES" />
           <NavigationProperty Name="RETURNREL" Relationship="BaseModel.FK_RETREL_DPOSID" FromRole="WaybillDet" ToRole="RETURNREL" />
           <NavigationProperty Name="RETURNREL1" Relationship="BaseModel.FK_RETREL_OUTPOSID" FromRole="WaybillDet" ToRole="RETURNREL" />
           <NavigationProperty Name="RETURNREL2" Relationship="BaseModel.FK_RETREL_POSID" FromRole="WaybillDet" ToRole="RETURNREL" />
@@ -7701,6 +7630,7 @@
           <NavigationProperty Name="WMatTurn1" Relationship="BaseModel.FK_WMT_SRCID" FromRole="WaybillDet" ToRole="WMatTurn" />
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_CURRENCY" FromRole="WaybillDet" ToRole="Currency" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" FromRole="WaybillDet" ToRole="Materials" />
+          <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP" FromRole="WaybillDet" ToRole="PriceTypes" />
           </EntityType>
         <Association Name="FK__POSREMAIN__POSID__2DB1C7EE">
           <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
@@ -7711,18 +7641,6 @@
             </Principal>
             <Dependent Role="POSREMAINS">
               <PropertyRef Name="POSID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WAYBILLD_REFERENCE_PRICETYP">
-          <End Type="BaseModel.PRICETYPES" Role="PRICETYPES" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PRICETYPES">
-              <PropertyRef Name="PTYPEID" />
-            </Principal>
-            <Dependent Role="WaybillDet">
-              <PropertyRef Name="PtypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -8082,7 +8000,6 @@
           <NavigationProperty Name="KAGENTACCOUNT" Relationship="BaseModel.FK_AACC_KAID" FromRole="Kagent" ToRole="KAGENTACCOUNT" />
           <NavigationProperty Name="KAGENTDOC" Relationship="BaseModel.FK_ADOC_KAID" FromRole="Kagent" ToRole="KAGENTDOC" />
           <NavigationProperty Name="KAGENTPERSONS" Relationship="BaseModel.FK_AP_KAID" FromRole="Kagent" ToRole="KAGENTPERSONS" />
-          <NavigationProperty Name="KAGENTSALDO" Relationship="BaseModel.FK_KAS_KAID" FromRole="Kagent" ToRole="KAGENTSALDO" />
           <NavigationProperty Name="TAXWB1" Relationship="BaseModel.FK_TAXWB_REFERENCE_KAGENT" FromRole="Kagent" ToRole="TAXWB" />
           <NavigationProperty Name="TECHPROCDET" Relationship="BaseModel.FK_TECHPROCDET_KAGENT" FromRole="Kagent" ToRole="TECHPROCDET" />
           <NavigationProperty Name="WaybillList1" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" FromRole="Kagent" ToRole="WaybillList" />
@@ -8092,6 +8009,7 @@
           <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK__PAYDOC__KAID__19AACF41" FromRole="Kagent" ToRole="PayDoc" />
           <NavigationProperty Name="PayDoc1" Relationship="BaseModel.FK__PAYDOC__MPERSONI__22401542" FromRole="Kagent" ToRole="PayDoc" />
           <NavigationProperty Name="Users" Relationship="BaseModel.FK_Kagent_Users" FromRole="Kagent" ToRole="Users" />
+          <NavigationProperty Name="KAgentSaldo" Relationship="BaseModel.FK_KAS_KAID" FromRole="Kagent" ToRole="KAgentSaldo" />
         </EntityType>
         <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1" />
@@ -8307,20 +8225,6 @@
               <PropertyRef Name="KaId" />
             </Principal>
             <Dependent Role="KAGENTPERSONS">
-              <PropertyRef Name="KAID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_KAS_KAID">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.KAGENTSALDO" Role="KAGENTSALDO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="KAGENTSALDO">
               <PropertyRef Name="KAID" />
             </Dependent>
           </ReferentialConstraint>
@@ -9325,6 +9229,135 @@
           <Property Type="Int32" Name="PosId" Nullable="true" />
           <Property Type="Int32" Name="Rsv" Nullable="true" />
         </ComplexType>
+        <EntityType Name="KAgentSaldo">
+          <Key>
+            <PropertyRef Name="KAID" />
+            <PropertyRef Name="ONDATE" />
+            <PropertyRef Name="SALDO" />
+          </Key>
+          <Property Type="Int32" Name="KAID" Nullable="false" />
+          <Property Type="DateTime" Name="ONDATE" Nullable="false" Precision="3" />
+          <Property Type="Decimal" Name="SALDO" Nullable="false" Precision="15" Scale="8" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_KAS_KAID" FromRole="KAgentSaldo" ToRole="Kagent" />
+        </EntityType>
+        <Association Name="FK_KAS_KAID">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.KAgentSaldo" Role="KAgentSaldo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KAgentSaldo">
+              <PropertyRef Name="KAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GetMatExtra_Result">
+          <Property Type="Decimal" Name="Extra" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="WithNds" Nullable="true" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="24" />
+        </ComplexType>
+        <EntityType Name="PriceTypes">
+          <Key>
+            <PropertyRef Name="PTypeId" />
+          </Key>
+          <Property Type="Int32" Name="PTypeId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="OnValue" Nullable="false" Precision="15" Scale="8" />
+          <Property Type="Int32" Name="Num" Nullable="false" />
+          <Property Type="Int32" Name="Def" Nullable="false" />
+          <Property Type="Int32" Name="Deleted" Nullable="false" />
+          <Property Type="Int32" Name="PPTypeId" />
+          <Property Type="Int32" Name="ExtraType" />
+          <NavigationProperty Name="MATGROUPPRICES" Relationship="BaseModel.FK__MATGROUPP__PTYPE__6DCC4D03" FromRole="PriceTypes" ToRole="MATGROUPPRICES" />
+          <NavigationProperty Name="MATGROUPPRICES1" Relationship="BaseModel.FK_MGP_PPTYPEID" FromRole="PriceTypes" ToRole="MATGROUPPRICES" />
+          <NavigationProperty Name="MATPRICES" Relationship="BaseModel.FK__MATPRICES__PTYPE__72910220" FromRole="PriceTypes" ToRole="MATPRICES" />
+          <NavigationProperty Name="MATPRICES1" Relationship="BaseModel.FK_MATPRICES_PPTYPEID" FromRole="PriceTypes" ToRole="MATPRICES" />
+          <NavigationProperty Name="PRICELIST" Relationship="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP" FromRole="PriceTypes" ToRole="PRICELIST" />
+          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP" FromRole="PriceTypes" ToRole="WaybillDet" />
+        </EntityType>
+        <Association Name="FK__MATGROUPP__PTYPE__6DCC4D03">
+          <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="1" />
+          <End Type="BaseModel.MATGROUPPRICES" Role="MATGROUPPRICES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceTypes">
+              <PropertyRef Name="PTypeId" />
+            </Principal>
+            <Dependent Role="MATGROUPPRICES">
+              <PropertyRef Name="PTYPEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MGP_PPTYPEID">
+          <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="0..1" />
+          <End Type="BaseModel.MATGROUPPRICES" Role="MATGROUPPRICES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceTypes">
+              <PropertyRef Name="PTypeId" />
+            </Principal>
+            <Dependent Role="MATGROUPPRICES">
+              <PropertyRef Name="PPTYPEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MATPRICES__PTYPE__72910220">
+          <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="1" />
+          <End Type="BaseModel.MATPRICES" Role="MATPRICES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceTypes">
+              <PropertyRef Name="PTypeId" />
+            </Principal>
+            <Dependent Role="MATPRICES">
+              <PropertyRef Name="PTYPEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MATPRICES_PPTYPEID">
+          <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="0..1" />
+          <End Type="BaseModel.MATPRICES" Role="MATPRICES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceTypes">
+              <PropertyRef Name="PTypeId" />
+            </Principal>
+            <Dependent Role="MATPRICES">
+              <PropertyRef Name="PPTYPEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRICELIST_REFERENCE_PRICETYP">
+          <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="0..1" />
+          <End Type="BaseModel.PRICELIST" Role="PRICELIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceTypes">
+              <PropertyRef Name="PTypeId" />
+            </Principal>
+            <Dependent Role="PRICELIST">
+              <PropertyRef Name="PTYPEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAYBILLD_REFERENCE_PRICETYP">
+          <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceTypes">
+              <PropertyRef Name="PTypeId" />
+            </Principal>
+            <Dependent Role="WaybillDet">
+              <PropertyRef Name="PtypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GetListMatPrices_Result">
+          <Property Type="Int32" Name="PType" Nullable="true" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="16" />
+          <Property Type="Double" Name="Dis" Nullable="true" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -9632,15 +9665,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="KAGENTSALDO">
-            <EntityTypeMapping TypeName="BaseModel.KAGENTSALDO">
-              <MappingFragment StoreEntitySet="KAGENTSALDO">
-                <ScalarProperty Name="KAID" ColumnName="KAID" />
-                <ScalarProperty Name="ONDATE" ColumnName="ONDATE" />
-                <ScalarProperty Name="SALDO" ColumnName="SALDO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="KAGENTTYP">
             <EntityTypeMapping TypeName="BaseModel.KAGENTTYP">
               <MappingFragment StoreEntitySet="KAGENTTYP">
@@ -9866,20 +9890,6 @@
                 <ScalarProperty Name="PLID" ColumnName="PLID" />
                 <ScalarProperty Name="GRPID" ColumnName="GRPID" />
                 <ScalarProperty Name="PLDETTYPE" ColumnName="PLDETTYPE" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PRICETYPES">
-            <EntityTypeMapping TypeName="BaseModel.PRICETYPES">
-              <MappingFragment StoreEntitySet="PRICETYPES">
-                <ScalarProperty Name="PTYPEID" ColumnName="PTYPEID" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="ONVALUE" ColumnName="ONVALUE" />
-                <ScalarProperty Name="NUM" ColumnName="NUM" />
-                <ScalarProperty Name="DEF" ColumnName="DEF" />
-                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
-                <ScalarProperty Name="PPTYPEID" ColumnName="PPTYPEID" />
-                <ScalarProperty Name="EXTRATYPE" ColumnName="EXTRATYPE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -10278,16 +10288,6 @@
               <ComplexTypeMapping TypeName="BaseModel.SP_GET_MAKE_AMOUNT_Result">
                 <ScalarProperty Name="AMOUNT_OUT" ColumnName="AMOUNT_OUT" />
                 <ScalarProperty Name="ONDATE" ColumnName="ONDATE" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="BaseModel.Store.SP_GET_MAT_EXTRA" FunctionImportName="SP_GET_MAT_EXTRA">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.SP_GET_MAT_EXTRA_Result">
-                <ScalarProperty Name="EXTRA" ColumnName="EXTRA" />
-                <ScalarProperty Name="WITHNDS" ColumnName="WITHNDS" />
-                <ScalarProperty Name="CURRID" ColumnName="CURRID" />
-                <ScalarProperty Name="CURRNAME" ColumnName="CURRNAME" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -11259,6 +11259,51 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="DeleteAllReservePosition" FunctionName="BaseModel.Store.DeleteAllReservePosition" />
+          <EntitySetMapping Name="KAgentSaldo">
+            <EntityTypeMapping TypeName="BaseModel.KAgentSaldo">
+              <MappingFragment StoreEntitySet="KAgentSaldo">
+                <ScalarProperty Name="SALDO" ColumnName="SALDO" />
+                <ScalarProperty Name="ONDATE" ColumnName="ONDATE" />
+                <ScalarProperty Name="KAID" ColumnName="KAID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetMatExtra" FunctionName="BaseModel.Store.GetMatExtra">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetMatExtra_Result">
+                <ScalarProperty Name="Extra" ColumnName="Extra" />
+                <ScalarProperty Name="WithNds" ColumnName="WithNds" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="PriceTypes">
+            <EntityTypeMapping TypeName="BaseModel.PriceTypes">
+              <MappingFragment StoreEntitySet="PriceTypes">
+                <ScalarProperty Name="ExtraType" ColumnName="ExtraType" />
+                <ScalarProperty Name="PPTypeId" ColumnName="PPTypeId" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Def" ColumnName="Def" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetListMatPrices" FunctionName="BaseModel.Store.GetListMatPrices">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetListMatPrices_Result">
+                <ScalarProperty Name="PType" ColumnName="PType" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="Dis" ColumnName="Dis" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetDiscount" FunctionName="BaseModel.Store.GetDiscount" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

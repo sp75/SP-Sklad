@@ -23,10 +23,10 @@ namespace SP_Sklad.SkladData
         public Nullable<int> WITHNDS { get; set; }
         public Nullable<int> PPTYPEID { get; set; }
     
-        public virtual PRICETYPES PRICETYPES { get; set; }
-        public virtual PRICETYPES PRICETYPES1 { get; set; }
         public virtual Currency Currency { get; set; }
         public virtual Currency Currency1 { get; set; }
         public virtual Materials Materials { get; set; }
+        public virtual PriceTypes PriceTypes { get; set; }
+        public virtual PriceTypes PriceTypes1 { get; set; }
     }
 }
