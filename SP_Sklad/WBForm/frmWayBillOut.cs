@@ -14,6 +14,7 @@ using EntityState = System.Data.Entity.EntityState;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using System.Data.Entity.Core.Objects;
+using DevExpress.XtraGrid;
 
 namespace SP_Sklad.WBForm
 {
@@ -63,7 +64,7 @@ namespace SP_Sklad.WBForm
             {
                 try
                 {
-                    wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0}", _wbill_id).FirstOrDefault();
+                    UpdLockWB();
                     _db.Entry<WaybillList>(wb).State = EntityState.Modified;
                     _db.Entry<WaybillList>(wb).Property(f => f.SummPay).IsModified = false;
                 }
@@ -93,11 +94,18 @@ namespace SP_Sklad.WBForm
             RefreshDet();
         }
 
+        private void UpdLockWB()
+        {
+            wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0}", _wbill_id).FirstOrDefault();
+        }
+
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var df = new frmWayBillDetOut(_db, null, wb);
             if (df.ShowDialog() == DialogResult.OK)
             {
+                current_transaction = current_transaction.CommitRetaining(_db);
+                UpdLockWB();
                 RefreshDet();
             }
         }
@@ -148,11 +156,29 @@ namespace SP_Sklad.WBForm
         private void RefreshDet()
         {
             wbd_list = _db.GetWayBillDetOut(_wbill_id);
+            var dr = WaybillDetOutGridView.GetRow(WaybillDetOutGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
 
             WaybillDetOutGridControl.DataSource = null;
             WaybillDetOutGridControl.DataSource = wbd_list;
 
+            WaybillDetOutGridView.FocusedRowHandle = FindRowHandleByRowObject(WaybillDetOutGridView, dr);
+
             GetOk();
+        }
+
+        private int FindRowHandleByRowObject(GridView view, GetWayBillDetOut_Result dr)
+        {
+            if (dr != null)
+            {
+                for (int i = 0; i < view.DataRowCount; i++)
+                {
+                    if (dr.PosId == (view.GetRow(i) as GetWayBillDetOut_Result).PosId)
+                    {
+                        return i;
+                    }
+                }
+            }
+            return GridControl.InvalidRowHandle;
         }
 
         bool GetOk()
@@ -244,12 +270,13 @@ namespace SP_Sklad.WBForm
             {
                 if (dr.PosId > 0)
                 {
-                    var df = new frmWayBillDetOut(_db, dr.PosId, wb);
-                    if (df.ShowDialog() == DialogResult.OK)
-                    {
-                        RefreshDet();
-                    }
+                    var df = new frmWayBillDetOut(_db, dr.PosId, wb).ShowDialog();
                 }
+
+                current_transaction = current_transaction.CommitRetaining(_db);
+                UpdLockWB();
+
+                RefreshDet();
             }
         }
 
@@ -273,6 +300,7 @@ namespace SP_Sklad.WBForm
 
             _db.ReservedPosition(wbd_row.PosId, r);
             current_transaction = current_transaction.CommitRetaining(_db);
+            UpdLockWB();
 
             if (r.Value != null)
             {
@@ -296,12 +324,15 @@ namespace SP_Sklad.WBForm
 
         private void RsvAllBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var res = DB.SkladBase().ReservedAllPosition(wb.WbillId);
+            var res = _db.ReservedAllPosition(wb.WbillId);
 
             if (res.Any())
             {
                 MessageBox.Show("Не вдалося зарезервувати деякі товари!");
             }
+
+            current_transaction = current_transaction.CommitRetaining(_db);
+            UpdLockWB();
            
             RefreshDet();
         }
@@ -312,6 +343,7 @@ namespace SP_Sklad.WBForm
             {
                 _db.DeleteWhere<WMatTurn>(w => w.SourceId == wbd_row.PosId);
                 current_transaction = current_transaction.CommitRetaining(_db);
+                UpdLockWB();
                 wbd_row.Rsv = 0;
                 WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
             }
@@ -319,10 +351,9 @@ namespace SP_Sklad.WBForm
 
         private void DelAllRsvBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-         //   _db.DeleteWhere<WMatTurn>(w => w.SourceId == wbd_row.PosId);
-
             _db.DeleteAllReservePosition(wb.WbillId);
             current_transaction = current_transaction.CommitRetaining(_db);
+            UpdLockWB();
          
             RefreshDet();
         }

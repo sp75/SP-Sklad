@@ -257,21 +257,18 @@ namespace SP_Sklad.WBDetForm
 
             if (RSVCheckBox.Checked && !_db.WMatTurn.Any(w => w.SourceId == _wbd.PosId))
             {
-                foreach (var item in pos_in)
+                foreach (var item in pos_in.Where(w => w.Amount > 0))
                 {
-                    if (item.Amount > 0)
+                    _db.WMatTurn.Add(new WMatTurn
                     {
-                        _db.WMatTurn.Add(new WMatTurn
-                        {
-                            PosId = item.PosId,
-                            WId = _wbd.WId.Value,
-                            MatId = _wbd.MatId,
-                            OnDate = _wb.OnDate,
-                            TurnType = _wb.WType == -16 ? -16 :2,
-                            Amount = Convert.ToDecimal( item.Amount),
-                            SourceId = _wbd.PosId
-                        });
-                    }
+                        PosId = item.PosId,
+                        WId = _wbd.WId.Value,
+                        MatId = _wbd.MatId,
+                        OnDate = _wb.OnDate,
+                        TurnType = _wb.WType == -16 ? -16 : 2,
+                        Amount = Convert.ToDecimal(item.Amount),
+                        SourceId = _wbd.PosId
+                    });
                 }
             }
 
