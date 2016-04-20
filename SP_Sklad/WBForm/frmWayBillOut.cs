@@ -32,7 +32,7 @@ namespace SP_Sklad.WBForm
             _wtype = wtype;
             _wbill_id = wbill_id;
             _db = new BaseEntities();
-            current_transaction = _db.Database.BeginTransaction(IsolationLevel.RepeatableRead);
+            current_transaction = _db.Database.BeginTransaction(/*IsolationLevel.RepeatableRead*/);
 
             InitializeComponent();
         }
@@ -56,6 +56,8 @@ namespace SP_Sklad.WBForm
                 });
 
                 _db.SaveChanges();
+
+                _wbill_id = wb.WbillId;
             }
             else
             {

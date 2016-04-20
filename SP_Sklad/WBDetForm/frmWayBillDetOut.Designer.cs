@@ -1172,7 +1172,7 @@
             // 
             // labelControl18
             // 
-            this.labelControl18.Location = new System.Drawing.Point(342, 95);
+            this.labelControl18.Location = new System.Drawing.Point(392, 95);
             this.labelControl18.Name = "labelControl18";
             this.labelControl18.Size = new System.Drawing.Size(72, 16);
             this.labelControl18.StyleController = this.styleController1;
@@ -1184,18 +1184,18 @@
             this.SummAllEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SummAllEdit.Enabled = false;
-            this.SummAllEdit.Location = new System.Drawing.Point(420, 92);
+            this.SummAllEdit.Location = new System.Drawing.Point(470, 92);
             this.SummAllEdit.MenuManager = this.barManager1;
             this.SummAllEdit.Name = "SummAllEdit";
             this.SummAllEdit.Properties.DisplayFormat.FormatString = "0.00";
             this.SummAllEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.SummAllEdit.Size = new System.Drawing.Size(161, 22);
+            this.SummAllEdit.Size = new System.Drawing.Size(109, 22);
             this.SummAllEdit.StyleController = this.styleController1;
             this.SummAllEdit.TabIndex = 26;
             // 
             // labelControl16
             // 
-            this.labelControl16.Location = new System.Drawing.Point(385, 74);
+            this.labelControl16.Location = new System.Drawing.Point(435, 74);
             this.labelControl16.Name = "labelControl16";
             this.labelControl16.Size = new System.Drawing.Size(29, 16);
             this.labelControl16.StyleController = this.styleController1;
@@ -1204,7 +1204,7 @@
             // 
             // labelControl17
             // 
-            this.labelControl17.Location = new System.Drawing.Point(328, 53);
+            this.labelControl17.Location = new System.Drawing.Point(378, 53);
             this.labelControl17.Name = "labelControl17";
             this.labelControl17.Size = new System.Drawing.Size(86, 16);
             this.labelControl17.StyleController = this.styleController1;
@@ -1213,7 +1213,7 @@
             // 
             // labelControl29
             // 
-            this.labelControl29.Location = new System.Drawing.Point(331, 32);
+            this.labelControl29.Location = new System.Drawing.Point(381, 32);
             this.labelControl29.Name = "labelControl29";
             this.labelControl29.Size = new System.Drawing.Size(83, 16);
             this.labelControl29.StyleController = this.styleController1;
@@ -1225,12 +1225,12 @@
             this.TotalNdsEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TotalNdsEdit.Enabled = false;
-            this.TotalNdsEdit.Location = new System.Drawing.Point(420, 71);
+            this.TotalNdsEdit.Location = new System.Drawing.Point(470, 71);
             this.TotalNdsEdit.MenuManager = this.barManager1;
             this.TotalNdsEdit.Name = "TotalNdsEdit";
             this.TotalNdsEdit.Properties.DisplayFormat.FormatString = "0.00";
             this.TotalNdsEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.TotalNdsEdit.Size = new System.Drawing.Size(161, 22);
+            this.TotalNdsEdit.Size = new System.Drawing.Size(109, 22);
             this.TotalNdsEdit.StyleController = this.styleController1;
             this.TotalNdsEdit.TabIndex = 22;
             // 
@@ -1239,12 +1239,12 @@
             this.TotalSumEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TotalSumEdit.Enabled = false;
-            this.TotalSumEdit.Location = new System.Drawing.Point(420, 50);
+            this.TotalSumEdit.Location = new System.Drawing.Point(470, 50);
             this.TotalSumEdit.MenuManager = this.barManager1;
             this.TotalSumEdit.Name = "TotalSumEdit";
             this.TotalSumEdit.Properties.DisplayFormat.FormatString = "0.00";
             this.TotalSumEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.TotalSumEdit.Size = new System.Drawing.Size(161, 22);
+            this.TotalSumEdit.Size = new System.Drawing.Size(109, 22);
             this.TotalSumEdit.StyleController = this.styleController1;
             this.TotalSumEdit.TabIndex = 21;
             // 
@@ -1253,12 +1253,12 @@
             this.PriceNotNDSEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PriceNotNDSEdit.Enabled = false;
-            this.PriceNotNDSEdit.Location = new System.Drawing.Point(420, 29);
+            this.PriceNotNDSEdit.Location = new System.Drawing.Point(470, 29);
             this.PriceNotNDSEdit.MenuManager = this.barManager1;
             this.PriceNotNDSEdit.Name = "PriceNotNDSEdit";
             this.PriceNotNDSEdit.Properties.DisplayFormat.FormatString = "0.00";
             this.PriceNotNDSEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.PriceNotNDSEdit.Size = new System.Drawing.Size(161, 22);
+            this.PriceNotNDSEdit.Size = new System.Drawing.Size(109, 22);
             this.PriceNotNDSEdit.StyleController = this.styleController1;
             this.PriceNotNDSEdit.TabIndex = 20;
             // 
