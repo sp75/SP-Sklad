@@ -118,8 +118,8 @@ namespace SP_Sklad.WBDetForm
 
             BotAmountEdit.Text = AmountEdit.Text;
 
-            if (DiscountCheckBox.Checked) DiscountPriceEdit.EditValue = _wbd.BasePrice - (_wbd.BasePrice * _wbd.Discount / 100);
-            else DiscountPriceEdit.EditValue = _wbd.BasePrice;
+            if (DiscountCheckBox.Checked) DiscountPriceEdit.EditValue = BasePriceEdit.Value - (BasePriceEdit.Value * DiscountEdit.Value / 100);
+            else DiscountPriceEdit.EditValue = BasePriceEdit.Value;
 
             PriceNotNDSEdit.EditValue = Convert.ToDecimal(DiscountPriceEdit.EditValue) * 100 / (100 + _wbd.Nds);
             TotalSumEdit.EditValue = Convert.ToDecimal(AmountEdit.EditValue) * Convert.ToDecimal(PriceNotNDSEdit.EditValue);
@@ -137,11 +137,13 @@ namespace SP_Sklad.WBDetForm
                  return;
              }
 
-             _wbd.WId = row.Wid;
-             WHComboBox.EditValue = row.Wid;
-
-             _wbd.Nds = row.Nds;
-             _wbd.MatId = row.MatId;
+             if (MatComboBox.ContainsFocus)
+             {
+                 _wbd.WId = row.Wid;
+                 WHComboBox.EditValue = row.Wid;
+                 _wbd.Nds = row.Nds;
+                 _wbd.MatId = row.MatId;
+             }
 
              labelControl24.Text = row.MeasuresName;
              labelControl27.Text = row.MeasuresName;
@@ -273,9 +275,15 @@ namespace SP_Sklad.WBDetForm
             }
 
          //   if (WayBillDetAddProps->State == dsInsert || WayBillDetAddProps->State == dsEdit) WayBillDetAddProps->Post();
-       
-            _db.SaveChanges();
-            Close();
+            try
+            {
+                _db.SaveChanges();
+                Close();
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException  exp)
+            {
+                MessageBox.Show(exp.InnerException.InnerException.Message);
+            }
         }
 
         private void WHComboBox_EditValueChanged(object sender, EventArgs e)

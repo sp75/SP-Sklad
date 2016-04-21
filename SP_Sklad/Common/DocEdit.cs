@@ -69,11 +69,21 @@ namespace SP_Sklad.Common
 
                    if (dr.WType == -1 || dr.WType == -16 || dr.WType == 2)
                    {
-                       using (var wb_in = new frmWayBillOut(dr.WType, wb.WbillId))
+                       using (var wb_out = new frmWayBillOut(dr.WType, wb.WbillId))
                        {
-                           wb_in.ShowDialog();
+                           wb_out.ShowDialog();
                        }
                    }
+
+                   if (dr.WType == 6)
+                   {
+                       using (var wb_re_in = new frmWBReturnIn(dr.WType, wb.WbillId))
+                       {
+                           wb_re_in.ShowDialog();
+                       }
+                   }
+
+
 
             /*           if(DocsTreeDataID->Value == 57) // Повернення від кліента
                         {
@@ -101,7 +111,7 @@ namespace SP_Sklad.Common
                            }
                         }
 
-                       if(DocsTreeDataID->Value == 56) //Повернення постачальнику
+         /*              if(DocsTreeDataID->Value == 56) //Повернення постачальнику
                         {
                            try
                            {

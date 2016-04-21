@@ -193,6 +193,9 @@
     <Compile Include="SkladData\GetPosIn_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetPosOut_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetRelDocList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -492,6 +495,12 @@
     <Compile Include="WBDetForm\frmWayBillDetOut.Designer.cs">
       <DependentUpon>frmWayBillDetOut.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBDetForm\frmWBReturnDetIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBDetForm\frmWBReturnDetIn.Designer.cs">
+      <DependentUpon>frmWBReturnDetIn.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBForm\frmWayBillIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -503,6 +512,12 @@
     </Compile>
     <Compile Include="WBForm\frmWayBillOut.Designer.cs">
       <DependentUpon>frmWayBillOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WBForm\frmWBReturnIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\frmWBReturnIn.Designer.cs">
+      <DependentUpon>frmWBReturnIn.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FinanseForm\frmPayDoc.resx">
       <DependentUpon>frmPayDoc.cs</DependentUpon>
@@ -533,11 +548,17 @@
     <EmbeddedResource Include="WBDetForm\frmWayBillDetOut.resx">
       <DependentUpon>frmWayBillDetOut.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WBDetForm\frmWBReturnDetIn.resx">
+      <DependentUpon>frmWBReturnDetIn.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWayBillIn.resx">
       <DependentUpon>frmWayBillIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWayBillOut.resx">
       <DependentUpon>frmWayBillOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\frmWBReturnIn.resx">
+      <DependentUpon>frmWBReturnIn.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.DBHelper.datasource" />

@@ -459,6 +459,7 @@
             this.sharedImageCollection1.ImageSource.Images.SetKeyName(3, "Аналоги.bmp");
             this.sharedImageCollection1.ImageSource.Images.SetKeyName(4, "Заказ поставщикам.bmp");
             this.sharedImageCollection1.ImageSource.Images.SetKeyName(5, "view_settings.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(6, "Наявн_сть на сладах.bmp");
             this.sharedImageCollection1.ParentControl = this;
             // 
             // barButtonItem3

@@ -353,7 +353,6 @@
             // 
             // 
             this.sharedImageCollection1.ImageSource.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("sharedImageCollection1.ImageSource.ImageStream")));
-            this.sharedImageCollection1.ImageSource.TransparentColor = System.Drawing.Color.White;
             this.sharedImageCollection1.ImageSource.Images.SetKeyName(0, "_нформац_я про товар.bmp");
             this.sharedImageCollection1.ImageSource.Images.SetKeyName(1, "Рух товар_в.bmp");
             this.sharedImageCollection1.ImageSource.Images.SetKeyName(2, "_нформац_я про резерв товару.bmp");
@@ -588,6 +587,8 @@
             this.BasePriceEdit.Name = "BasePriceEdit";
             this.BasePriceEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.BasePriceEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.BasePriceEdit.Properties.ShowCloseButton = true;
             this.BasePriceEdit.Size = new System.Drawing.Size(138, 22);
             this.BasePriceEdit.StyleController = this.styleController1;
             this.BasePriceEdit.TabIndex = 6;
@@ -752,6 +753,8 @@
             this.AmountEdit.Name = "AmountEdit";
             this.AmountEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.AmountEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.AmountEdit.Properties.ShowCloseButton = true;
             this.AmountEdit.Size = new System.Drawing.Size(138, 22);
             this.AmountEdit.StyleController = this.styleController1;
             this.AmountEdit.TabIndex = 4;
@@ -791,8 +794,6 @@
             this.DiscountPriceEdit.Location = new System.Drawing.Point(453, 62);
             this.DiscountPriceEdit.MenuManager = this.barManager1;
             this.DiscountPriceEdit.Name = "DiscountPriceEdit";
-            this.DiscountPriceEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.DiscountPriceEdit.Properties.DisplayFormat.FormatString = "0.00";
             this.DiscountPriceEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.DiscountPriceEdit.Size = new System.Drawing.Size(172, 22);
@@ -818,11 +819,13 @@
             this.CheckDiscontCartEdit.Properties.AutoWidth = true;
             this.CheckDiscontCartEdit.Properties.Caption = "Дисконтна карта";
             this.CheckDiscontCartEdit.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
+            this.CheckDiscontCartEdit.Properties.RadioGroupIndex = 0;
             this.CheckDiscontCartEdit.Properties.ValueChecked = 1;
             this.CheckDiscontCartEdit.Properties.ValueUnchecked = 0;
             this.CheckDiscontCartEdit.Size = new System.Drawing.Size(121, 20);
             this.CheckDiscontCartEdit.StyleController = this.styleController1;
             this.CheckDiscontCartEdit.TabIndex = 25;
+            this.CheckDiscontCartEdit.TabStop = false;
             // 
             // CheckCustomEdit
             // 
@@ -833,6 +836,7 @@
             this.CheckCustomEdit.Properties.AutoWidth = true;
             this.CheckCustomEdit.Properties.Caption = "Вручну";
             this.CheckCustomEdit.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
+            this.CheckCustomEdit.Properties.RadioGroupIndex = 0;
             this.CheckCustomEdit.Properties.ValueChecked = 1;
             this.CheckCustomEdit.Properties.ValueUnchecked = 0;
             this.CheckCustomEdit.Size = new System.Drawing.Size(62, 20);
@@ -847,6 +851,9 @@
             this.DiscountEdit.Name = "DiscountEdit";
             this.DiscountEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DiscountEdit.Properties.DisplayFormat.FormatString = "0.00";
+            this.DiscountEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.DiscountEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.DiscountEdit.Size = new System.Drawing.Size(147, 22);
             this.DiscountEdit.StyleController = this.styleController1;
             this.DiscountEdit.TabIndex = 23;

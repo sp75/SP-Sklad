@@ -224,17 +224,15 @@ namespace SP_Sklad.MainTabs
                         }
                     }
 
-                    /*		if(DocsTreeDataID->Value == 57) // Повернення від клієнта
-                            {
-                                frmWBReturnIn = new  TfrmWBReturnIn(Application);
-                                frmWBReturnIn->WayBillList->Open();
-                                frmWBReturnIn->WayBillList->Append();
-                                frmWBReturnIn->WayBillListWTYPE->Value  = 6;
-                                frmWBReturnIn->WayBillList->Post();
-                                frmWBReturnIn->WayBillList->Edit();
-                                frmWBReturnIn->ShowModal() ;
-                            }
-                            if(DocsTreeDataID->Value == 56 ) //Повернення постачальнику
+                    if (cur_wtype == 6) // Повернення від клієнта
+                    {
+                        using (var wb_re_in = new frmWBReturnIn(cur_wtype, null))
+                        {
+                            wb_re_in.ShowDialog();
+                        }
+                    }
+
+                   /*         if(DocsTreeDataID->Value == 56 ) //Повернення постачальнику
                             {
                                 frmWBReturnOut = new  TfrmWBReturnOut(Application);
                                 frmWBReturnOut->WayBillList->Open();

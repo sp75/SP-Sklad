@@ -103,7 +103,7 @@ namespace SP_Sklad.WBForm
             if (_wtype == 1) this.Text = "Властивості прибуткової накладної";
             if (_wtype == 16) this.Text = "Замовлення постачальникові";
 
-            TurnDocCheckBox.Visible = (_wtype != 16);
+            TurnDocCheckBox.Enabled = (_wtype != 16);
             checkEdit2.Visible = (_wtype == 16);
             dateEdit2.Visible = (_wtype == 16);
 

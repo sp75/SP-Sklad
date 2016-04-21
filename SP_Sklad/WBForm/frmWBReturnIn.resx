@@ -118,20 +118,17 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="barManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>382, 16</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>54</value>
+    <value>17, 55</value>
   </metadata>
   <metadata name="WBImgList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>507, 16</value>
+    <value>142, 55</value>
   </metadata>
   <data name="WBImgList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABM
-        QAAAAk1TRnQBSQFMAgEBEQEAAZABBQGQAQUBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        QAAAAk1TRnQBSQFMAgEBEQEAAbABBQGwAQUBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABUAMAAQEBAAEYBgABPP8AogAB5wHOAcYBrQFSASkBrQFSARgBrQFSASkB5wHWAc6xAAGtAVIBKQHe
         AoQB3gKEAd4ChAGtAVIBKbEAAbUBYwFCAVoBrQFKAVoBvQFjAVoBrQFKAbUBYwFCtAABCAGcAQgBYwH/
         AZQBCAGlARC3AAEIAZwBCAFjAf8BlAEIAaUBELcAAQgBIQGMARgBQgGcAQABawE5twABCAEQAbUBKQE5
@@ -408,9 +405,6 @@
         Af8B4AE/AgAB+QH/AecB/wHxAf8BwAGDCw==
 </value>
   </data>
-  <metadata name="styleController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>617, 16</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="PersonEditBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -430,24 +424,9 @@
         ////////////////////////////////////////////////////////
 </value>
   </data>
-  <data name="simpleButton5.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////
-        ////////////////////////////////////////c2ZMk4Jz////////////////////////////////
-        qlYnt3ZS////////////////oYqAk4JzaFQ+aFQ+////////////////AWcBAWcBWmkPxopbmjYCt3ZS
-        ////////p5WMoYqAinhuf3Re////////////////AWcBUeh6GpgpfKtr9OXBxopbmjYCPChYBgZuBgZu
-        Mi1yinhuAHMAAHMAAWcBAWcBAWcBWfCGUeh6GpgpgZ5T9+e9c26vBgSWExPPExPPEAyzMi1yAIQAXfWN
-        XfWNXfWNXfWNWfCGJr86VOyAGpgpgZ5TCAqfJijOBtD4Avf+EGjpCAqfAIQAY/uWPdNdOdFWNM1PNM1P
-        LMJCNM1PWfCGGpgpBDdQP2DtgP//WP//JrL2AhS+AJcAY/uWUeh6SOBuSOBuQ9pmPdNdPdNdPdNdGpgp
-        LlxVJijO3t/74vT+P2DtTkqZAJcAY/uWY/uWXfWNWfCGVOyAUeh6SOBuEoccfKtr8ubKUlG0AhS+DCHU
-        RjiP////AJcAAJcAAJcAAJcAAJcAY/uWY/uWGpgpgbRZ/ffU/frX/v/f/v/fwnxJ4ciy////////1Z1k
-        7MqT9+e9AJcAY/uWF6smgMVs/ffU/fza/v/f/v/f4ryQyph2////////////zX8v+/HL++vCAJcAAJcA
-        gMVs/fza/v/f/v/f/v/f/PTQxXs+////////////////0o5E2phO7MqT+/HL/frX/v/f/v/f/v/f/v/f
-        /v/f1Z1k4ciy////////////////////////2qly0o5E4rJx8d62/v/f/v/f/v/f79quzpNh////////
-        ////////////////////////////5smm1Z1k0o5E4ryQ+O7G0o5E////////////////////////////
-        ////////////////////////4ryQ0o5E4b6e////////////////////
-</value>
-  </data>
+  <metadata name="styleController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>252, 55</value>
+  </metadata>
   <data name="simpleButton3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////
@@ -477,6 +456,6 @@
 </value>
   </data>
   <metadata name="WbDetPopupMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>754, 16</value>
+    <value>389, 55</value>
   </metadata>
 </root>

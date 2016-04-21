@@ -47,7 +47,10 @@ namespace SP_Sklad.SkladData
 
         public static DbContextTransaction CommitRetaining(this DbContextTransaction transaction, BaseEntities db)
         {
-            transaction.Commit();
+            if (transaction.UnderlyingTransaction.Connection != null)
+            {
+                transaction.Commit();
+            }
             transaction =  db.Database.BeginTransaction(IsolationLevel.RepeatableRead);
             return transaction;
         }

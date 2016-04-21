@@ -221,6 +221,42 @@ namespace SP_Sklad.SkladData
 
             return r;
         }
+
+        public static bool CheckOutDate(WaybillList wb, BaseEntities db, DateTime date)
+        {
+            bool r = true;
+            var query = (from wbd in db.WaybillDet
+                         from m in db.Materials
+                         where wbd.WbillId == wb.WbillId && m.MatId == wbd.MatId
+                         orderby wbd.OnDate descending
+                         select new
+                         {
+                             wbd.OnDate,
+                             m.Name
+                         }
+                         ).FirstOrDefault();
+
+            /*
+                            select first 1 distinct wbd.ondate, m.name
+ from waybilldet wbd , materials m
+ where wbd.wbillid=:WBILLID and m.matid = wbd.matid 
+order by wbd.ondate desc
+             */
+            if (query != null && date < query.OnDate)
+            {
+                if (MessageBox.Show("Дата документа не може бути меншою за дату видаткової партії! \nПозиція: " + query.Name + " \nДата: " + query.OnDate.ToString() + " \nЗмінити дату докомента на " + query.OnDate.ToString() + "?", "Зміна дати докуманта", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                {
+                    wb.OnDate = query.OnDate.Value;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    r = false;
+                }
+            }
+
+            return r;
+        }
     }
 
     public class PersonList

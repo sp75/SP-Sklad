@@ -116,7 +116,8 @@ namespace SP_Sklad.WBForm
             if (_wtype == 2) Text = "Властивості рахунка, Продавець: " + DBHelper.Enterprise.Name;
             if (_wtype == -16) Text = "Замовлення від клієнтів, Продавець: " + DBHelper.Enterprise.Name;
             checkEdit2.Visible = (_wtype == 2 || _wtype == -16);
-            TurnDocCheckBox.Visible = !checkEdit2.Visible;
+            ToDateEdit.Visible = checkEdit2.Visible;
+            TurnDocCheckBox.Enabled = !checkEdit2.Visible;
 
 
             AttLabel.Visible = (_wtype == -1);
