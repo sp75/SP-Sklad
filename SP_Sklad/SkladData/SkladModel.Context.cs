@@ -74,7 +74,6 @@ namespace SP_Sklad.SkladData
         public DbSet<PRINTLOG> PRINTLOG { get; set; }
         public DbSet<REPLNG> REPLNG { get; set; }
         public DbSet<REPORTS> REPORTS { get; set; }
-        public DbSet<RETURNREL> RETURNREL { get; set; }
         public DbSet<SERIALS> SERIALS { get; set; }
         public DbSet<SERVICES> SERVICES { get; set; }
         public DbSet<SVCGROUP> SVCGROUP { get; set; }
@@ -115,6 +114,8 @@ namespace SP_Sklad.SkladData
         public DbSet<CommonParams> CommonParams { get; set; }
         public DbSet<KAgentSaldo> KAgentSaldo { get; set; }
         public DbSet<PriceTypes> PriceTypes { get; set; }
+        public DbSet<v_PosInList> v_PosInList { get; set; }
+        public DbSet<ReturnRel> ReturnRel { get; set; }
     
         [EdmFunction("BaseEntities", "GetMatGroupTree")]
         public virtual IQueryable<GetMatGroupTree_Result> GetMatGroupTree(Nullable<int> root_cat_id)
@@ -1129,6 +1130,15 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("w_type", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPosOut_Result>("GetPosOut", from_dateParameter, to_dateParameter, mat_idParameter, ka_idParameter, w_typeParameter);
+        }
+    
+        public virtual ObjectResult<GetShippedPosIn_Result> GetShippedPosIn(Nullable<int> pos_id)
+        {
+            var pos_idParameter = pos_id.HasValue ?
+                new ObjectParameter("pos_id", pos_id) :
+                new ObjectParameter("pos_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetShippedPosIn_Result>("GetShippedPosIn", pos_idParameter);
         }
     }
 }

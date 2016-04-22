@@ -38,11 +38,7 @@
             this.RsvInfoBtn = new DevExpress.XtraBars.BarButtonItem();
             this.MatInfoBtn = new DevExpress.XtraBars.BarButtonItem();
             this.bar1 = new DevExpress.XtraBars.Bar();
-            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.AddMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.EditMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
             this.DelMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
@@ -66,7 +62,7 @@
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.ReasonEdit = new DevExpress.XtraEditors.TextEdit();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.KAgentBtn = new DevExpress.XtraEditors.SimpleButton();
             this.NowDateBtn = new DevExpress.XtraEditors.SimpleButton();
             this.KagentComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
@@ -140,11 +136,6 @@
             this.KagBalBtn,
             this.EditMaterialBtn,
             this.DelMaterialBtn,
-            this.barSubItem1,
-            this.AddMaterialBtn,
-            this.barButtonItem6,
-            this.barButtonItem7,
-            this.barButtonItem8,
             this.barButtonItem1,
             this.RsvInfoBtn,
             this.MatInfoBtn,
@@ -152,9 +143,10 @@
             this.RsvAllBarBtn,
             this.DelRsvBarBtn,
             this.DelAllRsvBarBtn,
-            this.MarkBtn});
+            this.MarkBtn,
+            this.AddMaterialBtn});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 17;
+            this.barManager1.MaxItemId = 18;
             // 
             // bar2
             // 
@@ -218,55 +210,22 @@
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
             this.bar1.FloatLocation = new System.Drawing.Point(49, 383);
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.AddMaterialBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.EditMaterialBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.DelMaterialBtn)});
             this.bar1.OptionsBar.AllowRename = true;
             this.bar1.StandaloneBarDockControl = this.standaloneBarDockControl1;
             this.bar1.Text = "Custom 2";
             // 
-            // barSubItem1
-            // 
-            this.barSubItem1.Caption = "Додати";
-            this.barSubItem1.Id = 4;
-            this.barSubItem1.ImageIndex = 5;
-            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.AddMaterialBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8)});
-            this.barSubItem1.Name = "barSubItem1";
-            this.barSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
             // AddMaterialBtn
             // 
-            this.AddMaterialBtn.Caption = "Товар";
-            this.AddMaterialBtn.Id = 5;
-            this.AddMaterialBtn.ImageIndex = 8;
+            this.AddMaterialBtn.Caption = "Додати";
+            this.AddMaterialBtn.Id = 17;
+            this.AddMaterialBtn.ImageIndex = 5;
             this.AddMaterialBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Insert));
             this.AddMaterialBtn.Name = "AddMaterialBtn";
-            // 
-            // barButtonItem6
-            // 
-            this.barButtonItem6.Caption = "Товари списком";
-            this.barButtonItem6.Id = 6;
-            this.barButtonItem6.ImageIndex = 9;
-            this.barButtonItem6.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L));
-            this.barButtonItem6.Name = "barButtonItem6";
-            // 
-            // barButtonItem7
-            // 
-            this.barButtonItem7.Caption = "Послугу";
-            this.barButtonItem7.Id = 7;
-            this.barButtonItem7.ImageIndex = 10;
-            this.barButtonItem7.Name = "barButtonItem7";
-            // 
-            // barButtonItem8
-            // 
-            this.barButtonItem8.Caption = "Послуги списком";
-            this.barButtonItem8.Id = 8;
-            this.barButtonItem8.ImageIndex = 11;
-            this.barButtonItem8.Name = "barButtonItem8";
+            this.AddMaterialBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.AddMaterialBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddMaterialBtn_ItemClick);
             // 
             // EditMaterialBtn
             // 
@@ -390,7 +349,6 @@
             // WbDetPopupMenu
             // 
             this.WbDetPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.DelMaterialBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.RsvBarBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.DelRsvBarBtn),
@@ -423,7 +381,7 @@
             this.panelControl1.Controls.Add(this.labelControl8);
             this.panelControl1.Controls.Add(this.labelControl7);
             this.panelControl1.Controls.Add(this.ReasonEdit);
-            this.panelControl1.Controls.Add(this.simpleButton3);
+            this.panelControl1.Controls.Add(this.KAgentBtn);
             this.panelControl1.Controls.Add(this.NowDateBtn);
             this.panelControl1.Controls.Add(this.KagentComboBox);
             this.panelControl1.Controls.Add(this.labelControl4);
@@ -500,14 +458,14 @@
             this.ReasonEdit.StyleController = this.styleController1;
             this.ReasonEdit.TabIndex = 16;
             // 
-            // simpleButton3
+            // KAgentBtn
             // 
-            this.simpleButton3.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.Image")));
-            this.simpleButton3.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton3.Location = new System.Drawing.Point(534, 75);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(22, 22);
-            this.simpleButton3.TabIndex = 11;
+            this.KAgentBtn.Image = ((System.Drawing.Image)(resources.GetObject("KAgentBtn.Image")));
+            this.KAgentBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.KAgentBtn.Location = new System.Drawing.Point(534, 75);
+            this.KAgentBtn.Name = "KAgentBtn";
+            this.KAgentBtn.Size = new System.Drawing.Size(22, 22);
+            this.KAgentBtn.TabIndex = 11;
             // 
             // NowDateBtn
             // 
@@ -534,6 +492,7 @@
             this.KagentComboBox.Size = new System.Drawing.Size(453, 22);
             this.KagentComboBox.StyleController = this.styleController1;
             this.KagentComboBox.TabIndex = 9;
+            this.KagentComboBox.EditValueChanged += new System.EventHandler(this.KagentComboBox_EditValueChanged);
             // 
             // labelControl4
             // 
@@ -594,10 +553,12 @@
             // 
             // OnDateDBEdit
             // 
-            this.OnDateDBEdit.EditValue = new System.DateTime(2016, 3, 3, 16, 47, 59, 0);
+            this.OnDateDBEdit.EditValue = new System.DateTime(2016, 4, 22, 10, 10, 16, 0);
             this.OnDateDBEdit.Location = new System.Drawing.Point(347, 41);
             this.OnDateDBEdit.MenuManager = this.barManager1;
             this.OnDateDBEdit.Name = "OnDateDBEdit";
+            this.OnDateDBEdit.Properties.AllowClickInactiveDays = false;
+            this.OnDateDBEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
             this.OnDateDBEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.OnDateDBEdit.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
@@ -608,6 +569,7 @@
             this.OnDateDBEdit.Size = new System.Drawing.Size(181, 22);
             this.OnDateDBEdit.StyleController = this.styleController1;
             this.OnDateDBEdit.TabIndex = 8;
+            this.OnDateDBEdit.EditValueChanged += new System.EventHandler(this.OnDateDBEdit_EditValueChanged);
             // 
             // panel1
             // 
@@ -849,6 +811,7 @@
             this.Text = "Властивості накладної повернення від клієнта";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmWBReturnIn_FormClosed);
             this.Load += new System.EventHandler(this.frmWBReturnIn_Load);
+            this.Shown += new System.EventHandler(this.frmWBReturnIn_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
@@ -891,11 +854,6 @@
         private DevExpress.XtraBars.BarButtonItem RsvInfoBtn;
         private DevExpress.XtraBars.BarButtonItem MatInfoBtn;
         private DevExpress.XtraBars.Bar bar1;
-        private DevExpress.XtraBars.BarSubItem barSubItem1;
-        private DevExpress.XtraBars.BarButtonItem AddMaterialBtn;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem8;
         private DevExpress.XtraBars.BarButtonItem EditMaterialBtn;
         private DevExpress.XtraBars.BarButtonItem DelMaterialBtn;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;
@@ -919,7 +877,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.TextEdit ReasonEdit;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private DevExpress.XtraEditors.SimpleButton KAgentBtn;
         private DevExpress.XtraEditors.SimpleButton NowDateBtn;
         private DevExpress.XtraEditors.LookUpEdit KagentComboBox;
         private DevExpress.XtraEditors.LabelControl labelControl4;
@@ -949,5 +907,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraBars.BarDockControl barDockControl1;
+        private DevExpress.XtraBars.BarButtonItem AddMaterialBtn;
     }
 }

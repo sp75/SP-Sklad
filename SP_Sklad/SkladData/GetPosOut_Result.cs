@@ -39,5 +39,6 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> Discount { get; set; }
         public Nullable<decimal> BasePrice { get; set; }
         public Nullable<decimal> ReturnAmount { get; set; }
+        public Nullable<decimal> Remain { get; set; }
     }
 }

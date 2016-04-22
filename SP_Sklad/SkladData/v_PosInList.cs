@@ -12,17 +12,17 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class ReturnRel
+    public partial class v_PosInList
     {
-        public int Id { get; set; }
         public int PosId { get; set; }
-        public int OutPosId { get; set; }
-        public int PPosId { get; set; }
-        public Nullable<int> DPosId { get; set; }
-    
-        public virtual WaybillDet WaybillDet { get; set; }
-        public virtual WaybillDet WaybillDet1 { get; set; }
-        public virtual WaybillDet WaybillDet2 { get; set; }
-        public virtual WaybillDet WaybillDet3 { get; set; }
+        public int WId { get; set; }
+        public int MatId { get; set; }
+        public System.DateTime OnDate { get; set; }
+        public int TurnType { get; set; }
+        public decimal Amount { get; set; }
+        public Nullable<int> SourceId { get; set; }
+        public string Num { get; set; }
+        public Nullable<decimal> Price { get; set; }
+        public Nullable<decimal> ReturnAmount { get; set; }
     }
 }

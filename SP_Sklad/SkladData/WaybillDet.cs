@@ -17,10 +17,6 @@ namespace SP_Sklad.SkladData
         public WaybillDet()
         {
             this.POSREMAINS = new HashSet<POSREMAINS>();
-            this.RETURNREL = new HashSet<RETURNREL>();
-            this.RETURNREL1 = new HashSet<RETURNREL>();
-            this.RETURNREL2 = new HashSet<RETURNREL>();
-            this.RETURNREL3 = new HashSet<RETURNREL>();
             this.SERIALS = new HashSet<SERIALS>();
             this.WAYBILLDETTAXES = new HashSet<WAYBILLDETTAXES>();
             this.WaybillDet1 = new HashSet<WaybillDet>();
@@ -29,6 +25,10 @@ namespace SP_Sklad.SkladData
             this.WaybillDet3 = new HashSet<WaybillDet>();
             this.WMatTurn = new HashSet<WMatTurn>();
             this.WMatTurn1 = new HashSet<WMatTurn>();
+            this.ReturnRel = new HashSet<ReturnRel>();
+            this.ReturnRel1 = new HashSet<ReturnRel>();
+            this.ReturnRel2 = new HashSet<ReturnRel>();
+            this.ReturnRel3 = new HashSet<ReturnRel>();
         }
     
         public int PosId { get; set; }
@@ -55,10 +55,6 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> AVG_IN_PICE { get; set; }
     
         public virtual ICollection<POSREMAINS> POSREMAINS { get; set; }
-        public virtual ICollection<RETURNREL> RETURNREL { get; set; }
-        public virtual ICollection<RETURNREL> RETURNREL1 { get; set; }
-        public virtual ICollection<RETURNREL> RETURNREL2 { get; set; }
-        public virtual ICollection<RETURNREL> RETURNREL3 { get; set; }
         public virtual ICollection<SERIALS> SERIALS { get; set; }
         public virtual WAREHOUSE WAREHOUSE { get; set; }
         public virtual WaybillList WaybillList { get; set; }
@@ -73,5 +69,9 @@ namespace SP_Sklad.SkladData
         public virtual Currency Currency { get; set; }
         public virtual Materials Materials { get; set; }
         public virtual PriceTypes PriceTypes { get; set; }
+        public virtual ICollection<ReturnRel> ReturnRel { get; set; }
+        public virtual ICollection<ReturnRel> ReturnRel1 { get; set; }
+        public virtual ICollection<ReturnRel> ReturnRel2 { get; set; }
+        public virtual ICollection<ReturnRel> ReturnRel3 { get; set; }
     }
 }

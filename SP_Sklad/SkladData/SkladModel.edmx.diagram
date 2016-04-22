@@ -51,7 +51,6 @@
         <EntityTypeShape EntityType="BaseModel.PRINTLOG" Width="1.5" PointX="6.75" PointY="63.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.REPLNG" Width="1.5" PointX="9.5" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.REPORTS" Width="1.5" PointX="7.25" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.RETURNREL" Width="1.5" PointX="13.25" PointY="59" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.SERIALS" Width="1.5" PointX="13.25" PointY="62.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.SERVICES" Width="1.5" PointX="17" PointY="54.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.SVCGROUP" Width="1.5" PointX="14.75" PointY="55.125" IsExpanded="true" />
@@ -122,10 +121,6 @@
         <AssociationConnector Association="BaseModel.FK_WBS_WBILLID" />
         <EntityTypeShape EntityType="BaseModel.WaybillDet" Width="1.5" PointX="9.3776064745046224" PointY="11.874754240678044" />
         <AssociationConnector Association="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" />
-        <AssociationConnector Association="BaseModel.FK_RETREL_DPOSID" />
-        <AssociationConnector Association="BaseModel.FK_RETREL_OUTPOSID" />
-        <AssociationConnector Association="BaseModel.FK_RETREL_POSID" />
-        <AssociationConnector Association="BaseModel.FK_RETREL_PPOSID" />
         <AssociationConnector Association="BaseModel.FK_SERIALS_POSID" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLD_FK_WBDET__WAREHOUS" />
         <AssociationConnector Association="BaseModel.FK_WBD_WBILLID" />
@@ -226,6 +221,12 @@
         <AssociationConnector Association="BaseModel.FK_MATPRICES_PPTYPEID" />
         <AssociationConnector Association="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP" />
+        <EntityTypeShape EntityType="BaseModel.v_PosInList" Width="1.5" PointX="8.323801845462901" PointY="2.37380229047211" />
+        <EntityTypeShape EntityType="BaseModel.ReturnRel" Width="1.5" PointX="0.30251608430525107" PointY="2.8423101170185534" />
+        <AssociationConnector Association="BaseModel.FK_RETREL_DPOSID" />
+        <AssociationConnector Association="BaseModel.FK_RETREL_OUTPOSID" />
+        <AssociationConnector Association="BaseModel.FK_RETREL_POSID" />
+        <AssociationConnector Association="BaseModel.FK_RETREL_PPOSID" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" >
         <EntityTypeShape EntityType="BaseModel.MaterialsList" Width="1.5" PointX="8.3328528592050315" PointY="13.042403614633905" />

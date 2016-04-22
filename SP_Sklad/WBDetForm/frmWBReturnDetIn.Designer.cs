@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWBReturnDetIn));
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
@@ -71,9 +72,9 @@
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.CurRemainEdit = new DevExpress.XtraEditors.TextEdit();
-            this.RsvEdit = new DevExpress.XtraEditors.TextEdit();
             this.RemainEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ReturnAmountEdit = new DevExpress.XtraEditors.TextEdit();
+            this.PosOutAmountEdit = new DevExpress.XtraEditors.TextEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.BasePriceEdit = new DevExpress.XtraEditors.CalcEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
@@ -107,9 +108,9 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CurRemainEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RsvEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RemainEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReturnAmountEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PosOutAmountEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BasePriceEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AmountEdit.Properties)).BeginInit();
             this.panel5.SuspendLayout();
@@ -396,16 +397,18 @@
             this.MatComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.MatComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
-            this.MatComboBox.Properties.DisplayMember = "Name";
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MatName", "Назва"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("OnDate", "Дата"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Remain", "Залишок")});
+            this.MatComboBox.Properties.DisplayMember = "MatName";
             this.MatComboBox.Properties.ShowFooter = false;
             this.MatComboBox.Properties.ShowHeader = false;
             this.MatComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.MatComboBox.Properties.ValueMember = "MatId";
-            this.MatComboBox.Properties.EditValueChanged += new System.EventHandler(this.MatComboBox_Properties_EditValueChanged);
+            this.MatComboBox.Properties.ValueMember = "PosId";
             this.MatComboBox.Size = new System.Drawing.Size(393, 22);
             this.MatComboBox.StyleController = this.styleController1;
             this.MatComboBox.TabIndex = 19;
+            this.MatComboBox.EditValueChanged += new System.EventHandler(this.MatComboBox_EditValueChanged);
             // 
             // simpleButton4
             // 
@@ -489,9 +492,9 @@
             this.panelControl3.Controls.Add(this.labelControl8);
             this.panelControl3.Controls.Add(this.labelControl2);
             this.panelControl3.Controls.Add(this.labelControl1);
-            this.panelControl3.Controls.Add(this.CurRemainEdit);
-            this.panelControl3.Controls.Add(this.RsvEdit);
             this.panelControl3.Controls.Add(this.RemainEdit);
+            this.panelControl3.Controls.Add(this.ReturnAmountEdit);
+            this.panelControl3.Controls.Add(this.PosOutAmountEdit);
             this.panelControl3.Controls.Add(this.labelControl5);
             this.panelControl3.Controls.Add(this.BasePriceEdit);
             this.panelControl3.Controls.Add(this.labelControl4);
@@ -547,41 +550,41 @@
             this.labelControl1.TabIndex = 17;
             this.labelControl1.Text = "Видано всього:";
             // 
-            // CurRemainEdit
-            // 
-            this.CurRemainEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CurRemainEdit.Enabled = false;
-            this.CurRemainEdit.Location = new System.Drawing.Point(423, 75);
-            this.CurRemainEdit.MenuManager = this.barManager1;
-            this.CurRemainEdit.Name = "CurRemainEdit";
-            this.CurRemainEdit.Size = new System.Drawing.Size(99, 22);
-            this.CurRemainEdit.StyleController = this.styleController1;
-            this.CurRemainEdit.TabIndex = 12;
-            // 
-            // RsvEdit
-            // 
-            this.RsvEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.RsvEdit.Enabled = false;
-            this.RsvEdit.Location = new System.Drawing.Point(423, 43);
-            this.RsvEdit.MenuManager = this.barManager1;
-            this.RsvEdit.Name = "RsvEdit";
-            this.RsvEdit.Size = new System.Drawing.Size(99, 22);
-            this.RsvEdit.StyleController = this.styleController1;
-            this.RsvEdit.TabIndex = 11;
-            // 
             // RemainEdit
             // 
             this.RemainEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.RemainEdit.Enabled = false;
-            this.RemainEdit.Location = new System.Drawing.Point(423, 12);
+            this.RemainEdit.Location = new System.Drawing.Point(423, 75);
             this.RemainEdit.MenuManager = this.barManager1;
             this.RemainEdit.Name = "RemainEdit";
             this.RemainEdit.Size = new System.Drawing.Size(99, 22);
             this.RemainEdit.StyleController = this.styleController1;
-            this.RemainEdit.TabIndex = 10;
+            this.RemainEdit.TabIndex = 12;
+            // 
+            // ReturnAmountEdit
+            // 
+            this.ReturnAmountEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ReturnAmountEdit.Enabled = false;
+            this.ReturnAmountEdit.Location = new System.Drawing.Point(423, 43);
+            this.ReturnAmountEdit.MenuManager = this.barManager1;
+            this.ReturnAmountEdit.Name = "ReturnAmountEdit";
+            this.ReturnAmountEdit.Size = new System.Drawing.Size(99, 22);
+            this.ReturnAmountEdit.StyleController = this.styleController1;
+            this.ReturnAmountEdit.TabIndex = 11;
+            // 
+            // PosOutAmountEdit
+            // 
+            this.PosOutAmountEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PosOutAmountEdit.Enabled = false;
+            this.PosOutAmountEdit.Location = new System.Drawing.Point(423, 12);
+            this.PosOutAmountEdit.MenuManager = this.barManager1;
+            this.PosOutAmountEdit.Name = "PosOutAmountEdit";
+            this.PosOutAmountEdit.Size = new System.Drawing.Size(99, 22);
+            this.PosOutAmountEdit.StyleController = this.styleController1;
+            this.PosOutAmountEdit.TabIndex = 10;
             // 
             // labelControl5
             // 
@@ -595,6 +598,7 @@
             // 
             // BasePriceEdit
             // 
+            this.BasePriceEdit.Enabled = false;
             this.BasePriceEdit.Location = new System.Drawing.Point(101, 43);
             this.BasePriceEdit.MenuManager = this.barManager1;
             this.BasePriceEdit.Name = "BasePriceEdit";
@@ -620,10 +624,13 @@
             this.AmountEdit.MenuManager = this.barManager1;
             this.AmountEdit.Name = "AmountEdit";
             this.AmountEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("AmountEdit.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "", null, null, true)});
+            this.AmountEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.AmountEdit_Properties_ButtonClick);
             this.AmountEdit.Size = new System.Drawing.Size(138, 22);
             this.AmountEdit.StyleController = this.styleController1;
             this.AmountEdit.TabIndex = 4;
+            this.AmountEdit.EditValueChanged += new System.EventHandler(this.AmountEdit_EditValueChanged);
             // 
             // panel5
             // 
@@ -802,6 +809,7 @@
             this.OkButton.Size = new System.Drawing.Size(98, 26);
             this.OkButton.TabIndex = 3;
             this.OkButton.Text = "Застосувати";
+            this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
             // simpleButton1
             // 
@@ -829,6 +837,9 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmWBReturnDetIn";
             this.Text = "frmWBReturnDetIn";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmWBReturnDetIn_FormClosed);
+            this.Load += new System.EventHandler(this.frmWBReturnDetIn_Load);
+            this.Shown += new System.EventHandler(this.frmWBReturnDetIn_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).EndInit();
@@ -843,9 +854,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CurRemainEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RsvEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RemainEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReturnAmountEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PosOutAmountEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BasePriceEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AmountEdit.Properties)).EndInit();
             this.panel5.ResumeLayout(false);
@@ -907,9 +918,9 @@
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.TextEdit CurRemainEdit;
-        private DevExpress.XtraEditors.TextEdit RsvEdit;
         private DevExpress.XtraEditors.TextEdit RemainEdit;
+        private DevExpress.XtraEditors.TextEdit ReturnAmountEdit;
+        private DevExpress.XtraEditors.TextEdit PosOutAmountEdit;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.CalcEdit BasePriceEdit;
         private DevExpress.XtraEditors.LabelControl labelControl4;

@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using SP_Sklad.SkladData;
+using SP_Sklad.WBDetForm;
 
 namespace SP_Sklad.WBForm
 {
@@ -125,14 +126,18 @@ namespace SP_Sklad.WBForm
             bool recult = (!String.IsNullOrEmpty(NumEdit.Text) && KagentComboBox.EditValue != null && OnDateDBEdit.EditValue != null && WBDetReInGridView.DataRowCount > 0);
 
 
-            barSubItem1.Enabled = KagentComboBox.EditValue != null;
+            AddMaterialBtn.Enabled = KagentComboBox.EditValue != DBNull.Value;
 
             EditMaterialBtn.Enabled = WBDetReInGridView.DataRowCount > 0;
             DelMaterialBtn.Enabled = EditMaterialBtn.Enabled;
             RsvInfoBtn.Enabled = EditMaterialBtn.Enabled;
             MatInfoBtn.Enabled = EditMaterialBtn.Enabled;
 
-       //     OkButton.Enabled = recult;
+            KagentComboBox.Enabled = WBDetReInGridView.DataRowCount == 0;
+            KAgentBtn.Enabled = KagentComboBox.Enabled;
+            KagBalBtn.Enabled = KagentComboBox.EditValue != DBNull.Value;
+
+            OkButton.Enabled = recult;
             return recult;
         }
 
@@ -167,6 +172,40 @@ namespace SP_Sklad.WBForm
             }
 
             Close();
+        }
+
+        private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var df = new frmWBReturnDetIn(_db, null, wb);
+            if (df.ShowDialog() == DialogResult.OK)
+            {
+                current_transaction = current_transaction.CommitRetaining(_db);
+                UpdLockWB();
+                RefreshDet();
+            }
+        }
+
+        private void OnDateDBEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            if (!OnDateDBEdit.ContainsFocus) return;
+
+            wb.OnDate = OnDateDBEdit.DateTime;
+        }
+
+        private void KagentComboBox_EditValueChanged(object sender, EventArgs e)
+        {
+            if (!KagentComboBox.ContainsFocus) return;
+
+            wb.KaId = (int)KagentComboBox.EditValue;
+        }
+
+        private void frmWBReturnIn_Shown(object sender, EventArgs e)
+        {
+
+            OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
+            NowDateBtn.Enabled = OnDateDBEdit.Enabled;
+
+            GetOk();
         }
     }
 }

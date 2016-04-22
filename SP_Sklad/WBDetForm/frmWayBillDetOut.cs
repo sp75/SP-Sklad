@@ -32,7 +32,7 @@ namespace SP_Sklad.WBDetForm
             WHComboBox.Properties.DataSource = DBHelper.WhList();
             MatComboBox.Properties.DataSource = db.MaterialsList.ToList();
             PriceTypesEdit.Properties.DataSource = DB.SkladBase().PriceTypes.ToList();
-            _wbd = db.WaybillDet.Find(_PosId);
+         //   _wbd = db.WaybillDet.Find(_PosId);
         }
 
         private void frmWayBillDetOut_Load(object sender, EventArgs e)

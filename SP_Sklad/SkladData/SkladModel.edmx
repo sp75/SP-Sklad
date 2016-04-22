@@ -160,14 +160,7 @@
       FROM [dbo].[REPLNG] AS [REPLNG]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="REPORTS" EntityType="BaseModel.Store.REPORTS" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="RETURNREL" EntityType="BaseModel.Store.RETURNREL" store:Type="Tables" store:Schema="dbo" store:Name="RETURNREL">
-            <DefiningQuery>SELECT 
-      [RETURNREL].[POSID] AS [POSID], 
-      [RETURNREL].[OUTPOSID] AS [OUTPOSID], 
-      [RETURNREL].[PPOSID] AS [PPOSID], 
-      [RETURNREL].[DPOSID] AS [DPOSID]
-      FROM [dbo].[RETURNREL] AS [RETURNREL]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="ReturnRel" EntityType="BaseModel.Store.ReturnRel" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SERIALS" EntityType="BaseModel.Store.SERIALS" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SERVICES" EntityType="BaseModel.Store.SERVICES" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SVCGROUP" EntityType="BaseModel.Store.SVCGROUP" store:Type="Tables" Schema="dbo" />
@@ -333,6 +326,20 @@
       [v_GetDocsTree].[UserId] AS [UserId], 
       [v_GetDocsTree].[WType] AS [WType]
       FROM [dbo].[v_GetDocsTree] AS [v_GetDocsTree]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_PosInList" EntityType="BaseModel.Store.v_PosInList" store:Type="Views" store:Schema="dbo" store:Name="v_PosInList">
+            <DefiningQuery>SELECT 
+      [v_PosInList].[PosId] AS [PosId], 
+      [v_PosInList].[WId] AS [WId], 
+      [v_PosInList].[MatId] AS [MatId], 
+      [v_PosInList].[OnDate] AS [OnDate], 
+      [v_PosInList].[TurnType] AS [TurnType], 
+      [v_PosInList].[Amount] AS [Amount], 
+      [v_PosInList].[SourceId] AS [SourceId], 
+      [v_PosInList].[Num] AS [Num], 
+      [v_PosInList].[Price] AS [Price], 
+      [v_PosInList].[ReturnAmount] AS [ReturnAmount]
+      FROM [dbo].[v_PosInList] AS [v_PosInList]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK__CURRENCYR__CURRI__5EBF139D" Association="BaseModel.Store.FK__CURRENCYR__CURRI__5EBF139D">
             <End Role="Currency" EntitySet="Currency" />
@@ -696,19 +703,19 @@
           </AssociationSet>
           <AssociationSet Name="FK_RETREL_DPOSID" Association="BaseModel.Store.FK_RETREL_DPOSID">
             <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="RETURNREL" EntitySet="RETURNREL" />
+            <End Role="ReturnRel" EntitySet="ReturnRel" />
           </AssociationSet>
           <AssociationSet Name="FK_RETREL_OUTPOSID" Association="BaseModel.Store.FK_RETREL_OUTPOSID">
             <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="RETURNREL" EntitySet="RETURNREL" />
+            <End Role="ReturnRel" EntitySet="ReturnRel" />
           </AssociationSet>
           <AssociationSet Name="FK_RETREL_POSID" Association="BaseModel.Store.FK_RETREL_POSID">
             <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="RETURNREL" EntitySet="RETURNREL" />
+            <End Role="ReturnRel" EntitySet="ReturnRel" />
           </AssociationSet>
           <AssociationSet Name="FK_RETREL_PPOSID" Association="BaseModel.Store.FK_RETREL_PPOSID">
             <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="RETURNREL" EntitySet="RETURNREL" />
+            <End Role="ReturnRel" EntitySet="ReturnRel" />
           </AssociationSet>
           <AssociationSet Name="FK_SERIALS_POSID" Association="BaseModel.Store.FK_SERIALS_POSID">
             <End Role="WaybillDet" EntitySet="WaybillDet" />
@@ -1651,19 +1658,15 @@
           <Property Name="FIL" Type="int" Nullable="false" />
           <Property Name="NUM" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'sp_base.dbo.RETURNREL' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
-        <EntityType Name="RETURNREL">
+        <EntityType Name="ReturnRel">
           <Key>
-            <PropertyRef Name="POSID" />
-            <PropertyRef Name="OUTPOSID" />
-            <PropertyRef Name="PPOSID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="POSID" Type="int" Nullable="false" />
-          <Property Name="OUTPOSID" Type="int" Nullable="false" />
-          <Property Name="PPOSID" Type="int" Nullable="false" />
-          <Property Name="DPOSID" Type="int" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PosId" Type="int" Nullable="false" />
+          <Property Name="OutPosId" Type="int" Nullable="false" />
+          <Property Name="PPosId" Type="int" Nullable="false" />
+          <Property Name="DPosId" Type="int" />
         </EntityType>
         <EntityType Name="SERIALS">
           <Key>
@@ -2140,6 +2143,30 @@
           <Property Name="CanPost" Type="int" />
           <Property Name="UserId" Type="int" />
           <Property Name="WType" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'sp_base.dbo.v_PosInList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="v_PosInList">
+          <Key>
+            <PropertyRef Name="PosId" />
+            <PropertyRef Name="WId" />
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="TurnType" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="Num" />
+          </Key>
+          <Property Name="PosId" Type="int" Nullable="false" />
+          <Property Name="WId" Type="int" Nullable="false" />
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="TurnType" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="numeric" Nullable="false" Precision="15" Scale="8" />
+          <Property Name="SourceId" Type="int" />
+          <Property Name="Num" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Price" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="ReturnAmount" Type="numeric" Precision="38" Scale="8" />
         </EntityType>
         <Association Name="FK__CURRENCYR__CURRI__5EBF139D">
           <End Role="Currency" Type="BaseModel.Store.Currency" Multiplicity="1" />
@@ -3275,49 +3302,49 @@
           <End Role="WaybillDet" Type="BaseModel.Store.WaybillDet" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="RETURNREL" Type="BaseModel.Store.RETURNREL" Multiplicity="*" />
+          <End Role="ReturnRel" Type="BaseModel.Store.ReturnRel" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="WaybillDet">
               <PropertyRef Name="PosId" />
             </Principal>
-            <Dependent Role="RETURNREL">
-              <PropertyRef Name="DPOSID" />
+            <Dependent Role="ReturnRel">
+              <PropertyRef Name="DPosId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RETREL_OUTPOSID">
           <End Role="WaybillDet" Type="BaseModel.Store.WaybillDet" Multiplicity="1" />
-          <End Role="RETURNREL" Type="BaseModel.Store.RETURNREL" Multiplicity="*" />
+          <End Role="ReturnRel" Type="BaseModel.Store.ReturnRel" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="WaybillDet">
               <PropertyRef Name="PosId" />
             </Principal>
-            <Dependent Role="RETURNREL">
-              <PropertyRef Name="OUTPOSID" />
+            <Dependent Role="ReturnRel">
+              <PropertyRef Name="OutPosId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RETREL_POSID">
           <End Role="WaybillDet" Type="BaseModel.Store.WaybillDet" Multiplicity="1" />
-          <End Role="RETURNREL" Type="BaseModel.Store.RETURNREL" Multiplicity="*" />
+          <End Role="ReturnRel" Type="BaseModel.Store.ReturnRel" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="WaybillDet">
               <PropertyRef Name="PosId" />
             </Principal>
-            <Dependent Role="RETURNREL">
-              <PropertyRef Name="POSID" />
+            <Dependent Role="ReturnRel">
+              <PropertyRef Name="PosId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RETREL_PPOSID">
           <End Role="WaybillDet" Type="BaseModel.Store.WaybillDet" Multiplicity="1" />
-          <End Role="RETURNREL" Type="BaseModel.Store.RETURNREL" Multiplicity="*" />
+          <End Role="ReturnRel" Type="BaseModel.Store.ReturnRel" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="WaybillDet">
               <PropertyRef Name="PosId" />
             </Principal>
-            <Dependent Role="RETURNREL">
-              <PropertyRef Name="PPOSID" />
+            <Dependent Role="ReturnRel">
+              <PropertyRef Name="PPosId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3978,6 +4005,9 @@
               </RowType>
             </CollectionType>
           </ReturnType>
+        </Function>
+        <Function Name="GetShippedPosIn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pos_id" Type="int" Mode="In" />
         </Function>
         <Function Name="GetWaybillDetIn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="wbill_id" Type="int" Mode="In" />
@@ -4772,7 +4802,6 @@
           <EntitySet Name="PRINTLOG" EntityType="BaseModel.PRINTLOG" />
           <EntitySet Name="REPLNG" EntityType="BaseModel.REPLNG" />
           <EntitySet Name="REPORTS" EntityType="BaseModel.REPORTS" />
-          <EntitySet Name="RETURNREL" EntityType="BaseModel.RETURNREL" />
           <EntitySet Name="SERIALS" EntityType="BaseModel.SERIALS" />
           <EntitySet Name="SERVICES" EntityType="BaseModel.SERVICES" />
           <EntitySet Name="SVCGROUP" EntityType="BaseModel.SVCGROUP" />
@@ -5190,22 +5219,6 @@
           <AssociationSet Name="FK__POSREMAIN__POSID__2DB1C7EE" Association="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE">
             <End Role="WaybillDet" EntitySet="WaybillDet" />
             <End Role="POSREMAINS" EntitySet="POSREMAINS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RETREL_DPOSID" Association="BaseModel.FK_RETREL_DPOSID">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="RETURNREL" EntitySet="RETURNREL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RETREL_OUTPOSID" Association="BaseModel.FK_RETREL_OUTPOSID">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="RETURNREL" EntitySet="RETURNREL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RETREL_POSID" Association="BaseModel.FK_RETREL_POSID">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="RETURNREL" EntitySet="RETURNREL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RETREL_PPOSID" Association="BaseModel.FK_RETREL_PPOSID">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="RETURNREL" EntitySet="RETURNREL" />
           </AssociationSet>
           <AssociationSet Name="FK_SERIALS_POSID" Association="BaseModel.FK_SERIALS_POSID">
             <End Role="WaybillDet" EntitySet="WaybillDet" />
@@ -5659,6 +5672,27 @@
             <Parameter Name="ka_id" Mode="In" Type="Int32" />
             <Parameter Name="w_type" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="v_PosInList" EntityType="BaseModel.v_PosInList" />
+          <FunctionImport Name="GetShippedPosIn" ReturnType="Collection(BaseModel.GetShippedPosIn_Result)">
+          <Parameter Name="pos_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="ReturnRel" EntityType="BaseModel.ReturnRel" />
+          <AssociationSet Name="FK_RETREL_DPOSID" Association="BaseModel.FK_RETREL_DPOSID">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="ReturnRel" EntitySet="ReturnRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RETREL_OUTPOSID" Association="BaseModel.FK_RETREL_OUTPOSID">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="ReturnRel" EntitySet="ReturnRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RETREL_POSID" Association="BaseModel.FK_RETREL_POSID">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="ReturnRel" EntitySet="ReturnRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RETREL_PPOSID" Association="BaseModel.FK_RETREL_PPOSID">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="ReturnRel" EntitySet="ReturnRel" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="GetMatGroupTree_Result">
           <Property Name="GRPID" Type="Int32" />
@@ -6538,21 +6572,6 @@
           <Property Name="NUM" Type="Int32" />
           <NavigationProperty Name="REPLNG" Relationship="BaseModel.FK_REPLNG_REPID" FromRole="REPORTS" ToRole="REPLNG" />
         </EntityType>
-        <EntityType Name="RETURNREL">
-          <Key>
-            <PropertyRef Name="POSID" />
-            <PropertyRef Name="OUTPOSID" />
-            <PropertyRef Name="PPOSID" />
-          </Key>
-          <Property Name="POSID" Type="Int32" Nullable="false" />
-          <Property Name="OUTPOSID" Type="Int32" Nullable="false" />
-          <Property Name="PPOSID" Type="Int32" Nullable="false" />
-          <Property Name="DPOSID" Type="Int32" />
-          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_RETREL_DPOSID" FromRole="RETURNREL" ToRole="WaybillDet" />
-          <NavigationProperty Name="WaybillDet1" Relationship="BaseModel.FK_RETREL_OUTPOSID" FromRole="RETURNREL" ToRole="WaybillDet" />
-          <NavigationProperty Name="WaybillDet2" Relationship="BaseModel.FK_RETREL_POSID" FromRole="RETURNREL" ToRole="WaybillDet" />
-          <NavigationProperty Name="WaybillDet3" Relationship="BaseModel.FK_RETREL_PPOSID" FromRole="RETURNREL" ToRole="WaybillDet" />
-          </EntityType>
         <EntityType Name="SERIALS">
           <Key>
             <PropertyRef Name="SID" />
@@ -7627,10 +7646,6 @@
           <Property Type="Int32" Name="DiscountKind" />
           <Property Type="Decimal" Name="AVG_IN_PICE" Precision="15" Scale="4" />
           <NavigationProperty Name="POSREMAINS" Relationship="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" FromRole="WaybillDet" ToRole="POSREMAINS" />
-          <NavigationProperty Name="RETURNREL" Relationship="BaseModel.FK_RETREL_DPOSID" FromRole="WaybillDet" ToRole="RETURNREL" />
-          <NavigationProperty Name="RETURNREL1" Relationship="BaseModel.FK_RETREL_OUTPOSID" FromRole="WaybillDet" ToRole="RETURNREL" />
-          <NavigationProperty Name="RETURNREL2" Relationship="BaseModel.FK_RETREL_POSID" FromRole="WaybillDet" ToRole="RETURNREL" />
-          <NavigationProperty Name="RETURNREL3" Relationship="BaseModel.FK_RETREL_PPOSID" FromRole="WaybillDet" ToRole="RETURNREL" />
           <NavigationProperty Name="SERIALS" Relationship="BaseModel.FK_SERIALS_POSID" FromRole="WaybillDet" ToRole="SERIALS" />
           <NavigationProperty Name="WAREHOUSE" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__WAREHOUS" FromRole="WaybillDet" ToRole="WAREHOUSE" />
           <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WBD_WBILLID" FromRole="WaybillDet" ToRole="WaybillList" />
@@ -7645,6 +7660,10 @@
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_CURRENCY" FromRole="WaybillDet" ToRole="Currency" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" FromRole="WaybillDet" ToRole="Materials" />
           <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP" FromRole="WaybillDet" ToRole="PriceTypes" />
+          <NavigationProperty Name="ReturnRel" Relationship="BaseModel.FK_RETREL_DPOSID" FromRole="WaybillDet" ToRole="ReturnRel" />
+          <NavigationProperty Name="ReturnRel1" Relationship="BaseModel.FK_RETREL_OUTPOSID" FromRole="WaybillDet" ToRole="ReturnRel" />
+          <NavigationProperty Name="ReturnRel2" Relationship="BaseModel.FK_RETREL_POSID" FromRole="WaybillDet" ToRole="ReturnRel" />
+          <NavigationProperty Name="ReturnRel3" Relationship="BaseModel.FK_RETREL_PPOSID" FromRole="WaybillDet" ToRole="ReturnRel" />
           </EntityType>
         <Association Name="FK__POSREMAIN__POSID__2DB1C7EE">
           <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
@@ -7655,56 +7674,6 @@
             </Principal>
             <Dependent Role="POSREMAINS">
               <PropertyRef Name="POSID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RETREL_DPOSID">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.RETURNREL" Role="RETURNREL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="RETURNREL">
-              <PropertyRef Name="DPOSID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RETREL_OUTPOSID">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
-          <End Type="BaseModel.RETURNREL" Role="RETURNREL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="RETURNREL">
-              <PropertyRef Name="OUTPOSID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RETREL_POSID">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
-          <End Type="BaseModel.RETURNREL" Role="RETURNREL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="RETURNREL">
-              <PropertyRef Name="POSID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RETREL_PPOSID">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
-          <End Type="BaseModel.RETURNREL" Role="RETURNREL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="RETURNREL">
-              <PropertyRef Name="PPOSID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -9399,7 +9368,106 @@
           <Property Type="Decimal" Name="Discount" Nullable="true" Precision="15" Scale="4" />
           <Property Type="Decimal" Name="BasePrice" Nullable="true" Precision="15" Scale="4" />
           <Property Type="Decimal" Name="ReturnAmount" Nullable="true" Precision="38" Scale="8" />
+          <Property Type="Decimal" Name="Remain" Nullable="true" Precision="38" Scale="8" />
         </ComplexType>
+        <EntityType Name="v_PosInList">
+          <Key>
+            <PropertyRef Name="PosId" />
+            <PropertyRef Name="WId" />
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="TurnType" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="Num" />
+          </Key>
+          <Property Type="Int32" Name="PosId" Nullable="false" />
+          <Property Type="Int32" Name="WId" Nullable="false" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="TurnType" Nullable="false" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="8" />
+          <Property Type="Int32" Name="SourceId" />
+          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Price" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="ReturnAmount" Precision="38" Scale="8" />
+        </EntityType>
+        <ComplexType Name="GetShippedPosIn_Result">
+          <Property Type="Int32" Name="PosId" Nullable="false" />
+          <Property Type="Int32" Name="WId" Nullable="false" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="TurnType" Nullable="false" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="8" />
+          <Property Type="Int32" Name="SourceId" Nullable="true" />
+          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="ReturnAmount" Nullable="true" Precision="38" Scale="8" />
+          <Property Type="Decimal" Name="Remain" Nullable="true" Precision="38" Scale="8" />
+        </ComplexType>
+        <EntityType Name="ReturnRel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PosId" Nullable="false" />
+          <Property Type="Int32" Name="OutPosId" Nullable="false" />
+          <Property Type="Int32" Name="PPosId" Nullable="false" />
+          <Property Type="Int32" Name="DPosId" />
+          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_RETREL_DPOSID" FromRole="ReturnRel" ToRole="WaybillDet" />
+          <NavigationProperty Name="WaybillDet1" Relationship="BaseModel.FK_RETREL_OUTPOSID" FromRole="ReturnRel" ToRole="WaybillDet" />
+          <NavigationProperty Name="WaybillDet2" Relationship="BaseModel.FK_RETREL_POSID" FromRole="ReturnRel" ToRole="WaybillDet" />
+          <NavigationProperty Name="WaybillDet3" Relationship="BaseModel.FK_RETREL_PPOSID" FromRole="ReturnRel" ToRole="WaybillDet" />
+        </EntityType>
+        <Association Name="FK_RETREL_DPOSID">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.ReturnRel" Role="ReturnRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="ReturnRel">
+              <PropertyRef Name="DPosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RETREL_OUTPOSID">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
+          <End Type="BaseModel.ReturnRel" Role="ReturnRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="ReturnRel">
+              <PropertyRef Name="OutPosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RETREL_POSID">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
+          <End Type="BaseModel.ReturnRel" Role="ReturnRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="ReturnRel">
+              <PropertyRef Name="PosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RETREL_PPOSID">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
+          <End Type="BaseModel.ReturnRel" Role="ReturnRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="ReturnRel">
+              <PropertyRef Name="PPosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -9963,16 +10031,6 @@
                 <ScalarProperty Name="GRPID" ColumnName="GRPID" />
                 <ScalarProperty Name="FIL" ColumnName="FIL" />
                 <ScalarProperty Name="NUM" ColumnName="NUM" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RETURNREL">
-            <EntityTypeMapping TypeName="BaseModel.RETURNREL">
-              <MappingFragment StoreEntitySet="RETURNREL">
-                <ScalarProperty Name="POSID" ColumnName="POSID" />
-                <ScalarProperty Name="OUTPOSID" ColumnName="OUTPOSID" />
-                <ScalarProperty Name="PPOSID" ColumnName="PPOSID" />
-                <ScalarProperty Name="DPOSID" ColumnName="DPOSID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -11375,9 +11433,54 @@
                 <ScalarProperty Name="Discount" ColumnName="Discount" />
                 <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
                 <ScalarProperty Name="ReturnAmount" ColumnName="ReturnAmount" />
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="v_PosInList">
+            <EntityTypeMapping TypeName="BaseModel.v_PosInList">
+              <MappingFragment StoreEntitySet="v_PosInList">
+                <ScalarProperty Name="ReturnAmount" ColumnName="ReturnAmount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="SourceId" ColumnName="SourceId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="TurnType" ColumnName="TurnType" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetShippedPosIn" FunctionName="BaseModel.Store.GetShippedPosIn">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetShippedPosIn_Result">
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="TurnType" ColumnName="TurnType" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="SourceId" ColumnName="SourceId" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ReturnAmount" ColumnName="ReturnAmount" />
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="ReturnRel">
+            <EntityTypeMapping TypeName="BaseModel.ReturnRel">
+              <MappingFragment StoreEntitySet="ReturnRel">
+                <ScalarProperty Name="DPosId" ColumnName="DPosId" />
+                <ScalarProperty Name="PPosId" ColumnName="PPosId" />
+                <ScalarProperty Name="OutPosId" ColumnName="OutPosId" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
