@@ -257,7 +257,24 @@ order by wbd.ondate desc
 
             return r;
         }
+        public static bool CheckOrderedInSuppliers(int wbill_id, BaseEntities db)
+        {
+            bool r = true;
+            var query = db.GetOrderedInSuppliers(wbill_id).ToList();
+
+            if (query.Any())
+            {
+                MessageBox.Show(string.Format("Неможливо провести накладну, так як у ний присутні товари замовлені у постачальника, але ще не оприходувані на склад.\n{0}", String.Join("\n", query.Select(s => s.Name))), "Попередження", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+               r = false;
+            }
+
+            return r;
+        }
+
     }
+
+
+
 
     public class PersonList
     {

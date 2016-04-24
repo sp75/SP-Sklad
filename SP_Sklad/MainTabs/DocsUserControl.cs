@@ -525,8 +525,9 @@ namespace SP_Sklad.MainTabs
                             {
                                 if (wb.WType == -1)
                                 {
-                                    //   if (!SkladData->CheckActiveSuppliers(WayBillListWBILLID->Value, DocPAnelTransaction)) return;
+                                    if (!DBHelper.CheckOrderedInSuppliers(dr.WbillId, db)) return;
                                 }
+
                                 DBHelper.ExecuteOrder(db, dr.WbillId);
                             }
                         }

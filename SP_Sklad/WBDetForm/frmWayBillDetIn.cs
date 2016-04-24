@@ -68,9 +68,17 @@ namespace SP_Sklad.WBDetForm
 
             if (_wb.WType == 16)
             {
-                var q = _db.WMatTurn.Where(w => w.PosId == _wbd.PosId);
-                _db.WMatTurn.RemoveRange(q);
-                _db.WMatTurn.Add(new WMatTurn() { WId = _wbd.WId.Value, MatId = _wbd.MatId, OnDate = _wbd.OnDate.Value, TurnType = 3, Amount = _wbd.Amount });
+                _db.DeleteWhere<WMatTurn>(w => w.PosId == _wbd.PosId);
+                _db.WMatTurn.Add(new WMatTurn()
+                {
+                    SourceId = _wbd.PosId,
+                    PosId = _wbd.PosId,
+                    WId = _wbd.WId.Value,
+                    MatId = _wbd.MatId,
+                    OnDate = _wbd.OnDate.Value,
+                    TurnType = 3,
+                    Amount = _wbd.Amount
+                });
             }
 
          //   if (Serials->State == dsInsert || Serials->State == dsEdit) Serials->Post();
