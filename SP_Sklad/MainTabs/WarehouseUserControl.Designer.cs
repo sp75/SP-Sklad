@@ -1636,7 +1636,7 @@
             // 
             this.xtraTabPage4.ImageIndex = 1;
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(929, 177);
+            this.xtraTabPage4.Size = new System.Drawing.Size(929, 180);
             this.xtraTabPage4.Text = "Партії";
             // 
             // xtraTabPage5
@@ -1644,7 +1644,7 @@
             this.xtraTabPage5.Controls.Add(this.gridControl5);
             this.xtraTabPage5.ImageIndex = 2;
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(929, 177);
+            this.xtraTabPage5.Size = new System.Drawing.Size(929, 180);
             this.xtraTabPage5.Text = "Замовлене";
             // 
             // gridControl5
@@ -1657,7 +1657,7 @@
             this.repositoryItemImageComboBox9,
             this.repositoryItemImageComboBox8,
             this.repositoryItemImageComboBox5});
-            this.gridControl5.Size = new System.Drawing.Size(929, 177);
+            this.gridControl5.Size = new System.Drawing.Size(929, 180);
             this.gridControl5.TabIndex = 0;
             this.gridControl5.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView5});
@@ -1816,13 +1816,13 @@
             // xtraTabPage9
             // 
             this.xtraTabPage9.Name = "xtraTabPage9";
-            this.xtraTabPage9.Size = new System.Drawing.Size(929, 177);
+            this.xtraTabPage9.Size = new System.Drawing.Size(929, 180);
             this.xtraTabPage9.Text = "Взаємозамінність";
             // 
             // xtraTabPage10
             // 
             this.xtraTabPage10.Name = "xtraTabPage10";
-            this.xtraTabPage10.Size = new System.Drawing.Size(929, 177);
+            this.xtraTabPage10.Size = new System.Drawing.Size(929, 180);
             this.xtraTabPage10.Text = "Список товарів";
             // 
             // WarehouseUserControl
