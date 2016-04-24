@@ -61,6 +61,7 @@
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.docsUserControl1 = new SP_Sklad.MainTabs.DocsUserControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
+            this.warehouseUserControl1 = new SP_Sklad.MainTabs.WarehouseUserControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
@@ -68,6 +69,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).BeginInit();
             this.gridSplitContainer1.SuspendLayout();
+            this.xtraTabPage3.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
@@ -261,28 +263,28 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(964, 47);
+            this.barDockControlTop.Size = new System.Drawing.Size(1188, 47);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 574);
-            this.barDockControlBottom.Size = new System.Drawing.Size(964, 23);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 677);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1188, 23);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 47);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 527);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 630);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(964, 47);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 527);
+            this.barDockControlRight.Location = new System.Drawing.Point(1188, 47);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 630);
             // 
             // barEditItem1
             // 
@@ -359,9 +361,10 @@
             // 
             // xtraTabPage3
             // 
+            this.xtraTabPage3.Controls.Add(this.warehouseUserControl1);
             this.xtraTabPage3.Image = global::SP_Sklad.Properties.Resources._1324534557_mine_копия;
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(961, 478);
+            this.xtraTabPage3.Size = new System.Drawing.Size(1185, 581);
             this.xtraTabPage3.TabPageWidth = 100;
             this.xtraTabPage3.Text = "Склад";
             // 
@@ -378,7 +381,7 @@
             this.xtraTabPage1.Controls.Add(this.docsUserControl1);
             this.xtraTabPage1.Image = global::SP_Sklad.Properties.Resources.administration;
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(961, 478);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1183, 539);
             this.xtraTabPage1.TabPageWidth = 100;
             this.xtraTabPage1.Text = "Документи";
             // 
@@ -387,7 +390,7 @@
             this.docsUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.docsUserControl1.Location = new System.Drawing.Point(0, 0);
             this.docsUserControl1.Name = "docsUserControl1";
-            this.docsUserControl1.Size = new System.Drawing.Size(961, 478);
+            this.docsUserControl1.Size = new System.Drawing.Size(1183, 539);
             this.docsUserControl1.TabIndex = 0;
             // 
             // xtraTabControl1
@@ -396,7 +399,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 47);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(964, 527);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1188, 630);
             this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -407,11 +410,19 @@
             this.xtraTabPage6,
             this.xtraTabPage7});
             // 
+            // warehouseUserControl1
+            // 
+            this.warehouseUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.warehouseUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.warehouseUserControl1.Name = "warehouseUserControl1";
+            this.warehouseUserControl1.Size = new System.Drawing.Size(1185, 581);
+            this.warehouseUserControl1.TabIndex = 0;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(964, 597);
+            this.ClientSize = new System.Drawing.Size(1188, 700);
             this.Controls.Add(this.xtraTabControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -428,6 +439,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).EndInit();
             this.gridSplitContainer1.ResumeLayout(false);
+            this.xtraTabPage3.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
@@ -469,6 +481,7 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage6;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage7;
         private MainTabs.DocsUserControl docsUserControl1;
+        private MainTabs.WarehouseUserControl warehouseUserControl1;
     }
 }
 

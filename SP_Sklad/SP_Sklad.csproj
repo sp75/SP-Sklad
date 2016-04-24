@@ -92,6 +92,12 @@
     <Compile Include="MainTabs\PayDocUserControl.Designer.cs">
       <DependentUpon>PayDocUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainTabs\WarehouseUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainTabs\WarehouseUserControl.Designer.cs">
+      <DependentUpon>WarehouseUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\ACCOUNTTYPE.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -539,6 +545,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainTabs\PayDocUserControl.resx">
       <DependentUpon>PayDocUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainTabs\WarehouseUserControl.resx">
+      <DependentUpon>WarehouseUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
