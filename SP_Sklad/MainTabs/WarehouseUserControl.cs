@@ -141,11 +141,18 @@ namespace SP_Sklad.MainTabs
             if (dr != null)
             {
                 RemainOnWhGrid.DataSource = DB.SkladBase().WMatGetByWh(dr.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, wh_list);
+                PosGridControl.DataSource = DB.SkladBase().PosGet(dr.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list);
             }
             else
             {
                 RemainOnWhGrid.DataSource = null;
+                PosGridControl.DataSource = null;
             }
+        }
+
+        private void PosGridControl_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

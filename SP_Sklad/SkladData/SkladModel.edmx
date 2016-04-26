@@ -4117,6 +4117,40 @@
           <Parameter Name="user_id" Type="int" Mode="In" />
           <Parameter Name="type_tree" Type="int" Mode="In" />
         </Function>
+        <Function Name="PosGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mat_id" Type="int" Mode="In" />
+          <Parameter Name="w_id" Type="int" Mode="In" />
+          <Parameter Name="ka_id" Type="int" Mode="In" />
+          <Parameter Name="on_date" Type="datetime" Mode="In" />
+          <Parameter Name="get_empty" Type="int" Mode="In" />
+          <Parameter Name="wh" Type="varchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="PosId" Type="int" />
+                <Property Name="Remain" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="Rsv" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="Wid" Type="int" />
+                <Property Name="Name" Type="nvarchar" MaxLength="128" />
+                <Property Name="OnDate" Type="datetime" />
+                <Property Name="Price" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="CurrId" Type="int" />
+                <Property Name="CurrName" Type="nvarchar" MaxLength="10" />
+                <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="SN" Type="nvarchar" MaxLength="64" />
+                <Property Name="WType" Type="int" />
+                <Property Name="DocNum" Type="nvarchar" MaxLength="20" />
+                <Property Name="WBillId" Type="int" />
+                <Property Name="DocId" Type="int" />
+                <Property Name="GTD" Type="nvarchar" MaxLength="64" />
+                <Property Name="CertNum" Type="nvarchar" MaxLength="64" />
+                <Property Name="CertDate" Type="datetime" />
+                <Property Name="Producer" Type="nvarchar" MaxLength="64" />
+                <Property Name="CurRemain" Type="numeric" Precision="15" Scale="4" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="ReservedAllPosition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="wbill_id" Type="int" Mode="In" />
         </Function>
@@ -4388,39 +4422,6 @@
         </Function>
         <Function Name="SP_ORDER_UPD_RSV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="WBILLID" Type="int" Mode="In" />
-        </Function>
-        <Function Name="SP_POS_GET" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="MATID" Type="int" Mode="In" />
-          <Parameter Name="W_ID" Type="int" Mode="In" />
-          <Parameter Name="KAID" Type="int" Mode="In" />
-          <Parameter Name="ON_DATE" Type="datetime" Mode="In" />
-          <Parameter Name="GETEMPTY" Type="int" Mode="In" />
-          <Parameter Name="WH" Type="varchar" Mode="In" />
-          <ReturnType>
-            <CollectionType>
-              <RowType>
-                <Property Name="POSID" Type="int" />
-                <Property Name="REMAIN" Type="numeric" Precision="15" Scale="8" />
-                <Property Name="RSV" Type="numeric" Precision="15" Scale="8" />
-                <Property Name="WID" Type="int" />
-                <Property Name="NAME" Type="nvarchar" MaxLength="128" />
-                <Property Name="ONDATE" Type="datetime" />
-                <Property Name="PRICE" Type="numeric" Precision="15" Scale="8" />
-                <Property Name="CURRID" Type="int" />
-                <Property Name="SHORTNAME" Type="nvarchar" MaxLength="10" />
-                <Property Name="ONVALUE" Type="numeric" Precision="15" Scale="8" />
-                <Property Name="SN" Type="nvarchar" MaxLength="64" />
-                <Property Name="WTYPE" Type="int" />
-                <Property Name="DOCNUM" Type="nvarchar" MaxLength="20" />
-                <Property Name="WBILLID" Type="int" />
-                <Property Name="DOCID" Type="int" />
-                <Property Name="GTD" Type="nvarchar" MaxLength="64" />
-                <Property Name="CERTNUM" Type="nvarchar" MaxLength="64" />
-                <Property Name="CERTDATE" Type="datetime" />
-                <Property Name="PRODUCER" Type="nvarchar" MaxLength="64" />
-              </RowType>
-            </CollectionType>
-          </ReturnType>
         </Function>
         <Function Name="SP_POS_IN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IN_ONDATE" Type="datetime" Mode="In" />
@@ -4968,14 +4969,6 @@
           <FunctionImport Name="SP_MATCHANGE_GET_WP" ReturnType="Collection(BaseModel.SP_MATCHANGE_GET_WP_Result)" IsComposable="true">
             <Parameter Name="MATID" Mode="In" Type="Int32" />
             <Parameter Name="MCDATE" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="SP_POS_GET" ReturnType="Collection(BaseModel.SP_POS_GET_Result)" IsComposable="true">
-            <Parameter Name="MATID" Mode="In" Type="Int32" />
-            <Parameter Name="W_ID" Mode="In" Type="Int32" />
-            <Parameter Name="KAID" Mode="In" Type="Int32" />
-            <Parameter Name="ON_DATE" Mode="In" Type="DateTime" />
-            <Parameter Name="GETEMPTY" Mode="In" Type="Int32" />
-            <Parameter Name="WH" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_POS_IN" ReturnType="Collection(BaseModel.SP_POS_IN_Result)" IsComposable="true">
             <Parameter Name="IN_ONDATE" Mode="In" Type="DateTime" />
@@ -5655,6 +5648,14 @@
             <Parameter Name="on_date" Mode="In" Type="DateTime" />
             <Parameter Name="wh" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="PosGet" IsComposable="true" ReturnType="Collection(BaseModel.PosGet_Result)">
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
+            <Parameter Name="w_id" Mode="In" Type="Int32" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="on_date" Mode="In" Type="DateTime" />
+            <Parameter Name="get_empty" Mode="In" Type="Int32" />
+            <Parameter Name="wh" Mode="In" Type="String" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="GetMatGroupTree_Result">
           <Property Name="GRPID" Type="Int32" />
@@ -5781,27 +5782,6 @@
           <Property Name="onvalue" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="remain" Type="Decimal" Precision="15" Scale="8" />
           <Property Name="rsv" Type="Decimal" Precision="15" Scale="8" />
-        </ComplexType>
-        <ComplexType Name="SP_POS_GET_Result">
-          <Property Name="POSID" Type="Int32" />
-          <Property Name="REMAIN" Type="Decimal" Precision="15" Scale="8" />
-          <Property Name="RSV" Type="Decimal" Precision="15" Scale="8" />
-          <Property Name="WID" Type="Int32" />
-          <Property Name="NAME" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
-          <Property Name="ONDATE" Type="DateTime" />
-          <Property Name="PRICE" Type="Decimal" Precision="15" Scale="8" />
-          <Property Name="CURRID" Type="Int32" />
-          <Property Name="SHORTNAME" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
-          <Property Name="ONVALUE" Type="Decimal" Precision="15" Scale="8" />
-          <Property Name="SN" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
-          <Property Name="WTYPE" Type="Int32" />
-          <Property Name="DOCNUM" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="WBILLID" Type="Int32" />
-          <Property Name="DOCID" Type="Int32" />
-          <Property Name="GTD" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
-          <Property Name="CERTNUM" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
-          <Property Name="CERTDATE" Type="DateTime" />
-          <Property Name="PRODUCER" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
         </ComplexType>
         <ComplexType Name="SP_POS_IN_Result">
           <Property Name="GetAll" Type="Int32" Nullable="false" />
@@ -9428,6 +9408,28 @@
           <Property Type="String" Name="Name" Nullable="true" MaxLength="128" />
           <Property Type="Decimal" Name="CurRemain" Nullable="true" Precision="15" Scale="4" />
         </ComplexType>
+        <ComplexType Name="PosGet_Result">
+          <Property Type="Int32" Name="PosId" Nullable="true" />
+          <Property Type="Decimal" Name="Remain" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Rsv" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="Wid" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="128" />
+          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="String" Name="SN" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="WType" Nullable="true" />
+          <Property Type="String" Name="DocNum" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="WBillId" Nullable="true" />
+          <Property Type="Int32" Name="DocId" Nullable="true" />
+          <Property Type="String" Name="GTD" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="CertNum" Nullable="true" MaxLength="64" />
+          <Property Type="DateTime" Name="CertDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Producer" Nullable="true" MaxLength="64" />
+          <Property Type="Decimal" Name="CurRemain" Nullable="true" Precision="15" Scale="4" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -10398,31 +10400,6 @@
                 <ScalarProperty Name="onvalue" ColumnName="onvalue" />
                 <ScalarProperty Name="remain" ColumnName="remain" />
                 <ScalarProperty Name="rsv" ColumnName="rsv" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="BaseModel.Store.SP_POS_GET" FunctionImportName="SP_POS_GET">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.SP_POS_GET_Result">
-                <ScalarProperty Name="POSID" ColumnName="POSID" />
-                <ScalarProperty Name="REMAIN" ColumnName="REMAIN" />
-                <ScalarProperty Name="RSV" ColumnName="RSV" />
-                <ScalarProperty Name="WID" ColumnName="WID" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="ONDATE" ColumnName="ONDATE" />
-                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
-                <ScalarProperty Name="CURRID" ColumnName="CURRID" />
-                <ScalarProperty Name="SHORTNAME" ColumnName="SHORTNAME" />
-                <ScalarProperty Name="ONVALUE" ColumnName="ONVALUE" />
-                <ScalarProperty Name="SN" ColumnName="SN" />
-                <ScalarProperty Name="WTYPE" ColumnName="WTYPE" />
-                <ScalarProperty Name="DOCNUM" ColumnName="DOCNUM" />
-                <ScalarProperty Name="WBILLID" ColumnName="WBILLID" />
-                <ScalarProperty Name="DOCID" ColumnName="DOCID" />
-                <ScalarProperty Name="GTD" ColumnName="GTD" />
-                <ScalarProperty Name="CERTNUM" ColumnName="CERTNUM" />
-                <ScalarProperty Name="CERTDATE" ColumnName="CERTDATE" />
-                <ScalarProperty Name="PRODUCER" ColumnName="PRODUCER" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -11471,6 +11448,32 @@
                 <ScalarProperty Name="Rsv" ColumnName="Rsv" />
                 <ScalarProperty Name="WId" ColumnName="WId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CurRemain" ColumnName="CurRemain" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PosGet" FunctionName="BaseModel.Store.PosGet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.PosGet_Result">
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
+                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
+                <ScalarProperty Name="Wid" ColumnName="Wid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="SN" ColumnName="SN" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+                <ScalarProperty Name="WBillId" ColumnName="WBillId" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="GTD" ColumnName="GTD" />
+                <ScalarProperty Name="CertNum" ColumnName="CertNum" />
+                <ScalarProperty Name="CertDate" ColumnName="CertDate" />
+                <ScalarProperty Name="Producer" ColumnName="Producer" />
                 <ScalarProperty Name="CurRemain" ColumnName="CurRemain" />
               </ComplexTypeMapping>
             </ResultMapping>

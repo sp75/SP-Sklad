@@ -88,6 +88,7 @@ namespace SP_Sklad.WBDetForm
             PosOutAmountEdit.EditValue = row.Amount;
             ReturnAmountEdit.EditValue = row.ReturnAmount;
             RemainEdit.EditValue = row.Remain;
+            WHComboBox.EditValue = row.WID;
 
             GetOk();
         }

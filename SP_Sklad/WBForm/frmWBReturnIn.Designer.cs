@@ -550,6 +550,7 @@
             this.NumEdit.Size = new System.Drawing.Size(196, 22);
             this.NumEdit.StyleController = this.styleController1;
             this.NumEdit.TabIndex = 0;
+            this.NumEdit.EditValueChanged += new System.EventHandler(this.NumEdit_EditValueChanged);
             // 
             // OnDateDBEdit
             // 

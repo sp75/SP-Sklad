@@ -190,6 +190,8 @@ namespace SP_Sklad.WBForm
             if (!OnDateDBEdit.ContainsFocus) return;
 
             wb.OnDate = OnDateDBEdit.DateTime;
+
+            GetOk();
         }
 
         private void KagentComboBox_EditValueChanged(object sender, EventArgs e)
@@ -197,13 +199,21 @@ namespace SP_Sklad.WBForm
             if (!KagentComboBox.ContainsFocus) return;
 
             wb.KaId = (int)KagentComboBox.EditValue;
+
+            GetOk();
         }
 
         private void frmWBReturnIn_Shown(object sender, EventArgs e)
         {
-
             OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
             NowDateBtn.Enabled = OnDateDBEdit.Enabled;
+
+            GetOk();
+        }
+
+        private void NumEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            if (!NumEdit.ContainsFocus) return;
 
             GetOk();
         }
