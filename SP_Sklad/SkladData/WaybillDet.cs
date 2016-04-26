@@ -67,11 +67,11 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<WMatTurn> WMatTurn { get; set; }
         public virtual ICollection<WMatTurn> WMatTurn1 { get; set; }
         public virtual Currency Currency { get; set; }
-        public virtual Materials Materials { get; set; }
         public virtual PriceTypes PriceTypes { get; set; }
         public virtual ICollection<ReturnRel> ReturnRel { get; set; }
         public virtual ICollection<ReturnRel> ReturnRel1 { get; set; }
         public virtual ICollection<ReturnRel> ReturnRel2 { get; set; }
         public virtual ICollection<ReturnRel> ReturnRel3 { get; set; }
+        public virtual Materials Materials { get; set; }
     }
 }

@@ -35,7 +35,6 @@
         <EntityTypeShape EntityType="BaseModel.KAMATGROUPDISCOUNT" Width="1.5" PointX="6" PointY="47.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.LANGUAGES" Width="1.5" PointX="7.25" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.MATCHANGE" Width="1.5" PointX="11.25" PointY="20" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.MATGROUP" Width="1.5" PointX="6.75" PointY="20.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.MATGROUPPRICES" Width="1.5" PointX="12" PointY="30.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.MATPRICES" Width="1.5" PointX="14.25" PointY="29.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.MATRECDET" Width="1.5" PointX="16.25" PointY="51.25" IsExpanded="true" />
@@ -85,10 +84,8 @@
         <AssociationConnector Association="BaseModel.FK__FUNCTIONS__TABID__123EB7A3" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_USERTREE_FK_USERTR_FUNCTION" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_MS_ACCID" ManuallyRouted="false" />
-        <AssociationConnector Association="BaseModel.FK__KAMATGROU__GRPID__395884C4" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK__VIEWLNG__LANGID__2116E6DF" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_REPLNG_LANGID" ManuallyRouted="false" />
-        <AssociationConnector Association="BaseModel.FK_MGP_MATID" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_MATRECDET_MATRECIPE" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLMAKE_MATRECIPE" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_SVC_MID" ManuallyRouted="false" />
@@ -190,27 +187,6 @@
         <AssociationConnector Association="BaseModel.FK_WAYBILLD_REFERENCE_CURRENCY" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY" />
         <AssociationConnector Association="BaseModel.FK_WBS_CURRID" />
-        <EntityTypeShape EntityType="BaseModel.Materials" Width="1.5" PointX="8.5212890731735556" PointY="5.3112912649807011" />
-        <AssociationConnector Association="BaseModel.FK_CONTRDET_REFERENCE_MATERIAL" />
-        <AssociationConnector Association="BaseModel.FK__MATERIALS__CID__662B2B3B" />
-        <AssociationConnector Association="BaseModel.FK_DEBONINGDET_MATERIALS" />
-        <AssociationConnector Association="BaseModel.FK__KAMATDISC__MATID__32AB8735" />
-        <AssociationConnector Association="BaseModel.FK_MATCHANGE_CHANGEID" />
-        <AssociationConnector Association="BaseModel.FK_MATCHANGE_MATID" />
-        <AssociationConnector Association="BaseModel.FK__MATERIALS__GRPID__58D1301D" />
-        <AssociationConnector Association="BaseModel.FK__MATERIALS__GRPID__5D95E53A" />
-        <AssociationConnector Association="BaseModel.FK__MATERIALS__GRPID__6442E2C9" />
-        <AssociationConnector Association="BaseModel.FK__MATERIALS__WID__59C55456" />
-        <AssociationConnector Association="BaseModel.FK__MATERIALS__WID__5E8A0973" />
-        <AssociationConnector Association="BaseModel.FK__MATERIALS__WID__65370702" />
-        <AssociationConnector Association="BaseModel.FK__MATREMAIN__MATID__04AFB25B" />
-        <AssociationConnector Association="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" />
-        <AssociationConnector Association="BaseModel.FK__WMATTURN__MATID__3AD6B8E2" />
-        <AssociationConnector Association="BaseModel.FK_MATERIAL_REFERENCE_MEASURES" />
-        <AssociationConnector Association="BaseModel.FK_MATRECIPE_1" />
-        <AssociationConnector Association="BaseModel.FK_MP_MATID" />
-        <AssociationConnector Association="BaseModel.FK_TAXWBDET_REFERENCE_MATERIAL" />
-        <AssociationConnector Association="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" />
         <EntityTypeShape EntityType="BaseModel.CommonParams" Width="1.5" PointX="3.6324706932681012" PointY="25.40226584365697" />
         <EntityTypeShape EntityType="BaseModel.KAgentSaldo" Width="1.5" PointX="1.9101578434510891" PointY="9.734666530850653" />
         <AssociationConnector Association="BaseModel.FK_KAS_KAID" />
@@ -227,6 +203,28 @@
         <AssociationConnector Association="BaseModel.FK_RETREL_OUTPOSID" />
         <AssociationConnector Association="BaseModel.FK_RETREL_POSID" />
         <AssociationConnector Association="BaseModel.FK_RETREL_PPOSID" />
+        <EntityTypeShape EntityType="BaseModel.Materials" Width="1.5" PointX="0.89125244733470133" PointY="3.0501868739026539" />
+        <EntityTypeShape EntityType="BaseModel.MatGroup" Width="1.5" PointX="5.06140572813405" PointY="25.430168983261179" />
+        <AssociationConnector Association="BaseModel.FK_CONTRDET_REFERENCE_MATERIAL" />
+        <AssociationConnector Association="BaseModel.FK__MATERIALS__CID__662B2B3B" />
+        <AssociationConnector Association="BaseModel.FK_DEBONINGDET_MATERIALS" />
+        <AssociationConnector Association="BaseModel.FK__KAMATDISC__MATID__32AB8735" />
+        <AssociationConnector Association="BaseModel.FK__KAMATGROU__GRPID__395884C4" />
+        <AssociationConnector Association="BaseModel.FK_MATCHANGE_CHANGEID" />
+        <AssociationConnector Association="BaseModel.FK_MATCHANGE_MATID" />
+        <AssociationConnector Association="BaseModel.FK__MATERIALS__GRPID__58D1301D" />
+        <AssociationConnector Association="BaseModel.FK__MATERIALS__WID__59C55456" />
+        <AssociationConnector Association="BaseModel.FK__MATERIALS__WID__5E8A0973" />
+        <AssociationConnector Association="BaseModel.FK__MATERIALS__WID__65370702" />
+        <AssociationConnector Association="BaseModel.FK__MATREMAIN__MATID__04AFB25B" />
+        <AssociationConnector Association="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" />
+        <AssociationConnector Association="BaseModel.FK__WMATTURN__MATID__3AD6B8E2" />
+        <AssociationConnector Association="BaseModel.FK_MATERIAL_REFERENCE_MEASURES" />
+        <AssociationConnector Association="BaseModel.FK_MATRECIPE_1" />
+        <AssociationConnector Association="BaseModel.FK_MP_MATID" />
+        <AssociationConnector Association="BaseModel.FK_TAXWBDET_REFERENCE_MATERIAL" />
+        <AssociationConnector Association="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" />
+        <AssociationConnector Association="BaseModel.FK_MGP_MATID" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" >
         <EntityTypeShape EntityType="BaseModel.MaterialsList" Width="1.5" PointX="8.3328528592050315" PointY="13.042403614633905" />

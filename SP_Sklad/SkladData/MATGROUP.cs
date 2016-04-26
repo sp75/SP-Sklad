@@ -12,29 +12,25 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class MATGROUP
+    public partial class MatGroup
     {
-        public MATGROUP()
+        public MatGroup()
         {
             this.KAMATGROUPDISCOUNT = new HashSet<KAMATGROUPDISCOUNT>();
-            this.MATGROUPPRICES = new HashSet<MATGROUPPRICES>();
             this.Materials = new HashSet<Materials>();
-            this.Materials1 = new HashSet<Materials>();
-            this.Materials2 = new HashSet<Materials>();
+            this.MATGROUPPRICES = new HashSet<MATGROUPPRICES>();
         }
     
-        public int GRPID { get; set; }
-        public int PID { get; set; }
-        public string NAME { get; set; }
-        public int DELETED { get; set; }
-        public Nullable<decimal> NDS { get; set; }
-        public string NOTES { get; set; }
-        public Nullable<decimal> NUM { get; set; }
+        public int GrpId { get; set; }
+        public int PId { get; set; }
+        public string Name { get; set; }
+        public int Deleted { get; set; }
+        public Nullable<decimal> Nds { get; set; }
+        public string Notes { get; set; }
+        public Nullable<decimal> Num { get; set; }
     
         public virtual ICollection<KAMATGROUPDISCOUNT> KAMATGROUPDISCOUNT { get; set; }
-        public virtual ICollection<MATGROUPPRICES> MATGROUPPRICES { get; set; }
         public virtual ICollection<Materials> Materials { get; set; }
-        public virtual ICollection<Materials> Materials1 { get; set; }
-        public virtual ICollection<Materials> Materials2 { get; set; }
+        public virtual ICollection<MATGROUPPRICES> MATGROUPPRICES { get; set; }
     }
 }

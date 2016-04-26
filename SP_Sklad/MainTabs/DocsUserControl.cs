@@ -192,12 +192,15 @@ namespace SP_Sklad.MainTabs
                 gridControl2.DataSource = _db.GetWaybillDetIn(dr.WbillId);
                 gridControl3.DataSource = _db.GetRelDocList(dr.DocId);
             }
+            else
+            {
+                gridControl2.DataSource = null;
+                gridControl3.DataSource = null;
+            }
 
-            var tree_row = DocsTreeList.GetDataRecordByNode(DocsTreeList.FocusedNode) as v_GetDocsTree;
-
-            DeleteItemBtn.Enabled = (dr!= null && dr.Checked == 0 && tree_row.CanDelete == 1);
-            ExecuteItemBtn.Enabled = (dr != null && dr.WType != 2 && dr.WType != -16 && dr.WType != 16 && tree_row.CanPost == 1);
-            EditItemBtn.Enabled = (dr != null && tree_row.CanModify == 1);
+            DeleteItemBtn.Enabled = (dr != null && dr.Checked == 0 && focused_tree_node.CanDelete == 1);
+            ExecuteItemBtn.Enabled = (dr != null && dr.WType != 2 && dr.WType != -16 && dr.WType != 16 && focused_tree_node.CanPost == 1);
+            EditItemBtn.Enabled = (dr != null && focused_tree_node.CanModify == 1);
             CopyItemBtn.Enabled = EditItemBtn.Enabled;
             PrintItemBtn.Enabled = (dr != null);
         }

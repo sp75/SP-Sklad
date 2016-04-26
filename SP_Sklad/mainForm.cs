@@ -21,7 +21,11 @@ namespace SP_Sklad
 
         private void mainForm_Load(object sender, EventArgs e)
         {
-            docsUserControl1.OnLoad();
+            using (var db  = new BaseEntities())
+            {
+               docsUserControl1.OnLoad();
+               whUserControl.OnLoad(db);
+            }
         }
     }
 

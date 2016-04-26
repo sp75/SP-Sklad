@@ -38,7 +38,7 @@ namespace SP_Sklad.SkladData
         public int Deleted { get; set; }
         public Nullable<int> GrpId { get; set; }
         public Nullable<int> WId { get; set; }
-        public Nullable<decimal> MinRserv { get; set; }
+        public Nullable<decimal> MinReserv { get; set; }
         public Nullable<int> CId { get; set; }
         public Nullable<int> DemandCat { get; set; }
         public string BarCode { get; set; }
@@ -62,9 +62,7 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<KAMATDISCOUNT> KAMATDISCOUNT { get; set; }
         public virtual ICollection<MATCHANGE> MATCHANGE { get; set; }
         public virtual ICollection<MATCHANGE> MATCHANGE1 { get; set; }
-        public virtual MATGROUP MATGROUP { get; set; }
-        public virtual MATGROUP MATGROUP1 { get; set; }
-        public virtual MATGROUP MATGROUP2 { get; set; }
+        public virtual MatGroup MatGroup { get; set; }
         public virtual WAREHOUSE WAREHOUSE { get; set; }
         public virtual WAREHOUSE WAREHOUSE1 { get; set; }
         public virtual WAREHOUSE WAREHOUSE2 { get; set; }

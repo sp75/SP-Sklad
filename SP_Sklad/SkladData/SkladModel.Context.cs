@@ -58,7 +58,6 @@ namespace SP_Sklad.SkladData
         public DbSet<KAMATGROUPDISCOUNT> KAMATGROUPDISCOUNT { get; set; }
         public DbSet<LANGUAGES> LANGUAGES { get; set; }
         public DbSet<MATCHANGE> MATCHANGE { get; set; }
-        public DbSet<MATGROUP> MATGROUP { get; set; }
         public DbSet<MATGROUPPRICES> MATGROUPPRICES { get; set; }
         public DbSet<MATPRICES> MATPRICES { get; set; }
         public DbSet<MATRECDET> MATRECDET { get; set; }
@@ -110,12 +109,13 @@ namespace SP_Sklad.SkladData
         public DbSet<Users> Users { get; set; }
         public DbSet<KagentList> KagentList { get; set; }
         public DbSet<Currency> Currency { get; set; }
-        public DbSet<Materials> Materials { get; set; }
         public DbSet<CommonParams> CommonParams { get; set; }
         public DbSet<KAgentSaldo> KAgentSaldo { get; set; }
         public DbSet<PriceTypes> PriceTypes { get; set; }
         public DbSet<v_PosInList> v_PosInList { get; set; }
         public DbSet<ReturnRel> ReturnRel { get; set; }
+        public DbSet<Materials> Materials { get; set; }
+        public DbSet<MatGroup> MatGroup { get; set; }
     
         [EdmFunction("BaseEntities", "GetMatGroupTree")]
         public virtual IQueryable<GetMatGroupTree_Result> GetMatGroupTree(Nullable<int> root_cat_id)
@@ -371,78 +371,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("WH", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SP_WB_LIST_WH_Result>("[BaseEntities].[SP_WB_LIST_WH](@IN_FROMDATE, @IN_TODATE, @IN_WTYPE, @IN_CHECKED, @WH)", iN_FROMDATEParameter, iN_TODATEParameter, iN_WTYPEParameter, iN_CHECKEDParameter, wHParameter);
-        }
-    
-        [EdmFunction("BaseEntities", "SP_WMAT_GET")]
-        public virtual IQueryable<SP_WMAT_GET_Result> SP_WMAT_GET(Nullable<int> gRPID, Nullable<int> wID, Nullable<int> kAID, Nullable<System.DateTime> oNDATE, Nullable<int> gETEMPTY, string wH, Nullable<int> sHOWALLMATS, string gRP, Nullable<int> uSERID, Nullable<int> gET_CHILD_NODE)
-        {
-            var gRPIDParameter = gRPID.HasValue ?
-                new ObjectParameter("GRPID", gRPID) :
-                new ObjectParameter("GRPID", typeof(int));
-    
-            var wIDParameter = wID.HasValue ?
-                new ObjectParameter("WID", wID) :
-                new ObjectParameter("WID", typeof(int));
-    
-            var kAIDParameter = kAID.HasValue ?
-                new ObjectParameter("KAID", kAID) :
-                new ObjectParameter("KAID", typeof(int));
-    
-            var oNDATEParameter = oNDATE.HasValue ?
-                new ObjectParameter("ONDATE", oNDATE) :
-                new ObjectParameter("ONDATE", typeof(System.DateTime));
-    
-            var gETEMPTYParameter = gETEMPTY.HasValue ?
-                new ObjectParameter("GETEMPTY", gETEMPTY) :
-                new ObjectParameter("GETEMPTY", typeof(int));
-    
-            var wHParameter = wH != null ?
-                new ObjectParameter("WH", wH) :
-                new ObjectParameter("WH", typeof(string));
-    
-            var sHOWALLMATSParameter = sHOWALLMATS.HasValue ?
-                new ObjectParameter("SHOWALLMATS", sHOWALLMATS) :
-                new ObjectParameter("SHOWALLMATS", typeof(int));
-    
-            var gRPParameter = gRP != null ?
-                new ObjectParameter("GRP", gRP) :
-                new ObjectParameter("GRP", typeof(string));
-    
-            var uSERIDParameter = uSERID.HasValue ?
-                new ObjectParameter("USERID", uSERID) :
-                new ObjectParameter("USERID", typeof(int));
-    
-            var gET_CHILD_NODEParameter = gET_CHILD_NODE.HasValue ?
-                new ObjectParameter("GET_CHILD_NODE", gET_CHILD_NODE) :
-                new ObjectParameter("GET_CHILD_NODE", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SP_WMAT_GET_Result>("[BaseEntities].[SP_WMAT_GET](@GRPID, @WID, @KAID, @ONDATE, @GETEMPTY, @WH, @SHOWALLMATS, @GRP, @USERID, @GET_CHILD_NODE)", gRPIDParameter, wIDParameter, kAIDParameter, oNDATEParameter, gETEMPTYParameter, wHParameter, sHOWALLMATSParameter, gRPParameter, uSERIDParameter, gET_CHILD_NODEParameter);
-        }
-    
-        [EdmFunction("BaseEntities", "SP_WMAT_GET_BY_WH")]
-        public virtual IQueryable<SP_WMAT_GET_BY_WH_Result> SP_WMAT_GET_BY_WH(Nullable<int> mATID, Nullable<int> w_ID, Nullable<int> kAID, Nullable<System.DateTime> oNDATE, string wH)
-        {
-            var mATIDParameter = mATID.HasValue ?
-                new ObjectParameter("MATID", mATID) :
-                new ObjectParameter("MATID", typeof(int));
-    
-            var w_IDParameter = w_ID.HasValue ?
-                new ObjectParameter("W_ID", w_ID) :
-                new ObjectParameter("W_ID", typeof(int));
-    
-            var kAIDParameter = kAID.HasValue ?
-                new ObjectParameter("KAID", kAID) :
-                new ObjectParameter("KAID", typeof(int));
-    
-            var oNDATEParameter = oNDATE.HasValue ?
-                new ObjectParameter("ONDATE", oNDATE) :
-                new ObjectParameter("ONDATE", typeof(System.DateTime));
-    
-            var wHParameter = wH != null ?
-                new ObjectParameter("WH", wH) :
-                new ObjectParameter("WH", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SP_WMAT_GET_BY_WH_Result>("[BaseEntities].[SP_WMAT_GET_BY_WH](@MATID, @W_ID, @KAID, @ONDATE, @WH)", mATIDParameter, w_IDParameter, kAIDParameter, oNDATEParameter, wHParameter);
         }
     
         [EdmFunction("BaseEntities", "SP_WMAT_GET_BY_WHLIST")]
@@ -1148,6 +1076,91 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("wbill_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetOrderedInSuppliers_Result>("GetOrderedInSuppliers", wbill_idParameter);
+        }
+    
+        public virtual ObjectResult<GetWhTree_Result> GetWhTree(Nullable<int> user_id, Nullable<int> type_tree)
+        {
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            var type_treeParameter = type_tree.HasValue ?
+                new ObjectParameter("type_tree", type_tree) :
+                new ObjectParameter("type_tree", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetWhTree_Result>("GetWhTree", user_idParameter, type_treeParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "WhMatGet")]
+        public virtual IQueryable<WhMatGet_Result> WhMatGet(Nullable<int> grp_id, Nullable<int> wid, Nullable<int> ka_id, Nullable<System.DateTime> on_date, Nullable<int> get_empty, string wh, Nullable<int> show_all_mats, string grp, Nullable<int> user_id, Nullable<int> get_child_node)
+        {
+            var grp_idParameter = grp_id.HasValue ?
+                new ObjectParameter("grp_id", grp_id) :
+                new ObjectParameter("grp_id", typeof(int));
+    
+            var widParameter = wid.HasValue ?
+                new ObjectParameter("wid", wid) :
+                new ObjectParameter("wid", typeof(int));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var on_dateParameter = on_date.HasValue ?
+                new ObjectParameter("on_date", on_date) :
+                new ObjectParameter("on_date", typeof(System.DateTime));
+    
+            var get_emptyParameter = get_empty.HasValue ?
+                new ObjectParameter("get_empty", get_empty) :
+                new ObjectParameter("get_empty", typeof(int));
+    
+            var whParameter = wh != null ?
+                new ObjectParameter("wh", wh) :
+                new ObjectParameter("wh", typeof(string));
+    
+            var show_all_matsParameter = show_all_mats.HasValue ?
+                new ObjectParameter("show_all_mats", show_all_mats) :
+                new ObjectParameter("show_all_mats", typeof(int));
+    
+            var grpParameter = grp != null ?
+                new ObjectParameter("grp", grp) :
+                new ObjectParameter("grp", typeof(string));
+    
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            var get_child_nodeParameter = get_child_node.HasValue ?
+                new ObjectParameter("get_child_node", get_child_node) :
+                new ObjectParameter("get_child_node", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<WhMatGet_Result>("[BaseEntities].[WhMatGet](@grp_id, @wid, @ka_id, @on_date, @get_empty, @wh, @show_all_mats, @grp, @user_id, @get_child_node)", grp_idParameter, widParameter, ka_idParameter, on_dateParameter, get_emptyParameter, whParameter, show_all_matsParameter, grpParameter, user_idParameter, get_child_nodeParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "WMatGetByWh")]
+        public virtual IQueryable<WMatGetByWh_Result> WMatGetByWh(Nullable<int> mat_id, Nullable<int> w_id, Nullable<int> ka_id, Nullable<System.DateTime> on_date, string wh)
+        {
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            var w_idParameter = w_id.HasValue ?
+                new ObjectParameter("w_id", w_id) :
+                new ObjectParameter("w_id", typeof(int));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var on_dateParameter = on_date.HasValue ?
+                new ObjectParameter("on_date", on_date) :
+                new ObjectParameter("on_date", typeof(System.DateTime));
+    
+            var whParameter = wh != null ?
+                new ObjectParameter("wh", wh) :
+                new ObjectParameter("wh", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<WMatGetByWh_Result>("[BaseEntities].[WMatGetByWh](@mat_id, @w_id, @ka_id, @on_date, @wh)", mat_idParameter, w_idParameter, ka_idParameter, on_dateParameter, whParameter);
         }
     }
 }

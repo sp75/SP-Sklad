@@ -23,9 +23,9 @@ namespace SP_Sklad.SkladData
         public Nullable<int> WITHNDS { get; set; }
         public int DIS { get; set; }
     
-        public virtual MATGROUP MATGROUP { get; set; }
         public virtual Currency Currency { get; set; }
         public virtual PriceTypes PriceTypes { get; set; }
         public virtual PriceTypes PriceTypes1 { get; set; }
+        public virtual MatGroup MatGroup { get; set; }
     }
 }

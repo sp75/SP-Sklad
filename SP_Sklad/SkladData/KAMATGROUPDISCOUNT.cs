@@ -19,7 +19,7 @@ namespace SP_Sklad.SkladData
         public int GRPID { get; set; }
         public decimal ONVALUE { get; set; }
     
-        public virtual MATGROUP MATGROUP { get; set; }
         public virtual Kagent Kagent { get; set; }
+        public virtual MatGroup MatGroup { get; set; }
     }
 }
