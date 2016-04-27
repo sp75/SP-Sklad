@@ -385,7 +385,8 @@ namespace SP_Sklad.WBForm
 
         private void NowDateBtn_Click(object sender, EventArgs e)
         {
-            OnDateDBEdit.DateTime = DBHelper.ServerDateTime();
+            wb.OnDate = DBHelper.ServerDateTime();
+            OnDateDBEdit.DateTime = wb.OnDate;
         }
 
 

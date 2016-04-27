@@ -535,11 +535,23 @@
     <Compile Include="WBDetForm\frmWBReturnDetIn.Designer.cs">
       <DependentUpon>frmWBReturnDetIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBDetForm\frmWBReturnDetOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBDetForm\frmWBReturnDetOut.Designer.cs">
+      <DependentUpon>frmWBReturnDetOut.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBForm\frmWayBillIn.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="WBForm\frmWayBillIn.Designer.cs">
       <DependentUpon>frmWayBillIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WBForm\frmWayBillMove.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\frmWayBillMove.Designer.cs">
+      <DependentUpon>frmWayBillMove.cs</DependentUpon>
     </Compile>
     <Compile Include="WBForm\frmWayBillOut.cs">
       <SubType>Form</SubType>
@@ -588,8 +600,14 @@
     <EmbeddedResource Include="WBDetForm\frmWBReturnDetIn.resx">
       <DependentUpon>frmWBReturnDetIn.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WBDetForm\frmWBReturnDetOut.resx">
+      <DependentUpon>frmWBReturnDetOut.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWayBillIn.resx">
       <DependentUpon>frmWayBillIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\frmWayBillMove.resx">
+      <DependentUpon>frmWayBillMove.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWayBillOut.resx">
       <DependentUpon>frmWayBillOut.cs</DependentUpon>
