@@ -12,18 +12,18 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class KAADDR
+    public partial class KaAddr
     {
-        public int ADDRID { get; set; }
-        public int KAID { get; set; }
-        public int ADDRTYPE { get; set; }
-        public string COUNTRY { get; set; }
-        public string CITY { get; set; }
-        public string DISTRICT { get; set; }
-        public string ADDRESS { get; set; }
-        public string POSTINDEX { get; set; }
-        public string REGION { get; set; }
-        public Nullable<int> CITYTYPE { get; set; }
+        public int AddrId { get; set; }
+        public int KaId { get; set; }
+        public int AddrType { get; set; }
+        public string Country { get; set; }
+        public string City { get; set; }
+        public string District { get; set; }
+        public string Address { get; set; }
+        public string PostIndex { get; set; }
+        public string Region { get; set; }
+        public Nullable<int> CityType { get; set; }
     
         public virtual Kagent Kagent { get; set; }
     }

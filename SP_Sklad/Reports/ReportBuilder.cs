@@ -29,10 +29,16 @@ namespace SpreadsheetReportBuilder
                     object row = dictionary[obj.Key][0];
                     Type type = row.GetType();
                     PropertyInfo[] pi = type.GetProperties();
+
                     foreach (PropertyInfo info in pi)
                     {
-                        PropertyInfo p = type.GetProperty(info.Name);
-                        dataTable.Columns.Add(info.Name, p.GetValue(row, null).GetType());
+                        Type colType = info.PropertyType;
+
+                        if ((colType.IsGenericType) && (colType.GetGenericTypeDefinition() == typeof(Nullable<>)))
+                        {
+                            colType = colType.GetGenericArguments()[0];
+                        }
+                        dataTable.Columns.Add(info.Name, colType);
                     }
 
                     foreach (Object Data in obj.Value)
@@ -44,8 +50,10 @@ namespace SpreadsheetReportBuilder
                         foreach (PropertyInfo pin in pis)
                         {
                             PropertyInfo propertyInfo = personType.GetProperty(pin.Name);
-                            newRow[pin.Name] = propertyInfo.GetValue(Data, null);
+                            newRow[pin.Name] = propertyInfo.GetValue(Data, null) ?? DBNull.Value;//  propertyInfo.GetValue(Data, null);
                         }
+
+
                         dataTable.Rows.Add(newRow);
                     }
                 }
@@ -63,10 +71,9 @@ namespace SpreadsheetReportBuilder
                     String child_table = dataRow["child_table"].ToString();
                     dataSet.Relations.Add(child_table + "=>" + master_table, dataSet.Tables[master_table].Columns[pk], dataSet.Tables[child_table].Columns[fk]);
                 }
+                dataSet.Tables.Remove("_realation_");
             }
-            dataSet.Tables.Remove("_realation_");
-
-
+            
             return GenerateReport(dataSet, templateFileName, OutFile, protectionSheet);
         }
 

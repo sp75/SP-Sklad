@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWayBillIn));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
-            this.PrevievBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.PrintBtn = new DevExpress.XtraBars.BarButtonItem();
             this.KagBalBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
@@ -139,7 +139,7 @@
             this.barManager1.Form = this;
             this.barManager1.Images = this.WBImgList;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.PrevievBtn,
+            this.PrintBtn,
             this.KagBalBtn,
             this.EditMaterialBtn,
             this.DelMaterialBtn,
@@ -163,7 +163,7 @@
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.FloatLocation = new System.Drawing.Point(275, 401);
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.PrevievBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.PrintBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.KagBalBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
@@ -172,12 +172,13 @@
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
             // 
-            // PrevievBtn
+            // PrintBtn
             // 
-            this.PrevievBtn.Caption = "Переглянути друковану форму накладної";
-            this.PrevievBtn.Id = 0;
-            this.PrevievBtn.ImageIndex = 0;
-            this.PrevievBtn.Name = "PrevievBtn";
+            this.PrintBtn.Caption = "Переглянути друковану форму накладної";
+            this.PrintBtn.Id = 0;
+            this.PrintBtn.ImageIndex = 0;
+            this.PrintBtn.Name = "PrintBtn";
+            this.PrintBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrintBtn_ItemClick);
             // 
             // KagBalBtn
             // 
@@ -922,7 +923,7 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraBars.BarButtonItem PrevievBtn;
+        private DevExpress.XtraBars.BarButtonItem PrintBtn;
         private DevExpress.XtraBars.BarButtonItem KagBalBtn;
         private DevExpress.XtraEditors.PanelControl panelControl3;
         private DevExpress.XtraEditors.PanelControl panelControl2;

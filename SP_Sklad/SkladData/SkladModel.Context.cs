@@ -32,7 +32,6 @@ namespace SP_Sklad.SkladData
         public DbSet<BANKS> BANKS { get; set; }
         public DbSet<BANKSPERSONS> BANKSPERSONS { get; set; }
         public DbSet<BLOBS> BLOBS { get; set; }
-        public DbSet<CITYTYPE> CITYTYPE { get; set; }
         public DbSet<COMMISSION> COMMISSION { get; set; }
         public DbSet<CONTRACTS> CONTRACTS { get; set; }
         public DbSet<CONTRDET> CONTRDET { get; set; }
@@ -47,7 +46,6 @@ namespace SP_Sklad.SkladData
         public DbSet<DOCTYP> DOCTYP { get; set; }
         public DbSet<ENTPARAMS> ENTPARAMS { get; set; }
         public DbSet<FUNCTIONS> FUNCTIONS { get; set; }
-        public DbSet<KAADDR> KAADDR { get; set; }
         public DbSet<KADISCOUNT> KADISCOUNT { get; set; }
         public DbSet<KAGENTACCOUNT> KAGENTACCOUNT { get; set; }
         public DbSet<KAGENTDOC> KAGENTDOC { get; set; }
@@ -85,11 +83,9 @@ namespace SP_Sklad.SkladData
         public DbSet<USERTREE> USERTREE { get; set; }
         public DbSet<USERTREEVIEW> USERTREEVIEW { get; set; }
         public DbSet<VIEWLNG> VIEWLNG { get; set; }
-        public DbSet<WAREHOUSE> WAREHOUSE { get; set; }
         public DbSet<WAYBILLDETADDPROPS> WAYBILLDETADDPROPS { get; set; }
         public DbSet<WAYBILLDETTAXES> WAYBILLDETTAXES { get; set; }
         public DbSet<WAYBILLMAKE> WAYBILLMAKE { get; set; }
-        public DbSet<WAYBILLMOVE> WAYBILLMOVE { get; set; }
         public DbSet<WAYBILLSVC> WAYBILLSVC { get; set; }
         public DbSet<USER_TREE_ACCESS> USER_TREE_ACCESS { get; set; }
         public DbSet<USERACCESS> USERACCESS { get; set; }
@@ -116,6 +112,13 @@ namespace SP_Sklad.SkladData
         public DbSet<ReturnRel> ReturnRel { get; set; }
         public DbSet<Materials> Materials { get; set; }
         public DbSet<MatGroup> MatGroup { get; set; }
+        public DbSet<CityType> CityType { get; set; }
+        public DbSet<Counters> Counters { get; set; }
+        public DbSet<KaAddr> KaAddr { get; set; }
+        public DbSet<TAXREESTRTYPE> TAXREESTRTYPE { get; set; }
+        public DbSet<Warehouse> Warehouse { get; set; }
+        public DbSet<v_WaybillList> v_WaybillList { get; set; }
+        public DbSet<WaybillMove> WaybillMove { get; set; }
     
         [EdmFunction("BaseEntities", "GetMatGroupTree")]
         public virtual IQueryable<GetMatGroupTree_Result> GetMatGroupTree(Nullable<int> root_cat_id)

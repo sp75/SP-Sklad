@@ -63,9 +63,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<MATCHANGE> MATCHANGE { get; set; }
         public virtual ICollection<MATCHANGE> MATCHANGE1 { get; set; }
         public virtual MatGroup MatGroup { get; set; }
-        public virtual WAREHOUSE WAREHOUSE { get; set; }
-        public virtual WAREHOUSE WAREHOUSE1 { get; set; }
-        public virtual WAREHOUSE WAREHOUSE2 { get; set; }
         public virtual ICollection<MATREMAINS> MATREMAINS { get; set; }
         public virtual ICollection<POSREMAINS> POSREMAINS { get; set; }
         public virtual ICollection<WMatTurn> WMatTurn { get; set; }
@@ -74,5 +71,8 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<MATPRICES> MATPRICES { get; set; }
         public virtual ICollection<TAXWBDET> TAXWBDET { get; set; }
         public virtual ICollection<WaybillDet> WaybillDet { get; set; }
+        public virtual Warehouse Warehouse { get; set; }
+        public virtual Warehouse Warehouse1 { get; set; }
+        public virtual Warehouse Warehouse2 { get; set; }
     }
 }

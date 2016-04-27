@@ -23,12 +23,10 @@ namespace SP_Sklad.SkladData
             this.CONTRACTS = new HashSet<CONTRACTS>();
             this.CONTRACTS1 = new HashSet<CONTRACTS>();
             this.DISCCARDS = new HashSet<DISCCARDS>();
-            this.KAADDR = new HashSet<KAADDR>();
             this.KAMATDISCOUNT = new HashSet<KAMATDISCOUNT>();
             this.KAMATGROUPDISCOUNT = new HashSet<KAMATGROUPDISCOUNT>();
             this.TAXWB = new HashSet<TAXWB>();
             this.WaybillList = new HashSet<WaybillList>();
-            this.WAYBILLMOVE = new HashSet<WAYBILLMOVE>();
             this.KAGENTACCOUNT = new HashSet<KAGENTACCOUNT>();
             this.KAGENTDOC = new HashSet<KAGENTDOC>();
             this.KAGENTPERSONS = new HashSet<KAGENTPERSONS>();
@@ -41,6 +39,8 @@ namespace SP_Sklad.SkladData
             this.PayDoc = new HashSet<PayDoc>();
             this.PayDoc1 = new HashSet<PayDoc>();
             this.KAgentSaldo = new HashSet<KAgentSaldo>();
+            this.KaAddr = new HashSet<KaAddr>();
+            this.WaybillMove = new HashSet<WaybillMove>();
         }
     
         public int KaId { get; set; }
@@ -80,13 +80,11 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<CONTRACTS> CONTRACTS { get; set; }
         public virtual ICollection<CONTRACTS> CONTRACTS1 { get; set; }
         public virtual ICollection<DISCCARDS> DISCCARDS { get; set; }
-        public virtual ICollection<KAADDR> KAADDR { get; set; }
         public virtual KADISCOUNT KADISCOUNT { get; set; }
         public virtual ICollection<KAMATDISCOUNT> KAMATDISCOUNT { get; set; }
         public virtual ICollection<KAMATGROUPDISCOUNT> KAMATGROUPDISCOUNT { get; set; }
         public virtual ICollection<TAXWB> TAXWB { get; set; }
         public virtual ICollection<WaybillList> WaybillList { get; set; }
-        public virtual ICollection<WAYBILLMOVE> WAYBILLMOVE { get; set; }
         public virtual ICollection<KAGENTACCOUNT> KAGENTACCOUNT { get; set; }
         public virtual ICollection<KAGENTDOC> KAGENTDOC { get; set; }
         public virtual ICollection<KAGENTPERSONS> KAGENTPERSONS { get; set; }
@@ -100,5 +98,7 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<PayDoc> PayDoc1 { get; set; }
         public virtual Users Users { get; set; }
         public virtual ICollection<KAgentSaldo> KAgentSaldo { get; set; }
+        public virtual ICollection<KaAddr> KaAddr { get; set; }
+        public virtual ICollection<WaybillMove> WaybillMove { get; set; }
     }
 }

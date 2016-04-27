@@ -1,20 +1,80 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using SP_Sklad.SkladData;
 using SpreadsheetReportBuilder;
 
 namespace SP_Sklad.Reports
 {
-    class PrintWB
+    class PrintDoc
     {
-        void WayBillInReport(int wbill_id, BaseEntities db)
+        public static string template_path
         {
+            get
+            {
+#if DEBUG
+                return Path.Combine(@"c:\WinVSProjects\SP-Sklad\SP_Sklad\", "TempLate");
+#else
+               return Path.Combine(Application.StartupPath, "TempLate" );
+#endif
+            }
+        }
 
-     //       ReportBuilder.GenerateReport(dataForReport, @"C:\Temp\Temleyt.xlsx", @"C:\Temp\TemleytRez.xlsx", false);
+        public static string rep_path
+        {
+            get
+            {
+#if DEBUG
+                return Path.Combine(@"c:\WinVSProjects\SP-Sklad\SP_Sklad\", "Rep");
+#else
+               return Path.Combine(Application.StartupPath, "Rep" );
+#endif
+            }
+        }
+
+        public static void Show(int doc_id, int doc_type, BaseEntities db)
+        {
+            db.SaveChanges();
+
+            switch (doc_type)
+            {
+                case 1:
+                    WayBillInReport(doc_id, db, TemlateList.wb_in);
+                    break;
+
+                case -1:
+                    WayBillInReport(doc_id, db, TemlateList.wb_out);
+                    break;
+            }
+        }
+
+        public static void WayBillInReport(int doc_id, BaseEntities db, string template_name)
+        {
+            var dataForReport = new Dictionary<string, IList>();
+
+            String result_file = Path.Combine(rep_path, template_name);
+            String template_file = Path.Combine(template_path, template_name);
+
+            var wb = db.v_WaybillList.Where(w => w.DocId == doc_id).ToList();
+
+            dataForReport.Add("WayBillList", wb);
+            dataForReport.Add("range1", db.GetWaybillDetIn(wb.First().WbillId).ToList());
+
+            if (File.Exists(template_file))
+            {
+                ReportBuilder.GenerateReport(dataForReport, template_file, result_file, false);
+            }
+
+            if (File.Exists(result_file))
+            {
+                Process.Start(result_file);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -113,15 +173,7 @@ namespace SP_Sklad.Reports
             dataForReport.Add("child_range_2", child2);
             dataForReport.Add("_realation_", rel);
 
-
-
-            //  FormulaExcel.CalculationlFormulaExcel.CalcSpreadsheetDocument(ReportBuilderXLS.GenerateReport(dataForReport, @".\Temleyt.xlsx", false), true, @".\TemleytRez.xlsx");
-            //    ReportBuilderXLS.GenerateReport(dataForReport, @".\Temleyt.xlsx", @".\TemleytRez.xlsx", false);
-            //    Process.Start(@".\TemleytRez.xlsx");
-
             ReportBuilder.GenerateReport(dataForReport, @"C:\Temp\Temleyt.xlsx", @"C:\Temp\TemleytRez.xlsx", false);
-
-
 
         }
 

@@ -15,6 +15,7 @@ using System.Data.Linq;
 using EntityState = System.Data.Entity.EntityState;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
+using SP_Sklad.Reports;
 
 namespace SP_Sklad.WBForm
 {
@@ -78,7 +79,7 @@ namespace SP_Sklad.WBForm
 
             var wh_list = DBHelper.WhList();
             WHComboBox.Properties.DataSource = wh_list;
-            WHComboBox.EditValue = wh_list.Where(w => w.DEF == 1).Select(s => s.WID).FirstOrDefault();
+            WHComboBox.EditValue = wh_list.Where(w => w.Def == 1).Select(s => s.WId).FirstOrDefault();
 
             RefreshDet();
         }
@@ -286,6 +287,11 @@ namespace SP_Sklad.WBForm
             var wbd = _db.WaybillDet.Find(dr.PosId);
 
             wbd.Amount = Convert.ToDecimal(e.Value);
+        }
+
+        private void PrintBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            PrintDoc.Show(wb.DocId.Value, wb.WType, _db);
         }
 
 

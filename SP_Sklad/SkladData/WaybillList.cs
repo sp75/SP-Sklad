@@ -21,9 +21,9 @@ namespace SP_Sklad.SkladData
             this.TECHPROCDET = new HashSet<TECHPROCDET>();
             this.WAYBILLDETADDPROPS = new HashSet<WAYBILLDETADDPROPS>();
             this.WAYBILLMAKE = new HashSet<WAYBILLMAKE>();
-            this.WAYBILLMOVE = new HashSet<WAYBILLMOVE>();
             this.WAYBILLSVC = new HashSet<WAYBILLSVC>();
             this.WaybillDet = new HashSet<WaybillDet>();
+            this.WaybillMove = new HashSet<WaybillMove>();
         }
     
         public int WbillId { get; set; }
@@ -57,12 +57,12 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<TECHPROCDET> TECHPROCDET { get; set; }
         public virtual ICollection<WAYBILLDETADDPROPS> WAYBILLDETADDPROPS { get; set; }
         public virtual ICollection<WAYBILLMAKE> WAYBILLMAKE { get; set; }
-        public virtual ICollection<WAYBILLMOVE> WAYBILLMOVE { get; set; }
         public virtual ICollection<WAYBILLSVC> WAYBILLSVC { get; set; }
         public virtual ICollection<WaybillDet> WaybillDet { get; set; }
         public virtual Kagent Kagent { get; set; }
         public virtual Kagent Kagent1 { get; set; }
         public virtual Kagent Kagent2 { get; set; }
         public virtual Currency Currency { get; set; }
+        public virtual ICollection<WaybillMove> WaybillMove { get; set; }
     }
 }

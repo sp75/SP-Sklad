@@ -56,7 +56,6 @@ namespace SP_Sklad.SkladData
     
         public virtual ICollection<POSREMAINS> POSREMAINS { get; set; }
         public virtual ICollection<SERIALS> SERIALS { get; set; }
-        public virtual WAREHOUSE WAREHOUSE { get; set; }
         public virtual WaybillList WaybillList { get; set; }
         public virtual WAYBILLDETADDPROPS WAYBILLDETADDPROPS { get; set; }
         public virtual ICollection<WAYBILLDETTAXES> WAYBILLDETTAXES { get; set; }
@@ -73,5 +72,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<ReturnRel> ReturnRel2 { get; set; }
         public virtual ICollection<ReturnRel> ReturnRel3 { get; set; }
         public virtual Materials Materials { get; set; }
+        public virtual Warehouse Warehouse { get; set; }
     }
 }

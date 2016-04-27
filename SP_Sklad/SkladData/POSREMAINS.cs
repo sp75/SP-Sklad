@@ -24,8 +24,8 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> INWAY { get; set; }
         public Nullable<decimal> ORDERED { get; set; }
     
-        public virtual WAREHOUSE WAREHOUSE { get; set; }
         public virtual WaybillDet WaybillDet { get; set; }
         public virtual Materials Materials { get; set; }
+        public virtual Warehouse Warehouse { get; set; }
     }
 }

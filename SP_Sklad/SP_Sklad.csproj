@@ -102,8 +102,9 @@
     <Compile Include="MainTabs\WarehouseUserControl.Designer.cs">
       <DependentUpon>WarehouseUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\PrintWB.cs" />
+    <Compile Include="Reports\PrintDoc.cs" />
     <Compile Include="Reports\ReportBuilder.cs" />
+    <Compile Include="Reports\TemlateList.cs" />
     <Compile Include="SkladData\ACCOUNTTYPE.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -125,7 +126,7 @@
     <Compile Include="SkladData\ChargeType.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\CITYTYPE.cs">
+    <Compile Include="SkladData\CityType.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\COMMISSION.cs">
@@ -144,6 +145,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\CONTRRESULTS.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\Counters.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\COUNTRIES.cs">
@@ -229,7 +233,7 @@
     <Compile Include="SkladData\GetWhTree_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\KAADDR.cs">
+    <Compile Include="SkladData\KaAddr.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\KADISCOUNT.cs">
@@ -432,6 +436,9 @@
     <Compile Include="SkladData\TAXES.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\TAXREESTRTYPE.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\TAXWB.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -471,7 +478,10 @@
     <Compile Include="SkladData\v_PosInList.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\WAREHOUSE.cs">
+    <Compile Include="SkladData\v_WaybillList.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\Warehouse.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\WaybillDet.cs">
@@ -489,7 +499,7 @@
     <Compile Include="SkladData\WAYBILLMAKE.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\WAYBILLMOVE.cs">
+    <Compile Include="SkladData\WaybillMove.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\WAYBILLSVC.cs">

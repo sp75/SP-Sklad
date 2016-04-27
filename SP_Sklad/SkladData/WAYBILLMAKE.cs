@@ -21,8 +21,8 @@ namespace SP_Sklad.SkladData
         public decimal AMOUNT { get; set; }
     
         public virtual MATRECIPE MATRECIPE { get; set; }
-        public virtual WAREHOUSE WAREHOUSE { get; set; }
         public virtual WaybillList WaybillList { get; set; }
         public virtual Kagent Kagent { get; set; }
+        public virtual Warehouse Warehouse { get; set; }
     }
 }

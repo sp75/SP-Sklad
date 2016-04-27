@@ -23,9 +23,9 @@ namespace SP_Sklad.SkladData
         public decimal Amount { get; set; }
         public Nullable<int> SourceId { get; set; }
     
-        public virtual WAREHOUSE WAREHOUSE { get; set; }
         public virtual WaybillDet WaybillDet { get; set; }
         public virtual WaybillDet WaybillDet1 { get; set; }
         public virtual Materials Materials { get; set; }
+        public virtual Warehouse Warehouse { get; set; }
     }
 }

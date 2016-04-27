@@ -12,16 +12,9 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class WaybillMove
+    public partial class TAXREESTRTYPE
     {
-        public int WBillId { get; set; }
-        public int SourceWid { get; set; }
-        public Nullable<int> DestWId { get; set; }
-        public Nullable<int> PersonId { get; set; }
-    
-        public virtual Kagent Kagent { get; set; }
-        public virtual Warehouse Warehouse { get; set; }
-        public virtual Warehouse Warehouse1 { get; set; }
-        public virtual WaybillList WaybillList { get; set; }
+        public int ID { get; set; }
+        public string NAME { get; set; }
     }
 }

@@ -13,13 +13,14 @@
           <EntitySet Name="BLOBS" EntityType="BaseModel.Store.BLOBS" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CashDesks" EntityType="BaseModel.Store.CashDesks" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ChargeType" EntityType="BaseModel.Store.ChargeType" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="CITYTYPE" EntityType="BaseModel.Store.CITYTYPE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CityType" EntityType="BaseModel.Store.CityType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="COMMISSION" EntityType="BaseModel.Store.COMMISSION" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CommonParams" EntityType="BaseModel.Store.CommonParams" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CONTRACTS" EntityType="BaseModel.Store.CONTRACTS" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CONTRDET" EntityType="BaseModel.Store.CONTRDET" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CONTRPARAMS" EntityType="BaseModel.Store.CONTRPARAMS" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CONTRRESULTS" EntityType="BaseModel.Store.CONTRRESULTS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Counters" EntityType="BaseModel.Store.Counters" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="COUNTRIES" EntityType="BaseModel.Store.COUNTRIES" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Currency" EntityType="BaseModel.Store.Currency" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CURRENCYRATE" EntityType="BaseModel.Store.CURRENCYRATE" store:Type="Tables" Schema="dbo" />
@@ -42,7 +43,7 @@
       FROM [dbo].[EXTREL] AS [EXTREL]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="FUNCTIONS" EntityType="BaseModel.Store.FUNCTIONS" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="KAADDR" EntityType="BaseModel.Store.KAADDR" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="KaAddr" EntityType="BaseModel.Store.KaAddr" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="KADISCOUNT" EntityType="BaseModel.Store.KADISCOUNT" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Kagent" EntityType="BaseModel.Store.Kagent" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="KAGENTACCOUNT" EntityType="BaseModel.Store.KAGENTACCOUNT" store:Type="Tables" Schema="dbo" />
@@ -166,6 +167,7 @@
           <EntitySet Name="SVCGROUP" EntityType="BaseModel.Store.SVCGROUP" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TABLES" EntityType="BaseModel.Store.TABLES" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TAXES" EntityType="BaseModel.Store.TAXES" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TAXREESTRTYPE" EntityType="BaseModel.Store.TAXREESTRTYPE" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TAXWB" EntityType="BaseModel.Store.TAXWB" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TAXWBDET" EntityType="BaseModel.Store.TAXWBDET" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TECHPROCDET" EntityType="BaseModel.Store.TECHPROCDET" store:Type="Tables" Schema="dbo" />
@@ -182,7 +184,7 @@
       [VIEWLNG].[NAME] AS [NAME]
       FROM [dbo].[VIEWLNG] AS [VIEWLNG]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="WAREHOUSE" EntityType="BaseModel.Store.WAREHOUSE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Warehouse" EntityType="BaseModel.Store.Warehouse" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="WaybillDet" EntityType="BaseModel.Store.WaybillDet" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="WAYBILLDETADDPROPS" EntityType="BaseModel.Store.WAYBILLDETADDPROPS" store:Type="Tables" store:Schema="dbo" store:Name="WAYBILLDETADDPROPS">
             <DefiningQuery>SELECT 
@@ -215,13 +217,13 @@
       [WAYBILLMAKE].[AMOUNT] AS [AMOUNT]
       FROM [dbo].[WAYBILLMAKE] AS [WAYBILLMAKE]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="WAYBILLMOVE" EntityType="BaseModel.Store.WAYBILLMOVE" store:Type="Tables" store:Schema="dbo" store:Name="WAYBILLMOVE">
+          <EntitySet Name="WaybillMove" EntityType="BaseModel.Store.WaybillMove" store:Type="Tables" store:Schema="dbo" store:Name="WaybillMove">
             <DefiningQuery>SELECT 
-      [WAYBILLMOVE].[WBILLID] AS [WBILLID], 
-      [WAYBILLMOVE].[SOURCEWID] AS [SOURCEWID], 
-      [WAYBILLMOVE].[DESTWID] AS [DESTWID], 
-      [WAYBILLMOVE].[PERSONID] AS [PERSONID]
-      FROM [dbo].[WAYBILLMOVE] AS [WAYBILLMOVE]</DefiningQuery>
+      [WaybillMove].[WBillId] AS [WBillId], 
+      [WaybillMove].[SourceWid] AS [SourceWid], 
+      [WaybillMove].[DestWId] AS [DestWId], 
+      [WaybillMove].[PersonId] AS [PersonId]
+      FROM [dbo].[WaybillMove] AS [WaybillMove]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="WAYBILLSVC" EntityType="BaseModel.Store.WAYBILLSVC" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="WMatTurn" EntityType="BaseModel.Store.WMatTurn" store:Type="Tables" Schema="dbo" />
@@ -341,6 +343,62 @@
       [v_PosInList].[ReturnAmount] AS [ReturnAmount]
       FROM [dbo].[v_PosInList] AS [v_PosInList]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_WaybillList" EntityType="BaseModel.Store.v_WaybillList" store:Type="Views" store:Schema="dbo" store:Name="v_WaybillList">
+            <DefiningQuery>SELECT 
+      [v_WaybillList].[WbillId] AS [WbillId], 
+      [v_WaybillList].[Num] AS [Num], 
+      [v_WaybillList].[OnDate] AS [OnDate], 
+      [v_WaybillList].[CurrId] AS [CurrId], 
+      [v_WaybillList].[Reason] AS [Reason], 
+      [v_WaybillList].[Checked] AS [Checked], 
+      [v_WaybillList].[SummAll] AS [SummAll], 
+      [v_WaybillList].[WType] AS [WType], 
+      [v_WaybillList].[Nds] AS [Nds], 
+      [v_WaybillList].[PersonId] AS [PersonId], 
+      [v_WaybillList].[SummPay] AS [SummPay], 
+      [v_WaybillList].[Notes] AS [Notes], 
+      [v_WaybillList].[DocId] AS [DocId], 
+      [v_WaybillList].[SummInCurr] AS [SummInCurr], 
+      [v_WaybillList].[ShortName] AS [ShortName], 
+      [v_WaybillList].[OnValue] AS [OnValue], 
+      [v_WaybillList].[Name] AS [Name], 
+      [v_WaybillList].[KaId] AS [KaId], 
+      [v_WaybillList].[FullName] AS [FullName], 
+      [v_WaybillList].[Phone] AS [Phone], 
+      [v_WaybillList].[PersonName] AS [PersonName], 
+      [v_WaybillList].[Address] AS [Address], 
+      [v_WaybillList].[City] AS [City], 
+      [v_WaybillList].[District] AS [District], 
+      [v_WaybillList].[Region] AS [Region], 
+      [v_WaybillList].[Country] AS [Country], 
+      [v_WaybillList].[PostIndex] AS [PostIndex], 
+      [v_WaybillList].[Fax] AS [Fax], 
+      [v_WaybillList].[Email] AS [Email], 
+      [v_WaybillList].[www] AS [www], 
+      [v_WaybillList].[KType] AS [KType], 
+      [v_WaybillList].[AttNum] AS [AttNum], 
+      [v_WaybillList].[AttDate] AS [AttDate], 
+      [v_WaybillList].[Received] AS [Received], 
+      [v_WaybillList].[ToDate] AS [ToDate], 
+      [v_WaybillList].[DefNum] AS [DefNum], 
+      [v_WaybillList].[EntId] AS [EntId], 
+      [v_WaybillList].[WhName] AS [WhName], 
+      [v_WaybillList].[DestWhName] AS [DestWhName], 
+      [v_WaybillList].[KAU] AS [KAU], 
+      [v_WaybillList].[MovPersonName] AS [MovPersonName], 
+      [v_WaybillList].[CType] AS [CType], 
+      [v_WaybillList].[EntKaFullName] AS [EntKaFullName], 
+      [v_WaybillList].[EntKaPhone] AS [EntKaPhone], 
+      [v_WaybillList].[EntAddress] AS [EntAddress], 
+      [v_WaybillList].[EntCity] AS [EntCity], 
+      [v_WaybillList].[EntDistrict] AS [EntDistrict], 
+      [v_WaybillList].[EntRegion] AS [EntRegion], 
+      [v_WaybillList].[EntPostIndex] AS [EntPostIndex], 
+      [v_WaybillList].[EntINN] AS [EntINN], 
+      [v_WaybillList].[EntCertNum] AS [EntCertNum], 
+      [v_WaybillList].[EntCType] AS [EntCType]
+      FROM [dbo].[v_WaybillList] AS [v_WaybillList]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__CURRENCYR__CURRI__5EBF139D" Association="BaseModel.Store.FK__CURRENCYR__CURRI__5EBF139D">
             <End Role="Currency" EntitySet="Currency" />
             <End Role="CURRENCYRATE" EntitySet="CURRENCYRATE" />
@@ -374,15 +432,15 @@
             <End Role="Materials" EntitySet="Materials" />
           </AssociationSet>
           <AssociationSet Name="FK__MATERIALS__WID__59C55456" Association="BaseModel.Store.FK__MATERIALS__WID__59C55456">
-            <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
+            <End Role="Warehouse" EntitySet="Warehouse" />
             <End Role="Materials" EntitySet="Materials" />
           </AssociationSet>
           <AssociationSet Name="FK__MATERIALS__WID__5E8A0973" Association="BaseModel.Store.FK__MATERIALS__WID__5E8A0973">
-            <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
+            <End Role="Warehouse" EntitySet="Warehouse" />
             <End Role="Materials" EntitySet="Materials" />
           </AssociationSet>
           <AssociationSet Name="FK__MATERIALS__WID__65370702" Association="BaseModel.Store.FK__MATERIALS__WID__65370702">
-            <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
+            <End Role="Warehouse" EntitySet="Warehouse" />
             <End Role="Materials" EntitySet="Materials" />
           </AssociationSet>
           <AssociationSet Name="FK__MATGROUPP__CURRI__6EC0713C" Association="BaseModel.Store.FK__MATGROUPP__CURRI__6EC0713C">
@@ -442,7 +500,7 @@
             <End Role="POSREMAINS" EntitySet="POSREMAINS" />
           </AssociationSet>
           <AssociationSet Name="FK__POSREMAINS__WID__2EA5EC27" Association="BaseModel.Store.FK__POSREMAINS__WID__2EA5EC27">
-            <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
+            <End Role="Warehouse" EntitySet="Warehouse" />
             <End Role="POSREMAINS" EntitySet="POSREMAINS" />
           </AssociationSet>
           <AssociationSet Name="FK__TAXWB__PERSONID__019E3B86" Association="BaseModel.Store.FK__TAXWB__PERSONID__019E3B86">
@@ -463,14 +521,14 @@
           </AssociationSet>
           <AssociationSet Name="FK__WAYBILLMO__PERSO__314D4EA8" Association="BaseModel.Store.FK__WAYBILLMO__PERSO__314D4EA8">
             <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="WAYBILLMOVE" EntitySet="WAYBILLMOVE" />
+            <End Role="WaybillMove" EntitySet="WaybillMove" />
           </AssociationSet>
           <AssociationSet Name="FK__WMATTURN__MATID__3AD6B8E2" Association="BaseModel.Store.FK__WMATTURN__MATID__3AD6B8E2">
             <End Role="Materials" EntitySet="Materials" />
             <End Role="WMatTurn" EntitySet="WMatTurn" />
           </AssociationSet>
           <AssociationSet Name="FK__WMATTURN__WID__3BCADD1B" Association="BaseModel.Store.FK__WMATTURN__WID__3BCADD1B">
-            <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
+            <End Role="Warehouse" EntitySet="Warehouse" />
             <End Role="WMatTurn" EntitySet="WMatTurn" />
           </AssociationSet>
           <AssociationSet Name="FK_AACC_KAID" Association="BaseModel.Store.FK_AACC_KAID">
@@ -587,7 +645,7 @@
           </AssociationSet>
           <AssociationSet Name="FK_KAADDR_KAID" Association="BaseModel.Store.FK_KAADDR_KAID">
             <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAADDR" EntitySet="KAADDR" />
+            <End Role="KaAddr" EntitySet="KaAddr" />
           </AssociationSet>
           <AssociationSet Name="FK_Kagent_Users" Association="BaseModel.Store.FK_Kagent_Users">
             <End Role="Users" EntitySet="Users" />
@@ -754,7 +812,7 @@
             <End Role="USERACCESSWH" EntitySet="USERACCESSWH" />
           </AssociationSet>
           <AssociationSet Name="FK_UAWH_WID" Association="BaseModel.Store.FK_UAWH_WID">
-            <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
+            <End Role="Warehouse" EntitySet="Warehouse" />
             <End Role="USERACCESSWH" EntitySet="USERACCESSWH" />
           </AssociationSet>
           <AssociationSet Name="FK_USERACCE_FK_USERAC_FUNCTION" Association="BaseModel.Store.FK_USERACCE_FK_USERAC_FUNCTION">
@@ -778,7 +836,7 @@
             <End Role="WaybillDet" EntitySet="WaybillDet" />
           </AssociationSet>
           <AssociationSet Name="FK_WAYBILLD_FK_WBDET__WAREHOUS" Association="BaseModel.Store.FK_WAYBILLD_FK_WBDET__WAREHOUS">
-            <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
+            <End Role="Warehouse" EntitySet="Warehouse" />
             <End Role="WaybillDet" EntitySet="WaybillDet" />
           </AssociationSet>
           <AssociationSet Name="FK_WAYBILLD_REFERENCE_CURRENCY" Association="BaseModel.Store.FK_WAYBILLD_REFERENCE_CURRENCY">
@@ -806,12 +864,12 @@
             <End Role="WaybillList" EntitySet="WaybillList" />
           </AssociationSet>
           <AssociationSet Name="FK_WAYBILLM_FK_WBM_DE_WAREHOUS" Association="BaseModel.Store.FK_WAYBILLM_FK_WBM_DE_WAREHOUS">
-            <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
-            <End Role="WAYBILLMOVE" EntitySet="WAYBILLMOVE" />
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="WaybillMove" EntitySet="WaybillMove" />
           </AssociationSet>
           <AssociationSet Name="FK_WAYBILLM_FK_WBM_SO_WAREHOUS" Association="BaseModel.Store.FK_WAYBILLM_FK_WBM_SO_WAREHOUS">
-            <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
-            <End Role="WAYBILLMOVE" EntitySet="WAYBILLMOVE" />
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="WaybillMove" EntitySet="WaybillMove" />
           </AssociationSet>
           <AssociationSet Name="FK_WAYBILLMAKE_KAGENT" Association="BaseModel.Store.FK_WAYBILLMAKE_KAGENT">
             <End Role="Kagent" EntitySet="Kagent" />
@@ -822,7 +880,7 @@
             <End Role="WAYBILLMAKE" EntitySet="WAYBILLMAKE" />
           </AssociationSet>
           <AssociationSet Name="FK_WAYBILLMAKE_WAREHOUSE" Association="BaseModel.Store.FK_WAYBILLMAKE_WAREHOUSE">
-            <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
+            <End Role="Warehouse" EntitySet="Warehouse" />
             <End Role="WAYBILLMAKE" EntitySet="WAYBILLMAKE" />
           </AssociationSet>
           <AssociationSet Name="FK_WAYBILLMAKE_WAYBILLLIST" Association="BaseModel.Store.FK_WAYBILLMAKE_WAYBILLLIST">
@@ -851,7 +909,7 @@
           </AssociationSet>
           <AssociationSet Name="FK_WBM_WBILLID" Association="BaseModel.Store.FK_WBM_WBILLID">
             <End Role="WaybillList" EntitySet="WaybillList" />
-            <End Role="WAYBILLMOVE" EntitySet="WAYBILLMOVE" />
+            <End Role="WaybillMove" EntitySet="WaybillMove" />
           </AssociationSet>
           <AssociationSet Name="FK_WBS_CURRID" Association="BaseModel.Store.FK_WBS_CURRID">
             <End Role="Currency" EntitySet="Currency" />
@@ -951,13 +1009,13 @@
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="128" />
           <Property Name="Deleted" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="CITYTYPE">
+        <EntityType Name="CityType">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="NAME" Type="varchar" MaxLength="20" />
-          <Property Name="FULLNAME" Type="varchar" MaxLength="20" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" />
+          <Property Name="FullName" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="COMMISSION">
           <Key>
@@ -1033,6 +1091,16 @@
           <Property Name="SHIPPEDAMOUNT" Type="numeric" Precision="15" Scale="8" />
           <Property Name="PAIDSUMM" Type="numeric" Precision="15" Scale="8" />
           <Property Name="CONTRID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Counters">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Prefix" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sufix" Type="nvarchar" MaxLength="50" />
+          <Property Name="Counter" Type="int" />
         </EntityType>
         <EntityType Name="COUNTRIES">
           <Key>
@@ -1172,20 +1240,20 @@
           <Property Name="LOGGING" Type="int" Nullable="false" />
           <Property Name="FLAGS" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="KAADDR">
+        <EntityType Name="KaAddr">
           <Key>
-            <PropertyRef Name="ADDRID" />
+            <PropertyRef Name="AddrId" />
           </Key>
-          <Property Name="ADDRID" Type="int" Nullable="false" />
-          <Property Name="KAID" Type="int" Nullable="false" />
-          <Property Name="ADDRTYPE" Type="int" Nullable="false" />
-          <Property Name="COUNTRY" Type="varchar" MaxLength="64" />
-          <Property Name="CITY" Type="varchar" MaxLength="64" />
-          <Property Name="DISTRICT" Type="varchar" MaxLength="64" />
-          <Property Name="ADDRESS" Type="varchar" MaxLength="255" />
-          <Property Name="POSTINDEX" Type="varchar" MaxLength="15" />
-          <Property Name="REGION" Type="varchar" MaxLength="64" />
-          <Property Name="CITYTYPE" Type="int" />
+          <Property Name="AddrId" Type="int" Nullable="false" />
+          <Property Name="KaId" Type="int" Nullable="false" />
+          <Property Name="AddrType" Type="int" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="64" />
+          <Property Name="City" Type="varchar" MaxLength="64" />
+          <Property Name="District" Type="varchar" MaxLength="64" />
+          <Property Name="Address" Type="varchar" MaxLength="255" />
+          <Property Name="PostIndex" Type="varchar" MaxLength="15" />
+          <Property Name="Region" Type="varchar" MaxLength="64" />
+          <Property Name="CityType" Type="int" />
         </EntityType>
         <EntityType Name="KADISCOUNT">
           <Key>
@@ -1711,6 +1779,13 @@
           <Property Name="TAXTYPE" Type="int" Nullable="false" />
           <Property Name="DELETED" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="TAXREESTRTYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="128" />
+        </EntityType>
         <EntityType Name="TAXWB">
           <Key>
             <PropertyRef Name="TWBID" />
@@ -1841,16 +1916,16 @@
           <Property Name="LANGID" Type="int" Nullable="false" />
           <Property Name="NAME" Type="varchar" Nullable="false" MaxLength="255" />
         </EntityType>
-        <EntityType Name="WAREHOUSE">
+        <EntityType Name="Warehouse">
           <Key>
-            <PropertyRef Name="WID" />
+            <PropertyRef Name="WId" />
           </Key>
-          <Property Name="WID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="NAME" Type="nvarchar" Nullable="false" MaxLength="64" />
-          <Property Name="ADDR" Type="nvarchar" MaxLength="255" />
-          <Property Name="NOTES" Type="nvarchar" MaxLength="255" />
-          <Property Name="DELETED" Type="int" Nullable="false" />
-          <Property Name="DEF" Type="int" Nullable="false" />
+          <Property Name="WId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="Addr" Type="nvarchar" MaxLength="255" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+          <Property Name="Def" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="WaybillDet">
           <Key>
@@ -1956,17 +2031,17 @@
           <Property Name="AMOUNT" Type="numeric" Nullable="false" Precision="15" Scale="8" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'sp_base.dbo.WAYBILLMOVE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'sp_base.dbo.WaybillMove' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
-        <EntityType Name="WAYBILLMOVE">
+        <EntityType Name="WaybillMove">
           <Key>
-            <PropertyRef Name="WBILLID" />
-            <PropertyRef Name="SOURCEWID" />
+            <PropertyRef Name="WBillId" />
+            <PropertyRef Name="SourceWid" />
           </Key>
-          <Property Name="WBILLID" Type="int" Nullable="false" />
-          <Property Name="SOURCEWID" Type="int" Nullable="false" />
-          <Property Name="DESTWID" Type="int" />
-          <Property Name="PERSONID" Type="int" />
+          <Property Name="WBillId" Type="int" Nullable="false" />
+          <Property Name="SourceWid" Type="int" Nullable="false" />
+          <Property Name="DestWId" Type="int" />
+          <Property Name="PersonId" Type="int" />
         </EntityType>
         <EntityType Name="WAYBILLSVC">
           <Key>
@@ -2156,6 +2231,71 @@
           <Property Name="Price" Type="numeric" Precision="15" Scale="4" />
           <Property Name="ReturnAmount" Type="numeric" Precision="38" Scale="8" />
         </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="v_WaybillList">
+          <Key>
+            <PropertyRef Name="WbillId" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="WType" />
+            <PropertyRef Name="DefNum" />
+          </Key>
+          <Property Name="WbillId" Type="int" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="CurrId" Type="int" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="255" />
+          <Property Name="Checked" Type="int" Nullable="false" />
+          <Property Name="SummAll" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="WType" Type="int" Nullable="false" />
+          <Property Name="Nds" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="SummPay" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+          <Property Name="DocId" Type="int" />
+          <Property Name="SummInCurr" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="ShortName" Type="nvarchar" MaxLength="3" />
+          <Property Name="OnValue" Type="numeric" Precision="15" Scale="8" />
+          <Property Name="Name" Type="nvarchar" MaxLength="64" />
+          <Property Name="KaId" Type="int" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="64" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="64" />
+          <Property Name="Address" Type="varchar" MaxLength="255" />
+          <Property Name="City" Type="varchar" MaxLength="64" />
+          <Property Name="District" Type="varchar" MaxLength="64" />
+          <Property Name="Region" Type="varchar" MaxLength="64" />
+          <Property Name="Country" Type="varchar" MaxLength="64" />
+          <Property Name="PostIndex" Type="varchar" MaxLength="15" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="32" />
+          <Property Name="Email" Type="nvarchar" MaxLength="64" />
+          <Property Name="www" Type="nvarchar" MaxLength="64" />
+          <Property Name="KType" Type="int" />
+          <Property Name="AttNum" Type="nvarchar" MaxLength="15" />
+          <Property Name="AttDate" Type="datetime" />
+          <Property Name="Received" Type="nvarchar" MaxLength="64" />
+          <Property Name="ToDate" Type="datetime" />
+          <Property Name="DefNum" Type="int" Nullable="false" />
+          <Property Name="EntId" Type="int" />
+          <Property Name="WhName" Type="nvarchar" MaxLength="64" />
+          <Property Name="DestWhName" Type="nvarchar" MaxLength="64" />
+          <Property Name="KAU" Type="nvarchar" MaxLength="10" />
+          <Property Name="MovPersonName" Type="nvarchar" MaxLength="64" />
+          <Property Name="CType" Type="varchar" MaxLength="20" />
+          <Property Name="EntKaFullName" Type="nvarchar" MaxLength="255" />
+          <Property Name="EntKaPhone" Type="nvarchar" MaxLength="64" />
+          <Property Name="EntAddress" Type="varchar" MaxLength="255" />
+          <Property Name="EntCity" Type="varchar" MaxLength="64" />
+          <Property Name="EntDistrict" Type="varchar" MaxLength="64" />
+          <Property Name="EntRegion" Type="varchar" MaxLength="64" />
+          <Property Name="EntPostIndex" Type="varchar" MaxLength="15" />
+          <Property Name="EntINN" Type="nvarchar" MaxLength="64" />
+          <Property Name="EntCertNum" Type="nvarchar" MaxLength="64" />
+          <Property Name="EntCType" Type="varchar" MaxLength="20" />
+        </EntityType>
         <Association Name="FK__CURRENCYR__CURRI__5EBF139D">
           <End Role="Currency" Type="BaseModel.Store.Currency" Multiplicity="1" />
           <End Role="CURRENCYRATE" Type="BaseModel.Store.CURRENCYRATE" Multiplicity="*" />
@@ -2261,11 +2401,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__MATERIALS__WID__59C55456">
-          <End Role="WAREHOUSE" Type="BaseModel.Store.WAREHOUSE" Multiplicity="0..1" />
+          <End Role="Warehouse" Type="BaseModel.Store.Warehouse" Multiplicity="0..1" />
           <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="WAREHOUSE">
-              <PropertyRef Name="WID" />
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
             </Principal>
             <Dependent Role="Materials">
               <PropertyRef Name="WId" />
@@ -2273,11 +2413,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__MATERIALS__WID__5E8A0973">
-          <End Role="WAREHOUSE" Type="BaseModel.Store.WAREHOUSE" Multiplicity="0..1" />
+          <End Role="Warehouse" Type="BaseModel.Store.Warehouse" Multiplicity="0..1" />
           <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="WAREHOUSE">
-              <PropertyRef Name="WID" />
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
             </Principal>
             <Dependent Role="Materials">
               <PropertyRef Name="WId" />
@@ -2285,11 +2425,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__MATERIALS__WID__65370702">
-          <End Role="WAREHOUSE" Type="BaseModel.Store.WAREHOUSE" Multiplicity="0..1" />
+          <End Role="Warehouse" Type="BaseModel.Store.Warehouse" Multiplicity="0..1" />
           <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="WAREHOUSE">
-              <PropertyRef Name="WID" />
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
             </Principal>
             <Dependent Role="Materials">
               <PropertyRef Name="WId" />
@@ -2465,11 +2605,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__POSREMAINS__WID__2EA5EC27">
-          <End Role="WAREHOUSE" Type="BaseModel.Store.WAREHOUSE" Multiplicity="1" />
+          <End Role="Warehouse" Type="BaseModel.Store.Warehouse" Multiplicity="1" />
           <End Role="POSREMAINS" Type="BaseModel.Store.POSREMAINS" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="WAREHOUSE">
-              <PropertyRef Name="WID" />
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
             </Principal>
             <Dependent Role="POSREMAINS">
               <PropertyRef Name="WID" />
@@ -2526,13 +2666,13 @@
         </Association>
         <Association Name="FK__WAYBILLMO__PERSO__314D4EA8">
           <End Role="Kagent" Type="BaseModel.Store.Kagent" Multiplicity="0..1" />
-          <End Role="WAYBILLMOVE" Type="BaseModel.Store.WAYBILLMOVE" Multiplicity="*" />
+          <End Role="WaybillMove" Type="BaseModel.Store.WaybillMove" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Kagent">
               <PropertyRef Name="KaId" />
             </Principal>
-            <Dependent Role="WAYBILLMOVE">
-              <PropertyRef Name="PERSONID" />
+            <Dependent Role="WaybillMove">
+              <PropertyRef Name="PersonId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2549,11 +2689,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__WMATTURN__WID__3BCADD1B">
-          <End Role="WAREHOUSE" Type="BaseModel.Store.WAREHOUSE" Multiplicity="1" />
+          <End Role="Warehouse" Type="BaseModel.Store.Warehouse" Multiplicity="1" />
           <End Role="WMatTurn" Type="BaseModel.Store.WMatTurn" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="WAREHOUSE">
-              <PropertyRef Name="WID" />
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
             </Principal>
             <Dependent Role="WMatTurn">
               <PropertyRef Name="WId" />
@@ -2924,13 +3064,13 @@
           <End Role="Kagent" Type="BaseModel.Store.Kagent" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="KAADDR" Type="BaseModel.Store.KAADDR" Multiplicity="*" />
+          <End Role="KaAddr" Type="BaseModel.Store.KaAddr" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Kagent">
               <PropertyRef Name="KaId" />
             </Principal>
-            <Dependent Role="KAADDR">
-              <PropertyRef Name="KAID" />
+            <Dependent Role="KaAddr">
+              <PropertyRef Name="KaId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3453,13 +3593,13 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UAWH_WID">
-          <End Role="WAREHOUSE" Type="BaseModel.Store.WAREHOUSE" Multiplicity="1">
+          <End Role="Warehouse" Type="BaseModel.Store.Warehouse" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="USERACCESSWH" Type="BaseModel.Store.USERACCESSWH" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="WAREHOUSE">
-              <PropertyRef Name="WID" />
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
             </Principal>
             <Dependent Role="USERACCESSWH">
               <PropertyRef Name="WID" />
@@ -3531,11 +3671,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_WAYBILLD_FK_WBDET__WAREHOUS">
-          <End Role="WAREHOUSE" Type="BaseModel.Store.WAREHOUSE" Multiplicity="0..1" />
+          <End Role="Warehouse" Type="BaseModel.Store.Warehouse" Multiplicity="0..1" />
           <End Role="WaybillDet" Type="BaseModel.Store.WaybillDet" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="WAREHOUSE">
-              <PropertyRef Name="WID" />
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
             </Principal>
             <Dependent Role="WaybillDet">
               <PropertyRef Name="WId" />
@@ -3615,26 +3755,26 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_WAYBILLM_FK_WBM_DE_WAREHOUS">
-          <End Role="WAREHOUSE" Type="BaseModel.Store.WAREHOUSE" Multiplicity="0..1" />
-          <End Role="WAYBILLMOVE" Type="BaseModel.Store.WAYBILLMOVE" Multiplicity="*" />
+          <End Role="Warehouse" Type="BaseModel.Store.Warehouse" Multiplicity="0..1" />
+          <End Role="WaybillMove" Type="BaseModel.Store.WaybillMove" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="WAREHOUSE">
-              <PropertyRef Name="WID" />
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
             </Principal>
-            <Dependent Role="WAYBILLMOVE">
-              <PropertyRef Name="DESTWID" />
+            <Dependent Role="WaybillMove">
+              <PropertyRef Name="DestWId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_WAYBILLM_FK_WBM_SO_WAREHOUS">
-          <End Role="WAREHOUSE" Type="BaseModel.Store.WAREHOUSE" Multiplicity="1" />
-          <End Role="WAYBILLMOVE" Type="BaseModel.Store.WAYBILLMOVE" Multiplicity="*" />
+          <End Role="Warehouse" Type="BaseModel.Store.Warehouse" Multiplicity="1" />
+          <End Role="WaybillMove" Type="BaseModel.Store.WaybillMove" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="WAREHOUSE">
-              <PropertyRef Name="WID" />
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
             </Principal>
-            <Dependent Role="WAYBILLMOVE">
-              <PropertyRef Name="SOURCEWID" />
+            <Dependent Role="WaybillMove">
+              <PropertyRef Name="SourceWid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3663,11 +3803,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_WAYBILLMAKE_WAREHOUSE">
-          <End Role="WAREHOUSE" Type="BaseModel.Store.WAREHOUSE" Multiplicity="1" />
+          <End Role="Warehouse" Type="BaseModel.Store.Warehouse" Multiplicity="1" />
           <End Role="WAYBILLMAKE" Type="BaseModel.Store.WAYBILLMAKE" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="WAREHOUSE">
-              <PropertyRef Name="WID" />
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
             </Principal>
             <Dependent Role="WAYBILLMAKE">
               <PropertyRef Name="SOURCEWID" />
@@ -3756,13 +3896,13 @@
           <End Role="WaybillList" Type="BaseModel.Store.WaybillList" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="WAYBILLMOVE" Type="BaseModel.Store.WAYBILLMOVE" Multiplicity="*" />
+          <End Role="WaybillMove" Type="BaseModel.Store.WaybillMove" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="WaybillList">
               <PropertyRef Name="WbillId" />
             </Principal>
-            <Dependent Role="WAYBILLMOVE">
-              <PropertyRef Name="WBILLID" />
+            <Dependent Role="WaybillMove">
+              <PropertyRef Name="WBillId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -4724,7 +4864,6 @@
           <EntitySet Name="BANKS" EntityType="BaseModel.BANKS" />
           <EntitySet Name="BANKSPERSONS" EntityType="BaseModel.BANKSPERSONS" />
           <EntitySet Name="BLOBS" EntityType="BaseModel.BLOBS" />
-          <EntitySet Name="CITYTYPE" EntityType="BaseModel.CITYTYPE" />
           <EntitySet Name="COMMISSION" EntityType="BaseModel.COMMISSION" />
           <EntitySet Name="CONTRACTS" EntityType="BaseModel.CONTRACTS" />
           <EntitySet Name="CONTRDET" EntityType="BaseModel.CONTRDET" />
@@ -4739,7 +4878,6 @@
           <EntitySet Name="DOCTYP" EntityType="BaseModel.DOCTYP" />
           <EntitySet Name="ENTPARAMS" EntityType="BaseModel.ENTPARAMS" />
           <EntitySet Name="FUNCTIONS" EntityType="BaseModel.FUNCTIONS" />
-          <EntitySet Name="KAADDR" EntityType="BaseModel.KAADDR" />
           <EntitySet Name="KADISCOUNT" EntityType="BaseModel.KADISCOUNT" />
           <EntitySet Name="KAGENTACCOUNT" EntityType="BaseModel.KAGENTACCOUNT" />
           <EntitySet Name="KAGENTDOC" EntityType="BaseModel.KAGENTDOC" />
@@ -4777,11 +4915,9 @@
           <EntitySet Name="USERTREE" EntityType="BaseModel.USERTREE" />
           <EntitySet Name="USERTREEVIEW" EntityType="BaseModel.USERTREEVIEW" />
           <EntitySet Name="VIEWLNG" EntityType="BaseModel.VIEWLNG" />
-          <EntitySet Name="WAREHOUSE" EntityType="BaseModel.WAREHOUSE" />
           <EntitySet Name="WAYBILLDETADDPROPS" EntityType="BaseModel.WAYBILLDETADDPROPS" />
           <EntitySet Name="WAYBILLDETTAXES" EntityType="BaseModel.WAYBILLDETTAXES" />
           <EntitySet Name="WAYBILLMAKE" EntityType="BaseModel.WAYBILLMAKE" />
-          <EntitySet Name="WAYBILLMOVE" EntityType="BaseModel.WAYBILLMOVE" />
           <EntitySet Name="WAYBILLSVC" EntityType="BaseModel.WAYBILLSVC" />
           <EntitySet Name="USER_TREE_ACCESS" EntityType="BaseModel.USER_TREE_ACCESS" />
           <AssociationSet Name="FK_AGENTACC_FK_AGENTA_ACCOUNTT" Association="BaseModel.FK_AGENTACC_FK_AGENTA_ACCOUNTT">
@@ -4868,10 +5004,6 @@
             <End Role="TABLES" EntitySet="TABLES" />
             <End Role="OPERLOG" EntitySet="OPERLOG" />
           </AssociationSet>
-          <AssociationSet Name="FK__POSREMAINS__WID__2EA5EC27" Association="BaseModel.FK__POSREMAINS__WID__2EA5EC27">
-            <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
-            <End Role="POSREMAINS" EntitySet="POSREMAINS" />
-          </AssociationSet>
           <AssociationSet Name="FK_PRICELISTDET_PRICELIST" Association="BaseModel.FK_PRICELISTDET_PRICELIST">
             <End Role="PRICELIST" EntitySet="PRICELIST" />
             <End Role="PRICELISTDET" EntitySet="PRICELISTDET" />
@@ -4907,18 +5039,6 @@
           <AssociationSet Name="FK__VIEWLNG__ID__2022C2A6" Association="BaseModel.FK__VIEWLNG__ID__2022C2A6">
             <End Role="USERTREEVIEW" EntitySet="USERTREEVIEW" />
             <End Role="VIEWLNG" EntitySet="VIEWLNG" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WAYBILLM_FK_WBM_DE_WAREHOUS" Association="BaseModel.FK_WAYBILLM_FK_WBM_DE_WAREHOUS">
-            <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
-            <End Role="WAYBILLMOVE" EntitySet="WAYBILLMOVE" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WAYBILLM_FK_WBM_SO_WAREHOUS" Association="BaseModel.FK_WAYBILLM_FK_WBM_SO_WAREHOUS">
-            <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
-            <End Role="WAYBILLMOVE" EntitySet="WAYBILLMOVE" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WAYBILLMAKE_WAREHOUSE" Association="BaseModel.FK_WAYBILLMAKE_WAREHOUSE">
-            <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
-            <End Role="WAYBILLMAKE" EntitySet="WAYBILLMAKE" />
           </AssociationSet>
           <FunctionImport Name="GetMatGroupTree" ReturnType="Collection(BaseModel.GetMatGroupTree_Result)" IsComposable="true">
           <Parameter Name="root_cat_id" Mode="In" Type="Int32" />
@@ -5100,10 +5220,6 @@
             <End Role="USERACCESS" EntitySet="USERACCESS" />
           </AssociationSet>
           <EntitySet Name="USERACCESSWH" EntityType="BaseModel.USERACCESSWH" />
-          <AssociationSet Name="FK_UAWH_WID" Association="BaseModel.FK_UAWH_WID">
-            <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
-            <End Role="USERACCESSWH" EntitySet="USERACCESSWH" />
-          </AssociationSet>
           <FunctionImport Name="WBDGetOutP2" IsComposable="true" ReturnType="Collection(BaseModel.WBDGetOutP2_Result)">
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -5135,10 +5251,6 @@
             <End Role="WaybillList" EntitySet="WaybillList" />
             <End Role="WAYBILLMAKE" EntitySet="WAYBILLMAKE" />
           </AssociationSet>
-          <AssociationSet Name="FK_WBM_WBILLID" Association="BaseModel.FK_WBM_WBILLID">
-            <End Role="WaybillList" EntitySet="WaybillList" />
-            <End Role="WAYBILLMOVE" EntitySet="WAYBILLMOVE" />
-          </AssociationSet>
           <AssociationSet Name="FK_WBS_WBILLID" Association="BaseModel.FK_WBS_WBILLID">
             <End Role="WaybillList" EntitySet="WaybillList" />
             <End Role="WAYBILLSVC" EntitySet="WAYBILLSVC" />
@@ -5151,10 +5263,6 @@
           <AssociationSet Name="FK_SERIALS_POSID" Association="BaseModel.FK_SERIALS_POSID">
             <End Role="WaybillDet" EntitySet="WaybillDet" />
             <End Role="SERIALS" EntitySet="SERIALS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WAYBILLD_FK_WBDET__WAREHOUS" Association="BaseModel.FK_WAYBILLD_FK_WBDET__WAREHOUS">
-            <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
           </AssociationSet>
           <AssociationSet Name="FK_WBD_WBILLID" Association="BaseModel.FK_WBD_WBILLID">
             <End Role="WaybillList" EntitySet="WaybillList" />
@@ -5193,10 +5301,6 @@
           </FunctionImport>
           <EntitySet Name="Actives" EntityType="BaseModel.Actives" />
           <EntitySet Name="WMatTurn" EntityType="BaseModel.WMatTurn" />
-          <AssociationSet Name="FK__WMATTURN__WID__3BCADD1B" Association="BaseModel.FK__WMATTURN__WID__3BCADD1B">
-            <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
-            <End Role="WMatTurn" EntitySet="WMatTurn" />
-          </AssociationSet>
           <AssociationSet Name="FK_WMT_POSID" Association="BaseModel.FK_WMT_POSID">
             <End Role="WaybillDet" EntitySet="WaybillDet" />
             <End Role="WMatTurn" EntitySet="WMatTurn" />
@@ -5251,10 +5355,6 @@
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="DISCCARDS" EntitySet="DISCCARDS" />
           </AssociationSet>
-          <AssociationSet Name="FK_KAADDR_KAID" Association="BaseModel.FK_KAADDR_KAID">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAADDR" EntitySet="KAADDR" />
-          </AssociationSet>
           <AssociationSet Name="FK__KADISCOUNT__KAID__19DFD96B" Association="BaseModel.FK__KADISCOUNT__KAID__19DFD96B">
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="KADISCOUNT" EntitySet="KADISCOUNT" />
@@ -5274,10 +5374,6 @@
           <AssociationSet Name="FK__WAYBILLLI__PERSO__6E01572D" Association="BaseModel.FK__WAYBILLLI__PERSO__6E01572D">
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="WaybillList" EntitySet="WaybillList" />
-          </AssociationSet>
-          <AssociationSet Name="FK__WAYBILLMO__PERSO__314D4EA8" Association="BaseModel.FK__WAYBILLMO__PERSO__314D4EA8">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="WAYBILLMOVE" EntitySet="WAYBILLMOVE" />
           </AssociationSet>
           <AssociationSet Name="FK_AACC_KAID" Association="BaseModel.FK_AACC_KAID">
             <End Role="Kagent" EntitySet="Kagent" />
@@ -5581,18 +5677,6 @@
             <End Role="MatGroup" EntitySet="MatGroup" />
             <End Role="Materials" EntitySet="Materials" />
           </AssociationSet>
-          <AssociationSet Name="FK__MATERIALS__WID__59C55456" Association="BaseModel.FK__MATERIALS__WID__59C55456">
-            <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
-            <End Role="Materials" EntitySet="Materials" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MATERIALS__WID__5E8A0973" Association="BaseModel.FK__MATERIALS__WID__5E8A0973">
-            <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
-            <End Role="Materials" EntitySet="Materials" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MATERIALS__WID__65370702" Association="BaseModel.FK__MATERIALS__WID__65370702">
-            <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
-            <End Role="Materials" EntitySet="Materials" />
-          </AssociationSet>
           <AssociationSet Name="FK__MATREMAIN__MATID__04AFB25B" Association="BaseModel.FK__MATREMAIN__MATID__04AFB25B">
             <End Role="Materials" EntitySet="Materials" />
             <End Role="MATREMAINS" EntitySet="MATREMAINS" />
@@ -5656,6 +5740,65 @@
             <Parameter Name="get_empty" Mode="In" Type="Int32" />
             <Parameter Name="wh" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="CityType" EntityType="BaseModel.CityType" />
+          <EntitySet Name="Counters" EntityType="BaseModel.Counters" />
+          <EntitySet Name="KaAddr" EntityType="BaseModel.KaAddr" />
+          <EntitySet Name="TAXREESTRTYPE" EntityType="BaseModel.TAXREESTRTYPE" />
+          <EntitySet Name="Warehouse" EntityType="BaseModel.Warehouse" />
+          <EntitySet Name="v_WaybillList" EntityType="BaseModel.v_WaybillList" />
+          <AssociationSet Name="FK_KAADDR_KAID" Association="BaseModel.FK_KAADDR_KAID">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KaAddr" EntitySet="KaAddr" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MATERIALS__WID__59C55456" Association="BaseModel.FK__MATERIALS__WID__59C55456">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="Materials" EntitySet="Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MATERIALS__WID__5E8A0973" Association="BaseModel.FK__MATERIALS__WID__5E8A0973">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="Materials" EntitySet="Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MATERIALS__WID__65370702" Association="BaseModel.FK__MATERIALS__WID__65370702">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="Materials" EntitySet="Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK__POSREMAINS__WID__2EA5EC27" Association="BaseModel.FK__POSREMAINS__WID__2EA5EC27">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="POSREMAINS" EntitySet="POSREMAINS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UAWH_WID" Association="BaseModel.FK_UAWH_WID">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="USERACCESSWH" EntitySet="USERACCESSWH" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WMATTURN__WID__3BCADD1B" Association="BaseModel.FK__WMATTURN__WID__3BCADD1B">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="WMatTurn" EntitySet="WMatTurn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAYBILLD_FK_WBDET__WAREHOUS" Association="BaseModel.FK_WAYBILLD_FK_WBDET__WAREHOUS">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAYBILLMAKE_WAREHOUSE" Association="BaseModel.FK_WAYBILLMAKE_WAREHOUSE">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="WAYBILLMAKE" EntitySet="WAYBILLMAKE" />
+          </AssociationSet>
+          <EntitySet Name="WaybillMove" EntityType="BaseModel.WaybillMove" />
+          <AssociationSet Name="FK__WAYBILLMO__PERSO__314D4EA8" Association="BaseModel.FK__WAYBILLMO__PERSO__314D4EA8">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="WaybillMove" EntitySet="WaybillMove" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAYBILLM_FK_WBM_DE_WAREHOUS" Association="BaseModel.FK_WAYBILLM_FK_WBM_DE_WAREHOUS">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="WaybillMove" EntitySet="WaybillMove" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAYBILLM_FK_WBM_SO_WAREHOUS" Association="BaseModel.FK_WAYBILLM_FK_WBM_SO_WAREHOUS">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="WaybillMove" EntitySet="WaybillMove" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WBM_WBILLID" Association="BaseModel.FK_WBM_WBILLID">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="WaybillMove" EntitySet="WaybillMove" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="GetMatGroupTree_Result">
           <Property Name="GRPID" Type="Int32" />
@@ -5904,14 +6047,6 @@
           <Property Name="DATA" Type="Binary" MaxLength="1024" FixedLength="true" />
           <Property Name="USERDATA" Type="Int32" />
         </EntityType>
-        <EntityType Name="CITYTYPE">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="NAME" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
-          <Property Name="FULLNAME" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
-        </EntityType>
         <EntityType Name="COMMISSION">
           <Key>
             <PropertyRef Name="ID" />
@@ -6113,22 +6248,6 @@
           <NavigationProperty Name="TABLES" Relationship="BaseModel.FK__FUNCTIONS__TABID__123EB7A3" FromRole="FUNCTIONS" ToRole="TABLES" />
           <NavigationProperty Name="USERTREEVIEW" Relationship="BaseModel.FK_USERTREE_FK_USERTR_FUNCTION" FromRole="FUNCTIONS" ToRole="USERTREEVIEW" />
           <NavigationProperty Name="USERACCESS" Relationship="BaseModel.FK_USERACCE_FK_USERAC_FUNCTION" FromRole="FUNCTIONS" ToRole="USERACCESS" />
-        </EntityType>
-        <EntityType Name="KAADDR">
-          <Key>
-            <PropertyRef Name="ADDRID" />
-          </Key>
-          <Property Name="ADDRID" Type="Int32" Nullable="false" />
-          <Property Name="KAID" Type="Int32" Nullable="false" />
-          <Property Name="ADDRTYPE" Type="Int32" Nullable="false" />
-          <Property Name="COUNTRY" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="CITY" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="DISTRICT" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="ADDRESS" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="POSTINDEX" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
-          <Property Name="REGION" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="CITYTYPE" Type="Int32" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_KAADDR_KAID" FromRole="KAADDR" ToRole="Kagent" />
         </EntityType>
         <EntityType Name="KADISCOUNT">
           <Key>
@@ -6402,9 +6521,9 @@
           <Property Name="AVGPRICE" Type="Decimal" Precision="15" Scale="8" />
           <Property Name="INWAY" Type="Decimal" Precision="15" Scale="8" />
           <Property Name="ORDERED" Type="Decimal" Precision="15" Scale="8" />
-          <NavigationProperty Name="WAREHOUSE" Relationship="BaseModel.FK__POSREMAINS__WID__2EA5EC27" FromRole="POSREMAINS" ToRole="WAREHOUSE" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" FromRole="POSREMAINS" ToRole="WaybillDet" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" FromRole="POSREMAINS" ToRole="Materials" />
+          <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK__POSREMAINS__WID__2EA5EC27" FromRole="POSREMAINS" ToRole="Warehouse" />
         </EntityType>
         <EntityType Name="PRICELIST">
           <Key>
@@ -6643,27 +6762,6 @@
           <NavigationProperty Name="LANGUAGES" Relationship="BaseModel.FK__VIEWLNG__LANGID__2116E6DF" FromRole="VIEWLNG" ToRole="LANGUAGES" />
           <NavigationProperty Name="USERTREEVIEW" Relationship="BaseModel.FK__VIEWLNG__ID__2022C2A6" FromRole="VIEWLNG" ToRole="USERTREEVIEW" />
         </EntityType>
-        <EntityType Name="WAREHOUSE">
-          <Key>
-            <PropertyRef Name="WID" />
-          </Key>
-          <Property Name="WID" Type="Int32" Nullable="false" />
-          <Property Name="NAME" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
-          <Property Name="ADDR" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
-          <Property Name="NOTES" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
-          <Property Name="DELETED" Type="Int32" Nullable="false" />
-          <Property Name="DEF" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="POSREMAINS" Relationship="BaseModel.FK__POSREMAINS__WID__2EA5EC27" FromRole="WAREHOUSE" ToRole="POSREMAINS" />
-          <NavigationProperty Name="WAYBILLMOVE" Relationship="BaseModel.FK_WAYBILLM_FK_WBM_DE_WAREHOUS" FromRole="WAREHOUSE" ToRole="WAYBILLMOVE" />
-          <NavigationProperty Name="WAYBILLMOVE1" Relationship="BaseModel.FK_WAYBILLM_FK_WBM_SO_WAREHOUS" FromRole="WAREHOUSE" ToRole="WAYBILLMOVE" />
-          <NavigationProperty Name="WAYBILLMAKE" Relationship="BaseModel.FK_WAYBILLMAKE_WAREHOUSE" FromRole="WAREHOUSE" ToRole="WAYBILLMAKE" />
-          <NavigationProperty Name="USERACCESSWH" Relationship="BaseModel.FK_UAWH_WID" FromRole="WAREHOUSE" ToRole="USERACCESSWH" />
-          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__WAREHOUS" FromRole="WAREHOUSE" ToRole="WaybillDet" />
-          <NavigationProperty Name="WMatTurn" Relationship="BaseModel.FK__WMATTURN__WID__3BCADD1B" FromRole="WAREHOUSE" ToRole="WMatTurn" />
-          <NavigationProperty Name="Materials" Relationship="BaseModel.FK__MATERIALS__WID__59C55456" FromRole="WAREHOUSE" ToRole="Materials" />
-          <NavigationProperty Name="Materials1" Relationship="BaseModel.FK__MATERIALS__WID__5E8A0973" FromRole="WAREHOUSE" ToRole="Materials" />
-          <NavigationProperty Name="Materials2" Relationship="BaseModel.FK__MATERIALS__WID__65370702" FromRole="WAREHOUSE" ToRole="Materials" />
-        </EntityType>
         <EntityType Name="WAYBILLDETADDPROPS">
           <Key>
             <PropertyRef Name="POSID" />
@@ -6707,23 +6805,9 @@
           <Property Name="PERSONID" Type="Int32" />
           <Property Name="AMOUNT" Type="Decimal" Nullable="false" Precision="15" Scale="8" />
           <NavigationProperty Name="MATRECIPE" Relationship="BaseModel.FK_WAYBILLMAKE_MATRECIPE" FromRole="WAYBILLMAKE" ToRole="MATRECIPE" />
-          <NavigationProperty Name="WAREHOUSE" Relationship="BaseModel.FK_WAYBILLMAKE_WAREHOUSE" FromRole="WAYBILLMAKE" ToRole="WAREHOUSE" />
           <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WAYBILLMAKE_WAYBILLLIST" FromRole="WAYBILLMAKE" ToRole="WaybillList" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_WAYBILLMAKE_KAGENT" FromRole="WAYBILLMAKE" ToRole="Kagent" />
-        </EntityType>
-        <EntityType Name="WAYBILLMOVE">
-          <Key>
-            <PropertyRef Name="WBILLID" />
-            <PropertyRef Name="SOURCEWID" />
-          </Key>
-          <Property Name="WBILLID" Type="Int32" Nullable="false" />
-          <Property Name="SOURCEWID" Type="Int32" Nullable="false" />
-          <Property Name="DESTWID" Type="Int32" />
-          <Property Name="PERSONID" Type="Int32" />
-          <NavigationProperty Name="WAREHOUSE" Relationship="BaseModel.FK_WAYBILLM_FK_WBM_DE_WAREHOUS" FromRole="WAYBILLMOVE" ToRole="WAREHOUSE" />
-          <NavigationProperty Name="WAREHOUSE1" Relationship="BaseModel.FK_WAYBILLM_FK_WBM_SO_WAREHOUS" FromRole="WAYBILLMOVE" ToRole="WAREHOUSE" />
-          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WBM_WBILLID" FromRole="WAYBILLMOVE" ToRole="WaybillList" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__WAYBILLMO__PERSO__314D4EA8" FromRole="WAYBILLMOVE" ToRole="Kagent" />
+          <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK_WAYBILLMAKE_WAREHOUSE" FromRole="WAYBILLMAKE" ToRole="Warehouse" />
         </EntityType>
         <EntityType Name="WAYBILLSVC">
           <Key>
@@ -7039,18 +7123,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__POSREMAINS__WID__2EA5EC27">
-          <End Role="WAREHOUSE" Type="BaseModel.WAREHOUSE" Multiplicity="1" />
-          <End Role="POSREMAINS" Type="BaseModel.POSREMAINS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WAREHOUSE">
-              <PropertyRef Name="WID" />
-            </Principal>
-            <Dependent Role="POSREMAINS">
-              <PropertyRef Name="WID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PRICELISTDET_PRICELIST">
           <End Role="PRICELIST" Type="BaseModel.PRICELIST" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -7163,42 +7235,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_WAYBILLM_FK_WBM_DE_WAREHOUS">
-          <End Role="WAREHOUSE" Type="BaseModel.WAREHOUSE" Multiplicity="0..1" />
-          <End Role="WAYBILLMOVE" Type="BaseModel.WAYBILLMOVE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WAREHOUSE">
-              <PropertyRef Name="WID" />
-            </Principal>
-            <Dependent Role="WAYBILLMOVE">
-              <PropertyRef Name="DESTWID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WAYBILLM_FK_WBM_SO_WAREHOUS">
-          <End Role="WAREHOUSE" Type="BaseModel.WAREHOUSE" Multiplicity="1" />
-          <End Role="WAYBILLMOVE" Type="BaseModel.WAYBILLMOVE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WAREHOUSE">
-              <PropertyRef Name="WID" />
-            </Principal>
-            <Dependent Role="WAYBILLMOVE">
-              <PropertyRef Name="SOURCEWID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WAYBILLMAKE_WAREHOUSE">
-          <End Role="WAREHOUSE" Type="BaseModel.WAREHOUSE" Multiplicity="1" />
-          <End Role="WAYBILLMAKE" Type="BaseModel.WAYBILLMAKE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WAREHOUSE">
-              <PropertyRef Name="WID" />
-            </Principal>
-            <Dependent Role="WAYBILLMAKE">
-              <PropertyRef Name="SOURCEWID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <ComplexType Name="EXECUTESQL_EXAMPLER_Result">
           <Property Type="Int32" Name="MATID" Nullable="true" />
           <Property Type="Int32" Name="GRPID" Nullable="true" />
@@ -7247,23 +7283,9 @@
           <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="USERID" Nullable="false" />
           <Property Type="Int32" Name="WID" Nullable="false" />
-          <NavigationProperty Name="WAREHOUSE" Relationship="BaseModel.FK_UAWH_WID" FromRole="USERACCESSWH" ToRole="WAREHOUSE" />
           <NavigationProperty Name="Users" Relationship="BaseModel.FK_UAWH_USERID" FromRole="USERACCESSWH" ToRole="Users" />
+          <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK_UAWH_WID" FromRole="USERACCESSWH" ToRole="Warehouse" />
         </EntityType>
-        <Association Name="FK_UAWH_WID">
-          <End Type="BaseModel.WAREHOUSE" Role="WAREHOUSE" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.USERACCESSWH" Role="USERACCESSWH" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WAREHOUSE">
-              <PropertyRef Name="WID" />
-            </Principal>
-            <Dependent Role="USERACCESSWH">
-              <PropertyRef Name="WID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <ComplexType Name="WBDGetOutP2_Result">
           <Property Type="Int32" Name="Num" Nullable="false" />
           <Property Type="Int32" Name="PosId" Nullable="true" />
@@ -7372,7 +7394,6 @@
           <NavigationProperty Name="TECHPROCDET" Relationship="BaseModel.FK_TECHPROCDET_WAYBILLLIST" FromRole="WaybillList" ToRole="TECHPROCDET" />
           <NavigationProperty Name="WAYBILLDETADDPROPS" Relationship="BaseModel.FK_WAYBILLDETADDPROPS_WBILLID" FromRole="WaybillList" ToRole="WAYBILLDETADDPROPS" />
           <NavigationProperty Name="WAYBILLMAKE" Relationship="BaseModel.FK_WAYBILLMAKE_WAYBILLLIST" FromRole="WaybillList" ToRole="WAYBILLMAKE" />
-          <NavigationProperty Name="WAYBILLMOVE" Relationship="BaseModel.FK_WBM_WBILLID" FromRole="WaybillList" ToRole="WAYBILLMOVE" />
           <NavigationProperty Name="WAYBILLSVC" Relationship="BaseModel.FK_WBS_WBILLID" FromRole="WaybillList" ToRole="WAYBILLSVC" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WBD_WBILLID" FromRole="WaybillList" ToRole="WaybillDet" />
           <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
@@ -7380,6 +7401,7 @@
           <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" FromRole="WaybillList" ToRole="Kagent" />
           <NavigationProperty Name="Kagent2" Relationship="BaseModel.FK_WBL_ENTID" FromRole="WaybillList" ToRole="Kagent" />
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY" FromRole="WaybillList" ToRole="Currency" />
+          <NavigationProperty Name="WaybillMove" Relationship="BaseModel.FK_WBM_WBILLID" FromRole="WaybillList" ToRole="WaybillMove" />
         </EntityType>
         <Association Name="FK_COMMISSION_WBILLID">
           <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
@@ -7461,20 +7483,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_WBM_WBILLID">
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.WAYBILLMOVE" Role="WAYBILLMOVE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillList">
-              <PropertyRef Name="WbillId" />
-            </Principal>
-            <Dependent Role="WAYBILLMOVE">
-              <PropertyRef Name="WBILLID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_WBS_WBILLID">
           <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -7517,7 +7525,6 @@
           <Property Type="Decimal" Name="AVG_IN_PICE" Precision="15" Scale="4" />
           <NavigationProperty Name="POSREMAINS" Relationship="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" FromRole="WaybillDet" ToRole="POSREMAINS" />
           <NavigationProperty Name="SERIALS" Relationship="BaseModel.FK_SERIALS_POSID" FromRole="WaybillDet" ToRole="SERIALS" />
-          <NavigationProperty Name="WAREHOUSE" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__WAREHOUS" FromRole="WaybillDet" ToRole="WAREHOUSE" />
           <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WBD_WBILLID" FromRole="WaybillDet" ToRole="WaybillList" />
           <NavigationProperty Name="WAYBILLDETADDPROPS" Relationship="BaseModel.FK_WBDAP_POSID" FromRole="WaybillDet" ToRole="WAYBILLDETADDPROPS" />
           <NavigationProperty Name="WAYBILLDETTAXES" Relationship="BaseModel.FK_WBDTAXES_POSID" FromRole="WaybillDet" ToRole="WAYBILLDETTAXES" />
@@ -7534,6 +7541,7 @@
           <NavigationProperty Name="ReturnRel2" Relationship="BaseModel.FK_RETREL_POSID" FromRole="WaybillDet" ToRole="ReturnRel" />
           <NavigationProperty Name="ReturnRel3" Relationship="BaseModel.FK_RETREL_PPOSID" FromRole="WaybillDet" ToRole="ReturnRel" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" FromRole="WaybillDet" ToRole="Materials" />
+          <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__WAREHOUS" FromRole="WaybillDet" ToRole="Warehouse" />
           </EntityType>
         <Association Name="FK__POSREMAIN__POSID__2DB1C7EE">
           <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
@@ -7558,18 +7566,6 @@
             </Principal>
             <Dependent Role="SERIALS">
               <PropertyRef Name="POSID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WAYBILLD_FK_WBDET__WAREHOUS">
-          <End Type="BaseModel.WAREHOUSE" Role="WAREHOUSE" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WAREHOUSE">
-              <PropertyRef Name="WID" />
-            </Principal>
-            <Dependent Role="WaybillDet">
-              <PropertyRef Name="WId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7680,23 +7676,11 @@
           <Property Type="Int32" Name="TurnType" Nullable="false" />
           <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="8" />
           <Property Type="Int32" Name="SourceId" />
-          <NavigationProperty Name="WAREHOUSE" Relationship="BaseModel.FK__WMATTURN__WID__3BCADD1B" FromRole="WMatTurn" ToRole="WAREHOUSE" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WMT_POSID" FromRole="WMatTurn" ToRole="WaybillDet" />
           <NavigationProperty Name="WaybillDet1" Relationship="BaseModel.FK_WMT_SRCID" FromRole="WMatTurn" ToRole="WaybillDet" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK__WMATTURN__MATID__3AD6B8E2" FromRole="WMatTurn" ToRole="Materials" />
+          <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK__WMATTURN__WID__3BCADD1B" FromRole="WMatTurn" ToRole="Warehouse" />
         </EntityType>
-        <Association Name="FK__WMATTURN__WID__3BCADD1B">
-          <End Type="BaseModel.WAREHOUSE" Role="WAREHOUSE" Multiplicity="1" />
-          <End Type="BaseModel.WMatTurn" Role="WMatTurn" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WAREHOUSE">
-              <PropertyRef Name="WID" />
-            </Principal>
-            <Dependent Role="WMatTurn">
-              <PropertyRef Name="WId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_WMT_POSID">
           <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
           <End Type="BaseModel.WMatTurn" Role="WMatTurn" Multiplicity="*" />
@@ -7843,13 +7827,11 @@
           <NavigationProperty Name="CONTRACTS" Relationship="BaseModel.FK_CONTRACT_REF_CONTR_KAGENT" FromRole="Kagent" ToRole="CONTRACTS" />
           <NavigationProperty Name="CONTRACTS1" Relationship="BaseModel.FK_CONTRACT_REFERENCE_KAGENT" FromRole="Kagent" ToRole="CONTRACTS" />
           <NavigationProperty Name="DISCCARDS" Relationship="BaseModel.FK_DISCCARDS_KAID" FromRole="Kagent" ToRole="DISCCARDS" />
-          <NavigationProperty Name="KAADDR" Relationship="BaseModel.FK_KAADDR_KAID" FromRole="Kagent" ToRole="KAADDR" />
           <NavigationProperty Name="KADISCOUNT" Relationship="BaseModel.FK__KADISCOUNT__KAID__19DFD96B" FromRole="Kagent" ToRole="KADISCOUNT" />
           <NavigationProperty Name="KAMATDISCOUNT" Relationship="BaseModel.FK__KAMATDISCO__KAID__31B762FC" FromRole="Kagent" ToRole="KAMATDISCOUNT" />
           <NavigationProperty Name="KAMATGROUPDISCOUNT" Relationship="BaseModel.FK__KAMATGROUP__KAID__3A4CA8FD" FromRole="Kagent" ToRole="KAMATGROUPDISCOUNT" />
           <NavigationProperty Name="TAXWB" Relationship="BaseModel.FK__TAXWB__PERSONID__019E3B86" FromRole="Kagent" ToRole="TAXWB" />
           <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK__WAYBILLLI__PERSO__6E01572D" FromRole="Kagent" ToRole="WaybillList" />
-          <NavigationProperty Name="WAYBILLMOVE" Relationship="BaseModel.FK__WAYBILLMO__PERSO__314D4EA8" FromRole="Kagent" ToRole="WAYBILLMOVE" />
           <NavigationProperty Name="KAGENTACCOUNT" Relationship="BaseModel.FK_AACC_KAID" FromRole="Kagent" ToRole="KAGENTACCOUNT" />
           <NavigationProperty Name="KAGENTDOC" Relationship="BaseModel.FK_ADOC_KAID" FromRole="Kagent" ToRole="KAGENTDOC" />
           <NavigationProperty Name="KAGENTPERSONS" Relationship="BaseModel.FK_AP_KAID" FromRole="Kagent" ToRole="KAGENTPERSONS" />
@@ -7863,6 +7845,8 @@
           <NavigationProperty Name="PayDoc1" Relationship="BaseModel.FK__PAYDOC__MPERSONI__22401542" FromRole="Kagent" ToRole="PayDoc" />
           <NavigationProperty Name="Users" Relationship="BaseModel.FK_Kagent_Users" FromRole="Kagent" ToRole="Users" />
           <NavigationProperty Name="KAgentSaldo" Relationship="BaseModel.FK_KAS_KAID" FromRole="Kagent" ToRole="KAgentSaldo" />
+          <NavigationProperty Name="KaAddr" Relationship="BaseModel.FK_KAADDR_KAID" FromRole="Kagent" ToRole="KaAddr" />
+          <NavigationProperty Name="WaybillMove" Relationship="BaseModel.FK__WAYBILLMO__PERSO__314D4EA8" FromRole="Kagent" ToRole="WaybillMove" />
         </EntityType>
         <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1" />
@@ -7948,20 +7932,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_KAADDR_KAID">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.KAADDR" Role="KAADDR" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="KAADDR">
-              <PropertyRef Name="KAID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__KADISCOUNT__KAID__19DFD96B">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -8025,18 +7995,6 @@
             </Principal>
             <Dependent Role="WaybillList">
               <PropertyRef Name="PersonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__WAYBILLMO__PERSO__314D4EA8">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.WAYBILLMOVE" Role="WAYBILLMOVE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="WAYBILLMOVE">
-              <PropertyRef Name="PERSONID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -9098,9 +9056,6 @@
           <NavigationProperty Name="MATCHANGE" Relationship="BaseModel.FK_MATCHANGE_CHANGEID" FromRole="Materials" ToRole="MATCHANGE" />
           <NavigationProperty Name="MATCHANGE1" Relationship="BaseModel.FK_MATCHANGE_MATID" FromRole="Materials" ToRole="MATCHANGE" />
           <NavigationProperty Name="MatGroup" Relationship="BaseModel.FK__MATERIALS__GRPID__58D1301D" FromRole="Materials" ToRole="MatGroup" />
-          <NavigationProperty Name="WAREHOUSE" Relationship="BaseModel.FK__MATERIALS__WID__59C55456" FromRole="Materials" ToRole="WAREHOUSE" />
-          <NavigationProperty Name="WAREHOUSE1" Relationship="BaseModel.FK__MATERIALS__WID__5E8A0973" FromRole="Materials" ToRole="WAREHOUSE" />
-          <NavigationProperty Name="WAREHOUSE2" Relationship="BaseModel.FK__MATERIALS__WID__65370702" FromRole="Materials" ToRole="WAREHOUSE" />
           <NavigationProperty Name="MATREMAINS" Relationship="BaseModel.FK__MATREMAIN__MATID__04AFB25B" FromRole="Materials" ToRole="MATREMAINS" />
           <NavigationProperty Name="POSREMAINS" Relationship="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" FromRole="Materials" ToRole="POSREMAINS" />
           <NavigationProperty Name="WMatTurn" Relationship="BaseModel.FK__WMATTURN__MATID__3AD6B8E2" FromRole="Materials" ToRole="WMatTurn" />
@@ -9109,6 +9064,9 @@
           <NavigationProperty Name="MATPRICES" Relationship="BaseModel.FK_MP_MATID" FromRole="Materials" ToRole="MATPRICES" />
           <NavigationProperty Name="TAXWBDET" Relationship="BaseModel.FK_TAXWBDET_REFERENCE_MATERIAL" FromRole="Materials" ToRole="TAXWBDET" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" FromRole="Materials" ToRole="WaybillDet" />
+          <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK__MATERIALS__WID__59C55456" FromRole="Materials" ToRole="Warehouse" />
+          <NavigationProperty Name="Warehouse1" Relationship="BaseModel.FK__MATERIALS__WID__5E8A0973" FromRole="Materials" ToRole="Warehouse" />
+          <NavigationProperty Name="Warehouse2" Relationship="BaseModel.FK__MATERIALS__WID__65370702" FromRole="Materials" ToRole="Warehouse" />
         </EntityType>
         <EntityType Name="MatGroup">
           <Key>
@@ -9224,42 +9182,6 @@
             </Principal>
             <Dependent Role="Materials">
               <PropertyRef Name="GrpId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MATERIALS__WID__59C55456">
-          <End Type="BaseModel.WAREHOUSE" Role="WAREHOUSE" Multiplicity="0..1" />
-          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WAREHOUSE">
-              <PropertyRef Name="WID" />
-            </Principal>
-            <Dependent Role="Materials">
-              <PropertyRef Name="WId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MATERIALS__WID__5E8A0973">
-          <End Type="BaseModel.WAREHOUSE" Role="WAREHOUSE" Multiplicity="0..1" />
-          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WAREHOUSE">
-              <PropertyRef Name="WID" />
-            </Principal>
-            <Dependent Role="Materials">
-              <PropertyRef Name="WId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MATERIALS__WID__65370702">
-          <End Type="BaseModel.WAREHOUSE" Role="WAREHOUSE" Multiplicity="0..1" />
-          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WAREHOUSE">
-              <PropertyRef Name="WID" />
-            </Principal>
-            <Dependent Role="Materials">
-              <PropertyRef Name="WId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -9430,6 +9352,306 @@
           <Property Type="String" Name="Producer" Nullable="true" MaxLength="64" />
           <Property Type="Decimal" Name="CurRemain" Nullable="true" Precision="15" Scale="4" />
         </ComplexType>
+        <EntityType Name="CityType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FullName" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Counters">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Prefix" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Sufix" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Counter" />
+        </EntityType>
+        <EntityType Name="KaAddr">
+          <Key>
+            <PropertyRef Name="AddrId" />
+          </Key>
+          <Property Type="Int32" Name="AddrId" Nullable="false" />
+          <Property Type="Int32" Name="KaId" Nullable="false" />
+          <Property Type="Int32" Name="AddrType" Nullable="false" />
+          <Property Type="String" Name="Country" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="City" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="District" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Address" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PostIndex" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Region" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CityType" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_KAADDR_KAID" FromRole="KaAddr" ToRole="Kagent" />
+        </EntityType>
+        <EntityType Name="TAXREESTRTYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="NAME" MaxLength="128" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Warehouse">
+          <Key>
+            <PropertyRef Name="WId" />
+          </Key>
+          <Property Type="Int32" Name="WId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Addr" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Deleted" Nullable="false" />
+          <Property Type="Int32" Name="Def" Nullable="false" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK__MATERIALS__WID__59C55456" FromRole="Warehouse" ToRole="Materials" />
+          <NavigationProperty Name="Materials1" Relationship="BaseModel.FK__MATERIALS__WID__5E8A0973" FromRole="Warehouse" ToRole="Materials" />
+          <NavigationProperty Name="Materials2" Relationship="BaseModel.FK__MATERIALS__WID__65370702" FromRole="Warehouse" ToRole="Materials" />
+          <NavigationProperty Name="POSREMAINS" Relationship="BaseModel.FK__POSREMAINS__WID__2EA5EC27" FromRole="Warehouse" ToRole="POSREMAINS" />
+          <NavigationProperty Name="USERACCESSWH" Relationship="BaseModel.FK_UAWH_WID" FromRole="Warehouse" ToRole="USERACCESSWH" />
+          <NavigationProperty Name="WMatTurn" Relationship="BaseModel.FK__WMATTURN__WID__3BCADD1B" FromRole="Warehouse" ToRole="WMatTurn" />
+          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__WAREHOUS" FromRole="Warehouse" ToRole="WaybillDet" />
+          <NavigationProperty Name="WAYBILLMAKE" Relationship="BaseModel.FK_WAYBILLMAKE_WAREHOUSE" FromRole="Warehouse" ToRole="WAYBILLMAKE" />
+          <NavigationProperty Name="WaybillMove" Relationship="BaseModel.FK_WAYBILLM_FK_WBM_DE_WAREHOUS" FromRole="Warehouse" ToRole="WaybillMove" />
+          <NavigationProperty Name="WaybillMove1" Relationship="BaseModel.FK_WAYBILLM_FK_WBM_SO_WAREHOUS" FromRole="Warehouse" ToRole="WaybillMove" />
+        </EntityType>
+        <EntityType Name="v_WaybillList">
+          <Key>
+            <PropertyRef Name="WbillId" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="WType" />
+            <PropertyRef Name="DefNum" />
+          </Key>
+          <Property Type="Int32" Name="WbillId" Nullable="false" />
+          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CurrId" />
+          <Property Type="String" Name="Reason" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Checked" Nullable="false" />
+          <Property Type="Decimal" Name="SummAll" Precision="15" Scale="2" />
+          <Property Type="Int32" Name="WType" Nullable="false" />
+          <Property Type="Decimal" Name="Nds" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="PersonId" />
+          <Property Type="Decimal" Name="SummPay" Precision="15" Scale="2" />
+          <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="DocId" />
+          <Property Type="Decimal" Name="SummInCurr" Precision="15" Scale="2" />
+          <Property Type="String" Name="ShortName" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="OnValue" Precision="15" Scale="8" />
+          <Property Type="String" Name="Name" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="KaId" />
+          <Property Type="String" Name="FullName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Phone" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PersonName" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="City" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="District" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Region" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Country" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PostIndex" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Fax" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="www" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="KType" />
+          <Property Type="String" Name="AttNum" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="AttDate" Precision="3" />
+          <Property Type="String" Name="Received" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ToDate" Precision="3" />
+          <Property Type="Int32" Name="DefNum" Nullable="false" />
+          <Property Type="Int32" Name="EntId" />
+          <Property Type="String" Name="WhName" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DestWhName" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="KAU" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MovPersonName" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CType" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EntKaFullName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EntKaPhone" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EntAddress" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EntCity" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EntDistrict" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EntRegion" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EntPostIndex" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EntINN" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EntCertNum" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EntCType" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_KAADDR_KAID">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.KaAddr" Role="KaAddr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KaAddr">
+              <PropertyRef Name="KaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MATERIALS__WID__59C55456">
+          <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="0..1" />
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
+            </Principal>
+            <Dependent Role="Materials">
+              <PropertyRef Name="WId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MATERIALS__WID__5E8A0973">
+          <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="0..1" />
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
+            </Principal>
+            <Dependent Role="Materials">
+              <PropertyRef Name="WId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MATERIALS__WID__65370702">
+          <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="0..1" />
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
+            </Principal>
+            <Dependent Role="Materials">
+              <PropertyRef Name="WId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__POSREMAINS__WID__2EA5EC27">
+          <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="1" />
+          <End Type="BaseModel.POSREMAINS" Role="POSREMAINS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
+            </Principal>
+            <Dependent Role="POSREMAINS">
+              <PropertyRef Name="WID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UAWH_WID">
+          <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.USERACCESSWH" Role="USERACCESSWH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
+            </Principal>
+            <Dependent Role="USERACCESSWH">
+              <PropertyRef Name="WID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WMATTURN__WID__3BCADD1B">
+          <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="1" />
+          <End Type="BaseModel.WMatTurn" Role="WMatTurn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
+            </Principal>
+            <Dependent Role="WMatTurn">
+              <PropertyRef Name="WId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAYBILLD_FK_WBDET__WAREHOUS">
+          <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
+            </Principal>
+            <Dependent Role="WaybillDet">
+              <PropertyRef Name="WId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAYBILLMAKE_WAREHOUSE">
+          <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="1" />
+          <End Type="BaseModel.WAYBILLMAKE" Role="WAYBILLMAKE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
+            </Principal>
+            <Dependent Role="WAYBILLMAKE">
+              <PropertyRef Name="SOURCEWID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="WaybillMove">
+          <Key>
+            <PropertyRef Name="WBillId" />
+            <PropertyRef Name="SourceWid" />
+          </Key>
+          <Property Type="Int32" Name="WBillId" Nullable="false" />
+          <Property Type="Int32" Name="SourceWid" Nullable="false" />
+          <Property Type="Int32" Name="DestWId" />
+          <Property Type="Int32" Name="PersonId" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__WAYBILLMO__PERSO__314D4EA8" FromRole="WaybillMove" ToRole="Kagent" />
+          <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK_WAYBILLM_FK_WBM_DE_WAREHOUS" FromRole="WaybillMove" ToRole="Warehouse" />
+          <NavigationProperty Name="Warehouse1" Relationship="BaseModel.FK_WAYBILLM_FK_WBM_SO_WAREHOUS" FromRole="WaybillMove" ToRole="Warehouse" />
+          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WBM_WBILLID" FromRole="WaybillMove" ToRole="WaybillList" />
+        </EntityType>
+        <Association Name="FK__WAYBILLMO__PERSO__314D4EA8">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillMove" Role="WaybillMove" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="WaybillMove">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAYBILLM_FK_WBM_DE_WAREHOUS">
+          <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillMove" Role="WaybillMove" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
+            </Principal>
+            <Dependent Role="WaybillMove">
+              <PropertyRef Name="DestWId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAYBILLM_FK_WBM_SO_WAREHOUS">
+          <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="1" />
+          <End Type="BaseModel.WaybillMove" Role="WaybillMove" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
+            </Principal>
+            <Dependent Role="WaybillMove">
+              <PropertyRef Name="SourceWid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WBM_WBILLID">
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.WaybillMove" Role="WaybillMove" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="WaybillMove">
+              <PropertyRef Name="WBillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -9481,15 +9703,6 @@
                 <ScalarProperty Name="OWNERTYPE" ColumnName="OWNERTYPE" />
                 <ScalarProperty Name="DATA" ColumnName="DATA" />
                 <ScalarProperty Name="USERDATA" ColumnName="USERDATA" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CITYTYPE">
-            <EntityTypeMapping TypeName="BaseModel.CITYTYPE">
-              <MappingFragment StoreEntitySet="CITYTYPE">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="FULLNAME" ColumnName="FULLNAME" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -9670,22 +9883,6 @@
                 <ScalarProperty Name="TABID" ColumnName="TABID" />
                 <ScalarProperty Name="LOGGING" ColumnName="LOGGING" />
                 <ScalarProperty Name="FLAGS" ColumnName="FLAGS" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="KAADDR">
-            <EntityTypeMapping TypeName="BaseModel.KAADDR">
-              <MappingFragment StoreEntitySet="KAADDR">
-                <ScalarProperty Name="ADDRID" ColumnName="ADDRID" />
-                <ScalarProperty Name="KAID" ColumnName="KAID" />
-                <ScalarProperty Name="ADDRTYPE" ColumnName="ADDRTYPE" />
-                <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
-                <ScalarProperty Name="CITY" ColumnName="CITY" />
-                <ScalarProperty Name="DISTRICT" ColumnName="DISTRICT" />
-                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
-                <ScalarProperty Name="POSTINDEX" ColumnName="POSTINDEX" />
-                <ScalarProperty Name="REGION" ColumnName="REGION" />
-                <ScalarProperty Name="CITYTYPE" ColumnName="CITYTYPE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -10141,18 +10338,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="WAREHOUSE">
-            <EntityTypeMapping TypeName="BaseModel.WAREHOUSE">
-              <MappingFragment StoreEntitySet="WAREHOUSE">
-                <ScalarProperty Name="WID" ColumnName="WID" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="ADDR" ColumnName="ADDR" />
-                <ScalarProperty Name="NOTES" ColumnName="NOTES" />
-                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
-                <ScalarProperty Name="DEF" ColumnName="DEF" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="WAYBILLDETADDPROPS">
             <EntityTypeMapping TypeName="BaseModel.WAYBILLDETADDPROPS">
               <MappingFragment StoreEntitySet="WAYBILLDETADDPROPS">
@@ -10186,16 +10371,6 @@
                 <ScalarProperty Name="RECID" ColumnName="RECID" />
                 <ScalarProperty Name="PERSONID" ColumnName="PERSONID" />
                 <ScalarProperty Name="AMOUNT" ColumnName="AMOUNT" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="WAYBILLMOVE">
-            <EntityTypeMapping TypeName="BaseModel.WAYBILLMOVE">
-              <MappingFragment StoreEntitySet="WAYBILLMOVE">
-                <ScalarProperty Name="WBILLID" ColumnName="WBILLID" />
-                <ScalarProperty Name="SOURCEWID" ColumnName="SOURCEWID" />
-                <ScalarProperty Name="DESTWID" ColumnName="DESTWID" />
-                <ScalarProperty Name="PERSONID" ColumnName="PERSONID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -11478,6 +11653,130 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="CityType">
+            <EntityTypeMapping TypeName="BaseModel.CityType">
+              <MappingFragment StoreEntitySet="CityType">
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Counters">
+            <EntityTypeMapping TypeName="BaseModel.Counters">
+              <MappingFragment StoreEntitySet="Counters">
+                <ScalarProperty Name="Counter" ColumnName="Counter" />
+                <ScalarProperty Name="Sufix" ColumnName="Sufix" />
+                <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KaAddr">
+            <EntityTypeMapping TypeName="BaseModel.KaAddr">
+              <MappingFragment StoreEntitySet="KaAddr">
+                <ScalarProperty Name="CityType" ColumnName="CityType" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="PostIndex" ColumnName="PostIndex" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="AddrType" ColumnName="AddrType" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="AddrId" ColumnName="AddrId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TAXREESTRTYPE">
+            <EntityTypeMapping TypeName="BaseModel.TAXREESTRTYPE">
+              <MappingFragment StoreEntitySet="TAXREESTRTYPE">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Warehouse">
+            <EntityTypeMapping TypeName="BaseModel.Warehouse">
+              <MappingFragment StoreEntitySet="Warehouse">
+                <ScalarProperty Name="Def" ColumnName="Def" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Addr" ColumnName="Addr" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_WaybillList">
+            <EntityTypeMapping TypeName="BaseModel.v_WaybillList">
+              <MappingFragment StoreEntitySet="v_WaybillList">
+                <ScalarProperty Name="EntCType" ColumnName="EntCType" />
+                <ScalarProperty Name="EntCertNum" ColumnName="EntCertNum" />
+                <ScalarProperty Name="EntINN" ColumnName="EntINN" />
+                <ScalarProperty Name="EntPostIndex" ColumnName="EntPostIndex" />
+                <ScalarProperty Name="EntRegion" ColumnName="EntRegion" />
+                <ScalarProperty Name="EntDistrict" ColumnName="EntDistrict" />
+                <ScalarProperty Name="EntCity" ColumnName="EntCity" />
+                <ScalarProperty Name="EntAddress" ColumnName="EntAddress" />
+                <ScalarProperty Name="EntKaPhone" ColumnName="EntKaPhone" />
+                <ScalarProperty Name="EntKaFullName" ColumnName="EntKaFullName" />
+                <ScalarProperty Name="CType" ColumnName="CType" />
+                <ScalarProperty Name="MovPersonName" ColumnName="MovPersonName" />
+                <ScalarProperty Name="KAU" ColumnName="KAU" />
+                <ScalarProperty Name="DestWhName" ColumnName="DestWhName" />
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
+                <ScalarProperty Name="EntId" ColumnName="EntId" />
+                <ScalarProperty Name="DefNum" ColumnName="DefNum" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="Received" ColumnName="Received" />
+                <ScalarProperty Name="AttDate" ColumnName="AttDate" />
+                <ScalarProperty Name="AttNum" ColumnName="AttNum" />
+                <ScalarProperty Name="KType" ColumnName="KType" />
+                <ScalarProperty Name="www" ColumnName="www" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="PostIndex" ColumnName="PostIndex" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="SummPay" ColumnName="SummPay" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Nds" ColumnName="Nds" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WaybillMove">
+            <EntityTypeMapping TypeName="BaseModel.WaybillMove">
+              <MappingFragment StoreEntitySet="WaybillMove">
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="DestWId" ColumnName="DestWId" />
+                <ScalarProperty Name="SourceWid" ColumnName="SourceWid" />
+                <ScalarProperty Name="WBillId" ColumnName="WBillId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

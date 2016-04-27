@@ -12,10 +12,10 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class CITYTYPE
+    public partial class CityType
     {
-        public int ID { get; set; }
-        public string NAME { get; set; }
-        public string FULLNAME { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string FullName { get; set; }
     }
 }

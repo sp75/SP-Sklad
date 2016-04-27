@@ -136,9 +136,9 @@ namespace SP_Sklad.SkladData
                 return _charge_type;
             }
         }
-        public static List<WAREHOUSE> WhList()
+        public static List<Warehouse> WhList()
         {
-            return new BaseEntities().WAREHOUSE.Where(w => w.DELETED == 0).ToList();
+            return new BaseEntities().Warehouse.Where(w => w.Deleted == 0).ToList();
         }
 
         public static List<Currency> Currency

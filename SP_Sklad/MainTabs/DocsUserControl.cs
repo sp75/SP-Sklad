@@ -17,6 +17,7 @@ using System.Data.SqlClient;
 using DevExpress.XtraGrid;
 using SP_Sklad.FinanseForm;
 using SP_Sklad.Common;
+using SP_Sklad.Reports;
 
 namespace SP_Sklad.MainTabs
 {
@@ -554,7 +555,23 @@ namespace SP_Sklad.MainTabs
 
         private void PrintItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            switch (focused_tree_node.GType)
+            {
+                case 1:
+                    var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
+                    if (dr == null)
+                    {
+                        return;
+                    }
 
+                    PrintDoc.Show(dr.DocId.Value, dr.WType, _db);
+                    break;
+
+                //     case 4: frmReportModule->PrintWB(PayDocDOCID->Value, PayDocDOCTYPE->Value * 30, DocPAnelTransaction); break;
+                //       case 5: frmReportModule->PrintPriceList(PriceListPLID->Value, DocPAnelTransaction); break;
+                //      case 6: frmReportModule->PrintWB(ContractsListDOCID->AsVariant, ContractsListDOCTYPE->Value * 8, DocPAnelTransaction);
+                //      case 7: frmReportModule->PrintWB(TaxWBListDOCID->AsVariant, -7, DocPAnelTransaction);
+            }
         }
 
         private void PayDocGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
