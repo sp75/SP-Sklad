@@ -12,7 +12,7 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class v_GetDocsTree
+    public partial class UserTreeAccess
     {
         public int Id { get; set; }
         public Nullable<int> FunId { get; set; }

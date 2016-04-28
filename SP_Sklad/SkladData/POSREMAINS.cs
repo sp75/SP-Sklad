@@ -12,20 +12,20 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class POSREMAINS
+    public partial class PosRemains
     {
-        public int POSID { get; set; }
-        public int WID { get; set; }
-        public int MATID { get; set; }
-        public System.DateTime ONDATE { get; set; }
-        public decimal REMAIN { get; set; }
-        public decimal RSV { get; set; }
-        public Nullable<decimal> AVGPRICE { get; set; }
-        public Nullable<decimal> INWAY { get; set; }
-        public Nullable<decimal> ORDERED { get; set; }
+        public int PosId { get; set; }
+        public int WId { get; set; }
+        public int MatId { get; set; }
+        public System.DateTime OnDate { get; set; }
+        public decimal Remain { get; set; }
+        public decimal Rsv { get; set; }
+        public Nullable<decimal> AvgPrice { get; set; }
+        public Nullable<decimal> InWay { get; set; }
+        public Nullable<decimal> Ordered { get; set; }
     
-        public virtual WaybillDet WaybillDet { get; set; }
         public virtual Materials Materials { get; set; }
         public virtual Warehouse Warehouse { get; set; }
+        public virtual WaybillDet WaybillDet { get; set; }
     }
 }

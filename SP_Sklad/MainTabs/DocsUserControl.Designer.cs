@@ -271,7 +271,7 @@
             this.DocsTreeList.OptionsView.ShowHorzLines = false;
             this.DocsTreeList.OptionsView.ShowIndicator = false;
             this.DocsTreeList.OptionsView.ShowVertLines = false;
-            this.DocsTreeList.ParentFieldName = "Pid";
+            this.DocsTreeList.ParentFieldName = "PId";
             this.DocsTreeList.SelectImageList = this.UserTreeImgList;
             this.DocsTreeList.Size = new System.Drawing.Size(218, 744);
             this.DocsTreeList.TabIndex = 1;

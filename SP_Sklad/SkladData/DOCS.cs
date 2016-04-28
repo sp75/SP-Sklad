@@ -12,28 +12,28 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class DOCS
+    public partial class Docs
     {
-        public DOCS()
+        public Docs()
         {
             this.CONTRACTS = new HashSet<CONTRACTS>();
             this.CONTRACTS1 = new HashSet<CONTRACTS>();
+            this.DocsRel = new HashSet<DocsRel>();
+            this.PayDoc = new HashSet<PayDoc>();
             this.PRICELIST = new HashSet<PRICELIST>();
             this.TAXWB = new HashSet<TAXWB>();
             this.WaybillList = new HashSet<WaybillList>();
-            this.DocsRel = new HashSet<DocsRel>();
-            this.PayDoc = new HashSet<PayDoc>();
         }
     
-        public int DOCID { get; set; }
-        public int DOCTYPE { get; set; }
+        public int DocId { get; set; }
+        public int DocType { get; set; }
     
         public virtual ICollection<CONTRACTS> CONTRACTS { get; set; }
         public virtual ICollection<CONTRACTS> CONTRACTS1 { get; set; }
+        public virtual ICollection<DocsRel> DocsRel { get; set; }
+        public virtual ICollection<PayDoc> PayDoc { get; set; }
         public virtual ICollection<PRICELIST> PRICELIST { get; set; }
         public virtual ICollection<TAXWB> TAXWB { get; set; }
         public virtual ICollection<WaybillList> WaybillList { get; set; }
-        public virtual ICollection<DocsRel> DocsRel { get; set; }
-        public virtual ICollection<PayDoc> PayDoc { get; set; }
     }
 }

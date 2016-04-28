@@ -19,13 +19,13 @@ namespace SP_Sklad.SkladData
             this.Materials = new HashSet<Materials>();
             this.Materials1 = new HashSet<Materials>();
             this.Materials2 = new HashSet<Materials>();
-            this.POSREMAINS = new HashSet<POSREMAINS>();
-            this.USERACCESSWH = new HashSet<USERACCESSWH>();
             this.WMatTurn = new HashSet<WMatTurn>();
-            this.WaybillDet = new HashSet<WaybillDet>();
             this.WAYBILLMAKE = new HashSet<WAYBILLMAKE>();
             this.WaybillMove = new HashSet<WaybillMove>();
             this.WaybillMove1 = new HashSet<WaybillMove>();
+            this.PosRemains = new HashSet<PosRemains>();
+            this.UserAccessWh = new HashSet<UserAccessWh>();
+            this.WaybillDet = new HashSet<WaybillDet>();
         }
     
         public int WId { get; set; }
@@ -38,12 +38,12 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<Materials> Materials { get; set; }
         public virtual ICollection<Materials> Materials1 { get; set; }
         public virtual ICollection<Materials> Materials2 { get; set; }
-        public virtual ICollection<POSREMAINS> POSREMAINS { get; set; }
-        public virtual ICollection<USERACCESSWH> USERACCESSWH { get; set; }
         public virtual ICollection<WMatTurn> WMatTurn { get; set; }
-        public virtual ICollection<WaybillDet> WaybillDet { get; set; }
         public virtual ICollection<WAYBILLMAKE> WAYBILLMAKE { get; set; }
         public virtual ICollection<WaybillMove> WaybillMove { get; set; }
         public virtual ICollection<WaybillMove> WaybillMove1 { get; set; }
+        public virtual ICollection<PosRemains> PosRemains { get; set; }
+        public virtual ICollection<UserAccessWh> UserAccessWh { get; set; }
+        public virtual ICollection<WaybillDet> WaybillDet { get; set; }
     }
 }

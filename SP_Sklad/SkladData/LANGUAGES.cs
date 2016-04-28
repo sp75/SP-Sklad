@@ -16,8 +16,8 @@ namespace SP_Sklad.SkladData
     {
         public LANGUAGES()
         {
-            this.VIEWLNG = new HashSet<VIEWLNG>();
             this.REPLNG = new HashSet<REPLNG>();
+            this.ViewLng = new HashSet<ViewLng>();
         }
     
         public int LANGID { get; set; }
@@ -25,7 +25,7 @@ namespace SP_Sklad.SkladData
         public string NAME { get; set; }
         public Nullable<int> FLAGS { get; set; }
     
-        public virtual ICollection<VIEWLNG> VIEWLNG { get; set; }
         public virtual ICollection<REPLNG> REPLNG { get; set; }
+        public virtual ICollection<ViewLng> ViewLng { get; set; }
     }
 }

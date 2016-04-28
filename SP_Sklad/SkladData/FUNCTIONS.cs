@@ -16,8 +16,8 @@ namespace SP_Sklad.SkladData
     {
         public FUNCTIONS()
         {
-            this.USERTREEVIEW = new HashSet<USERTREEVIEW>();
-            this.USERACCESS = new HashSet<USERACCESS>();
+            this.UserAccess = new HashSet<UserAccess>();
+            this.UserTreeView = new HashSet<UserTreeView>();
         }
     
         public int FUNID { get; set; }
@@ -27,7 +27,7 @@ namespace SP_Sklad.SkladData
         public int FLAGS { get; set; }
     
         public virtual TABLES TABLES { get; set; }
-        public virtual ICollection<USERTREEVIEW> USERTREEVIEW { get; set; }
-        public virtual ICollection<USERACCESS> USERACCESS { get; set; }
+        public virtual ICollection<UserAccess> UserAccess { get; set; }
+        public virtual ICollection<UserTreeView> UserTreeView { get; set; }
     }
 }

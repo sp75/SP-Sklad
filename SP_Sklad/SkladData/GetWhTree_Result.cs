@@ -29,5 +29,6 @@ namespace SP_Sklad.SkladData
         public Nullable<int> CanModify { get; set; }
         public Nullable<int> CanDelete { get; set; }
         public Nullable<int> CanPost { get; set; }
+        public Nullable<int> WType { get; set; }
     }
 }

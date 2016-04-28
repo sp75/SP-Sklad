@@ -12,16 +12,16 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class USERACCESS
+    public partial class UserAccess
     {
-        public int ID { get; set; }
-        public int USERID { get; set; }
-        public int FUNID { get; set; }
-        public int CANVIEW { get; set; }
-        public int CANINSERT { get; set; }
-        public int CANMODIFY { get; set; }
-        public int CANDELETE { get; set; }
-        public int CANPOST { get; set; }
+        public int Id { get; set; }
+        public int UserId { get; set; }
+        public int FunId { get; set; }
+        public int CanView { get; set; }
+        public int CanInsert { get; set; }
+        public int CanModify { get; set; }
+        public int CanDelete { get; set; }
+        public int CanPost { get; set; }
     
         public virtual FUNCTIONS FUNCTIONS { get; set; }
         public virtual Users Users { get; set; }

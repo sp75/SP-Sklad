@@ -17,9 +17,9 @@ namespace SP_Sklad.SkladData
         public Users()
         {
             this.PRINTLOG = new HashSet<PRINTLOG>();
-            this.USERACCESS = new HashSet<USERACCESS>();
-            this.USERACCESSWH = new HashSet<USERACCESSWH>();
             this.Kagent = new HashSet<Kagent>();
+            this.UserAccess = new HashSet<UserAccess>();
+            this.UserAccessWh = new HashSet<UserAccessWh>();
         }
     
         public int UserId { get; set; }
@@ -32,8 +32,8 @@ namespace SP_Sklad.SkladData
         public Nullable<int> EnableEditDate { get; set; }
     
         public virtual ICollection<PRINTLOG> PRINTLOG { get; set; }
-        public virtual ICollection<USERACCESS> USERACCESS { get; set; }
-        public virtual ICollection<USERACCESSWH> USERACCESSWH { get; set; }
         public virtual ICollection<Kagent> Kagent { get; set; }
+        public virtual ICollection<UserAccess> UserAccess { get; set; }
+        public virtual ICollection<UserAccessWh> UserAccessWh { get; set; }
     }
 }

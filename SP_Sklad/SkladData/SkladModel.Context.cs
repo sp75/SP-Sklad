@@ -31,7 +31,6 @@ namespace SP_Sklad.SkladData
         public DbSet<ACCOUNTTYPE> ACCOUNTTYPE { get; set; }
         public DbSet<BANKS> BANKS { get; set; }
         public DbSet<BANKSPERSONS> BANKSPERSONS { get; set; }
-        public DbSet<BLOBS> BLOBS { get; set; }
         public DbSet<COMMISSION> COMMISSION { get; set; }
         public DbSet<CONTRACTS> CONTRACTS { get; set; }
         public DbSet<CONTRDET> CONTRDET { get; set; }
@@ -42,8 +41,6 @@ namespace SP_Sklad.SkladData
         public DbSet<DEBONINGDET> DEBONINGDET { get; set; }
         public DbSet<DISCCARDGRP> DISCCARDGRP { get; set; }
         public DbSet<DISCCARDS> DISCCARDS { get; set; }
-        public DbSet<DOCS> DOCS { get; set; }
-        public DbSet<DOCTYP> DOCTYP { get; set; }
         public DbSet<ENTPARAMS> ENTPARAMS { get; set; }
         public DbSet<FUNCTIONS> FUNCTIONS { get; set; }
         public DbSet<KADISCOUNT> KADISCOUNT { get; set; }
@@ -65,7 +62,6 @@ namespace SP_Sklad.SkladData
         public DbSet<MONEYSALDO> MONEYSALDO { get; set; }
         public DbSet<OPERLOG> OPERLOG { get; set; }
         public DbSet<PAYDOCTYPE> PAYDOCTYPE { get; set; }
-        public DbSet<POSREMAINS> POSREMAINS { get; set; }
         public DbSet<PRICELIST> PRICELIST { get; set; }
         public DbSet<PRICELISTDET> PRICELISTDET { get; set; }
         public DbSet<PRINTLOG> PRINTLOG { get; set; }
@@ -80,22 +76,14 @@ namespace SP_Sklad.SkladData
         public DbSet<TAXWBDET> TAXWBDET { get; set; }
         public DbSet<TECHPROCDET> TECHPROCDET { get; set; }
         public DbSet<TECHPROCESS> TECHPROCESS { get; set; }
-        public DbSet<USERTREE> USERTREE { get; set; }
-        public DbSet<USERTREEVIEW> USERTREEVIEW { get; set; }
-        public DbSet<VIEWLNG> VIEWLNG { get; set; }
         public DbSet<WAYBILLDETADDPROPS> WAYBILLDETADDPROPS { get; set; }
         public DbSet<WAYBILLDETTAXES> WAYBILLDETTAXES { get; set; }
         public DbSet<WAYBILLMAKE> WAYBILLMAKE { get; set; }
         public DbSet<WAYBILLSVC> WAYBILLSVC { get; set; }
-        public DbSet<USER_TREE_ACCESS> USER_TREE_ACCESS { get; set; }
-        public DbSet<USERACCESS> USERACCESS { get; set; }
-        public DbSet<USERACCESSWH> USERACCESSWH { get; set; }
         public DbSet<WaybillList> WaybillList { get; set; }
-        public DbSet<WaybillDet> WaybillDet { get; set; }
         public DbSet<MaterialsList> MaterialsList { get; set; }
         public DbSet<Actives> Actives { get; set; }
         public DbSet<WMatTurn> WMatTurn { get; set; }
-        public DbSet<v_GetDocsTree> v_GetDocsTree { get; set; }
         public DbSet<CashDesks> CashDesks { get; set; }
         public DbSet<PayType> PayType { get; set; }
         public DbSet<Kagent> Kagent { get; set; }
@@ -108,7 +96,6 @@ namespace SP_Sklad.SkladData
         public DbSet<CommonParams> CommonParams { get; set; }
         public DbSet<KAgentSaldo> KAgentSaldo { get; set; }
         public DbSet<PriceTypes> PriceTypes { get; set; }
-        public DbSet<v_PosInList> v_PosInList { get; set; }
         public DbSet<ReturnRel> ReturnRel { get; set; }
         public DbSet<Materials> Materials { get; set; }
         public DbSet<MatGroup> MatGroup { get; set; }
@@ -119,6 +106,18 @@ namespace SP_Sklad.SkladData
         public DbSet<Warehouse> Warehouse { get; set; }
         public DbSet<v_WaybillList> v_WaybillList { get; set; }
         public DbSet<WaybillMove> WaybillMove { get; set; }
+        public DbSet<DocType> DocType { get; set; }
+        public DbSet<UserAccess> UserAccess { get; set; }
+        public DbSet<UserTreeView> UserTreeView { get; set; }
+        public DbSet<ViewLng> ViewLng { get; set; }
+        public DbSet<UserTreeAccess> UserTreeAccess { get; set; }
+        public DbSet<v_GetDocsTree> v_GetDocsTree { get; set; }
+        public DbSet<Docs> Docs { get; set; }
+        public DbSet<PosRemains> PosRemains { get; set; }
+        public DbSet<UserAccessWh> UserAccessWh { get; set; }
+        public DbSet<UserTree> UserTree { get; set; }
+        public DbSet<ExtRel> ExtRel { get; set; }
+        public DbSet<WaybillDet> WaybillDet { get; set; }
     
         [EdmFunction("BaseEntities", "GetMatGroupTree")]
         public virtual IQueryable<GetMatGroupTree_Result> GetMatGroupTree(Nullable<int> root_cat_id)
@@ -318,32 +317,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("IN_KAID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SP_POS_IN_Result>("[BaseEntities].[SP_POS_IN](@IN_ONDATE, @IN_MATID, @IN_WID, @IN_KAID)", iN_ONDATEParameter, iN_MATIDParameter, iN_WIDParameter, iN_KAIDParameter);
-        }
-    
-        [EdmFunction("BaseEntities", "SP_WB_LIST_WH")]
-        public virtual IQueryable<SP_WB_LIST_WH_Result> SP_WB_LIST_WH(Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_WTYPE, Nullable<int> iN_CHECKED, string wH)
-        {
-            var iN_FROMDATEParameter = iN_FROMDATE.HasValue ?
-                new ObjectParameter("IN_FROMDATE", iN_FROMDATE) :
-                new ObjectParameter("IN_FROMDATE", typeof(System.DateTime));
-    
-            var iN_TODATEParameter = iN_TODATE.HasValue ?
-                new ObjectParameter("IN_TODATE", iN_TODATE) :
-                new ObjectParameter("IN_TODATE", typeof(System.DateTime));
-    
-            var iN_WTYPEParameter = iN_WTYPE.HasValue ?
-                new ObjectParameter("IN_WTYPE", iN_WTYPE) :
-                new ObjectParameter("IN_WTYPE", typeof(int));
-    
-            var iN_CHECKEDParameter = iN_CHECKED.HasValue ?
-                new ObjectParameter("IN_CHECKED", iN_CHECKED) :
-                new ObjectParameter("IN_CHECKED", typeof(int));
-    
-            var wHParameter = wH != null ?
-                new ObjectParameter("WH", wH) :
-                new ObjectParameter("WH", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SP_WB_LIST_WH_Result>("[BaseEntities].[SP_WB_LIST_WH](@IN_FROMDATE, @IN_TODATE, @IN_WTYPE, @IN_CHECKED, @WH)", iN_FROMDATEParameter, iN_TODATEParameter, iN_WTYPEParameter, iN_CHECKEDParameter, wHParameter);
         }
     
         [EdmFunction("BaseEntities", "SP_WMAT_GET_BY_WHLIST")]
@@ -1051,19 +1024,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetOrderedInSuppliers_Result>("GetOrderedInSuppliers", wbill_idParameter);
         }
     
-        public virtual ObjectResult<GetWhTree_Result> GetWhTree(Nullable<int> user_id, Nullable<int> type_tree)
-        {
-            var user_idParameter = user_id.HasValue ?
-                new ObjectParameter("user_id", user_id) :
-                new ObjectParameter("user_id", typeof(int));
-    
-            var type_treeParameter = type_tree.HasValue ?
-                new ObjectParameter("type_tree", type_tree) :
-                new ObjectParameter("type_tree", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetWhTree_Result>("GetWhTree", user_idParameter, type_treeParameter);
-        }
-    
         [EdmFunction("BaseEntities", "WhMatGet")]
         public virtual IQueryable<WhMatGet_Result> WhMatGet(Nullable<int> grp_id, Nullable<int> wid, Nullable<int> ka_id, Nullable<System.DateTime> on_date, Nullable<int> get_empty, string wh, Nullable<int> show_all_mats, string grp, Nullable<int> user_id, Nullable<int> get_child_node)
         {
@@ -1164,6 +1124,45 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("wh", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<PosGet_Result>("[BaseEntities].[PosGet](@mat_id, @w_id, @ka_id, @on_date, @get_empty, @wh)", mat_idParameter, w_idParameter, ka_idParameter, on_dateParameter, get_emptyParameter, whParameter);
+        }
+    
+        public virtual ObjectResult<GetWhTree_Result> GetWhTree(Nullable<int> user_id, Nullable<int> type_tree)
+        {
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            var type_treeParameter = type_tree.HasValue ?
+                new ObjectParameter("type_tree", type_tree) :
+                new ObjectParameter("type_tree", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetWhTree_Result>("GetWhTree", user_idParameter, type_treeParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetWayBillListWh")]
+        public virtual IQueryable<GetWayBillListWh_Result> GetWayBillListWh(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> w_type, Nullable<int> is_checked, string wh)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var w_typeParameter = w_type.HasValue ?
+                new ObjectParameter("w_type", w_type) :
+                new ObjectParameter("w_type", typeof(int));
+    
+            var is_checkedParameter = is_checked.HasValue ?
+                new ObjectParameter("is_checked", is_checked) :
+                new ObjectParameter("is_checked", typeof(int));
+    
+            var whParameter = wh != null ?
+                new ObjectParameter("wh", wh) :
+                new ObjectParameter("wh", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillListWh_Result>("[BaseEntities].[GetWayBillListWh](@from_date, @to_date, @w_type, @is_checked, @wh)", from_dateParameter, to_dateParameter, w_typeParameter, is_checkedParameter, whParameter);
         }
     }
 }

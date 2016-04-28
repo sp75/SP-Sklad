@@ -88,7 +88,6 @@
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
             this.WaybillDetOutGridControl = new DevExpress.XtraGrid.GridControl();
             this.WaybillDetOutGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -248,6 +247,7 @@
             this.EditMaterialBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P));
             this.EditMaterialBtn.Name = "EditMaterialBtn";
             this.EditMaterialBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.EditMaterialBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.EditMaterialBtn_ItemClick);
             // 
             // DelMaterialBtn
             // 
@@ -420,7 +420,7 @@
             this.WhInComboBox.Properties.DisplayMember = "Name";
             this.WhInComboBox.Properties.ShowFooter = false;
             this.WhInComboBox.Properties.ShowHeader = false;
-            this.WhInComboBox.Properties.ValueMember = "KaId";
+            this.WhInComboBox.Properties.ValueMember = "WId";
             this.WhInComboBox.Size = new System.Drawing.Size(436, 22);
             this.WhInComboBox.StyleController = this.styleController1;
             this.WhInComboBox.TabIndex = 23;
@@ -473,7 +473,7 @@
             this.WhOutComboBox.Properties.ShowFooter = false;
             this.WhOutComboBox.Properties.ShowHeader = false;
             this.WhOutComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.WhOutComboBox.Properties.ValueMember = "KaId";
+            this.WhOutComboBox.Properties.ValueMember = "WId";
             this.WhOutComboBox.Size = new System.Drawing.Size(436, 22);
             this.WhOutComboBox.StyleController = this.styleController1;
             this.WhOutComboBox.TabIndex = 9;
@@ -661,7 +661,7 @@
             this.KagentComboBox.Properties.DisplayMember = "Name";
             this.KagentComboBox.Properties.ShowFooter = false;
             this.KagentComboBox.Properties.ShowHeader = false;
-            this.KagentComboBox.Properties.ValueMember = "CashId";
+            this.KagentComboBox.Properties.ValueMember = "KaId";
             this.KagentComboBox.Size = new System.Drawing.Size(251, 22);
             this.KagentComboBox.StyleController = this.styleController1;
             this.KagentComboBox.TabIndex = 18;
@@ -698,7 +698,7 @@
             this.PersonOutComboBox.Properties.DisplayMember = "Name";
             this.PersonOutComboBox.Properties.ShowFooter = false;
             this.PersonOutComboBox.Properties.ShowHeader = false;
-            this.PersonOutComboBox.Properties.ValueMember = "PTypeId";
+            this.PersonOutComboBox.Properties.ValueMember = "KaId";
             this.PersonOutComboBox.Size = new System.Drawing.Size(251, 22);
             this.PersonOutComboBox.StyleController = this.styleController1;
             this.PersonOutComboBox.TabIndex = 15;
@@ -730,6 +730,7 @@
             this.OkButton.Size = new System.Drawing.Size(100, 30);
             this.OkButton.TabIndex = 1;
             this.OkButton.Text = "Застосувати";
+            this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
             // simpleButton1
             // 
@@ -769,7 +770,6 @@
             // WaybillDetOutGridView
             // 
             this.WaybillDetOutGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn1,
             this.gridColumn2,
             this.gridColumn11,
             this.gridColumn3,
@@ -781,26 +781,7 @@
             this.WaybillDetOutGridView.Images = this.WBImgList;
             this.WaybillDetOutGridView.Name = "WaybillDetOutGridView";
             this.WaybillDetOutGridView.OptionsView.ShowGroupPanel = false;
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "gridColumn1";
-            this.gridColumn1.ColumnEdit = this.repositoryItemImageComboBox1;
-            this.gridColumn1.FieldName = "PosType";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.OptionsColumn.AllowEdit = false;
-            this.gridColumn1.OptionsColumn.AllowFocus = false;
-            this.gridColumn1.OptionsColumn.AllowMove = false;
-            this.gridColumn1.OptionsColumn.AllowSize = false;
-            this.gridColumn1.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn1.OptionsColumn.FixedWidth = true;
-            this.gridColumn1.OptionsColumn.ReadOnly = true;
-            this.gridColumn1.OptionsColumn.ShowCaption = false;
-            this.gridColumn1.OptionsColumn.ShowInCustomizationForm = false;
-            this.gridColumn1.OptionsColumn.TabStop = false;
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 25;
+            this.WaybillDetOutGridView.DoubleClick += new System.EventHandler(this.WaybillDetOutGridView_DoubleClick);
             // 
             // repositoryItemImageComboBox1
             // 
@@ -821,7 +802,7 @@
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.OptionsColumn.ReadOnly = true;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 2;
+            this.gridColumn2.VisibleIndex = 0;
             this.gridColumn2.Width = 49;
             // 
             // gridColumn11
@@ -861,7 +842,7 @@
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.OptionsColumn.ReadOnly = true;
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 3;
+            this.gridColumn3.VisibleIndex = 2;
             this.gridColumn3.Width = 323;
             // 
             // gridColumn4
@@ -870,7 +851,7 @@
             this.gridColumn4.FieldName = "Amount";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 4;
+            this.gridColumn4.VisibleIndex = 3;
             this.gridColumn4.Width = 123;
             // 
             // gridColumn5
@@ -881,7 +862,7 @@
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.OptionsColumn.ReadOnly = true;
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 5;
+            this.gridColumn5.VisibleIndex = 4;
             this.gridColumn5.Width = 147;
             // 
             // gridColumn6
@@ -892,7 +873,7 @@
             this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.OptionsColumn.ReadOnly = true;
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 6;
+            this.gridColumn6.VisibleIndex = 5;
             this.gridColumn6.Width = 123;
             // 
             // gridColumn8
@@ -903,7 +884,7 @@
             this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.OptionsColumn.ReadOnly = true;
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 7;
+            this.gridColumn8.VisibleIndex = 6;
             this.gridColumn8.Width = 135;
             // 
             // repositoryItemImageComboBox3
@@ -939,6 +920,9 @@
             this.Name = "frmWayBillMove";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Властивості накладної переміщення";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmWayBillMove_FormClosed);
+            this.Load += new System.EventHandler(this.frmWayBillMove_Load);
+            this.Shown += new System.EventHandler(this.frmWayBillMove_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
@@ -1026,7 +1010,6 @@
         private DevExpress.XtraGrid.GridControl WaybillDetOutGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView WaybillDetOutGridView;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;

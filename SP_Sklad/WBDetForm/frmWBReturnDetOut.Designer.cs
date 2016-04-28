@@ -913,6 +913,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmWBReturnDetOut";
             this.Text = "Властивості позиції по документу";
+            this.Load += new System.EventHandler(this.frmWBReturnDetOut_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).EndInit();

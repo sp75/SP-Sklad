@@ -17,6 +17,6 @@ namespace SP_Sklad.SkladData
         public int DocId { get; set; }
         public int RDocId { get; set; }
     
-        public virtual DOCS DOCS { get; set; }
+        public virtual Docs Docs { get; set; }
     }
 }

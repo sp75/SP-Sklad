@@ -12,11 +12,11 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class DOCTYP
+    public partial class DocType
     {
-        public int ID { get; set; }
-        public string NAME { get; set; }
-        public string SHORTNAME { get; set; }
-        public Nullable<int> FUNID { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string ShortName { get; set; }
+        public Nullable<int> FunId { get; set; }
     }
 }

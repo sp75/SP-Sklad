@@ -24,7 +24,6 @@ namespace SP_Sklad
             using (var db  = new BaseEntities())
             {
                docsUserControl1.OnLoad();
-               whUserControl.OnLoad(db);
             }
         }
     }

@@ -12,12 +12,13 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class BLOBS
+    public partial class ExtRel
     {
-        public int ID { get; set; }
-        public Nullable<int> OWNERID { get; set; }
-        public Nullable<int> OWNERTYPE { get; set; }
-        public byte[] DATA { get; set; }
-        public Nullable<int> USERDATA { get; set; }
+        public int Id { get; set; }
+        public int IntPosId { get; set; }
+        public int ExtPosId { get; set; }
+    
+        public virtual WaybillDet WaybillDet { get; set; }
+        public virtual WaybillDet WaybillDet1 { get; set; }
     }
 }

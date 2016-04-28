@@ -12,16 +12,16 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class USERTREE
+    public partial class UserTree
     {
-        public USERTREE()
+        public UserTree()
         {
-            this.USERTREEVIEW = new HashSet<USERTREEVIEW>();
+            this.UserTreeView = new HashSet<UserTreeView>();
         }
     
-        public int TREEID { get; set; }
-        public string NOTES { get; set; }
+        public int TreeId { get; set; }
+        public string Notes { get; set; }
     
-        public virtual ICollection<USERTREEVIEW> USERTREEVIEW { get; set; }
+        public virtual ICollection<UserTreeView> UserTreeView { get; set; }
     }
 }

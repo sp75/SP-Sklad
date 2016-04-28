@@ -12,28 +12,28 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class USERTREEVIEW
+    public partial class UserTreeView
     {
-        public USERTREEVIEW()
+        public UserTreeView()
         {
-            this.VIEWLNG = new HashSet<VIEWLNG>();
+            this.ViewLng = new HashSet<ViewLng>();
         }
     
-        public int ID { get; set; }
-        public Nullable<int> FUNID { get; set; }
-        public int TREEID { get; set; }
-        public int PID { get; set; }
-        public int NUM { get; set; }
-        public Nullable<int> IMAGEINDEX { get; set; }
-        public int ISGROUP { get; set; }
-        public Nullable<int> SHOWINTREE { get; set; }
-        public Nullable<int> GTYPE { get; set; }
-        public int SHOWEXPANDED { get; set; }
-        public int VISIBLE { get; set; }
-        public Nullable<int> DISABLEDINDEX { get; set; }
+        public int Id { get; set; }
+        public Nullable<int> FunId { get; set; }
+        public int TreeId { get; set; }
+        public int PId { get; set; }
+        public int Num { get; set; }
+        public Nullable<int> ImageIndex { get; set; }
+        public int IsGroup { get; set; }
+        public Nullable<int> ShowInTree { get; set; }
+        public Nullable<int> GType { get; set; }
+        public int ShowExpanded { get; set; }
+        public int Visible { get; set; }
+        public Nullable<int> DisabledIndex { get; set; }
     
         public virtual FUNCTIONS FUNCTIONS { get; set; }
-        public virtual USERTREE USERTREE { get; set; }
-        public virtual ICollection<VIEWLNG> VIEWLNG { get; set; }
+        public virtual ICollection<ViewLng> ViewLng { get; set; }
+        public virtual UserTree UserTree { get; set; }
     }
 }

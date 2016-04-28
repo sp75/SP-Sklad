@@ -12,13 +12,13 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class VIEWLNG
+    public partial class ViewLng
     {
-        public int ID { get; set; }
-        public int LANGID { get; set; }
-        public string NAME { get; set; }
+        public int Id { get; set; }
+        public int LangId { get; set; }
+        public string Name { get; set; }
     
         public virtual LANGUAGES LANGUAGES { get; set; }
-        public virtual USERTREEVIEW USERTREEVIEW { get; set; }
+        public virtual UserTreeView UserTreeView { get; set; }
     }
 }

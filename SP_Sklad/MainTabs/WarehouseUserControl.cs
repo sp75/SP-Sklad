@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SP_Sklad.SkladData;
+using SP_Sklad.WBForm;
+using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraGrid;
 
 namespace SP_Sklad.MainTabs
 {
@@ -33,8 +36,11 @@ namespace SP_Sklad.MainTabs
             whContentTab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
             OnDateEdit.DateTime = DateTime.Now;
 
-            whKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(new BaseEntities().Kagent.Select(s => new { s.KaId, s.Name }).ToList());
-            whKagentList.EditValue = 0;
+            wbKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(new BaseEntities().Kagent.Select(s => new { s.KaId, s.Name }));
+            wbKagentList.EditValue = 0;
+
+            WhComboBox.Properties.DataSource = new List<object>() { new { WId = "*", Name = "Усі" } }.Concat(new BaseEntities().Warehouse.Select(s => new { WId = s.WId.ToString(), s.Name }).ToList());
+            WhComboBox.EditValue = "*";
 
             wbSatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
             wbSatusList.EditValue = -1;
@@ -49,11 +55,6 @@ namespace SP_Sklad.MainTabs
         {
             WHTreeList.DataSource = new BaseEntities().GetWhTree(DBHelper.CurrentUser.UserId, type).ToList();
             WHTreeList.ExpandAll();
-        }
-
-        public void OnLoad(BaseEntities db)
-        {
-
         }
 
         private void WHTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
@@ -81,7 +82,7 @@ namespace SP_Sklad.MainTabs
                     }
 
                     WhMatGridControl.DataSource = null;
-                    WhMatGridControl.DataSource = DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list, 0, "", DBHelper.CurrentUser.UserId, 0).ToList();
+                    WhMatGridControl.DataSource = DB.SkladBase().WhMatGet(grp_id, wid, (int)wbKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list, 0, "", DBHelper.CurrentUser.UserId, 0).ToList();
                     /*
                         WhTopPanel->Edit();
                         WhTopPanelGRPID->Value = 0;
@@ -100,7 +101,11 @@ namespace SP_Sklad.MainTabs
                    
                     break;
 
-            /*    case 2: cxGrid1Level1->GridView = cxGrid1DBTableView1;
+               case 2:
+                    GetWayBillList(focused_tree_node.WType);
+                    break;
+             
+             /* cxGrid1Level1->GridView = cxGrid1DBTableView1;
                     cxGridLevel6->GridView = cxGridDBTableView1;
                     GET_RelDocList->DataSource = WayBillListDS;
                     WBTopPanelDate->Edit();
@@ -124,6 +129,40 @@ namespace SP_Sklad.MainTabs
             whContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
         }
 
+        void GetWayBillList(int? wtyp)
+        {
+            if (wtyp == null && wbSatusList.EditValue == null || WhComboBox.EditValue == null || WHTreeList.FocusedNode == null)
+            {
+                return;
+            }
+
+            var satrt_date = wbStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : wbStartDate.DateTime;
+            var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
+
+            var dr = WbGridView.GetRow(WbGridView.FocusedRowHandle) as GetWayBillList_Result;
+
+            WBGridControl.DataSource = null;
+            WBGridControl.DataSource = DB.SkladBase().GetWayBillListWh(satrt_date.Date, end_date.Date.AddDays(1), wtyp, (int)wbSatusList.EditValue, "*").OrderByDescending(o => o.OnDate);
+
+            WbGridView.FocusedRowHandle = FindRowHandleByRowObject(WbGridView, dr);
+        }
+
+        private int FindRowHandleByRowObject(GridView view, GetWayBillList_Result dr)
+        {
+            if (dr != null)
+            {
+                for (int i = 0; i < view.DataRowCount; i++)
+                {
+                    if (dr.WbillId == (view.GetRow(i) as GetWayBillList_Result).WbillId)
+                    {
+                        return i;
+                    }
+                }
+            }
+            return GridControl.InvalidRowHandle;
+        }
+
+
         private void ByGrpBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             GetTree(1);
@@ -140,8 +179,8 @@ namespace SP_Sklad.MainTabs
 
             if (dr != null)
             {
-                RemainOnWhGrid.DataSource = DB.SkladBase().WMatGetByWh(dr.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, wh_list);
-                PosGridControl.DataSource = DB.SkladBase().PosGet(dr.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list);
+                RemainOnWhGrid.DataSource = DB.SkladBase().WMatGetByWh(dr.MatId, wid, (int)wbKagentList.EditValue, OnDateEdit.DateTime, wh_list);
+                PosGridControl.DataSource = DB.SkladBase().PosGet(dr.MatId, wid, (int)wbKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list);
             }
             else
             {
@@ -153,6 +192,22 @@ namespace SP_Sklad.MainTabs
         private void PosGridControl_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void NewItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            switch (focused_tree_node.GType)
+            {
+                case 2:
+                    if (focused_tree_node.Id == 48)
+                    {
+                        using (var wb_move = new frmWayBillMove())
+                        {
+                            wb_move.ShowDialog();
+                        }
+                    }
+                    break;
+            }
         }
     }
 }

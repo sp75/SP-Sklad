@@ -16,19 +16,17 @@ namespace SP_Sklad.SkladData
     {
         public WaybillDet()
         {
-            this.POSREMAINS = new HashSet<POSREMAINS>();
-            this.SERIALS = new HashSet<SERIALS>();
-            this.WAYBILLDETTAXES = new HashSet<WAYBILLDETTAXES>();
-            this.WaybillDet1 = new HashSet<WaybillDet>();
-            this.WaybillDet2 = new HashSet<WaybillDet>();
-            this.WaybillDet11 = new HashSet<WaybillDet>();
-            this.WaybillDet3 = new HashSet<WaybillDet>();
-            this.WMatTurn = new HashSet<WMatTurn>();
-            this.WMatTurn1 = new HashSet<WMatTurn>();
+            this.ExtRel = new HashSet<ExtRel>();
+            this.ExtRel1 = new HashSet<ExtRel>();
+            this.PosRemains = new HashSet<PosRemains>();
             this.ReturnRel = new HashSet<ReturnRel>();
             this.ReturnRel1 = new HashSet<ReturnRel>();
             this.ReturnRel2 = new HashSet<ReturnRel>();
-            this.ReturnRel3 = new HashSet<ReturnRel>();
+            this.SERIALS = new HashSet<SERIALS>();
+            this.WAYBILLDETTAXES = new HashSet<WAYBILLDETTAXES>();
+            this.WMatTurn = new HashSet<WMatTurn>();
+            this.WMatTurn1 = new HashSet<WMatTurn>();
+            this.WaybillDet1 = new HashSet<WaybillDet>();
         }
     
         public int PosId { get; set; }
@@ -54,24 +52,23 @@ namespace SP_Sklad.SkladData
         public Nullable<int> DiscountKind { get; set; }
         public Nullable<decimal> AVG_IN_PICE { get; set; }
     
-        public virtual ICollection<POSREMAINS> POSREMAINS { get; set; }
-        public virtual ICollection<SERIALS> SERIALS { get; set; }
-        public virtual WaybillList WaybillList { get; set; }
-        public virtual WAYBILLDETADDPROPS WAYBILLDETADDPROPS { get; set; }
-        public virtual ICollection<WAYBILLDETTAXES> WAYBILLDETTAXES { get; set; }
-        public virtual ICollection<WaybillDet> WaybillDet1 { get; set; }
-        public virtual ICollection<WaybillDet> WaybillDet2 { get; set; }
-        public virtual ICollection<WaybillDet> WaybillDet11 { get; set; }
-        public virtual ICollection<WaybillDet> WaybillDet3 { get; set; }
-        public virtual ICollection<WMatTurn> WMatTurn { get; set; }
-        public virtual ICollection<WMatTurn> WMatTurn1 { get; set; }
         public virtual Currency Currency { get; set; }
+        public virtual ICollection<ExtRel> ExtRel { get; set; }
+        public virtual ICollection<ExtRel> ExtRel1 { get; set; }
+        public virtual Materials Materials { get; set; }
+        public virtual ICollection<PosRemains> PosRemains { get; set; }
         public virtual PriceTypes PriceTypes { get; set; }
         public virtual ICollection<ReturnRel> ReturnRel { get; set; }
         public virtual ICollection<ReturnRel> ReturnRel1 { get; set; }
         public virtual ICollection<ReturnRel> ReturnRel2 { get; set; }
-        public virtual ICollection<ReturnRel> ReturnRel3 { get; set; }
-        public virtual Materials Materials { get; set; }
+        public virtual ICollection<SERIALS> SERIALS { get; set; }
         public virtual Warehouse Warehouse { get; set; }
+        public virtual WAYBILLDETADDPROPS WAYBILLDETADDPROPS { get; set; }
+        public virtual ICollection<WAYBILLDETTAXES> WAYBILLDETTAXES { get; set; }
+        public virtual ICollection<WMatTurn> WMatTurn { get; set; }
+        public virtual ICollection<WMatTurn> WMatTurn1 { get; set; }
+        public virtual ICollection<WaybillDet> WaybillDet1 { get; set; }
+        public virtual WaybillDet WaybillDet2 { get; set; }
+        public virtual WaybillList WaybillList { get; set; }
     }
 }
