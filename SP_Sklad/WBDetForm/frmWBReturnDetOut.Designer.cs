@@ -68,10 +68,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.BasePriceEdit = new DevExpress.XtraEditors.CalcEdit();
-            this.PriceTypesEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl25 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl24 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
@@ -114,7 +111,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BasePriceEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PriceTypesEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CurRemainEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RsvEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RemainWHEdit.Properties)).BeginInit();
@@ -425,6 +421,7 @@
             this.MatComboBox.Size = new System.Drawing.Size(371, 22);
             this.MatComboBox.StyleController = this.styleController1;
             this.MatComboBox.TabIndex = 19;
+            this.MatComboBox.EditValueChanged += new System.EventHandler(this.MatComboBox_EditValueChanged);
             // 
             // simpleButton4
             // 
@@ -505,10 +502,7 @@
             // panelControl3
             // 
             this.panelControl3.Controls.Add(this.BasePriceEdit);
-            this.panelControl3.Controls.Add(this.PriceTypesEdit);
-            this.panelControl3.Controls.Add(this.simpleButton6);
             this.panelControl3.Controls.Add(this.simpleButton5);
-            this.panelControl3.Controls.Add(this.labelControl10);
             this.panelControl3.Controls.Add(this.labelControl25);
             this.panelControl3.Controls.Add(this.labelControl24);
             this.panelControl3.Controls.Add(this.labelControl8);
@@ -528,7 +522,8 @@
             // 
             // BasePriceEdit
             // 
-            this.BasePriceEdit.Location = new System.Drawing.Point(101, 70);
+            this.BasePriceEdit.Enabled = false;
+            this.BasePriceEdit.Location = new System.Drawing.Point(101, 42);
             this.BasePriceEdit.MenuManager = this.barManager1;
             this.BasePriceEdit.Name = "BasePriceEdit";
             this.BasePriceEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -539,32 +534,6 @@
             this.BasePriceEdit.StyleController = this.styleController1;
             this.BasePriceEdit.TabIndex = 6;
             // 
-            // PriceTypesEdit
-            // 
-            this.PriceTypesEdit.Location = new System.Drawing.Point(101, 41);
-            this.PriceTypesEdit.Name = "PriceTypesEdit";
-            this.PriceTypesEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.PriceTypesEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
-            this.PriceTypesEdit.Properties.DisplayMember = "Name";
-            this.PriceTypesEdit.Properties.ShowFooter = false;
-            this.PriceTypesEdit.Properties.ShowHeader = false;
-            this.PriceTypesEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.PriceTypesEdit.Properties.ValueMember = "PTypeId";
-            this.PriceTypesEdit.Size = new System.Drawing.Size(138, 22);
-            this.PriceTypesEdit.StyleController = this.styleController1;
-            this.PriceTypesEdit.TabIndex = 28;
-            // 
-            // simpleButton6
-            // 
-            this.simpleButton6.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton6.Image")));
-            this.simpleButton6.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton6.Location = new System.Drawing.Point(245, 41);
-            this.simpleButton6.Name = "simpleButton6";
-            this.simpleButton6.Size = new System.Drawing.Size(22, 22);
-            this.simpleButton6.TabIndex = 30;
-            // 
             // simpleButton5
             // 
             this.simpleButton5.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton5.Image")));
@@ -574,18 +543,9 @@
             this.simpleButton5.Size = new System.Drawing.Size(22, 22);
             this.simpleButton5.TabIndex = 29;
             // 
-            // labelControl10
-            // 
-            this.labelControl10.Location = new System.Drawing.Point(12, 44);
-            this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(82, 16);
-            this.labelControl10.StyleController = this.styleController1;
-            this.labelControl10.TabIndex = 27;
-            this.labelControl10.Text = "Категорія цін:";
-            // 
             // labelControl25
             // 
-            this.labelControl25.Location = new System.Drawing.Point(245, 73);
+            this.labelControl25.Location = new System.Drawing.Point(245, 45);
             this.labelControl25.Name = "labelControl25";
             this.labelControl25.Size = new System.Drawing.Size(23, 16);
             this.labelControl25.StyleController = this.styleController1;
@@ -673,7 +633,7 @@
             // labelControl5
             // 
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.labelControl5.Location = new System.Drawing.Point(12, 73);
+            this.labelControl5.Location = new System.Drawing.Point(12, 45);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(34, 16);
             this.labelControl5.StyleController = this.styleController1;
@@ -886,6 +846,7 @@
             this.OkButton.Size = new System.Drawing.Size(98, 30);
             this.OkButton.TabIndex = 3;
             this.OkButton.Text = "Застосувати";
+            this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
             // simpleButton1
             // 
@@ -930,7 +891,6 @@
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BasePriceEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PriceTypesEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CurRemainEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RsvEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RemainWHEdit.Properties)).EndInit();
@@ -991,10 +951,7 @@
         private System.Windows.Forms.Panel panel2;
         private DevExpress.XtraEditors.PanelControl panelControl3;
         private DevExpress.XtraEditors.CalcEdit BasePriceEdit;
-        private DevExpress.XtraEditors.LookUpEdit PriceTypesEdit;
-        private DevExpress.XtraEditors.SimpleButton simpleButton6;
         private DevExpress.XtraEditors.SimpleButton simpleButton5;
-        private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraEditors.LabelControl labelControl25;
         private DevExpress.XtraEditors.LabelControl labelControl24;
         private DevExpress.XtraEditors.LabelControl labelControl8;

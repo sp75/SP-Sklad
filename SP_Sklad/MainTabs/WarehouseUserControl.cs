@@ -11,6 +11,8 @@ using SP_Sklad.SkladData;
 using SP_Sklad.WBForm;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid;
+using SP_Sklad.Common;
+using SP_Sklad.Properties;
 
 namespace SP_Sklad.MainTabs
 {
@@ -139,7 +141,7 @@ namespace SP_Sklad.MainTabs
             var satrt_date = wbStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : wbStartDate.DateTime;
             var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
 
-            var dr = WbGridView.GetRow(WbGridView.FocusedRowHandle) as GetWayBillList_Result;
+            var dr = WbGridView.GetRow(WbGridView.FocusedRowHandle) as GetWayBillListWh_Result;
 
             WBGridControl.DataSource = null;
             WBGridControl.DataSource = DB.SkladBase().GetWayBillListWh(satrt_date.Date, end_date.Date.AddDays(1), wtyp, (int)wbSatusList.EditValue, "*").OrderByDescending(o => o.OnDate);
@@ -147,13 +149,13 @@ namespace SP_Sklad.MainTabs
             WbGridView.FocusedRowHandle = FindRowHandleByRowObject(WbGridView, dr);
         }
 
-        private int FindRowHandleByRowObject(GridView view, GetWayBillList_Result dr)
+        private int FindRowHandleByRowObject(GridView view, GetWayBillListWh_Result dr)
         {
             if (dr != null)
             {
                 for (int i = 0; i < view.DataRowCount; i++)
                 {
-                    if (dr.WbillId == (view.GetRow(i) as GetWayBillList_Result).WbillId)
+                    if (dr.WBillId == (view.GetRow(i) as GetWayBillListWh_Result).WBillId)
                     {
                         return i;
                     }
@@ -208,6 +210,84 @@ namespace SP_Sklad.MainTabs
                     }
                     break;
             }
+        }
+
+        private void WbGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            var dr = WbGridView.GetRow(e.FocusedRowHandle) as GetWayBillListWh_Result;
+
+         /*   if (dr != null)
+            {
+                gridControl2.DataSource = _db.GetWaybillDetIn(dr.WbillId);
+                gridControl3.DataSource = _db.GetRelDocList(dr.DocId);
+            }
+            else
+            {
+                gridControl2.DataSource = null;
+                gridControl3.DataSource = null;
+            }*/
+
+            DeleteItemBtn.Enabled = (dr != null && dr.Checked == 0 && focused_tree_node.CanDelete == 1);
+            ExecuteItemBtn.Enabled = (dr != null && dr.WType != 2 && dr.WType != -16 && dr.WType != 16 && focused_tree_node.CanPost == 1);
+            EditItemBtn.Enabled = (dr != null && focused_tree_node.CanModify == 1);
+            CopyItemBtn.Enabled = EditItemBtn.Enabled;
+            PrintItemBtn.Enabled = (dr != null);
+        }
+
+        private void EditItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+
+            using (var db = new BaseEntities())
+            {
+                switch (focused_tree_node.GType)
+                {
+                    case 2:
+                        WhDocEdit.WBEdit(WbGridView.GetFocusedRow() as GetWayBillListWh_Result);
+                        break;
+
+                }
+            }
+
+            RefrechItemBtn.PerformClick();
+        }
+
+        private void DeleteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var dr = WbGridView.GetFocusedRow() as GetWayBillListWh_Result;
+            using (var db = new BaseEntities())
+            {
+
+                try
+                {
+                    switch (focused_tree_node.GType)
+                    {
+                        case 2: db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK) where WbillId = {0}", dr.WBillId).FirstOrDefault();
+                            break;
+                    }
+                    if (MessageBox.Show(Resources.delete_wb, "Відалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    {
+                        switch (focused_tree_node.GType)
+                        {
+                            case 2:
+                                db.DeleteWhere<WaybillList>(w=> w.WbillId ==  dr.WBillId.Value);
+                                break;
+
+                        }
+                        db.SaveChanges();
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show(Resources.deadlock);
+                }
+                /*    finally
+                    {
+               //         trans.Commit();
+                    }*/
+            }
+
+            RefrechItemBtn.PerformClick();
         }
     }
 }
