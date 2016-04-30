@@ -59,7 +59,7 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.RSVCheckBox = new DevExpress.XtraEditors.CheckEdit();
             this.MatComboBox = new DevExpress.XtraEditors.LookUpEdit();
-            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
+            this.WhEditBtn = new DevExpress.XtraEditors.SimpleButton();
             this.WHComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
@@ -379,7 +379,7 @@
             // 
             this.panelControl1.Controls.Add(this.RSVCheckBox);
             this.panelControl1.Controls.Add(this.MatComboBox);
-            this.panelControl1.Controls.Add(this.simpleButton4);
+            this.panelControl1.Controls.Add(this.WhEditBtn);
             this.panelControl1.Controls.Add(this.WHComboBox);
             this.panelControl1.Controls.Add(this.labelControl6);
             this.panelControl1.Controls.Add(this.simpleButton2);
@@ -412,8 +412,8 @@
             this.MatComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.MatComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
-            this.MatComboBox.Properties.DisplayMember = "Name";
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MatName", "Назва")});
+            this.MatComboBox.Properties.DisplayMember = "MatName";
             this.MatComboBox.Properties.ShowFooter = false;
             this.MatComboBox.Properties.ShowHeader = false;
             this.MatComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
@@ -423,14 +423,14 @@
             this.MatComboBox.TabIndex = 19;
             this.MatComboBox.EditValueChanged += new System.EventHandler(this.MatComboBox_EditValueChanged);
             // 
-            // simpleButton4
+            // WhEditBtn
             // 
-            this.simpleButton4.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton4.Image")));
-            this.simpleButton4.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton4.Location = new System.Drawing.Point(325, 66);
-            this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(22, 22);
-            this.simpleButton4.TabIndex = 18;
+            this.WhEditBtn.Image = ((System.Drawing.Image)(resources.GetObject("WhEditBtn.Image")));
+            this.WhEditBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.WhEditBtn.Location = new System.Drawing.Point(325, 66);
+            this.WhEditBtn.Name = "WhEditBtn";
+            this.WhEditBtn.Size = new System.Drawing.Size(22, 22);
+            this.WhEditBtn.TabIndex = 18;
             // 
             // WHComboBox
             // 
@@ -439,12 +439,12 @@
             this.WHComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.WHComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NAME", "Назва")});
-            this.WHComboBox.Properties.DisplayMember = "NAME";
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.WHComboBox.Properties.DisplayMember = "Name";
             this.WHComboBox.Properties.ShowFooter = false;
             this.WHComboBox.Properties.ShowHeader = false;
             this.WHComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.WHComboBox.Properties.ValueMember = "WID";
+            this.WHComboBox.Properties.ValueMember = "WId";
             this.WHComboBox.Size = new System.Drawing.Size(218, 22);
             this.WHComboBox.StyleController = this.styleController1;
             this.WHComboBox.TabIndex = 17;
@@ -662,6 +662,7 @@
             this.AmountEdit.Size = new System.Drawing.Size(138, 22);
             this.AmountEdit.StyleController = this.styleController1;
             this.AmountEdit.TabIndex = 4;
+            this.AmountEdit.EditValueChanged += new System.EventHandler(this.AmountEdit_EditValueChanged);
             // 
             // panel5
             // 
@@ -873,6 +874,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmWBReturnDetOut";
+            this.ShowInTaskbar = false;
             this.Text = "Властивості позиції по документу";
             this.Load += new System.EventHandler(this.frmWBReturnDetOut_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
@@ -942,7 +944,7 @@
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.CheckEdit RSVCheckBox;
         private DevExpress.XtraEditors.LookUpEdit MatComboBox;
-        private DevExpress.XtraEditors.SimpleButton simpleButton4;
+        private DevExpress.XtraEditors.SimpleButton WhEditBtn;
         private DevExpress.XtraEditors.LookUpEdit WHComboBox;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;

@@ -53,7 +53,7 @@ namespace SP_Sklad.SkladData
                     ShowBalance = s.ShowBalance,
                     ShowPrice = s.ShowPrice,
                     EnableEditDate = s.EnableEditDate,
-                    KaId = s.Kagent.FirstOrDefault().KaId
+                    KaId =  s.Kagent.FirstOrDefault().KaId 
                 }).FirstOrDefault();
             }
         }
@@ -136,9 +136,9 @@ namespace SP_Sklad.SkladData
                 return _charge_type;
             }
         }
-        public static List<Warehouse> WhList()
+        public static List<WhList> WhList()
         {
-            return new BaseEntities().Warehouse.Where(w => w.Deleted == 0).ToList();
+            return new BaseEntities().Warehouse.Where(w => w.Deleted == 0).Select(s => new WhList { WId = s.WId, Name = s.Name, Def= s.Def }).ToList();
         }
 
         public static List<Currency> Currency
@@ -285,5 +285,11 @@ order by wbd.ondate desc
      public class LoginUser : Users
      {
          public int KaId { get; set; }
+     }
+     public class WhList
+     {
+         public int WId { get; set; }
+         public String Name { get; set; }
+         public int Def { get; set; }
      }
 }

@@ -266,7 +266,7 @@
             this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 217);
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(972, 29);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(972, 31);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // barDockControlTop
@@ -747,9 +747,9 @@
             this.panelControl5.Controls.Add(this.WaybillDetOutGridControl);
             this.panelControl5.Controls.Add(this.barDockControl1);
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl5.Location = new System.Drawing.Point(0, 246);
+            this.panelControl5.Location = new System.Drawing.Point(0, 248);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(972, 248);
+            this.panelControl5.Size = new System.Drawing.Size(972, 246);
             this.panelControl5.TabIndex = 16;
             // 
             // WaybillDetOutGridControl
@@ -763,7 +763,7 @@
             this.repositoryItemImageComboBox1,
             this.repositoryItemImageComboBox2,
             this.repositoryItemImageComboBox3});
-            this.WaybillDetOutGridControl.Size = new System.Drawing.Size(968, 244);
+            this.WaybillDetOutGridControl.Size = new System.Drawing.Size(968, 242);
             this.WaybillDetOutGridControl.TabIndex = 1;
             this.WaybillDetOutGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WaybillDetOutGridView});
@@ -919,6 +919,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmWayBillMove";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Властивості накладної переміщення";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmWayBillMove_FormClosed);

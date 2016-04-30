@@ -19,7 +19,6 @@ namespace SP_Sklad.WBDetForm
         private WaybillList _wb { get; set; }
         private WaybillDet _wbd { get; set; }
         private List<GetPosIn_Result> pos_in { get; set; }
-        private List<WhMatGet_Result> wh_mat_get { get; set; }
         private GetMatRemain_Result mat_remain { get; set; }
         public int _ka_id { get; set; }
 
@@ -33,26 +32,25 @@ namespace SP_Sklad.WBDetForm
             _ka_id = ka_id;
 
             WHComboBox.Properties.DataSource = DBHelper.WhList();
-            MatComboBox.Properties.DataSource = db.MaterialsList.ToList();
+            MatComboBox.Properties.DataSource =  _db.WhMatGet(0, _wb.WaybillMove.SourceWid, _ka_id, DBHelper.ServerDateTime(), 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).ToList();
         }
 
         private void frmWBReturnDetOut_Load(object sender, EventArgs e)
         {
+            if (_wb.WType == 4)
+            {
+                WHComboBox.Enabled = false;
+                WhEditBtn.Enabled = false;
+            }
+
             if (_PosId == null)
             {
                 _wbd = new WaybillDet()
                 {
                     WbillId = _wb.WbillId,
                     Amount = 0,
-                    Discount = 0,
-                    Nds = _wb.Nds,
-                    CurrId = _wb.CurrId,
-                    OnDate = _wb.OnDate,
-                    Num = _wb.WaybillDet.Count() + 1,
                     OnValue = _wb.OnValue,
-                    PosKind = 0,
-                    PosParent = 0,
-                    DiscountKind = 0
+                    WId = _wb.WaybillMove.SourceWid
                 };
             }
             else
@@ -62,7 +60,7 @@ namespace SP_Sklad.WBDetForm
 
             if (_wbd != null)
             {
-                if (_db.Entry<WaybillDet>(_wbd).State == EntityState.Modified)
+                if (_db.Entry<WaybillDet>(_wbd).State == EntityState.Unchanged)
                 {
                     var w_mat_turn = _db.WMatTurn.Where(w => w.SourceId == _wbd.PosId).ToList();
                     if (w_mat_turn.Count > 0)
@@ -124,7 +122,7 @@ namespace SP_Sklad.WBDetForm
 
         private void MatComboBox_EditValueChanged(object sender, EventArgs e)
         {
-            var row = (MaterialsList)MatComboBox.GetSelectedDataRow();
+            var row = (WhMatGet_Result)MatComboBox.GetSelectedDataRow();
             if (row == null)
             {
                 return;
@@ -132,14 +130,11 @@ namespace SP_Sklad.WBDetForm
 
             if (MatComboBox.ContainsFocus)
             {
-                _wbd.WId = row.Wid;
-                WHComboBox.EditValue = row.Wid;
-                _wbd.Nds = row.Nds;
-                _wbd.MatId = row.MatId;
+                _wbd.MatId = row.MatId.Value;
             }
 
-            labelControl24.Text = row.MeasuresName;
-            labelControl27.Text = row.MeasuresName;
+            labelControl24.Text = row.MsrName;
+            labelControl27.Text = row.MsrName;
 
             GetContent();
         }
@@ -150,9 +145,7 @@ namespace SP_Sklad.WBDetForm
             {
                 return;
             }
-            wh_mat_get = _db.WhMatGet(0, _wb.WaybillMove.SourceWid, _ka_id, DBHelper.ServerDateTime(), 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).ToList();
-      
-
+           
             mat_remain = _db.GetMatRemain(_wbd.WId, _wbd.MatId).FirstOrDefault();
 
             if (mat_remain != null)
@@ -163,6 +156,14 @@ namespace SP_Sklad.WBDetForm
             }
 
             pos_in = _db.GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, 0).OrderByDescending(o => o.OnDate).ToList();
+
+            if (pos_in.Any())
+            {
+                _wbd.Price = pos_in.First().Price;
+                _wbd.BasePrice = pos_in.First().BasePrice;
+                _wbd.Nds = pos_in.First().Nds;
+            }
+
             SetAmount();
         }
 
@@ -211,41 +212,53 @@ namespace SP_Sklad.WBDetForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            _wbd.Price = Convert.ToDecimal(PriceNotNDSEdit.EditValue);
-
-            if (_db.Entry<WaybillDet>(_wbd).State == EntityState.Detached)
-            {
-                _db.WaybillDet.Add(_wbd);
-            }
-            _db.SaveChanges();
-
-            if (RSVCheckBox.Checked && !_db.WMatTurn.Any(w => w.SourceId == _wbd.PosId))
-            {
-                foreach (var item in pos_in.Where(w => w.Amount > 0))
-                {
-                    _db.WMatTurn.Add(new WMatTurn
-                    {
-                        PosId = item.PosId,
-                        WId = _wbd.WId.Value,
-                        MatId = _wbd.MatId,
-                        OnDate = _wb.OnDate,
-                        TurnType = _wb.WType == -16 ? -16 : 2,
-                        Amount = Convert.ToDecimal(item.Amount),
-                        SourceId = _wbd.PosId
-                    });
-                }
-            }
-
-            //   if (WayBillDetAddProps->State == dsInsert || WayBillDetAddProps->State == dsEdit) WayBillDetAddProps->Post();
+            int num = _wb.WaybillDet.Count();
             try
             {
-                _db.SaveChanges();
+                if (RSVCheckBox.Checked && !_db.WMatTurn.Any(w => w.SourceId == _wbd.PosId))
+                {
+                    foreach (var item in pos_in.Where(w => w.Amount > 0))
+                    {
+                        var wbd = _db.WaybillDet.Add(new WaybillDet()
+                        {
+                            WbillId = _wb.WbillId,
+                            Price = item.Price,
+                            BasePrice = item.BasePrice,
+                            Nds = item.Nds,
+                            CurrId = item.CurrId,
+                            OnDate = _wb.OnDate,
+                            WId = item.WId,
+                            Num = ++num,
+                            Amount = item.Amount.Value,
+                            MatId = item.MatId,
+                        });
+                        _db.SaveChanges();
+
+                        _db.WMatTurn.Add(new WMatTurn
+                        {
+                            PosId = item.PosId,
+                            WId = item.WId,
+                            MatId = item.MatId,
+                            OnDate = _wb.OnDate,
+                            TurnType = 2,
+                            Amount = Convert.ToDecimal(item.Amount),
+                            SourceId = wbd.PosId
+                        });
+                        _db.SaveChanges();
+                    }
+                }
+
                 Close();
             }
             catch (System.Data.Entity.Infrastructure.DbUpdateException exp)
             {
                 MessageBox.Show(exp.InnerException.InnerException.Message);
             }
+        }
+
+        private void AmountEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            SetAmount();
         }
 
     }

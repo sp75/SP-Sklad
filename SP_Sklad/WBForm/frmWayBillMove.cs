@@ -23,7 +23,7 @@ namespace SP_Sklad.WBForm
         private int? _wbill_id { get; set; }
         private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
-        private WaybillMove wbm { get; set; }
+    //    private WaybillMove wbm { get; set; }
         private GetWayBillDetOut_Result wbd_row { get; set; }
         private IQueryable<GetWayBillDetOut_Result> wbd_list { get; set; }
 
@@ -53,14 +53,15 @@ namespace SP_Sklad.WBForm
                     Num = new BaseEntities().GetCounter("wb_move").FirstOrDefault(),
                     CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                     OnValue = 1,
-                    PersonId = DBHelper.CurrentUser.KaId
+                    PersonId = DBHelper.CurrentUser.KaId,
+                    WaybillMove = new WaybillMove { SourceWid = DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId }
                 });
                 
                 _db.SaveChanges();
 
                 _wbill_id = wb.WbillId;
+                //wb.WaybillMove = new WaybillMove { WBillId = _wbill_id.Value };
 
-                wbm = new WaybillMove { WBillId = _wbill_id.Value };
             }
             else
             {
@@ -69,8 +70,6 @@ namespace SP_Sklad.WBForm
                     UpdLockWB();
                     _db.Entry<WaybillList>(wb).State = EntityState.Modified;
                     _db.Entry<WaybillList>(wb).Property(f => f.SummPay).IsModified = false;
-
-                    wbm = _db.WaybillMove.Find(_wbill_id);
                 }
                 catch
                 {
@@ -79,13 +78,13 @@ namespace SP_Sklad.WBForm
 
             }
 
-            if (wb != null && wbm != null)
+            if (wb != null && wb.WaybillMove != null)
             {
                 TurnDocCheckBox.EditValue = wb.Checked;
 
-                WhOutComboBox.DataBindings.Add(new Binding("EditValue", wbm, "SourceWid"));
-                WhInComboBox.DataBindings.Add(new Binding("EditValue", wbm, "DestWId", true, DataSourceUpdateMode.OnValidation));
-                PersonOutComboBox.DataBindings.Add(new Binding("EditValue", wbm, "PersonId", true, DataSourceUpdateMode.OnValidation));
+                WhOutComboBox.DataBindings.Add(new Binding("EditValue", wb.WaybillMove, "SourceWid"));
+                WhInComboBox.DataBindings.Add(new Binding("EditValue", wb.WaybillMove, "DestWId", true, DataSourceUpdateMode.OnValidation));
+                PersonOutComboBox.DataBindings.Add(new Binding("EditValue", wb.WaybillMove, "PersonId", true, DataSourceUpdateMode.OnValidation));
 
                 KagentComboBox.DataBindings.Add(new Binding("EditValue", wb, "KaId", true, DataSourceUpdateMode.OnValidation));
 
@@ -102,6 +101,10 @@ namespace SP_Sklad.WBForm
         private void UpdLockWB()
         {
             wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0}", _wbill_id).FirstOrDefault();
+            if ( wb != null )
+            {
+                wb.WaybillMove = _db.WaybillMove.Find(_wbill_id);
+            }
         }
 
         private void RefreshDet()
@@ -136,7 +139,7 @@ namespace SP_Sklad.WBForm
         {
             bool recult = (!String.IsNullOrEmpty(NumEdit.Text) && KagentComboBox.EditValue != null && OnDateDBEdit.EditValue != null && WaybillDetOutGridView.DataRowCount > 0);
 
-            if (recult && wb.WType == -1 && TurnDocCheckBox.Checked)
+            if (recult && TurnDocCheckBox.Checked)
             {
                 recult = !wbd_list.Any(w => w.Rsv == 0 && w.PosType == 0);
             }
@@ -176,10 +179,10 @@ namespace SP_Sklad.WBForm
                 return;
             }
 
-            if (_db.Entry<WaybillMove>(wbm).State == EntityState.Detached)
+        /*    if (_db.Entry<WaybillMove>(wbm).State == EntityState.Detached)
             {
                 _db.WaybillMove.Add(wbm);
-            }
+            }*/
 
             wb.UpdatedAt = DateTime.Now;
             _db.SaveChanges();
