@@ -258,6 +258,7 @@
             this.DelMaterialBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Delete));
             this.DelMaterialBtn.Name = "DelMaterialBtn";
             this.DelMaterialBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.DelMaterialBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DelMaterialBtn_ItemClick);
             // 
             // standaloneBarDockControl1
             // 
@@ -266,7 +267,7 @@
             this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 217);
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(972, 31);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(972, 29);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // barDockControlTop
@@ -325,6 +326,7 @@
             this.RsvBarBtn.Id = 12;
             this.RsvBarBtn.ImageIndex = 12;
             this.RsvBarBtn.Name = "RsvBarBtn";
+            this.RsvBarBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RsvBarBtn_ItemClick);
             // 
             // RsvAllBarBtn
             // 
@@ -332,6 +334,7 @@
             this.RsvAllBarBtn.Id = 13;
             this.RsvAllBarBtn.ImageIndex = 13;
             this.RsvAllBarBtn.Name = "RsvAllBarBtn";
+            this.RsvAllBarBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RsvAllBarBtn_ItemClick);
             // 
             // DelRsvBarBtn
             // 
@@ -339,6 +342,7 @@
             this.DelRsvBarBtn.Id = 14;
             this.DelRsvBarBtn.ImageIndex = 14;
             this.DelRsvBarBtn.Name = "DelRsvBarBtn";
+            this.DelRsvBarBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DelRsvBarBtn_ItemClick);
             // 
             // DelAllRsvBarBtn
             // 
@@ -346,6 +350,7 @@
             this.DelAllRsvBarBtn.Id = 15;
             this.DelAllRsvBarBtn.ImageIndex = 15;
             this.DelAllRsvBarBtn.Name = "DelAllRsvBarBtn";
+            this.DelAllRsvBarBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DelAllRsvBarBtn_ItemClick);
             // 
             // styleController1
             // 
@@ -517,6 +522,7 @@
             this.TurnDocCheckBox.Size = new System.Drawing.Size(203, 20);
             this.TurnDocCheckBox.StyleController = this.styleController1;
             this.TurnDocCheckBox.TabIndex = 3;
+            this.TurnDocCheckBox.EditValueChanged += new System.EventHandler(this.NumEdit_EditValueChanged);
             // 
             // labelControl1
             // 
@@ -535,6 +541,7 @@
             this.NumEdit.Size = new System.Drawing.Size(130, 22);
             this.NumEdit.StyleController = this.styleController1;
             this.NumEdit.TabIndex = 0;
+            this.NumEdit.EditValueChanged += new System.EventHandler(this.NumEdit_EditValueChanged);
             // 
             // OnDateDBEdit
             // 
@@ -747,9 +754,9 @@
             this.panelControl5.Controls.Add(this.WaybillDetOutGridControl);
             this.panelControl5.Controls.Add(this.barDockControl1);
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl5.Location = new System.Drawing.Point(0, 248);
+            this.panelControl5.Location = new System.Drawing.Point(0, 246);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(972, 246);
+            this.panelControl5.Size = new System.Drawing.Size(972, 248);
             this.panelControl5.TabIndex = 16;
             // 
             // WaybillDetOutGridControl
@@ -763,7 +770,7 @@
             this.repositoryItemImageComboBox1,
             this.repositoryItemImageComboBox2,
             this.repositoryItemImageComboBox3});
-            this.WaybillDetOutGridControl.Size = new System.Drawing.Size(968, 242);
+            this.WaybillDetOutGridControl.Size = new System.Drawing.Size(968, 244);
             this.WaybillDetOutGridControl.TabIndex = 1;
             this.WaybillDetOutGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WaybillDetOutGridView});
@@ -782,6 +789,8 @@
             this.WaybillDetOutGridView.Images = this.WBImgList;
             this.WaybillDetOutGridView.Name = "WaybillDetOutGridView";
             this.WaybillDetOutGridView.OptionsView.ShowGroupPanel = false;
+            this.WaybillDetOutGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WaybillDetOutGridView_PopupMenuShowing);
+            this.WaybillDetOutGridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.WaybillDetOutGridView_FocusedRowChanged);
             this.WaybillDetOutGridView.DoubleClick += new System.EventHandler(this.WaybillDetOutGridView_DoubleClick);
             // 
             // gridColumn2

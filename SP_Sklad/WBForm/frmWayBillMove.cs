@@ -14,6 +14,7 @@ using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using SP_Sklad.SkladData;
 using SP_Sklad.WBDetForm;
 using EntityState = System.Data.Entity.EntityState;
+using System.Data.Entity.Core.Objects;
 
 namespace SP_Sklad.WBForm
 {
@@ -114,7 +115,7 @@ namespace SP_Sklad.WBForm
 
             WaybillDetOutGridControl.DataSource = null;
             WaybillDetOutGridControl.DataSource = wbd_list;
-
+           
             WaybillDetOutGridView.FocusedRowHandle = FindRowHandleByRowObject(WaybillDetOutGridView, dr);
 
             GetOk();
@@ -151,7 +152,7 @@ namespace SP_Sklad.WBForm
             RsvInfoBtn.Enabled = EditMaterialBtn.Enabled;
             MatInfoBtn.Enabled = EditMaterialBtn.Enabled;
 
-     //       OkButton.Enabled = recult;
+            OkButton.Enabled = recult;
             return recult;
         }
 
@@ -231,6 +232,89 @@ namespace SP_Sklad.WBForm
                 UpdLockWB();
                 RefreshDet();
             }
+        }
+
+        private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var dr = WaybillDetOutGridView.GetRow(WaybillDetOutGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
+
+            if (dr != null)
+            {
+                _db.DeleteWhere<WaybillDet>(w => w.PosId == dr.PosId);
+                _db.SaveChanges();
+
+                RefreshDet();
+            }
+        }
+
+        private void RsvBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var r = new ObjectParameter("RSV", typeof(Int32));
+
+            _db.ReservedPosition(wbd_row.PosId, r);
+            current_transaction = current_transaction.CommitRetaining(_db);
+            UpdLockWB();
+
+            if (r.Value != null)
+            {
+                wbd_row.Rsv = (int)r.Value;
+                WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
+            }
+        }
+
+        private void DelRsvBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (wbd_row.Rsv == 1 && wbd_row.PosId > 0)
+            {
+                _db.DeleteWhere<WMatTurn>(w => w.SourceId == wbd_row.PosId);
+                current_transaction = current_transaction.CommitRetaining(_db);
+                UpdLockWB();
+                wbd_row.Rsv = 0;
+                WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
+            }
+        }
+
+        private void RsvAllBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var res = _db.ReservedAllPosition(wb.WbillId);
+
+            if (res.Any())
+            {
+                MessageBox.Show("Не вдалося зарезервувати деякі товари!");
+            }
+
+            current_transaction = current_transaction.CommitRetaining(_db);
+            UpdLockWB();
+
+            RefreshDet();
+        }
+
+        private void DelAllRsvBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            _db.DeleteAllReservePosition(wb.WbillId);
+            current_transaction = current_transaction.CommitRetaining(_db);
+            UpdLockWB();
+
+            RefreshDet();
+        }
+
+        private void WaybillDetOutGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                this.WbDetPopupMenu.ShowPopup(p2);
+            }
+        }
+
+        private void WaybillDetOutGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            wbd_row = WaybillDetOutGridView.GetRow(WaybillDetOutGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
+        }
+
+        private void NumEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            GetOk();
         }
     }
 }

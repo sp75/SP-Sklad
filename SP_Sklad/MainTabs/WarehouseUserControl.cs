@@ -13,6 +13,7 @@ using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid;
 using SP_Sklad.Common;
 using SP_Sklad.Properties;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 
 namespace SP_Sklad.MainTabs
 {
@@ -288,6 +289,18 @@ namespace SP_Sklad.MainTabs
             }
 
             RefrechItemBtn.PerformClick();
+        }
+
+        private void WbGridView_DoubleClick(object sender, EventArgs e)
+        {
+            GridView view = (GridView)sender;
+            Point pt = view.GridControl.PointToClient(Control.MousePosition);
+            GridHitInfo info = view.CalcHitInfo(pt);
+
+            if (info.InRow || info.InRowCell)
+            {
+                EditItemBtn.PerformClick();
+            }
         }
     }
 }

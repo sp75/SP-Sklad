@@ -21,6 +21,8 @@ namespace SP_Sklad
 
         private void mainForm_Load(object sender, EventArgs e)
         {
+            CurDateEditBarItem.EditValue = DateTime.Now;
+            
             using (var db  = new BaseEntities())
             {
                docsUserControl1.OnLoad();
