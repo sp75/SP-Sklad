@@ -563,6 +563,12 @@
     <Compile Include="WBForm\frmWBReturnIn.Designer.cs">
       <DependentUpon>frmWBReturnIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBForm\frmWBWriteOn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\frmWBWriteOn.Designer.cs">
+      <DependentUpon>frmWBWriteOn.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FinanseForm\frmPayDoc.resx">
       <DependentUpon>frmPayDoc.cs</DependentUpon>
     </EmbeddedResource>
@@ -612,6 +618,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWBReturnIn.resx">
       <DependentUpon>frmWBReturnIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\frmWBWriteOn.resx">
+      <DependentUpon>frmWBWriteOn.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.DBHelper.datasource" />
