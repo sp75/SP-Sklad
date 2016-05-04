@@ -3962,6 +3962,17 @@
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="GetMakeAmount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="wbill_id" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="AmountOut" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="OnDate" Type="datetime" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="GetMatExtra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MatId" Type="int" Mode="In" />
           <Parameter Name="PTypeId" Type="int" Mode="In" />
@@ -4403,17 +4414,6 @@
                 <Property Name="SUMMALL" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="SUMMINCURR" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="SALDO" Type="numeric" Precision="15" Scale="4" />
-              </RowType>
-            </CollectionType>
-          </ReturnType>
-        </Function>
-        <Function Name="SP_GET_MAKE_AMOUNT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="WBILLID" Type="int" Mode="In" />
-          <ReturnType>
-            <CollectionType>
-              <RowType>
-                <Property Name="AMOUNT_OUT" Type="numeric" Precision="15" Scale="8" />
-                <Property Name="ONDATE" Type="datetime" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -4960,9 +4960,6 @@
             <Parameter Name="IN_TODATE" Mode="In" Type="DateTime" />
             <Parameter Name="IN_KAID" Mode="In" Type="Int32" />
             <Parameter Name="IN_WTYPE" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_GET_MAKE_AMOUNT" ReturnType="Collection(BaseModel.SP_GET_MAKE_AMOUNT_Result)" IsComposable="true">
-          <Parameter Name="WBILLID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_GET_MAT_EXTRA" ReturnType="Collection(BaseModel.SP_GET_MAT_EXTRA_Result)" IsComposable="true">
             <Parameter Name="MATID" Mode="In" Type="Int32" />
@@ -5737,6 +5734,9 @@
             <Parameter Name="is_checked" Mode="In" Type="Int32" />
             <Parameter Name="wh" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="GetMakeAmount" IsComposable="true" ReturnType="Collection(BaseModel.GetMakeAmount_Result)">
+            <Parameter Name="wbill_id" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="GetMatGroupTree_Result">
           <Property Name="GRPID" Type="Int32" />
@@ -5806,10 +5806,6 @@
           <Property Name="SUMMALL" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="SUMMINCURR" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="SALDO" Type="Decimal" Precision="15" Scale="4" />
-        </ComplexType>
-        <ComplexType Name="SP_GET_MAKE_AMOUNT_Result">
-          <Property Name="AMOUNT_OUT" Type="Decimal" Precision="15" Scale="8" />
-          <Property Name="ONDATE" Type="DateTime" />
         </ComplexType>
         <ComplexType Name="SP_GET_MAT_EXTRA_Result">
           <Property Name="EXTRA" Type="Decimal" Precision="15" Scale="8" />
@@ -9577,6 +9573,10 @@
           <Property Type="Int32" Name="WriteOn" Nullable="true" />
           <Property Type="Int32" Name="WriteOff" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="GetMakeAmount_Result">
+          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -10326,14 +10326,6 @@
                 <ScalarProperty Name="SUMMALL" ColumnName="SUMMALL" />
                 <ScalarProperty Name="SUMMINCURR" ColumnName="SUMMINCURR" />
                 <ScalarProperty Name="SALDO" ColumnName="SALDO" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="BaseModel.Store.SP_GET_MAKE_AMOUNT" FunctionImportName="SP_GET_MAKE_AMOUNT">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.SP_GET_MAKE_AMOUNT_Result">
-                <ScalarProperty Name="AMOUNT_OUT" ColumnName="AMOUNT_OUT" />
-                <ScalarProperty Name="ONDATE" ColumnName="ONDATE" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -11675,6 +11667,14 @@
                 <ScalarProperty Name="ToWId" ColumnName="ToWId" />
                 <ScalarProperty Name="WriteOn" ColumnName="WriteOn" />
                 <ScalarProperty Name="WriteOff" ColumnName="WriteOff" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetMakeAmount" FunctionName="BaseModel.Store.GetMakeAmount">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetMakeAmount_Result">
+                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

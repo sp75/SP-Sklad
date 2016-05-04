@@ -59,7 +59,7 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.RSVCheckBox = new DevExpress.XtraEditors.CheckEdit();
             this.MatComboBox = new DevExpress.XtraEditors.LookUpEdit();
-            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
+            this.WhBtn = new DevExpress.XtraEditors.SimpleButton();
             this.WHComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
@@ -434,7 +434,7 @@
             // 
             this.panelControl1.Controls.Add(this.RSVCheckBox);
             this.panelControl1.Controls.Add(this.MatComboBox);
-            this.panelControl1.Controls.Add(this.simpleButton4);
+            this.panelControl1.Controls.Add(this.WhBtn);
             this.panelControl1.Controls.Add(this.WHComboBox);
             this.panelControl1.Controls.Add(this.labelControl6);
             this.panelControl1.Controls.Add(this.simpleButton2);
@@ -479,14 +479,14 @@
             this.MatComboBox.TabIndex = 19;
             this.MatComboBox.EditValueChanged += new System.EventHandler(this.MatComboBox_EditValueChanged);
             // 
-            // simpleButton4
+            // WhBtn
             // 
-            this.simpleButton4.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton4.Image")));
-            this.simpleButton4.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton4.Location = new System.Drawing.Point(325, 66);
-            this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(22, 22);
-            this.simpleButton4.TabIndex = 18;
+            this.WhBtn.Image = ((System.Drawing.Image)(resources.GetObject("WhBtn.Image")));
+            this.WhBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.WhBtn.Location = new System.Drawing.Point(325, 66);
+            this.WhBtn.Name = "WhBtn";
+            this.WhBtn.Size = new System.Drawing.Size(22, 22);
+            this.WhBtn.TabIndex = 18;
             // 
             // WHComboBox
             // 
@@ -1414,7 +1414,7 @@
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.LookUpEdit MatComboBox;
-        private DevExpress.XtraEditors.SimpleButton simpleButton4;
+        private DevExpress.XtraEditors.SimpleButton WhBtn;
         private DevExpress.XtraEditors.LookUpEdit WHComboBox;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;

@@ -197,16 +197,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SP_GET_DOC_LIST_Result>("[BaseEntities].[SP_GET_DOC_LIST](@IN_FROMDATE, @IN_TODATE, @IN_KAID, @IN_WTYPE)", iN_FROMDATEParameter, iN_TODATEParameter, iN_KAIDParameter, iN_WTYPEParameter);
         }
     
-        [EdmFunction("BaseEntities", "SP_GET_MAKE_AMOUNT")]
-        public virtual IQueryable<SP_GET_MAKE_AMOUNT_Result> SP_GET_MAKE_AMOUNT(Nullable<int> wBILLID)
-        {
-            var wBILLIDParameter = wBILLID.HasValue ?
-                new ObjectParameter("WBILLID", wBILLID) :
-                new ObjectParameter("WBILLID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SP_GET_MAKE_AMOUNT_Result>("[BaseEntities].[SP_GET_MAKE_AMOUNT](@WBILLID)", wBILLIDParameter);
-        }
-    
         [EdmFunction("BaseEntities", "SP_GET_MAT_EXTRA")]
         public virtual IQueryable<SP_GET_MAT_EXTRA_Result> SP_GET_MAT_EXTRA(Nullable<int> mATID, Nullable<int> pTYPEID, Nullable<System.DateTime> oNDATE, Nullable<decimal> pRICE, Nullable<int> iN_CURRID, Nullable<decimal> oNVALUE)
         {
@@ -1163,6 +1153,16 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("wh", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillListWh_Result>("[BaseEntities].[GetWayBillListWh](@from_date, @to_date, @w_type, @is_checked, @wh)", from_dateParameter, to_dateParameter, w_typeParameter, is_checkedParameter, whParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetMakeAmount")]
+        public virtual IQueryable<GetMakeAmount_Result> GetMakeAmount(Nullable<int> wbill_id)
+        {
+            var wbill_idParameter = wbill_id.HasValue ?
+                new ObjectParameter("wbill_id", wbill_id) :
+                new ObjectParameter("wbill_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMakeAmount_Result>("[BaseEntities].[GetMakeAmount](@wbill_id)", wbill_idParameter);
         }
     }
 }

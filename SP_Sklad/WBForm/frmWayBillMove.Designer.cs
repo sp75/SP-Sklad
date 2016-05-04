@@ -55,11 +55,9 @@
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.PersonEditBtn = new DevExpress.XtraEditors.SimpleButton();
             this.WhInComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.ReasonEdit = new DevExpress.XtraEditors.TextEdit();
             this.AttLabel = new DevExpress.XtraEditors.LabelControl();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.NowDateBtn = new DevExpress.XtraEditors.SimpleButton();
             this.WhOutComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
@@ -99,6 +97,8 @@
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
+            this.WhOutBtn = new DevExpress.XtraEditors.SimpleButton();
+            this.WhInBtn = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
@@ -267,7 +267,7 @@
             this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 217);
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(972, 29);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(972, 31);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // barDockControlTop
@@ -386,11 +386,11 @@
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.PersonEditBtn);
+            this.panelControl1.Controls.Add(this.WhInBtn);
+            this.panelControl1.Controls.Add(this.WhOutBtn);
             this.panelControl1.Controls.Add(this.WhInComboBox);
             this.panelControl1.Controls.Add(this.ReasonEdit);
             this.panelControl1.Controls.Add(this.AttLabel);
-            this.panelControl1.Controls.Add(this.simpleButton3);
             this.panelControl1.Controls.Add(this.NowDateBtn);
             this.panelControl1.Controls.Add(this.WhOutComboBox);
             this.panelControl1.Controls.Add(this.labelControl5);
@@ -405,15 +405,6 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(571, 183);
             this.panelControl1.TabIndex = 4;
-            // 
-            // PersonEditBtn
-            // 
-            this.PersonEditBtn.Image = ((System.Drawing.Image)(resources.GetObject("PersonEditBtn.Image")));
-            this.PersonEditBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.PersonEditBtn.Location = new System.Drawing.Point(534, 109);
-            this.PersonEditBtn.Name = "PersonEditBtn";
-            this.PersonEditBtn.Size = new System.Drawing.Size(22, 22);
-            this.PersonEditBtn.TabIndex = 24;
             // 
             // WhInComboBox
             // 
@@ -449,15 +440,6 @@
             this.AttLabel.TabIndex = 13;
             this.AttLabel.Text = "Підстава:";
             // 
-            // simpleButton3
-            // 
-            this.simpleButton3.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.Image")));
-            this.simpleButton3.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton3.Location = new System.Drawing.Point(534, 75);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(22, 22);
-            this.simpleButton3.TabIndex = 11;
-            // 
             // NowDateBtn
             // 
             this.NowDateBtn.Image = ((System.Drawing.Image)(resources.GetObject("NowDateBtn.Image")));
@@ -466,6 +448,7 @@
             this.NowDateBtn.Name = "NowDateBtn";
             this.NowDateBtn.Size = new System.Drawing.Size(22, 22);
             this.NowDateBtn.TabIndex = 10;
+            this.NowDateBtn.Click += new System.EventHandler(this.NowDateBtn_Click);
             // 
             // WhOutComboBox
             // 
@@ -754,9 +737,9 @@
             this.panelControl5.Controls.Add(this.WaybillDetOutGridControl);
             this.panelControl5.Controls.Add(this.barDockControl1);
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl5.Location = new System.Drawing.Point(0, 246);
+            this.panelControl5.Location = new System.Drawing.Point(0, 248);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(972, 248);
+            this.panelControl5.Size = new System.Drawing.Size(972, 246);
             this.panelControl5.TabIndex = 16;
             // 
             // WaybillDetOutGridControl
@@ -770,7 +753,7 @@
             this.repositoryItemImageComboBox1,
             this.repositoryItemImageComboBox2,
             this.repositoryItemImageComboBox3});
-            this.WaybillDetOutGridControl.Size = new System.Drawing.Size(968, 244);
+            this.WaybillDetOutGridControl.Size = new System.Drawing.Size(968, 242);
             this.WaybillDetOutGridControl.TabIndex = 1;
             this.WaybillDetOutGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WaybillDetOutGridView});
@@ -914,6 +897,24 @@
             this.barDockControl1.Location = new System.Drawing.Point(2, 2);
             this.barDockControl1.Size = new System.Drawing.Size(968, 0);
             // 
+            // WhOutBtn
+            // 
+            this.WhOutBtn.Image = ((System.Drawing.Image)(resources.GetObject("WhOutBtn.Image")));
+            this.WhOutBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.WhOutBtn.Location = new System.Drawing.Point(534, 74);
+            this.WhOutBtn.Name = "WhOutBtn";
+            this.WhOutBtn.Size = new System.Drawing.Size(22, 22);
+            this.WhOutBtn.TabIndex = 25;
+            // 
+            // WhInBtn
+            // 
+            this.WhInBtn.Image = ((System.Drawing.Image)(resources.GetObject("WhInBtn.Image")));
+            this.WhInBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.WhInBtn.Location = new System.Drawing.Point(534, 108);
+            this.WhInBtn.Name = "WhInBtn";
+            this.WhInBtn.Size = new System.Drawing.Size(22, 22);
+            this.WhInBtn.TabIndex = 26;
+            // 
             // frmWayBillMove
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -999,11 +1000,9 @@
         private DevExpress.XtraBars.PopupMenu WbDetPopupMenu;
         private DevExpress.XtraEditors.PanelControl panelControl3;
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DevExpress.XtraEditors.SimpleButton PersonEditBtn;
         private DevExpress.XtraEditors.LookUpEdit WhInComboBox;
         private DevExpress.XtraEditors.TextEdit ReasonEdit;
         private DevExpress.XtraEditors.LabelControl AttLabel;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private DevExpress.XtraEditors.SimpleButton NowDateBtn;
         private DevExpress.XtraEditors.LookUpEdit WhOutComboBox;
         private DevExpress.XtraEditors.LabelControl labelControl5;
@@ -1043,5 +1042,7 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton6;
         private DevExpress.XtraEditors.LookUpEdit PersonOutComboBox;
         private DevExpress.XtraEditors.LabelControl labelControl12;
+        private DevExpress.XtraEditors.SimpleButton WhInBtn;
+        private DevExpress.XtraEditors.SimpleButton WhOutBtn;
     }
 }

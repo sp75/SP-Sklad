@@ -195,6 +195,9 @@
     <Compile Include="SkladData\GetListMatPrices_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetMakeAmount_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetMatExtra_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -398,9 +401,6 @@
     <Compile Include="SkladData\SP_GET_DOC_LIST_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\SP_GET_MAKE_AMOUNT_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SkladData\SP_GET_MATGRP_NDS_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -563,6 +563,12 @@
     <Compile Include="WBForm\frmWBReturnIn.Designer.cs">
       <DependentUpon>frmWBReturnIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBForm\frmWBWriteOff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\frmWBWriteOff.Designer.cs">
+      <DependentUpon>frmWBWriteOff.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBForm\frmWBWriteOn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -618,6 +624,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWBReturnIn.resx">
       <DependentUpon>frmWBReturnIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\frmWBWriteOff.resx">
+      <DependentUpon>frmWBWriteOff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWBWriteOn.resx">
       <DependentUpon>frmWBWriteOn.cs</DependentUpon>

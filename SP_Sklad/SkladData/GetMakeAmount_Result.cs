@@ -11,9 +11,9 @@ namespace SP_Sklad.SkladData
 {
     using System;
     
-    public partial class SP_GET_MAKE_AMOUNT_Result
+    public partial class GetMakeAmount_Result
     {
-        public Nullable<decimal> AMOUNT_OUT { get; set; }
-        public Nullable<System.DateTime> ONDATE { get; set; }
+        public Nullable<decimal> AmountOut { get; set; }
+        public Nullable<System.DateTime> OnDate { get; set; }
     }
 }

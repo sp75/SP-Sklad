@@ -108,9 +108,11 @@ namespace SP_Sklad.WBForm
             checkEdit2.Visible = (_wtype == 16);
             dateEdit2.Visible = (_wtype == 16);
 
-         /*  
-            OnDateDBEdit->Enabled = (SkladData->CurentUserENABLEEDITDATE->Value == 1);
-            NowDateBtn->Enabled = OnDateDBEdit->Enabled;*/
+            OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
+            NowDateBtn.Enabled = OnDateDBEdit.Enabled;
+
+            PersonComboBox.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
+            PersonEditBtn.Enabled = PersonComboBox.Enabled;
         }
 
         private void OkButton_Click(object sender, EventArgs e)

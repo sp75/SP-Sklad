@@ -66,6 +66,14 @@ namespace SP_Sklad.Common
                         }
                     }
 
+                    if (dr.WType == 5)
+                    {
+                        using (var wb_write_on = new frmWBWriteOn(wb.WbillId))
+                        {
+                            wb_write_on.ShowDialog();
+                        }
+                    }
+
                 }
 
                 catch (EntityCommandExecutionException exception)

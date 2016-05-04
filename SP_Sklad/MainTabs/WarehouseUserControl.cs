@@ -209,6 +209,14 @@ namespace SP_Sklad.MainTabs
                             wb_move.ShowDialog();
                         }
                     }
+
+                    if (focused_tree_node.Id == 58)
+                    {
+                        using (var wb_on = new frmWBWriteOn())
+                        {
+                            wb_on.ShowDialog();
+                        }
+                    }
                     break;
             }
         }
@@ -237,7 +245,6 @@ namespace SP_Sklad.MainTabs
 
         private void EditItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
 
             using (var db = new BaseEntities())
             {

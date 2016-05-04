@@ -8,42 +8,41 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraGrid;
-using DevExpress.XtraGrid.Views.Grid;
-using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using SP_Sklad.SkladData;
 using SP_Sklad.WBDetForm;
 using EntityState = System.Data.Entity.EntityState;
+using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using System.Data.Entity.Core.Objects;
+using DevExpress.XtraGrid;
 
 namespace SP_Sklad.WBForm
 {
-    public partial class frmWayBillMove : Form
+    public partial class frmWBWriteOff : Form
     {
         BaseEntities _db { get; set; }
         private int? _wbill_id { get; set; }
         private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
-    //    private WaybillMove wbm { get; set; }
         private GetWayBillDetOut_Result wbd_row { get; set; }
         private IQueryable<GetWayBillDetOut_Result> wbd_list { get; set; }
 
-        public frmWayBillMove(int? wbill_id = null)
+        public frmWBWriteOff(int wtype, int? wbill_id)
         {
             _wbill_id = wbill_id;
             _db = new BaseEntities();
-            current_transaction = _db.Database.BeginTransaction();
+            current_transaction = _db.Database.BeginTransaction(/*IsolationLevel.RepeatableRead*/);
 
             InitializeComponent();
         }
 
-        private void frmWayBillMove_Load(object sender, EventArgs e)
+        private void frmWBWriteOff_Load(object sender, EventArgs e)
         {
-            KagentComboBox.Properties.DataSource = DBHelper.Persons;
-            PersonOutComboBox.Properties.DataSource = DBHelper.Persons;
-            PersonInComboBox.Properties.DataSource = DBHelper.Persons;
+      //      KagentComboBox.Properties.DataSource = DBHelper.Persons;
+    //        PersonOutComboBox.Properties.DataSource = DBHelper.Persons;
+      //      PersonInComboBox.Properties.DataSource = DBHelper.Persons;
             WhOutComboBox.Properties.DataSource = DBHelper.WhList();
-            WhInComboBox.Properties.DataSource = DBHelper.WhList();
+           
 
             if (_wbill_id == null)
             {
@@ -57,7 +56,7 @@ namespace SP_Sklad.WBForm
                     PersonId = DBHelper.CurrentUser.KaId,
                     WaybillMove = new WaybillMove { SourceWid = DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId }
                 });
-                
+
                 _db.SaveChanges();
 
                 _wbill_id = wb.WbillId;
@@ -84,10 +83,10 @@ namespace SP_Sklad.WBForm
                 TurnDocCheckBox.EditValue = wb.Checked;
 
                 WhOutComboBox.DataBindings.Add(new Binding("EditValue", wb.WaybillMove, "SourceWid"));
-                WhInComboBox.DataBindings.Add(new Binding("EditValue", wb.WaybillMove, "DestWId", true, DataSourceUpdateMode.OnValidation));
-                PersonOutComboBox.DataBindings.Add(new Binding("EditValue", wb.WaybillMove, "PersonId", true, DataSourceUpdateMode.OnValidation));
+   
+   //             PersonOutComboBox.DataBindings.Add(new Binding("EditValue", wb.WaybillMove, "PersonId", true, DataSourceUpdateMode.OnValidation));
 
-                KagentComboBox.DataBindings.Add(new Binding("EditValue", wb, "KaId", true, DataSourceUpdateMode.OnValidation));
+        //        KagentComboBox.DataBindings.Add(new Binding("EditValue", wb, "KaId", true, DataSourceUpdateMode.OnValidation));
 
                 NumEdit.DataBindings.Add(new Binding("EditValue", wb, "Num"));
                 OnDateDBEdit.DataBindings.Add(new Binding("EditValue", wb, "OnDate"));
@@ -102,7 +101,7 @@ namespace SP_Sklad.WBForm
         private void UpdLockWB()
         {
             wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0}", _wbill_id).FirstOrDefault();
-            if ( wb != null )
+            if (wb != null)
             {
                 wb.WaybillMove = _db.WaybillMove.Find(_wbill_id);
             }
@@ -115,7 +114,7 @@ namespace SP_Sklad.WBForm
 
             WaybillDetOutGridControl.DataSource = null;
             WaybillDetOutGridControl.DataSource = wbd_list;
-           
+
             WaybillDetOutGridView.FocusedRowHandle = FindRowHandleByRowObject(WaybillDetOutGridView, dr);
 
             GetOk();
@@ -138,14 +137,15 @@ namespace SP_Sklad.WBForm
 
         bool GetOk()
         {
-            bool recult = (!String.IsNullOrEmpty(NumEdit.Text) && KagentComboBox.EditValue != null && OnDateDBEdit.EditValue != null && WaybillDetOutGridView.DataRowCount > 0);
+            bool recult = (!String.IsNullOrEmpty(NumEdit.Text) && OnDateDBEdit.EditValue != null && WaybillDetOutGridView.DataRowCount > 0);
 
             if (recult && TurnDocCheckBox.Checked)
             {
                 recult = !wbd_list.Any(w => w.Rsv == 0 && w.PosType == 0);
             }
 
-            barSubItem1.Enabled = KagentComboBox.EditValue != null;
+            WhOutComboBox.Enabled = (WaybillDetOutGridView.DataRowCount == 0);
+            WhBtn.Enabled = WhOutComboBox.Enabled;
 
             EditMaterialBtn.Enabled = WaybillDetOutGridView.DataRowCount > 0;
             DelMaterialBtn.Enabled = EditMaterialBtn.Enabled;
@@ -156,7 +156,13 @@ namespace SP_Sklad.WBForm
             return recult;
         }
 
-        private void frmWayBillMove_FormClosed(object sender, FormClosedEventArgs e)
+        private void frmWBWriteOff_Shown(object sender, EventArgs e)
+        {
+            OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
+            NowDateBtn.Enabled = OnDateDBEdit.Enabled;
+        }
+
+        private void frmWBWriteOff_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (current_transaction.UnderlyingTransaction.Connection != null)
             {
@@ -167,12 +173,6 @@ namespace SP_Sklad.WBForm
             current_transaction.Dispose();
         }
 
-        private void frmWayBillMove_Shown(object sender, EventArgs e)
-        {
-            OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
-            NowDateBtn.Enabled = OnDateDBEdit.Enabled;
-        }
-
         private void OkButton_Click(object sender, EventArgs e)
         {
             if (!DBHelper.CheckInDate(wb, _db, OnDateDBEdit.DateTime))
@@ -180,10 +180,10 @@ namespace SP_Sklad.WBForm
                 return;
             }
 
-        /*    if (_db.Entry<WaybillMove>(wbm).State == EntityState.Detached)
-            {
-                _db.WaybillMove.Add(wbm);
-            }*/
+            /*    if (_db.Entry<WaybillMove>(wbm).State == EntityState.Detached)
+                {
+                    _db.WaybillMove.Add(wbm);
+                }*/
 
             wb.UpdatedAt = DateTime.Now;
             _db.SaveChanges();
@@ -224,9 +224,9 @@ namespace SP_Sklad.WBForm
             }
         }
 
-        private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (new frmWBReturnDetOut(_db, null, wb,0).ShowDialog() == DialogResult.OK)
+            if (new frmWBReturnDetOut(_db, null, wb, 0).ShowDialog() == DialogResult.OK)
             {
                 current_transaction = current_transaction.CommitRetaining(_db);
                 UpdLockWB();
@@ -321,5 +321,6 @@ namespace SP_Sklad.WBForm
         {
             //
         }
+
     }
 }
