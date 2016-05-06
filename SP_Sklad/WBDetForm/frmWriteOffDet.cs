@@ -12,7 +12,7 @@ using EntityState = System.Data.Entity.EntityState;
 
 namespace SP_Sklad.WBDetForm
 {
-    public partial class frmWBReturnDetOut : Form
+    public partial class frmWriteOffDet : Form
     {
         BaseEntities _db { get; set; }
         private int? _PosId { get; set; }
@@ -20,24 +20,22 @@ namespace SP_Sklad.WBDetForm
         private WaybillDet _wbd { get; set; }
         private List<GetPosIn_Result> pos_in { get; set; }
         private GetActualRemainByWh_Result mat_remain { get; set; }
-        public int _ka_id { get; set; }
 
-        public frmWBReturnDetOut(BaseEntities db, int? PosId, WaybillList wb, int ka_id)
+        public frmWriteOffDet(BaseEntities db, int? PosId, WaybillList wb)
         {
             InitializeComponent();
 
             _db = db;
             _PosId = PosId;
             _wb = wb;
-            _ka_id = ka_id;
         }
 
-        private void frmWBReturnDetOut_Load(object sender, EventArgs e)
+        private void frmWriteOffDet_Load(object sender, EventArgs e)
         {
             WHComboBox.Properties.DataSource = DBHelper.WhList();
-            MatComboBox.Properties.DataSource = _db.WhMatGet(0, _wb.WaybillMove.SourceWid, _ka_id, DBHelper.ServerDateTime(), 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).ToList();
+            MatComboBox.Properties.DataSource = _db.MaterialsList.ToList();
 
-            if (_wb.WType == 4)
+            if (_wb.WType == -5)
             {
                 WHComboBox.Enabled = false;
                 WhEditBtn.Enabled = false;
@@ -48,9 +46,13 @@ namespace SP_Sklad.WBDetForm
                 _wbd = new WaybillDet()
                 {
                     WbillId = _wb.WbillId,
+                    Num = _wb.WaybillDet.Count() + 1,
                     Amount = 0,
                     OnValue = _wb.OnValue,
-                    WId = _wb.WaybillMove.SourceWid
+                    WId = _wb.WaybillMove.SourceWid,
+                    Nds = _wb.Nds,
+                    CurrId = _wb.CurrId,
+                    OnDate = _wb.OnDate,
                 };
             }
             else
@@ -60,10 +62,10 @@ namespace SP_Sklad.WBDetForm
 
             if (_wbd != null)
             {
+                PriceEdit.DataBindings.Add(new Binding("EditValue", _wbd, "Price", true, DataSourceUpdateMode.OnValidation));
                 MatComboBox.DataBindings.Add(new Binding("EditValue", _wbd, "MatId"));
                 WHComboBox.DataBindings.Add(new Binding("EditValue", _wbd, "WId", true, DataSourceUpdateMode.OnValidation));
                 AmountEdit.DataBindings.Add(new Binding("EditValue", _wbd, "Amount"));
-                BasePriceEdit.DataBindings.Add(new Binding("EditValue", _wbd, "BasePrice", true, DataSourceUpdateMode.OnValidation));
 
                 if (_db.Entry<WaybillDet>(_wbd).State == EntityState.Unchanged)
                 {
@@ -89,16 +91,16 @@ namespace SP_Sklad.WBDetForm
 
         bool GetOk()
         {
-            bool recult = (MatComboBox.EditValue != DBNull.Value && WHComboBox.EditValue != DBNull.Value && BasePriceEdit.EditValue != DBNull.Value && AmountEdit.EditValue != DBNull.Value);
+            bool recult = (MatComboBox.EditValue != DBNull.Value && WHComboBox.EditValue != DBNull.Value && AmountEdit.EditValue != DBNull.Value);
 
             OkButton.Enabled = recult;
 
-            RSVCheckBox.Checked = (OkButton.Enabled && pos_in != null && mat_remain != null && pos_in.Count > 0 && AmountEdit.Value <= mat_remain.CurRemainInWh && pos_in.Sum(s => s.FullRemain) >= AmountEdit.Value);
+            RSVCheckBox.Checked = (OkButton.Enabled && pos_in != null && mat_remain != null && pos_in.Count > 0 && AmountEdit.Value <= mat_remain.CurRemainInWh);
             if (RSVCheckBox.Checked)
             {
                 foreach (var item in pos_in)
                 {
-                    if (item.FullRemain < item.Amount)
+                    if (item.CurRemain < item.Amount)
                     {
                         RSVCheckBox.Checked = false;
                         break;
@@ -110,18 +112,16 @@ namespace SP_Sklad.WBDetForm
 
             BotAmountEdit.Text = AmountEdit.Text;
 
-
-      //      PriceNotNDSEdit.EditValue = BasePriceEdit.Value;
-     //       TotalSumEdit.EditValue = Convert.ToDecimal(AmountEdit.EditValue) * Convert.ToDecimal(PriceNotNDSEdit.EditValue);
-     //       SummAllEdit.EditValue = Convert.ToDecimal(AmountEdit.EditValue) * Convert.ToDecimal(DiscountPriceEdit.EditValue);
-     //       TotalNdsEdit.EditValue = Convert.ToDecimal(SummAllEdit.EditValue) - Convert.ToDecimal(TotalSumEdit.EditValue);
+            decimal summ = Convert.ToDecimal(_wbd.Price) * Convert.ToDecimal(AmountEdit.EditValue);
+            decimal summ_nds = (Convert.ToDecimal(_wbd.BasePrice) - (Convert.ToDecimal(_wbd.BasePrice) * 100 / (100 + Convert.ToDecimal(_wbd.Nds)))) * Convert.ToDecimal(AmountEdit.EditValue);
+            SummAllEdit.EditValue = summ + summ_nds;
 
             return recult;
         }
 
         private void MatComboBox_EditValueChanged(object sender, EventArgs e)
         {
-            var row = (WhMatGet_Result)MatComboBox.GetSelectedDataRow();
+            var row = (MaterialsList)MatComboBox.GetSelectedDataRow();
             if (row == null)
             {
                 return;
@@ -129,12 +129,12 @@ namespace SP_Sklad.WBDetForm
 
             if (MatComboBox.ContainsFocus)
             {
-                _wbd.MatId = row.MatId.Value;
+                _wbd.MatId = row.MatId;
                 GetContent();
             }
 
-            labelControl24.Text = row.MsrName;
-            labelControl27.Text = row.MsrName;
+            labelControl24.Text = row.MeasuresName;
+            labelControl27.Text = row.MeasuresName;
         }
 
         private void GetContent()
@@ -144,16 +144,16 @@ namespace SP_Sklad.WBDetForm
                 return;
             }
 
-            mat_remain = _db.GetActualRemainByWh(_wbd.WId, _wbd.MatId).FirstOrDefault();
+            mat_remain = _db.GetActualRemainByWh(_wbd.WId ,_wbd.MatId).FirstOrDefault();
 
             if (mat_remain != null)
             {
                 RemainWHEdit.EditValue = mat_remain.CurRemainInWh;
                 RsvEdit.EditValue = mat_remain.Rsv;
-                CurRemainEdit.EditValue = mat_remain.Remain;
+                CurRemainEdit.EditValue = mat_remain.CurRemain;
             }
 
-            pos_in = _db.GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, 0).OrderByDescending(o => o.OnDate).ToList();
+            pos_in = _db.GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, 0).Where(w => w.CurRemain > 0).OrderByDescending(o => o.OnDate).ToList();
 
             if (pos_in.Any())
             {
@@ -203,6 +203,21 @@ namespace SP_Sklad.WBDetForm
             }
             else RSVCheckBox.Checked = false;
 
+          
+            decimal? selamount = pos_in.Sum(s => s.Amount);
+            decimal? sum = pos_in.Sum(s => s.Amount * s.Price);
+
+            if (selamount > 0)
+            {
+                _wbd.Price = sum / selamount;
+                _wbd.BasePrice = _wbd.Price;
+            }
+            else
+            {
+                _wbd.Price = 0;
+                _wbd.BasePrice = 0;
+            }
+            
             if (AmountEdit.Value <= sum_full_remain) RSVCheckBox.Checked = false;
 
             GetOk();
@@ -210,44 +225,32 @@ namespace SP_Sklad.WBDetForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            int num = _wb.WaybillDet.Count();
+            if (_db.Entry<WaybillDet>(_wbd).State == EntityState.Detached)
+            {
+                _db.WaybillDet.Add(_wbd);
+            }
+            _db.SaveChanges();
+
+            if (RSVCheckBox.Checked && !_db.WMatTurn.Any(w => w.SourceId == _wbd.PosId))
+            {
+                foreach (var item in pos_in.Where(w => w.Amount > 0))
+                {
+                    _db.WMatTurn.Add(new WMatTurn
+                    {
+                        PosId = item.PosId,
+                        WId = item.WId,
+                        MatId = item.MatId,
+                        OnDate = _wbd.OnDate.Value,
+                        TurnType =  2,
+                        Amount = Convert.ToDecimal(item.Amount),
+                        SourceId = _wbd.PosId
+                    });
+                }
+            }
+      
             try
             {
-                if (RSVCheckBox.Checked && !_db.WMatTurn.Any(w => w.SourceId == _wbd.PosId))
-                {
-                    _db.WaybillDet.Remove(_wbd);
-
-                    foreach (var item in pos_in.Where(w => w.Amount > 0))
-                    {
-                        var wbd = _db.WaybillDet.Add(new WaybillDet()
-                        {
-                            WbillId = _wb.WbillId,
-                            Price = item.Price,
-                            BasePrice = item.BasePrice,
-                            Nds = item.Nds,
-                            CurrId = item.CurrId,
-                            OnDate = _wb.OnDate,
-                            WId = item.WId,
-                            Num = ++num,
-                            Amount = item.Amount.Value,
-                            MatId = item.MatId,
-                        });
-                        _db.SaveChanges();
-
-                        _db.WMatTurn.Add(new WMatTurn
-                        {
-                            PosId = item.PosId,
-                            WId = item.WId,
-                            MatId = item.MatId,
-                            OnDate = _wb.OnDate,
-                            TurnType = 2,
-                            Amount = Convert.ToDecimal(item.Amount),
-                            SourceId = wbd.PosId
-                        });
-                        _db.SaveChanges();
-                    }
-                }
-
+                _db.SaveChanges();
                 Close();
             }
             catch (System.Data.Entity.Infrastructure.DbUpdateException exp)
@@ -258,18 +261,20 @@ namespace SP_Sklad.WBDetForm
 
         private void AmountEdit_EditValueChanged(object sender, EventArgs e)
         {
-            SetAmount();
+            if (AmountEdit.ContainsFocus) SetAmount();
         }
 
         private void RSVCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (RSVCheckBox.Checked && RSVCheckBox.ContainsFocus)
-            {
-                GetOk();
-            }
+            if (RSVCheckBox.Checked && RSVCheckBox.ContainsFocus) GetOk();
         }
 
-        private void frmWBReturnDetOut_FormClosed(object sender, FormClosedEventArgs e)
+        private void WHComboBox_EditValueChanged(object sender, EventArgs e)
+        {
+            if (WHComboBox.ContainsFocus) GetContent();
+        }
+
+        private void frmWriteOffDet_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (_db.Entry<WaybillDet>(_wbd).State == EntityState.Modified)
             {
@@ -277,5 +282,16 @@ namespace SP_Sklad.WBDetForm
             }
         }
 
+        private void PosInfoBtn_Click(object sender, EventArgs e)
+        {
+            var pos = new frmInParty(pos_in);
+            pos.Text = "Прибуткові партії: " + MatComboBox.Text;
+            pos.ShowDialog();
+            _wbd.Amount = pos_in.Sum(s => s.Amount).Value;
+            AmountEdit.Value = _wbd.Amount;
+          
+
+            GetOk();
+        }
     }
 }

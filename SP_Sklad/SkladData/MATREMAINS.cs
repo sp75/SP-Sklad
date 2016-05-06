@@ -12,18 +12,19 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class MATREMAINS
+    public partial class MatRemains
     {
-        public int MATID { get; set; }
-        public System.DateTime ONDATE { get; set; }
-        public decimal REMAIN { get; set; }
-        public decimal RSV { get; set; }
-        public Nullable<decimal> AVGPRICE { get; set; }
-        public Nullable<decimal> MINPRICE { get; set; }
-        public Nullable<decimal> MAXPRICE { get; set; }
-        public Nullable<decimal> INWAY { get; set; }
-        public Nullable<decimal> ORDERED { get; set; }
-        public Nullable<decimal> ORSV { get; set; }
+        public int Id { get; set; }
+        public int MatId { get; set; }
+        public System.DateTime OnDate { get; set; }
+        public decimal Remain { get; set; }
+        public decimal Rsv { get; set; }
+        public Nullable<decimal> AvgPrice { get; set; }
+        public Nullable<decimal> MinPrice { get; set; }
+        public Nullable<decimal> MaxPrice { get; set; }
+        public Nullable<decimal> InWay { get; set; }
+        public Nullable<decimal> Ordered { get; set; }
+        public Nullable<decimal> ORsv { get; set; }
     
         public virtual Materials Materials { get; set; }
     }

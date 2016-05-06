@@ -361,5 +361,10 @@ namespace SP_Sklad.WBDetForm
             }
         }
 
+        private void frmWayBillDetOut_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _db.Entry<WaybillDet>(_wbd).Reload();
+        }
+
     }
 }

@@ -305,6 +305,8 @@
             this.sharedImageCollection1.ImageSource.Images.SetKeyName(4, "Заказ поставщикам.bmp");
             this.sharedImageCollection1.ImageSource.Images.SetKeyName(5, "view_settings.bmp");
             this.sharedImageCollection1.ImageSource.Images.SetKeyName(6, "Наявн_сть на сладах.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(7, "Парт_ї.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(8, "Склади.bmp");
             this.sharedImageCollection1.ParentControl = this;
             // 
             // barButtonItem3
@@ -402,6 +404,7 @@
             this.RSVCheckBox.Size = new System.Drawing.Size(203, 20);
             this.RSVCheckBox.StyleController = this.styleController1;
             this.RSVCheckBox.TabIndex = 20;
+            this.RSVCheckBox.CheckedChanged += new System.EventHandler(this.RSVCheckBox_CheckedChanged);
             // 
             // MatComboBox
             // 
@@ -876,6 +879,7 @@
             this.Name = "frmWBReturnDetOut";
             this.ShowInTaskbar = false;
             this.Text = "Властивості позиції по документу";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmWBReturnDetOut_FormClosed);
             this.Load += new System.EventHandler(this.frmWBReturnDetOut_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).EndInit();

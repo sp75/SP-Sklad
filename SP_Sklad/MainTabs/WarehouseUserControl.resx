@@ -118,14 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="UserTreeImgList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>699, 20</value>
+    <value>26, 24</value>
   </metadata>
   <data name="UserTreeImgList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADm
-        cwAAAk1TRnQBSQFMAgEBHQEAAXABBAFwAQQBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        cwAAAk1TRnQBSQFMAgEBHQEAAXgBBAF4AQQBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABgAMAAQEBAAEYBgABYB4AA/UD/LcAAdUB2QHUATgBkwEiAXQBngFrAbgBwgG3AesB7AHrA/yrAAHs
         Ae0B7AFBAZMBOwFUAbMBgwHiAfIBxAGzAeMBkAFwAbQBTgFzAZ0BaAGwAbsBsAPoA/2fAAP4AV4BnQFZ
         AXQBlgGsAeMB5AL+Ae4B2gH+AfYB8gH+AfwB5wHtAekBrgGqAcUBYAFmAZsBLAGEAaABfAP6mQAD/gGO
@@ -623,14 +623,14 @@
 </value>
   </data>
   <metadata name="GridImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>838, 20</value>
+    <value>165, 24</value>
   </metadata>
   <data name="GridImageList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADQ
-        ggAAAk1TRnQBSQFMAgEBJwEAAXgBBAF4AQQBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        ggAAAk1TRnQBSQFMAgEBJwEAAYABBAGAAQQBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABoAMAAQEBAAEYBgABeCUAAWMCAAFjAgABYwIAAWMCAAFjAgABYwIAAWMCAAFjAgABYwIAAWMHAAP+
         AV8BYQG3AuoB8QYAARABEwGaBgAB7gHvAfQBewF9AcMD/nwAAWsCAAFrBQABawUAAWsFAAFrBQABawoA
         AuUB8AExATUBrgLqAfIDAAEPARQBowMAAe4B7wH0ATcBOgGwAeEB4gHueAABQgEQAQABOQEQAgABewIA
@@ -1192,14 +1192,14 @@
 </value>
   </data>
   <metadata name="PageImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>965, 20</value>
+    <value>292, 24</value>
   </metadata>
   <data name="PageImageList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAi
-        TgAAAk1TRnQBSQFMAgEBEwEAAYABBAGAAQQBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        TgAAAk1TRnQBSQFMAgEBEwEAAYgBBAGIAQQBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABUAMAAQEBAAEYBgABPBgAAdYBhAFjAf8BewFjAf8BjAFrAd4BjAFaAf8B1gGcAd4BjAFaAe8BewFa
         AecBWgE5AXsBpQFSAcYB3gG1AdYB5wHGAXMB1gFzAWMBzgFjAUIBtQFCDwABUgGcAVoBAAFzAQgBMQGE
         ATEbAAGtAVIBKQGtAVIBGAGtAVIBKV0AAaUBYwFCAYwBMQEYAiEBcwIhAXsBpQFSAUoBxgFaATEBcwG1
@@ -1536,20 +1536,20 @@
 </value>
   </data>
   <metadata name="barManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1096, 20</value>
+    <value>423, 24</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>67</value>
   </metadata>
   <metadata name="BarImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1221, 20</value>
+    <value>548, 24</value>
   </metadata>
   <data name="BarImageList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACu
-        QwAAAk1TRnQBSQFMAgEBEAEAAYABBAGAAQQBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        QwAAAk1TRnQBSQFMAgEBEAEAAYgBBAGIAQQBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABUAMAAQEBAAEYBgABPP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/ADcAAWsCAAFrAgABawIAAWsCAAFr
         AgABa0MAAc4B3gHOAVIBlAFSARABcwEQAQABawEAARgBewEYAVIBlAFSAa0BzgGtJwAD7isAAaUBOQEp
         Ab0BSgEpAb0BSgEpAb0BSgEYAb0BcwEYAb0BcwEpAb0BSgEIAYwBGAkAAXMBrQG1ATkBewFzBgABrQFj

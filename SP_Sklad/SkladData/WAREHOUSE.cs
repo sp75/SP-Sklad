@@ -23,9 +23,9 @@ namespace SP_Sklad.SkladData
             this.WAYBILLMAKE = new HashSet<WAYBILLMAKE>();
             this.WaybillMove = new HashSet<WaybillMove>();
             this.WaybillMove1 = new HashSet<WaybillMove>();
-            this.PosRemains = new HashSet<PosRemains>();
             this.UserAccessWh = new HashSet<UserAccessWh>();
             this.WaybillDet = new HashSet<WaybillDet>();
+            this.PosRemains = new HashSet<PosRemains>();
         }
     
         public int WId { get; set; }
@@ -42,8 +42,8 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<WAYBILLMAKE> WAYBILLMAKE { get; set; }
         public virtual ICollection<WaybillMove> WaybillMove { get; set; }
         public virtual ICollection<WaybillMove> WaybillMove1 { get; set; }
-        public virtual ICollection<PosRemains> PosRemains { get; set; }
         public virtual ICollection<UserAccessWh> UserAccessWh { get; set; }
         public virtual ICollection<WaybillDet> WaybillDet { get; set; }
+        public virtual ICollection<PosRemains> PosRemains { get; set; }
     }
 }

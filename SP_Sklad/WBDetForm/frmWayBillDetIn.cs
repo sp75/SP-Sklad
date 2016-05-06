@@ -232,6 +232,7 @@ namespace SP_Sklad.WBDetForm
 
         private void frmWayBillDetIn_FormClosed(object sender, FormClosedEventArgs e)
         {
+            _db.Entry<WaybillDet>(_wbd).Reload();
             Settings.Default.Save();
         }
     }

@@ -21,13 +21,13 @@ namespace SP_Sklad.SkladData
             this.KAMATDISCOUNT = new HashSet<KAMATDISCOUNT>();
             this.MATCHANGE = new HashSet<MATCHANGE>();
             this.MATCHANGE1 = new HashSet<MATCHANGE>();
-            this.MATREMAINS = new HashSet<MATREMAINS>();
             this.WMatTurn = new HashSet<WMatTurn>();
             this.MATRECIPE = new HashSet<MATRECIPE>();
             this.MATPRICES = new HashSet<MATPRICES>();
             this.TAXWBDET = new HashSet<TAXWBDET>();
-            this.PosRemains = new HashSet<PosRemains>();
             this.WaybillDet = new HashSet<WaybillDet>();
+            this.MatRemains = new HashSet<MatRemains>();
+            this.PosRemains = new HashSet<PosRemains>();
         }
     
         public int MatId { get; set; }
@@ -63,7 +63,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<MATCHANGE> MATCHANGE { get; set; }
         public virtual ICollection<MATCHANGE> MATCHANGE1 { get; set; }
         public virtual MatGroup MatGroup { get; set; }
-        public virtual ICollection<MATREMAINS> MATREMAINS { get; set; }
         public virtual ICollection<WMatTurn> WMatTurn { get; set; }
         public virtual MEASURES MEASURES { get; set; }
         public virtual ICollection<MATRECIPE> MATRECIPE { get; set; }
@@ -72,7 +71,8 @@ namespace SP_Sklad.SkladData
         public virtual Warehouse Warehouse { get; set; }
         public virtual Warehouse Warehouse1 { get; set; }
         public virtual Warehouse Warehouse2 { get; set; }
-        public virtual ICollection<PosRemains> PosRemains { get; set; }
         public virtual ICollection<WaybillDet> WaybillDet { get; set; }
+        public virtual ICollection<MatRemains> MatRemains { get; set; }
+        public virtual ICollection<PosRemains> PosRemains { get; set; }
     }
 }

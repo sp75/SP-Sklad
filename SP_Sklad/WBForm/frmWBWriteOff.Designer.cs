@@ -35,11 +35,12 @@
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.DefNumCheckBox = new DevExpress.XtraEditors.CheckEdit();
+            this.WhBtn = new DevExpress.XtraEditors.SimpleButton();
             this.NotesEdit = new DevExpress.XtraEditors.TextEdit();
             this.WhOutComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.ReasonEdit = new DevExpress.XtraEditors.TextEdit();
-            this.PersonEditBtn = new DevExpress.XtraEditors.SimpleButton();
             this.NowDateBtn = new DevExpress.XtraEditors.SimpleButton();
             this.AttLabel = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -121,12 +122,12 @@
             this.DelRsvBarBtn = new DevExpress.XtraBars.BarButtonItem();
             this.DelAllRsvBarBtn = new DevExpress.XtraBars.BarButtonItem();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.WhBtn = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DefNumCheckBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WhOutComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReasonEdit.Properties)).BeginInit();
@@ -205,12 +206,12 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.DefNumCheckBox);
             this.panelControl1.Controls.Add(this.WhBtn);
             this.panelControl1.Controls.Add(this.NotesEdit);
             this.panelControl1.Controls.Add(this.WhOutComboBox);
             this.panelControl1.Controls.Add(this.labelControl8);
             this.panelControl1.Controls.Add(this.ReasonEdit);
-            this.panelControl1.Controls.Add(this.PersonEditBtn);
             this.panelControl1.Controls.Add(this.NowDateBtn);
             this.panelControl1.Controls.Add(this.AttLabel);
             this.panelControl1.Controls.Add(this.labelControl3);
@@ -224,6 +225,26 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(568, 174);
             this.panelControl1.TabIndex = 4;
+            // 
+            // DefNumCheckBox
+            // 
+            this.DefNumCheckBox.Location = new System.Drawing.Point(325, 8);
+            this.DefNumCheckBox.Name = "DefNumCheckBox";
+            this.DefNumCheckBox.Properties.Caption = "Сума списання лягає на збитки";
+            this.DefNumCheckBox.Properties.ValueChecked = 1;
+            this.DefNumCheckBox.Properties.ValueUnchecked = 0;
+            this.DefNumCheckBox.Size = new System.Drawing.Size(203, 20);
+            this.DefNumCheckBox.StyleController = this.styleController1;
+            this.DefNumCheckBox.TabIndex = 27;
+            // 
+            // WhBtn
+            // 
+            this.WhBtn.Image = ((System.Drawing.Image)(resources.GetObject("WhBtn.Image")));
+            this.WhBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.WhBtn.Location = new System.Drawing.Point(534, 75);
+            this.WhBtn.Name = "WhBtn";
+            this.WhBtn.Size = new System.Drawing.Size(22, 22);
+            this.WhBtn.TabIndex = 26;
             // 
             // NotesEdit
             // 
@@ -267,15 +288,6 @@
             this.ReasonEdit.Size = new System.Drawing.Size(482, 22);
             this.ReasonEdit.StyleController = this.styleController1;
             this.ReasonEdit.TabIndex = 16;
-            // 
-            // PersonEditBtn
-            // 
-            this.PersonEditBtn.Image = ((System.Drawing.Image)(resources.GetObject("PersonEditBtn.Image")));
-            this.PersonEditBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.PersonEditBtn.Location = new System.Drawing.Point(309, 6);
-            this.PersonEditBtn.Name = "PersonEditBtn";
-            this.PersonEditBtn.Size = new System.Drawing.Size(22, 22);
-            this.PersonEditBtn.TabIndex = 11;
             // 
             // NowDateBtn
             // 
@@ -324,6 +336,7 @@
             this.TurnDocCheckBox.Size = new System.Drawing.Size(203, 20);
             this.TurnDocCheckBox.StyleController = this.styleController1;
             this.TurnDocCheckBox.TabIndex = 3;
+            this.TurnDocCheckBox.EditValueChanged += new System.EventHandler(this.NumEdit_EditValueChanged);
             // 
             // labelControl1
             // 
@@ -576,6 +589,7 @@
             this.simpleButton1.Size = new System.Drawing.Size(100, 30);
             this.simpleButton1.TabIndex = 0;
             this.simpleButton1.Text = "Відмінити";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // panelControl5
             // 
@@ -1116,27 +1130,9 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.DelAllRsvBarBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.MatInfoBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.RsvInfoBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.EditMaterialBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.DelMaterialBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.RsvBarBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.DelRsvBarBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.RsvAllBarBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.DelAllRsvBarBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.MatInfoBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.RsvInfoBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.EditMaterialBtn, true)});
             this.WbDetPopupMenu.Manager = this.barManager1;
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
-            // 
-            // WhBtn
-            // 
-            this.WhBtn.Image = ((System.Drawing.Image)(resources.GetObject("WhBtn.Image")));
-            this.WhBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.WhBtn.Location = new System.Drawing.Point(534, 75);
-            this.WhBtn.Name = "WhBtn";
-            this.WhBtn.Size = new System.Drawing.Size(22, 22);
-            this.WhBtn.TabIndex = 26;
             // 
             // frmWBWriteOff
             // 
@@ -1168,6 +1164,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DefNumCheckBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WhOutComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReasonEdit.Properties)).EndInit();
@@ -1208,7 +1205,6 @@
         private DevExpress.XtraEditors.PanelControl panelControl3;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.LookUpEdit WhOutComboBox;
-        private DevExpress.XtraEditors.SimpleButton PersonEditBtn;
         private DevExpress.XtraEditors.SimpleButton NowDateBtn;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl2;
@@ -1294,5 +1290,6 @@
         private DevExpress.XtraBars.BarButtonItem DelAllRsvBarBtn;
         private DevExpress.XtraBars.PopupMenu WbDetPopupMenu;
         private DevExpress.XtraEditors.SimpleButton WhBtn;
+        private DevExpress.XtraEditors.CheckEdit DefNumCheckBox;
     }
 }

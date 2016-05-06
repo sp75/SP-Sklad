@@ -27,7 +27,7 @@ namespace SP_Sklad.WBForm
         private GetWayBillDetOut_Result wbd_row { get; set; }
         private IQueryable<GetWayBillDetOut_Result> wbd_list { get; set; }
 
-        public frmWBWriteOff(int wtype, int? wbill_id)
+        public frmWBWriteOff(int? wbill_id=null)
         {
             _wbill_id = wbill_id;
             _db = new BaseEntities();
@@ -38,19 +38,17 @@ namespace SP_Sklad.WBForm
 
         private void frmWBWriteOff_Load(object sender, EventArgs e)
         {
-      //      KagentComboBox.Properties.DataSource = DBHelper.Persons;
-    //        PersonOutComboBox.Properties.DataSource = DBHelper.Persons;
-      //      PersonInComboBox.Properties.DataSource = DBHelper.Persons;
             WhOutComboBox.Properties.DataSource = DBHelper.WhList();
-           
+
 
             if (_wbill_id == null)
             {
                 wb = _db.WaybillList.Add(new WaybillList()
                 {
-                    WType = 4,
+                    WType = -5,
+                    DefNum = 1,
                     OnDate = DBHelper.ServerDateTime(),
-                    Num = new BaseEntities().GetCounter("wb_move").FirstOrDefault(),
+                    Num = new BaseEntities().GetCounter("wb_write_off").FirstOrDefault(),
                     CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
@@ -83,16 +81,13 @@ namespace SP_Sklad.WBForm
                 TurnDocCheckBox.EditValue = wb.Checked;
 
                 WhOutComboBox.DataBindings.Add(new Binding("EditValue", wb.WaybillMove, "SourceWid"));
-   
-   //             PersonOutComboBox.DataBindings.Add(new Binding("EditValue", wb.WaybillMove, "PersonId", true, DataSourceUpdateMode.OnValidation));
-
-        //        KagentComboBox.DataBindings.Add(new Binding("EditValue", wb, "KaId", true, DataSourceUpdateMode.OnValidation));
 
                 NumEdit.DataBindings.Add(new Binding("EditValue", wb, "Num"));
                 OnDateDBEdit.DataBindings.Add(new Binding("EditValue", wb, "OnDate"));
 
                 NotesEdit.DataBindings.Add(new Binding("EditValue", wb, "Notes"));
                 ReasonEdit.DataBindings.Add(new Binding("EditValue", wb, "Reason"));
+                DefNumCheckBox.DataBindings.Add(new Binding("EditValue", wb, "DefNum"));
             }
 
             RefreshDet();
@@ -175,18 +170,13 @@ namespace SP_Sklad.WBForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
+            wb.UpdatedAt = DateTime.Now;
+            _db.SaveChanges();
+
             if (!DBHelper.CheckInDate(wb, _db, OnDateDBEdit.DateTime))
             {
                 return;
             }
-
-            /*    if (_db.Entry<WaybillMove>(wbm).State == EntityState.Detached)
-                {
-                    _db.WaybillMove.Add(wbm);
-                }*/
-
-            wb.UpdatedAt = DateTime.Now;
-            _db.SaveChanges();
 
             current_transaction.Commit();
 
@@ -216,17 +206,19 @@ namespace SP_Sklad.WBForm
 
             if (dr != null)
             {
-                new frmWBReturnDetOut(_db, dr.PosId, wb, 0).ShowDialog();
+                new frmWriteOffDet(_db, dr.PosId, wb).ShowDialog();
 
                 current_transaction = current_transaction.CommitRetaining(_db);
                 UpdLockWB();
                 RefreshDet();
+
+                var dd = _db.Entry<WaybillDet>(_db.WaybillDet.FirstOrDefault (w=> w.PosId == dr.PosId)).State;
             }
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (new frmWBReturnDetOut(_db, null, wb, 0).ShowDialog() == DialogResult.OK)
+            if (new frmWriteOffDet(_db, null, wb).ShowDialog() == DialogResult.OK)
             {
                 current_transaction = current_transaction.CommitRetaining(_db);
                 UpdLockWB();
@@ -319,7 +311,13 @@ namespace SP_Sklad.WBForm
 
         private void NowDateBtn_Click(object sender, EventArgs e)
         {
-            //
+            wb.OnDate = DBHelper.ServerDateTime();
+            OnDateDBEdit.DateTime = wb.OnDate;
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
     }

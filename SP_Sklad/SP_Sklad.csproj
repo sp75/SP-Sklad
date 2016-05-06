@@ -85,6 +85,12 @@
     <Compile Include="FinanseForm\frmPayDoc.Designer.cs">
       <DependentUpon>frmPayDoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmInParty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInParty.Designer.cs">
+      <DependentUpon>frmInParty.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainTabs\DocsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -190,6 +196,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\FUNCTIONS.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetActualRemainByWh_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetListMatPrices_Result.cs">
@@ -309,7 +318,7 @@
     <Compile Include="SkladData\MATRECIPE.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\MATREMAINS.cs">
+    <Compile Include="SkladData\MatRemains.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\MEASURES.cs">
@@ -539,6 +548,12 @@
     <Compile Include="WBDetForm\frmWBReturnDetOut.Designer.cs">
       <DependentUpon>frmWBReturnDetOut.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBDetForm\frmWriteOffDet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBDetForm\frmWriteOffDet.Designer.cs">
+      <DependentUpon>frmWriteOffDet.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBForm\frmWayBillIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -578,6 +593,9 @@
     <EmbeddedResource Include="FinanseForm\frmPayDoc.resx">
       <DependentUpon>frmPayDoc.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmInParty.resx">
+      <DependentUpon>frmInParty.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="mainForm.resx">
       <DependentUpon>mainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -612,6 +630,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WBDetForm\frmWBReturnDetOut.resx">
       <DependentUpon>frmWBReturnDetOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WBDetForm\frmWriteOffDet.resx">
+      <DependentUpon>frmWriteOffDet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWayBillIn.resx">
       <DependentUpon>frmWayBillIn.cs</DependentUpon>

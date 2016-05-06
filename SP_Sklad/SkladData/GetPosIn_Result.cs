@@ -41,5 +41,6 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> Amount { get; set; }
         public Nullable<decimal> BasePrice { get; set; }
         public Nullable<decimal> FullRemain { get; set; }
+        public string DocInfo { get; set; }
     }
 }

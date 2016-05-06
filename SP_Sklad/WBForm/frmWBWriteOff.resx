@@ -125,7 +125,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABM
-        QAAAAk1TRnQBSQFMAgEBEQEAASABBgEgAQYBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        QAAAAk1TRnQBSQFMAgEBEQEAATABBgEwAQYBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABUAMAAQEBAAEYBgABPP8AogAB5wHOAcYBrQFSASkBrQFSARgBrQFSASkB5wHWAc6xAAGtAVIBKQHe
         AoQB3gKEAd4ChAGtAVIBKbEAAbUBYwFCAVoBrQFKAVoBvQFjAVoBrQFKAbUBYwFCtAABCAGcAQgBYwH/
         AZQBCAGlARC3AAEIAZwBCAFjAf8BlAEIAaUBELcAAQgBIQGMARgBQgGcAQABawE5twABCAEQAbUBKQE5
@@ -422,24 +422,6 @@
         AJz/AFL/a4T/////////////////////////////ADH/AGv/AJT/AJT/AIz/AIT/AFL/Wnv/////////
         ////////////////////////////c4z/EEL/AEr/AGP/AEr/Wnv/////////////////////////////
         ////////////////////nK33OWP/UnP/////////////////////////
-</value>
-  </data>
-  <data name="PersonEditBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////
-        ////////////////////////////////////////////////////////////////////////zpRzrVoh
-        nEoYnFIhtXNS3rWc////////////////////////////////////vXNCpTkAa2NaIYSlMZS1OXuMSkpK
-        jFo5562l////////////////////////786trTEAhGtSOb3nQtb3WtbvGKXOIb3nGHulUkI5zpRz////
-        ////////////////3pxStTkAe3tzWuf/Y9bnEHutMZy9Oa3OEJTGKb3nY1JC1px7////////////////
-        3pQxtUoIjGNCe+/3IZzGMZS9MZzGAHOlUsbeMaXOCIS1e1Ip78a9////////////3pQpznshrTkAjJSU
-        Y97/Y97vGIS1UsbeKZS9CHutGLXvY2tavWtC////////////3qVK3qVCxmsYnDEInK2EjP/3a+f/ObXW
-        EIStUsbnUtb/Y3tzrVIQ////////////////3qVC77VKxnMhpTEAjFo5nMa1hOfna9bnc+fvY63GjEIh
-        vVoQ////////////997Wxmsx99Zz99Zj1pwxtVIQnCkAnDkQlGNClFo5nDEArUIA3qVz////////////
-        xrWcznMx/+ec99Z7//+E79ZzzpRKxnMhvVoQvVoIvWMI1pxa////////////////OYQppXsx/7WE/96l
-        /++l//eU9+dj771C3pQh3pQx772E////////////////////CJQYY9Z7jJxS1pxj3oRa3qWE/+/O9+e9
-        99619+fG////////////////////////ObVCMd5aY/eUOZwxY4Q5597e////////////////////////
-        ////////////////////QrVKGK0YOb1K////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////
 </value>
   </data>
   <data name="NowDateBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

@@ -57,7 +57,6 @@ namespace SP_Sklad.SkladData
         public DbSet<MATPRICES> MATPRICES { get; set; }
         public DbSet<MATRECDET> MATRECDET { get; set; }
         public DbSet<MATRECIPE> MATRECIPE { get; set; }
-        public DbSet<MATREMAINS> MATREMAINS { get; set; }
         public DbSet<MEASURES> MEASURES { get; set; }
         public DbSet<MONEYSALDO> MONEYSALDO { get; set; }
         public DbSet<OPERLOG> OPERLOG { get; set; }
@@ -113,11 +112,12 @@ namespace SP_Sklad.SkladData
         public DbSet<UserTreeAccess> UserTreeAccess { get; set; }
         public DbSet<v_GetDocsTree> v_GetDocsTree { get; set; }
         public DbSet<Docs> Docs { get; set; }
-        public DbSet<PosRemains> PosRemains { get; set; }
         public DbSet<UserAccessWh> UserAccessWh { get; set; }
         public DbSet<UserTree> UserTree { get; set; }
         public DbSet<ExtRel> ExtRel { get; set; }
         public DbSet<WaybillDet> WaybillDet { get; set; }
+        public DbSet<MatRemains> MatRemains { get; set; }
+        public DbSet<PosRemains> PosRemains { get; set; }
     
         [EdmFunction("BaseEntities", "GetMatGroupTree")]
         public virtual IQueryable<GetMatGroupTree_Result> GetMatGroupTree(Nullable<int> root_cat_id)
@@ -846,27 +846,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetMatRemain_Result>("GetMatRemain", widParameter, mat_idParameter);
         }
     
-        public virtual ObjectResult<GetPosIn_Result> GetPosIn(Nullable<System.DateTime> on_data, Nullable<int> mat_id, Nullable<int> wid, Nullable<int> ka_id)
-        {
-            var on_dataParameter = on_data.HasValue ?
-                new ObjectParameter("on_data", on_data) :
-                new ObjectParameter("on_data", typeof(System.DateTime));
-    
-            var mat_idParameter = mat_id.HasValue ?
-                new ObjectParameter("mat_id", mat_id) :
-                new ObjectParameter("mat_id", typeof(int));
-    
-            var widParameter = wid.HasValue ?
-                new ObjectParameter("wid", wid) :
-                new ObjectParameter("wid", typeof(int));
-    
-            var ka_idParameter = ka_id.HasValue ?
-                new ObjectParameter("ka_id", ka_id) :
-                new ObjectParameter("ka_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPosIn_Result>("GetPosIn", on_dataParameter, mat_idParameter, widParameter, ka_idParameter);
-        }
-    
         public virtual ObjectResult<Nullable<int>> StornoWayBill(Nullable<int> wbill_id)
         {
             var wbill_idParameter = wbill_id.HasValue ?
@@ -1163,6 +1142,40 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("wbill_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMakeAmount_Result>("[BaseEntities].[GetMakeAmount](@wbill_id)", wbill_idParameter);
+        }
+    
+        public virtual ObjectResult<GetActualRemainByWh_Result> GetActualRemainByWh(Nullable<int> wid, Nullable<int> mat_id)
+        {
+            var widParameter = wid.HasValue ?
+                new ObjectParameter("wid", wid) :
+                new ObjectParameter("wid", typeof(int));
+    
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetActualRemainByWh_Result>("GetActualRemainByWh", widParameter, mat_idParameter);
+        }
+    
+        public virtual ObjectResult<GetPosIn_Result> GetPosIn(Nullable<System.DateTime> on_data, Nullable<int> mat_id, Nullable<int> wid, Nullable<int> ka_id)
+        {
+            var on_dataParameter = on_data.HasValue ?
+                new ObjectParameter("on_data", on_data) :
+                new ObjectParameter("on_data", typeof(System.DateTime));
+    
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            var widParameter = wid.HasValue ?
+                new ObjectParameter("wid", wid) :
+                new ObjectParameter("wid", typeof(int));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPosIn_Result>("GetPosIn", on_dataParameter, mat_idParameter, widParameter, ka_idParameter);
         }
     }
 }

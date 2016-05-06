@@ -183,7 +183,7 @@ namespace SP_Sklad.WBDetForm
 
         private void frmWBReturnDetIn_FormClosed(object sender, FormClosedEventArgs e)
         {
-            ;
+            _db.Entry<WaybillDet>(_wbd).Reload();
         }
 
         private void frmWBReturnDetIn_Shown(object sender, EventArgs e)

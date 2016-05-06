@@ -217,6 +217,14 @@ namespace SP_Sklad.MainTabs
                             wb_on.ShowDialog();
                         }
                     }
+
+                    if (focused_tree_node.Id == 54)
+                    {
+                        using (var wb_on = new frmWBWriteOff())
+                        {
+                            wb_on.ShowDialog();
+                        }
+                    }
                     break;
             }
         }
