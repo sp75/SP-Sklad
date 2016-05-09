@@ -62,6 +62,7 @@
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.docsUserControl1 = new SP_Sklad.MainTabs.DocsUserControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
+            this.manufacturingUserControl1 = new SP_Sklad.MainTabs.ManufacturingUserControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit.CalendarTimeProperties)).BeginInit();
@@ -70,6 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).BeginInit();
             this.gridSplitContainer1.SuspendLayout();
             this.xtraTabPage3.SuspendLayout();
+            this.xtraTabPage2.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
@@ -379,6 +381,7 @@
             // 
             // xtraTabPage2
             // 
+            this.xtraTabPage2.Controls.Add(this.manufacturingUserControl1);
             this.xtraTabPage2.Image = global::SP_Sklad.Properties.Resources.factory;
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(1185, 581);
@@ -419,6 +422,14 @@
             this.xtraTabPage6,
             this.xtraTabPage7});
             // 
+            // manufacturingUserControl1
+            // 
+            this.manufacturingUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.manufacturingUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.manufacturingUserControl1.Name = "manufacturingUserControl1";
+            this.manufacturingUserControl1.Size = new System.Drawing.Size(1185, 581);
+            this.manufacturingUserControl1.TabIndex = 0;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -441,6 +452,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).EndInit();
             this.gridSplitContainer1.ResumeLayout(false);
             this.xtraTabPage3.ResumeLayout(false);
+            this.xtraTabPage2.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
@@ -483,6 +495,7 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage7;
         private MainTabs.DocsUserControl docsUserControl1;
         private MainTabs.WarehouseUserControl whUserControl;
+        private MainTabs.ManufacturingUserControl manufacturingUserControl1;
     }
 }
 

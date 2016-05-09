@@ -147,35 +147,6 @@ namespace SP_Sklad.MainTabs
             cur_wtype = focused_tree_node.WType != null ? focused_tree_node.WType.Value : 0;
             RefrechItemBtn.PerformClick();
 
-         /*   switch (focused_tree_node.GType)
-            {
-                case 1:
-                    //GET_RelDocList->DataSource = WayBillListDS;
-                    GetWayBillList(cur_wtype);
-                    break;
-
-                case 4:
-                    if (cur_wtype == -2) GetPayDocList(-2);
-                    else GetPayDocList(cur_wtype / 3);
-
-                    break;*/
-
-                /*      case 5: PriceList->CloseOpen(true);
-                          PriceListAfterScroll(PriceList);
-                          break;
-
-                      case 6: GET_RelDocList->DataSource = ContractsListDS;
-                          if (DocsTreeDataID->Value == 47) ContractsList->ParamByName("IN_DOCTYPE")->AsVariant = -1;
-                          if (DocsTreeDataID->Value == 46) ContractsList->ParamByName("IN_DOCTYPE")->AsVariant = 1;
-                          ContractsList->CloseOpen(true);
-                          ContractsListAfterScroll(ContractsList);
-                          break;
-
-                      case 7: GET_RelDocList->DataSource = TaxWBListDS;
-                          TaxWBList->CloseOpen(true);
-                          break;*/
-       /*     }*/
-
             wbContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
         }
 
@@ -595,6 +566,95 @@ namespace SP_Sklad.MainTabs
         private void PDStartDate_EditValueChanged(object sender, EventArgs e)
         {
             RefrechItemBtn.PerformClick();
+        }
+
+        private void CopyItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            switch (focused_tree_node.GType)
+            {
+                case 1:
+                     var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
+                     var doc = DB.SkladBase().DocCopy(dr.DocId).FirstOrDefault();
+
+                     if (cur_wtype == -1 || cur_wtype == -16 ) //Відаткова , замолення клиента 
+                     {
+                         using (var wb_in = new frmWayBillOut(cur_wtype, doc.out_wbill_id))
+                         {
+                             wb_in.ShowDialog();
+                         }
+
+                     }
+                    if (cur_wtype == 1 || cur_wtype == 16)  //Прибткова накладна , замовлення постачальникам
+                    {
+                        using (var wb_in = new frmWayBillIn(cur_wtype, doc.out_wbill_id))
+                        {
+                            wb_in.ShowDialog();
+                        }
+                    }
+
+                    if (cur_wtype == 6) // Повернення від клієнта
+                    {
+                        using (var wb_re_in = new frmWBReturnIn(cur_wtype, doc.out_wbill_id))
+                        {
+                            wb_re_in.ShowDialog();
+                        }
+                    }
+
+                    /*         if(DocsTreeDataID->Value == 56 ) //Повернення постачальнику
+                             {
+                                 frmWBReturnOut = new  TfrmWBReturnOut(Application);
+                                 frmWBReturnOut->WayBillList->Open();
+                                 frmWBReturnOut->WayBillList->Append();
+                                 frmWBReturnOut->WayBillListWTYPE->Value  = -6;
+                                 frmWBReturnOut->WayBillList->Post();
+                                 frmWBReturnOut->WayBillList->Edit();
+                                 frmWBReturnOut->ShowModal() ;
+                             }*/
+                    break;
+
+                case 4:
+
+                    int? w_type = focused_tree_node.WType != -2 ? focused_tree_node.WType / 3 : focused_tree_node.WType;
+                    using (var pd = new frmPayDoc(w_type, null))
+                    {
+                        pd.ShowDialog();
+                    }
+                    break;
+
+                /*        case 5: frmPriceList = new  TfrmPriceList(Application);
+                                frmPriceList->PriceList->Open();
+                                frmPriceList->PriceList->Append();
+                                frmPriceList->ShowModal() ;
+                                delete frmPriceList;
+                                break;
+
+                        case 6: frmContr = new  TfrmContr(Application);
+                                frmContr->CONTRACTS->Open();
+                                frmContr->CONTRACTS->Append();
+                                if(DocsTreeDataID->Value == 47) frmContr->CONTRACTSDOCTYPE->Value = -1;
+                                if(DocsTreeDataID->Value == 46) frmContr->CONTRACTSDOCTYPE->Value = 1;
+                                frmContr->CONTRACTS->Post();
+                                frmContr->CONTRACTS->Edit();
+
+                                frmContr->CONTRPARAMS->Append();
+                                frmContr->CONTRPARAMS->Post();
+                                frmContr->CONTRRESULTS->Append();
+
+                                frmContr->ShowModal() ;
+                                delete frmContr;
+                                break;
+
+                        case 7: frmTaxWB = new  TfrmTaxWB(Application);
+                                frmTaxWB->TaxWB->Open();
+                                frmTaxWB->TaxWB->Append();
+                                frmTaxWB->TaxWB->Post();
+                                frmTaxWB->TaxWB->Edit();
+                                frmTaxWB->ShowModal() ;
+                                delete frmTaxWB;
+                                break;*/
+            }
+
+            GetWayBillList(cur_wtype);
         }
 
     }

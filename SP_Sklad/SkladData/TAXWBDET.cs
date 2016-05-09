@@ -18,12 +18,12 @@ namespace SP_Sklad.SkladData
         public int TWBID { get; set; }
         public int MATID { get; set; }
         public decimal AMOUNT { get; set; }
-        public byte[] ONDATE { get; set; }
+        public System.DateTime ONDATE { get; set; }
         public decimal PRICE { get; set; }
         public Nullable<decimal> NDS { get; set; }
         public Nullable<decimal> TOTAL { get; set; }
     
-        public virtual TAXWB TAXWB { get; set; }
         public virtual Materials Materials { get; set; }
+        public virtual TAXWB TAXWB { get; set; }
     }
 }

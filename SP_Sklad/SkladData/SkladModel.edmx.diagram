@@ -49,8 +49,6 @@
         <EntityTypeShape EntityType="BaseModel.TABLES" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.TAXES" Width="1.5" PointX="17" PointY="59.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.TAXWB" Width="1.5" PointX="9" PointY="33.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.TAXWBDET" Width="1.5" PointX="11.25" PointY="34.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.TECHPROCDET" Width="1.5" PointX="16.25" PointY="38.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.TECHPROCESS" Width="1.5" PointX="14" PointY="37.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.WAYBILLDETADDPROPS" Width="1.75" PointX="13.25" PointY="40.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.WAYBILLDETTAXES" Width="1.5" PointX="19.25" PointY="52.625" IsExpanded="true" />
@@ -76,12 +74,9 @@
         <AssociationConnector Association="BaseModel.FK_SERVICES_1" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_WBS_SVCID" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_WBDTAXES_TAXID" ManuallyRouted="false" />
-        <AssociationConnector Association="BaseModel.FK_TAXWBDET_TWBID" ManuallyRouted="false" />
-        <AssociationConnector Association="BaseModel.FK_TECHPROCDET_TECHPROCESS" ManuallyRouted="false" />
         <EntityTypeShape EntityType="BaseModel.WaybillList" Width="1.5" PointX="5.9715476436407986" PointY="24.577040057898053" />
         <AssociationConnector Association="BaseModel.FK_COMMISSION_WBILLID" />
         <AssociationConnector Association="BaseModel.FK_DEBONINGDET_WAYBILLLIST" />
-        <AssociationConnector Association="BaseModel.FK_TECHPROCDET_WAYBILLLIST" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLDETADDPROPS_WBILLID" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLMAKE_WAYBILLLIST" />
         <AssociationConnector Association="BaseModel.FK_WBS_WBILLID" />
@@ -107,7 +102,6 @@
         <AssociationConnector Association="BaseModel.FK_ADOC_KAID" />
         <AssociationConnector Association="BaseModel.FK_AP_KAID" />
         <AssociationConnector Association="BaseModel.FK_TAXWB_REFERENCE_KAGENT" />
-        <AssociationConnector Association="BaseModel.FK_TECHPROCDET_KAGENT" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLMAKE_KAGENT" />
         <AssociationConnector Association="BaseModel.FK_WBL_ENTID" />
@@ -161,7 +155,6 @@
         <AssociationConnector Association="BaseModel.FK_MATERIAL_REFERENCE_MEASURES" />
         <AssociationConnector Association="BaseModel.FK_MATRECIPE_1" />
         <AssociationConnector Association="BaseModel.FK_MP_MATID" />
-        <AssociationConnector Association="BaseModel.FK_TAXWBDET_REFERENCE_MATERIAL" />
         <AssociationConnector Association="BaseModel.FK_MGP_MATID" />
         <EntityTypeShape EntityType="BaseModel.CityType" Width="1.5" PointX="5.7849626344558605" PointY="13.723164773417247" />
         <EntityTypeShape EntityType="BaseModel.Counters" Width="1.5" PointX="3.0873341407102224" PointY="3.32460779106459" />
@@ -227,6 +220,13 @@
         <AssociationConnector Association="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" />
         <AssociationConnector Association="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" />
         <AssociationConnector Association="BaseModel.FK__POSREMAINS__WID__2EA5EC27" />
+        <EntityTypeShape EntityType="BaseModel.TAXWBDET" Width="1.5" PointX="14.25" PointY="19.75" />
+        <EntityTypeShape EntityType="BaseModel.TECHPROCDET" Width="1.5" PointX="19.75" PointY="18.875" />
+        <AssociationConnector Association="BaseModel.FK_TECHPROCDET_KAGENT" />
+        <AssociationConnector Association="BaseModel.FK_TAXWBDET_REFERENCE_MATERIAL" />
+        <AssociationConnector Association="BaseModel.FK_TAXWBDET_TWBID" />
+        <AssociationConnector Association="BaseModel.FK_TECHPROCDET_TECHPROCESS" />
+        <AssociationConnector Association="BaseModel.FK_TECHPROCDET_WAYBILLLIST" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" >
         <EntityTypeShape EntityType="BaseModel.MaterialsList" Width="1.5" PointX="8.3328528592050315" PointY="13.042403614633905" />

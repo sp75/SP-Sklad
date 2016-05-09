@@ -18,11 +18,11 @@ namespace SP_Sklad.SkladData
         {
             this.COMMISSION = new HashSet<COMMISSION>();
             this.DEBONINGDET = new HashSet<DEBONINGDET>();
-            this.TECHPROCDET = new HashSet<TECHPROCDET>();
             this.WAYBILLDETADDPROPS = new HashSet<WAYBILLDETADDPROPS>();
             this.WAYBILLMAKE = new HashSet<WAYBILLMAKE>();
             this.WAYBILLSVC = new HashSet<WAYBILLSVC>();
             this.WaybillDet = new HashSet<WaybillDet>();
+            this.TECHPROCDET = new HashSet<TECHPROCDET>();
         }
     
         public int WbillId { get; set; }
@@ -52,7 +52,6 @@ namespace SP_Sklad.SkladData
     
         public virtual ICollection<COMMISSION> COMMISSION { get; set; }
         public virtual ICollection<DEBONINGDET> DEBONINGDET { get; set; }
-        public virtual ICollection<TECHPROCDET> TECHPROCDET { get; set; }
         public virtual ICollection<WAYBILLDETADDPROPS> WAYBILLDETADDPROPS { get; set; }
         public virtual ICollection<WAYBILLMAKE> WAYBILLMAKE { get; set; }
         public virtual ICollection<WAYBILLSVC> WAYBILLSVC { get; set; }
@@ -63,5 +62,6 @@ namespace SP_Sklad.SkladData
         public virtual WaybillMove WaybillMove { get; set; }
         public virtual Docs Docs { get; set; }
         public virtual ICollection<WaybillDet> WaybillDet { get; set; }
+        public virtual ICollection<TECHPROCDET> TECHPROCDET { get; set; }
     }
 }

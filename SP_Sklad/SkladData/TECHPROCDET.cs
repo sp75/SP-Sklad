@@ -16,14 +16,14 @@ namespace SP_Sklad.SkladData
     {
         public int DETID { get; set; }
         public int WBILLID { get; set; }
-        public byte[] ONDATE { get; set; }
+        public System.DateTime ONDATE { get; set; }
         public decimal OUT { get; set; }
         public int PROCID { get; set; }
         public string NOTES { get; set; }
         public Nullable<int> PERSONID { get; set; }
     
+        public virtual Kagent Kagent { get; set; }
         public virtual TECHPROCESS TECHPROCESS { get; set; }
         public virtual WaybillList WaybillList { get; set; }
-        public virtual Kagent Kagent { get; set; }
     }
 }

@@ -31,7 +31,6 @@ namespace SP_Sklad.SkladData
             this.KAGENTDOC = new HashSet<KAGENTDOC>();
             this.KAGENTPERSONS = new HashSet<KAGENTPERSONS>();
             this.TAXWB1 = new HashSet<TAXWB>();
-            this.TECHPROCDET = new HashSet<TECHPROCDET>();
             this.WaybillList1 = new HashSet<WaybillList>();
             this.WAYBILLMAKE = new HashSet<WAYBILLMAKE>();
             this.WaybillList2 = new HashSet<WaybillList>();
@@ -41,6 +40,7 @@ namespace SP_Sklad.SkladData
             this.KAgentSaldo = new HashSet<KAgentSaldo>();
             this.KaAddr = new HashSet<KaAddr>();
             this.WaybillMove = new HashSet<WaybillMove>();
+            this.TECHPROCDET = new HashSet<TECHPROCDET>();
         }
     
         public int KaId { get; set; }
@@ -89,7 +89,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<KAGENTDOC> KAGENTDOC { get; set; }
         public virtual ICollection<KAGENTPERSONS> KAGENTPERSONS { get; set; }
         public virtual ICollection<TAXWB> TAXWB1 { get; set; }
-        public virtual ICollection<TECHPROCDET> TECHPROCDET { get; set; }
         public virtual ICollection<WaybillList> WaybillList1 { get; set; }
         public virtual ICollection<WAYBILLMAKE> WAYBILLMAKE { get; set; }
         public virtual ICollection<WaybillList> WaybillList2 { get; set; }
@@ -100,5 +99,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<KAgentSaldo> KAgentSaldo { get; set; }
         public virtual ICollection<KaAddr> KaAddr { get; set; }
         public virtual ICollection<WaybillMove> WaybillMove { get; set; }
+        public virtual ICollection<TECHPROCDET> TECHPROCDET { get; set; }
     }
 }

@@ -21,6 +21,7 @@ namespace SP_Sklad.MainTabs
     {
         int wid = 0;
         string wh_list = "*";
+        int cur_wtype = 0;
 
         GetWhTree_Result focused_tree_node { get; set; }
 
@@ -69,66 +70,9 @@ namespace SP_Sklad.MainTabs
             PrintItemBtn.Enabled = false;
             focused_tree_node = WHTreeList.GetDataRecordByNode(e.Node) as GetWhTree_Result;
 
-            switch (focused_tree_node.GType.Value)
-            {
-                case 1:
-                    int grp_id = 0;
-                   
-                    string grp = "";
-
-                    if (ByGrpBtn.Down) grp_id =focused_tree_node.Num;
-                    else wid = focused_tree_node.Num;
-
-                    if (ViewDetailTree.Down && ByGrpBtn.Down && focused_tree_node.Num != 0)
-                    {
-                        grp = focused_tree_node.Num.ToString();
-                    }
-
-                    WhMatGridControl.DataSource = null;
-                    WhMatGridControl.DataSource = DB.SkladBase().WhMatGet(grp_id, wid, (int)wbKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list, 0, "", DBHelper.CurrentUser.UserId, 0).ToList();
-                    /*
-                        WhTopPanel->Edit();
-                        WhTopPanelGRPID->Value = 0;
-                        WhTopPanelWID->Value = 0;
-                        if (ByGrpBtn->Down) WhTopPanelGRPID->Value = WhTreeDataNUM->Value;
-                        else WhTopPanelWID->Value = WhTreeDataNUM->Value;
-                        if (ViewDetailTree->Down && ByGrpBtn->Down && WhTreeDataNUM->Value != 0)
-                        {
-                            WhTopPanel->Edit();
-                            WhTopPanelGRP->Value = WhTreeDataNUM->Value;
-                        }
-                        else WhTopPanelGRP->Value = "";
-                        WhTopPanel->Post();*/
-                        //				   POS_GET->CloseOpen(true) ;       // Тормозить
-                        //		   	   WMAT_GET_BY_WH->CloseOpen(true) ;   // Тормозить
-                   
-                    break;
-
-               case 2:
-                    GetWayBillList(focused_tree_node.WType);
-                    break;
-             
-             /* cxGrid1Level1->GridView = cxGrid1DBTableView1;
-                    cxGridLevel6->GridView = cxGridDBTableView1;
-                    GET_RelDocList->DataSource = WayBillListDS;
-                    WBTopPanelDate->Edit();
-                    if (WhTreeDataID->Value == 48) WBTopPanelDateWTYPE->Value = 4;
-                    if (WhTreeDataID->Value == 58) WBTopPanelDateWTYPE->Value = 5;
-                    if (WhTreeDataID->Value == 54) WBTopPanelDateWTYPE->Value = -5;
-                    if (WhTreeDataID->Value == 104)
-                    {
-                        WBTopPanelDateWTYPE->Value = 7;
-                        cxGrid1Level1->GridView = cxGrid2DBTableView1;
-                        cxGridLevel6->GridView = cxGrid7DBTableView1;
-                    }
-
-                    WBTopPanelDate->Post();
-                    WayBillList->FullRefresh();
-                    WayBillList->Refresh();
-                    break;*/
-            }
-         
-       //     RefrechItemBtn.PerformClick();
+            cur_wtype = focused_tree_node.WType != null ? focused_tree_node.WType.Value : 0;
+            RefrechItemBtn.PerformClick();
+ 
             whContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
         }
 
@@ -233,16 +177,19 @@ namespace SP_Sklad.MainTabs
         {
             var dr = WbGridView.GetRow(e.FocusedRowHandle) as GetWayBillListWh_Result;
 
-         /*   if (dr != null)
+            if (dr != null)
             {
-                gridControl2.DataSource = _db.GetWaybillDetIn(dr.WbillId);
-                gridControl3.DataSource = _db.GetRelDocList(dr.DocId);
+                using (var db = DB.SkladBase())
+                {
+                    gridControl2.DataSource = db.GetWaybillDetIn(dr.WBillId).ToList();
+                    gridControl3.DataSource = db.GetRelDocList(dr.DocId).ToList();
+                }
             }
             else
             {
                 gridControl2.DataSource = null;
                 gridControl3.DataSource = null;
-            }*/
+            }
 
             DeleteItemBtn.Enabled = (dr != null && dr.Checked == 0 && focused_tree_node.CanDelete == 1);
             ExecuteItemBtn.Enabled = (dr != null && dr.WType != 2 && dr.WType != -16 && dr.WType != 16 && focused_tree_node.CanPost == 1);
@@ -271,6 +218,11 @@ namespace SP_Sklad.MainTabs
         private void DeleteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var dr = WbGridView.GetFocusedRow() as GetWayBillListWh_Result;
+            if (dr == null)
+            {
+                return;
+            }
+
             using (var db = new BaseEntities())
             {
 
@@ -315,6 +267,62 @@ namespace SP_Sklad.MainTabs
             if (info.InRow || info.InRowCell)
             {
                 EditItemBtn.PerformClick();
+            }
+        }
+
+        private void ExecuteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (focused_tree_node == null)
+            {
+                return;
+            }
+
+            switch (focused_tree_node.GType.Value)
+            {
+                case 1:
+                    int grp_id = 0;
+
+                    string grp = "";
+
+                    if (ByGrpBtn.Down) grp_id = focused_tree_node.Num;
+                    else wid = focused_tree_node.Num;
+
+                    if (ViewDetailTree.Down && ByGrpBtn.Down && focused_tree_node.Num != 0)
+                    {
+                        grp = focused_tree_node.Num.ToString();
+                    }
+
+                    WhMatGridControl.DataSource = null;
+                    WhMatGridControl.DataSource = DB.SkladBase().WhMatGet(grp_id, wid, (int)wbKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list, 0, grp, DBHelper.CurrentUser.UserId, 0).ToList();
+
+                    break;
+
+                case 2:
+                    GetWayBillList(focused_tree_node.WType);
+                    /* cxGrid1Level1->GridView = cxGrid1DBTableView1;
+                      cxGridLevel6->GridView = cxGridDBTableView1;
+                      GET_RelDocList->DataSource = WayBillListDS;
+                      WBTopPanelDate->Edit();
+                      if (WhTreeDataID->Value == 48) WBTopPanelDateWTYPE->Value = 4;
+                      if (WhTreeDataID->Value == 58) WBTopPanelDateWTYPE->Value = 5;
+                      if (WhTreeDataID->Value == 54) WBTopPanelDateWTYPE->Value = -5;
+                      if (WhTreeDataID->Value == 104)
+                      {
+                          WBTopPanelDateWTYPE->Value = 7;
+                          cxGrid1Level1->GridView = cxGrid2DBTableView1;
+                          cxGridLevel6->GridView = cxGrid7DBTableView1;
+                      }
+
+                      WBTopPanelDate->Post();
+                      WayBillList->FullRefresh();
+                      WayBillList->Refresh();*/
+
+                    break;
             }
         }
     }

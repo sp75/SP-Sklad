@@ -97,6 +97,12 @@
     <Compile Include="MainTabs\DocsUserControl.Designer.cs">
       <DependentUpon>DocsUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainTabs\ManufacturingUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainTabs\ManufacturingUserControl.Designer.cs">
+      <DependentUpon>ManufacturingUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainTabs\PayDocUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -174,6 +180,9 @@
     <Compile Include="SkladData\DISCCARDS.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\DocCopy_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\Docs.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -205,6 +214,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetMakeAmount_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetManufactureTree_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetMatExtra_Result.cs">
@@ -601,6 +613,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainTabs\DocsUserControl.resx">
       <DependentUpon>DocsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainTabs\ManufacturingUserControl.resx">
+      <DependentUpon>ManufacturingUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainTabs\PayDocUserControl.resx">
       <DependentUpon>PayDocUserControl.cs</DependentUpon>

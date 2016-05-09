@@ -72,8 +72,6 @@ namespace SP_Sklad.SkladData
         public DbSet<TABLES> TABLES { get; set; }
         public DbSet<TAXES> TAXES { get; set; }
         public DbSet<TAXWB> TAXWB { get; set; }
-        public DbSet<TAXWBDET> TAXWBDET { get; set; }
-        public DbSet<TECHPROCDET> TECHPROCDET { get; set; }
         public DbSet<TECHPROCESS> TECHPROCESS { get; set; }
         public DbSet<WAYBILLDETADDPROPS> WAYBILLDETADDPROPS { get; set; }
         public DbSet<WAYBILLDETTAXES> WAYBILLDETTAXES { get; set; }
@@ -118,6 +116,8 @@ namespace SP_Sklad.SkladData
         public DbSet<WaybillDet> WaybillDet { get; set; }
         public DbSet<MatRemains> MatRemains { get; set; }
         public DbSet<PosRemains> PosRemains { get; set; }
+        public DbSet<TAXWBDET> TAXWBDET { get; set; }
+        public DbSet<TECHPROCDET> TECHPROCDET { get; set; }
     
         [EdmFunction("BaseEntities", "GetMatGroupTree")]
         public virtual IQueryable<GetMatGroupTree_Result> GetMatGroupTree(Nullable<int> root_cat_id)
@@ -1176,6 +1176,24 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("ka_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPosIn_Result>("GetPosIn", on_dataParameter, mat_idParameter, widParameter, ka_idParameter);
+        }
+    
+        public virtual ObjectResult<DocCopy_Result> DocCopy(Nullable<int> doc_id)
+        {
+            var doc_idParameter = doc_id.HasValue ?
+                new ObjectParameter("doc_id", doc_id) :
+                new ObjectParameter("doc_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocCopy_Result>("DocCopy", doc_idParameter);
+        }
+    
+        public virtual ObjectResult<GetManufactureTree_Result> GetManufactureTree(Nullable<int> user_id)
+        {
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetManufactureTree_Result>("GetManufactureTree", user_idParameter);
         }
     }
 }
