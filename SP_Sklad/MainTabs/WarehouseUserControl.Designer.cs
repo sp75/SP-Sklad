@@ -1128,7 +1128,7 @@
             this.xtraTabPage4.Controls.Add(this.PosGridControl);
             this.xtraTabPage4.ImageIndex = 4;
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(896, 237);
+            this.xtraTabPage4.Size = new System.Drawing.Size(899, 240);
             this.xtraTabPage4.Text = "Партії";
             // 
             // PosGridControl
@@ -1139,7 +1139,7 @@
             this.PosGridControl.Name = "PosGridControl";
             this.PosGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox10});
-            this.PosGridControl.Size = new System.Drawing.Size(896, 237);
+            this.PosGridControl.Size = new System.Drawing.Size(899, 240);
             this.PosGridControl.TabIndex = 1;
             this.PosGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView1});
@@ -1282,7 +1282,7 @@
             this.xtraTabPage5.Controls.Add(this.gridControl5);
             this.xtraTabPage5.ImageIndex = 5;
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(896, 237);
+            this.xtraTabPage5.Size = new System.Drawing.Size(899, 240);
             this.xtraTabPage5.Text = "Замовлене";
             // 
             // gridControl5
@@ -1295,7 +1295,7 @@
             this.repositoryItemImageComboBox9,
             this.repositoryItemImageComboBox8,
             this.repositoryItemImageComboBox5});
-            this.gridControl5.Size = new System.Drawing.Size(896, 237);
+            this.gridControl5.Size = new System.Drawing.Size(899, 240);
             this.gridControl5.TabIndex = 0;
             this.gridControl5.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView5});
@@ -1455,14 +1455,14 @@
             // 
             this.xtraTabPage9.ImageIndex = 6;
             this.xtraTabPage9.Name = "xtraTabPage9";
-            this.xtraTabPage9.Size = new System.Drawing.Size(896, 237);
+            this.xtraTabPage9.Size = new System.Drawing.Size(899, 240);
             this.xtraTabPage9.Text = "Взаємозамінність";
             // 
             // xtraTabPage10
             // 
             this.xtraTabPage10.ImageIndex = 14;
             this.xtraTabPage10.Name = "xtraTabPage10";
-            this.xtraTabPage10.Size = new System.Drawing.Size(896, 237);
+            this.xtraTabPage10.Size = new System.Drawing.Size(899, 240);
             this.xtraTabPage10.Text = "Список товарів";
             // 
             // xtraTabPage6
@@ -1859,7 +1859,7 @@
             this.xtraTabPage1.Controls.Add(this.vGridControl1);
             this.xtraTabPage1.ImageIndex = 1;
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(896, 125);
+            this.xtraTabPage1.Size = new System.Drawing.Size(899, 128);
             this.xtraTabPage1.Text = "Інформація про накладну";
             // 
             // vGridControl1
@@ -1873,7 +1873,7 @@
             this.vGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.row,
             this.category});
-            this.vGridControl1.Size = new System.Drawing.Size(896, 125);
+            this.vGridControl1.Size = new System.Drawing.Size(899, 128);
             this.vGridControl1.TabIndex = 0;
             // 
             // row
@@ -1925,7 +1925,7 @@
             this.xtraTabPage2.Controls.Add(this.gridControl3);
             this.xtraTabPage2.ImageIndex = 2;
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(896, 125);
+            this.xtraTabPage2.Size = new System.Drawing.Size(899, 128);
             this.xtraTabPage2.Text = "Зв\'язані документи";
             // 
             // gridControl3
@@ -1938,7 +1938,7 @@
             this.repositoryItemImageComboBox2,
             this.repositoryItemImageComboBox6,
             this.repositoryItemImageComboBox7});
-            this.gridControl3.Size = new System.Drawing.Size(896, 125);
+            this.gridControl3.Size = new System.Drawing.Size(899, 128);
             this.gridControl3.TabIndex = 0;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});

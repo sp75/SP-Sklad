@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SP_Sklad.SkladData;
+using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraGrid;
 
 
 namespace SP_Sklad.MainTabs
@@ -44,6 +46,52 @@ namespace SP_Sklad.MainTabs
             DocsTreeList.DataSource = DB.SkladBase().GetManufactureTree(DBHelper.CurrentUser.UserId).ToList();
             DocsTreeList.ExpandAll();
         }
-       
+        void GetWayBillList(int wtyp)
+        {
+            if (wbSatusList.EditValue == null || wbKagentList.EditValue == null || DocsTreeList.FocusedNode == null)
+            {
+                return;
+            }
+
+            var satrt_date = wbStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : wbStartDate.DateTime;
+            var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
+
+            var dr = WbGridView.GetRow(WbGridView.FocusedRowHandle) as GetWayBillList_Result;
+
+            WBGridControl.DataSource = null;
+            WBGridControl.DataSource = DB.SkladBase().GetWayBillList(satrt_date.Date, end_date.Date.AddDays(1), wtyp, (int)wbSatusList.EditValue, (int)wbKagentList.EditValue, show_null_balance, "*", 0).OrderByDescending(o => o.OnDate);
+
+            WbGridView.FocusedRowHandle = FindRowHandleByRowObject(WbGridView, dr);
+        }
+
+        private int FindPayDocRow(GridView view, GetPayDocList_Result dr)
+        {
+            if (dr != null)
+            {
+                for (int i = 0; i < view.DataRowCount; i++)
+                {
+                    if (dr.PayDocId == (view.GetRow(i) as GetPayDocList_Result).PayDocId)
+                    {
+                        return i;
+                    }
+                }
+            }
+            return GridControl.InvalidRowHandle;
+        }
+
+        private int FindRowHandleByRowObject(GridView view, GetWayBillList_Result dr)
+        {
+            if (dr != null)
+            {
+                for (int i = 0; i < view.DataRowCount; i++)
+                {
+                    if (dr.WbillId == (view.GetRow(i) as GetWayBillList_Result).WbillId)
+                    {
+                        return i;
+                    }
+                }
+            }
+            return GridControl.InvalidRowHandle;
+        }
     }
 }
