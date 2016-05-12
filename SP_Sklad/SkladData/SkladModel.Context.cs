@@ -31,7 +31,6 @@ namespace SP_Sklad.SkladData
         public DbSet<ACCOUNTTYPE> ACCOUNTTYPE { get; set; }
         public DbSet<BANKS> BANKS { get; set; }
         public DbSet<BANKSPERSONS> BANKSPERSONS { get; set; }
-        public DbSet<COMMISSION> COMMISSION { get; set; }
         public DbSet<CONTRACTS> CONTRACTS { get; set; }
         public DbSet<CONTRDET> CONTRDET { get; set; }
         public DbSet<CONTRPARAMS> CONTRPARAMS { get; set; }
@@ -55,8 +54,6 @@ namespace SP_Sklad.SkladData
         public DbSet<MATCHANGE> MATCHANGE { get; set; }
         public DbSet<MATGROUPPRICES> MATGROUPPRICES { get; set; }
         public DbSet<MATPRICES> MATPRICES { get; set; }
-        public DbSet<MATRECDET> MATRECDET { get; set; }
-        public DbSet<MATRECIPE> MATRECIPE { get; set; }
         public DbSet<MEASURES> MEASURES { get; set; }
         public DbSet<MONEYSALDO> MONEYSALDO { get; set; }
         public DbSet<OPERLOG> OPERLOG { get; set; }
@@ -72,10 +69,6 @@ namespace SP_Sklad.SkladData
         public DbSet<TABLES> TABLES { get; set; }
         public DbSet<TAXES> TAXES { get; set; }
         public DbSet<TAXWB> TAXWB { get; set; }
-        public DbSet<TECHPROCESS> TECHPROCESS { get; set; }
-        public DbSet<WAYBILLDETADDPROPS> WAYBILLDETADDPROPS { get; set; }
-        public DbSet<WAYBILLDETTAXES> WAYBILLDETTAXES { get; set; }
-        public DbSet<WAYBILLMAKE> WAYBILLMAKE { get; set; }
         public DbSet<WAYBILLSVC> WAYBILLSVC { get; set; }
         public DbSet<WaybillList> WaybillList { get; set; }
         public DbSet<MaterialsList> MaterialsList { get; set; }
@@ -117,7 +110,15 @@ namespace SP_Sklad.SkladData
         public DbSet<MatRemains> MatRemains { get; set; }
         public DbSet<PosRemains> PosRemains { get; set; }
         public DbSet<TAXWBDET> TAXWBDET { get; set; }
-        public DbSet<TECHPROCDET> TECHPROCDET { get; set; }
+        public DbSet<Commission> Commission { get; set; }
+        public DbSet<TechProcDet> TechProcDet { get; set; }
+        public DbSet<TechProcess> TechProcess { get; set; }
+        public DbSet<WayBillDetAddProps> WayBillDetAddProps { get; set; }
+        public DbSet<WayBillDetTaxes> WayBillDetTaxes { get; set; }
+        public DbSet<MatRecDet> MatRecDet { get; set; }
+        public DbSet<MatRecipe> MatRecipe { get; set; }
+        public DbSet<WayBillMake> WayBillMake { get; set; }
+        public DbSet<v_TechProcDet> v_TechProcDet { get; set; }
     
         [EdmFunction("BaseEntities", "GetMatGroupTree")]
         public virtual IQueryable<GetMatGroupTree_Result> GetMatGroupTree(Nullable<int> root_cat_id)
@@ -387,15 +388,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("SOURCEID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_DEL_DOCREL", pOSIDParameter, sOURCEIDParameter);
-        }
-    
-        public virtual int SP_GET_RECIPE(Nullable<int> iN_WBILLID, ObjectParameter mATNAME, ObjectParameter pOSID, ObjectParameter rSV)
-        {
-            var iN_WBILLIDParameter = iN_WBILLID.HasValue ?
-                new ObjectParameter("IN_WBILLID", iN_WBILLID) :
-                new ObjectParameter("IN_WBILLID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_GET_RECIPE", iN_WBILLIDParameter, mATNAME, pOSID, rSV);
         }
     
         public virtual ObjectResult<Nullable<decimal>> SP_NEWDOC(Nullable<int> dOCTYPE)
@@ -1194,6 +1186,44 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("user_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetManufactureTree_Result>("GetManufactureTree", user_idParameter);
+        }
+    
+        public virtual ObjectResult<WBListMake_Result> WBListMake(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> is_checked, string wh, Nullable<int> grp_id, Nullable<int> w_type)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var is_checkedParameter = is_checked.HasValue ?
+                new ObjectParameter("is_checked", is_checked) :
+                new ObjectParameter("is_checked", typeof(int));
+    
+            var whParameter = wh != null ?
+                new ObjectParameter("wh", wh) :
+                new ObjectParameter("wh", typeof(string));
+    
+            var grp_idParameter = grp_id.HasValue ?
+                new ObjectParameter("grp_id", grp_id) :
+                new ObjectParameter("grp_id", typeof(int));
+    
+            var w_typeParameter = w_type.HasValue ?
+                new ObjectParameter("w_type", w_type) :
+                new ObjectParameter("w_type", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WBListMake_Result>("WBListMake", from_dateParameter, to_dateParameter, is_checkedParameter, whParameter, grp_idParameter, w_typeParameter);
+        }
+    
+        public virtual ObjectResult<GetRecipe_Result> GetRecipe(Nullable<int> wbill_id)
+        {
+            var wbill_idParameter = wbill_id.HasValue ?
+                new ObjectParameter("wbill_id", wbill_id) :
+                new ObjectParameter("wbill_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetRecipe_Result>("GetRecipe", wbill_idParameter);
         }
     }
 }

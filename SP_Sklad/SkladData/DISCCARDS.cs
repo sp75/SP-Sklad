@@ -16,7 +16,7 @@ namespace SP_Sklad.SkladData
     {
         public DISCCARDS()
         {
-            this.WAYBILLDETADDPROPS = new HashSet<WAYBILLDETADDPROPS>();
+            this.WayBillDetAddProps = new HashSet<WayBillDetAddProps>();
         }
     
         public int CARDID { get; set; }
@@ -31,7 +31,7 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> STARTSALDO { get; set; }
     
         public virtual DISCCARDGRP DISCCARDGRP { get; set; }
-        public virtual ICollection<WAYBILLDETADDPROPS> WAYBILLDETADDPROPS { get; set; }
         public virtual Kagent Kagent { get; set; }
+        public virtual ICollection<WayBillDetAddProps> WayBillDetAddProps { get; set; }
     }
 }

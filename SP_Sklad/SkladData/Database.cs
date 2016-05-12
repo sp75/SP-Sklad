@@ -21,7 +21,7 @@ namespace SP_Sklad.SkladData
 
     public static class DataContextExtension
     {
-        public static void DeleteWhere<T>(this DbContext db, Expression<Func<T, bool>> filter)
+        public static DbContext DeleteWhere<T>(this DbContext db, Expression<Func<T, bool>> filter)
             where T : class
         {
             var query = db.Set<T>().Where(filter);
@@ -44,6 +44,8 @@ namespace SP_Sklad.SkladData
             var parameters = object_query.Parameters.Select(p => new SqlParameter(p.Name, p.Value)).ToArray();
 
             db.Database.ExecuteSqlCommand(delete_sql, parameters);
+
+            return db;
         }
 
         public static DbContextTransaction CommitRetaining(this DbContextTransaction transaction, BaseEntities db)

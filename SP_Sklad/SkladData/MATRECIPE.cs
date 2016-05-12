@@ -12,25 +12,25 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class MATRECIPE
+    public partial class MatRecipe
     {
-        public MATRECIPE()
+        public MatRecipe()
         {
-            this.MATRECDET = new HashSet<MATRECDET>();
-            this.WAYBILLMAKE = new HashSet<WAYBILLMAKE>();
+            this.MatRecDet = new HashSet<MatRecDet>();
+            this.WayBillMake = new HashSet<WayBillMake>();
         }
     
-        public int RECID { get; set; }
-        public string NUM { get; set; }
-        public string NAME { get; set; }
-        public Nullable<System.DateTime> ONDATE { get; set; }
-        public decimal AMOUNT { get; set; }
-        public string NOTES { get; set; }
-        public int MATID { get; set; }
-        public Nullable<int> RTYPE { get; set; }
+        public int RecId { get; set; }
+        public string Num { get; set; }
+        public string Name { get; set; }
+        public Nullable<System.DateTime> OnDate { get; set; }
+        public decimal Amount { get; set; }
+        public string Notes { get; set; }
+        public int MatId { get; set; }
+        public Nullable<int> RType { get; set; }
     
-        public virtual ICollection<MATRECDET> MATRECDET { get; set; }
-        public virtual ICollection<WAYBILLMAKE> WAYBILLMAKE { get; set; }
         public virtual Materials Materials { get; set; }
+        public virtual ICollection<MatRecDet> MatRecDet { get; set; }
+        public virtual ICollection<WayBillMake> WayBillMake { get; set; }
     }
 }

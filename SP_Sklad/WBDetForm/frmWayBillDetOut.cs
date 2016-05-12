@@ -366,5 +366,16 @@ namespace SP_Sklad.WBDetForm
             _db.Entry<WaybillDet>(_wbd).Reload();
         }
 
+        private void PosInfoBtn_Click(object sender, EventArgs e)
+        {
+            var pos = new frmInParty(pos_in);
+            pos.Text = "Прибуткові партії: " + MatComboBox.Text;
+            pos.ShowDialog();
+            _wbd.Amount = pos_in.Sum(s => s.Amount).Value;
+            AmountEdit.Value = _wbd.Amount;
+
+            GetOk();
+        }
+
     }
 }

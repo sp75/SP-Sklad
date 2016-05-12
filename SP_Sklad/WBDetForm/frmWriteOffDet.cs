@@ -49,7 +49,7 @@ namespace SP_Sklad.WBDetForm
                     Num = _wb.WaybillDet.Count() + 1,
                     Amount = 0,
                     OnValue = _wb.OnValue,
-                    WId = _wb.WaybillMove.SourceWid,
+                    WId = _wb.WaybillMove != null ? _wb.WaybillMove.SourceWid : _wb.WayBillMake != null ? _wb.WayBillMake.SourceWId : DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId,
                     Nds = _wb.Nds,
                     CurrId = _wb.CurrId,
                     OnDate = _wb.OnDate,
@@ -271,7 +271,11 @@ namespace SP_Sklad.WBDetForm
 
         private void WHComboBox_EditValueChanged(object sender, EventArgs e)
         {
-            if (WHComboBox.ContainsFocus) GetContent();
+            if (WHComboBox.ContainsFocus)
+            {
+                _wbd.WId = (int)WHComboBox.EditValue;
+                GetContent();
+            }
         }
 
         private void frmWriteOffDet_FormClosed(object sender, FormClosedEventArgs e)

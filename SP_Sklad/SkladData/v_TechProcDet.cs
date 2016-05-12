@@ -12,13 +12,16 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class WayBillDetTaxes
+    public partial class v_TechProcDet
     {
-        public int PosId { get; set; }
-        public int TaxId { get; set; }
-        public decimal OnValue { get; set; }
-    
-        public virtual TAXES TAXES { get; set; }
-        public virtual WaybillDet WaybillDet { get; set; }
+        public int DetId { get; set; }
+        public int WbillId { get; set; }
+        public decimal Out { get; set; }
+        public int ProcId { get; set; }
+        public string Notes { get; set; }
+        public Nullable<int> PersonId { get; set; }
+        public System.DateTime OnDate { get; set; }
+        public string Name { get; set; }
+        public string PersonName { get; set; }
     }
 }

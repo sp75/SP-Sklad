@@ -12,16 +12,16 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class TECHPROCESS
+    public partial class TechProcess
     {
-        public TECHPROCESS()
+        public TechProcess()
         {
-            this.TECHPROCDET = new HashSet<TECHPROCDET>();
+            this.TechProcDet = new HashSet<TechProcDet>();
         }
     
-        public int PROCID { get; set; }
-        public string NAME { get; set; }
+        public int ProcId { get; set; }
+        public string Name { get; set; }
     
-        public virtual ICollection<TECHPROCDET> TECHPROCDET { get; set; }
+        public virtual ICollection<TechProcDet> TechProcDet { get; set; }
     }
 }

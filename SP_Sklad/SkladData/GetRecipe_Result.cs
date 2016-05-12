@@ -10,15 +10,11 @@
 namespace SP_Sklad.SkladData
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class WayBillDetTaxes
+    public partial class GetRecipe_Result
     {
-        public int PosId { get; set; }
-        public int TaxId { get; set; }
-        public decimal OnValue { get; set; }
-    
-        public virtual TAXES TAXES { get; set; }
-        public virtual WaybillDet WaybillDet { get; set; }
+        public string MatName { get; set; }
+        public Nullable<int> PosId { get; set; }
+        public Nullable<int> Rsv { get; set; }
     }
 }

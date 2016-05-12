@@ -16,7 +16,7 @@ namespace SP_Sklad.SkladData
     {
         public TAXES()
         {
-            this.WAYBILLDETTAXES = new HashSet<WAYBILLDETTAXES>();
+            this.WayBillDetTaxes = new HashSet<WayBillDetTaxes>();
         }
     
         public int TAXID { get; set; }
@@ -25,6 +25,6 @@ namespace SP_Sklad.SkladData
         public int TAXTYPE { get; set; }
         public int DELETED { get; set; }
     
-        public virtual ICollection<WAYBILLDETTAXES> WAYBILLDETTAXES { get; set; }
+        public virtual ICollection<WayBillDetTaxes> WayBillDetTaxes { get; set; }
     }
 }

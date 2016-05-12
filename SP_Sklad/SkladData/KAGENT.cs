@@ -16,10 +16,6 @@ namespace SP_Sklad.SkladData
     {
         public Kagent()
         {
-            this.COMMISSION = new HashSet<COMMISSION>();
-            this.COMMISSION1 = new HashSet<COMMISSION>();
-            this.COMMISSION2 = new HashSet<COMMISSION>();
-            this.COMMISSION3 = new HashSet<COMMISSION>();
             this.CONTRACTS = new HashSet<CONTRACTS>();
             this.CONTRACTS1 = new HashSet<CONTRACTS>();
             this.DISCCARDS = new HashSet<DISCCARDS>();
@@ -32,7 +28,6 @@ namespace SP_Sklad.SkladData
             this.KAGENTPERSONS = new HashSet<KAGENTPERSONS>();
             this.TAXWB1 = new HashSet<TAXWB>();
             this.WaybillList1 = new HashSet<WaybillList>();
-            this.WAYBILLMAKE = new HashSet<WAYBILLMAKE>();
             this.WaybillList2 = new HashSet<WaybillList>();
             this.WAYBILLSVC = new HashSet<WAYBILLSVC>();
             this.PayDoc = new HashSet<PayDoc>();
@@ -40,7 +35,12 @@ namespace SP_Sklad.SkladData
             this.KAgentSaldo = new HashSet<KAgentSaldo>();
             this.KaAddr = new HashSet<KaAddr>();
             this.WaybillMove = new HashSet<WaybillMove>();
-            this.TECHPROCDET = new HashSet<TECHPROCDET>();
+            this.Commission = new HashSet<Commission>();
+            this.Commission1 = new HashSet<Commission>();
+            this.Commission2 = new HashSet<Commission>();
+            this.Commission3 = new HashSet<Commission>();
+            this.TechProcDet = new HashSet<TechProcDet>();
+            this.WayBillMake = new HashSet<WayBillMake>();
         }
     
         public int KaId { get; set; }
@@ -73,10 +73,6 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> ContractDate { get; set; }
         public string ContractNum { get; set; }
     
-        public virtual ICollection<COMMISSION> COMMISSION { get; set; }
-        public virtual ICollection<COMMISSION> COMMISSION1 { get; set; }
-        public virtual ICollection<COMMISSION> COMMISSION2 { get; set; }
-        public virtual ICollection<COMMISSION> COMMISSION3 { get; set; }
         public virtual ICollection<CONTRACTS> CONTRACTS { get; set; }
         public virtual ICollection<CONTRACTS> CONTRACTS1 { get; set; }
         public virtual ICollection<DISCCARDS> DISCCARDS { get; set; }
@@ -90,7 +86,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<KAGENTPERSONS> KAGENTPERSONS { get; set; }
         public virtual ICollection<TAXWB> TAXWB1 { get; set; }
         public virtual ICollection<WaybillList> WaybillList1 { get; set; }
-        public virtual ICollection<WAYBILLMAKE> WAYBILLMAKE { get; set; }
         public virtual ICollection<WaybillList> WaybillList2 { get; set; }
         public virtual ICollection<WAYBILLSVC> WAYBILLSVC { get; set; }
         public virtual ICollection<PayDoc> PayDoc { get; set; }
@@ -99,6 +94,11 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<KAgentSaldo> KAgentSaldo { get; set; }
         public virtual ICollection<KaAddr> KaAddr { get; set; }
         public virtual ICollection<WaybillMove> WaybillMove { get; set; }
-        public virtual ICollection<TECHPROCDET> TECHPROCDET { get; set; }
+        public virtual ICollection<Commission> Commission { get; set; }
+        public virtual ICollection<Commission> Commission1 { get; set; }
+        public virtual ICollection<Commission> Commission2 { get; set; }
+        public virtual ICollection<Commission> Commission3 { get; set; }
+        public virtual ICollection<TechProcDet> TechProcDet { get; set; }
+        public virtual ICollection<WayBillMake> WayBillMake { get; set; }
     }
 }

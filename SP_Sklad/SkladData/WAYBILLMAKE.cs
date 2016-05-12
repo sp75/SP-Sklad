@@ -12,17 +12,17 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class WAYBILLMAKE
+    public partial class WayBillMake
     {
-        public int WBILLID { get; set; }
-        public int SOURCEWID { get; set; }
-        public int RECID { get; set; }
-        public Nullable<int> PERSONID { get; set; }
-        public decimal AMOUNT { get; set; }
+        public int WbillId { get; set; }
+        public int SourceWId { get; set; }
+        public Nullable<int> RecId { get; set; }
+        public Nullable<int> PersonId { get; set; }
+        public decimal Amount { get; set; }
     
-        public virtual MATRECIPE MATRECIPE { get; set; }
-        public virtual WaybillList WaybillList { get; set; }
         public virtual Kagent Kagent { get; set; }
+        public virtual MatRecipe MatRecipe { get; set; }
         public virtual Warehouse Warehouse { get; set; }
+        public virtual WaybillList WaybillList { get; set; }
     }
 }

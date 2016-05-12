@@ -67,10 +67,10 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.PosInfoBtn = new DevExpress.XtraEditors.SimpleButton();
             this.BasePriceEdit = new DevExpress.XtraEditors.CalcEdit();
             this.PriceTypesEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl25 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl24 = new DevExpress.XtraEditors.LabelControl();
@@ -320,7 +320,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 645);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 650);
             this.barDockControlBottom.Size = new System.Drawing.Size(646, 0);
             // 
             // barDockControlLeft
@@ -328,14 +328,14 @@
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 621);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 626);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(646, 24);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 621);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 626);
             // 
             // standaloneBarDockControl1
             // 
@@ -429,7 +429,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
-            this.panel1.Size = new System.Drawing.Size(646, 106);
+            this.panel1.Size = new System.Drawing.Size(646, 112);
             this.panel1.TabIndex = 23;
             // 
             // panelControl1
@@ -445,7 +445,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(5, 5);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(636, 96);
+            this.panelControl1.Size = new System.Drawing.Size(636, 102);
             this.panelControl1.TabIndex = 0;
             // 
             // RSVCheckBox
@@ -497,12 +497,12 @@
             this.WHComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.WHComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NAME", "Назва")});
-            this.WHComboBox.Properties.DisplayMember = "NAME";
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.WHComboBox.Properties.DisplayMember = "Name";
             this.WHComboBox.Properties.ShowFooter = false;
             this.WHComboBox.Properties.ShowHeader = false;
             this.WHComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.WHComboBox.Properties.ValueMember = "WID";
+            this.WHComboBox.Properties.ValueMember = "WId";
             this.WHComboBox.Size = new System.Drawing.Size(218, 22);
             this.WHComboBox.StyleController = this.styleController1;
             this.WHComboBox.TabIndex = 17;
@@ -552,7 +552,7 @@
             // 
             this.panel2.Controls.Add(this.panelControl3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 130);
+            this.panel2.Location = new System.Drawing.Point(0, 136);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
             this.panel2.Size = new System.Drawing.Size(646, 108);
@@ -560,10 +560,10 @@
             // 
             // panelControl3
             // 
+            this.panelControl3.Controls.Add(this.PosInfoBtn);
             this.panelControl3.Controls.Add(this.BasePriceEdit);
             this.panelControl3.Controls.Add(this.PriceTypesEdit);
             this.panelControl3.Controls.Add(this.simpleButton6);
-            this.panelControl3.Controls.Add(this.simpleButton5);
             this.panelControl3.Controls.Add(this.labelControl10);
             this.panelControl3.Controls.Add(this.labelControl25);
             this.panelControl3.Controls.Add(this.labelControl24);
@@ -581,6 +581,17 @@
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Size = new System.Drawing.Size(636, 103);
             this.panelControl3.TabIndex = 8;
+            // 
+            // PosInfoBtn
+            // 
+            this.PosInfoBtn.ImageIndex = 7;
+            this.PosInfoBtn.ImageList = this.sharedImageCollection1;
+            this.PosInfoBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.PosInfoBtn.Location = new System.Drawing.Point(245, 12);
+            this.PosInfoBtn.Name = "PosInfoBtn";
+            this.PosInfoBtn.Size = new System.Drawing.Size(22, 22);
+            this.PosInfoBtn.TabIndex = 31;
+            this.PosInfoBtn.Click += new System.EventHandler(this.PosInfoBtn_Click);
             // 
             // BasePriceEdit
             // 
@@ -622,15 +633,6 @@
             this.simpleButton6.Name = "simpleButton6";
             this.simpleButton6.Size = new System.Drawing.Size(22, 22);
             this.simpleButton6.TabIndex = 30;
-            // 
-            // simpleButton5
-            // 
-            this.simpleButton5.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton5.Image")));
-            this.simpleButton5.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton5.Location = new System.Drawing.Point(245, 12);
-            this.simpleButton5.Name = "simpleButton5";
-            this.simpleButton5.Size = new System.Drawing.Size(22, 22);
-            this.simpleButton5.TabIndex = 29;
             // 
             // labelControl10
             // 
@@ -766,7 +768,7 @@
             // 
             this.panel3.Controls.Add(this.panelControl4);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 238);
+            this.panel3.Location = new System.Drawing.Point(0, 244);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
             this.panel3.Size = new System.Drawing.Size(646, 99);
@@ -909,7 +911,7 @@
             this.panel4.Controls.Add(this.groupControl2);
             this.panel4.Controls.Add(this.groupControl1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 337);
+            this.panel4.Location = new System.Drawing.Point(0, 343);
             this.panel4.Name = "panel4";
             this.panel4.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
             this.panel4.Size = new System.Drawing.Size(646, 123);
@@ -1111,7 +1113,7 @@
             // 
             this.panel5.Controls.Add(this.groupControl3);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 460);
+            this.panel5.Location = new System.Drawing.Point(0, 466);
             this.panel5.Name = "panel5";
             this.panel5.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
             this.panel5.Size = new System.Drawing.Size(646, 131);
@@ -1276,16 +1278,16 @@
             this.panelControl2.Controls.Add(this.OkButton);
             this.panelControl2.Controls.Add(this.simpleButton1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(0, 591);
+            this.panelControl2.Location = new System.Drawing.Point(0, 597);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(646, 54);
+            this.panelControl2.Size = new System.Drawing.Size(646, 53);
             this.panelControl2.TabIndex = 28;
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(428, 13);
+            this.OkButton.Location = new System.Drawing.Point(428, 12);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(98, 30);
             this.OkButton.TabIndex = 3;
@@ -1296,7 +1298,7 @@
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton1.Location = new System.Drawing.Point(535, 13);
+            this.simpleButton1.Location = new System.Drawing.Point(535, 12);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(93, 30);
             this.simpleButton1.TabIndex = 2;
@@ -1306,7 +1308,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(646, 645);
+            this.ClientSize = new System.Drawing.Size(646, 650);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
@@ -1481,11 +1483,11 @@
         private DevExpress.XtraEditors.SimpleButton OkButton;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.SimpleButton simpleButton6;
-        private DevExpress.XtraEditors.SimpleButton simpleButton5;
         private DevExpress.XtraEditors.CalcEdit DiscountPriceEdit;
         private DevExpress.XtraEditors.TextEdit textEdit1;
         private DevExpress.XtraEditors.CheckEdit CheckDiscontCartEdit;
         private DevExpress.XtraEditors.CheckEdit CheckCustomEdit;
         private DevExpress.XtraEditors.CalcEdit DiscountEdit;
+        private DevExpress.XtraEditors.SimpleButton PosInfoBtn;
     }
 }

@@ -12,14 +12,14 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class MATRECDET
+    public partial class MatRecDet
     {
-        public int DETID { get; set; }
-        public int RECID { get; set; }
-        public int MATID { get; set; }
-        public decimal AMOUNT { get; set; }
-        public Nullable<decimal> COEFFICIENT { get; set; }
+        public int DetId { get; set; }
+        public int RecId { get; set; }
+        public int MatId { get; set; }
+        public decimal Amount { get; set; }
+        public Nullable<decimal> Coefficient { get; set; }
     
-        public virtual MATRECIPE MATRECIPE { get; set; }
+        public virtual MatRecipe MatRecipe { get; set; }
     }
 }

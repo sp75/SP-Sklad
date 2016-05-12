@@ -12,19 +12,19 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class COMMISSION
+    public partial class Commission
     {
-        public int ID { get; set; }
-        public int WBILLID { get; set; }
-        public int KAID { get; set; }
-        public Nullable<int> FIRST_KAID { get; set; }
-        public Nullable<int> SECOND_KAID { get; set; }
-        public Nullable<int> THIRD_KAID { get; set; }
+        public int Id { get; set; }
+        public int WbillId { get; set; }
+        public int KaId { get; set; }
+        public Nullable<int> FirstKaId { get; set; }
+        public Nullable<int> SecondKaId { get; set; }
+        public Nullable<int> ThirdKaId { get; set; }
     
-        public virtual WaybillList WaybillList { get; set; }
         public virtual Kagent Kagent { get; set; }
         public virtual Kagent Kagent1 { get; set; }
         public virtual Kagent Kagent2 { get; set; }
         public virtual Kagent Kagent3 { get; set; }
+        public virtual WaybillList WaybillList { get; set; }
     }
 }

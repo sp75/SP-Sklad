@@ -78,6 +78,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\DocEdit.cs" />
+    <Compile Include="Common\IHelper.cs" />
+    <Compile Include="Common\ManufDocEdit.cs" />
     <Compile Include="Common\WhDocEdit.cs" />
     <Compile Include="FinanseForm\frmPayDoc.cs">
       <SubType>Form</SubType>
@@ -139,7 +141,7 @@
     <Compile Include="SkladData\CityType.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\COMMISSION.cs">
+    <Compile Include="SkladData\Commission.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\CommonParams.cs">
@@ -171,6 +173,14 @@
     </Compile>
     <Compile Include="SkladData\Database.cs" />
     <Compile Include="SkladData\DBHelper.cs" />
+    <Compile Include="mainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mainForm.Designer.cs">
+      <DependentUpon>mainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SkladData\DEBONINGDET.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -240,6 +250,9 @@
     <Compile Include="SkladData\GetPosOut_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetRecipe_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetRelDocList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -300,12 +313,6 @@
     <Compile Include="SkladData\LANGUAGES.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="mainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="mainForm.Designer.cs">
-      <DependentUpon>mainForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="SkladData\MATCHANGE.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -324,10 +331,10 @@
     <Compile Include="SkladData\MATPRICES.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\MATRECDET.cs">
+    <Compile Include="SkladData\MatRecDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\MATRECIPE.cs">
+    <Compile Include="SkladData\MatRecipe.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\MatRemains.cs">
@@ -369,8 +376,6 @@
     <Compile Include="SkladData\PRINTLOG.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SkladData\REPLNG.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -467,10 +472,10 @@
     <Compile Include="SkladData\TAXWBDET.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\TECHPROCDET.cs">
+    <Compile Include="SkladData\TechProcDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\TECHPROCESS.cs">
+    <Compile Include="SkladData\TechProcess.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\UserAccess.cs">
@@ -497,6 +502,9 @@
     <Compile Include="SkladData\v_GetDocsTree.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_TechProcDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_WaybillList.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -506,16 +514,16 @@
     <Compile Include="SkladData\WaybillDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\WAYBILLDETADDPROPS.cs">
+    <Compile Include="SkladData\WayBillDetAddProps.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\WAYBILLDETTAXES.cs">
+    <Compile Include="SkladData\WayBillDetTaxes.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\WaybillList.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\WAYBILLMAKE.cs">
+    <Compile Include="SkladData\WayBillMake.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\WaybillMove.cs">
@@ -527,6 +535,9 @@
     <Compile Include="SkladData\WBDGetOutP2_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\WBListMake_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\WhMatGet_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -535,6 +546,12 @@
     </Compile>
     <Compile Include="SkladData\WMatTurn.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WBDetForm\frmTechProcDet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBDetForm\frmTechProcDet.Designer.cs">
+      <DependentUpon>frmTechProcDet.cs</DependentUpon>
     </Compile>
     <Compile Include="WBDetForm\frmWayBillDetIn.cs">
       <SubType>Form</SubType>
@@ -583,6 +600,12 @@
     </Compile>
     <Compile Include="WBForm\frmWayBillOut.Designer.cs">
       <DependentUpon>frmWayBillOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WBForm\frmWBManufacture.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\frmWBManufacture.Designer.cs">
+      <DependentUpon>frmWBManufacture.cs</DependentUpon>
     </Compile>
     <Compile Include="WBForm\frmWBReturnIn.cs">
       <SubType>Form</SubType>
@@ -634,6 +657,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="WBDetForm\frmTechProcDet.resx">
+      <DependentUpon>frmTechProcDet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBDetForm\frmWayBillDetIn.resx">
       <DependentUpon>frmWayBillDetIn.cs</DependentUpon>
     </EmbeddedResource>
@@ -657,6 +683,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWayBillOut.resx">
       <DependentUpon>frmWayBillOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\frmWBManufacture.resx">
+      <DependentUpon>frmWBManufacture.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWBReturnIn.resx">
       <DependentUpon>frmWBReturnIn.cs</DependentUpon>
@@ -722,6 +751,54 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="BMP\1\1324534473_police.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BMP\Справочники\Банки.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BMP\Справочники\Валюта.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BMP\Справочники\Каси.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BMP\Справочники\Конрагент.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BMP\Справочники\Країни.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BMP\Справочники\Одиниц_ вим_ру.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BMP\Справочники\Основн_ дов.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BMP\Справочники\Податки.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BMP\Справочники\Послуги.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BMP\Справочники\Склади.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BMP\Справочники\Службовц_.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BMP\Справочники\Статт_ витрат.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BMP\Справочники\Типи рахунк_в.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BMP\Справочники\Товари.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BMP\Справочники\Ц_нов_ кат.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BMP\_нформац_я про рух товар_в.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

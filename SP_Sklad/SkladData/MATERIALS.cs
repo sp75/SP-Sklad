@@ -22,12 +22,12 @@ namespace SP_Sklad.SkladData
             this.MATCHANGE = new HashSet<MATCHANGE>();
             this.MATCHANGE1 = new HashSet<MATCHANGE>();
             this.WMatTurn = new HashSet<WMatTurn>();
-            this.MATRECIPE = new HashSet<MATRECIPE>();
             this.MATPRICES = new HashSet<MATPRICES>();
             this.WaybillDet = new HashSet<WaybillDet>();
             this.MatRemains = new HashSet<MatRemains>();
             this.PosRemains = new HashSet<PosRemains>();
             this.TAXWBDET = new HashSet<TAXWBDET>();
+            this.MatRecipe = new HashSet<MatRecipe>();
         }
     
         public int MatId { get; set; }
@@ -65,7 +65,6 @@ namespace SP_Sklad.SkladData
         public virtual MatGroup MatGroup { get; set; }
         public virtual ICollection<WMatTurn> WMatTurn { get; set; }
         public virtual MEASURES MEASURES { get; set; }
-        public virtual ICollection<MATRECIPE> MATRECIPE { get; set; }
         public virtual ICollection<MATPRICES> MATPRICES { get; set; }
         public virtual Warehouse Warehouse { get; set; }
         public virtual Warehouse Warehouse1 { get; set; }
@@ -74,5 +73,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<MatRemains> MatRemains { get; set; }
         public virtual ICollection<PosRemains> PosRemains { get; set; }
         public virtual ICollection<TAXWBDET> TAXWBDET { get; set; }
+        public virtual ICollection<MatRecipe> MatRecipe { get; set; }
     }
 }

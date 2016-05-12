@@ -171,6 +171,8 @@ namespace SP_Sklad.MainTabs
                     }
                     break;
             }
+
+            RefrechItemBtn.PerformClick();
         }
 
         private void WbGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -324,6 +326,11 @@ namespace SP_Sklad.MainTabs
 
                     break;
             }
+        }
+
+        private void RefreshWhBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
         }
     }
 }
