@@ -276,5 +276,46 @@ namespace SP_Sklad.MainTabs
             RefrechItemBtn.PerformClick();
         }
 
+        private void DeleteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var dr = WbGridView.GetFocusedRow() as WBListMake_Result;
+            if (dr == null)
+            {
+                return;
+            }
+
+            using (var db = new BaseEntities())
+            {
+                try
+                {
+                    switch (focused_tree_node.GType)
+                    {
+                        case 3:
+                        case 1: db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK) where WbillId = {0}", dr.WbillId).FirstOrDefault();
+                            break;
+                    }
+
+                    if (MessageBox.Show(Resources.delete_wb, "Відалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    {
+                        switch (focused_tree_node.GType)
+                        {
+                            case 3:
+                            case 1:
+                                db.DeleteWhere<WaybillList>(w => w.WbillId == dr.WbillId);
+                                break;
+
+                        }
+                        db.SaveChanges();
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show(Resources.deadlock);
+                }
+            }
+
+            RefrechItemBtn.PerformClick();
+        }
+
     }
 }

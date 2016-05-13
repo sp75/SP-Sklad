@@ -64,7 +64,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<MATCHANGE> MATCHANGE1 { get; set; }
         public virtual MatGroup MatGroup { get; set; }
         public virtual ICollection<WMatTurn> WMatTurn { get; set; }
-        public virtual MEASURES MEASURES { get; set; }
         public virtual ICollection<MATPRICES> MATPRICES { get; set; }
         public virtual Warehouse Warehouse { get; set; }
         public virtual Warehouse Warehouse1 { get; set; }
@@ -74,5 +73,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<PosRemains> PosRemains { get; set; }
         public virtual ICollection<TAXWBDET> TAXWBDET { get; set; }
         public virtual ICollection<MatRecipe> MatRecipe { get; set; }
+        public virtual Measures Measures { get; set; }
     }
 }

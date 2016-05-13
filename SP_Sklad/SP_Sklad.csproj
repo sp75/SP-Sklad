@@ -340,7 +340,7 @@
     <Compile Include="SkladData\MatRemains.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\MEASURES.cs">
+    <Compile Include="SkladData\Measures.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\MONEYSALDO.cs">

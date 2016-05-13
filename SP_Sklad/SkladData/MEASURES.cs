@@ -12,22 +12,22 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class MEASURES
+    public partial class Measures
     {
-        public MEASURES()
+        public Measures()
         {
-            this.SERVICES = new HashSet<SERVICES>();
             this.Materials = new HashSet<Materials>();
+            this.SERVICES = new HashSet<SERVICES>();
         }
     
-        public int MID { get; set; }
-        public string NAME { get; set; }
-        public string SHORTNAME { get; set; }
-        public int DEF { get; set; }
-        public int DELETED { get; set; }
-        public string CODE { get; set; }
+        public int MId { get; set; }
+        public string Name { get; set; }
+        public string ShortName { get; set; }
+        public int Def { get; set; }
+        public int Deleted { get; set; }
+        public string Code { get; set; }
     
-        public virtual ICollection<SERVICES> SERVICES { get; set; }
         public virtual ICollection<Materials> Materials { get; set; }
+        public virtual ICollection<SERVICES> SERVICES { get; set; }
     }
 }

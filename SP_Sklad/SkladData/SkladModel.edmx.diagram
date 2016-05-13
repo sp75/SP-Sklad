@@ -31,7 +31,6 @@
         <EntityTypeShape EntityType="BaseModel.MATCHANGE" Width="1.5" PointX="11.25" PointY="20" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.MATGROUPPRICES" Width="1.5" PointX="12" PointY="30.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.MATPRICES" Width="1.5" PointX="14.25" PointY="29.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.MEASURES" Width="1.5" PointX="6.75" PointY="24.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.MONEYSALDO" Width="1.5" PointX="5.25" PointY="50.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.OPERLOG" Width="1.5" PointX="5" PointY="7.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.PAYDOCTYPE" Width="1.5" PointX="11.75" PointY="10.5" IsExpanded="true" />
@@ -57,7 +56,6 @@
         <AssociationConnector Association="BaseModel.FK__FUNCTIONS__TABID__123EB7A3" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_MS_ACCID" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_REPLNG_LANGID" ManuallyRouted="false" />
-        <AssociationConnector Association="BaseModel.FK_SVC_MID" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK__OPERLOG__TABID__0D44F85C" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_PRICELISTDET_PRICELIST" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_REPLNG_REPID" ManuallyRouted="false" />
@@ -133,7 +131,6 @@
         <AssociationConnector Association="BaseModel.FK_MATCHANGE_MATID" />
         <AssociationConnector Association="BaseModel.FK__MATERIALS__GRPID__58D1301D" />
         <AssociationConnector Association="BaseModel.FK__WMATTURN__MATID__3AD6B8E2" />
-        <AssociationConnector Association="BaseModel.FK_MATERIAL_REFERENCE_MEASURES" />
         <AssociationConnector Association="BaseModel.FK_MP_MATID" />
         <AssociationConnector Association="BaseModel.FK_MGP_MATID" />
         <EntityTypeShape EntityType="BaseModel.CityType" Width="1.5" PointX="5.7849626344558605" PointY="13.723164773417247" />
@@ -227,6 +224,9 @@
         <AssociationConnector Association="BaseModel.FK_WAYBILLMAKE_MATRECIPE" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLMAKE_WAREHOUSE" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLMAKE_WAYBILLLIST" />
+        <EntityTypeShape EntityType="BaseModel.Measures" Width="1.5" PointX="0.94131089977049776" PointY="5.3358571852258674" />
+        <AssociationConnector Association="BaseModel.FK_MATERIAL_REFERENCE_MEASURES" />
+        <AssociationConnector Association="BaseModel.FK_SVC_MID" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="91" >
         <EntityTypeShape EntityType="BaseModel.MaterialsList" Width="1.5" PointX="8.3328528592050315" PointY="13.042403614633905" />

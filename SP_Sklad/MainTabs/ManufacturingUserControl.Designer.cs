@@ -439,6 +439,7 @@
             this.DeleteItemBtn.Id = 3;
             this.DeleteItemBtn.ImageIndex = 3;
             this.DeleteItemBtn.Name = "DeleteItemBtn";
+            this.DeleteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeleteItemBtn_ItemClick);
             // 
             // RefrechItemBtn
             // 

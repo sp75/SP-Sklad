@@ -94,7 +94,7 @@
           <EntitySet Name="MatRecDet" EntityType="BaseModel.Store.MatRecDet" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MatRecipe" EntityType="BaseModel.Store.MatRecipe" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MatRemains" EntityType="BaseModel.Store.MatRemains" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="MEASURES" EntityType="BaseModel.Store.MEASURES" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Measures" EntityType="BaseModel.Store.Measures" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MONEYSALDO" EntityType="BaseModel.Store.MONEYSALDO" store:Type="Tables" store:Schema="dbo" store:Name="MONEYSALDO">
             <DefiningQuery>SELECT 
       [MONEYSALDO].[SALDOTYPE] AS [SALDOTYPE], 
@@ -612,7 +612,7 @@
             <End Role="MATCHANGE" EntitySet="MATCHANGE" />
           </AssociationSet>
           <AssociationSet Name="FK_MATERIAL_REFERENCE_MEASURES" Association="BaseModel.Store.FK_MATERIAL_REFERENCE_MEASURES">
-            <End Role="MEASURES" EntitySet="MEASURES" />
+            <End Role="Measures" EntitySet="Measures" />
             <End Role="Materials" EntitySet="Materials" />
           </AssociationSet>
           <AssociationSet Name="FK_MATPRICES_PPTYPEID" Association="BaseModel.Store.FK_MATPRICES_PPTYPEID">
@@ -724,7 +724,7 @@
             <End Role="SERVICES" EntitySet="SERVICES" />
           </AssociationSet>
           <AssociationSet Name="FK_SVC_MID" Association="BaseModel.Store.FK_SVC_MID">
-            <End Role="MEASURES" EntitySet="MEASURES" />
+            <End Role="Measures" EntitySet="Measures" />
             <End Role="SERVICES" EntitySet="SERVICES" />
           </AssociationSet>
           <AssociationSet Name="FK_TAXWB_REFERENCE_DOCS" Association="BaseModel.Store.FK_TAXWB_REFERENCE_DOCS">
@@ -835,10 +835,6 @@
             <End Role="WaybillList" EntitySet="WaybillList" />
             <End Role="WayBillMake" EntitySet="WayBillMake" />
           </AssociationSet>
-          <AssociationSet Name="FK_WBD_WBILLID" Association="BaseModel.Store.FK_WBD_WBILLID">
-            <End Role="WaybillList" EntitySet="WaybillList" />
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-          </AssociationSet>
           <AssociationSet Name="FK_WBDAP_CARDID" Association="BaseModel.Store.FK_WBDAP_CARDID">
             <End Role="DISCCARDS" EntitySet="DISCCARDS" />
             <End Role="WayBillDetAddProps" EntitySet="WayBillDetAddProps" />
@@ -947,7 +943,7 @@
           <Key>
             <PropertyRef Name="CTypeId" />
           </Key>
-          <Property Name="CTypeId" Type="int" Nullable="false" />
+          <Property Name="CTypeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="128" />
           <Property Name="Deleted" Type="int" Nullable="false" />
         </EntityType>
@@ -1343,7 +1339,7 @@
           <Key>
             <PropertyRef Name="MatId" />
           </Key>
-          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="MatId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" MaxLength="255" />
           <Property Name="MId" Type="int" Nullable="false" />
           <Property Name="Num" Type="int" />
@@ -1460,16 +1456,16 @@
           <Property Name="Ordered" Type="numeric" Precision="15" Scale="4" />
           <Property Name="ORsv" Type="numeric" Precision="15" Scale="4" />
         </EntityType>
-        <EntityType Name="MEASURES">
+        <EntityType Name="Measures">
           <Key>
-            <PropertyRef Name="MID" />
+            <PropertyRef Name="MId" />
           </Key>
-          <Property Name="MID" Type="int" Nullable="false" />
-          <Property Name="NAME" Type="nvarchar" Nullable="false" MaxLength="64" />
-          <Property Name="SHORTNAME" Type="nvarchar" Nullable="false" MaxLength="6" />
-          <Property Name="DEF" Type="int" Nullable="false" />
-          <Property Name="DELETED" Type="int" Nullable="false" />
-          <Property Name="CODE" Type="varchar" MaxLength="14" />
+          <Property Name="MId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="ShortName" Type="nvarchar" Nullable="false" MaxLength="6" />
+          <Property Name="Def" Type="int" Nullable="false" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="14" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'sp_base.dbo.MONEYSALDO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -3037,11 +3033,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MATERIAL_REFERENCE_MEASURES">
-          <End Role="MEASURES" Type="BaseModel.Store.MEASURES" Multiplicity="1" />
+          <End Role="Measures" Type="BaseModel.Store.Measures" Multiplicity="1" />
           <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MEASURES">
-              <PropertyRef Name="MID" />
+            <Principal Role="Measures">
+              <PropertyRef Name="MId" />
             </Principal>
             <Dependent Role="Materials">
               <PropertyRef Name="MId" />
@@ -3389,11 +3385,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SVC_MID">
-          <End Role="MEASURES" Type="BaseModel.Store.MEASURES" Multiplicity="0..1" />
+          <End Role="Measures" Type="BaseModel.Store.Measures" Multiplicity="0..1" />
           <End Role="SERVICES" Type="BaseModel.Store.SERVICES" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MEASURES">
-              <PropertyRef Name="MID" />
+            <Principal Role="Measures">
+              <PropertyRef Name="MId" />
             </Principal>
             <Dependent Role="SERVICES">
               <PropertyRef Name="MID" />
@@ -3734,18 +3730,6 @@
               <PropertyRef Name="WbillId" />
             </Principal>
             <Dependent Role="WayBillMake">
-              <PropertyRef Name="WbillId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WBD_WBILLID">
-          <End Role="WaybillList" Type="BaseModel.Store.WaybillList" Multiplicity="1" />
-          <End Role="WaybillDet" Type="BaseModel.Store.WaybillDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillList">
-              <PropertyRef Name="WbillId" />
-            </Principal>
-            <Dependent Role="WaybillDet">
               <PropertyRef Name="WbillId" />
             </Dependent>
           </ReferentialConstraint>
@@ -4823,7 +4807,6 @@
           <EntitySet Name="MATCHANGE" EntityType="BaseModel.MATCHANGE" />
           <EntitySet Name="MATGROUPPRICES" EntityType="BaseModel.MATGROUPPRICES" />
           <EntitySet Name="MATPRICES" EntityType="BaseModel.MATPRICES" />
-          <EntitySet Name="MEASURES" EntityType="BaseModel.MEASURES" />
           <EntitySet Name="MONEYSALDO" EntityType="BaseModel.MONEYSALDO" />
           <EntitySet Name="OPERLOG" EntityType="BaseModel.OPERLOG" />
           <EntitySet Name="PAYDOCTYPE" EntityType="BaseModel.PAYDOCTYPE" />
@@ -4878,10 +4861,6 @@
           <AssociationSet Name="FK_REPLNG_LANGID" Association="BaseModel.FK_REPLNG_LANGID">
             <End Role="LANGUAGES" EntitySet="LANGUAGES" />
             <End Role="REPLNG" EntitySet="REPLNG" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SVC_MID" Association="BaseModel.FK_SVC_MID">
-            <End Role="MEASURES" EntitySet="MEASURES" />
-            <End Role="SERVICES" EntitySet="SERVICES" />
           </AssociationSet>
           <AssociationSet Name="FK__OPERLOG__TABID__0D44F85C" Association="BaseModel.FK__OPERLOG__TABID__0D44F85C">
             <End Role="TABLES" EntitySet="TABLES" />
@@ -5389,10 +5368,6 @@
             <End Role="Materials" EntitySet="Materials" />
             <End Role="WMatTurn" EntitySet="WMatTurn" />
           </AssociationSet>
-          <AssociationSet Name="FK_MATERIAL_REFERENCE_MEASURES" Association="BaseModel.FK_MATERIAL_REFERENCE_MEASURES">
-            <End Role="MEASURES" EntitySet="MEASURES" />
-            <End Role="Materials" EntitySet="Materials" />
-          </AssociationSet>
           <AssociationSet Name="FK_MP_MATID" Association="BaseModel.FK_MP_MATID">
             <End Role="Materials" EntitySet="Materials" />
             <End Role="MATPRICES" EntitySet="MATPRICES" />
@@ -5751,6 +5726,15 @@
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="v_TechProcDet" EntityType="BaseModel.v_TechProcDet" />
+          <EntitySet Name="Measures" EntityType="BaseModel.Measures" />
+          <AssociationSet Name="FK_MATERIAL_REFERENCE_MEASURES" Association="BaseModel.FK_MATERIAL_REFERENCE_MEASURES">
+            <End Role="Measures" EntitySet="Measures" />
+            <End Role="Materials" EntitySet="Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SVC_MID" Association="BaseModel.FK_SVC_MID">
+            <End Role="Measures" EntitySet="Measures" />
+            <End Role="SERVICES" EntitySet="SERVICES" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="GetMatGroupTree_Result">
           <Property Name="GRPID" Type="Int32" />
@@ -6273,19 +6257,6 @@
           <NavigationProperty Name="PriceTypes1" Relationship="BaseModel.FK_MATPRICES_PPTYPEID" FromRole="MATPRICES" ToRole="PriceTypes" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK_MP_MATID" FromRole="MATPRICES" ToRole="Materials" />
           </EntityType>
-        <EntityType Name="MEASURES">
-          <Key>
-            <PropertyRef Name="MID" />
-          </Key>
-          <Property Name="MID" Type="Int32" Nullable="false" />
-          <Property Name="NAME" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
-          <Property Name="SHORTNAME" Type="String" Nullable="false" MaxLength="6" Unicode="true" FixedLength="false" />
-          <Property Name="DEF" Type="Int32" Nullable="false" />
-          <Property Name="DELETED" Type="Int32" Nullable="false" />
-          <Property Name="CODE" Type="String" MaxLength="14" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="SERVICES" Relationship="BaseModel.FK_SVC_MID" FromRole="MEASURES" ToRole="SERVICES" />
-          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_MATERIAL_REFERENCE_MEASURES" FromRole="MEASURES" ToRole="Materials" />
-        </EntityType>
         <EntityType Name="MONEYSALDO">
           <Key>
             <PropertyRef Name="SALDOTYPE" />
@@ -6417,10 +6388,10 @@
           <Property Name="ISNORMED" Type="Int32" Nullable="false" />
           <Property Name="NORM" Type="Decimal" Precision="15" Scale="8" />
           <Property Name="MID" Type="Int32" />
-          <NavigationProperty Name="MEASURES" Relationship="BaseModel.FK_SVC_MID" FromRole="SERVICES" ToRole="MEASURES" />
           <NavigationProperty Name="SVCGROUP" Relationship="BaseModel.FK_SERVICES_1" FromRole="SERVICES" ToRole="SVCGROUP" />
           <NavigationProperty Name="WAYBILLSVC" Relationship="BaseModel.FK_WBS_SVCID" FromRole="SERVICES" ToRole="WAYBILLSVC" />
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK_SVC_CURRID" FromRole="SERVICES" ToRole="Currency" />
+          <NavigationProperty Name="Measures" Relationship="BaseModel.FK_SVC_MID" FromRole="SERVICES" ToRole="Measures" />
         </EntityType>
         <EntityType Name="SVCGROUP">
           <Key>
@@ -6634,18 +6605,6 @@
             </Principal>
             <Dependent Role="REPLNG">
               <PropertyRef Name="LANGID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SVC_MID">
-          <End Role="MEASURES" Type="BaseModel.MEASURES" Multiplicity="0..1" />
-          <End Role="SERVICES" Type="BaseModel.SERVICES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MEASURES">
-              <PropertyRef Name="MID" />
-            </Principal>
-            <Dependent Role="SERVICES">
-              <PropertyRef Name="MID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7985,7 +7944,6 @@
           <NavigationProperty Name="MATCHANGE1" Relationship="BaseModel.FK_MATCHANGE_MATID" FromRole="Materials" ToRole="MATCHANGE" />
           <NavigationProperty Name="MatGroup" Relationship="BaseModel.FK__MATERIALS__GRPID__58D1301D" FromRole="Materials" ToRole="MatGroup" />
           <NavigationProperty Name="WMatTurn" Relationship="BaseModel.FK__WMATTURN__MATID__3AD6B8E2" FromRole="Materials" ToRole="WMatTurn" />
-          <NavigationProperty Name="MEASURES" Relationship="BaseModel.FK_MATERIAL_REFERENCE_MEASURES" FromRole="Materials" ToRole="MEASURES" />
           <NavigationProperty Name="MATPRICES" Relationship="BaseModel.FK_MP_MATID" FromRole="Materials" ToRole="MATPRICES" />
           <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK__MATERIALS__WID__59C55456" FromRole="Materials" ToRole="Warehouse" />
           <NavigationProperty Name="Warehouse1" Relationship="BaseModel.FK__MATERIALS__WID__5E8A0973" FromRole="Materials" ToRole="Warehouse" />
@@ -7995,6 +7953,7 @@
           <NavigationProperty Name="PosRemains" Relationship="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" FromRole="Materials" ToRole="PosRemains" />
           <NavigationProperty Name="TAXWBDET" Relationship="BaseModel.FK_TAXWBDET_REFERENCE_MATERIAL" FromRole="Materials" ToRole="TAXWBDET" />
           <NavigationProperty Name="MatRecipe" Relationship="BaseModel.FK_MATRECIPE_1" FromRole="Materials" ToRole="MatRecipe" />
+          <NavigationProperty Name="Measures" Relationship="BaseModel.FK_MATERIAL_REFERENCE_MEASURES" FromRole="Materials" ToRole="Measures" />
         </EntityType>
         <EntityType Name="MatGroup">
           <Key>
@@ -8122,18 +8081,6 @@
             </Principal>
             <Dependent Role="WMatTurn">
               <PropertyRef Name="MatId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MATERIAL_REFERENCE_MEASURES">
-          <End Type="BaseModel.MEASURES" Role="MEASURES" Multiplicity="1" />
-          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MEASURES">
-              <PropertyRef Name="MID" />
-            </Principal>
-            <Dependent Role="Materials">
-              <PropertyRef Name="MId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -9679,6 +9626,43 @@
           <Property Type="String" Name="Name" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="PersonName" MaxLength="64" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="Measures">
+          <Key>
+            <PropertyRef Name="MId" />
+          </Key>
+          <Property Type="Int32" Name="MId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ShortName" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Def" Nullable="false" />
+          <Property Type="Int32" Name="Deleted" Nullable="false" />
+          <Property Type="String" Name="Code" MaxLength="14" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_MATERIAL_REFERENCE_MEASURES" FromRole="Measures" ToRole="Materials" />
+          <NavigationProperty Name="SERVICES" Relationship="BaseModel.FK_SVC_MID" FromRole="Measures" ToRole="SERVICES" />
+        </EntityType>
+        <Association Name="FK_MATERIAL_REFERENCE_MEASURES">
+          <End Type="BaseModel.Measures" Role="Measures" Multiplicity="1" />
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Measures">
+              <PropertyRef Name="MId" />
+            </Principal>
+            <Dependent Role="Materials">
+              <PropertyRef Name="MId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SVC_MID">
+          <End Type="BaseModel.Measures" Role="Measures" Multiplicity="0..1" />
+          <End Type="BaseModel.SERVICES" Role="SERVICES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Measures">
+              <PropertyRef Name="MId" />
+            </Principal>
+            <Dependent Role="SERVICES">
+              <PropertyRef Name="MID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -10000,18 +9984,6 @@
                 <ScalarProperty Name="DIS" ColumnName="DIS" />
                 <ScalarProperty Name="WITHNDS" ColumnName="WITHNDS" />
                 <ScalarProperty Name="PPTYPEID" ColumnName="PPTYPEID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MEASURES">
-            <EntityTypeMapping TypeName="BaseModel.MEASURES">
-              <MappingFragment StoreEntitySet="MEASURES">
-                <ScalarProperty Name="MID" ColumnName="MID" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="SHORTNAME" ColumnName="SHORTNAME" />
-                <ScalarProperty Name="DEF" ColumnName="DEF" />
-                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
-                <ScalarProperty Name="CODE" ColumnName="CODE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -11892,6 +11864,18 @@
                 <ScalarProperty Name="Out" ColumnName="Out" />
                 <ScalarProperty Name="WbillId" ColumnName="WbillId" />
                 <ScalarProperty Name="DetId" ColumnName="DetId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Measures">
+            <EntityTypeMapping TypeName="BaseModel.Measures">
+              <MappingFragment StoreEntitySet="Measures">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Def" ColumnName="Def" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MId" ColumnName="MId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

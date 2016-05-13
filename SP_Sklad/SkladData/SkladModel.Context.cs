@@ -54,7 +54,6 @@ namespace SP_Sklad.SkladData
         public DbSet<MATCHANGE> MATCHANGE { get; set; }
         public DbSet<MATGROUPPRICES> MATGROUPPRICES { get; set; }
         public DbSet<MATPRICES> MATPRICES { get; set; }
-        public DbSet<MEASURES> MEASURES { get; set; }
         public DbSet<MONEYSALDO> MONEYSALDO { get; set; }
         public DbSet<OPERLOG> OPERLOG { get; set; }
         public DbSet<PAYDOCTYPE> PAYDOCTYPE { get; set; }
@@ -119,6 +118,7 @@ namespace SP_Sklad.SkladData
         public DbSet<MatRecipe> MatRecipe { get; set; }
         public DbSet<WayBillMake> WayBillMake { get; set; }
         public DbSet<v_TechProcDet> v_TechProcDet { get; set; }
+        public DbSet<Measures> Measures { get; set; }
     
         [EdmFunction("BaseEntities", "GetMatGroupTree")]
         public virtual IQueryable<GetMatGroupTree_Result> GetMatGroupTree(Nullable<int> root_cat_id)
