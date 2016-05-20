@@ -62,7 +62,7 @@
             this.WhEditBtn = new DevExpress.XtraEditors.SimpleButton();
             this.WHComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.MatEditBtn = new DevExpress.XtraEditors.SimpleButton();
             this.btnShowRemainByWH = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -90,6 +90,7 @@
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).BeginInit();
@@ -115,6 +116,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PriceEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -374,7 +376,7 @@
             this.panelControl1.Controls.Add(this.WhEditBtn);
             this.panelControl1.Controls.Add(this.WHComboBox);
             this.panelControl1.Controls.Add(this.labelControl6);
-            this.panelControl1.Controls.Add(this.simpleButton2);
+            this.panelControl1.Controls.Add(this.MatEditBtn);
             this.panelControl1.Controls.Add(this.btnShowRemainByWH);
             this.panelControl1.Controls.Add(this.labelControl3);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -410,6 +412,7 @@
             this.MatComboBox.Properties.ShowFooter = false;
             this.MatComboBox.Properties.ShowHeader = false;
             this.MatComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.MatComboBox.Properties.ValidateOnEnterKey = true;
             this.MatComboBox.Properties.ValueMember = "MatId";
             this.MatComboBox.Size = new System.Drawing.Size(395, 22);
             this.MatComboBox.StyleController = this.styleController1;
@@ -453,15 +456,15 @@
             this.labelControl6.TabIndex = 16;
             this.labelControl6.Text = "Склад:";
             // 
-            // simpleButton2
+            // MatEditBtn
             // 
-            this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton2.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.Image")));
-            this.simpleButton2.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton2.Location = new System.Drawing.Point(502, 38);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(22, 22);
-            this.simpleButton2.TabIndex = 13;
+            this.MatEditBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MatEditBtn.Image = ((System.Drawing.Image)(resources.GetObject("MatEditBtn.Image")));
+            this.MatEditBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.MatEditBtn.Location = new System.Drawing.Point(502, 38);
+            this.MatEditBtn.Name = "MatEditBtn";
+            this.MatEditBtn.Size = new System.Drawing.Size(22, 22);
+            this.MatEditBtn.TabIndex = 13;
             // 
             // btnShowRemainByWH
             // 
@@ -785,6 +788,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmWriteOffDet";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Властивості позиції по документу";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmWriteOffDet_FormClosed);
@@ -817,6 +821,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PriceEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -852,11 +857,10 @@
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.CheckEdit RSVCheckBox;
-        private DevExpress.XtraEditors.LookUpEdit MatComboBox;
         private DevExpress.XtraEditors.SimpleButton WhEditBtn;
         private DevExpress.XtraEditors.LookUpEdit WHComboBox;
         private DevExpress.XtraEditors.LabelControl labelControl6;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton MatEditBtn;
         private DevExpress.XtraEditors.SimpleButton btnShowRemainByWH;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private System.Windows.Forms.Panel panel2;
@@ -884,5 +888,7 @@
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.SimpleButton OkButton;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider1;
+        public DevExpress.XtraEditors.LookUpEdit MatComboBox;
     }
 }

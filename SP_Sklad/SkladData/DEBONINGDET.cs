@@ -12,16 +12,17 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class DEBONINGDET
+    public partial class DeboningDet
     {
-        public int DEBID { get; set; }
-        public int WBILLID { get; set; }
-        public int MATID { get; set; }
-        public decimal AMOUNT { get; set; }
-        public decimal PRICE { get; set; }
-        public int WID { get; set; }
+        public int DebId { get; set; }
+        public int WBillId { get; set; }
+        public int MatId { get; set; }
+        public decimal Amount { get; set; }
+        public decimal Price { get; set; }
+        public int WId { get; set; }
     
-        public virtual WaybillList WaybillList { get; set; }
         public virtual Materials Materials { get; set; }
+        public virtual WaybillList WaybillList { get; set; }
+        public virtual Warehouse Warehouse { get; set; }
     }
 }

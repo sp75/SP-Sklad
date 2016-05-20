@@ -118,20 +118,17 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="barManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>217, 25</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>71</value>
+    <value>594, 21</value>
   </metadata>
   <metadata name="WBImgList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>342, 24</value>
+    <value>719, 21</value>
   </metadata>
   <data name="WBImgList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADc
-        UQAAAk1TRnQBSQFMAgEBFgEAAegBBgHoAQYBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        UQAAAk1TRnQBSQFMAgEBFgEAAUABBwFAAQcBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABYAMAAQEBAAEYBgABSEUAAa0BUgEpAa0BUgEYAa0BUgEptAABrQFSASkB3gKEAd4ChAHeAoQBrQFS
         ASmTAAGtAWMBOQGlATkBCAGtAVIBKQHGAZQBexIAAbUBYwFCAVoBrQFKAVoBvQFjAVoBrQFKAbUBYwFC
         jQABrQFjATkBrQFSARAB1gGcAUIB5wG9AXMB9wHGAZQBzgGMAVoBrQFKARABtQFaASkBzgGcAXsMAAEI
@@ -484,7 +481,7 @@
 </value>
   </data>
   <metadata name="styleController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>457, 21</value>
+    <value>829, 21</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="NowDateBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -498,6 +495,6 @@
 </value>
   </data>
   <metadata name="WbDetPopupMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>26, 29</value>
+    <value>34, 22</value>
   </metadata>
 </root>

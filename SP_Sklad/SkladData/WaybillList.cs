@@ -16,12 +16,12 @@ namespace SP_Sklad.SkladData
     {
         public WaybillList()
         {
-            this.DEBONINGDET = new HashSet<DEBONINGDET>();
             this.WAYBILLSVC = new HashSet<WAYBILLSVC>();
             this.WaybillDet = new HashSet<WaybillDet>();
             this.Commission = new HashSet<Commission>();
             this.TechProcDet = new HashSet<TechProcDet>();
             this.WayBillDetAddProps = new HashSet<WayBillDetAddProps>();
+            this.DeboningDet = new HashSet<DeboningDet>();
         }
     
         public int WbillId { get; set; }
@@ -49,7 +49,6 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> OnValue { get; set; }
         public Nullable<System.DateTime> UpdatedAt { get; set; }
     
-        public virtual ICollection<DEBONINGDET> DEBONINGDET { get; set; }
         public virtual ICollection<WAYBILLSVC> WAYBILLSVC { get; set; }
         public virtual Kagent Kagent { get; set; }
         public virtual Kagent Kagent1 { get; set; }
@@ -62,5 +61,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<TechProcDet> TechProcDet { get; set; }
         public virtual ICollection<WayBillDetAddProps> WayBillDetAddProps { get; set; }
         public virtual WayBillMake WayBillMake { get; set; }
+        public virtual ICollection<DeboningDet> DeboningDet { get; set; }
     }
 }

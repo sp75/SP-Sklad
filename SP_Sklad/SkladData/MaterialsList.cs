@@ -21,7 +21,7 @@ namespace SP_Sklad.SkladData
         public Nullable<int> Serials { get; set; }
         public string Name { get; set; }
         public string Artikul { get; set; }
-        public Nullable<int> Wid { get; set; }
+        public Nullable<int> WId { get; set; }
         public string MeasuresName { get; set; }
         public int Deleted { get; set; }
         public Nullable<int> Archived { get; set; }

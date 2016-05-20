@@ -17,7 +17,6 @@ namespace SP_Sklad.SkladData
         public Materials()
         {
             this.CONTRDET = new HashSet<CONTRDET>();
-            this.DEBONINGDET = new HashSet<DEBONINGDET>();
             this.KAMATDISCOUNT = new HashSet<KAMATDISCOUNT>();
             this.MATCHANGE = new HashSet<MATCHANGE>();
             this.MATCHANGE1 = new HashSet<MATCHANGE>();
@@ -28,6 +27,7 @@ namespace SP_Sklad.SkladData
             this.PosRemains = new HashSet<PosRemains>();
             this.TAXWBDET = new HashSet<TAXWBDET>();
             this.MatRecipe = new HashSet<MatRecipe>();
+            this.DeboningDet = new HashSet<DeboningDet>();
         }
     
         public int MatId { get; set; }
@@ -58,7 +58,6 @@ namespace SP_Sklad.SkladData
     
         public virtual ICollection<CONTRDET> CONTRDET { get; set; }
         public virtual COUNTRIES COUNTRIES { get; set; }
-        public virtual ICollection<DEBONINGDET> DEBONINGDET { get; set; }
         public virtual ICollection<KAMATDISCOUNT> KAMATDISCOUNT { get; set; }
         public virtual ICollection<MATCHANGE> MATCHANGE { get; set; }
         public virtual ICollection<MATCHANGE> MATCHANGE1 { get; set; }
@@ -74,5 +73,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<TAXWBDET> TAXWBDET { get; set; }
         public virtual ICollection<MatRecipe> MatRecipe { get; set; }
         public virtual Measures Measures { get; set; }
+        public virtual ICollection<DeboningDet> DeboningDet { get; set; }
     }
 }

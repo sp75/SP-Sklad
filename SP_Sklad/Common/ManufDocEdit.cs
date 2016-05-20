@@ -66,7 +66,13 @@ namespace SP_Sklad.Common
                         }
                     }
 
-                   
+                    if (dr.WType == -22)
+                    {
+                        using (var wb_make = new frmWBDeboning(dr.WbillId))
+                        {
+                            wb_make.ShowDialog();
+                        }
+                    }
 
                 }
 

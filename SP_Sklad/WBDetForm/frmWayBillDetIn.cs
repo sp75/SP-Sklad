@@ -98,7 +98,7 @@ namespace SP_Sklad.WBDetForm
             var row = (MaterialsList)MatComboBox.GetSelectedDataRow();
             
             NdsEdit.EditValue =  row.Nds;
-            WHComboBox.EditValue = row.Wid;
+            WHComboBox.EditValue = row.WId;
             labelControl24.Text = row.MeasuresName;
             labelControl27.Text = row.MeasuresName;
 

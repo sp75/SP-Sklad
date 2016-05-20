@@ -26,6 +26,7 @@ namespace SP_Sklad.SkladData
             this.WaybillDet = new HashSet<WaybillDet>();
             this.PosRemains = new HashSet<PosRemains>();
             this.WayBillMake = new HashSet<WayBillMake>();
+            this.DeboningDet = new HashSet<DeboningDet>();
         }
     
         public int WId { get; set; }
@@ -45,5 +46,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<WaybillDet> WaybillDet { get; set; }
         public virtual ICollection<PosRemains> PosRemains { get; set; }
         public virtual ICollection<WayBillMake> WayBillMake { get; set; }
+        public virtual ICollection<DeboningDet> DeboningDet { get; set; }
     }
 }

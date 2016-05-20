@@ -37,7 +37,6 @@ namespace SP_Sklad.SkladData
         public DbSet<CONTRRESULTS> CONTRRESULTS { get; set; }
         public DbSet<COUNTRIES> COUNTRIES { get; set; }
         public DbSet<CURRENCYRATE> CURRENCYRATE { get; set; }
-        public DbSet<DEBONINGDET> DEBONINGDET { get; set; }
         public DbSet<DISCCARDGRP> DISCCARDGRP { get; set; }
         public DbSet<DISCCARDS> DISCCARDS { get; set; }
         public DbSet<ENTPARAMS> ENTPARAMS { get; set; }
@@ -70,7 +69,6 @@ namespace SP_Sklad.SkladData
         public DbSet<TAXWB> TAXWB { get; set; }
         public DbSet<WAYBILLSVC> WAYBILLSVC { get; set; }
         public DbSet<WaybillList> WaybillList { get; set; }
-        public DbSet<MaterialsList> MaterialsList { get; set; }
         public DbSet<Actives> Actives { get; set; }
         public DbSet<WMatTurn> WMatTurn { get; set; }
         public DbSet<CashDesks> CashDesks { get; set; }
@@ -119,6 +117,8 @@ namespace SP_Sklad.SkladData
         public DbSet<WayBillMake> WayBillMake { get; set; }
         public DbSet<v_TechProcDet> v_TechProcDet { get; set; }
         public DbSet<Measures> Measures { get; set; }
+        public DbSet<DeboningDet> DeboningDet { get; set; }
+        public DbSet<MaterialsList> MaterialsList { get; set; }
     
         [EdmFunction("BaseEntities", "GetMatGroupTree")]
         public virtual IQueryable<GetMatGroupTree_Result> GetMatGroupTree(Nullable<int> root_cat_id)
@@ -1224,6 +1224,15 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("wbill_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetRecipe_Result>("GetRecipe", wbill_idParameter);
+        }
+    
+        public virtual int GetDeboningDet(Nullable<int> wbill_id)
+        {
+            var wbill_idParameter = wbill_id.HasValue ?
+                new ObjectParameter("wbill_id", wbill_id) :
+                new ObjectParameter("wbill_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetDeboningDet", wbill_idParameter);
         }
     }
 }

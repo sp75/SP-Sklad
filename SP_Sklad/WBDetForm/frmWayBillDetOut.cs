@@ -139,8 +139,8 @@ namespace SP_Sklad.WBDetForm
 
              if (MatComboBox.ContainsFocus)
              {
-                 _wbd.WId = row.Wid;
-                 WHComboBox.EditValue = row.Wid;
+                 _wbd.WId = row.WId;
+                 WHComboBox.EditValue = row.WId;
                  _wbd.Nds = row.Nds;
                  _wbd.MatId = row.MatId;
              }
@@ -363,7 +363,10 @@ namespace SP_Sklad.WBDetForm
 
         private void frmWayBillDetOut_FormClosed(object sender, FormClosedEventArgs e)
         {
-            _db.Entry<WaybillDet>(_wbd).Reload();
+            if (_wbd != null)
+            {
+                _db.Entry<WaybillDet>(_wbd).Reload();
+            }
         }
 
         private void PosInfoBtn_Click(object sender, EventArgs e)

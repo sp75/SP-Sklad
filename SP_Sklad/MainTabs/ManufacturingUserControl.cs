@@ -21,6 +21,7 @@ namespace SP_Sklad.MainTabs
     public partial class ManufacturingUserControl : UserControl
     {
         GetManufactureTree_Result focused_tree_node { get; set; }
+        WBListMake_Result focused_row { get; set; }
         int cur_wtype = 0;
 
         public ManufacturingUserControl()
@@ -36,24 +37,30 @@ namespace SP_Sklad.MainTabs
         private void ManufacturingUserControl_Load(object sender, EventArgs e)
         {
             wbContentTab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
-          
-       //     wbKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(new BaseEntities().Kagent.Select(s => new { s.KaId, s.Name }));
-        //    wbKagentList.EditValue = 0;
+
+            //     wbKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(new BaseEntities().Kagent.Select(s => new { s.KaId, s.Name }));
+            //    wbKagentList.EditValue = 0;
 
             WhComboBox.Properties.DataSource = new List<object>() { new { WId = "*", Name = "Усі" } }.Concat(DBHelper.WhList().Select(s => new { WId = s.WId.ToString(), s.Name }).ToList());
             WhComboBox.EditValue = "*";
+            DebWhComboBox.Properties.DataSource = WhComboBox.Properties.DataSource;
+            DebWhComboBox.EditValue = "*";
 
-            wbSatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 0, Name = "Актуальний" }, new { Id = 2, Name = "Розпочато виробництво" },new { Id = 1, Name = "Закінчено виробництво" }  };
+            wbSatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 0, Name = "Актуальний" }, new { Id = 2, Name = "Розпочато виробництво" }, new { Id = 1, Name = "Закінчено виробництво" } };
             wbSatusList.EditValue = -1;
+            DebSatusList.Properties.DataSource = wbSatusList.Properties.DataSource;
+            DebSatusList.EditValue = -1;
 
             wbStartDate.EditValue = DateTime.Now.AddDays(-30);
             wbEndDate.EditValue = DateTime.Now;
+            DebStartDate.EditValue = DateTime.Now.AddDays(-30);
+            DebEndDate.EditValue = DateTime.Now;
 
             DocsTreeList.DataSource = DB.SkladBase().GetManufactureTree(DBHelper.CurrentUser.UserId).ToList();
             DocsTreeList.ExpandAll();
         }
 
-        void GetWayBillList(int wtype)
+        void GetWayBillList()
         {
             if (wbSatusList.EditValue == null || WhComboBox.EditValue == null || DocsTreeList.FocusedNode == null)
             {
@@ -66,9 +73,27 @@ namespace SP_Sklad.MainTabs
             var dr = WbGridView.GetRow(WbGridView.FocusedRowHandle) as WBListMake_Result;
 
             WBGridControl.DataSource = null;
-            WBGridControl.DataSource = DB.SkladBase().WBListMake(satrt_date.Date, end_date.Date.AddDays(1), (int)wbSatusList.EditValue, WhComboBox.EditValue.ToString(), focused_tree_node.Num, wtype).ToList();
+            WBGridControl.DataSource = DB.SkladBase().WBListMake(satrt_date.Date, end_date.Date.AddDays(1), (int)wbSatusList.EditValue, WhComboBox.EditValue.ToString(), focused_tree_node.Num, -20).ToList();
 
             WbGridView.FocusedRowHandle = FindRowHandleByRowObject(WbGridView, dr);
+        }
+
+        void GetDeboningList()
+        {
+            if (DebSatusList.EditValue == null || DebWhComboBox.EditValue == null || DocsTreeList.FocusedNode == null)
+            {
+                return;
+            }
+
+            var satrt_date = DebStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : DebStartDate.DateTime;
+            var end_date = DebEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : DebEndDate.DateTime;
+
+            var dr = DeboningGridView.GetRow(DeboningGridView.FocusedRowHandle) as WBListMake_Result;
+
+            DeboningGridControl.DataSource = null;
+            DeboningGridControl.DataSource = DB.SkladBase().WBListMake(satrt_date.Date, end_date.Date.AddDays(1), (int)wbSatusList.EditValue, WhComboBox.EditValue.ToString(), focused_tree_node.Num, -22).ToList();
+
+            DeboningGridView.FocusedRowHandle = FindRowHandleByRowObject(DeboningGridView, dr);
         }
 
         private int FindRowHandleByRowObject(GridView view, WBListMake_Result dr)
@@ -111,8 +136,12 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType.Value)
             {
                 case 3:
+                    bar1.Visible = true;
+                    GetDeboningList();
+                    break;
+
                 case 1: bar1.Visible = true;
-                    GetWayBillList(cur_wtype);
+                    GetWayBillList();
 
                     break;
 
@@ -139,6 +168,10 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 3:
+                    using (var wb_make = new frmWBDeboning(null))
+                    {
+                        wb_make.ShowDialog();
+                    }
                     break;
 
             }
@@ -157,6 +190,7 @@ namespace SP_Sklad.MainTabs
                         break;
 
                     case 3:
+                        ManufDocEdit.WBEdit(DeboningGridView.GetFocusedRow() as WBListMake_Result);
                         break;
 
                 }
@@ -167,15 +201,15 @@ namespace SP_Sklad.MainTabs
 
         private void WbGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            var dr = WbGridView.GetRow(e.FocusedRowHandle) as WBListMake_Result;
+            focused_row = ((GridView)sender).GetRow(e.FocusedRowHandle) as WBListMake_Result;
 
-            if (dr != null)
+            if (focused_row != null)
             {
                 using (var db = DB.SkladBase())
                 {
-                    TechProcGridControl.DataSource = db.v_TechProcDet.Where(w => w.WbillId == dr.WbillId).OrderBy(o => o.OnDate).ToList(); 
-                    gridControl2.DataSource = db.GetWayBillDetOut(dr.WbillId).ToList();
-                    gridControl3.DataSource = db.GetRelDocList(dr.DocId).ToList();
+                    TechProcGridControl.DataSource = db.v_TechProcDet.Where(w => w.WbillId == focused_row.WbillId).OrderBy(o => o.OnDate).ToList();
+                    gridControl2.DataSource = db.GetWayBillDetOut(focused_row.WbillId).ToList();
+                    gridControl3.DataSource = db.GetRelDocList(focused_row.DocId).ToList();
                 }
             }
             else
@@ -184,11 +218,25 @@ namespace SP_Sklad.MainTabs
                 gridControl3.DataSource = null;
             }
 
-            DeleteItemBtn.Enabled = (dr != null && dr.Checked == 0 && focused_tree_node.CanDelete == 1);
-            ExecuteItemBtn.Enabled = (dr != null && dr.WType != 2 && dr.WType != -16 && dr.WType != 16 && focused_tree_node.CanPost == 1);
-            EditItemBtn.Enabled = (dr != null && focused_tree_node.CanModify == 1);
-            CopyItemBtn.Enabled = EditItemBtn.Enabled;
-            PrintItemBtn.Enabled = (dr != null);
+            /*       DeleteItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanDelete == 1);
+                   ExecuteItemBtn.Enabled = (focused_row != null && focused_row.WType != 2 && focused_row.WType != -16 && focused_row.WType != 16 && focused_tree_node.CanPost == 1);
+                   EditItemBtn.Enabled = (focused_row != null && focused_tree_node.CanModify == 1);
+                   CopyItemBtn.Enabled = EditItemBtn.Enabled;
+                   PrintItemBtn.Enabled = (focused_row != null);*/
+
+
+            StopProcesBtn.Enabled = (focused_row != null && focused_row.Checked == 2 && focused_tree_node.CanPost == 1);
+            DeleteItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanDelete == 1);
+            EditItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanModify == 1);
+            AddTechProcBtn.Enabled = (focused_row != null && focused_row.Checked != 1 && focused_tree_node.CanModify == 1);
+            DelTechProcBtn.Enabled = (AddTechProcBtn.Enabled && TechProcGridView.DataRowCount > 0);
+            EditTechProcBtn.Enabled = DelTechProcBtn.Enabled;
+            CopyItemBtn.Enabled = (focused_row != null && focused_tree_node.CanModify == 1);
+            //  OkButton->Enabled =  !WayBillList->IsEmpty();
+            ExecuteItemBtn.Enabled = (focused_row != null && focused_tree_node.CanPost == 1);
+            PrintItemBtn.Enabled = (focused_row != null);
+
+
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -230,7 +278,7 @@ namespace SP_Sklad.MainTabs
 
         private void TechProcGridView_DoubleClick(object sender, EventArgs e)
         {
-            if (IHelper.isRowDublClick(sender)) barButtonItem2.PerformClick();
+            if (IHelper.isRowDublClick(sender)) EditTechProcBtn.PerformClick();
         }
 
         private void WbGridView_DoubleClick(object sender, EventArgs e)
@@ -246,22 +294,21 @@ namespace SP_Sklad.MainTabs
                 {
                     case 3:
                     case 1:
-                        var dr = WbGridView.GetFocusedRow() as WBListMake_Result;
-                        if (dr == null)
+                        if (focused_row == null)
                         {
                             return;
                         }
 
-                        var wb = db.WaybillList.Find(dr.WbillId);
+                        var wb = db.WaybillList.Find(focused_row.WbillId);
                         if (wb != null)
                         {
                             if (wb.Checked == 2)
                             {
-                                DBHelper.StornoOrder(db, dr.WbillId);
+                                DBHelper.StornoOrder(db, focused_row.WbillId);
                             }
                             else
                             {
-                                DBHelper.ExecuteOrder(db, dr.WbillId);
+                                DBHelper.ExecuteOrder(db, focused_row.WbillId);
                             }
                         }
                         else
@@ -278,8 +325,7 @@ namespace SP_Sklad.MainTabs
 
         private void DeleteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = WbGridView.GetFocusedRow() as WBListMake_Result;
-            if (dr == null)
+            if (focused_row == null)
             {
                 return;
             }
@@ -291,7 +337,7 @@ namespace SP_Sklad.MainTabs
                     switch (focused_tree_node.GType)
                     {
                         case 3:
-                        case 1: db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK) where WbillId = {0}", dr.WbillId).FirstOrDefault();
+                        case 1: db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK) where WbillId = {0}", focused_row.WbillId).FirstOrDefault();
                             break;
                     }
 
@@ -301,7 +347,7 @@ namespace SP_Sklad.MainTabs
                         {
                             case 3:
                             case 1:
-                                db.DeleteWhere<WaybillList>(w => w.WbillId == dr.WbillId);
+                                db.DeleteWhere<WaybillList>(w => w.WbillId == focused_row.WbillId);
                                 break;
 
                         }
@@ -315,6 +361,25 @@ namespace SP_Sklad.MainTabs
             }
 
             RefrechItemBtn.PerformClick();
+        }
+
+        private void StopProcesBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+          /*  Variant curID = WayBillListWBILLID->Value;
+            WayBillList->FullRefresh();
+            if (WayBillListCHECKED->Value == 2 && curID == WayBillListWBILLID->Value)
+            {
+                frmWBWriteOn = new TfrmWBWriteOn(Application);
+                frmWBWriteOn->EXECUTE_WAYBILL->ParamByName("WBILLID")->Value = WayBillListWBILLID->Value;
+                frmWBWriteOn->EXECUTE_WAYBILL->Open();
+                frmWBWriteOn->WayBillList->ParamByName("DOCID")->Value = frmWBWriteOn->EXECUTE_WAYBILLNEW_DOCID->Value;
+                frmWBWriteOn->WayBillList->Open();
+                frmWBWriteOn->WayBillList->Edit();
+                frmWBWriteOn->WayBillListCHECKED->Value = true;
+                frmWBWriteOn->ShowModal();
+                delete frmWBWriteOn;
+            }
+            RefreshBarBtn->Click();*/
         }
 
     }

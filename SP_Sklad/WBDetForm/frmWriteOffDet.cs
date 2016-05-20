@@ -20,6 +20,8 @@ namespace SP_Sklad.WBDetForm
         private WaybillDet _wbd { get; set; }
         private List<GetPosIn_Result> pos_in { get; set; }
         private GetActualRemainByWh_Result mat_remain { get; set; }
+        public decimal? amount { get; set; }
+        public int? mat_id { get; set; }
 
         public frmWriteOffDet(BaseEntities db, int? PosId, WaybillList wb)
         {
@@ -35,10 +37,15 @@ namespace SP_Sklad.WBDetForm
             WHComboBox.Properties.DataSource = DBHelper.WhList();
             MatComboBox.Properties.DataSource = _db.MaterialsList.ToList();
 
-            if (_wb.WType == -5)
+            if (_wb.WType == -5 || _wb.WType == -22)
             {
                 WHComboBox.Enabled = false;
                 WhEditBtn.Enabled = false;
+            }
+            if (_wb.WType == -22)
+            {
+                MatComboBox.Enabled = false;
+                MatEditBtn.Enabled = false;
             }
 
             if (_PosId == null)
@@ -47,12 +54,13 @@ namespace SP_Sklad.WBDetForm
                 {
                     WbillId = _wb.WbillId,
                     Num = _wb.WaybillDet.Count() + 1,
-                    Amount = 0,
+                    Amount = amount != null ? (decimal)amount : 0,
                     OnValue = _wb.OnValue,
                     WId = _wb.WaybillMove != null ? _wb.WaybillMove.SourceWid : _wb.WayBillMake != null ? _wb.WayBillMake.SourceWId : DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId,
                     Nds = _wb.Nds,
                     CurrId = _wb.CurrId,
                     OnDate = _wb.OnDate,
+                    MatId = mat_id != null ? (int)mat_id : 0
                 };
             }
             else
@@ -87,11 +95,13 @@ namespace SP_Sklad.WBDetForm
                     }
                 }
             }
+
+            GetContent();
         }
 
         bool GetOk()
         {
-            bool recult = (MatComboBox.EditValue != DBNull.Value && WHComboBox.EditValue != DBNull.Value && AmountEdit.EditValue != DBNull.Value);
+            bool recult = ((int)MatComboBox.EditValue > 0 && WHComboBox.EditValue != DBNull.Value && AmountEdit.Value > 0);
 
             OkButton.Enabled = recult;
 
@@ -137,7 +147,7 @@ namespace SP_Sklad.WBDetForm
             labelControl27.Text = row.MeasuresName;
         }
 
-        private void GetContent()
+        public void GetContent()
         {
             if (_wbd.WId == null || _wbd.MatId == 0)
             {
@@ -169,6 +179,7 @@ namespace SP_Sklad.WBDetForm
         {
             if (pos_in == null || mat_remain == null)
             {
+                GetOk();
                 return;
             }
 
@@ -261,7 +272,10 @@ namespace SP_Sklad.WBDetForm
 
         private void AmountEdit_EditValueChanged(object sender, EventArgs e)
         {
-            if (AmountEdit.ContainsFocus) SetAmount();
+            if (AmountEdit.ContainsFocus)
+            {
+                SetAmount();
+            }
         }
 
         private void RSVCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -297,5 +311,6 @@ namespace SP_Sklad.WBDetForm
 
             GetOk();
         }
+
     }
 }

@@ -19,9 +19,8 @@ using SP_Sklad.Common;
 
 namespace SP_Sklad.WBForm
 {
-    public partial class frmWBManufacture : Form
+    public partial class frmWBDeboning : Form
     {
-
         BaseEntities _db { get; set; }
         private int? _wbill_id { get; set; }
         private DbContextTransaction current_transaction { get; set; }
@@ -29,7 +28,7 @@ namespace SP_Sklad.WBForm
         private GetWayBillDetOut_Result wbd_row { get; set; }
         private IQueryable<GetWayBillDetOut_Result> wbd_list { get; set; }
 
-        public frmWBManufacture(int? wbill_id = null)
+        public frmWBDeboning(int? wbill_id = null)
         {
             _wbill_id = wbill_id;
             _db = new BaseEntities();
@@ -38,27 +37,36 @@ namespace SP_Sklad.WBForm
             InitializeComponent();
         }
 
-        private void frmWBManufacture_Load(object sender, EventArgs e)
+        private void frmWBDeboning_Load(object sender, EventArgs e)
         {
             KagentComboBox.Properties.DataSource = DBHelper.Persons;
             PersonMakeComboBox.Properties.DataSource = DBHelper.Persons;
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
             WhComboBox.Properties.DataSource = DBHelper.WhList();
-            RecipeComboBox.Properties.DataSource = DB.SkladBase().MatRecipe.Where(w => w.RType == 1).Select(s => new { s.RecId, s.Name, s.Amount }).ToList();
+            repositoryItemWhEdit.DataSource = DBHelper.WhList();
+            RecipeComboBox.Properties.DataSource = DB.SkladBase().MatRecipe.Where(w => w.RType == 2).Select(s => new
+            {
+                s.RecId,
+                s.Name,
+                s.Amount,
+                MatName = s.Materials.Name,
+                s.MatId
+            }).ToList();
 
             if (_wbill_id == null)
             {
                 wb = _db.WaybillList.Add(new WaybillList()
                 {
-                    WType = -20,
+                    WType = -22,
                     OnDate = DBHelper.ServerDateTime(),
-                    Num = new BaseEntities().GetCounter("wb_make").FirstOrDefault(),
+                    Num = new BaseEntities().GetCounter("wb_deboning").FirstOrDefault(),
                     EntId = DBHelper.Enterprise.KaId,
                     CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
                     KaId = DBHelper.CurrentUser.KaId,
-                    WayBillMake = new WayBillMake { SourceWId = DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId }
+                    WayBillMake = new WayBillMake { SourceWId = DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId },
+                    Nds = 0
                 });
                 _db.SaveChanges();
 
@@ -83,7 +91,7 @@ namespace SP_Sklad.WBForm
                 TurnDocCheckBox.EditValue = wb.Checked;
                 RecipeComboBox.DataBindings.Add(new Binding("EditValue", wb.WayBillMake, "RecId", true, DataSourceUpdateMode.OnValidation));
                 WhComboBox.DataBindings.Add(new Binding("EditValue", wb.WayBillMake, "SourceWId"));
-                AmountMakeEdit.DataBindings.Add(new Binding("EditValue", wb.WayBillMake, "Amount"));
+                //   AmountMakeEdit.DataBindings.Add(new Binding("EditValue", wb.WayBillMake, "Amount"));
 
                 PersonMakeComboBox.DataBindings.Add(new Binding("EditValue", wb.WayBillMake, "PersonId", true, DataSourceUpdateMode.OnValidation));
                 KagentComboBox.DataBindings.Add(new Binding("EditValue", wb, "KaId", true, DataSourceUpdateMode.OnValidation));
@@ -100,6 +108,7 @@ namespace SP_Sklad.WBForm
             }
 
             RefreshDet();
+            RefreshDeboningDet();
         }
 
         private void UpdLockWB()
@@ -141,31 +150,31 @@ namespace SP_Sklad.WBForm
 
         bool GetOk()
         {
-            bool recult = (!String.IsNullOrEmpty(NumEdit.Text) && RecipeComboBox.EditValue != null && WhComboBox.EditValue != null && OnDateDBEdit.EditValue != null && WaybillDetOutGridView.DataRowCount > 0);
+            bool recult = (!String.IsNullOrEmpty(NumEdit.Text) && RecipeComboBox.EditValue != null && (int)WhComboBox.EditValue > 0 && OnDateDBEdit.EditValue != null && WaybillDetOutGridView.DataRowCount > 0);
 
             if (recult && TurnDocCheckBox.Checked)
             {
-                recult = !wbd_list.Any(w => w.Rsv == 0 && w.PosType == 0);
+                recult = (!wbd_list.Any(w => w.Rsv == 0 && w.PosType == 0) && DeboningGridView.DataRowCount > 0);
             }
 
             RecipeComboBox.Enabled = WaybillDetOutGridView.DataRowCount == 0;
             ReceptBtn.Enabled = RecipeComboBox.Enabled;
             WhComboBox.Enabled = RecipeComboBox.Enabled;
             WhInBtn.Enabled = RecipeComboBox.Enabled;
-            AmountMakeEdit.Enabled = RecipeComboBox.Enabled;
 
-            barSubItem1.Enabled = (WhComboBox.EditValue != null && RecipeComboBox.EditValue != null && AmountMakeEdit.Value > 0);
+            AddMaterialBtn.Enabled = (WhComboBox.EditValue != DBNull.Value && RecipeComboBox.EditValue != DBNull.Value);
 
             EditMaterialBtn.Enabled = WaybillDetOutGridView.DataRowCount > 0;
             DelMaterialBtn.Enabled = EditMaterialBtn.Enabled;
             RsvInfoBtn.Enabled = EditMaterialBtn.Enabled;
             MatInfoBtn.Enabled = EditMaterialBtn.Enabled;
+            ByRecipeBtn.Enabled = EditMaterialBtn.Enabled;
 
             OkButton.Enabled = recult;
             return recult;
         }
 
-        private void frmWBManufacture_FormClosed(object sender, FormClosedEventArgs e)
+        private void frmWBDeboning_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (current_transaction.UnderlyingTransaction.Connection != null)
             {
@@ -176,7 +185,7 @@ namespace SP_Sklad.WBForm
             current_transaction.Dispose();
         }
 
-        private void frmWBManufacture_Shown(object sender, EventArgs e)
+        private void frmWBDeboning_Shown(object sender, EventArgs e)
         {
             OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
             NowDateBtn.Enabled = OnDateDBEdit.Enabled;
@@ -209,41 +218,46 @@ namespace SP_Sklad.WBForm
 
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (new frmWriteOffDet(_db, null, wb).ShowDialog() == DialogResult.OK)
+            dynamic row = RecipeComboBox.GetSelectedDataRow();
+            var frm = new frmWriteOffDet(_db, null, wb);
+
+            frm.mat_id = row.MatId;
+            frm.amount = row.Amount;
+
+            if (frm.ShowDialog() == DialogResult.OK)
             {
                 current_transaction = current_transaction.CommitRetaining(_db);
                 UpdLockWB();
+                _db.GetDeboningDet(_wbill_id);
+                RefreshDeboningDet();
                 RefreshDet();
             }
         }
 
         private void EditMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = WaybillDetOutGridView.GetRow(WaybillDetOutGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
-
-            if (dr != null)
+            if (wbd_row != null)
             {
-                new frmWriteOffDet(_db, dr.PosId, wb).ShowDialog();
+                new frmWriteOffDet(_db, wbd_row.PosId, wb).ShowDialog();
 
                 current_transaction = current_transaction.CommitRetaining(_db);
                 UpdLockWB();
+                _db.GetDeboningDet(_wbill_id);
+                RefreshDeboningDet();
                 RefreshDet();
-
-                var dd = _db.Entry<WaybillDet>(_db.WaybillDet.FirstOrDefault(w => w.PosId == dr.PosId)).State;
             }
         }
 
         private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = WaybillDetOutGridView.GetRow(WaybillDetOutGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
-
-            if (dr != null)
+            if (wbd_row != null)
             {
                 DelRsvBarBtn.PerformClick();
 
-                _db.DeleteWhere<WaybillDet>(w => w.PosId == dr.PosId);
+                _db.DeleteWhere<WaybillDet>(w => w.PosId == wbd_row.PosId);
                 _db.SaveChanges();
-
+                _db.GetDeboningDet(_wbill_id);
+                RefreshDeboningDet();
                 RefreshDet();
             }
         }
@@ -275,30 +289,6 @@ namespace SP_Sklad.WBForm
             }
         }
 
-        private void RsvAllBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            var res = _db.ReservedAllPosition(wb.WbillId);
-
-            if (res.Any())
-            {
-                MessageBox.Show("Не вдалося зарезервувати деякі товари!");
-            }
-
-            current_transaction = current_transaction.CommitRetaining(_db);
-            UpdLockWB();
-
-            RefreshDet();
-        }
-
-        private void DelAllRsvBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            _db.DeleteAllReservePosition(wb.WbillId);
-            current_transaction = current_transaction.CommitRetaining(_db);
-            UpdLockWB();
-
-            RefreshDet();
-        }
-
         private void WaybillDetOutGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
         {
             if (e.HitInfo.InRow)
@@ -317,7 +307,7 @@ namespace SP_Sklad.WBForm
         {
             wb.OnDate = DBHelper.ServerDateTime();
             OnDateDBEdit.DateTime = wb.OnDate;
-            
+
             _db.SaveChanges();
         }
 
@@ -328,12 +318,43 @@ namespace SP_Sklad.WBForm
 
         private void ByRecipeBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            _db.SaveChanges();
-            _db.GetRecipe(_wbill_id);
+            if (wbd_row.Rsv == 1)
+            {
+                _db.SaveChanges();
 
-            //    if (MessageDlg("Зарезервувати товар ? ", mtConfirmation, TMsgDlgButtons() << mbYes << mbNo, 0) == mrYes) RcvAllBtn->Click();
+                _db.GetDeboningDet(_wbill_id);
 
-            RefreshDet();
+                RefreshDeboningDet();
+
+                xtraTabControl1.SelectedTabPageIndex = 1;
+            }
+        }
+
+        private class DeboningDetList
+        {
+            public int DebId { get; set; }
+            public int WBillId { get; set; }
+            public int MatId { get; set; }
+            public decimal Amount { get; set; }
+            public decimal Price { get; set; }
+            public int WId { get; set; }
+            public string MatName { get; set; }
+            public decimal Total { get; set; }
+        }
+
+        private void RefreshDeboningDet()
+        {
+            DeboningGridControl.DataSource = _db.DeboningDet.Where(w => w.WBillId == _wbill_id).Select(s => new DeboningDetList
+            {
+                DebId = s.DebId,
+                WBillId = s.WBillId,
+                MatId = s.MatId,
+                Amount = s.Amount,
+                Price = s.Price,
+                WId = s.WId,
+                MatName = s.Materials.Name,
+                Total = s.Amount * s.Price
+            }).ToList();
         }
 
         private void checkEdit2_CheckedChanged(object sender, EventArgs e)
@@ -354,11 +375,20 @@ namespace SP_Sklad.WBForm
             {
                 wb.WayBillMake.Amount = row.Amount;
             }
+
+            GetOk();
         }
 
-        private void simpleButton1_Click(object sender, EventArgs e)
+        private void CancelBtn_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void WhComboBox_EditValueChanged(object sender, EventArgs e)
+        {
+            wb.WayBillMake.SourceWId = (int)WhComboBox.EditValue;
+
+            GetOk();
         }
     }
 }

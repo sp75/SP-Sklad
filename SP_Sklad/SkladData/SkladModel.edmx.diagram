@@ -14,7 +14,6 @@
         <EntityTypeShape EntityType="BaseModel.CONTRRESULTS" Width="1.5" PointX="8.25" PointY="51.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.COUNTRIES" Width="1.5" PointX="6.75" PointY="17.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.CURRENCYRATE" Width="1.5" PointX="11" PointY="58.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.DEBONINGDET" Width="1.5" PointX="16.25" PointY="43.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.DISCCARDGRP" Width="1.5" PointX="0.75" PointY="32.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.DISCCARDS" Width="1.5" PointX="3" PointY="36.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.ENTPARAMS" Width="1.5" PointX="2.75" PointY="12.5" IsExpanded="true" />
@@ -62,7 +61,6 @@
         <AssociationConnector Association="BaseModel.FK_SERVICES_1" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_WBS_SVCID" ManuallyRouted="false" />
         <EntityTypeShape EntityType="BaseModel.WaybillList" Width="1.5" PointX="5.9715476436407986" PointY="24.577040057898053" />
-        <AssociationConnector Association="BaseModel.FK_DEBONINGDET_WAYBILLLIST" />
         <AssociationConnector Association="BaseModel.FK_WBS_WBILLID" />
         <EntityTypeShape EntityType="BaseModel.Actives" Width="1.5" PointX="10.80921667200011" PointY="4.88526056934393" />
         <EntityTypeShape EntityType="BaseModel.WMatTurn" Width="1.5" PointX="2.2089209529612774" PointY="7.7624033874657021" />
@@ -124,7 +122,6 @@
         <EntityTypeShape EntityType="BaseModel.MatGroup" Width="1.5" PointX="5.06140572813405" PointY="25.430168983261179" />
         <AssociationConnector Association="BaseModel.FK_CONTRDET_REFERENCE_MATERIAL" />
         <AssociationConnector Association="BaseModel.FK__MATERIALS__CID__662B2B3B" />
-        <AssociationConnector Association="BaseModel.FK_DEBONINGDET_MATERIALS" />
         <AssociationConnector Association="BaseModel.FK__KAMATDISC__MATID__32AB8735" />
         <AssociationConnector Association="BaseModel.FK__KAMATGROU__GRPID__395884C4" />
         <AssociationConnector Association="BaseModel.FK_MATCHANGE_CHANGEID" />
@@ -227,12 +224,16 @@
         <EntityTypeShape EntityType="BaseModel.Measures" Width="1.5" PointX="0.94131089977049776" PointY="5.3358571852258674" />
         <AssociationConnector Association="BaseModel.FK_MATERIAL_REFERENCE_MEASURES" />
         <AssociationConnector Association="BaseModel.FK_SVC_MID" />
+        <EntityTypeShape EntityType="BaseModel.DeboningDet" Width="1.5" PointX="9.6567766282971839" PointY="18.340161808924826" />
+        <AssociationConnector Association="BaseModel.FK_DEBONINGDET_MATERIALS" />
+        <AssociationConnector Association="BaseModel.FK_DEBONINGDET_WAYBILLLIST" />
+        <AssociationConnector Association="BaseModel.FK_DeboningDet_Warehouse" />
         </Diagram>
-      <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="91" >
-        <EntityTypeShape EntityType="BaseModel.MaterialsList" Width="1.5" PointX="8.3328528592050315" PointY="13.042403614633905" />
+      <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.KagentList" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="7.0245045325832924" PointY="12.641712000892364" />
         <EntityTypeShape EntityType="BaseModel.v_TechProcDet" Width="1.5" PointX="4.9644700516781164" PointY="21.376737246930944" />
+        <EntityTypeShape EntityType="BaseModel.MaterialsList" Width="1.5" PointX="3.2588702027028749" PointY="15.534418158016363" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

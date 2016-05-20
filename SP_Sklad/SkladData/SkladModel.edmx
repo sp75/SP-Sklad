@@ -23,7 +23,7 @@
           <EntitySet Name="COUNTRIES" EntityType="BaseModel.Store.COUNTRIES" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Currency" EntityType="BaseModel.Store.Currency" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CURRENCYRATE" EntityType="BaseModel.Store.CURRENCYRATE" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="DEBONINGDET" EntityType="BaseModel.Store.DEBONINGDET" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DeboningDet" EntityType="BaseModel.Store.DeboningDet" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DISCCARDGRP" EntityType="BaseModel.Store.DISCCARDGRP" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DISCCARDS" EntityType="BaseModel.Store.DISCCARDS" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Docs" EntityType="BaseModel.Store.Docs" store:Type="Tables" Schema="dbo" />
@@ -228,7 +228,7 @@
       [MaterialsList].[Serials] AS [Serials], 
       [MaterialsList].[Name] AS [Name], 
       [MaterialsList].[Artikul] AS [Artikul], 
-      [MaterialsList].[Wid] AS [Wid], 
+      [MaterialsList].[WId] AS [WId], 
       [MaterialsList].[MeasuresName] AS [MeasuresName], 
       [MaterialsList].[Deleted] AS [Deleted], 
       [MaterialsList].[Archived] AS [Archived]
@@ -565,11 +565,15 @@
           </AssociationSet>
           <AssociationSet Name="FK_DEBONINGDET_MATERIALS" Association="BaseModel.Store.FK_DEBONINGDET_MATERIALS">
             <End Role="Materials" EntitySet="Materials" />
-            <End Role="DEBONINGDET" EntitySet="DEBONINGDET" />
+            <End Role="DeboningDet" EntitySet="DeboningDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeboningDet_Warehouse" Association="BaseModel.Store.FK_DeboningDet_Warehouse">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="DeboningDet" EntitySet="DeboningDet" />
           </AssociationSet>
           <AssociationSet Name="FK_DEBONINGDET_WAYBILLLIST" Association="BaseModel.Store.FK_DEBONINGDET_WAYBILLLIST">
             <End Role="WaybillList" EntitySet="WaybillList" />
-            <End Role="DEBONINGDET" EntitySet="DEBONINGDET" />
+            <End Role="DeboningDet" EntitySet="DeboningDet" />
           </AssociationSet>
           <AssociationSet Name="FK_DISCCARDS_GRPID" Association="BaseModel.Store.FK_DISCCARDS_GRPID">
             <End Role="DISCCARDGRP" EntitySet="DISCCARDGRP" />
@@ -1072,16 +1076,16 @@
           <Property Name="ONVALUE" Type="numeric" Nullable="false" Precision="15" Scale="8" />
           <Property Name="RATEID" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="DEBONINGDET">
+        <EntityType Name="DeboningDet">
           <Key>
-            <PropertyRef Name="DEBID" />
+            <PropertyRef Name="DebId" />
           </Key>
-          <Property Name="DEBID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="WBILLID" Type="int" Nullable="false" />
-          <Property Name="MATID" Type="int" Nullable="false" />
-          <Property Name="AMOUNT" Type="numeric" Nullable="false" Precision="15" Scale="8" />
-          <Property Name="PRICE" Type="numeric" Nullable="false" Precision="15" Scale="8" />
-          <Property Name="WID" Type="int" Nullable="false" />
+          <Property Name="DebId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="WBillId" Type="int" Nullable="false" />
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="numeric" Nullable="false" Precision="15" Scale="8" />
+          <Property Name="Price" Type="numeric" Nullable="false" Precision="15" Scale="8" />
+          <Property Name="WId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="DISCCARDGRP">
           <Key>
@@ -2046,12 +2050,12 @@
           </Key>
           <Property Name="MatId" Type="int" Nullable="false" />
           <Property Name="Num" Type="int" />
-          <Property Name="Produced" Type="varchar" MaxLength="255" />
+          <Property Name="Produced" Type="nvarchar" MaxLength="255" />
           <Property Name="Nds" Type="numeric" Precision="15" Scale="8" />
           <Property Name="Serials" Type="int" />
           <Property Name="Name" Type="nvarchar" MaxLength="255" />
-          <Property Name="Artikul" Type="varchar" MaxLength="255" />
-          <Property Name="Wid" Type="int" />
+          <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
+          <Property Name="WId" Type="int" />
           <Property Name="MeasuresName" Type="nvarchar" MaxLength="6" />
           <Property Name="Deleted" Type="int" Nullable="false" />
           <Property Name="Archived" Type="int" />
@@ -2878,13 +2882,25 @@
         </Association>
         <Association Name="FK_DEBONINGDET_MATERIALS">
           <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="1" />
-          <End Role="DEBONINGDET" Type="BaseModel.Store.DEBONINGDET" Multiplicity="*" />
+          <End Role="DeboningDet" Type="BaseModel.Store.DeboningDet" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Materials">
               <PropertyRef Name="MatId" />
             </Principal>
-            <Dependent Role="DEBONINGDET">
-              <PropertyRef Name="MATID" />
+            <Dependent Role="DeboningDet">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeboningDet_Warehouse">
+          <End Role="Warehouse" Type="BaseModel.Store.Warehouse" Multiplicity="1" />
+          <End Role="DeboningDet" Type="BaseModel.Store.DeboningDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
+            </Principal>
+            <Dependent Role="DeboningDet">
+              <PropertyRef Name="WId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2892,13 +2908,13 @@
           <End Role="WaybillList" Type="BaseModel.Store.WaybillList" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="DEBONINGDET" Type="BaseModel.Store.DEBONINGDET" Multiplicity="*" />
+          <End Role="DeboningDet" Type="BaseModel.Store.DeboningDet" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="WaybillList">
               <PropertyRef Name="WbillId" />
             </Principal>
-            <Dependent Role="DEBONINGDET">
-              <PropertyRef Name="WBILLID" />
+            <Dependent Role="DeboningDet">
+              <PropertyRef Name="WBillId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3910,6 +3926,9 @@
         <Function Name="GetCounter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="name" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="GetDeboningDet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="wbill_id" Type="int" Mode="In" />
+        </Function>
         <Function Name="GetDiscount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ka_id" Type="int" Mode="In" />
           <Parameter Name="mat_id" Type="int" Mode="In" />
@@ -4790,7 +4809,6 @@
           <EntitySet Name="CONTRRESULTS" EntityType="BaseModel.CONTRRESULTS" />
           <EntitySet Name="COUNTRIES" EntityType="BaseModel.COUNTRIES" />
           <EntitySet Name="CURRENCYRATE" EntityType="BaseModel.CURRENCYRATE" />
-          <EntitySet Name="DEBONINGDET" EntityType="BaseModel.DEBONINGDET" />
           <EntitySet Name="DISCCARDGRP" EntityType="BaseModel.DISCCARDGRP" />
           <EntitySet Name="DISCCARDS" EntityType="BaseModel.DISCCARDS" />
           <EntitySet Name="ENTPARAMS" EntityType="BaseModel.ENTPARAMS" />
@@ -5047,10 +5065,6 @@
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="WaybillList" EntityType="BaseModel.WaybillList" />
-          <AssociationSet Name="FK_DEBONINGDET_WAYBILLLIST" Association="BaseModel.FK_DEBONINGDET_WAYBILLLIST">
-            <End Role="WaybillList" EntitySet="WaybillList" />
-            <End Role="DEBONINGDET" EntitySet="DEBONINGDET" />
-          </AssociationSet>
           <AssociationSet Name="FK_WBS_WBILLID" Association="BaseModel.FK_WBS_WBILLID">
             <End Role="WaybillList" EntitySet="WaybillList" />
             <End Role="WAYBILLSVC" EntitySet="WAYBILLSVC" />
@@ -5062,7 +5076,6 @@
             <Parameter Name="MatId" Mode="In" Type="Int32" />
             <Parameter Name="OnDate" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <EntitySet Name="MaterialsList" EntityType="BaseModel.MaterialsList" />
           <FunctionImport Name="GetCounter" ReturnType="Collection(String)">
           <Parameter Name="name" Mode="In" Type="String" />
           </FunctionImport>
@@ -5339,10 +5352,6 @@
           <AssociationSet Name="FK__MATERIALS__CID__662B2B3B" Association="BaseModel.FK__MATERIALS__CID__662B2B3B">
             <End Role="COUNTRIES" EntitySet="COUNTRIES" />
             <End Role="Materials" EntitySet="Materials" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DEBONINGDET_MATERIALS" Association="BaseModel.FK_DEBONINGDET_MATERIALS">
-            <End Role="Materials" EntitySet="Materials" />
-            <End Role="DEBONINGDET" EntitySet="DEBONINGDET" />
           </AssociationSet>
           <AssociationSet Name="FK__KAMATDISC__MATID__32AB8735" Association="BaseModel.FK__KAMATDISC__MATID__32AB8735">
             <End Role="Materials" EntitySet="Materials" />
@@ -5735,6 +5744,23 @@
             <End Role="Measures" EntitySet="Measures" />
             <End Role="SERVICES" EntitySet="SERVICES" />
           </AssociationSet>
+          <FunctionImport Name="GetDeboningDet">
+          <Parameter Name="wbill_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="DeboningDet" EntityType="BaseModel.DeboningDet" />
+          <AssociationSet Name="FK_DEBONINGDET_MATERIALS" Association="BaseModel.FK_DEBONINGDET_MATERIALS">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="DeboningDet" EntitySet="DeboningDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEBONINGDET_WAYBILLLIST" Association="BaseModel.FK_DEBONINGDET_WAYBILLLIST">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="DeboningDet" EntitySet="DeboningDet" />
+          </AssociationSet>
+          <EntitySet Name="MaterialsList" EntityType="BaseModel.MaterialsList" />
+          <AssociationSet Name="FK_DeboningDet_Warehouse" Association="BaseModel.FK_DeboningDet_Warehouse">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="DeboningDet" EntitySet="DeboningDet" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="GetMatGroupTree_Result">
           <Property Name="GRPID" Type="Int32" />
@@ -6025,19 +6051,6 @@
           <Property Name="ONVALUE" Type="Decimal" Nullable="false" Precision="15" Scale="8" />
           <Property Name="RATEID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK__CURRENCYR__CURRI__5EBF139D" FromRole="CURRENCYRATE" ToRole="Currency" />
-        </EntityType>
-        <EntityType Name="DEBONINGDET">
-          <Key>
-            <PropertyRef Name="DEBID" />
-          </Key>
-          <Property Name="DEBID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="WBILLID" Type="Int32" Nullable="false" />
-          <Property Name="MATID" Type="Int32" Nullable="false" />
-          <Property Name="AMOUNT" Type="Decimal" Nullable="false" Precision="15" Scale="8" />
-          <Property Name="PRICE" Type="Decimal" Nullable="false" Precision="15" Scale="8" />
-          <Property Name="WID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_DEBONINGDET_WAYBILLLIST" FromRole="DEBONINGDET" ToRole="WaybillList" />
-          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_DEBONINGDET_MATERIALS" FromRole="DEBONINGDET" ToRole="Materials" />
         </EntityType>
         <EntityType Name="DISCCARDGRP">
           <Key>
@@ -6784,7 +6797,6 @@
           <Property Type="Decimal" Name="SummInCurr" Precision="15" Scale="2" />
           <Property Type="Int32" Name="EntId" />
           <Property Type="Decimal" Name="OnValue" Precision="15" Scale="8" />
-          <NavigationProperty Name="DEBONINGDET" Relationship="BaseModel.FK_DEBONINGDET_WAYBILLLIST" FromRole="WaybillList" ToRole="DEBONINGDET" />
           <NavigationProperty Name="WAYBILLSVC" Relationship="BaseModel.FK_WBS_WBILLID" FromRole="WaybillList" ToRole="WAYBILLSVC" />
           <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__WAYBILLLI__PERSO__6E01572D" FromRole="WaybillList" ToRole="Kagent" />
@@ -6798,21 +6810,8 @@
           <NavigationProperty Name="TechProcDet" Relationship="BaseModel.FK_TECHPROCDET_WAYBILLLIST" FromRole="WaybillList" ToRole="TechProcDet" />
           <NavigationProperty Name="WayBillDetAddProps" Relationship="BaseModel.FK_WAYBILLDETADDPROPS_WBILLID" FromRole="WaybillList" ToRole="WayBillDetAddProps" />
           <NavigationProperty Name="WayBillMake" Relationship="BaseModel.FK_WAYBILLMAKE_WAYBILLLIST" FromRole="WaybillList" ToRole="WayBillMake" />
+          <NavigationProperty Name="DeboningDet" Relationship="BaseModel.FK_DEBONINGDET_WAYBILLLIST" FromRole="WaybillList" ToRole="DeboningDet" />
         </EntityType>
-        <Association Name="FK_DEBONINGDET_WAYBILLLIST">
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.DEBONINGDET" Role="DEBONINGDET" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillList">
-              <PropertyRef Name="WbillId" />
-            </Principal>
-            <Dependent Role="DEBONINGDET">
-              <PropertyRef Name="WBILLID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_WBS_WBILLID">
           <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -6841,23 +6840,6 @@
           <Property Type="Decimal" Name="LastInPrice" Nullable="true" Precision="15" Scale="4" />
           <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="4" />
         </ComplexType>
-        <EntityType Name="MaterialsList">
-          <Key>
-            <PropertyRef Name="MatId" />
-            <PropertyRef Name="Deleted" />
-          </Key>
-          <Property Type="Int32" Name="MatId" Nullable="false" />
-          <Property Type="Int32" Name="Num" />
-          <Property Type="String" Name="Produced" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="Decimal" Name="Nds" Precision="15" Scale="8" />
-          <Property Type="Int32" Name="Serials" />
-          <Property Type="String" Name="Name" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Artikul" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="Wid" />
-          <Property Type="String" Name="MeasuresName" MaxLength="6" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="Deleted" Nullable="false" />
-          <Property Type="Int32" Name="Archived" />
-        </EntityType>
         <ComplexType Name="ExecuteWayBill_Result">
           <Property Type="Int32" Name="Checked" Nullable="false" />
           <Property Type="Int32" Name="NewDocId" Nullable="true" />
@@ -7938,7 +7920,6 @@
           <Property Type="Binary" Name="BMP" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="CONTRDET" Relationship="BaseModel.FK_CONTRDET_REFERENCE_MATERIAL" FromRole="Materials" ToRole="CONTRDET" />
           <NavigationProperty Name="COUNTRIES" Relationship="BaseModel.FK__MATERIALS__CID__662B2B3B" FromRole="Materials" ToRole="COUNTRIES" />
-          <NavigationProperty Name="DEBONINGDET" Relationship="BaseModel.FK_DEBONINGDET_MATERIALS" FromRole="Materials" ToRole="DEBONINGDET" />
           <NavigationProperty Name="KAMATDISCOUNT" Relationship="BaseModel.FK__KAMATDISC__MATID__32AB8735" FromRole="Materials" ToRole="KAMATDISCOUNT" />
           <NavigationProperty Name="MATCHANGE" Relationship="BaseModel.FK_MATCHANGE_CHANGEID" FromRole="Materials" ToRole="MATCHANGE" />
           <NavigationProperty Name="MATCHANGE1" Relationship="BaseModel.FK_MATCHANGE_MATID" FromRole="Materials" ToRole="MATCHANGE" />
@@ -7954,6 +7935,7 @@
           <NavigationProperty Name="TAXWBDET" Relationship="BaseModel.FK_TAXWBDET_REFERENCE_MATERIAL" FromRole="Materials" ToRole="TAXWBDET" />
           <NavigationProperty Name="MatRecipe" Relationship="BaseModel.FK_MATRECIPE_1" FromRole="Materials" ToRole="MatRecipe" />
           <NavigationProperty Name="Measures" Relationship="BaseModel.FK_MATERIAL_REFERENCE_MEASURES" FromRole="Materials" ToRole="Measures" />
+          <NavigationProperty Name="DeboningDet" Relationship="BaseModel.FK_DEBONINGDET_MATERIALS" FromRole="Materials" ToRole="DeboningDet" />
         </EntityType>
         <EntityType Name="MatGroup">
           <Key>
@@ -7991,18 +7973,6 @@
             </Principal>
             <Dependent Role="Materials">
               <PropertyRef Name="CId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_DEBONINGDET_MATERIALS">
-          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
-          <End Type="BaseModel.DEBONINGDET" Role="DEBONINGDET" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Materials">
-              <PropertyRef Name="MatId" />
-            </Principal>
-            <Dependent Role="DEBONINGDET">
-              <PropertyRef Name="MATID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -8226,6 +8196,7 @@
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__WAREHOUS" FromRole="Warehouse" ToRole="WaybillDet" />
           <NavigationProperty Name="PosRemains" Relationship="BaseModel.FK__POSREMAINS__WID__2EA5EC27" FromRole="Warehouse" ToRole="PosRemains" />
           <NavigationProperty Name="WayBillMake" Relationship="BaseModel.FK_WAYBILLMAKE_WAREHOUSE" FromRole="Warehouse" ToRole="WayBillMake" />
+          <NavigationProperty Name="DeboningDet" Relationship="BaseModel.FK_DeboningDet_Warehouse" FromRole="Warehouse" ToRole="DeboningDet" />
           </EntityType>
         <EntityType Name="v_WaybillList">
           <Key>
@@ -9663,6 +9634,75 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="DeboningDet">
+          <Key>
+            <PropertyRef Name="DebId" />
+          </Key>
+          <Property Type="Int32" Name="DebId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="WBillId" Nullable="false" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="15" Scale="8" />
+          <Property Type="Int32" Name="WId" Nullable="false" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_DEBONINGDET_MATERIALS" FromRole="DeboningDet" ToRole="Materials" />
+          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_DEBONINGDET_WAYBILLLIST" FromRole="DeboningDet" ToRole="WaybillList" />
+          <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK_DeboningDet_Warehouse" FromRole="DeboningDet" ToRole="Warehouse" />
+        </EntityType>
+        <Association Name="FK_DEBONINGDET_MATERIALS">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
+          <End Type="BaseModel.DeboningDet" Role="DeboningDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="DeboningDet">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEBONINGDET_WAYBILLLIST">
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.DeboningDet" Role="DeboningDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="DeboningDet">
+              <PropertyRef Name="WBillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MaterialsList">
+          <Key>
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="Deleted" />
+          </Key>
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="Int32" Name="Num" />
+          <Property Type="String" Name="Produced" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Nds" Precision="15" Scale="8" />
+          <Property Type="Int32" Name="Serials" />
+          <Property Type="String" Name="Name" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Artikul" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="WId" />
+          <Property Type="String" Name="MeasuresName" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Deleted" Nullable="false" />
+          <Property Type="Int32" Name="Archived" />
+        </EntityType>
+        <Association Name="FK_DeboningDet_Warehouse">
+          <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="1" />
+          <End Type="BaseModel.DeboningDet" Role="DeboningDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
+            </Principal>
+            <Dependent Role="DeboningDet">
+              <PropertyRef Name="WId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -9780,18 +9820,6 @@
                 <ScalarProperty Name="ONDATE" ColumnName="ONDATE" />
                 <ScalarProperty Name="ONVALUE" ColumnName="ONVALUE" />
                 <ScalarProperty Name="RATEID" ColumnName="RATEID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DEBONINGDET">
-            <EntityTypeMapping TypeName="BaseModel.DEBONINGDET">
-              <MappingFragment StoreEntitySet="DEBONINGDET">
-                <ScalarProperty Name="DEBID" ColumnName="DEBID" />
-                <ScalarProperty Name="WBILLID" ColumnName="WBILLID" />
-                <ScalarProperty Name="MATID" ColumnName="MATID" />
-                <ScalarProperty Name="AMOUNT" ColumnName="AMOUNT" />
-                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
-                <ScalarProperty Name="WID" ColumnName="WID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -10569,23 +10597,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="MaterialsList">
-            <EntityTypeMapping TypeName="BaseModel.MaterialsList">
-              <MappingFragment StoreEntitySet="MaterialsList">
-                <ScalarProperty Name="Archived" ColumnName="Archived" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="MeasuresName" ColumnName="MeasuresName" />
-                <ScalarProperty Name="Wid" ColumnName="Wid" />
-                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Serials" ColumnName="Serials" />
-                <ScalarProperty Name="Nds" ColumnName="Nds" />
-                <ScalarProperty Name="Produced" ColumnName="Produced" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="GetCounter" FunctionName="BaseModel.Store.GetCounter" />
           <FunctionImportMapping FunctionImportName="ExecuteWayBill" FunctionName="BaseModel.Store.ExecuteWayBill">
             <ResultMapping>
@@ -11876,6 +11887,36 @@
                 <ScalarProperty Name="ShortName" ColumnName="ShortName" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="MId" ColumnName="MId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetDeboningDet" FunctionName="BaseModel.Store.GetDeboningDet" />
+          <EntitySetMapping Name="DeboningDet">
+            <EntityTypeMapping TypeName="BaseModel.DeboningDet">
+              <MappingFragment StoreEntitySet="DeboningDet">
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="WBillId" ColumnName="WBillId" />
+                <ScalarProperty Name="DebId" ColumnName="DebId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaterialsList">
+            <EntityTypeMapping TypeName="BaseModel.MaterialsList">
+              <MappingFragment StoreEntitySet="MaterialsList">
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="MeasuresName" ColumnName="MeasuresName" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Serials" ColumnName="Serials" />
+                <ScalarProperty Name="Nds" ColumnName="Nds" />
+                <ScalarProperty Name="Produced" ColumnName="Produced" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
