@@ -414,6 +414,9 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn)});
+            this.bar1.OptionsBar.DrawBorder = false;
+            this.bar1.OptionsBar.DrawDragBorder = false;
+            this.bar1.OptionsBar.UseWholeRow = true;
             this.bar1.StandaloneBarDockControl = this.standaloneBarDockControl1;
             this.bar1.Text = "Custom 3";
             // 
@@ -495,7 +498,10 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.RefreshWhBtn)});
-            this.bar2.OptionsBar.AllowRename = true;
+            this.bar2.OptionsBar.AllowQuickCustomization = false;
+            this.bar2.OptionsBar.DrawBorder = false;
+            this.bar2.OptionsBar.DrawDragBorder = false;
+            this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.StandaloneBarDockControl = this.standaloneBarDockControl4;
             this.bar2.Text = "Custom 2";
             // 
@@ -563,7 +569,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.ByGrpBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.ByWhBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.ViewDetailTree, true)});
-            this.bar3.OptionsBar.MultiLine = true;
+            this.bar3.OptionsBar.AllowQuickCustomization = false;
+            this.bar3.OptionsBar.DrawDragBorder = false;
             this.bar3.OptionsBar.UseWholeRow = true;
             this.bar3.StandaloneBarDockControl = this.standaloneBarDockControl6;
             this.bar3.Text = "Custom 4";
@@ -597,14 +604,16 @@
             this.ViewDetailTree.Id = 15;
             this.ViewDetailTree.ImageIndex = 9;
             this.ViewDetailTree.Name = "ViewDetailTree";
+            this.ViewDetailTree.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ViewDetailTree_ItemClick);
             // 
             // standaloneBarDockControl6
             // 
+            this.standaloneBarDockControl6.AutoSize = true;
             this.standaloneBarDockControl6.CausesValidation = false;
             this.standaloneBarDockControl6.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl6.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl6.Name = "standaloneBarDockControl6";
-            this.standaloneBarDockControl6.Size = new System.Drawing.Size(253, 23);
+            this.standaloneBarDockControl6.Size = new System.Drawing.Size(253, 24);
             this.standaloneBarDockControl6.Text = "standaloneBarDockControl6";
             // 
             // barDockControlTop
@@ -719,7 +728,7 @@
             this.treeListColumn1});
             this.WHTreeList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WHTreeList.KeyFieldName = "Id";
-            this.WHTreeList.Location = new System.Drawing.Point(0, 23);
+            this.WHTreeList.Location = new System.Drawing.Point(0, 24);
             this.WHTreeList.Name = "WHTreeList";
             this.WHTreeList.OptionsBehavior.Editable = false;
             this.WHTreeList.OptionsView.ShowColumns = false;
@@ -728,7 +737,7 @@
             this.WHTreeList.OptionsView.ShowVertLines = false;
             this.WHTreeList.ParentFieldName = "PId";
             this.WHTreeList.SelectImageList = this.UserTreeImgList;
-            this.WHTreeList.Size = new System.Drawing.Size(253, 647);
+            this.WHTreeList.Size = new System.Drawing.Size(253, 646);
             this.WHTreeList.TabIndex = 1;
             this.WHTreeList.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.WHTreeList_FocusedNodeChanged);
             // 
@@ -1554,12 +1563,10 @@
             this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 0),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -1, 2),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 6, 8),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -6, 7),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -16, 9),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 16, 10)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 5, 14),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -5, 15),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 4, 17),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 7, 31)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.GridImageList;
             // 
@@ -2020,7 +2027,9 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -16, 9),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 4, 17),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 5, 14),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -5, 15)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -5, 15),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -22, 33),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -20, 26)});
             this.repositoryItemImageComboBox6.Name = "repositoryItemImageComboBox6";
             this.repositoryItemImageComboBox6.SmallImages = this.GridImageList;
             // 

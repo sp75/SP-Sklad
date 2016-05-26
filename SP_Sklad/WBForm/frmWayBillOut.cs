@@ -21,8 +21,9 @@ namespace SP_Sklad.WBForm
     public partial class frmWayBillOut : Form
     {
         private int _wtype { get; set; }
-        BaseEntities _db { get; set; }
-        private int? _wbill_id { get; set; }
+        public BaseEntities _db { get; set; }
+        public int? _wbill_id { get; set; }
+        public int? doc_id { get; set; }
         private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
         private GetWayBillDetOut_Result wbd_row { get; set; }
@@ -43,13 +44,13 @@ namespace SP_Sklad.WBForm
             KagentComboBox.Properties.DataSource = DBHelper.Kagents;
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
 
-            if (_wbill_id == null)
+            if (_wbill_id == null && doc_id == null)
             {
                 wb = _db.WaybillList.Add(new WaybillList()
                 {
                     WType = _wtype,
                     OnDate = DBHelper.ServerDateTime(),
-                    Num = new BaseEntities().GetCounter("wb_in").FirstOrDefault(),
+                    Num = new BaseEntities().GetCounter("wb_out").FirstOrDefault(),
                     CurrId = DBHelper.Currency.FirstOrDefault(w=> w.Def == 1).CurrId,
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
@@ -96,7 +97,8 @@ namespace SP_Sklad.WBForm
 
         private void UpdLockWB()
         {
-            wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0}", _wbill_id).FirstOrDefault();
+            wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0} or DocId = {1}", _wbill_id, doc_id).FirstOrDefault();
+            _wbill_id = wb.WbillId;
         }
 
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

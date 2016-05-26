@@ -44,7 +44,14 @@ namespace SP_Sklad.WBForm
             PersonMakeComboBox.Properties.DataSource = DBHelper.Persons;
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
             WhComboBox.Properties.DataSource = DBHelper.WhList();
-            RecipeComboBox.Properties.DataSource = DB.SkladBase().MatRecipe.Where(w => w.RType == 1).Select(s => new { s.RecId, s.Name, s.Amount }).ToList();
+            RecipeComboBox.Properties.DataSource = DB.SkladBase().MatRecipe.Where(w => w.RType == 1).Select(s => new
+            {
+                s.RecId,
+                s.Name,
+                s.Amount,
+                MatName = s.Materials.Name,
+                s.MatId
+            }).ToList();
 
             if (_wbill_id == null)
             {
@@ -192,12 +199,11 @@ namespace SP_Sklad.WBForm
             wb.UpdatedAt = DateTime.Now;
             _db.SaveChanges();
 
-            current_transaction.Commit();
-
             if (TurnDocCheckBox.Checked)
             {
-                _db.ExecuteWayBill(wb.WbillId, null);
+                var ew = _db.ExecuteWayBill(wb.WbillId, null).ToList();
             }
+            current_transaction.Commit();
 
             Close();
         }
@@ -329,7 +335,7 @@ namespace SP_Sklad.WBForm
         private void ByRecipeBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             _db.SaveChanges();
-            _db.GetRecipe(_wbill_id);
+            var r = _db.GetRecipe(_wbill_id).ToList();
 
             //    if (MessageDlg("Зарезервувати товар ? ", mtConfirmation, TMsgDlgButtons() << mbYes << mbNo, 0) == mrYes) RcvAllBtn->Click();
 
@@ -353,6 +359,8 @@ namespace SP_Sklad.WBForm
             if (RecipeComboBox.ContainsFocus && row != null)
             {
                 wb.WayBillMake.Amount = row.Amount;
+
+                GetOk();
             }
         }
 

@@ -166,6 +166,12 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.BarImageList = new System.Windows.Forms.ImageList(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
+            this.DocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.ExecuteInvBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.ExecuteInBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.NewPayDocBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.createTaxWBbtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -230,6 +236,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -399,6 +406,7 @@
             this.WbGridView.OptionsView.EnableAppearanceEvenRow = true;
             this.WbGridView.OptionsView.EnableAppearanceOddRow = true;
             this.WbGridView.OptionsView.ShowGroupPanel = false;
+            this.WbGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WbGridView_PopupMenuShowing);
             this.WbGridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
             this.WbGridView.DoubleClick += new System.EventHandler(this.WbGridView_DoubleClick);
             // 
@@ -1626,8 +1634,13 @@
             this.DeleteItemBtn,
             this.RefrechItemBtn,
             this.ExecuteItemBtn,
-            this.PrintItemBtn});
-            this.barManager1.MaxItemId = 7;
+            this.PrintItemBtn,
+            this.ExecuteInvBtn,
+            this.ExecuteInBtn,
+            this.NewPayDocBtn,
+            this.createTaxWBbtn,
+            this.barButtonItem1});
+            this.barManager1.MaxItemId = 12;
             // 
             // bar1
             // 
@@ -1754,6 +1767,56 @@
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
             // 
+            // DocsPopupMenu
+            // 
+            this.DocsPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.CopyItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteInvBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteInBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewPayDocBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.createTaxWBbtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
+            this.DocsPopupMenu.Manager = this.barManager1;
+            this.DocsPopupMenu.Name = "DocsPopupMenu";
+            this.DocsPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.DocsPopupMenu_BeforePopup);
+            // 
+            // ExecuteInvBtn
+            // 
+            this.ExecuteInvBtn.Caption = "Відвантажити весь товар";
+            this.ExecuteInvBtn.Id = 7;
+            this.ExecuteInvBtn.Name = "ExecuteInvBtn";
+            this.ExecuteInvBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExecuteInvBtn_ItemClick);
+            // 
+            // ExecuteInBtn
+            // 
+            this.ExecuteInBtn.Caption = "Отримати весь товар на склад";
+            this.ExecuteInBtn.Id = 8;
+            this.ExecuteInBtn.Name = "ExecuteInBtn";
+            // 
+            // NewPayDocBtn
+            // 
+            this.NewPayDocBtn.Caption = "Додати платіж по документу";
+            this.NewPayDocBtn.Id = 9;
+            this.NewPayDocBtn.Name = "NewPayDocBtn";
+            // 
+            // createTaxWBbtn
+            // 
+            this.createTaxWBbtn.Caption = "Створити податкову накладну";
+            this.createTaxWBbtn.Id = 10;
+            this.createTaxWBbtn.Name = "createTaxWBbtn";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Показувати документи з нульовим балансом";
+            this.barButtonItem1.Id = 11;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
             // DocsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1832,6 +1895,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1975,5 +2039,11 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn34;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn35;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn36;
+        private DevExpress.XtraBars.BarButtonItem ExecuteInvBtn;
+        private DevExpress.XtraBars.BarButtonItem ExecuteInBtn;
+        private DevExpress.XtraBars.BarButtonItem NewPayDocBtn;
+        private DevExpress.XtraBars.BarButtonItem createTaxWBbtn;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.PopupMenu DocsPopupMenu;
     }
 }

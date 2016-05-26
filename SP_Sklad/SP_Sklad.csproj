@@ -93,6 +93,12 @@
     <Compile Include="frmInParty.Designer.cs">
       <DependentUpon>frmInParty.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainTabs\DirectoriesUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainTabs\DirectoriesUserControl.Designer.cs">
+      <DependentUpon>DirectoriesUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainTabs\DocsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -218,6 +224,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetActualRemainByWh_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetDirTree_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetListMatPrices_Result.cs">
@@ -639,6 +648,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="mainForm.resx">
       <DependentUpon>mainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainTabs\DirectoriesUserControl.resx">
+      <DependentUpon>DirectoriesUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainTabs\DocsUserControl.resx">
       <DependentUpon>DocsUserControl.cs</DependentUpon>

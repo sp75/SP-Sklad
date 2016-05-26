@@ -18,12 +18,12 @@ using DevExpress.XtraGrid;
 using SP_Sklad.FinanseForm;
 using SP_Sklad.Common;
 using SP_Sklad.Reports;
+using DevExpress.XtraBars;
 
 namespace SP_Sklad.MainTabs
 {
     public partial class DocsUserControl : UserControl
     {
-        const int USER_ID = 0;
         int cur_wtype = 0;
         int show_null_balance = 1;
         BaseEntities _db { get; set; }
@@ -61,7 +61,7 @@ namespace SP_Sklad.MainTabs
             PDSatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
             PDSatusList.EditValue = -1;
 
-            DocsTreeList.DataSource = _db.v_GetDocsTree.Where(w => w.UserId == null || w.UserId == USER_ID).OrderBy(o => o.Num).ToList();
+            DocsTreeList.DataSource = _db.v_GetDocsTree.Where(w => w.UserId == null || w.UserId == DBHelper.CurrentUser.UserId).OrderBy(o => o.Num).ToList();
             DocsTreeList.ExpandAll();
         }
 
@@ -655,6 +655,68 @@ namespace SP_Sklad.MainTabs
             }
 
             GetWayBillList(cur_wtype);
+        }
+
+        private void DocsPopupMenu_BeforePopup(object sender, CancelEventArgs e)
+        {
+            if (cur_wtype == -16 || cur_wtype == 2) ExecuteInvBtn.Visibility = BarItemVisibility.Always;
+            else ExecuteInvBtn.Visibility = BarItemVisibility.Never;
+
+            if (cur_wtype == 16) ExecuteInBtn.Visibility = BarItemVisibility.Always;
+            else ExecuteInBtn.Visibility = BarItemVisibility.Never;
+
+            if (cur_wtype == -1) createTaxWBbtn.Visibility = BarItemVisibility.Always;
+            else createTaxWBbtn.Visibility = BarItemVisibility.Never;
+        }
+
+        private void WbGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                DocsPopupMenu.ShowPopup(p2);
+            }
+        }
+
+        private void ExecuteInvBtn_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
+            var wbl = DB.SkladBase().WaybillList.FirstOrDefault(w => w.WbillId == dr.WbillId);
+            if (wbl == null)
+            {
+                return;
+            }
+
+            if (wbl.Checked == 0)
+            {
+                using (var f = new frmWayBillOut(-1,null))
+                {
+                    var result = f._db.ExecuteWayBill(wbl.WbillId, null).ToList().FirstOrDefault();
+          //          f.NumEdit.Text = new BaseEntities().GetCounter("wb_out").FirstOrDefault();
+                    f.doc_id = result.NewDocId;
+                    f.ShowDialog();
+                }
+            }
+
+            RefrechItemBtn.PerformClick();
+
+
+         /*   Variant curID = WayBillListWBILLID->Value;
+            WayBillList->FullRefresh();
+            if (WayBillListCHECKED->Value == 0 && curID == WayBillListWBILLID->Value)
+            {
+                frmWayBillOut = new TfrmWayBillOut(Application);
+                frmWayBillOut->EXECUTE_WAYBILL->ParamByName("WBILLID")->Value = WayBillListWBILLID->Value;
+                frmWayBillOut->EXECUTE_WAYBILL->Open();
+                frmWayBillOut->WBOutTr->CommitRetaining(); // щоб не було конфликта
+                frmWayBillOut->WayBillList->ParamByName("DOCID")->Value = frmWayBillOut->EXECUTE_WAYBILLNEW_DOCID->Value;
+                frmWayBillOut->WayBillList->Open();
+                frmWayBillOut->WayBillList->Edit();
+                frmWayBillOut->ShowModal();
+                delete frmWayBillOut;
+            }
+            WayBillList->Refresh();
+            GET_RelDocList->FullRefresh();*/
         }
 
     }

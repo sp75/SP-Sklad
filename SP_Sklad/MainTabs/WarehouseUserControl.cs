@@ -23,7 +23,9 @@ namespace SP_Sklad.MainTabs
         string wh_list = "*";
         int cur_wtype = 0;
 
+
         GetWhTree_Result focused_tree_node { get; set; }
+        GetWayBillListWh_Result focused_row { get; set; }
 
         public WarehouseUserControl()
         {
@@ -58,7 +60,7 @@ namespace SP_Sklad.MainTabs
         void GetTree(int type)
         {
             WHTreeList.DataSource = new BaseEntities().GetWhTree(DBHelper.CurrentUser.UserId, type).ToList();
-            WHTreeList.ExpandAll();
+            WHTreeList.ExpandToLevel(0); //ExpandAll();
         }
 
         private void WHTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
@@ -177,14 +179,14 @@ namespace SP_Sklad.MainTabs
 
         private void WbGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            var dr = WbGridView.GetRow(e.FocusedRowHandle) as GetWayBillListWh_Result;
+            focused_row = WbGridView.GetRow(e.FocusedRowHandle) as GetWayBillListWh_Result;
 
-            if (dr != null)
+            if (focused_row != null)
             {
                 using (var db = DB.SkladBase())
                 {
-                    gridControl2.DataSource = db.GetWaybillDetIn(dr.WBillId).ToList();
-                    gridControl3.DataSource = db.GetRelDocList(dr.DocId).ToList();
+                    gridControl2.DataSource = db.GetWaybillDetIn(focused_row.WBillId).ToList();
+                    gridControl3.DataSource = db.GetRelDocList(focused_row.DocId).ToList();
                 }
             }
             else
@@ -193,11 +195,11 @@ namespace SP_Sklad.MainTabs
                 gridControl3.DataSource = null;
             }
 
-            DeleteItemBtn.Enabled = (dr != null && dr.Checked == 0 && focused_tree_node.CanDelete == 1);
-            ExecuteItemBtn.Enabled = (dr != null && dr.WType != 2 && dr.WType != -16 && dr.WType != 16 && focused_tree_node.CanPost == 1);
-            EditItemBtn.Enabled = (dr != null && focused_tree_node.CanModify == 1);
+            DeleteItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanDelete == 1);
+            ExecuteItemBtn.Enabled = (focused_row != null && focused_row.WType != 2 && focused_row.WType != -16 && focused_row.WType != 16 && focused_tree_node.CanPost == 1);
+            EditItemBtn.Enabled = (focused_row != null && focused_tree_node.CanModify == 1);
             CopyItemBtn.Enabled = EditItemBtn.Enabled;
-            PrintItemBtn.Enabled = (dr != null);
+            PrintItemBtn.Enabled = (focused_row != null);
         }
 
         private void EditItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -274,7 +276,38 @@ namespace SP_Sklad.MainTabs
 
         private void ExecuteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            using (var db = new BaseEntities())
+            {
+                switch (focused_tree_node.GType)
+                {
+                    case 2:
+                        if (focused_row == null)
+                        {
+                            return;
+                        }
+                        
+                        var wb = db.WaybillList.Find(focused_row.WBillId);
+                        if (wb != null)
+                        {
+                            if (wb.Checked == 1)
+                            {
+                                DBHelper.StornoOrder(db, focused_row.WBillId.Value);
+                            }
+                            else
+                            {
+                                DBHelper.ExecuteOrder(db, focused_row.WBillId.Value);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show(Resources.not_find_wb);
+                        }
+                        break;
 
+                }
+            }
+
+            RefrechItemBtn.PerformClick();
         }
 
         private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -300,7 +333,7 @@ namespace SP_Sklad.MainTabs
                     }
 
                     WhMatGridControl.DataSource = null;
-                    WhMatGridControl.DataSource = DB.SkladBase().WhMatGet(grp_id, wid, (int)wbKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list, 0, grp, DBHelper.CurrentUser.UserId, 0).ToList();
+                    WhMatGridControl.DataSource = DB.SkladBase().WhMatGet(grp_id, wid, (int)wbKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list, 0, grp, DBHelper.CurrentUser.UserId, ViewDetailTree.Down ? 1:0).ToList();
 
                     break;
 
@@ -331,6 +364,12 @@ namespace SP_Sklad.MainTabs
         private void RefreshWhBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
+        }
+
+        private void ViewDetailTree_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ByGrpBtn.Down = true;
+            RefrechItemBtn.PerformClick();
         }
     }
 }

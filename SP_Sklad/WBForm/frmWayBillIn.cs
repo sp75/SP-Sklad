@@ -32,7 +32,7 @@ namespace SP_Sklad.WBForm
             _wtype = wtype;
             _wbill_id = wbill_id;
             _db = new BaseEntities();
-            current_transaction = _db.Database.BeginTransaction(IsolationLevel.RepeatableRead);
+            current_transaction = _db.Database.BeginTransaction(/*IsolationLevel.RepeatableRead*/);
 
             InitializeComponent();
         }
@@ -129,16 +129,14 @@ namespace SP_Sklad.WBForm
             {
                 return;
             }
-           
+
             _db.SaveChanges();
             payDocUserControl1.Execute(wb.WbillId);
-
-            current_transaction.Commit();
-
             if (TurnDocCheckBox.Checked)
             {
-                _db.ExecuteWayBill(wb.WbillId, null);
+                var ew = _db.ExecuteWayBill(wb.WbillId, null).ToList();
             }
+            current_transaction.Commit();
 
             Close();
         }

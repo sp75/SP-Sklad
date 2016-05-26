@@ -154,7 +154,7 @@ namespace SP_Sklad.WBForm
 
             if (recult && TurnDocCheckBox.Checked)
             {
-                recult = (!wbd_list.Any(w => w.Rsv == 0 && w.PosType == 0) && DeboningGridView.DataRowCount > 0);
+                recult = (!wbd_list.Any(w => w.Rsv == 0 && w.PosType == 0) && DeboningDetGridView.DataRowCount > 0);
             }
 
             RecipeComboBox.Enabled = WaybillDetOutGridView.DataRowCount == 0;
@@ -201,13 +201,11 @@ namespace SP_Sklad.WBForm
             wb.UpdatedAt = DateTime.Now;
             _db.SaveChanges();
 
-            current_transaction.Commit();
-
             if (TurnDocCheckBox.Checked)
             {
-                _db.ExecuteWayBill(wb.WbillId, null);
+                var ew = _db.ExecuteWayBill(wb.WbillId, null).ToList();
             }
-
+            current_transaction.Commit();
             Close();
         }
 
@@ -330,7 +328,7 @@ namespace SP_Sklad.WBForm
             }
         }
 
-        private class DeboningDetList
+        public class DeboningDetList
         {
             public int DebId { get; set; }
             public int WBillId { get; set; }
@@ -344,7 +342,7 @@ namespace SP_Sklad.WBForm
 
         private void RefreshDeboningDet()
         {
-            DeboningGridControl.DataSource = _db.DeboningDet.Where(w => w.WBillId == _wbill_id).Select(s => new DeboningDetList
+            DeboningDetGridControl.DataSource = _db.DeboningDet.Where(w => w.WBillId == _wbill_id).Select(s => new DeboningDetList
             {
                 DebId = s.DebId,
                 WBillId = s.WBillId,
@@ -389,6 +387,27 @@ namespace SP_Sklad.WBForm
             wb.WayBillMake.SourceWId = (int)WhComboBox.EditValue;
 
             GetOk();
+        }
+
+        private void DeboningGridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            var dr = DeboningDetGridView.GetRow(e.RowHandle) as DeboningDetList;
+            var dd = _db.DeboningDet.Find(dr.DebId);
+            if (e.Column.FieldName == "Amount")
+            {
+                dd.Amount = Convert.ToDecimal(e.Value);
+            }
+            else if (e.Column.FieldName == "Price")
+            {
+                dd.Price = Convert.ToDecimal(e.Value);
+            }
+            else if (e.Column.FieldName == "WId")
+            {
+                dd.WId = Convert.ToInt32(e.Value);
+            }
+            dr.Total = dd.Amount * dd.Price;
+
+            DeboningDetGridView.RefreshRow(e.RowHandle);
         }
     }
 }

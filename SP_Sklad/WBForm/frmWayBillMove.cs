@@ -180,20 +180,14 @@ namespace SP_Sklad.WBForm
                 return;
             }
 
-        /*    if (_db.Entry<WaybillMove>(wbm).State == EntityState.Detached)
-            {
-                _db.WaybillMove.Add(wbm);
-            }*/
-
             wb.UpdatedAt = DateTime.Now;
             _db.SaveChanges();
 
-            current_transaction.Commit();
-
             if (TurnDocCheckBox.Checked)
             {
-                _db.ExecuteWayBill(wb.WbillId, null);
+                var ew = _db.ExecuteWayBill(wb.WbillId, null).ToList();
             }
+            current_transaction.Commit();
 
             Close();
         }

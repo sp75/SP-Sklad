@@ -63,6 +63,7 @@
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.docsUserControl1 = new SP_Sklad.MainTabs.DocsUserControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
+            this.directoriesUserControl1 = new SP_Sklad.MainTabs.DirectoriesUserControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit.CalendarTimeProperties)).BeginInit();
@@ -70,6 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).BeginInit();
             this.gridSplitContainer1.SuspendLayout();
+            this.xtraTabPage6.SuspendLayout();
             this.xtraTabPage3.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -340,6 +342,7 @@
             // 
             // xtraTabPage6
             // 
+            this.xtraTabPage6.Controls.Add(this.directoriesUserControl1);
             this.xtraTabPage6.Image = global::SP_Sklad.Properties.Resources._1324534381_findjob;
             this.xtraTabPage6.Name = "xtraTabPage6";
             this.xtraTabPage6.Size = new System.Drawing.Size(1182, 578);
@@ -430,6 +433,14 @@
             this.xtraTabPage6,
             this.xtraTabPage7});
             // 
+            // directoriesUserControl1
+            // 
+            this.directoriesUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.directoriesUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.directoriesUserControl1.Name = "directoriesUserControl1";
+            this.directoriesUserControl1.Size = new System.Drawing.Size(1182, 578);
+            this.directoriesUserControl1.TabIndex = 0;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -451,6 +462,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).EndInit();
             this.gridSplitContainer1.ResumeLayout(false);
+            this.xtraTabPage6.ResumeLayout(false);
             this.xtraTabPage3.ResumeLayout(false);
             this.xtraTabPage2.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
@@ -496,6 +508,7 @@
         private MainTabs.DocsUserControl docsUserControl1;
         private MainTabs.WarehouseUserControl whUserControl;
         private MainTabs.ManufacturingUserControl manufacturingUserControl1;
+        private MainTabs.DirectoriesUserControl directoriesUserControl1;
     }
 }
 

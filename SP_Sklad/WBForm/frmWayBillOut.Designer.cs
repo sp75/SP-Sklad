@@ -1107,7 +1107,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.CheckEdit TurnDocCheckBox;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.TextEdit NumEdit;
         private DevExpress.XtraEditors.DateEdit OnDateDBEdit;
         private System.Windows.Forms.Panel panel1;
         private MainTabs.PayDocUserControl payDocUserControl1;
@@ -1140,5 +1139,6 @@
         private DevExpress.XtraBars.PopupMenu WbDetPopupMenu;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox3;
+        public DevExpress.XtraEditors.TextEdit NumEdit;
     }
 }

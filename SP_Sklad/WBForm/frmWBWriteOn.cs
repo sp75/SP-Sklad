@@ -19,8 +19,9 @@ namespace SP_Sklad.WBForm
 {
     public partial class frmWBWriteOn : Form
     {
-        BaseEntities _db { get; set; }
-        private int? _wbill_id { get; set; }
+        public  BaseEntities _db { get; set; }
+        public int? _wbill_id { get; set; }
+        public int? doc_id { get; set; }
         private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
         private GetWaybillDetIn_Result wbd_row { get; set; }
@@ -43,7 +44,7 @@ namespace SP_Sklad.WBForm
             WHComboBox.Properties.DataSource = wh_list;
             WHComboBox.EditValue = wh_list.Where(w => w.Def == 1).Select(s => s.WId).FirstOrDefault();
 
-            if (_wbill_id == null)
+            if (_wbill_id == null && doc_id == null)
             {
                 wb = _db.WaybillList.Add(new WaybillList()
                 {
@@ -98,7 +99,8 @@ namespace SP_Sklad.WBForm
 
         private void UpdLockWB()
         {
-            wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0}", _wbill_id).FirstOrDefault();
+            wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0} or DocId = {1}", _wbill_id, doc_id).FirstOrDefault();
+            _wbill_id = wb.WbillId;
         }
 
         private void RefreshDet()
@@ -183,16 +185,16 @@ namespace SP_Sklad.WBForm
 
         private bool CheckDate()
         {
+            /*  select first 1 ma.ondate, wbd.matname
+from SP_WBD_GET_IN (:WBILLID) wbd , SP_GET_MAKE_AMOUNT(wbd.wbmaked) ma
+order by  ma.ondate desc */
             var q = _db.GetWaybillDetIn(_wbill_id).Where(w => w.WbMaked != null).ToList().Select(s => new
             {
                 Make = _db.GetMakeAmount(s.WbMaked).FirstOrDefault(),
                 s.MatName
             }).OrderByDescending(o => o.Make.OnDate).FirstOrDefault();
-            /*  select first 1 ma.ondate, wbd.matname
-from SP_WBD_GET_IN (:WBILLID) wbd , SP_GET_MAKE_AMOUNT(wbd.wbmaked) ma
-order by  ma.ondate desc */
 
-            if (q != null && q.Make != null && OnDateDBEdit.DateTime > q.Make.OnDate)
+            if (q != null && q.Make != null && OnDateDBEdit.DateTime < q.Make.OnDate)
             {
                 String msg = "Дата документа не може бути меншою за дату кінця виготовлення продукції! \nПозиція: " + q.MatName + " \nДата: " + q.Make.OnDate + " \nЗмінити дату докомента на " + q.Make.OnDate + "?";
                 if (MessageBox.Show(msg, "Інформація", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)

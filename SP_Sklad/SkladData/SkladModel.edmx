@@ -3929,6 +3929,9 @@
         <Function Name="GetDeboningDet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="wbill_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="GetDirTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_id" Type="int" Mode="In" />
+        </Function>
         <Function Name="GetDiscount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ka_id" Type="int" Mode="In" />
           <Parameter Name="mat_id" Type="int" Mode="In" />
@@ -5761,6 +5764,9 @@
             <End Role="Warehouse" EntitySet="Warehouse" />
             <End Role="DeboningDet" EntitySet="DeboningDet" />
           </AssociationSet>
+          <FunctionImport Name="GetDirTree" ReturnType="Collection(BaseModel.GetDirTree_Result)">
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="GetMatGroupTree_Result">
           <Property Name="GRPID" Type="Int32" />
@@ -9703,6 +9709,25 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="GetDirTree_Result">
+          <Property Type="Int32" Name="Id" Nullable="true" />
+          <Property Type="Int32" Name="FunId" Nullable="true" />
+          <Property Type="Int32" Name="PId" Nullable="true" />
+          <Property Type="Decimal" Name="Num" Nullable="true" Precision="11" Scale="1" />
+          <Property Type="Int32" Name="GrpId" Nullable="false" />
+          <Property Type="Int32" Name="ImageIndex" Nullable="true" />
+          <Property Type="Int32" Name="IsGroup" Nullable="false" />
+          <Property Type="Int32" Name="ShowInTree" Nullable="true" />
+          <Property Type="Int32" Name="GType" Nullable="true" />
+          <Property Type="Int32" Name="DisabledIndex" Nullable="true" />
+          <Property Type="Int32" Name="ShowExpanded" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="CanView" Nullable="true" />
+          <Property Type="Int32" Name="CanInsert" Nullable="true" />
+          <Property Type="Int32" Name="CanModify" Nullable="true" />
+          <Property Type="Int32" Name="CanDelete" Nullable="true" />
+          <Property Type="Int32" Name="CanPost" Nullable="true" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -11920,6 +11945,29 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetDirTree" FunctionName="BaseModel.Store.GetDirTree">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetDirTree_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FunId" ColumnName="FunId" />
+                <ScalarProperty Name="PId" ColumnName="PId" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="ImageIndex" ColumnName="ImageIndex" />
+                <ScalarProperty Name="IsGroup" ColumnName="IsGroup" />
+                <ScalarProperty Name="ShowInTree" ColumnName="ShowInTree" />
+                <ScalarProperty Name="GType" ColumnName="GType" />
+                <ScalarProperty Name="DisabledIndex" ColumnName="DisabledIndex" />
+                <ScalarProperty Name="ShowExpanded" ColumnName="ShowExpanded" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CanView" ColumnName="CanView" />
+                <ScalarProperty Name="CanInsert" ColumnName="CanInsert" />
+                <ScalarProperty Name="CanModify" ColumnName="CanModify" />
+                <ScalarProperty Name="CanDelete" ColumnName="CanDelete" />
+                <ScalarProperty Name="CanPost" ColumnName="CanPost" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -97,8 +97,8 @@
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
-            this.DeboningGridControl = new DevExpress.XtraGrid.GridControl();
-            this.DeboningGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.DeboningDetGridControl = new DevExpress.XtraGrid.GridControl();
+            this.DeboningDetGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
@@ -139,8 +139,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             this.xtraTabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DeboningGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DeboningGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeboningDetGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeboningDetGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemWhEdit)).BeginInit();
             this.SuspendLayout();
@@ -888,6 +888,8 @@
             this.gridColumn4.Caption = "Кількість";
             this.gridColumn4.FieldName = "Amount";
             this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.OptionsColumn.AllowEdit = false;
+            this.gridColumn4.OptionsColumn.ReadOnly = true;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
             this.gridColumn4.Width = 123;
@@ -927,40 +929,41 @@
             // 
             // xtraTabPage2
             // 
-            this.xtraTabPage2.Controls.Add(this.DeboningGridControl);
+            this.xtraTabPage2.Controls.Add(this.DeboningDetGridControl);
             this.xtraTabPage2.ImageIndex = 21;
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(962, 240);
             this.xtraTabPage2.Text = "Вихід";
             // 
-            // DeboningGridControl
+            // DeboningDetGridControl
             // 
-            this.DeboningGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DeboningGridControl.Location = new System.Drawing.Point(0, 0);
-            this.DeboningGridControl.MainView = this.DeboningGridView;
-            this.DeboningGridControl.MenuManager = this.barManager1;
-            this.DeboningGridControl.Name = "DeboningGridControl";
-            this.DeboningGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.DeboningDetGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DeboningDetGridControl.Location = new System.Drawing.Point(0, 0);
+            this.DeboningDetGridControl.MainView = this.DeboningDetGridView;
+            this.DeboningDetGridControl.MenuManager = this.barManager1;
+            this.DeboningDetGridControl.Name = "DeboningDetGridControl";
+            this.DeboningDetGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemWhEdit,
             this.repositoryItemCalcEdit1});
-            this.DeboningGridControl.Size = new System.Drawing.Size(962, 240);
-            this.DeboningGridControl.TabIndex = 3;
-            this.DeboningGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.DeboningGridView});
+            this.DeboningDetGridControl.Size = new System.Drawing.Size(962, 240);
+            this.DeboningDetGridControl.TabIndex = 3;
+            this.DeboningDetGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.DeboningDetGridView});
             // 
-            // DeboningGridView
+            // DeboningDetGridView
             // 
-            this.DeboningGridView.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.DeboningGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.DeboningDetGridView.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.DeboningDetGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn9,
             this.gridColumn10,
             this.gridColumn12,
             this.gridColumn13,
             this.gridColumn14});
-            this.DeboningGridView.GridControl = this.DeboningGridControl;
-            this.DeboningGridView.Images = this.WBImgList;
-            this.DeboningGridView.Name = "DeboningGridView";
-            this.DeboningGridView.OptionsView.ShowGroupPanel = false;
+            this.DeboningDetGridView.GridControl = this.DeboningDetGridControl;
+            this.DeboningDetGridView.Images = this.WBImgList;
+            this.DeboningDetGridView.Name = "DeboningDetGridView";
+            this.DeboningDetGridView.OptionsView.ShowGroupPanel = false;
+            this.DeboningDetGridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.DeboningGridView_CellValueChanged);
             // 
             // gridColumn9
             // 
@@ -1097,8 +1100,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
             this.xtraTabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DeboningGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DeboningGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeboningDetGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeboningDetGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemWhEdit)).EndInit();
             this.ResumeLayout(false);
@@ -1175,8 +1178,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
-        private DevExpress.XtraGrid.GridControl DeboningGridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView DeboningGridView;
+        private DevExpress.XtraGrid.GridControl DeboningDetGridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView DeboningDetGridView;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;

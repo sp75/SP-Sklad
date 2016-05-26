@@ -57,7 +57,9 @@ namespace SP_Sklad.MainTabs
             DebEndDate.EditValue = DateTime.Now;
 
             DocsTreeList.DataSource = DB.SkladBase().GetManufactureTree(DBHelper.CurrentUser.UserId).ToList();
-            DocsTreeList.ExpandAll();
+            DocsTreeList.ExpandToLevel(0);// ExpandAll();
+
+            repositoryItemWhEdit.DataSource = DBHelper.WhList();
         }
 
         void GetWayBillList()
@@ -91,7 +93,7 @@ namespace SP_Sklad.MainTabs
             var dr = DeboningGridView.GetRow(DeboningGridView.FocusedRowHandle) as WBListMake_Result;
 
             DeboningGridControl.DataSource = null;
-            DeboningGridControl.DataSource = DB.SkladBase().WBListMake(satrt_date.Date, end_date.Date.AddDays(1), (int)wbSatusList.EditValue, WhComboBox.EditValue.ToString(), focused_tree_node.Num, -22).ToList();
+            DeboningGridControl.DataSource = DB.SkladBase().WBListMake(satrt_date.Date, end_date.Date.AddDays(1), (int)DebSatusList.EditValue, DebWhComboBox.EditValue.ToString(), focused_tree_node.Num, -22).ToList();
 
             DeboningGridView.FocusedRowHandle = FindRowHandleByRowObject(DeboningGridView, dr);
         }
@@ -209,7 +211,22 @@ namespace SP_Sklad.MainTabs
                 {
                     TechProcGridControl.DataSource = db.v_TechProcDet.Where(w => w.WbillId == focused_row.WbillId).OrderBy(o => o.OnDate).ToList();
                     gridControl2.DataSource = db.GetWayBillDetOut(focused_row.WbillId).ToList();
+                    gridControl4.DataSource = gridControl2.DataSource;
                     gridControl3.DataSource = db.GetRelDocList(focused_row.DocId).ToList();
+                    gridControl5.DataSource = gridControl3.DataSource;
+
+
+                    DeboningDetGridControl.DataSource = db.DeboningDet.Where(w => w.WBillId == focused_row.WbillId).Select(s => new SP_Sklad.WBForm.frmWBDeboning.DeboningDetList
+                        {
+                            DebId = s.DebId,
+                            WBillId = s.WBillId,
+                            MatId = s.MatId,
+                            Amount = s.Amount,
+                            Price = s.Price,
+                            WId = s.WId,
+                            MatName = s.Materials.Name,
+                            Total = s.Amount * s.Price
+                        }).ToList();
                 }
             }
             else
@@ -217,12 +234,6 @@ namespace SP_Sklad.MainTabs
                 gridControl2.DataSource = null;
                 gridControl3.DataSource = null;
             }
-
-            /*       DeleteItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanDelete == 1);
-                   ExecuteItemBtn.Enabled = (focused_row != null && focused_row.WType != 2 && focused_row.WType != -16 && focused_row.WType != 16 && focused_tree_node.CanPost == 1);
-                   EditItemBtn.Enabled = (focused_row != null && focused_tree_node.CanModify == 1);
-                   CopyItemBtn.Enabled = EditItemBtn.Enabled;
-                   PrintItemBtn.Enabled = (focused_row != null);*/
 
 
             StopProcesBtn.Enabled = (focused_row != null && focused_row.Checked == 2 && focused_tree_node.CanPost == 1);
@@ -365,21 +376,44 @@ namespace SP_Sklad.MainTabs
 
         private void StopProcesBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-          /*  Variant curID = WayBillListWBILLID->Value;
-            WayBillList->FullRefresh();
-            if (WayBillListCHECKED->Value == 2 && curID == WayBillListWBILLID->Value)
+            var wbl = DB.SkladBase().WaybillList.FirstOrDefault(w=> w.WbillId == focused_row.WbillId);
+            if(wbl == null)
             {
-                frmWBWriteOn = new TfrmWBWriteOn(Application);
-                frmWBWriteOn->EXECUTE_WAYBILL->ParamByName("WBILLID")->Value = WayBillListWBILLID->Value;
-                frmWBWriteOn->EXECUTE_WAYBILL->Open();
-                frmWBWriteOn->WayBillList->ParamByName("DOCID")->Value = frmWBWriteOn->EXECUTE_WAYBILLNEW_DOCID->Value;
-                frmWBWriteOn->WayBillList->Open();
-                frmWBWriteOn->WayBillList->Edit();
-                frmWBWriteOn->WayBillListCHECKED->Value = true;
-                frmWBWriteOn->ShowModal();
-                delete frmWBWriteOn;
+                return;
             }
-            RefreshBarBtn->Click();*/
+
+            if (wbl.Checked == 2 )
+            {
+                using (var f = new frmWBWriteOn())
+                {
+                    var result = f._db.ExecuteWayBill(wbl.WbillId, null).ToList().FirstOrDefault();
+                 //   f.NumEdit.Text = new BaseEntities().GetCounter("wb_write_on").FirstOrDefault();
+                    f.doc_id = result.NewDocId;
+                    f.TurnDocCheckBox.Checked = true;
+                    f.ShowDialog();
+                }
+            }
+
+            RefrechItemBtn.PerformClick();
+        }
+
+        private void wbStartDate_EditValueChanged(object sender, EventArgs e)
+        {
+            GetWayBillList();
+        }
+
+        private void DebStartDate_EditValueChanged(object sender, EventArgs e)
+        {
+            GetDeboningList();
+        }
+
+        private void WbGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                popupMenu1.ShowPopup(p2);
+            }
         }
 
     }

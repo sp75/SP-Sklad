@@ -297,6 +297,7 @@
             this.WBImgList.Images.SetKeyName(14, "Зняти з резерву.bmp");
             this.WBImgList.Images.SetKeyName(15, "Зняти з резерву все.bmp");
             this.WBImgList.Images.SetKeyName(16, "позначити.bmp");
+            this.WBImgList.Images.SetKeyName(17, "exec16.png");
             // 
             // styleController1
             // 
@@ -615,7 +616,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 8),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 10)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 17)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.WBImgList;
             // 
@@ -821,9 +822,7 @@
         private DevExpress.XtraEditors.SimpleButton NowDateBtn;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.CheckEdit TurnDocCheckBox;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.TextEdit NumEdit;
         private DevExpress.XtraEditors.DateEdit OnDateDBEdit;
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraEditors.PanelControl panelControl4;
@@ -850,5 +849,7 @@
         private DevExpress.XtraEditors.SimpleButton OkButton;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.LookUpEdit WHComboBox;
+        public DevExpress.XtraEditors.CheckEdit TurnDocCheckBox;
+        public DevExpress.XtraEditors.TextEdit NumEdit;
     }
 }

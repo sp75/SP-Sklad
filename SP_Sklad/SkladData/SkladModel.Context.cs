@@ -1234,5 +1234,14 @@ namespace SP_Sklad.SkladData
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetDeboningDet", wbill_idParameter);
         }
+    
+        public virtual ObjectResult<GetDirTree_Result> GetDirTree(Nullable<int> user_id)
+        {
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetDirTree_Result>("GetDirTree", user_idParameter);
+        }
     }
 }
