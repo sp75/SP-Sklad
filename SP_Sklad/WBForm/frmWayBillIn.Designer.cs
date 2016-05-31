@@ -251,6 +251,7 @@
             this.barButtonItem6.Id = 6;
             this.barButtonItem6.ImageIndex = 9;
             this.barButtonItem6.Name = "barButtonItem6";
+            this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
             // 
             // barButtonItem7
             // 
@@ -289,9 +290,9 @@
             this.standaloneBarDockControl1.AutoSize = true;
             this.standaloneBarDockControl1.CausesValidation = false;
             this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 240);
+            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 242);
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(969, 31);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(969, 29);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // barDockControlTop
@@ -299,7 +300,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(969, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(969, 26);
             // 
             // barDockControlBottom
             // 
@@ -312,15 +313,15 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 546);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 544);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(969, 24);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 546);
+            this.barDockControlRight.Location = new System.Drawing.Point(969, 26);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 544);
             // 
             // WBImgList
             // 
@@ -551,7 +552,7 @@
             this.KagentComboBox.Size = new System.Drawing.Size(423, 22);
             this.KagentComboBox.StyleController = this.styleController1;
             this.KagentComboBox.TabIndex = 9;
-            this.KagentComboBox.EditValueChanged += new System.EventHandler(this.NUMDBTextEdit_EditValueChanged);
+            this.KagentComboBox.EditValueChanged += new System.EventHandler(this.KagentComboBox_EditValueChanged);
             // 
             // labelControl5
             // 
@@ -674,7 +675,7 @@
             this.panelControl3.Controls.Add(this.panelControl1);
             this.panelControl3.Controls.Add(this.panel1);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl3.Location = new System.Drawing.Point(0, 24);
+            this.panelControl3.Location = new System.Drawing.Point(0, 26);
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Padding = new System.Windows.Forms.Padding(5);
             this.panelControl3.Size = new System.Drawing.Size(969, 216);
@@ -876,6 +877,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmWayBillIn";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Властивості прибуткової накладної";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmWayBillIn_FormClosed);

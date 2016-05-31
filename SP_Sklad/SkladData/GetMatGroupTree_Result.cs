@@ -13,8 +13,8 @@ namespace SP_Sklad.SkladData
     
     public partial class GetMatGroupTree_Result
     {
-        public Nullable<int> GRPID { get; set; }
-        public string NAME { get; set; }
+        public Nullable<int> GrpId { get; set; }
+        public string Name { get; set; }
         public Nullable<int> Level { get; set; }
     }
 }

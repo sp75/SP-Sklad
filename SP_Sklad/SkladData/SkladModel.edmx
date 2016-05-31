@@ -3995,12 +3995,18 @@
           <ReturnType>
             <CollectionType>
               <RowType>
-                <Property Name="GRPID" Type="int" />
-                <Property Name="NAME" Type="varchar" MaxLength="64" />
+                <Property Name="GrpId" Type="int" />
+                <Property Name="Name" Type="varchar" MaxLength="64" />
                 <Property Name="Level" Type="int" />
               </RowType>
             </CollectionType>
           </ReturnType>
+        </Function>
+        <Function Name="GetMatList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="grp" Type="int" Mode="In" />
+          <Parameter Name="get_price" Type="int" Mode="In" />
+          <Parameter Name="get_archived" Type="int" Mode="In" />
+          <Parameter Name="get_child_node" Type="int" Mode="In" />
         </Function>
         <Function Name="GetMatRemain" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="wid" Type="int" Mode="In" />
@@ -4903,9 +4909,6 @@
             <End Role="SERVICES" EntitySet="SERVICES" />
             <End Role="WAYBILLSVC" EntitySet="WAYBILLSVC" />
           </AssociationSet>
-          <FunctionImport Name="GetMatGroupTree" ReturnType="Collection(BaseModel.GetMatGroupTree_Result)" IsComposable="true">
-          <Parameter Name="root_cat_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SP_AUTO_RSV_WB_2" ReturnType="Collection(BaseModel.SP_AUTO_RSV_WB_2_Result)" IsComposable="true">
           <Parameter Name="WBILLID" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -5765,14 +5768,18 @@
             <End Role="DeboningDet" EntitySet="DeboningDet" />
           </AssociationSet>
           <FunctionImport Name="GetDirTree" ReturnType="Collection(BaseModel.GetDirTree_Result)">
-            <Parameter Name="user_id" Mode="In" Type="Int32" />
+          <Parameter Name="user_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetMatGroupTree" IsComposable="true" ReturnType="Collection(BaseModel.GetMatGroupTree_Result)">
+          <Parameter Name="root_cat_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetMatList" ReturnType="Collection(BaseModel.GetMatList_Result)">
+            <Parameter Name="grp" Mode="In" Type="Int32" />
+            <Parameter Name="get_price" Mode="In" Type="Int32" />
+            <Parameter Name="get_archived" Mode="In" Type="Int32" />
+            <Parameter Name="get_child_node" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
-        <ComplexType Name="GetMatGroupTree_Result">
-          <Property Name="GRPID" Type="Int32" />
-          <Property Name="NAME" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="Level" Type="Int32" />
-        </ComplexType>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="POSID" Type="Int32" />
@@ -9728,6 +9735,36 @@
           <Property Type="Int32" Name="CanDelete" Nullable="true" />
           <Property Type="Int32" Name="CanPost" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="GetMatGroupTree_Result">
+          <Property Type="Int32" Name="GrpId" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="Level" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetMatList_Result">
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="MId" Nullable="false" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="GrpId" Nullable="true" />
+          <Property Type="Int32" Name="WId" Nullable="true" />
+          <Property Type="Int32" Name="Num" Nullable="true" />
+          <Property Type="Decimal" Name="MinReserv" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="Int32" Name="CId" Nullable="true" />
+          <Property Type="Int32" Name="DemandCat" Nullable="true" />
+          <Property Type="Decimal" Name="Weight" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="MSize" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="String" Name="Producer" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="MType" Nullable="false" />
+          <Property Type="String" Name="ShortName" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="CName" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="Archived" Nullable="true" />
+          <Property Type="String" Name="GrpName" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="WhName" Nullable="true" MaxLength="64" />
+          <Property Type="Decimal" Name="AvgPrice" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Remain" Nullable="false" Precision="15" Scale="4" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -10243,15 +10280,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionName="BaseModel.Store.GetMatGroupTree" FunctionImportName="GetMatGroupTree">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetMatGroupTree_Result">
-                <ScalarProperty Name="GRPID" ColumnName="GRPID" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="Level" ColumnName="Level" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionName="BaseModel.Store.SP_AUTO_RSV_WB_2" FunctionImportName="SP_AUTO_RSV_WB_2">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.SP_AUTO_RSV_WB_2_Result">
@@ -11965,6 +11993,44 @@
                 <ScalarProperty Name="CanModify" ColumnName="CanModify" />
                 <ScalarProperty Name="CanDelete" ColumnName="CanDelete" />
                 <ScalarProperty Name="CanPost" ColumnName="CanPost" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetMatGroupTree" FunctionName="BaseModel.Store.GetMatGroupTree">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetMatGroupTree_Result">
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetMatList" FunctionName="BaseModel.Store.GetMatList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetMatList_Result">
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="MId" ColumnName="MId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="MinReserv" ColumnName="MinReserv" />
+                <ScalarProperty Name="CId" ColumnName="CId" />
+                <ScalarProperty Name="DemandCat" ColumnName="DemandCat" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="MSize" ColumnName="MSize" />
+                <ScalarProperty Name="Producer" ColumnName="Producer" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="MType" ColumnName="MType" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="CName" ColumnName="CName" />
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
+                <ScalarProperty Name="GrpName" ColumnName="GrpName" />
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
+                <ScalarProperty Name="AvgPrice" ColumnName="AvgPrice" />
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

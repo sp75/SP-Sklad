@@ -54,6 +54,7 @@
             this.gridSplitContainer1 = new DevExpress.XtraGrid.GridSplitContainer();
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
+            this.directoriesUserControl1 = new SP_Sklad.MainTabs.DirectoriesUserControl();
             this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
@@ -63,7 +64,7 @@
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.docsUserControl1 = new SP_Sklad.MainTabs.DocsUserControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
-            this.directoriesUserControl1 = new SP_Sklad.MainTabs.DirectoriesUserControl();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit.CalendarTimeProperties)).BeginInit();
@@ -175,9 +176,10 @@
             this.barSubItem2,
             this.barEditItem1,
             this.barEditItem2,
-            this.CurDateEditBarItem});
+            this.CurDateEditBarItem,
+            this.barButtonItem3});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 7;
+            this.barManager1.MaxItemId = 8;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTimeEdit1,
             this.repositoryItemCalcEdit1,
@@ -201,7 +203,8 @@
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem2),
-            new DevExpress.XtraBars.LinkPersistInfo(this.CurDateEditBarItem)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.CurDateEditBarItem),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -349,6 +352,15 @@
             this.xtraTabPage6.TabPageWidth = 100;
             this.xtraTabPage6.Text = "Довідники";
             // 
+            // directoriesUserControl1
+            // 
+            this.directoriesUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.directoriesUserControl1.isCatalog = false;
+            this.directoriesUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.directoriesUserControl1.Name = "directoriesUserControl1";
+            this.directoriesUserControl1.Size = new System.Drawing.Size(1182, 578);
+            this.directoriesUserControl1.TabIndex = 0;
+            // 
             // xtraTabPage5
             // 
             this.xtraTabPage5.Image = global::SP_Sklad.Properties.Resources.company;
@@ -433,13 +445,12 @@
             this.xtraTabPage6,
             this.xtraTabPage7});
             // 
-            // directoriesUserControl1
+            // barButtonItem3
             // 
-            this.directoriesUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.directoriesUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.directoriesUserControl1.Name = "directoriesUserControl1";
-            this.directoriesUserControl1.Size = new System.Drawing.Size(1182, 578);
-            this.directoriesUserControl1.TabIndex = 0;
+            this.barButtonItem3.Caption = "barButtonItem3";
+            this.barButtonItem3.Id = 7;
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
             // mainForm
             // 
@@ -509,6 +520,7 @@
         private MainTabs.WarehouseUserControl whUserControl;
         private MainTabs.ManufacturingUserControl manufacturingUserControl1;
         private MainTabs.DirectoriesUserControl directoriesUserControl1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
     }
 }
 

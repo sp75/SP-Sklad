@@ -16,6 +16,7 @@ using EntityState = System.Data.Entity.EntityState;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using SP_Sklad.Reports;
+using SP_Sklad.Common;
 
 namespace SP_Sklad.WBForm
 {
@@ -45,10 +46,11 @@ namespace SP_Sklad.WBForm
                 {
                     WType = _wtype,
                     OnDate = DBHelper.ServerDateTime(),
-                    Num =  new BaseEntities().GetCounter("wb_in").FirstOrDefault(),
+                    Num = new BaseEntities().GetCounter("wb_in").FirstOrDefault(),
                     CurrId = 2,
                     OnValue = 1,
-                    PersonId = DBHelper.CurrentUser.KaId
+                    PersonId = DBHelper.CurrentUser.KaId,
+                    Nds = DBHelper.Enterprise.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0
                 });
 
                 _db.SaveChanges();
@@ -292,6 +294,20 @@ namespace SP_Sklad.WBForm
         private void PrintBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             PrintDoc.Show(wb.DocId.Value, wb.WType, _db);
+        }
+
+        private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowMatList(_db, wb);
+            RefreshDet();
+        }
+
+        private void KagentComboBox_EditValueChanged(object sender, EventArgs e)
+        {
+            if (!KagentComboBox.ContainsFocus) return;
+
+            wb.KaId = (int?)KagentComboBox.EditValue;
+            GetOk();
         }
 
 

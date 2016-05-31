@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
+using SP_Sklad.Common;
 using SP_Sklad.Properties;
 using SP_Sklad.SkladData;
 
@@ -237,6 +238,12 @@ namespace SP_Sklad.WBDetForm
                 _db.Entry<WaybillDet>(_wbd).Reload();
             }
             Settings.Default.Save();
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            _wbd.MatId = IHelper.ShowDirectList((int)MatComboBox.EditValue, 5);
+            MatComboBox.EditValue = _wbd.MatId;
         }
     }
 }

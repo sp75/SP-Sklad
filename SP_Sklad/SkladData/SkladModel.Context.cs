@@ -120,16 +120,6 @@ namespace SP_Sklad.SkladData
         public DbSet<DeboningDet> DeboningDet { get; set; }
         public DbSet<MaterialsList> MaterialsList { get; set; }
     
-        [EdmFunction("BaseEntities", "GetMatGroupTree")]
-        public virtual IQueryable<GetMatGroupTree_Result> GetMatGroupTree(Nullable<int> root_cat_id)
-        {
-            var root_cat_idParameter = root_cat_id.HasValue ?
-                new ObjectParameter("root_cat_id", root_cat_id) :
-                new ObjectParameter("root_cat_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatGroupTree_Result>("[BaseEntities].[GetMatGroupTree](@root_cat_id)", root_cat_idParameter);
-        }
-    
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)
         {
@@ -1242,6 +1232,37 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("user_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetDirTree_Result>("GetDirTree", user_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetMatGroupTree")]
+        public virtual IQueryable<GetMatGroupTree_Result> GetMatGroupTree(Nullable<int> root_cat_id)
+        {
+            var root_cat_idParameter = root_cat_id.HasValue ?
+                new ObjectParameter("root_cat_id", root_cat_id) :
+                new ObjectParameter("root_cat_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatGroupTree_Result>("[BaseEntities].[GetMatGroupTree](@root_cat_id)", root_cat_idParameter);
+        }
+    
+        public virtual ObjectResult<GetMatList_Result> GetMatList(Nullable<int> grp, Nullable<int> get_price, Nullable<int> get_archived, Nullable<int> get_child_node)
+        {
+            var grpParameter = grp.HasValue ?
+                new ObjectParameter("grp", grp) :
+                new ObjectParameter("grp", typeof(int));
+    
+            var get_priceParameter = get_price.HasValue ?
+                new ObjectParameter("get_price", get_price) :
+                new ObjectParameter("get_price", typeof(int));
+    
+            var get_archivedParameter = get_archived.HasValue ?
+                new ObjectParameter("get_archived", get_archived) :
+                new ObjectParameter("get_archived", typeof(int));
+    
+            var get_child_nodeParameter = get_child_node.HasValue ?
+                new ObjectParameter("get_child_node", get_child_node) :
+                new ObjectParameter("get_child_node", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetMatList_Result>("GetMatList", grpParameter, get_priceParameter, get_archivedParameter, get_child_nodeParameter);
         }
     }
 }

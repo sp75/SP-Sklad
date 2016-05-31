@@ -81,6 +81,12 @@
     <Compile Include="Common\IHelper.cs" />
     <Compile Include="Common\ManufDocEdit.cs" />
     <Compile Include="Common\WhDocEdit.cs" />
+    <Compile Include="EditForm\frmCatalog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmCatalog.Designer.cs">
+      <DependentUpon>frmCatalog.cs</DependentUpon>
+    </Compile>
     <Compile Include="FinanseForm\frmPayDoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -242,6 +248,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetMatGroupTree_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetMatList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetMatRemain_Result.cs">
@@ -640,6 +649,9 @@
     <Compile Include="WBForm\frmWBWriteOn.Designer.cs">
       <DependentUpon>frmWBWriteOn.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="EditForm\frmCatalog.resx">
+      <DependentUpon>frmCatalog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FinanseForm\frmPayDoc.resx">
       <DependentUpon>frmPayDoc.cs</DependentUpon>
     </EmbeddedResource>

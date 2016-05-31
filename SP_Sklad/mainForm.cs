@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SP_Sklad.SkladData;
 using System.Data.Entity;
+using SP_Sklad.Common;
 
 namespace SP_Sklad
 {
@@ -27,6 +28,11 @@ namespace SP_Sklad
             {
                docsUserControl1.OnLoad();
             }
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            
         }
     }
 

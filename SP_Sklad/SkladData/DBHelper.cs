@@ -19,7 +19,7 @@ namespace SP_Sklad.SkladData
         private static LoginUser _current_user;
         private static List<KagentList> _kagents;
         private static List<Currency> _currency;
-        private static PersonList _enterprise;
+        private static EnterpriseList _enterprise;
         private static CommonParams _common_param;
 
         public static CommonParams CommonParam
@@ -80,13 +80,13 @@ namespace SP_Sklad.SkladData
             }
         }
 
-        public static PersonList Enterprise
+        public static EnterpriseList Enterprise
         {
             get
             {
                 if (_enterprise == null)
                 {
-                    _enterprise = new BaseEntities().Kagent.Where(w => w.KType == 3).Select(s => new PersonList() { KaId = s.KaId, Name = s.Name }).FirstOrDefault();
+                    _enterprise = new BaseEntities().Kagent.Where(w => w.KType == 3).Select(s => new EnterpriseList { KaId = s.KaId, Name = s.Name , NdsPayer = s.NdsPayer }).FirstOrDefault();
                 }
                 return _enterprise;
             }
@@ -280,6 +280,13 @@ order by wbd.ondate desc
     {
         public int KaId { get; set; }
         public String Name { get; set; }
+    }
+
+    public class EnterpriseList
+    {
+        public int KaId { get; set; }
+        public String Name { get; set; }
+        public int NdsPayer { get; set; }
     }
 
      public class LoginUser : Users
