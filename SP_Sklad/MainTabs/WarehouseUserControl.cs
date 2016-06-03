@@ -14,6 +14,7 @@ using DevExpress.XtraGrid;
 using SP_Sklad.Common;
 using SP_Sklad.Properties;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
+using SP_Sklad.EditForm;
 
 namespace SP_Sklad.MainTabs
 {
@@ -23,6 +24,17 @@ namespace SP_Sklad.MainTabs
         string wh_list = "*";
         int cur_wtype = 0;
 
+        public bool isDirectList { get; set; }
+        public bool isMatList { get; set; }
+        public List<CustomMatListWH> custom_mat_list { get; set; }
+        public WaybillList wb { get; set; }
+        public Object resut { get; set; }
+
+        public class CustomMatListWH : CustomMatList
+        {
+            public decimal? Discount { get; set; }
+            public int? PTypeId { get; set; }
+        }
 
         GetWhTree_Result focused_tree_node { get; set; }
         GetWayBillListWh_Result focused_row { get; set; }
@@ -39,28 +51,37 @@ namespace SP_Sklad.MainTabs
 
         private void WarehouseUserControl_Load(object sender, EventArgs e)
         {
-            whContentTab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
-            OnDateEdit.DateTime = DateTime.Now;
+            if (!DesignMode)
+            {
+                custom_mat_list = new List<CustomMatListWH>();
+                MatListGridControl.DataSource = custom_mat_list;
 
-            wbKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(new BaseEntities().Kagent.Select(s => new { s.KaId, s.Name }));
-            wbKagentList.EditValue = 0;
+                whContentTab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
+                OnDateEdit.DateTime = DateTime.Now;
 
-            WhComboBox.Properties.DataSource = new List<object>() { new { WId = "*", Name = "Усі" } }.Concat(new BaseEntities().Warehouse.Select(s => new { WId = s.WId.ToString(), s.Name }).ToList());
-            WhComboBox.EditValue = "*";
+                whKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(new BaseEntities().Kagent.Select(s => new { s.KaId, s.Name }));
+                whKagentList.EditValue = 0;
 
-            wbSatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
-            wbSatusList.EditValue = -1;
+                WhComboBox.Properties.DataSource = new List<object>() { new { WId = "*", Name = "Усі" } }.Concat(new BaseEntities().Warehouse.Select(s => new { WId = s.WId.ToString(), s.Name }).ToList());
+                WhComboBox.EditValue = "*";
 
-            wbStartDate.EditValue = DateTime.Now.AddDays(-30);
-            wbEndDate.EditValue = DateTime.Now;
+                wbSatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
+                wbSatusList.EditValue = -1;
 
-            GetTree(1);
+                wbStartDate.EditValue = DateTime.Now.AddDays(-30);
+                wbEndDate.EditValue = DateTime.Now;
+
+                repositoryItemLookUpEdit1.DataSource = DBHelper.WhList();
+                repositoryItemLookUpEdit2.DataSource = DBHelper.PayTypes;
+
+                GetTree(1);
+            }
         }
 
         void GetTree(int type)
         {
             WHTreeList.DataSource = new BaseEntities().GetWhTree(DBHelper.CurrentUser.UserId, type).ToList();
-            WHTreeList.ExpandToLevel(0); //ExpandAll();
+            WHTreeList.ExpandToLevel(0);
         }
 
         private void WHTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
@@ -91,7 +112,7 @@ namespace SP_Sklad.MainTabs
             var dr = WbGridView.GetRow(WbGridView.FocusedRowHandle) as GetWayBillListWh_Result;
 
             WBGridControl.DataSource = null;
-            WBGridControl.DataSource = DB.SkladBase().GetWayBillListWh(satrt_date.Date, end_date.Date.AddDays(1), wtyp, (int)wbSatusList.EditValue, "*").OrderByDescending(o => o.OnDate);
+            WBGridControl.DataSource = DB.SkladBase().GetWayBillListWh(satrt_date.Date, end_date.Date.AddDays(1), wtyp, (int)wbSatusList.EditValue, WhComboBox.EditValue.ToString()).OrderByDescending(o => o.OnDate);
 
             WbGridView.FocusedRowHandle = FindRowHandleByRowObject(WbGridView, dr);
         }
@@ -128,8 +149,8 @@ namespace SP_Sklad.MainTabs
 
             if (dr != null)
             {
-                RemainOnWhGrid.DataSource = DB.SkladBase().WMatGetByWh(dr.MatId, wid, (int)wbKagentList.EditValue, OnDateEdit.DateTime, wh_list);
-                PosGridControl.DataSource = DB.SkladBase().PosGet(dr.MatId, wid, (int)wbKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list);
+                RemainOnWhGrid.DataSource = DB.SkladBase().WMatGetByWh(dr.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, wh_list);
+                PosGridControl.DataSource = DB.SkladBase().PosGet(dr.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list);
             }
             else
             {
@@ -333,7 +354,7 @@ namespace SP_Sklad.MainTabs
                     }
 
                     WhMatGridControl.DataSource = null;
-                    WhMatGridControl.DataSource = DB.SkladBase().WhMatGet(grp_id, wid, (int)wbKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list, 0, grp, DBHelper.CurrentUser.UserId, ViewDetailTree.Down ? 1:0).ToList();
+                    WhMatGridControl.DataSource = DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list, 0, grp, DBHelper.CurrentUser.UserId, ViewDetailTree.Down ? 1:0).ToList();
 
                     break;
 
@@ -369,6 +390,51 @@ namespace SP_Sklad.MainTabs
         private void ViewDetailTree_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ByGrpBtn.Down = true;
+            RefrechItemBtn.PerformClick();
+        }
+
+        private void WhMatGridView_DoubleClick(object sender, EventArgs e)
+        {
+            if (isMatList)
+            {
+                AddItem.PerformClick();
+            }
+            else if (isDirectList)
+            {
+                var frm = this.Parent as frmCatalog;
+                frm.OkButton.PerformClick();
+            }
+        }
+
+        private void AddItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var row = WhMatGridView.GetFocusedRow() as WhMatGet_Result;
+            var wh_row = WhRemainGridView.GetFocusedRow() as WMatGetByWh_Result;
+            var t = (wb.Kagent != null ? wb.Kagent.PTypeId : null);
+            var price = DB.SkladBase().GetListMatPrices(row.MatId, wb.CurrId).FirstOrDefault(w => w.PType == t);
+
+            custom_mat_list.Add(new CustomMatListWH
+            {
+                Num = custom_mat_list.Count() + 1,
+                MatId = row.MatId.Value,
+                Name = row.MatName,
+                Amount = 1,
+                Price = price != null ? price.Price : 0,
+                WId = wh_row != null ? wh_row.WId.Value : DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId,
+                PTypeId = price != null ? price.PType : null,
+                Discount = DB.SkladBase().GetDiscount(wb.KaId, row.MatId).FirstOrDefault() ?? 0.00m
+            });
+
+            MatListGridView.RefreshData();
+        }
+
+        private void DelItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MatListGridView.DeleteSelectedRows();
+        }
+
+        private void whKagentList_EditValueChanged(object sender, EventArgs e)
+        {
             RefrechItemBtn.PerformClick();
         }
     }

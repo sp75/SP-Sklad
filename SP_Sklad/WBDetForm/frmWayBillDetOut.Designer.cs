@@ -526,6 +526,7 @@
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(22, 22);
             this.simpleButton2.TabIndex = 13;
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // btnShowRemainByWH
             // 
@@ -537,6 +538,7 @@
             this.btnShowRemainByWH.Name = "btnShowRemainByWH";
             this.btnShowRemainByWH.Size = new System.Drawing.Size(22, 22);
             this.btnShowRemainByWH.TabIndex = 12;
+            this.btnShowRemainByWH.Click += new System.EventHandler(this.btnShowRemainByWH_Click);
             // 
             // labelControl3
             // 

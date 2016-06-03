@@ -8,13 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SP_Sklad.SkladData;
+using SP_Sklad.EditForm;
+using SP_Sklad.Common;
 
 namespace SP_Sklad.MainTabs
 {
     public partial class DirectoriesUserControl : UserControl
     {
         GetDirTree_Result focused_tree_node { get; set; }
-        public bool isCatalog { get; set; }
+        public bool isDirectList { get; set; }
         public bool isMatList { get; set; }
         public List<CustomMatList> custom_mat_list { get; set; }
         public WaybillList wb { get; set; }
@@ -23,7 +25,6 @@ namespace SP_Sklad.MainTabs
         public DirectoriesUserControl()
         {
             InitializeComponent();
-           custom_mat_list  = new List<CustomMatList>();
         }
 
         private void wbStartDate_Properties_EditValueChanged(object sender, EventArgs e)
@@ -33,7 +34,7 @@ namespace SP_Sklad.MainTabs
 
         private void DirectoriesUserControl_Load(object sender, EventArgs e)
         {
-            MatListGridControl.DataSource = custom_mat_list;
+           
           /*  if (isMatList)
             {
                 xtraTabPage3.PageVisible = false;
@@ -45,6 +46,9 @@ namespace SP_Sklad.MainTabs
             }*/
             if (!DesignMode)
             {
+                custom_mat_list = new List<CustomMatList>();
+                MatListGridControl.DataSource = custom_mat_list;
+
                 using (var db = new BaseEntities())
                 {
                     repositoryItemLookUpEdit1.DataSource = DBHelper.WhList();
@@ -106,21 +110,11 @@ namespace SP_Sklad.MainTabs
             }
         }
 
-        public class CustomMatList
-        {
-          public  int Num { get; set; }
-          public int MatId { get; set; }
-          public string Name { get; set; }
-          public decimal Amount { get; set; }
-          public decimal? Price { get; set; }
-          public int WId { get; set; }
-        }
-
         private void MatGridView_DoubleClick(object sender, EventArgs e)
         {
             var row = MatGridView.GetFocusedRow() as GetMatList_Result;
 
-            if (isCatalog)
+            if (isMatList)
             {
                 var t = (wb.Kagent != null ? wb.Kagent.PTypeId : null);
                 var price = DB.SkladBase().GetListMatPrices(row.MatId, wb.CurrId).FirstOrDefault(w => w.PType == t);
@@ -137,10 +131,15 @@ namespace SP_Sklad.MainTabs
 
                 MatListGridView.RefreshData();
             }
-          /*  else if (isMatList)
+            else if (isDirectList)
             {
-                resut = row;
-            }*/
+                var frm = this.Parent as frmCatalog;
+                frm.OkButton.PerformClick();
+            }
+            else
+            {
+                new frmMaterialEdit().ShowDialog();
+            }
         }
 
         private void MatGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)

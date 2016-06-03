@@ -363,7 +363,7 @@
             // 
             // PersonEditBtn
             // 
-            this.PersonEditBtn.Image = ((System.Drawing.Image)(resources.GetObject("PersonEditBtn.Image")));
+            this.PersonEditBtn.Image = global::SP_Sklad.Properties.Resources.Склади;
             this.PersonEditBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.PersonEditBtn.Location = new System.Drawing.Point(534, 75);
             this.PersonEditBtn.Name = "PersonEditBtn";

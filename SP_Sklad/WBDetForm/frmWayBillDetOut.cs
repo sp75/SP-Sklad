@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SP_Sklad.Common;
 using SP_Sklad.SkladData;
+using EntityState = System.Data.Entity.EntityState;
 
 namespace SP_Sklad.WBDetForm
 {
@@ -363,7 +365,7 @@ namespace SP_Sklad.WBDetForm
 
         private void frmWayBillDetOut_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (_wbd != null)
+            if (_db.Entry<WaybillDet>(_wbd).State == EntityState.Modified)
             {
                 _db.Entry<WaybillDet>(_wbd).Reload();
             }
@@ -378,6 +380,32 @@ namespace SP_Sklad.WBDetForm
             AmountEdit.Value = _wbd.Amount;
 
             GetOk();
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            if (_wb.WType == -16)
+            {
+                MatComboBox.EditValue = IHelper.ShowDirectList(MatComboBox.EditValue, 5);
+            }
+            else
+            {
+                var result = IHelper.ShowRemainByWH(MatComboBox.EditValue, WHComboBox.EditValue, 1);
+                _wbd.WId = result.wid;
+                WHComboBox.EditValue = result.wid;
+                _wbd.MatId = result.mat_id;
+                MatComboBox.EditValue = result.mat_id;
+            }
+        }
+
+        private void btnShowRemainByWH_Click(object sender, EventArgs e)
+        {
+         /*   Variant savePoint = MatComboBox->EditValue;// 06.12.12
+
+            WayBIllDetWID->Value = frmMain->ShowRemainByWH(MatComboBox->EditValue, WHComboBox->EditValue, 2, MatComboBox->EditValue)->WID;
+
+            if (!savePoint.IsEmpty() && !savePoint.IsNull()) WayBIllDetMATID->Value = savePoint;  // 06.12.12*/
+
         }
 
     }

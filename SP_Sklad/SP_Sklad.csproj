@@ -87,6 +87,18 @@
     <Compile Include="EditForm\frmCatalog.Designer.cs">
       <DependentUpon>frmCatalog.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditForm\frmMaterialEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmMaterialEdit.Designer.cs">
+      <DependentUpon>frmMaterialEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditForm\frmWhCatalog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmWhCatalog.Designer.cs">
+      <DependentUpon>frmWhCatalog.cs</DependentUpon>
+    </Compile>
     <Compile Include="FinanseForm\frmPayDoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -651,6 +663,12 @@
     </Compile>
     <EmbeddedResource Include="EditForm\frmCatalog.resx">
       <DependentUpon>frmCatalog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmMaterialEdit.resx">
+      <DependentUpon>frmMaterialEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmWhCatalog.resx">
+      <DependentUpon>frmWhCatalog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FinanseForm\frmPayDoc.resx">
       <DependentUpon>frmPayDoc.cs</DependentUpon>

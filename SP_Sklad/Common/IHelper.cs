@@ -43,7 +43,7 @@ namespace SP_Sklad.Common
             f.uc.xtraTabPage13.PageVisible = false;
             f.uc.xtraTabPage14.PageVisible = true;
             f.uc.wb = wb;
-            f.uc.isCatalog = true;
+            f.uc.isMatList = true;
 
             if (f.ShowDialog() == DialogResult.OK)
             {
@@ -80,7 +80,48 @@ namespace SP_Sklad.Common
             }
         }
 
-        static public int ShowDirectList(int old_ID, int Typ)
+        static public void ShowMatListByWH(BaseEntities db, WaybillList wb)
+        {
+            var f = new frmWhCatalog(1);
+
+            //   f.uc.xtraTabPage3.PageVisible = false;
+            f.uc.xtraTabPage4.PageVisible = false;
+            f.uc.xtraTabPage5.PageVisible = false;
+            f.uc.xtraTabPage9.PageVisible = false;
+            f.uc.xtraTabPage10.PageVisible = true;
+            f.uc.xtraTabControl1.SelectedTabPageIndex = 4;
+            f.uc.wb = wb;
+            f.uc.isMatList = true;
+
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                foreach (var item in f.uc.custom_mat_list)
+                {
+                    var wbd = db.WaybillDet.Add(new WaybillDet
+                    {
+                        WbillId = wb.WbillId,
+                        OnDate = wb.OnDate,
+                        MatId = item.MatId,
+                        WId = item.WId,
+                        Amount = item.Amount,
+                        Price = item.Price - (item.Price * item.Discount / 100),
+                        PtypeId = item.PTypeId,
+                        Discount = item.Discount,
+                        Nds = wb.Nds,
+                        CurrId = wb.CurrId,
+                        OnValue = wb.OnValue,
+                        BasePrice = item.Price + Math.Round(item.Price.Value * wb.Nds.Value / 100, 2),
+                        PosKind = 0,
+                        PosParent = 0,
+                        DiscountKind = 0
+
+                    });
+                }
+                db.SaveChanges();
+            }
+        }
+
+        static public object ShowDirectList(object old_id, int Typ)
         {
             switch (Typ)
             {
@@ -108,9 +149,15 @@ namespace SP_Sklad.Common
                           break;*/
 
                 case 5:  //Товари
-                    var f = new frmCatalog(2);
-                    f.Text = "Товари";
-                    if (f.ShowDialog() == DialogResult.OK) old_ID = (f.uc.resut as GetMatList_Result).MatId;
+                    using (var f = new frmCatalog(2))
+                    {
+                        f.uc.isDirectList = true;
+                        f.Text = "Товари";
+                        if (f.ShowDialog() == DialogResult.OK)
+                        {
+                            old_id = (f.uc.resut as GetMatList_Result).MatId;
+                        }
+                    }
                     break;
 
                 /*  case 6: frmDirect->DirectTree->Filter = "ID=102";  //Статті витрат
@@ -174,8 +221,84 @@ namespace SP_Sklad.Common
 
             }
 
-            return old_ID;
+            return old_id;
 
         }
+
+        public class ReturnRemainByWH
+        {
+            public int mat_id { get; set; }
+            public int? wid { get; set; }
+        }
+
+        static public ReturnRemainByWH ShowRemainByWH(object old_MATID, object old_WID, int Typ)
+        {
+            var result = new ReturnRemainByWH();
+
+            var f = new frmWhCatalog(1);
+            f.uc.OnDateEdit.Enabled = false;
+
+            switch (Typ)
+            {
+                case 1: f.Text = "Склад";//(f.uc.WHTreeList.DataSource as List<GetWhTree_Result>).fir
+
+                    // frmWHPanel->SP_WMAT_GET->Locate("MATID",MATID, TLocateOptions()) ;
+                    if (f.ShowDialog() == DialogResult.OK)
+                    {
+                        result.mat_id = (f.uc.WhMatGridView.GetFocusedRow() as WhMatGet_Result).MatId.Value;
+                        result.wid = (f.uc.WhRemainGridView.GetFocusedRow() as WMatGetByWh_Result).WId;
+                    }
+                    else
+                    {
+                        result.mat_id = old_MATID != null ? (int)old_MATID : 0;
+                        result.wid = (int?)old_WID ;
+                    }
+                    break;
+
+                /*     case 2: frmWHPanel->Caption = "Наявність на складах: "+frmWHPanel->WhTreeDataNAME->Value;
+                             frmWHPanel->WhTreeData->Filter = "GTYPE=1";
+                             frmWHPanel->cxGrid3->Parent = frmWHPanel;
+                             if(frmWHPanel->SP_WMAT_GET->Locate("MATID",MATID,TLocateOptions()))
+                              {
+                                 if(frmWHPanel->ShowModal()== mrOk)
+                                  {
+                                     result[0] = frmWHPanel->SP_WMAT_GETMATID->Value;
+                                     result[1] = frmWHPanel->WMAT_GET_BY_WHWID->Value;
+                                  } else {
+                                     result[0] = old_MATID;
+                                     result[1] = old_WID;
+                                  }
+                             }else {
+                                     result[0] = old_MATID;
+                                     result[1] = old_WID;
+                                   }
+                             break;*/
+
+            }
+
+
+
+            return result;
+        }
+    }
+
+    public class CustomMatList
+    {
+        public int Num { get; set; }
+        public int MatId { get; set; }
+        public string Name { get; set; }
+        public decimal Amount { get; set; }
+        public decimal? Price { get; set; }
+        public int WId { get; set; }
+    }
+
+    public class CatalogTreeList
+    {
+        public int Id { get; set; }
+        public int ParentId { get; set; }
+        public string Text { get; set; }
+        public int ImgIdx { get; set; }
+        public int TabIdx { get; set; }
+        public int DataSetId { get; set; }
     }
 }

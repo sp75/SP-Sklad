@@ -355,7 +355,7 @@
             // directoriesUserControl1
             // 
             this.directoriesUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.directoriesUserControl1.isCatalog = false;
+            this.directoriesUserControl1.isDirectList = false;
             this.directoriesUserControl1.Location = new System.Drawing.Point(0, 0);
             this.directoriesUserControl1.Name = "directoriesUserControl1";
             this.directoriesUserControl1.Size = new System.Drawing.Size(1182, 578);

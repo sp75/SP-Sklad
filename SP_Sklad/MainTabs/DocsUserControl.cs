@@ -37,32 +37,32 @@ namespace SP_Sklad.MainTabs
         private void DocumentsPanel_Load(object sender, EventArgs e)
         {
             wbContentTab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
-        }
 
-        public void OnLoad()
-        {
-            _db = new BaseEntities();
+            if (!DesignMode)
+            {
+                _db = new BaseEntities();
 
-            wbKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
-            wbKagentList.EditValue = 0;
+                wbKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
+                wbKagentList.EditValue = 0;
 
-            wbSatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
-            wbSatusList.EditValue = -1;
+                wbSatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
+                wbSatusList.EditValue = -1;
 
-            wbStartDate.EditValue = DateTime.Now.AddDays(-30);
-            wbEndDate.EditValue = DateTime.Now;
+                wbStartDate.EditValue = DateTime.Now.AddDays(-30);
+                wbEndDate.EditValue = DateTime.Now;
 
-            PDStartDate.EditValue = DateTime.Now.AddDays(-30);
-            PDEndDate.EditValue = DateTime.Now;
+                PDStartDate.EditValue = DateTime.Now.AddDays(-30);
+                PDEndDate.EditValue = DateTime.Now;
 
-            PDKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
-            PDKagentList.EditValue = 0;
+                PDKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
+                PDKagentList.EditValue = 0;
 
-            PDSatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
-            PDSatusList.EditValue = -1;
+                PDSatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
+                PDSatusList.EditValue = -1;
 
-            DocsTreeList.DataSource = _db.v_GetDocsTree.Where(w => w.UserId == null || w.UserId == DBHelper.CurrentUser.UserId).OrderBy(o => o.Num).ToList();
-            DocsTreeList.ExpandAll();
+                DocsTreeList.DataSource = _db.v_GetDocsTree.Where(w => w.UserId == null || w.UserId == DBHelper.CurrentUser.UserId).OrderBy(o => o.Num).ToList();
+                DocsTreeList.ExpandAll();
+            }
         }
 
         void GetWayBillList(int wtyp)

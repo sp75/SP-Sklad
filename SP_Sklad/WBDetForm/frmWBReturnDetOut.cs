@@ -85,6 +85,7 @@ namespace SP_Sklad.WBDetForm
                     }
                 }
             }
+            GetOk();
         }
 
         bool GetOk()
@@ -215,7 +216,11 @@ namespace SP_Sklad.WBDetForm
             {
                 if (RSVCheckBox.Checked && !_db.WMatTurn.Any(w => w.SourceId == _wbd.PosId))
                 {
-                    _db.WaybillDet.Remove(_wbd);
+                    var sate = _db.Entry<WaybillDet>(_wbd).State;
+                    if (sate == EntityState.Modified || sate == EntityState.Unchanged)
+                    {
+                        _db.WaybillDet.Remove(_wbd);
+                    }
 
                     foreach (var item in pos_in.Where(w => w.Amount > 0))
                     {

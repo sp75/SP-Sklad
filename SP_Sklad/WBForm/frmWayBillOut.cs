@@ -15,6 +15,7 @@ using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using System.Data.Entity.Core.Objects;
 using DevExpress.XtraGrid;
+using SP_Sklad.Common;
 
 namespace SP_Sklad.WBForm
 {
@@ -391,7 +392,14 @@ namespace SP_Sklad.WBForm
             OnDateDBEdit.DateTime = wb.OnDate;
         }
 
+        private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (wb.WType == -16) IHelper.ShowMatList(_db, wb);
+            else IHelper.ShowMatListByWH(_db, wb);
 
+         //   if (MessageDlg("Зарезервувати товар ? ", mtConfirmation, TMsgDlgButtons() << mbYes << mbNo, 0) == mrYes) RSVAllBarBtn->Click();
+            RefreshDet();
+        }
 
     }
 }

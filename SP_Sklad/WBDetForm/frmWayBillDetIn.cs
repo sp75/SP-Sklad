@@ -191,11 +191,19 @@ namespace SP_Sklad.WBDetForm
                 PriceEdit.EditValue = _wbd.Price;
                 NdsEdit.EditValue = _wbd.Nds;
                 BasePriceEdit.EditValue = _wbd.BasePrice;
+
+                var p = _db.WayBillDetAddProps.FirstOrDefault(w => w.PosId == _wbd.PosId);
+
+                MatComboBox.Enabled = (p == null || p.WbMaked == null);
+                MatEditBtn.Enabled = MatComboBox.Enabled;
+                AmountEdit.Enabled = (MatComboBox.Enabled /*|| WayBillDetAddPropsWTYPE->Value == -22*/ );
+                ManufEditBtn.Visible = ((p == null || p.WaybillList == null || p.WaybillList.WType == -20) && _wb.WType == 5);
             }
             else
             {
                 AmountEdit.EditValue = 1;
                 PriceEdit.EditValue = 0;
+                ManufEditBtn.Visible = (_wb.WType == 5);
             }
 
             GetOk();
@@ -240,10 +248,21 @@ namespace SP_Sklad.WBDetForm
             Settings.Default.Save();
         }
 
-        private void simpleButton2_Click(object sender, EventArgs e)
+        private void MatEditBtn_Click(object sender, EventArgs e)
         {
-            _wbd.MatId = IHelper.ShowDirectList((int)MatComboBox.EditValue, 5);
-            MatComboBox.EditValue = _wbd.MatId;
+            MatComboBox.EditValue = IHelper.ShowDirectList(MatComboBox.EditValue, 5);
+
+            if (_wbd != null)
+            {
+                var p = _db.WayBillDetAddProps.FirstOrDefault(w => w.PosId == _wbd.PosId);
+                if (p != null && p.WbMaked != null)
+                {
+                    p.WbMaked = null;
+                    MatComboBox.Enabled = true;
+                    //    MatEditBtn.Enabled = true;
+                    AmountEdit.Enabled = true;
+                }
+            }
         }
     }
 }

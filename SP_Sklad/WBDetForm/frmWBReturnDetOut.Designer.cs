@@ -878,6 +878,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmWBReturnDetOut";
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Властивості позиції по документу";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmWBReturnDetOut_FormClosed);
             this.Load += new System.EventHandler(this.frmWBReturnDetOut_Load);

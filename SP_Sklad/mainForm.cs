@@ -23,11 +23,6 @@ namespace SP_Sklad
         private void mainForm_Load(object sender, EventArgs e)
         {
             CurDateEditBarItem.EditValue = DateTime.Now;
-            
-            using (var db  = new BaseEntities())
-            {
-               docsUserControl1.OnLoad();
-            }
         }
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
