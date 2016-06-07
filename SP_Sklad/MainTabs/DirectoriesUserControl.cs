@@ -146,5 +146,266 @@ namespace SP_Sklad.MainTabs
         {
             resut = MatGridView.GetFocusedRow();
         }
+
+        private void EditItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            switch (focused_tree_node.GType)
+            {
+           /*     case 1: frmKAgentEdit = new TfrmKAgentEdit(Application);
+                    frmKAgentEdit->KAgent->ParamByName("KAID")->Value = KAgentKAID->Value;
+                    frmKAgentEdit->KAgent->Open();
+                    frmKAgentEdit->KAgent->Edit();
+                    frmKAgentEdit->ShowModal();
+                    delete frmKAgentEdit;
+                    KAgent->Refresh();
+                   
+                    break;*/
+
+                case 2:
+                    var r = resut as GetMatList_Result;
+                    new frmMaterialEdit(r.MatId).ShowDialog();
+                    break;
+
+           /*     case 3: frmServicesEdit = new TfrmServicesEdit(Application);
+                    frmServicesEdit->Services->ParamByName("SVCID")->Value = ServicesSVCID->Value;
+                    frmServicesEdit->Services->Open();
+                    frmServicesEdit->Services->Edit();
+                    frmServicesEdit->ShowModal();
+                    delete frmServicesEdit;
+                    DirectTree->Refresh();
+                    Services->FullRefresh();
+                    break;
+
+                case 4: switch (DirectTreeID->Value)
+                    {
+                        case 25: frmWarehouseEdit = new TfrmWarehouseEdit(Application);
+                            frmWarehouseEdit->Warehouse->ParamByName("WID")->Value = SkladData->WarehouseWID->Value;
+                            frmWarehouseEdit->Warehouse->Open();
+                            frmWarehouseEdit->Warehouse->Edit();
+                            frmWarehouseEdit->ShowModal();
+                            delete frmWarehouseEdit;
+                            SkladData->Warehouse->FullRefresh();
+                            break;
+
+                        case 11: frmBanksEdit = new TfrmBanksEdit(Application);
+                            frmBanksEdit->Banks->ParamByName("BANKID")->Value = SkladData->BanksBANKID->Value;
+                            frmBanksEdit->Banks->Open();
+                            frmBanksEdit->Banks->Edit();
+                            frmBanksEdit->ShowModal();
+                            delete frmBanksEdit;
+                            SkladData->Banks->FullRefresh();
+                            break;
+
+                        case 2: frmMeasuresEdit = new TfrmMeasuresEdit(Application);
+                            frmMeasuresEdit->Measures->ParamByName("MID")->Value = SkladData->MeasuresMID->Value;
+                            frmMeasuresEdit->Measures->Open();
+                            frmMeasuresEdit->Measures->Edit();
+                            frmMeasuresEdit->ShowModal();
+                            delete frmMeasuresEdit;
+                            SkladData->Measures->FullRefresh();
+                            break;
+
+                        case 40: frmPricetypesEdit = new TfrmPricetypesEdit(Application);
+                            frmPricetypesEdit->Pricetypes->ParamByName("PTYPEID")->Value = SkladData->PricetypesPTYPEID->Value;
+                            frmPricetypesEdit->Pricetypes->Open();
+                            frmPricetypesEdit->Pricetypes->Edit();
+                            frmPricetypesEdit->ShowModal();
+                            delete frmPricetypesEdit;
+                            SkladData->Pricetypes->FullRefresh();
+                            break;
+
+                        case 12: frmAccountTypeEdit = new TfrmAccountTypeEdit(Application);
+                            frmAccountTypeEdit->AccountType->ParamByName("TYPEID")->Value = SkladData->AccountTypeTYPEID->Value;
+                            frmAccountTypeEdit->AccountType->Open();
+                            frmAccountTypeEdit->AccountType->Edit();
+                            frmAccountTypeEdit->ShowModal();
+                            delete frmAccountTypeEdit;
+                            SkladData->AccountType->FullRefresh();
+                            break;
+
+                        case 43: frmCountriesEdit = new TfrmCountriesEdit(Application);
+                            frmCountriesEdit->Countries->ParamByName("CID")->Value = SkladData->CountriesCID->Value;
+                            frmCountriesEdit->Countries->Open();
+                            frmCountriesEdit->Countries->Edit();
+                            frmCountriesEdit->ShowModal();
+                            delete frmCountriesEdit;
+                            SkladData->Countries->FullRefresh();
+                            break;
+
+                        case 102: frmChargetypeEdit = new TfrmChargetypeEdit(Application);
+                            frmChargetypeEdit->Chargetype->ParamByName("CTYPEID")->Value = SkladData->ChargetypeCTYPEID->Value;
+                            frmChargetypeEdit->Chargetype->Open();
+                            frmChargetypeEdit->Chargetype->Edit();
+                            frmChargetypeEdit->ShowModal();
+                            delete frmChargetypeEdit;
+                            SkladData->Chargetype->FullRefresh();
+                            break;
+
+                        case 64: frmCashdesksEdit = new TfrmCashdesksEdit(Application);
+                            frmCashdesksEdit->Cashdesks->ParamByName("CASHID")->Value = SkladData->CashdesksCASHID->Value;
+                            frmCashdesksEdit->Cashdesks->Open();
+                            frmCashdesksEdit->Cashdesks->Edit();
+                            frmCashdesksEdit->ShowModal();
+                            delete frmCashdesksEdit;
+                            SkladData->Cashdesks->FullRefresh();
+                            break;
+
+                        case 42:
+                        case 53: frmMatRecipe = new TfrmMatRecipe(Application);
+                            frmMatRecipe->MatRecipe->ParamByName("RECID")->Value = SkladData->MatRecipeRECID->Value;
+                            frmMatRecipe->MatRecipe->Open();
+                            frmMatRecipe->MatRecipe->Edit();
+                            frmMatRecipe->ShowModal();
+                            delete frmMatRecipe;
+                            SkladData->MatRecipe->FullRefresh();
+                            break;
+
+                        case 112: frmTechProcessEdit = new TfrmTechProcessEdit(Application);
+                            frmTechProcessEdit->TechProcess->ParamByName("PROCID")->Value = SkladData->TechProcessPROCID->Value;
+                            frmTechProcessEdit->TechProcess->Open();
+                            frmTechProcessEdit->TechProcess->Edit();
+                            frmTechProcessEdit->ShowModal();
+                            delete frmTechProcessEdit;
+                            SkladData->TechProcess->FullRefresh();
+                            break;
+                    }
+                    break;*/
+
+            }
+        }
+
+        private void NewItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+            switch (focused_tree_node.GType)
+            {
+            /*    case 1: frmKAgentEdit = new TfrmKAgentEdit(Application);
+                    frmKAgentEdit->KAgent->Open();
+                    frmKAgentEdit->KAgent->Append();
+                    frmKAgentEdit->ShowModal();
+                    delete frmKAgentEdit;
+                    KAgent->Refresh();
+                    KAgent->FullRefresh();
+                    break;*/
+
+                case 2: var mat_edit = new frmMaterialEdit();
+                  
+               /*     if (frmMaterialEdit->MatGroup->IsEmpty())
+                    {
+                        delete frmMaterialEdit;
+                        break;
+                    }
+                  
+                    if (frmMaterialEdit->MatGroup->Locate("GRPID", DirectTreeID->Value * -1, TLocateOptions()))
+                        frmMaterialEdit->MaterialsGRPID->Value = DirectTreeID->Value * -1;
+                    else
+                    {
+                        frmMaterialEdit->MatGroup->First();
+                        frmMaterialEdit->MaterialsGRPID->Value = frmMaterialEdit->MatGroupGRPID->Value;
+                    }*/
+                    mat_edit.ShowDialog();
+                    break;
+/*
+                case 3: frmServicesEdit = new TfrmServicesEdit(Application);
+                    frmServicesEdit->Services->Open();
+                    frmServicesEdit->SvcGroup->Locate("GRPID", DirectTreeID->Value, TLocateOptions());
+                    frmServicesEdit->Services->Append();
+                    frmServicesEdit->ShowModal();
+                    delete frmServicesEdit;
+                    Services->FullRefresh();
+                    break;
+
+                case 4: switch (DirectTreeID->Value)
+                    {
+                        case 25: frmWarehouseEdit = new TfrmWarehouseEdit(Application);
+                            frmWarehouseEdit->Warehouse->Open();
+                            frmWarehouseEdit->Warehouse->Append();
+                            frmWarehouseEdit->ShowModal();
+                            delete frmWarehouseEdit;
+                            SkladData->Warehouse->FullRefresh();
+                            break;
+
+                        case 11: frmBanksEdit = new TfrmBanksEdit(Application);
+                            frmBanksEdit->Banks->Open();
+                            frmBanksEdit->Banks->Append();
+                            frmBanksEdit->ShowModal();
+                            delete frmBanksEdit;
+                            SkladData->Banks->FullRefresh();
+                            break;
+
+                        case 2: frmMeasuresEdit = new TfrmMeasuresEdit(Application);
+                            frmMeasuresEdit->Measures->Open();
+                            frmMeasuresEdit->Measures->Append();
+                            frmMeasuresEdit->ShowModal();
+                            delete frmMeasuresEdit;
+                            SkladData->Measures->FullRefresh();
+                            break;
+
+                        case 40: frmPricetypesEdit = new TfrmPricetypesEdit(Application);
+                            frmPricetypesEdit->Pricetypes->Open();
+                            frmPricetypesEdit->Pricetypes->Append();
+                            frmPricetypesEdit->ShowModal();
+                            delete frmPricetypesEdit;
+                            SkladData->Pricetypes->FullRefresh();
+                            break;
+
+                        case 12: frmAccountTypeEdit = new TfrmAccountTypeEdit(Application);
+                            frmAccountTypeEdit->AccountType->Open();
+                            frmAccountTypeEdit->AccountType->Append();
+                            frmAccountTypeEdit->ShowModal();
+                            delete frmAccountTypeEdit;
+                            SkladData->AccountType->FullRefresh();
+                            break;
+
+                        case 43: frmCountriesEdit = new TfrmCountriesEdit(Application);
+                            frmCountriesEdit->Countries->Open();
+                            frmCountriesEdit->Countries->Append();
+                            frmCountriesEdit->ShowModal();
+                            delete frmCountriesEdit;
+                            SkladData->Countries->FullRefresh();
+                            break;
+
+                        case 102: frmChargetypeEdit = new TfrmChargetypeEdit(Application);
+                            frmChargetypeEdit->Chargetype->Open();
+                            frmChargetypeEdit->Chargetype->Append();
+                            frmChargetypeEdit->ShowModal();
+                            delete frmChargetypeEdit;
+                            SkladData->Chargetype->FullRefresh();
+                            break;
+
+                        case 64: frmCashdesksEdit = new TfrmCashdesksEdit(Application);
+                            frmCashdesksEdit->Cashdesks->Open();
+                            frmCashdesksEdit->Cashdesks->Append();
+                            frmCashdesksEdit->ShowModal();
+                            delete frmCashdesksEdit;
+                            SkladData->Cashdesks->FullRefresh();
+                            break;
+
+                        case 42:
+                        case 53: frmMatRecipe = new TfrmMatRecipe(Application);
+                            frmMatRecipe->MatRecipe->Open();
+                            frmMatRecipe->MatRecipe->Append();
+                            if (DirectTreeID->Value == 53) frmMatRecipe->MatRecipeRTYPE->Value = 1;
+                            if (DirectTreeID->Value == 42) frmMatRecipe->MatRecipeRTYPE->Value = 2;
+                            frmMatRecipe->ShowModal();
+                            delete frmMatRecipe;
+                            SkladData->MatRecipe->FullRefresh();
+                            break;
+
+                        case 112: frmTechProcessEdit = new TfrmTechProcessEdit(Application);
+                            frmTechProcessEdit->TechProcess->Open();
+                            frmTechProcessEdit->TechProcess->Append();
+                            frmTechProcessEdit->ShowModal();
+                            delete frmTechProcessEdit;
+                            SkladData->TechProcess->FullRefresh();
+                            break;
+
+                    }
+                    break;*/
+
+
+            }
+
+        }
     }
 }

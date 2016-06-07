@@ -376,6 +376,7 @@
     <Compile Include="SkladData\MONEYSALDO.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\ObservableListSource.cs" />
     <Compile Include="SkladData\OPERLOG.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>

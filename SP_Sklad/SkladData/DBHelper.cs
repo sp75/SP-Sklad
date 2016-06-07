@@ -21,6 +21,19 @@ namespace SP_Sklad.SkladData
         private static List<Currency> _currency;
         private static EnterpriseList _enterprise;
         private static CommonParams _common_param;
+        private static List<Measures> _measures;
+
+        public static List<Measures> MeasuresList
+        {
+            get
+            {
+                if (_measures == null)
+                {
+                    _measures = new BaseEntities().Measures.ToList();
+                }
+                return _measures;
+            }
+        }
 
         public static CommonParams CommonParam
         {

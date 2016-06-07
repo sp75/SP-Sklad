@@ -451,6 +451,7 @@
             this.NewItemBtn.Id = 0;
             this.NewItemBtn.ImageIndex = 0;
             this.NewItemBtn.Name = "NewItemBtn";
+            this.NewItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewItemBtn_ItemClick);
             // 
             // CopyItemBtn
             // 
@@ -465,6 +466,7 @@
             this.EditItemBtn.Id = 2;
             this.EditItemBtn.ImageIndex = 2;
             this.EditItemBtn.Name = "EditItemBtn";
+            this.EditItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.EditItemBtn_ItemClick);
             // 
             // DeleteItemBtn
             // 
@@ -1630,13 +1632,13 @@
             // xtraTabPage8
             // 
             this.xtraTabPage8.Name = "xtraTabPage8";
-            this.xtraTabPage8.Size = new System.Drawing.Size(853, 621);
+            this.xtraTabPage8.Size = new System.Drawing.Size(853, 590);
             this.xtraTabPage8.Text = "Послуги";
             // 
             // xtraTabPage9
             // 
             this.xtraTabPage9.Name = "xtraTabPage9";
-            this.xtraTabPage9.Size = new System.Drawing.Size(853, 621);
+            this.xtraTabPage9.Size = new System.Drawing.Size(853, 590);
             this.xtraTabPage9.Text = "Довідники";
             // 
             // xtraTabPage11
