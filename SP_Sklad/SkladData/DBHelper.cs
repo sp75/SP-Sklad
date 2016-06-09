@@ -22,6 +22,20 @@ namespace SP_Sklad.SkladData
         private static EnterpriseList _enterprise;
         private static CommonParams _common_param;
         private static List<Measures> _measures;
+        private static List<Countries> _counters;
+
+        public static List<Countries> CountersList
+        {
+            get
+            {
+                if (_counters == null)
+                {
+                    _counters = new BaseEntities().Countries.ToList();
+                }
+                return _counters;
+            }
+        }
+
 
         public static List<Measures> MeasuresList
         {

@@ -12,18 +12,18 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class COUNTRIES
+    public partial class Countries
     {
-        public COUNTRIES()
+        public Countries()
         {
             this.Materials = new HashSet<Materials>();
         }
     
-        public int CID { get; set; }
-        public string NAME { get; set; }
-        public string SHORTNAME { get; set; }
-        public int DELETED { get; set; }
-        public Nullable<int> DEF { get; set; }
+        public int CId { get; set; }
+        public string Name { get; set; }
+        public string ShortName { get; set; }
+        public int Deleted { get; set; }
+        public Nullable<int> Def { get; set; }
     
         public virtual ICollection<Materials> Materials { get; set; }
     }

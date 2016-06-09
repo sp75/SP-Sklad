@@ -16,8 +16,8 @@ namespace SP_Sklad.SkladData
     {
         public Measures()
         {
-            this.Materials = new HashSet<Materials>();
             this.SERVICES = new HashSet<SERVICES>();
+            this.Materials = new HashSet<Materials>();
         }
     
         public int MId { get; set; }
@@ -27,7 +27,7 @@ namespace SP_Sklad.SkladData
         public int Deleted { get; set; }
         public string Code { get; set; }
     
-        public virtual ICollection<Materials> Materials { get; set; }
         public virtual ICollection<SERVICES> SERVICES { get; set; }
+        public virtual ICollection<Materials> Materials { get; set; }
     }
 }

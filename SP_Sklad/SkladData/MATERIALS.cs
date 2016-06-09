@@ -17,17 +17,17 @@ namespace SP_Sklad.SkladData
         public Materials()
         {
             this.CONTRDET = new HashSet<CONTRDET>();
+            this.DeboningDet = new HashSet<DeboningDet>();
             this.KAMATDISCOUNT = new HashSet<KAMATDISCOUNT>();
             this.MATCHANGE = new HashSet<MATCHANGE>();
             this.MATCHANGE1 = new HashSet<MATCHANGE>();
-            this.WMatTurn = new HashSet<WMatTurn>();
-            this.MATPRICES = new HashSet<MATPRICES>();
-            this.WaybillDet = new HashSet<WaybillDet>();
             this.MatRemains = new HashSet<MatRemains>();
             this.PosRemains = new HashSet<PosRemains>();
-            this.TAXWBDET = new HashSet<TAXWBDET>();
+            this.WMatTurn = new HashSet<WMatTurn>();
             this.MatRecipe = new HashSet<MatRecipe>();
-            this.DeboningDet = new HashSet<DeboningDet>();
+            this.MATPRICES = new HashSet<MATPRICES>();
+            this.TAXWBDET = new HashSet<TAXWBDET>();
+            this.WaybillDet = new HashSet<WaybillDet>();
         }
     
         public int MatId { get; set; }
@@ -54,25 +54,30 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> DateAdded { get; set; }
         public Nullable<System.DateTime> DateModified { get; set; }
         public string Notes { get; set; }
+        public string CF1 { get; set; }
+        public string CF2 { get; set; }
+        public string CF3 { get; set; }
+        public string CF4 { get; set; }
+        public string CF5 { get; set; }
         public byte[] BMP { get; set; }
     
         public virtual ICollection<CONTRDET> CONTRDET { get; set; }
-        public virtual COUNTRIES COUNTRIES { get; set; }
+        public virtual Countries Countries { get; set; }
+        public virtual ICollection<DeboningDet> DeboningDet { get; set; }
         public virtual ICollection<KAMATDISCOUNT> KAMATDISCOUNT { get; set; }
         public virtual ICollection<MATCHANGE> MATCHANGE { get; set; }
         public virtual ICollection<MATCHANGE> MATCHANGE1 { get; set; }
         public virtual MatGroup MatGroup { get; set; }
-        public virtual ICollection<WMatTurn> WMatTurn { get; set; }
-        public virtual ICollection<MATPRICES> MATPRICES { get; set; }
         public virtual Warehouse Warehouse { get; set; }
         public virtual Warehouse Warehouse1 { get; set; }
         public virtual Warehouse Warehouse2 { get; set; }
-        public virtual ICollection<WaybillDet> WaybillDet { get; set; }
         public virtual ICollection<MatRemains> MatRemains { get; set; }
         public virtual ICollection<PosRemains> PosRemains { get; set; }
-        public virtual ICollection<TAXWBDET> TAXWBDET { get; set; }
-        public virtual ICollection<MatRecipe> MatRecipe { get; set; }
+        public virtual ICollection<WMatTurn> WMatTurn { get; set; }
         public virtual Measures Measures { get; set; }
-        public virtual ICollection<DeboningDet> DeboningDet { get; set; }
+        public virtual ICollection<MatRecipe> MatRecipe { get; set; }
+        public virtual ICollection<MATPRICES> MATPRICES { get; set; }
+        public virtual ICollection<TAXWBDET> TAXWBDET { get; set; }
+        public virtual ICollection<WaybillDet> WaybillDet { get; set; }
     }
 }

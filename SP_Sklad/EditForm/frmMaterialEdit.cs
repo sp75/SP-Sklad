@@ -16,12 +16,13 @@ namespace SP_Sklad.EditForm
     {
         int? _mat_id { get; set; }
         private Materials _mat { get; set; }
-        public virtual ObservableListSource<Materials> Products { get { return _products; } } 
+        BaseEntities _db { get; set; }
 
         public frmMaterialEdit(int? MatId =null)
         {
             InitializeComponent();
             _mat_id = MatId;
+            _db = DB.SkladBase();
         }
 
         private void frmMaterialEdit_Load(object sender, EventArgs e)
@@ -41,32 +42,32 @@ namespace SP_Sklad.EditForm
 
             if (_mat_id == null)
             {
-                _mat = new Materials()
+                _mat = _db.Materials.Add(new Materials()
                 {
-
-                };
+                    Archived = 0,
+                    Serials = 0,
+                    MId = DBHelper.MeasuresList.FirstOrDefault(w => w.Def == 1).MId,
+                    WId = DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId,
+                    CId = DBHelper.CountersList.FirstOrDefault(w => w.Def == 1).CId,
+                    NDS = 0
+                });
             }
             else
             {
-                _mat = DB.SkladBase().Materials.Find(_mat_id);
+                _mat = _db.Materials.Find(_mat_id);
+                _mat.DateModified = DateTime.Now;
             }
            
             if (_mat != null)
             {
-                GrpIdEdit.Properties.DataSource = DB.SkladBase().Materials.Where(w => w.MatId == _mat_id).ToList();
-                GrpIdEdit.Properties.TreeList.DataSource = _mat;// DB.SkladBase().MatGroup.Select(s => new { s.GrpId, s.PId, s.Name }).ToList();
+                GrpIdEdit.Properties.TreeList.DataSource =  DB.SkladBase().MatGroup.Select(s => new { s.GrpId, s.PId, s.Name }).ToList();
                 MsrComboBox.Properties.DataSource = DBHelper.MeasuresList;
                 WIdLookUpEdit.Properties.DataSource = DBHelper.WhList();
+                ProducerLookUpEdit.Properties.DataSource = DB.SkladBase().Materials.Select(s => new { s.Producer }).Distinct().ToList();
+                CIdLookUpEdit.Properties.DataSource = DBHelper.CountersList;
 
-                NameTextEdit.DataBindings.Add(new Binding("EditValue", _mat, "Name", true, DataSourceUpdateMode.OnValidation));
-                ArtikulEdit.DataBindings.Add(new Binding("EditValue", _mat, "Artikul", true, DataSourceUpdateMode.OnValidation));
-                GrpIdEdit.DataBindings.Add(new Binding("EditValue", _mat, "GrpId", true, DataSourceUpdateMode.OnValidation));
-                MsrComboBox.DataBindings.Add(new Binding("EditValue", _mat, "MId"));
-                WIdLookUpEdit.DataBindings.Add(new Binding("EditValue", _mat, "WId", true, DataSourceUpdateMode.OnValidation));
-                MinSizeEdit.DataBindings.Add(new Binding("EditValue", _mat, "MSize", true, DataSourceUpdateMode.OnValidation));
-                SerialsCheckEdit.DataBindings.Add(new Binding("EditValue", _mat, "Serials", true, DataSourceUpdateMode.OnValidation));
-                BarCodeEdit.DataBindings.Add(new Binding("EditValue", _mat, "BarCode", true, DataSourceUpdateMode.OnValidation));
-            }
+                bindingSource1.DataSource = _mat;               
+             }
 
         }
 
@@ -75,6 +76,26 @@ namespace SP_Sklad.EditForm
             var focused_tree_node = DirTreeList.GetDataRecordByNode(e.Node) as CatalogTreeList;
 
             xtraTabControl1.SelectedTabPageIndex = focused_tree_node.TabIdx;
+        }
+
+        private void OkButton_Click(object sender, EventArgs e)
+        {
+            _db.SaveChanges();
+        }
+
+        private void frmMaterialEdit_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _db.Dispose();
+        }
+
+        private void frmMaterialEdit_Shown(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void NameTextEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            Text = "Товар: " + NameTextEdit.Text;
         }
     }
 

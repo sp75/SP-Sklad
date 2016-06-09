@@ -35,7 +35,6 @@ namespace SP_Sklad.SkladData
         public DbSet<CONTRDET> CONTRDET { get; set; }
         public DbSet<CONTRPARAMS> CONTRPARAMS { get; set; }
         public DbSet<CONTRRESULTS> CONTRRESULTS { get; set; }
-        public DbSet<COUNTRIES> COUNTRIES { get; set; }
         public DbSet<CURRENCYRATE> CURRENCYRATE { get; set; }
         public DbSet<DISCCARDGRP> DISCCARDGRP { get; set; }
         public DbSet<DISCCARDS> DISCCARDS { get; set; }
@@ -45,8 +44,6 @@ namespace SP_Sklad.SkladData
         public DbSet<KAGENTACCOUNT> KAGENTACCOUNT { get; set; }
         public DbSet<KAGENTDOC> KAGENTDOC { get; set; }
         public DbSet<KAGENTPERSONS> KAGENTPERSONS { get; set; }
-        public DbSet<KAGENTTYP> KAGENTTYP { get; set; }
-        public DbSet<KAKIND> KAKIND { get; set; }
         public DbSet<KAMATDISCOUNT> KAMATDISCOUNT { get; set; }
         public DbSet<KAMATGROUPDISCOUNT> KAMATGROUPDISCOUNT { get; set; }
         public DbSet<LANGUAGES> LANGUAGES { get; set; }
@@ -78,13 +75,11 @@ namespace SP_Sklad.SkladData
         public DbSet<PayDoc> PayDoc { get; set; }
         public DbSet<ChargeType> ChargeType { get; set; }
         public DbSet<Users> Users { get; set; }
-        public DbSet<KagentList> KagentList { get; set; }
         public DbSet<Currency> Currency { get; set; }
         public DbSet<CommonParams> CommonParams { get; set; }
         public DbSet<KAgentSaldo> KAgentSaldo { get; set; }
         public DbSet<PriceTypes> PriceTypes { get; set; }
         public DbSet<ReturnRel> ReturnRel { get; set; }
-        public DbSet<Materials> Materials { get; set; }
         public DbSet<MatGroup> MatGroup { get; set; }
         public DbSet<CityType> CityType { get; set; }
         public DbSet<Counters> Counters { get; set; }
@@ -119,6 +114,11 @@ namespace SP_Sklad.SkladData
         public DbSet<Measures> Measures { get; set; }
         public DbSet<DeboningDet> DeboningDet { get; set; }
         public DbSet<MaterialsList> MaterialsList { get; set; }
+        public DbSet<Countries> Countries { get; set; }
+        public DbSet<Materials> Materials { get; set; }
+        public DbSet<KagentList> KagentList { get; set; }
+        public DbSet<KAgentTyp> KAgentTyp { get; set; }
+        public DbSet<KAKInd> KAKInd { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)

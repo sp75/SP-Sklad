@@ -21,8 +21,8 @@ namespace SP_Sklad.SkladData
         public decimal Price { get; set; }
         public int WId { get; set; }
     
-        public virtual Materials Materials { get; set; }
         public virtual WaybillList WaybillList { get; set; }
         public virtual Warehouse Warehouse { get; set; }
+        public virtual Materials Materials { get; set; }
     }
 }

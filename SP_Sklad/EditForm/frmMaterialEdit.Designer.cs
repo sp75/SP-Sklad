@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMaterialEdit));
-            DevExpress.XtraPrinting.BarCode.Code39ExtendedGenerator code39ExtendedGenerator2 = new DevExpress.XtraPrinting.BarCode.Code39ExtendedGenerator();
+            DevExpress.XtraPrinting.BarCode.Code39ExtendedGenerator code39ExtendedGenerator1 = new DevExpress.XtraPrinting.BarCode.Code39ExtendedGenerator();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -47,6 +47,7 @@
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit4 = new DevExpress.XtraEditors.TextEdit();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.BarCodeEdit = new DevExpress.XtraEditors.TextEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
@@ -82,6 +83,28 @@
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
+            this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.textEdit7 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit6 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
+            this.CIdLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.ProducerLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
+            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
+            this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
+            this.textEdit8 = new DevExpress.XtraEditors.MemoEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeList)).BeginInit();
@@ -94,6 +117,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarCodeEdit.Properties)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -107,6 +131,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.MsrComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrpIdEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).BeginInit();
+            this.xtraTabPage5.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit7.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit6.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CIdLookUpEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProducerLookUpEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
+            this.xtraTabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.xtraTabPage7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit8.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl2
@@ -128,6 +167,7 @@
             this.OkButton.Size = new System.Drawing.Size(98, 30);
             this.OkButton.TabIndex = 3;
             this.OkButton.Text = "Застосувати";
+            this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
             // simpleButton1
             // 
@@ -191,6 +231,11 @@
             this.ImageList.Images.SetKeyName(6, "edit.bmp");
             this.ImageList.Images.SetKeyName(7, "_нформац_я про резерв товару.bmp");
             this.ImageList.Images.SetKeyName(8, "Рух товар_в.bmp");
+            this.ImageList.Images.SetKeyName(9, "down.bmp");
+            this.ImageList.Images.SetKeyName(10, "Up.bmp");
+            this.ImageList.Images.SetKeyName(11, "Ц_нов_ кат.bmp");
+            this.ImageList.Images.SetKeyName(12, "Одиниц_ вим_ру.bmp");
+            this.ImageList.Images.SetKeyName(13, "Країни.bmp");
             // 
             // xtraTabControl1
             // 
@@ -205,7 +250,10 @@
             this.xtraTabPage1,
             this.xtraTabPage2,
             this.xtraTabPage3,
-            this.xtraTabPage4});
+            this.xtraTabPage4,
+            this.xtraTabPage5,
+            this.xtraTabPage6,
+            this.xtraTabPage7});
             // 
             // xtraTabPage1
             // 
@@ -213,7 +261,7 @@
             this.xtraTabPage1.Controls.Add(this.panel1);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(607, 388);
-            this.xtraTabPage1.Text = "xtraTabPage1";
+            this.xtraTabPage1.Text = "Основна інформація";
             // 
             // panel5
             // 
@@ -280,15 +328,21 @@
             // 
             this.textEdit4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.textEdit4.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "LabelDescr", true));
             this.textEdit4.Location = new System.Drawing.Point(157, 86);
             this.textEdit4.Name = "textEdit4";
             this.textEdit4.Size = new System.Drawing.Size(189, 22);
             this.textEdit4.StyleController = this.styleController1;
             this.textEdit4.TabIndex = 34;
             // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = typeof(SP_Sklad.SkladData.Materials);
+            // 
             // simpleButton3
             // 
-            this.simpleButton3.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.Image")));
+            this.simpleButton3.ImageIndex = 1;
+            this.simpleButton3.ImageList = this.ImageList;
             this.simpleButton3.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.simpleButton3.Location = new System.Drawing.Point(281, 33);
             this.simpleButton3.Name = "simpleButton3";
@@ -299,6 +353,7 @@
             // 
             this.BarCodeEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.BarCodeEdit.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "BarCode", true));
             this.BarCodeEdit.Location = new System.Drawing.Point(86, 33);
             this.BarCodeEdit.Name = "BarCodeEdit";
             this.BarCodeEdit.Size = new System.Drawing.Size(189, 22);
@@ -316,16 +371,16 @@
             // 
             // barCodeControl1
             // 
+            this.barCodeControl1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "BarCode", true));
             this.barCodeControl1.Location = new System.Drawing.Point(323, 33);
             this.barCodeControl1.Module = 1D;
             this.barCodeControl1.Name = "barCodeControl1";
             this.barCodeControl1.Padding = new System.Windows.Forms.Padding(10, 2, 10, 0);
             this.barCodeControl1.ShowText = false;
             this.barCodeControl1.Size = new System.Drawing.Size(261, 22);
-            code39ExtendedGenerator2.WideNarrowRatio = 3F;
-            this.barCodeControl1.Symbology = code39ExtendedGenerator2;
+            code39ExtendedGenerator1.WideNarrowRatio = 3F;
+            this.barCodeControl1.Symbology = code39ExtendedGenerator1;
             this.barCodeControl1.TabIndex = 30;
-            this.barCodeControl1.Text = "1235";
             // 
             // panel1
             // 
@@ -363,10 +418,13 @@
             // 
             // SerialsCheckEdit
             // 
+            this.SerialsCheckEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "Serials", true));
             this.SerialsCheckEdit.Location = new System.Drawing.Point(347, 133);
             this.SerialsCheckEdit.MenuManager = this.barManager1;
             this.SerialsCheckEdit.Name = "SerialsCheckEdit";
             this.SerialsCheckEdit.Properties.Caption = "Вести облік по серійним номерам";
+            this.SerialsCheckEdit.Properties.ValueChecked = 1;
+            this.SerialsCheckEdit.Properties.ValueUnchecked = 0;
             this.SerialsCheckEdit.Size = new System.Drawing.Size(219, 20);
             this.SerialsCheckEdit.StyleController = this.styleController1;
             this.SerialsCheckEdit.TabIndex = 38;
@@ -446,6 +504,7 @@
             // 
             // WIdLookUpEdit
             // 
+            this.WIdLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "WId", true));
             this.WIdLookUpEdit.Location = new System.Drawing.Point(109, 170);
             this.WIdLookUpEdit.Name = "WIdLookUpEdit";
             this.WIdLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -456,7 +515,7 @@
             this.WIdLookUpEdit.Properties.ShowFooter = false;
             this.WIdLookUpEdit.Properties.ShowHeader = false;
             this.WIdLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.WIdLookUpEdit.Properties.ValueMember = "KaId";
+            this.WIdLookUpEdit.Properties.ValueMember = "WId";
             this.WIdLookUpEdit.Size = new System.Drawing.Size(212, 22);
             this.WIdLookUpEdit.StyleController = this.styleController1;
             this.WIdLookUpEdit.TabIndex = 35;
@@ -483,6 +542,7 @@
             // 
             this.ArtikulEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ArtikulEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "Artikul", true));
             this.ArtikulEdit.Location = new System.Drawing.Point(109, 46);
             this.ArtikulEdit.Name = "ArtikulEdit";
             this.ArtikulEdit.Size = new System.Drawing.Size(447, 22);
@@ -491,7 +551,8 @@
             // 
             // NowDateBtn
             // 
-            this.NowDateBtn.Image = ((System.Drawing.Image)(resources.GetObject("NowDateBtn.Image")));
+            this.NowDateBtn.ImageIndex = 12;
+            this.NowDateBtn.ImageList = this.ImageList;
             this.NowDateBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.NowDateBtn.Location = new System.Drawing.Point(299, 134);
             this.NowDateBtn.Name = "NowDateBtn";
@@ -502,11 +563,13 @@
             // 
             this.NameTextEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.NameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "Name", true));
             this.NameTextEdit.Location = new System.Drawing.Point(109, 12);
             this.NameTextEdit.Name = "NameTextEdit";
             this.NameTextEdit.Size = new System.Drawing.Size(447, 22);
             this.NameTextEdit.StyleController = this.styleController1;
             this.NameTextEdit.TabIndex = 27;
+            this.NameTextEdit.EditValueChanged += new System.EventHandler(this.NameTextEdit_EditValueChanged);
             // 
             // labelControl22
             // 
@@ -519,6 +582,7 @@
             // 
             // MinSizeEdit
             // 
+            this.MinSizeEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "MSize", true));
             this.MinSizeEdit.Location = new System.Drawing.Point(470, 170);
             this.MinSizeEdit.Name = "MinSizeEdit";
             this.MinSizeEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -549,7 +613,8 @@
             // 
             // WhBtn
             // 
-            this.WhBtn.Image = global::SP_Sklad.Properties.Resources.Службовц_;
+            this.WhBtn.ImageIndex = 10;
+            this.WhBtn.ImageList = this.ImageList;
             this.WhBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.WhBtn.Location = new System.Drawing.Point(562, 45);
             this.WhBtn.Name = "WhBtn";
@@ -558,6 +623,7 @@
             // 
             // MsrComboBox
             // 
+            this.MsrComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "MId", true));
             this.MsrComboBox.Location = new System.Drawing.Point(109, 134);
             this.MsrComboBox.Name = "MsrComboBox";
             this.MsrComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -585,7 +651,8 @@
             // simpleButton2
             // 
             this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton2.Image = global::SP_Sklad.Properties.Resources._нформац_я_про_рух_товар_в;
+            this.simpleButton2.ImageIndex = 9;
+            this.simpleButton2.ImageList = this.ImageList;
             this.simpleButton2.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.simpleButton2.Location = new System.Drawing.Point(562, 11);
             this.simpleButton2.Name = "simpleButton2";
@@ -594,11 +661,13 @@
             // 
             // GrpIdEdit
             // 
+            this.GrpIdEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "GrpId", true));
             this.GrpIdEdit.Location = new System.Drawing.Point(109, 82);
             this.GrpIdEdit.MenuManager = this.barManager1;
             this.GrpIdEdit.Name = "GrpIdEdit";
             this.GrpIdEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.GrpIdEdit.Properties.DataSource = this.bindingSource1;
             this.GrpIdEdit.Properties.DisplayMember = "Name";
             this.GrpIdEdit.Properties.NullText = "";
             this.GrpIdEdit.Properties.TreeList = this.treeListLookUpEdit1TreeList;
@@ -611,6 +680,7 @@
             // 
             this.treeListLookUpEdit1TreeList.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.treeListColumn2});
+            this.treeListLookUpEdit1TreeList.DataSource = this.bindingSource1;
             this.treeListLookUpEdit1TreeList.KeyFieldName = "GrpId";
             this.treeListLookUpEdit1TreeList.Location = new System.Drawing.Point(0, 0);
             this.treeListLookUpEdit1TreeList.Name = "treeListLookUpEdit1TreeList";
@@ -635,19 +705,258 @@
             // 
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(607, 388);
-            this.xtraTabPage2.Text = "xtraTabPage2";
+            this.xtraTabPage2.Text = "Ціноутворення";
             // 
             // xtraTabPage3
             // 
             this.xtraTabPage3.Name = "xtraTabPage3";
             this.xtraTabPage3.Size = new System.Drawing.Size(607, 388);
-            this.xtraTabPage3.Text = "xtraTabPage3";
+            this.xtraTabPage3.Text = "Оподаткування";
             // 
             // xtraTabPage4
             // 
             this.xtraTabPage4.Name = "xtraTabPage4";
             this.xtraTabPage4.Size = new System.Drawing.Size(607, 388);
-            this.xtraTabPage4.Text = "xtraTabPage4";
+            this.xtraTabPage4.Text = "Взаємозамінність";
+            // 
+            // xtraTabPage5
+            // 
+            this.xtraTabPage5.Controls.Add(this.panel2);
+            this.xtraTabPage5.Name = "xtraTabPage5";
+            this.xtraTabPage5.Size = new System.Drawing.Size(607, 388);
+            this.xtraTabPage5.Text = "Посвідчення";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.groupControl1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
+            this.panel2.Size = new System.Drawing.Size(607, 388);
+            this.panel2.TabIndex = 29;
+            // 
+            // groupControl1
+            // 
+            this.groupControl1.Controls.Add(this.textEdit7);
+            this.groupControl1.Controls.Add(this.textEdit6);
+            this.groupControl1.Controls.Add(this.labelControl15);
+            this.groupControl1.Controls.Add(this.labelControl14);
+            this.groupControl1.Controls.Add(this.labelControl13);
+            this.groupControl1.Controls.Add(this.labelControl12);
+            this.groupControl1.Controls.Add(this.CIdLookUpEdit);
+            this.groupControl1.Controls.Add(this.ProducerLookUpEdit);
+            this.groupControl1.Controls.Add(this.textEdit1);
+            this.groupControl1.Controls.Add(this.labelControl9);
+            this.groupControl1.Controls.Add(this.labelControl10);
+            this.groupControl1.Controls.Add(this.textEdit2);
+            this.groupControl1.Controls.Add(this.simpleButton4);
+            this.groupControl1.Controls.Add(this.textEdit3);
+            this.groupControl1.Controls.Add(this.labelControl11);
+            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl1.Location = new System.Drawing.Point(5, 0);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(597, 383);
+            this.groupControl1.TabIndex = 16;
+            this.groupControl1.Tag = "";
+            this.groupControl1.Text = " Дані для посвідчення якості";
+            // 
+            // textEdit7
+            // 
+            this.textEdit7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textEdit7.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "CF5", true));
+            this.textEdit7.Location = new System.Drawing.Point(200, 263);
+            this.textEdit7.Name = "textEdit7";
+            this.textEdit7.Size = new System.Drawing.Size(389, 22);
+            this.textEdit7.StyleController = this.styleController1;
+            this.textEdit7.TabIndex = 45;
+            // 
+            // textEdit6
+            // 
+            this.textEdit6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textEdit6.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "CF3", true));
+            this.textEdit6.Location = new System.Drawing.Point(200, 180);
+            this.textEdit6.Name = "textEdit6";
+            this.textEdit6.Size = new System.Drawing.Size(389, 22);
+            this.textEdit6.StyleController = this.styleController1;
+            this.textEdit6.TabIndex = 44;
+            // 
+            // labelControl15
+            // 
+            this.labelControl15.Location = new System.Drawing.Point(12, 225);
+            this.labelControl15.Name = "labelControl15";
+            this.labelControl15.Size = new System.Drawing.Size(102, 16);
+            this.labelControl15.StyleController = this.styleController1;
+            this.labelControl15.TabIndex = 43;
+            this.labelControl15.Text = "Термін реалізації";
+            // 
+            // labelControl14
+            // 
+            this.labelControl14.Location = new System.Drawing.Point(12, 129);
+            this.labelControl14.Name = "labelControl14";
+            this.labelControl14.Size = new System.Drawing.Size(114, 16);
+            this.labelControl14.StyleController = this.styleController1;
+            this.labelControl14.TabIndex = 42;
+            this.labelControl14.Text = "Вид тари упаковки:";
+            // 
+            // labelControl13
+            // 
+            this.labelControl13.Location = new System.Drawing.Point(12, 183);
+            this.labelControl13.Name = "labelControl13";
+            this.labelControl13.Size = new System.Drawing.Size(182, 16);
+            this.labelControl13.StyleController = this.styleController1;
+            this.labelControl13.TabIndex = 41;
+            this.labelControl13.Text = "Умови зберігання(темп.,волог)";
+            // 
+            // labelControl12
+            // 
+            this.labelControl12.Location = new System.Drawing.Point(12, 266);
+            this.labelControl12.Name = "labelControl12";
+            this.labelControl12.Size = new System.Drawing.Size(136, 16);
+            this.labelControl12.StyleController = this.styleController1;
+            this.labelControl12.TabIndex = 40;
+            this.labelControl12.Text = "Нормативний документ";
+            // 
+            // CIdLookUpEdit
+            // 
+            this.CIdLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "CId", true));
+            this.CIdLookUpEdit.Location = new System.Drawing.Point(398, 31);
+            this.CIdLookUpEdit.Name = "CIdLookUpEdit";
+            this.CIdLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.CIdLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.CIdLookUpEdit.Properties.DisplayMember = "Name";
+            this.CIdLookUpEdit.Properties.ShowFooter = false;
+            this.CIdLookUpEdit.Properties.ShowHeader = false;
+            this.CIdLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.CIdLookUpEdit.Properties.ValueMember = "CId";
+            this.CIdLookUpEdit.Size = new System.Drawing.Size(163, 22);
+            this.CIdLookUpEdit.StyleController = this.styleController1;
+            this.CIdLookUpEdit.TabIndex = 39;
+            // 
+            // ProducerLookUpEdit
+            // 
+            this.ProducerLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "Producer", true));
+            this.ProducerLookUpEdit.Location = new System.Drawing.Point(78, 31);
+            this.ProducerLookUpEdit.Name = "ProducerLookUpEdit";
+            this.ProducerLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ProducerLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Producer", "Назва")});
+            this.ProducerLookUpEdit.Properties.DisplayMember = "Producer";
+            this.ProducerLookUpEdit.Properties.ShowFooter = false;
+            this.ProducerLookUpEdit.Properties.ShowHeader = false;
+            this.ProducerLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.ProducerLookUpEdit.Properties.ValueMember = "Producer";
+            this.ProducerLookUpEdit.Size = new System.Drawing.Size(242, 22);
+            this.ProducerLookUpEdit.StyleController = this.styleController1;
+            this.ProducerLookUpEdit.TabIndex = 38;
+            // 
+            // textEdit1
+            // 
+            this.textEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "CF2", true));
+            this.textEdit1.Location = new System.Drawing.Point(132, 126);
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Size = new System.Drawing.Size(188, 22);
+            this.textEdit1.StyleController = this.styleController1;
+            this.textEdit1.TabIndex = 37;
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Location = new System.Drawing.Point(12, 89);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(71, 16);
+            this.labelControl9.StyleController = this.styleController1;
+            this.labelControl9.TabIndex = 36;
+            this.labelControl9.Text = "К-сть місць:";
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Location = new System.Drawing.Point(349, 34);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(43, 16);
+            this.labelControl10.StyleController = this.styleController1;
+            this.labelControl10.TabIndex = 35;
+            this.labelControl10.Text = "Країна:";
+            // 
+            // textEdit2
+            // 
+            this.textEdit2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textEdit2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "CF1", true));
+            this.textEdit2.Location = new System.Drawing.Point(132, 86);
+            this.textEdit2.Name = "textEdit2";
+            this.textEdit2.Size = new System.Drawing.Size(188, 22);
+            this.textEdit2.StyleController = this.styleController1;
+            this.textEdit2.TabIndex = 34;
+            // 
+            // simpleButton4
+            // 
+            this.simpleButton4.ImageIndex = 13;
+            this.simpleButton4.ImageList = this.ImageList;
+            this.simpleButton4.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton4.Location = new System.Drawing.Point(567, 31);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(22, 22);
+            this.simpleButton4.TabIndex = 33;
+            // 
+            // textEdit3
+            // 
+            this.textEdit3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textEdit3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "CF4", true));
+            this.textEdit3.Location = new System.Drawing.Point(200, 222);
+            this.textEdit3.Name = "textEdit3";
+            this.textEdit3.Size = new System.Drawing.Size(389, 22);
+            this.textEdit3.StyleController = this.styleController1;
+            this.textEdit3.TabIndex = 32;
+            // 
+            // labelControl11
+            // 
+            this.labelControl11.Location = new System.Drawing.Point(12, 34);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(60, 16);
+            this.labelControl11.StyleController = this.styleController1;
+            this.labelControl11.TabIndex = 31;
+            this.labelControl11.Text = "Виробник:";
+            // 
+            // xtraTabPage6
+            // 
+            this.xtraTabPage6.Controls.Add(this.pictureBox1);
+            this.xtraTabPage6.Name = "xtraTabPage6";
+            this.xtraTabPage6.Size = new System.Drawing.Size(607, 388);
+            this.xtraTabPage6.Text = "Зображення";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.bindingSource1, "BMP", true));
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(607, 388);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // xtraTabPage7
+            // 
+            this.xtraTabPage7.Controls.Add(this.textEdit8);
+            this.xtraTabPage7.Name = "xtraTabPage7";
+            this.xtraTabPage7.Size = new System.Drawing.Size(607, 388);
+            this.xtraTabPage7.Text = "Примітка";
+            // 
+            // textEdit8
+            // 
+            this.textEdit8.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "Notes", true));
+            this.textEdit8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textEdit8.Location = new System.Drawing.Point(0, 0);
+            this.textEdit8.Name = "textEdit8";
+            this.textEdit8.Size = new System.Drawing.Size(607, 388);
+            this.textEdit8.TabIndex = 35;
             // 
             // frmMaterialEdit
             // 
@@ -666,7 +975,9 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMaterialEdit";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMaterialEdit_FormClosed);
             this.Load += new System.EventHandler(this.frmMaterialEdit_Load);
+            this.Shown += new System.EventHandler(this.frmMaterialEdit_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeList)).EndInit();
@@ -680,6 +991,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarCodeEdit.Properties)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
@@ -694,6 +1006,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.MsrComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrpIdEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).EndInit();
+            this.xtraTabPage5.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
+            this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit7.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit6.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CIdLookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProducerLookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
+            this.xtraTabPage6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.xtraTabPage7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit8.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -752,6 +1080,29 @@
         private DevExpress.XtraEditors.TextEdit BarCodeEdit;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn2;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage5;
+        private System.Windows.Forms.Panel panel2;
+        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraEditors.TextEdit textEdit7;
+        private DevExpress.XtraEditors.TextEdit textEdit6;
+        private DevExpress.XtraEditors.LabelControl labelControl15;
+        private DevExpress.XtraEditors.LabelControl labelControl14;
+        private DevExpress.XtraEditors.LabelControl labelControl13;
+        private DevExpress.XtraEditors.LabelControl labelControl12;
+        private DevExpress.XtraEditors.LookUpEdit CIdLookUpEdit;
+        private DevExpress.XtraEditors.LookUpEdit ProducerLookUpEdit;
+        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
+        private DevExpress.XtraEditors.TextEdit textEdit2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton4;
+        private DevExpress.XtraEditors.TextEdit textEdit3;
+        private DevExpress.XtraEditors.LabelControl labelControl11;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage6;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage7;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private DevExpress.XtraEditors.MemoEdit textEdit8;
 
     }
 }
