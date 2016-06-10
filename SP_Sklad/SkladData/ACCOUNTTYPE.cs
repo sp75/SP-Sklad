@@ -16,7 +16,7 @@ namespace SP_Sklad.SkladData
     {
         public ACCOUNTTYPE()
         {
-            this.KAGENTACCOUNT = new HashSet<KAGENTACCOUNT>();
+            this.KAgentAccount = new HashSet<KAgentAccount>();
         }
     
         public int TYPEID { get; set; }
@@ -24,6 +24,6 @@ namespace SP_Sklad.SkladData
         public int DEF { get; set; }
         public int DELETED { get; set; }
     
-        public virtual ICollection<KAGENTACCOUNT> KAGENTACCOUNT { get; set; }
+        public virtual ICollection<KAgentAccount> KAgentAccount { get; set; }
     }
 }

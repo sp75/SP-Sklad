@@ -223,6 +223,9 @@
     <Compile Include="SkladData\DISCCARDS.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\DiscountList_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\DocCopy_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -316,22 +319,22 @@
     <Compile Include="SkladData\KaAddr.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\KADISCOUNT.cs">
+    <Compile Include="SkladData\KADiscount.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\Kagent.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\KAGENTACCOUNT.cs">
+    <Compile Include="SkladData\KAgentAccount.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\KAGENTDOC.cs">
+    <Compile Include="SkladData\KAgentDoc.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\KagentList.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\KAGENTPERSONS.cs">
+    <Compile Include="SkladData\KAgentPersons.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\KAgentSaldo.cs">
@@ -343,10 +346,10 @@
     <Compile Include="SkladData\KAKInd.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\KAMATDISCOUNT.cs">
+    <Compile Include="SkladData\KAMatDiscount.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\KAMATGROUPDISCOUNT.cs">
+    <Compile Include="SkladData\KAMatGroupDiscount.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\LANGUAGES.cs">
@@ -761,8 +764,9 @@
       <DependentUpon>frmWBWriteOn.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\SP_Sklad.SkladData.DBHelper.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.KADiscount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Kagent.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.KAMatDiscount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Materials.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

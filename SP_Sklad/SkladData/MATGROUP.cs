@@ -16,9 +16,9 @@ namespace SP_Sklad.SkladData
     {
         public MatGroup()
         {
-            this.KAMATGROUPDISCOUNT = new HashSet<KAMATGROUPDISCOUNT>();
             this.MATGROUPPRICES = new HashSet<MATGROUPPRICES>();
             this.Materials = new HashSet<Materials>();
+            this.KAMatGroupDiscount = new HashSet<KAMatGroupDiscount>();
         }
     
         public int GrpId { get; set; }
@@ -29,8 +29,8 @@ namespace SP_Sklad.SkladData
         public string Notes { get; set; }
         public Nullable<decimal> Num { get; set; }
     
-        public virtual ICollection<KAMATGROUPDISCOUNT> KAMATGROUPDISCOUNT { get; set; }
         public virtual ICollection<MATGROUPPRICES> MATGROUPPRICES { get; set; }
         public virtual ICollection<Materials> Materials { get; set; }
+        public virtual ICollection<KAMatGroupDiscount> KAMatGroupDiscount { get; set; }
     }
 }

@@ -734,6 +734,7 @@
             this.KaGridView.OptionsView.EnableAppearanceOddRow = true;
             this.KaGridView.OptionsView.ShowGroupPanel = false;
             this.KaGridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.KaGridView_FocusedRowChanged);
+            this.KaGridView.DoubleClick += new System.EventHandler(this.KaGridView_DoubleClick);
             // 
             // gridColumn1
             // 

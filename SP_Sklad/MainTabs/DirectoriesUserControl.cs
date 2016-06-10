@@ -439,5 +439,10 @@ namespace SP_Sklad.MainTabs
         {
             resut = KaGridView.GetFocusedRow();
         }
+
+        private void KaGridView_DoubleClick(object sender, EventArgs e)
+        {
+            EditItemBtn.PerformClick();
+        }
     }
 }

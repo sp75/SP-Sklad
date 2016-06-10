@@ -12,12 +12,12 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class KAMATGROUPDISCOUNT
+    public partial class KAMatGroupDiscount
     {
-        public int DISCID { get; set; }
-        public int KAID { get; set; }
-        public int GRPID { get; set; }
-        public decimal ONVALUE { get; set; }
+        public System.Guid DiscId { get; set; }
+        public int KAId { get; set; }
+        public int GrpId { get; set; }
+        public decimal OnValue { get; set; }
     
         public virtual Kagent Kagent { get; set; }
         public virtual MatGroup MatGroup { get; set; }

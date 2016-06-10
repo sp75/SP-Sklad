@@ -38,31 +38,31 @@
           <EntitySet Name="ExtRel" EntityType="BaseModel.Store.ExtRel" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="FUNCTIONS" EntityType="BaseModel.Store.FUNCTIONS" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="KaAddr" EntityType="BaseModel.Store.KaAddr" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="KADISCOUNT" EntityType="BaseModel.Store.KADISCOUNT" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="KADiscount" EntityType="BaseModel.Store.KADiscount" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Kagent" EntityType="BaseModel.Store.Kagent" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="KAGENTACCOUNT" EntityType="BaseModel.Store.KAGENTACCOUNT" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="KAGENTDOC" EntityType="BaseModel.Store.KAGENTDOC" store:Type="Tables" store:Schema="dbo" store:Name="KAGENTDOC">
+          <EntitySet Name="KAgentAccount" EntityType="BaseModel.Store.KAgentAccount" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="KAgentDoc" EntityType="BaseModel.Store.KAgentDoc" store:Type="Tables" store:Schema="dbo" store:Name="KAgentDoc">
             <DefiningQuery>SELECT 
-      [KAGENTDOC].[KAID] AS [KAID], 
-      [KAGENTDOC].[DOCNAME] AS [DOCNAME], 
-      [KAGENTDOC].[DOCNUM] AS [DOCNUM], 
-      [KAGENTDOC].[DOCSERIES] AS [DOCSERIES], 
-      [KAGENTDOC].[DOCWHOPRODUCE] AS [DOCWHOPRODUCE], 
-      [KAGENTDOC].[DOCDATE] AS [DOCDATE]
-      FROM [dbo].[KAGENTDOC] AS [KAGENTDOC]</DefiningQuery>
+      [KAgentDoc].[KAId] AS [KAId], 
+      [KAgentDoc].[DocName] AS [DocName], 
+      [KAgentDoc].[DocNum] AS [DocNum], 
+      [KAgentDoc].[DocSeries] AS [DocSeries], 
+      [KAgentDoc].[DocWhoProduce] AS [DocWhoProduce], 
+      [KAgentDoc].[DocDate] AS [DocDate]
+      FROM [dbo].[KAgentDoc] AS [KAgentDoc]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="KAGENTPERSONS" EntityType="BaseModel.Store.KAGENTPERSONS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="KAgentPersons" EntityType="BaseModel.Store.KAgentPersons" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="KAgentSaldo" EntityType="BaseModel.Store.KAgentSaldo" store:Type="Tables" store:Schema="dbo" store:Name="KAgentSaldo">
             <DefiningQuery>SELECT 
-      [KAgentSaldo].[KAID] AS [KAID], 
-      [KAgentSaldo].[ONDATE] AS [ONDATE], 
-      [KAgentSaldo].[SALDO] AS [SALDO]
+      [KAgentSaldo].[KAId] AS [KAId], 
+      [KAgentSaldo].[OnDate] AS [OnDate], 
+      [KAgentSaldo].[Saldo] AS [Saldo]
       FROM [dbo].[KAgentSaldo] AS [KAgentSaldo]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="KAgentTyp" EntityType="BaseModel.Store.KAgentTyp" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="KAKInd" EntityType="BaseModel.Store.KAKInd" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="KAMATDISCOUNT" EntityType="BaseModel.Store.KAMATDISCOUNT" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="KAMATGROUPDISCOUNT" EntityType="BaseModel.Store.KAMATGROUPDISCOUNT" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="KAMatDiscount" EntityType="BaseModel.Store.KAMatDiscount" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="KAMatGroupDiscount" EntityType="BaseModel.Store.KAMatGroupDiscount" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="LANGUAGES" EntityType="BaseModel.Store.LANGUAGES" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MATCHANGE" EntityType="BaseModel.Store.MATCHANGE" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Materials" EntityType="BaseModel.Store.Materials" store:Type="Tables" Schema="dbo" />
@@ -358,19 +358,19 @@
           </AssociationSet>
           <AssociationSet Name="FK__KAMATDISC__MATID__32AB8735" Association="BaseModel.Store.FK__KAMATDISC__MATID__32AB8735">
             <End Role="Materials" EntitySet="Materials" />
-            <End Role="KAMATDISCOUNT" EntitySet="KAMATDISCOUNT" />
+            <End Role="KAMatDiscount" EntitySet="KAMatDiscount" />
           </AssociationSet>
           <AssociationSet Name="FK__KAMATDISCO__KAID__31B762FC" Association="BaseModel.Store.FK__KAMATDISCO__KAID__31B762FC">
             <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAMATDISCOUNT" EntitySet="KAMATDISCOUNT" />
+            <End Role="KAMatDiscount" EntitySet="KAMatDiscount" />
           </AssociationSet>
           <AssociationSet Name="FK__KAMATGROU__GRPID__395884C4" Association="BaseModel.Store.FK__KAMATGROU__GRPID__395884C4">
             <End Role="MatGroup" EntitySet="MatGroup" />
-            <End Role="KAMATGROUPDISCOUNT" EntitySet="KAMATGROUPDISCOUNT" />
+            <End Role="KAMatGroupDiscount" EntitySet="KAMatGroupDiscount" />
           </AssociationSet>
           <AssociationSet Name="FK__KAMATGROUP__KAID__3A4CA8FD" Association="BaseModel.Store.FK__KAMATGROUP__KAID__3A4CA8FD">
             <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAMATGROUPDISCOUNT" EntitySet="KAMATGROUPDISCOUNT" />
+            <End Role="KAMatGroupDiscount" EntitySet="KAMatGroupDiscount" />
           </AssociationSet>
           <AssociationSet Name="FK__MATERIALS__CID__662B2B3B" Association="BaseModel.Store.FK__MATERIALS__CID__662B2B3B">
             <End Role="Countries" EntitySet="Countries" />
@@ -482,23 +482,23 @@
           </AssociationSet>
           <AssociationSet Name="FK_AACC_KAID" Association="BaseModel.Store.FK_AACC_KAID">
             <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAGENTACCOUNT" EntitySet="KAGENTACCOUNT" />
+            <End Role="KAgentAccount" EntitySet="KAgentAccount" />
           </AssociationSet>
           <AssociationSet Name="FK_ADOC_KAID" Association="BaseModel.Store.FK_ADOC_KAID">
             <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAGENTDOC" EntitySet="KAGENTDOC" />
+            <End Role="KAgentDoc" EntitySet="KAgentDoc" />
           </AssociationSet>
           <AssociationSet Name="FK_AGENTACC_FK_AGENTA_ACCOUNTT" Association="BaseModel.Store.FK_AGENTACC_FK_AGENTA_ACCOUNTT">
             <End Role="ACCOUNTTYPE" EntitySet="ACCOUNTTYPE" />
-            <End Role="KAGENTACCOUNT" EntitySet="KAGENTACCOUNT" />
+            <End Role="KAgentAccount" EntitySet="KAgentAccount" />
           </AssociationSet>
           <AssociationSet Name="FK_AGENTACC_FK_AGENTA_BANKS" Association="BaseModel.Store.FK_AGENTACC_FK_AGENTA_BANKS">
             <End Role="BANKS" EntitySet="BANKS" />
-            <End Role="KAGENTACCOUNT" EntitySet="KAGENTACCOUNT" />
+            <End Role="KAgentAccount" EntitySet="KAgentAccount" />
           </AssociationSet>
           <AssociationSet Name="FK_AP_KAID" Association="BaseModel.Store.FK_AP_KAID">
             <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAGENTPERSONS" EntitySet="KAGENTPERSONS" />
+            <End Role="KAgentPersons" EntitySet="KAgentPersons" />
           </AssociationSet>
           <AssociationSet Name="FK_BANKSPERSONS_1" Association="BaseModel.Store.FK_BANKSPERSONS_1">
             <End Role="BANKS" EntitySet="BANKS" />
@@ -600,6 +600,10 @@
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="KaAddr" EntitySet="KaAddr" />
           </AssociationSet>
+          <AssociationSet Name="FK_KADiscount_Kagent" Association="BaseModel.Store.FK_KADiscount_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KADiscount" EntitySet="KADiscount" />
+          </AssociationSet>
           <AssociationSet Name="FK_Kagent_Users" Association="BaseModel.Store.FK_Kagent_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Kagent" EntitySet="Kagent" />
@@ -645,7 +649,7 @@
             <End Role="MATPRICES" EntitySet="MATPRICES" />
           </AssociationSet>
           <AssociationSet Name="FK_MS_ACCID" Association="BaseModel.Store.FK_MS_ACCID">
-            <End Role="KAGENTACCOUNT" EntitySet="KAGENTACCOUNT" />
+            <End Role="KAgentAccount" EntitySet="KAgentAccount" />
             <End Role="MONEYSALDO" EntitySet="MONEYSALDO" />
           </AssociationSet>
           <AssociationSet Name="FK_MS_CASHID" Association="BaseModel.Store.FK_MS_CASHID">
@@ -661,7 +665,7 @@
             <End Role="PayDoc" EntitySet="PayDoc" />
           </AssociationSet>
           <AssociationSet Name="FK_PD_ACCID" Association="BaseModel.Store.FK_PD_ACCID">
-            <End Role="KAGENTACCOUNT" EntitySet="KAGENTACCOUNT" />
+            <End Role="KAgentAccount" EntitySet="KAgentAccount" />
             <End Role="PayDoc" EntitySet="PayDoc" />
           </AssociationSet>
           <AssociationSet Name="FK_PD_CASHID" Association="BaseModel.Store.FK_PD_CASHID">
@@ -1195,14 +1199,14 @@
           <Property Name="Region" Type="varchar" MaxLength="64" />
           <Property Name="CityType" Type="int" />
         </EntityType>
-        <EntityType Name="KADISCOUNT">
+        <EntityType Name="KADiscount">
           <Key>
-            <PropertyRef Name="KAID" />
+            <PropertyRef Name="KAId" />
           </Key>
-          <Property Name="KAID" Type="int" Nullable="false" />
-          <Property Name="DISCFORALL" Type="int" Nullable="false" />
-          <Property Name="ONVALUE" Type="numeric" Nullable="false" Precision="15" Scale="8" />
-          <Property Name="DISCCUSTOM" Type="int" Nullable="false" />
+          <Property Name="KAId" Type="int" Nullable="false" />
+          <Property Name="DiscForAll" Type="int" Nullable="false" />
+          <Property Name="OnValue" Type="numeric" Nullable="false" Precision="15" Scale="8" />
+          <Property Name="DiscCustom" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Kagent">
           <Key>
@@ -1238,57 +1242,57 @@
           <Property Name="ContractDate" Type="datetime" />
           <Property Name="ContractNum" Type="nvarchar" MaxLength="20" />
         </EntityType>
-        <EntityType Name="KAGENTACCOUNT">
+        <EntityType Name="KAgentAccount">
           <Key>
-            <PropertyRef Name="ACCID" />
+            <PropertyRef Name="AccId" />
           </Key>
-          <Property Name="ACCID" Type="int" Nullable="false" />
-          <Property Name="KAID" Type="int" Nullable="false" />
-          <Property Name="TYPEID" Type="int" Nullable="false" />
-          <Property Name="BANKID" Type="int" Nullable="false" />
-          <Property Name="ACCNUM" Type="varchar" Nullable="false" MaxLength="64" />
-          <Property Name="DEF" Type="int" />
+          <Property Name="AccId" Type="int" Nullable="false" />
+          <Property Name="KAId" Type="int" Nullable="false" />
+          <Property Name="TypeId" Type="int" Nullable="false" />
+          <Property Name="BankId" Type="int" Nullable="false" />
+          <Property Name="AccNum" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="Def" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'sp_base.dbo.KAGENTDOC' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'sp_base.dbo.KAgentDoc' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
-        <EntityType Name="KAGENTDOC">
+        <EntityType Name="KAgentDoc">
           <Key>
-            <PropertyRef Name="KAID" />
-            <PropertyRef Name="DOCDATE" />
+            <PropertyRef Name="KAId" />
+            <PropertyRef Name="DocDate" />
           </Key>
-          <Property Name="KAID" Type="int" Nullable="false" />
-          <Property Name="DOCNAME" Type="varchar" MaxLength="48" />
-          <Property Name="DOCNUM" Type="varchar" MaxLength="24" />
-          <Property Name="DOCSERIES" Type="varchar" MaxLength="10" />
-          <Property Name="DOCWHOPRODUCE" Type="varchar" MaxLength="128" />
-          <Property Name="DOCDATE" Type="datetime" Nullable="false" />
+          <Property Name="KAId" Type="int" Nullable="false" />
+          <Property Name="DocName" Type="varchar" MaxLength="48" />
+          <Property Name="DocNum" Type="varchar" MaxLength="24" />
+          <Property Name="DocSeries" Type="varchar" MaxLength="10" />
+          <Property Name="DocWhoProduce" Type="varchar" MaxLength="128" />
+          <Property Name="DocDate" Type="datetime" Nullable="false" />
         </EntityType>
-        <EntityType Name="KAGENTPERSONS">
+        <EntityType Name="KAgentPersons">
           <Key>
-            <PropertyRef Name="PERSONID" />
+            <PropertyRef Name="PersonId" />
           </Key>
-          <Property Name="PERSONID" Type="int" Nullable="false" />
-          <Property Name="KAID" Type="int" Nullable="false" />
-          <Property Name="NAME" Type="varchar" Nullable="false" MaxLength="128" />
-          <Property Name="POST" Type="varchar" MaxLength="128" />
-          <Property Name="PHONE" Type="varchar" MaxLength="64" />
-          <Property Name="EMAIL" Type="varchar" MaxLength="64" />
-          <Property Name="NOTES" Type="varchar" MaxLength="255" />
-          <Property Name="JOBTYPE" Type="int" />
+          <Property Name="PersonId" Type="int" Nullable="false" />
+          <Property Name="KAId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="128" />
+          <Property Name="Post" Type="varchar" MaxLength="128" />
+          <Property Name="Phone" Type="varchar" MaxLength="64" />
+          <Property Name="Email" Type="varchar" MaxLength="64" />
+          <Property Name="Notes" Type="varchar" MaxLength="255" />
+          <Property Name="JobType" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'sp_base.dbo.KAgentSaldo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="KAgentSaldo">
           <Key>
-            <PropertyRef Name="KAID" />
-            <PropertyRef Name="ONDATE" />
-            <PropertyRef Name="SALDO" />
+            <PropertyRef Name="KAId" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Saldo" />
           </Key>
-          <Property Name="KAID" Type="int" Nullable="false" />
-          <Property Name="ONDATE" Type="datetime" Nullable="false" />
-          <Property Name="SALDO" Type="numeric" Nullable="false" Precision="15" Scale="8" />
+          <Property Name="KAId" Type="int" Nullable="false" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="Saldo" Type="numeric" Nullable="false" Precision="15" Scale="8" />
         </EntityType>
         <EntityType Name="KAgentTyp">
           <Key>
@@ -1304,23 +1308,23 @@
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="KAMATDISCOUNT">
+        <EntityType Name="KAMatDiscount">
           <Key>
-            <PropertyRef Name="DISCID" />
+            <PropertyRef Name="DiscId" />
           </Key>
-          <Property Name="DISCID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="KAID" Type="int" Nullable="false" />
-          <Property Name="MATID" Type="int" Nullable="false" />
-          <Property Name="ONVALUE" Type="numeric" Nullable="false" Precision="15" Scale="8" />
+          <Property Name="DiscId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="KAId" Type="int" Nullable="false" />
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="OnValue" Type="numeric" Nullable="false" Precision="15" Scale="4" />
         </EntityType>
-        <EntityType Name="KAMATGROUPDISCOUNT">
+        <EntityType Name="KAMatGroupDiscount">
           <Key>
-            <PropertyRef Name="DISCID" />
+            <PropertyRef Name="DiscId" />
           </Key>
-          <Property Name="DISCID" Type="int" Nullable="false" />
-          <Property Name="KAID" Type="int" Nullable="false" />
-          <Property Name="GRPID" Type="int" Nullable="false" />
-          <Property Name="ONVALUE" Type="numeric" Nullable="false" Precision="15" Scale="8" />
+          <Property Name="DiscId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="KAId" Type="int" Nullable="false" />
+          <Property Name="GrpId" Type="int" Nullable="false" />
+          <Property Name="OnValue" Type="numeric" Nullable="false" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="LANGUAGES">
           <Key>
@@ -2241,13 +2245,13 @@
           <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="KAMATDISCOUNT" Type="BaseModel.Store.KAMATDISCOUNT" Multiplicity="*" />
+          <End Role="KAMatDiscount" Type="BaseModel.Store.KAMatDiscount" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Materials">
               <PropertyRef Name="MatId" />
             </Principal>
-            <Dependent Role="KAMATDISCOUNT">
-              <PropertyRef Name="MATID" />
+            <Dependent Role="KAMatDiscount">
+              <PropertyRef Name="MatId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2255,13 +2259,13 @@
           <End Role="Kagent" Type="BaseModel.Store.Kagent" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="KAMATDISCOUNT" Type="BaseModel.Store.KAMATDISCOUNT" Multiplicity="*" />
+          <End Role="KAMatDiscount" Type="BaseModel.Store.KAMatDiscount" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Kagent">
               <PropertyRef Name="KaId" />
             </Principal>
-            <Dependent Role="KAMATDISCOUNT">
-              <PropertyRef Name="KAID" />
+            <Dependent Role="KAMatDiscount">
+              <PropertyRef Name="KAId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2269,13 +2273,13 @@
           <End Role="MatGroup" Type="BaseModel.Store.MatGroup" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="KAMATGROUPDISCOUNT" Type="BaseModel.Store.KAMATGROUPDISCOUNT" Multiplicity="*" />
+          <End Role="KAMatGroupDiscount" Type="BaseModel.Store.KAMatGroupDiscount" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MatGroup">
               <PropertyRef Name="GrpId" />
             </Principal>
-            <Dependent Role="KAMATGROUPDISCOUNT">
-              <PropertyRef Name="GRPID" />
+            <Dependent Role="KAMatGroupDiscount">
+              <PropertyRef Name="GrpId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2283,13 +2287,13 @@
           <End Role="Kagent" Type="BaseModel.Store.Kagent" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="KAMATGROUPDISCOUNT" Type="BaseModel.Store.KAMATGROUPDISCOUNT" Multiplicity="*" />
+          <End Role="KAMatGroupDiscount" Type="BaseModel.Store.KAMatGroupDiscount" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Kagent">
               <PropertyRef Name="KaId" />
             </Principal>
-            <Dependent Role="KAMATGROUPDISCOUNT">
-              <PropertyRef Name="KAID" />
+            <Dependent Role="KAMatGroupDiscount">
+              <PropertyRef Name="KAId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2621,13 +2625,13 @@
           <End Role="Kagent" Type="BaseModel.Store.Kagent" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="KAGENTACCOUNT" Type="BaseModel.Store.KAGENTACCOUNT" Multiplicity="*" />
+          <End Role="KAgentAccount" Type="BaseModel.Store.KAgentAccount" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Kagent">
               <PropertyRef Name="KaId" />
             </Principal>
-            <Dependent Role="KAGENTACCOUNT">
-              <PropertyRef Name="KAID" />
+            <Dependent Role="KAgentAccount">
+              <PropertyRef Name="KAId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2635,37 +2639,37 @@
           <End Role="Kagent" Type="BaseModel.Store.Kagent" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="KAGENTDOC" Type="BaseModel.Store.KAGENTDOC" Multiplicity="*" />
+          <End Role="KAgentDoc" Type="BaseModel.Store.KAgentDoc" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Kagent">
               <PropertyRef Name="KaId" />
             </Principal>
-            <Dependent Role="KAGENTDOC">
-              <PropertyRef Name="KAID" />
+            <Dependent Role="KAgentDoc">
+              <PropertyRef Name="KAId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_AGENTACC_FK_AGENTA_ACCOUNTT">
           <End Role="ACCOUNTTYPE" Type="BaseModel.Store.ACCOUNTTYPE" Multiplicity="1" />
-          <End Role="KAGENTACCOUNT" Type="BaseModel.Store.KAGENTACCOUNT" Multiplicity="*" />
+          <End Role="KAgentAccount" Type="BaseModel.Store.KAgentAccount" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ACCOUNTTYPE">
               <PropertyRef Name="TYPEID" />
             </Principal>
-            <Dependent Role="KAGENTACCOUNT">
-              <PropertyRef Name="TYPEID" />
+            <Dependent Role="KAgentAccount">
+              <PropertyRef Name="TypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_AGENTACC_FK_AGENTA_BANKS">
           <End Role="BANKS" Type="BaseModel.Store.BANKS" Multiplicity="1" />
-          <End Role="KAGENTACCOUNT" Type="BaseModel.Store.KAGENTACCOUNT" Multiplicity="*" />
+          <End Role="KAgentAccount" Type="BaseModel.Store.KAgentAccount" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="BANKS">
               <PropertyRef Name="BANKID" />
             </Principal>
-            <Dependent Role="KAGENTACCOUNT">
-              <PropertyRef Name="BANKID" />
+            <Dependent Role="KAgentAccount">
+              <PropertyRef Name="BankId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2673,13 +2677,13 @@
           <End Role="Kagent" Type="BaseModel.Store.Kagent" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="KAGENTPERSONS" Type="BaseModel.Store.KAGENTPERSONS" Multiplicity="*" />
+          <End Role="KAgentPersons" Type="BaseModel.Store.KAgentPersons" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Kagent">
               <PropertyRef Name="KaId" />
             </Principal>
-            <Dependent Role="KAGENTPERSONS">
-              <PropertyRef Name="KAID" />
+            <Dependent Role="KAgentPersons">
+              <PropertyRef Name="KAId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3003,6 +3007,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_KADiscount_Kagent">
+          <End Role="Kagent" Type="BaseModel.Store.Kagent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="KADiscount" Type="BaseModel.Store.KADiscount" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KADiscount">
+              <PropertyRef Name="KAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Kagent_Users">
           <End Role="Users" Type="BaseModel.Store.Users" Multiplicity="0..1" />
           <End Role="Kagent" Type="BaseModel.Store.Kagent" Multiplicity="*" />
@@ -3025,7 +3043,7 @@
               <PropertyRef Name="KaId" />
             </Principal>
             <Dependent Role="KAgentSaldo">
-              <PropertyRef Name="KAID" />
+              <PropertyRef Name="KAId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3148,11 +3166,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MS_ACCID">
-          <End Role="KAGENTACCOUNT" Type="BaseModel.Store.KAGENTACCOUNT" Multiplicity="0..1" />
+          <End Role="KAgentAccount" Type="BaseModel.Store.KAgentAccount" Multiplicity="0..1" />
           <End Role="MONEYSALDO" Type="BaseModel.Store.MONEYSALDO" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="KAGENTACCOUNT">
-              <PropertyRef Name="ACCID" />
+            <Principal Role="KAgentAccount">
+              <PropertyRef Name="AccId" />
             </Principal>
             <Dependent Role="MONEYSALDO">
               <PropertyRef Name="ACCID" />
@@ -3196,11 +3214,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PD_ACCID">
-          <End Role="KAGENTACCOUNT" Type="BaseModel.Store.KAGENTACCOUNT" Multiplicity="0..1" />
+          <End Role="KAgentAccount" Type="BaseModel.Store.KAgentAccount" Multiplicity="0..1" />
           <End Role="PayDoc" Type="BaseModel.Store.PayDoc" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="KAGENTACCOUNT">
-              <PropertyRef Name="ACCID" />
+            <Principal Role="KAgentAccount">
+              <PropertyRef Name="AccId" />
             </Principal>
             <Dependent Role="PayDoc">
               <PropertyRef Name="AccId" />
@@ -3913,6 +3931,9 @@
         </Association>
         <Function Name="DeleteAllReservePosition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="wbill_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DiscountList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ka_id" Type="int" Mode="In" />
         </Function>
         <Function Name="DocCopy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="doc_id" Type="int" Mode="In" />
@@ -4828,12 +4849,6 @@
           <EntitySet Name="DISCCARDS" EntityType="BaseModel.DISCCARDS" />
           <EntitySet Name="ENTPARAMS" EntityType="BaseModel.ENTPARAMS" />
           <EntitySet Name="FUNCTIONS" EntityType="BaseModel.FUNCTIONS" />
-          <EntitySet Name="KADISCOUNT" EntityType="BaseModel.KADISCOUNT" />
-          <EntitySet Name="KAGENTACCOUNT" EntityType="BaseModel.KAGENTACCOUNT" />
-          <EntitySet Name="KAGENTDOC" EntityType="BaseModel.KAGENTDOC" />
-          <EntitySet Name="KAGENTPERSONS" EntityType="BaseModel.KAGENTPERSONS" />
-          <EntitySet Name="KAMATDISCOUNT" EntityType="BaseModel.KAMATDISCOUNT" />
-          <EntitySet Name="KAMATGROUPDISCOUNT" EntityType="BaseModel.KAMATGROUPDISCOUNT" />
           <EntitySet Name="LANGUAGES" EntityType="BaseModel.LANGUAGES" />
           <EntitySet Name="MATCHANGE" EntityType="BaseModel.MATCHANGE" />
           <EntitySet Name="MATGROUPPRICES" EntityType="BaseModel.MATGROUPPRICES" />
@@ -4853,14 +4868,6 @@
           <EntitySet Name="TAXES" EntityType="BaseModel.TAXES" />
           <EntitySet Name="TAXWB" EntityType="BaseModel.TAXWB" />
           <EntitySet Name="WAYBILLSVC" EntityType="BaseModel.WAYBILLSVC" />
-          <AssociationSet Name="FK_AGENTACC_FK_AGENTA_ACCOUNTT" Association="BaseModel.FK_AGENTACC_FK_AGENTA_ACCOUNTT">
-            <End Role="ACCOUNTTYPE" EntitySet="ACCOUNTTYPE" />
-            <End Role="KAGENTACCOUNT" EntitySet="KAGENTACCOUNT" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AGENTACC_FK_AGENTA_BANKS" Association="BaseModel.FK_AGENTACC_FK_AGENTA_BANKS">
-            <End Role="BANKS" EntitySet="BANKS" />
-            <End Role="KAGENTACCOUNT" EntitySet="KAGENTACCOUNT" />
-          </AssociationSet>
           <AssociationSet Name="FK_BANKSPERSONS_1" Association="BaseModel.FK_BANKSPERSONS_1">
             <End Role="BANKS" EntitySet="BANKS" />
             <End Role="BANKSPERSONS" EntitySet="BANKSPERSONS" />
@@ -4884,10 +4891,6 @@
           <AssociationSet Name="FK__FUNCTIONS__TABID__123EB7A3" Association="BaseModel.FK__FUNCTIONS__TABID__123EB7A3">
             <End Role="TABLES" EntitySet="TABLES" />
             <End Role="FUNCTIONS" EntitySet="FUNCTIONS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MS_ACCID" Association="BaseModel.FK_MS_ACCID">
-            <End Role="KAGENTACCOUNT" EntitySet="KAGENTACCOUNT" />
-            <End Role="MONEYSALDO" EntitySet="MONEYSALDO" />
           </AssociationSet>
           <AssociationSet Name="FK_REPLNG_LANGID" Association="BaseModel.FK_REPLNG_LANGID">
             <End Role="LANGUAGES" EntitySet="LANGUAGES" />
@@ -5124,18 +5127,6 @@
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="DISCCARDS" EntitySet="DISCCARDS" />
           </AssociationSet>
-          <AssociationSet Name="FK__KADISCOUNT__KAID__19DFD96B" Association="BaseModel.FK__KADISCOUNT__KAID__19DFD96B">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KADISCOUNT" EntitySet="KADISCOUNT" />
-          </AssociationSet>
-          <AssociationSet Name="FK__KAMATDISCO__KAID__31B762FC" Association="BaseModel.FK__KAMATDISCO__KAID__31B762FC">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAMATDISCOUNT" EntitySet="KAMATDISCOUNT" />
-          </AssociationSet>
-          <AssociationSet Name="FK__KAMATGROUP__KAID__3A4CA8FD" Association="BaseModel.FK__KAMATGROUP__KAID__3A4CA8FD">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAMATGROUPDISCOUNT" EntitySet="KAMATGROUPDISCOUNT" />
-          </AssociationSet>
           <AssociationSet Name="FK__TAXWB__PERSONID__019E3B86" Association="BaseModel.FK__TAXWB__PERSONID__019E3B86">
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="TAXWB" EntitySet="TAXWB" />
@@ -5143,18 +5134,6 @@
           <AssociationSet Name="FK__WAYBILLLI__PERSO__6E01572D" Association="BaseModel.FK__WAYBILLLI__PERSO__6E01572D">
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="WaybillList" EntitySet="WaybillList" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AACC_KAID" Association="BaseModel.FK_AACC_KAID">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAGENTACCOUNT" EntitySet="KAGENTACCOUNT" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ADOC_KAID" Association="BaseModel.FK_ADOC_KAID">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAGENTDOC" EntitySet="KAGENTDOC" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AP_KAID" Association="BaseModel.FK_AP_KAID">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAGENTPERSONS" EntitySet="KAGENTPERSONS" />
           </AssociationSet>
           <AssociationSet Name="FK_TAXWB_REFERENCE_KAGENT" Association="BaseModel.FK_TAXWB_REFERENCE_KAGENT">
             <End Role="Kagent" EntitySet="Kagent" />
@@ -5184,10 +5163,6 @@
           </AssociationSet>
           <AssociationSet Name="FK__PAYDOC__MPERSONI__22401542" Association="BaseModel.FK__PAYDOC__MPERSONI__22401542">
             <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="PayDoc" EntitySet="PayDoc" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PD_ACCID" Association="BaseModel.FK_PD_ACCID">
-            <End Role="KAGENTACCOUNT" EntitySet="KAGENTACCOUNT" />
             <End Role="PayDoc" EntitySet="PayDoc" />
           </AssociationSet>
           <AssociationSet Name="FK__PAYDOC__PTYPEID__2057CCD0" Association="BaseModel.FK__PAYDOC__PTYPEID__2057CCD0">
@@ -5296,11 +5271,6 @@
           <FunctionImport Name="DeleteAllReservePosition">
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="KAgentSaldo" EntityType="BaseModel.KAgentSaldo" />
-          <AssociationSet Name="FK_KAS_KAID" Association="BaseModel.FK_KAS_KAID">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAgentSaldo" EntitySet="KAgentSaldo" />
-          </AssociationSet>
           <FunctionImport Name="GetMatExtra" IsComposable="true" ReturnType="Collection(BaseModel.GetMatExtra_Result)">
             <Parameter Name="MatId" Mode="In" Type="Int32" />
             <Parameter Name="PTypeId" Mode="In" Type="Int32" />
@@ -5353,10 +5323,6 @@
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="MatGroup" EntityType="BaseModel.MatGroup" />
-          <AssociationSet Name="FK__KAMATGROU__GRPID__395884C4" Association="BaseModel.FK__KAMATGROU__GRPID__395884C4">
-            <End Role="MatGroup" EntitySet="MatGroup" />
-            <End Role="KAMATGROUPDISCOUNT" EntitySet="KAMATGROUPDISCOUNT" />
-          </AssociationSet>
           <AssociationSet Name="FK_MGP_MATID" Association="BaseModel.FK_MGP_MATID">
             <End Role="MatGroup" EntitySet="MatGroup" />
             <End Role="MATGROUPPRICES" EntitySet="MATGROUPPRICES" />
@@ -5723,10 +5689,6 @@
             <End Role="Materials" EntitySet="Materials" />
             <End Role="DeboningDet" EntitySet="DeboningDet" />
           </AssociationSet>
-          <AssociationSet Name="FK__KAMATDISC__MATID__32AB8735" Association="BaseModel.FK__KAMATDISC__MATID__32AB8735">
-            <End Role="Materials" EntitySet="Materials" />
-            <End Role="KAMATDISCOUNT" EntitySet="KAMATDISCOUNT" />
-          </AssociationSet>
           <AssociationSet Name="FK_MATCHANGE_CHANGEID" Association="BaseModel.FK_MATCHANGE_CHANGEID">
             <End Role="Materials" EntitySet="Materials" />
             <End Role="MATCHANGE" EntitySet="MATCHANGE" />
@@ -5786,6 +5748,68 @@
           <EntitySet Name="KagentList" EntityType="BaseModel.KagentList" />
           <EntitySet Name="KAgentTyp" EntityType="BaseModel.KAgentTyp" />
           <EntitySet Name="KAKInd" EntityType="BaseModel.KAKInd" />
+          <EntitySet Name="KAgentAccount" EntityType="BaseModel.KAgentAccount" />
+          <EntitySet Name="KAgentDoc" EntityType="BaseModel.KAgentDoc" />
+          <EntitySet Name="KAgentPersons" EntityType="BaseModel.KAgentPersons" />
+          <EntitySet Name="KAgentSaldo" EntityType="BaseModel.KAgentSaldo" />
+          <AssociationSet Name="FK_AGENTACC_FK_AGENTA_ACCOUNTT" Association="BaseModel.FK_AGENTACC_FK_AGENTA_ACCOUNTT">
+            <End Role="ACCOUNTTYPE" EntitySet="ACCOUNTTYPE" />
+            <End Role="KAgentAccount" EntitySet="KAgentAccount" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AGENTACC_FK_AGENTA_BANKS" Association="BaseModel.FK_AGENTACC_FK_AGENTA_BANKS">
+            <End Role="BANKS" EntitySet="BANKS" />
+            <End Role="KAgentAccount" EntitySet="KAgentAccount" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AACC_KAID" Association="BaseModel.FK_AACC_KAID">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KAgentAccount" EntitySet="KAgentAccount" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ADOC_KAID" Association="BaseModel.FK_ADOC_KAID">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KAgentDoc" EntitySet="KAgentDoc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AP_KAID" Association="BaseModel.FK_AP_KAID">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KAgentPersons" EntitySet="KAgentPersons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KAS_KAID" Association="BaseModel.FK_KAS_KAID">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KAgentSaldo" EntitySet="KAgentSaldo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MS_ACCID" Association="BaseModel.FK_MS_ACCID">
+            <End Role="KAgentAccount" EntitySet="KAgentAccount" />
+            <End Role="MONEYSALDO" EntitySet="MONEYSALDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PD_ACCID" Association="BaseModel.FK_PD_ACCID">
+            <End Role="KAgentAccount" EntitySet="KAgentAccount" />
+            <End Role="PayDoc" EntitySet="PayDoc" />
+          </AssociationSet>
+          <EntitySet Name="KADiscount" EntityType="BaseModel.KADiscount" />
+          <EntitySet Name="KAMatDiscount" EntityType="BaseModel.KAMatDiscount" />
+          <EntitySet Name="KAMatGroupDiscount" EntityType="BaseModel.KAMatGroupDiscount" />
+          <AssociationSet Name="FK_KADiscount_Kagent" Association="BaseModel.FK_KADiscount_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KADiscount" EntitySet="KADiscount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KAMATDISCO__KAID__31B762FC" Association="BaseModel.FK__KAMATDISCO__KAID__31B762FC">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KAMatDiscount" EntitySet="KAMatDiscount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KAMATGROUP__KAID__3A4CA8FD" Association="BaseModel.FK__KAMATGROUP__KAID__3A4CA8FD">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KAMatGroupDiscount" EntitySet="KAMatGroupDiscount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KAMATDISC__MATID__32AB8735" Association="BaseModel.FK__KAMATDISC__MATID__32AB8735">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="KAMatDiscount" EntitySet="KAMatDiscount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KAMATGROU__GRPID__395884C4" Association="BaseModel.FK__KAMATGROU__GRPID__395884C4">
+            <End Role="MatGroup" EntitySet="MatGroup" />
+            <End Role="KAMatGroupDiscount" EntitySet="KAMatGroupDiscount" />
+          </AssociationSet>
+          <FunctionImport Name="DiscountList" ReturnType="Collection(BaseModel.DiscountList_Result)">
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -5956,7 +5980,7 @@
           <Property Name="NAME" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
           <Property Name="DEF" Type="Int32" Nullable="false" />
           <Property Name="DELETED" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="KAGENTACCOUNT" Relationship="BaseModel.FK_AGENTACC_FK_AGENTA_ACCOUNTT" FromRole="ACCOUNTTYPE" ToRole="KAGENTACCOUNT" />
+          <NavigationProperty Name="KAgentAccount" Relationship="BaseModel.FK_AGENTACC_FK_AGENTA_ACCOUNTT" FromRole="ACCOUNTTYPE" ToRole="KAgentAccount" />
         </EntityType>
         <EntityType Name="BANKS">
           <Key>
@@ -5970,8 +5994,8 @@
           <Property Name="CORACC" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
           <Property Name="DEF" Type="Int32" Nullable="false" />
           <Property Name="DELETED" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="KAGENTACCOUNT" Relationship="BaseModel.FK_AGENTACC_FK_AGENTA_BANKS" FromRole="BANKS" ToRole="KAGENTACCOUNT" />
           <NavigationProperty Name="BANKSPERSONS" Relationship="BaseModel.FK_BANKSPERSONS_1" FromRole="BANKS" ToRole="BANKSPERSONS" />
+          <NavigationProperty Name="KAgentAccount" Relationship="BaseModel.FK_AGENTACC_FK_AGENTA_BANKS" FromRole="BANKS" ToRole="KAgentAccount" />
         </EntityType>
         <EntityType Name="BANKSPERSONS">
           <Key>
@@ -6125,81 +6149,6 @@
           <NavigationProperty Name="UserAccess" Relationship="BaseModel.FK_USERACCE_FK_USERAC_FUNCTION" FromRole="FUNCTIONS" ToRole="UserAccess" />
           <NavigationProperty Name="UserTreeView" Relationship="BaseModel.FK_USERTREE_FK_USERTR_FUNCTION" FromRole="FUNCTIONS" ToRole="UserTreeView" />
         </EntityType>
-        <EntityType Name="KADISCOUNT">
-          <Key>
-            <PropertyRef Name="KAID" />
-          </Key>
-          <Property Name="KAID" Type="Int32" Nullable="false" />
-          <Property Name="DISCFORALL" Type="Int32" Nullable="false" />
-          <Property Name="ONVALUE" Type="Decimal" Nullable="false" Precision="15" Scale="8" />
-          <Property Name="DISCCUSTOM" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__KADISCOUNT__KAID__19DFD96B" FromRole="KADISCOUNT" ToRole="Kagent" />
-        </EntityType>
-        <EntityType Name="KAGENTACCOUNT">
-          <Key>
-            <PropertyRef Name="ACCID" />
-          </Key>
-          <Property Name="ACCID" Type="Int32" Nullable="false" />
-          <Property Name="KAID" Type="Int32" Nullable="false" />
-          <Property Name="TYPEID" Type="Int32" Nullable="false" />
-          <Property Name="BANKID" Type="Int32" Nullable="false" />
-          <Property Name="ACCNUM" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="DEF" Type="Int32" />
-          <NavigationProperty Name="ACCOUNTTYPE" Relationship="BaseModel.FK_AGENTACC_FK_AGENTA_ACCOUNTT" FromRole="KAGENTACCOUNT" ToRole="ACCOUNTTYPE" />
-          <NavigationProperty Name="BANKS" Relationship="BaseModel.FK_AGENTACC_FK_AGENTA_BANKS" FromRole="KAGENTACCOUNT" ToRole="BANKS" />
-          <NavigationProperty Name="MONEYSALDO" Relationship="BaseModel.FK_MS_ACCID" FromRole="KAGENTACCOUNT" ToRole="MONEYSALDO" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_AACC_KAID" FromRole="KAGENTACCOUNT" ToRole="Kagent" />
-          <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK_PD_ACCID" FromRole="KAGENTACCOUNT" ToRole="PayDoc" />
-        </EntityType>
-        <EntityType Name="KAGENTDOC">
-          <Key>
-            <PropertyRef Name="KAID" />
-            <PropertyRef Name="DOCDATE" />
-          </Key>
-          <Property Name="KAID" Type="Int32" Nullable="false" />
-          <Property Name="DOCNAME" Type="String" MaxLength="48" Unicode="false" FixedLength="false" />
-          <Property Name="DOCNUM" Type="String" MaxLength="24" Unicode="false" FixedLength="false" />
-          <Property Name="DOCSERIES" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
-          <Property Name="DOCWHOPRODUCE" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
-          <Property Name="DOCDATE" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_ADOC_KAID" FromRole="KAGENTDOC" ToRole="Kagent" />
-        </EntityType>
-        <EntityType Name="KAGENTPERSONS">
-          <Key>
-            <PropertyRef Name="PERSONID" />
-          </Key>
-          <Property Name="PERSONID" Type="Int32" Nullable="false" />
-          <Property Name="KAID" Type="Int32" Nullable="false" />
-          <Property Name="NAME" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
-          <Property Name="POST" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
-          <Property Name="PHONE" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="EMAIL" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="NOTES" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="JOBTYPE" Type="Int32" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_AP_KAID" FromRole="KAGENTPERSONS" ToRole="Kagent" />
-        </EntityType>
-        <EntityType Name="KAMATDISCOUNT">
-          <Key>
-            <PropertyRef Name="DISCID" />
-          </Key>
-          <Property Name="DISCID" Type="Int32" Nullable="false" />
-          <Property Name="KAID" Type="Int32" Nullable="false" />
-          <Property Name="MATID" Type="Int32" Nullable="false" />
-          <Property Name="ONVALUE" Type="Decimal" Nullable="false" Precision="15" Scale="8" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__KAMATDISCO__KAID__31B762FC" FromRole="KAMATDISCOUNT" ToRole="Kagent" />
-          <NavigationProperty Name="Materials" Relationship="BaseModel.FK__KAMATDISC__MATID__32AB8735" FromRole="KAMATDISCOUNT" ToRole="Materials" />
-        </EntityType>
-        <EntityType Name="KAMATGROUPDISCOUNT">
-          <Key>
-            <PropertyRef Name="DISCID" />
-          </Key>
-          <Property Name="DISCID" Type="Int32" Nullable="false" />
-          <Property Name="KAID" Type="Int32" Nullable="false" />
-          <Property Name="GRPID" Type="Int32" Nullable="false" />
-          <Property Name="ONVALUE" Type="Decimal" Nullable="false" Precision="15" Scale="8" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__KAMATGROUP__KAID__3A4CA8FD" FromRole="KAMATGROUPDISCOUNT" ToRole="Kagent" />
-          <NavigationProperty Name="MatGroup" Relationship="BaseModel.FK__KAMATGROU__GRPID__395884C4" FromRole="KAMATGROUPDISCOUNT" ToRole="MatGroup" />
-        </EntityType>
         <EntityType Name="LANGUAGES">
           <Key>
             <PropertyRef Name="LANGID" />
@@ -6279,9 +6228,9 @@
           <Property Name="SALDO" Type="Decimal" Nullable="false" Precision="15" Scale="8" />
           <Property Name="CASHID" Type="Int32" />
           <Property Name="SALDODEF" Type="Decimal" Precision="15" Scale="8" />
-          <NavigationProperty Name="KAGENTACCOUNT" Relationship="BaseModel.FK_MS_ACCID" FromRole="MONEYSALDO" ToRole="KAGENTACCOUNT" />
           <NavigationProperty Name="CashDesks" Relationship="BaseModel.FK_MS_CASHID" FromRole="MONEYSALDO" ToRole="CashDesks" />
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK_MS_CURRID" FromRole="MONEYSALDO" ToRole="Currency" />
+          <NavigationProperty Name="KAgentAccount" Relationship="BaseModel.FK_MS_ACCID" FromRole="MONEYSALDO" ToRole="KAgentAccount" />
         </EntityType>
         <EntityType Name="OPERLOG">
           <Key>
@@ -6488,30 +6437,6 @@
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_WBS_PERSONID" FromRole="WAYBILLSVC" ToRole="Kagent" />
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK_WBS_CURRID" FromRole="WAYBILLSVC" ToRole="Currency" />
         </EntityType>
-        <Association Name="FK_AGENTACC_FK_AGENTA_ACCOUNTT">
-          <End Role="ACCOUNTTYPE" Type="BaseModel.ACCOUNTTYPE" Multiplicity="1" />
-          <End Role="KAGENTACCOUNT" Type="BaseModel.KAGENTACCOUNT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ACCOUNTTYPE">
-              <PropertyRef Name="TYPEID" />
-            </Principal>
-            <Dependent Role="KAGENTACCOUNT">
-              <PropertyRef Name="TYPEID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AGENTACC_FK_AGENTA_BANKS">
-          <End Role="BANKS" Type="BaseModel.BANKS" Multiplicity="1" />
-          <End Role="KAGENTACCOUNT" Type="BaseModel.KAGENTACCOUNT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BANKS">
-              <PropertyRef Name="BANKID" />
-            </Principal>
-            <Dependent Role="KAGENTACCOUNT">
-              <PropertyRef Name="BANKID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_BANKSPERSONS_1">
           <End Role="BANKS" Type="BaseModel.BANKS" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -6589,18 +6514,6 @@
             </Principal>
             <Dependent Role="FUNCTIONS">
               <PropertyRef Name="TABID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MS_ACCID">
-          <End Role="KAGENTACCOUNT" Type="BaseModel.KAGENTACCOUNT" Multiplicity="0..1" />
-          <End Role="MONEYSALDO" Type="BaseModel.MONEYSALDO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KAGENTACCOUNT">
-              <PropertyRef Name="ACCID" />
-            </Principal>
-            <Dependent Role="MONEYSALDO">
-              <PropertyRef Name="ACCID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -6957,14 +6870,8 @@
           <NavigationProperty Name="CONTRACTS" Relationship="BaseModel.FK_CONTRACT_REF_CONTR_KAGENT" FromRole="Kagent" ToRole="CONTRACTS" />
           <NavigationProperty Name="CONTRACTS1" Relationship="BaseModel.FK_CONTRACT_REFERENCE_KAGENT" FromRole="Kagent" ToRole="CONTRACTS" />
           <NavigationProperty Name="DISCCARDS" Relationship="BaseModel.FK_DISCCARDS_KAID" FromRole="Kagent" ToRole="DISCCARDS" />
-          <NavigationProperty Name="KADISCOUNT" Relationship="BaseModel.FK__KADISCOUNT__KAID__19DFD96B" FromRole="Kagent" ToRole="KADISCOUNT" />
-          <NavigationProperty Name="KAMATDISCOUNT" Relationship="BaseModel.FK__KAMATDISCO__KAID__31B762FC" FromRole="Kagent" ToRole="KAMATDISCOUNT" />
-          <NavigationProperty Name="KAMATGROUPDISCOUNT" Relationship="BaseModel.FK__KAMATGROUP__KAID__3A4CA8FD" FromRole="Kagent" ToRole="KAMATGROUPDISCOUNT" />
           <NavigationProperty Name="TAXWB" Relationship="BaseModel.FK__TAXWB__PERSONID__019E3B86" FromRole="Kagent" ToRole="TAXWB" />
           <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK__WAYBILLLI__PERSO__6E01572D" FromRole="Kagent" ToRole="WaybillList" />
-          <NavigationProperty Name="KAGENTACCOUNT" Relationship="BaseModel.FK_AACC_KAID" FromRole="Kagent" ToRole="KAGENTACCOUNT" />
-          <NavigationProperty Name="KAGENTDOC" Relationship="BaseModel.FK_ADOC_KAID" FromRole="Kagent" ToRole="KAGENTDOC" />
-          <NavigationProperty Name="KAGENTPERSONS" Relationship="BaseModel.FK_AP_KAID" FromRole="Kagent" ToRole="KAGENTPERSONS" />
           <NavigationProperty Name="TAXWB1" Relationship="BaseModel.FK_TAXWB_REFERENCE_KAGENT" FromRole="Kagent" ToRole="TAXWB" />
           <NavigationProperty Name="WaybillList1" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" FromRole="Kagent" ToRole="WaybillList" />
           <NavigationProperty Name="WaybillList2" Relationship="BaseModel.FK_WBL_ENTID" FromRole="Kagent" ToRole="WaybillList" />
@@ -6972,7 +6879,6 @@
           <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK__PAYDOC__KAID__19AACF41" FromRole="Kagent" ToRole="PayDoc" />
           <NavigationProperty Name="PayDoc1" Relationship="BaseModel.FK__PAYDOC__MPERSONI__22401542" FromRole="Kagent" ToRole="PayDoc" />
           <NavigationProperty Name="Users" Relationship="BaseModel.FK_Kagent_Users" FromRole="Kagent" ToRole="Users" />
-          <NavigationProperty Name="KAgentSaldo" Relationship="BaseModel.FK_KAS_KAID" FromRole="Kagent" ToRole="KAgentSaldo" />
           <NavigationProperty Name="KaAddr" Relationship="BaseModel.FK_KAADDR_KAID" FromRole="Kagent" ToRole="KaAddr" />
           <NavigationProperty Name="WaybillMove" Relationship="BaseModel.FK__WAYBILLMO__PERSO__314D4EA8" FromRole="Kagent" ToRole="WaybillMove" />
           <NavigationProperty Name="Commission" Relationship="BaseModel.FK_COMMISSI_REFERENCE_KAGENT" FromRole="Kagent" ToRole="Commission" />
@@ -6981,6 +6887,13 @@
           <NavigationProperty Name="Commission3" Relationship="BaseModel.FK_COMMISSION_3" FromRole="Kagent" ToRole="Commission" />
           <NavigationProperty Name="TechProcDet" Relationship="BaseModel.FK_TECHPROCDET_KAGENT" FromRole="Kagent" ToRole="TechProcDet" />
           <NavigationProperty Name="WayBillMake" Relationship="BaseModel.FK_WAYBILLMAKE_KAGENT" FromRole="Kagent" ToRole="WayBillMake" />
+          <NavigationProperty Name="KAgentAccount" Relationship="BaseModel.FK_AACC_KAID" FromRole="Kagent" ToRole="KAgentAccount" />
+          <NavigationProperty Name="KAgentDoc" Relationship="BaseModel.FK_ADOC_KAID" FromRole="Kagent" ToRole="KAgentDoc" />
+          <NavigationProperty Name="KAgentPersons" Relationship="BaseModel.FK_AP_KAID" FromRole="Kagent" ToRole="KAgentPersons" />
+          <NavigationProperty Name="KAgentSaldo" Relationship="BaseModel.FK_KAS_KAID" FromRole="Kagent" ToRole="KAgentSaldo" />
+          <NavigationProperty Name="KADiscount" Relationship="BaseModel.FK_KADiscount_Kagent" FromRole="Kagent" ToRole="KADiscount" />
+          <NavigationProperty Name="KAMatDiscount" Relationship="BaseModel.FK__KAMATDISCO__KAID__31B762FC" FromRole="Kagent" ToRole="KAMatDiscount" />
+          <NavigationProperty Name="KAMatGroupDiscount" Relationship="BaseModel.FK__KAMATGROUP__KAID__3A4CA8FD" FromRole="Kagent" ToRole="KAMatGroupDiscount" />
         </EntityType>
         <Association Name="FK_CONTRACT_REF_CONTR_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
@@ -7018,48 +6931,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__KADISCOUNT__KAID__19DFD96B">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.KADISCOUNT" Role="KADISCOUNT" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="KADISCOUNT">
-              <PropertyRef Name="KAID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__KAMATDISCO__KAID__31B762FC">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.KAMATDISCOUNT" Role="KAMATDISCOUNT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="KAMATDISCOUNT">
-              <PropertyRef Name="KAID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__KAMATGROUP__KAID__3A4CA8FD">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.KAMATGROUPDISCOUNT" Role="KAMATGROUPDISCOUNT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="KAMATGROUPDISCOUNT">
-              <PropertyRef Name="KAID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__TAXWB__PERSONID__019E3B86">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
           <End Type="BaseModel.TAXWB" Role="TAXWB" Multiplicity="*" />
@@ -7081,48 +6952,6 @@
             </Principal>
             <Dependent Role="WaybillList">
               <PropertyRef Name="PersonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AACC_KAID">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.KAGENTACCOUNT" Role="KAGENTACCOUNT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="KAGENTACCOUNT">
-              <PropertyRef Name="KAID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ADOC_KAID">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.KAGENTDOC" Role="KAGENTDOC" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="KAGENTDOC">
-              <PropertyRef Name="KAID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AP_KAID">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.KAGENTPERSONS" Role="KAGENTPERSONS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="KAGENTPERSONS">
-              <PropertyRef Name="KAID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7211,11 +7040,11 @@
           <NavigationProperty Name="CashDesks" Relationship="BaseModel.FK_PD_CASHID" FromRole="PayDoc" ToRole="CashDesks" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__PAYDOC__KAID__19AACF41" FromRole="PayDoc" ToRole="Kagent" />
           <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK__PAYDOC__MPERSONI__22401542" FromRole="PayDoc" ToRole="Kagent" />
-          <NavigationProperty Name="KAGENTACCOUNT" Relationship="BaseModel.FK_PD_ACCID" FromRole="PayDoc" ToRole="KAGENTACCOUNT" />
           <NavigationProperty Name="PayType" Relationship="BaseModel.FK__PAYDOC__PTYPEID__2057CCD0" FromRole="PayDoc" ToRole="PayType" />
           <NavigationProperty Name="ChargeType" Relationship="BaseModel.FK__PAYDOC__CTYPEID__2334397B" FromRole="PayDoc" ToRole="ChargeType" />
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK__PAYDOC__CURRID__214BF109" FromRole="PayDoc" ToRole="Currency" />
           <NavigationProperty Name="Docs" Relationship="BaseModel.FK_PAYDOC_REF_PD_DO_DOCS" FromRole="PayDoc" ToRole="Docs" />
+          <NavigationProperty Name="KAgentAccount" Relationship="BaseModel.FK_PD_ACCID" FromRole="PayDoc" ToRole="KAgentAccount" />
         </EntityType>
         <Association Name="FK_PD_CASHID">
           <End Type="BaseModel.CashDesks" Role="CashDesks" Multiplicity="0..1" />
@@ -7250,18 +7079,6 @@
             </Principal>
             <Dependent Role="PayDoc">
               <PropertyRef Name="MPersonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PD_ACCID">
-          <End Type="BaseModel.KAGENTACCOUNT" Role="KAGENTACCOUNT" Multiplicity="0..1" />
-          <End Type="BaseModel.PayDoc" Role="PayDoc" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KAGENTACCOUNT">
-              <PropertyRef Name="ACCID" />
-            </Principal>
-            <Dependent Role="PayDoc">
-              <PropertyRef Name="AccId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7659,31 +7476,6 @@
           <Property Type="Int32" Name="PosId" Nullable="true" />
           <Property Type="Int32" Name="Rsv" Nullable="true" />
         </ComplexType>
-        <EntityType Name="KAgentSaldo">
-          <Key>
-            <PropertyRef Name="KAID" />
-            <PropertyRef Name="ONDATE" />
-            <PropertyRef Name="SALDO" />
-          </Key>
-          <Property Type="Int32" Name="KAID" Nullable="false" />
-          <Property Type="DateTime" Name="ONDATE" Nullable="false" Precision="3" />
-          <Property Type="Decimal" Name="SALDO" Nullable="false" Precision="15" Scale="8" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_KAS_KAID" FromRole="KAgentSaldo" ToRole="Kagent" />
-        </EntityType>
-        <Association Name="FK_KAS_KAID">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.KAgentSaldo" Role="KAgentSaldo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="KAgentSaldo">
-              <PropertyRef Name="KAID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <ComplexType Name="GetMatExtra_Result">
           <Property Type="Decimal" Name="Extra" Nullable="true" Precision="15" Scale="4" />
           <Property Type="Int32" Name="WithNds" Nullable="true" />
@@ -7846,24 +7638,10 @@
           <Property Type="Decimal" Name="Nds" Precision="15" Scale="8" />
           <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Type="Decimal" Name="Num" Precision="5" Scale="1" />
-          <NavigationProperty Name="KAMATGROUPDISCOUNT" Relationship="BaseModel.FK__KAMATGROU__GRPID__395884C4" FromRole="MatGroup" ToRole="KAMATGROUPDISCOUNT" />
           <NavigationProperty Name="MATGROUPPRICES" Relationship="BaseModel.FK_MGP_MATID" FromRole="MatGroup" ToRole="MATGROUPPRICES" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK__MATERIALS__GRPID__58D1301D" FromRole="MatGroup" ToRole="Materials" />
+          <NavigationProperty Name="KAMatGroupDiscount" Relationship="BaseModel.FK__KAMATGROU__GRPID__395884C4" FromRole="MatGroup" ToRole="KAMatGroupDiscount" />
         </EntityType>
-        <Association Name="FK__KAMATGROU__GRPID__395884C4">
-          <End Type="BaseModel.MatGroup" Role="MatGroup" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.KAMATGROUPDISCOUNT" Role="KAMATGROUPDISCOUNT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MatGroup">
-              <PropertyRef Name="GrpId" />
-            </Principal>
-            <Dependent Role="KAMATGROUPDISCOUNT">
-              <PropertyRef Name="GRPID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_MGP_MATID">
           <End Type="BaseModel.MatGroup" Role="MatGroup" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -9474,7 +9252,6 @@
           <NavigationProperty Name="CONTRDET" Relationship="BaseModel.FK_CONTRDET_REFERENCE_MATERIAL" FromRole="Materials" ToRole="CONTRDET" />
           <NavigationProperty Name="Countries" Relationship="BaseModel.FK__MATERIALS__CID__662B2B3B" FromRole="Materials" ToRole="Countries" />
           <NavigationProperty Name="DeboningDet" Relationship="BaseModel.FK_DEBONINGDET_MATERIALS" FromRole="Materials" ToRole="DeboningDet" />
-          <NavigationProperty Name="KAMATDISCOUNT" Relationship="BaseModel.FK__KAMATDISC__MATID__32AB8735" FromRole="Materials" ToRole="KAMATDISCOUNT" />
           <NavigationProperty Name="MATCHANGE" Relationship="BaseModel.FK_MATCHANGE_CHANGEID" FromRole="Materials" ToRole="MATCHANGE" />
           <NavigationProperty Name="MATCHANGE1" Relationship="BaseModel.FK_MATCHANGE_MATID" FromRole="Materials" ToRole="MATCHANGE" />
           <NavigationProperty Name="MatGroup" Relationship="BaseModel.FK__MATERIALS__GRPID__58D1301D" FromRole="Materials" ToRole="MatGroup" />
@@ -9489,6 +9266,7 @@
           <NavigationProperty Name="MATPRICES" Relationship="BaseModel.FK_MP_MATID" FromRole="Materials" ToRole="MATPRICES" />
           <NavigationProperty Name="TAXWBDET" Relationship="BaseModel.FK_TAXWBDET_REFERENCE_MATERIAL" FromRole="Materials" ToRole="TAXWBDET" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" FromRole="Materials" ToRole="WaybillDet" />
+          <NavigationProperty Name="KAMatDiscount" Relationship="BaseModel.FK__KAMATDISC__MATID__32AB8735" FromRole="Materials" ToRole="KAMatDiscount" />
         </EntityType>
         <Association Name="FK_CONTRDET_REFERENCE_MATERIAL">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="0..1" />
@@ -9523,20 +9301,6 @@
             </Principal>
             <Dependent Role="DeboningDet">
               <PropertyRef Name="MatId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__KAMATDISC__MATID__32AB8735">
-          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.KAMATDISCOUNT" Role="KAMATDISCOUNT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Materials">
-              <PropertyRef Name="MatId" />
-            </Principal>
-            <Dependent Role="KAMATDISCOUNT">
-              <PropertyRef Name="MATID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -9778,6 +9542,274 @@
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="KAgentAccount">
+          <Key>
+            <PropertyRef Name="AccId" />
+          </Key>
+          <Property Type="Int32" Name="AccId" Nullable="false" />
+          <Property Type="Int32" Name="KAId" Nullable="false" />
+          <Property Type="Int32" Name="TypeId" Nullable="false" />
+          <Property Type="Int32" Name="BankId" Nullable="false" />
+          <Property Type="String" Name="AccNum" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Def" />
+          <NavigationProperty Name="ACCOUNTTYPE" Relationship="BaseModel.FK_AGENTACC_FK_AGENTA_ACCOUNTT" FromRole="KAgentAccount" ToRole="ACCOUNTTYPE" />
+          <NavigationProperty Name="BANKS" Relationship="BaseModel.FK_AGENTACC_FK_AGENTA_BANKS" FromRole="KAgentAccount" ToRole="BANKS" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_AACC_KAID" FromRole="KAgentAccount" ToRole="Kagent" />
+          <NavigationProperty Name="MONEYSALDO" Relationship="BaseModel.FK_MS_ACCID" FromRole="KAgentAccount" ToRole="MONEYSALDO" />
+          <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK_PD_ACCID" FromRole="KAgentAccount" ToRole="PayDoc" />
+        </EntityType>
+        <EntityType Name="KAgentDoc">
+          <Key>
+            <PropertyRef Name="KAId" />
+            <PropertyRef Name="DocDate" />
+          </Key>
+          <Property Type="Int32" Name="KAId" Nullable="false" />
+          <Property Type="String" Name="DocName" MaxLength="48" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DocNum" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DocSeries" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DocWhoProduce" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="DocDate" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_ADOC_KAID" FromRole="KAgentDoc" ToRole="Kagent" />
+        </EntityType>
+        <EntityType Name="KAgentPersons">
+          <Key>
+            <PropertyRef Name="PersonId" />
+          </Key>
+          <Property Type="Int32" Name="PersonId" Nullable="false" />
+          <Property Type="Int32" Name="KAId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Post" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Phone" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Email" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="JobType" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_AP_KAID" FromRole="KAgentPersons" ToRole="Kagent" />
+        </EntityType>
+        <EntityType Name="KAgentSaldo">
+          <Key>
+            <PropertyRef Name="KAId" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Saldo" />
+          </Key>
+          <Property Type="Int32" Name="KAId" Nullable="false" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
+          <Property Type="Decimal" Name="Saldo" Nullable="false" Precision="15" Scale="8" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_KAS_KAID" FromRole="KAgentSaldo" ToRole="Kagent" />
+        </EntityType>
+        <Association Name="FK_AGENTACC_FK_AGENTA_ACCOUNTT">
+          <End Type="BaseModel.ACCOUNTTYPE" Role="ACCOUNTTYPE" Multiplicity="1" />
+          <End Type="BaseModel.KAgentAccount" Role="KAgentAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNTTYPE">
+              <PropertyRef Name="TYPEID" />
+            </Principal>
+            <Dependent Role="KAgentAccount">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AGENTACC_FK_AGENTA_BANKS">
+          <End Type="BaseModel.BANKS" Role="BANKS" Multiplicity="1" />
+          <End Type="BaseModel.KAgentAccount" Role="KAgentAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BANKS">
+              <PropertyRef Name="BANKID" />
+            </Principal>
+            <Dependent Role="KAgentAccount">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AACC_KAID">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.KAgentAccount" Role="KAgentAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KAgentAccount">
+              <PropertyRef Name="KAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ADOC_KAID">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.KAgentDoc" Role="KAgentDoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KAgentDoc">
+              <PropertyRef Name="KAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AP_KAID">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.KAgentPersons" Role="KAgentPersons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KAgentPersons">
+              <PropertyRef Name="KAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KAS_KAID">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.KAgentSaldo" Role="KAgentSaldo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KAgentSaldo">
+              <PropertyRef Name="KAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MS_ACCID">
+          <End Type="BaseModel.KAgentAccount" Role="KAgentAccount" Multiplicity="0..1" />
+          <End Type="BaseModel.MONEYSALDO" Role="MONEYSALDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KAgentAccount">
+              <PropertyRef Name="AccId" />
+            </Principal>
+            <Dependent Role="MONEYSALDO">
+              <PropertyRef Name="ACCID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PD_ACCID">
+          <End Type="BaseModel.KAgentAccount" Role="KAgentAccount" Multiplicity="0..1" />
+          <End Type="BaseModel.PayDoc" Role="PayDoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KAgentAccount">
+              <PropertyRef Name="AccId" />
+            </Principal>
+            <Dependent Role="PayDoc">
+              <PropertyRef Name="AccId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="KADiscount">
+          <Key>
+            <PropertyRef Name="KAId" />
+          </Key>
+          <Property Type="Int32" Name="KAId" Nullable="false" />
+          <Property Type="Int32" Name="DiscForAll" Nullable="false" />
+          <Property Type="Decimal" Name="OnValue" Nullable="false" Precision="15" Scale="8" />
+          <Property Type="Int32" Name="DiscCustom" Nullable="false" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_KADiscount_Kagent" FromRole="KADiscount" ToRole="Kagent" />
+        </EntityType>
+        <EntityType Name="KAMatDiscount">
+          <Key>
+            <PropertyRef Name="DiscId" />
+          </Key>
+          <Property Type="Guid" Name="DiscId" Nullable="false" />
+          <Property Type="Int32" Name="KAId" Nullable="false" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="Decimal" Name="OnValue" Nullable="false" Precision="15" Scale="4" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__KAMATDISCO__KAID__31B762FC" FromRole="KAMatDiscount" ToRole="Kagent" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK__KAMATDISC__MATID__32AB8735" FromRole="KAMatDiscount" ToRole="Materials" />
+        </EntityType>
+        <EntityType Name="KAMatGroupDiscount">
+          <Key>
+            <PropertyRef Name="DiscId" />
+          </Key>
+          <Property Type="Guid" Name="DiscId" Nullable="false" />
+          <Property Type="Int32" Name="KAId" Nullable="false" />
+          <Property Type="Int32" Name="GrpId" Nullable="false" />
+          <Property Type="Decimal" Name="OnValue" Nullable="false" Precision="15" Scale="4" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__KAMATGROUP__KAID__3A4CA8FD" FromRole="KAMatGroupDiscount" ToRole="Kagent" />
+          <NavigationProperty Name="MatGroup" Relationship="BaseModel.FK__KAMATGROU__GRPID__395884C4" FromRole="KAMatGroupDiscount" ToRole="MatGroup" />
+        </EntityType>
+        <Association Name="FK_KADiscount_Kagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.KADiscount" Role="KADiscount" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KADiscount">
+              <PropertyRef Name="KAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KAMATDISCO__KAID__31B762FC">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.KAMatDiscount" Role="KAMatDiscount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KAMatDiscount">
+              <PropertyRef Name="KAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KAMATGROUP__KAID__3A4CA8FD">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.KAMatGroupDiscount" Role="KAMatGroupDiscount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KAMatGroupDiscount">
+              <PropertyRef Name="KAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KAMATDISC__MATID__32AB8735">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.KAMatDiscount" Role="KAMatDiscount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="KAMatDiscount">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KAMATGROU__GRPID__395884C4">
+          <End Type="BaseModel.MatGroup" Role="MatGroup" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.KAMatGroupDiscount" Role="KAMatGroupDiscount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MatGroup">
+              <PropertyRef Name="GrpId" />
+            </Principal>
+            <Dependent Role="KAMatGroupDiscount">
+              <PropertyRef Name="GrpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="DiscountList_Result">
+          <Property Type="Int32" Name="ImgIdx" Nullable="false" />
+          <Property Type="Guid" Name="DiscId" Nullable="false" />
+          <Property Type="Int32" Name="KAId" Nullable="false" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="OnValue" Nullable="false" Precision="15" Scale="4" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -9945,74 +9977,6 @@
                 <ScalarProperty Name="TABID" ColumnName="TABID" />
                 <ScalarProperty Name="LOGGING" ColumnName="LOGGING" />
                 <ScalarProperty Name="FLAGS" ColumnName="FLAGS" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="KADISCOUNT">
-            <EntityTypeMapping TypeName="BaseModel.KADISCOUNT">
-              <MappingFragment StoreEntitySet="KADISCOUNT">
-                <ScalarProperty Name="KAID" ColumnName="KAID" />
-                <ScalarProperty Name="DISCFORALL" ColumnName="DISCFORALL" />
-                <ScalarProperty Name="ONVALUE" ColumnName="ONVALUE" />
-                <ScalarProperty Name="DISCCUSTOM" ColumnName="DISCCUSTOM" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="KAGENTACCOUNT">
-            <EntityTypeMapping TypeName="BaseModel.KAGENTACCOUNT">
-              <MappingFragment StoreEntitySet="KAGENTACCOUNT">
-                <ScalarProperty Name="ACCID" ColumnName="ACCID" />
-                <ScalarProperty Name="KAID" ColumnName="KAID" />
-                <ScalarProperty Name="TYPEID" ColumnName="TYPEID" />
-                <ScalarProperty Name="BANKID" ColumnName="BANKID" />
-                <ScalarProperty Name="ACCNUM" ColumnName="ACCNUM" />
-                <ScalarProperty Name="DEF" ColumnName="DEF" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="KAGENTDOC">
-            <EntityTypeMapping TypeName="BaseModel.KAGENTDOC">
-              <MappingFragment StoreEntitySet="KAGENTDOC">
-                <ScalarProperty Name="KAID" ColumnName="KAID" />
-                <ScalarProperty Name="DOCNAME" ColumnName="DOCNAME" />
-                <ScalarProperty Name="DOCNUM" ColumnName="DOCNUM" />
-                <ScalarProperty Name="DOCSERIES" ColumnName="DOCSERIES" />
-                <ScalarProperty Name="DOCWHOPRODUCE" ColumnName="DOCWHOPRODUCE" />
-                <ScalarProperty Name="DOCDATE" ColumnName="DOCDATE" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="KAGENTPERSONS">
-            <EntityTypeMapping TypeName="BaseModel.KAGENTPERSONS">
-              <MappingFragment StoreEntitySet="KAGENTPERSONS">
-                <ScalarProperty Name="PERSONID" ColumnName="PERSONID" />
-                <ScalarProperty Name="KAID" ColumnName="KAID" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="POST" ColumnName="POST" />
-                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
-                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
-                <ScalarProperty Name="NOTES" ColumnName="NOTES" />
-                <ScalarProperty Name="JOBTYPE" ColumnName="JOBTYPE" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="KAMATDISCOUNT">
-            <EntityTypeMapping TypeName="BaseModel.KAMATDISCOUNT">
-              <MappingFragment StoreEntitySet="KAMATDISCOUNT">
-                <ScalarProperty Name="DISCID" ColumnName="DISCID" />
-                <ScalarProperty Name="KAID" ColumnName="KAID" />
-                <ScalarProperty Name="MATID" ColumnName="MATID" />
-                <ScalarProperty Name="ONVALUE" ColumnName="ONVALUE" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="KAMATGROUPDISCOUNT">
-            <EntityTypeMapping TypeName="BaseModel.KAMATGROUPDISCOUNT">
-              <MappingFragment StoreEntitySet="KAMATGROUPDISCOUNT">
-                <ScalarProperty Name="DISCID" ColumnName="DISCID" />
-                <ScalarProperty Name="KAID" ColumnName="KAID" />
-                <ScalarProperty Name="GRPID" ColumnName="GRPID" />
-                <ScalarProperty Name="ONVALUE" ColumnName="ONVALUE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -11002,15 +10966,6 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="DeleteAllReservePosition" FunctionName="BaseModel.Store.DeleteAllReservePosition" />
-          <EntitySetMapping Name="KAgentSaldo">
-            <EntityTypeMapping TypeName="BaseModel.KAgentSaldo">
-              <MappingFragment StoreEntitySet="KAgentSaldo">
-                <ScalarProperty Name="SALDO" ColumnName="SALDO" />
-                <ScalarProperty Name="ONDATE" ColumnName="ONDATE" />
-                <ScalarProperty Name="KAID" ColumnName="KAID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="GetMatExtra" FunctionName="BaseModel.Store.GetMatExtra">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.GetMatExtra_Result">
@@ -12053,6 +12008,95 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="KAgentAccount">
+            <EntityTypeMapping TypeName="BaseModel.KAgentAccount">
+              <MappingFragment StoreEntitySet="KAgentAccount">
+                <ScalarProperty Name="Def" ColumnName="Def" />
+                <ScalarProperty Name="AccNum" ColumnName="AccNum" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="KAId" ColumnName="KAId" />
+                <ScalarProperty Name="AccId" ColumnName="AccId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KAgentDoc">
+            <EntityTypeMapping TypeName="BaseModel.KAgentDoc">
+              <MappingFragment StoreEntitySet="KAgentDoc">
+                <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+                <ScalarProperty Name="DocWhoProduce" ColumnName="DocWhoProduce" />
+                <ScalarProperty Name="DocSeries" ColumnName="DocSeries" />
+                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+                <ScalarProperty Name="DocName" ColumnName="DocName" />
+                <ScalarProperty Name="KAId" ColumnName="KAId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KAgentPersons">
+            <EntityTypeMapping TypeName="BaseModel.KAgentPersons">
+              <MappingFragment StoreEntitySet="KAgentPersons">
+                <ScalarProperty Name="JobType" ColumnName="JobType" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Post" ColumnName="Post" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="KAId" ColumnName="KAId" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KAgentSaldo">
+            <EntityTypeMapping TypeName="BaseModel.KAgentSaldo">
+              <MappingFragment StoreEntitySet="KAgentSaldo">
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="KAId" ColumnName="KAId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KADiscount">
+            <EntityTypeMapping TypeName="BaseModel.KADiscount">
+              <MappingFragment StoreEntitySet="KADiscount">
+                <ScalarProperty Name="DiscCustom" ColumnName="DiscCustom" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="DiscForAll" ColumnName="DiscForAll" />
+                <ScalarProperty Name="KAId" ColumnName="KAId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KAMatDiscount">
+            <EntityTypeMapping TypeName="BaseModel.KAMatDiscount">
+              <MappingFragment StoreEntitySet="KAMatDiscount">
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="KAId" ColumnName="KAId" />
+                <ScalarProperty Name="DiscId" ColumnName="DiscId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KAMatGroupDiscount">
+            <EntityTypeMapping TypeName="BaseModel.KAMatGroupDiscount">
+              <MappingFragment StoreEntitySet="KAMatGroupDiscount">
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="KAId" ColumnName="KAId" />
+                <ScalarProperty Name="DiscId" ColumnName="DiscId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DiscountList" FunctionName="BaseModel.Store.DiscountList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.DiscountList_Result">
+                <ScalarProperty Name="ImgIdx" ColumnName="ImgIdx" />
+                <ScalarProperty Name="DiscId" ColumnName="DiscId" />
+                <ScalarProperty Name="KAId" ColumnName="KAId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

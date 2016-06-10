@@ -12,14 +12,14 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class KAGENTDOC
+    public partial class KAgentDoc
     {
-        public int KAID { get; set; }
-        public string DOCNAME { get; set; }
-        public string DOCNUM { get; set; }
-        public string DOCSERIES { get; set; }
-        public string DOCWHOPRODUCE { get; set; }
-        public System.DateTime DOCDATE { get; set; }
+        public int KAId { get; set; }
+        public string DocName { get; set; }
+        public string DocNum { get; set; }
+        public string DocSeries { get; set; }
+        public string DocWhoProduce { get; set; }
+        public System.DateTime DocDate { get; set; }
     
         public virtual Kagent Kagent { get; set; }
     }

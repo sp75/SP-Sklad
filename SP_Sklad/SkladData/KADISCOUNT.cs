@@ -12,12 +12,12 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class KADISCOUNT
+    public partial class KADiscount
     {
-        public int KAID { get; set; }
-        public int DISCFORALL { get; set; }
-        public decimal ONVALUE { get; set; }
-        public int DISCCUSTOM { get; set; }
+        public int KAId { get; set; }
+        public int DiscForAll { get; set; }
+        public decimal OnValue { get; set; }
+        public int DiscCustom { get; set; }
     
         public virtual Kagent Kagent { get; set; }
     }

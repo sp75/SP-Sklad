@@ -40,12 +40,6 @@ namespace SP_Sklad.SkladData
         public DbSet<DISCCARDS> DISCCARDS { get; set; }
         public DbSet<ENTPARAMS> ENTPARAMS { get; set; }
         public DbSet<FUNCTIONS> FUNCTIONS { get; set; }
-        public DbSet<KADISCOUNT> KADISCOUNT { get; set; }
-        public DbSet<KAGENTACCOUNT> KAGENTACCOUNT { get; set; }
-        public DbSet<KAGENTDOC> KAGENTDOC { get; set; }
-        public DbSet<KAGENTPERSONS> KAGENTPERSONS { get; set; }
-        public DbSet<KAMATDISCOUNT> KAMATDISCOUNT { get; set; }
-        public DbSet<KAMATGROUPDISCOUNT> KAMATGROUPDISCOUNT { get; set; }
         public DbSet<LANGUAGES> LANGUAGES { get; set; }
         public DbSet<MATCHANGE> MATCHANGE { get; set; }
         public DbSet<MATGROUPPRICES> MATGROUPPRICES { get; set; }
@@ -77,7 +71,6 @@ namespace SP_Sklad.SkladData
         public DbSet<Users> Users { get; set; }
         public DbSet<Currency> Currency { get; set; }
         public DbSet<CommonParams> CommonParams { get; set; }
-        public DbSet<KAgentSaldo> KAgentSaldo { get; set; }
         public DbSet<PriceTypes> PriceTypes { get; set; }
         public DbSet<ReturnRel> ReturnRel { get; set; }
         public DbSet<MatGroup> MatGroup { get; set; }
@@ -119,6 +112,13 @@ namespace SP_Sklad.SkladData
         public DbSet<KagentList> KagentList { get; set; }
         public DbSet<KAgentTyp> KAgentTyp { get; set; }
         public DbSet<KAKInd> KAKInd { get; set; }
+        public DbSet<KAgentAccount> KAgentAccount { get; set; }
+        public DbSet<KAgentDoc> KAgentDoc { get; set; }
+        public DbSet<KAgentPersons> KAgentPersons { get; set; }
+        public DbSet<KAgentSaldo> KAgentSaldo { get; set; }
+        public DbSet<KADiscount> KADiscount { get; set; }
+        public DbSet<KAMatDiscount> KAMatDiscount { get; set; }
+        public DbSet<KAMatGroupDiscount> KAMatGroupDiscount { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)
@@ -1263,6 +1263,15 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("get_child_node", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetMatList_Result>("GetMatList", grpParameter, get_priceParameter, get_archivedParameter, get_child_nodeParameter);
+        }
+    
+        public virtual ObjectResult<DiscountList_Result> DiscountList(Nullable<int> ka_id)
+        {
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DiscountList_Result>("DiscountList", ka_idParameter);
         }
     }
 }

@@ -22,8 +22,8 @@ namespace SP_Sklad.SkladData
         public Nullable<int> CASHID { get; set; }
         public Nullable<decimal> SALDODEF { get; set; }
     
-        public virtual KAGENTACCOUNT KAGENTACCOUNT { get; set; }
         public virtual CashDesks CashDesks { get; set; }
         public virtual Currency Currency { get; set; }
+        public virtual KAgentAccount KAgentAccount { get; set; }
     }
 }

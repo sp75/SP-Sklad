@@ -12,25 +12,25 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class KAGENTACCOUNT
+    public partial class KAgentAccount
     {
-        public KAGENTACCOUNT()
+        public KAgentAccount()
         {
             this.MONEYSALDO = new HashSet<MONEYSALDO>();
             this.PayDoc = new HashSet<PayDoc>();
         }
     
-        public int ACCID { get; set; }
-        public int KAID { get; set; }
-        public int TYPEID { get; set; }
-        public int BANKID { get; set; }
-        public string ACCNUM { get; set; }
-        public Nullable<int> DEF { get; set; }
+        public int AccId { get; set; }
+        public int KAId { get; set; }
+        public int TypeId { get; set; }
+        public int BankId { get; set; }
+        public string AccNum { get; set; }
+        public Nullable<int> Def { get; set; }
     
         public virtual ACCOUNTTYPE ACCOUNTTYPE { get; set; }
         public virtual BANKS BANKS { get; set; }
-        public virtual ICollection<MONEYSALDO> MONEYSALDO { get; set; }
         public virtual Kagent Kagent { get; set; }
+        public virtual ICollection<MONEYSALDO> MONEYSALDO { get; set; }
         public virtual ICollection<PayDoc> PayDoc { get; set; }
     }
 }

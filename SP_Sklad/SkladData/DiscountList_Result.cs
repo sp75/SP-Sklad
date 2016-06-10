@@ -10,14 +10,14 @@
 namespace SP_Sklad.SkladData
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class KAgentSaldo
+    public partial class DiscountList_Result
     {
+        public int ImgIdx { get; set; }
+        public System.Guid DiscId { get; set; }
         public int KAId { get; set; }
-        public System.DateTime OnDate { get; set; }
-        public decimal Saldo { get; set; }
-    
-        public virtual Kagent Kagent { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public decimal OnValue { get; set; }
     }
 }

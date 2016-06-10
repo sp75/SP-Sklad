@@ -12,16 +12,16 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class KAGENTPERSONS
+    public partial class KAgentPersons
     {
-        public int PERSONID { get; set; }
-        public int KAID { get; set; }
-        public string NAME { get; set; }
-        public string POST { get; set; }
-        public string PHONE { get; set; }
-        public string EMAIL { get; set; }
-        public string NOTES { get; set; }
-        public Nullable<int> JOBTYPE { get; set; }
+        public int PersonId { get; set; }
+        public int KAId { get; set; }
+        public string Name { get; set; }
+        public string Post { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+        public string Notes { get; set; }
+        public Nullable<int> JobType { get; set; }
     
         public virtual Kagent Kagent { get; set; }
     }
