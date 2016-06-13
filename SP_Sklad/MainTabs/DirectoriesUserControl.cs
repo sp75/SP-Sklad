@@ -145,12 +145,20 @@ namespace SP_Sklad.MainTabs
             {
                 case 1:
                     var ka = resut as KagentList;
-                    new frmKAgentEdit(ka.KaId).ShowDialog();
+                    if (new frmKAgentEdit(null, ka.KaId).ShowDialog() == DialogResult.OK)
+                    {
+                        RefrechItemBtn.PerformClick();
+                    }
+
+                    KaGridView.RefreshData();
                     break;
 
                 case 2:
                     var r = resut as GetMatList_Result;
-                    new frmMaterialEdit(r.MatId).ShowDialog();
+                    if (new frmMaterialEdit(r.MatId).ShowDialog() == DialogResult.OK)
+                    {
+                        RefrechItemBtn.PerformClick();
+                    }
                     break;
 
                 /*     case 3: frmServicesEdit = new TfrmServicesEdit(Application);
@@ -266,8 +274,8 @@ namespace SP_Sklad.MainTabs
 
             switch (focused_tree_node.GType)
             {
-                case 1: 
-                    new frmKAgentEdit().ShowDialog();
+                case 1:
+                    new frmKAgentEdit(focused_tree_node.GrpId).ShowDialog();
                     break;
  
                 case 2: var mat_edit = new frmMaterialEdit();
@@ -396,8 +404,18 @@ namespace SP_Sklad.MainTabs
               {
                 switch (focused_tree_node.GType)
                 {
-                /*    case 1: KAgent->Delete();
-                        break;*/
+                    case 1:
+                        var ka = resut as KagentList;
+                        using (var db = DB.SkladBase())
+                        {
+                            var item = db.Kagent.Find(ka.KaId);
+                            if (item != null)
+                            {
+                                item.Deleted = 1;
+                                db.SaveChanges();
+                            }
+                        }
+                        break;
 
                     case 2:
                         var r = resut as GetMatList_Result;
@@ -432,6 +450,7 @@ namespace SP_Sklad.MainTabs
                         break;*/
 
                 }
+                RefrechItemBtn.PerformClick();
             }
         }
 

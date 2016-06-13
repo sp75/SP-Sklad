@@ -113,12 +113,12 @@ namespace SP_Sklad.SkladData
         public DbSet<KAgentTyp> KAgentTyp { get; set; }
         public DbSet<KAKInd> KAKInd { get; set; }
         public DbSet<KAgentAccount> KAgentAccount { get; set; }
-        public DbSet<KAgentDoc> KAgentDoc { get; set; }
         public DbSet<KAgentPersons> KAgentPersons { get; set; }
         public DbSet<KAgentSaldo> KAgentSaldo { get; set; }
         public DbSet<KADiscount> KADiscount { get; set; }
         public DbSet<KAMatDiscount> KAMatDiscount { get; set; }
         public DbSet<KAMatGroupDiscount> KAMatGroupDiscount { get; set; }
+        public DbSet<KAgentDoc> KAgentDoc { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)

@@ -36,7 +36,6 @@ namespace SP_Sklad.SkladData
             this.TechProcDet = new HashSet<TechProcDet>();
             this.WayBillMake = new HashSet<WayBillMake>();
             this.KAgentAccount = new HashSet<KAgentAccount>();
-            this.KAgentDoc = new HashSet<KAgentDoc>();
             this.KAgentPersons = new HashSet<KAgentPersons>();
             this.KAgentSaldo = new HashSet<KAgentSaldo>();
             this.KAMatDiscount = new HashSet<KAMatDiscount>();
@@ -94,11 +93,11 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<TechProcDet> TechProcDet { get; set; }
         public virtual ICollection<WayBillMake> WayBillMake { get; set; }
         public virtual ICollection<KAgentAccount> KAgentAccount { get; set; }
-        public virtual ICollection<KAgentDoc> KAgentDoc { get; set; }
         public virtual ICollection<KAgentPersons> KAgentPersons { get; set; }
         public virtual ICollection<KAgentSaldo> KAgentSaldo { get; set; }
         public virtual KADiscount KADiscount { get; set; }
         public virtual ICollection<KAMatDiscount> KAMatDiscount { get; set; }
         public virtual ICollection<KAMatGroupDiscount> KAMatGroupDiscount { get; set; }
+        public virtual KAgentDoc KAgentDoc { get; set; }
     }
 }

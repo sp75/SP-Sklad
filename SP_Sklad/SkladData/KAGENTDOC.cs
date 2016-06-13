@@ -19,7 +19,7 @@ namespace SP_Sklad.SkladData
         public string DocNum { get; set; }
         public string DocSeries { get; set; }
         public string DocWhoProduce { get; set; }
-        public System.DateTime DocDate { get; set; }
+        public Nullable<System.DateTime> DocDate { get; set; }
     
         public virtual Kagent Kagent { get; set; }
     }

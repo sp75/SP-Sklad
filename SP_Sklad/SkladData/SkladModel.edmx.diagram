@@ -209,13 +209,11 @@
         <EntityTypeShape EntityType="BaseModel.KAgentTyp" Width="1.5" PointX="11.245192184692805" PointY="7.7206819093416827" />
         <EntityTypeShape EntityType="BaseModel.KAKInd" Width="1.5" PointX="6.2121934640278074" PointY="25.742894378371023" />
         <EntityTypeShape EntityType="BaseModel.KAgentAccount" Width="1.5" PointX="4.08879674043916" PointY="0.044875130078231511" />
-        <EntityTypeShape EntityType="BaseModel.KAgentDoc" Width="1.5" PointX="4.3067599685428473" PointY="31.269635259765032" />
         <EntityTypeShape EntityType="BaseModel.KAgentPersons" Width="1.5" PointX="2.7761008715145756" PointY="28.186123771679647" />
         <EntityTypeShape EntityType="BaseModel.KAgentSaldo" Width="1.5" PointX="2.9506919751645491" PointY="26.7423845356062" />
         <AssociationConnector Association="BaseModel.FK_AGENTACC_FK_AGENTA_ACCOUNTT" />
         <AssociationConnector Association="BaseModel.FK_AGENTACC_FK_AGENTA_BANKS" />
         <AssociationConnector Association="BaseModel.FK_AACC_KAID" />
-        <AssociationConnector Association="BaseModel.FK_ADOC_KAID" />
         <AssociationConnector Association="BaseModel.FK_AP_KAID" />
         <AssociationConnector Association="BaseModel.FK_KAS_KAID" />
         <AssociationConnector Association="BaseModel.FK_MS_ACCID" />
@@ -228,6 +226,8 @@
         <AssociationConnector Association="BaseModel.FK__KAMATGROUP__KAID__3A4CA8FD" />
         <AssociationConnector Association="BaseModel.FK__KAMATDISC__MATID__32AB8735" />
         <AssociationConnector Association="BaseModel.FK__KAMATGROU__GRPID__395884C4" />
+        <EntityTypeShape EntityType="BaseModel.KAgentDoc" Width="1.5" PointX="4.4903954754073148" PointY="4.3767702599879215" />
+        <AssociationConnector Association="BaseModel.FK_ADOC_KAID" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="7.0245045325832924" PointY="12.641712000892364" />

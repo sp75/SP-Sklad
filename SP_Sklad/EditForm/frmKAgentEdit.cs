@@ -16,16 +16,18 @@ namespace SP_Sklad.EditForm
     public partial class frmKAgentEdit : Form
     {
         int? _ka_id { get; set; }
+        int? _k_type { get; set; }
         private Kagent _ka { get; set; }
         private BaseEntities _db { get; set; }
         private KAgentSaldo k_saldo { get; set; }
         private KADiscount k_discount { get; set; }
         private DbContextTransaction current_transaction { get; set; }
 
-        public frmKAgentEdit(int? KaId = null)
+        public frmKAgentEdit(int? KType =null, int? KaId = null)
         {
             InitializeComponent();
             _ka_id = KaId;
+            _k_type = KType;
             _db = DB.SkladBase();
             current_transaction = _db.Database.BeginTransaction();
         }
@@ -51,8 +53,13 @@ namespace SP_Sklad.EditForm
             {
                 _ka = _db.Kagent.Add(new Kagent()
                 {
+                    Name = "",
                     KaKind = 0,
-                    KType = 0,
+                    KType = _k_type.Value,
+                    NdsPayer = 0,
+                    Deleted = 0,
+
+
                 });
 
                 _db.SaveChanges();
@@ -72,12 +79,15 @@ namespace SP_Sklad.EditForm
                 k_discount = _db.KADiscount.FirstOrDefault(w => w.KAId == _ka.KaId);
                 DiscCheckEdit.Checked = k_discount != null;
                 DiscPanel.Enabled = DiscCheckEdit.Checked;
-             //   DiscountGridControl.DataSource = _db.DiscountList(_ka.KaId);
+                //   DiscountGridControl.DataSource = _db.DiscountList(_ka.KaId);
 
                 KTypeLookUpEdit.Properties.DataSource = DB.SkladBase().KAgentTyp.ToList();
                 KaKindLookUpEdit.Properties.DataSource = DB.SkladBase().KAKInd.ToList();
                 PTypeEdit.Properties.DataSource = DB.SkladBase().PriceTypes.Select(s => new { s.PTypeId, s.Name }).ToList();
                 MatLookUpEdit.Properties.DataSource = DB.SkladBase().MaterialsList.ToList();
+                GroupLookUpEdit.Properties.DataSource = DB.SkladBase().MatGroup.ToList();
+                UsersLookUpEdit.Properties.DataSource = DB.SkladBase().Users.ToList();
+                JobLookUpEdit.Properties.Items.AddRange(DB.SkladBase().KAgentPersons.Where(w => w.JobType == 2).Select(s => s.Post).Distinct().ToList());
 
                 //   GrpIdEdit.Properties.TreeList.DataSource = DB.SkladBase().MatGroup.Select(s => new { s.GrpId, s.PId, s.Name }).ToList();
                 //     ProducerLookUpEdit.Properties.DataSource = DB.SkladBase().Materials.Select(s => new { s.Producer }).Distinct().ToList();
@@ -87,6 +97,16 @@ namespace SP_Sklad.EditForm
                 if (k_discount != null)
                 {
                     DiscountBindingSource.DataSource = k_discount;
+                    panelControl6.Enabled = DiscCustomCheckEdit.Checked;
+                }
+
+                if (_ka.KAgentDoc != null)
+                {
+                    KAgentDocDS.DataSource = _ka.KAgentDoc;
+                }
+                else
+                {
+                    KAgentDocDS.DataSource = _db.KAgentDoc.Add(new KAgentDoc { KAId = _ka.KaId });
                 }
             }
         }
@@ -124,11 +144,16 @@ namespace SP_Sklad.EditForm
 
             if (_ka != null)
             {
-                _db.SaveChanges();
-                DiscountGridControl.DataSource = _db.DiscountList(_ka.KaId);
+                GetDiscountList();
             }
 
             xtraTabControl1.SelectedTabPageIndex = focused_tree_node.TabIdx;
+        }
+
+        void GetDiscountList()
+        {
+            _db.SaveChanges();
+            DiscountGridControl.DataSource = _db.DiscountList(_ka.KaId);
         }
 
         private void checkEdit2_CheckedChanged(object sender, EventArgs e)
@@ -140,8 +165,11 @@ namespace SP_Sklad.EditForm
         {
             if (k_discount != null && !DiscCheckEdit.Checked)
             {
+                _db.DeleteWhere<KAMatDiscount>(w => w.KAId == _ka.KaId);
+                _db.DeleteWhere<KAMatGroupDiscount>(w => w.KAId == _ka.KaId);
                 _db.KADiscount.Remove(k_discount);
             }
+
             _db.SaveChanges();
             current_transaction.Commit();
         }
@@ -179,6 +207,8 @@ namespace SP_Sklad.EditForm
             xtraTabControl1.SelectedTabPageIndex = 10;
             var mat_disc = _db.KAMatDiscount.Add(new KAMatDiscount { DiscId = Guid.NewGuid(), KAId = _ka.KaId, OnValue = 0, MatId = DB.SkladBase().MaterialsList.FirstOrDefault().MatId });
             MatDiscountDS.DataSource = mat_disc;
+            GetDiscountList();
+
 
             /*   DiscountList->Append();
                DiscountListIMG_IDX->Value = 0;
@@ -198,7 +228,7 @@ namespace SP_Sklad.EditForm
 
         private void checkEdit5_CheckedChanged(object sender, EventArgs e)
         {
-            panelControl6.Enabled = checkEdit5.Checked;
+            panelControl6.Enabled = DiscCustomCheckEdit.Checked;
         }
 
         private void simpleButton7_Click(object sender, EventArgs e)
@@ -213,8 +243,57 @@ namespace SP_Sklad.EditForm
             }
             else
             {
+                KAMatGroupDiscountDS.DataSource = _db.KAMatGroupDiscount.FirstOrDefault(w => w.DiscId == row.DiscId);
                 xtraTabControl1.SelectedTabPageIndex = 11;
             }
         }
+
+        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            xtraTabControl1.SelectedTabPageIndex = 11;
+            var mat_grp_disc = _db.KAMatGroupDiscount.Add(new KAMatGroupDiscount { DiscId = Guid.NewGuid(), KAId = _ka.KaId, OnValue = 0, GrpId = DB.SkladBase().MatGroup.FirstOrDefault().GrpId });
+            KAMatGroupDiscountDS.DataSource = mat_grp_disc;
+            GetDiscountList();
+/*
+            DiscountList->Append();
+            DiscountListIMG_IDX->Value = 1;
+            MemTableEh1->Append();
+            MemTableEh1ImgIdx->Value = 8;
+            MemTableEh1Parent_ID->Value = 3;
+            //	  MemTableEh1Text->Value = " ("+DiscountListONVALUE->AsString+"%) "+DiscountListNAME->Value ;
+            MemTableEh1TabIdx->Value = 11;
+            MemTableEh1DataSetID->Value = DiscountListDISCID->Value;
+            MemTableEh1->Post();*/
+        }
+
+
+        private void DelDiscountBtn_Click(object sender, EventArgs e)
+        {
+            var row = DiscountGridView.GetFocusedRow() as DiscountList_Result;
+            if (row == null) return;
+
+            if (row.ImgIdx == 0)
+            {
+                _db.DeleteWhere<KAMatDiscount>(w => w.DiscId == row.DiscId);
+            }
+            else
+            {
+                _db.DeleteWhere<KAMatGroupDiscount>(w => w.DiscId == row.DiscId);
+            }
+            GetDiscountList();
+            xtraTabControl1.SelectedTabPageIndex = 3;
+        }
+
+        private void frmKAgentEdit_Shown(object sender, EventArgs e)
+        {
+            Text = "Властивості контрагента: " + _ka.Name;
+        }
+
+        private void DiscountGridView_DoubleClick(object sender, EventArgs e)
+        {
+            EditDiscountBtn.PerformClick();
+        }
+
+
     }
 }

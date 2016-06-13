@@ -766,7 +766,9 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KADiscount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Kagent.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.KAgentDoc.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KAMatDiscount.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.KAMatGroupDiscount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Materials.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

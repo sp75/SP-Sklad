@@ -41,16 +41,7 @@
           <EntitySet Name="KADiscount" EntityType="BaseModel.Store.KADiscount" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Kagent" EntityType="BaseModel.Store.Kagent" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="KAgentAccount" EntityType="BaseModel.Store.KAgentAccount" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="KAgentDoc" EntityType="BaseModel.Store.KAgentDoc" store:Type="Tables" store:Schema="dbo" store:Name="KAgentDoc">
-            <DefiningQuery>SELECT 
-      [KAgentDoc].[KAId] AS [KAId], 
-      [KAgentDoc].[DocName] AS [DocName], 
-      [KAgentDoc].[DocNum] AS [DocNum], 
-      [KAgentDoc].[DocSeries] AS [DocSeries], 
-      [KAgentDoc].[DocWhoProduce] AS [DocWhoProduce], 
-      [KAgentDoc].[DocDate] AS [DocDate]
-      FROM [dbo].[KAgentDoc] AS [KAgentDoc]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="KAgentDoc" EntityType="BaseModel.Store.KAgentDoc" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="KAgentPersons" EntityType="BaseModel.Store.KAgentPersons" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="KAgentSaldo" EntityType="BaseModel.Store.KAgentSaldo" store:Type="Tables" store:Schema="dbo" store:Name="KAgentSaldo">
             <DefiningQuery>SELECT 
@@ -1253,26 +1244,22 @@
           <Property Name="AccNum" Type="varchar" Nullable="false" MaxLength="64" />
           <Property Name="Def" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'sp_base.dbo.KAgentDoc' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
         <EntityType Name="KAgentDoc">
           <Key>
             <PropertyRef Name="KAId" />
-            <PropertyRef Name="DocDate" />
           </Key>
           <Property Name="KAId" Type="int" Nullable="false" />
           <Property Name="DocName" Type="varchar" MaxLength="48" />
           <Property Name="DocNum" Type="varchar" MaxLength="24" />
           <Property Name="DocSeries" Type="varchar" MaxLength="10" />
           <Property Name="DocWhoProduce" Type="varchar" MaxLength="128" />
-          <Property Name="DocDate" Type="datetime" Nullable="false" />
+          <Property Name="DocDate" Type="datetime" />
         </EntityType>
         <EntityType Name="KAgentPersons">
           <Key>
             <PropertyRef Name="PersonId" />
           </Key>
-          <Property Name="PersonId" Type="int" Nullable="false" />
+          <Property Name="PersonId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="KAId" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar" Nullable="false" MaxLength="128" />
           <Property Name="Post" Type="varchar" MaxLength="128" />
@@ -2639,7 +2626,7 @@
           <End Role="Kagent" Type="BaseModel.Store.Kagent" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="KAgentDoc" Type="BaseModel.Store.KAgentDoc" Multiplicity="*" />
+          <End Role="KAgentDoc" Type="BaseModel.Store.KAgentDoc" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Kagent">
               <PropertyRef Name="KaId" />
@@ -5749,7 +5736,6 @@
           <EntitySet Name="KAgentTyp" EntityType="BaseModel.KAgentTyp" />
           <EntitySet Name="KAKInd" EntityType="BaseModel.KAKInd" />
           <EntitySet Name="KAgentAccount" EntityType="BaseModel.KAgentAccount" />
-          <EntitySet Name="KAgentDoc" EntityType="BaseModel.KAgentDoc" />
           <EntitySet Name="KAgentPersons" EntityType="BaseModel.KAgentPersons" />
           <EntitySet Name="KAgentSaldo" EntityType="BaseModel.KAgentSaldo" />
           <AssociationSet Name="FK_AGENTACC_FK_AGENTA_ACCOUNTT" Association="BaseModel.FK_AGENTACC_FK_AGENTA_ACCOUNTT">
@@ -5763,10 +5749,6 @@
           <AssociationSet Name="FK_AACC_KAID" Association="BaseModel.FK_AACC_KAID">
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="KAgentAccount" EntitySet="KAgentAccount" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ADOC_KAID" Association="BaseModel.FK_ADOC_KAID">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAgentDoc" EntitySet="KAgentDoc" />
           </AssociationSet>
           <AssociationSet Name="FK_AP_KAID" Association="BaseModel.FK_AP_KAID">
             <End Role="Kagent" EntitySet="Kagent" />
@@ -5808,8 +5790,13 @@
             <End Role="KAMatGroupDiscount" EntitySet="KAMatGroupDiscount" />
           </AssociationSet>
           <FunctionImport Name="DiscountList" ReturnType="Collection(BaseModel.DiscountList_Result)">
-            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+          <Parameter Name="ka_id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="KAgentDoc" EntityType="BaseModel.KAgentDoc" />
+          <AssociationSet Name="FK_ADOC_KAID" Association="BaseModel.FK_ADOC_KAID">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KAgentDoc" EntitySet="KAgentDoc" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -6888,12 +6875,12 @@
           <NavigationProperty Name="TechProcDet" Relationship="BaseModel.FK_TECHPROCDET_KAGENT" FromRole="Kagent" ToRole="TechProcDet" />
           <NavigationProperty Name="WayBillMake" Relationship="BaseModel.FK_WAYBILLMAKE_KAGENT" FromRole="Kagent" ToRole="WayBillMake" />
           <NavigationProperty Name="KAgentAccount" Relationship="BaseModel.FK_AACC_KAID" FromRole="Kagent" ToRole="KAgentAccount" />
-          <NavigationProperty Name="KAgentDoc" Relationship="BaseModel.FK_ADOC_KAID" FromRole="Kagent" ToRole="KAgentDoc" />
           <NavigationProperty Name="KAgentPersons" Relationship="BaseModel.FK_AP_KAID" FromRole="Kagent" ToRole="KAgentPersons" />
           <NavigationProperty Name="KAgentSaldo" Relationship="BaseModel.FK_KAS_KAID" FromRole="Kagent" ToRole="KAgentSaldo" />
           <NavigationProperty Name="KADiscount" Relationship="BaseModel.FK_KADiscount_Kagent" FromRole="Kagent" ToRole="KADiscount" />
           <NavigationProperty Name="KAMatDiscount" Relationship="BaseModel.FK__KAMATDISCO__KAID__31B762FC" FromRole="Kagent" ToRole="KAMatDiscount" />
           <NavigationProperty Name="KAMatGroupDiscount" Relationship="BaseModel.FK__KAMATGROUP__KAID__3A4CA8FD" FromRole="Kagent" ToRole="KAMatGroupDiscount" />
+          <NavigationProperty Name="KAgentDoc" Relationship="BaseModel.FK_ADOC_KAID" FromRole="Kagent" ToRole="KAgentDoc" />
         </EntityType>
         <Association Name="FK_CONTRACT_REF_CONTR_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
@@ -9558,19 +9545,6 @@
           <NavigationProperty Name="MONEYSALDO" Relationship="BaseModel.FK_MS_ACCID" FromRole="KAgentAccount" ToRole="MONEYSALDO" />
           <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK_PD_ACCID" FromRole="KAgentAccount" ToRole="PayDoc" />
         </EntityType>
-        <EntityType Name="KAgentDoc">
-          <Key>
-            <PropertyRef Name="KAId" />
-            <PropertyRef Name="DocDate" />
-          </Key>
-          <Property Type="Int32" Name="KAId" Nullable="false" />
-          <Property Type="String" Name="DocName" MaxLength="48" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="DocNum" MaxLength="24" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="DocSeries" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="DocWhoProduce" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="DocDate" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_ADOC_KAID" FromRole="KAgentDoc" ToRole="Kagent" />
-        </EntityType>
         <EntityType Name="KAgentPersons">
           <Key>
             <PropertyRef Name="PersonId" />
@@ -9630,20 +9604,6 @@
               <PropertyRef Name="KaId" />
             </Principal>
             <Dependent Role="KAgentAccount">
-              <PropertyRef Name="KAId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ADOC_KAID">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.KAgentDoc" Role="KAgentDoc" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="KAgentDoc">
               <PropertyRef Name="KAId" />
             </Dependent>
           </ReferentialConstraint>
@@ -9810,6 +9770,32 @@
           <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
           <Property Type="Decimal" Name="OnValue" Nullable="false" Precision="15" Scale="4" />
         </ComplexType>
+        <EntityType Name="KAgentDoc">
+          <Key>
+            <PropertyRef Name="KAId" />
+          </Key>
+          <Property Type="Int32" Name="KAId" Nullable="false" />
+          <Property Type="String" Name="DocName" MaxLength="48" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DocNum" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DocSeries" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DocWhoProduce" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="DocDate" Precision="3" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_ADOC_KAID" FromRole="KAgentDoc" ToRole="Kagent" />
+        </EntityType>
+        <Association Name="FK_ADOC_KAID">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.KAgentDoc" Role="KAgentDoc" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KAgentDoc">
+              <PropertyRef Name="KAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -12020,18 +12006,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="KAgentDoc">
-            <EntityTypeMapping TypeName="BaseModel.KAgentDoc">
-              <MappingFragment StoreEntitySet="KAgentDoc">
-                <ScalarProperty Name="DocDate" ColumnName="DocDate" />
-                <ScalarProperty Name="DocWhoProduce" ColumnName="DocWhoProduce" />
-                <ScalarProperty Name="DocSeries" ColumnName="DocSeries" />
-                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
-                <ScalarProperty Name="DocName" ColumnName="DocName" />
-                <ScalarProperty Name="KAId" ColumnName="KAId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="KAgentPersons">
             <EntityTypeMapping TypeName="BaseModel.KAgentPersons">
               <MappingFragment StoreEntitySet="KAgentPersons">
@@ -12097,6 +12071,18 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="KAgentDoc">
+            <EntityTypeMapping TypeName="BaseModel.KAgentDoc">
+              <MappingFragment StoreEntitySet="KAgentDoc">
+                <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+                <ScalarProperty Name="DocWhoProduce" ColumnName="DocWhoProduce" />
+                <ScalarProperty Name="DocSeries" ColumnName="DocSeries" />
+                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+                <ScalarProperty Name="DocName" ColumnName="DocName" />
+                <ScalarProperty Name="KAId" ColumnName="KAId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
