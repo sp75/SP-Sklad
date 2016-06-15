@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using SP_Sklad.SkladData;
 using SP_Sklad.EditForm;
 using SP_Sklad.Common;
+using DevExpress.XtraTreeList;
 
 namespace SP_Sklad.MainTabs
 {
@@ -36,6 +37,9 @@ namespace SP_Sklad.MainTabs
 
         private void DirectoriesUserControl_Load(object sender, EventArgs e)
         {
+            mainContentTab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
+            extDirTabControl.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
+
             if (!DesignMode)
             {
                 custom_mat_list = new List<CustomMatList>();
@@ -56,15 +60,17 @@ namespace SP_Sklad.MainTabs
             focused_tree_node = DirTreeList.GetDataRecordByNode(e.Node) as GetDirTree_Result;
 
             RefrechItemBtn.PerformClick();
-            wbContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
+            mainContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
         }
 
         private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            var db = DB.SkladBase();
+
             switch (focused_tree_node.GType)
             {
-             case 1: 
-                  //  KAgent->ParamByName("WDATE")->Value = frmMain->WorkDateEdit->Date;
+                case 1:
+                    //  KAgent->ParamByName("WDATE")->Value = frmMain->WorkDateEdit->Date;
                     var ka = DB.SkladBase().KagentList.Where(w => w.Archived == _archived || w.Archived == null);
                     if (focused_tree_node.Id != 10) ka = ka.Where(w => w.KType == focused_tree_node.GrpId);
                     KaGridControl.DataSource = ka.ToList();
@@ -75,31 +81,54 @@ namespace SP_Sklad.MainTabs
                     MatGridControl.DataSource = DB.SkladBase().GetMatList(focused_tree_node.Id == 6 ? -1 : focused_tree_node.GrpId, 0, 0, 0);
                     break;
 
-           /*     case 3: Services->Open();
-                    if (DirectTreeID->Value == 51) Services->Filter = "";
-                    else Services->Filter = "GRPID = " + DirectTreeGRPID->AsString;
-                    break;
+                /*     case 3: Services->Open();
+                         if (DirectTreeID->Value == 51) Services->Filter = "";
+                         else Services->Filter = "GRPID = " + DirectTreeGRPID->AsString;
+                         break;*/
 
-                case 4: switch (DirectTreeID->Value)
+                case 4: switch (focused_tree_node.Id)
                     {
-                        case 25: cxGridLevel6->GridView = WarehouseGrid; break;
-                        case 11: cxGridLevel6->GridView = BanksGrid; break;
-                        case 2: cxGridLevel6->GridView = MeasuresGrid; break;
-                        case 43: cxGridLevel6->GridView = CountriesGrid; break;
-                        case 12: cxGridLevel6->GridView = AccountTypeGrid; break;
-                        case 40: cxGridLevel6->GridView = PricetypesGrid; break;
-                        case 102: cxGridLevel6->GridView = ChargetypeGrid; break;
-                        case 64: cxGridLevel6->GridView = CashdesksGrid; break;
-                        case 3: cxGridLevel6->GridView = CurrencyGrid; break;
-                        case 53: SkladData->MatRecipe->Filter = "RTYPE = 1";
-                            cxGridLevel6->GridView = MatRecipeGrid; break;
-                        case 42: SkladData->MatRecipe->Filter = "RTYPE = 2";
-                            cxGridLevel6->GridView = MatRecipeGrid; break;
-                        case 68: cxGridLevel6->GridView = TaxesGrid; break;
-                        case 112: cxGridLevel6->GridView = TechProcessGrid; break;
+                        //      case 25: cxGridLevel6->GridView = WarehouseGrid; break;
+                        //      case 11: cxGridLevel6->GridView = BanksGrid; break;
+                        //      case 2: cxGridLevel6->GridView = MeasuresGrid; break;
+                        //      case 43: cxGridLevel6->GridView = CountriesGrid; break;
+                        //      case 12: cxGridLevel6->GridView = AccountTypeGrid; break;
+                        //      case 40: cxGridLevel6->GridView = PricetypesGrid; break;
+                        //      case 102: cxGridLevel6->GridView = ChargetypeGrid; break;
+                        //      case 64: cxGridLevel6->GridView = CashdesksGrid; break;
+                        //      case 3: cxGridLevel6->GridView = CurrencyGrid; break;
+                        case 53:
+                            MatRecipeGridControl.DataSource = db.MatRecipe.Where(w => w.RType == 1).Select(s => new
+                            {
+                                s.RecId,
+                                MatName = s.Materials.Name,
+                                s.OnDate,
+                                s.Amount,
+                                s.Materials.Measures.ShortName,
+                                s.Name,
+                                GrpName = s.Materials.MatGroup.Name
+                            }).ToList();
+                            
+                            extDirTabControl.SelectedTabPageIndex = 0; break;
+                        case 42:
+                            MatRecipeGridControl.DataSource = db.MatRecipe.Where(w => w.RType == 2).Select(s => new
+                            {
+                                s.RecId,
+                                MatName = s.Materials.Name,
+                                s.OnDate,
+                                s.Amount,
+                                s.Materials.Measures.ShortName,
+                                s.Name,
+                                GrpName = s.Materials.MatGroup.Name
+                            }).ToList();
+                            extDirTabControl.SelectedTabPageIndex = 0; break;
+                        //       case 68: cxGridLevel6->GridView = TaxesGrid; break;
+                        //       case 112: cxGridLevel6->GridView = TechProcessGrid; break;
                     }
-                    break;*/
+                    break;
             }
+
+            db.Dispose();
         }
 
         private void MatGridView_DoubleClick(object sender, EventArgs e)
@@ -169,11 +198,11 @@ namespace SP_Sklad.MainTabs
                          delete frmServicesEdit;
                          DirectTree->Refresh();
                          Services->FullRefresh();
-                         break;
+                         break;*/
 
-                     case 4: switch (DirectTreeID->Value)
-                         {
-                             case 25: frmWarehouseEdit = new TfrmWarehouseEdit(Application);
+                case 4: switch (focused_tree_node.Id)
+                    {
+                        /*     case 25: frmWarehouseEdit = new TfrmWarehouseEdit(Application);
                                  frmWarehouseEdit->Warehouse->ParamByName("WID")->Value = SkladData->WarehouseWID->Value;
                                  frmWarehouseEdit->Warehouse->Open();
                                  frmWarehouseEdit->Warehouse->Edit();
@@ -243,28 +272,25 @@ namespace SP_Sklad.MainTabs
                                  frmCashdesksEdit->ShowModal();
                                  delete frmCashdesksEdit;
                                  SkladData->Cashdesks->FullRefresh();
-                                 break;
+                                 break;*/
 
-                             case 42:
-                             case 53: frmMatRecipe = new TfrmMatRecipe(Application);
-                                 frmMatRecipe->MatRecipe->ParamByName("RECID")->Value = SkladData->MatRecipeRECID->Value;
-                                 frmMatRecipe->MatRecipe->Open();
-                                 frmMatRecipe->MatRecipe->Edit();
-                                 frmMatRecipe->ShowModal();
-                                 delete frmMatRecipe;
-                                 SkladData->MatRecipe->FullRefresh();
-                                 break;
+                        case 42:
+                        case 53:
+                            dynamic r_item = MatRecipeGridView.GetFocusedRow();
+                            new frmMatRecipe(null, r_item.RecId).ShowDialog();
+                            //      SkladData->MatRecipe->FullRefresh();
+                            break;
 
-                             case 112: frmTechProcessEdit = new TfrmTechProcessEdit(Application);
-                                 frmTechProcessEdit->TechProcess->ParamByName("PROCID")->Value = SkladData->TechProcessPROCID->Value;
-                                 frmTechProcessEdit->TechProcess->Open();
-                                 frmTechProcessEdit->TechProcess->Edit();
-                                 frmTechProcessEdit->ShowModal();
-                                 delete frmTechProcessEdit;
-                                 SkladData->TechProcess->FullRefresh();
-                                 break;
-                         }
-                         break;*/
+                        /*   case 112: frmTechProcessEdit = new TfrmTechProcessEdit(Application);
+                               frmTechProcessEdit->TechProcess->ParamByName("PROCID")->Value = SkladData->TechProcessPROCID->Value;
+                               frmTechProcessEdit->TechProcess->Open();
+                               frmTechProcessEdit->TechProcess->Edit();
+                               frmTechProcessEdit->ShowModal();
+                               delete frmTechProcessEdit;
+                               SkladData->TechProcess->FullRefresh();
+                               break;*/
+                    }
+                    break;
 
             }
         }
@@ -462,6 +488,70 @@ namespace SP_Sklad.MainTabs
         private void KaGridView_DoubleClick(object sender, EventArgs e)
         {
             EditItemBtn.PerformClick();
+        }
+
+        private void KaGridView_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
+        {
+            ;
+        }
+
+        private void DirTreeList_PopupMenuShowing(object sender, DevExpress.XtraTreeList.PopupMenuShowingEventArgs e)
+        {
+            Point p2 = Control.MousePosition;
+            ExplorerPopupMenu.ShowPopup(p2);
+        }
+
+        private void DirTreeList_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                TreeList treeList = sender as TreeList;
+                TreeListHitInfo info = treeList.CalcHitInfo(e.Location);
+                if (info.Node != null)
+                {
+                    treeList.FocusedNode = info.Node;
+                }
+            }
+        }
+
+        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            switch (focused_tree_node.GType)
+            {
+                case 2: new frmMatGroupEdit(focused_tree_node.GrpId).ShowDialog();
+                    break;
+
+              /*  case 3: frmServGroupEdit = new TfrmServGroupEdit(Application);
+                    frmServGroupEdit->SvcGroup->ParamByName("GRPID")->Value = DirectTreeGRPID->Value;
+                    frmServGroupEdit->SvcGroup->Open();
+                    frmServGroupEdit->SvcGroup->Edit();
+                    frmServGroupEdit->ShowModal();
+                    delete frmServGroupEdit;
+                    break;*/
+            }
+
+            ExplorerRefreshBtn.PerformClick();
+        }
+
+        private void ExplorerRefreshBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            DirTreeList.DataSource = DB.SkladBase().GetDirTree(DBHelper.CurrentUser.UserId).ToList();
+        }
+
+        private void AddGroupMatBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (focused_tree_node.ImageIndex == 2 && focused_tree_node.GType == 2)
+            {
+                new frmMatGroupEdit(null, focused_tree_node.GrpId).ShowDialog();
+            }
+            else new frmMatGroupEdit().ShowDialog();
+
+            ExplorerRefreshBtn.PerformClick();
+        }
+
+        private void DelExplorerBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            DB.SkladBase().DeleteWhere<MatGroup>(w => w.GrpId == focused_tree_node.GrpId).SaveChanges();
         }
     }
 }

@@ -20,6 +20,7 @@ namespace SP_Sklad.SkladData
         public decimal Amount { get; set; }
         public Nullable<decimal> Coefficient { get; set; }
     
+        public virtual Materials Materials { get; set; }
         public virtual MatRecipe MatRecipe { get; set; }
     }
 }

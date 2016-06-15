@@ -174,11 +174,9 @@
         <EntityTypeShape EntityType="BaseModel.WayBillDetTaxes" Width="1.5" PointX="11.604890506530595" PointY="6.4207777410842377" />
         <AssociationConnector Association="BaseModel.FK_WBDTAXES_TAXID" />
         <AssociationConnector Association="BaseModel.FK_WBDTAXES_POSID" />
-        <EntityTypeShape EntityType="BaseModel.MatRecDet" Width="1.5" PointX="11.910589138004273" PointY="10.839053129236705" />
         <EntityTypeShape EntityType="BaseModel.MatRecipe" Width="1.5" PointX="4.8261468730988666" PointY="18.037040942365788" />
         <EntityTypeShape EntityType="BaseModel.WayBillMake" Width="1.5" PointX="4.642107151747731" PointY="31.026654645347342" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLMAKE_KAGENT" />
-        <AssociationConnector Association="BaseModel.FK_MATRECDET_MATRECIPE" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLMAKE_MATRECIPE" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLMAKE_WAREHOUSE" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLMAKE_WAYBILLLIST" />
@@ -228,6 +226,9 @@
         <AssociationConnector Association="BaseModel.FK__KAMATGROU__GRPID__395884C4" />
         <EntityTypeShape EntityType="BaseModel.KAgentDoc" Width="1.5" PointX="4.4903954754073148" PointY="4.3767702599879215" />
         <AssociationConnector Association="BaseModel.FK_ADOC_KAID" />
+        <EntityTypeShape EntityType="BaseModel.MatRecDet" Width="1.5" PointX="4.3067367618469223" PointY="20.215099657054573" />
+        <AssociationConnector Association="BaseModel.FK_MatRecDet_Materials" />
+        <AssociationConnector Association="BaseModel.FK_MATRECDET_MATRECIPE" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="7.0245045325832924" PointY="12.641712000892364" />

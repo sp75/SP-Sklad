@@ -102,6 +102,18 @@
     <Compile Include="EditForm\frmMaterialEdit.Designer.cs">
       <DependentUpon>frmMaterialEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditForm\frmMatGroupEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmMatGroupEdit.Designer.cs">
+      <DependentUpon>frmMatGroupEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditForm\frmMatRecipe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmMatRecipe.Designer.cs">
+      <DependentUpon>frmMatRecipe.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditForm\frmWhCatalog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -683,6 +695,12 @@
     <EmbeddedResource Include="EditForm\frmMaterialEdit.resx">
       <DependentUpon>frmMaterialEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmMatGroupEdit.resx">
+      <DependentUpon>frmMatGroupEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmMatRecipe.resx">
+      <DependentUpon>frmMatRecipe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmWhCatalog.resx">
       <DependentUpon>frmWhCatalog.cs</DependentUpon>
     </EmbeddedResource>
@@ -770,6 +788,8 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KAMatDiscount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KAMatGroupDiscount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Materials.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.MatGroup.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.MatRecipe.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

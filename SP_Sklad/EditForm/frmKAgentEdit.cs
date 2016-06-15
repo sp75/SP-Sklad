@@ -79,7 +79,6 @@ namespace SP_Sklad.EditForm
                 k_discount = _db.KADiscount.FirstOrDefault(w => w.KAId == _ka.KaId);
                 DiscCheckEdit.Checked = k_discount != null;
                 DiscPanel.Enabled = DiscCheckEdit.Checked;
-                //   DiscountGridControl.DataSource = _db.DiscountList(_ka.KaId);
 
                 KTypeLookUpEdit.Properties.DataSource = DB.SkladBase().KAgentTyp.ToList();
                 KaKindLookUpEdit.Properties.DataSource = DB.SkladBase().KAKInd.ToList();

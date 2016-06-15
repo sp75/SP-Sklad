@@ -28,6 +28,7 @@ namespace SP_Sklad.SkladData
             this.TAXWBDET = new HashSet<TAXWBDET>();
             this.WaybillDet = new HashSet<WaybillDet>();
             this.KAMatDiscount = new HashSet<KAMatDiscount>();
+            this.MatRecDet = new HashSet<MatRecDet>();
         }
     
         public int MatId { get; set; }
@@ -79,5 +80,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<TAXWBDET> TAXWBDET { get; set; }
         public virtual ICollection<WaybillDet> WaybillDet { get; set; }
         public virtual ICollection<KAMatDiscount> KAMatDiscount { get; set; }
+        public virtual ICollection<MatRecDet> MatRecDet { get; set; }
     }
 }

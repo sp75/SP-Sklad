@@ -619,6 +619,10 @@
             <End Role="PriceTypes" EntitySet="PriceTypes" />
             <End Role="MATPRICES" EntitySet="MATPRICES" />
           </AssociationSet>
+          <AssociationSet Name="FK_MatRecDet_Materials" Association="BaseModel.Store.FK_MatRecDet_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="MatRecDet" EntitySet="MatRecDet" />
+          </AssociationSet>
           <AssociationSet Name="FK_MATRECDET_MATRECIPE" Association="BaseModel.Store.FK_MATRECDET_MATRECIPE">
             <End Role="MatRecipe" EntitySet="MatRecipe" />
             <End Role="MatRecDet" EntitySet="MatRecDet" />
@@ -2030,7 +2034,7 @@
           <Property Name="Def" Type="int" />
           <Property Name="UserId" Type="int" />
           <Property Name="Archived" Type="int" />
-          <Property Name="TypKAgent" Type="varchar" MaxLength="20" />
+          <Property Name="TypKAgent" Type="nvarchar" MaxLength="50" />
           <Property Name="KAgentKind" Type="nvarchar" MaxLength="50" />
           <Property Name="PriceName" Type="varchar" MaxLength="64" />
           <Property Name="ContractType" Type="nvarchar" MaxLength="64" />
@@ -3081,6 +3085,18 @@
             </Principal>
             <Dependent Role="MATPRICES">
               <PropertyRef Name="PPTYPEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MatRecDet_Materials">
+          <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="1" />
+          <End Role="MatRecDet" Type="BaseModel.Store.MatRecDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="MatRecDet">
+              <PropertyRef Name="MatId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -5605,16 +5621,11 @@
             <End Role="WaybillDet" EntitySet="WaybillDet" />
             <End Role="WayBillDetTaxes" EntitySet="WayBillDetTaxes" />
           </AssociationSet>
-          <EntitySet Name="MatRecDet" EntityType="BaseModel.MatRecDet" />
           <EntitySet Name="MatRecipe" EntityType="BaseModel.MatRecipe" />
           <EntitySet Name="WayBillMake" EntityType="BaseModel.WayBillMake" />
           <AssociationSet Name="FK_WAYBILLMAKE_KAGENT" Association="BaseModel.FK_WAYBILLMAKE_KAGENT">
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="WayBillMake" EntitySet="WayBillMake" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MATRECDET_MATRECIPE" Association="BaseModel.FK_MATRECDET_MATRECIPE">
-            <End Role="MatRecipe" EntitySet="MatRecipe" />
-            <End Role="MatRecDet" EntitySet="MatRecDet" />
           </AssociationSet>
           <AssociationSet Name="FK_WAYBILLMAKE_MATRECIPE" Association="BaseModel.FK_WAYBILLMAKE_MATRECIPE">
             <End Role="MatRecipe" EntitySet="MatRecipe" />
@@ -5796,6 +5807,15 @@
           <AssociationSet Name="FK_ADOC_KAID" Association="BaseModel.FK_ADOC_KAID">
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="KAgentDoc" EntitySet="KAgentDoc" />
+          </AssociationSet>
+          <EntitySet Name="MatRecDet" EntityType="BaseModel.MatRecDet" />
+          <AssociationSet Name="FK_MatRecDet_Materials" Association="BaseModel.FK_MatRecDet_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="MatRecDet" EntitySet="MatRecDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MATRECDET_MATRECIPE" Association="BaseModel.FK_MATRECDET_MATRECIPE">
+            <End Role="MatRecipe" EntitySet="MatRecipe" />
+            <End Role="MatRecDet" EntitySet="MatRecDet" />
           </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
@@ -8932,17 +8952,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="MatRecDet">
-          <Key>
-            <PropertyRef Name="DetId" />
-          </Key>
-          <Property Type="Int32" Name="DetId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="RecId" Nullable="false" />
-          <Property Type="Int32" Name="MatId" Nullable="false" />
-          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="6" />
-          <Property Type="Decimal" Name="Coefficient" Precision="15" Scale="4" />
-          <NavigationProperty Name="MatRecipe" Relationship="BaseModel.FK_MATRECDET_MATRECIPE" FromRole="MatRecDet" ToRole="MatRecipe" />
-        </EntityType>
         <EntityType Name="MatRecipe">
           <Key>
             <PropertyRef Name="RecId" />
@@ -8955,9 +8964,9 @@
           <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="MatId" Nullable="false" />
           <Property Type="Int32" Name="RType" />
-          <NavigationProperty Name="MatRecDet" Relationship="BaseModel.FK_MATRECDET_MATRECIPE" FromRole="MatRecipe" ToRole="MatRecDet" />
           <NavigationProperty Name="WayBillMake" Relationship="BaseModel.FK_WAYBILLMAKE_MATRECIPE" FromRole="MatRecipe" ToRole="WayBillMake" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK_MATRECIPE_1" FromRole="MatRecipe" ToRole="Materials" />
+          <NavigationProperty Name="MatRecDet" Relationship="BaseModel.FK_MATRECDET_MATRECIPE" FromRole="MatRecipe" ToRole="MatRecDet" />
         </EntityType>
         <EntityType Name="WayBillMake">
           <Key>
@@ -8982,20 +8991,6 @@
             </Principal>
             <Dependent Role="WayBillMake">
               <PropertyRef Name="PersonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MATRECDET_MATRECIPE">
-          <End Type="BaseModel.MatRecipe" Role="MatRecipe" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.MatRecDet" Role="MatRecDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MatRecipe">
-              <PropertyRef Name="RecId" />
-            </Principal>
-            <Dependent Role="MatRecDet">
-              <PropertyRef Name="RecId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -9254,6 +9249,7 @@
           <NavigationProperty Name="TAXWBDET" Relationship="BaseModel.FK_TAXWBDET_REFERENCE_MATERIAL" FromRole="Materials" ToRole="TAXWBDET" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" FromRole="Materials" ToRole="WaybillDet" />
           <NavigationProperty Name="KAMatDiscount" Relationship="BaseModel.FK__KAMATDISC__MATID__32AB8735" FromRole="Materials" ToRole="KAMatDiscount" />
+          <NavigationProperty Name="MatRecDet" Relationship="BaseModel.FK_MatRecDet_Materials" FromRole="Materials" ToRole="MatRecDet" />
         </EntityType>
         <Association Name="FK_CONTRDET_REFERENCE_MATERIAL">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="0..1" />
@@ -9507,7 +9503,7 @@
           <Property Type="Int32" Name="Def" />
           <Property Type="Int32" Name="UserId" />
           <Property Type="Int32" Name="Archived" />
-          <Property Type="String" Name="TypKAgent" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TypKAgent" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="KAgentKind" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="PriceName" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="ContractType" MaxLength="64" FixedLength="false" Unicode="true" />
@@ -9793,6 +9789,44 @@
             </Principal>
             <Dependent Role="KAgentDoc">
               <PropertyRef Name="KAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MatRecDet">
+          <Key>
+            <PropertyRef Name="DetId" />
+          </Key>
+          <Property Type="Int32" Name="DetId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="RecId" Nullable="false" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="6" />
+          <Property Type="Decimal" Name="Coefficient" Precision="15" Scale="4" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_MatRecDet_Materials" FromRole="MatRecDet" ToRole="Materials" />
+          <NavigationProperty Name="MatRecipe" Relationship="BaseModel.FK_MATRECDET_MATRECIPE" FromRole="MatRecDet" ToRole="MatRecipe" />
+        </EntityType>
+        <Association Name="FK_MatRecDet_Materials">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
+          <End Type="BaseModel.MatRecDet" Role="MatRecDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="MatRecDet">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MATRECDET_MATRECIPE">
+          <End Type="BaseModel.MatRecipe" Role="MatRecipe" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.MatRecDet" Role="MatRecDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MatRecipe">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="MatRecDet">
+              <PropertyRef Name="RecId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -11722,17 +11756,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MatRecDet">
-            <EntityTypeMapping TypeName="BaseModel.MatRecDet">
-              <MappingFragment StoreEntitySet="MatRecDet">
-                <ScalarProperty Name="Coefficient" ColumnName="Coefficient" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="RecId" ColumnName="RecId" />
-                <ScalarProperty Name="DetId" ColumnName="DetId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="MatRecipe">
             <EntityTypeMapping TypeName="BaseModel.MatRecipe">
               <MappingFragment StoreEntitySet="MatRecipe">
@@ -12080,6 +12103,17 @@
                 <ScalarProperty Name="DocNum" ColumnName="DocNum" />
                 <ScalarProperty Name="DocName" ColumnName="DocName" />
                 <ScalarProperty Name="KAId" ColumnName="KAId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MatRecDet">
+            <EntityTypeMapping TypeName="BaseModel.MatRecDet">
+              <MappingFragment StoreEntitySet="MatRecDet">
+                <ScalarProperty Name="Coefficient" ColumnName="Coefficient" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="RecId" ColumnName="RecId" />
+                <ScalarProperty Name="DetId" ColumnName="DetId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

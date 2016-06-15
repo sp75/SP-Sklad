@@ -615,7 +615,8 @@
             this.checkEdit4.Properties.Caption = "Нам винні";
             this.checkEdit4.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
             this.checkEdit4.Properties.RadioGroupIndex = 1;
-            this.checkEdit4.Size = new System.Drawing.Size(132, 19);
+            this.checkEdit4.Size = new System.Drawing.Size(132, 20);
+            this.checkEdit4.StyleController = this.styleController1;
             this.checkEdit4.TabIndex = 48;
             this.checkEdit4.TabStop = false;
             // 
@@ -628,7 +629,8 @@
             this.checkEdit3.Properties.Caption = "Ми винні";
             this.checkEdit3.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
             this.checkEdit3.Properties.RadioGroupIndex = 1;
-            this.checkEdit3.Size = new System.Drawing.Size(102, 19);
+            this.checkEdit3.Size = new System.Drawing.Size(102, 20);
+            this.checkEdit3.StyleController = this.styleController1;
             this.checkEdit3.TabIndex = 47;
             // 
             // labelControl7
@@ -883,7 +885,7 @@
             // 
             this.xtraTabPage8.Controls.Add(this.panelControl3);
             this.xtraTabPage8.Name = "xtraTabPage8";
-            this.xtraTabPage8.Size = new System.Drawing.Size(673, 184);
+            this.xtraTabPage8.Size = new System.Drawing.Size(677, 184);
             this.xtraTabPage8.Text = "xtraTabPage8";
             // 
             // panelControl3
@@ -900,7 +902,7 @@
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl3.Location = new System.Drawing.Point(0, 0);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(673, 184);
+            this.panelControl3.Size = new System.Drawing.Size(677, 184);
             this.panelControl3.TabIndex = 42;
             // 
             // textEdit13
@@ -910,7 +912,7 @@
             this.textEdit13.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.KagentBindingSource, "KPP", true));
             this.textEdit13.Location = new System.Drawing.Point(131, 144);
             this.textEdit13.Name = "textEdit13";
-            this.textEdit13.Size = new System.Drawing.Size(251, 22);
+            this.textEdit13.Size = new System.Drawing.Size(255, 22);
             this.textEdit13.StyleController = this.styleController1;
             this.textEdit13.TabIndex = 39;
             // 
@@ -921,7 +923,7 @@
             this.textEdit9.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.KagentBindingSource, "OKPO", true));
             this.textEdit9.Location = new System.Drawing.Point(131, 116);
             this.textEdit9.Name = "textEdit9";
-            this.textEdit9.Size = new System.Drawing.Size(251, 22);
+            this.textEdit9.Size = new System.Drawing.Size(255, 22);
             this.textEdit9.StyleController = this.styleController1;
             this.textEdit9.TabIndex = 38;
             // 
@@ -941,7 +943,7 @@
             this.textEdit12.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.KagentBindingSource, "Name", true));
             this.textEdit12.Location = new System.Drawing.Point(133, 18);
             this.textEdit12.Name = "textEdit12";
-            this.textEdit12.Size = new System.Drawing.Size(498, 22);
+            this.textEdit12.Size = new System.Drawing.Size(502, 22);
             this.textEdit12.StyleController = this.styleController1;
             this.textEdit12.TabIndex = 34;
             // 
@@ -960,7 +962,7 @@
             this.simpleButton2.ImageIndex = 1;
             this.simpleButton2.ImageList = this.ImageList;
             this.simpleButton2.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton2.Location = new System.Drawing.Point(637, 19);
+            this.simpleButton2.Location = new System.Drawing.Point(641, 19);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(22, 22);
             this.simpleButton2.TabIndex = 33;
@@ -990,14 +992,14 @@
             this.textEdit11.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.KagentBindingSource, "FullName", true));
             this.textEdit11.Location = new System.Drawing.Point(133, 51);
             this.textEdit11.Name = "textEdit11";
-            this.textEdit11.Size = new System.Drawing.Size(526, 52);
+            this.textEdit11.Size = new System.Drawing.Size(530, 52);
             this.textEdit11.TabIndex = 32;
             // 
             // xtraTabPage10
             // 
             this.xtraTabPage10.Controls.Add(this.panelControl4);
             this.xtraTabPage10.Name = "xtraTabPage10";
-            this.xtraTabPage10.Size = new System.Drawing.Size(673, 184);
+            this.xtraTabPage10.Size = new System.Drawing.Size(677, 184);
             this.xtraTabPage10.Text = "xtraTabPage10";
             // 
             // panelControl4
@@ -1016,7 +1018,7 @@
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl4.Location = new System.Drawing.Point(0, 0);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(673, 184);
+            this.panelControl4.Size = new System.Drawing.Size(677, 184);
             this.panelControl4.TabIndex = 43;
             // 
             // simpleButton5
@@ -1025,7 +1027,7 @@
             this.simpleButton5.ImageIndex = 1;
             this.simpleButton5.ImageList = this.ImageList;
             this.simpleButton5.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton5.Location = new System.Drawing.Point(609, 141);
+            this.simpleButton5.Location = new System.Drawing.Point(613, 141);
             this.simpleButton5.Name = "simpleButton5";
             this.simpleButton5.Size = new System.Drawing.Size(22, 22);
             this.simpleButton5.TabIndex = 45;
@@ -1047,7 +1049,7 @@
             this.UsersLookUpEdit.Properties.ShowHeader = false;
             this.UsersLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.UsersLookUpEdit.Properties.ValueMember = "UserId";
-            this.UsersLookUpEdit.Size = new System.Drawing.Size(515, 22);
+            this.UsersLookUpEdit.Size = new System.Drawing.Size(519, 22);
             this.UsersLookUpEdit.StyleController = this.styleController1;
             this.UsersLookUpEdit.TabIndex = 44;
             // 
@@ -1075,7 +1077,7 @@
             this.dateEdit2.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.dateEdit2.Properties.Mask.EditMask = "";
             this.dateEdit2.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.dateEdit2.Size = new System.Drawing.Size(157, 22);
+            this.dateEdit2.Size = new System.Drawing.Size(161, 22);
             this.dateEdit2.StyleController = this.styleController1;
             this.dateEdit2.TabIndex = 42;
             // 
@@ -1112,7 +1114,7 @@
             this.simpleButton3.ImageIndex = 1;
             this.simpleButton3.ImageList = this.ImageList;
             this.simpleButton3.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton3.Location = new System.Drawing.Point(637, 141);
+            this.simpleButton3.Location = new System.Drawing.Point(641, 141);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(22, 22);
             this.simpleButton3.TabIndex = 33;
@@ -1148,7 +1150,7 @@
             this.JobLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.JobLookUpEdit.Properties.PopupSizeable = true;
-            this.JobLookUpEdit.Size = new System.Drawing.Size(349, 20);
+            this.JobLookUpEdit.Size = new System.Drawing.Size(353, 20);
             this.JobLookUpEdit.TabIndex = 39;
             // 
             // panelControl1
