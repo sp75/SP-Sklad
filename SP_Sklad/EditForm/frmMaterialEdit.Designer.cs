@@ -620,6 +620,7 @@
             this.WhBtn.Name = "WhBtn";
             this.WhBtn.Size = new System.Drawing.Size(22, 22);
             this.WhBtn.TabIndex = 18;
+            this.WhBtn.Click += new System.EventHandler(this.WhBtn_Click);
             // 
             // MsrComboBox
             // 
@@ -658,6 +659,7 @@
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(22, 22);
             this.simpleButton2.TabIndex = 13;
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // GrpIdEdit
             // 
@@ -670,6 +672,7 @@
             this.GrpIdEdit.Properties.DataSource = this.bindingSource1;
             this.GrpIdEdit.Properties.DisplayMember = "Name";
             this.GrpIdEdit.Properties.NullText = "";
+            this.GrpIdEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.GrpIdEdit.Properties.TreeList = this.treeListLookUpEdit1TreeList;
             this.GrpIdEdit.Properties.ValueMember = "GrpId";
             this.GrpIdEdit.Size = new System.Drawing.Size(447, 22);
@@ -685,7 +688,10 @@
             this.treeListLookUpEdit1TreeList.Location = new System.Drawing.Point(0, 0);
             this.treeListLookUpEdit1TreeList.Name = "treeListLookUpEdit1TreeList";
             this.treeListLookUpEdit1TreeList.OptionsBehavior.EnableFiltering = true;
-            this.treeListLookUpEdit1TreeList.OptionsView.ShowIndentAsRowStyle = true;
+            this.treeListLookUpEdit1TreeList.OptionsView.ShowColumns = false;
+            this.treeListLookUpEdit1TreeList.OptionsView.ShowHorzLines = false;
+            this.treeListLookUpEdit1TreeList.OptionsView.ShowIndicator = false;
+            this.treeListLookUpEdit1TreeList.OptionsView.ShowVertLines = false;
             this.treeListLookUpEdit1TreeList.ParentFieldName = "PId";
             this.treeListLookUpEdit1TreeList.SelectImageList = this.ImageList;
             this.treeListLookUpEdit1TreeList.Size = new System.Drawing.Size(400, 200);

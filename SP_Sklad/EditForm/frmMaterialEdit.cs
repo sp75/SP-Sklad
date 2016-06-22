@@ -15,13 +15,15 @@ namespace SP_Sklad.EditForm
     public partial class frmMaterialEdit : Form
     {
         int? _mat_id { get; set; }
+        int? _mat_grp { get; set; }
         private Materials _mat { get; set; }
         BaseEntities _db { get; set; }
 
-        public frmMaterialEdit(int? MatId =null)
+        public frmMaterialEdit(int? MatId =null, int? MatGrp = null)
         {
             InitializeComponent();
             _mat_id = MatId;
+            _mat_grp = MatGrp;
             _db = DB.SkladBase();
         }
 
@@ -49,7 +51,8 @@ namespace SP_Sklad.EditForm
                     MId = DBHelper.MeasuresList.FirstOrDefault(w => w.Def == 1).MId,
                     WId = DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId,
                     CId = DBHelper.CountersList.FirstOrDefault(w => w.Def == 1).CId,
-                    NDS = 0
+                    NDS = 0,
+                    GrpId = _mat_grp
                 });
             }
             else
@@ -96,6 +99,18 @@ namespace SP_Sklad.EditForm
         private void NameTextEdit_EditValueChanged(object sender, EventArgs e)
         {
             Text = "Товар: " + NameTextEdit.Text;
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            ArtikulEdit.Text = NameTextEdit.Text;
+            ArtikulEdit.Focus();
+        }
+
+        private void WhBtn_Click(object sender, EventArgs e)
+        {
+            NameTextEdit.Text = ArtikulEdit.Text;
+            NameTextEdit.Focus();
         }
     }
 

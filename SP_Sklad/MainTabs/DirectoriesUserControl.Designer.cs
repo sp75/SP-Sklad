@@ -55,23 +55,20 @@
             this.standaloneBarDockControl4 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl5 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.BarImageList = new System.Windows.Forms.ImageList(this.components);
-            this.ExecuteItemBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.PrintItemBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.AddTechProcBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.EditTechProcBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.DelTechProcBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.StopProcesBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.AddGroupMatBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
-            this.barCheckItem1 = new DevExpress.XtraBars.BarCheckItem();
             this.ExplorerRefreshBtn = new DevExpress.XtraBars.BarButtonItem();
             this.DelExplorerBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.EditExplorerBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
-            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.KagentBalansBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.DirTreeList = new DevExpress.XtraTreeList.TreeList();
@@ -192,12 +189,12 @@
             this.xtraTabPage20 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage11 = new DevExpress.XtraTab.XtraTabPage();
             this.ExplorerPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -249,6 +246,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplorerPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemImageComboBox1
@@ -409,23 +407,21 @@
             this.EditItemBtn,
             this.DeleteItemBtn,
             this.RefrechItemBtn,
-            this.ExecuteItemBtn,
-            this.PrintItemBtn,
-            this.AddTechProcBtn,
-            this.EditTechProcBtn,
-            this.DelTechProcBtn,
-            this.StopProcesBtn,
-            this.barButtonItem4,
             this.barButtonItem1,
             this.barSubItem1,
-            this.barCheckItem1,
             this.ExplorerRefreshBtn,
             this.DelExplorerBtn,
-            this.barButtonItem5,
+            this.EditExplorerBtn,
             this.barButtonItem6,
             this.AddGroupMatBtn,
-            this.barButtonItem8});
-            this.barManager1.MaxItemId = 21;
+            this.barButtonItem8,
+            this.KagentBalansBtn,
+            this.barButtonItem3,
+            this.barButtonItem7,
+            this.barButtonItem9,
+            this.barButtonItem10,
+            this.barButtonItem11});
+            this.barManager1.MaxItemId = 27;
             // 
             // bar1
             // 
@@ -582,56 +578,8 @@
             this.BarImageList.Images.SetKeyName(2, "edit.bmp");
             this.BarImageList.Images.SetKeyName(3, "Delete.bmp");
             this.BarImageList.Images.SetKeyName(4, "refresh.bmp");
-            this.BarImageList.Images.SetKeyName(5, "Провести документ.bmp");
-            this.BarImageList.Images.SetKeyName(6, "Попередн_й перегляд.bmp");
-            this.BarImageList.Images.SetKeyName(7, "Склади.bmp");
-            // 
-            // ExecuteItemBtn
-            // 
-            this.ExecuteItemBtn.Caption = "Розпочати виробництво";
-            this.ExecuteItemBtn.Id = 5;
-            this.ExecuteItemBtn.ImageIndex = 5;
-            this.ExecuteItemBtn.Name = "ExecuteItemBtn";
-            // 
-            // PrintItemBtn
-            // 
-            this.PrintItemBtn.Caption = "Друк/Попередній перегляд";
-            this.PrintItemBtn.Id = 6;
-            this.PrintItemBtn.ImageIndex = 6;
-            this.PrintItemBtn.Name = "PrintItemBtn";
-            // 
-            // AddTechProcBtn
-            // 
-            this.AddTechProcBtn.Caption = "Додати технологічний процес";
-            this.AddTechProcBtn.Id = 7;
-            this.AddTechProcBtn.ImageIndex = 0;
-            this.AddTechProcBtn.Name = "AddTechProcBtn";
-            // 
-            // EditTechProcBtn
-            // 
-            this.EditTechProcBtn.Caption = "Властивості";
-            this.EditTechProcBtn.Id = 8;
-            this.EditTechProcBtn.ImageIndex = 2;
-            this.EditTechProcBtn.Name = "EditTechProcBtn";
-            // 
-            // DelTechProcBtn
-            // 
-            this.DelTechProcBtn.Caption = "Видалити ";
-            this.DelTechProcBtn.Id = 9;
-            this.DelTechProcBtn.ImageIndex = 3;
-            this.DelTechProcBtn.Name = "DelTechProcBtn";
-            // 
-            // StopProcesBtn
-            // 
-            this.StopProcesBtn.Caption = "Відватажити готовий товар на склад";
-            this.StopProcesBtn.Id = 10;
-            this.StopProcesBtn.Name = "StopProcesBtn";
-            // 
-            // barButtonItem4
-            // 
-            this.barButtonItem4.Caption = "Інформація про замовлення";
-            this.barButtonItem4.Id = 11;
-            this.barButtonItem4.Name = "barButtonItem4";
+            this.BarImageList.Images.SetKeyName(5, "Баланс з контрагентом.bmp");
+            this.BarImageList.Images.SetKeyName(6, "Замовлене кл_єнтами.bmp");
             // 
             // barButtonItem1
             // 
@@ -661,12 +609,6 @@
             this.barButtonItem8.Id = 20;
             this.barButtonItem8.Name = "barButtonItem8";
             // 
-            // barCheckItem1
-            // 
-            this.barCheckItem1.Caption = "barCheckItem1";
-            this.barCheckItem1.Id = 14;
-            this.barCheckItem1.Name = "barCheckItem1";
-            // 
             // ExplorerRefreshBtn
             // 
             this.ExplorerRefreshBtn.Caption = "Обновити";
@@ -681,12 +623,12 @@
             this.DelExplorerBtn.Name = "DelExplorerBtn";
             this.DelExplorerBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DelExplorerBtn_ItemClick);
             // 
-            // barButtonItem5
+            // EditExplorerBtn
             // 
-            this.barButtonItem5.Caption = "Властивості...";
-            this.barButtonItem5.Id = 17;
-            this.barButtonItem5.Name = "barButtonItem5";
-            this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
+            this.EditExplorerBtn.Caption = "Властивості...";
+            this.EditExplorerBtn.Id = 17;
+            this.EditExplorerBtn.Name = "EditExplorerBtn";
+            this.EditExplorerBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
             // 
             // barButtonItem6
             // 
@@ -694,18 +636,44 @@
             this.barButtonItem6.Id = 18;
             this.barButtonItem6.Name = "barButtonItem6";
             // 
-            // popupMenu1
+            // KagentBalansBtn
             // 
-            this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.CopyItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.StopProcesBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
-            this.popupMenu1.Manager = this.barManager1;
-            this.popupMenu1.Name = "popupMenu1";
+            this.KagentBalansBtn.Caption = "Баланс з контрагентом";
+            this.KagentBalansBtn.Id = 21;
+            this.KagentBalansBtn.ImageIndex = 5;
+            this.KagentBalansBtn.Name = "KagentBalansBtn";
+            this.KagentBalansBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.KagentBalansBtn_ItemClick);
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "Інформація про замовлення";
+            this.barButtonItem3.Id = 22;
+            this.barButtonItem3.ImageIndex = 6;
+            this.barButtonItem3.Name = "barButtonItem3";
+            // 
+            // barButtonItem7
+            // 
+            this.barButtonItem7.Caption = "Перерахувати баланс";
+            this.barButtonItem7.Id = 23;
+            this.barButtonItem7.Name = "barButtonItem7";
+            // 
+            // barButtonItem9
+            // 
+            this.barButtonItem9.Caption = "Перерахувати баланс для всіх";
+            this.barButtonItem9.Id = 24;
+            this.barButtonItem9.Name = "barButtonItem9";
+            // 
+            // barButtonItem10
+            // 
+            this.barButtonItem10.Caption = "Перемістити в архів";
+            this.barButtonItem10.Id = 25;
+            this.barButtonItem10.Name = "barButtonItem10";
+            // 
+            // barButtonItem11
+            // 
+            this.barButtonItem11.Caption = "Відображати архівні записи";
+            this.barButtonItem11.Id = 26;
+            this.barButtonItem11.Name = "barButtonItem11";
             // 
             // panelControl1
             // 
@@ -1328,7 +1296,7 @@
             // 
             // vGridControl2
             // 
-            this.vGridControl2.Cursor = System.Windows.Forms.Cursors.SizeWE;
+            this.vGridControl2.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl2.Location = new System.Drawing.Point(0, 0);
             this.vGridControl2.Name = "vGridControl2";
@@ -1703,7 +1671,7 @@
             // 
             this.xtraTabPage9.Controls.Add(this.extDirTabControl);
             this.xtraTabPage9.Name = "xtraTabPage9";
-            this.xtraTabPage9.Size = new System.Drawing.Size(853, 590);
+            this.xtraTabPage9.Size = new System.Drawing.Size(853, 621);
             this.xtraTabPage9.Text = "Довідники";
             // 
             // extDirTabControl
@@ -1716,7 +1684,7 @@
             this.extDirTabControl.LookAndFeel.UseDefaultLookAndFeel = false;
             this.extDirTabControl.Name = "extDirTabControl";
             this.extDirTabControl.SelectedTabPage = this.xtraTabPage19;
-            this.extDirTabControl.Size = new System.Drawing.Size(853, 590);
+            this.extDirTabControl.Size = new System.Drawing.Size(853, 621);
             this.extDirTabControl.TabIndex = 2;
             this.extDirTabControl.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage19,
@@ -1726,8 +1694,8 @@
             // 
             this.xtraTabPage19.Controls.Add(this.MatRecipeGridControl);
             this.xtraTabPage19.Name = "xtraTabPage19";
-            this.xtraTabPage19.Size = new System.Drawing.Size(853, 568);
-            this.xtraTabPage19.Text = "xtraTabPage19";
+            this.xtraTabPage19.Size = new System.Drawing.Size(853, 599);
+            this.xtraTabPage19.Text = "Рецепти";
             // 
             // MatRecipeGridControl
             // 
@@ -1735,7 +1703,7 @@
             this.MatRecipeGridControl.Location = new System.Drawing.Point(0, 0);
             this.MatRecipeGridControl.MainView = this.MatRecipeGridView;
             this.MatRecipeGridControl.Name = "MatRecipeGridControl";
-            this.MatRecipeGridControl.Size = new System.Drawing.Size(853, 568);
+            this.MatRecipeGridControl.Size = new System.Drawing.Size(853, 599);
             this.MatRecipeGridControl.TabIndex = 1;
             this.MatRecipeGridControl.UseEmbeddedNavigator = true;
             this.MatRecipeGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -1762,6 +1730,7 @@
             this.MatRecipeGridView.OptionsView.EnableAppearanceOddRow = true;
             this.MatRecipeGridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn39, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.MatRecipeGridView.DoubleClick += new System.EventHandler(this.MatRecipeGridView_DoubleClick);
             // 
             // gridColumn8
             // 
@@ -1839,9 +1808,26 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.ExplorerRefreshBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.DelExplorerBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditExplorerBtn, true)});
             this.ExplorerPopupMenu.Manager = this.barManager1;
             this.ExplorerPopupMenu.Name = "ExplorerPopupMenu";
+            // 
+            // KAgentPopupMenu
+            // 
+            this.KAgentPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.CopyItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.KagentBalansBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
+            this.KAgentPopupMenu.Manager = this.barManager1;
+            this.KAgentPopupMenu.Name = "KAgentPopupMenu";
             // 
             // DirectoriesUserControl
             // 
@@ -1865,7 +1851,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
@@ -1917,6 +1902,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplorerPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1934,12 +1920,7 @@
         private DevExpress.XtraBars.BarButtonItem EditItemBtn;
         private DevExpress.XtraBars.BarButtonItem DeleteItemBtn;
         private DevExpress.XtraBars.BarButtonItem RefrechItemBtn;
-        private DevExpress.XtraBars.BarButtonItem ExecuteItemBtn;
-        private DevExpress.XtraBars.BarButtonItem PrintItemBtn;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl2;
-        private DevExpress.XtraBars.BarButtonItem AddTechProcBtn;
-        private DevExpress.XtraBars.BarButtonItem EditTechProcBtn;
-        private DevExpress.XtraBars.BarButtonItem DelTechProcBtn;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl3;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
@@ -1949,9 +1930,6 @@
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl4;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl5;
         public System.Windows.Forms.ImageList BarImageList;
-        private DevExpress.XtraBars.BarButtonItem StopProcesBtn;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
-        private DevExpress.XtraBars.PopupMenu popupMenu1;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl6;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
@@ -2070,10 +2048,9 @@
         private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraBars.BarButtonItem AddGroupMatBtn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;
-        private DevExpress.XtraBars.BarCheckItem barCheckItem1;
         private DevExpress.XtraBars.BarButtonItem ExplorerRefreshBtn;
         private DevExpress.XtraBars.BarButtonItem DelExplorerBtn;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
+        private DevExpress.XtraBars.BarButtonItem EditExplorerBtn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem6;
         private DevExpress.XtraGrid.GridControl MatRecipeGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView MatRecipeGridView;
@@ -2086,5 +2063,12 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn38;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn39;
+        private DevExpress.XtraBars.BarButtonItem KagentBalansBtn;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem9;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem10;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem11;
+        private DevExpress.XtraBars.PopupMenu KAgentPopupMenu;
     }
 }

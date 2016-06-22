@@ -49,7 +49,7 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.DirTreeList = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.TreeListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
@@ -71,9 +71,9 @@
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
             this.DiscPanel = new System.Windows.Forms.Panel();
-            this.AddMatBtn = new DevExpress.XtraEditors.SimpleButton();
-            this.DelDiscountBtn = new DevExpress.XtraEditors.SimpleButton();
-            this.EditDiscountBtn = new DevExpress.XtraEditors.SimpleButton();
+            this.AddRecDetBtn = new DevExpress.XtraEditors.SimpleButton();
+            this.DelRecDetBtn = new DevExpress.XtraEditors.SimpleButton();
+            this.EditRecDetBtn = new DevExpress.XtraEditors.SimpleButton();
             this.MatRecDetGridControl = new DevExpress.XtraGrid.GridControl();
             this.MatRecDetGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -88,6 +88,7 @@
             this.panelControl7 = new DevExpress.XtraEditors.PanelControl();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.calcEdit1 = new DevExpress.XtraEditors.CalcEdit();
+            this.MatRecDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.calcEdit2 = new DevExpress.XtraEditors.CalcEdit();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
@@ -99,7 +100,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TreeListBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -125,6 +126,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).BeginInit();
             this.panelControl7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatRecDetBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatLookUpEdit.Properties)).BeginInit();
             this.SuspendLayout();
@@ -265,6 +267,7 @@
             this.OkButton.Size = new System.Drawing.Size(98, 30);
             this.OkButton.TabIndex = 3;
             this.OkButton.Text = "Застосувати";
+            this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
             // simpleButton1
             // 
@@ -282,7 +285,7 @@
             this.DirTreeList.Appearance.FocusedCell.Options.UseBackColor = true;
             this.DirTreeList.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.treeListColumn1});
-            this.DirTreeList.DataSource = this.bindingSource1;
+            this.DirTreeList.DataSource = this.TreeListBindingSource;
             this.DirTreeList.Dock = System.Windows.Forms.DockStyle.Left;
             this.DirTreeList.ImageIndexFieldName = "ImgIdx";
             this.DirTreeList.KeyFieldName = "Id";
@@ -530,9 +533,9 @@
             // 
             // DiscPanel
             // 
-            this.DiscPanel.Controls.Add(this.AddMatBtn);
-            this.DiscPanel.Controls.Add(this.DelDiscountBtn);
-            this.DiscPanel.Controls.Add(this.EditDiscountBtn);
+            this.DiscPanel.Controls.Add(this.AddRecDetBtn);
+            this.DiscPanel.Controls.Add(this.DelRecDetBtn);
+            this.DiscPanel.Controls.Add(this.EditRecDetBtn);
             this.DiscPanel.Controls.Add(this.MatRecDetGridControl);
             this.DiscPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DiscPanel.Location = new System.Drawing.Point(2, 20);
@@ -540,32 +543,35 @@
             this.DiscPanel.Size = new System.Drawing.Size(628, 334);
             this.DiscPanel.TabIndex = 44;
             // 
-            // AddMatBtn
+            // AddRecDetBtn
             // 
-            this.AddMatBtn.Image = ((System.Drawing.Image)(resources.GetObject("AddMatBtn.Image")));
-            this.AddMatBtn.Location = new System.Drawing.Point(18, 11);
-            this.AddMatBtn.Name = "AddMatBtn";
-            this.AddMatBtn.Size = new System.Drawing.Size(106, 23);
-            this.AddMatBtn.TabIndex = 11;
-            this.AddMatBtn.Text = "Додати...";
+            this.AddRecDetBtn.Image = ((System.Drawing.Image)(resources.GetObject("AddRecDetBtn.Image")));
+            this.AddRecDetBtn.Location = new System.Drawing.Point(18, 11);
+            this.AddRecDetBtn.Name = "AddRecDetBtn";
+            this.AddRecDetBtn.Size = new System.Drawing.Size(106, 23);
+            this.AddRecDetBtn.TabIndex = 11;
+            this.AddRecDetBtn.Text = "Додати...";
+            this.AddRecDetBtn.Click += new System.EventHandler(this.AddRecDetBtn_Click);
             // 
-            // DelDiscountBtn
+            // DelRecDetBtn
             // 
-            this.DelDiscountBtn.Image = ((System.Drawing.Image)(resources.GetObject("DelDiscountBtn.Image")));
-            this.DelDiscountBtn.Location = new System.Drawing.Point(242, 11);
-            this.DelDiscountBtn.Name = "DelDiscountBtn";
-            this.DelDiscountBtn.Size = new System.Drawing.Size(101, 23);
-            this.DelDiscountBtn.TabIndex = 10;
-            this.DelDiscountBtn.Text = "Видалити";
+            this.DelRecDetBtn.Image = ((System.Drawing.Image)(resources.GetObject("DelRecDetBtn.Image")));
+            this.DelRecDetBtn.Location = new System.Drawing.Point(242, 11);
+            this.DelRecDetBtn.Name = "DelRecDetBtn";
+            this.DelRecDetBtn.Size = new System.Drawing.Size(101, 23);
+            this.DelRecDetBtn.TabIndex = 10;
+            this.DelRecDetBtn.Text = "Видалити";
+            this.DelRecDetBtn.Click += new System.EventHandler(this.DelRecDetBtn_Click);
             // 
-            // EditDiscountBtn
+            // EditRecDetBtn
             // 
-            this.EditDiscountBtn.Image = ((System.Drawing.Image)(resources.GetObject("EditDiscountBtn.Image")));
-            this.EditDiscountBtn.Location = new System.Drawing.Point(130, 11);
-            this.EditDiscountBtn.Name = "EditDiscountBtn";
-            this.EditDiscountBtn.Size = new System.Drawing.Size(106, 23);
-            this.EditDiscountBtn.TabIndex = 9;
-            this.EditDiscountBtn.Text = "Властивості";
+            this.EditRecDetBtn.Image = ((System.Drawing.Image)(resources.GetObject("EditRecDetBtn.Image")));
+            this.EditRecDetBtn.Location = new System.Drawing.Point(130, 11);
+            this.EditRecDetBtn.Name = "EditRecDetBtn";
+            this.EditRecDetBtn.Size = new System.Drawing.Size(106, 23);
+            this.EditRecDetBtn.TabIndex = 9;
+            this.EditRecDetBtn.Text = "Властивості";
+            this.EditRecDetBtn.Click += new System.EventHandler(this.EditRecDetBtn_Click);
             // 
             // MatRecDetGridControl
             // 
@@ -593,6 +599,7 @@
             this.MatRecDetGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.MatRecDetGridView.OptionsBehavior.Editable = false;
             this.MatRecDetGridView.OptionsView.ShowGroupPanel = false;
+            this.MatRecDetGridView.DoubleClick += new System.EventHandler(this.MatRecDetGridView_DoubleClick);
             // 
             // gridColumn2
             // 
@@ -656,29 +663,32 @@
             this.simpleButton11.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton11.Image")));
             this.simpleButton11.ImageList = this.ImageList;
             this.simpleButton11.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton11.Location = new System.Drawing.Point(586, 33);
+            this.simpleButton11.Location = new System.Drawing.Point(589, 32);
             this.simpleButton11.Name = "simpleButton11";
             this.simpleButton11.Size = new System.Drawing.Size(22, 22);
             this.simpleButton11.TabIndex = 52;
             this.simpleButton11.ToolTip = "Повернутися до списку";
+            this.simpleButton11.Click += new System.EventHandler(this.simpleButton11_Click);
             // 
             // simpleButton6
             // 
             this.simpleButton6.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton6.Image")));
-            this.simpleButton6.Location = new System.Drawing.Point(30, 33);
+            this.simpleButton6.Location = new System.Drawing.Point(20, 31);
             this.simpleButton6.Name = "simpleButton6";
             this.simpleButton6.Size = new System.Drawing.Size(106, 23);
             this.simpleButton6.TabIndex = 51;
             this.simpleButton6.Text = "Додати...";
+            this.simpleButton6.Click += new System.EventHandler(this.AddRecDetBtn_Click);
             // 
             // simpleButton7
             // 
             this.simpleButton7.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton7.Image")));
-            this.simpleButton7.Location = new System.Drawing.Point(142, 33);
+            this.simpleButton7.Location = new System.Drawing.Point(132, 31);
             this.simpleButton7.Name = "simpleButton7";
             this.simpleButton7.Size = new System.Drawing.Size(101, 23);
             this.simpleButton7.TabIndex = 50;
             this.simpleButton7.Text = "Видалити";
+            this.simpleButton7.Click += new System.EventHandler(this.simpleButton7_Click);
             // 
             // panelControl7
             // 
@@ -692,9 +702,9 @@
             this.panelControl7.Controls.Add(this.labelControl10);
             this.panelControl7.Controls.Add(this.labelControl9);
             this.panelControl7.Controls.Add(this.MatLookUpEdit);
-            this.panelControl7.Location = new System.Drawing.Point(30, 72);
+            this.panelControl7.Location = new System.Drawing.Point(20, 69);
             this.panelControl7.Name = "panelControl7";
-            this.panelControl7.Size = new System.Drawing.Size(576, 262);
+            this.panelControl7.Size = new System.Drawing.Size(591, 266);
             this.panelControl7.TabIndex = 49;
             // 
             // simpleButton4
@@ -710,6 +720,7 @@
             // 
             // calcEdit1
             // 
+            this.calcEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecDetBS, "Coefficient", true));
             this.calcEdit1.Location = new System.Drawing.Point(97, 91);
             this.calcEdit1.Name = "calcEdit1";
             this.calcEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -718,6 +729,10 @@
             this.calcEdit1.Size = new System.Drawing.Size(151, 22);
             this.calcEdit1.StyleController = this.styleController1;
             this.calcEdit1.TabIndex = 48;
+            // 
+            // MatRecDetBS
+            // 
+            this.MatRecDetBS.DataSource = typeof(SP_Sklad.SkladData.MatRecDet);
             // 
             // labelControl11
             // 
@@ -730,6 +745,7 @@
             // 
             // calcEdit2
             // 
+            this.calcEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecDetBS, "Amount", true));
             this.calcEdit2.Location = new System.Drawing.Point(97, 55);
             this.calcEdit2.Name = "calcEdit2";
             this.calcEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -759,6 +775,7 @@
             // 
             // MatLookUpEdit
             // 
+            this.MatLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecDetBS, "MatId", true));
             this.MatLookUpEdit.Location = new System.Drawing.Point(97, 19);
             this.MatLookUpEdit.Name = "MatLookUpEdit";
             this.MatLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -775,6 +792,7 @@
             this.MatLookUpEdit.Size = new System.Drawing.Size(436, 22);
             this.MatLookUpEdit.StyleController = this.styleController1;
             this.MatLookUpEdit.TabIndex = 37;
+            this.MatLookUpEdit.EditValueChanged += new System.EventHandler(this.MatLookUpEdit_EditValueChanged);
             // 
             // frmMatRecipe
             // 
@@ -796,13 +814,14 @@
             this.Text = "Властивості рецепту";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMatRecipe_FormClosed);
             this.Load += new System.EventHandler(this.frmMatRecipe_Load);
+            this.Shown += new System.EventHandler(this.frmMatRecipe_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TreeListBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
@@ -830,6 +849,7 @@
             this.panelControl7.ResumeLayout(false);
             this.panelControl7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatRecDetBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatLookUpEdit.Properties)).EndInit();
             this.ResumeLayout(false);
@@ -878,9 +898,9 @@
         private DevExpress.XtraGrid.Views.Grid.GridView MatRecDetGridView;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraEditors.SimpleButton AddMatBtn;
-        private DevExpress.XtraEditors.SimpleButton DelDiscountBtn;
-        private DevExpress.XtraEditors.SimpleButton EditDiscountBtn;
+        private DevExpress.XtraEditors.SimpleButton AddRecDetBtn;
+        private DevExpress.XtraEditors.SimpleButton DelRecDetBtn;
+        private DevExpress.XtraEditors.SimpleButton EditRecDetBtn;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraEditors.SimpleButton simpleButton6;
@@ -901,6 +921,7 @@
         private DevExpress.XtraEditors.MemoEdit textEdit2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
-        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.BindingSource TreeListBindingSource;
+        private System.Windows.Forms.BindingSource MatRecDetBS;
     }
 }

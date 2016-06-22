@@ -280,6 +280,22 @@ namespace SP_Sklad.Common
 
             return result;
         }
+
+        static public void ShowKABalans(int ka_id)
+        {
+            if (DBHelper.CurrentUser.ShowBalance == 1)
+            {
+                var f = new frmKABalans(ka_id);
+                f.ShowDialog();
+            } //else ShowMessage("Перегляд заборонено!");
+        }
+
+        static public void ShowTurnMaterial(int mat_id)
+        {
+            new frmMatTurn(mat_id).ShowDialog();
+
+        }
+
     }
 
     public class CustomMatList
@@ -300,5 +316,23 @@ namespace SP_Sklad.Common
         public int ImgIdx { get; set; }
         public int TabIdx { get; set; }
         public int DataSetId { get; set; }
+    }
+
+    public static class DateTimeDayOfMonthExtensions
+    {
+        public static DateTime FirstDayOfMonth(this DateTime value)
+        {
+            return new DateTime(value.Year, value.Month, 1);
+        }
+
+        public static int DaysInMonth(this DateTime value)
+        {
+            return DateTime.DaysInMonth(value.Year, value.Month);
+        }
+
+        public static DateTime LastDayOfMonth(this DateTime value)
+        {
+            return new DateTime(value.Year, value.Month, value.DaysInMonth());
+        }
     }
 }

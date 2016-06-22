@@ -132,6 +132,12 @@
     <Compile Include="frmInParty.Designer.cs">
       <DependentUpon>frmInParty.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmKABalans.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKABalans.Designer.cs">
+      <DependentUpon>frmKABalans.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainTabs\DirectoriesUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -161,6 +167,12 @@
     </Compile>
     <Compile Include="MainTabs\WarehouseUserControl.Designer.cs">
       <DependentUpon>WarehouseUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMatTurn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMatTurn.Designer.cs">
+      <DependentUpon>frmMatTurn.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\PrintDoc.cs" />
     <Compile Include="Reports\ReportBuilder.cs" />
@@ -271,6 +283,9 @@
     <Compile Include="SkladData\GetDirTree_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetDocList_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetListMatPrices_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -287,6 +302,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetMatList_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetMatMove_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetMatRemain_Result.cs">
@@ -477,9 +495,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\SP_GET_AVG_PRICE_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\SP_GET_DOC_LIST_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\SP_GET_MATGRP_NDS_Result.cs">
@@ -710,6 +725,9 @@
     <EmbeddedResource Include="frmInParty.resx">
       <DependentUpon>frmInParty.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmKABalans.resx">
+      <DependentUpon>frmKABalans.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="mainForm.resx">
       <DependentUpon>mainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -727,6 +745,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainTabs\WarehouseUserControl.resx">
       <DependentUpon>WarehouseUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMatTurn.resx">
+      <DependentUpon>frmMatTurn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -782,6 +803,8 @@
       <DependentUpon>frmWBWriteOn.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.GetDocList_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.GetMatMove_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KADiscount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Kagent.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KAgentDoc.datasource" />
@@ -789,6 +812,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KAMatGroupDiscount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Materials.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatGroup.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.MatRecDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatRecipe.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

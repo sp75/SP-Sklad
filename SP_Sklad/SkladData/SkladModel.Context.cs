@@ -166,28 +166,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SP_GET_AVG_PRICE_Result>("[BaseEntities].[SP_GET_AVG_PRICE](@IN_POSID)", iN_POSIDParameter);
         }
     
-        [EdmFunction("BaseEntities", "SP_GET_DOC_LIST")]
-        public virtual IQueryable<SP_GET_DOC_LIST_Result> SP_GET_DOC_LIST(Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_WTYPE)
-        {
-            var iN_FROMDATEParameter = iN_FROMDATE.HasValue ?
-                new ObjectParameter("IN_FROMDATE", iN_FROMDATE) :
-                new ObjectParameter("IN_FROMDATE", typeof(System.DateTime));
-    
-            var iN_TODATEParameter = iN_TODATE.HasValue ?
-                new ObjectParameter("IN_TODATE", iN_TODATE) :
-                new ObjectParameter("IN_TODATE", typeof(System.DateTime));
-    
-            var iN_KAIDParameter = iN_KAID.HasValue ?
-                new ObjectParameter("IN_KAID", iN_KAID) :
-                new ObjectParameter("IN_KAID", typeof(int));
-    
-            var iN_WTYPEParameter = iN_WTYPE.HasValue ?
-                new ObjectParameter("IN_WTYPE", iN_WTYPE) :
-                new ObjectParameter("IN_WTYPE", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SP_GET_DOC_LIST_Result>("[BaseEntities].[SP_GET_DOC_LIST](@IN_FROMDATE, @IN_TODATE, @IN_KAID, @IN_WTYPE)", iN_FROMDATEParameter, iN_TODATEParameter, iN_KAIDParameter, iN_WTYPEParameter);
-        }
-    
         [EdmFunction("BaseEntities", "SP_GET_MAT_EXTRA")]
         public virtual IQueryable<SP_GET_MAT_EXTRA_Result> SP_GET_MAT_EXTRA(Nullable<int> mATID, Nullable<int> pTYPEID, Nullable<System.DateTime> oNDATE, Nullable<decimal> pRICE, Nullable<int> iN_CURRID, Nullable<decimal> oNVALUE)
         {
@@ -1272,6 +1250,62 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("ka_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DiscountList_Result>("DiscountList", ka_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetDocList")]
+        public virtual IQueryable<GetDocList_Result> GetDocList(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> ka_id, Nullable<int> w_type)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var w_typeParameter = w_type.HasValue ?
+                new ObjectParameter("w_type", w_type) :
+                new ObjectParameter("w_type", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetDocList_Result>("[BaseEntities].[GetDocList](@from_date, @to_date, @ka_id, @w_type)", from_dateParameter, to_dateParameter, ka_idParameter, w_typeParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetMatMove")]
+        public virtual IQueryable<GetMatMove_Result> GetMatMove(Nullable<int> mat_id, Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> wid, Nullable<int> ka_id, Nullable<int> w_type, string wh)
+        {
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var widParameter = wid.HasValue ?
+                new ObjectParameter("wid", wid) :
+                new ObjectParameter("wid", typeof(int));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var w_typeParameter = w_type.HasValue ?
+                new ObjectParameter("w_type", w_type) :
+                new ObjectParameter("w_type", typeof(int));
+    
+            var whParameter = wh != null ?
+                new ObjectParameter("wh", wh) :
+                new ObjectParameter("wh", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatMove_Result>("[BaseEntities].[GetMatMove](@mat_id, @from_date, @to_date, @wid, @ka_id, @w_type, @wh)", mat_idParameter, from_dateParameter, to_dateParameter, widParameter, ka_idParameter, w_typeParameter, whParameter);
         }
     }
 }

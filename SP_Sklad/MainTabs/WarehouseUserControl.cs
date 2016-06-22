@@ -404,6 +404,11 @@ namespace SP_Sklad.MainTabs
                 var frm = this.Parent as frmCatalog;
                 frm.OkButton.PerformClick();
             }
+            else
+            {
+                var row = WhMatGridView.GetFocusedRow() as WhMatGet_Result;
+                IHelper.ShowTurnMaterial(row.MatId.Value);
+            }
         }
 
         private void AddItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

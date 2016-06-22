@@ -40,7 +40,7 @@ namespace SP_Sklad.EditForm
             tree.Add(new CatalogTreeList { Id = -2, ParentId = -2, Text = "Основна інформація", ImgIdx = 0, TabIdx = 0 });
             tree.Add(new CatalogTreeList { Id = 0, ParentId = -1, Text = "Позиції", ImgIdx = 1, TabIdx = 1 });
 
-            bindingSource1.DataSource = tree;
+            TreeListBindingSource.DataSource = tree;
 
             if (_rec_id == null)
             {
@@ -49,7 +49,7 @@ namespace SP_Sklad.EditForm
                     Amount = 0,
                     MatId = _db.Materials.FirstOrDefault().MatId,
                     OnDate = DateTime.Now,
-                    RType = 0
+                    RType = _r_type
                 });
 
                 _db.SaveChanges();
@@ -83,6 +83,12 @@ namespace SP_Sklad.EditForm
         private void DirTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
             var focused_tree_node = DirTreeList.GetDataRecordByNode(e.Node) as CatalogTreeList;
+
+            if(focused_tree_node.ParentId ==0)
+            {
+                MatRecDetBS.DataSource = _db.MatRecDet.Find(focused_tree_node.DataSetId);
+            }
+
             xtraTabControl1.SelectedTabPageIndex = focused_tree_node.TabIdx;
         }
 
@@ -96,8 +102,97 @@ namespace SP_Sklad.EditForm
             {
                 tree.Add(new CatalogTreeList { Id = item.DetId, ParentId = 0, Text = item.Name, ImgIdx = 2, TabIdx = 2, DataSetId = item.DetId });
             }
-
+            DirTreeList.RefreshDataSource();
             DirTreeList.ExpandAll();
+        }
+
+        private void AddRecDetBtn_Click(object sender, EventArgs e)
+        {
+            xtraTabControl1.SelectedTabPageIndex = 2;
+            var new_det = _db.MatRecDet.Add(new MatRecDet { RecId = _mr.RecId, Amount = 0, Coefficient = 0, MatId = DB.SkladBase().MaterialsList.FirstOrDefault().MatId });
+            MatRecDetBS.DataSource = new_det;
+            _db.SaveChanges();
+            GetRecDetail();
+
+            DirTreeList.FocusedNode = DirTreeList.GetNodeList().FirstOrDefault(w => Convert.ToInt32( w.GetValue("Id")) == new_det.DetId);
+        }
+
+        private void DelRecDetBtn_Click(object sender, EventArgs e)
+        {
+            dynamic det_item = MatRecDetGridView.GetFocusedRow();
+            if (det_item == null) return;
+
+           _db.MatRecDet.Remove(_db.MatRecDet.Find(det_item.DetId));
+           _db.SaveChanges();
+
+           GetRecDetail();
+        }
+
+        private void EditRecDetBtn_Click(object sender, EventArgs e)
+        {
+            dynamic det_item = MatRecDetGridView.GetFocusedRow();
+            if (det_item == null) return;
+
+            xtraTabControl1.SelectedTabPageIndex = 2;
+            MatRecDetBS.DataSource = _db.MatRecDet.Find(det_item.DetId);
+        }
+
+        private void MatRecDetGridView_DoubleClick(object sender, EventArgs e)
+        {
+            EditRecDetBtn.PerformClick();
+        }
+
+        private void simpleButton7_Click(object sender, EventArgs e)
+        {
+            xtraTabControl1.SelectedTabPageIndex = 1;
+            _db.MatRecDet.Remove(MatRecDetBS.DataSource as MatRecDet);
+            _db.SaveChanges();
+
+            GetRecDetail();
+        }
+
+        private void MatLookUpEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            if (MatLookUpEdit.ContainsFocus)
+            {
+                var rd = MatRecDetBS.DataSource as MatRecDet;
+                rd.MatId = Convert.ToInt32(MatLookUpEdit.EditValue);
+                _db.SaveChanges();
+                GetRecDetail();
+            }
+        }
+
+        private void simpleButton11_Click(object sender, EventArgs e)
+        {
+         //   xtraTabControl1.SelectedTabPageIndex = 1;
+
+            DirTreeList.FocusedNode = DirTreeList.GetNodeList().FirstOrDefault(w => Convert.ToInt32(w.GetValue("Id")) == 0);
+        }
+
+        private void frmMatRecipe_Shown(object sender, EventArgs e)
+        {
+            if (_mr.RType == 1)
+            {
+                Text = "Властивості рецепту: " + MatRecLookUpEdit.Text;
+                labelControl11.Visible = false;
+                calcEdit1.Visible = false;
+                gridColumn1.Visible = false;
+            }
+            if (_mr.RType == 2)
+            {
+                Text = "Властивості обвалки: " + MatRecLookUpEdit.Text;
+            }
+
+            var isDoc = _db.WayBillMake.Any(a => a.RecId == _mr.RecId);
+            MatRecLookUpEdit.Enabled = !isDoc;
+            simpleButton2.Enabled = !isDoc;
+        }
+
+        private void OkButton_Click(object sender, EventArgs e)
+        {
+
+            _db.SaveChanges();
+            current_transaction.Commit();
         }
 
     }
