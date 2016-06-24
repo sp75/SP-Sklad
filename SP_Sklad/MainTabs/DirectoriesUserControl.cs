@@ -21,7 +21,7 @@ namespace SP_Sklad.MainTabs
         public bool isMatList { get; set; }
         public List<CustomMatList> custom_mat_list { get; set; }
         public WaybillList wb { get; set; }
-        public Object resut { get; set; }
+     //   public Object resut { get; set; }
         private int _archived { get; set; }
 
         public DirectoriesUserControl()
@@ -73,12 +73,11 @@ namespace SP_Sklad.MainTabs
                     //  KAgent->ParamByName("WDATE")->Value = frmMain->WorkDateEdit->Date;
                     var ka = DB.SkladBase().KagentList.Where(w => w.Archived == _archived || w.Archived == null);
                     if (focused_tree_node.Id != 10) ka = ka.Where(w => w.KType == focused_tree_node.GrpId);
-                    KaGridControl.DataSource = ka.ToList();
+                    KAgentDS.DataSource = ka.ToList();
                     break;
 
                 case 2:
-                    MatGridControl.DataSource = null;
-                    MatGridControl.DataSource = DB.SkladBase().GetMatList(focused_tree_node.Id == 6 ? -1 : focused_tree_node.GrpId, 0, 0, 0);
+                    MatListDS.DataSource = DB.SkladBase().GetMatList(focused_tree_node.Id == 6 ? -1 : focused_tree_node.GrpId, 0, 0, 0);
                     break;
 
                 /*     case 3: Services->Open();
@@ -98,7 +97,7 @@ namespace SP_Sklad.MainTabs
                         //      case 64: cxGridLevel6->GridView = CashdesksGrid; break;
                         //      case 3: cxGridLevel6->GridView = CurrencyGrid; break;
                         case 53:
-                            MatRecipeGridControl.DataSource = db.MatRecipe.Where(w => w.RType == 1).Select(s => new
+                            MatRecipeDS.DataSource = db.MatRecipe.Where(w => w.RType == 1).Select(s => new
                             {
                                 s.RecId,
                                 MatName = s.Materials.Name,
@@ -111,7 +110,7 @@ namespace SP_Sklad.MainTabs
                             
                             extDirTabControl.SelectedTabPageIndex = 0; break;
                         case 42:
-                            MatRecipeGridControl.DataSource = db.MatRecipe.Where(w => w.RType == 2).Select(s => new
+                            MatRecipeDS.DataSource = db.MatRecipe.Where(w => w.RType == 2).Select(s => new
                             {
                                 s.RecId,
                                 MatName = s.Materials.Name,
@@ -165,29 +164,22 @@ namespace SP_Sklad.MainTabs
 
         private void MatGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            resut = MatGridView.GetFocusedRow();
+            //resut = MatGridView.GetFocusedRow();
         }
 
         private void EditItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            DialogResult result = DialogResult.Cancel;
             switch (focused_tree_node.GType)
             {
                 case 1:
-                    var ka = resut as KagentList;
-                    if (new frmKAgentEdit(null, ka.KaId).ShowDialog() == DialogResult.OK)
-                    {
-                        RefrechItemBtn.PerformClick();
-                    }
-
-                    KaGridView.RefreshData();
+                    var ka = KaGridView.GetFocusedRow() as KagentList;
+                    result = new frmKAgentEdit(null, ka.KaId).ShowDialog();
                     break;
 
                 case 2:
-                    var r = resut as GetMatList_Result;
-                    if (new frmMaterialEdit(r.MatId).ShowDialog() == DialogResult.OK)
-                    {
-                        RefrechItemBtn.PerformClick();
-                    }
+                    var r = MatGridView.GetFocusedRow() as GetMatList_Result;
+                    result = new frmMaterialEdit(r.MatId).ShowDialog();
                     break;
 
                 /*     case 3: frmServicesEdit = new TfrmServicesEdit(Application);
@@ -277,8 +269,8 @@ namespace SP_Sklad.MainTabs
                         case 42:
                         case 53:
                             dynamic r_item = MatRecipeGridView.GetFocusedRow();
-                            new frmMatRecipe(null, r_item.RecId).ShowDialog();
-                            //      SkladData->MatRecipe->FullRefresh();
+                            result = new frmMatRecipe(null, r_item.RecId).ShowDialog();
+
                             break;
 
                         /*   case 112: frmTechProcessEdit = new TfrmTechProcessEdit(Application);
@@ -292,6 +284,11 @@ namespace SP_Sklad.MainTabs
                     }
                     break;
 
+            }
+
+            if (result == DialogResult.OK)
+            {
+                RefrechItemBtn.PerformClick();
             }
         }
 
@@ -420,7 +417,7 @@ namespace SP_Sklad.MainTabs
                       switch (focused_tree_node.GType)
                       {
                           case 1:
-                              var ka = resut as KagentList;
+                              var ka = KaGridView.GetFocusedRow() as KagentList;
 
                               var item = db.Kagent.Find(ka.KaId);
                               if (item != null)
@@ -431,7 +428,7 @@ namespace SP_Sklad.MainTabs
                               break;
 
                           case 2:
-                              var r = resut as GetMatList_Result;
+                              var r = MatGridView.GetFocusedRow() as GetMatList_Result;
 
                               var mat = db.Materials.Find(r.MatId);
                               if (mat != null)
@@ -473,7 +470,7 @@ namespace SP_Sklad.MainTabs
 
         private void KaGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            resut = KaGridView.GetFocusedRow();
+            ;
         }
 
         private void KaGridView_DoubleClick(object sender, EventArgs e)

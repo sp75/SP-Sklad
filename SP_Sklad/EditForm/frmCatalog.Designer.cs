@@ -74,7 +74,6 @@
             this.uc.isMatList = false;
             this.uc.Location = new System.Drawing.Point(0, 0);
             this.uc.Name = "uc";
-            this.uc.resut = null;
             this.uc.Size = new System.Drawing.Size(935, 624);
             this.uc.TabIndex = 16;
             this.uc.wb = null;

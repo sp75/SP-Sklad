@@ -155,7 +155,7 @@ namespace SP_Sklad.Common
                         f.Text = "Товари";
                         if (f.ShowDialog() == DialogResult.OK)
                         {
-                            old_id = (f.uc.resut as GetMatList_Result).MatId;
+                            old_id = (f.uc.MatGridView.GetFocusedRow() as GetMatList_Result).MatId;
                         }
                     }
                     break;

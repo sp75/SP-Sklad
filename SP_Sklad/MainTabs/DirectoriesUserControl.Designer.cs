@@ -77,6 +77,7 @@
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.KaGridControl = new DevExpress.XtraGrid.GridControl();
+            this.KAgentDS = new System.Windows.Forms.BindingSource(this.components);
             this.KaGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -119,6 +120,7 @@
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl3 = new DevExpress.XtraEditors.SplitContainerControl();
             this.MatGridControl = new DevExpress.XtraGrid.GridControl();
+            this.MatListDS = new System.Windows.Forms.BindingSource(this.components);
             this.MatGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -179,6 +181,7 @@
             this.extDirTabControl = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage19 = new DevExpress.XtraTab.XtraTabPage();
             this.MatRecipeGridControl = new DevExpress.XtraGrid.GridControl();
+            this.MatRecipeDS = new System.Windows.Forms.BindingSource(this.components);
             this.MatRecipeGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -206,6 +209,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
             this.splitContainerControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.KaGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KAgentDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KaGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).BeginInit();
             this.xtraTabControl2.SuspendLayout();
@@ -221,6 +225,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl3)).BeginInit();
             this.splitContainerControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MatGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatListDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
@@ -244,6 +249,7 @@
             this.extDirTabControl.SuspendLayout();
             this.xtraTabPage19.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatRecipeDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplorerPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).BeginInit();
@@ -775,6 +781,7 @@
             // 
             // KaGridControl
             // 
+            this.KaGridControl.DataSource = this.KAgentDS;
             this.KaGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.KaGridControl.Location = new System.Drawing.Point(0, 0);
             this.KaGridControl.MainView = this.KaGridView;
@@ -783,6 +790,10 @@
             this.KaGridControl.TabIndex = 0;
             this.KaGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.KaGridView});
+            // 
+            // KAgentDS
+            // 
+            this.KAgentDS.DataSource = typeof(SP_Sklad.SkladData.KagentList);
             // 
             // KaGridView
             // 
@@ -800,6 +811,7 @@
             this.KaGridView.OptionsBehavior.ReadOnly = true;
             this.KaGridView.OptionsView.EnableAppearanceEvenRow = true;
             this.KaGridView.OptionsView.EnableAppearanceOddRow = true;
+            this.KaGridView.OptionsView.ShowFooter = true;
             this.KaGridView.OptionsView.ShowGroupPanel = false;
             this.KaGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.KaGridView_PopupMenuShowing);
             this.KaGridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.KaGridView_FocusedRowChanged);
@@ -843,6 +855,8 @@
             this.gridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn5.FieldName = "Saldo";
             this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Saldo", "Всього: {0:0.00}")});
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 3;
             this.gridColumn5.Width = 100;
@@ -1165,6 +1179,7 @@
             // 
             // MatGridControl
             // 
+            this.MatGridControl.DataSource = this.MatListDS;
             this.MatGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MatGridControl.Location = new System.Drawing.Point(0, 0);
             this.MatGridControl.MainView = this.MatGridView;
@@ -1174,6 +1189,10 @@
             this.MatGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.MatGridView,
             this.gridView4});
+            // 
+            // MatListDS
+            // 
+            this.MatListDS.DataSource = typeof(SP_Sklad.SkladData.GetMatList_Result);
             // 
             // MatGridView
             // 
@@ -1699,6 +1718,7 @@
             // 
             // MatRecipeGridControl
             // 
+            this.MatRecipeGridControl.DataSource = this.MatRecipeDS;
             this.MatRecipeGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MatRecipeGridControl.Location = new System.Drawing.Point(0, 0);
             this.MatRecipeGridControl.MainView = this.MatRecipeGridView;
@@ -1862,6 +1882,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
             this.splitContainerControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.KaGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KAgentDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KaGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).EndInit();
             this.xtraTabControl2.ResumeLayout(false);
@@ -1877,6 +1898,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl3)).EndInit();
             this.splitContainerControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MatGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatListDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
@@ -1900,6 +1922,7 @@
             this.extDirTabControl.ResumeLayout(false);
             this.xtraTabPage19.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatRecipeDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplorerPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).EndInit();
@@ -1979,7 +2002,6 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage10;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl3;
         private DevExpress.XtraGrid.GridControl MatGridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView MatGridView;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn24;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn25;
@@ -2070,5 +2092,9 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
         private DevExpress.XtraBars.PopupMenu KAgentPopupMenu;
+        private System.Windows.Forms.BindingSource KAgentDS;
+        private System.Windows.Forms.BindingSource MatListDS;
+        public DevExpress.XtraGrid.Views.Grid.GridView MatGridView;
+        private System.Windows.Forms.BindingSource MatRecipeDS;
     }
 }
