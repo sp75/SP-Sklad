@@ -18,7 +18,7 @@ namespace SP_Sklad.SkladData
         public int LangId { get; set; }
         public string Name { get; set; }
     
-        public virtual LANGUAGES LANGUAGES { get; set; }
         public virtual UserTreeView UserTreeView { get; set; }
+        public virtual Languages Languages { get; set; }
     }
 }

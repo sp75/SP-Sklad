@@ -17,7 +17,6 @@
         <EntityTypeShape EntityType="BaseModel.DISCCARDS" Width="1.5" PointX="3" PointY="36.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.ENTPARAMS" Width="1.5" PointX="2.75" PointY="12.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.FUNCTIONS" Width="1.5" PointX="5" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.LANGUAGES" Width="1.5" PointX="7.25" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.MATCHANGE" Width="1.5" PointX="11.25" PointY="20" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.MATGROUPPRICES" Width="1.5" PointX="12" PointY="30.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.MATPRICES" Width="1.5" PointX="14.25" PointY="29.25" IsExpanded="true" />
@@ -26,9 +25,6 @@
         <EntityTypeShape EntityType="BaseModel.PAYDOCTYPE" Width="1.5" PointX="11.75" PointY="10.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.PRICELIST" Width="1.5" PointX="12" PointY="25.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.PRICELISTDET" Width="1.5" PointX="14.25" PointY="25.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.PRINTLOG" Width="1.5" PointX="6.75" PointY="63.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.REPLNG" Width="1.5" PointX="9.5" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.REPORTS" Width="1.5" PointX="7.25" PointY="8.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.SERIALS" Width="1.5" PointX="13.25" PointY="62.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.SERVICES" Width="1.5" PointX="17" PointY="54.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.SVCGROUP" Width="1.5" PointX="14.75" PointY="55.125" IsExpanded="true" />
@@ -42,10 +38,8 @@
         <AssociationConnector Association="BaseModel.FK_CONTRRESULTS_CONTRACTS" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_DISCCARDS_GRPID" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK__FUNCTIONS__TABID__123EB7A3" ManuallyRouted="false" />
-        <AssociationConnector Association="BaseModel.FK_REPLNG_LANGID" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK__OPERLOG__TABID__0D44F85C" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_PRICELISTDET_PRICELIST" ManuallyRouted="false" />
-        <AssociationConnector Association="BaseModel.FK_REPLNG_REPID" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_SERVICES_1" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_WBS_SVCID" ManuallyRouted="false" />
         <EntityTypeShape EntityType="BaseModel.WaybillList" Width="1.5" PointX="5.9715476436407986" PointY="24.577040057898053" />
@@ -74,7 +68,6 @@
         <EntityTypeShape EntityType="BaseModel.ChargeType" Width="1.5" PointX="0.75" PointY="0.875" />
         <AssociationConnector Association="BaseModel.FK__PAYDOC__CTYPEID__2334397B" />
         <EntityTypeShape EntityType="BaseModel.Users" Width="1.5" PointX="0.75" PointY="37.125" />
-        <AssociationConnector Association="BaseModel.FK_PRINTLOG_2" />
         <AssociationConnector Association="BaseModel.FK_Kagent_Users" />
         <EntityTypeShape EntityType="BaseModel.Currency" Width="1.5" PointX="7.6469049209947251" PointY="22.547881896862705" />
         <AssociationConnector Association="BaseModel.FK_CONTRACT_REFERENCE_CURRENCY" />
@@ -119,7 +112,6 @@
         <EntityTypeShape EntityType="BaseModel.UserTreeAccess" Width="1.5" PointX="4.6641136708967919" PointY="18.021311023282497" />
         <AssociationConnector Association="BaseModel.FK_USERACCE_FK_USERAC_FUNCTION" />
         <AssociationConnector Association="BaseModel.FK_USERTREE_FK_USERTR_FUNCTION" />
-        <AssociationConnector Association="BaseModel.FK__VIEWLNG__LANGID__2116E6DF" />
         <AssociationConnector Association="BaseModel.FK_USERACCESS_1" />
         <AssociationConnector Association="BaseModel.FK__VIEWLNG__ID__2022C2A6" />
         <EntityTypeShape EntityType="BaseModel.Docs" Width="1.5" PointX="3.6391401289213166" PointY="28.895820139393127" />
@@ -229,6 +221,14 @@
         <EntityTypeShape EntityType="BaseModel.MatRecDet" Width="1.5" PointX="4.3067367618469223" PointY="20.215099657054573" />
         <AssociationConnector Association="BaseModel.FK_MatRecDet_Materials" />
         <AssociationConnector Association="BaseModel.FK_MATRECDET_MATRECIPE" />
+        <EntityTypeShape EntityType="BaseModel.PrintLog" Width="1.5" PointX="10.66962207605579" PointY="22.529456059694969" />
+        <EntityTypeShape EntityType="BaseModel.RepLng" Width="1.5" PointX="2.3086893662385126" PointY="18.085164898114822" />
+        <EntityTypeShape EntityType="BaseModel.Reports" Width="1.5" PointX="8.71207327056307" PointY="27.544989703011229" />
+        <AssociationConnector Association="BaseModel.FK_PRINTLOG_2" />
+        <AssociationConnector Association="BaseModel.FK_REPLNG_REPID" />
+        <EntityTypeShape EntityType="BaseModel.Languages" Width="1.5" PointX="1.2324879286962038" PointY="4.7686780266317905" />
+        <AssociationConnector Association="BaseModel.FK__VIEWLNG__LANGID__2116E6DF" />
+        <AssociationConnector Association="BaseModel.FK_REPLNG_LANGID" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="7.0245045325832924" PointY="12.641712000892364" />

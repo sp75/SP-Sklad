@@ -12,14 +12,20 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class PrintLog
+    public partial class Languages1
     {
-        public int PlId { get; set; }
-        public Nullable<int> RepId { get; set; }
-        public Nullable<int> UserId { get; set; }
-        public Nullable<System.DateTime> OnDate { get; set; }
-        public Nullable<int> PrintType { get; set; }
+        public Languages1()
+        {
+            this.ViewLng = new HashSet<ViewLng>();
+            this.RepLng = new HashSet<RepLng>();
+        }
     
-        public virtual Users Users { get; set; }
+        public int LangId { get; set; }
+        public string ShortName { get; set; }
+        public string Name { get; set; }
+        public Nullable<int> Flags { get; set; }
+    
+        public virtual ICollection<ViewLng> ViewLng { get; set; }
+        public virtual ICollection<RepLng> RepLng { get; set; }
     }
 }

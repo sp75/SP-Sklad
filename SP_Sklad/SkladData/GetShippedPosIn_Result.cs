@@ -24,5 +24,6 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> Price { get; set; }
         public Nullable<decimal> ReturnAmount { get; set; }
         public Nullable<decimal> Remain { get; set; }
+        public string DocInfo { get; set; }
     }
 }

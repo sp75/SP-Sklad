@@ -12,18 +12,18 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class REPORTS
+    public partial class Reports
     {
-        public REPORTS()
+        public Reports()
         {
-            this.REPLNG = new HashSet<REPLNG>();
+            this.RepLng = new HashSet<RepLng>();
         }
     
-        public int REPID { get; set; }
-        public int GRPID { get; set; }
-        public int FIL { get; set; }
-        public Nullable<int> NUM { get; set; }
+        public int RepId { get; set; }
+        public int GrpId { get; set; }
+        public int Fil { get; set; }
+        public Nullable<int> Num { get; set; }
     
-        public virtual ICollection<REPLNG> REPLNG { get; set; }
+        public virtual ICollection<RepLng> RepLng { get; set; }
     }
 }

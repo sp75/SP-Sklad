@@ -40,7 +40,6 @@ namespace SP_Sklad.SkladData
         public DbSet<DISCCARDS> DISCCARDS { get; set; }
         public DbSet<ENTPARAMS> ENTPARAMS { get; set; }
         public DbSet<FUNCTIONS> FUNCTIONS { get; set; }
-        public DbSet<LANGUAGES> LANGUAGES { get; set; }
         public DbSet<MATCHANGE> MATCHANGE { get; set; }
         public DbSet<MATGROUPPRICES> MATGROUPPRICES { get; set; }
         public DbSet<MATPRICES> MATPRICES { get; set; }
@@ -49,9 +48,6 @@ namespace SP_Sklad.SkladData
         public DbSet<PAYDOCTYPE> PAYDOCTYPE { get; set; }
         public DbSet<PRICELIST> PRICELIST { get; set; }
         public DbSet<PRICELISTDET> PRICELISTDET { get; set; }
-        public DbSet<PRINTLOG> PRINTLOG { get; set; }
-        public DbSet<REPLNG> REPLNG { get; set; }
-        public DbSet<REPORTS> REPORTS { get; set; }
         public DbSet<SERIALS> SERIALS { get; set; }
         public DbSet<SERVICES> SERVICES { get; set; }
         public DbSet<SVCGROUP> SVCGROUP { get; set; }
@@ -119,6 +115,10 @@ namespace SP_Sklad.SkladData
         public DbSet<KAMatGroupDiscount> KAMatGroupDiscount { get; set; }
         public DbSet<KAgentDoc> KAgentDoc { get; set; }
         public DbSet<MatRecDet> MatRecDet { get; set; }
+        public DbSet<PrintLog> PrintLog { get; set; }
+        public DbSet<RepLng> RepLng { get; set; }
+        public DbSet<Reports> Reports { get; set; }
+        public DbSet<Languages> Languages { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)
@@ -935,15 +935,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPosOut_Result>("GetPosOut", from_dateParameter, to_dateParameter, mat_idParameter, ka_idParameter, w_typeParameter);
         }
     
-        public virtual ObjectResult<GetShippedPosIn_Result> GetShippedPosIn(Nullable<int> pos_id)
-        {
-            var pos_idParameter = pos_id.HasValue ?
-                new ObjectParameter("pos_id", pos_id) :
-                new ObjectParameter("pos_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetShippedPosIn_Result>("GetShippedPosIn", pos_idParameter);
-        }
-    
         public virtual ObjectResult<GetOrderedInSuppliers_Result> GetOrderedInSuppliers(Nullable<int> wbill_id)
         {
             var wbill_idParameter = wbill_id.HasValue ?
@@ -1306,6 +1297,53 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("wh", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatMove_Result>("[BaseEntities].[GetMatMove](@mat_id, @from_date, @to_date, @wid, @ka_id, @w_type, @wh)", mat_idParameter, from_dateParameter, to_dateParameter, widParameter, ka_idParameter, w_typeParameter, whParameter);
+        }
+    
+        public virtual ObjectResult<GetReportTree_Result> GetReportTree(Nullable<int> user_id)
+        {
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetReportTree_Result>("GetReportTree", user_idParameter);
+        }
+    
+        public virtual ObjectResult<REP_1_Result> REP_1(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> grp_id, Nullable<int> ka_id, string wh, string doc_types)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var grp_idParameter = grp_id.HasValue ?
+                new ObjectParameter("grp_id", grp_id) :
+                new ObjectParameter("grp_id", typeof(int));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var whParameter = wh != null ?
+                new ObjectParameter("wh", wh) :
+                new ObjectParameter("wh", typeof(string));
+    
+            var doc_typesParameter = doc_types != null ?
+                new ObjectParameter("doc_types", doc_types) :
+                new ObjectParameter("doc_types", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<REP_1_Result>("REP_1", from_dateParameter, to_dateParameter, grp_idParameter, ka_idParameter, whParameter, doc_typesParameter);
+        }
+    
+        public virtual ObjectResult<GetShippedPosIn_Result> GetShippedPosIn(Nullable<int> pos_id)
+        {
+            var pos_idParameter = pos_id.HasValue ?
+                new ObjectParameter("pos_id", pos_id) :
+                new ObjectParameter("pos_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetShippedPosIn_Result>("GetShippedPosIn", pos_idParameter);
         }
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SP_Sklad.SkladData;
+using EntityState = System.Data.Entity.EntityState;
 
 namespace SP_Sklad.WBDetForm
 {
@@ -172,7 +173,11 @@ namespace SP_Sklad.WBDetForm
         {
             if (e.Button.Index == 1)
             {
-                ;
+                var f = new frmOutParty();
+                f.Text = "Вхідні партії: " +  MatComboBox.Text + ", Контрагент: " ; //OrderedOutListKANAME->AsString
+              //  frmOutParty->ToDateEdit->Date = frmWBReturnIn->OnDateDBEdit->EditValue;
+                f.OutPartyGridControl.DataSource = ordered_in_list;
+                f.ShowDialog();
             }
         }
 
@@ -183,7 +188,10 @@ namespace SP_Sklad.WBDetForm
 
         private void frmWBReturnDetIn_FormClosed(object sender, FormClosedEventArgs e)
         {
-            _db.Entry<WaybillDet>(_wbd).Reload();
+            if (_db.Entry<WaybillDet>(_wbd).State == EntityState.Modified)
+            {
+                _db.Entry<WaybillDet>(_wbd).Reload();
+            }
         }
 
         private void frmWBReturnDetIn_Shown(object sender, EventArgs e)

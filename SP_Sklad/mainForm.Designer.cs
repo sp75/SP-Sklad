@@ -41,6 +41,7 @@
             this.barSubItem2 = new DevExpress.XtraBars.BarSubItem();
             this.CurDateEditBarItem = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemDateEdit = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -56,6 +57,7 @@
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
             this.directoriesUserControl1 = new SP_Sklad.MainTabs.DirectoriesUserControl();
             this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
+            this.reportUserControl1 = new SP_Sklad.MainTabs.ReportUserControl();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.whUserControl = new SP_Sklad.MainTabs.WarehouseUserControl();
@@ -64,7 +66,7 @@
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.docsUserControl1 = new SP_Sklad.MainTabs.DocsUserControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.sharedImageCollection1 = new DevExpress.Utils.SharedImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit.CalendarTimeProperties)).BeginInit();
@@ -73,11 +75,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).BeginInit();
             this.gridSplitContainer1.SuspendLayout();
             this.xtraTabPage6.SuspendLayout();
+            this.xtraTabPage5.SuspendLayout();
             this.xtraTabPage3.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).BeginInit();
             this.SuspendLayout();
             // 
             // UserTreeImgList
@@ -254,6 +259,13 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemDateEdit.Name = "repositoryItemDateEdit";
             // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "barButtonItem3";
+            this.barButtonItem3.Id = 7;
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
+            // 
             // bar3
             // 
             this.bar3.BarName = "Status bar";
@@ -354,20 +366,32 @@
             // 
             // directoriesUserControl1
             // 
+            this.directoriesUserControl1.custom_mat_list = null;
             this.directoriesUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.directoriesUserControl1.isDirectList = false;
+            this.directoriesUserControl1.isMatList = false;
             this.directoriesUserControl1.Location = new System.Drawing.Point(0, 0);
             this.directoriesUserControl1.Name = "directoriesUserControl1";
             this.directoriesUserControl1.Size = new System.Drawing.Size(1182, 578);
             this.directoriesUserControl1.TabIndex = 0;
+            this.directoriesUserControl1.wb = null;
             // 
             // xtraTabPage5
             // 
+            this.xtraTabPage5.Controls.Add(this.reportUserControl1);
             this.xtraTabPage5.Image = global::SP_Sklad.Properties.Resources.company;
             this.xtraTabPage5.Name = "xtraTabPage5";
             this.xtraTabPage5.Size = new System.Drawing.Size(1182, 578);
             this.xtraTabPage5.TabPageWidth = 100;
             this.xtraTabPage5.Text = "Звіти";
+            // 
+            // reportUserControl1
+            // 
+            this.reportUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reportUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.reportUserControl1.Name = "reportUserControl1";
+            this.reportUserControl1.Size = new System.Drawing.Size(1182, 578);
+            this.reportUserControl1.TabIndex = 0;
             // 
             // xtraTabPage4
             // 
@@ -388,11 +412,16 @@
             // 
             // whUserControl
             // 
+            this.whUserControl.custom_mat_list = null;
             this.whUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.whUserControl.isDirectList = false;
+            this.whUserControl.isMatList = false;
             this.whUserControl.Location = new System.Drawing.Point(0, 0);
             this.whUserControl.Name = "whUserControl";
+            this.whUserControl.resut = null;
             this.whUserControl.Size = new System.Drawing.Size(1182, 578);
             this.whUserControl.TabIndex = 0;
+            this.whUserControl.wb = null;
             // 
             // xtraTabPage2
             // 
@@ -445,12 +474,22 @@
             this.xtraTabPage6,
             this.xtraTabPage7});
             // 
-            // barButtonItem3
+            // sharedImageCollection1
             // 
-            this.barButtonItem3.Caption = "barButtonItem3";
-            this.barButtonItem3.Id = 7;
-            this.barButtonItem3.Name = "barButtonItem3";
-            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
+            // 
+            // 
+            // 
+            this.sharedImageCollection1.ImageSource.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("sharedImageCollection1.ImageSource.ImageStream")));
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(0, "_нформац_я про товар.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(1, "Рух товар_в.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(2, "_нформац_я про резерв товару.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(3, "Аналоги.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(4, "Заказ поставщикам.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(5, "view_settings.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(6, "Наявн_сть на сладах.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(7, "Парт_ї.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(8, "Склади.bmp");
+            this.sharedImageCollection1.ParentControl = this;
             // 
             // mainForm
             // 
@@ -474,11 +513,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).EndInit();
             this.gridSplitContainer1.ResumeLayout(false);
             this.xtraTabPage6.ResumeLayout(false);
+            this.xtraTabPage5.ResumeLayout(false);
             this.xtraTabPage3.ResumeLayout(false);
             this.xtraTabPage2.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -521,6 +563,8 @@
         private MainTabs.ManufacturingUserControl manufacturingUserControl1;
         private MainTabs.DirectoriesUserControl directoriesUserControl1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private MainTabs.ReportUserControl reportUserControl1;
+        private DevExpress.Utils.SharedImageCollection sharedImageCollection1;
     }
 }
 

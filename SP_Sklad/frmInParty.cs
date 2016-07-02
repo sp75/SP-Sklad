@@ -17,17 +17,17 @@ namespace SP_Sklad
         {
             InitializeComponent();
 
-            WaybillDetOutGridControl.DataSource = pos_in;
+            InPartyGridControl.DataSource = pos_in;
         }
 
         private void frmInParty_Load(object sender, EventArgs e)
         {
-            WaybillDetOutGridView.ExpandAllGroups();
+            InPartyGridView.ExpandAllGroups();
         }
 
         private void WaybillDetOutGridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-            var dr = WaybillDetOutGridView.GetRow(e.RowHandle) as GetPosIn_Result;
+            var dr = InPartyGridView.GetRow(e.RowHandle) as GetPosIn_Result;
             if (dr == null)
             {
                 return;
@@ -44,7 +44,7 @@ namespace SP_Sklad
                 dr.GetAll = 0;
             }
 
-            WaybillDetOutGridView.RefreshRow(e.RowHandle);
+            InPartyGridView.RefreshRow(e.RowHandle);
         }
     }
 }

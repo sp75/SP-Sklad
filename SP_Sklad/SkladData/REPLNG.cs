@@ -12,14 +12,14 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class REPLNG
+    public partial class RepLng
     {
-        public int REPID { get; set; }
-        public int LANGID { get; set; }
-        public string NAME { get; set; }
-        public string NOTES { get; set; }
+        public int RepId { get; set; }
+        public int LangId { get; set; }
+        public string Name { get; set; }
+        public string Notes { get; set; }
     
-        public virtual LANGUAGES LANGUAGES { get; set; }
-        public virtual REPORTS REPORTS { get; set; }
+        public virtual Reports Reports { get; set; }
+        public virtual Languages Languages { get; set; }
     }
 }

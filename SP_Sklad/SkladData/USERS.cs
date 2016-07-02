@@ -16,10 +16,10 @@ namespace SP_Sklad.SkladData
     {
         public Users()
         {
-            this.PRINTLOG = new HashSet<PRINTLOG>();
             this.Kagent = new HashSet<Kagent>();
             this.UserAccess = new HashSet<UserAccess>();
             this.UserAccessWh = new HashSet<UserAccessWh>();
+            this.PrintLog = new HashSet<PrintLog>();
         }
     
         public int UserId { get; set; }
@@ -31,9 +31,9 @@ namespace SP_Sklad.SkladData
         public Nullable<int> ShowPrice { get; set; }
         public Nullable<int> EnableEditDate { get; set; }
     
-        public virtual ICollection<PRINTLOG> PRINTLOG { get; set; }
         public virtual ICollection<Kagent> Kagent { get; set; }
         public virtual ICollection<UserAccess> UserAccess { get; set; }
         public virtual ICollection<UserAccessWh> UserAccessWh { get; set; }
+        public virtual ICollection<PrintLog> PrintLog { get; set; }
     }
 }

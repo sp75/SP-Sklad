@@ -47,6 +47,7 @@
     <Reference Include="DevExpress.XtraEditors.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraGrid.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraNavBar.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraRichEdit.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -138,6 +139,18 @@
     <Compile Include="frmKABalans.Designer.cs">
       <DependentUpon>frmKABalans.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmOutParty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOutParty.Designer.cs">
+      <DependentUpon>frmOutParty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReport.Designer.cs">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainTabs\DirectoriesUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -162,6 +175,12 @@
     <Compile Include="MainTabs\PayDocUserControl.Designer.cs">
       <DependentUpon>PayDocUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainTabs\ReportUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainTabs\ReportUserControl.Designer.cs">
+      <DependentUpon>ReportUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainTabs\WarehouseUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -175,6 +194,7 @@
       <DependentUpon>frmMatTurn.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\PrintDoc.cs" />
+    <Compile Include="Reports\PrintReport.cs" />
     <Compile Include="Reports\ReportBuilder.cs" />
     <Compile Include="Reports\TemlateList.cs" />
     <Compile Include="SkladData\ACCOUNTTYPE.cs">
@@ -328,6 +348,9 @@
     <Compile Include="SkladData\GetRelDocList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetReportTree_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetShippedPosIn_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -382,7 +405,7 @@
     <Compile Include="SkladData\KAMatGroupDiscount.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\LANGUAGES.cs">
+    <Compile Include="SkladData\Languages.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\MATCHANGE.cs">
@@ -446,13 +469,16 @@
     <Compile Include="SkladData\PriceTypes.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\PRINTLOG.cs">
+    <Compile Include="SkladData\PrintLog.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\REPLNG.cs">
+    <Compile Include="SkladData\RepLng.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\REPORTS.cs">
+    <Compile Include="SkladData\Reports.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\REP_1_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\ReservedAllPosition_Result.cs">
@@ -728,6 +754,12 @@
     <EmbeddedResource Include="frmKABalans.resx">
       <DependentUpon>frmKABalans.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmOutParty.resx">
+      <DependentUpon>frmOutParty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReport.resx">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="mainForm.resx">
       <DependentUpon>mainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -742,6 +774,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainTabs\PayDocUserControl.resx">
       <DependentUpon>PayDocUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainTabs\ReportUserControl.resx">
+      <DependentUpon>ReportUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainTabs\WarehouseUserControl.resx">
       <DependentUpon>WarehouseUserControl.cs</DependentUpon>

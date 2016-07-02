@@ -54,7 +54,7 @@
           <EntitySet Name="KAKInd" EntityType="BaseModel.Store.KAKInd" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="KAMatDiscount" EntityType="BaseModel.Store.KAMatDiscount" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="KAMatGroupDiscount" EntityType="BaseModel.Store.KAMatGroupDiscount" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="LANGUAGES" EntityType="BaseModel.Store.LANGUAGES" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Languages" EntityType="BaseModel.Store.Languages" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MATCHANGE" EntityType="BaseModel.Store.MATCHANGE" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Materials" EntityType="BaseModel.Store.Materials" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MatGroup" EntityType="BaseModel.Store.MatGroup" store:Type="Tables" Schema="dbo" />
@@ -106,16 +106,16 @@
           <EntitySet Name="PRICELIST" EntityType="BaseModel.Store.PRICELIST" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PRICELISTDET" EntityType="BaseModel.Store.PRICELISTDET" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PriceTypes" EntityType="BaseModel.Store.PriceTypes" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="PRINTLOG" EntityType="BaseModel.Store.PRINTLOG" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="REPLNG" EntityType="BaseModel.Store.REPLNG" store:Type="Tables" store:Schema="dbo" store:Name="REPLNG">
+          <EntitySet Name="PrintLog" EntityType="BaseModel.Store.PrintLog" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RepLng" EntityType="BaseModel.Store.RepLng" store:Type="Tables" store:Schema="dbo" store:Name="RepLng">
             <DefiningQuery>SELECT 
-      [REPLNG].[REPID] AS [REPID], 
-      [REPLNG].[LANGID] AS [LANGID], 
-      [REPLNG].[NAME] AS [NAME], 
-      [REPLNG].[NOTES] AS [NOTES]
-      FROM [dbo].[REPLNG] AS [REPLNG]</DefiningQuery>
+      [RepLng].[RepId] AS [RepId], 
+      [RepLng].[LangId] AS [LangId], 
+      [RepLng].[Name] AS [Name], 
+      [RepLng].[Notes] AS [Notes]
+      FROM [dbo].[RepLng] AS [RepLng]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="REPORTS" EntityType="BaseModel.Store.REPORTS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Reports" EntityType="BaseModel.Store.Reports" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ReturnRel" EntityType="BaseModel.Store.ReturnRel" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SERIALS" EntityType="BaseModel.Store.SERIALS" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SERVICES" EntityType="BaseModel.Store.SERVICES" store:Type="Tables" Schema="dbo" />
@@ -452,7 +452,7 @@
             <End Role="ViewLng" EntitySet="ViewLng" />
           </AssociationSet>
           <AssociationSet Name="FK__VIEWLNG__LANGID__2116E6DF" Association="BaseModel.Store.FK__VIEWLNG__LANGID__2116E6DF">
-            <End Role="LANGUAGES" EntitySet="LANGUAGES" />
+            <End Role="Languages" EntitySet="Languages" />
             <End Role="ViewLng" EntitySet="ViewLng" />
           </AssociationSet>
           <AssociationSet Name="FK__WAYBILLLI__PERSO__6E01572D" Association="BaseModel.Store.FK__WAYBILLLI__PERSO__6E01572D">
@@ -693,15 +693,15 @@
           </AssociationSet>
           <AssociationSet Name="FK_PRINTLOG_2" Association="BaseModel.Store.FK_PRINTLOG_2">
             <End Role="Users" EntitySet="Users" />
-            <End Role="PRINTLOG" EntitySet="PRINTLOG" />
+            <End Role="PrintLog" EntitySet="PrintLog" />
           </AssociationSet>
           <AssociationSet Name="FK_REPLNG_LANGID" Association="BaseModel.Store.FK_REPLNG_LANGID">
-            <End Role="LANGUAGES" EntitySet="LANGUAGES" />
-            <End Role="REPLNG" EntitySet="REPLNG" />
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="RepLng" EntitySet="RepLng" />
           </AssociationSet>
           <AssociationSet Name="FK_REPLNG_REPID" Association="BaseModel.Store.FK_REPLNG_REPID">
-            <End Role="REPORTS" EntitySet="REPORTS" />
-            <End Role="REPLNG" EntitySet="REPLNG" />
+            <End Role="Reports" EntitySet="Reports" />
+            <End Role="RepLng" EntitySet="RepLng" />
           </AssociationSet>
           <AssociationSet Name="FK_RETREL_DPOSID" Association="BaseModel.Store.FK_RETREL_DPOSID">
             <End Role="WaybillDet" EntitySet="WaybillDet" />
@@ -1317,14 +1317,14 @@
           <Property Name="GrpId" Type="int" Nullable="false" />
           <Property Name="OnValue" Type="numeric" Nullable="false" Precision="15" Scale="4" />
         </EntityType>
-        <EntityType Name="LANGUAGES">
+        <EntityType Name="Languages">
           <Key>
-            <PropertyRef Name="LANGID" />
+            <PropertyRef Name="LangId" />
           </Key>
-          <Property Name="LANGID" Type="int" Nullable="false" />
-          <Property Name="SHORTNAME" Type="varchar" Nullable="false" MaxLength="5" />
-          <Property Name="NAME" Type="varchar" MaxLength="48" />
-          <Property Name="FLAGS" Type="int" />
+          <Property Name="LangId" Type="int" Nullable="false" />
+          <Property Name="ShortName" Type="varchar" Nullable="false" MaxLength="5" />
+          <Property Name="Name" Type="varchar" MaxLength="48" />
+          <Property Name="Flags" Type="int" />
         </EntityType>
         <EntityType Name="MATCHANGE">
           <Key>
@@ -1605,38 +1605,38 @@
           <Property Name="PPTypeId" Type="int" />
           <Property Name="ExtraType" Type="int" />
         </EntityType>
-        <EntityType Name="PRINTLOG">
+        <EntityType Name="PrintLog">
           <Key>
-            <PropertyRef Name="PLID" />
+            <PropertyRef Name="PlId" />
           </Key>
-          <Property Name="PLID" Type="int" Nullable="false" />
-          <Property Name="REPID" Type="int" />
-          <Property Name="USERID" Type="int" />
-          <Property Name="ONDATE" Type="datetime" />
-          <Property Name="PRINTTYPE" Type="int" />
+          <Property Name="PlId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RepId" Type="int" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="OnDate" Type="datetime" />
+          <Property Name="PrintType" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'sp_base.dbo.REPLNG' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'sp_base.dbo.RepLng' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
-        <EntityType Name="REPLNG">
+        <EntityType Name="RepLng">
           <Key>
-            <PropertyRef Name="REPID" />
-            <PropertyRef Name="LANGID" />
-            <PropertyRef Name="NAME" />
+            <PropertyRef Name="RepId" />
+            <PropertyRef Name="LangId" />
+            <PropertyRef Name="Name" />
           </Key>
-          <Property Name="REPID" Type="int" Nullable="false" />
-          <Property Name="LANGID" Type="int" Nullable="false" />
-          <Property Name="NAME" Type="varchar" Nullable="false" MaxLength="128" />
-          <Property Name="NOTES" Type="varchar" MaxLength="1024" />
+          <Property Name="RepId" Type="int" Nullable="false" />
+          <Property Name="LangId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="128" />
+          <Property Name="Notes" Type="varchar" MaxLength="1024" />
         </EntityType>
-        <EntityType Name="REPORTS">
+        <EntityType Name="Reports">
           <Key>
-            <PropertyRef Name="REPID" />
+            <PropertyRef Name="RepId" />
           </Key>
-          <Property Name="REPID" Type="int" Nullable="false" />
-          <Property Name="GRPID" Type="int" Nullable="false" />
-          <Property Name="FIL" Type="int" Nullable="false" />
-          <Property Name="NUM" Type="int" />
+          <Property Name="RepId" Type="int" Nullable="false" />
+          <Property Name="GrpId" Type="int" Nullable="false" />
+          <Property Name="Fil" Type="int" Nullable="false" />
+          <Property Name="Num" Type="int" />
         </EntityType>
         <EntityType Name="ReturnRel">
           <Key>
@@ -2553,11 +2553,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__VIEWLNG__LANGID__2116E6DF">
-          <End Role="LANGUAGES" Type="BaseModel.Store.LANGUAGES" Multiplicity="1" />
+          <End Role="Languages" Type="BaseModel.Store.Languages" Multiplicity="1" />
           <End Role="ViewLng" Type="BaseModel.Store.ViewLng" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="LANGUAGES">
-              <PropertyRef Name="LANGID" />
+            <Principal Role="Languages">
+              <PropertyRef Name="LangId" />
             </Principal>
             <Dependent Role="ViewLng">
               <PropertyRef Name="LangId" />
@@ -3318,37 +3318,37 @@
         </Association>
         <Association Name="FK_PRINTLOG_2">
           <End Role="Users" Type="BaseModel.Store.Users" Multiplicity="0..1" />
-          <End Role="PRINTLOG" Type="BaseModel.Store.PRINTLOG" Multiplicity="*" />
+          <End Role="PrintLog" Type="BaseModel.Store.PrintLog" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
               <PropertyRef Name="UserId" />
             </Principal>
-            <Dependent Role="PRINTLOG">
-              <PropertyRef Name="USERID" />
+            <Dependent Role="PrintLog">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_REPLNG_LANGID">
-          <End Role="LANGUAGES" Type="BaseModel.Store.LANGUAGES" Multiplicity="1" />
-          <End Role="REPLNG" Type="BaseModel.Store.REPLNG" Multiplicity="*" />
+          <End Role="Languages" Type="BaseModel.Store.Languages" Multiplicity="1" />
+          <End Role="RepLng" Type="BaseModel.Store.RepLng" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="LANGUAGES">
-              <PropertyRef Name="LANGID" />
+            <Principal Role="Languages">
+              <PropertyRef Name="LangId" />
             </Principal>
-            <Dependent Role="REPLNG">
-              <PropertyRef Name="LANGID" />
+            <Dependent Role="RepLng">
+              <PropertyRef Name="LangId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_REPLNG_REPID">
-          <End Role="REPORTS" Type="BaseModel.Store.REPORTS" Multiplicity="1" />
-          <End Role="REPLNG" Type="BaseModel.Store.REPLNG" Multiplicity="*" />
+          <End Role="Reports" Type="BaseModel.Store.Reports" Multiplicity="1" />
+          <End Role="RepLng" Type="BaseModel.Store.RepLng" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="REPORTS">
-              <PropertyRef Name="REPID" />
+            <Principal Role="Reports">
+              <PropertyRef Name="RepId" />
             </Principal>
-            <Dependent Role="REPLNG">
-              <PropertyRef Name="REPID" />
+            <Dependent Role="RepLng">
+              <PropertyRef Name="RepId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -4158,6 +4158,9 @@
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="GetReportTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_id" Type="int" Mode="In" />
+        </Function>
         <Function Name="GetShippedPosIn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="pos_id" Type="int" Mode="In" />
         </Function>
@@ -4387,6 +4390,14 @@
               </RowType>
             </CollectionType>
           </ReturnType>
+        </Function>
+        <Function Name="REP_1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="from_date" Type="datetime" Mode="In" />
+          <Parameter Name="to_date" Type="datetime" Mode="In" />
+          <Parameter Name="grp_id" Type="int" Mode="In" />
+          <Parameter Name="ka_id" Type="int" Mode="In" />
+          <Parameter Name="wh" Type="varchar" Mode="In" />
+          <Parameter Name="doc_types" Type="varchar" Mode="In" />
         </Function>
         <Function Name="ReservedAllPosition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="wbill_id" Type="int" Mode="In" />
@@ -4892,7 +4903,6 @@
           <EntitySet Name="DISCCARDS" EntityType="BaseModel.DISCCARDS" />
           <EntitySet Name="ENTPARAMS" EntityType="BaseModel.ENTPARAMS" />
           <EntitySet Name="FUNCTIONS" EntityType="BaseModel.FUNCTIONS" />
-          <EntitySet Name="LANGUAGES" EntityType="BaseModel.LANGUAGES" />
           <EntitySet Name="MATCHANGE" EntityType="BaseModel.MATCHANGE" />
           <EntitySet Name="MATGROUPPRICES" EntityType="BaseModel.MATGROUPPRICES" />
           <EntitySet Name="MATPRICES" EntityType="BaseModel.MATPRICES" />
@@ -4901,9 +4911,6 @@
           <EntitySet Name="PAYDOCTYPE" EntityType="BaseModel.PAYDOCTYPE" />
           <EntitySet Name="PRICELIST" EntityType="BaseModel.PRICELIST" />
           <EntitySet Name="PRICELISTDET" EntityType="BaseModel.PRICELISTDET" />
-          <EntitySet Name="PRINTLOG" EntityType="BaseModel.PRINTLOG" />
-          <EntitySet Name="REPLNG" EntityType="BaseModel.REPLNG" />
-          <EntitySet Name="REPORTS" EntityType="BaseModel.REPORTS" />
           <EntitySet Name="SERIALS" EntityType="BaseModel.SERIALS" />
           <EntitySet Name="SERVICES" EntityType="BaseModel.SERVICES" />
           <EntitySet Name="SVCGROUP" EntityType="BaseModel.SVCGROUP" />
@@ -4935,10 +4942,6 @@
             <End Role="TABLES" EntitySet="TABLES" />
             <End Role="FUNCTIONS" EntitySet="FUNCTIONS" />
           </AssociationSet>
-          <AssociationSet Name="FK_REPLNG_LANGID" Association="BaseModel.FK_REPLNG_LANGID">
-            <End Role="LANGUAGES" EntitySet="LANGUAGES" />
-            <End Role="REPLNG" EntitySet="REPLNG" />
-          </AssociationSet>
           <AssociationSet Name="FK__OPERLOG__TABID__0D44F85C" Association="BaseModel.FK__OPERLOG__TABID__0D44F85C">
             <End Role="TABLES" EntitySet="TABLES" />
             <End Role="OPERLOG" EntitySet="OPERLOG" />
@@ -4946,10 +4949,6 @@
           <AssociationSet Name="FK_PRICELISTDET_PRICELIST" Association="BaseModel.FK_PRICELISTDET_PRICELIST">
             <End Role="PRICELIST" EntitySet="PRICELIST" />
             <End Role="PRICELISTDET" EntitySet="PRICELISTDET" />
-          </AssociationSet>
-          <AssociationSet Name="FK_REPLNG_REPID" Association="BaseModel.FK_REPLNG_REPID">
-            <End Role="REPORTS" EntitySet="REPORTS" />
-            <End Role="REPLNG" EntitySet="REPLNG" />
           </AssociationSet>
           <AssociationSet Name="FK_SERVICES_1" Association="BaseModel.FK_SERVICES_1">
             <End Role="SVCGROUP" EntitySet="SVCGROUP" />
@@ -5222,10 +5221,6 @@
             <End Role="PayDoc" EntitySet="PayDoc" />
           </AssociationSet>
           <EntitySet Name="Users" EntityType="BaseModel.Users" />
-          <AssociationSet Name="FK_PRINTLOG_2" Association="BaseModel.FK_PRINTLOG_2">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="PRINTLOG" EntitySet="PRINTLOG" />
-          </AssociationSet>
           <AssociationSet Name="FK_Kagent_Users" Association="BaseModel.FK_Kagent_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Kagent" EntitySet="Kagent" />
@@ -5352,9 +5347,6 @@
             <Parameter Name="ka_id" Mode="In" Type="Int32" />
             <Parameter Name="w_type" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="GetShippedPosIn" ReturnType="Collection(BaseModel.GetShippedPosIn_Result)">
-          <Parameter Name="pos_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <EntitySet Name="ReturnRel" EntityType="BaseModel.ReturnRel" />
           <FunctionImport Name="GetOrderedInSuppliers" ReturnType="Collection(BaseModel.GetOrderedInSuppliers_Result)">
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
@@ -5434,10 +5426,6 @@
           <AssociationSet Name="FK_USERTREE_FK_USERTR_FUNCTION" Association="BaseModel.FK_USERTREE_FK_USERTR_FUNCTION">
             <End Role="FUNCTIONS" EntitySet="FUNCTIONS" />
             <End Role="UserTreeView" EntitySet="UserTreeView" />
-          </AssociationSet>
-          <AssociationSet Name="FK__VIEWLNG__LANGID__2116E6DF" Association="BaseModel.FK__VIEWLNG__LANGID__2116E6DF">
-            <End Role="LANGUAGES" EntitySet="LANGUAGES" />
-            <End Role="ViewLng" EntitySet="ViewLng" />
           </AssociationSet>
           <AssociationSet Name="FK_USERACCESS_1" Association="BaseModel.FK_USERACCESS_1">
             <End Role="Users" EntitySet="Users" />
@@ -5866,6 +5854,40 @@
             <Parameter Name="w_type" Mode="In" Type="Int32" />
             <Parameter Name="wh" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="GetReportTree" ReturnType="Collection(BaseModel.GetReportTree_Result)">
+          <Parameter Name="user_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="PrintLog" EntityType="BaseModel.PrintLog" />
+          <EntitySet Name="RepLng" EntityType="BaseModel.RepLng" />
+          <EntitySet Name="Reports" EntityType="BaseModel.Reports" />
+          <AssociationSet Name="FK_PRINTLOG_2" Association="BaseModel.FK_PRINTLOG_2">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="PrintLog" EntitySet="PrintLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPLNG_REPID" Association="BaseModel.FK_REPLNG_REPID">
+            <End Role="Reports" EntitySet="Reports" />
+            <End Role="RepLng" EntitySet="RepLng" />
+          </AssociationSet>
+          <EntitySet Name="Languages" EntityType="BaseModel.Languages" />
+          <AssociationSet Name="FK__VIEWLNG__LANGID__2116E6DF" Association="BaseModel.FK__VIEWLNG__LANGID__2116E6DF">
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="ViewLng" EntitySet="ViewLng" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPLNG_LANGID" Association="BaseModel.FK_REPLNG_LANGID">
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="RepLng" EntitySet="RepLng" />
+          </AssociationSet>
+          <FunctionImport Name="REP_1" ReturnType="Collection(BaseModel.REP_1_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="grp_id" Mode="In" Type="Int32" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="wh" Mode="In" Type="String" />
+            <Parameter Name="doc_types" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetShippedPosIn" ReturnType="Collection(BaseModel.GetShippedPosIn_Result)">
+            <Parameter Name="pos_id" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -6187,17 +6209,6 @@
           <NavigationProperty Name="UserAccess" Relationship="BaseModel.FK_USERACCE_FK_USERAC_FUNCTION" FromRole="FUNCTIONS" ToRole="UserAccess" />
           <NavigationProperty Name="UserTreeView" Relationship="BaseModel.FK_USERTREE_FK_USERTR_FUNCTION" FromRole="FUNCTIONS" ToRole="UserTreeView" />
         </EntityType>
-        <EntityType Name="LANGUAGES">
-          <Key>
-            <PropertyRef Name="LANGID" />
-          </Key>
-          <Property Name="LANGID" Type="Int32" Nullable="false" />
-          <Property Name="SHORTNAME" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
-          <Property Name="NAME" Type="String" MaxLength="48" Unicode="false" FixedLength="false" />
-          <Property Name="FLAGS" Type="Int32" />
-          <NavigationProperty Name="REPLNG" Relationship="BaseModel.FK_REPLNG_LANGID" FromRole="LANGUAGES" ToRole="REPLNG" />
-          <NavigationProperty Name="ViewLng" Relationship="BaseModel.FK__VIEWLNG__LANGID__2116E6DF" FromRole="LANGUAGES" ToRole="ViewLng" />
-        </EntityType>
         <EntityType Name="MATCHANGE">
           <Key>
             <PropertyRef Name="MATID" />
@@ -6322,40 +6333,6 @@
           <Property Name="GRPID" Type="Int32" />
           <Property Name="PLDETTYPE" Type="Int32" />
           <NavigationProperty Name="PRICELIST" Relationship="BaseModel.FK_PRICELISTDET_PRICELIST" FromRole="PRICELISTDET" ToRole="PRICELIST" />
-        </EntityType>
-        <EntityType Name="PRINTLOG">
-          <Key>
-            <PropertyRef Name="PLID" />
-          </Key>
-          <Property Name="PLID" Type="Int32" Nullable="false" />
-          <Property Name="REPID" Type="Int32" />
-          <Property Name="USERID" Type="Int32" />
-          <Property Name="ONDATE" Type="DateTime" Precision="3" />
-          <Property Name="PRINTTYPE" Type="Int32" />
-          <NavigationProperty Name="Users" Relationship="BaseModel.FK_PRINTLOG_2" FromRole="PRINTLOG" ToRole="Users" />
-        </EntityType>
-        <EntityType Name="REPLNG">
-          <Key>
-            <PropertyRef Name="REPID" />
-            <PropertyRef Name="LANGID" />
-            <PropertyRef Name="NAME" />
-          </Key>
-          <Property Name="REPID" Type="Int32" Nullable="false" />
-          <Property Name="LANGID" Type="Int32" Nullable="false" />
-          <Property Name="NAME" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
-          <Property Name="NOTES" Type="String" MaxLength="1024" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="LANGUAGES" Relationship="BaseModel.FK_REPLNG_LANGID" FromRole="REPLNG" ToRole="LANGUAGES" />
-          <NavigationProperty Name="REPORTS" Relationship="BaseModel.FK_REPLNG_REPID" FromRole="REPLNG" ToRole="REPORTS" />
-        </EntityType>
-        <EntityType Name="REPORTS">
-          <Key>
-            <PropertyRef Name="REPID" />
-          </Key>
-          <Property Name="REPID" Type="Int32" Nullable="false" />
-          <Property Name="GRPID" Type="Int32" Nullable="false" />
-          <Property Name="FIL" Type="Int32" Nullable="false" />
-          <Property Name="NUM" Type="Int32" />
-          <NavigationProperty Name="REPLNG" Relationship="BaseModel.FK_REPLNG_REPID" FromRole="REPORTS" ToRole="REPLNG" />
         </EntityType>
         <EntityType Name="SERIALS">
           <Key>
@@ -6555,18 +6532,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_REPLNG_LANGID">
-          <End Role="LANGUAGES" Type="BaseModel.LANGUAGES" Multiplicity="1" />
-          <End Role="REPLNG" Type="BaseModel.REPLNG" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="LANGUAGES">
-              <PropertyRef Name="LANGID" />
-            </Principal>
-            <Dependent Role="REPLNG">
-              <PropertyRef Name="LANGID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__OPERLOG__TABID__0D44F85C">
           <End Role="TABLES" Type="BaseModel.TABLES" Multiplicity="0..1" />
           <End Role="OPERLOG" Type="BaseModel.OPERLOG" Multiplicity="*" />
@@ -6590,18 +6555,6 @@
             </Principal>
             <Dependent Role="PRICELISTDET">
               <PropertyRef Name="PLID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_REPLNG_REPID">
-          <End Role="REPORTS" Type="BaseModel.REPORTS" Multiplicity="1" />
-          <End Role="REPLNG" Type="BaseModel.REPLNG" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="REPORTS">
-              <PropertyRef Name="REPID" />
-            </Principal>
-            <Dependent Role="REPLNG">
-              <PropertyRef Name="REPID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7205,23 +7158,11 @@
           <Property Name="ShowBalance" Type="Int32" />
           <Property Name="ShowPrice" Type="Int32" />
           <Property Name="EnableEditDate" Type="Int32" />
-          <NavigationProperty Name="PRINTLOG" Relationship="BaseModel.FK_PRINTLOG_2" FromRole="Users" ToRole="PRINTLOG" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_Kagent_Users" FromRole="Users" ToRole="Kagent" />
           <NavigationProperty Name="UserAccess" Relationship="BaseModel.FK_USERACCESS_1" FromRole="Users" ToRole="UserAccess" />
           <NavigationProperty Name="UserAccessWh" Relationship="BaseModel.FK_UAWH_USERID" FromRole="Users" ToRole="UserAccessWh" />
+          <NavigationProperty Name="PrintLog" Relationship="BaseModel.FK_PRINTLOG_2" FromRole="Users" ToRole="PrintLog" />
         </EntityType>
-        <Association Name="FK_PRINTLOG_2">
-          <End Type="BaseModel.Users" Role="Users" Multiplicity="0..1" />
-          <End Type="BaseModel.PRINTLOG" Role="PRINTLOG" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="PRINTLOG">
-              <PropertyRef Name="USERID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Kagent_Users">
           <End Type="BaseModel.Users" Role="Users" Multiplicity="0..1" />
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="*" />
@@ -7635,19 +7576,6 @@
           <Property Type="Decimal" Name="ReturnAmount" Nullable="true" Precision="38" Scale="8" />
           <Property Type="Decimal" Name="Remain" Nullable="true" Precision="38" Scale="8" />
         </ComplexType>
-        <ComplexType Name="GetShippedPosIn_Result">
-          <Property Type="Int32" Name="PosId" Nullable="false" />
-          <Property Type="Int32" Name="WId" Nullable="false" />
-          <Property Type="Int32" Name="MatId" Nullable="false" />
-          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
-          <Property Type="Int32" Name="TurnType" Nullable="false" />
-          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="8" />
-          <Property Type="Int32" Name="SourceId" Nullable="true" />
-          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" />
-          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="ReturnAmount" Nullable="true" Precision="38" Scale="8" />
-          <Property Type="Decimal" Name="Remain" Nullable="true" Precision="38" Scale="8" />
-        </ComplexType>
         <EntityType Name="ReturnRel">
           <Key>
             <PropertyRef Name="Id" />
@@ -8014,8 +7942,8 @@
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="Int32" Name="LangId" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="LANGUAGES" Relationship="BaseModel.FK__VIEWLNG__LANGID__2116E6DF" FromRole="ViewLng" ToRole="LANGUAGES" />
           <NavigationProperty Name="UserTreeView" Relationship="BaseModel.FK__VIEWLNG__ID__2022C2A6" FromRole="ViewLng" ToRole="UserTreeView" />
+          <NavigationProperty Name="Languages" Relationship="BaseModel.FK__VIEWLNG__LANGID__2116E6DF" FromRole="ViewLng" ToRole="Languages" />
         </EntityType>
         <EntityType Name="UserTreeAccess">
           <Key>
@@ -8067,18 +7995,6 @@
             </Principal>
             <Dependent Role="UserTreeView">
               <PropertyRef Name="FunId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__VIEWLNG__LANGID__2116E6DF">
-          <End Type="BaseModel.LANGUAGES" Role="LANGUAGES" Multiplicity="1" />
-          <End Type="BaseModel.ViewLng" Role="ViewLng" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="LANGUAGES">
-              <PropertyRef Name="LANGID" />
-            </Principal>
-            <Dependent Role="ViewLng">
-              <PropertyRef Name="LangId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -9906,6 +9822,142 @@
           <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="WhName" Nullable="true" MaxLength="250" />
         </ComplexType>
+        <ComplexType Name="GetReportTree_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="FunId" Nullable="true" />
+          <Property Type="Int32" Name="PId" Nullable="false" />
+          <Property Type="Int32" Name="Num" Nullable="false" />
+          <Property Type="Int32" Name="ImageIndex" Nullable="true" />
+          <Property Type="Int32" Name="IsGroup" Nullable="false" />
+          <Property Type="Int32" Name="ShowInTree" Nullable="true" />
+          <Property Type="Int32" Name="GType" Nullable="true" />
+          <Property Type="Int32" Name="DisabledIndex" Nullable="true" />
+          <Property Type="Int32" Name="ShowExpanded" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="CanView" Nullable="true" />
+          <Property Type="Int32" Name="CanInsert" Nullable="true" />
+          <Property Type="Int32" Name="CanModify" Nullable="true" />
+          <Property Type="Int32" Name="CanDelete" Nullable="true" />
+          <Property Type="Int32" Name="CanPost" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="PrintLog">
+          <Key>
+            <PropertyRef Name="PlId" />
+          </Key>
+          <Property Type="Int32" Name="PlId" Nullable="false" />
+          <Property Type="Int32" Name="RepId" />
+          <Property Type="Int32" Name="UserId" />
+          <Property Type="DateTime" Name="OnDate" Precision="3" />
+          <Property Type="Int32" Name="PrintType" />
+          <NavigationProperty Name="Users" Relationship="BaseModel.FK_PRINTLOG_2" FromRole="PrintLog" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="RepLng">
+          <Key>
+            <PropertyRef Name="RepId" />
+            <PropertyRef Name="LangId" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Type="Int32" Name="RepId" Nullable="false" />
+          <Property Type="Int32" Name="LangId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Notes" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Reports" Relationship="BaseModel.FK_REPLNG_REPID" FromRole="RepLng" ToRole="Reports" />
+          <NavigationProperty Name="Languages" Relationship="BaseModel.FK_REPLNG_LANGID" FromRole="RepLng" ToRole="Languages" />
+        </EntityType>
+        <EntityType Name="Reports">
+          <Key>
+            <PropertyRef Name="RepId" />
+          </Key>
+          <Property Type="Int32" Name="RepId" Nullable="false" />
+          <Property Type="Int32" Name="GrpId" Nullable="false" />
+          <Property Type="Int32" Name="Fil" Nullable="false" />
+          <Property Type="Int32" Name="Num" />
+          <NavigationProperty Name="RepLng" Relationship="BaseModel.FK_REPLNG_REPID" FromRole="Reports" ToRole="RepLng" />
+        </EntityType>
+        <Association Name="FK_PRINTLOG_2">
+          <End Type="BaseModel.Users" Role="Users" Multiplicity="0..1" />
+          <End Type="BaseModel.PrintLog" Role="PrintLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="PrintLog">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REPLNG_REPID">
+          <End Type="BaseModel.Reports" Role="Reports" Multiplicity="1" />
+          <End Type="BaseModel.RepLng" Role="RepLng" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reports">
+              <PropertyRef Name="RepId" />
+            </Principal>
+            <Dependent Role="RepLng">
+              <PropertyRef Name="RepId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Languages">
+          <Key>
+            <PropertyRef Name="LangId" />
+          </Key>
+          <Property Type="Int32" Name="LangId" Nullable="false" />
+          <Property Type="String" Name="ShortName" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Name" MaxLength="48" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Flags" />
+          <NavigationProperty Name="ViewLng" Relationship="BaseModel.FK__VIEWLNG__LANGID__2116E6DF" FromRole="Languages" ToRole="ViewLng" />
+          <NavigationProperty Name="RepLng" Relationship="BaseModel.FK_REPLNG_LANGID" FromRole="Languages" ToRole="RepLng" />
+        </EntityType>
+        <Association Name="FK__VIEWLNG__LANGID__2116E6DF">
+          <End Type="BaseModel.Languages" Role="Languages" Multiplicity="1" />
+          <End Type="BaseModel.ViewLng" Role="ViewLng" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Languages">
+              <PropertyRef Name="LangId" />
+            </Principal>
+            <Dependent Role="ViewLng">
+              <PropertyRef Name="LangId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REPLNG_LANGID">
+          <End Type="BaseModel.Languages" Role="Languages" Multiplicity="1" />
+          <End Type="BaseModel.RepLng" Role="RepLng" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Languages">
+              <PropertyRef Name="LangId" />
+            </Principal>
+            <Dependent Role="RepLng">
+              <PropertyRef Name="LangId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="REP_1_Result">
+          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="GrpId" Nullable="true" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="38" Scale="8" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="Decimal" Name="Summ" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="SumPrice" Nullable="true" Precision="38" Scale="8" />
+        </ComplexType>
+        <ComplexType Name="GetShippedPosIn_Result">
+          <Property Type="Int32" Name="PosId" Nullable="false" />
+          <Property Type="Int32" Name="WId" Nullable="false" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="TurnType" Nullable="false" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="8" />
+          <Property Type="Int32" Name="SourceId" Nullable="true" />
+          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="ReturnAmount" Nullable="true" Precision="38" Scale="8" />
+          <Property Type="Decimal" Name="Remain" Nullable="true" Precision="38" Scale="8" />
+          <Property Type="String" Name="DocInfo" Nullable="true" MaxLength="57" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -10076,16 +10128,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="LANGUAGES">
-            <EntityTypeMapping TypeName="BaseModel.LANGUAGES">
-              <MappingFragment StoreEntitySet="LANGUAGES">
-                <ScalarProperty Name="LANGID" ColumnName="LANGID" />
-                <ScalarProperty Name="SHORTNAME" ColumnName="SHORTNAME" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="FLAGS" ColumnName="FLAGS" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="MATCHANGE">
             <EntityTypeMapping TypeName="BaseModel.MATCHANGE">
               <MappingFragment StoreEntitySet="MATCHANGE">
@@ -10184,37 +10226,6 @@
                 <ScalarProperty Name="PLID" ColumnName="PLID" />
                 <ScalarProperty Name="GRPID" ColumnName="GRPID" />
                 <ScalarProperty Name="PLDETTYPE" ColumnName="PLDETTYPE" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PRINTLOG">
-            <EntityTypeMapping TypeName="BaseModel.PRINTLOG">
-              <MappingFragment StoreEntitySet="PRINTLOG">
-                <ScalarProperty Name="PLID" ColumnName="PLID" />
-                <ScalarProperty Name="REPID" ColumnName="REPID" />
-                <ScalarProperty Name="USERID" ColumnName="USERID" />
-                <ScalarProperty Name="ONDATE" ColumnName="ONDATE" />
-                <ScalarProperty Name="PRINTTYPE" ColumnName="PRINTTYPE" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="REPLNG">
-            <EntityTypeMapping TypeName="BaseModel.REPLNG">
-              <MappingFragment StoreEntitySet="REPLNG">
-                <ScalarProperty Name="REPID" ColumnName="REPID" />
-                <ScalarProperty Name="LANGID" ColumnName="LANGID" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="NOTES" ColumnName="NOTES" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="REPORTS">
-            <EntityTypeMapping TypeName="BaseModel.REPORTS">
-              <MappingFragment StoreEntitySet="REPORTS">
-                <ScalarProperty Name="REPID" ColumnName="REPID" />
-                <ScalarProperty Name="GRPID" ColumnName="GRPID" />
-                <ScalarProperty Name="FIL" ColumnName="FIL" />
-                <ScalarProperty Name="NUM" ColumnName="NUM" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -11104,23 +11115,6 @@
                 <ScalarProperty Name="BarCode" ColumnName="BarCode" />
                 <ScalarProperty Name="Discount" ColumnName="Discount" />
                 <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
-                <ScalarProperty Name="ReturnAmount" ColumnName="ReturnAmount" />
-                <ScalarProperty Name="Remain" ColumnName="Remain" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetShippedPosIn" FunctionName="BaseModel.Store.GetShippedPosIn">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetShippedPosIn_Result">
-                <ScalarProperty Name="PosId" ColumnName="PosId" />
-                <ScalarProperty Name="WId" ColumnName="WId" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="TurnType" ColumnName="TurnType" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="SourceId" ColumnName="SourceId" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="ReturnAmount" ColumnName="ReturnAmount" />
                 <ScalarProperty Name="Remain" ColumnName="Remain" />
               </ComplexTypeMapping>
@@ -12221,6 +12215,102 @@
                 <ScalarProperty Name="AvgPrice" ColumnName="AvgPrice" />
                 <ScalarProperty Name="TypeName" ColumnName="TypeName" />
                 <ScalarProperty Name="WhName" ColumnName="WhName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetReportTree" FunctionName="BaseModel.Store.GetReportTree">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetReportTree_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FunId" ColumnName="FunId" />
+                <ScalarProperty Name="PId" ColumnName="PId" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="ImageIndex" ColumnName="ImageIndex" />
+                <ScalarProperty Name="IsGroup" ColumnName="IsGroup" />
+                <ScalarProperty Name="ShowInTree" ColumnName="ShowInTree" />
+                <ScalarProperty Name="GType" ColumnName="GType" />
+                <ScalarProperty Name="DisabledIndex" ColumnName="DisabledIndex" />
+                <ScalarProperty Name="ShowExpanded" ColumnName="ShowExpanded" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CanView" ColumnName="CanView" />
+                <ScalarProperty Name="CanInsert" ColumnName="CanInsert" />
+                <ScalarProperty Name="CanModify" ColumnName="CanModify" />
+                <ScalarProperty Name="CanDelete" ColumnName="CanDelete" />
+                <ScalarProperty Name="CanPost" ColumnName="CanPost" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="PrintLog">
+            <EntityTypeMapping TypeName="BaseModel.PrintLog">
+              <MappingFragment StoreEntitySet="PrintLog">
+                <ScalarProperty Name="PrintType" ColumnName="PrintType" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RepId" ColumnName="RepId" />
+                <ScalarProperty Name="PlId" ColumnName="PlId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RepLng">
+            <EntityTypeMapping TypeName="BaseModel.RepLng">
+              <MappingFragment StoreEntitySet="RepLng">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LangId" ColumnName="LangId" />
+                <ScalarProperty Name="RepId" ColumnName="RepId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reports">
+            <EntityTypeMapping TypeName="BaseModel.Reports">
+              <MappingFragment StoreEntitySet="Reports">
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Fil" ColumnName="Fil" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="RepId" ColumnName="RepId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Languages">
+            <EntityTypeMapping TypeName="BaseModel.Languages">
+              <MappingFragment StoreEntitySet="Languages">
+                <ScalarProperty Name="Flags" ColumnName="Flags" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="LangId" ColumnName="LangId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="REP_1" FunctionName="BaseModel.Store.REP_1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.REP_1_Result">
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="Summ" ColumnName="Summ" />
+                <ScalarProperty Name="SumPrice" ColumnName="SumPrice" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetShippedPosIn" FunctionName="BaseModel.Store.GetShippedPosIn">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetShippedPosIn_Result">
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="TurnType" ColumnName="TurnType" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="SourceId" ColumnName="SourceId" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ReturnAmount" ColumnName="ReturnAmount" />
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
+                <ScalarProperty Name="DocInfo" ColumnName="DocInfo" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

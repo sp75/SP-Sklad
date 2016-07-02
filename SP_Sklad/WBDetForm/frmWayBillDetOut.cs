@@ -71,7 +71,7 @@ namespace SP_Sklad.WBDetForm
                     var w_mat_turn = _db.WMatTurn.Where(w => w.SourceId == _wbd.PosId).ToList();
                     if (w_mat_turn.Count > 0)
                     {
-                        pos_in = _db.GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, 0).OrderByDescending(o => o.OnDate).ToList();
+                        pos_in = _db.GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, 0).Where(w => w.FullRemain > 0).OrderBy(o => o.OnDate).ToList();
 
                         foreach (var item in w_mat_turn)
                         {
@@ -195,7 +195,7 @@ namespace SP_Sklad.WBDetForm
                 MaxPriceEdit.EditValue = mat_remain.MaxPrice;
             }
 
-            pos_in = _db.GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, 0).OrderByDescending(o => o.OnDate).ToList();
+            pos_in = _db.GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, 0).Where(w => w.FullRemain > 0).OrderBy(o => o.OnDate).ToList();
             SetAmount();
         }
 

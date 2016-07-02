@@ -10,16 +10,17 @@
 namespace SP_Sklad.SkladData
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class PrintLog
+    public partial class REP_1_Result
     {
-        public int PlId { get; set; }
-        public Nullable<int> RepId { get; set; }
-        public Nullable<int> UserId { get; set; }
-        public Nullable<System.DateTime> OnDate { get; set; }
-        public Nullable<int> PrintType { get; set; }
-    
-        public virtual Users Users { get; set; }
+        public string BarCode { get; set; }
+        public Nullable<int> GrpId { get; set; }
+        public int MatId { get; set; }
+        public string Name { get; set; }
+        public string Artikul { get; set; }
+        public Nullable<decimal> Amount { get; set; }
+        public string MsrName { get; set; }
+        public Nullable<decimal> Summ { get; set; }
+        public Nullable<decimal> SumPrice { get; set; }
     }
 }

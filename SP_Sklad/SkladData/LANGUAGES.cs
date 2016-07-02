@@ -12,20 +12,20 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class LANGUAGES
+    public partial class Languages
     {
-        public LANGUAGES()
+        public Languages()
         {
-            this.REPLNG = new HashSet<REPLNG>();
             this.ViewLng = new HashSet<ViewLng>();
+            this.RepLng = new HashSet<RepLng>();
         }
     
-        public int LANGID { get; set; }
-        public string SHORTNAME { get; set; }
-        public string NAME { get; set; }
-        public Nullable<int> FLAGS { get; set; }
+        public int LangId { get; set; }
+        public string ShortName { get; set; }
+        public string Name { get; set; }
+        public Nullable<int> Flags { get; set; }
     
-        public virtual ICollection<REPLNG> REPLNG { get; set; }
         public virtual ICollection<ViewLng> ViewLng { get; set; }
+        public virtual ICollection<RepLng> RepLng { get; set; }
     }
 }
