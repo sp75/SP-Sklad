@@ -383,6 +383,7 @@
             this.CheckedItemImageComboBox});
             this.WBGridControl.Size = new System.Drawing.Size(848, 443);
             this.WBGridControl.TabIndex = 0;
+            this.WBGridControl.UseEmbeddedNavigator = true;
             this.WBGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WbGridView});
             // 

@@ -251,7 +251,7 @@ namespace SP_Sklad.Common
                     else
                     {
                         result.mat_id = old_MATID != null ? (int)old_MATID : 0;
-                        result.wid = (int?)old_WID ;
+                        result.wid = old_WID != null ? (int?)old_WID : 0;
                     }
                     break;
 
