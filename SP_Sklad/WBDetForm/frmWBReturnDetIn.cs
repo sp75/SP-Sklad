@@ -40,7 +40,7 @@ namespace SP_Sklad.WBDetForm
 
         private void frmWBReturnDetIn_Load(object sender, EventArgs e)
         {
-            _wbd = _wbd = _db.WaybillDet.Find(_PosId);
+            _wbd = _db.WaybillDet.Find(_PosId);
 
             if (_wbd == null)
             {
@@ -62,13 +62,15 @@ namespace SP_Sklad.WBDetForm
                     _db.ReturnRel.Remove(_temp_return_rel);
                     _db.SaveChanges();
                 }
-
+              
                 modified_dataset = (_wbd != null);
             }
 
             WHComboBox.DataBindings.Add(new Binding("EditValue", _wbd, "WId", true, DataSourceUpdateMode.OnValidation));
             AmountEdit.DataBindings.Add(new Binding("EditValue", _wbd, "Amount"));
             BasePriceEdit.DataBindings.Add(new Binding("EditValue", _wbd, "BasePrice", true, DataSourceUpdateMode.OnValidation));
+
+            GetOk();
         }
 
         private void MatComboBox_EditValueChanged(object sender, EventArgs e)
@@ -107,6 +109,7 @@ namespace SP_Sklad.WBDetForm
             var pos_out_row = (GetPosOut_Result)MatComboBox.GetSelectedDataRow();
             bool stop = false;
             int num = _wbd.Num;
+            decimal amount = _wbd.Amount;
 
             foreach (var item in ordered_in_list.Where(w => w.Remain > 0))
             {
@@ -128,16 +131,16 @@ namespace SP_Sklad.WBDetForm
                         Num = ++num
                     });
 
-                    if (item.Remain >= _wbd.Amount)
+                    if (item.Remain >= amount)
                     {
-                        t_wbd.Amount = _wbd.Amount;
+                        t_wbd.Amount = amount;
                         stop = true;
                     }
                     else
                     {
-                        _wbd.Amount = item.Remain.Value;
+                        t_wbd.Amount = item.Remain.Value;
 
-                        _wbd.Amount -= item.Remain.Value;
+                        amount -= item.Remain.Value;
                     }
                     _db.SaveChanges();
 
@@ -150,6 +153,7 @@ namespace SP_Sklad.WBDetForm
 
                 }
             }
+            _db.WaybillDet.Remove(_wbd);
             _db.SaveChanges();
         }
 

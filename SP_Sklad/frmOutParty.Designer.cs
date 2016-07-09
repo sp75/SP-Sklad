@@ -33,7 +33,6 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.OutPartyGridControl = new DevExpress.XtraGrid.GridControl();
             this.OutPartyGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -42,22 +41,23 @@
             this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OutPartyGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OutPartyGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl2
             // 
             this.panelControl2.Controls.Add(this.OkButton);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl2.Location = new System.Drawing.Point(0, 281);
+            this.panelControl2.Location = new System.Drawing.Point(0, 302);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(797, 52);
             this.panelControl2.TabIndex = 16;
@@ -91,7 +91,7 @@
             this.repositoryItemImageComboBox2,
             this.repositoryItemCheckEdit1,
             this.repositoryItemCalcEdit1});
-            this.OutPartyGridControl.Size = new System.Drawing.Size(797, 247);
+            this.OutPartyGridControl.Size = new System.Drawing.Size(797, 268);
             this.OutPartyGridControl.TabIndex = 18;
             this.OutPartyGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.OutPartyGridView});
@@ -108,13 +108,6 @@
             this.OutPartyGridView.Name = "OutPartyGridView";
             this.OutPartyGridView.OptionsView.ShowFooter = true;
             this.OutPartyGridView.OptionsView.ShowGroupPanel = false;
-            // 
-            // repositoryItemCheckEdit1
-            // 
-            this.repositoryItemCheckEdit1.AutoHeight = false;
-            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
-            this.repositoryItemCheckEdit1.ValueChecked = 1;
-            this.repositoryItemCheckEdit1.ValueUnchecked = 0;
             // 
             // gridColumn1
             // 
@@ -211,11 +204,18 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Товар на складі", 0, 5)});
             this.repositoryItemImageComboBox2.Name = "repositoryItemImageComboBox2";
             // 
+            // repositoryItemCheckEdit1
+            // 
+            this.repositoryItemCheckEdit1.AutoHeight = false;
+            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+            this.repositoryItemCheckEdit1.ValueChecked = 1;
+            this.repositoryItemCheckEdit1.ValueUnchecked = 0;
+            // 
             // frmOutParty
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(797, 333);
+            this.ClientSize = new System.Drawing.Size(797, 354);
             this.Controls.Add(this.OutPartyGridControl);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.panelControl2);
@@ -228,10 +228,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OutPartyGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OutPartyGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -58,6 +58,10 @@ namespace SP_Sklad.MainTabs
         private void RepGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             dynamic row = RepGridView.GetFocusedRow();
+            if (row == null)
+            {
+                return;
+            }
        
             RepBtn.Enabled = false;
             switch ((int)row.RepId)

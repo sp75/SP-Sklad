@@ -12,6 +12,7 @@ using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using SP_Sklad.SkladData;
 using SP_Sklad.WBDetForm;
+using SP_Sklad.Common;
 
 namespace SP_Sklad.WBForm
 {
@@ -220,12 +221,34 @@ namespace SP_Sklad.WBForm
 
         private void EditMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            var dr = WBDetReInGridView.GetRow(WBDetReInGridView.FocusedRowHandle) as GetWaybillDetIn_Result;
 
+            if (dr != null)
+            {
+                var df = new frmWBReturnDetIn(_db, dr.PosId, wb);
+                if (df.ShowDialog() == DialogResult.OK)
+                {
+                    RefreshDet();
+                }
+            }
         }
 
         private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            var dr = WBDetReInGridView.GetRow(WBDetReInGridView.FocusedRowHandle) as GetWaybillDetIn_Result;
 
+            if (dr != null)
+            {
+                _db.WaybillDet.Remove(_db.WaybillDet.Find(dr.PosId));
+                _db.SaveChanges();
+
+                RefreshDet();
+            }
+        }
+
+        private void WBDetReInGridView_DoubleClick(object sender, EventArgs e)
+        {
+            if (IHelper.isRowDublClick(sender)) EditMaterialBtn.PerformClick();
         }
     }
 }
