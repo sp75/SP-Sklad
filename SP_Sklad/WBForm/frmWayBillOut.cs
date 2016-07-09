@@ -28,7 +28,7 @@ namespace SP_Sklad.WBForm
         private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
         private GetWayBillDetOut_Result wbd_row { get; set; }
-        private IQueryable<GetWayBillDetOut_Result> wbd_list { get; set; }
+        private List<GetWayBillDetOut_Result> wbd_list { get; set; }
 
         public frmWayBillOut(int wtype, int? wbill_id)
         {
@@ -161,7 +161,7 @@ namespace SP_Sklad.WBForm
 
         private void RefreshDet()
         {
-            wbd_list = _db.GetWayBillDetOut(_wbill_id);
+            wbd_list = _db.GetWayBillDetOut(_wbill_id).ToList();
             var dr = WaybillDetOutGridView.GetRow(WaybillDetOutGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
 
             WaybillDetOutGridControl.DataSource = null;
@@ -196,7 +196,7 @@ namespace SP_Sklad.WBForm
                 recult = !wbd_list.Any(w => w.Rsv == 0 && w.PosType == 0);
             }
 
-            barSubItem1.Enabled = KagentComboBox.EditValue != null;
+            barSubItem1.Enabled = KagentComboBox.EditValue != null && KagentComboBox.EditValue != DBNull.Value;
 
             EditMaterialBtn.Enabled = WaybillDetOutGridView.DataRowCount > 0;
             DelMaterialBtn.Enabled = EditMaterialBtn.Enabled;
@@ -243,15 +243,9 @@ namespace SP_Sklad.WBForm
             {
                 return;
             }
+            wb.KaId = row.KaId;
 
-            if (row.NdsPayer == 1)
-            {
-                wb.Nds = DBHelper.CommonParam.Nds;
-            }
-            else
-            {
-                wb.Nds = 0;
-            }
+            wb.Nds = row.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0;
 
             GetOk();
         }

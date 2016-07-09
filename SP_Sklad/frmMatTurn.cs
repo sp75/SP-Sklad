@@ -35,6 +35,8 @@ namespace SP_Sklad
             wbEndDate.DateTime = DateTime.Now.AddDays(1);
 
             this.Text = "Рух товару: " + new BaseEntities().Materials.Find(_mat_id).Name;
+            
+            GetTurns();
         }
 
         private void GetTurns()

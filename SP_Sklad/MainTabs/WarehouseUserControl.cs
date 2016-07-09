@@ -112,7 +112,7 @@ namespace SP_Sklad.MainTabs
             var dr = WbGridView.GetRow(WbGridView.FocusedRowHandle) as GetWayBillListWh_Result;
 
             WBGridControl.DataSource = null;
-            WBGridControl.DataSource = DB.SkladBase().GetWayBillListWh(satrt_date.Date, end_date.Date.AddDays(1), wtyp, (int)wbSatusList.EditValue, WhComboBox.EditValue.ToString()).OrderByDescending(o => o.OnDate);
+            WBGridControl.DataSource = DB.SkladBase().GetWayBillListWh(satrt_date.Date, end_date.Date.AddDays(1), wtyp, (int)wbSatusList.EditValue, WhComboBox.EditValue.ToString()).ToList().OrderByDescending(o => o.OnDate);
 
             WbGridView.FocusedRowHandle = FindRowHandleByRowObject(WbGridView, dr);
         }
@@ -149,8 +149,8 @@ namespace SP_Sklad.MainTabs
 
             if (dr != null)
             {
-          //      RemainOnWhGrid.DataSource = DB.SkladBase().WMatGetByWh(dr.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, wh_list);
-                PosGridControl.DataSource = DB.SkladBase().PosGet(dr.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list);
+                RemainOnWhGrid.DataSource = DB.SkladBase().WMatGetByWh(dr.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, wh_list).ToList();
+                PosGridControl.DataSource = DB.SkladBase().PosGet(dr.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list).ToList();
             }
             else
             {

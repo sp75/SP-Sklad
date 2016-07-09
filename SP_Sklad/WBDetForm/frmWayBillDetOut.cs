@@ -34,7 +34,6 @@ namespace SP_Sklad.WBDetForm
             WHComboBox.Properties.DataSource = DBHelper.WhList();
             MatComboBox.Properties.DataSource = db.MaterialsList.ToList();
             PriceTypesEdit.Properties.DataSource = DB.SkladBase().PriceTypes.ToList();
-         //   _wbd = db.WaybillDet.Find(_PosId);
         }
 
         private void frmWayBillDetOut_Load(object sender, EventArgs e)
@@ -53,7 +52,8 @@ namespace SP_Sklad.WBDetForm
                     OnValue = _wb.OnValue,
                     PosKind = 0,
                     PosParent = 0,
-                    DiscountKind = 0
+                    DiscountKind = 0,
+                    PtypeId = _db.Kagent.Find(_wb.KaId).PTypeId
                 };
                 modified_dataset = false;
             }
@@ -143,7 +143,7 @@ namespace SP_Sklad.WBDetForm
              {
                  _wbd.WId = row.WId;
                  WHComboBox.EditValue = row.WId;
-                 _wbd.Nds = row.Nds;
+                 _wbd.Nds = row.Nds == 1 ? DBHelper.CommonParam.Nds : 0;
                  _wbd.MatId = row.MatId;
              }
 

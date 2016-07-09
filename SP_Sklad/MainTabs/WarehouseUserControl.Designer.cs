@@ -574,7 +574,7 @@
             this.RefreshWhBtn.Id = 12;
             this.RefreshWhBtn.ImageIndex = 4;
             this.RefreshWhBtn.Name = "RefreshWhBtn";
-            this.RefreshWhBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RefreshWhBtn_ItemClick);
+            this.RefreshWhBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RefrechItemBtn_ItemClick);
             // 
             // standaloneBarDockControl4
             // 
