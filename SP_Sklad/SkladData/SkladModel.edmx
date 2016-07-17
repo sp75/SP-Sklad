@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="BaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ACCOUNTTYPE">
           <Key>
             <PropertyRef Name="TYPEID" />
@@ -1159,7 +1159,7 @@ warning 6002: The table/view 'sp_base.dbo.MaterialsList' does not have a primary
           <Property Name="MatId" Type="int" Nullable="false" />
           <Property Name="Num" Type="int" />
           <Property Name="Produced" Type="nvarchar" MaxLength="255" />
-          <Property Name="Nds" Type="numeric" Precision="15" Scale="8" />
+          <Property Name="NDS" Type="numeric" Precision="15" Scale="8" />
           <Property Name="Serials" Type="int" />
           <Property Name="Name" Type="nvarchar" MaxLength="255" />
           <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
@@ -3213,6 +3213,36 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary
           <Parameter Name="wid" Type="int" Mode="In" />
           <Parameter Name="mat_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="GetMatRsv" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mat_id" Type="int" Mode="In" />
+          <Parameter Name="ka_id" Type="int" Mode="In" />
+          <Parameter Name="from_date" Type="datetime" Mode="In" />
+          <Parameter Name="to_date" Type="datetime" Mode="In" />
+          <Parameter Name="w_type" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Amount" Type="numeric" Precision="15" Scale="8" Nullable="false" />
+                <Property Name="PosId" Type="int" Nullable="false" />
+                <Property Name="WId" Type="int" Nullable="false" />
+                <Property Name="WhName" Type="nvarchar" MaxLength="64" Nullable="false" />
+                <Property Name="OnDate" Type="datetime" Nullable="false" />
+                <Property Name="Price" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="CurrId" Type="int" />
+                <Property Name="WType" Type="int" Nullable="false" />
+                <Property Name="Num" Type="nvarchar" MaxLength="20" Nullable="false" />
+                <Property Name="WbillId" Type="int" Nullable="false" />
+                <Property Name="DocId" Type="int" />
+                <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="CurrName" Type="nvarchar" MaxLength="3" />
+                <Property Name="KaId" Type="int" />
+                <Property Name="KaName" Type="nvarchar" MaxLength="64" />
+                <Property Name="MatName" Type="nvarchar" MaxLength="255" />
+                <Property Name="TypeName" Type="nvarchar" MaxLength="50" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="GetOrderedInSuppliers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="wbill_id" Type="int" Mode="In" />
         </Function>
@@ -3618,35 +3648,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary
                 <Property Name="NDS" Type="numeric" Precision="15" Scale="8" />
                 <Property Name="GRPNAME" Type="nvarchar" MaxLength="64" />
                 <Property Name="GRPID" Type="int" />
-              </RowType>
-            </CollectionType>
-          </ReturnType>
-        </Function>
-        <Function Name="SP_GET_MAT_RSV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="IN_MATID" Type="int" Mode="In" />
-          <Parameter Name="IN_KAID" Type="int" Mode="In" />
-          <Parameter Name="IN_FROMDATE" Type="datetime" Mode="In" />
-          <Parameter Name="IN_TODATE" Type="datetime" Mode="In" />
-          <Parameter Name="IN_WTYPE" Type="int" Mode="In" />
-          <ReturnType>
-            <CollectionType>
-              <RowType>
-                <Property Name="amount" Type="numeric" Precision="15" Scale="8" Nullable="false" />
-                <Property Name="posid" Type="int" Nullable="false" />
-                <Property Name="wid" Type="int" Nullable="false" />
-                <Property Name="whname" Type="nvarchar" MaxLength="64" Nullable="false" />
-                <Property Name="ondate" Type="datetime" Nullable="false" />
-                <Property Name="price" Type="numeric" Precision="15" Scale="4" />
-                <Property Name="currid" Type="int" />
-                <Property Name="wtype" Type="int" Nullable="false" />
-                <Property Name="num" Type="nvarchar" MaxLength="20" Nullable="false" />
-                <Property Name="wbillid" Type="int" Nullable="false" />
-                <Property Name="docid" Type="int" />
-                <Property Name="onvalue" Type="numeric" Precision="15" Scale="4" />
-                <Property Name="shortname" Type="nvarchar" MaxLength="3" />
-                <Property Name="kaid" Type="int" />
-                <Property Name="kaname" Type="nvarchar" MaxLength="64" />
-                <Property Name="matname" Type="nvarchar" MaxLength="255" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -4199,7 +4200,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary
     [MaterialsList].[MatId] AS [MatId], 
     [MaterialsList].[Num] AS [Num], 
     [MaterialsList].[Produced] AS [Produced], 
-    [MaterialsList].[Nds] AS [Nds], 
+    [MaterialsList].[NDS] AS [NDS], 
     [MaterialsList].[Serials] AS [Serials], 
     [MaterialsList].[Name] AS [Name], 
     [MaterialsList].[Artikul] AS [Artikul], 
@@ -4964,13 +4965,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary
             <Parameter Name="IN_CURRID" Mode="In" Type="Int32" />
             <Parameter Name="ONVALUE" Mode="In" Type="Decimal" />
           </FunctionImport>
-          <FunctionImport Name="SP_GET_MAT_RSV" ReturnType="Collection(BaseModel.SP_GET_MAT_RSV_Result)" IsComposable="true">
-            <Parameter Name="IN_MATID" Mode="In" Type="Int32" />
-            <Parameter Name="IN_KAID" Mode="In" Type="Int32" />
-            <Parameter Name="IN_FROMDATE" Mode="In" Type="DateTime" />
-            <Parameter Name="IN_TODATE" Mode="In" Type="DateTime" />
-            <Parameter Name="IN_WTYPE" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SP_GET_MATGRP_NDS" ReturnType="Collection(BaseModel.SP_GET_MATGRP_NDS_Result)" IsComposable="true">
           <Parameter Name="GRPID" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -5663,7 +5657,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary
             <End Role="WaybillList" EntitySet="WaybillList" />
             <End Role="DeboningDet" EntitySet="DeboningDet" />
           </AssociationSet>
-          <EntitySet Name="MaterialsList" EntityType="BaseModel.MaterialsList" />
           <AssociationSet Name="FK_DeboningDet_Warehouse" Association="BaseModel.FK_DeboningDet_Warehouse">
             <End Role="Warehouse" EntitySet="Warehouse" />
             <End Role="DeboningDet" EntitySet="DeboningDet" />
@@ -5873,6 +5866,14 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary
           <FunctionImport Name="GetShippedPosIn" ReturnType="Collection(BaseModel.GetShippedPosIn_Result)">
           <Parameter Name="pos_id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="MaterialsList" EntityType="BaseModel.MaterialsList" />
+          <FunctionImport Name="GetMatRsv" IsComposable="true" ReturnType="Collection(BaseModel.GetMatRsv_Result)">
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="w_type" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -5925,24 +5926,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary
           <Property Name="WITHNDS" Type="Int32" />
           <Property Name="CURRID" Type="Int32" />
           <Property Name="CURRNAME" Type="String" MaxLength="24" Unicode="false" FixedLength="false" />
-        </ComplexType>
-        <ComplexType Name="SP_GET_MAT_RSV_Result">
-          <Property Name="amount" Type="Decimal" Nullable="false" Precision="15" Scale="8" />
-          <Property Name="posid" Type="Int32" Nullable="false" />
-          <Property Name="wid" Type="Int32" Nullable="false" />
-          <Property Name="whname" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
-          <Property Name="ondate" Type="DateTime" Nullable="false" />
-          <Property Name="price" Type="Decimal" Precision="15" Scale="4" />
-          <Property Name="currid" Type="Int32" />
-          <Property Name="wtype" Type="Int32" Nullable="false" />
-          <Property Name="num" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="wbillid" Type="Int32" Nullable="false" />
-          <Property Name="docid" Type="Int32" />
-          <Property Name="onvalue" Type="Decimal" Precision="15" Scale="4" />
-          <Property Name="shortname" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
-          <Property Name="kaid" Type="Int32" />
-          <Property Name="kaname" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
-          <Property Name="matname" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
         </ComplexType>
         <ComplexType Name="SP_GET_MATGRP_NDS_Result">
           <Property Name="ANDS" Type="Decimal" Precision="15" Scale="8" />
@@ -9040,23 +9023,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="MaterialsList">
-          <Key>
-            <PropertyRef Name="MatId" />
-            <PropertyRef Name="Deleted" />
-          </Key>
-          <Property Type="Int32" Name="MatId" Nullable="false" />
-          <Property Type="Int32" Name="Num" />
-          <Property Type="String" Name="Produced" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="Decimal" Name="Nds" Precision="15" Scale="8" />
-          <Property Type="Int32" Name="Serials" />
-          <Property Type="String" Name="Name" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Artikul" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="WId" />
-          <Property Type="String" Name="MeasuresName" MaxLength="6" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="Deleted" Nullable="false" />
-          <Property Type="Int32" Name="Archived" />
-        </EntityType>
         <Association Name="FK_DeboningDet_Warehouse">
           <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="1" />
           <End Type="BaseModel.DeboningDet" Role="DeboningDet" Multiplicity="*" />
@@ -9943,6 +9909,42 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary
           <Property Type="Decimal" Name="Remain" Nullable="true" Precision="38" Scale="8" />
           <Property Type="String" Name="DocInfo" Nullable="true" MaxLength="57" />
         </ComplexType>
+        <EntityType Name="MaterialsList">
+          <Key>
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="Deleted" />
+          </Key>
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="Num" Type="Int32" />
+          <Property Name="Produced" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NDS" Type="Decimal" Precision="15" Scale="8" />
+          <Property Name="Serials" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Artikul" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="WId" Type="Int32" />
+          <Property Name="MeasuresName" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <Property Name="Archived" Type="Int32" />
+        </EntityType>
+        <ComplexType Name="GetMatRsv_Result">
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="8" />
+          <Property Type="Int32" Name="PosId" Nullable="false" />
+          <Property Type="Int32" Name="WId" Nullable="false" />
+          <Property Type="String" Name="WhName" Nullable="false" MaxLength="64" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="Int32" Name="WType" Nullable="false" />
+          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="WbillId" Nullable="false" />
+          <Property Type="Int32" Name="DocId" Nullable="true" />
+          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
+          <Property Type="Int32" Name="KaId" Nullable="true" />
+          <Property Type="String" Name="KaName" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -10377,28 +10379,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.SP_GET_AVG_PRICE_Result">
                 <ScalarProperty Name="AVG_IN_PICE" ColumnName="AVG_IN_PICE" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="BaseModel.Store.SP_GET_MAT_RSV" FunctionImportName="SP_GET_MAT_RSV">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.SP_GET_MAT_RSV_Result">
-                <ScalarProperty Name="amount" ColumnName="amount" />
-                <ScalarProperty Name="posid" ColumnName="posid" />
-                <ScalarProperty Name="wid" ColumnName="wid" />
-                <ScalarProperty Name="whname" ColumnName="whname" />
-                <ScalarProperty Name="ondate" ColumnName="ondate" />
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="currid" ColumnName="currid" />
-                <ScalarProperty Name="wtype" ColumnName="wtype" />
-                <ScalarProperty Name="num" ColumnName="num" />
-                <ScalarProperty Name="wbillid" ColumnName="wbillid" />
-                <ScalarProperty Name="docid" ColumnName="docid" />
-                <ScalarProperty Name="onvalue" ColumnName="onvalue" />
-                <ScalarProperty Name="shortname" ColumnName="shortname" />
-                <ScalarProperty Name="kaid" ColumnName="kaid" />
-                <ScalarProperty Name="kaname" ColumnName="kaname" />
-                <ScalarProperty Name="matname" ColumnName="matname" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -11863,23 +11843,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MaterialsList">
-            <EntityTypeMapping TypeName="BaseModel.MaterialsList">
-              <MappingFragment StoreEntitySet="MaterialsList">
-                <ScalarProperty Name="Archived" ColumnName="Archived" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="MeasuresName" ColumnName="MeasuresName" />
-                <ScalarProperty Name="WId" ColumnName="WId" />
-                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Serials" ColumnName="Serials" />
-                <ScalarProperty Name="Nds" ColumnName="Nds" />
-                <ScalarProperty Name="Produced" ColumnName="Produced" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="GetDirTree" FunctionName="BaseModel.Store.GetDirTree">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.GetDirTree_Result">
@@ -12296,6 +12259,46 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary
                 <ScalarProperty Name="ReturnAmount" ColumnName="ReturnAmount" />
                 <ScalarProperty Name="Remain" ColumnName="Remain" />
                 <ScalarProperty Name="DocInfo" ColumnName="DocInfo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="MaterialsList">
+            <EntityTypeMapping TypeName="BaseModel.MaterialsList">
+              <MappingFragment StoreEntitySet="MaterialsList">
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="MeasuresName" ColumnName="MeasuresName" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Serials" ColumnName="Serials" />
+                <ScalarProperty Name="NDS" ColumnName="NDS" />
+                <ScalarProperty Name="Produced" ColumnName="Produced" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetMatRsv" FunctionName="BaseModel.Store.GetMatRsv">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetMatRsv_Result">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

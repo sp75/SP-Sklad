@@ -295,6 +295,15 @@ namespace SP_Sklad.Common
             new frmMatTurn(mat_id).ShowDialog();
 
         }
+        static public void ShowMatRSV(int? mat_id, BaseEntities db)
+        {
+            if (mat_id == null)
+            {
+                return;
+            }
+
+            var f = new frmMatRSV(mat_id.Value, db).ShowDialog();
+        }
 
     }
 

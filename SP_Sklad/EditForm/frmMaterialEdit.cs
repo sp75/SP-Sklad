@@ -112,6 +112,11 @@ namespace SP_Sklad.EditForm
             NameTextEdit.Text = ArtikulEdit.Text;
             NameTextEdit.Focus();
         }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowMatRSV(_mat_id.Value, _db);
+        }
     }
 
 

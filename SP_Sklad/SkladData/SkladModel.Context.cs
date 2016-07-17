@@ -101,7 +101,6 @@ namespace SP_Sklad.SkladData
         public DbSet<v_TechProcDet> v_TechProcDet { get; set; }
         public DbSet<Measures> Measures { get; set; }
         public DbSet<DeboningDet> DeboningDet { get; set; }
-        public DbSet<MaterialsList> MaterialsList { get; set; }
         public DbSet<Countries> Countries { get; set; }
         public DbSet<Materials> Materials { get; set; }
         public DbSet<KagentList> KagentList { get; set; }
@@ -119,6 +118,7 @@ namespace SP_Sklad.SkladData
         public DbSet<RepLng> RepLng { get; set; }
         public DbSet<Reports> Reports { get; set; }
         public DbSet<Languages> Languages { get; set; }
+        public DbSet<MaterialsList> MaterialsList { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)
@@ -194,32 +194,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("ONVALUE", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SP_GET_MAT_EXTRA_Result>("[BaseEntities].[SP_GET_MAT_EXTRA](@MATID, @PTYPEID, @ONDATE, @PRICE, @IN_CURRID, @ONVALUE)", mATIDParameter, pTYPEIDParameter, oNDATEParameter, pRICEParameter, iN_CURRIDParameter, oNVALUEParameter);
-        }
-    
-        [EdmFunction("BaseEntities", "SP_GET_MAT_RSV")]
-        public virtual IQueryable<SP_GET_MAT_RSV_Result> SP_GET_MAT_RSV(Nullable<int> iN_MATID, Nullable<int> iN_KAID, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_WTYPE)
-        {
-            var iN_MATIDParameter = iN_MATID.HasValue ?
-                new ObjectParameter("IN_MATID", iN_MATID) :
-                new ObjectParameter("IN_MATID", typeof(int));
-    
-            var iN_KAIDParameter = iN_KAID.HasValue ?
-                new ObjectParameter("IN_KAID", iN_KAID) :
-                new ObjectParameter("IN_KAID", typeof(int));
-    
-            var iN_FROMDATEParameter = iN_FROMDATE.HasValue ?
-                new ObjectParameter("IN_FROMDATE", iN_FROMDATE) :
-                new ObjectParameter("IN_FROMDATE", typeof(System.DateTime));
-    
-            var iN_TODATEParameter = iN_TODATE.HasValue ?
-                new ObjectParameter("IN_TODATE", iN_TODATE) :
-                new ObjectParameter("IN_TODATE", typeof(System.DateTime));
-    
-            var iN_WTYPEParameter = iN_WTYPE.HasValue ?
-                new ObjectParameter("IN_WTYPE", iN_WTYPE) :
-                new ObjectParameter("IN_WTYPE", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SP_GET_MAT_RSV_Result>("[BaseEntities].[SP_GET_MAT_RSV](@IN_MATID, @IN_KAID, @IN_FROMDATE, @IN_TODATE, @IN_WTYPE)", iN_MATIDParameter, iN_KAIDParameter, iN_FROMDATEParameter, iN_TODATEParameter, iN_WTYPEParameter);
         }
     
         [EdmFunction("BaseEntities", "SP_GET_MATGRP_NDS")]
@@ -1344,6 +1318,32 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("pos_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetShippedPosIn_Result>("GetShippedPosIn", pos_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetMatRsv")]
+        public virtual IQueryable<GetMatRsv_Result> GetMatRsv(Nullable<int> mat_id, Nullable<int> ka_id, Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> w_type)
+        {
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var w_typeParameter = w_type.HasValue ?
+                new ObjectParameter("w_type", w_type) :
+                new ObjectParameter("w_type", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatRsv_Result>("[BaseEntities].[GetMatRsv](@mat_id, @ka_id, @from_date, @to_date, @w_type)", mat_idParameter, ka_idParameter, from_dateParameter, to_dateParameter, w_typeParameter);
         }
     }
 }

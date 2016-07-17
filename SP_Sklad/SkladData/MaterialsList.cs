@@ -17,7 +17,7 @@ namespace SP_Sklad.SkladData
         public int MatId { get; set; }
         public Nullable<int> Num { get; set; }
         public string Produced { get; set; }
-        public Nullable<decimal> Nds { get; set; }
+        public Nullable<decimal> NDS { get; set; }
         public Nullable<int> Serials { get; set; }
         public string Name { get; set; }
         public string Artikul { get; set; }

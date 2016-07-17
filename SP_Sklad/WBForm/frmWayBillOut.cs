@@ -162,12 +162,8 @@ namespace SP_Sklad.WBForm
         private void RefreshDet()
         {
             wbd_list = _db.GetWayBillDetOut(_wbill_id).ToList();
-            var dr = WaybillDetOutGridView.GetRow(WaybillDetOutGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
 
-            WaybillDetOutGridControl.DataSource = null;
-            WaybillDetOutGridControl.DataSource = wbd_list;
-
-            WaybillDetOutGridView.FocusedRowHandle = FindRowHandleByRowObject(WaybillDetOutGridView, dr);
+            WaybillDetOutBS.DataSource = wbd_list;
 
             GetOk();
         }
@@ -189,7 +185,7 @@ namespace SP_Sklad.WBForm
 
         bool GetOk()
         {
-            bool recult = ( !String.IsNullOrEmpty(NumEdit.Text) && KagentComboBox.EditValue != null && OnDateDBEdit.EditValue != null && WaybillDetOutGridView.DataRowCount > 0);
+            bool recult = (!String.IsNullOrEmpty(NumEdit.Text) && KagentComboBox.EditValue != null && OnDateDBEdit.EditValue != null && wbd_list != null && wbd_list.Any());
 
             if (recult && wb.WType == -1 && TurnDocCheckBox.Checked)
             {
@@ -198,7 +194,7 @@ namespace SP_Sklad.WBForm
 
             barSubItem1.Enabled = KagentComboBox.EditValue != null && KagentComboBox.EditValue != DBNull.Value;
 
-            EditMaterialBtn.Enabled = WaybillDetOutGridView.DataRowCount > 0;
+            EditMaterialBtn.Enabled = (wbd_list != null && wbd_list.Any());
             DelMaterialBtn.Enabled = EditMaterialBtn.Enabled;
             RsvInfoBtn.Enabled = EditMaterialBtn.Enabled;
             MatInfoBtn.Enabled = EditMaterialBtn.Enabled;
@@ -395,5 +391,14 @@ namespace SP_Sklad.WBForm
             RefreshDet();
         }
 
+        private void RsvInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var dr = WaybillDetOutGridView.GetRow(WaybillDetOutGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
+
+            if ( dr != null )
+            {
+                IHelper.ShowMatRSV(dr.MatId, _db);
+            }
+        }
     }
 }

@@ -97,8 +97,8 @@ namespace SP_Sklad.WBDetForm
         private void MatComboBox_Properties_EditValueChanged(object sender, EventArgs e)
         {
             var row = (MaterialsList)MatComboBox.GetSelectedDataRow();
-            
-            NdsEdit.EditValue =  row.Nds;
+
+            NdsEdit.EditValue = row.NDS;
             WHComboBox.EditValue = row.WId;
             labelControl24.Text = row.MeasuresName;
             labelControl27.Text = row.MeasuresName;

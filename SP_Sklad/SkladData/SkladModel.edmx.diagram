@@ -233,8 +233,8 @@
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="7.0245045325832924" PointY="12.641712000892364" />
         <EntityTypeShape EntityType="BaseModel.v_TechProcDet" Width="1.5" PointX="4.9644700516781164" PointY="21.376737246930944" />
-        <EntityTypeShape EntityType="BaseModel.MaterialsList" Width="1.5" PointX="3.2588702027028749" PointY="15.534418158016363" />
-        <EntityTypeShape EntityType="BaseModel.KagentList" Width="1.5" PointX="7.11117908317185" PointY="6.8865148010135231" />
+        <EntityTypeShape EntityType="BaseModel.KagentList" Width="1.5" PointX="10.375" PointY="6.75" />
+        <EntityTypeShape EntityType="BaseModel.MaterialsList" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

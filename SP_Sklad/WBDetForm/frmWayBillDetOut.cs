@@ -143,7 +143,7 @@ namespace SP_Sklad.WBDetForm
              {
                  _wbd.WId = row.WId;
                  WHComboBox.EditValue = row.WId;
-                 _wbd.Nds = row.Nds == 1 ? DBHelper.CommonParam.Nds : 0;
+                 _wbd.Nds = row.NDS == 1 ? DBHelper.CommonParam.Nds : 0;
                  _wbd.MatId = row.MatId;
              }
 

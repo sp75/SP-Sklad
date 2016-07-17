@@ -139,6 +139,12 @@
     <Compile Include="frmKABalans.Designer.cs">
       <DependentUpon>frmKABalans.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMatRSV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMatRSV.Designer.cs">
+      <DependentUpon>frmMatRSV.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmOutParty.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -328,6 +334,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetMatRemain_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetMatRsv_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetOrderedInSuppliers_Result.cs">
@@ -530,9 +539,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\SP_GET_MAT_NDS_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\SP_GET_MAT_RSV_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\SP_GET_RELDOCIDS_Result.cs">
@@ -754,6 +760,9 @@
     <EmbeddedResource Include="frmKABalans.resx">
       <DependentUpon>frmKABalans.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmMatRSV.resx">
+      <DependentUpon>frmMatRSV.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmOutParty.resx">
       <DependentUpon>frmOutParty.cs</DependentUpon>
     </EmbeddedResource>
@@ -841,6 +850,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetDocList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetMatList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetMatMove_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.GetWayBillDetOut_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KADiscount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Kagent.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KAgentDoc.datasource" />
