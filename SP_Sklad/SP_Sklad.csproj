@@ -145,6 +145,12 @@
     <Compile Include="frmMatRSV.Designer.cs">
       <DependentUpon>frmMatRSV.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmOutMatList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOutMatList.Designer.cs">
+      <DependentUpon>frmOutMatList.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmOutParty.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -763,6 +769,9 @@
     <EmbeddedResource Include="frmMatRSV.resx">
       <DependentUpon>frmMatRSV.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmOutMatList.resx">
+      <DependentUpon>frmOutMatList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmOutParty.resx">
       <DependentUpon>frmOutParty.cs</DependentUpon>
     </EmbeddedResource>
@@ -850,6 +859,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetDocList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetMatList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetMatMove_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPosOut_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetWayBillDetOut_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KADiscount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Kagent.datasource" />
@@ -861,6 +871,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatRecDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatRecipe.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.WaybillDet.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

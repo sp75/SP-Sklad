@@ -18,25 +18,22 @@ namespace SP_Sklad.WBDetForm
         private int? _PosId { get; set; }
         private WaybillList _wb { get; set; }
         private WaybillDet _wbd { get; set; }
-        private bool modified_dataset { get; set; }
-        private List<GetPosOut_Result> pos_out_list { get; set; }
+        public List<GetPosOut_Result> pos_out_list { get; set; }
         private ReturnRel _temp_return_rel { get; set; }
         private List<GetShippedPosIn_Result> ordered_in_list { get; set; }
-        
+        public int? outPosId { get; set; }
+
         public frmWBReturnDetIn(BaseEntities db, int? PosId, WaybillList wb)
         {
             InitializeComponent();
 
-              _db = db;
+            _db = db;
             _PosId = PosId;
             _wb = wb;
 
             WHComboBox.Properties.DataSource = DBHelper.WhList();
-            pos_out_list = _db.GetPosOut(DateTime.Now.AddDays(-30).Date, _wb.OnDate, 0, _wb.KaId, 0).ToList();
-            MatComboBox.Properties.DataSource = pos_out_list;
+            pos_out_list = _db.GetPosOut(DateTime.Now.AddDays(-30).Date, _wb.OnDate, 0, _wb.KaId, -1).ToList();
         }
-
-
 
         private void frmWBReturnDetIn_Load(object sender, EventArgs e)
         {
@@ -50,25 +47,31 @@ namespace SP_Sklad.WBDetForm
                     Amount = 0,
                     Num = _wb.WaybillDet.Count() + 1,
                 };
-                modified_dataset = false;
             }
             else
             {
                 _temp_return_rel = _db.ReturnRel.FirstOrDefault(w => w.PosId == _wbd.PosId);
                 if (_temp_return_rel != null)
                 {
-                    MatComboBox.EditValue = _temp_return_rel.OutPosId;
-
                     _db.ReturnRel.Remove(_temp_return_rel);
                     _db.SaveChanges();
+
+                    ordered_in_list = _db.GetShippedPosIn(_temp_return_rel.OutPosId).ToList();
                 }
-              
-                modified_dataset = (_wbd != null);
             }
 
-            WHComboBox.DataBindings.Add(new Binding("EditValue", _wbd, "WId", true, DataSourceUpdateMode.OnValidation));
-            AmountEdit.DataBindings.Add(new Binding("EditValue", _wbd, "Amount"));
-            BasePriceEdit.DataBindings.Add(new Binding("EditValue", _wbd, "BasePrice", true, DataSourceUpdateMode.OnValidation));
+            WaybillDetBS.DataSource = _wbd;
+
+            MatComboBox.Properties.DataSource = pos_out_list;
+            if (_temp_return_rel != null)
+            {
+                MatComboBox.EditValue = _temp_return_rel.OutPosId;
+            }
+
+            if (outPosId != null)
+            {
+                MatComboBox.EditValue = outPosId.Value;
+            }
 
             GetOk();
         }
@@ -77,21 +80,23 @@ namespace SP_Sklad.WBDetForm
         {
             var row = (GetPosOut_Result)MatComboBox.GetSelectedDataRow();
 
-            _wbd.Price = row.Price;
-            _wbd.BasePrice = row.Price + row.Price * row.Nds / 100;
-            _wbd.Nds = row.Nds;
-            _wbd.CurrId = row.CurrId;
-            _wbd.OnValue = row.OnValue;
-            _wbd.OnDate = row.OnDate;
-            _wbd.WId = row.WID;
-            _wbd.MatId = row.MatId;
+            if (row != null)
+            {
+                GetPosOutBS.DataSource = row;
 
-            ordered_in_list = _db.GetShippedPosIn(row.PosId).ToList();
+                _wbd.Price = row.Price;
+                _wbd.BasePrice = row.Price + row.Price * row.Nds / 100;
+                _wbd.Nds = row.Nds;
+                _wbd.CurrId = row.CurrId;
+                _wbd.OnValue = row.OnValue;
+                _wbd.OnDate = row.OnDate;
+                _wbd.WId = row.WID;
+                _wbd.MatId = row.MatId;
 
-            PosOutAmountEdit.EditValue = row.Amount;
-            ReturnAmountEdit.EditValue = row.ReturnAmount;
-            RemainEdit.EditValue = row.Remain;
-            WHComboBox.EditValue = row.WID;
+                ordered_in_list = _db.GetShippedPosIn(row.PosId).ToList();
+
+                WHComboBox.EditValue = row.WID;
+            }
 
             GetOk();
         }
@@ -152,8 +157,16 @@ namespace SP_Sklad.WBDetForm
                     });
 
                 }
+
+                _temp_return_rel = null;
             }
-            _db.WaybillDet.Remove(_wbd);
+
+            var fff = _db.Entry<WaybillDet>(_wbd).State;
+            if (_db.Entry<WaybillDet>(_wbd).State != EntityState.Detached)
+            {
+                _db.WaybillDet.Remove(_wbd);
+            }
+
             _db.SaveChanges();
         }
 
@@ -161,14 +174,19 @@ namespace SP_Sklad.WBDetForm
         {
             var pos_out_row = (GetPosOut_Result)MatComboBox.GetSelectedDataRow();
 
-            bool recult = (pos_out_row != null && AmountEdit.Value <= pos_out_row.Remain && pos_out_list != null && MatComboBox.EditValue != DBNull.Value && WHComboBox.EditValue != DBNull.Value && BasePriceEdit.EditValue != DBNull.Value && AmountEdit.EditValue != DBNull.Value);
+            bool recult = (pos_out_row != null && AmountEdit.Value <= pos_out_row.Remain && pos_out_list != null && MatComboBox.EditValue != DBNull.Value && WHComboBox.EditValue != DBNull.Value /*&& BasePriceEdit.EditValue != DBNull.Value*/ && AmountEdit.EditValue != DBNull.Value);
 
             OkButton.Enabled = recult;
 
-            BotAmountEdit.Text = AmountEdit.Text;
-      /*      TotalSumEdit.EditValue = Convert.ToDecimal(AmountEdit.EditValue) * Convert.ToDecimal(PriceEdit.EditValue);
+            //     BotAmountEdit.Text = AmountEdit.Text;
+       /*     TotalSumEdit.EditValue = Convert.ToDecimal(AmountEdit.EditValue) * Convert.ToDecimal(BotPriceEdit.EditValue);
             SummAllEdit.EditValue = Convert.ToDecimal(AmountEdit.EditValue) * Convert.ToDecimal(BasePriceEdit.EditValue);
             TotalNdsEdit.EditValue = Convert.ToDecimal(SummAllEdit.EditValue) - Convert.ToDecimal(TotalSumEdit.EditValue);*/
+
+            /*       WayBIllDetSUM->Value = WayBIllDetAMOUNT->Value * WayBIllDetPRICE->Value;
+               WayBIllDetSUMMALL->Value = WayBIllDetAMOUNT->Value * WayBIllDetBASEPRICE->Value;
+               WayBIllDetSumNDS->Value = WayBIllDetSUMMALL->Value - WayBIllDetSUM->Value ;
+                  */
 
             return recult;
         }
@@ -196,6 +214,12 @@ namespace SP_Sklad.WBDetForm
             {
                 _db.Entry<WaybillDet>(_wbd).Reload();
             }
+
+            if (_temp_return_rel != null)
+            {
+                _db.ReturnRel.Add(_temp_return_rel);
+                _db.SaveChanges();
+            }
         }
 
         private void frmWBReturnDetIn_Shown(object sender, EventArgs e)
@@ -214,6 +238,26 @@ namespace SP_Sklad.WBDetForm
 
                 if(showOutList) cxButton3->Click();
             */
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            var row = (GetPosOut_Result)MatComboBox.GetSelectedDataRow();
+            int matId = row != null ? row.MatId : 0;
+
+            var frm = new frmOutMatList(_db, DateTime.Now.AddDays(-30).Date, _wb.OnDate, matId, _wb.KaId.Value);
+            if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                pos_out_list = frm.pos_out_list;
+                MatComboBox.Properties.DataSource = frm.pos_out_list;
+
+                if(pos_out_list != null)
+                {
+                    var mat_row = frm.bandedGridView1.GetFocusedRow() as GetPosOut_Result ;
+
+                    MatComboBox.EditValue = mat_row.PosId;
+                }
+            }
         }
     }
 }

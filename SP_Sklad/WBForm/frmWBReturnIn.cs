@@ -13,6 +13,7 @@ using DevExpress.XtraGrid.Views.Grid;
 using SP_Sklad.SkladData;
 using SP_Sklad.WBDetForm;
 using SP_Sklad.Common;
+using System.Windows.Input;
 
 namespace SP_Sklad.WBForm
 {
@@ -180,8 +181,8 @@ namespace SP_Sklad.WBForm
             var df = new frmWBReturnDetIn(_db, null, wb);
             if (df.ShowDialog() == DialogResult.OK)
             {
-                current_transaction = current_transaction.CommitRetaining(_db);
-                UpdLockWB();
+              //  current_transaction = current_transaction.CommitRetaining(_db);
+              //  UpdLockWB();
                 RefreshDet();
             }
         }
@@ -249,6 +250,80 @@ namespace SP_Sklad.WBForm
         private void WBDetReInGridView_DoubleClick(object sender, EventArgs e)
         {
             if (IHelper.isRowDublClick(sender)) EditMaterialBtn.PerformClick();
+        }
+
+        private void barManager1_EditorKeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void barManager1_EditorKeyPress_1(object sender, KeyPressEventArgs e)
+        {
+          
+        }
+
+        private void textEdit1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && AddMaterialBtn.Enabled && !String.IsNullOrEmpty(BarCodeEdit.Text))
+            {
+                var BarCodeText = BarCodeEdit.Text.Split('+');
+                string kod = BarCodeText[0];
+                var item = _db.Materials.Where(w => w.BarCode == kod).Select(s => s.MatId).FirstOrDefault();
+
+                var frm = new frmOutMatList(_db, DateTime.Now.AddMonths(-1).Date, wb.OnDate, item, wb.KaId.Value);
+                if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    var mat_row = frm.bandedGridView1.GetFocusedRow() as GetPosOut_Result;
+                    if (mat_row != null)
+                    {
+                        var df = new frmWBReturnDetIn(_db, null, wb)
+                        {
+                            pos_out_list = frm.pos_out_list,
+                            outPosId = mat_row.PosId
+                        };
+                        //   df.pos_out_list = frm.pos_out_list;
+                        //     df.outPosId = mat_row.PosId;
+                        //    df.MatComboBox.Properties.DataSource = frm.pos_out_list;
+
+                        //    df.MatComboBox.EditValue = mat_row.PosId;
+                        if (df.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                        {
+
+                        }
+                    }
+                }
+
+
+              /*  if (df.ShowDialog() == DialogResult.OK)
+                {
+                    current_transaction = current_transaction.CommitRetaining(_db);
+                    UpdLockWB();
+                    RefreshDet();
+                }*/
+
+             /*   if (kod != "")
+                {
+                    frmWBReturnDetIn = new TfrmWBReturnDetIn(Application, WBReturnInTransaction);
+                    frmWBReturnDetIn->WayBIllDet->Open();
+                    frmWBReturnDetIn->WayBIllDet->Append();
+                    frmWBReturnDetIn->WayBIllDetNUM->Value = WayBillDetIn->RecordCount + 1;
+                    frmWBReturnDetIn->WayBIllDetWBILLID->Value = WayBillListWBILLID->Value;
+                    frmWBReturnDetIn->TopPanel->Open();
+                    if (frmWBReturnDetIn->OrderedOutList->Locate("BARCODE", kod, TLocateOptions()))
+                    {
+                        frmWBReturnDetIn->WayBIllDetMATID->Value = frmWBReturnDetIn->OrderedOutListMATID->Value;
+                        frmWBReturnDetIn->TopPanel->Edit();
+                        frmWBReturnDetIn->TopPanelIN_MATID->Value = frmWBReturnDetIn->OrderedOutListMATID->Value;
+                        frmWBReturnDetIn->TopPanel->Post();
+                        frmWBReturnDetIn->showOutList = true;
+                        frmWBReturnDetIn->ShowModal();
+                    }
+
+
+                }*/
+                BarCodeEdit.Text = "";
+              //  BarCodeEdit->SetFocus();
+            }
         }
     }
 }

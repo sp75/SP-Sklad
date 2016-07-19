@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWBReturnDetIn));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
@@ -61,10 +61,12 @@
             this.MatComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.WHComboBox = new DevExpress.XtraEditors.LookUpEdit();
+            this.WaybillDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.GetPosOutBS = new System.Windows.Forms.BindingSource(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl25 = new DevExpress.XtraEditors.LabelControl();
@@ -92,7 +94,7 @@
             this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
             this.TotalNdsEdit = new DevExpress.XtraEditors.TextEdit();
             this.TotalSumEdit = new DevExpress.XtraEditors.TextEdit();
-            this.BotBasePriceEdit = new DevExpress.XtraEditors.TextEdit();
+            this.BotPriceEdit = new DevExpress.XtraEditors.TextEdit();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -105,6 +107,8 @@
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MatComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WHComboBox.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GetPosOutBS)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
@@ -120,7 +124,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.SummAllEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TotalNdsEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TotalSumEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BotBasePriceEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BotPriceEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             this.SuspendLayout();
@@ -423,6 +427,7 @@
             // 
             // WHComboBox
             // 
+            this.WHComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "WId", true));
             this.WHComboBox.Location = new System.Drawing.Point(101, 44);
             this.WHComboBox.Name = "WHComboBox";
             this.WHComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -437,6 +442,10 @@
             this.WHComboBox.Size = new System.Drawing.Size(218, 22);
             this.WHComboBox.StyleController = this.styleController1;
             this.WHComboBox.TabIndex = 17;
+            // 
+            // WaybillDetBS
+            // 
+            this.WaybillDetBS.DataSource = typeof(SP_Sklad.SkladData.WaybillDet);
             // 
             // labelControl6
             // 
@@ -456,6 +465,7 @@
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(22, 22);
             this.simpleButton2.TabIndex = 13;
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // simpleButton3
             // 
@@ -476,6 +486,10 @@
             this.labelControl3.StyleController = this.styleController1;
             this.labelControl3.TabIndex = 3;
             this.labelControl3.Text = "Назва:";
+            // 
+            // GetPosOutBS
+            // 
+            this.GetPosOutBS.DataSource = typeof(SP_Sklad.SkladData.GetPosOut_Result);
             // 
             // panel2
             // 
@@ -556,6 +570,7 @@
             // 
             this.RemainEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.RemainEdit.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.GetPosOutBS, "Remain", true));
             this.RemainEdit.Enabled = false;
             this.RemainEdit.Location = new System.Drawing.Point(423, 75);
             this.RemainEdit.MenuManager = this.barManager1;
@@ -568,6 +583,7 @@
             // 
             this.ReturnAmountEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ReturnAmountEdit.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.GetPosOutBS, "ReturnAmount", true));
             this.ReturnAmountEdit.Enabled = false;
             this.ReturnAmountEdit.Location = new System.Drawing.Point(423, 43);
             this.ReturnAmountEdit.MenuManager = this.barManager1;
@@ -580,6 +596,7 @@
             // 
             this.PosOutAmountEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.PosOutAmountEdit.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.GetPosOutBS, "Amount", true));
             this.PosOutAmountEdit.Enabled = false;
             this.PosOutAmountEdit.Location = new System.Drawing.Point(423, 12);
             this.PosOutAmountEdit.MenuManager = this.barManager1;
@@ -600,6 +617,7 @@
             // 
             // BasePriceEdit
             // 
+            this.BasePriceEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "BasePrice", true));
             this.BasePriceEdit.Enabled = false;
             this.BasePriceEdit.Location = new System.Drawing.Point(101, 43);
             this.BasePriceEdit.MenuManager = this.barManager1;
@@ -622,12 +640,13 @@
             // 
             // AmountEdit
             // 
+            this.AmountEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "Amount", true));
             this.AmountEdit.Location = new System.Drawing.Point(101, 12);
             this.AmountEdit.MenuManager = this.barManager1;
             this.AmountEdit.Name = "AmountEdit";
             this.AmountEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("AmountEdit.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("AmountEdit.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "", null, null, true)});
             this.AmountEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.AmountEdit_Properties_ButtonClick);
             this.AmountEdit.Size = new System.Drawing.Size(138, 22);
             this.AmountEdit.StyleController = this.styleController1;
@@ -657,7 +676,7 @@
             this.groupControl3.Controls.Add(this.labelControl17);
             this.groupControl3.Controls.Add(this.TotalNdsEdit);
             this.groupControl3.Controls.Add(this.TotalSumEdit);
-            this.groupControl3.Controls.Add(this.BotBasePriceEdit);
+            this.groupControl3.Controls.Add(this.BotPriceEdit);
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl3.Location = new System.Drawing.Point(5, 0);
             this.groupControl3.Name = "groupControl3";
@@ -696,6 +715,7 @@
             // 
             // BotAmountEdit
             // 
+            this.BotAmountEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "Amount", true));
             this.BotAmountEdit.Enabled = false;
             this.BotAmountEdit.Location = new System.Drawing.Point(84, 29);
             this.BotAmountEdit.MenuManager = this.barManager1;
@@ -740,12 +760,12 @@
             // 
             // labelControl16
             // 
-            this.labelControl16.Location = new System.Drawing.Point(380, 53);
+            this.labelControl16.Location = new System.Drawing.Point(328, 53);
             this.labelControl16.Name = "labelControl16";
-            this.labelControl16.Size = new System.Drawing.Size(34, 16);
+            this.labelControl16.Size = new System.Drawing.Size(86, 16);
             this.labelControl16.StyleController = this.styleController1;
             this.labelControl16.TabIndex = 24;
-            this.labelControl16.Text = "Сума:";
+            this.labelControl16.Text = "Сума без ПДВ:";
             // 
             // labelControl17
             // 
@@ -780,17 +800,18 @@
             this.TotalSumEdit.StyleController = this.styleController1;
             this.TotalSumEdit.TabIndex = 21;
             // 
-            // BotBasePriceEdit
+            // BotPriceEdit
             // 
-            this.BotBasePriceEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.BotPriceEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.BotBasePriceEdit.Enabled = false;
-            this.BotBasePriceEdit.Location = new System.Drawing.Point(420, 29);
-            this.BotBasePriceEdit.MenuManager = this.barManager1;
-            this.BotBasePriceEdit.Name = "BotBasePriceEdit";
-            this.BotBasePriceEdit.Size = new System.Drawing.Size(102, 22);
-            this.BotBasePriceEdit.StyleController = this.styleController1;
-            this.BotBasePriceEdit.TabIndex = 20;
+            this.BotPriceEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "Price", true));
+            this.BotPriceEdit.Enabled = false;
+            this.BotPriceEdit.Location = new System.Drawing.Point(420, 29);
+            this.BotPriceEdit.MenuManager = this.barManager1;
+            this.BotPriceEdit.Name = "BotPriceEdit";
+            this.BotPriceEdit.Size = new System.Drawing.Size(102, 22);
+            this.BotPriceEdit.StyleController = this.styleController1;
+            this.BotPriceEdit.TabIndex = 20;
             // 
             // panelControl2
             // 
@@ -838,6 +859,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmWBReturnDetIn";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Додати позицію:";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmWBReturnDetIn_FormClosed);
@@ -853,6 +875,8 @@
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MatComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WHComboBox.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GetPosOutBS)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
@@ -870,7 +894,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.SummAllEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TotalNdsEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TotalSumEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BotBasePriceEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BotPriceEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -907,7 +931,6 @@
         private DevExpress.XtraEditors.StyleController styleController1;
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DevExpress.XtraEditors.LookUpEdit MatComboBox;
         private DevExpress.XtraEditors.SimpleButton simpleButton4;
         private DevExpress.XtraEditors.LookUpEdit WHComboBox;
         private DevExpress.XtraEditors.LabelControl labelControl6;
@@ -941,9 +964,12 @@
         private DevExpress.XtraEditors.LabelControl labelControl17;
         private DevExpress.XtraEditors.TextEdit TotalNdsEdit;
         private DevExpress.XtraEditors.TextEdit TotalSumEdit;
-        private DevExpress.XtraEditors.TextEdit BotBasePriceEdit;
+        private DevExpress.XtraEditors.TextEdit BotPriceEdit;
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.SimpleButton OkButton;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private System.Windows.Forms.BindingSource WaybillDetBS;
+        private System.Windows.Forms.BindingSource GetPosOutBS;
+        public DevExpress.XtraEditors.LookUpEdit MatComboBox;
     }
 }
