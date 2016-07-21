@@ -99,7 +99,15 @@ namespace SP_Sklad.WBForm
 
         private void UpdLockWB()
         {
-            wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0} or DocId = {1}", _wbill_id, doc_id).FirstOrDefault();
+            if (_wbill_id == null && doc_id != null)
+            {
+                wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where DocId = {0} ", doc_id).FirstOrDefault();
+            }
+            else
+            {
+                wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0} ", _wbill_id).FirstOrDefault();
+            }
+
             _wbill_id = wb.WbillId;
         }
 

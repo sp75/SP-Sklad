@@ -72,7 +72,7 @@ namespace SP_Sklad.MainTabs
                 wbEndDate.EditValue = DateTime.Now;
 
                 repositoryItemLookUpEdit1.DataSource = DBHelper.WhList();
-                repositoryItemLookUpEdit2.DataSource = DBHelper.PayTypes;
+                repositoryItemLookUpEdit2.DataSource = DB.SkladBase().PriceTypes.ToList();
 
                 GetTree(1);
             }
@@ -353,9 +353,10 @@ namespace SP_Sklad.MainTabs
                         grp = focused_tree_node.Num.ToString();
                     }
 
-                    WhMatGridControl.DataSource = null;
-                    WhMatGridControl.DataSource = DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list, 0, grp, DBHelper.CurrentUser.UserId, ViewDetailTree.Down ? 1:0).ToList();
-
+                  //  WhMatGridControl.DataSource = null;
+                  //  WhMatGridControl.DataSource = DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list, 0, grp, DBHelper.CurrentUser.UserId, ViewDetailTree.Down ? 1:0).ToList();
+                    WhMatGetBS.DataSource = null;
+                    WhMatGetBS.DataSource = DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list, 0, grp, DBHelper.CurrentUser.UserId, ViewDetailTree.Down ? 1 : 0);
                     break;
 
                 case 2:
@@ -442,5 +443,50 @@ namespace SP_Sklad.MainTabs
         {
             RefrechItemBtn.PerformClick();
         }
+
+        private void BarCodeEdit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && !String.IsNullOrEmpty(BarCodeEdit.Text))
+            {
+                var BarCodeSplit = BarCodeEdit.Text.Split('+');
+                String kod = BarCodeSplit[0];
+
+                var row = WhMatGetBS.List.OfType<WhMatGet_Result>().ToList().Find(f => f.BarCode == kod);
+                var pos = WhMatGetBS.IndexOf(row);
+                WhMatGetBS.Position = pos;
+
+                if (row != null && MatListTabPage.PageVisible)
+                {
+                    if (BarCodeSplit.Count() > 2)
+                    {
+                        var wh_row = WhRemainGridView.GetFocusedRow() as WMatGetByWh_Result;
+
+                        custom_mat_list.Add(new CustomMatListWH
+                        {
+                            Num = custom_mat_list.Count() + 1,
+                            MatId = row.MatId.Value,
+                            Name = row.MatName,
+                            Amount = 1,
+                            Price = Convert.ToDecimal(BarCodeSplit[1] + "," + BarCodeSplit[2]),
+                            WId = wh_row != null ? wh_row.WId.Value : DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId,
+                            PTypeId = null,
+                            Discount = DB.SkladBase().GetDiscount(wb.KaId, row.MatId).FirstOrDefault() ?? 0.00m
+                        });
+
+                        MatListGridView.RefreshData();
+
+                    }
+                    else
+                    {
+                        AddItem.PerformClick();
+                    }
+                      
+                }
+
+
+                BarCodeEdit.Text = "";
+            }
+        }
+
     }
 }

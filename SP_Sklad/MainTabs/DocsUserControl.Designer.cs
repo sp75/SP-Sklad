@@ -521,6 +521,8 @@
             // gridColumn4
             // 
             this.gridColumn4.Caption = "Дата";
+            this.gridColumn4.DisplayFormat.FormatString = "g";
+            this.gridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn4.FieldName = "OnDate";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SP_Sklad.Common;
 using SP_Sklad.SkladData;
 
 namespace SP_Sklad
@@ -52,6 +53,11 @@ namespace SP_Sklad
             {
                 GetData();
             }
+        }
+
+        private void bandedGridView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (IHelper.isRowDublClick(sender)) OkButton.PerformClick();
         }
     }
 }

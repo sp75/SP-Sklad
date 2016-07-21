@@ -238,6 +238,7 @@
             this.bandedGridView1.OptionsBehavior.AllowIncrementalSearch = true;
             this.bandedGridView1.OptionsBehavior.Editable = false;
             this.bandedGridView1.OptionsView.ShowGroupPanel = false;
+            this.bandedGridView1.DoubleClick += new System.EventHandler(this.bandedGridView1_DoubleClick);
             // 
             // gridBand2
             // 

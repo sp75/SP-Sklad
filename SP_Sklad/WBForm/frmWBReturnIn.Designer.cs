@@ -290,7 +290,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 553);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 577);
             this.barDockControlBottom.Size = new System.Drawing.Size(969, 0);
             // 
             // barDockControlLeft
@@ -298,14 +298,14 @@
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 529);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 553);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(969, 24);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 529);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 553);
             // 
             // WBImgList
             // 
@@ -639,7 +639,7 @@
             this.panelControl2.Controls.Add(this.OkButton);
             this.panelControl2.Controls.Add(this.simpleButton1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl2.Location = new System.Drawing.Point(0, 501);
+            this.panelControl2.Location = new System.Drawing.Point(0, 525);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(969, 52);
             this.panelControl2.TabIndex = 15;
@@ -670,7 +670,7 @@
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl5.Location = new System.Drawing.Point(0, 271);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(969, 230);
+            this.panelControl5.Size = new System.Drawing.Size(969, 254);
             this.panelControl5.TabIndex = 16;
             // 
             // WBDetReInGridControl
@@ -684,7 +684,7 @@
             this.repositoryItemImageComboBox1,
             this.repositoryItemImageComboBox2,
             this.repositoryItemImageComboBox3});
-            this.WBDetReInGridControl.Size = new System.Drawing.Size(965, 226);
+            this.WBDetReInGridControl.Size = new System.Drawing.Size(965, 250);
             this.WBDetReInGridControl.TabIndex = 1;
             this.WBDetReInGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WBDetReInGridView});
@@ -703,6 +703,7 @@
             this.WBDetReInGridView.GridControl = this.WBDetReInGridControl;
             this.WBDetReInGridView.Images = this.WBImgList;
             this.WBDetReInGridView.Name = "WBDetReInGridView";
+            this.WBDetReInGridView.OptionsView.ShowFooter = true;
             this.WBDetReInGridView.OptionsView.ShowGroupPanel = false;
             this.WBDetReInGridView.DoubleClick += new System.EventHandler(this.WBDetReInGridView_DoubleClick);
             // 
@@ -797,6 +798,8 @@
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.OptionsColumn.ReadOnly = true;
+            this.gridColumn8.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", "{0:0.##}")});
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 7;
             this.gridColumn8.Width = 86;
@@ -843,7 +846,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(969, 553);
+            this.ClientSize = new System.Drawing.Size(969, 577);
             this.Controls.Add(this.BarCodeEdit);
             this.Controls.Add(this.panelControl5);
             this.Controls.Add(this.panelControl2);

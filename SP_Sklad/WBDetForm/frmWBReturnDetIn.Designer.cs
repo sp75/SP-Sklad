@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWBReturnDetIn));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
@@ -575,6 +575,8 @@
             this.RemainEdit.Location = new System.Drawing.Point(423, 75);
             this.RemainEdit.MenuManager = this.barManager1;
             this.RemainEdit.Name = "RemainEdit";
+            this.RemainEdit.Properties.DisplayFormat.FormatString = "0.0000";
+            this.RemainEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.RemainEdit.Size = new System.Drawing.Size(99, 22);
             this.RemainEdit.StyleController = this.styleController1;
             this.RemainEdit.TabIndex = 12;
@@ -588,6 +590,8 @@
             this.ReturnAmountEdit.Location = new System.Drawing.Point(423, 43);
             this.ReturnAmountEdit.MenuManager = this.barManager1;
             this.ReturnAmountEdit.Name = "ReturnAmountEdit";
+            this.ReturnAmountEdit.Properties.DisplayFormat.FormatString = "0.0000";
+            this.ReturnAmountEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.ReturnAmountEdit.Size = new System.Drawing.Size(99, 22);
             this.ReturnAmountEdit.StyleController = this.styleController1;
             this.ReturnAmountEdit.TabIndex = 11;
@@ -601,6 +605,8 @@
             this.PosOutAmountEdit.Location = new System.Drawing.Point(423, 12);
             this.PosOutAmountEdit.MenuManager = this.barManager1;
             this.PosOutAmountEdit.Name = "PosOutAmountEdit";
+            this.PosOutAmountEdit.Properties.DisplayFormat.FormatString = "0.0000";
+            this.PosOutAmountEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.PosOutAmountEdit.Size = new System.Drawing.Size(99, 22);
             this.PosOutAmountEdit.StyleController = this.styleController1;
             this.PosOutAmountEdit.TabIndex = 10;
@@ -646,7 +652,7 @@
             this.AmountEdit.Name = "AmountEdit";
             this.AmountEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("AmountEdit.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("AmountEdit.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", null, null, true)});
             this.AmountEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.AmountEdit_Properties_ButtonClick);
             this.AmountEdit.Size = new System.Drawing.Size(138, 22);
             this.AmountEdit.StyleController = this.styleController1;
@@ -720,7 +726,7 @@
             this.BotAmountEdit.Location = new System.Drawing.Point(84, 29);
             this.BotAmountEdit.MenuManager = this.barManager1;
             this.BotAmountEdit.Name = "BotAmountEdit";
-            this.BotAmountEdit.Properties.DisplayFormat.FormatString = "0.00";
+            this.BotAmountEdit.Properties.DisplayFormat.FormatString = "0.0000";
             this.BotAmountEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.BotAmountEdit.Size = new System.Drawing.Size(80, 22);
             this.BotAmountEdit.StyleController = this.styleController1;
@@ -784,6 +790,8 @@
             this.TotalNdsEdit.Location = new System.Drawing.Point(420, 71);
             this.TotalNdsEdit.MenuManager = this.barManager1;
             this.TotalNdsEdit.Name = "TotalNdsEdit";
+            this.TotalNdsEdit.Properties.DisplayFormat.FormatString = "0.00";
+            this.TotalNdsEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.TotalNdsEdit.Size = new System.Drawing.Size(102, 22);
             this.TotalNdsEdit.StyleController = this.styleController1;
             this.TotalNdsEdit.TabIndex = 22;
@@ -796,6 +804,8 @@
             this.TotalSumEdit.Location = new System.Drawing.Point(420, 50);
             this.TotalSumEdit.MenuManager = this.barManager1;
             this.TotalSumEdit.Name = "TotalSumEdit";
+            this.TotalSumEdit.Properties.DisplayFormat.FormatString = "0.00";
+            this.TotalSumEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.TotalSumEdit.Size = new System.Drawing.Size(102, 22);
             this.TotalSumEdit.StyleController = this.styleController1;
             this.TotalSumEdit.TabIndex = 21;
@@ -809,6 +819,8 @@
             this.BotPriceEdit.Location = new System.Drawing.Point(420, 29);
             this.BotPriceEdit.MenuManager = this.barManager1;
             this.BotPriceEdit.Name = "BotPriceEdit";
+            this.BotPriceEdit.Properties.DisplayFormat.FormatString = "0.00";
+            this.BotPriceEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.BotPriceEdit.Size = new System.Drawing.Size(102, 22);
             this.BotPriceEdit.StyleController = this.styleController1;
             this.BotPriceEdit.TabIndex = 20;

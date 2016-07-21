@@ -64,15 +64,20 @@ namespace SP_Sklad.WBForm
             }
             else
             {
+           /*     if (_wbill_id == null && doc_id != null)
+                {
+                    _db.WaybillList.FirstOrDefault(w => w.DocId == doc_id);
+                }*/
+
                 try
                 {
                     UpdLockWB();
                     _db.Entry<WaybillList>(wb).State = EntityState.Modified;
                     _db.Entry<WaybillList>(wb).Property(f => f.SummPay).IsModified = false;
                 }
-                catch
+                catch (System.Data.Entity.Infrastructure.DbUpdateException exp)
                 {
-
+                    MessageBox.Show(exp.InnerException.InnerException.Message);
                     Close();
                 }
 
@@ -98,19 +103,31 @@ namespace SP_Sklad.WBForm
 
         private void UpdLockWB()
         {
-            wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0} or DocId = {1}", _wbill_id, doc_id).FirstOrDefault();
+            if (_wbill_id == null && doc_id != null)
+            {
+                wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where DocId = {0} ", doc_id).FirstOrDefault();
+            }
+            else
+            {
+                wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0} ", _wbill_id).FirstOrDefault();
+            }
+
             _wbill_id = wb.WbillId;
         }
 
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var df = new frmWayBillDetOut(_db, null, wb);
-            if (df.ShowDialog() == DialogResult.OK)
+            try
             {
-                current_transaction = current_transaction.CommitRetaining(_db);
-                UpdLockWB();
-                RefreshDet();
+                var df = new frmWayBillDetOut(_db, null, wb);
+                if (df.ShowDialog() == DialogResult.OK)
+                {
+                    current_transaction = current_transaction.CommitRetaining(_db);
+                    UpdLockWB();
+                    RefreshDet();
+                }
             }
+            catch { }
         }
 
         private void frmWayBillOut_Shown(object sender, EventArgs e)
@@ -384,8 +401,16 @@ namespace SP_Sklad.WBForm
 
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (wb.WType == -16) IHelper.ShowMatList(_db, wb);
-            else IHelper.ShowMatListByWH(_db, wb);
+            wb.Kagent =  _db.Kagent.Find(wb.KaId);
+
+            if (wb.WType == -16)
+            {
+                IHelper.ShowMatList(_db, wb);
+            }
+            else
+            {
+                IHelper.ShowMatListByWH(_db, wb);
+            }
 
          //   if (MessageDlg("Зарезервувати товар ? ", mtConfirmation, TMsgDlgButtons() << mbYes << mbNo, 0) == mrYes) RSVAllBarBtn->Click();
             RefreshDet();

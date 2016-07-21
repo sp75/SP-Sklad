@@ -161,6 +161,17 @@ namespace SP_Sklad.WBForm
                 return;
             }
 
+            var ch = _db.Database.SqlQuery<String>(@"select materials.Name
+		           from waybilldet wbd
+                   inner join materials on wbd.MatId = materials.MatId 
+         		   cross apply (select  sum(wbd_r.amount) ReturnAmount from waybilldet wbd_r ,RETURNREL rr  where wbd_r.posid = rr.posid and rr.outposid = wbd.posid  ) returnRel
+                  where  wbd.PosId  in (select  rr.OutPosId from waybilldet wbd_r ,RETURNREL rr  where wbd_r.posid = rr.posid  and wbd_r.WbillId = @p0  ) and  (wbd.Amount -  returnRel.ReturnAmount)  < 0", wb.WbillId).ToList();
+            if (ch.Any())
+            {
+                MessageBox.Show("Товар вже повернуто: " + String.Join(",", ch));
+                return;
+            }
+
             wb.UpdatedAt = DateTime.Now;
             _db.SaveChanges();
 
@@ -281,48 +292,15 @@ namespace SP_Sklad.WBForm
                             pos_out_list = frm.pos_out_list,
                             outPosId = mat_row.PosId
                         };
-                        //   df.pos_out_list = frm.pos_out_list;
-                        //     df.outPosId = mat_row.PosId;
-                        //    df.MatComboBox.Properties.DataSource = frm.pos_out_list;
-
-                        //    df.MatComboBox.EditValue = mat_row.PosId;
+   
                         if (df.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                         {
-
+                            RefreshDet();
                         }
                     }
                 }
-
-
-              /*  if (df.ShowDialog() == DialogResult.OK)
-                {
-                    current_transaction = current_transaction.CommitRetaining(_db);
-                    UpdLockWB();
-                    RefreshDet();
-                }*/
-
-             /*   if (kod != "")
-                {
-                    frmWBReturnDetIn = new TfrmWBReturnDetIn(Application, WBReturnInTransaction);
-                    frmWBReturnDetIn->WayBIllDet->Open();
-                    frmWBReturnDetIn->WayBIllDet->Append();
-                    frmWBReturnDetIn->WayBIllDetNUM->Value = WayBillDetIn->RecordCount + 1;
-                    frmWBReturnDetIn->WayBIllDetWBILLID->Value = WayBillListWBILLID->Value;
-                    frmWBReturnDetIn->TopPanel->Open();
-                    if (frmWBReturnDetIn->OrderedOutList->Locate("BARCODE", kod, TLocateOptions()))
-                    {
-                        frmWBReturnDetIn->WayBIllDetMATID->Value = frmWBReturnDetIn->OrderedOutListMATID->Value;
-                        frmWBReturnDetIn->TopPanel->Edit();
-                        frmWBReturnDetIn->TopPanelIN_MATID->Value = frmWBReturnDetIn->OrderedOutListMATID->Value;
-                        frmWBReturnDetIn->TopPanel->Post();
-                        frmWBReturnDetIn->showOutList = true;
-                        frmWBReturnDetIn->ShowModal();
-                    }
-
-
-                }*/
+   
                 BarCodeEdit.Text = "";
-              //  BarCodeEdit->SetFocus();
             }
         }
     }
