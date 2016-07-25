@@ -1037,7 +1037,6 @@
         #endregion
 
         private DevExpress.XtraEditors.PanelControl panelControl2;
-        private DevExpress.XtraEditors.SimpleButton OkButton;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.SplitterControl splitterControl1;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
@@ -1110,6 +1109,7 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage7;
         private System.Windows.Forms.PictureBox pictureBox1;
         private DevExpress.XtraEditors.MemoEdit textEdit8;
+        public DevExpress.XtraEditors.SimpleButton OkButton;
 
     }
 }

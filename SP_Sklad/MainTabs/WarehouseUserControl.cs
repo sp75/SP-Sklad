@@ -29,6 +29,10 @@ namespace SP_Sklad.MainTabs
         public List<CustomMatListWH> custom_mat_list { get; set; }
         public WaybillList wb { get; set; }
         public Object resut { get; set; }
+        private WhMatGet_Result focused_wh_mat
+        {
+            get { return WhMatGridView.GetFocusedRow() as WhMatGet_Result; }
+        }
 
         public class CustomMatListWH : CustomMatList
         {
@@ -356,7 +360,7 @@ namespace SP_Sklad.MainTabs
                   //  WhMatGridControl.DataSource = null;
                   //  WhMatGridControl.DataSource = DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list, 0, grp, DBHelper.CurrentUser.UserId, ViewDetailTree.Down ? 1:0).ToList();
                     WhMatGetBS.DataSource = null;
-                    WhMatGetBS.DataSource = DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list, 0, grp, DBHelper.CurrentUser.UserId, ViewDetailTree.Down ? 1 : 0).ToList();
+                    WhMatGetBS.DataSource = DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, ShowEmptyItemsCheck.Checked ? 1 : 0, wh_list, ShowAllItemsCheck.Checked ? 1 : 0, grp, DBHelper.CurrentUser.UserId, ViewDetailTree.Down ? 1 : 0).ToList();
                     break;
 
                 case 2:
@@ -407,28 +411,26 @@ namespace SP_Sklad.MainTabs
             }
             else
             {
-                var row = WhMatGridView.GetFocusedRow() as WhMatGet_Result;
-                IHelper.ShowTurnMaterial(row.MatId.Value);
+                IHelper.ShowTurnMaterial(focused_wh_mat.MatId.Value);
             }
         }
 
         private void AddItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var row = WhMatGridView.GetFocusedRow() as WhMatGet_Result;
             var wh_row = WhRemainGridView.GetFocusedRow() as WMatGetByWh_Result;
             var t = (wb.Kagent != null ? wb.Kagent.PTypeId : null);
-            var price = DB.SkladBase().GetListMatPrices(row.MatId, wb.CurrId).FirstOrDefault(w => w.PType == t);
+            var price = DB.SkladBase().GetListMatPrices(focused_wh_mat.MatId, wb.CurrId).FirstOrDefault(w => w.PType == t);
 
             custom_mat_list.Add(new CustomMatListWH
             {
                 Num = custom_mat_list.Count() + 1,
-                MatId = row.MatId.Value,
-                Name = row.MatName,
+                MatId = focused_wh_mat.MatId.Value,
+                Name = focused_wh_mat.MatName,
                 Amount = 1,
                 Price = price != null ? price.Price : 0,
                 WId = wh_row != null ? wh_row.WId.Value : DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId,
                 PTypeId = price != null ? price.PType : null,
-                Discount = DB.SkladBase().GetDiscount(wb.KaId, row.MatId).FirstOrDefault() ?? 0.00m
+                Discount = DB.SkladBase().GetDiscount(wb.KaId, focused_wh_mat.MatId).FirstOrDefault() ?? 0.00m
             });
 
             MatListGridView.RefreshData();
@@ -486,6 +488,80 @@ namespace SP_Sklad.MainTabs
 
                 BarCodeEdit.Text = "";
             }
+        }
+
+        private void WhMatGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            MatPopupMenu.ShowPopup(Control.MousePosition); 
+        }
+
+        private void MatTurnInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+             IHelper.ShowTurnMaterial(focused_wh_mat.MatId);
+        }
+
+        private void RsvInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowMatRSV(focused_wh_mat.MatId, DB.SkladBase());
+        }
+
+        private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowMatInfo(focused_wh_mat.MatId);
+        }
+
+        private void RecalcRemainsMatBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            DB.SkladBase().RecalcRemainsMat(focused_wh_mat.MatId);
+            RefreshWhBtn.PerformClick();
+        }
+
+        private void RecalcRemainsAllMatBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            String errRECALC = "";
+
+            for (int i = 0; WhMatGridView.RowCount > i; ++i)
+            {
+                var row = WhMatGridView.GetRow(i) as WhMatGet_Result;
+                try
+                {
+                    DB.SkladBase().RecalcRemainsMat(row.MatId);
+                }
+                catch
+                {
+                    errRECALC += row.MatName + ", ";
+                }
+            }
+            if (errRECALC != "") MessageBox.Show("Не вдалось перерахувати залишки по деяким позиціям: " + errRECALC);
+            else MessageBox.Show("Залишки по всім позиціям перераховано!");
+
+            RefreshWhBtn.PerformClick();
+        }
+
+        private void DeboningMatBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var rec = DB.SkladBase().MatRecipe.FirstOrDefault(w => w.MatId == focused_wh_mat.MatId && w.RType == 2);
+            var wh_remain =  WhRemainGridView.GetFocusedRow() as WMatGetByWh_Result ;
+            if (rec != null)
+            {
+                using (var f = new frmWBDeboning() { rec_id = rec.RecId, source_wid = wh_remain .WId})
+                {
+                    f.ShowDialog();
+                }
+
+                RefreshWhBtn.PerformClick();
+            }
+            else MessageBox.Show("Не можливо виконати овалку, не знайдено рецепт!");
+        }
+
+        private void ShowEmptyItemsCheck_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            RefreshWhBtn.PerformClick();
+        }
+
+        private void ShowAllItemsCheck_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            RefreshWhBtn.PerformClick();
         }
 
     }

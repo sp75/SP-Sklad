@@ -23,7 +23,7 @@ namespace SP_Sklad.SkladData
         public decimal Rsv { get; set; }
         public Nullable<decimal> AvgPrice { get; set; }
         public Nullable<decimal> InWay { get; set; }
-        public Nullable<decimal> Ordered { get; set; }
+        public decimal Ordered { get; set; }
     
         public virtual WaybillDet WaybillDet { get; set; }
         public virtual Warehouse Warehouse { get; set; }

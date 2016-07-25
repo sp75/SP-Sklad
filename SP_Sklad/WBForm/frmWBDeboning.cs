@@ -27,6 +27,8 @@ namespace SP_Sklad.WBForm
         private WaybillList wb { get; set; }
         private GetWayBillDetOut_Result wbd_row { get; set; }
         private IQueryable<GetWayBillDetOut_Result> wbd_list { get; set; }
+        public int? rec_id { get; set; }
+        public int? source_wid { get; set; }
 
         public frmWBDeboning(int? wbill_id = null)
         {
@@ -65,7 +67,11 @@ namespace SP_Sklad.WBForm
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
                     KaId = DBHelper.CurrentUser.KaId,
-                    WayBillMake = new WayBillMake { SourceWId = DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId },
+                    WayBillMake = new WayBillMake
+                    {
+                        SourceWId = source_wid ?? DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId,
+                        RecId = rec_id
+                    },
                     Nds = 0
                 });
                 _db.SaveChanges();

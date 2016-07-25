@@ -48,7 +48,7 @@
             this.MatTurnInfoBtn = new DevExpress.XtraBars.BarButtonItem();
             this.RsvInfoBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.DeboningMatBtn = new DevExpress.XtraBars.BarButtonItem();
             this.RefreshWhBtn = new DevExpress.XtraBars.BarButtonItem();
             this.standaloneBarDockControl4 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.bar3 = new DevExpress.XtraBars.Bar();
@@ -68,6 +68,11 @@
             this.standaloneBarDockControl3 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl5 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.BarImageList = new System.Windows.Forms.ImageList(this.components);
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.RecalcRemainsMatBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.RecalcRemainsAllMatBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.ShowEmptyItemsCheck = new DevExpress.XtraBars.BarCheckItem();
+            this.ShowAllItemsCheck = new DevExpress.XtraBars.BarCheckItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.WHTreeList = new DevExpress.XtraTreeList.TreeList();
@@ -212,6 +217,19 @@
             this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.barDockControl5 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControl6 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControl3 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControl7 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControl8 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControl2 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControl9 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControl10 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControl11 = new DevExpress.XtraBars.BarDockControl();
+            this.popupMenu2 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.popupMenu3 = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -284,6 +302,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).BeginInit();
             this.SuspendLayout();
             // 
             // UserTreeImgList
@@ -420,15 +441,20 @@
             this.MatTurnInfoBtn,
             this.RsvInfoBtn,
             this.barButtonItem4,
-            this.barButtonItem5,
+            this.DeboningMatBtn,
             this.RefreshWhBtn,
             this.ByGrpBtn,
             this.ByWhBtn,
             this.ViewDetailTree,
             this.DelItem,
-            this.AddItem});
+            this.AddItem,
+            this.barButtonItem1,
+            this.RecalcRemainsMatBtn,
+            this.RecalcRemainsAllMatBtn,
+            this.ShowEmptyItemsCheck,
+            this.ShowAllItemsCheck});
             this.barManager1.MainMenu = this.bar3;
-            this.barManager1.MaxItemId = 18;
+            this.barManager1.MaxItemId = 23;
             // 
             // bar1
             // 
@@ -527,7 +553,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.MatTurnInfoBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.RsvInfoBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DeboningMatBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.RefreshWhBtn)});
             this.bar2.OptionsBar.AllowQuickCustomization = false;
             this.bar2.OptionsBar.DrawBorder = false;
@@ -542,6 +568,7 @@
             this.MatInfoBtn.Id = 7;
             this.MatInfoBtn.ImageIndex = 10;
             this.MatInfoBtn.Name = "MatInfoBtn";
+            this.MatInfoBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MatInfoBtn_ItemClick);
             // 
             // MatTurnInfoBtn
             // 
@@ -549,6 +576,7 @@
             this.MatTurnInfoBtn.Id = 8;
             this.MatTurnInfoBtn.ImageIndex = 11;
             this.MatTurnInfoBtn.Name = "MatTurnInfoBtn";
+            this.MatTurnInfoBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MatTurnInfoBtn_ItemClick);
             // 
             // RsvInfoBtn
             // 
@@ -556,6 +584,7 @@
             this.RsvInfoBtn.Id = 9;
             this.RsvInfoBtn.ImageIndex = 12;
             this.RsvInfoBtn.Name = "RsvInfoBtn";
+            this.RsvInfoBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RsvInfoBtn_ItemClick);
             // 
             // barButtonItem4
             // 
@@ -564,12 +593,13 @@
             this.barButtonItem4.ImageIndex = 13;
             this.barButtonItem4.Name = "barButtonItem4";
             // 
-            // barButtonItem5
+            // DeboningMatBtn
             // 
-            this.barButtonItem5.Caption = "Виконати обвалку";
-            this.barButtonItem5.Id = 11;
-            this.barButtonItem5.ImageIndex = 15;
-            this.barButtonItem5.Name = "barButtonItem5";
+            this.DeboningMatBtn.Caption = "Виконати обвалку";
+            this.DeboningMatBtn.Id = 11;
+            this.DeboningMatBtn.ImageIndex = 15;
+            this.DeboningMatBtn.Name = "DeboningMatBtn";
+            this.DeboningMatBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeboningMatBtn_ItemClick);
             // 
             // RefreshWhBtn
             // 
@@ -768,6 +798,42 @@
             this.BarImageList.Images.SetKeyName(15, "пратнерка.png");
             this.BarImageList.Images.SetKeyName(16, "down.bmp");
             this.BarImageList.Images.SetKeyName(17, "Up.bmp");
+            this.BarImageList.Images.SetKeyName(18, "Замовлене кл_єнтами.bmp");
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Інформація про замовлення";
+            this.barButtonItem1.Id = 18;
+            this.barButtonItem1.ImageIndex = 18;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
+            // RecalcRemainsMatBtn
+            // 
+            this.RecalcRemainsMatBtn.Caption = "Перерахувати залишки";
+            this.RecalcRemainsMatBtn.Id = 19;
+            this.RecalcRemainsMatBtn.Name = "RecalcRemainsMatBtn";
+            this.RecalcRemainsMatBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RecalcRemainsMatBtn_ItemClick);
+            // 
+            // RecalcRemainsAllMatBtn
+            // 
+            this.RecalcRemainsAllMatBtn.Caption = "Перерахувати залишки для всіх товарів";
+            this.RecalcRemainsAllMatBtn.Id = 20;
+            this.RecalcRemainsAllMatBtn.Name = "RecalcRemainsAllMatBtn";
+            this.RecalcRemainsAllMatBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RecalcRemainsAllMatBtn_ItemClick);
+            // 
+            // ShowEmptyItemsCheck
+            // 
+            this.ShowEmptyItemsCheck.Caption = "Показувати нульові позиції";
+            this.ShowEmptyItemsCheck.Id = 21;
+            this.ShowEmptyItemsCheck.Name = "ShowEmptyItemsCheck";
+            this.ShowEmptyItemsCheck.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.ShowEmptyItemsCheck_CheckedChanged);
+            // 
+            // ShowAllItemsCheck
+            // 
+            this.ShowAllItemsCheck.Caption = "Показати всі позиції";
+            this.ShowAllItemsCheck.Id = 22;
+            this.ShowAllItemsCheck.Name = "ShowAllItemsCheck";
+            this.ShowAllItemsCheck.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ShowAllItemsCheck_ItemClick);
             // 
             // panelControl1
             // 
@@ -914,6 +980,7 @@
             this.WhMatGridView.OptionsView.EnableAppearanceEvenRow = true;
             this.WhMatGridView.OptionsView.EnableAppearanceOddRow = true;
             this.WhMatGridView.OptionsView.ShowGroupPanel = false;
+            this.WhMatGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WhMatGridView_PopupMenuShowing);
             this.WhMatGridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.WhMatGridView_FocusedRowChanged);
             this.WhMatGridView.DoubleClick += new System.EventHandler(this.WhMatGridView_DoubleClick);
             // 
@@ -1570,7 +1637,7 @@
             this.MatListTabPage.ImageIndex = 14;
             this.MatListTabPage.Name = "MatListTabPage";
             this.MatListTabPage.PageVisible = false;
-            this.MatListTabPage.Size = new System.Drawing.Size(896, 206);
+            this.MatListTabPage.Size = new System.Drawing.Size(896, 237);
             this.MatListTabPage.Text = "Список товарів";
             // 
             // MatListGridControl
@@ -1583,7 +1650,7 @@
             this.repositoryItemCalcEdit1,
             this.repositoryItemLookUpEdit1,
             this.repositoryItemLookUpEdit2});
-            this.MatListGridControl.Size = new System.Drawing.Size(896, 175);
+            this.MatListGridControl.Size = new System.Drawing.Size(896, 206);
             this.MatListGridControl.TabIndex = 3;
             this.MatListGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.MatListGridView,
@@ -2347,6 +2414,102 @@
             this.gridColumn21.VisibleIndex = 7;
             this.gridColumn21.Width = 110;
             // 
+            // MatPopupMenu
+            // 
+            this.MatPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.MatTurnInfoBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RsvInfoBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.MatInfoBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DeboningMatBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RecalcRemainsMatBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RecalcRemainsAllMatBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ShowEmptyItemsCheck, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ShowAllItemsCheck)});
+            this.MatPopupMenu.Manager = this.barManager1;
+            this.MatPopupMenu.Name = "MatPopupMenu";
+            // 
+            // barDockControl5
+            // 
+            this.barDockControl5.CausesValidation = false;
+            this.barDockControl5.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControl5.Location = new System.Drawing.Point(0, 0);
+            this.barDockControl5.Size = new System.Drawing.Size(0, 0);
+            // 
+            // barDockControl4
+            // 
+            this.barDockControl4.CausesValidation = false;
+            this.barDockControl4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControl4.Location = new System.Drawing.Point(0, 0);
+            this.barDockControl4.Size = new System.Drawing.Size(0, 0);
+            // 
+            // barDockControl6
+            // 
+            this.barDockControl6.CausesValidation = false;
+            this.barDockControl6.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControl6.Location = new System.Drawing.Point(0, 0);
+            this.barDockControl6.Size = new System.Drawing.Size(0, 0);
+            // 
+            // barDockControl3
+            // 
+            this.barDockControl3.CausesValidation = false;
+            this.barDockControl3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControl3.Location = new System.Drawing.Point(0, 0);
+            this.barDockControl3.Size = new System.Drawing.Size(0, 0);
+            // 
+            // barDockControl7
+            // 
+            this.barDockControl7.CausesValidation = false;
+            this.barDockControl7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControl7.Location = new System.Drawing.Point(0, 0);
+            this.barDockControl7.Size = new System.Drawing.Size(0, 0);
+            // 
+            // barDockControl8
+            // 
+            this.barDockControl8.CausesValidation = false;
+            this.barDockControl8.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControl8.Location = new System.Drawing.Point(0, 0);
+            this.barDockControl8.Size = new System.Drawing.Size(0, 0);
+            // 
+            // barDockControl2
+            // 
+            this.barDockControl2.CausesValidation = false;
+            this.barDockControl2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControl2.Location = new System.Drawing.Point(0, 0);
+            this.barDockControl2.Size = new System.Drawing.Size(0, 0);
+            // 
+            // barDockControl9
+            // 
+            this.barDockControl9.CausesValidation = false;
+            this.barDockControl9.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControl9.Location = new System.Drawing.Point(0, 0);
+            this.barDockControl9.Size = new System.Drawing.Size(0, 0);
+            // 
+            // barDockControl10
+            // 
+            this.barDockControl10.CausesValidation = false;
+            this.barDockControl10.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControl10.Location = new System.Drawing.Point(0, 0);
+            this.barDockControl10.Size = new System.Drawing.Size(0, 0);
+            // 
+            // barDockControl11
+            // 
+            this.barDockControl11.CausesValidation = false;
+            this.barDockControl11.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControl11.Location = new System.Drawing.Point(0, 0);
+            this.barDockControl11.Size = new System.Drawing.Size(0, 0);
+            // 
+            // popupMenu2
+            // 
+            this.popupMenu2.Manager = this.barManager1;
+            this.popupMenu2.Name = "popupMenu2";
+            // 
+            // popupMenu3
+            // 
+            this.popupMenu3.Manager = this.barManager1;
+            this.popupMenu3.Name = "popupMenu3";
+            // 
             // WarehouseUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2435,6 +2598,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2529,7 +2695,7 @@
         private DevExpress.XtraBars.BarButtonItem MatTurnInfoBtn;
         private DevExpress.XtraBars.BarButtonItem RsvInfoBtn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
+        private DevExpress.XtraBars.BarButtonItem DeboningMatBtn;
         private DevExpress.XtraBars.BarButtonItem RefreshWhBtn;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl5;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl3;
@@ -2624,5 +2790,23 @@
         public DevExpress.XtraGrid.Views.Grid.GridView WhRemainGridView;
         private System.Windows.Forms.BindingSource WhMatGetBS;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn10;
+        private DevExpress.XtraBars.PopupMenu MatPopupMenu;
+        private DevExpress.XtraBars.BarDockControl barDockControl5;
+        private DevExpress.XtraBars.BarDockControl barDockControl4;
+        private DevExpress.XtraBars.BarDockControl barDockControl6;
+        private DevExpress.XtraBars.BarDockControl barDockControl3;
+        private DevExpress.XtraBars.BarDockControl barDockControl7;
+        private DevExpress.XtraBars.BarDockControl barDockControl8;
+        private DevExpress.XtraBars.BarDockControl barDockControl2;
+        private DevExpress.XtraBars.BarDockControl barDockControl9;
+        private DevExpress.XtraBars.BarDockControl barDockControl10;
+        private DevExpress.XtraBars.BarDockControl barDockControl11;
+        private DevExpress.XtraBars.PopupMenu popupMenu2;
+        private DevExpress.XtraBars.PopupMenu popupMenu3;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem RecalcRemainsMatBtn;
+        private DevExpress.XtraBars.BarButtonItem RecalcRemainsAllMatBtn;
+        private DevExpress.XtraBars.BarCheckItem ShowEmptyItemsCheck;
+        private DevExpress.XtraBars.BarCheckItem ShowAllItemsCheck;
     }
 }

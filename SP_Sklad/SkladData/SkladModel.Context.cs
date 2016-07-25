@@ -1345,5 +1345,23 @@ namespace SP_Sklad.SkladData
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatRsv_Result>("[BaseEntities].[GetMatRsv](@mat_id, @ka_id, @from_date, @to_date, @w_type)", mat_idParameter, ka_idParameter, from_dateParameter, to_dateParameter, w_typeParameter);
         }
+    
+        public virtual int RecalcRemainsMat(Nullable<int> mat_id)
+        {
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RecalcRemainsMat", mat_idParameter);
+        }
+    
+        public virtual ObjectResult<GetServiceTree_Result> GetServiceTree(Nullable<int> user_id)
+        {
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetServiceTree_Result>("GetServiceTree", user_idParameter);
+        }
     }
 }

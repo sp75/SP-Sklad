@@ -115,6 +115,12 @@
     <Compile Include="EditForm\frmMatRecipe.Designer.cs">
       <DependentUpon>frmMatRecipe.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditForm\frmUserEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmUserEdit.Designer.cs">
+      <DependentUpon>frmUserEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditForm\frmWhCatalog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +198,12 @@
     </Compile>
     <Compile Include="MainTabs\ReportUserControl.Designer.cs">
       <DependentUpon>ReportUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainTabs\ServiceUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainTabs\ServiceUserControl.Designer.cs">
+      <DependentUpon>ServiceUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="MainTabs\WarehouseUserControl.cs">
       <SubType>UserControl</SubType>
@@ -364,6 +376,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetReportTree_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetServiceTree_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetShippedPosIn_Result.cs">
@@ -754,6 +769,9 @@
     <EmbeddedResource Include="EditForm\frmMatRecipe.resx">
       <DependentUpon>frmMatRecipe.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmUserEdit.resx">
+      <DependentUpon>frmUserEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmWhCatalog.resx">
       <DependentUpon>frmWhCatalog.cs</DependentUpon>
     </EmbeddedResource>
@@ -795,6 +813,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainTabs\ReportUserControl.resx">
       <DependentUpon>ReportUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainTabs\ServiceUserControl.resx">
+      <DependentUpon>ServiceUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainTabs\WarehouseUserControl.resx">
       <DependentUpon>WarehouseUserControl.cs</DependentUpon>
@@ -871,6 +892,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatRecDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatRecipe.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.Users.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WaybillDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WhMatGet_Result.datasource" />
     <None Include="Properties\Settings.settings">

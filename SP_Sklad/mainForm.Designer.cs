@@ -67,6 +67,7 @@
             this.docsUserControl1 = new SP_Sklad.MainTabs.DocsUserControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.sharedImageCollection1 = new DevExpress.Utils.SharedImageCollection(this.components);
+            this.serviceUserControl1 = new SP_Sklad.MainTabs.ServiceUserControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit.CalendarTimeProperties)).BeginInit();
@@ -74,6 +75,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).BeginInit();
             this.gridSplitContainer1.SuspendLayout();
+            this.xtraTabPage7.SuspendLayout();
             this.xtraTabPage6.SuspendLayout();
             this.xtraTabPage5.SuspendLayout();
             this.xtraTabPage3.SuspendLayout();
@@ -349,6 +351,7 @@
             // 
             // xtraTabPage7
             // 
+            this.xtraTabPage7.Controls.Add(this.serviceUserControl1);
             this.xtraTabPage7.Image = global::SP_Sklad.Properties.Resources._1324534473_police;
             this.xtraTabPage7.Name = "xtraTabPage7";
             this.xtraTabPage7.Size = new System.Drawing.Size(1182, 578);
@@ -491,6 +494,14 @@
             this.sharedImageCollection1.ImageSource.Images.SetKeyName(8, "Склади.bmp");
             this.sharedImageCollection1.ParentControl = this;
             // 
+            // serviceUserControl1
+            // 
+            this.serviceUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.serviceUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.serviceUserControl1.Name = "serviceUserControl1";
+            this.serviceUserControl1.Size = new System.Drawing.Size(1182, 578);
+            this.serviceUserControl1.TabIndex = 0;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -512,6 +523,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).EndInit();
             this.gridSplitContainer1.ResumeLayout(false);
+            this.xtraTabPage7.ResumeLayout(false);
             this.xtraTabPage6.ResumeLayout(false);
             this.xtraTabPage5.ResumeLayout(false);
             this.xtraTabPage3.ResumeLayout(false);
@@ -565,6 +577,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private MainTabs.ReportUserControl reportUserControl1;
         private DevExpress.Utils.SharedImageCollection sharedImageCollection1;
+        private MainTabs.ServiceUserControl serviceUserControl1;
     }
 }
 

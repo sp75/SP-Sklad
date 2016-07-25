@@ -290,9 +290,14 @@ namespace SP_Sklad.Common
             } //else ShowMessage("Перегляд заборонено!");
         }
 
-        static public void ShowTurnMaterial(int mat_id)
+        static public void ShowTurnMaterial(int? mat_id)
         {
-            new frmMatTurn(mat_id).ShowDialog();
+            if (mat_id == null)
+            {
+                return;
+            }
+
+            new frmMatTurn(mat_id.Value).ShowDialog();
 
         }
         static public void ShowMatRSV(int? mat_id, BaseEntities db)
@@ -303,6 +308,15 @@ namespace SP_Sklad.Common
             }
 
             var f = new frmMatRSV(mat_id.Value, db).ShowDialog();
+        }
+
+        static public void ShowMatInfo(int? mat_id)
+        {
+            using (var f = new frmMaterialEdit(mat_id))
+            {
+                f.OkButton.Visible = false;
+                f.ShowDialog();
+            }
         }
 
     }

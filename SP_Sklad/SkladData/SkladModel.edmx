@@ -1565,7 +1565,7 @@
           <Property Name="Rsv" Type="numeric" Nullable="false" Precision="15" Scale="4" />
           <Property Name="AvgPrice" Type="numeric" Precision="15" Scale="4" />
           <Property Name="InWay" Type="numeric" Precision="15" Scale="4" />
-          <Property Name="Ordered" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="Ordered" Type="numeric" Nullable="false" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="PRICELIST">
           <Key>
@@ -4191,6 +4191,9 @@
         <Function Name="GetReportTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="user_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="GetServiceTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_id" Type="int" Mode="In" />
+        </Function>
         <Function Name="GetShippedPosIn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="pos_id" Type="int" Mode="In" />
         </Function>
@@ -4420,6 +4423,9 @@
               </RowType>
             </CollectionType>
           </ReturnType>
+        </Function>
+        <Function Name="RecalcRemainsMat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mat_id" Type="int" Mode="In" />
         </Function>
         <Function Name="REP_1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="from_date" Type="datetime" Mode="In" />
@@ -5888,6 +5894,12 @@
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
             <Parameter Name="to_date" Mode="In" Type="DateTime" />
             <Parameter Name="w_type" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RecalcRemainsMat">
+          <Parameter Name="mat_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetServiceTree" ReturnType="Collection(BaseModel.GetServiceTree_Result)">
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
@@ -8487,7 +8499,7 @@
           <Property Type="Decimal" Name="Rsv" Nullable="false" Precision="15" Scale="4" />
           <Property Type="Decimal" Name="AvgPrice" Precision="15" Scale="4" />
           <Property Type="Decimal" Name="InWay" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Ordered" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Ordered" Precision="15" Scale="4" Nullable="false" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" FromRole="PosRemains" ToRole="WaybillDet" />
           <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK__POSREMAINS__WID__2EA5EC27" FromRole="PosRemains" ToRole="Warehouse" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" FromRole="PosRemains" ToRole="Materials" />
@@ -9959,6 +9971,24 @@
           <Property Type="String" Name="KaName" Nullable="true" MaxLength="64" />
           <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
           <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetServiceTree_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="FunId" Nullable="true" />
+          <Property Type="Int32" Name="PId" Nullable="false" />
+          <Property Type="Int32" Name="Num" Nullable="false" />
+          <Property Type="Int32" Name="ImageIndex" Nullable="true" />
+          <Property Type="Int32" Name="IsGroup" Nullable="false" />
+          <Property Type="Int32" Name="ShowInTree" Nullable="true" />
+          <Property Type="Int32" Name="GType" Nullable="true" />
+          <Property Type="Int32" Name="DisabledIndex" Nullable="true" />
+          <Property Type="Int32" Name="ShowExpanded" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="CanView" Nullable="true" />
+          <Property Type="Int32" Name="CanInsert" Nullable="true" />
+          <Property Type="Int32" Name="CanModify" Nullable="true" />
+          <Property Type="Int32" Name="CanDelete" Nullable="true" />
+          <Property Type="Int32" Name="CanPost" Nullable="true" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -12314,6 +12344,29 @@
                 <ScalarProperty Name="KaName" ColumnName="KaName" />
                 <ScalarProperty Name="MatName" ColumnName="MatName" />
                 <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RecalcRemainsMat" FunctionName="BaseModel.Store.RecalcRemainsMat" />
+          <FunctionImportMapping FunctionImportName="GetServiceTree" FunctionName="BaseModel.Store.GetServiceTree">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetServiceTree_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FunId" ColumnName="FunId" />
+                <ScalarProperty Name="PId" ColumnName="PId" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="ImageIndex" ColumnName="ImageIndex" />
+                <ScalarProperty Name="IsGroup" ColumnName="IsGroup" />
+                <ScalarProperty Name="ShowInTree" ColumnName="ShowInTree" />
+                <ScalarProperty Name="GType" ColumnName="GType" />
+                <ScalarProperty Name="DisabledIndex" ColumnName="DisabledIndex" />
+                <ScalarProperty Name="ShowExpanded" ColumnName="ShowExpanded" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CanView" ColumnName="CanView" />
+                <ScalarProperty Name="CanInsert" ColumnName="CanInsert" />
+                <ScalarProperty Name="CanModify" ColumnName="CanModify" />
+                <ScalarProperty Name="CanDelete" ColumnName="CanDelete" />
+                <ScalarProperty Name="CanPost" ColumnName="CanPost" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
