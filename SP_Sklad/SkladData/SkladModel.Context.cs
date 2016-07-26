@@ -1363,5 +1363,23 @@ namespace SP_Sklad.SkladData
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetServiceTree_Result>("GetServiceTree", user_idParameter);
         }
+    
+        public virtual ObjectResult<GetUserAccessTree_Result> GetUserAccessTree(Nullable<int> user_id)
+        {
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserAccessTree_Result>("GetUserAccessTree", user_idParameter);
+        }
+    
+        public virtual ObjectResult<GetUserAccessWh_Result> GetUserAccessWh(Nullable<int> user_id)
+        {
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserAccessWh_Result>("GetUserAccessWh", user_idParameter);
+        }
     }
 }

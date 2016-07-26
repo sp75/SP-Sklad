@@ -78,6 +78,7 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.BarImageList = new System.Windows.Forms.ImageList(this.components);
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.AddGroupMatBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -92,7 +93,6 @@
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
-            this.BarImageList = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.UsersDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -372,6 +372,7 @@
             this.UsersGridView.OptionsView.EnableAppearanceEvenRow = true;
             this.UsersGridView.OptionsView.EnableAppearanceOddRow = true;
             this.UsersGridView.OptionsView.ShowGroupPanel = false;
+            this.UsersGridView.DoubleClick += new System.EventHandler(this.UsersGridView_DoubleClick);
             // 
             // gridColumn24
             // 
@@ -509,31 +510,31 @@
             // xtraTabPage6
             // 
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(969, 596);
+            this.xtraTabPage6.Size = new System.Drawing.Size(969, 594);
             this.xtraTabPage6.Text = "ViewList";
             // 
             // xtraTabPage1
             // 
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(969, 596);
+            this.xtraTabPage1.Size = new System.Drawing.Size(969, 594);
             this.xtraTabPage1.Text = "Монітор користувачів";
             // 
             // xtraTabPage2
             // 
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(969, 596);
+            this.xtraTabPage2.Size = new System.Drawing.Size(969, 594);
             this.xtraTabPage2.Text = "Бази даних";
             // 
             // xtraTabPage3
             // 
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(969, 596);
+            this.xtraTabPage3.Size = new System.Drawing.Size(969, 594);
             this.xtraTabPage3.Text = "Редактор SQL-запитiв";
             // 
             // xtraTabPage4
             // 
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(969, 596);
+            this.xtraTabPage4.Size = new System.Drawing.Size(969, 594);
             this.xtraTabPage4.Text = "Журнал подій";
             // 
             // barManager1
@@ -611,6 +612,7 @@
             this.NewItemBtn.Id = 0;
             this.NewItemBtn.ImageIndex = 0;
             this.NewItemBtn.Name = "NewItemBtn";
+            this.NewItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewItemBtn_ItemClick);
             // 
             // CopyItemBtn
             // 
@@ -633,6 +635,7 @@
             this.DeleteItemBtn.Id = 3;
             this.DeleteItemBtn.ImageIndex = 3;
             this.DeleteItemBtn.Name = "DeleteItemBtn";
+            this.DeleteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeleteItemBtn_ItemClick);
             // 
             // RefrechItemBtn
             // 
@@ -669,6 +672,18 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1196, 0);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 651);
+            // 
+            // BarImageList
+            // 
+            this.BarImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("BarImageList.ImageStream")));
+            this.BarImageList.TransparentColor = System.Drawing.Color.White;
+            this.BarImageList.Images.SetKeyName(0, "Add.bmp");
+            this.BarImageList.Images.SetKeyName(1, "Copy.bmp");
+            this.BarImageList.Images.SetKeyName(2, "edit.bmp");
+            this.BarImageList.Images.SetKeyName(3, "Delete.bmp");
+            this.BarImageList.Images.SetKeyName(4, "refresh.bmp");
+            this.BarImageList.Images.SetKeyName(5, "Баланс з контрагентом.bmp");
+            this.BarImageList.Images.SetKeyName(6, "Замовлене кл_єнтами.bmp");
             // 
             // barButtonItem1
             // 
@@ -758,18 +773,6 @@
             this.barButtonItem11.Caption = "Відображати архівні записи";
             this.barButtonItem11.Id = 26;
             this.barButtonItem11.Name = "barButtonItem11";
-            // 
-            // BarImageList
-            // 
-            this.BarImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("BarImageList.ImageStream")));
-            this.BarImageList.TransparentColor = System.Drawing.Color.White;
-            this.BarImageList.Images.SetKeyName(0, "Add.bmp");
-            this.BarImageList.Images.SetKeyName(1, "Copy.bmp");
-            this.BarImageList.Images.SetKeyName(2, "edit.bmp");
-            this.BarImageList.Images.SetKeyName(3, "Delete.bmp");
-            this.BarImageList.Images.SetKeyName(4, "refresh.bmp");
-            this.BarImageList.Images.SetKeyName(5, "Баланс з контрагентом.bmp");
-            this.BarImageList.Images.SetKeyName(6, "Замовлене кл_єнтами.bmp");
             // 
             // ServiceUserControl
             // 
