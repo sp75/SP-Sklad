@@ -12,20 +12,20 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class SVCGROUP
+    public partial class SvcGroup
     {
-        public SVCGROUP()
+        public SvcGroup()
         {
-            this.SERVICES = new HashSet<SERVICES>();
+            this.Services = new HashSet<Services>();
         }
     
-        public int GRPID { get; set; }
-        public int PID { get; set; }
-        public string NAME { get; set; }
-        public int DELETED { get; set; }
-        public string NOTES { get; set; }
-        public Nullable<int> NUM { get; set; }
+        public int GrpId { get; set; }
+        public int PId { get; set; }
+        public string Name { get; set; }
+        public int Deleted { get; set; }
+        public string Notes { get; set; }
+        public Nullable<int> Num { get; set; }
     
-        public virtual ICollection<SERVICES> SERVICES { get; set; }
+        public virtual ICollection<Services> Services { get; set; }
     }
 }

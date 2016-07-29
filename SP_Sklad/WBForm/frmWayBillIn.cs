@@ -23,12 +23,13 @@ namespace SP_Sklad.WBForm
     public partial class frmWayBillIn : Form
     {
         private int _wtype { get; set; }
-        BaseEntities _db { get; set; }
+        public BaseEntities _db { get; set; }
         private int? _wbill_id { get; set; }
+        public int? doc_id { get; set; }
         private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
 
-        public frmWayBillIn(int wtype, int? wbill_id)
+        public frmWayBillIn(int wtype, int? wbill_id = null)
         {
             _wtype = wtype;
             _wbill_id = wbill_id;
@@ -40,7 +41,7 @@ namespace SP_Sklad.WBForm
 
         private void frmWayBillIn_Load(object sender, EventArgs e)
         {
-            if (_wbill_id == null)
+            if (_wbill_id == null && doc_id == null)
             {
                 wb = _db.WaybillList.Add(new WaybillList()
                 {
@@ -59,7 +60,7 @@ namespace SP_Sklad.WBForm
             {
                 try
                 {
-                    wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0}", _wbill_id).FirstOrDefault();
+                    UpdLockWB();
                     _db.Entry<WaybillList>(wb).State = EntityState.Modified;
                     _db.Entry<WaybillList>(wb).Property(f => f.SummPay).IsModified = false;
                 }
@@ -84,6 +85,20 @@ namespace SP_Sklad.WBForm
             WHComboBox.EditValue = wh_list.Where(w => w.Def == 1).Select(s => s.WId).FirstOrDefault();
 
             RefreshDet();
+        }
+
+        private void UpdLockWB()
+        {
+            if (_wbill_id == null && doc_id != null)
+            {
+                wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where DocId = {0} ", doc_id).FirstOrDefault();
+            }
+            else
+            {
+                wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0} ", _wbill_id).FirstOrDefault();
+            }
+
+            _wbill_id = wb.WbillId;
         }
 
         private void GetDocValue(WaybillList wb)
@@ -206,11 +221,16 @@ namespace SP_Sklad.WBForm
 
             if (dr != null)
             {
-                var df = new frmWayBillDetIn(_db, dr.PosId, wb);
-                if (df.ShowDialog() == DialogResult.OK)
+                if (dr.PosId > 0)
                 {
-                    RefreshDet();
+                    new frmWayBillDetIn(_db, dr.PosId, wb).ShowDialog();
                 }
+                else
+                {
+                    new frmWaybillSvcDet(_db, dr.PosId * -1, wb).ShowDialog();
+                }
+
+                RefreshDet();
             }
         }
 
@@ -220,7 +240,14 @@ namespace SP_Sklad.WBForm
 
             if (dr != null)
             {
-                _db.WaybillDet.Remove(_db.WaybillDet.Find(dr.PosId));
+                if (dr.PosId > 0)
+                {
+                    _db.DeleteWhere<WaybillDet>(w => w.PosId == dr.PosId);
+                }
+                else
+                {
+                    _db.DeleteWhere<WayBillSvc>(w => w.PosId == dr.PosId * -1);
+                }
                 _db.SaveChanges();
 
                 RefreshDet();
@@ -229,18 +256,19 @@ namespace SP_Sklad.WBForm
 
         private void RefreshDet()
         {
-            WaybillDetInGridControl.DataSource = _db.GetWaybillDetIn(_wbill_id);
+            _db.UpdWaybillDetPrice(_wbill_id);
+            WaybillDetInBS.DataSource = _db.GetWaybillDetIn(_wbill_id);
             GetOk();
         }
 
         bool GetOk()
         {
-            bool recult = (NumEdit.EditValue != null  && KagentComboBox.EditValue != null && OnDateDBEdit.EditValue != null && WaybillDetInGridView.DataRowCount > 0);
+            bool recult = (NumEdit.EditValue != null  && KagentComboBox.EditValue != null && OnDateDBEdit.EditValue != null && WaybillDetInBS.List.Count > 0);
             barSubItem1.Enabled = KagentComboBox.EditValue != null;
 
             OkButton.Enabled = recult;
-            EditMaterialBtn.Enabled = WaybillDetInGridView.DataRowCount > 0;
-            DelMaterialBtn.Enabled = WaybillDetInGridView.DataRowCount > 0;
+            EditMaterialBtn.Enabled = WaybillDetInBS.List.Count > 0;
+            DelMaterialBtn.Enabled = WaybillDetInBS.List.Count > 0;
 
             return recult;
         }
@@ -308,6 +336,15 @@ namespace SP_Sklad.WBForm
 
             wb.KaId = (int?)KagentComboBox.EditValue;
             GetOk();
+        }
+
+        private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var df = new frmWaybillSvcDet(_db, null, wb);
+            if (df.ShowDialog() == DialogResult.OK)
+            {
+                RefreshDet();
+            }
         }
 
 

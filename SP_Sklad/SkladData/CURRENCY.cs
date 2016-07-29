@@ -25,10 +25,10 @@ namespace SP_Sklad.SkladData
             this.PayDoc = new HashSet<PayDoc>();
             this.MONEYSALDO = new HashSet<MONEYSALDO>();
             this.PRICELIST = new HashSet<PRICELIST>();
-            this.SERVICES = new HashSet<SERVICES>();
             this.WaybillList = new HashSet<WaybillList>();
-            this.WAYBILLSVC = new HashSet<WAYBILLSVC>();
             this.WaybillDet = new HashSet<WaybillDet>();
+            this.Services = new HashSet<Services>();
+            this.WayBillSvc = new HashSet<WayBillSvc>();
         }
     
         public int CurrId { get; set; }
@@ -49,9 +49,9 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<PayDoc> PayDoc { get; set; }
         public virtual ICollection<MONEYSALDO> MONEYSALDO { get; set; }
         public virtual ICollection<PRICELIST> PRICELIST { get; set; }
-        public virtual ICollection<SERVICES> SERVICES { get; set; }
         public virtual ICollection<WaybillList> WaybillList { get; set; }
-        public virtual ICollection<WAYBILLSVC> WAYBILLSVC { get; set; }
         public virtual ICollection<WaybillDet> WaybillDet { get; set; }
+        public virtual ICollection<Services> Services { get; set; }
+        public virtual ICollection<WayBillSvc> WayBillSvc { get; set; }
     }
 }

@@ -69,7 +69,7 @@ namespace SP_Sklad.EditForm
                 ProducerLookUpEdit.Properties.DataSource = DB.SkladBase().Materials.Select(s => new { s.Producer }).Distinct().ToList();
                 CIdLookUpEdit.Properties.DataSource = DBHelper.CountersList;
 
-                bindingSource1.DataSource = _mat;               
+                MaterialsBS.DataSource = _mat;               
              }
 
         }

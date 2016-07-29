@@ -49,7 +49,7 @@ namespace SP_Sklad.MainTabs
                 {
                     repositoryItemLookUpEdit1.DataSource = DBHelper.WhList();
 
-                    DirTreeList.DataSource = db.GetDirTree(DBHelper.CurrentUser.UserId).ToList();
+                    DirTreeBS.DataSource = db.GetDirTree(DBHelper.CurrentUser.UserId).ToList();
                     DirTreeList.ExpandToLevel(1);
                 }
             }
@@ -80,10 +80,10 @@ namespace SP_Sklad.MainTabs
                     MatListDS.DataSource = DB.SkladBase().GetMatList(focused_tree_node.Id == 6 ? -1 : focused_tree_node.GrpId, 0, 0, 0);
                     break;
 
-                /*     case 3: Services->Open();
-                         if (DirectTreeID->Value == 51) Services->Filter = "";
-                         else Services->Filter = "GRPID = " + DirectTreeGRPID->AsString;
-                         break;*/
+                case 3:
+                    if (focused_tree_node.Id == 51) ServicesBS.DataSource = DB.SkladBase().v_Services.ToList();
+                    else ServicesBS.DataSource = DB.SkladBase().v_Services.Where(w => w.GrpId == focused_tree_node.GrpId).ToList();
+                    break;
 
                 case 4: switch (focused_tree_node.Id)
                     {
@@ -107,7 +107,7 @@ namespace SP_Sklad.MainTabs
                                 s.Name,
                                 GrpName = s.Materials.MatGroup.Name
                             }).ToList();
-                            
+
                             extDirTabControl.SelectedTabPageIndex = 0; break;
                         case 42:
                             MatRecipeDS.DataSource = db.MatRecipe.Where(w => w.RType == 2).Select(s => new
@@ -182,15 +182,9 @@ namespace SP_Sklad.MainTabs
                     result = new frmMaterialEdit(r.MatId).ShowDialog();
                     break;
 
-                /*     case 3: frmServicesEdit = new TfrmServicesEdit(Application);
-                         frmServicesEdit->Services->ParamByName("SVCID")->Value = ServicesSVCID->Value;
-                         frmServicesEdit->Services->Open();
-                         frmServicesEdit->Services->Edit();
-                         frmServicesEdit->ShowModal();
-                         delete frmServicesEdit;
-                         DirectTree->Refresh();
-                         Services->FullRefresh();
-                         break;*/
+                case 3: var svc_row = ServicesGridView.GetFocusedRow() as v_Services;
+                    result = new frmServicesEdit(svc_row.SvcId).ShowDialog();
+                    break;
 
                 case 4: switch (focused_tree_node.Id)
                     {
@@ -308,15 +302,13 @@ namespace SP_Sklad.MainTabs
                         mat_edit.ShowDialog();
                     }
                     break;
-                /*
-                                case 3: frmServicesEdit = new TfrmServicesEdit(Application);
-                                    frmServicesEdit->Services->Open();
-                                    frmServicesEdit->SvcGroup->Locate("GRPID", DirectTreeID->Value, TLocateOptions());
-                                    frmServicesEdit->Services->Append();
-                                    frmServicesEdit->ShowModal();
-                                    delete frmServicesEdit;
-                                    Services->FullRefresh();
-                                    break;*/
+
+                case 3: if (DB.SkladBase().SvcGroup.Any())
+                    {
+                        var svc_edit = new frmServicesEdit(null, focused_tree_node.Id < 0 ? focused_tree_node.Id * -1 : DB.SkladBase().SvcGroup.First().GrpId);
+                        svc_edit.ShowDialog();
+                    }
+                    break;
 
                 case 4: switch (focused_tree_node.Id)
                     {
@@ -410,62 +402,71 @@ namespace SP_Sklad.MainTabs
 
         private void DeleteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (MessageBox.Show("Ви дійсно бажаєте відалити цей запис з довідника?", "Підтвердіть видалення", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-              {
-                  using (var db = DB.SkladBase())
-                  {
-                      switch (focused_tree_node.GType)
-                      {
-                          case 1:
-                              var ka = KaGridView.GetFocusedRow() as KagentList;
-
-                              var item = db.Kagent.Find(ka.KaId);
-                              if (item != null)
-                              {
-                                  item.Deleted = 1;
-                              }
-
-                              break;
-
-                          case 2:
-                              var r = MatGridView.GetFocusedRow() as GetMatList_Result;
-
-                              var mat = db.Materials.Find(r.MatId);
-                              if (mat != null)
-                              {
-                                  mat.Deleted = 1;
-                              }
-
-                              break;
-
-                          /*   case 3: Services->Delete();
-                                 break;*/
-
-                          case 4: switch (focused_tree_node.Id)
-                              {
-                                  /*     case 25: SkladData->Warehouse->Delete(); break;
-                                       case 11: SkladData->Banks->Delete(); break;
-                                       case 2: SkladData->Measures->Delete(); break;
-                                       case 40: SkladData->Pricetypes->Delete(); break;
-                                       case 12: SkladData->AccountType->Delete(); break;
-                                       case 43: SkladData->Countries->Delete(); break;
-                                       case 102: SkladData->Chargetype->Delete(); break;
-                                       case 64: SkladData->Cashdesks->Delete(); break;*/
-                                  case 42:
-                                  case 53:
-                                      int mat_rec = ((dynamic)MatRecipeGridView.GetFocusedRow()).RecId;
-                                      db.DeleteWhere<MatRecipe>(w => w.RecId == mat_rec);
-                                      break;
-                                  //     case 112: SkladData->TechProcess->Delete(); break;
-                              }
-                              break;
-
-                      }
-
-                      db.SaveChanges();
-                  }
-                RefrechItemBtn.PerformClick();
+            if (MessageBox.Show("Ви дійсно бажаєте відалити цей запис з довідника?", "Підтвердіть видалення", MessageBoxButtons.YesNo, MessageBoxIcon.Information) != DialogResult.Yes)
+            {
+                return;
             }
+
+            using (var db = DB.SkladBase())
+            {
+                switch (focused_tree_node.GType)
+                {
+                    case 1:
+                        var ka = KaGridView.GetFocusedRow() as KagentList;
+
+                        var item = db.Kagent.Find(ka.KaId);
+                        if (item != null)
+                        {
+                            item.Deleted = 1;
+                        }
+
+                        break;
+
+                    case 2:
+                        var r = MatGridView.GetFocusedRow() as GetMatList_Result;
+
+                        var mat = db.Materials.Find(r.MatId);
+                        if (mat != null)
+                        {
+                            mat.Deleted = 1;
+                        }
+
+                        break;
+
+                    case 3:
+                        var svc_row = ServicesGridView.GetFocusedRow() as v_Services;
+
+                        var svc = db.Services.Find(svc_row.SvcId);
+                        if (svc != null)
+                        {
+                            svc.Deleted = 1;
+                        }
+                        break;
+
+                    case 4: switch (focused_tree_node.Id)
+                        {
+                            /*     case 25: SkladData->Warehouse->Delete(); break;
+                                 case 11: SkladData->Banks->Delete(); break;
+                                 case 2: SkladData->Measures->Delete(); break;
+                                 case 40: SkladData->Pricetypes->Delete(); break;
+                                 case 12: SkladData->AccountType->Delete(); break;
+                                 case 43: SkladData->Countries->Delete(); break;
+                                 case 102: SkladData->Chargetype->Delete(); break;
+                                 case 64: SkladData->Cashdesks->Delete(); break;*/
+                            case 42:
+                            case 53:
+                                int mat_rec = ((dynamic)MatRecipeGridView.GetFocusedRow()).RecId;
+                                db.DeleteWhere<MatRecipe>(w => w.RecId == mat_rec);
+                                break;
+                            //     case 112: SkladData->TechProcess->Delete(); break;
+                        }
+                        break;
+
+                }
+
+                db.SaveChanges();
+            }
+            RefrechItemBtn.PerformClick();
         }
 
         private void KaGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -523,7 +524,7 @@ namespace SP_Sklad.MainTabs
 
         private void ExplorerRefreshBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            DirTreeList.DataSource = DB.SkladBase().GetDirTree(DBHelper.CurrentUser.UserId).ToList();
+            DirTreeBS.DataSource = DB.SkladBase().GetDirTree(DBHelper.CurrentUser.UserId).ToList();
         }
 
         private void AddGroupMatBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -539,7 +540,15 @@ namespace SP_Sklad.MainTabs
 
         private void DelExplorerBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            DB.SkladBase().DeleteWhere<MatGroup>(w => w.GrpId == focused_tree_node.GrpId).SaveChanges();
+            switch (focused_tree_node.GType)
+            {
+                case 2: DB.SkladBase().DeleteWhere<MatGroup>(w => w.GrpId == focused_tree_node.GrpId).SaveChanges();
+                    break;
+                case 3: DB.SkladBase().DeleteWhere<SvcGroup>(w => w.GrpId == focused_tree_node.GrpId).SaveChanges();
+                    break;
+            }
+
+            ExplorerRefreshBtn.PerformClick();
         }
 
         private void MatRecipeGridView_DoubleClick(object sender, EventArgs e)
@@ -552,6 +561,17 @@ namespace SP_Sklad.MainTabs
             var ka = KaGridView.GetFocusedRow() as KagentList;
 
             IHelper.ShowKABalans(ka.KaId);
+        }
+
+        private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (focused_tree_node.ImageIndex == 2 && focused_tree_node.GType == 3)
+            {
+                new frmSvcGroupEdit(null, focused_tree_node.GrpId).ShowDialog();
+            }
+            else new frmSvcGroupEdit().ShowDialog();
+
+            ExplorerRefreshBtn.PerformClick();
         }
     }
 }

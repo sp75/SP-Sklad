@@ -49,12 +49,9 @@ namespace SP_Sklad.SkladData
         public DbSet<PRICELIST> PRICELIST { get; set; }
         public DbSet<PRICELISTDET> PRICELISTDET { get; set; }
         public DbSet<SERIALS> SERIALS { get; set; }
-        public DbSet<SERVICES> SERVICES { get; set; }
-        public DbSet<SVCGROUP> SVCGROUP { get; set; }
         public DbSet<TABLES> TABLES { get; set; }
         public DbSet<TAXES> TAXES { get; set; }
         public DbSet<TAXWB> TAXWB { get; set; }
-        public DbSet<WAYBILLSVC> WAYBILLSVC { get; set; }
         public DbSet<WaybillList> WaybillList { get; set; }
         public DbSet<Actives> Actives { get; set; }
         public DbSet<WMatTurn> WMatTurn { get; set; }
@@ -119,6 +116,10 @@ namespace SP_Sklad.SkladData
         public DbSet<Reports> Reports { get; set; }
         public DbSet<Languages> Languages { get; set; }
         public DbSet<MaterialsList> MaterialsList { get; set; }
+        public DbSet<Services> Services { get; set; }
+        public DbSet<SvcGroup> SvcGroup { get; set; }
+        public DbSet<v_Services> v_Services { get; set; }
+        public DbSet<WayBillSvc> WayBillSvc { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)

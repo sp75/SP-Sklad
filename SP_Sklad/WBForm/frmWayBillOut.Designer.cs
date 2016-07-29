@@ -286,6 +286,7 @@
             this.barButtonItem7.Id = 7;
             this.barButtonItem7.ImageIndex = 10;
             this.barButtonItem7.Name = "barButtonItem7";
+            this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
             // 
             // barButtonItem8
             // 
@@ -896,7 +897,7 @@
             // gridColumn4
             // 
             this.gridColumn4.Caption = "Кількість";
-            this.gridColumn4.DisplayFormat.FormatString = "0,0000";
+            this.gridColumn4.DisplayFormat.FormatString = "0.0000";
             this.gridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn4.FieldName = "Amount";
             this.gridColumn4.Name = "gridColumn4";
@@ -938,7 +939,7 @@
             // gridColumn7
             // 
             this.gridColumn7.Caption = "Всього ПДВ";
-            this.gridColumn7.DisplayFormat.FormatString = "0,00";
+            this.gridColumn7.DisplayFormat.FormatString = "0.00";
             this.gridColumn7.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn7.FieldName = "SumNds";
             this.gridColumn7.Name = "gridColumn7";

@@ -149,18 +149,7 @@ namespace SP_Sklad.MainTabs
 
         private void WhMatGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            var dr = WhMatGridView.GetRow(e.FocusedRowHandle) as WhMatGet_Result;
-
-            if (dr != null)
-            {
-                RemainOnWhGrid.DataSource = DB.SkladBase().WMatGetByWh(dr.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, wh_list).ToList();
-                PosGridControl.DataSource = DB.SkladBase().PosGet(dr.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list).ToList();
-            }
-            else
-            {
-                RemainOnWhGrid.DataSource = null;
-                PosGridControl.DataSource = null;
-            }
+            GetWhBottomInfo(focused_wh_mat);
         }
 
         private void PosGridControl_Click(object sender, EventArgs e)
@@ -564,5 +553,35 @@ namespace SP_Sklad.MainTabs
             RefreshWhBtn.PerformClick();
         }
 
+        private void xtraTabControl1_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
+        {
+            GetWhBottomInfo(focused_wh_mat);
+        }
+
+        private void GetWhBottomInfo(WhMatGet_Result row)
+        {
+            if (row == null)
+            {
+                return;
+            }
+
+            switch (xtraTabControl1.SelectedTabPageIndex)
+            {
+                case 0:
+                    RemainOnWhGrid.DataSource = null;
+                    RemainOnWhGrid.DataSource = DB.SkladBase().WMatGetByWh(row.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, wh_list).ToList();
+                    break;
+                case 1:
+                    PosGridControl.DataSource = null;
+                    PosGridControl.DataSource = DB.SkladBase().PosGet(row.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list).ToList();
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+
+                    break;
+            }
+        }
     }
 }

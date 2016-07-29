@@ -185,21 +185,6 @@ namespace SP_Sklad.WBForm
             GetOk();
         }
 
-        private int FindRowHandleByRowObject(GridView view, GetWayBillDetOut_Result dr)
-        {
-            if (dr != null)
-            {
-                for (int i = 0; i < view.DataRowCount; i++)
-                {
-                    if (dr.PosId == (view.GetRow(i) as GetWayBillDetOut_Result).PosId)
-                    {
-                        return i;
-                    }
-                }
-            }
-            return GridControl.InvalidRowHandle;
-        }
-
         bool GetOk()
         {
             bool recult = (!String.IsNullOrEmpty(NumEdit.Text) && KagentComboBox.EditValue != null && OnDateDBEdit.EditValue != null && wbd_list != null && wbd_list.Any());
@@ -237,7 +222,14 @@ namespace SP_Sklad.WBForm
 
             if (dr != null)
             {
-                _db.DeleteWhere<WaybillDet>(w => w.PosId == dr.PosId);
+                if (dr.PosId > 0)
+                {
+                    _db.DeleteWhere<WaybillDet>(w => w.PosId == dr.PosId);
+                }
+                else
+                {
+                    _db.DeleteWhere<WayBillSvc>(w => w.PosId == dr.PosId * -1);
+                }
                 _db.SaveChanges();
 
                 RefreshDet();
@@ -284,10 +276,14 @@ namespace SP_Sklad.WBForm
                 if (dr.PosId > 0)
                 {
                     var df = new frmWayBillDetOut(_db, dr.PosId, wb).ShowDialog();
-                }
 
-                current_transaction = current_transaction.CommitRetaining(_db);
-                UpdLockWB();
+                    current_transaction = current_transaction.CommitRetaining(_db);
+                    UpdLockWB();
+                }
+                else
+                {
+                    new frmWaybillSvcDet(_db, dr.PosId*-1, wb).ShowDialog();
+                }
 
                 RefreshDet();
             }
@@ -423,6 +419,15 @@ namespace SP_Sklad.WBForm
             if ( dr != null )
             {
                 IHelper.ShowMatRSV(dr.MatId, _db);
+            }
+        }
+
+        private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var df = new frmWaybillSvcDet(_db, null, wb);
+            if (df.ShowDialog() == DialogResult.OK)
+            {
+                RefreshDet();
             }
         }
     }

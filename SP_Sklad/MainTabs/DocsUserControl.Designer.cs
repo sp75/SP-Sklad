@@ -1771,6 +1771,7 @@
             this.ExecuteInBtn.Caption = "Отримати весь товар на склад";
             this.ExecuteInBtn.Id = 8;
             this.ExecuteInBtn.Name = "ExecuteInBtn";
+            this.ExecuteInBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExecuteInBtn_ItemClick);
             // 
             // NewPayDocBtn
             // 

@@ -73,7 +73,7 @@ namespace SP_Sklad.Common
                         var dis = db.GetDiscount(wb.KaId, item.MatId).FirstOrDefault() ?? 0.00m;
                         wbd.Discount = dis;
                         wbd.Price = item.Price - Math.Round((item.Price.Value * dis / 100), 2);
-                        wbd.BasePrice = item.Price + Math.Round(item.Price.Value * wb.Nds.Value / 100, -2);
+                        wbd.BasePrice = item.Price + Math.Round(item.Price.Value * wb.Nds.Value / 100, 2);
                     }
                 }
                 db.SaveChanges();

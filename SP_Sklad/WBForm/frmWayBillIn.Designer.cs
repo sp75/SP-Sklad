@@ -97,6 +97,7 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
+            this.WaybillDetInBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -124,6 +125,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInBS)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -259,6 +261,7 @@
             this.barButtonItem7.Id = 7;
             this.barButtonItem7.ImageIndex = 10;
             this.barButtonItem7.Name = "barButtonItem7";
+            this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
             // 
             // barButtonItem8
             // 
@@ -711,6 +714,7 @@
             // 
             // WaybillDetInGridControl
             // 
+            this.WaybillDetInGridControl.DataSource = this.WaybillDetInBS;
             this.WaybillDetInGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WaybillDetInGridControl.Location = new System.Drawing.Point(2, 2);
             this.WaybillDetInGridControl.MainView = this.WaybillDetInGridView;
@@ -863,6 +867,10 @@
             this.barDockControl1.Location = new System.Drawing.Point(2, 2);
             this.barDockControl1.Size = new System.Drawing.Size(965, 0);
             // 
+            // WaybillDetInBS
+            // 
+            this.WaybillDetInBS.DataSource = typeof(SP_Sklad.SkladData.GetWaybillDetIn_Result);
+            // 
             // frmWayBillIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -912,6 +920,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -986,5 +995,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private System.Windows.Forms.Panel panel1;
         private MainTabs.PayDocUserControl payDocUserControl1;
+        private System.Windows.Forms.BindingSource WaybillDetInBS;
     }
 }

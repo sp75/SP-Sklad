@@ -12,26 +12,26 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class WAYBILLSVC
+    public partial class WayBillSvc
     {
-        public int POSID { get; set; }
-        public int WBILLID { get; set; }
-        public int CURRID { get; set; }
-        public int SVCID { get; set; }
-        public int NUM { get; set; }
-        public decimal PRICE { get; set; }
-        public Nullable<decimal> BASEPRICE { get; set; }
-        public Nullable<decimal> NORM { get; set; }
-        public decimal AMOUNT { get; set; }
-        public Nullable<decimal> NDS { get; set; }
-        public Nullable<decimal> DISCOUNT { get; set; }
-        public Nullable<int> PERSONID { get; set; }
-        public Nullable<int> SVCTOPRICE { get; set; }
-        public Nullable<decimal> TOTAL { get; set; }
+        public int PosId { get; set; }
+        public int WbillId { get; set; }
+        public int CurrId { get; set; }
+        public int SvcId { get; set; }
+        public int Num { get; set; }
+        public decimal Price { get; set; }
+        public Nullable<decimal> BasePrice { get; set; }
+        public Nullable<decimal> Norm { get; set; }
+        public decimal Amount { get; set; }
+        public Nullable<decimal> Nds { get; set; }
+        public Nullable<decimal> Discount { get; set; }
+        public Nullable<int> PersonId { get; set; }
+        public Nullable<int> SvcToPrice { get; set; }
+        public Nullable<decimal> Total { get; set; }
     
-        public virtual SERVICES SERVICES { get; set; }
-        public virtual WaybillList WaybillList { get; set; }
-        public virtual Kagent Kagent { get; set; }
         public virtual Currency Currency { get; set; }
+        public virtual Kagent Kagent { get; set; }
+        public virtual Services Services { get; set; }
+        public virtual WaybillList WaybillList { get; set; }
     }
 }

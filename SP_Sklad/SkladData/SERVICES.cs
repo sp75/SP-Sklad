@@ -12,29 +12,29 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class SERVICES
+    public partial class Services
     {
-        public SERVICES()
+        public Services()
         {
-            this.WAYBILLSVC = new HashSet<WAYBILLSVC>();
+            this.WayBillSvc = new HashSet<WayBillSvc>();
         }
     
-        public int SVCID { get; set; }
-        public string NAME { get; set; }
-        public string ARTIKUL { get; set; }
-        public int GRPID { get; set; }
-        public int ISTRANSPORT { get; set; }
-        public Nullable<decimal> PRICE { get; set; }
-        public Nullable<int> CURRID { get; set; }
-        public string NOTES { get; set; }
-        public int DELETED { get; set; }
-        public int ISNORMED { get; set; }
-        public Nullable<decimal> NORM { get; set; }
-        public Nullable<int> MID { get; set; }
+        public int SvcId { get; set; }
+        public string Name { get; set; }
+        public string Artikul { get; set; }
+        public int GrpId { get; set; }
+        public int IsTransport { get; set; }
+        public Nullable<decimal> Price { get; set; }
+        public Nullable<int> CurrId { get; set; }
+        public string Notes { get; set; }
+        public int Deleted { get; set; }
+        public int IsNormed { get; set; }
+        public Nullable<decimal> Norm { get; set; }
+        public Nullable<int> MId { get; set; }
     
-        public virtual SVCGROUP SVCGROUP { get; set; }
-        public virtual ICollection<WAYBILLSVC> WAYBILLSVC { get; set; }
         public virtual Currency Currency { get; set; }
         public virtual Measures Measures { get; set; }
+        public virtual SvcGroup SvcGroup { get; set; }
+        public virtual ICollection<WayBillSvc> WayBillSvc { get; set; }
     }
 }

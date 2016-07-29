@@ -28,6 +28,7 @@ namespace SP_Sklad.MainTabs
         int show_null_balance = 1;
         BaseEntities _db { get; set; }
         v_GetDocsTree focused_tree_node { get; set; }
+        GetWayBillList_Result wb_focused_row { get { return WbGridView.GetFocusedRow() as GetWayBillList_Result; } }  
 
         public DocsUserControl()
         {
@@ -680,8 +681,7 @@ namespace SP_Sklad.MainTabs
 
         private void ExecuteInvBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
-            var wbl = DB.SkladBase().WaybillList.FirstOrDefault(w => w.WbillId == dr.WbillId);
+            var wbl = DB.SkladBase().WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
             if (wbl == null)
             {
                 return;
@@ -692,31 +692,34 @@ namespace SP_Sklad.MainTabs
                 using (var f = new frmWayBillOut(-1,null))
                 {
                     var result = f._db.ExecuteWayBill(wbl.WbillId, null).ToList().FirstOrDefault();
-          //          f.NumEdit.Text = new BaseEntities().GetCounter("wb_out").FirstOrDefault();
                     f.doc_id = result.NewDocId;
                     f.ShowDialog();
                 }
             }
 
             RefrechItemBtn.PerformClick();
+        }
 
-
-         /*   Variant curID = WayBillListWBILLID->Value;
-            WayBillList->FullRefresh();
-            if (WayBillListCHECKED->Value == 0 && curID == WayBillListWBILLID->Value)
+        private void ExecuteInBtn_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var wbl = DB.SkladBase().WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
+            if (wbl == null)
             {
-                frmWayBillOut = new TfrmWayBillOut(Application);
-                frmWayBillOut->EXECUTE_WAYBILL->ParamByName("WBILLID")->Value = WayBillListWBILLID->Value;
-                frmWayBillOut->EXECUTE_WAYBILL->Open();
-                frmWayBillOut->WBOutTr->CommitRetaining(); // щоб не було конфликта
-                frmWayBillOut->WayBillList->ParamByName("DOCID")->Value = frmWayBillOut->EXECUTE_WAYBILLNEW_DOCID->Value;
-                frmWayBillOut->WayBillList->Open();
-                frmWayBillOut->WayBillList->Edit();
-                frmWayBillOut->ShowModal();
-                delete frmWayBillOut;
+                return;
             }
-            WayBillList->Refresh();
-            GET_RelDocList->FullRefresh();*/
+
+            if (wbl.Checked == 0)
+            {
+                using (var f = new frmWayBillIn(1))
+                {
+                    var result = f._db.ExecuteWayBill(wbl.WbillId, null).ToList().FirstOrDefault();
+                  
+                    f.doc_id = result.NewDocId;
+                    f.ShowDialog();
+                }
+            }
+
+            RefrechItemBtn.PerformClick();
         }
 
     }

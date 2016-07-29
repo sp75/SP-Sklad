@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMaterialEdit));
-            DevExpress.XtraPrinting.BarCode.Code39ExtendedGenerator code39ExtendedGenerator1 = new DevExpress.XtraPrinting.BarCode.Code39ExtendedGenerator();
+            DevExpress.XtraPrinting.BarCode.Code39ExtendedGenerator code39ExtendedGenerator2 = new DevExpress.XtraPrinting.BarCode.Code39ExtendedGenerator();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -47,7 +47,7 @@
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit4 = new DevExpress.XtraEditors.TextEdit();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.MaterialsBS = new System.Windows.Forms.BindingSource(this.components);
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.BarCodeEdit = new DevExpress.XtraEditors.TextEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
@@ -117,7 +117,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaterialsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarCodeEdit.Properties)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -328,16 +328,16 @@
             // 
             this.textEdit4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEdit4.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "LabelDescr", true));
+            this.textEdit4.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.MaterialsBS, "LabelDescr", true));
             this.textEdit4.Location = new System.Drawing.Point(157, 86);
             this.textEdit4.Name = "textEdit4";
             this.textEdit4.Size = new System.Drawing.Size(189, 22);
             this.textEdit4.StyleController = this.styleController1;
             this.textEdit4.TabIndex = 34;
             // 
-            // bindingSource1
+            // MaterialsBS
             // 
-            this.bindingSource1.DataSource = typeof(SP_Sklad.SkladData.Materials);
+            this.MaterialsBS.DataSource = typeof(SP_Sklad.SkladData.Materials);
             // 
             // simpleButton3
             // 
@@ -353,7 +353,7 @@
             // 
             this.BarCodeEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.BarCodeEdit.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "BarCode", true));
+            this.BarCodeEdit.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.MaterialsBS, "BarCode", true));
             this.BarCodeEdit.Location = new System.Drawing.Point(86, 33);
             this.BarCodeEdit.Name = "BarCodeEdit";
             this.BarCodeEdit.Size = new System.Drawing.Size(189, 22);
@@ -371,15 +371,15 @@
             // 
             // barCodeControl1
             // 
-            this.barCodeControl1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "BarCode", true));
+            this.barCodeControl1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.MaterialsBS, "BarCode", true));
             this.barCodeControl1.Location = new System.Drawing.Point(323, 33);
             this.barCodeControl1.Module = 1D;
             this.barCodeControl1.Name = "barCodeControl1";
             this.barCodeControl1.Padding = new System.Windows.Forms.Padding(10, 2, 10, 0);
             this.barCodeControl1.ShowText = false;
             this.barCodeControl1.Size = new System.Drawing.Size(261, 22);
-            code39ExtendedGenerator1.WideNarrowRatio = 3F;
-            this.barCodeControl1.Symbology = code39ExtendedGenerator1;
+            code39ExtendedGenerator2.WideNarrowRatio = 3F;
+            this.barCodeControl1.Symbology = code39ExtendedGenerator2;
             this.barCodeControl1.TabIndex = 30;
             // 
             // panel1
@@ -418,7 +418,7 @@
             // 
             // SerialsCheckEdit
             // 
-            this.SerialsCheckEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "Serials", true));
+            this.SerialsCheckEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MaterialsBS, "Serials", true));
             this.SerialsCheckEdit.Location = new System.Drawing.Point(347, 133);
             this.SerialsCheckEdit.MenuManager = this.barManager1;
             this.SerialsCheckEdit.Name = "SerialsCheckEdit";
@@ -505,7 +505,7 @@
             // 
             // WIdLookUpEdit
             // 
-            this.WIdLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "WId", true));
+            this.WIdLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MaterialsBS, "WId", true));
             this.WIdLookUpEdit.Location = new System.Drawing.Point(109, 170);
             this.WIdLookUpEdit.Name = "WIdLookUpEdit";
             this.WIdLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -543,7 +543,7 @@
             // 
             this.ArtikulEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ArtikulEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "Artikul", true));
+            this.ArtikulEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MaterialsBS, "Artikul", true));
             this.ArtikulEdit.Location = new System.Drawing.Point(109, 46);
             this.ArtikulEdit.Name = "ArtikulEdit";
             this.ArtikulEdit.Size = new System.Drawing.Size(447, 22);
@@ -564,7 +564,7 @@
             // 
             this.NameTextEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.NameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "Name", true));
+            this.NameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MaterialsBS, "Name", true));
             this.NameTextEdit.Location = new System.Drawing.Point(109, 12);
             this.NameTextEdit.Name = "NameTextEdit";
             this.NameTextEdit.Size = new System.Drawing.Size(447, 22);
@@ -583,7 +583,7 @@
             // 
             // MinSizeEdit
             // 
-            this.MinSizeEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "MSize", true));
+            this.MinSizeEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MaterialsBS, "MSize", true));
             this.MinSizeEdit.Location = new System.Drawing.Point(470, 170);
             this.MinSizeEdit.Name = "MinSizeEdit";
             this.MinSizeEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -614,6 +614,7 @@
             // 
             // WhBtn
             // 
+            this.WhBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.WhBtn.ImageIndex = 10;
             this.WhBtn.ImageList = this.ImageList;
             this.WhBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
@@ -625,7 +626,7 @@
             // 
             // MsrComboBox
             // 
-            this.MsrComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "MId", true));
+            this.MsrComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MaterialsBS, "MId", true));
             this.MsrComboBox.Location = new System.Drawing.Point(109, 134);
             this.MsrComboBox.Name = "MsrComboBox";
             this.MsrComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -664,13 +665,13 @@
             // 
             // GrpIdEdit
             // 
-            this.GrpIdEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "GrpId", true));
+            this.GrpIdEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MaterialsBS, "GrpId", true));
             this.GrpIdEdit.Location = new System.Drawing.Point(109, 82);
             this.GrpIdEdit.MenuManager = this.barManager1;
             this.GrpIdEdit.Name = "GrpIdEdit";
             this.GrpIdEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.GrpIdEdit.Properties.DataSource = this.bindingSource1;
+            this.GrpIdEdit.Properties.DataSource = this.MaterialsBS;
             this.GrpIdEdit.Properties.DisplayMember = "Name";
             this.GrpIdEdit.Properties.NullText = "";
             this.GrpIdEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
@@ -684,7 +685,7 @@
             // 
             this.treeListLookUpEdit1TreeList.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.treeListColumn2});
-            this.treeListLookUpEdit1TreeList.DataSource = this.bindingSource1;
+            this.treeListLookUpEdit1TreeList.DataSource = this.MaterialsBS;
             this.treeListLookUpEdit1TreeList.KeyFieldName = "GrpId";
             this.treeListLookUpEdit1TreeList.Location = new System.Drawing.Point(0, 0);
             this.treeListLookUpEdit1TreeList.Name = "treeListLookUpEdit1TreeList";
@@ -772,7 +773,7 @@
             // 
             this.textEdit7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEdit7.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "CF5", true));
+            this.textEdit7.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.MaterialsBS, "CF5", true));
             this.textEdit7.Location = new System.Drawing.Point(200, 263);
             this.textEdit7.Name = "textEdit7";
             this.textEdit7.Size = new System.Drawing.Size(389, 22);
@@ -783,7 +784,7 @@
             // 
             this.textEdit6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEdit6.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "CF3", true));
+            this.textEdit6.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.MaterialsBS, "CF3", true));
             this.textEdit6.Location = new System.Drawing.Point(200, 180);
             this.textEdit6.Name = "textEdit6";
             this.textEdit6.Size = new System.Drawing.Size(389, 22);
@@ -828,7 +829,7 @@
             // 
             // CIdLookUpEdit
             // 
-            this.CIdLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "CId", true));
+            this.CIdLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MaterialsBS, "CId", true));
             this.CIdLookUpEdit.Location = new System.Drawing.Point(398, 31);
             this.CIdLookUpEdit.Name = "CIdLookUpEdit";
             this.CIdLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -846,7 +847,7 @@
             // 
             // ProducerLookUpEdit
             // 
-            this.ProducerLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "Producer", true));
+            this.ProducerLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MaterialsBS, "Producer", true));
             this.ProducerLookUpEdit.Location = new System.Drawing.Point(78, 31);
             this.ProducerLookUpEdit.Name = "ProducerLookUpEdit";
             this.ProducerLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -866,7 +867,7 @@
             // 
             this.textEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "CF2", true));
+            this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.MaterialsBS, "CF2", true));
             this.textEdit1.Location = new System.Drawing.Point(132, 126);
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Size = new System.Drawing.Size(188, 22);
@@ -895,7 +896,7 @@
             // 
             this.textEdit2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEdit2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "CF1", true));
+            this.textEdit2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.MaterialsBS, "CF1", true));
             this.textEdit2.Location = new System.Drawing.Point(132, 86);
             this.textEdit2.Name = "textEdit2";
             this.textEdit2.Size = new System.Drawing.Size(188, 22);
@@ -916,7 +917,7 @@
             // 
             this.textEdit3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEdit3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "CF4", true));
+            this.textEdit3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.MaterialsBS, "CF4", true));
             this.textEdit3.Location = new System.Drawing.Point(200, 222);
             this.textEdit3.Name = "textEdit3";
             this.textEdit3.Size = new System.Drawing.Size(389, 22);
@@ -941,7 +942,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.bindingSource1, "BMP", true));
+            this.pictureBox1.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.MaterialsBS, "BMP", true));
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
@@ -958,7 +959,7 @@
             // 
             // textEdit8
             // 
-            this.textEdit8.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "Notes", true));
+            this.textEdit8.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.MaterialsBS, "Notes", true));
             this.textEdit8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textEdit8.Location = new System.Drawing.Point(0, 0);
             this.textEdit8.Name = "textEdit8";
@@ -998,7 +999,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaterialsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarCodeEdit.Properties)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
@@ -1086,7 +1087,7 @@
         private DevExpress.XtraEditors.TextEdit BarCodeEdit;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn2;
-        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.BindingSource MaterialsBS;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage5;
         private System.Windows.Forms.Panel panel2;
         private DevExpress.XtraEditors.GroupControl groupControl1;

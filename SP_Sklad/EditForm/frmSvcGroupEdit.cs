@@ -13,15 +13,15 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad.EditForm
 {
-    public partial class frmMatGroupEdit : Form
+    public partial class frmSvcGroupEdit : Form
     {
         int? _grp_id { get; set; }
         int? _pid { get; set; }
-        private MatGroup _mg { get; set; }
+        private SvcGroup _mg { get; set; }
         private BaseEntities _db { get; set; }
         private DbContextTransaction current_transaction { get; set; }
 
-        public frmMatGroupEdit(int? GrpId = null, int? PId = null)
+        public frmSvcGroupEdit(int? GrpId = null, int? PId = null)
         {
             InitializeComponent();
 
@@ -31,23 +31,26 @@ namespace SP_Sklad.EditForm
             current_transaction = _db.Database.BeginTransaction();
         }
 
-        private void frmMatGroupEdit_Load(object sender, EventArgs e)
+        private void OkButton_Click(object sender, EventArgs e)
+        {
+            _db.SaveChanges();
+            current_transaction.Commit();
+        }
+
+        private void frmSvcGroupEdit_Load(object sender, EventArgs e)
         {
             xtraTabControl1.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
 
             var tree = new List<CatalogTreeList>();
             tree.Add(new CatalogTreeList { Id = 0, ParentId = 255, Text = "Основна інформація", ImgIdx = 0, TabIdx = 0 });
-            tree.Add(new CatalogTreeList { Id = 1, ParentId = 255, Text = "Ціноутворення ", ImgIdx = 1, TabIdx = 1 });
-            tree.Add(new CatalogTreeList { Id = 2, ParentId = 255, Text = "Оподаткування", ImgIdx = 2, TabIdx = 2 });
-            tree.Add(new CatalogTreeList { Id = 3, ParentId = 255, Text = "Примітка", ImgIdx = 3, TabIdx = 3 });
+            tree.Add(new CatalogTreeList { Id = 1, ParentId = 255, Text = "Примітка", ImgIdx = 1, TabIdx = 1 });
             DirTreeList.DataSource = tree;
 
             if (_grp_id == null)
             {
-                _mg = _db.MatGroup.Add(new MatGroup
+                _mg = _db.SvcGroup.Add(new SvcGroup
                 {
                     Deleted = 0,
-                    Nds = 0,
                     PId = 0,
                     Name = ""
                 });
@@ -57,27 +60,20 @@ namespace SP_Sklad.EditForm
             }
             else
             {
-                _mg = _db.MatGroup.Find(_grp_id);
-             }
+                _mg = _db.SvcGroup.Find(_grp_id);
+            }
 
             if (_mg != null)
             {
                 checkEdit4.Checked = (_mg.GrpId == _mg.PId);
 
-                GrpIdEdit.Properties.TreeList.DataSource = DB.SkladBase().MatGroup.Select(s => new { s.GrpId, s.PId, s.Name }).ToList();
+                GrpIdEdit.Properties.TreeList.DataSource = DB.SkladBase().SvcGroup.Select(s => new { s.GrpId, s.PId, s.Name }).ToList();
 
-                MatGroupDS.DataSource = _mg;
+                SvcGroupDS.DataSource = _mg;
             }
-
         }
 
-        private void OkButton_Click(object sender, EventArgs e)
-        {
-            _db.SaveChanges();
-            current_transaction.Commit();
-        }
-
-        private void frmMatGroupEdit_FormClosed(object sender, FormClosedEventArgs e)
+        private void frmSvcGroupEdit_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (current_transaction.UnderlyingTransaction.Connection != null)
             {
@@ -111,9 +107,9 @@ namespace SP_Sklad.EditForm
             }
         }
 
-        private void frmMatGroupEdit_Shown(object sender, EventArgs e)
+        private void frmSvcGroupEdit_Shown(object sender, EventArgs e)
         {
-            this.Text = "Група товарів: " + textEdit10.Text;
+            this.Text = "Група послуг: " + textEdit10.Text;
         }
     }
 }

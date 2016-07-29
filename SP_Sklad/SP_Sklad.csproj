@@ -115,6 +115,18 @@
     <Compile Include="EditForm\frmMatRecipe.Designer.cs">
       <DependentUpon>frmMatRecipe.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditForm\frmServicesEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmServicesEdit.Designer.cs">
+      <DependentUpon>frmServicesEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditForm\frmSvcGroupEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmSvcGroupEdit.Designer.cs">
+      <DependentUpon>frmSvcGroupEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditForm\frmUserEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -526,7 +538,7 @@
     <Compile Include="SkladData\SERIALS.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\SERVICES.cs">
+    <Compile Include="SkladData\Services.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\SkladModel.Context.cs">
@@ -583,7 +595,7 @@
     <Compile Include="SkladData\SP_WMAT_GET_BY_WHLIST_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\SVCGROUP.cs">
+    <Compile Include="SkladData\SvcGroup.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\TABLES.cs">
@@ -631,6 +643,9 @@
     <Compile Include="SkladData\v_GetDocsTree.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_Services.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_TechProcDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -658,7 +673,7 @@
     <Compile Include="SkladData\WaybillMove.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\WAYBILLSVC.cs">
+    <Compile Include="SkladData\WayBillSvc.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\WBDGetOutP2_Result.cs">
@@ -693,6 +708,12 @@
     </Compile>
     <Compile Include="WBDetForm\frmWayBillDetOut.Designer.cs">
       <DependentUpon>frmWayBillDetOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WBDetForm\frmWaybillSvcDet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBDetForm\frmWaybillSvcDet.Designer.cs">
+      <DependentUpon>frmWaybillSvcDet.cs</DependentUpon>
     </Compile>
     <Compile Include="WBDetForm\frmWBReturnDetIn.cs">
       <SubType>Form</SubType>
@@ -775,6 +796,12 @@
     <EmbeddedResource Include="EditForm\frmMatRecipe.resx">
       <DependentUpon>frmMatRecipe.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmServicesEdit.resx">
+      <DependentUpon>frmServicesEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmSvcGroupEdit.resx">
+      <DependentUpon>frmSvcGroupEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmUserEdit.resx">
       <DependentUpon>frmUserEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -849,6 +876,9 @@
     <EmbeddedResource Include="WBDetForm\frmWayBillDetOut.resx">
       <DependentUpon>frmWayBillDetOut.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WBDetForm\frmWaybillSvcDet.resx">
+      <DependentUpon>frmWaybillSvcDet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBDetForm\frmWBReturnDetIn.resx">
       <DependentUpon>frmWBReturnDetIn.cs</DependentUpon>
     </EmbeddedResource>
@@ -883,10 +913,12 @@
       <DependentUpon>frmWBWriteOn.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.GetDirTree_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetDocList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetMatList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetMatMove_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPosOut_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.GetWaybillDetIn_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetWayBillDetOut_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KADiscount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Kagent.datasource" />
@@ -898,8 +930,11 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatRecDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatRecipe.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.Services.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.SvcGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Users.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.UserTreeAccess.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Services.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WaybillDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WhMatGet_Result.datasource" />
     <None Include="Properties\Settings.settings">
