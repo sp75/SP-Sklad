@@ -12,19 +12,17 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class Tables
+    public partial class v_PriceList
     {
-        public Tables()
-        {
-            this.FUNCTIONS = new HashSet<FUNCTIONS>();
-            this.OPERLOG = new HashSet<OPERLOG>();
-        }
-    
-        public int TabId { get; set; }
-        public string TableName { get; set; }
-        public string KeyName { get; set; }
-    
-        public virtual ICollection<FUNCTIONS> FUNCTIONS { get; set; }
-        public virtual ICollection<OPERLOG> OPERLOG { get; set; }
+        public int PlId { get; set; }
+        public int CurrId { get; set; }
+        public System.DateTime OnDate { get; set; }
+        public string Name { get; set; }
+        public string Notes { get; set; }
+        public int Deleted { get; set; }
+        public int UseLogo { get; set; }
+        public Nullable<int> DocId { get; set; }
+        public Nullable<int> PTypeId { get; set; }
+        public string CurrName { get; set; }
     }
 }

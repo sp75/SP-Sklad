@@ -28,7 +28,17 @@ namespace SP_Sklad.MainTabs
         int show_null_balance = 1;
         BaseEntities _db { get; set; }
         v_GetDocsTree focused_tree_node { get; set; }
-        GetWayBillList_Result wb_focused_row { get { return WbGridView.GetFocusedRow() as GetWayBillList_Result; } }  
+        private GetWayBillList_Result wb_focused_row
+        {
+            get { return WbGridView.GetFocusedRow() as GetWayBillList_Result; }
+        }
+        private v_PriceList pl_focused_row
+        {
+            get
+            {
+                return PriceListGridView.GetFocusedRow() as v_PriceList;
+            }
+        }
 
         public DocsUserControl()
         {
@@ -229,14 +239,11 @@ namespace SP_Sklad.MainTabs
                     }
                     break;
 
-                /*        case 5: frmPriceList = new  TfrmPriceList(Application);
-                                frmPriceList->PriceList->Open();
-                                frmPriceList->PriceList->Append();
-                                frmPriceList->ShowModal() ;
-                                delete frmPriceList;
+                        case 5:
+                    new frmPriceList().ShowDialog();
                                 break;
 
-                        case 6: frmContr = new  TfrmContr(Application);
+             /*           case 6: frmContr = new  TfrmContr(Application);
                                 frmContr->CONTRACTS->Open();
                                 frmContr->CONTRACTS->Append();
                                 if(DocsTreeDataID->Value == 47) frmContr->CONTRACTSDOCTYPE->Value = -1;
@@ -280,89 +287,67 @@ namespace SP_Sklad.MainTabs
                     case 4:
                         DocEdit.PDEdit(PayDocGridView.GetFocusedRow() as GetPayDocList_Result);
                         break;
+                    case 5:
+                        var pl_row = PriceListGridView.GetFocusedRow() as v_PriceList;
+                        new frmPriceList(pl_row.PlId).ShowDialog();
+                        break;
 
-                    /*            case 5: {
-                                          try
-                                          {
-                                            try
-                                            {
-                                               frmPriceList = new  TfrmPriceList(Application);
-                                               frmPriceList->PriceList->ParamByName("PLID")->Value = PriceListPLID->Value;
-                                               frmPriceList->PriceList->Open();
-                                               frmPriceList->PriceList->Edit();
-                                               frmPriceList->PriceList->LockRecord()  ;
-                                               frmPriceList->ShowModal() ;
-                                            }
-                                            catch(const Exception& e)
-                                            {
-                                               frmPriceList->Close();
-                                               if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
-                                                   else ShowMessage(e.Message) ;
-                                            }
-                                          }
-                                          __finally
-                                          {
-                                             delete frmPriceList ;
-                                          }
-                                        }
-                                        break;
+                    /*           case 6: ContractsList->Refresh();
+                                       if(ContractsListCHECKED->Value == 1)
+                                           if(MessageDlg(msg1,mtConfirmation,TMsgDlgButtons() << mbYes << mbNo ,0)==mrYes)
+                                              ExecuteBtn->Click();
 
-                                case 6: ContractsList->Refresh();
-                                        if(ContractsListCHECKED->Value == 1)
-                                            if(MessageDlg(msg1,mtConfirmation,TMsgDlgButtons() << mbYes << mbNo ,0)==mrYes)
-                                               ExecuteBtn->Click();
-
-                                        if(ContractsListCHECKED->Value == 0)
-                                         {
-                                            try
-                                            {
-                                              try
-                                              {
-                                                frmContr = new  TfrmContr(Application);
-                                                frmContr->CONTRACTS->ParamByName("CONTRID")->Value = ContractsListCONTRID->Value;
-                                                frmContr->CONTRACTS->Open();
-                                                frmContr->CONTRACTS->Edit();
-                                                frmContr->CONTRACTS->LockRecord()  ;
-                                                frmContr->ShowModal() ;
-
-                                              }
-                                              catch(const Exception& e)
-                                              {
-                                                 frmContr->Close();
-                                                 if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
-                                                    else   ShowMessage(e.Message) ;
-                                              }
-                                            }
-                                            __finally
-                                            {
-                                                delete frmContr;
-                                            }
-                                         }
-                                        break;
-
-                                case 7: try
+                                       if(ContractsListCHECKED->Value == 0)
                                         {
                                            try
                                            {
-                                             frmTaxWB = new  TfrmTaxWB(Application);
-                                             frmTaxWB->TaxWB->ParamByName("TWBID")->Value = TaxWBListTWBID->Value;
-                                             frmTaxWB->TaxWB->Open();
-                                             frmTaxWB->TaxWB->Edit();
-                                             frmTaxWB->TaxWB->LockRecord()  ;
-                                             frmTaxWB->ShowModal() ;
+                                             try
+                                             {
+                                               frmContr = new  TfrmContr(Application);
+                                               frmContr->CONTRACTS->ParamByName("CONTRID")->Value = ContractsListCONTRID->Value;
+                                               frmContr->CONTRACTS->Open();
+                                               frmContr->CONTRACTS->Edit();
+                                               frmContr->CONTRACTS->LockRecord()  ;
+                                               frmContr->ShowModal() ;
+
+                                             }
+                                             catch(const Exception& e)
+                                             {
+                                                frmContr->Close();
+                                                if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
+                                                   else   ShowMessage(e.Message) ;
+                                             }
                                            }
-                                           catch(const Exception& e)
+                                           __finally
                                            {
-                                              frmTaxWB->Close();
-                                              if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
-                                                    else   ShowMessage(e.Message) ;
+                                               delete frmContr;
                                            }
                                         }
-                                        __finally
-                                        {
-                                            delete frmTaxWB;
-                                        }
-                                        break;*/
+                                       break;
+
+                               case 7: try
+                                       {
+                                          try
+                                          {
+                                            frmTaxWB = new  TfrmTaxWB(Application);
+                                            frmTaxWB->TaxWB->ParamByName("TWBID")->Value = TaxWBListTWBID->Value;
+                                            frmTaxWB->TaxWB->Open();
+                                            frmTaxWB->TaxWB->Edit();
+                                            frmTaxWB->TaxWB->LockRecord()  ;
+                                            frmTaxWB->ShowModal() ;
+                                          }
+                                          catch(const Exception& e)
+                                          {
+                                             frmTaxWB->Close();
+                                             if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
+                                                   else   ShowMessage(e.Message) ;
+                                          }
+                                       }
+                                       __finally
+                                       {
+                                           delete frmTaxWB;
+                                       }
+                                       break;*/
 
                 }
                 //    current_transaction.Rollback();
@@ -411,11 +396,13 @@ namespace SP_Sklad.MainTabs
                             case 1:
                                 db.WaybillList.Remove(db.WaybillList.Find(dr.WbillId));
                                 break;
-
                             case 4:
                                 db.PayDoc.Remove(db.PayDoc.Find(pd_row.PayDocId));
                                 break;
-                            //	   case 5: PriceList->Delete();  break;
+                            case 5:
+                                db.DeleteWhere<PriceList>(w => w.PlId == pl_focused_row.PlId);
+                                break;
+
                             //	   case 6: ContractsList->Delete();  break;
                             //	   case 7: TaxWBList->Delete();  break;
                         }
@@ -454,12 +441,13 @@ namespace SP_Sklad.MainTabs
                     else GetPayDocList(cur_wtype / 3);
                     break;
 
-          /*      case 5: PriceList->Refresh();
-                    PriceList->FullRefresh();
-                    PLDetTree->FullRefresh();
+
+                case 5:
+                    PriceListBS.DataSource =  null ;
+                    PriceListBS.DataSource = DB.SkladBase().v_PriceList.ToList();
                     break;
 
-                case 6: ContractsList->Refresh();
+          /*      case 6: ContractsList->Refresh();
                     ContractsList->FullRefresh();
                     ContrDet->FullRefresh();
                     break;
@@ -720,6 +708,17 @@ namespace SP_Sklad.MainTabs
             }
 
             RefrechItemBtn.PerformClick();
+        }
+
+        private void PriceListGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            var tree_row = DocsTreeList.GetDataRecordByNode(DocsTreeList.FocusedNode) as v_GetDocsTree;
+
+            DeleteItemBtn.Enabled = (pl_focused_row != null && tree_row.CanDelete == 1);
+            ExecuteItemBtn.Enabled = false;
+            EditItemBtn.Enabled = (pl_focused_row != null && tree_row.CanModify == 1);
+            CopyItemBtn.Enabled = EditItemBtn.Enabled;
+            PrintItemBtn.Enabled = (pl_focused_row != null);
         }
 
     }

@@ -25,6 +25,6 @@ namespace SP_Sklad.SkladData
         public Nullable<int> FUNID { get; set; }
         public string DOCNUM { get; set; }
     
-        public virtual TABLES TABLES { get; set; }
+        public virtual Tables Tables { get; set; }
     }
 }

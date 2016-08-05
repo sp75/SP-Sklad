@@ -136,8 +136,8 @@ namespace SP_Sklad.MainTabs
 
             if (isMatList)
             {
-                var t = (wb.Kagent != null ? wb.Kagent.PTypeId : null);
-                var price = DB.SkladBase().GetListMatPrices(row.MatId, wb.CurrId).FirstOrDefault(w => w.PType == t);
+                var p_type = (wb.Kagent != null ? wb.Kagent.PTypeId : null);
+                var mat_price = DB.SkladBase().GetListMatPrices(row.MatId, wb.CurrId, p_type).FirstOrDefault();
 
                 custom_mat_list.Add(new CustomMatList
                 {
@@ -145,7 +145,7 @@ namespace SP_Sklad.MainTabs
                     MatId = row.MatId,
                     Name = row.Name,
                     Amount = 1,
-                    Price = price != null ? price.Price : 0,
+                    Price = mat_price != null ? mat_price.Price : 0,
                     WId = row.WId != null ? row.WId.Value : DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId
                 });
 

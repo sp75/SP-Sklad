@@ -369,6 +369,9 @@
     <Compile Include="SkladData\GetMatRsv_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetMatTree_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetOrderedInSuppliers_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -379,6 +382,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetPosOut_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetPriceListDet_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetRecipe_Result.cs">
@@ -394,6 +400,12 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetShippedPosIn_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetSvcGroupTree_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetSvcTree_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetUserAccessTree_Result.cs">
@@ -508,10 +520,10 @@
     <Compile Include="SkladData\PosRemains.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\PRICELIST.cs">
+    <Compile Include="SkladData\PriceList.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\PRICELISTDET.cs">
+    <Compile Include="SkladData\PriceListDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\PriceTypes.cs">
@@ -598,7 +610,7 @@
     <Compile Include="SkladData\SvcGroup.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\TABLES.cs">
+    <Compile Include="SkladData\Tables.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\TAXES.cs">
@@ -641,6 +653,12 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_GetDocsTree.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_MatRemains.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_PriceList.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_Services.cs">
@@ -732,6 +750,12 @@
     </Compile>
     <Compile Include="WBDetForm\frmWriteOffDet.Designer.cs">
       <DependentUpon>frmWriteOffDet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WBForm\frmPriceList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\frmPriceList.Designer.cs">
+      <DependentUpon>frmPriceList.cs</DependentUpon>
     </Compile>
     <Compile Include="WBForm\frmWayBillIn.cs">
       <SubType>Form</SubType>
@@ -888,6 +912,9 @@
     <EmbeddedResource Include="WBDetForm\frmWriteOffDet.resx">
       <DependentUpon>frmWriteOffDet.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\frmPriceList.resx">
+      <DependentUpon>frmPriceList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWayBillIn.resx">
       <DependentUpon>frmWayBillIn.cs</DependentUpon>
     </EmbeddedResource>
@@ -918,6 +945,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetMatList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetMatMove_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPosOut_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPriceListDet_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetWaybillDetIn_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetWayBillDetOut_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KADiscount.datasource" />
@@ -930,10 +958,13 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatRecDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatRecipe.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.PriceList.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.PriceListDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Services.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.SvcGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Users.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.UserTreeAccess.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PriceList.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Services.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WaybillDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WhMatGet_Result.datasource" />

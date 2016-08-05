@@ -408,7 +408,7 @@ namespace SP_Sklad.MainTabs
         {
             var wh_row = WhRemainGridView.GetFocusedRow() as WMatGetByWh_Result;
             var t = (wb.Kagent != null ? wb.Kagent.PTypeId : null);
-            var price = DB.SkladBase().GetListMatPrices(focused_wh_mat.MatId, wb.CurrId).FirstOrDefault(w => w.PType == t);
+            var price = DB.SkladBase().GetListMatPrices(focused_wh_mat.MatId, wb.CurrId, t).FirstOrDefault();
 
             custom_mat_list.Add(new CustomMatListWH
             {

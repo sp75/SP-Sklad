@@ -46,10 +46,7 @@ namespace SP_Sklad.SkladData
         public DbSet<MONEYSALDO> MONEYSALDO { get; set; }
         public DbSet<OPERLOG> OPERLOG { get; set; }
         public DbSet<PAYDOCTYPE> PAYDOCTYPE { get; set; }
-        public DbSet<PRICELIST> PRICELIST { get; set; }
-        public DbSet<PRICELISTDET> PRICELISTDET { get; set; }
         public DbSet<SERIALS> SERIALS { get; set; }
-        public DbSet<TABLES> TABLES { get; set; }
         public DbSet<TAXES> TAXES { get; set; }
         public DbSet<TAXWB> TAXWB { get; set; }
         public DbSet<WaybillList> WaybillList { get; set; }
@@ -120,6 +117,11 @@ namespace SP_Sklad.SkladData
         public DbSet<SvcGroup> SvcGroup { get; set; }
         public DbSet<v_Services> v_Services { get; set; }
         public DbSet<WayBillSvc> WayBillSvc { get; set; }
+        public DbSet<PriceListDet> PriceListDet { get; set; }
+        public DbSet<Tables> Tables { get; set; }
+        public DbSet<v_MatRemains> v_MatRemains { get; set; }
+        public DbSet<v_PriceList> v_PriceList { get; set; }
+        public DbSet<PriceList> PriceList { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)
@@ -857,20 +859,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatExtra_Result>("[BaseEntities].[GetMatExtra](@MatId, @PTypeId, @OnDate, @Price, @in_CurrId, @OnValue)", matIdParameter, pTypeIdParameter, onDateParameter, priceParameter, in_CurrIdParameter, onValueParameter);
         }
     
-        [EdmFunction("BaseEntities", "GetListMatPrices")]
-        public virtual IQueryable<GetListMatPrices_Result> GetListMatPrices(Nullable<int> mat_id, Nullable<int> in_curr_id)
-        {
-            var mat_idParameter = mat_id.HasValue ?
-                new ObjectParameter("mat_id", mat_id) :
-                new ObjectParameter("mat_id", typeof(int));
-    
-            var in_curr_idParameter = in_curr_id.HasValue ?
-                new ObjectParameter("in_curr_id", in_curr_id) :
-                new ObjectParameter("in_curr_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetListMatPrices_Result>("[BaseEntities].[GetListMatPrices](@mat_id, @in_curr_id)", mat_idParameter, in_curr_idParameter);
-        }
-    
         [EdmFunction("BaseEntities", "GetDiscount")]
         public virtual IQueryable<Nullable<decimal>> GetDiscount(Nullable<int> ka_id, Nullable<int> mat_id)
         {
@@ -1381,6 +1369,61 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("user_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserAccessWh_Result>("GetUserAccessWh", user_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetSvcGroupTree")]
+        public virtual IQueryable<GetSvcGroupTree_Result> GetSvcGroupTree(Nullable<int> root_cat_id)
+        {
+            var root_cat_idParameter = root_cat_id.HasValue ?
+                new ObjectParameter("root_cat_id", root_cat_id) :
+                new ObjectParameter("root_cat_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetSvcGroupTree_Result>("[BaseEntities].[GetSvcGroupTree](@root_cat_id)", root_cat_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetListMatPrices")]
+        public virtual IQueryable<GetListMatPrices_Result> GetListMatPrices(Nullable<int> mat_id, Nullable<int> in_curr_id, Nullable<int> p_type)
+        {
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            var in_curr_idParameter = in_curr_id.HasValue ?
+                new ObjectParameter("in_curr_id", in_curr_id) :
+                new ObjectParameter("in_curr_id", typeof(int));
+    
+            var p_typeParameter = p_type.HasValue ?
+                new ObjectParameter("p_type", p_type) :
+                new ObjectParameter("p_type", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetListMatPrices_Result>("[BaseEntities].[GetListMatPrices](@mat_id, @in_curr_id, @p_type)", mat_idParameter, in_curr_idParameter, p_typeParameter);
+        }
+    
+        public virtual ObjectResult<GetMatTree_Result> GetMatTree(Nullable<int> p_type, Nullable<int> curr_id)
+        {
+            var p_typeParameter = p_type.HasValue ?
+                new ObjectParameter("p_type", p_type) :
+                new ObjectParameter("p_type", typeof(int));
+    
+            var curr_idParameter = curr_id.HasValue ?
+                new ObjectParameter("curr_id", curr_id) :
+                new ObjectParameter("curr_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetMatTree_Result>("GetMatTree", p_typeParameter, curr_idParameter);
+        }
+    
+        public virtual ObjectResult<GetSvcTree_Result> GetSvcTree()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSvcTree_Result>("GetSvcTree");
+        }
+    
+        public virtual ObjectResult<GetPriceListDet_Result> GetPriceListDet(Nullable<int> pl_id)
+        {
+            var pl_idParameter = pl_id.HasValue ?
+                new ObjectParameter("pl_id", pl_id) :
+                new ObjectParameter("pl_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPriceListDet_Result>("GetPriceListDet", pl_idParameter);
         }
     }
 }

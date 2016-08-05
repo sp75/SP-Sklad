@@ -103,8 +103,8 @@
           <EntitySet Name="PayType" EntityType="BaseModel.Store.PayType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PosRel" EntityType="BaseModel.Store.PosRel" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PosRemains" EntityType="BaseModel.Store.PosRemains" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="PRICELIST" EntityType="BaseModel.Store.PRICELIST" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="PRICELISTDET" EntityType="BaseModel.Store.PRICELISTDET" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PriceList" EntityType="BaseModel.Store.PriceList" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PriceListDet" EntityType="BaseModel.Store.PriceListDet" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PriceTypes" EntityType="BaseModel.Store.PriceTypes" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PrintLog" EntityType="BaseModel.Store.PrintLog" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="RepLng" EntityType="BaseModel.Store.RepLng" store:Type="Tables" store:Schema="dbo" store:Name="RepLng">
@@ -120,7 +120,7 @@
           <EntitySet Name="SERIALS" EntityType="BaseModel.Store.SERIALS" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Services" EntityType="BaseModel.Store.Services" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SvcGroup" EntityType="BaseModel.Store.SvcGroup" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="TABLES" EntityType="BaseModel.Store.TABLES" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Tables" EntityType="BaseModel.Store.Tables" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TAXES" EntityType="BaseModel.Store.TAXES" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TAXREESTRTYPE" EntityType="BaseModel.Store.TAXREESTRTYPE" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TAXWB" EntityType="BaseModel.Store.TAXWB" store:Type="Tables" Schema="dbo" />
@@ -270,6 +270,34 @@
       [v_GetDocsTree].[WType] AS [WType]
       FROM [dbo].[v_GetDocsTree] AS [v_GetDocsTree]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_MatRemains" EntityType="BaseModel.Store.v_MatRemains" store:Type="Views" store:Schema="dbo" store:Name="v_MatRemains">
+            <DefiningQuery>SELECT 
+      [v_MatRemains].[MatId] AS [MatId], 
+      [v_MatRemains].[OnDate] AS [OnDate], 
+      [v_MatRemains].[Remain] AS [Remain], 
+      [v_MatRemains].[Rsv] AS [Rsv], 
+      [v_MatRemains].[AvgPrice] AS [AvgPrice], 
+      [v_MatRemains].[MinPrice] AS [MinPrice], 
+      [v_MatRemains].[MaxPrice] AS [MaxPrice], 
+      [v_MatRemains].[PosRsv] AS [PosRsv], 
+      [v_MatRemains].[Ordered] AS [Ordered], 
+      [v_MatRemains].[ORsv] AS [ORsv]
+      FROM [dbo].[v_MatRemains] AS [v_MatRemains]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_PriceList" EntityType="BaseModel.Store.v_PriceList" store:Type="Views" store:Schema="dbo" store:Name="v_PriceList">
+            <DefiningQuery>SELECT 
+      [v_PriceList].[PlId] AS [PlId], 
+      [v_PriceList].[CurrId] AS [CurrId], 
+      [v_PriceList].[OnDate] AS [OnDate], 
+      [v_PriceList].[Name] AS [Name], 
+      [v_PriceList].[Notes] AS [Notes], 
+      [v_PriceList].[Deleted] AS [Deleted], 
+      [v_PriceList].[UseLogo] AS [UseLogo], 
+      [v_PriceList].[DocId] AS [DocId], 
+      [v_PriceList].[PTypeId] AS [PTypeId], 
+      [v_PriceList].[CurrName] AS [CurrName]
+      FROM [dbo].[v_PriceList] AS [v_PriceList]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_Services" EntityType="BaseModel.Store.v_Services" store:Type="Views" store:Schema="dbo" store:Name="v_Services">
             <DefiningQuery>SELECT 
       [v_Services].[SvcId] AS [SvcId], 
@@ -362,7 +390,7 @@
             <End Role="CURRENCYRATE" EntitySet="CURRENCYRATE" />
           </AssociationSet>
           <AssociationSet Name="FK__FUNCTIONS__TABID__123EB7A3" Association="BaseModel.Store.FK__FUNCTIONS__TABID__123EB7A3">
-            <End Role="TABLES" EntitySet="TABLES" />
+            <End Role="Tables" EntitySet="Tables" />
             <End Role="FUNCTIONS" EntitySet="FUNCTIONS" />
           </AssociationSet>
           <AssociationSet Name="FK__KAMATDISC__MATID__32AB8735" Association="BaseModel.Store.FK__KAMATDISC__MATID__32AB8735">
@@ -426,7 +454,7 @@
             <End Role="MatRemains" EntitySet="MatRemains" />
           </AssociationSet>
           <AssociationSet Name="FK__OPERLOG__TABID__0D44F85C" Association="BaseModel.Store.FK__OPERLOG__TABID__0D44F85C">
-            <End Role="TABLES" EntitySet="TABLES" />
+            <End Role="Tables" EntitySet="Tables" />
             <End Role="OPERLOG" EntitySet="OPERLOG" />
           </AssociationSet>
           <AssociationSet Name="FK__PAYDOC__CTYPEID__2334397B" Association="BaseModel.Store.FK__PAYDOC__CTYPEID__2334397B">
@@ -695,19 +723,19 @@
           </AssociationSet>
           <AssociationSet Name="FK_PRICELIS_REFERENCE_CURRENCY" Association="BaseModel.Store.FK_PRICELIS_REFERENCE_CURRENCY">
             <End Role="Currency" EntitySet="Currency" />
-            <End Role="PRICELIST" EntitySet="PRICELIST" />
+            <End Role="PriceList" EntitySet="PriceList" />
           </AssociationSet>
           <AssociationSet Name="FK_PRICELIS_REFERENCE_DOCS" Association="BaseModel.Store.FK_PRICELIS_REFERENCE_DOCS">
             <End Role="Docs" EntitySet="Docs" />
-            <End Role="PRICELIST" EntitySet="PRICELIST" />
+            <End Role="PriceList" EntitySet="PriceList" />
           </AssociationSet>
           <AssociationSet Name="FK_PRICELIST_REFERENCE_PRICETYP" Association="BaseModel.Store.FK_PRICELIST_REFERENCE_PRICETYP">
             <End Role="PriceTypes" EntitySet="PriceTypes" />
-            <End Role="PRICELIST" EntitySet="PRICELIST" />
+            <End Role="PriceList" EntitySet="PriceList" />
           </AssociationSet>
           <AssociationSet Name="FK_PRICELISTDET_PRICELIST" Association="BaseModel.Store.FK_PRICELISTDET_PRICELIST">
-            <End Role="PRICELIST" EntitySet="PRICELIST" />
-            <End Role="PRICELISTDET" EntitySet="PRICELISTDET" />
+            <End Role="PriceList" EntitySet="PriceList" />
+            <End Role="PriceListDet" EntitySet="PriceListDet" />
           </AssociationSet>
           <AssociationSet Name="FK_PRINTLOG_2" Association="BaseModel.Store.FK_PRINTLOG_2">
             <End Role="Users" EntitySet="Users" />
@@ -1585,30 +1613,30 @@
           <Property Name="InWay" Type="numeric" Precision="15" Scale="4" />
           <Property Name="Ordered" Type="numeric" Nullable="false" Precision="15" Scale="4" />
         </EntityType>
-        <EntityType Name="PRICELIST">
+        <EntityType Name="PriceList">
           <Key>
-            <PropertyRef Name="PLID" />
+            <PropertyRef Name="PlId" />
           </Key>
-          <Property Name="PLID" Type="int" Nullable="false" />
-          <Property Name="CURRID" Type="int" Nullable="false" />
-          <Property Name="ONDATE" Type="datetime" Nullable="false" />
-          <Property Name="NAME" Type="varchar" MaxLength="128" />
-          <Property Name="NOTES" Type="varchar" MaxLength="255" />
-          <Property Name="DELETED" Type="int" Nullable="false" />
-          <Property Name="USELOGO" Type="int" Nullable="false" />
-          <Property Name="DOCID" Type="int" />
-          <Property Name="PTYPEID" Type="int" />
+          <Property Name="PlId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CurrId" Type="int" Nullable="false" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="128" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+          <Property Name="UseLogo" Type="int" Nullable="false" />
+          <Property Name="DocId" Type="int" />
+          <Property Name="PTypeId" Type="int" />
         </EntityType>
-        <EntityType Name="PRICELISTDET">
+        <EntityType Name="PriceListDet">
           <Key>
-            <PropertyRef Name="PLDETID" />
+            <PropertyRef Name="PlDetId" />
           </Key>
-          <Property Name="PLDETID" Type="int" Nullable="false" />
-          <Property Name="MATID" Type="int" />
-          <Property Name="PRICE" Type="numeric" Precision="15" Scale="8" />
-          <Property Name="PLID" Type="int" Nullable="false" />
-          <Property Name="GRPID" Type="int" />
-          <Property Name="PLDETTYPE" Type="int" />
+          <Property Name="PlDetId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MatId" Type="int" />
+          <Property Name="Price" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="PlId" Type="int" Nullable="false" />
+          <Property Name="GrpId" Type="int" />
+          <Property Name="PlDetType" Type="int" />
         </EntityType>
         <EntityType Name="PriceTypes">
           <Key>
@@ -1703,13 +1731,13 @@
           <Property Name="Notes" Type="nvarchar" MaxLength="255" />
           <Property Name="Num" Type="int" />
         </EntityType>
-        <EntityType Name="TABLES">
+        <EntityType Name="Tables">
           <Key>
-            <PropertyRef Name="TABID" />
+            <PropertyRef Name="TabId" />
           </Key>
-          <Property Name="TABID" Type="int" Nullable="false" />
-          <Property Name="TABLENAME" Type="varchar" Nullable="false" MaxLength="24" />
-          <Property Name="KEYNAME" Type="varchar" MaxLength="24" />
+          <Property Name="TabId" Type="int" Nullable="false" />
+          <Property Name="TableName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="KeyName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="TAXES">
           <Key>
@@ -2141,6 +2169,48 @@
           <Property Name="WType" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
+      warning 6002: The table/view 'sp_base.dbo.v_MatRemains' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="v_MatRemains">
+          <Key>
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="OnDate" />
+          </Key>
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="Remain" Type="numeric" Precision="38" Scale="19" />
+          <Property Name="Rsv" Type="numeric" Precision="38" Scale="8" />
+          <Property Name="AvgPrice" Type="numeric" Precision="38" Scale="6" />
+          <Property Name="MinPrice" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="MaxPrice" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="PosRsv" Type="numeric" Precision="38" Scale="4" />
+          <Property Name="Ordered" Type="numeric" Precision="38" Scale="4" />
+          <Property Name="ORsv" Type="numeric" Precision="38" Scale="8" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'sp_base.dbo.v_PriceList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="v_PriceList">
+          <Key>
+            <PropertyRef Name="PlId" />
+            <PropertyRef Name="CurrId" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Deleted" />
+            <PropertyRef Name="UseLogo" />
+            <PropertyRef Name="CurrName" />
+          </Key>
+          <Property Name="PlId" Type="int" Nullable="false" />
+          <Property Name="CurrId" Type="int" Nullable="false" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="128" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+          <Property Name="UseLogo" Type="int" Nullable="false" />
+          <Property Name="DocId" Type="int" />
+          <Property Name="PTypeId" Type="int" />
+          <Property Name="CurrName" Type="nvarchar" Nullable="false" MaxLength="3" />
+        </EntityType>
+        <!--Errors Found During Generation:
       warning 6002: The table/view 'sp_base.dbo.v_Services' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="v_Services">
@@ -2266,11 +2336,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__FUNCTIONS__TABID__123EB7A3">
-          <End Role="TABLES" Type="BaseModel.Store.TABLES" Multiplicity="0..1" />
+          <End Role="Tables" Type="BaseModel.Store.Tables" Multiplicity="0..1" />
           <End Role="FUNCTIONS" Type="BaseModel.Store.FUNCTIONS" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TABLES">
-              <PropertyRef Name="TABID" />
+            <Principal Role="Tables">
+              <PropertyRef Name="TabId" />
             </Principal>
             <Dependent Role="FUNCTIONS">
               <PropertyRef Name="TABID" />
@@ -2466,11 +2536,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__OPERLOG__TABID__0D44F85C">
-          <End Role="TABLES" Type="BaseModel.Store.TABLES" Multiplicity="0..1" />
+          <End Role="Tables" Type="BaseModel.Store.Tables" Multiplicity="0..1" />
           <End Role="OPERLOG" Type="BaseModel.Store.OPERLOG" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TABLES">
-              <PropertyRef Name="TABID" />
+            <Principal Role="Tables">
+              <PropertyRef Name="TabId" />
             </Principal>
             <Dependent Role="OPERLOG">
               <PropertyRef Name="TABID" />
@@ -3313,51 +3383,51 @@
         </Association>
         <Association Name="FK_PRICELIS_REFERENCE_CURRENCY">
           <End Role="Currency" Type="BaseModel.Store.Currency" Multiplicity="1" />
-          <End Role="PRICELIST" Type="BaseModel.Store.PRICELIST" Multiplicity="*" />
+          <End Role="PriceList" Type="BaseModel.Store.PriceList" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Currency">
               <PropertyRef Name="CurrId" />
             </Principal>
-            <Dependent Role="PRICELIST">
-              <PropertyRef Name="CURRID" />
+            <Dependent Role="PriceList">
+              <PropertyRef Name="CurrId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PRICELIS_REFERENCE_DOCS">
           <End Role="Docs" Type="BaseModel.Store.Docs" Multiplicity="0..1" />
-          <End Role="PRICELIST" Type="BaseModel.Store.PRICELIST" Multiplicity="*" />
+          <End Role="PriceList" Type="BaseModel.Store.PriceList" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Docs">
               <PropertyRef Name="DocId" />
             </Principal>
-            <Dependent Role="PRICELIST">
-              <PropertyRef Name="DOCID" />
+            <Dependent Role="PriceList">
+              <PropertyRef Name="DocId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PRICELIST_REFERENCE_PRICETYP">
           <End Role="PriceTypes" Type="BaseModel.Store.PriceTypes" Multiplicity="0..1" />
-          <End Role="PRICELIST" Type="BaseModel.Store.PRICELIST" Multiplicity="*" />
+          <End Role="PriceList" Type="BaseModel.Store.PriceList" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PriceTypes">
               <PropertyRef Name="PTypeId" />
             </Principal>
-            <Dependent Role="PRICELIST">
-              <PropertyRef Name="PTYPEID" />
+            <Dependent Role="PriceList">
+              <PropertyRef Name="PTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PRICELISTDET_PRICELIST">
-          <End Role="PRICELIST" Type="BaseModel.Store.PRICELIST" Multiplicity="1">
+          <End Role="PriceList" Type="BaseModel.Store.PriceList" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="PRICELISTDET" Type="BaseModel.Store.PRICELISTDET" Multiplicity="*" />
+          <End Role="PriceListDet" Type="BaseModel.Store.PriceListDet" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PRICELIST">
-              <PropertyRef Name="PLID" />
+            <Principal Role="PriceList">
+              <PropertyRef Name="PlId" />
             </Principal>
-            <Dependent Role="PRICELISTDET">
-              <PropertyRef Name="PLID" />
+            <Dependent Role="PriceListDet">
+              <PropertyRef Name="PlId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -4051,6 +4121,7 @@
         <Function Name="GetListMatPrices" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="mat_id" Type="int" Mode="In" />
           <Parameter Name="in_curr_id" Type="int" Mode="In" />
+          <Parameter Name="p_type" Type="int" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
@@ -4186,6 +4257,10 @@
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="GetMatTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_type" Type="int" Mode="In" />
+          <Parameter Name="curr_id" Type="int" Mode="In" />
+        </Function>
         <Function Name="GetOrderedInSuppliers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="wbill_id" Type="int" Mode="In" />
         </Function>
@@ -4209,6 +4284,9 @@
           <Parameter Name="mat_id" Type="int" Mode="In" />
           <Parameter Name="ka_id" Type="int" Mode="In" />
           <Parameter Name="w_type" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetPriceListDet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pl_id" Type="int" Mode="In" />
         </Function>
         <Function Name="GetRecipe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="wbill_id" Type="int" Mode="In" />
@@ -4242,6 +4320,19 @@
         <Function Name="GetShippedPosIn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="pos_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="GetSvcGroupTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="root_cat_id" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="GrpId" Type="int" />
+                <Property Name="Name" Type="nvarchar" MaxLength="64" />
+                <Property Name="Level" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="GetSvcTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetUserAccessTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="user_id" Type="int" Mode="In" />
         </Function>
@@ -4967,10 +5058,7 @@
           <EntitySet Name="MONEYSALDO" EntityType="BaseModel.MONEYSALDO" />
           <EntitySet Name="OPERLOG" EntityType="BaseModel.OPERLOG" />
           <EntitySet Name="PAYDOCTYPE" EntityType="BaseModel.PAYDOCTYPE" />
-          <EntitySet Name="PRICELIST" EntityType="BaseModel.PRICELIST" />
-          <EntitySet Name="PRICELISTDET" EntityType="BaseModel.PRICELISTDET" />
           <EntitySet Name="SERIALS" EntityType="BaseModel.SERIALS" />
-          <EntitySet Name="TABLES" EntityType="BaseModel.TABLES" />
           <EntitySet Name="TAXES" EntityType="BaseModel.TAXES" />
           <EntitySet Name="TAXWB" EntityType="BaseModel.TAXWB" />
           <AssociationSet Name="FK_BANKSPERSONS_1" Association="BaseModel.FK_BANKSPERSONS_1">
@@ -4992,18 +5080,6 @@
           <AssociationSet Name="FK_DISCCARDS_GRPID" Association="BaseModel.FK_DISCCARDS_GRPID">
             <End Role="DISCCARDGRP" EntitySet="DISCCARDGRP" />
             <End Role="DISCCARDS" EntitySet="DISCCARDS" />
-          </AssociationSet>
-          <AssociationSet Name="FK__FUNCTIONS__TABID__123EB7A3" Association="BaseModel.FK__FUNCTIONS__TABID__123EB7A3">
-            <End Role="TABLES" EntitySet="TABLES" />
-            <End Role="FUNCTIONS" EntitySet="FUNCTIONS" />
-          </AssociationSet>
-          <AssociationSet Name="FK__OPERLOG__TABID__0D44F85C" Association="BaseModel.FK__OPERLOG__TABID__0D44F85C">
-            <End Role="TABLES" EntitySet="TABLES" />
-            <End Role="OPERLOG" EntitySet="OPERLOG" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PRICELISTDET_PRICELIST" Association="BaseModel.FK_PRICELISTDET_PRICELIST">
-            <End Role="PRICELIST" EntitySet="PRICELIST" />
-            <End Role="PRICELISTDET" EntitySet="PRICELISTDET" />
           </AssociationSet>
           <FunctionImport Name="SP_AUTO_RSV_WB_2" ReturnType="Collection(BaseModel.SP_AUTO_RSV_WB_2_Result)" IsComposable="true">
           <Parameter Name="WBILLID" Mode="In" Type="Int32" />
@@ -5298,10 +5374,6 @@
             <End Role="Currency" EntitySet="Currency" />
             <End Role="MONEYSALDO" EntitySet="MONEYSALDO" />
           </AssociationSet>
-          <AssociationSet Name="FK_PRICELIS_REFERENCE_CURRENCY" Association="BaseModel.FK_PRICELIS_REFERENCE_CURRENCY">
-            <End Role="Currency" EntitySet="Currency" />
-            <End Role="PRICELIST" EntitySet="PRICELIST" />
-          </AssociationSet>
           <AssociationSet Name="FK_WAYBILLL_FK_WBLIST_CURRENCY" Association="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY">
             <End Role="Currency" EntitySet="Currency" />
             <End Role="WaybillList" EntitySet="WaybillList" />
@@ -5352,14 +5424,6 @@
             <End Role="PriceTypes" EntitySet="PriceTypes" />
             <End Role="MATPRICES" EntitySet="MATPRICES" />
           </AssociationSet>
-          <AssociationSet Name="FK_PRICELIST_REFERENCE_PRICETYP" Association="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP">
-            <End Role="PriceTypes" EntitySet="PriceTypes" />
-            <End Role="PRICELIST" EntitySet="PRICELIST" />
-          </AssociationSet>
-          <FunctionImport Name="GetListMatPrices" IsComposable="true" ReturnType="Collection(BaseModel.GetListMatPrices_Result)">
-            <Parameter Name="mat_id" Mode="In" Type="Int32" />
-            <Parameter Name="in_curr_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="GetDiscount" IsComposable="true" ReturnType="Collection(Decimal)">
             <Parameter Name="ka_id" Mode="In" Type="Int32" />
             <Parameter Name="mat_id" Mode="In" Type="Int32" />
@@ -5482,10 +5546,6 @@
           <AssociationSet Name="FK_PAYDOC_REF_PD_DO_DOCS" Association="BaseModel.FK_PAYDOC_REF_PD_DO_DOCS">
             <End Role="Docs" EntitySet="Docs" />
             <End Role="PayDoc" EntitySet="PayDoc" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PRICELIS_REFERENCE_DOCS" Association="BaseModel.FK_PRICELIS_REFERENCE_DOCS">
-            <End Role="Docs" EntitySet="Docs" />
-            <End Role="PRICELIST" EntitySet="PRICELIST" />
           </AssociationSet>
           <AssociationSet Name="FK_TAXWB_REFERENCE_DOCS" Association="BaseModel.FK_TAXWB_REFERENCE_DOCS">
             <End Role="Docs" EntitySet="Docs" />
@@ -5959,6 +6019,51 @@
             <End Role="WaybillList" EntitySet="WaybillList" />
             <End Role="WayBillSvc" EntitySet="WayBillSvc" />
           </AssociationSet>
+          <EntitySet Name="PriceListDet" EntityType="BaseModel.PriceListDet" />
+          <EntitySet Name="Tables" EntityType="BaseModel.Tables" />
+          <AssociationSet Name="FK__FUNCTIONS__TABID__123EB7A3" Association="BaseModel.FK__FUNCTIONS__TABID__123EB7A3">
+            <End Role="Tables" EntitySet="Tables" />
+            <End Role="FUNCTIONS" EntitySet="FUNCTIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OPERLOG__TABID__0D44F85C" Association="BaseModel.FK__OPERLOG__TABID__0D44F85C">
+            <End Role="Tables" EntitySet="Tables" />
+            <End Role="OPERLOG" EntitySet="OPERLOG" />
+          </AssociationSet>
+          <EntitySet Name="v_MatRemains" EntityType="BaseModel.v_MatRemains" />
+          <EntitySet Name="v_PriceList" EntityType="BaseModel.v_PriceList" />
+          <FunctionImport Name="GetSvcGroupTree" IsComposable="true" ReturnType="Collection(BaseModel.GetSvcGroupTree_Result)">
+          <Parameter Name="root_cat_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="PriceList" EntityType="BaseModel.PriceList" />
+          <AssociationSet Name="FK_PRICELIS_REFERENCE_CURRENCY" Association="BaseModel.FK_PRICELIS_REFERENCE_CURRENCY">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRICELIS_REFERENCE_DOCS" Association="BaseModel.FK_PRICELIS_REFERENCE_DOCS">
+            <End Role="Docs" EntitySet="Docs" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRICELIST_REFERENCE_PRICETYP" Association="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP">
+            <End Role="PriceTypes" EntitySet="PriceTypes" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRICELISTDET_PRICELIST" Association="BaseModel.FK_PRICELISTDET_PRICELIST">
+            <End Role="PriceList" EntitySet="PriceList" />
+            <End Role="PriceListDet" EntitySet="PriceListDet" />
+          </AssociationSet>
+          <FunctionImport Name="GetListMatPrices" IsComposable="true" ReturnType="Collection(BaseModel.GetListMatPrices_Result)">
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
+            <Parameter Name="in_curr_id" Mode="In" Type="Int32" />
+            <Parameter Name="p_type" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetMatTree" ReturnType="Collection(BaseModel.GetMatTree_Result)">
+            <Parameter Name="p_type" Mode="In" Type="Int32" />
+            <Parameter Name="curr_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetSvcTree" ReturnType="Collection(BaseModel.GetSvcTree_Result)" />
+          <FunctionImport Name="GetPriceListDet" ReturnType="Collection(BaseModel.GetPriceListDet_Result)">
+            <Parameter Name="pl_id" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -6258,9 +6363,9 @@
           <Property Name="TABID" Type="Int32" />
           <Property Name="LOGGING" Type="Int32" Nullable="false" />
           <Property Name="FLAGS" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="TABLES" Relationship="BaseModel.FK__FUNCTIONS__TABID__123EB7A3" FromRole="FUNCTIONS" ToRole="TABLES" />
           <NavigationProperty Name="UserAccess" Relationship="BaseModel.FK_USERACCE_FK_USERAC_FUNCTION" FromRole="FUNCTIONS" ToRole="UserAccess" />
           <NavigationProperty Name="UserTreeView" Relationship="BaseModel.FK_USERTREE_FK_USERTR_FUNCTION" FromRole="FUNCTIONS" ToRole="UserTreeView" />
+          <NavigationProperty Name="Tables" Relationship="BaseModel.FK__FUNCTIONS__TABID__123EB7A3" FromRole="FUNCTIONS" ToRole="Tables" />
         </EntityType>
         <EntityType Name="MATCHANGE">
           <Key>
@@ -6348,7 +6453,7 @@
           <Property Name="DATAAFTER" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="FUNID" Type="Int32" />
           <Property Name="DOCNUM" Type="String" MaxLength="24" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="TABLES" Relationship="BaseModel.FK__OPERLOG__TABID__0D44F85C" FromRole="OPERLOG" ToRole="TABLES" />
+          <NavigationProperty Name="Tables" Relationship="BaseModel.FK__OPERLOG__TABID__0D44F85C" FromRole="OPERLOG" ToRole="Tables" />
         </EntityType>
         <EntityType Name="PAYDOCTYPE">
           <Key>
@@ -6356,36 +6461,6 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="NAME" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="PRICELIST">
-          <Key>
-            <PropertyRef Name="PLID" />
-          </Key>
-          <Property Name="PLID" Type="Int32" Nullable="false" />
-          <Property Name="CURRID" Type="Int32" Nullable="false" />
-          <Property Name="ONDATE" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="NAME" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
-          <Property Name="NOTES" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="DELETED" Type="Int32" Nullable="false" />
-          <Property Name="USELOGO" Type="Int32" Nullable="false" />
-          <Property Name="DOCID" Type="Int32" />
-          <Property Name="PTYPEID" Type="Int32" />
-          <NavigationProperty Name="PRICELISTDET" Relationship="BaseModel.FK_PRICELISTDET_PRICELIST" FromRole="PRICELIST" ToRole="PRICELISTDET" />
-          <NavigationProperty Name="Currency" Relationship="BaseModel.FK_PRICELIS_REFERENCE_CURRENCY" FromRole="PRICELIST" ToRole="Currency" />
-          <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP" FromRole="PRICELIST" ToRole="PriceTypes" />
-          <NavigationProperty Name="Docs" Relationship="BaseModel.FK_PRICELIS_REFERENCE_DOCS" FromRole="PRICELIST" ToRole="Docs" />
-        </EntityType>
-        <EntityType Name="PRICELISTDET">
-          <Key>
-            <PropertyRef Name="PLDETID" />
-          </Key>
-          <Property Name="PLDETID" Type="Int32" Nullable="false" />
-          <Property Name="MATID" Type="Int32" />
-          <Property Name="PRICE" Type="Decimal" Precision="15" Scale="8" />
-          <Property Name="PLID" Type="Int32" Nullable="false" />
-          <Property Name="GRPID" Type="Int32" />
-          <Property Name="PLDETTYPE" Type="Int32" />
-          <NavigationProperty Name="PRICELIST" Relationship="BaseModel.FK_PRICELISTDET_PRICELIST" FromRole="PRICELISTDET" ToRole="PRICELIST" />
         </EntityType>
         <EntityType Name="SERIALS">
           <Key>
@@ -6396,16 +6471,6 @@
           <Property Name="SERIALNO" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
           <Property Name="INVNUMB" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_SERIALS_POSID" FromRole="SERIALS" ToRole="WaybillDet" />
-        </EntityType>
-        <EntityType Name="TABLES">
-          <Key>
-            <PropertyRef Name="TABID" />
-          </Key>
-          <Property Name="TABID" Type="Int32" Nullable="false" />
-          <Property Name="TABLENAME" Type="String" Nullable="false" MaxLength="24" Unicode="false" FixedLength="false" />
-          <Property Name="KEYNAME" Type="String" MaxLength="24" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="FUNCTIONS" Relationship="BaseModel.FK__FUNCTIONS__TABID__123EB7A3" FromRole="TABLES" ToRole="FUNCTIONS" />
-          <NavigationProperty Name="OPERLOG" Relationship="BaseModel.FK__OPERLOG__TABID__0D44F85C" FromRole="TABLES" ToRole="OPERLOG" />
         </EntityType>
         <EntityType Name="TAXES">
           <Key>
@@ -6514,44 +6579,6 @@
             </Principal>
             <Dependent Role="DISCCARDS">
               <PropertyRef Name="GRPID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__FUNCTIONS__TABID__123EB7A3">
-          <End Role="TABLES" Type="BaseModel.TABLES" Multiplicity="0..1" />
-          <End Role="FUNCTIONS" Type="BaseModel.FUNCTIONS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TABLES">
-              <PropertyRef Name="TABID" />
-            </Principal>
-            <Dependent Role="FUNCTIONS">
-              <PropertyRef Name="TABID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__OPERLOG__TABID__0D44F85C">
-          <End Role="TABLES" Type="BaseModel.TABLES" Multiplicity="0..1" />
-          <End Role="OPERLOG" Type="BaseModel.OPERLOG" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TABLES">
-              <PropertyRef Name="TABID" />
-            </Principal>
-            <Dependent Role="OPERLOG">
-              <PropertyRef Name="TABID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PRICELISTDET_PRICELIST">
-          <End Role="PRICELIST" Type="BaseModel.PRICELIST" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="PRICELISTDET" Type="BaseModel.PRICELISTDET" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PRICELIST">
-              <PropertyRef Name="PLID" />
-            </Principal>
-            <Dependent Role="PRICELISTDET">
-              <PropertyRef Name="PLID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7184,11 +7211,11 @@
           <NavigationProperty Name="MATPRICES1" Relationship="BaseModel.FK__MATPRICES__CURRI__74794A92" FromRole="Currency" ToRole="MATPRICES" />
           <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK__PAYDOC__CURRID__214BF109" FromRole="Currency" ToRole="PayDoc" />
           <NavigationProperty Name="MONEYSALDO" Relationship="BaseModel.FK_MS_CURRID" FromRole="Currency" ToRole="MONEYSALDO" />
-          <NavigationProperty Name="PRICELIST" Relationship="BaseModel.FK_PRICELIS_REFERENCE_CURRENCY" FromRole="Currency" ToRole="PRICELIST" />
           <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY" FromRole="Currency" ToRole="WaybillList" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_CURRENCY" FromRole="Currency" ToRole="WaybillDet" />
           <NavigationProperty Name="Services" Relationship="BaseModel.FK_SVC_CURRID" FromRole="Currency" ToRole="Services" />
           <NavigationProperty Name="WayBillSvc" Relationship="BaseModel.FK_WBS_CURRID" FromRole="Currency" ToRole="WayBillSvc" />
+          <NavigationProperty Name="PriceList" Relationship="BaseModel.FK_PRICELIS_REFERENCE_CURRENCY" FromRole="Currency" ToRole="PriceList" />
         </EntityType>
         <Association Name="FK_CONTRACT_REFERENCE_CURRENCY">
           <End Type="BaseModel.Currency" Role="Currency" Multiplicity="0..1" />
@@ -7282,18 +7309,6 @@
               <PropertyRef Name="CurrId" />
             </Principal>
             <Dependent Role="MONEYSALDO">
-              <PropertyRef Name="CURRID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PRICELIS_REFERENCE_CURRENCY">
-          <End Type="BaseModel.Currency" Role="Currency" Multiplicity="1" />
-          <End Type="BaseModel.PRICELIST" Role="PRICELIST" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Currency">
-              <PropertyRef Name="CurrId" />
-            </Principal>
-            <Dependent Role="PRICELIST">
               <PropertyRef Name="CURRID" />
             </Dependent>
           </ReferentialConstraint>
@@ -7400,8 +7415,8 @@
           <NavigationProperty Name="MATGROUPPRICES1" Relationship="BaseModel.FK_MGP_PPTYPEID" FromRole="PriceTypes" ToRole="MATGROUPPRICES" />
           <NavigationProperty Name="MATPRICES" Relationship="BaseModel.FK__MATPRICES__PTYPE__72910220" FromRole="PriceTypes" ToRole="MATPRICES" />
           <NavigationProperty Name="MATPRICES1" Relationship="BaseModel.FK_MATPRICES_PPTYPEID" FromRole="PriceTypes" ToRole="MATPRICES" />
-          <NavigationProperty Name="PRICELIST" Relationship="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP" FromRole="PriceTypes" ToRole="PRICELIST" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP" FromRole="PriceTypes" ToRole="WaybillDet" />
+          <NavigationProperty Name="PriceList" Relationship="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP" FromRole="PriceTypes" ToRole="PriceList" />
         </EntityType>
         <Association Name="FK__MATGROUPP__PTYPE__6DCC4D03">
           <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="1" />
@@ -7451,25 +7466,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PRICELIST_REFERENCE_PRICETYP">
-          <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="0..1" />
-          <End Type="BaseModel.PRICELIST" Role="PRICELIST" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PriceTypes">
-              <PropertyRef Name="PTypeId" />
-            </Principal>
-            <Dependent Role="PRICELIST">
-              <PropertyRef Name="PTYPEID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <ComplexType Name="GetListMatPrices_Result">
-          <Property Type="Int32" Name="PType" Nullable="true" />
-          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="Int32" Name="CurrId" Nullable="true" />
-          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="16" />
-          <Property Type="Double" Name="Dis" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="GetPosOut_Result">
           <Property Type="Int32" Name="PosId" Nullable="false" />
           <Property Type="Int32" Name="WbillId" Nullable="false" />
@@ -8003,9 +7999,9 @@
           <NavigationProperty Name="CONTRACTS1" Relationship="BaseModel.FK_CONTRACT_REF_CONTR_PDOCS" FromRole="Docs" ToRole="CONTRACTS" />
           <NavigationProperty Name="DocsRel" Relationship="BaseModel.FK_DOCSREL_REFERENCE_DOCS" FromRole="Docs" ToRole="DocsRel" />
           <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK_PAYDOC_REF_PD_DO_DOCS" FromRole="Docs" ToRole="PayDoc" />
-          <NavigationProperty Name="PRICELIST" Relationship="BaseModel.FK_PRICELIS_REFERENCE_DOCS" FromRole="Docs" ToRole="PRICELIST" />
           <NavigationProperty Name="TAXWB" Relationship="BaseModel.FK_TAXWB_REFERENCE_DOCS" FromRole="Docs" ToRole="TAXWB" />
           <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WAYBILLL_REF_WBL_D_DOCS" FromRole="Docs" ToRole="WaybillList" />
+          <NavigationProperty Name="PriceList" Relationship="BaseModel.FK_PRICELIS_REFERENCE_DOCS" FromRole="Docs" ToRole="PriceList" />
         </EntityType>
         <EntityType Name="UserAccessWh">
           <Key>
@@ -8074,18 +8070,6 @@
             </Principal>
             <Dependent Role="PayDoc">
               <PropertyRef Name="DocId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PRICELIS_REFERENCE_DOCS">
-          <End Type="BaseModel.Docs" Role="Docs" Multiplicity="0..1" />
-          <End Type="BaseModel.PRICELIST" Role="PRICELIST" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Docs">
-              <PropertyRef Name="DocId" />
-            </Principal>
-            <Dependent Role="PRICELIST">
-              <PropertyRef Name="DOCID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -10090,6 +10074,194 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="PriceListDet">
+          <Key>
+            <PropertyRef Name="PlDetId" />
+          </Key>
+          <Property Type="Int32" Name="PlDetId" Nullable="false" />
+          <Property Type="Int32" Name="MatId" />
+          <Property Type="Decimal" Name="Price" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="PlId" Nullable="false" />
+          <Property Type="Int32" Name="GrpId" />
+          <Property Type="Int32" Name="PlDetType" />
+          <NavigationProperty Name="PriceList" Relationship="BaseModel.FK_PRICELISTDET_PRICELIST" FromRole="PriceListDet" ToRole="PriceList" />
+        </EntityType>
+        <EntityType Name="Tables">
+          <Key>
+            <PropertyRef Name="TabId" />
+          </Key>
+          <Property Type="Int32" Name="TabId" Nullable="false" />
+          <Property Type="String" Name="TableName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="KeyName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FUNCTIONS" Relationship="BaseModel.FK__FUNCTIONS__TABID__123EB7A3" FromRole="Tables" ToRole="FUNCTIONS" />
+          <NavigationProperty Name="OPERLOG" Relationship="BaseModel.FK__OPERLOG__TABID__0D44F85C" FromRole="Tables" ToRole="OPERLOG" />
+        </EntityType>
+        <Association Name="FK__FUNCTIONS__TABID__123EB7A3">
+          <End Type="BaseModel.Tables" Role="Tables" Multiplicity="0..1" />
+          <End Type="BaseModel.FUNCTIONS" Role="FUNCTIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tables">
+              <PropertyRef Name="TabId" />
+            </Principal>
+            <Dependent Role="FUNCTIONS">
+              <PropertyRef Name="TABID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OPERLOG__TABID__0D44F85C">
+          <End Type="BaseModel.Tables" Role="Tables" Multiplicity="0..1" />
+          <End Type="BaseModel.OPERLOG" Role="OPERLOG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tables">
+              <PropertyRef Name="TabId" />
+            </Principal>
+            <Dependent Role="OPERLOG">
+              <PropertyRef Name="TABID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="v_MatRemains">
+          <Key>
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="OnDate" />
+          </Key>
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
+          <Property Type="Decimal" Name="Remain" Precision="38" Scale="19" />
+          <Property Type="Decimal" Name="Rsv" Precision="38" Scale="8" />
+          <Property Type="Decimal" Name="AvgPrice" Precision="38" Scale="6" />
+          <Property Type="Decimal" Name="MinPrice" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="MaxPrice" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="PosRsv" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Ordered" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="ORsv" Precision="38" Scale="8" />
+        </EntityType>
+        <EntityType Name="v_PriceList">
+          <Key>
+            <PropertyRef Name="PlId" />
+            <PropertyRef Name="CurrId" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Deleted" />
+            <PropertyRef Name="UseLogo" />
+            <PropertyRef Name="CurrName" />
+          </Key>
+          <Property Type="Int32" Name="PlId" Nullable="false" />
+          <Property Type="Int32" Name="CurrId" Nullable="false" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
+          <Property Type="String" Name="Name" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Deleted" Nullable="false" />
+          <Property Type="Int32" Name="UseLogo" Nullable="false" />
+          <Property Type="Int32" Name="DocId" />
+          <Property Type="Int32" Name="PTypeId" />
+          <Property Type="String" Name="CurrName" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="GetSvcGroupTree_Result">
+          <Property Type="Int32" Name="GrpId" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="Level" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="PriceList">
+          <Key>
+            <PropertyRef Name="PlId" />
+          </Key>
+          <Property Type="Int32" Name="PlId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CurrId" Nullable="false" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
+          <Property Type="String" Name="Name" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Deleted" Nullable="false" />
+          <Property Type="Int32" Name="UseLogo" Nullable="false" />
+          <Property Type="Int32" Name="DocId" />
+          <Property Type="Int32" Name="PTypeId" />
+          <NavigationProperty Name="Currency" Relationship="BaseModel.FK_PRICELIS_REFERENCE_CURRENCY" FromRole="PriceList" ToRole="Currency" />
+          <NavigationProperty Name="Docs" Relationship="BaseModel.FK_PRICELIS_REFERENCE_DOCS" FromRole="PriceList" ToRole="Docs" />
+          <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP" FromRole="PriceList" ToRole="PriceTypes" />
+          <NavigationProperty Name="PriceListDet" Relationship="BaseModel.FK_PRICELISTDET_PRICELIST" FromRole="PriceList" ToRole="PriceListDet" />
+        </EntityType>
+        <Association Name="FK_PRICELIS_REFERENCE_CURRENCY">
+          <End Type="BaseModel.Currency" Role="Currency" Multiplicity="1" />
+          <End Type="BaseModel.PriceList" Role="PriceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
+            </Principal>
+            <Dependent Role="PriceList">
+              <PropertyRef Name="CurrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRICELIS_REFERENCE_DOCS">
+          <End Type="BaseModel.Docs" Role="Docs" Multiplicity="0..1" />
+          <End Type="BaseModel.PriceList" Role="PriceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Docs">
+              <PropertyRef Name="DocId" />
+            </Principal>
+            <Dependent Role="PriceList">
+              <PropertyRef Name="DocId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRICELIST_REFERENCE_PRICETYP">
+          <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="0..1" />
+          <End Type="BaseModel.PriceList" Role="PriceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceTypes">
+              <PropertyRef Name="PTypeId" />
+            </Principal>
+            <Dependent Role="PriceList">
+              <PropertyRef Name="PTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRICELISTDET_PRICELIST">
+          <End Type="BaseModel.PriceList" Role="PriceList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.PriceListDet" Role="PriceListDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceList">
+              <PropertyRef Name="PlId" />
+            </Principal>
+            <Dependent Role="PriceListDet">
+              <PropertyRef Name="PlId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GetListMatPrices_Result">
+          <Property Type="Int32" Name="PType" Nullable="true" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="16" />
+          <Property Type="Double" Name="Dis" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetMatTree_Result">
+          <Property Type="Int32" Name="Id" Nullable="true" />
+          <Property Type="Int32" Name="Pid" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="art" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="Int32" Name="ImgIndex" Nullable="false" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="8" />
+        </ComplexType>
+        <ComplexType Name="GetSvcTree_Result">
+          <Property Type="Int32" Name="Id" Nullable="true" />
+          <Property Type="Int32" Name="Pid" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="Artikul" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="1" />
+          <Property Type="Int32" Name="ImgIndex" Nullable="false" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="31" Scale="8" />
+        </ComplexType>
+        <ComplexType Name="GetPriceListDet_Result">
+          <Property Type="Int32" Name="PlDetId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="PlDetType" Nullable="true" />
+          <Property Type="String" Name="GrpName" Nullable="false" MaxLength="64" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -10334,33 +10506,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PRICELIST">
-            <EntityTypeMapping TypeName="BaseModel.PRICELIST">
-              <MappingFragment StoreEntitySet="PRICELIST">
-                <ScalarProperty Name="PLID" ColumnName="PLID" />
-                <ScalarProperty Name="CURRID" ColumnName="CURRID" />
-                <ScalarProperty Name="ONDATE" ColumnName="ONDATE" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="NOTES" ColumnName="NOTES" />
-                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
-                <ScalarProperty Name="USELOGO" ColumnName="USELOGO" />
-                <ScalarProperty Name="DOCID" ColumnName="DOCID" />
-                <ScalarProperty Name="PTYPEID" ColumnName="PTYPEID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PRICELISTDET">
-            <EntityTypeMapping TypeName="BaseModel.PRICELISTDET">
-              <MappingFragment StoreEntitySet="PRICELISTDET">
-                <ScalarProperty Name="PLDETID" ColumnName="PLDETID" />
-                <ScalarProperty Name="MATID" ColumnName="MATID" />
-                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
-                <ScalarProperty Name="PLID" ColumnName="PLID" />
-                <ScalarProperty Name="GRPID" ColumnName="GRPID" />
-                <ScalarProperty Name="PLDETTYPE" ColumnName="PLDETTYPE" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="SERIALS">
             <EntityTypeMapping TypeName="BaseModel.SERIALS">
               <MappingFragment StoreEntitySet="SERIALS">
@@ -10368,15 +10513,6 @@
                 <ScalarProperty Name="POSID" ColumnName="POSID" />
                 <ScalarProperty Name="SERIALNO" ColumnName="SERIALNO" />
                 <ScalarProperty Name="INVNUMB" ColumnName="INVNUMB" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TABLES">
-            <EntityTypeMapping TypeName="BaseModel.TABLES">
-              <MappingFragment StoreEntitySet="TABLES">
-                <ScalarProperty Name="TABID" ColumnName="TABID" />
-                <ScalarProperty Name="TABLENAME" ColumnName="TABLENAME" />
-                <ScalarProperty Name="KEYNAME" ColumnName="KEYNAME" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -11135,17 +11271,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetListMatPrices" FunctionName="BaseModel.Store.GetListMatPrices">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetListMatPrices_Result">
-                <ScalarProperty Name="PType" ColumnName="PType" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
-                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
-                <ScalarProperty Name="Dis" ColumnName="Dis" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetDiscount" FunctionName="BaseModel.Store.GetDiscount" />
           <FunctionImportMapping FunctionImportName="GetPosOut" FunctionName="BaseModel.Store.GetPosOut">
             <ResultMapping>
@@ -12516,6 +12641,132 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PriceListDet">
+            <EntityTypeMapping TypeName="BaseModel.PriceListDet">
+              <MappingFragment StoreEntitySet="PriceListDet">
+                <ScalarProperty Name="PlDetType" ColumnName="PlDetType" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="PlId" ColumnName="PlId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="PlDetId" ColumnName="PlDetId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tables">
+            <EntityTypeMapping TypeName="BaseModel.Tables">
+              <MappingFragment StoreEntitySet="Tables">
+                <ScalarProperty Name="KeyName" ColumnName="KeyName" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="TabId" ColumnName="TabId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_MatRemains">
+            <EntityTypeMapping TypeName="BaseModel.v_MatRemains">
+              <MappingFragment StoreEntitySet="v_MatRemains">
+                <ScalarProperty Name="ORsv" ColumnName="ORsv" />
+                <ScalarProperty Name="Ordered" ColumnName="Ordered" />
+                <ScalarProperty Name="PosRsv" ColumnName="PosRsv" />
+                <ScalarProperty Name="MaxPrice" ColumnName="MaxPrice" />
+                <ScalarProperty Name="MinPrice" ColumnName="MinPrice" />
+                <ScalarProperty Name="AvgPrice" ColumnName="AvgPrice" />
+                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_PriceList">
+            <EntityTypeMapping TypeName="BaseModel.v_PriceList">
+              <MappingFragment StoreEntitySet="v_PriceList">
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="UseLogo" ColumnName="UseLogo" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="PlId" ColumnName="PlId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetSvcGroupTree" FunctionName="BaseModel.Store.GetSvcGroupTree">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetSvcGroupTree_Result">
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="PriceList">
+            <EntityTypeMapping TypeName="BaseModel.PriceList">
+              <MappingFragment StoreEntitySet="PriceList">
+                <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="UseLogo" ColumnName="UseLogo" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="PlId" ColumnName="PlId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetListMatPrices" FunctionName="BaseModel.Store.GetListMatPrices">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetListMatPrices_Result">
+                <ScalarProperty Name="PType" ColumnName="PType" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="Dis" ColumnName="Dis" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetMatTree" FunctionName="BaseModel.Store.GetMatTree">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetMatTree_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Pid" ColumnName="Pid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="art" ColumnName="art" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="ImgIndex" ColumnName="ImgIndex" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetSvcTree" FunctionName="BaseModel.Store.GetSvcTree">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetSvcTree_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Pid" ColumnName="Pid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="ImgIndex" ColumnName="ImgIndex" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetPriceListDet" FunctionName="BaseModel.Store.GetPriceListDet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetPriceListDet_Result">
+                <ScalarProperty Name="PlDetId" ColumnName="PlDetId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="PlDetType" ColumnName="PlDetType" />
+                <ScalarProperty Name="GrpName" ColumnName="GrpName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

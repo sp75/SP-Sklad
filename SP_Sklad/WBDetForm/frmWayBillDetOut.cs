@@ -152,7 +152,7 @@ namespace SP_Sklad.WBDetForm
 
              if (PriceTypesEdit.EditValue != null && PriceTypesEdit.EditValue != DBNull.Value)
              {
-                 var list_price = _db.GetListMatPrices(row.MatId, _wb.CurrId).FirstOrDefault(w => w.PType == (int)PriceTypesEdit.EditValue);
+                 var list_price = _db.GetListMatPrices(row.MatId, _wb.CurrId, (int)PriceTypesEdit.EditValue).FirstOrDefault();
                  if (list_price != null)
                  {
                      _wbd.BasePrice = Math.Round(list_price.Price.Value, 4);
@@ -310,7 +310,7 @@ namespace SP_Sklad.WBDetForm
                 return;
             }
 
-            var list_price = _db.GetListMatPrices((int)MatComboBox.EditValue, _wb.CurrId).FirstOrDefault(w => w.PType == (int)PriceTypesEdit.EditValue);
+            var list_price = _db.GetListMatPrices((int)MatComboBox.EditValue, _wb.CurrId, (int?)PriceTypesEdit.EditValue).FirstOrDefault();
             if (list_price != null)
             {
               _wbd.BasePrice   = Math.Round(list_price.Price.Value, 4);

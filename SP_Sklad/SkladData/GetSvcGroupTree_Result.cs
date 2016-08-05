@@ -10,17 +10,11 @@
 namespace SP_Sklad.SkladData
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class PriceListDet
+    public partial class GetSvcGroupTree_Result
     {
-        public int PlDetId { get; set; }
-        public Nullable<int> MatId { get; set; }
-        public Nullable<decimal> Price { get; set; }
-        public int PlId { get; set; }
         public Nullable<int> GrpId { get; set; }
-        public Nullable<int> PlDetType { get; set; }
-    
-        public virtual PriceList PriceList { get; set; }
+        public string Name { get; set; }
+        public Nullable<int> Level { get; set; }
     }
 }

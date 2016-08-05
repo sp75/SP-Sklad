@@ -12,26 +12,26 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class PRICELIST
+    public partial class PriceList
     {
-        public PRICELIST()
+        public PriceList()
         {
-            this.PRICELISTDET = new HashSet<PRICELISTDET>();
+            this.PriceListDet = new HashSet<PriceListDet>();
         }
     
-        public int PLID { get; set; }
-        public int CURRID { get; set; }
-        public System.DateTime ONDATE { get; set; }
-        public string NAME { get; set; }
-        public string NOTES { get; set; }
-        public int DELETED { get; set; }
-        public int USELOGO { get; set; }
-        public Nullable<int> DOCID { get; set; }
-        public Nullable<int> PTYPEID { get; set; }
+        public int PlId { get; set; }
+        public int CurrId { get; set; }
+        public System.DateTime OnDate { get; set; }
+        public string Name { get; set; }
+        public string Notes { get; set; }
+        public int Deleted { get; set; }
+        public int UseLogo { get; set; }
+        public Nullable<int> DocId { get; set; }
+        public Nullable<int> PTypeId { get; set; }
     
-        public virtual ICollection<PRICELISTDET> PRICELISTDET { get; set; }
         public virtual Currency Currency { get; set; }
-        public virtual PriceTypes PriceTypes { get; set; }
         public virtual Docs Docs { get; set; }
+        public virtual PriceTypes PriceTypes { get; set; }
+        public virtual ICollection<PriceListDet> PriceListDet { get; set; }
     }
 }

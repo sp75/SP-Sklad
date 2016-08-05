@@ -26,8 +26,8 @@ namespace SP_Sklad.SkladData
         public int LOGGING { get; set; }
         public int FLAGS { get; set; }
     
-        public virtual TABLES TABLES { get; set; }
         public virtual ICollection<UserAccess> UserAccess { get; set; }
         public virtual ICollection<UserTreeView> UserTreeView { get; set; }
+        public virtual Tables Tables { get; set; }
     }
 }
