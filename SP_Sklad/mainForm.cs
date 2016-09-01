@@ -15,6 +15,8 @@ namespace SP_Sklad
 {
     public partial class mainForm : Form
     {
+        public static int user_id { get; set; }
+
         public mainForm()
         {
             InitializeComponent();
@@ -28,6 +30,21 @@ namespace SP_Sklad
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             
+        }
+
+        private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var want_to_exit = MessageBox.Show(
+               @"Do you really want close the program?",
+               @"Close application",
+               MessageBoxButtons.YesNo) == DialogResult.Yes;
+
+            e.Cancel = !want_to_exit;
+        }
+
+        private void mainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
 
     }

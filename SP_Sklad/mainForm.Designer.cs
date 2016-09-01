@@ -60,6 +60,7 @@
             this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
             this.reportUserControl1 = new SP_Sklad.MainTabs.ReportUserControl();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
+            this.financesUserControl1 = new SP_Sklad.MainTabs.FinancesUserControl();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.whUserControl = new SP_Sklad.MainTabs.WarehouseUserControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
@@ -68,7 +69,6 @@
             this.docsUserControl1 = new SP_Sklad.MainTabs.DocsUserControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.sharedImageCollection1 = new DevExpress.Utils.SharedImageCollection(this.components);
-            this.financesUserControl1 = new SP_Sklad.MainTabs.FinancesUserControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit.CalendarTimeProperties)).BeginInit();
@@ -415,6 +415,14 @@
             this.xtraTabPage4.TabPageWidth = 100;
             this.xtraTabPage4.Text = "Фінанси";
             // 
+            // financesUserControl1
+            // 
+            this.financesUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.financesUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.financesUserControl1.Name = "financesUserControl1";
+            this.financesUserControl1.Size = new System.Drawing.Size(1182, 578);
+            this.financesUserControl1.TabIndex = 0;
+            // 
             // xtraTabPage3
             // 
             this.xtraTabPage3.Controls.Add(this.whUserControl);
@@ -505,14 +513,6 @@
             this.sharedImageCollection1.ImageSource.Images.SetKeyName(8, "Склади.bmp");
             this.sharedImageCollection1.ParentControl = this;
             // 
-            // financesUserControl1
-            // 
-            this.financesUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.financesUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.financesUserControl1.Name = "financesUserControl1";
-            this.financesUserControl1.Size = new System.Drawing.Size(1182, 578);
-            this.financesUserControl1.TabIndex = 0;
-            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -526,6 +526,8 @@
             this.Name = "mainForm";
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainForm_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.mainForm_FormClosed);
             this.Load += new System.EventHandler(this.mainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit.CalendarTimeProperties)).EndInit();

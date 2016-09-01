@@ -166,6 +166,12 @@
     <Compile Include="frmKABalans.Designer.cs">
       <DependentUpon>frmKABalans.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMatRSV.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -891,6 +897,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmKABalans.resx">
       <DependentUpon>frmKABalans.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMatRSV.resx">
       <DependentUpon>frmMatRSV.cs</DependentUpon>
