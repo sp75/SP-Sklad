@@ -29,6 +29,7 @@ namespace SP_Sklad
         {
             
         }
+
     }
 
     public enum EditWBOptions

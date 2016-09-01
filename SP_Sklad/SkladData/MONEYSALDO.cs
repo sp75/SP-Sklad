@@ -12,15 +12,16 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class MONEYSALDO
+    public partial class MoneySaldo
     {
-        public int SALDOTYPE { get; set; }
-        public System.DateTime ONDATE { get; set; }
-        public Nullable<int> ACCID { get; set; }
-        public int CURRID { get; set; }
-        public decimal SALDO { get; set; }
-        public Nullable<int> CASHID { get; set; }
-        public Nullable<decimal> SALDODEF { get; set; }
+        public int Id { get; set; }
+        public int SaldoType { get; set; }
+        public System.DateTime OnDate { get; set; }
+        public Nullable<int> AccId { get; set; }
+        public int CurrId { get; set; }
+        public decimal Saldo { get; set; }
+        public Nullable<int> CashId { get; set; }
+        public Nullable<decimal> SaldoDef { get; set; }
     
         public virtual CashDesks CashDesks { get; set; }
         public virtual Currency Currency { get; set; }

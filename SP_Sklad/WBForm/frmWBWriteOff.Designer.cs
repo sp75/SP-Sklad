@@ -271,6 +271,7 @@
             this.WhOutComboBox.Size = new System.Drawing.Size(454, 22);
             this.WhOutComboBox.StyleController = this.styleController1;
             this.WhOutComboBox.TabIndex = 25;
+            this.WhOutComboBox.EditValueChanged += new System.EventHandler(this.WhOutComboBox_EditValueChanged);
             // 
             // labelControl8
             // 
@@ -1208,7 +1209,6 @@
         private DevExpress.XtraEditors.SimpleButton NowDateBtn;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.CheckEdit TurnDocCheckBox;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.TextEdit NumEdit;
         private DevExpress.XtraEditors.DateEdit OnDateDBEdit;
@@ -1291,5 +1291,6 @@
         private DevExpress.XtraBars.PopupMenu WbDetPopupMenu;
         private DevExpress.XtraEditors.SimpleButton WhBtn;
         private DevExpress.XtraEditors.CheckEdit DefNumCheckBox;
+        public DevExpress.XtraEditors.CheckEdit TurnDocCheckBox;
     }
 }

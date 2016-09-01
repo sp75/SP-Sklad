@@ -50,6 +50,7 @@ namespace SP_Sklad.SkladData
 
         public static DbContextTransaction CommitRetaining(this DbContextTransaction transaction, BaseEntities db)
         {
+            db.SaveChanges();
             if (transaction.UnderlyingTransaction.Connection != null)
             {
                 transaction.Commit();

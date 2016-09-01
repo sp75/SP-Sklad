@@ -54,6 +54,7 @@
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.gridSplitContainer1 = new DevExpress.XtraGrid.GridSplitContainer();
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
+            this.serviceUserControl1 = new SP_Sklad.MainTabs.ServiceUserControl();
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
             this.directoriesUserControl1 = new SP_Sklad.MainTabs.DirectoriesUserControl();
             this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
@@ -67,7 +68,7 @@
             this.docsUserControl1 = new SP_Sklad.MainTabs.DocsUserControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.sharedImageCollection1 = new DevExpress.Utils.SharedImageCollection(this.components);
-            this.serviceUserControl1 = new SP_Sklad.MainTabs.ServiceUserControl();
+            this.financesUserControl1 = new SP_Sklad.MainTabs.FinancesUserControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit.CalendarTimeProperties)).BeginInit();
@@ -78,6 +79,7 @@
             this.xtraTabPage7.SuspendLayout();
             this.xtraTabPage6.SuspendLayout();
             this.xtraTabPage5.SuspendLayout();
+            this.xtraTabPage4.SuspendLayout();
             this.xtraTabPage3.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -358,6 +360,14 @@
             this.xtraTabPage7.TabPageWidth = 100;
             this.xtraTabPage7.Text = "Сервіс";
             // 
+            // serviceUserControl1
+            // 
+            this.serviceUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.serviceUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.serviceUserControl1.Name = "serviceUserControl1";
+            this.serviceUserControl1.Size = new System.Drawing.Size(1182, 578);
+            this.serviceUserControl1.TabIndex = 0;
+            // 
             // xtraTabPage6
             // 
             this.xtraTabPage6.Controls.Add(this.directoriesUserControl1);
@@ -398,6 +408,7 @@
             // 
             // xtraTabPage4
             // 
+            this.xtraTabPage4.Controls.Add(this.financesUserControl1);
             this.xtraTabPage4.Image = global::SP_Sklad.Properties.Resources.bank;
             this.xtraTabPage4.Name = "xtraTabPage4";
             this.xtraTabPage4.Size = new System.Drawing.Size(1182, 578);
@@ -494,13 +505,13 @@
             this.sharedImageCollection1.ImageSource.Images.SetKeyName(8, "Склади.bmp");
             this.sharedImageCollection1.ParentControl = this;
             // 
-            // serviceUserControl1
+            // financesUserControl1
             // 
-            this.serviceUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.serviceUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.serviceUserControl1.Name = "serviceUserControl1";
-            this.serviceUserControl1.Size = new System.Drawing.Size(1182, 578);
-            this.serviceUserControl1.TabIndex = 0;
+            this.financesUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.financesUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.financesUserControl1.Name = "financesUserControl1";
+            this.financesUserControl1.Size = new System.Drawing.Size(1182, 578);
+            this.financesUserControl1.TabIndex = 0;
             // 
             // mainForm
             // 
@@ -526,6 +537,7 @@
             this.xtraTabPage7.ResumeLayout(false);
             this.xtraTabPage6.ResumeLayout(false);
             this.xtraTabPage5.ResumeLayout(false);
+            this.xtraTabPage4.ResumeLayout(false);
             this.xtraTabPage3.ResumeLayout(false);
             this.xtraTabPage2.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
@@ -578,6 +590,7 @@
         private MainTabs.ReportUserControl reportUserControl1;
         private DevExpress.Utils.SharedImageCollection sharedImageCollection1;
         private MainTabs.ServiceUserControl serviceUserControl1;
+        private MainTabs.FinancesUserControl financesUserControl1;
     }
 }
 

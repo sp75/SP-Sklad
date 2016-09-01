@@ -44,6 +44,9 @@
     <Reference Include="DevExpress.Spreadsheet.v15.2.Core, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraBars.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v15.2.UI, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v15.2.Wizard, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraEditors.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraGrid.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -139,6 +142,12 @@
     <Compile Include="EditForm\frmWhCatalog.Designer.cs">
       <DependentUpon>frmWhCatalog.cs</DependentUpon>
     </Compile>
+    <Compile Include="FinanseForm\frmMoneyMove.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinanseForm\frmMoneyMove.Designer.cs">
+      <DependentUpon>frmMoneyMove.cs</DependentUpon>
+    </Compile>
     <Compile Include="FinanseForm\frmPayDoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +201,12 @@
     </Compile>
     <Compile Include="MainTabs\DocsUserControl.Designer.cs">
       <DependentUpon>DocsUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainTabs\FinancesUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainTabs\FinancesUserControl.Designer.cs">
+      <DependentUpon>FinancesUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="MainTabs\ManufacturingUserControl.cs">
       <SubType>UserControl</SubType>
@@ -342,6 +357,9 @@
     <Compile Include="SkladData\GetDocList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetFinancesTree_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetListMatPrices_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -394,6 +412,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetReportTree_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetSaldoDetTree_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetServiceTree_Result.cs">
@@ -498,7 +519,16 @@
     <Compile Include="SkladData\Measures.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\MONEYSALDO.cs">
+    <Compile Include="SkladData\MoneyMoveList_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\MoneyOnDate_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\MoneySaldo.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\MoneyTurnover_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\ObservableListSource.cs" />
@@ -508,7 +538,7 @@
     <Compile Include="SkladData\PayDoc.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\PAYDOCTYPE.cs">
+    <Compile Include="SkladData\PayDocType.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\PayType.cs">
@@ -733,6 +763,12 @@
     <Compile Include="WBDetForm\frmWaybillSvcDet.Designer.cs">
       <DependentUpon>frmWaybillSvcDet.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBDetForm\frmWBInventoryDet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBDetForm\frmWBInventoryDet.Designer.cs">
+      <DependentUpon>frmWBInventoryDet.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBDetForm\frmWBReturnDetIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -781,6 +817,12 @@
     <Compile Include="WBForm\frmWBDeboning.Designer.cs">
       <DependentUpon>frmWBDeboning.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBForm\frmWBInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\frmWBInventory.Designer.cs">
+      <DependentUpon>frmWBInventory.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBForm\frmWBManufacture.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -792,6 +834,12 @@
     </Compile>
     <Compile Include="WBForm\frmWBReturnIn.Designer.cs">
       <DependentUpon>frmWBReturnIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WBForm\frmWBReturnOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\frmWBReturnOut.Designer.cs">
+      <DependentUpon>frmWBReturnOut.cs</DependentUpon>
     </Compile>
     <Compile Include="WBForm\frmWBWriteOff.cs">
       <SubType>Form</SubType>
@@ -832,6 +880,9 @@
     <EmbeddedResource Include="EditForm\frmWhCatalog.resx">
       <DependentUpon>frmWhCatalog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FinanseForm\frmMoneyMove.resx">
+      <DependentUpon>frmMoneyMove.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FinanseForm\frmPayDoc.resx">
       <DependentUpon>frmPayDoc.cs</DependentUpon>
     </EmbeddedResource>
@@ -861,6 +912,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainTabs\DocsUserControl.resx">
       <DependentUpon>DocsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainTabs\FinancesUserControl.resx">
+      <DependentUpon>FinancesUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainTabs\ManufacturingUserControl.resx">
       <DependentUpon>ManufacturingUserControl.cs</DependentUpon>
@@ -903,6 +957,9 @@
     <EmbeddedResource Include="WBDetForm\frmWaybillSvcDet.resx">
       <DependentUpon>frmWaybillSvcDet.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WBDetForm\frmWBInventoryDet.resx">
+      <DependentUpon>frmWBInventoryDet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBDetForm\frmWBReturnDetIn.resx">
       <DependentUpon>frmWBReturnDetIn.cs</DependentUpon>
     </EmbeddedResource>
@@ -927,11 +984,17 @@
     <EmbeddedResource Include="WBForm\frmWBDeboning.resx">
       <DependentUpon>frmWBDeboning.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\frmWBInventory.resx">
+      <DependentUpon>frmWBInventory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWBManufacture.resx">
       <DependentUpon>frmWBManufacture.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWBReturnIn.resx">
       <DependentUpon>frmWBReturnIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\frmWBReturnOut.resx">
+      <DependentUpon>frmWBReturnOut.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWBWriteOff.resx">
       <DependentUpon>frmWBWriteOff.cs</DependentUpon>
@@ -940,6 +1003,8 @@
       <DependentUpon>frmWBWriteOn.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.Actives.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.Commission.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetDirTree_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetDocList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetMatList_Result.datasource" />
@@ -958,6 +1023,9 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatRecDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatRecipe.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.MoneyMoveList_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.MoneyTurnover_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.PayDoc.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PriceList.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PriceListDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Services.datasource" />
@@ -967,6 +1035,9 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PriceList.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Services.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WaybillDet.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.WaybillList.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.WayBillMake.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.WaybillMove.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WhMatGet_Result.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

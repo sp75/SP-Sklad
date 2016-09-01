@@ -64,16 +64,9 @@ namespace SP_Sklad.WBForm
             }
             else
             {
-           /*     if (_wbill_id == null && doc_id != null)
-                {
-                    _db.WaybillList.FirstOrDefault(w => w.DocId == doc_id);
-                }*/
-
                 try
                 {
                     UpdLockWB();
-                    _db.Entry<WaybillList>(wb).State = EntityState.Modified;
-                    _db.Entry<WaybillList>(wb).Property(f => f.SummPay).IsModified = false;
                 }
                 catch (System.Data.Entity.Infrastructure.DbUpdateException exp)
                 {
@@ -103,6 +96,11 @@ namespace SP_Sklad.WBForm
 
         private void UpdLockWB()
         {
+            if (wb != null)
+            {
+                _db.Entry<WaybillList>(wb).State = EntityState.Detached;
+            }
+
             if (_wbill_id == null && doc_id != null)
             {
                 wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where DocId = {0} ", doc_id).FirstOrDefault();
@@ -111,6 +109,13 @@ namespace SP_Sklad.WBForm
             {
                 wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0} ", _wbill_id).FirstOrDefault();
             }
+          
+            if (_db.Entry<WaybillList>(wb).State == EntityState.Detached)
+            {
+                _db.WaybillList.Attach(wb);
+            }
+            _db.Entry<WaybillList>(wb).State = EntityState.Modified;
+            _db.Entry<WaybillList>(wb).Property(f => f.SummPay).IsModified = false;
 
             _wbill_id = wb.WbillId;
         }
@@ -119,12 +124,14 @@ namespace SP_Sklad.WBForm
         {
             try
             {
-                var df = new frmWayBillDetOut(_db, null, wb);
-                if (df.ShowDialog() == DialogResult.OK)
+                using (var df = new frmWayBillDetOut(_db, null, wb))
                 {
-                    current_transaction = current_transaction.CommitRetaining(_db);
-                    UpdLockWB();
-                    RefreshDet();
+                    if (df.ShowDialog() == DialogResult.OK)
+                    {
+                        current_transaction = current_transaction.CommitRetaining(_db);
+                        UpdLockWB();
+                        RefreshDet();
+                    }
                 }
             }
             catch { }
@@ -155,7 +162,7 @@ namespace SP_Sklad.WBForm
         private void OkButton_Click(object sender, EventArgs e)
         {
             if (TurnDocCheckBox.Checked && !DBHelper.CheckOrderedInSuppliers(wb.WbillId, _db)) return;
-          
+
             if (!DBHelper.CheckInDate(wb, _db, OnDateDBEdit.DateTime))
             {
                 return;
@@ -166,13 +173,12 @@ namespace SP_Sklad.WBForm
 
             payDocUserControl1.Execute(wb.WbillId);
 
-            current_transaction.Commit();
-
             if (TurnDocCheckBox.Checked)
             {
-                _db.ExecuteWayBill(wb.WbillId, null);
+                var ex_wb = _db.ExecuteWayBill(wb.WbillId, null).ToList();
             }
 
+            current_transaction.Commit();
             Close();
         }
 
@@ -257,14 +263,7 @@ namespace SP_Sklad.WBForm
 
         private void WaybillDetInGridView_DoubleClick(object sender, EventArgs e)
         {
-            GridView view = (GridView)sender;
-            Point pt = view.GridControl.PointToClient(Control.MousePosition);
-            GridHitInfo info = view.CalcHitInfo(pt);
-
-            if (info.InRow || info.InRowCell)
-            {
-                EditMaterialBtn.PerformClick();
-            }
+            if (IHelper.isRowDublClick(sender)) EditMaterialBtn.PerformClick();
         }
 
         private void EditMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -275,10 +274,13 @@ namespace SP_Sklad.WBForm
             {
                 if (dr.PosId > 0)
                 {
-                    var df = new frmWayBillDetOut(_db, dr.PosId, wb).ShowDialog();
-
-                    current_transaction = current_transaction.CommitRetaining(_db);
-                    UpdLockWB();
+                    using (var df = new frmWayBillDetOut(_db, dr.PosId, wb))
+                    {
+                        df.ShowDialog();
+                  //      current_transaction = current_transaction.CommitRetaining(_db);
+                        UpdLockWB();
+                    }
+                    
                 }
                 else
                 {

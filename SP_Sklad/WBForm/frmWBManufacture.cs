@@ -76,7 +76,6 @@ namespace SP_Sklad.WBForm
                 try
                 {
                     UpdLockWB();
-                    _db.Entry<WaybillList>(wb).State = EntityState.Modified;
                 }
                 catch
                 {
@@ -111,11 +110,18 @@ namespace SP_Sklad.WBForm
 
         private void UpdLockWB()
         {
+            if (wb != null)
+            {
+                _db.Entry<WaybillList>(wb).State = EntityState.Detached;
+            }
+
             wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0}", _wbill_id).FirstOrDefault();
             if (wb != null)
             {
                 wb.WayBillMake = _db.WayBillMake.Find(_wbill_id);
             }
+
+            _db.Entry<WaybillList>(wb).State = EntityState.Modified;
         }
 
         private void RefreshDet()

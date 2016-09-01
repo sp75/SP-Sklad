@@ -86,20 +86,10 @@
           <EntitySet Name="MatRecipe" EntityType="BaseModel.Store.MatRecipe" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MatRemains" EntityType="BaseModel.Store.MatRemains" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Measures" EntityType="BaseModel.Store.Measures" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="MONEYSALDO" EntityType="BaseModel.Store.MONEYSALDO" store:Type="Tables" store:Schema="dbo" store:Name="MONEYSALDO">
-            <DefiningQuery>SELECT 
-      [MONEYSALDO].[SALDOTYPE] AS [SALDOTYPE], 
-      [MONEYSALDO].[ONDATE] AS [ONDATE], 
-      [MONEYSALDO].[ACCID] AS [ACCID], 
-      [MONEYSALDO].[CURRID] AS [CURRID], 
-      [MONEYSALDO].[SALDO] AS [SALDO], 
-      [MONEYSALDO].[CASHID] AS [CASHID], 
-      [MONEYSALDO].[SALDODEF] AS [SALDODEF]
-      FROM [dbo].[MONEYSALDO] AS [MONEYSALDO]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="MoneySaldo" EntityType="BaseModel.Store.MoneySaldo" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="OPERLOG" EntityType="BaseModel.Store.OPERLOG" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PayDoc" EntityType="BaseModel.Store.PayDoc" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="PAYDOCTYPE" EntityType="BaseModel.Store.PAYDOCTYPE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PayDocType" EntityType="BaseModel.Store.PayDocType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PayType" EntityType="BaseModel.Store.PayType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PosRel" EntityType="BaseModel.Store.PosRel" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PosRemains" EntityType="BaseModel.Store.PosRemains" store:Type="Tables" Schema="dbo" />
@@ -691,15 +681,15 @@
           </AssociationSet>
           <AssociationSet Name="FK_MS_ACCID" Association="BaseModel.Store.FK_MS_ACCID">
             <End Role="KAgentAccount" EntitySet="KAgentAccount" />
-            <End Role="MONEYSALDO" EntitySet="MONEYSALDO" />
+            <End Role="MoneySaldo" EntitySet="MoneySaldo" />
           </AssociationSet>
           <AssociationSet Name="FK_MS_CASHID" Association="BaseModel.Store.FK_MS_CASHID">
             <End Role="CashDesks" EntitySet="CashDesks" />
-            <End Role="MONEYSALDO" EntitySet="MONEYSALDO" />
+            <End Role="MoneySaldo" EntitySet="MoneySaldo" />
           </AssociationSet>
           <AssociationSet Name="FK_MS_CURRID" Association="BaseModel.Store.FK_MS_CURRID">
             <End Role="Currency" EntitySet="Currency" />
-            <End Role="MONEYSALDO" EntitySet="MONEYSALDO" />
+            <End Role="MoneySaldo" EntitySet="MoneySaldo" />
           </AssociationSet>
           <AssociationSet Name="FK_PAYDOC_REF_PD_DO_DOCS" Association="BaseModel.Store.FK_PAYDOC_REF_PD_DO_DOCS">
             <End Role="Docs" EntitySet="Docs" />
@@ -948,12 +938,13 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="OnDate" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
           <Property Name="WhSumm" Type="numeric" Nullable="false" Precision="15" Scale="8" />
           <Property Name="Debitors" Type="numeric" Nullable="false" Precision="15" Scale="8" />
           <Property Name="Creditors" Type="numeric" Nullable="false" Precision="15" Scale="8" />
           <Property Name="Cash" Type="numeric" Nullable="false" Precision="15" Scale="8" />
           <Property Name="CashLess" Type="numeric" Nullable="false" Precision="15" Scale="8" />
+          <Property Name="Active" Type="numeric" Precision="19" Scale="8" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="BANKS">
           <Key>
@@ -1518,23 +1509,18 @@
           <Property Name="Deleted" Type="int" Nullable="false" />
           <Property Name="Code" Type="varchar" MaxLength="14" />
         </EntityType>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'sp_base.dbo.MONEYSALDO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
-        <EntityType Name="MONEYSALDO">
+        <EntityType Name="MoneySaldo">
           <Key>
-            <PropertyRef Name="SALDOTYPE" />
-            <PropertyRef Name="ONDATE" />
-            <PropertyRef Name="CURRID" />
-            <PropertyRef Name="SALDO" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="SALDOTYPE" Type="int" Nullable="false" />
-          <Property Name="ONDATE" Type="datetime" Nullable="false" />
-          <Property Name="ACCID" Type="int" />
-          <Property Name="CURRID" Type="int" Nullable="false" />
-          <Property Name="SALDO" Type="numeric" Nullable="false" Precision="15" Scale="8" />
-          <Property Name="CASHID" Type="int" />
-          <Property Name="SALDODEF" Type="numeric" Precision="15" Scale="8" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SaldoType" Type="int" Nullable="false" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="AccId" Type="int" />
+          <Property Name="CurrId" Type="int" Nullable="false" />
+          <Property Name="Saldo" Type="numeric" Nullable="false" Precision="15" Scale="8" />
+          <Property Name="CashId" Type="int" />
+          <Property Name="SaldoDef" Type="numeric" Precision="15" Scale="8" />
         </EntityType>
         <EntityType Name="OPERLOG">
           <Key>
@@ -1577,12 +1563,12 @@
           <Property Name="OnValue" Type="numeric" Precision="15" Scale="8" />
           <Property Name="Schet" Type="varchar" MaxLength="10" />
         </EntityType>
-        <EntityType Name="PAYDOCTYPE">
+        <EntityType Name="PayDocType">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="NAME" Type="varchar" MaxLength="64" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="64" />
         </EntityType>
         <EntityType Name="PayType">
           <Key>
@@ -3285,37 +3271,37 @@
         </Association>
         <Association Name="FK_MS_ACCID">
           <End Role="KAgentAccount" Type="BaseModel.Store.KAgentAccount" Multiplicity="0..1" />
-          <End Role="MONEYSALDO" Type="BaseModel.Store.MONEYSALDO" Multiplicity="*" />
+          <End Role="MoneySaldo" Type="BaseModel.Store.MoneySaldo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="KAgentAccount">
               <PropertyRef Name="AccId" />
             </Principal>
-            <Dependent Role="MONEYSALDO">
-              <PropertyRef Name="ACCID" />
+            <Dependent Role="MoneySaldo">
+              <PropertyRef Name="AccId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MS_CASHID">
           <End Role="CashDesks" Type="BaseModel.Store.CashDesks" Multiplicity="0..1" />
-          <End Role="MONEYSALDO" Type="BaseModel.Store.MONEYSALDO" Multiplicity="*" />
+          <End Role="MoneySaldo" Type="BaseModel.Store.MoneySaldo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CashDesks">
               <PropertyRef Name="CashId" />
             </Principal>
-            <Dependent Role="MONEYSALDO">
-              <PropertyRef Name="CASHID" />
+            <Dependent Role="MoneySaldo">
+              <PropertyRef Name="CashId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MS_CURRID">
           <End Role="Currency" Type="BaseModel.Store.Currency" Multiplicity="1" />
-          <End Role="MONEYSALDO" Type="BaseModel.Store.MONEYSALDO" Multiplicity="*" />
+          <End Role="MoneySaldo" Type="BaseModel.Store.MoneySaldo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Currency">
               <PropertyRef Name="CurrId" />
             </Principal>
-            <Dependent Role="MONEYSALDO">
-              <PropertyRef Name="CURRID" />
+            <Dependent Role="MoneySaldo">
+              <PropertyRef Name="CurrId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -4118,6 +4104,9 @@
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="GetFinancesTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_id" Type="int" Mode="In" />
+        </Function>
         <Function Name="GetListMatPrices" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="mat_id" Type="int" Mode="In" />
           <Parameter Name="in_curr_id" Type="int" Mode="In" />
@@ -4313,6 +4302,11 @@
         </Function>
         <Function Name="GetReportTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="user_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetSaldoDetTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_id" Type="int" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="on_date" Type="datetime" Mode="In" />
         </Function>
         <Function Name="GetServiceTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="user_id" Type="int" Mode="In" />
@@ -4531,6 +4525,90 @@
         <Function Name="GetWhTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="user_id" Type="int" Mode="In" />
           <Parameter Name="type_tree" Type="int" Mode="In" />
+        </Function>
+        <Function Name="MoneyMoveList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="doc_type" Type="int" Mode="In" />
+          <Parameter Name="from_date" Type="datetime" Mode="In" />
+          <Parameter Name="to_date" Type="datetime" Mode="In" />
+          <Parameter Name="is_checked" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="PayDocId" Type="int" Nullable="false" />
+                <Property Name="DocType" Type="int" Nullable="false" />
+                <Property Name="OnDate" Type="datetime" Nullable="false" />
+                <Property Name="Total" Type="numeric" Nullable="false" Precision="15" Scale="2" />
+                <Property Name="DocNum" Type="varchar" Nullable="false" MaxLength="20" />
+                <Property Name="Checked" Type="int" Nullable="false" />
+                <Property Name="Reason" Type="varchar" MaxLength="255" />
+                <Property Name="Notes" Type="varchar" MaxLength="255" />
+                <Property Name="AccId" Type="int" />
+                <Property Name="CashId" Type="int" />
+                <Property Name="OperId" Type="int" />
+                <Property Name="DocId" Type="int" />
+                <Property Name="OnValue" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="CurrName" Type="nvarchar" MaxLength="3" />
+                <Property Name="PayTypeName" Type="nvarchar" MaxLength="50" />
+                <Property Name="CashdName" Type="nvarchar" MaxLength="128" />
+                <Property Name="AccNum" Type="varchar" MaxLength="64" />
+                <Property Name="DocTypeName" Type="varchar" MaxLength="64" />
+                <Property Name="ImgIdx" Type="int" Nullable="false" />
+                <Property Name="FromSumm" Type="numeric" Precision="17" Scale="2" />
+                <Property Name="ToSumm" Type="numeric" Precision="15" Scale="2" />
+                <Property Name="FromSource" Type="nvarchar" MaxLength="128" />
+                <Property Name="ToSource" Type="nvarchar" MaxLength="128" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="MoneyOnDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="on_date" Type="datetime" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="SaldoType" Type="int" Nullable="false" />
+                <Property Name="OnDate" Type="datetime" Nullable="false" />
+                <Property Name="AccId" Type="int" />
+                <Property Name="CurrId" Type="int" Nullable="false" />
+                <Property Name="Saldo" Type="numeric" Nullable="false" Precision="15" Scale="8" />
+                <Property Name="CashId" Type="int" />
+                <Property Name="SaldoDef" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="Currency" Type="nvarchar" Nullable="false" MaxLength="30" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="MoneyTurnover" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fun_id" Type="int" Mode="In" />
+          <Parameter Name="from_date" Type="datetime" Mode="In" />
+          <Parameter Name="to_date" Type="datetime" Mode="In" />
+          <Parameter Name="turn_type" Type="int" Mode="In" />
+          <Parameter Name="curr_id" Type="int" Mode="In" />
+          <Parameter Name="ka_id" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Id" Type="int" Nullable="false" />
+                <Property Name="DocType" Type="int" />
+                <Property Name="OnDate" Type="datetime" />
+                <Property Name="KaName" Type="nvarchar" MaxLength="255" />
+                <Property Name="CurrencyName" Type="nvarchar" MaxLength="10" />
+                <Property Name="Total" Type="numeric" Precision="15" Scale="2" />
+                <Property Name="TotalDef" Type="numeric" Precision="15" Scale="2" />
+                <Property Name="PayDocId" Type="int" />
+                <Property Name="Checked" Type="int" />
+                <Property Name="Num" Type="nvarchar" MaxLength="15" />
+                <Property Name="KaId" Type="int" />
+                <Property Name="PtypeName" Type="nvarchar" MaxLength="64" />
+                <Property Name="BankName" Type="nvarchar" MaxLength="128" />
+                <Property Name="ChargeName" Type="nvarchar" MaxLength="128" />
+                <Property Name="AccNum" Type="nvarchar" MaxLength="64" />
+                <Property Name="CashName" Type="nvarchar" MaxLength="64" />
+                <Property Name="OnValue" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="DocId" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
         </Function>
         <Function Name="PosGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="mat_id" Type="int" Mode="In" />
@@ -5055,9 +5133,7 @@
           <EntitySet Name="MATCHANGE" EntityType="BaseModel.MATCHANGE" />
           <EntitySet Name="MATGROUPPRICES" EntityType="BaseModel.MATGROUPPRICES" />
           <EntitySet Name="MATPRICES" EntityType="BaseModel.MATPRICES" />
-          <EntitySet Name="MONEYSALDO" EntityType="BaseModel.MONEYSALDO" />
           <EntitySet Name="OPERLOG" EntityType="BaseModel.OPERLOG" />
-          <EntitySet Name="PAYDOCTYPE" EntityType="BaseModel.PAYDOCTYPE" />
           <EntitySet Name="SERIALS" EntityType="BaseModel.SERIALS" />
           <EntitySet Name="TAXES" EntityType="BaseModel.TAXES" />
           <EntitySet Name="TAXWB" EntityType="BaseModel.TAXWB" />
@@ -5244,7 +5320,6 @@
             <Parameter Name="WBILLID" Mode="In" Type="Int32" />
             <Parameter Name="NEW_WTYPE" Mode="In" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="Actives" EntityType="BaseModel.Actives" />
           <EntitySet Name="WMatTurn" EntityType="BaseModel.WMatTurn" />
           <FunctionImport Name="UpdWaybillDetPrice">
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
@@ -5258,10 +5333,6 @@
           </FunctionImport>
           <EntitySet Name="CashDesks" EntityType="BaseModel.CashDesks" />
           <EntitySet Name="PayType" EntityType="BaseModel.PayType" />
-          <AssociationSet Name="FK_MS_CASHID" Association="BaseModel.FK_MS_CASHID">
-            <End Role="CashDesks" EntitySet="CashDesks" />
-            <End Role="MONEYSALDO" EntitySet="MONEYSALDO" />
-          </AssociationSet>
           <EntitySet Name="Kagent" EntityType="BaseModel.Kagent" />
           <AssociationSet Name="FK_CONTRACT_REF_CONTR_KAGENT" Association="BaseModel.FK_CONTRACT_REF_CONTR_KAGENT">
             <End Role="Kagent" EntitySet="Kagent" />
@@ -5369,10 +5440,6 @@
           <AssociationSet Name="FK__PAYDOC__CURRID__214BF109" Association="BaseModel.FK__PAYDOC__CURRID__214BF109">
             <End Role="Currency" EntitySet="Currency" />
             <End Role="PayDoc" EntitySet="PayDoc" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MS_CURRID" Association="BaseModel.FK_MS_CURRID">
-            <End Role="Currency" EntitySet="Currency" />
-            <End Role="MONEYSALDO" EntitySet="MONEYSALDO" />
           </AssociationSet>
           <AssociationSet Name="FK_WAYBILLL_FK_WBLIST_CURRENCY" Association="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY">
             <End Role="Currency" EntitySet="Currency" />
@@ -5870,10 +5937,6 @@
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="KAgentSaldo" EntitySet="KAgentSaldo" />
           </AssociationSet>
-          <AssociationSet Name="FK_MS_ACCID" Association="BaseModel.FK_MS_ACCID">
-            <End Role="KAgentAccount" EntitySet="KAgentAccount" />
-            <End Role="MONEYSALDO" EntitySet="MONEYSALDO" />
-          </AssociationSet>
           <AssociationSet Name="FK_PD_ACCID" Association="BaseModel.FK_PD_ACCID">
             <End Role="KAgentAccount" EntitySet="KAgentAccount" />
             <End Role="PayDoc" EntitySet="PayDoc" />
@@ -6062,8 +6125,48 @@
           </FunctionImport>
           <FunctionImport Name="GetSvcTree" ReturnType="Collection(BaseModel.GetSvcTree_Result)" />
           <FunctionImport Name="GetPriceListDet" ReturnType="Collection(BaseModel.GetPriceListDet_Result)">
-            <Parameter Name="pl_id" Mode="In" Type="Int32" />
+          <Parameter Name="pl_id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="MoneySaldo" EntityType="BaseModel.MoneySaldo" />
+          <AssociationSet Name="FK_MS_CASHID" Association="BaseModel.FK_MS_CASHID">
+            <End Role="CashDesks" EntitySet="CashDesks" />
+            <End Role="MoneySaldo" EntitySet="MoneySaldo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MS_CURRID" Association="BaseModel.FK_MS_CURRID">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="MoneySaldo" EntitySet="MoneySaldo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MS_ACCID" Association="BaseModel.FK_MS_ACCID">
+            <End Role="KAgentAccount" EntitySet="KAgentAccount" />
+            <End Role="MoneySaldo" EntitySet="MoneySaldo" />
+          </AssociationSet>
+          <FunctionImport Name="MoneyOnDate" IsComposable="true" ReturnType="Collection(BaseModel.MoneyOnDate_Result)">
+          <Parameter Name="on_date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="GetFinancesTree" ReturnType="Collection(BaseModel.GetFinancesTree_Result)">
+          <Parameter Name="user_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetSaldoDetTree" ReturnType="Collection(BaseModel.GetSaldoDetTree_Result)">
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="on_date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="MoneyTurnover" IsComposable="true" ReturnType="Collection(BaseModel.MoneyTurnover_Result)">
+            <Parameter Name="fun_id" Mode="In" Type="Int32" />
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="turn_type" Mode="In" Type="Int32" />
+            <Parameter Name="curr_id" Mode="In" Type="Int32" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="MoneyMoveList" IsComposable="true" ReturnType="Collection(BaseModel.MoneyMoveList_Result)">
+            <Parameter Name="doc_type" Mode="In" Type="Int32" />
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="is_checked" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="PayDocType" EntityType="BaseModel.PayDocType" />
+          <EntitySet Name="Actives" EntityType="BaseModel.Actives" />
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -6421,24 +6524,6 @@
           <NavigationProperty Name="PriceTypes1" Relationship="BaseModel.FK_MATPRICES_PPTYPEID" FromRole="MATPRICES" ToRole="PriceTypes" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK_MP_MATID" FromRole="MATPRICES" ToRole="Materials" />
           </EntityType>
-        <EntityType Name="MONEYSALDO">
-          <Key>
-            <PropertyRef Name="SALDOTYPE" />
-            <PropertyRef Name="ONDATE" />
-            <PropertyRef Name="CURRID" />
-            <PropertyRef Name="SALDO" />
-          </Key>
-          <Property Name="SALDOTYPE" Type="Int32" Nullable="false" />
-          <Property Name="ONDATE" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ACCID" Type="Int32" />
-          <Property Name="CURRID" Type="Int32" Nullable="false" />
-          <Property Name="SALDO" Type="Decimal" Nullable="false" Precision="15" Scale="8" />
-          <Property Name="CASHID" Type="Int32" />
-          <Property Name="SALDODEF" Type="Decimal" Precision="15" Scale="8" />
-          <NavigationProperty Name="CashDesks" Relationship="BaseModel.FK_MS_CASHID" FromRole="MONEYSALDO" ToRole="CashDesks" />
-          <NavigationProperty Name="Currency" Relationship="BaseModel.FK_MS_CURRID" FromRole="MONEYSALDO" ToRole="Currency" />
-          <NavigationProperty Name="KAgentAccount" Relationship="BaseModel.FK_MS_ACCID" FromRole="MONEYSALDO" ToRole="KAgentAccount" />
-        </EntityType>
         <EntityType Name="OPERLOG">
           <Key>
             <PropertyRef Name="OPID" />
@@ -6454,13 +6539,6 @@
           <Property Name="FUNID" Type="Int32" />
           <Property Name="DOCNUM" Type="String" MaxLength="24" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="Tables" Relationship="BaseModel.FK__OPERLOG__TABID__0D44F85C" FromRole="OPERLOG" ToRole="Tables" />
-        </EntityType>
-        <EntityType Name="PAYDOCTYPE">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="NAME" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
         </EntityType>
         <EntityType Name="SERIALS">
           <Key>
@@ -6729,18 +6807,6 @@
           <Property Type="Int32" Name="Checked" Nullable="false" />
           <Property Type="Int32" Name="NewDocId" Nullable="true" />
         </ComplexType>
-        <EntityType Name="Actives">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Binary" Name="OnDate" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <Property Type="Decimal" Name="WhSumm" Nullable="false" Precision="15" Scale="8" />
-          <Property Type="Decimal" Name="Debitors" Nullable="false" Precision="15" Scale="8" />
-          <Property Type="Decimal" Name="Creditors" Nullable="false" Precision="15" Scale="8" />
-          <Property Type="Decimal" Name="Cash" Nullable="false" Precision="15" Scale="8" />
-          <Property Type="Decimal" Name="CashLess" Nullable="false" Precision="15" Scale="8" />
-        </EntityType>
         <EntityType Name="WMatTurn">
           <Key>
             <PropertyRef Name="Id" />
@@ -6788,8 +6854,8 @@
           <Property Type="String" Name="Name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="Deleted" Nullable="false" />
           <Property Type="Int32" Name="Def" />
-          <NavigationProperty Name="MONEYSALDO" Relationship="BaseModel.FK_MS_CASHID" FromRole="CashDesks" ToRole="MONEYSALDO" />
           <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK_PD_CASHID" FromRole="CashDesks" ToRole="PayDoc" />
+          <NavigationProperty Name="MoneySaldo" Relationship="BaseModel.FK_MS_CASHID" FromRole="CashDesks" ToRole="MoneySaldo" />
         </EntityType>
         <EntityType Name="PayType">
           <Key>
@@ -6799,18 +6865,6 @@
           <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK__PAYDOC__PTYPEID__2057CCD0" FromRole="PayType" ToRole="PayDoc" />
         </EntityType>
-        <Association Name="FK_MS_CASHID">
-          <End Type="BaseModel.CashDesks" Role="CashDesks" Multiplicity="0..1" />
-          <End Type="BaseModel.MONEYSALDO" Role="MONEYSALDO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CashDesks">
-              <PropertyRef Name="CashId" />
-            </Principal>
-            <Dependent Role="MONEYSALDO">
-              <PropertyRef Name="CASHID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Kagent">
           <Key>
             <PropertyRef Name="KaId" />
@@ -7210,12 +7264,12 @@
           <NavigationProperty Name="MATPRICES" Relationship="BaseModel.FK__MATPRICES__CURRI__73852659" FromRole="Currency" ToRole="MATPRICES" />
           <NavigationProperty Name="MATPRICES1" Relationship="BaseModel.FK__MATPRICES__CURRI__74794A92" FromRole="Currency" ToRole="MATPRICES" />
           <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK__PAYDOC__CURRID__214BF109" FromRole="Currency" ToRole="PayDoc" />
-          <NavigationProperty Name="MONEYSALDO" Relationship="BaseModel.FK_MS_CURRID" FromRole="Currency" ToRole="MONEYSALDO" />
           <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY" FromRole="Currency" ToRole="WaybillList" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_CURRENCY" FromRole="Currency" ToRole="WaybillDet" />
           <NavigationProperty Name="Services" Relationship="BaseModel.FK_SVC_CURRID" FromRole="Currency" ToRole="Services" />
           <NavigationProperty Name="WayBillSvc" Relationship="BaseModel.FK_WBS_CURRID" FromRole="Currency" ToRole="WayBillSvc" />
           <NavigationProperty Name="PriceList" Relationship="BaseModel.FK_PRICELIS_REFERENCE_CURRENCY" FromRole="Currency" ToRole="PriceList" />
+          <NavigationProperty Name="MoneySaldo" Relationship="BaseModel.FK_MS_CURRID" FromRole="Currency" ToRole="MoneySaldo" />
         </EntityType>
         <Association Name="FK_CONTRACT_REFERENCE_CURRENCY">
           <End Type="BaseModel.Currency" Role="Currency" Multiplicity="0..1" />
@@ -7298,18 +7352,6 @@
             </Principal>
             <Dependent Role="PayDoc">
               <PropertyRef Name="CurrId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MS_CURRID">
-          <End Type="BaseModel.Currency" Role="Currency" Multiplicity="1" />
-          <End Type="BaseModel.MONEYSALDO" Role="MONEYSALDO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Currency">
-              <PropertyRef Name="CurrId" />
-            </Principal>
-            <Dependent Role="MONEYSALDO">
-              <PropertyRef Name="CURRID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -9363,8 +9405,8 @@
           <NavigationProperty Name="ACCOUNTTYPE" Relationship="BaseModel.FK_AGENTACC_FK_AGENTA_ACCOUNTT" FromRole="KAgentAccount" ToRole="ACCOUNTTYPE" />
           <NavigationProperty Name="BANKS" Relationship="BaseModel.FK_AGENTACC_FK_AGENTA_BANKS" FromRole="KAgentAccount" ToRole="BANKS" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_AACC_KAID" FromRole="KAgentAccount" ToRole="Kagent" />
-          <NavigationProperty Name="MONEYSALDO" Relationship="BaseModel.FK_MS_ACCID" FromRole="KAgentAccount" ToRole="MONEYSALDO" />
           <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK_PD_ACCID" FromRole="KAgentAccount" ToRole="PayDoc" />
+          <NavigationProperty Name="MoneySaldo" Relationship="BaseModel.FK_MS_ACCID" FromRole="KAgentAccount" ToRole="MoneySaldo" />
         </EntityType>
         <EntityType Name="KAgentPersons">
           <Key>
@@ -9454,18 +9496,6 @@
             </Principal>
             <Dependent Role="KAgentSaldo">
               <PropertyRef Name="KAId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MS_ACCID">
-          <End Type="BaseModel.KAgentAccount" Role="KAgentAccount" Multiplicity="0..1" />
-          <End Type="BaseModel.MONEYSALDO" Role="MONEYSALDO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KAgentAccount">
-              <PropertyRef Name="AccId" />
-            </Principal>
-            <Dependent Role="MONEYSALDO">
-              <PropertyRef Name="ACCID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -10262,6 +10292,160 @@
           <Property Type="Int32" Name="PlDetType" Nullable="true" />
           <Property Type="String" Name="GrpName" Nullable="false" MaxLength="64" />
         </ComplexType>
+        <EntityType Name="MoneySaldo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="SaldoType" Nullable="false" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="AccId" />
+          <Property Type="Int32" Name="CurrId" Nullable="false" />
+          <Property Type="Decimal" Name="Saldo" Nullable="false" Precision="15" Scale="8" />
+          <Property Type="Int32" Name="CashId" />
+          <Property Type="Decimal" Name="SaldoDef" Precision="15" Scale="8" />
+          <NavigationProperty Name="CashDesks" Relationship="BaseModel.FK_MS_CASHID" FromRole="MoneySaldo" ToRole="CashDesks" />
+          <NavigationProperty Name="Currency" Relationship="BaseModel.FK_MS_CURRID" FromRole="MoneySaldo" ToRole="Currency" />
+          <NavigationProperty Name="KAgentAccount" Relationship="BaseModel.FK_MS_ACCID" FromRole="MoneySaldo" ToRole="KAgentAccount" />
+        </EntityType>
+        <Association Name="FK_MS_CASHID">
+          <End Type="BaseModel.CashDesks" Role="CashDesks" Multiplicity="0..1" />
+          <End Type="BaseModel.MoneySaldo" Role="MoneySaldo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CashDesks">
+              <PropertyRef Name="CashId" />
+            </Principal>
+            <Dependent Role="MoneySaldo">
+              <PropertyRef Name="CashId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MS_CURRID">
+          <End Type="BaseModel.Currency" Role="Currency" Multiplicity="1" />
+          <End Type="BaseModel.MoneySaldo" Role="MoneySaldo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
+            </Principal>
+            <Dependent Role="MoneySaldo">
+              <PropertyRef Name="CurrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MS_ACCID">
+          <End Type="BaseModel.KAgentAccount" Role="KAgentAccount" Multiplicity="0..1" />
+          <End Type="BaseModel.MoneySaldo" Role="MoneySaldo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KAgentAccount">
+              <PropertyRef Name="AccId" />
+            </Principal>
+            <Dependent Role="MoneySaldo">
+              <PropertyRef Name="AccId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="MoneyOnDate_Result">
+          <Property Type="Int32" Name="SaldoType" Nullable="false" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="AccId" Nullable="true" />
+          <Property Type="Int32" Name="CurrId" Nullable="false" />
+          <Property Type="Decimal" Name="Saldo" Nullable="false" Precision="15" Scale="8" />
+          <Property Type="Int32" Name="CashId" Nullable="true" />
+          <Property Type="Decimal" Name="SaldoDef" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="String" Name="Currency" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="GetFinancesTree_Result">
+          <Property Type="Int32" Name="Id" Nullable="true" />
+          <Property Type="Int32" Name="FunId" Nullable="true" />
+          <Property Type="Int32" Name="PId" Nullable="false" />
+          <Property Type="Int32" Name="Num" Nullable="false" />
+          <Property Type="Int32" Name="ImageIndex" Nullable="true" />
+          <Property Type="Int32" Name="IsGroup" Nullable="false" />
+          <Property Type="Int32" Name="ShowInTree" Nullable="true" />
+          <Property Type="Int32" Name="GType" Nullable="true" />
+          <Property Type="Int32" Name="DisabledIndex" Nullable="true" />
+          <Property Type="Int32" Name="ShowExpanded" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="CanView" Nullable="true" />
+          <Property Type="Int32" Name="CanInsert" Nullable="true" />
+          <Property Type="Int32" Name="CanModify" Nullable="true" />
+          <Property Type="Int32" Name="CanDelete" Nullable="true" />
+          <Property Type="Int32" Name="CanPost" Nullable="true" />
+          <Property Type="Int32" Name="WType" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetSaldoDetTree_Result">
+          <Property Type="Int32" Name="Id" Nullable="true" />
+          <Property Type="Int32" Name="PId" Nullable="false" />
+          <Property Type="Int32" Name="Num" Nullable="false" />
+          <Property Type="Int32" Name="ImageIndex" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="Saldo" Nullable="true" Precision="38" Scale="8" />
+        </ComplexType>
+        <ComplexType Name="MoneyTurnover_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="DocType" Nullable="true" />
+          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="KaName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="CurrencyName" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="Total" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="TotalDef" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Int32" Name="PayDocId" Nullable="true" />
+          <Property Type="Int32" Name="Checked" Nullable="true" />
+          <Property Type="String" Name="Num" Nullable="true" MaxLength="15" />
+          <Property Type="Int32" Name="KaId" Nullable="true" />
+          <Property Type="String" Name="PtypeName" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="BankName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="ChargeName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="AccNum" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="CashName" Nullable="true" MaxLength="64" />
+          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="Int32" Name="DocId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="MoneyMoveList_Result">
+          <Property Type="Int32" Name="PayDocId" Nullable="false" />
+          <Property Type="Int32" Name="DocType" Nullable="false" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="Total" Nullable="false" Precision="15" Scale="2" />
+          <Property Type="String" Name="DocNum" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="Checked" Nullable="false" />
+          <Property Type="String" Name="Reason" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="AccId" Nullable="true" />
+          <Property Type="Int32" Name="CashId" Nullable="true" />
+          <Property Type="Int32" Name="OperId" Nullable="true" />
+          <Property Type="Int32" Name="DocId" Nullable="true" />
+          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="PayTypeName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CashdName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="AccNum" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="DocTypeName" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="ImgIdx" Nullable="false" />
+          <Property Type="Decimal" Name="FromSumm" Nullable="true" Precision="17" Scale="2" />
+          <Property Type="Decimal" Name="ToSumm" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="String" Name="FromSource" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="ToSource" Nullable="true" MaxLength="128" />
+        </ComplexType>
+        <EntityType Name="PayDocType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" MaxLength="64" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Actives">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
+          <Property Type="Decimal" Name="WhSumm" Nullable="false" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="Debitors" Nullable="false" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="Creditors" Nullable="false" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="Cash" Nullable="false" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="CashLess" Nullable="false" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="Active" Precision="19" Scale="8" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -10469,19 +10653,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MONEYSALDO">
-            <EntityTypeMapping TypeName="BaseModel.MONEYSALDO">
-              <MappingFragment StoreEntitySet="MONEYSALDO">
-                <ScalarProperty Name="SALDOTYPE" ColumnName="SALDOTYPE" />
-                <ScalarProperty Name="ONDATE" ColumnName="ONDATE" />
-                <ScalarProperty Name="ACCID" ColumnName="ACCID" />
-                <ScalarProperty Name="CURRID" ColumnName="CURRID" />
-                <ScalarProperty Name="SALDO" ColumnName="SALDO" />
-                <ScalarProperty Name="CASHID" ColumnName="CASHID" />
-                <ScalarProperty Name="SALDODEF" ColumnName="SALDODEF" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="OPERLOG">
             <EntityTypeMapping TypeName="BaseModel.OPERLOG">
               <MappingFragment StoreEntitySet="OPERLOG">
@@ -10495,14 +10666,6 @@
                 <ScalarProperty Name="DATAAFTER" ColumnName="DATAAFTER" />
                 <ScalarProperty Name="FUNID" ColumnName="FUNID" />
                 <ScalarProperty Name="DOCNUM" ColumnName="DOCNUM" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PAYDOCTYPE">
-            <EntityTypeMapping TypeName="BaseModel.PAYDOCTYPE">
-              <MappingFragment StoreEntitySet="PAYDOCTYPE">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -10890,19 +11053,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="Actives">
-            <EntityTypeMapping TypeName="BaseModel.Actives">
-              <MappingFragment StoreEntitySet="Actives">
-                <ScalarProperty Name="CashLess" ColumnName="CashLess" />
-                <ScalarProperty Name="Cash" ColumnName="Cash" />
-                <ScalarProperty Name="Creditors" ColumnName="Creditors" />
-                <ScalarProperty Name="Debitors" ColumnName="Debitors" />
-                <ScalarProperty Name="WhSumm" ColumnName="WhSumm" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="WMatTurn">
             <EntityTypeMapping TypeName="BaseModel.WMatTurn">
               <MappingFragment StoreEntitySet="WMatTurn">
@@ -12767,6 +12917,144 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="MoneySaldo">
+            <EntityTypeMapping TypeName="BaseModel.MoneySaldo">
+              <MappingFragment StoreEntitySet="MoneySaldo">
+                <ScalarProperty Name="SaldoDef" ColumnName="SaldoDef" />
+                <ScalarProperty Name="CashId" ColumnName="CashId" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="AccId" ColumnName="AccId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="SaldoType" ColumnName="SaldoType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="MoneyOnDate" FunctionName="BaseModel.Store.MoneyOnDate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.MoneyOnDate_Result">
+                <ScalarProperty Name="SaldoType" ColumnName="SaldoType" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="AccId" ColumnName="AccId" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="CashId" ColumnName="CashId" />
+                <ScalarProperty Name="SaldoDef" ColumnName="SaldoDef" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetFinancesTree" FunctionName="BaseModel.Store.GetFinancesTree">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetFinancesTree_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FunId" ColumnName="FunId" />
+                <ScalarProperty Name="PId" ColumnName="PId" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="ImageIndex" ColumnName="ImageIndex" />
+                <ScalarProperty Name="IsGroup" ColumnName="IsGroup" />
+                <ScalarProperty Name="ShowInTree" ColumnName="ShowInTree" />
+                <ScalarProperty Name="GType" ColumnName="GType" />
+                <ScalarProperty Name="DisabledIndex" ColumnName="DisabledIndex" />
+                <ScalarProperty Name="ShowExpanded" ColumnName="ShowExpanded" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CanView" ColumnName="CanView" />
+                <ScalarProperty Name="CanInsert" ColumnName="CanInsert" />
+                <ScalarProperty Name="CanModify" ColumnName="CanModify" />
+                <ScalarProperty Name="CanDelete" ColumnName="CanDelete" />
+                <ScalarProperty Name="CanPost" ColumnName="CanPost" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetSaldoDetTree" FunctionName="BaseModel.Store.GetSaldoDetTree">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetSaldoDetTree_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PId" ColumnName="PId" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="ImageIndex" ColumnName="ImageIndex" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="MoneyTurnover" FunctionName="BaseModel.Store.MoneyTurnover">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.MoneyTurnover_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="TotalDef" ColumnName="TotalDef" />
+                <ScalarProperty Name="PayDocId" ColumnName="PayDocId" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="PtypeName" ColumnName="PtypeName" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="ChargeName" ColumnName="ChargeName" />
+                <ScalarProperty Name="AccNum" ColumnName="AccNum" />
+                <ScalarProperty Name="CashName" ColumnName="CashName" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="MoneyMoveList" FunctionName="BaseModel.Store.MoneyMoveList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.MoneyMoveList_Result">
+                <ScalarProperty Name="PayDocId" ColumnName="PayDocId" />
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="AccId" ColumnName="AccId" />
+                <ScalarProperty Name="CashId" ColumnName="CashId" />
+                <ScalarProperty Name="OperId" ColumnName="OperId" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="PayTypeName" ColumnName="PayTypeName" />
+                <ScalarProperty Name="CashdName" ColumnName="CashdName" />
+                <ScalarProperty Name="AccNum" ColumnName="AccNum" />
+                <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
+                <ScalarProperty Name="ImgIdx" ColumnName="ImgIdx" />
+                <ScalarProperty Name="FromSumm" ColumnName="FromSumm" />
+                <ScalarProperty Name="ToSumm" ColumnName="ToSumm" />
+                <ScalarProperty Name="FromSource" ColumnName="FromSource" />
+                <ScalarProperty Name="ToSource" ColumnName="ToSource" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="PayDocType">
+            <EntityTypeMapping TypeName="BaseModel.PayDocType">
+              <MappingFragment StoreEntitySet="PayDocType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Actives">
+            <EntityTypeMapping TypeName="BaseModel.Actives">
+              <MappingFragment StoreEntitySet="Actives">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="CashLess" ColumnName="CashLess" />
+                <ScalarProperty Name="Cash" ColumnName="Cash" />
+                <ScalarProperty Name="Creditors" ColumnName="Creditors" />
+                <ScalarProperty Name="Debitors" ColumnName="Debitors" />
+                <ScalarProperty Name="WhSumm" ColumnName="WhSumm" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

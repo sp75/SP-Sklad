@@ -34,6 +34,11 @@ namespace SP_Sklad.MainTabs
             get { return WhMatGridView.GetFocusedRow() as WhMatGet_Result; }
         }
 
+        private GetWayBillListWh_Result focused_wb
+        {
+            get { return WbGridView.GetFocusedRow() as GetWayBillListWh_Result; }
+        }
+
         public class CustomMatListWH : CustomMatList
         {
             public decimal? Discount { get; set; }
@@ -185,6 +190,15 @@ namespace SP_Sklad.MainTabs
                             wb_on.ShowDialog();
                         }
                     }
+
+                    if (focused_tree_node.Id == 104)
+                    {
+                        using (var wb_inv = new frmWBInventory())
+                        {
+                            wb_inv.ShowDialog();
+                        }
+                    }
+
                     break;
             }
 
@@ -582,6 +596,77 @@ namespace SP_Sklad.MainTabs
 
                     break;
             }
+        }
+
+        private void DocsPopupMenu_Popup(object sender, EventArgs e)
+        {
+            if (focused_wb.WType != 7)
+            {
+                barButtonItem2.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                barButtonItem3.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            }
+            else
+            {
+                barButtonItem2.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+                barButtonItem3.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+            }
+        }
+
+        private void WbGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                this.DocsPopupMenu.ShowPopup(p2);
+            }
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+           /*  if (exists (SELECT * FROM  SP_GET_RELDOCIDS(@docid) where DOCTYPE = 5) and @wtype = 7) SET @WRITEON = 1 ;
+        else SET @WRITEON = 0 ;
+      if (exists (SELECT * FROM  SP_GET_RELDOCIDS(@docid) where DOCTYPE = -5) and @wtype = 7) SET @WRITEOFF = 1 ;
+        else SET @WRITEOFF = 0 ;*/
+            var wbl = DB.SkladBase().WaybillList.FirstOrDefault(w => w.WbillId == focused_wb.WBillId);
+            if (wbl == null)
+            {
+                return;
+            }
+
+            if (wbl.Checked == 1 && !DB.SkladBase().GetRelDocList(wbl.DocId).Any(w => w.DocId == 5) && wbl.WType == 7)
+            {
+                using (var f = new frmWBWriteOn())
+                {
+                    var result = f._db.ExecuteWayBill(wbl.WbillId, 5).ToList().FirstOrDefault();
+                    f.doc_id = result.NewDocId;
+                    f.TurnDocCheckBox.Checked = true;
+                    f.ShowDialog();
+                }
+            }
+
+            RefrechItemBtn.PerformClick();
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var wbl = DB.SkladBase().WaybillList.FirstOrDefault(w => w.WbillId == focused_wb.WBillId);
+            if (wbl == null)
+            {
+                return;
+            }
+
+            if (wbl.Checked == 1 && !DB.SkladBase().GetRelDocList(wbl.DocId).Any(w => w.DocId == -5) && wbl.WType == 7)
+            {
+                using (var f = new frmWBWriteOff())
+                {
+                    var result = f._db.ExecuteWayBill(wbl.WbillId, -5).ToList().FirstOrDefault();
+                    f.doc_id = result.NewDocId;
+                    f.TurnDocCheckBox.Checked = true;
+                    f.ShowDialog();
+                }
+            }
+
+            RefrechItemBtn.PerformClick();
         }
     }
 }

@@ -87,8 +87,6 @@ namespace SP_Sklad.WBForm
             MatTreeList.DataSource = _db.GetMatTree(p_type, 2).ToList();
         }
 
-
-
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             GetMatTree();
@@ -96,7 +94,7 @@ namespace SP_Sklad.WBForm
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            MatTreeList.DataSource = _db.GetSvcTree();
+            MatTreeList.DataSource = _db.GetSvcTree().ToList();
         }
 
         private void treeList1_MouseDown(object sender, MouseEventArgs e)
@@ -118,22 +116,34 @@ namespace SP_Sklad.WBForm
             TreePopupMenu.ShowPopup(p2);
         }
 
-        void AddMat(int mat_id)
+        void AddMat(GetMatTree_Result row)
         {
-            var row = MatTreeList.GetDataRecordByNode(MatTreeList.FocusedNode) as GetMatTree_Result;
-            if (!_db.PriceListDet.Where(w => w.MatId == mat_id && w.PlDetType == 0).Any())
+            if (!_db.PriceListDet.Where(w => w.MatId == row.Id && w.PlDetType == 0).Any())
             {
-                _db.PriceListDet.Add(new PriceListDet { PlId = _pl_id.Value, MatId = mat_id, Price = row.Price ?? 0, GrpId = row.Pid * -1, PlDetType = 0 });
+                _db.PriceListDet.Add(new PriceListDet
+                {
+                    PlId = _pl_id.Value,
+                    MatId = row.Id,
+                    Price = row.Price ?? 0,
+                    GrpId = row.Pid * -1,
+                    PlDetType = 0
+                });
             }
-
         }
 
-        void AddSvc(int svc_id)
+        void AddSvc(GetSvcTree_Result row)
         {
-            var row = MatTreeList.GetDataRecordByNode(MatTreeList.FocusedNode) as GetSvcTree_Result;
-            if (!_db.PriceListDet.Where(w => w.MatId == svc_id && w.PlDetType == 1).Any())
+
+            if (!_db.PriceListDet.Where(w => w.MatId == row.Id && w.PlDetType == 1).Any())
             {
-                _db.PriceListDet.Add(new PriceListDet { PlId = _pl_id.Value, MatId = svc_id, Price = row.Price ?? 0, GrpId = row.Pid * -1, PlDetType = 1 });
+                _db.PriceListDet.Add(new PriceListDet
+                {
+                    PlId = _pl_id.Value,
+                    MatId = row.Id,
+                    Price = row.Price ?? 0,
+                    GrpId = row.Pid * -1,
+                    PlDetType = 1
+                });
             }
 
         }
@@ -148,10 +158,10 @@ namespace SP_Sklad.WBForm
                     var grp = MatTreeList.DataSource as List<GetMatTree_Result>;
                     foreach (var item in grp.Where(w => w.Pid == row.Id))
                     {
-                        AddMat(item.Id.Value * -1);
+                        AddMat(item);
                     }
                 }
-                else AddMat(row.Id.Value);
+                else AddMat(row);
             }
 
             if (barButtonItem3.Down)
@@ -159,13 +169,13 @@ namespace SP_Sklad.WBForm
                 var row = MatTreeList.GetDataRecordByNode(MatTreeList.FocusedNode) as GetSvcTree_Result;
                 if (row.Id < 0)
                 {
-                    var grp = MatTreeList.DataSource as List<GetMatTree_Result>;
+                    var grp = MatTreeList.DataSource as List<GetSvcTree_Result>;
                     foreach (var item in grp.Where(w => w.Pid == row.Id))
                     {
-                        AddSvc(item.Id.Value * -1);
+                        AddSvc(item);
                     }
                 }
-                else AddSvc(row.Id.Value);
+                else AddSvc(row);
             }
 
             _db.SaveChanges();
@@ -175,7 +185,74 @@ namespace SP_Sklad.WBForm
         void GetDetail()
         {
             PriceListDetBS.DataSource = _db.GetPriceListDet(_pl_id);  //  _db.PriceListDet.Where(w => w.PlId == _pl_id).ToList();
+        }
 
+        private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            var dr = gridView1.GetRow(e.RowHandle) as GetPriceListDet_Result;
+            var pld = _db.PriceListDet.Find(dr.PlDetId);
+            pld.Price = Convert.ToDecimal(e.Value);
+        }
+
+        private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var dr = gridView1.GetFocusedRow() as GetPriceListDet_Result;
+            _db.DeleteWhere<PriceListDet>(w => w.PlDetId == dr.PlDetId);
+            GetDetail();
+        }
+
+        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            _db.DeleteWhere<PriceListDet>(w => w.PlId == _pl_id);
+            var wh_remain = _db.WhMatGet(0, 0, 0, DateTime.Now, 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).ToList();
+
+            foreach (var item in wh_remain)
+            {
+                _db.PriceListDet.Add(new PriceListDet
+                {
+                    PlId = _pl_id.Value,
+                    MatId = item.MatId,
+                    Price =  GetPrice(item.MatId),
+                    GrpId = item.OutGrpId,
+                    PlDetType = 0
+                });
+            }
+
+            GetDetail();
+        }
+
+        private decimal GetPrice(int? mat_id)
+        {
+            int? p_type = PTypeEdit.EditValue == null || PTypeEdit.EditValue == DBNull.Value ? null : (int?)PTypeEdit.EditValue;
+            var mat_price = _db.GetListMatPrices(mat_id, pl.CurrId, p_type).FirstOrDefault();
+
+            return mat_price != null ? mat_price.Price.Value : 0.00m;
+        }
+
+        private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (barButtonItem2.Down)
+            {
+                var rows = MatTreeList.DataSource as List<GetMatTree_Result>;
+
+                foreach (var item in rows.Where(w => w.Id > 0))
+                {
+                    AddMat(item);
+                }
+
+            }
+
+            if (barButtonItem3.Down)
+            {
+                var rows = MatTreeList.DataSource as List<GetSvcTree_Result>;
+                foreach (var item in rows.Where(w => w.Id > 0))
+                {
+                    AddSvc(item);
+                }
+            }
+
+            _db.SaveChanges();
+            GetDetail();
         }
     }
 }

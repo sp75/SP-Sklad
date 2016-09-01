@@ -52,7 +52,7 @@
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.wbSatusList = new DevExpress.XtraEditors.LookUpEdit();
+            this.wbStatusList = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.wbKagentList = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -221,7 +221,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.CheckedItemImageComboBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.wbSatusList.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wbStatusList.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbKagentList.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties)).BeginInit();
@@ -625,7 +625,7 @@
             // 
             // panelControl2
             // 
-            this.panelControl2.Controls.Add(this.wbSatusList);
+            this.panelControl2.Controls.Add(this.wbStatusList);
             this.panelControl2.Controls.Add(this.labelControl4);
             this.panelControl2.Controls.Add(this.wbKagentList);
             this.panelControl2.Controls.Add(this.labelControl3);
@@ -639,20 +639,20 @@
             this.panelControl2.Size = new System.Drawing.Size(848, 44);
             this.panelControl2.TabIndex = 1;
             // 
-            // wbSatusList
+            // wbStatusList
             // 
-            this.wbSatusList.Location = new System.Drawing.Point(673, 11);
-            this.wbSatusList.Name = "wbSatusList";
-            this.wbSatusList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.wbStatusList.Location = new System.Drawing.Point(673, 11);
+            this.wbStatusList.Name = "wbStatusList";
+            this.wbStatusList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.wbSatusList.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            this.wbStatusList.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name")});
-            this.wbSatusList.Properties.DisplayMember = "Name";
-            this.wbSatusList.Properties.ShowHeader = false;
-            this.wbSatusList.Properties.ValueMember = "Id";
-            this.wbSatusList.Size = new System.Drawing.Size(164, 20);
-            this.wbSatusList.TabIndex = 8;
-            this.wbSatusList.EditValueChanged += new System.EventHandler(this.wbStartDate_Properties_EditValueChanged);
+            this.wbStatusList.Properties.DisplayMember = "Name";
+            this.wbStatusList.Properties.ShowHeader = false;
+            this.wbStatusList.Properties.ValueMember = "Id";
+            this.wbStatusList.Size = new System.Drawing.Size(164, 20);
+            this.wbStatusList.TabIndex = 8;
+            this.wbStatusList.EditValueChanged += new System.EventHandler(this.wbStartDate_Properties_EditValueChanged);
             // 
             // labelControl4
             // 
@@ -2106,6 +2106,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn)});
+            this.bar1.OptionsBar.DrawBorder = false;
+            this.bar1.OptionsBar.UseWholeRow = true;
             this.bar1.StandaloneBarDockControl = this.standaloneBarDockControl1;
             this.bar1.Text = "Custom 3";
             // 
@@ -2296,7 +2298,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.wbSatusList.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wbStatusList.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbKagentList.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties)).EndInit();
@@ -2399,7 +2401,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraEditors.PanelControl panelControl2;
-        private DevExpress.XtraEditors.LookUpEdit wbSatusList;
+        private DevExpress.XtraEditors.LookUpEdit wbStatusList;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.LookUpEdit wbKagentList;
         private DevExpress.XtraEditors.LabelControl labelControl3;

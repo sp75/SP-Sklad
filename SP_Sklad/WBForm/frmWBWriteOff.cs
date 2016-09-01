@@ -20,8 +20,9 @@ namespace SP_Sklad.WBForm
 {
     public partial class frmWBWriteOff : Form
     {
-        BaseEntities _db { get; set; }
+        public BaseEntities _db { get; set; }
         private int? _wbill_id { get; set; }
+        public int? doc_id { get; set; }
         private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
         private GetWayBillDetOut_Result wbd_row { get; set; }
@@ -31,7 +32,7 @@ namespace SP_Sklad.WBForm
         {
             _wbill_id = wbill_id;
             _db = new BaseEntities();
-            current_transaction = _db.Database.BeginTransaction(/*IsolationLevel.RepeatableRead*/);
+            current_transaction = _db.Database.BeginTransaction();
 
             InitializeComponent();
         }
@@ -41,7 +42,7 @@ namespace SP_Sklad.WBForm
             WhOutComboBox.Properties.DataSource = DBHelper.WhList();
 
 
-            if (_wbill_id == null)
+            if (_wbill_id == null && doc_id == null)
             {
                 wb = _db.WaybillList.Add(new WaybillList()
                 {
@@ -66,8 +67,6 @@ namespace SP_Sklad.WBForm
                 try
                 {
                     UpdLockWB();
-                    _db.Entry<WaybillList>(wb).State = EntityState.Modified;
-                    _db.Entry<WaybillList>(wb).Property(f => f.SummPay).IsModified = false;
                 }
                 catch
                 {
@@ -95,11 +94,28 @@ namespace SP_Sklad.WBForm
 
         private void UpdLockWB()
         {
-            wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0}", _wbill_id).FirstOrDefault();
+            if (wb != null)
+            {
+                _db.Entry<WaybillList>(wb).State = EntityState.Detached;
+            }
+
+            if (_wbill_id == null && doc_id != null)
+            {
+                wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where DocId = {0} ", doc_id).FirstOrDefault();
+            }
+            else
+            {
+                wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0} ", _wbill_id).FirstOrDefault();
+            }
+
             if (wb != null)
             {
                 wb.WaybillMove = _db.WaybillMove.Find(_wbill_id);
             }
+
+            _db.Entry<WaybillList>(wb).State = EntityState.Modified;
+
+            _wbill_id = wb.WbillId;
         }
 
         private void RefreshDet()
@@ -318,6 +334,14 @@ namespace SP_Sklad.WBForm
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void WhOutComboBox_EditValueChanged(object sender, EventArgs e)
+        {
+            if (wb != null && wb.WaybillMove != null && WhOutComboBox.EditValue != null && WhOutComboBox.EditValue != DBNull.Value)
+            {
+                wb.WaybillMove.SourceWid = (int)WhOutComboBox.EditValue;
+            }
         }
 
     }

@@ -16,8 +16,8 @@ namespace SP_Sklad.SkladData
     {
         public CashDesks()
         {
-            this.MONEYSALDO = new HashSet<MONEYSALDO>();
             this.PayDoc = new HashSet<PayDoc>();
+            this.MoneySaldo = new HashSet<MoneySaldo>();
         }
     
         public int CashId { get; set; }
@@ -25,7 +25,7 @@ namespace SP_Sklad.SkladData
         public int Deleted { get; set; }
         public Nullable<int> Def { get; set; }
     
-        public virtual ICollection<MONEYSALDO> MONEYSALDO { get; set; }
         public virtual ICollection<PayDoc> PayDoc { get; set; }
+        public virtual ICollection<MoneySaldo> MoneySaldo { get; set; }
     }
 }

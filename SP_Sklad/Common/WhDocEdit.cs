@@ -82,6 +82,16 @@ namespace SP_Sklad.Common
                         }
                     }
 
+
+                    if (dr.WType == 7 )
+                    {
+                        using (var wb_on = new frmWBInventory(wb.WbillId))
+                        {
+                            wb_on.ShowDialog();
+                        }
+                    }
+
+
                 }
 
                 catch (EntityCommandExecutionException exception)

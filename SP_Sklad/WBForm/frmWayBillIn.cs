@@ -61,8 +61,6 @@ namespace SP_Sklad.WBForm
                 try
                 {
                     UpdLockWB();
-                    _db.Entry<WaybillList>(wb).State = EntityState.Modified;
-                    _db.Entry<WaybillList>(wb).Property(f => f.SummPay).IsModified = false;
                 }
                 catch
                 {
@@ -89,6 +87,11 @@ namespace SP_Sklad.WBForm
 
         private void UpdLockWB()
         {
+            if (wb != null)
+            {
+                _db.Entry<WaybillList>(wb).State = EntityState.Detached;
+            }
+
             if (_wbill_id == null && doc_id != null)
             {
                 wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where DocId = {0} ", doc_id).FirstOrDefault();
@@ -97,6 +100,9 @@ namespace SP_Sklad.WBForm
             {
                 wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0} ", _wbill_id).FirstOrDefault();
             }
+
+            _db.Entry<WaybillList>(wb).State = EntityState.Modified;
+            _db.Entry<WaybillList>(wb).Property(f => f.SummPay).IsModified = false;
 
             _wbill_id = wb.WbillId;
         }

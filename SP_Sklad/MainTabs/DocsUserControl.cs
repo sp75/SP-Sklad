@@ -28,10 +28,15 @@ namespace SP_Sklad.MainTabs
         int show_null_balance = 1;
         BaseEntities _db { get; set; }
         v_GetDocsTree focused_tree_node { get; set; }
+
         private GetWayBillList_Result wb_focused_row
         {
-            get { return WbGridView.GetFocusedRow() as GetWayBillList_Result; }
+            get
+            {
+                return WbGridView.GetFocusedRow() as GetWayBillList_Result;
+            }
         }
+
         private v_PriceList pl_focused_row
         {
             get
@@ -56,8 +61,8 @@ namespace SP_Sklad.MainTabs
                 wbKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
                 wbKagentList.EditValue = 0;
 
-                wbSatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
-                wbSatusList.EditValue = -1;
+                wbStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
+                wbStatusList.EditValue = -1;
 
                 wbStartDate.EditValue = DateTime.Now.AddDays(-30);
                 wbEndDate.EditValue = DateTime.Now;
@@ -78,7 +83,7 @@ namespace SP_Sklad.MainTabs
 
         void GetWayBillList(int wtyp)
         {
-            if (wbSatusList.EditValue == null || wbKagentList.EditValue == null || DocsTreeList.FocusedNode==null)
+            if (wbStatusList.EditValue == null || wbKagentList.EditValue == null || DocsTreeList.FocusedNode==null)
             {
                 return;
             }
@@ -89,7 +94,7 @@ namespace SP_Sklad.MainTabs
             var dr = WbGridView.GetRow(WbGridView.FocusedRowHandle) as GetWayBillList_Result;
 
             WBGridControl.DataSource = null;
-            WBGridControl.DataSource = _db.GetWayBillList(satrt_date.Date, end_date.Date.AddDays(1), wtyp, (int)wbSatusList.EditValue, (int)wbKagentList.EditValue, show_null_balance, "*", 0).OrderByDescending(o => o.OnDate);
+            WBGridControl.DataSource = _db.GetWayBillList(satrt_date.Date, end_date.Date.AddDays(1), wtyp, (int)wbStatusList.EditValue, (int)wbKagentList.EditValue, show_null_balance, "*", 0).OrderByDescending(o => o.OnDate);
 
             WbGridView.FocusedRowHandle = FindRowHandleByRowObject(WbGridView, dr);
         }
@@ -218,16 +223,14 @@ namespace SP_Sklad.MainTabs
                         }
                     }
 
-                   /*         if(DocsTreeDataID->Value == 56 ) //Повернення постачальнику
-                            {
-                                frmWBReturnOut = new  TfrmWBReturnOut(Application);
-                                frmWBReturnOut->WayBillList->Open();
-                                frmWBReturnOut->WayBillList->Append();
-                                frmWBReturnOut->WayBillListWTYPE->Value  = -6;
-                                frmWBReturnOut->WayBillList->Post();
-                                frmWBReturnOut->WayBillList->Edit();
-                                frmWBReturnOut->ShowModal() ;
-                            }*/
+                    if (cur_wtype == -6) //Повернення постачальнику
+                    {
+                        using (var wb_re_out = new frmWBReturnOut(null))
+                        {
+                            wb_re_out.ShowDialog();
+                        }
+
+                    }
                     break;
 
                 case 4:

@@ -23,12 +23,12 @@ namespace SP_Sklad.SkladData
             this.MATPRICES = new HashSet<MATPRICES>();
             this.MATPRICES1 = new HashSet<MATPRICES>();
             this.PayDoc = new HashSet<PayDoc>();
-            this.MONEYSALDO = new HashSet<MONEYSALDO>();
             this.WaybillList = new HashSet<WaybillList>();
             this.WaybillDet = new HashSet<WaybillDet>();
             this.Services = new HashSet<Services>();
             this.WayBillSvc = new HashSet<WayBillSvc>();
             this.PriceList = new HashSet<PriceList>();
+            this.MoneySaldo = new HashSet<MoneySaldo>();
         }
     
         public int CurrId { get; set; }
@@ -47,11 +47,11 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<MATPRICES> MATPRICES { get; set; }
         public virtual ICollection<MATPRICES> MATPRICES1 { get; set; }
         public virtual ICollection<PayDoc> PayDoc { get; set; }
-        public virtual ICollection<MONEYSALDO> MONEYSALDO { get; set; }
         public virtual ICollection<WaybillList> WaybillList { get; set; }
         public virtual ICollection<WaybillDet> WaybillDet { get; set; }
         public virtual ICollection<Services> Services { get; set; }
         public virtual ICollection<WayBillSvc> WayBillSvc { get; set; }
         public virtual ICollection<PriceList> PriceList { get; set; }
+        public virtual ICollection<MoneySaldo> MoneySaldo { get; set; }
     }
 }

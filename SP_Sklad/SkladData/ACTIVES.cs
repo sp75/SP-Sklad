@@ -15,11 +15,12 @@ namespace SP_Sklad.SkladData
     public partial class Actives
     {
         public int Id { get; set; }
-        public byte[] OnDate { get; set; }
+        public System.DateTime OnDate { get; set; }
         public decimal WhSumm { get; set; }
         public decimal Debitors { get; set; }
         public decimal Creditors { get; set; }
         public decimal Cash { get; set; }
         public decimal CashLess { get; set; }
+        public Nullable<decimal> Active { get; set; }
     }
 }

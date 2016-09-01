@@ -75,7 +75,7 @@ namespace SP_Sklad.Common
                        }
                    }
 
-                   if (dr.WType == 6)
+                   if (dr.WType == 6)// Повернення від кліента
                    {
                        using (var wb_re_in = new frmWBReturnIn(dr.WType, wb.WbillId))
                        {
@@ -83,60 +83,14 @@ namespace SP_Sklad.Common
                        }
                    }
 
+                   if (dr.WType == -6) //Повернення постачальнику
+                   {
+                       using (var wb_re_out = new frmWBReturnOut( wb.WbillId))
+                       {
+                           wb_re_out.ShowDialog();
+                       }
 
-
-            /*           if(DocsTreeDataID->Value == 57) // Повернення від кліента
-                        {
-                           try
-                           {
-                             try
-                             {
-                               frmWBReturnIn  = new TfrmWBReturnIn(Application);
-                               frmWBReturnIn->WayBillList->ParamByName("WBILLID")->Value = WayBillListWBILLID->Value;
-                               frmWBReturnIn->WayBillList->Open();
-                               frmWBReturnIn->WayBillList->Edit();
-                               frmWBReturnIn->WayBillList->LockRecord()  ;
-                               frmWBReturnIn->ShowModal();
-                             }
-                             catch(const Exception& e)
-                             {
-                               frmWBReturnIn->Close();
-                               if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
-                               else   ShowMessage(e.Message) ;
-                             }
-                           }
-                           __finally
-                           {
-                               delete frmWBReturnIn ;
-                           }
-                        }
-
-         /*              if(DocsTreeDataID->Value == 56) //Повернення постачальнику
-                        {
-                           try
-                           {
-                             try
-                             {
-                               frmWBReturnOut  = new  TfrmWBReturnOut(Application);
-                               frmWBReturnOut->WayBillList->ParamByName("WBILLID")->Value = WayBillListWBILLID->Value;
-                               frmWBReturnOut->WayBillList->Open();
-                               frmWBReturnOut->WayBillList->Edit();
-                               frmWBReturnOut->WayBillList->LockRecord()  ;
-                               frmWBReturnOut->ShowModal();
-                             }
-                             catch(const Exception& e)
-                             {
-                               frmWBReturnOut->Close();
-                               if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
-                                 else ShowMessage(e.Message) ;
-                             }
-                           }
-                           __finally
-                           {
-                                 delete frmWBReturnOut ;
-                           }
-                        }*/
-
+                   }
 
                }
 
@@ -200,6 +154,73 @@ namespace SP_Sklad.Common
                    if (pd.Checked == 0)
                    {
                        using (var pd_form = new frmPayDoc(pd_row.DocType, pd_row.PayDocId))
+                       {
+                           pd_form.ShowDialog();
+                       }
+                   }
+
+               }
+               catch (EntityCommandExecutionException exception)
+               {
+                   var e = exception.InnerException as SqlException;
+                   if (e != null)
+                   {
+                       if (!e.Errors.Cast<SqlError>().Any(error =>
+                              (error.Number == DeadlockErrorNumber) ||
+                              (error.Number == LockingErrorNumber) ||
+                              (error.Number == UpdateConflictErrorNumber)))
+                       {
+                           MessageBox.Show(e.Message);
+                       }
+                       else
+                       {
+                           MessageBox.Show(Resources.deadlock);
+                       }
+                   }
+                   else
+                   {
+                       MessageBox.Show(exception.Message);
+                   }
+
+                   return;
+               }
+           }
+       }
+
+
+       public static void FinDocEdit(MoneyMoveList_Result pd_row)
+       {
+           if (pd_row == null)
+           {
+               return;
+           }
+
+           using (var db = new BaseEntities())
+           {
+               var trans = db.Database.BeginTransaction();
+               try
+               {
+                   var pd = db.Database.SqlQuery<PayDoc>("SELECT * from PayDoc WITH (UPDLOCK, NOWAIT) where PayDocId = {0}", pd_row.PayDocId).FirstOrDefault();
+                   if (pd == null)
+                   {
+                       MessageBox.Show(Resources.not_find_wb);
+                       return;
+                   }
+
+                   if (pd.Checked == 1)
+                   {
+                       if (MessageBox.Show(Resources.edit_info, "Відміна проводки", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                       {
+                           pd.Checked = 0;
+                           db.Entry<PayDoc>(pd).State = System.Data.Entity.EntityState.Modified;
+                           db.SaveChanges();
+                       }
+                   }
+                   trans.Commit();
+
+                   if (pd.Checked == 0)
+                   {
+                       using (var pd_form = new frmMoneyMove(pd_row.DocType, pd_row.PayDocId))
                        {
                            pd_form.ShowDialog();
                        }

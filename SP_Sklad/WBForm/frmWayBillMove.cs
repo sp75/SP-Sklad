@@ -15,16 +15,16 @@ using SP_Sklad.SkladData;
 using SP_Sklad.WBDetForm;
 using EntityState = System.Data.Entity.EntityState;
 using System.Data.Entity.Core.Objects;
+using SP_Sklad.Common;
 
 namespace SP_Sklad.WBForm
 {
     public partial class frmWayBillMove : Form
     {
-        BaseEntities _db { get; set; }
+        private BaseEntities _db { get; set; }
         private int? _wbill_id { get; set; }
         private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
-    //    private WaybillMove wbm { get; set; }
         private GetWayBillDetOut_Result wbd_row { get; set; }
         private IQueryable<GetWayBillDetOut_Result> wbd_list { get; set; }
 
@@ -61,16 +61,12 @@ namespace SP_Sklad.WBForm
                 _db.SaveChanges();
 
                 _wbill_id = wb.WbillId;
-                //wb.WaybillMove = new WaybillMove { WBillId = _wbill_id.Value };
-
             }
             else
             {
                 try
                 {
                     UpdLockWB();
-                    _db.Entry<WaybillList>(wb).State = EntityState.Modified;
-                    _db.Entry<WaybillList>(wb).Property(f => f.SummPay).IsModified = false;
                 }
                 catch
                 {
@@ -101,11 +97,18 @@ namespace SP_Sklad.WBForm
 
         private void UpdLockWB()
         {
+            if (wb != null)
+            {
+                _db.Entry<WaybillList>(wb).State = EntityState.Detached;
+            }
+
             wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0}", _wbill_id).FirstOrDefault();
             if ( wb != null )
             {
                 wb.WaybillMove = _db.WaybillMove.Find(_wbill_id);
             }
+
+            _db.Entry<WaybillList>(wb).State = EntityState.Modified;
         }
 
         private void RefreshDet()
@@ -194,14 +197,7 @@ namespace SP_Sklad.WBForm
 
         private void WaybillDetOutGridView_DoubleClick(object sender, EventArgs e)
         {
-            GridView view = (GridView)sender;
-            Point pt = view.GridControl.PointToClient(Control.MousePosition);
-            GridHitInfo info = view.CalcHitInfo(pt);
-
-            if (info.InRow || info.InRowCell)
-            {
-                EditMaterialBtn.PerformClick();
-            }
+            if (IHelper.isRowDublClick(sender)) EditMaterialBtn.PerformClick();
         }
 
         private void EditMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -314,6 +310,24 @@ namespace SP_Sklad.WBForm
         private void NowDateBtn_Click(object sender, EventArgs e)
         {
             //
+        }
+
+        private void WbDetPopupMenu_Popup(object sender, EventArgs e)
+        {
+            RsvBarBtn.Enabled = (wbd_row.Rsv == 0 && wbd_row.PosId > 0);
+            DelRsvBarBtn.Enabled = (wbd_row.Rsv == 1 && wbd_row.PosId > 0);
+            RsvAllBarBtn.Enabled = (WaybillDetOutGridView.FocusedRowHandle >= 0);
+            DelAllRsvBarBtn.Enabled = (WaybillDetOutGridView.FocusedRowHandle >= 0);
+        }
+
+        private void RsvInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var dr = WaybillDetOutGridView.GetRow(WaybillDetOutGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
+
+            if (dr != null)
+            {
+                IHelper.ShowMatRSV(dr.MatId, _db);
+            }
         }
     }
 }
