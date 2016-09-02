@@ -58,5 +58,16 @@ namespace SP_Sklad.Properties {
                 this["ch_view3"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public object user_id {
+            get {
+                return ((object)(this["user_id"]));
+            }
+            set {
+                this["user_id"] = value;
+            }
+        }
     }
 }

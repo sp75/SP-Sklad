@@ -56,8 +56,8 @@ namespace SP_Sklad.MainTabs
                     wbStartDate.EditValue = DateTime.Now.AddDays(-30);
                     wbEndDate.EditValue = DateTime.Now.Date;
 
-                    PDStartDate.EditValue = DateTime.Now.AddDays(-30);
-                    PDEndDate.EditValue = DateTime.Now.AddDays(1).Date; ;
+                    dateEdit2.EditValue = DateTime.Now.AddDays(-30);
+                    dateEdit1.EditValue = DateTime.Now.Date;
 
                     FinancesTreeList.DataSource = _db.GetFinancesTree(DBHelper.CurrentUser.UserId).ToList();
                     FinancesTreeList.ExpandAll();
@@ -94,13 +94,14 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 2:
-                    MoneyMoveListBS.DataSource = null;
+                 //   MoneyMoveListBS.DataSource = null;
                     MoneyMoveListBS.DataSource = new BaseEntities().MoneyMoveList(-1, wbStartDate.DateTime, wbEndDate.DateTime.Date.AddDays(1), (int)wbStatusList.EditValue).ToList();
+                    RefreshBtnBar();
                     break;
                 case 3:
-                    ActivesBS.DataSource = new BaseEntities().Actives.OrderByDescending(o => o.OnDate).Take(1).ToList();
+                    new BaseEntities().RecalcActives(DateTime.Now.Date).ToList();
+                    CurActivesBS.DataSource = new BaseEntities().Actives.OrderByDescending(o => o.OnDate).Take(1).ToList();
                     break;
-
             }
         }
 
@@ -182,7 +183,7 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType)
             {
                 case 2:
-                    var dr = bandedGridView1.GetFocusedRow() as MoneyMoveList_Result;
+                    var dr = MoneyMoveGridView.GetFocusedRow() as MoneyMoveList_Result;
                     DocEdit.FinDocEdit(dr);
                     break;
             }
@@ -192,7 +193,7 @@ namespace SP_Sklad.MainTabs
 
         private void DeleteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var pd_row = bandedGridView1.GetFocusedRow() as MoneyMoveList_Result;
+            var pd_row = MoneyMoveGridView.GetFocusedRow() as MoneyMoveList_Result;
        
             using (var db = new BaseEntities())
             {
@@ -224,7 +225,7 @@ namespace SP_Sklad.MainTabs
 
         private void bandedGridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            var dr = bandedGridView1.GetRow(e.FocusedRowHandle) as MoneyMoveList_Result;
+            var dr = MoneyMoveGridView.GetRow(e.FocusedRowHandle) as MoneyMoveList_Result;
 
             if (dr != null)
             {
@@ -237,11 +238,77 @@ namespace SP_Sklad.MainTabs
            //     gridControl3.DataSource = null;
             }
 
+            RefreshBtnBar();
+        }
+        private void RefreshBtnBar()
+        {
+            var dr = MoneyMoveGridView.GetFocusedRow() as MoneyMoveList_Result;
+
             DeleteItemBtn.Enabled = (dr != null && dr.Checked == 0 && focused_tree_node.CanDelete == 1);
-            ExecuteItemBtn.Enabled = (dr != null  && focused_tree_node.CanPost == 1);
+            ExecuteItemBtn.Enabled = (dr != null && focused_tree_node.CanPost == 1);
             EditItemBtn.Enabled = (dr != null && focused_tree_node.CanModify == 1);
             CopyItemBtn.Enabled = EditItemBtn.Enabled;
             PrintItemBtn.Enabled = (dr != null);
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            var start = dateEdit2.DateTime.Date;
+            var end = dateEdit1.DateTime.AddDays(1).Date;
+            ActivesBS.DataSource = new BaseEntities().Actives.Where(w => w.OnDate >= start && w.OnDate <= end).ToList();
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            var end = dateEdit1.DateTime.Date;
+            using (var db = new BaseEntities())
+            {
+                for (var date = dateEdit2.DateTime.Date; date <= end; date = date.AddDays(1))
+                {
+                    db.RecalcActives(date).ToList();
+                }
+            }
+
+            simpleButton1.PerformClick();
+        }
+
+        private void ExecuteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (focused_tree_node == null)
+            {
+                return;
+            }
+
+            switch (focused_tree_node.GType)
+            {
+                case 2:
+                    var pd_row = MoneyMoveGridView.GetFocusedRow() as MoneyMoveList_Result;
+                    using (var db = new BaseEntities())
+                    {
+                        var pd = db.PayDoc.Find(pd_row.PayDocId);
+                        pd.Checked = pd_row.Checked == 0 ? 1 : 0;
+                        db.SaveChanges();
+                    }
+                    break;
+            }
+
+            RefrechItemBtn.PerformClick();
+        }
+
+        private void MoneyMoveGridView_DoubleClick(object sender, EventArgs e)
+        {
+            if (IHelper.isRowDublClick(sender)) EditItemBtn.PerformClick();
+        }
+
+        private void vGridControl3_CellValueChanged(object sender, DevExpress.XtraVerticalGrid.Events.CellValueChangedEventArgs e)
+        {
+            var items = CurActivesBS.DataSource as List<Actives>;
+            if (items != null)
+            {
+                var d = items.FirstOrDefault().OnDate;
+                CurActivesBS.DataSource = new BaseEntities().Actives.Where(o => o.OnDate == d).ToList();
+            }
+           
         }
     }
 }

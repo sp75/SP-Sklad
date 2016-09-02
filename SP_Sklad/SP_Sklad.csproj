@@ -568,6 +568,9 @@
     <Compile Include="SkladData\PrintLog.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\RecalcActives_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\RepLng.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>

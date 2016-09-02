@@ -361,15 +361,7 @@ namespace SP_Sklad.MainTabs
 
         private void WbGridView_DoubleClick(object sender, EventArgs e)
         {
-            GridView view = (GridView)sender;
-            Point pt = view.GridControl.PointToClient(Control.MousePosition);
-            GridHitInfo info = view.CalcHitInfo(pt);
-
-            if (info.InRow || info.InRowCell)
-            {
-                EditItemBtn.PerformClick();
-            }
-
+            if (IHelper.isRowDublClick(sender)) EditItemBtn.PerformClick();
         }
 
         private void DeleteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

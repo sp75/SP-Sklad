@@ -515,7 +515,7 @@ namespace SP_Sklad.MainTabs
 
         private void RecalcRemainsMatBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            DB.SkladBase().RecalcRemainsMat(focused_wh_mat.MatId);
+            var result =  DB.SkladBase().RecalcRemainsMat(focused_wh_mat.MatId);
             RefreshWhBtn.PerformClick();
         }
 

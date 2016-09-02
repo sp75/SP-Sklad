@@ -98,6 +98,7 @@
             // 
             // passtextEdit
             // 
+            this.passtextEdit.EditValue = "1";
             this.passtextEdit.Location = new System.Drawing.Point(127, 81);
             this.passtextEdit.Name = "passtextEdit";
             this.passtextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
@@ -105,6 +106,7 @@
             this.passtextEdit.Properties.PasswordChar = '*';
             this.passtextEdit.Size = new System.Drawing.Size(236, 30);
             this.passtextEdit.TabIndex = 36;
+            this.passtextEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.passtextEdit_KeyPress);
             // 
             // labelControl2
             // 
@@ -126,6 +128,8 @@
             // 
             // UserIDEdit
             // 
+            this.UserIDEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", global::SP_Sklad.Properties.Settings.Default, "user_id", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.UserIDEdit.EditValue = global::SP_Sklad.Properties.Settings.Default.user_id;
             this.UserIDEdit.Location = new System.Drawing.Point(127, 31);
             this.UserIDEdit.Name = "UserIDEdit";
             this.UserIDEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
@@ -155,6 +159,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " Авторизація користувача ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmLogin_FormClosing);
+            this.Shown += new System.EventHandler(this.frmLogin_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();

@@ -47,5 +47,19 @@ namespace SP_Sklad
         {
             Properties.Settings.Default.Save();
         }
+
+        private void passtextEdit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && !String.IsNullOrEmpty(passtextEdit.Text))
+            {
+                OkButton.PerformClick();
+            }
+
+        }
+
+        private void frmLogin_Shown(object sender, EventArgs e)
+        {
+            passtextEdit.Focus();
+        }
     }
 }

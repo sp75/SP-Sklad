@@ -4644,6 +4644,9 @@
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="RecalcActives" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="on_date" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="RecalcRemainsMat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="mat_id" Type="int" Mode="In" />
         </Function>
@@ -6167,6 +6170,9 @@
           </FunctionImport>
           <EntitySet Name="PayDocType" EntityType="BaseModel.PayDocType" />
           <EntitySet Name="Actives" EntityType="BaseModel.Actives" />
+          <FunctionImport Name="RecalcActives" ReturnType="Collection(BaseModel.RecalcActives_Result)">
+            <Parameter Name="on_date" Mode="In" Type="DateTime" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -10446,6 +10452,13 @@
           <Property Type="Decimal" Name="CashLess" Nullable="false" Precision="15" Scale="8" />
           <Property Type="Decimal" Name="Active" Precision="19" Scale="8" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
+        <ComplexType Name="RecalcActives_Result">
+          <Property Type="Decimal" Name="WhSumm" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Debitors" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Creditors" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Cash" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="CashLess" Nullable="true" Precision="15" Scale="4" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -13055,6 +13068,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="RecalcActives" FunctionName="BaseModel.Store.RecalcActives">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.RecalcActives_Result">
+                <ScalarProperty Name="WhSumm" ColumnName="WhSumm" />
+                <ScalarProperty Name="Debitors" ColumnName="Debitors" />
+                <ScalarProperty Name="Creditors" ColumnName="Creditors" />
+                <ScalarProperty Name="Cash" ColumnName="Cash" />
+                <ScalarProperty Name="CashLess" ColumnName="CashLess" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

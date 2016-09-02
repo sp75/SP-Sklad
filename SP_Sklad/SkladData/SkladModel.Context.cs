@@ -1513,5 +1513,14 @@ namespace SP_Sklad.SkladData
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<MoneyMoveList_Result>("[BaseEntities].[MoneyMoveList](@doc_type, @from_date, @to_date, @is_checked)", doc_typeParameter, from_dateParameter, to_dateParameter, is_checkedParameter);
         }
+    
+        public virtual ObjectResult<RecalcActives_Result> RecalcActives(Nullable<System.DateTime> on_date)
+        {
+            var on_dateParameter = on_date.HasValue ?
+                new ObjectParameter("on_date", on_date) :
+                new ObjectParameter("on_date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RecalcActives_Result>("RecalcActives", on_dateParameter);
+        }
     }
 }
