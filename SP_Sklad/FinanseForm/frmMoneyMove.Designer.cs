@@ -39,38 +39,38 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.PayDocTypeEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.CashEditComboBox = new DevExpress.XtraEditors.LookUpEdit();
-            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.PayDocBS = new System.Windows.Forms.BindingSource(this.components);
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.PTypeComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.TurnDocCheckBox = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.NumEdit = new DevExpress.XtraEditors.TextEdit();
             this.OnDateDBEdit = new DevExpress.XtraEditors.DateEdit();
+            this.CashEditComboBox = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.PTypeComboBox = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.AccountEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.SumEdit = new DevExpress.XtraEditors.CalcEdit();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.SumTypeEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panelControl6 = new DevExpress.XtraEditors.PanelControl();
-            this.ReasonEdit = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.AccountEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.PersonEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.ReasonEdit = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
             this.NotesEdit = new DevExpress.XtraEditors.MemoEdit();
-            this.SumTypeEdit = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.PayDocBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
@@ -78,25 +78,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PayDocTypeEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CashEditComboBox.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PTypeComboBox.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PayDocBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TurnDocCheckBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CashEditComboBox.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PTypeComboBox.Properties)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SumEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SumTypeEdit.Properties)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).BeginInit();
             this.panelControl6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ReasonEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AccountEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PersonEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReasonEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SumTypeEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PayDocBS)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl4
@@ -203,53 +203,9 @@
             this.PayDocTypeEdit.StyleController = this.styleController1;
             this.PayDocTypeEdit.TabIndex = 26;
             // 
-            // CashEditComboBox
+            // PayDocBS
             // 
-            this.CashEditComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PayDocBS, "OperId", true));
-            this.CashEditComboBox.Location = new System.Drawing.Point(90, 50);
-            this.CashEditComboBox.Name = "CashEditComboBox";
-            this.CashEditComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.CashEditComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
-            this.CashEditComboBox.Properties.DisplayMember = "Name";
-            this.CashEditComboBox.Properties.ShowFooter = false;
-            this.CashEditComboBox.Properties.ShowHeader = false;
-            this.CashEditComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.CashEditComboBox.Properties.ValueMember = "CashId";
-            this.CashEditComboBox.Size = new System.Drawing.Size(158, 22);
-            this.CashEditComboBox.StyleController = this.styleController1;
-            this.CashEditComboBox.TabIndex = 25;
-            this.CashEditComboBox.EditValueChanged += new System.EventHandler(this.NumEdit_EditValueChanged);
-            // 
-            // labelControl7
-            // 
-            this.labelControl7.Location = new System.Drawing.Point(12, 53);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(32, 16);
-            this.labelControl7.StyleController = this.styleController1;
-            this.labelControl7.TabIndex = 20;
-            this.labelControl7.Text = "Каса:";
-            // 
-            // simpleButton4
-            // 
-            this.simpleButton4.ImageIndex = 3;
-            this.simpleButton4.ImageList = this.FormImgList;
-            this.simpleButton4.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton4.Location = new System.Drawing.Point(254, 50);
-            this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(22, 22);
-            this.simpleButton4.TabIndex = 15;
-            // 
-            // simpleButton3
-            // 
-            this.simpleButton3.ImageIndex = 5;
-            this.simpleButton3.ImageList = this.FormImgList;
-            this.simpleButton3.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton3.Location = new System.Drawing.Point(254, 11);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(22, 22);
-            this.simpleButton3.TabIndex = 11;
+            this.PayDocBS.DataSource = typeof(SP_Sklad.SkladData.PayDoc);
             // 
             // simpleButton2
             // 
@@ -261,25 +217,6 @@
             this.simpleButton2.TabIndex = 10;
             this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
-            // PTypeComboBox
-            // 
-            this.PTypeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PayDocBS, "PTypeId", true));
-            this.PTypeComboBox.Location = new System.Drawing.Point(90, 12);
-            this.PTypeComboBox.Name = "PTypeComboBox";
-            this.PTypeComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.PTypeComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
-            this.PTypeComboBox.Properties.DisplayMember = "Name";
-            this.PTypeComboBox.Properties.ShowFooter = false;
-            this.PTypeComboBox.Properties.ShowHeader = false;
-            this.PTypeComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.PTypeComboBox.Properties.ValueMember = "PTypeId";
-            this.PTypeComboBox.Size = new System.Drawing.Size(158, 22);
-            this.PTypeComboBox.StyleController = this.styleController1;
-            this.PTypeComboBox.TabIndex = 9;
-            this.PTypeComboBox.EditValueChanged += new System.EventHandler(this.PTypeComboBox_EditValueChanged);
-            // 
             // labelControl5
             // 
             this.labelControl5.Location = new System.Drawing.Point(12, 83);
@@ -288,15 +225,6 @@
             this.labelControl5.StyleController = this.styleController1;
             this.labelControl5.TabIndex = 7;
             this.labelControl5.Text = "Документ:";
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Location = new System.Drawing.Point(12, 15);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(71, 16);
-            this.labelControl3.StyleController = this.styleController1;
-            this.labelControl3.TabIndex = 5;
-            this.labelControl3.Text = "Вид оплати:";
             // 
             // labelControl2
             // 
@@ -355,6 +283,82 @@
             this.OnDateDBEdit.StyleController = this.styleController1;
             this.OnDateDBEdit.TabIndex = 8;
             // 
+            // CashEditComboBox
+            // 
+            this.CashEditComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PayDocBS, "CashId", true));
+            this.CashEditComboBox.Location = new System.Drawing.Point(90, 50);
+            this.CashEditComboBox.Name = "CashEditComboBox";
+            this.CashEditComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.CashEditComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.CashEditComboBox.Properties.DisplayMember = "Name";
+            this.CashEditComboBox.Properties.ShowFooter = false;
+            this.CashEditComboBox.Properties.ShowHeader = false;
+            this.CashEditComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.CashEditComboBox.Properties.ValueMember = "CashId";
+            this.CashEditComboBox.Size = new System.Drawing.Size(158, 22);
+            this.CashEditComboBox.StyleController = this.styleController1;
+            this.CashEditComboBox.TabIndex = 25;
+            this.CashEditComboBox.EditValueChanged += new System.EventHandler(this.NumEdit_EditValueChanged);
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Location = new System.Drawing.Point(12, 53);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(32, 16);
+            this.labelControl7.StyleController = this.styleController1;
+            this.labelControl7.TabIndex = 20;
+            this.labelControl7.Text = "Каса:";
+            // 
+            // simpleButton4
+            // 
+            this.simpleButton4.ImageIndex = 3;
+            this.simpleButton4.ImageList = this.FormImgList;
+            this.simpleButton4.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton4.Location = new System.Drawing.Point(254, 50);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(22, 22);
+            this.simpleButton4.TabIndex = 15;
+            // 
+            // simpleButton3
+            // 
+            this.simpleButton3.ImageIndex = 5;
+            this.simpleButton3.ImageList = this.FormImgList;
+            this.simpleButton3.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton3.Location = new System.Drawing.Point(254, 11);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(22, 22);
+            this.simpleButton3.TabIndex = 11;
+            // 
+            // PTypeComboBox
+            // 
+            this.PTypeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PayDocBS, "PTypeId", true));
+            this.PTypeComboBox.Location = new System.Drawing.Point(90, 12);
+            this.PTypeComboBox.Name = "PTypeComboBox";
+            this.PTypeComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.PTypeComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.PTypeComboBox.Properties.DisplayMember = "Name";
+            this.PTypeComboBox.Properties.ShowFooter = false;
+            this.PTypeComboBox.Properties.ShowHeader = false;
+            this.PTypeComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.PTypeComboBox.Properties.ValueMember = "PTypeId";
+            this.PTypeComboBox.Size = new System.Drawing.Size(158, 22);
+            this.PTypeComboBox.StyleController = this.styleController1;
+            this.PTypeComboBox.TabIndex = 9;
+            this.PTypeComboBox.EditValueChanged += new System.EventHandler(this.PTypeComboBox_EditValueChanged);
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(12, 15);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(71, 16);
+            this.labelControl3.StyleController = this.styleController1;
+            this.labelControl3.TabIndex = 5;
+            this.labelControl3.Text = "Вид оплати:";
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.panelControl3);
@@ -386,6 +390,53 @@
             this.panelControl3.Size = new System.Drawing.Size(570, 120);
             this.panelControl3.TabIndex = 7;
             // 
+            // simpleButton1
+            // 
+            this.simpleButton1.ImageIndex = 3;
+            this.simpleButton1.ImageList = this.FormImgList;
+            this.simpleButton1.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton1.Location = new System.Drawing.Point(254, 83);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(22, 22);
+            this.simpleButton1.TabIndex = 38;
+            // 
+            // AccountEdit
+            // 
+            this.AccountEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PayDocBS, "AccId", true));
+            this.AccountEdit.Location = new System.Drawing.Point(90, 83);
+            this.AccountEdit.Name = "AccountEdit";
+            this.AccountEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.AccountEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.AccountEdit.Properties.DisplayMember = "Name";
+            this.AccountEdit.Properties.ShowFooter = false;
+            this.AccountEdit.Properties.ShowHeader = false;
+            this.AccountEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.AccountEdit.Properties.ValueMember = "CashId";
+            this.AccountEdit.Size = new System.Drawing.Size(158, 22);
+            this.AccountEdit.StyleController = this.styleController1;
+            this.AccountEdit.TabIndex = 37;
+            this.AccountEdit.EditValueChanged += new System.EventHandler(this.NumEdit_EditValueChanged);
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(12, 86);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(19, 16);
+            this.labelControl4.StyleController = this.styleController1;
+            this.labelControl4.TabIndex = 36;
+            this.labelControl4.Text = "р/р";
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Location = new System.Drawing.Point(320, 15);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(79, 16);
+            this.labelControl6.StyleController = this.styleController1;
+            this.labelControl6.TabIndex = 35;
+            this.labelControl6.Text = "Тип операції:";
+            // 
             // SumEdit
             // 
             this.SumEdit.Location = new System.Drawing.Point(405, 50);
@@ -405,6 +456,19 @@
             this.labelControl9.StyleController = this.styleController1;
             this.labelControl9.TabIndex = 5;
             this.labelControl9.Text = "Сума:";
+            // 
+            // SumTypeEdit
+            // 
+            this.SumTypeEdit.EditValue = "Зарахувати ";
+            this.SumTypeEdit.Location = new System.Drawing.Point(405, 12);
+            this.SumTypeEdit.Name = "SumTypeEdit";
+            this.SumTypeEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.SumTypeEdit.Properties.Items.AddRange(new object[] {
+            "Зарахувати ",
+            "Списати"});
+            this.SumTypeEdit.Size = new System.Drawing.Size(151, 20);
+            this.SumTypeEdit.TabIndex = 34;
             // 
             // panel5
             // 
@@ -430,80 +494,6 @@
             this.panelControl6.Name = "panelControl6";
             this.panelControl6.Size = new System.Drawing.Size(570, 208);
             this.panelControl6.TabIndex = 12;
-            // 
-            // ReasonEdit
-            // 
-            this.ReasonEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PayDocBS, "Reason", true));
-            this.ReasonEdit.Location = new System.Drawing.Point(90, 54);
-            this.ReasonEdit.Name = "ReasonEdit";
-            this.ReasonEdit.Size = new System.Drawing.Size(466, 22);
-            this.ReasonEdit.StyleController = this.styleController1;
-            this.ReasonEdit.TabIndex = 23;
-            // 
-            // labelControl16
-            // 
-            this.labelControl16.Location = new System.Drawing.Point(12, 92);
-            this.labelControl16.Name = "labelControl16";
-            this.labelControl16.Size = new System.Drawing.Size(57, 16);
-            this.labelControl16.StyleController = this.styleController1;
-            this.labelControl16.TabIndex = 22;
-            this.labelControl16.Text = "Примітка:";
-            // 
-            // labelControl17
-            // 
-            this.labelControl17.Location = new System.Drawing.Point(12, 57);
-            this.labelControl17.Name = "labelControl17";
-            this.labelControl17.Size = new System.Drawing.Size(56, 16);
-            this.labelControl17.StyleController = this.styleController1;
-            this.labelControl17.TabIndex = 21;
-            this.labelControl17.Text = "Підстава:";
-            // 
-            // labelControl6
-            // 
-            this.labelControl6.Location = new System.Drawing.Point(320, 15);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(79, 16);
-            this.labelControl6.StyleController = this.styleController1;
-            this.labelControl6.TabIndex = 35;
-            this.labelControl6.Text = "Тип операції:";
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Location = new System.Drawing.Point(12, 86);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(19, 16);
-            this.labelControl4.StyleController = this.styleController1;
-            this.labelControl4.TabIndex = 36;
-            this.labelControl4.Text = "р/р";
-            // 
-            // AccountEdit
-            // 
-            this.AccountEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PayDocBS, "AccId", true));
-            this.AccountEdit.Location = new System.Drawing.Point(90, 83);
-            this.AccountEdit.Name = "AccountEdit";
-            this.AccountEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.AccountEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
-            this.AccountEdit.Properties.DisplayMember = "Name";
-            this.AccountEdit.Properties.ShowFooter = false;
-            this.AccountEdit.Properties.ShowHeader = false;
-            this.AccountEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.AccountEdit.Properties.ValueMember = "CashId";
-            this.AccountEdit.Size = new System.Drawing.Size(158, 22);
-            this.AccountEdit.StyleController = this.styleController1;
-            this.AccountEdit.TabIndex = 37;
-            this.AccountEdit.EditValueChanged += new System.EventHandler(this.NumEdit_EditValueChanged);
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.ImageIndex = 3;
-            this.simpleButton1.ImageList = this.FormImgList;
-            this.simpleButton1.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton1.Location = new System.Drawing.Point(254, 83);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(22, 22);
-            this.simpleButton1.TabIndex = 38;
             // 
             // PersonEdit
             // 
@@ -542,6 +532,33 @@
             this.labelControl8.TabIndex = 27;
             this.labelControl8.Text = "Через кого:";
             // 
+            // ReasonEdit
+            // 
+            this.ReasonEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PayDocBS, "Reason", true));
+            this.ReasonEdit.Location = new System.Drawing.Point(90, 54);
+            this.ReasonEdit.Name = "ReasonEdit";
+            this.ReasonEdit.Size = new System.Drawing.Size(466, 22);
+            this.ReasonEdit.StyleController = this.styleController1;
+            this.ReasonEdit.TabIndex = 23;
+            // 
+            // labelControl16
+            // 
+            this.labelControl16.Location = new System.Drawing.Point(12, 92);
+            this.labelControl16.Name = "labelControl16";
+            this.labelControl16.Size = new System.Drawing.Size(57, 16);
+            this.labelControl16.StyleController = this.styleController1;
+            this.labelControl16.TabIndex = 22;
+            this.labelControl16.Text = "Примітка:";
+            // 
+            // labelControl17
+            // 
+            this.labelControl17.Location = new System.Drawing.Point(12, 57);
+            this.labelControl17.Name = "labelControl17";
+            this.labelControl17.Size = new System.Drawing.Size(56, 16);
+            this.labelControl17.StyleController = this.styleController1;
+            this.labelControl17.TabIndex = 21;
+            this.labelControl17.Text = "Підстава:";
+            // 
             // NotesEdit
             // 
             this.NotesEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PayDocBS, "Notes", true));
@@ -549,23 +566,6 @@
             this.NotesEdit.Name = "NotesEdit";
             this.NotesEdit.Size = new System.Drawing.Size(466, 103);
             this.NotesEdit.TabIndex = 24;
-            // 
-            // SumTypeEdit
-            // 
-            this.SumTypeEdit.EditValue = "Зарахувати ";
-            this.SumTypeEdit.Location = new System.Drawing.Point(405, 12);
-            this.SumTypeEdit.Name = "SumTypeEdit";
-            this.SumTypeEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.SumTypeEdit.Properties.Items.AddRange(new object[] {
-            "Зарахувати ",
-            "Списати"});
-            this.SumTypeEdit.Size = new System.Drawing.Size(151, 20);
-            this.SumTypeEdit.TabIndex = 34;
-            // 
-            // PayDocBS
-            // 
-            this.PayDocBS.DataSource = typeof(SP_Sklad.SkladData.PayDoc);
             // 
             // frmMoneyMove
             // 
@@ -591,27 +591,27 @@
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PayDocTypeEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CashEditComboBox.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PTypeComboBox.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PayDocBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TurnDocCheckBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CashEditComboBox.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PTypeComboBox.Properties)).EndInit();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SumEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SumTypeEdit.Properties)).EndInit();
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).EndInit();
             this.panelControl6.ResumeLayout(false);
             this.panelControl6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ReasonEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AccountEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PersonEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReasonEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SumTypeEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PayDocBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
