@@ -363,7 +363,7 @@ namespace SP_Sklad.MainTabs
                   //  WhMatGridControl.DataSource = null;
                   //  WhMatGridControl.DataSource = DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list, 0, grp, DBHelper.CurrentUser.UserId, ViewDetailTree.Down ? 1:0).ToList();
                     WhMatGetBS.DataSource = null;
-                    WhMatGetBS.DataSource = DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, ShowEmptyItemsCheck.Checked ? 1 : 0, wh_list, ShowAllItemsCheck.Checked ? 1 : 0, grp, DBHelper.CurrentUser.UserId, ViewDetailTree.Down ? 1 : 0).ToList();
+                    WhMatGetBS.DataSource =DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, ShowEmptyItemsCheck.Checked ? 1 : 0, wh_list, ShowAllItemsCheck.Checked ? 1 : 0, grp, DBHelper.CurrentUser.UserId, ViewDetailTree.Down ? 1 : 0).ToList();
                     break;
 
                 case 2:
@@ -515,7 +515,19 @@ namespace SP_Sklad.MainTabs
 
         private void RecalcRemainsMatBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var result =  DB.SkladBase().RecalcRemainsMat(focused_wh_mat.MatId);
+          
+            using (var db = DB.SkladBase())
+            {
+                var pos = db.PosRemains.Where(w => w.MatId == focused_wh_mat.MatId).Select(s => new { s.PosId, s.WId, s.OnDate }).ToList();
+                foreach (var item in pos)
+                {
+                    db.SP_RECALC_REMAINS(item.PosId, focused_wh_mat.MatId, item.WId, item.OnDate, 0);
+                }
+
+                db.SaveChanges();
+            }
+            
+       //     DB.SkladBase().RecalcRemainsMat(focused_wh_mat.MatId);
             RefreshWhBtn.PerformClick();
         }
 

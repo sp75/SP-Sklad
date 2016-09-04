@@ -111,15 +111,15 @@ namespace SP_Sklad.MainTabs
                     frm.ChargeGroupBox.Visible = false;
                     break;
 
-             /*   case 2:
-                    frmReport->InDocGroupBox->Visible = false;
-                    frmReport->OnDateGroupBox->Visible = false;
-                    frmReport->MatGroupBox->Visible = false;
-                    frmReport->DocTypeGroupBox->Visible = false;
-                    frmReport->CHARGEGroupBox->Visible = false;
+                case 2:
+                    frm.InDocGroupBox.Visible = false;
+                    frm.OnDateGroupBox.Visible = false;
+                    frm.MatGroupBox.Visible = false;
+                    frm.DocTypeGroupBox.Visible = false;
+                    frm.ChargeGroupBox.Visible = false;
                     break;
 
-                case 3: frmReport->DocTypeGroupBox2->Visible = false;
+           /*     case 3: frmReport->DocTypeGroupBox2->Visible = false;
                 case 14:
                     frmReport->InDocGroupBox->Visible = false;
                     frmReport->OnDateGroupBox->Visible = false;

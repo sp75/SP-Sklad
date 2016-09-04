@@ -59,6 +59,7 @@ using System.Linq;
     public <#=code.Escape(container)#>()
         : base("name=<#=container.Name#>")
     {
+	   Database.CommandTimeout = 180;
 <#
 if (!loader.IsLazyLoadingEnabled(container))
 {

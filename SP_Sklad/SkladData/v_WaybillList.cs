@@ -66,5 +66,8 @@ namespace SP_Sklad.SkladData
         public string EntINN { get; set; }
         public string EntCertNum { get; set; }
         public string EntCType { get; set; }
+        public string AddressSel { get; set; }
+        public string AddressBuy { get; set; }
+        public string EntOKPO { get; set; }
     }
 }

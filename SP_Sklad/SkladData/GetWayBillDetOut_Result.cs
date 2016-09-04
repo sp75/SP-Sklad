@@ -53,5 +53,6 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> Total { get; set; }
         public Nullable<decimal> SumNds { get; set; }
         public Nullable<int> Rsv { get; set; }
+        public Nullable<decimal> DiscountPrice { get; set; }
     }
 }

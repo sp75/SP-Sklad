@@ -21,6 +21,7 @@ namespace SP_Sklad.SkladData
         public BaseEntities()
             : base("name=BaseEntities")
         {
+    	   Database.CommandTimeout = 180;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -66,7 +67,6 @@ namespace SP_Sklad.SkladData
         public DbSet<KaAddr> KaAddr { get; set; }
         public DbSet<TAXREESTRTYPE> TAXREESTRTYPE { get; set; }
         public DbSet<Warehouse> Warehouse { get; set; }
-        public DbSet<v_WaybillList> v_WaybillList { get; set; }
         public DbSet<WaybillMove> WaybillMove { get; set; }
         public DbSet<DocType> DocType { get; set; }
         public DbSet<UserAccess> UserAccess { get; set; }
@@ -122,6 +122,8 @@ namespace SP_Sklad.SkladData
         public DbSet<MoneySaldo> MoneySaldo { get; set; }
         public DbSet<PayDocType> PayDocType { get; set; }
         public DbSet<Actives> Actives { get; set; }
+        public DbSet<v_WaybillList> v_WaybillList { get; set; }
+        public DbSet<EnterpriseAccount> EnterpriseAccount { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)
@@ -790,16 +792,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("wbill_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("StornoWayBill", wbill_idParameter);
-        }
-    
-        [EdmFunction("BaseEntities", "GetWayBillDetOut")]
-        public virtual IQueryable<GetWayBillDetOut_Result> GetWayBillDetOut(Nullable<int> wbill_id)
-        {
-            var wbill_idParameter = wbill_id.HasValue ?
-                new ObjectParameter("wbill_id", wbill_id) :
-                new ObjectParameter("wbill_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillDetOut_Result>("[BaseEntities].[GetWayBillDetOut](@wbill_id)", wbill_idParameter);
         }
     
         public virtual int ReservedPosition(Nullable<int> pos_id, ObjectParameter rsv)
@@ -1521,6 +1513,45 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("on_date", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RecalcActives_Result>("RecalcActives", on_dateParameter);
+        }
+    
+        public virtual ObjectResult<REP_2_Result> REP_2(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> grp_id, Nullable<int> ka_id, string wh, string doc_types)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var grp_idParameter = grp_id.HasValue ?
+                new ObjectParameter("grp_id", grp_id) :
+                new ObjectParameter("grp_id", typeof(int));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var whParameter = wh != null ?
+                new ObjectParameter("wh", wh) :
+                new ObjectParameter("wh", typeof(string));
+    
+            var doc_typesParameter = doc_types != null ?
+                new ObjectParameter("doc_types", doc_types) :
+                new ObjectParameter("doc_types", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<REP_2_Result>("REP_2", from_dateParameter, to_dateParameter, grp_idParameter, ka_idParameter, whParameter, doc_typesParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetWayBillDetOut")]
+        public virtual IQueryable<GetWayBillDetOut_Result> GetWayBillDetOut(Nullable<int> wbill_id)
+        {
+            var wbill_idParameter = wbill_id.HasValue ?
+                new ObjectParameter("wbill_id", wbill_id) :
+                new ObjectParameter("wbill_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillDetOut_Result>("[BaseEntities].[GetWayBillDetOut](@wbill_id)", wbill_idParameter);
         }
     }
 }

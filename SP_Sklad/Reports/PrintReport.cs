@@ -41,8 +41,8 @@ namespace SP_Sklad.Reports
         {
             //  if( !frmRegistrSoft->unLock ) return ;
             var db = DB.SkladBase();
-            var dataForReport = new Dictionary<string, IList>();
-            List<Object> rel = new List<object>();
+            var data_for_report = new Dictionary<string, IList>();
+            var rel = new List<object>();
 
             if (idx == 1)
             {
@@ -65,18 +65,18 @@ namespace SP_Sklad.Reports
                     child_table = "MatInDet"
                 });
 
-                List<Object> ob = new List<object>();
+                var ob = new List<object>();
                 ob.Add(new { StartDate = StartDate.ToShortDateString(), EndDate = EndDate.ToShortDateString(), GRP = MatGroup.Name, WH = Warehouse.Name, KAID = Kagent.Name });
-                dataForReport.Add("XLRPARAMS", ob);
-                dataForReport.Add("MatGroup", mat_grp.Where(w => mat.Select(s => s.GrpId).Contains(w.GrpId)).ToList());
-                dataForReport.Add("MatInDet", mat);
-                dataForReport.Add("_realation_", rel);
+                data_for_report.Add("XLRPARAMS", ob);
+                data_for_report.Add("MatGroup", mat_grp.Where(w => mat.Select(s => s.GrpId).Contains(w.GrpId)).ToList());
+                data_for_report.Add("MatInDet", mat);
+                data_for_report.Add("_realation_", rel);
 
                 String result_file = Path.Combine(rep_path, TemlateList.rep_1);
                 String template_file = Path.Combine(template_path, TemlateList.rep_1);
                 if (File.Exists(template_file))
                 {
-                    ReportBuilder.GenerateReport(dataForReport, template_file, result_file, false);
+                    ReportBuilder.GenerateReport(data_for_report, template_file, result_file, false);
                 }
 
                 if (File.Exists(result_file))
@@ -84,10 +84,48 @@ namespace SP_Sklad.Reports
                     Process.Start(result_file);
                 }
             }
-            /*
+            
                if(idx == 2)
                 {
-                   MatGroup->ParamByName("grp")->Value = GRP ;
+                    int grp = Convert.ToInt32(MatGroup.GrpId);
+                    string wh = Convert.ToString(Warehouse.WId);
+                    var mat = db.REP_2(StartDate, EndDate, grp, (int)Kagent.KaId, wh, DocStr).ToList();
+
+                    if (!mat.Any())
+                    {
+                        return;
+                    }
+
+                    var mat_grp = db.MatGroup.Where(w => w.Deleted == 0 && (w.GrpId == grp || grp == 0)).Select(s => new { s.GrpId, s.Name }).ToList();
+
+                    rel.Add(new
+                    {
+                        pk = "GrpId",
+                        fk = "GrpId",
+                        master_table = "MatGroup",
+                        child_table = "MatOutDet"
+                    });
+
+                    var ob = new List<object>();
+                    ob.Add(new { StartDate = StartDate.ToShortDateString(), EndDate = EndDate.ToShortDateString(), GRP = MatGroup.Name, WH = Warehouse.Name, KAID = Kagent.Name });
+                    data_for_report.Add("XLRPARAMS", ob);
+                    data_for_report.Add("MatGroup", mat_grp.Where(w => mat.Select(s => s.GrpId).Contains(w.GrpId)).ToList());
+                    data_for_report.Add("MatOutDet", mat);
+                    data_for_report.Add("_realation_", rel);
+
+                    String result_file = Path.Combine(rep_path, TemlateList.rep_2);
+                    String template_file = Path.Combine(template_path, TemlateList.rep_2);
+                    if (File.Exists(template_file))
+                    {
+                        ReportBuilder.GenerateReport(data_for_report, template_file, result_file, false);
+                    }
+
+                    if (File.Exists(result_file))
+                    {
+                        Process.Start(result_file);
+                    }
+
+              /*     MatGroup->ParamByName("grp")->Value = GRP ;
 
                    MatOut_2->DataSource = MatGroupDS ;
                    MatOut_2->ParamByName("IN_KAID")->Value = KAID ;
@@ -103,10 +141,10 @@ namespace SP_Sklad.Reports
                    xlReport_2->Params->Items[4]->Value = SkladData->MatGroupComboBoxNAME->Value;
                    xlReport_2->Report();
 
-                   MatOut_2->DataSource = NULL ;
+                   MatOut_2->DataSource = NULL ;*/
                 }
 
-               if(idx == 25)
+          /*     if(idx == 25)
                 {
                    MatGroup->ParamByName("grp")->Value = GRP ;
 

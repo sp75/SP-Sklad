@@ -75,7 +75,6 @@
         <EntityTypeShape EntityType="BaseModel.KaAddr" Width="1.5" PointX="11.764847153688244" PointY="23.276982437482562" />
         <EntityTypeShape EntityType="BaseModel.TAXREESTRTYPE" Width="1.5" PointX="11.394534431115972" PointY="0.32588514700806009" />
         <EntityTypeShape EntityType="BaseModel.Warehouse" Width="1.5" PointX="8.2144507207975028" PointY="19.089993724175727" />
-        <EntityTypeShape EntityType="BaseModel.v_WaybillList" Width="1.5" PointX="2.619141721454981" PointY="14.512251443468152" />
         <AssociationConnector Association="BaseModel.FK_KAADDR_KAID" />
         <AssociationConnector Association="BaseModel.FK__WMATTURN__WID__3BCADD1B" />
         <EntityTypeShape EntityType="BaseModel.WaybillMove" Width="1.5" PointX="2.1256401735011674" PointY="21.495836983200086" />
@@ -232,6 +231,8 @@
         <AssociationConnector Association="BaseModel.FK_MS_ACCID" />
         <EntityTypeShape EntityType="BaseModel.PayDocType" Width="1.5" PointX="3.1365888356867195" PointY="23.441186111160174" />
         <EntityTypeShape EntityType="BaseModel.Actives" Width="1.5" PointX="3.8148237186553065" PointY="10.850355943129564" />
+        <EntityTypeShape EntityType="BaseModel.v_WaybillList" Width="1.5" PointX="14.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BaseModel.EnterpriseAccount" Width="1.5" PointX="11.375" PointY="2.75" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="7.0245045325832924" PointY="12.641712000892364" />
