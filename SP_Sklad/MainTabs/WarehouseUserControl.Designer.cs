@@ -1367,7 +1367,7 @@
             this.xtraTabPage4.Controls.Add(this.PosGridControl);
             this.xtraTabPage4.ImageIndex = 4;
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(896, 237);
+            this.xtraTabPage4.Size = new System.Drawing.Size(896, 206);
             this.xtraTabPage4.Text = "Партії";
             // 
             // PosGridControl
@@ -1378,7 +1378,7 @@
             this.PosGridControl.Name = "PosGridControl";
             this.PosGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox10});
-            this.PosGridControl.Size = new System.Drawing.Size(896, 237);
+            this.PosGridControl.Size = new System.Drawing.Size(896, 206);
             this.PosGridControl.TabIndex = 1;
             this.PosGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView1});
@@ -1401,6 +1401,7 @@
             this.bandedGridColumn9});
             this.bandedGridView1.GridControl = this.PosGridControl;
             this.bandedGridView1.Name = "bandedGridView1";
+            this.bandedGridView1.OptionsView.ShowFooter = true;
             this.bandedGridView1.OptionsView.ShowGroupPanel = false;
             // 
             // gridBand4
@@ -1480,6 +1481,8 @@
             this.bandedGridColumn6.Caption = "Залишок";
             this.bandedGridColumn6.FieldName = "Remain";
             this.bandedGridColumn6.Name = "bandedGridColumn6";
+            this.bandedGridColumn6.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Remain", "{0:0.##}")});
             this.bandedGridColumn6.Visible = true;
             this.bandedGridColumn6.Width = 92;
             // 
@@ -1488,6 +1491,8 @@
             this.bandedGridColumn7.Caption = "Резерв";
             this.bandedGridColumn7.FieldName = "Rsv";
             this.bandedGridColumn7.Name = "bandedGridColumn7";
+            this.bandedGridColumn7.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Rsv", "{0:0.##}")});
             this.bandedGridColumn7.Visible = true;
             this.bandedGridColumn7.Width = 105;
             // 

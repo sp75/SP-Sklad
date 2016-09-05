@@ -292,6 +292,7 @@
             this.KagentComboBox.Size = new System.Drawing.Size(275, 22);
             this.KagentComboBox.StyleController = this.styleController1;
             this.KagentComboBox.TabIndex = 10;
+            this.KagentComboBox.EditValueChanged += new System.EventHandler(this.wbStartDate_EditValueChanged);
             // 
             // labelControl4
             // 
@@ -315,6 +316,7 @@
             this.wTypeList.Properties.ValueMember = "Id";
             this.wTypeList.Size = new System.Drawing.Size(234, 20);
             this.wTypeList.TabIndex = 6;
+            this.wTypeList.EditValueChanged += new System.EventHandler(this.wbStartDate_EditValueChanged);
             // 
             // labelControl3
             // 
@@ -335,6 +337,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.wbEndDate.Size = new System.Drawing.Size(100, 20);
             this.wbEndDate.TabIndex = 3;
+            this.wbEndDate.EditValueChanged += new System.EventHandler(this.wbStartDate_EditValueChanged);
             // 
             // labelControl2
             // 
@@ -355,6 +358,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.wbStartDate.Size = new System.Drawing.Size(100, 20);
             this.wbStartDate.TabIndex = 1;
+            this.wbStartDate.EditValueChanged += new System.EventHandler(this.wbStartDate_EditValueChanged);
             // 
             // labelControl1
             // 
@@ -443,7 +447,8 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -2, 6),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -16, 9),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 16, 10),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 1)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -5, 15)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.GridImageList;
             // 
@@ -547,6 +552,8 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmMatRSV";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Інформація про резерв товару: ";
             this.Load += new System.EventHandler(this.frmMatRSV_Load);
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();

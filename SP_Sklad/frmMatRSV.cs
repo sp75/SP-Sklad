@@ -41,5 +41,13 @@ namespace SP_Sklad
         {
             DocListBindingSource.DataSource = _db.GetMatRsv( _mat_id, (int)KagentComboBox.EditValue,wbStartDate.DateTime, wbEndDate.DateTime, (int)wTypeList.EditValue).ToList();
         }
+
+        private void wbStartDate_EditValueChanged(object sender, EventArgs e)
+        {
+            if (wbStartDate.ContainsFocus || wbEndDate.ContainsFocus || KagentComboBox.ContainsFocus || wTypeList.ContainsFocus)
+            {
+                GetRsv();
+            }
+        }
     }
 }
