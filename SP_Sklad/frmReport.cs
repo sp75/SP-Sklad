@@ -26,6 +26,7 @@ namespace SP_Sklad
         private void frmReport_Load(object sender, EventArgs e)
         {
             var dt = DateTime.Now;
+            OnDateDBEdit.DateTime = dt;
             xtraTabControl1.AppearancePage.PageClient.BackColor = mainPanel.BackColor;
             StartDateEdit.DateTime = DateTimeDayOfMonthExtensions.FirstDayOfMonth(dt);
             EndDateEdit.DateTime = DateTimeDayOfMonthExtensions.LastDayOfMonth(dt);
@@ -123,7 +124,19 @@ namespace SP_Sklad
             if (checkEdit8.Checked) str += ",-22";
             SetDate();
 
-            PrintReport.CreateReport(_rep_id, OnDateDBEdit.DateTime, StartDateEdit.DateTime, EndDateEdit.DateTime, GrpComboBox.GetSelectedDataRow(), KagentComboBox.GetSelectedDataRow(), WhComboBox.GetSelectedDataRow(), MatComboBox.EditValue, str);
+            var pr = new PrintReport
+            {
+                OnDate = OnDateDBEdit.DateTime,
+                StartDate = StartDateEdit.DateTime,
+                EndDate = EndDateEdit.DateTime,
+                MatGroup = GrpComboBox.GetSelectedDataRow(),
+                Kagent = KagentComboBox.GetSelectedDataRow(),
+                Warehouse = WhComboBox.GetSelectedDataRow(),
+                MATID = MatComboBox.EditValue,
+                DocStr = str
+            };
+
+            pr.CreateReport(_rep_id);
         }
 
         private void SetDate()

@@ -31,7 +31,7 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> ORsv { get; set; }
         public Nullable<int> IsSerial { get; set; }
         public string Prices { get; set; }
-        public Nullable<double> Dis { get; set; }
+        public Nullable<decimal> Dis { get; set; }
         public Nullable<int> OutGrpId { get; set; }
         public Nullable<decimal> CurRemain { get; set; }
         public Nullable<decimal> SumRemain { get; set; }

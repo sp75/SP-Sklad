@@ -586,6 +586,12 @@
     <Compile Include="SkladData\REP_2_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\REP_3_14_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\REP_4_25_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\ReservedAllPosition_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
