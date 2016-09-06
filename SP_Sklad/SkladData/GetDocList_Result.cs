@@ -30,5 +30,6 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> SummInCurr { get; set; }
         public Nullable<decimal> Saldo { get; set; }
         public string TypeName { get; set; }
+        public string DocShortName { get; set; }
     }
 }

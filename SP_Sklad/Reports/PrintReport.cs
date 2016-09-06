@@ -317,24 +317,21 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("_realation_", rel);
 
                 Print(data_for_report, TemlateList.rep_7);
+            }
 
+            if (idx == 8)
+            {
+                var list = db.GetDocList(StartDate, EndDate, (int)Kagent.KaId, 0).Select(s => new { s.OnDate, s.SummAll, s.Saldo, DocName = s.TypeName + " №" + s.Num }).ToList();
 
-                /*
-                SP_WMAT_GET->DataSource = MatGroupDS;
-                MatGroup->ParamByName("grp")->Value = GRP;
+                if (!list.Any())
+                {
+                    return;
+                }
 
-                SP_WMAT_GET->ParamByName("ONDATE")->Value = OnDate;
-                SP_WMAT_GET->ParamByName("GRPID")->Value = GRP;
-                if (WH == "*") SP_WMAT_GET->ParamByName("WID")->Value = 0;
-                else SP_WMAT_GET->ParamByName("WID")->Value = WH;
-                SP_WMAT_GET->ParamByName("MINREST")->Value = 0;
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("KADocList", list.ToList());
 
-                xlReport_7->Params->Items[0]->Value = SkladData->WhComboBoxNAME->Value;
-                xlReport_7->Params->Items[1]->Value = OnDate;
-                xlReport_7->Params->Items[2]->Value = SkladData->MatGroupComboBoxNAME->Value;
-                xlReport_7->Report();
-                SP_WMAT_GET->DataSource = NULL;
-                 */
+                Print(data_for_report, TemlateList.rep_8);
             }
 
             /*      if(idx == 18)
@@ -355,17 +352,7 @@ namespace SP_Sklad.Reports
                       SP_WMAT_GET->DataSource = NULL ;
                    }
 
-                  if(idx == 8)
-                   {
-                      DocList->ParamByName("IN_KAID")->Value = KAID ;
-                      DocList->ParamByName("IN_WTYPE")->Value = 0;
-                      DocList->ParamByName("IN_FROMDATE")->Value = StartDate ;
-                      DocList->ParamByName("IN_TODATE")->Value =  EndDate ;
-                      xlReport_8->Params->Items[0]->Value = StartDate.DateString() ;
-                      xlReport_8->Params->Items[1]->Value = EndDate.DateString() ;
-                      xlReport_8->Params->Items[2]->Value = SkladData->KAgentComboBoxNAME->Value;
-                      xlReport_8->Report();
-                   }
+                
 
                    if(idx == 11)
                    {

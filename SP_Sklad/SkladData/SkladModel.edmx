@@ -4136,7 +4136,8 @@
                 <Property Name="SummAll" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="SummInCurr" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="Saldo" Type="numeric" Precision="15" Scale="4" />
-                <Property Name="TypeName" Type="varchar" MaxLength="50" />
+                <Property Name="TypeName" Type="nvarchar" MaxLength="50" />
+                <Property Name="DocShortName" Type="nvarchar" MaxLength="50" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -6030,12 +6031,6 @@
             <End Role="MatRecipe" EntitySet="MatRecipe" />
             <End Role="MatRecDet" EntitySet="MatRecDet" />
           </AssociationSet>
-          <FunctionImport Name="GetDocList" IsComposable="true" ReturnType="Collection(BaseModel.GetDocList_Result)">
-            <Parameter Name="from_date" Mode="In" Type="DateTime" />
-            <Parameter Name="to_date" Mode="In" Type="DateTime" />
-            <Parameter Name="ka_id" Mode="In" Type="Int32" />
-            <Parameter Name="w_type" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="GetMatMove" IsComposable="true" ReturnType="Collection(BaseModel.GetMatMove_Result)">
             <Parameter Name="mat_id" Mode="In" Type="Int32" />
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
@@ -6259,6 +6254,12 @@
             <Parameter Name="grp" Mode="In" Type="String" />
             <Parameter Name="user_id" Mode="In" Type="Int32" />
             <Parameter Name="get_child_node" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetDocList" IsComposable="true" ReturnType="Collection(BaseModel.GetDocList_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="w_type" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
@@ -9650,25 +9651,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="GetDocList_Result">
-          <Property Type="Int32" Name="WbillId" Nullable="true" />
-          <Property Type="Int32" Name="WType" Nullable="true" />
-          <Property Type="String" Name="Num" Nullable="true" MaxLength="24" />
-          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
-          <Property Type="DateTime" Name="ToDate" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="KaId" Nullable="true" />
-          <Property Type="String" Name="KaName" Nullable="true" MaxLength="255" />
-          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="Int32" Name="CurrId" Nullable="true" />
-          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="15" />
-          <Property Type="Int32" Name="Checked" Nullable="true" />
-          <Property Type="Int32" Name="DocId" Nullable="true" />
-          <Property Type="Decimal" Name="NDS" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="SummAll" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="SummInCurr" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Saldo" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
-        </ComplexType>
         <ComplexType Name="GetMatMove_Result">
           <Property Type="Int32" Name="WBillId" Nullable="true" />
           <Property Type="Int32" Name="WType" Nullable="true" />
@@ -10611,6 +10593,26 @@
           <Property Type="Int32" Name="OutGrpId" Nullable="true" />
           <Property Type="Decimal" Name="CurRemain" Nullable="true" Precision="15" Scale="4" />
           <Property Type="Decimal" Name="SumRemain" Nullable="true" Precision="15" Scale="4" />
+        </ComplexType>
+        <ComplexType Name="GetDocList_Result">
+          <Property Type="Int32" Name="WbillId" Nullable="true" />
+          <Property Type="Int32" Name="WType" Nullable="true" />
+          <Property Type="String" Name="Num" Nullable="true" MaxLength="24" />
+          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ToDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="KaId" Nullable="true" />
+          <Property Type="String" Name="KaName" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="15" />
+          <Property Type="Int32" Name="Checked" Nullable="true" />
+          <Property Type="Int32" Name="DocId" Nullable="true" />
+          <Property Type="Decimal" Name="NDS" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="SummAll" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="SummInCurr" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Saldo" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DocShortName" Nullable="true" MaxLength="50" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -12517,29 +12519,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetDocList" FunctionName="BaseModel.Store.GetDocList">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetDocList_Result">
-                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
-                <ScalarProperty Name="WType" ColumnName="WType" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
-                <ScalarProperty Name="KaId" ColumnName="KaId" />
-                <ScalarProperty Name="KaName" ColumnName="KaName" />
-                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
-                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
-                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="DocId" ColumnName="DocId" />
-                <ScalarProperty Name="NDS" ColumnName="NDS" />
-                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
-                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
-                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
-                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetMatMove" FunctionName="BaseModel.Store.GetMatMove">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.GetMatMove_Result">
@@ -13303,6 +13282,30 @@
                 <ScalarProperty Name="OutGrpId" ColumnName="OutGrpId" />
                 <ScalarProperty Name="CurRemain" ColumnName="CurRemain" />
                 <ScalarProperty Name="SumRemain" ColumnName="SumRemain" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetDocList" FunctionName="BaseModel.Store.GetDocList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetDocList_Result">
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="NDS" ColumnName="NDS" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="DocShortName" ColumnName="DocShortName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

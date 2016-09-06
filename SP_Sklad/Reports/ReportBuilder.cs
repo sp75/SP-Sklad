@@ -328,7 +328,7 @@ namespace SpreadsheetReportBuilder
                         var pattern = @"(\W|^)(" + teg + @")(\W|$)";
                         if (Regex.IsMatch(formula, pattern))
                         {
-                            bool str = (Dcol.DataType.Name == "String" || Dcol.DataType.Name == "DateTime");
+                            bool str = (Dcol.DataType.Name == "String" || Dcol.DataType.Name == "DateTime" || Dcol.DataType.Name == "Object");
                             bool Dec = (Dcol.DataType.Name == "Decimal" || Dcol.DataType.Name == "Double");
                             bool Int = (Dcol.DataType.Name == "Int32");
                             bool nullDB;

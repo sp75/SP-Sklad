@@ -17,5 +17,6 @@ namespace SP_Sklad.Reports
         public static String rep_5 { get { return "Creditors.xlsx"; } }
         public static String rep_6 { get { return "Debtors.xlsx"; } }
         public static String rep_7 { get { return "RepMatRest.xlsx"; } }
+        public static String rep_8 { get { return "KABalance.xlsx"; } }
     }
 }

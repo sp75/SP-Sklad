@@ -1152,28 +1152,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DiscountList_Result>("DiscountList", ka_idParameter);
         }
     
-        [EdmFunction("BaseEntities", "GetDocList")]
-        public virtual IQueryable<GetDocList_Result> GetDocList(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> ka_id, Nullable<int> w_type)
-        {
-            var from_dateParameter = from_date.HasValue ?
-                new ObjectParameter("from_date", from_date) :
-                new ObjectParameter("from_date", typeof(System.DateTime));
-    
-            var to_dateParameter = to_date.HasValue ?
-                new ObjectParameter("to_date", to_date) :
-                new ObjectParameter("to_date", typeof(System.DateTime));
-    
-            var ka_idParameter = ka_id.HasValue ?
-                new ObjectParameter("ka_id", ka_id) :
-                new ObjectParameter("ka_id", typeof(int));
-    
-            var w_typeParameter = w_type.HasValue ?
-                new ObjectParameter("w_type", w_type) :
-                new ObjectParameter("w_type", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetDocList_Result>("[BaseEntities].[GetDocList](@from_date, @to_date, @ka_id, @w_type)", from_dateParameter, to_dateParameter, ka_idParameter, w_typeParameter);
-        }
-    
         [EdmFunction("BaseEntities", "GetMatMove")]
         public virtual IQueryable<GetMatMove_Result> GetMatMove(Nullable<int> mat_id, Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> wid, Nullable<int> ka_id, Nullable<int> w_type, string wh)
         {
@@ -1610,6 +1588,28 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("get_child_node", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<WhMatGet_Result>("[BaseEntities].[WhMatGet](@grp_id, @wid, @ka_id, @on_date, @get_empty, @wh, @show_all_mats, @grp, @user_id, @get_child_node)", grp_idParameter, widParameter, ka_idParameter, on_dateParameter, get_emptyParameter, whParameter, show_all_matsParameter, grpParameter, user_idParameter, get_child_nodeParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetDocList")]
+        public virtual IQueryable<GetDocList_Result> GetDocList(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> ka_id, Nullable<int> w_type)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var w_typeParameter = w_type.HasValue ?
+                new ObjectParameter("w_type", w_type) :
+                new ObjectParameter("w_type", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetDocList_Result>("[BaseEntities].[GetDocList](@from_date, @to_date, @ka_id, @w_type)", from_dateParameter, to_dateParameter, ka_idParameter, w_typeParameter);
         }
     }
 }
