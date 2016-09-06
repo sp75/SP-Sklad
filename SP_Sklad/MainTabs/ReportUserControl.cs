@@ -192,92 +192,94 @@ namespace SP_Sklad.MainTabs
                     frm.DocTypeGroupBox2.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
                     break;
-                /*
-                                        case 9:
-                                        case 19: frmReport->OnDateGroupBox->Visible = false;
-                                            frmReport->GRPGroupBox->Visible = false;
-                                            frmReport->DocTypeGroupBox2->Visible = false;
-                                            frmReport->ChargeGroupBox->Visible = false;
-                                            break;
 
-                                        case 10: frmReport->DocTypeGroupBox2->Visible = false;
-                                            frmReport->OnDateGroupBox->Visible = false;
-                                            frmReport->MatGroupBox->Visible = false;
-                                            frmReport->KAGroupBox->Visible = false;
-                                            frmReport->DocTypeGroupBox->Visible = false;
-                                            frmReport->ChargeGroupBox->Visible = false;
-                                            break;
+                case 9:
+                case 19:
+                    frm.OnDateGroupBox.Visible = false;
+                    frm.GRPGroupBox.Visible = false;
+                    frm.DocTypeGroupBox2.Visible = false;
+                    frm.ChargeGroupBox.Visible = false;
+                    break;
 
-                                        case 11: frmReport->DocTypeGroupBox2->Visible = false;
-                                            frmReport->KAGroupBox->Visible = false;
-                                            frmReport->OnDateGroupBox->Visible = false;
-                                            frmReport->WHGroupBox->Visible = false;
-                                            frmReport->GRPGroupBox->Visible = false;
-                                            frmReport->KAGroupBox->Visible = false;
-                                            frmReport->MatGroupBox->Visible = false;
-                                            frmReport->ChargeGroupBox->Visible = false;
-                                            break;
+                case 10:
+                    frm.DocTypeGroupBox2.Visible = false;
+                    frm.OnDateGroupBox.Visible = false;
+                    frm.MatGroupBox.Visible = false;
+                    frm.KAGroupBox.Visible = false;
+                    frm.DocTypeGroupBox.Visible = false;
+                    frm.ChargeGroupBox.Visible = false;
+                    break;
 
-                                        case 13: frmReport->DocTypeGroupBox2->Visible = false;
-                                            frmReport->OnDateGroupBox->Visible = false;
-                                            frmReport->MatGroupBox->Visible = false;
-                                            frmReport->DocTypeGroupBox->Visible = false;
-                                            frmReport->ChargeGroupBox->Visible = false;
-                                            break;
+                case 11: frm.DocTypeGroupBox2.Visible = false;
+                    frm.KAGroupBox.Visible = false;
+                    frm.OnDateGroupBox.Visible = false;
+                    frm.WHGroupBox.Visible = false;
+                    frm.GRPGroupBox.Visible = false;
+                    frm.KAGroupBox.Visible = false;
+                    frm.MatGroupBox.Visible = false;
+                    frm.ChargeGroupBox.Visible = false;
+                    break;
 
-                                        case 27: frmReport->OnDateGroupBox->Visible = false;
-                                            frmReport->WHGroupBox->Visible = false;
-                                            frmReport->DocTypeGroupBox->Visible = false;
-                                            frmReport->DocTypeGroupBox2->Visible = false;
-                                            frmReport->ChargeGroupBox->Visible = false;
-                                            break;
+                /*                case 13: frmReport->DocTypeGroupBox2->Visible = false;
+                                    frmReport->OnDateGroupBox->Visible = false;
+                                    frmReport->MatGroupBox->Visible = false;
+                                    frmReport->DocTypeGroupBox->Visible = false;
+                                    frmReport->ChargeGroupBox->Visible = false;
+                                    break;
 
-                                        case 20:
-                                            frmReport->DocTypeGroupBox2->Visible = false;
-                                            frmReport->OnDateGroupBox->Visible = false;
-                                            frmReport->MatGroupBox->Visible = false;
-                                            frmReport->DocTypeGroupBox->Visible = false;
-                                            frmReport->WHGroupBox->Visible = false;
-                                            frmReport->GRPComboBox->Properties->ListSource = SkladData->SvcGroupComboBoxDS;
-                                            frmReport->ChargeGroupBox->Visible = false;
-                                            break;
+                                case 27: frmReport->OnDateGroupBox->Visible = false;
+                                    frmReport->WHGroupBox->Visible = false;
+                                    frmReport->DocTypeGroupBox->Visible = false;
+                                    frmReport->DocTypeGroupBox2->Visible = false;
+                                    frmReport->ChargeGroupBox->Visible = false;
+                                    break;
 
-                                        case 16:
-                                            frmReport->DocTypeGroupBox2->Visible = false;
-                                            frmReport->OnDateGroupBox->Visible = false;
-                                            frmReport->MatGroupBox->Visible = false;
-                                            frmReport->DocTypeGroupBox->Visible = false;
-                                            frmReport->WHGroupBox->Visible = false;
-                                            frmReport->ChargeGroupBox->Visible = false;
-                                            break;
+                                case 20:
+                                    frmReport->DocTypeGroupBox2->Visible = false;
+                                    frmReport->OnDateGroupBox->Visible = false;
+                                    frmReport->MatGroupBox->Visible = false;
+                                    frmReport->DocTypeGroupBox->Visible = false;
+                                    frmReport->WHGroupBox->Visible = false;
+                                    frmReport->GRPComboBox->Properties->ListSource = SkladData->SvcGroupComboBoxDS;
+                                    frmReport->ChargeGroupBox->Visible = false;
+                                    break;
 
-                                        case 17:
-                                        case 23: frmReport->DocTypeGroupBox2->Visible = false;
-                                            frmReport->KAGroupBox->Visible = false;
-                                            frmReport->OnDateGroupBox->Visible = false;
-                                            frmReport->WHGroupBox->Visible = false;
-                                            frmReport->GRPGroupBox->Visible = false;
-                                            frmReport->KAGroupBox->Visible = false;
-                                            frmReport->MatGroupBox->Visible = false;
-                                            frmReport->ChargeGroupBox->Visible = false;
-                                            frmReport->DocTypeGroupBox->Visible = false;
-                                            break;
+                                case 16:
+                                    frmReport->DocTypeGroupBox2->Visible = false;
+                                    frmReport->OnDateGroupBox->Visible = false;
+                                    frmReport->MatGroupBox->Visible = false;
+                                    frmReport->DocTypeGroupBox->Visible = false;
+                                    frmReport->WHGroupBox->Visible = false;
+                                    frmReport->ChargeGroupBox->Visible = false;
+                                    break;
 
-                                        case 28: frmReport->OnDateGroupBox->Visible = false;
-                                            frmReport->WHGroupBox->Visible = false;
-                                            frmReport->DocTypeGroupBox->Visible = false;
-                                            frmReport->DocTypeGroupBox2->Visible = false;
-                                            frmReport->ChargeGroupBox->Visible = false;
-                                            break;
+                                case 17:
+                                case 23: frmReport->DocTypeGroupBox2->Visible = false;
+                                    frmReport->KAGroupBox->Visible = false;
+                                    frmReport->OnDateGroupBox->Visible = false;
+                                    frmReport->WHGroupBox->Visible = false;
+                                    frmReport->GRPGroupBox->Visible = false;
+                                    frmReport->KAGroupBox->Visible = false;
+                                    frmReport->MatGroupBox->Visible = false;
+                                    frmReport->ChargeGroupBox->Visible = false;
+                                    frmReport->DocTypeGroupBox->Visible = false;
+                                    break;
 
-                                        case 29:
-                                            frmReport->OutDocGroupBox->Visible = false;
-                                            frmReport->OnDateGroupBox->Visible = false;
-                                            frmReport->MatGroupBox->Visible = false;
-                                            frmReport->DocTypeGroupBox->Visible = false;
-                                            frmReport->CHARGEGroupBox->Visible = false;
-                                            frmReport->DocTypeGroupBox2->Visible = false;
-                                            break;*/
+                                case 28: frmReport->OnDateGroupBox->Visible = false;
+                                    frmReport->WHGroupBox->Visible = false;
+                                    frmReport->DocTypeGroupBox->Visible = false;
+                                    frmReport->DocTypeGroupBox2->Visible = false;
+                                    frmReport->ChargeGroupBox->Visible = false;
+                                    break;
+
+                                case 29:
+                                    frmReport->OutDocGroupBox->Visible = false;
+                                    frmReport->OnDateGroupBox->Visible = false;
+                                    frmReport->MatGroupBox->Visible = false;
+                                    frmReport->DocTypeGroupBox->Visible = false;
+                                    frmReport->CHARGEGroupBox->Visible = false;
+                                    frmReport->DocTypeGroupBox2->Visible = false;
+                                    break;*/
             }
 
             frm.Text = row.Name;

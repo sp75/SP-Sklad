@@ -82,17 +82,22 @@ namespace SP_Sklad
                 KagentComboBox.EditValue = 0;
             }
 
-            if (!DocTypeGroupBox.Visible) Height -= DocTypeGroupBox.Height;
-            //       if (!cxGroupBox1.Visible) Height -= cxGroupBox1.Height;
-            if (!DocTypeGroupBox2.Visible)
+            if (!DocTypeGroupBox.Visible)
             {
-                Height -= DocTypeGroupBox2.Height;
+                Height -= DocTypeGroupBox.Height;
             }
             else
             {
                 DocTypeEdit.Properties.DataSource = new List<object>() { new { Id = 0, Name = "Усі" } }.Concat(new BaseEntities().DocType.Select(s => new { s.Id, s.Name }));
                 DocTypeEdit.EditValue = 0;
             }
+
+            //       if (!cxGroupBox1.Visible) Height -= cxGroupBox1.Height;
+            if (!DocTypeGroupBox2.Visible)
+            {
+                Height -= DocTypeGroupBox2.Height;
+            }
+            
 
             if (!ChargeGroupBox.Visible)
             {
@@ -132,8 +137,9 @@ namespace SP_Sklad
                 MatGroup = GrpComboBox.GetSelectedDataRow(),
                 Kagent = KagentComboBox.GetSelectedDataRow(),
                 Warehouse = WhComboBox.GetSelectedDataRow(),
-                MATID = MatComboBox.EditValue,
-                DocStr = str
+                Material = MatComboBox.GetSelectedDataRow(),
+                DocStr = str,
+                DocType = DocTypeEdit.EditValue
             };
 
             pr.CreateReport(_rep_id);

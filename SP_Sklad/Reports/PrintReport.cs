@@ -19,8 +19,9 @@ namespace SP_Sklad.Reports
         public dynamic MatGroup { get; set; }
         public dynamic Kagent { get; set; }
         public dynamic Warehouse { get; set; }
-        public  object MATID { get; set; }
+        public dynamic Material { get; set; }
         public String DocStr { get; set; }
+        public object DocType { get; set; }
 
         private List<object> XLRPARAMS
         {
@@ -34,7 +35,8 @@ namespace SP_Sklad.Reports
                     EndDate = EndDate.ToShortDateString(),
                     GRP = MatGroup != null ? MatGroup.Name : "",
                     WH = Warehouse != null ? Warehouse.Name : "",
-                    KAID = Kagent != null ? Kagent.Name : ""
+                    KAID = Kagent != null ? Kagent.Name : "",
+                    MatId = Material != null ? Material.Name : ""
                 });
                 return obj;
             }
@@ -321,7 +323,14 @@ namespace SP_Sklad.Reports
 
             if (idx == 8)
             {
-                var list = db.GetDocList(StartDate, EndDate, (int)Kagent.KaId, 0).Select(s => new { s.OnDate, s.SummAll, s.Saldo, DocName = s.TypeName + " №" + s.Num }).ToList();
+                var list = db.GetDocList(StartDate, EndDate, (int)Kagent.KaId, 0).OrderBy(o => o.OnDate).Select(s => new
+                {
+                    s.OnDate,
+                    s.SummAll,
+                    s.Saldo,
+                    DocName = s.TypeName + " №" + s.Num
+
+                }).ToList();
 
                 if (!list.Any())
                 {
@@ -332,6 +341,76 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("KADocList", list.ToList());
 
                 Print(data_for_report, TemlateList.rep_8);
+            }
+
+            if (idx == 9)
+            {
+                int wid = Warehouse.WId == "*" ? 0 : Convert.ToInt32(Warehouse.WId);
+
+                var list = db.GetMatMove((int)this.Material.MatId, StartDate, EndDate, wid, (int)Kagent.KaId, (int)DocType, "*").ToList();
+
+                if (!list.Any())
+                {
+                    return;
+                }
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("MatList", list.ToList());
+
+                Print(data_for_report, TemlateList.rep_9);
+            }
+
+            if (idx == 10)
+            {
+
+                int grp = Convert.ToInt32(MatGroup.GrpId);
+                string wid = Convert.ToString(Warehouse.WId);
+
+                var mat = db.REP_10(StartDate, EndDate, grp, wid, 0).ToList();
+
+                if (!mat.Any())
+                {
+                    return;
+                }
+
+                var mat_grp = db.MatGroup.Where(w => w.Deleted == 0 && (w.GrpId == grp || grp == 0)).Select(s => new { s.GrpId, s.Name }).ToList();
+
+                rel.Add(new
+                {
+                    pk = "GrpId",
+                    fk = "GrpId",
+                    master_table = "MatGroup",
+                    child_table = "MatList"
+                });
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("MatGroup", mat_grp.Where(w => mat.Select(s => s.GrpId).Contains(w.GrpId)).ToList());
+                data_for_report.Add("MatList", mat);
+                data_for_report.Add("_realation_", rel);
+
+                Print(data_for_report, TemlateList.rep_10);
+            }
+
+            if (idx == 11)
+              {
+                var list = db.GetDocList(StartDate, EndDate, 0, (int)DocType).OrderBy( o=> o.OnDate ).Select(s => new
+                {
+                    s.OnDate,
+                    s.KaName,
+                    s.SummAll,
+                    s.Saldo,
+                    DocName = s.TypeName + " №" + s.Num
+                }).ToList();
+
+                if (!list.Any())
+                {
+                    return;
+                }
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("DocList", list.ToList());
+
+                Print(data_for_report, TemlateList.rep_11);
             }
 
             /*      if(idx == 18)
@@ -354,33 +433,8 @@ namespace SP_Sklad.Reports
 
                 
 
-                   if(idx == 11)
-                   {
-                      DocList->ParamByName("IN_KAID")->Value = 0;
-                      DocList->ParamByName("IN_WTYPE")->Value = SkladData->DocTypeComboBoxDOCTYPE->Value;
-                      DocList->ParamByName("IN_FROMDATE")->Value = StartDate ;
-                      DocList->ParamByName("IN_TODATE")->Value =  EndDate ;
-                      xlReport_11->Params->Items[0]->Value = StartDate.DateString() ;
-                      xlReport_11->Params->Items[1]->Value = EndDate.DateString() ;
-                      xlReport_11->Report();
-                   }
 
-                  if(idx == 9)
-                   {
-                      MatMove->ParamByName("KAID_IN")->Value = KAID ;
-                      MatMove->ParamByName("MATID")->Value = MATID;
-                      if(WH == "*") WH = 0 ;
-                      MatMove->ParamByName("WID_IN")->Value = WH;
-                      MatMove->ParamByName("FROMDATE")->Value = StartDate ;
-                      MatMove->ParamByName("TODATE")->Value =  EndDate ;
-                      MatMove->ParamByName("WTYPE_IN")->Value =  SkladData->DocTypeComboBoxDOCTYPE->Value;
-                      xlReport_9->Params->Items[0]->Value = StartDate.DateString() ;
-                      xlReport_9->Params->Items[1]->Value = EndDate.DateString() ;
-                      xlReport_9->Params->Items[2]->Value = SkladData->MatComboBoxNAME->Value;
-                      xlReport_9->Params->Items[3]->Value = SkladData->WhComboBoxNAME->Value;
-                      xlReport_9->Params->Items[4]->Value = SkladData->KAgentComboBoxNAME->Value;
-                      xlReport_9->Report();
-                   }
+
 
                   if(idx == 19)
                    {
@@ -407,21 +461,7 @@ namespace SP_Sklad.Reports
                       xlReport_19->Report();
                    }
 
-                  if(idx == 10)
-                   {
-                      Oborotka->DataSource = MatGroupDS ;
-                      MatGroup->ParamByName("grp")->Value = GRP ;
-                      Oborotka->ParamByName("WH")->Value = WH;
-                      Oborotka->ParamByName("FROMDATE")->Value = StartDate ;
-                      Oborotka->ParamByName("TODATE")->Value =  EndDate ;
-                      Oborotka->ParamByName("SHOWALLMAT")->Value = frmReport->ShAllMatCheckBox->Checked  ;
-                      xlReport_10->Params->Items[0]->Value = StartDate.DateString() ;
-                      xlReport_10->Params->Items[1]->Value = EndDate.DateString() ;
-                      xlReport_10->Params->Items[2]->Value = SkladData->MatGroupComboBoxNAME->Value;
-                      xlReport_10->Params->Items[3]->Value = SkladData->WhComboBoxNAME->Value;
-                      xlReport_10->Report();
-                      Oborotka->DataSource = NULL ;
-                   }
+               
 
 
                   if(idx == 13)

@@ -233,6 +233,7 @@
         <EntityTypeShape EntityType="BaseModel.Actives" Width="1.5" PointX="3.8148237186553065" PointY="10.850355943129564" />
         <EntityTypeShape EntityType="BaseModel.v_WaybillList" Width="1.5" PointX="14.375" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.EnterpriseAccount" Width="1.5" PointX="11.375" PointY="2.75" />
+        <EntityTypeShape EntityType="BaseModel.v_WhMatRemains" Width="1.5" PointX="12.375" PointY="13.75" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="7.0245045325832924" PointY="12.641712000892364" />

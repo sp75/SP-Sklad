@@ -124,6 +124,7 @@ namespace SP_Sklad.SkladData
         public DbSet<Actives> Actives { get; set; }
         public DbSet<v_WaybillList> v_WaybillList { get; set; }
         public DbSet<EnterpriseAccount> EnterpriseAccount { get; set; }
+        public DbSet<v_WhMatRemains> v_WhMatRemains { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)
@@ -1610,6 +1611,32 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("w_type", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetDocList_Result>("[BaseEntities].[GetDocList](@from_date, @to_date, @ka_id, @w_type)", from_dateParameter, to_dateParameter, ka_idParameter, w_typeParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "REP_10")]
+        public virtual IQueryable<REP_10_Result> REP_10(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> grp_id, string wh, Nullable<int> show_all_mat)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var grp_idParameter = grp_id.HasValue ?
+                new ObjectParameter("grp_id", grp_id) :
+                new ObjectParameter("grp_id", typeof(int));
+    
+            var whParameter = wh != null ?
+                new ObjectParameter("wh", wh) :
+                new ObjectParameter("wh", typeof(string));
+    
+            var show_all_matParameter = show_all_mat.HasValue ?
+                new ObjectParameter("show_all_mat", show_all_mat) :
+                new ObjectParameter("show_all_mat", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_10_Result>("[BaseEntities].[REP_10](@from_date, @to_date, @grp_id, @wh, @show_all_mat)", from_dateParameter, to_dateParameter, grp_idParameter, whParameter, show_all_matParameter);
         }
     }
 }
