@@ -23,7 +23,8 @@ namespace SP_Sklad.EditForm
 
         private void frmCatalog_Load(object sender, EventArgs e)
         {
-            uc.DirTreeList.DataSource = ((List<GetDirTree_Result>)uc.DirTreeList.DataSource).Where(w => w.GType == _gtype).ToList();
+            var q = (List<GetDirTree_Result>)uc.DirTreeBS.DataSource;
+            uc.DirTreeBS.DataSource = q.Where(w => w.GType == _gtype).ToList();
         }
     }
 }

@@ -22,10 +22,11 @@ namespace SP_Sklad.SkladData
         public int TurnType { get; set; }
         public decimal Amount { get; set; }
         public Nullable<int> SourceId { get; set; }
+        public Nullable<decimal> CalcAmount { get; set; }
     
         public virtual Warehouse Warehouse { get; set; }
+        public virtual Materials Materials { get; set; }
         public virtual WaybillDet WaybillDet { get; set; }
         public virtual WaybillDet WaybillDet1 { get; set; }
-        public virtual Materials Materials { get; set; }
     }
 }

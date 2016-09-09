@@ -1045,7 +1045,6 @@
         public System.Windows.Forms.Panel MatGroupBox;
         public System.Windows.Forms.Panel KAGroupBox;
         public System.Windows.Forms.Panel GRPGroupBox;
-        private DevExpress.XtraEditors.LookUpEdit GrpComboBox;
         private DevExpress.XtraEditors.LabelControl labelControl11;
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private DevExpress.XtraEditors.LookUpEdit KagentComboBox;
@@ -1073,5 +1072,6 @@
         public System.Windows.Forms.Panel InDocGroupBox;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
+        public DevExpress.XtraEditors.LookUpEdit GrpComboBox;
     }
 }

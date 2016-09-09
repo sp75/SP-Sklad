@@ -48,7 +48,6 @@ namespace SP_Sklad.SkladData
         public DbSet<SERIALS> SERIALS { get; set; }
         public DbSet<TAXES> TAXES { get; set; }
         public DbSet<TAXWB> TAXWB { get; set; }
-        public DbSet<WaybillList> WaybillList { get; set; }
         public DbSet<WMatTurn> WMatTurn { get; set; }
         public DbSet<CashDesks> CashDesks { get; set; }
         public DbSet<PayType> PayType { get; set; }
@@ -78,7 +77,6 @@ namespace SP_Sklad.SkladData
         public DbSet<UserAccessWh> UserAccessWh { get; set; }
         public DbSet<UserTree> UserTree { get; set; }
         public DbSet<ExtRel> ExtRel { get; set; }
-        public DbSet<WaybillDet> WaybillDet { get; set; }
         public DbSet<MatRemains> MatRemains { get; set; }
         public DbSet<PosRemains> PosRemains { get; set; }
         public DbSet<TAXWBDET> TAXWBDET { get; set; }
@@ -125,6 +123,8 @@ namespace SP_Sklad.SkladData
         public DbSet<v_WaybillList> v_WaybillList { get; set; }
         public DbSet<EnterpriseAccount> EnterpriseAccount { get; set; }
         public DbSet<v_WhMatRemains> v_WhMatRemains { get; set; }
+        public DbSet<WaybillList> WaybillList { get; set; }
+        public DbSet<WaybillDet> WaybillDet { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)
@@ -1637,6 +1637,114 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("show_all_mat", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_10_Result>("[BaseEntities].[REP_10](@from_date, @to_date, @grp_id, @wh, @show_all_mat)", from_dateParameter, to_dateParameter, grp_idParameter, whParameter, show_all_matParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "REP_13")]
+        public virtual IQueryable<REP_13_Result> REP_13(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> grp_id, Nullable<int> ka_id, string wh, Nullable<int> only_return)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var grp_idParameter = grp_id.HasValue ?
+                new ObjectParameter("grp_id", grp_id) :
+                new ObjectParameter("grp_id", typeof(int));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var whParameter = wh != null ?
+                new ObjectParameter("wh", wh) :
+                new ObjectParameter("wh", typeof(string));
+    
+            var only_returnParameter = only_return.HasValue ?
+                new ObjectParameter("only_return", only_return) :
+                new ObjectParameter("only_return", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_13_Result>("[BaseEntities].[REP_13](@from_date, @to_date, @grp_id, @ka_id, @wh, @only_return)", from_dateParameter, to_dateParameter, grp_idParameter, ka_idParameter, whParameter, only_returnParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "REP_16")]
+        public virtual IQueryable<REP_16_Result> REP_16(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> ka_id, Nullable<int> ctype, Nullable<int> showall)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var ctypeParameter = ctype.HasValue ?
+                new ObjectParameter("ctype", ctype) :
+                new ObjectParameter("ctype", typeof(int));
+    
+            var showallParameter = showall.HasValue ?
+                new ObjectParameter("showall", showall) :
+                new ObjectParameter("showall", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_16_Result>("[BaseEntities].[REP_16](@from_date, @to_date, @ka_id, @ctype, @showall)", from_dateParameter, to_dateParameter, ka_idParameter, ctypeParameter, showallParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "REP_20")]
+        public virtual IQueryable<REP_20_Result> REP_20(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> grp_id, Nullable<int> ka_id)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var grp_idParameter = grp_id.HasValue ?
+                new ObjectParameter("grp_id", grp_id) :
+                new ObjectParameter("grp_id", typeof(int));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_20_Result>("[BaseEntities].[REP_20](@from_date, @to_date, @grp_id, @ka_id)", from_dateParameter, to_dateParameter, grp_idParameter, ka_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "OrderedList")]
+        public virtual IQueryable<OrderedList_Result> OrderedList(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> mat_id, Nullable<int> ka_id, Nullable<int> w_type, Nullable<int> active)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var w_typeParameter = w_type.HasValue ?
+                new ObjectParameter("w_type", w_type) :
+                new ObjectParameter("w_type", typeof(int));
+    
+            var activeParameter = active.HasValue ?
+                new ObjectParameter("active", active) :
+                new ObjectParameter("active", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<OrderedList_Result>("[BaseEntities].[OrderedList](@from_date, @to_date, @mat_id, @ka_id, @w_type, @active)", from_dateParameter, to_dateParameter, mat_idParameter, ka_idParameter, w_typeParameter, activeParameter);
         }
     }
 }

@@ -20,10 +20,7 @@ namespace SP_Sklad.SkladData
             this.CONTRACTS1 = new HashSet<CONTRACTS>();
             this.DISCCARDS = new HashSet<DISCCARDS>();
             this.TAXWB = new HashSet<TAXWB>();
-            this.WaybillList = new HashSet<WaybillList>();
             this.TAXWB1 = new HashSet<TAXWB>();
-            this.WaybillList1 = new HashSet<WaybillList>();
-            this.WaybillList2 = new HashSet<WaybillList>();
             this.PayDoc = new HashSet<PayDoc>();
             this.PayDoc1 = new HashSet<PayDoc>();
             this.KaAddr = new HashSet<KaAddr>();
@@ -40,6 +37,9 @@ namespace SP_Sklad.SkladData
             this.KAMatDiscount = new HashSet<KAMatDiscount>();
             this.KAMatGroupDiscount = new HashSet<KAMatGroupDiscount>();
             this.WayBillSvc = new HashSet<WayBillSvc>();
+            this.WaybillList = new HashSet<WaybillList>();
+            this.WaybillList1 = new HashSet<WaybillList>();
+            this.WaybillList2 = new HashSet<WaybillList>();
         }
     
         public int KaId { get; set; }
@@ -76,10 +76,7 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<CONTRACTS> CONTRACTS1 { get; set; }
         public virtual ICollection<DISCCARDS> DISCCARDS { get; set; }
         public virtual ICollection<TAXWB> TAXWB { get; set; }
-        public virtual ICollection<WaybillList> WaybillList { get; set; }
         public virtual ICollection<TAXWB> TAXWB1 { get; set; }
-        public virtual ICollection<WaybillList> WaybillList1 { get; set; }
-        public virtual ICollection<WaybillList> WaybillList2 { get; set; }
         public virtual ICollection<PayDoc> PayDoc { get; set; }
         public virtual ICollection<PayDoc> PayDoc1 { get; set; }
         public virtual Users Users { get; set; }
@@ -99,5 +96,8 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<KAMatGroupDiscount> KAMatGroupDiscount { get; set; }
         public virtual KAgentDoc KAgentDoc { get; set; }
         public virtual ICollection<WayBillSvc> WayBillSvc { get; set; }
+        public virtual ICollection<WaybillList> WaybillList { get; set; }
+        public virtual ICollection<WaybillList> WaybillList1 { get; set; }
+        public virtual ICollection<WaybillList> WaybillList2 { get; set; }
     }
 }

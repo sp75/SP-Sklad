@@ -983,7 +983,7 @@ warning 6002: The table/view 'sp_base.dbo.ViewLng' does not have a primary key d
           <Property Name="PosParent" Type="int" />
           <Property Name="MsrUnitId" Type="int" />
           <Property Name="DiscountKind" Type="int" />
-          <Property Name="AVG_IN_PICE" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="AvgInPrice" Type="numeric" Precision="15" Scale="4" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.WayBillDetAddProps' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -1093,6 +1093,7 @@ warning 6002: The table/view 'sp_base.dbo.WayBillDetTaxes' does not have a prima
           <Property Name="TurnType" Type="int" Nullable="false" />
           <Property Name="Amount" Type="numeric" Precision="15" Scale="8" Nullable="false" />
           <Property Name="SourceId" Type="int" />
+          <Property Name="CalcAmount" Type="numeric" Precision="37" Scale="19" StoreGeneratedPattern="Computed" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.EnterpriseAccount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -2863,6 +2864,18 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_WaybillDet_WaybillList">
+          <End Role="WaybillList" Type="Self.WaybillList" Multiplicity="1" />
+          <End Role="WaybillDet" Type="Self.WaybillDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="WaybillDet">
+              <PropertyRef Name="WbillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_WAYBILLDETADDPROPS_WBILLID">
           <End Role="WaybillList" Type="Self.WaybillList" Multiplicity="0..1" />
           <End Role="WayBillDetAddProps" Type="Self.WayBillDetAddProps" Multiplicity="*" />
@@ -3718,6 +3731,43 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="OrderedList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="from_date" Type="datetime" Mode="In" />
+          <Parameter Name="to_date" Type="datetime" Mode="In" />
+          <Parameter Name="mat_id" Type="int" Mode="In" />
+          <Parameter Name="ka_id" Type="int" Mode="In" />
+          <Parameter Name="w_type" Type="int" Mode="In" />
+          <Parameter Name="active" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="PosId" Type="int" Nullable="false" />
+                <Property Name="WbillId" Type="int" Nullable="false" />
+                <Property Name="WType" Type="int" Nullable="false" />
+                <Property Name="Num" Type="nvarchar" MaxLength="20" Nullable="false" />
+                <Property Name="OnDate" Type="datetime" Nullable="false" />
+                <Property Name="DocId" Type="int" />
+                <Property Name="KaId" Type="int" />
+                <Property Name="KaName" Type="nvarchar" MaxLength="64" />
+                <Property Name="WId" Type="int" Nullable="false" />
+                <Property Name="WhName" Type="nvarchar" MaxLength="64" Nullable="false" />
+                <Property Name="MatId" Type="int" Nullable="false" />
+                <Property Name="MatName" Type="nvarchar" MaxLength="255" />
+                <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
+                <Property Name="Amount" Type="numeric" Precision="15" Scale="8" Nullable="false" />
+                <Property Name="ToDate" Type="datetime" />
+                <Property Name="Price" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="CurrId" Type="int" />
+                <Property Name="CurrencyName" Type="nvarchar" MaxLength="3" />
+                <Property Name="Checked" Type="int" Nullable="false" />
+                <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
+                <Property Name="GrpId" Type="int" />
+                <Property Name="BarCode" Type="nvarchar" MaxLength="64" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="PosGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="mat_id" Type="int" Mode="In" />
           <Parameter Name="w_id" Type="int" Mode="In" />
@@ -3796,6 +3846,52 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="REP_13" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="from_date" Type="datetime" Mode="In" />
+          <Parameter Name="to_date" Type="datetime" Mode="In" />
+          <Parameter Name="grp_id" Type="int" Mode="In" />
+          <Parameter Name="ka_id" Type="int" Mode="In" />
+          <Parameter Name="wh" Type="varchar" Mode="In" />
+          <Parameter Name="only_return" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="BarCode" Type="nvarchar" MaxLength="64" />
+                <Property Name="GrpId" Type="int" />
+                <Property Name="MatId" Type="int" Nullable="false" />
+                <Property Name="Name" Type="nvarchar" MaxLength="255" />
+                <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
+                <Property Name="AmountOut" Type="numeric" Precision="38" Scale="8" />
+                <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
+                <Property Name="SummOut" Type="numeric" Precision="38" Scale="12" />
+                <Property Name="AmountIn" Type="numeric" Precision="38" Scale="8" />
+                <Property Name="SummIn" Type="numeric" Precision="38" Scale="12" />
+                <Property Name="AvgPrice" Type="numeric" Precision="38" Scale="6" />
+                <Property Name="Income" Type="numeric" Precision="38" Scale="6" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="REP_16" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="from_date" Type="datetime" Mode="In" />
+          <Parameter Name="to_date" Type="datetime" Mode="In" />
+          <Parameter Name="ka_id" Type="int" Mode="In" />
+          <Parameter Name="ctype" Type="int" Mode="In" />
+          <Parameter Name="showall" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="DocNum" Type="varchar" MaxLength="20" Nullable="false" />
+                <Property Name="OnDate" Type="datetime" Nullable="false" />
+                <Property Name="KaId" Type="int" />
+                <Property Name="Name" Type="nvarchar" MaxLength="64" />
+                <Property Name="Total" Type="numeric" Precision="15" Scale="2" Nullable="false" />
+                <Property Name="ChargeName" Type="nvarchar" MaxLength="128" />
+                <Property Name="CTypeId" Type="int" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="REP_2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="from_date" Type="datetime" Mode="In" />
           <Parameter Name="to_date" Type="datetime" Mode="In" />
@@ -3803,6 +3899,25 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           <Parameter Name="ka_id" Type="int" Mode="In" />
           <Parameter Name="wh" Type="varchar" Mode="In" />
           <Parameter Name="doc_types" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="REP_20" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="from_date" Type="datetime" Mode="In" />
+          <Parameter Name="to_date" Type="datetime" Mode="In" />
+          <Parameter Name="grp_id" Type="int" Mode="In" />
+          <Parameter Name="ka_id" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="GrpId" Type="int" Nullable="false" />
+                <Property Name="SvcId" Type="int" Nullable="false" />
+                <Property Name="Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+                <Property Name="Artikul" Type="nvarchar" MaxLength="80" />
+                <Property Name="Amount" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
+                <Property Name="Summ" Type="numeric" Precision="38" Scale="12" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
         </Function>
         <Function Name="REP_3_14" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="from_date" Type="datetime" Mode="In" />
@@ -5137,6 +5252,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             <End Role="PriceTypes" EntitySet="PriceTypes" />
             <End Role="WaybillDet" EntitySet="WaybillDet" />
           </AssociationSet>
+          <AssociationSet Name="FK_WaybillDet_WaybillList" Association="Self.FK_WaybillDet_WaybillList">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+          </AssociationSet>
           <AssociationSet Name="FK_WAYBILLDETADDPROPS_WBILLID" Association="Self.FK_WAYBILLDETADDPROPS_WBILLID">
             <End Role="WaybillList" EntitySet="WaybillList" />
             <End Role="WayBillDetAddProps" EntitySet="WayBillDetAddProps" />
@@ -5418,7 +5537,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           <FunctionImport Name="GetWaybillDetIn" IsComposable="true" ReturnType="Collection(BaseModel.GetWaybillDetIn_Result)">
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="WaybillList" EntityType="BaseModel.WaybillList" />
           <FunctionImport Name="SP_GET_MAT_NDS" IsComposable="true" ReturnType="Collection(BaseModel.SP_GET_MAT_NDS_Result)">
           <Parameter Name="MATID" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -5463,21 +5581,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="TAXWB" EntitySet="TAXWB" />
           </AssociationSet>
-          <AssociationSet Name="FK__WAYBILLLI__PERSO__6E01572D" Association="BaseModel.FK__WAYBILLLI__PERSO__6E01572D">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="WaybillList" EntitySet="WaybillList" />
-          </AssociationSet>
           <AssociationSet Name="FK_TAXWB_REFERENCE_KAGENT" Association="BaseModel.FK_TAXWB_REFERENCE_KAGENT">
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="TAXWB" EntitySet="TAXWB" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WAYBILLL_FK_WBLIST_KAGENT" Association="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="WaybillList" EntitySet="WaybillList" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WBL_ENTID" Association="BaseModel.FK_WBL_ENTID">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="WaybillList" EntitySet="WaybillList" />
           </AssociationSet>
           <EntitySet Name="DocsRel" EntityType="BaseModel.DocsRel" />
           <EntitySet Name="PayDoc" EntityType="BaseModel.PayDoc" />
@@ -5553,10 +5659,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           <AssociationSet Name="FK__PAYDOC__CURRID__214BF109" Association="BaseModel.FK__PAYDOC__CURRID__214BF109">
             <End Role="Currency" EntitySet="Currency" />
             <End Role="PayDoc" EntitySet="PayDoc" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WAYBILLL_FK_WBLIST_CURRENCY" Association="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY">
-            <End Role="Currency" EntitySet="Currency" />
-            <End Role="WaybillList" EntitySet="WaybillList" />
           </AssociationSet>
           <FunctionImport Name="GetMatRemain" ReturnType="Collection(BaseModel.GetMatRemain_Result)">
             <Parameter Name="wid" Mode="In" Type="Int32" />
@@ -5662,10 +5764,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             <End Role="Warehouse" EntitySet="Warehouse" />
             <End Role="WaybillMove" EntitySet="WaybillMove" />
           </AssociationSet>
-          <AssociationSet Name="FK_WBM_WBILLID" Association="BaseModel.FK_WBM_WBILLID">
-            <End Role="WaybillList" EntitySet="WaybillList" />
-            <End Role="WaybillMove" EntitySet="WaybillMove" />
-          </AssociationSet>
           <EntitySet Name="DocType" EntityType="BaseModel.DocType" />
           <EntitySet Name="UserAccess" EntityType="BaseModel.UserAccess" />
           <EntitySet Name="UserTreeView" EntityType="BaseModel.UserTreeView" />
@@ -5715,10 +5813,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             <End Role="Docs" EntitySet="Docs" />
             <End Role="TAXWB" EntitySet="TAXWB" />
           </AssociationSet>
-          <AssociationSet Name="FK_WAYBILLL_REF_WBL_D_DOCS" Association="BaseModel.FK_WAYBILLL_REF_WBL_D_DOCS">
-            <End Role="Docs" EntitySet="Docs" />
-            <End Role="WaybillList" EntitySet="WaybillList" />
-          </AssociationSet>
           <AssociationSet Name="FK_UAWH_USERID" Association="BaseModel.FK_UAWH_USERID">
             <End Role="Users" EntitySet="Users" />
             <End Role="UserAccessWh" EntitySet="UserAccessWh" />
@@ -5732,59 +5826,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             <End Role="UserTreeView" EntitySet="UserTreeView" />
           </AssociationSet>
           <EntitySet Name="ExtRel" EntityType="BaseModel.ExtRel" />
-          <EntitySet Name="WaybillDet" EntityType="BaseModel.WaybillDet" />
-          <AssociationSet Name="FK_WAYBILLD_REFERENCE_CURRENCY" Association="BaseModel.FK_WAYBILLD_REFERENCE_CURRENCY">
-            <End Role="Currency" EntitySet="Currency" />
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EXTREL_EXTPOSID" Association="BaseModel.FK_EXTREL_EXTPOSID">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="ExtRel" EntitySet="ExtRel" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EXTREL_INTPOSID" Association="BaseModel.FK_EXTREL_INTPOSID">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="ExtRel" EntitySet="ExtRel" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WAYBILLD_REFERENCE_PRICETYP" Association="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP">
-            <End Role="PriceTypes" EntitySet="PriceTypes" />
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RETREL_DPOSID" Association="BaseModel.FK_RETREL_DPOSID">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="ReturnRel" EntitySet="ReturnRel" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RETREL_OUTPOSID" Association="BaseModel.FK_RETREL_OUTPOSID">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="ReturnRel" EntitySet="ReturnRel" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RETREL_PPOSID" Association="BaseModel.FK_RETREL_PPOSID">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="ReturnRel" EntitySet="ReturnRel" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SERIALS_POSID" Association="BaseModel.FK_SERIALS_POSID">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="SERIALS" EntitySet="SERIALS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WAYBILLD_FK_WBDET__WAREHOUS" Association="BaseModel.FK_WAYBILLD_FK_WBDET__WAREHOUS">
-            <End Role="Warehouse" EntitySet="Warehouse" />
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WMT_POSID" Association="BaseModel.FK_WMT_POSID">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="WMatTurn" EntitySet="WMatTurn" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WMT_SRCID" Association="BaseModel.FK_WMT_SRCID">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="WMatTurn" EntitySet="WMatTurn" />
-          </AssociationSet>
-          <AssociationSet Name="PosRel" Association="BaseModel.PosRel">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="WaybillDet1" EntitySet="WaybillDet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WBD_WBILLID" Association="BaseModel.FK_WBD_WBILLID">
-            <End Role="WaybillList" EntitySet="WaybillList" />
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-          </AssociationSet>
           <FunctionImport Name="GetWayBillListWh" IsComposable="true" ReturnType="Collection(BaseModel.GetWayBillListWh_Result)">
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
             <Parameter Name="to_date" Mode="In" Type="DateTime" />
@@ -5797,10 +5838,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           </FunctionImport>
           <EntitySet Name="MatRemains" EntityType="BaseModel.MatRemains" />
           <EntitySet Name="PosRemains" EntityType="BaseModel.PosRemains" />
-          <AssociationSet Name="FK__POSREMAIN__POSID__2DB1C7EE" Association="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="PosRemains" EntitySet="PosRemains" />
-          </AssociationSet>
           <AssociationSet Name="FK__POSREMAINS__WID__2EA5EC27" Association="BaseModel.FK__POSREMAINS__WID__2EA5EC27">
             <End Role="Warehouse" EntitySet="Warehouse" />
             <End Role="PosRemains" EntitySet="PosRemains" />
@@ -5854,10 +5891,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="Commission" EntitySet="Commission" />
           </AssociationSet>
-          <AssociationSet Name="FK_COMMISSION_WBILLID" Association="BaseModel.FK_COMMISSION_WBILLID">
-            <End Role="WaybillList" EntitySet="WaybillList" />
-            <End Role="Commission" EntitySet="Commission" />
-          </AssociationSet>
           <AssociationSet Name="FK_WBDAP_CARDID" Association="BaseModel.FK_WBDAP_CARDID">
             <End Role="DISCCARDS" EntitySet="DISCCARDS" />
             <End Role="WayBillDetAddProps" EntitySet="WayBillDetAddProps" />
@@ -5870,25 +5903,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             <End Role="TechProcess" EntitySet="TechProcess" />
             <End Role="TechProcDet" EntitySet="TechProcDet" />
           </AssociationSet>
-          <AssociationSet Name="FK_TECHPROCDET_WAYBILLLIST" Association="BaseModel.FK_TECHPROCDET_WAYBILLLIST">
-            <End Role="WaybillList" EntitySet="WaybillList" />
-            <End Role="TechProcDet" EntitySet="TechProcDet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WBDAP_POSID" Association="BaseModel.FK_WBDAP_POSID">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="WayBillDetAddProps" EntitySet="WayBillDetAddProps" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WAYBILLDETADDPROPS_WBILLID" Association="BaseModel.FK_WAYBILLDETADDPROPS_WBILLID">
-            <End Role="WaybillList" EntitySet="WaybillList" />
-            <End Role="WayBillDetAddProps" EntitySet="WayBillDetAddProps" />
-          </AssociationSet>
           <EntitySet Name="WayBillDetTaxes" EntityType="BaseModel.WayBillDetTaxes" />
           <AssociationSet Name="FK_WBDTAXES_TAXID" Association="BaseModel.FK_WBDTAXES_TAXID">
             <End Role="TAXES" EntitySet="TAXES" />
-            <End Role="WayBillDetTaxes" EntitySet="WayBillDetTaxes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WBDTAXES_POSID" Association="BaseModel.FK_WBDTAXES_POSID">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
             <End Role="WayBillDetTaxes" EntitySet="WayBillDetTaxes" />
           </AssociationSet>
           <EntitySet Name="MatRecipe" EntityType="BaseModel.MatRecipe" />
@@ -5905,10 +5922,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             <End Role="Warehouse" EntitySet="Warehouse" />
             <End Role="WayBillMake" EntitySet="WayBillMake" />
           </AssociationSet>
-          <AssociationSet Name="FK_WAYBILLMAKE_WAYBILLLIST" Association="BaseModel.FK_WAYBILLMAKE_WAYBILLLIST">
-            <End Role="WaybillList" EntitySet="WaybillList" />
-            <End Role="WayBillMake" EntitySet="WayBillMake" />
-          </AssociationSet>
           <FunctionImport Name="GetRecipe" ReturnType="Collection(BaseModel.GetRecipe_Result)">
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -5918,10 +5931,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="DeboningDet" EntityType="BaseModel.DeboningDet" />
-          <AssociationSet Name="FK_DEBONINGDET_WAYBILLLIST" Association="BaseModel.FK_DEBONINGDET_WAYBILLLIST">
-            <End Role="WaybillList" EntitySet="WaybillList" />
-            <End Role="DeboningDet" EntitySet="DeboningDet" />
-          </AssociationSet>
           <AssociationSet Name="FK_DeboningDet_Warehouse" Association="BaseModel.FK_DeboningDet_Warehouse">
             <End Role="Warehouse" EntitySet="Warehouse" />
             <End Role="DeboningDet" EntitySet="DeboningDet" />
@@ -6003,10 +6012,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           <AssociationSet Name="FK_TAXWBDET_REFERENCE_MATERIAL" Association="BaseModel.FK_TAXWBDET_REFERENCE_MATERIAL">
             <End Role="Materials" EntitySet="Materials" />
             <End Role="TAXWBDET" EntitySet="TAXWBDET" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WAYBILLD_FK_WBDET__MATERIAL" Association="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL">
-            <End Role="Materials" EntitySet="Materials" />
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
           </AssociationSet>
           <EntitySet Name="KagentList" EntityType="BaseModel.KagentList" />
           <EntitySet Name="KAgentTyp" EntityType="BaseModel.KAgentTyp" />
@@ -6169,10 +6174,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             <End Role="Services" EntitySet="Services" />
             <End Role="WayBillSvc" EntitySet="WayBillSvc" />
           </AssociationSet>
-          <AssociationSet Name="FK_WBS_WBILLID" Association="BaseModel.FK_WBS_WBILLID">
-            <End Role="WaybillList" EntitySet="WaybillList" />
-            <End Role="WayBillSvc" EntitySet="WayBillSvc" />
-          </AssociationSet>
           <EntitySet Name="PriceListDet" EntityType="BaseModel.PriceListDet" />
           <EntitySet Name="Tables" EntityType="BaseModel.Tables" />
           <AssociationSet Name="FK__FUNCTIONS__TABID__123EB7A3" Association="BaseModel.FK__FUNCTIONS__TABID__123EB7A3">
@@ -6315,6 +6316,153 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             <Parameter Name="grp_id" Mode="In" Type="Int32" />
             <Parameter Name="wh" Mode="In" Type="String" />
             <Parameter Name="show_all_mat" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="REP_13" IsComposable="true" ReturnType="Collection(BaseModel.REP_13_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="grp_id" Mode="In" Type="Int32" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="wh" Mode="In" Type="String" />
+            <Parameter Name="only_return" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="WaybillList" EntityType="BaseModel.WaybillList" />
+          <AssociationSet Name="FK_COMMISSION_WBILLID" Association="BaseModel.FK_COMMISSION_WBILLID">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="Commission" EntitySet="Commission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAYBILLL_FK_WBLIST_CURRENCY" Association="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="WaybillList" EntitySet="WaybillList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEBONINGDET_WAYBILLLIST" Association="BaseModel.FK_DEBONINGDET_WAYBILLLIST">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="DeboningDet" EntitySet="DeboningDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAYBILLL_REF_WBL_D_DOCS" Association="BaseModel.FK_WAYBILLL_REF_WBL_D_DOCS">
+            <End Role="Docs" EntitySet="Docs" />
+            <End Role="WaybillList" EntitySet="WaybillList" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WAYBILLLI__PERSO__6E01572D" Association="BaseModel.FK__WAYBILLLI__PERSO__6E01572D">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="WaybillList" EntitySet="WaybillList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAYBILLL_FK_WBLIST_KAGENT" Association="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="WaybillList" EntitySet="WaybillList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WBL_ENTID" Association="BaseModel.FK_WBL_ENTID">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="WaybillList" EntitySet="WaybillList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TECHPROCDET_WAYBILLLIST" Association="BaseModel.FK_TECHPROCDET_WAYBILLLIST">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="TechProcDet" EntitySet="TechProcDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAYBILLDETADDPROPS_WBILLID" Association="BaseModel.FK_WAYBILLDETADDPROPS_WBILLID">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="WayBillDetAddProps" EntitySet="WayBillDetAddProps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAYBILLMAKE_WAYBILLLIST" Association="BaseModel.FK_WAYBILLMAKE_WAYBILLLIST">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="WayBillMake" EntitySet="WayBillMake" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WBM_WBILLID" Association="BaseModel.FK_WBM_WBILLID">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="WaybillMove" EntitySet="WaybillMove" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WBS_WBILLID" Association="BaseModel.FK_WBS_WBILLID">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="WayBillSvc" EntitySet="WayBillSvc" />
+          </AssociationSet>
+          <EntitySet Name="WaybillDet" EntityType="BaseModel.WaybillDet" />
+          <AssociationSet Name="FK_WAYBILLD_REFERENCE_CURRENCY" Association="BaseModel.FK_WAYBILLD_REFERENCE_CURRENCY">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EXTREL_EXTPOSID" Association="BaseModel.FK_EXTREL_EXTPOSID">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="ExtRel" EntitySet="ExtRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EXTREL_INTPOSID" Association="BaseModel.FK_EXTREL_INTPOSID">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="ExtRel" EntitySet="ExtRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAYBILLD_FK_WBDET__MATERIAL" Association="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__POSREMAIN__POSID__2DB1C7EE" Association="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="PosRemains" EntitySet="PosRemains" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAYBILLD_REFERENCE_PRICETYP" Association="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP">
+            <End Role="PriceTypes" EntitySet="PriceTypes" />
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RETREL_DPOSID" Association="BaseModel.FK_RETREL_DPOSID">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="ReturnRel" EntitySet="ReturnRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RETREL_OUTPOSID" Association="BaseModel.FK_RETREL_OUTPOSID">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="ReturnRel" EntitySet="ReturnRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RETREL_PPOSID" Association="BaseModel.FK_RETREL_PPOSID">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="ReturnRel" EntitySet="ReturnRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERIALS_POSID" Association="BaseModel.FK_SERIALS_POSID">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="SERIALS" EntitySet="SERIALS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAYBILLD_FK_WBDET__WAREHOUS" Association="BaseModel.FK_WAYBILLD_FK_WBDET__WAREHOUS">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WaybillDet_WaybillList" Association="BaseModel.FK_WaybillDet_WaybillList">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WBDAP_POSID" Association="BaseModel.FK_WBDAP_POSID">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="WayBillDetAddProps" EntitySet="WayBillDetAddProps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WBDTAXES_POSID" Association="BaseModel.FK_WBDTAXES_POSID">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="WayBillDetTaxes" EntitySet="WayBillDetTaxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WMT_POSID" Association="BaseModel.FK_WMT_POSID">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="WMatTurn" EntitySet="WMatTurn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WMT_SRCID" Association="BaseModel.FK_WMT_SRCID">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="WMatTurn" EntitySet="WMatTurn" />
+          </AssociationSet>
+          <AssociationSet Name="PosRel" Association="BaseModel.PosRel">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="WaybillDet1" EntitySet="WaybillDet" />
+          </AssociationSet>
+          <FunctionImport Name="REP_16" IsComposable="true" ReturnType="Collection(BaseModel.REP_16_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="ctype" Mode="In" Type="Int32" />
+            <Parameter Name="showall" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="REP_20" IsComposable="true" ReturnType="Collection(BaseModel.REP_20_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="grp_id" Mode="In" Type="Int32" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="OrderedList" IsComposable="true" ReturnType="Collection(BaseModel.OrderedList_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="w_type" Mode="In" Type="Int32" />
+            <Parameter Name="active" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
@@ -6896,48 +7044,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           <Property Type="Decimal" Name="BasePrice" Nullable="true" Precision="15" Scale="4" />
           <Property Type="Decimal" Name="SumNds" Nullable="true" Precision="35" Scale="10" />
         </ComplexType>
-        <EntityType Name="WaybillList">
-          <Key>
-            <PropertyRef Name="WbillId" />
-          </Key>
-          <Property Type="Int32" Name="WbillId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
-          <Property Type="Int32" Name="KaId" />
-          <Property Type="Int32" Name="CurrId" />
-          <Property Type="String" Name="AttNum" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="AttDate" Precision="3" />
-          <Property Type="String" Name="Reason" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="Checked" Nullable="false" />
-          <Property Type="Int32" Name="Deleted" Nullable="false" />
-          <Property Type="Decimal" Name="SummAll" Precision="15" Scale="2" />
-          <Property Type="Int32" Name="WType" Nullable="false" />
-          <Property Type="Decimal" Name="Nds" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="PersonId" />
-          <Property Type="String" Name="Received" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="ToDate" Precision="3" />
-          <Property Type="Int32" Name="DefNum" Nullable="false" />
-          <Property Type="Decimal" Name="SummPay" Precision="15" Scale="2" />
-          <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="DocId" />
-          <Property Type="Decimal" Name="SummInCurr" Precision="15" Scale="2" />
-          <Property Type="Int32" Name="EntId" />
-          <Property Type="Decimal" Name="OnValue" Precision="15" Scale="8" />
-          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__WAYBILLLI__PERSO__6E01572D" FromRole="WaybillList" ToRole="Kagent" />
-          <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" FromRole="WaybillList" ToRole="Kagent" />
-          <NavigationProperty Name="Kagent2" Relationship="BaseModel.FK_WBL_ENTID" FromRole="WaybillList" ToRole="Kagent" />
-          <NavigationProperty Name="Currency" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY" FromRole="WaybillList" ToRole="Currency" />
-          <NavigationProperty Name="WaybillMove" Relationship="BaseModel.FK_WBM_WBILLID" FromRole="WaybillList" ToRole="WaybillMove" />
-          <NavigationProperty Name="Docs" Relationship="BaseModel.FK_WAYBILLL_REF_WBL_D_DOCS" FromRole="WaybillList" ToRole="Docs" />
-          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WBD_WBILLID" FromRole="WaybillList" ToRole="WaybillDet" />
-          <NavigationProperty Name="Commission" Relationship="BaseModel.FK_COMMISSION_WBILLID" FromRole="WaybillList" ToRole="Commission" />
-          <NavigationProperty Name="TechProcDet" Relationship="BaseModel.FK_TECHPROCDET_WAYBILLLIST" FromRole="WaybillList" ToRole="TechProcDet" />
-          <NavigationProperty Name="WayBillDetAddProps" Relationship="BaseModel.FK_WAYBILLDETADDPROPS_WBILLID" FromRole="WaybillList" ToRole="WayBillDetAddProps" />
-          <NavigationProperty Name="WayBillMake" Relationship="BaseModel.FK_WAYBILLMAKE_WAYBILLLIST" FromRole="WaybillList" ToRole="WayBillMake" />
-          <NavigationProperty Name="DeboningDet" Relationship="BaseModel.FK_DEBONINGDET_WAYBILLLIST" FromRole="WaybillList" ToRole="DeboningDet" />
-          <NavigationProperty Name="WayBillSvc" Relationship="BaseModel.FK_WBS_WBILLID" FromRole="WaybillList" ToRole="WayBillSvc" />
-        </EntityType>
         <ComplexType Name="SP_GET_MAT_NDS_Result">
           <Property Type="Decimal" Name="NDS" Nullable="true" Precision="15" Scale="8" />
           <Property Type="String" Name="GRPNAME" Nullable="true" MaxLength="64" />
@@ -6969,9 +7075,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="8" />
           <Property Type="Int32" Name="SourceId" />
           <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK__WMATTURN__WID__3BCADD1B" FromRole="WMatTurn" ToRole="Warehouse" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK__WMATTURN__MATID__3AD6B8E2" FromRole="WMatTurn" ToRole="Materials" />
+          <Property Name="CalcAmount" Type="Decimal" Precision="37" Scale="19" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WMT_POSID" FromRole="WMatTurn" ToRole="WaybillDet" />
           <NavigationProperty Name="WaybillDet1" Relationship="BaseModel.FK_WMT_SRCID" FromRole="WMatTurn" ToRole="WaybillDet" />
-          <NavigationProperty Name="Materials" Relationship="BaseModel.FK__WMATTURN__MATID__3AD6B8E2" FromRole="WMatTurn" ToRole="Materials" />
         </EntityType>
         <ComplexType Name="SP_GET_ACTIVES_Result">
           <Property Type="Binary" Name="ActDate" Nullable="false" MaxLength="8" />
@@ -7051,10 +7158,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           <NavigationProperty Name="CONTRACTS1" Relationship="BaseModel.FK_CONTRACT_REFERENCE_KAGENT" FromRole="Kagent" ToRole="CONTRACTS" />
           <NavigationProperty Name="DISCCARDS" Relationship="BaseModel.FK_DISCCARDS_KAID" FromRole="Kagent" ToRole="DISCCARDS" />
           <NavigationProperty Name="TAXWB" Relationship="BaseModel.FK__TAXWB__PERSONID__019E3B86" FromRole="Kagent" ToRole="TAXWB" />
-          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK__WAYBILLLI__PERSO__6E01572D" FromRole="Kagent" ToRole="WaybillList" />
           <NavigationProperty Name="TAXWB1" Relationship="BaseModel.FK_TAXWB_REFERENCE_KAGENT" FromRole="Kagent" ToRole="TAXWB" />
-          <NavigationProperty Name="WaybillList1" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" FromRole="Kagent" ToRole="WaybillList" />
-          <NavigationProperty Name="WaybillList2" Relationship="BaseModel.FK_WBL_ENTID" FromRole="Kagent" ToRole="WaybillList" />
           <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK__PAYDOC__KAID__19AACF41" FromRole="Kagent" ToRole="PayDoc" />
           <NavigationProperty Name="PayDoc1" Relationship="BaseModel.FK__PAYDOC__MPERSONI__22401542" FromRole="Kagent" ToRole="PayDoc" />
           <NavigationProperty Name="Users" Relationship="BaseModel.FK_Kagent_Users" FromRole="Kagent" ToRole="Users" />
@@ -7074,6 +7178,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           <NavigationProperty Name="KAMatGroupDiscount" Relationship="BaseModel.FK__KAMATGROUP__KAID__3A4CA8FD" FromRole="Kagent" ToRole="KAMatGroupDiscount" />
           <NavigationProperty Name="KAgentDoc" Relationship="BaseModel.FK_ADOC_KAID" FromRole="Kagent" ToRole="KAgentDoc" />
           <NavigationProperty Name="WayBillSvc" Relationship="BaseModel.FK_WBS_PERSONID" FromRole="Kagent" ToRole="WayBillSvc" />
+          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK__WAYBILLLI__PERSO__6E01572D" FromRole="Kagent" ToRole="WaybillList" />
+          <NavigationProperty Name="WaybillList1" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" FromRole="Kagent" ToRole="WaybillList" />
+          <NavigationProperty Name="WaybillList2" Relationship="BaseModel.FK_WBL_ENTID" FromRole="Kagent" ToRole="WaybillList" />
         </EntityType>
         <Association Name="FK_CONTRACT_REF_CONTR_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
@@ -7123,18 +7230,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__WAYBILLLI__PERSO__6E01572D">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="WaybillList">
-              <PropertyRef Name="PersonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TAXWB_REFERENCE_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1" />
           <End Type="BaseModel.TAXWB" Role="TAXWB" Multiplicity="*" />
@@ -7144,30 +7239,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             </Principal>
             <Dependent Role="TAXWB">
               <PropertyRef Name="KAID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WAYBILLL_FK_WBLIST_KAGENT">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="WaybillList">
-              <PropertyRef Name="KaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WBL_ENTID">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="WaybillList">
-              <PropertyRef Name="EntId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7413,12 +7484,12 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           <NavigationProperty Name="MATPRICES" Relationship="BaseModel.FK__MATPRICES__CURRI__73852659" FromRole="Currency" ToRole="MATPRICES" />
           <NavigationProperty Name="MATPRICES1" Relationship="BaseModel.FK__MATPRICES__CURRI__74794A92" FromRole="Currency" ToRole="MATPRICES" />
           <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK__PAYDOC__CURRID__214BF109" FromRole="Currency" ToRole="PayDoc" />
-          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY" FromRole="Currency" ToRole="WaybillList" />
-          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_CURRENCY" FromRole="Currency" ToRole="WaybillDet" />
           <NavigationProperty Name="Services" Relationship="BaseModel.FK_SVC_CURRID" FromRole="Currency" ToRole="Services" />
           <NavigationProperty Name="WayBillSvc" Relationship="BaseModel.FK_WBS_CURRID" FromRole="Currency" ToRole="WayBillSvc" />
           <NavigationProperty Name="PriceList" Relationship="BaseModel.FK_PRICELIS_REFERENCE_CURRENCY" FromRole="Currency" ToRole="PriceList" />
           <NavigationProperty Name="MoneySaldo" Relationship="BaseModel.FK_MS_CURRID" FromRole="Currency" ToRole="MoneySaldo" />
+          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY" FromRole="Currency" ToRole="WaybillList" />
+          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_CURRENCY" FromRole="Currency" ToRole="WaybillDet" />
         </EntityType>
         <Association Name="FK_CONTRACT_REFERENCE_CURRENCY">
           <End Type="BaseModel.Currency" Role="Currency" Multiplicity="0..1" />
@@ -7504,18 +7575,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_WAYBILLL_FK_WBLIST_CURRENCY">
-          <End Type="BaseModel.Currency" Role="Currency" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Currency">
-              <PropertyRef Name="CurrId" />
-            </Principal>
-            <Dependent Role="WaybillList">
-              <PropertyRef Name="CurrId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <ComplexType Name="GetMatRemain_Result">
           <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
           <Property Type="Decimal" Name="Remain" Nullable="true" Precision="17" Scale="8" />
@@ -7564,8 +7623,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           <NavigationProperty Name="MATGROUPPRICES1" Relationship="BaseModel.FK_MGP_PPTYPEID" FromRole="PriceTypes" ToRole="MATGROUPPRICES" />
           <NavigationProperty Name="MATPRICES" Relationship="BaseModel.FK__MATPRICES__PTYPE__72910220" FromRole="PriceTypes" ToRole="MATPRICES" />
           <NavigationProperty Name="MATPRICES1" Relationship="BaseModel.FK_MATPRICES_PPTYPEID" FromRole="PriceTypes" ToRole="MATPRICES" />
-          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP" FromRole="PriceTypes" ToRole="WaybillDet" />
           <NavigationProperty Name="PriceList" Relationship="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP" FromRole="PriceTypes" ToRole="PriceList" />
+          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP" FromRole="PriceTypes" ToRole="WaybillDet" />
         </EntityType>
         <Association Name="FK__MATGROUPP__PTYPE__6DCC4D03">
           <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="1" />
@@ -7774,13 +7833,13 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           <NavigationProperty Name="WaybillMove" Relationship="BaseModel.FK_WAYBILLM_FK_WBM_DE_WAREHOUS" FromRole="Warehouse" ToRole="WaybillMove" />
           <NavigationProperty Name="WaybillMove1" Relationship="BaseModel.FK_WAYBILLM_FK_WBM_SO_WAREHOUS" FromRole="Warehouse" ToRole="WaybillMove" />
           <NavigationProperty Name="UserAccessWh" Relationship="BaseModel.FK_UAWH_WID" FromRole="Warehouse" ToRole="UserAccessWh" />
-          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__WAREHOUS" FromRole="Warehouse" ToRole="WaybillDet" />
           <NavigationProperty Name="PosRemains" Relationship="BaseModel.FK__POSREMAINS__WID__2EA5EC27" FromRole="Warehouse" ToRole="PosRemains" />
           <NavigationProperty Name="WayBillMake" Relationship="BaseModel.FK_WAYBILLMAKE_WAREHOUSE" FromRole="Warehouse" ToRole="WayBillMake" />
           <NavigationProperty Name="DeboningDet" Relationship="BaseModel.FK_DeboningDet_Warehouse" FromRole="Warehouse" ToRole="DeboningDet" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK__MATERIALS__WID__59C55456" FromRole="Warehouse" ToRole="Materials" />
           <NavigationProperty Name="Materials1" Relationship="BaseModel.FK__MATERIALS__WID__5E8A0973" FromRole="Warehouse" ToRole="Materials" />
           <NavigationProperty Name="Materials2" Relationship="BaseModel.FK__MATERIALS__WID__65370702" FromRole="Warehouse" ToRole="Materials" />
+          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__WAREHOUS" FromRole="Warehouse" ToRole="WaybillDet" />
           </EntityType>
         <Association Name="FK_KAADDR_KAID">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
@@ -7854,20 +7913,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             </Principal>
             <Dependent Role="WaybillMove">
               <PropertyRef Name="SourceWid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WBM_WBILLID">
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.WaybillMove" Role="WaybillMove" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillList">
-              <PropertyRef Name="WbillId" />
-            </Principal>
-            <Dependent Role="WaybillMove">
-              <PropertyRef Name="WBillId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -8063,8 +8108,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           <NavigationProperty Name="DocsRel" Relationship="BaseModel.FK_DOCSREL_REFERENCE_DOCS" FromRole="Docs" ToRole="DocsRel" />
           <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK_PAYDOC_REF_PD_DO_DOCS" FromRole="Docs" ToRole="PayDoc" />
           <NavigationProperty Name="TAXWB" Relationship="BaseModel.FK_TAXWB_REFERENCE_DOCS" FromRole="Docs" ToRole="TAXWB" />
-          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WAYBILLL_REF_WBL_D_DOCS" FromRole="Docs" ToRole="WaybillList" />
           <NavigationProperty Name="PriceList" Relationship="BaseModel.FK_PRICELIS_REFERENCE_DOCS" FromRole="Docs" ToRole="PriceList" />
+          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WAYBILLL_REF_WBL_D_DOCS" FromRole="Docs" ToRole="WaybillList" />
         </EntityType>
         <EntityType Name="UserAccessWh">
           <Key>
@@ -8148,18 +8193,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_WAYBILLL_REF_WBL_D_DOCS">
-          <End Type="BaseModel.Docs" Role="Docs" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Docs">
-              <PropertyRef Name="DocId" />
-            </Principal>
-            <Dependent Role="WaybillList">
-              <PropertyRef Name="DocId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_UAWH_USERID">
           <End Type="BaseModel.Users" Role="Users" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -8209,208 +8242,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           <Property Type="Int32" Name="ExtPosId" Nullable="false" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_EXTREL_EXTPOSID" FromRole="ExtRel" ToRole="WaybillDet" />
           <NavigationProperty Name="WaybillDet1" Relationship="BaseModel.FK_EXTREL_INTPOSID" FromRole="ExtRel" ToRole="WaybillDet" />
-        </EntityType>
-        <EntityType Name="WaybillDet">
-          <Key>
-            <PropertyRef Name="PosId" />
-          </Key>
-          <Property Type="Int32" Name="PosId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="WbillId" Nullable="false" />
-          <Property Type="Int32" Name="MatId" Nullable="false" />
-          <Property Type="Int32" Name="WId" />
-          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="8" />
-          <Property Type="Decimal" Name="Price" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Discount" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Nds" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="CurrId" />
-          <Property Type="DateTime" Name="OnDate" Precision="3" />
-          <Property Type="Int32" Name="PtypeId" />
-          <Property Type="Int32" Name="Num" Nullable="false" />
-          <Property Type="Int32" Name="Checked" />
-          <Property Type="Decimal" Name="OnValue" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Total" Precision="15" Scale="2" />
-          <Property Type="Decimal" Name="BasePrice" Precision="15" Scale="4" />
-          <Property Type="DateTime" Name="Expires" Precision="3" />
-          <Property Type="Int32" Name="PosKind" />
-          <Property Type="Int32" Name="PosParent" />
-          <Property Type="Int32" Name="MsrUnitId" />
-          <Property Type="Int32" Name="DiscountKind" />
-          <Property Type="Decimal" Name="AVG_IN_PICE" Precision="15" Scale="4" />
-          <NavigationProperty Name="Currency" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_CURRENCY" FromRole="WaybillDet" ToRole="Currency" />
-          <NavigationProperty Name="ExtRel" Relationship="BaseModel.FK_EXTREL_EXTPOSID" FromRole="WaybillDet" ToRole="ExtRel" />
-          <NavigationProperty Name="ExtRel1" Relationship="BaseModel.FK_EXTREL_INTPOSID" FromRole="WaybillDet" ToRole="ExtRel" />
-          <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP" FromRole="WaybillDet" ToRole="PriceTypes" />
-          <NavigationProperty Name="ReturnRel" Relationship="BaseModel.FK_RETREL_DPOSID" FromRole="WaybillDet" ToRole="ReturnRel" />
-          <NavigationProperty Name="ReturnRel1" Relationship="BaseModel.FK_RETREL_OUTPOSID" FromRole="WaybillDet" ToRole="ReturnRel" />
-          <NavigationProperty Name="ReturnRel2" Relationship="BaseModel.FK_RETREL_PPOSID" FromRole="WaybillDet" ToRole="ReturnRel" />
-          <NavigationProperty Name="SERIALS" Relationship="BaseModel.FK_SERIALS_POSID" FromRole="WaybillDet" ToRole="SERIALS" />
-          <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__WAREHOUS" FromRole="WaybillDet" ToRole="Warehouse" />
-          <NavigationProperty Name="WMatTurn" Relationship="BaseModel.FK_WMT_POSID" FromRole="WaybillDet" ToRole="WMatTurn" />
-          <NavigationProperty Name="WMatTurn1" Relationship="BaseModel.FK_WMT_SRCID" FromRole="WaybillDet" ToRole="WMatTurn" />
-          <NavigationProperty Name="WaybillDet1" Relationship="BaseModel.PosRel" FromRole="WaybillDet" ToRole="WaybillDet1" />
-          <NavigationProperty Name="WaybillDet2" Relationship="BaseModel.PosRel" FromRole="WaybillDet1" ToRole="WaybillDet" />
-          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WBD_WBILLID" FromRole="WaybillDet" ToRole="WaybillList" />
-          <NavigationProperty Name="PosRemains" Relationship="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" FromRole="WaybillDet" ToRole="PosRemains" />
-          <NavigationProperty Name="WayBillDetAddProps" Relationship="BaseModel.FK_WBDAP_POSID" FromRole="WaybillDet" ToRole="WayBillDetAddProps" />
-          <NavigationProperty Name="WayBillDetTaxes" Relationship="BaseModel.FK_WBDTAXES_POSID" FromRole="WaybillDet" ToRole="WayBillDetTaxes" />
-          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" FromRole="WaybillDet" ToRole="Materials" />
-        </EntityType>
-        <Association Name="FK_WAYBILLD_REFERENCE_CURRENCY">
-          <End Type="BaseModel.Currency" Role="Currency" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Currency">
-              <PropertyRef Name="CurrId" />
-            </Principal>
-            <Dependent Role="WaybillDet">
-              <PropertyRef Name="CurrId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EXTREL_EXTPOSID">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
-          <End Type="BaseModel.ExtRel" Role="ExtRel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="ExtRel">
-              <PropertyRef Name="ExtPosId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EXTREL_INTPOSID">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.ExtRel" Role="ExtRel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="ExtRel">
-              <PropertyRef Name="IntPosId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WAYBILLD_REFERENCE_PRICETYP">
-          <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PriceTypes">
-              <PropertyRef Name="PTypeId" />
-            </Principal>
-            <Dependent Role="WaybillDet">
-              <PropertyRef Name="PtypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RETREL_DPOSID">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.ReturnRel" Role="ReturnRel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="ReturnRel">
-              <PropertyRef Name="DPosId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RETREL_OUTPOSID">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
-          <End Type="BaseModel.ReturnRel" Role="ReturnRel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="ReturnRel">
-              <PropertyRef Name="OutPosId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RETREL_PPOSID">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
-          <End Type="BaseModel.ReturnRel" Role="ReturnRel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="ReturnRel">
-              <PropertyRef Name="PPosId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SERIALS_POSID">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.SERIALS" Role="SERIALS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="SERIALS">
-              <PropertyRef Name="POSID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WAYBILLD_FK_WBDET__WAREHOUS">
-          <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Warehouse">
-              <PropertyRef Name="WId" />
-            </Principal>
-            <Dependent Role="WaybillDet">
-              <PropertyRef Name="WId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WMT_POSID">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
-          <End Type="BaseModel.WMatTurn" Role="WMatTurn" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="WMatTurn">
-              <PropertyRef Name="PosId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WMT_SRCID">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.WMatTurn" Role="WMatTurn" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="WMatTurn">
-              <PropertyRef Name="SourceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="PosRel">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet1" Multiplicity="*" />
-        </Association>
-        <Association Name="FK_WBD_WBILLID">
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1" />
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillList">
-              <PropertyRef Name="WbillId" />
-            </Principal>
-            <Dependent Role="WaybillDet">
-              <PropertyRef Name="WbillId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+          </EntityType>
         <ComplexType Name="GetWayBillListWh_Result">
           <Property Type="Int32" Name="WBillId" Nullable="true" />
           <Property Type="String" Name="Num" Nullable="true" MaxLength="20" />
@@ -8475,22 +8307,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           <Property Type="Decimal" Name="AvgPrice" Precision="15" Scale="4" />
           <Property Type="Decimal" Name="InWay" Precision="15" Scale="4" />
           <Property Type="Decimal" Name="Ordered" Precision="15" Scale="4" Nullable="false" />
-          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" FromRole="PosRemains" ToRole="WaybillDet" />
           <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK__POSREMAINS__WID__2EA5EC27" FromRole="PosRemains" ToRole="Warehouse" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" FromRole="PosRemains" ToRole="Materials" />
+          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" FromRole="PosRemains" ToRole="WaybillDet" />
         </EntityType>
-        <Association Name="FK__POSREMAIN__POSID__2DB1C7EE">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
-          <End Type="BaseModel.PosRemains" Role="PosRemains" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="PosRemains">
-              <PropertyRef Name="PosId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__POSREMAINS__WID__2EA5EC27">
           <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="1" />
           <End Type="BaseModel.PosRemains" Role="PosRemains" Multiplicity="*" />
@@ -8690,8 +8510,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="WbMaked" />
           <NavigationProperty Name="DISCCARDS" Relationship="BaseModel.FK_WBDAP_CARDID" FromRole="WayBillDetAddProps" ToRole="DISCCARDS" />
-          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WBDAP_POSID" FromRole="WayBillDetAddProps" ToRole="WaybillDet" />
           <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WAYBILLDETADDPROPS_WBILLID" FromRole="WayBillDetAddProps" ToRole="WaybillList" />
+          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WBDAP_POSID" FromRole="WayBillDetAddProps" ToRole="WaybillDet" />
         </EntityType>
         <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1" />
@@ -8741,20 +8561,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_COMMISSION_WBILLID">
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.Commission" Role="Commission" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillList">
-              <PropertyRef Name="WbillId" />
-            </Principal>
-            <Dependent Role="Commission">
-              <PropertyRef Name="WbillId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_WBDAP_CARDID">
           <End Type="BaseModel.DISCCARDS" Role="DISCCARDS" Multiplicity="0..1" />
           <End Type="BaseModel.WayBillDetAddProps" Role="WayBillDetAddProps" Multiplicity="*" />
@@ -8791,46 +8597,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TECHPROCDET_WAYBILLLIST">
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.TechProcDet" Role="TechProcDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillList">
-              <PropertyRef Name="WbillId" />
-            </Principal>
-            <Dependent Role="TechProcDet">
-              <PropertyRef Name="WbillId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WBDAP_POSID">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.WayBillDetAddProps" Role="WayBillDetAddProps" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="WayBillDetAddProps">
-              <PropertyRef Name="PosId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WAYBILLDETADDPROPS_WBILLID">
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="0..1" />
-          <End Type="BaseModel.WayBillDetAddProps" Role="WayBillDetAddProps" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillList">
-              <PropertyRef Name="WbillId" />
-            </Principal>
-            <Dependent Role="WayBillDetAddProps">
-              <PropertyRef Name="WbMaked" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="WayBillDetTaxes">
           <Key>
             <PropertyRef Name="PosId" />
@@ -8852,20 +8618,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             </Principal>
             <Dependent Role="WayBillDetTaxes">
               <PropertyRef Name="TaxId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WBDTAXES_POSID">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.WayBillDetTaxes" Role="WayBillDetTaxes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="WayBillDetTaxes">
-              <PropertyRef Name="PosId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -8935,20 +8687,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_WAYBILLMAKE_WAYBILLLIST">
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.WayBillMake" Role="WayBillMake" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillList">
-              <PropertyRef Name="WbillId" />
-            </Principal>
-            <Dependent Role="WayBillMake">
-              <PropertyRef Name="WbillId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <ComplexType Name="GetRecipe_Result">
           <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
           <Property Type="Int32" Name="PosId" Nullable="true" />
@@ -8995,24 +8733,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="8" />
           <Property Type="Decimal" Name="Price" Nullable="false" Precision="15" Scale="8" />
           <Property Type="Int32" Name="WId" Nullable="false" />
-          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_DEBONINGDET_WAYBILLLIST" FromRole="DeboningDet" ToRole="WaybillList" />
           <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK_DeboningDet_Warehouse" FromRole="DeboningDet" ToRole="Warehouse" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK_DEBONINGDET_MATERIALS" FromRole="DeboningDet" ToRole="Materials" />
+          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_DEBONINGDET_WAYBILLLIST" FromRole="DeboningDet" ToRole="WaybillList" />
         </EntityType>
-        <Association Name="FK_DEBONINGDET_WAYBILLLIST">
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.DeboningDet" Role="DeboningDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillList">
-              <PropertyRef Name="WbillId" />
-            </Principal>
-            <Dependent Role="DeboningDet">
-              <PropertyRef Name="WBillId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_DeboningDet_Warehouse">
           <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="1" />
           <End Type="BaseModel.DeboningDet" Role="DeboningDet" Multiplicity="*" />
@@ -9135,9 +8859,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           <NavigationProperty Name="MatRecipe" Relationship="BaseModel.FK_MATRECIPE_1" FromRole="Materials" ToRole="MatRecipe" />
           <NavigationProperty Name="MATPRICES" Relationship="BaseModel.FK_MP_MATID" FromRole="Materials" ToRole="MATPRICES" />
           <NavigationProperty Name="TAXWBDET" Relationship="BaseModel.FK_TAXWBDET_REFERENCE_MATERIAL" FromRole="Materials" ToRole="TAXWBDET" />
-          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" FromRole="Materials" ToRole="WaybillDet" />
           <NavigationProperty Name="KAMatDiscount" Relationship="BaseModel.FK__KAMATDISC__MATID__32AB8735" FromRole="Materials" ToRole="KAMatDiscount" />
           <NavigationProperty Name="MatRecDet" Relationship="BaseModel.FK_MatRecDet_Materials" FromRole="Materials" ToRole="MatRecDet" />
+          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" FromRole="Materials" ToRole="WaybillDet" />
         </EntityType>
         <Association Name="FK_CONTRDET_REFERENCE_MATERIAL">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="0..1" />
@@ -9334,18 +9058,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             </Principal>
             <Dependent Role="TAXWBDET">
               <PropertyRef Name="MATID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WAYBILLD_FK_WBDET__MATERIAL">
-          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Materials">
-              <PropertyRef Name="MatId" />
-            </Principal>
-            <Dependent Role="WaybillDet">
-              <PropertyRef Name="MatId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -10092,20 +9804,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_WBS_WBILLID">
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.WayBillSvc" Role="WayBillSvc" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillList">
-              <PropertyRef Name="WbillId" />
-            </Principal>
-            <Dependent Role="WayBillSvc">
-              <PropertyRef Name="WbillId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="PriceListDet">
           <Key>
             <PropertyRef Name="PlDetId" />
@@ -10706,6 +10404,514 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="38" Scale="8" />
           <Property Type="Decimal" Name="SummOut" Nullable="true" Precision="38" Scale="8" />
         </ComplexType>
+        <ComplexType Name="REP_13_Result">
+          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="GrpId" Nullable="true" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="38" Scale="8" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="Decimal" Name="SummOut" Nullable="true" Precision="38" Scale="12" />
+          <Property Type="Decimal" Name="AmountIn" Nullable="true" Precision="38" Scale="8" />
+          <Property Type="Decimal" Name="SummIn" Nullable="true" Precision="38" Scale="12" />
+          <Property Type="Decimal" Name="AvgPrice" Nullable="true" Precision="38" Scale="6" />
+          <Property Type="Decimal" Name="Income" Nullable="true" Precision="38" Scale="6" />
+        </ComplexType>
+        <EntityType Name="WaybillList">
+          <Key>
+            <PropertyRef Name="WbillId" />
+          </Key>
+          <Property Name="WbillId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Num" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="KaId" Type="Int32" />
+          <Property Name="CurrId" Type="Int32" />
+          <Property Name="AttNum" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="AttDate" Type="DateTime" Precision="3" />
+          <Property Name="Reason" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <Property Name="SummAll" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="WType" Type="Int32" Nullable="false" />
+          <Property Name="Nds" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="Received" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="ToDate" Type="DateTime" Precision="3" />
+          <Property Name="DefNum" Type="Int32" Nullable="false" />
+          <Property Name="SummPay" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DocId" Type="Int32" />
+          <Property Name="SummInCurr" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="EntId" Type="Int32" />
+          <Property Name="OnValue" Type="Decimal" Precision="15" Scale="8" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Commission" Relationship="BaseModel.FK_COMMISSION_WBILLID" FromRole="WaybillList" ToRole="Commission" />
+          <NavigationProperty Name="Currency" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY" FromRole="WaybillList" ToRole="Currency" />
+          <NavigationProperty Name="DeboningDet" Relationship="BaseModel.FK_DEBONINGDET_WAYBILLLIST" FromRole="WaybillList" ToRole="DeboningDet" />
+          <NavigationProperty Name="Docs" Relationship="BaseModel.FK_WAYBILLL_REF_WBL_D_DOCS" FromRole="WaybillList" ToRole="Docs" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__WAYBILLLI__PERSO__6E01572D" FromRole="WaybillList" ToRole="Kagent" />
+          <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" FromRole="WaybillList" ToRole="Kagent" />
+          <NavigationProperty Name="Kagent2" Relationship="BaseModel.FK_WBL_ENTID" FromRole="WaybillList" ToRole="Kagent" />
+          <NavigationProperty Name="TechProcDet" Relationship="BaseModel.FK_TECHPROCDET_WAYBILLLIST" FromRole="WaybillList" ToRole="TechProcDet" />
+          <NavigationProperty Name="WayBillDetAddProps" Relationship="BaseModel.FK_WAYBILLDETADDPROPS_WBILLID" FromRole="WaybillList" ToRole="WayBillDetAddProps" />
+          <NavigationProperty Name="WayBillMake" Relationship="BaseModel.FK_WAYBILLMAKE_WAYBILLLIST" FromRole="WaybillList" ToRole="WayBillMake" />
+          <NavigationProperty Name="WaybillMove" Relationship="BaseModel.FK_WBM_WBILLID" FromRole="WaybillList" ToRole="WaybillMove" />
+          <NavigationProperty Name="WayBillSvc" Relationship="BaseModel.FK_WBS_WBILLID" FromRole="WaybillList" ToRole="WayBillSvc" />
+          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WaybillDet_WaybillList" FromRole="WaybillList" ToRole="WaybillDet" />
+        </EntityType>
+        <Association Name="FK_COMMISSION_WBILLID">
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.Commission" Role="Commission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="Commission">
+              <PropertyRef Name="WbillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAYBILLL_FK_WBLIST_CURRENCY">
+          <End Type="BaseModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
+            </Principal>
+            <Dependent Role="WaybillList">
+              <PropertyRef Name="CurrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEBONINGDET_WAYBILLLIST">
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.DeboningDet" Role="DeboningDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="DeboningDet">
+              <PropertyRef Name="WBillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAYBILLL_REF_WBL_D_DOCS">
+          <End Type="BaseModel.Docs" Role="Docs" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Docs">
+              <PropertyRef Name="DocId" />
+            </Principal>
+            <Dependent Role="WaybillList">
+              <PropertyRef Name="DocId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WAYBILLLI__PERSO__6E01572D">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="WaybillList">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAYBILLL_FK_WBLIST_KAGENT">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="WaybillList">
+              <PropertyRef Name="KaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WBL_ENTID">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="WaybillList">
+              <PropertyRef Name="EntId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TECHPROCDET_WAYBILLLIST">
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.TechProcDet" Role="TechProcDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="TechProcDet">
+              <PropertyRef Name="WbillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAYBILLDETADDPROPS_WBILLID">
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="0..1" />
+          <End Type="BaseModel.WayBillDetAddProps" Role="WayBillDetAddProps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="WayBillDetAddProps">
+              <PropertyRef Name="WbMaked" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAYBILLMAKE_WAYBILLLIST">
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.WayBillMake" Role="WayBillMake" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="WayBillMake">
+              <PropertyRef Name="WbillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WBM_WBILLID">
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.WaybillMove" Role="WaybillMove" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="WaybillMove">
+              <PropertyRef Name="WBillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WBS_WBILLID">
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.WayBillSvc" Role="WayBillSvc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="WayBillSvc">
+              <PropertyRef Name="WbillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="WaybillDet">
+          <Key>
+            <PropertyRef Name="PosId" />
+          </Key>
+          <Property Name="PosId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WbillId" Type="Int32" Nullable="false" />
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="WId" Type="Int32" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="15" Scale="8" />
+          <Property Name="Price" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="Discount" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="Nds" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="CurrId" Type="Int32" />
+          <Property Name="OnDate" Type="DateTime" Precision="3" />
+          <Property Name="PtypeId" Type="Int32" />
+          <Property Name="Num" Type="Int32" Nullable="false" />
+          <Property Name="Checked" Type="Int32" />
+          <Property Name="OnValue" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="Total" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="BasePrice" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="Expires" Type="DateTime" Precision="3" />
+          <Property Name="PosKind" Type="Int32" />
+          <Property Name="PosParent" Type="Int32" />
+          <Property Name="MsrUnitId" Type="Int32" />
+          <Property Name="DiscountKind" Type="Int32" />
+          <Property Name="AvgInPrice" Type="Decimal" Precision="15" Scale="4" />
+          <NavigationProperty Name="Currency" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_CURRENCY" FromRole="WaybillDet" ToRole="Currency" />
+          <NavigationProperty Name="ExtRel" Relationship="BaseModel.FK_EXTREL_EXTPOSID" FromRole="WaybillDet" ToRole="ExtRel" />
+          <NavigationProperty Name="ExtRel1" Relationship="BaseModel.FK_EXTREL_INTPOSID" FromRole="WaybillDet" ToRole="ExtRel" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" FromRole="WaybillDet" ToRole="Materials" />
+          <NavigationProperty Name="PosRemains" Relationship="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" FromRole="WaybillDet" ToRole="PosRemains" />
+          <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP" FromRole="WaybillDet" ToRole="PriceTypes" />
+          <NavigationProperty Name="ReturnRel" Relationship="BaseModel.FK_RETREL_DPOSID" FromRole="WaybillDet" ToRole="ReturnRel" />
+          <NavigationProperty Name="ReturnRel1" Relationship="BaseModel.FK_RETREL_OUTPOSID" FromRole="WaybillDet" ToRole="ReturnRel" />
+          <NavigationProperty Name="ReturnRel2" Relationship="BaseModel.FK_RETREL_PPOSID" FromRole="WaybillDet" ToRole="ReturnRel" />
+          <NavigationProperty Name="SERIALS" Relationship="BaseModel.FK_SERIALS_POSID" FromRole="WaybillDet" ToRole="SERIALS" />
+          <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__WAREHOUS" FromRole="WaybillDet" ToRole="Warehouse" />
+          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WaybillDet_WaybillList" FromRole="WaybillDet" ToRole="WaybillList" />
+          <NavigationProperty Name="WayBillDetAddProps" Relationship="BaseModel.FK_WBDAP_POSID" FromRole="WaybillDet" ToRole="WayBillDetAddProps" />
+          <NavigationProperty Name="WayBillDetTaxes" Relationship="BaseModel.FK_WBDTAXES_POSID" FromRole="WaybillDet" ToRole="WayBillDetTaxes" />
+          <NavigationProperty Name="WMatTurn" Relationship="BaseModel.FK_WMT_POSID" FromRole="WaybillDet" ToRole="WMatTurn" />
+          <NavigationProperty Name="WMatTurn1" Relationship="BaseModel.FK_WMT_SRCID" FromRole="WaybillDet" ToRole="WMatTurn" />
+          <NavigationProperty Name="WaybillDet1" Relationship="BaseModel.PosRel" FromRole="WaybillDet" ToRole="WaybillDet1" />
+          <NavigationProperty Name="WaybillDet2" Relationship="BaseModel.PosRel" FromRole="WaybillDet1" ToRole="WaybillDet" />
+        </EntityType>
+        <Association Name="FK_WAYBILLD_REFERENCE_CURRENCY">
+          <End Type="BaseModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
+            </Principal>
+            <Dependent Role="WaybillDet">
+              <PropertyRef Name="CurrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EXTREL_EXTPOSID">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
+          <End Type="BaseModel.ExtRel" Role="ExtRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="ExtRel">
+              <PropertyRef Name="ExtPosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EXTREL_INTPOSID">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.ExtRel" Role="ExtRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="ExtRel">
+              <PropertyRef Name="IntPosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAYBILLD_FK_WBDET__MATERIAL">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="WaybillDet">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__POSREMAIN__POSID__2DB1C7EE">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
+          <End Type="BaseModel.PosRemains" Role="PosRemains" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="PosRemains">
+              <PropertyRef Name="PosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAYBILLD_REFERENCE_PRICETYP">
+          <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceTypes">
+              <PropertyRef Name="PTypeId" />
+            </Principal>
+            <Dependent Role="WaybillDet">
+              <PropertyRef Name="PtypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RETREL_DPOSID">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.ReturnRel" Role="ReturnRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="ReturnRel">
+              <PropertyRef Name="DPosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RETREL_OUTPOSID">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
+          <End Type="BaseModel.ReturnRel" Role="ReturnRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="ReturnRel">
+              <PropertyRef Name="OutPosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RETREL_PPOSID">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
+          <End Type="BaseModel.ReturnRel" Role="ReturnRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="ReturnRel">
+              <PropertyRef Name="PPosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERIALS_POSID">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.SERIALS" Role="SERIALS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="SERIALS">
+              <PropertyRef Name="POSID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAYBILLD_FK_WBDET__WAREHOUS">
+          <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
+            </Principal>
+            <Dependent Role="WaybillDet">
+              <PropertyRef Name="WId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WaybillDet_WaybillList">
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1" />
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="WaybillDet">
+              <PropertyRef Name="WbillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WBDAP_POSID">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.WayBillDetAddProps" Role="WayBillDetAddProps" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="WayBillDetAddProps">
+              <PropertyRef Name="PosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WBDTAXES_POSID">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.WayBillDetTaxes" Role="WayBillDetTaxes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="WayBillDetTaxes">
+              <PropertyRef Name="PosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WMT_POSID">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
+          <End Type="BaseModel.WMatTurn" Role="WMatTurn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="WMatTurn">
+              <PropertyRef Name="PosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WMT_SRCID">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.WMatTurn" Role="WMatTurn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="WMatTurn">
+              <PropertyRef Name="SourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PosRel">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet1" Multiplicity="*" />
+        </Association>
+        <ComplexType Name="REP_16_Result">
+          <Property Type="String" Name="DocNum" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="KaId" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="64" />
+          <Property Type="Decimal" Name="Total" Nullable="false" Precision="15" Scale="2" />
+          <Property Type="String" Name="ChargeName" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="CTypeId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="REP_20_Result">
+          <Property Type="Int32" Name="GrpId" Nullable="false" />
+          <Property Type="Int32" Name="SvcId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="80" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="Decimal" Name="Summ" Nullable="true" Precision="38" Scale="12" />
+        </ComplexType>
+        <ComplexType Name="OrderedList_Result">
+          <Property Type="Int32" Name="PosId" Nullable="false" />
+          <Property Type="Int32" Name="WbillId" Nullable="false" />
+          <Property Type="Int32" Name="WType" Nullable="false" />
+          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="DocId" Nullable="true" />
+          <Property Type="Int32" Name="KaId" Nullable="true" />
+          <Property Type="String" Name="KaName" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="WId" Nullable="false" />
+          <Property Type="String" Name="WhName" Nullable="false" MaxLength="64" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="8" />
+          <Property Type="DateTime" Name="ToDate" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="String" Name="CurrencyName" Nullable="true" MaxLength="3" />
+          <Property Type="Int32" Name="Checked" Nullable="false" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="Int32" Name="GrpId" Nullable="true" />
+          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -11252,36 +11458,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="WaybillList">
-            <EntityTypeMapping TypeName="BaseModel.WaybillList">
-              <MappingFragment StoreEntitySet="WaybillList">
-                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
-                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
-                <ScalarProperty Name="EntId" ColumnName="EntId" />
-                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
-                <ScalarProperty Name="DocId" ColumnName="DocId" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="SummPay" ColumnName="SummPay" />
-                <ScalarProperty Name="DefNum" ColumnName="DefNum" />
-                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
-                <ScalarProperty Name="Received" ColumnName="Received" />
-                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
-                <ScalarProperty Name="Nds" ColumnName="Nds" />
-                <ScalarProperty Name="WType" ColumnName="WType" />
-                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="Reason" ColumnName="Reason" />
-                <ScalarProperty Name="AttDate" ColumnName="AttDate" />
-                <ScalarProperty Name="AttNum" ColumnName="AttNum" />
-                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
-                <ScalarProperty Name="KaId" ColumnName="KaId" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="SP_GET_MAT_NDS" FunctionName="BaseModel.Store.SP_GET_MAT_NDS">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.SP_GET_MAT_NDS_Result">
@@ -11316,6 +11492,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           <EntitySetMapping Name="WMatTurn">
             <EntityTypeMapping TypeName="BaseModel.WMatTurn">
               <MappingFragment StoreEntitySet="WMatTurn">
+                <ScalarProperty Name="CalcAmount" ColumnName="CalcAmount" />
                 <ScalarProperty Name="SourceId" ColumnName="SourceId" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="TurnType" ColumnName="TurnType" />
@@ -11960,43 +12137,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="WaybillDet">
-            <EntityTypeMapping TypeName="BaseModel.WaybillDet">
-              <MappingFragment StoreEntitySet="WaybillDet">
-                <ScalarProperty Name="AVG_IN_PICE" ColumnName="AVG_IN_PICE" />
-                <ScalarProperty Name="DiscountKind" ColumnName="DiscountKind" />
-                <ScalarProperty Name="MsrUnitId" ColumnName="MsrUnitId" />
-                <ScalarProperty Name="PosParent" ColumnName="PosParent" />
-                <ScalarProperty Name="PosKind" ColumnName="PosKind" />
-                <ScalarProperty Name="Expires" ColumnName="Expires" />
-                <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="PtypeId" ColumnName="PtypeId" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
-                <ScalarProperty Name="Nds" ColumnName="Nds" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="WId" ColumnName="WId" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
-                <ScalarProperty Name="PosId" ColumnName="PosId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <AssociationSetMapping Name="PosRel" TypeName="BaseModel.PosRel" StoreEntitySet="PosRel">
-            <EndProperty Name="WaybillDet1">
-              <ScalarProperty Name="PosId" ColumnName="PosId" />
-            </EndProperty>
-            <EndProperty Name="WaybillDet">
-              <ScalarProperty Name="PosId" ColumnName="CPosId" />
-            </EndProperty>
-            <Condition ColumnName="CPosId" IsNull="false" />
-          </AssociationSetMapping>
           <FunctionImportMapping FunctionImportName="GetWayBillListWh" FunctionName="BaseModel.Store.GetWayBillListWh">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.GetWayBillListWh_Result">
@@ -13438,6 +13578,146 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
                 <ScalarProperty Name="SummIn" ColumnName="SummIn" />
                 <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
                 <ScalarProperty Name="SummOut" ColumnName="SummOut" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="REP_13" FunctionName="BaseModel.Store.REP_13">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.REP_13_Result">
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="SummOut" ColumnName="SummOut" />
+                <ScalarProperty Name="AmountIn" ColumnName="AmountIn" />
+                <ScalarProperty Name="SummIn" ColumnName="SummIn" />
+                <ScalarProperty Name="AvgPrice" ColumnName="AvgPrice" />
+                <ScalarProperty Name="Income" ColumnName="Income" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="WaybillList">
+            <EntityTypeMapping TypeName="BaseModel.WaybillList">
+              <MappingFragment StoreEntitySet="WaybillList">
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="EntId" ColumnName="EntId" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="SummPay" ColumnName="SummPay" />
+                <ScalarProperty Name="DefNum" ColumnName="DefNum" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="Received" ColumnName="Received" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Nds" ColumnName="Nds" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="AttDate" ColumnName="AttDate" />
+                <ScalarProperty Name="AttNum" ColumnName="AttNum" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WaybillDet">
+            <EntityTypeMapping TypeName="BaseModel.WaybillDet">
+              <MappingFragment StoreEntitySet="WaybillDet">
+                <ScalarProperty Name="AvgInPrice" ColumnName="AvgInPrice" />
+                <ScalarProperty Name="DiscountKind" ColumnName="DiscountKind" />
+                <ScalarProperty Name="MsrUnitId" ColumnName="MsrUnitId" />
+                <ScalarProperty Name="PosParent" ColumnName="PosParent" />
+                <ScalarProperty Name="PosKind" ColumnName="PosKind" />
+                <ScalarProperty Name="Expires" ColumnName="Expires" />
+                <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="PtypeId" ColumnName="PtypeId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="Nds" ColumnName="Nds" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="PosRel" TypeName="BaseModel.PosRel" StoreEntitySet="PosRel">
+            <EndProperty Name="WaybillDet1">
+              <ScalarProperty Name="PosId" ColumnName="PosId" />
+            </EndProperty>
+            <EndProperty Name="WaybillDet">
+              <ScalarProperty Name="PosId" ColumnName="CPosId" />
+            </EndProperty>
+            <Condition ColumnName="CPosId" IsNull="false" />
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="REP_16" FunctionName="BaseModel.Store.REP_16">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.REP_16_Result">
+                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="ChargeName" ColumnName="ChargeName" />
+                <ScalarProperty Name="CTypeId" ColumnName="CTypeId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="REP_20" FunctionName="BaseModel.Store.REP_20">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.REP_20_Result">
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="SvcId" ColumnName="SvcId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="Summ" ColumnName="Summ" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="OrderedList" FunctionName="BaseModel.Store.OrderedList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.OrderedList_Result">
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

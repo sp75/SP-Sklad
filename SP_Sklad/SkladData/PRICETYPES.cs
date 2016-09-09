@@ -20,8 +20,8 @@ namespace SP_Sklad.SkladData
             this.MATGROUPPRICES1 = new HashSet<MATGROUPPRICES>();
             this.MATPRICES = new HashSet<MATPRICES>();
             this.MATPRICES1 = new HashSet<MATPRICES>();
-            this.WaybillDet = new HashSet<WaybillDet>();
             this.PriceList = new HashSet<PriceList>();
+            this.WaybillDet = new HashSet<WaybillDet>();
         }
     
         public int PTypeId { get; set; }
@@ -37,7 +37,7 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<MATGROUPPRICES> MATGROUPPRICES1 { get; set; }
         public virtual ICollection<MATPRICES> MATPRICES { get; set; }
         public virtual ICollection<MATPRICES> MATPRICES1 { get; set; }
-        public virtual ICollection<WaybillDet> WaybillDet { get; set; }
         public virtual ICollection<PriceList> PriceList { get; set; }
+        public virtual ICollection<WaybillDet> WaybillDet { get; set; }
     }
 }

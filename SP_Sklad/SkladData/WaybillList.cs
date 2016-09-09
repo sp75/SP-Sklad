@@ -16,12 +16,12 @@ namespace SP_Sklad.SkladData
     {
         public WaybillList()
         {
-            this.WaybillDet = new HashSet<WaybillDet>();
             this.Commission = new HashSet<Commission>();
+            this.DeboningDet = new HashSet<DeboningDet>();
             this.TechProcDet = new HashSet<TechProcDet>();
             this.WayBillDetAddProps = new HashSet<WayBillDetAddProps>();
-            this.DeboningDet = new HashSet<DeboningDet>();
             this.WayBillSvc = new HashSet<WayBillSvc>();
+            this.WaybillDet = new HashSet<WaybillDet>();
         }
     
         public int WbillId { get; set; }
@@ -49,18 +49,18 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> OnValue { get; set; }
         public Nullable<System.DateTime> UpdatedAt { get; set; }
     
+        public virtual ICollection<Commission> Commission { get; set; }
+        public virtual Currency Currency { get; set; }
+        public virtual ICollection<DeboningDet> DeboningDet { get; set; }
+        public virtual Docs Docs { get; set; }
         public virtual Kagent Kagent { get; set; }
         public virtual Kagent Kagent1 { get; set; }
         public virtual Kagent Kagent2 { get; set; }
-        public virtual Currency Currency { get; set; }
-        public virtual WaybillMove WaybillMove { get; set; }
-        public virtual Docs Docs { get; set; }
-        public virtual ICollection<WaybillDet> WaybillDet { get; set; }
-        public virtual ICollection<Commission> Commission { get; set; }
         public virtual ICollection<TechProcDet> TechProcDet { get; set; }
         public virtual ICollection<WayBillDetAddProps> WayBillDetAddProps { get; set; }
         public virtual WayBillMake WayBillMake { get; set; }
-        public virtual ICollection<DeboningDet> DeboningDet { get; set; }
+        public virtual WaybillMove WaybillMove { get; set; }
         public virtual ICollection<WayBillSvc> WayBillSvc { get; set; }
+        public virtual ICollection<WaybillDet> WaybillDet { get; set; }
     }
 }

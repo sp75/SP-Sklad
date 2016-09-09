@@ -36,10 +36,7 @@ namespace SP_Sklad
             YearEdit3.Value = dt.Year;
 
             textEdit1.Text = DB.SkladBase().RepLng.FirstOrDefault(w => w.RepId == _rep_id && w.LangId == 2).Notes;
-        }
 
-        private void frmReport_Shown(object sender, EventArgs e)
-        {
             if (InDocGroupBox.Visible) checkEdit2.Checked = true;
             if (OutDocGroupBox.Visible) checkEdit4.Checked = true;
             if (!OnDateGroupBox.Visible) Height -= OnDateGroupBox.Height;
@@ -49,8 +46,21 @@ namespace SP_Sklad
             }
             else
             {
-                MatComboBox.Properties.DataSource = new List<object>() { new { MatId = 0, Name = "Усі" } }.Concat(new BaseEntities().Materials.Where(w => w.Deleted == 0).Select(s => new { s.MatId, s.Name }).ToList());
-                MatComboBox.EditValue = 0;
+                if (_rep_id == 9 || _rep_id == 19)
+                {
+                    var mat = new BaseEntities().Materials.Where(w => w.Deleted == 0).Select(s => new { s.MatId, s.Name }).ToList();
+                    MatComboBox.Properties.DataSource = mat;
+                    var first_or_default = mat.FirstOrDefault();
+                    if (first_or_default != null)
+                    {
+                        MatComboBox.EditValue = first_or_default.MatId;
+                    }
+                }
+                else
+                {
+                    MatComboBox.Properties.DataSource = new List<object>() { new { MatId = 0, Name = "Усі" } }.Concat(new BaseEntities().Materials.Where(w => w.Deleted == 0).Select(s => new { s.MatId, s.Name }).ToList());
+                    MatComboBox.EditValue = 0;
+                }
             }
             if (!PeriodGroupBox.Visible) Height -= PeriodGroupBox.Height;
             if (!WHGroupBox.Visible)
@@ -97,7 +107,7 @@ namespace SP_Sklad
             {
                 Height -= DocTypeGroupBox2.Height;
             }
-            
+
 
             if (!ChargeGroupBox.Visible)
             {
@@ -108,6 +118,11 @@ namespace SP_Sklad
                 ChTypeEdit.Properties.DataSource = new List<object>() { new { CTypeId = 0, Name = "Усі" } }.Concat(new BaseEntities().ChargeType.Where(w => w.Deleted == 0).Select(s => new { s.CTypeId, s.Name }));
                 ChTypeEdit.EditValue = 0;
             }
+        }
+
+        private void frmReport_Shown(object sender, EventArgs e)
+        {
+            
         }
 
         private void PeriodComboBoxEdit_EditValueChanged(object sender, EventArgs e)
@@ -139,7 +154,8 @@ namespace SP_Sklad
                 Warehouse = WhComboBox.GetSelectedDataRow(),
                 Material = MatComboBox.GetSelectedDataRow(),
                 DocStr = str,
-                DocType = DocTypeEdit.EditValue
+                DocType = DocTypeEdit.EditValue,
+                ChType = ChTypeEdit.GetSelectedDataRow()
             };
 
             pr.CreateReport(_rep_id);

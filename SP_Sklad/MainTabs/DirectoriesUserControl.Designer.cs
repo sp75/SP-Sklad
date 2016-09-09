@@ -2200,7 +2200,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn42;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn44;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView7;
-        public DevExpress.XtraTreeList.TreeList DirTreeList;
         public DevExpress.XtraTab.XtraTabPage xtraTabPage4;
         public DevExpress.XtraTab.XtraTabPage xtraTabPage5;
         public DevExpress.XtraTab.XtraTabPage xtraTabPage3;
@@ -2255,7 +2254,8 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView8;
         private System.Windows.Forms.BindingSource ServicesBS;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn50;
-        private System.Windows.Forms.BindingSource DirTreeBS;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        public System.Windows.Forms.BindingSource DirTreeBS;
+        private DevExpress.XtraTreeList.TreeList DirTreeList;
     }
 }
