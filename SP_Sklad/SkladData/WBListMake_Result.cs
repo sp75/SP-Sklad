@@ -45,7 +45,7 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> OnDateOut { get; set; }
         public Nullable<decimal> AmountOut { get; set; }
         public Nullable<System.DateTime> WriteOnDate { get; set; }
-        public string FromHh { get; set; }
+        public string FromWh { get; set; }
         public Nullable<int> FromWId { get; set; }
         public string DocStatus { get; set; }
         public Nullable<decimal> Price { get; set; }

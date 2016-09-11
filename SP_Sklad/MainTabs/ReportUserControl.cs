@@ -154,14 +154,14 @@ namespace SP_Sklad.MainTabs
                     frm.ChargeGroupBox.Visible = false;
                     break;
 
-                /*       case 26: frmReport->OnDateGroupBox->Visible = false;
-                           frmReport->KAGroupBox->Visible = false;
-                           frmReport->MatGroupBox->Visible = false;
-                           frmReport->DocTypeGroupBox->Visible = false;
-                           frmReport->DocTypeGroupBox2->Visible = false;
-                           frmReport->CHARGEGroupBox->Visible = false;
-                           break;
-*/
+                case 26: frm.OnDateGroupBox.Visible = false;
+                    frm.KAGroupBox.Visible = false;
+                    frm.MatGroupBox.Visible = false;
+                    frm.DocTypeGroupBox.Visible = false;
+                    frm.DocTypeGroupBox2.Visible = false;
+                    frm.ChargeGroupBox.Visible = false;
+                    break;
+
                 case 30:
                 case 8: frm.OnDateGroupBox.Visible = false;
                     frm.WHGroupBox.Visible = false;
@@ -234,8 +234,20 @@ namespace SP_Sklad.MainTabs
                     frm.DocTypeGroupBox.Visible = false;
                     frm.WHGroupBox.Visible = false;
                     frm.GRPGroupBox.Visible = false;
-
                     break;
+
+                /*    case 17:
+                    case 23: frm.DocTypeGroupBox2.Visible = false;
+                        frm.KAGroupBox.Visible = false;
+                        frm.OnDateGroupBox.Visible = false;
+                        frm.WHGroupBox.Visible = false;
+                        frm.GRPGroupBox.Visible = false;
+                        frm.KAGroupBox.Visible = false;
+                        frm.MatGroupBox.Visible = false;
+                        frm.ChargeGroupBox.Visible = false;
+                        frm.DocTypeGroupBox.Visible = false;
+                        break;*/
+
                 case 20:
                     frm.DocTypeGroupBox2.Visible = false;
                     frm.OnDateGroupBox.Visible = false;
@@ -253,39 +265,21 @@ namespace SP_Sklad.MainTabs
                     frm.ChargeGroupBox.Visible = false;
                     break;
 
-                /*               case 27: frmReport->OnDateGroupBox->Visible = false;
-                                   frmReport->WHGroupBox->Visible = false;
-                                   frmReport->DocTypeGroupBox->Visible = false;
-                                   frmReport->DocTypeGroupBox2->Visible = false;
-                                   frmReport->ChargeGroupBox->Visible = false;
-                                   break;
+                case 27: frm.OnDateGroupBox.Visible = false;
+                    frm.WHGroupBox.Visible = false;
+                    frm.DocTypeGroupBox.Visible = false;
+                    frm.DocTypeGroupBox2.Visible = false;
+                    frm.ChargeGroupBox.Visible = false;
+                    break;
 
-
-
-
-
-                               case 17:
-                               case 23: frmReport->DocTypeGroupBox2->Visible = false;
-                                   frmReport->KAGroupBox->Visible = false;
-                                   frmReport->OnDateGroupBox->Visible = false;
-                                   frmReport->WHGroupBox->Visible = false;
-                                   frmReport->GRPGroupBox->Visible = false;
-                                   frmReport->KAGroupBox->Visible = false;
-                                   frmReport->MatGroupBox->Visible = false;
-                                   frmReport->ChargeGroupBox->Visible = false;
-                                   frmReport->DocTypeGroupBox->Visible = false;
-                                   break;
-
-
-
-                               case 29:
-                                   frmReport->OutDocGroupBox->Visible = false;
-                                   frmReport->OnDateGroupBox->Visible = false;
-                                   frmReport->MatGroupBox->Visible = false;
-                                   frmReport->DocTypeGroupBox->Visible = false;
-                                   frmReport->CHARGEGroupBox->Visible = false;
-                                   frmReport->DocTypeGroupBox2->Visible = false;
-                                   break;*/
+                case 29:
+                    frm.OutDocGroupBox.Visible = false;
+                    frm.OnDateGroupBox.Visible = false;
+                    frm.MatGroupBox.Visible = false;
+                    frm.DocTypeGroupBox.Visible = false;
+                    frm.ChargeGroupBox.Visible = false;
+                    frm.DocTypeGroupBox2.Visible = false;
+                    break;
             }
 
             frm.Text = row.Name;

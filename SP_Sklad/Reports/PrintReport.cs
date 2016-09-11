@@ -101,8 +101,6 @@ namespace SP_Sklad.Reports
                     child_table = "MatInDet"
                 });
 
-                //   var ob = new List<object>();
-                //     ob.Add(new { StartDate = StartDate.ToShortDateString(), EndDate = EndDate.ToShortDateString(), GRP = MatGroup.Name, WH = Warehouse.Name, KAID = Kagent.Name });
                 data_for_report.Add("XLRPARAMS", XLRPARAMS);
                 data_for_report.Add("MatGroup", mat_grp.Where(w => mat.Select(s => s.GrpId).Contains(w.GrpId)).ToList());
                 data_for_report.Add("MatInDet", mat);
@@ -288,7 +286,7 @@ namespace SP_Sklad.Reports
 
             if (idx == 5)
             {
-                var kagents = db.Kagent.Where(w => w.Deleted == 0 && (w.Archived ?? 0) == 0 ).Select(s => new
+                var kagents = db.Kagent.Where(w => w.Deleted == 0 && (w.Archived ?? 0) == 0).Select(s => new
                 {
                     s.Name,
                     Saldo = db.KAgentSaldo.Where(ks => ks.KAId == s.KaId && ks.OnDate <= OnDate).OrderByDescending(o => o.OnDate).Select(kss => kss.Saldo).Take(1).FirstOrDefault()
@@ -425,8 +423,8 @@ namespace SP_Sklad.Reports
             }
 
             if (idx == 11)
-              {
-                var list = db.GetDocList(StartDate, EndDate, 0, (int)DocType).OrderBy( o=> o.OnDate ).Select(s => new
+            {
+                var list = db.GetDocList(StartDate, EndDate, 0, (int)DocType).OrderBy(o => o.OnDate).Select(s => new
                 {
                     s.OnDate,
                     s.KaName,
@@ -451,7 +449,7 @@ namespace SP_Sklad.Reports
                 int grp = Convert.ToInt32(MatGroup.GrpId);
                 string wid = Convert.ToString(Warehouse.WId);
 
-                var mat = db.REP_13(StartDate, EndDate, grp, (int)Kagent.KaId,  (String)Warehouse.WId, 0).ToList();
+                var mat = db.REP_13(StartDate, EndDate, grp, (int)Kagent.KaId, (String)Warehouse.WId, 0).ToList();
 
                 if (!mat.Any())
                 {
@@ -533,7 +531,7 @@ namespace SP_Sklad.Reports
             if (idx == 20)
             {
                 int grp = Convert.ToInt32(MatGroup.GrpId);
-              
+
                 var svc = db.REP_20(StartDate, EndDate, grp, (int)Kagent.KaId).ToList();
 
                 if (!svc.Any())
@@ -607,134 +605,161 @@ namespace SP_Sklad.Reports
             }
 
 
-            /*      if(idx == 18)
-                   {
-                      SP_WMAT_GET->DataSource = MatGroupDS ;
-                      MatGroup->ParamByName("grp")->Value = GRP ;
+            if (idx == 18)
+            {
 
-                      SP_WMAT_GET->ParamByName("ONDATE")->Value = OnDate ;
-                      SP_WMAT_GET->ParamByName("GRPID")->Value = GRP ;
-                      if(WH == "*" ) SP_WMAT_GET->ParamByName("WID")->Value = 0 ;
-                         else SP_WMAT_GET->ParamByName("WID")->Value = WH;
-                      SP_WMAT_GET->ParamByName("MINREST")->Value = 1 ;
+                int grp = Convert.ToInt32(MatGroup.GrpId);
+                int wid = Warehouse.WId == "*" ? 0 : Convert.ToInt32(Warehouse.WId);
 
-                      xlReport_18->Params->Items[0]->Value = SkladData->WhComboBoxNAME->Value;
-                      xlReport_18->Params->Items[1]->Value = OnDate;
-                      xlReport_18->Params->Items[2]->Value = SkladData->MatGroupComboBoxNAME->Value;
-                      xlReport_18->Report();
-                      SP_WMAT_GET->DataSource = NULL ;
-                   }
+                var mat = db.WhMatGet(grp, wid, 0, OnDate, 0, "*", 0, "", 0, 0).Where(w => w.Remain < w.MinReserv && w.MinReserv != null).ToList();
+
+                if (!mat.Any())
+                {
+                    return;
+                }
+
+                var mat_grp = db.MatGroup.Where(w => w.Deleted == 0 && (w.GrpId == grp || grp == 0)).Select(s => new { s.GrpId, s.Name }).ToList();
+
+                rel.Add(new
+                {
+                    pk = "GrpId",
+                    fk = "OutGrpId",
+                    master_table = "MatGroup",
+                    child_table = "MatList"
+                });
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("MatGroup", mat_grp.Where(w => mat.Select(s => s.OutGrpId).Contains(w.GrpId)).ToList());
+                data_for_report.Add("MatList", mat);
+                data_for_report.Add("_realation_", rel);
+
+                Print(data_for_report, TemlateList.rep_18);
+            }
 
 
-                  if(idx == 26)
-                   {
-                      MakedProduct->ParamByName("in_fromdate")->Value = StartDate ;
-                      MakedProduct->ParamByName("in_todate")->Value =  EndDate ;
-                      MakedProduct->ParamByName("GRPID")->Value = GRP ;
-                      MakedProduct->ParamByName("WH")->Value = WH ;
-                      xlReport_26->Params->Items[0]->Value = StartDate.DateString() ;
-                      xlReport_26->Params->Items[1]->Value = EndDate.DateString() ;
-                      xlReport_26->Params->Items[2]->Value = SkladData->MatGroupComboBoxNAME->Value;
-                      xlReport_26->Params->Items[3]->Value = SkladData->WhComboBoxNAME->Value;
-                      xlReport_26->Report();
-                   }
+            if (idx == 26)
+            {
+                int grp = Convert.ToInt32(MatGroup.GrpId);
+                string wid = Convert.ToString(Warehouse.WId);
+                var make = db.WBListMake(StartDate, EndDate, 1, wid, grp, -20).ToList().Concat(db.WBListMake(StartDate, EndDate, 1, wid, grp, -22).ToList());
 
-                   if(idx == 27)
-                   {
-                      RepOrdKAID->ParamByName("IN_FROMDATE")->Value = StartDate;
-                      RepOrdKAID->ParamByName("IN_TODATE")->Value =  EndDate;
-                      RepOrdKAID->ParamByName("GRPID")->Value = GRP;
-                      RepOrdKAID->ParamByName("IN_KAID")->Value = KAID;
-                      RepOrdKAID->ParamByName("IN_MATID")->Value = MATID;
-                      xlReport_27->Params->Items[0]->Value = StartDate.DateString() ;
-                      xlReport_27->Params->Items[1]->Value = EndDate.DateString() ;
-                      xlReport_27->Params->Items[2]->Value = SkladData->MatGroupComboBoxNAME->Value;
-                      xlReport_27->Params->Items[3]->Value = SkladData->MatComboBoxNAME->Value;
-                      xlReport_27->Params->Items[4]->Value = SkladData->KAgentComboBoxNAME->Value;
-                      xlReport_27->Report();
-                   }
+                if (!make.Any())
+                {
+                    return;
+                }
 
-                
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("MakedProduct", make.ToList());
+
+                Print(data_for_report, TemlateList.rep_26);
+            }
+
+            if (idx == 27)
+            {
+                var mat = db.REP_27(StartDate, EndDate, (int)Kagent.KaId, (int)MatGroup.GrpId, (int)this.Material.MatId).ToList();
+
+                if (!mat.Any())
+                {
+                    return;
+                }
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("MatList", mat.ToList());
+
+                Print(data_for_report, TemlateList.rep_27);
+
+            }
+
+
+
+            if (idx == 29)
+            {
+                int grp = Convert.ToInt32(MatGroup.GrpId);
+                string wh = Convert.ToString(Warehouse.WId);
+                var mat = db.REP_29(StartDate, EndDate, (int)Kagent.KaId, grp, wh).ToList();
+
+                if (!mat.Any())
+                {
+                    return;
+                }
+
+                var mat_grp = db.MatGroup.Where(w => w.Deleted == 0 && (w.GrpId == grp || grp == 0)).Select(s => new { s.GrpId, s.Name }).ToList();
+
+                rel.Add(new
+                {
+                    pk = "GrpId",
+                    fk = "GrpId",
+                    master_table = "MatGroup",
+                    child_table = "MatInDet"
+                });
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("MatGroup", mat_grp.Where(w => mat.Select(s => s.GrpId).Contains(w.GrpId)).ToList());
+                data_for_report.Add("MatInDet", mat);
+                data_for_report.Add("_realation_", rel);
+
+                Print(data_for_report, TemlateList.rep_29);
+            } 
                  
 
-                   if(idx == 17)
-                   {
-                      MatGroup->ParamByName("grp")->Value = GRP ;
-                      MatSelPr->DataSource = MatGroupDS ;
-                      MatSelPr->ParamByName("IN_WID")->Value = WH;
-                      MatSelPr->ParamByName("IN_FROMDATE")->Value = StartDate ;
-                      MatSelPr->ParamByName("IN_TODATE")->Value =  EndDate ;
-                      MatSelPr->ParamByName("IN_KAID")->Value =  0 ;
+              /*           if(idx == 17)
+                         {
+                            MatGroup->ParamByName("grp")->Value = GRP ;
+                            MatSelPr->DataSource = MatGroupDS ;
+                            MatSelPr->ParamByName("IN_WID")->Value = WH;
+                            MatSelPr->ParamByName("IN_FROMDATE")->Value = StartDate ;
+                            MatSelPr->ParamByName("IN_TODATE")->Value =  EndDate ;
+                            MatSelPr->ParamByName("IN_KAID")->Value =  0 ;
 
-                      SvcGroup->ParamByName("grp")->Value = GRP ;
-                      SvcOut_20->DataSource = SvcGroupDS ;
-                      SvcOut_20->ParamByName("IN_KAID")->Value = 0 ;
-                      SvcOut_20->ParamByName("IN_FROMDATE")->Value = StartDate ;
-                      SvcOut_20->ParamByName("IN_TODATE")->Value =  EndDate ;
+                            SvcGroup->ParamByName("grp")->Value = GRP ;
+                            SvcOut_20->DataSource = SvcGroupDS ;
+                            SvcOut_20->ParamByName("IN_KAID")->Value = 0 ;
+                            SvcOut_20->ParamByName("IN_FROMDATE")->Value = StartDate ;
+                            SvcOut_20->ParamByName("IN_TODATE")->Value =  EndDate ;
 
-                      DocList_16->ParamByName("IN_KAID")->Value = 0 ;
-                      DocList_16->ParamByName("IN_FROMDATE")->Value = StartDate ;
-                      DocList_16->ParamByName("IN_TODATE")->Value =  EndDate ;
-                      DocList_16->ParamByName("IN_ctype")->Value = 0 ;
-                      DocList_16->ParamByName("showall")->Value = 0 ;
+                            DocList_16->ParamByName("IN_KAID")->Value = 0 ;
+                            DocList_16->ParamByName("IN_FROMDATE")->Value = StartDate ;
+                            DocList_16->ParamByName("IN_TODATE")->Value =  EndDate ;
+                            DocList_16->ParamByName("IN_ctype")->Value = 0 ;
+                            DocList_16->ParamByName("showall")->Value = 0 ;
 
-                     // WBWriteOff->DataSource = MatGroupDS ;
-                      WBWriteOff->ParamByName("IN_FROMDATE")->Value = StartDate ;
-                      WBWriteOff->ParamByName("IN_TODATE")->Value =  EndDate ;
+                           // WBWriteOff->DataSource = MatGroupDS ;
+                            WBWriteOff->ParamByName("IN_FROMDATE")->Value = StartDate ;
+                            WBWriteOff->ParamByName("IN_TODATE")->Value =  EndDate ;
 
-                      xlReport_17->Params->Items[0]->Value = StartDate.DateString() ;
-                      xlReport_17->Params->Items[1]->Value = EndDate.DateString() ;
-                      xlReport_17->Report();
+                            xlReport_17->Params->Items[0]->Value = StartDate.DateString() ;
+                            xlReport_17->Params->Items[1]->Value = EndDate.DateString() ;
+                            xlReport_17->Report();
 
-                      MatSelPr->DataSource = NULL ;
-                      SvcOut_20->DataSource = NULL ;
-                      WBWriteOff->DataSource = NULL ;
-                   }
+                            MatSelPr->DataSource = NULL ;
+                            SvcOut_20->DataSource = NULL ;
+                            WBWriteOff->DataSource = NULL ;
+                         }
 
-                   if(idx == 23)
-                   {
-                      PayDocList->ParamByName("IN_FROMDATE")->Value = StartDate ;
-                      PayDocList->ParamByName("IN_TODATE")->Value =  EndDate ;
-                      MONEY_ONDATE->ParamByName("IN_ONDATE")->Value =  EndDate ;
+                         if(idx == 23)
+                         {
+                            PayDocList->ParamByName("IN_FROMDATE")->Value = StartDate ;
+                            PayDocList->ParamByName("IN_TODATE")->Value =  EndDate ;
+                            MONEY_ONDATE->ParamByName("IN_ONDATE")->Value =  EndDate ;
 
-                      xlReport_23->Params->Items[0]->Value = StartDate.DateString() ;
-                      xlReport_23->Params->Items[1]->Value = EndDate.DateString() ;
-                    //  xlReport_16->Params->Items[2]->Value = SkladData->KAgentComboBoxNAME->Value;
-                    //  xlReport_16->Params->Items[3]->Value = SkladData->ChTypeComboBoxNAME->Value;
-                      xlReport_23->Report();
-                   }
+                            xlReport_23->Params->Items[0]->Value = StartDate.DateString() ;
+                            xlReport_23->Params->Items[1]->Value = EndDate.DateString() ;
+                          //  xlReport_16->Params->Items[2]->Value = SkladData->KAgentComboBoxNAME->Value;
+                          //  xlReport_16->Params->Items[3]->Value = SkladData->ChTypeComboBoxNAME->Value;
+                            xlReport_23->Report();
+                         }
 
-
-                   if(idx == 29)
-                   {
-                      MatGroup->ParamByName("grp")->Value = GRP ;
-
-                      MakedProductShort_29->DataSource = MatGroupDS ;
-                      MakedProductShort_29->ParamByName("in_fromdate")->Value = StartDate ;
-                      MakedProductShort_29->ParamByName("in_todate")->Value =  EndDate ;
-                      MakedProductShort_29->ParamByName("IN_KAID")->Value = KAID ;
-                      MakedProductShort_29->ParamByName("IN_WH")->Value = WH ;
-
-                      xlReport_29->Params->Items[0]->Value = StartDate.DateString() ;
-                      xlReport_29->Params->Items[1]->Value = EndDate.DateString() ;
-                      xlReport_29->Params->Items[2]->Value = SkladData->KAgentComboBoxNAME->Value;
-                      xlReport_29->Params->Items[3]->Value = SkladData->WhComboBoxNAME->Value;
-                      xlReport_29->Params->Items[4]->Value = SkladData->MatGroupComboBoxNAME->Value;
-                      xlReport_29->Report();
-
-                      MakedProductShort_29->DataSource = NULL ;
-                   }
-                  if(idx == 30)
-                   {
-                      Shahmatka->ParamByName("IN_KAID")->Value = KAID ;
-                      Shahmatka->ParamByName("IN_WTYPE")->Value = 0;
-                      Shahmatka->ParamByName("IN_FROMDATE")->Value = StartDate ;
-                      Shahmatka->ParamByName("IN_TODATE")->Value =  EndDate ;
-                      xlReport_30->Params->Items[0]->Value = StartDate.DateString() ;
-                      xlReport_30->Params->Items[1]->Value = EndDate.DateString() ;
-                      xlReport_30->Params->Items[2]->Value = SkladData->KAgentComboBoxNAME->Value;
-                      xlReport_30->Report();
-                   }*/
+                        if(idx == 30)
+                         {
+                            Shahmatka->ParamByName("IN_KAID")->Value = KAID ;
+                            Shahmatka->ParamByName("IN_WTYPE")->Value = 0;
+                            Shahmatka->ParamByName("IN_FROMDATE")->Value = StartDate ;
+                            Shahmatka->ParamByName("IN_TODATE")->Value =  EndDate ;
+                            xlReport_30->Params->Items[0]->Value = StartDate.DateString() ;
+                            xlReport_30->Params->Items[1]->Value = EndDate.DateString() ;
+                            xlReport_30->Params->Items[2]->Value = SkladData->KAgentComboBoxNAME->Value;
+                            xlReport_30->Report();
+                         }*/
 
 
             //      db.PrintLog.Add(new PrintLog { PrintType = 1, RepId = idx, UserId = DBHelper.CurrentUser.UserId, OnDate = DateTime.Now });

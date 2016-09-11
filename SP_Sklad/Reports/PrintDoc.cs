@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraRichEdit.Model;
 using SP_Sklad.SkladData;
 using SpreadsheetReportBuilder;
 
@@ -40,7 +41,7 @@ namespace SP_Sklad.Reports
 
         public static void Show(int doc_id, int doc_type, BaseEntities db)
         {
-            db.SaveChanges();
+        //    db.SaveChanges();
 
             switch (doc_type)
             {
@@ -84,8 +85,15 @@ namespace SP_Sklad.Reports
             String template_file = Path.Combine(template_path, template_name);
 
             var wb = db.v_WaybillList.Where(w => w.DocId == doc_id).ToList();
+           
+            if (wb != null)
+            {
+                var m = new MoneyToStr("UAH", "UKR", "TEXT");
+                wb.First().www = m.convertValue(wb.First().SummAll.Value);
+            }
+
             var ent_id = wb.First().EntId;
-            data_report.Add("EntAccount", db.EnterpriseAccount.Where(w => w.KaId == ent_id).ToList());  
+            data_report.Add("EntAccount", db.EnterpriseAccount.Where(w => w.KaId == ent_id).ToList());
             data_report.Add("WayBillList", wb);
             data_report.Add("range1", db.GetWayBillDetOut(wb.First().WbillId).ToList());
 

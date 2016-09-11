@@ -2263,7 +2263,7 @@
             this.xtraTabPage2.Controls.Add(this.gridControl3);
             this.xtraTabPage2.ImageIndex = 2;
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(896, 157);
+            this.xtraTabPage2.Size = new System.Drawing.Size(896, 126);
             this.xtraTabPage2.Text = "Зв\'язані документи";
             // 
             // gridControl3
@@ -2276,7 +2276,7 @@
             this.repositoryItemImageComboBox2,
             this.repositoryItemImageComboBox6,
             this.repositoryItemImageComboBox7});
-            this.gridControl3.Size = new System.Drawing.Size(896, 157);
+            this.gridControl3.Size = new System.Drawing.Size(896, 126);
             this.gridControl3.TabIndex = 0;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -2359,7 +2359,8 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 5, 14),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -5, 15),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -22, 33),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -20, 26)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -20, 26),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 7, 31)});
             this.repositoryItemImageComboBox6.Name = "repositoryItemImageComboBox6";
             this.repositoryItemImageComboBox6.SmallImages = this.GridImageList;
             // 

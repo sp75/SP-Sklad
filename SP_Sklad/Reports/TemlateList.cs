@@ -23,8 +23,13 @@ namespace SP_Sklad.Reports
         public static String rep_11 { get { return "ReestrDocs.xlsx"; } }
         public static String rep_13 { get { return "RepMatSelPr.xlsx"; } }
         public static String rep_16 { get { return "RepOnExpenditure.xlsx"; } }
+        public static String rep_18 { get { return "RepMinMatRest.xlsx"; } }
         public static String rep_19 { get { return "MatTurn(19).xlsx"; } }
         public static String rep_20 { get { return "SvcOutShort(20).xlsx"; } }
-        public static String rep_28 { get { return "OrderedMat(28).xlsx"; } }  
+        public static String rep_26 { get { return "MakedProduct.xlsx"; } }
+        public static String rep_27 { get { return "RepOrdKAID.xlsx"; } }  
+        public static String rep_28 { get { return "OrderedMat(28).xlsx"; } }
+        public static String rep_29 { get { return "MakedProductShort(29).xlsx"; } }
+        
     }
 }
