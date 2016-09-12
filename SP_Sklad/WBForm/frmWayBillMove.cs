@@ -16,6 +16,7 @@ using SP_Sklad.WBDetForm;
 using EntityState = System.Data.Entity.EntityState;
 using System.Data.Entity.Core.Objects;
 using SP_Sklad.Common;
+using SP_Sklad.Reports;
 
 namespace SP_Sklad.WBForm
 {
@@ -25,8 +26,11 @@ namespace SP_Sklad.WBForm
         private int? _wbill_id { get; set; }
         private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
-        private GetWayBillDetOut_Result wbd_row { get; set; }
         private IQueryable<GetWayBillDetOut_Result> wbd_list { get; set; }
+        private GetWayBillDetOut_Result focused_dr
+        {
+            get { return WaybillDetOutGridView.GetFocusedRow() as GetWayBillDetOut_Result; }
+        } 
 
         public frmWayBillMove(int? wbill_id = null)
         {
@@ -82,6 +86,8 @@ namespace SP_Sklad.WBForm
                 WhOutComboBox.DataBindings.Add(new Binding("EditValue", wb.WaybillMove, "SourceWid"));
                 WhInComboBox.DataBindings.Add(new Binding("EditValue", wb.WaybillMove, "DestWId", true, DataSourceUpdateMode.OnValidation));
                 PersonOutComboBox.DataBindings.Add(new Binding("EditValue", wb.WaybillMove, "PersonId", true, DataSourceUpdateMode.OnValidation));
+
+                PersonInComboBox.DataBindings.Add(new Binding("EditValue", wb, "PersonId", true, DataSourceUpdateMode.OnValidation));
 
                 KagentComboBox.DataBindings.Add(new Binding("EditValue", wb, "KaId", true, DataSourceUpdateMode.OnValidation));
 
@@ -241,25 +247,25 @@ namespace SP_Sklad.WBForm
         {
             var r = new ObjectParameter("RSV", typeof(Int32));
 
-            _db.ReservedPosition(wbd_row.PosId, r);
+            _db.ReservedPosition(focused_dr.PosId, r);
             current_transaction = current_transaction.CommitRetaining(_db);
             UpdLockWB();
 
             if (r.Value != null)
             {
-                wbd_row.Rsv = (int)r.Value;
+                focused_dr.Rsv = (int)r.Value;
                 WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
             }
         }
 
         private void DelRsvBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (wbd_row.Rsv == 1 && wbd_row.PosId > 0)
+            if (focused_dr.Rsv == 1 && focused_dr.PosId > 0)
             {
-                _db.DeleteWhere<WMatTurn>(w => w.SourceId == wbd_row.PosId);
+                _db.DeleteWhere<WMatTurn>(w => w.SourceId == focused_dr.PosId);
                 current_transaction = current_transaction.CommitRetaining(_db);
                 UpdLockWB();
-                wbd_row.Rsv = 0;
+                focused_dr.Rsv = 0;
                 WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
             }
         }
@@ -299,7 +305,7 @@ namespace SP_Sklad.WBForm
 
         private void WaybillDetOutGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            wbd_row = WaybillDetOutGridView.GetRow(WaybillDetOutGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
+          
         }
 
         private void NumEdit_EditValueChanged(object sender, EventArgs e)
@@ -314,20 +320,27 @@ namespace SP_Sklad.WBForm
 
         private void WbDetPopupMenu_Popup(object sender, EventArgs e)
         {
-            RsvBarBtn.Enabled = (wbd_row.Rsv == 0 && wbd_row.PosId > 0);
-            DelRsvBarBtn.Enabled = (wbd_row.Rsv == 1 && wbd_row.PosId > 0);
+            RsvBarBtn.Enabled = (focused_dr.Rsv == 0 && focused_dr.PosId > 0);
+            DelRsvBarBtn.Enabled = (focused_dr.Rsv == 1 && focused_dr.PosId > 0);
             RsvAllBarBtn.Enabled = (WaybillDetOutGridView.FocusedRowHandle >= 0);
             DelAllRsvBarBtn.Enabled = (WaybillDetOutGridView.FocusedRowHandle >= 0);
         }
 
         private void RsvInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = WaybillDetOutGridView.GetRow(WaybillDetOutGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
+            IHelper.ShowMatRSV(focused_dr.MatId, _db);
+        }
 
-            if (dr != null)
-            {
-                IHelper.ShowMatRSV(dr.MatId, _db);
-            }
+        private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            _db.SaveChanges();
+
+            PrintDoc.Show(wb.DocId.Value, wb.WType, _db);
+        }
+
+        private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowMatInfo(focused_dr.MatId);
         }
     }
 }

@@ -9,7 +9,16 @@ namespace SP_Sklad.Reports
     class TemlateList
     {
         public static String wb_in { get { return "WayBill_In.xlsx"; } }
-        public static String wb_out { get { return "WayBill_Out.xlsm"; } }
+        public static String wb_out { get { return "WayBill_Out.xlsx"; } }
+        public static String write_on { get { return "WriteOn.xlsx"; } }
+        public static String write_off { get { return "WriteOff.xlsx"; } }
+        public static String re_supp { get { return "ReturnSupplier.xlsx"; } }
+        public static String re_cust { get { return "ReturnCustomer.xlsx"; } }
+        public static String ord_out { get { return "OrderedOut.xlsx"; } }
+        public static String ord_in { get { return "OrderedIn.xlsx"; } }
+        public static String wb_move { get { return "nakladnaMove.xlsx"; } }
+        public static String wb_inv { get { return "InventoryAct.xlsx"; } }
+
         public static String rep_1 { get { return "MatInShort(1).xlsx"; } }
         public static String rep_2 { get { return "MatOutShort(2).xlsx"; } }
         public static String rep_3 { get { return "MatOut.xlsx"; } }

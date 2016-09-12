@@ -122,6 +122,7 @@
             this.DelRsvBarBtn = new DevExpress.XtraBars.BarButtonItem();
             this.DelAllRsvBarBtn = new DevExpress.XtraBars.BarButtonItem();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.CommissionBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
@@ -153,6 +154,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CommissionBS)).BeginInit();
             this.SuspendLayout();
             // 
             // standaloneBarDockControl1
@@ -408,6 +410,7 @@
             // 
             this.lookUpEdit3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.lookUpEdit3.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.CommissionBS, "ThirdKaId", true));
             this.lookUpEdit3.Location = new System.Drawing.Point(67, 142);
             this.lookUpEdit3.Name = "lookUpEdit3";
             this.lookUpEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -436,6 +439,7 @@
             // 
             this.lookUpEdit2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.lookUpEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.CommissionBS, "FirstKaId", true));
             this.lookUpEdit2.Location = new System.Drawing.Point(67, 75);
             this.lookUpEdit2.Name = "lookUpEdit2";
             this.lookUpEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -464,6 +468,7 @@
             // 
             this.lookUpEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.lookUpEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.CommissionBS, "KaId", true));
             this.lookUpEdit1.Location = new System.Drawing.Point(67, 41);
             this.lookUpEdit1.Name = "lookUpEdit1";
             this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -529,6 +534,7 @@
             // 
             this.PersonComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.PersonComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.CommissionBS, "SecondKaId", true));
             this.PersonComboBox.Location = new System.Drawing.Point(67, 108);
             this.PersonComboBox.Name = "PersonComboBox";
             this.PersonComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -971,6 +977,7 @@
             this.PrevievBtn.Id = 0;
             this.PrevievBtn.ImageIndex = 0;
             this.PrevievBtn.Name = "PrevievBtn";
+            this.PrevievBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrevievBtn_ItemClick);
             // 
             // MatInfoBtn
             // 
@@ -978,6 +985,7 @@
             this.MatInfoBtn.Id = 11;
             this.MatInfoBtn.ImageIndex = 4;
             this.MatInfoBtn.Name = "MatInfoBtn";
+            this.MatInfoBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MatInfoBtn_ItemClick);
             // 
             // RsvInfoBtn
             // 
@@ -985,6 +993,7 @@
             this.RsvInfoBtn.Id = 10;
             this.RsvInfoBtn.ImageIndex = 3;
             this.RsvInfoBtn.Name = "RsvInfoBtn";
+            this.RsvInfoBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RsvInfoBtn_ItemClick);
             // 
             // bar1
             // 
@@ -1135,6 +1144,10 @@
             this.WbDetPopupMenu.Manager = this.barManager1;
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
             // 
+            // CommissionBS
+            // 
+            this.CommissionBS.DataSource = typeof(SP_Sklad.SkladData.Commission);
+            // 
             // frmWBWriteOff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1193,6 +1206,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CommissionBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1292,5 +1306,6 @@
         private DevExpress.XtraEditors.SimpleButton WhBtn;
         private DevExpress.XtraEditors.CheckEdit DefNumCheckBox;
         public DevExpress.XtraEditors.CheckEdit TurnDocCheckBox;
+        private System.Windows.Forms.BindingSource CommissionBS;
     }
 }

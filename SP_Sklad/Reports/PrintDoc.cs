@@ -52,6 +52,38 @@ namespace SP_Sklad.Reports
                 case -1:
                     WayBillOutReport(doc_id, db, TemlateList.wb_out);
                     break;
+
+                case 5:
+                    WayBillReport(doc_id, db, TemlateList.write_on);
+                    break;
+
+                case -5:
+                    WayBillReport(doc_id, db, TemlateList.write_off);
+                    break;
+
+                case -6:
+                    WayBillReport(doc_id, db, TemlateList.re_supp);
+                    break;
+
+                case 6:
+                    WayBillReport(doc_id, db, TemlateList.re_cust);
+                    break;
+
+                case -16:
+                    WayBillReport(doc_id, db, TemlateList.ord_out);
+                    break;
+
+                case 16:
+                    WayBillReport(doc_id, db, TemlateList.ord_in);
+                    break;
+
+                case 4:
+                    WayBillReport(doc_id, db, TemlateList.wb_move);
+                    break;
+
+                case 7:
+                    WayBillReport(doc_id, db, TemlateList.wb_inv);
+                    break;
             }
         }
 
@@ -59,30 +91,37 @@ namespace SP_Sklad.Reports
         {
             var dataForReport = new Dictionary<string, IList>();
 
-            String result_file = Path.Combine(rep_path, template_name);
-            String template_file = Path.Combine(template_path, template_name);
-
             var wb = db.v_WaybillList.Where(w => w.DocId == doc_id).ToList();
 
             dataForReport.Add("WayBillList", wb);
             dataForReport.Add("range1", db.GetWaybillDetIn(wb.First().WbillId).ToList());
 
-            if (File.Exists(template_file))
-            {
-                ReportBuilder.GenerateReport(dataForReport, template_file, result_file, false);
-            }
-
-            if (File.Exists(result_file))
-            {
-                Process.Start(result_file);
-            }
+            Print(dataForReport, template_name);
         }
+
+        public static void WayBillReport(int doc_id, BaseEntities db, string template_name)
+        {
+            var dataForReport = new Dictionary<string, IList>();
+
+            var wb = db.v_WaybillList.Where(w => w.DocId == doc_id).ToList();
+            int wbill_id = wb.First().WbillId;
+
+            dataForReport.Add("WayBillList", wb);
+            dataForReport.Add("WayBillItems", db.GetWaybillDetIn(wbill_id).ToList());
+            dataForReport.Add("Commission", db.Commission.Where(w => w.WbillId == wbill_id).Select(s => new
+            {
+                MainName = s.Kagent.Name,
+                FirstName = s.Kagent1.Name,
+                SecondName = s.Kagent2.Name,
+                ThirdName = s.Kagent3.Name
+            }).ToList());
+
+            Print(dataForReport, template_name);
+        }
+
         public static void WayBillOutReport(int doc_id, BaseEntities db, string template_name)
         {
             var data_report = new Dictionary<string, IList>();
-
-            String result_file = Path.Combine(rep_path, template_name);
-            String template_file = Path.Combine(template_path, template_name);
 
             var wb = db.v_WaybillList.Where(w => w.DocId == doc_id).ToList();
            
@@ -97,9 +136,17 @@ namespace SP_Sklad.Reports
             data_report.Add("WayBillList", wb);
             data_report.Add("range1", db.GetWayBillDetOut(wb.First().WbillId).ToList());
 
+            Print(data_report, template_name);
+        }
+
+        private static void Print(Dictionary<string, IList> data_for_report, string temlate)
+        {
+
+            String result_file = Path.Combine(rep_path, temlate);
+            String template_file = Path.Combine(template_path, temlate);
             if (File.Exists(template_file))
             {
-                ReportBuilder.GenerateReport(data_report, template_file, result_file, false);
+                ReportBuilder.GenerateReport(data_for_report, template_file, result_file, false);
             }
 
             if (File.Exists(result_file))

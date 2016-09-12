@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
+using SP_Sklad.Common;
+using SP_Sklad.Reports;
 using SP_Sklad.SkladData;
 using SP_Sklad.WBDetForm;
 using EntityState = System.Data.Entity.EntityState;
@@ -27,6 +29,10 @@ namespace SP_Sklad.WBForm
         private GetWaybillDetIn_Result wbd_row { get; set; }
         private IQueryable<GetWaybillDetIn_Result> wbd_list { get; set; }
         private List<GetRelDocList_Result> rdl  { get; set; }
+        private GetWaybillDetIn_Result focused_dr
+        {
+            get { return WaybillDetInGridView.GetFocusedRow() as GetWaybillDetIn_Result; }
+        } 
 
         public frmWBWriteOn(int? wbill_id = null)
         {
@@ -119,7 +125,7 @@ namespace SP_Sklad.WBForm
         private void RefreshDet()
         {
             wbd_list = _db.GetWaybillDetIn(_wbill_id);
-            var dr_tmp = WaybillDetInGridView.GetRow(WaybillDetInGridView.FocusedRowHandle) as GetWaybillDetIn_Result;
+            var dr_tmp = WaybillDetInGridView.GetFocusedRow() as GetWaybillDetIn_Result;
 
             WaybillDetInGridControl.DataSource = null;
             WaybillDetInGridControl.DataSource = wbd_list;
@@ -308,6 +314,23 @@ order by  ma.ondate desc */
             {
                 this.WbDetPopupMenu.ShowPopup(Control.MousePosition);
             }
+        }
+
+        private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            _db.SaveChanges();
+
+            PrintDoc.Show(wb.DocId.Value, wb.WType, _db);
+        }
+
+        private void RsvInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowMatRSV(focused_dr.MatId, _db);
+        }
+
+        private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowMatInfo(focused_dr.MatId);
         }
 
     }

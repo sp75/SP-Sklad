@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SP_Sklad.Common;
+using SP_Sklad.Reports;
 using SP_Sklad.SkladData;
 using SP_Sklad.WBDetForm;
 using EntityState = System.Data.Entity.EntityState;
@@ -21,6 +22,10 @@ namespace SP_Sklad.WBForm
         private int? _wbill_id { get; set; }
         private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
+        private dynamic focused_dr
+        {
+            get { return InventoryDetGridView.GetFocusedRow() as dynamic; }
+        } 
 
         public frmWBInventory(int? wbill_id = null)
         {
@@ -110,6 +115,7 @@ namespace SP_Sklad.WBForm
                 s.PosId,
                 s.Checked,
                 s.Num,
+                s.MatId,
                 MatName = s.Materials.Name,
                 MsrName = s.Materials.Measures.ShortName,
                 s.Amount,
@@ -263,6 +269,23 @@ namespace SP_Sklad.WBForm
                 Point p2 = Control.MousePosition;
                 this.WbDetPopupMenu.ShowPopup(p2);
             }
+        }
+
+        private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            _db.SaveChanges();
+
+            PrintDoc.Show(wb.DocId.Value, wb.WType, _db);
+        }
+
+        private void RsvInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowMatRSV(focused_dr.MatId, _db);
+        }
+
+        private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowMatInfo(focused_dr.MatId);
         }
     }
 }

@@ -15,6 +15,7 @@ using SP_Sklad.Common;
 using SP_Sklad.Properties;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using SP_Sklad.EditForm;
+using SP_Sklad.Reports;
 
 namespace SP_Sklad.MainTabs
 {
@@ -679,6 +680,22 @@ namespace SP_Sklad.MainTabs
             }
 
             RefrechItemBtn.PerformClick();
+        }
+
+        private void PrintItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            switch (focused_tree_node.GType)
+            {
+                case 2:
+                    var dr = WbGridView.GetFocusedRow() as GetWayBillListWh_Result;
+                    if (dr == null)
+                    {
+                        return;
+                    }
+
+                    PrintDoc.Show(dr.DocId.Value, dr.WType.Value, DB.SkladBase());
+                    break;
+            }
         }
     }
 }

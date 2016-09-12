@@ -319,6 +319,23 @@ namespace SP_Sklad.Common
             }
         }
 
+        static public void ShowOrdered(int ka_id, int w_type, int mat_id)
+        {
+            /*frmOrderedList = new TfrmOrderedList(Application);
+            frmOrderedList->TopPanelData->Open();
+            frmOrderedList->TopPanelData->Edit();
+            frmOrderedList->TopPanelDataIN_KAID->Value = KAID;
+            frmOrderedList->TopPanelData->Edit();
+            frmOrderedList->TopPanelDataIN_MATID->Value = MATID ;
+            frmOrderedList->TopPanelData->Edit();
+            frmOrderedList->TopPanelDataIN_TODATE->Value =  WorkDateEdit->Date;
+            frmOrderedList->TopPanelData->Edit();
+            frmOrderedList->TopPanelDataIN_WTYPE->Value = WTYPE;
+            if(frmOrderedList->TopPanelData->State == dsEdit) frmOrderedList->TopPanelData->Post();
+            frmOrderedList->ShowModal();
+            delete frmOrderedList ;*/
+        }
+
     }
 
     public class CustomMatList

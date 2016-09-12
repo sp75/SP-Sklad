@@ -34,7 +34,7 @@
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.PrevievBtn = new DevExpress.XtraBars.BarButtonItem();
             this.KagBalBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.OrdInfoBtn = new DevExpress.XtraBars.BarButtonItem();
             this.RsvInfoBtn = new DevExpress.XtraBars.BarButtonItem();
             this.MatInfoBtn = new DevExpress.XtraBars.BarButtonItem();
             this.bar1 = new DevExpress.XtraBars.Bar();
@@ -143,7 +143,7 @@
             this.KagBalBtn,
             this.EditMaterialBtn,
             this.DelMaterialBtn,
-            this.barButtonItem1,
+            this.OrdInfoBtn,
             this.RsvInfoBtn,
             this.MatInfoBtn,
             this.RsvBarBtn,
@@ -170,7 +170,7 @@
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.PrevievBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.KagBalBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.OrdInfoBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.RsvInfoBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.MatInfoBtn)});
             this.bar2.OptionsBar.MultiLine = true;
@@ -183,6 +183,7 @@
             this.PrevievBtn.Id = 0;
             this.PrevievBtn.ImageIndex = 0;
             this.PrevievBtn.Name = "PrevievBtn";
+            this.PrevievBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrevievBtn_ItemClick);
             // 
             // KagBalBtn
             // 
@@ -190,13 +191,15 @@
             this.KagBalBtn.Id = 1;
             this.KagBalBtn.ImageIndex = 1;
             this.KagBalBtn.Name = "KagBalBtn";
+            this.KagBalBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.KagBalBtn_ItemClick);
             // 
-            // barButtonItem1
+            // OrdInfoBtn
             // 
-            this.barButtonItem1.Caption = "Замовлене в постачальників";
-            this.barButtonItem1.Id = 9;
-            this.barButtonItem1.ImageIndex = 2;
-            this.barButtonItem1.Name = "barButtonItem1";
+            this.OrdInfoBtn.Caption = "Замовлене клієнтами";
+            this.OrdInfoBtn.Id = 9;
+            this.OrdInfoBtn.ImageIndex = 2;
+            this.OrdInfoBtn.Name = "OrdInfoBtn";
+            this.OrdInfoBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // RsvInfoBtn
             // 
@@ -204,6 +207,7 @@
             this.RsvInfoBtn.Id = 10;
             this.RsvInfoBtn.ImageIndex = 3;
             this.RsvInfoBtn.Name = "RsvInfoBtn";
+            this.RsvInfoBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RsvInfoBtn_ItemClick);
             // 
             // MatInfoBtn
             // 
@@ -211,6 +215,7 @@
             this.MatInfoBtn.Id = 11;
             this.MatInfoBtn.ImageIndex = 4;
             this.MatInfoBtn.Name = "MatInfoBtn";
+            this.MatInfoBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MatInfoBtn_ItemClick);
             // 
             // bar1
             // 
@@ -904,7 +909,7 @@
         private DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraBars.BarButtonItem PrevievBtn;
         private DevExpress.XtraBars.BarButtonItem KagBalBtn;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem OrdInfoBtn;
         private DevExpress.XtraBars.BarButtonItem RsvInfoBtn;
         private DevExpress.XtraBars.BarButtonItem MatInfoBtn;
         private DevExpress.XtraBars.Bar bar1;

@@ -15,6 +15,8 @@ using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using System.Data.Entity.Core.Objects;
 using DevExpress.XtraGrid;
+using SP_Sklad.Reports;
+using SP_Sklad.Common;
 
 namespace SP_Sklad.WBForm
 {
@@ -27,6 +29,10 @@ namespace SP_Sklad.WBForm
         private WaybillList wb { get; set; }
         private GetWayBillDetOut_Result wbd_row { get; set; }
         private IQueryable<GetWayBillDetOut_Result> wbd_list { get; set; }
+        private GetWayBillDetOut_Result focused_dr
+        {
+            get { return WaybillDetOutGridView.GetFocusedRow() as GetWayBillDetOut_Result; }
+        } 
 
         public frmWBWriteOff(int? wbill_id=null)
         {
@@ -40,7 +46,10 @@ namespace SP_Sklad.WBForm
         private void frmWBWriteOff_Load(object sender, EventArgs e)
         {
             WhOutComboBox.Properties.DataSource = DBHelper.WhList();
-
+            lookUpEdit1.Properties.DataSource = DBHelper.Persons;
+            lookUpEdit2.Properties.DataSource = DBHelper.Persons;
+            PersonComboBox.Properties.DataSource = DBHelper.Persons;
+            lookUpEdit3.Properties.DataSource = DBHelper.Persons;
 
             if (_wbill_id == null && doc_id == null)
             {
@@ -55,11 +64,11 @@ namespace SP_Sklad.WBForm
                     PersonId = DBHelper.CurrentUser.KaId,
                     WaybillMove = new WaybillMove { SourceWid = DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId }
                 });
-
+               
                 _db.SaveChanges();
-
                 _wbill_id = wb.WbillId;
-                //wb.WaybillMove = new WaybillMove { WBillId = _wbill_id.Value };
+                CommissionBS.DataSource = _db.Commission.Add(new Commission { WbillId = _wbill_id.Value, KaId = DBHelper.CurrentUser.KaId });
+                _db.SaveChanges();
 
             }
             else
@@ -110,12 +119,15 @@ namespace SP_Sklad.WBForm
 
             if (wb != null)
             {
+                _db.Entry<WaybillList>(wb).State = EntityState.Modified;
+
+                _wbill_id = wb.WbillId;
+
                 wb.WaybillMove = _db.WaybillMove.Find(_wbill_id);
+                CommissionBS.DataSource = _db.Commission.FirstOrDefault(w => w.WbillId == _wbill_id);
             }
 
-            _db.Entry<WaybillList>(wb).State = EntityState.Modified;
 
-            _wbill_id = wb.WbillId;
         }
 
         private void RefreshDet()
@@ -342,6 +354,23 @@ namespace SP_Sklad.WBForm
             {
                 wb.WaybillMove.SourceWid = (int)WhOutComboBox.EditValue;
             }
+        }
+
+        private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            _db.SaveChanges();
+
+            PrintDoc.Show(wb.DocId.Value, wb.WType, _db);
+        }
+
+        private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowMatInfo(focused_dr.MatId);
+        }
+
+        private void RsvInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowMatRSV(focused_dr.MatId, _db);
         }
 
     }

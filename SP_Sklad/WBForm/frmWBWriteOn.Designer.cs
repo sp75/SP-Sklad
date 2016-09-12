@@ -159,6 +159,7 @@
             this.PrevievBtn.Id = 0;
             this.PrevievBtn.ImageIndex = 0;
             this.PrevievBtn.Name = "PrevievBtn";
+            this.PrevievBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrevievBtn_ItemClick);
             // 
             // MatInfoBtn
             // 
@@ -166,6 +167,7 @@
             this.MatInfoBtn.Id = 11;
             this.MatInfoBtn.ImageIndex = 4;
             this.MatInfoBtn.Name = "MatInfoBtn";
+            this.MatInfoBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MatInfoBtn_ItemClick);
             // 
             // RsvInfoBtn
             // 
@@ -173,6 +175,7 @@
             this.RsvInfoBtn.Id = 10;
             this.RsvInfoBtn.ImageIndex = 3;
             this.RsvInfoBtn.Name = "RsvInfoBtn";
+            this.RsvInfoBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RsvInfoBtn_ItemClick);
             // 
             // bar1
             // 

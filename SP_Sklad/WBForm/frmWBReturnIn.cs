@@ -14,6 +14,7 @@ using SP_Sklad.SkladData;
 using SP_Sklad.WBDetForm;
 using SP_Sklad.Common;
 using System.Windows.Input;
+using SP_Sklad.Reports;
 
 namespace SP_Sklad.WBForm
 {
@@ -24,8 +25,11 @@ namespace SP_Sklad.WBForm
         private int? _wbill_id { get; set; }
         private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
-        private GetWayBillDetOut_Result wbd_row { get; set; }
         private IQueryable<GetWaybillDetIn_Result> wbd_list { get; set; }
+        private GetWayBillDetOut_Result focused_dr
+        {
+            get { return WBDetReInGridView.GetFocusedRow() as GetWayBillDetOut_Result; }
+        } 
 
         public frmWBReturnIn(int wtype, int? wbill_id)
         {
@@ -134,6 +138,7 @@ namespace SP_Sklad.WBForm
             DelMaterialBtn.Enabled = EditMaterialBtn.Enabled;
             RsvInfoBtn.Enabled = EditMaterialBtn.Enabled;
             MatInfoBtn.Enabled = EditMaterialBtn.Enabled;
+            OrdInfoBtn.Enabled = EditMaterialBtn.Enabled;
 
             KagentComboBox.Enabled = WBDetReInGridView.DataRowCount == 0;
             KAgentBtn.Enabled = KagentComboBox.Enabled;
@@ -302,6 +307,33 @@ namespace SP_Sklad.WBForm
    
                 BarCodeEdit.Text = "";
             }
+        }
+
+        private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            _db.SaveChanges();
+
+            PrintDoc.Show(wb.DocId.Value, wb.WType, _db);
+        }
+
+        private void RsvInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowMatRSV(focused_dr.MatId, _db);
+        }
+
+        private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowMatInfo(focused_dr.MatId);
+        }
+
+        private void KagBalBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowKABalans((int)KagentComboBox.EditValue);
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowOrdered((int)KagentComboBox.EditValue, wb.WType, focused_dr.MatId);
         }
     }
 }
