@@ -432,5 +432,10 @@ namespace SP_Sklad.WBForm
                 RefreshDet();
             }
         }
+
+        private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
     }
 }

@@ -23,5 +23,6 @@ namespace SP_Sklad.SkladData
         public virtual WaybillDet WaybillDet { get; set; }
         public virtual WaybillDet WaybillDet1 { get; set; }
         public virtual WaybillDet WaybillDet2 { get; set; }
+        public virtual WaybillDet WaybillDet21 { get; set; }
     }
 }

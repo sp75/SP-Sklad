@@ -14,6 +14,7 @@ using SP_Sklad.WBForm;
 using SP_Sklad.Common;
 using SP_Sklad.WBDetForm;
 using SP_Sklad.Properties;
+using SP_Sklad.Reports;
 
 
 namespace SP_Sklad.MainTabs
@@ -90,7 +91,7 @@ namespace SP_Sklad.MainTabs
             var satrt_date = DebStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : DebStartDate.DateTime;
             var end_date = DebEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : DebEndDate.DateTime;
 
-            var dr = DeboningGridView.GetRow(DeboningGridView.FocusedRowHandle) as WBListMake_Result;
+            var dr = DeboningGridView.GetFocusedRow() as WBListMake_Result;
 
             DeboningGridControl.DataSource = null;
             DeboningGridControl.DataSource = DB.SkladBase().WBListMake(satrt_date.Date, end_date.Date.AddDays(1), (int)DebSatusList.EditValue, DebWhComboBox.EditValue.ToString(), focused_tree_node.Num, -22).ToList();
@@ -413,6 +414,33 @@ namespace SP_Sklad.MainTabs
             {
                 Point p2 = Control.MousePosition;
                 popupMenu1.ShowPopup(p2);
+            }
+        }
+
+        private void PrintItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+            switch (focused_tree_node.GType)
+            {
+                case 1:
+                    var drm = WbGridView.GetFocusedRow() as WBListMake_Result;
+                    if (drm == null)
+                    {
+                        return;
+                    }
+
+                    PrintDoc.Show(drm.DocId.Value, drm.WType, DB.SkladBase());
+                    break;
+
+                case 3:
+                    var dr = DeboningGridView.GetFocusedRow() as WBListMake_Result;
+                    if (dr == null)
+                    {
+                        return;
+                    }
+
+                    PrintDoc.Show(dr.DocId.Value, dr.WType, DB.SkladBase());
+                    break;
             }
         }
 

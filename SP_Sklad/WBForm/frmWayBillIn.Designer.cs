@@ -188,6 +188,7 @@
             this.KagBalBtn.Id = 1;
             this.KagBalBtn.ImageIndex = 1;
             this.KagBalBtn.Name = "KagBalBtn";
+            this.KagBalBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.KagBalBtn_ItemClick);
             // 
             // barButtonItem1
             // 
@@ -202,6 +203,7 @@
             this.barButtonItem2.Id = 10;
             this.barButtonItem2.ImageIndex = 3;
             this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // barButtonItem3
             // 
@@ -209,6 +211,7 @@
             this.barButtonItem3.Id = 11;
             this.barButtonItem3.ImageIndex = 4;
             this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
             // bar1
             // 

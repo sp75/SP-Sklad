@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraTreeList;
+using SP_Sklad.Common;
+using SP_Sklad.Reports;
 using SP_Sklad.SkladData;
 
 namespace SP_Sklad.WBForm
@@ -253,6 +255,17 @@ namespace SP_Sklad.WBForm
 
             _db.SaveChanges();
             GetDetail();
+        }
+
+        private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            PrintDoc.Show(_pl_id.Value, 10, _db);
+        }
+
+        private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var dr = gridView1.GetFocusedRow() as GetPriceListDet_Result;
+            IHelper.ShowMatInfo(dr.MatId);
         }
     }
 }

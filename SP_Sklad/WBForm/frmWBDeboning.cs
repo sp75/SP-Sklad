@@ -16,6 +16,7 @@ using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using System.Data.Entity.Core.Objects;
 using DevExpress.XtraGrid;
 using SP_Sklad.Common;
+using SP_Sklad.Reports;
 
 namespace SP_Sklad.WBForm
 {
@@ -421,6 +422,13 @@ namespace SP_Sklad.WBForm
             dr.Total = dd.Amount * dd.Price;
 
             DeboningDetGridView.RefreshRow(e.RowHandle);
+        }
+
+        private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            _db.SaveChanges();
+
+            PrintDoc.Show(wb.DocId.Value, wb.WType, _db);
         }
     }
 }

@@ -234,6 +234,7 @@
         <AssociationConnector Association="BaseModel.FK_WMT_POSID" />
         <AssociationConnector Association="BaseModel.FK_WMT_SRCID" />
         <AssociationConnector Association="BaseModel.PosRel" />
+        <AssociationConnector Association="BaseModel.FK_RETREL_POSID" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="7.0245045325832924" PointY="12.641712000892364" />

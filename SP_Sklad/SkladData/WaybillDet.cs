@@ -27,6 +27,7 @@ namespace SP_Sklad.SkladData
             this.WMatTurn = new HashSet<WMatTurn>();
             this.WMatTurn1 = new HashSet<WMatTurn>();
             this.WaybillDet1 = new HashSet<WaybillDet>();
+            this.ReturnRel21 = new HashSet<ReturnRel>();
         }
     
         public int PosId { get; set; }
@@ -70,5 +71,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<WMatTurn> WMatTurn1 { get; set; }
         public virtual ICollection<WaybillDet> WaybillDet1 { get; set; }
         public virtual WaybillDet WaybillDet2 { get; set; }
+        public virtual ICollection<ReturnRel> ReturnRel21 { get; set; }
     }
 }

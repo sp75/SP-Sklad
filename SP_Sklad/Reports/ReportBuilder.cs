@@ -347,8 +347,11 @@ namespace SpreadsheetReportBuilder
 
                             if ((Dec || Int) && val.Length == 0) val = "0";
 
-
-                            formula = Regex.Replace(formula, pattern, "${1}" + val + "${3}"); //formula = formula.Replace(teg, val);
+                            while (Regex.IsMatch(formula, pattern))
+                            {
+                                formula = Regex.Replace(formula, pattern, "${1}" + val + "${3}"); //formula = formula.Replace(teg, val);
+                            }
+                           
 
                             if ((Dec || Int) && formula == "0" && nullDB) formula = "";
                         }

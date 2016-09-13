@@ -19,5 +19,8 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> Price { get; set; }
         public Nullable<int> PlDetType { get; set; }
         public string GrpName { get; set; }
+        public Nullable<int> MatId { get; set; }
+        public Nullable<int> GrpId { get; set; }
+        public string BarCode { get; set; }
     }
 }

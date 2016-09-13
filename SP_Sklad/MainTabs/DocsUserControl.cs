@@ -523,7 +523,12 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 //     case 4: frmReportModule->PrintWB(PayDocDOCID->Value, PayDocDOCTYPE->Value * 30, DocPAnelTransaction); break;
-                //       case 5: frmReportModule->PrintPriceList(PriceListPLID->Value, DocPAnelTransaction); break;
+
+                case 5:
+                    var p_l = PriceListGridView.GetFocusedRow() as v_PriceList;
+                    PrintDoc.Show(p_l.PlId, 10, _db);
+
+                    break;
                 //      case 6: frmReportModule->PrintWB(ContractsListDOCID->AsVariant, ContractsListDOCTYPE->Value * 8, DocPAnelTransaction);
                 //      case 7: frmReportModule->PrintWB(TaxWBListDOCID->AsVariant, -7, DocPAnelTransaction);
             }
