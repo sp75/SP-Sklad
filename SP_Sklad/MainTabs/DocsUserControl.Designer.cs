@@ -70,6 +70,7 @@
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn37 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
             this.row = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -460,7 +461,8 @@
             this.gridColumn8});
             this.WbGridView.GridControl = this.WBGridControl;
             this.WbGridView.Name = "WbGridView";
-            this.WbGridView.OptionsBehavior.Editable = false;
+            this.WbGridView.OptionsBehavior.AllowIncrementalSearch = true;
+            this.WbGridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
             this.WbGridView.OptionsBehavior.ReadOnly = true;
             this.WbGridView.OptionsView.EnableAppearanceEvenRow = true;
             this.WbGridView.OptionsView.EnableAppearanceOddRow = true;
@@ -787,14 +789,20 @@
             // 
             // gridView2
             // 
+            this.gridView2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn9,
             this.gridColumn10,
             this.gridColumn11,
             this.gridColumn12,
-            this.gridColumn13});
+            this.gridColumn13,
+            this.gridColumn37});
             this.gridView2.GridControl = this.gridControl2;
             this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsBehavior.AllowIncrementalSearch = true;
+            this.gridView2.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
+            this.gridView2.OptionsBehavior.ReadOnly = true;
+            this.gridView2.OptionsView.ShowFooter = true;
             this.gridView2.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn9
@@ -818,6 +826,8 @@
             // gridColumn11
             // 
             this.gridColumn11.Caption = "Кількість";
+            this.gridColumn11.DisplayFormat.FormatString = "0.0000";
+            this.gridColumn11.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn11.FieldName = "Amount";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
@@ -836,11 +846,23 @@
             // gridColumn13
             // 
             this.gridColumn13.Caption = "Ціна";
+            this.gridColumn13.DisplayFormat.FormatString = "0.00";
+            this.gridColumn13.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn13.FieldName = "Price";
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
             this.gridColumn13.VisibleIndex = 4;
             this.gridColumn13.Width = 160;
+            // 
+            // gridColumn37
+            // 
+            this.gridColumn37.Caption = "Сума з ПДВ";
+            this.gridColumn37.FieldName = "Total";
+            this.gridColumn37.Name = "gridColumn37";
+            this.gridColumn37.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", "{0:0.##}")});
+            this.gridColumn37.Visible = true;
+            this.gridColumn37.VisibleIndex = 5;
             // 
             // xtraTabPage1
             // 
@@ -852,7 +874,8 @@
             // 
             // vGridControl1
             // 
-            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeWE;
+            this.vGridControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl1.Location = new System.Drawing.Point(0, 0);
             this.vGridControl1.Name = "vGridControl1";
@@ -933,6 +956,7 @@
             // 
             // gridView3
             // 
+            this.gridView3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn14,
             this.gridColumn15,
@@ -944,6 +968,9 @@
             this.gridColumn21});
             this.gridView3.GridControl = this.gridControl3;
             this.gridView3.Name = "gridView3";
+            this.gridView3.OptionsBehavior.AllowIncrementalSearch = true;
+            this.gridView3.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
+            this.gridView3.OptionsBehavior.ReadOnly = true;
             this.gridView3.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn14
@@ -1004,7 +1031,9 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 6, 8),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -6, 7),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 16, 10),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -16, 9)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -16, 9),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 3, 4),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -3, 5)});
             this.repositoryItemImageComboBox6.Name = "repositoryItemImageComboBox6";
             this.repositoryItemImageComboBox6.SmallImages = this.GridImageList;
             // 
@@ -1049,6 +1078,8 @@
             // gridColumn18
             // 
             this.gridColumn18.Caption = "Дата";
+            this.gridColumn18.DisplayFormat.FormatString = "g";
+            this.gridColumn18.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn18.FieldName = "OnDate";
             this.gridColumn18.Name = "gridColumn18";
             this.gridColumn18.Visible = true;
@@ -1067,6 +1098,8 @@
             // gridColumn20
             // 
             this.gridColumn20.Caption = "Сума";
+            this.gridColumn20.DisplayFormat.FormatString = "0.00";
+            this.gridColumn20.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn20.FieldName = "Summ";
             this.gridColumn20.Name = "gridColumn20";
             this.gridColumn20.Visible = true;
@@ -1153,7 +1186,8 @@
             this.gridColumn27});
             this.PayDocGridView.GridControl = this.PDgridControl;
             this.PayDocGridView.Name = "PayDocGridView";
-            this.PayDocGridView.OptionsBehavior.Editable = false;
+            this.PayDocGridView.OptionsBehavior.AllowIncrementalSearch = true;
+            this.PayDocGridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
             this.PayDocGridView.OptionsBehavior.ReadOnly = true;
             this.PayDocGridView.OptionsView.EnableAppearanceEvenRow = true;
             this.PayDocGridView.OptionsView.EnableAppearanceOddRow = true;
@@ -1511,6 +1545,9 @@
             this.gridColumn36});
             this.gridView1.GridControl = this.RelPayDocGridControl;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.AllowIncrementalSearch = true;
+            this.gridView1.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
+            this.gridView1.OptionsBehavior.ReadOnly = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn29
@@ -2556,5 +2593,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn57;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn58;
         private System.Windows.Forms.BindingSource PriceListBS;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn37;
     }
 }
