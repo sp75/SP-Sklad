@@ -125,7 +125,7 @@ namespace SP_Sklad.Reports
                     s.Key.GrpId,
                     Name = s.Key.GrpName,
                     Summ = s.Sum(xs => xs.SumPrice)
-                }).OrderBy(o=> o.Name).ToList();
+                }).OrderBy(o => o.Name).ToList();
 
                 rel.Add(new
                 {
@@ -641,7 +641,6 @@ namespace SP_Sklad.Reports
                 Print(data_for_report, TemlateList.rep_18);
             }
 
-
             if (idx == 26)
             {
                 int grp = Convert.ToInt32(MatGroup.GrpId);
@@ -674,8 +673,6 @@ namespace SP_Sklad.Reports
                 Print(data_for_report, TemlateList.rep_27);
 
             }
-
-
 
             if (idx == 29)
             {
@@ -806,22 +803,29 @@ namespace SP_Sklad.Reports
                 Print(data_for_report, TemlateList.rep_23);
             }
 
-              /*          if(idx == 30)
-                         {
-                            Shahmatka->ParamByName("IN_KAID")->Value = KAID ;
-                            Shahmatka->ParamByName("IN_WTYPE")->Value = 0;
-                            Shahmatka->ParamByName("IN_FROMDATE")->Value = StartDate ;
-                            Shahmatka->ParamByName("IN_TODATE")->Value =  EndDate ;
-                            xlReport_30->Params->Items[0]->Value = StartDate.DateString() ;
-                            xlReport_30->Params->Items[1]->Value = EndDate.DateString() ;
-                            xlReport_30->Params->Items[2]->Value = SkladData->KAgentComboBoxNAME->Value;
-                            xlReport_30->Report();
-                         }*/
+            /*          if(idx == 30)
+                       {
+                          Shahmatka->ParamByName("IN_KAID")->Value = KAID ;
+                          Shahmatka->ParamByName("IN_WTYPE")->Value = 0;
+                          Shahmatka->ParamByName("IN_FROMDATE")->Value = StartDate ;
+                          Shahmatka->ParamByName("IN_TODATE")->Value =  EndDate ;
+                          xlReport_30->Params->Items[0]->Value = StartDate.DateString() ;
+                          xlReport_30->Params->Items[1]->Value = EndDate.DateString() ;
+                          xlReport_30->Params->Items[2]->Value = SkladData->KAgentComboBoxNAME->Value;
+                          xlReport_30->Report();
+                       }*/
 
 
-            //      db.PrintLog.Add(new PrintLog { PrintType = 1, RepId = idx, UserId = DBHelper.CurrentUser.UserId, OnDate = DateTime.Now });
-            //     db.SaveChanges();
 
+            db.PrintLog.Add(new PrintLog
+            {
+                PrintType = 1,
+                RepId = idx,
+                UserId = DBHelper.CurrentUser.UserId,
+                OnDate = DateTime.Now
+            });
+
+            db.SaveChanges();
         }
 
 

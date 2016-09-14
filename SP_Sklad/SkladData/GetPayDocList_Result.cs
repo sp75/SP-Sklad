@@ -13,6 +13,7 @@ namespace SP_Sklad.SkladData
     
     public partial class GetPayDocList_Result
     {
+        public Nullable<long> Num { get; set; }
         public int PayDocId { get; set; }
         public int DocType { get; set; }
         public System.DateTime OnDate { get; set; }
