@@ -98,6 +98,18 @@ namespace SP_Sklad.Reports
                     PriseListReport(doc_id, db);
                     break;
 
+                case 3:
+                    PayDocReport(doc_id, db, TemlateList.pay_doc_in);
+                    break;
+
+                case -3:
+                    PayDocReport(doc_id, db, TemlateList.pay_doc_out);
+                    break;
+
+                case -2:
+                    PayDocReport(doc_id, db, TemlateList.pay_doc_out);
+                    break;
+
             }
         }
 
@@ -252,6 +264,23 @@ namespace SP_Sklad.Reports
             dataForReport.Add("_realation_", rel);
 
             Print(dataForReport, TemlateList.wb_maked);
+        }
+
+        public static void PayDocReport(int pay_doc_id, BaseEntities db, string template_name)
+        {
+            var dataForReport = new Dictionary<string, IList>();
+            var pd = db.v_PayDoc.Where(w => w.PayDocId == pay_doc_id).ToList();
+            if (pd != null)
+            {
+                var m = new MoneyToStr("UAH", "UKR", "TEXT");
+                 pd.First().CurrName = m.convertValue(pd.First().Total);
+            }
+            
+            dataForReport.Add("PayDoc", pd);
+            dataForReport.Add("Enterprise", db.KagentList.Where(w =>  w.KType == 3).Take( 1 ).ToList());
+
+            Print(dataForReport, template_name);
+
         }
 
         public static void PriseListReport(int pl_id, BaseEntities db)

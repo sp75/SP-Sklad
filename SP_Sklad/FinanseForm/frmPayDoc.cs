@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SP_Sklad.Reports;
 using SP_Sklad.SkladData;
 
 namespace SP_Sklad.FinanseForm
@@ -135,6 +136,13 @@ namespace SP_Sklad.FinanseForm
 
             _db.Dispose();
             current_transaction.Dispose();
+        }
+
+        private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            _db.SaveChanges();
+
+            PrintDoc.Show(_PayDocId.Value, _pd.DocType == -2 ? _pd.DocType : _pd.DocType * 3, _db);
         }
     }
 }

@@ -21,6 +21,8 @@ namespace SP_Sklad.Reports
         public static String wb_deb { get { return "nakladnaDeboning.xlsx"; } }
         public static String wb_maked { get { return "nakladnaMaked.xlsx"; } }
         public static String p_list { get { return "PriceList2.xlsx"; } }
+        public static String pay_doc_in { get { return "PrihOr.xlsx"; } }
+        public static String pay_doc_out { get { return "RashOr.xlsx"; } }
 
         public static String rep_1 { get { return "MatInShort(1).xlsx"; } }
         public static String rep_2 { get { return "MatOutShort(2).xlsx"; } }
@@ -35,9 +37,11 @@ namespace SP_Sklad.Reports
         public static String rep_11 { get { return "ReestrDocs.xlsx"; } }
         public static String rep_13 { get { return "RepMatSelPr.xlsx"; } }
         public static String rep_16 { get { return "RepOnExpenditure.xlsx"; } }
+        public static String rep_17 { get { return "FinResult(17).xlsx"; } }
         public static String rep_18 { get { return "RepMinMatRest.xlsx"; } }
         public static String rep_19 { get { return "MatTurn(19).xlsx"; } }
         public static String rep_20 { get { return "SvcOutShort(20).xlsx"; } }
+        public static String rep_23 { get { return "TurnMoney(23).xlsx"; } }
         public static String rep_26 { get { return "MakedProduct.xlsx"; } }
         public static String rep_27 { get { return "RepOrdKAID.xlsx"; } }  
         public static String rep_28 { get { return "OrderedMat(28).xlsx"; } }

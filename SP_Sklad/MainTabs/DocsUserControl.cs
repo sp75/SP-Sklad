@@ -522,13 +522,17 @@ namespace SP_Sklad.MainTabs
                     PrintDoc.Show(dr.DocId.Value, dr.WType, _db);
                     break;
 
-                //     case 4: frmReportModule->PrintWB(PayDocDOCID->Value, PayDocDOCTYPE->Value * 30, DocPAnelTransaction); break;
+                case 4:
+                    var pd = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
+                    PrintDoc.Show(pd.PayDocId, pd.DocType == -2 ? pd.DocType : pd.DocType * 3, _db);
+                    break;
 
                 case 5:
                     var p_l = PriceListGridView.GetFocusedRow() as v_PriceList;
                     PrintDoc.Show(p_l.PlId, 10, _db);
 
                     break;
+
                 //      case 6: frmReportModule->PrintWB(ContractsListDOCID->AsVariant, ContractsListDOCTYPE->Value * 8, DocPAnelTransaction);
                 //      case 7: frmReportModule->PrintWB(TaxWBListDOCID->AsVariant, -7, DocPAnelTransaction);
             }

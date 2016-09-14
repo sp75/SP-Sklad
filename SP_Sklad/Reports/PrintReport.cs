@@ -704,57 +704,109 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("_realation_", rel);
 
                 Print(data_for_report, TemlateList.rep_29);
-            } 
-                 
+            }
 
-              /*           if(idx == 17)
-                         {
-                            MatGroup->ParamByName("grp")->Value = GRP ;
-                            MatSelPr->DataSource = MatGroupDS ;
-                            MatSelPr->ParamByName("IN_WID")->Value = WH;
-                            MatSelPr->ParamByName("IN_FROMDATE")->Value = StartDate ;
-                            MatSelPr->ParamByName("IN_TODATE")->Value =  EndDate ;
-                            MatSelPr->ParamByName("IN_KAID")->Value =  0 ;
 
-                            SvcGroup->ParamByName("grp")->Value = GRP ;
-                            SvcOut_20->DataSource = SvcGroupDS ;
-                            SvcOut_20->ParamByName("IN_KAID")->Value = 0 ;
-                            SvcOut_20->ParamByName("IN_FROMDATE")->Value = StartDate ;
-                            SvcOut_20->ParamByName("IN_TODATE")->Value =  EndDate ;
+            if (idx == 17)
+            {
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
 
-                            DocList_16->ParamByName("IN_KAID")->Value = 0 ;
-                            DocList_16->ParamByName("IN_FROMDATE")->Value = StartDate ;
-                            DocList_16->ParamByName("IN_TODATE")->Value =  EndDate ;
-                            DocList_16->ParamByName("IN_ctype")->Value = 0 ;
-                            DocList_16->ParamByName("showall")->Value = 0 ;
+                var mat = db.REP_13(StartDate, EndDate, 0, 0, "*", 0).ToList();
+                var mat_grp = mat.GroupBy(g => new { g.GrpName, g.GrpId }).Select(s => new
+                {
+                    s.Key.GrpId,
+                    Name = s.Key.GrpName,
+                    Income = s.Sum(xs => xs.SummOut - (xs.AmountOut * xs.AvgPrice))
+                }).OrderBy(o => o.Name).ToList();
+                rel.Add(new
+                {
+                    pk = "GrpId",
+                    fk = "GrpId",
+                    master_table = "MatGroup",
+                    child_table = "MatList"
+                });
+                data_for_report.Add("MatGroup", mat_grp);
+                data_for_report.Add("MatList", mat);
 
-                           // WBWriteOff->DataSource = MatGroupDS ;
-                            WBWriteOff->ParamByName("IN_FROMDATE")->Value = StartDate ;
-                            WBWriteOff->ParamByName("IN_TODATE")->Value =  EndDate ;
 
-                            xlReport_17->Params->Items[0]->Value = StartDate.DateString() ;
-                            xlReport_17->Params->Items[1]->Value = EndDate.DateString() ;
-                            xlReport_17->Report();
+                var mat2 = db.REP_13(StartDate, EndDate, 0, 0, "*", 1).ToList();
+                var mat_grp2 = mat2.GroupBy(g => new { g.GrpName, g.GrpId }).Select(s => new
+                {
+                    s.Key.GrpId,
+                    Name = s.Key.GrpName,
+                    Income = s.Sum(xs => xs.SummIn - (xs.AmountIn * xs.AvgPrice))
+                }).OrderBy(o => o.Name).ToList();
+                rel.Add(new
+                {
+                    pk = "GrpId",
+                    fk = "GrpId",
+                    master_table = "MatGroup2",
+                    child_table = "MatSelPr"
+                });
+                data_for_report.Add("MatGroup2", mat_grp2);
+                data_for_report.Add("MatSelPr", mat2);
 
-                            MatSelPr->DataSource = NULL ;
-                            SvcOut_20->DataSource = NULL ;
-                            WBWriteOff->DataSource = NULL ;
-                         }
 
-                         if(idx == 23)
-                         {
-                            PayDocList->ParamByName("IN_FROMDATE")->Value = StartDate ;
-                            PayDocList->ParamByName("IN_TODATE")->Value =  EndDate ;
-                            MONEY_ONDATE->ParamByName("IN_ONDATE")->Value =  EndDate ;
+                var svc = db.REP_20(StartDate, EndDate, 0, 0).ToList();
+                var svc_grp = svc.GroupBy(g => new { g.GrpName, g.GrpId }).Select(s => new
+                {
+                    s.Key.GrpId,
+                    Name = s.Key.GrpName,
+                    Total = s.Sum(xs => xs.Summ)
+                }).OrderBy(o => o.Name).ToList();
+                rel.Add(new
+                {
+                    pk = "GrpId",
+                    fk = "GrpId",
+                    master_table = "SvcGroup",
+                    child_table = "SvcOutDet"
+                });
+                data_for_report.Add("SvcGroup", svc_grp.Where(w => svc.Select(s => s.GrpId).Contains(w.GrpId)).ToList());
+                data_for_report.Add("SvcOutDet", svc);
 
-                            xlReport_23->Params->Items[0]->Value = StartDate.DateString() ;
-                            xlReport_23->Params->Items[1]->Value = EndDate.DateString() ;
-                          //  xlReport_16->Params->Items[2]->Value = SkladData->KAgentComboBoxNAME->Value;
-                          //  xlReport_16->Params->Items[3]->Value = SkladData->ChTypeComboBoxNAME->Value;
-                            xlReport_23->Report();
-                         }
+                var paydoc = db.REP_16(StartDate, EndDate, 0, 0, 1).ToList();
+                data_for_report.Add("DocList", paydoc);
 
-                        if(idx == 30)
+
+                var mat3 = db.REP_17(StartDate, EndDate, 0, 0).ToList();
+                var mat_grp3 = mat3.GroupBy(g => new { g.GrpName, g.GrpId }).Select(s => new
+                {
+                    s.Key.GrpId,
+                    Name = s.Key.GrpName,
+                    Summ = s.Sum(xs => xs.Summ)
+                }).OrderBy(o => o.Name).ToList();
+                rel.Add(new
+                {
+                    pk = "GrpId",
+                    fk = "GrpId",
+                    master_table = "MatGroup3",
+                    child_table = "WBWriteOff"
+                });
+                data_for_report.Add("MatGroup3", mat_grp3);
+                data_for_report.Add("WBWriteOff", mat3);
+
+                data_for_report.Add("_realation_", rel);
+
+                Print(data_for_report, TemlateList.rep_17);
+            }
+
+            if (idx == 23)
+            {
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+
+                data_for_report.Add("DocList1", db.GetPayDocList(1, StartDate, EndDate, 0, 1, -1).ToList());
+                data_for_report.Add("DocList2", db.GetPayDocList(-1, StartDate, EndDate, 0, 1, -1).ToList());
+                data_for_report.Add("DocList3", db.GetPayDocList(-2, StartDate, EndDate, 0, 1, -1).ToList());
+                data_for_report.Add("DocList4", db.GetPayDocList(6, StartDate, EndDate, 0, 1, -1).ToList());
+
+                var m = db.MoneyOnDate(EndDate).GroupBy(g => new { g.SaldoType, g.Currency }).Select(s => new { s.Key.SaldoType, s.Key.Currency, Saldo = s.Sum(sum => sum.Saldo) }).ToList();
+                data_for_report.Add("MONEY1", m.Where(w => w.SaldoType == 0).ToList());
+                data_for_report.Add("MONEY2", m.Where(w => w.SaldoType == 1).ToList());
+
+                Print(data_for_report, TemlateList.rep_23);
+            }
+
+              /*          if(idx == 30)
                          {
                             Shahmatka->ParamByName("IN_KAID")->Value = KAID ;
                             Shahmatka->ParamByName("IN_WTYPE")->Value = 0;

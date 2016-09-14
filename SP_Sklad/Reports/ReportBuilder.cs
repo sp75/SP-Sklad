@@ -69,7 +69,10 @@ namespace SpreadsheetReportBuilder
                     String fk = dataRow["fk"].ToString();
                     String master_table = dataRow["master_table"].ToString();
                     String child_table = dataRow["child_table"].ToString();
-                    dataSet.Relations.Add(child_table + "=>" + master_table, dataSet.Tables[master_table].Columns[pk], dataSet.Tables[child_table].Columns[fk]);
+                    if (dataSet.Tables[master_table].Columns.Count > 0 && dataSet.Tables[child_table].Columns.Count > 0)
+                    {
+                        dataSet.Relations.Add(child_table + "=>" + master_table, dataSet.Tables[master_table].Columns[pk], dataSet.Tables[child_table].Columns[fk]);
+                    }
                 }
                 dataSet.Tables.Remove("_realation_");
             }

@@ -11,11 +11,12 @@ namespace SP_Sklad.SkladData
 {
     using System;
     
-    public partial class REP_20_Result
+    public partial class REP_17_Result
     {
-        public int GrpId { get; set; }
+        public string BarCode { get; set; }
+        public Nullable<int> GrpId { get; set; }
         public string GrpName { get; set; }
-        public int SvcId { get; set; }
+        public int MatId { get; set; }
         public string Name { get; set; }
         public string Artikul { get; set; }
         public Nullable<decimal> Amount { get; set; }
