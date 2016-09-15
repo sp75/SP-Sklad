@@ -573,5 +573,12 @@ namespace SP_Sklad.MainTabs
 
             ExplorerRefreshBtn.PerformClick();
         }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var dr = KaGridView.GetFocusedRow() as KagentList;
+
+            IHelper.ShowOrdered(dr.KaId, 0, 0);
+        }
     }
 }

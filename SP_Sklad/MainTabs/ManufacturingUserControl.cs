@@ -420,7 +420,7 @@ namespace SP_Sklad.MainTabs
         private void PrintItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
-            switch (focused_tree_node.GType)
+         /*   switch (focused_tree_node.GType)
             {
                 case 1:
                     var drm = WbGridView.GetFocusedRow() as WBListMake_Result;
@@ -441,7 +441,14 @@ namespace SP_Sklad.MainTabs
 
                     PrintDoc.Show(dr.DocId.Value, dr.WType, DB.SkladBase());
                     break;
-            }
+            }*/
+
+            PrintDoc.Show(focused_row.DocId.Value, focused_row.WType, DB.SkladBase());
+        }
+
+        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowOrdered(0, 0, focused_row.MatId);
         }
 
     }

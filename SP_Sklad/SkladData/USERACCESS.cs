@@ -23,7 +23,7 @@ namespace SP_Sklad.SkladData
         public int CanDelete { get; set; }
         public int CanPost { get; set; }
     
-        public virtual FUNCTIONS FUNCTIONS { get; set; }
         public virtual Users Users { get; set; }
+        public virtual Functions Functions { get; set; }
     }
 }

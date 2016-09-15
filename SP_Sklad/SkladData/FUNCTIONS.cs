@@ -12,22 +12,22 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class FUNCTIONS
+    public partial class Functions
     {
-        public FUNCTIONS()
+        public Functions()
         {
             this.UserAccess = new HashSet<UserAccess>();
             this.UserTreeView = new HashSet<UserTreeView>();
         }
     
-        public int FUNID { get; set; }
-        public string CLASSNAME { get; set; }
-        public Nullable<int> TABID { get; set; }
-        public int LOGGING { get; set; }
-        public int FLAGS { get; set; }
+        public int FunId { get; set; }
+        public string ClassName { get; set; }
+        public Nullable<int> TabId { get; set; }
+        public int Logging { get; set; }
+        public int Flags { get; set; }
     
+        public virtual Tables Tables { get; set; }
         public virtual ICollection<UserAccess> UserAccess { get; set; }
         public virtual ICollection<UserTreeView> UserTreeView { get; set; }
-        public virtual Tables Tables { get; set; }
     }
 }

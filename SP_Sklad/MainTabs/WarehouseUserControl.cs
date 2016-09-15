@@ -697,5 +697,10 @@ namespace SP_Sklad.MainTabs
                     break;
             }
         }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowOrdered(0, 0, focused_wh_mat.MatId.Value);
+        }
     }
 }

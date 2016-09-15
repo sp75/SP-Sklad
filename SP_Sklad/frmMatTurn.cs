@@ -17,10 +17,12 @@ namespace SP_Sklad
     public partial class frmMatTurn : Form
     {
         public int _mat_id { get; set; }
+        private bool is_show { get; set; }
 
         public frmMatTurn(int mat_id)
         {
             InitializeComponent();
+            is_show = false;
             _mat_id = mat_id;
         }
 
@@ -59,10 +61,17 @@ namespace SP_Sklad
 
         private void wbStartDate_EditValueChanged(object sender, EventArgs e)
         {
-            if (wTypeList.ContainsFocus || wbStartDate.ContainsFocus || wbEndDate.ContainsFocus || KAgentEdit.ContainsFocus)
+            if (!is_show)
             {
-                GetTurns();
+                return;
             }
+
+            GetTurns();
+        }
+
+        private void frmMatTurn_Shown(object sender, EventArgs e)
+        {
+            is_show = true;
         }
     }
 }

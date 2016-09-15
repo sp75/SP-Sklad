@@ -10,9 +10,8 @@
 namespace SP_Sklad.SkladData
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class OperLog
+    public partial class GetOperLog_Result
     {
         public int OpId { get; set; }
         public string OpCode { get; set; }
@@ -24,7 +23,8 @@ namespace SP_Sklad.SkladData
         public Nullable<int> FunId { get; set; }
         public string DocNum { get; set; }
         public Nullable<int> UserId { get; set; }
-    
-        public virtual Tables Tables { get; set; }
+        public string fname { get; set; }
+        public string classname { get; set; }
+        public string USERNAME { get; set; }
     }
 }

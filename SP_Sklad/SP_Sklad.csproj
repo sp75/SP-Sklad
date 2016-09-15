@@ -185,6 +185,12 @@
     <Compile Include="frmMatRSV.Designer.cs">
       <DependentUpon>frmMatRSV.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmOrderedList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOrderedList.Designer.cs">
+      <DependentUpon>frmOrderedList.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmOutMatList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -361,7 +367,7 @@
     <Compile Include="SkladData\ExtRel.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\FUNCTIONS.cs">
+    <Compile Include="SkladData\Functions.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetActualRemainByWh_Result.cs">
@@ -404,6 +410,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetMatTree_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetOperLog_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetOrderedInSuppliers_Result.cs">
@@ -548,7 +557,7 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\ObservableListSource.cs" />
-    <Compile Include="SkladData\OPERLOG.cs">
+    <Compile Include="SkladData\OperLog.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\OrderedList_Result.cs">
@@ -956,6 +965,9 @@
     <EmbeddedResource Include="frmMatRSV.resx">
       <DependentUpon>frmMatRSV.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmOrderedList.resx">
+      <DependentUpon>frmOrderedList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmOutMatList.resx">
       <DependentUpon>frmOutMatList.cs</DependentUpon>
     </EmbeddedResource>
@@ -1070,6 +1082,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetDocList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetMatList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetMatMove_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.GetOperLog_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPosOut_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPriceListDet_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetWaybillDetIn_Result.datasource" />
@@ -1086,6 +1099,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatRecipe.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MoneyMoveList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MoneyTurnover_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.OrderedList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PayDoc.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PriceList.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PriceListDet.datasource" />

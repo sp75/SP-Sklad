@@ -48,6 +48,7 @@ namespace SP_Sklad.SkladData
         public Nullable<int> EntId { get; set; }
         public Nullable<decimal> OnValue { get; set; }
         public Nullable<System.DateTime> UpdatedAt { get; set; }
+        public Nullable<int> UpdatedBy { get; set; }
     
         public virtual ICollection<Commission> Commission { get; set; }
         public virtual Currency Currency { get; set; }

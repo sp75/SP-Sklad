@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SP_Sklad.SkladData;
 using SP_Sklad.EditForm;
+using SP_Sklad.Common;
 
 namespace SP_Sklad.MainTabs
 {
@@ -33,6 +34,18 @@ namespace SP_Sklad.MainTabs
 
                     DirTreeList.DataSource = db.GetServiceTree(DBHelper.CurrentUser.UserId).ToList();
                     DirTreeList.ExpandToLevel(1);
+
+
+                    wbStartDate.DateTime = DateTimeDayOfMonthExtensions.FirstDayOfMonth(DateTime.Now);
+                    wbEndDate.DateTime = DateTime.Now.AddDays(1);
+
+                    UserComboBox.Properties.DataSource = new List<object>() { new { UserId = -1, Name = "Усі" } }.Concat(new BaseEntities().Users.Select(s => new { s.UserId, s.Name })).ToList();
+                    UserComboBox.EditValue = -1;
+   
+                    wTypeList.Properties.DataSource = new List<object>() { new { FunId = (int?)-1, Name = "Усі" } }
+                        .Concat(new BaseEntities().ViewLng.Where(w => w.LangId == 2 && (w.UserTreeView.Functions.TabId == 24 || w.UserTreeView.Functions.TabId == 27 || w.UserTreeView.Functions.TabId== 51)).Select(s => new { s.UserTreeView.FunId, s.Name })).ToList();
+                    wTypeList.EditValue = -1;
+
                 }
             }
         }
@@ -103,15 +116,18 @@ namespace SP_Sklad.MainTabs
                           break;
 
                       case 3: DelBarButton->Enabled = (cxGridDBTableView2->DataController->DataSource->DataSet->FieldByName("def")->Value != 1);
-                          break;
+                          break;*/
 
-                      case 5: OperLog->Open();
+                      case 5:
+                    GetOperLogBS.DataSource = DB.SkladBase().GetOperLog(wbStartDate.DateTime, wbEndDate.DateTime, (int)wTypeList.EditValue, (int)UserComboBox.EditValue).ToList();
+                
+                /* OperLog->Open();
                           OperLog->Refresh();
                           OperLog->FullRefresh();
                           PrintLog->Open();
                           PrintLog->Refresh();
-                          PrintLog->FullRefresh();
-                          break;*/
+                          PrintLog->FullRefresh();*/
+                          break;
             }
         }
 

@@ -40,11 +40,9 @@ namespace SP_Sklad.SkladData
         public DbSet<DISCCARDGRP> DISCCARDGRP { get; set; }
         public DbSet<DISCCARDS> DISCCARDS { get; set; }
         public DbSet<ENTPARAMS> ENTPARAMS { get; set; }
-        public DbSet<FUNCTIONS> FUNCTIONS { get; set; }
         public DbSet<MATCHANGE> MATCHANGE { get; set; }
         public DbSet<MATGROUPPRICES> MATGROUPPRICES { get; set; }
         public DbSet<MATPRICES> MATPRICES { get; set; }
-        public DbSet<OPERLOG> OPERLOG { get; set; }
         public DbSet<SERIALS> SERIALS { get; set; }
         public DbSet<TAXES> TAXES { get; set; }
         public DbSet<TAXWB> TAXWB { get; set; }
@@ -123,9 +121,11 @@ namespace SP_Sklad.SkladData
         public DbSet<v_WaybillList> v_WaybillList { get; set; }
         public DbSet<EnterpriseAccount> EnterpriseAccount { get; set; }
         public DbSet<v_WhMatRemains> v_WhMatRemains { get; set; }
+        public DbSet<v_PayDoc> v_PayDoc { get; set; }
+        public DbSet<OperLog> OperLog { get; set; }
         public DbSet<WaybillList> WaybillList { get; set; }
         public DbSet<WaybillDet> WaybillDet { get; set; }
-        public DbSet<v_PayDoc> v_PayDoc { get; set; }
+        public DbSet<Functions> Functions { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)
@@ -1570,36 +1570,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_16_Result>("[BaseEntities].[REP_16](@from_date, @to_date, @ka_id, @ctype, @showall)", from_dateParameter, to_dateParameter, ka_idParameter, ctypeParameter, showallParameter);
         }
     
-        [EdmFunction("BaseEntities", "OrderedList")]
-        public virtual IQueryable<OrderedList_Result> OrderedList(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> mat_id, Nullable<int> ka_id, Nullable<int> w_type, Nullable<int> active)
-        {
-            var from_dateParameter = from_date.HasValue ?
-                new ObjectParameter("from_date", from_date) :
-                new ObjectParameter("from_date", typeof(System.DateTime));
-    
-            var to_dateParameter = to_date.HasValue ?
-                new ObjectParameter("to_date", to_date) :
-                new ObjectParameter("to_date", typeof(System.DateTime));
-    
-            var mat_idParameter = mat_id.HasValue ?
-                new ObjectParameter("mat_id", mat_id) :
-                new ObjectParameter("mat_id", typeof(int));
-    
-            var ka_idParameter = ka_id.HasValue ?
-                new ObjectParameter("ka_id", ka_id) :
-                new ObjectParameter("ka_id", typeof(int));
-    
-            var w_typeParameter = w_type.HasValue ?
-                new ObjectParameter("w_type", w_type) :
-                new ObjectParameter("w_type", typeof(int));
-    
-            var activeParameter = active.HasValue ?
-                new ObjectParameter("active", active) :
-                new ObjectParameter("active", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<OrderedList_Result>("[BaseEntities].[OrderedList](@from_date, @to_date, @mat_id, @ka_id, @w_type, @active)", from_dateParameter, to_dateParameter, mat_idParameter, ka_idParameter, w_typeParameter, activeParameter);
-        }
-    
         public virtual ObjectResult<WBListMake_Result> WBListMake(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> is_checked, string wh, Nullable<int> grp_id, Nullable<int> w_type)
         {
             var from_dateParameter = from_date.HasValue ?
@@ -1820,6 +1790,58 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("pay_type", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPayDocList_Result>("GetPayDocList", doc_typeParameter, from_dateParameter, to_dateParameter, ka_idParameter, checkedParameter, pay_typeParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "OrderedList")]
+        public virtual IQueryable<OrderedList_Result> OrderedList(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> mat_id, Nullable<int> ka_id, Nullable<int> w_type, Nullable<int> active)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var w_typeParameter = w_type.HasValue ?
+                new ObjectParameter("w_type", w_type) :
+                new ObjectParameter("w_type", typeof(int));
+    
+            var activeParameter = active.HasValue ?
+                new ObjectParameter("active", active) :
+                new ObjectParameter("active", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<OrderedList_Result>("[BaseEntities].[OrderedList](@from_date, @to_date, @mat_id, @ka_id, @w_type, @active)", from_dateParameter, to_dateParameter, mat_idParameter, ka_idParameter, w_typeParameter, activeParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetOperLog")]
+        public virtual IQueryable<GetOperLog_Result> GetOperLog(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> fun_id, Nullable<int> user_id)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var fun_idParameter = fun_id.HasValue ?
+                new ObjectParameter("fun_id", fun_id) :
+                new ObjectParameter("fun_id", typeof(int));
+    
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetOperLog_Result>("[BaseEntities].[GetOperLog](@from_date, @to_date, @fun_id, @user_id)", from_dateParameter, to_dateParameter, fun_idParameter, user_idParameter);
         }
     }
 }

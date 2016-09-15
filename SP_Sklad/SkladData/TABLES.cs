@@ -16,15 +16,15 @@ namespace SP_Sklad.SkladData
     {
         public Tables()
         {
-            this.FUNCTIONS = new HashSet<FUNCTIONS>();
-            this.OPERLOG = new HashSet<OPERLOG>();
+            this.OperLog = new HashSet<OperLog>();
+            this.Functions = new HashSet<Functions>();
         }
     
         public int TabId { get; set; }
         public string TableName { get; set; }
         public string KeyName { get; set; }
     
-        public virtual ICollection<FUNCTIONS> FUNCTIONS { get; set; }
-        public virtual ICollection<OPERLOG> OPERLOG { get; set; }
+        public virtual ICollection<OperLog> OperLog { get; set; }
+        public virtual ICollection<Functions> Functions { get; set; }
     }
 }

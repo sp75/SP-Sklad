@@ -36,5 +36,6 @@ namespace SP_Sklad.SkladData
         public string MsrName { get; set; }
         public Nullable<int> GrpId { get; set; }
         public string BarCode { get; set; }
+        public string TypeName { get; set; }
     }
 }
