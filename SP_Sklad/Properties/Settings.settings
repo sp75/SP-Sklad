@@ -14,5 +14,8 @@
     <Setting Name="user_id" Type="System.Object" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="ent_id" Type="System.Object" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

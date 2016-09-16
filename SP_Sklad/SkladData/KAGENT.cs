@@ -25,10 +25,6 @@ namespace SP_Sklad.SkladData
             this.PayDoc1 = new HashSet<PayDoc>();
             this.KaAddr = new HashSet<KaAddr>();
             this.WaybillMove = new HashSet<WaybillMove>();
-            this.Commission = new HashSet<Commission>();
-            this.Commission1 = new HashSet<Commission>();
-            this.Commission2 = new HashSet<Commission>();
-            this.Commission3 = new HashSet<Commission>();
             this.TechProcDet = new HashSet<TechProcDet>();
             this.WayBillMake = new HashSet<WayBillMake>();
             this.KAgentAccount = new HashSet<KAgentAccount>();
@@ -40,6 +36,10 @@ namespace SP_Sklad.SkladData
             this.WaybillList = new HashSet<WaybillList>();
             this.WaybillList1 = new HashSet<WaybillList>();
             this.WaybillList2 = new HashSet<WaybillList>();
+            this.Commission = new HashSet<Commission>();
+            this.Commission1 = new HashSet<Commission>();
+            this.Commission2 = new HashSet<Commission>();
+            this.Commission3 = new HashSet<Commission>();
         }
     
         public int KaId { get; set; }
@@ -82,10 +82,6 @@ namespace SP_Sklad.SkladData
         public virtual Users Users { get; set; }
         public virtual ICollection<KaAddr> KaAddr { get; set; }
         public virtual ICollection<WaybillMove> WaybillMove { get; set; }
-        public virtual ICollection<Commission> Commission { get; set; }
-        public virtual ICollection<Commission> Commission1 { get; set; }
-        public virtual ICollection<Commission> Commission2 { get; set; }
-        public virtual ICollection<Commission> Commission3 { get; set; }
         public virtual ICollection<TechProcDet> TechProcDet { get; set; }
         public virtual ICollection<WayBillMake> WayBillMake { get; set; }
         public virtual ICollection<KAgentAccount> KAgentAccount { get; set; }
@@ -99,5 +95,9 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<WaybillList> WaybillList { get; set; }
         public virtual ICollection<WaybillList> WaybillList1 { get; set; }
         public virtual ICollection<WaybillList> WaybillList2 { get; set; }
+        public virtual ICollection<Commission> Commission { get; set; }
+        public virtual ICollection<Commission> Commission1 { get; set; }
+        public virtual ICollection<Commission> Commission2 { get; set; }
+        public virtual ICollection<Commission> Commission3 { get; set; }
     }
 }

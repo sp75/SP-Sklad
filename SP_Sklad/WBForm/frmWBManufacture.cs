@@ -65,7 +65,8 @@ namespace SP_Sklad.WBForm
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
                     KaId = DBHelper.CurrentUser.KaId,
-                    WayBillMake = new WayBillMake { SourceWId = DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId }
+                    WayBillMake = new WayBillMake { SourceWId = DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId },
+                    UpdatedBy = DBHelper.CurrentUser.UserId
                 });
                 _db.SaveChanges();
 

@@ -29,7 +29,6 @@ namespace SP_Sklad.WBForm
         private GetWayBillDetOut_Result focused_dr
         {
             get { return WaybillDetOutGridView.GetFocusedRow() as GetWayBillDetOut_Result; }
-         //   set;
         } 
 
         public frmWBReturnOut(int? wbill_id)
@@ -56,7 +55,8 @@ namespace SP_Sklad.WBForm
                     CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
-                    EntId = DBHelper.Enterprise.KaId
+                    EntId = DBHelper.Enterprise.KaId,
+                    UpdatedBy = DBHelper.CurrentUser.UserId
                 });
 
                 _db.SaveChanges();

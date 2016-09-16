@@ -185,6 +185,12 @@
     <Compile Include="frmMatRSV.Designer.cs">
       <DependentUpon>frmMatRSV.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmOperLogDet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOperLogDet.Designer.cs">
+      <DependentUpon>frmOperLogDet.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmOrderedList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -964,6 +970,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMatRSV.resx">
       <DependentUpon>frmMatRSV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOperLogDet.resx">
+      <DependentUpon>frmOperLogDet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmOrderedList.resx">
       <DependentUpon>frmOrderedList.cs</DependentUpon>

@@ -119,7 +119,7 @@ namespace SP_Sklad.MainTabs
                           break;*/
 
                       case 5:
-                    GetOperLogBS.DataSource = DB.SkladBase().GetOperLog(wbStartDate.DateTime, wbEndDate.DateTime, (int)wTypeList.EditValue, (int)UserComboBox.EditValue).ToList();
+                    GetOperLogBS.DataSource = DB.SkladBase().GetOperLog(wbStartDate.DateTime, wbEndDate.DateTime, (int)wTypeList.EditValue, (int)UserComboBox.EditValue).OrderByDescending(o=> o.OnDate).ToList();
                 
                 /* OperLog->Open();
                           OperLog->Refresh();

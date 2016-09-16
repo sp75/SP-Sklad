@@ -35,13 +35,24 @@
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bar2 = new DevExpress.XtraBars.Bar();
+            this.barSubItem2 = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.barSubItem2 = new DevExpress.XtraBars.BarSubItem();
             this.CurDateEditBarItem = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemDateEdit = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
+            this.barEditItem3 = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem6 = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -51,6 +62,7 @@
             this.repositoryItemTimeEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit();
             this.barEditItem2 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
+            this.barSubItem5 = new DevExpress.XtraBars.BarSubItem();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.gridSplitContainer1 = new DevExpress.XtraGrid.GridSplitContainer();
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
@@ -72,6 +84,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).BeginInit();
@@ -122,6 +135,11 @@
             this.UserTreeImgList.Images.SetKeyName(26, "Товари.bmp");
             this.UserTreeImgList.Images.SetKeyName(27, "Послуги.bmp");
             this.UserTreeImgList.Images.SetKeyName(28, "korganizer.png");
+            this.UserTreeImgList.Images.SetKeyName(29, "пратнерка.png");
+            this.UserTreeImgList.Images.SetKeyName(30, "111.bmp");
+            this.UserTreeImgList.Images.SetKeyName(31, "ПриходНакл+.bmp");
+            this.UserTreeImgList.Images.SetKeyName(32, "РасходНакл+.bmp");
+            this.UserTreeImgList.Images.SetKeyName(33, "lock.bmp");
             // 
             // GridImageList
             // 
@@ -178,6 +196,7 @@
             this.barManager1.DockControls.Add(this.barDockControlLeft);
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.Form = this;
+            this.barManager1.Images = this.UserTreeImgList;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barSubItem1,
             this.barButtonItem1,
@@ -186,13 +205,25 @@
             this.barEditItem1,
             this.barEditItem2,
             this.CurDateEditBarItem,
-            this.barButtonItem3});
+            this.barButtonItem3,
+            this.barButtonItem4,
+            this.barSubItem3,
+            this.barButtonItem5,
+            this.barButtonItem6,
+            this.barButtonItem7,
+            this.barButtonItem8,
+            this.barSubItem4,
+            this.barSubItem5,
+            this.barEditItem3,
+            this.barSubItem6,
+            this.barButtonItem9});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 8;
+            this.barManager1.MaxItemId = 19;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTimeEdit1,
             this.repositoryItemCalcEdit1,
-            this.repositoryItemDateEdit});
+            this.repositoryItemDateEdit,
+            this.repositoryItemLookUpEdit1});
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -210,17 +241,34 @@
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem2),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.CurDateEditBarItem),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem3),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem4),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem6)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
             // 
+            // barSubItem2
+            // 
+            this.barSubItem2.Caption = "Файл";
+            this.barSubItem2.Id = 3;
+            this.barSubItem2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4)});
+            this.barSubItem2.Name = "barSubItem2";
+            // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Caption = "Вихід";
+            this.barButtonItem4.Id = 8;
+            this.barButtonItem4.Name = "barButtonItem4";
+            this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
+            // 
             // barSubItem1
             // 
-            this.barSubItem1.Caption = "barSubItem1";
+            this.barSubItem1.Caption = "Вид";
             this.barSubItem1.Id = 0;
             this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
@@ -229,28 +277,22 @@
             // 
             // barButtonItem1
             // 
-            this.barButtonItem1.Caption = "barButtonItem1";
+            this.barButtonItem1.Caption = "Панелі інструментів";
             this.barButtonItem1.Id = 1;
             this.barButtonItem1.Name = "barButtonItem1";
             // 
             // barButtonItem2
             // 
-            this.barButtonItem2.Caption = "barButtonItem2";
+            this.barButtonItem2.Caption = "Скін";
             this.barButtonItem2.Id = 2;
             this.barButtonItem2.Name = "barButtonItem2";
-            // 
-            // barSubItem2
-            // 
-            this.barSubItem2.Caption = "barSubItem2";
-            this.barSubItem2.Id = 3;
-            this.barSubItem2.Name = "barSubItem2";
             // 
             // CurDateEditBarItem
             // 
             this.CurDateEditBarItem.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
             this.CurDateEditBarItem.Caption = "CurDateEditItem";
             this.CurDateEditBarItem.Edit = this.repositoryItemDateEdit;
-            this.CurDateEditBarItem.EditWidth = 150;
+            this.CurDateEditBarItem.EditWidth = 120;
             this.CurDateEditBarItem.Id = 6;
             this.CurDateEditBarItem.Name = "CurDateEditBarItem";
             // 
@@ -263,12 +305,100 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemDateEdit.Name = "repositoryItemDateEdit";
             // 
+            // barSubItem3
+            // 
+            this.barSubItem3.Caption = "Створити документ";
+            this.barSubItem3.Id = 9;
+            this.barSubItem3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8)});
+            this.barSubItem3.Name = "barSubItem3";
+            // 
+            // barButtonItem5
+            // 
+            this.barButtonItem5.Caption = "Видаткова накладна";
+            this.barButtonItem5.Id = 10;
+            this.barButtonItem5.ImageIndex = 32;
+            this.barButtonItem5.Name = "barButtonItem5";
+            // 
+            // barButtonItem6
+            // 
+            this.barButtonItem6.Caption = "Прибуткова накладна";
+            this.barButtonItem6.Id = 11;
+            this.barButtonItem6.ImageIndex = 31;
+            this.barButtonItem6.Name = "barButtonItem6";
+            // 
+            // barButtonItem7
+            // 
+            this.barButtonItem7.Caption = "Виготовлення продукції";
+            this.barButtonItem7.Id = 12;
+            this.barButtonItem7.ImageIndex = 30;
+            this.barButtonItem7.Name = "barButtonItem7";
+            // 
+            // barButtonItem8
+            // 
+            this.barButtonItem8.Caption = "Обвалка";
+            this.barButtonItem8.Id = 13;
+            this.barButtonItem8.ImageIndex = 29;
+            this.barButtonItem8.Name = "barButtonItem8";
+            // 
+            // barSubItem4
+            // 
+            this.barSubItem4.Caption = "Сервіс";
+            this.barSubItem4.Id = 14;
+            this.barSubItem4.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barEditItem3),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3)});
+            this.barSubItem4.Name = "barSubItem4";
+            // 
+            // barEditItem3
+            // 
+            this.barEditItem3.Caption = "Підприємство";
+            this.barEditItem3.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", global::SP_Sklad.Properties.Settings.Default, "ent_id", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.barEditItem3.Edit = this.repositoryItemLookUpEdit1;
+            this.barEditItem3.EditValue = global::SP_Sklad.Properties.Settings.Default.ent_id;
+            this.barEditItem3.EditWidth = 200;
+            this.barEditItem3.Id = 16;
+            this.barEditItem3.ImageIndex = 25;
+            this.barEditItem3.Name = "barEditItem3";
+            this.barEditItem3.EditValueChanged += new System.EventHandler(this.barEditItem3_EditValueChanged);
+            // 
+            // repositoryItemLookUpEdit1
+            // 
+            this.repositoryItemLookUpEdit1.AutoHeight = false;
+            this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEdit1.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name")});
+            this.repositoryItemLookUpEdit1.DisplayMember = "Name";
+            this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
+            this.repositoryItemLookUpEdit1.ShowFooter = false;
+            this.repositoryItemLookUpEdit1.ShowHeader = false;
+            this.repositoryItemLookUpEdit1.ValueMember = "KaId";
+            // 
             // barButtonItem3
             // 
-            this.barButtonItem3.Caption = "barButtonItem3";
+            this.barButtonItem3.Caption = "Тимчасове блокування";
             this.barButtonItem3.Id = 7;
+            this.barButtonItem3.ImageIndex = 33;
             this.barButtonItem3.Name = "barButtonItem3";
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
+            // 
+            // barSubItem6
+            // 
+            this.barSubItem6.Caption = "Довідка";
+            this.barSubItem6.Id = 17;
+            this.barSubItem6.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9)});
+            this.barSubItem6.Name = "barSubItem6";
+            // 
+            // barButtonItem9
+            // 
+            this.barButtonItem9.Caption = "Про програму";
+            this.barButtonItem9.Id = 18;
+            this.barButtonItem9.Name = "barButtonItem9";
             // 
             // bar3
             // 
@@ -338,6 +468,12 @@
             this.repositoryItemCalcEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemCalcEdit1.Name = "repositoryItemCalcEdit1";
+            // 
+            // barSubItem5
+            // 
+            this.barSubItem5.Caption = "Підприємство";
+            this.barSubItem5.Id = 15;
+            this.barSubItem5.Name = "barSubItem5";
             // 
             // defaultLookAndFeel1
             // 
@@ -529,9 +665,11 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.mainForm_FormClosed);
             this.Load += new System.EventHandler(this.mainForm_Load);
+            this.Shown += new System.EventHandler(this.mainForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).EndInit();
@@ -593,6 +731,18 @@
         private DevExpress.Utils.SharedImageCollection sharedImageCollection1;
         private MainTabs.ServiceUserControl serviceUserControl1;
         private MainTabs.FinancesUserControl financesUserControl1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private DevExpress.XtraBars.BarSubItem barSubItem3;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem8;
+        private DevExpress.XtraBars.BarSubItem barSubItem4;
+        private DevExpress.XtraBars.BarEditItem barEditItem3;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
+        private DevExpress.XtraBars.BarSubItem barSubItem5;
+        private DevExpress.XtraBars.BarSubItem barSubItem6;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem9;
     }
 }
 

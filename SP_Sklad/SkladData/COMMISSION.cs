@@ -16,7 +16,7 @@ namespace SP_Sklad.SkladData
     {
         public int Id { get; set; }
         public int WbillId { get; set; }
-        public int KaId { get; set; }
+        public Nullable<int> KaId { get; set; }
         public Nullable<int> FirstKaId { get; set; }
         public Nullable<int> SecondKaId { get; set; }
         public Nullable<int> ThirdKaId { get; set; }

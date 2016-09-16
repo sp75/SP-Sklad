@@ -55,7 +55,8 @@ namespace SP_Sklad.WBForm
                     CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
-                    WaybillMove = new WaybillMove { SourceWid = DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId }
+                    WaybillMove = new WaybillMove { SourceWid = DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId },
+                    UpdatedBy = DBHelper.CurrentUser.UserId
                 });
 
                 _db.SaveChanges();

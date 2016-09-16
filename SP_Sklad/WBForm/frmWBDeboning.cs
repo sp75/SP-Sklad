@@ -73,7 +73,8 @@ namespace SP_Sklad.WBForm
                         SourceWId = source_wid ?? DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId,
                         RecId = rec_id
                     },
-                    Nds = 0
+                    Nds = 0,
+                    UpdatedBy = DBHelper.CurrentUser.UserId
                 });
                 _db.SaveChanges();
 

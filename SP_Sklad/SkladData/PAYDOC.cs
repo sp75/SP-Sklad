@@ -35,6 +35,7 @@ namespace SP_Sklad.SkladData
         public Nullable<int> DocId { get; set; }
         public Nullable<decimal> OnValue { get; set; }
         public string Schet { get; set; }
+        public Nullable<int> UpdatedBy { get; set; }
     
         public virtual CashDesks CashDesks { get; set; }
         public virtual Kagent Kagent { get; set; }

@@ -1084,7 +1084,7 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="WbillId" Type="int" Nullable="false" />
-          <Property Name="KaId" Type="int" Nullable="false" />
+          <Property Name="KaId" Type="int" />
           <Property Name="FirstKaId" Type="int" />
           <Property Name="SecondKaId" Type="int" />
           <Property Name="ThirdKaId" Type="int" />
@@ -1644,6 +1644,7 @@
           <Property Name="DocId" Type="int" />
           <Property Name="OnValue" Type="numeric" Precision="15" Scale="8" />
           <Property Name="Schet" Type="varchar" MaxLength="10" />
+          <Property Name="UpdatedBy" Type="int" />
         </EntityType>
         <EntityType Name="PayDocType">
           <Key>
@@ -1916,6 +1917,8 @@
           <Property Name="ShowBalance" Type="int" />
           <Property Name="ShowPrice" Type="int" />
           <Property Name="EnableEditDate" Type="int" />
+          <Property Name="LastLogin" Type="datetime" />
+          <Property Name="IsOnline" Type="bit" />
         </EntityType>
         <EntityType Name="UserTree">
           <Key>
@@ -2981,7 +2984,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
-          <End Role="Kagent" Type="BaseModel.Store.Kagent" Multiplicity="1" />
+          <End Role="Kagent" Type="BaseModel.Store.Kagent" Multiplicity="0..1" />
           <End Role="Commission" Type="BaseModel.Store.Commission" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Kagent">
@@ -6082,26 +6085,9 @@
           <FunctionImport Name="GetManufactureTree" ReturnType="Collection(BaseModel.GetManufactureTree_Result)">
           <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="Commission" EntityType="BaseModel.Commission" />
           <EntitySet Name="TechProcDet" EntityType="BaseModel.TechProcDet" />
           <EntitySet Name="TechProcess" EntityType="BaseModel.TechProcess" />
           <EntitySet Name="WayBillDetAddProps" EntityType="BaseModel.WayBillDetAddProps" />
-          <AssociationSet Name="FK_COMMISSI_REFERENCE_KAGENT" Association="BaseModel.FK_COMMISSI_REFERENCE_KAGENT">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="Commission" EntitySet="Commission" />
-          </AssociationSet>
-          <AssociationSet Name="FK_COMMISSION_1" Association="BaseModel.FK_COMMISSION_1">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="Commission" EntitySet="Commission" />
-          </AssociationSet>
-          <AssociationSet Name="FK_COMMISSION_2" Association="BaseModel.FK_COMMISSION_2">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="Commission" EntitySet="Commission" />
-          </AssociationSet>
-          <AssociationSet Name="FK_COMMISSION_3" Association="BaseModel.FK_COMMISSION_3">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="Commission" EntitySet="Commission" />
-          </AssociationSet>
           <AssociationSet Name="FK_WBDAP_CARDID" Association="BaseModel.FK_WBDAP_CARDID">
             <End Role="DISCCARDS" EntitySet="DISCCARDS" />
             <End Role="WayBillDetAddProps" EntitySet="WayBillDetAddProps" />
@@ -6588,10 +6574,6 @@
           </FunctionImport>
           <EntitySet Name="OperLog" EntityType="BaseModel.OperLog" />
           <EntitySet Name="WaybillList" EntityType="BaseModel.WaybillList" />
-          <AssociationSet Name="FK_COMMISSION_WBILLID" Association="BaseModel.FK_COMMISSION_WBILLID">
-            <End Role="WaybillList" EntitySet="WaybillList" />
-            <End Role="Commission" EntitySet="Commission" />
-          </AssociationSet>
           <AssociationSet Name="FK_WAYBILLL_FK_WBLIST_CURRENCY" Association="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY">
             <End Role="Currency" EntitySet="Currency" />
             <End Role="WaybillList" EntitySet="WaybillList" />
@@ -6731,6 +6713,27 @@
           <AssociationSet Name="FK_USERTREE_FK_USERTR_FUNCTION" Association="BaseModel.FK_USERTREE_FK_USERTR_FUNCTION">
             <End Role="Functions" EntitySet="Functions" />
             <End Role="UserTreeView" EntitySet="UserTreeView" />
+          </AssociationSet>
+          <EntitySet Name="Commission" EntityType="BaseModel.Commission" />
+          <AssociationSet Name="FK_COMMISSI_REFERENCE_KAGENT" Association="BaseModel.FK_COMMISSI_REFERENCE_KAGENT">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="Commission" EntitySet="Commission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMMISSION_1" Association="BaseModel.FK_COMMISSION_1">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="Commission" EntitySet="Commission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMMISSION_2" Association="BaseModel.FK_COMMISSION_2">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="Commission" EntitySet="Commission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMMISSION_3" Association="BaseModel.FK_COMMISSION_3">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="Commission" EntitySet="Commission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMMISSION_WBILLID" Association="BaseModel.FK_COMMISSION_WBILLID">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="Commission" EntitySet="Commission" />
           </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
@@ -7403,10 +7406,6 @@
           <NavigationProperty Name="Users" Relationship="BaseModel.FK_Kagent_Users" FromRole="Kagent" ToRole="Users" />
           <NavigationProperty Name="KaAddr" Relationship="BaseModel.FK_KAADDR_KAID" FromRole="Kagent" ToRole="KaAddr" />
           <NavigationProperty Name="WaybillMove" Relationship="BaseModel.FK__WAYBILLMO__PERSO__314D4EA8" FromRole="Kagent" ToRole="WaybillMove" />
-          <NavigationProperty Name="Commission" Relationship="BaseModel.FK_COMMISSI_REFERENCE_KAGENT" FromRole="Kagent" ToRole="Commission" />
-          <NavigationProperty Name="Commission1" Relationship="BaseModel.FK_COMMISSION_1" FromRole="Kagent" ToRole="Commission" />
-          <NavigationProperty Name="Commission2" Relationship="BaseModel.FK_COMMISSION_2" FromRole="Kagent" ToRole="Commission" />
-          <NavigationProperty Name="Commission3" Relationship="BaseModel.FK_COMMISSION_3" FromRole="Kagent" ToRole="Commission" />
           <NavigationProperty Name="TechProcDet" Relationship="BaseModel.FK_TECHPROCDET_KAGENT" FromRole="Kagent" ToRole="TechProcDet" />
           <NavigationProperty Name="WayBillMake" Relationship="BaseModel.FK_WAYBILLMAKE_KAGENT" FromRole="Kagent" ToRole="WayBillMake" />
           <NavigationProperty Name="KAgentAccount" Relationship="BaseModel.FK_AACC_KAID" FromRole="Kagent" ToRole="KAgentAccount" />
@@ -7420,6 +7419,10 @@
           <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK__WAYBILLLI__PERSO__6E01572D" FromRole="Kagent" ToRole="WaybillList" />
           <NavigationProperty Name="WaybillList1" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" FromRole="Kagent" ToRole="WaybillList" />
           <NavigationProperty Name="WaybillList2" Relationship="BaseModel.FK_WBL_ENTID" FromRole="Kagent" ToRole="WaybillList" />
+          <NavigationProperty Name="Commission" Relationship="BaseModel.FK_COMMISSI_REFERENCE_KAGENT" FromRole="Kagent" ToRole="Commission" />
+          <NavigationProperty Name="Commission1" Relationship="BaseModel.FK_COMMISSION_1" FromRole="Kagent" ToRole="Commission" />
+          <NavigationProperty Name="Commission2" Relationship="BaseModel.FK_COMMISSION_2" FromRole="Kagent" ToRole="Commission" />
+          <NavigationProperty Name="Commission3" Relationship="BaseModel.FK_COMMISSION_3" FromRole="Kagent" ToRole="Commission" />
         </EntityType>
         <Association Name="FK_CONTRACT_REF_CONTR_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
@@ -7523,6 +7526,7 @@
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK__PAYDOC__CURRID__214BF109" FromRole="PayDoc" ToRole="Currency" />
           <NavigationProperty Name="Docs" Relationship="BaseModel.FK_PAYDOC_REF_PD_DO_DOCS" FromRole="PayDoc" ToRole="Docs" />
           <NavigationProperty Name="KAgentAccount" Relationship="BaseModel.FK_PD_ACCID" FromRole="PayDoc" ToRole="KAgentAccount" />
+          <Property Type="Int32" Name="UpdatedBy" />
         </EntityType>
         <Association Name="FK_PD_CASHID">
           <End Type="BaseModel.CashDesks" Role="CashDesks" Multiplicity="0..1" />
@@ -7649,6 +7653,8 @@
           <NavigationProperty Name="UserAccess" Relationship="BaseModel.FK_USERACCESS_1" FromRole="Users" ToRole="UserAccess" />
           <NavigationProperty Name="UserAccessWh" Relationship="BaseModel.FK_UAWH_USERID" FromRole="Users" ToRole="UserAccessWh" />
           <NavigationProperty Name="PrintLog" Relationship="BaseModel.FK_PRINTLOG_2" FromRole="Users" ToRole="PrintLog" />
+          <Property Type="DateTime" Name="LastLogin" Precision="3" />
+          <Property Type="Boolean" Name="IsOnline" />
         </EntityType>
         <Association Name="FK_Kagent_Users">
           <End Type="BaseModel.Users" Role="Users" Multiplicity="0..1" />
@@ -8590,22 +8596,6 @@
           <Property Type="Int32" Name="CanPost" Nullable="true" />
           <Property Type="Int32" Name="WType" Nullable="true" />
         </ComplexType>
-        <EntityType Name="Commission">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="WbillId" Nullable="false" />
-          <Property Type="Int32" Name="KaId" Nullable="false" />
-          <Property Type="Int32" Name="FirstKaId" />
-          <Property Type="Int32" Name="SecondKaId" />
-          <Property Type="Int32" Name="ThirdKaId" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_COMMISSI_REFERENCE_KAGENT" FromRole="Commission" ToRole="Kagent" />
-          <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_COMMISSION_1" FromRole="Commission" ToRole="Kagent" />
-          <NavigationProperty Name="Kagent2" Relationship="BaseModel.FK_COMMISSION_2" FromRole="Commission" ToRole="Kagent" />
-          <NavigationProperty Name="Kagent3" Relationship="BaseModel.FK_COMMISSION_3" FromRole="Commission" ToRole="Kagent" />
-          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_COMMISSION_WBILLID" FromRole="Commission" ToRole="WaybillList" />
-        </EntityType>
         <EntityType Name="TechProcDet">
           <Key>
             <PropertyRef Name="DetId" />
@@ -8647,54 +8637,6 @@
           <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WAYBILLDETADDPROPS_WBILLID" FromRole="WayBillDetAddProps" ToRole="WaybillList" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WBDAP_POSID" FromRole="WayBillDetAddProps" ToRole="WaybillDet" />
         </EntityType>
-        <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1" />
-          <End Type="BaseModel.Commission" Role="Commission" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="Commission">
-              <PropertyRef Name="KaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_COMMISSION_1">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.Commission" Role="Commission" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="Commission">
-              <PropertyRef Name="FirstKaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_COMMISSION_2">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.Commission" Role="Commission" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="Commission">
-              <PropertyRef Name="SecondKaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_COMMISSION_3">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.Commission" Role="Commission" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="Commission">
-              <PropertyRef Name="ThirdKaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_WBDAP_CARDID">
           <End Type="BaseModel.DISCCARDS" Role="DISCCARDS" Multiplicity="0..1" />
           <End Type="BaseModel.WayBillDetAddProps" Role="WayBillDetAddProps" Multiplicity="*" />
@@ -10797,7 +10739,6 @@
           <Property Type="Decimal" Name="OnValue" Precision="15" Scale="8" />
           <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
           <Property Type="Int32" Name="UpdatedBy" />
-          <NavigationProperty Name="Commission" Relationship="BaseModel.FK_COMMISSION_WBILLID" FromRole="WaybillList" ToRole="Commission" />
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY" FromRole="WaybillList" ToRole="Currency" />
           <NavigationProperty Name="DeboningDet" Relationship="BaseModel.FK_DEBONINGDET_WAYBILLLIST" FromRole="WaybillList" ToRole="DeboningDet" />
           <NavigationProperty Name="Docs" Relationship="BaseModel.FK_WAYBILLL_REF_WBL_D_DOCS" FromRole="WaybillList" ToRole="Docs" />
@@ -10810,21 +10751,8 @@
           <NavigationProperty Name="WaybillMove" Relationship="BaseModel.FK_WBM_WBILLID" FromRole="WaybillList" ToRole="WaybillMove" />
           <NavigationProperty Name="WayBillSvc" Relationship="BaseModel.FK_WBS_WBILLID" FromRole="WaybillList" ToRole="WayBillSvc" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WaybillDet_WaybillList" FromRole="WaybillList" ToRole="WaybillDet" />
+          <NavigationProperty Name="Commission" Relationship="BaseModel.FK_COMMISSION_WBILLID" FromRole="WaybillList" ToRole="Commission" />
         </EntityType>
-        <Association Name="FK_COMMISSION_WBILLID">
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.Commission" Role="Commission" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillList">
-              <PropertyRef Name="WbillId" />
-            </Principal>
-            <Dependent Role="Commission">
-              <PropertyRef Name="WbillId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_WAYBILLL_FK_WBLIST_CURRENCY">
           <End Type="BaseModel.Currency" Role="Currency" Multiplicity="0..1" />
           <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
@@ -11308,6 +11236,84 @@
             </Principal>
             <Dependent Role="UserTreeView">
               <PropertyRef Name="FunId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Commission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="WbillId" Nullable="false" />
+          <Property Type="Int32" Name="KaId" />
+          <Property Type="Int32" Name="FirstKaId" />
+          <Property Type="Int32" Name="SecondKaId" />
+          <Property Type="Int32" Name="ThirdKaId" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_COMMISSI_REFERENCE_KAGENT" FromRole="Commission" ToRole="Kagent" />
+          <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_COMMISSION_1" FromRole="Commission" ToRole="Kagent" />
+          <NavigationProperty Name="Kagent2" Relationship="BaseModel.FK_COMMISSION_2" FromRole="Commission" ToRole="Kagent" />
+          <NavigationProperty Name="Kagent3" Relationship="BaseModel.FK_COMMISSION_3" FromRole="Commission" ToRole="Kagent" />
+          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_COMMISSION_WBILLID" FromRole="Commission" ToRole="WaybillList" />
+        </EntityType>
+        <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.Commission" Role="Commission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="Commission">
+              <PropertyRef Name="KaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMMISSION_1">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.Commission" Role="Commission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="Commission">
+              <PropertyRef Name="FirstKaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMMISSION_2">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.Commission" Role="Commission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="Commission">
+              <PropertyRef Name="SecondKaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMMISSION_3">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.Commission" Role="Commission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="Commission">
+              <PropertyRef Name="ThirdKaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMMISSION_WBILLID">
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.Commission" Role="Commission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="Commission">
+              <PropertyRef Name="WbillId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -11971,6 +11977,7 @@
           <EntitySetMapping Name="PayDoc">
             <EntityTypeMapping TypeName="BaseModel.PayDoc">
               <MappingFragment StoreEntitySet="PayDoc">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
                 <ScalarProperty Name="Schet" ColumnName="Schet" />
                 <ScalarProperty Name="OnValue" ColumnName="OnValue" />
                 <ScalarProperty Name="DocId" ColumnName="DocId" />
@@ -12051,6 +12058,8 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="BaseModel.Users">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="IsOnline" ColumnName="IsOnline" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
                 <ScalarProperty Name="EnableEditDate" ColumnName="EnableEditDate" />
                 <ScalarProperty Name="ShowPrice" ColumnName="ShowPrice" />
                 <ScalarProperty Name="ShowBalance" ColumnName="ShowBalance" />
@@ -12633,18 +12642,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="Commission">
-            <EntityTypeMapping TypeName="BaseModel.Commission">
-              <MappingFragment StoreEntitySet="Commission">
-                <ScalarProperty Name="ThirdKaId" ColumnName="ThirdKaId" />
-                <ScalarProperty Name="SecondKaId" ColumnName="SecondKaId" />
-                <ScalarProperty Name="FirstKaId" ColumnName="FirstKaId" />
-                <ScalarProperty Name="KaId" ColumnName="KaId" />
-                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TechProcDet">
             <EntityTypeMapping TypeName="BaseModel.TechProcDet">
               <MappingFragment StoreEntitySet="TechProcDet">
@@ -14241,6 +14238,18 @@
                 <ScalarProperty Name="TabId" ColumnName="TabId" />
                 <ScalarProperty Name="ClassName" ColumnName="ClassName" />
                 <ScalarProperty Name="FunId" ColumnName="FunId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Commission">
+            <EntityTypeMapping TypeName="BaseModel.Commission">
+              <MappingFragment StoreEntitySet="Commission">
+                <ScalarProperty Name="ThirdKaId" ColumnName="ThirdKaId" />
+                <ScalarProperty Name="SecondKaId" ColumnName="SecondKaId" />
+                <ScalarProperty Name="FirstKaId" ColumnName="FirstKaId" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

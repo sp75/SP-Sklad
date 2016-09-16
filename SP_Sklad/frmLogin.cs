@@ -28,13 +28,12 @@ namespace SP_Sklad
                 var user = db.Users.FirstOrDefault(w => w.Name == UserIDEdit.Text && w.Pass == passtextEdit.Text);
                 if (user != null)
                 {
+                    user.LastLogin = DBHelper.ServerDateTime();
+                    user.IsOnline = true;
+                    db.SaveChanges();
+
                     this.Hide();
-                    var frm = new mainForm();
-                    mainForm.user_id = (int)UserIDEdit.EditValue;
-                    //   frm.password = passtextEdit.Text;
-                    //   frm.uid = user.uid.ToString();
-                    frm.Show();
-                    //   if (!RememberMeCheck.Checked) passtextEdit.Text = "";
+                    new mainForm((int)UserIDEdit.EditValue).Show();
                 }
                 else
                 {

@@ -59,7 +59,8 @@ namespace SP_Sklad.WBForm
                     Num = new BaseEntities().GetCounter("wb_write_on").FirstOrDefault(),
                     CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                     OnValue = 1,
-                    PersonId = DBHelper.CurrentUser.KaId
+                    PersonId = DBHelper.CurrentUser.KaId,
+                    UpdatedBy = DBHelper.CurrentUser.UserId
                 });
 
                 _db.SaveChanges();

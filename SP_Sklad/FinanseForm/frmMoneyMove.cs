@@ -52,7 +52,8 @@ namespace SP_Sklad.FinanseForm
                     CurrId = DBHelper.Currency.Where(w => w.Def == 1).Select(s => s.CurrId).FirstOrDefault(), //Валюта по умолчанию
                     OnValue = 1,//Курс валюти
                     MPersonId = DBHelper.CurrentUser.KaId,
-                    DocType = Convert.ToInt32(_DocType)
+                    DocType = Convert.ToInt32(_DocType),
+                    UpdatedBy = DBHelper.CurrentUser.UserId
                 });
             }
             else

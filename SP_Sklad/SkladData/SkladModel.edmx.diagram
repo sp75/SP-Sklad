@@ -98,14 +98,9 @@
         <AssociationConnector Association="BaseModel.FK__POSREMAINS__WID__2EA5EC27" />
         <EntityTypeShape EntityType="BaseModel.TAXWBDET" Width="1.5" PointX="14.25" PointY="19.75" />
         <AssociationConnector Association="BaseModel.FK_TAXWBDET_TWBID" />
-        <EntityTypeShape EntityType="BaseModel.Commission" Width="1.5" PointX="4.7633880715646733" PointY="25.478614014330606" />
         <EntityTypeShape EntityType="BaseModel.TechProcDet" Width="1.5" PointX="9.2934470536622431" PointY="3.208896668259472" />
         <EntityTypeShape EntityType="BaseModel.TechProcess" Width="1.5" PointX="5.5697671219565752" PointY="3.39031969168704" />
         <EntityTypeShape EntityType="BaseModel.WayBillDetAddProps" Width="1.5" PointX="0.86547806154260321" PointY="5.9879650203455075" />
-        <AssociationConnector Association="BaseModel.FK_COMMISSI_REFERENCE_KAGENT" />
-        <AssociationConnector Association="BaseModel.FK_COMMISSION_1" />
-        <AssociationConnector Association="BaseModel.FK_COMMISSION_2" />
-        <AssociationConnector Association="BaseModel.FK_COMMISSION_3" />
         <AssociationConnector Association="BaseModel.FK_WBDAP_CARDID" />
         <AssociationConnector Association="BaseModel.FK_TECHPROCDET_KAGENT" />
         <AssociationConnector Association="BaseModel.FK_TECHPROCDET_TECHPROCESS" />
@@ -200,7 +195,6 @@
         <EntityTypeShape EntityType="BaseModel.v_PayDoc" Width="1.5" PointX="16.375" PointY="14.75" />
         <EntityTypeShape EntityType="BaseModel.OperLog" Width="1.5" PointX="7.2719822913743473" PointY="20.707937920795725" />
         <EntityTypeShape EntityType="BaseModel.WaybillList" Width="1.5" PointX="11.915454285179942" PointY="9.206076447482257" />
-        <AssociationConnector Association="BaseModel.FK_COMMISSION_WBILLID" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY" />
         <AssociationConnector Association="BaseModel.FK_DEBONINGDET_WAYBILLLIST" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLL_REF_WBL_D_DOCS" />
@@ -236,6 +230,12 @@
         <AssociationConnector Association="BaseModel.FK__FUNCTIONS__TABID__123EB7A3" />
         <AssociationConnector Association="BaseModel.FK_USERACCE_FK_USERAC_FUNCTION" />
         <AssociationConnector Association="BaseModel.FK_USERTREE_FK_USERTR_FUNCTION" />
+        <EntityTypeShape EntityType="BaseModel.Commission" Width="1.5" PointX="3.0259709260547396" PointY="11.11540347855324" />
+        <AssociationConnector Association="BaseModel.FK_COMMISSI_REFERENCE_KAGENT" />
+        <AssociationConnector Association="BaseModel.FK_COMMISSION_1" />
+        <AssociationConnector Association="BaseModel.FK_COMMISSION_2" />
+        <AssociationConnector Association="BaseModel.FK_COMMISSION_3" />
+        <AssociationConnector Association="BaseModel.FK_COMMISSION_WBILLID" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="7.0245045325832924" PointY="12.641712000892364" />

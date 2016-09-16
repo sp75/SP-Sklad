@@ -16,12 +16,12 @@ namespace SP_Sklad.SkladData
     {
         public WaybillList()
         {
-            this.Commission = new HashSet<Commission>();
             this.DeboningDet = new HashSet<DeboningDet>();
             this.TechProcDet = new HashSet<TechProcDet>();
             this.WayBillDetAddProps = new HashSet<WayBillDetAddProps>();
             this.WayBillSvc = new HashSet<WayBillSvc>();
             this.WaybillDet = new HashSet<WaybillDet>();
+            this.Commission = new HashSet<Commission>();
         }
     
         public int WbillId { get; set; }
@@ -50,7 +50,6 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> UpdatedAt { get; set; }
         public Nullable<int> UpdatedBy { get; set; }
     
-        public virtual ICollection<Commission> Commission { get; set; }
         public virtual Currency Currency { get; set; }
         public virtual ICollection<DeboningDet> DeboningDet { get; set; }
         public virtual Docs Docs { get; set; }
@@ -63,5 +62,6 @@ namespace SP_Sklad.SkladData
         public virtual WaybillMove WaybillMove { get; set; }
         public virtual ICollection<WayBillSvc> WayBillSvc { get; set; }
         public virtual ICollection<WaybillDet> WaybillDet { get; set; }
+        public virtual ICollection<Commission> Commission { get; set; }
     }
 }

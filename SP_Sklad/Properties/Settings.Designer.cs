@@ -69,5 +69,16 @@ namespace SP_Sklad.Properties {
                 this["user_id"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public object ent_id {
+            get {
+                return ((object)(this["ent_id"]));
+            }
+            set {
+                this["ent_id"] = value;
+            }
+        }
     }
 }

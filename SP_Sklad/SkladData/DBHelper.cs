@@ -19,7 +19,8 @@ namespace SP_Sklad.SkladData
         private static LoginUser _current_user;
         private static List<KagentList> _kagents;
         private static List<Currency> _currency;
-        private static EnterpriseList _enterprise;
+        private static Enterprise _enterprise;
+        private static List<Enterprise> _enterprise_list;
         private static CommonParams _common_param;
         private static List<Measures> _measures;
         private static List<Countries> _counters;
@@ -70,7 +71,7 @@ namespace SP_Sklad.SkladData
                     return _current_user;
                 }
 
-                return _current_user = new BaseEntities().Users.Where(w => w.Name == "admin" && w.Pass == "1").Select(s => new LoginUser
+                return _current_user = new BaseEntities().Users.Where(w => w.UserId == mainForm.user_id).ToList().Select(s => new LoginUser
                 {
                     UserId = s.UserId,
                     Name = s.Name,
@@ -80,10 +81,15 @@ namespace SP_Sklad.SkladData
                     ShowBalance = s.ShowBalance,
                     ShowPrice = s.ShowPrice,
                     EnableEditDate = s.EnableEditDate,
-                    KaId =  s.Kagent.FirstOrDefault().KaId 
+                    KaId = s.Kagent.Any() ? (int?)s.Kagent.Select(sk => sk.KaId).FirstOrDefault() : (int?)null
                 }).FirstOrDefault();
             }
+            set
+            {
+                _current_user = value;
+            }
         }
+
         public static List<KagentList> Kagents
         {
             get
@@ -107,15 +113,33 @@ namespace SP_Sklad.SkladData
             }
         }
 
-        public static EnterpriseList Enterprise
+
+        public static List<Enterprise> EnterpriseList
+        {
+            get
+            {
+                if (_enterprise_list == null)
+                {
+                    _enterprise_list = new BaseEntities().Kagent.Where(w => w.KType == 3).Select(s => new Enterprise { KaId = s.KaId, Name = s.Name, NdsPayer = s.NdsPayer }).ToList();
+                }
+                return _enterprise_list;
+            }
+        }
+
+        public static Enterprise Enterprise
         {
             get
             {
                 if (_enterprise == null)
                 {
-                    _enterprise = new BaseEntities().Kagent.Where(w => w.KType == 3).Select(s => new EnterpriseList { KaId = s.KaId, Name = s.Name , NdsPayer = s.NdsPayer }).FirstOrDefault();
+                    _enterprise = new BaseEntities().Kagent.Where(w => w.KType == 3 &&  w.KaId == mainForm.enterprise_id).Select(s => new Enterprise { KaId = s.KaId, Name = s.Name, NdsPayer = s.NdsPayer }).FirstOrDefault();
                 }
                 return _enterprise;
+            }
+
+            set
+            {
+                _enterprise = value;
             }
         }
 
@@ -309,7 +333,7 @@ order by wbd.ondate desc
         public String Name { get; set; }
     }
 
-    public class EnterpriseList
+    public class Enterprise
     {
         public int KaId { get; set; }
         public String Name { get; set; }
@@ -318,7 +342,7 @@ order by wbd.ondate desc
 
      public class LoginUser : Users
      {
-         public int KaId { get; set; }
+         public int? KaId { get; set; }
      }
      public class WhList
      {
