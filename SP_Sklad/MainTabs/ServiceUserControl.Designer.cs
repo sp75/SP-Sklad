@@ -608,6 +608,7 @@
             // 
             // TechProcGridControl
             // 
+            this.TechProcGridControl.DataSource = this.GetOperLogBS;
             this.TechProcGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TechProcGridControl.Location = new System.Drawing.Point(0, 0);
             this.TechProcGridControl.MainView = this.TechProcGridView;
@@ -635,49 +636,50 @@
             // gridColumn42
             // 
             this.gridColumn42.Caption = "Назва";
-            this.gridColumn42.FieldName = "Name";
+            this.gridColumn42.FieldName = "OpCode";
             this.gridColumn42.Name = "gridColumn42";
+            this.gridColumn42.OptionsColumn.ShowCaption = false;
             this.gridColumn42.Visible = true;
             this.gridColumn42.VisibleIndex = 0;
-            this.gridColumn42.Width = 208;
+            this.gridColumn42.Width = 42;
             // 
             // gridColumn43
             // 
-            this.gridColumn43.Caption = "Дата";
+            this.gridColumn43.Caption = "Дата події";
             this.gridColumn43.DisplayFormat.FormatString = "g";
             this.gridColumn43.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn43.FieldName = "OnDate";
             this.gridColumn43.Name = "gridColumn43";
             this.gridColumn43.Visible = true;
             this.gridColumn43.VisibleIndex = 1;
-            this.gridColumn43.Width = 105;
+            this.gridColumn43.Width = 141;
             // 
             // gridColumn44
             // 
-            this.gridColumn44.Caption = "Вихід";
-            this.gridColumn44.FieldName = "Out";
+            this.gridColumn44.Caption = "Розділ";
+            this.gridColumn44.FieldName = "fname";
             this.gridColumn44.Name = "gridColumn44";
             this.gridColumn44.Visible = true;
             this.gridColumn44.VisibleIndex = 2;
-            this.gridColumn44.Width = 86;
+            this.gridColumn44.Width = 116;
             // 
             // gridColumn45
             // 
-            this.gridColumn45.Caption = "Відповідальний";
-            this.gridColumn45.FieldName = "PersonName";
+            this.gridColumn45.Caption = "Номер документа";
+            this.gridColumn45.FieldName = "DocNum";
             this.gridColumn45.Name = "gridColumn45";
             this.gridColumn45.Visible = true;
             this.gridColumn45.VisibleIndex = 3;
-            this.gridColumn45.Width = 235;
+            this.gridColumn45.Width = 318;
             // 
             // gridColumn46
             // 
-            this.gridColumn46.Caption = "Пимітка";
-            this.gridColumn46.FieldName = "Notes";
+            this.gridColumn46.Caption = "Користувач";
+            this.gridColumn46.FieldName = "USERNAME";
             this.gridColumn46.Name = "gridColumn46";
             this.gridColumn46.Visible = true;
             this.gridColumn46.VisibleIndex = 4;
-            this.gridColumn46.Width = 239;
+            this.gridColumn46.Width = 328;
             // 
             // standaloneBarDockControl19
             // 
