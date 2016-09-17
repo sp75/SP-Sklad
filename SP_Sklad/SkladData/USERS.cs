@@ -16,10 +16,11 @@ namespace SP_Sklad.SkladData
     {
         public Users()
         {
-            this.Kagent = new HashSet<Kagent>();
             this.UserAccess = new HashSet<UserAccess>();
             this.UserAccessWh = new HashSet<UserAccessWh>();
             this.PrintLog = new HashSet<PrintLog>();
+            this.Kagent = new HashSet<Kagent>();
+            this.OperLog = new HashSet<OperLog>();
         }
     
         public int UserId { get; set; }
@@ -33,9 +34,10 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> LastLogin { get; set; }
         public Nullable<bool> IsOnline { get; set; }
     
-        public virtual ICollection<Kagent> Kagent { get; set; }
         public virtual ICollection<UserAccess> UserAccess { get; set; }
         public virtual ICollection<UserAccessWh> UserAccessWh { get; set; }
         public virtual ICollection<PrintLog> PrintLog { get; set; }
+        public virtual ICollection<Kagent> Kagent { get; set; }
+        public virtual ICollection<OperLog> OperLog { get; set; }
     }
 }
