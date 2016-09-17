@@ -20,9 +20,9 @@ namespace SP_Sklad.SkladData
         public Nullable<int> PersonId { get; set; }
         public decimal Amount { get; set; }
     
-        public virtual Kagent Kagent { get; set; }
         public virtual MatRecipe MatRecipe { get; set; }
         public virtual Warehouse Warehouse { get; set; }
         public virtual WaybillList WaybillList { get; set; }
+        public virtual Kagent Kagent { get; set; }
     }
 }

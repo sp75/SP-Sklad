@@ -22,8 +22,8 @@ namespace SP_Sklad.SkladData
         public string Notes { get; set; }
         public Nullable<int> PersonId { get; set; }
     
-        public virtual Kagent Kagent { get; set; }
         public virtual TechProcess TechProcess { get; set; }
         public virtual WaybillList WaybillList { get; set; }
+        public virtual Kagent Kagent { get; set; }
     }
 }

@@ -173,6 +173,12 @@
     <Compile Include="frmKABalans.Designer.cs">
       <DependentUpon>frmKABalans.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLogHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogHistory.Designer.cs">
+      <DependentUpon>frmLogHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -964,6 +970,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmKABalans.resx">
       <DependentUpon>frmKABalans.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogHistory.resx">
+      <DependentUpon>frmLogHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

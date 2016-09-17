@@ -42,9 +42,9 @@ namespace SP_Sklad.SkladData
         public string CONTRACT_NUM { get; set; }
         public Nullable<int> TAXREESTRTYPE { get; set; }
     
-        public virtual Kagent Kagent { get; set; }
-        public virtual Kagent Kagent1 { get; set; }
         public virtual Docs Docs { get; set; }
         public virtual ICollection<TAXWBDET> TAXWBDET { get; set; }
+        public virtual Kagent Kagent { get; set; }
+        public virtual Kagent Kagent1 { get; set; }
     }
 }

@@ -1,0 +1,170 @@
+﻿namespace SP_Sklad
+{
+    partial class frmLogHistory
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
+            this.OkButton = new DevExpress.XtraEditors.SimpleButton();
+            this.OprLogGridControl = new DevExpress.XtraGrid.GridControl();
+            this.OprLogGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn42 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn43 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn44 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn45 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn46 = new DevExpress.XtraGrid.Columns.GridColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
+            this.panelControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OprLogGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OprLogGridView)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // panelControl4
+            // 
+            this.panelControl4.Controls.Add(this.OkButton);
+            this.panelControl4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelControl4.Location = new System.Drawing.Point(0, 415);
+            this.panelControl4.Name = "panelControl4";
+            this.panelControl4.Size = new System.Drawing.Size(908, 52);
+            this.panelControl4.TabIndex = 12;
+            // 
+            // OkButton
+            // 
+            this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.OkButton.Location = new System.Drawing.Point(813, 10);
+            this.OkButton.Name = "OkButton";
+            this.OkButton.Size = new System.Drawing.Size(83, 30);
+            this.OkButton.TabIndex = 1;
+            this.OkButton.Text = "Вихід";
+            // 
+            // OprLogGridControl
+            // 
+            this.OprLogGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OprLogGridControl.Location = new System.Drawing.Point(0, 0);
+            this.OprLogGridControl.MainView = this.OprLogGridView;
+            this.OprLogGridControl.Name = "OprLogGridControl";
+            this.OprLogGridControl.Size = new System.Drawing.Size(908, 415);
+            this.OprLogGridControl.TabIndex = 13;
+            this.OprLogGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.OprLogGridView});
+            // 
+            // OprLogGridView
+            // 
+            this.OprLogGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn42,
+            this.gridColumn43,
+            this.gridColumn44,
+            this.gridColumn45,
+            this.gridColumn46});
+            this.OprLogGridView.GridControl = this.OprLogGridControl;
+            this.OprLogGridView.Name = "OprLogGridView";
+            this.OprLogGridView.OptionsBehavior.AllowIncrementalSearch = true;
+            this.OprLogGridView.OptionsBehavior.Editable = false;
+            this.OprLogGridView.OptionsBehavior.ReadOnly = true;
+            this.OprLogGridView.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn42
+            // 
+            this.gridColumn42.Caption = "Подія";
+            this.gridColumn42.FieldName = "OpCode";
+            this.gridColumn42.Name = "gridColumn42";
+            this.gridColumn42.Visible = true;
+            this.gridColumn42.VisibleIndex = 0;
+            this.gridColumn42.Width = 42;
+            // 
+            // gridColumn43
+            // 
+            this.gridColumn43.Caption = "Дата події";
+            this.gridColumn43.DisplayFormat.FormatString = "g";
+            this.gridColumn43.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.gridColumn43.FieldName = "OnDate";
+            this.gridColumn43.Name = "gridColumn43";
+            this.gridColumn43.Visible = true;
+            this.gridColumn43.VisibleIndex = 2;
+            this.gridColumn43.Width = 141;
+            // 
+            // gridColumn44
+            // 
+            this.gridColumn44.Caption = "Дані до події";
+            this.gridColumn44.FieldName = "DataBefore";
+            this.gridColumn44.Name = "gridColumn44";
+            this.gridColumn44.Visible = true;
+            this.gridColumn44.VisibleIndex = 3;
+            this.gridColumn44.Width = 190;
+            // 
+            // gridColumn45
+            // 
+            this.gridColumn45.Caption = "Дані після події";
+            this.gridColumn45.FieldName = "DataAfter";
+            this.gridColumn45.Name = "gridColumn45";
+            this.gridColumn45.Visible = true;
+            this.gridColumn45.VisibleIndex = 4;
+            this.gridColumn45.Width = 221;
+            // 
+            // gridColumn46
+            // 
+            this.gridColumn46.Caption = "Користувач";
+            this.gridColumn46.FieldName = "Name";
+            this.gridColumn46.Name = "gridColumn46";
+            this.gridColumn46.Visible = true;
+            this.gridColumn46.VisibleIndex = 1;
+            this.gridColumn46.Width = 328;
+            // 
+            // frmLogHistory
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(908, 467);
+            this.Controls.Add(this.OprLogGridControl);
+            this.Controls.Add(this.panelControl4);
+            this.Name = "frmLogHistory";
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "frmLogHistory";
+            this.Load += new System.EventHandler(this.frmLogHistory_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
+            this.panelControl4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.OprLogGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OprLogGridView)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private DevExpress.XtraEditors.PanelControl panelControl4;
+        private DevExpress.XtraEditors.SimpleButton OkButton;
+        private DevExpress.XtraGrid.GridControl OprLogGridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView OprLogGridView;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn42;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn43;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn44;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn45;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn46;
+    }
+}

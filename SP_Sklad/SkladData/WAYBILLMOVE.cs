@@ -19,9 +19,9 @@ namespace SP_Sklad.SkladData
         public Nullable<int> DestWId { get; set; }
         public Nullable<int> PersonId { get; set; }
     
-        public virtual Kagent Kagent { get; set; }
         public virtual Warehouse Warehouse { get; set; }
         public virtual Warehouse Warehouse1 { get; set; }
         public virtual WaybillList WaybillList { get; set; }
+        public virtual Kagent Kagent { get; set; }
     }
 }

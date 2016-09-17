@@ -49,7 +49,6 @@ namespace SP_Sklad.SkladData
         public DbSet<WMatTurn> WMatTurn { get; set; }
         public DbSet<CashDesks> CashDesks { get; set; }
         public DbSet<PayType> PayType { get; set; }
-        public DbSet<Kagent> Kagent { get; set; }
         public DbSet<DocsRel> DocsRel { get; set; }
         public DbSet<PayDoc> PayDoc { get; set; }
         public DbSet<ChargeType> ChargeType { get; set; }
@@ -126,6 +125,7 @@ namespace SP_Sklad.SkladData
         public DbSet<WaybillDet> WaybillDet { get; set; }
         public DbSet<Functions> Functions { get; set; }
         public DbSet<Commission> Commission { get; set; }
+        public DbSet<Kagent> Kagent { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)

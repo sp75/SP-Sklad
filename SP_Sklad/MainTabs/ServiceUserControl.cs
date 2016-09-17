@@ -93,12 +93,13 @@ namespace SP_Sklad.MainTabs
                     }
                     else SkladData->DBList->Cancel();
                     delete frmDBEdit;
-                    break;
-
-                case 5: frmOperLog = new TfrmOperLog(Application);
-                    frmOperLog->ShowModal();
-                    delete frmOperLog;
                     break;*/
+
+                case 5:
+                    var f = new frmOperLogDet();
+                    f.OperLogDetBS.DataSource = OprLogGridView.GetFocusedRow();
+                    f.ShowDialog();
+                    break;
             }
         }
 
@@ -179,6 +180,21 @@ namespace SP_Sklad.MainTabs
             }
 
             RefrechItemBtn.PerformClick();
+        }
+
+        private void barCheckItem1_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var dr =OprLogGridView.GetFocusedRow() as GetOperLog_Result;
+            new frmLogHistory(dr.TabId, dr.Id).ShowDialog();
+        }
+
+        private void OprLogGridView_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                OperLogPopupMenu.ShowPopup(p2);
+            }
         }
     }
 }

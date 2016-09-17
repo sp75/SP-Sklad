@@ -43,40 +43,40 @@
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.dateEdit2 = new DevExpress.XtraEditors.DateEdit();
+            this.OperLogDetBS = new System.Windows.Forms.BindingSource(this.components);
+            this.wbStartDate = new DevExpress.XtraEditors.DateEdit();
+            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.NumEdit = new DevExpress.XtraEditors.TextEdit();
-            this.OnDateDBEdit = new DevExpress.XtraEditors.DateEdit();
+            this.textEdit2 = new DevExpress.XtraEditors.MemoEdit();
+            this.PTypeComboBox = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit2 = new DevExpress.XtraEditors.MemoEdit();
-            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
-            this.PTypeComboBox = new DevExpress.XtraEditors.ImageComboBoxEdit();
-            this.OperLogDetBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OperLogDetBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PTypeComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PTypeComboBox.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OperLogDetBS)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -130,7 +130,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(492, 26);
+            this.barDockControlTop.Size = new System.Drawing.Size(492, 24);
             // 
             // barDockControlBottom
             // 
@@ -143,22 +143,22 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 465);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 467);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(492, 26);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 465);
+            this.barDockControlRight.Location = new System.Drawing.Point(492, 24);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 467);
             // 
             // standaloneBarDockControl1
             // 
             this.standaloneBarDockControl1.AutoSize = true;
             this.standaloneBarDockControl1.CausesValidation = false;
             this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 26);
+            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 24);
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
             this.standaloneBarDockControl1.Size = new System.Drawing.Size(492, 0);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
@@ -185,33 +185,109 @@
             // 
             this.panel1.Controls.Add(this.panelControl1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 26);
+            this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
-            this.panel1.Size = new System.Drawing.Size(492, 413);
+            this.panel1.Size = new System.Drawing.Size(492, 415);
             this.panel1.TabIndex = 7;
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.dateEdit2);
+            this.panelControl1.Controls.Add(this.wbStartDate);
             this.panelControl1.Controls.Add(this.memoEdit1);
             this.panelControl1.Controls.Add(this.labelControl6);
             this.panelControl1.Controls.Add(this.textEdit1);
             this.panelControl1.Controls.Add(this.labelControl4);
-            this.panelControl1.Controls.Add(this.dateEdit1);
             this.panelControl1.Controls.Add(this.labelControl7);
             this.panelControl1.Controls.Add(this.labelControl5);
             this.panelControl1.Controls.Add(this.labelControl3);
             this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Controls.Add(this.NumEdit);
-            this.panelControl1.Controls.Add(this.OnDateDBEdit);
             this.panelControl1.Controls.Add(this.textEdit2);
             this.panelControl1.Controls.Add(this.PTypeComboBox);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(5, 5);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(482, 403);
+            this.panelControl1.Size = new System.Drawing.Size(482, 405);
             this.panelControl1.TabIndex = 5;
+            // 
+            // dateEdit2
+            // 
+            this.dateEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.OperLogDetBS, "OnDate", true));
+            this.dateEdit2.EditValue = null;
+            this.dateEdit2.Location = new System.Drawing.Point(337, 59);
+            this.dateEdit2.Name = "dateEdit2";
+            this.dateEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit2.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit2.Properties.DisplayFormat.FormatString = "t";
+            this.dateEdit2.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dateEdit2.Properties.EditFormat.FormatString = "t";
+            this.dateEdit2.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dateEdit2.Properties.Mask.EditMask = "t";
+            this.dateEdit2.Properties.ReadOnly = true;
+            this.dateEdit2.Size = new System.Drawing.Size(126, 20);
+            this.dateEdit2.TabIndex = 34;
+            // 
+            // OperLogDetBS
+            // 
+            this.OperLogDetBS.DataSource = typeof(SP_Sklad.SkladData.GetOperLog_Result);
+            // 
+            // wbStartDate
+            // 
+            this.wbStartDate.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.OperLogDetBS, "OnDate", true));
+            this.wbStartDate.EditValue = null;
+            this.wbStartDate.Location = new System.Drawing.Point(115, 59);
+            this.wbStartDate.Name = "wbStartDate";
+            this.wbStartDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.wbStartDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.wbStartDate.Properties.ReadOnly = true;
+            this.wbStartDate.Size = new System.Drawing.Size(135, 20);
+            this.wbStartDate.TabIndex = 33;
+            // 
+            // memoEdit1
+            // 
+            this.memoEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.OperLogDetBS, "DataAfter", true));
+            this.memoEdit1.Location = new System.Drawing.Point(115, 284);
+            this.memoEdit1.MenuManager = this.barManager1;
+            this.memoEdit1.Name = "memoEdit1";
+            this.memoEdit1.Properties.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.memoEdit1.Size = new System.Drawing.Size(348, 100);
+            this.memoEdit1.TabIndex = 32;
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Location = new System.Drawing.Point(12, 98);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(37, 16);
+            this.labelControl6.StyleController = this.styleController1;
+            this.labelControl6.TabIndex = 30;
+            this.labelControl6.Text = "Розділ";
+            // 
+            // textEdit1
+            // 
+            this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.OperLogDetBS, "fname", true));
+            this.textEdit1.Location = new System.Drawing.Point(115, 95);
+            this.textEdit1.MenuManager = this.barManager1;
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Properties.ReadOnly = true;
+            this.textEdit1.Size = new System.Drawing.Size(349, 22);
+            this.textEdit1.StyleController = this.styleController1;
+            this.textEdit1.TabIndex = 29;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(274, 60);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(57, 16);
+            this.labelControl4.StyleController = this.styleController1;
+            this.labelControl4.TabIndex = 27;
+            this.labelControl4.Text = "Час події:";
             // 
             // labelControl7
             // 
@@ -268,23 +344,31 @@
             this.NumEdit.StyleController = this.styleController1;
             this.NumEdit.TabIndex = 0;
             // 
-            // OnDateDBEdit
+            // textEdit2
             // 
-            this.OnDateDBEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.OperLogDetBS, "OnDate", true));
-            this.OnDateDBEdit.EditValue = new System.DateTime(2016, 3, 3, 16, 47, 59, 0);
-            this.OnDateDBEdit.Location = new System.Drawing.Point(115, 57);
-            this.OnDateDBEdit.MenuManager = this.barManager1;
-            this.OnDateDBEdit.Name = "OnDateDBEdit";
-            this.OnDateDBEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.textEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.OperLogDetBS, "DataBefore", true));
+            this.textEdit2.Location = new System.Drawing.Point(115, 168);
+            this.textEdit2.MenuManager = this.barManager1;
+            this.textEdit2.Name = "textEdit2";
+            this.textEdit2.Properties.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textEdit2.Size = new System.Drawing.Size(348, 100);
+            this.textEdit2.TabIndex = 31;
+            // 
+            // PTypeComboBox
+            // 
+            this.PTypeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.OperLogDetBS, "OpCode", true));
+            this.PTypeComboBox.Location = new System.Drawing.Point(115, 131);
+            this.PTypeComboBox.Name = "PTypeComboBox";
+            this.PTypeComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.OnDateDBEdit.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
-            this.OnDateDBEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.OnDateDBEdit.Properties.Mask.EditMask = "F";
-            this.OnDateDBEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.OnDateDBEdit.Size = new System.Drawing.Size(129, 22);
-            this.OnDateDBEdit.StyleController = this.styleController1;
-            this.OnDateDBEdit.TabIndex = 8;
+            this.PTypeComboBox.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Створення", "I", 2)});
+            this.PTypeComboBox.Properties.NullText = "[EditValue is null]";
+            this.PTypeComboBox.Properties.PopupSizeable = true;
+            this.PTypeComboBox.Properties.ReadOnly = true;
+            this.PTypeComboBox.Properties.SmallImages = this.FormImgList;
+            this.PTypeComboBox.Size = new System.Drawing.Size(348, 20);
+            this.PTypeComboBox.TabIndex = 9;
             // 
             // panelControl4
             // 
@@ -303,95 +387,7 @@
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(83, 30);
             this.OkButton.TabIndex = 1;
-            this.OkButton.Text = "Ok";
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Location = new System.Drawing.Point(274, 60);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(57, 16);
-            this.labelControl4.StyleController = this.styleController1;
-            this.labelControl4.TabIndex = 27;
-            this.labelControl4.Text = "Час події:";
-            // 
-            // dateEdit1
-            // 
-            this.dateEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.OperLogDetBS, "OnDate", true));
-            this.dateEdit1.EditValue = new System.DateTime(2016, 3, 3, 16, 47, 59, 0);
-            this.dateEdit1.Location = new System.Drawing.Point(338, 57);
-            this.dateEdit1.MenuManager = this.barManager1;
-            this.dateEdit1.Name = "dateEdit1";
-            this.dateEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
-            this.dateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Properties.DisplayFormat.FormatString = "t";
-            this.dateEdit1.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dateEdit1.Properties.Mask.EditMask = "F";
-            this.dateEdit1.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.dateEdit1.Size = new System.Drawing.Size(126, 22);
-            this.dateEdit1.StyleController = this.styleController1;
-            this.dateEdit1.TabIndex = 28;
-            // 
-            // labelControl6
-            // 
-            this.labelControl6.Location = new System.Drawing.Point(12, 98);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(37, 16);
-            this.labelControl6.StyleController = this.styleController1;
-            this.labelControl6.TabIndex = 30;
-            this.labelControl6.Text = "Розділ";
-            // 
-            // textEdit1
-            // 
-            this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.OperLogDetBS, "fname", true));
-            this.textEdit1.Location = new System.Drawing.Point(115, 95);
-            this.textEdit1.MenuManager = this.barManager1;
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(349, 22);
-            this.textEdit1.StyleController = this.styleController1;
-            this.textEdit1.TabIndex = 29;
-            // 
-            // textEdit2
-            // 
-            this.textEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.OperLogDetBS, "DataBefore", true));
-            this.textEdit2.Location = new System.Drawing.Point(115, 168);
-            this.textEdit2.MenuManager = this.barManager1;
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Properties.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textEdit2.Size = new System.Drawing.Size(348, 100);
-            this.textEdit2.TabIndex = 31;
-            // 
-            // memoEdit1
-            // 
-            this.memoEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.OperLogDetBS, "DataAfter", true));
-            this.memoEdit1.Location = new System.Drawing.Point(115, 284);
-            this.memoEdit1.MenuManager = this.barManager1;
-            this.memoEdit1.Name = "memoEdit1";
-            this.memoEdit1.Properties.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.memoEdit1.Size = new System.Drawing.Size(348, 100);
-            this.memoEdit1.TabIndex = 32;
-            // 
-            // PTypeComboBox
-            // 
-            this.PTypeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.OperLogDetBS, "OpCode", true));
-            this.PTypeComboBox.Location = new System.Drawing.Point(115, 131);
-            this.PTypeComboBox.Name = "PTypeComboBox";
-            this.PTypeComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.PTypeComboBox.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Створення", "I", 2)});
-            this.PTypeComboBox.Properties.NullText = "[EditValue is null]";
-            this.PTypeComboBox.Properties.PopupSizeable = true;
-            this.PTypeComboBox.Properties.SmallImages = this.FormImgList;
-            this.PTypeComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.PTypeComboBox.Size = new System.Drawing.Size(348, 20);
-            this.PTypeComboBox.TabIndex = 9;
-            // 
-            // OperLogDetBS
-            // 
-            this.OperLogDetBS.DataSource = typeof(SP_Sklad.SkladData.GetOperLog_Result);
+            this.OkButton.Text = "Вихід";
             // 
             // frmOperLogDet
             // 
@@ -415,18 +411,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OperLogDetBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PTypeComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
             this.panelControl4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PTypeComboBox.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OperLogDetBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -453,16 +449,16 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.TextEdit NumEdit;
-        private DevExpress.XtraEditors.DateEdit OnDateDBEdit;
         private DevExpress.XtraEditors.MemoEdit memoEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.TextEdit textEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.DateEdit dateEdit1;
         private DevExpress.XtraEditors.MemoEdit textEdit2;
         private DevExpress.XtraEditors.ImageComboBoxEdit PTypeComboBox;
         private DevExpress.XtraEditors.PanelControl panelControl4;
         private DevExpress.XtraEditors.SimpleButton OkButton;
-        private System.Windows.Forms.BindingSource OperLogDetBS;
+        public System.Windows.Forms.BindingSource OperLogDetBS;
+        private DevExpress.XtraEditors.DateEdit wbStartDate;
+        private DevExpress.XtraEditors.DateEdit dateEdit2;
     }
 }

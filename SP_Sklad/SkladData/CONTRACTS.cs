@@ -37,10 +37,10 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<CONTRDET> CONTRDET { get; set; }
         public virtual CONTRPARAMS CONTRPARAMS { get; set; }
         public virtual CONTRRESULTS CONTRRESULTS { get; set; }
-        public virtual Kagent Kagent { get; set; }
-        public virtual Kagent Kagent1 { get; set; }
         public virtual Currency Currency { get; set; }
         public virtual Docs Docs { get; set; }
         public virtual Docs Docs1 { get; set; }
+        public virtual Kagent Kagent { get; set; }
+        public virtual Kagent Kagent1 { get; set; }
     }
 }

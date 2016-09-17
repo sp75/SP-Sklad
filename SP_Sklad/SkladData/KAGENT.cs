@@ -16,30 +16,30 @@ namespace SP_Sklad.SkladData
     {
         public Kagent()
         {
-            this.CONTRACTS = new HashSet<CONTRACTS>();
-            this.CONTRACTS1 = new HashSet<CONTRACTS>();
-            this.DISCCARDS = new HashSet<DISCCARDS>();
-            this.TAXWB = new HashSet<TAXWB>();
-            this.TAXWB1 = new HashSet<TAXWB>();
-            this.PayDoc = new HashSet<PayDoc>();
-            this.PayDoc1 = new HashSet<PayDoc>();
-            this.KaAddr = new HashSet<KaAddr>();
-            this.WaybillMove = new HashSet<WaybillMove>();
-            this.TechProcDet = new HashSet<TechProcDet>();
-            this.WayBillMake = new HashSet<WayBillMake>();
-            this.KAgentAccount = new HashSet<KAgentAccount>();
-            this.KAgentPersons = new HashSet<KAgentPersons>();
-            this.KAgentSaldo = new HashSet<KAgentSaldo>();
-            this.KAMatDiscount = new HashSet<KAMatDiscount>();
-            this.KAMatGroupDiscount = new HashSet<KAMatGroupDiscount>();
-            this.WayBillSvc = new HashSet<WayBillSvc>();
-            this.WaybillList = new HashSet<WaybillList>();
-            this.WaybillList1 = new HashSet<WaybillList>();
-            this.WaybillList2 = new HashSet<WaybillList>();
             this.Commission = new HashSet<Commission>();
             this.Commission1 = new HashSet<Commission>();
             this.Commission2 = new HashSet<Commission>();
             this.Commission3 = new HashSet<Commission>();
+            this.CONTRACTS = new HashSet<CONTRACTS>();
+            this.CONTRACTS1 = new HashSet<CONTRACTS>();
+            this.DISCCARDS = new HashSet<DISCCARDS>();
+            this.KaAddr = new HashSet<KaAddr>();
+            this.KAMatDiscount = new HashSet<KAMatDiscount>();
+            this.KAMatGroupDiscount = new HashSet<KAMatGroupDiscount>();
+            this.PayDoc = new HashSet<PayDoc>();
+            this.PayDoc1 = new HashSet<PayDoc>();
+            this.TAXWB = new HashSet<TAXWB>();
+            this.WaybillList = new HashSet<WaybillList>();
+            this.WaybillMove = new HashSet<WaybillMove>();
+            this.KAgentAccount = new HashSet<KAgentAccount>();
+            this.KAgentPersons = new HashSet<KAgentPersons>();
+            this.KAgentSaldo = new HashSet<KAgentSaldo>();
+            this.TAXWB1 = new HashSet<TAXWB>();
+            this.TechProcDet = new HashSet<TechProcDet>();
+            this.WaybillList1 = new HashSet<WaybillList>();
+            this.WayBillMake = new HashSet<WayBillMake>();
+            this.WaybillList2 = new HashSet<WaybillList>();
+            this.WayBillSvc = new HashSet<WayBillSvc>();
         }
     
         public int KaId { get; set; }
@@ -72,32 +72,32 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> ContractDate { get; set; }
         public string ContractNum { get; set; }
     
-        public virtual ICollection<CONTRACTS> CONTRACTS { get; set; }
-        public virtual ICollection<CONTRACTS> CONTRACTS1 { get; set; }
-        public virtual ICollection<DISCCARDS> DISCCARDS { get; set; }
-        public virtual ICollection<TAXWB> TAXWB { get; set; }
-        public virtual ICollection<TAXWB> TAXWB1 { get; set; }
-        public virtual ICollection<PayDoc> PayDoc { get; set; }
-        public virtual ICollection<PayDoc> PayDoc1 { get; set; }
-        public virtual Users Users { get; set; }
-        public virtual ICollection<KaAddr> KaAddr { get; set; }
-        public virtual ICollection<WaybillMove> WaybillMove { get; set; }
-        public virtual ICollection<TechProcDet> TechProcDet { get; set; }
-        public virtual ICollection<WayBillMake> WayBillMake { get; set; }
-        public virtual ICollection<KAgentAccount> KAgentAccount { get; set; }
-        public virtual ICollection<KAgentPersons> KAgentPersons { get; set; }
-        public virtual ICollection<KAgentSaldo> KAgentSaldo { get; set; }
-        public virtual KADiscount KADiscount { get; set; }
-        public virtual ICollection<KAMatDiscount> KAMatDiscount { get; set; }
-        public virtual ICollection<KAMatGroupDiscount> KAMatGroupDiscount { get; set; }
-        public virtual KAgentDoc KAgentDoc { get; set; }
-        public virtual ICollection<WayBillSvc> WayBillSvc { get; set; }
-        public virtual ICollection<WaybillList> WaybillList { get; set; }
-        public virtual ICollection<WaybillList> WaybillList1 { get; set; }
-        public virtual ICollection<WaybillList> WaybillList2 { get; set; }
         public virtual ICollection<Commission> Commission { get; set; }
         public virtual ICollection<Commission> Commission1 { get; set; }
         public virtual ICollection<Commission> Commission2 { get; set; }
         public virtual ICollection<Commission> Commission3 { get; set; }
+        public virtual ICollection<CONTRACTS> CONTRACTS { get; set; }
+        public virtual ICollection<CONTRACTS> CONTRACTS1 { get; set; }
+        public virtual ICollection<DISCCARDS> DISCCARDS { get; set; }
+        public virtual ICollection<KaAddr> KaAddr { get; set; }
+        public virtual KADiscount KADiscount { get; set; }
+        public virtual ICollection<KAMatDiscount> KAMatDiscount { get; set; }
+        public virtual ICollection<KAMatGroupDiscount> KAMatGroupDiscount { get; set; }
+        public virtual ICollection<PayDoc> PayDoc { get; set; }
+        public virtual ICollection<PayDoc> PayDoc1 { get; set; }
+        public virtual ICollection<TAXWB> TAXWB { get; set; }
+        public virtual ICollection<WaybillList> WaybillList { get; set; }
+        public virtual ICollection<WaybillMove> WaybillMove { get; set; }
+        public virtual ICollection<KAgentAccount> KAgentAccount { get; set; }
+        public virtual KAgentDoc KAgentDoc { get; set; }
+        public virtual ICollection<KAgentPersons> KAgentPersons { get; set; }
+        public virtual Users Users { get; set; }
+        public virtual ICollection<KAgentSaldo> KAgentSaldo { get; set; }
+        public virtual ICollection<TAXWB> TAXWB1 { get; set; }
+        public virtual ICollection<TechProcDet> TechProcDet { get; set; }
+        public virtual ICollection<WaybillList> WaybillList1 { get; set; }
+        public virtual ICollection<WayBillMake> WayBillMake { get; set; }
+        public virtual ICollection<WaybillList> WaybillList2 { get; set; }
+        public virtual ICollection<WayBillSvc> WayBillSvc { get; set; }
     }
 }
