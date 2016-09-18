@@ -94,13 +94,30 @@ namespace SP_Sklad.EditForm
 
         private void GetRecDetail()
         {
-            var list = _db.MatRecDet.Where(w => w.RecId == _mr.RecId).Select(s => new { s.DetId, s.Materials.Name, s.Materials.Measures.ShortName, s.Amount, s.Coefficient }).ToList();
+            var list = _db.MatRecDet.Where(w => w.RecId == _mr.RecId).Select(s => new
+            {
+                s.DetId,
+                s.Materials.Name,
+                s.Materials.Measures.ShortName,
+                s.Amount,
+                s.Coefficient
+
+            }).ToList();
             MatRecDetGridControl.DataSource = list;
 
             tree.RemoveAll(r => r.ParentId == 0);
             foreach (var item in list)
             {
-                tree.Add(new CatalogTreeList { Id = item.DetId, ParentId = 0, Text = item.Name, ImgIdx = 2, TabIdx = 2, DataSetId = item.DetId });
+                tree.Add(new CatalogTreeList
+                {
+                    Id = tree.Count + 1, //item.DetId,
+                    ParentId = 0,
+                    Text = item.Name,
+                    ImgIdx = 2,
+                    TabIdx = 2,
+                    DataSetId = item.DetId
+
+                });
             }
             DirTreeList.RefreshDataSource();
             DirTreeList.ExpandAll();
@@ -144,11 +161,12 @@ namespace SP_Sklad.EditForm
 
         private void simpleButton7_Click(object sender, EventArgs e)
         {
-            xtraTabControl1.SelectedTabPageIndex = 1;
+          //  xtraTabControl1.SelectedTabPageIndex = 1;
             _db.MatRecDet.Remove(MatRecDetBS.DataSource as MatRecDet);
             _db.SaveChanges();
 
             GetRecDetail();
+            simpleButton11.PerformClick();
         }
 
         private void MatLookUpEdit_EditValueChanged(object sender, EventArgs e)
@@ -164,7 +182,6 @@ namespace SP_Sklad.EditForm
 
         private void simpleButton11_Click(object sender, EventArgs e)
         {
-         //   xtraTabControl1.SelectedTabPageIndex = 1;
 
             DirTreeList.FocusedNode = DirTreeList.GetNodeList().FirstOrDefault(w => Convert.ToInt32(w.GetValue("Id")) == 0);
         }

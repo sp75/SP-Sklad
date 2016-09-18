@@ -22,6 +22,7 @@ namespace SP_Sklad.EditForm
         private KAgentSaldo k_saldo { get; set; }
         private KADiscount k_discount { get; set; }
         private DbContextTransaction current_transaction { get; set; }
+        private List<CatalogTreeList> tree { get; set; }
 
         public frmKAgentEdit(int? KType =null, int? KaId = null)
         {
@@ -30,13 +31,13 @@ namespace SP_Sklad.EditForm
             _k_type = KType;
             _db = DB.SkladBase();
             current_transaction = _db.Database.BeginTransaction();
+            tree = new List<CatalogTreeList>();
         }
 
         private void frmKAgentEdit_Load(object sender, EventArgs e)
         {
             xtraTabControl1.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
 
-            var tree = new List<CatalogTreeList>();
             tree.Add(new CatalogTreeList { Id = 0, ParentId = 255, Text = "Основна інформація", ImgIdx = 0, TabIdx = 0 });
             tree.Add(new CatalogTreeList { Id = 1, ParentId = 255, Text = "Договір", ImgIdx = 10, TabIdx = 12 });
             tree.Add(new CatalogTreeList { Id = 2, ParentId = 255, Text = "Документ", ImgIdx = 5, TabIdx = 1 });
@@ -46,7 +47,7 @@ namespace SP_Sklad.EditForm
             tree.Add(new CatalogTreeList { Id = 6, ParentId = 5, Text = "Контактні особи", ImgIdx = 2, TabIdx = 5 });
             tree.Add(new CatalogTreeList { Id = 7, ParentId = 255, Text = "Рахунки", ImgIdx = 3, TabIdx = 6 });
             tree.Add(new CatalogTreeList { Id = 8, ParentId = 255, Text = "Примітка", ImgIdx = 4, TabIdx = 7 });
-            DirTreeList.DataSource = tree;
+            TreeListBS.DataSource = tree;
 
 
             if (_ka_id == null)
@@ -88,6 +89,9 @@ namespace SP_Sklad.EditForm
                 UsersLookUpEdit.Properties.DataSource = DB.SkladBase().Users.ToList();
                 JobLookUpEdit.Properties.Items.AddRange(DB.SkladBase().KAgentPersons.Where(w => w.JobType == 2).Select(s => s.Post).Distinct().ToList());
 
+                lookUpEdit1.Properties.DataSource = DB.SkladBase().AccountType.Select(s => new { s.TypeId, s.Name }).ToList();
+                lookUpEdit2.Properties.DataSource = DB.SkladBase().Banks.Select(s => new { s.BankId, s.Name }).ToList();
+
                 //   GrpIdEdit.Properties.TreeList.DataSource = DB.SkladBase().MatGroup.Select(s => new { s.GrpId, s.PId, s.Name }).ToList();
                 //     ProducerLookUpEdit.Properties.DataSource = DB.SkladBase().Materials.Select(s => new { s.Producer }).Distinct().ToList();
                 //     CIdLookUpEdit.Properties.DataSource = DBHelper.CountersList;
@@ -107,7 +111,33 @@ namespace SP_Sklad.EditForm
                 {
                     KAgentDocDS.DataSource = _db.KAgentDoc.Add(new KAgentDoc { KAId = _ka.KaId });
                 }
+
+                GetAccounts();
             }
+        }
+
+        private void GetAccounts()
+        {
+            var acc = _db.v_KAgentAccount.Where(w => w.KAId == _ka_id).ToList();
+            v_KAgentAccountBS.DataSource = acc;
+
+            tree.RemoveAll(r => r.ParentId == 7);
+            foreach (var item in acc)
+            {
+                tree.Add(new CatalogTreeList
+                {
+                    Id = tree.Count + 1,
+                    ParentId = 7,
+                    Text = item.AccNum,
+                    ImgIdx = 6,
+                    TabIdx = 9,
+                    DataSetId = item.AccId
+
+                });
+            }
+
+            DirTreeList.RefreshDataSource();
+            DirTreeList.ExpandAll();
         }
 
         private void KTypeLookUpEdit_EditValueChanged(object sender, EventArgs e)
@@ -145,6 +175,13 @@ namespace SP_Sklad.EditForm
             {
                 GetDiscountList();
             }
+
+            if (focused_tree_node.ParentId == 7)
+            {
+                KAgentAccountBS.DataSource = _db.KAgentAccount.Find(focused_tree_node.DataSetId);
+            }
+
+  
 
             xtraTabControl1.SelectedTabPageIndex = focused_tree_node.TabIdx;
         }
@@ -291,6 +328,88 @@ namespace SP_Sklad.EditForm
         private void DiscountGridView_DoubleClick(object sender, EventArgs e)
         {
             EditDiscountBtn.PerformClick();
+        }
+
+        private void AddAccBtn_Click(object sender, EventArgs e)
+        {
+            xtraTabControl1.SelectedTabPageIndex = 9;
+            var new_det = _db.KAgentAccount.Add(new KAgentAccount
+            {
+                KAId = _ka.KaId,
+                AccNum = "",
+                TypeId = _db.AccountType.FirstOrDefault().TypeId,
+                BankId = _db.Banks.FirstOrDefault().BankId,
+                Def = _db.KAgentAccount.Any(a => a.KAId == _ka.KaId) ? 0 : 1
+            });
+            KAgentAccountBS.DataSource = new_det;
+            _db.SaveChanges();
+            GetAccounts();
+
+            DirTreeList.FocusedNode = DirTreeList.GetNodeList().FirstOrDefault(w => Convert.ToInt32(w.GetValue("DataSetId")) == new_det.AccId);
+        }
+
+        private void EditAccBtn_Click(object sender, EventArgs e)
+        {
+            dynamic det_item = AccountsGridView.GetFocusedRow();
+            if (det_item == null) return;
+
+            xtraTabControl1.SelectedTabPageIndex = 9;
+            KAgentAccountBS.DataSource = _db.KAgentAccount.Find(det_item.AccId);
+        }
+
+        private void DelAccBtn_Click(object sender, EventArgs e)
+        {
+            dynamic det_item = AccountsGridView.GetFocusedRow();
+            if (det_item == null) return;
+
+            var a =_db.KAgentAccount.Find(det_item.AccId);
+            _db.KAgentAccount.Remove(a);
+            _db.SaveChanges();
+
+            GetAccounts();
+        }
+
+        private void AccountsGridView_DoubleClick(object sender, EventArgs e)
+        {
+            EditAccBtn.PerformClick();
+        }
+
+        private void simpleButton7_Click_1(object sender, EventArgs e)
+        {
+            DirTreeList.FocusedNode = DirTreeList.GetNodeList().FirstOrDefault(w => Convert.ToInt32(w.GetValue("Id")) == 7);
+        }
+
+        private void textEdit17_EditValueChanged(object sender, EventArgs e)
+        {
+            if (textEdit17.ContainsFocus)
+            {
+                DirTreeList.FocusedNode.SetValue("Text", textEdit17.EditValue);
+            }
+        }
+
+        private void simpleButton12_Click(object sender, EventArgs e)
+        {
+            _db.KAgentAccount.Remove(KAgentAccountBS.DataSource as KAgentAccount);
+            _db.SaveChanges();
+            GetAccounts();
+            DirTreeList.FocusedNode = DirTreeList.GetNodeList().FirstOrDefault(w => Convert.ToInt32(w.GetValue("Id")) == 7);
+        }
+
+        private void checkEdit5_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if(checkEdit5.ContainsFocus)
+            {
+                var acc =_db.KAgentAccount.FirstOrDefault(w => w.Def == 1);
+                if(acc != null)
+                {
+                    acc.Def = 0;   
+                }
+            }
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowKABalans( _ka_id.Value );
         }
 
 

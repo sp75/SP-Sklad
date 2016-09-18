@@ -12,17 +12,17 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class ACCOUNTTYPE
+    public partial class AccountType
     {
-        public ACCOUNTTYPE()
+        public AccountType()
         {
             this.KAgentAccount = new HashSet<KAgentAccount>();
         }
     
-        public int TYPEID { get; set; }
-        public string NAME { get; set; }
-        public int DEF { get; set; }
-        public int DELETED { get; set; }
+        public int TypeId { get; set; }
+        public string Name { get; set; }
+        public int Def { get; set; }
+        public int Deleted { get; set; }
     
         public virtual ICollection<KAgentAccount> KAgentAccount { get; set; }
     }

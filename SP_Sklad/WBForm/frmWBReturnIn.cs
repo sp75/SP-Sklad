@@ -26,9 +26,9 @@ namespace SP_Sklad.WBForm
         private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
         private IQueryable<GetWaybillDetIn_Result> wbd_list { get; set; }
-        private GetWayBillDetOut_Result focused_dr
+        private GetWaybillDetIn_Result focused_dr
         {
-            get { return WBDetReInGridView.GetFocusedRow() as GetWayBillDetOut_Result; }
+            get { return WBDetReInGridView.GetFocusedRow() as GetWaybillDetIn_Result; }
         } 
 
         public frmWBReturnIn(int wtype, int? wbill_id)
@@ -179,6 +179,9 @@ namespace SP_Sklad.WBForm
             }
 
             wb.UpdatedAt = DateTime.Now;
+            wb.SummAll = _db.WaybillDet.Where(w => w.WbillId == _wbill_id).Sum(s => s.Total);
+            wb.SummInCurr = wb.SummAll * wb.OnValue;
+
             _db.SaveChanges();
 
             payDocUserControl1.Execute(wb.WbillId);

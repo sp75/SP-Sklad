@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SP_Sklad.Common;
+using SP_Sklad.Reports;
 using SP_Sklad.SkladData;
 
 namespace SP_Sklad
@@ -60,6 +61,12 @@ namespace SP_Sklad
         private void bandedGridView1_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
         {
              popupMenu1.ShowPopup(Control.MousePosition);
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var dir = bandedGridView1.GetFocusedRow() as GetDocList_Result;
+            PrintDoc.Show(dir.DocId.Value, dir.WType.Value,DB.SkladBase());
         }
     }
 }

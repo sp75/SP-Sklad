@@ -5,14 +5,14 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="BaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="ACCOUNTTYPE">
+        <EntityType Name="AccountType">
           <Key>
-            <PropertyRef Name="TYPEID" />
+            <PropertyRef Name="TypeId" />
           </Key>
-          <Property Name="TYPEID" Type="int" Nullable="false" />
-          <Property Name="NAME" Type="nvarchar" MaxLength="64" Nullable="false" />
-          <Property Name="DEF" Type="int" Nullable="false" />
-          <Property Name="DELETED" Type="int" Nullable="false" />
+          <Property Name="TypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Def" Type="int" Nullable="false" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Actives">
           <Key>
@@ -27,30 +27,30 @@
           <Property Name="CashLess" Type="numeric" Precision="15" Scale="8" Nullable="false" />
           <Property Name="Active" Type="numeric" Precision="19" Scale="8" StoreGeneratedPattern="Computed" />
         </EntityType>
-        <EntityType Name="BANKS">
+        <EntityType Name="Banks">
           <Key>
-            <PropertyRef Name="BANKID" />
+            <PropertyRef Name="BankId" />
           </Key>
-          <Property Name="BANKID" Type="int" Nullable="false" />
-          <Property Name="MFO" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="NAME" Type="varchar" MaxLength="128" Nullable="false" />
-          <Property Name="ADDRESS" Type="varchar" MaxLength="255" />
-          <Property Name="WWW" Type="varchar" MaxLength="64" />
-          <Property Name="CORACC" Type="varchar" MaxLength="64" />
-          <Property Name="DEF" Type="int" Nullable="false" />
-          <Property Name="DELETED" Type="int" Nullable="false" />
+          <Property Name="BankId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MFO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="255" />
+          <Property Name="www" Type="nvarchar" MaxLength="64" />
+          <Property Name="CorAcc" Type="nvarchar" MaxLength="64" />
+          <Property Name="Def" Type="int" Nullable="false" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="BANKSPERSONS">
           <Key>
-            <PropertyRef Name="PERSONID" />
+            <PropertyRef Name="PersonId" />
           </Key>
-          <Property Name="PERSONID" Type="int" Nullable="false" />
-          <Property Name="BANKID" Type="int" Nullable="false" />
-          <Property Name="NAME" Type="varchar" MaxLength="128" Nullable="false" />
-          <Property Name="JOB" Type="varchar" MaxLength="128" />
-          <Property Name="PHONE" Type="varchar" MaxLength="64" />
-          <Property Name="EMAIL" Type="varchar" MaxLength="64" />
-          <Property Name="NOTES" Type="varchar" MaxLength="255" />
+          <Property Name="PersonId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BankId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Job" Type="nvarchar" MaxLength="128" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="64" />
+          <Property Name="Email" Type="nvarchar" MaxLength="64" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="CashDesks">
           <Key>
@@ -358,7 +358,7 @@ warning 6002: The table/view 'sp_base.dbo.DocsRel' does not have a primary key d
           <Key>
             <PropertyRef Name="AccId" />
           </Key>
-          <Property Name="AccId" Type="int" Nullable="false" />
+          <Property Name="AccId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="KAId" Type="int" Nullable="false" />
           <Property Name="TypeId" Type="int" Nullable="false" />
           <Property Name="BankId" Type="int" Nullable="false" />
@@ -1248,6 +1248,26 @@ warning 6002: The table/view 'sp_base.dbo.v_GetDocsTree' does not have a primary
           <Property Name="WType" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_KAgentAccount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_KAgentAccount">
+          <Key>
+            <PropertyRef Name="AccId" />
+            <PropertyRef Name="KAId" />
+            <PropertyRef Name="TypeId" />
+            <PropertyRef Name="BankId" />
+            <PropertyRef Name="AccNum" />
+          </Key>
+          <Property Name="AccId" Type="int" Nullable="false" />
+          <Property Name="KAId" Type="int" Nullable="false" />
+          <Property Name="TypeId" Type="int" Nullable="false" />
+          <Property Name="BankId" Type="int" Nullable="false" />
+          <Property Name="AccNum" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Def" Type="int" />
+          <Property Name="MFO" Type="nvarchar" MaxLength="50" />
+          <Property Name="BankName" Type="nvarchar" MaxLength="128" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="64" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_MatRemains' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_MatRemains">
           <Key>
@@ -1911,11 +1931,11 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_AGENTACC_FK_AGENTA_ACCOUNTT">
-          <End Role="ACCOUNTTYPE" Type="Self.ACCOUNTTYPE" Multiplicity="1" />
+          <End Role="AccountType" Type="Self.AccountType" Multiplicity="1" />
           <End Role="KAgentAccount" Type="Self.KAgentAccount" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ACCOUNTTYPE">
-              <PropertyRef Name="TYPEID" />
+            <Principal Role="AccountType">
+              <PropertyRef Name="TypeId" />
             </Principal>
             <Dependent Role="KAgentAccount">
               <PropertyRef Name="TypeId" />
@@ -1923,11 +1943,11 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_AGENTACC_FK_AGENTA_BANKS">
-          <End Role="BANKS" Type="Self.BANKS" Multiplicity="1" />
+          <End Role="Banks" Type="Self.Banks" Multiplicity="1" />
           <End Role="KAgentAccount" Type="Self.KAgentAccount" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="BANKS">
-              <PropertyRef Name="BANKID" />
+            <Principal Role="Banks">
+              <PropertyRef Name="BankId" />
             </Principal>
             <Dependent Role="KAgentAccount">
               <PropertyRef Name="BankId" />
@@ -1949,16 +1969,16 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_BANKSPERSONS_1">
-          <End Role="BANKS" Type="Self.BANKS" Multiplicity="1">
+          <End Role="Banks" Type="Self.Banks" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="BANKSPERSONS" Type="Self.BANKSPERSONS" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="BANKS">
-              <PropertyRef Name="BANKID" />
+            <Principal Role="Banks">
+              <PropertyRef Name="BankId" />
             </Principal>
             <Dependent Role="BANKSPERSONS">
-              <PropertyRef Name="BANKID" />
+              <PropertyRef Name="BankId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -4579,9 +4599,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           </ReturnType>
         </Function>
         <EntityContainer Name="BaseModelStoreContainer">
-          <EntitySet Name="ACCOUNTTYPE" EntityType="Self.ACCOUNTTYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountType" EntityType="Self.AccountType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Actives" EntityType="Self.Actives" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="BANKS" EntityType="Self.BANKS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Banks" EntityType="Self.Banks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BANKSPERSONS" EntityType="Self.BANKSPERSONS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CashDesks" EntityType="Self.CashDesks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChargeType" EntityType="Self.ChargeType" Schema="dbo" store:Type="Tables" />
@@ -4843,6 +4863,19 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
     [v_GetDocsTree].[UserId] AS [UserId], 
     [v_GetDocsTree].[WType] AS [WType]
     FROM [dbo].[v_GetDocsTree] AS [v_GetDocsTree]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_KAgentAccount" EntityType="Self.v_KAgentAccount" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_KAgentAccount].[AccId] AS [AccId], 
+    [v_KAgentAccount].[KAId] AS [KAId], 
+    [v_KAgentAccount].[TypeId] AS [TypeId], 
+    [v_KAgentAccount].[BankId] AS [BankId], 
+    [v_KAgentAccount].[AccNum] AS [AccNum], 
+    [v_KAgentAccount].[Def] AS [Def], 
+    [v_KAgentAccount].[MFO] AS [MFO], 
+    [v_KAgentAccount].[BankName] AS [BankName], 
+    [v_KAgentAccount].[TypeName] AS [TypeName]
+    FROM [dbo].[v_KAgentAccount] AS [v_KAgentAccount]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_MatRemains" EntityType="Self.v_MatRemains" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -5163,11 +5196,11 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             <End Role="KAgentDoc" EntitySet="KAgentDoc" />
           </AssociationSet>
           <AssociationSet Name="FK_AGENTACC_FK_AGENTA_ACCOUNTT" Association="Self.FK_AGENTACC_FK_AGENTA_ACCOUNTT">
-            <End Role="ACCOUNTTYPE" EntitySet="ACCOUNTTYPE" />
+            <End Role="AccountType" EntitySet="AccountType" />
             <End Role="KAgentAccount" EntitySet="KAgentAccount" />
           </AssociationSet>
           <AssociationSet Name="FK_AGENTACC_FK_AGENTA_BANKS" Association="Self.FK_AGENTACC_FK_AGENTA_BANKS">
-            <End Role="BANKS" EntitySet="BANKS" />
+            <End Role="Banks" EntitySet="Banks" />
             <End Role="KAgentAccount" EntitySet="KAgentAccount" />
           </AssociationSet>
           <AssociationSet Name="FK_AP_KAID" Association="Self.FK_AP_KAID">
@@ -5175,7 +5208,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             <End Role="KAgentPersons" EntitySet="KAgentPersons" />
           </AssociationSet>
           <AssociationSet Name="FK_BANKSPERSONS_1" Association="Self.FK_BANKSPERSONS_1">
-            <End Role="BANKS" EntitySet="BANKS" />
+            <End Role="Banks" EntitySet="Banks" />
             <End Role="BANKSPERSONS" EntitySet="BANKSPERSONS" />
           </AssociationSet>
           <AssociationSet Name="FK_COMMISSI_REFERENCE_KAGENT" Association="Self.FK_COMMISSI_REFERENCE_KAGENT">
@@ -5588,9 +5621,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
     <edmx:ConceptualModels>
       <Schema Namespace="BaseModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="BaseEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="ACCOUNTTYPE" EntityType="BaseModel.ACCOUNTTYPE" />
-          <EntitySet Name="BANKS" EntityType="BaseModel.BANKS" />
-          <EntitySet Name="BANKSPERSONS" EntityType="BaseModel.BANKSPERSONS" />
           <EntitySet Name="CONTRACTS" EntityType="BaseModel.CONTRACTS" />
           <EntitySet Name="CONTRDET" EntityType="BaseModel.CONTRDET" />
           <EntitySet Name="CONTRPARAMS" EntityType="BaseModel.CONTRPARAMS" />
@@ -5605,10 +5635,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           <EntitySet Name="SERIALS" EntityType="BaseModel.SERIALS" />
           <EntitySet Name="TAXES" EntityType="BaseModel.TAXES" />
           <EntitySet Name="TAXWB" EntityType="BaseModel.TAXWB" />
-          <AssociationSet Name="FK_BANKSPERSONS_1" Association="BaseModel.FK_BANKSPERSONS_1">
-            <End Role="BANKS" EntitySet="BANKS" />
-            <End Role="BANKSPERSONS" EntitySet="BANKSPERSONS" />
-          </AssociationSet>
           <AssociationSet Name="FK_CONTRDET_REFERENCE_CONTRACTS" Association="BaseModel.FK_CONTRDET_REFERENCE_CONTRACTS">
             <End Role="CONTRACTS" EntitySet="CONTRACTS" />
             <End Role="CONTRDET" EntitySet="CONTRDET" />
@@ -6165,14 +6191,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           <EntitySet Name="KAgentAccount" EntityType="BaseModel.KAgentAccount" />
           <EntitySet Name="KAgentPersons" EntityType="BaseModel.KAgentPersons" />
           <EntitySet Name="KAgentSaldo" EntityType="BaseModel.KAgentSaldo" />
-          <AssociationSet Name="FK_AGENTACC_FK_AGENTA_ACCOUNTT" Association="BaseModel.FK_AGENTACC_FK_AGENTA_ACCOUNTT">
-            <End Role="ACCOUNTTYPE" EntitySet="ACCOUNTTYPE" />
-            <End Role="KAgentAccount" EntitySet="KAgentAccount" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AGENTACC_FK_AGENTA_BANKS" Association="BaseModel.FK_AGENTACC_FK_AGENTA_BANKS">
-            <End Role="BANKS" EntitySet="BANKS" />
-            <End Role="KAgentAccount" EntitySet="KAgentAccount" />
-          </AssociationSet>
           <AssociationSet Name="FK_PD_ACCID" Association="BaseModel.FK_PD_ACCID">
             <End Role="KAgentAccount" EntitySet="KAgentAccount" />
             <End Role="PayDoc" EntitySet="PayDoc" />
@@ -6737,6 +6755,22 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             <End Role="Users" EntitySet="Users" />
             <End Role="OperLog" EntitySet="OperLog" />
           </AssociationSet>
+          <EntitySet Name="AccountType" EntityType="BaseModel.AccountType" />
+          <EntitySet Name="Banks" EntityType="BaseModel.Banks" />
+          <AssociationSet Name="FK_AGENTACC_FK_AGENTA_ACCOUNTT" Association="BaseModel.FK_AGENTACC_FK_AGENTA_ACCOUNTT">
+            <End Role="AccountType" EntitySet="AccountType" />
+            <End Role="KAgentAccount" EntitySet="KAgentAccount" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AGENTACC_FK_AGENTA_BANKS" Association="BaseModel.FK_AGENTACC_FK_AGENTA_BANKS">
+            <End Role="Banks" EntitySet="Banks" />
+            <End Role="KAgentAccount" EntitySet="KAgentAccount" />
+          </AssociationSet>
+          <EntitySet Name="BANKSPERSONS" EntityType="BaseModel.BANKSPERSONS" />
+          <AssociationSet Name="FK_BANKSPERSONS_1" Association="BaseModel.FK_BANKSPERSONS_1">
+            <End Role="Banks" EntitySet="Banks" />
+            <End Role="BANKSPERSONS" EntitySet="BANKSPERSONS" />
+          </AssociationSet>
+          <EntitySet Name="v_KAgentAccount" EntityType="BaseModel.v_KAgentAccount" />
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -6863,44 +6897,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
         <ComplexType Name="Split_Result">
           <Property Name="s" Type="String" MaxLength="8000" Unicode="false" FixedLength="false" />
         </ComplexType>
-        <EntityType Name="ACCOUNTTYPE">
-          <Key>
-            <PropertyRef Name="TYPEID" />
-          </Key>
-          <Property Name="TYPEID" Type="Int32" Nullable="false" />
-          <Property Name="NAME" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
-          <Property Name="DEF" Type="Int32" Nullable="false" />
-          <Property Name="DELETED" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="KAgentAccount" Relationship="BaseModel.FK_AGENTACC_FK_AGENTA_ACCOUNTT" FromRole="ACCOUNTTYPE" ToRole="KAgentAccount" />
-        </EntityType>
-        <EntityType Name="BANKS">
-          <Key>
-            <PropertyRef Name="BANKID" />
-          </Key>
-          <Property Name="BANKID" Type="Int32" Nullable="false" />
-          <Property Name="MFO" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
-          <Property Name="NAME" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
-          <Property Name="ADDRESS" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="WWW" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="CORACC" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="DEF" Type="Int32" Nullable="false" />
-          <Property Name="DELETED" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="BANKSPERSONS" Relationship="BaseModel.FK_BANKSPERSONS_1" FromRole="BANKS" ToRole="BANKSPERSONS" />
-          <NavigationProperty Name="KAgentAccount" Relationship="BaseModel.FK_AGENTACC_FK_AGENTA_BANKS" FromRole="BANKS" ToRole="KAgentAccount" />
-        </EntityType>
-        <EntityType Name="BANKSPERSONS">
-          <Key>
-            <PropertyRef Name="PERSONID" />
-          </Key>
-          <Property Name="PERSONID" Type="Int32" Nullable="false" />
-          <Property Name="BANKID" Type="Int32" Nullable="false" />
-          <Property Name="NAME" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
-          <Property Name="JOB" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
-          <Property Name="PHONE" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="EMAIL" Type="String" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="NOTES" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="BANKS" Relationship="BaseModel.FK_BANKSPERSONS_1" FromRole="BANKSPERSONS" ToRole="BANKS" />
-        </EntityType>
         <EntityType Name="CONTRACTS">
           <Key>
             <PropertyRef Name="CONTRID" />
@@ -7133,20 +7129,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__TAXWB__PERSONID__019E3B86" FromRole="TAXWB" ToRole="Kagent" />
           <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_TAXWB_REFERENCE_KAGENT" FromRole="TAXWB" ToRole="Kagent" />
         </EntityType>
-        <Association Name="FK_BANKSPERSONS_1">
-          <End Role="BANKS" Type="BaseModel.BANKS" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="BANKSPERSONS" Type="BaseModel.BANKSPERSONS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BANKS">
-              <PropertyRef Name="BANKID" />
-            </Principal>
-            <Dependent Role="BANKSPERSONS">
-              <PropertyRef Name="BANKID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_CONTRDET_REFERENCE_CONTRACTS">
           <End Role="CONTRACTS" Type="BaseModel.CONTRACTS" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -9007,11 +8989,11 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           <Property Type="Int32" Name="BankId" Nullable="false" />
           <Property Type="String" Name="AccNum" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="Def" />
-          <NavigationProperty Name="ACCOUNTTYPE" Relationship="BaseModel.FK_AGENTACC_FK_AGENTA_ACCOUNTT" FromRole="KAgentAccount" ToRole="ACCOUNTTYPE" />
-          <NavigationProperty Name="BANKS" Relationship="BaseModel.FK_AGENTACC_FK_AGENTA_BANKS" FromRole="KAgentAccount" ToRole="BANKS" />
           <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK_PD_ACCID" FromRole="KAgentAccount" ToRole="PayDoc" />
           <NavigationProperty Name="MoneySaldo" Relationship="BaseModel.FK_MS_ACCID" FromRole="KAgentAccount" ToRole="MoneySaldo" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_AACC_KAID" FromRole="KAgentAccount" ToRole="Kagent" />
+          <NavigationProperty Name="AccountType" Relationship="BaseModel.FK_AGENTACC_FK_AGENTA_ACCOUNTT" FromRole="KAgentAccount" ToRole="AccountType" />
+          <NavigationProperty Name="Banks" Relationship="BaseModel.FK_AGENTACC_FK_AGENTA_BANKS" FromRole="KAgentAccount" ToRole="Banks" />
         </EntityType>
         <EntityType Name="KAgentPersons">
           <Key>
@@ -9038,30 +9020,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           <Property Type="Decimal" Name="Saldo" Nullable="false" Precision="15" Scale="8" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_KAS_KAID" FromRole="KAgentSaldo" ToRole="Kagent" />
         </EntityType>
-        <Association Name="FK_AGENTACC_FK_AGENTA_ACCOUNTT">
-          <End Type="BaseModel.ACCOUNTTYPE" Role="ACCOUNTTYPE" Multiplicity="1" />
-          <End Type="BaseModel.KAgentAccount" Role="KAgentAccount" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ACCOUNTTYPE">
-              <PropertyRef Name="TYPEID" />
-            </Principal>
-            <Dependent Role="KAgentAccount">
-              <PropertyRef Name="TypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AGENTACC_FK_AGENTA_BANKS">
-          <End Type="BaseModel.BANKS" Role="BANKS" Multiplicity="1" />
-          <End Type="BaseModel.KAgentAccount" Role="KAgentAccount" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BANKS">
-              <PropertyRef Name="BANKID" />
-            </Principal>
-            <Dependent Role="KAgentAccount">
-              <PropertyRef Name="BankId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PD_ACCID">
           <End Type="BaseModel.KAgentAccount" Role="KAgentAccount" Multiplicity="0..1" />
           <End Type="BaseModel.PayDoc" Role="PayDoc" Multiplicity="*" />
@@ -11335,49 +11293,106 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="AccountType">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Def" Type="Int32" Nullable="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="KAgentAccount" Relationship="BaseModel.FK_AGENTACC_FK_AGENTA_ACCOUNTT" FromRole="AccountType" ToRole="KAgentAccount" />
+        </EntityType>
+        <EntityType Name="Banks">
+          <Key>
+            <PropertyRef Name="BankId" />
+          </Key>
+          <Property Name="BankId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MFO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="www" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="CorAcc" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Def" Type="Int32" Nullable="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="KAgentAccount" Relationship="BaseModel.FK_AGENTACC_FK_AGENTA_BANKS" FromRole="Banks" ToRole="KAgentAccount" />
+          <NavigationProperty Name="BANKSPERSONS" Relationship="BaseModel.FK_BANKSPERSONS_1" FromRole="Banks" ToRole="BANKSPERSONS" />
+        </EntityType>
+        <Association Name="FK_AGENTACC_FK_AGENTA_ACCOUNTT">
+          <End Type="BaseModel.AccountType" Role="AccountType" Multiplicity="1" />
+          <End Type="BaseModel.KAgentAccount" Role="KAgentAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountType">
+              <PropertyRef Name="TypeId" />
+            </Principal>
+            <Dependent Role="KAgentAccount">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AGENTACC_FK_AGENTA_BANKS">
+          <End Type="BaseModel.Banks" Role="Banks" Multiplicity="1" />
+          <End Type="BaseModel.KAgentAccount" Role="KAgentAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banks">
+              <PropertyRef Name="BankId" />
+            </Principal>
+            <Dependent Role="KAgentAccount">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="BANKSPERSONS">
+          <Key>
+            <PropertyRef Name="PersonId" />
+          </Key>
+          <Property Name="PersonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BankId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Job" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Banks" Relationship="BaseModel.FK_BANKSPERSONS_1" FromRole="BANKSPERSONS" ToRole="Banks" />
+        </EntityType>
+        <Association Name="FK_BANKSPERSONS_1">
+          <End Type="BaseModel.Banks" Role="Banks" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.BANKSPERSONS" Role="BANKSPERSONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banks">
+              <PropertyRef Name="BankId" />
+            </Principal>
+            <Dependent Role="BANKSPERSONS">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="v_KAgentAccount">
+          <Key>
+            <PropertyRef Name="AccId" />
+            <PropertyRef Name="KAId" />
+            <PropertyRef Name="TypeId" />
+            <PropertyRef Name="BankId" />
+            <PropertyRef Name="AccNum" />
+          </Key>
+          <Property Name="AccId" Type="Int32" Nullable="false" />
+          <Property Name="KAId" Type="Int32" Nullable="false" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="BankId" Type="Int32" Nullable="false" />
+          <Property Name="AccNum" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Def" Type="Int32" />
+          <Property Name="MFO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BankName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="TypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BaseModelStoreContainer" CdmEntityContainer="BaseEntities">
-          <EntitySetMapping Name="ACCOUNTTYPE">
-            <EntityTypeMapping TypeName="BaseModel.ACCOUNTTYPE">
-              <MappingFragment StoreEntitySet="ACCOUNTTYPE">
-                <ScalarProperty Name="TYPEID" ColumnName="TYPEID" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="DEF" ColumnName="DEF" />
-                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BANKS">
-            <EntityTypeMapping TypeName="BaseModel.BANKS">
-              <MappingFragment StoreEntitySet="BANKS">
-                <ScalarProperty Name="BANKID" ColumnName="BANKID" />
-                <ScalarProperty Name="MFO" ColumnName="MFO" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
-                <ScalarProperty Name="WWW" ColumnName="WWW" />
-                <ScalarProperty Name="CORACC" ColumnName="CORACC" />
-                <ScalarProperty Name="DEF" ColumnName="DEF" />
-                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BANKSPERSONS">
-            <EntityTypeMapping TypeName="BaseModel.BANKSPERSONS">
-              <MappingFragment StoreEntitySet="BANKSPERSONS">
-                <ScalarProperty Name="PERSONID" ColumnName="PERSONID" />
-                <ScalarProperty Name="BANKID" ColumnName="BANKID" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="JOB" ColumnName="JOB" />
-                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
-                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
-                <ScalarProperty Name="NOTES" ColumnName="NOTES" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="CONTRACTS">
             <EntityTypeMapping TypeName="BaseModel.CONTRACTS">
               <MappingFragment StoreEntitySet="CONTRACTS">
@@ -14268,6 +14283,58 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="KaId" ColumnName="KaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountType">
+            <EntityTypeMapping TypeName="BaseModel.AccountType">
+              <MappingFragment StoreEntitySet="AccountType">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Def" ColumnName="Def" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Banks">
+            <EntityTypeMapping TypeName="BaseModel.Banks">
+              <MappingFragment StoreEntitySet="Banks">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Def" ColumnName="Def" />
+                <ScalarProperty Name="CorAcc" ColumnName="CorAcc" />
+                <ScalarProperty Name="www" ColumnName="www" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MFO" ColumnName="MFO" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BANKSPERSONS">
+            <EntityTypeMapping TypeName="BaseModel.BANKSPERSONS">
+              <MappingFragment StoreEntitySet="BANKSPERSONS">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Job" ColumnName="Job" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_KAgentAccount">
+            <EntityTypeMapping TypeName="BaseModel.v_KAgentAccount">
+              <MappingFragment StoreEntitySet="v_KAgentAccount">
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="MFO" ColumnName="MFO" />
+                <ScalarProperty Name="Def" ColumnName="Def" />
+                <ScalarProperty Name="AccNum" ColumnName="AccNum" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="KAId" ColumnName="KAId" />
+                <ScalarProperty Name="AccId" ColumnName="AccId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

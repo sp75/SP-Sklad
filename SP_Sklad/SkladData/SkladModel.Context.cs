@@ -29,9 +29,6 @@ namespace SP_Sklad.SkladData
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<ACCOUNTTYPE> ACCOUNTTYPE { get; set; }
-        public DbSet<BANKS> BANKS { get; set; }
-        public DbSet<BANKSPERSONS> BANKSPERSONS { get; set; }
         public DbSet<CONTRACTS> CONTRACTS { get; set; }
         public DbSet<CONTRDET> CONTRDET { get; set; }
         public DbSet<CONTRPARAMS> CONTRPARAMS { get; set; }
@@ -126,6 +123,10 @@ namespace SP_Sklad.SkladData
         public DbSet<Functions> Functions { get; set; }
         public DbSet<Commission> Commission { get; set; }
         public DbSet<Kagent> Kagent { get; set; }
+        public DbSet<AccountType> AccountType { get; set; }
+        public DbSet<Banks> Banks { get; set; }
+        public DbSet<BANKSPERSONS> BANKSPERSONS { get; set; }
+        public DbSet<v_KAgentAccount> v_KAgentAccount { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)

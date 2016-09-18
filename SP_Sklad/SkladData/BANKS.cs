@@ -12,24 +12,24 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class BANKS
+    public partial class Banks
     {
-        public BANKS()
+        public Banks()
         {
-            this.BANKSPERSONS = new HashSet<BANKSPERSONS>();
             this.KAgentAccount = new HashSet<KAgentAccount>();
+            this.BANKSPERSONS = new HashSet<BANKSPERSONS>();
         }
     
-        public int BANKID { get; set; }
+        public int BankId { get; set; }
         public string MFO { get; set; }
-        public string NAME { get; set; }
-        public string ADDRESS { get; set; }
-        public string WWW { get; set; }
-        public string CORACC { get; set; }
-        public int DEF { get; set; }
-        public int DELETED { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public string www { get; set; }
+        public string CorAcc { get; set; }
+        public int Def { get; set; }
+        public int Deleted { get; set; }
     
-        public virtual ICollection<BANKSPERSONS> BANKSPERSONS { get; set; }
         public virtual ICollection<KAgentAccount> KAgentAccount { get; set; }
+        public virtual ICollection<BANKSPERSONS> BANKSPERSONS { get; set; }
     }
 }

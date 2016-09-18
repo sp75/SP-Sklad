@@ -5,9 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="5e7c272d2512446f8ce1b9cffb9ff8cd" Name="Diagram1" ZoomLevel="60">
-        <EntityTypeShape EntityType="BaseModel.ACCOUNTTYPE" Width="1.5" PointX="0.75" PointY="50.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.BANKS" Width="1.5" PointX="0.75" PointY="53.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.BANKSPERSONS" Width="1.5" PointX="3" PointY="70.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.CONTRACTS" Width="1.5" PointX="6" PointY="40.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.CONTRDET" Width="1.5" PointX="13.25" PointY="45.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.CONTRPARAMS" Width="1.5" PointX="8.25" PointY="48.75" IsExpanded="true" />
@@ -22,7 +19,6 @@
         <EntityTypeShape EntityType="BaseModel.SERIALS" Width="1.5" PointX="13.25" PointY="62.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.TAXES" Width="1.5" PointX="17" PointY="59.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.TAXWB" Width="1.5" PointX="9" PointY="33.375" IsExpanded="true" />
-        <AssociationConnector Association="BaseModel.FK_BANKSPERSONS_1" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_CONTRDET_REFERENCE_CONTRACTS" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_CONTRPARAMS_CONTRACTS" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_CONTRRESULTS_CONTRACTS" ManuallyRouted="false" />
@@ -124,8 +120,6 @@
         <EntityTypeShape EntityType="BaseModel.KAgentAccount" Width="1.5" PointX="4.08879674043916" PointY="0.044875130078231511" />
         <EntityTypeShape EntityType="BaseModel.KAgentPersons" Width="1.5" PointX="2.7761008715145756" PointY="28.186123771679647" />
         <EntityTypeShape EntityType="BaseModel.KAgentSaldo" Width="1.5" PointX="2.9506919751645491" PointY="26.7423845356062" />
-        <AssociationConnector Association="BaseModel.FK_AGENTACC_FK_AGENTA_ACCOUNTT" />
-        <AssociationConnector Association="BaseModel.FK_AGENTACC_FK_AGENTA_BANKS" />
         <AssociationConnector Association="BaseModel.FK_PD_ACCID" />
         <EntityTypeShape EntityType="BaseModel.KADiscount" Width="1.5" PointX="10.337791710317969" PointY="24.720574882217019" />
         <EntityTypeShape EntityType="BaseModel.KAMatDiscount" Width="1.5" PointX="2.9017272158068268" PointY="12.329462563772436" />
@@ -237,6 +231,13 @@
         <AssociationConnector Association="BaseModel.FK_WBL_ENTID" />
         <AssociationConnector Association="BaseModel.FK_WBS_PERSONID" />
         <AssociationConnector Association="BaseModel.FK_OperLog_Users" />
+        <EntityTypeShape EntityType="BaseModel.AccountType" Width="1.5" PointX="19.375" PointY="0.875" />
+        <EntityTypeShape EntityType="BaseModel.Banks" Width="1.5" PointX="0.75" PointY="36" />
+        <AssociationConnector Association="BaseModel.FK_AGENTACC_FK_AGENTA_ACCOUNTT" />
+        <AssociationConnector Association="BaseModel.FK_AGENTACC_FK_AGENTA_BANKS" />
+        <EntityTypeShape EntityType="BaseModel.BANKSPERSONS" Width="1.5" PointX="3" PointY="54.25" />
+        <AssociationConnector Association="BaseModel.FK_BANKSPERSONS_1" />
+        <EntityTypeShape EntityType="BaseModel.v_KAgentAccount" Width="1.5" PointX="16.375" PointY="0.75" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="7.0245045325832924" PointY="12.641712000892364" />

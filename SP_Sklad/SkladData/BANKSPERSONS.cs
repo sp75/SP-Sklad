@@ -14,14 +14,14 @@ namespace SP_Sklad.SkladData
     
     public partial class BANKSPERSONS
     {
-        public int PERSONID { get; set; }
-        public int BANKID { get; set; }
-        public string NAME { get; set; }
-        public string JOB { get; set; }
-        public string PHONE { get; set; }
-        public string EMAIL { get; set; }
-        public string NOTES { get; set; }
+        public int PersonId { get; set; }
+        public int BankId { get; set; }
+        public string Name { get; set; }
+        public string Job { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+        public string Notes { get; set; }
     
-        public virtual BANKS BANKS { get; set; }
+        public virtual Banks Banks { get; set; }
     }
 }

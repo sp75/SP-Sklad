@@ -279,13 +279,13 @@
     <Compile Include="Reports\PrintReport.cs" />
     <Compile Include="Reports\ReportBuilder.cs" />
     <Compile Include="Reports\TemlateList.cs" />
-    <Compile Include="SkladData\ACCOUNTTYPE.cs">
+    <Compile Include="SkladData\AccountType.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\Actives.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\BANKS.cs">
+    <Compile Include="SkladData\Banks.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\BANKSPERSONS.cs">
@@ -758,6 +758,9 @@
     <Compile Include="SkladData\v_GetDocsTree.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_KAgentAccount.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_MatRemains.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1107,6 +1110,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetWayBillDetOut_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KADiscount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Kagent.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.KAgentAccount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KAgentDoc.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KagentList.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KAMatDiscount.datasource" />
@@ -1125,6 +1129,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.SvcGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Users.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.UserTreeAccess.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_KAgentAccount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PriceList.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Services.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WaybillDet.datasource" />

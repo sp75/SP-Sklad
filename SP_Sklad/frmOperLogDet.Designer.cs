@@ -362,7 +362,12 @@
             this.PTypeComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.PTypeComboBox.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Створення", "I", 2)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Створення", "I", 2),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Редагування", "U", 4),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Видалення", "D", 5),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Виконання", "E", 7),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Сторнування", "E", 6),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Перегляд", "V", 3)});
             this.PTypeComboBox.Properties.NullText = "[EditValue is null]";
             this.PTypeComboBox.Properties.PopupSizeable = true;
             this.PTypeComboBox.Properties.ReadOnly = true;

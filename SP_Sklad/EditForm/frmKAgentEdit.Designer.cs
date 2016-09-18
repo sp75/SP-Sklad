@@ -52,6 +52,7 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.DirTreeList = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.TreeListBS = new System.Windows.Forms.BindingSource(this.components);
             this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
@@ -154,11 +155,38 @@
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.xtraTabPage11 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
+            this.groupControl11 = new DevExpress.XtraEditors.GroupControl();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.AddAccBtn = new DevExpress.XtraEditors.SimpleButton();
+            this.DelAccBtn = new DevExpress.XtraEditors.SimpleButton();
+            this.EditAccBtn = new DevExpress.XtraEditors.SimpleButton();
+            this.AccountsGridControl = new DevExpress.XtraGrid.GridControl();
+            this.v_KAgentAccountBS = new System.Windows.Forms.BindingSource(this.components);
+            this.AccountsGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl10 = new DevExpress.XtraEditors.GroupControl();
             this.textEdit8 = new DevExpress.XtraEditors.MemoEdit();
             this.xtraTabPage12 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage13 = new DevExpress.XtraTab.XtraTabPage();
+            this.groupControl12 = new DevExpress.XtraEditors.GroupControl();
+            this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton12 = new DevExpress.XtraEditors.SimpleButton();
+            this.panelControl9 = new DevExpress.XtraEditors.PanelControl();
+            this.lookUpEdit2 = new DevExpress.XtraEditors.LookUpEdit();
+            this.KAgentAccountBS = new System.Windows.Forms.BindingSource(this.components);
+            this.simpleButton14 = new DevExpress.XtraEditors.SimpleButton();
+            this.checkEdit5 = new DevExpress.XtraEditors.CheckEdit();
+            this.textEdit17 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl38 = new DevExpress.XtraEditors.LabelControl();
+            this.simpleButton13 = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl33 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl37 = new DevExpress.XtraEditors.LabelControl();
+            this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
             this.xtraTabPage14 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl6 = new DevExpress.XtraEditors.GroupControl();
             this.panelControl7 = new DevExpress.XtraEditors.PanelControl();
@@ -197,6 +225,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TreeListBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -278,10 +307,27 @@
             this.xtraTabPage5.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.xtraTabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl11)).BeginInit();
+            this.groupControl11.SuspendLayout();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountsGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.v_KAgentAccountBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountsGridView)).BeginInit();
             this.xtraTabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl10)).BeginInit();
             this.groupControl10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit8.Properties)).BeginInit();
+            this.xtraTabPage13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl12)).BeginInit();
+            this.groupControl12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl9)).BeginInit();
+            this.panelControl9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KAgentAccountBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit5.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit17.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
             this.xtraTabPage14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).BeginInit();
             this.groupControl6.SuspendLayout();
@@ -334,6 +380,7 @@
             this.ImageList.Images.SetKeyName(9, "Баланс з контрагентом.bmp");
             this.ImageList.Images.SetKeyName(10, "Посв_дчення якост_.bmp");
             this.ImageList.Images.SetKeyName(11, "Delete.bmp");
+            this.ImageList.Images.SetKeyName(12, "Банки.bmp");
             // 
             // styleController1
             // 
@@ -381,6 +428,7 @@
             this.barButtonItem1.Id = 0;
             this.barButtonItem1.ImageIndex = 9;
             this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -502,6 +550,7 @@
             this.DirTreeList.Appearance.FocusedCell.Options.UseBackColor = true;
             this.DirTreeList.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.treeListColumn1});
+            this.DirTreeList.DataSource = this.TreeListBS;
             this.DirTreeList.Dock = System.Windows.Forms.DockStyle.Left;
             this.DirTreeList.ImageIndexFieldName = "ImgIdx";
             this.DirTreeList.KeyFieldName = "Id";
@@ -1659,9 +1708,133 @@
             // 
             // xtraTabPage6
             // 
+            this.xtraTabPage6.Controls.Add(this.groupControl11);
             this.xtraTabPage6.Name = "xtraTabPage6";
             this.xtraTabPage6.Size = new System.Drawing.Size(681, 475);
             this.xtraTabPage6.Text = "Рахунки";
+            // 
+            // groupControl11
+            // 
+            this.groupControl11.Controls.Add(this.panel6);
+            this.groupControl11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl11.Location = new System.Drawing.Point(0, 0);
+            this.groupControl11.Name = "groupControl11";
+            this.groupControl11.Size = new System.Drawing.Size(681, 475);
+            this.groupControl11.TabIndex = 17;
+            this.groupControl11.Tag = "";
+            this.groupControl11.Text = " Рахунки ";
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.AddAccBtn);
+            this.panel6.Controls.Add(this.DelAccBtn);
+            this.panel6.Controls.Add(this.EditAccBtn);
+            this.panel6.Controls.Add(this.AccountsGridControl);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(2, 20);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(677, 453);
+            this.panel6.TabIndex = 44;
+            // 
+            // AddAccBtn
+            // 
+            this.AddAccBtn.Image = ((System.Drawing.Image)(resources.GetObject("AddAccBtn.Image")));
+            this.AddAccBtn.Location = new System.Drawing.Point(18, 11);
+            this.AddAccBtn.Name = "AddAccBtn";
+            this.AddAccBtn.Size = new System.Drawing.Size(106, 23);
+            this.AddAccBtn.TabIndex = 11;
+            this.AddAccBtn.Text = "Додати...";
+            this.AddAccBtn.Click += new System.EventHandler(this.AddAccBtn_Click);
+            // 
+            // DelAccBtn
+            // 
+            this.DelAccBtn.Image = ((System.Drawing.Image)(resources.GetObject("DelAccBtn.Image")));
+            this.DelAccBtn.Location = new System.Drawing.Point(242, 11);
+            this.DelAccBtn.Name = "DelAccBtn";
+            this.DelAccBtn.Size = new System.Drawing.Size(101, 23);
+            this.DelAccBtn.TabIndex = 10;
+            this.DelAccBtn.Text = "Видалити";
+            this.DelAccBtn.Click += new System.EventHandler(this.DelAccBtn_Click);
+            // 
+            // EditAccBtn
+            // 
+            this.EditAccBtn.Image = ((System.Drawing.Image)(resources.GetObject("EditAccBtn.Image")));
+            this.EditAccBtn.Location = new System.Drawing.Point(130, 11);
+            this.EditAccBtn.Name = "EditAccBtn";
+            this.EditAccBtn.Size = new System.Drawing.Size(106, 23);
+            this.EditAccBtn.TabIndex = 9;
+            this.EditAccBtn.Text = "Властивості";
+            this.EditAccBtn.Click += new System.EventHandler(this.EditAccBtn_Click);
+            // 
+            // AccountsGridControl
+            // 
+            this.AccountsGridControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AccountsGridControl.DataSource = this.v_KAgentAccountBS;
+            this.AccountsGridControl.Location = new System.Drawing.Point(18, 47);
+            this.AccountsGridControl.MainView = this.AccountsGridView;
+            this.AccountsGridControl.MenuManager = this.barManager1;
+            this.AccountsGridControl.Name = "AccountsGridControl";
+            this.AccountsGridControl.Size = new System.Drawing.Size(643, 389);
+            this.AccountsGridControl.TabIndex = 7;
+            this.AccountsGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.AccountsGridView});
+            // 
+            // v_KAgentAccountBS
+            // 
+            this.v_KAgentAccountBS.DataSource = typeof(SP_Sklad.SkladData.v_KAgentAccount);
+            // 
+            // AccountsGridView
+            // 
+            this.AccountsGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn4,
+            this.gridColumn5,
+            this.gridColumn6,
+            this.gridColumn7});
+            this.AccountsGridView.GridControl = this.AccountsGridControl;
+            this.AccountsGridView.Name = "AccountsGridView";
+            this.AccountsGridView.OptionsBehavior.AllowIncrementalSearch = true;
+            this.AccountsGridView.OptionsBehavior.Editable = false;
+            this.AccountsGridView.OptionsView.ShowGroupPanel = false;
+            this.AccountsGridView.DoubleClick += new System.EventHandler(this.AccountsGridView_DoubleClick);
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Сировина";
+            this.gridColumn4.FieldName = "Def";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.OptionsColumn.ShowCaption = false;
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 0;
+            this.gridColumn4.Width = 38;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "Тип";
+            this.gridColumn5.FieldName = "TypeName";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 1;
+            this.gridColumn5.Width = 171;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "№ рахунку";
+            this.gridColumn6.FieldName = "AccNum";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 2;
+            this.gridColumn6.Width = 183;
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "MFO";
+            this.gridColumn7.FieldName = "MFO";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 3;
+            this.gridColumn7.Width = 233;
             // 
             // xtraTabPage7
             // 
@@ -1698,9 +1871,192 @@
             // 
             // xtraTabPage13
             // 
+            this.xtraTabPage13.Controls.Add(this.groupControl12);
             this.xtraTabPage13.Name = "xtraTabPage13";
             this.xtraTabPage13.Size = new System.Drawing.Size(681, 475);
             this.xtraTabPage13.Text = "Рахунок";
+            // 
+            // groupControl12
+            // 
+            this.groupControl12.Controls.Add(this.simpleButton7);
+            this.groupControl12.Controls.Add(this.simpleButton8);
+            this.groupControl12.Controls.Add(this.simpleButton12);
+            this.groupControl12.Controls.Add(this.panelControl9);
+            this.groupControl12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl12.Location = new System.Drawing.Point(0, 0);
+            this.groupControl12.Name = "groupControl12";
+            this.groupControl12.Size = new System.Drawing.Size(681, 475);
+            this.groupControl12.TabIndex = 18;
+            this.groupControl12.Tag = "";
+            this.groupControl12.Text = " Рахунок ";
+            // 
+            // simpleButton7
+            // 
+            this.simpleButton7.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton7.Image")));
+            this.simpleButton7.ImageList = this.ImageList;
+            this.simpleButton7.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton7.Location = new System.Drawing.Point(638, 32);
+            this.simpleButton7.Name = "simpleButton7";
+            this.simpleButton7.Size = new System.Drawing.Size(22, 22);
+            this.simpleButton7.TabIndex = 52;
+            this.simpleButton7.ToolTip = "Повернутися до списку";
+            this.simpleButton7.Click += new System.EventHandler(this.simpleButton7_Click_1);
+            // 
+            // simpleButton8
+            // 
+            this.simpleButton8.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton8.Image")));
+            this.simpleButton8.Location = new System.Drawing.Point(20, 31);
+            this.simpleButton8.Name = "simpleButton8";
+            this.simpleButton8.Size = new System.Drawing.Size(106, 23);
+            this.simpleButton8.TabIndex = 51;
+            this.simpleButton8.Text = "Додати...";
+            this.simpleButton8.Click += new System.EventHandler(this.AddAccBtn_Click);
+            // 
+            // simpleButton12
+            // 
+            this.simpleButton12.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton12.Image")));
+            this.simpleButton12.Location = new System.Drawing.Point(132, 31);
+            this.simpleButton12.Name = "simpleButton12";
+            this.simpleButton12.Size = new System.Drawing.Size(101, 23);
+            this.simpleButton12.TabIndex = 50;
+            this.simpleButton12.Text = "Видалити";
+            this.simpleButton12.Click += new System.EventHandler(this.simpleButton12_Click);
+            // 
+            // panelControl9
+            // 
+            this.panelControl9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelControl9.Controls.Add(this.lookUpEdit2);
+            this.panelControl9.Controls.Add(this.simpleButton14);
+            this.panelControl9.Controls.Add(this.checkEdit5);
+            this.panelControl9.Controls.Add(this.textEdit17);
+            this.panelControl9.Controls.Add(this.labelControl38);
+            this.panelControl9.Controls.Add(this.simpleButton13);
+            this.panelControl9.Controls.Add(this.labelControl33);
+            this.panelControl9.Controls.Add(this.labelControl37);
+            this.panelControl9.Controls.Add(this.lookUpEdit1);
+            this.panelControl9.Location = new System.Drawing.Point(20, 69);
+            this.panelControl9.Name = "panelControl9";
+            this.panelControl9.Size = new System.Drawing.Size(640, 385);
+            this.panelControl9.TabIndex = 49;
+            // 
+            // lookUpEdit2
+            // 
+            this.lookUpEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KAgentAccountBS, "TypeId", true));
+            this.lookUpEdit2.Location = new System.Drawing.Point(74, 91);
+            this.lookUpEdit2.Name = "lookUpEdit2";
+            this.lookUpEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEdit2.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name1")});
+            this.lookUpEdit2.Properties.DisplayMember = "Name";
+            this.lookUpEdit2.Properties.NullText = "";
+            this.lookUpEdit2.Properties.PopupSizeable = false;
+            this.lookUpEdit2.Properties.ShowFooter = false;
+            this.lookUpEdit2.Properties.ShowHeader = false;
+            this.lookUpEdit2.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.lookUpEdit2.Properties.ValueMember = "BankId";
+            this.lookUpEdit2.Size = new System.Drawing.Size(234, 22);
+            this.lookUpEdit2.StyleController = this.styleController1;
+            this.lookUpEdit2.TabIndex = 58;
+            // 
+            // KAgentAccountBS
+            // 
+            this.KAgentAccountBS.DataSource = typeof(SP_Sklad.SkladData.KAgentAccount);
+            // 
+            // simpleButton14
+            // 
+            this.simpleButton14.ImageIndex = 12;
+            this.simpleButton14.ImageList = this.ImageList;
+            this.simpleButton14.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton14.Location = new System.Drawing.Point(314, 91);
+            this.simpleButton14.Name = "simpleButton14";
+            this.simpleButton14.Size = new System.Drawing.Size(22, 22);
+            this.simpleButton14.TabIndex = 57;
+            this.simpleButton14.ToolTip = "Повернутися до списку";
+            // 
+            // checkEdit5
+            // 
+            this.checkEdit5.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KAgentAccountBS, "Def", true));
+            this.checkEdit5.Location = new System.Drawing.Point(17, 341);
+            this.checkEdit5.MenuManager = this.barManager1;
+            this.checkEdit5.Name = "checkEdit5";
+            this.checkEdit5.Properties.Caption = "Основний рахунок (використовувати за змовчуванням)";
+            this.checkEdit5.Properties.ValueChecked = 1;
+            this.checkEdit5.Properties.ValueUnchecked = 0;
+            this.checkEdit5.Size = new System.Drawing.Size(574, 20);
+            this.checkEdit5.StyleController = this.styleController1;
+            this.checkEdit5.TabIndex = 56;
+            this.checkEdit5.CheckedChanged += new System.EventHandler(this.checkEdit5_CheckedChanged_1);
+            // 
+            // textEdit17
+            // 
+            this.textEdit17.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KAgentAccountBS, "AccNum", true));
+            this.textEdit17.Location = new System.Drawing.Point(74, 14);
+            this.textEdit17.Name = "textEdit17";
+            this.textEdit17.Size = new System.Drawing.Size(517, 22);
+            this.textEdit17.StyleController = this.styleController1;
+            this.textEdit17.TabIndex = 55;
+            this.textEdit17.EditValueChanged += new System.EventHandler(this.textEdit17_EditValueChanged);
+            // 
+            // labelControl38
+            // 
+            this.labelControl38.Location = new System.Drawing.Point(17, 17);
+            this.labelControl38.Name = "labelControl38";
+            this.labelControl38.Size = new System.Drawing.Size(51, 16);
+            this.labelControl38.StyleController = this.styleController1;
+            this.labelControl38.TabIndex = 54;
+            this.labelControl38.Text = "Рахунок:";
+            // 
+            // simpleButton13
+            // 
+            this.simpleButton13.ImageIndex = 3;
+            this.simpleButton13.ImageList = this.ImageList;
+            this.simpleButton13.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton13.Location = new System.Drawing.Point(314, 51);
+            this.simpleButton13.Name = "simpleButton13";
+            this.simpleButton13.Size = new System.Drawing.Size(22, 22);
+            this.simpleButton13.TabIndex = 53;
+            this.simpleButton13.ToolTip = "Повернутися до списку";
+            // 
+            // labelControl33
+            // 
+            this.labelControl33.Location = new System.Drawing.Point(17, 94);
+            this.labelControl33.Name = "labelControl33";
+            this.labelControl33.Size = new System.Drawing.Size(33, 16);
+            this.labelControl33.StyleController = this.styleController1;
+            this.labelControl33.TabIndex = 47;
+            this.labelControl33.Text = "Банк:";
+            // 
+            // labelControl37
+            // 
+            this.labelControl37.Location = new System.Drawing.Point(17, 55);
+            this.labelControl37.Name = "labelControl37";
+            this.labelControl37.Size = new System.Drawing.Size(27, 16);
+            this.labelControl37.StyleController = this.styleController1;
+            this.labelControl37.TabIndex = 36;
+            this.labelControl37.Text = "Тип:";
+            // 
+            // lookUpEdit1
+            // 
+            this.lookUpEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KAgentAccountBS, "TypeId", true));
+            this.lookUpEdit1.Location = new System.Drawing.Point(74, 51);
+            this.lookUpEdit1.Name = "lookUpEdit1";
+            this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEdit1.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name1")});
+            this.lookUpEdit1.Properties.DisplayMember = "Name";
+            this.lookUpEdit1.Properties.NullText = "";
+            this.lookUpEdit1.Properties.PopupSizeable = false;
+            this.lookUpEdit1.Properties.ShowFooter = false;
+            this.lookUpEdit1.Properties.ShowHeader = false;
+            this.lookUpEdit1.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.lookUpEdit1.Properties.ValueMember = "TypeId";
+            this.lookUpEdit1.Size = new System.Drawing.Size(234, 22);
+            this.lookUpEdit1.StyleController = this.styleController1;
+            this.lookUpEdit1.TabIndex = 37;
             // 
             // xtraTabPage14
             // 
@@ -2057,6 +2413,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TreeListBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
@@ -2148,10 +2505,28 @@
             this.xtraTabPage5.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.xtraTabPage6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl11)).EndInit();
+            this.groupControl11.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.AccountsGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.v_KAgentAccountBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountsGridView)).EndInit();
             this.xtraTabPage7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl10)).EndInit();
             this.groupControl10.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textEdit8.Properties)).EndInit();
+            this.xtraTabPage13.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl12)).EndInit();
+            this.groupControl12.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl9)).EndInit();
+            this.panelControl9.ResumeLayout(false);
+            this.panelControl9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KAgentAccountBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit5.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit17.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
             this.xtraTabPage14.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).EndInit();
             this.groupControl6.ResumeLayout(false);
@@ -2344,5 +2719,33 @@
         private DevExpress.XtraEditors.DateEdit dateEdit3;
         private DevExpress.XtraEditors.GroupControl groupControl10;
         private System.Windows.Forms.BindingSource KAgentDocDS;
+        private DevExpress.XtraEditors.GroupControl groupControl11;
+        private System.Windows.Forms.Panel panel6;
+        private DevExpress.XtraEditors.SimpleButton AddAccBtn;
+        private DevExpress.XtraEditors.SimpleButton DelAccBtn;
+        private DevExpress.XtraEditors.SimpleButton EditAccBtn;
+        private DevExpress.XtraGrid.GridControl AccountsGridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView AccountsGridView;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private System.Windows.Forms.BindingSource v_KAgentAccountBS;
+        private DevExpress.XtraEditors.GroupControl groupControl12;
+        private DevExpress.XtraEditors.SimpleButton simpleButton7;
+        private DevExpress.XtraEditors.SimpleButton simpleButton8;
+        private DevExpress.XtraEditors.SimpleButton simpleButton12;
+        private DevExpress.XtraEditors.PanelControl panelControl9;
+        private DevExpress.XtraEditors.CheckEdit checkEdit5;
+        private DevExpress.XtraEditors.TextEdit textEdit17;
+        private DevExpress.XtraEditors.LabelControl labelControl38;
+        private DevExpress.XtraEditors.SimpleButton simpleButton13;
+        private DevExpress.XtraEditors.LabelControl labelControl33;
+        private DevExpress.XtraEditors.LabelControl labelControl37;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
+        private System.Windows.Forms.BindingSource KAgentAccountBS;
+        private System.Windows.Forms.BindingSource TreeListBS;
+        private DevExpress.XtraEditors.SimpleButton simpleButton14;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEdit2;
     }
 }
