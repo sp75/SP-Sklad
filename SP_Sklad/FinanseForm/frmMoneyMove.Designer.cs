@@ -408,12 +408,10 @@
             this.AccountEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.AccountEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
-            this.AccountEdit.Properties.DisplayMember = "Name";
-            this.AccountEdit.Properties.ShowFooter = false;
-            this.AccountEdit.Properties.ShowHeader = false;
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("AccNum", "Назва")});
+            this.AccountEdit.Properties.DisplayMember = "AccNum";
             this.AccountEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.AccountEdit.Properties.ValueMember = "CashId";
+            this.AccountEdit.Properties.ValueMember = "AccId";
             this.AccountEdit.Size = new System.Drawing.Size(158, 22);
             this.AccountEdit.StyleController = this.styleController1;
             this.AccountEdit.TabIndex = 37;

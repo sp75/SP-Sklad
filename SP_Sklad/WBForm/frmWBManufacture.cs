@@ -65,8 +65,7 @@ namespace SP_Sklad.WBForm
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
                     KaId = DBHelper.CurrentUser.KaId,
-                    WayBillMake = new WayBillMake { SourceWId = DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId },
-                    UpdatedBy = DBHelper.CurrentUser.UserId
+                    WayBillMake = new WayBillMake { SourceWId = DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId }
                 });
                 _db.SaveChanges();
 
@@ -87,6 +86,8 @@ namespace SP_Sklad.WBForm
 
             if (wb != null && wb.WayBillMake != null)
             {
+                wb.UpdatedBy = DBHelper.CurrentUser.UserId;
+
                 TurnDocCheckBox.EditValue = wb.Checked;
                 RecipeComboBox.DataBindings.Add(new Binding("EditValue", wb.WayBillMake, "RecId", true, DataSourceUpdateMode.OnValidation));
                 WhComboBox.DataBindings.Add(new Binding("EditValue", wb.WayBillMake, "SourceWId"));

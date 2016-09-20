@@ -51,8 +51,7 @@ namespace SP_Sklad.WBForm
                     CurrId = 2,
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
-                    Nds = DBHelper.Enterprise.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0,
-                    UpdatedBy = DBHelper.CurrentUser.UserId
+                    Nds = DBHelper.Enterprise.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0
                 });
 
                 _db.SaveChanges();
@@ -73,6 +72,8 @@ namespace SP_Sklad.WBForm
 
             if (wb != null)
             {
+                wb.UpdatedBy = DBHelper.CurrentUser.UserId;
+
                 GetDocValue(wb);
             }
 

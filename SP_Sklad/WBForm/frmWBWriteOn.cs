@@ -59,8 +59,7 @@ namespace SP_Sklad.WBForm
                     Num = new BaseEntities().GetCounter("wb_write_on").FirstOrDefault(),
                     CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                     OnValue = 1,
-                    PersonId = DBHelper.CurrentUser.KaId,
-                    UpdatedBy = DBHelper.CurrentUser.UserId
+                    PersonId = DBHelper.CurrentUser.KaId
                 });
 
                 _db.SaveChanges();
@@ -83,6 +82,8 @@ namespace SP_Sklad.WBForm
 
             if (wb != null)
             {
+                wb.UpdatedBy = DBHelper.CurrentUser.UserId;
+
                 TurnDocCheckBox.EditValue = wb.Checked;
 
                 PersonComboBox.DataBindings.Add(new Binding("EditValue", wb, "PersonId", true, DataSourceUpdateMode.OnValidation));

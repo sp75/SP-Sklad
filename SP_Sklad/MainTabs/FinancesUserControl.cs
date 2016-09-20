@@ -310,5 +310,30 @@ namespace SP_Sklad.MainTabs
             }
            
         }
+
+        private void CopyItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            switch (focused_tree_node.GType)
+            {
+                case 2:
+                    var dr = MoneyMoveGridView.GetFocusedRow() as MoneyMoveList_Result;
+                    var doc = DB.SkladBase().DocCopy(dr.DocId).FirstOrDefault();
+                    using (var wb_in = new frmMoneyMove(6, doc.out_wbill_id))
+                    {
+                        wb_in.ShowDialog();
+                    }
+                    break;
+                    
+                    /*frmMoneyMove = new TfrmMoneyMove(Application);
+                    frmMoneyMove->PayDoc->ParamByName("PAYDOCID")->Value = SkladData->DocCopy(frmMoneyMove->PayDocTransaction, MoneyMoveDocsDOCID->Value);
+                    frmMoneyMove->PayDoc->Open();
+                    frmMoneyMove->PayDoc->Edit();
+                    frmMoneyMove->ShowModal();
+                    delete frmMoneyMove;
+                    MoneyMoveDocs->FullRefresh();*/
+ 
+            }
+            RefrechItemBtn.PerformClick();
+        }
     }
 }

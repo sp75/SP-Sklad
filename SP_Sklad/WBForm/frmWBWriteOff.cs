@@ -62,12 +62,12 @@ namespace SP_Sklad.WBForm
                     CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
-                    WaybillMove = new WaybillMove { SourceWid = DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId },
-                    UpdatedBy = DBHelper.CurrentUser.UserId
+                    WaybillMove = new WaybillMove { SourceWid = DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId }
                 });
                
                 _db.SaveChanges();
                 _wbill_id = wb.WbillId;
+
                 CommissionBS.DataSource = _db.Commission.Add(new Commission { WbillId = _wbill_id.Value, KaId = DBHelper.CurrentUser.KaId });
                 _db.SaveChanges();
 
@@ -87,6 +87,8 @@ namespace SP_Sklad.WBForm
 
             if (wb != null && wb.WaybillMove != null)
             {
+                wb.UpdatedBy = DBHelper.CurrentUser.UserId;
+
                 TurnDocCheckBox.EditValue = wb.Checked;
 
                 WhOutComboBox.DataBindings.Add(new Binding("EditValue", wb.WaybillMove, "SourceWid"));
@@ -125,7 +127,8 @@ namespace SP_Sklad.WBForm
                 _wbill_id = wb.WbillId;
 
                 wb.WaybillMove = _db.WaybillMove.Find(_wbill_id);
-                CommissionBS.DataSource = _db.Commission.FirstOrDefault(w => w.WbillId == _wbill_id);
+
+                CommissionBS.DataSource = _db.Commission.FirstOrDefault(w => w.WbillId == _wbill_id); ;
             }
 
 

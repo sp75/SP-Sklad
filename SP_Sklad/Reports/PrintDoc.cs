@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
@@ -150,7 +151,7 @@ namespace SP_Sklad.Reports
             var data_report = new Dictionary<string, IList>();
 
             var wb = db.v_WaybillList.Where(w => w.DocId == doc_id).ToList();
-           
+
             if (wb != null)
             {
                 var m = new MoneyToStr("UAH", "UKR", "TEXT");
@@ -158,9 +159,27 @@ namespace SP_Sklad.Reports
             }
 
             var ent_id = wb.First().EntId;
-            data_report.Add("EntAccount", db.EnterpriseAccount.Where(w => w.KaId == ent_id).ToList());
+            data_report.Add("EntAccount", db.EnterpriseAccount.Where(w => w.KaId == ent_id && w.Def == 1).ToList());
             data_report.Add("WayBillList", wb);
             data_report.Add("range1", db.GetWayBillDetOut(wb.First().WbillId).ToList());
+
+            var w_id = wb.First().WbillId;
+            var p = db.WaybillDet.Where(w => w.WbillId == w_id).Select(s => new
+            {
+                s.Num,
+                s.Amount,
+                s.Price,
+                s.Materials.Name,
+                s.Materials.Measures.ShortName                ,
+                s.Materials.Artikul,
+                s.Materials.CF1,
+                s.Materials.CF2,
+                s.Materials.CF3,
+                s.Materials.CF4,
+                s.Materials.CF5,
+                OnDate = DbFunctions.AddDays( s.OnDate , -1)
+            }).ToList();
+            data_report.Add("Posvitcheny", p);
 
             Print(data_report, template_name);
         }

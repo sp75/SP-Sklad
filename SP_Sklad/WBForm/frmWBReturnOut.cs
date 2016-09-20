@@ -55,8 +55,7 @@ namespace SP_Sklad.WBForm
                     CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
-                    EntId = DBHelper.Enterprise.KaId,
-                    UpdatedBy = DBHelper.CurrentUser.UserId
+                    EntId = DBHelper.Enterprise.KaId
                 });
 
                 _db.SaveChanges();
@@ -79,6 +78,8 @@ namespace SP_Sklad.WBForm
 
             if (wb != null)
             {
+                wb.UpdatedBy = DBHelper.CurrentUser.UserId;
+
                 TurnDocCheckBox.EditValue = wb.Checked;
 
                 KagentComboBox.DataBindings.Add(new Binding("EditValue", wb, "KaId", true, DataSourceUpdateMode.OnValidation));

@@ -37,6 +37,9 @@ namespace SP_Sklad.FinanseForm
             PersonEdit.Properties.DataSource = DBHelper.Persons;
             PayDocTypeEdit.Properties.DataSource = _db.PayDocType.Where(w=> w.Id == 6).ToList();
 
+            var ent_id = DBHelper.Enterprise.KaId ;
+            AccountEdit.Properties.DataSource = _db.EnterpriseAccount.Where(w => w.KaId == ent_id).Select(s=> new {s.AccId, s.AccNum, s.BankName }).ToList();
+
             if (_PayDocId == null)
             {
                 _pd = _db.PayDoc.Add(new PayDoc
@@ -53,7 +56,7 @@ namespace SP_Sklad.FinanseForm
                     OnValue = 1,//Курс валюти
                     MPersonId = DBHelper.CurrentUser.KaId,
                     DocType = Convert.ToInt32(_DocType),
-                    UpdatedBy = DBHelper.CurrentUser.UserId
+                   
                 });
             }
             else
@@ -71,6 +74,8 @@ namespace SP_Sklad.FinanseForm
             }
             if (_pd != null)
             {
+                 _pd.UpdatedBy = DBHelper.CurrentUser.UserId;
+
                 if (_pd.Total < 0)
                 {
                     SumEdit.Value = _pd.Total * -1;

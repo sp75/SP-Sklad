@@ -702,5 +702,44 @@ namespace SP_Sklad.MainTabs
         {
             IHelper.ShowOrdered(0, 0, focused_wh_mat.MatId.Value);
         }
+
+        private void CopyItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            switch (focused_tree_node.GType)
+            {
+                case 2:
+                    var dr = WbGridView.GetFocusedRow() as GetWayBillListWh_Result;
+                    var doc = DB.SkladBase().DocCopy(dr.DocId).FirstOrDefault();
+
+                    if (cur_wtype == 5) //Ввведення залишків
+                    {
+                        using (var wb_in = new frmWBWriteOn(doc.out_wbill_id))
+                        {
+                            wb_in.ShowDialog();
+                        }
+
+                    }
+                    if (cur_wtype == -5)  //Акти списання товару
+                    {
+                        using (var wb_in = new frmWBWriteOff(doc.out_wbill_id))
+                        {
+                            wb_in.ShowDialog();
+                        }
+                    }
+
+                    if (cur_wtype == 4) // Накладна переміщення
+                    {
+                        using (var wb_re_in = new frmWayBillMove(doc.out_wbill_id))
+                        {
+                            wb_re_in.ShowDialog();
+                        }
+                    }
+
+                    break;
+            }
+
+            GetWayBillList(cur_wtype);
+
+        }
     }
 }

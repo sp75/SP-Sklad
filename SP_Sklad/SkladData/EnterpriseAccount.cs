@@ -21,5 +21,6 @@ namespace SP_Sklad.SkladData
         public string BankName { get; set; }
         public string MFO { get; set; }
         public string OKPO { get; set; }
+        public Nullable<int> Def { get; set; }
     }
 }

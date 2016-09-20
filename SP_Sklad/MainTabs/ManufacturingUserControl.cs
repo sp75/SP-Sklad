@@ -451,5 +451,29 @@ namespace SP_Sklad.MainTabs
             IHelper.ShowOrdered(0, 0, focused_row.MatId);
         }
 
+        private void CopyItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            switch (focused_tree_node.GType)
+            {
+                case 1:
+                    var doc = DB.SkladBase().DocCopy(focused_row.DocId).FirstOrDefault();
+                    using (var wb_in = new frmWBManufacture(doc.out_wbill_id))
+                    {
+                        wb_in.ShowDialog();
+                    }
+                    break;
+
+                case 3:
+                    var doc2 = DB.SkladBase().DocCopy(focused_row.DocId).FirstOrDefault();
+                    using (var wb_in = new frmWBDeboning(doc2.out_wbill_id))
+                    {
+                        wb_in.ShowDialog();
+                    }
+                    break;
+            }
+
+            RefrechItemBtn.PerformClick();
+        }
+
     }
 }

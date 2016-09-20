@@ -46,6 +46,9 @@ namespace SP_Sklad.FinanseForm
             CurrEdit.Properties.DataSource = DBHelper.Currency;
             ChargeTypesEdit.Properties.DataSource = DBHelper.ChargeTypes;
 
+            var ent_id = DBHelper.Enterprise.KaId;
+            AccountEdit.Properties.DataSource = _db.EnterpriseAccount.Where(w => w.KaId == ent_id).Select(s => new { s.AccId, s.AccNum, s.BankName }).ToList();
+
             if (_PayDocId == null)
             {
                 _pd = _db.PayDoc.Add(new PayDoc
@@ -96,6 +99,7 @@ namespace SP_Sklad.FinanseForm
                 WithNDScheckEdit.DataBindings.Add(new Binding("EditValue", _pd, "WithNDS"));
                 ReasonEdit.DataBindings.Add(new Binding("EditValue", _pd, "Reason"));
                 NotesEdit.DataBindings.Add(new Binding("EditValue", _pd, "Notes"));
+                AccountEdit.DataBindings.Add(new Binding("EditValue", _pd, "AccId", true, DataSourceUpdateMode.OnValidation));
             }
 
             if (_DocType < 0)
@@ -144,6 +148,60 @@ namespace SP_Sklad.FinanseForm
             _db.SaveChanges();
 
             PrintDoc.Show(_PayDocId.Value, _pd.DocType == -2 ? _pd.DocType : _pd.DocType * 3, _db);
+        }
+
+        private void PTypeComboBox_EditValueChanged(object sender, EventArgs e)
+        {
+            if (PTypeComboBox.EditValue == DBNull.Value)
+            {
+                return;
+            }
+
+            labelControl7.Visible = false;
+            CashEditComboBox.Visible = false;
+            simpleButton4.Visible = false;
+
+            labelControl18.Visible = false;
+            AccountEdit.Visible = false;
+            simpleButton9.Visible = false;
+
+            if ((int)PTypeComboBox.EditValue == 1)
+            {
+                labelControl7.Visible = true;
+                CashEditComboBox.Visible = true;
+                simpleButton4.Visible = true;
+                _pd.AccId = null;
+
+            }
+
+            if ((int)PTypeComboBox.EditValue == 2)
+            {
+                labelControl18.Visible = true;
+                AccountEdit.Visible = true;
+                simpleButton9.Visible = true;
+                _pd.CashId = null;
+
+            }
+            GetOk();
+        }
+
+        bool GetOk()
+        {
+            bool recult = (NumEdit.Text.Any() && PTypeComboBox.EditValue != null && (CashEditComboBox.EditValue != null || AccountEdit.Text.Any()) && SumEdit.Value > 0);
+
+            OkButton.Enabled = recult;
+
+            return recult;
+        }
+
+        private void NumEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            GetOk();
+        }
+
+        private void frmPayDoc_Shown(object sender, EventArgs e)
+        {
+            GetOk();
         }
     }
 }

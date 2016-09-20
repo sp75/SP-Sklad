@@ -566,17 +566,17 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType)
             {
                 case 1:
-                     var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
-                     var doc = DB.SkladBase().DocCopy(dr.DocId).FirstOrDefault();
+                    var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
+                    var doc = DB.SkladBase().DocCopy(dr.DocId).FirstOrDefault();
 
-                     if (cur_wtype == -1 || cur_wtype == -16 ) //Відаткова , замолення клиента 
-                     {
-                         using (var wb_in = new frmWayBillOut(cur_wtype, doc.out_wbill_id))
-                         {
-                             wb_in.ShowDialog();
-                         }
+                    if (cur_wtype == -1 || cur_wtype == -16) //Відаткова , замолення клиента 
+                    {
+                        using (var wb_in = new frmWayBillOut(cur_wtype, doc.out_wbill_id))
+                        {
+                            wb_in.ShowDialog();
+                        }
 
-                     }
+                    }
                     if (cur_wtype == 1 || cur_wtype == 16)  //Прибткова накладна , замовлення постачальникам
                     {
                         using (var wb_in = new frmWayBillIn(cur_wtype, doc.out_wbill_id))
@@ -606,11 +606,13 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 4:
+                    var pd = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
+                    var p_doc = DB.SkladBase().DocCopy(pd.DocId).FirstOrDefault();
 
                     int? w_type = focused_tree_node.WType != -2 ? focused_tree_node.WType / 3 : focused_tree_node.WType;
-                    using (var pd = new frmPayDoc(w_type, null))
+                    using (var pdf = new frmPayDoc(w_type, p_doc.out_wbill_id))
                     {
-                        pd.ShowDialog();
+                        pdf.ShowDialog();
                     }
                     break;
 
@@ -647,7 +649,7 @@ namespace SP_Sklad.MainTabs
                                 break;*/
             }
 
-            GetWayBillList(cur_wtype);
+            RefrechItemBtn.PerformClick();
         }
 
         private void DocsPopupMenu_BeforePopup(object sender, CancelEventArgs e)

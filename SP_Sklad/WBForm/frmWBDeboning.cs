@@ -73,8 +73,7 @@ namespace SP_Sklad.WBForm
                         SourceWId = source_wid ?? DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId,
                         RecId = rec_id
                     },
-                    Nds = 0,
-                    UpdatedBy = DBHelper.CurrentUser.UserId
+                    Nds = 0
                 });
                 _db.SaveChanges();
 
@@ -96,6 +95,8 @@ namespace SP_Sklad.WBForm
 
             if (wb != null && wb.WayBillMake != null)
             {
+                wb.UpdatedBy = DBHelper.CurrentUser.UserId;
+
                 TurnDocCheckBox.EditValue = wb.Checked;
                 RecipeComboBox.DataBindings.Add(new Binding("EditValue", wb.WayBillMake, "RecId", true, DataSourceUpdateMode.OnValidation));
                 WhComboBox.DataBindings.Add(new Binding("EditValue", wb.WayBillMake, "SourceWId"));
