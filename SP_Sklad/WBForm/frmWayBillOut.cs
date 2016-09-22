@@ -198,7 +198,7 @@ namespace SP_Sklad.WBForm
 
             if (recult && wb.WType == -1 && TurnDocCheckBox.Checked)
             {
-                recult = !wbd_list.Any(w => w.Rsv == 0 && w.PosType == 0);
+                recult = !wbd_list.Any(w => w.Rsv == 0 && w.PosType == 0 && w.Total > 0);
             }
 
             barSubItem1.Enabled = KagentComboBox.EditValue != null && KagentComboBox.EditValue != DBNull.Value;
@@ -442,6 +442,23 @@ namespace SP_Sklad.WBForm
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             IHelper.ShowOrdered((int)KagentComboBox.EditValue, -16, 0);
+        }
+
+        private void WaybillDetOutGridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            var dr = WaybillDetOutGridView.GetRow(e.RowHandle) as GetWayBillDetOut_Result;
+            var wbd = _db.WaybillDet.Find(dr.PosId);
+            if (dr.Rsv == 0)
+            {
+                wbd.Amount = Convert.ToDecimal(e.Value);
+                _db.SaveChanges();
+
+                RefreshDet();
+            }
+            else
+            {
+                dr.Amount = wbd.Amount;
+            }
         }
     }
 }

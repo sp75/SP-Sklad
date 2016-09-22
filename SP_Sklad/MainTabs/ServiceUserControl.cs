@@ -119,16 +119,13 @@ namespace SP_Sklad.MainTabs
                       case 3: DelBarButton->Enabled = (cxGridDBTableView2->DataController->DataSource->DataSet->FieldByName("def")->Value != 1);
                           break;*/
 
-                      case 5:
-                    GetOperLogBS.DataSource = DB.SkladBase().GetOperLog(wbStartDate.DateTime, wbEndDate.DateTime, (int)wTypeList.EditValue, (int)UserComboBox.EditValue).OrderByDescending(o=> o.OnDate).ToList();
-                
-                /* OperLog->Open();
-                          OperLog->Refresh();
-                          OperLog->FullRefresh();
-                          PrintLog->Open();
-                          PrintLog->Refresh();
-                          PrintLog->FullRefresh();*/
-                          break;
+                case 5:
+                    GetOperLogBS.DataSource = DB.SkladBase().GetOperLog(wbStartDate.DateTime, wbEndDate.DateTime, (int)wTypeList.EditValue, (int)UserComboBox.EditValue).OrderByDescending(o => o.OnDate).ToList();
+                    break;
+
+                case 6:
+                    CommonParamsBS.DataSource = DBHelper.CommonParam;
+                    break;
             }
         }
 

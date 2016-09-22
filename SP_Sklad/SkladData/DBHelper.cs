@@ -24,6 +24,7 @@ namespace SP_Sklad.SkladData
         private static CommonParams _common_param;
         private static List<Measures> _measures;
         private static List<Countries> _counters;
+        private static List<DocType> _doc_type;
 
         public static List<Countries> CountersList
         {
@@ -37,6 +38,17 @@ namespace SP_Sklad.SkladData
             }
         }
 
+        public static List<DocType> DocTypeList
+        {
+            get
+            {
+                if (_doc_type == null)
+                {
+                    _doc_type = new BaseEntities().DocType.ToList();
+                }
+                return _doc_type;
+            }
+        }
 
         public static List<Measures> MeasuresList
         {

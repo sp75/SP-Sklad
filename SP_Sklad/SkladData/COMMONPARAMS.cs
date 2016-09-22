@@ -21,5 +21,6 @@ namespace SP_Sklad.SkladData
         public Nullable<int> PrintType { get; set; }
         public Nullable<int> DelToBin { get; set; }
         public string Ver { get; set; }
+        public string TemplatePatch { get; set; }
     }
 }

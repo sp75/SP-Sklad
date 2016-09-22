@@ -59,7 +59,8 @@ namespace SP_Sklad.WBForm
                     Num = new BaseEntities().GetCounter("wb_write_on").FirstOrDefault(),
                     CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                     OnValue = 1,
-                    PersonId = DBHelper.CurrentUser.KaId
+                    PersonId = DBHelper.CurrentUser.KaId,
+                    Nds = DBHelper.Enterprise.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0
                 });
 
                 _db.SaveChanges();
@@ -333,6 +334,12 @@ order by  ma.ondate desc */
         private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             IHelper.ShowMatInfo(focused_dr.MatId);
+        }
+
+        private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowMatList(_db, wb);
+            RefreshDet();
         }
 
     }

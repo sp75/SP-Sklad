@@ -41,7 +41,7 @@
         <AssociationConnector Association="BaseModel.FK__MATPRICES__CURRI__73852659" />
         <AssociationConnector Association="BaseModel.FK__MATPRICES__CURRI__74794A92" />
         <AssociationConnector Association="BaseModel.FK__PAYDOC__CURRID__214BF109" />
-        <EntityTypeShape EntityType="BaseModel.CommonParams" Width="1.5" PointX="3.6324706932681012" PointY="25.40226584365697" />
+        <EntityTypeShape EntityType="BaseModel.CommonParams" Width="1.5" PointX="18.875" PointY="25.5" />
         <EntityTypeShape EntityType="BaseModel.PriceTypes" Width="1.5" PointX="0.6907472259787597" PointY="24.052519019717593" />
         <AssociationConnector Association="BaseModel.FK__MATGROUPP__PTYPE__6DCC4D03" />
         <AssociationConnector Association="BaseModel.FK_MGP_PPTYPEID" />

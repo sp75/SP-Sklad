@@ -831,9 +831,9 @@ namespace SP_Sklad.Reports
 
         private void Print(Dictionary<string, IList> data_for_report, string temlate)
         {
-
-            String result_file = Path.Combine(rep_path, temlate);
+            String result_file = Path.Combine(rep_path, Path.GetFileName(temlate) + "_" + DateTime.Now.Ticks.ToString() + Path.GetExtension(temlate));
             String template_file = Path.Combine(template_path, temlate);
+
             if (File.Exists(template_file))
             {
                 ReportBuilder.GenerateReport(data_for_report, template_file, result_file, false);

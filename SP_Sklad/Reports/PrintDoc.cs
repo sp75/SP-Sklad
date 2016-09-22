@@ -21,11 +21,14 @@ namespace SP_Sklad.Reports
         {
             get
             {
+
+                return DBHelper.CommonParam.TemplatePatch;
+                /*
 #if DEBUG
                 return Path.Combine(@"c:\WinVSProjects\SP-Sklad\SP_Sklad\", "TempLate");
 #else
                return Path.Combine(Application.StartupPath, "TempLate" );
-#endif
+#endif*/
             }
         }
 
@@ -332,7 +335,7 @@ namespace SP_Sklad.Reports
         private static void Print(Dictionary<string, IList> data_for_report, string temlate)
         {
 
-            String result_file = Path.Combine(rep_path, temlate);
+            String result_file = Path.Combine(rep_path, Path.GetFileName(temlate) + "_" + DateTime.Now.Ticks.ToString() + Path.GetExtension(temlate));
             String template_file = Path.Combine(template_path, temlate);
             if (File.Exists(template_file))
             {

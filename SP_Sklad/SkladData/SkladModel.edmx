@@ -1118,6 +1118,7 @@
           <Property Name="PrintType" Type="int" />
           <Property Name="DelToBin" Type="int" />
           <Property Name="Ver" Type="nvarchar" MaxLength="50" />
+          <Property Name="TemplatePatch" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="CONTRACTS">
           <Key>
@@ -7649,6 +7650,7 @@
           <Property Type="Int32" Name="PrintType" />
           <Property Type="Int32" Name="DelToBin" />
           <Property Type="String" Name="Ver" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TemplatePatch" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <ComplexType Name="ReservedAllPosition_Result">
           <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
@@ -12123,6 +12125,7 @@
           <EntitySetMapping Name="CommonParams">
             <EntityTypeMapping TypeName="BaseModel.CommonParams">
               <MappingFragment StoreEntitySet="CommonParams">
+                <ScalarProperty Name="TemplatePatch" ColumnName="TemplatePatch" />
                 <ScalarProperty Name="Ver" ColumnName="Ver" />
                 <ScalarProperty Name="DelToBin" ColumnName="DelToBin" />
                 <ScalarProperty Name="PrintType" ColumnName="PrintType" />

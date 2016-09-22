@@ -323,15 +323,6 @@ namespace SP_Sklad.MainTabs
                         wb_in.ShowDialog();
                     }
                     break;
-                    
-                    /*frmMoneyMove = new TfrmMoneyMove(Application);
-                    frmMoneyMove->PayDoc->ParamByName("PAYDOCID")->Value = SkladData->DocCopy(frmMoneyMove->PayDocTransaction, MoneyMoveDocsDOCID->Value);
-                    frmMoneyMove->PayDoc->Open();
-                    frmMoneyMove->PayDoc->Edit();
-                    frmMoneyMove->ShowModal();
-                    delete frmMoneyMove;
-                    MoneyMoveDocs->FullRefresh();*/
- 
             }
             RefrechItemBtn.PerformClick();
         }

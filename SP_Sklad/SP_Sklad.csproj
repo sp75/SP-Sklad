@@ -1099,6 +1099,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Actives.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Commission.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.CommonParams.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetDirTree_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetDocList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetMatList_Result.datasource" />

@@ -17,10 +17,11 @@ namespace SP_Sklad.FinanseForm
     public partial class frmPayDoc : Form
     {
         private int? _DocType { get; set; }
-        BaseEntities _db { get; set; }
+        private BaseEntities _db { get; set; }
         private int? _PayDocId { get; set; }
         private DbContextTransaction current_transaction { get; set; }
-        private PayDoc _pd { get; set; }
+        public PayDoc _pd { get; set; }
+        public int? _ka_id { get; set; }
 
         public frmPayDoc(int? DocType, int? PayDocId)
         {
@@ -46,6 +47,7 @@ namespace SP_Sklad.FinanseForm
             CurrEdit.Properties.DataSource = DBHelper.Currency;
             ChargeTypesEdit.Properties.DataSource = DBHelper.ChargeTypes;
 
+
             var ent_id = DBHelper.Enterprise.KaId;
             AccountEdit.Properties.DataSource = _db.EnterpriseAccount.Where(w => w.KaId == ent_id).Select(s => new { s.AccId, s.AccNum, s.BankName }).ToList();
 
@@ -64,8 +66,9 @@ namespace SP_Sklad.FinanseForm
                     CurrId = DBHelper.Currency.Where(w => w.Def == 1).Select(s => s.CurrId).FirstOrDefault(), //Валюта по умолчанию
                     OnValue = 1,//Курс валюти
                     MPersonId = DBHelper.CurrentUser.KaId,
-                    DocType = Convert.ToInt32( _DocType),
-                    UpdatedBy = DBHelper.CurrentUser.UserId
+                    DocType = Convert.ToInt32(_DocType),
+                    UpdatedBy = DBHelper.CurrentUser.UserId,
+                    KaId = _ka_id
                 });
             }
             else
@@ -75,7 +78,7 @@ namespace SP_Sklad.FinanseForm
                     _pd = _db.Database.SqlQuery<PayDoc>("SELECT * from PayDoc WITH (UPDLOCK, NOWAIT) where PayDocId = {0}", _PayDocId).FirstOrDefault();
                     _db.Entry<PayDoc>(_pd).State = System.Data.Entity.EntityState.Modified;
                 }
-                catch 
+                catch
                 {
                     Close();
                 }
@@ -113,22 +116,50 @@ namespace SP_Sklad.FinanseForm
                     Text = "Властивості вихідного платежу";
                 }
 
-                //  DOCTYP->Filter = "ID = 1 or ID = 6 or ID = 16";
+                TypDocsEdit.Properties.DataSource = DBHelper.DocTypeList.Where(w => w.Id == 1 || w.Id == 6 || w.Id == 16).ToList();
+                if (TypDocsEdit.EditValue == null) TypDocsEdit.EditValue = 1;
             }
             else
             {
                 Text = "Властивості вхідного платежу";
-                labelControl8.Text = "Платник:";
-                //  DOCTYP->Filter = "ID < 0 or ID = 2";
+                labelControl13.Text = "Платник:";
+                TypDocsEdit.Properties.DataSource = DBHelper.DocTypeList.Where(w => new int[] { -1, -6, 2, -16, -8, }.Any(a => a.Equals(w.Id))).ToList();
+                if (TypDocsEdit.EditValue == null) TypDocsEdit.EditValue = -1;
+            }
+
+            var rl = _db.GetRelDocList(_pd.DocId).FirstOrDefault();
+            if (rl != null)
+            {
+                PayDocCheckEdit.Checked = true;
+                TypDocsEdit.EditValue = rl.DocType;
+                GetDocList();
+                DocListEdit.EditValue = rl.DocId;
+
+                var row = DocListEdit.GetSelectedDataRow() as GetWayBillList_Result;
+                textEdit4.EditValue = row.Balans - SumEdit.Value;
             }
 
         }
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            var state = _db.Entry<PayDoc>(_pd).State;
-
+            var rl = _db.GetRelDocList(_pd.DocId).ToList();
+            foreach (var item in rl)
+            {
+                _db.DeleteWhere<DocsRel>(w => w.DocId == item.DocId && w.RDocId == _pd.DocId);
+            }
             _db.SaveChanges();
+
+            if (PayDocCheckEdit.Checked && DocListEdit.EditValue != null)
+            {
+                var row = DocListEdit.GetSelectedDataRow() as GetWayBillList_Result;
+
+                _pd = _db.PayDoc.AsNoTracking().FirstOrDefault(w => w.PayDocId == _pd.PayDocId);
+                _db.SP_SET_DOCREL(row.DocId, _pd.DocId);
+
+                _db.SaveChanges();
+            }
+
             current_transaction.Commit();
         }
 
@@ -202,6 +233,72 @@ namespace SP_Sklad.FinanseForm
         private void frmPayDoc_Shown(object sender, EventArgs e)
         {
             GetOk();
+        }
+
+        private void TypDocsEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            if (!TypDocsEdit.ContainsFocus)
+            {
+                return;
+            }
+
+            GetDocList();
+        }
+
+        private void DocListEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            if (!DocListEdit.ContainsFocus)
+            {
+                return;
+            }
+
+            var row = DocListEdit.GetSelectedDataRow() as GetWayBillList_Result;
+            if (row != null)
+            {
+                SumEdit.EditValue = row.Balans;
+                _pd.Total = row.Balans.Value;
+                KagentComboBox.EditValue = row.KaId;
+                _pd.KaId = row.KaId;
+
+                _pd.Reason = TypDocsEdit.Text + " №" + DocListEdit.Text;
+                ReasonEdit.EditValue = _pd.Reason;
+            }
+        }
+
+        private void SumEdit_EditValueChanged(object sender, EventArgs e)
+        {
+             var row = DocListEdit.GetSelectedDataRow() as GetWayBillList_Result;
+             if (row == null)
+             {
+                 textEdit4.EditValue = SumEdit.EditValue;
+             }
+             else
+             {
+                 textEdit4.EditValue = row.Balans - SumEdit.Value;
+             }
+
+             GetOk();
+        }
+
+        public void GetDocList()
+        {
+            if (TypDocsEdit.EditValue == null)
+            {
+                return;
+            }
+            var ka_id = KagentComboBox.EditValue == null || KagentComboBox.EditValue == DBNull.Value ? 0 : (int)KagentComboBox.EditValue;
+
+            DocListEdit.Properties.DataSource = DB.SkladBase().GetWayBillList(DateTime.Now.AddYears(-100), DateTime.Now, (int)TypDocsEdit.EditValue, -1, ka_id, 0, "*", 0)
+                .OrderByDescending(o => o.OnDate).Where(w => w.Balans != 0);
+        }
+
+        private void KagentComboBox_EditValueChanged(object sender, EventArgs e)
+        {
+            if (KagentComboBox.ContainsFocus)
+            {
+                GetDocList();
+                DocListEdit.EditValue = null;
+            }
         }
     }
 }

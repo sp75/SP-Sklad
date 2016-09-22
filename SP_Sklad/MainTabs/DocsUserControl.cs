@@ -727,5 +727,53 @@ namespace SP_Sklad.MainTabs
             PrintItemBtn.Enabled = (pl_focused_row != null);
         }
 
+        private void NewPayDocBtn_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (wb_focused_row.Balans == 0)
+            {
+                //   MessageDlg("Документ вже оплачено!", mtConfirmation, TMsgDlgButtons() << mbYes, 0);
+                return;
+            }
+
+            int? doc_type = null;
+            if (new int[] { 26, 57, 108 }.Any(a => a == focused_tree_node.Id))
+            {
+                doc_type = -1;
+            }
+            if (new int[] { 27, 26, 39, 107 }.Any(a => a == focused_tree_node.Id))
+            {
+                doc_type = 1;
+            }
+
+            var frm = new frmPayDoc(doc_type, null);
+            frm.PayDocCheckEdit.Checked = true;
+            frm.TypDocsEdit.EditValue = wb_focused_row.WType;
+            frm._ka_id = wb_focused_row.KaId;
+            frm.KagentComboBox.EditValue = wb_focused_row.KaId;
+
+            frm.GetDocList();
+            frm.DocListEdit.EditValue = wb_focused_row.DocId;
+
+            frm.ShowDialog();
+
+
+            /* if (WayBillListSUMMPAY->IsNull)
+             {
+                 frmPayDoc = new TfrmPayDoc(Application);
+                 frmPayDoc->PayDoc->Open();
+                 frmPayDoc->PayDoc->Append();
+                 if (DocsTreeDataID->Value == 26 || DocsTreeDataID->Value == 57 || DocsTreeDataID->Value == 108) frmPayDoc->PayDocDOCTYPE->Value = -1;
+                 if (DocsTreeDataID->Value == 27 || DocsTreeDataID->Value == 56 || DocsTreeDataID->Value == 39 || DocsTreeDataID->Value == 107) frmPayDoc->PayDocDOCTYPE->Value = 1;
+                 frmPayDoc->TypDocs->Edit();
+                 frmPayDoc->TypDocsID->Value = WayBillListWTYPE->Value;
+                 frmPayDoc->PayedDoc(WayBillListDOCID->Value);
+                 frmPayDoc->PayDocTOTAL->Value = WayBillListSUMMALL->Value;
+                 frmPayDoc->ShowModal();
+                 WayBillList->Refresh();
+                 GET_RelDocList->FullRefresh();
+             }
+             else MessageDlg("Документ вже оплачено!", mtConfirmation, TMsgDlgButtons() << mbYes, 0);*/
+        }
+
     }
 }
