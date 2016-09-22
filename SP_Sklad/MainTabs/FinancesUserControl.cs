@@ -29,13 +29,8 @@ namespace SP_Sklad.MainTabs
         public FinancesUserControl()
         {
             InitializeComponent();
-        }
 
-
-        private void FinancesUserControl_Load(object sender, EventArgs e)
-        {
             wbContentTab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
-
             if (!DesignMode)
             {
                 using (var _db = new BaseEntities())
@@ -51,7 +46,7 @@ namespace SP_Sklad.MainTabs
                     wbStatusList.EditValue = -1;
 
                     TurnStartDate.EditValue = DateTime.Now.AddDays(-30);
-                    TurnEndDate.EditValue = DateTime.Now ;
+                    TurnEndDate.EditValue = DateTime.Now;
 
                     wbStartDate.EditValue = DateTime.Now.AddDays(-30);
                     wbEndDate.EditValue = DateTime.Now.Date;
@@ -63,6 +58,14 @@ namespace SP_Sklad.MainTabs
                     FinancesTreeList.ExpandAll();
                 }
             }
+        }
+
+
+        private void FinancesUserControl_Load(object sender, EventArgs e)
+        {
+         
+
+            
         }
 
         private void FinancesTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)

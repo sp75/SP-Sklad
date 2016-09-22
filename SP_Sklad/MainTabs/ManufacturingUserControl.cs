@@ -23,11 +23,36 @@ namespace SP_Sklad.MainTabs
     {
         GetManufactureTree_Result focused_tree_node { get; set; }
         WBListMake_Result focused_row { get; set; }
-        int cur_wtype = 0;
+        int _cur_wtype = 0;
 
         public ManufacturingUserControl()
         {
             InitializeComponent();
+
+            if (!DesignMode)
+            {
+                wbContentTab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
+
+                WhComboBox.Properties.DataSource = new List<object>() { new { WId = "*", Name = "Усі" } }.Concat(DBHelper.WhList().Select(s => new { WId = s.WId.ToString(), s.Name }).ToList());
+                WhComboBox.EditValue = "*";
+                DebWhComboBox.Properties.DataSource = WhComboBox.Properties.DataSource;
+                DebWhComboBox.EditValue = "*";
+
+                wbSatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 0, Name = "Актуальний" }, new { Id = 2, Name = "Розпочато виробництво" }, new { Id = 1, Name = "Закінчено виробництво" } };
+                wbSatusList.EditValue = -1;
+                DebSatusList.Properties.DataSource = wbSatusList.Properties.DataSource;
+                DebSatusList.EditValue = -1;
+
+                wbStartDate.EditValue = DateTime.Now.AddDays(-30);
+                wbEndDate.EditValue = DateTime.Now;
+                DebStartDate.EditValue = DateTime.Now.AddDays(-30);
+                DebEndDate.EditValue = DateTime.Now;
+
+                DocsTreeList.DataSource = DB.SkladBase().GetManufactureTree(DBHelper.CurrentUser.UserId).ToList();
+                DocsTreeList.ExpandToLevel(0);// ExpandAll();
+
+                repositoryItemWhEdit.DataSource = DBHelper.WhList();
+            }
         }
 
         private void wbStartDate_Properties_EditValueChanged(object sender, EventArgs e)
@@ -37,30 +62,7 @@ namespace SP_Sklad.MainTabs
 
         private void ManufacturingUserControl_Load(object sender, EventArgs e)
         {
-            wbContentTab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
 
-            //     wbKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(new BaseEntities().Kagent.Select(s => new { s.KaId, s.Name }));
-            //    wbKagentList.EditValue = 0;
-
-            WhComboBox.Properties.DataSource = new List<object>() { new { WId = "*", Name = "Усі" } }.Concat(DBHelper.WhList().Select(s => new { WId = s.WId.ToString(), s.Name }).ToList());
-            WhComboBox.EditValue = "*";
-            DebWhComboBox.Properties.DataSource = WhComboBox.Properties.DataSource;
-            DebWhComboBox.EditValue = "*";
-
-            wbSatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 0, Name = "Актуальний" }, new { Id = 2, Name = "Розпочато виробництво" }, new { Id = 1, Name = "Закінчено виробництво" } };
-            wbSatusList.EditValue = -1;
-            DebSatusList.Properties.DataSource = wbSatusList.Properties.DataSource;
-            DebSatusList.EditValue = -1;
-
-            wbStartDate.EditValue = DateTime.Now.AddDays(-30);
-            wbEndDate.EditValue = DateTime.Now;
-            DebStartDate.EditValue = DateTime.Now.AddDays(-30);
-            DebEndDate.EditValue = DateTime.Now;
-
-            DocsTreeList.DataSource = DB.SkladBase().GetManufactureTree(DBHelper.CurrentUser.UserId).ToList();
-            DocsTreeList.ExpandToLevel(0);// ExpandAll();
-
-            repositoryItemWhEdit.DataSource = DBHelper.WhList();
         }
 
         void GetWayBillList()
@@ -123,7 +125,7 @@ namespace SP_Sklad.MainTabs
             PrintItemBtn.Enabled = false;
             focused_tree_node = DocsTreeList.GetDataRecordByNode(e.Node) as GetManufactureTree_Result;
 
-            cur_wtype = focused_tree_node.WType != null ? focused_tree_node.WType.Value : 0;
+            _cur_wtype = focused_tree_node.WType != null ? focused_tree_node.WType.Value : 0;
             RefrechItemBtn.PerformClick();
 
             wbContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;

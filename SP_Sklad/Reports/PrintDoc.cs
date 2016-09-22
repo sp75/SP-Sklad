@@ -232,14 +232,11 @@ namespace SP_Sklad.Reports
             Print(dataForReport, TemlateList.wb_deb);
         }
 
-        public static void MakedReport(int doc_id, BaseEntities db)
+        public static void MakedReport(int wbill_id, BaseEntities db)
         {
             var dataForReport = new Dictionary<string, IList>();
-            var date = db.WaybillList.Where(w => w.DocId == doc_id).Select(s => s.OnDate).First();
-
-            var wb = db.WBListMake(date, date, -1, "*", 0, -20).Where(w => w.DocId == doc_id).ToList();
-            int wbill_id = wb.First().WbillId;
-
+            var date = db.WaybillList.Where(w => w.WbillId == wbill_id).Select(s => s.OnDate).First();
+            var wb = db.WBListMake(date, date, -1, "*", 0, -20).ToList();
             var item = db.GetWayBillDetOut(wbill_id).ToList().Select((s, index) => new
             {
                 Num = index + 1,
@@ -249,7 +246,7 @@ namespace SP_Sklad.Reports
                 s.WhName,
                 s.MsrName,
                 s.GrpId,
-                GrpName = db.Materials.Find(s.GrpId).Name
+                GrpName = s.GroupName
             }).ToList();
 
             var grp = item.GroupBy(g => new { g.GrpName, g.GrpId }).Select(s => new

@@ -91,5 +91,10 @@ namespace SP_Sklad
             Application.Exit();
         }
 
+        private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2016 Dark";
+        }
+
     }
 }

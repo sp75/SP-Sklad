@@ -16,6 +16,7 @@ using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using System.Data.Entity.Core.Objects;
 using DevExpress.XtraGrid;
 using SP_Sklad.Common;
+using SP_Sklad.Reports;
 
 namespace SP_Sklad.WBForm
 {
@@ -367,6 +368,8 @@ namespace SP_Sklad.WBForm
             if (RecipeComboBox.ContainsFocus && row != null)
             {
                 wb.WayBillMake.Amount = row.Amount;
+                AmountMakeEdit.EditValue = row.Amount;
+                wb.WayBillMake.RecId = row.RecId;
 
                 GetOk();
             }
@@ -375,6 +378,13 @@ namespace SP_Sklad.WBForm
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            _db.SaveChanges();
+
+            PrintDoc.Show(wb.WbillId, wb.WType, _db);
         }
     }
 }
