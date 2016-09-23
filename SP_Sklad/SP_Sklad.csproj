@@ -95,10 +95,10 @@
     <Compile Include="Common\ManufDocEdit.cs" />
     <Compile Include="Common\MoneyToStr.cs" />
     <Compile Include="Common\WhDocEdit.cs" />
-    <Compile Include="EditForm\frmCatalog.cs">
+    <Compile Include="ViewsForm\frmCatalog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditForm\frmCatalog.Designer.cs">
+    <Compile Include="ViewsForm\frmCatalog.Designer.cs">
       <DependentUpon>frmCatalog.cs</DependentUpon>
     </Compile>
     <Compile Include="EditForm\frmKAgentEdit.cs">
@@ -143,10 +143,10 @@
     <Compile Include="EditForm\frmUserEdit.Designer.cs">
       <DependentUpon>frmUserEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditForm\frmWhCatalog.cs">
+    <Compile Include="ViewsForm\frmWhCatalog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditForm\frmWhCatalog.Designer.cs">
+    <Compile Include="ViewsForm\frmWhCatalog.Designer.cs">
       <DependentUpon>frmWhCatalog.cs</DependentUpon>
     </Compile>
     <Compile Include="FinanseForm\frmMoneyMove.cs">
@@ -650,7 +650,7 @@
     <Compile Include="SkladData\ReturnRel.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\SERIALS.cs">
+    <Compile Include="SkladData\Serials.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\Services.cs">
@@ -821,6 +821,12 @@
     <Compile Include="SkladData\WMatTurn.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewsForm\frmManufacturing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmManufacturing.Designer.cs">
+      <DependentUpon>frmManufacturing.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBDetForm\frmTechProcDet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -935,7 +941,7 @@
     <Compile Include="WBForm\frmWBWriteOn.Designer.cs">
       <DependentUpon>frmWBWriteOn.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="EditForm\frmCatalog.resx">
+    <EmbeddedResource Include="ViewsForm\frmCatalog.resx">
       <DependentUpon>frmCatalog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmKAgentEdit.resx">
@@ -959,7 +965,7 @@
     <EmbeddedResource Include="EditForm\frmUserEdit.resx">
       <DependentUpon>frmUserEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditForm\frmWhCatalog.resx">
+    <EmbeddedResource Include="ViewsForm\frmWhCatalog.resx">
       <DependentUpon>frmWhCatalog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FinanseForm\frmMoneyMove.resx">
@@ -1039,6 +1045,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ViewsForm\frmManufacturing.resx">
+      <DependentUpon>frmManufacturing.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBDetForm\frmTechProcDet.resx">
       <DependentUpon>frmTechProcDet.cs</DependentUpon>
     </EmbeddedResource>
@@ -1126,6 +1135,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PayDoc.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PriceList.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PriceListDet.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.Serials.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Services.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.SvcGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Users.datasource" />
@@ -1134,6 +1144,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PriceList.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Services.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WaybillDet.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.WayBillDetAddProps.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WaybillList.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WayBillMake.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WaybillMove.datasource" />

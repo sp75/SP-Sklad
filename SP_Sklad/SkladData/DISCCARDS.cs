@@ -31,7 +31,7 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> STARTSALDO { get; set; }
     
         public virtual DISCCARDGRP DISCCARDGRP { get; set; }
-        public virtual ICollection<WayBillDetAddProps> WayBillDetAddProps { get; set; }
         public virtual Kagent Kagent { get; set; }
+        public virtual ICollection<WayBillDetAddProps> WayBillDetAddProps { get; set; }
     }
 }

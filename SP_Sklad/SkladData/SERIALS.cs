@@ -12,12 +12,12 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class SERIALS
+    public partial class Serials
     {
-        public int SID { get; set; }
-        public int POSID { get; set; }
-        public string SERIALNO { get; set; }
-        public string INVNUMB { get; set; }
+        public int SId { get; set; }
+        public int PosId { get; set; }
+        public string SerialNo { get; set; }
+        public string InvNumb { get; set; }
     
         public virtual WaybillDet WaybillDet { get; set; }
     }

@@ -12,60 +12,110 @@ using DevExpress.XtraEditors;
 using SP_Sklad.Common;
 using SP_Sklad.Properties;
 using SP_Sklad.SkladData;
+using SP_Sklad.ViewsForm;
+using EntityState = System.Data.Entity.EntityState;
 
 namespace SP_Sklad.WBDetForm
 {
     public partial class frmWayBillDetIn : Form
     {
         BaseEntities _db { get; set; }
-        private int? _PosId { get; set; }
         private WaybillList _wb { get; set; }
         private WaybillDet _wbd { get; set; }
+        private WayBillDetAddProps wbdp { get; set; }
+        private Serials serials { get; set; }
+        private int? _PosId { get; set; }
+        private bool modified_dataset { get; set; }
 
         public frmWayBillDetIn(BaseEntities db, int? PosId, WaybillList wb)
         {
             InitializeComponent();
             _db = db;
-            _PosId = PosId;
             _wb = wb;
+            _PosId = PosId;
 
             WHComboBox.Properties.DataSource = DBHelper.WhList();
             MatComboBox.Properties.DataSource = db.MaterialsList.ToList();
-            _wbd = db.WaybillDet.Find(_PosId);
+        }
+
+        private void frmWayBillDetIn_Load(object sender, EventArgs e)
+        {
+            panel3.Visible = barCheckItem1.Checked;
+            if (!barCheckItem1.Checked) Height -= panel3.Height;
+
+            panel4.Visible = barCheckItem2.Checked;
+            if (!barCheckItem2.Checked) Height -= panel4.Height;
+
+            panel5.Visible = barCheckItem3.Checked;
+            if (!barCheckItem3.Checked) Height -= panel5.Height;
+
+            if (_PosId == null)
+            {
+                _wbd = new WaybillDet()
+                {
+                    WbillId = _wb.WbillId,
+                    Discount = 0,
+                    Nds = _wb.Nds,
+                    CurrId = _wb.CurrId,
+                    OnDate = _wb.OnDate,
+                    Num = _wb.WaybillDet.Count() + 1,
+                    OnValue = _wb.OnValue,
+                    PosKind = 0,
+                    PosParent = 0,
+                    DiscountKind = 0
+                };
+
+                modified_dataset = false;
+            }
+            else
+            {
+                _wbd = _db.WaybillDet.Find(_PosId);
+                modified_dataset = (_wbd != null);
+            }
+
+            if (_wbd != null)
+            {
+                WaybillDetBS.DataSource = _wbd;
+
+                wbdp = _db.WayBillDetAddProps.FirstOrDefault(w => w.PosId == _wbd.PosId);
+                if (wbdp == null)
+                {
+                    wbdp = new WayBillDetAddProps();
+                }
+
+                WayBillDetAddPropsBS.DataSource = wbdp;
+
+                serials = _db.Serials.FirstOrDefault(w => w.PosId == _wbd.PosId);
+                if (serials == null)
+                {
+                    serials = new Serials();
+                }
+
+                SerialsBS.DataSource = serials;
+
+                MatComboBox.Enabled = (wbdp == null || wbdp.WbMaked == null);
+                MatEditBtn.Enabled = MatComboBox.Enabled;
+                AmountEdit.Enabled = (MatComboBox.Enabled /*|| WayBillDetAddPropsWTYPE->Value == -22*/ );
+                ManufEditBtn.Visible = ((wbdp == null || wbdp.WaybillList == null || wbdp.WaybillList.WType == -20) && _wb.WType == 5);
+            }
+
+            else
+            {
+                AmountEdit.EditValue = 1;
+                PriceEdit.EditValue = 0;
+                ManufEditBtn.Visible = (_wb.WType == 5);
+            }
+
+            GetOk();
         }
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            if (_wbd == null)
+            if (!modified_dataset)
             {
-                _wbd = _db.WaybillDet.Add(new WaybillDet()
-                 {
-                     WbillId = _wb.WbillId,
-                     MatId = Convert.ToInt32(MatComboBox.EditValue),
-                     WId = Convert.ToInt32(WHComboBox.EditValue),
-                     Amount = Convert.ToDecimal(AmountEdit.EditValue),
-                     Price = Convert.ToDecimal(PriceEdit.EditValue),
-                     Discount = 0,
-                     Nds = Convert.ToDecimal(NdsEdit.EditValue),
-                     CurrId = _wb.CurrId,
-                     OnDate = _wb.OnDate,
-                     Num = _wb.WaybillDet.Count() + 1,
-                     OnValue = _wb.OnValue,
-                     BasePrice = Convert.ToDecimal(BasePriceEdit.EditValue),
-                     PosKind = 0,
-                     PosParent = 0,
-                     DiscountKind = 0
-                 });
+                _db.WaybillDet.Add(_wbd);
             }
-            else
-            {
-                _wbd.MatId = (int)MatComboBox.EditValue;
-                _wbd.WId = (int)WHComboBox.EditValue;
-                _wbd.Amount = (decimal)AmountEdit.EditValue;
-                _wbd.Price = (decimal)PriceEdit.EditValue;
-                _wbd.Nds = (decimal)NdsEdit.EditValue;
-                _wbd.BasePrice = (decimal)BasePriceEdit.EditValue;
-            }
+            _db.SaveChanges();
 
             if (_wb.WType == 16)
             {
@@ -82,29 +132,43 @@ namespace SP_Sklad.WBDetForm
                 });
             }
 
-         //   if (Serials->State == dsInsert || Serials->State == dsEdit) Serials->Post();
-      //      if (WayBillDetAddProps->State == dsInsert || WayBillDetAddProps->State == dsEdit) WayBillDetAddProps->Post();
+            //   if (Serials->State == dsInsert || Serials->State == dsEdit) Serials->Post();
+            //      if (WayBillDetAddProps->State == dsInsert || WayBillDetAddProps->State == dsEdit) WayBillDetAddProps->Post();
 
-
-            _db.SaveChanges();
+            if (wbdp != null && _db.Entry<WayBillDetAddProps>(wbdp).State == EntityState.Detached)
+            {
+                wbdp.PosId = _wbd.PosId;
+                _db.WayBillDetAddProps.Add(wbdp);
+            }
+            if (serials != null && _db.Entry<Serials>(serials).State == EntityState.Detached)
+            {
+                serials.PosId = _wbd.PosId;
+                _db.Serials.Add(serials);
+            }
 
             if (_wb.WType == 1)
             {
                 _db.UpdWaybillDetPrice(_wb.WbillId);
             }
+
+            _db.SaveChanges();
+
         }
 
         private void MatComboBox_Properties_EditValueChanged(object sender, EventArgs e)
         {
             var row = (MaterialsList)MatComboBox.GetSelectedDataRow();
+            if (row != null)
+            {
+                _wbd.Nds = row.NDS;
+                _wbd.WId = row.WId;
+                WHComboBox.EditValue = row.WId;
+                labelControl24.Text = row.MeasuresName;
+                labelControl27.Text = row.MeasuresName;
 
-            NdsEdit.EditValue = row.NDS;
-            WHComboBox.EditValue = row.WId;
-            labelControl24.Text = row.MeasuresName;
-            labelControl27.Text = row.MeasuresName;
+                GetRemains();
+            }
 
-            GetRemains();
-            
             GetOk();
         }
 
@@ -125,38 +189,57 @@ namespace SP_Sklad.WBDetForm
 
         private void BasePriceEdit_EditValueChanged(object sender, EventArgs e)
         {
-            if (Convert.ToDecimal(NdsEdit.EditValue) > 0)
+            if (!BasePriceEdit.ContainsFocus)
             {
-                PriceEdit.EditValue = Math.Round((Convert.ToDecimal(BasePriceEdit.EditValue) * 100 / (100 + Convert.ToDecimal(NdsEdit.EditValue))), 4);
+                return;
             }
-            else PriceEdit.EditValue = BasePriceEdit.EditValue;
+
+            if (_wbd.Nds > 0)
+            {
+                _wbd.Price = Math.Round((BasePriceEdit.Value * 100 / (100 + Convert.ToDecimal(_wbd.Nds))), 4);
+                PriceEdit.EditValue = _wbd.Price;
+            }
+            else
+            {
+                _wbd.Price = BasePriceEdit.Value;
+                PriceEdit.Value = BasePriceEdit.Value;
+            }
             
             GetOk();
         }
 
         private void PriceEdit_EditValueChanged(object sender, EventArgs e)
         {
-            BotBasePriceEdit.EditValue = PriceEdit.EditValue;
-
-            if ( Convert.ToDecimal(NdsEdit.EditValue) > 0)
+            if (!PriceEdit.ContainsFocus)
             {
-                var p = Convert.ToDecimal(PriceEdit.EditValue);
-                BasePriceEdit.EditValue = Math.Round(p + (p * Convert.ToDecimal(NdsEdit.EditValue) / 100), 4);
+                return;
             }
-            else BasePriceEdit.EditValue = PriceEdit.EditValue;
+
+            if (_wbd.Nds > 0)
+            {
+                _wbd.BasePrice = Math.Round(PriceEdit.Value + (PriceEdit.Value * Convert.ToDecimal(_wbd.Nds) / 100), 4);
+                BasePriceEdit.EditValue = _wbd.BasePrice;
+            }
+            else
+            {
+                _wbd.BasePrice = PriceEdit.Value;
+                BasePriceEdit.Value = PriceEdit.Value;
+            }
 
             GetOk();
         }
 
         bool GetOk()
         {
-            bool recult = (MatComboBox.EditValue != null && WHComboBox.EditValue != null && BasePriceEdit.EditValue != null && PriceEdit.EditValue != null && AmountEdit.EditValue != null);
+            bool recult = (MatComboBox.EditValue != DBNull.Value && WHComboBox.EditValue != DBNull.Value && BasePriceEdit.Value > 0 && PriceEdit.Value > 0 && AmountEdit.Value > 0);
 
             OkButton.Enabled = recult;
-            BotAmountEdit.Text = AmountEdit.Text;
-            TotalSumEdit.EditValue = Convert.ToDecimal(AmountEdit.EditValue) * Convert.ToDecimal(PriceEdit.EditValue);
-            SummAllEdit.EditValue = Convert.ToDecimal(AmountEdit.EditValue) * Convert.ToDecimal(BasePriceEdit.EditValue);
-            TotalNdsEdit.EditValue = Convert.ToDecimal(SummAllEdit.EditValue) - Convert.ToDecimal(TotalSumEdit.EditValue); 
+
+            BotBasePriceEdit.EditValue = PriceEdit.Value;
+            BotAmountEdit.EditValue = AmountEdit.Value;
+            TotalSumEdit.EditValue = AmountEdit.Value * PriceEdit.Value;
+            SummAllEdit.EditValue = AmountEdit.Value * BasePriceEdit.Value;
+            TotalNdsEdit.EditValue = (decimal)SummAllEdit.EditValue - (decimal)TotalSumEdit.EditValue; 
 
             return recult;
         }
@@ -168,44 +251,6 @@ namespace SP_Sklad.WBDetForm
 
         private void WHComboBox_EditValueChanged(object sender, EventArgs e)
         {
-            GetOk();
-        }
-
-        private void frmWayBillDetIn_Load(object sender, EventArgs e)
-        {
-            panel3.Visible = barCheckItem1.Checked;
-            if (!barCheckItem1.Checked) Height -= panel3.Height;
-
-            panel4.Visible = barCheckItem2.Checked;
-            if (!barCheckItem2.Checked) Height -= panel4.Height;
-
-            panel5.Visible = barCheckItem3.Checked;
-            if (!barCheckItem3.Checked) Height -= panel5.Height;
-
-
-            if (_wbd != null)
-            {
-                MatComboBox.EditValue = _wbd.MatId;
-                WHComboBox.EditValue = _wbd.WId;
-                AmountEdit.EditValue = _wbd.Amount;
-                PriceEdit.EditValue = _wbd.Price;
-                NdsEdit.EditValue = _wbd.Nds;
-                BasePriceEdit.EditValue = _wbd.BasePrice;
-
-                var p = _db.WayBillDetAddProps.FirstOrDefault(w => w.PosId == _wbd.PosId);
-
-                MatComboBox.Enabled = (p == null || p.WbMaked == null);
-                MatEditBtn.Enabled = MatComboBox.Enabled;
-                AmountEdit.Enabled = (MatComboBox.Enabled /*|| WayBillDetAddPropsWTYPE->Value == -22*/ );
-                ManufEditBtn.Visible = ((p == null || p.WaybillList == null || p.WaybillList.WType == -20) && _wb.WType == 5);
-            }
-            else
-            {
-                AmountEdit.EditValue = 1;
-                PriceEdit.EditValue = 0;
-                ManufEditBtn.Visible = (_wb.WType == 5);
-            }
-
             GetOk();
         }
 
@@ -241,16 +286,18 @@ namespace SP_Sklad.WBDetForm
 
         private void frmWayBillDetIn_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (_wbd != null)
+            if (_db.Entry<WaybillDet>(_wbd).State == EntityState.Modified)
             {
                 _db.Entry<WaybillDet>(_wbd).Reload();
             }
+
             Settings.Default.Save();
         }
 
         private void MatEditBtn_Click(object sender, EventArgs e)
         {
-            MatComboBox.EditValue = IHelper.ShowDirectList(MatComboBox.EditValue, 5);
+            _wbd.MatId = (int)IHelper.ShowDirectList(MatComboBox.EditValue, 5);
+            MatComboBox.EditValue = _wbd.MatId;
 
             if (_wbd != null)
             {
@@ -263,6 +310,37 @@ namespace SP_Sklad.WBDetForm
                     AmountEdit.Enabled = true;
                 }
             }
+        }
+
+        private void ManufEditBtn_Click(object sender, EventArgs e)
+        {
+            using (var frm = new frmManufacturing(_db))
+            {
+                if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    wbdp.WbMaked = frm.wb_focused_row.WbillId;
+                    serials.SerialNo = frm.wb_focused_row.Num;
+
+                    _wbd.MatId = frm.wb_focused_row.MatId;
+                    MatComboBox.EditValue = _wbd.MatId;
+
+                    _wbd.Amount = frm.wb_focused_row.AmountOut ?? 0;
+                    AmountEdit.EditValue = _wbd.Amount;
+
+                    _wbd.BasePrice = Math.Round((frm.wb_focused_row.SummAll / frm.wb_focused_row.AmountOut) ?? 0, 4);
+                    BasePriceEdit.EditValue = _wbd.BasePrice;
+
+                    _wbd.Price = _wbd.BasePrice;
+                    PriceEdit.EditValue = _wbd.Price;
+
+                    MatComboBox.Enabled = false;
+                    MatEditBtn.Enabled = false;
+                    AmountEdit.Enabled = false;
+
+                    GetOk();
+                }
+            }
+
         }
     }
 }

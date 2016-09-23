@@ -16,7 +16,6 @@
         <EntityTypeShape EntityType="BaseModel.MATCHANGE" Width="1.5" PointX="11.25" PointY="20" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.MATGROUPPRICES" Width="1.5" PointX="12" PointY="30.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.MATPRICES" Width="1.5" PointX="14.25" PointY="29.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.SERIALS" Width="1.5" PointX="13.25" PointY="62.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.TAXES" Width="1.5" PointX="17" PointY="59.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.TAXWB" Width="1.5" PointX="9" PointY="33.375" IsExpanded="true" />
         <AssociationConnector Association="BaseModel.FK_CONTRDET_REFERENCE_CONTRACTS" ManuallyRouted="false" />
@@ -85,8 +84,6 @@
         <AssociationConnector Association="BaseModel.FK_TAXWBDET_TWBID" />
         <EntityTypeShape EntityType="BaseModel.TechProcDet" Width="1.5" PointX="9.2934470536622431" PointY="3.208896668259472" />
         <EntityTypeShape EntityType="BaseModel.TechProcess" Width="1.5" PointX="5.5697671219565752" PointY="3.39031969168704" />
-        <EntityTypeShape EntityType="BaseModel.WayBillDetAddProps" Width="1.5" PointX="0.86547806154260321" PointY="5.9879650203455075" />
-        <AssociationConnector Association="BaseModel.FK_WBDAP_CARDID" />
         <AssociationConnector Association="BaseModel.FK_TECHPROCDET_TECHPROCESS" />
         <EntityTypeShape EntityType="BaseModel.WayBillDetTaxes" Width="1.5" PointX="11.604890506530595" PointY="6.4207777410842377" />
         <AssociationConnector Association="BaseModel.FK_WBDTAXES_TAXID" />
@@ -173,7 +170,6 @@
         <AssociationConnector Association="BaseModel.FK_WAYBILLL_REF_WBL_D_DOCS" />
         <AssociationConnector Association="BaseModel.FK__OPERLOG__TABID__0D44F85C" />
         <AssociationConnector Association="BaseModel.FK_TECHPROCDET_WAYBILLLIST" />
-        <AssociationConnector Association="BaseModel.FK_WAYBILLDETADDPROPS_WBILLID" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLMAKE_WAYBILLLIST" />
         <AssociationConnector Association="BaseModel.FK_WBM_WBILLID" />
         <AssociationConnector Association="BaseModel.FK_WBS_WBILLID" />
@@ -188,9 +184,7 @@
         <AssociationConnector Association="BaseModel.FK_RETREL_OUTPOSID" />
         <AssociationConnector Association="BaseModel.FK_RETREL_POSID" />
         <AssociationConnector Association="BaseModel.FK_RETREL_PPOSID" />
-        <AssociationConnector Association="BaseModel.FK_SERIALS_POSID" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLD_FK_WBDET__WAREHOUS" />
-        <AssociationConnector Association="BaseModel.FK_WBDAP_POSID" />
         <AssociationConnector Association="BaseModel.FK_WBDTAXES_POSID" />
         <AssociationConnector Association="BaseModel.FK_WMT_POSID" />
         <AssociationConnector Association="BaseModel.FK_WMT_SRCID" />
@@ -238,6 +232,12 @@
         <EntityTypeShape EntityType="BaseModel.BANKSPERSONS" Width="1.5" PointX="3" PointY="54.25" />
         <AssociationConnector Association="BaseModel.FK_BANKSPERSONS_1" />
         <EntityTypeShape EntityType="BaseModel.v_KAgentAccount" Width="1.5" PointX="16.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BaseModel.Serials" Width="1.5" PointX="9.0327860308032424" PointY="1.6362550713290718" />
+        <AssociationConnector Association="BaseModel.FK_SERIALS_POSID" />
+        <EntityTypeShape EntityType="BaseModel.WayBillDetAddProps" Width="1.5" PointX="2.551453002985312" PointY="7.0934918108831591" />
+        <AssociationConnector Association="BaseModel.FK_WBDAP_CARDID" />
+        <AssociationConnector Association="BaseModel.FK_WBDAP_POSID" />
+        <AssociationConnector Association="BaseModel.FK_WAYBILLDETADDPROPS_WBILLID" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="7.0245045325832924" PointY="12.641712000892364" />

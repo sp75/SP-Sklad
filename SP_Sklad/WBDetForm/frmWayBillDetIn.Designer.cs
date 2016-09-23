@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWayBillDetIn));
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.MatComboBox = new DevExpress.XtraEditors.LookUpEdit();
+            this.WaybillDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.WHComboBox = new DevExpress.XtraEditors.LookUpEdit();
@@ -78,11 +79,9 @@
             this.labelControl26 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl25 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl24 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.NdsEdit = new DevExpress.XtraEditors.CalcEdit();
             this.CurRemainEdit = new DevExpress.XtraEditors.TextEdit();
             this.RsvEdit = new DevExpress.XtraEditors.TextEdit();
             this.RemainEdit = new DevExpress.XtraEditors.TextEdit();
@@ -95,15 +94,17 @@
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit6 = new DevExpress.XtraEditors.TextEdit();
+            this.SerialsBS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit5 = new DevExpress.XtraEditors.TextEdit();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.WayBillDetAddPropsBS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl23 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit17 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit15 = new DevExpress.XtraEditors.TextEdit();
-            this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit16 = new DevExpress.XtraEditors.DateEdit();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
@@ -127,6 +128,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MatComboBox.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WHComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -141,7 +143,6 @@
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NdsEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CurRemainEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RsvEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RemainEdit.Properties)).BeginInit();
@@ -151,12 +152,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit6.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SerialsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WayBillDetAddPropsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit17.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit15.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit16.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit16.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
@@ -192,6 +195,7 @@
             // 
             this.MatComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.MatComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "MatId", true));
             this.MatComboBox.Location = new System.Drawing.Point(101, 15);
             this.MatComboBox.Name = "MatComboBox";
             this.MatComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -207,6 +211,10 @@
             this.MatComboBox.Size = new System.Drawing.Size(422, 22);
             this.MatComboBox.StyleController = this.styleController1;
             this.MatComboBox.TabIndex = 19;
+            // 
+            // WaybillDetBS
+            // 
+            this.WaybillDetBS.DataSource = typeof(SP_Sklad.SkladData.WaybillDet);
             // 
             // styleController1
             // 
@@ -224,6 +232,7 @@
             // 
             // WHComboBox
             // 
+            this.WHComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "WId", true));
             this.WHComboBox.Location = new System.Drawing.Point(101, 44);
             this.WHComboBox.Name = "WHComboBox";
             this.WHComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -269,6 +278,7 @@
             this.ManufEditBtn.Name = "ManufEditBtn";
             this.ManufEditBtn.Size = new System.Drawing.Size(22, 22);
             this.ManufEditBtn.TabIndex = 12;
+            this.ManufEditBtn.Click += new System.EventHandler(this.ManufEditBtn_Click);
             // 
             // labelControl3
             // 
@@ -415,7 +425,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(600, 26);
+            this.barDockControlTop.Size = new System.Drawing.Size(600, 24);
             // 
             // barDockControlBottom
             // 
@@ -428,22 +438,22 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 571);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 573);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(600, 26);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 571);
+            this.barDockControlRight.Location = new System.Drawing.Point(600, 24);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 573);
             // 
             // standaloneBarDockControl1
             // 
             this.standaloneBarDockControl1.AutoSize = true;
             this.standaloneBarDockControl1.CausesValidation = false;
             this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 26);
+            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 24);
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
             this.standaloneBarDockControl1.Size = new System.Drawing.Size(600, 0);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
@@ -529,7 +539,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupControl1.Location = new System.Drawing.Point(5, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(268, 118);
+            this.groupControl1.Size = new System.Drawing.Size(239, 118);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Tag = "";
             this.groupControl1.Text = "Інтервал вхідних цін";
@@ -551,7 +561,7 @@
             this.MaxPriceEdit.Location = new System.Drawing.Point(125, 86);
             this.MaxPriceEdit.MenuManager = this.barManager1;
             this.MaxPriceEdit.Name = "MaxPriceEdit";
-            this.MaxPriceEdit.Size = new System.Drawing.Size(125, 22);
+            this.MaxPriceEdit.Size = new System.Drawing.Size(96, 22);
             this.MaxPriceEdit.StyleController = this.styleController1;
             this.MaxPriceEdit.TabIndex = 22;
             // 
@@ -572,7 +582,7 @@
             this.AvgPriceEdit.Location = new System.Drawing.Point(125, 58);
             this.AvgPriceEdit.MenuManager = this.barManager1;
             this.AvgPriceEdit.Name = "AvgPriceEdit";
-            this.AvgPriceEdit.Size = new System.Drawing.Size(125, 22);
+            this.AvgPriceEdit.Size = new System.Drawing.Size(96, 22);
             this.AvgPriceEdit.StyleController = this.styleController1;
             this.AvgPriceEdit.TabIndex = 20;
             // 
@@ -593,7 +603,7 @@
             this.MinPriceEdit.Location = new System.Drawing.Point(125, 30);
             this.MinPriceEdit.MenuManager = this.barManager1;
             this.MinPriceEdit.Name = "MinPriceEdit";
-            this.MinPriceEdit.Size = new System.Drawing.Size(125, 22);
+            this.MinPriceEdit.Size = new System.Drawing.Size(96, 22);
             this.MinPriceEdit.StyleController = this.styleController1;
             this.MinPriceEdit.TabIndex = 18;
             // 
@@ -612,16 +622,16 @@
             this.panelControl2.Controls.Add(this.OkButton);
             this.panelControl2.Controls.Add(this.simpleButton1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(0, 26);
+            this.panelControl2.Location = new System.Drawing.Point(0, 24);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(600, 571);
+            this.panelControl2.Size = new System.Drawing.Size(600, 573);
             this.panelControl2.TabIndex = 1;
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(382, 533);
+            this.OkButton.Location = new System.Drawing.Point(382, 535);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(98, 26);
             this.OkButton.TabIndex = 3;
@@ -632,7 +642,7 @@
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton1.Location = new System.Drawing.Point(489, 533);
+            this.simpleButton1.Location = new System.Drawing.Point(489, 535);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(93, 26);
             this.simpleButton1.TabIndex = 2;
@@ -643,11 +653,9 @@
             this.panelControl3.Controls.Add(this.labelControl26);
             this.panelControl3.Controls.Add(this.labelControl25);
             this.panelControl3.Controls.Add(this.labelControl24);
-            this.panelControl3.Controls.Add(this.labelControl9);
             this.panelControl3.Controls.Add(this.labelControl8);
             this.panelControl3.Controls.Add(this.labelControl2);
             this.panelControl3.Controls.Add(this.labelControl1);
-            this.panelControl3.Controls.Add(this.NdsEdit);
             this.panelControl3.Controls.Add(this.CurRemainEdit);
             this.panelControl3.Controls.Add(this.RsvEdit);
             this.panelControl3.Controls.Add(this.RemainEdit);
@@ -690,18 +698,9 @@
             this.labelControl24.TabIndex = 24;
             this.labelControl24.Text = "msr";
             // 
-            // labelControl9
-            // 
-            this.labelControl9.Location = new System.Drawing.Point(343, 78);
-            this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(74, 16);
-            this.labelControl9.StyleController = this.styleController1;
-            this.labelControl9.TabIndex = 20;
-            this.labelControl9.Text = "Ставка ПДВ:";
-            // 
             // labelControl8
             // 
-            this.labelControl8.Location = new System.Drawing.Point(331, 58);
+            this.labelControl8.Location = new System.Drawing.Point(331, 78);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(86, 16);
             this.labelControl8.StyleController = this.styleController1;
@@ -710,7 +709,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(357, 36);
+            this.labelControl2.Location = new System.Drawing.Point(357, 46);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(60, 16);
             this.labelControl2.StyleController = this.styleController1;
@@ -726,26 +725,12 @@
             this.labelControl1.TabIndex = 17;
             this.labelControl1.Text = "В наявності:";
             // 
-            // NdsEdit
-            // 
-            this.NdsEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.NdsEdit.Location = new System.Drawing.Point(423, 75);
-            this.NdsEdit.MenuManager = this.barManager1;
-            this.NdsEdit.Name = "NdsEdit";
-            this.NdsEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.NdsEdit.Size = new System.Drawing.Size(112, 22);
-            this.NdsEdit.StyleController = this.styleController1;
-            this.NdsEdit.TabIndex = 13;
-            this.NdsEdit.EditValueChanged += new System.EventHandler(this.PriceEdit_EditValueChanged);
-            // 
             // CurRemainEdit
             // 
             this.CurRemainEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CurRemainEdit.Enabled = false;
-            this.CurRemainEdit.Location = new System.Drawing.Point(423, 54);
+            this.CurRemainEdit.Location = new System.Drawing.Point(423, 75);
             this.CurRemainEdit.MenuManager = this.barManager1;
             this.CurRemainEdit.Name = "CurRemainEdit";
             this.CurRemainEdit.Size = new System.Drawing.Size(112, 22);
@@ -757,7 +742,7 @@
             this.RsvEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.RsvEdit.Enabled = false;
-            this.RsvEdit.Location = new System.Drawing.Point(423, 33);
+            this.RsvEdit.Location = new System.Drawing.Point(423, 43);
             this.RsvEdit.MenuManager = this.barManager1;
             this.RsvEdit.Name = "RsvEdit";
             this.RsvEdit.Size = new System.Drawing.Size(112, 22);
@@ -787,6 +772,7 @@
             // 
             // PriceEdit
             // 
+            this.PriceEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "Price", true));
             this.PriceEdit.Location = new System.Drawing.Point(101, 75);
             this.PriceEdit.MenuManager = this.barManager1;
             this.PriceEdit.Name = "PriceEdit";
@@ -809,6 +795,7 @@
             // 
             // BasePriceEdit
             // 
+            this.BasePriceEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "BasePrice", true));
             this.BasePriceEdit.Location = new System.Drawing.Point(101, 43);
             this.BasePriceEdit.MenuManager = this.barManager1;
             this.BasePriceEdit.Name = "BasePriceEdit";
@@ -831,6 +818,7 @@
             // 
             // AmountEdit
             // 
+            this.AmountEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "Amount", true));
             this.AmountEdit.Location = new System.Drawing.Point(101, 12);
             this.AmountEdit.MenuManager = this.barManager1;
             this.AmountEdit.Name = "AmountEdit";
@@ -867,12 +855,17 @@
             // 
             this.textEdit6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.textEdit6.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.SerialsBS, "InvNumb", true));
             this.textEdit6.Location = new System.Drawing.Point(453, 18);
             this.textEdit6.MenuManager = this.barManager1;
             this.textEdit6.Name = "textEdit6";
             this.textEdit6.Size = new System.Drawing.Size(126, 22);
             this.textEdit6.StyleController = this.styleController1;
             this.textEdit6.TabIndex = 20;
+            // 
+            // SerialsBS
+            // 
+            this.SerialsBS.DataSource = typeof(SP_Sklad.SkladData.Serials);
             // 
             // labelControl10
             // 
@@ -885,6 +878,7 @@
             // 
             // textEdit5
             // 
+            this.textEdit5.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.SerialsBS, "SerialNo", true));
             this.textEdit5.Location = new System.Drawing.Point(111, 18);
             this.textEdit5.MenuManager = this.barManager1;
             this.textEdit5.Name = "textEdit5";
@@ -894,20 +888,34 @@
             // 
             // groupControl2
             // 
+            this.groupControl2.Controls.Add(this.textEdit1);
             this.groupControl2.Controls.Add(this.labelControl23);
             this.groupControl2.Controls.Add(this.textEdit17);
             this.groupControl2.Controls.Add(this.labelControl22);
             this.groupControl2.Controls.Add(this.labelControl21);
             this.groupControl2.Controls.Add(this.textEdit15);
-            this.groupControl2.Controls.Add(this.lookUpEdit1);
             this.groupControl2.Controls.Add(this.labelControl20);
             this.groupControl2.Controls.Add(this.textEdit16);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.groupControl2.Location = new System.Drawing.Point(279, 0);
+            this.groupControl2.Location = new System.Drawing.Point(250, 0);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(316, 118);
+            this.groupControl2.Size = new System.Drawing.Size(345, 118);
             this.groupControl2.TabIndex = 15;
             this.groupControl2.Text = "Сертифікат:";
+            // 
+            // textEdit1
+            // 
+            this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WayBillDetAddPropsBS, "Producer", true));
+            this.textEdit1.Location = new System.Drawing.Point(87, 30);
+            this.textEdit1.MenuManager = this.barManager1;
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Size = new System.Drawing.Size(247, 22);
+            this.textEdit1.StyleController = this.styleController1;
+            this.textEdit1.TabIndex = 26;
+            // 
+            // WayBillDetAddPropsBS
+            // 
+            this.WayBillDetAddPropsBS.DataSource = typeof(SP_Sklad.SkladData.WayBillDetAddProps);
             // 
             // labelControl23
             // 
@@ -922,10 +930,11 @@
             // 
             this.textEdit17.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.textEdit17.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WayBillDetAddPropsBS, "GTD", true));
             this.textEdit17.Location = new System.Drawing.Point(87, 86);
             this.textEdit17.MenuManager = this.barManager1;
             this.textEdit17.Name = "textEdit17";
-            this.textEdit17.Size = new System.Drawing.Size(218, 22);
+            this.textEdit17.Size = new System.Drawing.Size(247, 22);
             this.textEdit17.StyleController = this.styleController1;
             this.textEdit17.TabIndex = 24;
             // 
@@ -949,30 +958,13 @@
             // 
             // textEdit15
             // 
+            this.textEdit15.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WayBillDetAddPropsBS, "CertNum", true));
             this.textEdit15.Location = new System.Drawing.Point(87, 58);
             this.textEdit15.MenuManager = this.barManager1;
             this.textEdit15.Name = "textEdit15";
             this.textEdit15.Size = new System.Drawing.Size(56, 22);
             this.textEdit15.StyleController = this.styleController1;
             this.textEdit15.TabIndex = 20;
-            // 
-            // lookUpEdit1
-            // 
-            this.lookUpEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lookUpEdit1.Location = new System.Drawing.Point(87, 30);
-            this.lookUpEdit1.Name = "lookUpEdit1";
-            this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEdit1.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NAME", "Назва")});
-            this.lookUpEdit1.Properties.DisplayMember = "NAME";
-            this.lookUpEdit1.Properties.ShowFooter = false;
-            this.lookUpEdit1.Properties.ShowHeader = false;
-            this.lookUpEdit1.Properties.ValueMember = "WID";
-            this.lookUpEdit1.Size = new System.Drawing.Size(218, 22);
-            this.lookUpEdit1.StyleController = this.styleController1;
-            this.lookUpEdit1.TabIndex = 19;
             // 
             // labelControl20
             // 
@@ -987,6 +979,7 @@
             // 
             this.textEdit16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.textEdit16.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WayBillDetAddPropsBS, "CertDate", true));
             this.textEdit16.EditValue = null;
             this.textEdit16.Location = new System.Drawing.Point(218, 58);
             this.textEdit16.MenuManager = this.barManager1;
@@ -1001,7 +994,7 @@
             this.textEdit16.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.textEdit16.Properties.Mask.EditMask = "";
             this.textEdit16.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.textEdit16.Size = new System.Drawing.Size(87, 22);
+            this.textEdit16.Size = new System.Drawing.Size(116, 22);
             this.textEdit16.StyleController = this.styleController1;
             this.textEdit16.TabIndex = 23;
             // 
@@ -1157,7 +1150,7 @@
             // 
             this.panel1.Controls.Add(this.panelControl1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 26);
+            this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
             this.panel1.Size = new System.Drawing.Size(600, 92);
@@ -1167,7 +1160,7 @@
             // 
             this.panel2.Controls.Add(this.panelControl3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 118);
+            this.panel2.Location = new System.Drawing.Point(0, 116);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
             this.panel2.Size = new System.Drawing.Size(600, 115);
@@ -1177,7 +1170,7 @@
             // 
             this.panel3.Controls.Add(this.panelControl4);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 233);
+            this.panel3.Location = new System.Drawing.Point(0, 231);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
             this.panel3.Size = new System.Drawing.Size(600, 61);
@@ -1188,7 +1181,7 @@
             this.panel4.Controls.Add(this.groupControl2);
             this.panel4.Controls.Add(this.groupControl1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 294);
+            this.panel4.Location = new System.Drawing.Point(0, 292);
             this.panel4.Name = "panel4";
             this.panel4.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
             this.panel4.Size = new System.Drawing.Size(600, 123);
@@ -1198,7 +1191,7 @@
             // 
             this.panel5.Controls.Add(this.groupControl3);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 417);
+            this.panel5.Location = new System.Drawing.Point(0, 415);
             this.panel5.Name = "panel5";
             this.panel5.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
             this.panel5.Size = new System.Drawing.Size(600, 131);
@@ -1231,6 +1224,7 @@
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MatComboBox.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WHComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
@@ -1247,7 +1241,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NdsEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CurRemainEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RsvEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RemainEdit.Properties)).EndInit();
@@ -1258,13 +1251,15 @@
             this.panelControl4.ResumeLayout(false);
             this.panelControl4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit6.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SerialsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WayBillDetAddPropsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit17.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit15.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit16.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit16.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
@@ -1329,11 +1324,9 @@
         private DevExpress.XtraEditors.TextEdit textEdit6;
         private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraEditors.TextEdit textEdit5;
-        private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.CalcEdit NdsEdit;
         private DevExpress.XtraEditors.TextEdit CurRemainEdit;
         private DevExpress.XtraEditors.TextEdit RsvEdit;
         private DevExpress.XtraEditors.TextEdit RemainEdit;
@@ -1360,7 +1353,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl22;
         private DevExpress.XtraEditors.LabelControl labelControl21;
         private DevExpress.XtraEditors.TextEdit textEdit15;
-        private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl20;
         private DevExpress.XtraEditors.DateEdit textEdit16;
         private DevExpress.XtraEditors.LabelControl labelControl28;
@@ -1381,5 +1373,9 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.BindingSource WaybillDetBS;
+        private System.Windows.Forms.BindingSource WayBillDetAddPropsBS;
+        private System.Windows.Forms.BindingSource SerialsBS;
+        private DevExpress.XtraEditors.TextEdit textEdit1;
     }
 }

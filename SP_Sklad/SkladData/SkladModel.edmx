@@ -107,7 +107,7 @@
           </EntitySet>
           <EntitySet Name="Reports" EntityType="BaseModel.Store.Reports" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ReturnRel" EntityType="BaseModel.Store.ReturnRel" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="SERIALS" EntityType="BaseModel.Store.SERIALS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Serials" EntityType="BaseModel.Store.Serials" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Services" EntityType="BaseModel.Store.Services" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SvcGroup" EntityType="BaseModel.Store.SvcGroup" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Tables" EntityType="BaseModel.Store.Tables" store:Type="Tables" Schema="dbo" />
@@ -131,20 +131,7 @@
           </EntitySet>
           <EntitySet Name="Warehouse" EntityType="BaseModel.Store.Warehouse" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="WaybillDet" EntityType="BaseModel.Store.WaybillDet" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="WayBillDetAddProps" EntityType="BaseModel.Store.WayBillDetAddProps" store:Type="Tables" store:Schema="dbo" store:Name="WayBillDetAddProps">
-            <DefiningQuery>SELECT 
-      [WayBillDetAddProps].[PosId] AS [PosId], 
-      [WayBillDetAddProps].[GTD] AS [GTD], 
-      [WayBillDetAddProps].[CertNum] AS [CertNum], 
-      [WayBillDetAddProps].[CertDate] AS [CertDate], 
-      [WayBillDetAddProps].[Producer] AS [Producer], 
-      [WayBillDetAddProps].[WarrantyPeriod] AS [WarrantyPeriod], 
-      [WayBillDetAddProps].[WarrantyPeriodType] AS [WarrantyPeriodType], 
-      [WayBillDetAddProps].[CardId] AS [CardId], 
-      [WayBillDetAddProps].[Notes] AS [Notes], 
-      [WayBillDetAddProps].[WbMaked] AS [WbMaked]
-      FROM [dbo].[WayBillDetAddProps] AS [WayBillDetAddProps]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="WayBillDetAddProps" EntityType="BaseModel.Store.WayBillDetAddProps" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="WayBillDetTaxes" EntityType="BaseModel.Store.WayBillDetTaxes" store:Type="Tables" store:Schema="dbo" store:Name="WayBillDetTaxes">
             <DefiningQuery>SELECT 
       [WayBillDetTaxes].[PosId] AS [PosId], 
@@ -849,7 +836,7 @@
           </AssociationSet>
           <AssociationSet Name="FK_SERIALS_POSID" Association="BaseModel.Store.FK_SERIALS_POSID">
             <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="SERIALS" EntitySet="SERIALS" />
+            <End Role="Serials" EntitySet="Serials" />
           </AssociationSet>
           <AssociationSet Name="FK_SERVICES_1" Association="BaseModel.Store.FK_SERVICES_1">
             <End Role="SvcGroup" EntitySet="SvcGroup" />
@@ -1782,14 +1769,14 @@
           <Property Name="PPosId" Type="int" Nullable="false" />
           <Property Name="DPosId" Type="int" />
         </EntityType>
-        <EntityType Name="SERIALS">
+        <EntityType Name="Serials">
           <Key>
-            <PropertyRef Name="SID" />
+            <PropertyRef Name="SId" />
           </Key>
-          <Property Name="SID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="POSID" Type="int" Nullable="false" />
-          <Property Name="SERIALNO" Type="varchar" Nullable="false" MaxLength="64" />
-          <Property Name="INVNUMB" Type="varchar" MaxLength="255" />
+          <Property Name="SId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PosId" Type="int" Nullable="false" />
+          <Property Name="SerialNo" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="InvNumb" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="Services">
           <Key>
@@ -2014,9 +2001,6 @@
           <Property Name="DiscountKind" Type="int" />
           <Property Name="AvgInPrice" Type="numeric" Precision="15" Scale="4" />
         </EntityType>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'sp_base.dbo.WayBillDetAddProps' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
         <EntityType Name="WayBillDetAddProps">
           <Key>
             <PropertyRef Name="PosId" />
@@ -3752,13 +3736,13 @@
           <End Role="WaybillDet" Type="BaseModel.Store.WaybillDet" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="SERIALS" Type="BaseModel.Store.SERIALS" Multiplicity="*" />
+          <End Role="Serials" Type="BaseModel.Store.Serials" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="WaybillDet">
               <PropertyRef Name="PosId" />
             </Principal>
-            <Dependent Role="SERIALS">
-              <PropertyRef Name="POSID" />
+            <Dependent Role="Serials">
+              <PropertyRef Name="PosId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -5656,7 +5640,6 @@
           <EntitySet Name="MATCHANGE" EntityType="BaseModel.MATCHANGE" />
           <EntitySet Name="MATGROUPPRICES" EntityType="BaseModel.MATGROUPPRICES" />
           <EntitySet Name="MATPRICES" EntityType="BaseModel.MATPRICES" />
-          <EntitySet Name="SERIALS" EntityType="BaseModel.SERIALS" />
           <EntitySet Name="TAXES" EntityType="BaseModel.TAXES" />
           <EntitySet Name="TAXWB" EntityType="BaseModel.TAXWB" />
           <AssociationSet Name="FK_CONTRDET_REFERENCE_CONTRACTS" Association="BaseModel.FK_CONTRDET_REFERENCE_CONTRACTS">
@@ -6094,11 +6077,6 @@
           </FunctionImport>
           <EntitySet Name="TechProcDet" EntityType="BaseModel.TechProcDet" />
           <EntitySet Name="TechProcess" EntityType="BaseModel.TechProcess" />
-          <EntitySet Name="WayBillDetAddProps" EntityType="BaseModel.WayBillDetAddProps" />
-          <AssociationSet Name="FK_WBDAP_CARDID" Association="BaseModel.FK_WBDAP_CARDID">
-            <End Role="DISCCARDS" EntitySet="DISCCARDS" />
-            <End Role="WayBillDetAddProps" EntitySet="WayBillDetAddProps" />
-          </AssociationSet>
           <AssociationSet Name="FK_TECHPROCDET_TECHPROCESS" Association="BaseModel.FK_TECHPROCDET_TECHPROCESS">
             <End Role="TechProcess" EntitySet="TechProcess" />
             <End Role="TechProcDet" EntitySet="TechProcDet" />
@@ -6553,10 +6531,6 @@
             <End Role="WaybillList" EntitySet="WaybillList" />
             <End Role="TechProcDet" EntitySet="TechProcDet" />
           </AssociationSet>
-          <AssociationSet Name="FK_WAYBILLDETADDPROPS_WBILLID" Association="BaseModel.FK_WAYBILLDETADDPROPS_WBILLID">
-            <End Role="WaybillList" EntitySet="WaybillList" />
-            <End Role="WayBillDetAddProps" EntitySet="WayBillDetAddProps" />
-          </AssociationSet>
           <AssociationSet Name="FK_WAYBILLMAKE_WAYBILLLIST" Association="BaseModel.FK_WAYBILLMAKE_WAYBILLLIST">
             <End Role="WaybillList" EntitySet="WaybillList" />
             <End Role="WayBillMake" EntitySet="WayBillMake" />
@@ -6610,17 +6584,9 @@
             <End Role="WaybillDet" EntitySet="WaybillDet" />
             <End Role="ReturnRel" EntitySet="ReturnRel" />
           </AssociationSet>
-          <AssociationSet Name="FK_SERIALS_POSID" Association="BaseModel.FK_SERIALS_POSID">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="SERIALS" EntitySet="SERIALS" />
-          </AssociationSet>
           <AssociationSet Name="FK_WAYBILLD_FK_WBDET__WAREHOUS" Association="BaseModel.FK_WAYBILLD_FK_WBDET__WAREHOUS">
             <End Role="Warehouse" EntitySet="Warehouse" />
             <End Role="WaybillDet" EntitySet="WaybillDet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WBDAP_POSID" Association="BaseModel.FK_WBDAP_POSID">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="WayBillDetAddProps" EntitySet="WayBillDetAddProps" />
           </AssociationSet>
           <AssociationSet Name="FK_WBDTAXES_POSID" Association="BaseModel.FK_WBDTAXES_POSID">
             <End Role="WaybillDet" EntitySet="WaybillDet" />
@@ -6795,6 +6761,24 @@
             <End Role="BANKSPERSONS" EntitySet="BANKSPERSONS" />
           </AssociationSet>
           <EntitySet Name="v_KAgentAccount" EntityType="BaseModel.v_KAgentAccount" />
+          <EntitySet Name="Serials" EntityType="BaseModel.Serials" />
+          <AssociationSet Name="FK_SERIALS_POSID" Association="BaseModel.FK_SERIALS_POSID">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="Serials" EntitySet="Serials" />
+          </AssociationSet>
+          <EntitySet Name="WayBillDetAddProps" EntityType="BaseModel.WayBillDetAddProps" />
+          <AssociationSet Name="FK_WBDAP_CARDID" Association="BaseModel.FK_WBDAP_CARDID">
+            <End Role="DISCCARDS" EntitySet="DISCCARDS" />
+            <End Role="WayBillDetAddProps" EntitySet="WayBillDetAddProps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WBDAP_POSID" Association="BaseModel.FK_WBDAP_POSID">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="WayBillDetAddProps" EntitySet="WayBillDetAddProps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAYBILLDETADDPROPS_WBILLID" Association="BaseModel.FK_WAYBILLDETADDPROPS_WBILLID">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="WayBillDetAddProps" EntitySet="WayBillDetAddProps" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -7029,8 +7013,8 @@
           <Property Name="DELETED" Type="Int32" Nullable="false" />
           <Property Name="STARTSALDO" Type="Decimal" Precision="15" Scale="8" />
           <NavigationProperty Name="DISCCARDGRP" Relationship="BaseModel.FK_DISCCARDS_GRPID" FromRole="DISCCARDS" ToRole="DISCCARDGRP" />
-          <NavigationProperty Name="WayBillDetAddProps" Relationship="BaseModel.FK_WBDAP_CARDID" FromRole="DISCCARDS" ToRole="WayBillDetAddProps" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_DISCCARDS_KAID" FromRole="DISCCARDS" ToRole="Kagent" />
+          <NavigationProperty Name="WayBillDetAddProps" Relationship="BaseModel.FK_WBDAP_CARDID" FromRole="DISCCARDS" ToRole="WayBillDetAddProps" />
         </EntityType>
         <EntityType Name="ENTPARAMS">
           <Key>
@@ -7101,16 +7085,6 @@
           <NavigationProperty Name="PriceTypes1" Relationship="BaseModel.FK_MATPRICES_PPTYPEID" FromRole="MATPRICES" ToRole="PriceTypes" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK_MP_MATID" FromRole="MATPRICES" ToRole="Materials" />
           </EntityType>
-        <EntityType Name="SERIALS">
-          <Key>
-            <PropertyRef Name="SID" />
-          </Key>
-          <Property Name="SID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="POSID" Type="Int32" Nullable="false" />
-          <Property Name="SERIALNO" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="INVNUMB" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_SERIALS_POSID" FromRole="SERIALS" ToRole="WaybillDet" />
-        </EntityType>
         <EntityType Name="TAXES">
           <Key>
             <PropertyRef Name="TAXID" />
@@ -8446,36 +8420,6 @@
           <Property Type="String" Name="Name" MaxLength="128" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TechProcDet" Relationship="BaseModel.FK_TECHPROCDET_TECHPROCESS" FromRole="TechProcess" ToRole="TechProcDet" />
         </EntityType>
-        <EntityType Name="WayBillDetAddProps">
-          <Key>
-            <PropertyRef Name="PosId" />
-          </Key>
-          <Property Type="Int32" Name="PosId" Nullable="false" />
-          <Property Type="String" Name="GTD" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="CertNum" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="CertDate" Precision="3" />
-          <Property Type="String" Name="Producer" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="WarrantyPeriod" />
-          <Property Type="Int32" Name="WarrantyPeriodType" />
-          <Property Type="Int32" Name="CardId" />
-          <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="WbMaked" />
-          <NavigationProperty Name="DISCCARDS" Relationship="BaseModel.FK_WBDAP_CARDID" FromRole="WayBillDetAddProps" ToRole="DISCCARDS" />
-          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WAYBILLDETADDPROPS_WBILLID" FromRole="WayBillDetAddProps" ToRole="WaybillList" />
-          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WBDAP_POSID" FromRole="WayBillDetAddProps" ToRole="WaybillDet" />
-        </EntityType>
-        <Association Name="FK_WBDAP_CARDID">
-          <End Type="BaseModel.DISCCARDS" Role="DISCCARDS" Multiplicity="0..1" />
-          <End Type="BaseModel.WayBillDetAddProps" Role="WayBillDetAddProps" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DISCCARDS">
-              <PropertyRef Name="CARDID" />
-            </Principal>
-            <Dependent Role="WayBillDetAddProps">
-              <PropertyRef Name="CardId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TECHPROCDET_TECHPROCESS">
           <End Type="BaseModel.TechProcess" Role="TechProcess" Multiplicity="1" />
           <End Type="BaseModel.TechProcDet" Role="TechProcDet" Multiplicity="*" />
@@ -10414,7 +10358,6 @@
           <NavigationProperty Name="DeboningDet" Relationship="BaseModel.FK_DEBONINGDET_WAYBILLLIST" FromRole="WaybillList" ToRole="DeboningDet" />
           <NavigationProperty Name="Docs" Relationship="BaseModel.FK_WAYBILLL_REF_WBL_D_DOCS" FromRole="WaybillList" ToRole="Docs" />
           <NavigationProperty Name="TechProcDet" Relationship="BaseModel.FK_TECHPROCDET_WAYBILLLIST" FromRole="WaybillList" ToRole="TechProcDet" />
-          <NavigationProperty Name="WayBillDetAddProps" Relationship="BaseModel.FK_WAYBILLDETADDPROPS_WBILLID" FromRole="WaybillList" ToRole="WayBillDetAddProps" />
           <NavigationProperty Name="WayBillMake" Relationship="BaseModel.FK_WAYBILLMAKE_WAYBILLLIST" FromRole="WaybillList" ToRole="WayBillMake" />
           <NavigationProperty Name="WaybillMove" Relationship="BaseModel.FK_WBM_WBILLID" FromRole="WaybillList" ToRole="WaybillMove" />
           <NavigationProperty Name="WayBillSvc" Relationship="BaseModel.FK_WBS_WBILLID" FromRole="WaybillList" ToRole="WayBillSvc" />
@@ -10423,6 +10366,7 @@
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__WAYBILLLI__PERSO__6E01572D" FromRole="WaybillList" ToRole="Kagent" />
           <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" FromRole="WaybillList" ToRole="Kagent" />
           <NavigationProperty Name="Kagent2" Relationship="BaseModel.FK_WBL_ENTID" FromRole="WaybillList" ToRole="Kagent" />
+          <NavigationProperty Name="WayBillDetAddProps" Relationship="BaseModel.FK_WAYBILLDETADDPROPS_WBILLID" FromRole="WaybillList" ToRole="WayBillDetAddProps" />
         </EntityType>
         <Association Name="FK_WAYBILLL_FK_WBLIST_CURRENCY">
           <End Type="BaseModel.Currency" Role="Currency" Multiplicity="0..1" />
@@ -10485,18 +10429,6 @@
             </Principal>
             <Dependent Role="TechProcDet">
               <PropertyRef Name="WbillId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WAYBILLDETADDPROPS_WBILLID">
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="0..1" />
-          <End Type="BaseModel.WayBillDetAddProps" Role="WayBillDetAddProps" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillList">
-              <PropertyRef Name="WbillId" />
-            </Principal>
-            <Dependent Role="WayBillDetAddProps">
-              <PropertyRef Name="WbMaked" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -10578,15 +10510,15 @@
           <NavigationProperty Name="ReturnRel1" Relationship="BaseModel.FK_RETREL_OUTPOSID" FromRole="WaybillDet" ToRole="ReturnRel" />
           <NavigationProperty Name="ReturnRel2" Relationship="BaseModel.FK_RETREL_POSID" FromRole="WaybillDet" ToRole="ReturnRel" />
           <NavigationProperty Name="ReturnRel3" Relationship="BaseModel.FK_RETREL_PPOSID" FromRole="WaybillDet" ToRole="ReturnRel" />
-          <NavigationProperty Name="SERIALS" Relationship="BaseModel.FK_SERIALS_POSID" FromRole="WaybillDet" ToRole="SERIALS" />
           <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__WAREHOUS" FromRole="WaybillDet" ToRole="Warehouse" />
-          <NavigationProperty Name="WayBillDetAddProps" Relationship="BaseModel.FK_WBDAP_POSID" FromRole="WaybillDet" ToRole="WayBillDetAddProps" />
           <NavigationProperty Name="WayBillDetTaxes" Relationship="BaseModel.FK_WBDTAXES_POSID" FromRole="WaybillDet" ToRole="WayBillDetTaxes" />
           <NavigationProperty Name="WMatTurn" Relationship="BaseModel.FK_WMT_POSID" FromRole="WaybillDet" ToRole="WMatTurn" />
           <NavigationProperty Name="WMatTurn1" Relationship="BaseModel.FK_WMT_SRCID" FromRole="WaybillDet" ToRole="WMatTurn" />
           <NavigationProperty Name="WaybillDet1" Relationship="BaseModel.PosRel" FromRole="WaybillDet" ToRole="WaybillDet1" />
           <NavigationProperty Name="WaybillDet2" Relationship="BaseModel.PosRel" FromRole="WaybillDet1" ToRole="WaybillDet" />
           <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WaybillDet_WaybillList" FromRole="WaybillDet" ToRole="WaybillList" />
+          <NavigationProperty Name="Serials" Relationship="BaseModel.FK_SERIALS_POSID" FromRole="WaybillDet" ToRole="Serials" />
+          <NavigationProperty Name="WayBillDetAddProps" Relationship="BaseModel.FK_WBDAP_POSID" FromRole="WaybillDet" ToRole="WayBillDetAddProps" />
         </EntityType>
         <Association Name="FK_WAYBILLD_REFERENCE_CURRENCY">
           <End Type="BaseModel.Currency" Role="Currency" Multiplicity="0..1" />
@@ -10712,20 +10644,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SERIALS_POSID">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.SERIALS" Role="SERIALS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="SERIALS">
-              <PropertyRef Name="POSID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_WAYBILLD_FK_WBDET__WAREHOUS">
           <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="0..1" />
           <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
@@ -10735,20 +10653,6 @@
             </Principal>
             <Dependent Role="WaybillDet">
               <PropertyRef Name="WId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WBDAP_POSID">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.WayBillDetAddProps" Role="WayBillDetAddProps" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="WayBillDetAddProps">
-              <PropertyRef Name="PosId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -11413,6 +11317,86 @@
           <Property Name="BankName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="TypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="Serials">
+          <Key>
+            <PropertyRef Name="SId" />
+          </Key>
+          <Property Type="Int32" Name="SId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PosId" Nullable="false" />
+          <Property Type="String" Name="SerialNo" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="InvNumb" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_SERIALS_POSID" FromRole="Serials" ToRole="WaybillDet" />
+        </EntityType>
+        <Association Name="FK_SERIALS_POSID">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.Serials" Role="Serials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="Serials">
+              <PropertyRef Name="PosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="WayBillDetAddProps">
+          <Key>
+            <PropertyRef Name="PosId" />
+          </Key>
+          <Property Type="Int32" Name="PosId" Nullable="false" />
+          <Property Type="String" Name="GTD" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CertNum" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CertDate" Precision="3" />
+          <Property Type="String" Name="Producer" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="WarrantyPeriod" />
+          <Property Type="Int32" Name="WarrantyPeriodType" />
+          <Property Type="Int32" Name="CardId" />
+          <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="WbMaked" />
+          <NavigationProperty Name="DISCCARDS" Relationship="BaseModel.FK_WBDAP_CARDID" FromRole="WayBillDetAddProps" ToRole="DISCCARDS" />
+          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WBDAP_POSID" FromRole="WayBillDetAddProps" ToRole="WaybillDet" />
+          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WAYBILLDETADDPROPS_WBILLID" FromRole="WayBillDetAddProps" ToRole="WaybillList" />
+        </EntityType>
+        <Association Name="FK_WBDAP_CARDID">
+          <End Type="BaseModel.DISCCARDS" Role="DISCCARDS" Multiplicity="0..1" />
+          <End Type="BaseModel.WayBillDetAddProps" Role="WayBillDetAddProps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DISCCARDS">
+              <PropertyRef Name="CARDID" />
+            </Principal>
+            <Dependent Role="WayBillDetAddProps">
+              <PropertyRef Name="CardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WBDAP_POSID">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.WayBillDetAddProps" Role="WayBillDetAddProps" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="WayBillDetAddProps">
+              <PropertyRef Name="PosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAYBILLDETADDPROPS_WBILLID">
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="0..1" />
+          <End Type="BaseModel.WayBillDetAddProps" Role="WayBillDetAddProps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="WayBillDetAddProps">
+              <PropertyRef Name="WbMaked" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -11569,16 +11553,6 @@
                 <ScalarProperty Name="DIS" ColumnName="DIS" />
                 <ScalarProperty Name="WITHNDS" ColumnName="WITHNDS" />
                 <ScalarProperty Name="PPTYPEID" ColumnName="PPTYPEID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SERIALS">
-            <EntityTypeMapping TypeName="BaseModel.SERIALS">
-              <MappingFragment StoreEntitySet="SERIALS">
-                <ScalarProperty Name="SID" ColumnName="SID" />
-                <ScalarProperty Name="POSID" ColumnName="POSID" />
-                <ScalarProperty Name="SERIALNO" ColumnName="SERIALNO" />
-                <ScalarProperty Name="INVNUMB" ColumnName="INVNUMB" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -12685,22 +12659,6 @@
               <MappingFragment StoreEntitySet="TechProcess">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ProcId" ColumnName="ProcId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="WayBillDetAddProps">
-            <EntityTypeMapping TypeName="BaseModel.WayBillDetAddProps">
-              <MappingFragment StoreEntitySet="WayBillDetAddProps">
-                <ScalarProperty Name="WbMaked" ColumnName="WbMaked" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="CardId" ColumnName="CardId" />
-                <ScalarProperty Name="WarrantyPeriodType" ColumnName="WarrantyPeriodType" />
-                <ScalarProperty Name="WarrantyPeriod" ColumnName="WarrantyPeriod" />
-                <ScalarProperty Name="Producer" ColumnName="Producer" />
-                <ScalarProperty Name="CertDate" ColumnName="CertDate" />
-                <ScalarProperty Name="CertNum" ColumnName="CertNum" />
-                <ScalarProperty Name="GTD" ColumnName="GTD" />
-                <ScalarProperty Name="PosId" ColumnName="PosId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -14363,6 +14321,32 @@
                 <ScalarProperty Name="TypeId" ColumnName="TypeId" />
                 <ScalarProperty Name="KAId" ColumnName="KAId" />
                 <ScalarProperty Name="AccId" ColumnName="AccId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Serials">
+            <EntityTypeMapping TypeName="BaseModel.Serials">
+              <MappingFragment StoreEntitySet="Serials">
+                <ScalarProperty Name="InvNumb" ColumnName="InvNumb" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="SId" ColumnName="SId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WayBillDetAddProps">
+            <EntityTypeMapping TypeName="BaseModel.WayBillDetAddProps">
+              <MappingFragment StoreEntitySet="WayBillDetAddProps">
+                <ScalarProperty Name="WbMaked" ColumnName="WbMaked" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="CardId" ColumnName="CardId" />
+                <ScalarProperty Name="WarrantyPeriodType" ColumnName="WarrantyPeriodType" />
+                <ScalarProperty Name="WarrantyPeriod" ColumnName="WarrantyPeriod" />
+                <ScalarProperty Name="Producer" ColumnName="Producer" />
+                <ScalarProperty Name="CertDate" ColumnName="CertDate" />
+                <ScalarProperty Name="CertNum" ColumnName="CertNum" />
+                <ScalarProperty Name="GTD" ColumnName="GTD" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

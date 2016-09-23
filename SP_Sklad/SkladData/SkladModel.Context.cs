@@ -40,7 +40,6 @@ namespace SP_Sklad.SkladData
         public DbSet<MATCHANGE> MATCHANGE { get; set; }
         public DbSet<MATGROUPPRICES> MATGROUPPRICES { get; set; }
         public DbSet<MATPRICES> MATPRICES { get; set; }
-        public DbSet<SERIALS> SERIALS { get; set; }
         public DbSet<TAXES> TAXES { get; set; }
         public DbSet<TAXWB> TAXWB { get; set; }
         public DbSet<WMatTurn> WMatTurn { get; set; }
@@ -76,7 +75,6 @@ namespace SP_Sklad.SkladData
         public DbSet<TAXWBDET> TAXWBDET { get; set; }
         public DbSet<TechProcDet> TechProcDet { get; set; }
         public DbSet<TechProcess> TechProcess { get; set; }
-        public DbSet<WayBillDetAddProps> WayBillDetAddProps { get; set; }
         public DbSet<WayBillDetTaxes> WayBillDetTaxes { get; set; }
         public DbSet<MatRecipe> MatRecipe { get; set; }
         public DbSet<WayBillMake> WayBillMake { get; set; }
@@ -127,6 +125,8 @@ namespace SP_Sklad.SkladData
         public DbSet<Banks> Banks { get; set; }
         public DbSet<BANKSPERSONS> BANKSPERSONS { get; set; }
         public DbSet<v_KAgentAccount> v_KAgentAccount { get; set; }
+        public DbSet<Serials> Serials { get; set; }
+        public DbSet<WayBillDetAddProps> WayBillDetAddProps { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)
