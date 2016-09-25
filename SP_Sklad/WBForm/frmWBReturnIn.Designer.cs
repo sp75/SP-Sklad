@@ -505,6 +505,7 @@
             this.KAgentBtn.Name = "KAgentBtn";
             this.KAgentBtn.Size = new System.Drawing.Size(22, 22);
             this.KAgentBtn.TabIndex = 11;
+            this.KAgentBtn.Click += new System.EventHandler(this.KAgentBtn_Click);
             // 
             // NowDateBtn
             // 

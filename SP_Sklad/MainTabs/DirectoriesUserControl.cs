@@ -23,6 +23,7 @@ namespace SP_Sklad.MainTabs
         public WaybillList wb { get; set; }
      //   public Object resut { get; set; }
         private int _archived { get; set; }
+        private BaseEntities _db { get; set; }
 
         public DirectoriesUserControl()
         {
@@ -45,13 +46,13 @@ namespace SP_Sklad.MainTabs
                 custom_mat_list = new List<CustomMatList>();
                 MatListGridControl.DataSource = custom_mat_list;
 
-                using (var db = new BaseEntities())
-                {
-                    repositoryItemLookUpEdit1.DataSource = DBHelper.WhList();
+                _db = DB.SkladBase();
 
-                    DirTreeBS.DataSource = db.GetDirTree(DBHelper.CurrentUser.UserId).ToList();
-                    DirTreeList.ExpandToLevel(1);
-                }
+                repositoryItemLookUpEdit1.DataSource = DBHelper.WhList();
+
+                DirTreeBS.DataSource = _db.GetDirTree(DBHelper.CurrentUser.UserId).ToList();
+                DirTreeList.ExpandToLevel(1);
+
             }
         }
 
@@ -65,7 +66,7 @@ namespace SP_Sklad.MainTabs
 
         private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var db = DB.SkladBase();
+           
 
             switch (focused_tree_node.GType)
             {
@@ -77,7 +78,7 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 2:
-                    MatListDS.DataSource = DB.SkladBase().GetMatList(focused_tree_node.Id == 6 ? -1 : focused_tree_node.GrpId, 0, 0, 0);
+                    MatListDS.DataSource = _db.GetMatList(focused_tree_node.Id == 6 ? -1 : focused_tree_node.GrpId, 0, 0, 0);
                     break;
 
                 case 3:
@@ -87,7 +88,10 @@ namespace SP_Sklad.MainTabs
 
                 case 4: switch (focused_tree_node.Id)
                     {
-                        //      case 25: cxGridLevel6->GridView = WarehouseGrid; break;
+                              case 25:
+                            WarehouseBS.DataSource = _db.Warehouse.ToList();
+                                  extDirTabControl.SelectedTabPageIndex = 1; 
+                                  break;
                         //      case 11: cxGridLevel6->GridView = BanksGrid; break;
                         //      case 2: cxGridLevel6->GridView = MeasuresGrid; break;
                         //      case 43: cxGridLevel6->GridView = CountriesGrid; break;
@@ -97,7 +101,7 @@ namespace SP_Sklad.MainTabs
                         //      case 64: cxGridLevel6->GridView = CashdesksGrid; break;
                         //      case 3: cxGridLevel6->GridView = CurrencyGrid; break;
                         case 53:
-                            MatRecipeDS.DataSource = db.MatRecipe.Where(w => w.RType == 1).Select(s => new
+                                  MatRecipeDS.DataSource = _db.MatRecipe.Where(w => w.RType == 1).Select(s => new
                             {
                                 s.RecId,
                                 MatName = s.Materials.Name,
@@ -108,9 +112,10 @@ namespace SP_Sklad.MainTabs
                                 GrpName = s.Materials.MatGroup.Name
                             }).ToList();
 
-                            extDirTabControl.SelectedTabPageIndex = 0; break;
+                            extDirTabControl.SelectedTabPageIndex = 0; 
+                            break;
                         case 42:
-                            MatRecipeDS.DataSource = db.MatRecipe.Where(w => w.RType == 2).Select(s => new
+                            MatRecipeDS.DataSource = _db.MatRecipe.Where(w => w.RType == 2).Select(s => new
                             {
                                 s.RecId,
                                 MatName = s.Materials.Name,
@@ -120,14 +125,15 @@ namespace SP_Sklad.MainTabs
                                 s.Name,
                                 GrpName = s.Materials.MatGroup.Name
                             }).ToList();
-                            extDirTabControl.SelectedTabPageIndex = 0; break;
+                            extDirTabControl.SelectedTabPageIndex = 0; 
+                            break;
                         //       case 68: cxGridLevel6->GridView = TaxesGrid; break;
                         //       case 112: cxGridLevel6->GridView = TechProcessGrid; break;
                     }
                     break;
             }
 
-            db.Dispose();
+
         }
 
         private void MatGridView_DoubleClick(object sender, EventArgs e)
@@ -476,7 +482,15 @@ namespace SP_Sklad.MainTabs
 
         private void KaGridView_DoubleClick(object sender, EventArgs e)
         {
-            EditItemBtn.PerformClick();
+            if (isDirectList)
+            {
+                var frm = this.Parent as frmCatalog;
+                frm.OkButton.PerformClick();
+            }
+            else
+            {
+                EditItemBtn.PerformClick();
+            }
         }
 
         private void KaGridView_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
@@ -579,6 +593,21 @@ namespace SP_Sklad.MainTabs
             var dr = KaGridView.GetFocusedRow() as KagentList;
 
             IHelper.ShowOrdered(dr.KaId, 0, 0);
+        }
+
+        private void WarehouseBS_CurrentItemChanged(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void WarehouseBS_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gridView6_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            _db.SaveChanges();
         }
     }
 }

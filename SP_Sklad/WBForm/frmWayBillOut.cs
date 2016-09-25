@@ -460,5 +460,11 @@ namespace SP_Sklad.WBForm
                 dr.Amount = wbd.Amount;
             }
         }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            wb.KaId = (int)IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
+            KagentComboBox.EditValue = wb.KaId;
+        }
     }
 }

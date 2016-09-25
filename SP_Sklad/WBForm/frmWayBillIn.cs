@@ -375,6 +375,12 @@ namespace SP_Sklad.WBForm
             IHelper.ShowOrdered((int)KagentComboBox.EditValue, 16, 0);
         }
 
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            wb.KaId = (int)IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
+            KagentComboBox.EditValue = wb.KaId;
+        }
+
 
 
     }

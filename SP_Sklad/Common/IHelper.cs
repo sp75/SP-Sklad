@@ -125,18 +125,37 @@ namespace SP_Sklad.Common
         {
             switch (Typ)
             {
-                /*  case 1: frmDirect->Caption = "Контрагенти";
-                          frmDirect->DirectTree->Filter = "GTYPE=1";
-                          if(frmDirect->ShowModal()== mrOk) old_ID = frmDirect->KAgentKAID->Value;
+                  case 1:
+                    using (var f = new frmCatalog(1))
+                    {
+                        f.uc.isDirectList = true;
+                        f.Text = "Контрагенти";
+                        if (f.ShowDialog() == DialogResult.OK)
+                        {
+                            old_id = (f.uc.KaGridView.GetFocusedRow() as KagentList).KaId;
+                        }
+                    }
+
                           break;
 
-                  case 2: frmDirect->DirectTree->Filter = "ID=25"; //Склади;
+                  case 2:
+                          using (var f = new frmCatalog(1,25))
+                          {
+                              f.uc.isDirectList = true;
+                              f.Text = "Склади";
+                              if (f.ShowDialog() == DialogResult.OK)
+                              {
+                                  old_id = (f.uc.KaGridView.GetFocusedRow() as KagentList).KaId;
+                              }
+                          }
+                      
+                     /* frmDirect->DirectTree->Filter = "ID=25"; //Склади;
                           frmDirect->cxSplitter1->CloseSplitter();
                           frmDirect->Caption = frmDirect->DirectTreeNAME->Value;
-                          if(frmDirect->ShowModal()== mrOk) old_ID = SkladData->WarehouseWID->Value;
+                          if(frmDirect->ShowModal()== mrOk) old_ID = SkladData->WarehouseWID->Value;*/
                           break;
 
-                  case 3: frmDirect->DirectTree->Filter = "ID=5";  //Службовці
+              /*    case 3: frmDirect->DirectTree->Filter = "ID=5";  //Службовці
                           frmDirect->cxSplitter1->CloseSplitter();
                           frmDirect->Caption = frmDirect->DirectTreeNAME->Value;
                           if(frmDirect->ShowModal()== mrOk) old_ID = frmDirect->KAgentKAID->Value;

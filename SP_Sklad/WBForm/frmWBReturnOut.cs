@@ -390,6 +390,12 @@ namespace SP_Sklad.WBForm
         {
             IHelper.ShowMatInfo(focused_dr.MatId);
         }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            wb.KaId = (int)IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
+            KagentComboBox.EditValue = wb.KaId;
+        }
         
     }
 }

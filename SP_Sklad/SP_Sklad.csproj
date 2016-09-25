@@ -1143,6 +1143,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_KAgentAccount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PriceList.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Services.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.Warehouse.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WaybillDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WayBillDetAddProps.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WaybillList.datasource" />

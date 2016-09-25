@@ -532,6 +532,7 @@
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(22, 22);
             this.simpleButton3.TabIndex = 11;
+            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
             // 
             // NowDateBtn
             // 
