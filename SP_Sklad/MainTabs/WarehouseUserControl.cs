@@ -53,6 +53,16 @@ namespace SP_Sklad.MainTabs
         {
             InitializeComponent();
 
+
+        }
+
+        private void wbStartDate_Properties_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void WarehouseUserControl_Load(object sender, EventArgs e)
+        {
             if (!DesignMode)
             {
                 custom_mat_list = new List<CustomMatListWH>();
@@ -78,16 +88,6 @@ namespace SP_Sklad.MainTabs
 
                 GetTree(1);
             }
-        }
-
-        private void wbStartDate_Properties_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void WarehouseUserControl_Load(object sender, EventArgs e)
-        {
-
         }
 
         void GetTree(int type)
