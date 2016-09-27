@@ -244,6 +244,7 @@
             this.barButtonItem6.ImageIndex = 9;
             this.barButtonItem6.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L));
             this.barButtonItem6.Name = "barButtonItem6";
+            this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
             // 
             // EditMaterialBtn
             // 
@@ -270,9 +271,9 @@
             this.standaloneBarDockControl1.AutoSize = true;
             this.standaloneBarDockControl1.CausesValidation = false;
             this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 219);
+            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 217);
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(972, 29);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(972, 31);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // barDockControlTop
@@ -280,7 +281,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(972, 26);
+            this.barDockControlTop.Size = new System.Drawing.Size(972, 24);
             // 
             // barDockControlBottom
             // 
@@ -293,15 +294,15 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 520);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 522);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(972, 26);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 520);
+            this.barDockControlRight.Location = new System.Drawing.Point(972, 24);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 522);
             // 
             // WBImgList
             // 
@@ -384,7 +385,7 @@
             this.panelControl3.Controls.Add(this.panelControl1);
             this.panelControl3.Controls.Add(this.panel1);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl3.Location = new System.Drawing.Point(0, 26);
+            this.panelControl3.Location = new System.Drawing.Point(0, 24);
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Padding = new System.Windows.Forms.Padding(5);
             this.panelControl3.Size = new System.Drawing.Size(972, 193);

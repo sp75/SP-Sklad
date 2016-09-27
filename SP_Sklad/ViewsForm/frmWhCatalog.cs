@@ -24,6 +24,11 @@ namespace SP_Sklad.EditForm
         {
             uc.WHTreeList.DataSource = ((List<GetWhTree_Result>)uc.WHTreeList.DataSource).Where(w => w.GType == _gtype).ToList();
             uc.WHTreeList.ExpandToLevel(0);
+
+            if (_gtype == 1)
+            {
+                Text = "Залишки на складі: " + uc.WHTreeList.FocusedNode.GetDisplayText("Name");
+            }
         }
     }
 }

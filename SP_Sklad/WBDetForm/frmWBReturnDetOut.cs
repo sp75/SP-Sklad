@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SP_Sklad.EditForm;
 using SP_Sklad.SkladData;
 using EntityState = System.Data.Entity.EntityState;
 
@@ -164,7 +165,10 @@ namespace SP_Sklad.WBDetForm
             if (pos_in.Any())
             {
                 _wbd.Price = pos_in.First().Price;
+
                 _wbd.BasePrice = pos_in.First().BasePrice;
+                BasePriceEdit.EditValue = _wbd.BasePrice;
+
                 _wbd.Nds = pos_in.First().Nds;
             }
 
@@ -308,6 +312,28 @@ namespace SP_Sklad.WBDetForm
             AmountEdit.Value = _wbd.Amount;
 
             GetOk();
+        }
+
+        private void MatEditBtn_Click(object sender, EventArgs e)
+        {
+            var f = new frmWhCatalog(1);
+
+            f.uc.whKagentList.EditValue = _ka_id;
+            f.uc.whKagentList.Enabled = false;
+            f.uc.OnDateEdit.Enabled = false;
+            f.uc.bar3.Visible = false;
+            f.uc.ByWhBtn.Down = true;
+            f.uc.splitContainerControl1.SplitterPosition = 0;
+            f.uc.WHTreeList.DataSource = new BaseEntities().GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w => w.GType == 1 && w.Num == _wbd.WId).ToList();
+            f.uc.GrpNameGridColumn.GroupIndex = 0;
+
+            f.uc.isDirectList = true;
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                _wbd.MatId = f.uc.focused_wh_mat.MatId.Value;
+                MatComboBox.EditValue = _wbd.MatId;
+                GetContent();
+            }
         }
 
     }

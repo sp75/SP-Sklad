@@ -22,9 +22,9 @@ namespace SP_Sklad.WBForm
         private int? _wbill_id { get; set; }
         private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
-        private dynamic focused_dr
+        private InventoryDet focused_dr
         {
-            get { return InventoryDetGridView.GetFocusedRow() as dynamic; }
+            get { return InventoryDetGridView.GetFocusedRow() as InventoryDet; }
         } 
 
         public frmWBInventory(int? wbill_id = null)
@@ -112,23 +112,23 @@ namespace SP_Sklad.WBForm
 
         private void RefreshDet()
         {
-            var query = _db.WaybillDet.Where(w => w.WbillId == _wbill_id).Select(s => new
+            var query = _db.WaybillDet.Where(w => w.WbillId == _wbill_id).Select(s => new InventoryDet
             {
-                s.PosId,
-                s.Checked,
-                s.Num,
-                s.MatId,
+                PosId = s.PosId,
+                Checked = s.Checked,
+                Num = s.Num,
+                MatId = s.MatId,
                 MatName = s.Materials.Name,
                 MsrName = s.Materials.Measures.ShortName,
-                s.Amount,
-                s.Price,
+                Amount = s.Amount,
+                Price = s.Price,
                 Discount = (s.Discount ?? 0),
                 Nds = (s.Nds ?? 0),
                 AmountAll = (s.Discount ?? 0) - s.Amount,
                 SumAll = ((s.Discount ?? 0) * (s.Nds ?? 0)) - (s.Amount * (s.Price ?? 0))
             }).ToList();
 
-            WaybillDetInBS.DataSource = query;//_db.GetWaybillDetIn(_wbill_id).ToList();
+            WaybillDetInBS.DataSource = query;
 
             GetOk();
         }
@@ -288,6 +288,48 @@ namespace SP_Sklad.WBForm
         private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             IHelper.ShowMatInfo(focused_dr.MatId);
+        }
+
+        private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            _db.SaveChanges();
+
+            IHelper.ShowMatListByWH3(_db, wb, WhOutComboBox.EditValue.ToString());
+            RefreshDet();
+        }
+
+        private void InventoryDetGridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            var wbd = _db.WaybillDet.Find(focused_dr.PosId);
+
+            if (e.Column.FieldName == "Discount")
+            {
+                wbd.Discount = Convert.ToDecimal(e.Value);
+            }
+            if (e.Column.FieldName == "Nds")
+            {
+                wbd.Nds = Convert.ToDecimal(e.Value);
+            }
+            _db.SaveChanges();
+
+            RefreshDet();
+
+        }
+
+        public class InventoryDet
+        {
+            public int PosId { get; set; }
+            public int? Checked { get; set; }
+            public int Num { get; set; }
+            public int MatId { get; set; }
+            public string MatName { get; set; }
+            public string MsrName { get; set; }
+            public decimal Amount { get; set; }
+            public decimal? Price { get; set; }
+            public decimal Discount { get; set; }
+            public decimal Nds { get; set; }
+            public decimal AmountAll { get; set; }
+            public decimal SumAll { get; set; }
         }
     }
 }

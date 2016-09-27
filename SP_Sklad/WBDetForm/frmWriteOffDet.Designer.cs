@@ -465,6 +465,7 @@
             this.MatEditBtn.Name = "MatEditBtn";
             this.MatEditBtn.Size = new System.Drawing.Size(22, 22);
             this.MatEditBtn.TabIndex = 13;
+            this.MatEditBtn.Click += new System.EventHandler(this.MatEditBtn_Click);
             // 
             // btnShowRemainByWH
             // 

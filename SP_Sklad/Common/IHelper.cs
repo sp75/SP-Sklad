@@ -125,7 +125,6 @@ namespace SP_Sklad.Common
         {
             var f = new frmWhCatalog(1);
 
-            // спрятать  дерево в грид показать дааные по складу вместо етой лабуды
             f.uc.xtraTabPage4.PageVisible = false;
             f.uc.xtraTabPage5.PageVisible = false;
             f.uc.xtraTabPage9.PageVisible = false;
@@ -135,10 +134,20 @@ namespace SP_Sklad.Common
             f.uc.gridColumn51.Visible = false;
             f.uc.gridColumn52.Visible = false;
             f.uc.MatListGridColumnWh.Visible = (WID == "*");
-
             f.uc.bar3.Visible = false;
-            f.uc.WHTreeList.DataSource = new BaseEntities().GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w=> w.GType == 1).ToList();
-            f.uc.WHTreeList.ExpandToLevel(0);
+            f.uc.ByWhBtn.Down = true;
+            f.uc.splitContainerControl1.SplitterPosition = 0;
+
+            int wid;
+            if (int.TryParse(WID, out wid))
+            {
+                f.uc.WHTreeList.DataSource = new BaseEntities().GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w => w.GType == 1 && w.Num == wid).ToList();
+            }
+            else
+            {
+                f.uc.WHTreeList.DataSource = new BaseEntities().GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w => w.GType == 1).ToList();
+            }
+            f.uc.GrpNameGridColumn.GroupIndex = 0;
 
             f.uc.wb = wb;
             f.uc.isMatList = true;
@@ -151,15 +160,14 @@ namespace SP_Sklad.Common
                         WbillId = wb.WbillId,
                         OnDate = wb.OnDate,
                         MatId = item.MatId,
-                        WId = item.WId,
+                        WId =  (WID != "*") ? Convert.ToInt32(WID) : item.WId,
                         Amount = item.Amount,
-                        Price = item.Price - (item.Price * item.Discount / 100),
-                        PtypeId = item.PTypeId,
-                        Discount = item.Discount,
+                        Price = item.Price ,
+                        Discount = 0,
                         Nds = wb.Nds,
                         CurrId = wb.CurrId,
                         OnValue = wb.OnValue,
-                        BasePrice = item.Price + Math.Round(item.Price.Value * wb.Nds.Value / 100, 2),
+                        BasePrice = item.Price,
                         PosKind = 0,
                         PosParent = 0,
                         DiscountKind = 0
@@ -168,56 +176,6 @@ namespace SP_Sklad.Common
                 }
                 db.SaveChanges();
             }
-
-            /*   if (WayBillList->State == dsEdit) WayBillList->Post();
-
-               frmWHPanel = new TfrmWarehousePanel(Application);
-               frmWHPanel->cxGroupBox18->Visible = true;
-
-             * 
-          
-
-             * 
-               frmWHPanel->WhTopPanel->Edit();
-               frmWHPanel->WhTopPanelKAID->Value = 0;
-               frmWHPanel->WhTreeData->Open();
-               frmWHPanel->WhTreeData->Filter = "GTYPE=1";
-               frmWHPanel->ByWhBtn->Click();
-               frmWHPanel->ByGrpBtn->Enabled = false;
-               frmWHPanel->ViewDetailTree->Enabled = false;
-             * 
-               frmWHPanel->WhTreeData->Locate("NUM", WID, TLocateOptions());
-               frmWHPanel->WhtDBTreeList->Enabled = false;
-               frmWHPanel->WhMatTableViewGRPNAME->GroupIndex = 0;
-               frmWHPanel->cxSplitter1->CloseSplitter();
-               if (frmWHPanel->ShowModal() == mrOk)
-               {
-                   int rn = WayBillDetOut->RecordCount;
-                   WayBIllDet->Transaction = Transaction;
-                   if (!frmWHPanel->MatList->IsEmpty())
-                   {
-                       WayBIllDet->Open();
-                       for (frmWHPanel->MatList->First(); !frmWHPanel->MatList->Eof; frmWHPanel->MatList->Next())
-                       {
-                           WayBIllDet->Append();
-                           WayBIllDetNUM->Value = ++rn;
-                           WayBIllDetONDATE->Value = WayBillList->FieldByName("ONDATE")->Value;
-                           WayBIllDetWBILLID->Value = WayBillList->FieldByName("WBILLID")->Value;
-                           if (WID != "*") WayBIllDetWID->Value = StrToInt(WID);
-                           else WayBIllDetWID->Value = frmWHPanel->MatListWID->Value;
-                           WayBIllDetMATID->Value = frmWHPanel->MatListMATID->Value;
-                           WayBIllDetAMOUNT->Value = frmWHPanel->MatListAmount->Value;
-                           WayBIllDetNDS->Value = 0;
-                           WayBIllDetPRICE->Value = 0;
-                           WayBIllDetBASEPRICE->Value = 0;
-                           WayBIllDet->Post();
-                       }
-                       WayBIllDet->Close();
-                   }
-               }
-               WayBillDetOut->FullRefresh();
-               delete frmWHPanel;
-               WayBillList->Edit();*/
         }
 
 

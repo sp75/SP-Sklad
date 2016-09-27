@@ -393,6 +393,7 @@ namespace SP_Sklad.WBDetForm
             if (_wb.WType == -16)
             {
                 MatComboBox.EditValue = IHelper.ShowDirectList(MatComboBox.EditValue, 5);
+                _wbd.MatId = MatComboBox.EditValue != null && MatComboBox.EditValue != DBNull.Value ? (int)MatComboBox.EditValue : _wbd.MatId;
             }
             else
             {

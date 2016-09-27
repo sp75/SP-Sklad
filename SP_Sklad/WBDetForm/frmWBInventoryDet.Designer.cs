@@ -401,15 +401,16 @@
             this.MatComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.MatComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
-            this.MatComboBox.Properties.DisplayMember = "Name";
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MatName", "Назва")});
+            this.MatComboBox.Properties.DisplayMember = "MatName";
             this.MatComboBox.Properties.ShowFooter = false;
             this.MatComboBox.Properties.ShowHeader = false;
             this.MatComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.MatComboBox.Properties.ValueMember = "MatId";
-            this.MatComboBox.Size = new System.Drawing.Size(422, 22);
+            this.MatComboBox.Size = new System.Drawing.Size(434, 22);
             this.MatComboBox.StyleController = this.styleController1;
             this.MatComboBox.TabIndex = 20;
+            this.MatComboBox.EditValueChanged += new System.EventHandler(this.MatComboBox_EditValueChanged);
             // 
             // WHComboBox
             // 
@@ -444,10 +445,11 @@
             this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton2.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.Image")));
             this.simpleButton2.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton2.Location = new System.Drawing.Point(541, 15);
+            this.simpleButton2.Location = new System.Drawing.Point(541, 14);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(22, 22);
             this.simpleButton2.TabIndex = 13;
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // labelControl3
             // 

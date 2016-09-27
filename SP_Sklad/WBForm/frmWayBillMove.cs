@@ -344,5 +344,13 @@ namespace SP_Sklad.WBForm
         {
             IHelper.ShowMatInfo(focused_dr.MatId);
         }
+
+        private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            _db.SaveChanges();
+
+            IHelper.ShowMatListByWH3(_db, wb, WhOutComboBox.EditValue.ToString());
+            RefreshDet();
+        }
     }
 }

@@ -62,7 +62,7 @@
             this.WhEditBtn = new DevExpress.XtraEditors.SimpleButton();
             this.WHComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.MatEditBtn = new DevExpress.XtraEditors.SimpleButton();
             this.btnShowRemainByWH = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -384,7 +384,7 @@
             this.panelControl1.Controls.Add(this.WhEditBtn);
             this.panelControl1.Controls.Add(this.WHComboBox);
             this.panelControl1.Controls.Add(this.labelControl6);
-            this.panelControl1.Controls.Add(this.simpleButton2);
+            this.panelControl1.Controls.Add(this.MatEditBtn);
             this.panelControl1.Controls.Add(this.btnShowRemainByWH);
             this.panelControl1.Controls.Add(this.labelControl3);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -462,15 +462,16 @@
             this.labelControl6.TabIndex = 16;
             this.labelControl6.Text = "Склад:";
             // 
-            // simpleButton2
+            // MatEditBtn
             // 
-            this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton2.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.Image")));
-            this.simpleButton2.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton2.Location = new System.Drawing.Point(478, 38);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(22, 22);
-            this.simpleButton2.TabIndex = 13;
+            this.MatEditBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MatEditBtn.Image = ((System.Drawing.Image)(resources.GetObject("MatEditBtn.Image")));
+            this.MatEditBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.MatEditBtn.Location = new System.Drawing.Point(478, 38);
+            this.MatEditBtn.Name = "MatEditBtn";
+            this.MatEditBtn.Size = new System.Drawing.Size(22, 22);
+            this.MatEditBtn.TabIndex = 13;
+            this.MatEditBtn.Click += new System.EventHandler(this.MatEditBtn_Click);
             // 
             // btnShowRemainByWH
             // 
@@ -954,7 +955,7 @@
         private DevExpress.XtraEditors.SimpleButton WhEditBtn;
         private DevExpress.XtraEditors.LookUpEdit WHComboBox;
         private DevExpress.XtraEditors.LabelControl labelControl6;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton MatEditBtn;
         private DevExpress.XtraEditors.SimpleButton btnShowRemainByWH;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private System.Windows.Forms.Panel panel2;

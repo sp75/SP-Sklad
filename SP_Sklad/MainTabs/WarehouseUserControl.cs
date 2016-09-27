@@ -30,12 +30,12 @@ namespace SP_Sklad.MainTabs
         public List<CustomMatListWH> custom_mat_list { get; set; }
         public WaybillList wb { get; set; }
         public Object resut { get; set; }
-        private WhMatGet_Result focused_wh_mat
+        public WhMatGet_Result focused_wh_mat
         {
             get { return WhMatGridView.GetFocusedRow() as WhMatGet_Result; }
         }
 
-        private GetWayBillListWh_Result focused_wb
+        public GetWayBillListWh_Result focused_wb
         {
             get { return WbGridView.GetFocusedRow() as GetWayBillListWh_Result; }
         }
@@ -72,7 +72,10 @@ namespace SP_Sklad.MainTabs
                 OnDateEdit.DateTime = DateTime.Now;
 
                 whKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(new BaseEntities().Kagent.Select(s => new { s.KaId, s.Name }));
-                whKagentList.EditValue = 0;
+                if (whKagentList.EditValue == null || whKagentList.EditValue == DBNull.Value)
+                {
+                    whKagentList.EditValue = 0;
+                }
 
                 WhComboBox.Properties.DataSource = new List<object>() { new { WId = "*", Name = "Усі" } }.Concat(new BaseEntities().Warehouse.Select(s => new { WId = s.WId.ToString(), s.Name }).ToList());
                 WhComboBox.EditValue = "*";
@@ -86,7 +89,10 @@ namespace SP_Sklad.MainTabs
                 repositoryItemLookUpEdit1.DataSource = DBHelper.WhList();
                 repositoryItemLookUpEdit2.DataSource = DB.SkladBase().PriceTypes.ToList();
 
-                GetTree(1);
+                if (WHTreeList.DataSource == null)
+                {
+                    GetTree(1);
+                }
             }
         }
 
@@ -363,8 +369,6 @@ namespace SP_Sklad.MainTabs
                         grp = focused_tree_node.Num.ToString();
                     }
 
-                  //  WhMatGridControl.DataSource = null;
-                  //  WhMatGridControl.DataSource = DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list, 0, grp, DBHelper.CurrentUser.UserId, ViewDetailTree.Down ? 1:0).ToList();
                     WhMatGetBS.DataSource = null;
                     WhMatGetBS.DataSource =DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, ShowEmptyItemsCheck.Checked ? 1 : 0, wh_list, ShowAllItemsCheck.Checked ? 1 : 0, grp, DBHelper.CurrentUser.UserId, ViewDetailTree.Down ? 1 : 0).ToList();
                     break;
@@ -412,7 +416,7 @@ namespace SP_Sklad.MainTabs
             }
             else if (isDirectList)
             {
-                var frm = this.Parent as frmCatalog;
+                var frm = this.Parent as frmWhCatalog;
                 frm.OkButton.PerformClick();
             }
             else
@@ -449,7 +453,10 @@ namespace SP_Sklad.MainTabs
 
         private void whKagentList_EditValueChanged(object sender, EventArgs e)
         {
-            RefrechItemBtn.PerformClick();
+            if (OnDateEdit.ContainsFocus || whKagentList.ContainsFocus)
+            {
+                RefrechItemBtn.PerformClick();
+            }
         }
 
         private void BarCodeEdit_KeyPress(object sender, KeyPressEventArgs e)

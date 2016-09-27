@@ -380,8 +380,10 @@ namespace SP_Sklad.WBForm
 
         private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            _db.SaveChanges();
 
-           
+            IHelper.ShowMatListByWH3(_db, wb, WhOutComboBox.EditValue.ToString());
+            RefreshDet();
         }
 
     }
