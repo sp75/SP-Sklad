@@ -95,6 +95,72 @@
     <Compile Include="Common\ManufDocEdit.cs" />
     <Compile Include="Common\MoneyToStr.cs" />
     <Compile Include="Common\WhDocEdit.cs" />
+    <Compile Include="EditForm\frmAccountTypeEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmAccountTypeEdit.Designer.cs">
+      <DependentUpon>frmAccountTypeEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditForm\frmAttEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmAttEdit.Designer.cs">
+      <DependentUpon>frmAttEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditForm\frmBanksEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmBanksEdit.Designer.cs">
+      <DependentUpon>frmBanksEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditForm\frmCashdesksEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmCashdesksEdit.Designer.cs">
+      <DependentUpon>frmCashdesksEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditForm\frmChargeTypeEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmChargeTypeEdit.Designer.cs">
+      <DependentUpon>frmChargeTypeEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditForm\frmCountriesEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmCountriesEdit.Designer.cs">
+      <DependentUpon>frmCountriesEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditForm\frmMeasuresEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmMeasuresEdit.Designer.cs">
+      <DependentUpon>frmMeasuresEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditForm\frmPricetypesEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmPricetypesEdit.Designer.cs">
+      <DependentUpon>frmPricetypesEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditForm\frmTechProcessEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmTechProcessEdit.Designer.cs">
+      <DependentUpon>frmTechProcessEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditForm\frmWarehouseEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmWarehouseEdit.Designer.cs">
+      <DependentUpon>frmWarehouseEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\BanksPersons.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_PriceTypes.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewsForm\frmCatalog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -286,9 +352,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\Banks.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\BANKSPERSONS.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\CashDesks.cs">
@@ -941,6 +1004,36 @@
     <Compile Include="WBForm\frmWBWriteOn.Designer.cs">
       <DependentUpon>frmWBWriteOn.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="EditForm\frmAccountTypeEdit.resx">
+      <DependentUpon>frmAccountTypeEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmAttEdit.resx">
+      <DependentUpon>frmAttEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmBanksEdit.resx">
+      <DependentUpon>frmBanksEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmCashdesksEdit.resx">
+      <DependentUpon>frmCashdesksEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmChargeTypeEdit.resx">
+      <DependentUpon>frmChargeTypeEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmCountriesEdit.resx">
+      <DependentUpon>frmCountriesEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmMeasuresEdit.resx">
+      <DependentUpon>frmMeasuresEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmPricetypesEdit.resx">
+      <DependentUpon>frmPricetypesEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmTechProcessEdit.resx">
+      <DependentUpon>frmTechProcessEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmWarehouseEdit.resx">
+      <DependentUpon>frmWarehouseEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmCatalog.resx">
       <DependentUpon>frmCatalog.cs</DependentUpon>
     </EmbeddedResource>
@@ -1106,9 +1199,16 @@
       <DependentUpon>frmWBWriteOn.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\SP_Sklad.MainTabs.DirectoriesUserControl+PriceTypesView.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.AccountType.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Actives.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.Banks.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.BanksPersons.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.CashDesks.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.ChargeType.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Commission.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.CommonParams.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.Countries.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetDirTree_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetDocList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetMatList_Result.datasource" />
@@ -1129,15 +1229,18 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatRecDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatRecipe.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.Measures.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MoneyMoveList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MoneyTurnover_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.OrderedList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PayDoc.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PriceList.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PriceListDet.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.PriceTypes.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Serials.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Services.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.SvcGroup.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.TechProcess.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Users.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.UserTreeAccess.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_KAgentAccount.datasource" />

@@ -729,9 +729,9 @@ namespace SP_Sklad.MainTabs
 
         private void NewPayDocBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (wb_focused_row.Balans == 0)
+            if ((wb_focused_row.SummAll - wb_focused_row.SummPay) <= 0)
             {
-                //   MessageDlg("Документ вже оплачено!", mtConfirmation, TMsgDlgButtons() << mbYes, 0);
+                MessageBox.Show("Документ вже оплачено!");
                 return;
             }
 

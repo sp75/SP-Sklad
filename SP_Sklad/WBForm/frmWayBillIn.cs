@@ -362,12 +362,18 @@ namespace SP_Sklad.WBForm
 
         private void KagBalBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            if (KagentComboBox.EditValue == DBNull.Value) return;
+            IHelper.ShowKABalans((int)KagentComboBox.EditValue);
         }
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            var dr = WaybillDetInGridView.GetFocusedRow() as GetWaybillDetIn_Result;
 
+            if (dr != null)
+            {
+                IHelper.ShowMatRSV(dr.MatId, _db);
+            }
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

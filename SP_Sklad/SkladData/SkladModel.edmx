@@ -9,7 +9,7 @@
           <EntitySet Name="AccountType" EntityType="BaseModel.Store.AccountType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Actives" EntityType="BaseModel.Store.Actives" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Banks" EntityType="BaseModel.Store.Banks" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="BANKSPERSONS" EntityType="BaseModel.Store.BANKSPERSONS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BanksPersons" EntityType="BaseModel.Store.BanksPersons" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CashDesks" EntityType="BaseModel.Store.CashDesks" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ChargeType" EntityType="BaseModel.Store.ChargeType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CityType" EntityType="BaseModel.Store.CityType" store:Type="Tables" Schema="dbo" />
@@ -345,6 +345,20 @@
       [v_PriceList].[CurrName] AS [CurrName]
       FROM [dbo].[v_PriceList] AS [v_PriceList]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_PriceTypes" EntityType="BaseModel.Store.v_PriceTypes" store:Type="Views" store:Schema="dbo" store:Name="v_PriceTypes">
+            <DefiningQuery>SELECT 
+      [v_PriceTypes].[PTypeId] AS [PTypeId], 
+      [v_PriceTypes].[Name] AS [Name], 
+      [v_PriceTypes].[OnValue] AS [OnValue], 
+      [v_PriceTypes].[Num] AS [Num], 
+      [v_PriceTypes].[Def] AS [Def], 
+      [v_PriceTypes].[Deleted] AS [Deleted], 
+      [v_PriceTypes].[PPTypeId] AS [PPTypeId], 
+      [v_PriceTypes].[ExtraType] AS [ExtraType], 
+      [v_PriceTypes].[PtName] AS [PtName], 
+      [v_PriceTypes].[TypeName] AS [TypeName]
+      FROM [dbo].[v_PriceTypes] AS [v_PriceTypes]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_Services" EntityType="BaseModel.Store.v_Services" store:Type="Views" store:Schema="dbo" store:Name="v_Services">
             <DefiningQuery>SELECT 
       [v_Services].[SvcId] AS [SvcId], 
@@ -604,7 +618,7 @@
           </AssociationSet>
           <AssociationSet Name="FK_BANKSPERSONS_1" Association="BaseModel.Store.FK_BANKSPERSONS_1">
             <End Role="Banks" EntitySet="Banks" />
-            <End Role="BANKSPERSONS" EntitySet="BANKSPERSONS" />
+            <End Role="BanksPersons" EntitySet="BanksPersons" />
           </AssociationSet>
           <AssociationSet Name="FK_COMMISSI_REFERENCE_KAGENT" Association="BaseModel.Store.FK_COMMISSI_REFERENCE_KAGENT">
             <End Role="Kagent" EntitySet="Kagent" />
@@ -1046,7 +1060,7 @@
           <Property Name="Def" Type="int" Nullable="false" />
           <Property Name="Deleted" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="BANKSPERSONS">
+        <EntityType Name="BanksPersons">
           <Key>
             <PropertyRef Name="PersonId" />
           </Key>
@@ -1062,7 +1076,7 @@
           <Key>
             <PropertyRef Name="CashId" />
           </Key>
-          <Property Name="CashId" Type="int" Nullable="false" />
+          <Property Name="CashId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="128" />
           <Property Name="Deleted" Type="int" Nullable="false" />
           <Property Name="Def" Type="int" />
@@ -1173,7 +1187,7 @@
           <Key>
             <PropertyRef Name="CId" />
           </Key>
-          <Property Name="CId" Type="int" Nullable="false" />
+          <Property Name="CId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="varchar" Nullable="false" MaxLength="128" />
           <Property Name="ShortName" Type="varchar" MaxLength="12" />
           <Property Name="Deleted" Type="int" Nullable="false" />
@@ -1717,7 +1731,7 @@
           <Key>
             <PropertyRef Name="PTypeId" />
           </Key>
-          <Property Name="PTypeId" Type="int" Nullable="false" />
+          <Property Name="PTypeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="varchar" Nullable="false" MaxLength="64" />
           <Property Name="OnValue" Type="numeric" Nullable="false" Precision="15" Scale="8" />
           <Property Name="Num" Type="int" Nullable="false" />
@@ -2388,6 +2402,30 @@
           <Property Name="CurrName" Type="nvarchar" Nullable="false" MaxLength="3" />
         </EntityType>
         <!--Errors Found During Generation:
+      warning 6002: The table/view 'sp_base.dbo.v_PriceTypes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="v_PriceTypes">
+          <Key>
+            <PropertyRef Name="PTypeId" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="OnValue" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="Def" />
+            <PropertyRef Name="Deleted" />
+            <PropertyRef Name="TypeName" />
+          </Key>
+          <Property Name="PTypeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="OnValue" Type="numeric" Nullable="false" Precision="15" Scale="8" />
+          <Property Name="Num" Type="int" Nullable="false" />
+          <Property Name="Def" Type="int" Nullable="false" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+          <Property Name="PPTypeId" Type="int" />
+          <Property Name="ExtraType" Type="int" />
+          <Property Name="PtName" Type="nvarchar" MaxLength="128" />
+          <Property Name="TypeName" Type="varchar" Nullable="false" MaxLength="7" />
+        </EntityType>
+        <!--Errors Found During Generation:
       warning 6002: The table/view 'sp_base.dbo.v_Services' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="v_Services">
@@ -2998,12 +3036,12 @@
           <End Role="Banks" Type="BaseModel.Store.Banks" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="BANKSPERSONS" Type="BaseModel.Store.BANKSPERSONS" Multiplicity="*" />
+          <End Role="BanksPersons" Type="BaseModel.Store.BanksPersons" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Banks">
               <PropertyRef Name="BankId" />
             </Principal>
-            <Dependent Role="BANKSPERSONS">
+            <Dependent Role="BanksPersons">
               <PropertyRef Name="BankId" />
             </Dependent>
           </ReferentialConstraint>
@@ -6755,11 +6793,6 @@
             <End Role="Banks" EntitySet="Banks" />
             <End Role="KAgentAccount" EntitySet="KAgentAccount" />
           </AssociationSet>
-          <EntitySet Name="BANKSPERSONS" EntityType="BaseModel.BANKSPERSONS" />
-          <AssociationSet Name="FK_BANKSPERSONS_1" Association="BaseModel.FK_BANKSPERSONS_1">
-            <End Role="Banks" EntitySet="Banks" />
-            <End Role="BANKSPERSONS" EntitySet="BANKSPERSONS" />
-          </AssociationSet>
           <EntitySet Name="v_KAgentAccount" EntityType="BaseModel.v_KAgentAccount" />
           <EntitySet Name="Serials" EntityType="BaseModel.Serials" />
           <AssociationSet Name="FK_SERIALS_POSID" Association="BaseModel.FK_SERIALS_POSID">
@@ -6778,6 +6811,12 @@
           <AssociationSet Name="FK_WAYBILLDETADDPROPS_WBILLID" Association="BaseModel.FK_WAYBILLDETADDPROPS_WBILLID">
             <End Role="WaybillList" EntitySet="WaybillList" />
             <End Role="WayBillDetAddProps" EntitySet="WayBillDetAddProps" />
+          </AssociationSet>
+          <EntitySet Name="v_PriceTypes" EntityType="BaseModel.v_PriceTypes" />
+          <EntitySet Name="BanksPersons" EntityType="BaseModel.BanksPersons" />
+          <AssociationSet Name="FK_BANKSPERSONS_1" Association="BaseModel.FK_BANKSPERSONS_1">
+            <End Role="Banks" EntitySet="Banks" />
+            <End Role="BanksPersons" EntitySet="BanksPersons" />
           </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
@@ -11246,7 +11285,7 @@
           <Property Name="Def" Type="Int32" Nullable="false" />
           <Property Name="Deleted" Type="Int32" Nullable="false" />
           <NavigationProperty Name="KAgentAccount" Relationship="BaseModel.FK_AGENTACC_FK_AGENTA_BANKS" FromRole="Banks" ToRole="KAgentAccount" />
-          <NavigationProperty Name="BANKSPERSONS" Relationship="BaseModel.FK_BANKSPERSONS_1" FromRole="Banks" ToRole="BANKSPERSONS" />
+          <NavigationProperty Name="BanksPersons" Relationship="BaseModel.FK_BANKSPERSONS_1" FromRole="Banks" ToRole="BanksPersons" />
         </EntityType>
         <Association Name="FK_AGENTACC_FK_AGENTA_ACCOUNTT">
           <End Type="BaseModel.AccountType" Role="AccountType" Multiplicity="1" />
@@ -11268,33 +11307,6 @@
               <PropertyRef Name="BankId" />
             </Principal>
             <Dependent Role="KAgentAccount">
-              <PropertyRef Name="BankId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="BANKSPERSONS">
-          <Key>
-            <PropertyRef Name="PersonId" />
-          </Key>
-          <Property Name="PersonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BankId" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Job" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Banks" Relationship="BaseModel.FK_BANKSPERSONS_1" FromRole="BANKSPERSONS" ToRole="Banks" />
-        </EntityType>
-        <Association Name="FK_BANKSPERSONS_1">
-          <End Type="BaseModel.Banks" Role="Banks" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.BANKSPERSONS" Role="BANKSPERSONS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Banks">
-              <PropertyRef Name="BankId" />
-            </Principal>
-            <Dependent Role="BANKSPERSONS">
               <PropertyRef Name="BankId" />
             </Dependent>
           </ReferentialConstraint>
@@ -11394,6 +11406,54 @@
             </Principal>
             <Dependent Role="WayBillDetAddProps">
               <PropertyRef Name="WbMaked" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="v_PriceTypes">
+          <Key>
+            <PropertyRef Name="PTypeId" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="OnValue" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="Def" />
+            <PropertyRef Name="Deleted" />
+            <PropertyRef Name="TypeName" />
+          </Key>
+          <Property Type="Int32" Name="PTypeId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="OnValue" Nullable="false" Precision="15" Scale="8" />
+          <Property Type="Int32" Name="Num" Nullable="false" />
+          <Property Type="Int32" Name="Def" Nullable="false" />
+          <Property Type="Int32" Name="Deleted" Nullable="false" />
+          <Property Type="Int32" Name="PPTypeId" />
+          <Property Type="Int32" Name="ExtraType" />
+          <Property Type="String" Name="PtName" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TypeName" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BanksPersons">
+          <Key>
+            <PropertyRef Name="PersonId" />
+          </Key>
+          <Property Type="Int32" Name="PersonId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="BankId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Job" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Phone" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Banks" Relationship="BaseModel.FK_BANKSPERSONS_1" FromRole="BanksPersons" ToRole="Banks" />
+        </EntityType>
+        <Association Name="FK_BANKSPERSONS_1">
+          <End Type="BaseModel.Banks" Role="Banks" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.BanksPersons" Role="BanksPersons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banks">
+              <PropertyRef Name="BankId" />
+            </Principal>
+            <Dependent Role="BanksPersons">
+              <PropertyRef Name="BankId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -14296,19 +14356,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="BANKSPERSONS">
-            <EntityTypeMapping TypeName="BaseModel.BANKSPERSONS">
-              <MappingFragment StoreEntitySet="BANKSPERSONS">
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Job" ColumnName="Job" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="BankId" ColumnName="BankId" />
-                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="v_KAgentAccount">
             <EntityTypeMapping TypeName="BaseModel.v_KAgentAccount">
               <MappingFragment StoreEntitySet="v_KAgentAccount">
@@ -14347,6 +14394,35 @@
                 <ScalarProperty Name="CertNum" ColumnName="CertNum" />
                 <ScalarProperty Name="GTD" ColumnName="GTD" />
                 <ScalarProperty Name="PosId" ColumnName="PosId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_PriceTypes">
+            <EntityTypeMapping TypeName="BaseModel.v_PriceTypes">
+              <MappingFragment StoreEntitySet="v_PriceTypes">
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="PtName" ColumnName="PtName" />
+                <ScalarProperty Name="ExtraType" ColumnName="ExtraType" />
+                <ScalarProperty Name="PPTypeId" ColumnName="PPTypeId" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Def" ColumnName="Def" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BanksPersons">
+            <EntityTypeMapping TypeName="BaseModel.BanksPersons">
+              <MappingFragment StoreEntitySet="BanksPersons">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Job" ColumnName="Job" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

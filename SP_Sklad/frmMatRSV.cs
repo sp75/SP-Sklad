@@ -35,6 +35,8 @@ namespace SP_Sklad
             wbStartDate.DateTime = DateTimeDayOfMonthExtensions.FirstDayOfMonth(DateTime.Now);
             wbEndDate.DateTime = DateTime.Now.AddDays(1);
 
+            Text = Text + "[ " + _db.Materials.Where(w => w.MatId == _mat_id).Select(s => s.Name).First() + " ]";
+
             GetRsv();
         }
         private void GetRsv()

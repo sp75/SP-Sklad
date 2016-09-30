@@ -16,6 +16,8 @@ using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using System.Data.Entity.Core.Objects;
 using DevExpress.XtraGrid;
 using SP_Sklad.Common;
+using SP_Sklad.EditForm;
+using SP_Sklad.Reports;
 
 namespace SP_Sklad.WBForm
 {
@@ -78,18 +80,11 @@ namespace SP_Sklad.WBForm
 
             if (wb != null)
             {
+                WaybillListBS.DataSource = wb;
                 wb.UpdatedBy = DBHelper.CurrentUser.UserId;
+                checkEdit2.Checked = (wb.ToDate != null);
 
-                TurnDocCheckBox.EditValue = wb.Checked;
-                KagentComboBox.DataBindings.Add(new Binding("EditValue", wb, "KaId", true, DataSourceUpdateMode.OnValidation));
-                PersonComboBox.DataBindings.Add(new Binding("EditValue", wb, "PersonId", true, DataSourceUpdateMode.OnValidation));
-                NumEdit.DataBindings.Add(new Binding("EditValue", wb, "Num"));
-                OnDateDBEdit.DataBindings.Add(new Binding("EditValue", wb, "OnDate"));
-                ToDateEdit.DataBindings.Add(new Binding("EditValue", wb, "ToDate"));
-                NotesEdit.DataBindings.Add(new Binding("EditValue", wb, "Notes"));
-                ReasonEdit.DataBindings.Add(new Binding("EditValue", wb, "Reason"));
-
-                payDocUserControl1.OnLoad(_db, wb);
+               payDocUserControl1.OnLoad(_db, wb);
             }
 
             RefreshDet();
@@ -147,10 +142,8 @@ namespace SP_Sklad.WBForm
             ToDateEdit.Visible = checkEdit2.Visible;
             TurnDocCheckBox.Enabled = !checkEdit2.Visible;
 
-
-            AttLabel.Visible = (_wtype == -1);
-            AttEdit.Visible = AttLabel.Visible;
-
+            ProcurationBtn.Enabled = (_wtype == -1);
+          
             OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
             NowDateBtn.Enabled = OnDateDBEdit.Enabled;
 
@@ -436,7 +429,7 @@ namespace SP_Sklad.WBForm
 
         private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            PrintDoc.Show(wb.DocId.Value, wb.WType, _db);
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -465,6 +458,50 @@ namespace SP_Sklad.WBForm
         {
             wb.KaId = (int)IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
             KagentComboBox.EditValue = wb.KaId;
+        }
+
+        private void KagBalBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (KagentComboBox.EditValue == DBNull.Value) return;
+            IHelper.ShowKABalans((int)KagentComboBox.EditValue);
+        }
+
+        private void ToDateEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            if (!ToDateEdit.ContainsFocus)
+            {
+                return;
+            }
+
+            checkEdit2.Checked = (ToDateEdit.EditValue != DBNull.Value);
+        }
+
+        private void checkEdit2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!checkEdit2.ContainsFocus)
+            {
+                return;
+            }
+
+            if (checkEdit2.Checked)
+            {
+                ToDateEdit.EditValue = OnDateDBEdit.DateTime.AddDays(3);
+                wb.ToDate = OnDateDBEdit.DateTime.AddDays(3);
+            }
+            else
+            {
+                wb.ToDate = null;
+                ToDateEdit.EditValue = null;
+            }
+
+        }
+
+        private void ProcurationBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var f = new frmAttEdit(wb))
+            {
+                f.ShowDialog();
+            }
         }
     }
 }

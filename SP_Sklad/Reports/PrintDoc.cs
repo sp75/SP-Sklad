@@ -46,7 +46,7 @@ namespace SP_Sklad.Reports
 
         public static void Show(int doc_id, int doc_type, BaseEntities db)
         {
-        //    db.SaveChanges();
+            db.SaveChanges();
 
             switch (doc_type)
             {
@@ -121,7 +121,7 @@ namespace SP_Sklad.Reports
         {
             var dataForReport = new Dictionary<string, IList>();
 
-            var wb = db.v_WaybillList.Where(w => w.DocId == doc_id).ToList();
+            var wb = db.v_WaybillList.Where(w => w.DocId == doc_id).AsNoTracking().ToList();
 
             dataForReport.Add("WayBillList", wb);
             dataForReport.Add("range1", db.GetWaybillDetIn(wb.First().WbillId).ToList());
@@ -133,7 +133,7 @@ namespace SP_Sklad.Reports
         {
             var dataForReport = new Dictionary<string, IList>();
 
-            var wb = db.v_WaybillList.Where(w => w.DocId == doc_id).ToList();
+            var wb = db.v_WaybillList.Where(w => w.DocId == doc_id).AsNoTracking().ToList();
             int wbill_id = wb.First().WbillId;
 
             dataForReport.Add("WayBillList", wb);
@@ -153,13 +153,15 @@ namespace SP_Sklad.Reports
         {
             var data_report = new Dictionary<string, IList>();
 
-            var wb = db.v_WaybillList.Where(w => w.DocId == doc_id).ToList();
+            var wb = db.v_WaybillList.Where(w => w.DocId == doc_id).AsNoTracking().ToList();
 
             if (wb != null)
             {
                 var m = new MoneyToStr("UAH", "UKR", "TEXT");
                 wb.First().www = m.convertValue(wb.First().SummAll.Value);
             }
+
+       //     db.Entry(wb).Property(p=> p.).IsModified = false =
 
             var ent_id = wb.First().EntId;
             data_report.Add("EntAccount", db.EnterpriseAccount.Where(w => w.KaId == ent_id && w.Def == 1).ToList());
@@ -195,7 +197,7 @@ namespace SP_Sklad.Reports
             var wb = db.WBListMake(date,date,-1,"*",0,-22).Where(w => w.DocId == doc_id).ToList();
             int wbill_id = wb.First().WbillId;
 
-            var item = db.DeboningDet.Where(w => w.WBillId == wbill_id).ToList().Select((s, index) => new
+            var item = db.DeboningDet.Where(w => w.WBillId == wbill_id).AsNoTracking().ToList().Select((s, index) => new
             {
                 Num = index + 1,
                 s.Amount,
@@ -288,7 +290,7 @@ namespace SP_Sklad.Reports
         public static void PayDocReport(int pay_doc_id, BaseEntities db, string template_name)
         {
             var dataForReport = new Dictionary<string, IList>();
-            var pd = db.v_PayDoc.Where(w => w.PayDocId == pay_doc_id).ToList();
+            var pd = db.v_PayDoc.Where(w => w.PayDocId == pay_doc_id).AsNoTracking().ToList();
             if (pd != null)
             {
                 var m = new MoneyToStr("UAH", "UKR", "TEXT");
@@ -306,7 +308,7 @@ namespace SP_Sklad.Reports
         {
             var dataForReport = new Dictionary<string, IList>();
 
-            var pl = db.PriceList.Where(w=> w.PlId == pl_id).ToList();
+            var pl = db.PriceList.Where(w => w.PlId == pl_id).AsNoTracking().ToList();
             var pl_d = db.GetPriceListDet(pl_id).ToList().Select(s => new
             {
                 s.BarCode,

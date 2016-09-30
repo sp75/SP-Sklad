@@ -62,7 +62,6 @@
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit10 = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
@@ -96,6 +95,7 @@
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
             this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.AccessPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserBS)).BeginInit();
@@ -354,6 +354,7 @@
             // 
             // groupControl2
             // 
+            this.groupControl2.Controls.Add(this.labelControl1);
             this.groupControl2.Controls.Add(this.textEdit3);
             this.groupControl2.Controls.Add(this.textEdit2);
             this.groupControl2.Controls.Add(this.labelControl12);
@@ -361,7 +362,6 @@
             this.groupControl2.Controls.Add(this.labelControl4);
             this.groupControl2.Controls.Add(this.textEdit1);
             this.groupControl2.Controls.Add(this.textEdit10);
-            this.groupControl2.Controls.Add(this.labelControl3);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.Name = "groupControl2";
@@ -372,10 +372,10 @@
             // 
             // textEdit3
             // 
-            this.textEdit3.Location = new System.Drawing.Point(168, 180);
+            this.textEdit3.Location = new System.Drawing.Point(26, 201);
             this.textEdit3.Name = "textEdit3";
             this.textEdit3.Properties.PasswordChar = '*';
-            this.textEdit3.Size = new System.Drawing.Size(167, 22);
+            this.textEdit3.Size = new System.Drawing.Size(206, 22);
             this.textEdit3.StyleController = this.styleController1;
             this.textEdit3.TabIndex = 60;
             this.textEdit3.EditValueChanged += new System.EventHandler(this.textEdit2_EditValueChanged);
@@ -384,17 +384,17 @@
             // 
             this.textEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.UserBS, "Pass", true));
             this.textEdit2.EditValue = "";
-            this.textEdit2.Location = new System.Drawing.Point(168, 143);
+            this.textEdit2.Location = new System.Drawing.Point(26, 141);
             this.textEdit2.Name = "textEdit2";
             this.textEdit2.Properties.PasswordChar = '*';
-            this.textEdit2.Size = new System.Drawing.Size(167, 22);
+            this.textEdit2.Size = new System.Drawing.Size(206, 22);
             this.textEdit2.StyleController = this.styleController1;
             this.textEdit2.TabIndex = 59;
             this.textEdit2.EditValueChanged += new System.EventHandler(this.textEdit2_EditValueChanged);
             // 
             // labelControl12
             // 
-            this.labelControl12.Location = new System.Drawing.Point(26, 183);
+            this.labelControl12.Location = new System.Drawing.Point(26, 179);
             this.labelControl12.Name = "labelControl12";
             this.labelControl12.Size = new System.Drawing.Size(136, 16);
             this.labelControl12.StyleController = this.styleController1;
@@ -403,7 +403,7 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(26, 146);
+            this.labelControl6.Location = new System.Drawing.Point(26, 119);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(43, 16);
             this.labelControl6.StyleController = this.styleController1;
@@ -412,7 +412,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(26, 70);
+            this.labelControl4.Location = new System.Drawing.Point(289, 34);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(61, 16);
             this.labelControl4.StyleController = this.styleController1;
@@ -422,29 +422,20 @@
             // textEdit1
             // 
             this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.UserBS, "FullName", true));
-            this.textEdit1.Location = new System.Drawing.Point(93, 67);
+            this.textEdit1.Location = new System.Drawing.Point(289, 56);
             this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(523, 22);
+            this.textEdit1.Size = new System.Drawing.Size(319, 22);
             this.textEdit1.StyleController = this.styleController1;
             this.textEdit1.TabIndex = 40;
             // 
             // textEdit10
             // 
             this.textEdit10.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.UserBS, "Name", true));
-            this.textEdit10.Location = new System.Drawing.Point(93, 31);
+            this.textEdit10.Location = new System.Drawing.Point(26, 56);
             this.textEdit10.Name = "textEdit10";
-            this.textEdit10.Size = new System.Drawing.Size(167, 22);
+            this.textEdit10.Size = new System.Drawing.Size(206, 22);
             this.textEdit10.StyleController = this.styleController1;
             this.textEdit10.TabIndex = 34;
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Location = new System.Drawing.Point(26, 34);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(31, 16);
-            this.labelControl3.StyleController = this.styleController1;
-            this.labelControl3.TabIndex = 31;
-            this.labelControl3.Text = "Логін";
             // 
             // xtraTabPage4
             // 
@@ -822,6 +813,15 @@
             this.AccessPopupMenu.Manager = this.barManager1;
             this.AccessPopupMenu.Name = "AccessPopupMenu";
             // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl1.Location = new System.Drawing.Point(26, 34);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(35, 16);
+            this.labelControl1.TabIndex = 61;
+            this.labelControl1.Text = "Логін";
+            // 
             // frmUserEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -907,7 +907,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.TextEdit textEdit1;
         private DevExpress.XtraEditors.TextEdit textEdit10;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage4;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl2;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
@@ -949,5 +948,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         public System.Windows.Forms.ImageList UserTreeImgList;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }

@@ -118,11 +118,8 @@ namespace SP_Sklad.EditForm
 
         private void GetAccounts()
         {
-            var acc = _db.v_KAgentAccount.Where(w => w.KAId == _ka_id).ToList();
-            v_KAgentAccountBS.DataSource = acc;
-
             tree.RemoveAll(r => r.ParentId == 7);
-            foreach (var item in acc)
+            foreach (var item in GetAcc())
             {
                 tree.Add(new CatalogTreeList
                 {
@@ -169,6 +166,8 @@ namespace SP_Sklad.EditForm
 
         private void DirTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
+            _db.SaveChanges();
+            
             var focused_tree_node = DirTreeList.GetDataRecordByNode(e.Node) as CatalogTreeList;
 
             if (_ka != null)
@@ -181,10 +180,22 @@ namespace SP_Sklad.EditForm
                 KAgentAccountBS.DataSource = _db.KAgentAccount.Find(focused_tree_node.DataSetId);
             }
 
-  
+            if (focused_tree_node.Id == 7)
+            {
+                GetAcc();
+            }
 
             xtraTabControl1.SelectedTabPageIndex = focused_tree_node.TabIdx;
         }
+
+        private List<v_KAgentAccount> GetAcc()
+        {
+            var acc = _db.v_KAgentAccount.Where(w => w.KAId == _ka_id).ToList();
+            v_KAgentAccountBS.DataSource = acc;
+
+            return acc;
+        }
+
 
         void GetDiscountList()
         {
@@ -355,6 +366,8 @@ namespace SP_Sklad.EditForm
 
             xtraTabControl1.SelectedTabPageIndex = 9;
             KAgentAccountBS.DataSource = _db.KAgentAccount.Find(det_item.AccId);
+
+            DirTreeList.FocusedNode = DirTreeList.GetNodeList().FirstOrDefault(w => Convert.ToInt32(w.GetValue("DataSetId")) == det_item.AccId);
         }
 
         private void DelAccBtn_Click(object sender, EventArgs e)

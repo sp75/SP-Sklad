@@ -17,7 +17,7 @@ namespace SP_Sklad.SkladData
         public Banks()
         {
             this.KAgentAccount = new HashSet<KAgentAccount>();
-            this.BANKSPERSONS = new HashSet<BANKSPERSONS>();
+            this.BanksPersons = new HashSet<BanksPersons>();
         }
     
         public int BankId { get; set; }
@@ -30,6 +30,6 @@ namespace SP_Sklad.SkladData
         public int Deleted { get; set; }
     
         public virtual ICollection<KAgentAccount> KAgentAccount { get; set; }
-        public virtual ICollection<BANKSPERSONS> BANKSPERSONS { get; set; }
+        public virtual ICollection<BanksPersons> BanksPersons { get; set; }
     }
 }

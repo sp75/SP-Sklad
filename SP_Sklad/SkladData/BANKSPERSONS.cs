@@ -12,7 +12,7 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class BANKSPERSONS
+    public partial class BanksPersons
     {
         public int PersonId { get; set; }
         public int BankId { get; set; }

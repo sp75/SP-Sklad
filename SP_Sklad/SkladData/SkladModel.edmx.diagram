@@ -229,8 +229,6 @@
         <EntityTypeShape EntityType="BaseModel.Banks" Width="1.5" PointX="0.75" PointY="36" />
         <AssociationConnector Association="BaseModel.FK_AGENTACC_FK_AGENTA_ACCOUNTT" />
         <AssociationConnector Association="BaseModel.FK_AGENTACC_FK_AGENTA_BANKS" />
-        <EntityTypeShape EntityType="BaseModel.BANKSPERSONS" Width="1.5" PointX="3" PointY="54.25" />
-        <AssociationConnector Association="BaseModel.FK_BANKSPERSONS_1" />
         <EntityTypeShape EntityType="BaseModel.v_KAgentAccount" Width="1.5" PointX="16.375" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.Serials" Width="1.5" PointX="9.0327860308032424" PointY="1.6362550713290718" />
         <AssociationConnector Association="BaseModel.FK_SERIALS_POSID" />
@@ -238,6 +236,9 @@
         <AssociationConnector Association="BaseModel.FK_WBDAP_CARDID" />
         <AssociationConnector Association="BaseModel.FK_WBDAP_POSID" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLDETADDPROPS_WBILLID" />
+        <EntityTypeShape EntityType="BaseModel.v_PriceTypes" Width="1.5" PointX="10.661018370958519" PointY="24.701074656425543" />
+        <EntityTypeShape EntityType="BaseModel.BanksPersons" Width="1.5" PointX="1.4895479127250368" PointY="1.4131381518268671" />
+        <AssociationConnector Association="BaseModel.FK_BANKSPERSONS_1" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="7.0245045325832924" PointY="12.641712000892364" />

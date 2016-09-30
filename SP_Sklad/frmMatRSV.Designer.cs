@@ -165,7 +165,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1042, 26);
+            this.barDockControlTop.Size = new System.Drawing.Size(1042, 24);
             // 
             // barDockControlBottom
             // 
@@ -178,15 +178,15 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 403);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 405);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1042, 26);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 403);
+            this.barDockControlRight.Location = new System.Drawing.Point(1042, 24);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 405);
             // 
             // popupMenu1
             // 
@@ -271,7 +271,7 @@
             this.panelControl1.Controls.Add(this.wbStartDate);
             this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(0, 26);
+            this.panelControl1.Location = new System.Drawing.Point(0, 24);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(1042, 44);
             this.panelControl1.TabIndex = 43;
@@ -372,13 +372,13 @@
             // 
             this.gridControl1.DataSource = this.DocListBindingSource;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 70);
+            this.gridControl1.Location = new System.Drawing.Point(0, 68);
             this.gridControl1.MainView = this.bandedGridView1;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1});
-            this.gridControl1.Size = new System.Drawing.Size(1042, 305);
+            this.gridControl1.Size = new System.Drawing.Size(1042, 307);
             this.gridControl1.TabIndex = 44;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView1});
@@ -415,7 +415,7 @@
             this.gridBand1.Columns.Add(this.colKaName);
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 604;
+            this.gridBand1.Width = 588;
             // 
             // colWType
             // 
@@ -429,7 +429,7 @@
             this.colWType.OptionsColumn.ShowCaption = false;
             this.colWType.OptionsColumn.ShowInCustomizationForm = false;
             this.colWType.Visible = true;
-            this.colWType.Width = 29;
+            this.colWType.Width = 20;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -459,7 +459,7 @@
             this.bandedGridColumn1.Name = "bandedGridColumn1";
             this.bandedGridColumn1.OptionsColumn.ShowCaption = false;
             this.bandedGridColumn1.Visible = true;
-            this.bandedGridColumn1.Width = 47;
+            this.bandedGridColumn1.Width = 46;
             // 
             // colNum
             // 
@@ -467,15 +467,17 @@
             this.colNum.FieldName = "Num";
             this.colNum.Name = "colNum";
             this.colNum.Visible = true;
-            this.colNum.Width = 59;
+            this.colNum.Width = 88;
             // 
             // colOnDate
             // 
             this.colOnDate.Caption = "Дата";
+            this.colOnDate.DisplayFormat.FormatString = "g";
+            this.colOnDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.colOnDate.FieldName = "OnDate";
             this.colOnDate.Name = "colOnDate";
             this.colOnDate.Visible = true;
-            this.colOnDate.Width = 107;
+            this.colOnDate.Width = 108;
             // 
             // colKaName
             // 
@@ -483,7 +485,7 @@
             this.colKaName.FieldName = "KaName";
             this.colKaName.Name = "colKaName";
             this.colKaName.Visible = true;
-            this.colKaName.Width = 362;
+            this.colKaName.Width = 326;
             // 
             // gridBand3
             // 
@@ -492,7 +494,7 @@
             this.gridBand3.Columns.Add(this.colSaldo);
             this.gridBand3.Name = "gridBand3";
             this.gridBand3.VisibleIndex = 1;
-            this.gridBand3.Width = 217;
+            this.gridBand3.Width = 281;
             // 
             // colOnValue
             // 
@@ -502,7 +504,7 @@
             this.colOnValue.FieldName = "Amount";
             this.colOnValue.Name = "colOnValue";
             this.colOnValue.Visible = true;
-            this.colOnValue.Width = 86;
+            this.colOnValue.Width = 77;
             // 
             // colSaldo
             // 
@@ -510,7 +512,7 @@
             this.colSaldo.FieldName = "WhName";
             this.colSaldo.Name = "colSaldo";
             this.colSaldo.Visible = true;
-            this.colSaldo.Width = 131;
+            this.colSaldo.Width = 204;
             // 
             // gridBand2
             // 
@@ -519,7 +521,7 @@
             this.gridBand2.Columns.Add(this.colCurrName);
             this.gridBand2.Name = "gridBand2";
             this.gridBand2.VisibleIndex = 2;
-            this.gridBand2.Width = 203;
+            this.gridBand2.Width = 155;
             // 
             // colSummInCurr
             // 
@@ -529,7 +531,7 @@
             this.colSummInCurr.FieldName = "Price";
             this.colSummInCurr.Name = "colSummInCurr";
             this.colSummInCurr.Visible = true;
-            this.colSummInCurr.Width = 109;
+            this.colSummInCurr.Width = 85;
             // 
             // colCurrName
             // 
@@ -537,7 +539,7 @@
             this.colCurrName.FieldName = "CurrName";
             this.colCurrName.Name = "colCurrName";
             this.colCurrName.Visible = true;
-            this.colCurrName.Width = 94;
+            this.colCurrName.Width = 70;
             // 
             // frmMatRSV
             // 

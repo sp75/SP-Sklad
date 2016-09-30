@@ -21,9 +21,16 @@ namespace SP_Sklad.MainTabs
         public bool isMatList { get; set; }
         public List<CustomMatList> custom_mat_list { get; set; }
         public WaybillList wb { get; set; }
-     //   public Object resut { get; set; }
         private int _archived { get; set; }
-        private BaseEntities _db { get; set; }
+
+        public class PriceTypesView
+        {
+            public int PTypeId { get; set; }
+            public string Name { get; set; }
+            public string TypeName { get; set; }
+            public string Summary { get; set; }
+            public int Def { get; set; }
+        }
 
         public DirectoriesUserControl()
         {
@@ -46,13 +53,10 @@ namespace SP_Sklad.MainTabs
                 custom_mat_list = new List<CustomMatList>();
                 MatListGridControl.DataSource = custom_mat_list;
 
-                _db = DB.SkladBase();
-
                 repositoryItemLookUpEdit1.DataSource = DBHelper.WhList();
 
-                DirTreeBS.DataSource = _db.GetDirTree(DBHelper.CurrentUser.UserId).ToList();
+                DirTreeBS.DataSource = DB.SkladBase().GetDirTree(DBHelper.CurrentUser.UserId).ToList();
                 DirTreeList.ExpandToLevel(1);
-
             }
         }
 
@@ -66,7 +70,7 @@ namespace SP_Sklad.MainTabs
 
         private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-           
+            var _db = DB.SkladBase();
 
             switch (focused_tree_node.GType)
             {
@@ -88,20 +92,59 @@ namespace SP_Sklad.MainTabs
 
                 case 4: switch (focused_tree_node.Id)
                     {
-                              case 25:
-                            WarehouseBS.DataSource = _db.Warehouse.ToList();
-                                  extDirTabControl.SelectedTabPageIndex = 1; 
-                                  break;
-                        //      case 11: cxGridLevel6->GridView = BanksGrid; break;
-                        //      case 2: cxGridLevel6->GridView = MeasuresGrid; break;
-                        //      case 43: cxGridLevel6->GridView = CountriesGrid; break;
-                        //      case 12: cxGridLevel6->GridView = AccountTypeGrid; break;
-                        //      case 40: cxGridLevel6->GridView = PricetypesGrid; break;
-                        //      case 102: cxGridLevel6->GridView = ChargetypeGrid; break;
-                        //      case 64: cxGridLevel6->GridView = CashdesksGrid; break;
+                        case 25:
+                            WarehouseBS.DataSource = DB.SkladBase().Warehouse.ToList();
+                            extDirTabControl.SelectedTabPageIndex = 1;
+                            break;
+
+                        case 11:
+                            BanksBS.DataSource = DB.SkladBase().Banks.ToList();
+                            extDirTabControl.SelectedTabPageIndex = 9;
+                            break;
+
+                        case 2:
+                            MeasuresDS.DataSource = DB.SkladBase().Measures.ToList();
+                            extDirTabControl.SelectedTabPageIndex = 2;
+                            break;
+
+                        case 12:
+                            AccountTypeBS.DataSource = DB.SkladBase().AccountType.ToList();
+                            extDirTabControl.SelectedTabPageIndex = 5;
+                            break;
+
+                        case 43: CountriesBS.DataSource = DB.SkladBase().Countries.ToList();
+                            extDirTabControl.SelectedTabPageIndex = 8;
+                            break;
+
+                        case 40:
+                            PriceTypesViewBS.DataSource = _db.v_PriceTypes.ToList().Select(s => new PriceTypesView
+                            {
+                                PTypeId = s.PTypeId,
+                                Name = s.Name,
+                                Def = s.Def,
+                                TypeName = s.TypeName,
+                                Summary = (s.PPTypeId == null || s.ExtraType == 2 || s.ExtraType == 3)
+                                                ? ((s.PPTypeId == null) ? s.OnValue.ToString("0.00") + "% на ціну прихода" : (s.ExtraType == 2) ? s.OnValue.ToString("0.00") + "% на категорію " + s.PtName : (s.ExtraType == 3) ? s.OnValue.ToString("0.00") + "% на прайс-лист " + s.PtName : "")
+                                                : s.OnValue.ToString("0.00") + "% від " + s.PtName
+
+                            });
+                            extDirTabControl.SelectedTabPageIndex = 4;
+                            break;
+
+                        case 102:
+                            ChargeTypeBS.DataSource = DB.SkladBase().ChargeType.ToList();
+                            extDirTabControl.SelectedTabPageIndex = 6;
+                            break;
+
+                        case 64:
+                            CashDesksBS.DataSource = DB.SkladBase().CashDesks.ToList();
+                            extDirTabControl.SelectedTabPageIndex = 7;
+                            break;
+
                         //      case 3: cxGridLevel6->GridView = CurrencyGrid; break;
+
                         case 53:
-                                  MatRecipeDS.DataSource = _db.MatRecipe.Where(w => w.RType == 1).Select(s => new
+                            MatRecipeDS.DataSource = _db.MatRecipe.Where(w => w.RType == 1).Select(s => new
                             {
                                 s.RecId,
                                 MatName = s.Materials.Name,
@@ -112,8 +155,9 @@ namespace SP_Sklad.MainTabs
                                 GrpName = s.Materials.MatGroup.Name
                             }).ToList();
 
-                            extDirTabControl.SelectedTabPageIndex = 0; 
+                            extDirTabControl.SelectedTabPageIndex = 0;
                             break;
+
                         case 42:
                             MatRecipeDS.DataSource = _db.MatRecipe.Where(w => w.RType == 2).Select(s => new
                             {
@@ -125,15 +169,18 @@ namespace SP_Sklad.MainTabs
                                 s.Name,
                                 GrpName = s.Materials.MatGroup.Name
                             }).ToList();
-                            extDirTabControl.SelectedTabPageIndex = 0; 
+                            extDirTabControl.SelectedTabPageIndex = 0;
                             break;
+
                         //       case 68: cxGridLevel6->GridView = TaxesGrid; break;
-                        //       case 112: cxGridLevel6->GridView = TechProcessGrid; break;
+
+                        case 112:
+                            TechProcessDS.DataSource = _db.TechProcess.ToList();
+                            extDirTabControl.SelectedTabPageIndex = 3;
+                            break;
                     }
                     break;
             }
-
-
         }
 
         private void MatGridView_DoubleClick(object sender, EventArgs e)
@@ -194,77 +241,34 @@ namespace SP_Sklad.MainTabs
 
                 case 4: switch (focused_tree_node.Id)
                     {
-                        /*     case 25: frmWarehouseEdit = new TfrmWarehouseEdit(Application);
-                                 frmWarehouseEdit->Warehouse->ParamByName("WID")->Value = SkladData->WarehouseWID->Value;
-                                 frmWarehouseEdit->Warehouse->Open();
-                                 frmWarehouseEdit->Warehouse->Edit();
-                                 frmWarehouseEdit->ShowModal();
-                                 delete frmWarehouseEdit;
-                                 SkladData->Warehouse->FullRefresh();
-                                 break;
+                        case 25:
+                            result = new frmWarehouseEdit((WarehouseGridView.GetFocusedRow() as Warehouse).WId).ShowDialog();
+                            break;
 
-                             case 11: frmBanksEdit = new TfrmBanksEdit(Application);
-                                 frmBanksEdit->Banks->ParamByName("BANKID")->Value = SkladData->BanksBANKID->Value;
-                                 frmBanksEdit->Banks->Open();
-                                 frmBanksEdit->Banks->Edit();
-                                 frmBanksEdit->ShowModal();
-                                 delete frmBanksEdit;
-                                 SkladData->Banks->FullRefresh();
-                                 break;
+                        case 11:
+                            result = new frmBanksEdit((BanksGridView.GetFocusedRow() as Banks).BankId).ShowDialog();
+                                break;
 
-                             case 2: frmMeasuresEdit = new TfrmMeasuresEdit(Application);
-                                 frmMeasuresEdit->Measures->ParamByName("MID")->Value = SkladData->MeasuresMID->Value;
-                                 frmMeasuresEdit->Measures->Open();
-                                 frmMeasuresEdit->Measures->Edit();
-                                 frmMeasuresEdit->ShowModal();
-                                 delete frmMeasuresEdit;
-                                 SkladData->Measures->FullRefresh();
-                                 break;
+                        case 2:
+                            result = new frmMeasuresEdit((MeasuresGridView.GetFocusedRow() as Measures).MId).ShowDialog();
+                            break;
 
-                             case 40: frmPricetypesEdit = new TfrmPricetypesEdit(Application);
-                                 frmPricetypesEdit->Pricetypes->ParamByName("PTYPEID")->Value = SkladData->PricetypesPTYPEID->Value;
-                                 frmPricetypesEdit->Pricetypes->Open();
-                                 frmPricetypesEdit->Pricetypes->Edit();
-                                 frmPricetypesEdit->ShowModal();
-                                 delete frmPricetypesEdit;
-                                 SkladData->Pricetypes->FullRefresh();
-                                 break;
+                        case 40: result = new frmPricetypesEdit((PriceTypesGridView.GetFocusedRow() as PriceTypesView).PTypeId).ShowDialog();
+                            break;
 
-                             case 12: frmAccountTypeEdit = new TfrmAccountTypeEdit(Application);
-                                 frmAccountTypeEdit->AccountType->ParamByName("TYPEID")->Value = SkladData->AccountTypeTYPEID->Value;
-                                 frmAccountTypeEdit->AccountType->Open();
-                                 frmAccountTypeEdit->AccountType->Edit();
-                                 frmAccountTypeEdit->ShowModal();
-                                 delete frmAccountTypeEdit;
-                                 SkladData->AccountType->FullRefresh();
-                                 break;
+                        case 12: result = new frmAccountTypeEdit((AccountTypeGridView.GetFocusedRow() as AccountType).TypeId).ShowDialog();
+                            break;
 
-                             case 43: frmCountriesEdit = new TfrmCountriesEdit(Application);
-                                 frmCountriesEdit->Countries->ParamByName("CID")->Value = SkladData->CountriesCID->Value;
-                                 frmCountriesEdit->Countries->Open();
-                                 frmCountriesEdit->Countries->Edit();
-                                 frmCountriesEdit->ShowModal();
-                                 delete frmCountriesEdit;
-                                 SkladData->Countries->FullRefresh();
-                                 break;
+                        case 43:
+                            result = new frmCountriesEdit((CountriesGridView.GetFocusedRow() as Countries).CId).ShowDialog();
 
-                             case 102: frmChargetypeEdit = new TfrmChargetypeEdit(Application);
-                                 frmChargetypeEdit->Chargetype->ParamByName("CTYPEID")->Value = SkladData->ChargetypeCTYPEID->Value;
-                                 frmChargetypeEdit->Chargetype->Open();
-                                 frmChargetypeEdit->Chargetype->Edit();
-                                 frmChargetypeEdit->ShowModal();
-                                 delete frmChargetypeEdit;
-                                 SkladData->Chargetype->FullRefresh();
-                                 break;
+                            break;
 
-                             case 64: frmCashdesksEdit = new TfrmCashdesksEdit(Application);
-                                 frmCashdesksEdit->Cashdesks->ParamByName("CASHID")->Value = SkladData->CashdesksCASHID->Value;
-                                 frmCashdesksEdit->Cashdesks->Open();
-                                 frmCashdesksEdit->Cashdesks->Edit();
-                                 frmCashdesksEdit->ShowModal();
-                                 delete frmCashdesksEdit;
-                                 SkladData->Cashdesks->FullRefresh();
-                                 break;*/
+                        case 102: result = new frmChargeTypeEdit((ChargeTypeGridView.GetFocusedRow() as ChargeType).CTypeId).ShowDialog();
+                            break;
+
+                        case 64: result = new frmCashdesksEdit((CashDesksGridView.GetFocusedRow() as CashDesks).CashId).ShowDialog();
+                            break;
 
                         case 42:
                         case 53:
@@ -273,14 +277,9 @@ namespace SP_Sklad.MainTabs
 
                             break;
 
-                        /*   case 112: frmTechProcessEdit = new TfrmTechProcessEdit(Application);
-                               frmTechProcessEdit->TechProcess->ParamByName("PROCID")->Value = SkladData->TechProcessPROCID->Value;
-                               frmTechProcessEdit->TechProcess->Open();
-                               frmTechProcessEdit->TechProcess->Edit();
-                               frmTechProcessEdit->ShowModal();
-                               delete frmTechProcessEdit;
-                               SkladData->TechProcess->FullRefresh();
-                               break;*/
+                        case 112:
+                            result = new frmTechProcessEdit((TechProcessGridView.GetFocusedRow() as TechProcess).ProcId).ShowDialog();
+                            break;
                     }
                     break;
 
@@ -318,69 +317,35 @@ namespace SP_Sklad.MainTabs
 
                 case 4: switch (focused_tree_node.Id)
                     {
-                        /*   case 25: frmWarehouseEdit = new TfrmWarehouseEdit(Application);
-                               frmWarehouseEdit->Warehouse->Open();
-                               frmWarehouseEdit->Warehouse->Append();
-                               frmWarehouseEdit->ShowModal();
-                               delete frmWarehouseEdit;
-                               SkladData->Warehouse->FullRefresh();
-                               break;
+                        case 25:
+                            new frmWarehouseEdit().ShowDialog();
+                            break;
 
-                           case 11: frmBanksEdit = new TfrmBanksEdit(Application);
-                               frmBanksEdit->Banks->Open();
-                               frmBanksEdit->Banks->Append();
-                               frmBanksEdit->ShowModal();
-                               delete frmBanksEdit;
-                               SkladData->Banks->FullRefresh();
-                               break;
+                        case 11: new frmBanksEdit().ShowDialog();
+                                     break;
 
-                           case 2: frmMeasuresEdit = new TfrmMeasuresEdit(Application);
-                               frmMeasuresEdit->Measures->Open();
-                               frmMeasuresEdit->Measures->Append();
-                               frmMeasuresEdit->ShowModal();
-                               delete frmMeasuresEdit;
-                               SkladData->Measures->FullRefresh();
-                               break;
+                        case 2:
+                            new frmMeasuresEdit().ShowDialog();
+                            break;
 
-                           case 40: frmPricetypesEdit = new TfrmPricetypesEdit(Application);
-                               frmPricetypesEdit->Pricetypes->Open();
-                               frmPricetypesEdit->Pricetypes->Append();
-                               frmPricetypesEdit->ShowModal();
-                               delete frmPricetypesEdit;
-                               SkladData->Pricetypes->FullRefresh();
-                               break;
+                        case 40:
+                            new frmPricetypesEdit().ShowDialog();
+                            break;
 
-                           case 12: frmAccountTypeEdit = new TfrmAccountTypeEdit(Application);
-                               frmAccountTypeEdit->AccountType->Open();
-                               frmAccountTypeEdit->AccountType->Append();
-                               frmAccountTypeEdit->ShowModal();
-                               delete frmAccountTypeEdit;
-                               SkladData->AccountType->FullRefresh();
-                               break;
+                        case 12:
+                            new frmAccountTypeEdit().ShowDialog();
+                            break;
 
-                           case 43: frmCountriesEdit = new TfrmCountriesEdit(Application);
-                               frmCountriesEdit->Countries->Open();
-                               frmCountriesEdit->Countries->Append();
-                               frmCountriesEdit->ShowModal();
-                               delete frmCountriesEdit;
-                               SkladData->Countries->FullRefresh();
-                               break;
+                        case 43: 
+                            new frmCountriesEdit().ShowDialog();
+                                            break;
 
-                           case 102: frmChargetypeEdit = new TfrmChargetypeEdit(Application);
-                               frmChargetypeEdit->Chargetype->Open();
-                               frmChargetypeEdit->Chargetype->Append();
-                               frmChargetypeEdit->ShowModal();
-                               delete frmChargetypeEdit;
-                               SkladData->Chargetype->FullRefresh();
-                               break;
+                        case 102:
+                            new frmChargeTypeEdit().ShowDialog();
+                            break;
 
-                           case 64: frmCashdesksEdit = new TfrmCashdesksEdit(Application);
-                               frmCashdesksEdit->Cashdesks->Open();
-                               frmCashdesksEdit->Cashdesks->Append();
-                               frmCashdesksEdit->ShowModal();
-                               delete frmCashdesksEdit;
-                               SkladData->Cashdesks->FullRefresh();
-                               break;*/
+                        case 64: new frmCashdesksEdit().ShowDialog();
+                            break;
 
                         case 42:
                             new frmMatRecipe(2).ShowDialog();
@@ -390,17 +355,12 @@ namespace SP_Sklad.MainTabs
                             new frmMatRecipe(1).ShowDialog();
                             break;
 
-                        /*    case 112: frmTechProcessEdit = new TfrmTechProcessEdit(Application);
-                                frmTechProcessEdit->TechProcess->Open();
-                                frmTechProcessEdit->TechProcess->Append();
-                                frmTechProcessEdit->ShowModal();
-                                delete frmTechProcessEdit;
-                                SkladData->TechProcess->FullRefresh();
-                                break;*/
+                        case 112:
+                            new frmTechProcessEdit().ShowDialog();
+                            break;
 
                     }
                     break;
-
             }
 
             RefrechItemBtn.PerformClick();
@@ -451,20 +411,57 @@ namespace SP_Sklad.MainTabs
 
                     case 4: switch (focused_tree_node.Id)
                         {
-                            /*     case 25: SkladData->Warehouse->Delete(); break;
-                                 case 11: SkladData->Banks->Delete(); break;
-                                 case 2: SkladData->Measures->Delete(); break;
-                                 case 40: SkladData->Pricetypes->Delete(); break;
-                                 case 12: SkladData->AccountType->Delete(); break;
-                                 case 43: SkladData->Countries->Delete(); break;
-                                 case 102: SkladData->Chargetype->Delete(); break;
-                                 case 64: SkladData->Cashdesks->Delete(); break;*/
+                            case 25:
+                                var wh = WarehouseGridView.GetFocusedRow() as Warehouse;
+                                db.DeleteWhere<Warehouse>(w => w.WId == wh.WId);
+                                break;
+                            case 11:
+
+                                var b = BanksGridView.GetFocusedRow() as Banks;
+                                db.DeleteWhere<Banks>(w => w.BankId == b.BankId);
+                                break;
+
+                            case 2:
+                                var m = MeasuresGridView.GetFocusedRow() as Measures;
+                                db.DeleteWhere<Measures>(w => w.MId == m.MId);
+                                break;
+
+                            case 40:
+                                var pt = PriceTypesGridView.GetFocusedRow() as PriceTypesView;
+                                db.DeleteWhere<PriceTypes>(w => w.PTypeId == pt.PTypeId);
+                                break;
+
+                            case 12:
+                                var at = AccountTypeGridView.GetFocusedRow() as AccountType;
+                                db.DeleteWhere<AccountType>(w => w.TypeId == at.TypeId);
+                                break;
+
+                            case 102:
+                                var ct = ChargeTypeGridView.GetFocusedRow() as ChargeType;
+                                db.DeleteWhere<ChargeType>(w => w.CTypeId == ct.CTypeId);
+                                break;
+
+                            case 64:
+                                var cd = CashDesksGridView.GetFocusedRow() as CashDesks;
+                                db.DeleteWhere<CashDesks>(w => w.CashId == cd.CashId);
+                                break;
+
+                            case 43:
+                                var c = CountriesGridView.GetFocusedRow() as Countries;
+                                db.DeleteWhere<Countries>(w => w.CId == c.CId);
+                                break;
+
                             case 42:
                             case 53:
                                 int mat_rec = ((dynamic)MatRecipeGridView.GetFocusedRow()).RecId;
                                 db.DeleteWhere<MatRecipe>(w => w.RecId == mat_rec);
                                 break;
-                            //     case 112: SkladData->TechProcess->Delete(); break;
+                            case 112:
+
+                                var tp = TechProcessGridView.GetFocusedRow() as TechProcess;
+                                db.DeleteWhere<TechProcess>(w => w.ProcId == tp.ProcId);
+
+                                break;
                         }
                         break;
 
@@ -595,19 +592,10 @@ namespace SP_Sklad.MainTabs
             IHelper.ShowOrdered(dr.KaId, 0, 0);
         }
 
-        private void WarehouseBS_CurrentItemChanged(object sender, EventArgs e)
-        {
-          
-        }
 
-        private void WarehouseBS_CurrentChanged(object sender, EventArgs e)
+        private void WarehouseGridView_DoubleClick(object sender, EventArgs e)
         {
-
-        }
-
-        private void gridView6_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
-        {
-            _db.SaveChanges();
+            EditItemBtn.PerformClick();
         }
     }
 }

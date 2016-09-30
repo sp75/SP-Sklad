@@ -82,11 +82,27 @@ namespace SP_Sklad.EditForm
 
         private void DirTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
+            _db.SaveChanges();
+
             var focused_tree_node = DirTreeList.GetDataRecordByNode(e.Node) as CatalogTreeList;
 
             if(focused_tree_node.ParentId ==0)
             {
                 MatRecDetBS.DataSource = _db.MatRecDet.Find(focused_tree_node.DataSetId);
+            }
+
+            if (focused_tree_node.Id == 0)
+            {
+                var list = _db.MatRecDet.Where(w => w.RecId == _mr.RecId).Select(s => new
+                {
+                    s.DetId,
+                    s.Materials.Name,
+                    s.Materials.Measures.ShortName,
+                    s.Amount,
+                    s.Coefficient
+
+                }).ToList();
+                MatRecDetGridControl.DataSource = list;
             }
 
             xtraTabControl1.SelectedTabPageIndex = focused_tree_node.TabIdx;
@@ -131,7 +147,7 @@ namespace SP_Sklad.EditForm
             _db.SaveChanges();
             GetRecDetail();
 
-            DirTreeList.FocusedNode = DirTreeList.GetNodeList().FirstOrDefault(w => Convert.ToInt32( w.GetValue("Id")) == new_det.DetId);
+            DirTreeList.FocusedNode = DirTreeList.GetNodeList().FirstOrDefault(w => Convert.ToInt32(w.GetValue("DataSetId")) == new_det.DetId);
         }
 
         private void DelRecDetBtn_Click(object sender, EventArgs e)
@@ -152,6 +168,8 @@ namespace SP_Sklad.EditForm
 
             xtraTabControl1.SelectedTabPageIndex = 2;
             MatRecDetBS.DataSource = _db.MatRecDet.Find(det_item.DetId);
+
+            DirTreeList.FocusedNode = DirTreeList.GetNodeList().FirstOrDefault(w => Convert.ToInt32(w.GetValue("DataSetId")) == det_item.DetId);
         }
 
         private void MatRecDetGridView_DoubleClick(object sender, EventArgs e)
