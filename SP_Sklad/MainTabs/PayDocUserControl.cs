@@ -56,11 +56,15 @@ namespace SP_Sklad.MainTabs
             else
             {
                 ExecPayCheckBox.EditValue = 0;
+                PTypeComboBox.EditValue = 1;
             }
 
             PTypeComboBox.Properties.DataSource = DBHelper.PayTypes;
             CashEdit.Properties.DataSource = DBHelper.CashDesks;
             PersonEdit.Properties.DataSource = DBHelper.Persons;
+
+            var ent_id = DBHelper.Enterprise.KaId;
+            AccountEdit.Properties.DataSource = _db.EnterpriseAccount.Where(w => w.KaId == ent_id).Select(s => new { s.AccId, s.AccNum, s.BankName }).ToList();
         }
 
         private void ExecPayCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -102,11 +106,13 @@ namespace SP_Sklad.MainTabs
                     OnDate = _wb.OnDate,
                     WithNDS = 1,  // З НДС
                     PTypeId = Convert.ToInt32(PTypeComboBox.EditValue),  // Вид оплати
-                    CashId = Convert.ToInt32(CashEdit.EditValue),  // Каса по умолчанию
+                    CashId = (int)PTypeComboBox.EditValue == 1 ? (int?)CashEdit.EditValue : null,  // Каса 
+                    AccId = (int)PTypeComboBox.EditValue == 2 ?  (int?)AccountEdit.EditValue : null, // Acount
                     CTypeId = 1, // За товар
                     CurrId = 2,  //Валюта по умолчанию
                     OnValue = 1,  //Курс валюти
-                    MPersonId = Convert.ToInt32(PersonEdit.EditValue)
+                    MPersonId = Convert.ToInt32(PersonEdit.EditValue),
+                    KaId = _wb.KaId
                 });
 
                 if (new int[] { 1, 6, 16 }.Contains(_wb.WType)) _pd.DocType = -1;   // Вихідний платіж
@@ -139,6 +145,41 @@ namespace SP_Sklad.MainTabs
             }
 
             _db.SaveChanges();
+        }
+
+        private void PTypeComboBox_EditValueChanged(object sender, EventArgs e)
+        {
+
+            labelControl3.Visible = false;
+            CashEdit.Visible = false;
+            simpleButton2.Visible = false;
+
+            labelControl18.Visible = false;
+            AccountEdit.Visible = false;
+            simpleButton9.Visible = false;
+
+            if (PTypeComboBox.EditValue == DBNull.Value)
+            {
+                return;
+            }
+
+            if ((int)PTypeComboBox.EditValue == 1)
+            {
+                labelControl3.Visible = true;
+                CashEdit.Visible = true;
+                simpleButton2.Visible = true;
+                if (_pd!=null) _pd.AccId = null;
+
+            }
+
+            if ((int)PTypeComboBox.EditValue == 2)
+            {
+                labelControl18.Visible = true;
+                AccountEdit.Visible = true;
+                simpleButton9.Visible = true;
+                if (_pd != null) _pd.CashId = null;
+
+            }
         }
     }
 }

@@ -524,7 +524,7 @@ namespace SP_Sklad.MainTabs
 
                 case 4:
                     var pd = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
-                    PrintDoc.Show(pd.PayDocId, pd.DocType == -2 ? pd.DocType : pd.DocType * 3, _db);
+                    PrintDoc.Show(pd.DocId.Value, pd.DocType == -2 ? pd.DocType : pd.DocType * 3, _db);
                     break;
 
                 case 5:

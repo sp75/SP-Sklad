@@ -117,10 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="simpleButton9.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////
+        ////////////////////////////////c61zMYQxMYQxc61z////////////////////////////////
+        ////////////UpxaGHsYc9aEa857GHsYlL2U////////////////////////rVopvXNK3s7OQoxCSq1S
+        pf+1jPelpf+1vf/GSq1Src6t////////////////xpyUvWspzpRSjEIQAGMASs5zOc5aKa1CIa0xSs5z
+        vf/GQoxC////////////////rUoQ9961/+/Gxt61KWsQAFoIAGMAIZQpKbVjSs5zpf+1MYQx////////
+        ////zpRrzpRS/+/G/86c/9altb2MAHshAN69AO+1OeeMSudzUr1rlL2U////////////vWMY/+/G/9al
+        /86c/86cMYQxAOfGGNaEGL1CIa0xAGMACGsIlL2U////////zpRr3qVr/+e9/86c/9al/9alKXspAP/v
+        Ia0xEJQhEJQhIZQpEIwYAGMA////////vWsp//fO/9alvWsp57Vr786cQoxCAMaUAO+1GL1CGL1COc5a
+        EIwYMYQx////zpRr572M/+e9572MrUoQ/9alnDkAjEIQKXspAKVaANalEM6EAHMQGHsY////////xnsp
+        ///W/+e9vWsp3qVrxoRKvXNKrVop572Mc61zKXspKWsQY5xj////////3qVr786c/+e9/+e9/+/G//fO
+        rUoQrVopvWsp///e///e3qVr1q2U////////////xnsp//fO/+/G//fO//fO//fW/+/GvXNK79at///e
+        79atxoRK////////////////3pQ5zpRS786c//fO///W///e58alrUoQvWsp3qVrxoRK////////////
+        ////////////////3qVr3pQ557Vr/+e9xoRKxnsp3pQ53pQ5////////////////////////////////
+        ////////58alzpRS3pQ557Vr////////////////////////////////
+</value>
+  </data>
   <metadata name="styleController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="simpleButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////

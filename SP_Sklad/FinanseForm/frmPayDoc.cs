@@ -178,7 +178,9 @@ namespace SP_Sklad.FinanseForm
         {
             _db.SaveChanges();
 
-            PrintDoc.Show(_PayDocId.Value, _pd.DocType == -2 ? _pd.DocType : _pd.DocType * 3, _db);
+            int doc_id = _db.PayDoc.AsNoTracking().First(w => w.PayDocId == _pd.PayDocId).DocId.Value;
+
+            PrintDoc.Show(doc_id, _pd.DocType == -2 ? _pd.DocType : _pd.DocType * 3, _db);
         }
 
         private void PTypeComboBox_EditValueChanged(object sender, EventArgs e)

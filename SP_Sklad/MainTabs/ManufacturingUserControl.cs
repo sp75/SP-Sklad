@@ -421,30 +421,6 @@ namespace SP_Sklad.MainTabs
 
         private void PrintItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
-         /*   switch (focused_tree_node.GType)
-            {
-                case 1:
-                    var drm = WbGridView.GetFocusedRow() as WBListMake_Result;
-                    if (drm == null)
-                    {
-                        return;
-                    }
-
-                    PrintDoc.Show(drm.DocId.Value, drm.WType, DB.SkladBase());
-                    break;
-
-                case 3:
-                    var dr = DeboningGridView.GetFocusedRow() as WBListMake_Result;
-                    if (dr == null)
-                    {
-                        return;
-                    }
-
-                    PrintDoc.Show(dr.DocId.Value, dr.WType, DB.SkladBase());
-                    break;
-            }*/
-
             PrintDoc.Show(focused_row.DocId.Value, focused_row.WType, DB.SkladBase());
         }
 

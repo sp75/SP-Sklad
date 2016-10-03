@@ -287,10 +287,10 @@ namespace SP_Sklad.Reports
             Print(dataForReport, TemlateList.wb_maked);
         }
 
-        public static void PayDocReport(int pay_doc_id, BaseEntities db, string template_name)
+        public static void PayDocReport(int doc_id, BaseEntities db, string template_name)
         {
             var dataForReport = new Dictionary<string, IList>();
-            var pd = db.v_PayDoc.Where(w => w.PayDocId == pay_doc_id).AsNoTracking().ToList();
+            var pd = db.v_PayDoc.Where(w => w.DocId == doc_id).AsNoTracking().ToList();
             if (pd != null)
             {
                 var m = new MoneyToStr("UAH", "UKR", "TEXT");

@@ -31,8 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PayDocUserControl));
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.CurrEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.simpleButton9 = new DevExpress.XtraEditors.SimpleButton();
+            this.AccountEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
+            this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
+            this.CurrEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.SumEdit = new DevExpress.XtraEditors.CalcEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
@@ -50,8 +53,9 @@
             this.ExecPayCheckBox = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CurrEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SumEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PersonEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CashEdit.Properties)).BeginInit();
@@ -62,6 +66,9 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.simpleButton9);
+            this.panelControl1.Controls.Add(this.AccountEdit);
+            this.panelControl1.Controls.Add(this.labelControl18);
             this.panelControl1.Controls.Add(this.CurrEdit);
             this.panelControl1.Controls.Add(this.labelControl6);
             this.panelControl1.Controls.Add(this.SumEdit);
@@ -84,6 +91,48 @@
             this.panelControl1.Size = new System.Drawing.Size(394, 213);
             this.panelControl1.TabIndex = 0;
             // 
+            // simpleButton9
+            // 
+            this.simpleButton9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton9.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton9.Image")));
+            this.simpleButton9.ImageIndex = 3;
+            this.simpleButton9.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton9.Location = new System.Drawing.Point(354, 108);
+            this.simpleButton9.Name = "simpleButton9";
+            this.simpleButton9.Size = new System.Drawing.Size(22, 22);
+            this.simpleButton9.TabIndex = 43;
+            // 
+            // AccountEdit
+            // 
+            this.AccountEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AccountEdit.Location = new System.Drawing.Point(114, 107);
+            this.AccountEdit.Name = "AccountEdit";
+            this.AccountEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.AccountEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("AccNum", "Назва")});
+            this.AccountEdit.Properties.DisplayMember = "AccNum";
+            this.AccountEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.AccountEdit.Properties.ValueMember = "AccId";
+            this.AccountEdit.Size = new System.Drawing.Size(234, 22);
+            this.AccountEdit.StyleController = this.styleController1;
+            this.AccountEdit.TabIndex = 42;
+            // 
+            // styleController1
+            // 
+            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.styleController1.Appearance.Options.UseFont = true;
+            // 
+            // labelControl18
+            // 
+            this.labelControl18.Location = new System.Drawing.Point(12, 110);
+            this.labelControl18.Name = "labelControl18";
+            this.labelControl18.Size = new System.Drawing.Size(19, 16);
+            this.labelControl18.StyleController = this.styleController1;
+            this.labelControl18.TabIndex = 41;
+            this.labelControl18.Text = "р/р";
+            // 
             // CurrEdit
             // 
             this.CurrEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -102,11 +151,6 @@
             this.CurrEdit.Size = new System.Drawing.Size(58, 22);
             this.CurrEdit.StyleController = this.styleController1;
             this.CurrEdit.TabIndex = 26;
-            // 
-            // styleController1
-            // 
-            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.styleController1.Appearance.Options.UseFont = true;
             // 
             // labelControl6
             // 
@@ -237,6 +281,7 @@
             this.PTypeComboBox.Size = new System.Drawing.Size(234, 22);
             this.PTypeComboBox.StyleController = this.styleController1;
             this.PTypeComboBox.TabIndex = 15;
+            this.PTypeComboBox.EditValueChanged += new System.EventHandler(this.PTypeComboBox_EditValueChanged);
             // 
             // labelControl2
             // 
@@ -288,8 +333,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CurrEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SumEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PersonEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CashEdit.Properties)).EndInit();
@@ -320,6 +366,9 @@
         private DevExpress.XtraEditors.LookUpEdit CurrEdit;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.CalcEdit SumEdit;
+        private DevExpress.XtraEditors.LookUpEdit AccountEdit;
+        private DevExpress.XtraEditors.LabelControl labelControl18;
+        private DevExpress.XtraEditors.SimpleButton simpleButton9;
 
     }
 }
