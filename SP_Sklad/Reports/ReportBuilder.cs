@@ -17,7 +17,7 @@ namespace SpreadsheetReportBuilder
         private static int serviceRow = 1;
         private static int ROW_A1 = 1;
 
-        public static MemoryStream GenerateReport(Dictionary<string, IList> dictionary, string templateFileName, string OutFile, bool protectionSheet)
+        public static byte[] GenerateReport(Dictionary<string, IList> dictionary, string templateFileName, bool protectionSheet, string format)
         {
             DataSet dataSet = new DataSet();
             foreach (var obj in dictionary)
@@ -76,12 +76,12 @@ namespace SpreadsheetReportBuilder
                 }
                 dataSet.Tables.Remove("_realation_");
             }
-            
-            return GenerateReport(dataSet, templateFileName, OutFile, protectionSheet);
+
+            return GenerateReport(dataSet, templateFileName, protectionSheet, format);
         }
 
         //Создание отчета
-        public static MemoryStream GenerateReport(DataSet dataSet, string Temleyt, string OutFile, bool protectionSheet)
+        public static byte[] GenerateReport(DataSet dataSet, string Temleyt, bool protectionSheet, string format)
         {
             MemoryStream ms = new MemoryStream();
 
@@ -112,7 +112,7 @@ namespace SpreadsheetReportBuilder
                 //Заполняем выбраные ячейки selctRow даными с dataSet согласно формулам
                 foreach (Row row in rows)
                 {
-                    foreach (Cell cell in row.Where(w=> w.HasFormula))
+                    foreach (Cell cell in row.Where(w => w.HasFormula))
                     {
                         SetValueToCellFormula(dataSet, null, cell);
                     }
@@ -121,7 +121,7 @@ namespace SpreadsheetReportBuilder
                 foreach (DefinedName definedName in def_names)
                 {
                     DataTable dataTable = GetTableByName(dataSet, definedName.Name);
-                    if (dataTable != null && definedName.Range!=null)
+                    if (dataTable != null && definedName.Range != null)
                     {
                         var child_range = def_names.Where(w => w.Range.TopRowIndex > definedName.Range.TopRowIndex && w.Range.BottomRowIndex < definedName.Range.BottomRowIndex).OrderBy(o => o.Range.TopRowIndex).ToList();
 
@@ -129,7 +129,7 @@ namespace SpreadsheetReportBuilder
                     }
                 }
 
-              if (protectionSheet) //Защита листа случайно сгенерированым паролем
+                if (protectionSheet) //Защита листа случайно сгенерированым паролем
                 {
                     if (!sheet.IsProtected)
                         sheet.Protect(Convert.ToString(new Random().Next(245, 12457)), WorksheetProtectionPermissions.Default);
@@ -137,14 +137,21 @@ namespace SpreadsheetReportBuilder
 
             }
 
-            if (!String.IsNullOrEmpty(OutFile))
+          /*  if (!String.IsNullOrEmpty(OutFile))
             {
                 workbook.SaveDocument(OutFile);
-          //      workbook.ExportToPdf(@"C:\Temp\1.pdf");
-            }
-            workbook.SaveDocument(ms, DocumentFormat.OpenXml);
+            }*/
 
-            return ms;
+            if (format == "xlsx")
+            {
+                workbook.SaveDocument(ms, DocumentFormat.OpenXml);
+            }
+            else if (format == "pdf")
+            {
+                workbook.ExportToPdf(ms);
+            }
+
+            return ms.ToArray();
         }
 
 

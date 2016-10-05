@@ -247,6 +247,7 @@
             this.WhBtn.Name = "WhBtn";
             this.WhBtn.Size = new System.Drawing.Size(22, 22);
             this.WhBtn.TabIndex = 26;
+            this.WhBtn.Click += new System.EventHandler(this.WhBtn_Click);
             // 
             // NotesEdit
             // 

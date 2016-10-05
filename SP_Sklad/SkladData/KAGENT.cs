@@ -40,6 +40,7 @@ namespace SP_Sklad.SkladData
             this.WayBillMake = new HashSet<WayBillMake>();
             this.WaybillList2 = new HashSet<WaybillList>();
             this.WayBillSvc = new HashSet<WayBillSvc>();
+            this.Customers = new HashSet<Customers>();
         }
     
         public int KaId { get; set; }
@@ -99,5 +100,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<WayBillMake> WayBillMake { get; set; }
         public virtual ICollection<WaybillList> WaybillList2 { get; set; }
         public virtual ICollection<WayBillSvc> WayBillSvc { get; set; }
+        public virtual ICollection<Customers> Customers { get; set; }
     }
 }

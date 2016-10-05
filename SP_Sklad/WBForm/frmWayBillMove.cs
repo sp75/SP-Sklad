@@ -85,16 +85,15 @@ namespace SP_Sklad.WBForm
 
                 TurnDocCheckBox.EditValue = wb.Checked;
 
-                WhOutComboBox.DataBindings.Add(new Binding("EditValue", wb.WaybillMove, "SourceWid"));
-                WhInComboBox.DataBindings.Add(new Binding("EditValue", wb.WaybillMove, "DestWId", true, DataSourceUpdateMode.OnValidation));
-                PersonOutComboBox.DataBindings.Add(new Binding("EditValue", wb.WaybillMove, "PersonId", true, DataSourceUpdateMode.OnValidation));
+                WhOutComboBox.DataBindings.Add(new Binding("EditValue", wb.WaybillMove, "SourceWid", false,  DataSourceUpdateMode.OnPropertyChanged));
+                WhInComboBox.DataBindings.Add(new Binding("EditValue", wb.WaybillMove, "DestWId", false, DataSourceUpdateMode.OnPropertyChanged));
+                PersonOutComboBox.DataBindings.Add(new Binding("EditValue", wb.WaybillMove, "PersonId", false, DataSourceUpdateMode.OnPropertyChanged));
 
-                PersonInComboBox.DataBindings.Add(new Binding("EditValue", wb, "PersonId", true, DataSourceUpdateMode.OnValidation));
-
-                KagentComboBox.DataBindings.Add(new Binding("EditValue", wb, "KaId", true, DataSourceUpdateMode.OnValidation));
+                PersonInComboBox.DataBindings.Add(new Binding("EditValue", wb, "PersonId", false, DataSourceUpdateMode.OnPropertyChanged));
+                KagentComboBox.DataBindings.Add(new Binding("EditValue", wb, "KaId", false, DataSourceUpdateMode.OnPropertyChanged));
 
                 NumEdit.DataBindings.Add(new Binding("EditValue", wb, "Num"));
-                OnDateDBEdit.DataBindings.Add(new Binding("EditValue", wb, "OnDate"));
+                OnDateDBEdit.DataBindings.Add(new Binding("EditValue", wb, "OnDate", false, DataSourceUpdateMode.OnPropertyChanged));
 
                 NotesEdit.DataBindings.Add(new Binding("EditValue", wb, "Notes"));
                 ReasonEdit.DataBindings.Add(new Binding("EditValue", wb, "Reason"));
@@ -156,6 +155,7 @@ namespace SP_Sklad.WBForm
                 recult = !wbd_list.Any(w => w.Rsv == 0 && w.PosType == 0);
             }
 
+            WhOutComboBox.Enabled = WaybillDetOutGridView.DataRowCount == 0;
             barSubItem1.Enabled = KagentComboBox.EditValue != null;
 
             EditMaterialBtn.Enabled = WaybillDetOutGridView.DataRowCount > 0;
@@ -165,6 +165,7 @@ namespace SP_Sklad.WBForm
 
             OkButton.Enabled = recult;
             return recult;
+
         }
 
         private void frmWayBillMove_FormClosed(object sender, FormClosedEventArgs e)
@@ -181,7 +182,6 @@ namespace SP_Sklad.WBForm
         private void frmWayBillMove_Shown(object sender, EventArgs e)
         {
             OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
-            NowDateBtn.Enabled = OnDateDBEdit.Enabled;
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -315,11 +315,6 @@ namespace SP_Sklad.WBForm
             GetOk();
         }
 
-        private void NowDateBtn_Click(object sender, EventArgs e)
-        {
-            //
-        }
-
         private void WbDetPopupMenu_Popup(object sender, EventArgs e)
         {
             RsvBarBtn.Enabled = (focused_dr.Rsv == 0 && focused_dr.PosId > 0);
@@ -351,6 +346,30 @@ namespace SP_Sklad.WBForm
 
             IHelper.ShowMatListByWH3(_db, wb, WhOutComboBox.EditValue.ToString());
             RefreshDet();
+        }
+
+        private void WhOutComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                WhOutComboBox.EditValue = IHelper.ShowDirectList(WhOutComboBox.EditValue, 2);
+            }
+        }
+
+        private void WhInComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                WhInComboBox.EditValue = IHelper.ShowDirectList(WhOutComboBox.EditValue, 2);
+            }
+        }
+
+        private void OnDateDBEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                OnDateDBEdit.EditValue = DBHelper.ServerDateTime();
+            }
         }
     }
 }

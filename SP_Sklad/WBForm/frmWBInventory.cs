@@ -331,5 +331,10 @@ namespace SP_Sklad.WBForm
             public decimal AmountAll { get; set; }
             public decimal SumAll { get; set; }
         }
+
+        private void WhBtn_Click(object sender, EventArgs e)
+        {
+            WhOutComboBox.EditValue = IHelper.ShowDirectList(WhOutComboBox.EditValue, 2);
+        }
     }
 }

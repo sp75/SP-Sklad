@@ -288,7 +288,16 @@ namespace SP_Sklad.WBForm
 
         private void WHComboBox_EditValueChanged(object sender, EventArgs e)
         {
-            if (WaybillDetInGridView.DataRowCount > 0 && WHComboBox.Focused)
+            if (!WHComboBox.Focused)
+            {
+                return;
+            }
+            UpdateWh();
+        }
+
+        private void UpdateWh()
+        {
+            if (WaybillDetInGridView.DataRowCount > 0)
             {
                 if (MessageBox.Show("Оприходувати весь товар на склад <" + WHComboBox.Text + ">?", "Інформація", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                 {
@@ -385,6 +394,13 @@ namespace SP_Sklad.WBForm
         {
             wb.KaId = (int)IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
             KagentComboBox.EditValue = wb.KaId;
+        }
+
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            WHComboBox.EditValue = IHelper.ShowDirectList(WHComboBox.EditValue, 2);
+
+            UpdateWh();
         }
 
 

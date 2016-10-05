@@ -92,10 +92,10 @@ namespace SP_Sklad.WBForm
 
                 TurnDocCheckBox.EditValue = wb.Checked;
 
-                WhOutComboBox.DataBindings.Add(new Binding("EditValue", wb.WaybillMove, "SourceWid"));
+                WhOutComboBox.DataBindings.Add(new Binding("EditValue", wb.WaybillMove, "SourceWid", false, DataSourceUpdateMode.OnPropertyChanged));
 
                 NumEdit.DataBindings.Add(new Binding("EditValue", wb, "Num"));
-                OnDateDBEdit.DataBindings.Add(new Binding("EditValue", wb, "OnDate"));
+                OnDateDBEdit.DataBindings.Add(new Binding("EditValue", wb, "OnDate" , false, DataSourceUpdateMode.OnPropertyChanged));
 
                 NotesEdit.DataBindings.Add(new Binding("EditValue", wb, "Notes"));
                 ReasonEdit.DataBindings.Add(new Binding("EditValue", wb, "Reason"));
@@ -344,8 +344,7 @@ namespace SP_Sklad.WBForm
 
         private void NowDateBtn_Click(object sender, EventArgs e)
         {
-            wb.OnDate = DBHelper.ServerDateTime();
-            OnDateDBEdit.DateTime = wb.OnDate;
+            OnDateDBEdit.EditValue = DBHelper.ServerDateTime();
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -384,6 +383,11 @@ namespace SP_Sklad.WBForm
 
             IHelper.ShowMatListByWH3(_db, wb, WhOutComboBox.EditValue.ToString());
             RefreshDet();
+        }
+
+        private void WhBtn_Click(object sender, EventArgs e)
+        {
+            WhOutComboBox.EditValue = IHelper.ShowDirectList(WhOutComboBox.EditValue, 2);
         }
 
     }

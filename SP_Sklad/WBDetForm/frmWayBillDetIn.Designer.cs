@@ -195,7 +195,7 @@
             // 
             this.MatComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.MatComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "MatId", true));
+            this.MatComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "MatId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.MatComboBox.Location = new System.Drawing.Point(101, 15);
             this.MatComboBox.Name = "MatComboBox";
             this.MatComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -207,10 +207,10 @@
             this.MatComboBox.Properties.ShowHeader = false;
             this.MatComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.MatComboBox.Properties.ValueMember = "MatId";
-            this.MatComboBox.Properties.EditValueChanged += new System.EventHandler(this.MatComboBox_Properties_EditValueChanged);
             this.MatComboBox.Size = new System.Drawing.Size(422, 22);
             this.MatComboBox.StyleController = this.styleController1;
             this.MatComboBox.TabIndex = 19;
+            this.MatComboBox.EditValueChanged += new System.EventHandler(this.MatComboBox_EditValueChanged);
             // 
             // WaybillDetBS
             // 
@@ -229,10 +229,11 @@
             this.simpleButton4.Name = "simpleButton4";
             this.simpleButton4.Size = new System.Drawing.Size(22, 22);
             this.simpleButton4.TabIndex = 18;
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
             // 
             // WHComboBox
             // 
-            this.WHComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "WId", true));
+            this.WHComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "WId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.WHComboBox.Location = new System.Drawing.Point(101, 44);
             this.WHComboBox.Name = "WHComboBox";
             this.WHComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -772,7 +773,7 @@
             // 
             // PriceEdit
             // 
-            this.PriceEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "Price", true));
+            this.PriceEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "Price", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.PriceEdit.Location = new System.Drawing.Point(101, 75);
             this.PriceEdit.MenuManager = this.barManager1;
             this.PriceEdit.Name = "PriceEdit";
@@ -795,7 +796,7 @@
             // 
             // BasePriceEdit
             // 
-            this.BasePriceEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "BasePrice", true));
+            this.BasePriceEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "BasePrice", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.BasePriceEdit.Location = new System.Drawing.Point(101, 43);
             this.BasePriceEdit.MenuManager = this.barManager1;
             this.BasePriceEdit.Name = "BasePriceEdit";
@@ -818,7 +819,7 @@
             // 
             // AmountEdit
             // 
-            this.AmountEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "Amount", true));
+            this.AmountEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "Amount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.AmountEdit.Location = new System.Drawing.Point(101, 12);
             this.AmountEdit.MenuManager = this.barManager1;
             this.AmountEdit.Name = "AmountEdit";

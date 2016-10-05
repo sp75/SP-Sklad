@@ -98,16 +98,16 @@ namespace SP_Sklad.WBForm
                 wb.UpdatedBy = DBHelper.CurrentUser.UserId;
 
                 TurnDocCheckBox.EditValue = wb.Checked;
-                RecipeComboBox.DataBindings.Add(new Binding("EditValue", wb.WayBillMake, "RecId", true, DataSourceUpdateMode.OnValidation));
-                WhComboBox.DataBindings.Add(new Binding("EditValue", wb.WayBillMake, "SourceWId"));
+                RecipeComboBox.DataBindings.Add(new Binding("EditValue", wb.WayBillMake, "RecId", false, DataSourceUpdateMode.OnPropertyChanged));
+                WhComboBox.DataBindings.Add(new Binding("EditValue", wb.WayBillMake, "SourceWId", false, DataSourceUpdateMode.OnPropertyChanged));
                 //   AmountMakeEdit.DataBindings.Add(new Binding("EditValue", wb.WayBillMake, "Amount"));
 
-                PersonMakeComboBox.DataBindings.Add(new Binding("EditValue", wb.WayBillMake, "PersonId", true, DataSourceUpdateMode.OnValidation));
-                KagentComboBox.DataBindings.Add(new Binding("EditValue", wb, "KaId", true, DataSourceUpdateMode.OnValidation));
-                PersonComboBox.DataBindings.Add(new Binding("EditValue", wb, "PersonId", true, DataSourceUpdateMode.OnValidation));
+                PersonMakeComboBox.DataBindings.Add(new Binding("EditValue", wb.WayBillMake, "PersonId", false, DataSourceUpdateMode.OnPropertyChanged));
+                KagentComboBox.DataBindings.Add(new Binding("EditValue", wb, "KaId", false, DataSourceUpdateMode.OnPropertyChanged));
+                PersonComboBox.DataBindings.Add(new Binding("EditValue", wb, "PersonId", false, DataSourceUpdateMode.OnPropertyChanged));
 
                 NumEdit.DataBindings.Add(new Binding("EditValue", wb, "Num"));
-                OnDateDBEdit.DataBindings.Add(new Binding("EditValue", wb, "OnDate"));
+                OnDateDBEdit.DataBindings.Add(new Binding("EditValue", wb, "OnDate", false, DataSourceUpdateMode.OnPropertyChanged));
                 ToDateEdit.DataBindings.Add(new Binding("EditValue", wb, "ToDate"));
 
                 NotesEdit.DataBindings.Add(new Binding("EditValue", wb, "Notes"));
@@ -432,5 +432,10 @@ namespace SP_Sklad.WBForm
 
             PrintDoc.Show(wb.DocId.Value, wb.WType, _db);
         }
+
+        private void WhInBtn_Click(object sender, EventArgs e)
+        {
+            WhComboBox.EditValue = IHelper.ShowDirectList(WhComboBox.EditValue, 2);
+         }
     }
 }

@@ -492,6 +492,7 @@
             this.WhBtn.Name = "WhBtn";
             this.WhBtn.Size = new System.Drawing.Size(22, 22);
             this.WhBtn.TabIndex = 26;
+            this.WhBtn.Click += new System.EventHandler(this.WhBtn_Click);
             // 
             // NotesEdit
             // 
@@ -508,7 +509,7 @@
             // 
             // WhOutComboBox
             // 
-            this.WhOutComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillMoveBS, "SourceWid", true));
+            this.WhOutComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillMoveBS, "SourceWid", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.WhOutComboBox.Location = new System.Drawing.Point(74, 75);
             this.WhOutComboBox.Name = "WhOutComboBox";
             this.WhOutComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {

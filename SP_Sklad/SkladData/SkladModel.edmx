@@ -23,6 +23,7 @@
           <EntitySet Name="Countries" EntityType="BaseModel.Store.Countries" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Currency" EntityType="BaseModel.Store.Currency" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CURRENCYRATE" EntityType="BaseModel.Store.CURRENCYRATE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Customers" EntityType="BaseModel.Store.Customers" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DeboningDet" EntityType="BaseModel.Store.DeboningDet" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DISCCARDGRP" EntityType="BaseModel.Store.DISCCARDGRP" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DISCCARDS" EntityType="BaseModel.Store.DISCCARDS" store:Type="Tables" Schema="dbo" />
@@ -680,6 +681,10 @@
             <End Role="CONTRACTS" EntitySet="CONTRACTS" />
             <End Role="CONTRRESULTS" EntitySet="CONTRRESULTS" />
           </AssociationSet>
+          <AssociationSet Name="FK_Customers_Kagent" Association="BaseModel.Store.FK_Customers_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
           <AssociationSet Name="FK_DEBONINGDET_MATERIALS" Association="BaseModel.Store.FK_DEBONINGDET_MATERIALS">
             <End Role="Materials" EntitySet="Materials" />
             <End Role="DeboningDet" EntitySet="DeboningDet" />
@@ -1214,6 +1219,17 @@
           <Property Name="ONDATE" Type="datetime" Nullable="false" />
           <Property Name="ONVALUE" Type="numeric" Nullable="false" Precision="15" Scale="8" />
           <Property Name="RATEID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="KaId" Type="int" Nullable="false" />
+          <Property Name="Ligin" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LastLogin" Type="datetime" />
+          <Property Name="IsOnline" Type="bit" />
         </EntityType>
         <EntityType Name="DeboningDet">
           <Key>
@@ -1939,6 +1955,7 @@
           <Property Name="EnableEditDate" Type="int" />
           <Property Name="LastLogin" Type="datetime" />
           <Property Name="IsOnline" Type="bit" />
+          <Property Name="ReportFormat" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="UserTree">
           <Key>
@@ -3233,6 +3250,20 @@
             </Principal>
             <Dependent Role="CONTRRESULTS">
               <PropertyRef Name="CONTRID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_Kagent">
+          <End Role="Kagent" Type="BaseModel.Store.Kagent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Customers" Type="BaseModel.Store.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="KaId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -6818,6 +6849,11 @@
             <End Role="Banks" EntitySet="Banks" />
             <End Role="BanksPersons" EntitySet="BanksPersons" />
           </AssociationSet>
+          <EntitySet Name="Customers" EntityType="BaseModel.Customers" />
+          <AssociationSet Name="FK_Customers_Kagent" Association="BaseModel.FK_Customers_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -7532,6 +7568,7 @@
           <Property Type="Boolean" Name="IsOnline" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_Kagent_Users" FromRole="Users" ToRole="Kagent" />
           <NavigationProperty Name="OperLog" Relationship="BaseModel.FK_OperLog_Users" FromRole="Users" ToRole="OperLog" />
+          <Property Type="String" Name="ReportFormat" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Currency">
           <Key>
@@ -10907,6 +10944,7 @@
           <NavigationProperty Name="WayBillMake" Relationship="BaseModel.FK_WAYBILLMAKE_KAGENT" FromRole="Kagent" ToRole="WayBillMake" />
           <NavigationProperty Name="WaybillList2" Relationship="BaseModel.FK_WBL_ENTID" FromRole="Kagent" ToRole="WaybillList" />
           <NavigationProperty Name="WayBillSvc" Relationship="BaseModel.FK_WBS_PERSONID" FromRole="Kagent" ToRole="WayBillSvc" />
+          <NavigationProperty Name="Customers" Relationship="BaseModel.FK_Customers_Kagent" FromRole="Kagent" ToRole="Customers" />
         </EntityType>
         <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
@@ -11454,6 +11492,32 @@
             </Principal>
             <Dependent Role="BanksPersons">
               <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="KaId" Nullable="false" />
+          <Property Type="String" Name="Ligin" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastLogin" Precision="3" />
+          <Property Type="Boolean" Name="IsOnline" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_Customers_Kagent" FromRole="Customers" ToRole="Kagent" />
+        </EntityType>
+        <Association Name="FK_Customers_Kagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.Customers" Role="Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="KaId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -12116,6 +12180,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="BaseModel.Users">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ReportFormat" ColumnName="ReportFormat" />
                 <ScalarProperty Name="IsOnline" ColumnName="IsOnline" />
                 <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
                 <ScalarProperty Name="EnableEditDate" ColumnName="EnableEditDate" />
@@ -14423,6 +14488,18 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="BankId" ColumnName="BankId" />
                 <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="BaseModel.Customers">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="IsOnline" ColumnName="IsOnline" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Ligin" ColumnName="Ligin" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

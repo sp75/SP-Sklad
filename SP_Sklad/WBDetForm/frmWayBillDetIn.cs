@@ -157,34 +157,22 @@ namespace SP_Sklad.WBDetForm
 
         private void MatComboBox_Properties_EditValueChanged(object sender, EventArgs e)
         {
-            var row = (MaterialsList)MatComboBox.GetSelectedDataRow();
-            if (row != null)
-            {
-                _wbd.Nds = row.NDS;
-                _wbd.WId = row.WId;
-                WHComboBox.EditValue = row.WId;
-                labelControl24.Text = row.MeasuresName;
-                labelControl27.Text = row.MeasuresName;
 
-                GetRemains();
-            }
-
-            GetOk();
         }
 
         private void GetRemains()
         {
-             var r =_db.SP_MAT_REMAIN_GET_SIMPLE((int)MatComboBox.EditValue, _wb.OnDate).FirstOrDefault();
+            var r = _db.SP_MAT_REMAIN_GET_SIMPLE((int)MatComboBox.EditValue, _wb.OnDate).FirstOrDefault();
 
-             if (r != null)
-             {
-                 RemainEdit.EditValue = r.Remain;
-                 RsvEdit.EditValue = r.Rsv;
-                 CurRemainEdit.EditValue = r.Remain-r.Rsv;
-                 MinPriceEdit.EditValue = r.MinPrice;
-                 AvgPriceEdit.EditValue = r.AvgPrice;
-                 MaxPriceEdit.EditValue = r.MaxPrice;
-             }
+            if (r != null)
+            {
+                RemainEdit.EditValue = r.Remain;
+                RsvEdit.EditValue = r.Rsv;
+                CurRemainEdit.EditValue = r.Remain - r.Rsv;
+                MinPriceEdit.EditValue = r.MinPrice;
+                AvgPriceEdit.EditValue = r.AvgPrice;
+                MaxPriceEdit.EditValue = r.MaxPrice;
+            }
         }
 
         private void BasePriceEdit_EditValueChanged(object sender, EventArgs e)
@@ -204,7 +192,7 @@ namespace SP_Sklad.WBDetForm
                 _wbd.Price = BasePriceEdit.Value;
                 PriceEdit.Value = BasePriceEdit.Value;
             }
-            
+
             GetOk();
         }
 
@@ -239,7 +227,7 @@ namespace SP_Sklad.WBDetForm
             BotAmountEdit.EditValue = AmountEdit.Value;
             TotalSumEdit.EditValue = AmountEdit.Value * PriceEdit.Value;
             SummAllEdit.EditValue = AmountEdit.Value * BasePriceEdit.Value;
-            TotalNdsEdit.EditValue = (decimal)SummAllEdit.EditValue - (decimal)TotalSumEdit.EditValue; 
+            TotalNdsEdit.EditValue = (decimal)SummAllEdit.EditValue - (decimal)TotalSumEdit.EditValue;
 
             return recult;
         }
@@ -251,6 +239,11 @@ namespace SP_Sklad.WBDetForm
 
         private void WHComboBox_EditValueChanged(object sender, EventArgs e)
         {
+            if (!WHComboBox.ContainsFocus)
+            {
+                return;
+            }
+
             GetOk();
         }
 
@@ -296,8 +289,7 @@ namespace SP_Sklad.WBDetForm
 
         private void MatEditBtn_Click(object sender, EventArgs e)
         {
-            _wbd.MatId = (int)IHelper.ShowDirectList(MatComboBox.EditValue, 5);
-            MatComboBox.EditValue = _wbd.MatId;
+            MatComboBox.EditValue = IHelper.ShowDirectList(MatComboBox.EditValue, 5);
 
             if (_wbd != null)
             {
@@ -321,17 +313,10 @@ namespace SP_Sklad.WBDetForm
                     wbdp.WbMaked = frm.wb_focused_row.WbillId;
                     serials.SerialNo = frm.wb_focused_row.Num;
 
-                    _wbd.MatId = frm.wb_focused_row.MatId;
-                    MatComboBox.EditValue = _wbd.MatId;
-
-                    _wbd.Amount = frm.wb_focused_row.AmountOut ?? 0;
-                    AmountEdit.EditValue = _wbd.Amount;
-
-                    _wbd.BasePrice = Math.Round((frm.wb_focused_row.SummAll / frm.wb_focused_row.AmountOut) ?? 0, 4);
-                    BasePriceEdit.EditValue = _wbd.BasePrice;
-
-                    _wbd.Price = _wbd.BasePrice;
-                    PriceEdit.EditValue = _wbd.Price;
+                    MatComboBox.EditValue = frm.wb_focused_row.MatId;
+                    AmountEdit.EditValue = frm.wb_focused_row.AmountOut ?? 0;
+                    BasePriceEdit.EditValue = Math.Round((frm.wb_focused_row.SummAll / frm.wb_focused_row.AmountOut) ?? 0, 4);
+                    PriceEdit.EditValue = _wbd.BasePrice;
 
                     MatComboBox.Enabled = false;
                     MatEditBtn.Enabled = false;
@@ -341,6 +326,27 @@ namespace SP_Sklad.WBDetForm
                 }
             }
 
+        }
+
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            WHComboBox.EditValue = IHelper.ShowDirectList(WHComboBox.EditValue, 2);
+        }
+
+        private void MatComboBox_EditValueChanged(object sender, EventArgs e)
+        {
+            var row = (MaterialsList)MatComboBox.GetSelectedDataRow();
+            if (row != null)
+            {
+                _wbd.Nds = row.NDS;
+                _wbd.WId = row.WId;
+                labelControl24.Text = row.MeasuresName;
+                labelControl27.Text = row.MeasuresName;
+
+                GetRemains();
+            }
+
+            GetOk();
         }
     }
 }

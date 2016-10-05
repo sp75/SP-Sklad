@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWBReturnDetIn));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
@@ -64,7 +64,6 @@
             this.WaybillDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.GetPosOutBS = new System.Windows.Forms.BindingSource(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
@@ -261,14 +260,14 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(571, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(592, 24);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 414);
-            this.barDockControlBottom.Size = new System.Drawing.Size(571, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(592, 0);
             // 
             // barDockControlLeft
             // 
@@ -281,7 +280,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(571, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(592, 24);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 390);
             // 
             // standaloneBarDockControl1
@@ -291,7 +290,7 @@
             this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 24);
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(571, 0);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(592, 0);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // sharedImageCollection1
@@ -376,7 +375,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
-            this.panel1.Size = new System.Drawing.Size(571, 92);
+            this.panel1.Size = new System.Drawing.Size(592, 92);
             this.panel1.TabIndex = 23;
             // 
             // panelControl1
@@ -386,12 +385,11 @@
             this.panelControl1.Controls.Add(this.WHComboBox);
             this.panelControl1.Controls.Add(this.labelControl6);
             this.panelControl1.Controls.Add(this.simpleButton2);
-            this.panelControl1.Controls.Add(this.simpleButton3);
             this.panelControl1.Controls.Add(this.labelControl3);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(5, 5);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(561, 82);
+            this.panelControl1.Size = new System.Drawing.Size(582, 82);
             this.panelControl1.TabIndex = 0;
             // 
             // MatComboBox
@@ -411,7 +409,7 @@
             this.MatComboBox.Properties.ShowHeader = false;
             this.MatComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.MatComboBox.Properties.ValueMember = "PosId";
-            this.MatComboBox.Size = new System.Drawing.Size(393, 22);
+            this.MatComboBox.Size = new System.Drawing.Size(442, 22);
             this.MatComboBox.StyleController = this.styleController1;
             this.MatComboBox.TabIndex = 19;
             this.MatComboBox.EditValueChanged += new System.EventHandler(this.MatComboBox_EditValueChanged);
@@ -424,10 +422,11 @@
             this.simpleButton4.Name = "simpleButton4";
             this.simpleButton4.Size = new System.Drawing.Size(22, 22);
             this.simpleButton4.TabIndex = 18;
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
             // 
             // WHComboBox
             // 
-            this.WHComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "WId", true));
+            this.WHComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "WId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.WHComboBox.Location = new System.Drawing.Point(101, 44);
             this.WHComboBox.Name = "WHComboBox";
             this.WHComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -461,21 +460,11 @@
             this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton2.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.Image")));
             this.simpleButton2.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton2.Location = new System.Drawing.Point(500, 15);
+            this.simpleButton2.Location = new System.Drawing.Point(549, 15);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(22, 22);
             this.simpleButton2.TabIndex = 13;
             this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
-            // 
-            // simpleButton3
-            // 
-            this.simpleButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton3.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.Image")));
-            this.simpleButton3.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton3.Location = new System.Drawing.Point(528, 15);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(22, 22);
-            this.simpleButton3.TabIndex = 12;
             // 
             // labelControl3
             // 
@@ -498,7 +487,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 116);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.panel2.Size = new System.Drawing.Size(571, 115);
+            this.panel2.Size = new System.Drawing.Size(592, 115);
             this.panel2.TabIndex = 24;
             // 
             // panelControl3
@@ -518,7 +507,7 @@
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl3.Location = new System.Drawing.Point(5, 0);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(561, 110);
+            this.panelControl3.Size = new System.Drawing.Size(582, 110);
             this.panelControl3.TabIndex = 8;
             // 
             // labelControl25
@@ -577,7 +566,7 @@
             this.RemainEdit.Name = "RemainEdit";
             this.RemainEdit.Properties.DisplayFormat.FormatString = "0.0000";
             this.RemainEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.RemainEdit.Size = new System.Drawing.Size(99, 22);
+            this.RemainEdit.Size = new System.Drawing.Size(120, 22);
             this.RemainEdit.StyleController = this.styleController1;
             this.RemainEdit.TabIndex = 12;
             // 
@@ -592,7 +581,7 @@
             this.ReturnAmountEdit.Name = "ReturnAmountEdit";
             this.ReturnAmountEdit.Properties.DisplayFormat.FormatString = "0.0000";
             this.ReturnAmountEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.ReturnAmountEdit.Size = new System.Drawing.Size(99, 22);
+            this.ReturnAmountEdit.Size = new System.Drawing.Size(120, 22);
             this.ReturnAmountEdit.StyleController = this.styleController1;
             this.ReturnAmountEdit.TabIndex = 11;
             // 
@@ -607,7 +596,7 @@
             this.PosOutAmountEdit.Name = "PosOutAmountEdit";
             this.PosOutAmountEdit.Properties.DisplayFormat.FormatString = "0.0000";
             this.PosOutAmountEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.PosOutAmountEdit.Size = new System.Drawing.Size(99, 22);
+            this.PosOutAmountEdit.Size = new System.Drawing.Size(120, 22);
             this.PosOutAmountEdit.StyleController = this.styleController1;
             this.PosOutAmountEdit.TabIndex = 10;
             // 
@@ -652,7 +641,7 @@
             this.AmountEdit.Name = "AmountEdit";
             this.AmountEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("AmountEdit.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("AmountEdit.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "", null, null, true)});
             this.AmountEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.AmountEdit_Properties_ButtonClick);
             this.AmountEdit.Size = new System.Drawing.Size(138, 22);
             this.AmountEdit.StyleController = this.styleController1;
@@ -666,7 +655,7 @@
             this.panel5.Location = new System.Drawing.Point(0, 231);
             this.panel5.Name = "panel5";
             this.panel5.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.panel5.Size = new System.Drawing.Size(571, 131);
+            this.panel5.Size = new System.Drawing.Size(592, 131);
             this.panel5.TabIndex = 27;
             // 
             // groupControl3
@@ -686,7 +675,7 @@
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl3.Location = new System.Drawing.Point(5, 0);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(561, 126);
+            this.groupControl3.Size = new System.Drawing.Size(582, 126);
             this.groupControl3.TabIndex = 16;
             this.groupControl3.Tag = "";
             this.groupControl3.Text = "Підсумок";
@@ -694,7 +683,7 @@
             // labelControl28
             // 
             this.labelControl28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl28.Location = new System.Drawing.Point(528, 95);
+            this.labelControl28.Location = new System.Drawing.Point(549, 95);
             this.labelControl28.Name = "labelControl28";
             this.labelControl28.Size = new System.Drawing.Size(23, 16);
             this.labelControl28.StyleController = this.styleController1;
@@ -751,7 +740,7 @@
             this.SummAllEdit.Name = "SummAllEdit";
             this.SummAllEdit.Properties.DisplayFormat.FormatString = "0.00";
             this.SummAllEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.SummAllEdit.Size = new System.Drawing.Size(102, 22);
+            this.SummAllEdit.Size = new System.Drawing.Size(123, 22);
             this.SummAllEdit.StyleController = this.styleController1;
             this.SummAllEdit.TabIndex = 26;
             // 
@@ -792,7 +781,7 @@
             this.TotalNdsEdit.Name = "TotalNdsEdit";
             this.TotalNdsEdit.Properties.DisplayFormat.FormatString = "0.00";
             this.TotalNdsEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.TotalNdsEdit.Size = new System.Drawing.Size(102, 22);
+            this.TotalNdsEdit.Size = new System.Drawing.Size(123, 22);
             this.TotalNdsEdit.StyleController = this.styleController1;
             this.TotalNdsEdit.TabIndex = 22;
             // 
@@ -806,7 +795,7 @@
             this.TotalSumEdit.Name = "TotalSumEdit";
             this.TotalSumEdit.Properties.DisplayFormat.FormatString = "0.00";
             this.TotalSumEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.TotalSumEdit.Size = new System.Drawing.Size(102, 22);
+            this.TotalSumEdit.Size = new System.Drawing.Size(123, 22);
             this.TotalSumEdit.StyleController = this.styleController1;
             this.TotalSumEdit.TabIndex = 21;
             // 
@@ -821,7 +810,7 @@
             this.BotPriceEdit.Name = "BotPriceEdit";
             this.BotPriceEdit.Properties.DisplayFormat.FormatString = "0.00";
             this.BotPriceEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.BotPriceEdit.Size = new System.Drawing.Size(102, 22);
+            this.BotPriceEdit.Size = new System.Drawing.Size(123, 22);
             this.BotPriceEdit.StyleController = this.styleController1;
             this.BotPriceEdit.TabIndex = 20;
             // 
@@ -832,14 +821,14 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(0, 362);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(571, 52);
+            this.panelControl2.Size = new System.Drawing.Size(592, 52);
             this.panelControl2.TabIndex = 28;
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(353, 14);
+            this.OkButton.Location = new System.Drawing.Point(374, 14);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(98, 26);
             this.OkButton.TabIndex = 3;
@@ -850,7 +839,7 @@
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton1.Location = new System.Drawing.Point(460, 14);
+            this.simpleButton1.Location = new System.Drawing.Point(481, 14);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(93, 26);
             this.simpleButton1.TabIndex = 2;
@@ -860,7 +849,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(571, 414);
+            this.ClientSize = new System.Drawing.Size(592, 414);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel2);
@@ -947,7 +936,6 @@
         private DevExpress.XtraEditors.LookUpEdit WHComboBox;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private System.Windows.Forms.Panel panel2;
         private DevExpress.XtraEditors.PanelControl panelControl3;

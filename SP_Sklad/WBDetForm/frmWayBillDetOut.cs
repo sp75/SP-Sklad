@@ -66,6 +66,8 @@ namespace SP_Sklad.WBDetForm
 
             if (_wbd != null)
             {
+                WaybillDetBS.DataSource = _wbd;
+
                 if (modified_dataset)
                 {
                     var w_mat_turn = _db.WMatTurn.Where(w => w.SourceId == _wbd.PosId).ToList();
@@ -85,13 +87,13 @@ namespace SP_Sklad.WBDetForm
                     }
                 }
 
-                MatComboBox.DataBindings.Add(new Binding("EditValue", _wbd, "MatId"));
-                WHComboBox.DataBindings.Add(new Binding("EditValue", _wbd, "WId", true, DataSourceUpdateMode.OnValidation));
-                AmountEdit.DataBindings.Add(new Binding("EditValue", _wbd, "Amount"));
-                PriceTypesEdit.DataBindings.Add(new Binding("EditValue", _wbd, "PtypeId", true, DataSourceUpdateMode.OnValidation));
-                BasePriceEdit.DataBindings.Add(new Binding("EditValue", _wbd, "BasePrice", true, DataSourceUpdateMode.OnValidation));
-                DiscountEdit.DataBindings.Add(new Binding("EditValue", _wbd, "Discount", true, DataSourceUpdateMode.OnValidation));
-                CheckCustomEdit.DataBindings.Add(new Binding("EditValue", _wbd, "DiscountKind", true, DataSourceUpdateMode.OnValidation));
+         //       MatComboBox.DataBindings.Add(new Binding("EditValue", _wbd, "MatId", false, DataSourceUpdateMode.OnPropertyChanged));
+            //    WHComboBox.DataBindings.Add(new Binding("EditValue", _wbd, "WId", false, DataSourceUpdateMode.OnPropertyChanged));
+        //        AmountEdit.DataBindings.Add(new Binding("EditValue", _wbd, "Amount", false, DataSourceUpdateMode.OnPropertyChanged));
+            //    PriceTypesEdit.DataBindings.Add(new Binding("EditValue", _wbd, "PtypeId", false, DataSourceUpdateMode.OnPropertyChanged));
+           //     BasePriceEdit.DataBindings.Add(new Binding("EditValue", _wbd, "BasePrice", false, DataSourceUpdateMode.OnPropertyChanged));
+          //      DiscountEdit.DataBindings.Add(new Binding("EditValue", _wbd, "Discount", false, DataSourceUpdateMode.OnPropertyChanged));
+        //        CheckCustomEdit.DataBindings.Add(new Binding("EditValue", _wbd, "DiscountKind", false, DataSourceUpdateMode.OnPropertyChanged));
 
                 GetOk();
             }
@@ -123,9 +125,9 @@ namespace SP_Sklad.WBDetForm
             if (DiscountCheckBox.Checked) DiscountPriceEdit.EditValue = BasePriceEdit.Value - (BasePriceEdit.Value * DiscountEdit.Value / 100);
             else DiscountPriceEdit.EditValue = BasePriceEdit.Value;
 
-            PriceNotNDSEdit.EditValue = Convert.ToDecimal(DiscountPriceEdit.EditValue) * 100 / (100 + _wbd.Nds);
-            TotalSumEdit.EditValue = Convert.ToDecimal(AmountEdit.EditValue) * Convert.ToDecimal(PriceNotNDSEdit.EditValue);
-            SummAllEdit.EditValue = Convert.ToDecimal(AmountEdit.EditValue) * Convert.ToDecimal(DiscountPriceEdit.EditValue);
+            PriceNotNDSEdit.EditValue = DiscountPriceEdit.Value * 100 / (100 + _wbd.Nds);
+            TotalSumEdit.EditValue = AmountEdit.Value * Convert.ToDecimal(PriceNotNDSEdit.EditValue);
+            SummAllEdit.EditValue = AmountEdit.Value * DiscountPriceEdit.Value;
             TotalNdsEdit.EditValue = Convert.ToDecimal(SummAllEdit.EditValue) - Convert.ToDecimal(TotalSumEdit.EditValue);
 
             return recult;
@@ -142,7 +144,6 @@ namespace SP_Sklad.WBDetForm
              if (MatComboBox.ContainsFocus)
              {
                  _wbd.WId = row.WId;
-                 WHComboBox.EditValue = row.WId;
                  _wbd.Nds = row.NDS == 1 ? DBHelper.CommonParam.Nds : 0;
                  _wbd.MatId = row.MatId;
              }
@@ -161,13 +162,13 @@ namespace SP_Sklad.WBDetForm
              }
 
              GetDiscount(row.MatId);
-             GetContent();
+             GetContent(row.WId, row.MatId);
         }
 
         private void GetDiscount(int? MatId)
         {
             var disc = DB.SkladBase().GetDiscount(_wb.KaId, MatId).FirstOrDefault();
-            DiscountCheckBox.Checked = (disc > 0);
+            DiscountCheckBox.Checked = (disc > 0 || _wbd.Discount > 0);
 
             if (_wbd.DiscountKind == 0)
             {
@@ -176,26 +177,34 @@ namespace SP_Sklad.WBDetForm
             }
         }
 
-        private void GetContent()
+        private void GetContent(int? WId, int? MatId)
         {
-            if (_wbd.WId == null || _wbd.MatId == 0)
+            if (WId == null || MatId == 0)
             {
                 return;
             }
 
-            mat_remain = _db.GetMatRemain(_wbd.WId, _wbd.MatId).FirstOrDefault();
+            mat_remain = _db.GetMatRemain(WId, MatId).FirstOrDefault();
+            GetMatRemainBS.DataSource = mat_remain != null ? mat_remain : new GetMatRemain_Result();
 
-            if (mat_remain != null)
+        /*    if (mat_remain != null)
             {
-                RemainWHEdit.EditValue = mat_remain.RemainInWh;
-                RsvEdit.EditValue = mat_remain.Rsv;
-                CurRemainEdit.EditValue = mat_remain.Remain;
-                MinPriceEdit.EditValue = mat_remain.MinPrice;
-                AvgPriceEdit.EditValue = mat_remain.AvgPrice;
-                MaxPriceEdit.EditValue = mat_remain.MaxPrice;
-            }
+                GetMatRemainBS.DataSource = mat_remain;
 
-            pos_in = _db.GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, 0).Where(w => w.FullRemain > 0).OrderBy(o => o.OnDate).ToList();
+          //      RemainWHEdit.EditValue = mat_remain.RemainInWh;
+               // RsvEdit.EditValue = mat_remain.Rsv;
+            //    CurRemainEdit.EditValue = mat_remain.Remain;
+          //      MinPriceEdit.EditValue = mat_remain.MinPrice;
+           //     AvgPriceEdit.EditValue = mat_remain.AvgPrice;
+          //      MaxPriceEdit.EditValue = mat_remain.MaxPrice;
+            }
+            else
+            {
+                GetMatRemainBS.DataSource = new GetMatRemain_Result();
+            }*/
+
+            pos_in = _db.GetPosIn(_wb.OnDate, MatId, WId, 0).Where(w => w.FullRemain > 0).OrderBy(o => o.OnDate).ToList();
+
             SetAmount();
         }
 
@@ -298,8 +307,8 @@ namespace SP_Sklad.WBDetForm
         {
             if (WHComboBox.EditValue == DBNull.Value || !WHComboBox.ContainsFocus) return;
 
-            _wbd.WId = (int)WHComboBox.EditValue;
-            GetContent();
+         //   _wbd.WId = (int)WHComboBox.EditValue;
+            GetContent((int?)WHComboBox.EditValue, (int?)MatComboBox.EditValue);
             GetOk();
         }
 
@@ -398,9 +407,9 @@ namespace SP_Sklad.WBDetForm
             else
             {
                 var result = IHelper.ShowRemainByWH(MatComboBox.EditValue, WHComboBox.EditValue, 1);
-                _wbd.WId = result.wid;
+            //    _wbd.WId = result.wid;
                 WHComboBox.EditValue = result.wid;
-                _wbd.MatId = result.mat_id;
+            //    _wbd.MatId = result.mat_id;
                 MatComboBox.EditValue = result.mat_id;
             }
         }
@@ -413,6 +422,14 @@ namespace SP_Sklad.WBDetForm
 
             if (!savePoint.IsEmpty() && !savePoint.IsNull()) WayBIllDetMATID->Value = savePoint;  // 06.12.12*/
 
+        }
+
+        private void WHComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                WHComboBox.EditValue = IHelper.ShowDirectList(WHComboBox.EditValue, 2);
+            }
         }
 
     }

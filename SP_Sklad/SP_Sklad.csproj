@@ -158,6 +158,9 @@
     <Compile Include="SkladData\BanksPersons.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\Customers.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_PriceTypes.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1213,6 +1216,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetDocList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetMatList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetMatMove_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.GetMatRemain_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetOperLog_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPosOut_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPriceListDet_Result.datasource" />

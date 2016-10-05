@@ -55,7 +55,8 @@
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.ConfirmPassEdit = new DevExpress.XtraEditors.TextEdit();
             this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
@@ -95,7 +96,9 @@
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
             this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.AccessPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.textEdit3 = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserBS)).BeginInit();
@@ -109,7 +112,7 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ConfirmPassEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit10.Properties)).BeginInit();
@@ -131,6 +134,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccessPopupMenu)).BeginInit();
+            this.xtraTabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -193,6 +198,7 @@
             this.ImageList.Images.SetKeyName(8, "line_grin.bmp");
             this.ImageList.Images.SetKeyName(9, "v_line_disable.bmp");
             this.ImageList.Images.SetKeyName(10, "v_line_enable.bmp");
+            this.ImageList.Images.SetKeyName(11, "exec16.png");
             // 
             // barButtonItem1
             // 
@@ -334,7 +340,8 @@
             this.xtraTabControl1.TabIndex = 37;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
-            this.xtraTabPage4});
+            this.xtraTabPage4,
+            this.xtraTabPage6});
             // 
             // xtraTabPage1
             // 
@@ -355,7 +362,7 @@
             // groupControl2
             // 
             this.groupControl2.Controls.Add(this.labelControl1);
-            this.groupControl2.Controls.Add(this.textEdit3);
+            this.groupControl2.Controls.Add(this.ConfirmPassEdit);
             this.groupControl2.Controls.Add(this.textEdit2);
             this.groupControl2.Controls.Add(this.labelControl12);
             this.groupControl2.Controls.Add(this.labelControl6);
@@ -370,15 +377,24 @@
             this.groupControl2.Tag = "";
             this.groupControl2.Text = " Основна інформація ";
             // 
-            // textEdit3
+            // labelControl1
             // 
-            this.textEdit3.Location = new System.Drawing.Point(26, 201);
-            this.textEdit3.Name = "textEdit3";
-            this.textEdit3.Properties.PasswordChar = '*';
-            this.textEdit3.Size = new System.Drawing.Size(206, 22);
-            this.textEdit3.StyleController = this.styleController1;
-            this.textEdit3.TabIndex = 60;
-            this.textEdit3.EditValueChanged += new System.EventHandler(this.textEdit2_EditValueChanged);
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl1.Location = new System.Drawing.Point(26, 34);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(35, 16);
+            this.labelControl1.TabIndex = 61;
+            this.labelControl1.Text = "Логін";
+            // 
+            // ConfirmPassEdit
+            // 
+            this.ConfirmPassEdit.Location = new System.Drawing.Point(26, 201);
+            this.ConfirmPassEdit.Name = "ConfirmPassEdit";
+            this.ConfirmPassEdit.Properties.PasswordChar = '*';
+            this.ConfirmPassEdit.Size = new System.Drawing.Size(206, 22);
+            this.ConfirmPassEdit.StyleController = this.styleController1;
+            this.ConfirmPassEdit.TabIndex = 60;
+            this.ConfirmPassEdit.EditValueChanged += new System.EventHandler(this.textEdit2_EditValueChanged);
             // 
             // textEdit2
             // 
@@ -813,14 +829,35 @@
             this.AccessPopupMenu.Manager = this.barManager1;
             this.AccessPopupMenu.Name = "AccessPopupMenu";
             // 
-            // labelControl1
+            // xtraTabPage6
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.labelControl1.Location = new System.Drawing.Point(26, 34);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(35, 16);
-            this.labelControl1.TabIndex = 61;
-            this.labelControl1.Text = "Логін";
+            this.xtraTabPage6.Controls.Add(this.labelControl2);
+            this.xtraTabPage6.Controls.Add(this.textEdit3);
+            this.xtraTabPage6.Name = "xtraTabPage6";
+            this.xtraTabPage6.Size = new System.Drawing.Size(635, 380);
+            this.xtraTabPage6.Text = "Додаткова інформація";
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(25, 22);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(81, 16);
+            this.labelControl2.StyleController = this.styleController1;
+            this.labelControl2.TabIndex = 47;
+            this.labelControl2.Text = "Формат звітів";
+            // 
+            // textEdit3
+            // 
+            this.textEdit3.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.UserBS, "ReportFormat", true));
+            this.textEdit3.Location = new System.Drawing.Point(25, 44);
+            this.textEdit3.Name = "textEdit3";
+            this.textEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.textEdit3.Properties.Items.AddRange(new object[] {
+            "xlsx",
+            "pdf"});
+            this.textEdit3.Size = new System.Drawing.Size(319, 20);
+            this.textEdit3.TabIndex = 46;
             // 
             // frmUserEdit
             // 
@@ -854,7 +891,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ConfirmPassEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit10.Properties)).EndInit();
@@ -876,6 +913,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccessPopupMenu)).EndInit();
+            this.xtraTabPage6.ResumeLayout(false);
+            this.xtraTabPage6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -913,7 +953,7 @@
         private System.Windows.Forms.Panel panel2;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage5;
-        private DevExpress.XtraEditors.TextEdit textEdit3;
+        private DevExpress.XtraEditors.TextEdit ConfirmPassEdit;
         private DevExpress.XtraEditors.TextEdit textEdit2;
         private DevExpress.XtraEditors.CheckEdit checkEdit3;
         private DevExpress.XtraEditors.CheckEdit checkEdit2;
@@ -949,5 +989,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         public System.Windows.Forms.ImageList UserTreeImgList;
         private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage6;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.ComboBoxEdit textEdit3;
     }
 }

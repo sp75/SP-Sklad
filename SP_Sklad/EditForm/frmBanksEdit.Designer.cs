@@ -324,7 +324,7 @@
             // 
             // textEdit1
             // 
-            this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.BanksBS, "Name", true));
+            this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.BanksBS, "Name", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textEdit1.Location = new System.Drawing.Point(26, 56);
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Size = new System.Drawing.Size(386, 22);

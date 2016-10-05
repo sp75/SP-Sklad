@@ -128,6 +128,7 @@ namespace SP_Sklad.SkladData
         public DbSet<WayBillDetAddProps> WayBillDetAddProps { get; set; }
         public DbSet<v_PriceTypes> v_PriceTypes { get; set; }
         public DbSet<BanksPersons> BanksPersons { get; set; }
+        public DbSet<Customers> Customers { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)

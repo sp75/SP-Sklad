@@ -33,6 +33,7 @@ namespace SP_Sklad.SkladData
         public Nullable<int> EnableEditDate { get; set; }
         public Nullable<System.DateTime> LastLogin { get; set; }
         public Nullable<bool> IsOnline { get; set; }
+        public string ReportFormat { get; set; }
     
         public virtual ICollection<UserAccess> UserAccess { get; set; }
         public virtual ICollection<UserAccessWh> UserAccessWh { get; set; }

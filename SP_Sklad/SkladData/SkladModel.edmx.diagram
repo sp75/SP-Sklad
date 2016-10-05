@@ -239,6 +239,8 @@
         <EntityTypeShape EntityType="BaseModel.v_PriceTypes" Width="1.5" PointX="10.661018370958519" PointY="24.701074656425543" />
         <EntityTypeShape EntityType="BaseModel.BanksPersons" Width="1.5" PointX="1.4895479127250368" PointY="1.4131381518268671" />
         <AssociationConnector Association="BaseModel.FK_BANKSPERSONS_1" />
+        <EntityTypeShape EntityType="BaseModel.Customers" Width="1.5" PointX="0.13402553653997626" PointY="21.611524368455413" />
+        <AssociationConnector Association="BaseModel.FK_Customers_Kagent" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="7.0245045325832924" PointY="12.641712000892364" />

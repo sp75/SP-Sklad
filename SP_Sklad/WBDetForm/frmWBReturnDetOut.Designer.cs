@@ -434,6 +434,7 @@
             this.WhEditBtn.Name = "WhEditBtn";
             this.WhEditBtn.Size = new System.Drawing.Size(22, 22);
             this.WhEditBtn.TabIndex = 18;
+            this.WhEditBtn.Click += new System.EventHandler(this.WhEditBtn_Click);
             // 
             // WHComboBox
             // 

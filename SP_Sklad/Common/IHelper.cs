@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,11 +12,39 @@ using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using SP_Sklad.EditForm;
 using SP_Sklad.SkladData;
+using SpreadsheetReportBuilder;
 
 namespace SP_Sklad.Common
 {
     class IHelper
     {
+        public static string template_path
+        {
+            get
+            {
+
+                return DBHelper.CommonParam.TemplatePatch;
+                /*
+#if DEBUG
+                return Path.Combine(@"c:\WinVSProjects\SP-Sklad\SP_Sklad\", "TempLate");
+#else
+               return Path.Combine(Application.StartupPath, "TempLate" );
+#endif*/
+            }
+        }
+
+        public static string rep_path
+        {
+            get
+            {
+#if DEBUG
+                return Path.Combine(@"c:\WinVSProjects\SP-Sklad\SP_Sklad\", "Rep");
+#else
+               return Path.Combine(Application.StartupPath, "Rep" );
+#endif
+            }
+        }
+
         static public bool isRowDublClick(object grid_view)
         {
             GridView view = (GridView)grid_view;
@@ -197,13 +228,13 @@ namespace SP_Sklad.Common
                           break;
 
                   case 2:
-                          using (var f = new frmCatalog(1,25))
+                          using (var f = new frmCatalog(null,25))
                           {
                               f.uc.isDirectList = true;
                               f.Text = "Склади";
                               if (f.ShowDialog() == DialogResult.OK)
                               {
-                                  old_id = (f.uc.KaGridView.GetFocusedRow() as KagentList).KaId;
+                                  old_id = (f.uc.WarehouseGridView.GetFocusedRow() as Warehouse).WId;
                               }
                           }
                       
@@ -404,6 +435,24 @@ namespace SP_Sklad.Common
             }
         }
 
+        public static void Print(Dictionary<string, IList> data_for_report, string temlate)
+        {
+            String template_file = Path.Combine(template_path, temlate);
+
+            if (File.Exists(template_file))
+            {
+                var file_format = DBHelper.CurrentUser.ReportFormat;
+
+                String result_file = Path.Combine(rep_path, Path.GetFileNameWithoutExtension(temlate) + "_" + DateTime.Now.Ticks.ToString() + "." + file_format);
+
+                File.WriteAllBytes(result_file, ReportBuilder.GenerateReport(data_for_report, template_file, false, file_format));
+
+                if (File.Exists(result_file))
+                {
+                    Process.Start(result_file);
+                }
+            }
+        }
     }
 
     public class CustomMatList
@@ -443,4 +492,6 @@ namespace SP_Sklad.Common
             return new DateTime(value.Year, value.Month, value.DaysInMonth());
         }
     }
+
+    
 }

@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SP_Sklad.Common;
 using SP_Sklad.SkladData;
 using SpreadsheetReportBuilder;
 
@@ -49,29 +50,6 @@ namespace SP_Sklad.Reports
 
         }
 
-        public static string template_path
-        {
-            get
-            {
-#if DEBUG
-                return Path.Combine(@"c:\WinVSProjects\SP-Sklad\SP_Sklad\", "TempLate");
-#else
-               return Path.Combine(Application.StartupPath, "TempLate" );
-#endif
-            }
-        }
-
-        public static string rep_path
-        {
-            get
-            {
-#if DEBUG
-                return Path.Combine(@"c:\WinVSProjects\SP-Sklad\SP_Sklad\", "Rep");
-#else
-               return Path.Combine(Application.StartupPath, "Rep" );
-#endif
-            }
-        }
 
         public void CreateReport(int idx)
         {
@@ -106,7 +84,7 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("MatInDet", mat);
                 data_for_report.Add("_realation_", rel);
 
-                Print(data_for_report, TemlateList.rep_1);
+                IHelper.Print(data_for_report, TemlateList.rep_1);
             }
 
             if (idx == 2)
@@ -140,7 +118,7 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("MatOutDet", mat);
                 data_for_report.Add("_realation_", rel);
 
-                Print(data_for_report, TemlateList.rep_2);
+                IHelper.Print(data_for_report, TemlateList.rep_2);
             }
 
             if (idx == 3)
@@ -177,7 +155,7 @@ namespace SP_Sklad.Reports
                 }).ToList());
                 data_for_report.Add("_realation_", rel);
 
-                Print(data_for_report, TemlateList.rep_3);
+                IHelper.Print(data_for_report, TemlateList.rep_3);
             }
 
             if (idx == 14)
@@ -214,7 +192,7 @@ namespace SP_Sklad.Reports
                 }).ToList());
                 data_for_report.Add("_realation_", rel);
 
-                Print(data_for_report, TemlateList.rep_3);
+                IHelper.Print(data_for_report, TemlateList.rep_3);
             }
 
 
@@ -250,7 +228,7 @@ namespace SP_Sklad.Reports
                 }).ToList());
                 data_for_report.Add("_realation_", rel);
 
-                Print(data_for_report, TemlateList.rep_4);
+                IHelper.Print(data_for_report, TemlateList.rep_4);
             }
 
             if (idx == 25)
@@ -285,7 +263,7 @@ namespace SP_Sklad.Reports
                 }).ToList());
                 data_for_report.Add("_realation_", rel);
 
-                Print(data_for_report, TemlateList.rep_4);
+                IHelper.Print(data_for_report, TemlateList.rep_4);
             }
 
 
@@ -305,7 +283,7 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("XLRPARAMS", XLRPARAMS);
                 data_for_report.Add("Kagent", kagents.ToList());
 
-                Print(data_for_report, TemlateList.rep_5);
+                IHelper.Print(data_for_report, TemlateList.rep_5);
             }
 
             if (idx == 6)
@@ -324,7 +302,7 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("XLRPARAMS", XLRPARAMS);
                 data_for_report.Add("Kagent", kagents.ToList());
 
-                Print(data_for_report, TemlateList.rep_6);
+                IHelper.Print(data_for_report, TemlateList.rep_6);
             }
 
             if (idx == 7)
@@ -354,7 +332,7 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("MatList", mat);
                 data_for_report.Add("_realation_", rel);
 
-                Print(data_for_report, TemlateList.rep_7);
+                IHelper.Print(data_for_report, TemlateList.rep_7);
             }
 
             if (idx == 8)
@@ -376,7 +354,7 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("XLRPARAMS", XLRPARAMS);
                 data_for_report.Add("KADocList", list.ToList());
 
-                Print(data_for_report, TemlateList.rep_8);
+                IHelper.Print(data_for_report, TemlateList.rep_8);
             }
 
             if (idx == 9)
@@ -393,7 +371,7 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("XLRPARAMS", XLRPARAMS);
                 data_for_report.Add("MatList", list.ToList());
 
-                Print(data_for_report, TemlateList.rep_9);
+                IHelper.Print(data_for_report, TemlateList.rep_9);
             }
 
             if (idx == 10)
@@ -424,7 +402,7 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("MatList", mat);
                 data_for_report.Add("_realation_", rel);
 
-                Print(data_for_report, TemlateList.rep_10);
+                IHelper.Print(data_for_report, TemlateList.rep_10);
             }
 
             if (idx == 11)
@@ -446,7 +424,7 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("XLRPARAMS", XLRPARAMS);
                 data_for_report.Add("DocList", list.ToList());
 
-                Print(data_for_report, TemlateList.rep_11);
+                IHelper.Print(data_for_report, TemlateList.rep_11);
             }
 
             if (idx == 13)
@@ -482,7 +460,7 @@ namespace SP_Sklad.Reports
                     Income = s.Sum(r => r.Income)
                 }).ToList());
 
-                Print(data_for_report, TemlateList.rep_13);
+                IHelper.Print(data_for_report, TemlateList.rep_13);
             }
 
             if (idx == 16)
@@ -497,7 +475,7 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("XLRPARAMS", XLRPARAMS);
                 data_for_report.Add("DocList", paydoc);
 
-                Print(data_for_report, TemlateList.rep_16);
+                IHelper.Print(data_for_report, TemlateList.rep_16);
             }
 
             if (idx == 19)
@@ -530,7 +508,7 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("Balances", balances);
                 data_for_report.Add("MatList", list.ToList());
 
-                Print(data_for_report, TemlateList.rep_19);
+                IHelper.Print(data_for_report, TemlateList.rep_19);
             }
 
             if (idx == 20)
@@ -559,7 +537,7 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("SvcOutDet", svc);
                 data_for_report.Add("_realation_", rel);
 
-                Print(data_for_report, TemlateList.rep_20);
+                IHelper.Print(data_for_report, TemlateList.rep_20);
             }
 
             if (idx == 28)
@@ -606,7 +584,7 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("MatInDet", mat);
                 data_for_report.Add("_realation_", rel);
 
-                Print(data_for_report, TemlateList.rep_28);
+                IHelper.Print(data_for_report, TemlateList.rep_28);
             }
 
 
@@ -638,7 +616,7 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("MatList", mat);
                 data_for_report.Add("_realation_", rel);
 
-                Print(data_for_report, TemlateList.rep_18);
+                IHelper.Print(data_for_report, TemlateList.rep_18);
             }
 
             if (idx == 26)
@@ -655,7 +633,7 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("XLRPARAMS", XLRPARAMS);
                 data_for_report.Add("MakedProduct", make.ToList());
 
-                Print(data_for_report, TemlateList.rep_26);
+                IHelper.Print(data_for_report, TemlateList.rep_26);
             }
 
             if (idx == 27)
@@ -670,7 +648,7 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("XLRPARAMS", XLRPARAMS);
                 data_for_report.Add("MatList", mat.ToList());
 
-                Print(data_for_report, TemlateList.rep_27);
+                IHelper.Print(data_for_report, TemlateList.rep_27);
 
             }
 
@@ -700,7 +678,7 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("MatInDet", mat);
                 data_for_report.Add("_realation_", rel);
 
-                Print(data_for_report, TemlateList.rep_29);
+                IHelper.Print(data_for_report, TemlateList.rep_29);
             }
 
 
@@ -784,7 +762,7 @@ namespace SP_Sklad.Reports
 
                 data_for_report.Add("_realation_", rel);
 
-                Print(data_for_report, TemlateList.rep_17);
+                IHelper.Print(data_for_report, TemlateList.rep_17);
             }
 
             if (idx == 23)
@@ -800,7 +778,7 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("MONEY1", m.Where(w => w.SaldoType == 0).ToList());
                 data_for_report.Add("MONEY2", m.Where(w => w.SaldoType == 1).ToList());
 
-                Print(data_for_report, TemlateList.rep_23);
+                IHelper.Print(data_for_report, TemlateList.rep_23);
             }
 
             /*          if(idx == 30)
@@ -828,22 +806,6 @@ namespace SP_Sklad.Reports
             db.SaveChanges();
         }
 
-
-        private void Print(Dictionary<string, IList> data_for_report, string temlate)
-        {
-            String result_file = Path.Combine(rep_path, Path.GetFileName(temlate) + "_" + DateTime.Now.Ticks.ToString() + Path.GetExtension(temlate));
-            String template_file = Path.Combine(template_path, temlate);
-
-            if (File.Exists(template_file))
-            {
-                ReportBuilder.GenerateReport(data_for_report, template_file, result_file, false);
-            }
-
-            if (File.Exists(result_file))
-            {
-                Process.Start(result_file);
-            }
-        }
 
     }
 }

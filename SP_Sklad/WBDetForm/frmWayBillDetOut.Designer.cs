@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWayBillDetOut));
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
@@ -57,10 +58,10 @@
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.WHComboBox = new DevExpress.XtraEditors.LookUpEdit();
+            this.WaybillDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.RSVCheckBox = new DevExpress.XtraEditors.CheckEdit();
             this.MatComboBox = new DevExpress.XtraEditors.LookUpEdit();
-            this.WhBtn = new DevExpress.XtraEditors.SimpleButton();
-            this.WHComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.btnShowRemainByWH = new DevExpress.XtraEditors.SimpleButton();
@@ -128,6 +129,7 @@
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.GetMatRemainBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).BeginInit();
@@ -135,9 +137,10 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WHComboBox.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RSVCheckBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatComboBox.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WHComboBox.Properties)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
@@ -180,6 +183,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PriceNotNDSEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GetMatRemainBS)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -434,10 +438,9 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.WHComboBox);
             this.panelControl1.Controls.Add(this.RSVCheckBox);
             this.panelControl1.Controls.Add(this.MatComboBox);
-            this.panelControl1.Controls.Add(this.WhBtn);
-            this.panelControl1.Controls.Add(this.WHComboBox);
             this.panelControl1.Controls.Add(this.labelControl6);
             this.panelControl1.Controls.Add(this.simpleButton2);
             this.panelControl1.Controls.Add(this.btnShowRemainByWH);
@@ -447,6 +450,31 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(636, 102);
             this.panelControl1.TabIndex = 0;
+            // 
+            // WHComboBox
+            // 
+            this.WHComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "WId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.WHComboBox.Location = new System.Drawing.Point(101, 67);
+            this.WHComboBox.Name = "WHComboBox";
+            this.WHComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("WHComboBox.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", null, null, true)});
+            this.WHComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.WHComboBox.Properties.DisplayMember = "Name";
+            this.WHComboBox.Properties.ShowFooter = false;
+            this.WHComboBox.Properties.ShowHeader = false;
+            this.WHComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.WHComboBox.Properties.ValueMember = "WId";
+            this.WHComboBox.Size = new System.Drawing.Size(285, 22);
+            this.WHComboBox.StyleController = this.styleController1;
+            this.WHComboBox.TabIndex = 21;
+            this.WHComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.WHComboBox_ButtonClick);
+            this.WHComboBox.EditValueChanged += new System.EventHandler(this.WHComboBox_EditValueChanged);
+            // 
+            // WaybillDetBS
+            // 
+            this.WaybillDetBS.DataSource = typeof(SP_Sklad.SkladData.WaybillDet);
             // 
             // RSVCheckBox
             // 
@@ -465,6 +493,7 @@
             // 
             this.MatComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.MatComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "MatId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.MatComboBox.Location = new System.Drawing.Point(101, 38);
             this.MatComboBox.Name = "MatComboBox";
             this.MatComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -480,33 +509,6 @@
             this.MatComboBox.StyleController = this.styleController1;
             this.MatComboBox.TabIndex = 19;
             this.MatComboBox.EditValueChanged += new System.EventHandler(this.MatComboBox_EditValueChanged);
-            // 
-            // WhBtn
-            // 
-            this.WhBtn.Image = ((System.Drawing.Image)(resources.GetObject("WhBtn.Image")));
-            this.WhBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.WhBtn.Location = new System.Drawing.Point(325, 66);
-            this.WhBtn.Name = "WhBtn";
-            this.WhBtn.Size = new System.Drawing.Size(22, 22);
-            this.WhBtn.TabIndex = 18;
-            // 
-            // WHComboBox
-            // 
-            this.WHComboBox.Location = new System.Drawing.Point(101, 67);
-            this.WHComboBox.Name = "WHComboBox";
-            this.WHComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.WHComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
-            this.WHComboBox.Properties.DisplayMember = "Name";
-            this.WHComboBox.Properties.ShowFooter = false;
-            this.WHComboBox.Properties.ShowHeader = false;
-            this.WHComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.WHComboBox.Properties.ValueMember = "WId";
-            this.WHComboBox.Size = new System.Drawing.Size(218, 22);
-            this.WHComboBox.StyleController = this.styleController1;
-            this.WHComboBox.TabIndex = 17;
-            this.WHComboBox.EditValueChanged += new System.EventHandler(this.WHComboBox_EditValueChanged);
             // 
             // labelControl6
             // 
@@ -597,6 +599,7 @@
             // 
             // BasePriceEdit
             // 
+            this.BasePriceEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "BasePrice", true));
             this.BasePriceEdit.Location = new System.Drawing.Point(101, 70);
             this.BasePriceEdit.MenuManager = this.barManager1;
             this.BasePriceEdit.Name = "BasePriceEdit";
@@ -611,6 +614,7 @@
             // 
             // PriceTypesEdit
             // 
+            this.PriceTypesEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "PtypeId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.PriceTypesEdit.Location = new System.Drawing.Point(101, 41);
             this.PriceTypesEdit.Name = "PriceTypesEdit";
             this.PriceTypesEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -694,6 +698,7 @@
             // 
             this.CurRemainEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.CurRemainEdit.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.GetMatRemainBS, "Remain", true));
             this.CurRemainEdit.Enabled = false;
             this.CurRemainEdit.Location = new System.Drawing.Point(477, 41);
             this.CurRemainEdit.MenuManager = this.barManager1;
@@ -708,6 +713,7 @@
             // 
             this.RsvEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.RsvEdit.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.GetMatRemainBS, "Rsv", true));
             this.RsvEdit.Enabled = false;
             this.RsvEdit.Location = new System.Drawing.Point(477, 70);
             this.RsvEdit.MenuManager = this.barManager1;
@@ -722,6 +728,7 @@
             // 
             this.RemainWHEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.RemainWHEdit.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.GetMatRemainBS, "RemainInWh", true));
             this.RemainWHEdit.Enabled = false;
             this.RemainWHEdit.Location = new System.Drawing.Point(477, 12);
             this.RemainWHEdit.MenuManager = this.barManager1;
@@ -754,6 +761,7 @@
             // 
             // AmountEdit
             // 
+            this.AmountEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "Amount", true));
             this.AmountEdit.Location = new System.Drawing.Point(101, 12);
             this.AmountEdit.MenuManager = this.barManager1;
             this.AmountEdit.Name = "AmountEdit";
@@ -835,6 +843,7 @@
             // 
             // CheckCustomEdit
             // 
+            this.CheckCustomEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "DiscountKind", true));
             this.CheckCustomEdit.EditValue = 1;
             this.CheckCustomEdit.Location = new System.Drawing.Point(39, 63);
             this.CheckCustomEdit.MenuManager = this.barManager1;
@@ -852,6 +861,7 @@
             // 
             // DiscountEdit
             // 
+            this.DiscountEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "Discount", true));
             this.DiscountEdit.Location = new System.Drawing.Point(170, 62);
             this.DiscountEdit.MenuManager = this.barManager1;
             this.DiscountEdit.Name = "DiscountEdit";
@@ -1061,6 +1071,7 @@
             // 
             this.MaxPriceEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.MaxPriceEdit.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.GetMatRemainBS, "MaxPrice", true));
             this.MaxPriceEdit.Enabled = false;
             this.MaxPriceEdit.Location = new System.Drawing.Point(125, 86);
             this.MaxPriceEdit.MenuManager = this.barManager1;
@@ -1084,6 +1095,7 @@
             // 
             this.AvgPriceEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.AvgPriceEdit.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.GetMatRemainBS, "AvgPrice", true));
             this.AvgPriceEdit.Enabled = false;
             this.AvgPriceEdit.Location = new System.Drawing.Point(125, 58);
             this.AvgPriceEdit.MenuManager = this.barManager1;
@@ -1107,6 +1119,7 @@
             // 
             this.MinPriceEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.MinPriceEdit.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.GetMatRemainBS, "MinPrice", true));
             this.MinPriceEdit.Enabled = false;
             this.MinPriceEdit.Location = new System.Drawing.Point(125, 30);
             this.MinPriceEdit.MenuManager = this.barManager1;
@@ -1312,6 +1325,10 @@
             this.simpleButton1.TabIndex = 2;
             this.simpleButton1.Text = "Відмінити";
             // 
+            // GetMatRemainBS
+            // 
+            this.GetMatRemainBS.DataSource = typeof(SP_Sklad.SkladData.GetMatRemain_Result);
+            // 
             // frmWayBillDetOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1342,9 +1359,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WHComboBox.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RSVCheckBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatComboBox.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WHComboBox.Properties)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
@@ -1392,6 +1410,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PriceNotNDSEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GetMatRemainBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1427,8 +1446,6 @@
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.LookUpEdit MatComboBox;
-        private DevExpress.XtraEditors.SimpleButton WhBtn;
-        private DevExpress.XtraEditors.LookUpEdit WHComboBox;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.SimpleButton btnShowRemainByWH;
@@ -1497,5 +1514,8 @@
         private DevExpress.XtraEditors.CheckEdit CheckCustomEdit;
         private DevExpress.XtraEditors.CalcEdit DiscountEdit;
         private DevExpress.XtraEditors.SimpleButton PosInfoBtn;
+        private DevExpress.XtraEditors.LookUpEdit WHComboBox;
+        private System.Windows.Forms.BindingSource WaybillDetBS;
+        private System.Windows.Forms.BindingSource GetMatRemainBS;
     }
 }

@@ -287,7 +287,15 @@ order by  ma.ondate desc */
 
         private void WHComboBox_EditValueChanged(object sender, EventArgs e)
         {
-            if (WaybillDetInGridView.DataRowCount > 0 && WHComboBox.Focused)
+            if (WHComboBox.Focused)
+            {
+                UpdateWh();
+            }
+        }
+
+        private void UpdateWh()
+        {
+            if (WaybillDetInGridView.DataRowCount > 0)
             {
                 if (MessageBox.Show("Оприходувати весь товар на склад <" + WHComboBox.Text + ">?", "Інформація", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                 {
@@ -340,6 +348,12 @@ order by  ma.ondate desc */
         {
             IHelper.ShowMatList(_db, wb);
             RefreshDet();
+        }
+
+        private void PersonEditBtn_Click(object sender, EventArgs e)
+        {
+            WHComboBox.EditValue = IHelper.ShowDirectList(WHComboBox.EditValue, 2);
+            UpdateWh();
         }
 
     }

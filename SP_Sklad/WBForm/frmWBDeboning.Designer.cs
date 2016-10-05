@@ -433,6 +433,7 @@
             this.WhInBtn.Name = "WhInBtn";
             this.WhInBtn.Size = new System.Drawing.Size(22, 22);
             this.WhInBtn.TabIndex = 26;
+            this.WhInBtn.Click += new System.EventHandler(this.WhInBtn_Click);
             // 
             // ReceptBtn
             // 

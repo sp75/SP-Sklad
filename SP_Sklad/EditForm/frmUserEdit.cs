@@ -45,6 +45,7 @@ namespace SP_Sklad.EditForm
 
             tree.Add(new CatalogTreeList { Id = 0, ParentId = -1, Text = "Основна інформація", ImgIdx = 0, TabIdx = 0 });
             tree.Add(new CatalogTreeList { Id = 1, ParentId = -1, Text = "Права", ImgIdx = 1, TabIdx = 1 });
+            tree.Add(new CatalogTreeList { Id = 2, ParentId = -1, Text = "Додаткова інформація", ImgIdx = 11, TabIdx = 2 });
 
             TreeListBindingSource.DataSource = tree;
 
@@ -53,7 +54,8 @@ namespace SP_Sklad.EditForm
                 _u = _db.Users.Add(new Users
                 {
                     Name = "New User",
-                    SysName = ""
+                    SysName = "",
+                    ReportFormat = "xlsx"
                 });
 
                 _db.SaveChanges();
@@ -68,7 +70,7 @@ namespace SP_Sklad.EditForm
             if (_u != null)
             {
                 UserBS.DataSource = _u;
-                textEdit3.Text = _u.Pass;
+                ConfirmPassEdit.Text = _u.Pass;
             }
 
             ValidateForm();
@@ -91,6 +93,7 @@ namespace SP_Sklad.EditForm
         {
             _db.SaveChanges();
             current_transaction.Commit();
+            DBHelper.CurrentUser = null;
         }
 
         private void treeList1_PopupMenuShowing(object sender, DevExpress.XtraTreeList.PopupMenuShowingEventArgs e)
@@ -243,7 +246,7 @@ namespace SP_Sklad.EditForm
 
         void ValidateForm()
         {
-            OkButton.Enabled = (textEdit3.Text == textEdit2.Text);
+            OkButton.Enabled = (ConfirmPassEdit.Text == textEdit2.Text);
         }
 
         private void textEdit2_EditValueChanged(object sender, EventArgs e)

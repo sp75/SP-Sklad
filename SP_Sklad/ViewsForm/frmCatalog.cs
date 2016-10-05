@@ -16,7 +16,7 @@ namespace SP_Sklad.EditForm
         private int? _gtype { get; set; }
         private int? _id { get; set; }
 
-        public frmCatalog(int gtype, int? id=null)
+        public frmCatalog(int? gtype, int? id=null)
         {
             _gtype = gtype;
             _id = id;

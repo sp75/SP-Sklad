@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraRichEdit.Model;
+using SP_Sklad.Common;
 using SP_Sklad.SkladData;
 using SpreadsheetReportBuilder;
 
@@ -17,33 +18,6 @@ namespace SP_Sklad.Reports
 {
     class PrintDoc
     {
-        public static string template_path
-        {
-            get
-            {
-
-                return DBHelper.CommonParam.TemplatePatch;
-                /*
-#if DEBUG
-                return Path.Combine(@"c:\WinVSProjects\SP-Sklad\SP_Sklad\", "TempLate");
-#else
-               return Path.Combine(Application.StartupPath, "TempLate" );
-#endif*/
-            }
-        }
-
-        public static string rep_path
-        {
-            get
-            {
-#if DEBUG
-                return Path.Combine(@"c:\WinVSProjects\SP-Sklad\SP_Sklad\", "Rep");
-#else
-               return Path.Combine(Application.StartupPath, "Rep" );
-#endif
-            }
-        }
-
         public static void Show(int doc_id, int doc_type, BaseEntities db)
         {
             db.SaveChanges();
@@ -126,7 +100,7 @@ namespace SP_Sklad.Reports
             dataForReport.Add("WayBillList", wb);
             dataForReport.Add("range1", db.GetWaybillDetIn(wb.First().WbillId).ToList());
 
-            Print(dataForReport, template_name);
+            IHelper.Print(dataForReport, template_name);
         }
 
         public static void WayBillReport(int doc_id, BaseEntities db, string template_name)
@@ -146,7 +120,7 @@ namespace SP_Sklad.Reports
                 ThirdName = s.Kagent3.Name
             }).ToList());
 
-            Print(dataForReport, template_name);
+            IHelper.Print(dataForReport, template_name);
         }
 
         public static void WayBillOutReport(int doc_id, BaseEntities db, string template_name)
@@ -160,8 +134,6 @@ namespace SP_Sklad.Reports
                 var m = new MoneyToStr("UAH", "UKR", "TEXT");
                 wb.First().www = m.convertValue(wb.First().SummAll.Value);
             }
-
-       //     db.Entry(wb).Property(p=> p.).IsModified = false =
 
             var ent_id = wb.First().EntId;
             data_report.Add("EntAccount", db.EnterpriseAccount.Where(w => w.KaId == ent_id && w.Def == 1).ToList());
@@ -186,7 +158,7 @@ namespace SP_Sklad.Reports
             }).ToList();
             data_report.Add("Posvitcheny", p);
 
-            Print(data_report, template_name);
+            IHelper.Print(data_report, template_name);
         }
 
         public static void DeboningReport(int doc_id, BaseEntities db)
@@ -231,7 +203,7 @@ namespace SP_Sklad.Reports
             dataForReport.Add("DeboningItems", item);
             dataForReport.Add("_realation_", rel);
 
-            Print(dataForReport, TemlateList.wb_deb);
+            IHelper.Print(dataForReport, TemlateList.wb_deb);
         }
 
         public static void MakedReport(int wbill_id, BaseEntities db)
@@ -284,7 +256,7 @@ namespace SP_Sklad.Reports
             dataForReport.Add("TechProc",  tp);
             dataForReport.Add("_realation_", rel);
 
-            Print(dataForReport, TemlateList.wb_maked);
+            IHelper.Print(dataForReport, TemlateList.wb_maked);
         }
 
         public static void PayDocReport(int doc_id, BaseEntities db, string template_name)
@@ -300,7 +272,7 @@ namespace SP_Sklad.Reports
             dataForReport.Add("PayDoc", pd);
             dataForReport.Add("Enterprise", db.KagentList.Where(w =>  w.KType == 3).Take( 1 ).ToList());
 
-            Print(dataForReport, template_name);
+            IHelper.Print(dataForReport, template_name);
 
         }
 
@@ -321,7 +293,7 @@ namespace SP_Sklad.Reports
             dataForReport.Add("PriceList", pl);
             dataForReport.Add("PriceListDet", pl_d);
 
-            Print(dataForReport, TemlateList.p_list);
+            IHelper.Print(dataForReport, TemlateList.p_list);
         }
 
         private static string Getlable(Decimal? price , String code)
@@ -331,20 +303,22 @@ namespace SP_Sklad.Reports
             return "*" + code + "+" + split_price[0] + "+" + split_price[1] + "*";
         }
 
-        private static void Print(Dictionary<string, IList> data_for_report, string temlate)
+   /*     private static void Print(Dictionary<string, IList> data_for_report, string temlate)
         {
-
-            String result_file = Path.Combine(rep_path, Path.GetFileName(temlate) + "_" + DateTime.Now.Ticks.ToString() + Path.GetExtension(temlate));
             String template_file = Path.Combine(template_path, temlate);
+
             if (File.Exists(template_file))
             {
-                ReportBuilder.GenerateReport(data_for_report, template_file, result_file, false);
-            }
+                var file_format = DBHelper.CurrentUser.ReportFormat;
+                String result_file = Path.Combine(rep_path, Path.GetFileName(temlate) + "_" + DateTime.Now.Ticks.ToString() + "." + file_format);
+                File.WriteAllBytes(result_file, ReportBuilder.GenerateReport(data_for_report, template_file, false, file_format));
 
-            if (File.Exists(result_file))
-            {
-                Process.Start(result_file);
+                if (File.Exists(result_file))
+                {
+                    Process.Start(result_file);
+                }
             }
-        }
+   
+        }*/
     }
 }

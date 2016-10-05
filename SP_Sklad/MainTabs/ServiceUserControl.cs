@@ -112,12 +112,12 @@ namespace SP_Sklad.MainTabs
                     UsersDS.DataSource = DB.SkladBase().Users.ToList();
                     break;
 
-                /*      case 2: MonAttach->Open();
-                          MonAttach->FullRefresh();
-                          break;
+                case 2:
+                    UsersOnlineBS.DataSource = DB.SkladBase().Users.AsNoTracking().Where(w => w.IsOnline == true).ToList();
+                    break;
 
-                      case 3: DelBarButton->Enabled = (cxGridDBTableView2->DataController->DataSource->DataSet->FieldByName("def")->Value != 1);
-                          break;*/
+                /*        case 3: DelBarButton->Enabled = (cxGridDBTableView2->DataController->DataSource->DataSet->FieldByName("def")->Value != 1);
+                            break;*/
 
                 case 5:
                     GetOperLogBS.DataSource = DB.SkladBase().GetOperLog(wbStartDate.DateTime, wbEndDate.DateTime, (int)wTypeList.EditValue, (int)UserComboBox.EditValue).OrderByDescending(o => o.OnDate).ToList();

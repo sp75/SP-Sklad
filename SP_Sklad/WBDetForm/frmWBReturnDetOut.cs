@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SP_Sklad.Common;
 using SP_Sklad.EditForm;
 using SP_Sklad.SkladData;
 using EntityState = System.Data.Entity.EntityState;
@@ -67,7 +68,7 @@ namespace SP_Sklad.WBDetForm
             if (_wbd != null)
             {
                 MatComboBox.DataBindings.Add(new Binding("EditValue", _wbd, "MatId"));
-                WHComboBox.DataBindings.Add(new Binding("EditValue", _wbd, "WId", true, DataSourceUpdateMode.OnValidation));
+                WHComboBox.DataBindings.Add(new Binding("EditValue", _wbd, "WId", true, DataSourceUpdateMode.OnPropertyChanged));
                 AmountEdit.DataBindings.Add(new Binding("EditValue", _wbd, "Amount"));
                 BasePriceEdit.DataBindings.Add(new Binding("EditValue", _wbd, "BasePrice", true, DataSourceUpdateMode.OnValidation));
 
@@ -91,6 +92,7 @@ namespace SP_Sklad.WBDetForm
                     }
                 }
             }
+
             GetOk();
         }
 
@@ -334,6 +336,14 @@ namespace SP_Sklad.WBDetForm
                 MatComboBox.EditValue = _wbd.MatId;
                 GetContent();
             }
+        }
+
+        private void WhEditBtn_Click(object sender, EventArgs e)
+        {
+            WHComboBox.EditValue = IHelper.ShowDirectList(WHComboBox.EditValue, 2);
+
+            GetContent();
+            GetOk();
         }
 
     }

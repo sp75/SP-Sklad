@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SP_Sklad.Common;
 using SP_Sklad.SkladData;
 using EntityState = System.Data.Entity.EntityState;
 
@@ -257,6 +258,11 @@ namespace SP_Sklad.WBDetForm
                     MatComboBox.EditValue = mat_row.PosId;
                 }
             }
+        }
+
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            WHComboBox.EditValue = IHelper.ShowDirectList(WHComboBox.EditValue, 2);
         }
     }
 }
