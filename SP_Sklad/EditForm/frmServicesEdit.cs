@@ -100,5 +100,10 @@ namespace SP_Sklad.EditForm
             labelControl3.Visible = checkEdit1.Checked;
             NormEdit.Visible = checkEdit1.Checked;
         }
+
+        private void MsListBtn_Click(object sender, EventArgs e)
+        {
+            MsrComboBox.EditValue = IHelper.ShowDirectList(MsrComboBox.EditValue, 12);
+        }
     }
 }

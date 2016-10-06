@@ -685,6 +685,7 @@
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(22, 22);
             this.simpleButton3.TabIndex = 26;
+            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
             // 
             // simpleButton2
             // 
@@ -696,6 +697,7 @@
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(22, 22);
             this.simpleButton2.TabIndex = 25;
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // NotesEdit
             // 
@@ -772,6 +774,7 @@
             this.simpleButton4.Name = "simpleButton4";
             this.simpleButton4.Size = new System.Drawing.Size(22, 22);
             this.simpleButton4.TabIndex = 19;
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
             // 
             // KagentComboBox
             // 

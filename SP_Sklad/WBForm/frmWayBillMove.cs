@@ -17,6 +17,7 @@ using EntityState = System.Data.Entity.EntityState;
 using System.Data.Entity.Core.Objects;
 using SP_Sklad.Common;
 using SP_Sklad.Reports;
+using DevExpress.XtraEditors;
 
 namespace SP_Sklad.WBForm
 {
@@ -85,15 +86,15 @@ namespace SP_Sklad.WBForm
 
                 TurnDocCheckBox.EditValue = wb.Checked;
 
-                WhOutComboBox.DataBindings.Add(new Binding("EditValue", wb.WaybillMove, "SourceWid", false,  DataSourceUpdateMode.OnPropertyChanged));
-                WhInComboBox.DataBindings.Add(new Binding("EditValue", wb.WaybillMove, "DestWId", false, DataSourceUpdateMode.OnPropertyChanged));
-                PersonOutComboBox.DataBindings.Add(new Binding("EditValue", wb.WaybillMove, "PersonId", false, DataSourceUpdateMode.OnPropertyChanged));
+                WhOutComboBox.DataBindings.Add(new Binding("EditValue", wb.WaybillMove, "SourceWid", true, DataSourceUpdateMode.OnPropertyChanged));
+                WhInComboBox.DataBindings.Add(new Binding("EditValue", wb.WaybillMove, "DestWId", true, DataSourceUpdateMode.OnPropertyChanged));
 
-                PersonInComboBox.DataBindings.Add(new Binding("EditValue", wb, "PersonId", false, DataSourceUpdateMode.OnPropertyChanged));
-                KagentComboBox.DataBindings.Add(new Binding("EditValue", wb, "KaId", false, DataSourceUpdateMode.OnPropertyChanged));
+                PersonOutComboBox.DataBindings.Add(new Binding("EditValue", wb.WaybillMove, "PersonId", true, DataSourceUpdateMode.OnPropertyChanged));
+                PersonInComboBox.DataBindings.Add(new Binding("EditValue", wb, "PersonId", true, DataSourceUpdateMode.OnPropertyChanged));
+                KagentComboBox.DataBindings.Add(new Binding("EditValue", wb, "KaId", true, DataSourceUpdateMode.OnPropertyChanged));
 
                 NumEdit.DataBindings.Add(new Binding("EditValue", wb, "Num"));
-                OnDateDBEdit.DataBindings.Add(new Binding("EditValue", wb, "OnDate", false, DataSourceUpdateMode.OnPropertyChanged));
+                OnDateDBEdit.DataBindings.Add(new Binding("EditValue", wb, "OnDate", true, DataSourceUpdateMode.OnPropertyChanged));
 
                 NotesEdit.DataBindings.Add(new Binding("EditValue", wb, "Notes"));
                 ReasonEdit.DataBindings.Add(new Binding("EditValue", wb, "Reason"));
@@ -369,6 +370,14 @@ namespace SP_Sklad.WBForm
             if (e.Button.Index == 1)
             {
                 OnDateDBEdit.EditValue = DBHelper.ServerDateTime();
+            }
+        }
+
+        private void PersonOutComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                ((LookUpEdit)sender).EditValue = IHelper.ShowDirectList(((LookUpEdit)sender).EditValue, 3);
             }
         }
     }

@@ -172,6 +172,7 @@
             this.barButtonItem1.Id = 0;
             this.barButtonItem1.ImageIndex = 4;
             this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // barButtonItem2
             // 
@@ -179,6 +180,7 @@
             this.barButtonItem2.Id = 5;
             this.barButtonItem2.ImageIndex = 5;
             this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // barButtonItem5
             // 
@@ -186,6 +188,7 @@
             this.barButtonItem5.Id = 6;
             this.barButtonItem5.ImageIndex = 6;
             this.barButtonItem5.Name = "barButtonItem5";
+            this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -224,7 +227,7 @@
             this.ImageList.Images.SetKeyName(2, "Right.bmp");
             this.ImageList.Images.SetKeyName(3, "Товари.bmp");
             this.ImageList.Images.SetKeyName(4, "_нформац_я про товар.bmp");
-            this.ImageList.Images.SetKeyName(5, "_нформац_я про рух товар_в.bmp");
+            this.ImageList.Images.SetKeyName(5, "Рух товар_в.bmp");
             this.ImageList.Images.SetKeyName(6, "_нформац_я про резерв товару.ico");
             // 
             // barButtonItem3
@@ -419,10 +422,11 @@
             this.simpleButton2.Size = new System.Drawing.Size(22, 22);
             this.simpleButton2.TabIndex = 55;
             this.simpleButton2.ToolTip = "Повернутися до списку";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // MatRecLookUpEdit
             // 
-            this.MatRecLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecipeBindingSource, "MatId", true));
+            this.MatRecLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecipeBindingSource, "MatId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.MatRecLookUpEdit.Location = new System.Drawing.Point(89, 104);
             this.MatRecLookUpEdit.Name = "MatRecLookUpEdit";
             this.MatRecLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -717,6 +721,7 @@
             this.simpleButton4.Size = new System.Drawing.Size(22, 22);
             this.simpleButton4.TabIndex = 53;
             this.simpleButton4.ToolTip = "Повернутися до списку";
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
             // 
             // calcEdit1
             // 
@@ -775,7 +780,7 @@
             // 
             // MatLookUpEdit
             // 
-            this.MatLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecDetBS, "MatId", true));
+            this.MatLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecDetBS, "MatId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.MatLookUpEdit.Location = new System.Drawing.Point(97, 19);
             this.MatLookUpEdit.Name = "MatLookUpEdit";
             this.MatLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {

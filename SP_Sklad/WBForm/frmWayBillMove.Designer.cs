@@ -607,6 +607,7 @@
             this.PersonInComboBox.Size = new System.Drawing.Size(279, 22);
             this.PersonInComboBox.StyleController = this.styleController1;
             this.PersonInComboBox.TabIndex = 21;
+            this.PersonInComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.PersonOutComboBox_ButtonClick);
             // 
             // labelControl10
             // 
@@ -635,6 +636,7 @@
             this.KagentComboBox.Size = new System.Drawing.Size(279, 22);
             this.KagentComboBox.StyleController = this.styleController1;
             this.KagentComboBox.TabIndex = 18;
+            this.KagentComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.PersonOutComboBox_ButtonClick);
             // 
             // labelControl11
             // 
@@ -663,6 +665,7 @@
             this.PersonOutComboBox.Size = new System.Drawing.Size(279, 22);
             this.PersonOutComboBox.StyleController = this.styleController1;
             this.PersonOutComboBox.TabIndex = 15;
+            this.PersonOutComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.PersonOutComboBox_ButtonClick);
             // 
             // labelControl12
             // 

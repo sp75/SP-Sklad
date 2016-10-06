@@ -356,5 +356,10 @@ order by  ma.ondate desc */
             UpdateWh();
         }
 
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            PersonComboBox.EditValue = IHelper.ShowDirectList(PersonComboBox.EditValue, 3);
+        }
+
     }
 }

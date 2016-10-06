@@ -494,6 +494,7 @@
             this.PersonEditBtn.Name = "PersonEditBtn";
             this.PersonEditBtn.Size = new System.Drawing.Size(22, 22);
             this.PersonEditBtn.TabIndex = 24;
+            this.PersonEditBtn.Click += new System.EventHandler(this.PersonEditBtn_Click);
             // 
             // PersonComboBox
             // 

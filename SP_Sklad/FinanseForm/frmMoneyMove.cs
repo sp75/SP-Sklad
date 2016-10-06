@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SP_Sklad.Common;
 using SP_Sklad.SkladData;
 
 namespace SP_Sklad.FinanseForm
@@ -114,8 +115,7 @@ namespace SP_Sklad.FinanseForm
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            _pd.OnDate = DBHelper.ServerDateTime();
-            OnDateDBEdit.DateTime = _pd.OnDate;
+            OnDateDBEdit.DateTime = DBHelper.ServerDateTime();
         }
 
         private void PTypeComboBox_EditValueChanged(object sender, EventArgs e)
@@ -127,27 +127,21 @@ namespace SP_Sklad.FinanseForm
 
             labelControl7.Visible = false;
             CashEditComboBox.Visible = false;
-            simpleButton4.Visible = false;
             labelControl4.Visible = false;
             AccountEdit.Visible = false;
-            simpleButton1.Visible = false;
 
             if ((int)PTypeComboBox.EditValue == 1)
             {
                 labelControl7.Visible = true;
                 CashEditComboBox.Visible = true;
-                simpleButton4.Visible = true;
                 _pd.AccId = null;
-                
             }
 
             if ((int)PTypeComboBox.EditValue == 2)
             {
                 labelControl4.Visible = true;
                 AccountEdit.Visible = true;
-                simpleButton1.Visible = true;
                 _pd.CashId = null;
-              
             }
             GetOk();
         }
@@ -164,6 +158,19 @@ namespace SP_Sklad.FinanseForm
         private void NumEdit_EditValueChanged(object sender, EventArgs e)
         {
             GetOk();
+        }
+
+        private void simpleButton6_Click(object sender, EventArgs e)
+        {
+            PersonEdit.EditValue = IHelper.ShowDirectList(PersonEdit.EditValue, 3);
+        }
+
+        private void CashEditComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                CashEditComboBox.EditValue = IHelper.ShowDirectList(CashEditComboBox.EditValue, 4);
+            }
         }
     }
 }

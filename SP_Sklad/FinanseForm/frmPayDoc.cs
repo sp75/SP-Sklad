@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SP_Sklad.Common;
 using SP_Sklad.Reports;
 using SP_Sklad.SkladData;
 
@@ -89,12 +90,12 @@ namespace SP_Sklad.FinanseForm
             {
                 TurnDocCheckBox.DataBindings.Add(new Binding("EditValue", _pd, "Checked"));
                 NumEdit.DataBindings.Add(new Binding("EditValue", _pd, "DocNum"));
-                OnDateDBEdit.DataBindings.Add(new Binding("EditValue", _pd, "OnDate"));
-                PTypeComboBox.DataBindings.Add(new Binding("EditValue", _pd, "PTypeId"));
-                CashEditComboBox.DataBindings.Add(new Binding("EditValue", _pd, "CashId", true, DataSourceUpdateMode.OnValidation));
-                ChargeTypesEdit.DataBindings.Add(new Binding("EditValue", _pd, "CTypeId"));
-                KagentComboBox.DataBindings.Add(new Binding("EditValue", _pd, "KaId", true, DataSourceUpdateMode.OnValidation));
-                PersonEdit.DataBindings.Add(new Binding("EditValue", _pd, "MPersonId", true, DataSourceUpdateMode.OnValidation));
+                OnDateDBEdit.DataBindings.Add(new Binding("EditValue", _pd, "OnDate", true, DataSourceUpdateMode.OnPropertyChanged));
+                PTypeComboBox.DataBindings.Add(new Binding("EditValue", _pd, "PTypeId", true, DataSourceUpdateMode.OnPropertyChanged));
+                CashEditComboBox.DataBindings.Add(new Binding("EditValue", _pd, "CashId", true, DataSourceUpdateMode.OnPropertyChanged));
+                ChargeTypesEdit.DataBindings.Add(new Binding("EditValue", _pd, "CTypeId", true, DataSourceUpdateMode.OnPropertyChanged));
+                KagentComboBox.DataBindings.Add(new Binding("EditValue", _pd, "KaId", true, DataSourceUpdateMode.OnPropertyChanged));
+                PersonEdit.DataBindings.Add(new Binding("EditValue", _pd, "MPersonId", true, DataSourceUpdateMode.OnPropertyChanged));
                 SumEdit.DataBindings.Add(new Binding("EditValue", _pd, "Total"));
                 CurrEdit.DataBindings.Add(new Binding("EditValue", _pd, "CurrId"));
                 CurrValueEdit.DataBindings.Add(new Binding("EditValue", _pd, "OnValue"));
@@ -102,7 +103,7 @@ namespace SP_Sklad.FinanseForm
                 WithNDScheckEdit.DataBindings.Add(new Binding("EditValue", _pd, "WithNDS"));
                 ReasonEdit.DataBindings.Add(new Binding("EditValue", _pd, "Reason"));
                 NotesEdit.DataBindings.Add(new Binding("EditValue", _pd, "Notes"));
-                AccountEdit.DataBindings.Add(new Binding("EditValue", _pd, "AccId", true, DataSourceUpdateMode.OnValidation));
+                AccountEdit.DataBindings.Add(new Binding("EditValue", _pd, "AccId", true, DataSourceUpdateMode.OnPropertyChanged));
             }
 
             if (_DocType < 0)
@@ -192,28 +193,22 @@ namespace SP_Sklad.FinanseForm
 
             labelControl7.Visible = false;
             CashEditComboBox.Visible = false;
-            simpleButton4.Visible = false;
 
             labelControl18.Visible = false;
             AccountEdit.Visible = false;
-            simpleButton9.Visible = false;
 
             if ((int)PTypeComboBox.EditValue == 1)
             {
                 labelControl7.Visible = true;
                 CashEditComboBox.Visible = true;
-                simpleButton4.Visible = true;
                 _pd.AccId = null;
-
             }
 
             if ((int)PTypeComboBox.EditValue == 2)
             {
                 labelControl18.Visible = true;
                 AccountEdit.Visible = true;
-                simpleButton9.Visible = true;
                 _pd.CashId = null;
-
             }
             GetOk();
         }
@@ -301,6 +296,34 @@ namespace SP_Sklad.FinanseForm
                 GetDocList();
                 DocListEdit.EditValue = null;
             }
+        }
+
+        private void CashEditComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                CashEditComboBox.EditValue = IHelper.ShowDirectList(CashEditComboBox.EditValue, 4);
+            }
+        }
+
+        private void simpleButton6_Click(object sender, EventArgs e)
+        {
+            ChargeTypesEdit.EditValue = IHelper.ShowDirectList(ChargeTypesEdit.EditValue, 6);
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            PersonEdit.EditValue = IHelper.ShowDirectList(PersonEdit.EditValue, 3);
+        }
+
+        private void simpleButton7_Click(object sender, EventArgs e)
+        {
+            KagentComboBox.EditValue = IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            OnDateDBEdit.EditValue = DBHelper.ServerDateTime();
         }
     }
 }

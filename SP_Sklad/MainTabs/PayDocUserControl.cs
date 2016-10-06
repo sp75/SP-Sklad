@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SP_Sklad.SkladData;
+using SP_Sklad.Common;
 
 namespace SP_Sklad.MainTabs
 {
@@ -47,7 +48,7 @@ namespace SP_Sklad.MainTabs
                     ExecPayCheckBox.EditValue = _pd.Checked;
                     NumEdit.EditValue = _pd.DocNum;
                     PTypeComboBox.EditValue = _pd.PTypeId;
-                    CashEdit.EditValue = _pd.CashId;
+                    CashEditComboBox.EditValue = _pd.CashId;
                     PersonEdit.EditValue = _pd.MPersonId;
                     SumEdit.EditValue = _pd.Total;
                     CurrEdit.EditValue = _pd.CurrId;
@@ -60,7 +61,7 @@ namespace SP_Sklad.MainTabs
             }
 
             PTypeComboBox.Properties.DataSource = DBHelper.PayTypes;
-            CashEdit.Properties.DataSource = DBHelper.CashDesks;
+            CashEditComboBox.Properties.DataSource = DBHelper.CashDesks;
             PersonEdit.Properties.DataSource = DBHelper.Persons;
 
             var ent_id = DBHelper.Enterprise.KaId;
@@ -82,7 +83,7 @@ namespace SP_Sklad.MainTabs
             var cd = _db.CashDesks.FirstOrDefault(w => w.Def == 1);
             if (cd != null)
             {
-                CashEdit.EditValue = cd.CashId; // За товар
+                CashEditComboBox.EditValue = cd.CashId; // За товар
             }
             PTypeComboBox.EditValue = 1;  // Наличкой
            /*добавить текущего пользователя*/ PersonEdit.EditValue = _wb.PersonId ?? _wb.KaId;// Виконавець
@@ -106,7 +107,7 @@ namespace SP_Sklad.MainTabs
                     OnDate = _wb.OnDate,
                     WithNDS = 1,  // З НДС
                     PTypeId = Convert.ToInt32(PTypeComboBox.EditValue),  // Вид оплати
-                    CashId = (int)PTypeComboBox.EditValue == 1 ? (int?)CashEdit.EditValue : null,  // Каса 
+                    CashId = (int)PTypeComboBox.EditValue == 1 ? (int?)CashEditComboBox.EditValue : null,  // Каса 
                     AccId = (int)PTypeComboBox.EditValue == 2 ?  (int?)AccountEdit.EditValue : null, // Acount
                     CTypeId = 1, // За товар
                     CurrId = 2,  //Валюта по умолчанию
@@ -140,7 +141,7 @@ namespace SP_Sklad.MainTabs
                 _pd.KaId = _wb.KaId;
                 _pd.Checked = Convert.ToInt32(ExecPayCheckBox.EditValue);
                 _pd.PTypeId = Convert.ToInt32(PTypeComboBox.EditValue);
-                _pd.CashId = Convert.ToInt32(CashEdit.EditValue);
+                _pd.CashId = Convert.ToInt32(CashEditComboBox.EditValue);
                 _pd.MPersonId = Convert.ToInt32(PersonEdit.EditValue);
             }
 
@@ -151,12 +152,10 @@ namespace SP_Sklad.MainTabs
         {
 
             labelControl3.Visible = false;
-            CashEdit.Visible = false;
-            simpleButton2.Visible = false;
+            CashEditComboBox.Visible = false;
 
             labelControl18.Visible = false;
             AccountEdit.Visible = false;
-            simpleButton9.Visible = false;
 
             if (PTypeComboBox.EditValue == DBNull.Value)
             {
@@ -166,20 +165,29 @@ namespace SP_Sklad.MainTabs
             if ((int)PTypeComboBox.EditValue == 1)
             {
                 labelControl3.Visible = true;
-                CashEdit.Visible = true;
-                simpleButton2.Visible = true;
+                CashEditComboBox.Visible = true;
                 if (_pd!=null) _pd.AccId = null;
-
             }
 
             if ((int)PTypeComboBox.EditValue == 2)
             {
                 labelControl18.Visible = true;
                 AccountEdit.Visible = true;
-                simpleButton9.Visible = true;
                 if (_pd != null) _pd.CashId = null;
-
             }
+        }
+
+        private void CashEditComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                CashEditComboBox.EditValue = IHelper.ShowDirectList(CashEditComboBox.EditValue, 4);
+            }
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            PersonEdit.EditValue = IHelper.ShowDirectList(PersonEdit.EditValue, 3); 
         }
     }
 }

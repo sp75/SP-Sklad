@@ -117,6 +117,27 @@ namespace SP_Sklad.EditForm
         {
             IHelper.ShowMatRSV(_mat_id.Value, _db);
         }
+
+        private void NowDateBtn_Click(object sender, EventArgs e)
+        {
+
+            MsrComboBox.EditValue = IHelper.ShowDirectList(MsrComboBox.EditValue, 12);
+        }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            BarCodeEdit.EditValue = NameTextEdit.Text.ToArray().Sum(s=> Convert.ToInt32(s));
+        }
+
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            CIdLookUpEdit.EditValue = IHelper.ShowDirectList(CIdLookUpEdit.EditValue, 7);
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowTurnMaterial(_mat_id.Value);
+        }
     }
 
 

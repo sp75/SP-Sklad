@@ -79,6 +79,7 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.CurRemainEdit = new DevExpress.XtraEditors.TextEdit();
+            this.GetMatRemainBS = new System.Windows.Forms.BindingSource(this.components);
             this.RsvEdit = new DevExpress.XtraEditors.TextEdit();
             this.RemainWHEdit = new DevExpress.XtraEditors.TextEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
@@ -129,7 +130,6 @@
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.GetMatRemainBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).BeginInit();
@@ -147,6 +147,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.BasePriceEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PriceTypesEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CurRemainEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GetMatRemainBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RsvEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RemainWHEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AmountEdit.Properties)).BeginInit();
@@ -183,7 +184,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.PriceNotNDSEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GetMatRemainBS)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -540,6 +540,7 @@
             this.btnShowRemainByWH.Name = "btnShowRemainByWH";
             this.btnShowRemainByWH.Size = new System.Drawing.Size(22, 22);
             this.btnShowRemainByWH.TabIndex = 12;
+            this.btnShowRemainByWH.ToolTip = "Наявність на складах";
             this.btnShowRemainByWH.Click += new System.EventHandler(this.btnShowRemainByWH_Click);
             // 
             // labelControl3
@@ -639,6 +640,7 @@
             this.simpleButton6.Name = "simpleButton6";
             this.simpleButton6.Size = new System.Drawing.Size(22, 22);
             this.simpleButton6.TabIndex = 30;
+            this.simpleButton6.Click += new System.EventHandler(this.simpleButton6_Click);
             // 
             // labelControl10
             // 
@@ -709,6 +711,10 @@
             this.CurRemainEdit.StyleController = this.styleController1;
             this.CurRemainEdit.TabIndex = 12;
             // 
+            // GetMatRemainBS
+            // 
+            this.GetMatRemainBS.DataSource = typeof(SP_Sklad.SkladData.GetMatRemain_Result);
+            // 
             // RsvEdit
             // 
             this.RsvEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -767,7 +773,8 @@
             this.AmountEdit.Name = "AmountEdit";
             this.AmountEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.AmountEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.AmountEdit.Properties.DisplayFormat.FormatString = "0.0000";
+            this.AmountEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.AmountEdit.Properties.ShowCloseButton = true;
             this.AmountEdit.Size = new System.Drawing.Size(138, 22);
             this.AmountEdit.StyleController = this.styleController1;
@@ -1325,10 +1332,6 @@
             this.simpleButton1.TabIndex = 2;
             this.simpleButton1.Text = "Відмінити";
             // 
-            // GetMatRemainBS
-            // 
-            this.GetMatRemainBS.DataSource = typeof(SP_Sklad.SkladData.GetMatRemain_Result);
-            // 
             // frmWayBillDetOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1370,6 +1373,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.BasePriceEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PriceTypesEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CurRemainEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GetMatRemainBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RsvEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RemainWHEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AmountEdit.Properties)).EndInit();
@@ -1410,7 +1414,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.PriceNotNDSEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.GetMatRemainBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

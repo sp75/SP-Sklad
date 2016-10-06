@@ -83,8 +83,8 @@ namespace SP_Sklad.WBForm
 
                 TurnDocCheckBox.EditValue = wb.Checked;
 
-                KagentComboBox.DataBindings.Add(new Binding("EditValue", wb, "KaId", true, DataSourceUpdateMode.OnValidation));
-                PersonComboBox.DataBindings.Add(new Binding("EditValue", wb, "PersonId", true, DataSourceUpdateMode.OnValidation));
+                KagentComboBox.DataBindings.Add(new Binding("EditValue", wb, "KaId", true, DataSourceUpdateMode.OnPropertyChanged));
+                PersonComboBox.DataBindings.Add(new Binding("EditValue", wb, "PersonId", true, DataSourceUpdateMode.OnPropertyChanged));
                 NumEdit.DataBindings.Add(new Binding("EditValue", wb, "Num"));
                 OnDateDBEdit.DataBindings.Add(new Binding("EditValue", wb, "OnDate"));
                 NotesEdit.DataBindings.Add(new Binding("EditValue", wb, "Notes"));
@@ -345,6 +345,11 @@ namespace SP_Sklad.WBForm
         {
             wb.KaId = (int)IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
             KagentComboBox.EditValue = wb.KaId;
+        }
+
+        private void PersonEditBtn_Click(object sender, EventArgs e)
+        {
+            PersonComboBox.EditValue = IHelper.ShowDirectList(PersonComboBox.EditValue, 3);
         }
     }
 }

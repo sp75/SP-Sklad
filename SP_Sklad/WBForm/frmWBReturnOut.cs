@@ -396,6 +396,11 @@ namespace SP_Sklad.WBForm
             wb.KaId = (int)IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
             KagentComboBox.EditValue = wb.KaId;
         }
+
+        private void PersonEditBtn_Click(object sender, EventArgs e)
+        {
+            PersonComboBox.EditValue = IHelper.ShowDirectList(PersonComboBox.EditValue, 3);
+        }
         
     }
 }

@@ -12,6 +12,7 @@ using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using SP_Sklad.EditForm;
 using SP_Sklad.SkladData;
+using SP_Sklad.ViewsForm;
 using SpreadsheetReportBuilder;
 
 namespace SP_Sklad.Common
@@ -214,7 +215,7 @@ namespace SP_Sklad.Common
         {
             switch (Typ)
             {
-                  case 1:
+                case 1:
                     using (var f = new frmCatalog(1))
                     {
                         f.uc.isDirectList = true;
@@ -225,36 +226,44 @@ namespace SP_Sklad.Common
                         }
                     }
 
-                          break;
+                    break;
 
-                  case 2:
-                          using (var f = new frmCatalog(null,25))
-                          {
-                              f.uc.isDirectList = true;
-                              f.Text = "Склади";
-                              if (f.ShowDialog() == DialogResult.OK)
-                              {
-                                  old_id = (f.uc.WarehouseGridView.GetFocusedRow() as Warehouse).WId;
-                              }
-                          }
-                      
-                     /* frmDirect->DirectTree->Filter = "ID=25"; //Склади;
-                          frmDirect->cxSplitter1->CloseSplitter();
-                          frmDirect->Caption = frmDirect->DirectTreeNAME->Value;
-                          if(frmDirect->ShowModal()== mrOk) old_ID = SkladData->WarehouseWID->Value;*/
-                          break;
+                case 2:
+                    using (var f = new frmCatalog(null, 25))
+                    {
+                        f.uc.isDirectList = true;
+                        f.Text = "Склади";
+                        if (f.ShowDialog() == DialogResult.OK)
+                        {
+                            old_id = (f.uc.WarehouseGridView.GetFocusedRow() as Warehouse).WId;
+                        }
+                    }
+                    break;
 
-              /*    case 3: frmDirect->DirectTree->Filter = "ID=5";  //Службовці
-                          frmDirect->cxSplitter1->CloseSplitter();
-                          frmDirect->Caption = frmDirect->DirectTreeNAME->Value;
-                          if(frmDirect->ShowModal()== mrOk) old_ID = frmDirect->KAgentKAID->Value;
-                          break;
 
-                  case 4: frmDirect->DirectTree->Filter = "ID=64";  //Каси
-                          frmDirect->cxSplitter1->CloseSplitter();
-                          frmDirect->Caption = frmDirect->DirectTreeNAME->Value;
-                          if(frmDirect->ShowModal()== mrOk) old_ID = SkladData->CashdesksCASHID->Value;
-                          break;*/
+                case 3:
+                    using (var f = new frmCatalog(null, 5))
+                    {
+                        f.uc.isDirectList = true;
+                        f.Text = "Службовці";
+                        if (f.ShowDialog() == DialogResult.OK)
+                        {
+                            old_id = (f.uc.KaGridView.GetFocusedRow() as KagentList).KaId;
+                        }
+                    }
+                    break;
+
+                case 4:
+                    using (var f = new frmCatalog(null, 64))
+                    {
+                        f.uc.isDirectList = true;
+                        f.Text = "Каси";
+                        if (f.ShowDialog() == DialogResult.OK)
+                        {
+                            old_id = (f.uc.CashDesksGridView.GetFocusedRow() as CashDesks).CashId;
+                        }
+                    }
+                    break;
 
                 case 5:  //Товари
                     using (var f = new frmCatalog(2))
@@ -268,69 +277,130 @@ namespace SP_Sklad.Common
                     }
                     break;
 
-                /*  case 6: frmDirect->DirectTree->Filter = "ID=102";  //Статті витрат
-                          frmDirect->cxSplitter1->CloseSplitter();
-                          frmDirect->Caption = frmDirect->DirectTreeNAME->Value;
-                          if(frmDirect->ShowModal()== mrOk) old_ID = SkladData->ChargetypeCTYPEID->Value;
-                          break;
+                case 6:
+                    using (var f = new frmCatalog(null, 102))
+                    {
+                        f.uc.isDirectList = true;
+                        f.Text = "Статті витрат";
+                        if (f.ShowDialog() == DialogResult.OK)
+                        {
+                            old_id = (f.uc.ChargeTypeGridView.GetFocusedRow() as ChargeType).CTypeId;
+                        }
+                    }
+                    break;
 
-                  case 7: frmDirect->DirectTree->Filter = "ID=43";  //Країни
-                          frmDirect->cxSplitter1->CloseSplitter();
-                          frmDirect->Caption = frmDirect->DirectTreeNAME->Value;
-                          if(frmDirect->ShowModal()== mrOk) old_ID = SkladData->CountriesCID->Value;
-                          break;
+                case 7:
 
-                  case 8: frmDirect->DirectTree->Filter = "ID=40";  //Категорії цін
-                          frmDirect->cxSplitter1->CloseSplitter();
-                          frmDirect->Caption = frmDirect->DirectTreeNAME->Value;
-                          if(frmDirect->ShowModal()== mrOk) old_ID = SkladData->PricetypesPTYPEID->Value;
-                          break;
+                    using (var f = new frmCatalog(null, 43))
+                    {
+                        f.uc.isDirectList = true;
+                        f.Text = "Країни";
+                        if (f.ShowDialog() == DialogResult.OK)
+                        {
+                            old_id = (f.uc.CountriesGridView.GetFocusedRow() as Countries).CId;
+                        }
+                    }
+                    break;
 
-                  case 9: frmDirect->DirectTree->Filter = "ID=11";  //Банки
-                          frmDirect->cxSplitter1->CloseSplitter();
-                          frmDirect->Caption = frmDirect->DirectTreeNAME->Value;
-                          if(frmDirect->ShowModal()== mrOk) old_ID = SkladData->BanksBANKID->Value;
-                          break;
+                case 8:
+                    using (var f = new frmCatalog(null, 40))
+                    {
+                        f.uc.isDirectList = true;
+                        f.Text = "Категорії цін";
+                        if (f.ShowDialog() == DialogResult.OK)
+                        {
+                            old_id = (f.uc.PriceTypesGridView.GetFocusedRow() as dynamic).PTypeId;
+                        }
+                    }
 
-                  case 10: frmDirect->DirectTree->Filter = "ID=12";  //Типи рахунків в банку
-                          frmDirect->cxSplitter1->CloseSplitter();
-                          frmDirect->Caption = frmDirect->DirectTreeNAME->Value;
-                          if(frmDirect->ShowModal()== mrOk) old_ID = SkladData->AccountTypeTYPEID->Value;
-                          break;
+                    break;
 
-                  case 11: frmDirect->DirectTree->Filter = "GTYPE=3";  //Послуги
-                          frmDirect->Caption = frmDirect->DirectTreeNAME->Value;
-                          if(frmDirect->ShowModal()== mrOk) old_ID = frmDirect->ServicesSVCID->Value;
-                          break;
+                case 9:
+                    using (var f = new frmCatalog(null, 11))
+                    {
+                        f.uc.isDirectList = true;
+                        f.Text = "Банки";
+                        if (f.ShowDialog() == DialogResult.OK)
+                        {
+                            old_id = (f.uc.BanksGridView.GetFocusedRow() as Banks).BankId;
+                        }
+                    }
+                    break;
 
-                  case 12: frmDirect->DirectTree->Filter = "ID=2";  //Одиниці виміру
-                          frmDirect->cxSplitter1->CloseSplitter();
-                          frmDirect->Caption = frmDirect->DirectTreeNAME->Value;
-                          if(frmDirect->ShowModal()== mrOk) old_ID = SkladData->MeasuresMID->Value;
-                          break;
+                case 10:
+                    using (var f = new frmCatalog(null, 12))
+                    {
+                        f.uc.isDirectList = true;
+                        f.Text = "Типи рахунків в банку";
+                        if (f.ShowDialog() == DialogResult.OK)
+                        {
+                            old_id = (f.uc.AccountTypeGridView.GetFocusedRow() as AccountType).TypeId;
+                        }
+                    }
+                    break;
 
-                  case 13: frmDirect->DirectTree->Filter = "ID=53";  //Рецепти
-                          frmDirect->cxSplitter1->CloseSplitter();
-                          frmDirect->Caption = frmDirect->DirectTreeNAME->Value;
-                          if(frmDirect->ShowModal()== mrOk) old_ID = SkladData->MatRecipeRECID->Value;
-                          break;
+                case 11:
+                    using (var f = new frmCatalog(3))
+                    {
+                        f.uc.isDirectList = true;
+                        f.Text = "Послуги";
+                        if (f.ShowDialog() == DialogResult.OK)
+                        {
+                            old_id = (f.uc.ServicesGridView.GetFocusedRow() as v_Services).SvcId;
+                        }
+                    }
+                    break;
 
-                  case 14: frmDirect->DirectTree->Filter = "ID=112";  //Техпроцеси
-                           frmDirect->cxSplitter1->CloseSplitter();
-                           frmDirect->Caption = frmDirect->DirectTreeNAME->Value;
-                           if(frmDirect->ShowModal()== mrOk) old_ID = SkladData->TechProcessPROCID->Value;
-                           break;
+                case 12:
+                    using (var f = new frmCatalog(null, 2))
+                    {
+                        f.uc.isDirectList = true;
+                        f.Text = "Одиниці виміру";
+                        if (f.ShowDialog() == DialogResult.OK)
+                        {
+                            old_id = (f.uc.MeasuresGridView.GetFocusedRow() as Measures).MId;
+                        }
+                    }
+                    break;
 
-                  case 15: frmDirect->DirectTree->Filter = "ID=42";  //Обвалка
-                          frmDirect->cxSplitter1->CloseSplitter();
-                          frmDirect->Caption = frmDirect->DirectTreeNAME->Value;
-                          if(frmDirect->ShowModal()== mrOk) old_ID = SkladData->MatRecipeRECID->Value;
-                          break;*/
+                case 13:
+                    using (var f = new frmCatalog(null, 53))
+                    {
+                        f.uc.isDirectList = true;
+                        f.Text = "Рецепти";
+                        if (f.ShowDialog() == DialogResult.OK)
+                        {
+                            old_id = (f.uc.MatRecipeGridView.GetFocusedRow() as dynamic).RecId;
+                        }
+                    }
+                    break;
 
+                case 14:
+                    using (var f = new frmCatalog(null, 112))
+                    {
+                        f.uc.isDirectList = true;
+                        f.Text = "Техпроцеси";
+                        if (f.ShowDialog() == DialogResult.OK)
+                        {
+                            old_id = (f.uc.TechProcessGridView.GetFocusedRow() as TechProcess).ProcId;
+                        }
+                    }
+                    break;
+
+                case 15:
+                    using (var f = new frmCatalog(null, 42))
+                    {
+                        f.uc.isDirectList = true;
+                        f.Text = "Обвалка";
+                        if (f.ShowDialog() == DialogResult.OK)
+                        {
+                            old_id = (f.uc.MatRecipeGridView.GetFocusedRow() as dynamic).RecId;
+                        }
+                    }
+                    break;
             }
 
             return old_id;
-
         }
 
         public class ReturnRemainByWH
@@ -363,28 +433,26 @@ namespace SP_Sklad.Common
                     }
                     break;
 
-                /*     case 2: frmWHPanel->Caption = "Наявність на складах: "+frmWHPanel->WhTreeDataNAME->Value;
-                             frmWHPanel->WhTreeData->Filter = "GTYPE=1";
-                             frmWHPanel->cxGrid3->Parent = frmWHPanel;
-                             if(frmWHPanel->SP_WMAT_GET->Locate("MATID",MATID,TLocateOptions()))
-                              {
-                                 if(frmWHPanel->ShowModal()== mrOk)
-                                  {
-                                     result[0] = frmWHPanel->SP_WMAT_GETMATID->Value;
-                                     result[1] = frmWHPanel->WMAT_GET_BY_WHWID->Value;
-                                  } else {
-                                     result[0] = old_MATID;
-                                     result[1] = old_WID;
-                                  }
-                             }else {
-                                     result[0] = old_MATID;
-                                     result[1] = old_WID;
-                                   }
-                             break;*/
+                case 2:
+                    if (old_MATID != null)
+                    {
+                        using (var frm = new frmRemainOnWh(DB.SkladBase(), (int)old_MATID))
+                        {
+                            if (frm.ShowDialog() == DialogResult.OK)
+                            {
+                                result.wid = frm.focused_wh.WId;
+                                result.mat_id = (int)old_MATID;
+                            }
+                            else
+                            {
+                                result.wid = old_WID != null ? (int?)old_WID : 0;
+                            }
+                        }
+                    }
+
+                    break;
 
             }
-
-
 
             return result;
         }

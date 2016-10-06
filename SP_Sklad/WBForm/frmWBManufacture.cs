@@ -90,8 +90,8 @@ namespace SP_Sklad.WBForm
                 wb.UpdatedBy = DBHelper.CurrentUser.UserId;
 
                 TurnDocCheckBox.EditValue = wb.Checked;
-                RecipeComboBox.DataBindings.Add(new Binding("EditValue", wb.WayBillMake, "RecId", false, DataSourceUpdateMode.OnPropertyChanged));
-                WhComboBox.DataBindings.Add(new Binding("EditValue", wb.WayBillMake, "SourceWId" , false , DataSourceUpdateMode.OnPropertyChanged));
+                RecipeComboBox.DataBindings.Add(new Binding("EditValue", wb.WayBillMake, "RecId", true, DataSourceUpdateMode.OnPropertyChanged));
+                WhComboBox.DataBindings.Add(new Binding("EditValue", wb.WayBillMake, "SourceWId", true, DataSourceUpdateMode.OnPropertyChanged));
                 AmountMakeEdit.DataBindings.Add(new Binding("EditValue", wb.WayBillMake, "Amount"));
 
                 PersonMakeComboBox.DataBindings.Add(new Binding("EditValue", wb.WayBillMake, "PersonId", true, DataSourceUpdateMode.OnPropertyChanged));
@@ -99,7 +99,7 @@ namespace SP_Sklad.WBForm
                 PersonComboBox.DataBindings.Add(new Binding("EditValue", wb, "PersonId", true, DataSourceUpdateMode.OnPropertyChanged));
 
                 NumEdit.DataBindings.Add(new Binding("EditValue", wb, "Num"));
-                OnDateDBEdit.DataBindings.Add(new Binding("EditValue", wb, "OnDate" , false, DataSourceUpdateMode.OnPropertyChanged));
+                OnDateDBEdit.DataBindings.Add(new Binding("EditValue", wb, "OnDate", true, DataSourceUpdateMode.OnPropertyChanged));
                 ToDateEdit.DataBindings.Add(new Binding("EditValue", wb, "ToDate"));
 
                 NotesEdit.DataBindings.Add(new Binding("EditValue", wb, "Notes"));
@@ -388,6 +388,21 @@ namespace SP_Sklad.WBForm
         private void WhInBtn_Click(object sender, EventArgs e)
         {
             WhComboBox.EditValue = IHelper.ShowDirectList(WhComboBox.EditValue, 2);
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            PersonMakeComboBox.EditValue = IHelper.ShowDirectList(PersonMakeComboBox.EditValue, 3);
+        }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            KagentComboBox.EditValue = IHelper.ShowDirectList(KagentComboBox.EditValue, 3);
+        }
+
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            PersonComboBox.EditValue = IHelper.ShowDirectList(PersonComboBox.EditValue, 3);
         }
     }
 }

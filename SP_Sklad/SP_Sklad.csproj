@@ -212,6 +212,12 @@
     <Compile Include="EditForm\frmUserEdit.Designer.cs">
       <DependentUpon>frmUserEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewsForm\frmRemainOnWh .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmRemainOnWh .Designer.cs">
+      <DependentUpon>frmRemainOnWh .cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewsForm\frmWhCatalog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1060,6 +1066,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmUserEdit.resx">
       <DependentUpon>frmUserEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmRemainOnWh .resx">
+      <DependentUpon>frmRemainOnWh .cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmWhCatalog.resx">
       <DependentUpon>frmWhCatalog.cs</DependentUpon>

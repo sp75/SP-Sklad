@@ -64,6 +64,14 @@
             this.standaloneBarDockControl17 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.UsersOnlineGridControl = new DevExpress.XtraGrid.GridControl();
+            this.UsersOnlineBS = new System.Windows.Forms.BindingSource(this.components);
+            this.UsersOnlineGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
@@ -128,14 +136,6 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barCheckItem1 = new DevExpress.XtraBars.BarCheckItem();
             this.OperLogPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.UsersOnlineGridControl = new DevExpress.XtraGrid.GridControl();
-            this.UsersOnlineGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.UsersOnlineBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.UsersDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -150,6 +150,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
             this.xtraTabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UsersOnlineGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UsersOnlineBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UsersOnlineGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             this.xtraTabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).BeginInit();
             this.xtraTabControl2.SuspendLayout();
@@ -173,11 +178,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.CommonParamsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OperLogPopupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UsersOnlineGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UsersOnlineGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UsersOnlineBS)).BeginInit();
             this.SuspendLayout();
             // 
             // standaloneBarDockControl8
@@ -582,26 +582,105 @@
             // xtraTabPage6
             // 
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(969, 594);
+            this.xtraTabPage6.Size = new System.Drawing.Size(969, 625);
             this.xtraTabPage6.Text = "ViewList";
             // 
             // xtraTabPage1
             // 
             this.xtraTabPage1.Controls.Add(this.UsersOnlineGridControl);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(969, 594);
+            this.xtraTabPage1.Size = new System.Drawing.Size(969, 625);
             this.xtraTabPage1.Text = "Монітор користувачів";
+            // 
+            // UsersOnlineGridControl
+            // 
+            this.UsersOnlineGridControl.DataSource = this.UsersOnlineBS;
+            this.UsersOnlineGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UsersOnlineGridControl.Location = new System.Drawing.Point(0, 0);
+            this.UsersOnlineGridControl.MainView = this.UsersOnlineGridView;
+            this.UsersOnlineGridControl.Name = "UsersOnlineGridControl";
+            this.UsersOnlineGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemImageComboBox2});
+            this.UsersOnlineGridControl.Size = new System.Drawing.Size(969, 625);
+            this.UsersOnlineGridControl.TabIndex = 2;
+            this.UsersOnlineGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.UsersOnlineGridView,
+            this.gridView3});
+            // 
+            // UsersOnlineBS
+            // 
+            this.UsersOnlineBS.DataSource = typeof(SP_Sklad.SkladData.Users);
+            // 
+            // UsersOnlineGridView
+            // 
+            this.UsersOnlineGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.UsersOnlineGridView.Appearance.Row.Options.UseFont = true;
+            this.UsersOnlineGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2,
+            this.gridColumn3});
+            this.UsersOnlineGridView.GridControl = this.UsersOnlineGridControl;
+            this.UsersOnlineGridView.Name = "UsersOnlineGridView";
+            this.UsersOnlineGridView.OptionsBehavior.AllowIncrementalSearch = true;
+            this.UsersOnlineGridView.OptionsBehavior.Editable = false;
+            this.UsersOnlineGridView.OptionsView.EnableAppearanceEvenRow = true;
+            this.UsersOnlineGridView.OptionsView.EnableAppearanceOddRow = true;
+            this.UsersOnlineGridView.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Логін";
+            this.gridColumn1.FieldName = "Name";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.Width = 190;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Повне ім\'я";
+            this.gridColumn2.FieldName = "FullName";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.Width = 519;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "Дата останнього входу";
+            this.gridColumn3.DisplayFormat.FormatString = "g";
+            this.gridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.gridColumn3.FieldName = "LastLogin";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.Width = 242;
+            // 
+            // repositoryItemImageComboBox2
+            // 
+            this.repositoryItemImageComboBox2.AutoHeight = false;
+            this.repositoryItemImageComboBox2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox2.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 23, 23)});
+            this.repositoryItemImageComboBox2.Name = "repositoryItemImageComboBox2";
+            this.repositoryItemImageComboBox2.SmallImages = this.UserTreeImgList;
+            // 
+            // gridView3
+            // 
+            this.gridView3.GridControl = this.UsersOnlineGridControl;
+            this.gridView3.Name = "gridView3";
             // 
             // xtraTabPage2
             // 
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(969, 594);
+            this.xtraTabPage2.Size = new System.Drawing.Size(969, 625);
             this.xtraTabPage2.Text = "Бази даних";
             // 
             // xtraTabPage3
             // 
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(969, 594);
+            this.xtraTabPage3.Size = new System.Drawing.Size(969, 625);
             this.xtraTabPage3.Text = "Редактор SQL-запитiв";
             // 
             // xtraTabPage4
@@ -1196,85 +1275,6 @@
             this.OperLogPopupMenu.Manager = this.barManager1;
             this.OperLogPopupMenu.Name = "OperLogPopupMenu";
             // 
-            // UsersOnlineGridControl
-            // 
-            this.UsersOnlineGridControl.DataSource = this.UsersOnlineBS;
-            this.UsersOnlineGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UsersOnlineGridControl.Location = new System.Drawing.Point(0, 0);
-            this.UsersOnlineGridControl.MainView = this.UsersOnlineGridView;
-            this.UsersOnlineGridControl.Name = "UsersOnlineGridControl";
-            this.UsersOnlineGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemImageComboBox2});
-            this.UsersOnlineGridControl.Size = new System.Drawing.Size(969, 594);
-            this.UsersOnlineGridControl.TabIndex = 2;
-            this.UsersOnlineGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.UsersOnlineGridView,
-            this.gridView3});
-            // 
-            // UsersOnlineGridView
-            // 
-            this.UsersOnlineGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.UsersOnlineGridView.Appearance.Row.Options.UseFont = true;
-            this.UsersOnlineGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn1,
-            this.gridColumn2,
-            this.gridColumn3});
-            this.UsersOnlineGridView.GridControl = this.UsersOnlineGridControl;
-            this.UsersOnlineGridView.Name = "UsersOnlineGridView";
-            this.UsersOnlineGridView.OptionsBehavior.AllowIncrementalSearch = true;
-            this.UsersOnlineGridView.OptionsBehavior.Editable = false;
-            this.UsersOnlineGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.UsersOnlineGridView.OptionsView.EnableAppearanceOddRow = true;
-            this.UsersOnlineGridView.OptionsView.ShowGroupPanel = false;
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "Логін";
-            this.gridColumn1.FieldName = "Name";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 190;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.Caption = "Повне ім\'я";
-            this.gridColumn2.FieldName = "FullName";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
-            this.gridColumn2.Width = 519;
-            // 
-            // repositoryItemImageComboBox2
-            // 
-            this.repositoryItemImageComboBox2.AutoHeight = false;
-            this.repositoryItemImageComboBox2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBox2.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 23, 23)});
-            this.repositoryItemImageComboBox2.Name = "repositoryItemImageComboBox2";
-            this.repositoryItemImageComboBox2.SmallImages = this.UserTreeImgList;
-            // 
-            // gridView3
-            // 
-            this.gridView3.GridControl = this.UsersOnlineGridControl;
-            this.gridView3.Name = "gridView3";
-            // 
-            // gridColumn3
-            // 
-            this.gridColumn3.Caption = "Дата останнього входу";
-            this.gridColumn3.DisplayFormat.FormatString = "g";
-            this.gridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.gridColumn3.FieldName = "LastLogin";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 242;
-            // 
-            // UsersOnlineBS
-            // 
-            this.UsersOnlineBS.DataSource = typeof(SP_Sklad.SkladData.Users);
-            // 
             // ServiceUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1309,6 +1309,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
             this.xtraTabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.UsersOnlineGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UsersOnlineBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UsersOnlineGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             this.xtraTabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).EndInit();
             this.xtraTabControl2.ResumeLayout(false);
@@ -1335,11 +1340,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.CommonParamsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OperLogPopupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UsersOnlineGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UsersOnlineGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UsersOnlineBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

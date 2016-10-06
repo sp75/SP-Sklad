@@ -550,6 +550,7 @@
             this.simpleButton4.Name = "simpleButton4";
             this.simpleButton4.Size = new System.Drawing.Size(22, 22);
             this.simpleButton4.TabIndex = 19;
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
             // 
             // panelControl5
             // 

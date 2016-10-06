@@ -403,6 +403,11 @@ namespace SP_Sklad.WBForm
             UpdateWh();
         }
 
+        private void PersonEditBtn_Click(object sender, EventArgs e)
+        {
+            PersonComboBox.EditValue = IHelper.ShowDirectList(PersonComboBox.EditValue, 3);
+        }
+
 
 
     }

@@ -230,5 +230,30 @@ namespace SP_Sklad.EditForm
             current_transaction.Commit();
         }
 
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            MatRecLookUpEdit.EditValue = IHelper.ShowDirectList(MatRecLookUpEdit.EditValue, 5);
+        }
+
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            MatLookUpEdit.EditValue = IHelper.ShowDirectList(MatLookUpEdit.EditValue, 5);
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowMatInfo((int)MatRecLookUpEdit.EditValue);
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowTurnMaterial((int)MatRecLookUpEdit.EditValue);
+        }
+
+        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowMatRSV((int)MatRecLookUpEdit.EditValue, _db);
+        }
+
     }
 }

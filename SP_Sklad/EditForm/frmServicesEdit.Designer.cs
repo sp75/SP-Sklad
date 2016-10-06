@@ -49,11 +49,13 @@
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
+            this.calcEdit1 = new DevExpress.XtraEditors.CalcEdit();
             this.SerialsCheckEdit = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.ArtikulEdit = new DevExpress.XtraEditors.TextEdit();
-            this.NowDateBtn = new DevExpress.XtraEditors.SimpleButton();
+            this.MsListBtn = new DevExpress.XtraEditors.SimpleButton();
             this.NameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
             this.NormEdit = new DevExpress.XtraEditors.CalcEdit();
@@ -68,8 +70,6 @@
             this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.textEdit8 = new DevExpress.XtraEditors.MemoEdit();
-            this.calcEdit1 = new DevExpress.XtraEditors.CalcEdit();
-            this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ServicesBS)).BeginInit();
@@ -82,6 +82,8 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SerialsCheckEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ArtikulEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NameTextEdit.Properties)).BeginInit();
@@ -91,8 +93,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).BeginInit();
             this.xtraTabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit8.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ImageList
@@ -284,7 +284,7 @@
             this.panelControl1.Controls.Add(this.labelControl4);
             this.panelControl1.Controls.Add(this.labelControl3);
             this.panelControl1.Controls.Add(this.ArtikulEdit);
-            this.panelControl1.Controls.Add(this.NowDateBtn);
+            this.panelControl1.Controls.Add(this.MsListBtn);
             this.panelControl1.Controls.Add(this.NameTextEdit);
             this.panelControl1.Controls.Add(this.labelControl22);
             this.panelControl1.Controls.Add(this.NormEdit);
@@ -300,6 +300,33 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(600, 343);
             this.panelControl1.TabIndex = 1;
+            // 
+            // checkEdit1
+            // 
+            this.checkEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ServicesBS, "IsNormed", true));
+            this.checkEdit1.Location = new System.Drawing.Point(109, 186);
+            this.checkEdit1.MenuManager = this.barManager1;
+            this.checkEdit1.Name = "checkEdit1";
+            this.checkEdit1.Properties.Caption = "Нормативна послуга";
+            this.checkEdit1.Properties.ValueChecked = 1;
+            this.checkEdit1.Properties.ValueUnchecked = 0;
+            this.checkEdit1.Size = new System.Drawing.Size(219, 20);
+            this.checkEdit1.StyleController = this.styleController1;
+            this.checkEdit1.TabIndex = 40;
+            this.checkEdit1.EditValueChanged += new System.EventHandler(this.checkEdit1_EditValueChanged);
+            // 
+            // calcEdit1
+            // 
+            this.calcEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ServicesBS, "Price", true));
+            this.calcEdit1.Location = new System.Drawing.Point(109, 212);
+            this.calcEdit1.Name = "calcEdit1";
+            this.calcEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.calcEdit1.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.calcEdit1.Properties.ShowCloseButton = true;
+            this.calcEdit1.Size = new System.Drawing.Size(184, 22);
+            this.calcEdit1.StyleController = this.styleController1;
+            this.calcEdit1.TabIndex = 39;
             // 
             // SerialsCheckEdit
             // 
@@ -343,15 +370,16 @@
             this.ArtikulEdit.StyleController = this.styleController1;
             this.ArtikulEdit.TabIndex = 29;
             // 
-            // NowDateBtn
+            // MsListBtn
             // 
-            this.NowDateBtn.ImageIndex = 12;
-            this.NowDateBtn.ImageList = this.ImageList;
-            this.NowDateBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.NowDateBtn.Location = new System.Drawing.Point(299, 134);
-            this.NowDateBtn.Name = "NowDateBtn";
-            this.NowDateBtn.Size = new System.Drawing.Size(22, 22);
-            this.NowDateBtn.TabIndex = 28;
+            this.MsListBtn.ImageIndex = 12;
+            this.MsListBtn.ImageList = this.ImageList;
+            this.MsListBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.MsListBtn.Location = new System.Drawing.Point(299, 134);
+            this.MsListBtn.Name = "MsListBtn";
+            this.MsListBtn.Size = new System.Drawing.Size(22, 22);
+            this.MsListBtn.TabIndex = 28;
+            this.MsListBtn.Click += new System.EventHandler(this.MsListBtn_Click);
             // 
             // NameTextEdit
             // 
@@ -419,7 +447,7 @@
             // 
             // MsrComboBox
             // 
-            this.MsrComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ServicesBS, "MId", true));
+            this.MsrComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ServicesBS, "MId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.MsrComboBox.Location = new System.Drawing.Point(109, 134);
             this.MsrComboBox.Name = "MsrComboBox";
             this.MsrComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -507,7 +535,7 @@
             // 
             this.xtraTabPage7.Controls.Add(this.textEdit8);
             this.xtraTabPage7.Name = "xtraTabPage7";
-            this.xtraTabPage7.Size = new System.Drawing.Size(674, 348);
+            this.xtraTabPage7.Size = new System.Drawing.Size(610, 348);
             this.xtraTabPage7.Text = "Примітка";
             // 
             // textEdit8
@@ -516,35 +544,8 @@
             this.textEdit8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textEdit8.Location = new System.Drawing.Point(0, 0);
             this.textEdit8.Name = "textEdit8";
-            this.textEdit8.Size = new System.Drawing.Size(674, 348);
+            this.textEdit8.Size = new System.Drawing.Size(610, 348);
             this.textEdit8.TabIndex = 35;
-            // 
-            // calcEdit1
-            // 
-            this.calcEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ServicesBS, "Price", true));
-            this.calcEdit1.Location = new System.Drawing.Point(109, 212);
-            this.calcEdit1.Name = "calcEdit1";
-            this.calcEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcEdit1.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.calcEdit1.Properties.ShowCloseButton = true;
-            this.calcEdit1.Size = new System.Drawing.Size(184, 22);
-            this.calcEdit1.StyleController = this.styleController1;
-            this.calcEdit1.TabIndex = 39;
-            // 
-            // checkEdit1
-            // 
-            this.checkEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ServicesBS, "IsNormed", true));
-            this.checkEdit1.Location = new System.Drawing.Point(109, 186);
-            this.checkEdit1.MenuManager = this.barManager1;
-            this.checkEdit1.Name = "checkEdit1";
-            this.checkEdit1.Properties.Caption = "Нормативна послуга";
-            this.checkEdit1.Properties.ValueChecked = 1;
-            this.checkEdit1.Properties.ValueUnchecked = 0;
-            this.checkEdit1.Size = new System.Drawing.Size(219, 20);
-            this.checkEdit1.StyleController = this.styleController1;
-            this.checkEdit1.TabIndex = 40;
-            this.checkEdit1.EditValueChanged += new System.EventHandler(this.checkEdit1_EditValueChanged);
             // 
             // frmServicesEdit
             // 
@@ -576,6 +577,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SerialsCheckEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ArtikulEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NameTextEdit.Properties)).EndInit();
@@ -585,8 +588,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).EndInit();
             this.xtraTabPage7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textEdit8.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -617,7 +618,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.TextEdit ArtikulEdit;
-        private DevExpress.XtraEditors.SimpleButton NowDateBtn;
+        private DevExpress.XtraEditors.SimpleButton MsListBtn;
         private DevExpress.XtraEditors.TextEdit NameTextEdit;
         private DevExpress.XtraEditors.LabelControl labelControl22;
         private DevExpress.XtraEditors.CalcEdit NormEdit;

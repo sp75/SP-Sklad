@@ -319,11 +319,16 @@ namespace SP_Sklad.WBDetForm
                 return;
             }
 
+            GetMatPrice();
+        }
+
+        private void GetMatPrice()
+        {
             var list_price = _db.GetListMatPrices((int)MatComboBox.EditValue, _wb.CurrId, (int?)PriceTypesEdit.EditValue).FirstOrDefault();
             if (list_price != null)
             {
-              _wbd.BasePrice   = Math.Round(list_price.Price.Value, 4);
-              BasePriceEdit.Value = _wbd.BasePrice.Value;
+                _wbd.BasePrice = Math.Round(list_price.Price.Value, 4);
+                BasePriceEdit.Value = _wbd.BasePrice.Value;
             }
 
             GetOk();
@@ -416,6 +421,11 @@ namespace SP_Sklad.WBDetForm
 
         private void btnShowRemainByWH_Click(object sender, EventArgs e)
         {
+            var result = IHelper.ShowRemainByWH(MatComboBox.EditValue, WHComboBox.EditValue, 2);
+            WHComboBox.EditValue = result.wid;
+            GetContent(result.wid, (int?)MatComboBox.EditValue);
+            GetOk();
+
          /*   Variant savePoint = MatComboBox->EditValue;// 06.12.12
 
             WayBIllDetWID->Value = frmMain->ShowRemainByWH(MatComboBox->EditValue, WHComboBox->EditValue, 2, MatComboBox->EditValue)->WID;
@@ -430,6 +440,12 @@ namespace SP_Sklad.WBDetForm
             {
                 WHComboBox.EditValue = IHelper.ShowDirectList(WHComboBox.EditValue, 2);
             }
+        }
+
+        private void simpleButton6_Click(object sender, EventArgs e)
+        {
+            PriceTypesEdit.EditValue = IHelper.ShowDirectList(PriceTypesEdit.EditValue, 8);
+            GetMatPrice();
         }
 
     }

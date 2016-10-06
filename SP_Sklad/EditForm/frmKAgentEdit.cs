@@ -86,7 +86,7 @@ namespace SP_Sklad.EditForm
                 PTypeEdit.Properties.DataSource = DB.SkladBase().PriceTypes.Select(s => new { s.PTypeId, s.Name }).ToList();
                 MatLookUpEdit.Properties.DataSource = DB.SkladBase().MaterialsList.ToList();
                 GroupLookUpEdit.Properties.DataSource = DB.SkladBase().MatGroup.ToList();
-                UsersLookUpEdit.Properties.DataSource = DB.SkladBase().Users.ToList();
+                UsersLookUpEdit.Properties.DataSource = DB.SkladBase().Users.ToList().Where(w => !w.Kagent.Any() || w.UserId == _ka.UserId).ToList();
                 JobLookUpEdit.Properties.Items.AddRange(DB.SkladBase().KAgentPersons.Where(w => w.JobType == 2).Select(s => s.Post).Distinct().ToList());
 
                 lookUpEdit1.Properties.DataSource = DB.SkladBase().AccountType.Select(s => new { s.TypeId, s.Name }).ToList();
@@ -423,6 +423,28 @@ namespace SP_Sklad.EditForm
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             IHelper.ShowKABalans( _ka_id.Value );
+        }
+
+        private void simpleButton14_Click(object sender, EventArgs e)
+        {
+            lookUpEdit2.EditValue = IHelper.ShowDirectList(lookUpEdit2.EditValue, 9);
+            
+        }
+
+        private void simpleButton13_Click(object sender, EventArgs e)
+        {
+            lookUpEdit1.EditValue = IHelper.ShowDirectList(lookUpEdit1.EditValue, 10);
+        }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            _ka.UserId = null;
+        }
+
+        private void simpleButton5_Click(object sender, EventArgs e)
+        {
+            new frmUserEdit().ShowDialog();
+            UsersLookUpEdit.Properties.DataSource = DB.SkladBase().Users.ToList().Where(w => !w.Kagent.Any()).ToList();
         }
 
 

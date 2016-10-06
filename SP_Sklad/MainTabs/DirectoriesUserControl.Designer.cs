@@ -3029,7 +3029,6 @@
         private DevExpress.XtraBars.BarButtonItem EditExplorerBtn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem6;
         private DevExpress.XtraGrid.GridControl MatRecipeGridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView MatRecipeGridView;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
@@ -3131,5 +3130,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn71;
         private System.Windows.Forms.BindingSource BanksBS;
+        public DevExpress.XtraGrid.Views.Grid.GridView MatRecipeGridView;
     }
 }
