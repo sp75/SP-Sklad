@@ -121,6 +121,24 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="simpleButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////rWM5pTkIrVIpxpR7
+        ////////////////////////////////////////rWM5rVIQ1pxC571z98aUzoxarUoQtVopzpx7////
+        ////////////////rWM5rVIQ1pw5571a57VC1pxC/9al/96t/96t772Ezns5tVIA////////////////
+        tVoQ57VS56053qUp57U51pxC/8aM97Vz/86U/9al/96tvVIA////////////////vWMY57VK3pwh1oQY
+        1nMI1pw555RC54wY3owY3ow5986UxloA////////////rWM5vWsY1owh5605995j771C1oQY3owh/8ZC
+        /70p97Ux55QhzmsA1oQx////nDEAxmsI5605995j/85K/8ZC/9ZS1owY9/eM9+dz/8ZC/70p/70p/70x
+        76Uh1msArVIp1pw599Za/8ZC/9ZS9+dr795z1pQp58Za9/eM9/+U9/eE99Za/70x960p1nsh////pUoQ
+        9+d79+dr795r3pQp1nMQ1nsQ1nsY/60h771C7+dz9/+U9/+U1nsQ////////zpx7zow53rVS58Za561K
+        3pw53owp3owp/85K/85K/85K98ZC56051oQx////////////1qWMxntKxnsh1qVC585r795z561K9+dz
+        57VK1oQYzmsI1pRK////////////////////////////////3pxr1oQp1nsQznMQ3pRS////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////
+</value>
+  </data>
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAADgpJREFUeF7d
@@ -187,24 +205,6 @@
         RU5ErkJggg==
 </value>
   </data>
-  <data name="simpleButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////
-        ////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////rWM5pTkIrVIpxpR7
-        ////////////////////////////////////////rWM5rVIQ1pxC571z98aUzoxarUoQtVopzpx7////
-        ////////////////rWM5rVIQ1pw5571a57VC1pxC/9al/96t/96t772Ezns5tVIA////////////////
-        tVoQ57VS56053qUp57U51pxC/8aM97Vz/86U/9al/96tvVIA////////////////vWMY57VK3pwh1oQY
-        1nMI1pw555RC54wY3owY3ow5986UxloA////////////rWM5vWsY1owh5605995j771C1oQY3owh/8ZC
-        /70p97Ux55QhzmsA1oQx////nDEAxmsI5605995j/85K/8ZC/9ZS1owY9/eM9+dz/8ZC/70p/70p/70x
-        76Uh1msArVIp1pw599Za/8ZC/9ZS9+dr795z1pQp58Za9/eM9/+U9/eE99Za/70x960p1nsh////pUoQ
-        9+d79+dr795r3pQp1nMQ1nsQ1nsY/60h771C7+dz9/+U9/+U1nsQ////////zpx7zow53rVS58Za561K
-        3pw53owp3owp/85K/85K/85K98ZC56051oQx////////////1qWMxntKxnsh1qVC585r795z561K9+dz
-        57VK1oQYzmsI1pRK////////////////////////////////3pxr1oQp1nsQznMQ3pRS////////////
-        ////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////
-</value>
-  </data>
   <data name="simpleButton3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////
@@ -242,6 +242,6 @@
 </value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>27</value>
+    <value>58</value>
   </metadata>
 </root>

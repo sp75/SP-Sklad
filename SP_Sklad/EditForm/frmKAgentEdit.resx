@@ -125,7 +125,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADI
-        OAAAAk1TRnQBSQFMAgEBEAEAAeABCAHgAQgBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        OAAAAk1TRnQBSQFMAgEBEAEAAfABCAHwAQgBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABUAMAAQEBAAEYBgABPP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AI0AAdYBnAF7Aa0BUgEpAdYBtQGU
         AwABhAG1AXsBAAFrAQABEAF7ARABnAHGAZxIAAGtAoQBnAJjAaUCewHGAq1UAAGlAUIBEAHGAXsBSgGl
         AUIBEAGtAVIBIQEIAXsBEAEhAb0BKQFjAf8BnAEAAWsQAAI5AZwCGAGUHgACWgGcAhABewkAAaUCewGl
@@ -374,7 +374,7 @@
     <value>252, 20</value>
   </metadata>
   <metadata name="KagentBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>399, 18</value>
+    <value>539, 52</value>
   </metadata>
   <metadata name="barManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>27, 20</value>
@@ -383,7 +383,7 @@
     <value>85</value>
   </metadata>
   <metadata name="KAgentDocDS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1169, 16</value>
+    <value>1034, 18</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="DelDiscountBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -417,7 +417,7 @@
 </value>
   </data>
   <metadata name="popupMenu1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>739, 17</value>
+    <value>32, 48</value>
   </metadata>
   <data name="dropDownButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -429,7 +429,13 @@
 </value>
   </data>
   <metadata name="DiscountBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>561, 17</value>
+    <value>532, 20</value>
+  </metadata>
+  <metadata name="AddrresFizBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1166, 22</value>
+  </metadata>
+  <metadata name="AddrresUrBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1036, 47</value>
   </metadata>
   <data name="AddAccBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -471,7 +477,7 @@
 </value>
   </data>
   <metadata name="v_KAgentAccountBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>868, 46</value>
+    <value>733, 48</value>
   </metadata>
   <data name="simpleButton7.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -513,10 +519,10 @@
 </value>
   </data>
   <metadata name="KAgentAccountBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1005, 46</value>
+    <value>870, 48</value>
   </metadata>
   <metadata name="MatDiscountDS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>865, 17</value>
+    <value>730, 19</value>
   </metadata>
   <data name="simpleButton9.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -558,7 +564,7 @@
 </value>
   </data>
   <metadata name="KAMatGroupDiscountDS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1002, 17</value>
+    <value>867, 19</value>
   </metadata>
   <data name="simpleButton10.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -600,6 +606,6 @@
 </value>
   </data>
   <metadata name="TreeListBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>410, 49</value>
+    <value>417, 23</value>
   </metadata>
 </root>

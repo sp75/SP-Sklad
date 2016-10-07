@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SP_Sklad.Common;
 using SP_Sklad.SkladData;
 
 namespace SP_Sklad.WBDetForm
@@ -47,17 +48,17 @@ namespace SP_Sklad.WBDetForm
             {
                 tp_d = _db.TechProcDet.Find(_DetId.Value);
             }
-             
-            TechProcessCB.DataBindings.Add(new Binding("EditValue", tp_d, "ProcId"));
+
+            TechProcessCB.DataBindings.Add(new Binding("EditValue", tp_d, "ProcId", true, DataSourceUpdateMode.OnPropertyChanged));
             AmountEdit.DataBindings.Add(new Binding("EditValue", tp_d, "Out"));
-            OnDateEdit.DataBindings.Add(new Binding("EditValue", tp_d, "OnDate"));
-            PersonComboBox.DataBindings.Add(new Binding("EditValue", tp_d, "PersonId", true, DataSourceUpdateMode.OnValidation));
-            NotesTextEdit.DataBindings.Add(new Binding("EditValue", tp_d, "Notes", true, DataSourceUpdateMode.OnValidation));
+            OnDateEdit.DataBindings.Add(new Binding("EditValue", tp_d, "OnDate", true, DataSourceUpdateMode.OnPropertyChanged));
+            PersonComboBox.DataBindings.Add(new Binding("EditValue", tp_d, "PersonId", true, DataSourceUpdateMode.OnPropertyChanged));
+            NotesTextEdit.DataBindings.Add(new Binding("EditValue", tp_d, "Notes", true, DataSourceUpdateMode.OnPropertyChanged));
         }
 
         private void NowDateBtn_Click(object sender, EventArgs e)
         {
-            OnDateEdit.DateTime = DateTime.Now;
+            OnDateEdit.EditValue = DBHelper.ServerDateTime();
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -69,6 +70,16 @@ namespace SP_Sklad.WBDetForm
         private void frmTechProcDet_FormClosed(object sender, FormClosedEventArgs e)
         {
             _db.Dispose();
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            TechProcessCB.EditValue = IHelper.ShowDirectList(TechProcessCB.EditValue, 14);
+        }
+
+        private void WhBtn_Click(object sender, EventArgs e)
+        {
+            PersonComboBox.EditValue = IHelper.ShowDirectList(PersonComboBox.EditValue, 3);
         }
     }
 }

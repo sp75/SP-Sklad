@@ -59,8 +59,6 @@ namespace SP_Sklad.EditForm
                     KType = _k_type.Value,
                     NdsPayer = 0,
                     Deleted = 0,
-
-
                 });
 
                 _db.SaveChanges();
@@ -110,6 +108,24 @@ namespace SP_Sklad.EditForm
                 else
                 {
                     KAgentDocDS.DataSource = _db.KAgentDoc.Add(new KAgentDoc { KAId = _ka.KaId });
+                }
+
+                if (_ka.KaAddr.Where(w => w.AddrType == 0).Any())
+                {
+                    AddrresFizBS.DataSource = _ka.KaAddr.FirstOrDefault(w => w.AddrType == 0);
+                }
+                else
+                {
+                    AddrresFizBS.DataSource = _db.KaAddr.Add(new KaAddr { KaId = _ka.KaId, AddrType = 0 });
+                }
+
+                if (_ka.KaAddr.Where(w => w.AddrType == 1).Any())
+                {
+                    AddrresUrBS.DataSource = _ka.KaAddr.FirstOrDefault(w => w.AddrType == 1);
+                }
+                else
+                {
+                    AddrresUrBS.DataSource = _db.KaAddr.Add(new KaAddr { KaId = _ka.KaId, AddrType = 1 });
                 }
 
                 GetAccounts();

@@ -196,14 +196,13 @@
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
+            this.WayBillListInfoBS = new System.Windows.Forms.BindingSource(this.components);
+            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.row = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.category = new DevExpress.XtraVerticalGrid.Rows.CategoryRow();
-            this.row1 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.row3 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.row2 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row4 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row5 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row6 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.row1 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl3 = new DevExpress.XtraGrid.GridControl();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -301,6 +300,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WayBillListInfoBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             this.xtraTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
@@ -1370,7 +1371,7 @@
             this.xtraTabPage4.Controls.Add(this.PosGridControl);
             this.xtraTabPage4.ImageIndex = 4;
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(871, 206);
+            this.xtraTabPage4.Size = new System.Drawing.Size(871, 237);
             this.xtraTabPage4.Text = "Партії";
             // 
             // PosGridControl
@@ -1381,7 +1382,7 @@
             this.PosGridControl.Name = "PosGridControl";
             this.PosGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox10});
-            this.PosGridControl.Size = new System.Drawing.Size(871, 206);
+            this.PosGridControl.Size = new System.Drawing.Size(871, 237);
             this.PosGridControl.TabIndex = 1;
             this.PosGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView1});
@@ -2205,61 +2206,65 @@
             // 
             // vGridControl1
             // 
-            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeWE;
+            this.vGridControl1.DataSource = this.WayBillListInfoBS;
             this.vGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl1.Location = new System.Drawing.Point(0, 0);
             this.vGridControl1.Name = "vGridControl1";
             this.vGridControl1.RecordWidth = 186;
-            this.vGridControl1.RowHeaderWidth = 376;
+            this.vGridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemCheckEdit1});
+            this.vGridControl1.RowHeaderWidth = 294;
             this.vGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.row,
-            this.category});
+            this.row4,
+            this.row5,
+            this.row6,
+            this.row1});
             this.vGridControl1.Size = new System.Drawing.Size(871, 157);
             this.vGridControl1.TabIndex = 0;
+            // 
+            // WayBillListInfoBS
+            // 
+            this.WayBillListInfoBS.DataSource = typeof(SP_Sklad.SkladData.GetWayBillListWh_Result);
+            // 
+            // repositoryItemCheckEdit1
+            // 
+            this.repositoryItemCheckEdit1.AutoHeight = false;
+            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+            this.repositoryItemCheckEdit1.ValueChecked = 1;
+            this.repositoryItemCheckEdit1.ValueUnchecked = 0;
             // 
             // row
             // 
             this.row.Name = "row";
             this.row.Properties.Caption = "№";
-            // 
-            // category
-            // 
-            this.category.ChildRows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
-            this.row1,
-            this.row3,
-            this.row2,
-            this.row4,
-            this.row5,
-            this.row6});
-            this.category.Height = 17;
-            this.category.Name = "category";
-            this.category.Properties.Caption = "Дані по контрагенту";
-            // 
-            // row1
-            // 
-            this.row1.Name = "row1";
-            this.row1.Properties.Caption = "П.І.Б";
-            // 
-            // row3
-            // 
-            this.row3.Name = "row3";
-            // 
-            // row2
-            // 
-            this.row2.Name = "row2";
+            this.row.Properties.FieldName = "Num";
             // 
             // row4
             // 
             this.row4.Name = "row4";
+            this.row4.Properties.Caption = "Примітка";
+            this.row4.Properties.FieldName = "Notes";
             // 
             // row5
             // 
             this.row5.Height = 16;
             this.row5.Name = "row5";
+            this.row5.Properties.Caption = "Виконавець";
+            this.row5.Properties.FieldName = "PersonName";
             // 
             // row6
             // 
             this.row6.Name = "row6";
+            this.row6.Properties.Caption = "Стан";
+            this.row6.Properties.FieldName = "Checked";
+            this.row6.Properties.RowEdit = this.repositoryItemCheckEdit1;
+            // 
+            // row1
+            // 
+            this.row1.Name = "row1";
+            this.row1.Properties.Caption = "Підстава";
+            this.row1.Properties.FieldName = "Reason";
             // 
             // xtraTabPage2
             // 
@@ -2472,7 +2477,7 @@
             this.WhComboBox.Properties.ValueMember = "WId";
             this.WhComboBox.Size = new System.Drawing.Size(242, 20);
             this.WhComboBox.TabIndex = 10;
-            this.WhComboBox.EditValueChanged += new System.EventHandler(this.whKagentList_EditValueChanged);
+            this.WhComboBox.EditValueChanged += new System.EventHandler(this.wbStartDate_EditValueChanged);
             // 
             // wbSatusList
             // 
@@ -2487,7 +2492,7 @@
             this.wbSatusList.Properties.ValueMember = "Id";
             this.wbSatusList.Size = new System.Drawing.Size(164, 20);
             this.wbSatusList.TabIndex = 8;
-            this.wbSatusList.EditValueChanged += new System.EventHandler(this.whKagentList_EditValueChanged);
+            this.wbSatusList.EditValueChanged += new System.EventHandler(this.wbStartDate_EditValueChanged);
             // 
             // labelControl4
             // 
@@ -2517,7 +2522,7 @@
             this.wbEndDate.Properties.EditValueChanged += new System.EventHandler(this.wbStartDate_Properties_EditValueChanged);
             this.wbEndDate.Size = new System.Drawing.Size(100, 20);
             this.wbEndDate.TabIndex = 3;
-            this.wbEndDate.EditValueChanged += new System.EventHandler(this.whKagentList_EditValueChanged);
+            this.wbEndDate.EditValueChanged += new System.EventHandler(this.wbStartDate_EditValueChanged);
             // 
             // labelControl2
             // 
@@ -2539,7 +2544,7 @@
             this.wbStartDate.Properties.EditValueChanged += new System.EventHandler(this.wbStartDate_Properties_EditValueChanged);
             this.wbStartDate.Size = new System.Drawing.Size(100, 20);
             this.wbStartDate.TabIndex = 1;
-            this.wbStartDate.EditValueChanged += new System.EventHandler(this.whKagentList_EditValueChanged);
+            this.wbStartDate.EditValueChanged += new System.EventHandler(this.wbStartDate_EditValueChanged);
             // 
             // labelControl1
             // 
@@ -2738,6 +2743,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WayBillListInfoBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             this.xtraTabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
@@ -2819,10 +2826,7 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraVerticalGrid.VGridControl vGridControl1;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow row;
-        private DevExpress.XtraVerticalGrid.Rows.CategoryRow category;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow row1;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow row3;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow row2;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow row4;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow row5;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow row6;
@@ -2974,5 +2978,7 @@
         public DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn GrpNameGridColumn;
         public DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         public DevExpress.XtraEditors.LookUpEdit whKagentList;
+        private System.Windows.Forms.BindingSource WayBillListInfoBS;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
     }
 }

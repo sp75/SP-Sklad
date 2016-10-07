@@ -529,7 +529,7 @@
             // 
             this.NowDateBtn.Image = ((System.Drawing.Image)(resources.GetObject("NowDateBtn.Image")));
             this.NowDateBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.NowDateBtn.Location = new System.Drawing.Point(266, 49);
+            this.NowDateBtn.Location = new System.Drawing.Point(352, 49);
             this.NowDateBtn.Name = "NowDateBtn";
             this.NowDateBtn.Size = new System.Drawing.Size(22, 22);
             this.NowDateBtn.TabIndex = 32;
@@ -547,7 +547,7 @@
             // 
             this.OnDateDBEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PriceListBS, "OnDate", true));
             this.OnDateDBEdit.EditValue = new System.DateTime(2016, 3, 3, 16, 47, 59, 0);
-            this.OnDateDBEdit.Location = new System.Drawing.Point(75, 49);
+            this.OnDateDBEdit.Location = new System.Drawing.Point(63, 49);
             this.OnDateDBEdit.MenuManager = this.barManager1;
             this.OnDateDBEdit.Name = "OnDateDBEdit";
             this.OnDateDBEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -557,14 +557,14 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.OnDateDBEdit.Properties.Mask.EditMask = "F";
             this.OnDateDBEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.OnDateDBEdit.Size = new System.Drawing.Size(185, 22);
+            this.OnDateDBEdit.Size = new System.Drawing.Size(283, 22);
             this.OnDateDBEdit.StyleController = this.styleController1;
             this.OnDateDBEdit.TabIndex = 31;
             // 
             // BotAmountEdit
             // 
             this.BotAmountEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PriceListBS, "Name", true));
-            this.BotAmountEdit.Location = new System.Drawing.Point(75, 13);
+            this.BotAmountEdit.Location = new System.Drawing.Point(63, 13);
             this.BotAmountEdit.MenuManager = this.barManager1;
             this.BotAmountEdit.Name = "BotAmountEdit";
             this.BotAmountEdit.Properties.DisplayFormat.FormatString = "0.0000";

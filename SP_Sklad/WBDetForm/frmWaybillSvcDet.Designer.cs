@@ -250,10 +250,11 @@
             this.PersonEditBtn.Name = "PersonEditBtn";
             this.PersonEditBtn.Size = new System.Drawing.Size(22, 22);
             this.PersonEditBtn.TabIndex = 27;
+            this.PersonEditBtn.Click += new System.EventHandler(this.PersonEditBtn_Click);
             // 
             // PersonComboBox
             // 
-            this.PersonComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WayBillSvcBS, "PersonId", true));
+            this.PersonComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WayBillSvcBS, "PersonId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.PersonComboBox.Location = new System.Drawing.Point(101, 67);
             this.PersonComboBox.Name = "PersonComboBox";
             this.PersonComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -289,7 +290,7 @@
             // 
             this.SvcComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SvcComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WayBillSvcBS, "SvcId", true));
+            this.SvcComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WayBillSvcBS, "SvcId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.SvcComboBox.Location = new System.Drawing.Point(101, 38);
             this.SvcComboBox.Name = "SvcComboBox";
             this.SvcComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -325,6 +326,7 @@
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(22, 22);
             this.simpleButton2.TabIndex = 13;
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // labelControl3
             // 

@@ -348,5 +348,25 @@ namespace SP_Sklad.WBDetForm
 
             GetOk();
         }
+
+        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            IHelper.ShowMatInfo(_wbd.MatId);
+        }
+
+        private void barButtonItem9_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            IHelper.ShowMatRSV(_wbd.MatId, _db);
+        }
+
+        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            IHelper.ShowTurnMaterial(_wbd.MatId);
+        }
+
+        private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            IHelper.ShowOrdered(_wb.KaId.Value, 16, _wbd.MatId);
+        }
     }
 }

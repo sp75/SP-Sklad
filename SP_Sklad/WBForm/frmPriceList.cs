@@ -186,7 +186,7 @@ namespace SP_Sklad.WBForm
 
         void GetDetail()
         {
-            PriceListDetBS.DataSource = _db.GetPriceListDet(_pl_id);  //  _db.PriceListDet.Where(w => w.PlId == _pl_id).ToList();
+            PriceListDetBS.DataSource = _db.GetPriceListDet(_pl_id);  
         }
 
         private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)

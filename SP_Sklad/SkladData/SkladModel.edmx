@@ -1338,7 +1338,7 @@
           <Key>
             <PropertyRef Name="AddrId" />
           </Key>
-          <Property Name="AddrId" Type="int" Nullable="false" />
+          <Property Name="AddrId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="KaId" Type="int" Nullable="false" />
           <Property Name="AddrType" Type="int" Nullable="false" />
           <Property Name="Country" Type="varchar" MaxLength="64" />

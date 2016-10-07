@@ -179,6 +179,8 @@ namespace SP_Sklad.MainTabs
             {
                 gridControl2.DataSource = _db.GetWaybillDetIn(dr.WbillId);
                 gridControl3.DataSource = _db.GetRelDocList(dr.DocId);
+
+                WayBillListInfoBS.DataSource = dr;
             }
             else
             {
@@ -541,6 +543,7 @@ namespace SP_Sklad.MainTabs
         private void PayDocGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             var dr = PayDocGridView.GetRow(e.FocusedRowHandle) as GetPayDocList_Result;
+            PayDocListInfoBS.DataSource = dr;
 
             if (dr != null)
             {
@@ -718,6 +721,14 @@ namespace SP_Sklad.MainTabs
 
         private void PriceListGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
+            var pl_dr = PriceListGridView.GetFocusedRow() as v_PriceList;
+            if (pl_dr != null)
+            {
+                PriceListDetBS.DataSource = _db.GetPriceListDet(pl_dr.PlId);
+            }
+            else PriceListDetBS.DataSource = null;
+
+
             var tree_row = DocsTreeList.GetDataRecordByNode(DocsTreeList.FocusedNode) as v_GetDocsTree;
 
             DeleteItemBtn.Enabled = (pl_focused_row != null && tree_row.CanDelete == 1);

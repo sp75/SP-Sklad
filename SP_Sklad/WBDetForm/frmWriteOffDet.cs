@@ -120,8 +120,6 @@ namespace SP_Sklad.WBDetForm
                 }
             }
 
-            btnShowRemainByWH.Enabled = (MatComboBox.EditValue != null);
-
             BotAmountEdit.Text = AmountEdit.Text;
 
             decimal summ = Convert.ToDecimal(_wbd.Price) * Convert.ToDecimal(AmountEdit.EditValue);
@@ -342,6 +340,21 @@ namespace SP_Sklad.WBDetForm
             WHComboBox.EditValue = IHelper.ShowDirectList(WHComboBox.EditValue, 2);
 
             GetContent();
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowMatInfo(_wbd.MatId);
+        }
+
+        private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowMatRSV(_wbd.MatId, _db);
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowTurnMaterial(_wbd.MatId);
         }
 
     }

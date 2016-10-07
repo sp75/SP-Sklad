@@ -1227,10 +1227,14 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetMatMove_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetMatRemain_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetOperLog_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPayDocList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPosOut_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPriceListDet_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetWaybillDetIn_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetWayBillDetOut_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.GetWayBillListWh_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.GetWayBillList_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.KaAddr.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KADiscount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Kagent.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KAgentAccount.datasource" />

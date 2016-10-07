@@ -462,6 +462,7 @@
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(22, 22);
             this.simpleButton2.TabIndex = 20;
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // KAGroupBox
             // 
@@ -483,6 +484,7 @@
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(22, 22);
             this.simpleButton3.TabIndex = 14;
+            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
             // 
             // KagentComboBox
             // 
@@ -567,6 +569,7 @@
             this.WhBtn.Name = "WhBtn";
             this.WhBtn.Size = new System.Drawing.Size(22, 22);
             this.WhBtn.TabIndex = 27;
+            this.WhBtn.Click += new System.EventHandler(this.WhBtn_Click);
             // 
             // WhComboBox
             // 

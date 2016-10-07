@@ -217,6 +217,7 @@ namespace SP_Sklad.MainTabs
         private void WbGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             focused_row = WbGridView.GetRow(e.FocusedRowHandle) as GetWayBillListWh_Result;
+            WayBillListInfoBS.DataSource = focused_row;
 
             if (focused_row != null)
             {
@@ -749,6 +750,14 @@ namespace SP_Sklad.MainTabs
 
             GetWayBillList(cur_wtype);
 
+        }
+
+        private void wbStartDate_EditValueChanged(object sender, EventArgs e)
+        {
+         //   if (OnDateEdit.ContainsFocus || whKagentList.ContainsFocus)
+       //     {
+                RefrechItemBtn.PerformClick();
+       //     }
         }
     }
 }

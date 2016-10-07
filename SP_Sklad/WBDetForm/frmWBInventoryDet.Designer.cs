@@ -36,10 +36,7 @@
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem2 = new DevExpress.XtraBars.BarSubItem();
-            this.barCheckItem1 = new DevExpress.XtraBars.BarCheckItem();
-            this.barCheckItem2 = new DevExpress.XtraBars.BarCheckItem();
             this.barCheckItem3 = new DevExpress.XtraBars.BarCheckItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -47,13 +44,6 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.sharedImageCollection1 = new DevExpress.Utils.SharedImageCollection(this.components);
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
-            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.WaybillDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.GetPosOutBS = new System.Windows.Forms.BindingSource(this.components);
@@ -134,19 +124,9 @@
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barButtonItem1,
             this.barButtonItem2,
-            this.barButtonItem3,
-            this.barButtonItem4,
-            this.barSubItem1,
-            this.barButtonItem5,
-            this.barButtonItem6,
-            this.barButtonItem7,
-            this.barButtonItem8,
             this.barButtonItem9,
             this.barButtonItem10,
-            this.barButtonItem11,
             this.barSubItem2,
-            this.barCheckItem1,
-            this.barCheckItem2,
             this.barCheckItem3});
             this.barManager1.MainMenu = this.bar1;
             this.barManager1.MaxItemId = 16;
@@ -164,7 +144,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem2)});
             this.bar1.OptionsBar.MultiLine = true;
             this.bar1.OptionsBar.UseWholeRow = true;
@@ -176,6 +155,7 @@
             this.barButtonItem1.Id = 0;
             this.barButtonItem1.ImageIndex = 0;
             this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // barButtonItem9
             // 
@@ -183,6 +163,7 @@
             this.barButtonItem9.Id = 9;
             this.barButtonItem9.ImageIndex = 2;
             this.barButtonItem9.Name = "barButtonItem9";
+            this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick);
             // 
             // barButtonItem2
             // 
@@ -190,6 +171,7 @@
             this.barButtonItem2.Id = 1;
             this.barButtonItem2.ImageIndex = 1;
             this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // barButtonItem10
             // 
@@ -198,44 +180,15 @@
             this.barButtonItem10.ImageIndex = 3;
             this.barButtonItem10.Name = "barButtonItem10";
             // 
-            // barButtonItem11
-            // 
-            this.barButtonItem11.Caption = "Замовити в постачальника";
-            this.barButtonItem11.Id = 11;
-            this.barButtonItem11.ImageIndex = 4;
-            this.barButtonItem11.Name = "barButtonItem11";
-            // 
             // barSubItem2
             // 
             this.barSubItem2.Caption = "Вид";
             this.barSubItem2.Id = 12;
             this.barSubItem2.ImageIndex = 5;
             this.barSubItem2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItem2),
             new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItem3)});
             this.barSubItem2.Name = "barSubItem2";
             this.barSubItem2.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
-            // barCheckItem1
-            // 
-            this.barCheckItem1.BindableChecked = true;
-            this.barCheckItem1.Caption = "Серійний номер";
-            this.barCheckItem1.Checked = global::SP_Sklad.Properties.Settings.Default.ch_view1;
-            this.barCheckItem1.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SP_Sklad.Properties.Settings.Default, "ch_view1", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.barCheckItem1.Id = 13;
-            this.barCheckItem1.Name = "barCheckItem1";
-            this.barCheckItem1.Tag = 0;
-            // 
-            // barCheckItem2
-            // 
-            this.barCheckItem2.BindableChecked = true;
-            this.barCheckItem2.Caption = "Інтервал цін та сертифікат";
-            this.barCheckItem2.Checked = global::SP_Sklad.Properties.Settings.Default.ch_view2;
-            this.barCheckItem2.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SP_Sklad.Properties.Settings.Default, "ch_view2", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.barCheckItem2.Id = 14;
-            this.barCheckItem2.Name = "barCheckItem2";
-            this.barCheckItem2.Tag = 1;
             // 
             // barCheckItem3
             // 
@@ -301,59 +254,6 @@
             this.sharedImageCollection1.ImageSource.Images.SetKeyName(7, "Парт_ї.bmp");
             this.sharedImageCollection1.ImageSource.Images.SetKeyName(8, "Склади.bmp");
             this.sharedImageCollection1.ParentControl = this;
-            // 
-            // barButtonItem3
-            // 
-            this.barButtonItem3.Caption = "Властивості";
-            this.barButtonItem3.Id = 2;
-            this.barButtonItem3.ImageIndex = 2;
-            this.barButtonItem3.Name = "barButtonItem3";
-            this.barButtonItem3.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
-            // barButtonItem4
-            // 
-            this.barButtonItem4.Caption = "Видалити";
-            this.barButtonItem4.Id = 3;
-            this.barButtonItem4.ImageIndex = 1;
-            this.barButtonItem4.Name = "barButtonItem4";
-            this.barButtonItem4.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
-            // barSubItem1
-            // 
-            this.barSubItem1.Caption = "Додати";
-            this.barSubItem1.Id = 4;
-            this.barSubItem1.ImageIndex = 3;
-            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8)});
-            this.barSubItem1.Name = "barSubItem1";
-            this.barSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
-            // barButtonItem5
-            // 
-            this.barButtonItem5.Caption = "Товар";
-            this.barButtonItem5.Id = 5;
-            this.barButtonItem5.Name = "barButtonItem5";
-            // 
-            // barButtonItem6
-            // 
-            this.barButtonItem6.Caption = "Товари списком";
-            this.barButtonItem6.Id = 6;
-            this.barButtonItem6.Name = "barButtonItem6";
-            // 
-            // barButtonItem7
-            // 
-            this.barButtonItem7.Caption = "Послугу";
-            this.barButtonItem7.Id = 7;
-            this.barButtonItem7.Name = "barButtonItem7";
-            // 
-            // barButtonItem8
-            // 
-            this.barButtonItem8.Caption = "Послуги списком";
-            this.barButtonItem8.Id = 8;
-            this.barButtonItem8.Name = "barButtonItem8";
             // 
             // styleController1
             // 
@@ -836,10 +736,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem11;
         private DevExpress.XtraBars.BarSubItem barSubItem2;
-        private DevExpress.XtraBars.BarCheckItem barCheckItem1;
-        private DevExpress.XtraBars.BarCheckItem barCheckItem2;
         private DevExpress.XtraBars.BarCheckItem barCheckItem3;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
@@ -847,13 +744,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;
         private DevExpress.Utils.SharedImageCollection sharedImageCollection1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
-        private DevExpress.XtraBars.BarSubItem barSubItem1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem8;
         private DevExpress.XtraEditors.StyleController styleController1;
         private System.Windows.Forms.BindingSource WaybillDetBS;
         private System.Windows.Forms.BindingSource GetPosOutBS;

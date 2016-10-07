@@ -195,5 +195,20 @@ namespace SP_Sklad
                     break;
             }
         }
+
+        private void WhBtn_Click(object sender, EventArgs e)
+        {
+            WhComboBox.EditValue = IHelper.ShowDirectList(WhComboBox.EditValue, 2);
+        }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            KagentComboBox.EditValue = IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            MatComboBox.EditValue = IHelper.ShowDirectList(MatComboBox.EditValue, 5);
+        }
     }
 }

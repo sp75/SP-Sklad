@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SP_Sklad.Common;
 using SP_Sklad.SkladData;
 using EntityState = System.Data.Entity.EntityState;
 
@@ -153,6 +154,16 @@ namespace SP_Sklad.WBDetForm
 
 
                 GetOk();
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            SvcComboBox.EditValue = IHelper.ShowDirectList(SvcComboBox.EditValue, 11);
+        }
+
+        private void PersonEditBtn_Click(object sender, EventArgs e)
+        {
+            PersonComboBox.EditValue = IHelper.ShowDirectList(PersonComboBox.EditValue, 3);
         }
     }
 }
