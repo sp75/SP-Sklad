@@ -61,7 +61,7 @@ namespace SP_Sklad.Reports
                     break;
 
                 case 7:
-                    WayBillReport(doc_id, db, TemlateList.wb_inv);
+                    WayBillInvwntoryReport(doc_id, db, TemlateList.wb_inv);
                     break;
 
                 case -22:
@@ -112,6 +112,45 @@ namespace SP_Sklad.Reports
 
             dataForReport.Add("WayBillList", wb);
             dataForReport.Add("WayBillItems", db.GetWaybillDetIn(wbill_id).ToList());
+            dataForReport.Add("Commission", db.Commission.Where(w => w.WbillId == wbill_id).Select(s => new
+            {
+                MainName = s.Kagent.Name,
+                FirstName = s.Kagent1.Name,
+                SecondName = s.Kagent2.Name,
+                ThirdName = s.Kagent3.Name
+            }).ToList());
+
+            IHelper.Print(dataForReport, template_name);
+        }
+
+        public static void WayBillInvwntoryReport(int doc_id, BaseEntities db, string template_name)
+        {
+            var dataForReport = new Dictionary<string, IList>();
+            var rel = new List<object>();
+
+            var wb = db.v_WaybillList.Where(w => w.DocId == doc_id).AsNoTracking().ToList();
+            int wbill_id = wb.First().WbillId;
+            var items = db.GetWaybillDetIn(wbill_id).ToList();
+
+            var mat_grp = items.GroupBy(g => new { g.GrpName, g.GrpId }).Select(s => new
+            {
+                s.Key.GrpId,
+                Name = s.Key.GrpName,
+                TotalOrd = s.Sum(xs => xs.Total)
+            }).OrderBy(o => o.Name).ToList();
+
+            rel.Add(new
+            {
+                pk = "GrpId",
+                fk = "GrpId",
+                master_table = "MatGroup",
+                child_table = "WayBillItems"
+            });
+
+            dataForReport.Add("MatGroup", mat_grp);
+            dataForReport.Add("_realation_", rel);
+            dataForReport.Add("WayBillList", wb);
+            dataForReport.Add("WayBillItems",items );
             dataForReport.Add("Commission", db.Commission.Where(w => w.WbillId == wbill_id).Select(s => new
             {
                 MainName = s.Kagent.Name,

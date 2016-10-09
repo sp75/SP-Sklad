@@ -621,16 +621,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<WBDGetOutP2_Result>("[BaseEntities].[WBDGetOutP2](@wbill_id)", wbill_idParameter);
         }
     
-        [EdmFunction("BaseEntities", "GetWaybillDetIn")]
-        public virtual IQueryable<GetWaybillDetIn_Result> GetWaybillDetIn(Nullable<int> wbill_id)
-        {
-            var wbill_idParameter = wbill_id.HasValue ?
-                new ObjectParameter("wbill_id", wbill_id) :
-                new ObjectParameter("wbill_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWaybillDetIn_Result>("[BaseEntities].[GetWaybillDetIn](@wbill_id)", wbill_idParameter);
-        }
-    
         [EdmFunction("BaseEntities", "SP_GET_MAT_NDS")]
         public virtual IQueryable<SP_GET_MAT_NDS_Result> SP_GET_MAT_NDS(Nullable<int> mATID)
         {
@@ -1867,6 +1857,16 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("mat_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_31_Result>("[BaseEntities].[REP_31](@from_date, @to_date, @grp_id, @mat_id)", from_dateParameter, to_dateParameter, grp_idParameter, mat_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetWaybillDetIn")]
+        public virtual IQueryable<GetWaybillDetIn_Result> GetWaybillDetIn(Nullable<int> wbill_id)
+        {
+            var wbill_idParameter = wbill_id.HasValue ?
+                new ObjectParameter("wbill_id", wbill_id) :
+                new ObjectParameter("wbill_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWaybillDetIn_Result>("[BaseEntities].[GetWaybillDetIn](@wbill_id)", wbill_idParameter);
         }
     }
 }

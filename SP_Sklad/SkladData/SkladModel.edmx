@@ -3645,7 +3645,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
                 <Property Name="WbillId" Type="int" Nullable="false" />
                 <Property Name="MatId" Type="int" Nullable="false" />
                 <Property Name="Wid" Type="int" />
-                <Property Name="Amount" Type="numeric" Precision="15" Scale="8" Nullable="false" />
+                <Property Name="Amount" Type="numeric" Precision="19" Scale="8" Nullable="false" />
                 <Property Name="Price" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="Discount" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="Nds" Type="numeric" Precision="15" Scale="4" />
@@ -3656,27 +3656,28 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
                 <Property Name="MatName" Type="nvarchar" MaxLength="255" />
                 <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
                 <Property Name="WhName" Type="nvarchar" MaxLength="64" />
-                <Property Name="Artikul" Type="varchar" MaxLength="255" />
+                <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
                 <Property Name="CurrName" Type="nvarchar" MaxLength="3" />
                 <Property Name="OnValue" Type="numeric" Precision="15" Scale="8" />
                 <Property Name="PosType" Type="int" Nullable="false" />
                 <Property Name="Norm" Type="numeric" Precision="15" Scale="8" />
-                <Property Name="Producer" Type="varchar" MaxLength="255" />
-                <Property Name="Gtd" Type="varchar" MaxLength="64" />
-                <Property Name="CertNum" Type="varchar" MaxLength="64" />
+                <Property Name="Producer" Type="nvarchar" MaxLength="255" />
+                <Property Name="Gtd" Type="nvarchar" MaxLength="64" />
+                <Property Name="CertNum" Type="nvarchar" MaxLength="64" />
                 <Property Name="CertDate" Type="datetime" />
                 <Property Name="Serials" Type="int" />
-                <Property Name="Barcode" Type="varchar" MaxLength="64" />
+                <Property Name="Barcode" Type="nvarchar" MaxLength="64" />
                 <Property Name="GrpId" Type="int" />
                 <Property Name="Country" Type="varchar" MaxLength="128" />
                 <Property Name="Archived" Type="int" />
-                <Property Name="SerialNo" Type="varchar" MaxLength="64" />
+                <Property Name="SerialNo" Type="nvarchar" MaxLength="64" />
                 <Property Name="FullPrice" Type="numeric" Precision="19" Scale="8" />
                 <Property Name="SvcToPrice" Type="int" />
                 <Property Name="WbMaked" Type="int" />
                 <Property Name="Total" Type="numeric" Precision="15" Scale="2" />
                 <Property Name="BasePrice" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="SumNds" Type="numeric" Precision="35" Scale="10" />
+                <Property Name="GrpName" Type="nvarchar" MaxLength="64" Nullable="false" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -5875,9 +5876,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           <FunctionImport Name="WBDGetOutP2" IsComposable="true" ReturnType="Collection(BaseModel.WBDGetOutP2_Result)">
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="GetWaybillDetIn" IsComposable="true" ReturnType="Collection(BaseModel.GetWaybillDetIn_Result)">
-          <Parameter Name="wbill_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SP_GET_MAT_NDS" IsComposable="true" ReturnType="Collection(BaseModel.SP_GET_MAT_NDS_Result)">
           <Parameter Name="MATID" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -6863,6 +6861,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             <Parameter Name="grp_id" Mode="In" Type="Int32" />
             <Parameter Name="mat_id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="GetWaybillDetIn" IsComposable="true" ReturnType="Collection(BaseModel.GetWaybillDetIn_Result)">
+            <Parameter Name="wbill_id" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -7312,45 +7313,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           <Property Type="String" Name="MsrCode" Nullable="true" MaxLength="14" />
           <Property Type="String" Name="Notes" Nullable="true" MaxLength="255" />
           <Property Type="String" Name="SerialNo" Nullable="true" MaxLength="64" />
-        </ComplexType>
-        <ComplexType Name="GetWaybillDetIn_Result">
-          <Property Type="Int32" Name="Num" Nullable="false" />
-          <Property Type="Int32" Name="PosId" Nullable="true" />
-          <Property Type="Int32" Name="WbillId" Nullable="false" />
-          <Property Type="Int32" Name="MatId" Nullable="false" />
-          <Property Type="Int32" Name="Wid" Nullable="true" />
-          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="8" />
-          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Discount" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Nds" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="CurrId" Nullable="true" />
-          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="PtypeId" Nullable="true" />
-          <Property Type="Int32" Name="Checked" Nullable="true" />
-          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
-          <Property Type="String" Name="WhName" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
-          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="Int32" Name="PosType" Nullable="false" />
-          <Property Type="Decimal" Name="Norm" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="String" Name="Producer" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="Gtd" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="CertNum" Nullable="true" MaxLength="64" />
-          <Property Type="DateTime" Name="CertDate" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="Serials" Nullable="true" />
-          <Property Type="String" Name="Barcode" Nullable="true" MaxLength="64" />
-          <Property Type="Int32" Name="GrpId" Nullable="true" />
-          <Property Type="String" Name="Country" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="Archived" Nullable="true" />
-          <Property Type="String" Name="SerialNo" Nullable="true" MaxLength="64" />
-          <Property Type="Decimal" Name="FullPrice" Nullable="true" Precision="19" Scale="8" />
-          <Property Type="Int32" Name="SvcToPrice" Nullable="true" />
-          <Property Type="Int32" Name="WbMaked" Nullable="true" />
-          <Property Type="Decimal" Name="Total" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="Decimal" Name="BasePrice" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="SumNds" Nullable="true" Precision="35" Scale="10" />
         </ComplexType>
         <ComplexType Name="SP_GET_MAT_NDS_Result">
           <Property Type="Decimal" Name="NDS" Nullable="true" Precision="15" Scale="8" />
@@ -11544,6 +11506,46 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           <Property Type="String" Name="PersonName" Nullable="true" MaxLength="64" />
           <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
         </ComplexType>
+        <ComplexType Name="GetWaybillDetIn_Result">
+          <Property Type="Int32" Name="Num" Nullable="false" />
+          <Property Type="Int32" Name="PosId" Nullable="true" />
+          <Property Type="Int32" Name="WbillId" Nullable="false" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="Int32" Name="Wid" Nullable="true" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="19" Scale="8" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Discount" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Nds" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="PtypeId" Nullable="true" />
+          <Property Type="Int32" Name="Checked" Nullable="true" />
+          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="WhName" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
+          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="Int32" Name="PosType" Nullable="false" />
+          <Property Type="Decimal" Name="Norm" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="String" Name="Producer" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Gtd" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="CertNum" Nullable="true" MaxLength="64" />
+          <Property Type="DateTime" Name="CertDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Serials" Nullable="true" />
+          <Property Type="String" Name="Barcode" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="GrpId" Nullable="true" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="Archived" Nullable="true" />
+          <Property Type="String" Name="SerialNo" Nullable="true" MaxLength="64" />
+          <Property Type="Decimal" Name="FullPrice" Nullable="true" Precision="19" Scale="8" />
+          <Property Type="Int32" Name="SvcToPrice" Nullable="true" />
+          <Property Type="Int32" Name="WbMaked" Nullable="true" />
+          <Property Type="Decimal" Name="Total" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="BasePrice" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="SumNds" Nullable="true" Precision="35" Scale="10" />
+          <Property Type="String" Name="GrpName" Nullable="false" MaxLength="64" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -11970,49 +11972,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
                 <ScalarProperty Name="MsrCode" ColumnName="MsrCode" />
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
                 <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetWaybillDetIn" FunctionName="BaseModel.Store.GetWaybillDetIn">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetWaybillDetIn_Result">
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="PosId" ColumnName="PosId" />
-                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="Wid" ColumnName="Wid" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="Nds" ColumnName="Nds" />
-                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="PtypeId" ColumnName="PtypeId" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="MatName" ColumnName="MatName" />
-                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
-                <ScalarProperty Name="WhName" ColumnName="WhName" />
-                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
-                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
-                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
-                <ScalarProperty Name="PosType" ColumnName="PosType" />
-                <ScalarProperty Name="Norm" ColumnName="Norm" />
-                <ScalarProperty Name="Producer" ColumnName="Producer" />
-                <ScalarProperty Name="Gtd" ColumnName="Gtd" />
-                <ScalarProperty Name="CertNum" ColumnName="CertNum" />
-                <ScalarProperty Name="CertDate" ColumnName="CertDate" />
-                <ScalarProperty Name="Serials" ColumnName="Serials" />
-                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
-                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="Archived" ColumnName="Archived" />
-                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
-                <ScalarProperty Name="FullPrice" ColumnName="FullPrice" />
-                <ScalarProperty Name="SvcToPrice" ColumnName="SvcToPrice" />
-                <ScalarProperty Name="WbMaked" ColumnName="WbMaked" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
-                <ScalarProperty Name="SumNds" ColumnName="SumNds" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -14541,6 +14500,50 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
                 <ScalarProperty Name="TotalOut" ColumnName="TotalOut" />
                 <ScalarProperty Name="PersonName" ColumnName="PersonName" />
                 <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetWaybillDetIn" FunctionName="BaseModel.Store.GetWaybillDetIn">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetWaybillDetIn_Result">
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="Wid" ColumnName="Wid" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Nds" ColumnName="Nds" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="PtypeId" ColumnName="PtypeId" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="PosType" ColumnName="PosType" />
+                <ScalarProperty Name="Norm" ColumnName="Norm" />
+                <ScalarProperty Name="Producer" ColumnName="Producer" />
+                <ScalarProperty Name="Gtd" ColumnName="Gtd" />
+                <ScalarProperty Name="CertNum" ColumnName="CertNum" />
+                <ScalarProperty Name="CertDate" ColumnName="CertDate" />
+                <ScalarProperty Name="Serials" ColumnName="Serials" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="FullPrice" ColumnName="FullPrice" />
+                <ScalarProperty Name="SvcToPrice" ColumnName="SvcToPrice" />
+                <ScalarProperty Name="WbMaked" ColumnName="WbMaked" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
+                <ScalarProperty Name="SumNds" ColumnName="SumNds" />
+                <ScalarProperty Name="GrpName" ColumnName="GrpName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
