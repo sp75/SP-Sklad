@@ -161,6 +161,9 @@
     <Compile Include="SkladData\Customers.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\REP_31_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_PriceTypes.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>

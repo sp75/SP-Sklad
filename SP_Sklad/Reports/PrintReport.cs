@@ -652,6 +652,39 @@ namespace SP_Sklad.Reports
 
             }
 
+            if (idx == 31)
+            {
+                var mat = db.REP_31(StartDate, EndDate, (int)MatGroup.GrpId, (int)this.Material.MatId).OrderBy(o => o.MatName).ToList();
+
+                if (!mat.Any())
+                {
+                    return;
+                }
+
+                var mat_grp = mat.GroupBy(g => new { g.GrpName, g.GrpId }).Select(s => new
+                {
+                    s.Key.GrpId,
+                    Name = s.Key.GrpName,
+                    TotalOrd = s.Sum(xs => xs.TotalOrd),
+                    TotalOut = s.Sum(xs => xs.TotalOut)
+                }).OrderBy(o => o.Name).ToList();
+
+                rel.Add(new
+                {
+                    pk = "GrpId",
+                    fk = "GrpId",
+                    master_table = "MatGroup",
+                    child_table = "MatList"
+                });
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("MatGroup", mat_grp);
+                data_for_report.Add("MatList", mat);
+                data_for_report.Add("_realation_", rel);
+
+                IHelper.Print(data_for_report, TemlateList.rep_31);
+            }
+
             if (idx == 29)
             {
                 int grp = Convert.ToInt32(MatGroup.GrpId);

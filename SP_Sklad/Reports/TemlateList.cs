@@ -46,6 +46,6 @@ namespace SP_Sklad.Reports
         public static String rep_27 { get { return "RepOrdKAID.xlsx"; } }  
         public static String rep_28 { get { return "OrderedMat(28).xlsx"; } }
         public static String rep_29 { get { return "MakedProductShort(29).xlsx"; } }
-        
+        public static String rep_31 { get { return "RepOrdMat.xlsx"; } }   
     }
 }
