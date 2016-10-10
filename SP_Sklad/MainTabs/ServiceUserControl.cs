@@ -121,6 +121,7 @@ namespace SP_Sklad.MainTabs
 
                 case 5:
                     GetOperLogBS.DataSource = DB.SkladBase().GetOperLog(wbStartDate.DateTime, wbEndDate.DateTime, (int)wTypeList.EditValue, (int)UserComboBox.EditValue).OrderByDescending(o => o.OnDate).ToList();
+                    PrintLogGridControl.DataSource = DB.SkladBase().GetPrintLog(wbStartDate.DateTime, wbEndDate.DateTime, (int)UserComboBox.EditValue);
                     break;
 
                 case 6:
@@ -181,8 +182,7 @@ namespace SP_Sklad.MainTabs
 
         private void barCheckItem1_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr =OprLogGridView.GetFocusedRow() as GetOperLog_Result;
-            new frmLogHistory(dr.TabId, dr.Id).ShowDialog();
+          
         }
 
         private void OprLogGridView_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
@@ -192,6 +192,27 @@ namespace SP_Sklad.MainTabs
                 Point p2 = Control.MousePosition;
                 OperLogPopupMenu.ShowPopup(p2);
             }
+        }
+
+        private void wbStartDate_EditValueChanged(object sender, EventArgs e)
+        {
+            RefrechItemBtn.PerformClick();
+        }
+
+        private void OprLogGridView_DoubleClick(object sender, EventArgs e)
+        {
+            EditItemBtn.PerformClick();
+        }
+
+        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var dr = OprLogGridView.GetFocusedRow() as GetOperLog_Result;
+            new frmLogHistory(dr.TabId, dr.Id).ShowDialog();
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+         //   gridControl1.DataSource = DB.SkladBase().Database.SqlQuery, memoEdit1.Text);
         }
     }
 }

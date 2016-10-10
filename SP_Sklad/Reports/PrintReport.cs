@@ -814,19 +814,33 @@ namespace SP_Sklad.Reports
                 IHelper.Print(data_for_report, TemlateList.rep_23);
             }
 
-            /*          if(idx == 30)
-                       {
-                          Shahmatka->ParamByName("IN_KAID")->Value = KAID ;
-                          Shahmatka->ParamByName("IN_WTYPE")->Value = 0;
-                          Shahmatka->ParamByName("IN_FROMDATE")->Value = StartDate ;
-                          Shahmatka->ParamByName("IN_TODATE")->Value =  EndDate ;
-                          xlReport_30->Params->Items[0]->Value = StartDate.DateString() ;
-                          xlReport_30->Params->Items[1]->Value = EndDate.DateString() ;
-                          xlReport_30->Params->Items[2]->Value = SkladData->KAgentComboBoxNAME->Value;
-                          xlReport_30->Report();
-                       }*/
+            if (idx == 30)
+            {
+                var list = db.GetDocList(StartDate, EndDate, (int)Kagent.KaId, 0).OrderBy(o => o.OnDate).ToList().Where(w => new int[] { 1, -1, 3, -3, -6, 6 }.Any(a => a == w.WType)).Select((s, index) => new
+                {
+                    idx = index + 1,
+                    s.OnDate,
+                    s.SummAll,
+                    s.Saldo,
+                    DocName = s.TypeName + " №" + s.Num,
+                    PN = s.WType == 1 ? s.SummAll : null,
+                    VN = s.WType == -1 ? s.SummAll : null,
+                    PKO = s.WType == 3 ? s.SummAll : null,
+                    VKO = s.WType == -3 ? s.SummAll : null,
+                    PDP = s.WType == -6 ? s.SummAll : null,
+                    PVK = s.WType == 6 ? s.SummAll : null,
+                }).OrderBy(o=> o.OnDate);
 
+                if (!list.Any())
+                {
+                    return;
+                }
 
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("KADocList", list.ToList());
+
+                IHelper.Print(data_for_report, TemlateList.rep_30);
+            }
 
             db.PrintLog.Add(new PrintLog
             {

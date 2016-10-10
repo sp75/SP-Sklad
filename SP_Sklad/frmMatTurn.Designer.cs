@@ -417,7 +417,7 @@
             this.gridBand1.Columns.Add(this.colKaName);
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 523;
+            this.gridBand1.Width = 549;
             // 
             // colWType
             // 
@@ -467,15 +467,17 @@
             this.colNum.FieldName = "Num";
             this.colNum.Name = "colNum";
             this.colNum.Visible = true;
-            this.colNum.Width = 92;
+            this.colNum.Width = 81;
             // 
             // colOnDate
             // 
             this.colOnDate.Caption = "Дата";
+            this.colOnDate.DisplayFormat.FormatString = "g";
+            this.colOnDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.colOnDate.FieldName = "OnDate";
             this.colOnDate.Name = "colOnDate";
             this.colOnDate.Visible = true;
-            this.colOnDate.Width = 76;
+            this.colOnDate.Width = 113;
             // 
             // colKaName
             // 
@@ -493,7 +495,7 @@
             this.gridBand3.Columns.Add(this.colSaldo);
             this.gridBand3.Name = "gridBand3";
             this.gridBand3.VisibleIndex = 1;
-            this.gridBand3.Width = 438;
+            this.gridBand3.Width = 418;
             // 
             // bandedGridColumn3
             // 
@@ -503,6 +505,7 @@
             this.bandedGridColumn3.FieldName = "Amount";
             this.bandedGridColumn3.Name = "bandedGridColumn3";
             this.bandedGridColumn3.Visible = true;
+            this.bandedGridColumn3.Width = 70;
             // 
             // bandedGridColumn2
             // 
@@ -510,7 +513,7 @@
             this.bandedGridColumn2.FieldName = "WhName";
             this.bandedGridColumn2.Name = "bandedGridColumn2";
             this.bandedGridColumn2.Visible = true;
-            this.bandedGridColumn2.Width = 247;
+            this.bandedGridColumn2.Width = 234;
             // 
             // colSaldo
             // 
@@ -520,7 +523,7 @@
             this.colSaldo.FieldName = "Remain";
             this.colSaldo.Name = "colSaldo";
             this.colSaldo.Visible = true;
-            this.colSaldo.Width = 116;
+            this.colSaldo.Width = 114;
             // 
             // gridBand2
             // 
@@ -529,7 +532,7 @@
             this.gridBand2.Columns.Add(this.colCurrName);
             this.gridBand2.Name = "gridBand2";
             this.gridBand2.VisibleIndex = 2;
-            this.gridBand2.Width = 160;
+            this.gridBand2.Width = 154;
             // 
             // colSummAll
             // 
@@ -539,7 +542,7 @@
             this.colSummAll.FieldName = "Price";
             this.colSummAll.Name = "colSummAll";
             this.colSummAll.Visible = true;
-            this.colSummAll.Width = 93;
+            this.colSummAll.Width = 88;
             // 
             // colCurrName
             // 
@@ -547,7 +550,7 @@
             this.colCurrName.FieldName = "CurrName";
             this.colCurrName.Name = "colCurrName";
             this.colCurrName.Visible = true;
-            this.colCurrName.Width = 67;
+            this.colCurrName.Width = 66;
             // 
             // frmMatTurn
             // 

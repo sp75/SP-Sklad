@@ -50,8 +50,6 @@ namespace SP_Sklad.MainTabs
 
                 DocsTreeList.DataSource = DB.SkladBase().GetManufactureTree(DBHelper.CurrentUser.UserId).ToList();
                 DocsTreeList.ExpandToLevel(0);// ExpandAll();
-
-                repositoryItemWhEdit.DataSource = DBHelper.WhList();
             }
         }
 
@@ -214,22 +212,7 @@ namespace SP_Sklad.MainTabs
                 {
                     TechProcGridControl.DataSource = db.v_TechProcDet.Where(w => w.WbillId == focused_row.WbillId).OrderBy(o => o.OnDate).ToList();
                     gridControl2.DataSource = db.GetWayBillDetOut(focused_row.WbillId).ToList();
-                    gridControl4.DataSource = gridControl2.DataSource;
                     gridControl3.DataSource = db.GetRelDocList(focused_row.DocId).ToList();
-                    gridControl5.DataSource = gridControl3.DataSource;
-
-
-                    DeboningDetGridControl.DataSource = db.DeboningDet.Where(w => w.WBillId == focused_row.WbillId).Select(s => new SP_Sklad.WBForm.frmWBDeboning.DeboningDetList
-                        {
-                            DebId = s.DebId,
-                            WBillId = s.WBillId,
-                            MatId = s.MatId,
-                            Amount = s.Amount,
-                            Price = s.Price,
-                            WId = s.WId,
-                            MatName = s.Materials.Name,
-                            Total = s.Amount * s.Price
-                        }).ToList();
                 }
             }
             else
@@ -237,7 +220,6 @@ namespace SP_Sklad.MainTabs
                 gridControl2.DataSource = null;
                 gridControl3.DataSource = null;
             }
-
 
             StopProcesBtn.Enabled = (focused_row != null && focused_row.Checked == 2 && focused_tree_node.CanPost == 1);
             DeleteItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanDelete == 1);
@@ -249,8 +231,6 @@ namespace SP_Sklad.MainTabs
             //  OkButton->Enabled =  !WayBillList->IsEmpty();
             ExecuteItemBtn.Enabled = (focused_row != null && focused_tree_node.CanPost == 1);
             PrintItemBtn.Enabled = (focused_row != null);
-
-
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -451,6 +431,45 @@ namespace SP_Sklad.MainTabs
             }
 
             RefrechItemBtn.PerformClick();
+        }
+
+        private void DeboningGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            focused_row = ((GridView)sender).GetRow(e.FocusedRowHandle) as WBListMake_Result;
+
+            if (focused_row != null)
+            {
+                using (var db = DB.SkladBase())
+                {
+                    gridControl4.DataSource = db.GetWayBillDetOut(focused_row.WbillId).ToList();
+                    gridControl5.DataSource = db.GetRelDocList(focused_row.DocId).ToList();
+
+                    DeboningDetGridControl.DataSource = db.DeboningDet.Where(w => w.WBillId == focused_row.WbillId).Select(s => new SP_Sklad.WBForm.frmWBDeboning.DeboningDetList
+                    {
+                        DebId = s.DebId,
+                        WBillId = s.WBillId,
+                        MatId = s.MatId,
+                        Amount = s.Amount,
+                        Price = s.Price,
+                        WId = s.WId,
+                        MatName = s.Materials.Name,
+                        Total = s.Amount * s.Price,
+                        WhName = s.Warehouse.Name
+                    }).ToList();
+                }
+            }
+            else
+            {
+                gridControl4.DataSource = null;
+                gridControl5.DataSource = null;
+            }
+
+            StopProcesBtn.Enabled = (focused_row != null && focused_row.Checked == 2 && focused_tree_node.CanPost == 1);
+            DeleteItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanDelete == 1);
+            EditItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanModify == 1);
+            CopyItemBtn.Enabled = (focused_row != null && focused_tree_node.CanModify == 1);
+            ExecuteItemBtn.Enabled = (focused_row != null && focused_tree_node.CanPost == 1);
+            PrintItemBtn.Enabled = (focused_row != null);
         }
 
     }

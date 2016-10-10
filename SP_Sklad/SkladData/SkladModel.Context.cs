@@ -1868,5 +1868,23 @@ namespace SP_Sklad.SkladData
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWaybillDetIn_Result>("[BaseEntities].[GetWaybillDetIn](@wbill_id)", wbill_idParameter);
         }
+    
+        [EdmFunction("BaseEntities", "GetPrintLog")]
+        public virtual IQueryable<GetPrintLog_Result> GetPrintLog(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> user_id)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetPrintLog_Result>("[BaseEntities].[GetPrintLog](@from_date, @to_date, @user_id)", from_dateParameter, to_dateParameter, user_idParameter);
+        }
     }
 }

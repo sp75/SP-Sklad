@@ -27,7 +27,10 @@ namespace SP_Sklad.EditForm
 
             if (_gtype == 1)
             {
-                Text = "Залишки на складі: " + uc.WHTreeList.FocusedNode.GetDisplayText("Name");
+                if (uc.WHTreeList.FocusedNode != null)
+                {
+                    Text = "Залишки на складі: " + uc.WHTreeList.FocusedNode.GetDisplayText("Name");
+                }
             }
         }
     }

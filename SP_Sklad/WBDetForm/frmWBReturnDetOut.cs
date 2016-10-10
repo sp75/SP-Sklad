@@ -41,6 +41,7 @@ namespace SP_Sklad.WBDetForm
             int wh_id = _wb.WaybillMove != null ? _wb.WaybillMove.SourceWid : 0;
 
             MatComboBox.Properties.DataSource = _db.WhMatGet(0, wh_id, _ka_id, DBHelper.ServerDateTime(), 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).ToList();
+           
 
             if (_wb.WType == 4)
             {
@@ -146,6 +147,16 @@ namespace SP_Sklad.WBDetForm
 
         private void GetContent()
         {
+            if (_wb.WType == -6)
+            {
+                var remain_in_wh = _db.WMatGetByWh(_wbd.MatId, 0, _ka_id, DBHelper.ServerDateTime(), "*").ToList();
+                if (remain_in_wh != null)
+                {
+                    WHComboBox.EditValue = remain_in_wh.First().WId;
+                    var fg = _wbd.WId;
+                }
+            }
+
             if (_wbd.WId == null || _wbd.MatId == 0)
             {
                 return;
@@ -305,6 +316,11 @@ namespace SP_Sklad.WBDetForm
 
         private void simpleButton5_Click(object sender, EventArgs e)
         {
+            if (pos_in == null)
+            {
+                return;
+            }
+
             var pos = new frmInParty(pos_in);
             pos.Text = "Прибуткові партії: " + MatComboBox.Text;
             pos.ShowDialog();

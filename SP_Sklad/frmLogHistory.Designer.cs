@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogHistory));
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.OprLogGridControl = new DevExpress.XtraGrid.GridControl();
@@ -37,10 +39,13 @@
             this.gridColumn44 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn45 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn46 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.GridImageList = new System.Windows.Forms.ImageList(this.components);
+            this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OprLogGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OprLogGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl4
@@ -68,6 +73,8 @@
             this.OprLogGridControl.Location = new System.Drawing.Point(0, 0);
             this.OprLogGridControl.MainView = this.OprLogGridView;
             this.OprLogGridControl.Name = "OprLogGridControl";
+            this.OprLogGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemImageComboBox1});
             this.OprLogGridControl.Size = new System.Drawing.Size(908, 415);
             this.OprLogGridControl.TabIndex = 13;
             this.OprLogGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -91,6 +98,7 @@
             // gridColumn42
             // 
             this.gridColumn42.Caption = "Подія";
+            this.gridColumn42.ColumnEdit = this.repositoryItemImageComboBox1;
             this.gridColumn42.FieldName = "OpCode";
             this.gridColumn42.Name = "gridColumn42";
             this.gridColumn42.Visible = true;
@@ -135,6 +143,32 @@
             this.gridColumn46.VisibleIndex = 1;
             this.gridColumn46.Width = 328;
             // 
+            // GridImageList
+            // 
+            this.GridImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("GridImageList.ImageStream")));
+            this.GridImageList.TransparentColor = System.Drawing.Color.White;
+            this.GridImageList.Images.SetKeyName(0, "Add.bmp");
+            this.GridImageList.Images.SetKeyName(1, "edit.bmp");
+            this.GridImageList.Images.SetKeyName(2, "Delete.bmp");
+            this.GridImageList.Images.SetKeyName(3, "Так.bmp");
+            this.GridImageList.Images.SetKeyName(4, "н_.bmp");
+            this.GridImageList.Images.SetKeyName(5, "н_чого.bmp");
+            // 
+            // repositoryItemImageComboBox1
+            // 
+            this.repositoryItemImageComboBox1.AutoHeight = false;
+            this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", "U", 1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", "I", 0),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", "D", 2),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", "E", 3),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", "S", 4),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", "V", 5)});
+            this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
+            this.repositoryItemImageComboBox1.SmallImages = this.GridImageList;
+            // 
             // frmLogHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -151,6 +185,7 @@
             this.panelControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.OprLogGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OprLogGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -166,5 +201,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn44;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn45;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn46;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
+        private System.Windows.Forms.ImageList GridImageList;
     }
 }

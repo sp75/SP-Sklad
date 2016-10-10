@@ -194,6 +194,7 @@
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn50 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
             this.WayBillListInfoBS = new System.Windows.Forms.BindingSource(this.components);
@@ -1457,6 +1458,8 @@
             // gridColumn22
             // 
             this.gridColumn22.Caption = "Дата приходу";
+            this.gridColumn22.DisplayFormat.FormatString = "g";
+            this.gridColumn22.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn22.FieldName = "OnDate";
             this.gridColumn22.Name = "gridColumn22";
             this.gridColumn22.Visible = true;
@@ -2146,7 +2149,8 @@
             this.gridColumn10,
             this.gridColumn11,
             this.gridColumn12,
-            this.gridColumn13});
+            this.gridColumn13,
+            this.gridColumn50});
             this.gridView2.GridControl = this.gridControl2;
             this.gridView2.Name = "gridView2";
             this.gridView2.OptionsView.ShowGroupPanel = false;
@@ -2158,7 +2162,7 @@
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 0;
-            this.gridColumn9.Width = 54;
+            this.gridColumn9.Width = 60;
             // 
             // gridColumn10
             // 
@@ -2167,7 +2171,7 @@
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 1;
-            this.gridColumn10.Width = 157;
+            this.gridColumn10.Width = 225;
             // 
             // gridColumn11
             // 
@@ -2175,8 +2179,8 @@
             this.gridColumn11.FieldName = "Amount";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 2;
-            this.gridColumn11.Width = 157;
+            this.gridColumn11.VisibleIndex = 3;
+            this.gridColumn11.Width = 114;
             // 
             // gridColumn12
             // 
@@ -2184,8 +2188,8 @@
             this.gridColumn12.FieldName = "MsrName";
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 3;
-            this.gridColumn12.Width = 157;
+            this.gridColumn12.VisibleIndex = 4;
+            this.gridColumn12.Width = 114;
             // 
             // gridColumn13
             // 
@@ -2193,8 +2197,17 @@
             this.gridColumn13.FieldName = "Price";
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 4;
-            this.gridColumn13.Width = 160;
+            this.gridColumn13.VisibleIndex = 5;
+            this.gridColumn13.Width = 122;
+            // 
+            // gridColumn50
+            // 
+            this.gridColumn50.Caption = "Склад";
+            this.gridColumn50.FieldName = "WhName";
+            this.gridColumn50.Name = "gridColumn50";
+            this.gridColumn50.Visible = true;
+            this.gridColumn50.VisibleIndex = 2;
+            this.gridColumn50.Width = 218;
             // 
             // xtraTabPage1
             // 
@@ -2980,5 +2993,6 @@
         public DevExpress.XtraEditors.LookUpEdit whKagentList;
         private System.Windows.Forms.BindingSource WayBillListInfoBS;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn50;
     }
 }

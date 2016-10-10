@@ -354,6 +354,7 @@ namespace SP_Sklad.WBForm
             public int WId { get; set; }
             public string MatName { get; set; }
             public decimal Total { get; set; }
+            public string WhName { get; set; }
         }
 
         private void RefreshDeboningDet()
