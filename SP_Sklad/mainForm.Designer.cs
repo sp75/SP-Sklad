@@ -39,7 +39,8 @@
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem7 = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.CurDateEditBarItem = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemDateEdit = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
@@ -58,6 +59,7 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemTimeEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit();
             this.barEditItem2 = new DevExpress.XtraBars.BarEditItem();
@@ -81,8 +83,6 @@
             this.docsUserControl1 = new SP_Sklad.MainTabs.DocsUserControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.sharedImageCollection1 = new DevExpress.Utils.SharedImageCollection(this.components);
-            this.barSubItem7 = new DevExpress.XtraBars.BarSubItem();
-            this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit.CalendarTimeProperties)).BeginInit();
@@ -285,11 +285,20 @@
             this.barButtonItem1.Id = 1;
             this.barButtonItem1.Name = "barButtonItem1";
             // 
-            // barButtonItem2
+            // barSubItem7
             // 
-            this.barButtonItem2.Caption = "Тема";
-            this.barButtonItem2.Id = 2;
-            this.barButtonItem2.Name = "barButtonItem2";
+            this.barSubItem7.Caption = "Тема";
+            this.barSubItem7.Id = 19;
+            this.barSubItem7.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10)});
+            this.barSubItem7.Name = "barSubItem7";
+            // 
+            // barButtonItem10
+            // 
+            this.barButtonItem10.Caption = "Office 2016 Dark";
+            this.barButtonItem10.Id = 20;
+            this.barButtonItem10.Name = "barButtonItem10";
+            this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
             // 
             // CurDateEditBarItem
             // 
@@ -326,6 +335,7 @@
             this.barButtonItem5.Id = 10;
             this.barButtonItem5.ImageIndex = 32;
             this.barButtonItem5.Name = "barButtonItem5";
+            this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
             // 
             // barButtonItem6
             // 
@@ -333,6 +343,7 @@
             this.barButtonItem6.Id = 11;
             this.barButtonItem6.ImageIndex = 31;
             this.barButtonItem6.Name = "barButtonItem6";
+            this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
             // 
             // barButtonItem7
             // 
@@ -340,6 +351,7 @@
             this.barButtonItem7.Id = 12;
             this.barButtonItem7.ImageIndex = 30;
             this.barButtonItem7.Name = "barButtonItem7";
+            this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
             // 
             // barButtonItem8
             // 
@@ -347,6 +359,7 @@
             this.barButtonItem8.Id = 13;
             this.barButtonItem8.ImageIndex = 29;
             this.barButtonItem8.Name = "barButtonItem8";
+            this.barButtonItem8.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
             // 
             // barSubItem4
             // 
@@ -443,6 +456,12 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1188, 49);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 630);
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Тема";
+            this.barButtonItem2.Id = 2;
+            this.barButtonItem2.Name = "barButtonItem2";
             // 
             // barEditItem1
             // 
@@ -653,21 +672,6 @@
             this.sharedImageCollection1.ImageSource.Images.SetKeyName(8, "Склади.bmp");
             this.sharedImageCollection1.ParentControl = this;
             // 
-            // barSubItem7
-            // 
-            this.barSubItem7.Caption = "Тема";
-            this.barSubItem7.Id = 19;
-            this.barSubItem7.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10)});
-            this.barSubItem7.Name = "barSubItem7";
-            // 
-            // barButtonItem10
-            // 
-            this.barButtonItem10.Caption = "Office 2016 Dark";
-            this.barButtonItem10.Id = 20;
-            this.barButtonItem10.Name = "barButtonItem10";
-            this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
-            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -733,7 +737,6 @@
         private DevExpress.XtraGrid.GridSplitContainer gridSplitContainer1;
         public System.Windows.Forms.ImageList UserTreeImgList;
         public System.Windows.Forms.ImageList GridImageList;
-        private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
@@ -741,9 +744,6 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage5;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage6;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage7;
-        private MainTabs.DocsUserControl docsUserControl1;
-        private MainTabs.WarehouseUserControl whUserControl;
-        private MainTabs.ManufacturingUserControl manufacturingUserControl1;
         private MainTabs.DirectoriesUserControl directoriesUserControl1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private MainTabs.ReportUserControl reportUserControl1;
@@ -764,6 +764,10 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
         private DevExpress.XtraBars.BarSubItem barSubItem7;
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
+        public DevExpress.XtraTab.XtraTabControl xtraTabControl1;
+        public MainTabs.DocsUserControl docsUserControl1;
+        public MainTabs.ManufacturingUserControl manufacturingUserControl1;
+        public MainTabs.WarehouseUserControl whUserControl;
     }
 }
 

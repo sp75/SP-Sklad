@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using SP_Sklad.SkladData;
 using System.Data.Entity;
 using SP_Sklad.Common;
+using SP_Sklad.WBForm;
 
 namespace SP_Sklad
 {
@@ -17,6 +18,7 @@ namespace SP_Sklad
     {
         public static int user_id { get; set; }
         public static int enterprise_id { get; set; }
+        public static mainForm main_form { get; set; }
 
         public mainForm(int UserId)
         {
@@ -94,6 +96,38 @@ namespace SP_Sklad
         private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2016 Dark";
+        }
+
+        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var wb_in = new frmWayBillOut(-1, null))
+            {
+                wb_in.ShowDialog();
+            }
+        }
+
+        private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var wb_in = new frmWayBillOut(1, null))
+            {
+                wb_in.ShowDialog();
+            }
+        }
+
+        private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var wb_make = new frmWBManufacture(null))
+            {
+                wb_make.ShowDialog();
+            }
+        }
+
+        private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var wb_make = new frmWBDeboning(null))
+            {
+                wb_make.ShowDialog();
+            }
         }
 
     }

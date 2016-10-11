@@ -29,6 +29,16 @@ namespace SP_Sklad.MainTabs
         {
             InitializeComponent();
 
+           
+        }
+
+        private void wbStartDate_Properties_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ManufacturingUserControl_Load(object sender, EventArgs e)
+        {
             if (!DesignMode)
             {
                 wbContentTab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
@@ -51,16 +61,6 @@ namespace SP_Sklad.MainTabs
                 DocsTreeList.DataSource = DB.SkladBase().GetManufactureTree(DBHelper.CurrentUser.UserId).ToList();
                 DocsTreeList.ExpandToLevel(0);// ExpandAll();
             }
-        }
-
-        private void wbStartDate_Properties_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ManufacturingUserControl_Load(object sender, EventArgs e)
-        {
-
         }
 
         void GetWayBillList()
@@ -470,6 +470,47 @@ namespace SP_Sklad.MainTabs
             CopyItemBtn.Enabled = (focused_row != null && focused_tree_node.CanModify == 1);
             ExecuteItemBtn.Enabled = (focused_row != null && focused_tree_node.CanPost == 1);
             PrintItemBtn.Enabled = (focused_row != null);
+        }
+
+        private void barButtonItem1_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            GetRelDocList_Result row = new GetRelDocList_Result();
+
+            if (gridView3.Focus())
+            {
+                row = gridView3.GetFocusedRow() as GetRelDocList_Result;
+            }
+            else if (gridView5.Focus())
+            {
+                row = gridView5.GetFocusedRow() as GetRelDocList_Result;
+            }
+
+            FindDoc.Find(row.DocId, row.DocType, row.OnDate);
+        }
+
+        private void gridView3_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                BottomPopupMenu.ShowPopup(p2);
+            }
+        }
+
+        private void barButtonItem2_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            GetRelDocList_Result row = new GetRelDocList_Result();
+
+            if (gridView3.Focus())
+            {
+                row = gridView3.GetFocusedRow() as GetRelDocList_Result;
+            }
+            else if (gridView5.Focus())
+            {
+                row = gridView5.GetFocusedRow() as GetRelDocList_Result;
+            }
+
+            PrintDoc.Show(row.DocId.Value, row.DocType.Value, DB.SkladBase());
         }
 
     }

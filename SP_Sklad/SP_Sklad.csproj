@@ -107,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\DocEdit.cs" />
+    <Compile Include="Common\FindDoc.cs" />
     <Compile Include="Common\IHelper.cs" />
     <Compile Include="Common\ManufDocEdit.cs" />
     <Compile Include="Common\MoneyToStr.cs" />

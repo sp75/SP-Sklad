@@ -94,11 +94,11 @@
             this.checkEdit3 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
-            this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.AccessPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit3 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.AccessPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserBS)).BeginInit();
@@ -132,10 +132,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AccessPopupMenu)).BeginInit();
             this.xtraTabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccessPopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -190,14 +190,14 @@
             this.ImageList.Images.SetKeyName(0, "UserInfo.bmp");
             this.ImageList.Images.SetKeyName(1, "Right.bmp");
             this.ImageList.Images.SetKeyName(2, "н_чого.bmp");
-            this.ImageList.Images.SetKeyName(3, "Так.bmp");
-            this.ImageList.Images.SetKeyName(4, "н_.bmp");
-            this.ImageList.Images.SetKeyName(5, "del_all_line.bmp");
-            this.ImageList.Images.SetKeyName(6, "enable_all.bmp");
-            this.ImageList.Images.SetKeyName(7, "h_line_disable.bmp");
-            this.ImageList.Images.SetKeyName(8, "line_grin.bmp");
-            this.ImageList.Images.SetKeyName(9, "v_line_disable.bmp");
-            this.ImageList.Images.SetKeyName(10, "v_line_enable.bmp");
+            this.ImageList.Images.SetKeyName(3, "execute.png");
+            this.ImageList.Images.SetKeyName(4, "storno.png");
+            this.ImageList.Images.SetKeyName(5, "del_all_line.png");
+            this.ImageList.Images.SetKeyName(6, "enable_all.png");
+            this.ImageList.Images.SetKeyName(7, "h_line_disable.png");
+            this.ImageList.Images.SetKeyName(8, "line_grin.png");
+            this.ImageList.Images.SetKeyName(9, "v_line_disable.png");
+            this.ImageList.Images.SetKeyName(10, "v_line_enable.png");
             this.ImageList.Images.SetKeyName(11, "exec16.png");
             // 
             // barButtonItem1
@@ -322,7 +322,7 @@
             // 
             this.splitterControl1.Location = new System.Drawing.Point(187, 0);
             this.splitterControl1.Name = "splitterControl1";
-            this.splitterControl1.Size = new System.Drawing.Size(5, 402);
+            this.splitterControl1.Size = new System.Drawing.Size(6, 402);
             this.splitterControl1.TabIndex = 36;
             this.splitterControl1.TabStop = false;
             // 
@@ -331,12 +331,12 @@
             this.xtraTabControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.xtraTabControl1.BorderStylePage = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(192, 0);
+            this.xtraTabControl1.Location = new System.Drawing.Point(193, 0);
             this.xtraTabControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.xtraTabControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(635, 402);
+            this.xtraTabControl1.Size = new System.Drawing.Size(634, 402);
             this.xtraTabControl1.TabIndex = 37;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -347,7 +347,7 @@
             // 
             this.xtraTabPage1.Controls.Add(this.panel1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(635, 380);
+            this.xtraTabPage1.Size = new System.Drawing.Size(634, 380);
             this.xtraTabPage1.Text = "Інформація";
             // 
             // panel1
@@ -356,7 +356,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(635, 380);
+            this.panel1.Size = new System.Drawing.Size(634, 380);
             this.panel1.TabIndex = 29;
             // 
             // groupControl2
@@ -372,7 +372,7 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(635, 380);
+            this.groupControl2.Size = new System.Drawing.Size(634, 380);
             this.groupControl2.TabIndex = 17;
             this.groupControl2.Tag = "";
             this.groupControl2.Text = " Основна інформація ";
@@ -813,22 +813,6 @@
             this.checkEdit1.StyleController = this.styleController1;
             this.checkEdit1.TabIndex = 0;
             // 
-            // bindingSource2
-            // 
-            this.bindingSource2.DataSource = typeof(SP_Sklad.SkladData.Users);
-            // 
-            // AccessPopupMenu
-            // 
-            this.AccessPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6)});
-            this.AccessPopupMenu.Manager = this.barManager1;
-            this.AccessPopupMenu.Name = "AccessPopupMenu";
-            // 
             // xtraTabPage6
             // 
             this.xtraTabPage6.Controls.Add(this.labelControl2);
@@ -858,6 +842,22 @@
             "pdf"});
             this.textEdit3.Size = new System.Drawing.Size(319, 20);
             this.textEdit3.TabIndex = 46;
+            // 
+            // bindingSource2
+            // 
+            this.bindingSource2.DataSource = typeof(SP_Sklad.SkladData.Users);
+            // 
+            // AccessPopupMenu
+            // 
+            this.AccessPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6)});
+            this.AccessPopupMenu.Manager = this.barManager1;
+            this.AccessPopupMenu.Name = "AccessPopupMenu";
             // 
             // frmUserEdit
             // 
@@ -911,11 +911,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AccessPopupMenu)).EndInit();
             this.xtraTabPage6.ResumeLayout(false);
             this.xtraTabPage6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccessPopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

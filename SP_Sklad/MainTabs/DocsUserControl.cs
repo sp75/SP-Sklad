@@ -83,14 +83,14 @@ namespace SP_Sklad.MainTabs
 
         void GetWayBillList(int wtyp)
         {
-            if (wbStatusList.EditValue == null || wbKagentList.EditValue == null || DocsTreeList.FocusedNode==null)
+            if (wbStatusList.EditValue == null || wbKagentList.EditValue == null || DocsTreeList.FocusedNode == null)
             {
                 return;
             }
 
             var satrt_date = wbStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : wbStartDate.DateTime;
             var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
-         
+
             var dr = WbGridView.GetRow(WbGridView.FocusedRowHandle) as GetWayBillList_Result;
 
             WBGridControl.DataSource = null;
@@ -244,34 +244,34 @@ namespace SP_Sklad.MainTabs
                     }
                     break;
 
-                        case 5:
+                case 5:
                     new frmPriceList().ShowDialog();
-                                break;
+                    break;
 
-             /*           case 6: frmContr = new  TfrmContr(Application);
-                                frmContr->CONTRACTS->Open();
-                                frmContr->CONTRACTS->Append();
-                                if(DocsTreeDataID->Value == 47) frmContr->CONTRACTSDOCTYPE->Value = -1;
-                                if(DocsTreeDataID->Value == 46) frmContr->CONTRACTSDOCTYPE->Value = 1;
-                                frmContr->CONTRACTS->Post();
-                                frmContr->CONTRACTS->Edit();
+                /*           case 6: frmContr = new  TfrmContr(Application);
+                                   frmContr->CONTRACTS->Open();
+                                   frmContr->CONTRACTS->Append();
+                                   if(DocsTreeDataID->Value == 47) frmContr->CONTRACTSDOCTYPE->Value = -1;
+                                   if(DocsTreeDataID->Value == 46) frmContr->CONTRACTSDOCTYPE->Value = 1;
+                                   frmContr->CONTRACTS->Post();
+                                   frmContr->CONTRACTS->Edit();
 
-                                frmContr->CONTRPARAMS->Append();
-                                frmContr->CONTRPARAMS->Post();
-                                frmContr->CONTRRESULTS->Append();
+                                   frmContr->CONTRPARAMS->Append();
+                                   frmContr->CONTRPARAMS->Post();
+                                   frmContr->CONTRRESULTS->Append();
 
-                                frmContr->ShowModal() ;
-                                delete frmContr;
-                                break;
+                                   frmContr->ShowModal() ;
+                                   delete frmContr;
+                                   break;
 
-                        case 7: frmTaxWB = new  TfrmTaxWB(Application);
-                                frmTaxWB->TaxWB->Open();
-                                frmTaxWB->TaxWB->Append();
-                                frmTaxWB->TaxWB->Post();
-                                frmTaxWB->TaxWB->Edit();
-                                frmTaxWB->ShowModal() ;
-                                delete frmTaxWB;
-                                break;*/
+                           case 7: frmTaxWB = new  TfrmTaxWB(Application);
+                                   frmTaxWB->TaxWB->Open();
+                                   frmTaxWB->TaxWB->Append();
+                                   frmTaxWB->TaxWB->Post();
+                                   frmTaxWB->TaxWB->Edit();
+                                   frmTaxWB->ShowModal() ;
+                                   delete frmTaxWB;
+                                   break;*/
             }
 
             GetWayBillList(cur_wtype);
@@ -372,7 +372,7 @@ namespace SP_Sklad.MainTabs
             var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
             var pd_row = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
 
-        //    var trans = _db.Database.BeginTransaction(IsolationLevel.RepeatableRead);
+            //    var trans = _db.Database.BeginTransaction(IsolationLevel.RepeatableRead);
             using (var db = new BaseEntities())
             {
 
@@ -410,10 +410,10 @@ namespace SP_Sklad.MainTabs
                 {
                     MessageBox.Show(Resources.deadlock);
                 }
-            /*    finally
-                {
-           //         trans.Commit();
-                }*/
+                /*    finally
+                    {
+               //         trans.Commit();
+                    }*/
             }
 
             RefrechItemBtn.PerformClick();
@@ -440,24 +440,24 @@ namespace SP_Sklad.MainTabs
 
 
                 case 5:
-                    PriceListBS.DataSource =  null ;
+                    PriceListBS.DataSource = null;
                     PriceListBS.DataSource = DB.SkladBase().v_PriceList.ToList();
                     break;
 
-          /*      case 6: ContractsList->Refresh();
-                    ContractsList->FullRefresh();
-                    ContrDet->FullRefresh();
-                    break;
+                /*      case 6: ContractsList->Refresh();
+                          ContractsList->FullRefresh();
+                          ContrDet->FullRefresh();
+                          break;
 
-                case 7: TaxWBList->Refresh();
-                    TaxWBList->FullRefresh();
-                    TaxWBDet->FullRefresh();
-                    break;*/
+                      case 7: TaxWBList->Refresh();
+                          TaxWBList->FullRefresh();
+                          TaxWBDet->FullRefresh();
+                          break;*/
             }
-        //    GET_RelDocList->CloseOpen(true);
+            //    GET_RelDocList->CloseOpen(true);
 
 
-            
+
         }
 
         private void ExecuteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -686,7 +686,7 @@ namespace SP_Sklad.MainTabs
 
             if (wbl.Checked == 0)
             {
-                using (var f = new frmWayBillOut(-1,null))
+                using (var f = new frmWayBillOut(-1, null))
                 {
                     var result = f._db.ExecuteWayBill(wbl.WbillId, null).ToList().FirstOrDefault();
                     f.doc_id = result.NewDocId;
@@ -710,7 +710,7 @@ namespace SP_Sklad.MainTabs
                 using (var f = new frmWayBillIn(1))
                 {
                     var result = f._db.ExecuteWayBill(wbl.WbillId, null).ToList().FirstOrDefault();
-                  
+
                     f.doc_id = result.NewDocId;
                     f.ShowDialog();
                 }
@@ -786,5 +786,45 @@ namespace SP_Sklad.MainTabs
              else MessageDlg("Документ вже оплачено!", mtConfirmation, TMsgDlgButtons() << mbYes, 0);*/
         }
 
+        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            GetRelDocList_Result row = new GetRelDocList_Result();
+
+            if (gridView3.Focus())
+            {
+                row = gridView3.GetFocusedRow() as GetRelDocList_Result;
+            }
+            else if (gridView1.Focus())
+            {
+                row = gridView1.GetFocusedRow() as GetRelDocList_Result;
+            }
+
+            FindDoc.Find(row.DocId, row.DocType, row.OnDate);
+        }
+
+        private void gridView3_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                BottomPopupMenu.ShowPopup(p2);
+            }
+        }
+
+        private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            GetRelDocList_Result row = new GetRelDocList_Result();
+
+            if (gridView3.Focus())
+            {
+                row = gridView3.GetFocusedRow() as GetRelDocList_Result;
+            }
+            else if (gridView1.Focus())
+            {
+                row = gridView1.GetFocusedRow() as GetRelDocList_Result;
+            }
+
+            PrintDoc.Show(row.DocId.Value, row.DocType.Value, DB.SkladBase());
+        }
     }
 }

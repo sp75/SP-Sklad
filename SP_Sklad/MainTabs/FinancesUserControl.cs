@@ -31,7 +31,14 @@ namespace SP_Sklad.MainTabs
             InitializeComponent();
 
             wbContentTab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
-            if (!DesignMode)
+           
+        }
+
+
+        private void FinancesUserControl_Load(object sender, EventArgs e)
+        {
+         
+ if (!DesignMode)
             {
                 using (var _db = new BaseEntities())
                 {
@@ -58,13 +65,6 @@ namespace SP_Sklad.MainTabs
                     FinancesTreeList.ExpandAll();
                 }
             }
-        }
-
-
-        private void FinancesUserControl_Load(object sender, EventArgs e)
-        {
-         
-
             
         }
 

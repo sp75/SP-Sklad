@@ -18,7 +18,6 @@ namespace SP_Sklad
             InitializeComponent();
 
             UserIDEdit.Properties.DataSource = new BaseEntities().Users.Select(s => new { s.UserId, s.Name, s.Pass }).ToList();
-            
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -33,7 +32,8 @@ namespace SP_Sklad
                     db.SaveChanges();
 
                     this.Hide();
-                    new mainForm((int)UserIDEdit.EditValue).Show();
+                    mainForm.main_form = new mainForm((int)UserIDEdit.EditValue);
+                    mainForm.main_form.Show();
                 }
                 else
                 {

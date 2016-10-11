@@ -58,6 +58,8 @@
             this.BarImageList = new System.Windows.Forms.ImageList(this.components);
             this.StopProcesBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.DocsTreeList = new DevExpress.XtraTreeList.TreeList();
@@ -126,6 +128,7 @@
             this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
+            this.warehouseUserControl1 = new SP_Sklad.MainTabs.WarehouseUserControl();
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl3 = new DevExpress.XtraEditors.SplitContainerControl();
             this.DeboningGridControl = new DevExpress.XtraGrid.GridControl();
@@ -191,6 +194,7 @@
             this.gridColumn56 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -228,6 +232,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
+            this.xtraTabPage8.SuspendLayout();
             this.xtraTabPage10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl3)).BeginInit();
             this.splitContainerControl3.SuspendLayout();
@@ -260,6 +265,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // UserTreeImgList
@@ -347,8 +353,8 @@
             this.GridImageList.Images.SetKeyName(19, "Add.bmp");
             this.GridImageList.Images.SetKeyName(20, "edit.bmp");
             this.GridImageList.Images.SetKeyName(21, "Delete.bmp");
-            this.GridImageList.Images.SetKeyName(22, "Так.bmp");
-            this.GridImageList.Images.SetKeyName(23, "н_.bmp");
+            this.GridImageList.Images.SetKeyName(22, "execute.png");
+            this.GridImageList.Images.SetKeyName(23, "storno.png");
             this.GridImageList.Images.SetKeyName(24, "н_чого.bmp");
             this.GridImageList.Images.SetKeyName(25, "Частково оброблений.bmp");
             this.GridImageList.Images.SetKeyName(26, "exec16.png");
@@ -417,8 +423,10 @@
             this.EditTechProcBtn,
             this.DelTechProcBtn,
             this.StopProcesBtn,
-            this.barButtonItem4});
-            this.barManager1.MaxItemId = 12;
+            this.barButtonItem4,
+            this.barButtonItem1,
+            this.barButtonItem2});
+            this.barManager1.MaxItemId = 14;
             // 
             // bar1
             // 
@@ -505,7 +513,7 @@
             this.standaloneBarDockControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl2.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl2.Name = "standaloneBarDockControl2";
-            this.standaloneBarDockControl2.Size = new System.Drawing.Size(1095, 31);
+            this.standaloneBarDockControl2.Size = new System.Drawing.Size(1094, 29);
             this.standaloneBarDockControl2.Text = "standaloneBarDockControl2";
             // 
             // bar2
@@ -555,7 +563,7 @@
             this.standaloneBarDockControl3.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl3.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl3.Name = "standaloneBarDockControl3";
-            this.standaloneBarDockControl3.Size = new System.Drawing.Size(1089, 31);
+            this.standaloneBarDockControl3.Size = new System.Drawing.Size(1088, 29);
             this.standaloneBarDockControl3.Text = "standaloneBarDockControl3";
             // 
             // barDockControlTop
@@ -603,7 +611,7 @@
             this.standaloneBarDockControl4.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl4.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl4.Name = "standaloneBarDockControl4";
-            this.standaloneBarDockControl4.Size = new System.Drawing.Size(1089, 0);
+            this.standaloneBarDockControl4.Size = new System.Drawing.Size(1088, 0);
             this.standaloneBarDockControl4.Text = "standaloneBarDockControl4";
             // 
             // standaloneBarDockControl5
@@ -629,6 +637,7 @@
             this.BarImageList.Images.SetKeyName(6, "Попередн_й перегляд.bmp");
             this.BarImageList.Images.SetKeyName(7, "Склади.bmp");
             this.BarImageList.Images.SetKeyName(8, "Замовлене кл_єнтами.bmp");
+            this.BarImageList.Images.SetKeyName(9, "Перейти до  документа.bmp");
             // 
             // StopProcesBtn
             // 
@@ -644,6 +653,22 @@
             this.barButtonItem4.ImageIndex = 8;
             this.barButtonItem4.Name = "barButtonItem4";
             this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Перейти до документа";
+            this.barButtonItem1.Id = 12;
+            this.barButtonItem1.ImageIndex = 9;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick_1);
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Друк/Попередній перегляд";
+            this.barButtonItem2.Id = 13;
+            this.barButtonItem2.ImageIndex = 6;
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick_1);
             // 
             // panelControl1
             // 
@@ -704,12 +729,12 @@
             this.wbContentTab.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.wbContentTab.BorderStylePage = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.wbContentTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wbContentTab.Location = new System.Drawing.Point(0, 31);
+            this.wbContentTab.Location = new System.Drawing.Point(0, 29);
             this.wbContentTab.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
             this.wbContentTab.LookAndFeel.UseDefaultLookAndFeel = false;
             this.wbContentTab.Name = "wbContentTab";
             this.wbContentTab.SelectedTabPage = this.xtraTabPage7;
-            this.wbContentTab.Size = new System.Drawing.Size(1095, 650);
+            this.wbContentTab.Size = new System.Drawing.Size(1094, 652);
             this.wbContentTab.TabIndex = 2;
             this.wbContentTab.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage6,
@@ -721,7 +746,7 @@
             // 
             this.xtraTabPage7.Controls.Add(this.splitContainerControl2);
             this.xtraTabPage7.Name = "xtraTabPage7";
-            this.xtraTabPage7.Size = new System.Drawing.Size(1095, 628);
+            this.xtraTabPage7.Size = new System.Drawing.Size(1094, 630);
             this.xtraTabPage7.Text = "Виготовлення продукції";
             // 
             // splitContainerControl2
@@ -735,7 +760,7 @@
             this.splitContainerControl2.Panel1.Text = "Panel1";
             this.splitContainerControl2.Panel2.Controls.Add(this.xtraTabControl2);
             this.splitContainerControl2.Panel2.Text = "Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(1095, 628);
+            this.splitContainerControl2.Size = new System.Drawing.Size(1094, 630);
             this.splitContainerControl2.SplitterPosition = 432;
             this.splitContainerControl2.TabIndex = 0;
             this.splitContainerControl2.Text = "splitContainerControl2";
@@ -749,7 +774,7 @@
             this.WBGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1,
             this.CheckedItemImageComboBox});
-            this.WBGridControl.Size = new System.Drawing.Size(1095, 388);
+            this.WBGridControl.Size = new System.Drawing.Size(1094, 388);
             this.WBGridControl.TabIndex = 0;
             this.WBGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WbGridView});
@@ -774,10 +799,9 @@
             this.gridColumn41});
             this.WbGridView.GridControl = this.WBGridControl;
             this.WbGridView.Name = "WbGridView";
+            this.WbGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.WbGridView.OptionsBehavior.Editable = false;
             this.WbGridView.OptionsBehavior.ReadOnly = true;
-            this.WbGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.WbGridView.OptionsView.EnableAppearanceOddRow = true;
             this.WbGridView.OptionsView.ShowGroupPanel = false;
             this.WbGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WbGridView_PopupMenuShowing);
             this.WbGridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.WbGridView_FocusedRowChanged);
@@ -948,7 +972,7 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1095, 44);
+            this.panelControl2.Size = new System.Drawing.Size(1094, 44);
             this.panelControl2.TabIndex = 1;
             // 
             // WhEditBtn
@@ -1040,7 +1064,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.wbStartDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.wbStartDate.Properties.EditValueChanged += new System.EventHandler(this.wbStartDate_Properties_EditValueChanged);
             this.wbStartDate.Size = new System.Drawing.Size(100, 20);
             this.wbStartDate.TabIndex = 1;
             this.wbStartDate.EditValueChanged += new System.EventHandler(this.wbStartDate_EditValueChanged);
@@ -1060,7 +1083,7 @@
             this.xtraTabControl2.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl2.Name = "xtraTabControl2";
             this.xtraTabControl2.SelectedTabPage = this.xtraTabPage15;
-            this.xtraTabControl2.Size = new System.Drawing.Size(1095, 191);
+            this.xtraTabControl2.Size = new System.Drawing.Size(1094, 192);
             this.xtraTabControl2.TabIndex = 0;
             this.xtraTabControl2.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage15,
@@ -1073,16 +1096,16 @@
             this.xtraTabPage15.Controls.Add(this.standaloneBarDockControl3);
             this.xtraTabPage15.ImageIndex = 18;
             this.xtraTabPage15.Name = "xtraTabPage15";
-            this.xtraTabPage15.Size = new System.Drawing.Size(1089, 160);
+            this.xtraTabPage15.Size = new System.Drawing.Size(1088, 161);
             this.xtraTabPage15.Text = "Технологічні процеси";
             // 
             // TechProcGridControl
             // 
             this.TechProcGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TechProcGridControl.Location = new System.Drawing.Point(0, 31);
+            this.TechProcGridControl.Location = new System.Drawing.Point(0, 29);
             this.TechProcGridControl.MainView = this.TechProcGridView;
             this.TechProcGridControl.Name = "TechProcGridControl";
-            this.TechProcGridControl.Size = new System.Drawing.Size(1089, 129);
+            this.TechProcGridControl.Size = new System.Drawing.Size(1088, 132);
             this.TechProcGridControl.TabIndex = 2;
             this.TechProcGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.TechProcGridView});
@@ -1155,7 +1178,7 @@
             this.xtraTabPage1.Controls.Add(this.gridControl2);
             this.xtraTabPage1.ImageIndex = 0;
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(891, 160);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1088, 161);
             this.xtraTabPage1.Text = "Використана сировина";
             // 
             // gridControl2
@@ -1164,7 +1187,7 @@
             this.gridControl2.Location = new System.Drawing.Point(0, 0);
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(891, 160);
+            this.gridControl2.Size = new System.Drawing.Size(1088, 161);
             this.gridControl2.TabIndex = 1;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -1241,7 +1264,7 @@
             this.xtraTabPage2.Controls.Add(this.gridControl3);
             this.xtraTabPage2.ImageIndex = 2;
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(891, 160);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1088, 161);
             this.xtraTabPage2.Text = "Зв\'язані документи";
             // 
             // gridControl3
@@ -1254,7 +1277,7 @@
             this.repositoryItemImageComboBox2,
             this.repositoryItemImageComboBox6,
             this.repositoryItemImageComboBox7});
-            this.gridControl3.Size = new System.Drawing.Size(891, 160);
+            this.gridControl3.Size = new System.Drawing.Size(1088, 161);
             this.gridControl3.TabIndex = 0;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -1272,7 +1295,11 @@
             this.gridColumn21});
             this.gridView3.GridControl = this.gridControl3;
             this.gridView3.Name = "gridView3";
+            this.gridView3.OptionsBehavior.AllowIncrementalSearch = true;
+            this.gridView3.OptionsBehavior.Editable = false;
+            this.gridView3.OptionsBehavior.ReadOnly = true;
             this.gridView3.OptionsView.ShowGroupPanel = false;
+            this.gridView3.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.gridView3_PopupMenuShowing);
             // 
             // gridColumn14
             // 
@@ -1414,20 +1441,34 @@
             // xtraTabPage6
             // 
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(897, 659);
+            this.xtraTabPage6.Size = new System.Drawing.Size(1094, 659);
             this.xtraTabPage6.Text = "ViewList";
             // 
             // xtraTabPage8
             // 
+            this.xtraTabPage8.Controls.Add(this.warehouseUserControl1);
             this.xtraTabPage8.Name = "xtraTabPage8";
-            this.xtraTabPage8.Size = new System.Drawing.Size(897, 659);
+            this.xtraTabPage8.Size = new System.Drawing.Size(1094, 659);
             this.xtraTabPage8.Text = "Склад";
+            // 
+            // warehouseUserControl1
+            // 
+            this.warehouseUserControl1.custom_mat_list = null;
+            this.warehouseUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.warehouseUserControl1.isDirectList = false;
+            this.warehouseUserControl1.isMatList = false;
+            this.warehouseUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.warehouseUserControl1.Name = "warehouseUserControl1";
+            this.warehouseUserControl1.resut = null;
+            this.warehouseUserControl1.Size = new System.Drawing.Size(1094, 659);
+            this.warehouseUserControl1.TabIndex = 0;
+            this.warehouseUserControl1.wb = null;
             // 
             // xtraTabPage10
             // 
             this.xtraTabPage10.Controls.Add(this.splitContainerControl3);
             this.xtraTabPage10.Name = "xtraTabPage10";
-            this.xtraTabPage10.Size = new System.Drawing.Size(1095, 628);
+            this.xtraTabPage10.Size = new System.Drawing.Size(1094, 630);
             this.xtraTabPage10.Text = "Обвалка";
             // 
             // splitContainerControl3
@@ -1441,7 +1482,7 @@
             this.splitContainerControl3.Panel1.Text = "Panel1";
             this.splitContainerControl3.Panel2.Controls.Add(this.xtraTabControl1);
             this.splitContainerControl3.Panel2.Text = "Panel2";
-            this.splitContainerControl3.Size = new System.Drawing.Size(1095, 628);
+            this.splitContainerControl3.Size = new System.Drawing.Size(1094, 630);
             this.splitContainerControl3.SplitterPosition = 462;
             this.splitContainerControl3.TabIndex = 1;
             this.splitContainerControl3.Text = "splitContainerControl3";
@@ -1455,7 +1496,7 @@
             this.DeboningGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox3,
             this.repositoryItemImageComboBox4});
-            this.DeboningGridControl.Size = new System.Drawing.Size(1095, 416);
+            this.DeboningGridControl.Size = new System.Drawing.Size(1094, 416);
             this.DeboningGridControl.TabIndex = 3;
             this.DeboningGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.DeboningGridView});
@@ -1482,8 +1523,6 @@
             this.DeboningGridView.Name = "DeboningGridView";
             this.DeboningGridView.OptionsBehavior.Editable = false;
             this.DeboningGridView.OptionsBehavior.ReadOnly = true;
-            this.DeboningGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.DeboningGridView.OptionsView.EnableAppearanceOddRow = true;
             this.DeboningGridView.OptionsView.ShowGroupPanel = false;
             this.DeboningGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WbGridView_PopupMenuShowing);
             this.DeboningGridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.DeboningGridView_FocusedRowChanged);
@@ -1641,7 +1680,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.panel1.Size = new System.Drawing.Size(1095, 46);
+            this.panel1.Size = new System.Drawing.Size(1094, 46);
             this.panel1.TabIndex = 2;
             // 
             // panelControl3
@@ -1659,7 +1698,7 @@
             this.panelControl3.Location = new System.Drawing.Point(0, 2);
             this.panelControl3.LookAndFeel.SkinName = "Visual Studio 2013 Blue";
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(1095, 42);
+            this.panelControl3.Size = new System.Drawing.Size(1094, 42);
             this.panelControl3.TabIndex = 1;
             // 
             // simpleButton1
@@ -1771,7 +1810,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage3;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1095, 161);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1094, 162);
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage3,
@@ -1784,7 +1823,7 @@
             this.xtraTabPage3.Controls.Add(this.standaloneBarDockControl4);
             this.xtraTabPage3.ImageIndex = 18;
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(1089, 130);
+            this.xtraTabPage3.Size = new System.Drawing.Size(1088, 131);
             this.xtraTabPage3.Text = "Вихід";
             // 
             // DeboningDetGridControl
@@ -1796,7 +1835,7 @@
             this.DeboningDetGridControl.Name = "DeboningDetGridControl";
             this.DeboningDetGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCalcEdit1});
-            this.DeboningDetGridControl.Size = new System.Drawing.Size(1089, 130);
+            this.DeboningDetGridControl.Size = new System.Drawing.Size(1088, 131);
             this.DeboningDetGridControl.TabIndex = 4;
             this.DeboningDetGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.DeboningDetGridView});
@@ -1885,7 +1924,7 @@
             this.xtraTabPage4.Controls.Add(this.gridControl4);
             this.xtraTabPage4.ImageIndex = 1;
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(891, 161);
+            this.xtraTabPage4.Size = new System.Drawing.Size(1088, 160);
             this.xtraTabPage4.Text = "Обвалка сировини";
             // 
             // gridControl4
@@ -1894,7 +1933,7 @@
             this.gridControl4.Location = new System.Drawing.Point(0, 0);
             this.gridControl4.MainView = this.gridView4;
             this.gridControl4.Name = "gridControl4";
-            this.gridControl4.Size = new System.Drawing.Size(891, 161);
+            this.gridControl4.Size = new System.Drawing.Size(1088, 160);
             this.gridControl4.TabIndex = 1;
             this.gridControl4.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView4});
@@ -1972,7 +2011,7 @@
             this.xtraTabPage5.Controls.Add(this.gridControl5);
             this.xtraTabPage5.ImageIndex = 2;
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(891, 161);
+            this.xtraTabPage5.Size = new System.Drawing.Size(1088, 131);
             this.xtraTabPage5.Text = "Зв\'язані документи";
             // 
             // gridControl5
@@ -1985,7 +2024,7 @@
             this.repositoryItemImageComboBox10,
             this.repositoryItemImageComboBox9,
             this.repositoryItemImageComboBox8});
-            this.gridControl5.Size = new System.Drawing.Size(891, 161);
+            this.gridControl5.Size = new System.Drawing.Size(1088, 131);
             this.gridControl5.TabIndex = 0;
             this.gridControl5.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView5});
@@ -2004,7 +2043,11 @@
             this.gridColumn56});
             this.gridView5.GridControl = this.gridControl5;
             this.gridView5.Name = "gridView5";
+            this.gridView5.OptionsBehavior.AllowIncrementalSearch = true;
+            this.gridView5.OptionsBehavior.Editable = false;
+            this.gridView5.OptionsBehavior.ReadOnly = true;
             this.gridView5.OptionsView.ShowGroupPanel = false;
+            this.gridView5.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.gridView3_PopupMenuShowing);
             // 
             // gridColumn49
             // 
@@ -2163,6 +2206,14 @@
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
             // 
+            // BottomPopupMenu
+            // 
+            this.BottomPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
+            this.BottomPopupMenu.Manager = this.barManager1;
+            this.BottomPopupMenu.Name = "BottomPopupMenu";
+            // 
             // ManufacturingUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2216,6 +2267,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
+            this.xtraTabPage8.ResumeLayout(false);
             this.xtraTabPage10.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl3)).EndInit();
             this.splitContainerControl3.ResumeLayout(false);
@@ -2250,6 +2302,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2278,13 +2331,11 @@
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl2;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
-        private DevExpress.XtraTreeList.TreeList DocsTreeList;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
         private DevExpress.XtraTab.XtraTabControl wbContentTab;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage7;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl2;
         private DevExpress.XtraGrid.GridControl WBGridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView WbGridView;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
@@ -2296,12 +2347,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraEditors.PanelControl panelControl2;
-        private DevExpress.XtraEditors.LookUpEdit wbSatusList;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.DateEdit wbEndDate;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.DateEdit wbStartDate;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl2;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage15;
@@ -2326,11 +2374,8 @@
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl3;
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraEditors.PanelControl panelControl3;
-        private DevExpress.XtraEditors.DateEdit DebEndDate;
         private DevExpress.XtraEditors.LabelControl labelControl7;
-        private DevExpress.XtraEditors.DateEdit DebStartDate;
         private DevExpress.XtraEditors.LabelControl labelControl8;
-        private DevExpress.XtraEditors.LookUpEdit WhComboBox;
         private DevExpress.XtraEditors.SimpleButton WhEditBtn;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn37;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn38;
@@ -2358,7 +2403,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl4;
         private DevExpress.XtraGrid.GridControl DeboningGridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView DeboningGridView;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;
@@ -2399,8 +2443,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn55;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn56;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraEditors.LookUpEdit DebWhComboBox;
-        private DevExpress.XtraEditors.LookUpEdit DebSatusList;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl5;
@@ -2418,5 +2460,20 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn63;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn31;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn64;
+        public DevExpress.XtraTreeList.TreeList DocsTreeList;
+        public DevExpress.XtraGrid.Views.Grid.GridView WbGridView;
+        public DevExpress.XtraEditors.LookUpEdit wbSatusList;
+        public DevExpress.XtraEditors.DateEdit wbEndDate;
+        public DevExpress.XtraEditors.DateEdit wbStartDate;
+        public DevExpress.XtraEditors.DateEdit DebEndDate;
+        public DevExpress.XtraEditors.DateEdit DebStartDate;
+        public DevExpress.XtraEditors.LookUpEdit WhComboBox;
+        public DevExpress.XtraGrid.Views.Grid.GridView DeboningGridView;
+        public DevExpress.XtraEditors.LookUpEdit DebWhComboBox;
+        public DevExpress.XtraEditors.LookUpEdit DebSatusList;
+        private WarehouseUserControl warehouseUserControl1;
+        private DevExpress.XtraBars.PopupMenu BottomPopupMenu;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
     }
 }

@@ -759,5 +759,26 @@ namespace SP_Sklad.MainTabs
                 RefrechItemBtn.PerformClick();
        //     }
         }
+
+        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var row = gridView3.GetFocusedRow() as GetRelDocList_Result;
+            FindDoc.Find(row.DocId, row.DocType, row.OnDate);
+        }
+
+        private void gridView3_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                BottomPopupMenu.ShowPopup(p2);
+            }
+        }
+
+        private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var row = gridView3.GetFocusedRow() as GetRelDocList_Result;
+            PrintDoc.Show(row.DocId.Value, row.DocType.Value, DB.SkladBase());
+        }
     }
 }
