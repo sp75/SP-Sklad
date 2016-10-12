@@ -34,21 +34,21 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.NotesTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.MeasuresDS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.DefCheckBox = new DevExpress.XtraEditors.CheckEdit();
-            this.MeasuresDS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MeasuresDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DefCheckBox.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MeasuresDS)).BeginInit();
             this.SuspendLayout();
             // 
             // BottomPanel
@@ -97,6 +97,10 @@
             this.NotesTextEdit.Size = new System.Drawing.Size(423, 22);
             this.NotesTextEdit.StyleController = this.styleController1;
             this.NotesTextEdit.TabIndex = 36;
+            // 
+            // MeasuresDS
+            // 
+            this.MeasuresDS.DataSource = typeof(SP_Sklad.SkladData.Measures);
             // 
             // labelControl3
             // 
@@ -159,10 +163,6 @@
             this.DefCheckBox.StyleController = this.styleController1;
             this.DefCheckBox.TabIndex = 41;
             // 
-            // MeasuresDS
-            // 
-            this.MeasuresDS.DataSource = typeof(SP_Sklad.SkladData.Measures);
-            // 
             // frmMeasuresEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -176,6 +176,7 @@
             this.Controls.Add(this.NotesTextEdit);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.BottomPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmMeasuresEdit";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -185,10 +186,10 @@
             this.BottomPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MeasuresDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DefCheckBox.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MeasuresDS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

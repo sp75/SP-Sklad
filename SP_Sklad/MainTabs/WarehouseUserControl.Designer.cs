@@ -1239,7 +1239,7 @@
             // 
             // whKagentList
             // 
-            this.whKagentList.Location = new System.Drawing.Point(371, 11);
+            this.whKagentList.Location = new System.Drawing.Point(395, 11);
             this.whKagentList.Name = "whKagentList";
             this.whKagentList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1274,7 +1274,7 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(293, 14);
+            this.labelControl6.Location = new System.Drawing.Point(317, 14);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(72, 13);
             this.labelControl6.TabIndex = 4;
@@ -1285,12 +1285,18 @@
             this.OnDateEdit.EditValue = null;
             this.OnDateEdit.Location = new System.Drawing.Point(119, 11);
             this.OnDateEdit.Name = "OnDateEdit";
+            this.OnDateEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
             this.OnDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.OnDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.OnDateEdit.Properties.DisplayFormat.FormatString = "g";
+            this.OnDateEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.OnDateEdit.Properties.EditFormat.FormatString = "g";
+            this.OnDateEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.OnDateEdit.Properties.Mask.EditMask = "g";
             this.OnDateEdit.Properties.EditValueChanged += new System.EventHandler(this.wbStartDate_Properties_EditValueChanged);
-            this.OnDateEdit.Size = new System.Drawing.Size(126, 20);
+            this.OnDateEdit.Size = new System.Drawing.Size(169, 20);
             this.OnDateEdit.TabIndex = 3;
             this.OnDateEdit.EditValueChanged += new System.EventHandler(this.whKagentList_EditValueChanged);
             // 
@@ -1359,7 +1365,7 @@
             this.gridColumn30.Name = "gridColumn30";
             this.gridColumn30.Visible = true;
             this.gridColumn30.VisibleIndex = 0;
-            this.gridColumn30.Width = 54;
+            this.gridColumn30.Width = 461;
             // 
             // gridColumn31
             // 
@@ -1368,7 +1374,7 @@
             this.gridColumn31.Name = "gridColumn31";
             this.gridColumn31.Visible = true;
             this.gridColumn31.VisibleIndex = 1;
-            this.gridColumn31.Width = 157;
+            this.gridColumn31.Width = 123;
             // 
             // gridColumn32
             // 
@@ -1377,7 +1383,7 @@
             this.gridColumn32.Name = "gridColumn32";
             this.gridColumn32.Visible = true;
             this.gridColumn32.VisibleIndex = 2;
-            this.gridColumn32.Width = 157;
+            this.gridColumn32.Width = 121;
             // 
             // gridColumn33
             // 
@@ -1386,7 +1392,7 @@
             this.gridColumn33.Name = "gridColumn33";
             this.gridColumn33.Visible = true;
             this.gridColumn33.VisibleIndex = 3;
-            this.gridColumn33.Width = 150;
+            this.gridColumn33.Width = 147;
             // 
             // xtraTabPage4
             // 

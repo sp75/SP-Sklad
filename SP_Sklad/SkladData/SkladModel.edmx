@@ -4591,9 +4591,10 @@
                 <Property Name="FunId" Type="int" />
                 <Property Name="DocNum" Type="varchar" MaxLength="24" />
                 <Property Name="UserId" Type="int" />
-                <Property Name="fname" Type="nvarchar" Nullable="false" MaxLength="255" />
-                <Property Name="classname" Type="varchar" Nullable="false" MaxLength="24" />
-                <Property Name="USERNAME" Type="nvarchar" Nullable="false" MaxLength="50" />
+                <Property Name="FunName" Type="nvarchar" Nullable="false" MaxLength="255" />
+                <Property Name="ClassName" Type="varchar" Nullable="false" MaxLength="24" />
+                <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+                <Property Name="DocType" Type="int" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -6720,12 +6721,6 @@
             <End Role="WaybillList" EntitySet="WaybillList" />
             <End Role="WaybillDet" EntitySet="WaybillDet" />
           </AssociationSet>
-          <FunctionImport Name="GetOperLog" IsComposable="true" ReturnType="Collection(BaseModel.GetOperLog_Result)">
-            <Parameter Name="from_date" Mode="In" Type="DateTime" />
-            <Parameter Name="to_date" Mode="In" Type="DateTime" />
-            <Parameter Name="fun_id" Mode="In" Type="Int32" />
-            <Parameter Name="user_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <EntitySet Name="Functions" EntityType="BaseModel.Functions" />
           <AssociationSet Name="FK__FUNCTIONS__TABID__123EB7A3" Association="BaseModel.FK__FUNCTIONS__TABID__123EB7A3">
             <End Role="Tables" EntitySet="Tables" />
@@ -6909,6 +6904,12 @@
           <FunctionImport Name="GetPrintLog" IsComposable="true" ReturnType="Collection(BaseModel.GetPrintLog_Result)">
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
             <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetOperLog" IsComposable="true" ReturnType="Collection(BaseModel.GetOperLog_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="fun_id" Mode="In" Type="Int32" />
             <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
@@ -10806,21 +10807,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="GetOperLog_Result">
-          <Property Type="Int32" Name="OpId" Nullable="false" />
-          <Property Type="String" Name="OpCode" Nullable="false" MaxLength="1" />
-          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
-          <Property Type="Int32" Name="TabId" Nullable="true" />
-          <Property Type="Int32" Name="Id" Nullable="true" />
-          <Property Type="String" Name="DataBefore" Nullable="true" MaxLength="512" />
-          <Property Type="String" Name="DataAfter" Nullable="true" MaxLength="512" />
-          <Property Type="Int32" Name="FunId" Nullable="true" />
-          <Property Type="String" Name="DocNum" Nullable="true" MaxLength="24" />
-          <Property Type="Int32" Name="UserId" Nullable="true" />
-          <Property Type="String" Name="fname" Nullable="false" MaxLength="255" />
-          <Property Type="String" Name="classname" Nullable="false" MaxLength="24" />
-          <Property Type="String" Name="USERNAME" Nullable="false" MaxLength="50" />
-        </ComplexType>
         <EntityType Name="Functions">
           <Key>
             <PropertyRef Name="FunId" />
@@ -11603,6 +11589,22 @@
           <Property Type="String" Name="Login" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="FullName" Nullable="true" MaxLength="128" />
           <Property Type="String" Name="RepName" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="DocType" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetOperLog_Result">
+          <Property Type="Int32" Name="OpId" Nullable="false" />
+          <Property Type="String" Name="OpCode" Nullable="false" MaxLength="1" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="TabId" Nullable="true" />
+          <Property Type="Int32" Name="Id" Nullable="true" />
+          <Property Type="String" Name="DataBefore" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="DataAfter" Nullable="true" MaxLength="512" />
+          <Property Type="Int32" Name="FunId" Nullable="true" />
+          <Property Type="String" Name="DocNum" Nullable="true" MaxLength="24" />
+          <Property Type="Int32" Name="UserId" Nullable="true" />
+          <Property Type="String" Name="FunName" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="ClassName" Nullable="false" MaxLength="24" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="DocType" Nullable="true" />
         </ComplexType>
         </Schema>
@@ -14361,25 +14363,6 @@
             </EndProperty>
             <Condition ColumnName="CPosId" IsNull="false" />
           </AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="GetOperLog" FunctionName="BaseModel.Store.GetOperLog">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetOperLog_Result">
-                <ScalarProperty Name="OpId" ColumnName="OpId" />
-                <ScalarProperty Name="OpCode" ColumnName="OpCode" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="TabId" ColumnName="TabId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="DataBefore" ColumnName="DataBefore" />
-                <ScalarProperty Name="DataAfter" ColumnName="DataAfter" />
-                <ScalarProperty Name="FunId" ColumnName="FunId" />
-                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="fname" ColumnName="fname" />
-                <ScalarProperty Name="classname" ColumnName="classname" />
-                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="Functions">
             <EntityTypeMapping TypeName="BaseModel.Functions">
               <MappingFragment StoreEntitySet="Functions">
@@ -14618,6 +14601,26 @@
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="RepName" ColumnName="RepName" />
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetOperLog" FunctionName="BaseModel.Store.GetOperLog">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetOperLog_Result">
+                <ScalarProperty Name="OpId" ColumnName="OpId" />
+                <ScalarProperty Name="OpCode" ColumnName="OpCode" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="TabId" ColumnName="TabId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DataBefore" ColumnName="DataBefore" />
+                <ScalarProperty Name="DataAfter" ColumnName="DataAfter" />
+                <ScalarProperty Name="FunId" ColumnName="FunId" />
+                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FunName" ColumnName="FunName" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="DocType" ColumnName="DocType" />
               </ComplexTypeMapping>
             </ResultMapping>

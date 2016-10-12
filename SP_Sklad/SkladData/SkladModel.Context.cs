@@ -1815,28 +1815,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<OrderedList_Result>("[BaseEntities].[OrderedList](@from_date, @to_date, @mat_id, @ka_id, @w_type, @active)", from_dateParameter, to_dateParameter, mat_idParameter, ka_idParameter, w_typeParameter, activeParameter);
         }
     
-        [EdmFunction("BaseEntities", "GetOperLog")]
-        public virtual IQueryable<GetOperLog_Result> GetOperLog(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> fun_id, Nullable<int> user_id)
-        {
-            var from_dateParameter = from_date.HasValue ?
-                new ObjectParameter("from_date", from_date) :
-                new ObjectParameter("from_date", typeof(System.DateTime));
-    
-            var to_dateParameter = to_date.HasValue ?
-                new ObjectParameter("to_date", to_date) :
-                new ObjectParameter("to_date", typeof(System.DateTime));
-    
-            var fun_idParameter = fun_id.HasValue ?
-                new ObjectParameter("fun_id", fun_id) :
-                new ObjectParameter("fun_id", typeof(int));
-    
-            var user_idParameter = user_id.HasValue ?
-                new ObjectParameter("user_id", user_id) :
-                new ObjectParameter("user_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetOperLog_Result>("[BaseEntities].[GetOperLog](@from_date, @to_date, @fun_id, @user_id)", from_dateParameter, to_dateParameter, fun_idParameter, user_idParameter);
-        }
-    
         [EdmFunction("BaseEntities", "REP_31")]
         public virtual IQueryable<REP_31_Result> REP_31(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> grp_id, Nullable<int> mat_id)
         {
@@ -1885,6 +1863,28 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("user_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetPrintLog_Result>("[BaseEntities].[GetPrintLog](@from_date, @to_date, @user_id)", from_dateParameter, to_dateParameter, user_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetOperLog")]
+        public virtual IQueryable<GetOperLog_Result> GetOperLog(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> fun_id, Nullable<int> user_id)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var fun_idParameter = fun_id.HasValue ?
+                new ObjectParameter("fun_id", fun_id) :
+                new ObjectParameter("fun_id", typeof(int));
+    
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetOperLog_Result>("[BaseEntities].[GetOperLog](@from_date, @to_date, @fun_id, @user_id)", from_dateParameter, to_dateParameter, fun_idParameter, user_idParameter);
         }
     }
 }

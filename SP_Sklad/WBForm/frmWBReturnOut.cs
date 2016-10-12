@@ -130,11 +130,12 @@ namespace SP_Sklad.WBForm
         {
             bool recult = (!String.IsNullOrEmpty(NumEdit.Text) && KagentComboBox.EditValue != null && OnDateDBEdit.EditValue != null && wbd_list != null && wbd_list.Any());
 
-            if (recult && wb.WType == -1 && TurnDocCheckBox.Checked)
+            if (recult  && TurnDocCheckBox.Checked)
             {
                 recult = !wbd_list.Any(w => w.Rsv == 0 && w.PosType == 0);
             }
 
+            KagentComboBox.Enabled = (wbd_list == null || !wbd_list.Any());
             barSubItem1.Enabled = KagentComboBox.EditValue != null && KagentComboBox.EditValue != DBNull.Value;
 
             EditMaterialBtn.Enabled = (wbd_list != null && wbd_list.Any());
@@ -353,18 +354,9 @@ namespace SP_Sklad.WBForm
 
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-          /*  wb.Kagent = _db.Kagent.Find(wb.KaId);
+            /*_db.SaveChanges(); //Не доделано
 
-            if (wb.WType == -16)
-            {
-                IHelper.ShowMatList(_db, wb);
-            }
-            else
-            {
-                IHelper.ShowMatListByWH(_db, wb);
-            }
-
-            //   if (MessageDlg("Зарезервувати товар ? ", mtConfirmation, TMsgDlgButtons() << mbYes << mbNo, 0) == mrYes) RSVAllBarBtn->Click();
+            IHelper.ShowMatListByWH2(_db, wb, (int)KagentComboBox.EditValue);
             RefreshDet();*/
         }
 

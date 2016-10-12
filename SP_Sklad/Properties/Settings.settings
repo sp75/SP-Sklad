@@ -17,5 +17,11 @@
     <Setting Name="ent_id" Type="System.Object" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="main_toolbar" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="main_status_bar" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

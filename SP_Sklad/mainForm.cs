@@ -39,13 +39,8 @@ namespace SP_Sklad
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            /*
-            //	MainPageControl->Visible = false ;
-            frmMain->WindowState = wsMinimized;
-            frmLockSoft->ShowModal();
-            //	MainPageControl->Visible = true ;
-            frmMain->WindowState = wsMaximized;
-             */
+            this.Hide();
+            new frmLockApp().ShowDialog();
         }
 
         private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -65,7 +60,6 @@ namespace SP_Sklad
                     db.SaveChanges();
                 }
             }
-
             Application.Exit();
         }
 
@@ -95,7 +89,7 @@ namespace SP_Sklad
 
         private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2016 Dark";
+           
         }
 
         private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

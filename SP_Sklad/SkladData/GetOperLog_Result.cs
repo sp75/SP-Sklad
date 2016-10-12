@@ -23,8 +23,9 @@ namespace SP_Sklad.SkladData
         public Nullable<int> FunId { get; set; }
         public string DocNum { get; set; }
         public Nullable<int> UserId { get; set; }
-        public string fname { get; set; }
-        public string classname { get; set; }
-        public string USERNAME { get; set; }
+        public string FunName { get; set; }
+        public string ClassName { get; set; }
+        public string UserName { get; set; }
+        public Nullable<int> DocType { get; set; }
     }
 }

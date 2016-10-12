@@ -30,10 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOperLogDet));
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.PrevievBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.KagBalBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.HistoryBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -92,7 +93,7 @@
             this.barManager1.Images = this.FormImgList;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.PrevievBtn,
-            this.KagBalBtn});
+            this.HistoryBtn});
             this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 13;
             // 
@@ -106,24 +107,27 @@
             this.bar2.FloatLocation = new System.Drawing.Point(275, 401);
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.PrevievBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.KagBalBtn)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.HistoryBtn)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
             // 
             // PrevievBtn
             // 
-            this.PrevievBtn.Caption = "Переглянути друковану форму накладної";
+            this.PrevievBtn.Caption = "Переглянути друковану форму документа";
             this.PrevievBtn.Id = 0;
             this.PrevievBtn.ImageIndex = 0;
             this.PrevievBtn.Name = "PrevievBtn";
+            this.PrevievBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrevievBtn_ItemClick);
             // 
-            // KagBalBtn
+            // HistoryBtn
             // 
-            this.KagBalBtn.Caption = "Баланс з контрагентом";
-            this.KagBalBtn.Id = 1;
-            this.KagBalBtn.ImageIndex = 1;
-            this.KagBalBtn.Name = "KagBalBtn";
+            this.HistoryBtn.Caption = "Історія зміни запису";
+            this.HistoryBtn.Glyph = ((System.Drawing.Image)(resources.GetObject("HistoryBtn.Glyph")));
+            this.HistoryBtn.Id = 1;
+            this.HistoryBtn.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("HistoryBtn.LargeGlyph")));
+            this.HistoryBtn.Name = "HistoryBtn";
+            this.HistoryBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.HistoryBtn_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -173,8 +177,8 @@
             this.FormImgList.Images.SetKeyName(3, "н_чого.bmp");
             this.FormImgList.Images.SetKeyName(4, "edit.bmp");
             this.FormImgList.Images.SetKeyName(5, "Delete.bmp");
-            this.FormImgList.Images.SetKeyName(6, "н_.bmp");
-            this.FormImgList.Images.SetKeyName(7, "Так.bmp");
+            this.FormImgList.Images.SetKeyName(6, "storno.png");
+            this.FormImgList.Images.SetKeyName(7, "execute.png");
             // 
             // styleController1
             // 
@@ -219,6 +223,8 @@
             this.dateEdit2.EditValue = null;
             this.dateEdit2.Location = new System.Drawing.Point(337, 59);
             this.dateEdit2.Name = "dateEdit2";
+            this.dateEdit2.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.LightYellow;
+            this.dateEdit2.Properties.AppearanceReadOnly.Options.UseBackColor = true;
             this.dateEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEdit2.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -242,6 +248,8 @@
             this.wbStartDate.EditValue = null;
             this.wbStartDate.Location = new System.Drawing.Point(115, 59);
             this.wbStartDate.Name = "wbStartDate";
+            this.wbStartDate.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.LightYellow;
+            this.wbStartDate.Properties.AppearanceReadOnly.Options.UseBackColor = true;
             this.wbStartDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.wbStartDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -271,10 +279,12 @@
             // 
             // textEdit1
             // 
-            this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.OperLogDetBS, "fname", true));
+            this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.OperLogDetBS, "FunName", true));
             this.textEdit1.Location = new System.Drawing.Point(115, 95);
             this.textEdit1.MenuManager = this.barManager1;
             this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.LightYellow;
+            this.textEdit1.Properties.AppearanceReadOnly.Options.UseBackColor = true;
             this.textEdit1.Properties.ReadOnly = true;
             this.textEdit1.Size = new System.Drawing.Size(349, 22);
             this.textEdit1.StyleController = this.styleController1;
@@ -336,10 +346,13 @@
             // 
             // NumEdit
             // 
-            this.NumEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.OperLogDetBS, "USERNAME", true));
+            this.NumEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.OperLogDetBS, "UserName", true));
             this.NumEdit.Location = new System.Drawing.Point(115, 19);
             this.NumEdit.MenuManager = this.barManager1;
             this.NumEdit.Name = "NumEdit";
+            this.NumEdit.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.LightYellow;
+            this.NumEdit.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            this.NumEdit.Properties.ReadOnly = true;
             this.NumEdit.Size = new System.Drawing.Size(349, 22);
             this.NumEdit.StyleController = this.styleController1;
             this.NumEdit.TabIndex = 0;
@@ -359,20 +372,22 @@
             this.PTypeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.OperLogDetBS, "OpCode", true));
             this.PTypeComboBox.Location = new System.Drawing.Point(115, 131);
             this.PTypeComboBox.Name = "PTypeComboBox";
+            this.PTypeComboBox.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.LightYellow;
+            this.PTypeComboBox.Properties.AppearanceReadOnly.Options.UseBackColor = true;
             this.PTypeComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("PTypeComboBox.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", null, null, true)});
             this.PTypeComboBox.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Створення", "I", 2),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Редагування", "U", 4),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Видалення", "D", 5),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Виконання", "E", 7),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Сторнування", "E", 6),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Сторнування", "S", 6),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Перегляд", "V", 3)});
             this.PTypeComboBox.Properties.NullText = "[EditValue is null]";
             this.PTypeComboBox.Properties.PopupSizeable = true;
             this.PTypeComboBox.Properties.ReadOnly = true;
             this.PTypeComboBox.Properties.SmallImages = this.FormImgList;
-            this.PTypeComboBox.Size = new System.Drawing.Size(348, 20);
+            this.PTypeComboBox.Size = new System.Drawing.Size(348, 22);
             this.PTypeComboBox.TabIndex = 9;
             // 
             // panelControl4
@@ -438,7 +453,7 @@
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraBars.BarButtonItem PrevievBtn;
-        private DevExpress.XtraBars.BarButtonItem KagBalBtn;
+        private DevExpress.XtraBars.BarButtonItem HistoryBtn;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;

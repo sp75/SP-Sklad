@@ -80,5 +80,29 @@ namespace SP_Sklad.Properties {
                 this["ent_id"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool main_toolbar {
+            get {
+                return ((bool)(this["main_toolbar"]));
+            }
+            set {
+                this["main_toolbar"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool main_status_bar {
+            get {
+                return ((bool)(this["main_status_bar"]));
+            }
+            set {
+                this["main_status_bar"] = value;
+            }
+        }
     }
 }

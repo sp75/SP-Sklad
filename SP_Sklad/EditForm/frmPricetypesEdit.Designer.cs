@@ -33,36 +33,36 @@
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.NotesTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.PriceTypesBS = new System.Windows.Forms.BindingSource(this.components);
+            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.DefCheckBox = new DevExpress.XtraEditors.CheckEdit();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
+            this.calcEdit2 = new DevExpress.XtraEditors.CalcEdit();
+            this.lookUpEdit3 = new DevExpress.XtraEditors.LookUpEdit();
+            this.lookUpEdit2 = new DevExpress.XtraEditors.LookUpEdit();
+            this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
+            this.ExtraTypeLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.calcEdit1 = new DevExpress.XtraEditors.CalcEdit();
             this.checkEdit4 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit3 = new DevExpress.XtraEditors.CheckEdit();
-            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
-            this.calcEdit1 = new DevExpress.XtraEditors.CalcEdit();
-            this.ExtraTypeLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
-            this.lookUpEdit2 = new DevExpress.XtraEditors.LookUpEdit();
-            this.lookUpEdit3 = new DevExpress.XtraEditors.LookUpEdit();
-            this.calcEdit2 = new DevExpress.XtraEditors.CalcEdit();
-            this.PriceTypesBS = new System.Windows.Forms.BindingSource(this.components);
+            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceTypesBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DefCheckBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExtraTypeLookUpEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExtraTypeLookUpEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PriceTypesBS)).BeginInit();
             this.SuspendLayout();
             // 
             // BottomPanel
@@ -107,6 +107,15 @@
             this.NotesTextEdit.StyleController = this.styleController1;
             this.NotesTextEdit.TabIndex = 40;
             // 
+            // PriceTypesBS
+            // 
+            this.PriceTypesBS.DataSource = typeof(SP_Sklad.SkladData.PriceTypes);
+            // 
+            // styleController1
+            // 
+            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.styleController1.Appearance.Options.UseFont = true;
+            // 
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
@@ -145,14 +154,104 @@
             this.groupControl2.Tag = "";
             this.groupControl2.Text = "Спосіб ціноутворення";
             // 
-            // labelControl12
+            // calcEdit2
             // 
-            this.labelControl12.Location = new System.Drawing.Point(248, 95);
-            this.labelControl12.Name = "labelControl12";
-            this.labelControl12.Size = new System.Drawing.Size(118, 16);
-            this.labelControl12.StyleController = this.styleController1;
-            this.labelControl12.TabIndex = 58;
-            this.labelControl12.Text = "від цінової категорії";
+            this.calcEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PriceTypesBS, "OnValue", true));
+            this.calcEdit2.EditValue = "";
+            this.calcEdit2.Location = new System.Drawing.Point(123, 92);
+            this.calcEdit2.Name = "calcEdit2";
+            this.calcEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.calcEdit2.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.calcEdit2.Size = new System.Drawing.Size(101, 22);
+            this.calcEdit2.StyleController = this.styleController1;
+            this.calcEdit2.TabIndex = 75;
+            // 
+            // lookUpEdit3
+            // 
+            this.lookUpEdit3.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PriceTypesBS, "PPTypeId", true));
+            this.lookUpEdit3.Location = new System.Drawing.Point(415, 48);
+            this.lookUpEdit3.Name = "lookUpEdit3";
+            this.lookUpEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEdit3.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.lookUpEdit3.Properties.DisplayMember = "Name";
+            this.lookUpEdit3.Properties.ShowFooter = false;
+            this.lookUpEdit3.Properties.ShowHeader = false;
+            this.lookUpEdit3.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.lookUpEdit3.Properties.ValueMember = "PTypeId";
+            this.lookUpEdit3.Size = new System.Drawing.Size(143, 22);
+            this.lookUpEdit3.StyleController = this.styleController1;
+            this.lookUpEdit3.TabIndex = 74;
+            // 
+            // lookUpEdit2
+            // 
+            this.lookUpEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PriceTypesBS, "PPTypeId", true));
+            this.lookUpEdit2.Location = new System.Drawing.Point(415, 94);
+            this.lookUpEdit2.Name = "lookUpEdit2";
+            this.lookUpEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEdit2.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.lookUpEdit2.Properties.DisplayMember = "Name";
+            this.lookUpEdit2.Properties.ShowFooter = false;
+            this.lookUpEdit2.Properties.ShowHeader = false;
+            this.lookUpEdit2.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.lookUpEdit2.Properties.ValueMember = "PTypeId";
+            this.lookUpEdit2.Size = new System.Drawing.Size(143, 22);
+            this.lookUpEdit2.StyleController = this.styleController1;
+            this.lookUpEdit2.TabIndex = 73;
+            // 
+            // lookUpEdit1
+            // 
+            this.lookUpEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PriceTypesBS, "PPTypeId", true));
+            this.lookUpEdit1.Location = new System.Drawing.Point(415, 48);
+            this.lookUpEdit1.Name = "lookUpEdit1";
+            this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEdit1.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.lookUpEdit1.Properties.DisplayMember = "Name";
+            this.lookUpEdit1.Properties.ShowFooter = false;
+            this.lookUpEdit1.Properties.ShowHeader = false;
+            this.lookUpEdit1.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.lookUpEdit1.Properties.ValueMember = "PlId";
+            this.lookUpEdit1.Size = new System.Drawing.Size(143, 22);
+            this.lookUpEdit1.StyleController = this.styleController1;
+            this.lookUpEdit1.TabIndex = 72;
+            // 
+            // ExtraTypeLookUpEdit
+            // 
+            this.ExtraTypeLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PriceTypesBS, "ExtraType", true));
+            this.ExtraTypeLookUpEdit.Location = new System.Drawing.Point(248, 48);
+            this.ExtraTypeLookUpEdit.Name = "ExtraTypeLookUpEdit";
+            this.ExtraTypeLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ExtraTypeLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.ExtraTypeLookUpEdit.Properties.DisplayMember = "Name";
+            this.ExtraTypeLookUpEdit.Properties.ShowFooter = false;
+            this.ExtraTypeLookUpEdit.Properties.ShowHeader = false;
+            this.ExtraTypeLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.ExtraTypeLookUpEdit.Properties.ValueMember = "Id";
+            this.ExtraTypeLookUpEdit.Size = new System.Drawing.Size(152, 22);
+            this.ExtraTypeLookUpEdit.StyleController = this.styleController1;
+            this.ExtraTypeLookUpEdit.TabIndex = 71;
+            this.ExtraTypeLookUpEdit.EditValueChanged += new System.EventHandler(this.ExtraTypeLookUpEdit_EditValueChanged);
+            // 
+            // calcEdit1
+            // 
+            this.calcEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PriceTypesBS, "OnValue", true));
+            this.calcEdit1.EditValue = "";
+            this.calcEdit1.Location = new System.Drawing.Point(123, 48);
+            this.calcEdit1.Name = "calcEdit1";
+            this.calcEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.calcEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.calcEdit1.Size = new System.Drawing.Size(101, 22);
+            this.calcEdit1.StyleController = this.styleController1;
+            this.calcEdit1.TabIndex = 68;
             // 
             // checkEdit4
             // 
@@ -179,113 +278,14 @@
             this.checkEdit3.TabIndex = 66;
             this.checkEdit3.CheckedChanged += new System.EventHandler(this.checkEdit3_CheckedChanged);
             // 
-            // styleController1
+            // labelControl12
             // 
-            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.styleController1.Appearance.Options.UseFont = true;
-            // 
-            // calcEdit1
-            // 
-            this.calcEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PriceTypesBS, "OnValue", true));
-            this.calcEdit1.EditValue = "";
-            this.calcEdit1.Location = new System.Drawing.Point(123, 48);
-            this.calcEdit1.Name = "calcEdit1";
-            this.calcEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.calcEdit1.Size = new System.Drawing.Size(101, 22);
-            this.calcEdit1.StyleController = this.styleController1;
-            this.calcEdit1.TabIndex = 68;
-            // 
-            // ExtraTypeLookUpEdit
-            // 
-            this.ExtraTypeLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PriceTypesBS, "ExtraType", true));
-            this.ExtraTypeLookUpEdit.Location = new System.Drawing.Point(248, 48);
-            this.ExtraTypeLookUpEdit.Name = "ExtraTypeLookUpEdit";
-            this.ExtraTypeLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ExtraTypeLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
-            this.ExtraTypeLookUpEdit.Properties.DisplayMember = "Name";
-            this.ExtraTypeLookUpEdit.Properties.ShowFooter = false;
-            this.ExtraTypeLookUpEdit.Properties.ShowHeader = false;
-            this.ExtraTypeLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.ExtraTypeLookUpEdit.Properties.ValueMember = "Id";
-            this.ExtraTypeLookUpEdit.Size = new System.Drawing.Size(152, 22);
-            this.ExtraTypeLookUpEdit.StyleController = this.styleController1;
-            this.ExtraTypeLookUpEdit.TabIndex = 71;
-            this.ExtraTypeLookUpEdit.EditValueChanged += new System.EventHandler(this.ExtraTypeLookUpEdit_EditValueChanged);
-            // 
-            // lookUpEdit1
-            // 
-            this.lookUpEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PriceTypesBS, "PPTypeId", true));
-            this.lookUpEdit1.Location = new System.Drawing.Point(415, 48);
-            this.lookUpEdit1.Name = "lookUpEdit1";
-            this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEdit1.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
-            this.lookUpEdit1.Properties.DisplayMember = "Name";
-            this.lookUpEdit1.Properties.ShowFooter = false;
-            this.lookUpEdit1.Properties.ShowHeader = false;
-            this.lookUpEdit1.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.lookUpEdit1.Properties.ValueMember = "PlId";
-            this.lookUpEdit1.Size = new System.Drawing.Size(143, 22);
-            this.lookUpEdit1.StyleController = this.styleController1;
-            this.lookUpEdit1.TabIndex = 72;
-            // 
-            // lookUpEdit2
-            // 
-            this.lookUpEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PriceTypesBS, "PPTypeId", true));
-            this.lookUpEdit2.Location = new System.Drawing.Point(415, 94);
-            this.lookUpEdit2.Name = "lookUpEdit2";
-            this.lookUpEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEdit2.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
-            this.lookUpEdit2.Properties.DisplayMember = "Name";
-            this.lookUpEdit2.Properties.ShowFooter = false;
-            this.lookUpEdit2.Properties.ShowHeader = false;
-            this.lookUpEdit2.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.lookUpEdit2.Properties.ValueMember = "PTypeId";
-            this.lookUpEdit2.Size = new System.Drawing.Size(143, 22);
-            this.lookUpEdit2.StyleController = this.styleController1;
-            this.lookUpEdit2.TabIndex = 73;
-            // 
-            // lookUpEdit3
-            // 
-            this.lookUpEdit3.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PriceTypesBS, "PPTypeId", true));
-            this.lookUpEdit3.Location = new System.Drawing.Point(415, 48);
-            this.lookUpEdit3.Name = "lookUpEdit3";
-            this.lookUpEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEdit3.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
-            this.lookUpEdit3.Properties.DisplayMember = "Name";
-            this.lookUpEdit3.Properties.ShowFooter = false;
-            this.lookUpEdit3.Properties.ShowHeader = false;
-            this.lookUpEdit3.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.lookUpEdit3.Properties.ValueMember = "PTypeId";
-            this.lookUpEdit3.Size = new System.Drawing.Size(143, 22);
-            this.lookUpEdit3.StyleController = this.styleController1;
-            this.lookUpEdit3.TabIndex = 74;
-            // 
-            // calcEdit2
-            // 
-            this.calcEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PriceTypesBS, "OnValue", true));
-            this.calcEdit2.EditValue = "";
-            this.calcEdit2.Location = new System.Drawing.Point(123, 92);
-            this.calcEdit2.Name = "calcEdit2";
-            this.calcEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcEdit2.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.calcEdit2.Size = new System.Drawing.Size(101, 22);
-            this.calcEdit2.StyleController = this.styleController1;
-            this.calcEdit2.TabIndex = 75;
-            // 
-            // PriceTypesBS
-            // 
-            this.PriceTypesBS.DataSource = typeof(SP_Sklad.SkladData.PriceTypes);
+            this.labelControl12.Location = new System.Drawing.Point(248, 95);
+            this.labelControl12.Name = "labelControl12";
+            this.labelControl12.Size = new System.Drawing.Size(118, 16);
+            this.labelControl12.StyleController = this.styleController1;
+            this.labelControl12.TabIndex = 58;
+            this.labelControl12.Text = "від цінової категорії";
             // 
             // frmPricetypesEdit
             // 
@@ -297,6 +297,7 @@
             this.Controls.Add(this.NotesTextEdit);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.BottomPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmPricetypesEdit";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -305,20 +306,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).EndInit();
             this.BottomPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceTypesBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DefCheckBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExtraTypeLookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExtraTypeLookUpEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PriceTypesBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

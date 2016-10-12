@@ -560,6 +560,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmServicesEdit";
             this.Text = "frmServicesEdit";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmServicesEdit_FormClosed);

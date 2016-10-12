@@ -88,6 +88,10 @@ namespace SP_Sklad.Reports
                     PayDocReport(doc_id, db, TemlateList.pay_doc_out);
                     break;
 
+                case 2:
+                    InvoiceReport(doc_id, db, TemlateList.wb_invoice);
+                    break;
+
             }
         }
 
@@ -196,6 +200,28 @@ namespace SP_Sklad.Reports
                 OnDate = DbFunctions.AddDays( s.OnDate , -1)
             }).ToList();
             data_report.Add("Posvitcheny", p);
+
+            IHelper.Print(data_report, template_name);
+        }
+
+        public static void InvoiceReport(int doc_id, BaseEntities db, string template_name)
+        {
+            var data_report = new Dictionary<string, IList>();
+
+            var wb = db.v_WaybillList.Where(w => w.DocId == doc_id).AsNoTracking().ToList();
+
+            if (wb != null)
+            {
+                var m = new MoneyToStr("UAH", "UKR", "TEXT");
+                wb.First().www = m.convertValue(wb.First().SummAll.Value);
+            }
+
+            var ent_id = wb.First().EntId;
+            data_report.Add("EntAccount", db.EnterpriseAccount.Where(w => w.KaId == ent_id).ToList());
+            data_report.Add("WayBillList", wb);
+            data_report.Add("WayBillItems", db.GetWayBillDetOut(wb.First().WbillId).ToList());
+
+            var w_id = wb.First().WbillId;
 
             IHelper.Print(data_report, template_name);
         }

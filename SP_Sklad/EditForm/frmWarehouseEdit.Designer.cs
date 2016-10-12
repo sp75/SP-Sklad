@@ -36,18 +36,18 @@
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit1 = new DevExpress.XtraEditors.MemoEdit();
+            this.WarehouseDS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
             this.NotesTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.WarehouseDS = new System.Windows.Forms.BindingSource(this.components);
             this.DefCheckBox = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WarehouseDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WarehouseDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DefCheckBox.Properties)).BeginInit();
             this.SuspendLayout();
             // 
@@ -115,6 +115,10 @@
             this.textEdit1.Size = new System.Drawing.Size(459, 72);
             this.textEdit1.TabIndex = 31;
             // 
+            // WarehouseDS
+            // 
+            this.WarehouseDS.DataSource = typeof(SP_Sklad.SkladData.Warehouse);
+            // 
             // labelControl1
             // 
             this.labelControl1.Location = new System.Drawing.Point(21, 191);
@@ -145,10 +149,6 @@
             this.NotesTextEdit.StyleController = this.styleController1;
             this.NotesTextEdit.TabIndex = 34;
             // 
-            // WarehouseDS
-            // 
-            this.WarehouseDS.DataSource = typeof(SP_Sklad.SkladData.Warehouse);
-            // 
             // DefCheckBox
             // 
             this.DefCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WarehouseDS, "Def", true));
@@ -174,6 +174,7 @@
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.BottomPanel);
             this.Controls.Add(this.textEdit1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmWarehouseEdit";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -183,9 +184,9 @@
             this.BottomPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WarehouseDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WarehouseDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DefCheckBox.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

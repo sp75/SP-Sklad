@@ -153,6 +153,59 @@ namespace SP_Sklad.Common
             }
         }
 
+        static public void ShowMatListByWH2(BaseEntities db, WaybillList wb, int ka_id)
+        {
+            //Не доделано
+            var f = new frmWhCatalog(1);
+
+            f.uc.xtraTabPage4.PageVisible = false;
+            f.uc.xtraTabPage5.PageVisible = false;
+            f.uc.xtraTabPage9.PageVisible = false;
+            f.uc.MatListTabPage.PageVisible = true;
+            f.uc.xtraTabControl1.SelectedTabPageIndex = 4;
+            f.uc.gridColumn49.Visible = false;
+            f.uc.gridColumn51.Visible = false;
+            f.uc.gridColumn52.Visible = false;
+            f.uc.bar3.Visible = false;
+            f.uc.ByWhBtn.Down = true;
+            f.uc.splitContainerControl1.SplitterPosition = 0;
+            
+            f.uc.whKagentList.EditValue = ka_id;
+            f.uc.whKagentList.Enabled = false;
+
+            f.uc.WHTreeList.DataSource = new BaseEntities().GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w => w.GType == 1).ToList();
+        
+            f.uc.GrpNameGridColumn.GroupIndex = 0;
+
+            f.uc.wb = wb;
+            f.uc.isMatList = true;
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                foreach (var item in f.uc.custom_mat_list)
+                {
+                    var wbd = db.WaybillDet.Add(new WaybillDet
+                    {
+                        WbillId = wb.WbillId,
+                        OnDate = wb.OnDate,
+                        MatId = item.MatId,
+                        WId = item.WId,
+                        Amount = item.Amount,
+                        Price = item.Price,
+                        Discount = 0,
+                        Nds = wb.Nds,
+                        CurrId = wb.CurrId,
+                        OnValue = wb.OnValue,
+                        BasePrice = item.Price,
+                        PosKind = 0,
+                        PosParent = 0,
+                        DiscountKind = 0
+
+                    });
+                }
+                db.SaveChanges();
+            }
+        }
+
         static public void ShowMatListByWH3(BaseEntities db, WaybillList wb, String WID)
         {
             var f = new frmWhCatalog(1);

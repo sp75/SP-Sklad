@@ -55,7 +55,7 @@
             this.BottomPanel.Controls.Add(this.OkButton);
             this.BottomPanel.Controls.Add(this.simpleButton1);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomPanel.Location = new System.Drawing.Point(0, 157);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 149);
             this.BottomPanel.Name = "BottomPanel";
             this.BottomPanel.Size = new System.Drawing.Size(455, 52);
             this.BottomPanel.TabIndex = 21;
@@ -64,7 +64,7 @@
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(233, 10);
+            this.OkButton.Location = new System.Drawing.Point(220, 10);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(100, 30);
             this.OkButton.TabIndex = 1;
@@ -74,7 +74,7 @@
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton1.Location = new System.Drawing.Point(343, 10);
+            this.simpleButton1.Location = new System.Drawing.Point(330, 10);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(100, 30);
             this.simpleButton1.TabIndex = 0;
@@ -97,7 +97,7 @@
             this.ReceivedTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "Received", true));
             this.ReceivedTextEdit.Location = new System.Drawing.Point(24, 39);
             this.ReceivedTextEdit.Name = "ReceivedTextEdit";
-            this.ReceivedTextEdit.Size = new System.Drawing.Size(419, 22);
+            this.ReceivedTextEdit.Size = new System.Drawing.Size(406, 22);
             this.ReceivedTextEdit.StyleController = this.styleController1;
             this.ReceivedTextEdit.TabIndex = 45;
             // 
@@ -117,7 +117,7 @@
             this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "AttNum", true));
             this.textEdit1.Location = new System.Drawing.Point(24, 100);
             this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(178, 22);
+            this.textEdit1.Size = new System.Drawing.Size(169, 22);
             this.textEdit1.StyleController = this.styleController1;
             this.textEdit1.TabIndex = 46;
             // 
@@ -132,7 +132,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(246, 78);
+            this.labelControl1.Location = new System.Drawing.Point(220, 78);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(76, 16);
             this.labelControl1.StyleController = this.styleController1;
@@ -143,13 +143,13 @@
             // 
             this.AttDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "AttDate", true));
             this.AttDateEdit.EditValue = null;
-            this.AttDateEdit.Location = new System.Drawing.Point(246, 100);
+            this.AttDateEdit.Location = new System.Drawing.Point(220, 100);
             this.AttDateEdit.Name = "AttDateEdit";
             this.AttDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.AttDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.AttDateEdit.Size = new System.Drawing.Size(197, 22);
+            this.AttDateEdit.Size = new System.Drawing.Size(210, 22);
             this.AttDateEdit.StyleController = this.styleController1;
             this.AttDateEdit.TabIndex = 49;
             // 
@@ -157,7 +157,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(455, 209);
+            this.ClientSize = new System.Drawing.Size(455, 201);
             this.Controls.Add(this.AttDateEdit);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.labelControl7);
@@ -165,6 +165,7 @@
             this.Controls.Add(this.ReceivedTextEdit);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.BottomPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmAttEdit";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -648,6 +648,7 @@
             this.Controls.Add(this.splitterControl1);
             this.Controls.Add(this.DirTreeList);
             this.Controls.Add(this.BottomPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmBanksEdit";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -35,12 +35,12 @@
             this.OprLogGridControl = new DevExpress.XtraGrid.GridControl();
             this.OprLogGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn42 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.GridImageList = new System.Windows.Forms.ImageList(this.components);
             this.gridColumn43 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn44 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn45 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn46 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.GridImageList = new System.Windows.Forms.ImageList(this.components);
-            this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OprLogGridControl)).BeginInit();
@@ -105,6 +105,32 @@
             this.gridColumn42.VisibleIndex = 0;
             this.gridColumn42.Width = 42;
             // 
+            // repositoryItemImageComboBox1
+            // 
+            this.repositoryItemImageComboBox1.AutoHeight = false;
+            this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", "U", 1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", "I", 0),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", "D", 2),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", "E", 3),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", "S", 4),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", "V", 5)});
+            this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
+            this.repositoryItemImageComboBox1.SmallImages = this.GridImageList;
+            // 
+            // GridImageList
+            // 
+            this.GridImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("GridImageList.ImageStream")));
+            this.GridImageList.TransparentColor = System.Drawing.Color.White;
+            this.GridImageList.Images.SetKeyName(0, "Add.bmp");
+            this.GridImageList.Images.SetKeyName(1, "edit.bmp");
+            this.GridImageList.Images.SetKeyName(2, "Delete.bmp");
+            this.GridImageList.Images.SetKeyName(3, "execute.png");
+            this.GridImageList.Images.SetKeyName(4, "storno.png");
+            this.GridImageList.Images.SetKeyName(5, "н_чого.bmp");
+            // 
             // gridColumn43
             // 
             this.gridColumn43.Caption = "Дата події";
@@ -142,32 +168,6 @@
             this.gridColumn46.Visible = true;
             this.gridColumn46.VisibleIndex = 1;
             this.gridColumn46.Width = 328;
-            // 
-            // GridImageList
-            // 
-            this.GridImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("GridImageList.ImageStream")));
-            this.GridImageList.TransparentColor = System.Drawing.Color.White;
-            this.GridImageList.Images.SetKeyName(0, "Add.bmp");
-            this.GridImageList.Images.SetKeyName(1, "edit.bmp");
-            this.GridImageList.Images.SetKeyName(2, "Delete.bmp");
-            this.GridImageList.Images.SetKeyName(3, "Так.bmp");
-            this.GridImageList.Images.SetKeyName(4, "н_.bmp");
-            this.GridImageList.Images.SetKeyName(5, "н_чого.bmp");
-            // 
-            // repositoryItemImageComboBox1
-            // 
-            this.repositoryItemImageComboBox1.AutoHeight = false;
-            this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", "U", 1),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", "I", 0),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", "D", 2),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", "E", 3),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", "S", 4),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", "V", 5)});
-            this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
-            this.repositoryItemImageComboBox1.SmallImages = this.GridImageList;
             // 
             // frmLogHistory
             // 
