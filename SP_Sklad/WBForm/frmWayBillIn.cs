@@ -265,7 +265,7 @@ namespace SP_Sklad.WBForm
         private void RefreshDet()
         {
             _db.UpdWaybillDetPrice(_wbill_id);
-            WaybillDetInBS.DataSource = _db.GetWaybillDetIn(_wbill_id);
+            WaybillDetInBS.DataSource = _db.GetWaybillDetIn(_wbill_id).AsNoTracking().ToList();
             GetOk();
         }
 

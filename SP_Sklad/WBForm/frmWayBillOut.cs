@@ -178,7 +178,7 @@ namespace SP_Sklad.WBForm
 
         private void RefreshDet()
         {
-            wbd_list = _db.GetWayBillDetOut(_wbill_id).ToList();
+            wbd_list = _db.GetWayBillDetOut(_wbill_id).AsNoTracking().ToList();
 
             WaybillDetOutBS.DataSource = wbd_list;
 
@@ -232,7 +232,11 @@ namespace SP_Sklad.WBForm
                 }
                 _db.SaveChanges();
 
-                RefreshDet();
+           //     wbd_list.Remove(dr);
+          //      WaybillDetOutGridView.RefreshData();
+                WaybillDetOutGridView.DeleteRow(WaybillDetOutGridView.FocusedRowHandle);
+
+              //  RefreshDet();
             }
         }
 
@@ -366,6 +370,11 @@ namespace SP_Sklad.WBForm
         private void MarkBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var wbd = _db.WaybillDet.Find(wbd_row.PosId);
+            if (wbd == null)
+            {
+                return;
+            }
+
             if (wbd.Checked == 1)
             {
                 wbd.Checked = 0;

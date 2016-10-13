@@ -95,13 +95,13 @@
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
@@ -883,7 +883,6 @@
             // gridColumn4
             // 
             this.gridColumn4.Caption = "Кількість";
-            this.gridColumn4.ColumnEdit = this.repositoryItemCalcEdit1;
             this.gridColumn4.DisplayFormat.FormatString = "0.0000";
             this.gridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn4.FieldName = "Amount";
@@ -891,13 +890,6 @@
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 5;
             this.gridColumn4.Width = 90;
-            // 
-            // repositoryItemCalcEdit1
-            // 
-            this.repositoryItemCalcEdit1.AutoHeight = false;
-            this.repositoryItemCalcEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemCalcEdit1.Name = "repositoryItemCalcEdit1";
             // 
             // gridColumn5
             // 
@@ -966,6 +958,13 @@
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 7;
             this.gridColumn9.Width = 143;
+            // 
+            // repositoryItemCalcEdit1
+            // 
+            this.repositoryItemCalcEdit1.AutoHeight = false;
+            this.repositoryItemCalcEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemCalcEdit1.Name = "repositoryItemCalcEdit1";
             // 
             // barDockControl1
             // 

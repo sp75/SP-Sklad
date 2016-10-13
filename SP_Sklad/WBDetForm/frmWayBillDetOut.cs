@@ -162,7 +162,7 @@ namespace SP_Sklad.WBDetForm
              }
 
              GetDiscount(row.MatId);
-             GetContent(row.WId, row.MatId);
+             GetContent(_wbd.WId, row.MatId);
         }
 
         private void GetDiscount(int? MatId)
