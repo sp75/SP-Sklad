@@ -477,12 +477,14 @@ namespace SP_Sklad.Common
                     if (f.ShowDialog() == DialogResult.OK)
                     {
                         result.mat_id = (f.uc.WhMatGridView.GetFocusedRow() as WhMatGet_Result).MatId.Value;
-                        result.wid = (f.uc.WhRemainGridView.GetFocusedRow() as WMatGetByWh_Result).WId;
+                     //   result.wid = (f.uc.WhRemainGridView.GetFocusedRow() as WMatGetByWh_Result).WId;
+                        var remain_in_wh = DB.SkladBase().MatRemainByWh(result.mat_id, old_WID != DBNull.Value ? (int?)old_WID : 0, 0, f.uc.OnDateEdit.DateTime, "*").ToList();
+                        result.wid = remain_in_wh.Any() ? remain_in_wh.First().WId : DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId;
                     }
                     else
                     {
                         result.mat_id = old_MATID != null ? (int)old_MATID : 0;
-                        result.wid = old_WID != null ? (int?)old_WID : 0;
+                        result.wid = old_WID != DBNull.Value ? (int?)old_WID : 0;
                     }
                     break;
 

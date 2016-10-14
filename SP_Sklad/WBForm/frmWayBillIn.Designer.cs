@@ -98,6 +98,7 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
+            this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -126,6 +127,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -730,7 +732,8 @@
             this.WaybillDetInGridControl.MenuManager = this.barManager1;
             this.WaybillDetInGridControl.Name = "WaybillDetInGridControl";
             this.WaybillDetInGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemImageComboBox1});
+            this.repositoryItemImageComboBox1,
+            this.repositoryItemCalcEdit1});
             this.WaybillDetInGridControl.Size = new System.Drawing.Size(965, 243);
             this.WaybillDetInGridControl.TabIndex = 1;
             this.WaybillDetInGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -814,6 +817,7 @@
             // gridColumn4
             // 
             this.gridColumn4.Caption = "Кількість";
+            this.gridColumn4.ColumnEdit = this.repositoryItemCalcEdit1;
             this.gridColumn4.FieldName = "Amount";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
@@ -833,6 +837,8 @@
             // gridColumn6
             // 
             this.gridColumn6.Caption = "Ціна без ПДВ";
+            this.gridColumn6.DisplayFormat.FormatString = "0.00";
+            this.gridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn6.FieldName = "Price";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.OptionsColumn.AllowEdit = false;
@@ -844,6 +850,8 @@
             // gridColumn7
             // 
             this.gridColumn7.Caption = "Всього ПДВ";
+            this.gridColumn7.DisplayFormat.FormatString = "0.00";
+            this.gridColumn7.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn7.FieldName = "SumNds";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.OptionsColumn.AllowEdit = false;
@@ -854,6 +862,8 @@
             // gridColumn8
             // 
             this.gridColumn8.Caption = "Сума з ПДВ";
+            this.gridColumn8.DisplayFormat.FormatString = "0.00";
+            this.gridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn8.FieldName = "Total";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.OptionsColumn.AllowEdit = false;
@@ -879,6 +889,17 @@
             this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl1.Location = new System.Drawing.Point(2, 2);
             this.barDockControl1.Size = new System.Drawing.Size(965, 0);
+            // 
+            // repositoryItemCalcEdit1
+            // 
+            this.repositoryItemCalcEdit1.AutoHeight = false;
+            this.repositoryItemCalcEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemCalcEdit1.DisplayFormat.FormatString = "0.0000";
+            this.repositoryItemCalcEdit1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.repositoryItemCalcEdit1.EditFormat.FormatString = "0.0000";
+            this.repositoryItemCalcEdit1.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.repositoryItemCalcEdit1.Name = "repositoryItemCalcEdit1";
             // 
             // frmWayBillIn
             // 
@@ -930,6 +951,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1005,5 +1027,6 @@
         private System.Windows.Forms.Panel panel1;
         private MainTabs.PayDocUserControl payDocUserControl1;
         private System.Windows.Forms.BindingSource WaybillDetInBS;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
     }
 }

@@ -489,9 +489,9 @@ namespace SP_Sklad.Reports
                     return;
                 }
 
-                var satrt_remais = db.WMatGetByWh(mat_id, wid, (int)Kagent.KaId, StartDate, "*").Sum(s => s.Remain);
+                var satrt_remais = db.MatRemainByWh(mat_id, wid, (int)Kagent.KaId, StartDate, "*").Sum(s => s.Remain);
                 var sart_avg_price = db.v_MatRemains.Where(w => w.MatId == mat_id && w.OnDate <= StartDate).OrderByDescending(o => o.OnDate).Select(s => s.AvgPrice).FirstOrDefault();
-                var end_remais = db.WMatGetByWh(mat_id, wid, (int)Kagent.KaId, EndDate, "*").Sum(s => s.Remain);
+                var end_remais = db.MatRemainByWh(mat_id, wid, (int)Kagent.KaId, EndDate, "*").Sum(s => s.Remain);
                 var end_avg_price = db.v_MatRemains.Where(w => w.MatId == mat_id && w.OnDate <= EndDate).OrderByDescending(o => o.OnDate).Select(s => s.AvgPrice).FirstOrDefault();
 
                 var balances = new List<object>();

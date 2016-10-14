@@ -185,24 +185,9 @@ namespace SP_Sklad.MainTabs
 
         private void MatGridView_DoubleClick(object sender, EventArgs e)
         {
-            var row = MatGridView.GetFocusedRow() as GetMatList_Result;
-
             if (isMatList)
             {
-                var p_type = (wb.Kagent != null ? wb.Kagent.PTypeId : null);
-                var mat_price = DB.SkladBase().GetListMatPrices(row.MatId, wb.CurrId, p_type).FirstOrDefault();
-
-                custom_mat_list.Add(new CustomMatList
-                {
-                    Num = custom_mat_list.Count() + 1,
-                    MatId = row.MatId,
-                    Name = row.Name,
-                    Amount = 1,
-                    Price = mat_price != null ? mat_price.Price : 0,
-                    WId = row.WId != null ? row.WId.Value : DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId
-                });
-
-                MatListGridView.RefreshData();
+                AddItem.PerformClick();
             }
             else if (isDirectList)
             {
@@ -596,6 +581,30 @@ namespace SP_Sklad.MainTabs
         private void WarehouseGridView_DoubleClick(object sender, EventArgs e)
         {
             EditItemBtn.PerformClick();
+        }
+
+        private void AddItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var row = MatGridView.GetFocusedRow() as GetMatList_Result;
+            var p_type = (wb.Kagent != null ? wb.Kagent.PTypeId : null);
+            var mat_price = DB.SkladBase().GetListMatPrices(row.MatId, wb.CurrId, p_type).FirstOrDefault();
+
+            custom_mat_list.Add(new CustomMatList
+            {
+                Num = custom_mat_list.Count() + 1,
+                MatId = row.MatId,
+                Name = row.Name,
+                Amount = 1,
+                Price = mat_price != null ? mat_price.Price : 0,
+                WId = row.WId != null ? row.WId.Value : DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId
+            });
+
+            MatListGridView.RefreshData();
+        }
+
+        private void DelItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MatListGridView.DeleteSelectedRows();
         }
     }
 }

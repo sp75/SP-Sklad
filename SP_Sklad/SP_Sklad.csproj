@@ -187,10 +187,16 @@
     <Compile Include="SkladData\GetOperLog_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetPosIn_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetPrintLog_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetWaybillDetIn_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\MatRemainByWh_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\REP_31_Result.cs">
@@ -537,9 +543,6 @@
     <Compile Include="SkladData\GetPayDocList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\GetPosIn_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SkladData\GetPosOut_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -805,9 +808,6 @@
     <Compile Include="SkladData\SP_MAT_REMAIN_GET_SIMPLE_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\SP_POS_IN_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SkladData\SP_WMAT_GET_BY_WHLIST_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -914,9 +914,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\WhMatGet_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\WMatGetByWh_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\WMatTurn.cs">

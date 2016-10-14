@@ -35,7 +35,7 @@ namespace SP_Sklad
 
             if (e.Column.FieldName == "GetAll")
             {
-                if (dr.GetAll == 1) dr.Amount = dr.CurRemain;
+                if (dr.GetAll == 1) dr.Amount = dr.FullRemain;
                 else dr.Amount = 0;
             }
 

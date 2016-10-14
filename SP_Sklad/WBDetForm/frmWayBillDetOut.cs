@@ -77,23 +77,16 @@ namespace SP_Sklad.WBDetForm
 
                         foreach (var item in w_mat_turn)
                         {
-                            if (pos_in.Any(a => a.PosId == item.PosId))
+                            var get_pos_in_result = pos_in.FirstOrDefault(a => a.PosId == item.PosId);
+                            if (get_pos_in_result != null)
                             {
-                                pos_in.FirstOrDefault(a => a.PosId == item.PosId).Amount = item.Amount;
+                                get_pos_in_result.Amount = item.Amount;
                             }
                         }
                         _db.WMatTurn.RemoveRange(w_mat_turn);
                         _db.SaveChanges();
                     }
                 }
-
-         //       MatComboBox.DataBindings.Add(new Binding("EditValue", _wbd, "MatId", false, DataSourceUpdateMode.OnPropertyChanged));
-            //    WHComboBox.DataBindings.Add(new Binding("EditValue", _wbd, "WId", false, DataSourceUpdateMode.OnPropertyChanged));
-        //        AmountEdit.DataBindings.Add(new Binding("EditValue", _wbd, "Amount", false, DataSourceUpdateMode.OnPropertyChanged));
-            //    PriceTypesEdit.DataBindings.Add(new Binding("EditValue", _wbd, "PtypeId", false, DataSourceUpdateMode.OnPropertyChanged));
-           //     BasePriceEdit.DataBindings.Add(new Binding("EditValue", _wbd, "BasePrice", false, DataSourceUpdateMode.OnPropertyChanged));
-          //      DiscountEdit.DataBindings.Add(new Binding("EditValue", _wbd, "Discount", false, DataSourceUpdateMode.OnPropertyChanged));
-        //        CheckCustomEdit.DataBindings.Add(new Binding("EditValue", _wbd, "DiscountKind", false, DataSourceUpdateMode.OnPropertyChanged));
 
                 GetOk();
             }
@@ -187,21 +180,21 @@ namespace SP_Sklad.WBDetForm
             mat_remain = _db.GetMatRemain(WId, MatId).FirstOrDefault();
             GetMatRemainBS.DataSource = mat_remain != null ? mat_remain : new GetMatRemain_Result();
 
-        /*    if (mat_remain != null)
-            {
-                GetMatRemainBS.DataSource = mat_remain;
+            /*    if (mat_remain != null)
+                {
+                    GetMatRemainBS.DataSource = mat_remain;
 
-          //      RemainWHEdit.EditValue = mat_remain.RemainInWh;
-               // RsvEdit.EditValue = mat_remain.Rsv;
-            //    CurRemainEdit.EditValue = mat_remain.Remain;
-          //      MinPriceEdit.EditValue = mat_remain.MinPrice;
-           //     AvgPriceEdit.EditValue = mat_remain.AvgPrice;
-          //      MaxPriceEdit.EditValue = mat_remain.MaxPrice;
-            }
-            else
-            {
-                GetMatRemainBS.DataSource = new GetMatRemain_Result();
-            }*/
+              //      RemainWHEdit.EditValue = mat_remain.RemainInWh;
+                   // RsvEdit.EditValue = mat_remain.Rsv;
+                //    CurRemainEdit.EditValue = mat_remain.Remain;
+              //      MinPriceEdit.EditValue = mat_remain.MinPrice;
+               //     AvgPriceEdit.EditValue = mat_remain.AvgPrice;
+              //      MaxPriceEdit.EditValue = mat_remain.MaxPrice;
+                }
+                else
+                {
+                    GetMatRemainBS.DataSource = new GetMatRemain_Result();
+                }*/
 
             pos_in = _db.GetPosIn(_wb.OnDate, MatId, WId, 0).Where(w => w.FullRemain > 0).OrderBy(o => o.OnDate).ToList();
 

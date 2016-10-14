@@ -428,7 +428,7 @@ namespace SP_Sklad.MainTabs
 
         private void AddItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var wh_row = WhRemainGridView.GetFocusedRow() as WMatGetByWh_Result;
+            var remain_in_wh = DB.SkladBase().MatRemainByWh(focused_wh_mat.MatId.Value, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, wh_list).ToList();
             var t = (wb.Kagent != null ? wb.Kagent.PTypeId : null);
             var price = DB.SkladBase().GetListMatPrices(focused_wh_mat.MatId, wb.CurrId, t).FirstOrDefault();
 
@@ -439,7 +439,7 @@ namespace SP_Sklad.MainTabs
                 Name = focused_wh_mat.MatName,
                 Amount = 1,
                 Price = price != null ? price.Price : 0,
-                WId = wh_row != null ? wh_row.WId.Value : DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId,
+                WId = remain_in_wh.Any() ? remain_in_wh.First().WId : DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId,
                 PTypeId = price != null ? price.PType : null,
                 Discount = DB.SkladBase().GetDiscount(wb.KaId, focused_wh_mat.MatId).FirstOrDefault() ?? 0.00m
             });
@@ -475,7 +475,7 @@ namespace SP_Sklad.MainTabs
                 {
                     if (BarCodeSplit.Count() > 2)
                     {
-                        var wh_row = WhRemainGridView.GetFocusedRow() as WMatGetByWh_Result;
+                        var wh_row = WhRemainGridView.GetFocusedRow() as MatRemainByWh_Result;
 
                         custom_mat_list.Add(new CustomMatListWH
                         {
@@ -484,7 +484,7 @@ namespace SP_Sklad.MainTabs
                             Name = row.MatName,
                             Amount = 1,
                             Price = Convert.ToDecimal(BarCodeSplit[1] + "," + BarCodeSplit[2]),
-                            WId = wh_row != null ? wh_row.WId.Value : DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId,
+                            WId = wh_row != null ? wh_row.WId : DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId,
                             PTypeId = null,
                             Discount = DB.SkladBase().GetDiscount(wb.KaId, row.MatId).FirstOrDefault() ?? 0.00m
                         });
@@ -567,7 +567,7 @@ namespace SP_Sklad.MainTabs
         private void DeboningMatBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var rec = DB.SkladBase().MatRecipe.FirstOrDefault(w => w.MatId == focused_wh_mat.MatId && w.RType == 2);
-            var wh_remain =  WhRemainGridView.GetFocusedRow() as WMatGetByWh_Result ;
+            var wh_remain =  WhRemainGridView.GetFocusedRow() as MatRemainByWh_Result ;
             if (rec != null)
             {
                 using (var f = new frmWBDeboning() { rec_id = rec.RecId, source_wid = wh_remain .WId})
@@ -606,7 +606,7 @@ namespace SP_Sklad.MainTabs
             {
                 case 0:
                     RemainOnWhGrid.DataSource = null;
-                    RemainOnWhGrid.DataSource = DB.SkladBase().WMatGetByWh(row.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, wh_list).ToList();
+                    RemainOnWhGrid.DataSource = DB.SkladBase().MatRemainByWh(row.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, wh_list).ToList();
                     break;
                 case 1:
                     PosGridControl.DataSource = null;

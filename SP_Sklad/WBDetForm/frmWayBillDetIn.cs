@@ -138,9 +138,9 @@ namespace SP_Sklad.WBDetForm
             if (wbdp != null && _db.Entry<WayBillDetAddProps>(wbdp).State == EntityState.Detached)
             {
                 wbdp.PosId = _wbd.PosId;
-                _db.WayBillDetAddProps.Add(wbdp);
+        //        _db.WayBillDetAddProps.Add(wbdp);
             }
-            if (serials != null && _db.Entry<Serials>(serials).State == EntityState.Detached)
+            if (serials != null && serials.SerialNo != null && _db.Entry<Serials>(serials).State == EntityState.Detached)
             {
                 serials.PosId = _wbd.PosId;
                 _db.Serials.Add(serials);
@@ -177,43 +177,23 @@ namespace SP_Sklad.WBDetForm
 
         private void BasePriceEdit_EditValueChanged(object sender, EventArgs e)
         {
-            if (!BasePriceEdit.ContainsFocus)
+            if (!BasePriceEdit.ContainsFocus || PriceEdit.ContainsFocus)
             {
                 return;
             }
 
-            if (_wbd.Nds > 0)
-            {
-                _wbd.Price = Math.Round((BasePriceEdit.Value * 100 / (100 + Convert.ToDecimal(_wbd.Nds))), 4);
-                PriceEdit.EditValue = _wbd.Price;
-            }
-            else
-            {
-                _wbd.Price = BasePriceEdit.Value;
-                PriceEdit.Value = BasePriceEdit.Value;
-            }
-
+            _wbd.Price = _wbd.Nds > 0 ? Math.Round((BasePriceEdit.Value * 100 / (100 + Convert.ToDecimal(_wbd.Nds))), 2) : BasePriceEdit.Value;
             GetOk();
         }
 
         private void PriceEdit_EditValueChanged(object sender, EventArgs e)
         {
-            if (!PriceEdit.ContainsFocus)
+            if (!PriceEdit.ContainsFocus || BasePriceEdit.ContainsFocus)
             {
                 return;
             }
 
-            if (_wbd.Nds > 0)
-            {
-                _wbd.BasePrice = Math.Round(PriceEdit.Value + (PriceEdit.Value * Convert.ToDecimal(_wbd.Nds) / 100), 4);
-                BasePriceEdit.EditValue = _wbd.BasePrice;
-            }
-            else
-            {
-                _wbd.BasePrice = PriceEdit.Value;
-                BasePriceEdit.Value = PriceEdit.Value;
-            }
-
+            _wbd.BasePrice = _wbd.Nds > 0 ? Math.Round(PriceEdit.Value + (PriceEdit.Value * Convert.ToDecimal(_wbd.Nds) / 100), 2) : PriceEdit.Value;
             GetOk();
         }
 
@@ -338,7 +318,7 @@ namespace SP_Sklad.WBDetForm
             var row = (MaterialsList)MatComboBox.GetSelectedDataRow();
             if (row != null)
             {
-                _wbd.Nds = row.NDS;
+             //   _wbd.Nds = row.NDS;  треба подумати як правильно
                 _wbd.WId = row.WId;
                 labelControl24.Text = row.MeasuresName;
                 labelControl27.Text = row.MeasuresName;

@@ -234,7 +234,8 @@ namespace SP_Sklad.WBForm
 
            //     wbd_list.Remove(dr);
           //      WaybillDetOutGridView.RefreshData();
-                WaybillDetOutGridView.DeleteRow(WaybillDetOutGridView.FocusedRowHandle);
+                WaybillDetOutGridView.DeleteSelectedRows();
+       //         WaybillDetOutGridView.DeleteRow(WaybillDetOutGridView.FocusedRowHandle);
 
               //  RefreshDet();
             }
@@ -385,7 +386,7 @@ namespace SP_Sklad.WBForm
                 wbd.Checked = 1;
                 wbd_row.Checked = 1;
             }
-
+            _db.SaveChanges();
             WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
         }
 

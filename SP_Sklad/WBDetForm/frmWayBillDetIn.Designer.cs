@@ -566,6 +566,8 @@
             this.MaxPriceEdit.Location = new System.Drawing.Point(125, 86);
             this.MaxPriceEdit.MenuManager = this.barManager1;
             this.MaxPriceEdit.Name = "MaxPriceEdit";
+            this.MaxPriceEdit.Properties.DisplayFormat.FormatString = "0.00";
+            this.MaxPriceEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.MaxPriceEdit.Size = new System.Drawing.Size(96, 22);
             this.MaxPriceEdit.StyleController = this.styleController1;
             this.MaxPriceEdit.TabIndex = 22;
@@ -587,6 +589,8 @@
             this.AvgPriceEdit.Location = new System.Drawing.Point(125, 58);
             this.AvgPriceEdit.MenuManager = this.barManager1;
             this.AvgPriceEdit.Name = "AvgPriceEdit";
+            this.AvgPriceEdit.Properties.DisplayFormat.FormatString = "0.00";
+            this.AvgPriceEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.AvgPriceEdit.Size = new System.Drawing.Size(96, 22);
             this.AvgPriceEdit.StyleController = this.styleController1;
             this.AvgPriceEdit.TabIndex = 20;
@@ -608,6 +612,8 @@
             this.MinPriceEdit.Location = new System.Drawing.Point(125, 30);
             this.MinPriceEdit.MenuManager = this.barManager1;
             this.MinPriceEdit.Name = "MinPriceEdit";
+            this.MinPriceEdit.Properties.DisplayFormat.FormatString = "0.00";
+            this.MinPriceEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.MinPriceEdit.Size = new System.Drawing.Size(96, 22);
             this.MinPriceEdit.StyleController = this.styleController1;
             this.MinPriceEdit.TabIndex = 18;
@@ -783,6 +789,10 @@
             this.PriceEdit.Name = "PriceEdit";
             this.PriceEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.PriceEdit.Properties.DisplayFormat.FormatString = "0.00";
+            this.PriceEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.PriceEdit.Properties.EditFormat.FormatString = "0.00";
+            this.PriceEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.PriceEdit.Size = new System.Drawing.Size(138, 22);
             this.PriceEdit.StyleController = this.styleController1;
             this.PriceEdit.TabIndex = 8;
@@ -806,6 +816,10 @@
             this.BasePriceEdit.Name = "BasePriceEdit";
             this.BasePriceEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.BasePriceEdit.Properties.DisplayFormat.FormatString = "0.00";
+            this.BasePriceEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.BasePriceEdit.Properties.EditFormat.FormatString = "0.00";
+            this.BasePriceEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.BasePriceEdit.Size = new System.Drawing.Size(138, 22);
             this.BasePriceEdit.StyleController = this.styleController1;
             this.BasePriceEdit.TabIndex = 6;
@@ -829,6 +843,10 @@
             this.AmountEdit.Name = "AmountEdit";
             this.AmountEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.AmountEdit.Properties.DisplayFormat.FormatString = "0.000";
+            this.AmountEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.AmountEdit.Properties.EditFormat.FormatString = "0.000";
+            this.AmountEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.AmountEdit.Size = new System.Drawing.Size(138, 22);
             this.AmountEdit.StyleController = this.styleController1;
             this.AmountEdit.TabIndex = 4;
@@ -1123,6 +1141,8 @@
             this.TotalNdsEdit.Location = new System.Drawing.Point(420, 71);
             this.TotalNdsEdit.MenuManager = this.barManager1;
             this.TotalNdsEdit.Name = "TotalNdsEdit";
+            this.TotalNdsEdit.Properties.DisplayFormat.FormatString = "0.00";
+            this.TotalNdsEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.TotalNdsEdit.Size = new System.Drawing.Size(115, 22);
             this.TotalNdsEdit.StyleController = this.styleController1;
             this.TotalNdsEdit.TabIndex = 22;
@@ -1135,6 +1155,8 @@
             this.TotalSumEdit.Location = new System.Drawing.Point(420, 50);
             this.TotalSumEdit.MenuManager = this.barManager1;
             this.TotalSumEdit.Name = "TotalSumEdit";
+            this.TotalSumEdit.Properties.DisplayFormat.FormatString = "0.00";
+            this.TotalSumEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.TotalSumEdit.Size = new System.Drawing.Size(115, 22);
             this.TotalSumEdit.StyleController = this.styleController1;
             this.TotalSumEdit.TabIndex = 21;
@@ -1147,6 +1169,8 @@
             this.BotBasePriceEdit.Location = new System.Drawing.Point(420, 29);
             this.BotBasePriceEdit.MenuManager = this.barManager1;
             this.BotBasePriceEdit.Name = "BotBasePriceEdit";
+            this.BotBasePriceEdit.Properties.DisplayFormat.FormatString = "0.00";
+            this.BotBasePriceEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.BotBasePriceEdit.Size = new System.Drawing.Size(115, 22);
             this.BotBasePriceEdit.StyleController = this.styleController1;
             this.BotBasePriceEdit.TabIndex = 20;

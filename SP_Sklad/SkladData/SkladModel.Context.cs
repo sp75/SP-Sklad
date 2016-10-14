@@ -240,28 +240,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SP_MATCHANGE_GET_WP_Result>("[BaseEntities].[SP_MATCHANGE_GET_WP](@MATID, @MCDATE)", mATIDParameter, mCDATEParameter);
         }
     
-        [EdmFunction("BaseEntities", "SP_POS_IN")]
-        public virtual IQueryable<SP_POS_IN_Result> SP_POS_IN(Nullable<System.DateTime> iN_ONDATE, Nullable<int> iN_MATID, Nullable<int> iN_WID, Nullable<int> iN_KAID)
-        {
-            var iN_ONDATEParameter = iN_ONDATE.HasValue ?
-                new ObjectParameter("IN_ONDATE", iN_ONDATE) :
-                new ObjectParameter("IN_ONDATE", typeof(System.DateTime));
-    
-            var iN_MATIDParameter = iN_MATID.HasValue ?
-                new ObjectParameter("IN_MATID", iN_MATID) :
-                new ObjectParameter("IN_MATID", typeof(int));
-    
-            var iN_WIDParameter = iN_WID.HasValue ?
-                new ObjectParameter("IN_WID", iN_WID) :
-                new ObjectParameter("IN_WID", typeof(int));
-    
-            var iN_KAIDParameter = iN_KAID.HasValue ?
-                new ObjectParameter("IN_KAID", iN_KAID) :
-                new ObjectParameter("IN_KAID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SP_POS_IN_Result>("[BaseEntities].[SP_POS_IN](@IN_ONDATE, @IN_MATID, @IN_WID, @IN_KAID)", iN_ONDATEParameter, iN_MATIDParameter, iN_WIDParameter, iN_KAIDParameter);
-        }
-    
         [EdmFunction("BaseEntities", "SP_WMAT_GET_BY_WHLIST")]
         public virtual IQueryable<SP_WMAT_GET_BY_WHLIST_Result> SP_WMAT_GET_BY_WHLIST(Nullable<int> iN_MATID, Nullable<System.DateTime> oNDATE, string wH)
         {
@@ -865,32 +843,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetOrderedInSuppliers_Result>("GetOrderedInSuppliers", wbill_idParameter);
         }
     
-        [EdmFunction("BaseEntities", "WMatGetByWh")]
-        public virtual IQueryable<WMatGetByWh_Result> WMatGetByWh(Nullable<int> mat_id, Nullable<int> w_id, Nullable<int> ka_id, Nullable<System.DateTime> on_date, string wh)
-        {
-            var mat_idParameter = mat_id.HasValue ?
-                new ObjectParameter("mat_id", mat_id) :
-                new ObjectParameter("mat_id", typeof(int));
-    
-            var w_idParameter = w_id.HasValue ?
-                new ObjectParameter("w_id", w_id) :
-                new ObjectParameter("w_id", typeof(int));
-    
-            var ka_idParameter = ka_id.HasValue ?
-                new ObjectParameter("ka_id", ka_id) :
-                new ObjectParameter("ka_id", typeof(int));
-    
-            var on_dateParameter = on_date.HasValue ?
-                new ObjectParameter("on_date", on_date) :
-                new ObjectParameter("on_date", typeof(System.DateTime));
-    
-            var whParameter = wh != null ?
-                new ObjectParameter("wh", wh) :
-                new ObjectParameter("wh", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<WMatGetByWh_Result>("[BaseEntities].[WMatGetByWh](@mat_id, @w_id, @ka_id, @on_date, @wh)", mat_idParameter, w_idParameter, ka_idParameter, on_dateParameter, whParameter);
-        }
-    
         [EdmFunction("BaseEntities", "PosGet")]
         public virtual IQueryable<PosGet_Result> PosGet(Nullable<int> mat_id, Nullable<int> w_id, Nullable<int> ka_id, Nullable<System.DateTime> on_date, Nullable<int> get_empty, string wh)
         {
@@ -981,27 +933,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("mat_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetActualRemainByWh_Result>("GetActualRemainByWh", widParameter, mat_idParameter);
-        }
-    
-        public virtual ObjectResult<GetPosIn_Result> GetPosIn(Nullable<System.DateTime> on_data, Nullable<int> mat_id, Nullable<int> wid, Nullable<int> ka_id)
-        {
-            var on_dataParameter = on_data.HasValue ?
-                new ObjectParameter("on_data", on_data) :
-                new ObjectParameter("on_data", typeof(System.DateTime));
-    
-            var mat_idParameter = mat_id.HasValue ?
-                new ObjectParameter("mat_id", mat_id) :
-                new ObjectParameter("mat_id", typeof(int));
-    
-            var widParameter = wid.HasValue ?
-                new ObjectParameter("wid", wid) :
-                new ObjectParameter("wid", typeof(int));
-    
-            var ka_idParameter = ka_id.HasValue ?
-                new ObjectParameter("ka_id", ka_id) :
-                new ObjectParameter("ka_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPosIn_Result>("GetPosIn", on_dataParameter, mat_idParameter, widParameter, ka_idParameter);
         }
     
         public virtual ObjectResult<DocCopy_Result> DocCopy(Nullable<int> doc_id)
@@ -1885,6 +1816,54 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("user_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetOperLog_Result>("[BaseEntities].[GetOperLog](@from_date, @to_date, @fun_id, @user_id)", from_dateParameter, to_dateParameter, fun_idParameter, user_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetPosIn")]
+        public virtual IQueryable<GetPosIn_Result> GetPosIn(Nullable<System.DateTime> on_data, Nullable<int> mat_id, Nullable<int> wid, Nullable<int> ka_id)
+        {
+            var on_dataParameter = on_data.HasValue ?
+                new ObjectParameter("on_data", on_data) :
+                new ObjectParameter("on_data", typeof(System.DateTime));
+    
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            var widParameter = wid.HasValue ?
+                new ObjectParameter("wid", wid) :
+                new ObjectParameter("wid", typeof(int));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetPosIn_Result>("[BaseEntities].[GetPosIn](@on_data, @mat_id, @wid, @ka_id)", on_dataParameter, mat_idParameter, widParameter, ka_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "MatRemainByWh")]
+        public virtual IQueryable<MatRemainByWh_Result> MatRemainByWh(Nullable<int> mat_id, Nullable<int> w_id, Nullable<int> ka_id, Nullable<System.DateTime> on_date, string wh)
+        {
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            var w_idParameter = w_id.HasValue ?
+                new ObjectParameter("w_id", w_id) :
+                new ObjectParameter("w_id", typeof(int));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var on_dateParameter = on_date.HasValue ?
+                new ObjectParameter("on_date", on_date) :
+                new ObjectParameter("on_date", typeof(System.DateTime));
+    
+            var whParameter = wh != null ?
+                new ObjectParameter("wh", wh) :
+                new ObjectParameter("wh", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<MatRemainByWh_Result>("[BaseEntities].[MatRemainByWh](@mat_id, @w_id, @ka_id, @on_date, @wh)", mat_idParameter, w_idParameter, ka_idParameter, on_dateParameter, whParameter);
         }
     }
 }

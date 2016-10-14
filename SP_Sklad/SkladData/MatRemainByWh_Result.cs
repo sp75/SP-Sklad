@@ -11,12 +11,12 @@ namespace SP_Sklad.SkladData
 {
     using System;
     
-    public partial class WMatGetByWh_Result
+    public partial class MatRemainByWh_Result
     {
+        public int WId { get; set; }
+        public string Name { get; set; }
         public Nullable<decimal> Remain { get; set; }
         public Nullable<decimal> Rsv { get; set; }
-        public Nullable<int> WId { get; set; }
-        public string Name { get; set; }
         public Nullable<decimal> CurRemain { get; set; }
     }
 }
