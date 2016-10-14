@@ -23,6 +23,11 @@ namespace SP_Sklad.MainTabs
         public WaybillList wb { get; set; }
         private int _archived { get; set; }
 
+        public GetMatList_Result focused_mat
+        {
+            get { return MatGridView.GetFocusedRow() as GetMatList_Result; }
+        }
+
         public class PriceTypesView
         {
             public int PTypeId { get; set; }
@@ -36,11 +41,6 @@ namespace SP_Sklad.MainTabs
         {
             InitializeComponent();
             _archived = 0;
-        }
-
-        private void wbStartDate_Properties_EditValueChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void DirectoriesUserControl_Load(object sender, EventArgs e)
@@ -605,6 +605,29 @@ namespace SP_Sklad.MainTabs
         private void DelItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             MatListGridView.DeleteSelectedRows();
+        }
+
+        private void MatGridView_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
+        {
+            MatPopupMenu.ShowPopup(Control.MousePosition);    
+        }
+
+        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowMatInfo(focused_mat.MatId);
+        }
+
+        private void barButtonItem5_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowMatRSV(focused_mat.MatId, DB.SkladBase());
+        }
+
+        private void barButtonItem12_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if(!IHelper.FindMatInWH(focused_mat.MatId))
+            {
+                MessageBox.Show(string.Format( "На даний час товар <{0}> на складі вдсутній!", focused_mat.Name ));
+            }
         }
     }
 }

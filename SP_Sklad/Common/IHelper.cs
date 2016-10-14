@@ -8,8 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
+using DevExpress.XtraTreeList.Nodes;
 using SP_Sklad.EditForm;
 using SP_Sklad.SkladData;
 using SP_Sklad.ViewsForm;
@@ -556,6 +558,17 @@ namespace SP_Sklad.Common
             {
                 f.ShowDialog();
             }
+        }
+
+        static public bool FindMatInWH(int? mat_id)
+        {
+            mainForm.main_form.xtraTabControl1.SelectedTabPageIndex = 2;
+            var first_node = mainForm.main_form.whUserControl.WHTreeList.GetNodeByVisibleIndex(0);
+            mainForm.main_form.whUserControl.WHTreeList.SetFocusedNode(first_node);
+            var rowHandle = mainForm.main_form.whUserControl.WhMatGridView.LocateByValue("MatId", mat_id);
+            mainForm.main_form.whUserControl.WhMatGridView.FocusedRowHandle = rowHandle;
+
+            return rowHandle != GridControl.InvalidRowHandle;
         }
 
         public static void Print(Dictionary<string, IList> data_for_report, string temlate)
