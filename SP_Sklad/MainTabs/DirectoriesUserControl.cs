@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,11 +22,17 @@ namespace SP_Sklad.MainTabs
         public bool isMatList { get; set; }
         public List<CustomMatList> custom_mat_list { get; set; }
         public WaybillList wb { get; set; }
-        private int _archived { get; set; }
+        private int _ka_archived { get; set; }
+        private int _mat_archived { get; set; }
 
-        public GetMatList_Result focused_mat
+        private GetMatList_Result focused_mat
         {
             get { return MatGridView.GetFocusedRow() as GetMatList_Result; }
+        }
+
+        private KagentList focused_kagent
+        {
+            get { return KaGridView.GetFocusedRow() as KagentList; }
         }
 
         public class PriceTypesView
@@ -40,7 +47,8 @@ namespace SP_Sklad.MainTabs
         public DirectoriesUserControl()
         {
             InitializeComponent();
-            _archived = 0;
+            _ka_archived = 0;
+            _mat_archived = 0;
         }
 
         private void DirectoriesUserControl_Load(object sender, EventArgs e)
@@ -76,13 +84,18 @@ namespace SP_Sklad.MainTabs
             {
                 case 1:
                     //  KAgent->ParamByName("WDATE")->Value = frmMain->WorkDateEdit->Date;
-                    var ka = DB.SkladBase().KagentList.Where(w => w.Archived == _archived || w.Archived == null);
+                    var ka = DB.SkladBase().KagentList.AsNoTracking().AsEnumerable();
                     if (focused_tree_node.Id != 10) ka = ka.Where(w => w.KType == focused_tree_node.GrpId);
+                    if (_ka_archived == 0)
+                    {
+                        ka = ka.Where(w => w.Archived == 0 || w.Archived == null);
+                    }
+
                     KAgentDS.DataSource = ka.ToList();
                     break;
 
                 case 2:
-                    MatListDS.DataSource = _db.GetMatList(focused_tree_node.Id == 6 ? -1 : focused_tree_node.GrpId, 0, 0, 0);
+                    MatListDS.DataSource = _db.GetMatList(focused_tree_node.Id == 6 ? -1 : focused_tree_node.GrpId, 0, _mat_archived, showChildNodeBtn.Down ? 1 : 0);
                     break;
 
                 case 3:
@@ -628,6 +641,80 @@ namespace SP_Sklad.MainTabs
             {
                 MessageBox.Show(string.Format( "На даний час товар <{0}> на складі вдсутній!", focused_mat.Name ));
             }
+        }
+
+        private void barButtonItem13_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var db = DB.SkladBase();
+            var mat = db.Materials.Find(focused_mat.MatId);
+            if (mat != null)
+            {
+                if (mat.Archived == 1)
+                {
+                    mat.Archived = 0;
+                }
+                else
+                {
+                    if (MessageBox.Show(string.Format("Ви дійсно хочете перемістити матеріал <{0}> в архів?", focused_mat.Name), "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    {
+                        if (focused_mat.Remain == 0) mat.Archived = 1;
+                        else MessageBox.Show(string.Format("Неможливо перемістити матеріал <{0}> в архів, \nтому що його залишок складає {1} {2}", focused_mat.Name, focused_mat.Remain.ToString(CultureInfo.InvariantCulture), focused_mat.ShortName));
+                    }
+                }
+            }
+            db.SaveChanges();
+
+            RefrechItemBtn.PerformClick();
+        }
+
+        private void barCheckItem1_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            _mat_archived = showMatArhivedBtn.Checked ? 1 : 0;
+
+            RefrechItemBtn.PerformClick();
+        }
+
+        private void barCheckItem1_CheckedChanged_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            _ka_archived = barCheckItem1.Checked ? 1 : 0;
+            RefrechItemBtn.PerformClick();
+        }
+
+        private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var db = DB.SkladBase();
+            var ka = db.Kagent.Find(focused_kagent.KaId);
+
+            if (ka == null)
+            {
+                return;
+            }
+
+            if (ka.Archived == 1)
+            {
+                ka.Archived = 0; 
+            }
+            else
+            {
+                if (MessageBox.Show(string.Format("Ви дійсно хочете перемістити контрагента <{0}> в архів?", ka.Name), "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                {
+                    if (focused_kagent.Saldo == 0 || focused_kagent.Saldo == null)
+                    {
+                        ka.Archived = 1;
+                    }
+                    else
+                    {
+                        MessageBox.Show(string.Format("Неможливо перемістити контрагента <{0}> в архів, \nтому що його поточний баланс рівний {1}", ka.Name, focused_kagent.Saldo.ToString()));
+                    }
+                }
+            }
+            db.SaveChanges();
+            RefrechItemBtn.PerformClick();
+        }
+
+        private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            RefrechItemBtn.PerformClick();
         }
     }
 }

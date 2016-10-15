@@ -739,7 +739,7 @@
             this.standaloneBarDockControl7.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl7.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl7.Name = "standaloneBarDockControl7";
-            this.standaloneBarDockControl7.Size = new System.Drawing.Size(977, 31);
+            this.standaloneBarDockControl7.Size = new System.Drawing.Size(978, 31);
             this.standaloneBarDockControl7.Text = "standaloneBarDockControl7";
             // 
             // barDockControlTop
@@ -1395,7 +1395,7 @@
             this.xtraTabPage4.Controls.Add(this.PosGridControl);
             this.xtraTabPage4.ImageIndex = 4;
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(977, 237);
+            this.xtraTabPage4.Size = new System.Drawing.Size(978, 237);
             this.xtraTabPage4.Text = "Партії";
             // 
             // PosGridControl
@@ -1406,7 +1406,7 @@
             this.PosGridControl.Name = "PosGridControl";
             this.PosGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox10});
-            this.PosGridControl.Size = new System.Drawing.Size(977, 237);
+            this.PosGridControl.Size = new System.Drawing.Size(978, 237);
             this.PosGridControl.TabIndex = 1;
             this.PosGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView1});
@@ -1556,7 +1556,7 @@
             this.xtraTabPage5.Controls.Add(this.gridControl5);
             this.xtraTabPage5.ImageIndex = 5;
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(977, 237);
+            this.xtraTabPage5.Size = new System.Drawing.Size(978, 237);
             this.xtraTabPage5.Text = "Замовлене";
             // 
             // gridControl5
@@ -1569,7 +1569,7 @@
             this.repositoryItemImageComboBox9,
             this.repositoryItemImageComboBox8,
             this.repositoryItemImageComboBox5});
-            this.gridControl5.Size = new System.Drawing.Size(977, 237);
+            this.gridControl5.Size = new System.Drawing.Size(978, 237);
             this.gridControl5.TabIndex = 0;
             this.gridControl5.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView5});
@@ -1729,7 +1729,7 @@
             // 
             this.xtraTabPage9.ImageIndex = 6;
             this.xtraTabPage9.Name = "xtraTabPage9";
-            this.xtraTabPage9.Size = new System.Drawing.Size(977, 237);
+            this.xtraTabPage9.Size = new System.Drawing.Size(978, 237);
             this.xtraTabPage9.Text = "Взаємозамінність";
             // 
             // MatListTabPage
@@ -1739,7 +1739,7 @@
             this.MatListTabPage.ImageIndex = 14;
             this.MatListTabPage.Name = "MatListTabPage";
             this.MatListTabPage.PageVisible = false;
-            this.MatListTabPage.Size = new System.Drawing.Size(977, 237);
+            this.MatListTabPage.Size = new System.Drawing.Size(978, 237);
             this.MatListTabPage.Text = "Список товарів";
             // 
             // MatListGridControl
@@ -1752,7 +1752,7 @@
             this.repositoryItemCalcEdit1,
             this.repositoryItemLookUpEdit1,
             this.repositoryItemLookUpEdit2});
-            this.MatListGridControl.Size = new System.Drawing.Size(977, 206);
+            this.MatListGridControl.Size = new System.Drawing.Size(978, 206);
             this.MatListGridControl.TabIndex = 3;
             this.MatListGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.MatListGridView,
