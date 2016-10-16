@@ -29,7 +29,15 @@ namespace SP_Sklad.WBForm
         public int? doc_id { get; set; }
         private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
-        private GetWayBillDetOut_Result wbd_row { get; set; }
+
+        private GetWayBillDetOut_Result wbd_row
+        {
+            get
+            {
+                return  WaybillDetOutGridView.GetFocusedRow() as GetWayBillDetOut_Result;
+            }
+        }
+
         private List<GetWayBillDetOut_Result> wbd_list { get; set; }
 
         public frmWayBillOut(int wtype, int? wbill_id)
@@ -218,26 +226,19 @@ namespace SP_Sklad.WBForm
 
         private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = WaybillDetOutGridView.GetRow(WaybillDetOutGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
-
-            if (dr != null)
+            if (wbd_row != null)
             {
-                if (dr.PosId > 0)
+                if (wbd_row.PosId > 0)
                 {
-                    _db.DeleteWhere<WaybillDet>(w => w.PosId == dr.PosId);
+                    _db.DeleteWhere<WaybillDet>(w => w.PosId == wbd_row.PosId);
                 }
                 else
                 {
-                    _db.DeleteWhere<WayBillSvc>(w => w.PosId == dr.PosId * -1);
+                    _db.DeleteWhere<WayBillSvc>(w => w.PosId == wbd_row.PosId * -1);
                 }
                 _db.SaveChanges();
 
-           //     wbd_list.Remove(dr);
-          //      WaybillDetOutGridView.RefreshData();
                 WaybillDetOutGridView.DeleteSelectedRows();
-       //         WaybillDetOutGridView.DeleteRow(WaybillDetOutGridView.FocusedRowHandle);
-
-              //  RefreshDet();
             }
         }
 
@@ -267,13 +268,11 @@ namespace SP_Sklad.WBForm
 
         private void EditMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = WaybillDetOutGridView.GetRow(WaybillDetOutGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
-
-            if (dr != null)
+            if (wbd_row != null)
             {
-                if (dr.PosId > 0)
+                if (wbd_row.PosId > 0)
                 {
-                    using (var df = new frmWayBillDetOut(_db, dr.PosId, wb))
+                    using (var df = new frmWayBillDetOut(_db, wbd_row.PosId, wb))
                     {
                         df.ShowDialog();
                   //      current_transaction = current_transaction.CommitRetaining(_db);
@@ -283,7 +282,7 @@ namespace SP_Sklad.WBForm
                 }
                 else
                 {
-                    new frmWaybillSvcDet(_db, dr.PosId*-1, wb).ShowDialog();
+                    new frmWaybillSvcDet(_db, wbd_row.PosId * -1, wb).ShowDialog();
                 }
 
                 RefreshDet();
@@ -321,7 +320,7 @@ namespace SP_Sklad.WBForm
 
         private void WaybillDetInGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            wbd_row = WaybillDetOutGridView.GetRow(WaybillDetOutGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
+           
         }
 
         private void WbDetPopupMenu_Popup(object sender, EventArgs e)
@@ -420,11 +419,9 @@ namespace SP_Sklad.WBForm
 
         private void RsvInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = WaybillDetOutGridView.GetRow(WaybillDetOutGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
-
-            if ( dr != null )
+            if (wbd_row != null)
             {
-                IHelper.ShowMatRSV(dr.MatId, _db);
+                IHelper.ShowMatRSV(wbd_row.MatId, _db);
             }
         }
 
@@ -449,9 +446,8 @@ namespace SP_Sklad.WBForm
 
         private void WaybillDetOutGridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-            var dr = WaybillDetOutGridView.GetRow(e.RowHandle) as GetWayBillDetOut_Result;
-            var wbd = _db.WaybillDet.Find(dr.PosId);
-            if (dr.Rsv == 0)
+            var wbd = _db.WaybillDet.Find(wbd_row.PosId);
+            if (wbd_row.Rsv == 0)
             {
                 wbd.Amount = Convert.ToDecimal(e.Value);
                 _db.SaveChanges();
@@ -460,7 +456,7 @@ namespace SP_Sklad.WBForm
             }
             else
             {
-                dr.Amount = wbd.Amount;
+                wbd_row.Amount = wbd.Amount;
             }
         }
 

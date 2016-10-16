@@ -68,5 +68,14 @@ namespace SP_Sklad
             var dir = bandedGridView1.GetFocusedRow() as GetDocList_Result;
             PrintDoc.Show(dir.DocId.Value, dir.WType.Value,DB.SkladBase());
         }
+
+        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var row = bandedGridView1.GetFocusedRow() as GetDocList_Result;
+            if (row != null)
+            {
+                FindDoc.Find(row.DocId, row.WType, row.OnDate);
+            }
+        }
     }
 }

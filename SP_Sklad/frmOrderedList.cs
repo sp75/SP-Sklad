@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SP_Sklad.Common;
+using SP_Sklad.Reports;
 using SP_Sklad.SkladData;
 
 namespace SP_Sklad
@@ -67,6 +70,32 @@ namespace SP_Sklad
             }
 
             GetOrderedList();
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var path = Path.Combine(Application.StartupPath, "expotr.pdf");
+            gridControl1.ExportToPdf(path);
+
+            Process.Start(path);
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var row = bandedGridView1.GetFocusedRow() as OrderedList_Result;
+            if (row != null)
+            {
+                PrintDoc.Show(row.DocId.Value, row.WType, DB.SkladBase());
+            }
+        }
+
+        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var row = bandedGridView1.GetFocusedRow() as OrderedList_Result;
+            if (row != null)
+            {
+                FindDoc.Find(row.DocId, row.WType, row.OnDate);
+            }
         }
 
 

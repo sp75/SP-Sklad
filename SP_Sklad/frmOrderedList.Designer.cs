@@ -154,6 +154,7 @@
             this.barButtonItem1.Id = 0;
             this.barButtonItem1.ImageIndex = 0;
             this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // barButtonItem2
             // 
@@ -161,6 +162,7 @@
             this.barButtonItem2.Id = 5;
             this.barButtonItem2.ImageIndex = 1;
             this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // barButtonItem5
             // 
@@ -168,6 +170,7 @@
             this.barButtonItem5.Id = 6;
             this.barButtonItem5.ImageIndex = 2;
             this.barButtonItem5.Name = "barButtonItem5";
+            this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
             // 
             // barDockControlTop
             // 

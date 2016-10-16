@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SP_Sklad.Common;
+using SP_Sklad.Reports;
 using SP_Sklad.SkladData;
 
 namespace SP_Sklad
@@ -72,6 +73,24 @@ namespace SP_Sklad
         private void frmMatTurn_Shown(object sender, EventArgs e)
         {
             is_show = true;
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var row = bandedGridView1.GetFocusedRow() as GetMatMove_Result;
+            if ( row != null )
+            {
+                PrintDoc.Show(row.DocId.Value, row.WType.Value, DB.SkladBase());
+            }
+        }
+
+        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var row = bandedGridView1.GetFocusedRow() as GetMatMove_Result;
+            if ( row != null )
+            {
+                FindDoc.Find(row.DocId, row.WType, row.OnDate);
+            }
         }
     }
 }

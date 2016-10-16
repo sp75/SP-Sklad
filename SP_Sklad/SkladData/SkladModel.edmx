@@ -3553,6 +3553,41 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="GetOrdered" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mat_id" Type="int" Mode="In" />
+          <Parameter Name="wid" Type="int" Mode="In" />
+          <Parameter Name="ka_id" Type="int" Mode="In" />
+          <Parameter Name="on_date" Type="datetime" Mode="In" />
+          <Parameter Name="get_empty" Type="int" Mode="In" />
+          <Parameter Name="wh" Type="varchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Remain" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+                <Property Name="Ordered" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+                <Property Name="Rsv" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+                <Property Name="PosId" Type="int" Nullable="false" />
+                <Property Name="WId" Type="int" Nullable="false" />
+                <Property Name="WhName" Type="nvarchar" MaxLength="64" Nullable="false" />
+                <Property Name="OnDate" Type="datetime" Nullable="false" />
+                <Property Name="PosDate" Type="datetime" />
+                <Property Name="Price" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="CurrId" Type="int" />
+                <Property Name="WType" Type="int" Nullable="false" />
+                <Property Name="Num" Type="nvarchar" MaxLength="20" Nullable="false" />
+                <Property Name="WbillId" Type="int" Nullable="false" />
+                <Property Name="DocId" Type="int" />
+                <Property Name="ToDate" Type="datetime" />
+                <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="CurrName" Type="nvarchar" MaxLength="3" />
+                <Property Name="KaId" Type="int" />
+                <Property Name="KaName" Type="nvarchar" MaxLength="64" />
+                <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+                <Property Name="CertNum" Type="nvarchar" MaxLength="64" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="GetOrderedInSuppliers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="wbill_id" Type="int" Mode="In" />
         </Function>
@@ -6879,6 +6914,14 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
             <Parameter Name="w_id" Mode="In" Type="Int32" />
             <Parameter Name="ka_id" Mode="In" Type="Int32" />
             <Parameter Name="on_date" Mode="In" Type="DateTime" />
+            <Parameter Name="wh" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetOrdered" IsComposable="true" ReturnType="Collection(BaseModel.GetOrdered_Result)">
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
+            <Parameter Name="wid" Mode="In" Type="Int32" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="on_date" Mode="In" Type="DateTime" />
+            <Parameter Name="get_empty" Mode="In" Type="Int32" />
             <Parameter Name="wh" Mode="In" Type="String" />
           </FunctionImport>
           </EntityContainer>
@@ -11547,6 +11590,29 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
           <Property Type="Decimal" Name="Rsv" Nullable="true" Precision="38" Scale="4" />
           <Property Type="Decimal" Name="CurRemain" Nullable="true" Precision="38" Scale="4" />
         </ComplexType>
+        <ComplexType Name="GetOrdered_Result">
+          <Property Type="Decimal" Name="Remain" Nullable="false" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Ordered" Nullable="false" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Rsv" Nullable="false" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="PosId" Nullable="false" />
+          <Property Type="Int32" Name="WId" Nullable="false" />
+          <Property Type="String" Name="WhName" Nullable="false" MaxLength="64" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="PosDate" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="Int32" Name="WType" Nullable="false" />
+          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="WbillId" Nullable="false" />
+          <Property Type="Int32" Name="DocId" Nullable="true" />
+          <Property Type="DateTime" Name="ToDate" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
+          <Property Type="Int32" Name="KaId" Nullable="true" />
+          <Property Type="String" Name="KaName" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="CertNum" Nullable="true" MaxLength="64" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -14529,6 +14595,33 @@ warning 6002: The table/view 'sp_base.dbo.v_WhMatRemains' does not have a primar
                 <ScalarProperty Name="Remain" ColumnName="Remain" />
                 <ScalarProperty Name="Rsv" ColumnName="Rsv" />
                 <ScalarProperty Name="CurRemain" ColumnName="CurRemain" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetOrdered" FunctionName="BaseModel.Store.GetOrdered">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetOrdered_Result">
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
+                <ScalarProperty Name="Ordered" ColumnName="Ordered" />
+                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="PosDate" ColumnName="PosDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="CertNum" ColumnName="CertNum" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
