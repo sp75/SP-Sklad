@@ -125,7 +125,11 @@ namespace SP_Sklad.MainTabs
                             extDirTabControl.SelectedTabPageIndex = 5;
                             break;
 
-                        case 43: CountriesBS.DataSource = DB.SkladBase().Countries.ToList();
+                        case 43:
+                            var top = CountriesGridView.TopRowIndex;
+                            CountriesBS.DataSource = DB.SkladBase().Countries.ToList();
+                            CountriesGridView.TopRowIndex = top;
+
                             extDirTabControl.SelectedTabPageIndex = 8;
                             break;
 
@@ -245,7 +249,7 @@ namespace SP_Sklad.MainTabs
 
                         case 11:
                             result = new frmBanksEdit((BanksGridView.GetFocusedRow() as Banks).BankId).ShowDialog();
-                                break;
+                            break;
 
                         case 2:
                             result = new frmMeasuresEdit((MeasuresGridView.GetFocusedRow() as Measures).MId).ShowDialog();
@@ -258,7 +262,19 @@ namespace SP_Sklad.MainTabs
                             break;
 
                         case 43:
-                            result = new frmCountriesEdit((CountriesGridView.GetFocusedRow() as Countries).CId).ShowDialog();
+                            var c_row = (CountriesGridView.GetFocusedRow() as Countries);
+                            result = new frmCountriesEdit(c_row.CId).ShowDialog();
+                           /* if (result == DialogResult.OK)
+                            {
+                                var ds = CountriesBS.DataSource as List<Countries>;
+                                var fff = ds.FirstOrDefault(w => w.CId == c_row.CId);
+                                fff = DB.SkladBase().Countries.AsNoTracking().Where(w => w.CId == c_row.CId).First();
+                                CountriesGridView.SetFocusedValue(fff);
+                                
+                       //         CountriesGridView.RefreshRow(CountriesGridView.FocusedRowHandle);
+                                CountriesGridView.RefreshData();
+                             //   CountriesBS.ResetBindings(false);
+                            }*/
 
                             break;
 

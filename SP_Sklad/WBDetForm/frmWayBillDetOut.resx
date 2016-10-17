@@ -123,6 +123,15 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>50</value>
   </metadata>
+  <metadata name="styleController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>375, 11</value>
+  </metadata>
+  <metadata name="GetMatRemainBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>657, 12</value>
+  </metadata>
+  <metadata name="WaybillDetBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>520, 12</value>
+  </metadata>
   <metadata name="sharedImageCollection1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>190, 12</value>
   </metadata>
@@ -224,18 +233,30 @@
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="SharedImageCollection.Timestamp" type="System.DateTime, mscorlib">
-    <value>10/07/2016 09:05:43</value>
+    <value>10/17/2016 11:47:03</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="SharedImageCollection.ImageSize" type="System.Drawing.Size, System.Drawing">
     <value>16, 16</value>
   </data>
-  <metadata name="styleController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>375, 11</value>
-  </metadata>
-  <metadata name="WaybillDetBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>520, 12</value>
-  </metadata>
+  <data name="simpleButton6.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////
+        ////////////////AGMAOYw5////////////////////////////////////////////////////IXsh
+        CIQQGJwpAGsAa6Vr////////////////////////////////////////pcalAGsAY9ZzWveMSt5zEIQY
+        CGsIpcal////////////////////////////////CGsIMaU5e96EGLUhMc5SWveMOc5SAHMIIXsh////
+        ////////////////////c6VzAGsAhOeUQs5SIb0xGLUpGLUpQt5jWveUKa05AGsASpRK////////////
+        ////AGsIUr1je+eMMc5KKcZCIb05Ib0xGLUpIb0xUu97St5rAGsA////////////WpxaCHMInPelUudz
+        Uu+EUu97OdZSKcZCIb05GLUpGLUhEIwYe617////////////CHMIUr1jjPelUu97Uu97Uu+EY/+UQt5j
+        Mc5KKcY5GK0pCHMI////////////////CHMIhOeUe/+lMaVCEGMIQmMhKbVKWveUOdZaMc5KCHMInMac
+        ////////////1nt7IWsYhO+ce/+lhIRS55yUzmtrEGsIY/+cSudrIa05KYQp////////////1oyM98a1
+        WntCa857jP+tKYwxlGNS3nt7WoRCY/+cSudzAGsIxt7G////////////znNz9869jHtrEHsQnP+1hP+l
+        UoRK54yEnKV7Y/+UGIwha6Vr////////////////1nNz99bGpXt7WpxaGIQhjO+chIxr74yMpaV7EIQY
+        QpRC////////////////////3pyc772tzpSM3tbWpcalKWshjFpK53uEQnMpjL2M////////////////
+        ////////////1nt799a93qWcrXNzznt774yM3qWl////////////////////////////////////////
+        3pyc56Wc76Wc3oSE5729////////////////////////////////////
+</value>
+  </data>
   <data name="WHComboBox.Properties.Buttons" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////
@@ -272,37 +293,4 @@
         ////////////////////////////////////////////////////////
 </value>
   </data>
-  <metadata name="sharedImageCollection1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>190, 12</value>
-  </metadata>
-  <data name="SharedImageCollection.Timestamp" type="System.DateTime, mscorlib">
-    <value>10/07/2016 09:05:21</value>
-  </data>
-  <data name="SharedImageCollection.ImageSize" type="System.Drawing.Size, System.Drawing">
-    <value>16, 16</value>
-  </data>
-  <data name="simpleButton6.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////
-        ////////////////AGMAOYw5////////////////////////////////////////////////////IXsh
-        CIQQGJwpAGsAa6Vr////////////////////////////////////////pcalAGsAY9ZzWveMSt5zEIQY
-        CGsIpcal////////////////////////////////CGsIMaU5e96EGLUhMc5SWveMOc5SAHMIIXsh////
-        ////////////////////c6VzAGsAhOeUQs5SIb0xGLUpGLUpQt5jWveUKa05AGsASpRK////////////
-        ////AGsIUr1je+eMMc5KKcZCIb05Ib0xGLUpIb0xUu97St5rAGsA////////////WpxaCHMInPelUudz
-        Uu+EUu97OdZSKcZCIb05GLUpGLUhEIwYe617////////////CHMIUr1jjPelUu97Uu97Uu+EY/+UQt5j
-        Mc5KKcY5GK0pCHMI////////////////CHMIhOeUe/+lMaVCEGMIQmMhKbVKWveUOdZaMc5KCHMInMac
-        ////////////1nt7IWsYhO+ce/+lhIRS55yUzmtrEGsIY/+cSudrIa05KYQp////////////1oyM98a1
-        WntCa857jP+tKYwxlGNS3nt7WoRCY/+cSudzAGsIxt7G////////////znNz9869jHtrEHsQnP+1hP+l
-        UoRK54yEnKV7Y/+UGIwha6Vr////////////////1nNz99bGpXt7WpxaGIQhjO+chIxr74yMpaV7EIQY
-        QpRC////////////////////3pyc772tzpSM3tbWpcalKWshjFpK53uEQnMpjL2M////////////////
-        ////////////1nt799a93qWcrXNzznt774yM3qWl////////////////////////////////////////
-        3pyc56Wc76Wc3oSE5729////////////////////////////////////
-</value>
-  </data>
-  <metadata name="GetMatRemainBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>657, 12</value>
-  </metadata>
-  <metadata name="styleController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>375, 11</value>
-  </metadata>
 </root>

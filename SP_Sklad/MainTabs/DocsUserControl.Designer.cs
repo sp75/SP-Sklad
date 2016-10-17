@@ -39,6 +39,7 @@
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.WBGridControl = new DevExpress.XtraGrid.GridControl();
+            this.GetWayBillListBS = new System.Windows.Forms.BindingSource(this.components);
             this.WbGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -109,6 +110,7 @@
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl3 = new DevExpress.XtraEditors.SplitContainerControl();
             this.PDgridControl = new DevExpress.XtraGrid.GridControl();
+            this.GetPayDocListBS = new System.Windows.Forms.BindingSource(this.components);
             this.PayDocGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox5 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -230,6 +232,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
             this.splitContainerControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WBGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GetWayBillListBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheckedItemImageComboBox)).BeginInit();
@@ -259,6 +262,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl3)).BeginInit();
             this.splitContainerControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PDgridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GetPayDocListBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PayDocGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox4)).BeginInit();
@@ -443,12 +447,13 @@
             this.splitContainerControl2.Panel2.Controls.Add(this.xtraTabControl2);
             this.splitContainerControl2.Panel2.Text = "Panel2";
             this.splitContainerControl2.Size = new System.Drawing.Size(802, 691);
-            this.splitContainerControl2.SplitterPosition = 487;
+            this.splitContainerControl2.SplitterPosition = 513;
             this.splitContainerControl2.TabIndex = 0;
             this.splitContainerControl2.Text = "splitContainerControl2";
             // 
             // WBGridControl
             // 
+            this.WBGridControl.DataSource = this.GetWayBillListBS;
             this.WBGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WBGridControl.Location = new System.Drawing.Point(0, 44);
             this.WBGridControl.MainView = this.WbGridView;
@@ -456,11 +461,15 @@
             this.WBGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1,
             this.CheckedItemImageComboBox});
-            this.WBGridControl.Size = new System.Drawing.Size(802, 443);
+            this.WBGridControl.Size = new System.Drawing.Size(802, 469);
             this.WBGridControl.TabIndex = 0;
             this.WBGridControl.UseEmbeddedNavigator = true;
             this.WBGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WbGridView});
+            // 
+            // GetWayBillListBS
+            // 
+            this.GetWayBillListBS.DataSource = typeof(SP_Sklad.SkladData.GetWayBillList_Result);
             // 
             // WbGridView
             // 
@@ -484,7 +493,7 @@
             this.WbGridView.OptionsView.EnableAppearanceOddRow = true;
             this.WbGridView.OptionsView.ShowGroupPanel = false;
             this.WbGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WbGridView_PopupMenuShowing);
-            this.WbGridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
+            this.WbGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.WbGridView_FocusedRowObjectChanged);
             this.WbGridView.DoubleClick += new System.EventHandler(this.WbGridView_DoubleClick);
             // 
             // gridColumn1
@@ -754,7 +763,7 @@
             this.xtraTabControl2.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl2.Name = "xtraTabControl2";
             this.xtraTabControl2.SelectedTabPage = this.xtraTabPage15;
-            this.xtraTabControl2.Size = new System.Drawing.Size(802, 199);
+            this.xtraTabControl2.Size = new System.Drawing.Size(802, 173);
             this.xtraTabControl2.TabIndex = 0;
             this.xtraTabControl2.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage15,
@@ -790,7 +799,7 @@
             this.xtraTabPage15.Controls.Add(this.gridControl2);
             this.xtraTabPage15.ImageIndex = 0;
             this.xtraTabPage15.Name = "xtraTabPage15";
-            this.xtraTabPage15.Size = new System.Drawing.Size(796, 168);
+            this.xtraTabPage15.Size = new System.Drawing.Size(796, 142);
             this.xtraTabPage15.Text = "Позиції";
             // 
             // gridControl2
@@ -799,7 +808,7 @@
             this.gridControl2.Location = new System.Drawing.Point(0, 0);
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(796, 168);
+            this.gridControl2.Size = new System.Drawing.Size(796, 142);
             this.gridControl2.TabIndex = 0;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -896,7 +905,7 @@
             this.xtraTabPage1.Controls.Add(this.vGridControl1);
             this.xtraTabPage1.ImageIndex = 1;
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(796, 168);
+            this.xtraTabPage1.Size = new System.Drawing.Size(796, 142);
             this.xtraTabPage1.Text = "Інформація про накладну";
             // 
             // vGridControl1
@@ -918,7 +927,7 @@
             this.row10,
             this.row11,
             this.row12});
-            this.vGridControl1.Size = new System.Drawing.Size(796, 168);
+            this.vGridControl1.Size = new System.Drawing.Size(796, 142);
             this.vGridControl1.TabIndex = 0;
             // 
             // WayBillListInfoBS
@@ -1023,7 +1032,7 @@
             this.xtraTabPage2.Controls.Add(this.gridControl3);
             this.xtraTabPage2.ImageIndex = 2;
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(796, 168);
+            this.xtraTabPage2.Size = new System.Drawing.Size(796, 142);
             this.xtraTabPage2.Text = "Зв\'язані документи";
             // 
             // gridControl3
@@ -1036,7 +1045,7 @@
             this.repositoryItemImageComboBox2,
             this.repositoryItemImageComboBox6,
             this.repositoryItemImageComboBox7});
-            this.gridControl3.Size = new System.Drawing.Size(796, 168);
+            this.gridControl3.Size = new System.Drawing.Size(796, 142);
             this.gridControl3.TabIndex = 0;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -1211,7 +1220,7 @@
             // xtraTabPage6
             // 
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(802, 722);
+            this.xtraTabPage6.Size = new System.Drawing.Size(802, 691);
             this.xtraTabPage6.Text = "ViewList";
             // 
             // xtraTabPage8
@@ -1251,6 +1260,7 @@
             // 
             // PDgridControl
             // 
+            this.PDgridControl.DataSource = this.GetPayDocListBS;
             this.PDgridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PDgridControl.Location = new System.Drawing.Point(0, 52);
             this.PDgridControl.MainView = this.PayDocGridView;
@@ -1264,6 +1274,10 @@
             this.PDgridControl.TabIndex = 0;
             this.PDgridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.PayDocGridView});
+            // 
+            // GetPayDocListBS
+            // 
+            this.GetPayDocListBS.DataSource = typeof(SP_Sklad.SkladData.GetPayDocList_Result);
             // 
             // PayDocGridView
             // 
@@ -1285,7 +1299,7 @@
             this.PayDocGridView.OptionsView.EnableAppearanceEvenRow = true;
             this.PayDocGridView.OptionsView.EnableAppearanceOddRow = true;
             this.PayDocGridView.OptionsView.ShowGroupPanel = false;
-            this.PayDocGridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.PayDocGridView_FocusedRowChanged);
+            this.PayDocGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.PayDocGridView_FocusedRowObjectChanged);
             this.PayDocGridView.DoubleClick += new System.EventHandler(this.WbGridView_DoubleClick);
             // 
             // gridColumn22
@@ -1846,7 +1860,7 @@
             // 
             this.xtraTabPage11.Controls.Add(this.splitContainerControl4);
             this.xtraTabPage11.Name = "xtraTabPage11";
-            this.xtraTabPage11.Size = new System.Drawing.Size(802, 722);
+            this.xtraTabPage11.Size = new System.Drawing.Size(802, 691);
             this.xtraTabPage11.Text = "Прайс-листи";
             // 
             // splitContainerControl4
@@ -1860,7 +1874,7 @@
             this.splitContainerControl4.Panel1.Text = "Panel1";
             this.splitContainerControl4.Panel2.Controls.Add(this.xtraTabControl3);
             this.splitContainerControl4.Panel2.Text = "Panel2";
-            this.splitContainerControl4.Size = new System.Drawing.Size(802, 722);
+            this.splitContainerControl4.Size = new System.Drawing.Size(802, 691);
             this.splitContainerControl4.SplitterPosition = 462;
             this.splitContainerControl4.TabIndex = 2;
             this.splitContainerControl4.Text = "splitContainerControl4";
@@ -1902,7 +1916,7 @@
             this.PriceListGridView.OptionsView.EnableAppearanceEvenRow = true;
             this.PriceListGridView.OptionsView.EnableAppearanceOddRow = true;
             this.PriceListGridView.OptionsView.ShowGroupPanel = false;
-            this.PriceListGridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.PriceListGridView_FocusedRowChanged);
+            this.PriceListGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.PriceListGridView_FocusedRowObjectChanged);
             // 
             // gridColumn46
             // 
@@ -2057,7 +2071,7 @@
             this.xtraTabControl3.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl3.Name = "xtraTabControl3";
             this.xtraTabControl3.SelectedTabPage = this.xtraTabPage14;
-            this.xtraTabControl3.Size = new System.Drawing.Size(802, 255);
+            this.xtraTabControl3.Size = new System.Drawing.Size(802, 224);
             this.xtraTabControl3.TabIndex = 0;
             this.xtraTabControl3.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage14});
@@ -2067,7 +2081,7 @@
             this.xtraTabPage14.Controls.Add(this.gridControl1);
             this.xtraTabPage14.ImageIndex = 0;
             this.xtraTabPage14.Name = "xtraTabPage14";
-            this.xtraTabPage14.Size = new System.Drawing.Size(796, 224);
+            this.xtraTabPage14.Size = new System.Drawing.Size(796, 193);
             this.xtraTabPage14.Text = "Позиції";
             // 
             // gridControl1
@@ -2080,7 +2094,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox11});
-            this.gridControl1.Size = new System.Drawing.Size(796, 224);
+            this.gridControl1.Size = new System.Drawing.Size(796, 193);
             this.gridControl1.TabIndex = 2;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView4});
@@ -2358,13 +2372,13 @@
             // xtraTabPage12
             // 
             this.xtraTabPage12.Name = "xtraTabPage12";
-            this.xtraTabPage12.Size = new System.Drawing.Size(802, 722);
+            this.xtraTabPage12.Size = new System.Drawing.Size(802, 691);
             this.xtraTabPage12.Text = "Договора";
             // 
             // xtraTabPage13
             // 
             this.xtraTabPage13.Name = "xtraTabPage13";
-            this.xtraTabPage13.Size = new System.Drawing.Size(802, 722);
+            this.xtraTabPage13.Size = new System.Drawing.Size(802, 691);
             this.xtraTabPage13.Text = "Податкові накладні";
             // 
             // bar2
@@ -2428,6 +2442,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
             this.splitContainerControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.WBGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GetWayBillListBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheckedItemImageComboBox)).EndInit();
@@ -2458,6 +2473,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl3)).EndInit();
             this.splitContainerControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PDgridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GetPayDocListBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PayDocGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox4)).EndInit();
@@ -2709,5 +2725,7 @@
         public DevExpress.XtraEditors.LookUpEdit PDKagentList;
         public DevExpress.XtraEditors.DateEdit PDEndDate;
         public DevExpress.XtraEditors.DateEdit PDStartDate;
+        private System.Windows.Forms.BindingSource GetWayBillListBS;
+        private System.Windows.Forms.BindingSource GetPayDocListBS;
     }
 }

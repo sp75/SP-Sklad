@@ -195,6 +195,8 @@
             this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.WBListMakeBS = new System.Windows.Forms.BindingSource(this.components);
+            this.DeboningBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -266,6 +268,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WBListMakeBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeboningBS)).BeginInit();
             this.SuspendLayout();
             // 
             // UserTreeImgList
@@ -767,6 +771,7 @@
             // 
             // WBGridControl
             // 
+            this.WBGridControl.DataSource = this.WBListMakeBS;
             this.WBGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WBGridControl.Location = new System.Drawing.Point(0, 44);
             this.WBGridControl.MainView = this.WbGridView;
@@ -804,7 +809,7 @@
             this.WbGridView.OptionsBehavior.ReadOnly = true;
             this.WbGridView.OptionsView.ShowGroupPanel = false;
             this.WbGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WbGridView_PopupMenuShowing);
-            this.WbGridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.WbGridView_FocusedRowChanged);
+            this.WbGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.WbGridView_FocusedRowObjectChanged);
             this.WbGridView.DoubleClick += new System.EventHandler(this.WbGridView_DoubleClick);
             // 
             // gridColumn1
@@ -1468,7 +1473,7 @@
             // 
             this.xtraTabPage10.Controls.Add(this.splitContainerControl3);
             this.xtraTabPage10.Name = "xtraTabPage10";
-            this.xtraTabPage10.Size = new System.Drawing.Size(1056, 659);
+            this.xtraTabPage10.Size = new System.Drawing.Size(1056, 628);
             this.xtraTabPage10.Text = "Обвалка";
             // 
             // splitContainerControl3
@@ -1482,13 +1487,14 @@
             this.splitContainerControl3.Panel1.Text = "Panel1";
             this.splitContainerControl3.Panel2.Controls.Add(this.xtraTabControl1);
             this.splitContainerControl3.Panel2.Text = "Panel2";
-            this.splitContainerControl3.Size = new System.Drawing.Size(1056, 659);
+            this.splitContainerControl3.Size = new System.Drawing.Size(1056, 628);
             this.splitContainerControl3.SplitterPosition = 462;
             this.splitContainerControl3.TabIndex = 1;
             this.splitContainerControl3.Text = "splitContainerControl3";
             // 
             // DeboningGridControl
             // 
+            this.DeboningGridControl.DataSource = this.DeboningBS;
             this.DeboningGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DeboningGridControl.Location = new System.Drawing.Point(0, 46);
             this.DeboningGridControl.MainView = this.DeboningGridView;
@@ -1525,7 +1531,7 @@
             this.DeboningGridView.OptionsBehavior.ReadOnly = true;
             this.DeboningGridView.OptionsView.ShowGroupPanel = false;
             this.DeboningGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WbGridView_PopupMenuShowing);
-            this.DeboningGridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.DeboningGridView_FocusedRowChanged);
+            this.DeboningGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.DeboningGridView_FocusedRowObjectChanged);
             this.DeboningGridView.DoubleClick += new System.EventHandler(this.WbGridView_DoubleClick);
             // 
             // gridColumn22
@@ -1810,7 +1816,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage3;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1056, 192);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1056, 161);
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage3,
@@ -1823,7 +1829,7 @@
             this.xtraTabPage3.Controls.Add(this.standaloneBarDockControl4);
             this.xtraTabPage3.ImageIndex = 18;
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(1050, 161);
+            this.xtraTabPage3.Size = new System.Drawing.Size(1050, 130);
             this.xtraTabPage3.Text = "Вихід";
             // 
             // DeboningDetGridControl
@@ -1835,7 +1841,7 @@
             this.DeboningDetGridControl.Name = "DeboningDetGridControl";
             this.DeboningDetGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCalcEdit1});
-            this.DeboningDetGridControl.Size = new System.Drawing.Size(1050, 161);
+            this.DeboningDetGridControl.Size = new System.Drawing.Size(1050, 130);
             this.DeboningDetGridControl.TabIndex = 4;
             this.DeboningDetGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.DeboningDetGridView});
@@ -2214,6 +2220,14 @@
             this.BottomPopupMenu.Manager = this.barManager1;
             this.BottomPopupMenu.Name = "BottomPopupMenu";
             // 
+            // WBListMakeBS
+            // 
+            this.WBListMakeBS.DataSource = typeof(SP_Sklad.SkladData.WBListMake_Result);
+            // 
+            // DeboningBS
+            // 
+            this.DeboningBS.DataSource = typeof(SP_Sklad.SkladData.WBListMake_Result);
+            // 
             // ManufacturingUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2303,6 +2317,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WBListMakeBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeboningBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2475,5 +2491,7 @@
         private DevExpress.XtraBars.PopupMenu BottomPopupMenu;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private System.Windows.Forms.BindingSource WBListMakeBS;
+        private System.Windows.Forms.BindingSource DeboningBS;
     }
 }

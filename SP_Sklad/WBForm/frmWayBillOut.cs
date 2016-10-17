@@ -135,6 +135,7 @@ namespace SP_Sklad.WBForm
                         current_transaction = current_transaction.CommitRetaining(_db);
                         UpdLockWB();
                         RefreshDet();
+                        WaybillDetOutGridView.MoveLastVisible();
                     }
                 }
             }
@@ -186,10 +187,12 @@ namespace SP_Sklad.WBForm
 
         private void RefreshDet()
         {
+            int top_row = WaybillDetOutGridView.TopRowIndex;
             wbd_list = _db.GetWayBillDetOut(_wbill_id).AsNoTracking().ToList();
 
             WaybillDetOutBS.DataSource = wbd_list;
 
+            WaybillDetOutGridView.TopRowIndex = top_row;
             GetOk();
         }
 
@@ -318,11 +321,6 @@ namespace SP_Sklad.WBForm
             }
         }
 
-        private void WaybillDetInGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-           
-        }
-
         private void WbDetPopupMenu_Popup(object sender, EventArgs e)
         {
             RsvBarBtn.Enabled = (wbd_row.Rsv == 0 && wbd_row.PosId > 0);
@@ -415,6 +413,8 @@ namespace SP_Sklad.WBForm
 
          //   if (MessageDlg("Зарезервувати товар ? ", mtConfirmation, TMsgDlgButtons() << mbYes << mbNo, 0) == mrYes) RSVAllBarBtn->Click();
             RefreshDet();
+
+            WaybillDetOutGridView.MoveLastVisible();
         }
 
         private void RsvInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

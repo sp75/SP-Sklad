@@ -2141,7 +2141,7 @@
             // 
             this.xtraTabPage9.Controls.Add(this.extDirTabControl);
             this.xtraTabPage9.Name = "xtraTabPage9";
-            this.xtraTabPage9.Size = new System.Drawing.Size(828, 621);
+            this.xtraTabPage9.Size = new System.Drawing.Size(828, 590);
             this.xtraTabPage9.Text = "Довідники";
             // 
             // extDirTabControl
@@ -2154,7 +2154,7 @@
             this.extDirTabControl.LookAndFeel.UseDefaultLookAndFeel = false;
             this.extDirTabControl.Name = "extDirTabControl";
             this.extDirTabControl.SelectedTabPage = this.xtraTabPage19;
-            this.extDirTabControl.Size = new System.Drawing.Size(828, 621);
+            this.extDirTabControl.Size = new System.Drawing.Size(828, 590);
             this.extDirTabControl.TabIndex = 2;
             this.extDirTabControl.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage19,
@@ -2172,7 +2172,7 @@
             // 
             this.xtraTabPage19.Controls.Add(this.MatRecipeGridControl);
             this.xtraTabPage19.Name = "xtraTabPage19";
-            this.xtraTabPage19.Size = new System.Drawing.Size(828, 599);
+            this.xtraTabPage19.Size = new System.Drawing.Size(828, 568);
             this.xtraTabPage19.Text = "Рецепти";
             // 
             // MatRecipeGridControl
@@ -2182,7 +2182,7 @@
             this.MatRecipeGridControl.Location = new System.Drawing.Point(0, 0);
             this.MatRecipeGridControl.MainView = this.MatRecipeGridView;
             this.MatRecipeGridControl.Name = "MatRecipeGridControl";
-            this.MatRecipeGridControl.Size = new System.Drawing.Size(828, 599);
+            this.MatRecipeGridControl.Size = new System.Drawing.Size(828, 568);
             this.MatRecipeGridControl.TabIndex = 1;
             this.MatRecipeGridControl.UseEmbeddedNavigator = true;
             this.MatRecipeGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -2764,7 +2764,7 @@
             // 
             this.xtraTabPage27.Controls.Add(this.CountriesGridControl);
             this.xtraTabPage27.Name = "xtraTabPage27";
-            this.xtraTabPage27.Size = new System.Drawing.Size(828, 599);
+            this.xtraTabPage27.Size = new System.Drawing.Size(828, 568);
             this.xtraTabPage27.Text = "Країни";
             // 
             // CountriesGridControl
@@ -2776,7 +2776,7 @@
             this.CountriesGridControl.Name = "CountriesGridControl";
             this.CountriesGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit5});
-            this.CountriesGridControl.Size = new System.Drawing.Size(828, 599);
+            this.CountriesGridControl.Size = new System.Drawing.Size(828, 568);
             this.CountriesGridControl.TabIndex = 6;
             this.CountriesGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.CountriesGridView});

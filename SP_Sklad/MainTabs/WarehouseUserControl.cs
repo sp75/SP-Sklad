@@ -127,29 +127,10 @@ namespace SP_Sklad.MainTabs
             var satrt_date = wbStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : wbStartDate.DateTime;
             var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
 
-            var dr = WbGridView.GetRow(WbGridView.FocusedRowHandle) as GetWayBillListWh_Result;
-
-            WBGridControl.DataSource = null;
-            WBGridControl.DataSource = DB.SkladBase().GetWayBillListWh(satrt_date.Date, end_date.Date.AddDays(1), wtyp, (int)wbSatusList.EditValue, WhComboBox.EditValue.ToString()).ToList().OrderByDescending(o => o.OnDate);
-
-            WbGridView.FocusedRowHandle = FindRowHandleByRowObject(WbGridView, dr);
+            int top_row = WbGridView.TopRowIndex;
+            GetWayBillListWhBS.DataSource = DB.SkladBase().GetWayBillListWh(satrt_date.Date, end_date.Date.AddDays(1), wtyp, (int)wbSatusList.EditValue, WhComboBox.EditValue.ToString()).ToList().OrderByDescending(o => o.OnDate);
+            WbGridView.TopRowIndex = top_row;
         }
-
-        private int FindRowHandleByRowObject(GridView view, GetWayBillListWh_Result dr)
-        {
-            if (dr != null)
-            {
-                for (int i = 0; i < view.DataRowCount; i++)
-                {
-                    if (dr.WBillId == (view.GetRow(i) as GetWayBillListWh_Result).WBillId)
-                    {
-                        return i;
-                    }
-                }
-            }
-            return GridControl.InvalidRowHandle;
-        }
-
 
         private void ByGrpBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -216,28 +197,7 @@ namespace SP_Sklad.MainTabs
 
         private void WbGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            focused_row = WbGridView.GetRow(e.FocusedRowHandle) as GetWayBillListWh_Result;
-            WayBillListInfoBS.DataSource = focused_row;
 
-            if (focused_row != null)
-            {
-                using (var db = DB.SkladBase())
-                {
-                    gridControl2.DataSource = db.GetWaybillDetIn(focused_row.WBillId).ToList();
-                    gridControl3.DataSource = db.GetRelDocList(focused_row.DocId).ToList();
-                }
-            }
-            else
-            {
-                gridControl2.DataSource = null;
-                gridControl3.DataSource = null;
-            }
-
-            DeleteItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanDelete == 1);
-            ExecuteItemBtn.Enabled = (focused_row != null && focused_row.WType != 2 && focused_row.WType != -16 && focused_row.WType != 16 && focused_tree_node.CanPost == 1);
-            EditItemBtn.Enabled = (focused_row != null && focused_tree_node.CanModify == 1);
-            CopyItemBtn.Enabled = EditItemBtn.Enabled;
-            PrintItemBtn.Enabled = (focused_row != null);
         }
 
         private void EditItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -780,6 +740,32 @@ namespace SP_Sklad.MainTabs
         {
             var row = gridView3.GetFocusedRow() as GetRelDocList_Result;
             PrintDoc.Show(row.DocId.Value, row.DocType.Value, DB.SkladBase());
+        }
+
+        private void WbGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
+        {
+            focused_row = e.Row as GetWayBillListWh_Result;
+            WayBillListInfoBS.DataSource = focused_row;
+
+            if (focused_row != null)
+            {
+                using (var db = DB.SkladBase())
+                {
+                    gridControl2.DataSource = db.GetWaybillDetIn(focused_row.WBillId).ToList();
+                    gridControl3.DataSource = db.GetRelDocList(focused_row.DocId).ToList();
+                }
+            }
+            else
+            {
+                gridControl2.DataSource = null;
+                gridControl3.DataSource = null;
+            }
+
+            DeleteItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanDelete == 1);
+            ExecuteItemBtn.Enabled = (focused_row != null && focused_row.WType != 2 && focused_row.WType != -16 && focused_row.WType != 16 && focused_tree_node.CanPost == 1);
+            EditItemBtn.Enabled = (focused_row != null && focused_tree_node.CanModify == 1);
+            CopyItemBtn.Enabled = EditItemBtn.Enabled;
+            PrintItemBtn.Enabled = (focused_row != null);
         }
     }
 }

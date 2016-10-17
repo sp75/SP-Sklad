@@ -73,18 +73,24 @@ namespace SP_Sklad.WBDetForm
                     var w_mat_turn = _db.WMatTurn.Where(w => w.SourceId == _wbd.PosId).ToList();
                     if (w_mat_turn.Count > 0)
                     {
-                        pos_in = _db.GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, 0).Where(w => w.FullRemain > 0).OrderBy(o => o.OnDate).ToList();
+                        _db.WMatTurn.RemoveRange(w_mat_turn);
+                        _db.SaveChanges();
+
+                        GetContent(_wbd.WId, _wbd.MatId);
 
                         foreach (var item in w_mat_turn)
                         {
-                            var get_pos_in_result = pos_in.FirstOrDefault(a => a.PosId == item.PosId);
-                            if (get_pos_in_result != null)
+                            var pos = pos_in.FirstOrDefault(a => a.PosId == item.PosId);
+                            if (pos != null)
                             {
-                                get_pos_in_result.Amount = item.Amount;
+                                pos.Amount = item.Amount;
+
+                                if (item.Amount == pos.FullRemain)
+                                {
+                                    pos.GetAll = 1;
+                                }
                             }
                         }
-                        _db.WMatTurn.RemoveRange(w_mat_turn);
-                        _db.SaveChanges();
                     }
                 }
 
@@ -156,6 +162,7 @@ namespace SP_Sklad.WBDetForm
 
              GetDiscount(row.MatId);
              GetContent(_wbd.WId, row.MatId);
+             SetAmount();
         }
 
         private void GetDiscount(int? MatId)
@@ -180,25 +187,7 @@ namespace SP_Sklad.WBDetForm
             mat_remain = _db.GetMatRemain(WId, MatId).FirstOrDefault();
             GetMatRemainBS.DataSource = mat_remain != null ? mat_remain : new GetMatRemain_Result();
 
-            /*    if (mat_remain != null)
-                {
-                    GetMatRemainBS.DataSource = mat_remain;
-
-              //      RemainWHEdit.EditValue = mat_remain.RemainInWh;
-                   // RsvEdit.EditValue = mat_remain.Rsv;
-                //    CurRemainEdit.EditValue = mat_remain.Remain;
-              //      MinPriceEdit.EditValue = mat_remain.MinPrice;
-               //     AvgPriceEdit.EditValue = mat_remain.AvgPrice;
-              //      MaxPriceEdit.EditValue = mat_remain.MaxPrice;
-                }
-                else
-                {
-                    GetMatRemainBS.DataSource = new GetMatRemain_Result();
-                }*/
-
             pos_in = _db.GetPosIn(_wb.OnDate, MatId, WId, 0).Where(w => w.FullRemain > 0).OrderBy(o => o.OnDate).ToList();
-
-            SetAmount();
         }
 
         private void SetAmount()
@@ -230,6 +219,11 @@ namespace SP_Sklad.WBDetForm
                         {
                             item.Amount = remain;
                             sum_amount -= remain;
+                        }
+
+                        if (item.Amount == remain)
+                        {
+                            item.GetAll = 1;
                         }
                     }
                     else item.Amount = 0;
@@ -302,6 +296,7 @@ namespace SP_Sklad.WBDetForm
 
          //   _wbd.WId = (int)WHComboBox.EditValue;
             GetContent((int?)WHComboBox.EditValue, (int?)MatComboBox.EditValue);
+            SetAmount();
             GetOk();
         }
 
@@ -321,7 +316,7 @@ namespace SP_Sklad.WBDetForm
             if (list_price != null)
             {
                 _wbd.BasePrice = Math.Round(list_price.Price.Value, 4);
-                BasePriceEdit.Value = _wbd.BasePrice.Value;
+            //    BasePriceEdit.Value = _wbd.BasePrice.Value;
             }
 
             GetOk();
@@ -335,7 +330,7 @@ namespace SP_Sklad.WBDetForm
             }
 
             _wbd.PtypeId = null;
-            PriceTypesEdit.EditValue = null;
+         //   PriceTypesEdit.EditValue = null;
 
             GetOk();
         }
@@ -417,6 +412,7 @@ namespace SP_Sklad.WBDetForm
             var result = IHelper.ShowRemainByWH(MatComboBox.EditValue, WHComboBox.EditValue, 2);
             WHComboBox.EditValue = result.wid;
             GetContent(result.wid, (int?)MatComboBox.EditValue);
+            SetAmount();
             GetOk();
 
          /*   Variant savePoint = MatComboBox->EditValue;// 06.12.12

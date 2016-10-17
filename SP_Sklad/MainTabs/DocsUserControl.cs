@@ -91,12 +91,9 @@ namespace SP_Sklad.MainTabs
             var satrt_date = wbStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : wbStartDate.DateTime;
             var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
 
-            var dr = WbGridView.GetRow(WbGridView.FocusedRowHandle) as GetWayBillList_Result;
-
-            WBGridControl.DataSource = null;
-            WBGridControl.DataSource = _db.GetWayBillList(satrt_date.Date, end_date.Date.AddDays(1), wtyp, (int)wbStatusList.EditValue, (int)wbKagentList.EditValue, show_null_balance, "*", 0).OrderByDescending(o => o.OnDate);
-
-            WbGridView.FocusedRowHandle = FindRowHandleByRowObject(WbGridView, dr);
+            int top_row = WbGridView.TopRowIndex;
+            GetWayBillListBS.DataSource = _db.GetWayBillList(satrt_date.Date, end_date.Date.AddDays(1), wtyp, (int)wbStatusList.EditValue, (int)wbKagentList.EditValue, show_null_balance, "*", 0).OrderByDescending(o => o.OnDate);
+            WbGridView.TopRowIndex = top_row;
         }
 
         void GetPayDocList(int doc_typ)
@@ -111,44 +108,10 @@ namespace SP_Sklad.MainTabs
             var satrt_date = PDStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : PDStartDate.DateTime;
             var end_date = PDEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : PDEndDate.DateTime;
 
-            var dr = PayDocGridView.GetRow(PayDocGridView.FocusedRowHandle) as GetPayDocList_Result;
-
-            PDgridControl.DataSource = _db.GetPayDocList(doc_typ, satrt_date.Date, end_date.Date.AddDays(1), (int)PDKagentList.EditValue, (int)PDSatusList.EditValue, -1).OrderByDescending(o => o.OnDate).ToList();
-
-            PayDocGridView.FocusedRowHandle = FindPayDocRow(PayDocGridView, dr);
-
+            int top_row = PayDocGridView.TopRowIndex;
+            GetPayDocListBS.DataSource = _db.GetPayDocList(doc_typ, satrt_date.Date, end_date.Date.AddDays(1), (int)PDKagentList.EditValue, (int)PDSatusList.EditValue, -1).OrderByDescending(o => o.OnDate).ToList();
+            PayDocGridView.TopRowIndex = top_row;
         }
-
-        private int FindPayDocRow(GridView view, GetPayDocList_Result dr)
-        {
-            if (dr != null)
-            {
-                for (int i = 0; i < view.DataRowCount; i++)
-                {
-                    if (dr.PayDocId == (view.GetRow(i) as GetPayDocList_Result).PayDocId)
-                    {
-                        return i;
-                    }
-                }
-            }
-            return GridControl.InvalidRowHandle;
-        }
-
-        private int FindRowHandleByRowObject(GridView view, GetWayBillList_Result dr)
-        {
-            if (dr != null)
-            {
-                for (int i = 0; i < view.DataRowCount; i++)
-                {
-                    if (dr.WbillId == (view.GetRow(i) as GetWayBillList_Result).WbillId)
-                    {
-                        return i;
-                    }
-                }
-            }
-            return GridControl.InvalidRowHandle;
-        }
-
 
         private void DocsTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
@@ -170,31 +133,6 @@ namespace SP_Sklad.MainTabs
         {
             GetWayBillList(cur_wtype);
         }
-
-        private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-            var dr = WbGridView.GetRow(e.FocusedRowHandle) as GetWayBillList_Result;
-
-            if (dr != null)
-            {
-                gridControl2.DataSource = _db.GetWaybillDetIn(dr.WbillId);
-                gridControl3.DataSource = _db.GetRelDocList(dr.DocId);
-
-                WayBillListInfoBS.DataSource = dr;
-            }
-            else
-            {
-                gridControl2.DataSource = null;
-                gridControl3.DataSource = null;
-            }
-
-            DeleteItemBtn.Enabled = (dr != null && dr.Checked == 0 && focused_tree_node.CanDelete == 1);
-            ExecuteItemBtn.Enabled = (dr != null && dr.WType != 2 && dr.WType != -16 && dr.WType != 16 && focused_tree_node.CanPost == 1);
-            EditItemBtn.Enabled = (dr != null && focused_tree_node.CanModify == 1);
-            CopyItemBtn.Enabled = EditItemBtn.Enabled;
-            PrintItemBtn.Enabled = (dr != null);
-        }
-
 
         private void NewItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -410,10 +348,6 @@ namespace SP_Sklad.MainTabs
                 {
                     MessageBox.Show(Resources.deadlock);
                 }
-                /*    finally
-                    {
-               //         trans.Commit();
-                    }*/
             }
 
             RefrechItemBtn.PerformClick();
@@ -440,8 +374,9 @@ namespace SP_Sklad.MainTabs
 
 
                 case 5:
-                    PriceListBS.DataSource = null;
+                    int top_row = PriceListGridView.TopRowIndex;
                     PriceListBS.DataSource = DB.SkladBase().v_PriceList.ToList();
+                    PriceListGridView.TopRowIndex = top_row;
                     break;
 
                 /*      case 6: ContractsList->Refresh();
@@ -542,21 +477,7 @@ namespace SP_Sklad.MainTabs
 
         private void PayDocGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            var dr = PayDocGridView.GetRow(e.FocusedRowHandle) as GetPayDocList_Result;
-            PayDocListInfoBS.DataSource = dr;
 
-            if (dr != null)
-            {
-                RelPayDocGridControl.DataSource = _db.GetRelDocList(dr.DocId);
-            }
-
-            var tree_row = DocsTreeList.GetDataRecordByNode(DocsTreeList.FocusedNode) as v_GetDocsTree;
-
-            DeleteItemBtn.Enabled = (dr != null && dr.Checked == 0 && tree_row.CanDelete == 1);
-            ExecuteItemBtn.Enabled = (dr != null && tree_row.CanPost == 1);
-            EditItemBtn.Enabled = (dr != null && tree_row.CanModify == 1);
-            CopyItemBtn.Enabled = EditItemBtn.Enabled;
-            PrintItemBtn.Enabled = (dr != null);
         }
 
         private void PDStartDate_EditValueChanged(object sender, EventArgs e)
@@ -719,25 +640,6 @@ namespace SP_Sklad.MainTabs
             RefrechItemBtn.PerformClick();
         }
 
-        private void PriceListGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-            var pl_dr = PriceListGridView.GetFocusedRow() as v_PriceList;
-            if (pl_dr != null)
-            {
-                PriceListDetBS.DataSource = _db.GetPriceListDet(pl_dr.PlId);
-            }
-            else PriceListDetBS.DataSource = null;
-
-
-            var tree_row = DocsTreeList.GetDataRecordByNode(DocsTreeList.FocusedNode) as v_GetDocsTree;
-
-            DeleteItemBtn.Enabled = (pl_focused_row != null && tree_row.CanDelete == 1);
-            ExecuteItemBtn.Enabled = false;
-            EditItemBtn.Enabled = (pl_focused_row != null && tree_row.CanModify == 1);
-            CopyItemBtn.Enabled = EditItemBtn.Enabled;
-            PrintItemBtn.Enabled = (pl_focused_row != null);
-        }
-
         private void NewPayDocBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
             if ((wb_focused_row.SummAll - wb_focused_row.SummPay) <= 0)
@@ -825,6 +727,68 @@ namespace SP_Sklad.MainTabs
             }
 
             PrintDoc.Show(row.DocId.Value, row.DocType.Value, DB.SkladBase());
+        }
+
+        private void WbGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
+        {
+            var dr = e.Row as GetWayBillList_Result;
+
+            if (dr != null)
+            {
+                gridControl2.DataSource = _db.GetWaybillDetIn(dr.WbillId);
+                gridControl3.DataSource = _db.GetRelDocList(dr.DocId);
+
+                WayBillListInfoBS.DataSource = dr;
+            }
+            else
+            {
+                gridControl2.DataSource = null;
+                gridControl3.DataSource = null;
+            }
+
+            DeleteItemBtn.Enabled = (dr != null && dr.Checked == 0 && focused_tree_node.CanDelete == 1);
+            ExecuteItemBtn.Enabled = (dr != null && dr.WType != 2 && dr.WType != -16 && dr.WType != 16 && focused_tree_node.CanPost == 1);
+            EditItemBtn.Enabled = (dr != null && focused_tree_node.CanModify == 1);
+            CopyItemBtn.Enabled = EditItemBtn.Enabled;
+            PrintItemBtn.Enabled = (dr != null);
+        }
+
+        private void PayDocGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
+        {
+            var dr = e.Row as GetPayDocList_Result;
+            PayDocListInfoBS.DataSource = dr;
+
+            if (dr != null)
+            {
+                RelPayDocGridControl.DataSource = _db.GetRelDocList(dr.DocId);
+            }
+
+            var tree_row = DocsTreeList.GetDataRecordByNode(DocsTreeList.FocusedNode) as v_GetDocsTree;
+
+            DeleteItemBtn.Enabled = (dr != null && dr.Checked == 0 && tree_row.CanDelete == 1);
+            ExecuteItemBtn.Enabled = (dr != null && tree_row.CanPost == 1);
+            EditItemBtn.Enabled = (dr != null && tree_row.CanModify == 1);
+            CopyItemBtn.Enabled = EditItemBtn.Enabled;
+            PrintItemBtn.Enabled = (dr != null);
+        }
+
+        private void PriceListGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
+        {
+            var pl_dr = e.Row as v_PriceList;
+            if (pl_dr != null)
+            {
+                PriceListDetBS.DataSource = _db.GetPriceListDet(pl_dr.PlId);
+            }
+            else PriceListDetBS.DataSource = null;
+
+
+            var tree_row = DocsTreeList.GetDataRecordByNode(DocsTreeList.FocusedNode) as v_GetDocsTree;
+
+            DeleteItemBtn.Enabled = (pl_focused_row != null && tree_row.CanDelete == 1);
+            ExecuteItemBtn.Enabled = false;
+            EditItemBtn.Enabled = (pl_focused_row != null && tree_row.CanModify == 1);
+            CopyItemBtn.Enabled = EditItemBtn.Enabled;
+            PrintItemBtn.Enabled = (pl_focused_row != null);
         }
     }
 }
