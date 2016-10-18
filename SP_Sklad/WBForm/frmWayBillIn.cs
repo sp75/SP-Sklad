@@ -28,6 +28,13 @@ namespace SP_Sklad.WBForm
         public int? doc_id { get; set; }
         private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
+        private GetWaybillDetIn_Result wbd_row
+        {
+            get
+            {
+                return WaybillDetInGridView.GetFocusedRow() as GetWaybillDetIn_Result;
+            }
+        }
 
         public frmWayBillIn(int wtype, int? wbill_id = null)
         {
@@ -244,28 +251,30 @@ namespace SP_Sklad.WBForm
 
         private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = WaybillDetInGridView.GetRow(WaybillDetInGridView.FocusedRowHandle) as GetWaybillDetIn_Result;
-
-            if (dr != null)
+            if (wbd_row != null)
             {
-                if (dr.PosId > 0)
+                if (wbd_row.PosId > 0)
                 {
-                    _db.DeleteWhere<WaybillDet>(w => w.PosId == dr.PosId);
+                    _db.DeleteWhere<WaybillDet>(w => w.PosId == wbd_row.PosId);
                 }
                 else
                 {
-                    _db.DeleteWhere<WayBillSvc>(w => w.PosId == dr.PosId * -1);
+                    _db.DeleteWhere<WayBillSvc>(w => w.PosId == wbd_row.PosId * -1);
                 }
                 _db.SaveChanges();
 
-                RefreshDet();
+                WaybillDetInGridView.DeleteSelectedRows();
             }
         }
 
         private void RefreshDet()
         {
             _db.UpdWaybillDetPrice(_wbill_id);
+            
+            int top_row = WaybillDetInGridView.TopRowIndex;
             WaybillDetInBS.DataSource = _db.GetWaybillDetIn(_wbill_id).AsNoTracking().ToList();
+            WaybillDetInGridView.TopRowIndex = top_row;
+         
             GetOk();
         }
 

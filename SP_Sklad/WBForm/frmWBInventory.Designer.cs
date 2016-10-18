@@ -82,6 +82,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.lookUpEdit3 = new DevExpress.XtraEditors.LookUpEdit();
+            this.CommissionBS = new System.Windows.Forms.BindingSource(this.components);
             this.PersonComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.lookUpEdit2 = new DevExpress.XtraEditors.LookUpEdit();
             this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
@@ -90,7 +91,6 @@
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
-            this.CommissionBS = new System.Windows.Forms.BindingSource(this.components);
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
             this.InventoryDetGridControl = new DevExpress.XtraGrid.GridControl();
             this.WaybillDetInBS = new System.Windows.Forms.BindingSource(this.components);
@@ -136,10 +136,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CommissionBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CommissionBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
             this.panelControl5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.InventoryDetGridControl)).BeginInit();
@@ -678,6 +678,10 @@
             this.lookUpEdit3.TabIndex = 35;
             this.lookUpEdit3.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.lookUpEdit1_ButtonClick);
             // 
+            // CommissionBS
+            // 
+            this.CommissionBS.DataSource = typeof(SP_Sklad.SkladData.Commission);
+            // 
             // PersonComboBox
             // 
             this.PersonComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -786,10 +790,6 @@
             this.labelControl10.StyleController = this.styleController1;
             this.labelControl10.TabIndex = 20;
             this.labelControl10.Text = "2-й:";
-            // 
-            // CommissionBS
-            // 
-            this.CommissionBS.DataSource = typeof(SP_Sklad.SkladData.Commission);
             // 
             // panelControl5
             // 
@@ -1087,10 +1087,10 @@
             this.panelControl4.ResumeLayout(false);
             this.panelControl4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CommissionBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CommissionBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
             this.panelControl5.ResumeLayout(false);
             this.panelControl5.PerformLayout();

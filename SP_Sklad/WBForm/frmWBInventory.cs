@@ -129,7 +129,9 @@ namespace SP_Sklad.WBForm
                 SumAll = ((s.Discount ?? 0) * (s.Nds ?? 0)) - (s.Amount * (s.Price ?? 0))
             }).ToList();
 
+            int top_row = InventoryDetGridView.TopRowIndex;
             WaybillDetInBS.DataSource = query;
+            InventoryDetGridView.TopRowIndex = top_row;
 
             GetOk();
         }
@@ -234,7 +236,8 @@ namespace SP_Sklad.WBForm
                 int pos_id = dr.PosId;
                 _db.DeleteWhere<WaybillDet>(w => w.PosId == pos_id);
                 _db.SaveChanges();
-                RefreshDet();
+
+                InventoryDetGridView.DeleteSelectedRows();
             }
         }
 

@@ -27,7 +27,7 @@ namespace SP_Sklad.WBForm
         private int? _wbill_id { get; set; }
         private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
-        private IQueryable<GetWayBillDetOut_Result> wbd_list { get; set; }
+        private List<GetWayBillDetOut_Result> wbd_list { get; set; }
         private GetWayBillDetOut_Result focused_dr
         {
             get { return WaybillDetOutGridView.GetFocusedRow() as GetWayBillDetOut_Result; }
@@ -121,30 +121,14 @@ namespace SP_Sklad.WBForm
 
         private void RefreshDet()
         {
-            wbd_list = _db.GetWayBillDetOut(_wbill_id);
-            var dr = WaybillDetOutGridView.GetRow(WaybillDetOutGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
+            wbd_list = _db.GetWayBillDetOut(_wbill_id).ToList();
 
-            WaybillDetOutGridControl.DataSource = null;
-            WaybillDetOutGridControl.DataSource = wbd_list;
-           
-            WaybillDetOutGridView.FocusedRowHandle = FindRowHandleByRowObject(WaybillDetOutGridView, dr);
+            int top_row = WaybillDetOutGridView.TopRowIndex;
+
+            WaybillDetOutBS.DataSource = wbd_list;
+            WaybillDetOutGridView.TopRowIndex = top_row;
 
             GetOk();
-        }
-
-        private int FindRowHandleByRowObject(GridView view, GetWayBillDetOut_Result dr)
-        {
-            if (dr != null)
-            {
-                for (int i = 0; i < view.DataRowCount; i++)
-                {
-                    if (dr.PosId == (view.GetRow(i) as GetWayBillDetOut_Result).PosId)
-                    {
-                        return i;
-                    }
-                }
-            }
-            return GridControl.InvalidRowHandle;
         }
 
         bool GetOk()
@@ -235,14 +219,12 @@ namespace SP_Sklad.WBForm
 
         private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = WaybillDetOutGridView.GetRow(WaybillDetOutGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
-
-            if (dr != null)
+            if (focused_dr != null)
             {
-                _db.DeleteWhere<WaybillDet>(w => w.PosId == dr.PosId);
+                _db.DeleteWhere<WaybillDet>(w => w.PosId == focused_dr.PosId);
                 _db.SaveChanges();
 
-                RefreshDet();
+                WaybillDetOutGridView.DeleteSelectedRows();
             }
         }
 
@@ -304,11 +286,6 @@ namespace SP_Sklad.WBForm
                 Point p2 = Control.MousePosition;
                 this.WbDetPopupMenu.ShowPopup(p2);
             }
-        }
-
-        private void WaybillDetOutGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-          
         }
 
         private void NumEdit_EditValueChanged(object sender, EventArgs e)

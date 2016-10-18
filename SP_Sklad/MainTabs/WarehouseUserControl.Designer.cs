@@ -237,6 +237,7 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.wbStartDate = new DevExpress.XtraEditors.DateEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.GetWayBillListWhBS = new System.Windows.Forms.BindingSource(this.components);
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.barDockControl5 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
@@ -251,7 +252,6 @@
             this.DocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
-            this.GetWayBillListWhBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -329,10 +329,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GetWayBillListWhBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GetWayBillListWhBS)).BeginInit();
             this.SuspendLayout();
             // 
             // UserTreeImgList
@@ -2654,6 +2654,10 @@
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Період з";
             // 
+            // GetWayBillListWhBS
+            // 
+            this.GetWayBillListWhBS.DataSource = typeof(SP_Sklad.SkladData.GetWayBillListWh_Result);
+            // 
             // MatPopupMenu
             // 
             this.MatPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
@@ -2770,10 +2774,6 @@
             this.xtraTabPage10.Size = new System.Drawing.Size(902, 648);
             this.xtraTabPage10.Text = "Акти інвентаризації";
             // 
-            // GetWayBillListWhBS
-            // 
-            this.GetWayBillListWhBS.DataSource = typeof(SP_Sklad.SkladData.GetWayBillListWh_Result);
-            // 
             // WarehouseUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2868,10 +2868,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GetWayBillListWhBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GetWayBillListWhBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
