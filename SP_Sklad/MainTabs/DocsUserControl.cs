@@ -98,8 +98,6 @@ namespace SP_Sklad.MainTabs
 
         void GetPayDocList(int doc_typ)
         {
-            PDgridControl.DataSource = null;
-
             if (PDSatusList.EditValue == null || PDKagentList.EditValue == null || DocsTreeList.FocusedNode == null)
             {
                 return;
@@ -649,43 +647,34 @@ namespace SP_Sklad.MainTabs
             }
 
             int? doc_type = null;
-            if (new int[] { 26, 57, 108 }.Any(a => a == focused_tree_node.Id))
+            if (new[] { 26, 57, 108 }.Any(a => a == focused_tree_node.Id))
             {
                 doc_type = -1;
             }
-            if (new int[] { 27, 26, 39, 107 }.Any(a => a == focused_tree_node.Id))
+            else if (new[] { 27, 56, 39, 107 }.Any(a => a == focused_tree_node.Id))
             {
                 doc_type = 1;
             }
+            else
+            {
+                return;
+            }
 
-            var frm = new frmPayDoc(doc_type, null);
-            frm.PayDocCheckEdit.Checked = true;
-            frm.TypDocsEdit.EditValue = wb_focused_row.WType;
-            frm._ka_id = wb_focused_row.KaId;
-            frm.KagentComboBox.EditValue = wb_focused_row.KaId;
+            var frm = new frmPayDoc(doc_type, null)
+            {
+                PayDocCheckEdit = { Checked = true },
+                TypDocsEdit = { EditValue = wb_focused_row.WType },
+                _ka_id = wb_focused_row.KaId,
+                KagentComboBox = { EditValue = wb_focused_row.KaId }
+            };
 
             frm.GetDocList();
             frm.DocListEdit.EditValue = wb_focused_row.DocId;
 
-            frm.ShowDialog();
-
-
-            /* if (WayBillListSUMMPAY->IsNull)
-             {
-                 frmPayDoc = new TfrmPayDoc(Application);
-                 frmPayDoc->PayDoc->Open();
-                 frmPayDoc->PayDoc->Append();
-                 if (DocsTreeDataID->Value == 26 || DocsTreeDataID->Value == 57 || DocsTreeDataID->Value == 108) frmPayDoc->PayDocDOCTYPE->Value = -1;
-                 if (DocsTreeDataID->Value == 27 || DocsTreeDataID->Value == 56 || DocsTreeDataID->Value == 39 || DocsTreeDataID->Value == 107) frmPayDoc->PayDocDOCTYPE->Value = 1;
-                 frmPayDoc->TypDocs->Edit();
-                 frmPayDoc->TypDocsID->Value = WayBillListWTYPE->Value;
-                 frmPayDoc->PayedDoc(WayBillListDOCID->Value);
-                 frmPayDoc->PayDocTOTAL->Value = WayBillListSUMMALL->Value;
-                 frmPayDoc->ShowModal();
-                 WayBillList->Refresh();
-                 GET_RelDocList->FullRefresh();
-             }
-             else MessageDlg("Документ вже оплачено!", mtConfirmation, TMsgDlgButtons() << mbYes, 0);*/
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                RefrechItemBtn.Refresh();
+            }
         }
 
         private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
