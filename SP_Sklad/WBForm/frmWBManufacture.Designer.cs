@@ -105,6 +105,7 @@
             this.repositoryItemImageComboBox6 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.WaybillDetOutGridControl = new DevExpress.XtraGrid.GridControl();
+            this.WaybillDetOutBS = new System.Windows.Forms.BindingSource(this.components);
             this.WaybillDetOutGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -152,6 +153,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox6)).BeginInit();
             this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
@@ -279,6 +281,7 @@
             this.barButtonItem6.ImageIndex = 9;
             this.barButtonItem6.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L));
             this.barButtonItem6.Name = "barButtonItem6";
+            this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
             // 
             // EditMaterialBtn
             // 
@@ -1023,6 +1026,7 @@
             // 
             // WaybillDetOutGridControl
             // 
+            this.WaybillDetOutGridControl.DataSource = this.WaybillDetOutBS;
             this.WaybillDetOutGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WaybillDetOutGridControl.Location = new System.Drawing.Point(0, 0);
             this.WaybillDetOutGridControl.MainView = this.WaybillDetOutGridView;
@@ -1036,6 +1040,10 @@
             this.WaybillDetOutGridControl.TabIndex = 2;
             this.WaybillDetOutGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WaybillDetOutGridView});
+            // 
+            // WaybillDetOutBS
+            // 
+            this.WaybillDetOutBS.DataSource = typeof(SP_Sklad.SkladData.GetWayBillDetOut_Result);
             // 
             // WaybillDetOutGridView
             // 
@@ -1239,6 +1247,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox6)).EndInit();
             this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
@@ -1339,5 +1348,6 @@
         private DevExpress.XtraBars.BarButtonItem ByRecipeBtn;
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private System.Windows.Forms.BindingSource WaybillDetOutBS;
     }
 }

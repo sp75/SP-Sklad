@@ -27,7 +27,7 @@ namespace SP_Sklad.WBForm
         private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
         private GetWaybillDetIn_Result wbd_row { get; set; }
-        private IQueryable<GetWaybillDetIn_Result> wbd_list { get; set; }
+        private List<GetWaybillDetIn_Result> wbd_list { get; set; }
         private List<GetRelDocList_Result> rdl  { get; set; }
         private GetWaybillDetIn_Result focused_dr
         {
@@ -127,29 +127,13 @@ namespace SP_Sklad.WBForm
 
         private void RefreshDet()
         {
-            wbd_list = _db.GetWaybillDetIn(_wbill_id);
-            var dr_tmp = WaybillDetInGridView.GetFocusedRow() as GetWaybillDetIn_Result;
+            wbd_list = _db.GetWaybillDetIn(_wbill_id).ToList();
 
-            WaybillDetInGridControl.DataSource = null;
-            WaybillDetInGridControl.DataSource = wbd_list;
-
-            WaybillDetInGridView.FocusedRowHandle = FindRowHandleByRowObject(WaybillDetInGridView, dr_tmp);
+            int top_row = WaybillDetInGridView.TopRowIndex;
+            WaybillDetInBS.DataSource = wbd_list;
+            WaybillDetInGridView.TopRowIndex = top_row;
 
             frmValidating();
-        }
-        private int FindRowHandleByRowObject(GridView view, GetWaybillDetIn_Result dr)
-        {
-            if (dr != null)
-            {
-                for (int i = 0; i < view.DataRowCount; i++)
-                {
-                    if (dr.PosId == (view.GetRow(i) as GetWaybillDetIn_Result).PosId)
-                    {
-                        return i;
-                    }
-                }
-            }
-            return GridControl.InvalidRowHandle;
         }
 
         bool frmValidating()

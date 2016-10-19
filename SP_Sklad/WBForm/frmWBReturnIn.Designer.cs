@@ -96,6 +96,7 @@
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
+            this.WaybillDetInBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
@@ -124,6 +125,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInBS)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -683,6 +685,7 @@
             // 
             // WBDetReInGridControl
             // 
+            this.WBDetReInGridControl.DataSource = this.WaybillDetInBS;
             this.WBDetReInGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WBDetReInGridControl.Location = new System.Drawing.Point(2, 2);
             this.WBDetReInGridControl.MainView = this.WBDetReInGridView;
@@ -850,6 +853,10 @@
             this.barDockControl1.Location = new System.Drawing.Point(2, 2);
             this.barDockControl1.Size = new System.Drawing.Size(965, 0);
             // 
+            // WaybillDetInBS
+            // 
+            this.WaybillDetInBS.DataSource = typeof(SP_Sklad.SkladData.GetWaybillDetIn_Result);
+            // 
             // frmWBReturnIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -901,6 +908,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -974,5 +982,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         private DevExpress.XtraEditors.TextEdit BarCodeEdit;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit2;
+        private System.Windows.Forms.BindingSource WaybillDetInBS;
     }
 }

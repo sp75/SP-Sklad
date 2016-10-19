@@ -896,8 +896,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemCalcEdit1.DisplayFormat.FormatString = "0.0000";
             this.repositoryItemCalcEdit1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.repositoryItemCalcEdit1.EditFormat.FormatString = "0.0000";
-            this.repositoryItemCalcEdit1.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.repositoryItemCalcEdit1.Name = "repositoryItemCalcEdit1";
             // 
             // gridColumn5

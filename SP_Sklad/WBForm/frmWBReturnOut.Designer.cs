@@ -774,7 +774,6 @@
             this.WaybillDetOutGridView.OptionsView.ShowFooter = true;
             this.WaybillDetOutGridView.OptionsView.ShowGroupPanel = false;
             this.WaybillDetOutGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WaybillDetOutGridView_PopupMenuShowing);
-            this.WaybillDetOutGridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.WaybillDetOutGridView_FocusedRowChanged);
             this.WaybillDetOutGridView.DoubleClick += new System.EventHandler(this.WaybillDetOutGridView_DoubleClick);
             // 
             // gridColumn12

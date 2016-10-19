@@ -187,12 +187,12 @@ namespace SP_Sklad.WBForm
 
         private void RefreshDet()
         {
+             wbd_list = _db.GetWayBillDetOut(_wbill_id).AsNoTracking().ToList();
+
             int top_row = WaybillDetOutGridView.TopRowIndex;
-            wbd_list = _db.GetWayBillDetOut(_wbill_id).AsNoTracking().ToList();
-
             WaybillDetOutBS.DataSource = wbd_list;
-
             WaybillDetOutGridView.TopRowIndex = top_row;
+
             GetOk();
         }
 
@@ -242,6 +242,7 @@ namespace SP_Sklad.WBForm
                 _db.SaveChanges();
 
                 WaybillDetOutGridView.DeleteSelectedRows();
+                GetOk();
             }
         }
 
@@ -450,6 +451,7 @@ namespace SP_Sklad.WBForm
             if (wbd_row.Rsv == 0)
             {
                 wbd.Amount = Convert.ToDecimal(e.Value);
+                wbd.Checked = 1;
                 _db.SaveChanges();
 
                 RefreshDet();

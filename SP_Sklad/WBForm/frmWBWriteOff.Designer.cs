@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWBWriteOff));
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.WBImgList = new System.Windows.Forms.ImageList(this.components);
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
@@ -55,7 +55,11 @@
             this.OnDateDBEdit = new DevExpress.XtraEditors.DateEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
+            this.lookUpEdit3 = new DevExpress.XtraEditors.LookUpEdit();
             this.CommissionBS = new System.Windows.Forms.BindingSource(this.components);
+            this.PersonComboBox = new DevExpress.XtraEditors.LookUpEdit();
+            this.lookUpEdit2 = new DevExpress.XtraEditors.LookUpEdit();
+            this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
@@ -119,10 +123,7 @@
             this.DelRsvBarBtn = new DevExpress.XtraBars.BarButtonItem();
             this.DelAllRsvBarBtn = new DevExpress.XtraBars.BarButtonItem();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.lookUpEdit3 = new DevExpress.XtraEditors.LookUpEdit();
-            this.PersonComboBox = new DevExpress.XtraEditors.LookUpEdit();
-            this.lookUpEdit2 = new DevExpress.XtraEditors.LookUpEdit();
-            this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
+            this.WaybillDetOutBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
@@ -139,7 +140,11 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CommissionBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
@@ -151,10 +156,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutBS)).BeginInit();
             this.SuspendLayout();
             // 
             // standaloneBarDockControl1
@@ -403,9 +405,93 @@
             this.panelControl4.Size = new System.Drawing.Size(386, 174);
             this.panelControl4.TabIndex = 1;
             // 
+            // lookUpEdit3
+            // 
+            this.lookUpEdit3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lookUpEdit3.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.CommissionBS, "ThirdKaId", true));
+            this.lookUpEdit3.Location = new System.Drawing.Point(67, 141);
+            this.lookUpEdit3.Name = "lookUpEdit3";
+            this.lookUpEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("lookUpEdit3.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject4, "", null, null, true)});
+            this.lookUpEdit3.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name4")});
+            this.lookUpEdit3.Properties.DisplayMember = "Name";
+            this.lookUpEdit3.Properties.ShowFooter = false;
+            this.lookUpEdit3.Properties.ShowHeader = false;
+            this.lookUpEdit3.Properties.ValueMember = "KaId";
+            this.lookUpEdit3.Size = new System.Drawing.Size(312, 22);
+            this.lookUpEdit3.StyleController = this.styleController1;
+            this.lookUpEdit3.TabIndex = 39;
+            this.lookUpEdit3.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.lookUpEdit1_ButtonClick);
+            // 
             // CommissionBS
             // 
             this.CommissionBS.DataSource = typeof(SP_Sklad.SkladData.Commission);
+            // 
+            // PersonComboBox
+            // 
+            this.PersonComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PersonComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.CommissionBS, "SecondKaId", true));
+            this.PersonComboBox.Location = new System.Drawing.Point(67, 108);
+            this.PersonComboBox.Name = "PersonComboBox";
+            this.PersonComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("PersonComboBox.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, "", null, null, true)});
+            this.PersonComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name4")});
+            this.PersonComboBox.Properties.DisplayMember = "Name";
+            this.PersonComboBox.Properties.ShowFooter = false;
+            this.PersonComboBox.Properties.ShowHeader = false;
+            this.PersonComboBox.Properties.ValueMember = "KaId";
+            this.PersonComboBox.Size = new System.Drawing.Size(312, 22);
+            this.PersonComboBox.StyleController = this.styleController1;
+            this.PersonComboBox.TabIndex = 38;
+            this.PersonComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.lookUpEdit1_ButtonClick);
+            // 
+            // lookUpEdit2
+            // 
+            this.lookUpEdit2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lookUpEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.CommissionBS, "FirstKaId", true));
+            this.lookUpEdit2.Location = new System.Drawing.Point(67, 75);
+            this.lookUpEdit2.Name = "lookUpEdit2";
+            this.lookUpEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("lookUpEdit2.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", null, null, true)});
+            this.lookUpEdit2.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name4")});
+            this.lookUpEdit2.Properties.DisplayMember = "Name";
+            this.lookUpEdit2.Properties.ShowFooter = false;
+            this.lookUpEdit2.Properties.ShowHeader = false;
+            this.lookUpEdit2.Properties.ValueMember = "KaId";
+            this.lookUpEdit2.Size = new System.Drawing.Size(312, 22);
+            this.lookUpEdit2.StyleController = this.styleController1;
+            this.lookUpEdit2.TabIndex = 37;
+            this.lookUpEdit2.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.lookUpEdit1_ButtonClick);
+            // 
+            // lookUpEdit1
+            // 
+            this.lookUpEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lookUpEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.CommissionBS, "KaId", true));
+            this.lookUpEdit1.Location = new System.Drawing.Point(67, 41);
+            this.lookUpEdit1.Name = "lookUpEdit1";
+            this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("lookUpEdit1.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "", null, null, true)});
+            this.lookUpEdit1.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name4")});
+            this.lookUpEdit1.Properties.DisplayMember = "Name";
+            this.lookUpEdit1.Properties.ShowFooter = false;
+            this.lookUpEdit1.Properties.ShowHeader = false;
+            this.lookUpEdit1.Properties.ValueMember = "KaId";
+            this.lookUpEdit1.Size = new System.Drawing.Size(312, 22);
+            this.lookUpEdit1.StyleController = this.styleController1;
+            this.lookUpEdit1.TabIndex = 36;
+            this.lookUpEdit1.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.lookUpEdit1_ButtonClick);
             // 
             // labelControl7
             // 
@@ -495,6 +581,7 @@
             // 
             // WaybillDetOutGridControl
             // 
+            this.WaybillDetOutGridControl.DataSource = this.WaybillDetOutBS;
             this.WaybillDetOutGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WaybillDetOutGridControl.Location = new System.Drawing.Point(2, 2);
             this.WaybillDetOutGridControl.MainView = this.WaybillDetOutGridView;
@@ -523,7 +610,6 @@
             this.WaybillDetOutGridView.Name = "WaybillDetOutGridView";
             this.WaybillDetOutGridView.OptionsView.ShowGroupPanel = false;
             this.WaybillDetOutGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WaybillDetOutGridView_PopupMenuShowing);
-            this.WaybillDetOutGridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.WaybillDetOutGridView_FocusedRowChanged);
             this.WaybillDetOutGridView.DoubleClick += new System.EventHandler(this.WaybillDetOutGridView_DoubleClick);
             // 
             // gridColumn2
@@ -1034,89 +1120,9 @@
             this.WbDetPopupMenu.Manager = this.barManager1;
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
             // 
-            // lookUpEdit3
+            // WaybillDetOutBS
             // 
-            this.lookUpEdit3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lookUpEdit3.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.CommissionBS, "ThirdKaId", true));
-            this.lookUpEdit3.Location = new System.Drawing.Point(67, 141);
-            this.lookUpEdit3.Name = "lookUpEdit3";
-            this.lookUpEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("lookUpEdit3.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", null, null, true)});
-            this.lookUpEdit3.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name4")});
-            this.lookUpEdit3.Properties.DisplayMember = "Name";
-            this.lookUpEdit3.Properties.ShowFooter = false;
-            this.lookUpEdit3.Properties.ShowHeader = false;
-            this.lookUpEdit3.Properties.ValueMember = "KaId";
-            this.lookUpEdit3.Size = new System.Drawing.Size(312, 22);
-            this.lookUpEdit3.StyleController = this.styleController1;
-            this.lookUpEdit3.TabIndex = 39;
-            this.lookUpEdit3.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.lookUpEdit1_ButtonClick);
-            // 
-            // PersonComboBox
-            // 
-            this.PersonComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PersonComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.CommissionBS, "SecondKaId", true));
-            this.PersonComboBox.Location = new System.Drawing.Point(67, 108);
-            this.PersonComboBox.Name = "PersonComboBox";
-            this.PersonComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("PersonComboBox.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "", null, null, true)});
-            this.PersonComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name4")});
-            this.PersonComboBox.Properties.DisplayMember = "Name";
-            this.PersonComboBox.Properties.ShowFooter = false;
-            this.PersonComboBox.Properties.ShowHeader = false;
-            this.PersonComboBox.Properties.ValueMember = "KaId";
-            this.PersonComboBox.Size = new System.Drawing.Size(312, 22);
-            this.PersonComboBox.StyleController = this.styleController1;
-            this.PersonComboBox.TabIndex = 38;
-            this.PersonComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.lookUpEdit1_ButtonClick);
-            // 
-            // lookUpEdit2
-            // 
-            this.lookUpEdit2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lookUpEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.CommissionBS, "FirstKaId", true));
-            this.lookUpEdit2.Location = new System.Drawing.Point(67, 75);
-            this.lookUpEdit2.Name = "lookUpEdit2";
-            this.lookUpEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("lookUpEdit2.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject3, "", null, null, true)});
-            this.lookUpEdit2.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name4")});
-            this.lookUpEdit2.Properties.DisplayMember = "Name";
-            this.lookUpEdit2.Properties.ShowFooter = false;
-            this.lookUpEdit2.Properties.ShowHeader = false;
-            this.lookUpEdit2.Properties.ValueMember = "KaId";
-            this.lookUpEdit2.Size = new System.Drawing.Size(312, 22);
-            this.lookUpEdit2.StyleController = this.styleController1;
-            this.lookUpEdit2.TabIndex = 37;
-            this.lookUpEdit2.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.lookUpEdit1_ButtonClick);
-            // 
-            // lookUpEdit1
-            // 
-            this.lookUpEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lookUpEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.CommissionBS, "KaId", true));
-            this.lookUpEdit1.Location = new System.Drawing.Point(67, 41);
-            this.lookUpEdit1.Name = "lookUpEdit1";
-            this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("lookUpEdit1.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject4, "", null, null, true)});
-            this.lookUpEdit1.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name4")});
-            this.lookUpEdit1.Properties.DisplayMember = "Name";
-            this.lookUpEdit1.Properties.ShowFooter = false;
-            this.lookUpEdit1.Properties.ShowHeader = false;
-            this.lookUpEdit1.Properties.ValueMember = "KaId";
-            this.lookUpEdit1.Size = new System.Drawing.Size(312, 22);
-            this.lookUpEdit1.StyleController = this.styleController1;
-            this.lookUpEdit1.TabIndex = 36;
-            this.lookUpEdit1.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.lookUpEdit1_ButtonClick);
+            this.WaybillDetOutBS.DataSource = typeof(SP_Sklad.SkladData.GetWayBillDetOut_Result);
             // 
             // frmWBWriteOff
             // 
@@ -1160,7 +1166,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
             this.panelControl4.ResumeLayout(false);
             this.panelControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CommissionBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
@@ -1173,10 +1183,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1273,5 +1280,6 @@
         private DevExpress.XtraEditors.LookUpEdit PersonComboBox;
         private DevExpress.XtraEditors.LookUpEdit lookUpEdit2;
         private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
+        private System.Windows.Forms.BindingSource WaybillDetOutBS;
     }
 }

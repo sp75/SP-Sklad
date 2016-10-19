@@ -87,6 +87,7 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
             this.WaybillDetOutGridControl = new DevExpress.XtraGrid.GridControl();
+            this.WaybillDetOutBS = new System.Windows.Forms.BindingSource(this.components);
             this.WaybillDetOutGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -99,7 +100,6 @@
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
-            this.WaybillDetOutBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
@@ -126,11 +126,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
             this.panelControl5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutBS)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -734,6 +734,10 @@
             this.WaybillDetOutGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WaybillDetOutGridView});
             // 
+            // WaybillDetOutBS
+            // 
+            this.WaybillDetOutBS.DataSource = typeof(SP_Sklad.SkladData.GetWayBillDetOut_Result);
+            // 
             // WaybillDetOutGridView
             // 
             this.WaybillDetOutGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
@@ -872,10 +876,6 @@
             this.barDockControl1.Location = new System.Drawing.Point(2, 2);
             this.barDockControl1.Size = new System.Drawing.Size(968, 0);
             // 
-            // WaybillDetOutBS
-            // 
-            this.WaybillDetOutBS.DataSource = typeof(SP_Sklad.SkladData.GetWayBillDetOut_Result);
-            // 
             // frmWayBillMove
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -925,11 +925,11 @@
             this.panelControl5.ResumeLayout(false);
             this.panelControl5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

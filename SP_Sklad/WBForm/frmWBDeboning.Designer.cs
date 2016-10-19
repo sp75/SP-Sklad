@@ -106,6 +106,7 @@
             this.repositoryItemWhEdit = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.WaybillDetOutBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
@@ -143,6 +144,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DeboningDetGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemWhEdit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutBS)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -806,6 +808,7 @@
             // 
             // WaybillDetOutGridControl
             // 
+            this.WaybillDetOutGridControl.DataSource = this.WaybillDetOutBS;
             this.WaybillDetOutGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WaybillDetOutGridControl.Location = new System.Drawing.Point(0, 0);
             this.WaybillDetOutGridControl.MainView = this.WaybillDetOutGridView;
@@ -834,7 +837,6 @@
             this.WaybillDetOutGridView.Name = "WaybillDetOutGridView";
             this.WaybillDetOutGridView.OptionsView.ShowGroupPanel = false;
             this.WaybillDetOutGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WaybillDetOutGridView_PopupMenuShowing);
-            this.WaybillDetOutGridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.WaybillDetOutGridView_FocusedRowChanged);
             this.WaybillDetOutGridView.DoubleClick += new System.EventHandler(this.WaybillDetOutGridView_DoubleClick);
             // 
             // gridColumn2
@@ -1050,6 +1052,10 @@
             this.gridColumn14.VisibleIndex = 4;
             this.gridColumn14.Width = 112;
             // 
+            // WaybillDetOutBS
+            // 
+            this.WaybillDetOutBS.DataSource = typeof(SP_Sklad.SkladData.GetWayBillDetOut_Result);
+            // 
             // frmWBDeboning
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1109,6 +1115,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DeboningDetGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemWhEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1192,5 +1199,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemWhEdit;
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
+        private System.Windows.Forms.BindingSource WaybillDetOutBS;
     }
 }

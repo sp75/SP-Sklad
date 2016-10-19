@@ -86,6 +86,7 @@
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.WaybillDetInBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
@@ -111,6 +112,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInBS)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -564,6 +566,7 @@
             // 
             // WaybillDetInGridControl
             // 
+            this.WaybillDetInGridControl.DataSource = this.WaybillDetInBS;
             this.WaybillDetInGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WaybillDetInGridControl.Location = new System.Drawing.Point(2, 2);
             this.WaybillDetInGridControl.MainView = this.WaybillDetInGridView;
@@ -754,6 +757,10 @@
             this.simpleButton1.TabIndex = 0;
             this.simpleButton1.Text = "Відмінити";
             // 
+            // WaybillDetInBS
+            // 
+            this.WaybillDetInBS.DataSource = typeof(SP_Sklad.SkladData.GetWaybillDetIn_Result);
+            // 
             // frmWBWriteOn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -802,6 +809,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -865,5 +873,6 @@
         private DevExpress.XtraEditors.LookUpEdit WHComboBox;
         public DevExpress.XtraEditors.CheckEdit TurnDocCheckBox;
         public DevExpress.XtraEditors.TextEdit NumEdit;
+        private System.Windows.Forms.BindingSource WaybillDetInBS;
     }
 }
