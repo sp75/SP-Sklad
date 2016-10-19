@@ -210,7 +210,7 @@ namespace SP_Sklad.MainTabs
                                    break;*/
             }
 
-            GetWayBillList(cur_wtype);
+            RefrechItemBtn.PerformClick();
         }
 
         private void EditItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -388,9 +388,6 @@ namespace SP_Sklad.MainTabs
                           break;*/
             }
             //    GET_RelDocList->CloseOpen(true);
-
-
-
         }
 
         private void ExecuteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -646,7 +643,7 @@ namespace SP_Sklad.MainTabs
                 return;
             }
 
-            int? doc_type = null;
+            int? doc_type;
             if (new[] { 26, 57, 108 }.Any(a => a == focused_tree_node.Id))
             {
                 doc_type = -1;
@@ -673,7 +670,7 @@ namespace SP_Sklad.MainTabs
 
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                RefrechItemBtn.Refresh();
+                RefrechItemBtn.PerformClick();
             }
         }
 
