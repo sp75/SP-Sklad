@@ -499,8 +499,7 @@
             this.WbGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.WbGridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
             this.WbGridView.OptionsBehavior.ReadOnly = true;
-            this.WbGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.WbGridView.OptionsView.EnableAppearanceOddRow = true;
+            this.WbGridView.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.WbGridView.OptionsView.ShowGroupPanel = false;
             this.WbGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WbGridView_PopupMenuShowing);
             this.WbGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.WbGridView_FocusedRowObjectChanged);

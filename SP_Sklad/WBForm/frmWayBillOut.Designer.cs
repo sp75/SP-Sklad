@@ -58,6 +58,7 @@
             this.DelRsvBarBtn = new DevExpress.XtraBars.BarButtonItem();
             this.DelAllRsvBarBtn = new DevExpress.XtraBars.BarButtonItem();
             this.MarkBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -174,9 +175,10 @@
             this.DelAllRsvBarBtn,
             this.MarkBtn,
             this.ContractSaleBtn,
-            this.ProcurationBtn});
+            this.ProcurationBtn,
+            this.barButtonItem2});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 19;
+            this.barManager1.MaxItemId = 20;
             // 
             // bar2
             // 
@@ -346,9 +348,9 @@
             this.standaloneBarDockControl1.AutoSize = true;
             this.standaloneBarDockControl1.CausesValidation = false;
             this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 242);
+            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 240);
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(968, 29);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(968, 31);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // barDockControlTop
@@ -356,7 +358,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(968, 26);
+            this.barDockControlTop.Size = new System.Drawing.Size(968, 24);
             // 
             // barDockControlBottom
             // 
@@ -369,15 +371,15 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 586);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 588);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(968, 26);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 586);
+            this.barDockControlRight.Location = new System.Drawing.Point(968, 24);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 588);
             // 
             // WBImgList
             // 
@@ -443,6 +445,13 @@
             this.MarkBtn.Name = "MarkBtn";
             this.MarkBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MarkBtn_ItemClick);
             // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Видалити не помічені";
+            this.barButtonItem2.Id = 19;
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
+            // 
             // styleController1
             // 
             this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
@@ -454,7 +463,7 @@
             this.panelControl3.Controls.Add(this.panelControl1);
             this.panelControl3.Controls.Add(this.panel1);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl3.Location = new System.Drawing.Point(0, 26);
+            this.panelControl3.Location = new System.Drawing.Point(0, 24);
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Padding = new System.Windows.Forms.Padding(5);
             this.panelControl3.Size = new System.Drawing.Size(968, 216);
@@ -752,8 +761,8 @@
             // 
             // WaybillDetOutGridView
             // 
-            this.WaybillDetOutGridView.Appearance.FocusedRow.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.WaybillDetOutGridView.Appearance.FocusedRow.ForeColor = System.Drawing.Color.White;
+            this.WaybillDetOutGridView.Appearance.FocusedRow.BackColor = System.Drawing.Color.LemonChiffon;
+            this.WaybillDetOutGridView.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Black;
             this.WaybillDetOutGridView.Appearance.FocusedRow.Options.UseBackColor = true;
             this.WaybillDetOutGridView.Appearance.FocusedRow.Options.UseForeColor = true;
             this.WaybillDetOutGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
@@ -803,7 +812,7 @@
             this.repositoryItemImageComboBox3.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox3.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 16)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Позначене", 1, 16)});
             this.repositoryItemImageComboBox3.Name = "repositoryItemImageComboBox3";
             this.repositoryItemImageComboBox3.SmallImages = this.WBImgList;
             // 
@@ -833,8 +842,8 @@
             this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 8),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 10)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Товар", 0, 8),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Послуга", 1, 10)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.WBImgList;
             // 
@@ -874,7 +883,7 @@
             this.repositoryItemImageComboBox2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox2.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 12)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Зарезервоване", 1, 12)});
             this.repositoryItemImageComboBox2.Name = "repositoryItemImageComboBox2";
             this.repositoryItemImageComboBox2.SmallImages = this.WBImgList;
             // 
@@ -1044,7 +1053,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.RsvAllBarBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.DelAllRsvBarBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.MarkBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.MatInfoBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
+            new DevExpress.XtraBars.LinkPersistInfo(this.MatInfoBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.RsvInfoBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.EditMaterialBtn, true)});
             this.WbDetPopupMenu.Manager = this.barManager1;
@@ -1191,5 +1201,6 @@
         private System.Windows.Forms.BindingSource WaybillListBS;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
     }
 }
