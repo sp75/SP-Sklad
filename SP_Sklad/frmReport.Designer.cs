@@ -35,6 +35,9 @@
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.mainPanel = new DevExpress.XtraEditors.PanelControl();
+            this.StatusPanel = new System.Windows.Forms.Panel();
+            this.wbStatusList = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textEdit1 = new DevExpress.XtraEditors.MemoEdit();
@@ -100,6 +103,8 @@
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).BeginInit();
             this.mainPanel.SuspendLayout();
+            this.StatusPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.wbStatusList.Properties)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
@@ -159,7 +164,7 @@
             this.panelControl2.Controls.Add(this.OkButton);
             this.panelControl2.Controls.Add(this.simpleButton1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl2.Location = new System.Drawing.Point(0, 616);
+            this.panelControl2.Location = new System.Drawing.Point(0, 681);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(455, 51);
             this.panelControl2.TabIndex = 29;
@@ -186,8 +191,9 @@
             // 
             // mainPanel
             // 
-            this.mainPanel.Controls.Add(this.panel1);
             this.mainPanel.Controls.Add(this.DocTypeGroupBox2);
+            this.mainPanel.Controls.Add(this.StatusPanel);
+            this.mainPanel.Controls.Add(this.panel1);
             this.mainPanel.Controls.Add(this.DocTypeGroupBox);
             this.mainPanel.Controls.Add(this.ChargeGroupBox);
             this.mainPanel.Controls.Add(this.MatGroupBox);
@@ -200,15 +206,53 @@
             this.mainPanel.Location = new System.Drawing.Point(0, 0);
             this.mainPanel.LookAndFeel.SkinName = "VS2010";
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(455, 616);
+            this.mainPanel.Size = new System.Drawing.Size(455, 681);
             this.mainPanel.TabIndex = 31;
+            // 
+            // StatusPanel
+            // 
+            this.StatusPanel.Controls.Add(this.wbStatusList);
+            this.StatusPanel.Controls.Add(this.labelControl16);
+            this.StatusPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.StatusPanel.Location = new System.Drawing.Point(2, 409);
+            this.StatusPanel.Name = "StatusPanel";
+            this.StatusPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.StatusPanel.Size = new System.Drawing.Size(451, 47);
+            this.StatusPanel.TabIndex = 42;
+            this.StatusPanel.Visible = false;
+            // 
+            // wbStatusList
+            // 
+            this.wbStatusList.Location = new System.Drawing.Point(87, 12);
+            this.wbStatusList.Name = "wbStatusList";
+            this.wbStatusList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.wbStatusList.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name")});
+            this.wbStatusList.Properties.DisplayMember = "Name";
+            this.wbStatusList.Properties.PopupSizeable = false;
+            this.wbStatusList.Properties.ShowFooter = false;
+            this.wbStatusList.Properties.ShowHeader = false;
+            this.wbStatusList.Properties.ValueMember = "Id";
+            this.wbStatusList.Size = new System.Drawing.Size(322, 22);
+            this.wbStatusList.StyleController = this.styleController1;
+            this.wbStatusList.TabIndex = 32;
+            // 
+            // labelControl16
+            // 
+            this.labelControl16.Location = new System.Drawing.Point(10, 15);
+            this.labelControl16.Name = "labelControl16";
+            this.labelControl16.Size = new System.Drawing.Size(39, 16);
+            this.labelControl16.StyleController = this.styleController1;
+            this.labelControl16.TabIndex = 31;
+            this.labelControl16.Text = "Статус";
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.textEdit1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(2, 531);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(2, 596);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(451, 83);
             this.panel1.TabIndex = 41;
@@ -240,7 +284,7 @@
             this.DocTypeGroupBox2.Controls.Add(this.OutDocGroupBox);
             this.DocTypeGroupBox2.Controls.Add(this.InDocGroupBox);
             this.DocTypeGroupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DocTypeGroupBox2.Location = new System.Drawing.Point(2, 409);
+            this.DocTypeGroupBox2.Location = new System.Drawing.Point(2, 456);
             this.DocTypeGroupBox2.Name = "DocTypeGroupBox2";
             this.DocTypeGroupBox2.Size = new System.Drawing.Size(451, 122);
             this.DocTypeGroupBox2.TabIndex = 38;
@@ -254,9 +298,9 @@
             this.OutDocGroupBox.Controls.Add(this.checkEdit5);
             this.OutDocGroupBox.Controls.Add(this.checkEdit4);
             this.OutDocGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OutDocGroupBox.Location = new System.Drawing.Point(206, 20);
+            this.OutDocGroupBox.Location = new System.Drawing.Point(206, 21);
             this.OutDocGroupBox.Name = "OutDocGroupBox";
-            this.OutDocGroupBox.Size = new System.Drawing.Size(243, 100);
+            this.OutDocGroupBox.Size = new System.Drawing.Size(243, 99);
             this.OutDocGroupBox.TabIndex = 1;
             // 
             // checkEdit8
@@ -310,9 +354,9 @@
             this.InDocGroupBox.Controls.Add(this.checkEdit1);
             this.InDocGroupBox.Controls.Add(this.checkEdit2);
             this.InDocGroupBox.Dock = System.Windows.Forms.DockStyle.Left;
-            this.InDocGroupBox.Location = new System.Drawing.Point(2, 20);
+            this.InDocGroupBox.Location = new System.Drawing.Point(2, 21);
             this.InDocGroupBox.Name = "InDocGroupBox";
-            this.InDocGroupBox.Size = new System.Drawing.Size(204, 100);
+            this.InDocGroupBox.Size = new System.Drawing.Size(204, 99);
             this.InDocGroupBox.TabIndex = 0;
             // 
             // checkEdit3
@@ -930,7 +974,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(455, 667);
+            this.ClientSize = new System.Drawing.Size(455, 732);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.panelControl2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -945,6 +989,9 @@
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).EndInit();
             this.mainPanel.ResumeLayout(false);
+            this.StatusPanel.ResumeLayout(false);
+            this.StatusPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.wbStatusList.Properties)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -1076,5 +1123,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         public DevExpress.XtraEditors.LookUpEdit GrpComboBox;
+        public System.Windows.Forms.Panel StatusPanel;
+        private DevExpress.XtraEditors.LabelControl labelControl16;
+        public DevExpress.XtraEditors.LookUpEdit wbStatusList;
     }
 }

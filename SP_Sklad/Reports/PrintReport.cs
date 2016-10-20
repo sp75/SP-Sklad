@@ -24,6 +24,7 @@ namespace SP_Sklad.Reports
         public String DocStr { get; set; }
         public object DocType { get; set; }
         public dynamic ChType { get; set; }
+        public object Status { get; set; }
 
         private List<object> XLRPARAMS
         {
@@ -91,7 +92,8 @@ namespace SP_Sklad.Reports
             {
                 int grp = Convert.ToInt32(MatGroup.GrpId);
                 string wh = Convert.ToString(Warehouse.WId);
-                var mat = db.REP_2(StartDate, EndDate, grp, (int)Kagent.KaId, wh, DocStr).ToList();
+                int status = Convert.ToInt32(Status);
+                var mat = db.REP_2(StartDate, EndDate, grp, (int)Kagent.KaId, wh, DocStr, status).ToList();
 
                 if (!mat.Any())
                 {

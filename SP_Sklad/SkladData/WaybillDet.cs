@@ -52,6 +52,7 @@ namespace SP_Sklad.SkladData
         public Nullable<int> MsrUnitId { get; set; }
         public Nullable<int> DiscountKind { get; set; }
         public Nullable<decimal> AvgInPrice { get; set; }
+        public string Notes { get; set; }
     
         public virtual Currency Currency { get; set; }
         public virtual ICollection<ExtRel> ExtRel { get; set; }

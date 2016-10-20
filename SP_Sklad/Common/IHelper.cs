@@ -563,10 +563,25 @@ namespace SP_Sklad.Common
         static public bool FindMatInWH(int? mat_id)
         {
             mainForm.main_form.xtraTabControl1.SelectedTabPageIndex = 2;
+
             var first_node = mainForm.main_form.whUserControl.WHTreeList.GetNodeByVisibleIndex(0);
             mainForm.main_form.whUserControl.WHTreeList.SetFocusedNode(first_node);
+
             var rowHandle = mainForm.main_form.whUserControl.WhMatGridView.LocateByValue("MatId", mat_id);
             mainForm.main_form.whUserControl.WhMatGridView.FocusedRowHandle = rowHandle;
+
+            return rowHandle != GridControl.InvalidRowHandle;
+        }
+
+        static public bool FindMatInDir(int? mat_id)
+        {
+            mainForm.main_form.xtraTabControl1.SelectedTabPageIndex = 5;
+
+            var first_node = mainForm.main_form.DirUserControl.DirTreeList.FindNodeByFieldValue("Id", 6);
+            mainForm.main_form.DirUserControl.DirTreeList.SetFocusedNode(first_node);
+
+            var rowHandle = mainForm.main_form.DirUserControl.MatGridView.LocateByValue("MatId", mat_id);
+            mainForm.main_form.DirUserControl.MatGridView.FocusedRowHandle = rowHandle;
 
             return rowHandle != GridControl.InvalidRowHandle;
         }

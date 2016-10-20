@@ -54,6 +54,7 @@ namespace SP_Sklad.WBForm
         {
             KagentComboBox.Properties.DataSource = DBHelper.Kagents;
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
+            repositoryItemComboBox1.Items.AddRange(_db.WaybillDet.Where(w=> w.Notes != null).Select(s => s.Notes).Distinct().ToList());
 
             if (_wbill_id == null && doc_id == null)
             {
@@ -448,18 +449,25 @@ namespace SP_Sklad.WBForm
         private void WaybillDetOutGridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             var wbd = _db.WaybillDet.Find(wbd_row.PosId);
-            if (wbd_row.Rsv == 0)
+            if (e.Column.FieldName == "Amount")
             {
-                wbd.Amount = Convert.ToDecimal(e.Value);
-                wbd.Checked = 1;
-                _db.SaveChanges();
+                if (wbd_row.Rsv == 0)
+                {
+                    wbd.Amount = Convert.ToDecimal(e.Value);
+                    wbd.Checked = 1;
+                }
+                else
+                {
+                    wbd_row.Amount = wbd.Amount;
+                }
+            }
+            else if (e.Column.FieldName == "Notes")
+            {
+                wbd.Notes = Convert.ToString(e.Value);
+            }
 
-                RefreshDet();
-            }
-            else
-            {
-                wbd_row.Amount = wbd.Amount;
-            }
+            _db.SaveChanges();
+            RefreshDet();
         }
 
         private void simpleButton3_Click(object sender, EventArgs e)

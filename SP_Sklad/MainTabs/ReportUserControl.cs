@@ -119,6 +119,7 @@ namespace SP_Sklad.MainTabs
                     frm.MatGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
+                    frm.StatusPanel.Visible = true;
                     break;
 
                 case 3:

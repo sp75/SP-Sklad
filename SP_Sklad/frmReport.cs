@@ -118,6 +118,16 @@ namespace SP_Sklad
                 ChTypeEdit.Properties.DataSource = new List<object>() { new { CTypeId = 0, Name = "Усі" } }.Concat(new BaseEntities().ChargeType.Where(w => w.Deleted == 0).Select(s => new { s.CTypeId, s.Name }));
                 ChTypeEdit.EditValue = 0;
             }
+
+            if (!wbStatusList.Visible)
+            {
+                Height -= wbStatusList.Height;
+            }
+            else
+            {
+                wbStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
+                wbStatusList.EditValue = 1;
+            }
         }
 
         private void frmReport_Shown(object sender, EventArgs e)
@@ -155,7 +165,8 @@ namespace SP_Sklad
                 Material = MatComboBox.GetSelectedDataRow(),
                 DocStr = str,
                 DocType = DocTypeEdit.EditValue,
-                ChType = ChTypeEdit.GetSelectedDataRow()
+                ChType = ChTypeEdit.GetSelectedDataRow(),
+                Status = wbStatusList.EditValue
             };
 
             pr.CreateReport(_rep_id);

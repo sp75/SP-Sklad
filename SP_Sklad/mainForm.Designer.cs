@@ -70,7 +70,7 @@
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.serviceUserControl1 = new SP_Sklad.MainTabs.ServiceUserControl();
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
-            this.directoriesUserControl1 = new SP_Sklad.MainTabs.DirectoriesUserControl();
+            this.DirUserControl = new SP_Sklad.MainTabs.DirectoriesUserControl();
             this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
             this.reportUserControl1 = new SP_Sklad.MainTabs.ReportUserControl();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
@@ -536,24 +536,24 @@
             // 
             // xtraTabPage6
             // 
-            this.xtraTabPage6.Controls.Add(this.directoriesUserControl1);
+            this.xtraTabPage6.Controls.Add(this.DirUserControl);
             this.xtraTabPage6.Image = global::SP_Sklad.Properties.Resources._1324534381_findjob;
             this.xtraTabPage6.Name = "xtraTabPage6";
             this.xtraTabPage6.Size = new System.Drawing.Size(1182, 574);
             this.xtraTabPage6.TabPageWidth = 100;
             this.xtraTabPage6.Text = "Довідники";
             // 
-            // directoriesUserControl1
+            // DirUserControl
             // 
-            this.directoriesUserControl1.custom_mat_list = null;
-            this.directoriesUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.directoriesUserControl1.isDirectList = false;
-            this.directoriesUserControl1.isMatList = false;
-            this.directoriesUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.directoriesUserControl1.Name = "directoriesUserControl1";
-            this.directoriesUserControl1.Size = new System.Drawing.Size(1182, 574);
-            this.directoriesUserControl1.TabIndex = 0;
-            this.directoriesUserControl1.wb = null;
+            this.DirUserControl.custom_mat_list = null;
+            this.DirUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DirUserControl.isDirectList = false;
+            this.DirUserControl.isMatList = false;
+            this.DirUserControl.Location = new System.Drawing.Point(0, 0);
+            this.DirUserControl.Name = "DirUserControl";
+            this.DirUserControl.Size = new System.Drawing.Size(1182, 574);
+            this.DirUserControl.TabIndex = 0;
+            this.DirUserControl.wb = null;
             // 
             // xtraTabPage5
             // 
@@ -750,7 +750,6 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage5;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage6;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage7;
-        private MainTabs.DirectoriesUserControl directoriesUserControl1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private MainTabs.ReportUserControl reportUserControl1;
         private DevExpress.Utils.SharedImageCollection sharedImageCollection1;
@@ -775,6 +774,7 @@
         private DevExpress.XtraBars.SkinBarSubItem skinBarSubItem1;
         private DevExpress.XtraBars.BarToolbarsListItem barToolbarsListItem1;
         private DevExpress.XtraBars.BarSubItem barSubItem7;
+        public MainTabs.DirectoriesUserControl DirUserControl;
     }
 }
 

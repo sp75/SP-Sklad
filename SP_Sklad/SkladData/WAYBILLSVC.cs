@@ -28,6 +28,7 @@ namespace SP_Sklad.SkladData
         public Nullable<int> PersonId { get; set; }
         public Nullable<int> SvcToPrice { get; set; }
         public Nullable<decimal> Total { get; set; }
+        public string Notes { get; set; }
     
         public virtual Currency Currency { get; set; }
         public virtual Services Services { get; set; }

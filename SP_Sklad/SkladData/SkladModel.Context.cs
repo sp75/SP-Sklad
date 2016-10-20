@@ -1306,16 +1306,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RecalcActives_Result>("RecalcActives", on_dateParameter);
         }
     
-        [EdmFunction("BaseEntities", "GetWayBillDetOut")]
-        public virtual IQueryable<GetWayBillDetOut_Result> GetWayBillDetOut(Nullable<int> wbill_id)
-        {
-            var wbill_idParameter = wbill_id.HasValue ?
-                new ObjectParameter("wbill_id", wbill_id) :
-                new ObjectParameter("wbill_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillDetOut_Result>("[BaseEntities].[GetWayBillDetOut](@wbill_id)", wbill_idParameter);
-        }
-    
         public virtual ObjectResult<REP_3_14_Result> REP_3_14(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> grp_id, Nullable<int> ka_id, string wh, string doc_types)
         {
             var from_dateParameter = from_date.HasValue ?
@@ -1573,35 +1563,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("wh", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_29_Result>("[BaseEntities].[REP_29](@from_date, @to_date, @ka_id, @grp_id, @wh)", from_dateParameter, to_dateParameter, ka_idParameter, grp_idParameter, whParameter);
-        }
-    
-        public virtual ObjectResult<REP_2_Result> REP_2(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> grp_id, Nullable<int> ka_id, string wh, string doc_types)
-        {
-            var from_dateParameter = from_date.HasValue ?
-                new ObjectParameter("from_date", from_date) :
-                new ObjectParameter("from_date", typeof(System.DateTime));
-    
-            var to_dateParameter = to_date.HasValue ?
-                new ObjectParameter("to_date", to_date) :
-                new ObjectParameter("to_date", typeof(System.DateTime));
-    
-            var grp_idParameter = grp_id.HasValue ?
-                new ObjectParameter("grp_id", grp_id) :
-                new ObjectParameter("grp_id", typeof(int));
-    
-            var ka_idParameter = ka_id.HasValue ?
-                new ObjectParameter("ka_id", ka_id) :
-                new ObjectParameter("ka_id", typeof(int));
-    
-            var whParameter = wh != null ?
-                new ObjectParameter("wh", wh) :
-                new ObjectParameter("wh", typeof(string));
-    
-            var doc_typesParameter = doc_types != null ?
-                new ObjectParameter("doc_types", doc_types) :
-                new ObjectParameter("doc_types", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<REP_2_Result>("REP_2", from_dateParameter, to_dateParameter, grp_idParameter, ka_idParameter, whParameter, doc_typesParameter);
         }
     
         public virtual ObjectResult<GetPriceListDet_Result> GetPriceListDet(Nullable<int> pl_id)
@@ -1894,6 +1855,49 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("wh", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetOrdered_Result>("[BaseEntities].[GetOrdered](@mat_id, @wid, @ka_id, @on_date, @get_empty, @wh)", mat_idParameter, widParameter, ka_idParameter, on_dateParameter, get_emptyParameter, whParameter);
+        }
+    
+        public virtual ObjectResult<REP_2_Result> REP_2(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> grp_id, Nullable<int> ka_id, string wh, string doc_types, Nullable<int> wb_status)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var grp_idParameter = grp_id.HasValue ?
+                new ObjectParameter("grp_id", grp_id) :
+                new ObjectParameter("grp_id", typeof(int));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var whParameter = wh != null ?
+                new ObjectParameter("wh", wh) :
+                new ObjectParameter("wh", typeof(string));
+    
+            var doc_typesParameter = doc_types != null ?
+                new ObjectParameter("doc_types", doc_types) :
+                new ObjectParameter("doc_types", typeof(string));
+    
+            var wb_statusParameter = wb_status.HasValue ?
+                new ObjectParameter("wb_status", wb_status) :
+                new ObjectParameter("wb_status", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<REP_2_Result>("REP_2", from_dateParameter, to_dateParameter, grp_idParameter, ka_idParameter, whParameter, doc_typesParameter, wb_statusParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetWayBillDetOut")]
+        public virtual IQueryable<GetWayBillDetOut_Result> GetWayBillDetOut(Nullable<int> wbill_id)
+        {
+            var wbill_idParameter = wbill_id.HasValue ?
+                new ObjectParameter("wbill_id", wbill_id) :
+                new ObjectParameter("wbill_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillDetOut_Result>("[BaseEntities].[GetWayBillDetOut](@wbill_id)", wbill_idParameter);
         }
     }
 }

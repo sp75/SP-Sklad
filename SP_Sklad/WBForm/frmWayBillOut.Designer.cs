@@ -102,6 +102,8 @@
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
@@ -135,6 +137,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
@@ -343,9 +346,9 @@
             this.standaloneBarDockControl1.AutoSize = true;
             this.standaloneBarDockControl1.CausesValidation = false;
             this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 240);
+            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 242);
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(968, 31);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(968, 29);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // barDockControlTop
@@ -353,7 +356,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(968, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(968, 26);
             // 
             // barDockControlBottom
             // 
@@ -366,15 +369,15 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 588);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 586);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(968, 24);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 588);
+            this.barDockControlRight.Location = new System.Drawing.Point(968, 26);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 586);
             // 
             // WBImgList
             // 
@@ -451,7 +454,7 @@
             this.panelControl3.Controls.Add(this.panelControl1);
             this.panelControl3.Controls.Add(this.panel1);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl3.Location = new System.Drawing.Point(0, 24);
+            this.panelControl3.Location = new System.Drawing.Point(0, 26);
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Padding = new System.Windows.Forms.Padding(5);
             this.panelControl3.Size = new System.Drawing.Size(968, 216);
@@ -736,7 +739,8 @@
             this.repositoryItemImageComboBox1,
             this.repositoryItemImageComboBox2,
             this.repositoryItemImageComboBox3,
-            this.repositoryItemCalcEdit1});
+            this.repositoryItemCalcEdit1,
+            this.repositoryItemComboBox1});
             this.WaybillDetOutGridControl.Size = new System.Drawing.Size(964, 285);
             this.WaybillDetOutGridControl.TabIndex = 1;
             this.WaybillDetOutGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -748,6 +752,10 @@
             // 
             // WaybillDetOutGridView
             // 
+            this.WaybillDetOutGridView.Appearance.FocusedRow.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.WaybillDetOutGridView.Appearance.FocusedRow.ForeColor = System.Drawing.Color.White;
+            this.WaybillDetOutGridView.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.WaybillDetOutGridView.Appearance.FocusedRow.Options.UseForeColor = true;
             this.WaybillDetOutGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn12,
             this.gridColumn1,
@@ -760,10 +768,12 @@
             this.gridColumn10,
             this.gridColumn7,
             this.gridColumn8,
-            this.gridColumn9});
+            this.gridColumn9,
+            this.gridColumn13});
             this.WaybillDetOutGridView.GridControl = this.WaybillDetOutGridControl;
             this.WaybillDetOutGridView.Images = this.WBImgList;
             this.WaybillDetOutGridView.Name = "WaybillDetOutGridView";
+            this.WaybillDetOutGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.WaybillDetOutGridView.OptionsView.ShowFooter = true;
             this.WaybillDetOutGridView.OptionsView.ShowGroupPanel = false;
             this.WaybillDetOutGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WaybillDetInGridView_PopupMenuShowing);
@@ -837,7 +847,7 @@
             this.gridColumn2.OptionsColumn.ReadOnly = true;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 3;
-            this.gridColumn2.Width = 36;
+            this.gridColumn2.Width = 33;
             // 
             // gridColumn11
             // 
@@ -877,7 +887,7 @@
             this.gridColumn3.OptionsColumn.ReadOnly = true;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 4;
-            this.gridColumn3.Width = 238;
+            this.gridColumn3.Width = 218;
             // 
             // gridColumn4
             // 
@@ -887,7 +897,7 @@
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 5;
-            this.gridColumn4.Width = 90;
+            this.gridColumn4.Width = 82;
             // 
             // repositoryItemCalcEdit1
             // 
@@ -907,27 +917,31 @@
             this.gridColumn5.OptionsColumn.ReadOnly = true;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 6;
-            this.gridColumn5.Width = 53;
+            this.gridColumn5.Width = 48;
             // 
             // gridColumn6
             // 
             this.gridColumn6.Caption = "Ціна без ПДВ";
+            this.gridColumn6.DisplayFormat.FormatString = "0.00";
+            this.gridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn6.FieldName = "Price";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.OptionsColumn.ReadOnly = true;
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 8;
-            this.gridColumn6.Width = 80;
+            this.gridColumn6.VisibleIndex = 9;
+            this.gridColumn6.Width = 66;
             // 
             // gridColumn10
             // 
             this.gridColumn10.Caption = "Знижка,%";
+            this.gridColumn10.DisplayFormat.FormatString = "0.00";
+            this.gridColumn10.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn10.FieldName = "Discount";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 9;
-            this.gridColumn10.Width = 63;
+            this.gridColumn10.VisibleIndex = 10;
+            this.gridColumn10.Width = 52;
             // 
             // gridColumn7
             // 
@@ -939,8 +953,8 @@
             this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.OptionsColumn.ReadOnly = true;
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 10;
-            this.gridColumn7.Width = 80;
+            this.gridColumn7.VisibleIndex = 11;
+            this.gridColumn7.Width = 66;
             // 
             // gridColumn8
             // 
@@ -952,8 +966,8 @@
             this.gridColumn8.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", "{0:0.##}")});
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 11;
-            this.gridColumn8.Width = 89;
+            this.gridColumn8.VisibleIndex = 12;
+            this.gridColumn8.Width = 87;
             // 
             // gridColumn9
             // 
@@ -963,8 +977,25 @@
             this.gridColumn9.OptionsColumn.AllowEdit = false;
             this.gridColumn9.OptionsColumn.ReadOnly = true;
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 7;
-            this.gridColumn9.Width = 143;
+            this.gridColumn9.VisibleIndex = 8;
+            this.gridColumn9.Width = 120;
+            // 
+            // gridColumn13
+            // 
+            this.gridColumn13.Caption = "Примітка";
+            this.gridColumn13.ColumnEdit = this.repositoryItemComboBox1;
+            this.gridColumn13.FieldName = "Notes";
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.Visible = true;
+            this.gridColumn13.VisibleIndex = 7;
+            this.gridColumn13.Width = 99;
+            // 
+            // repositoryItemComboBox1
+            // 
+            this.repositoryItemComboBox1.AutoHeight = false;
+            this.repositoryItemComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox1.Name = "repositoryItemComboBox1";
             // 
             // barDockControl1
             // 
@@ -1070,6 +1101,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
@@ -1157,5 +1189,7 @@
         private DevExpress.XtraBars.BarButtonItem ContractSaleBtn;
         private DevExpress.XtraBars.BarButtonItem ProcurationBtn;
         private System.Windows.Forms.BindingSource WaybillListBS;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
     }
 }

@@ -19,6 +19,7 @@ using SP_Sklad.FinanseForm;
 using SP_Sklad.Common;
 using SP_Sklad.Reports;
 using DevExpress.XtraBars;
+using SP_Sklad.WBDetForm;
 
 namespace SP_Sklad.MainTabs
 {
@@ -34,6 +35,14 @@ namespace SP_Sklad.MainTabs
             get
             {
                 return WbGridView.GetFocusedRow() as GetWayBillList_Result;
+            }
+        }
+
+        private GetWaybillDetIn_Result wb_det_focused_row
+        {
+            get
+            {
+                return WaybillDetGridView.GetFocusedRow() as GetWaybillDetIn_Result;
             }
         }
 
@@ -775,6 +784,53 @@ namespace SP_Sklad.MainTabs
             EditItemBtn.Enabled = (pl_focused_row != null && tree_row.CanModify == 1);
             CopyItemBtn.Enabled = EditItemBtn.Enabled;
             PrintItemBtn.Enabled = (pl_focused_row != null);
+        }
+
+        private void gridView2_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                WbDetPopupMenu.ShowPopup(p2);
+            }
+        }
+
+        private void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            IHelper.ShowMatInfo(wb_det_focused_row.MatId);
+        }
+
+        private void barButtonItem5_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            IHelper.ShowTurnMaterial(wb_det_focused_row.MatId);
+        }
+
+        private void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            IHelper.ShowMatRSV(wb_det_focused_row.MatId, DB.SkladBase());
+        }
+
+        private void barButtonItem8_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (!IHelper.FindMatInWH(wb_det_focused_row.MatId))
+            {
+                MessageBox.Show(string.Format("На даний час товар <{0}> на складі вдсутній!", wb_det_focused_row.MatName));
+            }
+        }
+
+        private void barButtonItem9_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (!IHelper.FindMatInDir(wb_det_focused_row.MatId))
+            {
+                MessageBox.Show(string.Format("Товар <{0}> в довіднику вдсутній, можливо він перебуває в архіві!", wb_det_focused_row.MatName));
+            }
+        }
+
+        private void barButtonItem10_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var frm = new frmWayBillDetIn(DB.SkladBase(), wb_det_focused_row.PosId, DB.SkladBase().WaybillList.Find(wb_det_focused_row.WbillId));
+            frm.OkButton.Visible = false;
+            frm.ShowDialog();
         }
     }
 }
