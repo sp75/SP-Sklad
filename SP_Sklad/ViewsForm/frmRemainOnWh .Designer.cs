@@ -61,7 +61,7 @@
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(100, 30);
             this.OkButton.TabIndex = 1;
-            this.OkButton.Text = "Застосувати";
+            this.OkButton.Text = "Вибрати";
             // 
             // simpleButton1
             // 

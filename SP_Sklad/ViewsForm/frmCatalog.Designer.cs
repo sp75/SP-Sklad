@@ -54,7 +54,7 @@
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(100, 30);
             this.OkButton.TabIndex = 1;
-            this.OkButton.Text = "Застосувати";
+            this.OkButton.Text = "Вибрати";
             // 
             // simpleButton1
             // 
@@ -87,6 +87,7 @@
             this.Controls.Add(this.BottomPanel);
             this.Name = "frmCatalog";
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Список товарів";
             this.Load += new System.EventHandler(this.frmCatalog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).EndInit();

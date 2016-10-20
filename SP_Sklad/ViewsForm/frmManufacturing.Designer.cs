@@ -64,7 +64,7 @@
             this.BottomPanel.Controls.Add(this.OkButton);
             this.BottomPanel.Controls.Add(this.simpleButton1);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomPanel.Location = new System.Drawing.Point(0, 478);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 498);
             this.BottomPanel.Name = "BottomPanel";
             this.BottomPanel.Size = new System.Drawing.Size(1268, 52);
             this.BottomPanel.TabIndex = 17;
@@ -77,7 +77,7 @@
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(100, 30);
             this.OkButton.TabIndex = 1;
-            this.OkButton.Text = "Застосувати";
+            this.OkButton.Text = "Вибрати";
             // 
             // simpleButton1
             // 
@@ -103,7 +103,7 @@
             this.WBGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1,
             this.CheckedItemImageComboBox});
-            this.WBGridControl.Size = new System.Drawing.Size(1268, 478);
+            this.WBGridControl.Size = new System.Drawing.Size(1268, 498);
             this.WBGridControl.TabIndex = 18;
             this.WBGridControl.UseEmbeddedNavigator = true;
             this.WBGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -299,7 +299,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1268, 530);
+            this.ClientSize = new System.Drawing.Size(1268, 550);
             this.Controls.Add(this.WBGridControl);
             this.Controls.Add(this.BottomPanel);
             this.Name = "frmManufacturing";

@@ -45,7 +45,7 @@
             this.uc.Location = new System.Drawing.Point(0, 0);
             this.uc.Name = "uc";
             this.uc.resut = null;
-            this.uc.Size = new System.Drawing.Size(1386, 593);
+            this.uc.Size = new System.Drawing.Size(1386, 608);
             this.uc.TabIndex = 0;
             this.uc.wb = null;
             // 
@@ -54,7 +54,7 @@
             this.BottomPanel.Controls.Add(this.OkButton);
             this.BottomPanel.Controls.Add(this.simpleButton1);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomPanel.Location = new System.Drawing.Point(0, 593);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 608);
             this.BottomPanel.Name = "BottomPanel";
             this.BottomPanel.Size = new System.Drawing.Size(1386, 52);
             this.BottomPanel.TabIndex = 16;
@@ -67,7 +67,7 @@
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(100, 30);
             this.OkButton.TabIndex = 1;
-            this.OkButton.Text = "Застосувати";
+            this.OkButton.Text = "Вибрати";
             // 
             // simpleButton1
             // 
@@ -83,7 +83,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1386, 645);
+            this.ClientSize = new System.Drawing.Size(1386, 660);
             this.Controls.Add(this.uc);
             this.Controls.Add(this.BottomPanel);
             this.Name = "frmWhCatalog";
