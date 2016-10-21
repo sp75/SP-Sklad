@@ -138,12 +138,12 @@ namespace SP_Sklad.WBForm
 
         bool frmValidating()
         {
-            bool recult = (!String.IsNullOrEmpty(NumEdit.Text) && OnDateDBEdit.EditValue != null && WaybillDetInGridView.DataRowCount > 0);
+            bool recult = (!String.IsNullOrEmpty(NumEdit.Text) && OnDateDBEdit.EditValue != null && WaybillDetInBS.Count > 0);
 
 
-            EditMaterialBtn.Enabled = (WaybillDetInGridView.DataRowCount > 0 && !rdl.Any(a => a.DocType == 7));
-            DelMaterialBtn.Enabled = (WaybillDetInGridView.DataRowCount > 0 && !rdl.Any());
-            MatInfoBtn.Enabled = WaybillDetInGridView.DataRowCount > 0;
+            EditMaterialBtn.Enabled = (WaybillDetInBS.Count > 0 && !rdl.Any(a => a.DocType == 7));
+            DelMaterialBtn.Enabled = (WaybillDetInBS.Count > 0 && !rdl.Any());
+            MatInfoBtn.Enabled = WaybillDetInBS.Count > 0;
             RsvInfoBtn.Enabled = MatInfoBtn.Enabled;
             PrevievBtn.Enabled = MatInfoBtn.Enabled;
 
@@ -279,7 +279,7 @@ order by  ma.ondate desc */
 
         private void UpdateWh()
         {
-            if (WaybillDetInGridView.DataRowCount > 0)
+            if (WaybillDetInBS.Count > 0)
             {
                 if (MessageBox.Show("Оприходувати весь товар на склад <" + WHComboBox.Text + ">?", "Інформація", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                 {

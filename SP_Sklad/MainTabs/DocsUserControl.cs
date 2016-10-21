@@ -832,5 +832,87 @@ namespace SP_Sklad.MainTabs
             frm.OkButton.Visible = false;
             frm.ShowDialog();
         }
+
+        private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (wb_focused_row.WType == 6 && wb_focused_row.Checked == 1)
+            {
+                var _wbill_ids = new List<int?>();
+                using (var db = DB.SkladBase())
+                {
+                    var wb_det = db.WaybillDet.Where(w => w.WbillId == wb_focused_row.WbillId && w.WMatTurn.Any()).ToList();
+                    if (wb_det.Any())
+                    {
+                        foreach (var wid in wb_det.GroupBy(g => g.WId).Select(s => s.Key).ToList())
+                        {
+                            var wb = db.WaybillList.Add(new WaybillList()
+                               {
+                                   WType = -5,
+                                   DefNum = 1,
+                                   OnDate = DBHelper.ServerDateTime(),
+                                   Num = new BaseEntities().GetCounter("wb_write_off").FirstOrDefault(),
+                                   CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
+                                   OnValue = 1,
+                                   PersonId = DBHelper.CurrentUser.KaId,
+                                   WaybillMove = new WaybillMove { SourceWid = wid.Value },
+                                   Nds = 0
+                               });
+
+                            db.SaveChanges();
+                            _wbill_ids.Add(wb.WbillId);
+                            db.Commission.Add(new Commission { WbillId = wb.WbillId, KaId = DBHelper.CurrentUser.KaId });
+
+                            foreach (var det_item in wb_det.Where(w => w.WId == wid))
+                            {
+                                var _wbd = db.WaybillDet.Add(new WaybillDet()
+                                {
+                                    WbillId = wb.WbillId,
+                                    Num = wb.WaybillDet.Count() + 1,
+                                    Amount = det_item.Amount,
+                                    OnValue = det_item.OnValue,
+                                    WId = det_item.WId,
+                                    Nds = wb.Nds,
+                                    CurrId = wb.CurrId,
+                                    OnDate = wb.OnDate,
+                                    MatId = det_item.MatId,
+                                    Price = det_item.Price,
+                                    BasePrice = det_item.Price
+                                });
+                                db.SaveChanges();
+
+                                var pos_in = db.GetPosIn(wb.OnDate, _wbd.MatId, _wbd.WId, 0).Where(w => w.CurRemain >= _wbd.Amount && w.PosId == det_item.PosId).FirstOrDefault();
+                                if (pos_in != null)
+                                {
+                                    db.WMatTurn.Add(new WMatTurn
+                                    {
+                                        PosId = pos_in.PosId,
+                                        WId = _wbd.WId.Value,
+                                        MatId = _wbd.MatId,
+                                        OnDate = _wbd.OnDate.Value,
+                                        TurnType = 2,
+                                        Amount = _wbd.Amount,
+                                        SourceId = _wbd.PosId
+                                    });
+                                }
+                            }
+
+                        }
+
+                    }
+
+                    db.SaveChanges();
+                }
+
+                foreach (var item in _wbill_ids)
+                {
+                    new frmWBWriteOff(item).ShowDialog();
+                }
+            }
+        }
+
+        private void barSubItem1_Popup(object sender, EventArgs e)
+        {
+            barButtonItem11.Enabled = wb_focused_row.WType == 6;
+        }
     }
 }

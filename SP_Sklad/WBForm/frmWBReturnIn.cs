@@ -111,18 +111,18 @@ namespace SP_Sklad.WBForm
 
         bool GetOk()
         {
-            bool recult = (!String.IsNullOrEmpty(NumEdit.Text) && KagentComboBox.EditValue != null && OnDateDBEdit.EditValue != null && WBDetReInGridView.DataRowCount > 0);
+            bool recult = (!String.IsNullOrEmpty(NumEdit.Text) && KagentComboBox.EditValue != null && OnDateDBEdit.EditValue != null && WaybillDetInBS.Count > 0);
 
 
             AddMaterialBtn.Enabled = KagentComboBox.EditValue != DBNull.Value;
 
-            EditMaterialBtn.Enabled = WBDetReInGridView.DataRowCount > 0;
+            EditMaterialBtn.Enabled = WaybillDetInBS.Count > 0;
             DelMaterialBtn.Enabled = EditMaterialBtn.Enabled;
             RsvInfoBtn.Enabled = EditMaterialBtn.Enabled;
             MatInfoBtn.Enabled = EditMaterialBtn.Enabled;
             OrdInfoBtn.Enabled = EditMaterialBtn.Enabled;
 
-            KagentComboBox.Enabled = WBDetReInGridView.DataRowCount == 0;
+            KagentComboBox.Enabled = WaybillDetInBS.Count == 0;
             KAgentBtn.Enabled = KagentComboBox.Enabled;
             KagBalBtn.Enabled = KagentComboBox.EditValue != DBNull.Value;
 

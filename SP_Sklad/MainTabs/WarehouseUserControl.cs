@@ -767,5 +767,10 @@ namespace SP_Sklad.MainTabs
             CopyItemBtn.Enabled = EditItemBtn.Enabled;
             PrintItemBtn.Enabled = (focused_row != null);
         }
+
+        private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
     }
 }

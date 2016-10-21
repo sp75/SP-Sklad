@@ -144,14 +144,14 @@ namespace SP_Sklad.WBForm
 
         bool GetOk()
         {
-            bool recult = (!String.IsNullOrEmpty(NumEdit.Text) && RecipeComboBox.EditValue != null && WhComboBox.EditValue != null && OnDateDBEdit.EditValue != null && WaybillDetOutGridView.DataRowCount > 0);
+            bool recult = (!String.IsNullOrEmpty(NumEdit.Text) && RecipeComboBox.EditValue != null && WhComboBox.EditValue != null && OnDateDBEdit.EditValue != null && WaybillDetOutBS.Count > 0);
 
             if (recult && TurnDocCheckBox.Checked)
             {
                 recult = !wbd_list.Any(w => w.Rsv == 0 && w.PosType == 0);
             }
 
-            RecipeComboBox.Enabled = WaybillDetOutGridView.DataRowCount == 0;
+            RecipeComboBox.Enabled = WaybillDetOutBS.Count == 0;
             ReceptBtn.Enabled = RecipeComboBox.Enabled;
             WhComboBox.Enabled = RecipeComboBox.Enabled;
             WhInBtn.Enabled = RecipeComboBox.Enabled;
@@ -159,7 +159,7 @@ namespace SP_Sklad.WBForm
 
             barSubItem1.Enabled = (WhComboBox.EditValue != null && RecipeComboBox.EditValue != null && AmountMakeEdit.Value > 0);
 
-            EditMaterialBtn.Enabled = WaybillDetOutGridView.DataRowCount > 0;
+            EditMaterialBtn.Enabled = WaybillDetOutBS.Count > 0;
             DelMaterialBtn.Enabled = EditMaterialBtn.Enabled;
             RsvInfoBtn.Enabled = EditMaterialBtn.Enabled;
             MatInfoBtn.Enabled = EditMaterialBtn.Enabled;
@@ -263,6 +263,8 @@ namespace SP_Sklad.WBForm
                 wbd_row.Rsv = (int)r.Value;
                 WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
             }
+
+            GetOk();
         }
 
         private void DelRsvBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -275,6 +277,8 @@ namespace SP_Sklad.WBForm
                 wbd_row.Rsv = 0;
                 WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
             }
+
+            GetOk();
         }
 
         private void RsvAllBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

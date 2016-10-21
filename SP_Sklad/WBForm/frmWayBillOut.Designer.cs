@@ -950,7 +950,7 @@
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 10;
-            this.gridColumn10.Width = 52;
+            this.gridColumn10.Width = 68;
             // 
             // gridColumn7
             // 
@@ -963,7 +963,7 @@
             this.gridColumn7.OptionsColumn.ReadOnly = true;
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 11;
-            this.gridColumn7.Width = 66;
+            this.gridColumn7.Width = 69;
             // 
             // gridColumn8
             // 
@@ -976,7 +976,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", "{0:0.##}")});
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 12;
-            this.gridColumn8.Width = 87;
+            this.gridColumn8.Width = 68;
             // 
             // gridColumn9
             // 

@@ -321,6 +321,8 @@ namespace SP_Sklad.WBForm
                 wbd_row.Rsv = (int)r.Value;
                 WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
             }
+
+            GetOk();
         }
 
         private void WbDetPopupMenu_Popup(object sender, EventArgs e)
@@ -356,6 +358,8 @@ namespace SP_Sklad.WBForm
                 wbd_row.Rsv = 0;
                 WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
             }
+
+            GetOk();
         }
 
         private void DelAllRsvBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

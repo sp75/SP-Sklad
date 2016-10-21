@@ -68,6 +68,7 @@
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.WBGridControl = new DevExpress.XtraGrid.GridControl();
+            this.WBListMakeBS = new System.Windows.Forms.BindingSource(this.components);
             this.WbGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -132,6 +133,7 @@
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl3 = new DevExpress.XtraEditors.SplitContainerControl();
             this.DeboningGridControl = new DevExpress.XtraGrid.GridControl();
+            this.DeboningBS = new System.Windows.Forms.BindingSource(this.components);
             this.DeboningGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -195,8 +197,6 @@
             this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.WBListMakeBS = new System.Windows.Forms.BindingSource(this.components);
-            this.DeboningBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -209,6 +209,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
             this.splitContainerControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WBGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WBListMakeBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheckedItemImageComboBox)).BeginInit();
@@ -239,6 +240,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl3)).BeginInit();
             this.splitContainerControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DeboningGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeboningBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DeboningGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox4)).BeginInit();
@@ -268,8 +270,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WBListMakeBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DeboningBS)).BeginInit();
             this.SuspendLayout();
             // 
             // UserTreeImgList
@@ -783,6 +783,10 @@
             this.WBGridControl.TabIndex = 0;
             this.WBGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WbGridView});
+            // 
+            // WBListMakeBS
+            // 
+            this.WBListMakeBS.DataSource = typeof(SP_Sklad.SkladData.WBListMake_Result);
             // 
             // WbGridView
             // 
@@ -1473,7 +1477,7 @@
             // 
             this.xtraTabPage10.Controls.Add(this.splitContainerControl3);
             this.xtraTabPage10.Name = "xtraTabPage10";
-            this.xtraTabPage10.Size = new System.Drawing.Size(1056, 628);
+            this.xtraTabPage10.Size = new System.Drawing.Size(1056, 659);
             this.xtraTabPage10.Text = "Обвалка";
             // 
             // splitContainerControl3
@@ -1487,7 +1491,7 @@
             this.splitContainerControl3.Panel1.Text = "Panel1";
             this.splitContainerControl3.Panel2.Controls.Add(this.xtraTabControl1);
             this.splitContainerControl3.Panel2.Text = "Panel2";
-            this.splitContainerControl3.Size = new System.Drawing.Size(1056, 628);
+            this.splitContainerControl3.Size = new System.Drawing.Size(1056, 659);
             this.splitContainerControl3.SplitterPosition = 462;
             this.splitContainerControl3.TabIndex = 1;
             this.splitContainerControl3.Text = "splitContainerControl3";
@@ -1506,6 +1510,10 @@
             this.DeboningGridControl.TabIndex = 3;
             this.DeboningGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.DeboningGridView});
+            // 
+            // DeboningBS
+            // 
+            this.DeboningBS.DataSource = typeof(SP_Sklad.SkladData.WBListMake_Result);
             // 
             // DeboningGridView
             // 
@@ -1816,7 +1824,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage3;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1056, 161);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1056, 192);
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage3,
@@ -1829,7 +1837,7 @@
             this.xtraTabPage3.Controls.Add(this.standaloneBarDockControl4);
             this.xtraTabPage3.ImageIndex = 18;
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(1050, 130);
+            this.xtraTabPage3.Size = new System.Drawing.Size(1050, 161);
             this.xtraTabPage3.Text = "Вихід";
             // 
             // DeboningDetGridControl
@@ -1841,7 +1849,7 @@
             this.DeboningDetGridControl.Name = "DeboningDetGridControl";
             this.DeboningDetGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCalcEdit1});
-            this.DeboningDetGridControl.Size = new System.Drawing.Size(1050, 130);
+            this.DeboningDetGridControl.Size = new System.Drawing.Size(1050, 161);
             this.DeboningDetGridControl.TabIndex = 4;
             this.DeboningDetGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.DeboningDetGridView});
@@ -2220,14 +2228,6 @@
             this.BottomPopupMenu.Manager = this.barManager1;
             this.BottomPopupMenu.Name = "BottomPopupMenu";
             // 
-            // WBListMakeBS
-            // 
-            this.WBListMakeBS.DataSource = typeof(SP_Sklad.SkladData.WBListMake_Result);
-            // 
-            // DeboningBS
-            // 
-            this.DeboningBS.DataSource = typeof(SP_Sklad.SkladData.WBListMake_Result);
-            // 
             // ManufacturingUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2254,6 +2254,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
             this.splitContainerControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.WBGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WBListMakeBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheckedItemImageComboBox)).EndInit();
@@ -2286,6 +2287,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl3)).EndInit();
             this.splitContainerControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DeboningGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeboningBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DeboningGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox4)).EndInit();
@@ -2317,8 +2319,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WBListMakeBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DeboningBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

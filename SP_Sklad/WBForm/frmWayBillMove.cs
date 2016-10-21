@@ -133,17 +133,17 @@ namespace SP_Sklad.WBForm
 
         bool GetOk()
         {
-            bool recult = (!String.IsNullOrEmpty(NumEdit.Text) && KagentComboBox.EditValue != null && OnDateDBEdit.EditValue != null && WaybillDetOutGridView.DataRowCount > 0);
+            bool recult = (!String.IsNullOrEmpty(NumEdit.Text) && KagentComboBox.EditValue != null && OnDateDBEdit.EditValue != null && WaybillDetOutBS.Count > 0);
 
             if (recult && TurnDocCheckBox.Checked)
             {
                 recult = !wbd_list.Any(w => w.Rsv == 0 && w.PosType == 0);
             }
 
-            WhOutComboBox.Enabled = WaybillDetOutGridView.DataRowCount == 0;
+            WhOutComboBox.Enabled = WaybillDetOutBS.Count == 0;
             barSubItem1.Enabled = KagentComboBox.EditValue != null;
 
-            EditMaterialBtn.Enabled = WaybillDetOutGridView.DataRowCount > 0;
+            EditMaterialBtn.Enabled = WaybillDetOutBS.Count > 0;
             DelMaterialBtn.Enabled = EditMaterialBtn.Enabled;
             RsvInfoBtn.Enabled = EditMaterialBtn.Enabled;
             MatInfoBtn.Enabled = EditMaterialBtn.Enabled;
@@ -241,6 +241,8 @@ namespace SP_Sklad.WBForm
                 focused_dr.Rsv = (int)r.Value;
                 WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
             }
+
+            GetOk();
         }
 
         private void DelRsvBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -253,6 +255,8 @@ namespace SP_Sklad.WBForm
                 focused_dr.Rsv = 0;
                 WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
             }
+
+            GetOk();
         }
 
         private void RsvAllBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

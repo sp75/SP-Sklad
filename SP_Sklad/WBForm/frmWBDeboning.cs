@@ -152,21 +152,21 @@ namespace SP_Sklad.WBForm
 
         bool GetOk()
         {
-            bool recult = (!String.IsNullOrEmpty(NumEdit.Text) && RecipeComboBox.EditValue != null && (int)WhComboBox.EditValue > 0 && OnDateDBEdit.EditValue != null && WaybillDetOutGridView.DataRowCount > 0);
+            bool recult = (!String.IsNullOrEmpty(NumEdit.Text) && RecipeComboBox.EditValue != null && (int)WhComboBox.EditValue > 0 && OnDateDBEdit.EditValue != null && WaybillDetOutBS.Count > 0);
 
             if (recult && TurnDocCheckBox.Checked)
             {
-                recult = (!wbd_list.Any(w => w.Rsv == 0 && w.PosType == 0) && DeboningDetGridView.DataRowCount > 0);
+                recult = (!wbd_list.Any(w => w.Rsv == 0 && w.PosType == 0) && WaybillDetOutBS.Count > 0);
             }
 
-            RecipeComboBox.Enabled = WaybillDetOutGridView.DataRowCount == 0;
+            RecipeComboBox.Enabled = WaybillDetOutBS.Count == 0;
             ReceptBtn.Enabled = RecipeComboBox.Enabled;
             WhComboBox.Enabled = RecipeComboBox.Enabled;
             WhInBtn.Enabled = RecipeComboBox.Enabled;
 
             AddMaterialBtn.Enabled = (WhComboBox.EditValue != DBNull.Value && RecipeComboBox.EditValue != DBNull.Value);
 
-            EditMaterialBtn.Enabled = WaybillDetOutGridView.DataRowCount > 0;
+            EditMaterialBtn.Enabled = WaybillDetOutBS.Count > 0;
             DelMaterialBtn.Enabled = EditMaterialBtn.Enabled;
             RsvInfoBtn.Enabled = EditMaterialBtn.Enabled;
             MatInfoBtn.Enabled = EditMaterialBtn.Enabled;
@@ -274,6 +274,8 @@ namespace SP_Sklad.WBForm
                 wbd_row.Rsv = (int)r.Value;
                 WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
             }
+
+            GetOk();
         }
 
         private void DelRsvBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -286,6 +288,8 @@ namespace SP_Sklad.WBForm
                 wbd_row.Rsv = 0;
                 WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
             }
+
+            GetOk();
         }
 
         private void WaybillDetOutGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)

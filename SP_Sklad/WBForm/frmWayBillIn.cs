@@ -306,7 +306,7 @@ namespace SP_Sklad.WBForm
 
         private void UpdateWh()
         {
-            if (WaybillDetInGridView.DataRowCount > 0)
+            if (WaybillDetInBS.Count > 0)
             {
                 if (MessageBox.Show("Оприходувати весь товар на склад <" + WHComboBox.Text + ">?", "Інформація", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                 {

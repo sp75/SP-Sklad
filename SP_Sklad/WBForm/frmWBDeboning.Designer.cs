@@ -87,6 +87,7 @@
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.WaybillDetOutGridControl = new DevExpress.XtraGrid.GridControl();
+            this.WaybillDetOutBS = new System.Windows.Forms.BindingSource(this.components);
             this.WaybillDetOutGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -106,7 +107,6 @@
             this.repositoryItemWhEdit = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.WaybillDetOutBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
@@ -137,6 +137,7 @@
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             this.xtraTabPage2.SuspendLayout();
@@ -144,7 +145,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.DeboningDetGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemWhEdit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutBS)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -821,6 +821,10 @@
             this.WaybillDetOutGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WaybillDetOutGridView});
             // 
+            // WaybillDetOutBS
+            // 
+            this.WaybillDetOutBS.DataSource = typeof(SP_Sklad.SkladData.GetWayBillDetOut_Result);
+            // 
             // WaybillDetOutGridView
             // 
             this.WaybillDetOutGridView.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
@@ -1052,10 +1056,6 @@
             this.gridColumn14.VisibleIndex = 4;
             this.gridColumn14.Width = 112;
             // 
-            // WaybillDetOutBS
-            // 
-            this.WaybillDetOutBS.DataSource = typeof(SP_Sklad.SkladData.GetWayBillDetOut_Result);
-            // 
             // frmWBDeboning
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1108,6 +1108,7 @@
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
             this.xtraTabPage2.ResumeLayout(false);
@@ -1115,7 +1116,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.DeboningDetGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemWhEdit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

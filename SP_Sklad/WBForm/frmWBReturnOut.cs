@@ -259,6 +259,8 @@ namespace SP_Sklad.WBForm
                 focused_dr.Rsv = (int)r.Value;
                 WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
             }
+
+            GetOk();
         }
 
         private void DelRsvBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -271,6 +273,8 @@ namespace SP_Sklad.WBForm
                 focused_dr.Rsv = 0;
                 WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
             }
+
+            GetOk();
         }
 
         private void RsvAllBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

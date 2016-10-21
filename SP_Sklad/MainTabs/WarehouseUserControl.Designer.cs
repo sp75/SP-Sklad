@@ -36,6 +36,7 @@
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.NewItemBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.CopyItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.EditItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.DeleteItemBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -485,9 +486,10 @@
             this.barButtonItem2,
             this.barButtonItem3,
             this.barButtonItem5,
-            this.barButtonItem6});
+            this.barButtonItem6,
+            this.barSubItem1});
             this.barManager1.MainMenu = this.bar3;
-            this.barManager1.MaxItemId = 27;
+            this.barManager1.MaxItemId = 30;
             // 
             // bar1
             // 
@@ -518,9 +520,17 @@
             this.NewItemBtn.Name = "NewItemBtn";
             this.NewItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewItemBtn_ItemClick);
             // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "Додати на підставі";
+            this.barSubItem1.Id = 27;
+            this.barSubItem1.ImageIndex = 1;
+            this.barSubItem1.Name = "barSubItem1";
+            this.barSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
             // CopyItemBtn
             // 
-            this.CopyItemBtn.Caption = "Додати на підставі";
+            this.CopyItemBtn.Caption = "Копію документа";
             this.CopyItemBtn.Id = 1;
             this.CopyItemBtn.ImageIndex = 1;
             this.CopyItemBtn.Name = "CopyItemBtn";
@@ -846,6 +856,7 @@
             this.BarImageList.Images.SetKeyName(17, "Up.bmp");
             this.BarImageList.Images.SetKeyName(18, "Замовлене кл_єнтами.bmp");
             this.BarImageList.Images.SetKeyName(19, "Перейти до  документа.bmp");
+            this.BarImageList.Images.SetKeyName(20, "Акти списання товару.bmp");
             // 
             // barButtonItem1
             // 
@@ -3107,5 +3118,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn1;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn42;
         private System.Windows.Forms.BindingSource GetWayBillListWhBS;
+        private DevExpress.XtraBars.BarSubItem barSubItem1;
     }
 }
