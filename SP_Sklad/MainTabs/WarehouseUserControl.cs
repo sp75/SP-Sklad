@@ -142,11 +142,6 @@ namespace SP_Sklad.MainTabs
             GetTree(2);
         }
 
-        private void WhMatGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-            GetWhBottomInfo(focused_wh_mat);
-        }
-
         private void PosGridControl_Click(object sender, EventArgs e)
         {
 
@@ -772,5 +767,11 @@ namespace SP_Sklad.MainTabs
         {
 
         }
+
+        private void WhMatGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
+        {
+            GetWhBottomInfo(focused_wh_mat);
+        }
+
     }
 }
