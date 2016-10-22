@@ -56,10 +56,10 @@
             this.textEdit10 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.NumEdit = new DevExpress.XtraEditors.SpinEdit();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
             this.textEdit1 = new DevExpress.XtraEditors.MemoEdit();
-            this.NumEdit = new DevExpress.XtraEditors.SpinEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SvcGroupDS)).BeginInit();
@@ -76,11 +76,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit10.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).BeginInit();
             this.xtraTabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.groupControl5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -142,6 +142,7 @@
             this.ImageList.TransparentColor = System.Drawing.Color.White;
             this.ImageList.Images.SetKeyName(0, "UserInfo.bmp");
             this.ImageList.Images.SetKeyName(1, "edit.bmp");
+            this.ImageList.Images.SetKeyName(2, "CloseFolder.bmp");
             // 
             // styleController1
             // 
@@ -288,7 +289,10 @@
             this.treeListLookUpEdit1TreeList.Location = new System.Drawing.Point(42, 145);
             this.treeListLookUpEdit1TreeList.Name = "treeListLookUpEdit1TreeList";
             this.treeListLookUpEdit1TreeList.OptionsBehavior.EnableFiltering = true;
-            this.treeListLookUpEdit1TreeList.OptionsView.ShowIndentAsRowStyle = true;
+            this.treeListLookUpEdit1TreeList.OptionsView.ShowColumns = false;
+            this.treeListLookUpEdit1TreeList.OptionsView.ShowHorzLines = false;
+            this.treeListLookUpEdit1TreeList.OptionsView.ShowIndicator = false;
+            this.treeListLookUpEdit1TreeList.OptionsView.ShowVertLines = false;
             this.treeListLookUpEdit1TreeList.ParentFieldName = "PId";
             this.treeListLookUpEdit1TreeList.SelectImageList = this.ImageList;
             this.treeListLookUpEdit1TreeList.Size = new System.Drawing.Size(466, 200);
@@ -361,34 +365,6 @@
             this.labelControl3.TabIndex = 31;
             this.labelControl3.Text = "Найменування";
             // 
-            // xtraTabPage4
-            // 
-            this.xtraTabPage4.Controls.Add(this.groupControl5);
-            this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(630, 425);
-            this.xtraTabPage4.Text = "Примітка";
-            // 
-            // groupControl5
-            // 
-            this.groupControl5.Controls.Add(this.textEdit1);
-            this.groupControl5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl5.Location = new System.Drawing.Point(0, 0);
-            this.groupControl5.Name = "groupControl5";
-            this.groupControl5.Padding = new System.Windows.Forms.Padding(5);
-            this.groupControl5.Size = new System.Drawing.Size(630, 425);
-            this.groupControl5.TabIndex = 16;
-            this.groupControl5.Tag = "";
-            this.groupControl5.Text = "Примітка";
-            // 
-            // textEdit1
-            // 
-            this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.SvcGroupDS, "Notes", true));
-            this.textEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textEdit1.Location = new System.Drawing.Point(7, 25);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(616, 393);
-            this.textEdit1.TabIndex = 36;
-            // 
             // NumEdit
             // 
             this.NumEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -417,6 +393,34 @@
             this.NumEdit.Properties.NullText = "[EditValue is null]";
             this.NumEdit.Size = new System.Drawing.Size(134, 20);
             this.NumEdit.TabIndex = 40;
+            // 
+            // xtraTabPage4
+            // 
+            this.xtraTabPage4.Controls.Add(this.groupControl5);
+            this.xtraTabPage4.Name = "xtraTabPage4";
+            this.xtraTabPage4.Size = new System.Drawing.Size(583, 253);
+            this.xtraTabPage4.Text = "Примітка";
+            // 
+            // groupControl5
+            // 
+            this.groupControl5.Controls.Add(this.textEdit1);
+            this.groupControl5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl5.Location = new System.Drawing.Point(0, 0);
+            this.groupControl5.Name = "groupControl5";
+            this.groupControl5.Padding = new System.Windows.Forms.Padding(5);
+            this.groupControl5.Size = new System.Drawing.Size(583, 253);
+            this.groupControl5.TabIndex = 16;
+            this.groupControl5.Tag = "";
+            this.groupControl5.Text = "Примітка";
+            // 
+            // textEdit1
+            // 
+            this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.SvcGroupDS, "Notes", true));
+            this.textEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textEdit1.Location = new System.Drawing.Point(7, 25);
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Size = new System.Drawing.Size(569, 221);
+            this.textEdit1.TabIndex = 36;
             // 
             // frmSvcGroupEdit
             // 
@@ -456,11 +460,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit10.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).EndInit();
             this.xtraTabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
             this.groupControl5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

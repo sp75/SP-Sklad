@@ -535,13 +535,9 @@ namespace SP_Sklad.MainTabs
                 case 2: new frmMatGroupEdit(focused_tree_node.GrpId).ShowDialog();
                     break;
 
-              /*  case 3: frmServGroupEdit = new TfrmServGroupEdit(Application);
-                    frmServGroupEdit->SvcGroup->ParamByName("GRPID")->Value = DirectTreeGRPID->Value;
-                    frmServGroupEdit->SvcGroup->Open();
-                    frmServGroupEdit->SvcGroup->Edit();
-                    frmServGroupEdit->ShowModal();
-                    delete frmServGroupEdit;
-                    break;*/
+                case 3: new frmSvcGroupEdit(focused_tree_node.GrpId).ShowDialog();
+
+                    break;
             }
 
             ExplorerRefreshBtn.PerformClick();

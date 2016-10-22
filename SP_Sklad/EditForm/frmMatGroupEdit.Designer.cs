@@ -319,7 +319,10 @@
             this.treeListLookUpEdit1TreeList.Location = new System.Drawing.Point(42, 157);
             this.treeListLookUpEdit1TreeList.Name = "treeListLookUpEdit1TreeList";
             this.treeListLookUpEdit1TreeList.OptionsBehavior.EnableFiltering = true;
-            this.treeListLookUpEdit1TreeList.OptionsView.ShowIndentAsRowStyle = true;
+            this.treeListLookUpEdit1TreeList.OptionsView.ShowColumns = false;
+            this.treeListLookUpEdit1TreeList.OptionsView.ShowHorzLines = false;
+            this.treeListLookUpEdit1TreeList.OptionsView.ShowIndicator = false;
+            this.treeListLookUpEdit1TreeList.OptionsView.ShowVertLines = false;
             this.treeListLookUpEdit1TreeList.ParentFieldName = "PId";
             this.treeListLookUpEdit1TreeList.SelectImageList = this.ImageList;
             this.treeListLookUpEdit1TreeList.Size = new System.Drawing.Size(466, 200);
@@ -411,7 +414,7 @@
             // 
             this.xtraTabPage2.Controls.Add(this.groupControl8);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(526, 253);
+            this.xtraTabPage2.Size = new System.Drawing.Size(526, 257);
             this.xtraTabPage2.Text = " Ціноутворення ";
             // 
             // groupControl8
@@ -419,7 +422,7 @@
             this.groupControl8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl8.Location = new System.Drawing.Point(0, 0);
             this.groupControl8.Name = "groupControl8";
-            this.groupControl8.Size = new System.Drawing.Size(526, 253);
+            this.groupControl8.Size = new System.Drawing.Size(526, 257);
             this.groupControl8.TabIndex = 19;
             this.groupControl8.Tag = "";
             this.groupControl8.Text = " Ціноутворення ";
@@ -428,7 +431,7 @@
             // 
             this.xtraTabPage3.Controls.Add(this.panel4);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(526, 253);
+            this.xtraTabPage3.Size = new System.Drawing.Size(526, 257);
             this.xtraTabPage3.Text = "Оподаткування";
             // 
             // panel4
@@ -437,7 +440,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(526, 253);
+            this.panel4.Size = new System.Drawing.Size(526, 257);
             this.panel4.TabIndex = 29;
             // 
             // groupControl4
@@ -445,7 +448,7 @@
             this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl4.Location = new System.Drawing.Point(0, 0);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(526, 253);
+            this.groupControl4.Size = new System.Drawing.Size(526, 257);
             this.groupControl4.TabIndex = 16;
             this.groupControl4.Tag = "";
             this.groupControl4.Text = "Оподаткування ";
@@ -454,7 +457,7 @@
             // 
             this.xtraTabPage4.Controls.Add(this.groupControl5);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(526, 253);
+            this.xtraTabPage4.Size = new System.Drawing.Size(526, 257);
             this.xtraTabPage4.Text = "Примітка";
             // 
             // groupControl5
@@ -464,7 +467,7 @@
             this.groupControl5.Location = new System.Drawing.Point(0, 0);
             this.groupControl5.Name = "groupControl5";
             this.groupControl5.Padding = new System.Windows.Forms.Padding(5);
-            this.groupControl5.Size = new System.Drawing.Size(526, 253);
+            this.groupControl5.Size = new System.Drawing.Size(526, 257);
             this.groupControl5.TabIndex = 16;
             this.groupControl5.Tag = "";
             this.groupControl5.Text = "Примітка";
@@ -475,7 +478,7 @@
             this.textEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textEdit1.Location = new System.Drawing.Point(7, 25);
             this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(512, 221);
+            this.textEdit1.Size = new System.Drawing.Size(512, 225);
             this.textEdit1.TabIndex = 36;
             // 
             // splitterControl1
