@@ -760,6 +760,7 @@
             this.simpleButton1.Size = new System.Drawing.Size(100, 30);
             this.simpleButton1.TabIndex = 0;
             this.simpleButton1.Text = "Відмінити";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // frmWBWriteOn
             // 

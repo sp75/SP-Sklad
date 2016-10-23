@@ -2645,7 +2645,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.wbEndDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.wbEndDate.Properties.EditValueChanged += new System.EventHandler(this.wbStartDate_Properties_EditValueChanged);
+          
             this.wbEndDate.Size = new System.Drawing.Size(100, 20);
             this.wbEndDate.TabIndex = 3;
             this.wbEndDate.EditValueChanged += new System.EventHandler(this.wbStartDate_EditValueChanged);
@@ -2667,7 +2667,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.wbStartDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.wbStartDate.Properties.EditValueChanged += new System.EventHandler(this.wbStartDate_Properties_EditValueChanged);
+          
             this.wbStartDate.Size = new System.Drawing.Size(100, 20);
             this.wbStartDate.TabIndex = 1;
             this.wbStartDate.EditValueChanged += new System.EventHandler(this.wbStartDate_EditValueChanged);

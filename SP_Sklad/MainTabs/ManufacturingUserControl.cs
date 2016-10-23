@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 using SP_Sklad.SkladData;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid;
@@ -59,7 +60,7 @@ namespace SP_Sklad.MainTabs
                 DebEndDate.EditValue = DateTime.Now;
 
                 DocsTreeList.DataSource = DB.SkladBase().GetManufactureTree(DBHelper.CurrentUser.UserId).ToList();
-                DocsTreeList.ExpandToLevel(0);// ExpandAll();
+                DocsTreeList.ExpandAll(); //ExpandToLevel(0);
             }
         }
 
@@ -129,8 +130,11 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 2:
+                    whUserControl.set_tree_node = focused_tree_node.Id;
                     whUserControl.WHTreeList.FocusedNode = whUserControl.WHTreeList.FindNodeByFieldValue("Id", focused_tree_node.Id);
                     bar1.Visible = false;
+                    whUserControl.splitContainerControl1.PanelVisibility = SplitPanelVisibility.Panel2;
+
                     break;
             }
         }

@@ -1457,7 +1457,7 @@
             // 
             this.xtraTabPage8.Controls.Add(this.whUserControl);
             this.xtraTabPage8.Name = "xtraTabPage8";
-            this.xtraTabPage8.Size = new System.Drawing.Size(1056, 628);
+            this.xtraTabPage8.Size = new System.Drawing.Size(1056, 659);
             this.xtraTabPage8.Text = "Склад";
             // 
             // whUserControl
@@ -1469,7 +1469,8 @@
             this.whUserControl.Location = new System.Drawing.Point(0, 0);
             this.whUserControl.Name = "whUserControl";
             this.whUserControl.resut = null;
-            this.whUserControl.Size = new System.Drawing.Size(1056, 628);
+            this.whUserControl.set_tree_node = null;
+            this.whUserControl.Size = new System.Drawing.Size(1056, 659);
             this.whUserControl.TabIndex = 0;
             this.whUserControl.wb = null;
             // 

@@ -49,16 +49,11 @@ namespace SP_Sklad.MainTabs
         GetWhTree_Result focused_tree_node { get; set; }
         GetWayBillListWh_Result focused_row { get; set; }
 
+        public int? set_tree_node { get; set; }
+
         public WarehouseUserControl()
         {
             InitializeComponent();
-
-
-        }
-
-        private void wbStartDate_Properties_EditValueChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void WarehouseUserControl_Load(object sender, EventArgs e)
@@ -100,6 +95,12 @@ namespace SP_Sklad.MainTabs
         {
             WHTreeList.DataSource = new BaseEntities().GetWhTree(DBHelper.CurrentUser.UserId, type).ToList();
             WHTreeList.ExpandToLevel(0);
+
+            if (set_tree_node != null)
+            {
+                WHTreeList.FocusedNode = WHTreeList.FindNodeByFieldValue("Id", set_tree_node);
+                set_tree_node = null;
+            }
         }
 
         private void WHTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
@@ -761,11 +762,6 @@ namespace SP_Sklad.MainTabs
             EditItemBtn.Enabled = (focused_row != null && focused_tree_node.CanModify == 1);
             CopyItemBtn.Enabled = EditItemBtn.Enabled;
             PrintItemBtn.Enabled = (focused_row != null);
-        }
-
-        private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
         }
 
         private void WhMatGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
