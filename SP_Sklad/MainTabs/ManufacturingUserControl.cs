@@ -126,12 +126,12 @@ namespace SP_Sklad.MainTabs
 
                 case 1: bar1.Visible = true;
                     GetWayBillList();
-
                     break;
 
-                /*    case 2: frmWhPanel->WhTreeData->Locate("ID", ExplorerTreeID->Value, TLocateOptions());
-                        dxBarManager1Bar2->Visible = false;
-                        break;*/
+                case 2:
+                    whUserControl.WHTreeList.FocusedNode = whUserControl.WHTreeList.FindNodeByFieldValue("Id", focused_tree_node.Id);
+                    bar1.Visible = false;
+                    break;
             }
         }
 

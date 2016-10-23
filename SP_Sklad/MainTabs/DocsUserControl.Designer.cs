@@ -923,13 +923,12 @@
             // vGridControl1
             // 
             this.vGridControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControl1.DataSource = this.WayBillListInfoBS;
             this.vGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl1.Location = new System.Drawing.Point(0, 0);
             this.vGridControl1.Name = "vGridControl1";
-            this.vGridControl1.RecordWidth = 186;
-            this.vGridControl1.RowHeaderWidth = 376;
+            this.vGridControl1.RecordWidth = 400;
+            this.vGridControl1.RowHeaderWidth = 268;
             this.vGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.row,
             this.category,
@@ -948,6 +947,7 @@
             // 
             // row
             // 
+            this.row.Height = 16;
             this.row.Name = "row";
             this.row.Properties.Caption = "№";
             this.row.Properties.FieldName = "Num";
@@ -980,6 +980,7 @@
             // 
             // row2
             // 
+            this.row2.Height = 16;
             this.row2.Name = "row2";
             this.row2.Properties.Caption = "Тел.";
             this.row2.Properties.FieldName = "KaPhone";

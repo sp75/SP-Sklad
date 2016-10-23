@@ -129,7 +129,7 @@
             this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
-            this.warehouseUserControl1 = new SP_Sklad.MainTabs.WarehouseUserControl();
+            this.whUserControl = new SP_Sklad.MainTabs.WarehouseUserControl();
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl3 = new DevExpress.XtraEditors.SplitContainerControl();
             this.DeboningGridControl = new DevExpress.XtraGrid.GridControl();
@@ -1455,23 +1455,23 @@
             // 
             // xtraTabPage8
             // 
-            this.xtraTabPage8.Controls.Add(this.warehouseUserControl1);
+            this.xtraTabPage8.Controls.Add(this.whUserControl);
             this.xtraTabPage8.Name = "xtraTabPage8";
-            this.xtraTabPage8.Size = new System.Drawing.Size(1056, 659);
+            this.xtraTabPage8.Size = new System.Drawing.Size(1056, 628);
             this.xtraTabPage8.Text = "Склад";
             // 
-            // warehouseUserControl1
+            // whUserControl
             // 
-            this.warehouseUserControl1.custom_mat_list = null;
-            this.warehouseUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.warehouseUserControl1.isDirectList = false;
-            this.warehouseUserControl1.isMatList = false;
-            this.warehouseUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.warehouseUserControl1.Name = "warehouseUserControl1";
-            this.warehouseUserControl1.resut = null;
-            this.warehouseUserControl1.Size = new System.Drawing.Size(1056, 659);
-            this.warehouseUserControl1.TabIndex = 0;
-            this.warehouseUserControl1.wb = null;
+            this.whUserControl.custom_mat_list = null;
+            this.whUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.whUserControl.isDirectList = false;
+            this.whUserControl.isMatList = false;
+            this.whUserControl.Location = new System.Drawing.Point(0, 0);
+            this.whUserControl.Name = "whUserControl";
+            this.whUserControl.resut = null;
+            this.whUserControl.Size = new System.Drawing.Size(1056, 628);
+            this.whUserControl.TabIndex = 0;
+            this.whUserControl.wb = null;
             // 
             // xtraTabPage10
             // 
@@ -2487,7 +2487,7 @@
         public DevExpress.XtraGrid.Views.Grid.GridView DeboningGridView;
         public DevExpress.XtraEditors.LookUpEdit DebWhComboBox;
         public DevExpress.XtraEditors.LookUpEdit DebSatusList;
-        private WarehouseUserControl warehouseUserControl1;
+        private WarehouseUserControl whUserControl;
         private DevExpress.XtraBars.PopupMenu BottomPopupMenu;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;

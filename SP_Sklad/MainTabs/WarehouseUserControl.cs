@@ -773,5 +773,20 @@ namespace SP_Sklad.MainTabs
             GetWhBottomInfo(focused_wh_mat);
         }
 
+        private void WhMatGridView_RowStyle(object sender, RowStyleEventArgs e)
+        {
+            if ( e.RowHandle < 0 )
+            {
+                return;
+            }
+
+            var wh_row = WhMatGridView.GetRow(e.RowHandle) as WhMatGet_Result;
+
+            if (wh_row != null && wh_row.Remain < wh_row.MinReserv)
+            {
+                e.Appearance.ForeColor = Color.Red;
+            }
+        }
+
     }
 }
