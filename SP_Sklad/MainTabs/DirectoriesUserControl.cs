@@ -728,5 +728,22 @@ namespace SP_Sklad.MainTabs
         {
             RefrechItemBtn.PerformClick();
         }
+
+        private void KaGridView_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        {
+            if(e.Column.FieldName  == "Saldo")
+            {
+                var  saldo = e.CellValue != null ? Convert.ToInt32(e.CellValue) : 0;
+                if(saldo < 0)
+                {
+                    e.Appearance.ForeColor = Color.Red;
+                }
+                else
+                {
+                    e.Appearance.ForeColor = Color.Blue;
+                }
+             
+            }
+        }
     }
 }

@@ -73,7 +73,7 @@ namespace SP_Sklad.EditForm
                 k_saldo = _db.KAgentSaldo.Where(w => w.KAId == _ka.KaId).OrderBy(d => d.OnDate).FirstOrDefault();
                 checkEdit2.Enabled = k_saldo == null;
                 checkEdit2.Checked = _ka.StartSaldoDate != null;
-                panel7.Enabled = checkEdit2.Checked;
+                StartSaldoPanel.Enabled = (checkEdit2.Checked && checkEdit2.Enabled);
 
                 k_discount = _db.KADiscount.FirstOrDefault(w => w.KAId == _ka.KaId);
                 DiscCheckEdit.Checked = k_discount != null;
@@ -221,7 +221,15 @@ namespace SP_Sklad.EditForm
 
         private void checkEdit2_CheckedChanged(object sender, EventArgs e)
         {
-            panel7.Enabled = checkEdit2.Checked;
+            StartSaldoPanel.Enabled = checkEdit2.Checked;
+            if(checkEdit2.Checked)
+            {
+                if(KASaldoEdit.EditValue == DBNull.Value)
+                {
+                    KASaldoEdit.EditValue = 0;
+                    StartSaldoDateEdit.DateTime = DateTime.Now;
+                }
+            }
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -231,6 +239,12 @@ namespace SP_Sklad.EditForm
                 _db.DeleteWhere<KAMatDiscount>(w => w.KAId == _ka.KaId);
                 _db.DeleteWhere<KAMatGroupDiscount>(w => w.KAId == _ka.KaId);
                 _db.KADiscount.Remove(k_discount);
+            }
+
+            if (!checkEdit2.Checked && checkEdit2.Enabled)
+            {
+                KASaldoEdit.EditValue = null;
+                StartSaldoDateEdit.EditValue = null;
             }
 
             _db.SaveChanges();

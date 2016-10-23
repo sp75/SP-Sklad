@@ -58,13 +58,13 @@
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
-            this.panel7 = new System.Windows.Forms.Panel();
+            this.StartSaldoPanel = new System.Windows.Forms.Panel();
             this.checkEdit4 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit3 = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.KASaldoEdit = new DevExpress.XtraEditors.CalcEdit();
-            this.textEdit4 = new DevExpress.XtraEditors.DateEdit();
+            this.StartSaldoDateEdit = new DevExpress.XtraEditors.DateEdit();
             this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
             this.textEdit5 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
@@ -270,12 +270,12 @@
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
-            this.panel7.SuspendLayout();
+            this.StartSaldoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KASaldoEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartSaldoDateEdit.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartSaldoDateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).BeginInit();
             this.panel1.SuspendLayout();
@@ -697,7 +697,7 @@
             // 
             // groupControl3
             // 
-            this.groupControl3.Controls.Add(this.panel7);
+            this.groupControl3.Controls.Add(this.StartSaldoPanel);
             this.groupControl3.Controls.Add(this.checkEdit2);
             this.groupControl3.Controls.Add(this.textEdit5);
             this.groupControl3.Controls.Add(this.labelControl8);
@@ -708,19 +708,19 @@
             this.groupControl3.TabIndex = 16;
             this.groupControl3.Tag = "";
             // 
-            // panel7
+            // StartSaldoPanel
             // 
-            this.panel7.Controls.Add(this.checkEdit4);
-            this.panel7.Controls.Add(this.checkEdit3);
-            this.panel7.Controls.Add(this.labelControl7);
-            this.panel7.Controls.Add(this.labelControl5);
-            this.panel7.Controls.Add(this.KASaldoEdit);
-            this.panel7.Controls.Add(this.textEdit4);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(2, 20);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(677, 108);
-            this.panel7.TabIndex = 43;
+            this.StartSaldoPanel.Controls.Add(this.checkEdit4);
+            this.StartSaldoPanel.Controls.Add(this.checkEdit3);
+            this.StartSaldoPanel.Controls.Add(this.labelControl7);
+            this.StartSaldoPanel.Controls.Add(this.labelControl5);
+            this.StartSaldoPanel.Controls.Add(this.KASaldoEdit);
+            this.StartSaldoPanel.Controls.Add(this.StartSaldoDateEdit);
+            this.StartSaldoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.StartSaldoPanel.Location = new System.Drawing.Point(2, 20);
+            this.StartSaldoPanel.Name = "StartSaldoPanel";
+            this.StartSaldoPanel.Size = new System.Drawing.Size(677, 108);
+            this.StartSaldoPanel.TabIndex = 43;
             // 
             // checkEdit4
             // 
@@ -768,37 +768,38 @@
             // 
             // KASaldoEdit
             // 
-            this.KASaldoEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "StartSaldo", true));
+            this.KASaldoEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "StartSaldo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.KASaldoEdit.Location = new System.Drawing.Point(24, 71);
             this.KASaldoEdit.Name = "KASaldoEdit";
             this.KASaldoEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.KASaldoEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.KASaldoEdit.Properties.DisplayFormat.FormatString = "0.00";
+            this.KASaldoEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.KASaldoEdit.Properties.EditFormat.FormatString = "0.00";
+            this.KASaldoEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.KASaldoEdit.Size = new System.Drawing.Size(173, 22);
             this.KASaldoEdit.StyleController = this.styleController1;
             this.KASaldoEdit.TabIndex = 44;
             // 
-            // textEdit4
+            // StartSaldoDateEdit
             // 
-            this.textEdit4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.StartSaldoDateEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEdit4.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "StartSaldoDate", true));
-            this.textEdit4.EditValue = null;
-            this.textEdit4.Location = new System.Drawing.Point(229, 71);
-            this.textEdit4.Name = "textEdit4";
-            this.textEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.StartSaldoDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "StartSaldoDate", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.StartSaldoDateEdit.EditValue = null;
+            this.StartSaldoDateEdit.Location = new System.Drawing.Point(229, 71);
+            this.StartSaldoDateEdit.Name = "StartSaldoDateEdit";
+            this.StartSaldoDateEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
+            this.StartSaldoDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.textEdit4.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.StartSaldoDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.textEdit4.Properties.DisplayFormat.FormatString = "";
-            this.textEdit4.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.textEdit4.Properties.EditFormat.FormatString = "";
-            this.textEdit4.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.textEdit4.Properties.Mask.EditMask = "";
-            this.textEdit4.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.textEdit4.Size = new System.Drawing.Size(175, 22);
-            this.textEdit4.StyleController = this.styleController1;
-            this.textEdit4.TabIndex = 45;
+            this.StartSaldoDateEdit.Properties.Mask.EditMask = "";
+            this.StartSaldoDateEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.StartSaldoDateEdit.Properties.MinValue = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.StartSaldoDateEdit.Size = new System.Drawing.Size(175, 22);
+            this.StartSaldoDateEdit.StyleController = this.styleController1;
+            this.StartSaldoDateEdit.TabIndex = 45;
             // 
             // checkEdit2
             // 
@@ -2872,13 +2873,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             this.groupControl3.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
+            this.StartSaldoPanel.ResumeLayout(false);
+            this.StartSaldoPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KASaldoEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartSaldoDateEdit.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartSaldoDateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -3129,13 +3130,13 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage15;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage16;
         private DevExpress.XtraEditors.RadioGroup textEdit18;
-        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel StartSaldoPanel;
         private DevExpress.XtraEditors.CheckEdit checkEdit4;
         private DevExpress.XtraEditors.CheckEdit checkEdit3;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.CalcEdit KASaldoEdit;
-        private DevExpress.XtraEditors.DateEdit textEdit4;
+        private DevExpress.XtraEditors.DateEdit StartSaldoDateEdit;
         private System.Windows.Forms.BindingSource DiscountBindingSource;
         private System.Windows.Forms.Panel DiscPanel;
         private DevExpress.XtraEditors.PanelControl panelControl6;
