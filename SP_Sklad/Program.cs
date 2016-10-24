@@ -21,8 +21,9 @@ namespace SP_Sklad
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             DevExpress.UserSkins.BonusSkins.Register();
-            DevExpress.Skins.SkinManager.EnableFormSkins();
-            DevExpress.Skins.SkinManager.EnableMdiFormSkins();
+        //    DevExpress.Skins.SkinManager.EnableFormSkins();
+        //    DevExpress.Skins.SkinManager.EnableMdiFormSkins();
+       //     DevExpress.LookAndFeel.LookAndFeelHelper.ForceDefaultLookAndFeelChanged();
             Application.Run(new frmLogin());
         }
     }
