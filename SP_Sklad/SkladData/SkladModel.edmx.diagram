@@ -14,8 +14,6 @@
         <EntityTypeShape EntityType="BaseModel.DISCCARDS" Width="1.5" PointX="3" PointY="36.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.ENTPARAMS" Width="1.5" PointX="2.75" PointY="12.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.MATCHANGE" Width="1.5" PointX="11.25" PointY="20" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.MATGROUPPRICES" Width="1.5" PointX="12" PointY="30.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.MATPRICES" Width="1.5" PointX="14.25" PointY="29.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.TAXES" Width="1.5" PointX="17" PointY="59.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.TAXWB" Width="1.5" PointX="9" PointY="33.375" IsExpanded="true" />
         <AssociationConnector Association="BaseModel.FK_CONTRDET_REFERENCE_CONTRACTS" ManuallyRouted="false" />
@@ -36,19 +34,11 @@
         <AssociationConnector Association="BaseModel.FK_CONTRACT_REFERENCE_CURRENCY" />
         <AssociationConnector Association="BaseModel.FK_CONTRDET_REFERENCE_CURRENCY" />
         <AssociationConnector Association="BaseModel.FK__CURRENCYR__CURRI__5EBF139D" />
-        <AssociationConnector Association="BaseModel.FK__MATGROUPP__CURRI__6EC0713C" />
-        <AssociationConnector Association="BaseModel.FK__MATPRICES__CURRI__73852659" />
-        <AssociationConnector Association="BaseModel.FK__MATPRICES__CURRI__74794A92" />
         <AssociationConnector Association="BaseModel.FK__PAYDOC__CURRID__214BF109" />
         <EntityTypeShape EntityType="BaseModel.CommonParams" Width="1.5" PointX="18.875" PointY="25.5" />
         <EntityTypeShape EntityType="BaseModel.PriceTypes" Width="1.5" PointX="0.6907472259787597" PointY="24.052519019717593" />
-        <AssociationConnector Association="BaseModel.FK__MATGROUPP__PTYPE__6DCC4D03" />
-        <AssociationConnector Association="BaseModel.FK_MGP_PPTYPEID" />
-        <AssociationConnector Association="BaseModel.FK__MATPRICES__PTYPE__72910220" />
-        <AssociationConnector Association="BaseModel.FK_MATPRICES_PPTYPEID" />
         <EntityTypeShape EntityType="BaseModel.ReturnRel" Width="1.5" PointX="0.30251608430525107" PointY="2.8423101170185534" />
         <EntityTypeShape EntityType="BaseModel.MatGroup" Width="1.5" PointX="5.06140572813405" PointY="25.430168983261179" />
-        <AssociationConnector Association="BaseModel.FK_MGP_MATID" />
         <EntityTypeShape EntityType="BaseModel.CityType" Width="1.5" PointX="5.7849626344558605" PointY="13.723164773417247" />
         <EntityTypeShape EntityType="BaseModel.Counters" Width="1.5" PointX="3.0873341407102224" PointY="3.32460779106459" />
         <EntityTypeShape EntityType="BaseModel.KaAddr" Width="1.5" PointX="11.764847153688244" PointY="23.276982437482562" />
@@ -110,13 +100,11 @@
         <AssociationConnector Association="BaseModel.FK__WMATTURN__MATID__3AD6B8E2" />
         <AssociationConnector Association="BaseModel.FK_MATERIAL_REFERENCE_MEASURES" />
         <AssociationConnector Association="BaseModel.FK_MATRECIPE_1" />
-        <AssociationConnector Association="BaseModel.FK_MP_MATID" />
         <AssociationConnector Association="BaseModel.FK_TAXWBDET_REFERENCE_MATERIAL" />
         <EntityTypeShape EntityType="BaseModel.KAgentTyp" Width="1.5" PointX="11.245192184692805" PointY="7.7206819093416827" />
         <EntityTypeShape EntityType="BaseModel.KAKInd" Width="1.5" PointX="6.2121934640278074" PointY="25.742894378371023" />
         <EntityTypeShape EntityType="BaseModel.KAgentAccount" Width="1.5" PointX="4.08879674043916" PointY="0.044875130078231511" />
         <EntityTypeShape EntityType="BaseModel.KAgentPersons" Width="1.5" PointX="2.7761008715145756" PointY="28.186123771679647" />
-        <EntityTypeShape EntityType="BaseModel.KAgentSaldo" Width="1.5" PointX="2.9506919751645491" PointY="26.7423845356062" />
         <AssociationConnector Association="BaseModel.FK_PD_ACCID" />
         <EntityTypeShape EntityType="BaseModel.KADiscount" Width="1.5" PointX="10.337791710317969" PointY="24.720574882217019" />
         <EntityTypeShape EntityType="BaseModel.KAMatDiscount" Width="1.5" PointX="2.9017272158068268" PointY="12.329462563772436" />
@@ -144,7 +132,7 @@
         <EntityTypeShape EntityType="BaseModel.WayBillSvc" Width="1.5" PointX="2.5795977630557481" PointY="20.695075491766946" />
         <AssociationConnector Association="BaseModel.FK_WBS_CURRID" />
         <AssociationConnector Association="BaseModel.FK_WBS_SVCID" />
-        <EntityTypeShape EntityType="BaseModel.PriceListDet" Width="1.5" PointX="3.0206367108135654" PointY="26.383282778031791" />
+        <EntityTypeShape EntityType="BaseModel.PriceListDet" Width="1.5" PointX="19" PointY="29.25" />
         <EntityTypeShape EntityType="BaseModel.Tables" Width="1.5" PointX="9.3817213742908656" PointY="16.80379786379812" />
         <EntityTypeShape EntityType="BaseModel.v_MatRemains" Width="1.5" PointX="1.9117359714171553" PointY="22.099671970167975" />
         <EntityTypeShape EntityType="BaseModel.v_PriceList" Width="1.5" PointX="11.453816681845959" PointY="22.139463211474691" />
@@ -217,7 +205,6 @@
         <AssociationConnector Association="BaseModel.FK_ADOC_KAID" />
         <AssociationConnector Association="BaseModel.FK_AP_KAID" />
         <AssociationConnector Association="BaseModel.FK_Kagent_Users" />
-        <AssociationConnector Association="BaseModel.FK_KAS_KAID" />
         <AssociationConnector Association="BaseModel.FK_TAXWB_REFERENCE_KAGENT" />
         <AssociationConnector Association="BaseModel.FK_TECHPROCDET_KAGENT" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" />
@@ -241,6 +228,18 @@
         <AssociationConnector Association="BaseModel.FK_BANKSPERSONS_1" />
         <EntityTypeShape EntityType="BaseModel.Customers" Width="1.5" PointX="0.13402553653997626" PointY="21.611524368455413" />
         <AssociationConnector Association="BaseModel.FK_Customers_Kagent" />
+        <EntityTypeShape EntityType="BaseModel.MatGroupPrices" Width="1.5" PointX="12.375" PointY="28.625" />
+        <EntityTypeShape EntityType="BaseModel.MatPrices" Width="1.5" PointX="15.375" PointY="25.125" />
+        <AssociationConnector Association="BaseModel.FK__MATGROUPP__CURRI__6EC0713C" />
+        <AssociationConnector Association="BaseModel.FK__MATPRICES__CURRI__74794A92" />
+        <AssociationConnector Association="BaseModel.FK_MP_MATID" />
+        <AssociationConnector Association="BaseModel.FK_MGP_MATID" />
+        <AssociationConnector Association="BaseModel.FK__MATGROUPP__PTYPE__6DCC4D03" />
+        <AssociationConnector Association="BaseModel.FK_MGP_PPTYPEID" />
+        <AssociationConnector Association="BaseModel.FK__MATPRICES__PTYPE__72910220" />
+        <AssociationConnector Association="BaseModel.FK_MATPRICES_PPTYPEID" />
+        <EntityTypeShape EntityType="BaseModel.KAgentSaldo" Width="1.5" PointX="5.25" PointY="47.25" />
+        <AssociationConnector Association="BaseModel.FK_KAS_KAID" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="7.0245045325832924" PointY="12.641712000892364" />

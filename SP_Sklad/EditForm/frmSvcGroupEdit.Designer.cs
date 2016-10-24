@@ -30,12 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSvcGroupEdit));
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
-            this.bar2 = new DevExpress.XtraBars.Bar();
-            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.ImageList = new System.Windows.Forms.ImageList(this.components);
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.SvcGroupDS = new System.Windows.Forms.BindingSource(this.components);
@@ -60,7 +54,6 @@
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
             this.textEdit1 = new DevExpress.XtraEditors.MemoEdit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SvcGroupDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeList)).BeginInit();
@@ -82,59 +75,6 @@
             this.groupControl5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             this.SuspendLayout();
-            // 
-            // barManager1
-            // 
-            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar2});
-            this.barManager1.DockControls.Add(this.barDockControlTop);
-            this.barManager1.DockControls.Add(this.barDockControlBottom);
-            this.barManager1.DockControls.Add(this.barDockControlLeft);
-            this.barManager1.DockControls.Add(this.barDockControlRight);
-            this.barManager1.Form = this;
-            this.barManager1.Images = this.ImageList;
-            this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 5;
-            // 
-            // bar2
-            // 
-            this.bar2.BarName = "Main menu";
-            this.bar2.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Top;
-            this.bar2.DockCol = 0;
-            this.bar2.DockRow = 0;
-            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar2.OptionsBar.DrawDragBorder = false;
-            this.bar2.OptionsBar.MultiLine = true;
-            this.bar2.OptionsBar.UseWholeRow = true;
-            this.bar2.Text = "Main menu";
-            // 
-            // barDockControlTop
-            // 
-            this.barDockControlTop.CausesValidation = false;
-            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(793, 20);
-            // 
-            // barDockControlBottom
-            // 
-            this.barDockControlBottom.CausesValidation = false;
-            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 349);
-            this.barDockControlBottom.Size = new System.Drawing.Size(793, 0);
-            // 
-            // barDockControlLeft
-            // 
-            this.barDockControlLeft.CausesValidation = false;
-            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 20);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 329);
-            // 
-            // barDockControlRight
-            // 
-            this.barDockControlRight.CausesValidation = false;
-            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(793, 20);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 329);
             // 
             // ImageList
             // 
@@ -162,7 +102,7 @@
             this.DirTreeList.Dock = System.Windows.Forms.DockStyle.Left;
             this.DirTreeList.ImageIndexFieldName = "ImgIdx";
             this.DirTreeList.KeyFieldName = "Id";
-            this.DirTreeList.Location = new System.Drawing.Point(0, 20);
+            this.DirTreeList.Location = new System.Drawing.Point(0, 0);
             this.DirTreeList.Name = "DirTreeList";
             this.DirTreeList.OptionsBehavior.Editable = false;
             this.DirTreeList.OptionsView.ShowColumns = false;
@@ -171,7 +111,7 @@
             this.DirTreeList.OptionsView.ShowVertLines = false;
             this.DirTreeList.ParentFieldName = "ParentId";
             this.DirTreeList.SelectImageList = this.ImageList;
-            this.DirTreeList.Size = new System.Drawing.Size(210, 275);
+            this.DirTreeList.Size = new System.Drawing.Size(210, 274);
             this.DirTreeList.TabIndex = 35;
             this.DirTreeList.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.DirTreeList_FocusedNodeChanged);
             // 
@@ -186,9 +126,9 @@
             // 
             // splitterControl1
             // 
-            this.splitterControl1.Location = new System.Drawing.Point(210, 20);
+            this.splitterControl1.Location = new System.Drawing.Point(210, 0);
             this.splitterControl1.Name = "splitterControl1";
-            this.splitterControl1.Size = new System.Drawing.Size(5, 275);
+            this.splitterControl1.Size = new System.Drawing.Size(6, 274);
             this.splitterControl1.TabIndex = 42;
             this.splitterControl1.TabStop = false;
             // 
@@ -197,7 +137,7 @@
             this.panelControl2.Controls.Add(this.OkButton);
             this.panelControl2.Controls.Add(this.simpleButton1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl2.Location = new System.Drawing.Point(0, 295);
+            this.panelControl2.Location = new System.Drawing.Point(0, 274);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(793, 54);
             this.panelControl2.TabIndex = 43;
@@ -228,12 +168,12 @@
             this.xtraTabControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.xtraTabControl1.BorderStylePage = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(210, 20);
+            this.xtraTabControl1.Location = new System.Drawing.Point(210, 0);
             this.xtraTabControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.xtraTabControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(583, 275);
+            this.xtraTabControl1.Size = new System.Drawing.Size(583, 274);
             this.xtraTabControl1.TabIndex = 44;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -243,7 +183,7 @@
             // 
             this.xtraTabPage1.Controls.Add(this.groupControl2);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(583, 253);
+            this.xtraTabPage1.Size = new System.Drawing.Size(583, 252);
             this.xtraTabPage1.Text = "Основна інформація";
             // 
             // groupControl2
@@ -258,7 +198,7 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(583, 253);
+            this.groupControl2.Size = new System.Drawing.Size(583, 252);
             this.groupControl2.TabIndex = 17;
             this.groupControl2.Tag = "";
             this.groupControl2.Text = " Основна інформація про групу товарів";
@@ -269,7 +209,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.GrpIdEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.SvcGroupDS, "PId", true));
             this.GrpIdEdit.Location = new System.Drawing.Point(19, 135);
-            this.GrpIdEdit.MenuManager = this.barManager1;
             this.GrpIdEdit.Name = "GrpIdEdit";
             this.GrpIdEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -311,7 +250,6 @@
             // checkEdit4
             // 
             this.checkEdit4.Location = new System.Drawing.Point(19, 193);
-            this.checkEdit4.MenuManager = this.barManager1;
             this.checkEdit4.Name = "checkEdit4";
             this.checkEdit4.Properties.Caption = "Не підлегла жодній товарній групі";
             this.checkEdit4.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
@@ -326,7 +264,6 @@
             // 
             this.checkEdit3.EditValue = true;
             this.checkEdit3.Location = new System.Drawing.Point(19, 109);
-            this.checkEdit3.MenuManager = this.barManager1;
             this.checkEdit3.Name = "checkEdit3";
             this.checkEdit3.Properties.Caption = "Підлегла товарній групі";
             this.checkEdit3.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
@@ -343,13 +280,13 @@
             this.textEdit10.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.SvcGroupDS, "Name", true));
             this.textEdit10.Location = new System.Drawing.Point(19, 56);
             this.textEdit10.Name = "textEdit10";
-            this.textEdit10.Size = new System.Drawing.Size(383, 22);
+            this.textEdit10.Size = new System.Drawing.Size(400, 22);
             this.textEdit10.StyleController = this.styleController1;
             this.textEdit10.TabIndex = 34;
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(431, 34);
+            this.labelControl2.Location = new System.Drawing.Point(452, 34);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(82, 16);
             this.labelControl2.StyleController = this.styleController1;
@@ -375,7 +312,7 @@
             0,
             0,
             0});
-            this.NumEdit.Location = new System.Drawing.Point(431, 56);
+            this.NumEdit.Location = new System.Drawing.Point(452, 56);
             this.NumEdit.Name = "NumEdit";
             this.NumEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -391,14 +328,15 @@
             0,
             0});
             this.NumEdit.Properties.NullText = "[EditValue is null]";
-            this.NumEdit.Size = new System.Drawing.Size(134, 20);
+            this.NumEdit.Size = new System.Drawing.Size(113, 22);
+            this.NumEdit.StyleController = this.styleController1;
             this.NumEdit.TabIndex = 40;
             // 
             // xtraTabPage4
             // 
             this.xtraTabPage4.Controls.Add(this.groupControl5);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(583, 253);
+            this.xtraTabPage4.Size = new System.Drawing.Size(583, 252);
             this.xtraTabPage4.Text = "Примітка";
             // 
             // groupControl5
@@ -408,7 +346,7 @@
             this.groupControl5.Location = new System.Drawing.Point(0, 0);
             this.groupControl5.Name = "groupControl5";
             this.groupControl5.Padding = new System.Windows.Forms.Padding(5);
-            this.groupControl5.Size = new System.Drawing.Size(583, 253);
+            this.groupControl5.Size = new System.Drawing.Size(583, 252);
             this.groupControl5.TabIndex = 16;
             this.groupControl5.Tag = "";
             this.groupControl5.Text = "Примітка";
@@ -419,22 +357,18 @@
             this.textEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textEdit1.Location = new System.Drawing.Point(7, 25);
             this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(569, 221);
+            this.textEdit1.Size = new System.Drawing.Size(569, 220);
             this.textEdit1.TabIndex = 36;
             // 
             // frmSvcGroupEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(793, 349);
+            this.ClientSize = new System.Drawing.Size(793, 328);
             this.Controls.Add(this.splitterControl1);
             this.Controls.Add(this.xtraTabControl1);
             this.Controls.Add(this.DirTreeList);
             this.Controls.Add(this.panelControl2);
-            this.Controls.Add(this.barDockControlLeft);
-            this.Controls.Add(this.barDockControlRight);
-            this.Controls.Add(this.barDockControlBottom);
-            this.Controls.Add(this.barDockControlTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmSvcGroupEdit";
             this.ShowInTaskbar = false;
@@ -443,7 +377,6 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmSvcGroupEdit_FormClosed);
             this.Load += new System.EventHandler(this.frmSvcGroupEdit_Load);
             this.Shown += new System.EventHandler(this.frmSvcGroupEdit_Shown);
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SvcGroupDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeList)).EndInit();
@@ -466,18 +399,11 @@
             this.groupControl5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private DevExpress.XtraBars.BarManager barManager1;
-        private DevExpress.XtraBars.Bar bar2;
-        private DevExpress.XtraBars.BarDockControl barDockControlTop;
-        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
-        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
-        private DevExpress.XtraBars.BarDockControl barDockControlRight;
         public System.Windows.Forms.ImageList ImageList;
         private DevExpress.XtraEditors.StyleController styleController1;
         private System.Windows.Forms.BindingSource SvcGroupDS;

@@ -65,7 +65,6 @@
             this.barEditItem2 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             this.barSubItem5 = new DevExpress.XtraBars.BarSubItem();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.gridSplitContainer1 = new DevExpress.XtraGrid.GridSplitContainer();
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.serviceUserControl1 = new SP_Sklad.MainTabs.ServiceUserControl();
@@ -83,6 +82,7 @@
             this.docsUserControl1 = new SP_Sklad.MainTabs.DocsUserControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.sharedImageCollection1 = new DevExpress.Utils.SharedImageCollection(this.components);
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit.CalendarTimeProperties)).BeginInit();
@@ -441,27 +441,27 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1188, 53);
+            this.barDockControlTop.Size = new System.Drawing.Size(1188, 51);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 679);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1188, 21);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 677);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1188, 23);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 53);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 51);
             this.barDockControlLeft.Size = new System.Drawing.Size(0, 626);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1188, 53);
+            this.barDockControlRight.Location = new System.Drawing.Point(1188, 51);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 626);
             // 
             // barButtonItem2
@@ -504,10 +504,6 @@
             this.barSubItem5.Caption = "Підприємство";
             this.barSubItem5.Id = 15;
             this.barSubItem5.Name = "barSubItem5";
-            // 
-            // defaultLookAndFeel1
-            // 
-            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2010 Silver";
             // 
             // gridSplitContainer1
             // 
@@ -607,6 +603,7 @@
             this.whUserControl.Location = new System.Drawing.Point(0, 0);
             this.whUserControl.Name = "whUserControl";
             this.whUserControl.resut = null;
+            this.whUserControl.set_tree_node = null;
             this.whUserControl.Size = new System.Drawing.Size(1182, 574);
             this.whUserControl.TabIndex = 0;
             this.whUserControl.wb = null;
@@ -633,7 +630,7 @@
             this.xtraTabPage1.Controls.Add(this.docsUserControl1);
             this.xtraTabPage1.Image = global::SP_Sklad.Properties.Resources.administration;
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1182, 574);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1185, 577);
             this.xtraTabPage1.TabPageWidth = 100;
             this.xtraTabPage1.Text = "Документи";
             // 
@@ -642,13 +639,13 @@
             this.docsUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.docsUserControl1.Location = new System.Drawing.Point(0, 0);
             this.docsUserControl1.Name = "docsUserControl1";
-            this.docsUserControl1.Size = new System.Drawing.Size(1182, 574);
+            this.docsUserControl1.Size = new System.Drawing.Size(1185, 577);
             this.docsUserControl1.TabIndex = 0;
             // 
             // xtraTabControl1
             // 
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(0, 53);
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 51);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
             this.xtraTabControl1.Size = new System.Drawing.Size(1188, 626);
@@ -678,6 +675,10 @@
             this.sharedImageCollection1.ImageSource.Images.SetKeyName(7, "Парт_ї.bmp");
             this.sharedImageCollection1.ImageSource.Images.SetKeyName(8, "Склади.bmp");
             this.sharedImageCollection1.ParentControl = this;
+            // 
+            // defaultLookAndFeel1
+            // 
+            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Seven Classic";
             // 
             // mainForm
             // 
@@ -737,7 +738,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit repositoryItemTimeEdit1;
         private DevExpress.XtraBars.BarEditItem barEditItem2;
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
-        private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
         private DevExpress.XtraBars.BarEditItem CurDateEditBarItem;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit;
         private DevExpress.XtraGrid.GridSplitContainer gridSplitContainer1;
@@ -775,6 +775,7 @@
         private DevExpress.XtraBars.BarToolbarsListItem barToolbarsListItem1;
         private DevExpress.XtraBars.BarSubItem barSubItem7;
         public MainTabs.DirectoriesUserControl DirUserControl;
+        private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
     }
 }
 

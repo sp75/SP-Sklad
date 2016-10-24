@@ -12,20 +12,21 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class MATGROUPPRICES
+    public partial class MatGroupPrices
     {
-        public int PTYPEID { get; set; }
-        public int GRPID { get; set; }
-        public decimal ONVALUE { get; set; }
-        public Nullable<int> CURRID { get; set; }
-        public int EXTRATYPE { get; set; }
-        public Nullable<int> PPTYPEID { get; set; }
-        public Nullable<int> WITHNDS { get; set; }
-        public int DIS { get; set; }
+        public int Id { get; set; }
+        public int PTypeId { get; set; }
+        public int GrpId { get; set; }
+        public decimal OnValue { get; set; }
+        public Nullable<int> CurrId { get; set; }
+        public int ExtraType { get; set; }
+        public Nullable<int> PPTypeId { get; set; }
+        public Nullable<int> WithNds { get; set; }
+        public int Dis { get; set; }
     
         public virtual Currency Currency { get; set; }
+        public virtual MatGroup MatGroup { get; set; }
         public virtual PriceTypes PriceTypes { get; set; }
         public virtual PriceTypes PriceTypes1 { get; set; }
-        public virtual MatGroup MatGroup { get; set; }
     }
 }

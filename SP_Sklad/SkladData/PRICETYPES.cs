@@ -16,12 +16,12 @@ namespace SP_Sklad.SkladData
     {
         public PriceTypes()
         {
-            this.MATGROUPPRICES = new HashSet<MATGROUPPRICES>();
-            this.MATGROUPPRICES1 = new HashSet<MATGROUPPRICES>();
-            this.MATPRICES = new HashSet<MATPRICES>();
-            this.MATPRICES1 = new HashSet<MATPRICES>();
             this.PriceList = new HashSet<PriceList>();
             this.WaybillDet = new HashSet<WaybillDet>();
+            this.MatGroupPrices = new HashSet<MatGroupPrices>();
+            this.MatGroupPrices1 = new HashSet<MatGroupPrices>();
+            this.MatPrices = new HashSet<MatPrices>();
+            this.MatPrices1 = new HashSet<MatPrices>();
         }
     
         public int PTypeId { get; set; }
@@ -33,11 +33,11 @@ namespace SP_Sklad.SkladData
         public Nullable<int> PPTypeId { get; set; }
         public Nullable<int> ExtraType { get; set; }
     
-        public virtual ICollection<MATGROUPPRICES> MATGROUPPRICES { get; set; }
-        public virtual ICollection<MATGROUPPRICES> MATGROUPPRICES1 { get; set; }
-        public virtual ICollection<MATPRICES> MATPRICES { get; set; }
-        public virtual ICollection<MATPRICES> MATPRICES1 { get; set; }
         public virtual ICollection<PriceList> PriceList { get; set; }
         public virtual ICollection<WaybillDet> WaybillDet { get; set; }
+        public virtual ICollection<MatGroupPrices> MatGroupPrices { get; set; }
+        public virtual ICollection<MatGroupPrices> MatGroupPrices1 { get; set; }
+        public virtual ICollection<MatPrices> MatPrices { get; set; }
+        public virtual ICollection<MatPrices> MatPrices1 { get; set; }
     }
 }

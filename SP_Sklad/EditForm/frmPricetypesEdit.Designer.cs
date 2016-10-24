@@ -33,7 +33,6 @@
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.NotesTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.PriceTypesBS = new System.Windows.Forms.BindingSource(this.components);
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.DefCheckBox = new DevExpress.XtraEditors.CheckEdit();
@@ -47,10 +46,11 @@
             this.checkEdit4 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit3 = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.PriceTypesBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PriceTypesBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DefCheckBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -63,6 +63,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceTypesBS)).BeginInit();
             this.SuspendLayout();
             // 
             // BottomPanel
@@ -70,16 +73,16 @@
             this.BottomPanel.Controls.Add(this.OkButton);
             this.BottomPanel.Controls.Add(this.simpleButton1);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomPanel.Location = new System.Drawing.Point(0, 304);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 324);
             this.BottomPanel.Name = "BottomPanel";
-            this.BottomPanel.Size = new System.Drawing.Size(637, 52);
+            this.BottomPanel.Size = new System.Drawing.Size(639, 52);
             this.BottomPanel.TabIndex = 19;
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(415, 10);
+            this.OkButton.Location = new System.Drawing.Point(408, 11);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(100, 30);
             this.OkButton.TabIndex = 1;
@@ -90,7 +93,7 @@
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton1.Location = new System.Drawing.Point(525, 10);
+            this.simpleButton1.Location = new System.Drawing.Point(514, 11);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(100, 30);
             this.simpleButton1.TabIndex = 0;
@@ -101,15 +104,11 @@
             this.NotesTextEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.NotesTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PriceTypesBS, "Name", true));
-            this.NotesTextEdit.Location = new System.Drawing.Point(23, 36);
+            this.NotesTextEdit.Location = new System.Drawing.Point(23, 38);
             this.NotesTextEdit.Name = "NotesTextEdit";
             this.NotesTextEdit.Size = new System.Drawing.Size(591, 22);
             this.NotesTextEdit.StyleController = this.styleController1;
             this.NotesTextEdit.TabIndex = 40;
-            // 
-            // PriceTypesBS
-            // 
-            this.PriceTypesBS.DataSource = typeof(SP_Sklad.SkladData.PriceTypes);
             // 
             // styleController1
             // 
@@ -119,7 +118,7 @@
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.labelControl3.Location = new System.Drawing.Point(23, 14);
+            this.labelControl3.Location = new System.Drawing.Point(23, 16);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(40, 16);
             this.labelControl3.TabIndex = 39;
@@ -128,9 +127,9 @@
             // DefCheckBox
             // 
             this.DefCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PriceTypesBS, "Def", true));
-            this.DefCheckBox.Location = new System.Drawing.Point(23, 263);
+            this.DefCheckBox.Location = new System.Drawing.Point(23, 270);
             this.DefCheckBox.Name = "DefCheckBox";
-            this.DefCheckBox.Properties.Caption = "Основний склад (використовувати за змовчуванням)";
+            this.DefCheckBox.Properties.Caption = "Основна цінова категорія  (використовувати за змовчуванням)";
             this.DefCheckBox.Properties.ValueChecked = 1;
             this.DefCheckBox.Properties.ValueUnchecked = 0;
             this.DefCheckBox.Size = new System.Drawing.Size(397, 19);
@@ -147,7 +146,7 @@
             this.groupControl2.Controls.Add(this.checkEdit4);
             this.groupControl2.Controls.Add(this.checkEdit3);
             this.groupControl2.Controls.Add(this.labelControl12);
-            this.groupControl2.Location = new System.Drawing.Point(23, 76);
+            this.groupControl2.Location = new System.Drawing.Point(23, 82);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(591, 149);
             this.groupControl2.TabIndex = 42;
@@ -287,17 +286,30 @@
             this.labelControl12.TabIndex = 58;
             this.labelControl12.Text = "від цінової категорії";
             // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.DefCheckBox);
+            this.panelControl1.Controls.Add(this.groupControl2);
+            this.panelControl1.Controls.Add(this.labelControl3);
+            this.panelControl1.Controls.Add(this.NotesTextEdit);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl1.Location = new System.Drawing.Point(0, 0);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(639, 324);
+            this.panelControl1.TabIndex = 43;
+            // 
+            // PriceTypesBS
+            // 
+            this.PriceTypesBS.DataSource = typeof(SP_Sklad.SkladData.PriceTypes);
+            // 
             // frmPricetypesEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(637, 356);
-            this.Controls.Add(this.groupControl2);
-            this.Controls.Add(this.DefCheckBox);
-            this.Controls.Add(this.NotesTextEdit);
-            this.Controls.Add(this.labelControl3);
+            this.ClientSize = new System.Drawing.Size(639, 376);
+            this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.BottomPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmPricetypesEdit";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -306,7 +318,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).EndInit();
             this.BottomPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PriceTypesBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DefCheckBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
@@ -320,8 +331,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceTypesBS)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -345,5 +359,6 @@
         private DevExpress.XtraEditors.LookUpEdit ExtraTypeLookUpEdit;
         private DevExpress.XtraEditors.LookUpEdit lookUpEdit3;
         private DevExpress.XtraEditors.CalcEdit calcEdit2;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
     }
 }

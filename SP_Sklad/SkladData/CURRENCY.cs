@@ -19,9 +19,6 @@ namespace SP_Sklad.SkladData
             this.CONTRACTS = new HashSet<CONTRACTS>();
             this.CONTRDET = new HashSet<CONTRDET>();
             this.CURRENCYRATE = new HashSet<CURRENCYRATE>();
-            this.MATGROUPPRICES = new HashSet<MATGROUPPRICES>();
-            this.MATPRICES = new HashSet<MATPRICES>();
-            this.MATPRICES1 = new HashSet<MATPRICES>();
             this.PayDoc = new HashSet<PayDoc>();
             this.Services = new HashSet<Services>();
             this.WayBillSvc = new HashSet<WayBillSvc>();
@@ -29,6 +26,8 @@ namespace SP_Sklad.SkladData
             this.MoneySaldo = new HashSet<MoneySaldo>();
             this.WaybillList = new HashSet<WaybillList>();
             this.WaybillDet = new HashSet<WaybillDet>();
+            this.MatGroupPrices = new HashSet<MatGroupPrices>();
+            this.MatPrices = new HashSet<MatPrices>();
         }
     
         public int CurrId { get; set; }
@@ -43,9 +42,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<CONTRACTS> CONTRACTS { get; set; }
         public virtual ICollection<CONTRDET> CONTRDET { get; set; }
         public virtual ICollection<CURRENCYRATE> CURRENCYRATE { get; set; }
-        public virtual ICollection<MATGROUPPRICES> MATGROUPPRICES { get; set; }
-        public virtual ICollection<MATPRICES> MATPRICES { get; set; }
-        public virtual ICollection<MATPRICES> MATPRICES1 { get; set; }
         public virtual ICollection<PayDoc> PayDoc { get; set; }
         public virtual ICollection<Services> Services { get; set; }
         public virtual ICollection<WayBillSvc> WayBillSvc { get; set; }
@@ -53,5 +49,7 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<MoneySaldo> MoneySaldo { get; set; }
         public virtual ICollection<WaybillList> WaybillList { get; set; }
         public virtual ICollection<WaybillDet> WaybillDet { get; set; }
+        public virtual ICollection<MatGroupPrices> MatGroupPrices { get; set; }
+        public virtual ICollection<MatPrices> MatPrices { get; set; }
     }
 }

@@ -134,35 +134,34 @@ namespace SP_Sklad.WBDetForm
 
         private void MatComboBox_EditValueChanged(object sender, EventArgs e)
         {
-             var row = (MaterialsList)MatComboBox.GetSelectedDataRow();
-             if (row == null )
-             {
-                 return;
-             }
+            var row = (MaterialsList)MatComboBox.GetSelectedDataRow();
+            if (row == null)
+            {
+                return;
+            }
 
-             if (MatComboBox.ContainsFocus)
-             {
-                 _wbd.WId = row.WId;
-                 _wbd.Nds = row.NDS == 1 ? DBHelper.CommonParam.Nds : 0;
-                 _wbd.MatId = row.MatId;
-             }
+            if (MatComboBox.ContainsFocus)
+            {
+                _wbd.WId = row.WId;
+                _wbd.Nds = row.NDS == 1 ? DBHelper.CommonParam.Nds : 0;
+                _wbd.MatId = row.MatId;
+            }
 
-             labelControl24.Text = row.MeasuresName;
-             labelControl27.Text = row.MeasuresName;
+            labelControl24.Text = row.MeasuresName;
+            labelControl27.Text = row.MeasuresName;
 
-             if (PriceTypesEdit.EditValue != null && PriceTypesEdit.EditValue != DBNull.Value)
-             {
-                 var list_price = _db.GetListMatPrices(row.MatId, _wb.CurrId, (int)PriceTypesEdit.EditValue).FirstOrDefault();
-                 if (list_price != null)
-                 {
-                     _wbd.BasePrice = Math.Round(list_price.Price.Value, 4);
-                     BasePriceEdit.Value = _wbd.BasePrice.Value;
-                 }
-             }
+            PriceTypesEdit.EditValue = PriceTypesEdit.EditValue == DBNull.Value ? _db.PriceTypes.First(w => w.Def == 1).PTypeId : PriceTypesEdit.EditValue;
 
-             GetDiscount(row.MatId);
-             GetContent(_wbd.WId, row.MatId);
-             SetAmount();
+            var list_price = _db.GetListMatPrices(row.MatId, _wb.CurrId, (int)PriceTypesEdit.EditValue).FirstOrDefault();
+            if (list_price != null)
+            {
+                _wbd.BasePrice = Math.Round(list_price.Price.Value, 4);
+                BasePriceEdit.Value = _wbd.BasePrice.Value;
+            }
+
+            GetDiscount(row.MatId);
+            GetContent(_wbd.WId, row.MatId);
+            SetAmount();
         }
 
         private void GetDiscount(int? MatId)
@@ -276,8 +275,6 @@ namespace SP_Sklad.WBDetForm
                             });
                         }
                     }
-
-                    //   if (WayBillDetAddProps->State == dsInsert || WayBillDetAddProps->State == dsEdit) WayBillDetAddProps->Post();
 
                     _db.SaveChanges();
                     Close();

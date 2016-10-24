@@ -38,8 +38,6 @@ namespace SP_Sklad.SkladData
         public DbSet<DISCCARDS> DISCCARDS { get; set; }
         public DbSet<ENTPARAMS> ENTPARAMS { get; set; }
         public DbSet<MATCHANGE> MATCHANGE { get; set; }
-        public DbSet<MATGROUPPRICES> MATGROUPPRICES { get; set; }
-        public DbSet<MATPRICES> MATPRICES { get; set; }
         public DbSet<TAXES> TAXES { get; set; }
         public DbSet<TAXWB> TAXWB { get; set; }
         public DbSet<WMatTurn> WMatTurn { get; set; }
@@ -88,7 +86,6 @@ namespace SP_Sklad.SkladData
         public DbSet<KAKInd> KAKInd { get; set; }
         public DbSet<KAgentAccount> KAgentAccount { get; set; }
         public DbSet<KAgentPersons> KAgentPersons { get; set; }
-        public DbSet<KAgentSaldo> KAgentSaldo { get; set; }
         public DbSet<KADiscount> KADiscount { get; set; }
         public DbSet<KAMatDiscount> KAMatDiscount { get; set; }
         public DbSet<KAMatGroupDiscount> KAMatGroupDiscount { get; set; }
@@ -129,6 +126,9 @@ namespace SP_Sklad.SkladData
         public DbSet<v_PriceTypes> v_PriceTypes { get; set; }
         public DbSet<BanksPersons> BanksPersons { get; set; }
         public DbSet<Customers> Customers { get; set; }
+        public DbSet<MatGroupPrices> MatGroupPrices { get; set; }
+        public DbSet<MatPrices> MatPrices { get; set; }
+        public DbSet<KAgentSaldo> KAgentSaldo { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)
