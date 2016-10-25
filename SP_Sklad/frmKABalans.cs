@@ -15,7 +15,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad
 {
-    public partial class frmKABalans : Form
+    public partial class frmKABalans : DevExpress.XtraEditors.XtraForm
     {
         public int _ka_id { get; set; }
 

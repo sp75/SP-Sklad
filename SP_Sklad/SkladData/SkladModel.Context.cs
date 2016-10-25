@@ -1899,5 +1899,15 @@ namespace SP_Sklad.SkladData
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillDetOut_Result>("[BaseEntities].[GetWayBillDetOut](@wbill_id)", wbill_idParameter);
         }
+    
+        [EdmFunction("BaseEntities", "GetMatPriceTypes")]
+        public virtual IQueryable<GetMatPriceTypes_Result> GetMatPriceTypes(Nullable<int> mat_id)
+        {
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatPriceTypes_Result>("[BaseEntities].[GetMatPriceTypes](@mat_id)", mat_idParameter);
+        }
     }
 }

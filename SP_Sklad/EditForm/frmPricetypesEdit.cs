@@ -11,7 +11,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad.EditForm
 {
-    public partial class frmPricetypesEdit : Form
+    public partial class frmPricetypesEdit : DevExpress.XtraEditors.XtraForm
     {
         private BaseEntities _db { get; set; }
         private int? _PTypeId { get; set; }

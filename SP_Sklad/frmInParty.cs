@@ -11,7 +11,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad
 {
-    public partial class frmInParty : Form
+    public partial class frmInParty : DevExpress.XtraEditors.XtraForm
     {
         public frmInParty(List<GetPosIn_Result> pos_in)
         {

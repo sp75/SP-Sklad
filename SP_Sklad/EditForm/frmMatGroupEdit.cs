@@ -13,7 +13,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad.EditForm
 {
-    public partial class frmMatGroupEdit : Form
+    public partial class frmMatGroupEdit : DevExpress.XtraEditors.XtraForm
     {
         int? _grp_id { get; set; }
         int? _pid { get; set; }

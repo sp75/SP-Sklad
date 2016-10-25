@@ -14,7 +14,7 @@ using SP_Sklad.WBForm;
 
 namespace SP_Sklad
 {
-    public partial class mainForm : Form
+    public partial class mainForm : DevExpress.XtraEditors.XtraForm
     {
         public static int user_id { get; set; }
         public static int enterprise_id { get; set; }

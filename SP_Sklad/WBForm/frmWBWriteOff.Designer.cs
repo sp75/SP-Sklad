@@ -574,9 +574,9 @@
             this.panelControl5.Controls.Add(this.WaybillDetOutGridControl);
             this.panelControl5.Controls.Add(this.barDockControl1);
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl5.Location = new System.Drawing.Point(0, 239);
+            this.panelControl5.Location = new System.Drawing.Point(0, 237);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(969, 272);
+            this.panelControl5.Size = new System.Drawing.Size(969, 274);
             this.panelControl5.TabIndex = 17;
             // 
             // WaybillDetOutGridControl
@@ -590,7 +590,7 @@
             this.repositoryItemImageComboBox1,
             this.repositoryItemImageComboBox2,
             this.repositoryItemImageComboBox3});
-            this.WaybillDetOutGridControl.Size = new System.Drawing.Size(965, 268);
+            this.WaybillDetOutGridControl.Size = new System.Drawing.Size(965, 270);
             this.WaybillDetOutGridControl.TabIndex = 1;
             this.WaybillDetOutGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WaybillDetOutGridView});
@@ -1046,7 +1046,7 @@
             this.standaloneBarDockControl5.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl5.Location = new System.Drawing.Point(0, 208);
             this.standaloneBarDockControl5.Name = "standaloneBarDockControl5";
-            this.standaloneBarDockControl5.Size = new System.Drawing.Size(969, 31);
+            this.standaloneBarDockControl5.Size = new System.Drawing.Size(969, 29);
             this.standaloneBarDockControl5.Text = "standaloneBarDockControl5";
             // 
             // barDockControlTop

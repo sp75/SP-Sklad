@@ -15,7 +15,7 @@ using DevExpress.XtraTreeList;
 
 namespace SP_Sklad.MainTabs
 {
-    public partial class DirectoriesUserControl : UserControl
+    public partial class DirectoriesUserControl : DevExpress.XtraEditors.XtraUserControl
     {
         GetDirTree_Result focused_tree_node { get; set; }
         public bool isDirectList { get; set; }

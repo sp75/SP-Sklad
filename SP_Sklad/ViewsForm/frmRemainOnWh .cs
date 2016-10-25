@@ -11,7 +11,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad.ViewsForm
 {
-    public partial class frmRemainOnWh : Form
+    public partial class frmRemainOnWh : DevExpress.XtraEditors.XtraForm
     {
         public MatRemainByWh_Result focused_wh
         {

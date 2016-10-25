@@ -21,7 +21,7 @@ using DevExpress.XtraEditors;
 
 namespace SP_Sklad.WBForm
 {
-    public partial class frmWBWriteOff : Form
+    public partial class frmWBWriteOff : DevExpress.XtraEditors.XtraForm
     {
         public BaseEntities _db { get; set; }
         private int? _wbill_id { get; set; }

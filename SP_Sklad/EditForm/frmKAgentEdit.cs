@@ -13,7 +13,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad.EditForm
 {
-    public partial class frmKAgentEdit : Form
+    public partial class frmKAgentEdit : DevExpress.XtraEditors.XtraForm
     {
         int? _ka_id { get; set; }
         int? _k_type { get; set; }

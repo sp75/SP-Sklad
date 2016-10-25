@@ -17,7 +17,7 @@ using EntityState = System.Data.Entity.EntityState;
 
 namespace SP_Sklad.WBDetForm
 {
-    public partial class frmWayBillDetIn : Form
+    public partial class frmWayBillDetIn : DevExpress.XtraEditors.XtraForm
     {
         BaseEntities _db { get; set; }
         private WaybillList _wb { get; set; }

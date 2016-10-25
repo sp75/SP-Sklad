@@ -12,7 +12,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad.MainTabs
 {
-    public partial class ReportUserControl : UserControl
+    public partial class ReportUserControl : DevExpress.XtraEditors.XtraUserControl
     {
         GetReportTree_Result focused_tree_node { get; set; }
 

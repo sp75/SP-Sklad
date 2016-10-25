@@ -21,7 +21,7 @@ using SP_Sklad.Reports;
 
 namespace SP_Sklad.WBForm
 {
-    public partial class frmWayBillOut : Form
+    public partial class frmWayBillOut : DevExpress.XtraEditors.XtraForm
     {
         private int _wtype { get; set; }
         public BaseEntities _db { get; set; }

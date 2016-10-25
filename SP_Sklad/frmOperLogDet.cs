@@ -12,7 +12,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad
 {
-    public partial class frmOperLogDet : Form
+    public partial class frmOperLogDet : DevExpress.XtraEditors.XtraForm
     {
         public frmOperLogDet()
         {

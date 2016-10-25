@@ -20,7 +20,7 @@ using SP_Sklad.Reports;
 
 namespace SP_Sklad.WBForm
 {
-    public partial class frmWBDeboning : Form
+    public partial class frmWBDeboning : DevExpress.XtraEditors.XtraForm
     {
         BaseEntities _db { get; set; }
         private int? _wbill_id { get; set; }

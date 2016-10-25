@@ -23,7 +23,7 @@ using SP_Sklad.WBDetForm;
 
 namespace SP_Sklad.MainTabs
 {
-    public partial class DocsUserControl : UserControl
+    public partial class DocsUserControl : DevExpress.XtraEditors.XtraUserControl
     {
         int cur_wtype = 0;
         int show_null_balance = 1;
@@ -367,8 +367,13 @@ namespace SP_Sklad.MainTabs
                 return;
             }
 
+            bar1.Visible = true;
             switch (focused_tree_node.GType)
             {
+                case 0:
+                    bar1.Visible = false;
+                    break;
+
                 case 1:
                     //GET_RelDocList->DataSource = WayBillListDS;
                     GetWayBillList(cur_wtype);
@@ -912,6 +917,11 @@ namespace SP_Sklad.MainTabs
 
         private void barSubItem1_Popup(object sender, EventArgs e)
         {
+            if (wb_focused_row == null)
+            {
+                return;
+            }
+
             barButtonItem11.Enabled = wb_focused_row.WType == 6;
         }
     }

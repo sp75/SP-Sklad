@@ -11,7 +11,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad
 {
-    public partial class frmLogHistory : Form
+    public partial class frmLogHistory : DevExpress.XtraEditors.XtraForm
     {
         private int? _tab_id { get; set; }
         private int? _id { get; set; }

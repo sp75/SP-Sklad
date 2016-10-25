@@ -12,7 +12,7 @@ using SP_Sklad.Common;
 using SP_Sklad.SkladData;
 namespace SP_Sklad.EditForm
 {
-    public partial class frmMatRecipe : Form
+    public partial class frmMatRecipe : DevExpress.XtraEditors.XtraForm
     {
         int? _rec_id { get; set; }
         int? _r_type { get; set; }

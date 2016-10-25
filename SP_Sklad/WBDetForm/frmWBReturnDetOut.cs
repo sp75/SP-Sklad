@@ -14,7 +14,7 @@ using EntityState = System.Data.Entity.EntityState;
 
 namespace SP_Sklad.WBDetForm
 {
-    public partial class frmWBReturnDetOut : Form
+    public partial class frmWBReturnDetOut : DevExpress.XtraEditors.XtraForm
     {
         BaseEntities _db { get; set; }
         private int? _PosId { get; set; }

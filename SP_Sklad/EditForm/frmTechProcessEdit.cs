@@ -11,7 +11,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad.EditForm
 {
-    public partial class frmTechProcessEdit : Form
+    public partial class frmTechProcessEdit : DevExpress.XtraEditors.XtraForm
     {
         private BaseEntities _db { get; set; }
         private int? _ProcId { get; set; }

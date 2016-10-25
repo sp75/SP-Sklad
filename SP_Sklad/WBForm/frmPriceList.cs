@@ -15,7 +15,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad.WBForm
 {
-    public partial class frmPriceList : Form
+    public partial class frmPriceList : DevExpress.XtraEditors.XtraForm
     {
         private int? _pl_id { get; set; }
         public BaseEntities _db { get; set; }

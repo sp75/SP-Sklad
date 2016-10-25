@@ -13,7 +13,7 @@ using EntityState = System.Data.Entity.EntityState;
 
 namespace SP_Sklad.WBDetForm
 {
-    public partial class frmWBReturnDetIn : Form
+    public partial class frmWBReturnDetIn : DevExpress.XtraEditors.XtraForm
     {
         BaseEntities _db { get; set; }
         private int? _PosId { get; set; }

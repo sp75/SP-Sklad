@@ -130,7 +130,7 @@
             this.standaloneBarDockControl7.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl7.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl7.Name = "standaloneBarDockControl7";
-            this.standaloneBarDockControl7.Size = new System.Drawing.Size(675, 31);
+            this.standaloneBarDockControl7.Size = new System.Drawing.Size(668, 28);
             this.standaloneBarDockControl7.Text = "standaloneBarDockControl7";
             // 
             // barDockControlTop
@@ -354,12 +354,11 @@
             this.mainContentTab.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.mainContentTab.BorderStylePage = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.mainContentTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainContentTab.Location = new System.Drawing.Point(0, 31);
+            this.mainContentTab.Location = new System.Drawing.Point(0, 28);
             this.mainContentTab.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
-            this.mainContentTab.LookAndFeel.UseDefaultLookAndFeel = false;
             this.mainContentTab.Name = "mainContentTab";
             this.mainContentTab.SelectedTabPage = this.xtraTabPage10;
-            this.mainContentTab.Size = new System.Drawing.Size(675, 568);
+            this.mainContentTab.Size = new System.Drawing.Size(668, 571);
             this.mainContentTab.TabIndex = 2;
             this.mainContentTab.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage6,
@@ -369,7 +368,7 @@
             // 
             this.xtraTabPage10.Controls.Add(this.RepGridControl);
             this.xtraTabPage10.Name = "xtraTabPage10";
-            this.xtraTabPage10.Size = new System.Drawing.Size(675, 546);
+            this.xtraTabPage10.Size = new System.Drawing.Size(666, 544);
             this.xtraTabPage10.Text = "Товари";
             // 
             // RepGridControl
@@ -380,7 +379,7 @@
             this.RepGridControl.Name = "RepGridControl";
             this.RepGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1});
-            this.RepGridControl.Size = new System.Drawing.Size(675, 546);
+            this.RepGridControl.Size = new System.Drawing.Size(666, 544);
             this.RepGridControl.TabIndex = 1;
             this.RepGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.RepGridView,
@@ -453,7 +452,7 @@
             // xtraTabPage6
             // 
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(675, 577);
+            this.xtraTabPage6.Size = new System.Drawing.Size(668, 577);
             this.xtraTabPage6.Text = "ViewList";
             // 
             // ReportUserControl

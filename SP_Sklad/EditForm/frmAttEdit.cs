@@ -11,7 +11,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad.EditForm
 {
-    public partial class frmAttEdit : Form
+    public partial class frmAttEdit : DevExpress.XtraEditors.XtraForm
     {
         private WaybillList _wb { get; set; }
 

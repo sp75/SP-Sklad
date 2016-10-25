@@ -12,7 +12,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad.WBDetForm
 {
-    public partial class frmTechProcDet : Form
+    public partial class frmTechProcDet : DevExpress.XtraEditors.XtraForm
     {
         BaseEntities _db { get; set; }
         private int _wbill_id { get; set; }

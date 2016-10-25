@@ -13,7 +13,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad.WBDetForm
 {
-    public partial class frmWBInventoryDet : Form
+    public partial class frmWBInventoryDet : DevExpress.XtraEditors.XtraForm
     {
         BaseEntities _db { get; set; }
         private int? _PosId { get; set; }

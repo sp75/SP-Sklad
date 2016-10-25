@@ -20,7 +20,7 @@ using SP_Sklad.Reports;
 
 namespace SP_Sklad.WBForm
 {
-    public partial class frmWBManufacture : Form
+    public partial class frmWBManufacture : DevExpress.XtraEditors.XtraForm
     {
 
         BaseEntities _db { get; set; }

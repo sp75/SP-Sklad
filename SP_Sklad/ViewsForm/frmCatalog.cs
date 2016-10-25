@@ -11,7 +11,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad.EditForm
 {
-    public partial class frmCatalog : Form
+    public partial class frmCatalog : DevExpress.XtraEditors.XtraForm
     {
         private int? _gtype { get; set; }
         private int? _id { get; set; }

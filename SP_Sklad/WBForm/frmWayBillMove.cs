@@ -21,7 +21,7 @@ using DevExpress.XtraEditors;
 
 namespace SP_Sklad.WBForm
 {
-    public partial class frmWayBillMove : Form
+    public partial class frmWayBillMove : DevExpress.XtraEditors.XtraForm
     {
         private BaseEntities _db { get; set; }
         private int? _wbill_id { get; set; }

@@ -11,7 +11,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad
 {
-    public partial class frmLogin : Form
+    public partial class frmLogin : DevExpress.XtraEditors.XtraForm
     {
         public frmLogin()
         {

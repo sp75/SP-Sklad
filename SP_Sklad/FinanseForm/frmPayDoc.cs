@@ -15,7 +15,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad.FinanseForm
 {
-    public partial class frmPayDoc : Form
+    public partial class frmPayDoc : DevExpress.XtraEditors.XtraForm
     {
         private int? _DocType { get; set; }
         private BaseEntities _db { get; set; }

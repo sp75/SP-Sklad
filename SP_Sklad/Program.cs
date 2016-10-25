@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.Data.Filtering;
 using DevExpress.Skins;
+using DevExpress.UserSkins;
 
 namespace SP_Sklad
 {
@@ -16,14 +17,11 @@ namespace SP_Sklad
         [STAThread]
         static void Main()
         {
-          
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            DevExpress.UserSkins.BonusSkins.Register();
-        //    DevExpress.Skins.SkinManager.EnableFormSkins();
-        //    DevExpress.Skins.SkinManager.EnableMdiFormSkins();
-       //     DevExpress.LookAndFeel.LookAndFeelHelper.ForceDefaultLookAndFeelChanged();
+
+            BonusSkins.Register();
+            SkinManager.EnableFormSkins();
             Application.Run(new frmLogin());
         }
     }

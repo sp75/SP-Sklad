@@ -15,7 +15,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad
 {
-    public partial class frmMatRSV : Form
+    public partial class frmMatRSV : DevExpress.XtraEditors.XtraForm
     {
         private int _mat_id { get; set; }
         private BaseEntities _db { get; set; }

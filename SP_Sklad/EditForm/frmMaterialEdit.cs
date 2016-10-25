@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,12 +13,13 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad.EditForm
 {
-    public partial class frmMaterialEdit : Form
+    public partial class frmMaterialEdit : DevExpress.XtraEditors.XtraForm
     {
         int? _mat_id { get; set; }
         int? _mat_grp { get; set; }
         private Materials _mat { get; set; }
-        BaseEntities _db { get; set; }
+        private BaseEntities _db { get; set; }
+        private DbContextTransaction current_transaction { get; set; }
 
         public frmMaterialEdit(int? MatId =null, int? MatGrp = null)
         {
@@ -25,6 +27,7 @@ namespace SP_Sklad.EditForm
             _mat_id = MatId;
             _mat_grp = MatGrp;
             _db = DB.SkladBase();
+            current_transaction = _db.Database.BeginTransaction();
         }
 
         private void frmMaterialEdit_Load(object sender, EventArgs e)
@@ -54,6 +57,8 @@ namespace SP_Sklad.EditForm
                     NDS = 0,
                     GrpId = _mat_grp
                 });
+                _db.SaveChanges();
+                _mat_id = _mat.MatId;
             }
             else
             {
@@ -69,7 +74,18 @@ namespace SP_Sklad.EditForm
                 ProducerLookUpEdit.Properties.DataSource = DB.SkladBase().Materials.Select(s => new { s.Producer }).Distinct().ToList();
                 CIdLookUpEdit.Properties.DataSource = DBHelper.CountersList;
 
-                MaterialsBS.DataSource = _mat;               
+                MaterialsBS.DataSource = _mat;
+
+                MatPriceGridControl.DataSource = _db.GetMatPriceTypes(_mat_id).ToList().Select(s => new
+                {
+                    s.PTypeId,
+                    s.Name,
+                    s.TypeName,
+                    s.IsIndividually,
+                    Summary = (s.PPTypeId == null || s.ExtraType == 2 || s.ExtraType == 3)
+                                                ? ((s.PPTypeId == null) ? s.OnValue.Value.ToString("0.00") + "% на ціну прихода" : (s.ExtraType == 2) ? s.OnValue.Value.ToString("0.00") + "% на категорію " + s.PtName : (s.ExtraType == 3) ? s.OnValue.Value.ToString("0.00") + "% на прайс-лист " + s.PtName : "")
+                                                : s.OnValue.Value.ToString("0.00") + "% від " + s.PtName
+                });
              }
 
         }
@@ -84,11 +100,18 @@ namespace SP_Sklad.EditForm
         private void OkButton_Click(object sender, EventArgs e)
         {
             _db.SaveChanges();
+            current_transaction.Commit();
         }
 
         private void frmMaterialEdit_FormClosed(object sender, FormClosedEventArgs e)
         {
+            if (current_transaction.UnderlyingTransaction.Connection != null)
+            {
+                current_transaction.Rollback();
+            }
+
             _db.Dispose();
+            current_transaction.Dispose();
         }
 
         private void frmMaterialEdit_Shown(object sender, EventArgs e)

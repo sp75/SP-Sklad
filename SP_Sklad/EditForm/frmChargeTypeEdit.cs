@@ -7,11 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 using SP_Sklad.SkladData;
 
 namespace SP_Sklad.EditForm
 {
-    public partial class frmChargeTypeEdit : Form
+    public partial class frmChargeTypeEdit : XtraForm
     {
         private BaseEntities _db { get; set; }
         private int? _CTypeId { get; set; }

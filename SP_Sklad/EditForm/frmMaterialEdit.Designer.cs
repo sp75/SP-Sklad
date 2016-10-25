@@ -81,6 +81,13 @@
             this.treeListLookUpEdit1TreeList = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.MatPriceGridControl = new DevExpress.XtraGrid.GridControl();
+            this.MatPriceGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
@@ -105,6 +112,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.textEdit8 = new DevExpress.XtraEditors.MemoEdit();
+            this.MatPriceTypesBS = new System.Windows.Forms.BindingSource(this.components);
+            this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeList)).BeginInit();
@@ -131,6 +140,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.MsrComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrpIdEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).BeginInit();
+            this.xtraTabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MatPriceGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatPriceGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             this.xtraTabPage5.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -146,6 +159,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.xtraTabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit8.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatPriceTypesBS)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl2
@@ -236,6 +250,7 @@
             this.ImageList.Images.SetKeyName(11, "Ц_нов_ кат.bmp");
             this.ImageList.Images.SetKeyName(12, "Одиниц_ вим_ру.bmp");
             this.ImageList.Images.SetKeyName(13, "Країни.bmp");
+            this.ImageList.Images.SetKeyName(14, "Right.bmp");
             // 
             // xtraTabControl1
             // 
@@ -253,7 +268,8 @@
             this.xtraTabPage4,
             this.xtraTabPage5,
             this.xtraTabPage6,
-            this.xtraTabPage7});
+            this.xtraTabPage7,
+            this.xtraTabPage8});
             // 
             // xtraTabPage1
             // 
@@ -714,9 +730,81 @@
             // 
             // xtraTabPage2
             // 
+            this.xtraTabPage2.Controls.Add(this.MatPriceGridControl);
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(607, 388);
             this.xtraTabPage2.Text = "Ціноутворення";
+            // 
+            // MatPriceGridControl
+            // 
+            this.MatPriceGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MatPriceGridControl.Location = new System.Drawing.Point(0, 0);
+            this.MatPriceGridControl.MainView = this.MatPriceGridView;
+            this.MatPriceGridControl.MenuManager = this.barManager1;
+            this.MatPriceGridControl.Name = "MatPriceGridControl";
+            this.MatPriceGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemCheckEdit1});
+            this.MatPriceGridControl.Size = new System.Drawing.Size(607, 388);
+            this.MatPriceGridControl.TabIndex = 8;
+            this.MatPriceGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.MatPriceGridView});
+            // 
+            // MatPriceGridView
+            // 
+            this.MatPriceGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn6,
+            this.gridColumn7,
+            this.gridColumn1,
+            this.gridColumn2});
+            this.MatPriceGridView.GridControl = this.MatPriceGridControl;
+            this.MatPriceGridView.Name = "MatPriceGridView";
+            this.MatPriceGridView.OptionsBehavior.AllowIncrementalSearch = true;
+            this.MatPriceGridView.OptionsBehavior.Editable = false;
+            this.MatPriceGridView.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "Цінова катогорія";
+            this.gridColumn6.FieldName = "Name";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 0;
+            this.gridColumn6.Width = 156;
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "Індивідуальна";
+            this.gridColumn7.ColumnEdit = this.repositoryItemCheckEdit1;
+            this.gridColumn7.FieldName = "IsIndividually";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 3;
+            this.gridColumn7.Width = 59;
+            // 
+            // repositoryItemCheckEdit1
+            // 
+            this.repositoryItemCheckEdit1.AutoHeight = false;
+            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+            this.repositoryItemCheckEdit1.ValueChecked = 1;
+            this.repositoryItemCheckEdit1.ValueUnchecked = 0;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Спосіб ціноутворення";
+            this.gridColumn1.FieldName = "TypeName";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 1;
+            this.gridColumn1.Width = 122;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Ціна/Націнка/Знижка";
+            this.gridColumn2.FieldName = "Summary";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 2;
+            this.gridColumn2.Width = 252;
             // 
             // xtraTabPage3
             // 
@@ -970,6 +1058,16 @@
             this.textEdit8.Size = new System.Drawing.Size(607, 388);
             this.textEdit8.TabIndex = 35;
             // 
+            // MatPriceTypesBS
+            // 
+            this.MatPriceTypesBS.DataSource = typeof(SP_Sklad.SkladData.GetMatPriceTypes_Result);
+            // 
+            // xtraTabPage8
+            // 
+            this.xtraTabPage8.Name = "xtraTabPage8";
+            this.xtraTabPage8.Size = new System.Drawing.Size(607, 388);
+            this.xtraTabPage8.Text = "Ціна";
+            // 
             // frmMaterialEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1019,6 +1117,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.MsrComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrpIdEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).EndInit();
+            this.xtraTabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.MatPriceGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatPriceGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             this.xtraTabPage5.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
@@ -1035,6 +1137,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.xtraTabPage7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textEdit8.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatPriceTypesBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1116,6 +1219,15 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private DevExpress.XtraEditors.MemoEdit textEdit8;
         public DevExpress.XtraEditors.SimpleButton OkButton;
+        private DevExpress.XtraGrid.GridControl MatPriceGridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView MatPriceGridView;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private System.Windows.Forms.BindingSource MatPriceTypesBS;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage8;
 
     }
 }

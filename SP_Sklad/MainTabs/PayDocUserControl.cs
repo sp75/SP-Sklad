@@ -12,7 +12,7 @@ using SP_Sklad.Common;
 
 namespace SP_Sklad.MainTabs
 {
-    public partial class PayDocUserControl : UserControl
+    public partial class PayDocUserControl : DevExpress.XtraEditors.XtraUserControl
     {
         BaseEntities _db { get; set; }
         private WaybillList _wb { get; set; }

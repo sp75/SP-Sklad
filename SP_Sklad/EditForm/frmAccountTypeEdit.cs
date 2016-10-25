@@ -11,7 +11,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad.EditForm
 {
-    public partial class frmAccountTypeEdit : Form
+    public partial class frmAccountTypeEdit : DevExpress.XtraEditors.XtraForm
     {
         private BaseEntities _db { get; set; }
         private int? _TypeId { get; set; }

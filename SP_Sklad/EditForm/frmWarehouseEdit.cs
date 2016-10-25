@@ -11,7 +11,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad.EditForm
 {
-    public partial class frmWarehouseEdit : Form
+    public partial class frmWarehouseEdit : DevExpress.XtraEditors.XtraForm
     {
         private BaseEntities _db { get; set; }
        private int? _wid { get; set; }

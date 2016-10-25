@@ -11,7 +11,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad.EditForm
 {
-    public partial class frmCashdesksEdit : Form
+    public partial class frmCashdesksEdit : DevExpress.XtraEditors.XtraForm
     {
         private BaseEntities _db { get; set; }
         private int? _CashId { get; set; }

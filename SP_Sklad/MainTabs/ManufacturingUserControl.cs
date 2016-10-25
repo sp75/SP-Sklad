@@ -20,7 +20,7 @@ using SP_Sklad.Reports;
 
 namespace SP_Sklad.MainTabs
 {
-    public partial class ManufacturingUserControl : UserControl
+    public partial class ManufacturingUserControl : DevExpress.XtraEditors.XtraUserControl
     {
         GetManufactureTree_Result focused_tree_node { get; set; }
         WBListMake_Result focused_row { get; set; }

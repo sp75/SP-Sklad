@@ -19,7 +19,7 @@ using SP_Sklad.Reports;
 
 namespace SP_Sklad.MainTabs
 {
-    public partial class WarehouseUserControl : UserControl
+    public partial class WarehouseUserControl : DevExpress.XtraEditors.XtraUserControl
     {
         int wid = 0;
         string wh_list = "*";

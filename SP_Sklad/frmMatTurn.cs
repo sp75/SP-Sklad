@@ -15,7 +15,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad
 {
-    public partial class frmMatTurn : Form
+    public partial class frmMatTurn : DevExpress.XtraEditors.XtraForm
     {
         public int _mat_id { get; set; }
         private bool is_show { get; set; }

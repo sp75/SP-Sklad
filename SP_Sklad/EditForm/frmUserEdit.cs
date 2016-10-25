@@ -14,7 +14,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad.EditForm
 {
-    public partial class frmUserEdit : Form
+    public partial class frmUserEdit : DevExpress.XtraEditors.XtraForm
     {
         int? _user_id { get; set; }
         private Users _u { get; set; }

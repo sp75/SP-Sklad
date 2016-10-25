@@ -15,7 +15,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad
 {
-    public partial class frmOrderedList : Form
+    public partial class frmOrderedList : DevExpress.XtraEditors.XtraForm
     {
         private bool is_show { get; set; }
         private int _ka_id { get; set; }

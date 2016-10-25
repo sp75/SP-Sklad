@@ -19,7 +19,7 @@ using EntityState = System.Data.Entity.EntityState;
 
 namespace SP_Sklad.WBForm
 {
-    public partial class frmWBWriteOn : Form
+    public partial class frmWBWriteOn : DevExpress.XtraEditors.XtraForm
     {
         public  BaseEntities _db { get; set; }
         public int? _wbill_id { get; set; }

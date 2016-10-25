@@ -11,7 +11,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad
 {
-    public partial class frmLockApp : Form
+    public partial class frmLockApp : DevExpress.XtraEditors.XtraForm
     {
         public static Users _users { get; set; }
         private bool is_close { get; set; }

@@ -33,6 +33,7 @@
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.NotesTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.PriceTypesBS = new System.Windows.Forms.BindingSource(this.components);
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.DefCheckBox = new DevExpress.XtraEditors.CheckEdit();
@@ -47,10 +48,10 @@
             this.checkEdit3 = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.PriceTypesBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceTypesBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DefCheckBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -65,7 +66,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PriceTypesBS)).BeginInit();
             this.SuspendLayout();
             // 
             // BottomPanel
@@ -109,6 +109,10 @@
             this.NotesTextEdit.Size = new System.Drawing.Size(591, 22);
             this.NotesTextEdit.StyleController = this.styleController1;
             this.NotesTextEdit.TabIndex = 40;
+            // 
+            // PriceTypesBS
+            // 
+            this.PriceTypesBS.DataSource = typeof(SP_Sklad.SkladData.PriceTypes);
             // 
             // styleController1
             // 
@@ -298,10 +302,6 @@
             this.panelControl1.Size = new System.Drawing.Size(639, 324);
             this.panelControl1.TabIndex = 43;
             // 
-            // PriceTypesBS
-            // 
-            this.PriceTypesBS.DataSource = typeof(SP_Sklad.SkladData.PriceTypes);
-            // 
             // frmPricetypesEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -309,7 +309,7 @@
             this.ClientSize = new System.Drawing.Size(639, 376);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.BottomPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmPricetypesEdit";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -318,6 +318,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).EndInit();
             this.BottomPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceTypesBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DefCheckBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
@@ -334,7 +335,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PriceTypesBS)).EndInit();
             this.ResumeLayout(false);
 
         }

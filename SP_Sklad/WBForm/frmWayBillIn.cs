@@ -20,7 +20,7 @@ using SP_Sklad.Common;
 
 namespace SP_Sklad.WBForm
 {
-    public partial class frmWayBillIn : Form
+    public partial class frmWayBillIn : DevExpress.XtraEditors.XtraForm
     {
         private int _wtype { get; set; }
         public BaseEntities _db { get; set; }

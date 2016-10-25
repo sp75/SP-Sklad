@@ -13,7 +13,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad.EditForm
 {
-    public partial class frmBanksEdit : Form
+    public partial class frmBanksEdit : DevExpress.XtraEditors.XtraForm
     {
         private BaseEntities _db { get; set; }
         private DbContextTransaction current_transaction { get; set; }

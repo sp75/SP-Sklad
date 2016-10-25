@@ -11,7 +11,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad.ViewsForm
 {
-    public partial class frmManufacturing : Form
+    public partial class frmManufacturing : DevExpress.XtraEditors.XtraForm
     {
 
         public WBListMake_Result wb_focused_row

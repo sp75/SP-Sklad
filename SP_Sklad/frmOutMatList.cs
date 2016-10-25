@@ -12,7 +12,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad
 {
-    public partial class frmOutMatList : Form
+    public partial class frmOutMatList : DevExpress.XtraEditors.XtraForm
     {
         private BaseEntities _db { get; set; }
         private DateTime _startDate { get; set; }

@@ -17,7 +17,7 @@ using SP_Sklad.Reports;
 
 namespace SP_Sklad.WBForm
 {
-    public partial class frmWBReturnOut : Form
+    public partial class frmWBReturnOut : DevExpress.XtraEditors.XtraForm
     {
         private int _wtype { get; set; }
         public BaseEntities _db { get; set; }

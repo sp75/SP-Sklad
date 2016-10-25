@@ -17,7 +17,7 @@ using EntityState = System.Data.Entity.EntityState;
 
 namespace SP_Sklad.WBForm
 {
-    public partial class frmWBInventory : Form
+    public partial class frmWBInventory : DevExpress.XtraEditors.XtraForm
     {
         BaseEntities _db { get; set; }
         private int? _wbill_id { get; set; }

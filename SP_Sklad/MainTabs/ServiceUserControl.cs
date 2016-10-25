@@ -13,7 +13,7 @@ using SP_Sklad.Common;
 
 namespace SP_Sklad.MainTabs
 {
-    public partial class ServiceUserControl : UserControl
+    public partial class ServiceUserControl : DevExpress.XtraEditors.XtraUserControl
     {
         GetServiceTree_Result focused_tree_node { get; set; }
 

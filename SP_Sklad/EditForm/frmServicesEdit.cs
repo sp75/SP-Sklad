@@ -12,7 +12,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad.EditForm
 {
-    public partial class frmServicesEdit : Form
+    public partial class frmServicesEdit : DevExpress.XtraEditors.XtraForm
     {
         int? _svc_id { get; set; }
         int? _svc_grp { get; set; }

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace SP_Sklad
 {
-    public partial class frmOutParty : Form
+    public partial class frmOutParty : DevExpress.XtraEditors.XtraForm
     {
         public frmOutParty()
         {

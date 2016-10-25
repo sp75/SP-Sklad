@@ -14,7 +14,7 @@ using SP_Sklad.Properties;
 
 namespace SP_Sklad.MainTabs
 {
-    public partial class FinancesUserControl : UserControl
+    public partial class FinancesUserControl : DevExpress.XtraEditors.XtraUserControl
     {
         int cur_wtype = 0;
 

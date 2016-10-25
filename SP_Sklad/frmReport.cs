@@ -13,7 +13,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad
 {
-    public partial class frmReport : Form
+    public partial class frmReport : DevExpress.XtraEditors.XtraForm
     {
         int _rep_id { get; set; }
 
