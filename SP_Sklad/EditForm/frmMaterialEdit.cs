@@ -28,6 +28,10 @@ namespace SP_Sklad.EditForm
             _mat_grp = MatGrp;
             _db = DB.SkladBase();
             current_transaction = _db.Database.BeginTransaction();
+
+            ExtraTypeLookUpEdit.Properties.DataSource = new List<object>() { new { Id = 0, Name = "На ціну приходу" }, new { Id = 2, Name = "На категорію" }, new { Id = 3, Name = "Прайс-лист" } };
+
+            lookUpEdit1.Properties.DataSource = _db.PriceList.Select(s => new { s.PlId, s.Name }).ToList();
         }
 
         private void frmMaterialEdit_Load(object sender, EventArgs e)
@@ -42,7 +46,7 @@ namespace SP_Sklad.EditForm
             tree.Add(new CatalogTreeList { Id = 4, ParentId = 255, Text = "Посвідчення", ImgIdx = 4, TabIdx = 4 });
             tree.Add(new CatalogTreeList { Id = 5, ParentId = 255, Text = "Зображення", ImgIdx = 5, TabIdx = 5 });
             tree.Add(new CatalogTreeList { Id = 6, ParentId = 255, Text = "Примітка", ImgIdx = 6, TabIdx = 6 });
-            DirTreeList.DataSource = tree;
+      //      DirTreeList.DataSource = tree;
 
 
             if (_mat_id == null)
@@ -76,16 +80,37 @@ namespace SP_Sklad.EditForm
 
                 MaterialsBS.DataSource = _mat;
 
-                MatPriceGridControl.DataSource = _db.GetMatPriceTypes(_mat_id).ToList().Select(s => new
+                var prices = _db.GetMatPriceTypes(_mat_id).ToList().Select(s => new
                 {
                     s.PTypeId,
                     s.Name,
                     s.TypeName,
                     s.IsIndividually,
-                    Summary = (s.PPTypeId == null || s.ExtraType == 2 || s.ExtraType == 3)
-                                                ? ((s.PPTypeId == null) ? s.OnValue.Value.ToString("0.00") + "% на ціну прихода" : (s.ExtraType == 2) ? s.OnValue.Value.ToString("0.00") + "% на категорію " + s.PtName : (s.ExtraType == 3) ? s.OnValue.Value.ToString("0.00") + "% на прайс-лист " + s.PtName : "")
-                                                : s.OnValue.Value.ToString("0.00") + "% від " + s.PtName
+                    Summary = s.ExtraType == 1 ? s.OnValue.Value.ToString("0.00") + " (Фіксована ціна)" : (s.PPTypeId == null || s.ExtraType == 2 || s.ExtraType == 3)
+                                                ? ((s.PPTypeId == null) ? s.OnValue.Value.ToString("0.00") + "% на ціну прихода" : (s.ExtraType == 2) 
+                                                ? s.OnValue.Value.ToString("0.00") + "% на категорію " + s.PtName : (s.ExtraType == 3) 
+                                                ? s.OnValue.Value.ToString("0.00") + "% на прайс-лист " + s.PtName : "")
+                                                : s.OnValue.Value.ToString("0.00") + "% від " + s.PtName,
+                    s.Dis
+                  
                 });
+
+                foreach (var item in prices)
+                {
+                    tree.Add(new CatalogTreeList
+                    {
+                        Id = tree.Max(m => m.Id) + 1,
+                        ParentId = 1,
+                        Text = item.Name,
+                        ImgIdx = item.Dis == 1 ? 15 : 14,
+                        TabIdx = 7,
+                        DataSetId = item.PTypeId
+                    });
+                }
+                DirTreeList.DataSource = tree;
+                DirTreeList.ExpandAll();
+
+                MatPriceGridControl.DataSource = prices;
              }
 
         }
@@ -95,6 +120,18 @@ namespace SP_Sklad.EditForm
             var focused_tree_node = DirTreeList.GetDataRecordByNode(e.Node) as CatalogTreeList;
 
             xtraTabControl1.SelectedTabPageIndex = focused_tree_node.TabIdx;
+
+
+            if (focused_tree_node.ParentId == 1)
+            {
+                var pt = _db.GetMatPriceTypes(_mat_id).FirstOrDefault(w => w.PTypeId == focused_tree_node.DataSetId);
+                MatPriceTypesBS.DataSource = pt;
+
+                lookUpEdit2.Properties.DataSource = _db.PriceTypes.Where(w => w.PTypeId != pt.PTypeId).Select(s => new { s.PTypeId, s.Name }).ToList();
+                lookUpEdit3.Properties.DataSource = lookUpEdit2.Properties.DataSource;
+
+                
+            }
         }
 
         private void OkButton_Click(object sender, EventArgs e)
