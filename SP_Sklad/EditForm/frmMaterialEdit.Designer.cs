@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMaterialEdit));
-            DevExpress.XtraPrinting.BarCode.Code39Generator code39Generator1 = new DevExpress.XtraPrinting.BarCode.Code39Generator();
+            DevExpress.XtraPrinting.BarCode.Code39Generator code39Generator4 = new DevExpress.XtraPrinting.BarCode.Code39Generator();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -124,7 +124,7 @@
             this.checkEdit5 = new DevExpress.XtraEditors.CheckEdit();
             this.MatPriceTypesBS = new System.Windows.Forms.BindingSource(this.components);
             this.CustomPriceEdit = new DevExpress.XtraEditors.CalcEdit();
-            this.lookUpEdit4 = new DevExpress.XtraEditors.LookUpEdit();
+            this.CurrLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
             this.AutoCalcPriceCheckEdit = new DevExpress.XtraEditors.CheckEdit();
             this.CustomPriceCheckEdit = new DevExpress.XtraEditors.CheckEdit();
@@ -194,7 +194,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit5.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPriceTypesBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CustomPriceEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit4.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AutoCalcPriceCheckEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CustomPriceCheckEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AutoCalcGroupControl)).BeginInit();
@@ -446,8 +446,8 @@
             this.barCodeControl1.Padding = new System.Windows.Forms.Padding(10, 2, 10, 0);
             this.barCodeControl1.ShowText = false;
             this.barCodeControl1.Size = new System.Drawing.Size(261, 22);
-            code39Generator1.WideNarrowRatio = 3F;
-            this.barCodeControl1.Symbology = code39Generator1;
+            code39Generator4.WideNarrowRatio = 3F;
+            this.barCodeControl1.Symbology = code39Generator4;
             this.barCodeControl1.TabIndex = 30;
             // 
             // panel1
@@ -1180,7 +1180,7 @@
             // 
             this.CustomPricePanel.Controls.Add(this.checkEdit5);
             this.CustomPricePanel.Controls.Add(this.CustomPriceEdit);
-            this.CustomPricePanel.Controls.Add(this.lookUpEdit4);
+            this.CustomPricePanel.Controls.Add(this.CurrLookUpEdit);
             this.CustomPricePanel.Controls.Add(this.labelControl17);
             this.CustomPricePanel.Location = new System.Drawing.Point(30, 234);
             this.CustomPricePanel.Name = "CustomPricePanel";
@@ -1211,28 +1211,27 @@
             this.CustomPriceEdit.Name = "CustomPriceEdit";
             this.CustomPriceEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.CustomPriceEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
             this.CustomPriceEdit.Size = new System.Drawing.Size(110, 22);
             this.CustomPriceEdit.StyleController = this.styleController1;
             this.CustomPriceEdit.TabIndex = 40;
             // 
-            // lookUpEdit4
+            // CurrLookUpEdit
             // 
-            this.lookUpEdit4.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatPriceTypesBS, "CurrId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.lookUpEdit4.Location = new System.Drawing.Point(174, 13);
-            this.lookUpEdit4.Name = "lookUpEdit4";
-            this.lookUpEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.CurrLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatPriceTypesBS, "CurrId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.CurrLookUpEdit.Location = new System.Drawing.Point(174, 13);
+            this.CurrLookUpEdit.Name = "CurrLookUpEdit";
+            this.CurrLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEdit4.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            this.CurrLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
-            this.lookUpEdit4.Properties.DisplayMember = "Name";
-            this.lookUpEdit4.Properties.ShowFooter = false;
-            this.lookUpEdit4.Properties.ShowHeader = false;
-            this.lookUpEdit4.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.lookUpEdit4.Properties.ValueMember = "Id";
-            this.lookUpEdit4.Size = new System.Drawing.Size(92, 22);
-            this.lookUpEdit4.StyleController = this.styleController1;
-            this.lookUpEdit4.TabIndex = 72;
+            this.CurrLookUpEdit.Properties.DisplayMember = "ShortName";
+            this.CurrLookUpEdit.Properties.ShowFooter = false;
+            this.CurrLookUpEdit.Properties.ShowHeader = false;
+            this.CurrLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.CurrLookUpEdit.Properties.ValueMember = "CurrId";
+            this.CurrLookUpEdit.Size = new System.Drawing.Size(92, 22);
+            this.CurrLookUpEdit.StyleController = this.styleController1;
+            this.CurrLookUpEdit.TabIndex = 72;
             // 
             // labelControl17
             // 
@@ -1298,7 +1297,6 @@
             this.calcEdit2.Name = "calcEdit2";
             this.calcEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcEdit2.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
             this.calcEdit2.Size = new System.Drawing.Size(86, 22);
             this.calcEdit2.StyleController = this.styleController1;
             this.calcEdit2.TabIndex = 75;
@@ -1384,7 +1382,6 @@
             this.calcEdit1.Name = "calcEdit1";
             this.calcEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
             this.calcEdit1.Size = new System.Drawing.Size(86, 22);
             this.calcEdit1.StyleController = this.styleController1;
             this.calcEdit1.TabIndex = 68;
@@ -1536,7 +1533,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit5.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPriceTypesBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CustomPriceEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit4.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AutoCalcPriceCheckEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CustomPriceCheckEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AutoCalcGroupControl)).EndInit();
@@ -1654,7 +1651,7 @@
         private DevExpress.XtraEditors.CheckEdit checkEdit3;
         private DevExpress.XtraEditors.LabelControl labelControl16;
         private DevExpress.XtraEditors.CheckEdit checkEdit5;
-        private DevExpress.XtraEditors.LookUpEdit lookUpEdit4;
+        private DevExpress.XtraEditors.LookUpEdit CurrLookUpEdit;
         private DevExpress.XtraEditors.LabelControl labelControl17;
         private DevExpress.XtraEditors.CheckEdit CustomPriceCheckEdit;
         private DevExpress.XtraEditors.CheckEdit AutoCalcPriceCheckEdit;

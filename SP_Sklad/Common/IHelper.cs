@@ -25,14 +25,11 @@ namespace SP_Sklad.Common
         {
             get
             {
-
-                return DBHelper.CommonParam.TemplatePatch;
-                /*
 #if DEBUG
-                return Path.Combine(@"c:\WinVSProjects\SP-Sklad\SP_Sklad\", "TempLate");
+                return Path.Combine( @"c:\WinVSProjects\SP-Sklad\SP_Sklad\", "TempLate" );
 #else
-               return Path.Combine(Application.StartupPath, "TempLate" );
-#endif*/
+               return DBHelper.CommonParam.TemplatePatch;
+#endif
             }
         }
 
@@ -41,7 +38,7 @@ namespace SP_Sklad.Common
             get
             {
 #if DEBUG
-                return Path.Combine(@"c:\WinVSProjects\SP-Sklad\SP_Sklad\", "Rep");
+                return Path.Combine( @"c:\WinVSProjects\SP-Sklad\SP_Sklad\", "Rep" );
 #else
                return Path.Combine(Application.StartupPath, "Rep" );
 #endif

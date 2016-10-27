@@ -35,6 +35,7 @@ namespace SP_Sklad.EditForm
             ExtraTypeLookUpEdit.Properties.DataSource = new List<object>() { new { Id = 0, Name = "На ціну приходу" }, new { Id = 2, Name = "На категорію" }, new { Id = 3, Name = "Прайс-лист" } };
 
             lookUpEdit1.Properties.DataSource = _db.PriceList.Select(s => new { s.PlId, s.Name }).ToList();
+            CurrLookUpEdit.Properties.DataSource = DBHelper.Currency;
             tree = new List<CatalogTreeList>();
         }
 
@@ -290,9 +291,8 @@ namespace SP_Sklad.EditForm
 
             if (AutoCalcPriceCheckEdit.Checked && AutoCalcPriceCheckEdit.ContainsFocus)
             {
-                _mat_prices.ExtraType = 0;
+                ExtraTypeLookUpEdit.EditValue = 0;
                 _mat_prices.PPTypeId = null;
-//                ExtraTypeLookUpEdit.EditValue = 0;
                 _db.SaveChanges();
             }
         }
