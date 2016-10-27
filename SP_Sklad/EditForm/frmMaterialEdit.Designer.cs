@@ -37,6 +37,7 @@
             this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
             this.DirTreeList = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.TreeListBS = new System.Windows.Forms.BindingSource(this.components);
             this.ImageList = new System.Windows.Forms.ImageList(this.components);
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
@@ -81,7 +82,11 @@
             this.treeListLookUpEdit1TreeList = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.AddPriceBtn = new DevExpress.XtraEditors.SimpleButton();
+            this.DelPriceBtn = new DevExpress.XtraEditors.SimpleButton();
+            this.EditPriceBtn = new DevExpress.XtraEditors.SimpleButton();
             this.MatPriceGridControl = new DevExpress.XtraGrid.GridControl();
+            this.MatPriceForGridBS = new System.Windows.Forms.BindingSource(this.components);
             this.MatPriceGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -113,17 +118,17 @@
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.textEdit8 = new DevExpress.XtraEditors.MemoEdit();
             this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
-            this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.CommentLabel = new DevExpress.XtraEditors.LabelControl();
+            this.PricePanel = new System.Windows.Forms.Panel();
+            this.CustomPricePanel = new System.Windows.Forms.Panel();
             this.checkEdit5 = new DevExpress.XtraEditors.CheckEdit();
-            this.NotesTextEdit = new DevExpress.XtraEditors.CalcEdit();
+            this.MatPriceTypesBS = new System.Windows.Forms.BindingSource(this.components);
+            this.CustomPriceEdit = new DevExpress.XtraEditors.CalcEdit();
             this.lookUpEdit4 = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
-            this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
-            this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
-            this.DisCheckBox = new DevExpress.XtraEditors.CheckEdit();
-            this.MatPriceTypesBS = new System.Windows.Forms.BindingSource(this.components);
-            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.AutoCalcPriceCheckEdit = new DevExpress.XtraEditors.CheckEdit();
+            this.CustomPriceCheckEdit = new DevExpress.XtraEditors.CheckEdit();
+            this.AutoCalcGroupControl = new DevExpress.XtraEditors.GroupControl();
             this.calcEdit2 = new DevExpress.XtraEditors.CalcEdit();
             this.lookUpEdit3 = new DevExpress.XtraEditors.LookUpEdit();
             this.lookUpEdit2 = new DevExpress.XtraEditors.LookUpEdit();
@@ -133,9 +138,13 @@
             this.checkEdit4 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit3 = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
+            this.DisCheckBox = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TreeListBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -161,6 +170,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).BeginInit();
             this.xtraTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MatPriceGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatPriceForGridBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPriceGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             this.xtraTabPage5.SuspendLayout();
@@ -179,18 +189,16 @@
             this.xtraTabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit8.Properties)).BeginInit();
             this.xtraTabPage8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
-            this.panelControl3.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.PricePanel.SuspendLayout();
+            this.CustomPricePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit5.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit4.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DisCheckBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPriceTypesBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
-            this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CustomPriceEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit4.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AutoCalcPriceCheckEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CustomPriceCheckEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AutoCalcGroupControl)).BeginInit();
+            this.AutoCalcGroupControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).BeginInit();
@@ -199,6 +207,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).BeginInit();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DisCheckBox.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl2
@@ -246,6 +256,7 @@
             this.DirTreeList.Appearance.FocusedCell.Options.UseBackColor = true;
             this.DirTreeList.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.treeListColumn1});
+            this.DirTreeList.DataSource = this.TreeListBS;
             this.DirTreeList.Dock = System.Windows.Forms.DockStyle.Left;
             this.DirTreeList.ImageIndexFieldName = "ImgIdx";
             this.DirTreeList.KeyFieldName = "Id";
@@ -770,23 +781,57 @@
             // 
             // xtraTabPage2
             // 
+            this.xtraTabPage2.Controls.Add(this.AddPriceBtn);
+            this.xtraTabPage2.Controls.Add(this.DelPriceBtn);
+            this.xtraTabPage2.Controls.Add(this.EditPriceBtn);
             this.xtraTabPage2.Controls.Add(this.MatPriceGridControl);
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(607, 388);
             this.xtraTabPage2.Text = "Ціноутворення";
+            // 
+            // AddPriceBtn
+            // 
+            this.AddPriceBtn.Image = ((System.Drawing.Image)(resources.GetObject("AddPriceBtn.Image")));
+            this.AddPriceBtn.Location = new System.Drawing.Point(10, 18);
+            this.AddPriceBtn.Name = "AddPriceBtn";
+            this.AddPriceBtn.Size = new System.Drawing.Size(106, 23);
+            this.AddPriceBtn.TabIndex = 14;
+            this.AddPriceBtn.Text = "Додати...";
+            this.AddPriceBtn.Click += new System.EventHandler(this.AddPriceBtn_Click);
+            // 
+            // DelPriceBtn
+            // 
+            this.DelPriceBtn.Image = ((System.Drawing.Image)(resources.GetObject("DelPriceBtn.Image")));
+            this.DelPriceBtn.Location = new System.Drawing.Point(234, 18);
+            this.DelPriceBtn.Name = "DelPriceBtn";
+            this.DelPriceBtn.Size = new System.Drawing.Size(101, 23);
+            this.DelPriceBtn.TabIndex = 13;
+            this.DelPriceBtn.Text = "Видалити";
+            this.DelPriceBtn.Click += new System.EventHandler(this.DelPriceBtn_Click);
+            // 
+            // EditPriceBtn
+            // 
+            this.EditPriceBtn.Image = ((System.Drawing.Image)(resources.GetObject("EditPriceBtn.Image")));
+            this.EditPriceBtn.Location = new System.Drawing.Point(122, 18);
+            this.EditPriceBtn.Name = "EditPriceBtn";
+            this.EditPriceBtn.Size = new System.Drawing.Size(106, 23);
+            this.EditPriceBtn.TabIndex = 12;
+            this.EditPriceBtn.Text = "Властивості";
+            this.EditPriceBtn.Click += new System.EventHandler(this.EditPriceBtn_Click);
             // 
             // MatPriceGridControl
             // 
             this.MatPriceGridControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.MatPriceGridControl.Location = new System.Drawing.Point(10, 11);
+            this.MatPriceGridControl.DataSource = this.MatPriceForGridBS;
+            this.MatPriceGridControl.Location = new System.Drawing.Point(10, 47);
             this.MatPriceGridControl.MainView = this.MatPriceGridView;
             this.MatPriceGridControl.MenuManager = this.barManager1;
             this.MatPriceGridControl.Name = "MatPriceGridControl";
             this.MatPriceGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.MatPriceGridControl.Size = new System.Drawing.Size(587, 365);
+            this.MatPriceGridControl.Size = new System.Drawing.Size(587, 329);
             this.MatPriceGridControl.TabIndex = 8;
             this.MatPriceGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.MatPriceGridView});
@@ -803,6 +848,7 @@
             this.MatPriceGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.MatPriceGridView.OptionsBehavior.Editable = false;
             this.MatPriceGridView.OptionsView.ShowGroupPanel = false;
+            this.MatPriceGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.MatPriceGridView_FocusedRowObjectChanged);
             // 
             // gridColumn6
             // 
@@ -1102,38 +1148,49 @@
             // 
             // xtraTabPage8
             // 
-            this.xtraTabPage8.Controls.Add(this.panelControl3);
+            this.xtraTabPage8.Controls.Add(this.CommentLabel);
+            this.xtraTabPage8.Controls.Add(this.PricePanel);
+            this.xtraTabPage8.Controls.Add(this.panel4);
             this.xtraTabPage8.Name = "xtraTabPage8";
             this.xtraTabPage8.Size = new System.Drawing.Size(607, 388);
             this.xtraTabPage8.Text = "Ціна";
             // 
-            // panelControl3
+            // CommentLabel
             // 
-            this.panelControl3.Controls.Add(this.panel3);
-            this.panelControl3.Controls.Add(this.checkEdit2);
-            this.panelControl3.Controls.Add(this.checkEdit1);
-            this.panelControl3.Controls.Add(this.DisCheckBox);
-            this.panelControl3.Controls.Add(this.groupControl2);
-            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl3.Location = new System.Drawing.Point(0, 0);
-            this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(607, 388);
-            this.panelControl3.TabIndex = 44;
+            this.CommentLabel.Location = new System.Drawing.Point(30, 360);
+            this.CommentLabel.Name = "CommentLabel";
+            this.CommentLabel.Size = new System.Drawing.Size(8, 16);
+            this.CommentLabel.StyleController = this.styleController1;
+            this.CommentLabel.TabIndex = 59;
+            this.CommentLabel.Text = "*";
             // 
-            // panel3
+            // PricePanel
             // 
-            this.panel3.Controls.Add(this.checkEdit5);
-            this.panel3.Controls.Add(this.NotesTextEdit);
-            this.panel3.Controls.Add(this.lookUpEdit4);
-            this.panel3.Controls.Add(this.labelControl17);
-            this.panel3.Location = new System.Drawing.Point(38, 287);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(509, 50);
-            this.panel3.TabIndex = 74;
+            this.PricePanel.Controls.Add(this.CustomPricePanel);
+            this.PricePanel.Controls.Add(this.AutoCalcPriceCheckEdit);
+            this.PricePanel.Controls.Add(this.CustomPriceCheckEdit);
+            this.PricePanel.Controls.Add(this.AutoCalcGroupControl);
+            this.PricePanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PricePanel.Location = new System.Drawing.Point(0, 45);
+            this.PricePanel.Name = "PricePanel";
+            this.PricePanel.Size = new System.Drawing.Size(607, 303);
+            this.PricePanel.TabIndex = 45;
+            // 
+            // CustomPricePanel
+            // 
+            this.CustomPricePanel.Controls.Add(this.checkEdit5);
+            this.CustomPricePanel.Controls.Add(this.CustomPriceEdit);
+            this.CustomPricePanel.Controls.Add(this.lookUpEdit4);
+            this.CustomPricePanel.Controls.Add(this.labelControl17);
+            this.CustomPricePanel.Location = new System.Drawing.Point(30, 234);
+            this.CustomPricePanel.Name = "CustomPricePanel";
+            this.CustomPricePanel.Size = new System.Drawing.Size(555, 50);
+            this.CustomPricePanel.TabIndex = 74;
             // 
             // checkEdit5
             // 
-            this.checkEdit5.Location = new System.Drawing.Point(292, 15);
+            this.checkEdit5.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatPriceTypesBS, "WithNds", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkEdit5.Location = new System.Drawing.Point(276, 15);
             this.checkEdit5.Name = "checkEdit5";
             this.checkEdit5.Properties.Caption = "з ПДВ";
             this.checkEdit5.Properties.ValueChecked = 1;
@@ -1141,22 +1198,28 @@
             this.checkEdit5.Size = new System.Drawing.Size(67, 19);
             this.checkEdit5.TabIndex = 73;
             // 
-            // NotesTextEdit
+            // MatPriceTypesBS
             // 
-            this.NotesTextEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.MatPriceTypesBS.DataSource = typeof(SP_Sklad.SkladData.MatPrices);
+            // 
+            // CustomPriceEdit
+            // 
+            this.CustomPriceEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.NotesTextEdit.Location = new System.Drawing.Point(58, 13);
-            this.NotesTextEdit.Name = "NotesTextEdit";
-            this.NotesTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.CustomPriceEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatPriceTypesBS, "OnValue", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.CustomPriceEdit.Location = new System.Drawing.Point(58, 13);
+            this.CustomPriceEdit.Name = "CustomPriceEdit";
+            this.CustomPriceEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.NotesTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.NotesTextEdit.Size = new System.Drawing.Size(130, 22);
-            this.NotesTextEdit.StyleController = this.styleController1;
-            this.NotesTextEdit.TabIndex = 40;
+            this.CustomPriceEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.CustomPriceEdit.Size = new System.Drawing.Size(110, 22);
+            this.CustomPriceEdit.StyleController = this.styleController1;
+            this.CustomPriceEdit.TabIndex = 40;
             // 
             // lookUpEdit4
             // 
-            this.lookUpEdit4.Location = new System.Drawing.Point(194, 13);
+            this.lookUpEdit4.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatPriceTypesBS, "CurrId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.lookUpEdit4.Location = new System.Drawing.Point(174, 13);
             this.lookUpEdit4.Name = "lookUpEdit4";
             this.lookUpEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1180,61 +1243,56 @@
             this.labelControl17.TabIndex = 45;
             this.labelControl17.Text = "Ціна";
             // 
-            // checkEdit2
+            // AutoCalcPriceCheckEdit
             // 
-            this.checkEdit2.Location = new System.Drawing.Point(38, 262);
-            this.checkEdit2.Name = "checkEdit2";
-            this.checkEdit2.Properties.Caption = "Визначити відпускну ціну  в ручну";
-            this.checkEdit2.Properties.ValueChecked = 1;
-            this.checkEdit2.Properties.ValueUnchecked = 0;
-            this.checkEdit2.Size = new System.Drawing.Size(397, 19);
-            this.checkEdit2.TabIndex = 44;
+            this.AutoCalcPriceCheckEdit.EditValue = 1;
+            this.AutoCalcPriceCheckEdit.Location = new System.Drawing.Point(30, 9);
+            this.AutoCalcPriceCheckEdit.Name = "AutoCalcPriceCheckEdit";
+            this.AutoCalcPriceCheckEdit.Properties.Caption = "Розрахувати відпускну ціну автоматично";
+            this.AutoCalcPriceCheckEdit.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
+            this.AutoCalcPriceCheckEdit.Properties.RadioGroupIndex = 2;
+            this.AutoCalcPriceCheckEdit.Properties.ValueChecked = 1;
+            this.AutoCalcPriceCheckEdit.Properties.ValueUnchecked = 0;
+            this.AutoCalcPriceCheckEdit.Size = new System.Drawing.Size(397, 19);
+            this.AutoCalcPriceCheckEdit.TabIndex = 43;
+            this.AutoCalcPriceCheckEdit.CheckedChanged += new System.EventHandler(this.AutoCalcPriceCheckEdit_CheckedChanged);
             // 
-            // checkEdit1
+            // CustomPriceCheckEdit
             // 
-            this.checkEdit1.Location = new System.Drawing.Point(38, 57);
-            this.checkEdit1.Name = "checkEdit1";
-            this.checkEdit1.Properties.Caption = "Розрахувати відпускну ціну автоматично";
-            this.checkEdit1.Properties.ValueChecked = 1;
-            this.checkEdit1.Properties.ValueUnchecked = 0;
-            this.checkEdit1.Size = new System.Drawing.Size(397, 19);
-            this.checkEdit1.TabIndex = 43;
+            this.CustomPriceCheckEdit.EditValue = 0;
+            this.CustomPriceCheckEdit.Location = new System.Drawing.Point(30, 209);
+            this.CustomPriceCheckEdit.Name = "CustomPriceCheckEdit";
+            this.CustomPriceCheckEdit.Properties.Caption = "Визначити відпускну ціну  в ручну";
+            this.CustomPriceCheckEdit.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
+            this.CustomPriceCheckEdit.Properties.RadioGroupIndex = 2;
+            this.CustomPriceCheckEdit.Properties.ValueChecked = 1;
+            this.CustomPriceCheckEdit.Properties.ValueUnchecked = 0;
+            this.CustomPriceCheckEdit.Size = new System.Drawing.Size(397, 19);
+            this.CustomPriceCheckEdit.TabIndex = 44;
+            this.CustomPriceCheckEdit.TabStop = false;
+            this.CustomPriceCheckEdit.CheckedChanged += new System.EventHandler(this.CustomPriceCheckEdit_CheckedChanged);
             // 
-            // DisCheckBox
+            // AutoCalcGroupControl
             // 
-            this.DisCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatPriceTypesBS, "Dis", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.DisCheckBox.Location = new System.Drawing.Point(13, 17);
-            this.DisCheckBox.Name = "DisCheckBox";
-            this.DisCheckBox.Properties.Caption = "Визначити відпускну ціну";
-            this.DisCheckBox.Properties.ValueChecked = 0;
-            this.DisCheckBox.Properties.ValueUnchecked = 1;
-            this.DisCheckBox.Size = new System.Drawing.Size(397, 19);
-            this.DisCheckBox.TabIndex = 41;
-            // 
-            // MatPriceTypesBS
-            // 
-            this.MatPriceTypesBS.DataSource = typeof(SP_Sklad.SkladData.GetMatPriceTypes_Result);
-            // 
-            // groupControl2
-            // 
-            this.groupControl2.Controls.Add(this.calcEdit2);
-            this.groupControl2.Controls.Add(this.lookUpEdit3);
-            this.groupControl2.Controls.Add(this.lookUpEdit2);
-            this.groupControl2.Controls.Add(this.lookUpEdit1);
-            this.groupControl2.Controls.Add(this.ExtraTypeLookUpEdit);
-            this.groupControl2.Controls.Add(this.calcEdit1);
-            this.groupControl2.Controls.Add(this.checkEdit4);
-            this.groupControl2.Controls.Add(this.checkEdit3);
-            this.groupControl2.Controls.Add(this.labelControl16);
-            this.groupControl2.Location = new System.Drawing.Point(38, 89);
-            this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(555, 149);
-            this.groupControl2.TabIndex = 42;
-            this.groupControl2.Tag = "";
-            this.groupControl2.Text = "Спосіб ціноутворення";
+            this.AutoCalcGroupControl.Controls.Add(this.calcEdit2);
+            this.AutoCalcGroupControl.Controls.Add(this.lookUpEdit3);
+            this.AutoCalcGroupControl.Controls.Add(this.lookUpEdit2);
+            this.AutoCalcGroupControl.Controls.Add(this.lookUpEdit1);
+            this.AutoCalcGroupControl.Controls.Add(this.ExtraTypeLookUpEdit);
+            this.AutoCalcGroupControl.Controls.Add(this.calcEdit1);
+            this.AutoCalcGroupControl.Controls.Add(this.checkEdit4);
+            this.AutoCalcGroupControl.Controls.Add(this.checkEdit3);
+            this.AutoCalcGroupControl.Controls.Add(this.labelControl16);
+            this.AutoCalcGroupControl.Location = new System.Drawing.Point(30, 34);
+            this.AutoCalcGroupControl.Name = "AutoCalcGroupControl";
+            this.AutoCalcGroupControl.Size = new System.Drawing.Size(555, 149);
+            this.AutoCalcGroupControl.TabIndex = 42;
+            this.AutoCalcGroupControl.Tag = "";
+            this.AutoCalcGroupControl.Text = "Спосіб ціноутворення";
             // 
             // calcEdit2
             // 
+            this.calcEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatPriceTypesBS, "OnValue", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.calcEdit2.EditValue = "";
             this.calcEdit2.Location = new System.Drawing.Point(123, 92);
             this.calcEdit2.Name = "calcEdit2";
@@ -1247,6 +1305,7 @@
             // 
             // lookUpEdit3
             // 
+            this.lookUpEdit3.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatPriceTypesBS, "PPTypeId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.lookUpEdit3.Location = new System.Drawing.Point(392, 48);
             this.lookUpEdit3.Name = "lookUpEdit3";
             this.lookUpEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1264,6 +1323,7 @@
             // 
             // lookUpEdit2
             // 
+            this.lookUpEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatPriceTypesBS, "PPTypeId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.lookUpEdit2.Location = new System.Drawing.Point(392, 92);
             this.lookUpEdit2.Name = "lookUpEdit2";
             this.lookUpEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1281,6 +1341,7 @@
             // 
             // lookUpEdit1
             // 
+            this.lookUpEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatPriceTypesBS, "PPTypeId", true));
             this.lookUpEdit1.Location = new System.Drawing.Point(392, 48);
             this.lookUpEdit1.Name = "lookUpEdit1";
             this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1298,6 +1359,7 @@
             // 
             // ExtraTypeLookUpEdit
             // 
+            this.ExtraTypeLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatPriceTypesBS, "ExtraType", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.ExtraTypeLookUpEdit.Location = new System.Drawing.Point(225, 48);
             this.ExtraTypeLookUpEdit.Name = "ExtraTypeLookUpEdit";
             this.ExtraTypeLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1312,9 +1374,11 @@
             this.ExtraTypeLookUpEdit.Size = new System.Drawing.Size(149, 22);
             this.ExtraTypeLookUpEdit.StyleController = this.styleController1;
             this.ExtraTypeLookUpEdit.TabIndex = 71;
+            this.ExtraTypeLookUpEdit.EditValueChanged += new System.EventHandler(this.ExtraTypeLookUpEdit_EditValueChanged);
             // 
             // calcEdit1
             // 
+            this.calcEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatPriceTypesBS, "OnValue", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.calcEdit1.EditValue = "";
             this.calcEdit1.Location = new System.Drawing.Point(123, 48);
             this.calcEdit1.Name = "calcEdit1";
@@ -1336,6 +1400,7 @@
             this.checkEdit4.StyleController = this.styleController1;
             this.checkEdit4.TabIndex = 67;
             this.checkEdit4.TabStop = false;
+            this.checkEdit4.CheckedChanged += new System.EventHandler(this.checkEdit4_CheckedChanged);
             // 
             // checkEdit3
             // 
@@ -1348,6 +1413,7 @@
             this.checkEdit3.Size = new System.Drawing.Size(91, 20);
             this.checkEdit3.StyleController = this.styleController1;
             this.checkEdit3.TabIndex = 66;
+            this.checkEdit3.CheckedChanged += new System.EventHandler(this.checkEdit3_CheckedChanged);
             // 
             // labelControl16
             // 
@@ -1357,6 +1423,39 @@
             this.labelControl16.StyleController = this.styleController1;
             this.labelControl16.TabIndex = 58;
             this.labelControl16.Text = "від цінової категорії";
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.simpleButton7);
+            this.panel4.Controls.Add(this.DisCheckBox);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(607, 45);
+            this.panel4.TabIndex = 46;
+            // 
+            // simpleButton7
+            // 
+            this.simpleButton7.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton7.Image")));
+            this.simpleButton7.ImageList = this.ImageList;
+            this.simpleButton7.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton7.Location = new System.Drawing.Point(563, 11);
+            this.simpleButton7.Name = "simpleButton7";
+            this.simpleButton7.Size = new System.Drawing.Size(22, 22);
+            this.simpleButton7.TabIndex = 53;
+            this.simpleButton7.ToolTip = "Повернутися до списку";
+            this.simpleButton7.Click += new System.EventHandler(this.simpleButton7_Click);
+            // 
+            // DisCheckBox
+            // 
+            this.DisCheckBox.Location = new System.Drawing.Point(10, 12);
+            this.DisCheckBox.Name = "DisCheckBox";
+            this.DisCheckBox.Properties.Caption = "Визначити відпускну ціну";
+            this.DisCheckBox.Properties.ValueChecked = 0;
+            this.DisCheckBox.Properties.ValueUnchecked = 1;
+            this.DisCheckBox.Size = new System.Drawing.Size(229, 19);
+            this.DisCheckBox.TabIndex = 41;
+            this.DisCheckBox.CheckedChanged += new System.EventHandler(this.DisCheckBox_CheckedChanged);
             // 
             // frmMaterialEdit
             // 
@@ -1382,6 +1481,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TreeListBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
@@ -1409,6 +1509,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).EndInit();
             this.xtraTabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MatPriceGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatPriceForGridBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPriceGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             this.xtraTabPage5.ResumeLayout(false);
@@ -1428,20 +1529,19 @@
             this.xtraTabPage7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textEdit8.Properties)).EndInit();
             this.xtraTabPage8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
-            this.panelControl3.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.xtraTabPage8.PerformLayout();
+            this.PricePanel.ResumeLayout(false);
+            this.CustomPricePanel.ResumeLayout(false);
+            this.CustomPricePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit5.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit4.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DisCheckBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPriceTypesBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
-            this.groupControl2.ResumeLayout(false);
-            this.groupControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CustomPriceEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit4.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AutoCalcPriceCheckEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CustomPriceCheckEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AutoCalcGroupControl)).EndInit();
+            this.AutoCalcGroupControl.ResumeLayout(false);
+            this.AutoCalcGroupControl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).EndInit();
@@ -1450,6 +1550,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).EndInit();
+            this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DisCheckBox.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1540,9 +1642,8 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage8;
-        private DevExpress.XtraEditors.PanelControl panelControl3;
         private DevExpress.XtraEditors.CheckEdit DisCheckBox;
-        private DevExpress.XtraEditors.GroupControl groupControl2;
+        private DevExpress.XtraEditors.GroupControl AutoCalcGroupControl;
         private DevExpress.XtraEditors.CalcEdit calcEdit2;
         private DevExpress.XtraEditors.LookUpEdit lookUpEdit3;
         private DevExpress.XtraEditors.LookUpEdit lookUpEdit2;
@@ -1555,10 +1656,19 @@
         private DevExpress.XtraEditors.CheckEdit checkEdit5;
         private DevExpress.XtraEditors.LookUpEdit lookUpEdit4;
         private DevExpress.XtraEditors.LabelControl labelControl17;
-        private DevExpress.XtraEditors.CheckEdit checkEdit2;
-        private DevExpress.XtraEditors.CheckEdit checkEdit1;
-        private DevExpress.XtraEditors.CalcEdit NotesTextEdit;
-        private System.Windows.Forms.Panel panel3;
+        private DevExpress.XtraEditors.CheckEdit CustomPriceCheckEdit;
+        private DevExpress.XtraEditors.CheckEdit AutoCalcPriceCheckEdit;
+        private DevExpress.XtraEditors.CalcEdit CustomPriceEdit;
+        private System.Windows.Forms.Panel CustomPricePanel;
+        private System.Windows.Forms.Panel PricePanel;
+        private System.Windows.Forms.Panel panel4;
+        private DevExpress.XtraEditors.LabelControl CommentLabel;
+        private DevExpress.XtraEditors.SimpleButton AddPriceBtn;
+        private DevExpress.XtraEditors.SimpleButton DelPriceBtn;
+        private DevExpress.XtraEditors.SimpleButton EditPriceBtn;
+        private System.Windows.Forms.BindingSource TreeListBS;
+        private System.Windows.Forms.BindingSource MatPriceForGridBS;
+        private DevExpress.XtraEditors.SimpleButton simpleButton7;
 
     }
 }

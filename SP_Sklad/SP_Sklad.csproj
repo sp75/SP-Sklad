@@ -1291,6 +1291,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KAMatGroupDiscount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Materials.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatGroup.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.MatPrices.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatRecDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatRecipe.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Measures.datasource" />
