@@ -120,12 +120,15 @@
   <metadata name="GridImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>22, 24</value>
   </metadata>
+  <metadata name="GridImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>22, 24</value>
+  </metadata>
   <data name="GridImageList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACi
-        CgAAAk1TRnQBSQFMAgEBAwEAARgBCwEYAQsBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        CgAAAk1TRnQBSQFMAgEBAwEAASgBCwEoAQsBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABEAMAAQEBAAEYBgABDP8ADwABzgGUAXMBrQFaASEBnAFKARgBnAFSASEBtQFzAVIB3gG1AZyEAAGt
         AWMBOQGlATkBCAGtAVIBKQHGAZQBexsAAb0BcwFCAaUBOQEAAWsBYwFaASEBhAGlATEBlAG1ATkBewGM
         A0oBjAFaATkB5wGtAaUYAAF7Aa0BewE5AYQBOQEAAVICAAFCAgABOQEAASEBSgEhAUoBcwFKAZQBrQGU
@@ -181,7 +184,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACu
-        2AAAAk1TRnQBSQFMAgEBNgEAARABCwEQAQsBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        2AAAAk1TRnQBSQFMAgEBNgEAASABCwEgAQsBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwAB4AMAAQEBAAEYBgABqBUAAa0BUgEpAa0BUgEYAa0BUgEpPAAD7nUAAa0BUgEpAd4ChAHeAoQB3gKE
         Aa0BUgEpNgAD7gF+AVABjwPucgABtQFjAUIBWgGtAUoBWgG9AWMBWgGtAUoBtQFjAUIzAAPuAX4BUAGP
         AX4BUAGPAX4BUAGPA+5yAAEIAZwBCAFjAf8BlAEIAaUBEBUAAa0BUgEpAa0BUgEYAa0BUgEpGAABfgFQ
@@ -1116,7 +1119,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAi
-        TgAAAk1TRnQBSQFMAgEBEwEAASABCwEgAQsBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        TgAAAk1TRnQBSQFMAgEBEwEAATABCwEwAQsBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABUAMAAQEBAAEYBgABPBgAAdYBhAFjAf8BewFjAf8BjAFrAd4BjAFaAf8B1gGcAd4BjAFaAe8BewFa
         AecBWgE5AXsBpQFSAcYB3gG1AdYB5wHGAXMB1gFzAWMBzgFjAUIBtQFCDwABUgGcAVoBAAFzAQgBMQGE
         ATEbAAGtAVIBKQGtAVIBGAGtAVIBKV0AAaUBYwFCAYwBMQEYAiEBcwIhAXsBpQFSAUoBxgFaATEBcwG1
@@ -1456,49 +1459,16 @@
     <value>280, 24</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>98</value>
+    <value>158</value>
   </metadata>
   <metadata name="DirTreeBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>266, 64</value>
   </metadata>
-  <metadata name="KAgentDS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>992, 25</value>
-  </metadata>
   <metadata name="MatListDS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1116, 25</value>
   </metadata>
-  <metadata name="ServicesBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>157, 64</value>
-  </metadata>
-  <metadata name="MatRecipeDS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1253, 25</value>
-  </metadata>
-  <metadata name="WarehouseBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>371, 64</value>
-  </metadata>
-  <metadata name="MeasuresDS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>498, 64</value>
-  </metadata>
-  <metadata name="TechProcessDS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>617, 64</value>
-  </metadata>
-  <metadata name="PriceTypesViewBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>750, 64</value>
-  </metadata>
-  <metadata name="AccountTypeBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>899, 64</value>
-  </metadata>
-  <metadata name="ChargeTypeBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1035, 64</value>
-  </metadata>
-  <metadata name="CashDesksBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1165, 64</value>
-  </metadata>
-  <metadata name="CountriesBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1288, 64</value>
-  </metadata>
-  <metadata name="BanksBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 103</value>
+  <metadata name="MatListInfoBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>114, 103</value>
   </metadata>
   <metadata name="BarImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>405, 24</value>
@@ -1508,7 +1478,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABU
-        MgAAAk1TRnQBSQFMAgEBDQEAASABCwEgAQsBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        MgAAAk1TRnQBSQFMAgEBDQEAATABCwEwAQsBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABQAMAAQEBAAEYBgABMCQAAf8BewEAAc4BYwEAAc4BYwEAAc4BYwEAAc4BYwEAAc4BYwEAAc4BYwEA
         Ac4BYwEAAc4BYwEAAc4BY5oAAc4BYwEAAc4BYwEAAc4BYwEAAf8BewEAAf8B9wHnAf8B5wHGAf8B5wHG
         Af8B5wHGAf8B5wHGAf8B5wHGAf8B5wHGAf8B3gGlAc4BY5oAAc4BYwcAAecBcwEAAecBcwEAAecBcwEA
@@ -1725,6 +1695,45 @@
         AYEBwwHAAR8B4AEHAcABAAHDAeEB8AF/AfABDwHwAWAB5wH4Av8B/AE/Af8B8QL/Cw==
 </value>
   </data>
+  <metadata name="DirTreeBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>266, 64</value>
+  </metadata>
+  <metadata name="KAgentDS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>992, 25</value>
+  </metadata>
+  <metadata name="ServicesBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>157, 64</value>
+  </metadata>
+  <metadata name="MatRecipeDS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1253, 25</value>
+  </metadata>
+  <metadata name="WarehouseBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>371, 64</value>
+  </metadata>
+  <metadata name="MeasuresDS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>498, 64</value>
+  </metadata>
+  <metadata name="TechProcessDS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>617, 64</value>
+  </metadata>
+  <metadata name="PriceTypesViewBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>750, 64</value>
+  </metadata>
+  <metadata name="AccountTypeBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>899, 64</value>
+  </metadata>
+  <metadata name="ChargeTypeBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1035, 64</value>
+  </metadata>
+  <metadata name="CashDesksBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1165, 64</value>
+  </metadata>
+  <metadata name="CountriesBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1288, 64</value>
+  </metadata>
+  <metadata name="BanksBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 103</value>
+  </metadata>
   <metadata name="ExplorerPopupMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>678, 23</value>
   </metadata>

@@ -35,6 +35,7 @@ namespace SP_Sklad.SkladData
         public string GrpName { get; set; }
         public string WhName { get; set; }
         public Nullable<decimal> AvgPrice { get; set; }
-        public decimal Remain { get; set; }
+        public Nullable<decimal> Remain { get; set; }
+        public string DemandGroupName { get; set; }
     }
 }

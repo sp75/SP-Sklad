@@ -240,6 +240,7 @@
         <AssociationConnector Association="BaseModel.FK_MATPRICES_PPTYPEID" />
         <EntityTypeShape EntityType="BaseModel.KAgentSaldo" Width="1.5" PointX="5.25" PointY="47.25" />
         <AssociationConnector Association="BaseModel.FK_KAS_KAID" />
+        <EntityTypeShape EntityType="BaseModel.DemandGroup" Width="1.5" PointX="0.066304765672564867" PointY="0.99291652487261062" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="7.0245045325832924" PointY="12.641712000892364" />

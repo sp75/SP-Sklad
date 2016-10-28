@@ -217,11 +217,6 @@ namespace SP_Sklad.MainTabs
             }
         }
 
-        private void MatGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-            //resut = MatGridView.GetFocusedRow();
-        }
-
         private void EditItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             DialogResult result = DialogResult.Cancel;
@@ -670,7 +665,7 @@ namespace SP_Sklad.MainTabs
                     if (MessageBox.Show(string.Format("Ви дійсно хочете перемістити матеріал <{0}> в архів?", focused_mat.Name), "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                     {
                         if (focused_mat.Remain == 0) mat.Archived = 1;
-                        else MessageBox.Show(string.Format("Неможливо перемістити матеріал <{0}> в архів, \nтому що його залишок складає {1} {2}", focused_mat.Name, focused_mat.Remain.ToString(CultureInfo.InvariantCulture), focused_mat.ShortName));
+                        else MessageBox.Show(string.Format("Неможливо перемістити матеріал <{0}> в архів, \nтому що його залишок складає {1} {2}", focused_mat.Name, focused_mat.Remain.Value.ToString(CultureInfo.InvariantCulture), focused_mat.ShortName));
                     }
                 }
             }
@@ -744,6 +739,11 @@ namespace SP_Sklad.MainTabs
                 }
              
             }
+        }
+
+        private void MatGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
+        {
+            MatListInfoBS.DataSource = MatGridView.GetFocusedRow();
         }
     }
 }

@@ -36,6 +36,9 @@ namespace SP_Sklad.EditForm
 
             lookUpEdit1.Properties.DataSource = _db.PriceList.Select(s => new { s.PlId, s.Name }).ToList();
             CurrLookUpEdit.Properties.DataSource = DBHelper.Currency;
+            lookUpEdit4.Properties.DataSource = _db.DemandGroup.AsNoTracking().ToList();
+            ProducerLookUpEdit.Properties.Items.AddRange(_db.Materials.Where(w => w.Producer != null).Select(s => s.Producer).Distinct().ToList());
+         
             tree = new List<CatalogTreeList>();
         }
 
@@ -79,7 +82,6 @@ namespace SP_Sklad.EditForm
                 GrpIdEdit.Properties.TreeList.DataSource = DB.SkladBase().MatGroup.Select(s => new { s.GrpId, s.PId, s.Name }).ToList();
                 MsrComboBox.Properties.DataSource = DBHelper.MeasuresList;
                 WIdLookUpEdit.Properties.DataSource = DBHelper.WhList();
-                ProducerLookUpEdit.Properties.DataSource = DB.SkladBase().Materials.Select(s => new { s.Producer }).Distinct().ToList();
                 CIdLookUpEdit.Properties.DataSource = DBHelper.CountersList;
 
                 MaterialsBS.DataSource = _mat;
@@ -90,6 +92,9 @@ namespace SP_Sklad.EditForm
             #region Init
             checkEdit3_CheckedChanged(sender, e);
             PricePanel.Enabled = false;
+            NdsCheckEdit.Checked = _mat.NDS != -1;
+            NdsEdit.EditValue = _mat.NDS == -1 ? null : _mat.NDS;
+            GetNdsInfo();
             #endregion
         }
 
@@ -466,6 +471,44 @@ namespace SP_Sklad.EditForm
                 //_mat_prices.PPTypeId = _db.PriceTypes.FirstOrDefault().PTypeId;
                 _db.SaveChanges();
             }
+        }
+
+        private void NdsCheckEdit_CheckedChanged(object sender, EventArgs e)
+        {
+            if (NdsCheckEdit.ContainsFocus)
+            {
+                _mat.NDS = NdsCheckEdit.Checked ? DBHelper.CommonParam.Nds : -1;
+                NdsEdit.EditValue = NdsCheckEdit.Checked ? DBHelper.CommonParam.Nds : null;
+                GetNdsInfo();
+            }
+        }
+
+        private void simpleButton6_Click(object sender, EventArgs e)
+        {
+            _mat.NDS = null;
+            NdsEdit.EditValue = null;
+            GetNdsInfo();
+        }
+
+        private void GetNdsInfo()
+        {
+            if (_mat.NDS == -1)
+            {
+                NdsLabel.Text = "- Даний товар не обкладається ПДВ";
+            }
+            if (_mat.NDS == null)
+            {
+                NdsLabel.Text = "- Ставка ПДВ взята з налаштувать групи до якої він належить";
+            }
+            if (_mat.NDS >= 0)
+            {
+                NdsLabel.Text = "- Ставка ПДВ встановлена індивідуально";
+            }
+        }
+
+        private void simpleButton5_Click(object sender, EventArgs e)
+        {
+            WIdLookUpEdit.EditValue = IHelper.ShowDirectList(WIdLookUpEdit.EditValue, 2);
         }
     }
 
