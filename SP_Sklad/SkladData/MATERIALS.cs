@@ -18,8 +18,6 @@ namespace SP_Sklad.SkladData
         {
             this.CONTRDET = new HashSet<CONTRDET>();
             this.DeboningDet = new HashSet<DeboningDet>();
-            this.MATCHANGE = new HashSet<MATCHANGE>();
-            this.MATCHANGE1 = new HashSet<MATCHANGE>();
             this.MatRemains = new HashSet<MatRemains>();
             this.PosRemains = new HashSet<PosRemains>();
             this.WMatTurn = new HashSet<WMatTurn>();
@@ -29,6 +27,8 @@ namespace SP_Sklad.SkladData
             this.MatRecDet = new HashSet<MatRecDet>();
             this.WaybillDet = new HashSet<WaybillDet>();
             this.MatPrices = new HashSet<MatPrices>();
+            this.MatChange = new HashSet<MatChange>();
+            this.MatChange1 = new HashSet<MatChange>();
         }
     
         public int MatId { get; set; }
@@ -65,8 +65,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<CONTRDET> CONTRDET { get; set; }
         public virtual Countries Countries { get; set; }
         public virtual ICollection<DeboningDet> DeboningDet { get; set; }
-        public virtual ICollection<MATCHANGE> MATCHANGE { get; set; }
-        public virtual ICollection<MATCHANGE> MATCHANGE1 { get; set; }
         public virtual MatGroup MatGroup { get; set; }
         public virtual Warehouse Warehouse { get; set; }
         public virtual Warehouse Warehouse1 { get; set; }
@@ -81,5 +79,7 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<MatRecDet> MatRecDet { get; set; }
         public virtual ICollection<WaybillDet> WaybillDet { get; set; }
         public virtual ICollection<MatPrices> MatPrices { get; set; }
+        public virtual ICollection<MatChange> MatChange { get; set; }
+        public virtual ICollection<MatChange> MatChange1 { get; set; }
     }
 }

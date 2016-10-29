@@ -14,7 +14,7 @@ namespace SP_Sklad.SkladData
     public partial class GetPrintLog_Result
     {
         public Nullable<int> PrintType { get; set; }
-        public Nullable<int> Num { get; set; }
+        public string Num { get; set; }
         public int PlId { get; set; }
         public Nullable<int> RepId { get; set; }
         public Nullable<int> UserId { get; set; }

@@ -743,7 +743,50 @@ namespace SP_Sklad.MainTabs
 
         private void MatGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
-            MatListInfoBS.DataSource = MatGridView.GetFocusedRow();
+            xtraTabControl1_SelectedPageChanged(sender, null);
+        }
+
+        private void xtraTabControl1_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
+        {
+            var f_row = MatGridView.GetFocusedRow() as GetMatList_Result;
+
+            if (f_row == null)
+            {
+                return;
+            }
+
+            switch (xtraTabControl1.SelectedTabPageIndex)
+            {
+                case 0:
+                case 1:
+                    MatListInfoBS.DataSource = f_row;
+                    break;
+
+                case 2:
+                    MatPriceGridControl.DataSource = DB.SkladBase().GetMatPriceTypes(f_row.MatId).ToList().Select(s => new
+                    {
+                        s.PTypeId,
+                        s.Name,
+                        s.TypeName,
+                        s.IsIndividually,
+                        Summary = s.Dis == 1 ? "" : s.ExtraType == 1
+                                                    ? s.OnValue.Value.ToString("0.00") + " (Фіксована ціна)" : (s.PPTypeId == null || s.ExtraType == 2 || s.ExtraType == 3)
+                                                    ? ((s.PPTypeId == null) ? s.OnValue.Value.ToString("0.00") + "% на ціну прихода" : (s.ExtraType == 2)
+                                                    ? s.OnValue.Value.ToString("0.00") + "% на категорію " + s.PtName : (s.ExtraType == 3)
+                                                    ? s.OnValue.Value.ToString("0.00") + "% на прайс-лист " + s.PtName : "")
+                                                    : s.OnValue.Value.ToString("0.00") + "% від " + s.PtName,
+                        s.Dis
+                    });
+                    break;
+
+                case 3:
+                    MatChangeGridControl.DataSource = DB.SkladBase().GetMatChange(f_row.MatId).ToList();
+                    break;
+
+                case 4:
+                    MatNotesEdit.Text = f_row.Notes;
+                    break;
+            }
         }
     }
 }

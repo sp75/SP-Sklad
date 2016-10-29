@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +26,7 @@ namespace SP_Sklad.EditForm
         private List<CatalogTreeList> tree { get; set; }
         private MatPrices _mat_prices { get; set; }
 
-        public frmMaterialEdit(int? MatId =null, int? MatGrp = null)
+        public frmMaterialEdit(int? MatId = null, int? MatGrp = null)
         {
             InitializeComponent();
             _mat_id = MatId;
@@ -38,22 +40,24 @@ namespace SP_Sklad.EditForm
             CurrLookUpEdit.Properties.DataSource = DBHelper.Currency;
             lookUpEdit4.Properties.DataSource = _db.DemandGroup.AsNoTracking().ToList();
             ProducerLookUpEdit.Properties.Items.AddRange(_db.Materials.Where(w => w.Producer != null).Select(s => s.Producer).Distinct().ToList());
-         
+
             tree = new List<CatalogTreeList>();
+            TreeListBS.DataSource = tree;
         }
 
         private void frmMaterialEdit_Load(object sender, EventArgs e)
         {
             xtraTabControl1.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
 
-            tree.Add(new CatalogTreeList { Id = 0, ParentId = 255, Text = "Основна інформація", ImgIdx = 0, TabIdx = 0 });
-            tree.Add(new CatalogTreeList { Id = 1, ParentId = 255, Text = "Ціноутворення", ImgIdx = 1, TabIdx = 1 });
-            tree.Add(new CatalogTreeList { Id = 2, ParentId = 255, Text = "Оподаткування", ImgIdx = 2, TabIdx = 2 });
-            tree.Add(new CatalogTreeList { Id = 3, ParentId = 255, Text = "Взаємозамінність", ImgIdx = 3, TabIdx = 3 });
-            tree.Add(new CatalogTreeList { Id = 4, ParentId = 255, Text = "Посвідчення", ImgIdx = 4, TabIdx = 4 });
-            tree.Add(new CatalogTreeList { Id = 5, ParentId = 255, Text = "Зображення", ImgIdx = 5, TabIdx = 5 });
-            tree.Add(new CatalogTreeList { Id = 6, ParentId = 255, Text = "Примітка", ImgIdx = 6, TabIdx = 6 });
-            TreeListBS.DataSource = tree;
+          
+            TreeListBS.Add(new CatalogTreeList { Id = 0, ParentId = 255, Text = "Основна інформація", ImgIdx = 0, TabIdx = 0 });
+            TreeListBS.Add(new CatalogTreeList { Id = 1, ParentId = 255, Text = "Ціноутворення", ImgIdx = 1, TabIdx = 1 });
+            TreeListBS.Add(new CatalogTreeList { Id = 2, ParentId = 255, Text = "Оподаткування", ImgIdx = 2, TabIdx = 2 });
+            TreeListBS.Add(new CatalogTreeList { Id = 3, ParentId = 255, Text = "Взаємозамінність", ImgIdx = 3, TabIdx = 3 });
+            TreeListBS.Add(new CatalogTreeList { Id = 4, ParentId = 255, Text = "Посвідчення", ImgIdx = 4, TabIdx = 4 });
+            TreeListBS.Add(new CatalogTreeList { Id = 5, ParentId = 255, Text = "Зображення", ImgIdx = 5, TabIdx = 5 });
+            TreeListBS.Add(new CatalogTreeList { Id = 6, ParentId = 255, Text = "Примітка", ImgIdx = 6, TabIdx = 6 });
+          
 
 
             if (_mat_id == null)
@@ -86,7 +90,15 @@ namespace SP_Sklad.EditForm
 
                 MaterialsBS.DataSource = _mat;
 
+                try
+                {
+                    pictureEdit1.EditValue = new Bitmap(new MemoryStream(_mat.BMP));
+                }
+                catch { }
+      
+
                 GetTreeMatPrices();
+                GetMatChange();
             }
 
             #region Init
@@ -124,7 +136,7 @@ namespace SP_Sklad.EditForm
             tree.RemoveAll(r => r.ParentId == 1);
             foreach (var item in _db.GetMatPriceTypes(_mat_id).ToList())
             {
-                tree.Add(new CatalogTreeList
+                TreeListBS.Add(new CatalogTreeList
                 {
                     Id = tree.Max(m => m.Id) + 1,
                     ParentId = 1,
@@ -134,9 +146,6 @@ namespace SP_Sklad.EditForm
                     DataSetId = item.PTypeId
                 });
             }
-
-            DirTreeList.RefreshDataSource();
-            DirTreeList.ExpandAll();
         }
 
         private void DirTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
@@ -456,11 +465,6 @@ namespace SP_Sklad.EditForm
             }
         }
 
-        private void MatPriceTypesBS_CurrentItemChanged(object sender, EventArgs e)
-        {
-  
-        }
-
         private void checkEdit4_CheckedChanged(object sender, EventArgs e)
         {
             if (checkEdit4.ContainsFocus)
@@ -509,6 +513,66 @@ namespace SP_Sklad.EditForm
         private void simpleButton5_Click(object sender, EventArgs e)
         {
             WIdLookUpEdit.EditValue = IHelper.ShowDirectList(WIdLookUpEdit.EditValue, 2);
+        }
+
+        private void GetMatChange()
+        {
+            var result = _db.GetMatChange(_mat_id).ToList();
+            GetMatChangeBS.DataSource = result;
+
+            tree.RemoveAll(r => r.ParentId == 3);
+
+            foreach (var item in result)
+            {
+                var node = new CatalogTreeList
+                  {
+                      Id = tree.Max(m => m.Id) + 1,
+                      ParentId = 3,
+                      Text = item.MatChangeName,
+                      ImgIdx = 14,
+                      TabIdx = 3,
+                      DataSetId = item.ChangeId
+                  };
+                TreeListBS.Add(node);
+
+            }
+
+            DirTreeList.ExpandAll();
+        }
+
+        private void simpleButton8_Click(object sender, EventArgs e)
+        {
+            var mat_ch_id =  IHelper.ShowDirectList( null, 5 );
+            if(mat_ch_id!= null)
+            {
+                _db.MatChange.Add(new MatChange { MatId = _mat_id.Value, ChangeId = (int)mat_ch_id });
+                _db.SaveChanges();
+                GetMatChange();
+            }
+        }
+
+        private void simpleButton9_Click(object sender, EventArgs e)
+        {
+            var f_row = MatChangeGridView.GetFocusedRow() as GetMatChange_Result;
+            _db.MatChange.Remove(_db.MatChange.Find(f_row.MatId, f_row.ChangeId));
+            _db.SaveChanges();
+            GetMatChange();
+        }
+
+        private void pictureEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+            if(!pictureEdit1.ContainsFocus)
+            {
+                return;
+            }
+
+            var img = pictureEdit1.EditValue as Bitmap;
+
+            MemoryStream ms = new MemoryStream();
+            img.Save(ms, ImageFormat.Jpeg);
+            byte[] ar = ms.ToArray();
+           
+            _mat.BMP = ar;
         }
     }
 

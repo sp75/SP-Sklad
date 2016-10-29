@@ -12,13 +12,12 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class MatChange
+    public partial class Llicenses
     {
-        public int MatId { get; set; }
-        public int ChangeId { get; set; }
-        public string Notes { get; set; }
-    
-        public virtual Materials Materials { get; set; }
-        public virtual Materials Materials1 { get; set; }
+        public int Id { get; set; }
+        public string LicencesKay { get; set; }
+        public string MacAddress { get; set; }
+        public string IpAddress { get; set; }
+        public string MachineName { get; set; }
     }
 }

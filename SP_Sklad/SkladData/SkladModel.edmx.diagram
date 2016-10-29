@@ -13,7 +13,6 @@
         <EntityTypeShape EntityType="BaseModel.DISCCARDGRP" Width="1.5" PointX="0.75" PointY="32.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.DISCCARDS" Width="1.5" PointX="3" PointY="36.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.ENTPARAMS" Width="1.5" PointX="2.75" PointY="12.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.MATCHANGE" Width="1.5" PointX="11.25" PointY="20" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.TAXES" Width="1.5" PointX="17" PointY="59.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.TAXWB" Width="1.5" PointX="9" PointY="33.375" IsExpanded="true" />
         <AssociationConnector Association="BaseModel.FK_CONTRDET_REFERENCE_CONTRACTS" ManuallyRouted="false" />
@@ -89,8 +88,6 @@
         <AssociationConnector Association="BaseModel.FK_CONTRDET_REFERENCE_MATERIAL" />
         <AssociationConnector Association="BaseModel.FK__MATERIALS__CID__662B2B3B" />
         <AssociationConnector Association="BaseModel.FK_DEBONINGDET_MATERIALS" />
-        <AssociationConnector Association="BaseModel.FK_MATCHANGE_CHANGEID" />
-        <AssociationConnector Association="BaseModel.FK_MATCHANGE_MATID" />
         <AssociationConnector Association="BaseModel.FK__MATERIALS__GRPID__58D1301D" />
         <AssociationConnector Association="BaseModel.FK__MATERIALS__WID__59C55456" />
         <AssociationConnector Association="BaseModel.FK__MATERIALS__WID__5E8A0973" />
@@ -241,6 +238,10 @@
         <EntityTypeShape EntityType="BaseModel.KAgentSaldo" Width="1.5" PointX="5.25" PointY="47.25" />
         <AssociationConnector Association="BaseModel.FK_KAS_KAID" />
         <EntityTypeShape EntityType="BaseModel.DemandGroup" Width="1.5" PointX="0.066304765672564867" PointY="0.99291652487261062" />
+        <EntityTypeShape EntityType="BaseModel.Llicenses" Width="1.5" PointX="16.375" PointY="4.75" />
+        <EntityTypeShape EntityType="BaseModel.MatChange" Width="1.5" PointX="8.25" PointY="30.25" />
+        <AssociationConnector Association="BaseModel.FK_MATCHANGE_CHANGEID" />
+        <AssociationConnector Association="BaseModel.FK_MATCHANGE_MATID" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="7.0245045325832924" PointY="12.641712000892364" />

@@ -10,15 +10,15 @@
 namespace SP_Sklad.SkladData
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class MatChange
+    public partial class GetMatChange_Result
     {
         public int MatId { get; set; }
         public int ChangeId { get; set; }
+        public string MatChangeName { get; set; }
+        public string Artikul { get; set; }
         public string Notes { get; set; }
-    
-        public virtual Materials Materials { get; set; }
-        public virtual Materials Materials1 { get; set; }
+        public string GrpName { get; set; }
+        public string MsrName { get; set; }
     }
 }

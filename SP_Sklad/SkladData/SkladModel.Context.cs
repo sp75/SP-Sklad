@@ -37,7 +37,6 @@ namespace SP_Sklad.SkladData
         public DbSet<DISCCARDGRP> DISCCARDGRP { get; set; }
         public DbSet<DISCCARDS> DISCCARDS { get; set; }
         public DbSet<ENTPARAMS> ENTPARAMS { get; set; }
-        public DbSet<MATCHANGE> MATCHANGE { get; set; }
         public DbSet<TAXES> TAXES { get; set; }
         public DbSet<TAXWB> TAXWB { get; set; }
         public DbSet<WMatTurn> WMatTurn { get; set; }
@@ -130,6 +129,8 @@ namespace SP_Sklad.SkladData
         public DbSet<MatPrices> MatPrices { get; set; }
         public DbSet<KAgentSaldo> KAgentSaldo { get; set; }
         public DbSet<DemandGroup> DemandGroup { get; set; }
+        public DbSet<Llicenses> Llicenses { get; set; }
+        public DbSet<MatChange> MatChange { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)
@@ -1719,24 +1720,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWaybillDetIn_Result>("[BaseEntities].[GetWaybillDetIn](@wbill_id)", wbill_idParameter);
         }
     
-        [EdmFunction("BaseEntities", "GetPrintLog")]
-        public virtual IQueryable<GetPrintLog_Result> GetPrintLog(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> user_id)
-        {
-            var from_dateParameter = from_date.HasValue ?
-                new ObjectParameter("from_date", from_date) :
-                new ObjectParameter("from_date", typeof(System.DateTime));
-    
-            var to_dateParameter = to_date.HasValue ?
-                new ObjectParameter("to_date", to_date) :
-                new ObjectParameter("to_date", typeof(System.DateTime));
-    
-            var user_idParameter = user_id.HasValue ?
-                new ObjectParameter("user_id", user_id) :
-                new ObjectParameter("user_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetPrintLog_Result>("[BaseEntities].[GetPrintLog](@from_date, @to_date, @user_id)", from_dateParameter, to_dateParameter, user_idParameter);
-        }
-    
         [EdmFunction("BaseEntities", "GetOperLog")]
         public virtual IQueryable<GetOperLog_Result> GetOperLog(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> fun_id, Nullable<int> user_id)
         {
@@ -1909,6 +1892,34 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("get_child_node", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetMatList_Result>("GetMatList", grpParameter, get_priceParameter, get_archivedParameter, get_child_nodeParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetPrintLog")]
+        public virtual IQueryable<GetPrintLog_Result> GetPrintLog(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> user_id)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetPrintLog_Result>("[BaseEntities].[GetPrintLog](@from_date, @to_date, @user_id)", from_dateParameter, to_dateParameter, user_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetMatChange")]
+        public virtual IQueryable<GetMatChange_Result> GetMatChange(Nullable<int> mat_id)
+        {
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatChange_Result>("[BaseEntities].[GetMatChange](@mat_id)", mat_idParameter);
         }
     }
 }
