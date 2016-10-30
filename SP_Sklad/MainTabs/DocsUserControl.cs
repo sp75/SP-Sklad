@@ -733,18 +733,7 @@ namespace SP_Sklad.MainTabs
         {
             var dr = e.Row as GetWayBillList_Result;
 
-            if (dr != null)
-            {
-                gridControl2.DataSource = _db.GetWaybillDetIn(dr.WbillId);
-                gridControl3.DataSource = _db.GetRelDocList(dr.DocId);
-
-                WayBillListInfoBS.DataSource = dr;
-            }
-            else
-            {
-                gridControl2.DataSource = null;
-                gridControl3.DataSource = null;
-            }
+            xtraTabControl2_SelectedPageChanged(sender, null);
 
             DeleteItemBtn.Enabled = (dr != null && dr.Checked == 0 && focused_tree_node.CanDelete == 1);
             ExecuteItemBtn.Enabled = (dr != null && dr.WType != 2 && dr.WType != -16 && dr.WType != 16 && focused_tree_node.CanPost == 1);
@@ -923,6 +912,36 @@ namespace SP_Sklad.MainTabs
             }
 
             barButtonItem11.Enabled = wb_focused_row.WType == 6;
+        }
+
+        private void xtraTabControl2_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
+        {
+            var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
+          
+            if (dr == null)
+            {
+                gridControl2.DataSource = null;
+                gridControl3.DataSource = null;
+                WayBillListInfoBS.DataSource = null;
+
+                return;
+            }
+
+            switch (xtraTabControl2.SelectedTabPageIndex)
+            {
+                case 0:
+                    gridControl2.DataSource = _db.GetWaybillDetIn(dr.WbillId);
+                    break;
+
+                case 1:
+                    WayBillListInfoBS.DataSource = dr;
+                    break;
+
+                case 2:
+                    gridControl3.DataSource = _db.GetRelDocList(dr.DocId);
+                    break;
+            }
+          
         }
     }
 }

@@ -307,6 +307,7 @@ namespace SP_Sklad.EditForm
             {
                 ExtraTypeLookUpEdit.EditValue = 0;
                 _mat_prices.PPTypeId = null;
+                _mat_prices.CurrId = null;
                 _db.SaveChanges();
             }
         }
@@ -428,7 +429,7 @@ namespace SP_Sklad.EditForm
             }
             
             calcEdit2.Enabled = true;
-            labelControl12.Enabled = true;
+            labelControl16.Enabled = true;
             lookUpEdit2.Enabled = true;
 
             calcEdit1.Enabled = true;
@@ -440,7 +441,7 @@ namespace SP_Sklad.EditForm
             if (checkEdit3.Checked)
             {
                 calcEdit2.Enabled = false;
-                labelControl12.Enabled = false;
+                labelControl16.Enabled = false;
                 lookUpEdit2.Enabled = false;
             }
 
@@ -459,8 +460,7 @@ namespace SP_Sklad.EditForm
             {
                 _mat_prices.ExtraType = 1;
                 _mat_prices.PPTypeId = null;
-                //_mat_prices.OnValue = 0 
-                //CustomPriceEdit.Value = 0;
+                CurrLookUpEdit.EditValue = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId;
                 _db.SaveChanges();
             }
         }

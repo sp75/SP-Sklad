@@ -127,8 +127,8 @@ namespace SP_Sklad.WBForm
 
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            try
-            {
+            //try
+          //  {
                 using (var df = new frmWayBillDetOut(_db, null, wb))
                 {
                     if (df.ShowDialog() == DialogResult.OK)
@@ -139,8 +139,8 @@ namespace SP_Sklad.WBForm
                         WaybillDetOutGridView.MoveLastVisible();
                     }
                 }
-            }
-            catch { }
+        //    }
+        //    catch { }
         }
 
         private void frmWayBillOut_Shown(object sender, EventArgs e)

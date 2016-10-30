@@ -555,25 +555,29 @@ namespace SP_Sklad.MainTabs
         {
             if (row == null)
             {
+                RemainOnWhGrid.DataSource = null;
+                PosGridControl.DataSource = null;
+                GetOrderedBS.DataSource = null;
+                MatChangeGridControl.DataSource = null;
                 return;
             }
 
             switch (xtraTabControl1.SelectedTabPageIndex)
             {
                 case 0:
-                //    RemainOnWhGrid.DataSource = null;
+
                     RemainOnWhGrid.DataSource = DB.SkladBase().MatRemainByWh(row.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, wh_list).ToList();
                     break;
                 case 1:
-                 //   PosGridControl.DataSource = null;
+
                     PosGridControl.DataSource = DB.SkladBase().PosGet(row.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list).ToList();
                     break;
                 case 2:
-                //    GetOrderedBS.DataSource = null;
+
                     GetOrderedBS.DataSource = DB.SkladBase().GetOrdered(row.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list).ToList();
                     break;
                 case 3:
-
+                    MatChangeGridControl.DataSource = DB.SkladBase().GetMatChange(row.MatId).ToList();
                     break;
             }
         }

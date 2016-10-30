@@ -253,6 +253,13 @@
             this.DocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
+            this.MatChangeGridControl = new DevExpress.XtraGrid.GridControl();
+            this.MatChangeGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn35 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn37 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn53 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn54 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -291,6 +298,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox5)).BeginInit();
+            this.xtraTabPage9.SuspendLayout();
             this.MatListTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MatListGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatListGridView)).BeginInit();
@@ -334,6 +342,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatChangeGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatChangeGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
             this.SuspendLayout();
             // 
             // UserTreeImgList
@@ -1804,6 +1815,7 @@
             // 
             // xtraTabPage9
             // 
+            this.xtraTabPage9.Controls.Add(this.MatChangeGridControl);
             this.xtraTabPage9.ImageIndex = 6;
             this.xtraTabPage9.Name = "xtraTabPage9";
             this.xtraTabPage9.Size = new System.Drawing.Size(973, 220);
@@ -2793,6 +2805,76 @@
             this.xtraTabPage10.Size = new System.Drawing.Size(902, 648);
             this.xtraTabPage10.Text = "Акти інвентаризації";
             // 
+            // MatChangeGridControl
+            // 
+            this.MatChangeGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MatChangeGridControl.Location = new System.Drawing.Point(0, 0);
+            this.MatChangeGridControl.MainView = this.MatChangeGridView;
+            this.MatChangeGridControl.MenuManager = this.barManager1;
+            this.MatChangeGridControl.Name = "MatChangeGridControl";
+            this.MatChangeGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemCheckEdit2});
+            this.MatChangeGridControl.Size = new System.Drawing.Size(973, 220);
+            this.MatChangeGridControl.TabIndex = 10;
+            this.MatChangeGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.MatChangeGridView});
+            // 
+            // MatChangeGridView
+            // 
+            this.MatChangeGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn35,
+            this.gridColumn37,
+            this.gridColumn53,
+            this.gridColumn54});
+            this.MatChangeGridView.GridControl = this.MatChangeGridControl;
+            this.MatChangeGridView.Name = "MatChangeGridView";
+            this.MatChangeGridView.OptionsBehavior.AllowIncrementalSearch = true;
+            this.MatChangeGridView.OptionsBehavior.Editable = false;
+            this.MatChangeGridView.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn35
+            // 
+            this.gridColumn35.Caption = "Назва аналога";
+            this.gridColumn35.FieldName = "MatChangeName";
+            this.gridColumn35.Name = "gridColumn35";
+            this.gridColumn35.Visible = true;
+            this.gridColumn35.VisibleIndex = 1;
+            this.gridColumn35.Width = 221;
+            // 
+            // gridColumn37
+            // 
+            this.gridColumn37.Caption = "Артикул";
+            this.gridColumn37.FieldName = "Artikul";
+            this.gridColumn37.Name = "gridColumn37";
+            this.gridColumn37.Visible = true;
+            this.gridColumn37.VisibleIndex = 2;
+            this.gridColumn37.Width = 106;
+            // 
+            // gridColumn53
+            // 
+            this.gridColumn53.Caption = "Примітка";
+            this.gridColumn53.FieldName = "Notes";
+            this.gridColumn53.Name = "gridColumn53";
+            this.gridColumn53.Visible = true;
+            this.gridColumn53.VisibleIndex = 3;
+            this.gridColumn53.Width = 224;
+            // 
+            // gridColumn54
+            // 
+            this.gridColumn54.Caption = "Група";
+            this.gridColumn54.FieldName = "GrpName";
+            this.gridColumn54.Name = "gridColumn54";
+            this.gridColumn54.Visible = true;
+            this.gridColumn54.VisibleIndex = 0;
+            this.gridColumn54.Width = 97;
+            // 
+            // repositoryItemCheckEdit2
+            // 
+            this.repositoryItemCheckEdit2.AutoHeight = false;
+            this.repositoryItemCheckEdit2.Name = "repositoryItemCheckEdit2";
+            this.repositoryItemCheckEdit2.ValueChecked = 1;
+            this.repositoryItemCheckEdit2.ValueUnchecked = 0;
+            // 
             // WarehouseUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2845,6 +2927,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox5)).EndInit();
+            this.xtraTabPage9.ResumeLayout(false);
             this.MatListTabPage.ResumeLayout(false);
             this.MatListTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MatListGridControl)).EndInit();
@@ -2891,6 +2974,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatChangeGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatChangeGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3121,5 +3207,12 @@
         private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraBars.Bar bar2;
+        private DevExpress.XtraGrid.GridControl MatChangeGridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView MatChangeGridView;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn35;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn37;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn53;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn54;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit2;
     }
 }

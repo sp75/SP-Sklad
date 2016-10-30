@@ -322,7 +322,7 @@
             // 
             this.splitterControl1.Location = new System.Drawing.Point(187, 0);
             this.splitterControl1.Name = "splitterControl1";
-            this.splitterControl1.Size = new System.Drawing.Size(5, 402);
+            this.splitterControl1.Size = new System.Drawing.Size(12, 402);
             this.splitterControl1.TabIndex = 36;
             this.splitterControl1.TabStop = false;
             // 
@@ -331,12 +331,12 @@
             this.xtraTabControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.xtraTabControl1.BorderStylePage = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(192, 0);
+            this.xtraTabControl1.Location = new System.Drawing.Point(199, 0);
             this.xtraTabControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.xtraTabControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(635, 402);
+            this.xtraTabControl1.Size = new System.Drawing.Size(628, 402);
             this.xtraTabControl1.TabIndex = 37;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -347,7 +347,7 @@
             // 
             this.xtraTabPage1.Controls.Add(this.panel1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(635, 380);
+            this.xtraTabPage1.Size = new System.Drawing.Size(628, 380);
             this.xtraTabPage1.Text = "Інформація";
             // 
             // panel1
@@ -356,7 +356,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(635, 380);
+            this.panel1.Size = new System.Drawing.Size(628, 380);
             this.panel1.TabIndex = 29;
             // 
             // groupControl2
@@ -372,7 +372,7 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(635, 380);
+            this.groupControl2.Size = new System.Drawing.Size(628, 380);
             this.groupControl2.TabIndex = 17;
             this.groupControl2.Tag = "";
             this.groupControl2.Text = " Основна інформація ";
@@ -457,7 +457,7 @@
             // 
             this.xtraTabPage4.Controls.Add(this.xtraTabControl2);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(635, 380);
+            this.xtraTabPage4.Size = new System.Drawing.Size(628, 380);
             this.xtraTabPage4.Text = "Права";
             // 
             // xtraTabControl2
@@ -470,7 +470,7 @@
             this.xtraTabControl2.LookAndFeel.UseDefaultLookAndFeel = false;
             this.xtraTabControl2.Name = "xtraTabControl2";
             this.xtraTabControl2.SelectedTabPage = this.xtraTabPage2;
-            this.xtraTabControl2.Size = new System.Drawing.Size(635, 380);
+            this.xtraTabControl2.Size = new System.Drawing.Size(628, 380);
             this.xtraTabControl2.TabIndex = 38;
             this.xtraTabControl2.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage2,
@@ -481,7 +481,7 @@
             // 
             this.xtraTabPage2.Controls.Add(this.panel2);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(635, 358);
+            this.xtraTabPage2.Size = new System.Drawing.Size(628, 358);
             this.xtraTabPage2.Text = "Основні";
             // 
             // panel2
@@ -490,7 +490,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(635, 358);
+            this.panel2.Size = new System.Drawing.Size(628, 358);
             this.panel2.TabIndex = 29;
             // 
             // treeList1
@@ -519,7 +519,7 @@
             this.treeList1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
             this.treeList1.SelectImageList = this.UserTreeImgList;
-            this.treeList1.Size = new System.Drawing.Size(635, 358);
+            this.treeList1.Size = new System.Drawing.Size(628, 358);
             this.treeList1.TabIndex = 0;
             this.treeList1.PopupMenuShowing += new DevExpress.XtraTreeList.PopupMenuShowingEventHandler(this.treeList1_PopupMenuShowing);
             this.treeList1.Click += new System.EventHandler(this.treeList1_Click);
@@ -706,7 +706,7 @@
             // 
             this.xtraTabPage3.Controls.Add(this.UserAccessWhGridControl);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(634, 358);
+            this.xtraTabPage3.Size = new System.Drawing.Size(628, 358);
             this.xtraTabPage3.Text = "Доступ до сладів";
             // 
             // UserAccessWhGridControl
@@ -718,7 +718,7 @@
             this.UserAccessWhGridControl.Name = "UserAccessWhGridControl";
             this.UserAccessWhGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1});
-            this.UserAccessWhGridControl.Size = new System.Drawing.Size(634, 358);
+            this.UserAccessWhGridControl.Size = new System.Drawing.Size(628, 358);
             this.UserAccessWhGridControl.TabIndex = 8;
             this.UserAccessWhGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.UserAccessWhGridView});
@@ -771,7 +771,7 @@
             this.xtraTabPage5.Controls.Add(this.checkEdit2);
             this.xtraTabPage5.Controls.Add(this.checkEdit1);
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(634, 358);
+            this.xtraTabPage5.Size = new System.Drawing.Size(628, 358);
             this.xtraTabPage5.Text = "Додаткові";
             // 
             // checkEdit3
@@ -818,7 +818,7 @@
             this.xtraTabPage6.Controls.Add(this.labelControl2);
             this.xtraTabPage6.Controls.Add(this.textEdit3);
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(635, 380);
+            this.xtraTabPage6.Size = new System.Drawing.Size(628, 380);
             this.xtraTabPage6.Text = "Додаткова інформація";
             // 
             // labelControl2
@@ -876,7 +876,7 @@
             this.Name = "frmUserEdit";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmUserEdit";
+            this.Text = "Властивості користувача:";
             this.Load += new System.EventHandler(this.frmUserEdit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();

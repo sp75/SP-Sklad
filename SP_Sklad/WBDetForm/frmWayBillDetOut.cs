@@ -155,7 +155,7 @@ namespace SP_Sklad.WBDetForm
             var list_price = _db.GetListMatPrices(row.MatId, _wb.CurrId, (int)PriceTypesEdit.EditValue).FirstOrDefault();
             if (list_price != null)
             {
-                _wbd.BasePrice = Math.Round(list_price.Price.Value, 4);
+                _wbd.BasePrice = list_price.Price != null ? Math.Round(list_price.Price.Value, 4) : 0;
                 BasePriceEdit.Value = _wbd.BasePrice.Value;
             }
 
@@ -312,8 +312,7 @@ namespace SP_Sklad.WBDetForm
             var list_price = _db.GetListMatPrices((int)MatComboBox.EditValue, _wb.CurrId, (int?)PriceTypesEdit.EditValue).FirstOrDefault();
             if (list_price != null)
             {
-                _wbd.BasePrice = Math.Round(list_price.Price.Value, 4);
-            //    BasePriceEdit.Value = _wbd.BasePrice.Value;
+                _wbd.BasePrice = list_price.Price != null ? Math.Round(list_price.Price.Value, 4) : 0;
             }
 
             GetOk();

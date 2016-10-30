@@ -71,6 +71,7 @@ namespace SP_Sklad.EditForm
             {
                 UserBS.DataSource = _u;
                 ConfirmPassEdit.Text = _u.Pass;
+                Text += string.Format( @" {0}", _u.Name );
             }
 
             ValidateForm();
