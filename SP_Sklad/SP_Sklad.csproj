@@ -46,6 +46,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Склади.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.BonusSkins.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Charts.v15.2.Core, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -248,8 +251,20 @@
     <Compile Include="SkladData\REP_31_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_MatRemains.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_PriceTypes.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_WhMatRemains.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SplashScreen1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashScreen1.Designer.cs">
+      <DependentUpon>SplashScreen1.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewsForm\frmCatalog.cs">
       <SubType>Form</SubType>
@@ -887,9 +902,6 @@
     <Compile Include="SkladData\v_KAgentAccount.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\v_MatRemains.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SkladData\v_PayDoc.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -903,9 +915,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_WaybillList.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\v_WhMatRemains.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\Warehouse.cs">
@@ -1096,6 +1105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLockApp.resx">
       <DependentUpon>frmLockApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashScreen1.resx">
+      <DependentUpon>SplashScreen1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmCatalog.resx">
       <DependentUpon>frmCatalog.cs</DependentUpon>
@@ -1449,6 +1461,19 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Склади.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SkladData\SkladData.csproj">
+      <Project>{1cbbd5b3-dced-4b8e-aea4-4bc5081624ad}</Project>
+      <Name>SkladData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SkladEngine\SkladEngine.csproj">
+      <Project>{053e5968-b5fb-41bd-9e8f-8f4a9c60d922}</Project>
+      <Name>SkladEngine</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SP_Sklad", "SP_Sklad\SP_Sklad.csproj", "{A1A2E2A4-9F01-4E90-A921-10B929BF694B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkladEngine", "SkladEngine\SkladEngine.csproj", "{053E5968-B5FB-41BD-9E8F-8F4A9C60D922}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkladData", "SkladData\SkladData.csproj", "{1CBBD5B3-DCED-4B8E-AEA4-4BC5081624AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +17,14 @@ Global
 		{A1A2E2A4-9F01-4E90-A921-10B929BF694B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1A2E2A4-9F01-4E90-A921-10B929BF694B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1A2E2A4-9F01-4E90-A921-10B929BF694B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{053E5968-B5FB-41BD-9E8F-8F4A9C60D922}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{053E5968-B5FB-41BD-9E8F-8F4A9C60D922}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{053E5968-B5FB-41BD-9E8F-8F4A9C60D922}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{053E5968-B5FB-41BD-9E8F-8F4A9C60D922}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CBBD5B3-DCED-4B8E-AEA4-4BC5081624AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CBBD5B3-DCED-4B8E-AEA4-4BC5081624AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CBBD5B3-DCED-4B8E-AEA4-4BC5081624AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CBBD5B3-DCED-4B8E-AEA4-4BC5081624AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

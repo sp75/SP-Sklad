@@ -21,7 +21,6 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> AvgPrice { get; set; }
         public Nullable<decimal> MinPrice { get; set; }
         public Nullable<decimal> MaxPrice { get; set; }
-        public Nullable<decimal> PosRsv { get; set; }
         public Nullable<decimal> Ordered { get; set; }
         public Nullable<decimal> ORsv { get; set; }
     }

@@ -131,7 +131,6 @@
         <AssociationConnector Association="BaseModel.FK_WBS_SVCID" />
         <EntityTypeShape EntityType="BaseModel.PriceListDet" Width="1.5" PointX="19" PointY="29.25" />
         <EntityTypeShape EntityType="BaseModel.Tables" Width="1.5" PointX="9.3817213742908656" PointY="16.80379786379812" />
-        <EntityTypeShape EntityType="BaseModel.v_MatRemains" Width="1.5" PointX="1.9117359714171553" PointY="22.099671970167975" />
         <EntityTypeShape EntityType="BaseModel.v_PriceList" Width="1.5" PointX="11.453816681845959" PointY="22.139463211474691" />
         <EntityTypeShape EntityType="BaseModel.PriceList" Width="1.5" PointX="1.60808008797843" PointY="16.975578316010338" />
         <AssociationConnector Association="BaseModel.FK_PRICELIS_REFERENCE_CURRENCY" />
@@ -146,7 +145,6 @@
         <EntityTypeShape EntityType="BaseModel.Actives" Width="1.5" PointX="3.8148237186553065" PointY="10.850355943129564" />
         <EntityTypeShape EntityType="BaseModel.v_WaybillList" Width="1.5" PointX="14.375" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.EnterpriseAccount" Width="1.5" PointX="11.375" PointY="2.75" />
-        <EntityTypeShape EntityType="BaseModel.v_WhMatRemains" Width="1.5" PointX="12.375" PointY="13.75" />
         <EntityTypeShape EntityType="BaseModel.v_PayDoc" Width="1.5" PointX="16.375" PointY="14.75" />
         <EntityTypeShape EntityType="BaseModel.OperLog" Width="1.5" PointX="7.2719822913743473" PointY="20.707937920795725" />
         <EntityTypeShape EntityType="BaseModel.WaybillList" Width="1.5" PointX="11.915454285179942" PointY="9.206076447482257" />
@@ -242,6 +240,8 @@
         <EntityTypeShape EntityType="BaseModel.MatChange" Width="1.5" PointX="8.25" PointY="30.25" />
         <AssociationConnector Association="BaseModel.FK_MATCHANGE_CHANGEID" />
         <AssociationConnector Association="BaseModel.FK_MATCHANGE_MATID" />
+        <EntityTypeShape EntityType="BaseModel.v_MatRemains" Width="1.5" PointX="1.3652722897777672" PointY="6.8016226770363852" />
+        <EntityTypeShape EntityType="BaseModel.v_WhMatRemains" Width="1.5" PointX="5.0809056894299136" PointY="22.338441590936128" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="7.0245045325832924" PointY="12.641712000892364" />
