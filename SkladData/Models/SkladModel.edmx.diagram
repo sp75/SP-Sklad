@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="367f73705f224a5989c1c15ae0ff8d73" Name="Diagram1" ZoomLevel="47">
+      <Diagram DiagramId="2dce84051f954a6aa73f8577dcc3444a" Name="Diagram1">
         <EntityTypeShape EntityType="sp_baseModel.AccountType" Width="1.5" PointX="6" PointY="51.75" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.Actives" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.Banks" Width="1.5" PointX="6" PointY="47.5" IsExpanded="true" />
@@ -28,7 +28,6 @@
         <EntityTypeShape EntityType="sp_baseModel.DISCCARDGRP" Width="1.5" PointX="9" PointY="79.875" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.DISCCARDS" Width="1.5" PointX="11.25" PointY="59.875" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.Docs" Width="1.5" PointX="9" PointY="51.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="sp_baseModel.DocsRel" Width="1.5" PointX="11.25" PointY="33.75" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.DocType" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.ENTPARAMS" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.ExtRel" Width="1.5" PointX="18.75" PointY="70.5" IsExpanded="true" />
@@ -49,8 +48,8 @@
         <EntityTypeShape EntityType="sp_baseModel.MatChange" Width="1.5" PointX="13.5" PointY="35.5" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.Materials" Width="1.5" PointX="11.25" PointY="39.375" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.MatGroup" Width="1.5" PointX="9" PointY="42.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="sp_baseModel.MatGroupPrices" Width="1.5" PointX="22.5" PointY="53.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="sp_baseModel.MatPrices" Width="1.5" PointX="22.5" PointY="59.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp_baseModel.MatGroupPrices" Width="1.5" PointX="19.5" PointY="51.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp_baseModel.MatPrices" Width="1.5" PointX="22.5" PointY="54.125" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.MatRecDet" Width="1.5" PointX="19.5" PointY="45.375" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.MatRecipe" Width="1.5" PointX="17.25" PointY="50.625" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.MatRemains" Width="1.5" PointX="13.5" PointY="31.375" IsExpanded="true" />
@@ -61,18 +60,17 @@
         <EntityTypeShape EntityType="sp_baseModel.PayDocType" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.PayType" Width="1.5" PointX="11.25" PointY="79.75" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.PosRemains" Width="1.5" PointX="21.75" PointY="70.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="sp_baseModel.PriceList" Width="1.5" PointX="24.5" PointY="64.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="sp_baseModel.PriceListDet" Width="1.5" PointX="26.75" PointY="64.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp_baseModel.PriceList" Width="1.5" PointX="22.5" PointY="59.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp_baseModel.PriceListDet" Width="1.5" PointX="24.75" PointY="59.875" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.PriceTypes" Width="1.5" PointX="14.25" PointY="72.75" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.PrintLog" Width="1.5" PointX="3" PointY="75.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="sp_baseModel.RepLng" Width="1.5" PointX="14.25" PointY="83" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.Reports" Width="1.5" PointX="12" PointY="86" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.ReturnRel" Width="1.5" PointX="18.75" PointY="75.5" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.Serials" Width="1.5" PointX="18.75" PointY="79" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.Services" Width="1.5" PointX="17.25" PointY="38.125" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.SvcGroup" Width="1.5" PointX="15" PointY="39" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.Tables" Width="1.5" PointX="0.75" PointY="69" IsExpanded="true" />
-        <EntityTypeShape EntityType="sp_baseModel.TAXES" Width="1.5" PointX="19.5" PointY="53.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp_baseModel.TAXES" Width="1.5" PointX="19.5" PointY="82.5" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.TAXREESTRTYPE" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.TAXWB" Width="1.5" PointX="11.25" PointY="52.625" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.TAXWBDET" Width="1.5" PointX="13.5" PointY="53.125" IsExpanded="true" />
@@ -83,16 +81,18 @@
         <EntityTypeShape EntityType="sp_baseModel.Users" Width="1.5" PointX="0.75" PointY="61" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.UserTree" Width="1.5" PointX="5.75" PointY="90.25" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.UserTreeView" Width="1.5" PointX="8" PointY="75.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="sp_baseModel.ViewLng" Width="1.5" PointX="14.25" PointY="80" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.Warehouse" Width="1.5" PointX="3.75" PointY="49.875" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.WaybillDet" Width="1.5" PointX="16.5" PointY="68" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.WayBillDetAddProps" Width="1.5" PointX="16.5" PointY="63.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="sp_baseModel.WayBillDetTaxes" Width="1.5" PointX="21.75" PointY="67.625" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.WaybillList" Width="1.5" PointX="11.25" PointY="64.375" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.WayBillMake" Width="1.5" PointX="19.5" PointY="62.75" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.WaybillMove" Width="1.5" PointX="19.5" PointY="66.875" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.WayBillSvc" Width="1.5" PointX="19.5" PointY="56.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="sp_baseModel.WMatTurn" Width="1.5" PointX="21.75" PointY="75.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp_baseModel.WMatTurn" Width="1.5" PointX="21.75" PointY="65.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp_baseModel.DocsRel" Width="1.5" PointX="11.25" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp_baseModel.RepLng" Width="1.5" PointX="14.25" PointY="83" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp_baseModel.ViewLng" Width="1.5" PointX="14.25" PointY="80" IsExpanded="true" />
+        <EntityTypeShape EntityType="sp_baseModel.WayBillDetTaxes" Width="1.5" PointX="21.75" PointY="75.625" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.EnterpriseAccount" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.KagentList" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="sp_baseModel.MaterialsList" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
