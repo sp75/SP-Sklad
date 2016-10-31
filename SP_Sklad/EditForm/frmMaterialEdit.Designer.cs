@@ -123,6 +123,7 @@
             this.simpleButton10 = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit7 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit6 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
@@ -160,7 +161,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
             this.DisCheckBox = new DevExpress.XtraEditors.CheckEdit();
-            this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeList)).BeginInit();
@@ -1266,6 +1266,15 @@
             this.groupControl1.Tag = "";
             this.groupControl1.Text = " Дані для посвідчення якості";
             // 
+            // labelControl21
+            // 
+            this.labelControl21.Location = new System.Drawing.Point(24, 320);
+            this.labelControl21.Name = "labelControl21";
+            this.labelControl21.Size = new System.Drawing.Size(136, 16);
+            this.labelControl21.StyleController = this.styleController1;
+            this.labelControl21.TabIndex = 46;
+            this.labelControl21.Text = "Нормативний документ";
+            // 
             // textEdit7
             // 
             this.textEdit7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1699,15 +1708,6 @@
             this.DisCheckBox.Size = new System.Drawing.Size(229, 19);
             this.DisCheckBox.TabIndex = 41;
             this.DisCheckBox.CheckedChanged += new System.EventHandler(this.DisCheckBox_CheckedChanged);
-            // 
-            // labelControl21
-            // 
-            this.labelControl21.Location = new System.Drawing.Point(24, 320);
-            this.labelControl21.Name = "labelControl21";
-            this.labelControl21.Size = new System.Drawing.Size(136, 16);
-            this.labelControl21.StyleController = this.styleController1;
-            this.labelControl21.TabIndex = 46;
-            this.labelControl21.Text = "Нормативний документ";
             // 
             // frmMaterialEdit
             // 

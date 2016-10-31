@@ -20,6 +20,7 @@ namespace SP_Sklad
         public static int enterprise_id { get; set; }
         public static mainForm main_form { get; set; }
 
+
         public mainForm(int UserId)
         {
             InitializeComponent();
@@ -35,6 +36,8 @@ namespace SP_Sklad
             {
                 barEditItem3.EditValue = DBHelper.EnterpriseList.Select(s => s.KaId).FirstOrDefault();
             }
+
+            History.AddEntry(new entity { FunId = 0, MainTabs = xtraTabControl1.SelectedTabPageIndex });
         }
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -122,6 +125,40 @@ namespace SP_Sklad
             {
                 wb_make.ShowDialog();
             }
+        }
+
+        private void xtraTabControl1_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
+        {
+            History.AddEntry(new entity { FunId = 0, MainTabs = xtraTabControl1.SelectedTabPageIndex });
+        }
+
+        private void xtraTabControl1_SelectedPageChanging(object sender, DevExpress.XtraTab.TabPageChangingEventArgs e)
+        {
+           
+        }
+
+        private void PrevBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var p = History.Previous();
+            if(p!= null)
+            {
+                History.is_enable = false;
+                xtraTabControl1.SelectedTabPageIndex = p.MainTabs;
+                History.is_enable = true;
+            }
+        }
+
+        private void NextBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var n = History.Next();
+
+            if (n != null)
+            {
+                History.is_enable = false;
+                xtraTabControl1.SelectedTabPageIndex = n.MainTabs;
+                History.is_enable = true;
+            }
+
         }
 
     }

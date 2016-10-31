@@ -121,6 +121,7 @@
   <ItemGroup>
     <Compile Include="Common\DocEdit.cs" />
     <Compile Include="Common\FindDoc.cs" />
+    <Compile Include="Common\History.cs" />
     <Compile Include="Common\IHelper.cs" />
     <Compile Include="Common\ManufDocEdit.cs" />
     <Compile Include="Common\MoneyToStr.cs" />
@@ -259,12 +260,6 @@
     </Compile>
     <Compile Include="SkladData\v_WhMatRemains.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SplashScreen1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SplashScreen1.Designer.cs">
-      <DependentUpon>SplashScreen1.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewsForm\frmCatalog.cs">
       <SubType>Form</SubType>
@@ -1105,9 +1100,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLockApp.resx">
       <DependentUpon>frmLockApp.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SplashScreen1.resx">
-      <DependentUpon>SplashScreen1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmCatalog.resx">
       <DependentUpon>frmCatalog.cs</DependentUpon>
