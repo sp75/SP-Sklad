@@ -2118,7 +2118,6 @@
             this.WbGridView.OptionsView.EnableAppearanceOddRow = true;
             this.WbGridView.OptionsView.ShowGroupPanel = false;
             this.WbGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WbGridView_PopupMenuShowing);
-            this.WbGridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.WbGridView_FocusedRowChanged);
             this.WbGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.WbGridView_FocusedRowObjectChanged);
             this.WbGridView.DoubleClick += new System.EventHandler(this.WbGridView_DoubleClick);
             // 
@@ -2508,6 +2507,8 @@
             this.gridColumn21});
             this.gridView3.GridControl = this.gridControl3;
             this.gridView3.Name = "gridView3";
+            this.gridView3.OptionsBehavior.Editable = false;
+            this.gridView3.OptionsBehavior.ReadOnly = true;
             this.gridView3.OptionsView.ShowGroupPanel = false;
             this.gridView3.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.gridView3_PopupMenuShowing);
             // 

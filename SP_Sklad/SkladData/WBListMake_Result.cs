@@ -49,5 +49,6 @@ namespace SP_Sklad.SkladData
         public Nullable<int> FromWId { get; set; }
         public string DocStatus { get; set; }
         public Nullable<decimal> Price { get; set; }
+        public Nullable<decimal> ShippedAmount { get; set; }
     }
 }

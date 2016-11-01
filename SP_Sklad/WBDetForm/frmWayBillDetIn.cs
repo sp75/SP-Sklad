@@ -95,7 +95,7 @@ namespace SP_Sklad.WBDetForm
 
                 MatComboBox.Enabled = (wbdp == null || wbdp.WbMaked == null);
                 MatEditBtn.Enabled = MatComboBox.Enabled;
-                AmountEdit.Enabled = (MatComboBox.Enabled /*|| WayBillDetAddPropsWTYPE->Value == -22*/ );
+             //   AmountEdit.Enabled = (MatComboBox.Enabled  );
                 ManufEditBtn.Visible = ((wbdp == null || wbdp.WaybillList == null || wbdp.WaybillList.WType == -20) && _wb.WType == 5);
             }
 
@@ -138,8 +138,10 @@ namespace SP_Sklad.WBDetForm
             if (wbdp != null && _db.Entry<WayBillDetAddProps>(wbdp).State == EntityState.Detached)
             {
                 wbdp.PosId = _wbd.PosId;
-        //        _db.WayBillDetAddProps.Add(wbdp);
+                _db.WayBillDetAddProps.Add(wbdp);
             }
+            wbdp.Notes = DateTime.Now.ToString();
+
             if (serials != null && serials.SerialNo != null && _db.Entry<Serials>(serials).State == EntityState.Detached)
             {
                 serials.PosId = _wbd.PosId;

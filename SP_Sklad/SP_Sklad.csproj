@@ -261,6 +261,9 @@
     <Compile Include="SkladData\v_WhMatRemains.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\WBListMake_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewsForm\frmCatalog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -937,9 +940,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\WBDGetOutP2_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\WBListMake_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\WhMatGet_Result.cs">

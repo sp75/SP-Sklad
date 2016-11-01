@@ -196,11 +196,6 @@ namespace SP_Sklad.MainTabs
             RefrechItemBtn.PerformClick();
         }
 
-        private void WbGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-
-        }
-
         private void EditItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 

@@ -274,7 +274,7 @@ namespace SP_Sklad.Reports
         public static void MakedReport(int wbill_id, BaseEntities db)
         {
             var dataForReport = new Dictionary<string, IList>();
-            var date = db.WaybillList.Where(w => w.WbillId == wbill_id).Select(s => s.OnDate).First();
+            var date = db.WaybillList.Where(w => w.DocId == wbill_id).Select(s => s.OnDate).First();
             var wb = db.WBListMake(date, date, -1, "*", 0, -20).ToList();
             var item = db.GetWayBillDetOut(wbill_id).ToList().Select((s, index) => new
             {
