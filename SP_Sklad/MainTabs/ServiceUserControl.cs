@@ -56,6 +56,11 @@ namespace SP_Sklad.MainTabs
 
             RefrechItemBtn.PerformClick();
             mainContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
+
+            if (focused_tree_node.FunId != null)
+            {
+                History.AddEntry(new entity { FunId = focused_tree_node.FunId.Value, MainTabs = 6 });
+            }
         }
 
         private void EditItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

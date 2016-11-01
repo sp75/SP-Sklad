@@ -916,7 +916,7 @@
             this.xtraTabPage1.Controls.Add(this.vGridControl1);
             this.xtraTabPage1.ImageIndex = 1;
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1028, 219);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1031, 219);
             this.xtraTabPage1.Text = "Інформація про накладну";
             // 
             // vGridControl1
@@ -937,7 +937,7 @@
             this.row10,
             this.row11,
             this.row12});
-            this.vGridControl1.Size = new System.Drawing.Size(1028, 219);
+            this.vGridControl1.Size = new System.Drawing.Size(1031, 219);
             this.vGridControl1.TabIndex = 0;
             // 
             // WayBillListInfoBS
@@ -1044,7 +1044,7 @@
             this.xtraTabPage2.Controls.Add(this.gridControl3);
             this.xtraTabPage2.ImageIndex = 2;
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1028, 219);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1031, 219);
             this.xtraTabPage2.Text = "Зв\'язані документи";
             // 
             // gridControl3
@@ -1057,7 +1057,7 @@
             this.repositoryItemImageComboBox2,
             this.repositoryItemImageComboBox6,
             this.repositoryItemImageComboBox7});
-            this.gridControl3.Size = new System.Drawing.Size(1028, 219);
+            this.gridControl3.Size = new System.Drawing.Size(1031, 219);
             this.gridControl3.TabIndex = 0;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});

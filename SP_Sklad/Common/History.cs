@@ -33,6 +33,10 @@ namespace SP_Sklad.Common
            {
                return;
            }
+        /*   if (HistoryList.IndexOf(newData) != -1)
+           {
+               HistoryList.RemoveAt(HistoryList.IndexOf(newData));
+           }*/
 
            HistoryList.Add(newData);
            cur_entity = newData;

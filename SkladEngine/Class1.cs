@@ -8,5 +8,9 @@ namespace SkladEngine
 {
     public class Class1
     {
+        private void dd()
+        {
+         //     new sp_baseEntities( ().Banks
+        }
     }
 }

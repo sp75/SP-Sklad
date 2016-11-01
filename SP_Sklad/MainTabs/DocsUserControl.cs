@@ -134,6 +134,11 @@ namespace SP_Sklad.MainTabs
             RefrechItemBtn.PerformClick();
 
             wbContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
+
+            if (focused_tree_node.FunId != null)
+            {
+                History.AddEntry(new entity { FunId = focused_tree_node.FunId.Value, MainTabs = 0 });
+            }
         }
 
         private void wbStartDate_Properties_EditValueChanged(object sender, EventArgs e)

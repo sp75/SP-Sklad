@@ -144,6 +144,7 @@ namespace SP_Sklad
             {
                 History.is_enable = false;
                 xtraTabControl1.SelectedTabPageIndex = p.MainTabs;
+                SetNode(p);
                 History.is_enable = true;
             }
         }
@@ -156,9 +157,41 @@ namespace SP_Sklad
             {
                 History.is_enable = false;
                 xtraTabControl1.SelectedTabPageIndex = n.MainTabs;
+                SetNode(n);
                 History.is_enable = true;
             }
 
+        }
+
+        private void SetNode(entity e)
+        {
+            switch (e.MainTabs)
+            {
+                case 0:
+                    docsUserControl1.DocsTreeList.FocusedNode = docsUserControl1.DocsTreeList.FindNodeByFieldValue("FunId", e.FunId);
+                    break;
+
+                case 1:
+                    manufacturingUserControl1.DocsTreeList.FocusedNode = manufacturingUserControl1.DocsTreeList.FindNodeByFieldValue("FunId", e.FunId);
+                    break;
+
+                case 2:
+                    whUserControl.WHTreeList.FocusedNode = whUserControl.WHTreeList.FindNodeByFieldValue("FunId", e.FunId);
+                    break;
+
+                case 3:
+                    financesUserControl1.FinancesTreeList.FocusedNode = financesUserControl1.FinancesTreeList.FindNodeByFieldValue("FunId", e.FunId);
+                    break;
+
+                case 5:
+                    DirUserControl.DirTreeList.FocusedNode = DirUserControl.DirTreeList.FindNodeByFieldValue("FunId", e.FunId);
+                    break;
+
+                case 6:
+                    serviceUserControl1.DirTreeList.FocusedNode = serviceUserControl1.DirTreeList.FindNodeByFieldValue("FunId", e.FunId);
+                    break;
+            }
+ 
         }
 
     }
