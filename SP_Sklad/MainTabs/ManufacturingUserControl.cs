@@ -112,7 +112,7 @@ namespace SP_Sklad.MainTabs
 
             if (focused_tree_node.FunId != null)
             {
-                History.AddEntry(new entity { FunId = focused_tree_node.FunId.Value, MainTabs = 1 });
+                History.AddEntry(new HistoryEntity { FunId = focused_tree_node.FunId.Value, MainTabs = 1 });
             }
         }
 

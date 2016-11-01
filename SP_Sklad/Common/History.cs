@@ -7,55 +7,62 @@ using DevExpress.XtraRichEdit.Layout;
 
 namespace SP_Sklad.Common
 {
-    public class entity
+    public class HistoryEntity
     {
         public int MainTabs { get; set; }
         public int FunId { get; set; }
+        public string Name { get; set; }
     }
    
    public class History
     {
-       private static List<entity> HistoryList { get; set; }
+       private static List<HistoryEntity> HistoryList { get; set; }
        private static int cur_index { get; set; }
-       private static entity cur_entity { get; set; }
        public static bool is_enable { get; set; }
 
        static History()
        {
-           HistoryList = new List<entity>();
-           cur_index = 0;
+           HistoryList = new List<HistoryEntity>();
+           cur_index = -1;
            is_enable = true;
        }
 
-       public static void AddEntry(entity newData)
+       public static void AddEntry(HistoryEntity newData)
        {
            if (!is_enable)
            {
                return;
            }
-        /*   if (HistoryList.IndexOf(newData) != -1)
+
+           if (cur_index == -1)
            {
-               HistoryList.RemoveAt(HistoryList.IndexOf(newData));
-           }*/
+               cur_index = 0;
+           }
+           else
+           {
+               cur_index += 1;
+               if (cur_index < HistoryList.Count  )
+               {
+                   HistoryList.RemoveRange(cur_index, HistoryList.Count - cur_index);
+               }
+           }
 
            HistoryList.Add(newData);
-           cur_entity = newData;
-           cur_index = HistoryList.Count - 1;
        }
 
-       public static entity Next()
+       public static HistoryEntity Next()
        {
-           var index = HistoryList.IndexOf(cur_entity);
-           cur_entity = index < HistoryList.Count - 1 ? HistoryList.ElementAt(index + 1) : cur_entity;
+           var cur_entity = cur_index < HistoryList.Count - 1 ? HistoryList.ElementAt(cur_index + 1) : null;
+           if (cur_entity != null) cur_index += 1;
 
            return cur_entity;
 
        }
 
-       public static entity Previous()
+       public static HistoryEntity Previous()
        {
-           var index = HistoryList.IndexOf(cur_entity);
-           cur_entity = index >= 1 ? HistoryList.ElementAt(index - 1) : cur_entity;
+           var cur_entity = cur_index >= 1 ? HistoryList.ElementAt(cur_index - 1) : null;
+           if (cur_entity != null) cur_index -= 1;
 
            return cur_entity;
        }

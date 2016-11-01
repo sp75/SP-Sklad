@@ -37,7 +37,7 @@ namespace SP_Sklad
                 barEditItem3.EditValue = DBHelper.EnterpriseList.Select(s => s.KaId).FirstOrDefault();
             }
 
-            History.AddEntry(new entity { FunId = 0, MainTabs = xtraTabControl1.SelectedTabPageIndex });
+            History.AddEntry(new HistoryEntity { FunId = 0, MainTabs = xtraTabControl1.SelectedTabPageIndex });
         }
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -129,7 +129,7 @@ namespace SP_Sklad
 
         private void xtraTabControl1_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
-            History.AddEntry(new entity { FunId = 0, MainTabs = xtraTabControl1.SelectedTabPageIndex });
+            History.AddEntry(new HistoryEntity { FunId = 0, MainTabs = xtraTabControl1.SelectedTabPageIndex });
         }
 
         private void xtraTabControl1_SelectedPageChanging(object sender, DevExpress.XtraTab.TabPageChangingEventArgs e)
@@ -163,7 +163,7 @@ namespace SP_Sklad
 
         }
 
-        private void SetNode(entity e)
+        private void SetNode(HistoryEntity e)
         {
             switch (e.MainTabs)
             {
