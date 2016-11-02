@@ -752,7 +752,7 @@ namespace SP_Sklad.MainTabs
                 using (var db = DB.SkladBase())
                 {
                     gridControl2.DataSource = db.GetWaybillDetIn(focused_row.WBillId).ToList();
-                    gridControl3.DataSource = db.GetRelDocList(focused_row.DocId).ToList();
+                    gridControl3.DataSource = db.GetRelDocList(focused_row.DocId).OrderBy(o => o.OnDate).ToList();
                 }
             }
             else

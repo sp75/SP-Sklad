@@ -256,6 +256,7 @@
             this.PrevBtn.Caption = "Перейти назад";
             this.PrevBtn.Glyph = ((System.Drawing.Image)(resources.GetObject("PrevBtn.Glyph")));
             this.PrevBtn.Id = 24;
+            this.PrevBtn.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("PrevBtn.LargeGlyph")));
             this.PrevBtn.Name = "PrevBtn";
             this.PrevBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrevBtn_ItemClick);
             // 
@@ -264,6 +265,7 @@
             this.NextBtn.Caption = "Перейти вперед";
             this.NextBtn.Glyph = ((System.Drawing.Image)(resources.GetObject("NextBtn.Glyph")));
             this.NextBtn.Id = 25;
+            this.NextBtn.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("NextBtn.LargeGlyph")));
             this.NextBtn.Name = "NextBtn";
             this.NextBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NextBtn_ItemClick);
             // 
@@ -463,7 +465,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1188, 69);
+            this.barDockControlTop.Size = new System.Drawing.Size(1188, 53);
             // 
             // barDockControlBottom
             // 
@@ -476,15 +478,15 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 69);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 608);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 53);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 624);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1188, 69);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 608);
+            this.barDockControlRight.Location = new System.Drawing.Point(1188, 53);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 624);
             // 
             // barButtonItem2
             // 
@@ -652,7 +654,7 @@
             this.xtraTabPage1.Controls.Add(this.docsUserControl1);
             this.xtraTabPage1.Image = global::SP_Sklad.Properties.Resources.administration;
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1182, 556);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1182, 572);
             this.xtraTabPage1.TabPageWidth = 100;
             this.xtraTabPage1.Text = "Документи";
             // 
@@ -661,16 +663,16 @@
             this.docsUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.docsUserControl1.Location = new System.Drawing.Point(0, 0);
             this.docsUserControl1.Name = "docsUserControl1";
-            this.docsUserControl1.Size = new System.Drawing.Size(1182, 556);
+            this.docsUserControl1.Size = new System.Drawing.Size(1182, 572);
             this.docsUserControl1.TabIndex = 0;
             // 
             // xtraTabControl1
             // 
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(0, 69);
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 53);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1188, 608);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1188, 624);
             this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,

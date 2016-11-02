@@ -271,12 +271,12 @@ namespace SP_Sklad.Reports
             IHelper.Print(dataForReport, TemlateList.wb_deb);
         }
 
-        public static void MakedReport(int wbill_id, BaseEntities db)
+        public static void MakedReport(int doc_id, BaseEntities db)
         {
             var dataForReport = new Dictionary<string, IList>();
-            var date = db.WaybillList.Where(w => w.DocId == wbill_id).Select(s => s.OnDate).First();
-            var wb = db.WBListMake(date, date, -1, "*", 0, -20).ToList();
-            var item = db.GetWayBillDetOut(wbill_id).ToList().Select((s, index) => new
+            var wbl = db.WaybillList.Where(w => w.DocId == doc_id).Select(s => new { s.OnDate, s.WbillId }).First();
+            var wb = db.WBListMake(wbl.OnDate, wbl.OnDate, -1, "*", 0, -20).ToList();
+            var item = db.GetWayBillDetOut(wbl.WbillId).ToList().Select((s, index) => new
             {
                 Num = index + 1,
                 s.Amount,
@@ -296,7 +296,7 @@ namespace SP_Sklad.Reports
                 Summ = s.Sum(sum => sum.Amount * sum.Price)
             }).ToList();
 
-            var tp = db.TechProcDet.Where(w => w.WbillId == wbill_id).ToList().Select((s, index) => new
+            var tp = db.TechProcDet.Where(w => w.WbillId == wbl.WbillId).ToList().Select((s, index) => new
             {
                 Num = index + 1,
                 s.Out,

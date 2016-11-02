@@ -90,6 +90,9 @@ namespace SP_Sklad.EditForm
                 lookUpEdit1.Properties.DataSource = DB.SkladBase().AccountType.Select(s => new { s.TypeId, s.Name }).ToList();
                 lookUpEdit2.Properties.DataSource = DB.SkladBase().Banks.Select(s => new { s.BankId, s.Name }).ToList();
 
+                UCityTypeEdit.Properties.DataSource = DB.SkladBase().CityType.ToList();
+                FCityTypeEdit.Properties.DataSource = UCityTypeEdit.Properties.DataSource;
+
                 //   GrpIdEdit.Properties.TreeList.DataSource = DB.SkladBase().MatGroup.Select(s => new { s.GrpId, s.PId, s.Name }).ToList();
                 //     ProducerLookUpEdit.Properties.DataSource = DB.SkladBase().Materials.Select(s => new { s.Producer }).Distinct().ToList();
                 //     CIdLookUpEdit.Properties.DataSource = DBHelper.CountersList;
@@ -477,6 +480,16 @@ namespace SP_Sklad.EditForm
             UsersLookUpEdit.Properties.DataSource = DB.SkladBase().Users.ToList().Where(w => !w.Kagent.Any()).ToList();
         }
 
+        private void simpleButton15_Click(object sender, EventArgs e)
+        {
+            textEdit33.EditValue = textEdit21.EditValue;
+            textEdit32.EditValue = textEdit24.EditValue;
+            FCityTypeEdit.EditValue = UCityTypeEdit.EditValue;
+            textEdit30.EditValue = textEdit23.EditValue;
+            textEdit31.EditValue = textEdit22.EditValue;
+            textEdit28.EditValue = textEdit26.EditValue;
+            textEdit29.EditValue = textEdit25.EditValue;
+        }
 
     }
 }

@@ -754,7 +754,7 @@ namespace SP_Sklad.MainTabs
 
             if (dr != null)
             {
-                RelPayDocGridControl.DataSource = _db.GetRelDocList(dr.DocId);
+                RelPayDocGridControl.DataSource = _db.GetRelDocList(dr.DocId).OrderBy(o => o.OnDate).ToList();
             }
 
             var tree_row = DocsTreeList.GetDataRecordByNode(DocsTreeList.FocusedNode) as v_GetDocsTree;
@@ -943,7 +943,7 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 2:
-                    gridControl3.DataSource = _db.GetRelDocList(dr.DocId);
+                    gridControl3.DataSource = _db.GetRelDocList(dr.DocId).OrderBy(o => o.OnDate).ToList();
                     break;
             }
           

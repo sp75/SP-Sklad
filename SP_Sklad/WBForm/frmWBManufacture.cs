@@ -192,6 +192,8 @@ namespace SP_Sklad.WBForm
                 return;
             }
 
+            wb.WayBillMake.Amount = wb.WaybillDet.Where(w => w.Materials.MId == wb.WayBillMake.MatRecipe.Materials.MId).Sum(s => s.Amount);
+
             wb.UpdatedAt = DateTime.Now;
             _db.SaveChanges();
 
@@ -314,14 +316,10 @@ namespace SP_Sklad.WBForm
             }
         }
 
-        private void WaybillDetOutGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-           
-        }
-
         private void NowDateBtn_Click(object sender, EventArgs e)
         {
             OnDateDBEdit.EditValue = DBHelper.ServerDateTime();
+            wb.OnDate = OnDateDBEdit.DateTime;
             _db.SaveChanges();
         }
 
@@ -373,7 +371,7 @@ namespace SP_Sklad.WBForm
         {
             _db.SaveChanges();
 
-            PrintDoc.Show(wb.WbillId, wb.WType, _db);
+            PrintDoc.Show(wb.DocId.Value, wb.WType, _db);
         }
 
         private void WhInBtn_Click(object sender, EventArgs e)

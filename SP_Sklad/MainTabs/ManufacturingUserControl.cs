@@ -443,13 +443,17 @@ namespace SP_Sklad.MainTabs
                 {
                     TechProcGridControl.DataSource = db.v_TechProcDet.Where(w => w.WbillId == focused_row.WbillId).OrderBy(o => o.OnDate).ToList();
                     gridControl2.DataSource = db.GetWayBillDetOut(focused_row.WbillId).ToList();
-                    gridControl3.DataSource = db.GetRelDocList(focused_row.DocId).ToList();
+                    gridView2.ExpandAllGroups();
+                    gridControl3.DataSource = db.GetRelDocList(focused_row.DocId).OrderBy(o=> o.OnDate).ToList();
+                    ManufacturedPosGridControl.DataSource = db.GetManufacturedPos(focused_row.DocId).ToList();
                 }
             }
             else
             {
+                TechProcGridControl.DataSource = null;
                 gridControl2.DataSource = null;
                 gridControl3.DataSource = null;
+                ManufacturedPosGridControl.DataSource = null;
             }
 
             StopProcesBtn.Enabled = (focused_row != null && focused_row.Checked == 2 && focused_tree_node.CanPost == 1);
@@ -473,7 +477,7 @@ namespace SP_Sklad.MainTabs
                 using (var db = DB.SkladBase())
                 {
                     gridControl4.DataSource = db.GetWayBillDetOut(focused_row.WbillId).ToList();
-                    gridControl5.DataSource = db.GetRelDocList(focused_row.DocId).ToList();
+                    gridControl5.DataSource = db.GetRelDocList(focused_row.DocId).OrderBy(o => o.OnDate).ToList();
 
                     DeboningDetGridControl.DataSource = db.DeboningDet.Where(w => w.WBillId == focused_row.WbillId).Select(s => new SP_Sklad.WBForm.frmWBDeboning.DeboningDetList
                     {

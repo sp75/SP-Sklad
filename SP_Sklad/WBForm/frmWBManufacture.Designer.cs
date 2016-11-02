@@ -1060,7 +1060,6 @@
             this.WaybillDetOutGridView.Name = "WaybillDetOutGridView";
             this.WaybillDetOutGridView.OptionsView.ShowGroupPanel = false;
             this.WaybillDetOutGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WaybillDetOutGridView_PopupMenuShowing);
-            this.WaybillDetOutGridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.WaybillDetOutGridView_FocusedRowChanged);
             this.WaybillDetOutGridView.DoubleClick += new System.EventHandler(this.WaybillDetOutGridView_DoubleClick);
             // 
             // gridColumn2
@@ -1117,6 +1116,8 @@
             // gridColumn4
             // 
             this.gridColumn4.Caption = "Кількість";
+            this.gridColumn4.DisplayFormat.FormatString = "0.0000";
+            this.gridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn4.FieldName = "Amount";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;

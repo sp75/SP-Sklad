@@ -1921,5 +1921,15 @@ namespace SP_Sklad.SkladData
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WBListMake_Result>("WBListMake", from_dateParameter, to_dateParameter, is_checkedParameter, whParameter, grp_idParameter, w_typeParameter);
         }
+    
+        [EdmFunction("BaseEntities", "GetManufacturedPos")]
+        public virtual IQueryable<GetManufacturedPos_Result> GetManufacturedPos(Nullable<int> doc_id)
+        {
+            var doc_idParameter = doc_id.HasValue ?
+                new ObjectParameter("doc_id", doc_id) :
+                new ObjectParameter("doc_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetManufacturedPos_Result>("[BaseEntities].[GetManufacturedPos](@doc_id)", doc_idParameter);
+        }
     }
 }

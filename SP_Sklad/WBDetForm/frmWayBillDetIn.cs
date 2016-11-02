@@ -302,7 +302,7 @@ namespace SP_Sklad.WBDetForm
 
                     MatComboBox.Enabled = false;
                     MatEditBtn.Enabled = false;
-                    AmountEdit.Enabled = false;
+                 //   AmountEdit.Enabled = false;
 
                     GetOk();
                 }
