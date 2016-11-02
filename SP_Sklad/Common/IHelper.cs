@@ -106,6 +106,21 @@ namespace SP_Sklad.Common
                         wbd.Price = item.Price - Math.Round((item.Price.Value * dis / 100), 2);
                         wbd.BasePrice = item.Price + Math.Round(item.Price.Value * wb.Nds.Value / 100, 2);
                     }
+                    db.SaveChanges();
+
+                    if (wb.WType == 16)
+                    {
+                        db.WMatTurn.Add(new WMatTurn()
+                        {
+                            SourceId = wbd.PosId,
+                            PosId = wbd.PosId,
+                            WId = wbd.WId.Value,
+                            MatId = wbd.MatId,
+                            OnDate = wbd.OnDate.Value,
+                            TurnType = 3,
+                            Amount = wbd.Amount
+                        });
+                    }
                 }
                 db.SaveChanges();
             }

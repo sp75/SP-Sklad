@@ -1466,6 +1466,9 @@
             this.bandedGridColumn9});
             this.bandedGridView1.GridControl = this.PosGridControl;
             this.bandedGridView1.Name = "bandedGridView1";
+            this.bandedGridView1.OptionsBehavior.AllowIncrementalSearch = true;
+            this.bandedGridView1.OptionsBehavior.Editable = false;
+            this.bandedGridView1.OptionsBehavior.ReadOnly = true;
             this.bandedGridView1.OptionsView.ShowFooter = true;
             this.bandedGridView1.OptionsView.ShowGroupPanel = false;
             // 

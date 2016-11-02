@@ -403,6 +403,7 @@ namespace SP_Sklad.WBForm
         {
             wb.KaId = (int)IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
             KagentComboBox.EditValue = wb.KaId;
+            GetOk();
         }
 
         private void simpleButton4_Click(object sender, EventArgs e)
