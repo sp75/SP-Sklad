@@ -854,7 +854,8 @@ namespace SP_Sklad.MainTabs
                                    OnValue = 1,
                                    PersonId = DBHelper.CurrentUser.KaId,
                                    WaybillMove = new WaybillMove { SourceWid = wid.Value },
-                                   Nds = 0
+                                   Nds = 0,
+                                   Docs = new Docs { DocType = -5 }
                                });
 
                             db.SaveChanges();

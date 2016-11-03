@@ -1931,5 +1931,27 @@ namespace SP_Sklad.SkladData
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetManufacturedPos_Result>("[BaseEntities].[GetManufacturedPos](@doc_id)", doc_idParameter);
         }
+    
+        [EdmFunction("BaseEntities", "GetLastPrice")]
+        public virtual IQueryable<GetLastPrice_Result> GetLastPrice(Nullable<int> mat_id, Nullable<int> ka_id, Nullable<int> wtype, Nullable<System.DateTime> on_date)
+        {
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var wtypeParameter = wtype.HasValue ?
+                new ObjectParameter("wtype", wtype) :
+                new ObjectParameter("wtype", typeof(int));
+    
+            var on_dateParameter = on_date.HasValue ?
+                new ObjectParameter("on_date", on_date) :
+                new ObjectParameter("on_date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetLastPrice_Result>("[BaseEntities].[GetLastPrice](@mat_id, @ka_id, @wtype, @on_date)", mat_idParameter, ka_idParameter, wtypeParameter, on_dateParameter);
+        }
     }
 }

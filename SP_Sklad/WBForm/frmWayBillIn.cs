@@ -58,7 +58,8 @@ namespace SP_Sklad.WBForm
                     CurrId = 2,
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
-                    Nds = DBHelper.Enterprise.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0
+                    Nds = DBHelper.Enterprise.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0,
+                    Docs = new Docs { DocType = _wtype }
                 });
 
                 _db.SaveChanges();

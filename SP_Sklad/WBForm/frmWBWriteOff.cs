@@ -23,6 +23,8 @@ namespace SP_Sklad.WBForm
 {
     public partial class frmWBWriteOff : DevExpress.XtraEditors.XtraForm
     {
+        private const int _wtype = -5;
+
         public BaseEntities _db { get; set; }
         private int? _wbill_id { get; set; }
         public int? doc_id { get; set; }
@@ -56,7 +58,7 @@ namespace SP_Sklad.WBForm
             {
                 wb = _db.WaybillList.Add(new WaybillList()
                 {
-                    WType = -5,
+                    WType = _wtype,
                     DefNum = 1,
                     OnDate = DBHelper.ServerDateTime(),
                     Num = new BaseEntities().GetCounter("wb_write_off").FirstOrDefault(),
@@ -64,7 +66,8 @@ namespace SP_Sklad.WBForm
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
                     WaybillMove = new WaybillMove { SourceWid = DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId },
-                    Nds =  0
+                    Nds =  0,
+                    Docs = new Docs { DocType = _wtype }
                 });
                
                 _db.SaveChanges();

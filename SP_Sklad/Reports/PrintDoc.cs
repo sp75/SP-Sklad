@@ -368,22 +368,5 @@ namespace SP_Sklad.Reports
             return "*" + code + "+" + split_price[0] + "+" + split_price[1] + "*";
         }
 
-   /*     private static void Print(Dictionary<string, IList> data_for_report, string temlate)
-        {
-            String template_file = Path.Combine(template_path, temlate);
-
-            if (File.Exists(template_file))
-            {
-                var file_format = DBHelper.CurrentUser.ReportFormat;
-                String result_file = Path.Combine(rep_path, Path.GetFileName(temlate) + "_" + DateTime.Now.Ticks.ToString() + "." + file_format);
-                File.WriteAllBytes(result_file, ReportBuilder.GenerateReport(data_for_report, template_file, false, file_format));
-
-                if (File.Exists(result_file))
-                {
-                    Process.Start(result_file);
-                }
-            }
-   
-        }*/
     }
 }

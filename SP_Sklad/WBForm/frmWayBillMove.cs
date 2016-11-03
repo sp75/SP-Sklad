@@ -23,6 +23,7 @@ namespace SP_Sklad.WBForm
 {
     public partial class frmWayBillMove : DevExpress.XtraEditors.XtraForm
     {
+        private const int _wtype = 4;
         private BaseEntities _db { get; set; }
         private int? _wbill_id { get; set; }
         private DbContextTransaction current_transaction { get; set; }
@@ -54,13 +55,14 @@ namespace SP_Sklad.WBForm
             {
                 wb = _db.WaybillList.Add(new WaybillList()
                 {
-                    WType = 4,
+                    WType = _wtype,
                     OnDate = DBHelper.ServerDateTime(),
                     Num = new BaseEntities().GetCounter("wb_move").FirstOrDefault(),
                     CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
-                    WaybillMove = new WaybillMove { SourceWid = DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId }
+                    WaybillMove = new WaybillMove { SourceWid = DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId },
+                    Docs = new Docs { DocType = _wtype }
                 });
                 
                 _db.SaveChanges();

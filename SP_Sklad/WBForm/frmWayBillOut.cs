@@ -63,10 +63,11 @@ namespace SP_Sklad.WBForm
                     WType = _wtype,
                     OnDate = DBHelper.ServerDateTime(),
                     Num = new BaseEntities().GetCounter("wb_out").FirstOrDefault(),
-                    CurrId = DBHelper.Currency.FirstOrDefault(w=> w.Def == 1).CurrId,
+                    CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
-                    EntId = DBHelper.Enterprise.KaId
+                    EntId = DBHelper.Enterprise.KaId,
+                    Docs = new Docs { DocType = _wtype }
                 });
 
                 _db.SaveChanges();
@@ -442,7 +443,7 @@ namespace SP_Sklad.WBForm
 
         private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            PrintDoc.Show(wb.DocId.Value, wb.WType, _db);
+            PrintDoc.Show(wb.Docs.DocId, wb.WType, _db);
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

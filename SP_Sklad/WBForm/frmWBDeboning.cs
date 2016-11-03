@@ -22,6 +22,8 @@ namespace SP_Sklad.WBForm
 {
     public partial class frmWBDeboning : DevExpress.XtraEditors.XtraForm
     {
+        private const int _wtype = -22;
+
         BaseEntities _db { get; set; }
         private int? _wbill_id { get; set; }
         private DbContextTransaction current_transaction { get; set; }
@@ -63,7 +65,7 @@ namespace SP_Sklad.WBForm
             {
                 wb = _db.WaybillList.Add(new WaybillList()
                 {
-                    WType = -22,
+                    WType = _wtype,
                     OnDate = DBHelper.ServerDateTime(),
                     Num = new BaseEntities().GetCounter("wb_deboning").FirstOrDefault(),
                     EntId = DBHelper.Enterprise.KaId,
@@ -76,7 +78,8 @@ namespace SP_Sklad.WBForm
                         SourceWId = source_wid ?? DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId,
                         RecId = rec_id
                     },
-                    Nds = 0
+                    Nds = 0,
+                    Docs = new Docs { DocType = _wtype }
                 });
                 _db.SaveChanges();
 

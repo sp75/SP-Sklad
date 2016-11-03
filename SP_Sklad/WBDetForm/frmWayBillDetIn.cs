@@ -62,7 +62,9 @@ namespace SP_Sklad.WBDetForm
                     OnValue = _wb.OnValue,
                     PosKind = 0,
                     PosParent = 0,
-                    DiscountKind = 0
+                    DiscountKind = 0,
+                    Amount =1
+
                 };
 
                 modified_dataset = false;

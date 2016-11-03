@@ -22,6 +22,7 @@ namespace SP_Sklad.WBForm
 {
     public partial class frmWBManufacture : DevExpress.XtraEditors.XtraForm
     {
+        private const int _wtype = -20;
 
         BaseEntities _db { get; set; }
         private int? _wbill_id { get; set; }
@@ -61,7 +62,7 @@ namespace SP_Sklad.WBForm
             {
                 wb = _db.WaybillList.Add(new WaybillList()
                 {
-                    WType = -20,
+                    WType = _wtype,
                     OnDate = DBHelper.ServerDateTime(),
                     Num = new BaseEntities().GetCounter("wb_make").FirstOrDefault(),
                     EntId = DBHelper.Enterprise.KaId,
@@ -69,7 +70,8 @@ namespace SP_Sklad.WBForm
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
                     KaId = DBHelper.CurrentUser.KaId,
-                    WayBillMake = new WayBillMake { SourceWId = DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId }
+                    WayBillMake = new WayBillMake { SourceWId = DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId },
+                    Docs = new Docs { DocType = _wtype }
                 });
                 _db.SaveChanges();
 

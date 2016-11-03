@@ -4387,6 +4387,21 @@
         <Function Name="GetFinancesTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="user_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="GetLastPrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mat_id" Type="int" Mode="In" />
+          <Parameter Name="ka_id" Type="int" Mode="In" />
+          <Parameter Name="wtype" Type="int" Mode="In" />
+          <Parameter Name="on_date" Type="datetime" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Price" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="CurrId" Type="int" />
+                <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="GetListMatPrices" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="mat_id" Type="int" Mode="In" />
           <Parameter Name="in_curr_id" Type="int" Mode="In" />
@@ -6973,7 +6988,13 @@
             <Parameter Name="w_type" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetManufacturedPos" IsComposable="true" ReturnType="Collection(BaseModel.GetManufacturedPos_Result)">
-            <Parameter Name="doc_id" Mode="In" Type="Int32" />
+          <Parameter Name="doc_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetLastPrice" IsComposable="true" ReturnType="Collection(BaseModel.GetLastPrice_Result)">
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="wtype" Mode="In" Type="Int32" />
+            <Parameter Name="on_date" Mode="In" Type="DateTime" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
@@ -11705,6 +11726,11 @@
           <Property Type="Decimal" Name="Total" Nullable="true" Precision="15" Scale="2" />
           <Property Type="String" Name="Notes" Nullable="true" MaxLength="100" />
         </ComplexType>
+        <ComplexType Name="GetLastPrice_Result">
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="4" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -14792,6 +14818,15 @@
                 <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
                 <ScalarProperty Name="Total" ColumnName="Total" />
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetLastPrice" FunctionName="BaseModel.Store.GetLastPrice">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetLastPrice_Result">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
