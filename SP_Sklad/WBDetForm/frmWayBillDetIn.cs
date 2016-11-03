@@ -274,6 +274,10 @@ namespace SP_Sklad.WBDetForm
         private void MatEditBtn_Click(object sender, EventArgs e)
         {
             MatComboBox.EditValue = IHelper.ShowDirectList(MatComboBox.EditValue, 5);
+            if( MatComboBox.EditValue != DBNull.Value)
+            {
+                SetPrice((int)MatComboBox.EditValue);
+            }
 
             if (_wbd != null)
             {
@@ -327,10 +331,26 @@ namespace SP_Sklad.WBDetForm
                 labelControl24.Text = row.MeasuresName;
                 labelControl27.Text = row.MeasuresName;
 
+                SetPrice(row.MatId);
                 GetRemains();
             }
 
             GetOk();
+        }
+
+        private void SetPrice(int mat_id)
+        {
+            var get_last_price_result = _db.GetLastPrice(mat_id, _wb.KaId, 1, _wb.OnDate).FirstOrDefault();
+            if (get_last_price_result != null)
+            {
+                _wbd.Price = get_last_price_result.Price ?? 0;
+                _wbd.BasePrice = _wbd.Nds > 0 ? Math.Round(_wbd.Price.Value + (PriceEdit.Value * Convert.ToDecimal(_wbd.Nds) / 100), 2) : _wbd.Price.Value;
+            }
+            else
+            {
+                _wbd.Price = 0;
+                _wbd.BasePrice = 0;
+            }
         }
 
         private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
