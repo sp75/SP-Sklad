@@ -849,7 +849,7 @@ namespace SP_Sklad.MainTabs
                                    WType = -5,
                                    DefNum = 1,
                                    OnDate = DBHelper.ServerDateTime(),
-                                   Num = new BaseEntities().GetCounter("wb_write_off").FirstOrDefault(),
+                                   Num = new BaseEntities().GetDocNum("wb_write_off").FirstOrDefault(),
                                    CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                                    OnValue = 1,
                                    PersonId = DBHelper.CurrentUser.KaId,

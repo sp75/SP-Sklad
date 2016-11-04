@@ -98,15 +98,15 @@
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit5 = new DevExpress.XtraEditors.TextEdit();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
-            this.WayBillDetAddPropsBS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl23 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit17 = new DevExpress.XtraEditors.TextEdit();
+            this.WayBillDetAddPropsBS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit15 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit16 = new DevExpress.XtraEditors.DateEdit();
+            this.ProducerTextEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.labelControl28 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl27 = new DevExpress.XtraEditors.LabelControl();
@@ -156,12 +156,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WayBillDetAddPropsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit17.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WayBillDetAddPropsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit15.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit16.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit16.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProducerTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BotAmountEdit.Properties)).BeginInit();
@@ -911,7 +911,6 @@
             // 
             // groupControl2
             // 
-            this.groupControl2.Controls.Add(this.textEdit1);
             this.groupControl2.Controls.Add(this.labelControl23);
             this.groupControl2.Controls.Add(this.textEdit17);
             this.groupControl2.Controls.Add(this.labelControl22);
@@ -919,26 +918,13 @@
             this.groupControl2.Controls.Add(this.textEdit15);
             this.groupControl2.Controls.Add(this.labelControl20);
             this.groupControl2.Controls.Add(this.textEdit16);
+            this.groupControl2.Controls.Add(this.ProducerTextEdit);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupControl2.Location = new System.Drawing.Point(250, 0);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(345, 118);
             this.groupControl2.TabIndex = 15;
             this.groupControl2.Text = "Сертифікат:";
-            // 
-            // textEdit1
-            // 
-            this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WayBillDetAddPropsBS, "Producer", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.textEdit1.Location = new System.Drawing.Point(87, 30);
-            this.textEdit1.MenuManager = this.barManager1;
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(247, 22);
-            this.textEdit1.StyleController = this.styleController1;
-            this.textEdit1.TabIndex = 26;
-            // 
-            // WayBillDetAddPropsBS
-            // 
-            this.WayBillDetAddPropsBS.DataSource = typeof(SP_Sklad.SkladData.WayBillDetAddProps);
             // 
             // labelControl23
             // 
@@ -960,6 +946,10 @@
             this.textEdit17.Size = new System.Drawing.Size(247, 22);
             this.textEdit17.StyleController = this.styleController1;
             this.textEdit17.TabIndex = 24;
+            // 
+            // WayBillDetAddPropsBS
+            // 
+            this.WayBillDetAddPropsBS.DataSource = typeof(SP_Sklad.SkladData.WayBillDetAddProps);
             // 
             // labelControl22
             // 
@@ -985,7 +975,7 @@
             this.textEdit15.Location = new System.Drawing.Point(87, 58);
             this.textEdit15.MenuManager = this.barManager1;
             this.textEdit15.Name = "textEdit15";
-            this.textEdit15.Size = new System.Drawing.Size(56, 22);
+            this.textEdit15.Size = new System.Drawing.Size(68, 22);
             this.textEdit15.StyleController = this.styleController1;
             this.textEdit15.TabIndex = 20;
             // 
@@ -1011,15 +1001,21 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.textEdit16.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.textEdit16.Properties.DisplayFormat.FormatString = "";
-            this.textEdit16.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.textEdit16.Properties.EditFormat.FormatString = "";
-            this.textEdit16.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.textEdit16.Properties.Mask.EditMask = "";
-            this.textEdit16.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
             this.textEdit16.Size = new System.Drawing.Size(116, 22);
             this.textEdit16.StyleController = this.styleController1;
             this.textEdit16.TabIndex = 23;
+            // 
+            // ProducerTextEdit
+            // 
+            this.ProducerTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WayBillDetAddPropsBS, "Producer", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ProducerTextEdit.Location = new System.Drawing.Point(87, 30);
+            this.ProducerTextEdit.MenuManager = this.barManager1;
+            this.ProducerTextEdit.Name = "ProducerTextEdit";
+            this.ProducerTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ProducerTextEdit.Size = new System.Drawing.Size(247, 22);
+            this.ProducerTextEdit.StyleController = this.styleController1;
+            this.ProducerTextEdit.TabIndex = 26;
             // 
             // groupControl3
             // 
@@ -1285,12 +1281,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WayBillDetAddPropsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit17.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WayBillDetAddPropsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit15.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit16.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit16.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProducerTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             this.groupControl3.PerformLayout();
@@ -1404,7 +1400,7 @@
         private System.Windows.Forms.BindingSource WaybillDetBS;
         private System.Windows.Forms.BindingSource WayBillDetAddPropsBS;
         private System.Windows.Forms.BindingSource SerialsBS;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
         public DevExpress.XtraEditors.SimpleButton OkButton;
+        private DevExpress.XtraEditors.ComboBoxEdit ProducerTextEdit;
     }
 }

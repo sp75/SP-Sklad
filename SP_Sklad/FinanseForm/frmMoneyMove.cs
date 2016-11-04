@@ -46,7 +46,7 @@ namespace SP_Sklad.FinanseForm
                 _pd = _db.PayDoc.Add(new PayDoc
                 {
                     Checked = 1,
-                    DocNum = new BaseEntities().GetCounter("pay_doc").FirstOrDefault(),
+                    DocNum = new BaseEntities().GetDocNum("pay_doc").FirstOrDefault(),
                     OnDate = DBHelper.ServerDateTime(),
                     Total = 0,
                     CTypeId = 1,// За товар

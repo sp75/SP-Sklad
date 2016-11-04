@@ -34,6 +34,7 @@ namespace SP_Sklad.WBDetForm
             WHComboBox.Properties.DataSource = DBHelper.WhList();
             MatComboBox.Properties.DataSource = db.MaterialsList.ToList();
             PriceTypesEdit.Properties.DataSource = DB.SkladBase().PriceTypes.ToList();
+            ProducerTextEdit.Properties.Items.AddRange(_db.WayBillDetAddProps.Where(w => w.Producer != null).Select(s => s.Producer).Distinct().ToList());
         }
 
         private void frmWayBillDetOut_Load(object sender, EventArgs e)
@@ -53,7 +54,8 @@ namespace SP_Sklad.WBDetForm
                     PosKind = 0,
                     PosParent = 0,
                     DiscountKind = 0,
-                    PtypeId = _db.Kagent.Find(_wb.KaId).PTypeId
+                    PtypeId = _db.Kagent.Find(_wb.KaId).PTypeId,
+                    WayBillDetAddProps = new WayBillDetAddProps()
                 };
                 modified_dataset = false;
             }
@@ -92,6 +94,11 @@ namespace SP_Sklad.WBDetForm
                             }
                         }
                     }
+                }
+
+                if (_wbd.WayBillDetAddProps != null)
+                {
+                    WayBillDetAddPropsBS.DataSource = _wbd.WayBillDetAddProps;
                 }
 
                 GetOk();
@@ -145,6 +152,7 @@ namespace SP_Sklad.WBDetForm
                 _wbd.WId = row.WId;
                 _wbd.Nds = row.NDS == 1 ? DBHelper.CommonParam.Nds : 0;
                 _wbd.MatId = row.MatId;
+                ProducerTextEdit.EditValue = row.Produced;
             }
 
             labelControl24.Text = row.MeasuresName;

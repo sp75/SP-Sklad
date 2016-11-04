@@ -54,10 +54,12 @@ namespace SP_Sklad.FinanseForm
 
             if (_PayDocId == null)
             {
+                int w_type = _DocType.Value != -2 ? _DocType.Value * 3 : _DocType.Value;
+                string doc_setting_name = w_type == -3 ? "pay_doc_out" : w_type == 3 ? "pay_doc_in" : "pay_doc";
                 _pd = _db.PayDoc.Add(new PayDoc
                 {
                     Checked = 1,
-                    DocNum = new BaseEntities().GetCounter("pay_doc").FirstOrDefault(),
+                    DocNum = new BaseEntities().GetDocNum(doc_setting_name).FirstOrDefault(),
                     OnDate = DBHelper.ServerDateTime(),
                     Total = 0,
                     CTypeId = 1,// За товар
@@ -67,7 +69,7 @@ namespace SP_Sklad.FinanseForm
                     CurrId = DBHelper.Currency.Where(w => w.Def == 1).Select(s => s.CurrId).FirstOrDefault(), //Валюта по умолчанию
                     OnValue = 1,//Курс валюти
                     MPersonId = DBHelper.CurrentUser.KaId,
-                    DocType = Convert.ToInt32(_DocType),
+                    DocType = _DocType.Value,
                     UpdatedBy = DBHelper.CurrentUser.UserId,
                     KaId = _ka_id
                 });

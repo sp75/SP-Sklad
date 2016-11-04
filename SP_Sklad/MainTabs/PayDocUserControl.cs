@@ -78,7 +78,7 @@ namespace SP_Sklad.MainTabs
             SumEdit.EditValue = _db.WaybillDet.Where(w => w.WbillId == _wb.WbillId).Sum(s => s.Total);
             if (NumEdit.EditValue == null)
             {
-                NumEdit.EditValue = new BaseEntities().GetCounter("pay_doc").FirstOrDefault();
+                NumEdit.EditValue = new BaseEntities().GetDocNum("pay_doc").FirstOrDefault();
             }
             var cd = _db.CashDesks.FirstOrDefault(w => w.Def == 1);
             if (cd != null)

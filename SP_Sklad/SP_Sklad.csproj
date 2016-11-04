@@ -496,9 +496,6 @@
     <Compile Include="SkladData\CONTRRESULTS.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\Counters.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SkladData\Countries.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>

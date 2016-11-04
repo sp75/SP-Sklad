@@ -39,7 +39,6 @@
         <EntityTypeShape EntityType="BaseModel.ReturnRel" Width="1.5" PointX="0.30251608430525107" PointY="2.8423101170185534" />
         <EntityTypeShape EntityType="BaseModel.MatGroup" Width="1.5" PointX="5.06140572813405" PointY="25.430168983261179" />
         <EntityTypeShape EntityType="BaseModel.CityType" Width="1.5" PointX="5.7849626344558605" PointY="13.723164773417247" />
-        <EntityTypeShape EntityType="BaseModel.Counters" Width="1.5" PointX="3.0873341407102224" PointY="3.32460779106459" />
         <EntityTypeShape EntityType="BaseModel.KaAddr" Width="1.5" PointX="11.764847153688244" PointY="23.276982437482562" />
         <EntityTypeShape EntityType="BaseModel.TAXREESTRTYPE" Width="1.5" PointX="11.394534431115972" PointY="0.32588514700806009" />
         <EntityTypeShape EntityType="BaseModel.Warehouse" Width="1.5" PointX="8.2144507207975028" PointY="19.089993724175727" />

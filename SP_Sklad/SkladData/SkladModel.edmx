@@ -19,7 +19,6 @@
           <EntitySet Name="CONTRDET" EntityType="BaseModel.Store.CONTRDET" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CONTRPARAMS" EntityType="BaseModel.Store.CONTRPARAMS" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CONTRRESULTS" EntityType="BaseModel.Store.CONTRRESULTS" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Counters" EntityType="BaseModel.Store.Counters" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Countries" EntityType="BaseModel.Store.Countries" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Currency" EntityType="BaseModel.Store.Currency" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CURRENCYRATE" EntityType="BaseModel.Store.CURRENCYRATE" store:Type="Tables" Schema="dbo" />
@@ -1145,16 +1144,6 @@
           <Property Name="SHIPPEDAMOUNT" Type="numeric" Precision="15" Scale="8" />
           <Property Name="PAIDSUMM" Type="numeric" Precision="15" Scale="8" />
           <Property Name="CONTRID" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Counters">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" />
-          <Property Name="Prefix" Type="nvarchar" MaxLength="50" />
-          <Property Name="Sufix" Type="nvarchar" MaxLength="50" />
-          <Property Name="Counter" Type="int" />
         </EntityType>
         <EntityType Name="Countries">
           <Key>
@@ -4334,9 +4323,6 @@
           <Parameter Name="wid" Type="int" Mode="In" />
           <Parameter Name="mat_id" Type="int" Mode="In" />
         </Function>
-        <Function Name="GetCounter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="name" Type="nvarchar" Mode="In" />
-        </Function>
         <Function Name="GetDeboningDet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="wbill_id" Type="int" Mode="In" />
         </Function>
@@ -4383,6 +4369,9 @@
               </RowType>
             </CollectionType>
           </ReturnType>
+        </Function>
+        <Function Name="GetDocNum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="GetFinancesTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="user_id" Type="int" Mode="In" />
@@ -5985,9 +5974,6 @@
             <Parameter Name="MatId" Mode="In" Type="Int32" />
             <Parameter Name="OnDate" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="GetCounter" ReturnType="Collection(String)">
-          <Parameter Name="name" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="ExecuteWayBill" ReturnType="Collection(BaseModel.ExecuteWayBill_Result)">
             <Parameter Name="WBILLID" Mode="In" Type="Int32" />
             <Parameter Name="NEW_WTYPE" Mode="In" Type="Int32" />
@@ -6100,7 +6086,6 @@
             <Parameter Name="wh" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="CityType" EntityType="BaseModel.CityType" />
-          <EntitySet Name="Counters" EntityType="BaseModel.Counters" />
           <EntitySet Name="KaAddr" EntityType="BaseModel.KaAddr" />
           <EntitySet Name="TAXREESTRTYPE" EntityType="BaseModel.TAXREESTRTYPE" />
           <EntitySet Name="Warehouse" EntityType="BaseModel.Warehouse" />
@@ -6996,6 +6981,9 @@
             <Parameter Name="wtype" Mode="In" Type="Int32" />
             <Parameter Name="on_date" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="GetDocNum" ReturnType="Collection(String)">
+            <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -7806,16 +7794,6 @@
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="String" Name="Name" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="FullName" MaxLength="20" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Counters">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Prefix" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Sufix" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="Counter" />
         </EntityType>
         <EntityType Name="KaAddr">
           <Key>
@@ -12112,7 +12090,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetCounter" FunctionName="BaseModel.Store.GetCounter" />
           <FunctionImportMapping FunctionImportName="ExecuteWayBill" FunctionName="BaseModel.Store.ExecuteWayBill">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.ExecuteWayBill_Result">
@@ -12464,17 +12441,6 @@
             <EntityTypeMapping TypeName="BaseModel.CityType">
               <MappingFragment StoreEntitySet="CityType">
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Counters">
-            <EntityTypeMapping TypeName="BaseModel.Counters">
-              <MappingFragment StoreEntitySet="Counters">
-                <ScalarProperty Name="Counter" ColumnName="Counter" />
-                <ScalarProperty Name="Sufix" ColumnName="Sufix" />
-                <ScalarProperty Name="Prefix" ColumnName="Prefix" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -14830,6 +14796,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetDocNum" FunctionName="BaseModel.Store.GetDocNum" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

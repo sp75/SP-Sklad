@@ -36,6 +36,7 @@ namespace SP_Sklad.WBDetForm
 
             WHComboBox.Properties.DataSource = DBHelper.WhList();
             MatComboBox.Properties.DataSource = db.MaterialsList.ToList();
+            ProducerTextEdit.Properties.Items.AddRange(_db.WayBillDetAddProps.Where(w => w.Producer != null).Select(s => s.Producer).Distinct().ToList());
         }
 
         private void frmWayBillDetIn_Load(object sender, EventArgs e)
@@ -331,8 +332,13 @@ namespace SP_Sklad.WBDetForm
                 labelControl24.Text = row.MeasuresName;
                 labelControl27.Text = row.MeasuresName;
 
-                SetPrice(row.MatId);
                 GetRemains();
+            }
+
+            if (MatComboBox.ContainsFocus)
+            {
+                ProducerTextEdit.EditValue = row.Produced;
+                SetPrice(row.MatId);
             }
 
             GetOk();

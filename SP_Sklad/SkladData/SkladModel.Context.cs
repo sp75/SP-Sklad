@@ -52,7 +52,6 @@ namespace SP_Sklad.SkladData
         public DbSet<ReturnRel> ReturnRel { get; set; }
         public DbSet<MatGroup> MatGroup { get; set; }
         public DbSet<CityType> CityType { get; set; }
-        public DbSet<Counters> Counters { get; set; }
         public DbSet<KaAddr> KaAddr { get; set; }
         public DbSet<TAXREESTRTYPE> TAXREESTRTYPE { get; set; }
         public DbSet<Warehouse> Warehouse { get; set; }
@@ -623,15 +622,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("OnDate", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SP_MAT_REMAIN_GET_SIMPLE_Result>("[BaseEntities].[SP_MAT_REMAIN_GET_SIMPLE](@MatId, @OnDate)", matIdParameter, onDateParameter);
-        }
-    
-        public virtual ObjectResult<string> GetCounter(string name)
-        {
-            var nameParameter = name != null ?
-                new ObjectParameter("name", name) :
-                new ObjectParameter("name", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetCounter", nameParameter);
         }
     
         public virtual ObjectResult<ExecuteWayBill_Result> ExecuteWayBill(Nullable<int> wBILLID, Nullable<int> nEW_WTYPE)
@@ -1952,6 +1942,15 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("on_date", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetLastPrice_Result>("[BaseEntities].[GetLastPrice](@mat_id, @ka_id, @wtype, @on_date)", mat_idParameter, ka_idParameter, wtypeParameter, on_dateParameter);
+        }
+    
+        public virtual ObjectResult<string> GetDocNum(string name)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetDocNum", nameParameter);
         }
     }
 }

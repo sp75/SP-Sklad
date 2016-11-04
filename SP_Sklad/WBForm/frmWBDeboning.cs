@@ -67,7 +67,7 @@ namespace SP_Sklad.WBForm
                 {
                     WType = _wtype,
                     OnDate = DBHelper.ServerDateTime(),
-                    Num = new BaseEntities().GetCounter("wb_deboning").FirstOrDefault(),
+                    Num = new BaseEntities().GetDocNum("wb_deboning").FirstOrDefault(),
                     EntId = DBHelper.Enterprise.KaId,
                     CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                     OnValue = 1,
