@@ -607,13 +607,23 @@ namespace SP_Sklad.Common
                 var file_format = DBHelper.CurrentUser.ReportFormat;
 
                 String result_file = Path.Combine(rep_path, Path.GetFileNameWithoutExtension(temlate) + "_" + DateTime.Now.Ticks.ToString() + "." + file_format);
-
-                File.WriteAllBytes(result_file, ReportBuilder.GenerateReport(data_for_report, template_file, false, file_format));
-
-                if (File.Exists(result_file))
+                var rep = ReportBuilder.GenerateReport(data_for_report, template_file, false, file_format);
+                if (file_format == "pdf")
                 {
-                    Process.Start(result_file);
+                    new frmPdfView(rep).Show();
                 }
+                else
+                {
+                /*    File.WriteAllBytes(result_file, rep);
+
+                    if (File.Exists(result_file))
+                    {
+                        Process.Start(result_file);
+                    }*/
+
+                    new frmSpreadsheed(rep).Show();
+                }
+
             }
         }
     }

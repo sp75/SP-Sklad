@@ -11,6 +11,7 @@
     <AssemblyName>SP_Sklad</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -23,7 +24,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -63,6 +63,7 @@
     <Reference Include="DevExpress.Printing.v15.2.Core, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.RichEdit.v15.2.Core, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Sparkline.v15.2.Core, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.SpellChecker.v15.2.Core, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Spreadsheet.v15.2.Core, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v15.2.UI, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -79,6 +80,7 @@
     <Reference Include="DevExpress.XtraPrinting.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraRichEdit.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraRichEdit.v15.2.Extensions, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraSpellChecker.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraSpreadsheet.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraVerticalGrid.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -331,6 +333,12 @@
     </Compile>
     <Compile Include="ViewsForm\frmRemainOnWh .Designer.cs">
       <DependentUpon>frmRemainOnWh .cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewsForm\frmSpreadsheed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmSpreadsheed.Designer.cs">
+      <DependentUpon>frmSpreadsheed.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewsForm\frmWhCatalog.cs">
       <SubType>Form</SubType>
@@ -1141,6 +1149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmRemainOnWh .resx">
       <DependentUpon>frmRemainOnWh .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmSpreadsheed.resx">
+      <DependentUpon>frmSpreadsheed.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmWhCatalog.resx">
       <DependentUpon>frmWhCatalog.cs</DependentUpon>
