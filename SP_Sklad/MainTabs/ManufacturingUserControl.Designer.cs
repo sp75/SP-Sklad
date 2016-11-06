@@ -1463,6 +1463,8 @@
             // gridColumn18
             // 
             this.gridColumn18.Caption = "Дата";
+            this.gridColumn18.DisplayFormat.FormatString = "g";
+            this.gridColumn18.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn18.FieldName = "OnDate";
             this.gridColumn18.Name = "gridColumn18";
             this.gridColumn18.Visible = true;

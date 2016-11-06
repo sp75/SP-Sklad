@@ -446,6 +446,7 @@
             this.ReceptBtn.Name = "ReceptBtn";
             this.ReceptBtn.Size = new System.Drawing.Size(22, 22);
             this.ReceptBtn.TabIndex = 25;
+            this.ReceptBtn.Click += new System.EventHandler(this.ReceptBtn_Click);
             // 
             // WhComboBox
             // 

@@ -403,5 +403,10 @@ namespace SP_Sklad.WBForm
             IHelper.ShowMatListByWH3(_db, wb, WhComboBox.EditValue.ToString());
             RefreshDet();
         }
+
+        private void ReceptBtn_Click(object sender, EventArgs e)
+        {
+            RecipeComboBox.EditValue = IHelper.ShowDirectList(RecipeComboBox.EditValue, 13);
+        }
     }
 }

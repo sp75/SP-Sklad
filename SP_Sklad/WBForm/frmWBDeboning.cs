@@ -441,5 +441,10 @@ namespace SP_Sklad.WBForm
         {
             PersonComboBox.EditValue = IHelper.ShowDirectList(PersonComboBox.EditValue, 3);
         }
+
+        private void ReceptBtn_Click(object sender, EventArgs e)
+        {
+            RecipeComboBox.EditValue = IHelper.ShowDirectList(RecipeComboBox.EditValue, 15);
+        }
     }
 }
