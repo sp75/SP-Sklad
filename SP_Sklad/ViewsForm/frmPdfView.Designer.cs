@@ -344,6 +344,7 @@
             this.Controls.Add(this.ribbonControl1);
             this.Name = "frmPdfView";
             this.Text = "Друк документів";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmPdfView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pdfBarController1)).EndInit();
