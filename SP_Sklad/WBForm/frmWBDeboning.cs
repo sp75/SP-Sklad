@@ -114,7 +114,7 @@ namespace SP_Sklad.WBForm
 
                 NumEdit.DataBindings.Add(new Binding("EditValue", wb, "Num"));
                 OnDateDBEdit.DataBindings.Add(new Binding("EditValue", wb, "OnDate", true, DataSourceUpdateMode.OnPropertyChanged));
-                ToDateEdit.DataBindings.Add(new Binding("EditValue", wb, "ToDate"));
+                ToDateEdit.DataBindings.Add(new Binding("EditValue", wb, "ToDate", true, DataSourceUpdateMode.OnPropertyChanged));
 
                 NotesEdit.DataBindings.Add(new Binding("EditValue", wb, "Notes"));
                 ReasonEdit.DataBindings.Add(new Binding("EditValue", wb, "Reason"));
@@ -364,8 +364,8 @@ namespace SP_Sklad.WBForm
         {
             if (!checkEdit2.ContainsFocus) return;
 
-            if (checkEdit2.Checked) wb.ToDate = OnDateDBEdit.DateTime.AddDays(3);
-            else wb.ToDate = null;
+            if (checkEdit2.Checked) ToDateEdit.EditValue = OnDateDBEdit.DateTime.AddDays(3);
+            else ToDateEdit.EditValue = null;
 
             ToDateEdit.Focus();
         }

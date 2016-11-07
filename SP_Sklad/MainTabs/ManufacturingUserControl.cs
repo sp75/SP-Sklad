@@ -257,7 +257,14 @@ namespace SP_Sklad.MainTabs
                         {
                             if (wb.Checked == 2)
                             {
-                                DBHelper.StornoOrder(db, focused_row.WbillId);
+                                if ((wb.WType == -20 && (focused_row.ShippedAmount ?? 0) == 0) || wb.WType == -22)
+                                {
+                                    DBHelper.StornoOrder(db, focused_row.WbillId);
+                                }
+                                else if (wb.WType == -20)
+                                {
+                                    MessageBox.Show("Частина товару вже відгружена на склад!");
+                                }
                             }
                             else
                             {
@@ -269,7 +276,6 @@ namespace SP_Sklad.MainTabs
                             MessageBox.Show(Resources.not_find_wb);
                         }
                         break;
-                  
                 }
             }
 

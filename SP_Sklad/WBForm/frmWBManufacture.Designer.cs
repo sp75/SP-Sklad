@@ -203,6 +203,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.PrevievBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.MatInfoBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.RsvInfoBtn)});
+            this.bar2.OptionsBar.AllowQuickCustomization = false;
+            this.bar2.OptionsBar.DrawDragBorder = false;
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -241,7 +243,10 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.EditMaterialBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.DelMaterialBtn)});
+            this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.OptionsBar.AllowRename = true;
+            this.bar1.OptionsBar.DrawDragBorder = false;
+            this.bar1.OptionsBar.UseWholeRow = true;
             this.bar1.StandaloneBarDockControl = this.standaloneBarDockControl1;
             this.bar1.Text = "Custom 2";
             // 

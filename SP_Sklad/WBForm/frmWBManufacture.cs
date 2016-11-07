@@ -105,7 +105,7 @@ namespace SP_Sklad.WBForm
 
                 NumEdit.DataBindings.Add(new Binding("EditValue", wb, "Num"));
                 OnDateDBEdit.DataBindings.Add(new Binding("EditValue", wb, "OnDate", true, DataSourceUpdateMode.OnPropertyChanged));
-                ToDateEdit.DataBindings.Add(new Binding("EditValue", wb, "ToDate"));
+                ToDateEdit.DataBindings.Add(new Binding("EditValue", wb, "ToDate", true, DataSourceUpdateMode.OnPropertyChanged));
 
                 NotesEdit.DataBindings.Add(new Binding("EditValue", wb, "Notes"));
                 ReasonEdit.DataBindings.Add(new Binding("EditValue", wb, "Reason"));
@@ -193,8 +193,8 @@ namespace SP_Sklad.WBForm
             {
                 return;
             }
-
-            wb.WayBillMake.Amount = wb.WaybillDet.Where(w => w.Materials.MId == wb.WayBillMake.MatRecipe.Materials.MId).Sum(s => s.Amount);
+       
+            wb.WayBillMake.Amount = _db.WaybillDet.Where(w => w.WbillId == _wbill_id && w.Materials.MId == w.WaybillList.WayBillMake.MatRecipe.Materials.MId).Sum(s => s.Amount);
 
             wb.UpdatedAt = DateTime.Now;
             _db.SaveChanges();
@@ -335,7 +335,12 @@ namespace SP_Sklad.WBForm
             _db.SaveChanges();
             var r = _db.GetRecipe(_wbill_id).ToList();
 
-            //    if (MessageDlg("Зарезервувати товар ? ", mtConfirmation, TMsgDlgButtons() << mbYes << mbNo, 0) == mrYes) RcvAllBtn->Click();
+            if (MessageBox.Show("Зарезервувати товар ? ", "Повідомлення.", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                RsvAllBarBtn.PerformClick();
+            }
+
+          
 
             RefreshDet();
         }
@@ -344,8 +349,8 @@ namespace SP_Sklad.WBForm
         {
             if (!checkEdit2.ContainsFocus) return;
 
-            if (checkEdit2.Checked) wb.ToDate = OnDateDBEdit.DateTime.AddDays(3);
-            else wb.ToDate = null;
+            if (checkEdit2.Checked) ToDateEdit.EditValue = OnDateDBEdit.DateTime.AddDays(3);
+            else ToDateEdit.EditValue = null;
 
             ToDateEdit.Focus();
         }

@@ -301,11 +301,6 @@ order by  ma.ondate desc */
             }
         }
 
-        private void WaybillDetInGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-            wbd_row = WaybillDetInGridView.GetRow(WaybillDetInGridView.FocusedRowHandle) as GetWaybillDetIn_Result;
-        }
-
         private void WaybillDetInGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
         {
             if (e.HitInfo.InRow)
@@ -351,6 +346,11 @@ order by  ma.ondate desc */
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void WaybillDetInGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
+        {
+            wbd_row = WaybillDetInGridView.GetRow(WaybillDetInGridView.FocusedRowHandle) as GetWaybillDetIn_Result;
         }
 
     }

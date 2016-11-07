@@ -599,7 +599,7 @@
             this.WaybillDetInGridView.Name = "WaybillDetInGridView";
             this.WaybillDetInGridView.OptionsView.ShowGroupPanel = false;
             this.WaybillDetInGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WaybillDetInGridView_PopupMenuShowing);
-            this.WaybillDetInGridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.WaybillDetInGridView_FocusedRowChanged);
+            this.WaybillDetInGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.WaybillDetInGridView_FocusedRowObjectChanged);
             this.WaybillDetInGridView.DoubleClick += new System.EventHandler(this.WaybillDetInGridView_DoubleClick);
             // 
             // gridColumn1
@@ -662,6 +662,8 @@
             this.gridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn4.FieldName = "Amount";
             this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.OptionsColumn.AllowEdit = false;
+            this.gridColumn4.OptionsColumn.ReadOnly = true;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
             // 

@@ -1481,7 +1481,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="main_ico.ico" />
-    <Content Include="main_ico2.ico" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>
