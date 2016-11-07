@@ -312,25 +312,40 @@ namespace SP_Sklad.Reports
                 int grp = Convert.ToInt32(MatGroup.GrpId);
                 int wid = Warehouse.WId == "*" ? 0 : Convert.ToInt32(Warehouse.WId);
 
-                var mat = db.WhMatGet(grp, wid, 0, OnDate, 0, "*", 0, "", 0, 0).ToList();
+                var mat = db.WhMatGet(grp, wid, 0, OnDate, 0, "*", 0, "", 0, 0).Select(s => new
+                {
+                    s.BarCode,
+                    s.MatName,
+                    s.MsrName,
+                    s.Remain,
+                    s.Rsv,
+                    s.AvgPrice,
+                    s.OutGrpId,
+                    s.GrpName,
+                }).ToList();
 
                 if (!mat.Any())
                 {
                     return;
                 }
 
-                var mat_grp = db.MatGroup.Where(w => w.Deleted == 0 && (w.GrpId == grp || grp == 0)).Select(s => new { s.GrpId, s.Name }).ToList();
+                var mat_grp = mat.GroupBy(g => new { g.GrpName, g.OutGrpId }).Select(s => new
+                {
+                    s.Key.OutGrpId,
+                    Name = s.Key.GrpName,
+                    Total = s.Sum(xs => (xs.AvgPrice * xs.Remain)),
+                }).OrderBy(o => o.Name).ToList();
 
                 rel.Add(new
                 {
-                    pk = "GrpId",
+                    pk = "OutGrpId",
                     fk = "OutGrpId",
                     master_table = "MatGroup",
                     child_table = "MatList"
                 });
 
                 data_for_report.Add("XLRPARAMS", XLRPARAMS);
-                data_for_report.Add("MatGroup", mat_grp.Where(w => mat.Select(s => s.OutGrpId).Contains(w.GrpId)).ToList());
+                data_for_report.Add("MatGroup", mat_grp);
                 data_for_report.Add("MatList", mat);
                 data_for_report.Add("_realation_", rel);
 
