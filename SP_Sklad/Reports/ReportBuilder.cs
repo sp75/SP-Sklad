@@ -159,17 +159,28 @@ namespace SpreadsheetReportBuilder
         {
             string RangeName = dataTable.TableName;
             int count_row = defName.Range.RowCount - 1;
-            int master_bottom_row_index = defName.Range.BottomRowIndex;
-           
 
             List<DataRow> ListDataRow = dataTable.Rows.Cast<DataRow>().Where(r => r.RowState != DataRowState.Deleted).ToList();
 
+            var ddd = new List<Row>();
+            for (var i = 0; i < count_row; i++)
+            {
+                ddd.Add(worksheet.Rows[defName.Range.TopRowIndex + i]);
+            }
+
+            int master_bottom_row_index = defName.Range.BottomRowIndex;
+       
             foreach (DataRow dataRow in ListDataRow)
             {
                 for (var i = 0; i < count_row; i++)
                 {
                     worksheet.Rows[defName.Range.BottomRowIndex].Insert();
-                    worksheet.Rows[defName.Range.BottomRowIndex - 1].CopyFrom(worksheet.Rows[defName.Range.TopRowIndex + i]);
+                   var master_t_row = worksheet.Rows[defName.Range.BottomRowIndex - 1];
+                   master_t_row.CopyFrom(ddd[i]);
+                    foreach (var cell in master_t_row)
+                    {
+                        SetValueToCellValue(dataTable, dataRow, cell);
+                    }
                 }
 
                 foreach (var child_range in child_range_list)
@@ -179,19 +190,31 @@ namespace SpreadsheetReportBuilder
                     worksheet.Rows.Remove(defName.Range.BottomRowIndex - offset_butom - ch_count, ch_count);
 
                     var child_rows = dataRow.GetChildRows(dataTable.DataSet.Relations[child_range.Name + "=>" + defName.Name]).ToList();
+                    var chch = new List<Row>();
+                    for (var c = 0; c < ch_count; c++)
+                    {
+                       chch.Add( worksheet.Rows[child_range.Range.TopRowIndex + c]);
+                    }
+
                     foreach (DataRow ch_row in child_rows)
                     {
                         for (var c = 0; c < ch_count; c++)
                         {
                             worksheet.Rows[defName.Range.BottomRowIndex - offset_butom].Insert();
-                            worksheet.Rows[defName.Range.BottomRowIndex - offset_butom - 1].CopyFrom(worksheet.Rows[child_range.Range.TopRowIndex + c]);
+                            var ch_r = worksheet.Rows[defName.Range.BottomRowIndex - offset_butom - 1];
+                            ch_r.CopyFrom(chch[c]);
+
+                            foreach (var item in ch_r.Where(item =>  item.HasFormula))
+                            {
+                                SetValueToCellValue(ch_row.Table, ch_row, item);
+                            }
                         }
 
-                        var rr = defName.Range.Where(item => item.RowIndex >= defName.Range.TopRowIndex + count_row && item.HasFormula);
+                   /*     var rr = defName.Range.Where(item => item.RowIndex >= defName.Range.TopRowIndex + count_row && item.HasFormula);
                         foreach (var item in rr)
                         {
                             SetValueToCellValue(ch_row.Table, ch_row, item);
-                        }
+                        }*/
                     }
 
                     var child_service_call =worksheet.Rows[defName.Range.BottomRowIndex - offset_butom].Where(w => !String.IsNullOrEmpty(w.DisplayText));
@@ -208,15 +231,15 @@ namespace SpreadsheetReportBuilder
                     }
                 }
 
-                var range = defName.Range.Where(item => item.RowIndex >= defName.Range.TopRowIndex + count_row && item.RowIndex <defName.Range.BottomRowIndex && item.HasFormula);
+              /*  var range = defName.Range.Where(item => item.RowIndex >= defName.Range.TopRowIndex + count_row && item.RowIndex <defName.Range.BottomRowIndex && item.HasFormula);
 
                 foreach (var cell in range)
                 {
                     SetValueToCellValue(dataTable, dataRow, cell);
-                }
+                }*/
              
             }
-
+            RecultDoc.EndUpdate();
             var master_service_call = worksheet.Rows[defName.Range.BottomRowIndex].Where(w => !String.IsNullOrEmpty(w.DisplayText));
             if (!ListDataRow.Any() || !master_service_call.Any()) //Удаляем системную строку если нет данных
             {
@@ -307,6 +330,7 @@ namespace SpreadsheetReportBuilder
                 }
             }
         }
+
 
         private static void SetValueToCellFormula(DataSet dataSet, DataRow dataRow, Cell cell)
         {

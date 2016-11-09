@@ -393,7 +393,6 @@ namespace SP_Sklad.Reports
 
             if (idx == 10)
             {
-
                 int grp = Convert.ToInt32(MatGroup.GrpId);
                 string wid = Convert.ToString(Warehouse.WId);
 
@@ -404,7 +403,15 @@ namespace SP_Sklad.Reports
                     return;
                 }
 
-                var mat_grp = db.MatGroup.Where(w => w.Deleted == 0 && (w.GrpId == grp || grp == 0)).Select(s => new { s.GrpId, s.Name }).ToList();
+                var mat_grp = mat.GroupBy(g => new { g.GrpName, g.GrpId }).Select(s => new
+                {
+                    s.Key.GrpId,
+                    Name = s.Key.GrpName,
+                    SummIn = s.Sum(xs => xs.SummIn),
+                    SummOut = s.Sum(xs => xs.SummOut),
+                    SummStart = s.Sum(xs => xs.SummStart),
+                    SummEnd = s.Sum(xs => xs.SummEnd)
+                }).OrderBy(o => o.Name).ToList();
 
                 rel.Add(new
                 {
@@ -415,7 +422,7 @@ namespace SP_Sklad.Reports
                 });
 
                 data_for_report.Add("XLRPARAMS", XLRPARAMS);
-                data_for_report.Add("MatGroup", mat_grp.Where(w => mat.Select(s => s.GrpId).Contains(w.GrpId)).ToList());
+                data_for_report.Add("MatGroup", mat_grp);
                 data_for_report.Add("MatList", mat);
                 data_for_report.Add("_realation_", rel);
 
