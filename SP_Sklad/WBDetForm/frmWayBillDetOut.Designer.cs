@@ -98,9 +98,10 @@
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.panel4 = new System.Windows.Forms.Panel();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.ProducerTextEdit = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.WayBillDetAddPropsBS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl23 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit17 = new DevExpress.XtraEditors.TextEdit();
-            this.WayBillDetAddPropsBS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit15 = new DevExpress.XtraEditors.TextEdit();
@@ -130,7 +131,6 @@
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.ProducerTextEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).BeginInit();
@@ -165,8 +165,9 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit17.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProducerTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WayBillDetAddPropsBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit17.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit15.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit16.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit16.Properties)).BeginInit();
@@ -185,7 +186,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.PriceNotNDSEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ProducerTextEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -606,7 +606,7 @@
             // 
             // BasePriceEdit
             // 
-            this.BasePriceEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "BasePrice", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.BasePriceEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "BasePrice", true));
             this.BasePriceEdit.Location = new System.Drawing.Point(101, 70);
             this.BasePriceEdit.MenuManager = this.barManager1;
             this.BasePriceEdit.Name = "BasePriceEdit";
@@ -959,6 +959,22 @@
             this.groupControl2.TabIndex = 15;
             this.groupControl2.Text = "Сертифікат:";
             // 
+            // ProducerTextEdit
+            // 
+            this.ProducerTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WayBillDetAddPropsBS, "Producer", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ProducerTextEdit.Location = new System.Drawing.Point(87, 30);
+            this.ProducerTextEdit.MenuManager = this.barManager1;
+            this.ProducerTextEdit.Name = "ProducerTextEdit";
+            this.ProducerTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ProducerTextEdit.Size = new System.Drawing.Size(276, 22);
+            this.ProducerTextEdit.StyleController = this.styleController1;
+            this.ProducerTextEdit.TabIndex = 27;
+            // 
+            // WayBillDetAddPropsBS
+            // 
+            this.WayBillDetAddPropsBS.DataSource = typeof(SP_Sklad.SkladData.WayBillDetAddProps);
+            // 
             // labelControl23
             // 
             this.labelControl23.Location = new System.Drawing.Point(13, 89);
@@ -979,10 +995,6 @@
             this.textEdit17.Size = new System.Drawing.Size(276, 22);
             this.textEdit17.StyleController = this.styleController1;
             this.textEdit17.TabIndex = 24;
-            // 
-            // WayBillDetAddPropsBS
-            // 
-            this.WayBillDetAddPropsBS.DataSource = typeof(SP_Sklad.SkladData.WayBillDetAddProps);
             // 
             // labelControl22
             // 
@@ -1321,18 +1333,6 @@
             this.simpleButton1.TabIndex = 2;
             this.simpleButton1.Text = "Відмінити";
             // 
-            // ProducerTextEdit
-            // 
-            this.ProducerTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WayBillDetAddPropsBS, "Producer", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.ProducerTextEdit.Location = new System.Drawing.Point(87, 30);
-            this.ProducerTextEdit.MenuManager = this.barManager1;
-            this.ProducerTextEdit.Name = "ProducerTextEdit";
-            this.ProducerTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ProducerTextEdit.Size = new System.Drawing.Size(276, 22);
-            this.ProducerTextEdit.StyleController = this.styleController1;
-            this.ProducerTextEdit.TabIndex = 27;
-            // 
             // frmWayBillDetOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1393,8 +1393,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit17.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProducerTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WayBillDetAddPropsBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit17.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit15.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit16.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit16.Properties)).EndInit();
@@ -1415,7 +1416,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.PriceNotNDSEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ProducerTextEdit.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

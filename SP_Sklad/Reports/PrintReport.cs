@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SP_Sklad.Common;
+using SP_Sklad.Reports.XtraRep;
 using SP_Sklad.SkladData;
 using SpreadsheetReportBuilder;
+using DevExpress.XtraReports.UI;
 
 namespace SP_Sklad.Reports
 {
@@ -449,6 +451,8 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("DocList", list.ToList());
 
                 IHelper.Print(data_for_report, TemlateList.rep_11);
+             //   var rep = new DocListReport();
+             //   rep.ShowPreviewDialog();
             }
 
             if (idx == 13)

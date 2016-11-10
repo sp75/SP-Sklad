@@ -158,13 +158,17 @@ namespace SP_Sklad.WBDetForm
             labelControl24.Text = row.MeasuresName;
             labelControl27.Text = row.MeasuresName;
 
-            PriceTypesEdit.EditValue = PriceTypesEdit.EditValue == DBNull.Value ? _db.PriceTypes.First(w => w.Def == 1).PTypeId : PriceTypesEdit.EditValue;
+            var sate = _db.Entry(_wbd).State;
+            PriceTypesEdit.EditValue = PriceTypesEdit.EditValue == DBNull.Value ? (_db.Entry(_wbd).State == EntityState.Detached ? _db.PriceTypes.First(w => w.Def == 1).PTypeId : PriceTypesEdit.EditValue) : PriceTypesEdit.EditValue;
 
-            var list_price = _db.GetListMatPrices(row.MatId, _wb.CurrId, (int)PriceTypesEdit.EditValue).FirstOrDefault();
-            if (list_price != null)
+            if (PriceTypesEdit.EditValue != DBNull.Value)
             {
-                _wbd.BasePrice = list_price.Price != null ? Math.Round(list_price.Price.Value, 4) : 0;
-                BasePriceEdit.Value = _wbd.BasePrice.Value;
+                var list_price = _db.GetListMatPrices(row.MatId, _wb.CurrId, (int)PriceTypesEdit.EditValue).FirstOrDefault();
+                if (list_price != null)
+                {
+                    _wbd.BasePrice = list_price.Price != null ? Math.Round(list_price.Price.Value, 4) : 0;
+                    BasePriceEdit.Value = _wbd.BasePrice.Value;
+                }
             }
 
             GetDiscount(row.MatId);
@@ -313,6 +317,7 @@ namespace SP_Sklad.WBDetForm
             }
 
             GetMatPrice();
+            GetOk();
         }
 
         private void GetMatPrice()
@@ -321,9 +326,8 @@ namespace SP_Sklad.WBDetForm
             if (list_price != null)
             {
                 _wbd.BasePrice = list_price.Price != null ? Math.Round(list_price.Price.Value, 4) : 0;
+                BasePriceEdit.EditValue = _wbd.BasePrice;
             }
-
-            GetOk();
         }
 
         private void BasePriceEdit_EditValueChanged(object sender, EventArgs e)
@@ -332,9 +336,9 @@ namespace SP_Sklad.WBDetForm
             {
                 return;
             }
-
-            _wbd.PtypeId = null;
-         //   PriceTypesEdit.EditValue = null;
+            _wbd.BasePrice = BasePriceEdit.Value;
+       //     _wbd.PtypeId = null;
+            PriceTypesEdit.EditValue = null;
 
             GetOk();
         }
@@ -439,6 +443,7 @@ namespace SP_Sklad.WBDetForm
         {
             PriceTypesEdit.EditValue = IHelper.ShowDirectList(PriceTypesEdit.EditValue, 8);
             GetMatPrice();
+            GetOk();
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
