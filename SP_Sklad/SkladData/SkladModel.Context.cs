@@ -42,7 +42,6 @@ namespace SP_Sklad.SkladData
         public DbSet<WMatTurn> WMatTurn { get; set; }
         public DbSet<CashDesks> CashDesks { get; set; }
         public DbSet<PayType> PayType { get; set; }
-        public DbSet<DocsRel> DocsRel { get; set; }
         public DbSet<PayDoc> PayDoc { get; set; }
         public DbSet<ChargeType> ChargeType { get; set; }
         public DbSet<Users> Users { get; set; }
@@ -71,7 +70,6 @@ namespace SP_Sklad.SkladData
         public DbSet<TAXWBDET> TAXWBDET { get; set; }
         public DbSet<TechProcDet> TechProcDet { get; set; }
         public DbSet<TechProcess> TechProcess { get; set; }
-        public DbSet<WayBillDetTaxes> WayBillDetTaxes { get; set; }
         public DbSet<MatRecipe> MatRecipe { get; set; }
         public DbSet<WayBillMake> WayBillMake { get; set; }
         public DbSet<v_TechProcDet> v_TechProcDet { get; set; }
@@ -130,6 +128,9 @@ namespace SP_Sklad.SkladData
         public DbSet<MatChange> MatChange { get; set; }
         public DbSet<v_MatRemains> v_MatRemains { get; set; }
         public DbSet<v_WhMatRemains> v_WhMatRemains { get; set; }
+        public DbSet<DocsRel> DocsRel { get; set; }
+        public DbSet<ProfileDocSetting> ProfileDocSetting { get; set; }
+        public DbSet<WayBillDetTaxes> WayBillDetTaxes { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)

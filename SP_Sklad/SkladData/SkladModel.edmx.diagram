@@ -22,7 +22,6 @@
         <EntityTypeShape EntityType="BaseModel.WMatTurn" Width="1.5" PointX="2.2089209529612774" PointY="7.7624033874657021" />
         <EntityTypeShape EntityType="BaseModel.CashDesks" Width="1.5" PointX="5.4358159105460233" PointY="15.156837589646148" />
         <EntityTypeShape EntityType="BaseModel.PayType" Width="1.5" PointX="10.82716750112696" PointY="18.358269968236922" />
-        <EntityTypeShape EntityType="BaseModel.DocsRel" Width="1.5" PointX="9.59851192384889" PointY="11.465369855736089" />
         <EntityTypeShape EntityType="BaseModel.PayDoc" Width="1.5" PointX="2.4413153931690914" PointY="14.741952113221377" />
         <AssociationConnector Association="BaseModel.FK_PD_CASHID" />
         <AssociationConnector Association="BaseModel.FK__PAYDOC__PTYPEID__2057CCD0" />
@@ -58,7 +57,6 @@
         <EntityTypeShape EntityType="BaseModel.UserTree" Width="1.5" PointX="1.4358053232709902" PointY="31.650536730722774" />
         <AssociationConnector Association="BaseModel.FK_CONTRACT_REF_CONTR_DOCS" />
         <AssociationConnector Association="BaseModel.FK_CONTRACT_REF_CONTR_PDOCS" />
-        <AssociationConnector Association="BaseModel.FK_DOCSREL_REFERENCE_DOCS" />
         <AssociationConnector Association="BaseModel.FK_PAYDOC_REF_PD_DO_DOCS" />
         <AssociationConnector Association="BaseModel.FK_TAXWB_REFERENCE_DOCS" />
         <AssociationConnector Association="BaseModel.FK_UAWH_USERID" />
@@ -73,8 +71,6 @@
         <EntityTypeShape EntityType="BaseModel.TechProcDet" Width="1.5" PointX="9.2934470536622431" PointY="3.208896668259472" />
         <EntityTypeShape EntityType="BaseModel.TechProcess" Width="1.5" PointX="5.5697671219565752" PointY="3.39031969168704" />
         <AssociationConnector Association="BaseModel.FK_TECHPROCDET_TECHPROCESS" />
-        <EntityTypeShape EntityType="BaseModel.WayBillDetTaxes" Width="1.5" PointX="11.604890506530595" PointY="6.4207777410842377" />
-        <AssociationConnector Association="BaseModel.FK_WBDTAXES_TAXID" />
         <EntityTypeShape EntityType="BaseModel.MatRecipe" Width="1.5" PointX="4.8261468730988666" PointY="18.037040942365788" />
         <EntityTypeShape EntityType="BaseModel.WayBillMake" Width="1.5" PointX="4.642107151747731" PointY="31.026654645347342" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLMAKE_MATRECIPE" />
@@ -167,7 +163,6 @@
         <AssociationConnector Association="BaseModel.FK_RETREL_POSID" />
         <AssociationConnector Association="BaseModel.FK_RETREL_PPOSID" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLD_FK_WBDET__WAREHOUS" />
-        <AssociationConnector Association="BaseModel.FK_WBDTAXES_POSID" />
         <AssociationConnector Association="BaseModel.FK_WMT_POSID" />
         <AssociationConnector Association="BaseModel.FK_WMT_SRCID" />
         <AssociationConnector Association="BaseModel.PosRel" />
@@ -241,6 +236,12 @@
         <AssociationConnector Association="BaseModel.FK_MATCHANGE_MATID" />
         <EntityTypeShape EntityType="BaseModel.v_MatRemains" Width="1.5" PointX="1.3652722897777672" PointY="6.8016226770363852" />
         <EntityTypeShape EntityType="BaseModel.v_WhMatRemains" Width="1.5" PointX="5.0809056894299136" PointY="22.338441590936128" />
+        <EntityTypeShape EntityType="BaseModel.DocsRel" Width="1.5" PointX="6.0790274357791185" PointY="15.618634633542333" />
+        <EntityTypeShape EntityType="BaseModel.ProfileDocSetting" Width="1.5" PointX="10.354963771232853" PointY="24.666091870826712" />
+        <AssociationConnector Association="BaseModel.FK_DOCSREL_REFERENCE_DOCS" />
+        <EntityTypeShape EntityType="BaseModel.WayBillDetTaxes" Width="1.5" PointX="10.735154879621769" PointY="12.478906681984155" />
+        <AssociationConnector Association="BaseModel.FK_WBDTAXES_TAXID" />
+        <AssociationConnector Association="BaseModel.FK_WBDTAXES_POSID" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="7.0245045325832924" PointY="12.641712000892364" />

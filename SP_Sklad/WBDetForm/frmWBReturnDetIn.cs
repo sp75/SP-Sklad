@@ -23,6 +23,7 @@ namespace SP_Sklad.WBDetForm
         private ReturnRel _temp_return_rel { get; set; }
         private List<GetShippedPosIn_Result> ordered_in_list { get; set; }
         public int? outPosId { get; set; }
+        private ComPortHelper com_port { get; set; }
 
         public frmWBReturnDetIn(BaseEntities db, int? PosId, WaybillList wb)
         {
@@ -33,6 +34,8 @@ namespace SP_Sklad.WBDetForm
             _wb = wb;
 
             WHComboBox.Properties.DataSource = DBHelper.WhList();
+
+            com_port = new ComPortHelper();
         }
 
         private void frmWBReturnDetIn_Load(object sender, EventArgs e)
@@ -79,6 +82,13 @@ namespace SP_Sklad.WBDetForm
             }
 
             GetOk();
+
+            try
+            {
+                com_port.Open();
+                timer1.Enabled = true;
+            }
+            catch { }
         }
 
         private void MatComboBox_EditValueChanged(object sender, EventArgs e)
@@ -210,6 +220,9 @@ namespace SP_Sklad.WBDetForm
 
         private void frmWBReturnDetIn_FormClosed(object sender, FormClosedEventArgs e)
         {
+            timer1.Enabled = false;
+            com_port.Close();
+
             if (_db.Entry<WaybillDet>(_wbd).State == EntityState.Modified)
             {
                 _db.Entry<WaybillDet>(_wbd).Reload();
@@ -279,5 +292,40 @@ namespace SP_Sklad.WBDetForm
         {
             IHelper.ShowTurnMaterial(_wbd.MatId);
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            var res = com_port.ReadData();
+            textBox1.Text = res;
+/*
+             if(ComPort->Connected)
+	{
+		if(ComPort->InBufCount() >= 16 )
+		 {
+			char buff[16] = {0};
+			ComPort->Read(buff, ComPort->InBufCount());
+			String rez="", rez2="";
+			for(int a=0; a<16; a++)
+			 {
+			   if(a!=1 && a<10)
+				{
+				  rez= (char)buff[a];
+				  if(rez == '.') rez =',';
+				  rez2+=rez ;
+				}
+			 }
+		   float v ;
+		   if(TryStrToFloat(rez2, v))
+			{
+			  if(v > 0)
+			   {
+				 WayBIllDet->Edit();
+				 WayBIllDetAMOUNT->Value = v;
+			   }
+			}
+		 }
+	}*/
+        }
+
     }
 }
