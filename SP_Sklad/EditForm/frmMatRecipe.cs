@@ -39,6 +39,8 @@ namespace SP_Sklad.EditForm
 
             tree.Add(new CatalogTreeList { Id = -2, ParentId = -2, Text = "Основна інформація", ImgIdx = 0, TabIdx = 0 });
             tree.Add(new CatalogTreeList { Id = 0, ParentId = -1, Text = "Позиції", ImgIdx = 1, TabIdx = 1 });
+            tree.Add(new CatalogTreeList { Id = 1, ParentId = 1, Text = "Технологічні процеси", ImgIdx = 7, TabIdx = 1 });
+
 
             TreeListBindingSource.DataSource = tree;
 
@@ -137,6 +139,11 @@ namespace SP_Sklad.EditForm
             }
             DirTreeList.RefreshDataSource();
             DirTreeList.ExpandAll();
+        }
+
+        private void GetTechProc()
+        {
+         //   MatRecTechProcGridControl
         }
 
         private void AddRecDetBtn_Click(object sender, EventArgs e)
