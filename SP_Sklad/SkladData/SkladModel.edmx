@@ -53,6 +53,7 @@
           <EntitySet Name="MatPrices" EntityType="BaseModel.Store.MatPrices" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MatRecDet" EntityType="BaseModel.Store.MatRecDet" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MatRecipe" EntityType="BaseModel.Store.MatRecipe" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MatRecipeTechProcDet" EntityType="BaseModel.Store.MatRecipeTechProcDet" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MatRemains" EntityType="BaseModel.Store.MatRemains" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Measures" EntityType="BaseModel.Store.Measures" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MoneySaldo" EntityType="BaseModel.Store.MoneySaldo" store:Type="Tables" Schema="dbo" />
@@ -350,7 +351,8 @@
       [v_TechProcDet].[PersonId] AS [PersonId], 
       [v_TechProcDet].[OnDate] AS [OnDate], 
       [v_TechProcDet].[Name] AS [Name], 
-      [v_TechProcDet].[PersonName] AS [PersonName]
+      [v_TechProcDet].[PersonName] AS [PersonName], 
+      [v_TechProcDet].[Num] AS [Num]
       FROM [dbo].[v_TechProcDet] AS [v_TechProcDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_WaybillList" EntityType="BaseModel.Store.v_WaybillList" store:Type="Views" store:Schema="dbo" store:Name="v_WaybillList">
@@ -717,6 +719,14 @@
           <AssociationSet Name="FK_MATRECIPE_1" Association="BaseModel.Store.FK_MATRECIPE_1">
             <End Role="Materials" EntitySet="Materials" />
             <End Role="MatRecipe" EntitySet="MatRecipe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MatRecipeTechProcDet_MatRecipe" Association="BaseModel.Store.FK_MatRecipeTechProcDet_MatRecipe">
+            <End Role="MatRecipe" EntitySet="MatRecipe" />
+            <End Role="MatRecipeTechProcDet" EntitySet="MatRecipeTechProcDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MatRecipeTechProcDet_TechProcess" Association="BaseModel.Store.FK_MatRecipeTechProcDet_TechProcess">
+            <End Role="TechProcess" EntitySet="TechProcess" />
+            <End Role="MatRecipeTechProcDet" EntitySet="MatRecipeTechProcDet" />
           </AssociationSet>
           <AssociationSet Name="FK_MGP_MATID" Association="BaseModel.Store.FK_MGP_MATID">
             <End Role="MatGroup" EntitySet="MatGroup" />
@@ -1545,6 +1555,16 @@
           <Property Name="MatId" Type="int" Nullable="false" />
           <Property Name="RType" Type="int" />
         </EntityType>
+        <EntityType Name="MatRecipeTechProcDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RecId" Type="int" Nullable="false" />
+          <Property Name="ProcId" Type="int" Nullable="false" />
+          <Property Name="Num" Type="int" />
+          <Property Name="ExpectedOut" Type="numeric" Precision="15" Scale="2" />
+        </EntityType>
         <EntityType Name="MatRemains">
           <Key>
             <PropertyRef Name="Id" />
@@ -1866,12 +1886,13 @@
             <PropertyRef Name="DetId" />
           </Key>
           <Property Name="DetId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="WbillId" Type="int" Nullable="false" />
+          <Property Name="Num" Type="int" Nullable="false" />
           <Property Name="OnDate" Type="datetime" Nullable="false" />
           <Property Name="Out" Type="numeric" Nullable="false" Precision="15" Scale="4" />
           <Property Name="ProcId" Type="int" Nullable="false" />
           <Property Name="Notes" Type="nvarchar" MaxLength="255" />
           <Property Name="PersonId" Type="int" />
+          <Property Name="WbillId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="TechProcess">
           <Key>
@@ -2436,6 +2457,7 @@
             <PropertyRef Name="Out" />
             <PropertyRef Name="ProcId" />
             <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Num" />
           </Key>
           <Property Name="DetId" Type="int" Nullable="false" />
           <Property Name="WbillId" Type="int" Nullable="false" />
@@ -2446,6 +2468,7 @@
           <Property Name="OnDate" Type="datetime" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="128" />
           <Property Name="PersonName" Type="nvarchar" MaxLength="64" />
+          <Property Name="Num" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -3454,6 +3477,34 @@
             </Principal>
             <Dependent Role="MatRecipe">
               <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MatRecipeTechProcDet_MatRecipe">
+          <End Role="MatRecipe" Type="BaseModel.Store.MatRecipe" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MatRecipeTechProcDet" Type="BaseModel.Store.MatRecipeTechProcDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MatRecipe">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="MatRecipeTechProcDet">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MatRecipeTechProcDet_TechProcess">
+          <End Role="TechProcess" Type="BaseModel.Store.TechProcess" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MatRecipeTechProcDet" Type="BaseModel.Store.MatRecipeTechProcDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechProcess">
+              <PropertyRef Name="ProcId" />
+            </Principal>
+            <Dependent Role="MatRecipeTechProcDet">
+              <PropertyRef Name="ProcId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -6178,12 +6229,7 @@
           <FunctionImport Name="GetManufactureTree" ReturnType="Collection(BaseModel.GetManufactureTree_Result)">
           <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="TechProcDet" EntityType="BaseModel.TechProcDet" />
           <EntitySet Name="TechProcess" EntityType="BaseModel.TechProcess" />
-          <AssociationSet Name="FK_TECHPROCDET_TECHPROCESS" Association="BaseModel.FK_TECHPROCDET_TECHPROCESS">
-            <End Role="TechProcess" EntitySet="TechProcess" />
-            <End Role="TechProcDet" EntitySet="TechProcDet" />
-          </AssociationSet>
           <EntitySet Name="MatRecipe" EntityType="BaseModel.MatRecipe" />
           <EntitySet Name="WayBillMake" EntityType="BaseModel.WayBillMake" />
           <AssociationSet Name="FK_WAYBILLMAKE_MATRECIPE" Association="BaseModel.FK_WAYBILLMAKE_MATRECIPE">
@@ -6585,10 +6631,6 @@
             <End Role="Tables" EntitySet="Tables" />
             <End Role="OperLog" EntitySet="OperLog" />
           </AssociationSet>
-          <AssociationSet Name="FK_TECHPROCDET_WAYBILLLIST" Association="BaseModel.FK_TECHPROCDET_WAYBILLLIST">
-            <End Role="WaybillList" EntitySet="WaybillList" />
-            <End Role="TechProcDet" EntitySet="TechProcDet" />
-          </AssociationSet>
           <AssociationSet Name="FK_WAYBILLMAKE_WAYBILLLIST" Association="BaseModel.FK_WAYBILLMAKE_WAYBILLLIST">
             <End Role="WaybillList" EntitySet="WaybillList" />
             <End Role="WayBillMake" EntitySet="WayBillMake" />
@@ -6764,10 +6806,6 @@
           <AssociationSet Name="FK_TAXWB_REFERENCE_KAGENT" Association="BaseModel.FK_TAXWB_REFERENCE_KAGENT">
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="TAXWB" EntitySet="TAXWB" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TECHPROCDET_KAGENT" Association="BaseModel.FK_TECHPROCDET_KAGENT">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="TechProcDet" EntitySet="TechProcDet" />
           </AssociationSet>
           <AssociationSet Name="FK_WAYBILLL_FK_WBLIST_KAGENT" Association="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT">
             <End Role="Kagent" EntitySet="Kagent" />
@@ -6980,6 +7018,28 @@
           <AssociationSet Name="FK_WBDTAXES_POSID" Association="BaseModel.FK_WBDTAXES_POSID">
             <End Role="WaybillDet" EntitySet="WaybillDet" />
             <End Role="WayBillDetTaxes" EntitySet="WayBillDetTaxes" />
+          </AssociationSet>
+          <EntitySet Name="MatRecipeTechProcDet" EntityType="BaseModel.MatRecipeTechProcDet" />
+          <AssociationSet Name="FK_MatRecipeTechProcDet_MatRecipe" Association="BaseModel.FK_MatRecipeTechProcDet_MatRecipe">
+            <End Role="MatRecipe" EntitySet="MatRecipe" />
+            <End Role="MatRecipeTechProcDet" EntitySet="MatRecipeTechProcDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MatRecipeTechProcDet_TechProcess" Association="BaseModel.FK_MatRecipeTechProcDet_TechProcess">
+            <End Role="TechProcess" EntitySet="TechProcess" />
+            <End Role="MatRecipeTechProcDet" EntitySet="MatRecipeTechProcDet" />
+          </AssociationSet>
+          <EntitySet Name="TechProcDet" EntityType="BaseModel.TechProcDet" />
+          <AssociationSet Name="FK_TECHPROCDET_KAGENT" Association="BaseModel.FK_TECHPROCDET_KAGENT">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="TechProcDet" EntitySet="TechProcDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TECHPROCDET_TECHPROCESS" Association="BaseModel.FK_TECHPROCDET_TECHPROCESS">
+            <End Role="TechProcess" EntitySet="TechProcess" />
+            <End Role="TechProcDet" EntitySet="TechProcDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TECHPROCDET_WAYBILLLIST" Association="BaseModel.FK_TECHPROCDET_WAYBILLLIST">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="TechProcDet" EntitySet="TechProcDet" />
           </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
@@ -8308,41 +8368,15 @@
           <Property Type="Int32" Name="CanPost" Nullable="true" />
           <Property Type="Int32" Name="WType" Nullable="true" />
         </ComplexType>
-        <EntityType Name="TechProcDet">
-          <Key>
-            <PropertyRef Name="DetId" />
-          </Key>
-          <Property Type="Int32" Name="DetId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="WbillId" Nullable="false" />
-          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
-          <Property Type="Decimal" Name="Out" Nullable="false" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="ProcId" Nullable="false" />
-          <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="PersonId" />
-          <NavigationProperty Name="TechProcess" Relationship="BaseModel.FK_TECHPROCDET_TECHPROCESS" FromRole="TechProcDet" ToRole="TechProcess" />
-          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_TECHPROCDET_WAYBILLLIST" FromRole="TechProcDet" ToRole="WaybillList" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_TECHPROCDET_KAGENT" FromRole="TechProcDet" ToRole="Kagent" />
-        </EntityType>
         <EntityType Name="TechProcess">
           <Key>
             <PropertyRef Name="ProcId" />
           </Key>
           <Property Type="Int32" Name="ProcId" Nullable="false" />
           <Property Type="String" Name="Name" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MatRecipeTechProcDet" Relationship="BaseModel.FK_MatRecipeTechProcDet_TechProcess" FromRole="TechProcess" ToRole="MatRecipeTechProcDet" />
           <NavigationProperty Name="TechProcDet" Relationship="BaseModel.FK_TECHPROCDET_TECHPROCESS" FromRole="TechProcess" ToRole="TechProcDet" />
         </EntityType>
-        <Association Name="FK_TECHPROCDET_TECHPROCESS">
-          <End Type="BaseModel.TechProcess" Role="TechProcess" Multiplicity="1" />
-          <End Type="BaseModel.TechProcDet" Role="TechProcDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TechProcess">
-              <PropertyRef Name="ProcId" />
-            </Principal>
-            <Dependent Role="TechProcDet">
-              <PropertyRef Name="ProcId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="MatRecipe">
           <Key>
             <PropertyRef Name="RecId" />
@@ -8358,6 +8392,7 @@
           <NavigationProperty Name="WayBillMake" Relationship="BaseModel.FK_WAYBILLMAKE_MATRECIPE" FromRole="MatRecipe" ToRole="WayBillMake" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK_MATRECIPE_1" FromRole="MatRecipe" ToRole="Materials" />
           <NavigationProperty Name="MatRecDet" Relationship="BaseModel.FK_MATRECDET_MATRECIPE" FromRole="MatRecipe" ToRole="MatRecDet" />
+          <NavigationProperty Name="MatRecipeTechProcDet" Relationship="BaseModel.FK_MatRecipeTechProcDet_MatRecipe" FromRole="MatRecipe" ToRole="MatRecipeTechProcDet" />
         </EntityType>
         <EntityType Name="WayBillMake">
           <Key>
@@ -8409,6 +8444,7 @@
             <PropertyRef Name="Out" />
             <PropertyRef Name="ProcId" />
             <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Num" />
           </Key>
           <Property Type="Int32" Name="DetId" Nullable="false" />
           <Property Type="Int32" Name="WbillId" Nullable="false" />
@@ -8419,6 +8455,7 @@
           <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
           <Property Type="String" Name="Name" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="PersonName" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Num" Nullable="false" />
         </EntityType>
         <EntityType Name="Measures">
           <Key>
@@ -10042,7 +10079,6 @@
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY" FromRole="WaybillList" ToRole="Currency" />
           <NavigationProperty Name="DeboningDet" Relationship="BaseModel.FK_DEBONINGDET_WAYBILLLIST" FromRole="WaybillList" ToRole="DeboningDet" />
           <NavigationProperty Name="Docs" Relationship="BaseModel.FK_WAYBILLL_REF_WBL_D_DOCS" FromRole="WaybillList" ToRole="Docs" />
-          <NavigationProperty Name="TechProcDet" Relationship="BaseModel.FK_TECHPROCDET_WAYBILLLIST" FromRole="WaybillList" ToRole="TechProcDet" />
           <NavigationProperty Name="WayBillMake" Relationship="BaseModel.FK_WAYBILLMAKE_WAYBILLLIST" FromRole="WaybillList" ToRole="WayBillMake" />
           <NavigationProperty Name="WaybillMove" Relationship="BaseModel.FK_WBM_WBILLID" FromRole="WaybillList" ToRole="WaybillMove" />
           <NavigationProperty Name="WayBillSvc" Relationship="BaseModel.FK_WBS_WBILLID" FromRole="WaybillList" ToRole="WayBillSvc" />
@@ -10052,6 +10088,7 @@
           <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" FromRole="WaybillList" ToRole="Kagent" />
           <NavigationProperty Name="Kagent2" Relationship="BaseModel.FK_WBL_ENTID" FromRole="WaybillList" ToRole="Kagent" />
           <NavigationProperty Name="WayBillDetAddProps" Relationship="BaseModel.FK_WAYBILLDETADDPROPS_WBILLID" FromRole="WaybillList" ToRole="WayBillDetAddProps" />
+          <NavigationProperty Name="TechProcDet" Relationship="BaseModel.FK_TECHPROCDET_WAYBILLLIST" FromRole="WaybillList" ToRole="TechProcDet" />
         </EntityType>
         <Association Name="FK_WAYBILLL_FK_WBLIST_CURRENCY">
           <End Type="BaseModel.Currency" Role="Currency" Multiplicity="0..1" />
@@ -10100,20 +10137,6 @@
             </Principal>
             <Dependent Role="OperLog">
               <PropertyRef Name="TabId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TECHPROCDET_WAYBILLLIST">
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.TechProcDet" Role="TechProcDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillList">
-              <PropertyRef Name="WbillId" />
-            </Principal>
-            <Dependent Role="TechProcDet">
-              <PropertyRef Name="WbillId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -10519,13 +10542,13 @@
           <NavigationProperty Name="KAgentPersons" Relationship="BaseModel.FK_AP_KAID" FromRole="Kagent" ToRole="KAgentPersons" />
           <NavigationProperty Name="Users" Relationship="BaseModel.FK_Kagent_Users" FromRole="Kagent" ToRole="Users" />
           <NavigationProperty Name="TAXWB1" Relationship="BaseModel.FK_TAXWB_REFERENCE_KAGENT" FromRole="Kagent" ToRole="TAXWB" />
-          <NavigationProperty Name="TechProcDet" Relationship="BaseModel.FK_TECHPROCDET_KAGENT" FromRole="Kagent" ToRole="TechProcDet" />
           <NavigationProperty Name="WaybillList1" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" FromRole="Kagent" ToRole="WaybillList" />
           <NavigationProperty Name="WayBillMake" Relationship="BaseModel.FK_WAYBILLMAKE_KAGENT" FromRole="Kagent" ToRole="WayBillMake" />
           <NavigationProperty Name="WaybillList2" Relationship="BaseModel.FK_WBL_ENTID" FromRole="Kagent" ToRole="WaybillList" />
           <NavigationProperty Name="WayBillSvc" Relationship="BaseModel.FK_WBS_PERSONID" FromRole="Kagent" ToRole="WayBillSvc" />
           <NavigationProperty Name="Customers" Relationship="BaseModel.FK_Customers_Kagent" FromRole="Kagent" ToRole="Customers" />
           <NavigationProperty Name="KAgentSaldo" Relationship="BaseModel.FK_KAS_KAID" FromRole="Kagent" ToRole="KAgentSaldo" />
+          <NavigationProperty Name="TechProcDet" Relationship="BaseModel.FK_TECHPROCDET_KAGENT" FromRole="Kagent" ToRole="TechProcDet" />
         </EntityType>
         <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
@@ -10790,18 +10813,6 @@
             </Principal>
             <Dependent Role="TAXWB">
               <PropertyRef Name="KAID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TECHPROCDET_KAGENT">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.TechProcDet" Role="TechProcDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="TechProcDet">
-              <PropertyRef Name="PersonId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -11715,6 +11726,100 @@
             </Principal>
             <Dependent Role="WayBillDetTaxes">
               <PropertyRef Name="PosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MatRecipeTechProcDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="RecId" Nullable="false" />
+          <Property Type="Int32" Name="ProcId" Nullable="false" />
+          <Property Type="Int32" Name="Num" />
+          <Property Type="Decimal" Name="ExpectedOut" Precision="15" Scale="2" />
+          <NavigationProperty Name="MatRecipe" Relationship="BaseModel.FK_MatRecipeTechProcDet_MatRecipe" FromRole="MatRecipeTechProcDet" ToRole="MatRecipe" />
+          <NavigationProperty Name="TechProcess" Relationship="BaseModel.FK_MatRecipeTechProcDet_TechProcess" FromRole="MatRecipeTechProcDet" ToRole="TechProcess" />
+        </EntityType>
+        <Association Name="FK_MatRecipeTechProcDet_MatRecipe">
+          <End Type="BaseModel.MatRecipe" Role="MatRecipe" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.MatRecipeTechProcDet" Role="MatRecipeTechProcDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MatRecipe">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="MatRecipeTechProcDet">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MatRecipeTechProcDet_TechProcess">
+          <End Type="BaseModel.TechProcess" Role="TechProcess" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.MatRecipeTechProcDet" Role="MatRecipeTechProcDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechProcess">
+              <PropertyRef Name="ProcId" />
+            </Principal>
+            <Dependent Role="MatRecipeTechProcDet">
+              <PropertyRef Name="ProcId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TechProcDet">
+          <Key>
+            <PropertyRef Name="DetId" />
+          </Key>
+          <Property Type="Int32" Name="DetId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Num" Nullable="false" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
+          <Property Type="Decimal" Name="Out" Nullable="false" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="ProcId" Nullable="false" />
+          <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="PersonId" />
+          <Property Type="Int32" Name="WbillId" Nullable="false" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_TECHPROCDET_KAGENT" FromRole="TechProcDet" ToRole="Kagent" />
+          <NavigationProperty Name="TechProcess" Relationship="BaseModel.FK_TECHPROCDET_TECHPROCESS" FromRole="TechProcDet" ToRole="TechProcess" />
+          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_TECHPROCDET_WAYBILLLIST" FromRole="TechProcDet" ToRole="WaybillList" />
+        </EntityType>
+        <Association Name="FK_TECHPROCDET_KAGENT">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.TechProcDet" Role="TechProcDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="TechProcDet">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TECHPROCDET_TECHPROCESS">
+          <End Type="BaseModel.TechProcess" Role="TechProcess" Multiplicity="1" />
+          <End Type="BaseModel.TechProcDet" Role="TechProcDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechProcess">
+              <PropertyRef Name="ProcId" />
+            </Principal>
+            <Dependent Role="TechProcDet">
+              <PropertyRef Name="ProcId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TECHPROCDET_WAYBILLLIST">
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.TechProcDet" Role="TechProcDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="TechProcDet">
+              <PropertyRef Name="WbillId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -12784,19 +12889,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="TechProcDet">
-            <EntityTypeMapping TypeName="BaseModel.TechProcDet">
-              <MappingFragment StoreEntitySet="TechProcDet">
-                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="ProcId" ColumnName="ProcId" />
-                <ScalarProperty Name="Out" ColumnName="Out" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
-                <ScalarProperty Name="DetId" ColumnName="DetId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TechProcess">
             <EntityTypeMapping TypeName="BaseModel.TechProcess">
               <MappingFragment StoreEntitySet="TechProcess">
@@ -12842,6 +12934,7 @@
           <EntitySetMapping Name="v_TechProcDet">
             <EntityTypeMapping TypeName="BaseModel.v_TechProcDet">
               <MappingFragment StoreEntitySet="v_TechProcDet">
+                <ScalarProperty Name="Num" ColumnName="Num" />
                 <ScalarProperty Name="PersonName" ColumnName="PersonName" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="OnDate" ColumnName="OnDate" />
@@ -14817,6 +14910,31 @@
                 <ScalarProperty Name="OnValue" ColumnName="OnValue" />
                 <ScalarProperty Name="TaxId" ColumnName="TaxId" />
                 <ScalarProperty Name="PosId" ColumnName="PosId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MatRecipeTechProcDet">
+            <EntityTypeMapping TypeName="BaseModel.MatRecipeTechProcDet">
+              <MappingFragment StoreEntitySet="MatRecipeTechProcDet">
+                <ScalarProperty Name="ExpectedOut" ColumnName="ExpectedOut" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="ProcId" ColumnName="ProcId" />
+                <ScalarProperty Name="RecId" ColumnName="RecId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TechProcDet">
+            <EntityTypeMapping TypeName="BaseModel.TechProcDet">
+              <MappingFragment StoreEntitySet="TechProcDet">
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="ProcId" ColumnName="ProcId" />
+                <ScalarProperty Name="Out" ColumnName="Out" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="DetId" ColumnName="DetId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

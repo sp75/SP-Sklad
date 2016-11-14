@@ -23,5 +23,6 @@ namespace SP_Sklad.SkladData
         public System.DateTime OnDate { get; set; }
         public string Name { get; set; }
         public string PersonName { get; set; }
+        public int Num { get; set; }
     }
 }

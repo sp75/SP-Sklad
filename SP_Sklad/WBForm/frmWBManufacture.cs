@@ -140,6 +140,7 @@ namespace SP_Sklad.WBForm
             WaybillDetOutBS.DataSource = wbd_list;
             WaybillDetOutGridView.TopRowIndex = top_row;
 
+            TechProcGridControl.DataSource = _db.v_TechProcDet.Where(w => w.WbillId == _wbill_id).OrderBy(o => o.Num).ToList();
             GetOk();
         }
 

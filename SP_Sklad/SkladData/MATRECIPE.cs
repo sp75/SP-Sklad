@@ -18,6 +18,7 @@ namespace SP_Sklad.SkladData
         {
             this.WayBillMake = new HashSet<WayBillMake>();
             this.MatRecDet = new HashSet<MatRecDet>();
+            this.MatRecipeTechProcDet = new HashSet<MatRecipeTechProcDet>();
         }
     
         public int RecId { get; set; }
@@ -32,5 +33,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<WayBillMake> WayBillMake { get; set; }
         public virtual Materials Materials { get; set; }
         public virtual ICollection<MatRecDet> MatRecDet { get; set; }
+        public virtual ICollection<MatRecipeTechProcDet> MatRecipeTechProcDet { get; set; }
     }
 }

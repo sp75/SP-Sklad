@@ -343,6 +343,9 @@
     <Compile Include="SkladData\MatPrices.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\MatRecipeTechProcDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\MatRemainByWh_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -353,6 +356,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\REP_31_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\TechProcDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_MatRemains.cs">
@@ -982,9 +988,6 @@
     <Compile Include="SkladData\TAXWBDET.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\TechProcDet.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SkladData\TechProcess.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1429,6 +1432,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatPrices.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatRecDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatRecipe.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.MatRecipeTechProcDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Measures.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MoneyMoveList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MoneyTurnover_Result.datasource" />

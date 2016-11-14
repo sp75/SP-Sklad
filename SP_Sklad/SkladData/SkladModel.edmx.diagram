@@ -68,9 +68,7 @@
         <AssociationConnector Association="BaseModel.FK__POSREMAINS__WID__2EA5EC27" />
         <EntityTypeShape EntityType="BaseModel.TAXWBDET" Width="1.5" PointX="14.25" PointY="19.75" />
         <AssociationConnector Association="BaseModel.FK_TAXWBDET_TWBID" />
-        <EntityTypeShape EntityType="BaseModel.TechProcDet" Width="1.5" PointX="9.2934470536622431" PointY="3.208896668259472" />
         <EntityTypeShape EntityType="BaseModel.TechProcess" Width="1.5" PointX="5.5697671219565752" PointY="3.39031969168704" />
-        <AssociationConnector Association="BaseModel.FK_TECHPROCDET_TECHPROCESS" />
         <EntityTypeShape EntityType="BaseModel.MatRecipe" Width="1.5" PointX="4.8261468730988666" PointY="18.037040942365788" />
         <EntityTypeShape EntityType="BaseModel.WayBillMake" Width="1.5" PointX="4.642107151747731" PointY="31.026654645347342" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLMAKE_MATRECIPE" />
@@ -147,7 +145,6 @@
         <AssociationConnector Association="BaseModel.FK_DEBONINGDET_WAYBILLLIST" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLL_REF_WBL_D_DOCS" />
         <AssociationConnector Association="BaseModel.FK__OPERLOG__TABID__0D44F85C" />
-        <AssociationConnector Association="BaseModel.FK_TECHPROCDET_WAYBILLLIST" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLMAKE_WAYBILLLIST" />
         <AssociationConnector Association="BaseModel.FK_WBM_WBILLID" />
         <AssociationConnector Association="BaseModel.FK_WBS_WBILLID" />
@@ -195,7 +192,6 @@
         <AssociationConnector Association="BaseModel.FK_AP_KAID" />
         <AssociationConnector Association="BaseModel.FK_Kagent_Users" />
         <AssociationConnector Association="BaseModel.FK_TAXWB_REFERENCE_KAGENT" />
-        <AssociationConnector Association="BaseModel.FK_TECHPROCDET_KAGENT" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLMAKE_KAGENT" />
         <AssociationConnector Association="BaseModel.FK_WBL_ENTID" />
@@ -242,6 +238,13 @@
         <EntityTypeShape EntityType="BaseModel.WayBillDetTaxes" Width="1.5" PointX="10.735154879621769" PointY="12.478906681984155" />
         <AssociationConnector Association="BaseModel.FK_WBDTAXES_TAXID" />
         <AssociationConnector Association="BaseModel.FK_WBDTAXES_POSID" />
+        <EntityTypeShape EntityType="BaseModel.MatRecipeTechProcDet" Width="1.5" PointX="3.2621044550380223" PointY="19.9043157640399" />
+        <AssociationConnector Association="BaseModel.FK_MatRecipeTechProcDet_MatRecipe" />
+        <AssociationConnector Association="BaseModel.FK_MatRecipeTechProcDet_TechProcess" />
+        <EntityTypeShape EntityType="BaseModel.TechProcDet" Width="1.5" PointX="0.12183602532457376" PointY="26.9955542511286" />
+        <AssociationConnector Association="BaseModel.FK_TECHPROCDET_KAGENT" />
+        <AssociationConnector Association="BaseModel.FK_TECHPROCDET_TECHPROCESS" />
+        <AssociationConnector Association="BaseModel.FK_TECHPROCDET_WAYBILLLIST" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="7.0245045325832924" PointY="12.641712000892364" />

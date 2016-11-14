@@ -34,13 +34,13 @@ namespace SP_Sklad.SkladData
             this.KAgentAccount = new HashSet<KAgentAccount>();
             this.KAgentPersons = new HashSet<KAgentPersons>();
             this.TAXWB1 = new HashSet<TAXWB>();
-            this.TechProcDet = new HashSet<TechProcDet>();
             this.WaybillList1 = new HashSet<WaybillList>();
             this.WayBillMake = new HashSet<WayBillMake>();
             this.WaybillList2 = new HashSet<WaybillList>();
             this.WayBillSvc = new HashSet<WayBillSvc>();
             this.Customers = new HashSet<Customers>();
             this.KAgentSaldo = new HashSet<KAgentSaldo>();
+            this.TechProcDet = new HashSet<TechProcDet>();
         }
     
         public int KaId { get; set; }
@@ -94,12 +94,12 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<KAgentPersons> KAgentPersons { get; set; }
         public virtual Users Users { get; set; }
         public virtual ICollection<TAXWB> TAXWB1 { get; set; }
-        public virtual ICollection<TechProcDet> TechProcDet { get; set; }
         public virtual ICollection<WaybillList> WaybillList1 { get; set; }
         public virtual ICollection<WayBillMake> WayBillMake { get; set; }
         public virtual ICollection<WaybillList> WaybillList2 { get; set; }
         public virtual ICollection<WayBillSvc> WayBillSvc { get; set; }
         public virtual ICollection<Customers> Customers { get; set; }
         public virtual ICollection<KAgentSaldo> KAgentSaldo { get; set; }
+        public virtual ICollection<TechProcDet> TechProcDet { get; set; }
     }
 }

@@ -285,10 +285,13 @@ namespace SP_Sklad.MainTabs
                             break;
 
                         case 42:
-                        case 53:
                             dynamic r_item = MatRecipeGridView.GetFocusedRow();
-                            result = new frmMatRecipe(null, r_item.RecId).ShowDialog();
+                            result = new frmMatRecipe(2, r_item.RecId).ShowDialog();
+                            break;
 
+                        case 53:
+                            dynamic ob_item = MatRecipeGridView.GetFocusedRow();
+                            result = new frmMatRecipe(1, ob_item.RecId).ShowDialog();
                             break;
 
                         case 112:

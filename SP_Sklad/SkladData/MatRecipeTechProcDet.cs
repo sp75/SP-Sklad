@@ -12,19 +12,15 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class TechProcDet
+    public partial class MatRecipeTechProcDet
     {
-        public int DetId { get; set; }
-        public int Num { get; set; }
-        public System.DateTime OnDate { get; set; }
-        public decimal Out { get; set; }
+        public int Id { get; set; }
+        public int RecId { get; set; }
         public int ProcId { get; set; }
-        public string Notes { get; set; }
-        public Nullable<int> PersonId { get; set; }
-        public int WbillId { get; set; }
+        public Nullable<int> Num { get; set; }
+        public Nullable<decimal> ExpectedOut { get; set; }
     
-        public virtual Kagent Kagent { get; set; }
+        public virtual MatRecipe MatRecipe { get; set; }
         public virtual TechProcess TechProcess { get; set; }
-        public virtual WaybillList WaybillList { get; set; }
     }
 }

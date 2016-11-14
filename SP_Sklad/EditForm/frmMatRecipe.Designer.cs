@@ -102,9 +102,23 @@
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
+            this.AddTecProcDetBtn = new DevExpress.XtraEditors.SimpleButton();
+            this.DelTecProcDetBtn = new DevExpress.XtraEditors.SimpleButton();
+            this.EditTecProcDetBtn = new DevExpress.XtraEditors.SimpleButton();
+            this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
+            this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.simpleButton9 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton10 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton12 = new DevExpress.XtraEditors.SimpleButton();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton13 = new DevExpress.XtraEditors.SimpleButton();
+            this.calcEdit3 = new DevExpress.XtraEditors.CalcEdit();
+            this.MatRecipeTechProcDetBS = new System.Windows.Forms.BindingSource(this.components);
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.calcEdit4 = new DevExpress.XtraEditors.CalcEdit();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.TechProcLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeBindingSource)).BeginInit();
@@ -145,6 +159,15 @@
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecTechProcGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecTechProcGridView)).BeginInit();
+            this.xtraTabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
+            this.groupControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatRecipeTechProcDetBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit4.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TechProcLookUpEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -355,7 +378,8 @@
             this.xtraTabPage1,
             this.xtraTabPage4,
             this.xtraTabPage14,
-            this.xtraTabPage2});
+            this.xtraTabPage2,
+            this.xtraTabPage3});
             // 
             // xtraTabPage1
             // 
@@ -835,14 +859,14 @@
             this.xtraTabPage2.Controls.Add(this.groupControl1);
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(618, 356);
-            this.xtraTabPage2.Text = "Тех проц";
+            this.xtraTabPage2.Text = "Тех процеси";
             // 
             // groupControl1
             // 
             this.groupControl1.Controls.Add(this.MatRecTechProcGridControl);
-            this.groupControl1.Controls.Add(this.simpleButton3);
-            this.groupControl1.Controls.Add(this.simpleButton5);
-            this.groupControl1.Controls.Add(this.simpleButton8);
+            this.groupControl1.Controls.Add(this.AddTecProcDetBtn);
+            this.groupControl1.Controls.Add(this.DelTecProcDetBtn);
+            this.groupControl1.Controls.Add(this.EditTecProcDetBtn);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
@@ -876,6 +900,7 @@
             this.MatRecTechProcGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.MatRecTechProcGridView.OptionsBehavior.Editable = false;
             this.MatRecTechProcGridView.OptionsView.ShowGroupPanel = false;
+            this.MatRecTechProcGridView.DoubleClick += new System.EventHandler(this.MatRecTechProcGridView_DoubleClick);
             // 
             // gridColumn5
             // 
@@ -911,32 +936,197 @@
             this.gridColumn8.VisibleIndex = 0;
             this.gridColumn8.Width = 79;
             // 
-            // simpleButton3
+            // AddTecProcDetBtn
             // 
-            this.simpleButton3.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.Image")));
-            this.simpleButton3.Location = new System.Drawing.Point(20, 32);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(106, 23);
-            this.simpleButton3.TabIndex = 14;
-            this.simpleButton3.Text = "Додати...";
+            this.AddTecProcDetBtn.Image = ((System.Drawing.Image)(resources.GetObject("AddTecProcDetBtn.Image")));
+            this.AddTecProcDetBtn.Location = new System.Drawing.Point(20, 32);
+            this.AddTecProcDetBtn.Name = "AddTecProcDetBtn";
+            this.AddTecProcDetBtn.Size = new System.Drawing.Size(106, 23);
+            this.AddTecProcDetBtn.TabIndex = 14;
+            this.AddTecProcDetBtn.Text = "Додати...";
+            this.AddTecProcDetBtn.Click += new System.EventHandler(this.AddTecProcDetBtn_Click);
             // 
-            // simpleButton5
+            // DelTecProcDetBtn
             // 
-            this.simpleButton5.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton5.Image")));
-            this.simpleButton5.Location = new System.Drawing.Point(244, 32);
-            this.simpleButton5.Name = "simpleButton5";
-            this.simpleButton5.Size = new System.Drawing.Size(101, 23);
-            this.simpleButton5.TabIndex = 13;
-            this.simpleButton5.Text = "Видалити";
+            this.DelTecProcDetBtn.Image = ((System.Drawing.Image)(resources.GetObject("DelTecProcDetBtn.Image")));
+            this.DelTecProcDetBtn.Location = new System.Drawing.Point(244, 32);
+            this.DelTecProcDetBtn.Name = "DelTecProcDetBtn";
+            this.DelTecProcDetBtn.Size = new System.Drawing.Size(101, 23);
+            this.DelTecProcDetBtn.TabIndex = 13;
+            this.DelTecProcDetBtn.Text = "Видалити";
+            this.DelTecProcDetBtn.Click += new System.EventHandler(this.DelTecProcDetBtn_Click);
             // 
-            // simpleButton8
+            // EditTecProcDetBtn
             // 
-            this.simpleButton8.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton8.Image")));
-            this.simpleButton8.Location = new System.Drawing.Point(132, 32);
-            this.simpleButton8.Name = "simpleButton8";
-            this.simpleButton8.Size = new System.Drawing.Size(106, 23);
-            this.simpleButton8.TabIndex = 12;
-            this.simpleButton8.Text = "Властивості";
+            this.EditTecProcDetBtn.Image = ((System.Drawing.Image)(resources.GetObject("EditTecProcDetBtn.Image")));
+            this.EditTecProcDetBtn.Location = new System.Drawing.Point(132, 32);
+            this.EditTecProcDetBtn.Name = "EditTecProcDetBtn";
+            this.EditTecProcDetBtn.Size = new System.Drawing.Size(106, 23);
+            this.EditTecProcDetBtn.TabIndex = 12;
+            this.EditTecProcDetBtn.Text = "Властивості";
+            this.EditTecProcDetBtn.Click += new System.EventHandler(this.EditTecProcDetBtn_Click);
+            // 
+            // xtraTabPage3
+            // 
+            this.xtraTabPage3.Controls.Add(this.groupControl3);
+            this.xtraTabPage3.Name = "xtraTabPage3";
+            this.xtraTabPage3.Size = new System.Drawing.Size(618, 356);
+            this.xtraTabPage3.Text = "Процес";
+            // 
+            // groupControl3
+            // 
+            this.groupControl3.Controls.Add(this.simpleButton9);
+            this.groupControl3.Controls.Add(this.simpleButton10);
+            this.groupControl3.Controls.Add(this.simpleButton12);
+            this.groupControl3.Controls.Add(this.panelControl1);
+            this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl3.Location = new System.Drawing.Point(0, 0);
+            this.groupControl3.Name = "groupControl3";
+            this.groupControl3.Size = new System.Drawing.Size(618, 356);
+            this.groupControl3.TabIndex = 18;
+            this.groupControl3.Tag = "";
+            this.groupControl3.Text = "Сировина";
+            // 
+            // simpleButton9
+            // 
+            this.simpleButton9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton9.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton9.Image")));
+            this.simpleButton9.ImageList = this.ImageList;
+            this.simpleButton9.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton9.Location = new System.Drawing.Point(576, 32);
+            this.simpleButton9.Name = "simpleButton9";
+            this.simpleButton9.Size = new System.Drawing.Size(21, 22);
+            this.simpleButton9.TabIndex = 52;
+            this.simpleButton9.ToolTip = "Повернутися до списку";
+            this.simpleButton9.Click += new System.EventHandler(this.simpleButton9_Click);
+            // 
+            // simpleButton10
+            // 
+            this.simpleButton10.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton10.Image")));
+            this.simpleButton10.Location = new System.Drawing.Point(20, 31);
+            this.simpleButton10.Name = "simpleButton10";
+            this.simpleButton10.Size = new System.Drawing.Size(106, 23);
+            this.simpleButton10.TabIndex = 51;
+            this.simpleButton10.Text = "Додати...";
+            this.simpleButton10.Click += new System.EventHandler(this.AddTecProcDetBtn_Click);
+            // 
+            // simpleButton12
+            // 
+            this.simpleButton12.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton12.Image")));
+            this.simpleButton12.Location = new System.Drawing.Point(132, 31);
+            this.simpleButton12.Name = "simpleButton12";
+            this.simpleButton12.Size = new System.Drawing.Size(101, 23);
+            this.simpleButton12.TabIndex = 50;
+            this.simpleButton12.Text = "Видалити";
+            this.simpleButton12.Click += new System.EventHandler(this.simpleButton12_Click);
+            // 
+            // panelControl1
+            // 
+            this.panelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelControl1.Controls.Add(this.simpleButton13);
+            this.panelControl1.Controls.Add(this.calcEdit3);
+            this.panelControl1.Controls.Add(this.labelControl5);
+            this.panelControl1.Controls.Add(this.calcEdit4);
+            this.panelControl1.Controls.Add(this.labelControl7);
+            this.panelControl1.Controls.Add(this.labelControl8);
+            this.panelControl1.Controls.Add(this.TechProcLookUpEdit);
+            this.panelControl1.Location = new System.Drawing.Point(20, 69);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(577, 266);
+            this.panelControl1.TabIndex = 49;
+            // 
+            // simpleButton13
+            // 
+            this.simpleButton13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton13.ImageIndex = 7;
+            this.simpleButton13.ImageList = this.ImageList;
+            this.simpleButton13.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton13.Location = new System.Drawing.Point(537, 60);
+            this.simpleButton13.Name = "simpleButton13";
+            this.simpleButton13.Size = new System.Drawing.Size(22, 22);
+            this.simpleButton13.TabIndex = 53;
+            this.simpleButton13.ToolTip = "Повернутися до списку";
+            this.simpleButton13.Click += new System.EventHandler(this.simpleButton13_Click);
+            // 
+            // calcEdit3
+            // 
+            this.calcEdit3.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecipeTechProcDetBS, "Num", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.calcEdit3.Location = new System.Drawing.Point(79, 24);
+            this.calcEdit3.Name = "calcEdit3";
+            this.calcEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.calcEdit3.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.calcEdit3.Size = new System.Drawing.Size(74, 22);
+            this.calcEdit3.StyleController = this.styleController1;
+            this.calcEdit3.TabIndex = 48;
+            // 
+            // MatRecipeTechProcDetBS
+            // 
+            this.MatRecipeTechProcDetBS.DataSource = typeof(SP_Sklad.SkladData.MatRecipeTechProcDet);
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Location = new System.Drawing.Point(23, 27);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(37, 16);
+            this.labelControl5.StyleController = this.styleController1;
+            this.labelControl5.TabIndex = 47;
+            this.labelControl5.Text = "Номер";
+            // 
+            // calcEdit4
+            // 
+            this.calcEdit4.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecipeTechProcDetBS, "ExpectedOut", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.calcEdit4.Location = new System.Drawing.Point(79, 98);
+            this.calcEdit4.Name = "calcEdit4";
+            this.calcEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.calcEdit4.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.calcEdit4.Size = new System.Drawing.Size(158, 22);
+            this.calcEdit4.StyleController = this.styleController1;
+            this.calcEdit4.TabIndex = 46;
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Location = new System.Drawing.Point(23, 101);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(50, 16);
+            this.labelControl7.StyleController = this.styleController1;
+            this.labelControl7.TabIndex = 38;
+            this.labelControl7.Text = "Вихід, %";
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Location = new System.Drawing.Point(23, 63);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(40, 16);
+            this.labelControl8.StyleController = this.styleController1;
+            this.labelControl8.TabIndex = 36;
+            this.labelControl8.Text = "Назва:";
+            // 
+            // TechProcLookUpEdit
+            // 
+            this.TechProcLookUpEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TechProcLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecipeTechProcDetBS, "ProcId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.TechProcLookUpEdit.Location = new System.Drawing.Point(79, 60);
+            this.TechProcLookUpEdit.Name = "TechProcLookUpEdit";
+            this.TechProcLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.TechProcLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name1")});
+            this.TechProcLookUpEdit.Properties.DisplayMember = "Name";
+            this.TechProcLookUpEdit.Properties.NullText = "";
+            this.TechProcLookUpEdit.Properties.PopupSizeable = false;
+            this.TechProcLookUpEdit.Properties.ShowFooter = false;
+            this.TechProcLookUpEdit.Properties.ShowHeader = false;
+            this.TechProcLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.TechProcLookUpEdit.Properties.ValueMember = "ProcId";
+            this.TechProcLookUpEdit.Size = new System.Drawing.Size(452, 22);
+            this.TechProcLookUpEdit.StyleController = this.styleController1;
+            this.TechProcLookUpEdit.TabIndex = 37;
+            this.TechProcLookUpEdit.EditValueChanged += new System.EventHandler(this.TechProcLookUpEdit_EditValueChanged);
             // 
             // frmMatRecipe
             // 
@@ -1001,6 +1191,16 @@
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MatRecTechProcGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecTechProcGridView)).EndInit();
+            this.xtraTabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
+            this.groupControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatRecipeTechProcDetBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit4.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TechProcLookUpEdit.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1074,14 +1274,28 @@
         private System.Windows.Forms.BindingSource MatRecDetBS;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
-        private DevExpress.XtraEditors.SimpleButton simpleButton5;
-        private DevExpress.XtraEditors.SimpleButton simpleButton8;
+        private DevExpress.XtraEditors.SimpleButton AddTecProcDetBtn;
+        private DevExpress.XtraEditors.SimpleButton DelTecProcDetBtn;
+        private DevExpress.XtraEditors.SimpleButton EditTecProcDetBtn;
         private DevExpress.XtraGrid.GridControl MatRecTechProcGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView MatRecTechProcGridView;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
+        private DevExpress.XtraEditors.GroupControl groupControl3;
+        private DevExpress.XtraEditors.SimpleButton simpleButton9;
+        private DevExpress.XtraEditors.SimpleButton simpleButton10;
+        private DevExpress.XtraEditors.SimpleButton simpleButton12;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton13;
+        private DevExpress.XtraEditors.CalcEdit calcEdit3;
+        private System.Windows.Forms.BindingSource MatRecipeTechProcDetBS;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraEditors.CalcEdit calcEdit4;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraEditors.LookUpEdit TechProcLookUpEdit;
     }
 }

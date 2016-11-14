@@ -31,15 +31,20 @@ namespace SP_Sklad.EditForm
             _db = DB.SkladBase();
             current_transaction = _db.Database.BeginTransaction();
             tree = new List<CatalogTreeList>();
-        }
+            TechProcLookUpEdit.Properties.DataSource = _db.TechProcess.ToList();
+
+        } 
 
         private void frmMatRecipe_Load(object sender, EventArgs e)
         {
             xtraTabControl1.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
 
-            tree.Add(new CatalogTreeList { Id = -2, ParentId = -2, Text = "Основна інформація", ImgIdx = 0, TabIdx = 0 });
-            tree.Add(new CatalogTreeList { Id = 0, ParentId = -1, Text = "Позиції", ImgIdx = 1, TabIdx = 1 });
-            tree.Add(new CatalogTreeList { Id = 1, ParentId = 1, Text = "Технологічні процеси", ImgIdx = 7, TabIdx = 1 });
+            tree.Add(new CatalogTreeList { Id = -2, ParentId = -255, Text = "Основна інформація", ImgIdx = 0, TabIdx = 0 });
+            tree.Add(new CatalogTreeList { Id = 0, ParentId = -255, Text = "Позиції", ImgIdx = 1, TabIdx = 1 });
+            if (_r_type == 1)
+            {
+                tree.Add(new CatalogTreeList { Id = 1, ParentId = -255, Text = "Технологічні процеси", ImgIdx = 7, TabIdx = 3 });
+            }
 
 
             TreeListBindingSource.DataSource = tree;
@@ -68,6 +73,7 @@ namespace SP_Sklad.EditForm
 
                 MatRecipeBindingSource.DataSource = _mr;
                 GetRecDetail();
+                GetTechProcDetail();
             }
         }
 
@@ -93,6 +99,11 @@ namespace SP_Sklad.EditForm
                 MatRecDetBS.DataSource = _db.MatRecDet.Find(focused_tree_node.DataSetId);
             }
 
+            if (focused_tree_node.ParentId == 1)
+            {
+                MatRecipeTechProcDetBS.DataSource = _db.MatRecipeTechProcDet.Find(focused_tree_node.DataSetId);
+            }
+
             if (focused_tree_node.Id == 0)
             {
                 var list = _db.MatRecDet.Where(w => w.RecId == _mr.RecId).Select(s => new
@@ -106,6 +117,19 @@ namespace SP_Sklad.EditForm
                 }).ToList();
                 MatRecDetGridControl.DataSource = list;
             }
+
+            if (focused_tree_node.Id == 1)
+            {
+                MatRecTechProcGridControl.DataSource = _db.MatRecipeTechProcDet.Where(w => w.RecId == _mr.RecId).Select(s => new
+                {
+                    s.Id,
+                    s.Num,
+                    s.ExpectedOut,
+                    s.TechProcess.Name,
+                    s.ProcId
+                }).OrderBy(o => o.Num).ToList(); 
+            }
+
 
             xtraTabControl1.SelectedTabPageIndex = focused_tree_node.TabIdx;
         }
@@ -128,7 +152,7 @@ namespace SP_Sklad.EditForm
             {
                 tree.Add(new CatalogTreeList
                 {
-                    Id = tree.Count + 1, //item.DetId,
+                    Id = tree.Max(m => m.Id) + 1,
                     ParentId = 0,
                     Text = item.Name,
                     ImgIdx = 2,
@@ -141,15 +165,50 @@ namespace SP_Sklad.EditForm
             DirTreeList.ExpandAll();
         }
 
-        private void GetTechProc()
+        private void GetTechProcDetail()
         {
-         //   MatRecTechProcGridControl
+            var list = _db.MatRecipeTechProcDet.Where(w => w.RecId == _mr.RecId).Select(s => new
+            {
+                s.Id,
+                s.Num,
+                s.ExpectedOut,
+                s.TechProcess.Name,
+                s.ProcId
+            }).OrderBy(o=> o.Num).ToList();
+
+            MatRecTechProcGridControl.DataSource = list;
+
+            tree.RemoveAll(r => r.ParentId == 1);
+            foreach (var item in list)
+            {
+                tree.Add(new CatalogTreeList
+                {
+                    Id = tree.Max(m=> m.Id) + 1, 
+                    ParentId = 1,
+                    Text = item.Name,
+                    ImgIdx = 2,
+                    TabIdx = 4,
+                    DataSetId = item.Id
+                });
+            }
+
+            DirTreeList.DataSource = null;
+            DirTreeList.DataSource = TreeListBindingSource;
+
+            DirTreeList.RefreshDataSource();
+            DirTreeList.ExpandAll();
         }
 
         private void AddRecDetBtn_Click(object sender, EventArgs e)
         {
             xtraTabControl1.SelectedTabPageIndex = 2;
-            var new_det = _db.MatRecDet.Add(new MatRecDet { RecId = _mr.RecId, Amount = 0, Coefficient = 0, MatId = DB.SkladBase().MaterialsList.FirstOrDefault().MatId });
+            var new_det = _db.MatRecDet.Add(new MatRecDet
+            {
+                RecId = _mr.RecId,
+                Amount = 0,
+                Coefficient = 0,
+                MatId = DB.SkladBase().MaterialsList.FirstOrDefault().MatId
+            });
             MatRecDetBS.DataSource = new_det;
             _db.SaveChanges();
             GetRecDetail();
@@ -176,7 +235,7 @@ namespace SP_Sklad.EditForm
             xtraTabControl1.SelectedTabPageIndex = 2;
             MatRecDetBS.DataSource = _db.MatRecDet.Find(det_item.DetId);
 
-            DirTreeList.FocusedNode = DirTreeList.GetNodeList().FirstOrDefault(w => Convert.ToInt32(w.GetValue("DataSetId")) == det_item.DetId);
+            DirTreeList.FocusedNode = DirTreeList.GetNodeList().FirstOrDefault(w => Convert.ToInt32(w.GetValue("DataSetId")) == det_item.DetId && Convert.ToInt32(w.GetValue("ParentId")) == 0);
         }
 
         private void MatRecDetGridView_DoubleClick(object sender, EventArgs e)
@@ -207,7 +266,6 @@ namespace SP_Sklad.EditForm
 
         private void simpleButton11_Click(object sender, EventArgs e)
         {
-
             DirTreeList.FocusedNode = DirTreeList.GetNodeList().FirstOrDefault(w => Convert.ToInt32(w.GetValue("Id")) == 0);
         }
 
@@ -260,6 +318,81 @@ namespace SP_Sklad.EditForm
         private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             IHelper.ShowMatRSV((int)MatRecLookUpEdit.EditValue, _db);
+        }
+
+        private void EditTecProcDetBtn_Click(object sender, EventArgs e)
+        {
+            dynamic det_item = MatRecTechProcGridView.GetFocusedRow();
+            if (det_item == null) return;
+
+            xtraTabControl1.SelectedTabPageIndex = 4;
+            MatRecipeTechProcDetBS.DataSource = _db.MatRecipeTechProcDet.Find(det_item.Id);
+
+            DirTreeList.FocusedNode = DirTreeList.GetNodeList().FirstOrDefault(w => Convert.ToInt32(w.GetValue("DataSetId")) == det_item.Id && Convert.ToInt32(w.GetValue("ParentId")) == 1);
+        }
+
+        private void AddTecProcDetBtn_Click(object sender, EventArgs e)
+        {
+            xtraTabControl1.SelectedTabPageIndex = 4;
+            var new_det = _db.MatRecipeTechProcDet.Add(new MatRecipeTechProcDet
+            {
+                RecId = _mr.RecId,
+                 Num =  _db.MatRecipeTechProcDet.Count(w=> w.RecId ==_mr.RecId ) +1,
+                  ExpectedOut = 100,
+                ProcId = DB.SkladBase().TechProcess.FirstOrDefault().ProcId
+            });
+            MatRecipeTechProcDetBS.DataSource = new_det;
+            _db.SaveChanges();
+            GetTechProcDetail();
+
+            DirTreeList.FocusedNode = DirTreeList.GetNodeList().FirstOrDefault(w => Convert.ToInt32(w.GetValue("DataSetId")) == new_det.Id);
+        }
+
+        private void DelTecProcDetBtn_Click(object sender, EventArgs e)
+        {
+            dynamic det_item = MatRecTechProcGridView.GetFocusedRow();
+            if (det_item == null) return;
+
+            _db.MatRecipeTechProcDet.Remove(_db.MatRecipeTechProcDet.Find(det_item.Id));
+            _db.SaveChanges();
+
+            GetTechProcDetail();
+            simpleButton9.PerformClick();
+        }
+
+        private void MatRecTechProcGridView_DoubleClick(object sender, EventArgs e)
+        {
+            EditTecProcDetBtn.PerformClick();
+        }
+
+        private void simpleButton9_Click(object sender, EventArgs e)
+        {
+            DirTreeList.FocusedNode = DirTreeList.FindNodeByFieldValue("Id" , 1);
+        }
+
+        private void simpleButton12_Click(object sender, EventArgs e)
+        {
+            _db.MatRecipeTechProcDet.Remove(MatRecipeTechProcDetBS.DataSource as MatRecipeTechProcDet);
+            _db.SaveChanges();
+
+            GetTechProcDetail();
+            simpleButton9.PerformClick();
+        }
+
+        private void TechProcLookUpEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            if (TechProcLookUpEdit.ContainsFocus)
+            {
+                var rd = MatRecipeTechProcDetBS.DataSource as MatRecipeTechProcDet;
+                rd.ProcId = Convert.ToInt32(TechProcLookUpEdit.EditValue);
+                _db.SaveChanges();
+                GetTechProcDetail();
+            }
+        }
+
+        private void simpleButton13_Click(object sender, EventArgs e)
+        {
+            TechProcLookUpEdit.EditValue = IHelper.ShowDirectList(TechProcLookUpEdit.EditValue, 14);
         }
 
     }

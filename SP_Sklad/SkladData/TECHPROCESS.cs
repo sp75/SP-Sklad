@@ -16,12 +16,14 @@ namespace SP_Sklad.SkladData
     {
         public TechProcess()
         {
+            this.MatRecipeTechProcDet = new HashSet<MatRecipeTechProcDet>();
             this.TechProcDet = new HashSet<TechProcDet>();
         }
     
         public int ProcId { get; set; }
         public string Name { get; set; }
     
+        public virtual ICollection<MatRecipeTechProcDet> MatRecipeTechProcDet { get; set; }
         public virtual ICollection<TechProcDet> TechProcDet { get; set; }
     }
 }

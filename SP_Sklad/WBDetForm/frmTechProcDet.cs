@@ -38,6 +38,7 @@ namespace SP_Sklad.WBDetForm
             {
                 tp_d = _db.TechProcDet.Add(new TechProcDet()
                 {
+                    Num = _db.TechProcDet.Where(w=> w.WbillId == _wbill_id).Max(m=> m.Num) +1,
                     WbillId = _wbill_id,
                     PersonId = DBHelper.CurrentUser.KaId,
                     OnDate = DateTime.Now,
@@ -47,6 +48,7 @@ namespace SP_Sklad.WBDetForm
             else
             {
                 tp_d = _db.TechProcDet.Find(_DetId.Value);
+                tp_d.PersonId = DBHelper.CurrentUser.KaId;
             }
 
             TechProcessCB.DataBindings.Add(new Binding("EditValue", tp_d, "ProcId", true, DataSourceUpdateMode.OnPropertyChanged));
@@ -54,6 +56,7 @@ namespace SP_Sklad.WBDetForm
             OnDateEdit.DataBindings.Add(new Binding("EditValue", tp_d, "OnDate", true, DataSourceUpdateMode.OnPropertyChanged));
             PersonComboBox.DataBindings.Add(new Binding("EditValue", tp_d, "PersonId", true, DataSourceUpdateMode.OnPropertyChanged));
             NotesTextEdit.DataBindings.Add(new Binding("EditValue", tp_d, "Notes", true, DataSourceUpdateMode.OnPropertyChanged));
+            NumEdit.DataBindings.Add(new Binding("EditValue", tp_d, "Num", true, DataSourceUpdateMode.OnPropertyChanged));
         }
 
         private void NowDateBtn_Click(object sender, EventArgs e)

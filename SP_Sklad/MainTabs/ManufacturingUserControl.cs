@@ -447,7 +447,7 @@ namespace SP_Sklad.MainTabs
             {
                 using (var db = DB.SkladBase())
                 {
-                    TechProcGridControl.DataSource = db.v_TechProcDet.Where(w => w.WbillId == focused_row.WbillId).OrderBy(o => o.OnDate).ToList();
+                    TechProcGridControl.DataSource = db.v_TechProcDet.Where(w => w.WbillId == focused_row.WbillId).OrderBy(o => o.Num).ToList();
                     gridControl2.DataSource = db.GetWayBillDetOut(focused_row.WbillId).ToList();
                     gridView2.ExpandAllGroups();
                     gridControl3.DataSource = db.GetRelDocList(focused_row.DocId).OrderBy(o=> o.OnDate).ToList();
