@@ -48,7 +48,8 @@ namespace SP_Sklad.EditForm
                 {
                     Name = "",
                     MId = DBHelper.MeasuresList.FirstOrDefault(w => w.Def == 1).MId,
-                    GrpId = _svc_grp.Value
+                    GrpId = _svc_grp.Value,
+                    Price = 0
                 });
             }
             else

@@ -105,6 +105,7 @@
             this.gridColumn44 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn45 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn46 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn76 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -211,7 +212,6 @@
             this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.gridColumn76 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -1219,6 +1219,15 @@
             this.gridColumn46.VisibleIndex = 5;
             this.gridColumn46.Width = 261;
             // 
+            // gridColumn76
+            // 
+            this.gridColumn76.Caption = "#";
+            this.gridColumn76.FieldName = "Num";
+            this.gridColumn76.Name = "gridColumn76";
+            this.gridColumn76.Visible = true;
+            this.gridColumn76.VisibleIndex = 0;
+            this.gridColumn76.Width = 85;
+            // 
             // xtraTabPage1
             // 
             this.xtraTabPage1.Controls.Add(this.gridControl2);
@@ -1278,6 +1287,8 @@
             // gridColumn11
             // 
             this.gridColumn11.Caption = "Кількість";
+            this.gridColumn11.DisplayFormat.FormatString = "0.0000";
+            this.gridColumn11.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn11.FieldName = "Amount";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
@@ -1296,6 +1307,8 @@
             // gridColumn13
             // 
             this.gridColumn13.Caption = "Ціна";
+            this.gridColumn13.DisplayFormat.FormatString = "0.00";
+            this.gridColumn13.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn13.FieldName = "Price";
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
@@ -2403,15 +2416,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
             this.BottomPopupMenu.Manager = this.barManager1;
             this.BottomPopupMenu.Name = "BottomPopupMenu";
-            // 
-            // gridColumn76
-            // 
-            this.gridColumn76.Caption = "#";
-            this.gridColumn76.FieldName = "Num";
-            this.gridColumn76.Name = "gridColumn76";
-            this.gridColumn76.Visible = true;
-            this.gridColumn76.VisibleIndex = 0;
-            this.gridColumn76.Width = 85;
             // 
             // ManufacturingUserControl
             // 

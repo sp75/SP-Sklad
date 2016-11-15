@@ -113,15 +113,10 @@
         <EntityTypeShape EntityType="BaseModel.Languages" Width="1.5" PointX="1.2324879286962038" PointY="4.7686780266317905" />
         <AssociationConnector Association="BaseModel.FK__VIEWLNG__LANGID__2116E6DF" />
         <AssociationConnector Association="BaseModel.FK_REPLNG_LANGID" />
-        <EntityTypeShape EntityType="BaseModel.Services" Width="1.5" PointX="7.2864685390547237" PointY="7.1429526094081588" />
         <EntityTypeShape EntityType="BaseModel.SvcGroup" Width="1.5" PointX="6.4937014926661281" PointY="20.54977826240928" />
         <EntityTypeShape EntityType="BaseModel.v_Services" Width="1.5" PointX="8.9153784443230268" PointY="8.815120179585703" />
-        <AssociationConnector Association="BaseModel.FK_SVC_CURRID" />
-        <AssociationConnector Association="BaseModel.FK_SVC_MID" />
-        <AssociationConnector Association="BaseModel.FK_SERVICES_1" />
         <EntityTypeShape EntityType="BaseModel.WayBillSvc" Width="1.5" PointX="2.5795977630557481" PointY="20.695075491766946" />
         <AssociationConnector Association="BaseModel.FK_WBS_CURRID" />
-        <AssociationConnector Association="BaseModel.FK_WBS_SVCID" />
         <EntityTypeShape EntityType="BaseModel.PriceListDet" Width="1.5" PointX="19" PointY="29.25" />
         <EntityTypeShape EntityType="BaseModel.Tables" Width="1.5" PointX="9.3817213742908656" PointY="16.80379786379812" />
         <EntityTypeShape EntityType="BaseModel.v_PriceList" Width="1.5" PointX="11.453816681845959" PointY="22.139463211474691" />
@@ -245,6 +240,16 @@
         <AssociationConnector Association="BaseModel.FK_TECHPROCDET_KAGENT" />
         <AssociationConnector Association="BaseModel.FK_TECHPROCDET_TECHPROCESS" />
         <AssociationConnector Association="BaseModel.FK_TECHPROCDET_WAYBILLLIST" />
+        <EntityTypeShape EntityType="BaseModel.Services" Width="1.5" PointX="1.5216164987169283" PointY="1.5817818649028343" />
+        <AssociationConnector Association="BaseModel.FK_SVC_CURRID" />
+        <AssociationConnector Association="BaseModel.FK_SVC_MID" />
+        <AssociationConnector Association="BaseModel.FK_SERVICES_1" />
+        <AssociationConnector Association="BaseModel.FK_WBS_SVCID" />
+        <EntityTypeShape EntityType="BaseModel.Routes" Width="1.5" PointX="3.5626966578712205" PointY="21.819975341586385" />
+        <EntityTypeShape EntityType="BaseModel.UsersGroup" Width="1.5" PointX="3.0551140490244677" PointY="31.682498961539242" />
+        <AssociationConnector Association="BaseModel.FK_Kagent_Routes" />
+        <AssociationConnector Association="BaseModel.FK_Users_UsersGroup" />
+        <EntityTypeShape EntityType="BaseModel.Jobs" Width="1.5" PointX="5.231243007458394" PointY="25.267417353236777" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="7.0245045325832924" PointY="12.641712000892364" />

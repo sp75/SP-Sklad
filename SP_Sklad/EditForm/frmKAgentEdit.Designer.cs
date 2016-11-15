@@ -77,19 +77,6 @@
             this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
-            this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
-            this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
-            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
-            this.UsersLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.labelControl26 = new DevExpress.XtraEditors.LabelControl();
-            this.dateEdit2 = new DevExpress.XtraEditors.DateEdit();
-            this.textEdit19 = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl27 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl25 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit18 = new DevExpress.XtraEditors.RadioGroup();
-            this.JobLookUpEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.textEdit13 = new DevExpress.XtraEditors.TextEdit();
@@ -107,6 +94,19 @@
             this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
             this.textEdit16 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
+            this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
+            this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
+            this.lookUpEdit3 = new DevExpress.XtraEditors.LookUpEdit();
+            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            this.UsersLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl26 = new DevExpress.XtraEditors.LabelControl();
+            this.dateEdit2 = new DevExpress.XtraEditors.DateEdit();
+            this.textEdit19 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl27 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl25 = new DevExpress.XtraEditors.LabelControl();
+            this.JobLookUpEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.textEdit10 = new DevExpress.XtraEditors.TextEdit();
             this.KaKindLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
@@ -177,6 +177,7 @@
             this.labelControl49 = new DevExpress.XtraEditors.LabelControl();
             this.FCityTypeEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.simpleButton15 = new DevExpress.XtraEditors.SimpleButton();
             this.textEdit26 = new DevExpress.XtraEditors.TextEdit();
             this.AddrresUrBS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl43 = new DevExpress.XtraEditors.LabelControl();
@@ -255,7 +256,8 @@
             this.labelControl34 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl35 = new DevExpress.XtraEditors.LabelControl();
             this.dateEdit3 = new DevExpress.XtraEditors.DateEdit();
-            this.simpleButton15 = new DevExpress.XtraEditors.SimpleButton();
+            this.RouteLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl54 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KagentBindingSource)).BeginInit();
@@ -288,15 +290,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).BeginInit();
             this.xtraTabControl2.SuspendLayout();
-            this.xtraTabPage10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
-            this.panelControl4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.UsersLookUpEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit19.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit18.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.JobLookUpEdit.Properties)).BeginInit();
             this.xtraTabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
@@ -310,6 +303,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit16.Properties)).BeginInit();
+            this.xtraTabPage10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
+            this.panelControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UsersLookUpEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit19.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.JobLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit10.Properties)).BeginInit();
@@ -415,6 +417,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit20.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RouteLookUpEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemImageComboBox1
@@ -543,7 +546,7 @@
             // 
             this.dropDownButton2.DropDownControl = this.popupMenu1;
             this.dropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("dropDownButton2.Image")));
-            this.dropDownButton2.Location = new System.Drawing.Point(30, 33);
+            this.dropDownButton2.Location = new System.Drawing.Point(20, 33);
             this.dropDownButton2.MenuManager = this.barManager1;
             this.dropDownButton2.Name = "dropDownButton2";
             this.dropDownButton2.Size = new System.Drawing.Size(117, 23);
@@ -562,7 +565,7 @@
             // 
             this.dropDownButton3.DropDownControl = this.popupMenu1;
             this.dropDownButton3.Image = ((System.Drawing.Image)(resources.GetObject("dropDownButton3.Image")));
-            this.dropDownButton3.Location = new System.Drawing.Point(30, 33);
+            this.dropDownButton3.Location = new System.Drawing.Point(20, 33);
             this.dropDownButton3.MenuManager = this.barManager1;
             this.dropDownButton3.Name = "dropDownButton3";
             this.dropDownButton3.Size = new System.Drawing.Size(117, 23);
@@ -630,7 +633,7 @@
             this.DirTreeList.OptionsView.ShowVertLines = false;
             this.DirTreeList.ParentFieldName = "ParentId";
             this.DirTreeList.SelectImageList = this.ImageList;
-            this.DirTreeList.Size = new System.Drawing.Size(187, 556);
+            this.DirTreeList.Size = new System.Drawing.Size(185, 556);
             this.DirTreeList.TabIndex = 33;
             this.DirTreeList.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.DirTreeList_FocusedNodeChanged);
             // 
@@ -645,7 +648,7 @@
             // 
             // splitterControl1
             // 
-            this.splitterControl1.Location = new System.Drawing.Point(187, 24);
+            this.splitterControl1.Location = new System.Drawing.Point(185, 24);
             this.splitterControl1.Name = "splitterControl1";
             this.splitterControl1.Size = new System.Drawing.Size(5, 556);
             this.splitterControl1.TabIndex = 34;
@@ -656,12 +659,12 @@
             this.xtraTabControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.xtraTabControl1.BorderStylePage = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(192, 24);
+            this.xtraTabControl1.Location = new System.Drawing.Point(190, 24);
             this.xtraTabControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.xtraTabControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(681, 556);
+            this.xtraTabControl1.Size = new System.Drawing.Size(683, 556);
             this.xtraTabControl1.TabIndex = 35;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -683,7 +686,7 @@
             this.xtraTabPage1.Controls.Add(this.panel5);
             this.xtraTabPage1.Controls.Add(this.panel1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(681, 534);
+            this.xtraTabPage1.Size = new System.Drawing.Size(683, 534);
             this.xtraTabPage1.Text = "Інформація";
             // 
             // panel5
@@ -693,7 +696,7 @@
             this.panel5.Location = new System.Drawing.Point(0, 399);
             this.panel5.Name = "panel5";
             this.panel5.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.panel5.Size = new System.Drawing.Size(681, 135);
+            this.panel5.Size = new System.Drawing.Size(683, 135);
             this.panel5.TabIndex = 28;
             // 
             // groupControl3
@@ -705,7 +708,7 @@
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl3.Location = new System.Drawing.Point(0, 5);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(681, 130);
+            this.groupControl3.Size = new System.Drawing.Size(683, 130);
             this.groupControl3.TabIndex = 16;
             this.groupControl3.Tag = "";
             // 
@@ -720,7 +723,7 @@
             this.StartSaldoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.StartSaldoPanel.Location = new System.Drawing.Point(2, 20);
             this.StartSaldoPanel.Name = "StartSaldoPanel";
-            this.StartSaldoPanel.Size = new System.Drawing.Size(677, 108);
+            this.StartSaldoPanel.Size = new System.Drawing.Size(679, 108);
             this.StartSaldoPanel.TabIndex = 43;
             // 
             // checkEdit4
@@ -739,7 +742,7 @@
             // checkEdit3
             // 
             this.checkEdit3.EditValue = true;
-            this.checkEdit3.Location = new System.Drawing.Point(24, 17);
+            this.checkEdit3.Location = new System.Drawing.Point(15, 17);
             this.checkEdit3.MenuManager = this.barManager1;
             this.checkEdit3.Name = "checkEdit3";
             this.checkEdit3.Properties.Caption = "Ми винні";
@@ -760,7 +763,7 @@
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(24, 49);
+            this.labelControl5.Location = new System.Drawing.Point(15, 49);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(29, 16);
             this.labelControl5.StyleController = this.styleController1;
@@ -770,7 +773,7 @@
             // KASaldoEdit
             // 
             this.KASaldoEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "StartSaldo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.KASaldoEdit.Location = new System.Drawing.Point(24, 71);
+            this.KASaldoEdit.Location = new System.Drawing.Point(15, 71);
             this.KASaldoEdit.Name = "KASaldoEdit";
             this.KASaldoEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -798,7 +801,7 @@
             this.StartSaldoDateEdit.Properties.Mask.EditMask = "";
             this.StartSaldoDateEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
             this.StartSaldoDateEdit.Properties.MinValue = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            this.StartSaldoDateEdit.Size = new System.Drawing.Size(175, 22);
+            this.StartSaldoDateEdit.Size = new System.Drawing.Size(177, 22);
             this.StartSaldoDateEdit.StyleController = this.styleController1;
             this.StartSaldoDateEdit.TabIndex = 45;
             // 
@@ -818,7 +821,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textEdit5.Location = new System.Drawing.Point(157, 123);
             this.textEdit5.Name = "textEdit5";
-            this.textEdit5.Size = new System.Drawing.Size(272, 22);
+            this.textEdit5.Size = new System.Drawing.Size(274, 22);
             this.textEdit5.StyleController = this.styleController1;
             this.textEdit5.TabIndex = 37;
             // 
@@ -837,7 +840,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(681, 399);
+            this.panel1.Size = new System.Drawing.Size(683, 399);
             this.panel1.TabIndex = 29;
             // 
             // groupControl2
@@ -848,7 +851,7 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(681, 399);
+            this.groupControl2.Size = new System.Drawing.Size(683, 399);
             this.groupControl2.TabIndex = 17;
             this.groupControl2.Tag = "";
             this.groupControl2.Text = " Основна інформація ";
@@ -861,17 +864,17 @@
             this.panel3.Controls.Add(this.labelControl18);
             this.panel3.Controls.Add(this.checkEdit1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(2, 281);
+            this.panel3.Location = new System.Drawing.Point(2, 299);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(677, 116);
+            this.panel3.Size = new System.Drawing.Size(679, 98);
             this.panel3.TabIndex = 43;
             // 
             // textEdit15
             // 
             this.textEdit15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEdit15.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.KagentBindingSource, "INN", true));
-            this.textEdit15.Location = new System.Drawing.Point(356, 73);
+            this.textEdit15.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "INN", true));
+            this.textEdit15.Location = new System.Drawing.Point(356, 65);
             this.textEdit15.Name = "textEdit15";
             this.textEdit15.Size = new System.Drawing.Size(307, 22);
             this.textEdit15.StyleController = this.styleController1;
@@ -879,8 +882,8 @@
             // 
             // textEdit14
             // 
-            this.textEdit14.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.KagentBindingSource, "CertNum", true));
-            this.textEdit14.Location = new System.Drawing.Point(15, 73);
+            this.textEdit14.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "CertNum", true));
+            this.textEdit14.Location = new System.Drawing.Point(15, 65);
             this.textEdit14.Name = "textEdit14";
             this.textEdit14.Size = new System.Drawing.Size(286, 22);
             this.textEdit14.StyleController = this.styleController1;
@@ -888,7 +891,7 @@
             // 
             // labelControl19
             // 
-            this.labelControl19.Location = new System.Drawing.Point(356, 51);
+            this.labelControl19.Location = new System.Drawing.Point(356, 43);
             this.labelControl19.Name = "labelControl19";
             this.labelControl19.Size = new System.Drawing.Size(20, 16);
             this.labelControl19.StyleController = this.styleController1;
@@ -897,7 +900,7 @@
             // 
             // labelControl18
             // 
-            this.labelControl18.Location = new System.Drawing.Point(15, 51);
+            this.labelControl18.Location = new System.Drawing.Point(15, 43);
             this.labelControl18.Name = "labelControl18";
             this.labelControl18.Size = new System.Drawing.Size(61, 16);
             this.labelControl18.StyleController = this.styleController1;
@@ -921,184 +924,24 @@
             // 
             this.xtraTabControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.xtraTabControl2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.xtraTabControl2.Location = new System.Drawing.Point(2, 97);
+            this.xtraTabControl2.Location = new System.Drawing.Point(2, 95);
             this.xtraTabControl2.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
             this.xtraTabControl2.LookAndFeel.UseDefaultLookAndFeel = false;
             this.xtraTabControl2.Name = "xtraTabControl2";
-            this.xtraTabControl2.SelectedTabPage = this.xtraTabPage10;
+            this.xtraTabControl2.SelectedTabPage = this.xtraTabPage8;
             this.xtraTabControl2.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
-            this.xtraTabControl2.Size = new System.Drawing.Size(677, 184);
+            this.xtraTabControl2.Size = new System.Drawing.Size(679, 204);
             this.xtraTabControl2.TabIndex = 42;
             this.xtraTabControl2.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage8,
             this.xtraTabPage9,
             this.xtraTabPage10});
             // 
-            // xtraTabPage10
-            // 
-            this.xtraTabPage10.Controls.Add(this.panelControl4);
-            this.xtraTabPage10.Name = "xtraTabPage10";
-            this.xtraTabPage10.Size = new System.Drawing.Size(677, 184);
-            this.xtraTabPage10.Text = "xtraTabPage10";
-            // 
-            // panelControl4
-            // 
-            this.panelControl4.Controls.Add(this.simpleButton5);
-            this.panelControl4.Controls.Add(this.UsersLookUpEdit);
-            this.panelControl4.Controls.Add(this.labelControl26);
-            this.panelControl4.Controls.Add(this.dateEdit2);
-            this.panelControl4.Controls.Add(this.textEdit19);
-            this.panelControl4.Controls.Add(this.labelControl27);
-            this.panelControl4.Controls.Add(this.labelControl22);
-            this.panelControl4.Controls.Add(this.simpleButton3);
-            this.panelControl4.Controls.Add(this.labelControl25);
-            this.panelControl4.Controls.Add(this.textEdit18);
-            this.panelControl4.Controls.Add(this.JobLookUpEdit);
-            this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl4.Location = new System.Drawing.Point(0, 0);
-            this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(677, 184);
-            this.panelControl4.TabIndex = 43;
-            // 
-            // simpleButton5
-            // 
-            this.simpleButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton5.ImageIndex = 14;
-            this.simpleButton5.ImageList = this.ImageList;
-            this.simpleButton5.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton5.Location = new System.Drawing.Point(613, 141);
-            this.simpleButton5.Name = "simpleButton5";
-            this.simpleButton5.Size = new System.Drawing.Size(22, 22);
-            this.simpleButton5.TabIndex = 45;
-            this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
-            // 
-            // UsersLookUpEdit
-            // 
-            this.UsersLookUpEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.UsersLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "UserId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.UsersLookUpEdit.Location = new System.Drawing.Point(88, 141);
-            this.UsersLookUpEdit.Name = "UsersLookUpEdit";
-            this.UsersLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.UsersLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name1")});
-            this.UsersLookUpEdit.Properties.DisplayMember = "Name";
-            this.UsersLookUpEdit.Properties.NullText = "";
-            this.UsersLookUpEdit.Properties.ShowFooter = false;
-            this.UsersLookUpEdit.Properties.ShowHeader = false;
-            this.UsersLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.UsersLookUpEdit.Properties.ValueMember = "UserId";
-            this.UsersLookUpEdit.Size = new System.Drawing.Size(519, 22);
-            this.UsersLookUpEdit.StyleController = this.styleController1;
-            this.UsersLookUpEdit.TabIndex = 44;
-            // 
-            // labelControl26
-            // 
-            this.labelControl26.Location = new System.Drawing.Point(390, 14);
-            this.labelControl26.Name = "labelControl26";
-            this.labelControl26.Size = new System.Drawing.Size(106, 16);
-            this.labelControl26.StyleController = this.styleController1;
-            this.labelControl26.TabIndex = 43;
-            this.labelControl26.Text = "Дата народження";
-            // 
-            // dateEdit2
-            // 
-            this.dateEdit2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "BirthDate", true));
-            this.dateEdit2.EditValue = null;
-            this.dateEdit2.Location = new System.Drawing.Point(502, 11);
-            this.dateEdit2.Name = "dateEdit2";
-            this.dateEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit2.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit2.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.dateEdit2.Properties.Mask.EditMask = "";
-            this.dateEdit2.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.dateEdit2.Size = new System.Drawing.Size(161, 22);
-            this.dateEdit2.StyleController = this.styleController1;
-            this.dateEdit2.TabIndex = 42;
-            // 
-            // textEdit19
-            // 
-            this.textEdit19.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.KagentBindingSource, "Name", true));
-            this.textEdit19.Location = new System.Drawing.Point(88, 11);
-            this.textEdit19.Name = "textEdit19";
-            this.textEdit19.Size = new System.Drawing.Size(262, 22);
-            this.textEdit19.StyleController = this.styleController1;
-            this.textEdit19.TabIndex = 41;
-            // 
-            // labelControl27
-            // 
-            this.labelControl27.Location = new System.Drawing.Point(15, 14);
-            this.labelControl27.Name = "labelControl27";
-            this.labelControl27.Size = new System.Drawing.Size(32, 16);
-            this.labelControl27.StyleController = this.styleController1;
-            this.labelControl27.TabIndex = 40;
-            this.labelControl27.Text = "П.І.Б.";
-            // 
-            // labelControl22
-            // 
-            this.labelControl22.Location = new System.Drawing.Point(15, 48);
-            this.labelControl22.Name = "labelControl22";
-            this.labelControl22.Size = new System.Drawing.Size(47, 16);
-            this.labelControl22.StyleController = this.styleController1;
-            this.labelControl22.TabIndex = 37;
-            this.labelControl22.Text = "Посада:";
-            // 
-            // simpleButton3
-            // 
-            this.simpleButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton3.ImageIndex = 15;
-            this.simpleButton3.ImageList = this.ImageList;
-            this.simpleButton3.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton3.Location = new System.Drawing.Point(641, 141);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(22, 22);
-            this.simpleButton3.TabIndex = 33;
-            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
-            // 
-            // labelControl25
-            // 
-            this.labelControl25.Location = new System.Drawing.Point(15, 143);
-            this.labelControl25.Name = "labelControl25";
-            this.labelControl25.Size = new System.Drawing.Size(67, 16);
-            this.labelControl25.StyleController = this.styleController1;
-            this.labelControl25.TabIndex = 36;
-            this.labelControl25.Text = "Користувач";
-            // 
-            // textEdit18
-            // 
-            this.textEdit18.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "JobType", true));
-            this.textEdit18.Location = new System.Drawing.Point(88, 48);
-            this.textEdit18.Name = "textEdit18";
-            this.textEdit18.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(0, "Директор"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "Головний бухгалтер"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(2, "Інша")});
-            this.textEdit18.Size = new System.Drawing.Size(262, 77);
-            this.textEdit18.TabIndex = 38;
-            // 
-            // JobLookUpEdit
-            // 
-            this.JobLookUpEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.JobLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "Job", true));
-            this.JobLookUpEdit.Location = new System.Drawing.Point(356, 103);
-            this.JobLookUpEdit.Name = "JobLookUpEdit";
-            this.JobLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.JobLookUpEdit.Properties.PopupSizeable = true;
-            this.JobLookUpEdit.Size = new System.Drawing.Size(307, 20);
-            this.JobLookUpEdit.TabIndex = 39;
-            // 
             // xtraTabPage8
             // 
             this.xtraTabPage8.Controls.Add(this.panelControl3);
             this.xtraTabPage8.Name = "xtraTabPage8";
-            this.xtraTabPage8.Size = new System.Drawing.Size(670, 184);
+            this.xtraTabPage8.Size = new System.Drawing.Size(679, 204);
             this.xtraTabPage8.Text = "xtraTabPage8";
             // 
             // panelControl3
@@ -1115,17 +958,17 @@
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl3.Location = new System.Drawing.Point(0, 0);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(670, 184);
+            this.panelControl3.Size = new System.Drawing.Size(679, 204);
             this.panelControl3.TabIndex = 42;
             // 
             // textEdit13
             // 
             this.textEdit13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEdit13.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.KagentBindingSource, "KPP", true));
-            this.textEdit13.Location = new System.Drawing.Point(131, 144);
+            this.textEdit13.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "KPP", true));
+            this.textEdit13.Location = new System.Drawing.Point(15, 166);
             this.textEdit13.Name = "textEdit13";
-            this.textEdit13.Size = new System.Drawing.Size(248, 22);
+            this.textEdit13.Size = new System.Drawing.Size(145, 22);
             this.textEdit13.StyleController = this.styleController1;
             this.textEdit13.TabIndex = 39;
             // 
@@ -1133,16 +976,16 @@
             // 
             this.textEdit9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEdit9.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.KagentBindingSource, "OKPO", true));
-            this.textEdit9.Location = new System.Drawing.Point(131, 116);
+            this.textEdit9.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "OKPO", true));
+            this.textEdit9.Location = new System.Drawing.Point(207, 166);
             this.textEdit9.Name = "textEdit9";
-            this.textEdit9.Size = new System.Drawing.Size(248, 22);
+            this.textEdit9.Size = new System.Drawing.Size(145, 22);
             this.textEdit9.StyleController = this.styleController1;
             this.textEdit9.TabIndex = 38;
             // 
             // labelControl17
             // 
-            this.labelControl17.Location = new System.Drawing.Point(17, 147);
+            this.labelControl17.Location = new System.Drawing.Point(15, 144);
             this.labelControl17.Name = "labelControl17";
             this.labelControl17.Size = new System.Drawing.Size(23, 16);
             this.labelControl17.StyleController = this.styleController1;
@@ -1153,16 +996,16 @@
             // 
             this.textEdit12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEdit12.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.KagentBindingSource, "Name", true));
-            this.textEdit12.Location = new System.Drawing.Point(133, 18);
+            this.textEdit12.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "Name", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textEdit12.Location = new System.Drawing.Point(15, 32);
             this.textEdit12.Name = "textEdit12";
-            this.textEdit12.Size = new System.Drawing.Size(495, 22);
+            this.textEdit12.Size = new System.Drawing.Size(620, 22);
             this.textEdit12.StyleController = this.styleController1;
             this.textEdit12.TabIndex = 34;
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(17, 19);
+            this.labelControl4.Location = new System.Drawing.Point(15, 10);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(101, 16);
             this.labelControl4.StyleController = this.styleController1;
@@ -1172,17 +1015,18 @@
             // simpleButton2
             // 
             this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton2.ImageIndex = 1;
+            this.simpleButton2.ImageIndex = 13;
             this.simpleButton2.ImageList = this.ImageList;
             this.simpleButton2.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton2.Location = new System.Drawing.Point(634, 19);
+            this.simpleButton2.Location = new System.Drawing.Point(641, 32);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(22, 22);
             this.simpleButton2.TabIndex = 33;
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(17, 52);
+            this.labelControl6.Location = new System.Drawing.Point(15, 66);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(74, 16);
             this.labelControl6.StyleController = this.styleController1;
@@ -1191,7 +1035,7 @@
             // 
             // labelControl16
             // 
-            this.labelControl16.Location = new System.Drawing.Point(17, 119);
+            this.labelControl16.Location = new System.Drawing.Point(207, 144);
             this.labelControl16.Name = "labelControl16";
             this.labelControl16.Size = new System.Drawing.Size(31, 16);
             this.labelControl16.StyleController = this.styleController1;
@@ -1202,17 +1046,18 @@
             // 
             this.textEdit11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEdit11.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.KagentBindingSource, "FullName", true));
-            this.textEdit11.Location = new System.Drawing.Point(133, 51);
+            this.textEdit11.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "FullName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textEdit11.Location = new System.Drawing.Point(15, 88);
             this.textEdit11.Name = "textEdit11";
-            this.textEdit11.Size = new System.Drawing.Size(523, 52);
+            this.textEdit11.Size = new System.Drawing.Size(648, 42);
+            this.textEdit11.StyleController = this.styleController1;
             this.textEdit11.TabIndex = 32;
             // 
             // xtraTabPage9
             // 
             this.xtraTabPage9.Controls.Add(this.panelControl5);
             this.xtraTabPage9.Name = "xtraTabPage9";
-            this.xtraTabPage9.Size = new System.Drawing.Size(670, 184);
+            this.xtraTabPage9.Size = new System.Drawing.Size(679, 204);
             this.xtraTabPage9.Text = "xtraTabPage9";
             // 
             // panelControl5
@@ -1224,12 +1069,12 @@
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl5.Location = new System.Drawing.Point(0, 0);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(670, 184);
+            this.panelControl5.Size = new System.Drawing.Size(679, 204);
             this.panelControl5.TabIndex = 44;
             // 
             // labelControl20
             // 
-            this.labelControl20.Location = new System.Drawing.Point(15, 55);
+            this.labelControl20.Location = new System.Drawing.Point(15, 84);
             this.labelControl20.Name = "labelControl20";
             this.labelControl20.Size = new System.Drawing.Size(106, 16);
             this.labelControl20.StyleController = this.styleController1;
@@ -1240,7 +1085,7 @@
             // 
             this.dateEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "BirthDate", true));
             this.dateEdit1.EditValue = null;
-            this.dateEdit1.Location = new System.Drawing.Point(129, 52);
+            this.dateEdit1.Location = new System.Drawing.Point(15, 106);
             this.dateEdit1.Name = "dateEdit1";
             this.dateEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1257,9 +1102,9 @@
             this.textEdit16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textEdit16.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.KagentBindingSource, "Name", true));
-            this.textEdit16.Location = new System.Drawing.Point(129, 15);
+            this.textEdit16.Location = new System.Drawing.Point(15, 40);
             this.textEdit16.Name = "textEdit16";
-            this.textEdit16.Size = new System.Drawing.Size(527, 22);
+            this.textEdit16.Size = new System.Drawing.Size(648, 22);
             this.textEdit16.StyleController = this.styleController1;
             this.textEdit16.TabIndex = 41;
             // 
@@ -1271,6 +1116,174 @@
             this.labelControl21.StyleController = this.styleController1;
             this.labelControl21.TabIndex = 40;
             this.labelControl21.Text = "П.І.Б.";
+            // 
+            // xtraTabPage10
+            // 
+            this.xtraTabPage10.Controls.Add(this.panelControl4);
+            this.xtraTabPage10.Name = "xtraTabPage10";
+            this.xtraTabPage10.Size = new System.Drawing.Size(679, 204);
+            this.xtraTabPage10.Text = "xtraTabPage10";
+            // 
+            // panelControl4
+            // 
+            this.panelControl4.Controls.Add(this.lookUpEdit3);
+            this.panelControl4.Controls.Add(this.simpleButton5);
+            this.panelControl4.Controls.Add(this.UsersLookUpEdit);
+            this.panelControl4.Controls.Add(this.labelControl26);
+            this.panelControl4.Controls.Add(this.dateEdit2);
+            this.panelControl4.Controls.Add(this.textEdit19);
+            this.panelControl4.Controls.Add(this.labelControl27);
+            this.panelControl4.Controls.Add(this.labelControl22);
+            this.panelControl4.Controls.Add(this.simpleButton3);
+            this.panelControl4.Controls.Add(this.labelControl25);
+            this.panelControl4.Controls.Add(this.JobLookUpEdit);
+            this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl4.Location = new System.Drawing.Point(0, 0);
+            this.panelControl4.Name = "panelControl4";
+            this.panelControl4.Size = new System.Drawing.Size(679, 204);
+            this.panelControl4.TabIndex = 43;
+            // 
+            // lookUpEdit3
+            // 
+            this.lookUpEdit3.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "JobType", true));
+            this.lookUpEdit3.Location = new System.Drawing.Point(15, 89);
+            this.lookUpEdit3.Name = "lookUpEdit3";
+            this.lookUpEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEdit3.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.lookUpEdit3.Properties.DisplayMember = "Name";
+            this.lookUpEdit3.Properties.ShowFooter = false;
+            this.lookUpEdit3.Properties.ShowHeader = false;
+            this.lookUpEdit3.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.lookUpEdit3.Properties.ValueMember = "Id";
+            this.lookUpEdit3.Size = new System.Drawing.Size(384, 22);
+            this.lookUpEdit3.StyleController = this.styleController1;
+            this.lookUpEdit3.TabIndex = 46;
+            this.lookUpEdit3.EditValueChanged += new System.EventHandler(this.lookUpEdit3_EditValueChanged);
+            // 
+            // simpleButton5
+            // 
+            this.simpleButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton5.ImageIndex = 14;
+            this.simpleButton5.ImageList = this.ImageList;
+            this.simpleButton5.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton5.Location = new System.Drawing.Point(351, 149);
+            this.simpleButton5.Name = "simpleButton5";
+            this.simpleButton5.Size = new System.Drawing.Size(22, 22);
+            this.simpleButton5.TabIndex = 45;
+            this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
+            // 
+            // UsersLookUpEdit
+            // 
+            this.UsersLookUpEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.UsersLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "UserId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.UsersLookUpEdit.Location = new System.Drawing.Point(15, 149);
+            this.UsersLookUpEdit.Name = "UsersLookUpEdit";
+            this.UsersLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.UsersLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name1")});
+            this.UsersLookUpEdit.Properties.DisplayMember = "Name";
+            this.UsersLookUpEdit.Properties.NullText = "";
+            this.UsersLookUpEdit.Properties.ShowFooter = false;
+            this.UsersLookUpEdit.Properties.ShowHeader = false;
+            this.UsersLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.UsersLookUpEdit.Properties.ValueMember = "UserId";
+            this.UsersLookUpEdit.Size = new System.Drawing.Size(330, 22);
+            this.UsersLookUpEdit.StyleController = this.styleController1;
+            this.UsersLookUpEdit.TabIndex = 44;
+            // 
+            // labelControl26
+            // 
+            this.labelControl26.Location = new System.Drawing.Point(414, 14);
+            this.labelControl26.Name = "labelControl26";
+            this.labelControl26.Size = new System.Drawing.Size(106, 16);
+            this.labelControl26.StyleController = this.styleController1;
+            this.labelControl26.TabIndex = 43;
+            this.labelControl26.Text = "Дата народження";
+            // 
+            // dateEdit2
+            // 
+            this.dateEdit2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "BirthDate", true));
+            this.dateEdit2.EditValue = null;
+            this.dateEdit2.Location = new System.Drawing.Point(414, 36);
+            this.dateEdit2.Name = "dateEdit2";
+            this.dateEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit2.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit2.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.dateEdit2.Properties.Mask.EditMask = "";
+            this.dateEdit2.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.dateEdit2.Size = new System.Drawing.Size(249, 22);
+            this.dateEdit2.StyleController = this.styleController1;
+            this.dateEdit2.TabIndex = 42;
+            // 
+            // textEdit19
+            // 
+            this.textEdit19.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.KagentBindingSource, "Name", true));
+            this.textEdit19.Location = new System.Drawing.Point(15, 36);
+            this.textEdit19.Name = "textEdit19";
+            this.textEdit19.Size = new System.Drawing.Size(384, 22);
+            this.textEdit19.StyleController = this.styleController1;
+            this.textEdit19.TabIndex = 41;
+            // 
+            // labelControl27
+            // 
+            this.labelControl27.Location = new System.Drawing.Point(15, 14);
+            this.labelControl27.Name = "labelControl27";
+            this.labelControl27.Size = new System.Drawing.Size(32, 16);
+            this.labelControl27.StyleController = this.styleController1;
+            this.labelControl27.TabIndex = 40;
+            this.labelControl27.Text = "П.І.Б.";
+            // 
+            // labelControl22
+            // 
+            this.labelControl22.Location = new System.Drawing.Point(15, 67);
+            this.labelControl22.Name = "labelControl22";
+            this.labelControl22.Size = new System.Drawing.Size(47, 16);
+            this.labelControl22.StyleController = this.styleController1;
+            this.labelControl22.TabIndex = 37;
+            this.labelControl22.Text = "Посада:";
+            // 
+            // simpleButton3
+            // 
+            this.simpleButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton3.ImageIndex = 15;
+            this.simpleButton3.ImageList = this.ImageList;
+            this.simpleButton3.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton3.Location = new System.Drawing.Point(379, 149);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(22, 22);
+            this.simpleButton3.TabIndex = 33;
+            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
+            // 
+            // labelControl25
+            // 
+            this.labelControl25.Location = new System.Drawing.Point(15, 127);
+            this.labelControl25.Name = "labelControl25";
+            this.labelControl25.Size = new System.Drawing.Size(67, 16);
+            this.labelControl25.StyleController = this.styleController1;
+            this.labelControl25.TabIndex = 36;
+            this.labelControl25.Text = "Користувач";
+            // 
+            // JobLookUpEdit
+            // 
+            this.JobLookUpEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.JobLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "Job", true));
+            this.JobLookUpEdit.Location = new System.Drawing.Point(414, 89);
+            this.JobLookUpEdit.Name = "JobLookUpEdit";
+            this.JobLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.JobLookUpEdit.Properties.PopupSizeable = true;
+            this.JobLookUpEdit.Size = new System.Drawing.Size(249, 22);
+            this.JobLookUpEdit.StyleController = this.styleController1;
+            this.JobLookUpEdit.TabIndex = 39;
             // 
             // panelControl1
             // 
@@ -1284,13 +1297,13 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(2, 20);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(677, 77);
+            this.panelControl1.Size = new System.Drawing.Size(679, 75);
             this.panelControl1.TabIndex = 41;
             // 
             // textEdit10
             // 
             this.textEdit10.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.KagentBindingSource, "KAU", true));
-            this.textEdit10.Location = new System.Drawing.Point(15, 39);
+            this.textEdit10.Location = new System.Drawing.Point(15, 37);
             this.textEdit10.Name = "textEdit10";
             this.textEdit10.Size = new System.Drawing.Size(124, 22);
             this.textEdit10.StyleController = this.styleController1;
@@ -1301,7 +1314,7 @@
             this.KaKindLookUpEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.KaKindLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "KaKind", true));
-            this.KaKindLookUpEdit.Location = new System.Drawing.Point(414, 39);
+            this.KaKindLookUpEdit.Location = new System.Drawing.Point(414, 37);
             this.KaKindLookUpEdit.Name = "KaKindLookUpEdit";
             this.KaKindLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1312,13 +1325,13 @@
             this.KaKindLookUpEdit.Properties.ShowHeader = false;
             this.KaKindLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.KaKindLookUpEdit.Properties.ValueMember = "Id";
-            this.KaKindLookUpEdit.Size = new System.Drawing.Size(247, 22);
+            this.KaKindLookUpEdit.Size = new System.Drawing.Size(249, 22);
             this.KaKindLookUpEdit.StyleController = this.styleController1;
             this.KaKindLookUpEdit.TabIndex = 40;
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(15, 17);
+            this.labelControl3.Location = new System.Drawing.Point(15, 15);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(83, 16);
             this.labelControl3.StyleController = this.styleController1;
@@ -1328,7 +1341,7 @@
             // KTypeLookUpEdit
             // 
             this.KTypeLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "KType", true));
-            this.KTypeLookUpEdit.Location = new System.Drawing.Point(153, 39);
+            this.KTypeLookUpEdit.Location = new System.Drawing.Point(153, 37);
             this.KTypeLookUpEdit.Name = "KTypeLookUpEdit";
             this.KTypeLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1346,7 +1359,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(153, 17);
+            this.labelControl2.Location = new System.Drawing.Point(153, 15);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(98, 16);
             this.labelControl2.StyleController = this.styleController1;
@@ -1355,7 +1368,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(414, 17);
+            this.labelControl1.Location = new System.Drawing.Point(414, 15);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(32, 16);
             this.labelControl1.StyleController = this.styleController1;
@@ -1366,7 +1379,7 @@
             // 
             this.xtraTabPage2.Controls.Add(this.groupControl8);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(681, 534);
+            this.xtraTabPage2.Size = new System.Drawing.Size(683, 534);
             this.xtraTabPage2.Text = "Документ";
             // 
             // groupControl8
@@ -1384,7 +1397,7 @@
             this.groupControl8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl8.Location = new System.Drawing.Point(0, 0);
             this.groupControl8.Name = "groupControl8";
-            this.groupControl8.Size = new System.Drawing.Size(681, 534);
+            this.groupControl8.Size = new System.Drawing.Size(683, 534);
             this.groupControl8.TabIndex = 19;
             this.groupControl8.Tag = "";
             this.groupControl8.Text = "Документ ";
@@ -1392,7 +1405,7 @@
             // textEdit3
             // 
             this.textEdit3.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KAgentDocDS, "DocNum", true));
-            this.textEdit3.Location = new System.Drawing.Point(128, 106);
+            this.textEdit3.Location = new System.Drawing.Point(22, 189);
             this.textEdit3.Name = "textEdit3";
             this.textEdit3.Size = new System.Drawing.Size(187, 22);
             this.textEdit3.StyleController = this.styleController1;
@@ -1405,7 +1418,7 @@
             // textEdit2
             // 
             this.textEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KAgentDocDS, "DocSeries", true));
-            this.textEdit2.Location = new System.Drawing.Point(128, 69);
+            this.textEdit2.Location = new System.Drawing.Point(22, 124);
             this.textEdit2.Name = "textEdit2";
             this.textEdit2.Size = new System.Drawing.Size(187, 22);
             this.textEdit2.StyleController = this.styleController1;
@@ -1414,7 +1427,7 @@
             // textEdit1
             // 
             this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KAgentDocDS, "DocName", true));
-            this.textEdit1.Location = new System.Drawing.Point(128, 37);
+            this.textEdit1.Location = new System.Drawing.Point(22, 62);
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Size = new System.Drawing.Size(521, 22);
             this.textEdit1.StyleController = this.styleController1;
@@ -1422,7 +1435,7 @@
             // 
             // labelControl32
             // 
-            this.labelControl32.Location = new System.Drawing.Point(22, 109);
+            this.labelControl32.Location = new System.Drawing.Point(22, 167);
             this.labelControl32.Name = "labelControl32";
             this.labelControl32.Size = new System.Drawing.Size(37, 16);
             this.labelControl32.StyleController = this.styleController1;
@@ -1431,7 +1444,7 @@
             // 
             // labelControl31
             // 
-            this.labelControl31.Location = new System.Drawing.Point(22, 147);
+            this.labelControl31.Location = new System.Drawing.Point(22, 312);
             this.labelControl31.Name = "labelControl31";
             this.labelControl31.Size = new System.Drawing.Size(75, 16);
             this.labelControl31.StyleController = this.styleController1;
@@ -1440,7 +1453,7 @@
             // 
             // labelControl30
             // 
-            this.labelControl30.Location = new System.Drawing.Point(22, 231);
+            this.labelControl30.Location = new System.Drawing.Point(22, 237);
             this.labelControl30.Name = "labelControl30";
             this.labelControl30.Size = new System.Drawing.Size(71, 16);
             this.labelControl30.StyleController = this.styleController1;
@@ -1458,7 +1471,7 @@
             // 
             // labelControl24
             // 
-            this.labelControl24.Location = new System.Drawing.Point(22, 72);
+            this.labelControl24.Location = new System.Drawing.Point(22, 102);
             this.labelControl24.Name = "labelControl24";
             this.labelControl24.Size = new System.Drawing.Size(32, 16);
             this.labelControl24.StyleController = this.styleController1;
@@ -1468,7 +1481,7 @@
             // textEdit6
             // 
             this.textEdit6.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KAgentDocDS, "DocWhoProduce", true));
-            this.textEdit6.Location = new System.Drawing.Point(128, 144);
+            this.textEdit6.Location = new System.Drawing.Point(22, 334);
             this.textEdit6.Name = "textEdit6";
             this.textEdit6.Size = new System.Drawing.Size(521, 68);
             this.textEdit6.TabIndex = 56;
@@ -1477,7 +1490,7 @@
             // 
             this.calcEdit4.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KAgentDocDS, "DocDate", true));
             this.calcEdit4.EditValue = null;
-            this.calcEdit4.Location = new System.Drawing.Point(128, 228);
+            this.calcEdit4.Location = new System.Drawing.Point(22, 259);
             this.calcEdit4.Name = "calcEdit4";
             this.calcEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1485,14 +1498,15 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.calcEdit4.Properties.Mask.EditMask = "";
             this.calcEdit4.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.calcEdit4.Size = new System.Drawing.Size(161, 20);
+            this.calcEdit4.Size = new System.Drawing.Size(187, 22);
+            this.calcEdit4.StyleController = this.styleController1;
             this.calcEdit4.TabIndex = 46;
             // 
             // xtraTabPage3
             // 
             this.xtraTabPage3.Controls.Add(this.panel4);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(681, 534);
+            this.xtraTabPage3.Size = new System.Drawing.Size(683, 534);
             this.xtraTabPage3.Text = "Дод. інформація";
             // 
             // panel4
@@ -1501,18 +1515,20 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(681, 534);
+            this.panel4.Size = new System.Drawing.Size(683, 534);
             this.panel4.TabIndex = 29;
             // 
             // groupControl4
             // 
+            this.groupControl4.Controls.Add(this.RouteLookUpEdit);
+            this.groupControl4.Controls.Add(this.labelControl54);
             this.groupControl4.Controls.Add(this.simpleButton6);
             this.groupControl4.Controls.Add(this.labelControl23);
             this.groupControl4.Controls.Add(this.PTypeEdit);
             this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl4.Location = new System.Drawing.Point(0, 0);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(681, 534);
+            this.groupControl4.Size = new System.Drawing.Size(683, 534);
             this.groupControl4.TabIndex = 16;
             this.groupControl4.Tag = "";
             this.groupControl4.Text = "Додаткова інформація ";
@@ -1522,7 +1538,7 @@
             this.simpleButton6.ImageIndex = 11;
             this.simpleButton6.ImageList = this.ImageList;
             this.simpleButton6.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton6.Location = new System.Drawing.Point(350, 39);
+            this.simpleButton6.Location = new System.Drawing.Point(348, 64);
             this.simpleButton6.Name = "simpleButton6";
             this.simpleButton6.Size = new System.Drawing.Size(22, 22);
             this.simpleButton6.TabIndex = 38;
@@ -1540,7 +1556,7 @@
             // PTypeEdit
             // 
             this.PTypeEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "PTypeId", true));
-            this.PTypeEdit.Location = new System.Drawing.Point(110, 39);
+            this.PTypeEdit.Location = new System.Drawing.Point(15, 64);
             this.PTypeEdit.Name = "PTypeEdit";
             this.PTypeEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1552,7 +1568,7 @@
             this.PTypeEdit.Properties.ShowFooter = false;
             this.PTypeEdit.Properties.ShowHeader = false;
             this.PTypeEdit.Properties.ValueMember = "PTypeId";
-            this.PTypeEdit.Size = new System.Drawing.Size(234, 22);
+            this.PTypeEdit.Size = new System.Drawing.Size(327, 22);
             this.PTypeEdit.StyleController = this.styleController1;
             this.PTypeEdit.TabIndex = 37;
             // 
@@ -1560,7 +1576,7 @@
             // 
             this.xtraTabPage4.Controls.Add(this.groupControl5);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(681, 534);
+            this.xtraTabPage4.Size = new System.Drawing.Size(683, 534);
             this.xtraTabPage4.Text = "Знижки";
             // 
             // groupControl5
@@ -1570,7 +1586,7 @@
             this.groupControl5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl5.Location = new System.Drawing.Point(0, 0);
             this.groupControl5.Name = "groupControl5";
-            this.groupControl5.Size = new System.Drawing.Size(681, 534);
+            this.groupControl5.Size = new System.Drawing.Size(683, 534);
             this.groupControl5.TabIndex = 16;
             this.groupControl5.Tag = "";
             // 
@@ -1584,7 +1600,7 @@
             this.DiscPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DiscPanel.Location = new System.Drawing.Point(2, 20);
             this.DiscPanel.Name = "DiscPanel";
-            this.DiscPanel.Size = new System.Drawing.Size(677, 512);
+            this.DiscPanel.Size = new System.Drawing.Size(679, 512);
             this.DiscPanel.TabIndex = 44;
             // 
             // panelControl6
@@ -1598,7 +1614,7 @@
             this.panelControl6.Controls.Add(this.dropDownButton1);
             this.panelControl6.Location = new System.Drawing.Point(14, 85);
             this.panelControl6.Name = "panelControl6";
-            this.panelControl6.Size = new System.Drawing.Size(648, 414);
+            this.panelControl6.Size = new System.Drawing.Size(650, 414);
             this.panelControl6.TabIndex = 48;
             // 
             // DiscountGridControl
@@ -1610,7 +1626,7 @@
             this.DiscountGridControl.MainView = this.DiscountGridView;
             this.DiscountGridControl.MenuManager = this.barManager1;
             this.DiscountGridControl.Name = "DiscountGridControl";
-            this.DiscountGridControl.Size = new System.Drawing.Size(614, 342);
+            this.DiscountGridControl.Size = new System.Drawing.Size(616, 342);
             this.DiscountGridControl.TabIndex = 3;
             this.DiscountGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.DiscountGridView});
@@ -1746,7 +1762,7 @@
             // 
             this.xtraTabPage5.Controls.Add(this.panel2);
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(681, 534);
+            this.xtraTabPage5.Size = new System.Drawing.Size(683, 534);
             this.xtraTabPage5.Text = "Конт. інфо.";
             // 
             // panel2
@@ -1758,7 +1774,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.panel2.Size = new System.Drawing.Size(681, 534);
+            this.panel2.Size = new System.Drawing.Size(683, 534);
             this.panel2.TabIndex = 29;
             // 
             // groupControl14
@@ -1774,7 +1790,7 @@
             this.groupControl14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl14.Location = new System.Drawing.Point(5, 391);
             this.groupControl14.Name = "groupControl14";
-            this.groupControl14.Size = new System.Drawing.Size(671, 138);
+            this.groupControl14.Size = new System.Drawing.Size(673, 138);
             this.groupControl14.TabIndex = 18;
             this.groupControl14.Tag = "";
             this.groupControl14.Text = "Контактна інформація ";
@@ -1869,7 +1885,7 @@
             this.groupControl13.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl13.Location = new System.Drawing.Point(5, 198);
             this.groupControl13.Name = "groupControl13";
-            this.groupControl13.Size = new System.Drawing.Size(671, 193);
+            this.groupControl13.Size = new System.Drawing.Size(673, 193);
             this.groupControl13.TabIndex = 17;
             this.groupControl13.Tag = "";
             this.groupControl13.Text = "Фактична адреса";
@@ -2026,10 +2042,23 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl1.Location = new System.Drawing.Point(5, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(671, 198);
+            this.groupControl1.Size = new System.Drawing.Size(673, 198);
             this.groupControl1.TabIndex = 16;
             this.groupControl1.Tag = "";
             this.groupControl1.Text = "Юридична адреса ";
+            // 
+            // simpleButton15
+            // 
+            this.simpleButton15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton15.ImageIndex = 13;
+            this.simpleButton15.ImageList = this.ImageList;
+            this.simpleButton15.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton15.Location = new System.Drawing.Point(635, 163);
+            this.simpleButton15.Name = "simpleButton15";
+            this.simpleButton15.Size = new System.Drawing.Size(22, 22);
+            this.simpleButton15.TabIndex = 48;
+            this.simpleButton15.ToolTip = "Скопіювати у фактичну адресу";
+            this.simpleButton15.Click += new System.EventHandler(this.simpleButton15_Click);
             // 
             // textEdit26
             // 
@@ -2167,14 +2196,14 @@
             // xtraTabPage11
             // 
             this.xtraTabPage11.Name = "xtraTabPage11";
-            this.xtraTabPage11.Size = new System.Drawing.Size(681, 534);
+            this.xtraTabPage11.Size = new System.Drawing.Size(683, 534);
             this.xtraTabPage11.Text = "Конт. особ.";
             // 
             // xtraTabPage6
             // 
             this.xtraTabPage6.Controls.Add(this.groupControl11);
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(681, 534);
+            this.xtraTabPage6.Size = new System.Drawing.Size(683, 534);
             this.xtraTabPage6.Text = "Рахунки";
             // 
             // groupControl11
@@ -2183,7 +2212,7 @@
             this.groupControl11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl11.Location = new System.Drawing.Point(0, 0);
             this.groupControl11.Name = "groupControl11";
-            this.groupControl11.Size = new System.Drawing.Size(681, 534);
+            this.groupControl11.Size = new System.Drawing.Size(683, 534);
             this.groupControl11.TabIndex = 17;
             this.groupControl11.Tag = "";
             this.groupControl11.Text = " Рахунки ";
@@ -2197,7 +2226,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(2, 20);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(677, 512);
+            this.panel6.Size = new System.Drawing.Size(679, 512);
             this.panel6.TabIndex = 44;
             // 
             // AddAccBtn
@@ -2240,7 +2269,7 @@
             this.AccountsGridControl.MainView = this.AccountsGridView;
             this.AccountsGridControl.MenuManager = this.barManager1;
             this.AccountsGridControl.Name = "AccountsGridControl";
-            this.AccountsGridControl.Size = new System.Drawing.Size(643, 448);
+            this.AccountsGridControl.Size = new System.Drawing.Size(645, 448);
             this.AccountsGridControl.TabIndex = 7;
             this.AccountsGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.AccountsGridView});
@@ -2304,7 +2333,7 @@
             // 
             this.xtraTabPage7.Controls.Add(this.groupControl10);
             this.xtraTabPage7.Name = "xtraTabPage7";
-            this.xtraTabPage7.Size = new System.Drawing.Size(681, 534);
+            this.xtraTabPage7.Size = new System.Drawing.Size(683, 534);
             this.xtraTabPage7.Text = "Примітка";
             // 
             // groupControl10
@@ -2313,7 +2342,7 @@
             this.groupControl10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl10.Location = new System.Drawing.Point(0, 0);
             this.groupControl10.Name = "groupControl10";
-            this.groupControl10.Size = new System.Drawing.Size(681, 534);
+            this.groupControl10.Size = new System.Drawing.Size(683, 534);
             this.groupControl10.TabIndex = 36;
             this.groupControl10.Tag = "";
             this.groupControl10.Text = "Примітка ";
@@ -2324,20 +2353,20 @@
             this.textEdit8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textEdit8.Location = new System.Drawing.Point(2, 20);
             this.textEdit8.Name = "textEdit8";
-            this.textEdit8.Size = new System.Drawing.Size(677, 512);
+            this.textEdit8.Size = new System.Drawing.Size(679, 512);
             this.textEdit8.TabIndex = 35;
             // 
             // xtraTabPage12
             // 
             this.xtraTabPage12.Name = "xtraTabPage12";
-            this.xtraTabPage12.Size = new System.Drawing.Size(681, 534);
+            this.xtraTabPage12.Size = new System.Drawing.Size(683, 534);
             this.xtraTabPage12.Text = "Конт. особа";
             // 
             // xtraTabPage13
             // 
             this.xtraTabPage13.Controls.Add(this.groupControl12);
             this.xtraTabPage13.Name = "xtraTabPage13";
-            this.xtraTabPage13.Size = new System.Drawing.Size(681, 534);
+            this.xtraTabPage13.Size = new System.Drawing.Size(683, 534);
             this.xtraTabPage13.Text = "Рахунок";
             // 
             // groupControl12
@@ -2349,7 +2378,7 @@
             this.groupControl12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl12.Location = new System.Drawing.Point(0, 0);
             this.groupControl12.Name = "groupControl12";
-            this.groupControl12.Size = new System.Drawing.Size(681, 534);
+            this.groupControl12.Size = new System.Drawing.Size(683, 534);
             this.groupControl12.TabIndex = 18;
             this.groupControl12.Tag = "";
             this.groupControl12.Text = " Рахунок ";
@@ -2359,7 +2388,7 @@
             this.simpleButton7.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton7.Image")));
             this.simpleButton7.ImageList = this.ImageList;
             this.simpleButton7.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton7.Location = new System.Drawing.Point(638, 32);
+            this.simpleButton7.Location = new System.Drawing.Point(640, 32);
             this.simpleButton7.Name = "simpleButton7";
             this.simpleButton7.Size = new System.Drawing.Size(22, 22);
             this.simpleButton7.TabIndex = 52;
@@ -2402,7 +2431,7 @@
             this.panelControl9.Controls.Add(this.lookUpEdit1);
             this.panelControl9.Location = new System.Drawing.Point(20, 69);
             this.panelControl9.Name = "panelControl9";
-            this.panelControl9.Size = new System.Drawing.Size(640, 444);
+            this.panelControl9.Size = new System.Drawing.Size(642, 444);
             this.panelControl9.TabIndex = 49;
             // 
             // lookUpEdit2
@@ -2528,7 +2557,7 @@
             // 
             this.xtraTabPage14.Controls.Add(this.groupControl6);
             this.xtraTabPage14.Name = "xtraTabPage14";
-            this.xtraTabPage14.Size = new System.Drawing.Size(681, 534);
+            this.xtraTabPage14.Size = new System.Drawing.Size(683, 534);
             this.xtraTabPage14.Text = "Знижка на товар";
             // 
             // groupControl6
@@ -2540,7 +2569,7 @@
             this.groupControl6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl6.Location = new System.Drawing.Point(0, 0);
             this.groupControl6.Name = "groupControl6";
-            this.groupControl6.Size = new System.Drawing.Size(681, 534);
+            this.groupControl6.Size = new System.Drawing.Size(683, 534);
             this.groupControl6.TabIndex = 17;
             this.groupControl6.Tag = "";
             this.groupControl6.Text = " Знижка на товар";
@@ -2555,9 +2584,9 @@
             this.panelControl7.Controls.Add(this.labelControl10);
             this.panelControl7.Controls.Add(this.labelControl9);
             this.panelControl7.Controls.Add(this.MatLookUpEdit);
-            this.panelControl7.Location = new System.Drawing.Point(30, 72);
+            this.panelControl7.Location = new System.Drawing.Point(20, 69);
             this.panelControl7.Name = "panelControl7";
-            this.panelControl7.Size = new System.Drawing.Size(625, 440);
+            this.panelControl7.Size = new System.Drawing.Size(645, 440);
             this.panelControl7.TabIndex = 49;
             // 
             // labelControl11
@@ -2625,7 +2654,7 @@
             // simpleButton9
             // 
             this.simpleButton9.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton9.Image")));
-            this.simpleButton9.Location = new System.Drawing.Point(153, 33);
+            this.simpleButton9.Location = new System.Drawing.Point(143, 33);
             this.simpleButton9.Name = "simpleButton9";
             this.simpleButton9.Size = new System.Drawing.Size(101, 23);
             this.simpleButton9.TabIndex = 2;
@@ -2637,7 +2666,7 @@
             this.simpleButton4.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton4.Image")));
             this.simpleButton4.ImageList = this.ImageList;
             this.simpleButton4.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton4.Location = new System.Drawing.Point(627, 33);
+            this.simpleButton4.Location = new System.Drawing.Point(643, 33);
             this.simpleButton4.Name = "simpleButton4";
             this.simpleButton4.Size = new System.Drawing.Size(22, 22);
             this.simpleButton4.TabIndex = 38;
@@ -2648,7 +2677,7 @@
             // 
             this.xtraTabPage15.Controls.Add(this.groupControl7);
             this.xtraTabPage15.Name = "xtraTabPage15";
-            this.xtraTabPage15.Size = new System.Drawing.Size(681, 534);
+            this.xtraTabPage15.Size = new System.Drawing.Size(683, 534);
             this.xtraTabPage15.Text = "Знижка на товарну групу";
             // 
             // groupControl7
@@ -2660,7 +2689,7 @@
             this.groupControl7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl7.Location = new System.Drawing.Point(0, 0);
             this.groupControl7.Name = "groupControl7";
-            this.groupControl7.Size = new System.Drawing.Size(681, 534);
+            this.groupControl7.Size = new System.Drawing.Size(683, 534);
             this.groupControl7.TabIndex = 18;
             this.groupControl7.Tag = "";
             this.groupControl7.Text = " Знижка на товар";
@@ -2675,9 +2704,9 @@
             this.panelControl8.Controls.Add(this.labelControl13);
             this.panelControl8.Controls.Add(this.labelControl14);
             this.panelControl8.Controls.Add(this.GroupLookUpEdit);
-            this.panelControl8.Location = new System.Drawing.Point(30, 72);
+            this.panelControl8.Location = new System.Drawing.Point(20, 69);
             this.panelControl8.Name = "panelControl8";
-            this.panelControl8.Size = new System.Drawing.Size(625, 440);
+            this.panelControl8.Size = new System.Drawing.Size(645, 440);
             this.panelControl8.TabIndex = 49;
             // 
             // labelControl12
@@ -2746,7 +2775,7 @@
             // simpleButton10
             // 
             this.simpleButton10.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton10.Image")));
-            this.simpleButton10.Location = new System.Drawing.Point(153, 33);
+            this.simpleButton10.Location = new System.Drawing.Point(143, 33);
             this.simpleButton10.Name = "simpleButton10";
             this.simpleButton10.Size = new System.Drawing.Size(101, 23);
             this.simpleButton10.TabIndex = 2;
@@ -2758,7 +2787,7 @@
             this.simpleButton11.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton11.Image")));
             this.simpleButton11.ImageList = this.ImageList;
             this.simpleButton11.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton11.Location = new System.Drawing.Point(627, 33);
+            this.simpleButton11.Location = new System.Drawing.Point(641, 34);
             this.simpleButton11.Name = "simpleButton11";
             this.simpleButton11.Size = new System.Drawing.Size(22, 22);
             this.simpleButton11.TabIndex = 38;
@@ -2771,7 +2800,7 @@
             this.xtraTabPage16.Appearance.PageClient.Options.UseBackColor = true;
             this.xtraTabPage16.Controls.Add(this.groupControl9);
             this.xtraTabPage16.Name = "xtraTabPage16";
-            this.xtraTabPage16.Size = new System.Drawing.Size(674, 532);
+            this.xtraTabPage16.Size = new System.Drawing.Size(683, 534);
             this.xtraTabPage16.Text = "Договір";
             // 
             // groupControl9
@@ -2785,7 +2814,7 @@
             this.groupControl9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl9.Location = new System.Drawing.Point(0, 0);
             this.groupControl9.Name = "groupControl9";
-            this.groupControl9.Size = new System.Drawing.Size(674, 532);
+            this.groupControl9.Size = new System.Drawing.Size(683, 534);
             this.groupControl9.TabIndex = 20;
             this.groupControl9.Tag = "";
             this.groupControl9.Text = "Цивільно-правововий договір  ";
@@ -2793,16 +2822,16 @@
             // textEdit7
             // 
             this.textEdit7.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "ContractNum", true));
-            this.textEdit7.Location = new System.Drawing.Point(128, 106);
+            this.textEdit7.Location = new System.Drawing.Point(22, 138);
             this.textEdit7.Name = "textEdit7";
-            this.textEdit7.Size = new System.Drawing.Size(161, 22);
+            this.textEdit7.Size = new System.Drawing.Size(230, 22);
             this.textEdit7.StyleController = this.styleController1;
             this.textEdit7.TabIndex = 55;
             // 
             // textEdit20
             // 
             this.textEdit20.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "ContractType", true));
-            this.textEdit20.Location = new System.Drawing.Point(128, 37);
+            this.textEdit20.Location = new System.Drawing.Point(22, 62);
             this.textEdit20.Name = "textEdit20";
             this.textEdit20.Size = new System.Drawing.Size(521, 22);
             this.textEdit20.StyleController = this.styleController1;
@@ -2810,7 +2839,7 @@
             // 
             // labelControl15
             // 
-            this.labelControl15.Location = new System.Drawing.Point(22, 109);
+            this.labelControl15.Location = new System.Drawing.Point(22, 116);
             this.labelControl15.Name = "labelControl15";
             this.labelControl15.Size = new System.Drawing.Size(37, 16);
             this.labelControl15.StyleController = this.styleController1;
@@ -2819,7 +2848,7 @@
             // 
             // labelControl34
             // 
-            this.labelControl34.Location = new System.Drawing.Point(22, 74);
+            this.labelControl34.Location = new System.Drawing.Point(382, 116);
             this.labelControl34.Name = "labelControl34";
             this.labelControl34.Size = new System.Drawing.Size(29, 16);
             this.labelControl34.StyleController = this.styleController1;
@@ -2830,16 +2859,16 @@
             // 
             this.labelControl35.Location = new System.Drawing.Point(22, 40);
             this.labelControl35.Name = "labelControl35";
-            this.labelControl35.Size = new System.Drawing.Size(21, 16);
+            this.labelControl35.Size = new System.Drawing.Size(78, 16);
             this.labelControl35.StyleController = this.styleController1;
             this.labelControl35.TabIndex = 36;
-            this.labelControl35.Text = "Вид";
+            this.labelControl35.Text = "Вид договору";
             // 
             // dateEdit3
             // 
             this.dateEdit3.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "ContractDate", true));
             this.dateEdit3.EditValue = null;
-            this.dateEdit3.Location = new System.Drawing.Point(128, 73);
+            this.dateEdit3.Location = new System.Drawing.Point(382, 138);
             this.dateEdit3.Name = "dateEdit3";
             this.dateEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -2847,21 +2876,37 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEdit3.Properties.Mask.EditMask = "";
             this.dateEdit3.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.dateEdit3.Size = new System.Drawing.Size(161, 20);
+            this.dateEdit3.Size = new System.Drawing.Size(161, 22);
+            this.dateEdit3.StyleController = this.styleController1;
             this.dateEdit3.TabIndex = 46;
             // 
-            // simpleButton15
+            // RouteLookUpEdit
             // 
-            this.simpleButton15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton15.ImageIndex = 13;
-            this.simpleButton15.ImageList = this.ImageList;
-            this.simpleButton15.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton15.Location = new System.Drawing.Point(635, 163);
-            this.simpleButton15.Name = "simpleButton15";
-            this.simpleButton15.Size = new System.Drawing.Size(22, 22);
-            this.simpleButton15.TabIndex = 48;
-            this.simpleButton15.ToolTip = "Скопіювати у фактичну адресу";
-            this.simpleButton15.Click += new System.EventHandler(this.simpleButton15_Click);
+            this.RouteLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "RouteId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.RouteLookUpEdit.Location = new System.Drawing.Point(15, 138);
+            this.RouteLookUpEdit.Name = "RouteLookUpEdit";
+            this.RouteLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.RouteLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name1")});
+            this.RouteLookUpEdit.Properties.DisplayMember = "Name";
+            this.RouteLookUpEdit.Properties.NullText = "";
+            this.RouteLookUpEdit.Properties.PopupSizeable = false;
+            this.RouteLookUpEdit.Properties.ShowFooter = false;
+            this.RouteLookUpEdit.Properties.ShowHeader = false;
+            this.RouteLookUpEdit.Properties.ValueMember = "Id";
+            this.RouteLookUpEdit.Size = new System.Drawing.Size(355, 22);
+            this.RouteLookUpEdit.StyleController = this.styleController1;
+            this.RouteLookUpEdit.TabIndex = 43;
+            // 
+            // labelControl54
+            // 
+            this.labelControl54.Location = new System.Drawing.Point(15, 116);
+            this.labelControl54.Name = "labelControl54";
+            this.labelControl54.Size = new System.Drawing.Size(53, 16);
+            this.labelControl54.StyleController = this.styleController1;
+            this.labelControl54.TabIndex = 42;
+            this.labelControl54.Text = "Маршрут";
             // 
             // frmKAgentEdit
             // 
@@ -2919,16 +2964,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).EndInit();
             this.xtraTabControl2.ResumeLayout(false);
-            this.xtraTabPage10.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
-            this.panelControl4.ResumeLayout(false);
-            this.panelControl4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.UsersLookUpEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit19.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit18.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.JobLookUpEdit.Properties)).EndInit();
             this.xtraTabPage8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
@@ -2944,6 +2979,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit16.Properties)).EndInit();
+            this.xtraTabPage10.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
+            this.panelControl4.ResumeLayout(false);
+            this.panelControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UsersLookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit19.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.JobLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
@@ -3060,6 +3105,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit20.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RouteLookUpEdit.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3156,7 +3202,6 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage14;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage15;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage16;
-        private DevExpress.XtraEditors.RadioGroup textEdit18;
         private System.Windows.Forms.Panel StartSaldoPanel;
         private DevExpress.XtraEditors.CheckEdit checkEdit4;
         private DevExpress.XtraEditors.CheckEdit checkEdit3;
@@ -3293,5 +3338,8 @@
         private System.Windows.Forms.BindingSource AddrresFizBS;
         private System.Windows.Forms.BindingSource AddrresUrBS;
         private DevExpress.XtraEditors.SimpleButton simpleButton15;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEdit3;
+        private DevExpress.XtraEditors.LookUpEdit RouteLookUpEdit;
+        private DevExpress.XtraEditors.LabelControl labelControl54;
     }
 }

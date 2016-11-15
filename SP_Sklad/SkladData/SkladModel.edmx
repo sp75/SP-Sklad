@@ -33,6 +33,7 @@
           <EntitySet Name="ENTPARAMS" EntityType="BaseModel.Store.ENTPARAMS" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ExtRel" EntityType="BaseModel.Store.ExtRel" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Functions" EntityType="BaseModel.Store.Functions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Jobs" EntityType="BaseModel.Store.Jobs" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="KaAddr" EntityType="BaseModel.Store.KaAddr" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="KADiscount" EntityType="BaseModel.Store.KADiscount" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Kagent" EntityType="BaseModel.Store.Kagent" store:Type="Tables" Schema="dbo" />
@@ -78,6 +79,7 @@
           </EntitySet>
           <EntitySet Name="Reports" EntityType="BaseModel.Store.Reports" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ReturnRel" EntityType="BaseModel.Store.ReturnRel" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Routes" EntityType="BaseModel.Store.Routes" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Serials" EntityType="BaseModel.Store.Serials" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Services" EntityType="BaseModel.Store.Services" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SvcGroup" EntityType="BaseModel.Store.SvcGroup" store:Type="Tables" Schema="dbo" />
@@ -91,6 +93,7 @@
           <EntitySet Name="UserAccess" EntityType="BaseModel.Store.UserAccess" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserAccessWh" EntityType="BaseModel.Store.UserAccessWh" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Users" EntityType="BaseModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UsersGroup" EntityType="BaseModel.Store.UsersGroup" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserTree" EntityType="BaseModel.Store.UserTree" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserTreeView" EntityType="BaseModel.Store.UserTreeView" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ViewLng" EntityType="BaseModel.Store.ViewLng" store:Type="Tables" store:Schema="dbo" store:Name="ViewLng">
@@ -684,6 +687,10 @@
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="KADiscount" EntitySet="KADiscount" />
           </AssociationSet>
+          <AssociationSet Name="FK_Kagent_Routes" Association="BaseModel.Store.FK_Kagent_Routes">
+            <End Role="Routes" EntitySet="Routes" />
+            <End Role="Kagent" EntitySet="Kagent" />
+          </AssociationSet>
           <AssociationSet Name="FK_Kagent_Users" Association="BaseModel.Store.FK_Kagent_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Kagent" EntitySet="Kagent" />
@@ -879,6 +886,10 @@
           <AssociationSet Name="FK_USERACCESS_1" Association="BaseModel.Store.FK_USERACCESS_1">
             <End Role="Users" EntitySet="Users" />
             <End Role="UserAccess" EntitySet="UserAccess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_UsersGroup" Association="BaseModel.Store.FK_Users_UsersGroup">
+            <End Role="UsersGroup" EntitySet="UsersGroup" />
+            <End Role="Users" EntitySet="Users" />
           </AssociationSet>
           <AssociationSet Name="FK_USERTREE_FK_USERTR_FUNCTION" Association="BaseModel.Store.FK_USERTREE_FK_USERTR_FUNCTION">
             <End Role="Functions" EntitySet="Functions" />
@@ -1295,6 +1306,13 @@
           <Property Name="Logging" Type="int" Nullable="false" />
           <Property Name="Flags" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Jobs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="KaAddr">
           <Key>
             <PropertyRef Name="AddrId" />
@@ -1352,6 +1370,7 @@
           <Property Name="ContractType" Type="nvarchar" MaxLength="64" />
           <Property Name="ContractDate" Type="datetime" />
           <Property Name="ContractNum" Type="nvarchar" MaxLength="20" />
+          <Property Name="RouteId" Type="int" />
         </EntityType>
         <EntityType Name="KAgentAccount">
           <Key>
@@ -1779,6 +1798,14 @@
           <Property Name="PPosId" Type="int" Nullable="false" />
           <Property Name="DPosId" Type="int" />
         </EntityType>
+        <EntityType Name="Routes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="DriverId" Type="int" />
+        </EntityType>
         <EntityType Name="Serials">
           <Key>
             <PropertyRef Name="SId" />
@@ -1792,7 +1819,7 @@
           <Key>
             <PropertyRef Name="SvcId" />
           </Key>
-          <Property Name="SvcId" Type="int" Nullable="false" />
+          <Property Name="SvcId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="128" />
           <Property Name="Artikul" Type="nvarchar" MaxLength="80" />
           <Property Name="GrpId" Type="int" Nullable="false" />
@@ -1937,6 +1964,14 @@
           <Property Name="LastLogin" Type="datetime" />
           <Property Name="IsOnline" Type="bit" />
           <Property Name="ReportFormat" Type="nvarchar" MaxLength="10" />
+          <Property Name="GroupId" Type="int" />
+        </EntityType>
+        <EntityType Name="UsersGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="UserTree">
           <Key>
@@ -3364,6 +3399,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Kagent_Routes">
+          <End Role="Routes" Type="BaseModel.Store.Routes" Multiplicity="0..1" />
+          <End Role="Kagent" Type="BaseModel.Store.Kagent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Routes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kagent">
+              <PropertyRef Name="RouteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Kagent_Users">
           <End Role="Users" Type="BaseModel.Store.Users" Multiplicity="0..1" />
           <End Role="Kagent" Type="BaseModel.Store.Kagent" Multiplicity="*" />
@@ -3987,6 +4034,18 @@
             </Principal>
             <Dependent Role="UserAccess">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_UsersGroup">
+          <End Role="UsersGroup" Type="BaseModel.Store.UsersGroup" Multiplicity="0..1" />
+          <End Role="Users" Type="BaseModel.Store.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsersGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="GroupId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -6409,28 +6468,11 @@
           <FunctionImport Name="GetUserAccessWh" ReturnType="Collection(BaseModel.GetUserAccessWh_Result)">
           <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="Services" EntityType="BaseModel.Services" />
           <EntitySet Name="SvcGroup" EntityType="BaseModel.SvcGroup" />
           <EntitySet Name="v_Services" EntityType="BaseModel.v_Services" />
-          <AssociationSet Name="FK_SVC_CURRID" Association="BaseModel.FK_SVC_CURRID">
-            <End Role="Currency" EntitySet="Currency" />
-            <End Role="Services" EntitySet="Services" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SVC_MID" Association="BaseModel.FK_SVC_MID">
-            <End Role="Measures" EntitySet="Measures" />
-            <End Role="Services" EntitySet="Services" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SERVICES_1" Association="BaseModel.FK_SERVICES_1">
-            <End Role="SvcGroup" EntitySet="SvcGroup" />
-            <End Role="Services" EntitySet="Services" />
-          </AssociationSet>
           <EntitySet Name="WayBillSvc" EntityType="BaseModel.WayBillSvc" />
           <AssociationSet Name="FK_WBS_CURRID" Association="BaseModel.FK_WBS_CURRID">
             <End Role="Currency" EntitySet="Currency" />
-            <End Role="WayBillSvc" EntitySet="WayBillSvc" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WBS_SVCID" Association="BaseModel.FK_WBS_SVCID">
-            <End Role="Services" EntitySet="Services" />
             <End Role="WayBillSvc" EntitySet="WayBillSvc" />
           </AssociationSet>
           <EntitySet Name="PriceListDet" EntityType="BaseModel.PriceListDet" />
@@ -7041,6 +7083,34 @@
             <End Role="WaybillList" EntitySet="WaybillList" />
             <End Role="TechProcDet" EntitySet="TechProcDet" />
           </AssociationSet>
+          <EntitySet Name="Services" EntityType="BaseModel.Services" />
+          <AssociationSet Name="FK_SVC_CURRID" Association="BaseModel.FK_SVC_CURRID">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="Services" EntitySet="Services" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SVC_MID" Association="BaseModel.FK_SVC_MID">
+            <End Role="Measures" EntitySet="Measures" />
+            <End Role="Services" EntitySet="Services" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICES_1" Association="BaseModel.FK_SERVICES_1">
+            <End Role="SvcGroup" EntitySet="SvcGroup" />
+            <End Role="Services" EntitySet="Services" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WBS_SVCID" Association="BaseModel.FK_WBS_SVCID">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="WayBillSvc" EntitySet="WayBillSvc" />
+          </AssociationSet>
+          <EntitySet Name="Routes" EntityType="BaseModel.Routes" />
+          <EntitySet Name="UsersGroup" EntityType="BaseModel.UsersGroup" />
+          <AssociationSet Name="FK_Kagent_Routes" Association="BaseModel.FK_Kagent_Routes">
+            <End Role="Routes" EntitySet="Routes" />
+            <End Role="Kagent" EntitySet="Kagent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_UsersGroup" Association="BaseModel.FK_Users_UsersGroup">
+            <End Role="UsersGroup" EntitySet="UsersGroup" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="Jobs" EntityType="BaseModel.Jobs" />
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -7625,6 +7695,8 @@
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_Kagent_Users" FromRole="Users" ToRole="Kagent" />
           <NavigationProperty Name="OperLog" Relationship="BaseModel.FK_OperLog_Users" FromRole="Users" ToRole="OperLog" />
           <Property Type="String" Name="ReportFormat" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="GroupId" />
+          <NavigationProperty Name="UsersGroup" Relationship="BaseModel.FK_Users_UsersGroup" FromRole="Users" ToRole="UsersGroup" />
         </EntityType>
         <EntityType Name="Currency">
           <Key>
@@ -7642,7 +7714,6 @@
           <NavigationProperty Name="CONTRDET" Relationship="BaseModel.FK_CONTRDET_REFERENCE_CURRENCY" FromRole="Currency" ToRole="CONTRDET" />
           <NavigationProperty Name="CURRENCYRATE" Relationship="BaseModel.FK__CURRENCYR__CURRI__5EBF139D" FromRole="Currency" ToRole="CURRENCYRATE" />
           <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK__PAYDOC__CURRID__214BF109" FromRole="Currency" ToRole="PayDoc" />
-          <NavigationProperty Name="Services" Relationship="BaseModel.FK_SVC_CURRID" FromRole="Currency" ToRole="Services" />
           <NavigationProperty Name="WayBillSvc" Relationship="BaseModel.FK_WBS_CURRID" FromRole="Currency" ToRole="WayBillSvc" />
           <NavigationProperty Name="PriceList" Relationship="BaseModel.FK_PRICELIS_REFERENCE_CURRENCY" FromRole="Currency" ToRole="PriceList" />
           <NavigationProperty Name="MoneySaldo" Relationship="BaseModel.FK_MS_CURRID" FromRole="Currency" ToRole="MoneySaldo" />
@@ -7650,6 +7721,7 @@
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_CURRENCY" FromRole="Currency" ToRole="WaybillDet" />
           <NavigationProperty Name="MatGroupPrices" Relationship="BaseModel.FK__MATGROUPP__CURRI__6EC0713C" FromRole="Currency" ToRole="MatGroupPrices" />
           <NavigationProperty Name="MatPrices" Relationship="BaseModel.FK__MATPRICES__CURRI__74794A92" FromRole="Currency" ToRole="MatPrices" />
+          <NavigationProperty Name="Services" Relationship="BaseModel.FK_SVC_CURRID" FromRole="Currency" ToRole="Services" />
         </EntityType>
         <Association Name="FK_CONTRACT_REFERENCE_CURRENCY">
           <End Type="BaseModel.Currency" Role="Currency" Multiplicity="0..1" />
@@ -9201,27 +9273,6 @@
           <Property Type="String" Name="Name" Nullable="false" MaxLength="64" />
           <Property Type="Int32" Name="Allow" Nullable="false" />
         </ComplexType>
-        <EntityType Name="Services">
-          <Key>
-            <PropertyRef Name="SvcId" />
-          </Key>
-          <Property Type="Int32" Name="SvcId" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Artikul" MaxLength="80" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="GrpId" Nullable="false" />
-          <Property Type="Int32" Name="IsTransport" Nullable="false" />
-          <Property Type="Decimal" Name="Price" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="CurrId" />
-          <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="Deleted" Nullable="false" />
-          <Property Type="Int32" Name="IsNormed" Nullable="false" />
-          <Property Type="Decimal" Name="Norm" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="MId" />
-          <NavigationProperty Name="Currency" Relationship="BaseModel.FK_SVC_CURRID" FromRole="Services" ToRole="Currency" />
-          <NavigationProperty Name="Measures" Relationship="BaseModel.FK_SVC_MID" FromRole="Services" ToRole="Measures" />
-          <NavigationProperty Name="SvcGroup" Relationship="BaseModel.FK_SERVICES_1" FromRole="Services" ToRole="SvcGroup" />
-          <NavigationProperty Name="WayBillSvc" Relationship="BaseModel.FK_WBS_SVCID" FromRole="Services" ToRole="WayBillSvc" />
-        </EntityType>
         <EntityType Name="SvcGroup">
           <Key>
             <PropertyRef Name="GrpId" />
@@ -9258,42 +9309,6 @@
           <Property Type="String" Name="MeasuresName" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="SvcGroupName" MaxLength="64" FixedLength="false" Unicode="true" />
         </EntityType>
-        <Association Name="FK_SVC_CURRID">
-          <End Type="BaseModel.Currency" Role="Currency" Multiplicity="0..1" />
-          <End Type="BaseModel.Services" Role="Services" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Currency">
-              <PropertyRef Name="CurrId" />
-            </Principal>
-            <Dependent Role="Services">
-              <PropertyRef Name="CurrId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SVC_MID">
-          <End Type="BaseModel.Measures" Role="Measures" Multiplicity="0..1" />
-          <End Type="BaseModel.Services" Role="Services" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Measures">
-              <PropertyRef Name="MId" />
-            </Principal>
-            <Dependent Role="Services">
-              <PropertyRef Name="MId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SERVICES_1">
-          <End Type="BaseModel.SvcGroup" Role="SvcGroup" Multiplicity="1" />
-          <End Type="BaseModel.Services" Role="Services" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SvcGroup">
-              <PropertyRef Name="GrpId" />
-            </Principal>
-            <Dependent Role="Services">
-              <PropertyRef Name="GrpId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="WayBillSvc">
           <Key>
             <PropertyRef Name="PosId" />
@@ -9313,10 +9328,10 @@
           <Property Type="Int32" Name="SvcToPrice" />
           <Property Type="Decimal" Name="Total" Precision="15" Scale="2" />
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK_WBS_CURRID" FromRole="WayBillSvc" ToRole="Currency" />
-          <NavigationProperty Name="Services" Relationship="BaseModel.FK_WBS_SVCID" FromRole="WayBillSvc" ToRole="Services" />
           <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WBS_WBILLID" FromRole="WayBillSvc" ToRole="WaybillList" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_WBS_PERSONID" FromRole="WayBillSvc" ToRole="Kagent" />
           <Property Type="String" Name="Notes" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Services" Relationship="BaseModel.FK_WBS_SVCID" FromRole="WayBillSvc" ToRole="Services" />
         </EntityType>
         <Association Name="FK_WBS_CURRID">
           <End Type="BaseModel.Currency" Role="Currency" Multiplicity="1" />
@@ -9327,18 +9342,6 @@
             </Principal>
             <Dependent Role="WayBillSvc">
               <PropertyRef Name="CurrId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WBS_SVCID">
-          <End Type="BaseModel.Services" Role="Services" Multiplicity="1" />
-          <End Type="BaseModel.WayBillSvc" Role="WayBillSvc" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Services">
-              <PropertyRef Name="SvcId" />
-            </Principal>
-            <Dependent Role="WayBillSvc">
-              <PropertyRef Name="SvcId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -10549,6 +10552,8 @@
           <NavigationProperty Name="Customers" Relationship="BaseModel.FK_Customers_Kagent" FromRole="Kagent" ToRole="Customers" />
           <NavigationProperty Name="KAgentSaldo" Relationship="BaseModel.FK_KAS_KAID" FromRole="Kagent" ToRole="KAgentSaldo" />
           <NavigationProperty Name="TechProcDet" Relationship="BaseModel.FK_TECHPROCDET_KAGENT" FromRole="Kagent" ToRole="TechProcDet" />
+          <Property Type="Int32" Name="RouteId" />
+          <NavigationProperty Name="Routes" Relationship="BaseModel.FK_Kagent_Routes" FromRole="Kagent" ToRole="Routes" />
         </EntityType>
         <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
@@ -11823,6 +11828,123 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="SvcId" />
+          </Key>
+          <Property Type="Int32" Name="SvcId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Artikul" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="GrpId" Nullable="false" />
+          <Property Type="Int32" Name="IsTransport" Nullable="false" />
+          <Property Type="Decimal" Name="Price" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="CurrId" />
+          <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Deleted" Nullable="false" />
+          <Property Type="Int32" Name="IsNormed" Nullable="false" />
+          <Property Type="Decimal" Name="Norm" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="MId" />
+          <NavigationProperty Name="Currency" Relationship="BaseModel.FK_SVC_CURRID" FromRole="Services" ToRole="Currency" />
+          <NavigationProperty Name="Measures" Relationship="BaseModel.FK_SVC_MID" FromRole="Services" ToRole="Measures" />
+          <NavigationProperty Name="SvcGroup" Relationship="BaseModel.FK_SERVICES_1" FromRole="Services" ToRole="SvcGroup" />
+          <NavigationProperty Name="WayBillSvc" Relationship="BaseModel.FK_WBS_SVCID" FromRole="Services" ToRole="WayBillSvc" />
+        </EntityType>
+        <Association Name="FK_SVC_CURRID">
+          <End Type="BaseModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="BaseModel.Services" Role="Services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
+            </Principal>
+            <Dependent Role="Services">
+              <PropertyRef Name="CurrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SVC_MID">
+          <End Type="BaseModel.Measures" Role="Measures" Multiplicity="0..1" />
+          <End Type="BaseModel.Services" Role="Services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Measures">
+              <PropertyRef Name="MId" />
+            </Principal>
+            <Dependent Role="Services">
+              <PropertyRef Name="MId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICES_1">
+          <End Type="BaseModel.SvcGroup" Role="SvcGroup" Multiplicity="1" />
+          <End Type="BaseModel.Services" Role="Services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SvcGroup">
+              <PropertyRef Name="GrpId" />
+            </Principal>
+            <Dependent Role="Services">
+              <PropertyRef Name="GrpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WBS_SVCID">
+          <End Type="BaseModel.Services" Role="Services" Multiplicity="1" />
+          <End Type="BaseModel.WayBillSvc" Role="WayBillSvc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="SvcId" />
+            </Principal>
+            <Dependent Role="WayBillSvc">
+              <PropertyRef Name="SvcId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Routes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_Kagent_Routes" FromRole="Routes" ToRole="Kagent" />
+          <Property Type="Int32" Name="DriverId" />
+        </EntityType>
+        <EntityType Name="UsersGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="BaseModel.FK_Users_UsersGroup" FromRole="UsersGroup" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_Kagent_Routes">
+          <End Type="BaseModel.Routes" Role="Routes" Multiplicity="0..1" />
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Routes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kagent">
+              <PropertyRef Name="RouteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_UsersGroup">
+          <End Type="BaseModel.UsersGroup" Role="UsersGroup" Multiplicity="0..1" />
+          <End Type="BaseModel.Users" Role="Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsersGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Jobs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -12360,6 +12482,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="BaseModel.Users">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
                 <ScalarProperty Name="ReportFormat" ColumnName="ReportFormat" />
                 <ScalarProperty Name="IsOnline" ColumnName="IsOnline" />
                 <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
@@ -13419,24 +13542,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="Services">
-            <EntityTypeMapping TypeName="BaseModel.Services">
-              <MappingFragment StoreEntitySet="Services">
-                <ScalarProperty Name="MId" ColumnName="MId" />
-                <ScalarProperty Name="Norm" ColumnName="Norm" />
-                <ScalarProperty Name="IsNormed" ColumnName="IsNormed" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="IsTransport" ColumnName="IsTransport" />
-                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
-                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="SvcId" ColumnName="SvcId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="SvcGroup">
             <EntityTypeMapping TypeName="BaseModel.SvcGroup">
               <MappingFragment StoreEntitySet="SvcGroup">
@@ -14274,6 +14379,7 @@
           <EntitySetMapping Name="Kagent">
             <EntityTypeMapping TypeName="BaseModel.Kagent">
               <MappingFragment StoreEntitySet="Kagent">
+                <ScalarProperty Name="RouteId" ColumnName="RouteId" />
                 <ScalarProperty Name="ContractNum" ColumnName="ContractNum" />
                 <ScalarProperty Name="ContractDate" ColumnName="ContractDate" />
                 <ScalarProperty Name="ContractType" ColumnName="ContractType" />
@@ -14935,6 +15041,49 @@
                 <ScalarProperty Name="OnDate" ColumnName="OnDate" />
                 <ScalarProperty Name="Num" ColumnName="Num" />
                 <ScalarProperty Name="DetId" ColumnName="DetId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="BaseModel.Services">
+              <MappingFragment StoreEntitySet="Services">
+                <ScalarProperty Name="MId" ColumnName="MId" />
+                <ScalarProperty Name="Norm" ColumnName="Norm" />
+                <ScalarProperty Name="IsNormed" ColumnName="IsNormed" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="IsTransport" ColumnName="IsTransport" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SvcId" ColumnName="SvcId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Routes">
+            <EntityTypeMapping TypeName="BaseModel.Routes">
+              <MappingFragment StoreEntitySet="Routes">
+                <ScalarProperty Name="DriverId" ColumnName="DriverId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersGroup">
+            <EntityTypeMapping TypeName="BaseModel.UsersGroup">
+              <MappingFragment StoreEntitySet="UsersGroup">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jobs">
+            <EntityTypeMapping TypeName="BaseModel.Jobs">
+              <MappingFragment StoreEntitySet="Jobs">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

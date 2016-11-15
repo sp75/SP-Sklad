@@ -31,8 +31,8 @@ namespace SP_Sklad.SkladData
         public string Notes { get; set; }
     
         public virtual Currency Currency { get; set; }
-        public virtual Services Services { get; set; }
         public virtual WaybillList WaybillList { get; set; }
         public virtual Kagent Kagent { get; set; }
+        public virtual Services Services { get; set; }
     }
 }

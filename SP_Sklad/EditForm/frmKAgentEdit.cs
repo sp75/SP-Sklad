@@ -86,12 +86,15 @@ namespace SP_Sklad.EditForm
                 GroupLookUpEdit.Properties.DataSource = DB.SkladBase().MatGroup.ToList();
                 UsersLookUpEdit.Properties.DataSource = DB.SkladBase().Users.ToList().Where(w => !w.Kagent.Any() || w.UserId == _ka.UserId).ToList();
                 JobLookUpEdit.Properties.Items.AddRange(DB.SkladBase().KAgentPersons.Where(w => w.JobType == 2).Select(s => s.Post).Distinct().ToList());
+                lookUpEdit3.Properties.DataSource = DB.SkladBase().Jobs.AsNoTracking().ToList();
 
                 lookUpEdit1.Properties.DataSource = DB.SkladBase().AccountType.Select(s => new { s.TypeId, s.Name }).ToList();
                 lookUpEdit2.Properties.DataSource = DB.SkladBase().Banks.Select(s => new { s.BankId, s.Name }).ToList();
 
                 UCityTypeEdit.Properties.DataSource = DB.SkladBase().CityType.ToList();
                 FCityTypeEdit.Properties.DataSource = UCityTypeEdit.Properties.DataSource;
+
+                RouteLookUpEdit.Properties.DataSource = DB.SkladBase().Routes.AsNoTracking().ToList();
 
                 //   GrpIdEdit.Properties.TreeList.DataSource = DB.SkladBase().MatGroup.Select(s => new { s.GrpId, s.PId, s.Name }).ToList();
                 //     ProducerLookUpEdit.Properties.DataSource = DB.SkladBase().Materials.Select(s => new { s.Producer }).Distinct().ToList();
@@ -489,6 +492,22 @@ namespace SP_Sklad.EditForm
             textEdit31.EditValue = textEdit22.EditValue;
             textEdit28.EditValue = textEdit26.EditValue;
             textEdit29.EditValue = textEdit25.EditValue;
+        }
+
+        private void lookUpEdit3_EditValueChanged(object sender, EventArgs e)
+        {
+            if (lookUpEdit3.EditValue == null || lookUpEdit3.EditValue == DBNull.Value)
+            {
+                return;
+            }
+
+            JobLookUpEdit.Visible = (int)lookUpEdit3.EditValue == 0;
+
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            textEdit11.EditValue = textEdit12.EditValue;
         }
 
     }
