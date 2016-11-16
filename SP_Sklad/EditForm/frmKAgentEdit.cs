@@ -259,8 +259,7 @@ namespace SP_Sklad.EditForm
 
         private void simpleButton6_Click(object sender, EventArgs e)
         {
-            PTypeEdit.EditValue = null;
-            _ka.PTypeId = null;
+
         }
 
         private void DiscCheckEdit_CheckedChanged(object sender, EventArgs e)
@@ -508,6 +507,23 @@ namespace SP_Sklad.EditForm
         private void simpleButton2_Click(object sender, EventArgs e)
         {
             textEdit11.EditValue = textEdit12.EditValue;
+        }
+
+        private void RouteLookUpEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                RouteLookUpEdit.EditValue = null;
+            }
+        }
+
+        private void PTypeEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                PTypeEdit.EditValue = null;
+           //     _ka.PTypeId = null;
+            }
         }
 
     }

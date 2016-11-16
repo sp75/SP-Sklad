@@ -870,6 +870,51 @@ namespace SP_Sklad.Reports
                 IHelper.Print(data_for_report, TemlateList.rep_30);
             }
 
+            if (idx == 32)
+            {
+           //     int grp = Convert.ToInt32(MatGroup.GrpId);
+           //     string wh = Convert.ToString(Warehouse.WId);
+                var mat = db.REP_32(StartDate, EndDate).ToList();
+
+                if (!mat.Any())
+                {
+                    return;
+                }
+
+                var drivers = mat.Select(s => new { s.DriverId, s.DriverName }).Distinct().ToList();
+                var routes = mat.Select(s => new { s.DriverId, s.RouteName }).Distinct().ToList();
+                var mat_out = mat.GroupBy(g => new { g.DriverId, g.DriverName, g.MatName }).Select(s => new
+                {
+                    s.Key.DriverId,
+                    s.Key.MatName,
+                    Amount = s.Sum(sum => sum.Amount)
+                }).ToList();
+
+                rel.Add(new
+                {
+                    pk = "DriverId",
+                    fk = "DriverId",
+                    master_table = "Drivers",
+                    child_table = "Routes"
+                });
+
+                rel.Add(new
+                {
+                    pk = "DriverId",
+                    fk = "DriverId",
+                    master_table = "Drivers",
+                    child_table = "MatList"
+                });
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("Drivers", drivers);
+                data_for_report.Add("Routes", routes);
+                data_for_report.Add("MatList", mat_out);
+                data_for_report.Add("_realation_", rel);
+
+                IHelper.Print(data_for_report, TemlateList.rep_32);
+            }
+
             db.PrintLog.Add(new PrintLog
             {
                 PrintType = 1,

@@ -293,6 +293,11 @@
             this.ExplorerPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.xtraTabPage29 = new DevExpress.XtraTab.XtraTabPage();
+            this.RouteGridControl = new DevExpress.XtraGrid.GridControl();
+            this.RouteGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.RoutesBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
@@ -412,6 +417,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.ExplorerPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).BeginInit();
+            this.xtraTabPage29.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RouteGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RouteGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RoutesBS)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemImageComboBox1
@@ -525,6 +534,7 @@
             this.UserTreeImgList.Images.SetKeyName(51, "korganizer.png");
             this.UserTreeImgList.Images.SetKeyName(52, "_нформац_я про рух товар_в.bmp");
             this.UserTreeImgList.Images.SetKeyName(53, "пратнерка.png");
+            this.UserTreeImgList.Images.SetKeyName(54, "map_pin-next-16.png");
             // 
             // PageImageList
             // 
@@ -2226,7 +2236,8 @@
             this.xtraTabPage25,
             this.xtraTabPage26,
             this.xtraTabPage27,
-            this.xtraTabPage28});
+            this.xtraTabPage28,
+            this.xtraTabPage29});
             // 
             // xtraTabPage19
             // 
@@ -3027,6 +3038,53 @@
             this.MatPopupMenu.Manager = this.barManager1;
             this.MatPopupMenu.Name = "MatPopupMenu";
             // 
+            // xtraTabPage29
+            // 
+            this.xtraTabPage29.Controls.Add(this.RouteGridControl);
+            this.xtraTabPage29.Name = "xtraTabPage29";
+            this.xtraTabPage29.Size = new System.Drawing.Size(1166, 558);
+            this.xtraTabPage29.Text = "Маршрути";
+            // 
+            // RouteGridControl
+            // 
+            this.RouteGridControl.DataSource = this.RoutesBS;
+            this.RouteGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RouteGridControl.Location = new System.Drawing.Point(0, 0);
+            this.RouteGridControl.MainView = this.RouteGridView;
+            this.RouteGridControl.Name = "RouteGridControl";
+            this.RouteGridControl.Size = new System.Drawing.Size(1166, 558);
+            this.RouteGridControl.TabIndex = 4;
+            this.RouteGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.RouteGridView});
+            // 
+            // RouteGridView
+            // 
+            this.RouteGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.RouteGridView.Appearance.Row.Options.UseFont = true;
+            this.RouteGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn9});
+            this.RouteGridView.GridControl = this.RouteGridControl;
+            this.RouteGridView.Name = "RouteGridView";
+            this.RouteGridView.OptionsBehavior.AllowIncrementalSearch = true;
+            this.RouteGridView.OptionsBehavior.Editable = false;
+            this.RouteGridView.OptionsBehavior.ReadOnly = true;
+            this.RouteGridView.OptionsView.EnableAppearanceEvenRow = true;
+            this.RouteGridView.OptionsView.EnableAppearanceOddRow = true;
+            this.RouteGridView.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "Назва";
+            this.gridColumn9.FieldName = "Name";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 0;
+            this.gridColumn9.Width = 527;
+            // 
+            // RoutesBS
+            // 
+            this.RoutesBS.DataSource = typeof(SP_Sklad.SkladData.Routes);
+            // 
             // DirectoriesUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3164,6 +3222,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.ExplorerPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).EndInit();
+            this.xtraTabPage29.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.RouteGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RouteGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RoutesBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3434,5 +3496,10 @@
         private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow6;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow7;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow9;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage29;
+        private DevExpress.XtraGrid.GridControl RouteGridControl;
+        public DevExpress.XtraGrid.Views.Grid.GridView RouteGridView;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private System.Windows.Forms.BindingSource RoutesBS;
     }
 }

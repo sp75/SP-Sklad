@@ -130,7 +130,8 @@
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
-            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
+            this.RouteLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl54 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl23 = new DevExpress.XtraEditors.LabelControl();
             this.PTypeEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
@@ -256,8 +257,6 @@
             this.labelControl34 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl35 = new DevExpress.XtraEditors.LabelControl();
             this.dateEdit3 = new DevExpress.XtraEditors.DateEdit();
-            this.RouteLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.labelControl54 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KagentBindingSource)).BeginInit();
@@ -331,6 +330,7 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RouteLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PTypeEdit.Properties)).BeginInit();
             this.xtraTabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
@@ -417,7 +417,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit20.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RouteLookUpEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemImageComboBox1
@@ -1303,7 +1302,7 @@
             // textEdit10
             // 
             this.textEdit10.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.KagentBindingSource, "KAU", true));
-            this.textEdit10.Location = new System.Drawing.Point(15, 37);
+            this.textEdit10.Location = new System.Drawing.Point(539, 37);
             this.textEdit10.Name = "textEdit10";
             this.textEdit10.Size = new System.Drawing.Size(124, 22);
             this.textEdit10.StyleController = this.styleController1;
@@ -1314,7 +1313,7 @@
             this.KaKindLookUpEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.KaKindLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "KaKind", true));
-            this.KaKindLookUpEdit.Location = new System.Drawing.Point(414, 37);
+            this.KaKindLookUpEdit.Location = new System.Drawing.Point(276, 37);
             this.KaKindLookUpEdit.Name = "KaKindLookUpEdit";
             this.KaKindLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1331,7 +1330,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(15, 15);
+            this.labelControl3.Location = new System.Drawing.Point(539, 15);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(83, 16);
             this.labelControl3.StyleController = this.styleController1;
@@ -1341,7 +1340,7 @@
             // KTypeLookUpEdit
             // 
             this.KTypeLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "KType", true));
-            this.KTypeLookUpEdit.Location = new System.Drawing.Point(153, 37);
+            this.KTypeLookUpEdit.Location = new System.Drawing.Point(15, 37);
             this.KTypeLookUpEdit.Name = "KTypeLookUpEdit";
             this.KTypeLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1359,7 +1358,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(153, 15);
+            this.labelControl2.Location = new System.Drawing.Point(15, 15);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(98, 16);
             this.labelControl2.StyleController = this.styleController1;
@@ -1368,7 +1367,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(414, 15);
+            this.labelControl1.Location = new System.Drawing.Point(276, 15);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(32, 16);
             this.labelControl1.StyleController = this.styleController1;
@@ -1522,7 +1521,6 @@
             // 
             this.groupControl4.Controls.Add(this.RouteLookUpEdit);
             this.groupControl4.Controls.Add(this.labelControl54);
-            this.groupControl4.Controls.Add(this.simpleButton6);
             this.groupControl4.Controls.Add(this.labelControl23);
             this.groupControl4.Controls.Add(this.PTypeEdit);
             this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1533,16 +1531,36 @@
             this.groupControl4.Tag = "";
             this.groupControl4.Text = "Додаткова інформація ";
             // 
-            // simpleButton6
+            // RouteLookUpEdit
             // 
-            this.simpleButton6.ImageIndex = 11;
-            this.simpleButton6.ImageList = this.ImageList;
-            this.simpleButton6.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton6.Location = new System.Drawing.Point(348, 64);
-            this.simpleButton6.Name = "simpleButton6";
-            this.simpleButton6.Size = new System.Drawing.Size(22, 22);
-            this.simpleButton6.TabIndex = 38;
-            this.simpleButton6.Click += new System.EventHandler(this.simpleButton6_Click);
+            this.RouteLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "RouteId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.RouteLookUpEdit.Location = new System.Drawing.Point(15, 138);
+            this.RouteLookUpEdit.Name = "RouteLookUpEdit";
+            this.RouteLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)});
+            this.RouteLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name1")});
+            this.RouteLookUpEdit.Properties.DisplayMember = "Name";
+            this.RouteLookUpEdit.Properties.NullText = "";
+            this.RouteLookUpEdit.Properties.PopupSizeable = false;
+            this.RouteLookUpEdit.Properties.ShowFooter = false;
+            this.RouteLookUpEdit.Properties.ShowHeader = false;
+            this.RouteLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.RouteLookUpEdit.Properties.ValueMember = "Id";
+            this.RouteLookUpEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.RouteLookUpEdit_Properties_ButtonClick);
+            this.RouteLookUpEdit.Size = new System.Drawing.Size(355, 22);
+            this.RouteLookUpEdit.StyleController = this.styleController1;
+            this.RouteLookUpEdit.TabIndex = 43;
+            // 
+            // labelControl54
+            // 
+            this.labelControl54.Location = new System.Drawing.Point(15, 116);
+            this.labelControl54.Name = "labelControl54";
+            this.labelControl54.Size = new System.Drawing.Size(53, 16);
+            this.labelControl54.StyleController = this.styleController1;
+            this.labelControl54.TabIndex = 42;
+            this.labelControl54.Text = "Маршрут";
             // 
             // labelControl23
             // 
@@ -1555,11 +1573,12 @@
             // 
             // PTypeEdit
             // 
-            this.PTypeEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "PTypeId", true));
+            this.PTypeEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "PTypeId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.PTypeEdit.Location = new System.Drawing.Point(15, 64);
             this.PTypeEdit.Name = "PTypeEdit";
             this.PTypeEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete)});
             this.PTypeEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name1")});
             this.PTypeEdit.Properties.DisplayMember = "Name";
@@ -1568,7 +1587,8 @@
             this.PTypeEdit.Properties.ShowFooter = false;
             this.PTypeEdit.Properties.ShowHeader = false;
             this.PTypeEdit.Properties.ValueMember = "PTypeId";
-            this.PTypeEdit.Size = new System.Drawing.Size(327, 22);
+            this.PTypeEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.PTypeEdit_Properties_ButtonClick);
+            this.PTypeEdit.Size = new System.Drawing.Size(355, 22);
             this.PTypeEdit.StyleController = this.styleController1;
             this.PTypeEdit.TabIndex = 37;
             // 
@@ -2880,34 +2900,6 @@
             this.dateEdit3.StyleController = this.styleController1;
             this.dateEdit3.TabIndex = 46;
             // 
-            // RouteLookUpEdit
-            // 
-            this.RouteLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "RouteId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.RouteLookUpEdit.Location = new System.Drawing.Point(15, 138);
-            this.RouteLookUpEdit.Name = "RouteLookUpEdit";
-            this.RouteLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.RouteLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name1")});
-            this.RouteLookUpEdit.Properties.DisplayMember = "Name";
-            this.RouteLookUpEdit.Properties.NullText = "";
-            this.RouteLookUpEdit.Properties.PopupSizeable = false;
-            this.RouteLookUpEdit.Properties.ShowFooter = false;
-            this.RouteLookUpEdit.Properties.ShowHeader = false;
-            this.RouteLookUpEdit.Properties.ValueMember = "Id";
-            this.RouteLookUpEdit.Size = new System.Drawing.Size(355, 22);
-            this.RouteLookUpEdit.StyleController = this.styleController1;
-            this.RouteLookUpEdit.TabIndex = 43;
-            // 
-            // labelControl54
-            // 
-            this.labelControl54.Location = new System.Drawing.Point(15, 116);
-            this.labelControl54.Name = "labelControl54";
-            this.labelControl54.Size = new System.Drawing.Size(53, 16);
-            this.labelControl54.StyleController = this.styleController1;
-            this.labelControl54.TabIndex = 42;
-            this.labelControl54.Text = "Маршрут";
-            // 
             // frmKAgentEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3011,6 +3003,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
             this.groupControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RouteLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PTypeEdit.Properties)).EndInit();
             this.xtraTabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
@@ -3105,7 +3098,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit20.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RouteLookUpEdit.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3191,7 +3183,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl25;
         private System.Windows.Forms.Panel panel4;
         private DevExpress.XtraEditors.GroupControl groupControl4;
-        private DevExpress.XtraEditors.SimpleButton simpleButton6;
         private DevExpress.XtraEditors.LabelControl labelControl23;
         private DevExpress.XtraEditors.LookUpEdit PTypeEdit;
         private DevExpress.XtraEditors.GroupControl groupControl5;

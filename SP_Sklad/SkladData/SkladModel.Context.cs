@@ -1957,5 +1957,19 @@ namespace SP_Sklad.SkladData
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_31_Result>("[BaseEntities].[REP_31](@from_date, @to_date, @grp_id, @mat_id)", from_dateParameter, to_dateParameter, grp_idParameter, mat_idParameter);
         }
+    
+        [EdmFunction("BaseEntities", "REP_32")]
+        public virtual IQueryable<REP_32_Result> REP_32(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_32_Result>("[BaseEntities].[REP_32](@from_date, @to_date)", from_dateParameter, to_dateParameter);
+        }
     }
 }

@@ -200,6 +200,11 @@ namespace SP_Sklad.MainTabs
                             TechProcessDS.DataSource = _db.TechProcess.ToList();
                             extDirTabControl.SelectedTabPageIndex = 3;
                             break;
+
+                        case 115:
+                            RoutesBS.DataSource = _db.Routes.ToList();
+                            extDirTabControl.SelectedTabPageIndex = 10;
+                            break;
                     }
                     break;
             }
@@ -297,6 +302,10 @@ namespace SP_Sklad.MainTabs
                         case 112:
                             result = new frmTechProcessEdit((TechProcessGridView.GetFocusedRow() as TechProcess).ProcId).ShowDialog();
                             break;
+
+                        case 115:
+                            result = new frmRouteEdit((RouteGridView.GetFocusedRow() as Routes).Id).ShowDialog();
+                            break;
                     }
                     break;
 
@@ -339,7 +348,7 @@ namespace SP_Sklad.MainTabs
                             break;
 
                         case 11: new frmBanksEdit().ShowDialog();
-                                     break;
+                            break;
 
                         case 2:
                             new frmMeasuresEdit().ShowDialog();
@@ -353,9 +362,9 @@ namespace SP_Sklad.MainTabs
                             new frmAccountTypeEdit().ShowDialog();
                             break;
 
-                        case 43: 
+                        case 43:
                             new frmCountriesEdit().ShowDialog();
-                                            break;
+                            break;
 
                         case 102:
                             new frmChargeTypeEdit().ShowDialog();
@@ -374,6 +383,10 @@ namespace SP_Sklad.MainTabs
 
                         case 112:
                             new frmTechProcessEdit().ShowDialog();
+                            break;
+
+                        case 115:
+                            new frmRouteEdit().ShowDialog();
                             break;
 
                     }
@@ -473,11 +486,15 @@ namespace SP_Sklad.MainTabs
                                 int mat_rec = ((dynamic)MatRecipeGridView.GetFocusedRow()).RecId;
                                 db.DeleteWhere<MatRecipe>(w => w.RecId == mat_rec);
                                 break;
-                            case 112:
 
+                            case 112:
                                 var tp = TechProcessGridView.GetFocusedRow() as TechProcess;
                                 db.DeleteWhere<TechProcess>(w => w.ProcId == tp.ProcId);
+                                break;
 
+                            case 115:
+                                var rou = (RouteGridView.GetFocusedRow() as Routes);
+                                db.DeleteWhere<Routes>(w => w.Id == rou.Id);
                                 break;
                         }
                         break;

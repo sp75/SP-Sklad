@@ -262,6 +262,12 @@
     <Compile Include="EditForm\frmPricetypesEdit.Designer.cs">
       <DependentUpon>frmPricetypesEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditForm\frmRouteEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmRouteEdit.Designer.cs">
+      <DependentUpon>frmRouteEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditForm\frmTechProcessEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -359,6 +365,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\REP_31_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\REP_32_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\Routes.cs">
@@ -1216,6 +1225,9 @@
     <EmbeddedResource Include="EditForm\frmPricetypesEdit.resx">
       <DependentUpon>frmPricetypesEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmRouteEdit.resx">
+      <DependentUpon>frmRouteEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmTechProcessEdit.resx">
       <DependentUpon>frmTechProcessEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -1450,6 +1462,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PriceList.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PriceListDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PriceTypes.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.Routes.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Serials.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Services.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.SvcGroup.datasource" />

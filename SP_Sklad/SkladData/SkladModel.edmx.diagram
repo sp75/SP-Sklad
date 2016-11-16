@@ -250,6 +250,7 @@
         <AssociationConnector Association="BaseModel.FK_Kagent_Routes" />
         <AssociationConnector Association="BaseModel.FK_Users_UsersGroup" />
         <EntityTypeShape EntityType="BaseModel.Jobs" Width="1.5" PointX="5.231243007458394" PointY="25.267417353236777" />
+        <AssociationConnector Association="BaseModel.FK_Routes_Kagent" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="7.0245045325832924" PointY="12.641712000892364" />

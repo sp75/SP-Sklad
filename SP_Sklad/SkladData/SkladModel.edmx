@@ -827,6 +827,10 @@
             <End Role="WaybillDet" EntitySet="WaybillDet" />
             <End Role="ReturnRel" EntitySet="ReturnRel" />
           </AssociationSet>
+          <AssociationSet Name="FK_Routes_Kagent" Association="BaseModel.Store.FK_Routes_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="Routes" EntitySet="Routes" />
+          </AssociationSet>
           <AssociationSet Name="FK_SERIALS_POSID" Association="BaseModel.Store.FK_SERIALS_POSID">
             <End Role="WaybillDet" EntitySet="WaybillDet" />
             <End Role="Serials" EntitySet="Serials" />
@@ -3843,6 +3847,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Routes_Kagent">
+          <End Role="Kagent" Type="BaseModel.Store.Kagent" Multiplicity="0..1" />
+          <End Role="Routes" Type="BaseModel.Store.Routes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="Routes">
+              <PropertyRef Name="DriverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SERIALS_POSID">
           <End Role="WaybillDet" Type="BaseModel.Store.WaybillDet" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -5494,6 +5510,25 @@
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="REP_32" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="from_date" Type="datetime" Mode="In" />
+          <Parameter Name="to_date" Type="datetime" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Amount" Type="numeric" Nullable="false" Precision="15" Scale="8" />
+                <Property Name="Total" Type="numeric" Precision="15" Scale="2" />
+                <Property Name="MatName" Type="nvarchar" MaxLength="255" />
+                <Property Name="RouteName" Type="nvarchar" MaxLength="50" />
+                <Property Name="DriverName" Type="nvarchar" Nullable="false" MaxLength="64" />
+                <Property Name="DriverId" Type="int" Nullable="false" />
+                <Property Name="RouteId" Type="int" Nullable="false" />
+                <Property Name="KaId" Type="int" Nullable="false" />
+                <Property Name="KaName" Type="nvarchar" Nullable="false" MaxLength="64" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="REP_4_25" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="from_date" Type="datetime" Mode="In" />
           <Parameter Name="to_date" Type="datetime" Mode="In" />
@@ -7111,6 +7146,14 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
           <EntitySet Name="Jobs" EntityType="BaseModel.Jobs" />
+          <AssociationSet Name="FK_Routes_Kagent" Association="BaseModel.FK_Routes_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="Routes" EntitySet="Routes" />
+          </AssociationSet>
+          <FunctionImport Name="REP_32" IsComposable="true" ReturnType="Collection(BaseModel.REP_32_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -10554,6 +10597,7 @@
           <NavigationProperty Name="TechProcDet" Relationship="BaseModel.FK_TECHPROCDET_KAGENT" FromRole="Kagent" ToRole="TechProcDet" />
           <Property Type="Int32" Name="RouteId" />
           <NavigationProperty Name="Routes" Relationship="BaseModel.FK_Kagent_Routes" FromRole="Kagent" ToRole="Routes" />
+          <NavigationProperty Name="Routes1" Relationship="BaseModel.FK_Routes_Kagent" FromRole="Kagent" ToRole="Routes" />
         </EntityType>
         <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
@@ -11905,6 +11949,7 @@
           <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_Kagent_Routes" FromRole="Routes" ToRole="Kagent" />
           <Property Type="Int32" Name="DriverId" />
+          <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_Routes_Kagent" FromRole="Routes" ToRole="Kagent" />
         </EntityType>
         <EntityType Name="UsersGroup">
           <Key>
@@ -11945,6 +11990,29 @@
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <Association Name="FK_Routes_Kagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.Routes" Role="Routes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="Routes">
+              <PropertyRef Name="DriverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="REP_32_Result">
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="Total" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="RouteName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DriverName" Nullable="false" MaxLength="64" />
+          <Property Type="Int32" Name="DriverId" Nullable="false" />
+          <Property Type="Int32" Name="RouteId" Nullable="false" />
+          <Property Type="Int32" Name="KaId" Nullable="false" />
+          <Property Type="String" Name="KaName" Nullable="false" MaxLength="64" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -15087,6 +15155,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="REP_32" FunctionName="BaseModel.Store.REP_32">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.REP_32_Result">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="RouteName" ColumnName="RouteName" />
+                <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+                <ScalarProperty Name="DriverId" ColumnName="DriverId" />
+                <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

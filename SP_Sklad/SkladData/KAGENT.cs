@@ -41,6 +41,7 @@ namespace SP_Sklad.SkladData
             this.Customers = new HashSet<Customers>();
             this.KAgentSaldo = new HashSet<KAgentSaldo>();
             this.TechProcDet = new HashSet<TechProcDet>();
+            this.Routes1 = new HashSet<Routes>();
         }
     
         public int KaId { get; set; }
@@ -103,5 +104,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<KAgentSaldo> KAgentSaldo { get; set; }
         public virtual ICollection<TechProcDet> TechProcDet { get; set; }
         public virtual Routes Routes { get; set; }
+        public virtual ICollection<Routes> Routes1 { get; set; }
     }
 }
