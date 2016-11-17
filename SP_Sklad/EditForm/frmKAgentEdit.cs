@@ -95,6 +95,7 @@ namespace SP_Sklad.EditForm
                 FCityTypeEdit.Properties.DataSource = UCityTypeEdit.Properties.DataSource;
 
                 RouteLookUpEdit.Properties.DataSource = DB.SkladBase().Routes.AsNoTracking().ToList();
+                KaGroupLookUpEdit.Properties.DataSource = DB.SkladBase().KontragentGroup.AsNoTracking().ToList();
 
                 //   GrpIdEdit.Properties.TreeList.DataSource = DB.SkladBase().MatGroup.Select(s => new { s.GrpId, s.PId, s.Name }).ToList();
                 //     ProducerLookUpEdit.Properties.DataSource = DB.SkladBase().Materials.Select(s => new { s.Producer }).Distinct().ToList();

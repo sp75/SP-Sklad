@@ -12,14 +12,16 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class RepLng
+    public partial class KontragentGroup
     {
-        public int RepId { get; set; }
-        public int LangId { get; set; }
-        public string Name { get; set; }
-        public string Notes { get; set; }
+        public KontragentGroup()
+        {
+            this.Kagent = new HashSet<Kagent>();
+        }
     
-        public virtual Languages Languages { get; set; }
-        public virtual Reports Reports { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+    
+        public virtual ICollection<Kagent> Kagent { get; set; }
     }
 }

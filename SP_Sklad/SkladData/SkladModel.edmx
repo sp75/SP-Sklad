@@ -45,6 +45,7 @@
           <EntitySet Name="KAKInd" EntityType="BaseModel.Store.KAKInd" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="KAMatDiscount" EntityType="BaseModel.Store.KAMatDiscount" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="KAMatGroupDiscount" EntityType="BaseModel.Store.KAMatGroupDiscount" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="KontragentGroup" EntityType="BaseModel.Store.KontragentGroup" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Languages" EntityType="BaseModel.Store.Languages" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Llicenses" EntityType="BaseModel.Store.Llicenses" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MatChange" EntityType="BaseModel.Store.MatChange" store:Type="Tables" Schema="dbo" />
@@ -69,14 +70,7 @@
           <EntitySet Name="PriceTypes" EntityType="BaseModel.Store.PriceTypes" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PrintLog" EntityType="BaseModel.Store.PrintLog" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ProfileDocSetting" EntityType="BaseModel.Store.ProfileDocSetting" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="RepLng" EntityType="BaseModel.Store.RepLng" store:Type="Tables" store:Schema="dbo" store:Name="RepLng">
-            <DefiningQuery>SELECT 
-      [RepLng].[RepId] AS [RepId], 
-      [RepLng].[LangId] AS [LangId], 
-      [RepLng].[Name] AS [Name], 
-      [RepLng].[Notes] AS [Notes]
-      FROM [dbo].[RepLng] AS [RepLng]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="RepLng" EntityType="BaseModel.Store.RepLng" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Reports" EntityType="BaseModel.Store.Reports" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ReturnRel" EntityType="BaseModel.Store.ReturnRel" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Routes" EntityType="BaseModel.Store.Routes" store:Type="Tables" Schema="dbo" />
@@ -165,7 +159,8 @@
       [KagentList].[ContractType] AS [ContractType], 
       [KagentList].[ContractDate] AS [ContractDate], 
       [KagentList].[ContractNum] AS [ContractNum], 
-      [KagentList].[Saldo] AS [Saldo]
+      [KagentList].[Saldo] AS [Saldo], 
+      [KagentList].[GroupName] AS [GroupName]
       FROM [dbo].[KagentList] AS [KagentList]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="MaterialsList" EntityType="BaseModel.Store.MaterialsList" store:Type="Views" store:Schema="dbo" store:Name="MaterialsList">
@@ -686,6 +681,10 @@
           <AssociationSet Name="FK_KADiscount_Kagent" Association="BaseModel.Store.FK_KADiscount_Kagent">
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="KADiscount" EntitySet="KADiscount" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kagent_KontragentGroup" Association="BaseModel.Store.FK_Kagent_KontragentGroup">
+            <End Role="KontragentGroup" EntitySet="KontragentGroup" />
+            <End Role="Kagent" EntitySet="Kagent" />
           </AssociationSet>
           <AssociationSet Name="FK_Kagent_Routes" Association="BaseModel.Store.FK_Kagent_Routes">
             <End Role="Routes" EntitySet="Routes" />
@@ -1375,6 +1374,7 @@
           <Property Name="ContractDate" Type="datetime" />
           <Property Name="ContractNum" Type="nvarchar" MaxLength="20" />
           <Property Name="RouteId" Type="int" />
+          <Property Name="GroupId" Type="int" />
         </EntityType>
         <EntityType Name="KAgentAccount">
           <Key>
@@ -1451,6 +1451,13 @@
           <Property Name="KAId" Type="int" Nullable="false" />
           <Property Name="GrpId" Type="int" Nullable="false" />
           <Property Name="OnValue" Type="numeric" Nullable="false" Precision="15" Scale="4" />
+        </EntityType>
+        <EntityType Name="KontragentGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Languages">
           <Key>
@@ -1769,14 +1776,10 @@
           <Property Name="Checked" Type="int" />
           <Property Name="Num" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'sp_base.dbo.RepLng' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
         <EntityType Name="RepLng">
           <Key>
             <PropertyRef Name="RepId" />
             <PropertyRef Name="LangId" />
-            <PropertyRef Name="Name" />
           </Key>
           <Property Name="RepId" Type="int" Nullable="false" />
           <Property Name="LangId" Type="int" Nullable="false" />
@@ -2232,7 +2235,8 @@
           <Property Name="ContractType" Type="nvarchar" MaxLength="64" />
           <Property Name="ContractDate" Type="datetime" />
           <Property Name="ContractNum" Type="nvarchar" MaxLength="20" />
-          <Property Name="Saldo" Type="numeric" Precision="15" Scale="8" />
+          <Property Name="Saldo" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'sp_base.dbo.MaterialsList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -3400,6 +3404,18 @@
             </Principal>
             <Dependent Role="KADiscount">
               <PropertyRef Name="KAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kagent_KontragentGroup">
+          <End Role="KontragentGroup" Type="BaseModel.Store.KontragentGroup" Multiplicity="0..1" />
+          <End Role="Kagent" Type="BaseModel.Store.Kagent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KontragentGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kagent">
+              <PropertyRef Name="GroupId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -6453,24 +6469,15 @@
           <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="PrintLog" EntityType="BaseModel.PrintLog" />
-          <EntitySet Name="RepLng" EntityType="BaseModel.RepLng" />
           <EntitySet Name="Reports" EntityType="BaseModel.Reports" />
           <AssociationSet Name="FK_PRINTLOG_2" Association="BaseModel.FK_PRINTLOG_2">
             <End Role="Users" EntitySet="Users" />
             <End Role="PrintLog" EntitySet="PrintLog" />
           </AssociationSet>
-          <AssociationSet Name="FK_REPLNG_REPID" Association="BaseModel.FK_REPLNG_REPID">
-            <End Role="Reports" EntitySet="Reports" />
-            <End Role="RepLng" EntitySet="RepLng" />
-          </AssociationSet>
           <EntitySet Name="Languages" EntityType="BaseModel.Languages" />
           <AssociationSet Name="FK__VIEWLNG__LANGID__2116E6DF" Association="BaseModel.FK__VIEWLNG__LANGID__2116E6DF">
             <End Role="Languages" EntitySet="Languages" />
             <End Role="ViewLng" EntitySet="ViewLng" />
-          </AssociationSet>
-          <AssociationSet Name="FK_REPLNG_LANGID" Association="BaseModel.FK_REPLNG_LANGID">
-            <End Role="Languages" EntitySet="Languages" />
-            <End Role="RepLng" EntitySet="RepLng" />
           </AssociationSet>
           <FunctionImport Name="REP_1" ReturnType="Collection(BaseModel.REP_1_Result)">
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
@@ -7154,6 +7161,20 @@
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
             <Parameter Name="to_date" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <EntitySet Name="KontragentGroup" EntityType="BaseModel.KontragentGroup" />
+          <AssociationSet Name="FK_Kagent_KontragentGroup" Association="BaseModel.FK_Kagent_KontragentGroup">
+            <End Role="KontragentGroup" EntitySet="KontragentGroup" />
+            <End Role="Kagent" EntitySet="Kagent" />
+          </AssociationSet>
+          <EntitySet Name="RepLng" EntityType="BaseModel.RepLng" />
+          <AssociationSet Name="FK_REPLNG_LANGID" Association="BaseModel.FK_REPLNG_LANGID">
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="RepLng" EntitySet="RepLng" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REPLNG_REPID" Association="BaseModel.FK_REPLNG_REPID">
+            <End Role="Reports" EntitySet="Reports" />
+            <End Role="RepLng" EntitySet="RepLng" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -8906,7 +8927,8 @@
           <Property Type="String" Name="ContractType" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="ContractDate" Precision="3" />
           <Property Type="String" Name="ContractNum" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="Decimal" Name="Saldo" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="Saldo" Precision="15" Scale="4" />
+          <Property Type="String" Name="GroupName" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="KAgentTyp">
           <Key>
@@ -9137,19 +9159,6 @@
           <Property Type="Int32" Name="PrintType" />
           <NavigationProperty Name="Users" Relationship="BaseModel.FK_PRINTLOG_2" FromRole="PrintLog" ToRole="Users" />
         </EntityType>
-        <EntityType Name="RepLng">
-          <Key>
-            <PropertyRef Name="RepId" />
-            <PropertyRef Name="LangId" />
-            <PropertyRef Name="Name" />
-          </Key>
-          <Property Type="Int32" Name="RepId" Nullable="false" />
-          <Property Type="Int32" Name="LangId" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Notes" MaxLength="1024" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Reports" Relationship="BaseModel.FK_REPLNG_REPID" FromRole="RepLng" ToRole="Reports" />
-          <NavigationProperty Name="Languages" Relationship="BaseModel.FK_REPLNG_LANGID" FromRole="RepLng" ToRole="Languages" />
-        </EntityType>
         <EntityType Name="Reports">
           <Key>
             <PropertyRef Name="RepId" />
@@ -9172,18 +9181,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_REPLNG_REPID">
-          <End Type="BaseModel.Reports" Role="Reports" Multiplicity="1" />
-          <End Type="BaseModel.RepLng" Role="RepLng" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Reports">
-              <PropertyRef Name="RepId" />
-            </Principal>
-            <Dependent Role="RepLng">
-              <PropertyRef Name="RepId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Languages">
           <Key>
             <PropertyRef Name="LangId" />
@@ -9203,18 +9200,6 @@
               <PropertyRef Name="LangId" />
             </Principal>
             <Dependent Role="ViewLng">
-              <PropertyRef Name="LangId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_REPLNG_LANGID">
-          <End Type="BaseModel.Languages" Role="Languages" Multiplicity="1" />
-          <End Type="BaseModel.RepLng" Role="RepLng" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Languages">
-              <PropertyRef Name="LangId" />
-            </Principal>
-            <Dependent Role="RepLng">
               <PropertyRef Name="LangId" />
             </Dependent>
           </ReferentialConstraint>
@@ -10598,6 +10583,8 @@
           <Property Type="Int32" Name="RouteId" />
           <NavigationProperty Name="Routes" Relationship="BaseModel.FK_Kagent_Routes" FromRole="Kagent" ToRole="Routes" />
           <NavigationProperty Name="Routes1" Relationship="BaseModel.FK_Routes_Kagent" FromRole="Kagent" ToRole="Routes" />
+          <Property Type="Int32" Name="GroupId" />
+          <NavigationProperty Name="KontragentGroup" Relationship="BaseModel.FK_Kagent_KontragentGroup" FromRole="Kagent" ToRole="KontragentGroup" />
         </EntityType>
         <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
@@ -12013,6 +12000,62 @@
           <Property Type="Int32" Name="KaId" Nullable="false" />
           <Property Type="String" Name="KaName" Nullable="false" MaxLength="64" />
         </ComplexType>
+        <EntityType Name="KontragentGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_Kagent_KontragentGroup" FromRole="KontragentGroup" ToRole="Kagent" />
+        </EntityType>
+        <Association Name="FK_Kagent_KontragentGroup">
+          <End Type="BaseModel.KontragentGroup" Role="KontragentGroup" Multiplicity="0..1" />
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KontragentGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kagent">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="RepLng">
+          <Key>
+            <PropertyRef Name="RepId" />
+            <PropertyRef Name="LangId" />
+          </Key>
+          <Property Type="Int32" Name="RepId" Nullable="false" />
+          <Property Type="Int32" Name="LangId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Notes" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Languages" Relationship="BaseModel.FK_REPLNG_LANGID" FromRole="RepLng" ToRole="Languages" />
+          <NavigationProperty Name="Reports" Relationship="BaseModel.FK_REPLNG_REPID" FromRole="RepLng" ToRole="Reports" />
+        </EntityType>
+        <Association Name="FK_REPLNG_LANGID">
+          <End Type="BaseModel.Languages" Role="Languages" Multiplicity="1" />
+          <End Type="BaseModel.RepLng" Role="RepLng" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Languages">
+              <PropertyRef Name="LangId" />
+            </Principal>
+            <Dependent Role="RepLng">
+              <PropertyRef Name="LangId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REPLNG_REPID">
+          <End Type="BaseModel.Reports" Role="Reports" Multiplicity="1" />
+          <End Type="BaseModel.RepLng" Role="RepLng" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reports">
+              <PropertyRef Name="RepId" />
+            </Principal>
+            <Dependent Role="RepLng">
+              <PropertyRef Name="RepId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -13245,6 +13288,7 @@
           <EntitySetMapping Name="KagentList">
             <EntityTypeMapping TypeName="BaseModel.KagentList">
               <MappingFragment StoreEntitySet="KagentList">
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
                 <ScalarProperty Name="Saldo" ColumnName="Saldo" />
                 <ScalarProperty Name="ContractNum" ColumnName="ContractNum" />
                 <ScalarProperty Name="ContractDate" ColumnName="ContractDate" />
@@ -13455,16 +13499,6 @@
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="RepId" ColumnName="RepId" />
                 <ScalarProperty Name="PlId" ColumnName="PlId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RepLng">
-            <EntityTypeMapping TypeName="BaseModel.RepLng">
-              <MappingFragment StoreEntitySet="RepLng">
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="LangId" ColumnName="LangId" />
-                <ScalarProperty Name="RepId" ColumnName="RepId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -14447,6 +14481,7 @@
           <EntitySetMapping Name="Kagent">
             <EntityTypeMapping TypeName="BaseModel.Kagent">
               <MappingFragment StoreEntitySet="Kagent">
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
                 <ScalarProperty Name="RouteId" ColumnName="RouteId" />
                 <ScalarProperty Name="ContractNum" ColumnName="ContractNum" />
                 <ScalarProperty Name="ContractDate" ColumnName="ContractDate" />
@@ -15170,6 +15205,24 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="KontragentGroup">
+            <EntityTypeMapping TypeName="BaseModel.KontragentGroup">
+              <MappingFragment StoreEntitySet="KontragentGroup">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RepLng">
+            <EntityTypeMapping TypeName="BaseModel.RepLng">
+              <MappingFragment StoreEntitySet="RepLng">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LangId" ColumnName="LangId" />
+                <ScalarProperty Name="RepId" ColumnName="RepId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

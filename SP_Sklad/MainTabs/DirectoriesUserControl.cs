@@ -709,6 +709,7 @@ namespace SP_Sklad.MainTabs
         private void barCheckItem1_CheckedChanged_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             _ka_archived = barCheckItem1.Checked ? 1 : 0;
+            KagentGridColumnArchived.Visible = barCheckItem1.Checked;
             RefrechItemBtn.PerformClick();
         }
 

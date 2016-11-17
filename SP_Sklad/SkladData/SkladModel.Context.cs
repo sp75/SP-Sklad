@@ -87,7 +87,6 @@ namespace SP_Sklad.SkladData
         public DbSet<KAgentDoc> KAgentDoc { get; set; }
         public DbSet<MatRecDet> MatRecDet { get; set; }
         public DbSet<PrintLog> PrintLog { get; set; }
-        public DbSet<RepLng> RepLng { get; set; }
         public DbSet<Reports> Reports { get; set; }
         public DbSet<Languages> Languages { get; set; }
         public DbSet<MaterialsList> MaterialsList { get; set; }
@@ -135,6 +134,8 @@ namespace SP_Sklad.SkladData
         public DbSet<Routes> Routes { get; set; }
         public DbSet<UsersGroup> UsersGroup { get; set; }
         public DbSet<Jobs> Jobs { get; set; }
+        public DbSet<KontragentGroup> KontragentGroup { get; set; }
+        public DbSet<RepLng> RepLng { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)

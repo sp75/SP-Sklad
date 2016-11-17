@@ -74,6 +74,7 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> ContractDate { get; set; }
         public string ContractNum { get; set; }
         public Nullable<int> RouteId { get; set; }
+        public Nullable<int> GroupId { get; set; }
     
         public virtual ICollection<Commission> Commission { get; set; }
         public virtual ICollection<Commission> Commission1 { get; set; }
@@ -105,5 +106,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<TechProcDet> TechProcDet { get; set; }
         public virtual Routes Routes { get; set; }
         public virtual ICollection<Routes> Routes1 { get; set; }
+        public virtual KontragentGroup KontragentGroup { get; set; }
     }
 }

@@ -108,9 +108,9 @@
             this.labelControl25 = new DevExpress.XtraEditors.LabelControl();
             this.JobLookUpEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.textEdit10 = new DevExpress.XtraEditors.TextEdit();
+            this.KaGroupLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl55 = new DevExpress.XtraEditors.LabelControl();
             this.KaKindLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.KTypeLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -130,6 +130,8 @@
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.textEdit10 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.RouteLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl54 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl23 = new DevExpress.XtraEditors.LabelControl();
@@ -313,7 +315,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.JobLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit10.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KaGroupLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KaKindLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KTypeLookUpEdit.Properties)).BeginInit();
             this.xtraTabPage2.SuspendLayout();
@@ -330,6 +332,7 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit10.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RouteLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PTypeEdit.Properties)).BeginInit();
             this.xtraTabPage4.SuspendLayout();
@@ -1287,9 +1290,9 @@
             // panelControl1
             // 
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl1.Controls.Add(this.textEdit10);
+            this.panelControl1.Controls.Add(this.KaGroupLookUpEdit);
+            this.panelControl1.Controls.Add(this.labelControl55);
             this.panelControl1.Controls.Add(this.KaKindLookUpEdit);
-            this.panelControl1.Controls.Add(this.labelControl3);
             this.panelControl1.Controls.Add(this.KTypeLookUpEdit);
             this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.labelControl1);
@@ -1299,21 +1302,41 @@
             this.panelControl1.Size = new System.Drawing.Size(679, 75);
             this.panelControl1.TabIndex = 41;
             // 
-            // textEdit10
+            // KaGroupLookUpEdit
             // 
-            this.textEdit10.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.KagentBindingSource, "KAU", true));
-            this.textEdit10.Location = new System.Drawing.Point(539, 37);
-            this.textEdit10.Name = "textEdit10";
-            this.textEdit10.Size = new System.Drawing.Size(124, 22);
-            this.textEdit10.StyleController = this.styleController1;
-            this.textEdit10.TabIndex = 34;
+            this.KaGroupLookUpEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.KaGroupLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "GroupId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.KaGroupLookUpEdit.Location = new System.Drawing.Point(463, 37);
+            this.KaGroupLookUpEdit.Name = "KaGroupLookUpEdit";
+            this.KaGroupLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.KaGroupLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.KaGroupLookUpEdit.Properties.DisplayMember = "Name";
+            this.KaGroupLookUpEdit.Properties.ShowFooter = false;
+            this.KaGroupLookUpEdit.Properties.ShowHeader = false;
+            this.KaGroupLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.KaGroupLookUpEdit.Properties.ValueMember = "Id";
+            this.KaGroupLookUpEdit.Size = new System.Drawing.Size(200, 22);
+            this.KaGroupLookUpEdit.StyleController = this.styleController1;
+            this.KaGroupLookUpEdit.TabIndex = 42;
+            // 
+            // labelControl55
+            // 
+            this.labelControl55.Location = new System.Drawing.Point(463, 15);
+            this.labelControl55.Name = "labelControl55";
+            this.labelControl55.Size = new System.Drawing.Size(34, 16);
+            this.labelControl55.StyleController = this.styleController1;
+            this.labelControl55.TabIndex = 41;
+            this.labelControl55.Text = "Група";
             // 
             // KaKindLookUpEdit
             // 
             this.KaKindLookUpEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.KaKindLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "KaKind", true));
-            this.KaKindLookUpEdit.Location = new System.Drawing.Point(276, 37);
+            this.KaKindLookUpEdit.Location = new System.Drawing.Point(229, 37);
             this.KaKindLookUpEdit.Name = "KaKindLookUpEdit";
             this.KaKindLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1324,18 +1347,9 @@
             this.KaKindLookUpEdit.Properties.ShowHeader = false;
             this.KaKindLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.KaKindLookUpEdit.Properties.ValueMember = "Id";
-            this.KaKindLookUpEdit.Size = new System.Drawing.Size(249, 22);
+            this.KaKindLookUpEdit.Size = new System.Drawing.Size(221, 22);
             this.KaKindLookUpEdit.StyleController = this.styleController1;
             this.KaKindLookUpEdit.TabIndex = 40;
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Location = new System.Drawing.Point(539, 15);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(83, 16);
-            this.labelControl3.StyleController = this.styleController1;
-            this.labelControl3.TabIndex = 31;
-            this.labelControl3.Text = "Код ан. обліку";
             // 
             // KTypeLookUpEdit
             // 
@@ -1351,7 +1365,7 @@
             this.KTypeLookUpEdit.Properties.ShowHeader = false;
             this.KTypeLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.KTypeLookUpEdit.Properties.ValueMember = "Id";
-            this.KTypeLookUpEdit.Size = new System.Drawing.Size(246, 22);
+            this.KTypeLookUpEdit.Size = new System.Drawing.Size(204, 22);
             this.KTypeLookUpEdit.StyleController = this.styleController1;
             this.KTypeLookUpEdit.TabIndex = 39;
             this.KTypeLookUpEdit.EditValueChanged += new System.EventHandler(this.KTypeLookUpEdit_EditValueChanged);
@@ -1367,7 +1381,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(276, 15);
+            this.labelControl1.Location = new System.Drawing.Point(229, 15);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(32, 16);
             this.labelControl1.StyleController = this.styleController1;
@@ -1519,6 +1533,8 @@
             // 
             // groupControl4
             // 
+            this.groupControl4.Controls.Add(this.textEdit10);
+            this.groupControl4.Controls.Add(this.labelControl3);
             this.groupControl4.Controls.Add(this.RouteLookUpEdit);
             this.groupControl4.Controls.Add(this.labelControl54);
             this.groupControl4.Controls.Add(this.labelControl23);
@@ -1531,10 +1547,28 @@
             this.groupControl4.Tag = "";
             this.groupControl4.Text = "Додаткова інформація ";
             // 
+            // textEdit10
+            // 
+            this.textEdit10.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.KagentBindingSource, "KAU", true));
+            this.textEdit10.Location = new System.Drawing.Point(15, 194);
+            this.textEdit10.Name = "textEdit10";
+            this.textEdit10.Size = new System.Drawing.Size(124, 22);
+            this.textEdit10.StyleController = this.styleController1;
+            this.textEdit10.TabIndex = 45;
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(15, 172);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(83, 16);
+            this.labelControl3.StyleController = this.styleController1;
+            this.labelControl3.TabIndex = 44;
+            this.labelControl3.Text = "Код ан. обліку";
+            // 
             // RouteLookUpEdit
             // 
             this.RouteLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "RouteId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.RouteLookUpEdit.Location = new System.Drawing.Point(15, 138);
+            this.RouteLookUpEdit.Location = new System.Drawing.Point(15, 127);
             this.RouteLookUpEdit.Name = "RouteLookUpEdit";
             this.RouteLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
@@ -1555,7 +1589,7 @@
             // 
             // labelControl54
             // 
-            this.labelControl54.Location = new System.Drawing.Point(15, 116);
+            this.labelControl54.Location = new System.Drawing.Point(15, 105);
             this.labelControl54.Name = "labelControl54";
             this.labelControl54.Size = new System.Drawing.Size(53, 16);
             this.labelControl54.StyleController = this.styleController1;
@@ -2984,7 +3018,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit10.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KaGroupLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KaKindLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KTypeLookUpEdit.Properties)).EndInit();
             this.xtraTabPage2.ResumeLayout(false);
@@ -3003,6 +3037,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
             this.groupControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit10.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RouteLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PTypeEdit.Properties)).EndInit();
             this.xtraTabPage4.ResumeLayout(false);
@@ -3152,9 +3187,7 @@
         private DevExpress.XtraEditors.MemoEdit textEdit11;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage9;
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DevExpress.XtraEditors.TextEdit textEdit10;
         private DevExpress.XtraEditors.LookUpEdit KaKindLookUpEdit;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LookUpEdit KTypeLookUpEdit;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
@@ -3332,5 +3365,9 @@
         private DevExpress.XtraEditors.LookUpEdit lookUpEdit3;
         private DevExpress.XtraEditors.LookUpEdit RouteLookUpEdit;
         private DevExpress.XtraEditors.LabelControl labelControl54;
+        private DevExpress.XtraEditors.LookUpEdit KaGroupLookUpEdit;
+        private DevExpress.XtraEditors.LabelControl labelControl55;
+        private DevExpress.XtraEditors.TextEdit textEdit10;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
     }
 }

@@ -54,5 +54,6 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> ContractDate { get; set; }
         public string ContractNum { get; set; }
         public Nullable<decimal> Saldo { get; set; }
+        public string GroupName { get; set; }
     }
 }

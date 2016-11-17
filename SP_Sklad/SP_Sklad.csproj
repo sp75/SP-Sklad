@@ -340,6 +340,9 @@
     <Compile Include="SkladData\KAgentSaldo.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\KontragentGroup.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\Llicenses.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -359,6 +362,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\ProfileDocSetting.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\RepLng.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\REP_2_Result.cs">
@@ -890,9 +896,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\RecalcActives_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\RepLng.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\Reports.cs">
