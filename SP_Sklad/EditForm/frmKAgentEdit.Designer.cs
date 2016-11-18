@@ -243,9 +243,9 @@
             this.xtraTabPage15 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl7 = new DevExpress.XtraEditors.GroupControl();
             this.panelControl8 = new DevExpress.XtraEditors.PanelControl();
+            this.KAMatGroupDiscountDS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.calcEdit3 = new DevExpress.XtraEditors.CalcEdit();
-            this.KAMatGroupDiscountDS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
             this.GroupLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
@@ -410,8 +410,8 @@
             this.groupControl7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).BeginInit();
             this.panelControl8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAMatGroupDiscountDS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GroupLookUpEdit.Properties)).BeginInit();
             this.xtraTabPage16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl9)).BeginInit();
@@ -1310,7 +1310,8 @@
             this.KaGroupLookUpEdit.Location = new System.Drawing.Point(463, 37);
             this.KaGroupLookUpEdit.Name = "KaGroupLookUpEdit";
             this.KaGroupLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search)});
             this.KaGroupLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.KaGroupLookUpEdit.Properties.DisplayMember = "Name";
@@ -1318,6 +1319,7 @@
             this.KaGroupLookUpEdit.Properties.ShowHeader = false;
             this.KaGroupLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.KaGroupLookUpEdit.Properties.ValueMember = "Id";
+            this.KaGroupLookUpEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.KaGroupLookUpEdit_Properties_ButtonClick);
             this.KaGroupLookUpEdit.Size = new System.Drawing.Size(200, 22);
             this.KaGroupLookUpEdit.StyleController = this.styleController1;
             this.KaGroupLookUpEdit.TabIndex = 42;
@@ -2763,6 +2765,10 @@
             this.panelControl8.Size = new System.Drawing.Size(645, 440);
             this.panelControl8.TabIndex = 49;
             // 
+            // KAMatGroupDiscountDS
+            // 
+            this.KAMatGroupDiscountDS.DataSource = typeof(SP_Sklad.SkladData.KAMatGroupDiscount);
+            // 
             // labelControl12
             // 
             this.labelControl12.Location = new System.Drawing.Point(290, 58);
@@ -2779,14 +2785,9 @@
             this.calcEdit3.Name = "calcEdit3";
             this.calcEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcEdit3.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
             this.calcEdit3.Size = new System.Drawing.Size(161, 22);
             this.calcEdit3.StyleController = this.styleController1;
             this.calcEdit3.TabIndex = 46;
-            // 
-            // KAMatGroupDiscountDS
-            // 
-            this.KAMatGroupDiscountDS.DataSource = typeof(SP_Sklad.SkladData.KAMatGroupDiscount);
             // 
             // labelControl13
             // 
@@ -3122,8 +3123,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).EndInit();
             this.panelControl8.ResumeLayout(false);
             this.panelControl8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAMatGroupDiscountDS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GroupLookUpEdit.Properties)).EndInit();
             this.xtraTabPage16.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl9)).EndInit();

@@ -16,11 +16,11 @@ namespace SP_Sklad.SkladData
     {
         public Users()
         {
-            this.UserAccess = new HashSet<UserAccess>();
-            this.UserAccessWh = new HashSet<UserAccessWh>();
-            this.PrintLog = new HashSet<PrintLog>();
             this.Kagent = new HashSet<Kagent>();
             this.OperLog = new HashSet<OperLog>();
+            this.PrintLog = new HashSet<PrintLog>();
+            this.UserAccess = new HashSet<UserAccess>();
+            this.UserAccessWh = new HashSet<UserAccessWh>();
         }
     
         public int UserId { get; set; }
@@ -34,13 +34,13 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> LastLogin { get; set; }
         public Nullable<bool> IsOnline { get; set; }
         public string ReportFormat { get; set; }
-        public Nullable<int> GroupId { get; set; }
+        public Nullable<System.Guid> GroupId { get; set; }
     
-        public virtual ICollection<UserAccess> UserAccess { get; set; }
-        public virtual ICollection<UserAccessWh> UserAccessWh { get; set; }
-        public virtual ICollection<PrintLog> PrintLog { get; set; }
         public virtual ICollection<Kagent> Kagent { get; set; }
         public virtual ICollection<OperLog> OperLog { get; set; }
+        public virtual ICollection<PrintLog> PrintLog { get; set; }
+        public virtual ICollection<UserAccess> UserAccess { get; set; }
+        public virtual ICollection<UserAccessWh> UserAccessWh { get; set; }
         public virtual UsersGroup UsersGroup { get; set; }
     }
 }

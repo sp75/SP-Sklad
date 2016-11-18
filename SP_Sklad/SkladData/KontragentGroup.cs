@@ -19,7 +19,7 @@ namespace SP_Sklad.SkladData
             this.Kagent = new HashSet<Kagent>();
         }
     
-        public int Id { get; set; }
+        public System.Guid Id { get; set; }
         public string Name { get; set; }
     
         public virtual ICollection<Kagent> Kagent { get; set; }

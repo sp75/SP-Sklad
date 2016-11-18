@@ -44,7 +44,6 @@ namespace SP_Sklad.SkladData
         public DbSet<PayType> PayType { get; set; }
         public DbSet<PayDoc> PayDoc { get; set; }
         public DbSet<ChargeType> ChargeType { get; set; }
-        public DbSet<Users> Users { get; set; }
         public DbSet<Currency> Currency { get; set; }
         public DbSet<CommonParams> CommonParams { get; set; }
         public DbSet<PriceTypes> PriceTypes { get; set; }
@@ -108,7 +107,6 @@ namespace SP_Sklad.SkladData
         public DbSet<WaybillDet> WaybillDet { get; set; }
         public DbSet<Functions> Functions { get; set; }
         public DbSet<Commission> Commission { get; set; }
-        public DbSet<Kagent> Kagent { get; set; }
         public DbSet<AccountType> AccountType { get; set; }
         public DbSet<Banks> Banks { get; set; }
         public DbSet<v_KAgentAccount> v_KAgentAccount { get; set; }
@@ -132,10 +130,12 @@ namespace SP_Sklad.SkladData
         public DbSet<TechProcDet> TechProcDet { get; set; }
         public DbSet<Services> Services { get; set; }
         public DbSet<Routes> Routes { get; set; }
-        public DbSet<UsersGroup> UsersGroup { get; set; }
         public DbSet<Jobs> Jobs { get; set; }
-        public DbSet<KontragentGroup> KontragentGroup { get; set; }
         public DbSet<RepLng> RepLng { get; set; }
+        public DbSet<Kagent> Kagent { get; set; }
+        public DbSet<KontragentGroup> KontragentGroup { get; set; }
+        public DbSet<Users> Users { get; set; }
+        public DbSet<UsersGroup> UsersGroup { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)

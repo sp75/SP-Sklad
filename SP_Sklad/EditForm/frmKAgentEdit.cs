@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SP_Sklad.Common;
 using SP_Sklad.SkladData;
+using SP_Sklad.ViewsForm;
 
 namespace SP_Sklad.EditForm
 {
@@ -524,6 +525,20 @@ namespace SP_Sklad.EditForm
             {
                 PTypeEdit.EditValue = null;
            //     _ka.PTypeId = null;
+            }
+        }
+
+        private void KaGroupLookUpEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                var frm = new frmKaGroup();
+                if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    KaGroupLookUpEdit.EditValue = frm.focused_row != null ? (Guid?)frm.focused_row.Id : null;
+                }
+
+                KaGroupLookUpEdit.Properties.DataSource = DB.SkladBase().KontragentGroup.AsNoTracking().ToList();
             }
         }
 

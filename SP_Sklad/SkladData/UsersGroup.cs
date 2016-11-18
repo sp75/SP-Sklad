@@ -19,7 +19,7 @@ namespace SP_Sklad.SkladData
             this.Users = new HashSet<Users>();
         }
     
-        public int Id { get; set; }
+        public System.Guid Id { get; set; }
         public string Name { get; set; }
     
         public virtual ICollection<Users> Users { get; set; }

@@ -18,7 +18,7 @@ namespace SP_Sklad.SkladData
         public int UserId { get; set; }
         public int WId { get; set; }
     
-        public virtual Users Users { get; set; }
         public virtual Warehouse Warehouse { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

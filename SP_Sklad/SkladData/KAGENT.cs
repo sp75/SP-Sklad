@@ -22,6 +22,7 @@ namespace SP_Sklad.SkladData
             this.Commission3 = new HashSet<Commission>();
             this.CONTRACTS = new HashSet<CONTRACTS>();
             this.CONTRACTS1 = new HashSet<CONTRACTS>();
+            this.Customers = new HashSet<Customers>();
             this.DISCCARDS = new HashSet<DISCCARDS>();
             this.KaAddr = new HashSet<KaAddr>();
             this.KAMatDiscount = new HashSet<KAMatDiscount>();
@@ -33,15 +34,14 @@ namespace SP_Sklad.SkladData
             this.WaybillMove = new HashSet<WaybillMove>();
             this.KAgentAccount = new HashSet<KAgentAccount>();
             this.KAgentPersons = new HashSet<KAgentPersons>();
+            this.KAgentSaldo = new HashSet<KAgentSaldo>();
+            this.Routes1 = new HashSet<Routes>();
             this.TAXWB1 = new HashSet<TAXWB>();
+            this.TechProcDet = new HashSet<TechProcDet>();
             this.WaybillList1 = new HashSet<WaybillList>();
             this.WayBillMake = new HashSet<WayBillMake>();
             this.WaybillList2 = new HashSet<WaybillList>();
             this.WayBillSvc = new HashSet<WayBillSvc>();
-            this.Customers = new HashSet<Customers>();
-            this.KAgentSaldo = new HashSet<KAgentSaldo>();
-            this.TechProcDet = new HashSet<TechProcDet>();
-            this.Routes1 = new HashSet<Routes>();
         }
     
         public int KaId { get; set; }
@@ -74,7 +74,7 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> ContractDate { get; set; }
         public string ContractNum { get; set; }
         public Nullable<int> RouteId { get; set; }
-        public Nullable<int> GroupId { get; set; }
+        public Nullable<System.Guid> GroupId { get; set; }
     
         public virtual ICollection<Commission> Commission { get; set; }
         public virtual ICollection<Commission> Commission1 { get; set; }
@@ -82,6 +82,7 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<Commission> Commission3 { get; set; }
         public virtual ICollection<CONTRACTS> CONTRACTS { get; set; }
         public virtual ICollection<CONTRACTS> CONTRACTS1 { get; set; }
+        public virtual ICollection<Customers> Customers { get; set; }
         public virtual ICollection<DISCCARDS> DISCCARDS { get; set; }
         public virtual ICollection<KaAddr> KaAddr { get; set; }
         public virtual KADiscount KADiscount { get; set; }
@@ -95,17 +96,16 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<KAgentAccount> KAgentAccount { get; set; }
         public virtual KAgentDoc KAgentDoc { get; set; }
         public virtual ICollection<KAgentPersons> KAgentPersons { get; set; }
-        public virtual Users Users { get; set; }
+        public virtual KontragentGroup KontragentGroup { get; set; }
+        public virtual Routes Routes { get; set; }
+        public virtual ICollection<KAgentSaldo> KAgentSaldo { get; set; }
+        public virtual ICollection<Routes> Routes1 { get; set; }
         public virtual ICollection<TAXWB> TAXWB1 { get; set; }
+        public virtual ICollection<TechProcDet> TechProcDet { get; set; }
         public virtual ICollection<WaybillList> WaybillList1 { get; set; }
         public virtual ICollection<WayBillMake> WayBillMake { get; set; }
         public virtual ICollection<WaybillList> WaybillList2 { get; set; }
         public virtual ICollection<WayBillSvc> WayBillSvc { get; set; }
-        public virtual ICollection<Customers> Customers { get; set; }
-        public virtual ICollection<KAgentSaldo> KAgentSaldo { get; set; }
-        public virtual ICollection<TechProcDet> TechProcDet { get; set; }
-        public virtual Routes Routes { get; set; }
-        public virtual ICollection<Routes> Routes1 { get; set; }
-        public virtual KontragentGroup KontragentGroup { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

@@ -337,6 +337,9 @@
     <Compile Include="SkladData\Jobs.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\Kagent.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\KAgentSaldo.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -383,6 +386,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\TechProcDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\Users.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\UsersGroup.cs">
@@ -451,6 +457,12 @@
     <Compile Include="EditForm\frmUserEdit.Designer.cs">
       <DependentUpon>frmUserEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewsForm\frmKaGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmKaGroup.Designer.cs">
+      <DependentUpon>frmKaGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewsForm\frmPdfView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -468,6 +480,12 @@
     </Compile>
     <Compile Include="ViewsForm\frmSpreadsheed.Designer.cs">
       <DependentUpon>frmSpreadsheed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewsForm\frmUserGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmUserGroup.Designer.cs">
+      <DependentUpon>frmUserGroup.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewsForm\frmWhCatalog.cs">
       <SubType>Form</SubType>
@@ -798,9 +816,6 @@
     <Compile Include="SkladData\KADiscount.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\Kagent.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SkladData\KAgentAccount.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1016,9 +1031,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\UserAccessWh.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\Users.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\UserTree.cs">
@@ -1267,6 +1279,9 @@
     <EmbeddedResource Include="EditForm\frmUserEdit.resx">
       <DependentUpon>frmUserEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmKaGroup.resx">
+      <DependentUpon>frmKaGroup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmPdfView.resx">
       <DependentUpon>frmPdfView.cs</DependentUpon>
     </EmbeddedResource>
@@ -1275,6 +1290,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmSpreadsheed.resx">
       <DependentUpon>frmSpreadsheed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmUserGroup.resx">
+      <DependentUpon>frmUserGroup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmWhCatalog.resx">
       <DependentUpon>frmWhCatalog.cs</DependentUpon>
@@ -1451,6 +1469,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KagentList.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KAMatDiscount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KAMatGroupDiscount.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.KontragentGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Materials.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatPrices.datasource" />
@@ -1471,6 +1490,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.SvcGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.TechProcess.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Users.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.UsersGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.UserTreeAccess.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_KAgentAccount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PriceList.datasource" />

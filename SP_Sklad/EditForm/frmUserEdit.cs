@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using DevExpress.XtraTreeList;
 using SP_Sklad.Common;
 using SP_Sklad.SkladData;
+using SP_Sklad.ViewsForm;
 
 namespace SP_Sklad.EditForm
 {
@@ -73,6 +74,8 @@ namespace SP_Sklad.EditForm
                 ConfirmPassEdit.Text = _u.Pass;
                 Text += string.Format( @" {0}", _u.Name );
             }
+
+            UserGroupLookUpEdit.Properties.DataSource = DB.SkladBase().UsersGroup.AsNoTracking().ToList();
 
             ValidateForm();
         }
@@ -253,6 +256,20 @@ namespace SP_Sklad.EditForm
         private void textEdit2_EditValueChanged(object sender, EventArgs e)
         {
             ValidateForm();
+        }
+
+        private void UserGroupLookUpEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                var frm = new frmUserGroup();
+                if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    UserGroupLookUpEdit.EditValue = frm.focused_row != null ? (Guid?)frm.focused_row.Id : null;
+                }
+
+                UserGroupLookUpEdit.Properties.DataSource = DB.SkladBase().UsersGroup.AsNoTracking().ToList();
+            }
         }
     }
 }
