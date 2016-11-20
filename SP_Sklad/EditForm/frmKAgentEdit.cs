@@ -224,7 +224,30 @@ namespace SP_Sklad.EditForm
         void GetDiscountList()
         {
             _db.SaveChanges();
-            DiscountGridControl.DataSource = _db.DiscountList(_ka.KaId);
+            var list = _db.DiscountList(_ka.KaId).ToList();
+
+            DiscountGridControl.DataSource = list;
+
+
+      /*      tree.RemoveAll(r => r.ParentId == 4);
+            foreach (var item in list)
+            {
+                tree.Add(new CatalogTreeList
+                {
+                    Id = tree.Max(m => m.Id) + 1,
+                    ParentId = 4,
+                    Text = item.Name,
+                    ImgIdx = 2,
+                    TabIdx = 4,
+                    DataSetId = item.Id
+                });
+            }
+
+    //        DirTreeList.DataSource = null;
+      //      DirTreeList.DataSource = TreeListBS;
+
+            DirTreeList.RefreshDataSource();
+            DirTreeList.ExpandAll();*/
         }
 
         private void checkEdit2_CheckedChanged(object sender, EventArgs e)
