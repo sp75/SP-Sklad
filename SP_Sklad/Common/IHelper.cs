@@ -645,7 +645,7 @@ namespace SP_Sklad.Common
         public string Text { get; set; }
         public int ImgIdx { get; set; }
         public int TabIdx { get; set; }
-        public int DataSetId { get; set; }
+        public object DataSetId { get; set; }
     }
 
     public static class DateTimeDayOfMonthExtensions

@@ -1467,6 +1467,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KAgentAccount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KAgentDoc.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KagentList.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.KAgentPersons.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KAMatDiscount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KAMatGroupDiscount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KontragentGroup.datasource" />

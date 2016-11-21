@@ -106,7 +106,7 @@ namespace SP_Sklad.EditForm
 
             if (focused_tree_node.Id == 0)
             {
-                var list = _db.MatRecDet.Where(w => w.RecId == _mr.RecId).Select(s => new
+                MatRecDetGridControl.DataSource = _db.MatRecDet.Where(w => w.RecId == _mr.RecId).Select(s => new
                 {
                     s.DetId,
                     s.Materials.Name,
@@ -115,7 +115,6 @@ namespace SP_Sklad.EditForm
                     s.Coefficient
 
                 }).ToList();
-                MatRecDetGridControl.DataSource = list;
             }
 
             if (focused_tree_node.Id == 1)

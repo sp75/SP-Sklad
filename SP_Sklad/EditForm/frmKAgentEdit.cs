@@ -86,8 +86,11 @@ namespace SP_Sklad.EditForm
                 MatLookUpEdit.Properties.DataSource = DB.SkladBase().MaterialsList.ToList();
                 GroupLookUpEdit.Properties.DataSource = DB.SkladBase().MatGroup.ToList();
                 UsersLookUpEdit.Properties.DataSource = DB.SkladBase().Users.ToList().Where(w => !w.Kagent.Any() || w.UserId == _ka.UserId).ToList();
-                JobLookUpEdit.Properties.Items.AddRange(DB.SkladBase().KAgentPersons.Where(w => w.JobType == 2).Select(s => s.Post).Distinct().ToList());
+                var pos_list = DB.SkladBase().KAgentPersons.Where(w => w.JobType == 2 && w.Post != null).Select(s => s.Post).Distinct().ToList();
+                JobLookUpEdit.Properties.Items.AddRange(pos_list);
+                comboBoxEdit1.Properties.Items.AddRange(pos_list);
                 lookUpEdit3.Properties.DataSource = DB.SkladBase().Jobs.AsNoTracking().ToList();
+                PersonJobTypeLookUpEdit.Properties.DataSource = lookUpEdit3.Properties.DataSource;
 
                 lookUpEdit1.Properties.DataSource = DB.SkladBase().AccountType.Select(s => new { s.TypeId, s.Name }).ToList();
                 lookUpEdit2.Properties.DataSource = DB.SkladBase().Banks.Select(s => new { s.BankId, s.Name }).ToList();
@@ -137,8 +140,36 @@ namespace SP_Sklad.EditForm
                 }
 
                 GetAccounts();
+                GetPersons();
+                GetDiscountList();
+
             }
         }
+
+        private void GetPersons()
+        {
+            var list = _db.KAgentPersons.AsNoTracking().Where(w => w.KAId == _ka.KaId).ToList();
+            KAgentPersonsBS.DataSource = list;
+
+            tree.RemoveAll(r => r.ParentId == 6);
+            foreach (var item in list)
+            {
+                tree.Add(new CatalogTreeList
+                {
+                    Id = tree.Max(m=> m.Id) + 1,
+                    ParentId = 6,
+                    Text = item.Name,
+                    ImgIdx = 6,
+                    TabIdx = 8,
+                    DataSetId = item.PersonId
+
+                });
+            }
+
+            DirTreeList.RefreshDataSource();
+            DirTreeList.ExpandAll();
+        }
+
 
         private void GetAccounts()
         {
@@ -147,7 +178,7 @@ namespace SP_Sklad.EditForm
             {
                 tree.Add(new CatalogTreeList
                 {
-                    Id = tree.Count + 1,
+                    Id = tree.Max(m => m.Id) + 1,
                     ParentId = 7,
                     Text = item.AccNum,
                     ImgIdx = 6,
@@ -194,9 +225,21 @@ namespace SP_Sklad.EditForm
             
             var focused_tree_node = DirTreeList.GetDataRecordByNode(e.Node) as CatalogTreeList;
 
-            if (_ka != null)
+            if (_ka != null && focused_tree_node.Id == 4)
             {
-                GetDiscountList();
+                DiscountGridControl.DataSource  = _db.DiscountList(_ka.KaId).ToList();
+            }
+            if (focused_tree_node.ParentId == 4)
+            {
+
+                if (focused_tree_node.ImgIdx == 7) //Товар
+                {
+                    MatDiscountDS.DataSource = _db.KAMatDiscount.Find(focused_tree_node.DataSetId);
+                }
+                else
+                {
+                    KAMatGroupDiscountDS.DataSource = _db.KAMatGroupDiscount.Find(focused_tree_node.DataSetId);
+                }
             }
 
             if (focused_tree_node.ParentId == 7)
@@ -208,6 +251,17 @@ namespace SP_Sklad.EditForm
             {
                 GetAcc();
             }
+
+            if (focused_tree_node.Id == 6)
+            {
+               KAgentPersonsBS.DataSource = _db.KAgentPersons.AsNoTracking().Where(w => w.KAId == _ka.KaId).ToList();
+            }
+
+            if (focused_tree_node.ParentId == 6)
+            {
+                PersonBS.DataSource = _db.KAgentPersons.Find(focused_tree_node.DataSetId);
+            }
+
 
             xtraTabControl1.SelectedTabPageIndex = focused_tree_node.TabIdx;
         }
@@ -229,7 +283,7 @@ namespace SP_Sklad.EditForm
             DiscountGridControl.DataSource = list;
 
 
-      /*      tree.RemoveAll(r => r.ParentId == 4);
+            tree.RemoveAll(r => r.ParentId == 4);
             foreach (var item in list)
             {
                 tree.Add(new CatalogTreeList
@@ -237,17 +291,17 @@ namespace SP_Sklad.EditForm
                     Id = tree.Max(m => m.Id) + 1,
                     ParentId = 4,
                     Text = item.Name,
-                    ImgIdx = 2,
-                    TabIdx = 4,
-                    DataSetId = item.Id
+                    ImgIdx = item.ImgIdx == 0 ? 7 : 8,
+                    TabIdx = item.ImgIdx == 0 ? 10 : 11,
+                    DataSetId = item.DiscId
                 });
             }
 
-    //        DirTreeList.DataSource = null;
-      //      DirTreeList.DataSource = TreeListBS;
+            DirTreeList.DataSource = null;
+            DirTreeList.DataSource = TreeListBS;
 
             DirTreeList.RefreshDataSource();
-            DirTreeList.ExpandAll();*/
+            DirTreeList.ExpandAll();
         }
 
         private void checkEdit2_CheckedChanged(object sender, EventArgs e)
@@ -312,10 +366,18 @@ namespace SP_Sklad.EditForm
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             xtraTabControl1.SelectedTabPageIndex = 10;
-            var mat_disc = _db.KAMatDiscount.Add(new KAMatDiscount { DiscId = Guid.NewGuid(), KAId = _ka.KaId, OnValue = 0, MatId = DB.SkladBase().MaterialsList.FirstOrDefault().MatId });
+            var mat_disc = _db.KAMatDiscount.Add(new KAMatDiscount
+            {
+                DiscId = Guid.NewGuid(),
+                KAId = _ka.KaId,
+                OnValue = 0,
+                MatId = DB.SkladBase().MaterialsList.FirstOrDefault().MatId
+            });
             MatDiscountDS.DataSource = mat_disc;
+            _db.SaveChanges();
             GetDiscountList();
 
+            DirTreeList.FocusedNode = DirTreeList.FindNodeByFieldValue("DataSetId", mat_disc.DiscId);
 
             /*   DiscountList->Append();
                DiscountListIMG_IDX->Value = 0;
@@ -330,7 +392,7 @@ namespace SP_Sklad.EditForm
 
         private void simpleButton4_Click(object sender, EventArgs e)
         {
-            xtraTabControl1.SelectedTabPageIndex = 3;
+
         }
 
         private void checkEdit5_CheckedChanged(object sender, EventArgs e)
@@ -353,14 +415,25 @@ namespace SP_Sklad.EditForm
                 KAMatGroupDiscountDS.DataSource = _db.KAMatGroupDiscount.FirstOrDefault(w => w.DiscId == row.DiscId);
                 xtraTabControl1.SelectedTabPageIndex = 11;
             }
+
+            DirTreeList.FocusedNode = DirTreeList.FindNodeByFieldValue("DataSetId", row.DiscId);
         }
 
         private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             xtraTabControl1.SelectedTabPageIndex = 11;
-            var mat_grp_disc = _db.KAMatGroupDiscount.Add(new KAMatGroupDiscount { DiscId = Guid.NewGuid(), KAId = _ka.KaId, OnValue = 0, GrpId = DB.SkladBase().MatGroup.FirstOrDefault().GrpId });
+            var mat_grp_disc = _db.KAMatGroupDiscount.Add(new KAMatGroupDiscount
+            {
+                DiscId = Guid.NewGuid(),
+                KAId = _ka.KaId,
+                OnValue = 0,
+                GrpId = DB.SkladBase().MatGroup.FirstOrDefault().GrpId
+            });
             KAMatGroupDiscountDS.DataSource = mat_grp_disc;
+            _db.SaveChanges();
             GetDiscountList();
+
+            DirTreeList.FocusedNode = DirTreeList.FindNodeByFieldValue("DataSetId", mat_grp_disc.DiscId);
 /*
             DiscountList->Append();
             DiscountListIMG_IDX->Value = 1;
@@ -416,7 +489,7 @@ namespace SP_Sklad.EditForm
             _db.SaveChanges();
             GetAccounts();
 
-            DirTreeList.FocusedNode = DirTreeList.GetNodeList().FirstOrDefault(w => Convert.ToInt32(w.GetValue("DataSetId")) == new_det.AccId);
+            DirTreeList.FocusedNode = DirTreeList.FindNodeByFieldValue("DataSetId", new_det.AccId);
         }
 
         private void EditAccBtn_Click(object sender, EventArgs e)
@@ -427,7 +500,7 @@ namespace SP_Sklad.EditForm
             xtraTabControl1.SelectedTabPageIndex = 9;
             KAgentAccountBS.DataSource = _db.KAgentAccount.Find(det_item.AccId);
 
-            DirTreeList.FocusedNode = DirTreeList.GetNodeList().FirstOrDefault(w => Convert.ToInt32(w.GetValue("DataSetId")) == det_item.AccId);
+            DirTreeList.FocusedNode = DirTreeList.FindNodeByFieldValue("DataSetId", det_item.AccId);
         }
 
         private void DelAccBtn_Click(object sender, EventArgs e)
@@ -563,6 +636,105 @@ namespace SP_Sklad.EditForm
 
                 KaGroupLookUpEdit.Properties.DataSource = DB.SkladBase().KontragentGroup.AsNoTracking().ToList();
             }
+        }
+
+        private void simpleButton6_Click_1(object sender, EventArgs e)
+        {
+            DirTreeList.FocusedNode = DirTreeList.GetNodeList().FirstOrDefault(w => Convert.ToInt32(w.GetValue("Id")) == 4);
+        }
+
+        private void MatLookUpEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            if (MatLookUpEdit.ContainsFocus)
+            {
+                DirTreeList.FocusedNode.SetValue("Text", MatLookUpEdit.Text);
+            }
+        }
+
+        private void GroupLookUpEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            if (GroupLookUpEdit.ContainsFocus)
+            {
+                DirTreeList.FocusedNode.SetValue("Text", GroupLookUpEdit.Text);
+            }
+        }
+
+        private void simpleButton4_Click_1(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void simpleButton17_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void simpleButton11_Click(object sender, EventArgs e)
+        {
+            _db.KAgentPersons.Remove(PersonBS.DataSource as KAgentPersons);
+            _db.SaveChanges();
+            GetPersons();
+
+            DirTreeList.FocusedNode = DirTreeList.FindNodeByFieldValue("Id", 6);
+        }
+
+        private void AddPersonBtn_Click(object sender, EventArgs e)
+        {
+            xtraTabControl1.SelectedTabPageIndex = 8;
+            var new_det = _db.KAgentPersons.Add(new KAgentPersons
+            {
+                KAId = _ka.KaId,
+                Name = ""
+
+            });
+            PersonBS.DataSource = new_det;
+            _db.SaveChanges();
+            GetPersons();
+
+            DirTreeList.FocusedNode = DirTreeList.FindNodeByFieldValue("DataSetId", new_det.PersonId);
+        }
+
+        private void DelPersonBtn_Click(object sender, EventArgs e)
+        {
+            dynamic det_item = KAgentPersonsGridView.GetFocusedRow();
+            if (det_item == null) return;
+
+            var a = _db.KAgentPersons.Find(det_item.PersonId);
+            _db.KAgentPersons.Remove(a);
+            _db.SaveChanges();
+
+            xtraTabControl1.SelectedTabPageIndex = 6;
+
+            GetPersons();
+        }
+
+        private void EditPersonBtn_Click(object sender, EventArgs e)
+        {
+            dynamic det_item = KAgentPersonsGridView.GetFocusedRow();
+            if (det_item == null) return;
+
+            xtraTabControl1.SelectedTabPageIndex = 8;
+            PersonBS.DataSource = _db.KAgentPersons.Find(det_item.PersonId);
+
+            DirTreeList.FocusedNode = DirTreeList.FindNodeByFieldValue("DataSetId", det_item.PersonId);
+        }
+
+        private void textEdit4_EditValueChanged(object sender, EventArgs e)
+        {
+            if (textEdit4.ContainsFocus)
+            {
+                DirTreeList.FocusedNode.SetValue("Text", textEdit4.EditValue);
+            }
+        }
+
+        private void simpleButton18_Click(object sender, EventArgs e)
+        {
+            DirTreeList.FocusedNode = DirTreeList.FindNodeByFieldValue("Id", 6);
+        }
+
+        private void KAgentPersonsGridView_DoubleClick(object sender, EventArgs e)
+        {
+            EditPersonBtn.PerformClick();
         }
 
     }

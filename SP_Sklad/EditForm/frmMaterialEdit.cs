@@ -163,16 +163,17 @@ namespace SP_Sklad.EditForm
             if (focused_tree_node.ParentId == 1)
             {
                 _db.SaveChanges();
+                int data_set_id = (int)focused_tree_node.DataSetId;
 
-                var pt = _db.GetMatPriceTypes(_mat_id).FirstOrDefault(w => w.PTypeId == focused_tree_node.DataSetId);
+                var pt = _db.GetMatPriceTypes(_mat_id).FirstOrDefault(w => w.PTypeId == data_set_id);
                 DisCheckBox.EditValue = pt.Dis;
 
-                _mat_prices = _db.MatPrices.FirstOrDefault(a => a.PTypeId == focused_tree_node.DataSetId && a.MatId == _mat_id);
+                _mat_prices = _db.MatPrices.FirstOrDefault(a => a.PTypeId == data_set_id && a.MatId == _mat_id);
                 if (_mat_prices == null)
                 {
                     _mat_prices = new MatPrices
                    {
-                       PTypeId = focused_tree_node.DataSetId,
+                       PTypeId = data_set_id,
                        MatId = _mat_id.Value,
                        OnValue = 0,
                        Dis = 0,
