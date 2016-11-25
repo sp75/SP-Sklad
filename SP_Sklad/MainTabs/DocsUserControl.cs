@@ -742,8 +742,8 @@ namespace SP_Sklad.MainTabs
 
             DeleteItemBtn.Enabled = (dr != null && dr.Checked == 0 && focused_tree_node.CanDelete == 1);
             ExecuteItemBtn.Enabled = (dr != null && dr.WType != 2 && dr.WType != -16 && dr.WType != 16 && focused_tree_node.CanPost == 1);
-            EditItemBtn.Enabled = (dr != null && focused_tree_node.CanModify == 1);
-            CopyItemBtn.Enabled = EditItemBtn.Enabled;
+            EditItemBtn.Enabled = (dr != null && focused_tree_node.CanModify == 1 && (dr.Checked == 0 || dr.Checked == 1));
+            CopyItemBtn.Enabled = (dr != null && focused_tree_node.CanModify == 1);
             PrintItemBtn.Enabled = (dr != null);
         }
 
@@ -855,7 +855,8 @@ namespace SP_Sklad.MainTabs
                                    PersonId = DBHelper.CurrentUser.KaId,
                                    WaybillMove = new WaybillMove { SourceWid = wid.Value },
                                    Nds = 0,
-                                   Docs = new Docs { DocType = -5 }
+                                   Docs = new Docs { DocType = -5 },
+                                   UpdatedBy = DBHelper.CurrentUser.UserId
                                });
 
                             db.SaveChanges();

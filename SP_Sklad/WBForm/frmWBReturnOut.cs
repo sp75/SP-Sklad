@@ -57,7 +57,8 @@ namespace SP_Sklad.WBForm
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
                     EntId = DBHelper.Enterprise.KaId,
-                    Docs = new Docs { DocType = _wtype }
+                    Docs = new Docs { DocType = _wtype },
+                    UpdatedBy = DBHelper.CurrentUser.UserId
                 });
 
                 _db.SaveChanges();

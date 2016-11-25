@@ -67,7 +67,8 @@ namespace SP_Sklad.WBForm
                     PersonId = DBHelper.CurrentUser.KaId,
                     WaybillMove = new WaybillMove { SourceWid = DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId },
                     Nds =  0,
-                    Docs = new Docs { DocType = _wtype }
+                    Docs = new Docs { DocType = _wtype },
+                    UpdatedBy = DBHelper.CurrentUser.UserId
                 });
                
                 _db.SaveChanges();

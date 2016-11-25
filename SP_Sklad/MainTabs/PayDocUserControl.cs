@@ -113,7 +113,8 @@ namespace SP_Sklad.MainTabs
                     CurrId = 2,  //Валюта по умолчанию
                     OnValue = 1,  //Курс валюти
                     MPersonId = Convert.ToInt32(PersonEdit.EditValue),
-                    KaId = _wb.KaId
+                    KaId = _wb.KaId,
+                    UpdatedBy = DBHelper.CurrentUser.UserId
                 });
 
                 if (new int[] { 1, 6, 16 }.Contains(_wb.WType)) _pd.DocType = -1;   // Вихідний платіж

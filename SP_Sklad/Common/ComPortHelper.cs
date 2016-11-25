@@ -3,24 +3,23 @@ using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace SP_Sklad.Common
 {
    public class ComPortHelper
     {
-        private bool _continue;
         private SerialPort _serialPort;
+        private String received { get; set; }
+        private String test { get; set; }
+        public decimal weight { get; set; }
 
         public ComPortHelper()
         {
-            //   string name;
-            //      string message;
-            //      StringComparer stringComparer = StringComparer.OrdinalIgnoreCase;
-            //  Thread readThread = new Thread(Read);
-
-            // Create a new SerialPort object with default settings.
             _serialPort = new SerialPort();
+            _serialPort.DataReceived+= new SerialDataReceivedEventHandler(DataReceivedHandler);
 
             // Allow the user to set the appropriate properties.
             _serialPort.PortName = "COM1";
@@ -33,38 +32,27 @@ namespace SP_Sklad.Common
             // Set the read/write timeouts
             _serialPort.ReadTimeout = 500;
             _serialPort.WriteTimeout = 500;
+        }
 
-           
-            //      _continue = true;
-            //     readThread.Start();
-
-            /*        Console.Write("Name: ");
-                    name = Console.ReadLine();
-
-                    Console.WriteLine("Type QUIT to exit");
-
-                    while (_continue)
-                    {
-                        message = Console.ReadLine();
-
-                        if (stringComparer.Equals("quit", message))
-                        {
-                            _continue = false;
-                        }
-                        else
-                        {
-                            _serialPort.WriteLine(
-                                String.Format("<{0}>: {1}", name, message));
-                        }
-                    }*/
-
-            //    readThread.Join();
-            //      _serialPort.Close();
+        private void OnTimedEvent(Object source, ElapsedEventArgs e)
+        {
+            if (received != null && received.IndexOf('<') != -1 && received.IndexOf('>') != -1)
+            {
+                var val = Convert.ToDecimal(Regex.Replace(received, "[^0-9 ]", ""));
+                weight = (val / 100);
+            }
         }
 
         public void Close()
         {
-            _serialPort.Close();
+            weight = 0;
+            if (_serialPort.IsOpen)
+            {
+
+                _serialPort.DiscardOutBuffer();
+                _serialPort.DiscardInBuffer();
+                _serialPort.Close();
+            }
         }
 
         public void Open()
@@ -74,25 +62,27 @@ namespace SP_Sklad.Common
             {
                 return;
             }
-
+          
             _serialPort.Open();
-            _serialPort.DiscardInBuffer();
-            _serialPort.DiscardOutBuffer();
         }
 
-        public String ReadData()
+        private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
-            if (!_serialPort.IsOpen && _serialPort.BytesToRead >= 16)
+            received += _serialPort.ReadExisting();
+            if (received != null && received.Length >= 10 && received.IndexOf('<') != -1 && received.IndexOf('>') != -1)
             {
-                return "";
+                var rez = Regex.Replace(received, "[^0-9 ]", "");
+                decimal display;
+                if (decimal.TryParse(rez, out display))
+                {
+                    weight = (display / 100);
+                }
+                else weight = 0;
+
+                received = "";
             }
 
-            return _serialPort.ReadExisting();
-        }
+         }
 
-        public void WriteText()
-        {
-            _serialPort.WriteLine(String.Format("<{0}>: {1}", "Test", "145.56"));
-        }
     }
 }

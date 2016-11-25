@@ -21,10 +21,10 @@ namespace SP_Sklad.SkladData
         public Nullable<int> SecondKaId { get; set; }
         public Nullable<int> ThirdKaId { get; set; }
     
-        public virtual WaybillList WaybillList { get; set; }
         public virtual Kagent Kagent { get; set; }
         public virtual Kagent Kagent1 { get; set; }
         public virtual Kagent Kagent2 { get; set; }
         public virtual Kagent Kagent3 { get; set; }
+        public virtual WaybillList WaybillList { get; set; }
     }
 }

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SP_Sklad.Common;
@@ -82,13 +83,13 @@ namespace SP_Sklad.WBDetForm
             }
 
             GetOk();
-
+/*
             try
             {
                 com_port.Open();
                 timer1.Enabled = true;
             }
-            catch { }
+            catch { }*/
         }
 
         private void MatComboBox_EditValueChanged(object sender, EventArgs e)
@@ -295,36 +296,30 @@ namespace SP_Sklad.WBDetForm
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            var res = com_port.ReadData();
-            textBox1.Text = res;
-/*
-             if(ComPort->Connected)
-	{
-		if(ComPort->InBufCount() >= 16 )
-		 {
-			char buff[16] = {0};
-			ComPort->Read(buff, ComPort->InBufCount());
-			String rez="", rez2="";
-			for(int a=0; a<16; a++)
-			 {
-			   if(a!=1 && a<10)
-				{
-				  rez= (char)buff[a];
-				  if(rez == '.') rez =',';
-				  rez2+=rez ;
-				}
-			 }
-		   float v ;
-		   if(TryStrToFloat(rez2, v))
-			{
-			  if(v > 0)
-			   {
-				 WayBIllDet->Edit();
-				 WayBIllDetAMOUNT->Value = v;
-			   }
-			}
-		 }
-	}*/
+            if (com_port.weight > 0)
+            {
+                timer1.Stop();
+                AmountEdit.EditValue = com_port.weight;
+                com_port.Close();
+            }
+            /* if (com_port.received != null && com_port.received.IndexOf('<') != -1 && com_port.received.IndexOf('>') != -1)
+            {
+                timer1.Enabled = false;
+                com_port.Close();
+                var val = Convert.ToDecimal(Regex.Replace(com_port.received, "[^0-9 ]", ""));
+
+                AmountEdit.EditValue = (val / 100);
+            }*/
+        }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = true;
+            try
+            {
+                com_port.Open();
+            }
+            catch { }
         }
 
     }

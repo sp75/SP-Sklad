@@ -23,7 +23,7 @@ namespace SP_Sklad
 
             UserIDEdit.Properties.DataSource = new BaseEntities().Users.Select(s => new { s.UserId, s.Name, s.Pass }).ToList();
 
-            var intetf  =  GetMacAddress();
+        /*    var intetf  =  GetMacAddress();
             var mac_address = Regex.Replace(intetf.GetPhysicalAddress().ToString(), "[^0-9 ]", "") ;
             var ip = intetf.GetIPProperties().UnicastAddresses.Where(w => w.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
             var ip_address = ip.Any() ? ip.FirstOrDefault().Address.ToString() : "";
@@ -54,7 +54,7 @@ namespace SP_Sklad
                     label1.Visible = true;
                 }
                 db.SaveChanges();
-            }
+            }*/
 
         }
        

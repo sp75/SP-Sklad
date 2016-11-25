@@ -67,7 +67,8 @@ namespace SP_Sklad.WBForm
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
                     EntId = DBHelper.Enterprise.KaId,
-                    Docs = new Docs { DocType = _wtype }
+                    Docs = new Docs { DocType = _wtype },
+                    UpdatedBy = DBHelper.CurrentUser.UserId
                 });
 
                 _db.SaveChanges();
@@ -407,7 +408,7 @@ namespace SP_Sklad.WBForm
 
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            wb.Kagent =  _db.Kagent.Find(wb.KaId);
+            wb.Kontragent = _db.Kagent.Find(wb.KaId);
 
             if (wb.WType == -16)
             {
@@ -477,8 +478,8 @@ namespace SP_Sklad.WBForm
 
         private void simpleButton3_Click(object sender, EventArgs e)
         {
-            wb.KaId = (int)IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
-            KagentComboBox.EditValue = wb.KaId;
+          //  wb.KaId = (int)IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
+            KagentComboBox.EditValue = IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
         }
 
         private void KagBalBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -535,6 +536,28 @@ namespace SP_Sklad.WBForm
             _db.DeleteWhere<WaybillDet>(w => w.WbillId == _wbill_id && w.Checked != 1);
             _db.SaveChanges();
             RefreshDet();
+        }
+
+        private void WeighBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+  
+            var frm = new frmMatListEdit(wbd_row.MatName);
+            frm.PriceEdit.EditValue = wbd_row.Price;
+
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                var wbd = _db.WaybillDet.Find(wbd_row.PosId);
+
+                if (wbd_row.Rsv == 0)
+                {
+                    wbd.Amount = frm.AmountEdit.Value;
+                    wbd.Checked = 1;
+                }
+                _db.SaveChanges();
+                RefreshDet();
+
+             //   WaybillDetOutGridView.MoveNext();
+            }
         }
     }
 }

@@ -41,6 +41,11 @@ namespace SP_Sklad.Common
                        return;
                    }
 
+                   if (wb.Checked == 2)
+                   {
+                       return;
+                   }
+
                    if (wb.Checked == 1)
                    {
                        if (MessageBox.Show(Resources.edit_info, "Відміна проводки", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
@@ -57,6 +62,7 @@ namespace SP_Sklad.Common
                    {
                        return;
                    }
+
                    trans.Commit();
 
                    if (dr.WType == 1 || dr.WType == 16)

@@ -250,6 +250,12 @@
     <Compile Include="EditForm\frmCountriesEdit.Designer.cs">
       <DependentUpon>frmCountriesEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditForm\frmMatListEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmMatListEdit.Designer.cs">
+      <DependentUpon>frmMatListEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditForm\frmMeasuresEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -403,7 +409,13 @@
     <Compile Include="SkladData\v_WhMatRemains.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\WaybillDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\WayBillDetTaxes.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\WaybillList.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\WBListMake_Result.cs">
@@ -1069,13 +1081,7 @@
     <Compile Include="SkladData\Warehouse.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\WaybillDet.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SkladData\WayBillDetAddProps.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\WaybillList.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\WayBillMake.cs">
@@ -1233,6 +1239,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmCountriesEdit.resx">
       <DependentUpon>frmCountriesEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmMatListEdit.resx">
+      <DependentUpon>frmMatListEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmMeasuresEdit.resx">
       <DependentUpon>frmMeasuresEdit.cs</DependentUpon>

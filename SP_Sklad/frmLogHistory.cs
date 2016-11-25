@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraGrid.Views.Grid;
+using SP_Sklad.Common;
 using SP_Sklad.SkladData;
 
 namespace SP_Sklad
@@ -25,15 +27,36 @@ namespace SP_Sklad
 
         private void frmLogHistory_Load(object sender, EventArgs e)
         {
-            OprLogGridControl.DataSource = DB.SkladBase().OperLog.Where(w => w.Id == _id && w.TabId == _tab_id).Select(s => new
+            var list = DB.SkladBase().OperLog.Where(w => w.Id == _id && w.TabId == _tab_id).ToList().Select(s => new
             {
                 s.OpId,
                 s.OpCode,
                 s.Users.Name,
                 s.OnDate,
-                s.DataBefore,
-                s.DataAfter
+                DataBefore = IHelper.ConvertLogData(s.DataBefore),
+                DataAfter = IHelper.ConvertLogData(s.DataAfter)
             }).OrderBy(o => o.OnDate).ToList();
+
+            OprLogGridControl.DataSource = list;
+        }
+
+        private void OprLogGridView_CalcRowHeight(object sender, DevExpress.XtraGrid.Views.Grid.RowHeightEventArgs e)
+        {
+            if (!isRowMouseDoubleClicked) return;
+            GridView view = sender as GridView;
+            if (e.RowHandle == view.FocusedRowHandle)
+            {
+                e.RowHeight = 100;
+            } 
+
+        }
+
+        bool isRowMouseDoubleClicked = false;
+        private void OprLogGridView_DoubleClick(object sender, EventArgs e)
+        {
+            isRowMouseDoubleClicked = true;
+            GridView view = sender as GridView;
+            view.LayoutChanged();           
         }
     }
 }

@@ -57,7 +57,7 @@ namespace SP_Sklad.FinanseForm
                     OnValue = 1,//Курс валюти
                     MPersonId = DBHelper.CurrentUser.KaId,
                     DocType = Convert.ToInt32(_DocType),
-                   
+                    UpdatedBy = DBHelper.CurrentUser.UserId
                 });
             }
             else

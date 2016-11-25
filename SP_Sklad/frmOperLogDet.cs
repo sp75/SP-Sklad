@@ -30,12 +30,12 @@ namespace SP_Sklad
             var dr = OperLogDetBS.DataSource as GetOperLog_Result;
             if (dr.DocType != null)
             {
-                if (dr.DocType != -3 && dr.DocType != 3 && dr.DocType != -2 && dr.DocType != 18 && dr.DocType != 8 && dr.DocType != -8 && dr.DocType != -7)
+                 if (dr.DocType != -3 && dr.DocType != 3 && dr.DocType != -2 && dr.DocType != 18 && dr.DocType != 8 && dr.DocType != -8 && dr.DocType != -7)
                 {
-                   var DocId =  DB.SkladBase().WaybillList.Where(w=> w.WbillId == dr.Id).Select(s=> s.DocId).First();
-                   if (DocId != null)
+                    var wb = DB.SkladBase().WaybillList.Find(dr.Id);
+                    if (wb != null)
                    {
-                       PrintDoc.Show(DocId.Value, dr.DocType.Value, DB.SkladBase());
+                       PrintDoc.Show(wb.DocId.Value, dr.DocType.Value, DB.SkladBase());
                    }
                    else
                    {

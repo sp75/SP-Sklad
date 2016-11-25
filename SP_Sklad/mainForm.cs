@@ -68,15 +68,31 @@ namespace SP_Sklad
 
         private void mainForm_Shown(object sender, EventArgs e)
         {
-            enterprise_id = (int)barEditItem3.EditValue;
+            if (barEditItem3.EditValue == null || barEditItem3.EditValue == DBNull.Value)
+            {
+                enterprise_id = DBHelper.Enterprise.KaId;
+                barEditItem3.EditValue = DBHelper.Enterprise.KaId;
+            }
+            else
+            {
+                enterprise_id = (int)barEditItem3.EditValue;
+            }
 
             GetMainHeder();
         }
 
         private void barEditItem3_EditValueChanged(object sender, EventArgs e)
         {
-            enterprise_id = (int)barEditItem3.EditValue;
-            DBHelper.Enterprise = null;
+            if (barEditItem3.EditValue == DBNull.Value)
+            {
+                barEditItem3.EditValue = enterprise_id;
+            }
+            else
+            {
+                enterprise_id = (int)barEditItem3.EditValue;
+                DBHelper.Enterprise = null;
+            }
+
             GetMainHeder();
         }
 

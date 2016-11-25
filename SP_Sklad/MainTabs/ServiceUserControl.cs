@@ -125,7 +125,23 @@ namespace SP_Sklad.MainTabs
                             break;*/
 
                 case 5:
-                    GetOperLogBS.DataSource = DB.SkladBase().GetOperLog(wbStartDate.DateTime, wbEndDate.DateTime, (int)wTypeList.EditValue, (int)UserComboBox.EditValue).OrderByDescending(o => o.OnDate).ToList();
+                    GetOperLogBS.DataSource = DB.SkladBase().GetOperLog(wbStartDate.DateTime, wbEndDate.DateTime, (int)wTypeList.EditValue, (int)UserComboBox.EditValue).OrderByDescending(o => o.OnDate).ToList().Select(s => new GetOperLog_Result
+                    {
+                        OpCode = s.OpCode,
+                        OnDate = s.OnDate,
+                        FunName = s.FunName,
+                        Id = s.Id,
+                        DocNum = s.DocNum,
+                        UserName = s.UserName,
+                        TabId = s.TabId,
+                        DataBefore = IHelper.ConvertLogData(s.DataBefore),
+                        DataAfter = IHelper.ConvertLogData(s.DataAfter),
+                        ClassName = s.ClassName,
+                        DocType = s.DocType,
+                        FunId = s.FunId,
+                        OpId = s.OpId,
+                        UserId = s.UserId
+                    }).ToList();
                     PrintLogGridControl.DataSource = DB.SkladBase().GetPrintLog(wbStartDate.DateTime, wbEndDate.DateTime, (int)UserComboBox.EditValue);
                     break;
 

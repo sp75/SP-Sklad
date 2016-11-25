@@ -39,6 +39,7 @@
             this.GridImageList = new System.Windows.Forms.ImageList(this.components);
             this.gridColumn43 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn44 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             this.gridColumn45 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn46 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
@@ -46,6 +47,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.OprLogGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OprLogGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl4
@@ -54,14 +56,14 @@
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl4.Location = new System.Drawing.Point(0, 415);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(908, 52);
+            this.panelControl4.Size = new System.Drawing.Size(1182, 52);
             this.panelControl4.TabIndex = 12;
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(813, 10);
+            this.OkButton.Location = new System.Drawing.Point(1087, 10);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(83, 30);
             this.OkButton.TabIndex = 1;
@@ -74,8 +76,9 @@
             this.OprLogGridControl.MainView = this.OprLogGridView;
             this.OprLogGridControl.Name = "OprLogGridControl";
             this.OprLogGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemImageComboBox1});
-            this.OprLogGridControl.Size = new System.Drawing.Size(908, 415);
+            this.repositoryItemImageComboBox1,
+            this.repositoryItemMemoEdit1});
+            this.OprLogGridControl.Size = new System.Drawing.Size(1182, 415);
             this.OprLogGridControl.TabIndex = 13;
             this.OprLogGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.OprLogGridView});
@@ -93,7 +96,10 @@
             this.OprLogGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.OprLogGridView.OptionsBehavior.Editable = false;
             this.OprLogGridView.OptionsBehavior.ReadOnly = true;
+            this.OprLogGridView.OptionsView.EnableAppearanceEvenRow = true;
             this.OprLogGridView.OptionsView.ShowGroupPanel = false;
+            this.OprLogGridView.CalcRowHeight += new DevExpress.XtraGrid.Views.Grid.RowHeightEventHandler(this.OprLogGridView_CalcRowHeight);
+            this.OprLogGridView.DoubleClick += new System.EventHandler(this.OprLogGridView_DoubleClick);
             // 
             // gridColumn42
             // 
@@ -103,7 +109,7 @@
             this.gridColumn42.Name = "gridColumn42";
             this.gridColumn42.Visible = true;
             this.gridColumn42.VisibleIndex = 0;
-            this.gridColumn42.Width = 42;
+            this.gridColumn42.Width = 52;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -145,20 +151,26 @@
             // gridColumn44
             // 
             this.gridColumn44.Caption = "Дані до події";
+            this.gridColumn44.ColumnEdit = this.repositoryItemMemoEdit1;
             this.gridColumn44.FieldName = "DataBefore";
             this.gridColumn44.Name = "gridColumn44";
             this.gridColumn44.Visible = true;
             this.gridColumn44.VisibleIndex = 3;
-            this.gridColumn44.Width = 190;
+            this.gridColumn44.Width = 311;
+            // 
+            // repositoryItemMemoEdit1
+            // 
+            this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
             // 
             // gridColumn45
             // 
             this.gridColumn45.Caption = "Дані після події";
+            this.gridColumn45.ColumnEdit = this.repositoryItemMemoEdit1;
             this.gridColumn45.FieldName = "DataAfter";
             this.gridColumn45.Name = "gridColumn45";
             this.gridColumn45.Visible = true;
             this.gridColumn45.VisibleIndex = 4;
-            this.gridColumn45.Width = 221;
+            this.gridColumn45.Width = 359;
             // 
             // gridColumn46
             // 
@@ -173,19 +185,20 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(908, 467);
+            this.ClientSize = new System.Drawing.Size(1182, 467);
             this.Controls.Add(this.OprLogGridControl);
             this.Controls.Add(this.panelControl4);
             this.Name = "frmLogHistory";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmLogHistory";
+            this.Text = "Історія змін запису";
             this.Load += new System.EventHandler(this.frmLogHistory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
             this.panelControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.OprLogGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OprLogGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -203,5 +216,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn46;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
         private System.Windows.Forms.ImageList GridImageList;
+        private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
     }
 }

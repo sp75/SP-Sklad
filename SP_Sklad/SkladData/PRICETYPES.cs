@@ -17,11 +17,11 @@ namespace SP_Sklad.SkladData
         public PriceTypes()
         {
             this.PriceList = new HashSet<PriceList>();
-            this.WaybillDet = new HashSet<WaybillDet>();
             this.MatGroupPrices = new HashSet<MatGroupPrices>();
             this.MatGroupPrices1 = new HashSet<MatGroupPrices>();
             this.MatPrices = new HashSet<MatPrices>();
             this.MatPrices1 = new HashSet<MatPrices>();
+            this.WaybillDet = new HashSet<WaybillDet>();
         }
     
         public int PTypeId { get; set; }
@@ -34,10 +34,10 @@ namespace SP_Sklad.SkladData
         public Nullable<int> ExtraType { get; set; }
     
         public virtual ICollection<PriceList> PriceList { get; set; }
-        public virtual ICollection<WaybillDet> WaybillDet { get; set; }
         public virtual ICollection<MatGroupPrices> MatGroupPrices { get; set; }
         public virtual ICollection<MatGroupPrices> MatGroupPrices1 { get; set; }
         public virtual ICollection<MatPrices> MatPrices { get; set; }
         public virtual ICollection<MatPrices> MatPrices1 { get; set; }
+        public virtual ICollection<WaybillDet> WaybillDet { get; set; }
     }
 }

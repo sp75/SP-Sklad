@@ -22,7 +22,7 @@ namespace SP_Sklad.SkladData
     
         public virtual MatRecipe MatRecipe { get; set; }
         public virtual Warehouse Warehouse { get; set; }
-        public virtual WaybillList WaybillList { get; set; }
         public virtual Kagent Kagent { get; set; }
+        public virtual WaybillList WaybillList { get; set; }
     }
 }

@@ -386,8 +386,8 @@ namespace SP_Sklad.MainTabs
         private void AddItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var remain_in_wh = DB.SkladBase().MatRemainByWh(focused_wh_mat.MatId.Value, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, wh_list).ToList();
-            var t = (wb.Kagent != null ? wb.Kagent.PTypeId : null);
-            var price = DB.SkladBase().GetListMatPrices(focused_wh_mat.MatId, wb.CurrId, t).FirstOrDefault();
+            var p_type = (wb.Kontragent != null ? (wb.Kontragent.PTypeId ?? DB.SkladBase().PriceTypes.First(w => w.Def == 1).PTypeId) : DB.SkladBase().PriceTypes.First(w => w.Def == 1).PTypeId);
+            var price = DB.SkladBase().GetListMatPrices(focused_wh_mat.MatId, wb.CurrId, p_type).FirstOrDefault();
 
             custom_mat_list.Add(new CustomMatListWH
             {
@@ -395,7 +395,7 @@ namespace SP_Sklad.MainTabs
                 MatId = focused_wh_mat.MatId.Value,
                 Name = focused_wh_mat.MatName,
                 Amount = 1,
-                Price = price != null ? price.Price : 0,
+                Price = price.Price ?? 0,
                 WId = remain_in_wh.Any() ? remain_in_wh.First().WId : DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId,
                 PTypeId = price != null ? price.PType : null,
                 Discount = DB.SkladBase().GetDiscount(wb.KaId, focused_wh_mat.MatId).FirstOrDefault() ?? 0.00m
@@ -432,30 +432,36 @@ namespace SP_Sklad.MainTabs
                 {
                     if (BarCodeSplit.Count() > 2)
                     {
-                        var wh_row = WhRemainGridView.GetFocusedRow() as MatRemainByWh_Result;
+                        var price = Convert.ToDecimal(BarCodeSplit[1] + "," + BarCodeSplit[2]);
+                        var frm = new frmMatListEdit(row.MatName);
+                        frm.PriceEdit.EditValue = price;
 
-                        custom_mat_list.Add(new CustomMatListWH
+                        if (frm.ShowDialog() == DialogResult.OK)
                         {
-                            Num = custom_mat_list.Count() + 1,
-                            MatId = row.MatId.Value,
-                            Name = row.MatName,
-                            Amount = 1,
-                            Price = Convert.ToDecimal(BarCodeSplit[1] + "," + BarCodeSplit[2]),
-                            WId = wh_row != null ? wh_row.WId : DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId,
-                            PTypeId = null,
-                            Discount = DB.SkladBase().GetDiscount(wb.KaId, row.MatId).FirstOrDefault() ?? 0.00m
-                        });
+                            var wh_row = WhRemainGridView.GetFocusedRow() as MatRemainByWh_Result;
 
-                        MatListGridView.RefreshData();
+                            custom_mat_list.Add(new CustomMatListWH
+                            {
+                                Num = custom_mat_list.Count() + 1,
+                                MatId = row.MatId.Value,
+                                Name = row.MatName,
+                                Amount = frm.AmountEdit.Value,
+                                Price = frm.PriceEdit.Value,
+                                WId = wh_row != null ? wh_row.WId : DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId,
+                                PTypeId = null,
+                                Discount = DB.SkladBase().GetDiscount(wb.KaId, row.MatId).FirstOrDefault() ?? 0.00m
+                            });
+
+                            MatListGridView.RefreshData();
+                        }
 
                     }
                     else
                     {
                         AddItem.PerformClick();
                     }
-                      
-                }
 
+                }
 
                 BarCodeEdit.Text = "";
             }

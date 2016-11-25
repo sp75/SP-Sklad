@@ -38,7 +38,7 @@ namespace SP_Sklad.WBDetForm
             {
                 tp_d = _db.TechProcDet.Add(new TechProcDet()
                 {
-                    Num = _db.TechProcDet.Where(w=> w.WbillId == _wbill_id).Max(m=> m.Num) +1,
+                    Num = (_db.TechProcDet.Where(w => w.WbillId == _wbill_id).Select(s => (int?)s.Num).Max() ?? 0) + 1,
                     WbillId = _wbill_id,
                     PersonId = DBHelper.CurrentUser.KaId,
                     OnDate = DateTime.Now,

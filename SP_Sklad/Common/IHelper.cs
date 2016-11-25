@@ -143,7 +143,7 @@ namespace SP_Sklad.Common
             {
                 foreach (var item in f.uc.custom_mat_list)
                 {
-                    var wbd = db.WaybillDet.Add(new WaybillDet
+                    var wbd = new WaybillDet
                     {
                         WbillId = wb.WbillId,
                         OnDate = wb.OnDate,
@@ -161,7 +161,8 @@ namespace SP_Sklad.Common
                         PosParent = 0,
                         DiscountKind = 0
 
-                    });
+                    };
+                    db.WaybillDet.Add(wbd);
                 }
                 db.SaveChanges();
             }
@@ -625,6 +626,20 @@ namespace SP_Sklad.Common
                 }
 
             }
+        }
+
+        public static String ConvertLogData(String str)
+        {
+            var res = "";
+            if (!String.IsNullOrEmpty(str) && str.Split(';').Count() == 5)
+            {
+                var split = str.Split(';');
+                res += "Номер: " + split[0] + System.Environment.NewLine;
+                res += "Дата: " + split[1] + System.Environment.NewLine;
+                res += "Контрагент: " + split[4] + System.Environment.NewLine;
+                res += "Сума: " + split[3] + System.Environment.NewLine;
+            }
+            return res;
         }
     }
 

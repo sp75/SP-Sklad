@@ -50,6 +50,7 @@
             this.UsersGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.standaloneBarDockControl13 = new DevExpress.XtraBars.StandaloneBarDockControl();
@@ -141,7 +142,6 @@
             this.PatchEdit = new DevExpress.XtraEditors.ButtonEdit();
             this.CommonParamsBS = new System.Windows.Forms.BindingSource(this.components);
             this.OperLogPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.UsersDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -476,6 +476,14 @@
             this.gridColumn25.Visible = true;
             this.gridColumn25.VisibleIndex = 1;
             this.gridColumn25.Width = 646;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "Група";
+            this.gridColumn5.FieldName = "UsersGroup.Name";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 2;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -1379,7 +1387,7 @@
             // 
             // PatchEdit
             // 
-            this.PatchEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.CommonParamsBS, "TemplatePatch", true));
+            this.PatchEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.CommonParamsBS, "TemplatePatch", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.PatchEdit.Location = new System.Drawing.Point(117, 27);
             this.PatchEdit.MenuManager = this.barManager1;
             this.PatchEdit.Name = "PatchEdit";
@@ -1402,14 +1410,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn)});
             this.OperLogPopupMenu.Manager = this.barManager1;
             this.OperLogPopupMenu.Name = "OperLogPopupMenu";
-            // 
-            // gridColumn5
-            // 
-            this.gridColumn5.Caption = "Група";
-            this.gridColumn5.FieldName = "UsersGroup.Name";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 2;
             // 
             // ServiceUserControl
             // 

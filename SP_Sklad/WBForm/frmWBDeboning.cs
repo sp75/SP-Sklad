@@ -79,7 +79,8 @@ namespace SP_Sklad.WBForm
                         RecId = rec_id
                     },
                     Nds = 0,
-                    Docs = new Docs { DocType = _wtype }
+                    Docs = new Docs { DocType = _wtype },
+                    UpdatedBy = DBHelper.CurrentUser.UserId
                 });
                 _db.SaveChanges();
 

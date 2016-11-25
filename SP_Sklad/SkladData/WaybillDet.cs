@@ -23,11 +23,11 @@ namespace SP_Sklad.SkladData
             this.ReturnRel1 = new HashSet<ReturnRel>();
             this.ReturnRel2 = new HashSet<ReturnRel>();
             this.ReturnRel3 = new HashSet<ReturnRel>();
+            this.Serials = new HashSet<Serials>();
+            this.WayBillDetTaxes = new HashSet<WayBillDetTaxes>();
             this.WMatTurn = new HashSet<WMatTurn>();
             this.WMatTurn1 = new HashSet<WMatTurn>();
             this.WaybillDet1 = new HashSet<WaybillDet>();
-            this.Serials = new HashSet<Serials>();
-            this.WayBillDetTaxes = new HashSet<WayBillDetTaxes>();
         }
     
         public int PosId { get; set; }
@@ -64,14 +64,14 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<ReturnRel> ReturnRel1 { get; set; }
         public virtual ICollection<ReturnRel> ReturnRel2 { get; set; }
         public virtual ICollection<ReturnRel> ReturnRel3 { get; set; }
+        public virtual ICollection<Serials> Serials { get; set; }
         public virtual Warehouse Warehouse { get; set; }
+        public virtual WaybillList WaybillList { get; set; }
+        public virtual WayBillDetAddProps WayBillDetAddProps { get; set; }
+        public virtual ICollection<WayBillDetTaxes> WayBillDetTaxes { get; set; }
         public virtual ICollection<WMatTurn> WMatTurn { get; set; }
         public virtual ICollection<WMatTurn> WMatTurn1 { get; set; }
         public virtual ICollection<WaybillDet> WaybillDet1 { get; set; }
         public virtual WaybillDet WaybillDet2 { get; set; }
-        public virtual WaybillList WaybillList { get; set; }
-        public virtual ICollection<Serials> Serials { get; set; }
-        public virtual WayBillDetAddProps WayBillDetAddProps { get; set; }
-        public virtual ICollection<WayBillDetTaxes> WayBillDetTaxes { get; set; }
     }
 }

@@ -103,8 +103,6 @@ namespace SP_Sklad.SkladData
         public DbSet<EnterpriseAccount> EnterpriseAccount { get; set; }
         public DbSet<v_PayDoc> v_PayDoc { get; set; }
         public DbSet<OperLog> OperLog { get; set; }
-        public DbSet<WaybillList> WaybillList { get; set; }
-        public DbSet<WaybillDet> WaybillDet { get; set; }
         public DbSet<Functions> Functions { get; set; }
         public DbSet<Commission> Commission { get; set; }
         public DbSet<AccountType> AccountType { get; set; }
@@ -136,6 +134,8 @@ namespace SP_Sklad.SkladData
         public DbSet<KontragentGroup> KontragentGroup { get; set; }
         public DbSet<Users> Users { get; set; }
         public DbSet<UsersGroup> UsersGroup { get; set; }
+        public DbSet<WaybillDet> WaybillDet { get; set; }
+        public DbSet<WaybillList> WaybillList { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)

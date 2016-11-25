@@ -6685,95 +6685,9 @@
             <Parameter Name="active" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="OperLog" EntityType="BaseModel.OperLog" />
-          <EntitySet Name="WaybillList" EntityType="BaseModel.WaybillList" />
-          <AssociationSet Name="FK_WAYBILLL_FK_WBLIST_CURRENCY" Association="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY">
-            <End Role="Currency" EntitySet="Currency" />
-            <End Role="WaybillList" EntitySet="WaybillList" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DEBONINGDET_WAYBILLLIST" Association="BaseModel.FK_DEBONINGDET_WAYBILLLIST">
-            <End Role="WaybillList" EntitySet="WaybillList" />
-            <End Role="DeboningDet" EntitySet="DeboningDet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WAYBILLL_REF_WBL_D_DOCS" Association="BaseModel.FK_WAYBILLL_REF_WBL_D_DOCS">
-            <End Role="Docs" EntitySet="Docs" />
-            <End Role="WaybillList" EntitySet="WaybillList" />
-          </AssociationSet>
           <AssociationSet Name="FK__OPERLOG__TABID__0D44F85C" Association="BaseModel.FK__OPERLOG__TABID__0D44F85C">
             <End Role="Tables" EntitySet="Tables" />
             <End Role="OperLog" EntitySet="OperLog" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WAYBILLMAKE_WAYBILLLIST" Association="BaseModel.FK_WAYBILLMAKE_WAYBILLLIST">
-            <End Role="WaybillList" EntitySet="WaybillList" />
-            <End Role="WayBillMake" EntitySet="WayBillMake" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WBM_WBILLID" Association="BaseModel.FK_WBM_WBILLID">
-            <End Role="WaybillList" EntitySet="WaybillList" />
-            <End Role="WaybillMove" EntitySet="WaybillMove" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WBS_WBILLID" Association="BaseModel.FK_WBS_WBILLID">
-            <End Role="WaybillList" EntitySet="WaybillList" />
-            <End Role="WayBillSvc" EntitySet="WayBillSvc" />
-          </AssociationSet>
-          <EntitySet Name="WaybillDet" EntityType="BaseModel.WaybillDet" />
-          <AssociationSet Name="FK_WAYBILLD_REFERENCE_CURRENCY" Association="BaseModel.FK_WAYBILLD_REFERENCE_CURRENCY">
-            <End Role="Currency" EntitySet="Currency" />
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EXTREL_EXTPOSID" Association="BaseModel.FK_EXTREL_EXTPOSID">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="ExtRel" EntitySet="ExtRel" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EXTREL_INTPOSID" Association="BaseModel.FK_EXTREL_INTPOSID">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="ExtRel" EntitySet="ExtRel" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WAYBILLD_FK_WBDET__MATERIAL" Association="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL">
-            <End Role="Materials" EntitySet="Materials" />
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-          </AssociationSet>
-          <AssociationSet Name="FK__POSREMAIN__POSID__2DB1C7EE" Association="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="PosRemains" EntitySet="PosRemains" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WAYBILLD_REFERENCE_PRICETYP" Association="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP">
-            <End Role="PriceTypes" EntitySet="PriceTypes" />
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RETREL_DPOSID" Association="BaseModel.FK_RETREL_DPOSID">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="ReturnRel" EntitySet="ReturnRel" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RETREL_OUTPOSID" Association="BaseModel.FK_RETREL_OUTPOSID">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="ReturnRel" EntitySet="ReturnRel" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RETREL_POSID" Association="BaseModel.FK_RETREL_POSID">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="ReturnRel" EntitySet="ReturnRel" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RETREL_PPOSID" Association="BaseModel.FK_RETREL_PPOSID">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="ReturnRel" EntitySet="ReturnRel" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WAYBILLD_FK_WBDET__WAREHOUS" Association="BaseModel.FK_WAYBILLD_FK_WBDET__WAREHOUS">
-            <End Role="Warehouse" EntitySet="Warehouse" />
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WMT_POSID" Association="BaseModel.FK_WMT_POSID">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="WMatTurn" EntitySet="WMatTurn" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WMT_SRCID" Association="BaseModel.FK_WMT_SRCID">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="WMatTurn" EntitySet="WMatTurn" />
-          </AssociationSet>
-          <AssociationSet Name="PosRel" Association="BaseModel.PosRel">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="WaybillDet1" EntitySet="WaybillDet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WaybillDet_WaybillList" Association="BaseModel.FK_WaybillDet_WaybillList">
-            <End Role="WaybillList" EntitySet="WaybillList" />
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
           </AssociationSet>
           <EntitySet Name="Functions" EntityType="BaseModel.Functions" />
           <AssociationSet Name="FK__FUNCTIONS__TABID__123EB7A3" Association="BaseModel.FK__FUNCTIONS__TABID__123EB7A3">
@@ -6789,10 +6703,6 @@
             <End Role="UserTreeView" EntitySet="UserTreeView" />
           </AssociationSet>
           <EntitySet Name="Commission" EntityType="BaseModel.Commission" />
-          <AssociationSet Name="FK_COMMISSION_WBILLID" Association="BaseModel.FK_COMMISSION_WBILLID">
-            <End Role="WaybillList" EntitySet="WaybillList" />
-            <End Role="Commission" EntitySet="Commission" />
-          </AssociationSet>
           <EntitySet Name="AccountType" EntityType="BaseModel.AccountType" />
           <EntitySet Name="Banks" EntityType="BaseModel.Banks" />
           <AssociationSet Name="FK_AGENTACC_FK_AGENTA_ACCOUNTT" Association="BaseModel.FK_AGENTACC_FK_AGENTA_ACCOUNTT">
@@ -6805,21 +6715,9 @@
           </AssociationSet>
           <EntitySet Name="v_KAgentAccount" EntityType="BaseModel.v_KAgentAccount" />
           <EntitySet Name="Serials" EntityType="BaseModel.Serials" />
-          <AssociationSet Name="FK_SERIALS_POSID" Association="BaseModel.FK_SERIALS_POSID">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="Serials" EntitySet="Serials" />
-          </AssociationSet>
           <EntitySet Name="WayBillDetAddProps" EntityType="BaseModel.WayBillDetAddProps" />
           <AssociationSet Name="FK_WBDAP_CARDID" Association="BaseModel.FK_WBDAP_CARDID">
             <End Role="DISCCARDS" EntitySet="DISCCARDS" />
-            <End Role="WayBillDetAddProps" EntitySet="WayBillDetAddProps" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WBDAP_POSID" Association="BaseModel.FK_WBDAP_POSID">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="WayBillDetAddProps" EntitySet="WayBillDetAddProps" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WAYBILLDETADDPROPS_WBILLID" Association="BaseModel.FK_WAYBILLDETADDPROPS_WBILLID">
-            <End Role="WaybillList" EntitySet="WaybillList" />
             <End Role="WayBillDetAddProps" EntitySet="WayBillDetAddProps" />
           </AssociationSet>
           <EntitySet Name="v_PriceTypes" EntityType="BaseModel.v_PriceTypes" />
@@ -6973,10 +6871,6 @@
             <End Role="TAXES" EntitySet="TAXES" />
             <End Role="WayBillDetTaxes" EntitySet="WayBillDetTaxes" />
           </AssociationSet>
-          <AssociationSet Name="FK_WBDTAXES_POSID" Association="BaseModel.FK_WBDTAXES_POSID">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="WayBillDetTaxes" EntitySet="WayBillDetTaxes" />
-          </AssociationSet>
           <EntitySet Name="MatRecipeTechProcDet" EntityType="BaseModel.MatRecipeTechProcDet" />
           <AssociationSet Name="FK_MatRecipeTechProcDet_MatRecipe" Association="BaseModel.FK_MatRecipeTechProcDet_MatRecipe">
             <End Role="MatRecipe" EntitySet="MatRecipe" />
@@ -6989,10 +6883,6 @@
           <EntitySet Name="TechProcDet" EntityType="BaseModel.TechProcDet" />
           <AssociationSet Name="FK_TECHPROCDET_TECHPROCESS" Association="BaseModel.FK_TECHPROCDET_TECHPROCESS">
             <End Role="TechProcess" EntitySet="TechProcess" />
-            <End Role="TechProcDet" EntitySet="TechProcDet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TECHPROCDET_WAYBILLLIST" Association="BaseModel.FK_TECHPROCDET_WAYBILLLIST">
-            <End Role="WaybillList" EntitySet="WaybillList" />
             <End Role="TechProcDet" EntitySet="TechProcDet" />
           </AssociationSet>
           <EntitySet Name="Services" EntityType="BaseModel.Services" />
@@ -7089,10 +6979,6 @@
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="TAXWB" EntitySet="TAXWB" />
           </AssociationSet>
-          <AssociationSet Name="FK__WAYBILLLI__PERSO__6E01572D" Association="BaseModel.FK__WAYBILLLI__PERSO__6E01572D">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="WaybillList" EntitySet="WaybillList" />
-          </AssociationSet>
           <AssociationSet Name="FK__WAYBILLMO__PERSO__314D4EA8" Association="BaseModel.FK__WAYBILLMO__PERSO__314D4EA8">
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="WaybillMove" EntitySet="WaybillMove" />
@@ -7133,17 +7019,9 @@
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="TechProcDet" EntitySet="TechProcDet" />
           </AssociationSet>
-          <AssociationSet Name="FK_WAYBILLL_FK_WBLIST_KAGENT" Association="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="WaybillList" EntitySet="WaybillList" />
-          </AssociationSet>
           <AssociationSet Name="FK_WAYBILLMAKE_KAGENT" Association="BaseModel.FK_WAYBILLMAKE_KAGENT">
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="WayBillMake" EntitySet="WayBillMake" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WBL_ENTID" Association="BaseModel.FK_WBL_ENTID">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="WaybillList" EntitySet="WaybillList" />
           </AssociationSet>
           <AssociationSet Name="FK_WBS_PERSONID" Association="BaseModel.FK_WBS_PERSONID">
             <End Role="Kagent" EntitySet="Kagent" />
@@ -7174,6 +7052,128 @@
           <AssociationSet Name="FK_Users_UsersGroup" Association="BaseModel.FK_Users_UsersGroup">
             <End Role="UsersGroup" EntitySet="UsersGroup" />
             <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="WaybillDet" EntityType="BaseModel.WaybillDet" />
+          <EntitySet Name="WaybillList" EntityType="BaseModel.WaybillList" />
+          <AssociationSet Name="FK_COMMISSION_WBILLID" Association="BaseModel.FK_COMMISSION_WBILLID">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="Commission" EntitySet="Commission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAYBILLD_REFERENCE_CURRENCY" Association="BaseModel.FK_WAYBILLD_REFERENCE_CURRENCY">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAYBILLL_FK_WBLIST_CURRENCY" Association="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="WaybillList" EntitySet="WaybillList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEBONINGDET_WAYBILLLIST" Association="BaseModel.FK_DEBONINGDET_WAYBILLLIST">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="DeboningDet" EntitySet="DeboningDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAYBILLL_REF_WBL_D_DOCS" Association="BaseModel.FK_WAYBILLL_REF_WBL_D_DOCS">
+            <End Role="Docs" EntitySet="Docs" />
+            <End Role="WaybillList" EntitySet="WaybillList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EXTREL_EXTPOSID" Association="BaseModel.FK_EXTREL_EXTPOSID">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="ExtRel" EntitySet="ExtRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EXTREL_INTPOSID" Association="BaseModel.FK_EXTREL_INTPOSID">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="ExtRel" EntitySet="ExtRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WAYBILLLI__PERSO__6E01572D" Association="BaseModel.FK__WAYBILLLI__PERSO__6E01572D">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="WaybillList" EntitySet="WaybillList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAYBILLL_FK_WBLIST_KAGENT" Association="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="WaybillList" EntitySet="WaybillList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WBL_ENTID" Association="BaseModel.FK_WBL_ENTID">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="WaybillList" EntitySet="WaybillList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAYBILLD_FK_WBDET__MATERIAL" Association="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__POSREMAIN__POSID__2DB1C7EE" Association="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="PosRemains" EntitySet="PosRemains" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAYBILLD_REFERENCE_PRICETYP" Association="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP">
+            <End Role="PriceTypes" EntitySet="PriceTypes" />
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RETREL_DPOSID" Association="BaseModel.FK_RETREL_DPOSID">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="ReturnRel" EntitySet="ReturnRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RETREL_OUTPOSID" Association="BaseModel.FK_RETREL_OUTPOSID">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="ReturnRel" EntitySet="ReturnRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RETREL_POSID" Association="BaseModel.FK_RETREL_POSID">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="ReturnRel" EntitySet="ReturnRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RETREL_PPOSID" Association="BaseModel.FK_RETREL_PPOSID">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="ReturnRel" EntitySet="ReturnRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERIALS_POSID" Association="BaseModel.FK_SERIALS_POSID">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="Serials" EntitySet="Serials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TECHPROCDET_WAYBILLLIST" Association="BaseModel.FK_TECHPROCDET_WAYBILLLIST">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="TechProcDet" EntitySet="TechProcDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAYBILLD_FK_WBDET__WAREHOUS" Association="BaseModel.FK_WAYBILLD_FK_WBDET__WAREHOUS">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WaybillDet_WaybillList" Association="BaseModel.FK_WaybillDet_WaybillList">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WBDAP_POSID" Association="BaseModel.FK_WBDAP_POSID">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="WayBillDetAddProps" EntitySet="WayBillDetAddProps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WBDTAXES_POSID" Association="BaseModel.FK_WBDTAXES_POSID">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="WayBillDetTaxes" EntitySet="WayBillDetTaxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WMT_POSID" Association="BaseModel.FK_WMT_POSID">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="WMatTurn" EntitySet="WMatTurn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WMT_SRCID" Association="BaseModel.FK_WMT_SRCID">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="WMatTurn" EntitySet="WMatTurn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAYBILLDETADDPROPS_WBILLID" Association="BaseModel.FK_WAYBILLDETADDPROPS_WBILLID">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="WayBillDetAddProps" EntitySet="WayBillDetAddProps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAYBILLMAKE_WAYBILLLIST" Association="BaseModel.FK_WAYBILLMAKE_WAYBILLLIST">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="WayBillMake" EntitySet="WayBillMake" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WBM_WBILLID" Association="BaseModel.FK_WBM_WBILLID">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="WaybillMove" EntitySet="WaybillMove" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WBS_WBILLID" Association="BaseModel.FK_WBS_WBILLID">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="WayBillSvc" EntitySet="WayBillSvc" />
+          </AssociationSet>
+          <AssociationSet Name="PosRel" Association="BaseModel.PosRel">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="WaybillDet1" EntitySet="WaybillDet" />
           </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
@@ -7758,11 +7758,11 @@
           <NavigationProperty Name="WayBillSvc" Relationship="BaseModel.FK_WBS_CURRID" FromRole="Currency" ToRole="WayBillSvc" />
           <NavigationProperty Name="PriceList" Relationship="BaseModel.FK_PRICELIS_REFERENCE_CURRENCY" FromRole="Currency" ToRole="PriceList" />
           <NavigationProperty Name="MoneySaldo" Relationship="BaseModel.FK_MS_CURRID" FromRole="Currency" ToRole="MoneySaldo" />
-          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY" FromRole="Currency" ToRole="WaybillList" />
-          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_CURRENCY" FromRole="Currency" ToRole="WaybillDet" />
           <NavigationProperty Name="MatGroupPrices" Relationship="BaseModel.FK__MATGROUPP__CURRI__6EC0713C" FromRole="Currency" ToRole="MatGroupPrices" />
           <NavigationProperty Name="MatPrices" Relationship="BaseModel.FK__MATPRICES__CURRI__74794A92" FromRole="Currency" ToRole="MatPrices" />
           <NavigationProperty Name="Services" Relationship="BaseModel.FK_SVC_CURRID" FromRole="Currency" ToRole="Services" />
+          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_CURRENCY" FromRole="Currency" ToRole="WaybillDet" />
+          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY" FromRole="Currency" ToRole="WaybillList" />
         </EntityType>
         <Association Name="FK_CONTRACT_REFERENCE_CURRENCY">
           <End Type="BaseModel.Currency" Role="Currency" Multiplicity="0..1" />
@@ -7858,11 +7858,11 @@
           <Property Type="Int32" Name="PPTypeId" />
           <Property Type="Int32" Name="ExtraType" />
           <NavigationProperty Name="PriceList" Relationship="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP" FromRole="PriceTypes" ToRole="PriceList" />
-          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP" FromRole="PriceTypes" ToRole="WaybillDet" />
           <NavigationProperty Name="MatGroupPrices" Relationship="BaseModel.FK__MATGROUPP__PTYPE__6DCC4D03" FromRole="PriceTypes" ToRole="MatGroupPrices" />
           <NavigationProperty Name="MatGroupPrices1" Relationship="BaseModel.FK_MGP_PPTYPEID" FromRole="PriceTypes" ToRole="MatGroupPrices" />
           <NavigationProperty Name="MatPrices" Relationship="BaseModel.FK__MATPRICES__PTYPE__72910220" FromRole="PriceTypes" ToRole="MatPrices" />
           <NavigationProperty Name="MatPrices1" Relationship="BaseModel.FK_MATPRICES_PPTYPEID" FromRole="PriceTypes" ToRole="MatPrices" />
+          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP" FromRole="PriceTypes" ToRole="WaybillDet" />
         </EntityType>
         <ComplexType Name="GetPosOut_Result">
           <Property Type="Int32" Name="PosId" Nullable="false" />
@@ -8023,8 +8023,8 @@
           <Property Type="Int32" Name="PersonId" />
           <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK_WAYBILLM_FK_WBM_DE_WAREHOUS" FromRole="WaybillMove" ToRole="Warehouse" />
           <NavigationProperty Name="Warehouse1" Relationship="BaseModel.FK_WAYBILLM_FK_WBM_SO_WAREHOUS" FromRole="WaybillMove" ToRole="Warehouse" />
-          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WBM_WBILLID" FromRole="WaybillMove" ToRole="WaybillList" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__WAYBILLMO__PERSO__314D4EA8" FromRole="WaybillMove" ToRole="Kagent" />
+          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WBM_WBILLID" FromRole="WaybillMove" ToRole="WaybillList" />
         </EntityType>
         <Association Name="FK_WAYBILLM_FK_WBM_DE_WAREHOUS">
           <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="0..1" />
@@ -8202,8 +8202,8 @@
           <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK_PAYDOC_REF_PD_DO_DOCS" FromRole="Docs" ToRole="PayDoc" />
           <NavigationProperty Name="TAXWB" Relationship="BaseModel.FK_TAXWB_REFERENCE_DOCS" FromRole="Docs" ToRole="TAXWB" />
           <NavigationProperty Name="PriceList" Relationship="BaseModel.FK_PRICELIS_REFERENCE_DOCS" FromRole="Docs" ToRole="PriceList" />
-          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WAYBILLL_REF_WBL_D_DOCS" FromRole="Docs" ToRole="WaybillList" />
           <NavigationProperty Name="DocsRel" Relationship="BaseModel.FK_DOCSREL_REFERENCE_DOCS" FromRole="Docs" ToRole="DocsRel" />
+          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WAYBILLL_REF_WBL_D_DOCS" FromRole="Docs" ToRole="WaybillList" />
         </EntityType>
         <EntityType Name="UserAccessWh">
           <Key>
@@ -8490,8 +8490,8 @@
           <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="4" />
           <NavigationProperty Name="MatRecipe" Relationship="BaseModel.FK_WAYBILLMAKE_MATRECIPE" FromRole="WayBillMake" ToRole="MatRecipe" />
           <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK_WAYBILLMAKE_WAREHOUSE" FromRole="WayBillMake" ToRole="Warehouse" />
-          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WAYBILLMAKE_WAYBILLLIST" FromRole="WayBillMake" ToRole="WaybillList" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_WAYBILLMAKE_KAGENT" FromRole="WayBillMake" ToRole="Kagent" />
+          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WAYBILLMAKE_WAYBILLLIST" FromRole="WayBillMake" ToRole="WaybillList" />
         </EntityType>
         <Association Name="FK_WAYBILLMAKE_MATRECIPE">
           <End Type="BaseModel.MatRecipe" Role="MatRecipe" Multiplicity="0..1" />
@@ -8665,10 +8665,10 @@
           <NavigationProperty Name="TAXWBDET" Relationship="BaseModel.FK_TAXWBDET_REFERENCE_MATERIAL" FromRole="Materials" ToRole="TAXWBDET" />
           <NavigationProperty Name="KAMatDiscount" Relationship="BaseModel.FK__KAMATDISC__MATID__32AB8735" FromRole="Materials" ToRole="KAMatDiscount" />
           <NavigationProperty Name="MatRecDet" Relationship="BaseModel.FK_MatRecDet_Materials" FromRole="Materials" ToRole="MatRecDet" />
-          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" FromRole="Materials" ToRole="WaybillDet" />
           <NavigationProperty Name="MatPrices" Relationship="BaseModel.FK_MP_MATID" FromRole="Materials" ToRole="MatPrices" />
           <NavigationProperty Name="MatChange" Relationship="BaseModel.FK_MATCHANGE_CHANGEID" FromRole="Materials" ToRole="MatChange" />
           <NavigationProperty Name="MatChange1" Relationship="BaseModel.FK_MATCHANGE_MATID" FromRole="Materials" ToRole="MatChange" />
+          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" FromRole="Materials" ToRole="WaybillDet" />
         </EntityType>
         <Association Name="FK_CONTRDET_REFERENCE_MATERIAL">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="0..1" />
@@ -9293,10 +9293,10 @@
           <Property Type="Int32" Name="SvcToPrice" />
           <Property Type="Decimal" Name="Total" Precision="15" Scale="2" />
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK_WBS_CURRID" FromRole="WayBillSvc" ToRole="Currency" />
-          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WBS_WBILLID" FromRole="WayBillSvc" ToRole="WaybillList" />
           <Property Type="String" Name="Notes" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Services" Relationship="BaseModel.FK_WBS_SVCID" FromRole="WayBillSvc" ToRole="Services" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_WBS_PERSONID" FromRole="WayBillSvc" ToRole="Kagent" />
+          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WBS_WBILLID" FromRole="WayBillSvc" ToRole="WaybillList" />
         </EntityType>
         <Association Name="FK_WBS_CURRID">
           <End Type="BaseModel.Currency" Role="Currency" Multiplicity="1" />
@@ -10015,87 +10015,6 @@
           <NavigationProperty Name="Tables" Relationship="BaseModel.FK__OPERLOG__TABID__0D44F85C" FromRole="OperLog" ToRole="Tables" />
           <NavigationProperty Name="Users" Relationship="BaseModel.FK_OperLog_Users" FromRole="OperLog" ToRole="Users" />
         </EntityType>
-        <EntityType Name="WaybillList">
-          <Key>
-            <PropertyRef Name="WbillId" />
-          </Key>
-          <Property Type="Int32" Name="WbillId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
-          <Property Type="Int32" Name="KaId" />
-          <Property Type="Int32" Name="CurrId" />
-          <Property Type="String" Name="AttNum" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="AttDate" Precision="3" />
-          <Property Type="String" Name="Reason" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="Checked" Nullable="false" />
-          <Property Type="Int32" Name="Deleted" Nullable="false" />
-          <Property Type="Decimal" Name="SummAll" Precision="15" Scale="2" />
-          <Property Type="Int32" Name="WType" Nullable="false" />
-          <Property Type="Decimal" Name="Nds" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="PersonId" />
-          <Property Type="String" Name="Received" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="ToDate" Precision="3" />
-          <Property Type="Int32" Name="DefNum" Nullable="false" />
-          <Property Type="Decimal" Name="SummPay" Precision="15" Scale="2" />
-          <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="DocId" />
-          <Property Type="Decimal" Name="SummInCurr" Precision="15" Scale="2" />
-          <Property Type="Int32" Name="EntId" />
-          <Property Type="Decimal" Name="OnValue" Precision="15" Scale="8" />
-          <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
-          <Property Type="Int32" Name="UpdatedBy" />
-          <NavigationProperty Name="Currency" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY" FromRole="WaybillList" ToRole="Currency" />
-          <NavigationProperty Name="DeboningDet" Relationship="BaseModel.FK_DEBONINGDET_WAYBILLLIST" FromRole="WaybillList" ToRole="DeboningDet" />
-          <NavigationProperty Name="Docs" Relationship="BaseModel.FK_WAYBILLL_REF_WBL_D_DOCS" FromRole="WaybillList" ToRole="Docs" />
-          <NavigationProperty Name="WayBillMake" Relationship="BaseModel.FK_WAYBILLMAKE_WAYBILLLIST" FromRole="WaybillList" ToRole="WayBillMake" />
-          <NavigationProperty Name="WaybillMove" Relationship="BaseModel.FK_WBM_WBILLID" FromRole="WaybillList" ToRole="WaybillMove" />
-          <NavigationProperty Name="WayBillSvc" Relationship="BaseModel.FK_WBS_WBILLID" FromRole="WaybillList" ToRole="WayBillSvc" />
-          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WaybillDet_WaybillList" FromRole="WaybillList" ToRole="WaybillDet" />
-          <NavigationProperty Name="Commission" Relationship="BaseModel.FK_COMMISSION_WBILLID" FromRole="WaybillList" ToRole="Commission" />
-          <NavigationProperty Name="WayBillDetAddProps" Relationship="BaseModel.FK_WAYBILLDETADDPROPS_WBILLID" FromRole="WaybillList" ToRole="WayBillDetAddProps" />
-          <NavigationProperty Name="TechProcDet" Relationship="BaseModel.FK_TECHPROCDET_WAYBILLLIST" FromRole="WaybillList" ToRole="TechProcDet" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__WAYBILLLI__PERSO__6E01572D" FromRole="WaybillList" ToRole="Kagent" />
-          <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" FromRole="WaybillList" ToRole="Kagent" />
-          <NavigationProperty Name="Kagent2" Relationship="BaseModel.FK_WBL_ENTID" FromRole="WaybillList" ToRole="Kagent" />
-        </EntityType>
-        <Association Name="FK_WAYBILLL_FK_WBLIST_CURRENCY">
-          <End Type="BaseModel.Currency" Role="Currency" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Currency">
-              <PropertyRef Name="CurrId" />
-            </Principal>
-            <Dependent Role="WaybillList">
-              <PropertyRef Name="CurrId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_DEBONINGDET_WAYBILLLIST">
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.DeboningDet" Role="DeboningDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillList">
-              <PropertyRef Name="WbillId" />
-            </Principal>
-            <Dependent Role="DeboningDet">
-              <PropertyRef Name="WBillId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WAYBILLL_REF_WBL_D_DOCS">
-          <End Type="BaseModel.Docs" Role="Docs" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Docs">
-              <PropertyRef Name="DocId" />
-            </Principal>
-            <Dependent Role="WaybillList">
-              <PropertyRef Name="DocId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__OPERLOG__TABID__0D44F85C">
           <End Type="BaseModel.Tables" Role="Tables" Multiplicity="0..1" />
           <End Type="BaseModel.OperLog" Role="OperLog" Multiplicity="*" />
@@ -10105,273 +10024,6 @@
             </Principal>
             <Dependent Role="OperLog">
               <PropertyRef Name="TabId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WAYBILLMAKE_WAYBILLLIST">
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.WayBillMake" Role="WayBillMake" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillList">
-              <PropertyRef Name="WbillId" />
-            </Principal>
-            <Dependent Role="WayBillMake">
-              <PropertyRef Name="WbillId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WBM_WBILLID">
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.WaybillMove" Role="WaybillMove" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillList">
-              <PropertyRef Name="WbillId" />
-            </Principal>
-            <Dependent Role="WaybillMove">
-              <PropertyRef Name="WBillId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WBS_WBILLID">
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.WayBillSvc" Role="WayBillSvc" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillList">
-              <PropertyRef Name="WbillId" />
-            </Principal>
-            <Dependent Role="WayBillSvc">
-              <PropertyRef Name="WbillId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="WaybillDet">
-          <Key>
-            <PropertyRef Name="PosId" />
-          </Key>
-          <Property Type="Int32" Name="PosId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="WbillId" Nullable="false" />
-          <Property Type="Int32" Name="MatId" Nullable="false" />
-          <Property Type="Int32" Name="WId" />
-          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="8" />
-          <Property Type="Decimal" Name="Price" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Discount" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Nds" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="CurrId" />
-          <Property Type="DateTime" Name="OnDate" Precision="3" />
-          <Property Type="Int32" Name="PtypeId" />
-          <Property Type="Int32" Name="Num" Nullable="false" />
-          <Property Type="Int32" Name="Checked" />
-          <Property Type="Decimal" Name="OnValue" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Total" Precision="15" Scale="2" />
-          <Property Type="Decimal" Name="BasePrice" Precision="15" Scale="4" />
-          <Property Type="DateTime" Name="Expires" Precision="3" />
-          <Property Type="Int32" Name="PosKind" />
-          <Property Type="Int32" Name="PosParent" />
-          <Property Type="Int32" Name="MsrUnitId" />
-          <Property Type="Int32" Name="DiscountKind" />
-          <Property Type="Decimal" Name="AvgInPrice" Precision="15" Scale="4" />
-          <NavigationProperty Name="Currency" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_CURRENCY" FromRole="WaybillDet" ToRole="Currency" />
-          <NavigationProperty Name="ExtRel" Relationship="BaseModel.FK_EXTREL_EXTPOSID" FromRole="WaybillDet" ToRole="ExtRel" />
-          <NavigationProperty Name="ExtRel1" Relationship="BaseModel.FK_EXTREL_INTPOSID" FromRole="WaybillDet" ToRole="ExtRel" />
-          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" FromRole="WaybillDet" ToRole="Materials" />
-          <NavigationProperty Name="PosRemains" Relationship="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" FromRole="WaybillDet" ToRole="PosRemains" />
-          <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP" FromRole="WaybillDet" ToRole="PriceTypes" />
-          <NavigationProperty Name="ReturnRel" Relationship="BaseModel.FK_RETREL_DPOSID" FromRole="WaybillDet" ToRole="ReturnRel" />
-          <NavigationProperty Name="ReturnRel1" Relationship="BaseModel.FK_RETREL_OUTPOSID" FromRole="WaybillDet" ToRole="ReturnRel" />
-          <NavigationProperty Name="ReturnRel2" Relationship="BaseModel.FK_RETREL_POSID" FromRole="WaybillDet" ToRole="ReturnRel" />
-          <NavigationProperty Name="ReturnRel3" Relationship="BaseModel.FK_RETREL_PPOSID" FromRole="WaybillDet" ToRole="ReturnRel" />
-          <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__WAREHOUS" FromRole="WaybillDet" ToRole="Warehouse" />
-          <NavigationProperty Name="WMatTurn" Relationship="BaseModel.FK_WMT_POSID" FromRole="WaybillDet" ToRole="WMatTurn" />
-          <NavigationProperty Name="WMatTurn1" Relationship="BaseModel.FK_WMT_SRCID" FromRole="WaybillDet" ToRole="WMatTurn" />
-          <NavigationProperty Name="WaybillDet1" Relationship="BaseModel.PosRel" FromRole="WaybillDet" ToRole="WaybillDet1" />
-          <NavigationProperty Name="WaybillDet2" Relationship="BaseModel.PosRel" FromRole="WaybillDet1" ToRole="WaybillDet" />
-          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WaybillDet_WaybillList" FromRole="WaybillDet" ToRole="WaybillList" />
-          <NavigationProperty Name="Serials" Relationship="BaseModel.FK_SERIALS_POSID" FromRole="WaybillDet" ToRole="Serials" />
-          <NavigationProperty Name="WayBillDetAddProps" Relationship="BaseModel.FK_WBDAP_POSID" FromRole="WaybillDet" ToRole="WayBillDetAddProps" />
-          <Property Type="String" Name="Notes" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="WayBillDetTaxes" Relationship="BaseModel.FK_WBDTAXES_POSID" FromRole="WaybillDet" ToRole="WayBillDetTaxes" />
-        </EntityType>
-        <Association Name="FK_WAYBILLD_REFERENCE_CURRENCY">
-          <End Type="BaseModel.Currency" Role="Currency" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Currency">
-              <PropertyRef Name="CurrId" />
-            </Principal>
-            <Dependent Role="WaybillDet">
-              <PropertyRef Name="CurrId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EXTREL_EXTPOSID">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
-          <End Type="BaseModel.ExtRel" Role="ExtRel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="ExtRel">
-              <PropertyRef Name="ExtPosId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EXTREL_INTPOSID">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.ExtRel" Role="ExtRel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="ExtRel">
-              <PropertyRef Name="IntPosId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WAYBILLD_FK_WBDET__MATERIAL">
-          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Materials">
-              <PropertyRef Name="MatId" />
-            </Principal>
-            <Dependent Role="WaybillDet">
-              <PropertyRef Name="MatId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__POSREMAIN__POSID__2DB1C7EE">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
-          <End Type="BaseModel.PosRemains" Role="PosRemains" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="PosRemains">
-              <PropertyRef Name="PosId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WAYBILLD_REFERENCE_PRICETYP">
-          <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PriceTypes">
-              <PropertyRef Name="PTypeId" />
-            </Principal>
-            <Dependent Role="WaybillDet">
-              <PropertyRef Name="PtypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RETREL_DPOSID">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.ReturnRel" Role="ReturnRel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="ReturnRel">
-              <PropertyRef Name="DPosId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RETREL_OUTPOSID">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
-          <End Type="BaseModel.ReturnRel" Role="ReturnRel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="ReturnRel">
-              <PropertyRef Name="OutPosId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RETREL_POSID">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
-          <End Type="BaseModel.ReturnRel" Role="ReturnRel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="ReturnRel">
-              <PropertyRef Name="PosId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RETREL_PPOSID">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
-          <End Type="BaseModel.ReturnRel" Role="ReturnRel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="ReturnRel">
-              <PropertyRef Name="PPosId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WAYBILLD_FK_WBDET__WAREHOUS">
-          <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Warehouse">
-              <PropertyRef Name="WId" />
-            </Principal>
-            <Dependent Role="WaybillDet">
-              <PropertyRef Name="WId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WMT_POSID">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
-          <End Type="BaseModel.WMatTurn" Role="WMatTurn" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="WMatTurn">
-              <PropertyRef Name="PosId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WMT_SRCID">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.WMatTurn" Role="WMatTurn" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="WMatTurn">
-              <PropertyRef Name="SourceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="PosRel">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet1" Multiplicity="*" />
-        </Association>
-        <Association Name="FK_WaybillDet_WaybillList">
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1" />
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillList">
-              <PropertyRef Name="WbillId" />
-            </Principal>
-            <Dependent Role="WaybillDet">
-              <PropertyRef Name="WbillId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -10436,26 +10088,12 @@
           <Property Type="Int32" Name="FirstKaId" />
           <Property Type="Int32" Name="SecondKaId" />
           <Property Type="Int32" Name="ThirdKaId" />
-          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_COMMISSION_WBILLID" FromRole="Commission" ToRole="WaybillList" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_COMMISSI_REFERENCE_KAGENT" FromRole="Commission" ToRole="Kagent" />
           <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_COMMISSION_1" FromRole="Commission" ToRole="Kagent" />
           <NavigationProperty Name="Kagent2" Relationship="BaseModel.FK_COMMISSION_2" FromRole="Commission" ToRole="Kagent" />
           <NavigationProperty Name="Kagent3" Relationship="BaseModel.FK_COMMISSION_3" FromRole="Commission" ToRole="Kagent" />
+          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_COMMISSION_WBILLID" FromRole="Commission" ToRole="WaybillList" />
           </EntityType>
-        <Association Name="FK_COMMISSION_WBILLID">
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.Commission" Role="Commission" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillList">
-              <PropertyRef Name="WbillId" />
-            </Principal>
-            <Dependent Role="Commission">
-              <PropertyRef Name="WbillId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="AccountType">
           <Key>
             <PropertyRef Name="TypeId" />
@@ -10533,20 +10171,6 @@
           <Property Type="String" Name="InvNumb" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_SERIALS_POSID" FromRole="Serials" ToRole="WaybillDet" />
         </EntityType>
-        <Association Name="FK_SERIALS_POSID">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.Serials" Role="Serials" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="Serials">
-              <PropertyRef Name="PosId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="WayBillDetAddProps">
           <Key>
             <PropertyRef Name="PosId" />
@@ -10574,32 +10198,6 @@
             </Principal>
             <Dependent Role="WayBillDetAddProps">
               <PropertyRef Name="CardId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WBDAP_POSID">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.WayBillDetAddProps" Role="WayBillDetAddProps" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="WayBillDetAddProps">
-              <PropertyRef Name="PosId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WAYBILLDETADDPROPS_WBILLID">
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="0..1" />
-          <End Type="BaseModel.WayBillDetAddProps" Role="WayBillDetAddProps" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillList">
-              <PropertyRef Name="WbillId" />
-            </Principal>
-            <Dependent Role="WayBillDetAddProps">
-              <PropertyRef Name="WbMaked" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -11265,20 +10863,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_WBDTAXES_POSID">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.WayBillDetTaxes" Role="WayBillDetTaxes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="WayBillDetTaxes">
-              <PropertyRef Name="PosId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="MatRecipeTechProcDet">
           <Key>
             <PropertyRef Name="Id" />
@@ -11332,8 +10916,8 @@
           <Property Type="Int32" Name="PersonId" />
           <Property Type="Int32" Name="WbillId" Nullable="false" />
           <NavigationProperty Name="TechProcess" Relationship="BaseModel.FK_TECHPROCDET_TECHPROCESS" FromRole="TechProcDet" ToRole="TechProcess" />
-          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_TECHPROCDET_WAYBILLLIST" FromRole="TechProcDet" ToRole="WaybillList" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_TECHPROCDET_KAGENT" FromRole="TechProcDet" ToRole="Kagent" />
+          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_TECHPROCDET_WAYBILLLIST" FromRole="TechProcDet" ToRole="WaybillList" />
         </EntityType>
         <Association Name="FK_TECHPROCDET_TECHPROCESS">
           <End Type="BaseModel.TechProcess" Role="TechProcess" Multiplicity="1" />
@@ -11344,20 +10928,6 @@
             </Principal>
             <Dependent Role="TechProcDet">
               <PropertyRef Name="ProcId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TECHPROCDET_WAYBILLLIST">
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.TechProcDet" Role="TechProcDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillList">
-              <PropertyRef Name="WbillId" />
-            </Principal>
-            <Dependent Role="TechProcDet">
-              <PropertyRef Name="WbillId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -11544,7 +11114,6 @@
           <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK__PAYDOC__KAID__19AACF41" FromRole="Kagent" ToRole="PayDoc" />
           <NavigationProperty Name="PayDoc1" Relationship="BaseModel.FK__PAYDOC__MPERSONI__22401542" FromRole="Kagent" ToRole="PayDoc" />
           <NavigationProperty Name="TAXWB" Relationship="BaseModel.FK__TAXWB__PERSONID__019E3B86" FromRole="Kagent" ToRole="TAXWB" />
-          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK__WAYBILLLI__PERSO__6E01572D" FromRole="Kagent" ToRole="WaybillList" />
           <NavigationProperty Name="WaybillMove" Relationship="BaseModel.FK__WAYBILLMO__PERSO__314D4EA8" FromRole="Kagent" ToRole="WaybillMove" />
           <NavigationProperty Name="KAgentAccount" Relationship="BaseModel.FK_AACC_KAID" FromRole="Kagent" ToRole="KAgentAccount" />
           <NavigationProperty Name="KAgentDoc" Relationship="BaseModel.FK_ADOC_KAID" FromRole="Kagent" ToRole="KAgentDoc" />
@@ -11555,11 +11124,12 @@
           <NavigationProperty Name="Routes1" Relationship="BaseModel.FK_Routes_Kagent" FromRole="Kagent" ToRole="Routes" />
           <NavigationProperty Name="TAXWB1" Relationship="BaseModel.FK_TAXWB_REFERENCE_KAGENT" FromRole="Kagent" ToRole="TAXWB" />
           <NavigationProperty Name="TechProcDet" Relationship="BaseModel.FK_TECHPROCDET_KAGENT" FromRole="Kagent" ToRole="TechProcDet" />
-          <NavigationProperty Name="WaybillList1" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" FromRole="Kagent" ToRole="WaybillList" />
           <NavigationProperty Name="WayBillMake" Relationship="BaseModel.FK_WAYBILLMAKE_KAGENT" FromRole="Kagent" ToRole="WayBillMake" />
-          <NavigationProperty Name="WaybillList2" Relationship="BaseModel.FK_WBL_ENTID" FromRole="Kagent" ToRole="WaybillList" />
           <NavigationProperty Name="WayBillSvc" Relationship="BaseModel.FK_WBS_PERSONID" FromRole="Kagent" ToRole="WayBillSvc" />
           <NavigationProperty Name="Users" Relationship="BaseModel.FK_Kagent_Users" FromRole="Kagent" ToRole="Users" />
+          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK__WAYBILLLI__PERSO__6E01572D" FromRole="Kagent" ToRole="WaybillList" />
+          <NavigationProperty Name="WaybillList1" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" FromRole="Kagent" ToRole="WaybillList" />
+          <NavigationProperty Name="WaybillList2" Relationship="BaseModel.FK_WBL_ENTID" FromRole="Kagent" ToRole="WaybillList" />
         </EntityType>
         <EntityType Name="KontragentGroup">
           <Key>
@@ -11759,18 +11329,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__WAYBILLLI__PERSO__6E01572D">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="WaybillList">
-              <PropertyRef Name="PersonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__WAYBILLMO__PERSO__314D4EA8">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
           <End Type="BaseModel.WaybillMove" Role="WaybillMove" Multiplicity="*" />
@@ -11899,18 +11457,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_WAYBILLL_FK_WBLIST_KAGENT">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="WaybillList">
-              <PropertyRef Name="KaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_WAYBILLMAKE_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
           <End Type="BaseModel.WayBillMake" Role="WayBillMake" Multiplicity="*" />
@@ -11920,18 +11466,6 @@
             </Principal>
             <Dependent Role="WayBillMake">
               <PropertyRef Name="PersonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WBL_ENTID">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="WaybillList">
-              <PropertyRef Name="EntId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -12055,6 +11589,472 @@
               <PropertyRef Name="GroupId" />
             </Dependent>
           </ReferentialConstraint>
+        </Association>
+        <EntityType Name="WaybillDet">
+          <Key>
+            <PropertyRef Name="PosId" />
+          </Key>
+          <Property Type="Int32" Name="PosId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="WbillId" Nullable="false" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="Int32" Name="WId" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="Price" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Discount" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Nds" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="CurrId" />
+          <Property Type="DateTime" Name="OnDate" Precision="3" />
+          <Property Type="Int32" Name="PtypeId" />
+          <Property Type="Int32" Name="Num" Nullable="false" />
+          <Property Type="Int32" Name="Checked" />
+          <Property Type="Decimal" Name="OnValue" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Total" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="BasePrice" Precision="15" Scale="4" />
+          <Property Type="DateTime" Name="Expires" Precision="3" />
+          <Property Type="Int32" Name="PosKind" />
+          <Property Type="Int32" Name="PosParent" />
+          <Property Type="Int32" Name="MsrUnitId" />
+          <Property Type="Int32" Name="DiscountKind" />
+          <Property Type="Decimal" Name="AvgInPrice" Precision="15" Scale="4" />
+          <Property Type="String" Name="Notes" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Currency" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_CURRENCY" FromRole="WaybillDet" ToRole="Currency" />
+          <NavigationProperty Name="ExtRel" Relationship="BaseModel.FK_EXTREL_EXTPOSID" FromRole="WaybillDet" ToRole="ExtRel" />
+          <NavigationProperty Name="ExtRel1" Relationship="BaseModel.FK_EXTREL_INTPOSID" FromRole="WaybillDet" ToRole="ExtRel" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" FromRole="WaybillDet" ToRole="Materials" />
+          <NavigationProperty Name="PosRemains" Relationship="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" FromRole="WaybillDet" ToRole="PosRemains" />
+          <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP" FromRole="WaybillDet" ToRole="PriceTypes" />
+          <NavigationProperty Name="ReturnRel" Relationship="BaseModel.FK_RETREL_DPOSID" FromRole="WaybillDet" ToRole="ReturnRel" />
+          <NavigationProperty Name="ReturnRel1" Relationship="BaseModel.FK_RETREL_OUTPOSID" FromRole="WaybillDet" ToRole="ReturnRel" />
+          <NavigationProperty Name="ReturnRel2" Relationship="BaseModel.FK_RETREL_POSID" FromRole="WaybillDet" ToRole="ReturnRel" />
+          <NavigationProperty Name="ReturnRel3" Relationship="BaseModel.FK_RETREL_PPOSID" FromRole="WaybillDet" ToRole="ReturnRel" />
+          <NavigationProperty Name="Serials" Relationship="BaseModel.FK_SERIALS_POSID" FromRole="WaybillDet" ToRole="Serials" />
+          <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__WAREHOUS" FromRole="WaybillDet" ToRole="Warehouse" />
+          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WaybillDet_WaybillList" FromRole="WaybillDet" ToRole="WaybillList" />
+          <NavigationProperty Name="WayBillDetAddProps" Relationship="BaseModel.FK_WBDAP_POSID" FromRole="WaybillDet" ToRole="WayBillDetAddProps" />
+          <NavigationProperty Name="WayBillDetTaxes" Relationship="BaseModel.FK_WBDTAXES_POSID" FromRole="WaybillDet" ToRole="WayBillDetTaxes" />
+          <NavigationProperty Name="WMatTurn" Relationship="BaseModel.FK_WMT_POSID" FromRole="WaybillDet" ToRole="WMatTurn" />
+          <NavigationProperty Name="WMatTurn1" Relationship="BaseModel.FK_WMT_SRCID" FromRole="WaybillDet" ToRole="WMatTurn" />
+          <NavigationProperty Name="WaybillDet1" Relationship="BaseModel.PosRel" FromRole="WaybillDet" ToRole="WaybillDet1" />
+          <NavigationProperty Name="WaybillDet2" Relationship="BaseModel.PosRel" FromRole="WaybillDet1" ToRole="WaybillDet" />
+        </EntityType>
+        <EntityType Name="WaybillList">
+          <Key>
+            <PropertyRef Name="WbillId" />
+          </Key>
+          <Property Type="Int32" Name="WbillId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="KaId" />
+          <Property Type="Int32" Name="CurrId" />
+          <Property Type="String" Name="AttNum" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="AttDate" Precision="3" />
+          <Property Type="String" Name="Reason" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Checked" Nullable="false" />
+          <Property Type="Int32" Name="Deleted" Nullable="false" />
+          <Property Type="Decimal" Name="SummAll" Precision="15" Scale="2" />
+          <Property Type="Int32" Name="WType" Nullable="false" />
+          <Property Type="Decimal" Name="Nds" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="PersonId" />
+          <Property Type="String" Name="Received" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ToDate" Precision="3" />
+          <Property Type="Int32" Name="DefNum" Nullable="false" />
+          <Property Type="Decimal" Name="SummPay" Precision="15" Scale="2" />
+          <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="DocId" />
+          <Property Type="Decimal" Name="SummInCurr" Precision="15" Scale="2" />
+          <Property Type="Int32" Name="EntId" />
+          <Property Type="Decimal" Name="OnValue" Precision="15" Scale="8" />
+          <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" />
+          <NavigationProperty Name="Commission" Relationship="BaseModel.FK_COMMISSION_WBILLID" FromRole="WaybillList" ToRole="Commission" />
+          <NavigationProperty Name="Currency" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY" FromRole="WaybillList" ToRole="Currency" />
+          <NavigationProperty Name="DeboningDet" Relationship="BaseModel.FK_DEBONINGDET_WAYBILLLIST" FromRole="WaybillList" ToRole="DeboningDet" />
+          <NavigationProperty Name="Docs" Relationship="BaseModel.FK_WAYBILLL_REF_WBL_D_DOCS" FromRole="WaybillList" ToRole="Docs" />
+          <NavigationProperty Name="Person" Relationship="BaseModel.FK__WAYBILLLI__PERSO__6E01572D" FromRole="WaybillList" ToRole="Kagent" />
+          <NavigationProperty Name="Kontragent" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" FromRole="WaybillList" ToRole="Kagent" />
+          <NavigationProperty Name="Enterprise" Relationship="BaseModel.FK_WBL_ENTID" FromRole="WaybillList" ToRole="Kagent" />
+          <NavigationProperty Name="TechProcDet" Relationship="BaseModel.FK_TECHPROCDET_WAYBILLLIST" FromRole="WaybillList" ToRole="TechProcDet" />
+          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WaybillDet_WaybillList" FromRole="WaybillList" ToRole="WaybillDet" />
+          <NavigationProperty Name="WayBillDetAddProps" Relationship="BaseModel.FK_WAYBILLDETADDPROPS_WBILLID" FromRole="WaybillList" ToRole="WayBillDetAddProps" />
+          <NavigationProperty Name="WayBillMake" Relationship="BaseModel.FK_WAYBILLMAKE_WAYBILLLIST" FromRole="WaybillList" ToRole="WayBillMake" />
+          <NavigationProperty Name="WaybillMove" Relationship="BaseModel.FK_WBM_WBILLID" FromRole="WaybillList" ToRole="WaybillMove" />
+          <NavigationProperty Name="WayBillSvc" Relationship="BaseModel.FK_WBS_WBILLID" FromRole="WaybillList" ToRole="WayBillSvc" />
+        </EntityType>
+        <Association Name="FK_COMMISSION_WBILLID">
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.Commission" Role="Commission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="Commission">
+              <PropertyRef Name="WbillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAYBILLD_REFERENCE_CURRENCY">
+          <End Type="BaseModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
+            </Principal>
+            <Dependent Role="WaybillDet">
+              <PropertyRef Name="CurrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAYBILLL_FK_WBLIST_CURRENCY">
+          <End Type="BaseModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
+            </Principal>
+            <Dependent Role="WaybillList">
+              <PropertyRef Name="CurrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEBONINGDET_WAYBILLLIST">
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.DeboningDet" Role="DeboningDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="DeboningDet">
+              <PropertyRef Name="WBillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAYBILLL_REF_WBL_D_DOCS">
+          <End Type="BaseModel.Docs" Role="Docs" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Docs">
+              <PropertyRef Name="DocId" />
+            </Principal>
+            <Dependent Role="WaybillList">
+              <PropertyRef Name="DocId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EXTREL_EXTPOSID">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
+          <End Type="BaseModel.ExtRel" Role="ExtRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="ExtRel">
+              <PropertyRef Name="ExtPosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EXTREL_INTPOSID">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.ExtRel" Role="ExtRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="ExtRel">
+              <PropertyRef Name="IntPosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WAYBILLLI__PERSO__6E01572D">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="WaybillList">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAYBILLL_FK_WBLIST_KAGENT">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="WaybillList">
+              <PropertyRef Name="KaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WBL_ENTID">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="WaybillList">
+              <PropertyRef Name="EntId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAYBILLD_FK_WBDET__MATERIAL">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="WaybillDet">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__POSREMAIN__POSID__2DB1C7EE">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
+          <End Type="BaseModel.PosRemains" Role="PosRemains" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="PosRemains">
+              <PropertyRef Name="PosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAYBILLD_REFERENCE_PRICETYP">
+          <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceTypes">
+              <PropertyRef Name="PTypeId" />
+            </Principal>
+            <Dependent Role="WaybillDet">
+              <PropertyRef Name="PtypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RETREL_DPOSID">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.ReturnRel" Role="ReturnRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="ReturnRel">
+              <PropertyRef Name="DPosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RETREL_OUTPOSID">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
+          <End Type="BaseModel.ReturnRel" Role="ReturnRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="ReturnRel">
+              <PropertyRef Name="OutPosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RETREL_POSID">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
+          <End Type="BaseModel.ReturnRel" Role="ReturnRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="ReturnRel">
+              <PropertyRef Name="PosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RETREL_PPOSID">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
+          <End Type="BaseModel.ReturnRel" Role="ReturnRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="ReturnRel">
+              <PropertyRef Name="PPosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERIALS_POSID">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.Serials" Role="Serials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="Serials">
+              <PropertyRef Name="PosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TECHPROCDET_WAYBILLLIST">
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.TechProcDet" Role="TechProcDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="TechProcDet">
+              <PropertyRef Name="WbillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAYBILLD_FK_WBDET__WAREHOUS">
+          <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
+            </Principal>
+            <Dependent Role="WaybillDet">
+              <PropertyRef Name="WId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WaybillDet_WaybillList">
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1" />
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="WaybillDet">
+              <PropertyRef Name="WbillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WBDAP_POSID">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.WayBillDetAddProps" Role="WayBillDetAddProps" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="WayBillDetAddProps">
+              <PropertyRef Name="PosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WBDTAXES_POSID">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.WayBillDetTaxes" Role="WayBillDetTaxes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="WayBillDetTaxes">
+              <PropertyRef Name="PosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WMT_POSID">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
+          <End Type="BaseModel.WMatTurn" Role="WMatTurn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="WMatTurn">
+              <PropertyRef Name="PosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WMT_SRCID">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.WMatTurn" Role="WMatTurn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="WMatTurn">
+              <PropertyRef Name="SourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAYBILLDETADDPROPS_WBILLID">
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="0..1" />
+          <End Type="BaseModel.WayBillDetAddProps" Role="WayBillDetAddProps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="WayBillDetAddProps">
+              <PropertyRef Name="WbMaked" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAYBILLMAKE_WAYBILLLIST">
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.WayBillMake" Role="WayBillMake" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="WayBillMake">
+              <PropertyRef Name="WbillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WBM_WBILLID">
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.WaybillMove" Role="WaybillMove" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="WaybillMove">
+              <PropertyRef Name="WBillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WBS_WBILLID">
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.WayBillSvc" Role="WayBillSvc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="WayBillSvc">
+              <PropertyRef Name="WbillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PosRel">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet1" Multiplicity="*" />
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -14368,75 +14368,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="WaybillList">
-            <EntityTypeMapping TypeName="BaseModel.WaybillList">
-              <MappingFragment StoreEntitySet="WaybillList">
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
-                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
-                <ScalarProperty Name="EntId" ColumnName="EntId" />
-                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
-                <ScalarProperty Name="DocId" ColumnName="DocId" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="SummPay" ColumnName="SummPay" />
-                <ScalarProperty Name="DefNum" ColumnName="DefNum" />
-                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
-                <ScalarProperty Name="Received" ColumnName="Received" />
-                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
-                <ScalarProperty Name="Nds" ColumnName="Nds" />
-                <ScalarProperty Name="WType" ColumnName="WType" />
-                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="Reason" ColumnName="Reason" />
-                <ScalarProperty Name="AttDate" ColumnName="AttDate" />
-                <ScalarProperty Name="AttNum" ColumnName="AttNum" />
-                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
-                <ScalarProperty Name="KaId" ColumnName="KaId" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="WaybillDet">
-            <EntityTypeMapping TypeName="BaseModel.WaybillDet">
-              <MappingFragment StoreEntitySet="WaybillDet">
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="AvgInPrice" ColumnName="AvgInPrice" />
-                <ScalarProperty Name="DiscountKind" ColumnName="DiscountKind" />
-                <ScalarProperty Name="MsrUnitId" ColumnName="MsrUnitId" />
-                <ScalarProperty Name="PosParent" ColumnName="PosParent" />
-                <ScalarProperty Name="PosKind" ColumnName="PosKind" />
-                <ScalarProperty Name="Expires" ColumnName="Expires" />
-                <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="PtypeId" ColumnName="PtypeId" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
-                <ScalarProperty Name="Nds" ColumnName="Nds" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="WId" ColumnName="WId" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
-                <ScalarProperty Name="PosId" ColumnName="PosId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <AssociationSetMapping Name="PosRel" TypeName="BaseModel.PosRel" StoreEntitySet="PosRel">
-            <EndProperty Name="WaybillDet1">
-              <ScalarProperty Name="PosId" ColumnName="PosId" />
-            </EndProperty>
-            <EndProperty Name="WaybillDet">
-              <ScalarProperty Name="PosId" ColumnName="CPosId" />
-            </EndProperty>
-            <Condition ColumnName="CPosId" IsNull="false" />
-          </AssociationSetMapping>
           <EntitySetMapping Name="Functions">
             <EntityTypeMapping TypeName="BaseModel.Functions">
               <MappingFragment StoreEntitySet="Functions">
@@ -15223,6 +15154,75 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="WaybillDet">
+            <EntityTypeMapping TypeName="BaseModel.WaybillDet">
+              <MappingFragment StoreEntitySet="WaybillDet">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="AvgInPrice" ColumnName="AvgInPrice" />
+                <ScalarProperty Name="DiscountKind" ColumnName="DiscountKind" />
+                <ScalarProperty Name="MsrUnitId" ColumnName="MsrUnitId" />
+                <ScalarProperty Name="PosParent" ColumnName="PosParent" />
+                <ScalarProperty Name="PosKind" ColumnName="PosKind" />
+                <ScalarProperty Name="Expires" ColumnName="Expires" />
+                <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="PtypeId" ColumnName="PtypeId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="Nds" ColumnName="Nds" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WaybillList">
+            <EntityTypeMapping TypeName="BaseModel.WaybillList">
+              <MappingFragment StoreEntitySet="WaybillList">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="EntId" ColumnName="EntId" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="SummPay" ColumnName="SummPay" />
+                <ScalarProperty Name="DefNum" ColumnName="DefNum" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="Received" ColumnName="Received" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Nds" ColumnName="Nds" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="AttDate" ColumnName="AttDate" />
+                <ScalarProperty Name="AttNum" ColumnName="AttNum" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="PosRel" TypeName="BaseModel.PosRel" StoreEntitySet="PosRel">
+            <EndProperty Name="WaybillDet1">
+              <ScalarProperty Name="PosId" ColumnName="PosId" />
+            </EndProperty>
+            <EndProperty Name="WaybillDet">
+              <ScalarProperty Name="PosId" ColumnName="CPosId" />
+            </EndProperty>
+            <Condition ColumnName="CPosId" IsNull="false" />
+          </AssociationSetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
