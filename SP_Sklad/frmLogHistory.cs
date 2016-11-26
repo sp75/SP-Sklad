@@ -31,7 +31,7 @@ namespace SP_Sklad
             {
                 s.OpId,
                 s.OpCode,
-                s.Users.Name,
+                Name = s.Users != null ? s.Users.Name : "",
                 s.OnDate,
                 DataBefore = IHelper.ConvertLogData(s.DataBefore),
                 DataAfter = IHelper.ConvertLogData(s.DataAfter)
