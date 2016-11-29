@@ -132,10 +132,10 @@ namespace SP_Sklad.SkladData
         public DbSet<RepLng> RepLng { get; set; }
         public DbSet<Kagent> Kagent { get; set; }
         public DbSet<KontragentGroup> KontragentGroup { get; set; }
-        public DbSet<Users> Users { get; set; }
         public DbSet<UsersGroup> UsersGroup { get; set; }
         public DbSet<WaybillDet> WaybillDet { get; set; }
         public DbSet<WaybillList> WaybillList { get; set; }
+        public DbSet<Users> Users { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)
@@ -1971,6 +1971,28 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("to_date", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_32_Result>("[BaseEntities].[REP_32](@from_date, @to_date)", from_dateParameter, to_dateParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "REP_33")]
+        public virtual IQueryable<REP_33_Result> REP_33(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> grp_id, Nullable<int> mat_id)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var grp_idParameter = grp_id.HasValue ?
+                new ObjectParameter("grp_id", grp_id) :
+                new ObjectParameter("grp_id", typeof(int));
+    
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_33_Result>("[BaseEntities].[REP_33](@from_date, @to_date, @grp_id, @mat_id)", from_dateParameter, to_dateParameter, grp_idParameter, mat_idParameter);
         }
     }
 }

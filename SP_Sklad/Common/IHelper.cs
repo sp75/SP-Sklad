@@ -515,7 +515,7 @@ namespace SP_Sklad.Common
                             }
                             else
                             {
-                                result.wid = old_WID != null ? (int?)old_WID : 0;
+                                result.wid = old_WID != null && old_WID != DBNull.Value ? (int?)old_WID : 0;
                             }
                         }
                     }
@@ -609,20 +609,26 @@ namespace SP_Sklad.Common
 
                 String result_file = Path.Combine(rep_path, Path.GetFileNameWithoutExtension(temlate) + "_" + DateTime.Now.Ticks.ToString() + "." + file_format);
                 var rep = ReportBuilder.GenerateReport(data_for_report, template_file, false, file_format);
-                if (file_format == "pdf")
+
+                if (DBHelper.CurrentUser.InternalEditor != null && DBHelper.CurrentUser.InternalEditor.Value)
                 {
-                    new frmPdfView(rep).Show();
+                    if (file_format == "pdf")
+                    {
+                        new frmPdfView(rep).Show();
+                    }
+                    else if (file_format == "xlsx")
+                    {
+                        new frmSpreadsheed(rep).Show();
+                    }
                 }
                 else
                 {
-                /*    File.WriteAllBytes(result_file, rep);
+                    File.WriteAllBytes(result_file, rep);
 
                     if (File.Exists(result_file))
                     {
                         Process.Start(result_file);
-                    }*/
-
-                    new frmSpreadsheed(rep).Show();
+                    }
                 }
 
             }

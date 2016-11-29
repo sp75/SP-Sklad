@@ -104,5 +104,41 @@ namespace SP_Sklad.Properties {
                 this["main_toolbar"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool wb_out_discount {
+            get {
+                return ((bool)(this["wb_out_discount"]));
+            }
+            set {
+                this["wb_out_discount"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool wb_out_certificat {
+            get {
+                return ((bool)(this["wb_out_certificat"]));
+            }
+            set {
+                this["wb_out_certificat"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool wb_out_result {
+            get {
+                return ((bool)(this["wb_out_result"]));
+            }
+            set {
+                this["wb_out_result"] = value;
+            }
+        }
     }
 }

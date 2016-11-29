@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWayBillDetOut));
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
@@ -292,32 +295,35 @@
             // barCheckItem1
             // 
             this.barCheckItem1.BindableChecked = true;
-            this.barCheckItem1.Caption = "Серійний номер";
-            this.barCheckItem1.Checked = global::SP_Sklad.Properties.Settings.Default.ch_view1;
-            this.barCheckItem1.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SP_Sklad.Properties.Settings.Default, "ch_view1", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.barCheckItem1.Caption = "Знижка";
+            this.barCheckItem1.Checked = global::SP_Sklad.Properties.Settings.Default.wb_out_discount;
+            this.barCheckItem1.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SP_Sklad.Properties.Settings.Default, "wb_out_discount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.barCheckItem1.Id = 13;
             this.barCheckItem1.Name = "barCheckItem1";
             this.barCheckItem1.Tag = 0;
+            this.barCheckItem1.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem1_CheckedChanged);
             // 
             // barCheckItem2
             // 
             this.barCheckItem2.BindableChecked = true;
             this.barCheckItem2.Caption = "Інтервал цін та сертифікат";
-            this.barCheckItem2.Checked = global::SP_Sklad.Properties.Settings.Default.ch_view2;
-            this.barCheckItem2.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SP_Sklad.Properties.Settings.Default, "ch_view2", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.barCheckItem2.Checked = global::SP_Sklad.Properties.Settings.Default.wb_out_certificat;
+            this.barCheckItem2.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SP_Sklad.Properties.Settings.Default, "wb_out_certificat", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.barCheckItem2.Id = 14;
             this.barCheckItem2.Name = "barCheckItem2";
             this.barCheckItem2.Tag = 1;
+            this.barCheckItem2.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem1_CheckedChanged);
             // 
             // barCheckItem3
             // 
             this.barCheckItem3.BindableChecked = true;
             this.barCheckItem3.Caption = "Підсумок";
-            this.barCheckItem3.Checked = global::SP_Sklad.Properties.Settings.Default.ch_view3;
-            this.barCheckItem3.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SP_Sklad.Properties.Settings.Default, "ch_view3", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.barCheckItem3.Checked = global::SP_Sklad.Properties.Settings.Default.wb_out_result;
+            this.barCheckItem3.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SP_Sklad.Properties.Settings.Default, "wb_out_result", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.barCheckItem3.Id = 15;
             this.barCheckItem3.Name = "barCheckItem3";
             this.barCheckItem3.Tag = 2;
+            this.barCheckItem3.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem1_CheckedChanged);
             // 
             // barDockControlTop
             // 
@@ -464,7 +470,7 @@
             this.WHComboBox.Name = "WHComboBox";
             this.WHComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("WHComboBox.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("WHComboBox.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, true)});
             this.WHComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.WHComboBox.Properties.DisplayMember = "Name";
@@ -706,13 +712,14 @@
             // 
             this.CurRemainEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.CurRemainEdit.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.GetMatRemainBS, "Remain", true));
+            this.CurRemainEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.GetMatRemainBS, "Remain", true));
             this.CurRemainEdit.Enabled = false;
             this.CurRemainEdit.Location = new System.Drawing.Point(477, 41);
             this.CurRemainEdit.MenuManager = this.barManager1;
             this.CurRemainEdit.Name = "CurRemainEdit";
             this.CurRemainEdit.Properties.DisplayFormat.FormatString = "0.0000";
             this.CurRemainEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.CurRemainEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.CurRemainEdit.Size = new System.Drawing.Size(148, 22);
             this.CurRemainEdit.StyleController = this.styleController1;
             this.CurRemainEdit.TabIndex = 12;
@@ -725,13 +732,14 @@
             // 
             this.RsvEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.RsvEdit.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.GetMatRemainBS, "Rsv", true));
+            this.RsvEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.GetMatRemainBS, "Rsv", true));
             this.RsvEdit.Enabled = false;
             this.RsvEdit.Location = new System.Drawing.Point(477, 70);
             this.RsvEdit.MenuManager = this.barManager1;
             this.RsvEdit.Name = "RsvEdit";
             this.RsvEdit.Properties.DisplayFormat.FormatString = "0.0000";
             this.RsvEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.RsvEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.RsvEdit.Size = new System.Drawing.Size(148, 22);
             this.RsvEdit.StyleController = this.styleController1;
             this.RsvEdit.TabIndex = 11;
@@ -740,13 +748,14 @@
             // 
             this.RemainWHEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.RemainWHEdit.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.GetMatRemainBS, "RemainInWh", true));
+            this.RemainWHEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.GetMatRemainBS, "RemainInWh", true));
             this.RemainWHEdit.Enabled = false;
             this.RemainWHEdit.Location = new System.Drawing.Point(477, 12);
             this.RemainWHEdit.MenuManager = this.barManager1;
             this.RemainWHEdit.Name = "RemainWHEdit";
             this.RemainWHEdit.Properties.DisplayFormat.FormatString = "0.0000";
             this.RemainWHEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.RemainWHEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.RemainWHEdit.Size = new System.Drawing.Size(148, 22);
             this.RemainWHEdit.StyleController = this.styleController1;
             this.RemainWHEdit.TabIndex = 10;

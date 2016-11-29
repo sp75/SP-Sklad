@@ -35,12 +35,6 @@
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.mainPanel = new DevExpress.XtraEditors.PanelControl();
-            this.StatusPanel = new System.Windows.Forms.Panel();
-            this.wbStatusList = new DevExpress.XtraEditors.LookUpEdit();
-            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textEdit1 = new DevExpress.XtraEditors.MemoEdit();
             this.DocTypeGroupBox2 = new DevExpress.XtraEditors.GroupControl();
             this.OutDocGroupBox = new System.Windows.Forms.Panel();
             this.checkEdit8 = new DevExpress.XtraEditors.CheckEdit();
@@ -52,6 +46,12 @@
             this.checkEdit3 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
+            this.StatusPanel = new System.Windows.Forms.Panel();
+            this.wbStatusList = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.textEdit1 = new DevExpress.XtraEditors.MemoEdit();
             this.DocTypeGroupBox = new System.Windows.Forms.Panel();
             this.DocTypeEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
@@ -103,11 +103,6 @@
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).BeginInit();
             this.mainPanel.SuspendLayout();
-            this.StatusPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.wbStatusList.Properties)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DocTypeGroupBox2)).BeginInit();
             this.DocTypeGroupBox2.SuspendLayout();
             this.OutDocGroupBox.SuspendLayout();
@@ -120,6 +115,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).BeginInit();
+            this.StatusPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.wbStatusList.Properties)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             this.DocTypeGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DocTypeEdit.Properties)).BeginInit();
             this.ChargeGroupBox.SuspendLayout();
@@ -204,10 +204,116 @@
             this.mainPanel.Controls.Add(this.OnDateGroupBox);
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(0, 0);
-            this.mainPanel.LookAndFeel.SkinName = "VS2010";
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(455, 681);
             this.mainPanel.TabIndex = 31;
+            // 
+            // DocTypeGroupBox2
+            // 
+            this.DocTypeGroupBox2.Controls.Add(this.OutDocGroupBox);
+            this.DocTypeGroupBox2.Controls.Add(this.InDocGroupBox);
+            this.DocTypeGroupBox2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.DocTypeGroupBox2.Location = new System.Drawing.Point(2, 456);
+            this.DocTypeGroupBox2.Name = "DocTypeGroupBox2";
+            this.DocTypeGroupBox2.Size = new System.Drawing.Size(451, 122);
+            this.DocTypeGroupBox2.TabIndex = 38;
+            this.DocTypeGroupBox2.Text = "Типи документів";
+            // 
+            // OutDocGroupBox
+            // 
+            this.OutDocGroupBox.Controls.Add(this.checkEdit8);
+            this.OutDocGroupBox.Controls.Add(this.checkEdit7);
+            this.OutDocGroupBox.Controls.Add(this.checkEdit6);
+            this.OutDocGroupBox.Controls.Add(this.checkEdit5);
+            this.OutDocGroupBox.Controls.Add(this.checkEdit4);
+            this.OutDocGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OutDocGroupBox.Location = new System.Drawing.Point(206, 20);
+            this.OutDocGroupBox.Name = "OutDocGroupBox";
+            this.OutDocGroupBox.Size = new System.Drawing.Size(243, 100);
+            this.OutDocGroupBox.TabIndex = 1;
+            // 
+            // checkEdit8
+            // 
+            this.checkEdit8.Location = new System.Drawing.Point(209, 40);
+            this.checkEdit8.Name = "checkEdit8";
+            this.checkEdit8.Properties.Caption = "Обвалка сировини";
+            this.checkEdit8.Size = new System.Drawing.Size(154, 20);
+            this.checkEdit8.StyleController = this.styleController1;
+            this.checkEdit8.TabIndex = 35;
+            // 
+            // checkEdit7
+            // 
+            this.checkEdit7.Location = new System.Drawing.Point(209, 14);
+            this.checkEdit7.Name = "checkEdit7";
+            this.checkEdit7.Properties.Caption = "Виготовлення продукції";
+            this.checkEdit7.Size = new System.Drawing.Size(169, 20);
+            this.checkEdit7.StyleController = this.styleController1;
+            this.checkEdit7.TabIndex = 34;
+            // 
+            // checkEdit6
+            // 
+            this.checkEdit6.Location = new System.Drawing.Point(6, 66);
+            this.checkEdit6.Name = "checkEdit6";
+            this.checkEdit6.Properties.Caption = "Акти списання товару";
+            this.checkEdit6.Size = new System.Drawing.Size(184, 20);
+            this.checkEdit6.StyleController = this.styleController1;
+            this.checkEdit6.TabIndex = 33;
+            // 
+            // checkEdit5
+            // 
+            this.checkEdit5.Location = new System.Drawing.Point(6, 40);
+            this.checkEdit5.Name = "checkEdit5";
+            this.checkEdit5.Properties.Caption = "Повернення постачальнику";
+            this.checkEdit5.Size = new System.Drawing.Size(184, 20);
+            this.checkEdit5.StyleController = this.styleController1;
+            this.checkEdit5.TabIndex = 32;
+            // 
+            // checkEdit4
+            // 
+            this.checkEdit4.Location = new System.Drawing.Point(6, 14);
+            this.checkEdit4.Name = "checkEdit4";
+            this.checkEdit4.Properties.Caption = "Видаткові накладні";
+            this.checkEdit4.Size = new System.Drawing.Size(154, 20);
+            this.checkEdit4.StyleController = this.styleController1;
+            this.checkEdit4.TabIndex = 31;
+            // 
+            // InDocGroupBox
+            // 
+            this.InDocGroupBox.Controls.Add(this.checkEdit3);
+            this.InDocGroupBox.Controls.Add(this.checkEdit1);
+            this.InDocGroupBox.Controls.Add(this.checkEdit2);
+            this.InDocGroupBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this.InDocGroupBox.Location = new System.Drawing.Point(2, 20);
+            this.InDocGroupBox.Name = "InDocGroupBox";
+            this.InDocGroupBox.Size = new System.Drawing.Size(204, 100);
+            this.InDocGroupBox.TabIndex = 0;
+            // 
+            // checkEdit3
+            // 
+            this.checkEdit3.Location = new System.Drawing.Point(8, 66);
+            this.checkEdit3.Name = "checkEdit3";
+            this.checkEdit3.Properties.Caption = "Повернення від клієнта";
+            this.checkEdit3.Size = new System.Drawing.Size(184, 20);
+            this.checkEdit3.StyleController = this.styleController1;
+            this.checkEdit3.TabIndex = 32;
+            // 
+            // checkEdit1
+            // 
+            this.checkEdit1.Location = new System.Drawing.Point(8, 40);
+            this.checkEdit1.Name = "checkEdit1";
+            this.checkEdit1.Properties.Caption = "Введення залишків товарів";
+            this.checkEdit1.Size = new System.Drawing.Size(184, 20);
+            this.checkEdit1.StyleController = this.styleController1;
+            this.checkEdit1.TabIndex = 31;
+            // 
+            // checkEdit2
+            // 
+            this.checkEdit2.Location = new System.Drawing.Point(8, 14);
+            this.checkEdit2.Name = "checkEdit2";
+            this.checkEdit2.Properties.Caption = "Прибуткові накладні";
+            this.checkEdit2.Size = new System.Drawing.Size(184, 20);
+            this.checkEdit2.StyleController = this.styleController1;
+            this.checkEdit2.TabIndex = 30;
             // 
             // StatusPanel
             // 
@@ -278,113 +384,6 @@
             this.textEdit1.Properties.ReadOnly = true;
             this.textEdit1.Size = new System.Drawing.Size(356, 64);
             this.textEdit1.TabIndex = 39;
-            // 
-            // DocTypeGroupBox2
-            // 
-            this.DocTypeGroupBox2.Controls.Add(this.OutDocGroupBox);
-            this.DocTypeGroupBox2.Controls.Add(this.InDocGroupBox);
-            this.DocTypeGroupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DocTypeGroupBox2.Location = new System.Drawing.Point(2, 456);
-            this.DocTypeGroupBox2.Name = "DocTypeGroupBox2";
-            this.DocTypeGroupBox2.Size = new System.Drawing.Size(451, 122);
-            this.DocTypeGroupBox2.TabIndex = 38;
-            this.DocTypeGroupBox2.Text = "Типи документів";
-            // 
-            // OutDocGroupBox
-            // 
-            this.OutDocGroupBox.Controls.Add(this.checkEdit8);
-            this.OutDocGroupBox.Controls.Add(this.checkEdit7);
-            this.OutDocGroupBox.Controls.Add(this.checkEdit6);
-            this.OutDocGroupBox.Controls.Add(this.checkEdit5);
-            this.OutDocGroupBox.Controls.Add(this.checkEdit4);
-            this.OutDocGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OutDocGroupBox.Location = new System.Drawing.Point(206, 21);
-            this.OutDocGroupBox.Name = "OutDocGroupBox";
-            this.OutDocGroupBox.Size = new System.Drawing.Size(243, 99);
-            this.OutDocGroupBox.TabIndex = 1;
-            // 
-            // checkEdit8
-            // 
-            this.checkEdit8.Location = new System.Drawing.Point(209, 40);
-            this.checkEdit8.Name = "checkEdit8";
-            this.checkEdit8.Properties.Caption = "Обвалка сировини";
-            this.checkEdit8.Size = new System.Drawing.Size(154, 20);
-            this.checkEdit8.StyleController = this.styleController1;
-            this.checkEdit8.TabIndex = 35;
-            // 
-            // checkEdit7
-            // 
-            this.checkEdit7.Location = new System.Drawing.Point(209, 14);
-            this.checkEdit7.Name = "checkEdit7";
-            this.checkEdit7.Properties.Caption = "Виготовлення продукції";
-            this.checkEdit7.Size = new System.Drawing.Size(169, 20);
-            this.checkEdit7.StyleController = this.styleController1;
-            this.checkEdit7.TabIndex = 34;
-            // 
-            // checkEdit6
-            // 
-            this.checkEdit6.Location = new System.Drawing.Point(6, 66);
-            this.checkEdit6.Name = "checkEdit6";
-            this.checkEdit6.Properties.Caption = "Акти списання товару";
-            this.checkEdit6.Size = new System.Drawing.Size(184, 20);
-            this.checkEdit6.StyleController = this.styleController1;
-            this.checkEdit6.TabIndex = 33;
-            // 
-            // checkEdit5
-            // 
-            this.checkEdit5.Location = new System.Drawing.Point(6, 40);
-            this.checkEdit5.Name = "checkEdit5";
-            this.checkEdit5.Properties.Caption = "Повернення постачальнику";
-            this.checkEdit5.Size = new System.Drawing.Size(184, 20);
-            this.checkEdit5.StyleController = this.styleController1;
-            this.checkEdit5.TabIndex = 32;
-            // 
-            // checkEdit4
-            // 
-            this.checkEdit4.Location = new System.Drawing.Point(6, 14);
-            this.checkEdit4.Name = "checkEdit4";
-            this.checkEdit4.Properties.Caption = "Видаткові накладні";
-            this.checkEdit4.Size = new System.Drawing.Size(154, 20);
-            this.checkEdit4.StyleController = this.styleController1;
-            this.checkEdit4.TabIndex = 31;
-            // 
-            // InDocGroupBox
-            // 
-            this.InDocGroupBox.Controls.Add(this.checkEdit3);
-            this.InDocGroupBox.Controls.Add(this.checkEdit1);
-            this.InDocGroupBox.Controls.Add(this.checkEdit2);
-            this.InDocGroupBox.Dock = System.Windows.Forms.DockStyle.Left;
-            this.InDocGroupBox.Location = new System.Drawing.Point(2, 21);
-            this.InDocGroupBox.Name = "InDocGroupBox";
-            this.InDocGroupBox.Size = new System.Drawing.Size(204, 99);
-            this.InDocGroupBox.TabIndex = 0;
-            // 
-            // checkEdit3
-            // 
-            this.checkEdit3.Location = new System.Drawing.Point(8, 66);
-            this.checkEdit3.Name = "checkEdit3";
-            this.checkEdit3.Properties.Caption = "Повернення від клієнта";
-            this.checkEdit3.Size = new System.Drawing.Size(184, 20);
-            this.checkEdit3.StyleController = this.styleController1;
-            this.checkEdit3.TabIndex = 32;
-            // 
-            // checkEdit1
-            // 
-            this.checkEdit1.Location = new System.Drawing.Point(8, 40);
-            this.checkEdit1.Name = "checkEdit1";
-            this.checkEdit1.Properties.Caption = "Введення залишків товарів";
-            this.checkEdit1.Size = new System.Drawing.Size(184, 20);
-            this.checkEdit1.StyleController = this.styleController1;
-            this.checkEdit1.TabIndex = 31;
-            // 
-            // checkEdit2
-            // 
-            this.checkEdit2.Location = new System.Drawing.Point(8, 14);
-            this.checkEdit2.Name = "checkEdit2";
-            this.checkEdit2.Properties.Caption = "Прибуткові накладні";
-            this.checkEdit2.Size = new System.Drawing.Size(184, 20);
-            this.checkEdit2.StyleController = this.styleController1;
-            this.checkEdit2.TabIndex = 30;
             // 
             // DocTypeGroupBox
             // 
@@ -989,13 +988,6 @@
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).EndInit();
             this.mainPanel.ResumeLayout(false);
-            this.StatusPanel.ResumeLayout(false);
-            this.StatusPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.wbStatusList.Properties)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DocTypeGroupBox2)).EndInit();
             this.DocTypeGroupBox2.ResumeLayout(false);
             this.OutDocGroupBox.ResumeLayout(false);
@@ -1008,6 +1000,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
+            this.StatusPanel.ResumeLayout(false);
+            this.StatusPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.wbStatusList.Properties)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             this.DocTypeGroupBox.ResumeLayout(false);
             this.DocTypeGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DocTypeEdit.Properties)).EndInit();

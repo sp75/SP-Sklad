@@ -103,9 +103,9 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<TechProcDet> TechProcDet { get; set; }
         public virtual ICollection<WayBillMake> WayBillMake { get; set; }
         public virtual ICollection<WayBillSvc> WayBillSvc { get; set; }
-        public virtual Users Users { get; set; }
         public virtual ICollection<WaybillList> WaybillList { get; set; }
         public virtual ICollection<WaybillList> WaybillList1 { get; set; }
         public virtual ICollection<WaybillList> WaybillList2 { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

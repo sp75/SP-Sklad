@@ -101,6 +101,7 @@
             this.textEdit3 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.AccessPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.DiscountCheckBox = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserBS)).BeginInit();
@@ -139,6 +140,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccessPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DiscountCheckBox.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -851,6 +853,7 @@
             // 
             // xtraTabPage6
             // 
+            this.xtraTabPage6.Controls.Add(this.DiscountCheckBox);
             this.xtraTabPage6.Controls.Add(this.labelControl2);
             this.xtraTabPage6.Controls.Add(this.textEdit3);
             this.xtraTabPage6.Name = "xtraTabPage6";
@@ -859,7 +862,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(25, 22);
+            this.labelControl2.Location = new System.Drawing.Point(19, 64);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(81, 16);
             this.labelControl2.StyleController = this.styleController1;
@@ -869,14 +872,14 @@
             // textEdit3
             // 
             this.textEdit3.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.UserBS, "ReportFormat", true));
-            this.textEdit3.Location = new System.Drawing.Point(25, 44);
+            this.textEdit3.Location = new System.Drawing.Point(19, 86);
             this.textEdit3.Name = "textEdit3";
             this.textEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.textEdit3.Properties.Items.AddRange(new object[] {
             "xlsx",
             "pdf"});
-            this.textEdit3.Size = new System.Drawing.Size(319, 20);
+            this.textEdit3.Size = new System.Drawing.Size(181, 20);
             this.textEdit3.TabIndex = 46;
             // 
             // bindingSource2
@@ -894,6 +897,18 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6)});
             this.AccessPopupMenu.Manager = this.barManager1;
             this.AccessPopupMenu.Name = "AccessPopupMenu";
+            // 
+            // DiscountCheckBox
+            // 
+            this.DiscountCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.UserBS, "InternalEditor", true));
+            this.DiscountCheckBox.Location = new System.Drawing.Point(19, 20);
+            this.DiscountCheckBox.MenuManager = this.barManager1;
+            this.DiscountCheckBox.Name = "DiscountCheckBox";
+            this.DiscountCheckBox.Properties.AutoWidth = true;
+            this.DiscountCheckBox.Properties.Caption = "Внутрішній редактор";
+            this.DiscountCheckBox.Size = new System.Drawing.Size(143, 20);
+            this.DiscountCheckBox.StyleController = this.styleController1;
+            this.DiscountCheckBox.TabIndex = 50;
             // 
             // frmUserEdit
             // 
@@ -954,6 +969,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccessPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DiscountCheckBox.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1032,5 +1048,6 @@
         private DevExpress.XtraEditors.ComboBoxEdit textEdit3;
         private DevExpress.XtraEditors.LookUpEdit UserGroupLookUpEdit;
         private DevExpress.XtraEditors.LabelControl labelControl55;
+        private DevExpress.XtraEditors.CheckEdit DiscountCheckBox;
     }
 }

@@ -94,7 +94,9 @@ namespace SP_Sklad.SkladData
                     ShowPrice = s.ShowPrice,
                     EnableEditDate = s.EnableEditDate,
                     KaId = s.Kagent.Any() ? (int?)s.Kagent.Select(sk => sk.KaId).FirstOrDefault() : (int?)null,
-                    ReportFormat = s.ReportFormat
+                    ReportFormat = s.ReportFormat,
+                    InternalEditor = s.InternalEditor
+
                 }).FirstOrDefault();
             }
             set

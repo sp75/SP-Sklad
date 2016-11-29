@@ -168,5 +168,10 @@ namespace SP_Sklad
         {
             passtextEdit.Focus();
         }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

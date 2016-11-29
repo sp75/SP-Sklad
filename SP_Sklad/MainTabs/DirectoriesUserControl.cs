@@ -631,20 +631,39 @@ namespace SP_Sklad.MainTabs
         private void AddItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var row = MatGridView.GetFocusedRow() as GetMatList_Result;
-            var p_type = (wb.Kontragent != null ? (wb.Kontragent.PTypeId ?? DB.SkladBase().PriceTypes.First(w => w.Def == 1).PTypeId) : DB.SkladBase().PriceTypes.First(w => w.Def == 1).PTypeId);
-            var mat_price = DB.SkladBase().GetListMatPrices(row.MatId, wb.CurrId, p_type).FirstOrDefault();
-
+          
             custom_mat_list.Add(new CustomMatList
             {
                 Num = custom_mat_list.Count() + 1,
                 MatId = row.MatId,
                 Name = row.Name,
                 Amount = 1,
-                Price = mat_price.Price ?? 0,
+                Price =GetPrice(row.MatId, wb),
                 WId = row.WId != null ? row.WId.Value : DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId
             });
 
             MatListGridView.RefreshData();
+        }
+
+        private decimal GetPrice(int mat_id, WaybillList wb)
+        {
+            decimal Price = 0;
+            if (wb.WType == 1)
+            {
+                var get_last_price_result = DB.SkladBase().GetLastPrice(mat_id, wb.KaId, 1, wb.OnDate).FirstOrDefault();
+                if (get_last_price_result != null)
+                {
+                    Price = get_last_price_result.Price ?? 0;
+                }
+            }
+            else if (wb.WType == -1 || wb.WType == -16 || wb.WType == 2)
+            {
+                var p_type = (wb.Kontragent != null ? (wb.Kontragent.PTypeId ?? DB.SkladBase().PriceTypes.First(w => w.Def == 1).PTypeId) : DB.SkladBase().PriceTypes.First(w => w.Def == 1).PTypeId);
+                var mat_price = DB.SkladBase().GetListMatPrices(mat_id, wb.CurrId, p_type).FirstOrDefault();
+                Price = mat_price.Price ?? 0;
+            }
+
+            return Price;
         }
 
         private void DelItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

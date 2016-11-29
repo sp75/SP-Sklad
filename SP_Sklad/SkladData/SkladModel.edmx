@@ -1934,6 +1934,7 @@
           </Key>
           <Property Name="ProcId" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="128" />
+          <Property Name="Kod" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="UserAccess">
           <Key>
@@ -1972,6 +1973,7 @@
           <Property Name="IsOnline" Type="bit" />
           <Property Name="ReportFormat" Type="nvarchar" MaxLength="10" />
           <Property Name="GroupId" Type="uniqueidentifier" />
+          <Property Name="InternalEditor" Type="bit" />
         </EntityType>
         <EntityType Name="UsersGroup">
           <Key>
@@ -5545,6 +5547,34 @@
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="REP_33" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="from_date" Type="datetime" Mode="In" />
+          <Parameter Name="to_date" Type="datetime" Mode="In" />
+          <Parameter Name="grp_id" Type="int" Mode="In" />
+          <Parameter Name="mat_id" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Num" Type="nvarchar" Nullable="false" MaxLength="20" />
+                <Property Name="OnDate" Type="datetime" Nullable="false" />
+                <Property Name="SummAll" Type="numeric" Precision="15" Scale="2" />
+                <Property Name="RecipeName" Type="varchar" MaxLength="255" />
+                <Property Name="MatName" Type="nvarchar" MaxLength="255" />
+                <Property Name="AmountIn" Type="numeric" Nullable="false" Precision="15" Scale="4" />
+                <Property Name="MatId" Type="int" Nullable="false" />
+                <Property Name="MsrName" Type="nvarchar" Nullable="false" MaxLength="6" />
+                <Property Name="MId" Type="int" Nullable="false" />
+                <Property Name="OnDateOut" Type="datetime" />
+                <Property Name="AmountOut" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="WriteOnDate" Type="datetime" />
+                <Property Name="Price" Type="numeric" Precision="38" Scale="17" />
+                <Property Name="HeatTreatmentAmount" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="FormationAmount" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="FinishAmount" Type="numeric" Precision="38" Scale="4" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="REP_4_25" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="from_date" Type="datetime" Mode="In" />
           <Parameter Name="to_date" Type="datetime" Mode="In" />
@@ -7027,32 +7057,7 @@
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="WayBillSvc" EntitySet="WayBillSvc" />
           </AssociationSet>
-          <EntitySet Name="Users" EntityType="BaseModel.Users" />
           <EntitySet Name="UsersGroup" EntityType="BaseModel.UsersGroup" />
-          <AssociationSet Name="FK_Kagent_Users" Association="BaseModel.FK_Kagent_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Kagent" EntitySet="Kagent" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OperLog_Users" Association="BaseModel.FK_OperLog_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="OperLog" EntitySet="OperLog" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PRINTLOG_2" Association="BaseModel.FK_PRINTLOG_2">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="PrintLog" EntitySet="PrintLog" />
-          </AssociationSet>
-          <AssociationSet Name="FK_USERACCESS_1" Association="BaseModel.FK_USERACCESS_1">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="UserAccess" EntitySet="UserAccess" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UAWH_USERID" Association="BaseModel.FK_UAWH_USERID">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="UserAccessWh" EntitySet="UserAccessWh" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Users_UsersGroup" Association="BaseModel.FK_Users_UsersGroup">
-            <End Role="UsersGroup" EntitySet="UsersGroup" />
-            <End Role="Users" EntitySet="Users" />
-          </AssociationSet>
           <EntitySet Name="WaybillDet" EntityType="BaseModel.WaybillDet" />
           <EntitySet Name="WaybillList" EntityType="BaseModel.WaybillList" />
           <AssociationSet Name="FK_COMMISSION_WBILLID" Association="BaseModel.FK_COMMISSION_WBILLID">
@@ -7175,6 +7180,37 @@
             <End Role="WaybillDet" EntitySet="WaybillDet" />
             <End Role="WaybillDet1" EntitySet="WaybillDet" />
           </AssociationSet>
+          <EntitySet Name="Users" EntityType="BaseModel.Users" />
+          <AssociationSet Name="FK_Kagent_Users" Association="BaseModel.FK_Kagent_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Kagent" EntitySet="Kagent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperLog_Users" Association="BaseModel.FK_OperLog_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="OperLog" EntitySet="OperLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRINTLOG_2" Association="BaseModel.FK_PRINTLOG_2">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="PrintLog" EntitySet="PrintLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERACCESS_1" Association="BaseModel.FK_USERACCESS_1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserAccess" EntitySet="UserAccess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UAWH_USERID" Association="BaseModel.FK_UAWH_USERID">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserAccessWh" EntitySet="UserAccessWh" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_UsersGroup" Association="BaseModel.FK_Users_UsersGroup">
+            <End Role="UsersGroup" EntitySet="UsersGroup" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <FunctionImport Name="REP_33" IsComposable="true" ReturnType="Collection(BaseModel.REP_33_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="grp_id" Mode="In" Type="Int32" />
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -8461,6 +8497,7 @@
           <Property Type="String" Name="Name" MaxLength="128" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="MatRecipeTechProcDet" Relationship="BaseModel.FK_MatRecipeTechProcDet_TechProcess" FromRole="TechProcess" ToRole="MatRecipeTechProcDet" />
           <NavigationProperty Name="TechProcDet" Relationship="BaseModel.FK_TECHPROCDET_TECHPROCESS" FromRole="TechProcess" ToRole="TechProcDet" />
+          <Property Type="String" Name="Kod" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="MatRecipe">
           <Key>
@@ -11126,10 +11163,10 @@
           <NavigationProperty Name="TechProcDet" Relationship="BaseModel.FK_TECHPROCDET_KAGENT" FromRole="Kagent" ToRole="TechProcDet" />
           <NavigationProperty Name="WayBillMake" Relationship="BaseModel.FK_WAYBILLMAKE_KAGENT" FromRole="Kagent" ToRole="WayBillMake" />
           <NavigationProperty Name="WayBillSvc" Relationship="BaseModel.FK_WBS_PERSONID" FromRole="Kagent" ToRole="WayBillSvc" />
-          <NavigationProperty Name="Users" Relationship="BaseModel.FK_Kagent_Users" FromRole="Kagent" ToRole="Users" />
           <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK__WAYBILLLI__PERSO__6E01572D" FromRole="Kagent" ToRole="WaybillList" />
           <NavigationProperty Name="WaybillList1" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" FromRole="Kagent" ToRole="WaybillList" />
           <NavigationProperty Name="WaybillList2" Relationship="BaseModel.FK_WBL_ENTID" FromRole="Kagent" ToRole="WaybillList" />
+          <NavigationProperty Name="Users" Relationship="BaseModel.FK_Kagent_Users" FromRole="Kagent" ToRole="Users" />
         </EntityType>
         <EntityType Name="KontragentGroup">
           <Key>
@@ -11481,29 +11518,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Users">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Type="Int32" Name="UserId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Pass" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="FullName" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="SysName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="ShowBalance" />
-          <Property Type="Int32" Name="ShowPrice" />
-          <Property Type="Int32" Name="EnableEditDate" />
-          <Property Type="DateTime" Name="LastLogin" Precision="3" />
-          <Property Type="Boolean" Name="IsOnline" />
-          <Property Type="String" Name="ReportFormat" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Type="Guid" Name="GroupId" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_Kagent_Users" FromRole="Users" ToRole="Kagent" />
-          <NavigationProperty Name="OperLog" Relationship="BaseModel.FK_OperLog_Users" FromRole="Users" ToRole="OperLog" />
-          <NavigationProperty Name="PrintLog" Relationship="BaseModel.FK_PRINTLOG_2" FromRole="Users" ToRole="PrintLog" />
-          <NavigationProperty Name="UserAccess" Relationship="BaseModel.FK_USERACCESS_1" FromRole="Users" ToRole="UserAccess" />
-          <NavigationProperty Name="UserAccessWh" Relationship="BaseModel.FK_UAWH_USERID" FromRole="Users" ToRole="UserAccessWh" />
-          <NavigationProperty Name="UsersGroup" Relationship="BaseModel.FK_Users_UsersGroup" FromRole="Users" ToRole="UsersGroup" />
-        </EntityType>
         <EntityType Name="UsersGroup">
           <Key>
             <PropertyRef Name="Id" />
@@ -11512,84 +11526,6 @@
           <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Users" Relationship="BaseModel.FK_Users_UsersGroup" FromRole="UsersGroup" ToRole="Users" />
         </EntityType>
-        <Association Name="FK_Kagent_Users">
-          <End Type="BaseModel.Users" Role="Users" Multiplicity="0..1" />
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Kagent">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_OperLog_Users">
-          <End Type="BaseModel.Users" Role="Users" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.OperLog" Role="OperLog" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="OperLog">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PRINTLOG_2">
-          <End Type="BaseModel.Users" Role="Users" Multiplicity="0..1" />
-          <End Type="BaseModel.PrintLog" Role="PrintLog" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="PrintLog">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_USERACCESS_1">
-          <End Type="BaseModel.Users" Role="Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.UserAccess" Role="UserAccess" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="UserAccess">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UAWH_USERID">
-          <End Type="BaseModel.Users" Role="Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.UserAccessWh" Role="UserAccessWh" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="UserAccessWh">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Users_UsersGroup">
-          <End Type="BaseModel.UsersGroup" Role="UsersGroup" Multiplicity="0..1" />
-          <End Type="BaseModel.Users" Role="Users" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UsersGroup">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="GroupId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="WaybillDet">
           <Key>
             <PropertyRef Name="PosId" />
@@ -12056,6 +11992,126 @@
           <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="0..1" />
           <End Type="BaseModel.WaybillDet" Role="WaybillDet1" Multiplicity="*" />
         </Association>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Type="Int32" Name="UserId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Pass" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FullName" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SysName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ShowBalance" />
+          <Property Type="Int32" Name="ShowPrice" />
+          <Property Type="Int32" Name="EnableEditDate" />
+          <Property Type="DateTime" Name="LastLogin" Precision="3" />
+          <Property Type="Boolean" Name="IsOnline" />
+          <Property Type="String" Name="ReportFormat" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="GroupId" />
+          <Property Type="Boolean" Name="InternalEditor" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_Kagent_Users" FromRole="Users" ToRole="Kagent" />
+          <NavigationProperty Name="OperLog" Relationship="BaseModel.FK_OperLog_Users" FromRole="Users" ToRole="OperLog" />
+          <NavigationProperty Name="PrintLog" Relationship="BaseModel.FK_PRINTLOG_2" FromRole="Users" ToRole="PrintLog" />
+          <NavigationProperty Name="UserAccess" Relationship="BaseModel.FK_USERACCESS_1" FromRole="Users" ToRole="UserAccess" />
+          <NavigationProperty Name="UserAccessWh" Relationship="BaseModel.FK_UAWH_USERID" FromRole="Users" ToRole="UserAccessWh" />
+          <NavigationProperty Name="UsersGroup" Relationship="BaseModel.FK_Users_UsersGroup" FromRole="Users" ToRole="UsersGroup" />
+        </EntityType>
+        <Association Name="FK_Kagent_Users">
+          <End Type="BaseModel.Users" Role="Users" Multiplicity="0..1" />
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Kagent">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperLog_Users">
+          <End Type="BaseModel.Users" Role="Users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.OperLog" Role="OperLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="OperLog">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRINTLOG_2">
+          <End Type="BaseModel.Users" Role="Users" Multiplicity="0..1" />
+          <End Type="BaseModel.PrintLog" Role="PrintLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="PrintLog">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERACCESS_1">
+          <End Type="BaseModel.Users" Role="Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.UserAccess" Role="UserAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserAccess">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UAWH_USERID">
+          <End Type="BaseModel.Users" Role="Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.UserAccessWh" Role="UserAccessWh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserAccessWh">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_UsersGroup">
+          <End Type="BaseModel.UsersGroup" Role="UsersGroup" Multiplicity="0..1" />
+          <End Type="BaseModel.Users" Role="Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsersGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="REP_33_Result">
+          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="SummAll" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="String" Name="RecipeName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="AmountIn" Nullable="false" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="Int32" Name="MId" Nullable="false" />
+          <Property Type="DateTime" Name="OnDateOut" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="DateTime" Name="WriteOnDate" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="38" Scale="17" />
+          <Property Type="Decimal" Name="HeatTreatmentAmount" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="FormationAmount" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="FinishAmount" Nullable="true" Precision="38" Scale="4" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -13108,6 +13164,7 @@
           <EntitySetMapping Name="TechProcess">
             <EntityTypeMapping TypeName="BaseModel.TechProcess">
               <MappingFragment StoreEntitySet="TechProcess">
+                <ScalarProperty Name="Kod" ColumnName="Kod" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ProcId" ColumnName="ProcId" />
               </MappingFragment>
@@ -15128,24 +15185,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="BaseModel.Users">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
-                <ScalarProperty Name="ReportFormat" ColumnName="ReportFormat" />
-                <ScalarProperty Name="IsOnline" ColumnName="IsOnline" />
-                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
-                <ScalarProperty Name="EnableEditDate" ColumnName="EnableEditDate" />
-                <ScalarProperty Name="ShowPrice" ColumnName="ShowPrice" />
-                <ScalarProperty Name="ShowBalance" ColumnName="ShowBalance" />
-                <ScalarProperty Name="SysName" ColumnName="SysName" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Pass" ColumnName="Pass" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="UsersGroup">
             <EntityTypeMapping TypeName="BaseModel.UsersGroup">
               <MappingFragment StoreEntitySet="UsersGroup">
@@ -15223,6 +15262,47 @@
             </EndProperty>
             <Condition ColumnName="CPosId" IsNull="false" />
           </AssociationSetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="BaseModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="InternalEditor" ColumnName="InternalEditor" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="ReportFormat" ColumnName="ReportFormat" />
+                <ScalarProperty Name="IsOnline" ColumnName="IsOnline" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+                <ScalarProperty Name="EnableEditDate" ColumnName="EnableEditDate" />
+                <ScalarProperty Name="ShowPrice" ColumnName="ShowPrice" />
+                <ScalarProperty Name="ShowBalance" ColumnName="ShowBalance" />
+                <ScalarProperty Name="SysName" ColumnName="SysName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="REP_33" FunctionName="BaseModel.Store.REP_33">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.REP_33_Result">
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="AmountIn" ColumnName="AmountIn" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="MId" ColumnName="MId" />
+                <ScalarProperty Name="OnDateOut" ColumnName="OnDateOut" />
+                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
+                <ScalarProperty Name="WriteOnDate" ColumnName="WriteOnDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="HeatTreatmentAmount" ColumnName="HeatTreatmentAmount" />
+                <ScalarProperty Name="FormationAmount" ColumnName="FormationAmount" />
+                <ScalarProperty Name="FinishAmount" ColumnName="FinishAmount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

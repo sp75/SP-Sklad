@@ -915,6 +915,23 @@ namespace SP_Sklad.Reports
                 IHelper.Print(data_for_report, TemlateList.rep_32);
             }
 
+            if (idx == 33)
+            {
+                int grp = Convert.ToInt32(MatGroup.GrpId);
+                int mat_id = (int)this.Material.MatId;
+                var make = db.REP_33(StartDate, EndDate, grp, mat_id).ToList();
+
+                if (!make.Any())
+                {
+                    return;
+                }
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("MatList", make.ToList());
+
+                IHelper.Print(data_for_report, TemlateList.rep_33);
+            }
+
             db.PrintLog.Add(new PrintLog
             {
                 PrintType = 1,

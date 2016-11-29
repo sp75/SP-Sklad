@@ -213,14 +213,7 @@
         <AssociationConnector Association="BaseModel.FK_TECHPROCDET_KAGENT" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLMAKE_KAGENT" />
         <AssociationConnector Association="BaseModel.FK_WBS_PERSONID" />
-        <EntityTypeShape EntityType="BaseModel.Users" Width="1.5" PointX="3.8974219150363565" PointY="21.850155050796531" />
         <EntityTypeShape EntityType="BaseModel.UsersGroup" Width="1.5" PointX="1.956727222519334" PointY="4.2275907118933231" />
-        <AssociationConnector Association="BaseModel.FK_Kagent_Users" />
-        <AssociationConnector Association="BaseModel.FK_OperLog_Users" />
-        <AssociationConnector Association="BaseModel.FK_PRINTLOG_2" />
-        <AssociationConnector Association="BaseModel.FK_USERACCESS_1" />
-        <AssociationConnector Association="BaseModel.FK_UAWH_USERID" />
-        <AssociationConnector Association="BaseModel.FK_Users_UsersGroup" />
         <EntityTypeShape EntityType="BaseModel.WaybillDet" Width="1.5" PointX="10.061178657254754" PointY="11.387986903725185" />
         <EntityTypeShape EntityType="BaseModel.WaybillList" Width="1.5" PointX="8.9277246803640047" PointY="25.508288663583009" />
         <AssociationConnector Association="BaseModel.FK_COMMISSION_WBILLID" />
@@ -253,6 +246,13 @@
         <AssociationConnector Association="BaseModel.FK_WBM_WBILLID" />
         <AssociationConnector Association="BaseModel.FK_WBS_WBILLID" />
         <AssociationConnector Association="BaseModel.PosRel" />
+        <EntityTypeShape EntityType="BaseModel.Users" Width="1.5" PointX="6.5921797857583408" PointY="20.816479707516955" />
+        <AssociationConnector Association="BaseModel.FK_Kagent_Users" />
+        <AssociationConnector Association="BaseModel.FK_OperLog_Users" />
+        <AssociationConnector Association="BaseModel.FK_PRINTLOG_2" />
+        <AssociationConnector Association="BaseModel.FK_USERACCESS_1" />
+        <AssociationConnector Association="BaseModel.FK_UAWH_USERID" />
+        <AssociationConnector Association="BaseModel.FK_Users_UsersGroup" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="7.0245045325832924" PointY="12.641712000892364" />

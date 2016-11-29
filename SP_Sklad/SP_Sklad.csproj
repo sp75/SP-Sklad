@@ -385,6 +385,9 @@
     <Compile Include="SkladData\REP_32_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\REP_33_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\Routes.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>

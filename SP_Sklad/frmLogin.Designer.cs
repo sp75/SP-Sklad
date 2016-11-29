@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.label1 = new System.Windows.Forms.Label();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.passtextEdit = new DevExpress.XtraEditors.TextEdit();
@@ -39,6 +39,7 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.UserIDEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
@@ -50,12 +51,24 @@
             // 
             // panelControl2
             // 
+            this.panelControl2.Controls.Add(this.simpleButton1);
             this.panelControl2.Controls.Add(this.OkButton);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl2.Location = new System.Drawing.Point(0, 157);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(405, 53);
+            this.panelControl2.Size = new System.Drawing.Size(484, 53);
             this.panelControl2.TabIndex = 29;
+            // 
+            // OkButton
+            // 
+            this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.OkButton.Location = new System.Drawing.Point(374, 11);
+            this.OkButton.Name = "OkButton";
+            this.OkButton.Size = new System.Drawing.Size(98, 30);
+            this.OkButton.TabIndex = 3;
+            this.OkButton.Text = "Так";
+            this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
             // label1
             // 
@@ -67,17 +80,6 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "The username or password you entered is incorrect.";
             this.label1.Visible = false;
-            // 
-            // OkButton
-            // 
-            this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OkButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.OkButton.Location = new System.Drawing.Point(295, 11);
-            this.OkButton.Name = "OkButton";
-            this.OkButton.Size = new System.Drawing.Size(98, 30);
-            this.OkButton.TabIndex = 3;
-            this.OkButton.Text = "Так";
-            this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
             // styleController1
             // 
@@ -94,7 +96,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(405, 157);
+            this.panelControl1.Size = new System.Drawing.Size(484, 157);
             this.panelControl1.TabIndex = 30;
             // 
             // passtextEdit
@@ -152,14 +154,25 @@
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Visual Studio 2013 Light";
             // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.simpleButton1.Location = new System.Drawing.Point(270, 11);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(98, 30);
+            this.simpleButton1.TabIndex = 4;
+            this.simpleButton1.Text = "Ні";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(405, 210);
+            this.ClientSize = new System.Drawing.Size(484, 210);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.panelControl2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " Авторизація користувача ";
@@ -189,5 +202,6 @@
         private System.Windows.Forms.Label label1;
         private DevExpress.XtraEditors.LookUpEdit UserIDEdit;
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }

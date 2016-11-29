@@ -50,5 +50,6 @@ namespace SP_Sklad.Reports
         public static String rep_31 { get { return "RepOrdMat.xlsx"; } }
         public static String rep_30 { get { return "Shahmatka.xlsx"; } }
         public static String rep_32 { get { return "RouteList.xlsx"; } }
+        public static String rep_33 { get { return "AnalizPlan_fact.xlsx"; } }
     }
 }

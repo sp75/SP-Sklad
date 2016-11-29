@@ -35,6 +35,7 @@ namespace SP_Sklad.SkladData
         public Nullable<bool> IsOnline { get; set; }
         public string ReportFormat { get; set; }
         public Nullable<System.Guid> GroupId { get; set; }
+        public Nullable<bool> InternalEditor { get; set; }
     
         public virtual ICollection<Kagent> Kagent { get; set; }
         public virtual ICollection<OperLog> OperLog { get; set; }

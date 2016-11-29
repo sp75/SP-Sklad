@@ -123,6 +123,12 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>102</value>
   </metadata>
+  <metadata name="UserBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>416, 17</value>
+  </metadata>
+  <metadata name="styleController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>279, 17</value>
+  </metadata>
   <metadata name="ImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>983, 17</value>
   </metadata>
@@ -131,7 +137,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAe
-        FgAAAk1TRnQBSQFMAgEBDAEAARgBCgEYAQoBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        FgAAAk1TRnQBSQFMAgEBDAEAATgBCgE4AQoBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABQAMAAQEBAAEYBgABMP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AM8AA+0D/E4AAVoBlAFCAVoBlAFC
         YAABxgLFAaoCpgGPAXwBeQGdAZkBlwG8AboBuUgAAWMBrQFKAUIB3gEIAUIBzgEIAVoBlAFCWgABwwLC
         AZwBjQGJAcwBsQGsAb8BpAGgAcUBqgGkAZwBiQGFAcQCwgP+QgABYwGtAkoB9wEIAUIB3gEIAVoBlAFC
@@ -228,27 +234,6 @@
         ASQBBwH+AT8E/wEIAQcG/wEAAQcG/wGDB/8L
 </value>
   </data>
-  <metadata name="styleController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>279, 17</value>
-  </metadata>
-  <metadata name="UserBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>416, 17</value>
-  </metadata>
-  <metadata name="TreeListBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>661, 17</value>
-  </metadata>
-  <metadata name="TreeListBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>661, 17</value>
-  </metadata>
-  <metadata name="UserTreeAccessBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>833, 17</value>
-  </metadata>
-  <metadata name="UserTreeImgList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1087, 17</value>
-  </metadata>
-  <metadata name="ImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>983, 17</value>
-  </metadata>
   <metadata name="UserTreeAccessBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>833, 17</value>
   </metadata>
@@ -260,7 +245,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACu
-        2AAAAk1TRnQBSQFMAgEBNgEAAZgBCAGYAQgBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        2AAAAk1TRnQBSQFMAgEBNgEAAbgBCAG4AQgBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwAB4AMAAQEBAAEYBgABqBUAAa0BUgEpAa0BUgEYAa0BUgEpPAAD7nUAAa0BUgEpAd4ChAHeAoQB3gKE
         Aa0BUgEpNgAD7gF+AVABjwPucgABtQFjAUIBWgGtAUoBWgG9AWMBWgGtAUoBtQFjAUIzAAPuAX4BUAGP
         AX4BUAGPAX4BUAGPA+5yAAEIAZwBCAFjAf8BlAEIAaUBEBUAAa0BUgEpAa0BUgEYAa0BUgEpGAABfgFQ
@@ -1187,6 +1172,9 @@
         AeABBwEDAf8B4AEfAe0B/wHwAQ8C/wH4AX8C/wH8AT8E/ws=
 </value>
   </data>
+  <metadata name="TreeListBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>661, 17</value>
+  </metadata>
   <metadata name="bindingSource2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

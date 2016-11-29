@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraBars;
 using SP_Sklad.Common;
+using SP_Sklad.Properties;
 using SP_Sklad.SkladData;
 using EntityState = System.Data.Entity.EntityState;
 
@@ -35,10 +37,20 @@ namespace SP_Sklad.WBDetForm
             MatComboBox.Properties.DataSource = db.MaterialsList.ToList();
             PriceTypesEdit.Properties.DataSource = DB.SkladBase().PriceTypes.ToList();
             ProducerTextEdit.Properties.Items.AddRange(_db.WayBillDetAddProps.Where(w => w.Producer != null).Select(s => s.Producer).Distinct().ToList());
+
+            panel3.Visible = barCheckItem1.Checked;
+            if (!barCheckItem1.Checked) Height -= panel3.Height;
+
+            panel4.Visible = barCheckItem2.Checked;
+            if (!barCheckItem2.Checked) Height -= panel4.Height;
+
+            panel5.Visible = barCheckItem3.Checked;
+            if (!barCheckItem3.Checked) Height -= panel5.Height;
         }
 
         private void frmWayBillDetOut_Load(object sender, EventArgs e)
         {
+            
             if (_PosId == null)
             {
                 _wbd = new WaybillDet()
@@ -385,6 +397,8 @@ namespace SP_Sklad.WBDetForm
             {
                 _db.Entry<WaybillDet>(_wbd).Reload();
             }
+
+            Settings.Default.Save();
         }
 
         private void PosInfoBtn_Click(object sender, EventArgs e)
@@ -464,6 +478,36 @@ namespace SP_Sklad.WBDetForm
         private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             IHelper.ShowOrdered(_wb.KaId.Value, -16, _wbd.MatId);
+        }
+
+        private void barCheckItem1_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var item = e.Item as BarCheckItem;
+
+            bool ch = item.Checked;
+            int ItemIndex = Convert.ToInt32(e.Item.Tag);
+            if (ItemIndex == 0)
+            {
+                panel3.Visible = ch;
+                if (ch) Height += panel3.Height;
+                else Height -= panel3.Height;
+                Settings.Default.wb_out_discount = ch;
+            }
+            if (ItemIndex == 1)
+            {
+                panel4.Visible = ch;
+                if (ch) Height += panel4.Height;
+                else Height -= panel4.Height;
+                Settings.Default.wb_out_certificat = ch;
+            }
+
+            if (ItemIndex == 2)
+            {
+                panel5.Visible = ch;
+                if (ch) Height += panel5.Height;
+                else Height -= panel5.Height;
+                Settings.Default.wb_out_result = ch;
+            }
         }
 
     }
