@@ -21,7 +21,26 @@ namespace SP_Sklad
         {
             InitializeComponent();
 
-            UserIDEdit.Properties.DataSource = new BaseEntities().Users.Select(s => new { s.UserId, s.Name, s.Pass }).ToList();
+            try
+            {
+                UserIDEdit.Properties.DataSource = new BaseEntities().Users.Select(s => new
+                {
+                    s.UserId,
+                    s.Name,
+                    s.Pass
+                }).ToList();
+            }
+            catch
+            {
+                MessageBox.Show("Не вдалось підключитись до сервера, зверніться до Админістратора");
+            }
+
+            var ver = new BaseEntities().CommonParams.FirstOrDefault().Ver;
+            if (ver != Application.ProductVersion)
+            {
+                label1.Visible = true;
+                label1.Text = "З'явилася нова версія , загрузіть оновлення!";
+            }
 
         /*    var intetf  =  GetMacAddress();
             var mac_address = Regex.Replace(intetf.GetPhysicalAddress().ToString(), "[^0-9 ]", "") ;

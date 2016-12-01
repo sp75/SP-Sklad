@@ -11,6 +11,8 @@ using SP_Sklad.SkladData;
 using System.Data.Entity;
 using SP_Sklad.Common;
 using SP_Sklad.WBForm;
+using System.IO;
+using System.Diagnostics;
 
 namespace SP_Sklad
 {
@@ -208,6 +210,29 @@ namespace SP_Sklad
                     break;
             }
  
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var ver = new BaseEntities().CommonParams.FirstOrDefault().Ver;
+            if (ver != Application.ProductVersion)
+            {
+                var update = Path.Combine(Application.StartupPath, "update.exe");
+                if (File.Exists(update))
+                {
+                    Application.Exit();
+                    Process.Start(update);
+                }
+            }
+            else
+            {
+                MessageBox.Show("У Вас остання версія");
+            }
+        }
+
+        private void barButtonItem10_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Application.Restart();
         }
 
     }
