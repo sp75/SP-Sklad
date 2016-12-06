@@ -775,6 +775,8 @@
             this.WaybillDetOutGridView.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Black;
             this.WaybillDetOutGridView.Appearance.FocusedRow.Options.UseBackColor = true;
             this.WaybillDetOutGridView.Appearance.FocusedRow.Options.UseForeColor = true;
+            this.WaybillDetOutGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.WaybillDetOutGridView.Appearance.Row.Options.UseFont = true;
             this.WaybillDetOutGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn12,
             this.gridColumn1,

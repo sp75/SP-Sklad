@@ -331,6 +331,7 @@
             this.UserTreeImgList.Images.SetKeyName(51, "korganizer.png");
             this.UserTreeImgList.Images.SetKeyName(52, "_нформац_я про рух товар_в.bmp");
             this.UserTreeImgList.Images.SetKeyName(53, "пратнерка.png");
+            this.UserTreeImgList.Images.SetKeyName(54, "map_pin-next-16.png");
             // 
             // UsersDS
             // 

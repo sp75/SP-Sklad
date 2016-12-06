@@ -12,7 +12,6 @@ namespace SP_Sklad.SkladData
     public static class DBHelper
     {
         private static List<PersonList> _persons;
-        private static List<PersonList> _company;
         private static List<PayType> _pay_type;
         private static List<CashDesks> _cash_desks;
         private static List<ChargeType> _charge_type;
@@ -122,7 +121,7 @@ namespace SP_Sklad.SkladData
             {
                 if (_persons == null)
                 {
-                    _persons = new BaseEntities().Kagent.Where(w => w.KType == 2).Select(s => new PersonList() { KaId = s.KaId, Name = s.Name }).ToList();
+                    _persons = new BaseEntities().Kagent.Where(w => w.KType == 2 && w.Deleted == 0 && (w.Archived == null || w.Archived == 0)).Select(s => new PersonList() { KaId = s.KaId, Name = s.Name }).ToList();
                 }
                 return _persons;
             }
@@ -135,7 +134,7 @@ namespace SP_Sklad.SkladData
             {
                 if (_enterprise_list == null)
                 {
-                    _enterprise_list = new BaseEntities().Kagent.Where(w => w.KType == 3).Select(s => new Enterprise { KaId = s.KaId, Name = s.Name, NdsPayer = s.NdsPayer }).ToList();
+                    _enterprise_list = new BaseEntities().Kagent.Where(w => w.KType == 3 && w.Deleted == 0 && (w.Archived == null || w.Archived == 0)).Select(s => new Enterprise { KaId = s.KaId, Name = s.Name, NdsPayer = s.NdsPayer }).ToList();
                 }
                 return _enterprise_list;
             }
@@ -158,17 +157,6 @@ namespace SP_Sklad.SkladData
             }
         }
 
-        public static List<PersonList> Company
-        {
-            get
-            {
-                if (_company != null)
-                {
-                    _company = new BaseEntities().Kagent.Where(w => w.KType == 3).Select(s => new PersonList() { KaId = s.KaId, Name = s.Name }).ToList();
-                }
-                return _company;
-            }
-        }
         public static List<PayType> PayTypes
         {
             get

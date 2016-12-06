@@ -674,7 +674,7 @@ namespace SP_Sklad.Common
         public static DateTime FirstDayOfMonth(this DateTime value)
         {
             return new DateTime(value.Year, value.Month, 1);
-        }
+        } 
 
         public static int DaysInMonth(this DateTime value)
         {

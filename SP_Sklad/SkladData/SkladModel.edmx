@@ -6496,14 +6496,6 @@
             <End Role="Languages" EntitySet="Languages" />
             <End Role="ViewLng" EntitySet="ViewLng" />
           </AssociationSet>
-          <FunctionImport Name="REP_1" ReturnType="Collection(BaseModel.REP_1_Result)">
-            <Parameter Name="from_date" Mode="In" Type="DateTime" />
-            <Parameter Name="to_date" Mode="In" Type="DateTime" />
-            <Parameter Name="grp_id" Mode="In" Type="Int32" />
-            <Parameter Name="ka_id" Mode="In" Type="Int32" />
-            <Parameter Name="wh" Mode="In" Type="String" />
-            <Parameter Name="doc_types" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="GetShippedPosIn" ReturnType="Collection(BaseModel.GetShippedPosIn_Result)">
           <Parameter Name="pos_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -7210,6 +7202,14 @@
             <Parameter Name="to_date" Mode="In" Type="DateTime" />
             <Parameter Name="grp_id" Mode="In" Type="Int32" />
             <Parameter Name="mat_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="REP_1" ReturnType="Collection(BaseModel.REP_1_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="grp_id" Mode="In" Type="Int32" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="wh" Mode="In" Type="String" />
+            <Parameter Name="doc_types" Mode="In" Type="String" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
@@ -9178,17 +9178,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="REP_1_Result">
-          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
-          <Property Type="Int32" Name="GrpId" Nullable="true" />
-          <Property Type="Int32" Name="MatId" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
-          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="38" Scale="8" />
-          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
-          <Property Type="Decimal" Name="Summ" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="Decimal" Name="SumPrice" Nullable="true" Precision="38" Scale="8" />
-        </ComplexType>
         <ComplexType Name="GetShippedPosIn_Result">
           <Property Type="Int32" Name="PosId" Nullable="false" />
           <Property Type="Int32" Name="WId" Nullable="false" />
@@ -12112,6 +12101,18 @@
           <Property Type="Decimal" Name="FormationAmount" Nullable="true" Precision="38" Scale="4" />
           <Property Type="Decimal" Name="FinishAmount" Nullable="true" Precision="38" Scale="4" />
         </ComplexType>
+        <ComplexType Name="REP_1_Result">
+          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="GrpId" Nullable="true" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="38" Scale="8" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="Decimal" Name="Summ" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="SumPrice" Nullable="true" Precision="38" Scale="8" />
+          <Property Type="String" Name="GrpName" Nullable="false" MaxLength="64" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -13561,21 +13562,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="REP_1" FunctionName="BaseModel.Store.REP_1">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.REP_1_Result">
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
-                <ScalarProperty Name="Summ" ColumnName="Summ" />
-                <ScalarProperty Name="SumPrice" ColumnName="SumPrice" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetShippedPosIn" FunctionName="BaseModel.Store.GetShippedPosIn">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.GetShippedPosIn_Result">
@@ -15300,6 +15286,22 @@
                 <ScalarProperty Name="HeatTreatmentAmount" ColumnName="HeatTreatmentAmount" />
                 <ScalarProperty Name="FormationAmount" ColumnName="FormationAmount" />
                 <ScalarProperty Name="FinishAmount" ColumnName="FinishAmount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="REP_1" FunctionName="BaseModel.Store.REP_1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.REP_1_Result">
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="Summ" ColumnName="Summ" />
+                <ScalarProperty Name="SumPrice" ColumnName="SumPrice" />
+                <ScalarProperty Name="GrpName" ColumnName="GrpName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

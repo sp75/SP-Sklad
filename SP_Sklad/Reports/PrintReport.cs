@@ -72,7 +72,12 @@ namespace SP_Sklad.Reports
                     return;
                 }
 
-                var mat_grp = db.MatGroup.Where(w => w.Deleted == 0 && (w.GrpId == grp || grp == 0)).Select(s => new { s.GrpId, s.Name }).ToList();
+                var mat_grp = mat.GroupBy(g => new { g.GrpName, g.GrpId }).Select(s => new
+                {
+                    s.Key.GrpId,
+                    Name = s.Key.GrpName,
+                    Summ = s.Sum(xs => xs.SumPrice)
+                }).OrderBy(o => o.Name).ToList();
 
                 rel.Add(new
                 {
@@ -83,7 +88,7 @@ namespace SP_Sklad.Reports
                 });
 
                 data_for_report.Add("XLRPARAMS", XLRPARAMS);
-                data_for_report.Add("MatGroup", mat_grp.Where(w => mat.Select(s => s.GrpId).Contains(w.GrpId)).ToList());
+                data_for_report.Add("MatGroup", mat_grp);
                 data_for_report.Add("MatInDet", mat);
                 data_for_report.Add("_realation_", rel);
 

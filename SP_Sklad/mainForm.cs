@@ -70,10 +70,19 @@ namespace SP_Sklad
 
         private void mainForm_Shown(object sender, EventArgs e)
         {
-            if (barEditItem3.EditValue == null || barEditItem3.EditValue == DBNull.Value)
+            var enterprise = new BaseEntities().Kagent.Where(w => w.KType == 3).Select(s => new { s.KaId }).FirstOrDefault();
+            if ((barEditItem3.EditValue == null || barEditItem3.EditValue == DBNull.Value))
             {
-                enterprise_id = DBHelper.Enterprise.KaId;
-                barEditItem3.EditValue = DBHelper.Enterprise.KaId;
+                if (enterprise != null)
+                {
+                    enterprise_id = enterprise.KaId;
+                    barEditItem3.EditValue = enterprise.KaId;
+                }
+            }
+            else if ((int)barEditItem3.EditValue == 0 && enterprise != null)
+            {
+                enterprise_id = enterprise.KaId;
+                barEditItem3.EditValue = enterprise.KaId;
             }
             else
             {

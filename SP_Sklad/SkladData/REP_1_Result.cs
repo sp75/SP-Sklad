@@ -22,5 +22,6 @@ namespace SP_Sklad.SkladData
         public string MsrName { get; set; }
         public Nullable<decimal> Summ { get; set; }
         public Nullable<decimal> SumPrice { get; set; }
+        public string GrpName { get; set; }
     }
 }

@@ -42,7 +42,7 @@ namespace SP_Sklad
                 label1.Text = "З'явилася нова версія , загрузіть оновлення!";
             }
 
-        /*    var intetf  =  GetMacAddress();
+            var intetf  =  GetMacAddress();
             var mac_address = Regex.Replace(intetf.GetPhysicalAddress().ToString(), "[^0-9 ]", "") ;
             var ip = intetf.GetIPProperties().UnicastAddresses.Where(w => w.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
             var ip_address = ip.Any() ? ip.FirstOrDefault().Address.ToString() : "";
@@ -73,7 +73,7 @@ namespace SP_Sklad
                     label1.Visible = true;
                 }
                 db.SaveChanges();
-            }*/
+            }
 
         }
        
