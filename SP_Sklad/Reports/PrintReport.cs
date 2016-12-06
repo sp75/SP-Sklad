@@ -282,7 +282,12 @@ namespace SP_Sklad.Reports
                 {
                     s.Name,
                     Saldo = db.KAgentSaldo.Where(ks => ks.KAId == s.KaId && ks.OnDate <= OnDate).OrderByDescending(o => o.OnDate).Select(kss => kss.Saldo).Take(1).FirstOrDefault()
-                }).ToList().Where(w => w.Saldo > 0);
+                }).ToList().Where(w => w.Saldo > 0).Select((s, index) => new
+                {
+                    N = index + 1,
+                    s.Name,
+                    s.Saldo
+                });
 
                 if (!kagents.Any())
                 {
@@ -301,7 +306,12 @@ namespace SP_Sklad.Reports
                 {
                     s.Name,
                     Saldo = db.KAgentSaldo.Where(ks => ks.KAId == s.KaId && ks.OnDate <= OnDate).OrderByDescending(o => o.OnDate).Select(kss => kss.Saldo).Take(1).FirstOrDefault()
-                }).ToList().Where(w => w.Saldo < 0);
+                }).ToList().Where(w => w.Saldo < 0).Select((s, index) => new
+                {
+                    N = index + 1,
+                    s.Name,
+                    s.Saldo
+                }); ;
 
                 if (!kagents.Any())
                 {
@@ -750,6 +760,7 @@ namespace SP_Sklad.Reports
 
             if (idx == 17)
             {
+                decimal? total = 0;
                 data_for_report.Add("XLRPARAMS", XLRPARAMS);
 
                 var mat = db.REP_13(StartDate, EndDate, 0, 0, "*", 0).ToList();
@@ -768,6 +779,7 @@ namespace SP_Sklad.Reports
                 });
                 data_for_report.Add("MatGroup", mat_grp);
                 data_for_report.Add("MatList", mat);
+                total += mat_grp.Sum(s => s.Income);
 
 
                 var mat2 = db.REP_13(StartDate, EndDate, 0, 0, "*", 1).ToList();
@@ -786,6 +798,7 @@ namespace SP_Sklad.Reports
                 });
                 data_for_report.Add("MatGroup2", mat_grp2);
                 data_for_report.Add("MatSelPr", mat2);
+                total -= mat_grp2.Sum(s => s.Income);
 
 
                 var svc = db.REP_20(StartDate, EndDate, 0, 0).ToList();
@@ -804,9 +817,11 @@ namespace SP_Sklad.Reports
                 });
                 data_for_report.Add("SvcGroup", svc_grp.Where(w => svc.Select(s => s.GrpId).Contains(w.GrpId)).ToList());
                 data_for_report.Add("SvcOutDet", svc);
+                total += svc_grp.Sum(s => s.Total);
 
                 var paydoc = db.REP_16(StartDate, EndDate, 0, 0, 1).ToList();
                 data_for_report.Add("DocList", paydoc);
+                total -= paydoc.Sum(s => s.Total);
 
 
                 var mat3 = db.REP_17(StartDate, EndDate, 0, 0).ToList();
@@ -825,8 +840,17 @@ namespace SP_Sklad.Reports
                 });
                 data_for_report.Add("MatGroup3", mat_grp3);
                 data_for_report.Add("WBWriteOff", mat3);
+                total -= mat_grp3.Sum(s => s.Summ);
 
                 data_for_report.Add("_realation_", rel);
+
+
+                var obj = new List<object>();
+                obj.Add(new
+                {
+                    Total = total  //=K12-K22+K32-K39-K49
+                });
+                data_for_report.Add("Summary", obj);
 
                 IHelper.Print(data_for_report, TemlateList.rep_17);
             }
