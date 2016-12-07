@@ -56,14 +56,14 @@
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl4.Location = new System.Drawing.Point(0, 415);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(1182, 52);
+            this.panelControl4.Size = new System.Drawing.Size(959, 52);
             this.panelControl4.TabIndex = 12;
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(1087, 10);
+            this.OkButton.Location = new System.Drawing.Point(864, 10);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(83, 30);
             this.OkButton.TabIndex = 1;
@@ -78,7 +78,7 @@
             this.OprLogGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1,
             this.repositoryItemMemoEdit1});
-            this.OprLogGridControl.Size = new System.Drawing.Size(1182, 415);
+            this.OprLogGridControl.Size = new System.Drawing.Size(959, 415);
             this.OprLogGridControl.TabIndex = 13;
             this.OprLogGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.OprLogGridView});
@@ -109,7 +109,7 @@
             this.gridColumn42.Name = "gridColumn42";
             this.gridColumn42.Visible = true;
             this.gridColumn42.VisibleIndex = 0;
-            this.gridColumn42.Width = 52;
+            this.gridColumn42.Width = 40;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -146,7 +146,7 @@
             this.gridColumn43.Name = "gridColumn43";
             this.gridColumn43.Visible = true;
             this.gridColumn43.VisibleIndex = 2;
-            this.gridColumn43.Width = 141;
+            this.gridColumn43.Width = 149;
             // 
             // gridColumn44
             // 
@@ -156,7 +156,7 @@
             this.gridColumn44.Name = "gridColumn44";
             this.gridColumn44.Visible = true;
             this.gridColumn44.VisibleIndex = 3;
-            this.gridColumn44.Width = 311;
+            this.gridColumn44.Width = 281;
             // 
             // repositoryItemMemoEdit1
             // 
@@ -170,7 +170,7 @@
             this.gridColumn45.Name = "gridColumn45";
             this.gridColumn45.Visible = true;
             this.gridColumn45.VisibleIndex = 4;
-            this.gridColumn45.Width = 359;
+            this.gridColumn45.Width = 323;
             // 
             // gridColumn46
             // 
@@ -179,13 +179,13 @@
             this.gridColumn46.Name = "gridColumn46";
             this.gridColumn46.Visible = true;
             this.gridColumn46.VisibleIndex = 1;
-            this.gridColumn46.Width = 328;
+            this.gridColumn46.Width = 148;
             // 
             // frmLogHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1182, 467);
+            this.ClientSize = new System.Drawing.Size(959, 467);
             this.Controls.Add(this.OprLogGridControl);
             this.Controls.Add(this.panelControl4);
             this.Name = "frmLogHistory";

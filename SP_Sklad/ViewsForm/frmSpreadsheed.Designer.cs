@@ -1233,7 +1233,7 @@
             this.spreadsheetCommandBarCheckItem40,
             this.galleryPivotStylesItem1});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 321;
+            this.ribbonControl1.MaxItemId = 322;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.chartToolsRibbonPageCategory1,
@@ -1359,7 +1359,6 @@
             // changeFontNameItem1
             // 
             this.changeFontNameItem1.Edit = this.repositoryItemFontEdit1;
-            this.changeFontNameItem1.EditWidth = 130;
             this.changeFontNameItem1.Id = 25;
             this.changeFontNameItem1.Name = "changeFontNameItem1";
             // 
@@ -1752,7 +1751,6 @@
             // changeNumberFormatItem1
             // 
             this.changeNumberFormatItem1.Edit = this.repositoryItemPopupGalleryEdit1;
-            this.changeNumberFormatItem1.EditWidth = 130;
             this.changeNumberFormatItem1.Id = 65;
             this.changeNumberFormatItem1.Name = "changeNumberFormatItem1";
             // 
@@ -3895,7 +3893,6 @@
             // renameTableItem1
             // 
             this.renameTableItem1.Edit = this.repositoryItemTextEdit1;
-            this.renameTableItem1.EditWidth = 80;
             this.renameTableItem1.Id = 267;
             this.renameTableItem1.Name = "renameTableItem1";
             // 
@@ -5220,7 +5217,7 @@
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.ribbonControl1);
             this.Name = "frmSpreadsheed";
-            this.Text = "frmSpreadsheed";
+            this.Text = "Друк документів";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmSpreadsheed_Load);
             ((System.ComponentModel.ISupportInitialize)(this.commandBarGalleryDropDown2)).EndInit();

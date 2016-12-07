@@ -42,6 +42,8 @@ namespace SP_Sklad
 
         private void OprLogGridView_CalcRowHeight(object sender, DevExpress.XtraGrid.Views.Grid.RowHeightEventArgs e)
         {
+            e.RowHeight = 60;
+
             if (!isRowMouseDoubleClicked) return;
             GridView view = sender as GridView;
             if (e.RowHandle == view.FocusedRowHandle)
