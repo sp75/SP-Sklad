@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using SP_Sklad.SkladData;
 using System.Management;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace SP_Sklad
 {
@@ -42,7 +43,7 @@ namespace SP_Sklad
                 label1.Text = "З'явилася нова версія , загрузіть оновлення!";
             }
 
-            var intetf  =  GetMacAddress();
+       /*     var intetf  =  GetMacAddress();
             var mac_address = Regex.Replace(intetf.GetPhysicalAddress().ToString(), "[^0-9 ]", "") ;
             var ip = intetf.GetIPProperties().UnicastAddresses.Where(w => w.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
             var ip_address = ip.Any() ? ip.FirstOrDefault().Address.ToString() : "";
@@ -73,7 +74,7 @@ namespace SP_Sklad
                     label1.Visible = true;
                 }
                 db.SaveChanges();
-            }
+            }*/
 
         }
        
@@ -185,6 +186,24 @@ namespace SP_Sklad
 
         private void frmLogin_Shown(object sender, EventArgs e)
         {
+        /*    var received  = "R01W  12.56 R01W";
+            decimal weight = 0;
+            int amount = new Regex("R01W").Matches(received).Count;
+            if (amount >= 2)
+            {
+                var sp = received.Split(new[] { "R01W" }, StringSplitOptions.RemoveEmptyEntries);
+                if (sp.Count() >= 1)
+                {
+                    decimal display;
+                    if (decimal.TryParse(sp[0].Trim(), System.Globalization.NumberStyles.Number | System.Globalization.NumberStyles.AllowCurrencySymbol, CultureInfo.CreateSpecificCulture("en-GB"), out display))
+                    {
+                        weight = display;
+                    }
+                    else weight = 0;
+
+                }
+            }*/
+
             passtextEdit.Focus();
         }
 

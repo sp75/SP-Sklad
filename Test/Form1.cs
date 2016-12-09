@@ -1,31 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Globalization;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using System.Timers;
 using System.Windows.Forms;
 
-namespace SP_Sklad.Common
+namespace Test
 {
-   public class ComPortHelper
+    public partial class Form1 : Form
     {
         private SerialPort _serialPort;
         private String received { get; set; }
         private String test { get; set; }
         public decimal weight { get; set; }
 
-        public ComPortHelper()
+        public Form1()
         {
+            InitializeComponent();
+            weight = 0;
+
             _serialPort = new SerialPort();
-            _serialPort.DataReceived+= new SerialDataReceivedEventHandler(DataReceivedHandler);
+            _serialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
 
             // Allow the user to set the appropriate properties.
             _serialPort.PortName = "COM1";
-            _serialPort.BaudRate = 4800;
+            _serialPort.BaudRate = 9600; // 4800;
             _serialPort.Parity = (Parity)Enum.Parse(typeof(Parity), "None", true); ;
             _serialPort.DataBits = 8;
             _serialPort.StopBits = (StopBits)Enum.Parse(typeof(StopBits), "One", true);
@@ -34,6 +39,7 @@ namespace SP_Sklad.Common
             // Set the read/write timeouts
             _serialPort.ReadTimeout = 500;
             _serialPort.WriteTimeout = 500;
+            _serialPort.Encoding = new ASCIIEncoding();       
         }
 
         public void Close()
@@ -56,30 +62,21 @@ namespace SP_Sklad.Common
                 MessageBox.Show("Не знайдено жодного СОМ порта!");
                 return;
             }
-          
+
             _serialPort.Open();
         }
 
         private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
             received += _serialPort.ReadExisting();
-            if (received != null && received.Length >= 10 && received.IndexOf('<') != -1 && received.IndexOf('>') != -1)
-            {
-                var rez = Regex.Replace(received, "[^0-9 ]", "");
-                decimal display;
-                if (decimal.TryParse(rez, out display))
-                {
-                    weight = (display / 100);
-                }
-                else weight = 0;
+          
 
-                received = "";
-            }
-           
+    //        listBox1.Items.Add(_serialPort.ReadByte().ToString("X2"));
+      //      textBox1.Text = received;
 
-            if (received != null)
+           if (received != null)
             {
-             //   String ss = "R01W  12.56 R01W";
+                //   String ss = "R01W  12.56 R01W";
                 int amount = new Regex("R01W").Matches(received).Count;
                 if (amount >= 2)
                 {
@@ -92,11 +89,32 @@ namespace SP_Sklad.Common
                             weight = display;
                         }
                         else weight = 0;
-                      
+
                     }
                 }
             }
-         }
 
+           textBox1.Text = Convert.ToString( weight);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Open();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Add("sdsdsdsd");
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Close();
+        }
     }
 }

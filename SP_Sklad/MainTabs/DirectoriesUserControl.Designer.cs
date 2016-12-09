@@ -28,16 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DirectoriesUserControl));
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.GridImageList = new System.Windows.Forms.ImageList(this.components);
+            this.GridImageList = new System.Windows.Forms.ImageList();
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemImageComboBox8 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.UserTreeImgList = new System.Windows.Forms.ImageList(this.components);
-            this.PageImageList = new System.Windows.Forms.ImageList(this.components);
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.UserTreeImgList = new System.Windows.Forms.ImageList();
+            this.PageImageList = new System.Windows.Forms.ImageList();
+            this.barManager1 = new DevExpress.XtraBars.BarManager();
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.NewItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.CopyItemBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -61,7 +60,7 @@
             this.standaloneBarDockControl3 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl4 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl5 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.BarImageList = new System.Windows.Forms.ImageList(this.components);
+            this.BarImageList = new System.Windows.Forms.ImageList();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.AddGroupMatBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -86,12 +85,12 @@
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.DirTreeList = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.DirTreeBS = new System.Windows.Forms.BindingSource(this.components);
+            this.DirTreeBS = new System.Windows.Forms.BindingSource();
             this.mainContentTab = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.KaGridControl = new DevExpress.XtraGrid.GridControl();
-            this.KAgentDS = new System.Windows.Forms.BindingSource(this.components);
+            this.KAgentDS = new System.Windows.Forms.BindingSource();
             this.KaGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -141,7 +140,7 @@
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl3 = new DevExpress.XtraEditors.SplitContainerControl();
             this.MatGridControl = new DevExpress.XtraGrid.GridControl();
-            this.MatListDS = new System.Windows.Forms.BindingSource(this.components);
+            this.MatListDS = new System.Windows.Forms.BindingSource();
             this.MatGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -156,7 +155,7 @@
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl3 = new DevExpress.XtraVerticalGrid.VGridControl();
-            this.MatListInfoBS = new System.Windows.Forms.BindingSource(this.components);
+            this.MatListInfoBS = new System.Windows.Forms.BindingSource();
             this.editorRow8 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row7 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row8 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -202,7 +201,7 @@
             this.gridView7 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
             this.ServicesGridControl = new DevExpress.XtraGrid.GridControl();
-            this.ServicesBS = new System.Windows.Forms.BindingSource(this.components);
+            this.ServicesBS = new System.Windows.Forms.BindingSource();
             this.ServicesGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn43 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn45 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -216,7 +215,7 @@
             this.extDirTabControl = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage19 = new DevExpress.XtraTab.XtraTabPage();
             this.MatRecipeGridControl = new DevExpress.XtraGrid.GridControl();
-            this.MatRecipeDS = new System.Windows.Forms.BindingSource(this.components);
+            this.MatRecipeDS = new System.Windows.Forms.BindingSource();
             this.MatRecipeGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -226,7 +225,7 @@
             this.gridColumn39 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage20 = new DevExpress.XtraTab.XtraTabPage();
             this.WarehouseGridControl = new DevExpress.XtraGrid.GridControl();
-            this.WarehouseBS = new System.Windows.Forms.BindingSource(this.components);
+            this.WarehouseBS = new System.Windows.Forms.BindingSource();
             this.WarehouseGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAddr = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -234,7 +233,7 @@
             this.colDef = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage21 = new DevExpress.XtraTab.XtraTabPage();
             this.MeasuresGridControl = new DevExpress.XtraGrid.GridControl();
-            this.MeasuresDS = new System.Windows.Forms.BindingSource(this.components);
+            this.MeasuresDS = new System.Windows.Forms.BindingSource();
             this.MeasuresGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn51 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn52 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -242,12 +241,12 @@
             this.gridColumn54 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage22 = new DevExpress.XtraTab.XtraTabPage();
             this.TechProcessGridControl = new DevExpress.XtraGrid.GridControl();
-            this.TechProcessDS = new System.Windows.Forms.BindingSource(this.components);
+            this.TechProcessDS = new System.Windows.Forms.BindingSource();
             this.TechProcessGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn55 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage23 = new DevExpress.XtraTab.XtraTabPage();
             this.PriceTypesGridControl = new DevExpress.XtraGrid.GridControl();
-            this.PriceTypesViewBS = new System.Windows.Forms.BindingSource(this.components);
+            this.PriceTypesViewBS = new System.Windows.Forms.BindingSource();
             this.PriceTypesGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn56 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn57 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -256,28 +255,28 @@
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.xtraTabPage24 = new DevExpress.XtraTab.XtraTabPage();
             this.AccountTypeGridControl = new DevExpress.XtraGrid.GridControl();
-            this.AccountTypeBS = new System.Windows.Forms.BindingSource(this.components);
+            this.AccountTypeBS = new System.Windows.Forms.BindingSource();
             this.AccountTypeGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn60 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn61 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.xtraTabPage25 = new DevExpress.XtraTab.XtraTabPage();
             this.ChargeTypeGridControl = new DevExpress.XtraGrid.GridControl();
-            this.ChargeTypeBS = new System.Windows.Forms.BindingSource(this.components);
+            this.ChargeTypeBS = new System.Windows.Forms.BindingSource();
             this.ChargeTypeGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn62 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn63 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.xtraTabPage26 = new DevExpress.XtraTab.XtraTabPage();
             this.CashDesksGridControl = new DevExpress.XtraGrid.GridControl();
-            this.CashDesksBS = new System.Windows.Forms.BindingSource(this.components);
+            this.CashDesksBS = new System.Windows.Forms.BindingSource();
             this.CashDesksGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn64 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn65 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.xtraTabPage27 = new DevExpress.XtraTab.XtraTabPage();
             this.CountriesGridControl = new DevExpress.XtraGrid.GridControl();
-            this.CountriesBS = new System.Windows.Forms.BindingSource(this.components);
+            this.CountriesBS = new System.Windows.Forms.BindingSource();
             this.CountriesGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn66 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn67 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -285,7 +284,7 @@
             this.gridColumn68 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage28 = new DevExpress.XtraTab.XtraTabPage();
             this.BanksGridControl = new DevExpress.XtraGrid.GridControl();
-            this.BanksBS = new System.Windows.Forms.BindingSource(this.components);
+            this.BanksBS = new System.Windows.Forms.BindingSource();
             this.BanksGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn69 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn70 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -293,13 +292,13 @@
             this.gridColumn71 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage29 = new DevExpress.XtraTab.XtraTabPage();
             this.RouteGridControl = new DevExpress.XtraGrid.GridControl();
-            this.RoutesBS = new System.Windows.Forms.BindingSource(this.components);
+            this.RoutesBS = new System.Windows.Forms.BindingSource();
             this.RouteGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage11 = new DevExpress.XtraTab.XtraTabPage();
-            this.ExplorerPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.ExplorerPopupMenu = new DevExpress.XtraBars.PopupMenu();
+            this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu();
+            this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
@@ -678,7 +677,7 @@
             this.standaloneBarDockControl6.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl6.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl6.Name = "standaloneBarDockControl6";
-            this.standaloneBarDockControl6.Size = new System.Drawing.Size(1172, 31);
+            this.standaloneBarDockControl6.Size = new System.Drawing.Size(1165, 28);
             this.standaloneBarDockControl6.Text = "standaloneBarDockControl6";
             // 
             // bar2
@@ -719,7 +718,7 @@
             this.standaloneBarDockControl7.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl7.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl7.Name = "standaloneBarDockControl7";
-            this.standaloneBarDockControl7.Size = new System.Drawing.Size(1160, 31);
+            this.standaloneBarDockControl7.Size = new System.Drawing.Size(1160, 28);
             this.standaloneBarDockControl7.Text = "standaloneBarDockControl7";
             // 
             // bar3
@@ -753,7 +752,7 @@
             this.standaloneBarDockControl8.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl8.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl8.Name = "standaloneBarDockControl8";
-            this.standaloneBarDockControl8.Size = new System.Drawing.Size(243, 31);
+            this.standaloneBarDockControl8.Size = new System.Drawing.Size(243, 28);
             this.standaloneBarDockControl8.Text = "standaloneBarDockControl8";
             // 
             // barDockControlTop
@@ -1028,7 +1027,7 @@
             this.DirTreeList.DataSource = this.DirTreeBS;
             this.DirTreeList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DirTreeList.KeyFieldName = "Id";
-            this.DirTreeList.Location = new System.Drawing.Point(0, 31);
+            this.DirTreeList.Location = new System.Drawing.Point(0, 28);
             this.DirTreeList.Name = "DirTreeList";
             this.DirTreeList.OptionsBehavior.Editable = false;
             this.DirTreeList.OptionsView.ShowColumns = false;
@@ -1037,7 +1036,7 @@
             this.DirTreeList.OptionsView.ShowVertLines = false;
             this.DirTreeList.ParentFieldName = "PId";
             this.DirTreeList.SelectImageList = this.UserTreeImgList;
-            this.DirTreeList.Size = new System.Drawing.Size(243, 608);
+            this.DirTreeList.Size = new System.Drawing.Size(243, 611);
             this.DirTreeList.TabIndex = 1;
             this.DirTreeList.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.DirTreeList_FocusedNodeChanged);
             this.DirTreeList.PopupMenuShowing += new DevExpress.XtraTreeList.PopupMenuShowingEventHandler(this.DirTreeList_PopupMenuShowing);
@@ -1059,10 +1058,10 @@
             // mainContentTab
             // 
             this.mainContentTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainContentTab.Location = new System.Drawing.Point(0, 31);
+            this.mainContentTab.Location = new System.Drawing.Point(0, 28);
             this.mainContentTab.Name = "mainContentTab";
             this.mainContentTab.SelectedTabPage = this.xtraTabPage7;
-            this.mainContentTab.Size = new System.Drawing.Size(1172, 608);
+            this.mainContentTab.Size = new System.Drawing.Size(1165, 611);
             this.mainContentTab.TabIndex = 2;
             this.mainContentTab.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage6,
@@ -1076,7 +1075,7 @@
             // 
             this.xtraTabPage7.Controls.Add(this.splitContainerControl2);
             this.xtraTabPage7.Name = "xtraTabPage7";
-            this.xtraTabPage7.Size = new System.Drawing.Size(1166, 580);
+            this.xtraTabPage7.Size = new System.Drawing.Size(1163, 584);
             this.xtraTabPage7.Text = "Контрагенти";
             // 
             // splitContainerControl2
@@ -1090,7 +1089,7 @@
             this.splitContainerControl2.Panel1.Text = "Panel1";
             this.splitContainerControl2.Panel2.Controls.Add(this.xtraTabControl2);
             this.splitContainerControl2.Panel2.Text = "Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(1166, 580);
+            this.splitContainerControl2.Size = new System.Drawing.Size(1163, 584);
             this.splitContainerControl2.SplitterPosition = 225;
             this.splitContainerControl2.TabIndex = 0;
             this.splitContainerControl2.Text = "splitContainerControl2";
@@ -1104,7 +1103,7 @@
             this.KaGridControl.Name = "KaGridControl";
             this.KaGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit7});
-            this.KaGridControl.Size = new System.Drawing.Size(1166, 350);
+            this.KaGridControl.Size = new System.Drawing.Size(1163, 347);
             this.KaGridControl.TabIndex = 0;
             this.KaGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.KaGridView});
@@ -1222,7 +1221,7 @@
             this.xtraTabControl2.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl2.Name = "xtraTabControl2";
             this.xtraTabControl2.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl2.Size = new System.Drawing.Size(1166, 225);
+            this.xtraTabControl2.Size = new System.Drawing.Size(1163, 225);
             this.xtraTabControl2.TabIndex = 0;
             this.xtraTabControl2.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage15,
@@ -1237,7 +1236,7 @@
             this.xtraTabPage1.Controls.Add(this.vGridControl1);
             this.xtraTabPage1.ImageIndex = 10;
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1160, 194);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1161, 195);
             this.xtraTabPage1.Text = "Контактна інформація";
             // 
             // vGridControl1
@@ -1251,7 +1250,7 @@
             this.vGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.row,
             this.category});
-            this.vGridControl1.Size = new System.Drawing.Size(1160, 194);
+            this.vGridControl1.Size = new System.Drawing.Size(1161, 195);
             this.vGridControl1.TabIndex = 0;
             // 
             // row
@@ -1546,7 +1545,7 @@
             this.MatGridControl.Name = "MatGridControl";
             this.MatGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit8});
-            this.MatGridControl.Size = new System.Drawing.Size(1166, 350);
+            this.MatGridControl.Size = new System.Drawing.Size(1166, 343);
             this.MatGridControl.TabIndex = 0;
             this.MatGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.MatGridView,
@@ -1697,7 +1696,7 @@
             this.xtraTabPage3.Controls.Add(this.vGridControl3);
             this.xtraTabPage3.ImageIndex = 1;
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(1160, 194);
+            this.xtraTabPage3.Size = new System.Drawing.Size(1164, 195);
             this.xtraTabPage3.Text = "Основна інформація";
             // 
             // vGridControl3
@@ -1714,7 +1713,7 @@
             this.row8,
             this.row9,
             this.row10});
-            this.vGridControl3.Size = new System.Drawing.Size(1160, 194);
+            this.vGridControl3.Size = new System.Drawing.Size(1164, 195);
             this.vGridControl3.TabIndex = 1;
             // 
             // MatListInfoBS
@@ -2011,13 +2010,13 @@
             // MatListGridControl
             // 
             this.MatListGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MatListGridControl.Location = new System.Drawing.Point(0, 31);
+            this.MatListGridControl.Location = new System.Drawing.Point(0, 28);
             this.MatListGridControl.MainView = this.MatListGridView;
             this.MatListGridControl.Name = "MatListGridControl";
             this.MatListGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCalcEdit1,
             this.repositoryItemLookUpEdit1});
-            this.MatListGridControl.Size = new System.Drawing.Size(1160, 163);
+            this.MatListGridControl.Size = new System.Drawing.Size(1160, 166);
             this.MatListGridControl.TabIndex = 2;
             this.MatListGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.MatListGridView,

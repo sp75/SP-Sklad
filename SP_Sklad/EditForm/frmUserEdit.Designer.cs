@@ -28,23 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUserEdit));
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barManager1 = new DevExpress.XtraBars.BarManager();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.ImageList = new System.Windows.Forms.ImageList(this.components);
+            this.ImageList = new System.Windows.Forms.ImageList();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
-            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
-            this.UserBS = new System.Windows.Forms.BindingSource(this.components);
-            this.TreeListBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.styleController1 = new DevExpress.XtraEditors.StyleController();
+            this.UserBS = new System.Windows.Forms.BindingSource();
+            this.TreeListBindingSource = new System.Windows.Forms.BindingSource();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -84,8 +83,8 @@
             this.colCanPost = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colUserId = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colWType = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.UserTreeAccessBS = new System.Windows.Forms.BindingSource(this.components);
-            this.UserTreeImgList = new System.Windows.Forms.ImageList(this.components);
+            this.UserTreeAccessBS = new System.Windows.Forms.BindingSource();
+            this.UserTreeImgList = new System.Windows.Forms.ImageList();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.UserAccessWhGridControl = new DevExpress.XtraGrid.GridControl();
             this.UserAccessWhGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -100,8 +99,8 @@
             this.DiscountCheckBox = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit3 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.AccessPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.bindingSource2 = new System.Windows.Forms.BindingSource();
+            this.AccessPopupMenu = new DevExpress.XtraBars.PopupMenu();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserBS)).BeginInit();
@@ -327,7 +326,7 @@
             // 
             this.splitterControl1.Location = new System.Drawing.Point(187, 0);
             this.splitterControl1.Name = "splitterControl1";
-            this.splitterControl1.Size = new System.Drawing.Size(5, 402);
+            this.splitterControl1.Size = new System.Drawing.Size(12, 402);
             this.splitterControl1.TabIndex = 36;
             this.splitterControl1.TabStop = false;
             // 
@@ -336,12 +335,12 @@
             this.xtraTabControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.xtraTabControl1.BorderStylePage = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(192, 0);
+            this.xtraTabControl1.Location = new System.Drawing.Point(199, 0);
             this.xtraTabControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.xtraTabControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(635, 402);
+            this.xtraTabControl1.Size = new System.Drawing.Size(628, 402);
             this.xtraTabControl1.TabIndex = 37;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -352,7 +351,7 @@
             // 
             this.xtraTabPage1.Controls.Add(this.panel1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(635, 380);
+            this.xtraTabPage1.Size = new System.Drawing.Size(628, 380);
             this.xtraTabPage1.Text = "Інформація";
             // 
             // panel1
@@ -361,7 +360,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(635, 380);
+            this.panel1.Size = new System.Drawing.Size(628, 380);
             this.panel1.TabIndex = 29;
             // 
             // groupControl2
@@ -379,7 +378,7 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(635, 380);
+            this.groupControl2.Size = new System.Drawing.Size(628, 380);
             this.groupControl2.TabIndex = 17;
             this.groupControl2.Tag = "";
             this.groupControl2.Text = " Основна інформація ";
@@ -402,7 +401,7 @@
             this.UserGroupLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.UserGroupLookUpEdit.Properties.ValueMember = "Id";
             this.UserGroupLookUpEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.UserGroupLookUpEdit_Properties_ButtonClick);
-            this.UserGroupLookUpEdit.Size = new System.Drawing.Size(186, 22);
+            this.UserGroupLookUpEdit.Size = new System.Drawing.Size(179, 22);
             this.UserGroupLookUpEdit.StyleController = this.styleController1;
             this.UserGroupLookUpEdit.TabIndex = 63;
             // 
