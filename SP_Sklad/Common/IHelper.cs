@@ -632,6 +632,10 @@ namespace SP_Sklad.Common
                 }
 
             }
+            else
+            {
+                MessageBox.Show("Шлях до шаблонів " + template_file + " не знайдено!");
+            }
         }
 
         public static String ConvertLogData(String str)

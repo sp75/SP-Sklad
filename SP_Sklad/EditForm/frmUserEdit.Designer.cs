@@ -28,22 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUserEdit));
-            this.barManager1 = new DevExpress.XtraBars.BarManager();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.ImageList = new System.Windows.Forms.ImageList();
+            this.ImageList = new System.Windows.Forms.ImageList(this.components);
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
-            this.styleController1 = new DevExpress.XtraEditors.StyleController();
-            this.UserBS = new System.Windows.Forms.BindingSource();
-            this.TreeListBindingSource = new System.Windows.Forms.BindingSource();
+            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
+            this.UserBS = new System.Windows.Forms.BindingSource(this.components);
+            this.TreeListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -83,8 +84,8 @@
             this.colCanPost = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colUserId = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colWType = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.UserTreeAccessBS = new System.Windows.Forms.BindingSource();
-            this.UserTreeImgList = new System.Windows.Forms.ImageList();
+            this.UserTreeAccessBS = new System.Windows.Forms.BindingSource(this.components);
+            this.UserTreeImgList = new System.Windows.Forms.ImageList(this.components);
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.UserAccessWhGridControl = new DevExpress.XtraGrid.GridControl();
             this.UserAccessWhGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -99,8 +100,8 @@
             this.DiscountCheckBox = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit3 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.bindingSource2 = new System.Windows.Forms.BindingSource();
-            this.AccessPopupMenu = new DevExpress.XtraBars.PopupMenu();
+            this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.AccessPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserBS)).BeginInit();
@@ -494,7 +495,7 @@
             // 
             this.xtraTabPage4.Controls.Add(this.xtraTabControl2);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(635, 380);
+            this.xtraTabPage4.Size = new System.Drawing.Size(628, 380);
             this.xtraTabPage4.Text = "Права";
             // 
             // xtraTabControl2
@@ -507,7 +508,7 @@
             this.xtraTabControl2.LookAndFeel.UseDefaultLookAndFeel = false;
             this.xtraTabControl2.Name = "xtraTabControl2";
             this.xtraTabControl2.SelectedTabPage = this.xtraTabPage2;
-            this.xtraTabControl2.Size = new System.Drawing.Size(635, 380);
+            this.xtraTabControl2.Size = new System.Drawing.Size(628, 380);
             this.xtraTabControl2.TabIndex = 38;
             this.xtraTabControl2.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage2,
@@ -518,7 +519,7 @@
             // 
             this.xtraTabPage2.Controls.Add(this.panel2);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(635, 358);
+            this.xtraTabPage2.Size = new System.Drawing.Size(628, 358);
             this.xtraTabPage2.Text = "Основні";
             // 
             // panel2
@@ -527,7 +528,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(635, 358);
+            this.panel2.Size = new System.Drawing.Size(628, 358);
             this.panel2.TabIndex = 29;
             // 
             // treeList1
@@ -556,7 +557,7 @@
             this.treeList1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
             this.treeList1.SelectImageList = this.UserTreeImgList;
-            this.treeList1.Size = new System.Drawing.Size(635, 358);
+            this.treeList1.Size = new System.Drawing.Size(628, 358);
             this.treeList1.TabIndex = 0;
             this.treeList1.PopupMenuShowing += new DevExpress.XtraTreeList.PopupMenuShowingEventHandler(this.treeList1_PopupMenuShowing);
             this.treeList1.Click += new System.EventHandler(this.treeList1_Click);
@@ -744,7 +745,7 @@
             // 
             this.xtraTabPage3.Controls.Add(this.UserAccessWhGridControl);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(635, 358);
+            this.xtraTabPage3.Size = new System.Drawing.Size(628, 358);
             this.xtraTabPage3.Text = "Доступ до сладів";
             // 
             // UserAccessWhGridControl
@@ -756,7 +757,7 @@
             this.UserAccessWhGridControl.Name = "UserAccessWhGridControl";
             this.UserAccessWhGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1});
-            this.UserAccessWhGridControl.Size = new System.Drawing.Size(635, 358);
+            this.UserAccessWhGridControl.Size = new System.Drawing.Size(628, 358);
             this.UserAccessWhGridControl.TabIndex = 8;
             this.UserAccessWhGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.UserAccessWhGridView});
@@ -809,7 +810,7 @@
             this.xtraTabPage5.Controls.Add(this.checkEdit2);
             this.xtraTabPage5.Controls.Add(this.checkEdit1);
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(635, 358);
+            this.xtraTabPage5.Size = new System.Drawing.Size(628, 358);
             this.xtraTabPage5.Text = "Додаткові";
             // 
             // checkEdit3
@@ -857,7 +858,7 @@
             this.xtraTabPage6.Controls.Add(this.labelControl2);
             this.xtraTabPage6.Controls.Add(this.textEdit3);
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(635, 380);
+            this.xtraTabPage6.Size = new System.Drawing.Size(628, 380);
             this.xtraTabPage6.Text = "Додаткова інформація";
             // 
             // DiscountCheckBox

@@ -88,7 +88,7 @@ namespace SpreadsheetReportBuilder
             var workbook = new Workbook();
 
             // Load a workbook from the stream. 
-            using (FileStream stream = new FileStream(Temleyt, FileMode.Open))
+            using (FileStream stream = new FileStream(Temleyt, FileMode.Open, FileAccess.Read))
             {
                 workbook.LoadDocument(stream, DocumentFormat.OpenXml);
             }

@@ -110,21 +110,18 @@ namespace SP_Sklad.WBForm
 
             if (_wbill_id == null && doc_id != null)
             {
-                wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where DocId = {0} ", doc_id).FirstOrDefault();
+                _wbill_id = _db.WaybillList.AsNoTracking().FirstOrDefault(f => f.DocId == doc_id).WbillId;
             }
-            else
-            {
-                wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0} ", _wbill_id).FirstOrDefault();
-            }
+
+            wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0} ", _wbill_id).FirstOrDefault();
           
             if (_db.Entry<WaybillList>(wb).State == EntityState.Detached)
             {
                 _db.WaybillList.Attach(wb);
             }
+
             _db.Entry<WaybillList>(wb).State = EntityState.Modified;
             _db.Entry<WaybillList>(wb).Property(f => f.SummPay).IsModified = false;
-
-            _wbill_id = wb.WbillId;
         }
 
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

@@ -55,7 +55,7 @@ namespace SP_Sklad.SkladData
             {
                 transaction.Commit();
             }
-            transaction =  db.Database.BeginTransaction(IsolationLevel.RepeatableRead);
+            transaction =  db.Database.BeginTransaction(/*IsolationLevel.RepeatableRead*/);
             return transaction;
         }
 

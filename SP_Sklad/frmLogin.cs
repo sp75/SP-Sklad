@@ -42,12 +42,13 @@ namespace SP_Sklad
                 label1.Visible = true;
                 label1.Text = "З'явилася нова версія , загрузіть оновлення!";
             }
-
-       /*     var intetf  =  GetMacAddress();
+      //      var ip_address = GetPhysicalIPAdress();
+      //      var mac_address = GetMacAddress();
+         /*   var intetf  =  GetMacAddress();
             var mac_address = Regex.Replace(intetf.GetPhysicalAddress().ToString(), "[^0-9 ]", "") ;
             var ip = intetf.GetIPProperties().UnicastAddresses.Where(w => w.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
-            var ip_address = ip.Any() ? ip.FirstOrDefault().Address.ToString() : "";
-            using (var db = new BaseEntities())
+            var ip_address = ip.Any() ? ip.FirstOrDefault().Address.ToString() : "";*/
+       /*     using (var db = new BaseEntities())
             {
                 var lic = db.Llicenses.FirstOrDefault(w => w.MacAddress == mac_address);
                 if (lic == null)
@@ -77,8 +78,52 @@ namespace SP_Sklad
             }*/
 
         }
+
+        public string GetPhysicalIPAdress()
+        {
+            foreach (NetworkInterface ni in NetworkInterface.GetAllNetworkInterfaces())
+            {
+                var addr = ni.GetIPProperties().GatewayAddresses.FirstOrDefault();
+                if (addr != null)
+                {
+                    if (ni.NetworkInterfaceType == NetworkInterfaceType.Wireless80211 || ni.NetworkInterfaceType == NetworkInterfaceType.Ethernet)
+                    {
+                        foreach (UnicastIPAddressInformation ip in ni.GetIPProperties().UnicastAddresses)
+                        {
+                            if (ip.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                            {
+                                return ip.Address.ToString();
+                            }
+                        }
+                    }
+                }
+            }
+            return String.Empty;
+        }
+
+        public string GetMacAddress()
+        {
+            foreach (NetworkInterface ni in NetworkInterface.GetAllNetworkInterfaces())
+            {
+                var addr = ni.GetIPProperties().GatewayAddresses.FirstOrDefault();
+                if (addr != null)
+                {
+                    if (ni.NetworkInterfaceType == NetworkInterfaceType.Wireless80211 || ni.NetworkInterfaceType == NetworkInterfaceType.Ethernet)
+                    {
+                        foreach (UnicastIPAddressInformation ip in ni.GetIPProperties().UnicastAddresses)
+                        {
+                            if (ip.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                            {
+                                return Regex.Replace(ni.GetPhysicalAddress().ToString(), "[^0-9 ]", "");
+                            }
+                        }
+                    }
+                }
+            }
+            return String.Empty;
+        }
        
-        public NetworkInterface GetMacAddress()
+     /*   public NetworkInterface GetMacAddress()
         {
             var myInterfaceAddress = NetworkInterface.GetAllNetworkInterfaces()
                 .Where(n => n.OperationalStatus == OperationalStatus.Up && n.NetworkInterfaceType != NetworkInterfaceType.Loopback)
@@ -87,7 +132,7 @@ namespace SP_Sklad
                 
 
             return myInterfaceAddress;
-        }
+        }*/
 
         public long DeCoding(String val)
         {

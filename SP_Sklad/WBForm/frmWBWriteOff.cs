@@ -119,25 +119,19 @@ namespace SP_Sklad.WBForm
 
             if (_wbill_id == null && doc_id != null)
             {
-                wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where DocId = {0} ", doc_id).FirstOrDefault();
+                _wbill_id = _db.WaybillList.AsNoTracking().FirstOrDefault(f => f.DocId == doc_id).WbillId;
             }
-            else
-            {
-                wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0} ", _wbill_id).FirstOrDefault();
-            }
+
+            wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0} ", _wbill_id).FirstOrDefault();
 
             if (wb != null)
             {
                 _db.Entry<WaybillList>(wb).State = EntityState.Modified;
 
-                _wbill_id = wb.WbillId;
-
                 wb.WaybillMove = _db.WaybillMove.Find(_wbill_id);
 
                 CommissionBS.DataSource = _db.Commission.FirstOrDefault(w => w.WbillId == _wbill_id); ;
             }
-
-
         }
 
         private void RefreshDet()

@@ -571,7 +571,8 @@ namespace SP_Sklad.EditForm
 
         private void simpleButton3_Click(object sender, EventArgs e)
         {
-            _ka.UserId = null;
+            UsersLookUpEdit.EditValue = null;
+        //    _ka.UserId = null;
         }
 
         private void simpleButton5_Click(object sender, EventArgs e)

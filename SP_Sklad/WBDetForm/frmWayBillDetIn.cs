@@ -182,24 +182,26 @@ namespace SP_Sklad.WBDetForm
 
         private void BasePriceEdit_EditValueChanged(object sender, EventArgs e)
         {
+            GetOk();
+
             if (!BasePriceEdit.ContainsFocus || PriceEdit.ContainsFocus)
             {
                 return;
             }
 
             _wbd.Price = _wbd.Nds > 0 ? Math.Round((BasePriceEdit.Value * 100 / (100 + Convert.ToDecimal(_wbd.Nds))), 2) : BasePriceEdit.Value;
-            GetOk();
         }
 
         private void PriceEdit_EditValueChanged(object sender, EventArgs e)
         {
+            GetOk();
+
             if (!PriceEdit.ContainsFocus || BasePriceEdit.ContainsFocus)
             {
                 return;
             }
 
             _wbd.BasePrice = _wbd.Nds > 0 ? Math.Round(PriceEdit.Value + (PriceEdit.Value * Convert.ToDecimal(_wbd.Nds) / 100), 2) : PriceEdit.Value;
-            GetOk();
         }
 
         bool GetOk()

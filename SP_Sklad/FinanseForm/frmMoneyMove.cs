@@ -26,7 +26,7 @@ namespace SP_Sklad.FinanseForm
             _DocType = DocType;
             _PayDocId = PayDocId;
             _db = new BaseEntities();
-            current_transaction = _db.Database.BeginTransaction(IsolationLevel.RepeatableRead);
+            current_transaction = _db.Database.BeginTransaction(/*IsolationLevel.RepeatableRead*/);
 
             InitializeComponent();
         }

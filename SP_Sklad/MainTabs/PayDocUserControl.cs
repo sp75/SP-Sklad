@@ -34,7 +34,8 @@ namespace SP_Sklad.MainTabs
             {
                 try
                 {
-                    _pd = db.Database.SqlQuery<PayDoc>("select * from  PayDoc WITH (UPDLOCK, NOWAIT) where DocId = {0}", rel.DocId).FirstOrDefault();
+                    var PayDocId = db.PayDoc.AsNoTracking().FirstOrDefault(f => f.DocId == rel.DocId).PayDocId;
+                    _pd = db.Database.SqlQuery<PayDoc>("select * from  PayDoc WITH (UPDLOCK, NOWAIT) where PayDocId = {0}", PayDocId).FirstOrDefault();
                 }
                 catch
                 {
