@@ -30,99 +30,108 @@ namespace SP_Sklad.Common
 
            using (var db = new BaseEntities())
            {
-               var trans = db.Database.BeginTransaction();
-               try
+               using (var trans = db.Database.BeginTransaction())
                {
-                   var wb = db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0}", dr.WbillId).FirstOrDefault();
-
-                   if (wb == null)
+                   try
                    {
-                       MessageBox.Show(Resources.not_find_wb);
-                       return;
-                   }
+                       var wb = db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0}", dr.WbillId).FirstOrDefault();
 
-                   if (wb.Checked == 2)
-                   {
-                       return;
-                   }
-
-                   if (wb.Checked == 1)
-                   {
-                       if (MessageBox.Show(Resources.edit_info, "Відміна проводки", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                       if (wb == null)
                        {
-                           result = DBHelper.StornoOrder(db, dr.WbillId);
-                       }
-                       else
-                       {
-                           result = 1;
-                       }
-                   }
-
-                   if (result == 1)
-                   {
-                       return;
-                   }
-
-                   trans.Commit();
-
-                   if (dr.WType == 1 || dr.WType == 16)
-                   {
-                       using (var wb_in = new frmWayBillIn(dr.WType, wb.WbillId))
-                       {
-                           wb_in.ShowDialog();
-                       }
-                   }
-
-                   if (dr.WType == -1 || dr.WType == -16 || dr.WType == 2)
-                   {
-                       using (var wb_out = new frmWayBillOut(dr.WType, wb.WbillId))
-                       {
-                           wb_out.ShowDialog();
-                       }
-                   }
-
-                   if (dr.WType == 6)// Повернення від кліента
-                   {
-                       using (var wb_re_in = new frmWBReturnIn(dr.WType, wb.WbillId))
-                       {
-                           wb_re_in.ShowDialog();
-                       }
-                   }
-
-                   if (dr.WType == -6) //Повернення постачальнику
-                   {
-                       using (var wb_re_out = new frmWBReturnOut( wb.WbillId))
-                       {
-                           wb_re_out.ShowDialog();
+                           MessageBox.Show(Resources.not_find_wb);
+                           return;
                        }
 
-                   }
-
-               }
-
-               catch (EntityCommandExecutionException exception)
-               {
-                   var e = exception.InnerException as SqlException;
-                   if (e != null)
-                   {
-                       if (!e.Errors.Cast<SqlError>().Any(error =>
-                              (error.Number == DeadlockErrorNumber) ||
-                              (error.Number == LockingErrorNumber) ||
-                              (error.Number == UpdateConflictErrorNumber)))
-                       {
-                           MessageBox.Show(e.Message);
-                       }
-                       else
+                       var wb_new = db.WaybillList.FirstOrDefault(w => w.WbillId == dr.WbillId && w.SessionId == null);
+                       if (wb_new == null)
                        {
                            MessageBox.Show(Resources.deadlock);
+                           return;
                        }
-                   }
-                   else
-                   {
-                       MessageBox.Show(exception.Message);
+
+                       if (wb.Checked == 2)
+                       {
+                           return;
+                       }
+
+                       if (wb.Checked == 1)
+                       {
+                           if (MessageBox.Show(Resources.edit_info, "Відміна проводки", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                           {
+                               result = DBHelper.StornoOrder(db, dr.WbillId);
+                           }
+                           else
+                           {
+                               result = 1;
+                           }
+                       }
+
+                       if (result == 1)
+                       {
+                           return;
+                       }
+
+                       trans.Commit();
+
+                       if (dr.WType == 1 || dr.WType == 16)
+                       {
+                           using (var wb_in = new frmWayBillIn(dr.WType, wb.WbillId))
+                           {
+                               wb_in.ShowDialog();
+                           }
+                       }
+
+                       if (dr.WType == -1 || dr.WType == -16 || dr.WType == 2)
+                       {
+                           using (var wb_out = new frmWayBillOut(dr.WType, wb.WbillId))
+                           {
+                               wb_out.ShowDialog();
+                           }
+                       }
+
+                       if (dr.WType == 6)// Повернення від кліента
+                       {
+                           using (var wb_re_in = new frmWBReturnIn(dr.WType, wb.WbillId))
+                           {
+                               wb_re_in.ShowDialog();
+                           }
+                       }
+
+                       if (dr.WType == -6) //Повернення постачальнику
+                       {
+                           using (var wb_re_out = new frmWBReturnOut(wb.WbillId))
+                           {
+                               wb_re_out.ShowDialog();
+                           }
+
+                       }
+
                    }
 
-                   return;
+                   catch (EntityCommandExecutionException exception)
+                   {
+                       var e = exception.InnerException as SqlException;
+                       if (e != null)
+                       {
+                           if (!e.Errors.Cast<SqlError>().Any(error =>
+                                  (error.Number == DeadlockErrorNumber) ||
+                                  (error.Number == LockingErrorNumber) ||
+                                  (error.Number == UpdateConflictErrorNumber)))
+                           {
+                               MessageBox.Show(e.Message);
+                           }
+                           else
+                           {
+                               MessageBox.Show(Resources.deadlock);
+                           }
+                       }
+                       else
+                       {
+                           MessageBox.Show(exception.Message);
+                       }
+
+                       return;
+                   }
                }
            }
        }

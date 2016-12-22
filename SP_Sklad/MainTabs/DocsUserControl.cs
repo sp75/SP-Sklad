@@ -341,11 +341,21 @@ namespace SP_Sklad.MainTabs
                         switch (gtype)
                         {
                             case 1:
-                                db.WaybillList.Remove(db.WaybillList.Find(dr.WbillId));
+                                var wb = db.WaybillList.FirstOrDefault(w => w.WbillId == dr.WbillId && w.SessionId == null);
+                                if (wb != null)
+                                {
+                                    db.WaybillList.Remove(wb);
+                                }
+                                else
+                                {
+                                    MessageBox.Show(Resources.deadlock);
+                                }
                                 break;
+
                             case 4:
                                 db.PayDoc.Remove(db.PayDoc.Find(pd_row.PayDocId));
                                 break;
+
                             case 5:
                                 db.DeleteWhere<PriceList>(w => w.PlId == pl_focused_row.PlId);
                                 break;

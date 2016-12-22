@@ -287,7 +287,17 @@ namespace SP_Sklad.WBDetForm
                     {
                         foreach (var item in pos_in.Where(w => w.Amount > 0))
                         {
-                            _db.WMatTurn.Add(new WMatTurn
+                             _db.WMatTurn.Add(new WMatTurn
+                             {
+                                 PosId = item.PosId,
+                                 WId = _wbd.WId.Value,
+                                 MatId = _wbd.MatId,
+                                 OnDate = _wb.OnDate,
+                                 TurnType = _wb.WType == -16 ? -16 : 2,
+                                 Amount = Convert.ToDecimal(item.Amount),
+                                 SourceId = _wbd.PosId
+                             });
+                        /*    _wbd.WMatTurn1.Add(new WMatTurn
                             {
                                 PosId = item.PosId,
                                 WId = _wbd.WId.Value,
@@ -296,7 +306,7 @@ namespace SP_Sklad.WBDetForm
                                 TurnType = _wb.WType == -16 ? -16 : 2,
                                 Amount = Convert.ToDecimal(item.Amount),
                                 SourceId = _wbd.PosId
-                            });
+                            });*/
                         }
                     }
 
@@ -305,10 +315,44 @@ namespace SP_Sklad.WBDetForm
                 }
                 catch (System.Data.Entity.Infrastructure.DbUpdateException exp)
                 {
+                    UndoAll(_db);
+
                     MessageBox.Show(exp.InnerException.InnerException.Message);
                 }
             }
             catch { }
+        }
+
+        public void UndoAll(BaseEntities context)
+        {
+            //detect all changes (probably not required if AutoDetectChanges is set to true)
+            context.ChangeTracker.DetectChanges();
+
+            //get all entries that are changed
+            var entries = context.ChangeTracker.Entries().Where(e => e.State != EntityState.Unchanged).ToList();
+
+            //somehow try to discard changes on every entry
+            foreach (var dbEntityEntry in entries)
+            {
+                var entity = dbEntityEntry.Entity;
+
+                if (entity == null) continue;
+
+                if (dbEntityEntry.State == EntityState.Added)
+                {
+                    //if entity is in Added state, remove it. (there will be problems with Set methods if entity is of proxy type, in that case you need entity base type
+                    var set = context.Set(entity.GetType());
+                    set.Remove(entity);
+                }
+                else if (dbEntityEntry.State == EntityState.Modified)
+                {
+                    //entity is modified... you can set it to Unchanged or Reload it form Db??
+                    dbEntityEntry.Reload();
+                }
+                else if (dbEntityEntry.State == EntityState.Deleted)
+                    //entity is deleted... not sure what would be the right thing to do with it... set it to Modifed or Unchanged
+                    dbEntityEntry.State = EntityState.Modified;
+            }
         }
 
         private void WHComboBox_EditValueChanged(object sender, EventArgs e)

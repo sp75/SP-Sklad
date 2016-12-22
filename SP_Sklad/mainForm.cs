@@ -27,6 +27,9 @@ namespace SP_Sklad
         {
             InitializeComponent();
             user_id = UserId;
+
+            UserSession.UserId = UserId;
+            UserSession.SessionId = Guid.NewGuid();
         }
 
         private void mainForm_Load(object sender, EventArgs e)

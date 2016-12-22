@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SP_Sklad.Common;
 using SP_Sklad.Properties;
 
 namespace SP_Sklad.SkladData
@@ -325,9 +326,20 @@ order by wbd.ondate desc
             return r;
         }
 
+        public static void UpdateSessionWaybill(int wb_id, bool clear = false)
+        {
+            using (var db = new BaseEntities())
+            {
+                var wb = db.WaybillList.FirstOrDefault(f => f.WbillId == wb_id);
+                if (wb != null)
+                {
+                    wb.SessionId = clear == true ? null : (Guid?)UserSession.SessionId;
+                    db.SaveChanges();
+                }
+            }
+        }
+
     }
-
-
 
 
     public class PersonList

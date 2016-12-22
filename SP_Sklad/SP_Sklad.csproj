@@ -213,6 +213,7 @@
     <Compile Include="Common\IHelper.cs" />
     <Compile Include="Common\ManufDocEdit.cs" />
     <Compile Include="Common\MoneyToStr.cs" />
+    <Compile Include="Common\UserSession.cs" />
     <Compile Include="Common\WhDocEdit.cs" />
     <Compile Include="EditForm\frmAccountTypeEdit.cs">
       <SubType>Form</SubType>
