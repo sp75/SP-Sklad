@@ -7,7 +7,7 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad.Common
 {
-        public sealed class UserSettingsRepository
+        public sealed class UserSettingsRepository : IDisposable
         {
             #region Init
 
@@ -18,11 +18,7 @@ namespace SP_Sklad.Common
                 _settings_collection = _db.UserSettings.Where(w => w.UserId == user_id).ToList();
             }
 
-            ~UserSettingsRepository()
-            {
-                _db.Dispose();
-            }
-         
+        
             #endregion
 
             #region Fuctions
@@ -58,7 +54,7 @@ namespace SP_Sklad.Common
 
             #endregion
 
-            #region Core
+          
 
             #region comport
             /// <summary>
@@ -70,7 +66,6 @@ namespace SP_Sklad.Common
                 set { Set("COM_PORT_NAME", value); }
             }
 
-            #region comport
             /// <summary>
             /// COMPORT: speed
             /// </summary>
@@ -108,5 +103,9 @@ namespace SP_Sklad.Common
 
             #endregion
 
+            public void Dispose()
+            {
+                _db.Dispose();
+            }
         }
 }
