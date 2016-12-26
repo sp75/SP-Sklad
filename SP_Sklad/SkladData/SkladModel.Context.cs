@@ -117,7 +117,6 @@ namespace SP_Sklad.SkladData
         public DbSet<MatPrices> MatPrices { get; set; }
         public DbSet<KAgentSaldo> KAgentSaldo { get; set; }
         public DbSet<DemandGroup> DemandGroup { get; set; }
-        public DbSet<Llicenses> Llicenses { get; set; }
         public DbSet<MatChange> MatChange { get; set; }
         public DbSet<v_MatRemains> v_MatRemains { get; set; }
         public DbSet<v_WhMatRemains> v_WhMatRemains { get; set; }
@@ -136,6 +135,8 @@ namespace SP_Sklad.SkladData
         public DbSet<WaybillDet> WaybillDet { get; set; }
         public DbSet<WaybillList> WaybillList { get; set; }
         public DbSet<Users> Users { get; set; }
+        public DbSet<Licenses> Licenses { get; set; }
+        public DbSet<UserSettings> UserSettings { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)

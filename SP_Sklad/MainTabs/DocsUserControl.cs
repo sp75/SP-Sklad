@@ -435,26 +435,31 @@ namespace SP_Sklad.MainTabs
                         }
 
                         var wb = db.WaybillList.Find(dr.WbillId);
-                        if (wb != null)
+                        if (wb == null)
                         {
-                            if (wb.Checked == 1)
-                            {
-                                DBHelper.StornoOrder(db, dr.WbillId);
-                            }
-                            else
-                            {
-                                if (wb.WType == -1)
-                                {
-                                    if (!DBHelper.CheckOrderedInSuppliers(dr.WbillId, db)) return;
-                                }
+                            MessageBox.Show(Resources.not_find_wb);
+                            return;
+                        }
+                        if (wb.SessionId != null)
+                        {
+                            MessageBox.Show(Resources.deadlock);
+                            return;
+                        }
 
-                                DBHelper.ExecuteOrder(db, dr.WbillId);
-                            }
+                        if (wb.Checked == 1)
+                        {
+                            DBHelper.StornoOrder(db, dr.WbillId);
                         }
                         else
                         {
-                            MessageBox.Show(Resources.not_find_wb);
+                            if (wb.WType == -1)
+                            {
+                                if (!DBHelper.CheckOrderedInSuppliers(dr.WbillId, db)) return;
+                            }
+
+                            DBHelper.ExecuteOrder(db, dr.WbillId);
                         }
+
                         break;
 
                     case 4:

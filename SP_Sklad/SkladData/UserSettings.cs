@@ -12,12 +12,11 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class Llicenses
+    public partial class UserSettings
     {
         public int Id { get; set; }
-        public string LicencesKay { get; set; }
-        public string MacAddress { get; set; }
-        public string IpAddress { get; set; }
-        public string MachineName { get; set; }
+        public Nullable<int> UserId { get; set; }
+        public string Name { get; set; }
+        public string Value { get; set; }
     }
 }

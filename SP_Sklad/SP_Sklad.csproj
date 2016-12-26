@@ -214,6 +214,7 @@
     <Compile Include="Common\ManufDocEdit.cs" />
     <Compile Include="Common\MoneyToStr.cs" />
     <Compile Include="Common\UserSession.cs" />
+    <Compile Include="Common\UserSettingsRepository.cs" />
     <Compile Include="Common\WhDocEdit.cs" />
     <Compile Include="EditForm\frmAccountTypeEdit.cs">
       <SubType>Form</SubType>
@@ -353,7 +354,7 @@
     <Compile Include="SkladData\KontragentGroup.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\Llicenses.cs">
+    <Compile Include="SkladData\Licenses.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\MatChange.cs">
@@ -402,6 +403,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\Users.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\UserSettings.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\UsersGroup.cs">

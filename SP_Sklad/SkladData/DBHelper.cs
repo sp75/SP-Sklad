@@ -334,6 +334,8 @@ order by wbd.ondate desc
                 if (wb != null)
                 {
                     wb.SessionId = clear == true ? null : (Guid?)UserSession.SessionId;
+                    wb.UpdatedBy = UserSession.UserId;
+
                     db.SaveChanges();
                 }
             }

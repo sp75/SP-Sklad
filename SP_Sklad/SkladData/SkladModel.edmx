@@ -47,7 +47,7 @@
           <EntitySet Name="KAMatGroupDiscount" EntityType="BaseModel.Store.KAMatGroupDiscount" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="KontragentGroup" EntityType="BaseModel.Store.KontragentGroup" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Languages" EntityType="BaseModel.Store.Languages" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Llicenses" EntityType="BaseModel.Store.Llicenses" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Licenses" EntityType="BaseModel.Store.Licenses" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MatChange" EntityType="BaseModel.Store.MatChange" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Materials" EntityType="BaseModel.Store.Materials" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MatGroup" EntityType="BaseModel.Store.MatGroup" store:Type="Tables" Schema="dbo" />
@@ -87,6 +87,7 @@
           <EntitySet Name="UserAccess" EntityType="BaseModel.Store.UserAccess" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserAccessWh" EntityType="BaseModel.Store.UserAccessWh" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Users" EntityType="BaseModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserSettings" EntityType="BaseModel.Store.UserSettings" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UsersGroup" EntityType="BaseModel.Store.UsersGroup" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserTree" EntityType="BaseModel.Store.UserTree" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserTreeView" EntityType="BaseModel.Store.UserTreeView" store:Type="Tables" Schema="dbo" />
@@ -1468,7 +1469,7 @@
           <Property Name="Name" Type="varchar" MaxLength="48" />
           <Property Name="Flags" Type="int" />
         </EntityType>
-        <EntityType Name="Llicenses">
+        <EntityType Name="Licenses">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -1975,6 +1976,15 @@
           <Property Name="GroupId" Type="uniqueidentifier" />
           <Property Name="InternalEditor" Type="bit" />
         </EntityType>
+        <EntityType Name="UserSettings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Value" Type="nvarchar" MaxLength="128" />
+        </EntityType>
         <EntityType Name="UsersGroup">
           <Key>
             <PropertyRef Name="Id" />
@@ -2112,6 +2122,7 @@
           <Property Name="UpdatedAt" Type="datetime" />
           <Property Name="UpdatedBy" Type="int" />
           <Property Name="SessionId" Type="uniqueidentifier" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="WayBillMake">
           <Key>
@@ -6842,7 +6853,6 @@
             <Parameter Name="to_date" Mode="In" Type="DateTime" />
             <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="Llicenses" EntityType="BaseModel.Llicenses" />
           <EntitySet Name="MatChange" EntityType="BaseModel.MatChange" />
           <AssociationSet Name="FK_MATCHANGE_CHANGEID" Association="BaseModel.FK_MATCHANGE_CHANGEID">
             <End Role="Materials" EntitySet="Materials" />
@@ -7212,6 +7222,8 @@
             <Parameter Name="wh" Mode="In" Type="String" />
             <Parameter Name="doc_types" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="Licenses" EntityType="BaseModel.Licenses" />
+          <EntitySet Name="UserSettings" EntityType="BaseModel.UserSettings" />
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -10666,16 +10678,6 @@
           <Property Type="String" Name="RepName" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="DocType" Nullable="true" />
         </ComplexType>
-        <EntityType Name="Llicenses">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LicencesKay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MacAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MachineName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="MatChange">
           <Key>
             <PropertyRef Name="MatId" />
@@ -11606,6 +11608,7 @@
           <NavigationProperty Name="WaybillMove" Relationship="BaseModel.FK_WBM_WBILLID" FromRole="WaybillList" ToRole="WaybillMove" />
           <NavigationProperty Name="WayBillSvc" Relationship="BaseModel.FK_WBS_WBILLID" FromRole="WaybillList" ToRole="WayBillSvc" />
           <Property Type="Guid" Name="SessionId" />
+          <Property Type="Guid" Name="Id" Nullable="false" />
         </EntityType>
         <Association Name="FK_COMMISSION_WBILLID">
           <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
@@ -12115,6 +12118,25 @@
           <Property Type="Decimal" Name="SumPrice" Nullable="true" Precision="38" Scale="8" />
           <Property Type="String" Name="GrpName" Nullable="false" MaxLength="64" />
         </ComplexType>
+        <EntityType Name="Licenses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="LicencesKay" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MacAddress" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IpAddress" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MachineName" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserSettings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="UserId" />
+          <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Value" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -14854,17 +14876,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="Llicenses">
-            <EntityTypeMapping TypeName="BaseModel.Llicenses">
-              <MappingFragment StoreEntitySet="Llicenses">
-                <ScalarProperty Name="MachineName" ColumnName="MachineName" />
-                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
-                <ScalarProperty Name="MacAddress" ColumnName="MacAddress" />
-                <ScalarProperty Name="LicencesKay" ColumnName="LicencesKay" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="MatChange">
             <EntityTypeMapping TypeName="BaseModel.MatChange">
               <MappingFragment StoreEntitySet="MatChange">
@@ -15213,6 +15224,7 @@
           <EntitySetMapping Name="WaybillList">
             <EntityTypeMapping TypeName="BaseModel.WaybillList">
               <MappingFragment StoreEntitySet="WaybillList">
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="SessionId" ColumnName="SessionId" />
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
                 <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
@@ -15308,6 +15320,27 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="Licenses">
+            <EntityTypeMapping TypeName="BaseModel.Licenses">
+              <MappingFragment StoreEntitySet="Licenses">
+                <ScalarProperty Name="MachineName" ColumnName="MachineName" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="MacAddress" ColumnName="MacAddress" />
+                <ScalarProperty Name="LicencesKay" ColumnName="LicencesKay" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSettings">
+            <EntityTypeMapping TypeName="BaseModel.UserSettings">
+              <MappingFragment StoreEntitySet="UserSettings">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

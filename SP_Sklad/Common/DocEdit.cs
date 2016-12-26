@@ -42,8 +42,7 @@ namespace SP_Sklad.Common
                            return;
                        }
 
-                       var wb_new = db.WaybillList.FirstOrDefault(w => w.WbillId == dr.WbillId && w.SessionId == null);
-                       if (wb_new == null)
+                       if (wb.SessionId != null)
                        {
                            MessageBox.Show(Resources.deadlock);
                            return;
@@ -103,9 +102,7 @@ namespace SP_Sklad.Common
                            {
                                wb_re_out.ShowDialog();
                            }
-
                        }
-
                    }
 
                    catch (EntityCommandExecutionException exception)
