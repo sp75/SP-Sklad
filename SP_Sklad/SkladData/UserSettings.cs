@@ -18,5 +18,7 @@ namespace SP_Sklad.SkladData
         public Nullable<int> UserId { get; set; }
         public string Name { get; set; }
         public string Value { get; set; }
+    
+        public virtual Users Users { get; set; }
     }
 }

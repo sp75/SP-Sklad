@@ -21,6 +21,7 @@ namespace SP_Sklad.SkladData
             this.PrintLog = new HashSet<PrintLog>();
             this.UserAccess = new HashSet<UserAccess>();
             this.UserAccessWh = new HashSet<UserAccessWh>();
+            this.UserSettings = new HashSet<UserSettings>();
         }
     
         public int UserId { get; set; }
@@ -43,5 +44,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<UserAccess> UserAccess { get; set; }
         public virtual ICollection<UserAccessWh> UserAccessWh { get; set; }
         public virtual UsersGroup UsersGroup { get; set; }
+        public virtual ICollection<UserSettings> UserSettings { get; set; }
     }
 }

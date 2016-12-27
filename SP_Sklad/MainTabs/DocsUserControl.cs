@@ -640,6 +640,7 @@ namespace SP_Sklad.MainTabs
                 {
                     var result = f._db.ExecuteWayBill(wbl.WbillId, null).ToList().FirstOrDefault();
                     f.doc_id = result.NewDocId;
+                    f.is_new_record = true;
                     f.ShowDialog();
                 }
             }

@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using SP_Sklad.Common;
 
 namespace SP_Sklad.SkladData
 {
@@ -57,6 +58,20 @@ namespace SP_Sklad.SkladData
             }
             transaction =  db.Database.BeginTransaction(/*IsolationLevel.RepeatableRead*/);
             return transaction;
+        }
+
+        public static int Save(this BaseEntities db, int wb_id)
+        {
+            using (var _db = DB.SkladBase())
+            {
+                var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wb_id);
+                if (wb != null && wb.SessionId != UserSession.SessionId)
+                {
+                    throw new Exception("Не можливо зберегти документ, тільки перегляд.");
+                }
+            }
+
+            return db.SaveChanges();
         }
 
         public static DataTable Ext_ToDataTable<T>(this IEnumerable<T> varlist)

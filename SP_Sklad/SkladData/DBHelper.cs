@@ -147,7 +147,7 @@ namespace SP_Sklad.SkladData
             {
                 if (_enterprise == null)
                 {
-                    _enterprise = new BaseEntities().Kagent.Where(w => w.KType == 3 &&  w.KaId == mainForm.enterprise_id).Select(s => new Enterprise { KaId = s.KaId, Name = s.Name, NdsPayer = s.NdsPayer }).FirstOrDefault();
+                    _enterprise = new BaseEntities().Kagent.Where(w => w.KType == 3 && w.KaId == mainForm.enterprise_id).Select(s => new Enterprise { KaId = s.KaId, Name = s.Name, NdsPayer = s.NdsPayer }).FirstOrDefault();
                 }
                 return _enterprise;
             }
@@ -193,7 +193,7 @@ namespace SP_Sklad.SkladData
         }
         public static List<WhList> WhList()
         {
-            return new BaseEntities().Warehouse.Where(w => w.Deleted == 0).Select(s => new WhList { WId = s.WId, Name = s.Name, Def= s.Def }).ToList();
+            return new BaseEntities().Warehouse.Where(w => w.Deleted == 0).Select(s => new WhList { WId = s.WId, Name = s.Name, Def = s.Def }).ToList();
         }
 
         public static List<Currency> Currency
@@ -320,7 +320,7 @@ order by wbd.ondate desc
             if (query.Any())
             {
                 MessageBox.Show(string.Format("Неможливо провести накладну, так як у ний присутні товари замовлені у постачальника, але ще не оприходувані на склад.\n{0}", String.Join("\n", query.Select(s => s.Name))), "Попередження", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-               r = false;
+                r = false;
             }
 
             return r;
@@ -331,9 +331,9 @@ order by wbd.ondate desc
             using (var db = new BaseEntities())
             {
                 var wb = db.WaybillList.FirstOrDefault(f => f.WbillId == wb_id);
-                if (wb != null)
+                if (wb != null )
                 {
-                    wb.SessionId = clear == true ? null : (Guid?)UserSession.SessionId;
+                    wb.SessionId = clear == true ? ( wb.SessionId == UserSession.SessionId ? null : wb.SessionId) : (Guid?)UserSession.SessionId;
                     wb.UpdatedBy = UserSession.UserId;
 
                     db.SaveChanges();
@@ -357,14 +357,14 @@ order by wbd.ondate desc
         public int NdsPayer { get; set; }
     }
 
-     public class LoginUser : Users
-     {
-         public int? KaId { get; set; }
-     }
-     public class WhList
-     {
-         public int WId { get; set; }
-         public String Name { get; set; }
-         public int Def { get; set; }
-     }
+    public class LoginUser : Users
+    {
+        public int? KaId { get; set; }
+    }
+    public class WhList
+    {
+        public int WId { get; set; }
+        public String Name { get; set; }
+        public int Def { get; set; }
+    }
 }

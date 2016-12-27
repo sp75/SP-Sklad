@@ -32,5 +32,11 @@
     <Setting Name="wb_out_result" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="com_port_name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">COM1</Value>
+    </Setting>
+    <Setting Name="com_port_speed" Type="System.String" Scope="User">
+      <Value Profile="(Default)">4800</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

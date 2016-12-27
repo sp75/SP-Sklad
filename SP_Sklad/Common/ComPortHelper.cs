@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
+using SP_Sklad.Properties;
 
 namespace SP_Sklad.Common
 {
@@ -21,11 +22,14 @@ namespace SP_Sklad.Common
         public ComPortHelper()
         {
             _serialPort = new SerialPort();
-            _serialPort.DataReceived+= new SerialDataReceivedEventHandler(DataReceivedHandler);
+            _serialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
 
             // Allow the user to set the appropriate properties.
-            _serialPort.PortName = "COM1";
-            _serialPort.BaudRate = 4800;
+
+            _serialPort.PortName = Settings.Default.com_port_name;// "COM1";
+            _serialPort.BaudRate = Convert.ToInt32(Settings.Default.com_port_speed); // 4800;
+
+
             _serialPort.Parity = (Parity)Enum.Parse(typeof(Parity), "None", true); ;
             _serialPort.DataBits = 8;
             _serialPort.StopBits = (StopBits)Enum.Parse(typeof(StopBits), "One", true);

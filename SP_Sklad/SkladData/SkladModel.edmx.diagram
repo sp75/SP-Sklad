@@ -253,7 +253,8 @@
         <AssociationConnector Association="BaseModel.FK_UAWH_USERID" />
         <AssociationConnector Association="BaseModel.FK_Users_UsersGroup" />
         <EntityTypeShape EntityType="BaseModel.Licenses" Width="1.5" PointX="0.22449915121518965" PointY="23.247416909433628" />
-        <EntityTypeShape EntityType="BaseModel.UserSettings" Width="1.5" PointX="11.893034331450721" PointY="16.768823437750722" />
+        <EntityTypeShape EntityType="BaseModel.UserSettings" Width="1.5" PointX="3.9472953397535226" PointY="1.7824340470984736" />
+        <AssociationConnector Association="BaseModel.FK_UserSettings_Users" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="7.0245045325832924" PointY="12.641712000892364" />

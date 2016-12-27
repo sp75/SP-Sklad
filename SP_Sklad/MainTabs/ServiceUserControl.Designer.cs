@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServiceUserControl));
             this.standaloneBarDockControl8 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
@@ -37,8 +38,8 @@
             this.standaloneBarDockControl5 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl6 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl7 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.UserTreeImgList = new System.Windows.Forms.ImageList();
-            this.UsersDS = new System.Windows.Forms.BindingSource();
+            this.UserTreeImgList = new System.Windows.Forms.ImageList(this.components);
+            this.UsersDS = new System.Windows.Forms.BindingSource(this.components);
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.DirTreeList = new DevExpress.XtraTreeList.TreeList();
@@ -65,7 +66,7 @@
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.UsersOnlineGridControl = new DevExpress.XtraGrid.GridControl();
-            this.UsersOnlineBS = new System.Windows.Forms.BindingSource();
+            this.UsersOnlineBS = new System.Windows.Forms.BindingSource(this.components);
             this.UsersOnlineGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -77,10 +78,10 @@
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.repositoryItemImageComboBox5 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.GridImageList = new System.Windows.Forms.ImageList();
+            this.GridImageList = new System.Windows.Forms.ImageList(this.components);
             this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
             this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
-            this.barManager1 = new DevExpress.XtraBars.BarManager();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.NewItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.CopyItemBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -95,7 +96,7 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.standaloneBarDockControl19 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.BarImageList = new System.Windows.Forms.ImageList();
+            this.BarImageList = new System.Windows.Forms.ImageList(this.components);
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.ExplorerRefreshBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -109,7 +110,7 @@
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage15 = new DevExpress.XtraTab.XtraTabPage();
             this.OprLogGridControl = new DevExpress.XtraGrid.GridControl();
-            this.GetOperLogBS = new System.Windows.Forms.BindingSource();
+            this.GetOperLogBS = new System.Windows.Forms.BindingSource(this.components);
             this.OprLogGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn42 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox4 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -137,10 +138,18 @@
             this.wbStartDate = new DevExpress.XtraEditors.DateEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
+            this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.ComPortNameEdit = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.ComPortSpeedEdit = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.xtraTabPage9 = new DevExpress.XtraTab.XtraTabPage();
             this.AttLabel = new DevExpress.XtraEditors.LabelControl();
             this.PatchEdit = new DevExpress.XtraEditors.ButtonEdit();
-            this.CommonParamsBS = new System.Windows.Forms.BindingSource();
-            this.OperLogPopupMenu = new DevExpress.XtraBars.PopupMenu();
+            this.CommonParamsBS = new System.Windows.Forms.BindingSource(this.components);
+            this.OperLogPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.UsersDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -187,6 +196,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties)).BeginInit();
             this.xtraTabPage7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
+            this.xtraTabControl1.SuspendLayout();
+            this.xtraTabPage8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ComPortNameEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ComPortSpeedEdit.Properties)).BeginInit();
+            this.xtraTabPage9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PatchEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CommonParamsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OperLogPopupMenu)).BeginInit();
@@ -199,7 +215,7 @@
             this.standaloneBarDockControl8.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl8.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl8.Name = "standaloneBarDockControl8";
-            this.standaloneBarDockControl8.Size = new System.Drawing.Size(962, 28);
+            this.standaloneBarDockControl8.Size = new System.Drawing.Size(969, 31);
             this.standaloneBarDockControl8.Text = "standaloneBarDockControl8";
             // 
             // standaloneBarDockControl1
@@ -395,11 +411,11 @@
             this.mainContentTab.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.mainContentTab.BorderStylePage = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.mainContentTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainContentTab.Location = new System.Drawing.Point(0, 28);
+            this.mainContentTab.Location = new System.Drawing.Point(0, 31);
             this.mainContentTab.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
             this.mainContentTab.Name = "mainContentTab";
             this.mainContentTab.SelectedTabPage = this.xtraTabPage10;
-            this.mainContentTab.Size = new System.Drawing.Size(962, 619);
+            this.mainContentTab.Size = new System.Drawing.Size(969, 616);
             this.mainContentTab.TabIndex = 2;
             this.mainContentTab.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage6,
@@ -424,7 +440,7 @@
             this.xtraTabPage10.Controls.Add(this.standaloneBarDockControl18);
             this.xtraTabPage10.Controls.Add(this.standaloneBarDockControl17);
             this.xtraTabPage10.Name = "xtraTabPage10";
-            this.xtraTabPage10.Size = new System.Drawing.Size(960, 592);
+            this.xtraTabPage10.Size = new System.Drawing.Size(963, 588);
             this.xtraTabPage10.Text = "Користувачі";
             // 
             // UsersGridControl
@@ -436,7 +452,7 @@
             this.UsersGridControl.Name = "UsersGridControl";
             this.UsersGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1});
-            this.UsersGridControl.Size = new System.Drawing.Size(960, 592);
+            this.UsersGridControl.Size = new System.Drawing.Size(963, 588);
             this.UsersGridControl.TabIndex = 1;
             this.UsersGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.UsersGridView,
@@ -507,7 +523,7 @@
             this.standaloneBarDockControl13.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl13.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl13.Name = "standaloneBarDockControl13";
-            this.standaloneBarDockControl13.Size = new System.Drawing.Size(960, 0);
+            this.standaloneBarDockControl13.Size = new System.Drawing.Size(963, 0);
             this.standaloneBarDockControl13.Text = "standaloneBarDockControl13";
             // 
             // standaloneBarDockControl12
@@ -517,7 +533,7 @@
             this.standaloneBarDockControl12.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl12.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl12.Name = "standaloneBarDockControl12";
-            this.standaloneBarDockControl12.Size = new System.Drawing.Size(960, 0);
+            this.standaloneBarDockControl12.Size = new System.Drawing.Size(963, 0);
             this.standaloneBarDockControl12.Text = "standaloneBarDockControl12";
             // 
             // standaloneBarDockControl11
@@ -527,7 +543,7 @@
             this.standaloneBarDockControl11.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl11.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl11.Name = "standaloneBarDockControl11";
-            this.standaloneBarDockControl11.Size = new System.Drawing.Size(960, 0);
+            this.standaloneBarDockControl11.Size = new System.Drawing.Size(963, 0);
             this.standaloneBarDockControl11.Text = "standaloneBarDockControl11";
             // 
             // standaloneBarDockControl14
@@ -537,7 +553,7 @@
             this.standaloneBarDockControl14.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl14.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl14.Name = "standaloneBarDockControl14";
-            this.standaloneBarDockControl14.Size = new System.Drawing.Size(960, 0);
+            this.standaloneBarDockControl14.Size = new System.Drawing.Size(963, 0);
             this.standaloneBarDockControl14.Text = "standaloneBarDockControl14";
             // 
             // standaloneBarDockControl10
@@ -547,7 +563,7 @@
             this.standaloneBarDockControl10.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl10.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl10.Name = "standaloneBarDockControl10";
-            this.standaloneBarDockControl10.Size = new System.Drawing.Size(960, 0);
+            this.standaloneBarDockControl10.Size = new System.Drawing.Size(963, 0);
             this.standaloneBarDockControl10.Text = "standaloneBarDockControl10";
             // 
             // standaloneBarDockControl15
@@ -557,7 +573,7 @@
             this.standaloneBarDockControl15.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl15.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl15.Name = "standaloneBarDockControl15";
-            this.standaloneBarDockControl15.Size = new System.Drawing.Size(960, 0);
+            this.standaloneBarDockControl15.Size = new System.Drawing.Size(963, 0);
             this.standaloneBarDockControl15.Text = "standaloneBarDockControl15";
             // 
             // standaloneBarDockControl9
@@ -567,7 +583,7 @@
             this.standaloneBarDockControl9.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl9.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl9.Name = "standaloneBarDockControl9";
-            this.standaloneBarDockControl9.Size = new System.Drawing.Size(960, 0);
+            this.standaloneBarDockControl9.Size = new System.Drawing.Size(963, 0);
             this.standaloneBarDockControl9.Text = "standaloneBarDockControl9";
             // 
             // standaloneBarDockControl16
@@ -577,7 +593,7 @@
             this.standaloneBarDockControl16.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl16.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl16.Name = "standaloneBarDockControl16";
-            this.standaloneBarDockControl16.Size = new System.Drawing.Size(960, 0);
+            this.standaloneBarDockControl16.Size = new System.Drawing.Size(963, 0);
             this.standaloneBarDockControl16.Text = "standaloneBarDockControl16";
             // 
             // standaloneBarDockControl18
@@ -587,7 +603,7 @@
             this.standaloneBarDockControl18.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl18.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl18.Name = "standaloneBarDockControl18";
-            this.standaloneBarDockControl18.Size = new System.Drawing.Size(960, 0);
+            this.standaloneBarDockControl18.Size = new System.Drawing.Size(963, 0);
             this.standaloneBarDockControl18.Text = "standaloneBarDockControl18";
             // 
             // standaloneBarDockControl17
@@ -597,7 +613,7 @@
             this.standaloneBarDockControl17.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl17.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl17.Name = "standaloneBarDockControl17";
-            this.standaloneBarDockControl17.Size = new System.Drawing.Size(960, 0);
+            this.standaloneBarDockControl17.Size = new System.Drawing.Size(963, 0);
             this.standaloneBarDockControl17.Text = "standaloneBarDockControl17";
             // 
             // xtraTabPage6
@@ -711,12 +727,12 @@
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 269);
+            this.gridControl1.Location = new System.Drawing.Point(0, 265);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox5});
-            this.gridControl1.Size = new System.Drawing.Size(963, 319);
+            this.gridControl1.Size = new System.Drawing.Size(963, 323);
             this.gridControl1.TabIndex = 3;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -762,16 +778,16 @@
             // splitterControl1
             // 
             this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitterControl1.Location = new System.Drawing.Point(0, 257);
+            this.splitterControl1.Location = new System.Drawing.Point(0, 260);
             this.splitterControl1.Name = "splitterControl1";
-            this.splitterControl1.Size = new System.Drawing.Size(963, 12);
+            this.splitterControl1.Size = new System.Drawing.Size(963, 5);
             this.splitterControl1.TabIndex = 1;
             this.splitterControl1.TabStop = false;
             // 
             // memoEdit1
             // 
             this.memoEdit1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.memoEdit1.Location = new System.Drawing.Point(0, 26);
+            this.memoEdit1.Location = new System.Drawing.Point(0, 29);
             this.memoEdit1.MenuManager = this.barManager1;
             this.memoEdit1.Name = "memoEdit1";
             this.memoEdit1.Size = new System.Drawing.Size(963, 231);
@@ -912,7 +928,7 @@
             this.standaloneBarDockControl20.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl20.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl20.Name = "standaloneBarDockControl20";
-            this.standaloneBarDockControl20.Size = new System.Drawing.Size(963, 26);
+            this.standaloneBarDockControl20.Size = new System.Drawing.Size(963, 29);
             this.standaloneBarDockControl20.Text = "standaloneBarDockControl20";
             // 
             // barDockControlTop
@@ -950,7 +966,7 @@
             this.standaloneBarDockControl19.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl19.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl19.Name = "standaloneBarDockControl19";
-            this.standaloneBarDockControl19.Size = new System.Drawing.Size(961, 0);
+            this.standaloneBarDockControl19.Size = new System.Drawing.Size(957, 0);
             this.standaloneBarDockControl19.Text = "standaloneBarDockControl19";
             // 
             // BarImageList
@@ -1046,7 +1062,7 @@
             this.xtraTabPage15.Controls.Add(this.standaloneBarDockControl19);
             this.xtraTabPage15.ImageIndex = 18;
             this.xtraTabPage15.Name = "xtraTabPage15";
-            this.xtraTabPage15.Size = new System.Drawing.Size(961, 516);
+            this.xtraTabPage15.Size = new System.Drawing.Size(957, 515);
             this.xtraTabPage15.Text = "Робота з документами";
             // 
             // OprLogGridControl
@@ -1058,7 +1074,7 @@
             this.OprLogGridControl.Name = "OprLogGridControl";
             this.OprLogGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox4});
-            this.OprLogGridControl.Size = new System.Drawing.Size(961, 516);
+            this.OprLogGridControl.Size = new System.Drawing.Size(957, 515);
             this.OprLogGridControl.TabIndex = 2;
             this.OprLogGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.OprLogGridView});
@@ -1371,15 +1387,119 @@
             // 
             // xtraTabPage7
             // 
-            this.xtraTabPage7.Controls.Add(this.AttLabel);
-            this.xtraTabPage7.Controls.Add(this.PatchEdit);
+            this.xtraTabPage7.Controls.Add(this.xtraTabControl1);
             this.xtraTabPage7.Name = "xtraTabPage7";
             this.xtraTabPage7.Size = new System.Drawing.Size(963, 588);
             this.xtraTabPage7.Text = "Налаштування";
             // 
+            // xtraTabControl1
+            // 
+            this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
+            this.xtraTabControl1.Name = "xtraTabControl1";
+            this.xtraTabControl1.SelectedTabPage = this.xtraTabPage8;
+            this.xtraTabControl1.Size = new System.Drawing.Size(963, 588);
+            this.xtraTabControl1.TabIndex = 28;
+            this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtraTabPage8,
+            this.xtraTabPage9});
+            // 
+            // xtraTabPage8
+            // 
+            this.xtraTabPage8.Controls.Add(this.labelControl5);
+            this.xtraTabPage8.Controls.Add(this.labelControl4);
+            this.xtraTabPage8.Controls.Add(this.ComPortNameEdit);
+            this.xtraTabPage8.Controls.Add(this.ComPortSpeedEdit);
+            this.xtraTabPage8.Name = "xtraTabPage8";
+            this.xtraTabPage8.Size = new System.Drawing.Size(957, 560);
+            this.xtraTabPage8.Text = "COM Port";
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Location = new System.Drawing.Point(243, 34);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(61, 16);
+            this.labelControl5.StyleController = this.styleController1;
+            this.labelControl5.TabIndex = 29;
+            this.labelControl5.Text = "Швидкість";
+            // 
+            // styleController1
+            // 
+            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.styleController1.Appearance.Options.UseFont = true;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(20, 34);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(28, 16);
+            this.labelControl4.StyleController = this.styleController1;
+            this.labelControl4.TabIndex = 28;
+            this.labelControl4.Text = "Порт";
+            // 
+            // ComPortNameEdit
+            // 
+            this.ComPortNameEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", global::SP_Sklad.Properties.Settings.Default, "com_port_name", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ComPortNameEdit.EditValue = global::SP_Sklad.Properties.Settings.Default.com_port_name;
+            this.ComPortNameEdit.Location = new System.Drawing.Point(20, 56);
+            this.ComPortNameEdit.MenuManager = this.barManager1;
+            this.ComPortNameEdit.Name = "ComPortNameEdit";
+            this.ComPortNameEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ComPortNameEdit.Properties.Items.AddRange(new object[] {
+            "COM1",
+            "COM2",
+            "COM3",
+            "COM4",
+            "COM5",
+            "COM6",
+            "COM7",
+            "COM8"});
+            this.ComPortNameEdit.Size = new System.Drawing.Size(163, 22);
+            this.ComPortNameEdit.StyleController = this.styleController1;
+            this.ComPortNameEdit.TabIndex = 30;
+            this.ComPortNameEdit.EditValueChanged += new System.EventHandler(this.ComPortNameEdit_EditValueChanged);
+            // 
+            // ComPortSpeedEdit
+            // 
+            this.ComPortSpeedEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", global::SP_Sklad.Properties.Settings.Default, "com_port_speed", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ComPortSpeedEdit.EditValue = global::SP_Sklad.Properties.Settings.Default.com_port_speed;
+            this.ComPortSpeedEdit.Location = new System.Drawing.Point(243, 56);
+            this.ComPortSpeedEdit.MenuManager = this.barManager1;
+            this.ComPortSpeedEdit.Name = "ComPortSpeedEdit";
+            this.ComPortSpeedEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ComPortSpeedEdit.Properties.Items.AddRange(new object[] {
+            "110",
+            "300",
+            "600",
+            "1200",
+            "2400",
+            "4800",
+            "9600",
+            "14400",
+            "19200",
+            "28800",
+            "38400",
+            "56000",
+            "57600",
+            "115200"});
+            this.ComPortSpeedEdit.Size = new System.Drawing.Size(163, 22);
+            this.ComPortSpeedEdit.StyleController = this.styleController1;
+            this.ComPortSpeedEdit.TabIndex = 31;
+            this.ComPortSpeedEdit.EditValueChanged += new System.EventHandler(this.ComPortSpeedEdit_EditValueChanged);
+            // 
+            // xtraTabPage9
+            // 
+            this.xtraTabPage9.Controls.Add(this.AttLabel);
+            this.xtraTabPage9.Controls.Add(this.PatchEdit);
+            this.xtraTabPage9.Name = "xtraTabPage9";
+            this.xtraTabPage9.Size = new System.Drawing.Size(957, 560);
+            this.xtraTabPage9.Text = "xtraTabPage9";
+            // 
             // AttLabel
             // 
-            this.AttLabel.Location = new System.Drawing.Point(18, 30);
+            this.AttLabel.Location = new System.Drawing.Point(31, 41);
             this.AttLabel.Name = "AttLabel";
             this.AttLabel.Size = new System.Drawing.Size(93, 13);
             this.AttLabel.TabIndex = 27;
@@ -1388,7 +1508,7 @@
             // PatchEdit
             // 
             this.PatchEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.CommonParamsBS, "TemplatePatch", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.PatchEdit.Location = new System.Drawing.Point(117, 27);
+            this.PatchEdit.Location = new System.Drawing.Point(130, 38);
             this.PatchEdit.MenuManager = this.barManager1;
             this.PatchEdit.Name = "PatchEdit";
             this.PatchEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1480,7 +1600,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties)).EndInit();
             this.xtraTabPage7.ResumeLayout(false);
-            this.xtraTabPage7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
+            this.xtraTabControl1.ResumeLayout(false);
+            this.xtraTabPage8.ResumeLayout(false);
+            this.xtraTabPage8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ComPortNameEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ComPortSpeedEdit.Properties)).EndInit();
+            this.xtraTabPage9.ResumeLayout(false);
+            this.xtraTabPage9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PatchEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CommonParamsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OperLogPopupMenu)).EndInit();
@@ -1603,5 +1731,13 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl20;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage8;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage9;
+        private DevExpress.XtraEditors.StyleController styleController1;
+        private DevExpress.XtraEditors.ComboBoxEdit ComPortNameEdit;
+        private DevExpress.XtraEditors.ComboBoxEdit ComPortSpeedEdit;
     }
 }

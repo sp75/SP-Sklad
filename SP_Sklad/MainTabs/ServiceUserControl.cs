@@ -41,12 +41,18 @@ namespace SP_Sklad.MainTabs
 
                     UserComboBox.Properties.DataSource = new List<object>() { new { UserId = -1, Name = "Усі" } }.Concat(new BaseEntities().Users.Select(s => new { s.UserId, s.Name })).ToList();
                     UserComboBox.EditValue = -1;
-   
+
                     wTypeList.Properties.DataSource = new List<object>() { new { FunId = (int?)-1, Name = "Усі" } }
-                        .Concat(new BaseEntities().ViewLng.Where(w => w.LangId == 2 && (w.UserTreeView.Functions.TabId == 24 || w.UserTreeView.Functions.TabId == 27 || w.UserTreeView.Functions.TabId== 51)).Select(s => new { s.UserTreeView.FunId, s.Name })).ToList();
+                        .Concat(new BaseEntities().ViewLng.Where(w => w.LangId == 2 && (w.UserTreeView.Functions.TabId == 24 || w.UserTreeView.Functions.TabId == 27 || w.UserTreeView.Functions.TabId == 51)).Select(s => new { s.UserTreeView.FunId, s.Name })).ToList();
                     wTypeList.EditValue = -1;
 
                 }
+
+           /*     using (var s = new UserSettingsRepository(UserSession.UserId))
+                {
+                    ComPortNameEdit.Text = s.ComPortName;
+                    ComPortSpeedEdit.Text = s.ComPortSpeed;
+                }*/
             }
         }
 
@@ -234,6 +240,22 @@ namespace SP_Sklad.MainTabs
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
          //   gridControl1.DataSource = DB.SkladBase().Database.SqlQuery, memoEdit1.Text);
+        }
+
+        private void ComPortNameEdit_EditValueChanged(object sender, EventArgs e)
+        {
+           /* using (var s = new UserSettingsRepository(UserSession.UserId ))
+            {
+                s.ComPortName = ComPortNameEdit.Text;
+            }*/
+        }
+
+        private void ComPortSpeedEdit_EditValueChanged(object sender, EventArgs e)
+        {
+          /*  using (var s = new UserSettingsRepository(UserSession.UserId))
+            {
+                s.ComPortSpeed = ComPortSpeedEdit.Text;
+            }*/
         }
     }
 }

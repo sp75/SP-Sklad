@@ -29,7 +29,7 @@ namespace SP_Sklad.WBForm
         public int? doc_id { get; set; }
   //      private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
-        private bool is_new_record { get; set; }
+        public bool is_new_record { get; set; }
 
         private GetWayBillDetOut_Result wbd_row
         {
@@ -48,7 +48,6 @@ namespace SP_Sklad.WBForm
             _wbill_id = wbill_id;
             _db = new BaseEntities();
         //    current_transaction = _db.Database.BeginTransaction(/*IsolationLevel.RepeatableRead*/);
-
             InitializeComponent();
         }
 
@@ -76,8 +75,6 @@ namespace SP_Sklad.WBForm
                 });
 
                 _db.SaveChanges();
-
-                _wbill_id = wb.WbillId;
             }
             else
             {
@@ -87,6 +84,8 @@ namespace SP_Sklad.WBForm
 
             if (wb != null)
             {
+                _wbill_id = wb.WbillId;
+
                 DBHelper.UpdateSessionWaybill(wb.WbillId);
 
                 WaybillListBS.DataSource = wb;
@@ -171,7 +170,7 @@ namespace SP_Sklad.WBForm
             }
 
             wb.UpdatedAt = DateTime.Now;
-            _db.SaveChanges();
+            _db.Save(wb.WbillId);
 
             payDocUserControl1.Execute(wb.WbillId);
 
@@ -225,11 +224,6 @@ namespace SP_Sklad.WBForm
                 _db.DeleteWhere<WaybillList>(w => w.WbillId == _wbill_id);
                 _db.SaveChanges();
                 //   current_transaction.Commit();
-
-            }
-
-            using (var ss = new UserSettingsRepository(0))
-            {
 
             }
 
@@ -356,7 +350,6 @@ namespace SP_Sklad.WBForm
             {
                 MessageBox.Show("Не вдалося зарезервувати деякі товари!");
             }
-            _db.SaveChanges();
        //     current_transaction = current_transaction.CommitRetaining(_db);
       //      UpdLockWB();
            
@@ -368,7 +361,7 @@ namespace SP_Sklad.WBForm
             if (wbd_row.Rsv == 1 && wbd_row.PosId > 0)
             {
                 _db.DeleteWhere<WMatTurn>(w => w.SourceId == wbd_row.PosId);
-                _db.SaveChanges();
+            //    _db.SaveChanges();
               //  current_transaction = current_transaction.CommitRetaining(_db);
        //         UpdLockWB();
                 wbd_row.Rsv = 0;
@@ -381,7 +374,6 @@ namespace SP_Sklad.WBForm
         private void DelAllRsvBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             _db.DeleteAllReservePosition(wb.WbillId);
-            _db.SaveChanges();
        //     current_transaction = current_transaction.CommitRetaining(_db);
   //          UpdLockWB();
          
@@ -548,8 +540,12 @@ namespace SP_Sklad.WBForm
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            _db.DeleteWhere<WaybillDet>(w => w.WbillId == _wbill_id && w.Checked != 1);
-            _db.SaveChanges();
+            var wbd_list = _db.WaybillDet.Where(w => w.WbillId == _wbill_id && w.Checked != 1);
+            if (wbd_list != null)
+            {
+                _db.WaybillDet.RemoveRange(wbd_list);
+            }
+          //  _db.SaveChanges();
             RefreshDet();
         }
 
@@ -569,9 +565,8 @@ namespace SP_Sklad.WBForm
                     wbd.Checked = 1;
                 }
                 _db.SaveChanges();
-                RefreshDet();
 
-             //   WaybillDetOutGridView.MoveNext();
+                RefreshDet();
             }
         }
     }

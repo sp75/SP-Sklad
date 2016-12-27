@@ -140,5 +140,29 @@ namespace SP_Sklad.Properties {
                 this["wb_out_result"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("COM1")]
+        public string com_port_name {
+            get {
+                return ((string)(this["com_port_name"]));
+            }
+            set {
+                this["com_port_name"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("4800")]
+        public string com_port_speed {
+            get {
+                return ((string)(this["com_port_speed"]));
+            }
+            set {
+                this["com_port_speed"] = value;
+            }
+        }
     }
 }

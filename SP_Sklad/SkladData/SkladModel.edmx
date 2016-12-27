@@ -895,6 +895,10 @@
             <End Role="UsersGroup" EntitySet="UsersGroup" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
+          <AssociationSet Name="FK_UserSettings_Users" Association="BaseModel.Store.FK_UserSettings_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserSettings" EntitySet="UserSettings" />
+          </AssociationSet>
           <AssociationSet Name="FK_USERTREE_FK_USERTR_FUNCTION" Association="BaseModel.Store.FK_USERTREE_FK_USERTR_FUNCTION">
             <End Role="Functions" EntitySet="Functions" />
             <End Role="UserTreeView" EntitySet="UserTreeView" />
@@ -1980,7 +1984,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="int" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Value" Type="nvarchar" MaxLength="128" />
@@ -4092,6 +4096,20 @@
             </Principal>
             <Dependent Role="Users">
               <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSettings_Users">
+          <End Role="Users" Type="BaseModel.Store.Users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserSettings" Type="BaseModel.Store.UserSettings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserSettings">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7224,6 +7242,10 @@
           </FunctionImport>
           <EntitySet Name="Licenses" EntityType="BaseModel.Licenses" />
           <EntitySet Name="UserSettings" EntityType="BaseModel.UserSettings" />
+          <AssociationSet Name="FK_UserSettings_Users" Association="BaseModel.FK_UserSettings_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserSettings" EntitySet="UserSettings" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -12009,6 +12031,7 @@
           <NavigationProperty Name="UserAccess" Relationship="BaseModel.FK_USERACCESS_1" FromRole="Users" ToRole="UserAccess" />
           <NavigationProperty Name="UserAccessWh" Relationship="BaseModel.FK_UAWH_USERID" FromRole="Users" ToRole="UserAccessWh" />
           <NavigationProperty Name="UsersGroup" Relationship="BaseModel.FK_Users_UsersGroup" FromRole="Users" ToRole="UsersGroup" />
+          <NavigationProperty Name="UserSettings" Relationship="BaseModel.FK_UserSettings_Users" FromRole="Users" ToRole="UserSettings" />
         </EntityType>
         <Association Name="FK_Kagent_Users">
           <End Type="BaseModel.Users" Role="Users" Multiplicity="0..1" />
@@ -12132,11 +12155,26 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="UserId" />
           <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Value" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="BaseModel.FK_UserSettings_Users" FromRole="UserSettings" ToRole="Users" />
         </EntityType>
+        <Association Name="FK_UserSettings_Users">
+          <End Type="BaseModel.Users" Role="Users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.UserSettings" Role="UserSettings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserSettings">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
