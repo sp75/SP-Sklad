@@ -281,7 +281,7 @@ namespace SP_Sklad.Reports
                 var kagents = db.Kagent.Where(w => w.Deleted == 0 && (w.Archived ?? 0) == 0).Select(s => new
                 {
                     s.Name,
-                    Saldo = db.KAgentSaldo.Where(ks => ks.KAId == s.KaId && ks.OnDate <= OnDate).OrderByDescending(o => o.OnDate).Select(kss => kss.Saldo).Take(1).FirstOrDefault()
+                    Saldo = db.GetKAgentSaldo(s.KaId, OnDate).Select(kss => kss.Saldo).FirstOrDefault()// db.KAgentSaldo.Where(ks => ks.KAId == s.KaId && ks.OnDate <= OnDate).OrderByDescending(o => o.OnDate).Select(kss => kss.Saldo).Take(1).FirstOrDefault()
                 }).ToList().Where(w => w.Saldo > 0).Select((s, index) => new
                 {
                     N = index + 1,
@@ -305,7 +305,7 @@ namespace SP_Sklad.Reports
                 var kagents = db.Kagent.Where(w => w.Deleted == 0 && (w.Archived ?? 0) == 0).Select(s => new
                 {
                     s.Name,
-                    Saldo = db.KAgentSaldo.Where(ks => ks.KAId == s.KaId && ks.OnDate <= OnDate).OrderByDescending(o => o.OnDate).Select(kss => kss.Saldo).Take(1).FirstOrDefault()
+                    Saldo = db.GetKAgentSaldo(s.KaId, OnDate).Select(kss => kss.Saldo).FirstOrDefault() // db.KAgentSaldo.Where(ks => ks.KAId == s.KaId && ks.OnDate <= OnDate).OrderByDescending(o => o.OnDate).Select(kss => kss.Saldo).Take(1).FirstOrDefault()
                 }).ToList().Where(w => w.Saldo < 0).Select((s, index) => new
                 {
                     N = index + 1,
