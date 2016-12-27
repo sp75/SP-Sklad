@@ -236,6 +236,13 @@
       [v_KAgentAccount].[TypeName] AS [TypeName]
       FROM [dbo].[v_KAgentAccount] AS [v_KAgentAccount]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_KAgentSaldo" EntityType="BaseModel.Store.v_KAgentSaldo" store:Type="Views" store:Schema="dbo" store:Name="v_KAgentSaldo">
+            <DefiningQuery>SELECT 
+      [v_KAgentSaldo].[KaId] AS [KaId], 
+      [v_KAgentSaldo].[OnDate] AS [OnDate], 
+      [v_KAgentSaldo].[Saldo] AS [Saldo]
+      FROM [dbo].[v_KAgentSaldo] AS [v_KAgentSaldo]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_MatRemains" EntityType="BaseModel.Store.v_MatRemains" store:Type="Views" store:Schema="dbo" store:Name="v_MatRemains">
             <DefiningQuery>SELECT 
       [v_MatRemains].[MatId] AS [MatId], 
@@ -2253,7 +2260,7 @@
           <Property Name="ContractType" Type="nvarchar" MaxLength="64" />
           <Property Name="ContractDate" Type="datetime" />
           <Property Name="ContractNum" Type="nvarchar" MaxLength="20" />
-          <Property Name="Saldo" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="Saldo" Type="numeric" Precision="38" Scale="2" />
           <Property Name="GroupName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -2356,6 +2363,17 @@
           <Property Name="MFO" Type="nvarchar" MaxLength="50" />
           <Property Name="BankName" Type="nvarchar" MaxLength="128" />
           <Property Name="TypeName" Type="nvarchar" MaxLength="64" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'sp_base.dbo.v_KAgentSaldo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="v_KAgentSaldo">
+          <Key>
+            <PropertyRef Name="KaId" />
+          </Key>
+          <Property Name="KaId" Type="int" Nullable="false" />
+          <Property Name="OnDate" Type="date" />
+          <Property Name="Saldo" Type="numeric" Precision="38" Scale="2" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'sp_base.dbo.v_MatRemains' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -4547,6 +4565,19 @@
         </Function>
         <Function Name="GetFinancesTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="user_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetKAgentSaldo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ka_id" Type="int" Mode="In" />
+          <Parameter Name="on_date" Type="datetime" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="KaId" Type="int" Nullable="false" />
+                <Property Name="OnDate" Type="date" />
+                <Property Name="Saldo" Type="numeric" Precision="38" Scale="2" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
         </Function>
         <Function Name="GetLastPrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="mat_id" Type="int" Mode="In" />
@@ -7246,6 +7277,11 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="UserSettings" EntitySet="UserSettings" />
           </AssociationSet>
+          <EntitySet Name="v_KAgentSaldo" EntityType="BaseModel.v_KAgentSaldo" />
+          <FunctionImport Name="GetKAgentSaldo" IsComposable="true" ReturnType="Collection(BaseModel.GetKAgentSaldo_Result)">
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="on_date" Mode="In" Type="DateTime" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -8948,7 +8984,7 @@
           <Property Type="String" Name="ContractType" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="ContractDate" Precision="3" />
           <Property Type="String" Name="ContractNum" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="Decimal" Name="Saldo" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Saldo" Precision="38" Scale="2" />
           <Property Type="String" Name="GroupName" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="KAgentTyp">
@@ -12175,6 +12211,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="v_KAgentSaldo">
+          <Key>
+            <PropertyRef Name="KaId" />
+          </Key>
+          <Property Type="Int32" Name="KaId" Nullable="false" />
+          <Property Type="DateTime" Name="OnDate" Precision="0" />
+          <Property Type="Decimal" Name="Saldo" Precision="38" Scale="2" />
+        </EntityType>
+        <ComplexType Name="GetKAgentSaldo_Result">
+          <Property Type="Int32" Name="KaId" Nullable="false" />
+          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="10" />
+          <Property Type="Decimal" Name="Saldo" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -15379,6 +15428,24 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="v_KAgentSaldo">
+            <EntityTypeMapping TypeName="BaseModel.v_KAgentSaldo">
+              <MappingFragment StoreEntitySet="v_KAgentSaldo">
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetKAgentSaldo" FunctionName="BaseModel.Store.GetKAgentSaldo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetKAgentSaldo_Result">
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

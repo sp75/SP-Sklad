@@ -137,6 +137,7 @@ namespace SP_Sklad.SkladData
         public DbSet<Users> Users { get; set; }
         public DbSet<Licenses> Licenses { get; set; }
         public DbSet<UserSettings> UserSettings { get; set; }
+        public DbSet<v_KAgentSaldo> v_KAgentSaldo { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)
@@ -1994,6 +1995,20 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("doc_types", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<REP_1_Result>("REP_1", from_dateParameter, to_dateParameter, grp_idParameter, ka_idParameter, whParameter, doc_typesParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetKAgentSaldo")]
+        public virtual IQueryable<GetKAgentSaldo_Result> GetKAgentSaldo(Nullable<int> ka_id, Nullable<System.DateTime> on_date)
+        {
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var on_dateParameter = on_date.HasValue ?
+                new ObjectParameter("on_date", on_date) :
+                new ObjectParameter("on_date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetKAgentSaldo_Result>("[BaseEntities].[GetKAgentSaldo](@ka_id, @on_date)", ka_idParameter, on_dateParameter);
         }
     }
 }
