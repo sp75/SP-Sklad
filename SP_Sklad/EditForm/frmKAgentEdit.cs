@@ -20,7 +20,7 @@ namespace SP_Sklad.EditForm
         int? _k_type { get; set; }
         private Kagent _ka { get; set; }
         private BaseEntities _db { get; set; }
-        private KAgentSaldo k_saldo { get; set; }
+   //     private KAgentSaldo k_saldo { get; set; }
         private KADiscount k_discount { get; set; }
         private DbContextTransaction current_transaction { get; set; }
         private List<CatalogTreeList> tree { get; set; }
@@ -71,8 +71,14 @@ namespace SP_Sklad.EditForm
 
             if (_ka != null)
             {
-                k_saldo = _db.KAgentSaldo.Where(w => w.KAId == _ka.KaId).OrderBy(d => d.OnDate).FirstOrDefault();
-                checkEdit2.Enabled = k_saldo == null;
+                var k_saldo = _db.v_KAgentSaldo.Where(w => w.KaId == _ka.KaId).OrderBy(d => d.OnDate).Take(2).ToList();// FirstOrDefault();
+                KASaldoEdit.EditValue = _ka.StartSaldo != null ? Math.Abs(_ka.StartSaldo.Value) : KASaldoEdit.EditValue;
+                if (_ka.StartSaldo != null)
+                {
+                    checkEdit3.Checked = _ka.StartSaldo >= 0;
+                    checkEdit4.Checked = _ka.StartSaldo < 0;
+                }
+                checkEdit2.Enabled = k_saldo == null || k_saldo.Count() < 2;
                 checkEdit2.Checked = _ka.StartSaldoDate != null;
                 StartSaldoPanel.Enabled = (checkEdit2.Checked && checkEdit2.Enabled);
 
@@ -309,7 +315,7 @@ namespace SP_Sklad.EditForm
             StartSaldoPanel.Enabled = checkEdit2.Checked;
             if(checkEdit2.Checked)
             {
-                if(KASaldoEdit.EditValue == DBNull.Value)
+                if(_ka.StartSaldo == null)
                 {
                     KASaldoEdit.EditValue = 0;
                     StartSaldoDateEdit.DateTime = DateTime.Now;
@@ -328,8 +334,15 @@ namespace SP_Sklad.EditForm
 
             if (!checkEdit2.Checked && checkEdit2.Enabled)
             {
-                KASaldoEdit.EditValue = null;
-                StartSaldoDateEdit.EditValue = null;
+                _ka.StartSaldo = null;
+                _ka.StartSaldoDate = null;
+            }
+            if (checkEdit2.Enabled && checkEdit2.Checked)
+            {
+                if (checkEdit4.Checked)
+                {
+                    _ka.StartSaldo = KASaldoEdit.Value * -1;
+                }
             }
 
             _db.SaveChanges();

@@ -351,9 +351,6 @@
     <Compile Include="SkladData\Kagent.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\KAgentSaldo.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SkladData\KontragentGroup.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>

@@ -33,7 +33,6 @@ namespace SP_Sklad.SkladData
             this.WaybillMove = new HashSet<WaybillMove>();
             this.KAgentAccount = new HashSet<KAgentAccount>();
             this.KAgentPersons = new HashSet<KAgentPersons>();
-            this.KAgentSaldo = new HashSet<KAgentSaldo>();
             this.Routes1 = new HashSet<Routes>();
             this.TAXWB1 = new HashSet<TAXWB>();
             this.TechProcDet = new HashSet<TechProcDet>();
@@ -97,7 +96,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<KAgentPersons> KAgentPersons { get; set; }
         public virtual KontragentGroup KontragentGroup { get; set; }
         public virtual Routes Routes { get; set; }
-        public virtual ICollection<KAgentSaldo> KAgentSaldo { get; set; }
         public virtual ICollection<Routes> Routes1 { get; set; }
         public virtual ICollection<TAXWB> TAXWB1 { get; set; }
         public virtual ICollection<TechProcDet> TechProcDet { get; set; }

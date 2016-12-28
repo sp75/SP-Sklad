@@ -156,7 +156,6 @@
         <AssociationConnector Association="BaseModel.FK_MGP_PPTYPEID" />
         <AssociationConnector Association="BaseModel.FK__MATPRICES__PTYPE__72910220" />
         <AssociationConnector Association="BaseModel.FK_MATPRICES_PPTYPEID" />
-        <EntityTypeShape EntityType="BaseModel.KAgentSaldo" Width="1.5" PointX="5.25" PointY="47.25" />
         <EntityTypeShape EntityType="BaseModel.DemandGroup" Width="1.5" PointX="11.375" PointY="5.625" />
         <EntityTypeShape EntityType="BaseModel.MatChange" Width="1.5" PointX="8.25" PointY="30.25" />
         <AssociationConnector Association="BaseModel.FK_MATCHANGE_CHANGEID" />
@@ -206,7 +205,6 @@
         <AssociationConnector Association="BaseModel.FK_AP_KAID" />
         <AssociationConnector Association="BaseModel.FK_Kagent_KontragentGroup" />
         <AssociationConnector Association="BaseModel.FK_Kagent_Routes" />
-        <AssociationConnector Association="BaseModel.FK_KAS_KAID" />
         <AssociationConnector Association="BaseModel.FK_Routes_Kagent" />
         <AssociationConnector Association="BaseModel.FK_TAXWB_REFERENCE_KAGENT" />
         <AssociationConnector Association="BaseModel.FK_TECHPROCDET_KAGENT" />

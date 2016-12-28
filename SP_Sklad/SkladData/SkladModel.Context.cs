@@ -115,7 +115,6 @@ namespace SP_Sklad.SkladData
         public DbSet<Customers> Customers { get; set; }
         public DbSet<MatGroupPrices> MatGroupPrices { get; set; }
         public DbSet<MatPrices> MatPrices { get; set; }
-        public DbSet<KAgentSaldo> KAgentSaldo { get; set; }
         public DbSet<DemandGroup> DemandGroup { get; set; }
         public DbSet<MatChange> MatChange { get; set; }
         public DbSet<v_MatRemains> v_MatRemains { get; set; }

@@ -40,7 +40,6 @@
           <EntitySet Name="KAgentAccount" EntityType="BaseModel.Store.KAgentAccount" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="KAgentDoc" EntityType="BaseModel.Store.KAgentDoc" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="KAgentPersons" EntityType="BaseModel.Store.KAgentPersons" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="KAgentSaldo" EntityType="BaseModel.Store.KAgentSaldo" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="KAgentTyp" EntityType="BaseModel.Store.KAgentTyp" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="KAKInd" EntityType="BaseModel.Store.KAKInd" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="KAMatDiscount" EntityType="BaseModel.Store.KAMatDiscount" store:Type="Tables" Schema="dbo" />
@@ -701,10 +700,6 @@
           <AssociationSet Name="FK_Kagent_Users" Association="BaseModel.Store.FK_Kagent_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Kagent" EntitySet="Kagent" />
-          </AssociationSet>
-          <AssociationSet Name="FK_KAS_KAID" Association="BaseModel.Store.FK_KAS_KAID">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAgentSaldo" EntitySet="KAgentSaldo" />
           </AssociationSet>
           <AssociationSet Name="FK_MATCHANGE_CHANGEID" Association="BaseModel.Store.FK_MATCHANGE_CHANGEID">
             <End Role="Materials" EntitySet="Materials" />
@@ -1422,15 +1417,6 @@
           <Property Name="Email" Type="varchar" MaxLength="64" />
           <Property Name="Notes" Type="varchar" MaxLength="255" />
           <Property Name="JobType" Type="int" />
-        </EntityType>
-        <EntityType Name="KAgentSaldo">
-          <Key>
-            <PropertyRef Name="KAId" />
-            <PropertyRef Name="OnDate" />
-          </Key>
-          <Property Name="KAId" Type="int" Nullable="false" />
-          <Property Name="OnDate" Type="datetime" Nullable="false" />
-          <Property Name="Saldo" Type="numeric" Nullable="false" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="KAgentTyp">
           <Key>
@@ -3476,20 +3462,6 @@
             </Principal>
             <Dependent Role="Kagent">
               <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_KAS_KAID">
-          <End Role="Kagent" Type="BaseModel.Store.Kagent" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="KAgentSaldo" Type="BaseModel.Store.KAgentSaldo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="KAgentSaldo">
-              <PropertyRef Name="KAId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -6886,7 +6858,6 @@
             <End Role="PriceTypes" EntitySet="PriceTypes" />
             <End Role="MatPrices" EntitySet="MatPrices" />
           </AssociationSet>
-          <EntitySet Name="KAgentSaldo" EntityType="BaseModel.KAgentSaldo" />
           <FunctionImport Name="GetMatPriceTypes" IsComposable="true" ReturnType="Collection(BaseModel.GetMatPriceTypes_Result)">
           <Parameter Name="mat_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -7084,10 +7055,6 @@
           <AssociationSet Name="FK_Kagent_Routes" Association="BaseModel.FK_Kagent_Routes">
             <End Role="Routes" EntitySet="Routes" />
             <End Role="Kagent" EntitySet="Kagent" />
-          </AssociationSet>
-          <AssociationSet Name="FK_KAS_KAID" Association="BaseModel.FK_KAS_KAID">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAgentSaldo" EntitySet="KAgentSaldo" />
           </AssociationSet>
           <AssociationSet Name="FK_Routes_Kagent" Association="BaseModel.FK_Routes_Kagent">
             <End Role="Kagent" EntitySet="Kagent" />
@@ -10667,16 +10634,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="KAgentSaldo">
-          <Key>
-            <PropertyRef Name="KAId" />
-            <PropertyRef Name="OnDate" />
-          </Key>
-          <Property Name="KAId" Type="Int32" Nullable="false" />
-          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Saldo" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_KAS_KAID" FromRole="KAgentSaldo" ToRole="Kagent" />
-        </EntityType>
         <ComplexType Name="GetMatPriceTypes_Result">
           <Property Type="Int32" Name="PTypeId" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="64" />
@@ -11207,7 +11164,6 @@
           <NavigationProperty Name="KAgentPersons" Relationship="BaseModel.FK_AP_KAID" FromRole="Kagent" ToRole="KAgentPersons" />
           <NavigationProperty Name="KontragentGroup" Relationship="BaseModel.FK_Kagent_KontragentGroup" FromRole="Kagent" ToRole="KontragentGroup" />
           <NavigationProperty Name="Routes" Relationship="BaseModel.FK_Kagent_Routes" FromRole="Kagent" ToRole="Routes" />
-          <NavigationProperty Name="KAgentSaldo" Relationship="BaseModel.FK_KAS_KAID" FromRole="Kagent" ToRole="KAgentSaldo" />
           <NavigationProperty Name="Routes1" Relationship="BaseModel.FK_Routes_Kagent" FromRole="Kagent" ToRole="Routes" />
           <NavigationProperty Name="TAXWB1" Relationship="BaseModel.FK_TAXWB_REFERENCE_KAGENT" FromRole="Kagent" ToRole="TAXWB" />
           <NavigationProperty Name="TechProcDet" Relationship="BaseModel.FK_TECHPROCDET_KAGENT" FromRole="Kagent" ToRole="TechProcDet" />
@@ -11491,20 +11447,6 @@
             </Principal>
             <Dependent Role="Kagent">
               <PropertyRef Name="RouteId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_KAS_KAID">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.KAgentSaldo" Role="KAgentSaldo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="KAgentSaldo">
-              <PropertyRef Name="KAId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -14879,15 +14821,6 @@
                 <ScalarProperty Name="MatId" ColumnName="MatId" />
                 <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="KAgentSaldo">
-            <EntityTypeMapping TypeName="BaseModel.KAgentSaldo">
-              <MappingFragment StoreEntitySet="KAgentSaldo">
-                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="KAId" ColumnName="KAId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

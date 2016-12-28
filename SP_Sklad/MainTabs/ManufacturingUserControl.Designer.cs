@@ -1855,6 +1855,8 @@
             // gridColumn60
             // 
             this.gridColumn60.Caption = "Вихід";
+            this.gridColumn60.DisplayFormat.FormatString = "0.00";
+            this.gridColumn60.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn60.FieldName = "AmountOut";
             this.gridColumn60.Name = "gridColumn60";
             this.gridColumn60.Visible = true;
@@ -1863,6 +1865,8 @@
             // gridColumn61
             // 
             this.gridColumn61.Caption = "Собівартість";
+            this.gridColumn61.DisplayFormat.FormatString = "0.00";
+            this.gridColumn61.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn61.FieldName = "Price";
             this.gridColumn61.Name = "gridColumn61";
             this.gridColumn61.Visible = true;
