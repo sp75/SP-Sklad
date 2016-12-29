@@ -402,6 +402,7 @@ namespace SP_Sklad.MainTabs
             });
 
             MatListGridView.RefreshData();
+            MatListGridView.MoveLast();
         }
 
         private void DelItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

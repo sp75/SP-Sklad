@@ -222,7 +222,6 @@ namespace SP_Sklad.WBForm
             if (is_new_record)
             {
                 _db.DeleteWhere<WaybillList>(w => w.WbillId == _wbill_id);
-                _db.SaveChanges();
                 //   current_transaction.Commit();
 
             }
