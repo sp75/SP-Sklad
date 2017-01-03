@@ -318,8 +318,18 @@ namespace SP_Sklad.MainTabs
 
                     string grp = "";
 
-                    if (ByGrpBtn.Down) grp_id = focused_tree_node.Num;
-                    else wid = focused_tree_node.Num;
+                    grp_id = ByGrpBtn.Down ? focused_tree_node.Num : 0;
+                    wid = ByGrpBtn.Down ? 0 : focused_tree_node.Num;
+                   /* if (ByGrpBtn.Down)
+                    {
+                        grp_id = focused_tree_node.Num;
+                        wid = 0;
+                    }
+                    else
+                    {
+                        wid = focused_tree_node.Num;
+                        grp_id = 0;
+                    }*/
 
                     if (ViewDetailTree.Down && ByGrpBtn.Down && focused_tree_node.Num != 0)
                     {
