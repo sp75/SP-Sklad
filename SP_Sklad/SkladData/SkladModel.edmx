@@ -1710,6 +1710,7 @@
           <Property Name="AvgPrice" Type="numeric" Precision="15" Scale="4" />
           <Property Name="InWay" Type="numeric" Precision="15" Scale="4" />
           <Property Name="Ordered" Type="numeric" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="OrderedRsv" Type="numeric" Nullable="false" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="PriceList">
           <Key>
@@ -6373,11 +6374,6 @@
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="MatRemains" EntityType="BaseModel.MatRemains" />
-          <EntitySet Name="PosRemains" EntityType="BaseModel.PosRemains" />
-          <AssociationSet Name="FK__POSREMAINS__WID__2EA5EC27" Association="BaseModel.FK__POSREMAINS__WID__2EA5EC27">
-            <End Role="Warehouse" EntitySet="Warehouse" />
-            <End Role="PosRemains" EntitySet="PosRemains" />
-          </AssociationSet>
           <FunctionImport Name="GetActualRemainByWh" ReturnType="Collection(BaseModel.GetActualRemainByWh_Result)">
             <Parameter Name="wid" Mode="In" Type="Int32" />
             <Parameter Name="mat_id" Mode="In" Type="Int32" />
@@ -6456,10 +6452,6 @@
           <AssociationSet Name="FK__MATREMAIN__MATID__04AFB25B" Association="BaseModel.FK__MATREMAIN__MATID__04AFB25B">
             <End Role="Materials" EntitySet="Materials" />
             <End Role="MatRemains" EntitySet="MatRemains" />
-          </AssociationSet>
-          <AssociationSet Name="FK__POSREMAIN__MATID__2CBDA3B5" Association="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5">
-            <End Role="Materials" EntitySet="Materials" />
-            <End Role="PosRemains" EntitySet="PosRemains" />
           </AssociationSet>
           <AssociationSet Name="FK__WMATTURN__MATID__3AD6B8E2" Association="BaseModel.FK__WMATTURN__MATID__3AD6B8E2">
             <End Role="Materials" EntitySet="Materials" />
@@ -7123,10 +7115,6 @@
             <End Role="Materials" EntitySet="Materials" />
             <End Role="WaybillDet" EntitySet="WaybillDet" />
           </AssociationSet>
-          <AssociationSet Name="FK__POSREMAIN__POSID__2DB1C7EE" Association="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE">
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-            <End Role="PosRemains" EntitySet="PosRemains" />
-          </AssociationSet>
           <AssociationSet Name="FK_WAYBILLD_REFERENCE_PRICETYP" Association="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP">
             <End Role="PriceTypes" EntitySet="PriceTypes" />
             <End Role="WaybillDet" EntitySet="WaybillDet" />
@@ -7249,6 +7237,19 @@
             <Parameter Name="ka_id" Mode="In" Type="Int32" />
             <Parameter Name="on_date" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <EntitySet Name="PosRemains" EntityType="BaseModel.PosRemains" />
+          <AssociationSet Name="FK__POSREMAIN__MATID__2CBDA3B5" Association="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="PosRemains" EntitySet="PosRemains" />
+          </AssociationSet>
+          <AssociationSet Name="FK__POSREMAIN__POSID__2DB1C7EE" Association="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="PosRemains" EntitySet="PosRemains" />
+          </AssociationSet>
+          <AssociationSet Name="FK__POSREMAINS__WID__2EA5EC27" Association="BaseModel.FK__POSREMAINS__WID__2EA5EC27">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="PosRemains" EntitySet="PosRemains" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -8067,13 +8068,13 @@
           <NavigationProperty Name="WaybillMove" Relationship="BaseModel.FK_WAYBILLM_FK_WBM_DE_WAREHOUS" FromRole="Warehouse" ToRole="WaybillMove" />
           <NavigationProperty Name="WaybillMove1" Relationship="BaseModel.FK_WAYBILLM_FK_WBM_SO_WAREHOUS" FromRole="Warehouse" ToRole="WaybillMove" />
           <NavigationProperty Name="UserAccessWh" Relationship="BaseModel.FK_UAWH_WID" FromRole="Warehouse" ToRole="UserAccessWh" />
-          <NavigationProperty Name="PosRemains" Relationship="BaseModel.FK__POSREMAINS__WID__2EA5EC27" FromRole="Warehouse" ToRole="PosRemains" />
           <NavigationProperty Name="WayBillMake" Relationship="BaseModel.FK_WAYBILLMAKE_WAREHOUSE" FromRole="Warehouse" ToRole="WayBillMake" />
           <NavigationProperty Name="DeboningDet" Relationship="BaseModel.FK_DeboningDet_Warehouse" FromRole="Warehouse" ToRole="DeboningDet" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK__MATERIALS__WID__59C55456" FromRole="Warehouse" ToRole="Materials" />
           <NavigationProperty Name="Materials1" Relationship="BaseModel.FK__MATERIALS__WID__5E8A0973" FromRole="Warehouse" ToRole="Materials" />
           <NavigationProperty Name="Materials2" Relationship="BaseModel.FK__MATERIALS__WID__65370702" FromRole="Warehouse" ToRole="Materials" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__WAREHOUS" FromRole="Warehouse" ToRole="WaybillDet" />
+          <NavigationProperty Name="PosRemains" Relationship="BaseModel.FK__POSREMAINS__WID__2EA5EC27" FromRole="Warehouse" ToRole="PosRemains" />
           </EntityType>
         <Association Name="FK__WMATTURN__WID__3BCADD1B">
           <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="1" />
@@ -8433,36 +8434,6 @@
           <Property Type="Decimal" Name="ORsv" Precision="15" Scale="4" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK__MATREMAIN__MATID__04AFB25B" FromRole="MatRemains" ToRole="Materials" />
         </EntityType>
-        <EntityType Name="PosRemains">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="PosId" Nullable="false" />
-          <Property Type="Int32" Name="WId" Nullable="false" />
-          <Property Type="Int32" Name="MatId" Nullable="false" />
-          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
-          <Property Type="Decimal" Name="Remain" Nullable="false" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Rsv" Nullable="false" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="AvgPrice" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="InWay" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Ordered" Precision="15" Scale="4" Nullable="false" />
-          <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK__POSREMAINS__WID__2EA5EC27" FromRole="PosRemains" ToRole="Warehouse" />
-          <NavigationProperty Name="Materials" Relationship="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" FromRole="PosRemains" ToRole="Materials" />
-          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" FromRole="PosRemains" ToRole="WaybillDet" />
-        </EntityType>
-        <Association Name="FK__POSREMAINS__WID__2EA5EC27">
-          <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="1" />
-          <End Type="BaseModel.PosRemains" Role="PosRemains" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Warehouse">
-              <PropertyRef Name="WId" />
-            </Principal>
-            <Dependent Role="PosRemains">
-              <PropertyRef Name="WId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <ComplexType Name="GetActualRemainByWh_Result">
           <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
           <Property Type="Decimal" Name="Remain" Nullable="false" Precision="15" Scale="4" />
@@ -8733,7 +8704,6 @@
           <NavigationProperty Name="Warehouse1" Relationship="BaseModel.FK__MATERIALS__WID__5E8A0973" FromRole="Materials" ToRole="Warehouse" />
           <NavigationProperty Name="Warehouse2" Relationship="BaseModel.FK__MATERIALS__WID__65370702" FromRole="Materials" ToRole="Warehouse" />
           <NavigationProperty Name="MatRemains" Relationship="BaseModel.FK__MATREMAIN__MATID__04AFB25B" FromRole="Materials" ToRole="MatRemains" />
-          <NavigationProperty Name="PosRemains" Relationship="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" FromRole="Materials" ToRole="PosRemains" />
           <NavigationProperty Name="WMatTurn" Relationship="BaseModel.FK__WMATTURN__MATID__3AD6B8E2" FromRole="Materials" ToRole="WMatTurn" />
           <NavigationProperty Name="Measures" Relationship="BaseModel.FK_MATERIAL_REFERENCE_MEASURES" FromRole="Materials" ToRole="Measures" />
           <NavigationProperty Name="MatRecipe" Relationship="BaseModel.FK_MATRECIPE_1" FromRole="Materials" ToRole="MatRecipe" />
@@ -8744,6 +8714,7 @@
           <NavigationProperty Name="MatChange" Relationship="BaseModel.FK_MATCHANGE_CHANGEID" FromRole="Materials" ToRole="MatChange" />
           <NavigationProperty Name="MatChange1" Relationship="BaseModel.FK_MATCHANGE_MATID" FromRole="Materials" ToRole="MatChange" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" FromRole="Materials" ToRole="WaybillDet" />
+          <NavigationProperty Name="PosRemains" Relationship="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" FromRole="Materials" ToRole="PosRemains" />
         </EntityType>
         <Association Name="FK_CONTRDET_REFERENCE_MATERIAL">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="0..1" />
@@ -8837,18 +8808,6 @@
               <PropertyRef Name="MatId" />
             </Principal>
             <Dependent Role="MatRemains">
-              <PropertyRef Name="MatId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__POSREMAIN__MATID__2CBDA3B5">
-          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
-          <End Type="BaseModel.PosRemains" Role="PosRemains" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Materials">
-              <PropertyRef Name="MatId" />
-            </Principal>
-            <Dependent Role="PosRemains">
               <PropertyRef Name="MatId" />
             </Dependent>
           </ReferentialConstraint>
@@ -11549,7 +11508,6 @@
           <NavigationProperty Name="ExtRel" Relationship="BaseModel.FK_EXTREL_EXTPOSID" FromRole="WaybillDet" ToRole="ExtRel" />
           <NavigationProperty Name="ExtRel1" Relationship="BaseModel.FK_EXTREL_INTPOSID" FromRole="WaybillDet" ToRole="ExtRel" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" FromRole="WaybillDet" ToRole="Materials" />
-          <NavigationProperty Name="PosRemains" Relationship="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" FromRole="WaybillDet" ToRole="PosRemains" />
           <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP" FromRole="WaybillDet" ToRole="PriceTypes" />
           <NavigationProperty Name="ReturnRel" Relationship="BaseModel.FK_RETREL_DPOSID" FromRole="WaybillDet" ToRole="ReturnRel" />
           <NavigationProperty Name="ReturnRel1" Relationship="BaseModel.FK_RETREL_OUTPOSID" FromRole="WaybillDet" ToRole="ReturnRel" />
@@ -11564,6 +11522,7 @@
           <NavigationProperty Name="WMatTurn1" Relationship="BaseModel.FK_WMT_SRCID" FromRole="WaybillDet" ToRole="WMatTurn" />
           <NavigationProperty Name="WaybillDet1" Relationship="BaseModel.PosRel" FromRole="WaybillDet" ToRole="WaybillDet1" />
           <NavigationProperty Name="WaybillDet2" Relationship="BaseModel.PosRel" FromRole="WaybillDet1" ToRole="WaybillDet" />
+          <NavigationProperty Name="PosRemains" Relationship="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" FromRole="WaybillDet" ToRole="PosRemains" />
         </EntityType>
         <EntityType Name="WaybillList">
           <Key>
@@ -11745,18 +11704,6 @@
             </Principal>
             <Dependent Role="WaybillDet">
               <PropertyRef Name="MatId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__POSREMAIN__POSID__2DB1C7EE">
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
-          <End Type="BaseModel.PosRemains" Role="PosRemains" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillDet">
-              <PropertyRef Name="PosId" />
-            </Principal>
-            <Dependent Role="PosRemains">
-              <PropertyRef Name="PosId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -12166,6 +12113,61 @@
           <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="10" />
           <Property Type="Decimal" Name="Saldo" Nullable="true" Precision="38" Scale="2" />
         </ComplexType>
+        <EntityType Name="PosRemains">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PosId" Nullable="false" />
+          <Property Type="Int32" Name="WId" Nullable="false" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
+          <Property Type="Decimal" Name="Remain" Nullable="false" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Rsv" Nullable="false" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="AvgPrice" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="InWay" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Ordered" Nullable="false" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="OrderedRsv" Nullable="false" Precision="15" Scale="4" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" FromRole="PosRemains" ToRole="Materials" />
+          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" FromRole="PosRemains" ToRole="WaybillDet" />
+          <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK__POSREMAINS__WID__2EA5EC27" FromRole="PosRemains" ToRole="Warehouse" />
+        </EntityType>
+        <Association Name="FK__POSREMAIN__MATID__2CBDA3B5">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
+          <End Type="BaseModel.PosRemains" Role="PosRemains" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="PosRemains">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__POSREMAIN__POSID__2DB1C7EE">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
+          <End Type="BaseModel.PosRemains" Role="PosRemains" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="PosRemains">
+              <PropertyRef Name="PosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__POSREMAINS__WID__2EA5EC27">
+          <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="1" />
+          <End Type="BaseModel.PosRemains" Role="PosRemains" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
+            </Principal>
+            <Dependent Role="PosRemains">
+              <PropertyRef Name="WId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -13134,22 +13136,6 @@
                 <ScalarProperty Name="Remain" ColumnName="Remain" />
                 <ScalarProperty Name="OnDate" ColumnName="OnDate" />
                 <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PosRemains">
-            <EntityTypeMapping TypeName="BaseModel.PosRemains">
-              <MappingFragment StoreEntitySet="PosRemains">
-                <ScalarProperty Name="Ordered" ColumnName="Ordered" />
-                <ScalarProperty Name="InWay" ColumnName="InWay" />
-                <ScalarProperty Name="AvgPrice" ColumnName="AvgPrice" />
-                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
-                <ScalarProperty Name="Remain" ColumnName="Remain" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="WId" ColumnName="WId" />
-                <ScalarProperty Name="PosId" ColumnName="PosId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -15379,6 +15365,23 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="PosRemains">
+            <EntityTypeMapping TypeName="BaseModel.PosRemains">
+              <MappingFragment StoreEntitySet="PosRemains">
+                <ScalarProperty Name="OrderedRsv" ColumnName="OrderedRsv" />
+                <ScalarProperty Name="Ordered" ColumnName="Ordered" />
+                <ScalarProperty Name="InWay" ColumnName="InWay" />
+                <ScalarProperty Name="AvgPrice" ColumnName="AvgPrice" />
+                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

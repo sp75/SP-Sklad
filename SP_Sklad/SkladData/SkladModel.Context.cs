@@ -65,7 +65,6 @@ namespace SP_Sklad.SkladData
         public DbSet<UserTree> UserTree { get; set; }
         public DbSet<ExtRel> ExtRel { get; set; }
         public DbSet<MatRemains> MatRemains { get; set; }
-        public DbSet<PosRemains> PosRemains { get; set; }
         public DbSet<TAXWBDET> TAXWBDET { get; set; }
         public DbSet<TechProcess> TechProcess { get; set; }
         public DbSet<MatRecipe> MatRecipe { get; set; }
@@ -137,6 +136,7 @@ namespace SP_Sklad.SkladData
         public DbSet<Licenses> Licenses { get; set; }
         public DbSet<UserSettings> UserSettings { get; set; }
         public DbSet<v_KAgentSaldo> v_KAgentSaldo { get; set; }
+        public DbSet<PosRemains> PosRemains { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)

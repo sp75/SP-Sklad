@@ -19,7 +19,6 @@ namespace SP_Sklad.SkladData
             this.CONTRDET = new HashSet<CONTRDET>();
             this.DeboningDet = new HashSet<DeboningDet>();
             this.MatRemains = new HashSet<MatRemains>();
-            this.PosRemains = new HashSet<PosRemains>();
             this.WMatTurn = new HashSet<WMatTurn>();
             this.MatRecipe = new HashSet<MatRecipe>();
             this.TAXWBDET = new HashSet<TAXWBDET>();
@@ -29,6 +28,7 @@ namespace SP_Sklad.SkladData
             this.MatChange = new HashSet<MatChange>();
             this.MatChange1 = new HashSet<MatChange>();
             this.WaybillDet = new HashSet<WaybillDet>();
+            this.PosRemains = new HashSet<PosRemains>();
         }
     
         public int MatId { get; set; }
@@ -70,7 +70,6 @@ namespace SP_Sklad.SkladData
         public virtual Warehouse Warehouse1 { get; set; }
         public virtual Warehouse Warehouse2 { get; set; }
         public virtual ICollection<MatRemains> MatRemains { get; set; }
-        public virtual ICollection<PosRemains> PosRemains { get; set; }
         public virtual ICollection<WMatTurn> WMatTurn { get; set; }
         public virtual Measures Measures { get; set; }
         public virtual ICollection<MatRecipe> MatRecipe { get; set; }
@@ -81,5 +80,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<MatChange> MatChange { get; set; }
         public virtual ICollection<MatChange> MatChange1 { get; set; }
         public virtual ICollection<WaybillDet> WaybillDet { get; set; }
+        public virtual ICollection<PosRemains> PosRemains { get; set; }
     }
 }

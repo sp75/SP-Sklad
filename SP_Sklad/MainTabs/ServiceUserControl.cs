@@ -124,7 +124,18 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 2:
-                    UsersOnlineBS.DataSource = DB.SkladBase().Users.AsNoTracking().Where(w => w.IsOnline == true).ToList();
+                    using (var db = DB.SkladBase())
+                    {
+                        UsersOnlineBS.DataSource = db.Users.AsNoTracking().Where(w => w.IsOnline == true).ToList();
+                        gridControl2.DataSource = db.WaybillList.Where(w => w.SessionId != null).Select(s => new
+                        {
+                            s.WbillId,
+                            s.Num,
+                            s.OnDate,
+                            s.UpdatedAt,
+                            UserName = db.Users.Where(w => w.UserId == s.UpdatedBy).Select(u => u.Name).FirstOrDefault()
+                        }).ToList();
+                    }
                     break;
 
                 /*        case 3: DelBarButton->Enabled = (cxGridDBTableView2->DataController->DataSource->DataSet->FieldByName("def")->Value != 1);
@@ -256,6 +267,34 @@ namespace SP_Sklad.MainTabs
             {
                 s.ComPortSpeed = ComPortSpeedEdit.Text;
             }*/
+        }
+
+        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            dynamic s = gridView2.GetFocusedRow();
+            using (var db = DB.SkladBase())
+            {
+                int id =  s.WbillId;
+                var wb = db.WaybillList.FirstOrDefault(w => w.WbillId == id);
+                if (wb != null)
+                {
+                    wb.SessionId = null;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    RefrechItemBtn.PerformClick();
+                }
+            }
+        }
+
+        private void gridView2_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                SessionPopupMenu.ShowPopup(p2);
+            }
         }
     }
 }

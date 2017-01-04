@@ -18,7 +18,6 @@ namespace SP_Sklad.SkladData
         {
             this.ExtRel = new HashSet<ExtRel>();
             this.ExtRel1 = new HashSet<ExtRel>();
-            this.PosRemains = new HashSet<PosRemains>();
             this.ReturnRel = new HashSet<ReturnRel>();
             this.ReturnRel1 = new HashSet<ReturnRel>();
             this.ReturnRel2 = new HashSet<ReturnRel>();
@@ -28,6 +27,7 @@ namespace SP_Sklad.SkladData
             this.WMatTurn = new HashSet<WMatTurn>();
             this.WMatTurn1 = new HashSet<WMatTurn>();
             this.WaybillDet1 = new HashSet<WaybillDet>();
+            this.PosRemains = new HashSet<PosRemains>();
         }
     
         public int PosId { get; set; }
@@ -58,7 +58,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<ExtRel> ExtRel { get; set; }
         public virtual ICollection<ExtRel> ExtRel1 { get; set; }
         public virtual Materials Materials { get; set; }
-        public virtual ICollection<PosRemains> PosRemains { get; set; }
         public virtual PriceTypes PriceTypes { get; set; }
         public virtual ICollection<ReturnRel> ReturnRel { get; set; }
         public virtual ICollection<ReturnRel> ReturnRel1 { get; set; }
@@ -73,5 +72,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<WMatTurn> WMatTurn1 { get; set; }
         public virtual ICollection<WaybillDet> WaybillDet1 { get; set; }
         public virtual WaybillDet WaybillDet2 { get; set; }
+        public virtual ICollection<PosRemains> PosRemains { get; set; }
     }
 }
