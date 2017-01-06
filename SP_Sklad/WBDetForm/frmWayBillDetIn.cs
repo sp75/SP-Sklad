@@ -50,6 +50,12 @@ namespace SP_Sklad.WBDetForm
             panel5.Visible = barCheckItem3.Checked;
             if (!barCheckItem3.Checked) Height -= panel5.Height;
 
+            if (DBHelper.CurrentUser.ShowPrice == 0)
+            {
+                if (barCheckItem2.Checked) barCheckItem2.PerformClick();
+                barCheckItem2.Visibility = BarItemVisibility.Never;
+            }
+
             if (_PosId == null)
             {
                 _wbd = new WaybillDet()
@@ -108,6 +114,7 @@ namespace SP_Sklad.WBDetForm
                 PriceEdit.EditValue = 0;
                 ManufEditBtn.Visible = (_wb.WType == 5);
             }
+
 
             GetOk();
         }

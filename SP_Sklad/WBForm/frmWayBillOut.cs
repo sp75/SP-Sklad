@@ -322,6 +322,8 @@ namespace SP_Sklad.WBForm
 
         private void RsvBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            _db.SaveChanges();
+
             var r = new ObjectParameter("RSV", typeof(Int32));
 
             _db.ReservedPosition(wbd_row.PosId, r);
@@ -348,6 +350,8 @@ namespace SP_Sklad.WBForm
 
         private void RsvAllBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            _db.SaveChanges();
+
             var res = _db.ReservedAllPosition(wb.WbillId);
 
             if (res.Any())

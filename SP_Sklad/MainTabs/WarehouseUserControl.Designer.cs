@@ -100,8 +100,8 @@
             this.bandedGridColumn4 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn5 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumn2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridColumn29 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.AvgMatPriceGridColumn = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.SumMatRemainGridColumn = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand6 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumn11 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn12 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -764,7 +764,7 @@
             this.standaloneBarDockControl7.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl7.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl7.Name = "standaloneBarDockControl7";
-            this.standaloneBarDockControl7.Size = new System.Drawing.Size(969, 31);
+            this.standaloneBarDockControl7.Size = new System.Drawing.Size(972, 31);
             this.standaloneBarDockControl7.Text = "standaloneBarDockControl7";
             // 
             // barDockControlTop
@@ -1066,9 +1066,9 @@
             this.gridColumn26,
             this.gridColumn27,
             this.gridColumn28,
-            this.gridColumn29,
+            this.SumMatRemainGridColumn,
             this.GrpNameGridColumn,
-            this.bandedGridColumn2,
+            this.AvgMatPriceGridColumn,
             this.bandedGridColumn3,
             this.bandedGridColumn4,
             this.bandedGridColumn5,
@@ -1082,6 +1082,7 @@
             this.WhMatGridView.OptionsBehavior.ReadOnly = true;
             this.WhMatGridView.OptionsView.EnableAppearanceEvenRow = true;
             this.WhMatGridView.OptionsView.EnableAppearanceOddRow = true;
+            this.WhMatGridView.OptionsView.ShowFooter = true;
             this.WhMatGridView.OptionsView.ShowGroupPanel = false;
             this.WhMatGridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.WhMatGridView_RowStyle);
             this.WhMatGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WhMatGridView_PopupMenuShowing);
@@ -1155,8 +1156,8 @@
             this.gridBand2.Columns.Add(this.bandedGridColumn4);
             this.gridBand2.Columns.Add(this.bandedGridColumn5);
             this.gridBand2.Columns.Add(this.bandedGridColumn3);
-            this.gridBand2.Columns.Add(this.bandedGridColumn2);
-            this.gridBand2.Columns.Add(this.gridColumn29);
+            this.gridBand2.Columns.Add(this.AvgMatPriceGridColumn);
+            this.gridBand2.Columns.Add(this.SumMatRemainGridColumn);
             this.gridBand2.Name = "gridBand2";
             this.gridBand2.VisibleIndex = 1;
             this.gridBand2.Width = 409;
@@ -1185,21 +1186,23 @@
             this.bandedGridColumn3.Visible = true;
             this.bandedGridColumn3.Width = 87;
             // 
-            // bandedGridColumn2
+            // AvgMatPriceGridColumn
             // 
-            this.bandedGridColumn2.Caption = "Середня  ціна";
-            this.bandedGridColumn2.FieldName = "AvgPrice";
-            this.bandedGridColumn2.Name = "bandedGridColumn2";
-            this.bandedGridColumn2.Visible = true;
-            this.bandedGridColumn2.Width = 58;
+            this.AvgMatPriceGridColumn.Caption = "Середня  ціна";
+            this.AvgMatPriceGridColumn.FieldName = "AvgPrice";
+            this.AvgMatPriceGridColumn.Name = "AvgMatPriceGridColumn";
+            this.AvgMatPriceGridColumn.Visible = true;
+            this.AvgMatPriceGridColumn.Width = 58;
             // 
-            // gridColumn29
+            // SumMatRemainGridColumn
             // 
-            this.gridColumn29.Caption = "На суму";
-            this.gridColumn29.FieldName = "SumRemain";
-            this.gridColumn29.Name = "gridColumn29";
-            this.gridColumn29.Visible = true;
-            this.gridColumn29.Width = 74;
+            this.SumMatRemainGridColumn.Caption = "На суму";
+            this.SumMatRemainGridColumn.FieldName = "SumRemain";
+            this.SumMatRemainGridColumn.Name = "SumMatRemainGridColumn";
+            this.SumMatRemainGridColumn.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SumRemain", "{0:0.##}")});
+            this.SumMatRemainGridColumn.Visible = true;
+            this.SumMatRemainGridColumn.Width = 74;
             // 
             // gridBand6
             // 
@@ -1431,7 +1434,7 @@
             this.xtraTabPage4.Controls.Add(this.PosGridControl);
             this.xtraTabPage4.ImageIndex = 4;
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(969, 219);
+            this.xtraTabPage4.Size = new System.Drawing.Size(972, 219);
             this.xtraTabPage4.Text = "Партії";
             // 
             // PosGridControl
@@ -1442,7 +1445,7 @@
             this.PosGridControl.Name = "PosGridControl";
             this.PosGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox10});
-            this.PosGridControl.Size = new System.Drawing.Size(969, 219);
+            this.PosGridControl.Size = new System.Drawing.Size(972, 219);
             this.PosGridControl.TabIndex = 1;
             this.PosGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView1});
@@ -1596,7 +1599,7 @@
             this.xtraTabPage5.Controls.Add(this.gridControl5);
             this.xtraTabPage5.ImageIndex = 5;
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(969, 219);
+            this.xtraTabPage5.Size = new System.Drawing.Size(972, 219);
             this.xtraTabPage5.Text = "Замовлене";
             // 
             // gridControl5
@@ -1610,7 +1613,7 @@
             this.repositoryItemImageComboBox9,
             this.repositoryItemImageComboBox8,
             this.repositoryItemImageComboBox5});
-            this.gridControl5.Size = new System.Drawing.Size(969, 219);
+            this.gridControl5.Size = new System.Drawing.Size(972, 219);
             this.gridControl5.TabIndex = 0;
             this.gridControl5.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView2});
@@ -1821,7 +1824,7 @@
             this.xtraTabPage9.Controls.Add(this.MatChangeGridControl);
             this.xtraTabPage9.ImageIndex = 6;
             this.xtraTabPage9.Name = "xtraTabPage9";
-            this.xtraTabPage9.Size = new System.Drawing.Size(969, 219);
+            this.xtraTabPage9.Size = new System.Drawing.Size(972, 219);
             this.xtraTabPage9.Text = "Взаємозамінність";
             // 
             // MatChangeGridControl
@@ -1833,7 +1836,7 @@
             this.MatChangeGridControl.Name = "MatChangeGridControl";
             this.MatChangeGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit2});
-            this.MatChangeGridControl.Size = new System.Drawing.Size(969, 219);
+            this.MatChangeGridControl.Size = new System.Drawing.Size(972, 219);
             this.MatChangeGridControl.TabIndex = 10;
             this.MatChangeGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.MatChangeGridView});
@@ -1901,7 +1904,7 @@
             this.MatListTabPage.ImageIndex = 14;
             this.MatListTabPage.Name = "MatListTabPage";
             this.MatListTabPage.PageVisible = false;
-            this.MatListTabPage.Size = new System.Drawing.Size(969, 219);
+            this.MatListTabPage.Size = new System.Drawing.Size(972, 219);
             this.MatListTabPage.Text = "Список товарів";
             // 
             // MatListGridControl
@@ -1914,7 +1917,7 @@
             this.repositoryItemCalcEdit1,
             this.repositoryItemLookUpEdit1,
             this.repositoryItemLookUpEdit2});
-            this.MatListGridControl.Size = new System.Drawing.Size(969, 188);
+            this.MatListGridControl.Size = new System.Drawing.Size(972, 188);
             this.MatListGridControl.TabIndex = 3;
             this.MatListGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.MatListGridView,
@@ -3094,11 +3097,11 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn26;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn27;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn28;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn29;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn SumMatRemainGridColumn;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn4;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn5;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn3;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn2;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn AvgMatPriceGridColumn;
         private DevExpress.XtraEditors.TextEdit BarCodeEdit;
         private DevExpress.XtraGrid.GridControl PosGridControl;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView bandedGridView1;

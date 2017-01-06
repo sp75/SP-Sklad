@@ -84,6 +84,11 @@ namespace SP_Sklad.MainTabs
                 repositoryItemLookUpEdit1.DataSource = DBHelper.WhList();
                 repositoryItemLookUpEdit2.DataSource = DB.SkladBase().PriceTypes.ToList();
 
+                AvgMatPriceGridColumn.Visible = (DBHelper.CurrentUser.ShowPrice == 1);
+                AvgMatPriceGridColumn.OptionsColumn.ShowInCustomizationForm  = AvgMatPriceGridColumn.Visible;
+                SumMatRemainGridColumn.Visible = AvgMatPriceGridColumn.Visible;
+                SumMatRemainGridColumn.OptionsColumn.ShowInCustomizationForm = AvgMatPriceGridColumn.Visible;
+
                 if (WHTreeList.DataSource == null)
                 {
                     GetTree(1);

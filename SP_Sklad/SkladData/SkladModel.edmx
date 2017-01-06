@@ -4464,6 +4464,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="CopyMaterial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mat_id" Type="int" Mode="In" />
+        </Function>
         <Function Name="DeleteAllReservePosition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="wbill_id" Type="int" Mode="In" />
         </Function>
@@ -7250,6 +7253,9 @@
             <End Role="Warehouse" EntitySet="Warehouse" />
             <End Role="PosRemains" EntitySet="PosRemains" />
           </AssociationSet>
+          <FunctionImport Name="CopyMaterial" ReturnType="Collection(Int32)">
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -15382,6 +15388,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CopyMaterial" FunctionName="BaseModel.Store.CopyMaterial" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

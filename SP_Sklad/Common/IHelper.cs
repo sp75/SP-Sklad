@@ -540,7 +540,8 @@ namespace SP_Sklad.Common
             {
                 var f = new frmKABalans(ka_id);
                 f.ShowDialog();
-            } //else ShowMessage("Перегляд заборонено!");
+            }
+            else MessageBox.Show("Перегляд заборонено!");
         }
 
         static public void ShowTurnMaterial(int? mat_id)

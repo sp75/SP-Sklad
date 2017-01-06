@@ -46,6 +46,12 @@ namespace SP_Sklad.WBDetForm
 
             panel5.Visible = barCheckItem3.Checked;
             if (!barCheckItem3.Checked) Height -= panel5.Height;
+
+            if (DBHelper.CurrentUser.ShowPrice == 0)
+            {
+                if (barCheckItem2.Checked) barCheckItem2.PerformClick();
+                barCheckItem2.Visibility = BarItemVisibility.Never;
+            }
         }
 
         private void frmWayBillDetOut_Load(object sender, EventArgs e)
@@ -115,6 +121,7 @@ namespace SP_Sklad.WBDetForm
 
                 GetOk();
             }
+ 
         }
 
         bool GetOk()

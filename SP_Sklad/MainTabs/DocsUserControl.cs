@@ -87,6 +87,12 @@ namespace SP_Sklad.MainTabs
 
                 DocsTreeList.DataSource = _db.v_GetDocsTree.Where(w => w.UserId == null || w.UserId == DBHelper.CurrentUser.UserId).OrderBy(o => o.Num).ToList();
                 DocsTreeList.ExpandAll();
+
+                WbBalansGridColumn.Visible = (DBHelper.CurrentUser.ShowBalance == 1);
+                WbBalansGridColumn.OptionsColumn.ShowInCustomizationForm = WbBalansGridColumn.Visible;
+
+                WbSummPayGridColumn.Visible = WbBalansGridColumn.Visible;
+                WbSummPayGridColumn.OptionsColumn.ShowInCustomizationForm = WbBalansGridColumn.Visible;
             }
         }
 

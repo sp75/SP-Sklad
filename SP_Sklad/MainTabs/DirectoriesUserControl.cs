@@ -65,6 +65,12 @@ namespace SP_Sklad.MainTabs
 
                 DirTreeBS.DataSource = DB.SkladBase().GetDirTree(DBHelper.CurrentUser.UserId).ToList();
                 DirTreeList.ExpandToLevel(1);
+
+                AvgMatPriceGridColumn.Visible = (DBHelper.CurrentUser.ShowPrice == 1);
+                AvgMatPriceGridColumn.OptionsColumn.ShowInCustomizationForm = AvgMatPriceGridColumn.Visible;
+
+                KagentSaldoGridColumn.Visible = (DBHelper.CurrentUser.ShowBalance == 1);
+                KagentSaldoGridColumn.OptionsColumn.ShowInCustomizationForm = KagentSaldoGridColumn.Visible;
             }
         }
 
@@ -678,7 +684,7 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            IHelper.ShowMatInfo(focused_mat.MatId);
+            IHelper.ShowTurnMaterial (focused_mat.MatId);
         }
 
         private void barButtonItem5_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -832,6 +838,81 @@ namespace SP_Sklad.MainTabs
                     MatNotesEdit.Text = f_row.Notes;
                     break;
             }
+        }
+
+        private void CopyItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+            switch (focused_tree_node.GType)
+            {
+                case 1:
+                    break;
+
+                case 2:
+                    var r = MatGridView.GetFocusedRow() as GetMatList_Result;
+                    using (var frm = new frmMaterialEdit(null,null, r.MatId))
+                    {
+                        frm.ShowDialog();
+                    }
+
+                    break;
+
+                case 3: 
+                    break;
+
+              /*  case 4: switch (focused_tree_node.Id)
+                    {
+                        case 25:
+                            new frmWarehouseEdit().ShowDialog();
+                            break;
+
+                        case 11: new frmBanksEdit().ShowDialog();
+                            break;
+
+                        case 2:
+                            new frmMeasuresEdit().ShowDialog();
+                            break;
+
+                        case 40:
+                            new frmPricetypesEdit().ShowDialog();
+                            break;
+
+                        case 12:
+                            new frmAccountTypeEdit().ShowDialog();
+                            break;
+
+                        case 43:
+                            new frmCountriesEdit().ShowDialog();
+                            break;
+
+                        case 102:
+                            new frmChargeTypeEdit().ShowDialog();
+                            break;
+
+                        case 64: new frmCashdesksEdit().ShowDialog();
+                            break;
+
+                        case 42:
+                            new frmMatRecipe(2).ShowDialog();
+                            break;
+
+                        case 53:
+                            new frmMatRecipe(1).ShowDialog();
+                            break;
+
+                        case 112:
+                            new frmTechProcessEdit().ShowDialog();
+                            break;
+
+                        case 115:
+                            new frmRouteEdit().ShowDialog();
+                            break;
+
+                    }
+                    break;*/
+            }
+
+            RefrechItemBtn.PerformClick();
         }
     }
 }

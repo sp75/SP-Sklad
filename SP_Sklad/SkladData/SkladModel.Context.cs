@@ -2015,5 +2015,14 @@ namespace SP_Sklad.SkladData
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetKAgentSaldo_Result>("[BaseEntities].[GetKAgentSaldo](@ka_id, @on_date)", ka_idParameter, on_dateParameter);
         }
+    
+        public virtual ObjectResult<Nullable<int>> CopyMaterial(Nullable<int> mat_id)
+        {
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("CopyMaterial", mat_idParameter);
+        }
     }
 }

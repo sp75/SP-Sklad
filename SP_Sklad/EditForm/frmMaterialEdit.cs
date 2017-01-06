@@ -20,17 +20,19 @@ namespace SP_Sklad.EditForm
     {
         int? _mat_id { get; set; }
         int? _mat_grp { get; set; }
+        int? _copy_mat_id { get; set; }
         private Materials _mat { get; set; }
         private BaseEntities _db { get; set; }
         private DbContextTransaction current_transaction { get; set; }
         private List<CatalogTreeList> tree { get; set; }
         private MatPrices _mat_prices { get; set; }
 
-        public frmMaterialEdit(int? MatId = null, int? MatGrp = null)
+        public frmMaterialEdit(int? MatId = null, int? MatGrp = null, int? CopyMatId = null)
         {
             InitializeComponent();
             _mat_id = MatId;
             _mat_grp = MatGrp;
+            _copy_mat_id = CopyMatId;
             _db = DB.SkladBase();
             current_transaction = _db.Database.BeginTransaction();
 
@@ -57,10 +59,14 @@ namespace SP_Sklad.EditForm
             TreeListBS.Add(new CatalogTreeList { Id = 4, ParentId = 255, Text = "Посвідчення", ImgIdx = 4, TabIdx = 4 });
             TreeListBS.Add(new CatalogTreeList { Id = 5, ParentId = 255, Text = "Зображення", ImgIdx = 5, TabIdx = 5 });
             TreeListBS.Add(new CatalogTreeList { Id = 6, ParentId = 255, Text = "Примітка", ImgIdx = 6, TabIdx = 6 });
-          
 
 
-            if (_mat_id == null)
+            if (_copy_mat_id != null)
+            {
+                _mat_id = _db.CopyMaterial(_copy_mat_id).FirstOrDefault();
+                _mat = _db.Materials.Find(_mat_id);
+            }
+            else if (_mat_id == null)
             {
                 _mat = _db.Materials.Add(new Materials()
                 {
