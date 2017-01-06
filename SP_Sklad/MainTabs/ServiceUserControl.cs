@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using SP_Sklad.SkladData;
 using SP_Sklad.EditForm;
 using SP_Sklad.Common;
+using SP_Sklad.Properties;
 
 namespace SP_Sklad.MainTabs
 {
@@ -281,10 +282,8 @@ namespace SP_Sklad.MainTabs
                     wb.SessionId = null;
                     db.SaveChanges();
                 }
-                else
-                {
-                    RefrechItemBtn.PerformClick();
-                }
+
+                RefrechItemBtn.PerformClick();
             }
         }
 
@@ -294,6 +293,31 @@ namespace SP_Sklad.MainTabs
             {
                 Point p2 = Control.MousePosition;
                 SessionPopupMenu.ShowPopup(p2);
+            }
+        }
+
+        private void LocalaTemplatePatchEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+           
+        }
+
+        private void PatchEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                PatchEdit.EditValue = folderBrowserDialog1.SelectedPath;
+
+                using (var db = DB.SkladBase())
+                {
+                    var c = db.CommonParams.FirstOrDefault();
+                    if (c != null)
+                    {
+                        c.TemplatePatch = folderBrowserDialog1.SelectedPath;
+                        db.SaveChanges();
+                    }
+                }
+
+                DBHelper.CommonParam = null;
             }
         }
     }

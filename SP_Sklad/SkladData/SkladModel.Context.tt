@@ -70,6 +70,20 @@ if (!loader.IsLazyLoadingEnabled(container))
 #>
     }
 
+	public <#=code.Escape(container)#>(string sConnectionString)
+            : base(sConnectionString)
+    {
+	   Database.CommandTimeout = 180;
+<#
+if (!loader.IsLazyLoadingEnabled(container))
+{
+#>
+        this.Configuration.LazyLoadingEnabled = false;
+<#
+}
+#>
+    }
+
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
         throw new UnintentionalCodeFirstException();

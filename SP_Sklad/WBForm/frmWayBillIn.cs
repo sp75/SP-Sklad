@@ -26,7 +26,7 @@ namespace SP_Sklad.WBForm
         public BaseEntities _db { get; set; }
         private int? _wbill_id { get; set; }
         public int? doc_id { get; set; }
-        private DbContextTransaction current_transaction { get; set; }
+   //     private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
         private GetWaybillDetIn_Result wbd_row
         {
@@ -35,13 +35,15 @@ namespace SP_Sklad.WBForm
                 return WaybillDetInGridView.GetFocusedRow() as GetWaybillDetIn_Result;
             }
         }
+        public bool is_new_record { get; set; }
 
         public frmWayBillIn(int wtype, int? wbill_id = null)
         {
+            is_new_record = false;
             _wtype = wtype;
             _wbill_id = wbill_id;
             _db = new BaseEntities();
-            current_transaction = _db.Database.BeginTransaction(/*IsolationLevel.RepeatableRead*/);
+        //    current_transaction = _db.Database.BeginTransaction(/*IsolationLevel.RepeatableRead*/);
 
             InitializeComponent();
         }
@@ -50,6 +52,8 @@ namespace SP_Sklad.WBForm
         {
             if (_wbill_id == null && doc_id == null)
             {
+                is_new_record = true;
+
                 wb = _db.WaybillList.Add(new WaybillList()
                 {
                     WType = _wtype,
@@ -59,15 +63,17 @@ namespace SP_Sklad.WBForm
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
                     Nds = DBHelper.Enterprise.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0,
-                    Docs = new Docs { DocType = _wtype },
+                //    Docs = new Docs { DocType = _wtype },
                     UpdatedBy = DBHelper.CurrentUser.UserId
                 });
 
                 _db.SaveChanges();
+
+                wb.DocId = _db.WaybillList.AsNoTracking().FirstOrDefault(w => w.WbillId == wb.WbillId).DocId;
             }
             else
             {
-                try
+             /*   try
                 {
                     UpdLockWB();
                 }
@@ -75,13 +81,14 @@ namespace SP_Sklad.WBForm
                 {
 
                     Close();
-                }
+                }*/
+                wb = _db.WaybillList.FirstOrDefault(f => f.DocId == doc_id || f.WbillId == _wbill_id);
 
             }
 
             if (wb != null)
             {
-                wb.UpdatedBy = DBHelper.CurrentUser.UserId;
+                DBHelper.UpdateSessionWaybill(wb.WbillId);
 
                 GetDocValue(wb);
             }
@@ -96,7 +103,7 @@ namespace SP_Sklad.WBForm
             RefreshDet();
         }
 
-        private void UpdLockWB()
+   /*     private void UpdLockWB()
         {
             if (wb != null)
             {
@@ -113,7 +120,7 @@ namespace SP_Sklad.WBForm
             _db.Entry<WaybillList>(wb).State = EntityState.Modified;
             _db.Entry<WaybillList>(wb).Property(f => f.SummPay).IsModified = false;
 
-        }
+        }*/
 
         private void GetDocValue(WaybillList wb)
         {
@@ -161,13 +168,15 @@ namespace SP_Sklad.WBForm
                 return;
             }
 
-            _db.SaveChanges();
+            _db.Save(wb.WbillId);
+
             payDocUserControl1.Execute(wb.WbillId);
             if (TurnDocCheckBox.Checked)
             {
                 var ew = _db.ExecuteWayBill(wb.WbillId, null).ToList();
             }
-            current_transaction.Commit();
+         //   current_transaction.Commit();
+            is_new_record = false;
 
             Close();
         }
@@ -206,13 +215,22 @@ namespace SP_Sklad.WBForm
 
         private void frmWayBillIn_FormClosed(object sender, FormClosedEventArgs e)
         {
-           if (current_transaction.UnderlyingTransaction.Connection != null)
+            DBHelper.UpdateSessionWaybill(_wbill_id.Value, true);
+
+            if (is_new_record)
             {
-                current_transaction.Rollback();
+                _db.DeleteWhere<WaybillList>(w => w.WbillId == _wbill_id);
+                //   current_transaction.Commit();
+
             }
 
-           _db.Dispose();
-           current_transaction.Dispose();
+            /*      if (current_transaction.UnderlyingTransaction.Connection != null)
+                  {
+                      current_transaction.Rollback();
+                  }*/
+
+            _db.Dispose();
+            //   current_transaction.Dispose();
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
@@ -260,7 +278,7 @@ namespace SP_Sklad.WBForm
                 {
                     _db.DeleteWhere<WayBillSvc>(w => w.PosId == wbd_row.PosId * -1);
                 }
-                _db.SaveChanges();
+                _db.Save(wb.WbillId);
 
                 WaybillDetInGridView.DeleteSelectedRows();
             }
@@ -318,7 +336,7 @@ namespace SP_Sklad.WBForm
                             turn.WId = Convert.ToInt32(WHComboBox.EditValue);
                         }
                     }
-                    _db.SaveChanges();
+                    _db.Save(wb.WbillId);
                     RefreshDet();
                 }
             }
@@ -346,6 +364,7 @@ namespace SP_Sklad.WBForm
 
         private void PrintBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            _db.Save(wb.WbillId);
             PrintDoc.Show(wb.DocId.Value, wb.WType, _db);
         }
 
@@ -416,8 +435,6 @@ namespace SP_Sklad.WBForm
         {
             PersonComboBox.EditValue = IHelper.ShowDirectList(PersonComboBox.EditValue, 3);
         }
-
-
 
     }
 }

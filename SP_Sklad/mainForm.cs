@@ -65,8 +65,15 @@ namespace SP_Sklad
                 if (user != null)
                 {
                     user.IsOnline = false;
-                    db.SaveChanges();
                 }
+
+                var wb_list = db.WaybillList.Where(w => w.SessionId == UserSession.SessionId).ToList();
+                foreach (var item in wb_list)
+                {
+                    item.SessionId = null;
+                }
+
+                db.SaveChanges();
             }
             Application.Exit();
         }

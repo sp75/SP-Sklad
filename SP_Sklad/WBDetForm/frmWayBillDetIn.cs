@@ -118,7 +118,7 @@ namespace SP_Sklad.WBDetForm
             {
                 _db.WaybillDet.Add(_wbd);
             }
-            _db.SaveChanges();
+            _db.Save(_wb.WbillId);
 
             if (_wb.WType == 16)
             {
@@ -156,7 +156,7 @@ namespace SP_Sklad.WBDetForm
                 _db.UpdWaybillDetPrice(_wb.WbillId);
             }
 
-            _db.SaveChanges();
+            _db.Save(_wb.WbillId);
 
         }
 

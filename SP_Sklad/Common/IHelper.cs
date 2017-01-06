@@ -13,6 +13,7 @@ using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.XtraTreeList.Nodes;
 using SP_Sklad.EditForm;
+using SP_Sklad.Properties;
 using SP_Sklad.SkladData;
 using SP_Sklad.ViewsForm;
 using SpreadsheetReportBuilder;
@@ -28,7 +29,12 @@ namespace SP_Sklad.Common
 #if DEBUG
                 return Path.Combine( @"c:\WinVSProjects\SP-Sklad\SP_Sklad\", "TempLate" );
 #else
-               return DBHelper.CommonParam.TemplatePatch;
+                if (Directory.Exists(Path.Combine(Application.StartupPath, "TempLate")))
+                {
+                    return Path.Combine(Application.StartupPath, "TempLate");
+                }
+
+                return DBHelper.CommonParam.TemplatePatch;
 #endif
             }
         }
@@ -122,7 +128,8 @@ namespace SP_Sklad.Common
                         });
                     }
                 }
-                db.SaveChanges();
+                db.Save(wb.WbillId);
+                
             }
         }
 
@@ -558,10 +565,20 @@ namespace SP_Sklad.Common
 
         static public void ShowMatInfo(int? mat_id)
         {
-            using (var f = new frmMaterialEdit(mat_id))
+            using (var db = DB.SkladBase())
             {
-                f.OkButton.Visible = false;
-                f.ShowDialog();
+                if (db.Materials.Any(a => a.MatId == mat_id))
+                {
+                    using (var f = new frmMaterialEdit(mat_id))
+                    {
+                        f.OkButton.Visible = false;
+                        f.ShowDialog();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Товар не знайдено!");
+                }
             }
         }
 

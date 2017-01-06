@@ -70,11 +70,13 @@ namespace SP_Sklad.WBForm
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
                     EntId = DBHelper.Enterprise.KaId,
-                    Docs = new Docs { DocType = _wtype },
+                 //   Docs = new Docs { DocType = _wtype },
                     UpdatedBy = DBHelper.CurrentUser.UserId
                 });
 
                 _db.SaveChanges();
+
+                wb.DocId = _db.WaybillList.AsNoTracking().FirstOrDefault(w => w.WbillId == wb.WbillId).DocId;
             }
             else
             {
@@ -162,6 +164,7 @@ namespace SP_Sklad.WBForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
+
             if (TurnDocCheckBox.Checked && !DBHelper.CheckOrderedInSuppliers(wb.WbillId, _db)) return;
 
             if (!DBHelper.CheckInDate(wb, _db, OnDateDBEdit.DateTime))
@@ -169,10 +172,12 @@ namespace SP_Sklad.WBForm
                 return;
             }
 
+            payDocUserControl1.Execute(wb.WbillId);
+
             wb.UpdatedAt = DateTime.Now;
             _db.Save(wb.WbillId);
 
-            payDocUserControl1.Execute(wb.WbillId);
+          
 
             if (TurnDocCheckBox.Checked)
             {
@@ -425,7 +430,10 @@ namespace SP_Sklad.WBForm
                 IHelper.ShowMatListByWH(_db, wb);
             }
 
-         //   if (MessageDlg("Зарезервувати товар ? ", mtConfirmation, TMsgDlgButtons() << mbYes << mbNo, 0) == mrYes) RSVAllBarBtn->Click();
+            if (MessageBox.Show("Зарезервувати товар ? ", "Резервування", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                RsvAllBarBtn.PerformClick();
+            }
             RefreshDet();
 
             WaybillDetOutGridView.MoveLastVisible();

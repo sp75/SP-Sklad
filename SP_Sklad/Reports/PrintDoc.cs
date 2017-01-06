@@ -98,11 +98,13 @@ namespace SP_Sklad.Reports
         public static void WayBillInReport(int doc_id, BaseEntities db, string template_name)
         {
             var dataForReport = new Dictionary<string, IList>();
+            //       var wbill_id = db.WaybillList.FirstOrDefault(w => w.DocId == doc_id).WbillId;
 
             var wb = db.v_WaybillList.Where(w => w.DocId == doc_id).AsNoTracking().ToList();
+            int wbill_id = wb.First().WbillId; 
 
             dataForReport.Add("WayBillList", wb);
-            dataForReport.Add("range1", db.GetWaybillDetIn(wb.First().WbillId).ToList());
+            dataForReport.Add("range1", db.GetWaybillDetIn(wbill_id).ToList());
 
             IHelper.Print(dataForReport, template_name);
         }

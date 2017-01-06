@@ -53,6 +53,7 @@ namespace SP_Sklad.MainTabs
                     PersonEdit.EditValue = _pd.MPersonId;
                     SumEdit.EditValue = _pd.Total;
                     CurrEdit.EditValue = _pd.CurrId;
+                    AccountEdit.EditValue = _pd.AccId;
                 }
             }
             else
@@ -132,7 +133,7 @@ namespace SP_Sklad.MainTabs
             }
             else if (_pd != null)
             {
-                if (_pd.Checked == 1)
+                if (_pd.Checked == 1/* && !ExecPayCheckBox.Checked*/)
                 {
                     _pd.Checked = 0;
                     _db.SaveChanges();
@@ -143,8 +144,11 @@ namespace SP_Sklad.MainTabs
                 _pd.KaId = _wb.KaId;
                 _pd.Checked = Convert.ToInt32(ExecPayCheckBox.EditValue);
                 _pd.PTypeId = Convert.ToInt32(PTypeComboBox.EditValue);
-                _pd.CashId = Convert.ToInt32(CashEditComboBox.EditValue);
+            //    _pd.CashId = Convert.ToInt32(CashEditComboBox.EditValue);
                 _pd.MPersonId = Convert.ToInt32(PersonEdit.EditValue);
+         //    _pd.AccId =   AccountEdit.EditValue
+                _pd.CashId = (int)PTypeComboBox.EditValue == 1 ? (int?)CashEditComboBox.EditValue : null;  // Каса 
+                _pd.AccId = (int)PTypeComboBox.EditValue == 2 ? (int?)AccountEdit.EditValue : null; // Acount
             }
 
             _db.SaveChanges();
@@ -168,14 +172,19 @@ namespace SP_Sklad.MainTabs
             {
                 labelControl3.Visible = true;
                 CashEditComboBox.Visible = true;
-                if (_pd!=null) _pd.AccId = null;
+                AccountEdit.EditValue = null;
+                CashEditComboBox.EditValue = DBHelper.CashDesks.FirstOrDefault(w => w.Def == 1).CashId;
             }
 
             if ((int)PTypeComboBox.EditValue == 2)
             {
                 labelControl18.Visible = true;
                 AccountEdit.Visible = true;
-                if (_pd != null) _pd.CashId = null;
+                CashEditComboBox.EditValue = null;
+                if(_db.EnterpriseAccount.Any())
+                {
+                    AccountEdit.EditValue = _db.EnterpriseAccount.FirstOrDefault(w => w.Def == 1).AccId;
+                }
             }
         }
 

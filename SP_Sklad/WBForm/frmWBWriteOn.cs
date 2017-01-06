@@ -26,7 +26,7 @@ namespace SP_Sklad.WBForm
         public  BaseEntities _db { get; set; }
         public int? _wbill_id { get; set; }
         public int? doc_id { get; set; }
-        private DbContextTransaction current_transaction { get; set; }
+     //   private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
         private GetWaybillDetIn_Result wbd_row { get; set; }
         private List<GetWaybillDetIn_Result> wbd_list { get; set; }
@@ -34,13 +34,15 @@ namespace SP_Sklad.WBForm
         private GetWaybillDetIn_Result focused_dr
         {
             get { return WaybillDetInGridView.GetFocusedRow() as GetWaybillDetIn_Result; }
-        } 
+        }
+        public bool is_new_record { get; set; }
 
         public frmWBWriteOn(int? wbill_id = null)
         {
+            is_new_record = false;
             _wbill_id = wbill_id;
             _db = new BaseEntities();
-            current_transaction = _db.Database.BeginTransaction(/*IsolationLevel.RepeatableRead*/);
+         //   current_transaction = _db.Database.BeginTransaction();
 
             InitializeComponent();
         }
@@ -54,6 +56,8 @@ namespace SP_Sklad.WBForm
 
             if (_wbill_id == null && doc_id == null)
             {
+                is_new_record = true;
+
                 wb = _db.WaybillList.Add(new WaybillList()
                 {
                     WType = _wtype,
@@ -63,31 +67,26 @@ namespace SP_Sklad.WBForm
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
                     Nds = DBHelper.Enterprise.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0,
-                    Docs = new Docs { DocType = _wtype },
+            //        Docs = new Docs { DocType = _wtype },
                     UpdatedBy = DBHelper.CurrentUser.UserId
                 });
 
                 _db.SaveChanges();
 
-                _wbill_id = wb.WbillId;
+                wb.DocId = _db.WaybillList.AsNoTracking().FirstOrDefault(w => w.WbillId == wb.WbillId).DocId;
             }
             else
             {
-                try
-                {
-                    UpdLockWB();
-                }
-                catch
-                {
-
-                    Close();
-                }
-
+                //   UpdLockWB();
+                wb = _db.WaybillList.FirstOrDefault(f => f.DocId == doc_id || f.WbillId == _wbill_id);
             }
 
             if (wb != null)
             {
-                wb.UpdatedBy = DBHelper.CurrentUser.UserId;
+                _wbill_id = wb.WbillId;
+
+              //  wb.UpdatedBy = DBHelper.CurrentUser.UserId;
+                DBHelper.UpdateSessionWaybill(wb.WbillId);
 
                 TurnDocCheckBox.EditValue = wb.Checked;
 
@@ -107,7 +106,7 @@ namespace SP_Sklad.WBForm
             RefreshDet();
         }
 
-        private void UpdLockWB()
+     /*   private void UpdLockWB()
         {
             if (wb != null)
             {
@@ -124,7 +123,7 @@ namespace SP_Sklad.WBForm
             _db.Entry<WaybillList>(wb).State = EntityState.Modified;
             _db.Entry<WaybillList>(wb).Property(f => f.SummPay).IsModified = false;
 
-        }
+        }*/
 
         private void RefreshDet()
         {
@@ -154,13 +153,22 @@ namespace SP_Sklad.WBForm
 
         private void frmWBWriteOn_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (current_transaction.UnderlyingTransaction.Connection != null)
+            DBHelper.UpdateSessionWaybill(_wbill_id.Value, true);
+
+            if (is_new_record)
             {
-                current_transaction.Rollback();
+                _db.DeleteWhere<WaybillList>(w => w.WbillId == _wbill_id);
+                //   current_transaction.Commit();
+
             }
 
+            /*      if (current_transaction.UnderlyingTransaction.Connection != null)
+                  {
+                      current_transaction.Rollback();
+                  }*/
+
             _db.Dispose();
-            current_transaction.Dispose();
+            //   current_transaction.Dispose();
         }
 
         private void frmWBWriteOn_Shown(object sender, EventArgs e)
@@ -178,14 +186,16 @@ namespace SP_Sklad.WBForm
                 return;
             }
 
-            _db.SaveChanges();
+            _db.Save(wb.WbillId);
 
-            current_transaction.Commit();
+        //    current_transaction.Commit();
 
             if (TurnDocCheckBox.Checked)
             {
                 _db.ExecuteWayBill(wb.WbillId, null);
             }
+
+            is_new_record = false;
 
             Close();
         }
@@ -203,7 +213,7 @@ order by  ma.ondate desc */
 
             if (q != null && q.Make != null && OnDateDBEdit.DateTime < q.Make.OnDate)
             {
-                String msg = "Дата документа не може бути меншою за дату кінця виготовлення продукції! \nПозиція: " + q.MatName + " \nДата: " + q.Make.OnDate + " \nЗмінити дату докомента на " + q.Make.OnDate + "?";
+                String msg = "Дата документа не може бути меншою за дату виготовлення продукції! \nПозиція: " + q.MatName + " \nДата: " + q.Make.OnDate + " \nЗмінити дату докомента на " + q.Make.OnDate + "?";
                 if (MessageBox.Show(msg, "Інформація", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                 {
                     wb.OnDate = q.Make.OnDate.Value;
@@ -240,8 +250,12 @@ order by  ma.ondate desc */
         {
             if (wbd_row != null)
             {
-                _db.DeleteWhere<WaybillDet>(w => w.PosId == wbd_row.PosId);
-                _db.SaveChanges();
+                var wbd = _db.WaybillDet.FirstOrDefault(w => w.PosId == wbd_row.PosId);
+                if (wbd != null)
+                {
+                    _db.WaybillDet.Remove(wbd);
+                }
+                _db.Save(wb.WbillId);
 
                 RefreshDet();
             }
@@ -293,7 +307,7 @@ order by  ma.ondate desc */
                             turn.WId = Convert.ToInt32(WHComboBox.EditValue);
                         }
                     }
-                    _db.SaveChanges();
+                    _db.Save(wb.WbillId);
                     RefreshDet();
                 }
             }
@@ -309,7 +323,7 @@ order by  ma.ondate desc */
 
         private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            _db.SaveChanges();
+            _db.Save(wb.WbillId);
 
             PrintDoc.Show(wb.DocId.Value, wb.WType, _db);
         }

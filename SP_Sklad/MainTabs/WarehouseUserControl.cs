@@ -236,7 +236,15 @@ namespace SP_Sklad.MainTabs
                         switch (focused_tree_node.GType)
                         {
                             case 2:
-                                db.DeleteWhere<WaybillList>(w=> w.WbillId ==  dr.WBillId.Value);
+                                var wb = db.WaybillList.FirstOrDefault(w => w.WbillId == dr.WBillId.Value && w.SessionId == null);
+                                if (wb != null)
+                                {
+                                    db.WaybillList.Remove(wb);
+                                }
+                                else
+                                {
+                                    MessageBox.Show(Resources.deadlock);
+                                }
                                 break;
 
                         }
@@ -279,25 +287,30 @@ namespace SP_Sklad.MainTabs
                         {
                             return;
                         }
-                        
+
                         var wb = db.WaybillList.Find(focused_row.WBillId);
-                        if (wb != null)
+                        if (wb == null)
                         {
-                            if (wb.Checked == 1)
-                            {
-                                DBHelper.StornoOrder(db, focused_row.WBillId.Value);
-                            }
-                            else
-                            {
-                                DBHelper.ExecuteOrder(db, focused_row.WBillId.Value);
-                            }
+                            MessageBox.Show(Resources.not_find_wb);
+                            return;
+                        }
+
+                        if (wb.SessionId != null)
+                        {
+                            MessageBox.Show(Resources.deadlock);
+                            return;
+                        }
+
+                        if (wb.Checked == 1)
+                        {
+                            DBHelper.StornoOrder(db, focused_row.WBillId.Value);
                         }
                         else
                         {
-                            MessageBox.Show(Resources.not_find_wb);
+                            DBHelper.ExecuteOrder(db, focused_row.WBillId.Value);
                         }
-                        break;
 
+                        break;
                 }
             }
 

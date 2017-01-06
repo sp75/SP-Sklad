@@ -42,18 +42,18 @@ namespace SP_Sklad
                 label1.Visible = true;
                 label1.Text = "З'явилася нова версія , загрузіть оновлення!";
             }
-      //      var ip_address = GetPhysicalIPAdress();
-      //      var mac_address = GetMacAddress();
-         /*   var intetf  =  GetMacAddress();
-            var mac_address = Regex.Replace(intetf.GetPhysicalAddress().ToString(), "[^0-9 ]", "") ;
-            var ip = intetf.GetIPProperties().UnicastAddresses.Where(w => w.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
-            var ip_address = ip.Any() ? ip.FirstOrDefault().Address.ToString() : "";*/
-       /*     using (var db = new BaseEntities())
+            var ip_address = GetPhysicalIPAdress();
+            var mac_address = GetMacAddress();
+          //  var intetf  =  GetMacAddress();
+           // var mac_address = Regex.Replace(intetf.GetPhysicalAddress().ToString(), "[^0-9 ]", "") ;
+         //   var ip = intetf.GetIPProperties().UnicastAddresses.Where(w => w.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
+         //   var ip_address = ip.Any() ? ip.FirstOrDefault().Address.ToString() : "";
+            using (var db = new BaseEntities())
             {
-                var lic = db.Llicenses.FirstOrDefault(w => w.MacAddress == mac_address);
+                var lic = db.Licenses.FirstOrDefault(w => w.MacAddress == mac_address);
                 if (lic == null)
                 {
-                    db.Llicenses.Add(new Llicenses
+                    db.Licenses.Add(new Licenses
                     {
                         MacAddress = mac_address,
                         LicencesKay = "",
@@ -75,7 +75,7 @@ namespace SP_Sklad
                     label1.Visible = true;
                 }
                 db.SaveChanges();
-            }*/
+            }
 
         }
 
@@ -188,12 +188,12 @@ namespace SP_Sklad
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-        /*    if (!is_registered)
+            if (!is_registered)
             {
                 Application.Exit();
 
                 return;
-            }*/
+            }
             
             using (var db = new BaseEntities())
             {

@@ -2814,7 +2814,7 @@
             // 
             // lookUpEdit2
             // 
-            this.lookUpEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KAgentAccountBS, "TypeId", true));
+            this.lookUpEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KAgentAccountBS, "BankId", true));
             this.lookUpEdit2.Location = new System.Drawing.Point(74, 91);
             this.lookUpEdit2.Name = "lookUpEdit2";
             this.lookUpEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {

@@ -40,6 +40,12 @@ namespace SP_Sklad.Common
                         return;
                     }
 
+                    if (wb.SessionId != null)
+                    {
+                        MessageBox.Show(Resources.deadlock);
+                        return;
+                    }
+
                     if (wb.Checked == 1)
                     {
                         if (MessageBox.Show(Resources.edit_info, "Відміна проводки", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)

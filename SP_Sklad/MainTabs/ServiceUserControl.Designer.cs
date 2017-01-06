@@ -163,6 +163,7 @@
             this.CommonParamsBS = new System.Windows.Forms.BindingSource(this.components);
             this.OperLogPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.SessionPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.UsersDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -1639,26 +1640,27 @@
             this.xtraTabPage9.Controls.Add(this.PatchEdit);
             this.xtraTabPage9.Name = "xtraTabPage9";
             this.xtraTabPage9.Size = new System.Drawing.Size(957, 560);
-            this.xtraTabPage9.Text = "xtraTabPage9";
+            this.xtraTabPage9.Text = "Додаткові";
             // 
             // AttLabel
             // 
-            this.AttLabel.Location = new System.Drawing.Point(31, 41);
+            this.AttLabel.Location = new System.Drawing.Point(31, 30);
             this.AttLabel.Name = "AttLabel";
-            this.AttLabel.Size = new System.Drawing.Size(93, 13);
+            this.AttLabel.Size = new System.Drawing.Size(155, 13);
             this.AttLabel.TabIndex = 27;
-            this.AttLabel.Text = "Шлях до шаблонів";
+            this.AttLabel.Text = "Шлях до глобальних шаблонів";
             // 
             // PatchEdit
             // 
             this.PatchEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.CommonParamsBS, "TemplatePatch", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.PatchEdit.Location = new System.Drawing.Point(130, 38);
+            this.PatchEdit.Location = new System.Drawing.Point(31, 49);
             this.PatchEdit.MenuManager = this.barManager1;
             this.PatchEdit.Name = "PatchEdit";
             this.PatchEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.PatchEdit.Size = new System.Drawing.Size(427, 20);
             this.PatchEdit.TabIndex = 26;
+            this.PatchEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.PatchEdit_ButtonClick);
             // 
             // CommonParamsBS
             // 
@@ -1912,5 +1914,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
         private DevExpress.XtraBars.PopupMenu SessionPopupMenu;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }

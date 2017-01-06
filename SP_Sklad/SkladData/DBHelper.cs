@@ -72,6 +72,10 @@ namespace SP_Sklad.SkladData
                 }
                 return _common_param;
             }
+            set
+            {
+                _common_param = value;
+            }
         }
 
         public static LoginUser CurrentUser
@@ -335,7 +339,7 @@ order by wbd.ondate desc
                 {
                     wb.SessionId = clear == true ? ( wb.SessionId == UserSession.SessionId ? null : wb.SessionId) : (Guid?)UserSession.SessionId;
                     wb.UpdatedBy = UserSession.UserId;
-
+                    wb.UpdatedAt = DateTime.Now;
                     db.SaveChanges();
                 }
             }

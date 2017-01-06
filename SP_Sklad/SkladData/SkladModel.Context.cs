@@ -24,6 +24,12 @@ namespace SP_Sklad.SkladData
     	   Database.CommandTimeout = 180;
         }
     
+    	public BaseEntities(string sConnectionString)
+                : base(sConnectionString)
+        {
+    	   Database.CommandTimeout = 180;
+        }
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

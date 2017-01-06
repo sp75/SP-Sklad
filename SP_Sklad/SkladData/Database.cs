@@ -9,6 +9,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using SP_Sklad.Common;
+using EntityState = System.Data.Entity.EntityState;
 
 namespace SP_Sklad.SkladData
 {
@@ -72,6 +73,38 @@ namespace SP_Sklad.SkladData
             }
 
             return db.SaveChanges();
+        }
+
+        public static void UndoAllChanges(this BaseEntities context)
+        {
+            //detect all changes (probably not required if AutoDetectChanges is set to true)
+            context.ChangeTracker.DetectChanges();
+
+            //get all entries that are changed
+            var entries = context.ChangeTracker.Entries().Where(e => e.State != EntityState.Unchanged).ToList();
+
+            //somehow try to discard changes on every entry
+            foreach (var dbEntityEntry in entries)
+            {
+                var entity = dbEntityEntry.Entity;
+
+                if (entity == null) continue;
+
+                if (dbEntityEntry.State == EntityState.Added)
+                {
+                    //if entity is in Added state, remove it. (there will be problems with Set methods if entity is of proxy type, in that case you need entity base type
+                    var set = context.Set(entity.GetType());
+                    set.Remove(entity);
+                }
+                else if (dbEntityEntry.State == EntityState.Modified)
+                {
+                    //entity is modified... you can set it to Unchanged or Reload it form Db??
+                    dbEntityEntry.Reload();
+                }
+                else if (dbEntityEntry.State == EntityState.Deleted)
+                    //entity is deleted... not sure what would be the right thing to do with it... set it to Modifed or Unchanged
+                    dbEntityEntry.State = EntityState.Modified;
+            }
         }
 
         public static DataTable Ext_ToDataTable<T>(this IEnumerable<T> varlist)
