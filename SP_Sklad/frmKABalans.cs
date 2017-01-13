@@ -66,7 +66,7 @@ namespace SP_Sklad
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var dir = bandedGridView1.GetFocusedRow() as GetDocList_Result;
-            PrintDoc.Show(dir.DocId.Value, dir.WType.Value,DB.SkladBase());
+            PrintDoc.Show(dir.Id.Value, dir.WType.Value,DB.SkladBase());
         }
 
         private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

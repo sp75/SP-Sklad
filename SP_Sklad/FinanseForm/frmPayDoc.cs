@@ -58,6 +58,7 @@ namespace SP_Sklad.FinanseForm
                 string doc_setting_name = w_type == -3 ? "pay_doc_out" : w_type == 3 ? "pay_doc_in" : "pay_doc";
                 _pd = _db.PayDoc.Add(new PayDoc
                 {
+                    Id = Guid.NewGuid(),
                     Checked = 1,
                     DocNum = new BaseEntities().GetDocNum(doc_setting_name).FirstOrDefault(),
                     OnDate = DBHelper.ServerDateTime(),
@@ -181,9 +182,7 @@ namespace SP_Sklad.FinanseForm
         {
             _db.SaveChanges();
 
-            int doc_id = _db.PayDoc.AsNoTracking().First(w => w.PayDocId == _pd.PayDocId).DocId.Value;
-
-            PrintDoc.Show(doc_id, _pd.DocType == -2 ? _pd.DocType : _pd.DocType * 3, _db);
+            PrintDoc.Show(_pd.Id, _pd.DocType == -2 ? _pd.DocType : _pd.DocType * 3, _db);
         }
 
         private void PTypeComboBox_EditValueChanged(object sender, EventArgs e)

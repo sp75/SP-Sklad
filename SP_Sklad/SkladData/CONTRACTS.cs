@@ -33,6 +33,8 @@ namespace SP_Sklad.SkladData
         public int ISEXTERNAL { get; set; }
         public Nullable<int> PERSONID { get; set; }
         public int DOCTYPE { get; set; }
+        public System.Guid Id { get; set; }
+        public Nullable<int> ExDocType { get; set; }
     
         public virtual ICollection<CONTRDET> CONTRDET { get; set; }
         public virtual CONTRPARAMS CONTRPARAMS { get; set; }

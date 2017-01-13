@@ -41,6 +41,7 @@ namespace SP_Sklad.WBForm
             {
                 pl = _db.PriceList.Add(new PriceList
                 {
+                    Id = Guid.NewGuid(),
                     Deleted = 0,
                     UseLogo = 0,
                     CurrId = 2,
@@ -259,7 +260,8 @@ namespace SP_Sklad.WBForm
 
         private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            PrintDoc.Show(_pl_id.Value, 10, _db);
+            _db.SaveChanges();
+            PrintDoc.Show(pl.Id, 10, _db);
         }
 
         private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

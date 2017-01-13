@@ -13,6 +13,7 @@ namespace SP_Sklad.SkladData
     
     public partial class OrderedList_Result
     {
+        public System.Guid Id { get; set; }
         public int PosId { get; set; }
         public int WbillId { get; set; }
         public int WType { get; set; }

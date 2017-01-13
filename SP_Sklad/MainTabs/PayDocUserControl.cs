@@ -103,6 +103,7 @@ namespace SP_Sklad.MainTabs
             {
                 _pd = _db.PayDoc.Add(new PayDoc()
                 {
+                    Id = Guid.NewGuid(),
                     DocNum = NumEdit.EditValue.ToString(), //Номер документа
                     Total = Convert.ToDecimal(SumEdit.EditValue),
                     Checked = Convert.ToInt32(ExecPayCheckBox.EditValue),

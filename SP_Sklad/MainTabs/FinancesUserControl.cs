@@ -325,7 +325,7 @@ namespace SP_Sklad.MainTabs
             {
                 case 2:
                     var dr = MoneyMoveGridView.GetFocusedRow() as MoneyMoveList_Result;
-                    var doc = DB.SkladBase().DocCopy(dr.DocId).FirstOrDefault();
+                    var doc = DB.SkladBase().DocCopy(dr.Id).FirstOrDefault();
                     using (var wb_in = new frmMoneyMove(6, doc.out_wbill_id))
                     {
                         wb_in.ShowDialog();

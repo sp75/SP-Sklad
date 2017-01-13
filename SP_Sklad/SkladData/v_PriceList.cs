@@ -24,5 +24,6 @@ namespace SP_Sklad.SkladData
         public Nullable<int> DocId { get; set; }
         public Nullable<int> PTypeId { get; set; }
         public string CurrName { get; set; }
+        public System.Guid Id { get; set; }
     }
 }

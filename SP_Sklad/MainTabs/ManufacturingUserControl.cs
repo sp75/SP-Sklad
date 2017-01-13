@@ -64,7 +64,7 @@ namespace SP_Sklad.MainTabs
             }
         }
 
-        void GetWayBillList()
+        void GetWBListMake()
         {
             if (wbSatusList.EditValue == null || WhComboBox.EditValue == null || DocsTreeList.FocusedNode == null)
             {
@@ -125,13 +125,8 @@ namespace SP_Sklad.MainTabs
 
             switch (focused_tree_node.GType.Value)
             {
-                case 3:
-                    bar1.Visible = true;
-                    GetDeboningList();
-                    break;
-
                 case 1: bar1.Visible = true;
-                    GetWayBillList();
+                    GetWBListMake();
                     break;
 
                 case 2:
@@ -139,7 +134,11 @@ namespace SP_Sklad.MainTabs
                     whUserControl.WHTreeList.FocusedNode = whUserControl.WHTreeList.FindNodeByFieldValue("Id", focused_tree_node.Id);
                     bar1.Visible = false;
                     whUserControl.splitContainerControl1.PanelVisibility = SplitPanelVisibility.Panel2;
+                    break;
 
+                case 3:
+                    bar1.Visible = true;
+                    GetDeboningList();
                     break;
             }
         }
@@ -347,7 +346,7 @@ namespace SP_Sklad.MainTabs
 
         private void wbStartDate_EditValueChanged(object sender, EventArgs e)
         {
-            GetWayBillList();
+            GetWBListMake();
         }
 
         private void DebStartDate_EditValueChanged(object sender, EventArgs e)
@@ -366,7 +365,7 @@ namespace SP_Sklad.MainTabs
 
         private void PrintItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            PrintDoc.Show(focused_row.DocId.Value, focused_row.WType, DB.SkladBase());
+            PrintDoc.Show(focused_row.Id, focused_row.WType, DB.SkladBase());
         }
 
         private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -379,7 +378,7 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType)
             {
                 case 1:
-                    var doc = DB.SkladBase().DocCopy(focused_row.DocId).FirstOrDefault();
+                    var doc = DB.SkladBase().DocCopy(focused_row.Id).FirstOrDefault();
                     using (var wb_in = new frmWBManufacture(doc.out_wbill_id))
                     {
                         wb_in.ShowDialog();
@@ -387,7 +386,7 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 3:
-                    var doc2 = DB.SkladBase().DocCopy(focused_row.DocId).FirstOrDefault();
+                    var doc2 = DB.SkladBase().DocCopy(focused_row.Id).FirstOrDefault();
                     using (var wb_in = new frmWBDeboning(doc2.out_wbill_id))
                     {
                         wb_in.ShowDialog();
@@ -436,7 +435,7 @@ namespace SP_Sklad.MainTabs
                 row = gridView5.GetFocusedRow() as GetRelDocList_Result;
             }
 
-            PrintDoc.Show(row.DocId.Value, row.DocType.Value, DB.SkladBase());
+            PrintDoc.Show(row.Id.Value, row.DocType.Value, DB.SkladBase());
         }
 
         private void WbGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)

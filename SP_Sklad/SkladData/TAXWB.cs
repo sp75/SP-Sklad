@@ -41,6 +41,7 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> CONTRACT_DATE { get; set; }
         public string CONTRACT_NUM { get; set; }
         public Nullable<int> TAXREESTRTYPE { get; set; }
+        public System.Guid Id { get; set; }
     
         public virtual Docs Docs { get; set; }
         public virtual ICollection<TAXWBDET> TAXWBDET { get; set; }

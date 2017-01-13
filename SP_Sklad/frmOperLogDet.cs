@@ -35,7 +35,7 @@ namespace SP_Sklad
                     var wb = DB.SkladBase().WaybillList.Find(dr.Id);
                     if (wb != null)
                    {
-                       PrintDoc.Show(wb.DocId.Value, dr.DocType.Value, DB.SkladBase());
+                       PrintDoc.Show(wb.Id, dr.DocType.Value, DB.SkladBase());
                    }
                    else
                    {

@@ -30,5 +30,6 @@ namespace SP_Sklad.SkladData
         public string KaName { get; set; }
         public string MatName { get; set; }
         public string TypeName { get; set; }
+        public System.Guid Id { get; set; }
     }
 }

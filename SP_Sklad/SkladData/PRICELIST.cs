@@ -28,6 +28,7 @@ namespace SP_Sklad.SkladData
         public int UseLogo { get; set; }
         public Nullable<int> DocId { get; set; }
         public Nullable<int> PTypeId { get; set; }
+        public System.Guid Id { get; set; }
     
         public virtual Currency Currency { get; set; }
         public virtual Docs Docs { get; set; }

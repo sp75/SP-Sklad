@@ -80,7 +80,7 @@ namespace SP_Sklad
             var row = bandedGridView1.GetFocusedRow() as GetMatMove_Result;
             if ( row != null )
             {
-                PrintDoc.Show(row.DocId.Value, row.WType.Value, DB.SkladBase());
+                PrintDoc.Show(row.Id.Value, row.WType.Value, DB.SkladBase());
             }
         }
 

@@ -701,7 +701,7 @@ namespace SP_Sklad.MainTabs
                         return;
                     }
 
-                    PrintDoc.Show(dr.DocId.Value, dr.WType.Value, DB.SkladBase());
+                    PrintDoc.Show(dr.Id.Value, dr.WType.Value, DB.SkladBase());
                     break;
             }
         }
@@ -717,7 +717,7 @@ namespace SP_Sklad.MainTabs
             {
                 case 2:
                     var dr = WbGridView.GetFocusedRow() as GetWayBillListWh_Result;
-                    var doc = DB.SkladBase().DocCopy(dr.DocId).FirstOrDefault();
+                    var doc = DB.SkladBase().DocCopy(dr.Id).FirstOrDefault();
 
                     if (cur_wtype == 5) //Ввведення залишків
                     {
@@ -776,7 +776,7 @@ namespace SP_Sklad.MainTabs
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var row = gridView3.GetFocusedRow() as GetRelDocList_Result;
-            PrintDoc.Show(row.DocId.Value, row.DocType.Value, DB.SkladBase());
+            PrintDoc.Show(row.Id.Value, row.DocType.Value, DB.SkladBase());
         }
 
         private void WbGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)

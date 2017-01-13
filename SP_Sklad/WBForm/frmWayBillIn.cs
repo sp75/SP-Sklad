@@ -17,6 +17,7 @@ using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using SP_Sklad.Reports;
 using SP_Sklad.Common;
+using SP_Sklad.Common.WayBills;
 
 namespace SP_Sklad.WBForm
 {
@@ -56,6 +57,7 @@ namespace SP_Sklad.WBForm
 
                 wb = _db.WaybillList.Add(new WaybillList()
                 {
+                    Id = Guid.NewGuid(),
                     WType = _wtype,
                     OnDate = DBHelper.ServerDateTime(),
                     Num = new BaseEntities().GetDocNum("wb_in").FirstOrDefault(),
@@ -291,7 +293,7 @@ namespace SP_Sklad.WBForm
             int top_row = WaybillDetInGridView.TopRowIndex;
             WaybillDetInBS.DataSource = _db.GetWaybillDetIn(_wbill_id).AsNoTracking().ToList();
             WaybillDetInGridView.TopRowIndex = top_row;
-         
+
             GetOk();
         }
 
@@ -360,12 +362,14 @@ namespace SP_Sklad.WBForm
             var wbd = _db.WaybillDet.Find(dr.PosId);
 
             wbd.Amount = Convert.ToDecimal(e.Value);
+
+        //    var dd = WayBillsController.GetWaybillDetIn(_db, _wbill_id);
         }
 
         private void PrintBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             _db.Save(wb.WbillId);
-            PrintDoc.Show(wb.DocId.Value, wb.WType, _db);
+            PrintDoc.Show(wb.Id, wb.WType, _db);
         }
 
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

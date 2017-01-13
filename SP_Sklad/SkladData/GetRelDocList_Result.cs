@@ -13,6 +13,7 @@ namespace SP_Sklad.SkladData
     
     public partial class GetRelDocList_Result
     {
+        public Nullable<System.Guid> Id { get; set; }
         public Nullable<int> DocId { get; set; }
         public Nullable<int> DocType { get; set; }
         public string Num { get; set; }

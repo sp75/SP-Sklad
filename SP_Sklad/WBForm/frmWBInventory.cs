@@ -52,6 +52,7 @@ namespace SP_Sklad.WBForm
             {
                 wb = _db.WaybillList.Add(new WaybillList()
                 {
+                    Id = Guid.NewGuid(),
                     WType = _wtype,
                     OnDate = DBHelper.ServerDateTime(),
                     Num = new BaseEntities().GetDocNum("wb_inventory").FirstOrDefault(),
@@ -285,7 +286,7 @@ namespace SP_Sklad.WBForm
         {
             _db.SaveChanges();
 
-            PrintDoc.Show(wb.DocId.Value, wb.WType, _db);
+            PrintDoc.Show(wb.Id, wb.WType, _db);
         }
 
         private void RsvInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

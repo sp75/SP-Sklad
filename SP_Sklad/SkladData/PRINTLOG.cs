@@ -19,6 +19,7 @@ namespace SP_Sklad.SkladData
         public Nullable<int> UserId { get; set; }
         public Nullable<System.DateTime> OnDate { get; set; }
         public Nullable<int> PrintType { get; set; }
+        public Nullable<System.Guid> OriginatorId { get; set; }
     
         public virtual Users Users { get; set; }
     }

@@ -13,6 +13,7 @@ namespace SP_Sklad.SkladData
     
     public partial class GetDocList_Result
     {
+        public Nullable<System.Guid> Id { get; set; }
         public Nullable<int> WbillId { get; set; }
         public Nullable<int> WType { get; set; }
         public string Num { get; set; }

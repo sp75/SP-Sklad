@@ -13,6 +13,7 @@ namespace SP_Sklad.SkladData
     
     public partial class GetMatMove_Result
     {
+        public Nullable<System.Guid> Id { get; set; }
         public Nullable<int> WBillId { get; set; }
         public Nullable<int> WType { get; set; }
         public Nullable<System.DateTime> OnDate { get; set; }

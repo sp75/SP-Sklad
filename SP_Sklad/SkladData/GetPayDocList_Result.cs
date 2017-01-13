@@ -35,6 +35,8 @@ namespace SP_Sklad.SkladData
         public Nullable<int> DocId { get; set; }
         public Nullable<decimal> OnValue { get; set; }
         public string Schet { get; set; }
+        public Nullable<int> UpdatedBy { get; set; }
+        public System.Guid Id { get; set; }
         public string CurrName { get; set; }
         public string KaName { get; set; }
         public string KaFullName { get; set; }

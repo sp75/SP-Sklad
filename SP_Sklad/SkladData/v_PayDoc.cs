@@ -55,5 +55,6 @@ namespace SP_Sklad.SkladData
         public string AccNum { get; set; }
         public string BankName { get; set; }
         public string KAU { get; set; }
+        public System.Guid Id { get; set; }
     }
 }

@@ -491,17 +491,17 @@ namespace SP_Sklad.MainTabs
                         return;
                     }
 
-                    PrintDoc.Show(dr.DocId.Value, dr.WType, _db);
+                    PrintDoc.Show(dr.Id, dr.WType, _db);
                     break;
 
                 case 4:
                     var pd = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
-                    PrintDoc.Show(pd.DocId.Value, pd.DocType == -2 ? pd.DocType : pd.DocType * 3, _db);
+                    PrintDoc.Show(pd.Id, pd.DocType == -2 ? pd.DocType : pd.DocType * 3, _db);
                     break;
 
                 case 5:
                     var p_l = PriceListGridView.GetFocusedRow() as v_PriceList;
-                    PrintDoc.Show(p_l.PlId, 10, _db);
+                    PrintDoc.Show(p_l.Id, 10, _db);
 
                     break;
 
@@ -526,7 +526,7 @@ namespace SP_Sklad.MainTabs
             {
                 case 1:
                     var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
-                    var doc = DB.SkladBase().DocCopy(dr.DocId).FirstOrDefault();
+                    var doc = DB.SkladBase().DocCopy(dr.Id).FirstOrDefault();
 
                     if (cur_wtype == -1 || cur_wtype == -16) //Відаткова , замолення клиента 
                     {
@@ -566,7 +566,7 @@ namespace SP_Sklad.MainTabs
 
                 case 4:
                     var pd = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
-                    var p_doc = DB.SkladBase().DocCopy(pd.DocId).FirstOrDefault();
+                    var p_doc = DB.SkladBase().DocCopy(pd.Id).FirstOrDefault();
 
                     int? w_type = focused_tree_node.WType != -2 ? focused_tree_node.WType / 3 : focused_tree_node.WType;
                     using (var pdf = new frmPayDoc(w_type, p_doc.out_wbill_id))
@@ -753,7 +753,7 @@ namespace SP_Sklad.MainTabs
                 row = gridView1.GetFocusedRow() as GetRelDocList_Result;
             }
 
-            PrintDoc.Show(row.DocId.Value, row.DocType.Value, DB.SkladBase());
+            PrintDoc.Show(row.Id.Value, row.DocType.Value, DB.SkladBase());
         }
 
         private void WbGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
@@ -868,6 +868,7 @@ namespace SP_Sklad.MainTabs
                         {
                             var wb = db.WaybillList.Add(new WaybillList()
                                {
+                                   Id = Guid.NewGuid(),
                                    WType = -5,
                                    DefNum = 1,
                                    OnDate = DBHelper.ServerDateTime(),

@@ -42,20 +42,20 @@ namespace SP_Sklad
                 label1.Visible = true;
                 label1.Text = "З'явилася нова версія , загрузіть оновлення!";
             }
+            var MotherBoardID = getMotherBoardID();
+
+
             var ip_address = GetPhysicalIPAdress();
-            var mac_address = GetMacAddress();
-          //  var intetf  =  GetMacAddress();
-           // var mac_address = Regex.Replace(intetf.GetPhysicalAddress().ToString(), "[^0-9 ]", "") ;
-         //   var ip = intetf.GetIPProperties().UnicastAddresses.Where(w => w.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
-         //   var ip_address = ip.Any() ? ip.FirstOrDefault().Address.ToString() : "";
+        //    var mac_address = GetMacAddress();
+
             using (var db = new BaseEntities())
             {
-                var lic = db.Licenses.FirstOrDefault(w => w.MacAddress == mac_address);
+                var lic = db.Licenses.FirstOrDefault(w => w.MacAddress == MotherBoardID);
                 if (lic == null)
                 {
                     db.Licenses.Add(new Licenses
                     {
-                        MacAddress = mac_address,
+                        MacAddress = MotherBoardID,
                         LicencesKay = "",
                         IpAddress = ip_address,
                         MachineName = Environment.MachineName
@@ -66,7 +66,7 @@ namespace SP_Sklad
                 {
                     lic.IpAddress = ip_address;
                     lic.MachineName = Environment.MachineName;
-                    is_registered = DeCoding(lic.LicencesKay) == Convert.ToInt32(lic.MacAddress);
+                    is_registered = DeCoding(lic.LicencesKay) == lic.MacAddress;
                 }
 
                 if (!is_registered)
@@ -122,21 +122,29 @@ namespace SP_Sklad
             }
             return String.Empty;
         }
-       
-     /*   public NetworkInterface GetMacAddress()
-        {
-            var myInterfaceAddress = NetworkInterface.GetAllNetworkInterfaces()
-                .Where(n => n.OperationalStatus == OperationalStatus.Up && n.NetworkInterfaceType != NetworkInterfaceType.Loopback)
-                .OrderByDescending(n => n.NetworkInterfaceType == NetworkInterfaceType.Ethernet).FirstOrDefault();
-              //  .Select(n => n.GetPhysicalAddress())
-                
 
-            return myInterfaceAddress;
-        }*/
-
-        public long DeCoding(String val)
+        public String getMotherBoardID()
         {
-            long rezult = -1;
+            String serial = "";
+            try
+            {
+                ManagementObjectSearcher mos = new ManagementObjectSearcher("SELECT SerialNumber FROM Win32_BaseBoard");
+                ManagementObjectCollection moc = mos.Get();
+
+                foreach (ManagementObject mo in moc)
+                {
+                //    serial = mo["SerialNumber"].ToString();
+                    serial = Regex.Replace(mo["SerialNumber"].ToString(), "[^0-9 ]", "");
+                }
+                return serial;
+            }
+            catch (Exception) { return serial; }
+        }
+
+
+        public string DeCoding(String val)
+        {
+            string rezult = "-1";
             if (val == null)
             {
                 return rezult;
@@ -178,12 +186,7 @@ namespace SP_Sklad
                 if (block == "RUK") val = val + '9';
             }
 
-            if (!String.IsNullOrEmpty(val))
-            {
-                rezult = Convert.ToInt32(val);
-            }
-
-            return rezult;
+            return val;
         }
 
         private void OkButton_Click(object sender, EventArgs e)

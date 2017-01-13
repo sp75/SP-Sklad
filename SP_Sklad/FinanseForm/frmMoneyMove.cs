@@ -45,6 +45,7 @@ namespace SP_Sklad.FinanseForm
             {
                 _pd = _db.PayDoc.Add(new PayDoc
                 {
+                    Id = Guid.NewGuid(),
                     Checked = 1,
                     DocNum = new BaseEntities().GetDocNum("pay_doc").FirstOrDefault(),
                     OnDate = DBHelper.ServerDateTime(),

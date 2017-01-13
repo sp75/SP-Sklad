@@ -18,102 +18,115 @@ namespace SP_Sklad.Reports
 {
     class PrintDoc
     {
-        public static void Show(int doc_id, int doc_type, BaseEntities db)
+        public static void Show(Guid id, int doc_type, BaseEntities db)
         {
             db.SaveChanges();
 
             switch (doc_type)
             {
                 case 1:
-                    WayBillInReport(doc_id, db, TemlateList.wb_in);
+                    WayBillInReport(id, db, TemlateList.wb_in);
                     break;
 
                 case -1:
-                    WayBillOutReport(doc_id, db, TemlateList.wb_out);
+                    WayBillOutReport(id, db, TemlateList.wb_out);
                     break;
 
                 case 5:
-                    WayBillReport(doc_id, db, TemlateList.write_on);
+                    WayBillReport(id, db, TemlateList.write_on);
                     break;
 
                 case -5:
-                    WayBillReport(doc_id, db, TemlateList.write_off);
+                    WayBillReport(id, db, TemlateList.write_off);
                     break;
 
                 case -6:
-                    WayBillReport(doc_id, db, TemlateList.re_supp);
+                    WayBillReport(id, db, TemlateList.re_supp);
                     break;
 
                 case 6:
-                    WayBillReport(doc_id, db, TemlateList.re_cust);
+                    WayBillReport(id, db, TemlateList.re_cust);
                     break;
 
                 case -16:
-                    WayBillReport(doc_id, db, TemlateList.ord_out);
+                    WayBillReport(id, db, TemlateList.ord_out);
                     break;
 
                 case 16:
-                    WayBillReport(doc_id, db, TemlateList.ord_in);
+                    WayBillReport(id, db, TemlateList.ord_in);
                     break;
 
                 case 4:
-                    WayBillReport(doc_id, db, TemlateList.wb_move);
+                    WayBillReport(id, db, TemlateList.wb_move);
                     break;
 
                 case 7:
-                    WayBillInvwntoryReport(doc_id, db, TemlateList.wb_inv);
+                    WayBillInvwntoryReport(id, db, TemlateList.wb_inv);
                     break;
 
                 case -22:
-                    DeboningReport(doc_id, db);
+                    DeboningReport(id, db);
                     break;
 
                 case -20:
-                    MakedReport(doc_id, db);
+                    MakedReport(id, db);
                     break;
 
                 case 10:
-                    PriseListReport(doc_id, db);
+                    PriseListReport(id, db);
                     break;
 
                 case 3:
-                    PayDocReport(doc_id, db, TemlateList.pay_doc_in);
+                    PayDocReport(id, db, TemlateList.pay_doc_in);
                     break;
 
                 case -3:
-                    PayDocReport(doc_id, db, TemlateList.pay_doc_out);
+                    PayDocReport(id, db, TemlateList.pay_doc_out);
                     break;
 
                 case -2:
-                    PayDocReport(doc_id, db, TemlateList.pay_doc_out);
+                    PayDocReport(id, db, TemlateList.pay_doc_out);
                     break;
 
                 case 2:
-                    InvoiceReport(doc_id, db, TemlateList.wb_invoice);
+                    InvoiceReport(id, db, TemlateList.wb_invoice);
                     break;
 
             }
+
+            using (var _db = DB.SkladBase())
+            {
+                _db.PrintLog.Add(new PrintLog
+                {
+                    OriginatorId = id,
+                    PrintType = 2,
+                    UserId = DBHelper.CurrentUser.UserId,
+                    OnDate = DateTime.Now
+                });
+
+                _db.SaveChanges();
+            }
         }
 
-        public static void WayBillInReport(int doc_id, BaseEntities db, string template_name)
+        public static void WayBillInReport(Guid id, BaseEntities db, string template_name)
         {
             var dataForReport = new Dictionary<string, IList>();
             //       var wbill_id = db.WaybillList.FirstOrDefault(w => w.DocId == doc_id).WbillId;
 
-            var wb = db.v_WaybillList.Where(w => w.DocId == doc_id).AsNoTracking().ToList();
+            var wb = db.v_WaybillList.Where(w => w.Id == id).AsNoTracking().ToList();
             int wbill_id = wb.First().WbillId; 
 
             dataForReport.Add("WayBillList", wb);
             dataForReport.Add("range1", db.GetWaybillDetIn(wbill_id).ToList());
 
-            IHelper.Print(dataForReport, template_name);
+             IHelper.Print(dataForReport, template_name);
         }
 
-        public static void WayBillReport(int doc_id, BaseEntities db, string template_name)
+        public static void WayBillReport(Guid id, BaseEntities db, string template_name)
         {
             var dataForReport = new Dictionary<string, IList>();
 
-            var wb = db.v_WaybillList.Where(w => w.DocId == doc_id).AsNoTracking().ToList();
+            var wb = db.v_WaybillList.Where(w => w.Id == id).AsNoTracking().ToList();
             int wbill_id = wb.First().WbillId;
 
             dataForReport.Add("WayBillList", wb);
@@ -129,12 +142,12 @@ namespace SP_Sklad.Reports
             IHelper.Print(dataForReport, template_name);
         }
 
-        public static void WayBillInvwntoryReport(int doc_id, BaseEntities db, string template_name)
+        public static void WayBillInvwntoryReport(Guid id, BaseEntities db, string template_name)
         {
             var dataForReport = new Dictionary<string, IList>();
             var rel = new List<object>();
 
-            var wb = db.v_WaybillList.Where(w => w.DocId == doc_id).AsNoTracking().ToList();
+            var wb = db.v_WaybillList.Where(w => w.Id == id).AsNoTracking().ToList();
             int wbill_id = wb.First().WbillId;
             var items = db.GetWaybillDetIn(wbill_id).ToList();
 
@@ -168,11 +181,11 @@ namespace SP_Sklad.Reports
             IHelper.Print(dataForReport, template_name);
         }
 
-        public static void WayBillOutReport(int doc_id, BaseEntities db, string template_name)
+        public static void WayBillOutReport(Guid id, BaseEntities db, string template_name)
         {
             var data_report = new Dictionary<string, IList>();
 
-            var wb = db.v_WaybillList.Where(w => w.DocId == doc_id).AsNoTracking().ToList();
+            var wb = db.v_WaybillList.Where(w => w.Id == id).AsNoTracking().ToList();
 
             if (wb != null)
             {
@@ -206,11 +219,11 @@ namespace SP_Sklad.Reports
             IHelper.Print(data_report, template_name);
         }
 
-        public static void InvoiceReport(int doc_id, BaseEntities db, string template_name)
+        public static void InvoiceReport(Guid id, BaseEntities db, string template_name)
         {
             var data_report = new Dictionary<string, IList>();
 
-            var wb = db.v_WaybillList.Where(w => w.DocId == doc_id).AsNoTracking().ToList();
+            var wb = db.v_WaybillList.Where(w => w.Id == id).AsNoTracking().ToList();
 
             if (wb != null)
             {
@@ -228,12 +241,12 @@ namespace SP_Sklad.Reports
             IHelper.Print(data_report, template_name);
         }
 
-        public static void DeboningReport(int doc_id, BaseEntities db)
+        public static void DeboningReport(Guid id, BaseEntities db)
         {
             var dataForReport = new Dictionary<string, IList>();
-            var date = db.WaybillList.Where(w=> w.DocId == doc_id).Select(s=> s.OnDate).First();
+            var date = db.WaybillList.Where(w=> w.Id == id).Select(s=> s.OnDate).First();
 
-            var wb = db.WBListMake(date,date,-1,"*",0,-22).Where(w => w.DocId == doc_id).ToList();
+            var wb = db.WBListMake(date,date,-1,"*",0,-22).Where(w => w.Id == id).ToList();
             int wbill_id = wb.First().WbillId;
 
             var item = db.DeboningDet.Where(w => w.WBillId == wbill_id).AsNoTracking().ToList().Select((s, index) => new
@@ -273,10 +286,10 @@ namespace SP_Sklad.Reports
             IHelper.Print(dataForReport, TemlateList.wb_deb);
         }
 
-        public static void MakedReport(int doc_id, BaseEntities db)
+        public static void MakedReport(Guid id, BaseEntities db)
         {
             var dataForReport = new Dictionary<string, IList>();
-            var wbl = db.WaybillList.Where(w => w.DocId == doc_id).Select(s => new { s.OnDate, s.WbillId }).First();
+            var wbl = db.WaybillList.Where(w => w.Id == id).Select(s => new { s.OnDate, s.WbillId }).First();
             var wb = db.WBListMake(wbl.OnDate, wbl.OnDate, -1, "*", 0, -20).ToList();
             var item = db.GetWayBillDetOut(wbl.WbillId).ToList().Select((s, index) => new
             {
@@ -323,13 +336,13 @@ namespace SP_Sklad.Reports
             dataForReport.Add("TechProc",  tp);
             dataForReport.Add("_realation_", rel);
 
-            IHelper.Print(dataForReport, TemlateList.wb_maked);
+             IHelper.Print(dataForReport, TemlateList.wb_maked);
         }
 
-        public static void PayDocReport(int doc_id, BaseEntities db, string template_name)
+        public static void PayDocReport(Guid id, BaseEntities db, string template_name)
         {
             var dataForReport = new Dictionary<string, IList>();
-            var pd = db.v_PayDoc.Where(w => w.DocId == doc_id).AsNoTracking().ToList();
+            var pd = db.v_PayDoc.Where(w => w.Id == id).AsNoTracking().ToList();
             if (pd != null)
             {
                 var m = new MoneyToStr("UAH", "UKR", "TEXT");
@@ -343,12 +356,12 @@ namespace SP_Sklad.Reports
 
         }
 
-        public static void PriseListReport(int pl_id, BaseEntities db)
+        public static void PriseListReport(Guid id, BaseEntities db)
         {
             var dataForReport = new Dictionary<string, IList>();
 
-            var pl = db.PriceList.Where(w => w.PlId == pl_id).AsNoTracking().ToList();
-            var pl_d = db.GetPriceListDet(pl_id).ToList().Select(s => new
+            var pl = db.PriceList.Where(w => w.Id == id).AsNoTracking().ToList();
+            var pl_d = db.GetPriceListDet(pl.FirstOrDefault().PlId).ToList().Select(s => new
             {
                 s.BarCode,
                 s.GrpName,

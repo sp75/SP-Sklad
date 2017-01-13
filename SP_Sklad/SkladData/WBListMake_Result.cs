@@ -13,6 +13,7 @@ namespace SP_Sklad.SkladData
     
     public partial class WBListMake_Result
     {
+        public System.Guid Id { get; set; }
         public int WbillId { get; set; }
         public string Num { get; set; }
         public System.DateTime OnDate { get; set; }

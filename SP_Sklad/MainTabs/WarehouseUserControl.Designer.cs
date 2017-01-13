@@ -2012,6 +2012,7 @@
             // gridColumn51
             // 
             this.gridColumn51.Caption = "Знижка, %";
+            this.gridColumn51.ColumnEdit = this.repositoryItemCalcEdit1;
             this.gridColumn51.FieldName = "Discount";
             this.gridColumn51.Name = "gridColumn51";
             this.gridColumn51.Visible = true;

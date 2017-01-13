@@ -13,6 +13,7 @@ namespace SP_Sklad.SkladData
     
     public partial class GetWayBillListWh_Result
     {
+        public Nullable<System.Guid> Id { get; set; }
         public Nullable<int> WBillId { get; set; }
         public string Num { get; set; }
         public Nullable<System.DateTime> OnDate { get; set; }
