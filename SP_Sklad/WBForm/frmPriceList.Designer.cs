@@ -83,6 +83,7 @@
             this.colMatId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MatTreeList = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
@@ -283,7 +284,7 @@
             this.standaloneBarDockControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl2.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl2.Name = "standaloneBarDockControl2";
-            this.standaloneBarDockControl2.Size = new System.Drawing.Size(449, 31);
+            this.standaloneBarDockControl2.Size = new System.Drawing.Size(504, 31);
             this.standaloneBarDockControl2.Text = "standaloneBarDockControl2";
             // 
             // bar3
@@ -338,7 +339,7 @@
             this.standaloneBarDockControl3.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl3.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl3.Name = "standaloneBarDockControl3";
-            this.standaloneBarDockControl3.Size = new System.Drawing.Size(401, 31);
+            this.standaloneBarDockControl3.Size = new System.Drawing.Size(403, 31);
             this.standaloneBarDockControl3.Text = "standaloneBarDockControl3";
             // 
             // barDockControlTop
@@ -346,14 +347,14 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(855, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(912, 24);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 663);
-            this.barDockControlBottom.Size = new System.Drawing.Size(855, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(912, 0);
             // 
             // barDockControlLeft
             // 
@@ -366,7 +367,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(855, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(912, 24);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 639);
             // 
             // standaloneBarDockControl1
@@ -376,7 +377,7 @@
             this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 24);
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(855, 0);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(912, 0);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // WBImgList
@@ -420,7 +421,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
-            this.panel1.Size = new System.Drawing.Size(855, 94);
+            this.panel1.Size = new System.Drawing.Size(912, 94);
             this.panel1.TabIndex = 24;
             // 
             // panelControl1
@@ -439,12 +440,12 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(5, 5);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(845, 84);
+            this.panelControl1.Size = new System.Drawing.Size(902, 84);
             this.panelControl1.TabIndex = 0;
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(675, 52);
+            this.labelControl4.Location = new System.Drawing.Point(758, 52);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(31, 16);
             this.labelControl4.StyleController = this.styleController1;
@@ -454,7 +455,7 @@
             // lookUpEdit2
             // 
             this.lookUpEdit2.Enabled = false;
-            this.lookUpEdit2.Location = new System.Drawing.Point(712, 49);
+            this.lookUpEdit2.Location = new System.Drawing.Point(795, 49);
             this.lookUpEdit2.Name = "lookUpEdit2";
             this.lookUpEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -472,7 +473,7 @@
             // 
             this.lookUpEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PriceListBS, "CurrId", true));
             this.lookUpEdit1.Enabled = false;
-            this.lookUpEdit1.Location = new System.Drawing.Point(542, 49);
+            this.lookUpEdit1.Location = new System.Drawing.Point(625, 49);
             this.lookUpEdit1.Name = "lookUpEdit1";
             this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -492,7 +493,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(459, 52);
+            this.labelControl1.Location = new System.Drawing.Point(542, 52);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(49, 16);
             this.labelControl1.StyleController = this.styleController1;
@@ -502,7 +503,7 @@
             // PTypeEdit
             // 
             this.PTypeEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PriceListBS, "PTypeId", true));
-            this.PTypeEdit.Location = new System.Drawing.Point(542, 13);
+            this.PTypeEdit.Location = new System.Drawing.Point(625, 13);
             this.PTypeEdit.Name = "PTypeEdit";
             this.PTypeEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -518,7 +519,7 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(459, 15);
+            this.labelControl6.Location = new System.Drawing.Point(542, 16);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(77, 16);
             this.labelControl6.StyleController = this.styleController1;
@@ -594,8 +595,8 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.MatTreeList);
             this.splitContainerControl1.Panel2.Controls.Add(this.standaloneBarDockControl3);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(855, 493);
-            this.splitContainerControl1.SplitterPosition = 449;
+            this.splitContainerControl1.Size = new System.Drawing.Size(912, 493);
+            this.splitContainerControl1.SplitterPosition = 504;
             this.splitContainerControl1.TabIndex = 25;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
@@ -609,7 +610,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1});
-            this.gridControl1.Size = new System.Drawing.Size(449, 462);
+            this.gridControl1.Size = new System.Drawing.Size(504, 462);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -624,9 +625,14 @@
             this.colPlDetType,
             this.colMatId,
             this.colPrice,
-            this.gridColumn1});
+            this.gridColumn1,
+            this.gridColumn2});
             this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.GroupCount = 1;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn2, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.gridView1.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView1_CellValueChanged);
             // 
             // colPlDetType
@@ -672,6 +678,7 @@
             // 
             // colPrice
             // 
+            this.colPrice.Caption = "Ціна";
             this.colPrice.DisplayFormat.FormatString = "0.00";
             this.colPrice.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colPrice.FieldName = "Price";
@@ -689,6 +696,14 @@
             this.gridColumn1.VisibleIndex = 2;
             this.gridColumn1.Width = 87;
             // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Група";
+            this.gridColumn2.FieldName = "GrpName";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 4;
+            // 
             // MatTreeList
             // 
             this.MatTreeList.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
@@ -702,7 +717,7 @@
             this.MatTreeList.OptionsBehavior.Editable = false;
             this.MatTreeList.ParentFieldName = "Pid";
             this.MatTreeList.SelectImageList = this.imageList1;
-            this.MatTreeList.Size = new System.Drawing.Size(401, 462);
+            this.MatTreeList.Size = new System.Drawing.Size(403, 462);
             this.MatTreeList.TabIndex = 2;
             this.MatTreeList.PopupMenuShowing += new DevExpress.XtraTreeList.PopupMenuShowingEventHandler(this.treeList1_PopupMenuShowing);
             this.MatTreeList.MouseDown += new System.Windows.Forms.MouseEventHandler(this.treeList1_MouseDown);
@@ -733,13 +748,13 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl2.Location = new System.Drawing.Point(0, 611);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(855, 52);
+            this.panelControl2.Size = new System.Drawing.Size(912, 52);
             this.panelControl2.TabIndex = 26;
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OkButton.Location = new System.Drawing.Point(633, 10);
+            this.OkButton.Location = new System.Drawing.Point(690, 10);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(100, 30);
             this.OkButton.TabIndex = 1;
@@ -749,7 +764,7 @@
             // simpleButton1
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.Location = new System.Drawing.Point(743, 10);
+            this.simpleButton1.Location = new System.Drawing.Point(800, 10);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(100, 30);
             this.simpleButton1.TabIndex = 0;
@@ -767,7 +782,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(855, 663);
+            this.ClientSize = new System.Drawing.Size(912, 663);
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.standaloneBarDockControl1);
@@ -779,7 +794,7 @@
             this.Name = "frmPriceList";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmPriceList";
+            this.Text = "Прайс лист";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmPriceList_FormClosed);
             this.Load += new System.EventHandler(this.frmPriceList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
@@ -872,5 +887,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colPrice;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
     }
 }

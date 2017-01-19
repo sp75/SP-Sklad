@@ -428,9 +428,13 @@ namespace SP_Sklad.MainTabs
                         var r = MatGridView.GetFocusedRow() as GetMatList_Result;
 
                         var mat = db.Materials.Find(r.MatId);
-                        if (mat != null)
+                        if (mat != null && (r.Remain == 0 || r.Remain == null))
                         {
                             mat.Deleted = 1;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Видаляти заборонено !");
                         }
 
                         break;
@@ -913,6 +917,26 @@ namespace SP_Sklad.MainTabs
             }
 
             RefrechItemBtn.PerformClick();
+        }
+
+        private void BarCodeEdit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && !String.IsNullOrEmpty(BarCodeEdit.Text))
+            {
+                var BarCodeSplit = BarCodeEdit.Text.Split('+');
+                String kod = BarCodeSplit[0];
+
+                var row = MatListDS.List.OfType<GetMatList_Result>().ToList().Find(f => f.BarCode == kod);
+                var pos = MatListDS.IndexOf(row);
+                MatListDS.Position = pos;
+
+                if (row != null && xtraTabPage14.PageVisible)
+                {
+                    AddItem.PerformClick();
+                }
+
+                BarCodeEdit.Text = "";
+            }
         }
     }
 }

@@ -187,7 +187,8 @@ namespace SP_Sklad.WBForm
 
         void GetDetail()
         {
-            PriceListDetBS.DataSource = _db.GetPriceListDet(_pl_id);  
+            PriceListDetBS.DataSource = _db.GetPriceListDet(_pl_id);
+            gridView1.ExpandAllGroups();
         }
 
         private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)

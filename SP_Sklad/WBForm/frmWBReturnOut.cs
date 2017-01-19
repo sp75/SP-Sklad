@@ -23,7 +23,7 @@ namespace SP_Sklad.WBForm
 
         public BaseEntities _db { get; set; }
         public int? _wbill_id { get; set; }
-        public int? doc_id { get; set; }
+        public Guid? doc_id { get; set; }
         private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
         private List<GetWayBillDetOut_Result> wbd_list { get; set; }
@@ -58,7 +58,6 @@ namespace SP_Sklad.WBForm
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
                     EntId = DBHelper.Enterprise.KaId,
-                    Docs = new Docs { DocType = _wtype },
                     UpdatedBy = DBHelper.CurrentUser.UserId
                 });
 
@@ -108,7 +107,7 @@ namespace SP_Sklad.WBForm
 
             if (_wbill_id == null && doc_id != null)
             {
-                _wbill_id = _db.WaybillList.AsNoTracking().FirstOrDefault(f => f.DocId == doc_id).WbillId;
+                _wbill_id = _db.WaybillList.AsNoTracking().FirstOrDefault(f => f.Id == doc_id).WbillId;
             }
 
             wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0} ", _wbill_id).FirstOrDefault();

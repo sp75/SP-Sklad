@@ -25,7 +25,7 @@ namespace SP_Sklad.WBForm
 
         public  BaseEntities _db { get; set; }
         public int? _wbill_id { get; set; }
-        public int? doc_id { get; set; }
+        public Guid? doc_id { get; set; }
      //   private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
         private GetWaybillDetIn_Result wbd_row { get; set; }
@@ -68,18 +68,15 @@ namespace SP_Sklad.WBForm
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
                     Nds = DBHelper.Enterprise.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0,
-            //        Docs = new Docs { DocType = _wtype },
                     UpdatedBy = DBHelper.CurrentUser.UserId
                 });
 
                 _db.SaveChanges();
-
-                wb.DocId = _db.WaybillList.AsNoTracking().FirstOrDefault(w => w.WbillId == wb.WbillId).DocId;
             }
             else
             {
                 //   UpdLockWB();
-                wb = _db.WaybillList.FirstOrDefault(f => f.DocId == doc_id || f.WbillId == _wbill_id);
+                wb = _db.WaybillList.FirstOrDefault(f => f.Id == doc_id || f.WbillId == _wbill_id);
             }
 
             if (wb != null)
@@ -98,7 +95,7 @@ namespace SP_Sklad.WBForm
                 NotesEdit.DataBindings.Add(new Binding("EditValue", wb, "Notes"));
                 ReasonEdit.DataBindings.Add(new Binding("EditValue", wb, "Reason"));
 
-                rdl = _db.GetRelDocList(wb.DocId).Where(w => w.DocType == 7 || w.DocType == -22).ToList();
+                rdl = _db.GetRelDocList(wb.Id).Where(w => w.DocType == 7 || w.DocType == -22).ToList();
                 AddBarSubItem.Enabled = !rdl.Any();
                 EditMaterialBtn.Enabled = !rdl.Any(a => a.DocType == 7);
                 DelMaterialBtn.Enabled = AddBarSubItem.Enabled;
@@ -106,25 +103,6 @@ namespace SP_Sklad.WBForm
 
             RefreshDet();
         }
-
-     /*   private void UpdLockWB()
-        {
-            if (wb != null)
-            {
-                _db.Entry<WaybillList>(wb).State = EntityState.Detached;
-            }
-
-            if (_wbill_id == null && doc_id != null)
-            {
-                _wbill_id = _db.WaybillList.AsNoTracking().FirstOrDefault(f => f.DocId == doc_id).WbillId;
-            }
-
-            wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0} ", _wbill_id).FirstOrDefault();
-
-            _db.Entry<WaybillList>(wb).State = EntityState.Modified;
-            _db.Entry<WaybillList>(wb).Property(f => f.SummPay).IsModified = false;
-
-        }*/
 
         private void RefreshDet()
         {

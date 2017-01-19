@@ -10,11 +10,11 @@
 namespace SP_Sklad.SkladData
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class SP_GET_RELDOCIDS_Result
+    public partial class DocRels
     {
-        public Nullable<int> DOCID { get; set; }
-        public Nullable<int> DOCTYPE { get; set; }
-        public Nullable<int> RELTYPE { get; set; }
+        public System.Guid OriginatorId { get; set; }
+        public System.Guid RelOriginatorId { get; set; }
     }
 }

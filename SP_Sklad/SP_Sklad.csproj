@@ -254,6 +254,12 @@
     <Compile Include="EditForm\frmCountriesEdit.Designer.cs">
       <DependentUpon>frmCountriesEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditForm\frmDiscountCardEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmDiscountCardEdit.Designer.cs">
+      <DependentUpon>frmDiscountCardEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditForm\frmMatListEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -311,6 +317,12 @@
     <Compile Include="SkladData\DemandGroup.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\DiscCards.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\DocRels.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetDocList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -348,6 +360,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetPrintLog_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetRelDocList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetWaybillDetIn_Result.cs">
@@ -742,19 +757,10 @@
     <Compile Include="SkladData\DISCCARDGRP.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\DISCCARDS.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SkladData\DiscountList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\DocCopy_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\Docs.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\DocsRel.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\DocType.cs">
@@ -821,9 +827,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetRecipe_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\GetRelDocList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetReportTree_Result.cs">
@@ -1026,9 +1029,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\SP_GET_MAT_NDS_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\SP_GET_RELDOCIDS_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\SP_MATCHANGE_GET_WP_Result.cs">
@@ -1252,6 +1252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmCountriesEdit.resx">
       <DependentUpon>frmCountriesEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmDiscountCardEdit.resx">
+      <DependentUpon>frmDiscountCardEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmMatListEdit.resx">
       <DependentUpon>frmMatListEdit.cs</DependentUpon>

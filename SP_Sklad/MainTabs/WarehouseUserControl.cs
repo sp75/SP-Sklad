@@ -644,17 +644,13 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-           /*  if (exists (SELECT * FROM  SP_GET_RELDOCIDS(@docid) where DOCTYPE = 5) and @wtype = 7) SET @WRITEON = 1 ;
-        else SET @WRITEON = 0 ;
-      if (exists (SELECT * FROM  SP_GET_RELDOCIDS(@docid) where DOCTYPE = -5) and @wtype = 7) SET @WRITEOFF = 1 ;
-        else SET @WRITEOFF = 0 ;*/
             var wbl = DB.SkladBase().WaybillList.FirstOrDefault(w => w.WbillId == focused_wb.WBillId);
             if (wbl == null)
             {
                 return;
             }
 
-            if (wbl.Checked == 1 && !DB.SkladBase().GetRelDocList(wbl.DocId).Any(w => w.DocId == 5) && wbl.WType == 7)
+            if (wbl.Checked == 1 && !DB.SkladBase().GetRelDocList(wbl.Id).Any(w => w.DocType == 5) && wbl.WType == 7)
             {
                 using (var f = new frmWBWriteOn())
                 {
@@ -676,7 +672,7 @@ namespace SP_Sklad.MainTabs
                 return;
             }
 
-            if (wbl.Checked == 1 && !DB.SkladBase().GetRelDocList(wbl.DocId).Any(w => w.DocId == -5) && wbl.WType == 7)
+            if (wbl.Checked == 1 && !DB.SkladBase().GetRelDocList(wbl.Id).Any(w => w.DocType == -5) && wbl.WType == 7)
             {
                 using (var f = new frmWBWriteOff())
                 {
@@ -761,7 +757,7 @@ namespace SP_Sklad.MainTabs
         private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var row = gridView3.GetFocusedRow() as GetRelDocList_Result;
-            FindDoc.Find(row.DocId, row.DocType, row.OnDate);
+            FindDoc.Find(row.Id, row.DocType, row.OnDate);
         }
 
         private void gridView3_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
@@ -789,7 +785,7 @@ namespace SP_Sklad.MainTabs
                 using (var db = DB.SkladBase())
                 {
                     gridControl2.DataSource = db.GetWaybillDetIn(focused_row.WBillId).ToList();
-                    gridControl3.DataSource = db.GetRelDocList(focused_row.DocId).OrderBy(o => o.OnDate).ToList();
+                    gridControl3.DataSource = db.GetRelDocList(focused_row.Id).OrderBy(o => o.OnDate).ToList();
                 }
             }
             else

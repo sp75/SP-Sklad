@@ -23,6 +23,8 @@ namespace SP_Sklad.EditForm
             _db = DB.SkladBase();
 
             InitializeComponent();
+
+            EntEdit.Properties.DataSource = DBHelper.EnterpriseList;
         }
 
         private void frmCashdesksEdit_Load(object sender, EventArgs e)
@@ -53,6 +55,14 @@ namespace SP_Sklad.EditForm
         private void OkButton_Click(object sender, EventArgs e)
         {
             _db.SaveChanges();
+        }
+
+        private void KTypeLookUpEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                EntEdit.EditValue = null;
+            }
         }
     }
 }

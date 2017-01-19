@@ -698,7 +698,7 @@ namespace SP_Sklad.MainTabs
                 return;
             }
 
-            var frm = new frmPayDoc(doc_type, null)
+            var frm = new frmPayDoc(doc_type, null, wb_focused_row.SummAll)
             {
                 PayDocCheckEdit = { Checked = true },
                 TypDocsEdit = { EditValue = wb_focused_row.WType },
@@ -707,7 +707,7 @@ namespace SP_Sklad.MainTabs
             };
 
             frm.GetDocList();
-            frm.DocListEdit.EditValue = wb_focused_row.DocId;
+            frm.DocListEdit.EditValue = wb_focused_row.Id;
 
             if (frm.ShowDialog() == DialogResult.OK)
             {
@@ -728,7 +728,7 @@ namespace SP_Sklad.MainTabs
                 row = gridView1.GetFocusedRow() as GetRelDocList_Result;
             }
 
-            FindDoc.Find(row.DocId, row.DocType, row.OnDate);
+            FindDoc.Find(row.Id, row.DocType, row.OnDate);
         }
 
         private void gridView3_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
@@ -776,7 +776,7 @@ namespace SP_Sklad.MainTabs
 
             if (dr != null)
             {
-                RelPayDocGridControl.DataSource = _db.GetRelDocList(dr.DocId).OrderBy(o => o.OnDate).ToList();
+                RelPayDocGridControl.DataSource = _db.GetRelDocList(dr.Id).OrderBy(o => o.OnDate).ToList();
             }
 
             var tree_row = DocsTreeList.GetDataRecordByNode(DocsTreeList.FocusedNode) as v_GetDocsTree;
@@ -878,7 +878,6 @@ namespace SP_Sklad.MainTabs
                                    PersonId = DBHelper.CurrentUser.KaId,
                                    WaybillMove = new WaybillMove { SourceWid = wid.Value },
                                    Nds = 0,
-                                   Docs = new Docs { DocType = -5 },
                                    UpdatedBy = DBHelper.CurrentUser.UserId
                                });
 
@@ -968,7 +967,7 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 2:
-                    gridControl3.DataSource = _db.GetRelDocList(dr.DocId).OrderBy(o => o.OnDate).ToList();
+                    gridControl3.DataSource = _db.GetRelDocList(dr.Id).OrderBy(o => o.OnDate).ToList();
                     break;
             }
           

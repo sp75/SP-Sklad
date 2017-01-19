@@ -437,9 +437,9 @@ namespace SP_Sklad.WBDetForm
             else
             {
                 var result = IHelper.ShowRemainByWH(MatComboBox.EditValue, WHComboBox.EditValue, 1);
-            //    _wbd.WId = result.wid;
+                _wbd.WId = result.wid;
                 WHComboBox.EditValue = result.wid;
-            //    _wbd.MatId = result.mat_id;
+                _wbd.MatId = result.mat_id;
                 MatComboBox.EditValue = result.mat_id;
             }
         }

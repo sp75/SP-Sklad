@@ -23,11 +23,13 @@ namespace SP_Sklad.FinanseForm
         private DbContextTransaction current_transaction { get; set; }
         public PayDoc _pd { get; set; }
         public int? _ka_id { get; set; }
+        private decimal? _summ_pay { get; set; }
 
-        public frmPayDoc(int? DocType, int? PayDocId)
+        public frmPayDoc(int? DocType, int? PayDocId, decimal? SummPay = 0)
         {
             _DocType = DocType;
             _PayDocId = PayDocId;
+            _summ_pay = SummPay;
             _db = new BaseEntities();
             current_transaction = _db.Database.BeginTransaction(/*IsolationLevel.RepeatableRead*/);
 
@@ -62,7 +64,7 @@ namespace SP_Sklad.FinanseForm
                     Checked = 1,
                     DocNum = new BaseEntities().GetDocNum(doc_setting_name).FirstOrDefault(),
                     OnDate = DBHelper.ServerDateTime(),
-                    Total = 0,
+                    Total = _summ_pay == null ? 0 : _summ_pay.Value,
                     CTypeId = 1,// За товар
                     WithNDS = 1,// З НДС
                     PTypeId = 1,// Наличкой
@@ -131,13 +133,13 @@ namespace SP_Sklad.FinanseForm
                 if (TypDocsEdit.EditValue == null) TypDocsEdit.EditValue = -1;
             }
 
-            var rl = _db.GetRelDocList(_pd.DocId).FirstOrDefault();
+            var rl = _db.GetRelDocList(_pd.Id).FirstOrDefault();
             if (rl != null)
             {
                 PayDocCheckEdit.Checked = true;
                 TypDocsEdit.EditValue = rl.DocType;
                 GetDocList();
-                DocListEdit.EditValue = rl.DocId;
+                DocListEdit.EditValue = rl.Id;
 
                 var row = DocListEdit.GetSelectedDataRow() as GetWayBillList_Result;
                 textEdit4.EditValue = row.Balans - SumEdit.Value;
@@ -147,10 +149,10 @@ namespace SP_Sklad.FinanseForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            var rl = _db.GetRelDocList(_pd.DocId).ToList();
+            var rl = _db.GetRelDocList(_pd.Id).ToList();
             foreach (var item in rl)
             {
-                _db.DeleteWhere<DocsRel>(w => w.DocId == item.DocId && w.RDocId == _pd.DocId);
+                _db.DeleteWhere<DocRels>(w => w.OriginatorId == item.Id && w.RelOriginatorId == _pd.Id);
             }
             _db.SaveChanges();
 
@@ -159,7 +161,7 @@ namespace SP_Sklad.FinanseForm
                 var row = DocListEdit.GetSelectedDataRow() as GetWayBillList_Result;
 
                 _pd = _db.PayDoc.AsNoTracking().FirstOrDefault(w => w.PayDocId == _pd.PayDocId);
-                _db.SP_SET_DOCREL(row.DocId, _pd.DocId);
+                _db.SetDocRel(row.Id, _pd.Id);
 
                 _db.SaveChanges();
             }

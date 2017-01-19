@@ -140,6 +140,9 @@
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl3 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.BarCodeEdit = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.MatGridControl = new DevExpress.XtraGrid.GridControl();
             this.MatListDS = new System.Windows.Forms.BindingSource(this.components);
             this.MatGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -334,6 +337,9 @@
             this.xtraTabPage10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl3)).BeginInit();
             this.splitContainerControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
+            this.panelControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BarCodeEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatListDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatGridView)).BeginInit();
@@ -1530,6 +1536,7 @@
             this.splitContainerControl3.Location = new System.Drawing.Point(0, 0);
             this.splitContainerControl3.Name = "splitContainerControl3";
             this.splitContainerControl3.Panel1.Controls.Add(this.MatGridControl);
+            this.splitContainerControl3.Panel1.Controls.Add(this.panelControl3);
             this.splitContainerControl3.Panel1.Text = "Panel1";
             this.splitContainerControl3.Panel2.Controls.Add(this.xtraTabControl1);
             this.splitContainerControl3.Panel2.Text = "Panel2";
@@ -1538,16 +1545,45 @@
             this.splitContainerControl3.TabIndex = 1;
             this.splitContainerControl3.Text = "splitContainerControl3";
             // 
+            // panelControl3
+            // 
+            this.panelControl3.Controls.Add(this.BarCodeEdit);
+            this.panelControl3.Controls.Add(this.labelControl5);
+            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl3.Location = new System.Drawing.Point(0, 0);
+            this.panelControl3.Name = "panelControl3";
+            this.panelControl3.Size = new System.Drawing.Size(1166, 44);
+            this.panelControl3.TabIndex = 2;
+            // 
+            // BarCodeEdit
+            // 
+            this.BarCodeEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BarCodeEdit.Location = new System.Drawing.Point(922, 11);
+            this.BarCodeEdit.MenuManager = this.barManager1;
+            this.BarCodeEdit.Name = "BarCodeEdit";
+            this.BarCodeEdit.Size = new System.Drawing.Size(239, 20);
+            this.BarCodeEdit.TabIndex = 9;
+            this.BarCodeEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BarCodeEdit_KeyPress);
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelControl5.Location = new System.Drawing.Point(859, 14);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(57, 13);
+            this.labelControl5.TabIndex = 7;
+            this.labelControl5.Text = "Штрих-код";
+            // 
             // MatGridControl
             // 
             this.MatGridControl.DataSource = this.MatListDS;
             this.MatGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MatGridControl.Location = new System.Drawing.Point(0, 0);
+            this.MatGridControl.Location = new System.Drawing.Point(0, 44);
             this.MatGridControl.MainView = this.MatGridView;
             this.MatGridControl.Name = "MatGridControl";
             this.MatGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit8});
-            this.MatGridControl.Size = new System.Drawing.Size(1166, 350);
+            this.MatGridControl.Size = new System.Drawing.Size(1166, 306);
             this.MatGridControl.TabIndex = 0;
             this.MatGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.MatGridView,
@@ -3157,6 +3193,10 @@
             this.xtraTabPage10.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl3)).EndInit();
             this.splitContainerControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
+            this.panelControl3.ResumeLayout(false);
+            this.panelControl3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BarCodeEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatListDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatGridView)).EndInit();
@@ -3524,5 +3564,8 @@
         private System.Windows.Forms.BindingSource RoutesBS;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraEditors.PanelControl panelControl3;
+        private DevExpress.XtraEditors.TextEdit BarCodeEdit;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
     }
 }

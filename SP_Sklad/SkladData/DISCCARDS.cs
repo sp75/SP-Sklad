@@ -12,26 +12,26 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class DISCCARDS
+    public partial class DiscCards
     {
-        public DISCCARDS()
+        public DiscCards()
         {
             this.WayBillDetAddProps = new HashSet<WayBillDetAddProps>();
         }
     
-        public int CARDID { get; set; }
-        public string NUM { get; set; }
-        public int DISCTYPE { get; set; }
-        public Nullable<System.DateTime> EXPIREDATE { get; set; }
-        public int GRPID { get; set; }
-        public int KAID { get; set; }
-        public decimal ONVALUE { get; set; }
-        public string NOTES { get; set; }
-        public int DELETED { get; set; }
-        public Nullable<decimal> STARTSALDO { get; set; }
+        public int CardId { get; set; }
+        public string Num { get; set; }
+        public int DiscType { get; set; }
+        public Nullable<System.DateTime> ExpireDate { get; set; }
+        public int GrpId { get; set; }
+        public Nullable<int> KaId { get; set; }
+        public decimal OnValue { get; set; }
+        public string Notes { get; set; }
+        public int Deleted { get; set; }
+        public Nullable<decimal> StartSaldo { get; set; }
     
         public virtual DISCCARDGRP DISCCARDGRP { get; set; }
-        public virtual ICollection<WayBillDetAddProps> WayBillDetAddProps { get; set; }
         public virtual Kagent Kagent { get; set; }
+        public virtual ICollection<WayBillDetAddProps> WayBillDetAddProps { get; set; }
     }
 }

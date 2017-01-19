@@ -111,7 +111,6 @@ namespace SP_Sklad.Reports
         public static void WayBillInReport(Guid id, BaseEntities db, string template_name)
         {
             var dataForReport = new Dictionary<string, IList>();
-            //       var wbill_id = db.WaybillList.FirstOrDefault(w => w.DocId == doc_id).WbillId;
 
             var wb = db.v_WaybillList.Where(w => w.Id == id).AsNoTracking().ToList();
             int wbill_id = wb.First().WbillId; 

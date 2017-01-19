@@ -26,7 +26,7 @@ namespace SP_Sklad.WBForm
         private int _wtype { get; set; }
         public BaseEntities _db { get; set; }
         public int? _wbill_id { get; set; }
-        public int? doc_id { get; set; }
+        public Guid? doc_id { get; set; }
   //      private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
         public bool is_new_record { get; set; }
@@ -71,17 +71,14 @@ namespace SP_Sklad.WBForm
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
                     EntId = DBHelper.Enterprise.KaId,
-                 //   Docs = new Docs { DocType = _wtype },
                     UpdatedBy = DBHelper.CurrentUser.UserId
                 });
 
                 _db.SaveChanges();
-
-                wb.DocId = _db.WaybillList.AsNoTracking().FirstOrDefault(w => w.WbillId == wb.WbillId).DocId;
             }
             else
             {
-                wb = _db.WaybillList.FirstOrDefault(f => f.DocId == doc_id || f.WbillId == _wbill_id);
+                wb = _db.WaybillList.FirstOrDefault(f => f.Id == doc_id || f.WbillId == _wbill_id);
                 //  UpdLockWB();
             }
 
@@ -100,29 +97,6 @@ namespace SP_Sklad.WBForm
 
             RefreshDet();
         }
-
-     /*   private void UpdLockWB()
-        {
-            if (wb != null)
-            {
-                _db.Entry<WaybillList>(wb).State = EntityState.Detached;
-            }
-
-            if (_wbill_id == null && doc_id != null)
-            {
-                _wbill_id = _db.WaybillList.AsNoTracking().FirstOrDefault(f => f.DocId == doc_id).WbillId;
-            }
-
-            wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0} ", _wbill_id).FirstOrDefault();
-          
-            if (_db.Entry<WaybillList>(wb).State == EntityState.Detached)
-            {
-                _db.WaybillList.Attach(wb);
-            }
-
-            _db.Entry<WaybillList>(wb).State = EntityState.Modified;
-            _db.Entry<WaybillList>(wb).Property(f => f.SummPay).IsModified = false;
-        }*/
 
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -463,6 +437,7 @@ namespace SP_Sklad.WBForm
 
         private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            wb.UpdatedAt = DateTime.Now;
             PrintDoc.Show(wb.Id, wb.WType, _db);
         }
 

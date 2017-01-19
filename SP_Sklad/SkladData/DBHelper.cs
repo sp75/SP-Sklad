@@ -179,7 +179,17 @@ namespace SP_Sklad.SkladData
             {
                 if (_cash_desks == null)
                 {
-                    _cash_desks = new BaseEntities().CashDesks.ToList();
+                    var cd_ent = new BaseEntities().CashDesks.Where(w => w.EnterpriseId == Enterprise.KaId).ToList();
+                    if (cd_ent.Any())
+                    {
+                        var def = cd_ent.FirstOrDefault();
+                        def.Def = 1;
+                        _cash_desks = cd_ent;
+                    }
+                    else
+                    {
+                        _cash_desks = new BaseEntities().CashDesks.ToList();
+                    }
                 }
                 return _cash_desks;
             }

@@ -26,9 +26,8 @@
           <EntitySet Name="DeboningDet" EntityType="BaseModel.Store.DeboningDet" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DemandGroup" EntityType="BaseModel.Store.DemandGroup" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DISCCARDGRP" EntityType="BaseModel.Store.DISCCARDGRP" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="DISCCARDS" EntityType="BaseModel.Store.DISCCARDS" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Docs" EntityType="BaseModel.Store.Docs" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="DocsRel" EntityType="BaseModel.Store.DocsRel" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DiscCards" EntityType="BaseModel.Store.DiscCards" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DocRels" EntityType="BaseModel.Store.DocRels" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DocType" EntityType="BaseModel.Store.DocType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ENTPARAMS" EntityType="BaseModel.Store.ENTPARAMS" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ExtRel" EntityType="BaseModel.Store.ExtRel" store:Type="Tables" Schema="dbo" />
@@ -608,16 +607,8 @@
             <End Role="WaybillList" EntitySet="WaybillList" />
             <End Role="Commission" EntitySet="Commission" />
           </AssociationSet>
-          <AssociationSet Name="FK_CONTRACT_REF_CONTR_DOCS" Association="BaseModel.Store.FK_CONTRACT_REF_CONTR_DOCS">
-            <End Role="Docs" EntitySet="Docs" />
-            <End Role="CONTRACTS" EntitySet="CONTRACTS" />
-          </AssociationSet>
           <AssociationSet Name="FK_CONTRACT_REF_CONTR_KAGENT" Association="BaseModel.Store.FK_CONTRACT_REF_CONTR_KAGENT">
             <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="CONTRACTS" EntitySet="CONTRACTS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CONTRACT_REF_CONTR_PDOCS" Association="BaseModel.Store.FK_CONTRACT_REF_CONTR_PDOCS">
-            <End Role="Docs" EntitySet="Docs" />
             <End Role="CONTRACTS" EntitySet="CONTRACTS" />
           </AssociationSet>
           <AssociationSet Name="FK_CONTRACT_REFERENCE_CURRENCY" Association="BaseModel.Store.FK_CONTRACT_REFERENCE_CURRENCY">
@@ -666,15 +657,11 @@
           </AssociationSet>
           <AssociationSet Name="FK_DISCCARDS_GRPID" Association="BaseModel.Store.FK_DISCCARDS_GRPID">
             <End Role="DISCCARDGRP" EntitySet="DISCCARDGRP" />
-            <End Role="DISCCARDS" EntitySet="DISCCARDS" />
+            <End Role="DiscCards" EntitySet="DiscCards" />
           </AssociationSet>
           <AssociationSet Name="FK_DISCCARDS_KAID" Association="BaseModel.Store.FK_DISCCARDS_KAID">
             <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="DISCCARDS" EntitySet="DISCCARDS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DOCSREL_REFERENCE_DOCS" Association="BaseModel.Store.FK_DOCSREL_REFERENCE_DOCS">
-            <End Role="Docs" EntitySet="Docs" />
-            <End Role="DocsRel" EntitySet="DocsRel" />
+            <End Role="DiscCards" EntitySet="DiscCards" />
           </AssociationSet>
           <AssociationSet Name="FK_EXTREL_EXTPOSID" Association="BaseModel.Store.FK_EXTREL_EXTPOSID">
             <End Role="WaybillDet" EntitySet="WaybillDet" />
@@ -768,10 +755,6 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="OperLog" EntitySet="OperLog" />
           </AssociationSet>
-          <AssociationSet Name="FK_PAYDOC_REF_PD_DO_DOCS" Association="BaseModel.Store.FK_PAYDOC_REF_PD_DO_DOCS">
-            <End Role="Docs" EntitySet="Docs" />
-            <End Role="PayDoc" EntitySet="PayDoc" />
-          </AssociationSet>
           <AssociationSet Name="FK_PD_ACCID" Association="BaseModel.Store.FK_PD_ACCID">
             <End Role="KAgentAccount" EntitySet="KAgentAccount" />
             <End Role="PayDoc" EntitySet="PayDoc" />
@@ -790,10 +773,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_PRICELIS_REFERENCE_CURRENCY" Association="BaseModel.Store.FK_PRICELIS_REFERENCE_CURRENCY">
             <End Role="Currency" EntitySet="Currency" />
-            <End Role="PriceList" EntitySet="PriceList" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PRICELIS_REFERENCE_DOCS" Association="BaseModel.Store.FK_PRICELIS_REFERENCE_DOCS">
-            <End Role="Docs" EntitySet="Docs" />
             <End Role="PriceList" EntitySet="PriceList" />
           </AssociationSet>
           <AssociationSet Name="FK_PRICELIST_REFERENCE_PRICETYP" Association="BaseModel.Store.FK_PRICELIST_REFERENCE_PRICETYP">
@@ -851,10 +830,6 @@
           <AssociationSet Name="FK_SVC_MID" Association="BaseModel.Store.FK_SVC_MID">
             <End Role="Measures" EntitySet="Measures" />
             <End Role="Services" EntitySet="Services" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TAXWB_REFERENCE_DOCS" Association="BaseModel.Store.FK_TAXWB_REFERENCE_DOCS">
-            <End Role="Docs" EntitySet="Docs" />
-            <End Role="TAXWB" EntitySet="TAXWB" />
           </AssociationSet>
           <AssociationSet Name="FK_TAXWB_REFERENCE_KAGENT" Association="BaseModel.Store.FK_TAXWB_REFERENCE_KAGENT">
             <End Role="Kagent" EntitySet="Kagent" />
@@ -944,10 +919,6 @@
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="WaybillList" EntitySet="WaybillList" />
           </AssociationSet>
-          <AssociationSet Name="FK_WAYBILLL_REF_WBL_D_DOCS" Association="BaseModel.Store.FK_WAYBILLL_REF_WBL_D_DOCS">
-            <End Role="Docs" EntitySet="Docs" />
-            <End Role="WaybillList" EntitySet="WaybillList" />
-          </AssociationSet>
           <AssociationSet Name="FK_WAYBILLM_FK_WBM_DE_WAREHOUS" Association="BaseModel.Store.FK_WAYBILLM_FK_WBM_DE_WAREHOUS">
             <End Role="Warehouse" EntitySet="Warehouse" />
             <End Role="WaybillMove" EntitySet="WaybillMove" />
@@ -973,7 +944,7 @@
             <End Role="WayBillMake" EntitySet="WayBillMake" />
           </AssociationSet>
           <AssociationSet Name="FK_WBDAP_CARDID" Association="BaseModel.Store.FK_WBDAP_CARDID">
-            <End Role="DISCCARDS" EntitySet="DISCCARDS" />
+            <End Role="DiscCards" EntitySet="DiscCards" />
             <End Role="WayBillDetAddProps" EntitySet="WayBillDetAddProps" />
           </AssociationSet>
           <AssociationSet Name="FK_WBDAP_POSID" Association="BaseModel.Store.FK_WBDAP_POSID">
@@ -1076,6 +1047,7 @@
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="128" />
           <Property Name="Deleted" Type="int" Nullable="false" />
           <Property Name="Def" Type="int" />
+          <Property Name="EnterpriseId" Type="int" />
         </EntityType>
         <EntityType Name="ChargeType">
           <Key>
@@ -1249,35 +1221,28 @@
           <Property Name="NOTES" Type="varchar" MaxLength="255" />
           <Property Name="GENNAME" Type="varchar" MaxLength="24" />
         </EntityType>
-        <EntityType Name="DISCCARDS">
+        <EntityType Name="DiscCards">
           <Key>
-            <PropertyRef Name="CARDID" />
+            <PropertyRef Name="CardId" />
           </Key>
-          <Property Name="CARDID" Type="int" Nullable="false" />
-          <Property Name="NUM" Type="varchar" Nullable="false" MaxLength="24" />
-          <Property Name="DISCTYPE" Type="int" Nullable="false" />
-          <Property Name="EXPIREDATE" Type="datetime" />
-          <Property Name="GRPID" Type="int" Nullable="false" />
-          <Property Name="KAID" Type="int" Nullable="false" />
-          <Property Name="ONVALUE" Type="numeric" Nullable="false" Precision="15" Scale="8" />
-          <Property Name="NOTES" Type="varchar" MaxLength="255" />
-          <Property Name="DELETED" Type="int" Nullable="false" />
-          <Property Name="STARTSALDO" Type="numeric" Precision="15" Scale="8" />
+          <Property Name="CardId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Num" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="DiscType" Type="int" Nullable="false" />
+          <Property Name="ExpireDate" Type="datetime" />
+          <Property Name="GrpId" Type="int" Nullable="false" />
+          <Property Name="KaId" Type="int" />
+          <Property Name="OnValue" Type="numeric" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+          <Property Name="StartSaldo" Type="numeric" Precision="15" Scale="8" />
         </EntityType>
-        <EntityType Name="Docs">
+        <EntityType Name="DocRels">
           <Key>
-            <PropertyRef Name="DocId" />
+            <PropertyRef Name="OriginatorId" />
+            <PropertyRef Name="RelOriginatorId" />
           </Key>
-          <Property Name="DocId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="DocType" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="DocsRel">
-          <Key>
-            <PropertyRef Name="DocId" />
-            <PropertyRef Name="RDocId" />
-          </Key>
-          <Property Name="DocId" Type="int" Nullable="false" />
-          <Property Name="RDocId" Type="int" Nullable="false" />
+          <Property Name="OriginatorId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RelOriginatorId" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="DocType">
           <Key>
@@ -3175,20 +3140,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CONTRACT_REF_CONTR_DOCS">
-          <End Role="Docs" Type="BaseModel.Store.Docs" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="CONTRACTS" Type="BaseModel.Store.CONTRACTS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Docs">
-              <PropertyRef Name="DocId" />
-            </Principal>
-            <Dependent Role="CONTRACTS">
-              <PropertyRef Name="DOCID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_CONTRACT_REF_CONTR_KAGENT">
           <End Role="Kagent" Type="BaseModel.Store.Kagent" Multiplicity="0..1" />
           <End Role="CONTRACTS" Type="BaseModel.Store.CONTRACTS" Multiplicity="*" />
@@ -3198,18 +3149,6 @@
             </Principal>
             <Dependent Role="CONTRACTS">
               <PropertyRef Name="KAID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CONTRACT_REF_CONTR_PDOCS">
-          <End Role="Docs" Type="BaseModel.Store.Docs" Multiplicity="0..1" />
-          <End Role="CONTRACTS" Type="BaseModel.Store.CONTRACTS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Docs">
-              <PropertyRef Name="DocId" />
-            </Principal>
-            <Dependent Role="CONTRACTS">
-              <PropertyRef Name="PDOCID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3357,39 +3296,25 @@
         </Association>
         <Association Name="FK_DISCCARDS_GRPID">
           <End Role="DISCCARDGRP" Type="BaseModel.Store.DISCCARDGRP" Multiplicity="1" />
-          <End Role="DISCCARDS" Type="BaseModel.Store.DISCCARDS" Multiplicity="*" />
+          <End Role="DiscCards" Type="BaseModel.Store.DiscCards" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DISCCARDGRP">
               <PropertyRef Name="GRPID" />
             </Principal>
-            <Dependent Role="DISCCARDS">
-              <PropertyRef Name="GRPID" />
+            <Dependent Role="DiscCards">
+              <PropertyRef Name="GrpId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DISCCARDS_KAID">
-          <End Role="Kagent" Type="BaseModel.Store.Kagent" Multiplicity="1" />
-          <End Role="DISCCARDS" Type="BaseModel.Store.DISCCARDS" Multiplicity="*" />
+          <End Role="Kagent" Type="BaseModel.Store.Kagent" Multiplicity="0..1" />
+          <End Role="DiscCards" Type="BaseModel.Store.DiscCards" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Kagent">
               <PropertyRef Name="KaId" />
             </Principal>
-            <Dependent Role="DISCCARDS">
-              <PropertyRef Name="KAID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_DOCSREL_REFERENCE_DOCS">
-          <End Role="Docs" Type="BaseModel.Store.Docs" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="DocsRel" Type="BaseModel.Store.DocsRel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Docs">
-              <PropertyRef Name="DocId" />
-            </Principal>
-            <Dependent Role="DocsRel">
-              <PropertyRef Name="DocId" />
+            <Dependent Role="DiscCards">
+              <PropertyRef Name="KaId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3691,18 +3616,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PAYDOC_REF_PD_DO_DOCS">
-          <End Role="Docs" Type="BaseModel.Store.Docs" Multiplicity="0..1" />
-          <End Role="PayDoc" Type="BaseModel.Store.PayDoc" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Docs">
-              <PropertyRef Name="DocId" />
-            </Principal>
-            <Dependent Role="PayDoc">
-              <PropertyRef Name="DocId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PD_ACCID">
           <End Role="KAgentAccount" Type="BaseModel.Store.KAgentAccount" Multiplicity="0..1" />
           <End Role="PayDoc" Type="BaseModel.Store.PayDoc" Multiplicity="*" />
@@ -3762,18 +3675,6 @@
             </Principal>
             <Dependent Role="PriceList">
               <PropertyRef Name="CurrId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PRICELIS_REFERENCE_DOCS">
-          <End Role="Docs" Type="BaseModel.Store.Docs" Multiplicity="0..1" />
-          <End Role="PriceList" Type="BaseModel.Store.PriceList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Docs">
-              <PropertyRef Name="DocId" />
-            </Principal>
-            <Dependent Role="PriceList">
-              <PropertyRef Name="DocId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3948,18 +3849,6 @@
             </Principal>
             <Dependent Role="Services">
               <PropertyRef Name="MId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TAXWB_REFERENCE_DOCS">
-          <End Role="Docs" Type="BaseModel.Store.Docs" Multiplicity="0..1" />
-          <End Role="TAXWB" Type="BaseModel.Store.TAXWB" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Docs">
-              <PropertyRef Name="DocId" />
-            </Principal>
-            <Dependent Role="TAXWB">
-              <PropertyRef Name="DOCID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -4241,18 +4130,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_WAYBILLL_REF_WBL_D_DOCS">
-          <End Role="Docs" Type="BaseModel.Store.Docs" Multiplicity="0..1" />
-          <End Role="WaybillList" Type="BaseModel.Store.WaybillList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Docs">
-              <PropertyRef Name="DocId" />
-            </Principal>
-            <Dependent Role="WaybillList">
-              <PropertyRef Name="DocId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_WAYBILLM_FK_WBM_DE_WAREHOUS">
           <End Role="Warehouse" Type="BaseModel.Store.Warehouse" Multiplicity="0..1" />
           <End Role="WaybillMove" Type="BaseModel.Store.WaybillMove" Multiplicity="*" />
@@ -4328,11 +4205,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_WBDAP_CARDID">
-          <End Role="DISCCARDS" Type="BaseModel.Store.DISCCARDS" Multiplicity="0..1" />
+          <End Role="DiscCards" Type="BaseModel.Store.DiscCards" Multiplicity="0..1" />
           <End Role="WayBillDetAddProps" Type="BaseModel.Store.WayBillDetAddProps" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="DISCCARDS">
-              <PropertyRef Name="CARDID" />
+            <Principal Role="DiscCards">
+              <PropertyRef Name="CardId" />
             </Principal>
             <Dependent Role="WayBillDetAddProps">
               <PropertyRef Name="CardId" />
@@ -4616,7 +4493,7 @@
           </ReturnType>
         </Function>
         <Function Name="GetManufacturedPos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="doc_id" Type="int" Mode="In" />
+          <Parameter Name="originator_id" Type="uniqueidentifier" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
@@ -4853,6 +4730,7 @@
                 <Property Name="KaName" Type="nvarchar" MaxLength="64" />
                 <Property Name="Notes" Type="nvarchar" MaxLength="255" />
                 <Property Name="CertNum" Type="nvarchar" MaxLength="64" />
+                <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -4944,12 +4822,11 @@
           <Parameter Name="wbill_id" Type="int" Mode="In" />
         </Function>
         <Function Name="GetRelDocList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="doc_id" Type="int" Mode="In" />
+          <Parameter Name="originator_id" Type="uniqueidentifier" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
                 <Property Name="Id" Type="uniqueidentifier" />
-                <Property Name="DocId" Type="int" />
                 <Property Name="DocType" Type="int" />
                 <Property Name="Num" Type="varchar" MaxLength="20" />
                 <Property Name="OnDate" Type="datetime" />
@@ -5361,7 +5238,7 @@
                 <Property Name="WType" Type="int" />
                 <Property Name="DocNum" Type="nvarchar" MaxLength="20" />
                 <Property Name="WBillId" Type="int" />
-                <Property Name="DocId" Type="int" />
+                <Property Name="Id" Type="uniqueidentifier" />
                 <Property Name="GTD" Type="nvarchar" MaxLength="64" />
                 <Property Name="CertNum" Type="nvarchar" MaxLength="64" />
                 <Property Name="CertDate" Type="datetime" />
@@ -5652,6 +5529,10 @@
           <Parameter Name="pos_id" Type="int" Mode="In" />
           <Parameter Name="rsv" Type="int" Mode="InOut" />
         </Function>
+        <Function Name="SetDocRel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="originator_id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="rel_originator_id" Type="uniqueidentifier" Mode="In" />
+        </Function>
         <Function Name="SP_AUTO_RSV_2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="WBD_POSID" Type="int" Mode="In" />
           <Parameter Name="RSV" Type="int" Mode="InOut" />
@@ -5667,9 +5548,6 @@
               </RowType>
             </CollectionType>
           </ReturnType>
-        </Function>
-        <Function Name="SP_CONTR_RESULT_UPD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="CONTR_DOCID" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_CONTRACTS_LIST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IN_DOCTYPE" Type="int" Mode="In" />
@@ -5719,10 +5597,6 @@
               </RowType>
             </CollectionType>
           </ReturnType>
-        </Function>
-        <Function Name="SP_DEL_DOCREL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="POSID" Type="int" Mode="In" />
-          <Parameter Name="SOURCEID" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_GET_ACTIVES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FROMDATE" Type="datetime" Mode="In" />
@@ -5781,18 +5655,6 @@
         <Function Name="SP_GET_POS_STATUS" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="WBILLID" Type="int" Mode="In" />
         </Function>
-        <Function Name="SP_GET_RELDOCIDS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="ADOCID" Type="int" Mode="In" />
-          <ReturnType>
-            <CollectionType>
-              <RowType>
-                <Property Name="DOCID" Type="int" />
-                <Property Name="DOCTYPE" Type="int" />
-                <Property Name="RELTYPE" Type="int" />
-              </RowType>
-            </CollectionType>
-          </ReturnType>
-        </Function>
         <Function Name="SP_MAT_REMAIN_GET_SIMPLE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MatId" Type="int" Mode="In" />
           <Parameter Name="OnDate" Type="datetime" Mode="In" />
@@ -5836,9 +5698,6 @@
               </RowType>
             </CollectionType>
           </ReturnType>
-        </Function>
-        <Function Name="SP_NEWDOC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="DOCTYPE" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_ORDER_UPD_RSV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="WBILLID" Type="int" Mode="In" />
@@ -5899,10 +5758,6 @@
         </Function>
         <Function Name="SP_SET_DEBONINGDET" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IN_WBILLID" Type="int" Mode="In" />
-        </Function>
-        <Function Name="SP_SET_DOCREL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="DOCID" Type="int" Mode="In" />
-          <Parameter Name="RDOCID" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_SET_EXTPOSID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="POSID" Type="int" Mode="In" />
@@ -6057,7 +5912,6 @@
           <EntitySet Name="CONTRRESULTS" EntityType="BaseModel.CONTRRESULTS" />
           <EntitySet Name="CURRENCYRATE" EntityType="BaseModel.CURRENCYRATE" />
           <EntitySet Name="DISCCARDGRP" EntityType="BaseModel.DISCCARDGRP" />
-          <EntitySet Name="DISCCARDS" EntityType="BaseModel.DISCCARDS" />
           <EntitySet Name="ENTPARAMS" EntityType="BaseModel.ENTPARAMS" />
           <EntitySet Name="TAXES" EntityType="BaseModel.TAXES" />
           <EntitySet Name="TAXWB" EntityType="BaseModel.TAXWB" />
@@ -6072,10 +5926,6 @@
           <AssociationSet Name="FK_CONTRRESULTS_CONTRACTS" Association="BaseModel.FK_CONTRRESULTS_CONTRACTS">
             <End Role="CONTRACTS" EntitySet="CONTRACTS" />
             <End Role="CONTRRESULTS" EntitySet="CONTRRESULTS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DISCCARDS_GRPID" Association="BaseModel.FK_DISCCARDS_GRPID">
-            <End Role="DISCCARDGRP" EntitySet="DISCCARDGRP" />
-            <End Role="DISCCARDS" EntitySet="DISCCARDS" />
           </AssociationSet>
           <FunctionImport Name="SP_AUTO_RSV_WB_2" ReturnType="Collection(BaseModel.SP_AUTO_RSV_WB_2_Result)" IsComposable="true">
           <Parameter Name="WBILLID" Mode="In" Type="Int32" />
@@ -6101,9 +5951,6 @@
           <FunctionImport Name="SP_GET_MATGRP_NDS" ReturnType="Collection(BaseModel.SP_GET_MATGRP_NDS_Result)" IsComposable="true">
           <Parameter Name="GRPID" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_GET_RELDOCIDS" ReturnType="Collection(BaseModel.SP_GET_RELDOCIDS_Result)" IsComposable="true">
-          <Parameter Name="ADOCID" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SP_MATCHANGE_GET_WP" ReturnType="Collection(BaseModel.SP_MATCHANGE_GET_WP_Result)" IsComposable="true">
             <Parameter Name="MATID" Mode="In" Type="Int32" />
             <Parameter Name="MCDATE" Mode="In" Type="DateTime" />
@@ -6128,13 +5975,6 @@
           </FunctionImport>
           <FunctionImport Name="SP_CONTR_RESULT_UPD">
           <Parameter Name="CONTR_DOCID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_DEL_DOCREL">
-            <Parameter Name="POSID" Mode="In" Type="Int32" />
-            <Parameter Name="SOURCEID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_NEWDOC" ReturnType="Collection(Decimal)">
-          <Parameter Name="DOCTYPE" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_ORDER_UPD_RSV">
           <Parameter Name="WBILLID" Mode="In" Type="Int32" />
@@ -6196,10 +6036,6 @@
           <FunctionImport Name="SP_SET_DEBONINGDET">
           <Parameter Name="IN_WBILLID" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_SET_DOCREL">
-            <Parameter Name="DOCID" Mode="In" Type="Int32" />
-            <Parameter Name="RDOCID" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SP_SET_EXTPOSID">
             <Parameter Name="POSID" Mode="In" Type="Int32" />
             <Parameter Name="SOURCEID" Mode="In" Type="Int32" />
@@ -6222,10 +6058,6 @@
           <FunctionImport Name="SP_MAT_REMAIN_GET_SIMPLE" IsComposable="true" ReturnType="Collection(BaseModel.SP_MAT_REMAIN_GET_SIMPLE_Result)">
             <Parameter Name="MatId" Mode="In" Type="Int32" />
             <Parameter Name="OnDate" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="ExecuteWayBill" ReturnType="Collection(BaseModel.ExecuteWayBill_Result)">
-            <Parameter Name="WBILLID" Mode="In" Type="Int32" />
-            <Parameter Name="NEW_WTYPE" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="WMatTurn" EntityType="BaseModel.WMatTurn" />
           <FunctionImport Name="UpdWaybillDetPrice">
@@ -6294,14 +6126,6 @@
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="MatGroup" EntityType="BaseModel.MatGroup" />
-          <FunctionImport Name="PosGet" IsComposable="true" ReturnType="Collection(BaseModel.PosGet_Result)">
-            <Parameter Name="mat_id" Mode="In" Type="Int32" />
-            <Parameter Name="w_id" Mode="In" Type="Int32" />
-            <Parameter Name="ka_id" Mode="In" Type="Int32" />
-            <Parameter Name="on_date" Mode="In" Type="DateTime" />
-            <Parameter Name="get_empty" Mode="In" Type="Int32" />
-            <Parameter Name="wh" Mode="In" Type="String" />
-          </FunctionImport>
           <EntitySet Name="CityType" EntityType="BaseModel.CityType" />
           <EntitySet Name="KaAddr" EntityType="BaseModel.KaAddr" />
           <EntitySet Name="TAXREESTRTYPE" EntityType="BaseModel.TAXREESTRTYPE" />
@@ -6333,21 +6157,8 @@
             <Parameter Name="type_tree" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="v_GetDocsTree" EntityType="BaseModel.v_GetDocsTree" />
-          <EntitySet Name="Docs" EntityType="BaseModel.Docs" />
           <EntitySet Name="UserAccessWh" EntityType="BaseModel.UserAccessWh" />
           <EntitySet Name="UserTree" EntityType="BaseModel.UserTree" />
-          <AssociationSet Name="FK_CONTRACT_REF_CONTR_DOCS" Association="BaseModel.FK_CONTRACT_REF_CONTR_DOCS">
-            <End Role="Docs" EntitySet="Docs" />
-            <End Role="CONTRACTS" EntitySet="CONTRACTS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CONTRACT_REF_CONTR_PDOCS" Association="BaseModel.FK_CONTRACT_REF_CONTR_PDOCS">
-            <End Role="Docs" EntitySet="Docs" />
-            <End Role="CONTRACTS" EntitySet="CONTRACTS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TAXWB_REFERENCE_DOCS" Association="BaseModel.FK_TAXWB_REFERENCE_DOCS">
-            <End Role="Docs" EntitySet="Docs" />
-            <End Role="TAXWB" EntitySet="TAXWB" />
-          </AssociationSet>
           <AssociationSet Name="FK_UAWH_WID" Association="BaseModel.FK_UAWH_WID">
             <End Role="Warehouse" EntitySet="Warehouse" />
             <End Role="UserAccessWh" EntitySet="UserAccessWh" />
@@ -6679,10 +6490,6 @@
           <EntitySet Name="v_KAgentAccount" EntityType="BaseModel.v_KAgentAccount" />
           <EntitySet Name="Serials" EntityType="BaseModel.Serials" />
           <EntitySet Name="WayBillDetAddProps" EntityType="BaseModel.WayBillDetAddProps" />
-          <AssociationSet Name="FK_WBDAP_CARDID" Association="BaseModel.FK_WBDAP_CARDID">
-            <End Role="DISCCARDS" EntitySet="DISCCARDS" />
-            <End Role="WayBillDetAddProps" EntitySet="WayBillDetAddProps" />
-          </AssociationSet>
           <EntitySet Name="v_PriceTypes" EntityType="BaseModel.v_PriceTypes" />
           <EntitySet Name="BanksPersons" EntityType="BaseModel.BanksPersons" />
           <AssociationSet Name="FK_BANKSPERSONS_1" Association="BaseModel.FK_BANKSPERSONS_1">
@@ -6710,14 +6517,6 @@
             <Parameter Name="w_id" Mode="In" Type="Int32" />
             <Parameter Name="ka_id" Mode="In" Type="Int32" />
             <Parameter Name="on_date" Mode="In" Type="DateTime" />
-            <Parameter Name="wh" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="GetOrdered" IsComposable="true" ReturnType="Collection(BaseModel.GetOrdered_Result)">
-            <Parameter Name="mat_id" Mode="In" Type="Int32" />
-            <Parameter Name="wid" Mode="In" Type="Int32" />
-            <Parameter Name="ka_id" Mode="In" Type="Int32" />
-            <Parameter Name="on_date" Mode="In" Type="DateTime" />
-            <Parameter Name="get_empty" Mode="In" Type="Int32" />
             <Parameter Name="wh" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="REP_2" ReturnType="Collection(BaseModel.REP_2_Result)">
@@ -6795,9 +6594,6 @@
           </FunctionImport>
           <EntitySet Name="v_MatRemains" EntityType="BaseModel.v_MatRemains" />
           <EntitySet Name="v_WhMatRemains" EntityType="BaseModel.v_WhMatRemains" />
-          <FunctionImport Name="GetManufacturedPos" IsComposable="true" ReturnType="Collection(BaseModel.GetManufacturedPos_Result)">
-          <Parameter Name="doc_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="GetLastPrice" IsComposable="true" ReturnType="Collection(BaseModel.GetLastPrice_Result)">
             <Parameter Name="mat_id" Mode="In" Type="Int32" />
             <Parameter Name="ka_id" Mode="In" Type="Int32" />
@@ -6813,12 +6609,7 @@
             <Parameter Name="grp_id" Mode="In" Type="Int32" />
             <Parameter Name="mat_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="DocsRel" EntityType="BaseModel.DocsRel" />
           <EntitySet Name="ProfileDocSetting" EntityType="BaseModel.ProfileDocSetting" />
-          <AssociationSet Name="FK_DOCSREL_REFERENCE_DOCS" Association="BaseModel.FK_DOCSREL_REFERENCE_DOCS">
-            <End Role="Docs" EntitySet="Docs" />
-            <End Role="DocsRel" EntitySet="DocsRel" />
-          </AssociationSet>
           <EntitySet Name="WayBillDetTaxes" EntityType="BaseModel.WayBillDetTaxes" />
           <AssociationSet Name="FK_WBDTAXES_TAXID" Association="BaseModel.FK_WBDTAXES_TAXID">
             <End Role="TAXES" EntitySet="TAXES" />
@@ -6899,10 +6690,6 @@
           <AssociationSet Name="FK_Customers_Kagent" Association="BaseModel.FK_Customers_Kagent">
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="Customers" EntitySet="Customers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DISCCARDS_KAID" Association="BaseModel.FK_DISCCARDS_KAID">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="DISCCARDS" EntitySet="DISCCARDS" />
           </AssociationSet>
           <AssociationSet Name="FK_KAADDR_KAID" Association="BaseModel.FK_KAADDR_KAID">
             <End Role="Kagent" EntitySet="Kagent" />
@@ -6986,10 +6773,6 @@
           <AssociationSet Name="FK_DEBONINGDET_WAYBILLLIST" Association="BaseModel.FK_DEBONINGDET_WAYBILLLIST">
             <End Role="WaybillList" EntitySet="WaybillList" />
             <End Role="DeboningDet" EntitySet="DeboningDet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WAYBILLL_REF_WBL_D_DOCS" Association="BaseModel.FK_WAYBILLL_REF_WBL_D_DOCS">
-            <End Role="Docs" EntitySet="Docs" />
-            <End Role="WaybillList" EntitySet="WaybillList" />
           </AssociationSet>
           <AssociationSet Name="FK_EXTREL_EXTPOSID" Association="BaseModel.FK_EXTREL_EXTPOSID">
             <End Role="WaybillDet" EntitySet="WaybillDet" />
@@ -7166,10 +6949,6 @@
             <End Role="Currency" EntitySet="Currency" />
             <End Role="PayDoc" EntitySet="PayDoc" />
           </AssociationSet>
-          <AssociationSet Name="FK_PAYDOC_REF_PD_DO_DOCS" Association="BaseModel.FK_PAYDOC_REF_PD_DO_DOCS">
-            <End Role="Docs" EntitySet="Docs" />
-            <End Role="PayDoc" EntitySet="PayDoc" />
-          </AssociationSet>
           <AssociationSet Name="FK__PAYDOC__KAID__19AACF41" Association="BaseModel.FK__PAYDOC__KAID__19AACF41">
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="PayDoc" EntitySet="PayDoc" />
@@ -7225,10 +7004,6 @@
             <End Role="Currency" EntitySet="Currency" />
             <End Role="PriceList" EntitySet="PriceList" />
           </AssociationSet>
-          <AssociationSet Name="FK_PRICELIS_REFERENCE_DOCS" Association="BaseModel.FK_PRICELIS_REFERENCE_DOCS">
-            <End Role="Docs" EntitySet="Docs" />
-            <End Role="PriceList" EntitySet="PriceList" />
-          </AssociationSet>
           <AssociationSet Name="FK_PRICELIST_REFERENCE_PRICETYP" Association="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP">
             <End Role="PriceTypes" EntitySet="PriceTypes" />
             <End Role="PriceList" EntitySet="PriceList" />
@@ -7261,9 +7036,6 @@
             <Parameter Name="w_type" Mode="In" Type="Int32" />
             <Parameter Name="wh" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="GetRelDocList" IsComposable="true" ReturnType="Collection(BaseModel.GetRelDocList_Result)">
-          <Parameter Name="doc_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="OrderedList" IsComposable="true" ReturnType="Collection(BaseModel.OrderedList_Result)">
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
             <Parameter Name="to_date" Mode="In" Type="DateTime" />
@@ -7272,15 +7044,59 @@
             <Parameter Name="w_type" Mode="In" Type="Int32" />
             <Parameter Name="active" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="DocCopy" ReturnType="Collection(BaseModel.DocCopy_Result)">
-          <Parameter Name="originator_id" Mode="In" Type="Guid" />
-          </FunctionImport>
           <FunctionImport Name="MoneyMoveList" IsComposable="true" ReturnType="Collection(BaseModel.MoneyMoveList_Result)">
             <Parameter Name="doc_type" Mode="In" Type="Int32" />
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
             <Parameter Name="to_date" Mode="In" Type="DateTime" />
             <Parameter Name="is_checked" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="GetRelDocList" IsComposable="true" ReturnType="Collection(BaseModel.GetRelDocList_Result)">
+          <Parameter Name="originator_id" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <EntitySet Name="DocRels" EntityType="BaseModel.DocRels" />
+          <FunctionImport Name="ExecuteWayBill" ReturnType="Collection(BaseModel.ExecuteWayBill_Result)">
+            <Parameter Name="WBILLID" Mode="In" Type="Int32" />
+            <Parameter Name="NEW_WTYPE" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SetDocRel">
+            <Parameter Name="originator_id" Mode="In" Type="Guid" />
+            <Parameter Name="rel_originator_id" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="GetManufacturedPos" IsComposable="true" ReturnType="Collection(BaseModel.GetManufacturedPos_Result)">
+          <Parameter Name="originator_id" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="DocCopy" ReturnType="Collection(BaseModel.DocCopy_Result)">
+          <Parameter Name="originator_id" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="GetOrdered" IsComposable="true" ReturnType="Collection(BaseModel.GetOrdered_Result)">
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
+            <Parameter Name="wid" Mode="In" Type="Int32" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="on_date" Mode="In" Type="DateTime" />
+            <Parameter Name="get_empty" Mode="In" Type="Int32" />
+            <Parameter Name="wh" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PosGet" IsComposable="true" ReturnType="Collection(BaseModel.PosGet_Result)">
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
+            <Parameter Name="w_id" Mode="In" Type="Int32" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="on_date" Mode="In" Type="DateTime" />
+            <Parameter Name="get_empty" Mode="In" Type="Int32" />
+            <Parameter Name="wh" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="DiscCards" EntityType="BaseModel.DiscCards" />
+          <AssociationSet Name="FK_DISCCARDS_GRPID" Association="BaseModel.FK_DISCCARDS_GRPID">
+            <End Role="DISCCARDGRP" EntitySet="DISCCARDGRP" />
+            <End Role="DiscCards" EntitySet="DiscCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DISCCARDS_KAID" Association="BaseModel.FK_DISCCARDS_KAID">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="DiscCards" EntitySet="DiscCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WBDAP_CARDID" Association="BaseModel.FK_WBDAP_CARDID">
+            <End Role="DiscCards" EntitySet="DiscCards" />
+            <End Role="WayBillDetAddProps" EntitySet="WayBillDetAddProps" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -7339,11 +7155,6 @@
           <Property Name="AGRPID" Type="Int32" />
           <Property Name="AGRPNAME" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
         </ComplexType>
-        <ComplexType Name="SP_GET_RELDOCIDS_Result">
-          <Property Name="DOCID" Type="Int32" />
-          <Property Name="DOCTYPE" Type="Int32" />
-          <Property Name="RELTYPE" Type="Int32" />
-        </ComplexType>
         <ComplexType Name="SP_MATCHANGE_GET_WP_Result">
           <Property Name="matid" Type="Int32" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -7400,8 +7211,6 @@
           <NavigationProperty Name="CONTRPARAMS" Relationship="BaseModel.FK_CONTRPARAMS_CONTRACTS" FromRole="CONTRACTS" ToRole="CONTRPARAMS" />
           <NavigationProperty Name="CONTRRESULTS" Relationship="BaseModel.FK_CONTRRESULTS_CONTRACTS" FromRole="CONTRACTS" ToRole="CONTRRESULTS" />
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK_CONTRACT_REFERENCE_CURRENCY" FromRole="CONTRACTS" ToRole="Currency" />
-          <NavigationProperty Name="Docs" Relationship="BaseModel.FK_CONTRACT_REF_CONTR_DOCS" FromRole="CONTRACTS" ToRole="Docs" />
-          <NavigationProperty Name="Docs1" Relationship="BaseModel.FK_CONTRACT_REF_CONTR_PDOCS" FromRole="CONTRACTS" ToRole="Docs" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_CONTRACT_REF_CONTR_KAGENT" FromRole="CONTRACTS" ToRole="Kagent" />
           <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_CONTRACT_REFERENCE_KAGENT" FromRole="CONTRACTS" ToRole="Kagent" />
           <Property Type="Guid" Name="Id" Nullable="false" />
@@ -7471,25 +7280,7 @@
           <Property Name="SUFFIX" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
           <Property Name="NOTES" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="GENNAME" Type="String" MaxLength="24" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="DISCCARDS" Relationship="BaseModel.FK_DISCCARDS_GRPID" FromRole="DISCCARDGRP" ToRole="DISCCARDS" />
-        </EntityType>
-        <EntityType Name="DISCCARDS">
-          <Key>
-            <PropertyRef Name="CARDID" />
-          </Key>
-          <Property Name="CARDID" Type="Int32" Nullable="false" />
-          <Property Name="NUM" Type="String" Nullable="false" MaxLength="24" Unicode="false" FixedLength="false" />
-          <Property Name="DISCTYPE" Type="Int32" Nullable="false" />
-          <Property Name="EXPIREDATE" Type="DateTime" Precision="3" />
-          <Property Name="GRPID" Type="Int32" Nullable="false" />
-          <Property Name="KAID" Type="Int32" Nullable="false" />
-          <Property Name="ONVALUE" Type="Decimal" Nullable="false" Precision="15" Scale="8" />
-          <Property Name="NOTES" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="DELETED" Type="Int32" Nullable="false" />
-          <Property Name="STARTSALDO" Type="Decimal" Precision="15" Scale="8" />
-          <NavigationProperty Name="DISCCARDGRP" Relationship="BaseModel.FK_DISCCARDS_GRPID" FromRole="DISCCARDS" ToRole="DISCCARDGRP" />
-          <NavigationProperty Name="WayBillDetAddProps" Relationship="BaseModel.FK_WBDAP_CARDID" FromRole="DISCCARDS" ToRole="WayBillDetAddProps" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_DISCCARDS_KAID" FromRole="DISCCARDS" ToRole="Kagent" />
+          <NavigationProperty Name="DiscCards" Relationship="BaseModel.FK_DISCCARDS_GRPID" FromRole="DISCCARDGRP" ToRole="DiscCards" />
         </EntityType>
         <EntityType Name="ENTPARAMS">
           <Key>
@@ -7543,7 +7334,6 @@
           <Property Name="CONTRACT_DATE" Type="DateTime" Precision="3" />
           <Property Name="CONTRACT_NUM" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
           <Property Name="TAXREESTRTYPE" Type="Int32" />
-          <NavigationProperty Name="Docs" Relationship="BaseModel.FK_TAXWB_REFERENCE_DOCS" FromRole="TAXWB" ToRole="Docs" />
           <NavigationProperty Name="TAXWBDET" Relationship="BaseModel.FK_TAXWBDET_TWBID" FromRole="TAXWB" ToRole="TAXWBDET" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__TAXWB__PERSONID__019E3B86" FromRole="TAXWB" ToRole="Kagent" />
           <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_TAXWB_REFERENCE_KAGENT" FromRole="TAXWB" ToRole="Kagent" />
@@ -7588,18 +7378,6 @@
             </Principal>
             <Dependent Role="CONTRRESULTS">
               <PropertyRef Name="CONTRID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_DISCCARDS_GRPID">
-          <End Role="DISCCARDGRP" Type="BaseModel.DISCCARDGRP" Multiplicity="1" />
-          <End Role="DISCCARDS" Type="BaseModel.DISCCARDS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DISCCARDGRP">
-              <PropertyRef Name="GRPID" />
-            </Principal>
-            <Dependent Role="DISCCARDS">
-              <PropertyRef Name="GRPID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7665,10 +7443,6 @@
           <Property Type="Decimal" Name="LastInPrice" Nullable="true" Precision="15" Scale="4" />
           <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="4" />
         </ComplexType>
-        <ComplexType Name="ExecuteWayBill_Result">
-          <Property Type="Int32" Name="Checked" Nullable="false" />
-          <Property Type="Int32" Name="NewDocId" Nullable="true" />
-        </ComplexType>
         <EntityType Name="WMatTurn">
           <Key>
             <PropertyRef Name="Id" />
@@ -7706,6 +7480,7 @@
           <Property Type="Int32" Name="Def" />
           <NavigationProperty Name="MoneySaldo" Relationship="BaseModel.FK_MS_CASHID" FromRole="CashDesks" ToRole="MoneySaldo" />
           <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK_PD_CASHID" FromRole="CashDesks" ToRole="PayDoc" />
+          <Property Type="Int32" Name="EnterpriseId" />
         </EntityType>
         <EntityType Name="PayType">
           <Key>
@@ -7899,28 +7674,6 @@
           <NavigationProperty Name="KAMatGroupDiscount" Relationship="BaseModel.FK__KAMATGROU__GRPID__395884C4" FromRole="MatGroup" ToRole="KAMatGroupDiscount" />
           <NavigationProperty Name="MatGroupPrices" Relationship="BaseModel.FK_MGP_MATID" FromRole="MatGroup" ToRole="MatGroupPrices" />
         </EntityType>
-        <ComplexType Name="PosGet_Result">
-          <Property Type="Int32" Name="PosId" Nullable="true" />
-          <Property Type="Decimal" Name="Remain" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Rsv" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="Wid" Nullable="true" />
-          <Property Type="String" Name="Name" Nullable="true" MaxLength="128" />
-          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
-          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="CurrId" Nullable="true" />
-          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="10" />
-          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="String" Name="SN" Nullable="true" MaxLength="64" />
-          <Property Type="Int32" Name="WType" Nullable="true" />
-          <Property Type="String" Name="DocNum" Nullable="true" MaxLength="20" />
-          <Property Type="Int32" Name="WBillId" Nullable="true" />
-          <Property Type="Int32" Name="DocId" Nullable="true" />
-          <Property Type="String" Name="GTD" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="CertNum" Nullable="true" MaxLength="64" />
-          <Property Type="DateTime" Name="CertDate" Nullable="true" Precision="23" />
-          <Property Type="String" Name="Producer" Nullable="true" MaxLength="64" />
-          <Property Type="Decimal" Name="CurRemain" Nullable="true" Precision="15" Scale="4" />
-        </ComplexType>
         <EntityType Name="CityType">
           <Key>
             <PropertyRef Name="Id" />
@@ -8164,20 +7917,6 @@
           <Property Type="Int32" Name="UserId" />
           <Property Type="Int32" Name="WType" />
         </EntityType>
-        <EntityType Name="Docs">
-          <Key>
-            <PropertyRef Name="DocId" />
-          </Key>
-          <Property Type="Int32" Name="DocId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="DocType" Nullable="false" />
-          <NavigationProperty Name="CONTRACTS" Relationship="BaseModel.FK_CONTRACT_REF_CONTR_DOCS" FromRole="Docs" ToRole="CONTRACTS" />
-          <NavigationProperty Name="CONTRACTS1" Relationship="BaseModel.FK_CONTRACT_REF_CONTR_PDOCS" FromRole="Docs" ToRole="CONTRACTS" />
-          <NavigationProperty Name="TAXWB" Relationship="BaseModel.FK_TAXWB_REFERENCE_DOCS" FromRole="Docs" ToRole="TAXWB" />
-          <NavigationProperty Name="DocsRel" Relationship="BaseModel.FK_DOCSREL_REFERENCE_DOCS" FromRole="Docs" ToRole="DocsRel" />
-          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WAYBILLL_REF_WBL_D_DOCS" FromRole="Docs" ToRole="WaybillList" />
-          <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK_PAYDOC_REF_PD_DO_DOCS" FromRole="Docs" ToRole="PayDoc" />
-          <NavigationProperty Name="PriceList" Relationship="BaseModel.FK_PRICELIS_REFERENCE_DOCS" FromRole="Docs" ToRole="PriceList" />
-        </EntityType>
         <EntityType Name="UserAccessWh">
           <Key>
             <PropertyRef Name="Id" />
@@ -8196,44 +7935,6 @@
           <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="UserTreeView" Relationship="BaseModel.FK_USERTREE_FK_USERTR_USERTREE" FromRole="UserTree" ToRole="UserTreeView" />
         </EntityType>
-        <Association Name="FK_CONTRACT_REF_CONTR_DOCS">
-          <End Type="BaseModel.Docs" Role="Docs" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.CONTRACTS" Role="CONTRACTS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Docs">
-              <PropertyRef Name="DocId" />
-            </Principal>
-            <Dependent Role="CONTRACTS">
-              <PropertyRef Name="DOCID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CONTRACT_REF_CONTR_PDOCS">
-          <End Type="BaseModel.Docs" Role="Docs" Multiplicity="0..1" />
-          <End Type="BaseModel.CONTRACTS" Role="CONTRACTS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Docs">
-              <PropertyRef Name="DocId" />
-            </Principal>
-            <Dependent Role="CONTRACTS">
-              <PropertyRef Name="PDOCID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TAXWB_REFERENCE_DOCS">
-          <End Type="BaseModel.Docs" Role="Docs" Multiplicity="0..1" />
-          <End Type="BaseModel.TAXWB" Role="TAXWB" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Docs">
-              <PropertyRef Name="DocId" />
-            </Principal>
-            <Dependent Role="TAXWB">
-              <PropertyRef Name="DOCID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_UAWH_WID">
           <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -9682,22 +9383,10 @@
           <Property Type="Int32" Name="CardId" />
           <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="WbMaked" />
-          <NavigationProperty Name="DISCCARDS" Relationship="BaseModel.FK_WBDAP_CARDID" FromRole="WayBillDetAddProps" ToRole="DISCCARDS" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WBDAP_POSID" FromRole="WayBillDetAddProps" ToRole="WaybillDet" />
           <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WAYBILLDETADDPROPS_WBILLID" FromRole="WayBillDetAddProps" ToRole="WaybillList" />
+          <NavigationProperty Name="DiscCards" Relationship="BaseModel.FK_WBDAP_CARDID" FromRole="WayBillDetAddProps" ToRole="DiscCards" />
         </EntityType>
-        <Association Name="FK_WBDAP_CARDID">
-          <End Type="BaseModel.DISCCARDS" Role="DISCCARDS" Multiplicity="0..1" />
-          <End Type="BaseModel.WayBillDetAddProps" Role="WayBillDetAddProps" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DISCCARDS">
-              <PropertyRef Name="CARDID" />
-            </Principal>
-            <Dependent Role="WayBillDetAddProps">
-              <PropertyRef Name="CardId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="v_PriceTypes">
           <Key>
             <PropertyRef Name="PTypeId" />
@@ -9851,29 +9540,6 @@
           <Property Type="Decimal" Name="Remain" Nullable="true" Precision="38" Scale="4" />
           <Property Type="Decimal" Name="Rsv" Nullable="true" Precision="38" Scale="4" />
           <Property Type="Decimal" Name="CurRemain" Nullable="true" Precision="38" Scale="4" />
-        </ComplexType>
-        <ComplexType Name="GetOrdered_Result">
-          <Property Type="Decimal" Name="Remain" Nullable="false" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Ordered" Nullable="false" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Rsv" Nullable="false" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="PosId" Nullable="false" />
-          <Property Type="Int32" Name="WId" Nullable="false" />
-          <Property Type="String" Name="WhName" Nullable="false" MaxLength="64" />
-          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
-          <Property Type="DateTime" Name="PosDate" Nullable="true" Precision="23" />
-          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="CurrId" Nullable="true" />
-          <Property Type="Int32" Name="WType" Nullable="false" />
-          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" />
-          <Property Type="Int32" Name="WbillId" Nullable="false" />
-          <Property Type="Int32" Name="DocId" Nullable="true" />
-          <Property Type="DateTime" Name="ToDate" Nullable="true" Precision="23" />
-          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
-          <Property Type="Int32" Name="KaId" Nullable="true" />
-          <Property Type="String" Name="KaName" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="Notes" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="CertNum" Nullable="true" MaxLength="64" />
         </ComplexType>
         <ComplexType Name="REP_2_Result">
           <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
@@ -10204,25 +9870,6 @@
           <Property Type="Decimal" Name="Ordered" Precision="38" Scale="8" />
           <Property Type="Decimal" Name="ORsv" Precision="38" Scale="8" />
         </EntityType>
-        <ComplexType Name="GetManufacturedPos_Result">
-          <Property Type="Int32" Name="Num" Nullable="false" />
-          <Property Type="Int32" Name="PosId" Nullable="false" />
-          <Property Type="Int32" Name="MatId" Nullable="false" />
-          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="8" />
-          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
-          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
-          <Property Type="String" Name="WhName" Nullable="false" MaxLength="64" />
-          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="Producer" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="SerialNo" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="GroupName" Nullable="false" MaxLength="64" />
-          <Property Type="Decimal" Name="BasePrice" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Total" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="String" Name="Notes" Nullable="true" MaxLength="100" />
-        </ComplexType>
         <ComplexType Name="GetLastPrice_Result">
           <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
           <Property Type="Int32" Name="CurrId" Nullable="true" />
@@ -10240,15 +9887,6 @@
           <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="38" Scale="8" />
           <Property Type="Decimal" Name="TotalOut" Nullable="true" Precision="38" Scale="2" />
         </ComplexType>
-        <EntityType Name="DocsRel">
-          <Key>
-            <PropertyRef Name="DocId" />
-            <PropertyRef Name="RDocId" />
-          </Key>
-          <Property Type="Int32" Name="DocId" Nullable="false" />
-          <Property Type="Int32" Name="RDocId" Nullable="false" />
-          <NavigationProperty Name="Docs" Relationship="BaseModel.FK_DOCSREL_REFERENCE_DOCS" FromRole="DocsRel" ToRole="Docs" />
-        </EntityType>
         <EntityType Name="ProfileDocSetting">
           <Key>
             <PropertyRef Name="DocType" />
@@ -10264,20 +9902,6 @@
           <Property Type="Int32" Name="Checked" />
           <Property Type="Int32" Name="Num" Nullable="false" />
         </EntityType>
-        <Association Name="FK_DOCSREL_REFERENCE_DOCS">
-          <End Type="BaseModel.Docs" Role="Docs" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.DocsRel" Role="DocsRel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Docs">
-              <PropertyRef Name="DocId" />
-            </Principal>
-            <Dependent Role="DocsRel">
-              <PropertyRef Name="DocId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="WayBillDetTaxes">
           <Key>
             <PropertyRef Name="PosId" />
@@ -10544,7 +10168,6 @@
           <NavigationProperty Name="CONTRACTS" Relationship="BaseModel.FK_CONTRACT_REF_CONTR_KAGENT" FromRole="Kagent" ToRole="CONTRACTS" />
           <NavigationProperty Name="CONTRACTS1" Relationship="BaseModel.FK_CONTRACT_REFERENCE_KAGENT" FromRole="Kagent" ToRole="CONTRACTS" />
           <NavigationProperty Name="Customers" Relationship="BaseModel.FK_Customers_Kagent" FromRole="Kagent" ToRole="Customers" />
-          <NavigationProperty Name="DISCCARDS" Relationship="BaseModel.FK_DISCCARDS_KAID" FromRole="Kagent" ToRole="DISCCARDS" />
           <NavigationProperty Name="KaAddr" Relationship="BaseModel.FK_KAADDR_KAID" FromRole="Kagent" ToRole="KaAddr" />
           <NavigationProperty Name="KADiscount" Relationship="BaseModel.FK_KADiscount_Kagent" FromRole="Kagent" ToRole="KADiscount" />
           <NavigationProperty Name="KAMatDiscount" Relationship="BaseModel.FK__KAMATDISCO__KAID__31B762FC" FromRole="Kagent" ToRole="KAMatDiscount" />
@@ -10568,6 +10191,7 @@
           <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK__PAYDOC__KAID__19AACF41" FromRole="Kagent" ToRole="PayDoc" />
           <NavigationProperty Name="PayDoc1" Relationship="BaseModel.FK__PAYDOC__MPERSONI__22401542" FromRole="Kagent" ToRole="PayDoc" />
           <Property Type="Guid" Name="Id" Nullable="false" />
+          <NavigationProperty Name="DiscCards" Relationship="BaseModel.FK_DISCCARDS_KAID" FromRole="Kagent" ToRole="DiscCards" />
         </EntityType>
         <EntityType Name="KontragentGroup">
           <Key>
@@ -10660,18 +10284,6 @@
             </Principal>
             <Dependent Role="Customers">
               <PropertyRef Name="KaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_DISCCARDS_KAID">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1" />
-          <End Type="BaseModel.DISCCARDS" Role="DISCCARDS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="DISCCARDS">
-              <PropertyRef Name="KAID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -10968,7 +10580,6 @@
           <NavigationProperty Name="Commission" Relationship="BaseModel.FK_COMMISSION_WBILLID" FromRole="WaybillList" ToRole="Commission" />
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY" FromRole="WaybillList" ToRole="Currency" />
           <NavigationProperty Name="DeboningDet" Relationship="BaseModel.FK_DEBONINGDET_WAYBILLLIST" FromRole="WaybillList" ToRole="DeboningDet" />
-          <NavigationProperty Name="Docs" Relationship="BaseModel.FK_WAYBILLL_REF_WBL_D_DOCS" FromRole="WaybillList" ToRole="Docs" />
           <NavigationProperty Name="Person" Relationship="BaseModel.FK__WAYBILLLI__PERSO__6E01572D" FromRole="WaybillList" ToRole="Kagent" />
           <NavigationProperty Name="Kontragent" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" FromRole="WaybillList" ToRole="Kagent" />
           <NavigationProperty Name="Enterprise" Relationship="BaseModel.FK_WBL_ENTID" FromRole="WaybillList" ToRole="Kagent" />
@@ -11030,18 +10641,6 @@
             </Principal>
             <Dependent Role="DeboningDet">
               <PropertyRef Name="WBillId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WAYBILLL_REF_WBL_D_DOCS">
-          <End Type="BaseModel.Docs" Role="Docs" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Docs">
-              <PropertyRef Name="DocId" />
-            </Principal>
-            <Dependent Role="WaybillList">
-              <PropertyRef Name="DocId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -11610,7 +11209,6 @@
           <NavigationProperty Name="CashDesks" Relationship="BaseModel.FK_PD_CASHID" FromRole="PayDoc" ToRole="CashDesks" />
           <NavigationProperty Name="ChargeType" Relationship="BaseModel.FK__PAYDOC__CTYPEID__2334397B" FromRole="PayDoc" ToRole="ChargeType" />
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK__PAYDOC__CURRID__214BF109" FromRole="PayDoc" ToRole="Currency" />
-          <NavigationProperty Name="Docs" Relationship="BaseModel.FK_PAYDOC_REF_PD_DO_DOCS" FromRole="PayDoc" ToRole="Docs" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__PAYDOC__KAID__19AACF41" FromRole="PayDoc" ToRole="Kagent" />
           <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK__PAYDOC__MPERSONI__22401542" FromRole="PayDoc" ToRole="Kagent" />
           <NavigationProperty Name="KAgentAccount" Relationship="BaseModel.FK_PD_ACCID" FromRole="PayDoc" ToRole="KAgentAccount" />
@@ -11650,18 +11248,6 @@
             </Principal>
             <Dependent Role="PayDoc">
               <PropertyRef Name="CurrId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PAYDOC_REF_PD_DO_DOCS">
-          <End Type="BaseModel.Docs" Role="Docs" Multiplicity="0..1" />
-          <End Type="BaseModel.PayDoc" Role="PayDoc" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Docs">
-              <PropertyRef Name="DocId" />
-            </Principal>
-            <Dependent Role="PayDoc">
-              <PropertyRef Name="DocId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -11884,7 +11470,6 @@
           <Property Type="Int32" Name="PTypeId" />
           <Property Type="Guid" Name="Id" Nullable="false" />
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK_PRICELIS_REFERENCE_CURRENCY" FromRole="PriceList" ToRole="Currency" />
-          <NavigationProperty Name="Docs" Relationship="BaseModel.FK_PRICELIS_REFERENCE_DOCS" FromRole="PriceList" ToRole="Docs" />
           <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP" FromRole="PriceList" ToRole="PriceTypes" />
           <NavigationProperty Name="PriceListDet" Relationship="BaseModel.FK_PRICELISTDET_PRICELIST" FromRole="PriceList" ToRole="PriceListDet" />
         </EntityType>
@@ -11919,18 +11504,6 @@
             </Principal>
             <Dependent Role="PriceList">
               <PropertyRef Name="CurrId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PRICELIS_REFERENCE_DOCS">
-          <End Type="BaseModel.Docs" Role="Docs" Multiplicity="0..1" />
-          <End Type="BaseModel.PriceList" Role="PriceList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Docs">
-              <PropertyRef Name="DocId" />
-            </Principal>
-            <Dependent Role="PriceList">
-              <PropertyRef Name="DocId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -12153,20 +11726,6 @@
           <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="WhName" Nullable="true" MaxLength="250" />
         </ComplexType>
-        <ComplexType Name="GetRelDocList_Result">
-          <Property Type="Guid" Name="Id" Nullable="true" />
-          <Property Type="Int32" Name="DocId" Nullable="true" />
-          <Property Type="Int32" Name="DocType" Nullable="true" />
-          <Property Type="String" Name="Num" Nullable="true" MaxLength="20" />
-          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="Checked" Nullable="true" />
-          <Property Type="Int32" Name="Deleted" Nullable="true" />
-          <Property Type="Decimal" Name="Summ" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="String" Name="CurrencyName" Nullable="true" MaxLength="10" />
-          <Property Type="Int32" Name="CurrId" Nullable="true" />
-          <Property Type="Int32" Name="RelType" Nullable="true" />
-          <Property Type="String" Name="DocTypeName" Nullable="true" MaxLength="100" />
-        </ComplexType>
         <ComplexType Name="OrderedList_Result">
           <Property Type="Guid" Name="Id" Nullable="false" />
           <Property Type="Int32" Name="PosId" Nullable="false" />
@@ -12194,10 +11753,6 @@
           <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
           <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
         </ComplexType>
-        <ComplexType Name="DocCopy_Result">
-          <Property Type="Int32" Name="out_wbill_id" Nullable="true" />
-          <Property Type="Int32" Name="out_doc_id" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="MoneyMoveList_Result">
           <Property Type="Guid" Name="Id" Nullable="false" />
           <Property Type="Int32" Name="PayDocId" Nullable="false" />
@@ -12224,6 +11779,154 @@
           <Property Type="String" Name="FromSource" Nullable="true" MaxLength="128" />
           <Property Type="String" Name="ToSource" Nullable="true" MaxLength="128" />
         </ComplexType>
+        <ComplexType Name="GetRelDocList_Result">
+          <Property Type="Guid" Name="Id" Nullable="true" />
+          <Property Type="Int32" Name="DocType" Nullable="true" />
+          <Property Type="String" Name="Num" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Checked" Nullable="true" />
+          <Property Type="Int32" Name="Deleted" Nullable="true" />
+          <Property Type="Decimal" Name="Summ" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="String" Name="CurrencyName" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="Int32" Name="RelType" Nullable="true" />
+          <Property Type="String" Name="DocTypeName" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <EntityType Name="DocRels">
+          <Key>
+            <PropertyRef Name="OriginatorId" />
+            <PropertyRef Name="RelOriginatorId" />
+          </Key>
+          <Property Type="Guid" Name="OriginatorId" Nullable="false" />
+          <Property Type="Guid" Name="RelOriginatorId" Nullable="false" />
+        </EntityType>
+        <ComplexType Name="ExecuteWayBill_Result">
+          <Property Type="Int32" Name="Checked" Nullable="true" />
+          <Property Type="Guid" Name="NewDocId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetManufacturedPos_Result">
+          <Property Type="Int32" Name="Num" Nullable="false" />
+          <Property Type="Int32" Name="PosId" Nullable="false" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="WhName" Nullable="false" MaxLength="64" />
+          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Producer" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="SerialNo" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="GroupName" Nullable="false" MaxLength="64" />
+          <Property Type="Decimal" Name="BasePrice" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Total" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="DocCopy_Result">
+          <Property Type="Int32" Name="out_wbill_id" Nullable="true" />
+          <Property Type="Guid" Name="out_doc_id" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetOrdered_Result">
+          <Property Type="Decimal" Name="Remain" Nullable="false" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Ordered" Nullable="false" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Rsv" Nullable="false" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="PosId" Nullable="false" />
+          <Property Type="Int32" Name="WId" Nullable="false" />
+          <Property Type="String" Name="WhName" Nullable="false" MaxLength="64" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="PosDate" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="Int32" Name="WType" Nullable="false" />
+          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="WbillId" Nullable="false" />
+          <Property Type="Int32" Name="DocId" Nullable="true" />
+          <Property Type="DateTime" Name="ToDate" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
+          <Property Type="Int32" Name="KaId" Nullable="true" />
+          <Property Type="String" Name="KaName" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="CertNum" Nullable="true" MaxLength="64" />
+          <Property Type="Guid" Name="Id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="PosGet_Result">
+          <Property Type="Int32" Name="PosId" Nullable="true" />
+          <Property Type="Decimal" Name="Remain" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Rsv" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="Wid" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="128" />
+          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="String" Name="SN" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="WType" Nullable="true" />
+          <Property Type="String" Name="DocNum" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="WBillId" Nullable="true" />
+          <Property Type="Guid" Name="Id" Nullable="true" />
+          <Property Type="String" Name="GTD" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="CertNum" Nullable="true" MaxLength="64" />
+          <Property Type="DateTime" Name="CertDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Producer" Nullable="true" MaxLength="64" />
+          <Property Type="Decimal" Name="CurRemain" Nullable="true" Precision="15" Scale="4" />
+        </ComplexType>
+        <EntityType Name="DiscCards">
+          <Key>
+            <PropertyRef Name="CardId" />
+          </Key>
+          <Property Type="Int32" Name="CardId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Num" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="DiscType" Nullable="false" />
+          <Property Type="DateTime" Name="ExpireDate" Precision="3" />
+          <Property Type="Int32" Name="GrpId" Nullable="false" />
+          <Property Type="Int32" Name="KaId" />
+          <Property Type="Decimal" Name="OnValue" Nullable="false" Precision="15" Scale="4" />
+          <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Deleted" Nullable="false" />
+          <Property Type="Decimal" Name="StartSaldo" Precision="15" Scale="8" />
+          <NavigationProperty Name="DISCCARDGRP" Relationship="BaseModel.FK_DISCCARDS_GRPID" FromRole="DiscCards" ToRole="DISCCARDGRP" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_DISCCARDS_KAID" FromRole="DiscCards" ToRole="Kagent" />
+          <NavigationProperty Name="WayBillDetAddProps" Relationship="BaseModel.FK_WBDAP_CARDID" FromRole="DiscCards" ToRole="WayBillDetAddProps" />
+        </EntityType>
+        <Association Name="FK_DISCCARDS_GRPID">
+          <End Type="BaseModel.DISCCARDGRP" Role="DISCCARDGRP" Multiplicity="1" />
+          <End Type="BaseModel.DiscCards" Role="DiscCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DISCCARDGRP">
+              <PropertyRef Name="GRPID" />
+            </Principal>
+            <Dependent Role="DiscCards">
+              <PropertyRef Name="GrpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DISCCARDS_KAID">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.DiscCards" Role="DiscCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="DiscCards">
+              <PropertyRef Name="KaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WBDAP_CARDID">
+          <End Type="BaseModel.DiscCards" Role="DiscCards" Multiplicity="0..1" />
+          <End Type="BaseModel.WayBillDetAddProps" Role="WayBillDetAddProps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiscCards">
+              <PropertyRef Name="CardId" />
+            </Principal>
+            <Dependent Role="WayBillDetAddProps">
+              <PropertyRef Name="CardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -12313,22 +12016,6 @@
                 <ScalarProperty Name="SUFFIX" ColumnName="SUFFIX" />
                 <ScalarProperty Name="NOTES" ColumnName="NOTES" />
                 <ScalarProperty Name="GENNAME" ColumnName="GENNAME" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DISCCARDS">
-            <EntityTypeMapping TypeName="BaseModel.DISCCARDS">
-              <MappingFragment StoreEntitySet="DISCCARDS">
-                <ScalarProperty Name="CARDID" ColumnName="CARDID" />
-                <ScalarProperty Name="NUM" ColumnName="NUM" />
-                <ScalarProperty Name="DISCTYPE" ColumnName="DISCTYPE" />
-                <ScalarProperty Name="EXPIREDATE" ColumnName="EXPIREDATE" />
-                <ScalarProperty Name="GRPID" ColumnName="GRPID" />
-                <ScalarProperty Name="KAID" ColumnName="KAID" />
-                <ScalarProperty Name="ONVALUE" ColumnName="ONVALUE" />
-                <ScalarProperty Name="NOTES" ColumnName="NOTES" />
-                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
-                <ScalarProperty Name="STARTSALDO" ColumnName="STARTSALDO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -12455,15 +12142,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="BaseModel.Store.SP_GET_RELDOCIDS" FunctionImportName="SP_GET_RELDOCIDS">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.SP_GET_RELDOCIDS_Result">
-                <ScalarProperty Name="DOCID" ColumnName="DOCID" />
-                <ScalarProperty Name="DOCTYPE" ColumnName="DOCTYPE" />
-                <ScalarProperty Name="RELTYPE" ColumnName="RELTYPE" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionName="BaseModel.Store.SP_MATCHANGE_GET_WP" FunctionImportName="SP_MATCHANGE_GET_WP">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.SP_MATCHANGE_GET_WP_Result">
@@ -12527,9 +12205,6 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_AUTO_RSV_2" FunctionName="BaseModel.Store.SP_AUTO_RSV_2" />
-          <FunctionImportMapping FunctionImportName="SP_CONTR_RESULT_UPD" FunctionName="BaseModel.Store.SP_CONTR_RESULT_UPD" />
-          <FunctionImportMapping FunctionImportName="SP_DEL_DOCREL" FunctionName="BaseModel.Store.SP_DEL_DOCREL" />
-          <FunctionImportMapping FunctionImportName="SP_NEWDOC" FunctionName="BaseModel.Store.SP_NEWDOC" />
           <FunctionImportMapping FunctionImportName="SP_ORDER_UPD_RSV" FunctionName="BaseModel.Store.SP_ORDER_UPD_RSV" />
           <FunctionImportMapping FunctionImportName="SP_RECALC_DOC_SALDO" FunctionName="BaseModel.Store.SP_RECALC_DOC_SALDO" />
           <FunctionImportMapping FunctionImportName="SP_RECALC_KA_SALDO" FunctionName="BaseModel.Store.SP_RECALC_KA_SALDO" />
@@ -12542,7 +12217,6 @@
           <FunctionImportMapping FunctionImportName="SP_RECALC_REMAINS_EX" FunctionName="BaseModel.Store.SP_RECALC_REMAINS_EX" />
           <FunctionImportMapping FunctionImportName="SP_RENUM_WB" FunctionName="BaseModel.Store.SP_RENUM_WB" />
           <FunctionImportMapping FunctionImportName="SP_SET_DEBONINGDET" FunctionName="BaseModel.Store.SP_SET_DEBONINGDET" />
-          <FunctionImportMapping FunctionImportName="SP_SET_DOCREL" FunctionName="BaseModel.Store.SP_SET_DOCREL" />
           <FunctionImportMapping FunctionImportName="SP_SET_EXTPOSID" FunctionName="BaseModel.Store.SP_SET_EXTPOSID" />
           <FunctionImportMapping FunctionImportName="SP_UPD_DATE" FunctionName="BaseModel.Store.SP_UPD_DATE" />
           <FunctionImportMapping FunctionImportName="SP_WMATTURN_UPD" FunctionName="BaseModel.Store.SP_WMATTURN_UPD" />
@@ -12608,14 +12282,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="ExecuteWayBill" FunctionName="BaseModel.Store.ExecuteWayBill">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.ExecuteWayBill_Result">
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="NewDocId" ColumnName="NewDocId" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="WMatTurn">
             <EntityTypeMapping TypeName="BaseModel.WMatTurn">
               <MappingFragment StoreEntitySet="WMatTurn">
@@ -12648,6 +12314,7 @@
           <EntitySetMapping Name="CashDesks">
             <EntityTypeMapping TypeName="BaseModel.CashDesks">
               <MappingFragment StoreEntitySet="CashDesks">
+                <ScalarProperty Name="EnterpriseId" ColumnName="EnterpriseId" />
                 <ScalarProperty Name="Def" ColumnName="Def" />
                 <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -12815,32 +12482,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="PosGet" FunctionName="BaseModel.Store.PosGet">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.PosGet_Result">
-                <ScalarProperty Name="PosId" ColumnName="PosId" />
-                <ScalarProperty Name="Remain" ColumnName="Remain" />
-                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
-                <ScalarProperty Name="Wid" ColumnName="Wid" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
-                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
-                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
-                <ScalarProperty Name="SN" ColumnName="SN" />
-                <ScalarProperty Name="WType" ColumnName="WType" />
-                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
-                <ScalarProperty Name="WBillId" ColumnName="WBillId" />
-                <ScalarProperty Name="DocId" ColumnName="DocId" />
-                <ScalarProperty Name="GTD" ColumnName="GTD" />
-                <ScalarProperty Name="CertNum" ColumnName="CertNum" />
-                <ScalarProperty Name="CertDate" ColumnName="CertDate" />
-                <ScalarProperty Name="Producer" ColumnName="Producer" />
-                <ScalarProperty Name="CurRemain" ColumnName="CurRemain" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="CityType">
             <EntityTypeMapping TypeName="BaseModel.CityType">
               <MappingFragment StoreEntitySet="CityType">
@@ -13015,14 +12656,6 @@
                 <ScalarProperty Name="PId" ColumnName="PId" />
                 <ScalarProperty Name="FunId" ColumnName="FunId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Docs">
-            <EntityTypeMapping TypeName="BaseModel.Docs">
-              <MappingFragment StoreEntitySet="Docs">
-                <ScalarProperty Name="DocType" ColumnName="DocType" />
-                <ScalarProperty Name="DocId" ColumnName="DocId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -14297,33 +13930,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetOrdered" FunctionName="BaseModel.Store.GetOrdered">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetOrdered_Result">
-                <ScalarProperty Name="Remain" ColumnName="Remain" />
-                <ScalarProperty Name="Ordered" ColumnName="Ordered" />
-                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
-                <ScalarProperty Name="PosId" ColumnName="PosId" />
-                <ScalarProperty Name="WId" ColumnName="WId" />
-                <ScalarProperty Name="WhName" ColumnName="WhName" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="PosDate" ColumnName="PosDate" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
-                <ScalarProperty Name="WType" ColumnName="WType" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
-                <ScalarProperty Name="DocId" ColumnName="DocId" />
-                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
-                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
-                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
-                <ScalarProperty Name="KaId" ColumnName="KaId" />
-                <ScalarProperty Name="KaName" ColumnName="KaName" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="CertNum" ColumnName="CertNum" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="REP_2" FunctionName="BaseModel.Store.REP_2">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.REP_2_Result">
@@ -14543,29 +14149,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetManufacturedPos" FunctionName="BaseModel.Store.GetManufacturedPos">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetManufacturedPos_Result">
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="PosId" ColumnName="PosId" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="MatName" ColumnName="MatName" />
-                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
-                <ScalarProperty Name="WhName" ColumnName="WhName" />
-                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
-                <ScalarProperty Name="Producer" ColumnName="Producer" />
-                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
-                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
-                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
-                <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetLastPrice" FunctionName="BaseModel.Store.GetLastPrice">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.GetLastPrice_Result">
@@ -14592,14 +14175,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="DocsRel">
-            <EntityTypeMapping TypeName="BaseModel.DocsRel">
-              <MappingFragment StoreEntitySet="DocsRel">
-                <ScalarProperty Name="RDocId" ColumnName="RDocId" />
-                <ScalarProperty Name="DocId" ColumnName="DocId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ProfileDocSetting">
             <EntityTypeMapping TypeName="BaseModel.ProfileDocSetting">
               <MappingFragment StoreEntitySet="ProfileDocSetting">
@@ -15374,24 +14949,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetRelDocList" FunctionName="BaseModel.Store.GetRelDocList">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetRelDocList_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="DocId" ColumnName="DocId" />
-                <ScalarProperty Name="DocType" ColumnName="DocType" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="Summ" ColumnName="Summ" />
-                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
-                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
-                <ScalarProperty Name="RelType" ColumnName="RelType" />
-                <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="OrderedList" FunctionName="BaseModel.Store.OrderedList">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.OrderedList_Result">
@@ -15420,14 +14977,6 @@
                 <ScalarProperty Name="GrpId" ColumnName="GrpId" />
                 <ScalarProperty Name="BarCode" ColumnName="BarCode" />
                 <ScalarProperty Name="TypeName" ColumnName="TypeName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="DocCopy" FunctionName="BaseModel.Store.DocCopy">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.DocCopy_Result">
-                <ScalarProperty Name="out_wbill_id" ColumnName="out_wbill_id" />
-                <ScalarProperty Name="out_doc_id" ColumnName="out_doc_id" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -15461,6 +15010,141 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetRelDocList" FunctionName="BaseModel.Store.GetRelDocList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetRelDocList_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Summ" ColumnName="Summ" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="RelType" ColumnName="RelType" />
+                <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="DocRels">
+            <EntityTypeMapping TypeName="BaseModel.DocRels">
+              <MappingFragment StoreEntitySet="DocRels">
+                <ScalarProperty Name="RelOriginatorId" ColumnName="RelOriginatorId" />
+                <ScalarProperty Name="OriginatorId" ColumnName="OriginatorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ExecuteWayBill" FunctionName="BaseModel.Store.ExecuteWayBill">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.ExecuteWayBill_Result">
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="NewDocId" ColumnName="NewDocId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SetDocRel" FunctionName="BaseModel.Store.SetDocRel" />
+          <FunctionImportMapping FunctionImportName="GetManufacturedPos" FunctionName="BaseModel.Store.GetManufacturedPos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetManufacturedPos_Result">
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="Producer" ColumnName="Producer" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DocCopy" FunctionName="BaseModel.Store.DocCopy">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.DocCopy_Result">
+                <ScalarProperty Name="out_wbill_id" ColumnName="out_wbill_id" />
+                <ScalarProperty Name="out_doc_id" ColumnName="out_doc_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetOrdered" FunctionName="BaseModel.Store.GetOrdered">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetOrdered_Result">
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
+                <ScalarProperty Name="Ordered" ColumnName="Ordered" />
+                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="PosDate" ColumnName="PosDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="CertNum" ColumnName="CertNum" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PosGet" FunctionName="BaseModel.Store.PosGet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.PosGet_Result">
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
+                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
+                <ScalarProperty Name="Wid" ColumnName="Wid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="SN" ColumnName="SN" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+                <ScalarProperty Name="WBillId" ColumnName="WBillId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GTD" ColumnName="GTD" />
+                <ScalarProperty Name="CertNum" ColumnName="CertNum" />
+                <ScalarProperty Name="CertDate" ColumnName="CertDate" />
+                <ScalarProperty Name="Producer" ColumnName="Producer" />
+                <ScalarProperty Name="CurRemain" ColumnName="CurRemain" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="DiscCards">
+            <EntityTypeMapping TypeName="BaseModel.DiscCards">
+              <MappingFragment StoreEntitySet="DiscCards">
+                <ScalarProperty Name="StartSaldo" ColumnName="StartSaldo" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+                <ScalarProperty Name="DiscType" ColumnName="DiscType" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="CardId" ColumnName="CardId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

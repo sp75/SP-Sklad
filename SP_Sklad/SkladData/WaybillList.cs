@@ -55,7 +55,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<Commission> Commission { get; set; }
         public virtual Currency Currency { get; set; }
         public virtual ICollection<DeboningDet> DeboningDet { get; set; }
-        public virtual Docs Docs { get; set; }
         public virtual Kagent Person { get; set; }
         public virtual Kagent Kontragent { get; set; }
         public virtual Kagent Enterprise { get; set; }

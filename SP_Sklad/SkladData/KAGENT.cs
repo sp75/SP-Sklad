@@ -23,7 +23,6 @@ namespace SP_Sklad.SkladData
             this.CONTRACTS = new HashSet<CONTRACTS>();
             this.CONTRACTS1 = new HashSet<CONTRACTS>();
             this.Customers = new HashSet<Customers>();
-            this.DISCCARDS = new HashSet<DISCCARDS>();
             this.KaAddr = new HashSet<KaAddr>();
             this.KAMatDiscount = new HashSet<KAMatDiscount>();
             this.KAMatGroupDiscount = new HashSet<KAMatGroupDiscount>();
@@ -41,6 +40,7 @@ namespace SP_Sklad.SkladData
             this.WaybillList2 = new HashSet<WaybillList>();
             this.PayDoc = new HashSet<PayDoc>();
             this.PayDoc1 = new HashSet<PayDoc>();
+            this.DiscCards = new HashSet<DiscCards>();
         }
     
         public int KaId { get; set; }
@@ -83,7 +83,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<CONTRACTS> CONTRACTS { get; set; }
         public virtual ICollection<CONTRACTS> CONTRACTS1 { get; set; }
         public virtual ICollection<Customers> Customers { get; set; }
-        public virtual ICollection<DISCCARDS> DISCCARDS { get; set; }
         public virtual ICollection<KaAddr> KaAddr { get; set; }
         public virtual KADiscount KADiscount { get; set; }
         public virtual ICollection<KAMatDiscount> KAMatDiscount { get; set; }
@@ -106,5 +105,6 @@ namespace SP_Sklad.SkladData
         public virtual Users Users { get; set; }
         public virtual ICollection<PayDoc> PayDoc { get; set; }
         public virtual ICollection<PayDoc> PayDoc1 { get; set; }
+        public virtual ICollection<DiscCards> DiscCards { get; set; }
     }
 }

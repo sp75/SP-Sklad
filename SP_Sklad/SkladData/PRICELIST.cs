@@ -31,7 +31,6 @@ namespace SP_Sklad.SkladData
         public System.Guid Id { get; set; }
     
         public virtual Currency Currency { get; set; }
-        public virtual Docs Docs { get; set; }
         public virtual PriceTypes PriceTypes { get; set; }
         public virtual ICollection<PriceListDet> PriceListDet { get; set; }
     }

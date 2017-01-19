@@ -16,7 +16,7 @@ namespace SP_Sklad.SkladData
     {
         public DISCCARDGRP()
         {
-            this.DISCCARDS = new HashSet<DISCCARDS>();
+            this.DiscCards = new HashSet<DiscCards>();
         }
     
         public int GRPID { get; set; }
@@ -32,6 +32,6 @@ namespace SP_Sklad.SkladData
         public string NOTES { get; set; }
         public string GENNAME { get; set; }
     
-        public virtual ICollection<DISCCARDS> DISCCARDS { get; set; }
+        public virtual ICollection<DiscCards> DiscCards { get; set; }
     }
 }

@@ -14,6 +14,6 @@ namespace SP_Sklad.SkladData
     public partial class DocCopy_Result
     {
         public Nullable<int> out_wbill_id { get; set; }
-        public Nullable<int> out_doc_id { get; set; }
+        public Nullable<System.Guid> out_doc_id { get; set; }
     }
 }

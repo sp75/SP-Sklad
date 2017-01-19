@@ -43,7 +43,6 @@ namespace SP_Sklad.SkladData
         public Nullable<int> TAXREESTRTYPE { get; set; }
         public System.Guid Id { get; set; }
     
-        public virtual Docs Docs { get; set; }
         public virtual ICollection<TAXWBDET> TAXWBDET { get; set; }
         public virtual Kagent Kagent { get; set; }
         public virtual Kagent Kagent1 { get; set; }

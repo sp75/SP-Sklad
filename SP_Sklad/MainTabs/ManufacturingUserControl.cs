@@ -410,7 +410,7 @@ namespace SP_Sklad.MainTabs
                 row = gridView5.GetFocusedRow() as GetRelDocList_Result;
             }
 
-            FindDoc.Find(row.DocId, row.DocType, row.OnDate);
+            FindDoc.Find(row.Id, row.DocType, row.OnDate);
         }
 
         private void gridView3_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
@@ -449,8 +449,8 @@ namespace SP_Sklad.MainTabs
                     TechProcGridControl.DataSource = db.v_TechProcDet.Where(w => w.WbillId == focused_row.WbillId).OrderBy(o => o.Num).ToList();
                     gridControl2.DataSource = db.GetWayBillDetOut(focused_row.WbillId).ToList();
                     gridView2.ExpandAllGroups();
-                    gridControl3.DataSource = db.GetRelDocList(focused_row.DocId).OrderBy(o=> o.OnDate).ToList();
-                    ManufacturedPosGridControl.DataSource = db.GetManufacturedPos(focused_row.DocId).ToList();
+                    gridControl3.DataSource = db.GetRelDocList(focused_row.Id).OrderBy(o=> o.OnDate).ToList();
+                    ManufacturedPosGridControl.DataSource = db.GetManufacturedPos(focused_row.Id).ToList();
                 }
             }
             else
@@ -482,7 +482,7 @@ namespace SP_Sklad.MainTabs
                 using (var db = DB.SkladBase())
                 {
                     gridControl4.DataSource = db.GetWayBillDetOut(focused_row.WbillId).ToList();
-                    gridControl5.DataSource = db.GetRelDocList(focused_row.DocId).OrderBy(o => o.OnDate).ToList();
+                    gridControl5.DataSource = db.GetRelDocList(focused_row.Id).OrderBy(o => o.OnDate).ToList();
 
                     DeboningDetGridControl.DataSource = db.DeboningDet.Where(w => w.WBillId == focused_row.WbillId).Select(s => new SP_Sklad.WBForm.frmWBDeboning.DeboningDetList
                     {

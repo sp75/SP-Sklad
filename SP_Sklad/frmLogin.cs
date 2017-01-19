@@ -42,20 +42,24 @@ namespace SP_Sklad
                 label1.Visible = true;
                 label1.Text = "З'явилася нова версія , загрузіть оновлення!";
             }
-            var MotherBoardID = getMotherBoardID();
+            var kay_id = getMotherBoardID();
+            if (String.IsNullOrEmpty(kay_id)) //якщо невдалось отримати ID bother board
+            {
+                kay_id = GetMacAddress();
+            }
 
+//            var ddd = DeCoding(Coding("77419"));  //test
 
             var ip_address = GetPhysicalIPAdress();
-        //    var mac_address = GetMacAddress();
 
             using (var db = new BaseEntities())
             {
-                var lic = db.Licenses.FirstOrDefault(w => w.MacAddress == MotherBoardID);
+                var lic = db.Licenses.FirstOrDefault(w => w.MacAddress == kay_id);
                 if (lic == null)
                 {
                     db.Licenses.Add(new Licenses
                     {
-                        MacAddress = MotherBoardID,
+                        MacAddress = kay_id,
                         LicencesKay = "",
                         IpAddress = ip_address,
                         MachineName = Environment.MachineName
@@ -189,6 +193,50 @@ namespace SP_Sklad
             return val;
         }
 
+        private string Coding(String val)
+        {
+            if (val.Length < 4) return "Error code !";
+
+            String conv = "", rezult = "";
+
+            for (int a = 0; a < val.Length; a++)   // цифри в групи символів
+            {
+                switch (val[a])
+                {
+                    case '0': conv += "VER"; break;
+                    case '1': conv += "G4F"; break;
+                    case '2': conv += "BAL"; break;
+                    case '3': conv += "PVS"; break;
+                    case '4': conv += "ZHD"; break;
+                    case '5': conv += "NSP"; break;
+                    case '6': conv += "LEY"; break;
+                    case '7': conv += "8RT"; break;
+                    case '8': conv += "MF3"; break;
+                    case '9': conv += "RUK"; break;
+                }
+            }
+
+            for (int a = 1; conv.Length > a; a++)    // в кожній парі міняем символи місцями
+            {
+                rezult = rezult + conv[a] + conv[a - 1];
+                a++;
+            }
+
+            if ((conv.Length - rezult.Length) == 1) rezult = rezult + conv[conv.Length-1];  // корегування нечетности
+
+
+            var arr = rezult.ToCharArray().Reverse().ToArray(); // Переворачиваем строку
+            rezult = new string(arr);
+
+ 
+            for (int a = rezult.Length / 3 - 1; a > 0; a--) // добавляем "-" через кожні три символи
+            {
+                rezult = rezult.Insert((a * 3), "-");
+            }
+
+            return rezult;
+        }
+
         private void OkButton_Click(object sender, EventArgs e)
         {
             if (!is_registered)
@@ -234,24 +282,6 @@ namespace SP_Sklad
 
         private void frmLogin_Shown(object sender, EventArgs e)
         {
-        /*    var received  = "R01W  12.56 R01W";
-            decimal weight = 0;
-            int amount = new Regex("R01W").Matches(received).Count;
-            if (amount >= 2)
-            {
-                var sp = received.Split(new[] { "R01W" }, StringSplitOptions.RemoveEmptyEntries);
-                if (sp.Count() >= 1)
-                {
-                    decimal display;
-                    if (decimal.TryParse(sp[0].Trim(), System.Globalization.NumberStyles.Number | System.Globalization.NumberStyles.AllowCurrencySymbol, CultureInfo.CreateSpecificCulture("en-GB"), out display))
-                    {
-                        weight = display;
-                    }
-                    else weight = 0;
-
-                }
-            }*/
-
             passtextEdit.Focus();
         }
 

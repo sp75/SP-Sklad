@@ -13,7 +13,7 @@ namespace SP_Sklad.SkladData
     
     public partial class ExecuteWayBill_Result
     {
-        public int Checked { get; set; }
-        public Nullable<int> NewDocId { get; set; }
+        public Nullable<int> Checked { get; set; }
+        public Nullable<System.Guid> NewDocId { get; set; }
     }
 }

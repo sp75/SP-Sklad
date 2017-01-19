@@ -56,7 +56,6 @@ namespace SP_Sklad.WBForm
                     CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
-                    Docs = new Docs { DocType = _wtype },
                     UpdatedBy = DBHelper.CurrentUser.UserId
                 });
                 _db.SaveChanges();

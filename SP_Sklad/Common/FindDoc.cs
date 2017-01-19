@@ -19,7 +19,7 @@ namespace SP_Sklad.Common
             }
         }
 
-        private static int _doc_id { get; set; }
+        private static Guid _doc_id { get; set; }
         private static DateTime _on_date { get; set; }
 
         private static DocsUserControl _docs_user_control
@@ -57,7 +57,7 @@ namespace SP_Sklad.Common
 
             _docs_user_control.DocsTreeList.FocusedNode = _docs_user_control.DocsTreeList.FindNodeByFieldValue("Id", node_id);
 
-            int rowHandle = _docs_user_control.WbGridView.LocateByValue("DocId", _doc_id);
+            int rowHandle = _docs_user_control.WbGridView.LocateByValue("Id", _doc_id);
             if (rowHandle != GridControl.InvalidRowHandle)
             {
                 _docs_user_control.WbGridView.FocusedRowHandle = rowHandle;
@@ -75,7 +75,7 @@ namespace SP_Sklad.Common
 
             _docs_user_control.DocsTreeList.FocusedNode = _docs_user_control.DocsTreeList.FindNodeByFieldValue("Id", node_id);
 
-            int rowHandle = _docs_user_control.PayDocGridView.LocateByValue("DocId", _doc_id);
+            int rowHandle = _docs_user_control.PayDocGridView.LocateByValue("Id", _doc_id);
             if (rowHandle != GridControl.InvalidRowHandle)
             {
                 _docs_user_control.PayDocGridView.FocusedRowHandle = rowHandle;
@@ -93,14 +93,14 @@ namespace SP_Sklad.Common
 
             _wh_user_control.WHTreeList.FocusedNode = _wh_user_control.WHTreeList.FindNodeByFieldValue("Id", node_id);
 
-            int rowHandle = _wh_user_control.WbGridView.LocateByValue("DocId", _doc_id);
+            int rowHandle = _wh_user_control.WbGridView.LocateByValue("Id", _doc_id);
             if (rowHandle != GridControl.InvalidRowHandle)
             {
                 _wh_user_control.WbGridView.FocusedRowHandle = rowHandle;
             }
         }
 
-        public static void Find(int? doc_id, int? doc_type, DateTime? date)
+        public static void Find(Guid? doc_id, int? doc_type, DateTime? date)
         {
             _doc_id = doc_id.Value;
             _on_date = date.Value;
@@ -172,7 +172,7 @@ namespace SP_Sklad.Common
 
                     _manufacturing_user_control.DocsTreeList.FocusedNode = _manufacturing_user_control.DocsTreeList.FindNodeByFieldValue("Id", 111);
 
-                    int rowHandle = _manufacturing_user_control.WbGridView.LocateByValue("DocId", _doc_id);
+                    int rowHandle = _manufacturing_user_control.WbGridView.LocateByValue("Id", _doc_id);
                     if (rowHandle != GridControl.InvalidRowHandle)
                     {
                         _manufacturing_user_control.WbGridView.FocusedRowHandle = rowHandle;
@@ -189,7 +189,7 @@ namespace SP_Sklad.Common
 
                     _manufacturing_user_control.DocsTreeList.FocusedNode = _manufacturing_user_control.DocsTreeList.FindNodeByFieldValue("Id", 114);
 
-                    int rowHandle2 = _manufacturing_user_control.DeboningGridView.LocateByValue("DocId", _doc_id);
+                    int rowHandle2 = _manufacturing_user_control.DeboningGridView.LocateByValue("Id", _doc_id);
                     if (rowHandle2 != GridControl.InvalidRowHandle)
                     {
                         _manufacturing_user_control.DeboningGridView.FocusedRowHandle = rowHandle2;

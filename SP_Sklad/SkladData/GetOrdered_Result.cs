@@ -34,5 +34,6 @@ namespace SP_Sklad.SkladData
         public string KaName { get; set; }
         public string Notes { get; set; }
         public string CertNum { get; set; }
+        public System.Guid Id { get; set; }
     }
 }

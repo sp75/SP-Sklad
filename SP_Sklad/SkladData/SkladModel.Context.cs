@@ -41,7 +41,6 @@ namespace SP_Sklad.SkladData
         public DbSet<CONTRRESULTS> CONTRRESULTS { get; set; }
         public DbSet<CURRENCYRATE> CURRENCYRATE { get; set; }
         public DbSet<DISCCARDGRP> DISCCARDGRP { get; set; }
-        public DbSet<DISCCARDS> DISCCARDS { get; set; }
         public DbSet<ENTPARAMS> ENTPARAMS { get; set; }
         public DbSet<TAXES> TAXES { get; set; }
         public DbSet<TAXWB> TAXWB { get; set; }
@@ -65,7 +64,6 @@ namespace SP_Sklad.SkladData
         public DbSet<ViewLng> ViewLng { get; set; }
         public DbSet<UserTreeAccess> UserTreeAccess { get; set; }
         public DbSet<v_GetDocsTree> v_GetDocsTree { get; set; }
-        public DbSet<Docs> Docs { get; set; }
         public DbSet<UserAccessWh> UserAccessWh { get; set; }
         public DbSet<UserTree> UserTree { get; set; }
         public DbSet<ExtRel> ExtRel { get; set; }
@@ -119,7 +117,6 @@ namespace SP_Sklad.SkladData
         public DbSet<MatChange> MatChange { get; set; }
         public DbSet<v_MatRemains> v_MatRemains { get; set; }
         public DbSet<v_WhMatRemains> v_WhMatRemains { get; set; }
-        public DbSet<DocsRel> DocsRel { get; set; }
         public DbSet<ProfileDocSetting> ProfileDocSetting { get; set; }
         public DbSet<WayBillDetTaxes> WayBillDetTaxes { get; set; }
         public DbSet<MatRecipeTechProcDet> MatRecipeTechProcDet { get; set; }
@@ -143,6 +140,8 @@ namespace SP_Sklad.SkladData
         public DbSet<v_PriceList> v_PriceList { get; set; }
         public DbSet<v_WaybillList> v_WaybillList { get; set; }
         public DbSet<v_PayDoc> v_PayDoc { get; set; }
+        public DbSet<DocRels> DocRels { get; set; }
+        public DbSet<DiscCards> DiscCards { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)
@@ -230,16 +229,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SP_GET_MATGRP_NDS_Result>("[BaseEntities].[SP_GET_MATGRP_NDS](@GRPID)", gRPIDParameter);
         }
     
-        [EdmFunction("BaseEntities", "SP_GET_RELDOCIDS")]
-        public virtual IQueryable<SP_GET_RELDOCIDS_Result> SP_GET_RELDOCIDS(Nullable<int> aDOCID)
-        {
-            var aDOCIDParameter = aDOCID.HasValue ?
-                new ObjectParameter("ADOCID", aDOCID) :
-                new ObjectParameter("ADOCID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SP_GET_RELDOCIDS_Result>("[BaseEntities].[SP_GET_RELDOCIDS](@ADOCID)", aDOCIDParameter);
-        }
-    
         [EdmFunction("BaseEntities", "SP_MATCHANGE_GET_WP")]
         public virtual IQueryable<SP_MATCHANGE_GET_WP_Result> SP_MATCHANGE_GET_WP(Nullable<int> mATID, Nullable<System.DateTime> mCDATE)
         {
@@ -319,28 +308,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("CONTR_DOCID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_CONTR_RESULT_UPD", cONTR_DOCIDParameter);
-        }
-    
-        public virtual int SP_DEL_DOCREL(Nullable<int> pOSID, Nullable<int> sOURCEID)
-        {
-            var pOSIDParameter = pOSID.HasValue ?
-                new ObjectParameter("POSID", pOSID) :
-                new ObjectParameter("POSID", typeof(int));
-    
-            var sOURCEIDParameter = sOURCEID.HasValue ?
-                new ObjectParameter("SOURCEID", sOURCEID) :
-                new ObjectParameter("SOURCEID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_DEL_DOCREL", pOSIDParameter, sOURCEIDParameter);
-        }
-    
-        public virtual ObjectResult<Nullable<decimal>> SP_NEWDOC(Nullable<int> dOCTYPE)
-        {
-            var dOCTYPEParameter = dOCTYPE.HasValue ?
-                new ObjectParameter("DOCTYPE", dOCTYPE) :
-                new ObjectParameter("DOCTYPE", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("SP_NEWDOC", dOCTYPEParameter);
         }
     
         public virtual int SP_ORDER_UPD_RSV(Nullable<int> wBILLID)
@@ -547,19 +514,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_SET_DEBONINGDET", iN_WBILLIDParameter);
         }
     
-        public virtual int SP_SET_DOCREL(Nullable<int> dOCID, Nullable<int> rDOCID)
-        {
-            var dOCIDParameter = dOCID.HasValue ?
-                new ObjectParameter("DOCID", dOCID) :
-                new ObjectParameter("DOCID", typeof(int));
-    
-            var rDOCIDParameter = rDOCID.HasValue ?
-                new ObjectParameter("RDOCID", rDOCID) :
-                new ObjectParameter("RDOCID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_SET_DOCREL", dOCIDParameter, rDOCIDParameter);
-        }
-    
         public virtual int SP_SET_EXTPOSID(Nullable<int> pOSID, Nullable<int> sOURCEID)
         {
             var pOSIDParameter = pOSID.HasValue ?
@@ -635,19 +589,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("OnDate", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SP_MAT_REMAIN_GET_SIMPLE_Result>("[BaseEntities].[SP_MAT_REMAIN_GET_SIMPLE](@MatId, @OnDate)", matIdParameter, onDateParameter);
-        }
-    
-        public virtual ObjectResult<ExecuteWayBill_Result> ExecuteWayBill(Nullable<int> wBILLID, Nullable<int> nEW_WTYPE)
-        {
-            var wBILLIDParameter = wBILLID.HasValue ?
-                new ObjectParameter("WBILLID", wBILLID) :
-                new ObjectParameter("WBILLID", typeof(int));
-    
-            var nEW_WTYPEParameter = nEW_WTYPE.HasValue ?
-                new ObjectParameter("NEW_WTYPE", nEW_WTYPE) :
-                new ObjectParameter("NEW_WTYPE", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ExecuteWayBill_Result>("ExecuteWayBill", wBILLIDParameter, nEW_WTYPEParameter);
         }
     
         public virtual int UpdWaybillDetPrice(Nullable<int> wbill_id)
@@ -798,36 +739,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("wbill_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetOrderedInSuppliers_Result>("GetOrderedInSuppliers", wbill_idParameter);
-        }
-    
-        [EdmFunction("BaseEntities", "PosGet")]
-        public virtual IQueryable<PosGet_Result> PosGet(Nullable<int> mat_id, Nullable<int> w_id, Nullable<int> ka_id, Nullable<System.DateTime> on_date, Nullable<int> get_empty, string wh)
-        {
-            var mat_idParameter = mat_id.HasValue ?
-                new ObjectParameter("mat_id", mat_id) :
-                new ObjectParameter("mat_id", typeof(int));
-    
-            var w_idParameter = w_id.HasValue ?
-                new ObjectParameter("w_id", w_id) :
-                new ObjectParameter("w_id", typeof(int));
-    
-            var ka_idParameter = ka_id.HasValue ?
-                new ObjectParameter("ka_id", ka_id) :
-                new ObjectParameter("ka_id", typeof(int));
-    
-            var on_dateParameter = on_date.HasValue ?
-                new ObjectParameter("on_date", on_date) :
-                new ObjectParameter("on_date", typeof(System.DateTime));
-    
-            var get_emptyParameter = get_empty.HasValue ?
-                new ObjectParameter("get_empty", get_empty) :
-                new ObjectParameter("get_empty", typeof(int));
-    
-            var whParameter = wh != null ?
-                new ObjectParameter("wh", wh) :
-                new ObjectParameter("wh", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<PosGet_Result>("[BaseEntities].[PosGet](@mat_id, @w_id, @ka_id, @on_date, @get_empty, @wh)", mat_idParameter, w_idParameter, ka_idParameter, on_dateParameter, get_emptyParameter, whParameter);
         }
     
         public virtual ObjectResult<GetWhTree_Result> GetWhTree(Nullable<int> user_id, Nullable<int> type_tree)
@@ -1467,36 +1378,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<MatRemainByWh_Result>("[BaseEntities].[MatRemainByWh](@mat_id, @w_id, @ka_id, @on_date, @wh)", mat_idParameter, w_idParameter, ka_idParameter, on_dateParameter, whParameter);
         }
     
-        [EdmFunction("BaseEntities", "GetOrdered")]
-        public virtual IQueryable<GetOrdered_Result> GetOrdered(Nullable<int> mat_id, Nullable<int> wid, Nullable<int> ka_id, Nullable<System.DateTime> on_date, Nullable<int> get_empty, string wh)
-        {
-            var mat_idParameter = mat_id.HasValue ?
-                new ObjectParameter("mat_id", mat_id) :
-                new ObjectParameter("mat_id", typeof(int));
-    
-            var widParameter = wid.HasValue ?
-                new ObjectParameter("wid", wid) :
-                new ObjectParameter("wid", typeof(int));
-    
-            var ka_idParameter = ka_id.HasValue ?
-                new ObjectParameter("ka_id", ka_id) :
-                new ObjectParameter("ka_id", typeof(int));
-    
-            var on_dateParameter = on_date.HasValue ?
-                new ObjectParameter("on_date", on_date) :
-                new ObjectParameter("on_date", typeof(System.DateTime));
-    
-            var get_emptyParameter = get_empty.HasValue ?
-                new ObjectParameter("get_empty", get_empty) :
-                new ObjectParameter("get_empty", typeof(int));
-    
-            var whParameter = wh != null ?
-                new ObjectParameter("wh", wh) :
-                new ObjectParameter("wh", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetOrdered_Result>("[BaseEntities].[GetOrdered](@mat_id, @wid, @ka_id, @on_date, @get_empty, @wh)", mat_idParameter, widParameter, ka_idParameter, on_dateParameter, get_emptyParameter, whParameter);
-        }
-    
         public virtual ObjectResult<REP_2_Result> REP_2(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> grp_id, Nullable<int> ka_id, string wh, string doc_types, Nullable<int> wb_status)
         {
             var from_dateParameter = from_date.HasValue ?
@@ -1597,16 +1478,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("mat_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatChange_Result>("[BaseEntities].[GetMatChange](@mat_id)", mat_idParameter);
-        }
-    
-        [EdmFunction("BaseEntities", "GetManufacturedPos")]
-        public virtual IQueryable<GetManufacturedPos_Result> GetManufacturedPos(Nullable<int> doc_id)
-        {
-            var doc_idParameter = doc_id.HasValue ?
-                new ObjectParameter("doc_id", doc_id) :
-                new ObjectParameter("doc_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetManufacturedPos_Result>("[BaseEntities].[GetManufacturedPos](@doc_id)", doc_idParameter);
         }
     
         [EdmFunction("BaseEntities", "GetLastPrice")]
@@ -1954,16 +1825,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatMove_Result>("[BaseEntities].[GetMatMove](@mat_id, @from_date, @to_date, @wid, @ka_id, @w_type, @wh)", mat_idParameter, from_dateParameter, to_dateParameter, widParameter, ka_idParameter, w_typeParameter, whParameter);
         }
     
-        [EdmFunction("BaseEntities", "GetRelDocList")]
-        public virtual IQueryable<GetRelDocList_Result> GetRelDocList(Nullable<int> doc_id)
-        {
-            var doc_idParameter = doc_id.HasValue ?
-                new ObjectParameter("doc_id", doc_id) :
-                new ObjectParameter("doc_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetRelDocList_Result>("[BaseEntities].[GetRelDocList](@doc_id)", doc_idParameter);
-        }
-    
         [EdmFunction("BaseEntities", "OrderedList")]
         public virtual IQueryable<OrderedList_Result> OrderedList(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> mat_id, Nullable<int> ka_id, Nullable<int> w_type, Nullable<int> active)
         {
@@ -1994,15 +1855,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<OrderedList_Result>("[BaseEntities].[OrderedList](@from_date, @to_date, @mat_id, @ka_id, @w_type, @active)", from_dateParameter, to_dateParameter, mat_idParameter, ka_idParameter, w_typeParameter, activeParameter);
         }
     
-        public virtual ObjectResult<DocCopy_Result> DocCopy(Nullable<System.Guid> originator_id)
-        {
-            var originator_idParameter = originator_id.HasValue ?
-                new ObjectParameter("originator_id", originator_id) :
-                new ObjectParameter("originator_id", typeof(System.Guid));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocCopy_Result>("DocCopy", originator_idParameter);
-        }
-    
         [EdmFunction("BaseEntities", "MoneyMoveList")]
         public virtual IQueryable<MoneyMoveList_Result> MoneyMoveList(Nullable<int> doc_type, Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> is_checked)
         {
@@ -2023,6 +1875,121 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("is_checked", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<MoneyMoveList_Result>("[BaseEntities].[MoneyMoveList](@doc_type, @from_date, @to_date, @is_checked)", doc_typeParameter, from_dateParameter, to_dateParameter, is_checkedParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetRelDocList")]
+        public virtual IQueryable<GetRelDocList_Result> GetRelDocList(Nullable<System.Guid> originator_id)
+        {
+            var originator_idParameter = originator_id.HasValue ?
+                new ObjectParameter("originator_id", originator_id) :
+                new ObjectParameter("originator_id", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetRelDocList_Result>("[BaseEntities].[GetRelDocList](@originator_id)", originator_idParameter);
+        }
+    
+        public virtual ObjectResult<ExecuteWayBill_Result> ExecuteWayBill(Nullable<int> wBILLID, Nullable<int> nEW_WTYPE)
+        {
+            var wBILLIDParameter = wBILLID.HasValue ?
+                new ObjectParameter("WBILLID", wBILLID) :
+                new ObjectParameter("WBILLID", typeof(int));
+    
+            var nEW_WTYPEParameter = nEW_WTYPE.HasValue ?
+                new ObjectParameter("NEW_WTYPE", nEW_WTYPE) :
+                new ObjectParameter("NEW_WTYPE", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ExecuteWayBill_Result>("ExecuteWayBill", wBILLIDParameter, nEW_WTYPEParameter);
+        }
+    
+        public virtual int SetDocRel(Nullable<System.Guid> originator_id, Nullable<System.Guid> rel_originator_id)
+        {
+            var originator_idParameter = originator_id.HasValue ?
+                new ObjectParameter("originator_id", originator_id) :
+                new ObjectParameter("originator_id", typeof(System.Guid));
+    
+            var rel_originator_idParameter = rel_originator_id.HasValue ?
+                new ObjectParameter("rel_originator_id", rel_originator_id) :
+                new ObjectParameter("rel_originator_id", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SetDocRel", originator_idParameter, rel_originator_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetManufacturedPos")]
+        public virtual IQueryable<GetManufacturedPos_Result> GetManufacturedPos(Nullable<System.Guid> originator_id)
+        {
+            var originator_idParameter = originator_id.HasValue ?
+                new ObjectParameter("originator_id", originator_id) :
+                new ObjectParameter("originator_id", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetManufacturedPos_Result>("[BaseEntities].[GetManufacturedPos](@originator_id)", originator_idParameter);
+        }
+    
+        public virtual ObjectResult<DocCopy_Result> DocCopy(Nullable<System.Guid> originator_id)
+        {
+            var originator_idParameter = originator_id.HasValue ?
+                new ObjectParameter("originator_id", originator_id) :
+                new ObjectParameter("originator_id", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocCopy_Result>("DocCopy", originator_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetOrdered")]
+        public virtual IQueryable<GetOrdered_Result> GetOrdered(Nullable<int> mat_id, Nullable<int> wid, Nullable<int> ka_id, Nullable<System.DateTime> on_date, Nullable<int> get_empty, string wh)
+        {
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            var widParameter = wid.HasValue ?
+                new ObjectParameter("wid", wid) :
+                new ObjectParameter("wid", typeof(int));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var on_dateParameter = on_date.HasValue ?
+                new ObjectParameter("on_date", on_date) :
+                new ObjectParameter("on_date", typeof(System.DateTime));
+    
+            var get_emptyParameter = get_empty.HasValue ?
+                new ObjectParameter("get_empty", get_empty) :
+                new ObjectParameter("get_empty", typeof(int));
+    
+            var whParameter = wh != null ?
+                new ObjectParameter("wh", wh) :
+                new ObjectParameter("wh", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetOrdered_Result>("[BaseEntities].[GetOrdered](@mat_id, @wid, @ka_id, @on_date, @get_empty, @wh)", mat_idParameter, widParameter, ka_idParameter, on_dateParameter, get_emptyParameter, whParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "PosGet")]
+        public virtual IQueryable<PosGet_Result> PosGet(Nullable<int> mat_id, Nullable<int> w_id, Nullable<int> ka_id, Nullable<System.DateTime> on_date, Nullable<int> get_empty, string wh)
+        {
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            var w_idParameter = w_id.HasValue ?
+                new ObjectParameter("w_id", w_id) :
+                new ObjectParameter("w_id", typeof(int));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var on_dateParameter = on_date.HasValue ?
+                new ObjectParameter("on_date", on_date) :
+                new ObjectParameter("on_date", typeof(System.DateTime));
+    
+            var get_emptyParameter = get_empty.HasValue ?
+                new ObjectParameter("get_empty", get_empty) :
+                new ObjectParameter("get_empty", typeof(int));
+    
+            var whParameter = wh != null ?
+                new ObjectParameter("wh", wh) :
+                new ObjectParameter("wh", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<PosGet_Result>("[BaseEntities].[PosGet](@mat_id, @w_id, @ka_id, @on_date, @get_empty, @wh)", mat_idParameter, w_idParameter, ka_idParameter, on_dateParameter, get_emptyParameter, whParameter);
         }
     }
 }

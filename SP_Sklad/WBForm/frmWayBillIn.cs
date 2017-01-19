@@ -26,7 +26,7 @@ namespace SP_Sklad.WBForm
         private int _wtype { get; set; }
         public BaseEntities _db { get; set; }
         private int? _wbill_id { get; set; }
-        public int? doc_id { get; set; }
+        public Guid? doc_id { get; set; }
    //     private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
         private GetWaybillDetIn_Result wbd_row
@@ -65,13 +65,10 @@ namespace SP_Sklad.WBForm
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
                     Nds = DBHelper.Enterprise.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0,
-                //    Docs = new Docs { DocType = _wtype },
                     UpdatedBy = DBHelper.CurrentUser.UserId
                 });
 
                 _db.SaveChanges();
-
-                wb.DocId = _db.WaybillList.AsNoTracking().FirstOrDefault(w => w.WbillId == wb.WbillId).DocId;
             }
             else
             {
@@ -84,7 +81,7 @@ namespace SP_Sklad.WBForm
 
                     Close();
                 }*/
-                wb = _db.WaybillList.FirstOrDefault(f => f.DocId == doc_id || f.WbillId == _wbill_id);
+                wb = _db.WaybillList.FirstOrDefault(f => f.Id == doc_id || f.WbillId == _wbill_id);
 
             }
 
@@ -104,25 +101,6 @@ namespace SP_Sklad.WBForm
 
             RefreshDet();
         }
-
-   /*     private void UpdLockWB()
-        {
-            if (wb != null)
-            {
-                _db.Entry<WaybillList>(wb).State = EntityState.Detached;
-            }
-
-            if (_wbill_id == null && doc_id != null)
-            {
-                _wbill_id = _db.WaybillList.AsNoTracking().FirstOrDefault(f => f.DocId == doc_id).WbillId;
-            }
-
-            wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0} ", _wbill_id).FirstOrDefault();
-
-            _db.Entry<WaybillList>(wb).State = EntityState.Modified;
-            _db.Entry<WaybillList>(wb).Property(f => f.SummPay).IsModified = false;
-
-        }*/
 
         private void GetDocValue(WaybillList wb)
         {

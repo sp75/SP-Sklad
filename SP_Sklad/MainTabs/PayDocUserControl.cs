@@ -28,13 +28,13 @@ namespace SP_Sklad.MainTabs
             _db = db;
             _wb = wb;
 
-            var rel = db.GetRelDocList(wb.DocId).FirstOrDefault(w => w.DocType == -3 || w.DocType == 3);
+            var rel = db.GetRelDocList(wb.Id).FirstOrDefault(w => w.DocType == -3 || w.DocType == 3);
 
             if (rel != null)
             {
                 try
                 {
-                    var PayDocId = db.PayDoc.AsNoTracking().FirstOrDefault(f => f.DocId == rel.DocId).PayDocId;
+                    var PayDocId = db.PayDoc.AsNoTracking().FirstOrDefault(f => f.Id == rel.Id).PayDocId;
                     _pd = db.Database.SqlQuery<PayDoc>("select * from  PayDoc WITH (UPDLOCK, NOWAIT) where PayDocId = {0}", PayDocId).FirstOrDefault();
                 }
                 catch
@@ -129,7 +129,7 @@ namespace SP_Sklad.MainTabs
 
                 if (new_pd != null)
                 {
-                    _db.SP_SET_DOCREL(_wb.DocId, new_pd.DocId);
+                    _db.SetDocRel(_wb.Id, new_pd.Id);
                 }
             }
             else if (_pd != null)

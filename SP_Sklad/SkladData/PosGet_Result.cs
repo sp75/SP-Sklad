@@ -27,7 +27,7 @@ namespace SP_Sklad.SkladData
         public Nullable<int> WType { get; set; }
         public string DocNum { get; set; }
         public Nullable<int> WBillId { get; set; }
-        public Nullable<int> DocId { get; set; }
+        public Nullable<System.Guid> Id { get; set; }
         public string GTD { get; set; }
         public string CertNum { get; set; }
         public Nullable<System.DateTime> CertDate { get; set; }

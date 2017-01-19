@@ -89,7 +89,7 @@ namespace SP_Sklad
             var row = bandedGridView1.GetFocusedRow() as GetMatMove_Result;
             if ( row != null )
             {
-                FindDoc.Find(row.DocId, row.WType, row.OnDate);
+                FindDoc.Find(row.Id, row.WType, row.OnDate);
             }
         }
     }
