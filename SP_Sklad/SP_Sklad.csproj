@@ -317,6 +317,9 @@
     <Compile Include="SkladData\DemandGroup.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\DiscCardGrp.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\DiscCards.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -449,6 +452,12 @@
     <Compile Include="SkladData\UsersGroup.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_DiscCards.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_Docs.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_KAgentSaldo.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -547,6 +556,12 @@
     </Compile>
     <Compile Include="ViewsForm\frmRemainOnWh .Designer.cs">
       <DependentUpon>frmRemainOnWh .cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditForm\frmSetDiscountCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmSetDiscountCard.Designer.cs">
+      <DependentUpon>frmSetDiscountCard.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewsForm\frmSpreadsheed.cs">
       <SubType>Form</SubType>
@@ -752,9 +767,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SkladData\DeboningDet.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\DISCCARDGRP.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\DiscountList_Result.cs">
@@ -1313,6 +1325,9 @@
     <EmbeddedResource Include="ViewsForm\frmRemainOnWh .resx">
       <DependentUpon>frmRemainOnWh .cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmSetDiscountCard.resx">
+      <DependentUpon>frmSetDiscountCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmSpreadsheed.resx">
       <DependentUpon>frmSpreadsheed.cs</DependentUpon>
     </EmbeddedResource>
@@ -1470,6 +1485,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Commission.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.CommonParams.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Countries.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.DiscCards.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetDirTree_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetDocList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetMatChange_Result.datasource" />
@@ -1518,6 +1534,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Users.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.UsersGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.UserTreeAccess.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_DiscCards.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_KAgentAccount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PriceList.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Services.datasource" />

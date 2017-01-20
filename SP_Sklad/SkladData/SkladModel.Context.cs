@@ -40,7 +40,6 @@ namespace SP_Sklad.SkladData
         public DbSet<CONTRPARAMS> CONTRPARAMS { get; set; }
         public DbSet<CONTRRESULTS> CONTRRESULTS { get; set; }
         public DbSet<CURRENCYRATE> CURRENCYRATE { get; set; }
-        public DbSet<DISCCARDGRP> DISCCARDGRP { get; set; }
         public DbSet<ENTPARAMS> ENTPARAMS { get; set; }
         public DbSet<TAXES> TAXES { get; set; }
         public DbSet<TAXWB> TAXWB { get; set; }
@@ -142,6 +141,9 @@ namespace SP_Sklad.SkladData
         public DbSet<v_PayDoc> v_PayDoc { get; set; }
         public DbSet<DocRels> DocRels { get; set; }
         public DbSet<DiscCards> DiscCards { get; set; }
+        public DbSet<v_Docs> v_Docs { get; set; }
+        public DbSet<v_DiscCards> v_DiscCards { get; set; }
+        public DbSet<DiscCardGrp> DiscCardGrp { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)

@@ -211,6 +211,11 @@ namespace SP_Sklad.MainTabs
                             RoutesBS.DataSource = _db.Routes.ToList();
                             extDirTabControl.SelectedTabPageIndex = 10;
                             break;
+
+                        case 109:
+                            DiscCardsBS.DataSource = _db.v_DiscCards.ToList();
+                            extDirTabControl.SelectedTabPageIndex = 11;
+                            break;
                     }
                     break;
             }
@@ -312,6 +317,11 @@ namespace SP_Sklad.MainTabs
                         case 115:
                             result = new frmRouteEdit((RouteGridView.GetFocusedRow() as Routes).Id).ShowDialog();
                             break;
+
+                        case 109:
+                            var dc = DiscCardsGridView.GetFocusedRow() as v_DiscCards;
+                            new frmDiscountCardEdit(dc.CardId).ShowDialog();
+                            break;
                     }
                     break;
 
@@ -393,6 +403,10 @@ namespace SP_Sklad.MainTabs
 
                         case 115:
                             new frmRouteEdit().ShowDialog();
+                            break;
+
+                        case 109:
+                            new frmDiscountCardEdit().ShowDialog();
                             break;
 
                     }
@@ -505,6 +519,11 @@ namespace SP_Sklad.MainTabs
                             case 115:
                                 var rou = (RouteGridView.GetFocusedRow() as Routes);
                                 db.DeleteWhere<Routes>(w => w.Id == rou.Id);
+                                break;
+
+                            case 109:
+                                var dc = DiscCardsGridView.GetFocusedRow() as v_DiscCards;
+                                db.DeleteWhere<DiscCards>(w => w.CardId == dc.CardId);
                                 break;
                         }
                         break;

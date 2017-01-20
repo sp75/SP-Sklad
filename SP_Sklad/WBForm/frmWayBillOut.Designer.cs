@@ -39,6 +39,7 @@
             this.MatInfoBtn = new DevExpress.XtraBars.BarButtonItem();
             this.ProcurationBtn = new DevExpress.XtraBars.BarButtonItem();
             this.ContractSaleBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.AddMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -178,9 +179,10 @@
             this.ContractSaleBtn,
             this.ProcurationBtn,
             this.barButtonItem2,
-            this.WeighBtn});
+            this.WeighBtn,
+            this.barButtonItem3});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 21;
+            this.barManager1.MaxItemId = 22;
             // 
             // bar2
             // 
@@ -197,7 +199,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.RsvInfoBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.MatInfoBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.ProcurationBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.ContractSaleBtn)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.ContractSaleBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3)});
             this.bar2.OptionsBar.AllowQuickCustomization = false;
             this.bar2.OptionsBar.DrawDragBorder = false;
             this.bar2.OptionsBar.MultiLine = true;
@@ -259,6 +262,15 @@
             this.ContractSaleBtn.ImageIndex = 17;
             this.ContractSaleBtn.Name = "ContractSaleBtn";
             this.ContractSaleBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "Дисконтна картка";
+            this.barButtonItem3.Id = 21;
+            this.barButtonItem3.ImageIndex = 18;
+            this.barButtonItem3.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F9);
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
             // bar1
             // 
@@ -405,6 +417,7 @@
             this.WBImgList.Images.SetKeyName(15, "Зняти з резерву все.bmp");
             this.WBImgList.Images.SetKeyName(16, "позначити.bmp");
             this.WBImgList.Images.SetKeyName(17, "Договор продажу.bmp");
+            this.WBImgList.Images.SetKeyName(18, "Дисконтна картка.bmp");
             // 
             // RsvBarBtn
             // 
@@ -1216,5 +1229,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem WeighBtn;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
     }
 }

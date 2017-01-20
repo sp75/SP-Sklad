@@ -18,6 +18,7 @@ using DevExpress.XtraGrid;
 using SP_Sklad.Common;
 using SP_Sklad.EditForm;
 using SP_Sklad.Reports;
+using SP_Sklad.ViewsForm;
 
 namespace SP_Sklad.WBForm
 {
@@ -555,6 +556,13 @@ namespace SP_Sklad.WBForm
 
                 RefreshDet();
             }
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            new frmSetDiscountCard( _db, _wbill_id.Value).ShowDialog();
+
+            RefreshDet();
         }
     }
 }

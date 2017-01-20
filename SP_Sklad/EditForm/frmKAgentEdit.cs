@@ -55,6 +55,7 @@ namespace SP_Sklad.EditForm
             {
                 _ka = _db.Kagent.Add(new Kagent()
                 {
+                    Id = Guid.NewGuid(),
                     Name = "",
                     KaKind = 0,
                     KType = _k_type.Value,

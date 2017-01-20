@@ -391,6 +391,7 @@ namespace SP_Sklad.WBDetForm
         private void CheckCustomEdit_CheckedChanged(object sender, EventArgs e)
         {
             DiscountEdit.Enabled = CheckCustomEdit.Checked;
+            DiscountCheckBox.Checked = true;
 
             if (!CheckCustomEdit.Checked && CheckCustomEdit.ContainsFocus)
             {
@@ -523,6 +524,11 @@ namespace SP_Sklad.WBDetForm
                 else Height -= panel5.Height;
                 Settings.Default.wb_out_result = ch;
             }
+        }
+
+        private void CheckDiscontCartEdit_CheckedChanged(object sender, EventArgs e)
+        {
+            DiscountCheckBox.Checked = true;
         }
 
     }

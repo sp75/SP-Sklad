@@ -10,7 +10,6 @@
         <EntityTypeShape EntityType="BaseModel.CONTRPARAMS" Width="1.5" PointX="8.25" PointY="48.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.CONTRRESULTS" Width="1.5" PointX="8.25" PointY="51.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.CURRENCYRATE" Width="1.5" PointX="11" PointY="58.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.DISCCARDGRP" Width="1.5" PointX="0.75" PointY="32.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.ENTPARAMS" Width="1.5" PointX="2.75" PointY="12.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.TAXES" Width="1.5" PointX="17" PointY="59.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.TAXWB" Width="1.5" PointX="9" PointY="33.375" IsExpanded="true" />
@@ -241,9 +240,11 @@
         <AssociationConnector Association="BaseModel.FK_PRICELISTDET_PRICELIST" />
         <EntityTypeShape EntityType="BaseModel.DocRels" Width="1.5" PointX="2.375" PointY="15.5" />
         <EntityTypeShape EntityType="BaseModel.DiscCards" Width="1.5" PointX="4.9849580828961724" PointY="17.977166675951874" />
-        <AssociationConnector Association="BaseModel.FK_DISCCARDS_GRPID" />
         <AssociationConnector Association="BaseModel.FK_DISCCARDS_KAID" />
         <AssociationConnector Association="BaseModel.FK_WBDAP_CARDID" />
+        <EntityTypeShape EntityType="BaseModel.v_Docs" Width="1.5" PointX="3.2129388652802158" PointY="22.610328774252128" />
+        <EntityTypeShape EntityType="BaseModel.DiscCardGrp" Width="1.5" PointX="10.629509209948363" PointY="16.0371602550322" />
+        <AssociationConnector Association="BaseModel.FK_DISCCARDS_GRPID" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="7.0245045325832924" PointY="12.641712000892364" />
@@ -252,6 +253,7 @@
         <EntityTypeShape EntityType="BaseModel.MaterialsList" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.v_WaybillList" Width="1.5" PointX="6.2854081533315629" PointY="21.536445776716082" />
         <EntityTypeShape EntityType="BaseModel.v_PayDoc" Width="1.5" PointX="11.295474014848224" PointY="18.886290410014936" />
+        <EntityTypeShape EntityType="BaseModel.v_DiscCards" Width="1.5" PointX="5.5806655853896707" PointY="9.95432654486705" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

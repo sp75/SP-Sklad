@@ -25,7 +25,7 @@
           <EntitySet Name="Customers" EntityType="BaseModel.Store.Customers" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DeboningDet" EntityType="BaseModel.Store.DeboningDet" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DemandGroup" EntityType="BaseModel.Store.DemandGroup" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="DISCCARDGRP" EntityType="BaseModel.Store.DISCCARDGRP" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DiscCardGrp" EntityType="BaseModel.Store.DiscCardGrp" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DiscCards" EntityType="BaseModel.Store.DiscCards" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DocRels" EntityType="BaseModel.Store.DocRels" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DocType" EntityType="BaseModel.Store.DocType" store:Type="Tables" Schema="dbo" />
@@ -198,6 +198,22 @@
       [UserTreeAccess].[UserId] AS [UserId], 
       [UserTreeAccess].[WType] AS [WType]
       FROM [dbo].[UserTreeAccess] AS [UserTreeAccess]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_DiscCards" EntityType="BaseModel.Store.v_DiscCards" store:Type="Views" store:Schema="dbo" store:Name="v_DiscCards">
+            <DefiningQuery>SELECT 
+      [v_DiscCards].[CardId] AS [CardId], 
+      [v_DiscCards].[Num] AS [Num], 
+      [v_DiscCards].[ExpireDate] AS [ExpireDate], 
+      [v_DiscCards].[OnValue] AS [OnValue], 
+      [v_DiscCards].[KaName] AS [KaName], 
+      [v_DiscCards].[KaFullName] AS [KaFullName]
+      FROM [dbo].[v_DiscCards] AS [v_DiscCards]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_Docs" EntityType="BaseModel.Store.v_Docs" store:Type="Views" store:Schema="dbo" store:Name="v_Docs">
+            <DefiningQuery>SELECT 
+      [v_Docs].[DocId] AS [DocId], 
+      [v_Docs].[DocType] AS [DocType]
+      FROM [dbo].[v_Docs] AS [v_Docs]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_GetDocsTree" EntityType="BaseModel.Store.v_GetDocsTree" store:Type="Views" store:Schema="dbo" store:Name="v_GetDocsTree">
             <DefiningQuery>SELECT 
@@ -656,7 +672,7 @@
             <End Role="DeboningDet" EntitySet="DeboningDet" />
           </AssociationSet>
           <AssociationSet Name="FK_DISCCARDS_GRPID" Association="BaseModel.Store.FK_DISCCARDS_GRPID">
-            <End Role="DISCCARDGRP" EntitySet="DISCCARDGRP" />
+            <End Role="DiscCardGrp" EntitySet="DiscCardGrp" />
             <End Role="DiscCards" EntitySet="DiscCards" />
           </AssociationSet>
           <AssociationSet Name="FK_DISCCARDS_KAID" Association="BaseModel.Store.FK_DISCCARDS_KAID">
@@ -1204,22 +1220,21 @@
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="DISCCARDGRP">
+        <EntityType Name="DiscCardGrp">
           <Key>
-            <PropertyRef Name="GRPID" />
+            <PropertyRef Name="GrpId" />
           </Key>
-          <Property Name="GRPID" Type="int" Nullable="false" />
-          <Property Name="NAME" Type="varchar" Nullable="false" MaxLength="64" />
-          <Property Name="PID" Type="int" Nullable="false" />
-          <Property Name="DISCTYPE" Type="int" Nullable="false" />
-          <Property Name="EXPIREDATE" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
-          <Property Name="ONVALUE" Type="numeric" Precision="15" Scale="8" />
-          <Property Name="AUTONUM" Type="int" Nullable="false" />
-          <Property Name="PREFIX" Type="varchar" MaxLength="10" />
-          <Property Name="CURRNUM" Type="int" />
-          <Property Name="SUFFIX" Type="varchar" MaxLength="10" />
-          <Property Name="NOTES" Type="varchar" MaxLength="255" />
-          <Property Name="GENNAME" Type="varchar" MaxLength="24" />
+          <Property Name="GrpId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="PId" Type="int" Nullable="false" />
+          <Property Name="DiscType" Type="int" />
+          <Property Name="ExpireDate" Type="datetime" />
+          <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="AutoNum" Type="int" />
+          <Property Name="Prefix" Type="nvarchar" MaxLength="50" />
+          <Property Name="CurrNum" Type="int" />
+          <Property Name="Suffix" Type="nvarchar" MaxLength="50" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="DiscCards">
           <Key>
@@ -2277,6 +2292,32 @@
           <Property Name="WType" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
+      warning 6002: The table/view 'sp_base.dbo.v_DiscCards' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="v_DiscCards">
+          <Key>
+            <PropertyRef Name="CardId" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="OnValue" />
+          </Key>
+          <Property Name="CardId" Type="int" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ExpireDate" Type="datetime" />
+          <Property Name="OnValue" Type="numeric" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="KaName" Type="nvarchar" MaxLength="64" />
+          <Property Name="KaFullName" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'sp_base.dbo.v_Docs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="v_Docs">
+          <Key>
+            <PropertyRef Name="DocId" />
+          </Key>
+          <Property Name="DocId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DocType" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
       warning 6002: The table/view 'sp_base.dbo.v_GetDocsTree' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="v_GetDocsTree">
@@ -3295,11 +3336,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DISCCARDS_GRPID">
-          <End Role="DISCCARDGRP" Type="BaseModel.Store.DISCCARDGRP" Multiplicity="1" />
+          <End Role="DiscCardGrp" Type="BaseModel.Store.DiscCardGrp" Multiplicity="1" />
           <End Role="DiscCards" Type="BaseModel.Store.DiscCards" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="DISCCARDGRP">
-              <PropertyRef Name="GRPID" />
+            <Principal Role="DiscCardGrp">
+              <PropertyRef Name="GrpId" />
             </Principal>
             <Dependent Role="DiscCards">
               <PropertyRef Name="GrpId" />
@@ -5911,7 +5952,6 @@
           <EntitySet Name="CONTRPARAMS" EntityType="BaseModel.CONTRPARAMS" />
           <EntitySet Name="CONTRRESULTS" EntityType="BaseModel.CONTRRESULTS" />
           <EntitySet Name="CURRENCYRATE" EntityType="BaseModel.CURRENCYRATE" />
-          <EntitySet Name="DISCCARDGRP" EntityType="BaseModel.DISCCARDGRP" />
           <EntitySet Name="ENTPARAMS" EntityType="BaseModel.ENTPARAMS" />
           <EntitySet Name="TAXES" EntityType="BaseModel.TAXES" />
           <EntitySet Name="TAXWB" EntityType="BaseModel.TAXWB" />
@@ -7085,10 +7125,6 @@
             <Parameter Name="wh" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="DiscCards" EntityType="BaseModel.DiscCards" />
-          <AssociationSet Name="FK_DISCCARDS_GRPID" Association="BaseModel.FK_DISCCARDS_GRPID">
-            <End Role="DISCCARDGRP" EntitySet="DISCCARDGRP" />
-            <End Role="DiscCards" EntitySet="DiscCards" />
-          </AssociationSet>
           <AssociationSet Name="FK_DISCCARDS_KAID" Association="BaseModel.FK_DISCCARDS_KAID">
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="DiscCards" EntitySet="DiscCards" />
@@ -7096,6 +7132,13 @@
           <AssociationSet Name="FK_WBDAP_CARDID" Association="BaseModel.FK_WBDAP_CARDID">
             <End Role="DiscCards" EntitySet="DiscCards" />
             <End Role="WayBillDetAddProps" EntitySet="WayBillDetAddProps" />
+          </AssociationSet>
+          <EntitySet Name="v_Docs" EntityType="BaseModel.v_Docs" />
+          <EntitySet Name="v_DiscCards" EntityType="BaseModel.v_DiscCards" />
+          <EntitySet Name="DiscCardGrp" EntityType="BaseModel.DiscCardGrp" />
+          <AssociationSet Name="FK_DISCCARDS_GRPID" Association="BaseModel.FK_DISCCARDS_GRPID">
+            <End Role="DiscCardGrp" EntitySet="DiscCardGrp" />
+            <End Role="DiscCards" EntitySet="DiscCards" />
           </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
@@ -7263,24 +7306,6 @@
           <Property Name="ONVALUE" Type="Decimal" Nullable="false" Precision="15" Scale="8" />
           <Property Name="RATEID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK__CURRENCYR__CURRI__5EBF139D" FromRole="CURRENCYRATE" ToRole="Currency" />
-        </EntityType>
-        <EntityType Name="DISCCARDGRP">
-          <Key>
-            <PropertyRef Name="GRPID" />
-          </Key>
-          <Property Name="GRPID" Type="Int32" Nullable="false" />
-          <Property Name="NAME" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
-          <Property Name="PID" Type="Int32" Nullable="false" />
-          <Property Name="DISCTYPE" Type="Int32" Nullable="false" />
-          <Property Name="EXPIREDATE" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" p1:StoreGeneratedPattern="Computed" />
-          <Property Name="ONVALUE" Type="Decimal" Precision="15" Scale="8" />
-          <Property Name="AUTONUM" Type="Int32" Nullable="false" />
-          <Property Name="PREFIX" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
-          <Property Name="CURRNUM" Type="Int32" />
-          <Property Name="SUFFIX" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
-          <Property Name="NOTES" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="GENNAME" Type="String" MaxLength="24" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="DiscCards" Relationship="BaseModel.FK_DISCCARDS_GRPID" FromRole="DISCCARDGRP" ToRole="DiscCards" />
         </EntityType>
         <EntityType Name="ENTPARAMS">
           <Key>
@@ -11887,22 +11912,10 @@
           <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="Deleted" Nullable="false" />
           <Property Type="Decimal" Name="StartSaldo" Precision="15" Scale="8" />
-          <NavigationProperty Name="DISCCARDGRP" Relationship="BaseModel.FK_DISCCARDS_GRPID" FromRole="DiscCards" ToRole="DISCCARDGRP" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_DISCCARDS_KAID" FromRole="DiscCards" ToRole="Kagent" />
           <NavigationProperty Name="WayBillDetAddProps" Relationship="BaseModel.FK_WBDAP_CARDID" FromRole="DiscCards" ToRole="WayBillDetAddProps" />
+          <NavigationProperty Name="DiscCardGrp" Relationship="BaseModel.FK_DISCCARDS_GRPID" FromRole="DiscCards" ToRole="DiscCardGrp" />
         </EntityType>
-        <Association Name="FK_DISCCARDS_GRPID">
-          <End Type="BaseModel.DISCCARDGRP" Role="DISCCARDGRP" Multiplicity="1" />
-          <End Type="BaseModel.DiscCards" Role="DiscCards" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DISCCARDGRP">
-              <PropertyRef Name="GRPID" />
-            </Principal>
-            <Dependent Role="DiscCards">
-              <PropertyRef Name="GrpId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_DISCCARDS_KAID">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
           <End Type="BaseModel.DiscCards" Role="DiscCards" Multiplicity="*" />
@@ -11924,6 +11937,55 @@
             </Principal>
             <Dependent Role="WayBillDetAddProps">
               <PropertyRef Name="CardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="v_Docs">
+          <Key>
+            <PropertyRef Name="DocId" />
+          </Key>
+          <Property Type="Guid" Name="DocId" Nullable="false" />
+          <Property Type="Int32" Name="DocType" />
+        </EntityType>
+        <EntityType Name="v_DiscCards">
+          <Key>
+            <PropertyRef Name="CardId" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="OnValue" />
+          </Key>
+          <Property Type="Int32" Name="CardId" Nullable="false" />
+          <Property Type="String" Name="Num" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ExpireDate" Precision="3" />
+          <Property Type="Decimal" Name="OnValue" Nullable="false" Precision="15" Scale="4" />
+          <Property Type="String" Name="KaName" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="KaFullName" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DiscCardGrp">
+          <Key>
+            <PropertyRef Name="GrpId" />
+          </Key>
+          <Property Type="Int32" Name="GrpId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="PId" Nullable="false" />
+          <Property Type="Int32" Name="DiscType" />
+          <Property Type="DateTime" Name="ExpireDate" Precision="3" />
+          <Property Type="Decimal" Name="OnValue" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="AutoNum" />
+          <Property Type="String" Name="Prefix" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CurrNum" />
+          <Property Type="String" Name="Suffix" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DiscCards" Relationship="BaseModel.FK_DISCCARDS_GRPID" FromRole="DiscCardGrp" ToRole="DiscCards" />
+        </EntityType>
+        <Association Name="FK_DISCCARDS_GRPID">
+          <End Type="BaseModel.DiscCardGrp" Role="DiscCardGrp" Multiplicity="1" />
+          <End Type="BaseModel.DiscCards" Role="DiscCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiscCardGrp">
+              <PropertyRef Name="GrpId" />
+            </Principal>
+            <Dependent Role="DiscCards">
+              <PropertyRef Name="GrpId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -11998,24 +12060,6 @@
                 <ScalarProperty Name="ONDATE" ColumnName="ONDATE" />
                 <ScalarProperty Name="ONVALUE" ColumnName="ONVALUE" />
                 <ScalarProperty Name="RATEID" ColumnName="RATEID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DISCCARDGRP">
-            <EntityTypeMapping TypeName="BaseModel.DISCCARDGRP">
-              <MappingFragment StoreEntitySet="DISCCARDGRP">
-                <ScalarProperty Name="GRPID" ColumnName="GRPID" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="PID" ColumnName="PID" />
-                <ScalarProperty Name="DISCTYPE" ColumnName="DISCTYPE" />
-                <ScalarProperty Name="EXPIREDATE" ColumnName="EXPIREDATE" />
-                <ScalarProperty Name="ONVALUE" ColumnName="ONVALUE" />
-                <ScalarProperty Name="AUTONUM" ColumnName="AUTONUM" />
-                <ScalarProperty Name="PREFIX" ColumnName="PREFIX" />
-                <ScalarProperty Name="CURRNUM" ColumnName="CURRNUM" />
-                <ScalarProperty Name="SUFFIX" ColumnName="SUFFIX" />
-                <ScalarProperty Name="NOTES" ColumnName="NOTES" />
-                <ScalarProperty Name="GENNAME" ColumnName="GENNAME" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -15142,6 +15186,43 @@
                 <ScalarProperty Name="DiscType" ColumnName="DiscType" />
                 <ScalarProperty Name="Num" ColumnName="Num" />
                 <ScalarProperty Name="CardId" ColumnName="CardId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_Docs">
+            <EntityTypeMapping TypeName="BaseModel.v_Docs">
+              <MappingFragment StoreEntitySet="v_Docs">
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_DiscCards">
+            <EntityTypeMapping TypeName="BaseModel.v_DiscCards">
+              <MappingFragment StoreEntitySet="v_DiscCards">
+                <ScalarProperty Name="KaFullName" ColumnName="KaFullName" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="CardId" ColumnName="CardId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DiscCardGrp">
+            <EntityTypeMapping TypeName="BaseModel.DiscCardGrp">
+              <MappingFragment StoreEntitySet="DiscCardGrp">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+                <ScalarProperty Name="CurrNum" ColumnName="CurrNum" />
+                <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+                <ScalarProperty Name="AutoNum" ColumnName="AutoNum" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+                <ScalarProperty Name="DiscType" ColumnName="DiscType" />
+                <ScalarProperty Name="PId" ColumnName="PId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

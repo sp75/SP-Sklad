@@ -12,25 +12,24 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class DISCCARDGRP
+    public partial class DiscCardGrp
     {
-        public DISCCARDGRP()
+        public DiscCardGrp()
         {
             this.DiscCards = new HashSet<DiscCards>();
         }
     
-        public int GRPID { get; set; }
-        public string NAME { get; set; }
-        public int PID { get; set; }
-        public int DISCTYPE { get; set; }
-        public byte[] EXPIREDATE { get; set; }
-        public Nullable<decimal> ONVALUE { get; set; }
-        public int AUTONUM { get; set; }
-        public string PREFIX { get; set; }
-        public Nullable<int> CURRNUM { get; set; }
-        public string SUFFIX { get; set; }
-        public string NOTES { get; set; }
-        public string GENNAME { get; set; }
+        public int GrpId { get; set; }
+        public string Name { get; set; }
+        public int PId { get; set; }
+        public Nullable<int> DiscType { get; set; }
+        public Nullable<System.DateTime> ExpireDate { get; set; }
+        public Nullable<decimal> OnValue { get; set; }
+        public Nullable<int> AutoNum { get; set; }
+        public string Prefix { get; set; }
+        public Nullable<int> CurrNum { get; set; }
+        public string Suffix { get; set; }
+        public string Notes { get; set; }
     
         public virtual ICollection<DiscCards> DiscCards { get; set; }
     }

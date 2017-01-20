@@ -849,6 +849,7 @@
             // 
             // CheckDiscontCartEdit
             // 
+            this.CheckDiscontCartEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "DiscountKind", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.CheckDiscontCartEdit.Location = new System.Drawing.Point(39, 34);
             this.CheckDiscontCartEdit.MenuManager = this.barManager1;
             this.CheckDiscontCartEdit.Name = "CheckDiscontCartEdit";
@@ -856,16 +857,17 @@
             this.CheckDiscontCartEdit.Properties.Caption = "Дисконтна карта";
             this.CheckDiscontCartEdit.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
             this.CheckDiscontCartEdit.Properties.RadioGroupIndex = 0;
-            this.CheckDiscontCartEdit.Properties.ValueChecked = 1;
-            this.CheckDiscontCartEdit.Properties.ValueUnchecked = 0;
+            this.CheckDiscontCartEdit.Properties.ValueChecked = 2;
+            this.CheckDiscontCartEdit.Properties.ValueUnchecked = 1;
             this.CheckDiscontCartEdit.Size = new System.Drawing.Size(121, 20);
             this.CheckDiscontCartEdit.StyleController = this.styleController1;
             this.CheckDiscontCartEdit.TabIndex = 25;
             this.CheckDiscontCartEdit.TabStop = false;
+            this.CheckDiscontCartEdit.CheckedChanged += new System.EventHandler(this.CheckDiscontCartEdit_CheckedChanged);
             // 
             // CheckCustomEdit
             // 
-            this.CheckCustomEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "DiscountKind", true));
+            this.CheckCustomEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "DiscountKind", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.CheckCustomEdit.EditValue = 1;
             this.CheckCustomEdit.Location = new System.Drawing.Point(39, 63);
             this.CheckCustomEdit.MenuManager = this.barManager1;
@@ -875,7 +877,7 @@
             this.CheckCustomEdit.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
             this.CheckCustomEdit.Properties.RadioGroupIndex = 0;
             this.CheckCustomEdit.Properties.ValueChecked = 1;
-            this.CheckCustomEdit.Properties.ValueUnchecked = 0;
+            this.CheckCustomEdit.Properties.ValueUnchecked = 2;
             this.CheckCustomEdit.Size = new System.Drawing.Size(62, 20);
             this.CheckCustomEdit.StyleController = this.styleController1;
             this.CheckCustomEdit.TabIndex = 24;
