@@ -91,7 +91,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.DiscountPriceEdit = new DevExpress.XtraEditors.CalcEdit();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.DiscNumEdit = new DevExpress.XtraEditors.TextEdit();
             this.CheckDiscontCartEdit = new DevExpress.XtraEditors.CheckEdit();
             this.CheckCustomEdit = new DevExpress.XtraEditors.CheckEdit();
             this.DiscountEdit = new DevExpress.XtraEditors.CalcEdit();
@@ -159,7 +159,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DiscountPriceEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DiscNumEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheckDiscontCartEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheckCustomEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DiscountEdit.Properties)).BeginInit();
@@ -809,7 +809,7 @@
             // panelControl4
             // 
             this.panelControl4.Controls.Add(this.DiscountPriceEdit);
-            this.panelControl4.Controls.Add(this.textEdit1);
+            this.panelControl4.Controls.Add(this.DiscNumEdit);
             this.panelControl4.Controls.Add(this.CheckDiscontCartEdit);
             this.panelControl4.Controls.Add(this.CheckCustomEdit);
             this.panelControl4.Controls.Add(this.DiscountEdit);
@@ -836,16 +836,17 @@
             this.DiscountPriceEdit.StyleController = this.styleController1;
             this.DiscountPriceEdit.TabIndex = 27;
             // 
-            // textEdit1
+            // DiscNumEdit
             // 
-            this.textEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.DiscNumEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEdit1.Location = new System.Drawing.Point(170, 33);
-            this.textEdit1.MenuManager = this.barManager1;
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(148, 22);
-            this.textEdit1.StyleController = this.styleController1;
-            this.textEdit1.TabIndex = 26;
+            this.DiscNumEdit.Location = new System.Drawing.Point(170, 33);
+            this.DiscNumEdit.MenuManager = this.barManager1;
+            this.DiscNumEdit.Name = "DiscNumEdit";
+            this.DiscNumEdit.Properties.ReadOnly = true;
+            this.DiscNumEdit.Size = new System.Drawing.Size(148, 22);
+            this.DiscNumEdit.StyleController = this.styleController1;
+            this.DiscNumEdit.TabIndex = 26;
             // 
             // CheckDiscontCartEdit
             // 
@@ -929,6 +930,7 @@
             this.textEdit6.Location = new System.Drawing.Point(453, 32);
             this.textEdit6.MenuManager = this.barManager1;
             this.textEdit6.Name = "textEdit6";
+            this.textEdit6.Properties.ReadOnly = true;
             this.textEdit6.Size = new System.Drawing.Size(172, 22);
             this.textEdit6.StyleController = this.styleController1;
             this.textEdit6.TabIndex = 20;
@@ -1394,7 +1396,7 @@
             this.panelControl4.ResumeLayout(false);
             this.panelControl4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DiscountPriceEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DiscNumEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheckDiscontCartEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheckCustomEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DiscountEdit.Properties)).EndInit();
@@ -1524,7 +1526,7 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.SimpleButton simpleButton6;
         private DevExpress.XtraEditors.CalcEdit DiscountPriceEdit;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.TextEdit DiscNumEdit;
         private DevExpress.XtraEditors.CheckEdit CheckDiscontCartEdit;
         private DevExpress.XtraEditors.CheckEdit CheckCustomEdit;
         private DevExpress.XtraEditors.CalcEdit DiscountEdit;

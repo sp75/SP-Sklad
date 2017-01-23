@@ -117,6 +117,15 @@ namespace SP_Sklad.WBDetForm
                 if (_wbd.WayBillDetAddProps != null)
                 {
                     WayBillDetAddPropsBS.DataSource = _wbd.WayBillDetAddProps;
+
+                    if (_wbd.WayBillDetAddProps.DiscCards != null)
+                    {
+                        DiscNumEdit.Text = _wbd.WayBillDetAddProps.DiscCards.Num;
+                        if (_wbd.WayBillDetAddProps.DiscCards.Kagent != null)
+                        {
+                            textEdit6.Text = _wbd.WayBillDetAddProps.DiscCards.Kagent.Name;
+                        }
+                    }
                 }
 
                 GetOk();

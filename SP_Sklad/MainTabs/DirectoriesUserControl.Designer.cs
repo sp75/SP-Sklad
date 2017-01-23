@@ -301,13 +301,9 @@
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage30 = new DevExpress.XtraTab.XtraTabPage();
             this.DiscCardsGridControl = new DevExpress.XtraGrid.GridControl();
+            this.DiscCardsBS = new System.Windows.Forms.BindingSource(this.components);
             this.DiscCardsGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.xtraTabPage11 = new DevExpress.XtraTab.XtraTabPage();
-            this.ExplorerPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.DiscCardsBS = new System.Windows.Forms.BindingSource(this.components);
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn27 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -315,6 +311,10 @@
             this.gridColumn74 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn75 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn76 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.xtraTabPage11 = new DevExpress.XtraTab.XtraTabPage();
+            this.ExplorerPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
@@ -440,11 +440,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.RouteGridView)).BeginInit();
             this.xtraTabPage30.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DiscCardsGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DiscCardsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DiscCardsGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplorerPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DiscCardsBS)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemImageComboBox1
@@ -1265,7 +1265,7 @@
             // 
             // vGridControl1
             // 
-            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeWE;
+            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.vGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl1.Location = new System.Drawing.Point(0, 0);
             this.vGridControl1.Name = "vGridControl1";
@@ -3098,6 +3098,7 @@
             this.RouteGridView.OptionsView.EnableAppearanceEvenRow = true;
             this.RouteGridView.OptionsView.EnableAppearanceOddRow = true;
             this.RouteGridView.OptionsView.ShowGroupPanel = false;
+            this.RouteGridView.DoubleClick += new System.EventHandler(this.WarehouseGridView_DoubleClick);
             // 
             // gridColumn9
             // 
@@ -3127,6 +3128,10 @@
             this.DiscCardsGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.DiscCardsGridView});
             // 
+            // DiscCardsBS
+            // 
+            this.DiscCardsBS.DataSource = typeof(SP_Sklad.SkladData.v_DiscCards);
+            // 
             // DiscCardsGridView
             // 
             this.DiscCardsGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
@@ -3148,6 +3153,7 @@
             this.DiscCardsGridView.OptionsView.EnableAppearanceEvenRow = true;
             this.DiscCardsGridView.OptionsView.EnableAppearanceOddRow = true;
             this.DiscCardsGridView.OptionsView.ShowGroupPanel = false;
+            this.DiscCardsGridView.DoubleClick += new System.EventHandler(this.WarehouseGridView_DoubleClick);
             // 
             // gridColumn5
             // 
@@ -3157,61 +3163,6 @@
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 0;
             this.gridColumn5.Width = 301;
-            // 
-            // xtraTabPage11
-            // 
-            this.xtraTabPage11.Name = "xtraTabPage11";
-            this.xtraTabPage11.Size = new System.Drawing.Size(1166, 580);
-            this.xtraTabPage11.Text = "Корзиина";
-            // 
-            // ExplorerPopupMenu
-            // 
-            this.ExplorerPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.ExplorerRefreshBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.DelExplorerBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.EditExplorerBtn, true)});
-            this.ExplorerPopupMenu.Manager = this.barManager1;
-            this.ExplorerPopupMenu.Name = "ExplorerPopupMenu";
-            // 
-            // KAgentPopupMenu
-            // 
-            this.KAgentPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.CopyItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.KagentBalansBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
-            this.KAgentPopupMenu.Manager = this.barManager1;
-            this.KAgentPopupMenu.Name = "KAgentPopupMenu";
-            // 
-            // MatPopupMenu
-            // 
-            this.MatPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.CopyItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem12),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem13, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.showMatArhivedBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
-            this.MatPopupMenu.Manager = this.barManager1;
-            this.MatPopupMenu.Name = "MatPopupMenu";
-            // 
-            // DiscCardsBS
-            // 
-            this.DiscCardsBS.DataSource = typeof(SP_Sklad.SkladData.v_DiscCards);
             // 
             // gridColumn12
             // 
@@ -3265,6 +3216,57 @@
             this.gridColumn76.Caption = "gridColumn76";
             this.gridColumn76.Name = "gridColumn76";
             this.gridColumn76.Width = 131;
+            // 
+            // xtraTabPage11
+            // 
+            this.xtraTabPage11.Name = "xtraTabPage11";
+            this.xtraTabPage11.Size = new System.Drawing.Size(1166, 580);
+            this.xtraTabPage11.Text = "Корзиина";
+            // 
+            // ExplorerPopupMenu
+            // 
+            this.ExplorerPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ExplorerRefreshBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DelExplorerBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditExplorerBtn, true)});
+            this.ExplorerPopupMenu.Manager = this.barManager1;
+            this.ExplorerPopupMenu.Name = "ExplorerPopupMenu";
+            // 
+            // KAgentPopupMenu
+            // 
+            this.KAgentPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.CopyItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.KagentBalansBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
+            this.KAgentPopupMenu.Manager = this.barManager1;
+            this.KAgentPopupMenu.Name = "KAgentPopupMenu";
+            // 
+            // MatPopupMenu
+            // 
+            this.MatPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.CopyItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem12),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem13, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.showMatArhivedBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
+            this.MatPopupMenu.Manager = this.barManager1;
+            this.MatPopupMenu.Name = "MatPopupMenu";
             // 
             // DirectoriesUserControl
             // 
@@ -3410,11 +3412,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.RouteGridView)).EndInit();
             this.xtraTabPage30.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DiscCardsGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DiscCardsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DiscCardsGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplorerPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DiscCardsBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

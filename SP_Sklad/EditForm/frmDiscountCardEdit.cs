@@ -38,7 +38,7 @@ namespace SP_Sklad.EditForm
                 dc = _db.DiscCards.Add(new DiscCards
                 {
                     GrpId = 1,
-                    ExpireDate = DateTime.Now.AddHours(1),
+                    ExpireDate = DateTime.Now.AddYears(1),
                     OnValue = 0,
                     Num = "",
                     DiscType = 1

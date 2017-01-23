@@ -32,9 +32,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTechProcDet));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.NumEdit = new DevExpress.XtraEditors.CalcEdit();
+            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.NowDateBtn = new DevExpress.XtraEditors.SimpleButton();
             this.NotesTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
             this.OnDateEdit = new DevExpress.XtraEditors.DateEdit();
             this.AmountEdit = new DevExpress.XtraEditors.CalcEdit();
@@ -49,13 +51,12 @@
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.NumEdit = new DevExpress.XtraEditors.CalcEdit();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AmountEdit.Properties)).BeginInit();
@@ -63,7 +64,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -99,6 +99,32 @@
             this.panelControl1.Size = new System.Drawing.Size(471, 203);
             this.panelControl1.TabIndex = 0;
             // 
+            // NumEdit
+            // 
+            this.NumEdit.Location = new System.Drawing.Point(83, 12);
+            this.NumEdit.Name = "NumEdit";
+            this.NumEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.NumEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.NumEdit.Properties.ShowCloseButton = true;
+            this.NumEdit.Size = new System.Drawing.Size(110, 22);
+            this.NumEdit.StyleController = this.styleController1;
+            this.NumEdit.TabIndex = 30;
+            // 
+            // styleController1
+            // 
+            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.styleController1.Appearance.Options.UseFont = true;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(12, 15);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(37, 16);
+            this.labelControl4.StyleController = this.styleController1;
+            this.labelControl4.TabIndex = 29;
+            this.labelControl4.Text = "Номер";
+            // 
             // NowDateBtn
             // 
             this.NowDateBtn.Image = ((System.Drawing.Image)(resources.GetObject("NowDateBtn.Image")));
@@ -118,11 +144,6 @@
             this.NotesTextEdit.Size = new System.Drawing.Size(349, 22);
             this.NotesTextEdit.StyleController = this.styleController1;
             this.NotesTextEdit.TabIndex = 27;
-            // 
-            // styleController1
-            // 
-            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.styleController1.Appearance.Options.UseFont = true;
             // 
             // labelControl22
             // 
@@ -205,6 +226,7 @@
             // 
             // WhBtn
             // 
+            this.WhBtn.Enabled = false;
             this.WhBtn.Image = global::SP_Sklad.Properties.Resources.Службовц_;
             this.WhBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.WhBtn.Location = new System.Drawing.Point(436, 124);
@@ -215,6 +237,7 @@
             // 
             // PersonComboBox
             // 
+            this.PersonComboBox.Enabled = false;
             this.PersonComboBox.Location = new System.Drawing.Point(83, 124);
             this.PersonComboBox.Name = "PersonComboBox";
             this.PersonComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -291,27 +314,6 @@
             this.simpleButton1.TabIndex = 2;
             this.simpleButton1.Text = "Відмінити";
             // 
-            // NumEdit
-            // 
-            this.NumEdit.Location = new System.Drawing.Point(83, 12);
-            this.NumEdit.Name = "NumEdit";
-            this.NumEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.NumEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.NumEdit.Properties.ShowCloseButton = true;
-            this.NumEdit.Size = new System.Drawing.Size(110, 22);
-            this.NumEdit.StyleController = this.styleController1;
-            this.NumEdit.TabIndex = 30;
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Location = new System.Drawing.Point(12, 15);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(37, 16);
-            this.labelControl4.StyleController = this.styleController1;
-            this.labelControl4.TabIndex = 29;
-            this.labelControl4.Text = "Номер";
-            // 
             // frmTechProcDet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -331,8 +333,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AmountEdit.Properties)).EndInit();
@@ -340,7 +343,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

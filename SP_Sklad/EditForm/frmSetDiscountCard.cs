@@ -51,12 +51,12 @@ namespace SP_Sklad.ViewsForm
 
         private void SetDiscount()
         {
-            var cart = DB.SkladBase().DiscCards.FirstOrDefault(w => w.Num == AmountEdit.Text);
+            var cart = DB.SkladBase().DiscCards.FirstOrDefault(w => w.Num == AmountEdit.Text && w.Deleted == 0 && w.ExpireDate >= DateTime.Now);
             if (cart != null)
             {
                 foreach (var item in _db.WaybillDet.Where(w => w.WbillId == _waybill_id))
                 {
-                    var  DiscountPrice = item.BasePrice - (item.BasePrice * cart.OnValue / 100);
+                    var DiscountPrice = item.BasePrice - (item.BasePrice * cart.OnValue / 100);
                     item.Price = DiscountPrice * 100 / (100 + item.Nds.Value);
                     item.Discount = cart.OnValue;
                     item.DiscountKind = 2;
@@ -79,7 +79,7 @@ namespace SP_Sklad.ViewsForm
             }
             else
             {
-                MessageBox.Show("Такох картки не існує , добавте в довідник !");
+                MessageBox.Show("Дисконтну картку не знайдено !");
             }
         }
     }

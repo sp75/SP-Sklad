@@ -91,6 +91,14 @@
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.TechProcGridControl = new DevExpress.XtraGrid.GridControl();
+            this.TechProcGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn42 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn43 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn44 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn45 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn46 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn76 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.WaybillDetOutGridControl = new DevExpress.XtraGrid.GridControl();
             this.WaybillDetOutBS = new System.Windows.Forms.BindingSource(this.components);
@@ -106,14 +114,6 @@
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
-            this.TechProcGridControl = new DevExpress.XtraGrid.GridControl();
-            this.TechProcGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn42 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn43 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn44 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn45 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn46 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn76 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
@@ -142,6 +142,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TechProcGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TechProcGridView)).BeginInit();
             this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutBS)).BeginInit();
@@ -151,8 +153,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TechProcGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TechProcGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -680,6 +680,7 @@
             // simpleButton3
             // 
             this.simpleButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton3.Enabled = false;
             this.simpleButton3.ImageIndex = 19;
             this.simpleButton3.ImageList = this.WBImgList;
             this.simpleButton3.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
@@ -782,6 +783,7 @@
             // 
             this.KagentComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.KagentComboBox.Enabled = false;
             this.KagentComboBox.Location = new System.Drawing.Point(88, 41);
             this.KagentComboBox.Name = "KagentComboBox";
             this.KagentComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -869,6 +871,89 @@
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(965, 242);
             this.xtraTabPage2.Text = "Технологічні процеси";
+            // 
+            // TechProcGridControl
+            // 
+            this.TechProcGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TechProcGridControl.Location = new System.Drawing.Point(0, 0);
+            this.TechProcGridControl.MainView = this.TechProcGridView;
+            this.TechProcGridControl.Name = "TechProcGridControl";
+            this.TechProcGridControl.Size = new System.Drawing.Size(965, 242);
+            this.TechProcGridControl.TabIndex = 3;
+            this.TechProcGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.TechProcGridView});
+            // 
+            // TechProcGridView
+            // 
+            this.TechProcGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn42,
+            this.gridColumn43,
+            this.gridColumn44,
+            this.gridColumn45,
+            this.gridColumn46,
+            this.gridColumn76});
+            this.TechProcGridView.GridControl = this.TechProcGridControl;
+            this.TechProcGridView.Name = "TechProcGridView";
+            this.TechProcGridView.OptionsBehavior.AllowIncrementalSearch = true;
+            this.TechProcGridView.OptionsBehavior.Editable = false;
+            this.TechProcGridView.OptionsBehavior.ReadOnly = true;
+            this.TechProcGridView.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn42
+            // 
+            this.gridColumn42.Caption = "Назва";
+            this.gridColumn42.FieldName = "Name";
+            this.gridColumn42.Name = "gridColumn42";
+            this.gridColumn42.Visible = true;
+            this.gridColumn42.VisibleIndex = 1;
+            this.gridColumn42.Width = 224;
+            // 
+            // gridColumn43
+            // 
+            this.gridColumn43.Caption = "Дата";
+            this.gridColumn43.DisplayFormat.FormatString = "g";
+            this.gridColumn43.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.gridColumn43.FieldName = "OnDate";
+            this.gridColumn43.Name = "gridColumn43";
+            this.gridColumn43.Visible = true;
+            this.gridColumn43.VisibleIndex = 2;
+            this.gridColumn43.Width = 112;
+            // 
+            // gridColumn44
+            // 
+            this.gridColumn44.Caption = "Вихід";
+            this.gridColumn44.FieldName = "Out";
+            this.gridColumn44.Name = "gridColumn44";
+            this.gridColumn44.Visible = true;
+            this.gridColumn44.VisibleIndex = 3;
+            this.gridColumn44.Width = 92;
+            // 
+            // gridColumn45
+            // 
+            this.gridColumn45.Caption = "Відповідальний";
+            this.gridColumn45.FieldName = "PersonName";
+            this.gridColumn45.Name = "gridColumn45";
+            this.gridColumn45.Visible = true;
+            this.gridColumn45.VisibleIndex = 4;
+            this.gridColumn45.Width = 252;
+            // 
+            // gridColumn46
+            // 
+            this.gridColumn46.Caption = "Пимітка";
+            this.gridColumn46.FieldName = "Notes";
+            this.gridColumn46.Name = "gridColumn46";
+            this.gridColumn46.Visible = true;
+            this.gridColumn46.VisibleIndex = 5;
+            this.gridColumn46.Width = 261;
+            // 
+            // gridColumn76
+            // 
+            this.gridColumn76.Caption = "#";
+            this.gridColumn76.FieldName = "Num";
+            this.gridColumn76.Name = "gridColumn76";
+            this.gridColumn76.Visible = true;
+            this.gridColumn76.VisibleIndex = 0;
+            this.gridColumn76.Width = 85;
             // 
             // xtraTabPage1
             // 
@@ -1045,89 +1130,6 @@
             this.xtraTabPage1,
             this.xtraTabPage2});
             // 
-            // TechProcGridControl
-            // 
-            this.TechProcGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TechProcGridControl.Location = new System.Drawing.Point(0, 0);
-            this.TechProcGridControl.MainView = this.TechProcGridView;
-            this.TechProcGridControl.Name = "TechProcGridControl";
-            this.TechProcGridControl.Size = new System.Drawing.Size(965, 242);
-            this.TechProcGridControl.TabIndex = 3;
-            this.TechProcGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.TechProcGridView});
-            // 
-            // TechProcGridView
-            // 
-            this.TechProcGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn42,
-            this.gridColumn43,
-            this.gridColumn44,
-            this.gridColumn45,
-            this.gridColumn46,
-            this.gridColumn76});
-            this.TechProcGridView.GridControl = this.TechProcGridControl;
-            this.TechProcGridView.Name = "TechProcGridView";
-            this.TechProcGridView.OptionsBehavior.AllowIncrementalSearch = true;
-            this.TechProcGridView.OptionsBehavior.Editable = false;
-            this.TechProcGridView.OptionsBehavior.ReadOnly = true;
-            this.TechProcGridView.OptionsView.ShowGroupPanel = false;
-            // 
-            // gridColumn42
-            // 
-            this.gridColumn42.Caption = "Назва";
-            this.gridColumn42.FieldName = "Name";
-            this.gridColumn42.Name = "gridColumn42";
-            this.gridColumn42.Visible = true;
-            this.gridColumn42.VisibleIndex = 1;
-            this.gridColumn42.Width = 224;
-            // 
-            // gridColumn43
-            // 
-            this.gridColumn43.Caption = "Дата";
-            this.gridColumn43.DisplayFormat.FormatString = "g";
-            this.gridColumn43.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.gridColumn43.FieldName = "OnDate";
-            this.gridColumn43.Name = "gridColumn43";
-            this.gridColumn43.Visible = true;
-            this.gridColumn43.VisibleIndex = 2;
-            this.gridColumn43.Width = 112;
-            // 
-            // gridColumn44
-            // 
-            this.gridColumn44.Caption = "Вихід";
-            this.gridColumn44.FieldName = "Out";
-            this.gridColumn44.Name = "gridColumn44";
-            this.gridColumn44.Visible = true;
-            this.gridColumn44.VisibleIndex = 3;
-            this.gridColumn44.Width = 92;
-            // 
-            // gridColumn45
-            // 
-            this.gridColumn45.Caption = "Відповідальний";
-            this.gridColumn45.FieldName = "PersonName";
-            this.gridColumn45.Name = "gridColumn45";
-            this.gridColumn45.Visible = true;
-            this.gridColumn45.VisibleIndex = 4;
-            this.gridColumn45.Width = 252;
-            // 
-            // gridColumn46
-            // 
-            this.gridColumn46.Caption = "Пимітка";
-            this.gridColumn46.FieldName = "Notes";
-            this.gridColumn46.Name = "gridColumn46";
-            this.gridColumn46.Visible = true;
-            this.gridColumn46.VisibleIndex = 5;
-            this.gridColumn46.Width = 261;
-            // 
-            // gridColumn76
-            // 
-            this.gridColumn76.Caption = "#";
-            this.gridColumn76.FieldName = "Num";
-            this.gridColumn76.Name = "gridColumn76";
-            this.gridColumn76.Visible = true;
-            this.gridColumn76.VisibleIndex = 0;
-            this.gridColumn76.Width = 85;
-            // 
             // frmWBManufacture
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1178,6 +1180,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.xtraTabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.TechProcGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TechProcGridView)).EndInit();
             this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutBS)).EndInit();
@@ -1187,8 +1191,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.TechProcGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TechProcGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

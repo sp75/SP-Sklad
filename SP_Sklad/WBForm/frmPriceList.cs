@@ -121,7 +121,7 @@ namespace SP_Sklad.WBForm
 
         void AddMat(GetMatTree_Result row)
         {
-            if (!_db.PriceListDet.Where(w => w.MatId == row.Id && w.PlDetType == 0).Any())
+            if (!_db.PriceListDet.Where(w => w.MatId == row.Id && w.PlDetType == 0 && w.PlId == _pl_id.Value).Any())
             {
                 _db.PriceListDet.Add(new PriceListDet
                 {
@@ -269,6 +269,11 @@ namespace SP_Sklad.WBForm
         {
             var dr = gridView1.GetFocusedRow() as GetPriceListDet_Result;
             IHelper.ShowMatInfo(dr.MatId);
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
