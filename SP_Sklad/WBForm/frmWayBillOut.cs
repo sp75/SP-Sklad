@@ -80,7 +80,6 @@ namespace SP_Sklad.WBForm
             else
             {
                 wb = _db.WaybillList.FirstOrDefault(f => f.Id == doc_id || f.WbillId == _wbill_id);
-                //  UpdLockWB();
             }
 
             if (wb != null)
@@ -88,6 +87,11 @@ namespace SP_Sklad.WBForm
                 _wbill_id = wb.WbillId;
 
                 DBHelper.UpdateSessionWaybill(wb.WbillId);
+
+                if (is_new_record) //Послі копіювання згенерувати новий номер
+                {
+                    wb.Num = new BaseEntities().GetDocNum("wb_out").FirstOrDefault();
+                }
 
                 WaybillListBS.DataSource = wb;
             //    wb.UpdatedBy = DBHelper.CurrentUser.UserId;

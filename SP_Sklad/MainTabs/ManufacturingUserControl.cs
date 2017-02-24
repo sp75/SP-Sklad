@@ -16,6 +16,8 @@ using SP_Sklad.Common;
 using SP_Sklad.WBDetForm;
 using SP_Sklad.Properties;
 using SP_Sklad.Reports;
+using System.IO;
+using System.Diagnostics;
 
 
 namespace SP_Sklad.MainTabs
@@ -225,7 +227,7 @@ namespace SP_Sklad.MainTabs
 
         private void RefreshTechProcDet(int wbill_id)
         {
-            TechProcGridControl.DataSource = DB.SkladBase().v_TechProcDet.Where(w => w.WbillId == wbill_id).OrderBy(o => o.OnDate).ToList(); 
+            TechProcDetBS.DataSource = DB.SkladBase().v_TechProcDet.Where(w => w.WbillId == wbill_id).OrderBy(o => o.Num).ToList();
         }
 
         private void TechProcGridView_DoubleClick(object sender, EventArgs e)
@@ -446,11 +448,12 @@ namespace SP_Sklad.MainTabs
             {
                 using (var db = DB.SkladBase())
                 {
-                    TechProcGridControl.DataSource = db.v_TechProcDet.Where(w => w.WbillId == focused_row.WbillId).OrderBy(o => o.Num).ToList();
+                    RefreshTechProcDet(focused_row.WbillId);
                     gridControl2.DataSource = db.GetWayBillDetOut(focused_row.WbillId).ToList();
                     gridView2.ExpandAllGroups();
                     gridControl3.DataSource = db.GetRelDocList(focused_row.Id).OrderBy(o=> o.OnDate).ToList();
                     ManufacturedPosGridControl.DataSource = db.GetManufacturedPos(focused_row.Id).ToList();
+                    RefreshAtribute(focused_row.WbillId);
                 }
             }
             else
@@ -510,6 +513,62 @@ namespace SP_Sklad.MainTabs
             CopyItemBtn.Enabled = (focused_row != null && focused_tree_node.CanModify == 1);
             ExecuteItemBtn.Enabled = (focused_row != null && focused_tree_node.CanPost == 1);
             PrintItemBtn.Enabled = (focused_row != null);
+        }
+
+        private void barButtonItem3_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+             var dr = WbGridView.GetRow(WbGridView.FocusedRowHandle) as WBListMake_Result;
+
+             var f = new frmWayBillMakePropsDet(dr.WbillId);
+             if (f.ShowDialog() == DialogResult.OK)
+             {
+                 RefreshAtribute(dr.WbillId);
+             }
+        }
+
+        private void RefreshAtribute(int wbill_id)
+        {
+            AttributeGridControl.DataSource = DB.SkladBase().WayBillMakeProps.Where(w => w.WbillId == wbill_id).Select(s => new
+            {
+                s.Id,
+                s.Materials.Name,
+                s.OnDate,
+                s.Amount,
+                PersonName = s.Kagent.Name,
+                s.WbillId,
+                Weight = s.Amount * s.Materials.Weight
+            }).OrderBy(o => o.OnDate).ToList();
+        }
+
+        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var dr = AttributeGridView.GetFocusedRow() as dynamic;
+            int id = dr.Id;
+
+            DB.SkladBase().DeleteWhere<WayBillMakeProps>(w => w.Id == id);
+
+            RefreshAtribute(dr.WbillId);
+        }
+
+        private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var dr = AttributeGridView.GetFocusedRow() as dynamic;
+            if (dr != null)
+            {
+                var f = new frmWayBillMakePropsDet(dr.WbillId, dr.Id);
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    RefreshAtribute(dr.WbillId);
+                }
+            }
+        }
+
+        private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var path = Path.Combine(Application.StartupPath, "expotr.xlsx");
+            WbGridView.ExportToXlsx(path);
+
+            Process.Start(path);
         }
 
     }

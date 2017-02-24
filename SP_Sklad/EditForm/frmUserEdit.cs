@@ -45,8 +45,8 @@ namespace SP_Sklad.EditForm
             xtraTabControl1.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
 
             tree.Add(new CatalogTreeList { Id = 0, ParentId = -1, Text = "Основна інформація", ImgIdx = 0, TabIdx = 0 });
-            tree.Add(new CatalogTreeList { Id = 1, ParentId = -1, Text = "Права", ImgIdx = 1, TabIdx = 1 });
-            tree.Add(new CatalogTreeList { Id = 2, ParentId = -1, Text = "Додаткова інформація", ImgIdx = 11, TabIdx = 2 });
+            tree.Add(new CatalogTreeList { Id = 1, ParentId = -1, Text = "Права", ImgIdx = 13, TabIdx = 1 });
+            tree.Add(new CatalogTreeList { Id = 2, ParentId = -1, Text = "Додаткова інформація", ImgIdx = 12, TabIdx = 2 });
 
             TreeListBindingSource.DataSource = tree;
 
@@ -77,6 +77,11 @@ namespace SP_Sklad.EditForm
             }
 
             UserGroupLookUpEdit.Properties.DataSource = DB.SkladBase().UsersGroup.AsNoTracking().ToList();
+
+            using (var s = new UserSettingsRepository(_user_id.Value, _db))
+            {
+                checkEdit4.EditValue = s.AccessEditWeight;
+            }
 
             ValidateForm();
         }
@@ -270,6 +275,14 @@ namespace SP_Sklad.EditForm
                 }
 
                 UserGroupLookUpEdit.Properties.DataSource = DB.SkladBase().UsersGroup.AsNoTracking().ToList();
+            }
+        }
+
+        private void checkEdit4_CheckedChanged(object sender, EventArgs e)
+        {
+            using (var s = new UserSettingsRepository(_user_id.Value, _db))
+            {
+                s.AccessEditWeight = Convert.ToString(checkEdit4.EditValue);
             }
         }
     }

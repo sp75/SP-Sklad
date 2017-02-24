@@ -532,6 +532,7 @@ namespace SP_Sklad.MainTabs
                     {
                         using (var wb_in = new frmWayBillOut(cur_wtype, doc.out_wbill_id))
                         {
+                            wb_in.is_new_record = true;
                             wb_in.ShowDialog();
                         }
 
@@ -540,6 +541,7 @@ namespace SP_Sklad.MainTabs
                     {
                         using (var wb_in = new frmWayBillIn(cur_wtype, doc.out_wbill_id))
                         {
+                            wb_in.is_new_record = true;
                             wb_in.ShowDialog();
                         }
                     }

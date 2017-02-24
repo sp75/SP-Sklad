@@ -214,6 +214,7 @@
     <Compile Include="Common\IHelper.cs" />
     <Compile Include="Common\ManufDocEdit.cs" />
     <Compile Include="Common\MoneyToStr.cs" />
+    <Compile Include="Common\UniqueID.cs" />
     <Compile Include="Common\UserSession.cs" />
     <Compile Include="Common\UserSettingsRepository.cs" />
     <Compile Include="Common\WayBills\WayBillsController.cs" />
@@ -335,6 +336,9 @@
     <Compile Include="SkladData\GetLastPrice_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetMakeAmount_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetManufacturedPos_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -434,6 +438,9 @@
     <Compile Include="SkladData\REP_33_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\REP_4_5_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\Routes.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -486,6 +493,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\WaybillList.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\WayBillMakeProps.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\WBListMake_Result.cs">
@@ -806,9 +816,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetListMatPrices_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\GetMakeAmount_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetManufactureTree_Result.cs">
@@ -1151,6 +1158,12 @@
     <Compile Include="WBDetForm\frmWayBillDetOut.Designer.cs">
       <DependentUpon>frmWayBillDetOut.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBDetForm\frmWayBillMakePropsDet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBDetForm\frmWayBillMakePropsDet.Designer.cs">
+      <DependentUpon>frmWayBillMakePropsDet.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBDetForm\frmWaybillSvcDet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1426,6 +1439,9 @@
     <EmbeddedResource Include="WBDetForm\frmWayBillDetOut.resx">
       <DependentUpon>frmWayBillDetOut.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WBDetForm\frmWayBillMakePropsDet.resx">
+      <DependentUpon>frmWayBillMakePropsDet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBDetForm\frmWaybillSvcDet.resx">
       <DependentUpon>frmWaybillSvcDet.cs</DependentUpon>
     </EmbeddedResource>
@@ -1530,6 +1546,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Serials.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Services.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.SvcGroup.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.TechProcDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.TechProcess.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Users.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.UsersGroup.datasource" />
@@ -1538,11 +1555,13 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_KAgentAccount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PriceList.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Services.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_TechProcDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Warehouse.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WaybillDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WayBillDetAddProps.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WaybillList.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WayBillMake.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.WayBillMakeProps.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WaybillMove.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WBListMake_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WhMatGet_Result.datasource" />

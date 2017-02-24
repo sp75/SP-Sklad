@@ -11,10 +11,10 @@ namespace SP_Sklad.SkladData
 {
     using System;
     
-    public partial class GetMakeAmount_Result
+    public partial class REP_4_5_Result
     {
-        public Nullable<decimal> AmountOut { get; set; }
-        public Nullable<System.DateTime> OnDate { get; set; }
-        public Nullable<decimal> AmountBrutto { get; set; }
+        public Nullable<long> N { get; set; }
+        public string Name { get; set; }
+        public Nullable<decimal> Saldo { get; set; }
     }
 }

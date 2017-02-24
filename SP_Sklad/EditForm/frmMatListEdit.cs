@@ -42,6 +42,11 @@ namespace SP_Sklad.EditForm
 
         private void frmMatListEdit_Load(object sender, EventArgs e)
         {
+            using (var s = new UserSettingsRepository(UserSession.UserId, new SkladData.BaseEntities()))
+            {
+                AmountEdit.ReadOnly = !(s.AccessEditWeight == "1");
+            }
+
             GetWeight();
         }
 

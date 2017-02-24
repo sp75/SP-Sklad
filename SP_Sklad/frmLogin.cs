@@ -12,6 +12,7 @@ using SP_Sklad.SkladData;
 using System.Management;
 using System.Text.RegularExpressions;
 using System.Globalization;
+using SP_Sklad.Common;
 
 namespace SP_Sklad
 {
@@ -21,7 +22,7 @@ namespace SP_Sklad
         public frmLogin()
         {
             InitializeComponent();
-
+          
             try
             {
                 UserIDEdit.Properties.DataSource = new BaseEntities().Users.Select(s => new
@@ -42,15 +43,29 @@ namespace SP_Sklad
                 label1.Visible = true;
                 label1.Text = "З'явилася нова версія , загрузіть оновлення!";
             }
-            var kay_id = getMotherBoardID();
+
+            var kay_id = UniqueID.getMotherBoardID();
             if (String.IsNullOrEmpty(kay_id)) //якщо невдалось отримати ID bother board
             {
-                kay_id = GetMacAddress();
+                kay_id = UniqueID.GetMacAddress();
             }
 
+            if (String.IsNullOrEmpty(kay_id)) //якщо невдалось отримати MacAddress
+            {
+                try
+                {
+                    kay_id = UniqueID.getUniqueID("C");
+                }
+                catch { }
+            }
+
+            if (String.IsNullOrEmpty(kay_id))
+            {
+                kay_id = "123456789";
+            }
 //            var ddd = DeCoding(Coding("77419"));  //test
 
-            var ip_address = GetPhysicalIPAdress();
+            var ip_address = UniqueID.GetPhysicalIPAdress();
 
             using (var db = new BaseEntities())
             {
@@ -62,7 +77,7 @@ namespace SP_Sklad
                         MacAddress = kay_id,
                         LicencesKay = "",
                         IpAddress = ip_address,
-                        MachineName = Environment.MachineName
+                        MachineName = Environment. MachineName
                     });
                     is_registered = false;
                 }
@@ -82,69 +97,6 @@ namespace SP_Sklad
             }
 
         }
-
-        public string GetPhysicalIPAdress()
-        {
-            foreach (NetworkInterface ni in NetworkInterface.GetAllNetworkInterfaces())
-            {
-                var addr = ni.GetIPProperties().GatewayAddresses.FirstOrDefault();
-                if (addr != null)
-                {
-                    if (ni.NetworkInterfaceType == NetworkInterfaceType.Wireless80211 || ni.NetworkInterfaceType == NetworkInterfaceType.Ethernet)
-                    {
-                        foreach (UnicastIPAddressInformation ip in ni.GetIPProperties().UnicastAddresses)
-                        {
-                            if (ip.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
-                            {
-                                return ip.Address.ToString();
-                            }
-                        }
-                    }
-                }
-            }
-            return String.Empty;
-        }
-
-        public string GetMacAddress()
-        {
-            foreach (NetworkInterface ni in NetworkInterface.GetAllNetworkInterfaces())
-            {
-                var addr = ni.GetIPProperties().GatewayAddresses.FirstOrDefault();
-                if (addr != null)
-                {
-                    if (ni.NetworkInterfaceType == NetworkInterfaceType.Wireless80211 || ni.NetworkInterfaceType == NetworkInterfaceType.Ethernet)
-                    {
-                        foreach (UnicastIPAddressInformation ip in ni.GetIPProperties().UnicastAddresses)
-                        {
-                            if (ip.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
-                            {
-                                return Regex.Replace(ni.GetPhysicalAddress().ToString(), "[^0-9 ]", "");
-                            }
-                        }
-                    }
-                }
-            }
-            return String.Empty;
-        }
-
-        public String getMotherBoardID()
-        {
-            String serial = "";
-            try
-            {
-                ManagementObjectSearcher mos = new ManagementObjectSearcher("SELECT SerialNumber FROM Win32_BaseBoard");
-                ManagementObjectCollection moc = mos.Get();
-
-                foreach (ManagementObject mo in moc)
-                {
-                //    serial = mo["SerialNumber"].ToString();
-                    serial = Regex.Replace(mo["SerialNumber"].ToString(), "[^0-9 ]", "");
-                }
-                return serial;
-            }
-            catch (Exception) { return serial; }
-        }
-
 
         public string DeCoding(String val)
         {

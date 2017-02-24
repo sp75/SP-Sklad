@@ -102,6 +102,7 @@
           <EntitySet Name="WayBillDetTaxes" EntityType="BaseModel.Store.WayBillDetTaxes" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="WaybillList" EntityType="BaseModel.Store.WaybillList" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="WayBillMake" EntityType="BaseModel.Store.WayBillMake" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WayBillMakeProps" EntityType="BaseModel.Store.WayBillMakeProps" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="WaybillMove" EntityType="BaseModel.Store.WaybillMove" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="WayBillSvc" EntityType="BaseModel.Store.WayBillSvc" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="WMatTurn" EntityType="BaseModel.Store.WMatTurn" store:Type="Tables" Schema="dbo" />
@@ -374,7 +375,10 @@
       [v_TechProcDet].[OnDate] AS [OnDate], 
       [v_TechProcDet].[Name] AS [Name], 
       [v_TechProcDet].[PersonName] AS [PersonName], 
-      [v_TechProcDet].[Num] AS [Num]
+      [v_TechProcDet].[Num] AS [Num], 
+      [v_TechProcDet].[ExtMatAmount] AS [ExtMatAmount], 
+      [v_TechProcDet].[RamaName] AS [RamaName], 
+      [v_TechProcDet].[OutNetto] AS [OutNetto]
       FROM [dbo].[v_TechProcDet] AS [v_TechProcDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_WaybillList" EntityType="BaseModel.Store.v_WaybillList" store:Type="Views" store:Schema="dbo" store:Name="v_WaybillList">
@@ -958,6 +962,18 @@
           <AssociationSet Name="FK_WAYBILLMAKE_WAYBILLLIST" Association="BaseModel.Store.FK_WAYBILLMAKE_WAYBILLLIST">
             <End Role="WaybillList" EntitySet="WaybillList" />
             <End Role="WayBillMake" EntitySet="WayBillMake" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WayBillMakeProps_Kagent" Association="BaseModel.Store.FK_WayBillMakeProps_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="WayBillMakeProps" EntitySet="WayBillMakeProps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WayBillMakeProps_Materials" Association="BaseModel.Store.FK_WayBillMakeProps_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="WayBillMakeProps" EntitySet="WayBillMakeProps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WayBillMakeProps_WaybillList" Association="BaseModel.Store.FK_WayBillMakeProps_WaybillList">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="WayBillMakeProps" EntitySet="WayBillMakeProps" />
           </AssociationSet>
           <AssociationSet Name="FK_WBDAP_CARDID" Association="BaseModel.Store.FK_WBDAP_CARDID">
             <End Role="DiscCards" EntitySet="DiscCards" />
@@ -1917,6 +1933,11 @@
           <Property Name="Notes" Type="nvarchar" MaxLength="255" />
           <Property Name="PersonId" Type="int" />
           <Property Name="WbillId" Type="int" Nullable="false" />
+          <Property Name="MatId" Type="int" />
+          <Property Name="ExtMatAmount" Type="int" />
+          <Property Name="ExtMatId" Type="int" />
+          <Property Name="ExtMat2Id" Type="int" />
+          <Property Name="ExtMat2Amount" Type="int" />
         </EntityType>
         <EntityType Name="TechProcess">
           <Key>
@@ -2122,6 +2143,17 @@
           <Property Name="RecId" Type="int" />
           <Property Name="PersonId" Type="int" />
           <Property Name="Amount" Type="numeric" Nullable="false" Precision="15" Scale="4" />
+        </EntityType>
+        <EntityType Name="WayBillMakeProps">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="WbillId" Type="int" Nullable="false" />
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="PersonId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="WaybillMove">
           <Key>
@@ -2556,6 +2588,9 @@
           <Property Name="Name" Type="nvarchar" MaxLength="128" />
           <Property Name="PersonName" Type="nvarchar" MaxLength="64" />
           <Property Name="Num" Type="int" Nullable="false" />
+          <Property Name="ExtMatAmount" Type="int" />
+          <Property Name="RamaName" Type="nvarchar" MaxLength="255" />
+          <Property Name="OutNetto" Type="numeric" Precision="38" Scale="8" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -4245,6 +4280,44 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_WayBillMakeProps_Kagent">
+          <End Role="Kagent" Type="BaseModel.Store.Kagent" Multiplicity="1" />
+          <End Role="WayBillMakeProps" Type="BaseModel.Store.WayBillMakeProps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="WayBillMakeProps">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WayBillMakeProps_Materials">
+          <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="1" />
+          <End Role="WayBillMakeProps" Type="BaseModel.Store.WayBillMakeProps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="WayBillMakeProps">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WayBillMakeProps_WaybillList">
+          <End Role="WaybillList" Type="BaseModel.Store.WaybillList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WayBillMakeProps" Type="BaseModel.Store.WayBillMakeProps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="WayBillMakeProps">
+              <PropertyRef Name="WbillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_WBDAP_CARDID">
           <End Role="DiscCards" Type="BaseModel.Store.DiscCards" Multiplicity="0..1" />
           <End Role="WayBillDetAddProps" Type="BaseModel.Store.WayBillDetAddProps" Multiplicity="*" />
@@ -4527,8 +4600,9 @@
           <ReturnType>
             <CollectionType>
               <RowType>
-                <Property Name="AmountOut" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="AmountOut" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="OnDate" Type="datetime" />
+                <Property Name="AmountBrutto" Type="numeric" Precision="15" Scale="4" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -5563,6 +5637,18 @@
           <Parameter Name="wh" Type="varchar" Mode="In" />
           <Parameter Name="doc_types" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="REP_4_5" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="on_date" Type="datetime" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="N" Type="bigint" />
+                <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="64" />
+                <Property Name="Saldo" Type="numeric" Precision="38" Scale="2" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="ReservedAllPosition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="wbill_id" Type="int" Mode="In" />
         </Function>
@@ -6208,9 +6294,6 @@
             <End Role="UserTreeView" EntitySet="UserTreeView" />
           </AssociationSet>
           <EntitySet Name="ExtRel" EntityType="BaseModel.ExtRel" />
-          <FunctionImport Name="GetMakeAmount" IsComposable="true" ReturnType="Collection(BaseModel.GetMakeAmount_Result)">
-          <Parameter Name="wbill_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <EntitySet Name="MatRemains" EntityType="BaseModel.MatRemains" />
           <FunctionImport Name="GetActualRemainByWh" ReturnType="Collection(BaseModel.GetActualRemainByWh_Result)">
             <Parameter Name="wid" Mode="In" Type="Int32" />
@@ -6956,10 +7039,6 @@
             <End Role="UserSettings" EntitySet="UserSettings" />
           </AssociationSet>
           <EntitySet Name="v_KAgentSaldo" EntityType="BaseModel.v_KAgentSaldo" />
-          <FunctionImport Name="GetKAgentSaldo" IsComposable="true" ReturnType="Collection(BaseModel.GetKAgentSaldo_Result)">
-            <Parameter Name="ka_id" Mode="In" Type="Int32" />
-            <Parameter Name="on_date" Mode="In" Type="DateTime" />
-          </FunctionImport>
           <EntitySet Name="PosRemains" EntityType="BaseModel.PosRemains" />
           <AssociationSet Name="FK__POSREMAIN__MATID__2CBDA3B5" Association="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5">
             <End Role="Materials" EntitySet="Materials" />
@@ -7022,14 +7101,6 @@
             <Parameter Name="ka_id" Mode="In" Type="Int32" />
             <Parameter Name="checked" Mode="In" Type="Int32" />
             <Parameter Name="pay_type" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="WBListMake" ReturnType="Collection(BaseModel.WBListMake_Result)">
-            <Parameter Name="from_date" Mode="In" Type="DateTime" />
-            <Parameter Name="to_date" Mode="In" Type="DateTime" />
-            <Parameter Name="is_checked" Mode="In" Type="Int32" />
-            <Parameter Name="wh" Mode="In" Type="String" />
-            <Parameter Name="grp_id" Mode="In" Type="Int32" />
-            <Parameter Name="w_type" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetWayBillListWh" IsComposable="true" ReturnType="Collection(BaseModel.GetWayBillListWh_Result)">
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
@@ -7140,6 +7211,37 @@
             <End Role="DiscCardGrp" EntitySet="DiscCardGrp" />
             <End Role="DiscCards" EntitySet="DiscCards" />
           </AssociationSet>
+          <EntitySet Name="WayBillMakeProps" EntityType="BaseModel.WayBillMakeProps" />
+          <AssociationSet Name="FK_WayBillMakeProps_Materials" Association="BaseModel.FK_WayBillMakeProps_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="WayBillMakeProps" EntitySet="WayBillMakeProps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WayBillMakeProps_WaybillList" Association="BaseModel.FK_WayBillMakeProps_WaybillList">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="WayBillMakeProps" EntitySet="WayBillMakeProps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WayBillMakeProps_Kagent" Association="BaseModel.FK_WayBillMakeProps_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="WayBillMakeProps" EntitySet="WayBillMakeProps" />
+          </AssociationSet>
+          <FunctionImport Name="GetMakeAmount" IsComposable="true" ReturnType="Collection(BaseModel.GetMakeAmount_Result)">
+          <Parameter Name="wbill_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="WBListMake" ReturnType="Collection(BaseModel.WBListMake_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="is_checked" Mode="In" Type="Int32" />
+            <Parameter Name="wh" Mode="In" Type="String" />
+            <Parameter Name="grp_id" Mode="In" Type="Int32" />
+            <Parameter Name="w_type" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetKAgentSaldo" IsComposable="true" ReturnType="Collection(BaseModel.GetKAgentSaldo_Result)">
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="on_date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="REP_4_5" IsComposable="true" ReturnType="Collection(BaseModel.REP_4_5_Result)">
+            <Parameter Name="on_date" Mode="In" Type="DateTime" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -7996,10 +8098,6 @@
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_EXTREL_EXTPOSID" FromRole="ExtRel" ToRole="WaybillDet" />
           <NavigationProperty Name="WaybillDet1" Relationship="BaseModel.FK_EXTREL_INTPOSID" FromRole="ExtRel" ToRole="WaybillDet" />
           </EntityType>
-        <ComplexType Name="GetMakeAmount_Result">
-          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
-        </ComplexType>
         <EntityType Name="MatRemains">
           <Key>
             <PropertyRef Name="Id" />
@@ -8166,6 +8264,9 @@
           <Property Type="String" Name="Name" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="PersonName" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="Num" Nullable="false" />
+          <Property Type="Int32" Name="ExtMatAmount" />
+          <Property Type="String" Name="RamaName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="OutNetto" Precision="38" Scale="8" />
         </EntityType>
         <EntityType Name="Measures">
           <Key>
@@ -8294,6 +8395,7 @@
           <NavigationProperty Name="MatChange1" Relationship="BaseModel.FK_MATCHANGE_MATID" FromRole="Materials" ToRole="MatChange" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" FromRole="Materials" ToRole="WaybillDet" />
           <NavigationProperty Name="PosRemains" Relationship="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" FromRole="Materials" ToRole="PosRemains" />
+          <NavigationProperty Name="WayBillMakeProps" Relationship="BaseModel.FK_WayBillMakeProps_Materials" FromRole="Materials" ToRole="WayBillMakeProps" />
         </EntityType>
         <Association Name="FK_CONTRDET_REFERENCE_MATERIAL">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="0..1" />
@@ -10005,6 +10107,11 @@
           <NavigationProperty Name="TechProcess" Relationship="BaseModel.FK_TECHPROCDET_TECHPROCESS" FromRole="TechProcDet" ToRole="TechProcess" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_TECHPROCDET_KAGENT" FromRole="TechProcDet" ToRole="Kagent" />
           <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_TECHPROCDET_WAYBILLLIST" FromRole="TechProcDet" ToRole="WaybillList" />
+          <Property Type="Int32" Name="MatId" />
+          <Property Type="Int32" Name="ExtMatAmount" />
+          <Property Type="Int32" Name="ExtMatId" />
+          <Property Type="Int32" Name="ExtMat2Id" />
+          <Property Type="Int32" Name="ExtMat2Amount" />
         </EntityType>
         <Association Name="FK_TECHPROCDET_TECHPROCESS">
           <End Type="BaseModel.TechProcess" Role="TechProcess" Multiplicity="1" />
@@ -10217,6 +10324,7 @@
           <NavigationProperty Name="PayDoc1" Relationship="BaseModel.FK__PAYDOC__MPERSONI__22401542" FromRole="Kagent" ToRole="PayDoc" />
           <Property Type="Guid" Name="Id" Nullable="false" />
           <NavigationProperty Name="DiscCards" Relationship="BaseModel.FK_DISCCARDS_KAID" FromRole="Kagent" ToRole="DiscCards" />
+          <NavigationProperty Name="WayBillMakeProps" Relationship="BaseModel.FK_WayBillMakeProps_Kagent" FromRole="Kagent" ToRole="WayBillMakeProps" />
         </EntityType>
         <EntityType Name="KontragentGroup">
           <Key>
@@ -10616,6 +10724,7 @@
           <NavigationProperty Name="WayBillSvc" Relationship="BaseModel.FK_WBS_WBILLID" FromRole="WaybillList" ToRole="WayBillSvc" />
           <Property Type="Guid" Name="SessionId" />
           <Property Type="Guid" Name="Id" Nullable="false" />
+          <NavigationProperty Name="WayBillMakeProps" Relationship="BaseModel.FK_WayBillMakeProps_WaybillList" FromRole="WaybillList" ToRole="WayBillMakeProps" />
         </EntityType>
         <Association Name="FK_COMMISSION_WBILLID">
           <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
@@ -11144,11 +11253,6 @@
           <Property Type="DateTime" Name="OnDate" Precision="0" />
           <Property Type="Decimal" Name="Saldo" Precision="38" Scale="2" />
         </EntityType>
-        <ComplexType Name="GetKAgentSaldo_Result">
-          <Property Type="Int32" Name="KaId" Nullable="false" />
-          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="10" />
-          <Property Type="Decimal" Name="Saldo" Nullable="true" Precision="38" Scale="2" />
-        </ComplexType>
         <EntityType Name="PosRemains">
           <Key>
             <PropertyRef Name="Id" />
@@ -11409,46 +11513,6 @@
           <Property Type="String" Name="CashdName" Nullable="true" MaxLength="128" />
           <Property Type="String" Name="AccNum" Nullable="true" MaxLength="64" />
           <Property Type="String" Name="BankName" Nullable="true" MaxLength="128" />
-        </ComplexType>
-        <ComplexType Name="WBListMake_Result">
-          <Property Type="Guid" Name="Id" Nullable="false" />
-          <Property Type="Int32" Name="WbillId" Nullable="false" />
-          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" />
-          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
-          <Property Type="Int32" Name="CurrId" Nullable="true" />
-          <Property Type="String" Name="Reason" Nullable="true" MaxLength="255" />
-          <Property Type="Int32" Name="Checked" Nullable="false" />
-          <Property Type="Decimal" Name="SummAll" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="Int32" Name="WType" Nullable="false" />
-          <Property Type="Decimal" Name="Nds" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="PersonId" Nullable="true" />
-          <Property Type="String" Name="Notes" Nullable="true" MaxLength="255" />
-          <Property Type="Int32" Name="DocId" Nullable="true" />
-          <Property Type="Decimal" Name="SummInCurr" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
-          <Property Type="Decimal" Name="CurrRate" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="AttNum" Nullable="true" MaxLength="15" />
-          <Property Type="DateTime" Name="AttDate" Nullable="true" Precision="23" />
-          <Property Type="String" Name="Received" Nullable="true" MaxLength="64" />
-          <Property Type="DateTime" Name="ToDate" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="DefNum" Nullable="false" />
-          <Property Type="String" Name="RecipeName" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
-          <Property Type="Decimal" Name="AmountIn" Nullable="false" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="MatId" Nullable="false" />
-          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
-          <Property Type="String" Name="KaName" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="MakedPerson" Nullable="true" MaxLength="64" />
-          <Property Type="Int32" Name="MId" Nullable="false" />
-          <Property Type="DateTime" Name="OnDateOut" Nullable="true" Precision="23" />
-          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="38" Scale="8" />
-          <Property Type="DateTime" Name="WriteOnDate" Nullable="true" Precision="23" />
-          <Property Type="String" Name="FromWh" Nullable="true" MaxLength="64" />
-          <Property Type="Int32" Name="FromWId" Nullable="true" />
-          <Property Type="String" Name="DocStatus" Nullable="false" MaxLength="21" />
-          <Property Type="Decimal" Name="Price" Nullable="true" Precision="38" Scale="17" />
-          <Property Type="Decimal" Name="ShippedAmount" Nullable="true" Precision="38" Scale="8" />
         </ComplexType>
         <ComplexType Name="GetWayBillListWh_Result">
           <Property Type="Guid" Name="Id" Nullable="true" />
@@ -11989,6 +12053,114 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="WayBillMakeProps">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="WbillId" Nullable="false" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="Int32" Name="Amount" Nullable="false" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_WayBillMakeProps_Materials" FromRole="WayBillMakeProps" ToRole="Materials" />
+          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WayBillMakeProps_WaybillList" FromRole="WayBillMakeProps" ToRole="WaybillList" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="PersonId" Nullable="false" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_WayBillMakeProps_Kagent" FromRole="WayBillMakeProps" ToRole="Kagent" />
+        </EntityType>
+        <Association Name="FK_WayBillMakeProps_Materials">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
+          <End Type="BaseModel.WayBillMakeProps" Role="WayBillMakeProps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="WayBillMakeProps">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WayBillMakeProps_WaybillList">
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.WayBillMakeProps" Role="WayBillMakeProps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="WayBillMakeProps">
+              <PropertyRef Name="WbillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WayBillMakeProps_Kagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1" />
+          <End Type="BaseModel.WayBillMakeProps" Role="WayBillMakeProps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="WayBillMakeProps">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GetMakeAmount_Result">
+          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="AmountBrutto" Nullable="true" Precision="15" Scale="4" />
+        </ComplexType>
+        <ComplexType Name="WBListMake_Result">
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="WbillId" Nullable="false" />
+          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="String" Name="Reason" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Checked" Nullable="false" />
+          <Property Type="Decimal" Name="SummAll" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Int32" Name="WType" Nullable="false" />
+          <Property Type="Decimal" Name="Nds" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="PersonId" Nullable="true" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="DocId" Nullable="true" />
+          <Property Type="Decimal" Name="SummInCurr" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
+          <Property Type="Decimal" Name="CurrRate" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="AttNum" Nullable="true" MaxLength="15" />
+          <Property Type="DateTime" Name="AttDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Received" Nullable="true" MaxLength="64" />
+          <Property Type="DateTime" Name="ToDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="DefNum" Nullable="false" />
+          <Property Type="String" Name="RecipeName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="AmountIn" Nullable="false" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="KaName" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="MakedPerson" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="MId" Nullable="false" />
+          <Property Type="DateTime" Name="OnDateOut" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="38" Scale="8" />
+          <Property Type="Decimal" Name="AmountBrutto" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="DateTime" Name="WriteOnDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="FromWh" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="FromWId" Nullable="true" />
+          <Property Type="String" Name="DocStatus" Nullable="false" MaxLength="21" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="38" Scale="17" />
+          <Property Type="Decimal" Name="ShippedAmount" Nullable="true" Precision="38" Scale="8" />
+        </ComplexType>
+        <ComplexType Name="GetKAgentSaldo_Result">
+          <Property Type="Int32" Name="KaId" Nullable="false" />
+          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="10" />
+          <Property Type="Decimal" Name="Saldo" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="REP_4_5_Result">
+          <Property Type="Int64" Name="N" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="64" />
+          <Property Type="Decimal" Name="Saldo" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -12729,14 +12901,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetMakeAmount" FunctionName="BaseModel.Store.GetMakeAmount">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetMakeAmount_Result">
-                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="MatRemains">
             <EntityTypeMapping TypeName="BaseModel.MatRemains">
               <MappingFragment StoreEntitySet="MatRemains">
@@ -12853,6 +13017,9 @@
           <EntitySetMapping Name="v_TechProcDet">
             <EntityTypeMapping TypeName="BaseModel.v_TechProcDet">
               <MappingFragment StoreEntitySet="v_TechProcDet">
+                <ScalarProperty Name="OutNetto" ColumnName="OutNetto" />
+                <ScalarProperty Name="RamaName" ColumnName="RamaName" />
+                <ScalarProperty Name="ExtMatAmount" ColumnName="ExtMatAmount" />
                 <ScalarProperty Name="Num" ColumnName="Num" />
                 <ScalarProperty Name="PersonName" ColumnName="PersonName" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -14258,6 +14425,11 @@
           <EntitySetMapping Name="TechProcDet">
             <EntityTypeMapping TypeName="BaseModel.TechProcDet">
               <MappingFragment StoreEntitySet="TechProcDet">
+                <ScalarProperty Name="ExtMat2Amount" ColumnName="ExtMat2Amount" />
+                <ScalarProperty Name="ExtMat2Id" ColumnName="ExtMat2Id" />
+                <ScalarProperty Name="ExtMatId" ColumnName="ExtMatId" />
+                <ScalarProperty Name="ExtMatAmount" ColumnName="ExtMatAmount" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
                 <ScalarProperty Name="WbillId" ColumnName="WbillId" />
                 <ScalarProperty Name="PersonId" ColumnName="PersonId" />
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
@@ -14541,15 +14713,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetKAgentSaldo" FunctionName="BaseModel.Store.GetKAgentSaldo">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetKAgentSaldo_Result">
-                <ScalarProperty Name="KaId" ColumnName="KaId" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="PosRemains">
             <EntityTypeMapping TypeName="BaseModel.PosRemains">
               <MappingFragment StoreEntitySet="PosRemains">
@@ -14689,50 +14852,6 @@
                 <ScalarProperty Name="CashdName" ColumnName="CashdName" />
                 <ScalarProperty Name="AccNum" ColumnName="AccNum" />
                 <ScalarProperty Name="BankName" ColumnName="BankName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="WBListMake" FunctionName="BaseModel.Store.WBListMake">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.WBListMake_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
-                <ScalarProperty Name="Reason" ColumnName="Reason" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
-                <ScalarProperty Name="WType" ColumnName="WType" />
-                <ScalarProperty Name="Nds" ColumnName="Nds" />
-                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="DocId" ColumnName="DocId" />
-                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
-                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
-                <ScalarProperty Name="CurrRate" ColumnName="CurrRate" />
-                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
-                <ScalarProperty Name="AttNum" ColumnName="AttNum" />
-                <ScalarProperty Name="AttDate" ColumnName="AttDate" />
-                <ScalarProperty Name="Received" ColumnName="Received" />
-                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
-                <ScalarProperty Name="DefNum" ColumnName="DefNum" />
-                <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
-                <ScalarProperty Name="MatName" ColumnName="MatName" />
-                <ScalarProperty Name="AmountIn" ColumnName="AmountIn" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
-                <ScalarProperty Name="KaName" ColumnName="KaName" />
-                <ScalarProperty Name="MakedPerson" ColumnName="MakedPerson" />
-                <ScalarProperty Name="MId" ColumnName="MId" />
-                <ScalarProperty Name="OnDateOut" ColumnName="OnDateOut" />
-                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
-                <ScalarProperty Name="WriteOnDate" ColumnName="WriteOnDate" />
-                <ScalarProperty Name="FromWh" ColumnName="FromWh" />
-                <ScalarProperty Name="FromWId" ColumnName="FromWId" />
-                <ScalarProperty Name="DocStatus" ColumnName="DocStatus" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="ShippedAmount" ColumnName="ShippedAmount" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -15226,6 +15345,90 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="WayBillMakeProps">
+            <EntityTypeMapping TypeName="BaseModel.WayBillMakeProps">
+              <MappingFragment StoreEntitySet="WayBillMakeProps">
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetMakeAmount" FunctionName="BaseModel.Store.GetMakeAmount">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetMakeAmount_Result">
+                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="AmountBrutto" ColumnName="AmountBrutto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="WBListMake" FunctionName="BaseModel.Store.WBListMake">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.WBListMake_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="Nds" ColumnName="Nds" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="CurrRate" ColumnName="CurrRate" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="AttNum" ColumnName="AttNum" />
+                <ScalarProperty Name="AttDate" ColumnName="AttDate" />
+                <ScalarProperty Name="Received" ColumnName="Received" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="DefNum" ColumnName="DefNum" />
+                <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="AmountIn" ColumnName="AmountIn" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="MakedPerson" ColumnName="MakedPerson" />
+                <ScalarProperty Name="MId" ColumnName="MId" />
+                <ScalarProperty Name="OnDateOut" ColumnName="OnDateOut" />
+                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
+                <ScalarProperty Name="AmountBrutto" ColumnName="AmountBrutto" />
+                <ScalarProperty Name="WriteOnDate" ColumnName="WriteOnDate" />
+                <ScalarProperty Name="FromWh" ColumnName="FromWh" />
+                <ScalarProperty Name="FromWId" ColumnName="FromWId" />
+                <ScalarProperty Name="DocStatus" ColumnName="DocStatus" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ShippedAmount" ColumnName="ShippedAmount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetKAgentSaldo" FunctionName="BaseModel.Store.GetKAgentSaldo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetKAgentSaldo_Result">
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="REP_4_5" FunctionName="BaseModel.Store.REP_4_5">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.REP_4_5_Result">
+                <ScalarProperty Name="N" ColumnName="N" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

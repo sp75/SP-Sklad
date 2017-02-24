@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmKAgentEdit));
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.ImageList = new System.Windows.Forms.ImageList(this.components);
-            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
-            this.KagentBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.ImageList = new System.Windows.Forms.ImageList();
+            this.styleController1 = new DevExpress.XtraEditors.StyleController();
+            this.KagentBindingSource = new System.Windows.Forms.BindingSource();
+            this.barManager1 = new DevExpress.XtraBars.BarManager();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -44,7 +43,7 @@
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.dropDownButton2 = new DevExpress.XtraEditors.DropDownButton();
-            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu();
             this.dropDownButton3 = new DevExpress.XtraEditors.DropDownButton();
             this.dropDownButton1 = new DevExpress.XtraEditors.DropDownButton();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
@@ -52,18 +51,18 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.DirTreeList = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.TreeListBS = new System.Windows.Forms.BindingSource(this.components);
+            this.TreeListBS = new System.Windows.Forms.BindingSource();
             this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panelControl11 = new DevExpress.XtraEditors.PanelControl();
             this.StartSaldoPanel = new System.Windows.Forms.Panel();
+            this.KASaldoEdit = new DevExpress.XtraEditors.CalcEdit();
             this.checkEdit4 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit3 = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.KASaldoEdit = new DevExpress.XtraEditors.CalcEdit();
             this.StartSaldoDateEdit = new DevExpress.XtraEditors.DateEdit();
             this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -115,7 +114,7 @@
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl8 = new DevExpress.XtraEditors.GroupControl();
             this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
-            this.KAgentDocDS = new System.Windows.Forms.BindingSource(this.components);
+            this.KAgentDocDS = new System.Windows.Forms.BindingSource();
             this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl32 = new DevExpress.XtraEditors.LabelControl();
@@ -146,7 +145,7 @@
             this.DelDiscountBtn = new DevExpress.XtraEditors.SimpleButton();
             this.EditDiscountBtn = new DevExpress.XtraEditors.SimpleButton();
             this.DiscCustomCheckEdit = new DevExpress.XtraEditors.CheckEdit();
-            this.DiscountBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.DiscountBindingSource = new System.Windows.Forms.BindingSource();
             this.checkEdit6 = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl28 = new DevExpress.XtraEditors.LabelControl();
             this.calcEdit1 = new DevExpress.XtraEditors.CalcEdit();
@@ -164,7 +163,7 @@
             this.labelControl51 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl13 = new DevExpress.XtraEditors.GroupControl();
             this.textEdit32 = new DevExpress.XtraEditors.TextEdit();
-            this.AddrresFizBS = new System.Windows.Forms.BindingSource(this.components);
+            this.AddrresFizBS = new System.Windows.Forms.BindingSource();
             this.textEdit33 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit28 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl44 = new DevExpress.XtraEditors.LabelControl();
@@ -180,7 +179,7 @@
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.simpleButton15 = new DevExpress.XtraEditors.SimpleButton();
             this.textEdit26 = new DevExpress.XtraEditors.TextEdit();
-            this.AddrresUrBS = new System.Windows.Forms.BindingSource(this.components);
+            this.AddrresUrBS = new System.Windows.Forms.BindingSource();
             this.labelControl43 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit25 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl42 = new DevExpress.XtraEditors.LabelControl();
@@ -200,7 +199,7 @@
             this.DelPersonBtn = new DevExpress.XtraEditors.SimpleButton();
             this.EditPersonBtn = new DevExpress.XtraEditors.SimpleButton();
             this.KAgentPersonsGridControl = new DevExpress.XtraGrid.GridControl();
-            this.KAgentPersonsBS = new System.Windows.Forms.BindingSource(this.components);
+            this.KAgentPersonsBS = new System.Windows.Forms.BindingSource();
             this.KAgentPersonsGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -212,7 +211,7 @@
             this.DelAccBtn = new DevExpress.XtraEditors.SimpleButton();
             this.EditAccBtn = new DevExpress.XtraEditors.SimpleButton();
             this.AccountsGridControl = new DevExpress.XtraGrid.GridControl();
-            this.v_KAgentAccountBS = new System.Windows.Forms.BindingSource(this.components);
+            this.v_KAgentAccountBS = new System.Windows.Forms.BindingSource();
             this.AccountsGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -225,7 +224,7 @@
             this.panelControl10 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl60 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit27 = new DevExpress.XtraEditors.TextEdit();
-            this.PersonBS = new System.Windows.Forms.BindingSource(this.components);
+            this.PersonBS = new System.Windows.Forms.BindingSource();
             this.labelControl59 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit18 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl58 = new DevExpress.XtraEditors.LabelControl();
@@ -245,7 +244,7 @@
             this.simpleButton12 = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl9 = new DevExpress.XtraEditors.PanelControl();
             this.lookUpEdit2 = new DevExpress.XtraEditors.LookUpEdit();
-            this.KAgentAccountBS = new System.Windows.Forms.BindingSource(this.components);
+            this.KAgentAccountBS = new System.Windows.Forms.BindingSource();
             this.simpleButton14 = new DevExpress.XtraEditors.SimpleButton();
             this.checkEdit5 = new DevExpress.XtraEditors.CheckEdit();
             this.textEdit17 = new DevExpress.XtraEditors.TextEdit();
@@ -260,7 +259,7 @@
             this.panelControl7 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.calcEdit2 = new DevExpress.XtraEditors.CalcEdit();
-            this.MatDiscountDS = new System.Windows.Forms.BindingSource(this.components);
+            this.MatDiscountDS = new System.Windows.Forms.BindingSource();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.MatLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
@@ -271,7 +270,7 @@
             this.panelControl8 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.calcEdit3 = new DevExpress.XtraEditors.CalcEdit();
-            this.KAMatGroupDiscountDS = new System.Windows.Forms.BindingSource(this.components);
+            this.KAMatGroupDiscountDS = new System.Windows.Forms.BindingSource();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
             this.GroupLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
@@ -300,9 +299,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl11)).BeginInit();
             this.panelControl11.SuspendLayout();
             this.StartSaldoPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.KASaldoEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KASaldoEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartSaldoDateEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartSaldoDateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).BeginInit();
@@ -758,16 +757,27 @@
             this.StartSaldoPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.StartSaldoPanel.Controls.Add(this.KASaldoEdit);
             this.StartSaldoPanel.Controls.Add(this.checkEdit4);
             this.StartSaldoPanel.Controls.Add(this.checkEdit3);
             this.StartSaldoPanel.Controls.Add(this.labelControl7);
             this.StartSaldoPanel.Controls.Add(this.labelControl5);
-            this.StartSaldoPanel.Controls.Add(this.KASaldoEdit);
             this.StartSaldoPanel.Controls.Add(this.StartSaldoDateEdit);
             this.StartSaldoPanel.Location = new System.Drawing.Point(17, 36);
             this.StartSaldoPanel.Name = "StartSaldoPanel";
             this.StartSaldoPanel.Size = new System.Drawing.Size(643, 120);
             this.StartSaldoPanel.TabIndex = 43;
+            // 
+            // KASaldoEdit
+            // 
+            this.KASaldoEdit.Location = new System.Drawing.Point(15, 71);
+            this.KASaldoEdit.MenuManager = this.barManager1;
+            this.KASaldoEdit.Name = "KASaldoEdit";
+            this.KASaldoEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.KASaldoEdit.Size = new System.Drawing.Size(189, 22);
+            this.KASaldoEdit.StyleController = this.styleController1;
+            this.KASaldoEdit.TabIndex = 49;
             // 
             // checkEdit4
             // 
@@ -812,20 +822,6 @@
             this.labelControl5.StyleController = this.styleController1;
             this.labelControl5.TabIndex = 43;
             this.labelControl5.Text = "Сума";
-            // 
-            // KASaldoEdit
-            // 
-            this.KASaldoEdit.Location = new System.Drawing.Point(15, 71);
-            this.KASaldoEdit.Name = "KASaldoEdit";
-            this.KASaldoEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.KASaldoEdit.Properties.DisplayFormat.FormatString = "0.00";
-            this.KASaldoEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.KASaldoEdit.Properties.EditFormat.FormatString = "0.00";
-            this.KASaldoEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.KASaldoEdit.Size = new System.Drawing.Size(173, 22);
-            this.KASaldoEdit.StyleController = this.styleController1;
-            this.KASaldoEdit.TabIndex = 44;
             // 
             // StartSaldoDateEdit
             // 
@@ -3303,9 +3299,9 @@
             this.panelControl11.ResumeLayout(false);
             this.StartSaldoPanel.ResumeLayout(false);
             this.StartSaldoPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.KASaldoEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KASaldoEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartSaldoDateEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartSaldoDateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
@@ -3575,7 +3571,6 @@
         private DevExpress.XtraEditors.CheckEdit checkEdit3;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.LabelControl labelControl5;
-        private DevExpress.XtraEditors.CalcEdit KASaldoEdit;
         private DevExpress.XtraEditors.DateEdit StartSaldoDateEdit;
         private System.Windows.Forms.BindingSource DiscountBindingSource;
         private System.Windows.Forms.Panel DiscPanel;
@@ -3741,5 +3736,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl60;
         private DevExpress.XtraEditors.MemoEdit textEdit38;
         private DevExpress.XtraEditors.PanelControl panelControl11;
+        private DevExpress.XtraEditors.CalcEdit KASaldoEdit;
     }
 }

@@ -12,20 +12,17 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class v_TechProcDet
+    public partial class WayBillMakeProps
     {
-        public int DetId { get; set; }
+        public int Id { get; set; }
         public int WbillId { get; set; }
-        public decimal Out { get; set; }
-        public int ProcId { get; set; }
-        public string Notes { get; set; }
-        public Nullable<int> PersonId { get; set; }
+        public int MatId { get; set; }
+        public int Amount { get; set; }
         public System.DateTime OnDate { get; set; }
-        public string Name { get; set; }
-        public string PersonName { get; set; }
-        public int Num { get; set; }
-        public Nullable<int> ExtMatAmount { get; set; }
-        public string RamaName { get; set; }
-        public Nullable<decimal> OutNetto { get; set; }
+        public int PersonId { get; set; }
+    
+        public virtual Materials Materials { get; set; }
+        public virtual WaybillList WaybillList { get; set; }
+        public virtual Kagent Kagent { get; set; }
     }
 }

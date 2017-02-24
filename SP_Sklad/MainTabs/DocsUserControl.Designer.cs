@@ -28,22 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DocsUserControl));
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.DocsTreeList = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.UserTreeImgList = new System.Windows.Forms.ImageList(this.components);
+            this.UserTreeImgList = new System.Windows.Forms.ImageList();
             this.wbContentTab = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.WBGridControl = new DevExpress.XtraGrid.GridControl();
-            this.GetWayBillListBS = new System.Windows.Forms.BindingSource(this.components);
+            this.GetWayBillListBS = new System.Windows.Forms.BindingSource();
             this.WbGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.GridImageList = new System.Windows.Forms.ImageList(this.components);
+            this.GridImageList = new System.Windows.Forms.ImageList();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CheckedItemImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -62,7 +61,7 @@
             this.wbStartDate = new DevExpress.XtraEditors.DateEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
-            this.PageImageList = new System.Windows.Forms.ImageList(this.components);
+            this.PageImageList = new System.Windows.Forms.ImageList();
             this.xtraTabPage15 = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
             this.WaybillDetGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -75,7 +74,7 @@
             this.gridColumn39 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
-            this.WayBillListInfoBS = new System.Windows.Forms.BindingSource(this.components);
+            this.WayBillListInfoBS = new System.Windows.Forms.BindingSource();
             this.row = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.category = new DevExpress.XtraVerticalGrid.Rows.CategoryRow();
             this.row1 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -110,7 +109,7 @@
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl3 = new DevExpress.XtraEditors.SplitContainerControl();
             this.PDgridControl = new DevExpress.XtraGrid.GridControl();
-            this.GetPayDocListBS = new System.Windows.Forms.BindingSource(this.components);
+            this.GetPayDocListBS = new System.Windows.Forms.BindingSource();
             this.PayDocGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox5 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -136,7 +135,7 @@
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl2 = new DevExpress.XtraVerticalGrid.VGridControl();
-            this.PayDocListInfoBS = new System.Windows.Forms.BindingSource(this.components);
+            this.PayDocListInfoBS = new System.Windows.Forms.BindingSource();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.editorRow1 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row13 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -168,7 +167,7 @@
             this.xtraTabPage11 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl4 = new DevExpress.XtraEditors.SplitContainerControl();
             this.PriceListGridControl = new DevExpress.XtraGrid.GridControl();
-            this.PriceListBS = new System.Windows.Forms.BindingSource(this.components);
+            this.PriceListBS = new System.Windows.Forms.BindingSource();
             this.PriceListGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn46 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn47 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -187,14 +186,14 @@
             this.xtraTabControl3 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage14 = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.PriceListDetBS = new System.Windows.Forms.BindingSource(this.components);
+            this.PriceListDetBS = new System.Windows.Forms.BindingSource();
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colPlDetType = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox11 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.colMatId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn38 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barManager1 = new DevExpress.XtraBars.BarManager();
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.NewItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
@@ -210,7 +209,7 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.BarImageList = new System.Windows.Forms.ImageList(this.components);
+            this.BarImageList = new System.Windows.Forms.ImageList();
             this.ExecuteInvBtn = new DevExpress.XtraBars.BarButtonItem();
             this.ExecuteInBtn = new DevExpress.XtraBars.BarButtonItem();
             this.NewPayDocBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -228,9 +227,9 @@
             this.xtraTabPage12 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage13 = new DevExpress.XtraTab.XtraTabPage();
             this.bar2 = new DevExpress.XtraBars.Bar();
-            this.DocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.DocsPopupMenu = new DevExpress.XtraBars.PopupMenu();
+            this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu();
+            this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();

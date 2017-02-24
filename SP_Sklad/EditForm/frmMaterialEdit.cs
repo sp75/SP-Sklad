@@ -42,6 +42,12 @@ namespace SP_Sklad.EditForm
             CurrLookUpEdit.Properties.DataSource = DBHelper.Currency;
             lookUpEdit4.Properties.DataSource = _db.DemandGroup.AsNoTracking().ToList();
             ProducerLookUpEdit.Properties.Items.AddRange(_db.Materials.Where(w => w.Producer != null).Select(s => s.Producer).Distinct().ToList());
+            MatTypeEdit.Properties.DataSource = new List<object>() { new { Id = 1, Name = "Рама" }, new { Id = 2, Name = "Вішало" }};
+
+            using (var s = new UserSettingsRepository(UserSession.UserId, new SkladData.BaseEntities()))
+            {
+                WeightEdit.ReadOnly = !(s.AccessEditWeight == "1");
+            }
 
             tree = new List<CatalogTreeList>();
             TreeListBS.DataSource = tree;
@@ -284,6 +290,7 @@ namespace SP_Sklad.EditForm
         private void simpleButton3_Click(object sender, EventArgs e)
         {
             BarCodeEdit.EditValue = NameTextEdit.Text.ToArray().Sum(s=> Convert.ToInt32(s));
+            textEdit4.EditValue = NameTextEdit.EditValue;
         }
 
         private void simpleButton4_Click(object sender, EventArgs e)
@@ -376,11 +383,11 @@ namespace SP_Sklad.EditForm
         private void AddPriceBtn_Click(object sender, EventArgs e)
         {
             var row = MatPriceGridView.GetFocusedRow() as dynamic;
-            AddIndividualPric(row.PTypeId);
+            AddIndividualPrice(row.PTypeId);
             EditPriceBtn.PerformClick();
         }
 
-        private void AddIndividualPric(int PTypeId)
+        private void AddIndividualPrice(int PTypeId)
         {
             if (!_db.MatPrices.Any(a => a.PTypeId == PTypeId && a.MatId == _mat_id))
             {
@@ -421,7 +428,7 @@ namespace SP_Sklad.EditForm
             }
             else
             {
-                AddIndividualPric(PTypeId);
+                AddIndividualPrice(PTypeId);
             }
         }
 
@@ -580,6 +587,27 @@ namespace SP_Sklad.EditForm
             byte[] ar = ms.ToArray();
            
             _mat.BMP = ar;
+        }
+
+        private void lookUpEdit5_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                MatTypeEdit.EditValue = null;
+            }
+        }
+
+        private void WeightEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                var frm = new frmMatListEdit(_mat.Name);
+
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    WeightEdit.EditValue = frm.AmountEdit.Value;
+                }
+            }
         }
     }
 

@@ -280,17 +280,17 @@ namespace SP_Sklad.MainTabs
                         case 43:
                             var c_row = (CountriesGridView.GetFocusedRow() as Countries);
                             result = new frmCountriesEdit(c_row.CId).ShowDialog();
-                           /* if (result == DialogResult.OK)
-                            {
-                                var ds = CountriesBS.DataSource as List<Countries>;
-                                var fff = ds.FirstOrDefault(w => w.CId == c_row.CId);
-                                fff = DB.SkladBase().Countries.AsNoTracking().Where(w => w.CId == c_row.CId).First();
-                                CountriesGridView.SetFocusedValue(fff);
+                            /* if (result == DialogResult.OK)
+                             {
+                                 var ds = CountriesBS.DataSource as List<Countries>;
+                                 var fff = ds.FirstOrDefault(w => w.CId == c_row.CId);
+                                 fff = DB.SkladBase().Countries.AsNoTracking().Where(w => w.CId == c_row.CId).First();
+                                 CountriesGridView.SetFocusedValue(fff);
                                 
-                       //         CountriesGridView.RefreshRow(CountriesGridView.FocusedRowHandle);
-                                CountriesGridView.RefreshData();
-                             //   CountriesBS.ResetBindings(false);
-                            }*/
+                        //         CountriesGridView.RefreshRow(CountriesGridView.FocusedRowHandle);
+                                 CountriesGridView.RefreshData();
+                              //   CountriesBS.ResetBindings(false);
+                             }*/
 
                             break;
 
@@ -320,7 +320,7 @@ namespace SP_Sklad.MainTabs
 
                         case 109:
                             var dc = DiscCardsGridView.GetFocusedRow() as v_DiscCards;
-                            new frmDiscountCardEdit(dc.CardId).ShowDialog();
+                            result = new frmDiscountCardEdit(dc.CardId).ShowDialog();
                             break;
                     }
                     break;

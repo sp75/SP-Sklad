@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWayBillOut));
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barManager1 = new DevExpress.XtraBars.BarManager();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.PrevievBtn = new DevExpress.XtraBars.BarButtonItem();
             this.KagBalBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -53,7 +52,7 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.WBImgList = new System.Windows.Forms.ImageList(this.components);
+            this.WBImgList = new System.Windows.Forms.ImageList();
             this.RsvBarBtn = new DevExpress.XtraBars.BarButtonItem();
             this.RsvAllBarBtn = new DevExpress.XtraBars.BarButtonItem();
             this.DelRsvBarBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -61,12 +60,12 @@
             this.MarkBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.WeighBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
+            this.styleController1 = new DevExpress.XtraEditors.StyleController();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.PersonEditBtn = new DevExpress.XtraEditors.SimpleButton();
             this.PersonComboBox = new DevExpress.XtraEditors.LookUpEdit();
-            this.WaybillListBS = new System.Windows.Forms.BindingSource(this.components);
+            this.WaybillListBS = new System.Windows.Forms.BindingSource();
             this.NotesEdit = new DevExpress.XtraEditors.TextEdit();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
@@ -87,7 +86,7 @@
             this.payDocUserControl1 = new SP_Sklad.MainTabs.PayDocUserControl();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
             this.WaybillDetOutGridControl = new DevExpress.XtraGrid.GridControl();
-            this.WaybillDetOutBS = new System.Windows.Forms.BindingSource(this.components);
+            this.WaybillDetOutBS = new System.Windows.Forms.BindingSource();
             this.WaybillDetOutGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -111,7 +110,7 @@
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
@@ -938,8 +937,9 @@
             this.repositoryItemCalcEdit1.AutoHeight = false;
             this.repositoryItemCalcEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemCalcEdit1.DisplayFormat.FormatString = "0.0000";
-            this.repositoryItemCalcEdit1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.repositoryItemCalcEdit1.Mask.EditMask = "\\d+(\\R.\\d{0,2})?";
+            this.repositoryItemCalcEdit1.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.repositoryItemCalcEdit1.Mask.UseMaskAsDisplayFormat = true;
             this.repositoryItemCalcEdit1.Name = "repositoryItemCalcEdit1";
             // 
             // gridColumn5

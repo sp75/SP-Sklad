@@ -11,10 +11,10 @@ namespace SP_Sklad.Common
         {
             #region Init
 
-            public UserSettingsRepository(int user_id)
+            public UserSettingsRepository(int user_id , BaseEntities db)
             {
                 _user_id = user_id;
-                _db = new BaseEntities();
+                _db = db ;
                 _settings_collection = _db.UserSettings.Where(w => w.UserId == user_id).ToList();
             }
 
@@ -52,6 +52,11 @@ namespace SP_Sklad.Common
                 _db.SaveChanges();
             }
 
+            public string Get(string name)
+            {
+                return _settings_collection.Any(f => f.Name == name) ? _settings_collection.FirstOrDefault(f => f.Name == name).Value : "";
+            }
+
             #endregion
 
           
@@ -62,7 +67,7 @@ namespace SP_Sklad.Common
             /// </summary>
             public string ComPortName
             {
-                get { return _settings_collection.Any(f => f.Name == "COM_PORT_NAME") ? _settings_collection.FirstOrDefault(f => f.Name == "COM_PORT_NAME").Value : ""; }
+                get { return Get("COM_PORT_NAME"); }
                 set { Set("COM_PORT_NAME", value); }
             }
 
@@ -71,8 +76,17 @@ namespace SP_Sklad.Common
             /// </summary>
             public string ComPortSpeed
             {
-                get { return _settings_collection.Any(f => f.Name == "COM_PORT_SPEED") ? _settings_collection.FirstOrDefault(f => f.Name == "COM_PORT_SPEED").Value : ""; }
+                get { return Get("COM_PORT_SPEED"); }
                 set { Set("COM_PORT_SPEED", value); }
+            }
+
+            /// <summary>
+            /// External Access: edit weight
+            /// </summary>
+            public string AccessEditWeight
+            {
+                get { return Get("ACCESS_EDIT_WEIGHT"); }
+                set { Set("ACCESS_EDIT_WEIGHT", value); }
             }
 
             #endregion
@@ -105,7 +119,7 @@ namespace SP_Sklad.Common
 
             public void Dispose()
             {
-                _db.Dispose();
+          //      _db.Dispose();
             }
         }
 }

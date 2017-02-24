@@ -29,6 +29,7 @@ namespace SP_Sklad.SkladData
             this.MatChange1 = new HashSet<MatChange>();
             this.WaybillDet = new HashSet<WaybillDet>();
             this.PosRemains = new HashSet<PosRemains>();
+            this.WayBillMakeProps = new HashSet<WayBillMakeProps>();
         }
     
         public int MatId { get; set; }
@@ -81,5 +82,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<MatChange> MatChange1 { get; set; }
         public virtual ICollection<WaybillDet> WaybillDet { get; set; }
         public virtual ICollection<PosRemains> PosRemains { get; set; }
+        public virtual ICollection<WayBillMakeProps> WayBillMakeProps { get; set; }
     }
 }

@@ -318,7 +318,7 @@ namespace SP_Sklad.EditForm
             {
                 if(_ka.StartSaldo == null)
                 {
-                    KASaldoEdit.EditValue = 0;
+                    KASaldoEdit.EditValue = 0.00m;
                     StartSaldoDateEdit.DateTime = DateTime.Now;
                 }
             }
@@ -342,7 +342,11 @@ namespace SP_Sklad.EditForm
             {
                 if (checkEdit4.Checked)
                 {
-                    _ka.StartSaldo = KASaldoEdit.Value * -1;
+                    _ka.StartSaldo = KASaldoEdit.Value * -1.00m;
+                }
+                else
+                {
+                    _ka.StartSaldo = KASaldoEdit.Value;
                 }
             }
 

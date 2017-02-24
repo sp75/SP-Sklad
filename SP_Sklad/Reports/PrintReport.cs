@@ -245,7 +245,7 @@ namespace SP_Sklad.Reports
                 int grp = Convert.ToInt32(MatGroup.GrpId);
                 int kid = Convert.ToInt32(Kagent.KaId);
                 string wh = Convert.ToString(Warehouse.WId);
-                var mat = db.REP_4_25(StartDate, EndDate, grp, kid, wh, "1,").ToList();
+                var mat = db.REP_4_25(StartDate, EndDate, grp, kid, wh, DocStr).ToList();
 
                 if (!mat.Any())
                 {
@@ -278,16 +278,12 @@ namespace SP_Sklad.Reports
 
             if (idx == 5)
             {
-                var kagents = db.Kagent.Where(w => w.Deleted == 0 && (w.Archived ?? 0) == 0).Select(s => new
-                {
-                    s.Name,
-                    Saldo = db.GetKAgentSaldo(s.KaId, OnDate).Select(kss => kss.Saldo).FirstOrDefault()// db.KAgentSaldo.Where(ks => ks.KAId == s.KaId && ks.OnDate <= OnDate).OrderByDescending(o => o.OnDate).Select(kss => kss.Saldo).Take(1).FirstOrDefault()
-                }).ToList().Where(w => w.Saldo > 0).Select((s, index) => new
+                var kagents = db.REP_4_5(OnDate).Where(w => w.Saldo > 0).ToList().Select((s, index) => new
                 {
                     N = index + 1,
                     s.Name,
                     s.Saldo
-                });
+                }); 
 
                 if (!kagents.Any())
                 {
@@ -302,16 +298,12 @@ namespace SP_Sklad.Reports
 
             if (idx == 6)
             {
-                var kagents = db.Kagent.Where(w => w.Deleted == 0 && (w.Archived ?? 0) == 0).Select(s => new
-                {
-                    s.Name,
-                    Saldo = db.GetKAgentSaldo(s.KaId, OnDate).Select(kss => kss.Saldo).FirstOrDefault() // db.KAgentSaldo.Where(ks => ks.KAId == s.KaId && ks.OnDate <= OnDate).OrderByDescending(o => o.OnDate).Select(kss => kss.Saldo).Take(1).FirstOrDefault()
-                }).ToList().Where(w => w.Saldo < 0).Select((s, index) => new
+                var kagents = db.REP_4_5(OnDate).Where(w => w.Saldo < 0).ToList().Where(w => w.Saldo < 0).Select((s, index) => new
                 {
                     N = index + 1,
                     s.Name,
                     s.Saldo
-                }); ;
+                }); 
 
                 if (!kagents.Any())
                 {

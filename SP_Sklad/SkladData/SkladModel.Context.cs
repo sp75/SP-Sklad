@@ -144,6 +144,7 @@ namespace SP_Sklad.SkladData
         public DbSet<v_Docs> v_Docs { get; set; }
         public DbSet<v_DiscCards> v_DiscCards { get; set; }
         public DbSet<DiscCardGrp> DiscCardGrp { get; set; }
+        public DbSet<WayBillMakeProps> WayBillMakeProps { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)
@@ -754,16 +755,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("type_tree", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetWhTree_Result>("GetWhTree", user_idParameter, type_treeParameter);
-        }
-    
-        [EdmFunction("BaseEntities", "GetMakeAmount")]
-        public virtual IQueryable<GetMakeAmount_Result> GetMakeAmount(Nullable<int> wbill_id)
-        {
-            var wbill_idParameter = wbill_id.HasValue ?
-                new ObjectParameter("wbill_id", wbill_id) :
-                new ObjectParameter("wbill_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMakeAmount_Result>("[BaseEntities].[GetMakeAmount](@wbill_id)", wbill_idParameter);
         }
     
         public virtual ObjectResult<GetActualRemainByWh_Result> GetActualRemainByWh(Nullable<int> wid, Nullable<int> mat_id)
@@ -1600,20 +1591,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<REP_1_Result>("REP_1", from_dateParameter, to_dateParameter, grp_idParameter, ka_idParameter, whParameter, doc_typesParameter);
         }
     
-        [EdmFunction("BaseEntities", "GetKAgentSaldo")]
-        public virtual IQueryable<GetKAgentSaldo_Result> GetKAgentSaldo(Nullable<int> ka_id, Nullable<System.DateTime> on_date)
-        {
-            var ka_idParameter = ka_id.HasValue ?
-                new ObjectParameter("ka_id", ka_id) :
-                new ObjectParameter("ka_id", typeof(int));
-    
-            var on_dateParameter = on_date.HasValue ?
-                new ObjectParameter("on_date", on_date) :
-                new ObjectParameter("on_date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetKAgentSaldo_Result>("[BaseEntities].[GetKAgentSaldo](@ka_id, @on_date)", ka_idParameter, on_dateParameter);
-        }
-    
         public virtual ObjectResult<Nullable<int>> CopyMaterial(Nullable<int> mat_id)
         {
             var mat_idParameter = mat_id.HasValue ?
@@ -1688,35 +1665,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("pay_type", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPayDocList_Result>("GetPayDocList", doc_typeParameter, from_dateParameter, to_dateParameter, ka_idParameter, checkedParameter, pay_typeParameter);
-        }
-    
-        public virtual ObjectResult<WBListMake_Result> WBListMake(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> is_checked, string wh, Nullable<int> grp_id, Nullable<int> w_type)
-        {
-            var from_dateParameter = from_date.HasValue ?
-                new ObjectParameter("from_date", from_date) :
-                new ObjectParameter("from_date", typeof(System.DateTime));
-    
-            var to_dateParameter = to_date.HasValue ?
-                new ObjectParameter("to_date", to_date) :
-                new ObjectParameter("to_date", typeof(System.DateTime));
-    
-            var is_checkedParameter = is_checked.HasValue ?
-                new ObjectParameter("is_checked", is_checked) :
-                new ObjectParameter("is_checked", typeof(int));
-    
-            var whParameter = wh != null ?
-                new ObjectParameter("wh", wh) :
-                new ObjectParameter("wh", typeof(string));
-    
-            var grp_idParameter = grp_id.HasValue ?
-                new ObjectParameter("grp_id", grp_id) :
-                new ObjectParameter("grp_id", typeof(int));
-    
-            var w_typeParameter = w_type.HasValue ?
-                new ObjectParameter("w_type", w_type) :
-                new ObjectParameter("w_type", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WBListMake_Result>("WBListMake", from_dateParameter, to_dateParameter, is_checkedParameter, whParameter, grp_idParameter, w_typeParameter);
         }
     
         [EdmFunction("BaseEntities", "GetWayBillListWh")]
@@ -1992,6 +1940,69 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("wh", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<PosGet_Result>("[BaseEntities].[PosGet](@mat_id, @w_id, @ka_id, @on_date, @get_empty, @wh)", mat_idParameter, w_idParameter, ka_idParameter, on_dateParameter, get_emptyParameter, whParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetMakeAmount")]
+        public virtual IQueryable<GetMakeAmount_Result> GetMakeAmount(Nullable<int> wbill_id)
+        {
+            var wbill_idParameter = wbill_id.HasValue ?
+                new ObjectParameter("wbill_id", wbill_id) :
+                new ObjectParameter("wbill_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMakeAmount_Result>("[BaseEntities].[GetMakeAmount](@wbill_id)", wbill_idParameter);
+        }
+    
+        public virtual ObjectResult<WBListMake_Result> WBListMake(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> is_checked, string wh, Nullable<int> grp_id, Nullable<int> w_type)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var is_checkedParameter = is_checked.HasValue ?
+                new ObjectParameter("is_checked", is_checked) :
+                new ObjectParameter("is_checked", typeof(int));
+    
+            var whParameter = wh != null ?
+                new ObjectParameter("wh", wh) :
+                new ObjectParameter("wh", typeof(string));
+    
+            var grp_idParameter = grp_id.HasValue ?
+                new ObjectParameter("grp_id", grp_id) :
+                new ObjectParameter("grp_id", typeof(int));
+    
+            var w_typeParameter = w_type.HasValue ?
+                new ObjectParameter("w_type", w_type) :
+                new ObjectParameter("w_type", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WBListMake_Result>("WBListMake", from_dateParameter, to_dateParameter, is_checkedParameter, whParameter, grp_idParameter, w_typeParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetKAgentSaldo")]
+        public virtual IQueryable<GetKAgentSaldo_Result> GetKAgentSaldo(Nullable<int> ka_id, Nullable<System.DateTime> on_date)
+        {
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var on_dateParameter = on_date.HasValue ?
+                new ObjectParameter("on_date", on_date) :
+                new ObjectParameter("on_date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetKAgentSaldo_Result>("[BaseEntities].[GetKAgentSaldo](@ka_id, @on_date)", ka_idParameter, on_dateParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "REP_4_5")]
+        public virtual IQueryable<REP_4_5_Result> REP_4_5(Nullable<System.DateTime> on_date)
+        {
+            var on_dateParameter = on_date.HasValue ?
+                new ObjectParameter("on_date", on_date) :
+                new ObjectParameter("on_date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_4_5_Result>("[BaseEntities].[REP_4_5](@on_date)", on_dateParameter);
         }
     }
 }
