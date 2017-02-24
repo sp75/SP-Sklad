@@ -51,5 +51,6 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> BasePrice { get; set; }
         public Nullable<decimal> SumNds { get; set; }
         public string GrpName { get; set; }
+        public Nullable<decimal> DiscountPrice { get; set; }
     }
 }

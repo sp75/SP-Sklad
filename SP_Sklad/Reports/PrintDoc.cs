@@ -116,7 +116,7 @@ namespace SP_Sklad.Reports
             int wbill_id = wb.First().WbillId; 
 
             dataForReport.Add("WayBillList", wb);
-            dataForReport.Add("range1", db.GetWaybillDetIn(wbill_id).ToList());
+            dataForReport.Add("range1", db.GetWaybillDetIn(wbill_id).OrderBy(o => o.Num).ToList());
 
              IHelper.Print(dataForReport, template_name);
         }
@@ -129,7 +129,7 @@ namespace SP_Sklad.Reports
             int wbill_id = wb.First().WbillId;
 
             dataForReport.Add("WayBillList", wb);
-            dataForReport.Add("WayBillItems", db.GetWaybillDetIn(wbill_id).ToList());
+            dataForReport.Add("WayBillItems", db.GetWaybillDetIn(wbill_id).OrderBy(o => o.Num).ToList());
             dataForReport.Add("Commission", db.Commission.Where(w => w.WbillId == wbill_id).Select(s => new
             {
                 MainName = s.Kagent.Name,
@@ -148,7 +148,7 @@ namespace SP_Sklad.Reports
 
             var wb = db.v_WaybillList.Where(w => w.Id == id).AsNoTracking().ToList();
             int wbill_id = wb.First().WbillId;
-            var items = db.GetWaybillDetIn(wbill_id).ToList();
+            var items = db.GetWaybillDetIn(wbill_id).OrderBy(o => o.Num).ToList();
 
             var mat_grp = items.GroupBy(g => new { g.GrpName, g.GrpId }).Select(s => new
             {
@@ -233,7 +233,7 @@ namespace SP_Sklad.Reports
             var ent_id = wb.First().EntId;
             data_report.Add("EntAccount", db.EnterpriseAccount.Where(w => w.KaId == ent_id).ToList());
             data_report.Add("WayBillList", wb);
-            data_report.Add("WayBillItems", db.GetWayBillDetOut(wb.First().WbillId).ToList());
+            data_report.Add("WayBillItems", db.GetWayBillDetOut(wb.First().WbillId).OrderBy(o => o.Num).ToList());
 
             var w_id = wb.First().WbillId;
 
