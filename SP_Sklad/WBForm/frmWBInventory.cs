@@ -357,5 +357,10 @@ namespace SP_Sklad.WBForm
                 ((LookUpEdit)sender).EditValue = IHelper.ShowDirectList(((LookUpEdit)sender).EditValue, 3);
             }
         }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

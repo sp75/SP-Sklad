@@ -176,6 +176,10 @@ namespace SP_Sklad.Reports
                 SecondName = s.Kagent2.Name,
                 ThirdName = s.Kagent3.Name
             }).ToList());
+            dataForReport.Add("SummaryField", items.GroupBy(g => 1).Select(s => new
+            {
+                SummAll = s.Sum(a => (a.Discount*a.Nds)- (a.Amount * a.Price)),
+            }).ToList());
 
             IHelper.Print(dataForReport, template_name);
         }

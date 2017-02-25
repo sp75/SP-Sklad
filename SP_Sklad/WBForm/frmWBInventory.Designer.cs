@@ -356,7 +356,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 548);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 572);
             this.barDockControlBottom.Size = new System.Drawing.Size(969, 0);
             // 
             // barDockControlLeft
@@ -364,14 +364,14 @@
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 524);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 548);
             // 
             // barDockControl3
             // 
             this.barDockControl3.CausesValidation = false;
             this.barDockControl3.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControl3.Location = new System.Drawing.Point(969, 24);
-            this.barDockControl3.Size = new System.Drawing.Size(0, 524);
+            this.barDockControl3.Size = new System.Drawing.Size(0, 548);
             // 
             // standaloneBarDockControl1
             // 
@@ -439,7 +439,7 @@
             this.panelControl2.Controls.Add(this.OkButton);
             this.panelControl2.Controls.Add(this.simpleButton1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl2.Location = new System.Drawing.Point(0, 496);
+            this.panelControl2.Location = new System.Drawing.Point(0, 520);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(969, 52);
             this.panelControl2.TabIndex = 17;
@@ -462,6 +462,7 @@
             this.simpleButton1.Size = new System.Drawing.Size(100, 30);
             this.simpleButton1.TabIndex = 0;
             this.simpleButton1.Text = "Відмінити";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // panelControl3
             // 
@@ -810,7 +811,7 @@
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl5.Location = new System.Drawing.Point(0, 239);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(969, 257);
+            this.panelControl5.Size = new System.Drawing.Size(969, 281);
             this.panelControl5.TabIndex = 19;
             // 
             // InventoryDetGridControl
@@ -825,7 +826,7 @@
             this.repositoryItemImageComboBox2,
             this.repositoryItemImageComboBox3,
             this.repositoryItemCalcEdit1});
-            this.InventoryDetGridControl.Size = new System.Drawing.Size(965, 253);
+            this.InventoryDetGridControl.Size = new System.Drawing.Size(965, 277);
             this.InventoryDetGridControl.TabIndex = 1;
             this.InventoryDetGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.InventoryDetGridView});
@@ -855,6 +856,7 @@
             this.InventoryDetGridView.GridControl = this.InventoryDetGridControl;
             this.InventoryDetGridView.Images = this.WBImgList;
             this.InventoryDetGridView.Name = "InventoryDetGridView";
+            this.InventoryDetGridView.OptionsView.ShowFooter = true;
             this.InventoryDetGridView.OptionsView.ShowGroupPanel = false;
             this.InventoryDetGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.InventoryDetGridView_PopupMenuShowing);
             this.InventoryDetGridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.InventoryDetGridView_CellValueChanged);
@@ -1021,6 +1023,8 @@
             this.bandedGridColumn3.Name = "bandedGridColumn3";
             this.bandedGridColumn3.OptionsColumn.AllowEdit = false;
             this.bandedGridColumn3.OptionsColumn.ReadOnly = true;
+            this.bandedGridColumn3.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SumAll", "{0:0.00}")});
             this.bandedGridColumn3.Visible = true;
             this.bandedGridColumn3.Width = 113;
             // 
@@ -1056,7 +1060,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(969, 548);
+            this.ClientSize = new System.Drawing.Size(969, 572);
             this.Controls.Add(this.panelControl5);
             this.Controls.Add(this.standaloneBarDockControl5);
             this.Controls.Add(this.panelControl3);
