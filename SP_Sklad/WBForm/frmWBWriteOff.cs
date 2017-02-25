@@ -130,7 +130,13 @@ namespace SP_Sklad.WBForm
 
                 wb.WaybillMove = _db.WaybillMove.Find(_wbill_id);
 
-                CommissionBS.DataSource = _db.Commission.FirstOrDefault(w => w.WbillId == _wbill_id); ;
+                var com = _db.Commission.FirstOrDefault(w => w.WbillId == _wbill_id); 
+                if(com == null)
+                {
+                    com = _db.Commission.Add(new Commission { WbillId = _wbill_id.Value, KaId = DBHelper.CurrentUser.KaId });
+                }
+
+                CommissionBS.DataSource = com;
             }
         }
 
