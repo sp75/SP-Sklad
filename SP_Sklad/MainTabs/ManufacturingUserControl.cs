@@ -254,28 +254,34 @@ namespace SP_Sklad.MainTabs
                         }
 
                         var wb = db.WaybillList.Find(focused_row.WbillId);
-                        if (wb != null)
+                        if (wb == null)
                         {
-                            if (wb.Checked == 2)
+                            MessageBox.Show(Resources.not_find_wb);
+                            return;
+                        }
+                        if (wb.SessionId != null)
+                        {
+                            MessageBox.Show(Resources.deadlock);
+                            return;
+                        }
+
+
+                        if (wb.Checked == 2)
+                        {
+                            if ((wb.WType == -20 && (focused_row.ShippedAmount ?? 0) == 0) || wb.WType == -22)
                             {
-                                if ((wb.WType == -20 && (focused_row.ShippedAmount ?? 0) == 0) || wb.WType == -22)
-                                {
-                                    DBHelper.StornoOrder(db, focused_row.WbillId);
-                                }
-                                else if (wb.WType == -20)
-                                {
-                                    MessageBox.Show("Частина товару вже відгружена на склад!");
-                                }
+                                DBHelper.StornoOrder(db, focused_row.WbillId);
                             }
-                            else
+                            else if (wb.WType == -20)
                             {
-                                DBHelper.ExecuteOrder(db, focused_row.WbillId);
+                                MessageBox.Show("Частина товару вже відгружена на склад!");
                             }
                         }
                         else
                         {
-                            MessageBox.Show(Resources.not_find_wb);
+                            DBHelper.ExecuteOrder(db, focused_row.WbillId);
                         }
+
                         break;
                 }
             }
@@ -294,22 +300,22 @@ namespace SP_Sklad.MainTabs
             {
                 try
                 {
-                    switch (focused_tree_node.GType)
-                    {
-                        case 3:
-                        case 1: db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK) where WbillId = {0}", focused_row.WbillId).FirstOrDefault();
-                            break;
-                    }
-
                     if (MessageBox.Show(Resources.delete_wb, "Відалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                     {
                         switch (focused_tree_node.GType)
                         {
                             case 3:
                             case 1:
-                                db.DeleteWhere<WaybillList>(w => w.WbillId == focused_row.WbillId);
+                                var wb = db.WaybillList.FirstOrDefault(w => w.WbillId == focused_row.WbillId && w.SessionId == null);
+                                if (wb != null)
+                                {
+                                    db.WaybillList.Remove(wb);
+                                }
+                                else
+                                {
+                                    MessageBox.Show(Resources.deadlock);
+                                }
                                 break;
-
                         }
                         db.SaveChanges();
                     }

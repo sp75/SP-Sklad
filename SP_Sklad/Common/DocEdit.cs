@@ -30,11 +30,9 @@ namespace SP_Sklad.Common
 
            using (var db = new BaseEntities())
            {
-               using (var trans = db.Database.BeginTransaction())
-               {
                    try
                    {
-                       var wb = db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0}", dr.WbillId).FirstOrDefault();
+                       var wb = db.WaybillList.FirstOrDefault(f => f.WbillId == dr.WbillId);
 
                        if (wb == null)
                        {
@@ -69,8 +67,6 @@ namespace SP_Sklad.Common
                        {
                            return;
                        }
-
-                       trans.Commit();
 
                        if (dr.WType == 1 || dr.WType == 16)
                        {
@@ -129,8 +125,7 @@ namespace SP_Sklad.Common
 
                        return;
                    }
-               }
-           }
+  }
        }
 
        public static void PDEdit(GetPayDocList_Result pd_row)

@@ -29,14 +29,19 @@ namespace SP_Sklad.Common
 
             using (var db = new BaseEntities())
             {
-                var trans = db.Database.BeginTransaction();
                 try
                 {
-                    var wb = db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0}", dr.WbillId).FirstOrDefault();
+                    var wb = db.WaybillList.FirstOrDefault(f => f.WbillId == dr.WbillId);
 
                     if (wb == null)
                     {
                         MessageBox.Show(Resources.not_find_wb);
+                        return;
+                    }
+
+                    if (wb.SessionId != null)
+                    {
+                        MessageBox.Show(Resources.deadlock);
                         return;
                     }
 
@@ -56,7 +61,7 @@ namespace SP_Sklad.Common
                     {
                         return;
                     }
-                    trans.Commit();
+               
 
                     if (dr.WType == -20)
                     {
