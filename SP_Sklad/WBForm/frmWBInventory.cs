@@ -23,8 +23,9 @@ namespace SP_Sklad.WBForm
 
         BaseEntities _db { get; set; }
         private int? _wbill_id { get; set; }
-        private DbContextTransaction current_transaction { get; set; }
+     //   private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
+        public bool is_new_record { get; set; }
         private InventoryDet focused_dr
         {
             get { return InventoryDetGridView.GetFocusedRow() as InventoryDet; }
@@ -32,9 +33,11 @@ namespace SP_Sklad.WBForm
 
         public frmWBInventory(int? wbill_id = null)
         {
+            is_new_record = false;
+
             _wbill_id = wbill_id;
             _db = new BaseEntities();
-            current_transaction = _db.Database.BeginTransaction();
+         //   current_transaction = _db.Database.BeginTransaction();
 
             InitializeComponent();
         }
@@ -50,6 +53,8 @@ namespace SP_Sklad.WBForm
 
             if (_wbill_id == null)
             {
+                is_new_record = true;
+
                 wb = _db.WaybillList.Add(new WaybillList()
                 {
                     Id = Guid.NewGuid(),
@@ -65,26 +70,23 @@ namespace SP_Sklad.WBForm
 
                 _db.SaveChanges();
 
-                _db.Commission.Add(new Commission { WbillId =wb.WbillId,  KaId = DBHelper.CurrentUser.KaId });
+                _db.Commission.Add(new Commission { WbillId = wb.WbillId, KaId = DBHelper.CurrentUser.KaId });
 
                 _wbill_id = wb.WbillId;
             }
             else
             {
-                try
-                {
-                    UpdLockWB();
-                }
-                catch
-                {
-                    Close();
-                }
-
+                wb = _db.WaybillList.FirstOrDefault(f => f.WbillId == _wbill_id);
             }
 
             if (wb != null && wb.WaybillMove != null)
             {
-                wb.UpdatedBy = DBHelper.CurrentUser.UserId;
+                DBHelper.UpdateSessionWaybill(wb.WbillId);
+
+                if (is_new_record) //Послі копіювання згенерувати новий номер
+                {
+                    wb.Num = new BaseEntities().GetDocNum("wb_inventory").FirstOrDefault();
+                }
 
                 WaybillListBS.DataSource = wb;
                 WaybillMoveBS.DataSource = wb.WaybillMove;
@@ -99,7 +101,7 @@ namespace SP_Sklad.WBForm
             RefreshDet();
         }
 
-        private void UpdLockWB()
+     /*   private void UpdLockWB()
         {
             if (wb != null)
             {
@@ -113,7 +115,7 @@ namespace SP_Sklad.WBForm
             }
 
             _db.Entry<WaybillList>(wb).State = EntityState.Modified;
-        }
+        }*/
 
         private void RefreshDet()
         {
@@ -199,19 +201,22 @@ namespace SP_Sklad.WBForm
             {
                 var ew = _db.ExecuteWayBill(wb.WbillId, null).ToList();
             }
-            current_transaction.Commit();
+
+            is_new_record = false;
+
             Close();
         }
 
         private void frmWBInventory_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (current_transaction.UnderlyingTransaction.Connection != null)
+            DBHelper.UpdateSessionWaybill(_wbill_id.Value, true);
+
+            if (is_new_record)
             {
-                current_transaction.Rollback();
+                _db.DeleteWhere<WaybillList>(w => w.WbillId == _wbill_id);
             }
 
             _db.Dispose();
-            current_transaction.Dispose();
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

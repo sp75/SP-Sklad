@@ -144,7 +144,6 @@ namespace SP_Sklad.WBForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-
             if (TurnDocCheckBox.Checked && !DBHelper.CheckOrderedInSuppliers(wb.WbillId, _db)) return;
 
             if (!DBHelper.CheckInDate(wb, _db, OnDateDBEdit.DateTime))
@@ -156,8 +155,6 @@ namespace SP_Sklad.WBForm
 
             wb.UpdatedAt = DateTime.Now;
             _db.Save(wb.WbillId);
-
-          
 
             if (TurnDocCheckBox.Checked)
             {

@@ -26,8 +26,9 @@ namespace SP_Sklad.WBForm
 
         BaseEntities _db { get; set; }
         private int? _wbill_id { get; set; }
-        private DbContextTransaction current_transaction { get; set; }
+     //   private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
+        public bool is_new_record { get; set; }
         private GetWayBillDetOut_Result wbd_row
         {
             get { return WaybillDetOutGridView.GetFocusedRow() as GetWayBillDetOut_Result; }
@@ -36,9 +37,10 @@ namespace SP_Sklad.WBForm
 
         public frmWBManufacture(int? wbill_id = null)
         {
+            is_new_record = false;
             _wbill_id = wbill_id;
             _db = new BaseEntities();
-            current_transaction = _db.Database.BeginTransaction();
+      //      current_transaction = _db.Database.BeginTransaction();
 
             InitializeComponent();
         }
@@ -60,6 +62,8 @@ namespace SP_Sklad.WBForm
 
             if (_wbill_id == null)
             {
+                is_new_record = true;
+
                 wb = _db.WaybillList.Add(new WaybillList()
                 {
                     Id = Guid.NewGuid(),
@@ -80,19 +84,18 @@ namespace SP_Sklad.WBForm
             }
             else
             {
-                try
-                {
-                    UpdLockWB();
-                }
-                catch
-                {
-                    Close();
-                }
-
+                wb = _db.WaybillList.FirstOrDefault(f =>  f.WbillId == _wbill_id);
             }
 
             if (wb != null && wb.WayBillMake != null)
             {
+                DBHelper.UpdateSessionWaybill(wb.WbillId);
+
+                if (is_new_record) //Послі копіювання згенерувати новий номер
+                {
+                    wb.Num = new BaseEntities().GetDocNum("wb_make").FirstOrDefault();
+                }
+
                 wb.UpdatedBy = DBHelper.CurrentUser.UserId;
 
                 TurnDocCheckBox.EditValue = wb.Checked;
@@ -117,7 +120,7 @@ namespace SP_Sklad.WBForm
             RefreshDet();
         }
 
-        private void UpdLockWB()
+   /*     private void UpdLockWB()
         {
             if (wb != null)
             {
@@ -131,7 +134,7 @@ namespace SP_Sklad.WBForm
             }
 
             _db.Entry<WaybillList>(wb).State = EntityState.Modified;
-        }
+        }*/
 
         private void RefreshDet()
         {
@@ -174,13 +177,14 @@ namespace SP_Sklad.WBForm
 
         private void frmWBManufacture_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (current_transaction.UnderlyingTransaction.Connection != null)
+            DBHelper.UpdateSessionWaybill(_wbill_id.Value, true);
+
+            if (is_new_record)
             {
-                current_transaction.Rollback();
+                _db.DeleteWhere<WaybillList>(w => w.WbillId == _wbill_id);
             }
 
             _db.Dispose();
-            current_transaction.Dispose();
         }
 
         private void frmWBManufacture_Shown(object sender, EventArgs e)
@@ -205,8 +209,8 @@ namespace SP_Sklad.WBForm
             {
                 var ew = _db.ExecuteWayBill(wb.WbillId, null).ToList();
             }
-            current_transaction.Commit();
 
+            is_new_record = false;
             Close();
         }
 
@@ -219,8 +223,8 @@ namespace SP_Sklad.WBForm
         {
             if (new frmWriteOffDet(_db, null, wb).ShowDialog() == DialogResult.OK)
             {
-                current_transaction = current_transaction.CommitRetaining(_db);
-                UpdLockWB();
+             //   current_transaction = current_transaction.CommitRetaining(_db);
+          //      UpdLockWB();
                 RefreshDet();
             }
         }
@@ -233,11 +237,9 @@ namespace SP_Sklad.WBForm
             {
                 new frmWriteOffDet(_db, dr.PosId, wb).ShowDialog();
 
-                current_transaction = current_transaction.CommitRetaining(_db);
-                UpdLockWB();
+            //    current_transaction = current_transaction.CommitRetaining(_db);
+            //    UpdLockWB();
                 RefreshDet();
-
-                var dd = _db.Entry<WaybillDet>(_db.WaybillDet.FirstOrDefault(w => w.PosId == dr.PosId)).State;
             }
         }
 
@@ -261,8 +263,8 @@ namespace SP_Sklad.WBForm
             var r = new ObjectParameter("RSV", typeof(Int32));
 
             _db.ReservedPosition(wbd_row.PosId, r);
-            current_transaction = current_transaction.CommitRetaining(_db);
-            UpdLockWB();
+        //    current_transaction = current_transaction.CommitRetaining(_db);
+         //   UpdLockWB();
 
             if (r.Value != null)
             {
@@ -278,8 +280,8 @@ namespace SP_Sklad.WBForm
             if (wbd_row.Rsv == 1 && wbd_row.PosId > 0)
             {
                 _db.DeleteWhere<WMatTurn>(w => w.SourceId == wbd_row.PosId);
-                current_transaction = current_transaction.CommitRetaining(_db);
-                UpdLockWB();
+            //    current_transaction = current_transaction.CommitRetaining(_db);
+           //     UpdLockWB();
                 wbd_row.Rsv = 0;
                 WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
             }
@@ -296,8 +298,8 @@ namespace SP_Sklad.WBForm
                 MessageBox.Show("Не вдалося зарезервувати деякі товари!");
             }
 
-            current_transaction = current_transaction.CommitRetaining(_db);
-            UpdLockWB();
+          //  current_transaction = current_transaction.CommitRetaining(_db);
+          //  UpdLockWB();
 
             RefreshDet();
         }
@@ -305,8 +307,8 @@ namespace SP_Sklad.WBForm
         private void DelAllRsvBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             _db.DeleteAllReservePosition(wb.WbillId);
-            current_transaction = current_transaction.CommitRetaining(_db);
-            UpdLockWB();
+       //     current_transaction = current_transaction.CommitRetaining(_db);
+       //     UpdLockWB();
 
             RefreshDet();
         }

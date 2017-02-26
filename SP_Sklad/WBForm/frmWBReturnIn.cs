@@ -23,8 +23,9 @@ namespace SP_Sklad.WBForm
         private int _wtype { get; set; }
         BaseEntities _db { get; set; }
         private int? _wbill_id { get; set; }
-        private DbContextTransaction current_transaction { get; set; }
+    //    private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
+        public bool is_new_record { get; set; }
         private GetWaybillDetIn_Result focused_dr
         {
             get { return WBDetReInGridView.GetFocusedRow() as GetWaybillDetIn_Result; }
@@ -32,10 +33,11 @@ namespace SP_Sklad.WBForm
 
         public frmWBReturnIn(int wtype, int? wbill_id)
         {
+            is_new_record = false;
             _wtype = wtype;
             _wbill_id = wbill_id;
             _db = new BaseEntities();
-            current_transaction = _db.Database.BeginTransaction(/*IsolationLevel.RepeatableRead*/);
+      //      current_transaction = _db.Database.BeginTransaction(/*IsolationLevel.RepeatableRead*/);
 
             InitializeComponent();
         }
@@ -47,6 +49,8 @@ namespace SP_Sklad.WBForm
 
             if (_wbill_id == null)
             {
+                is_new_record = true;
+
                 wb = _db.WaybillList.Add(new WaybillList()
                 {
                     Id = Guid.NewGuid(),
@@ -64,7 +68,10 @@ namespace SP_Sklad.WBForm
             }
             else
             {
-                try
+
+                wb = _db.WaybillList.FirstOrDefault(f =>  f.WbillId == _wbill_id);
+
+              /*  try
                 {
                     UpdLockWB();
                     _db.Entry<WaybillList>(wb).State = System.Data.Entity.EntityState.Modified;
@@ -74,13 +81,15 @@ namespace SP_Sklad.WBForm
                 {
 
                     Close();
-                }
+                }*/
 
             }
 
             if (wb != null)
             {
-                wb.UpdatedBy = DBHelper.CurrentUser.UserId;
+                DBHelper.UpdateSessionWaybill(wb.WbillId);
+
+             //   wb.UpdatedBy = DBHelper.CurrentUser.UserId;
 
                 TurnDocCheckBox.EditValue = wb.Checked;
 
@@ -97,10 +106,10 @@ namespace SP_Sklad.WBForm
             RefreshDet();
         }
 
-        private void UpdLockWB()
+   /*     private void UpdLockWB()
         {
             wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0}", _wbill_id).FirstOrDefault();
-        }
+        }*/
 
         private void RefreshDet()
         {
@@ -134,13 +143,23 @@ namespace SP_Sklad.WBForm
 
         private void frmWBReturnIn_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (current_transaction.UnderlyingTransaction.Connection != null)
+          /*  if (current_transaction.UnderlyingTransaction.Connection != null)
             {
                 current_transaction.Rollback();
             }
 
             _db.Dispose();
-            current_transaction.Dispose();
+            current_transaction.Dispose();*/
+
+            DBHelper.UpdateSessionWaybill(_wbill_id.Value, true);
+
+            if (is_new_record)
+            {
+                _db.DeleteWhere<WaybillList>(w => w.WbillId == _wbill_id);
+            }
+
+            _db.Dispose();
+          
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -169,12 +188,14 @@ namespace SP_Sklad.WBForm
 
             payDocUserControl1.Execute(wb.WbillId);
 
-            current_transaction.Commit();
+        //    current_transaction.Commit();
 
             if (TurnDocCheckBox.Checked)
             {
                 _db.ExecuteWayBill(wb.WbillId, null);
             }
+
+            is_new_record = false;
 
             Close();
         }
