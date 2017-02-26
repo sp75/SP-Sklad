@@ -29,7 +29,6 @@ namespace SP_Sklad.Common
 
             using (var db = new BaseEntities())
             {
-                var trans = db.Database.BeginTransaction();
                 try
                 {
                     var wb = db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0}", dr.WBillId).FirstOrDefault();
@@ -62,7 +61,6 @@ namespace SP_Sklad.Common
                     {
                         return;
                     }
-                    trans.Commit();
 
                     if (dr.WType == 4 )
                     {
@@ -88,7 +86,6 @@ namespace SP_Sklad.Common
                         }
                     }
 
-
                     if (dr.WType == 7 )
                     {
                         using (var wb_on = new frmWBInventory(wb.WbillId))
@@ -96,7 +93,6 @@ namespace SP_Sklad.Common
                             wb_on.ShowDialog();
                         }
                     }
-
 
                 }
 
