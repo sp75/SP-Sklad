@@ -60,7 +60,7 @@ namespace SP_Sklad.WBForm
                     Id = Guid.NewGuid(),
                     WType = _wtype,
                     OnDate = DBHelper.ServerDateTime(),
-                    Num = new BaseEntities().GetDocNum("wb_in").FirstOrDefault(),
+                    Num = "",
                     CurrId = 2,
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,

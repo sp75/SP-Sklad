@@ -69,7 +69,7 @@ namespace SP_Sklad.WBForm
                     Id = Guid.NewGuid(),
                     WType = _wtype,
                     OnDate = DBHelper.ServerDateTime(),
-                    Num = new BaseEntities().GetDocNum("wb_make").FirstOrDefault(),
+                    Num = "",
                     EntId = DBHelper.Enterprise.KaId,
                     CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                     OnValue = 1,
@@ -95,8 +95,6 @@ namespace SP_Sklad.WBForm
                 {
                     wb.Num = new BaseEntities().GetDocNum("wb_make").FirstOrDefault();
                 }
-
-                wb.UpdatedBy = DBHelper.CurrentUser.UserId;
 
                 TurnDocCheckBox.EditValue = wb.Checked;
                 RecipeComboBox.DataBindings.Add(new Binding("EditValue", wb.WayBillMake, "RecId", true, DataSourceUpdateMode.OnPropertyChanged));

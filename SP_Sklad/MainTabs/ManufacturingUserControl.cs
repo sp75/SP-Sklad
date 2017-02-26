@@ -383,6 +383,7 @@ namespace SP_Sklad.MainTabs
                     var doc = DB.SkladBase().DocCopy(focused_row.Id).FirstOrDefault();
                     using (var wb_in = new frmWBManufacture(doc.out_wbill_id))
                     {
+                        wb_in.is_new_record = true;
                         wb_in.ShowDialog();
                     }
                     break;
@@ -391,6 +392,7 @@ namespace SP_Sklad.MainTabs
                     var doc2 = DB.SkladBase().DocCopy(focused_row.Id).FirstOrDefault();
                     using (var wb_in = new frmWBDeboning(doc2.out_wbill_id))
                     {
+                        wb_in.is_new_record = true;
                         wb_in.ShowDialog();
                     }
                     break;

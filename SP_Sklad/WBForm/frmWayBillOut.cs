@@ -67,7 +67,7 @@ namespace SP_Sklad.WBForm
                     Id = Guid.NewGuid(),
                     WType = _wtype,
                     OnDate = DBHelper.ServerDateTime(),
-                    Num = new BaseEntities().GetDocNum("wb_out").FirstOrDefault(),
+                    Num = "",
                     CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
@@ -88,7 +88,7 @@ namespace SP_Sklad.WBForm
 
                 DBHelper.UpdateSessionWaybill(wb.WbillId);
 
-                if (is_new_record) //Послі копіювання згенерувати новий номер
+                if (is_new_record) 
                 {
                     wb.Num = new BaseEntities().GetDocNum("wb_out").FirstOrDefault();
                 }
