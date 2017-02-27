@@ -26,6 +26,7 @@ namespace SP_Sklad.WBDetForm
 
             _wbill_id = wbill_id;
             _DetId = DetId;
+            _db = new BaseEntities();
 
             using (var s = new UserSettingsRepository(UserSession.UserId, _db))
             {
@@ -35,8 +36,6 @@ namespace SP_Sklad.WBDetForm
 
         private void frmTechProcDet_Load(object sender, EventArgs e)
         {
-            _db = new BaseEntities();
-
             TechProcessCB.Properties.DataSource = _db.TechProcess.Select(s => new { s.ProcId, s.Name }).ToList();
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
 

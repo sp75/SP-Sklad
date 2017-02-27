@@ -216,7 +216,7 @@ namespace SP_Sklad.Reports
                 s.Materials.CF4,
                 s.Materials.CF5,
                 OnDate = DbFunctions.AddDays( s.OnDate , -1)
-            }).ToList();
+            }).OrderBy(o=> o.Num).ToList();
             data_report.Add("Posvitcheny", p);
 
             IHelper.Print(data_report, template_name);

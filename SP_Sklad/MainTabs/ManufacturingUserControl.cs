@@ -466,7 +466,7 @@ namespace SP_Sklad.MainTabs
             }
             else
             {
-                TechProcGridControl.DataSource = null;
+                TechProcDetBS.DataSource = null;
                 gridControl2.DataSource = null;
                 gridControl3.DataSource = null;
                 ManufacturedPosGridControl.DataSource = null;

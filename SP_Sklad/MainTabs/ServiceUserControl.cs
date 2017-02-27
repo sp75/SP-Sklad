@@ -37,8 +37,8 @@ namespace SP_Sklad.MainTabs
                     DirTreeList.ExpandToLevel(1);
 
 
-                    wbStartDate.DateTime = DateTimeDayOfMonthExtensions.FirstDayOfMonth(DateTime.Now);
-                    wbEndDate.DateTime = DateTime.Now.AddDays(1);
+                    wbStartDate.DateTime = DateTime.Now.Date; //DateTimeDayOfMonthExtensions.FirstDayOfMonth(DateTime.Now);
+                    wbEndDate.DateTime = DateTime.Now.Date.AddDays(1);
 
                     UserComboBox.Properties.DataSource = new List<object>() { new { UserId = -1, Name = "Усі" } }.Concat(new BaseEntities().Users.Select(s => new { s.UserId, s.Name })).ToList();
                     UserComboBox.EditValue = -1;
@@ -160,6 +160,7 @@ namespace SP_Sklad.MainTabs
                         OpId = s.OpId,
                         UserId = s.UserId
                     }).ToList();
+
                     PrintLogGridControl.DataSource = DB.SkladBase().GetPrintLog(wbStartDate.DateTime, wbEndDate.DateTime, (int)UserComboBox.EditValue);
                     break;
 

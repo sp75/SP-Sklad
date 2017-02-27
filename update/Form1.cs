@@ -32,6 +32,8 @@ namespace update
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
+            Settings.Default.Save();
+
             var sp_sklad = Path.Combine(Application.StartupPath, "SP_Sklad.exe");
             //    File.Copy(Path.Combine(Settings.Default.NewVersionPatch, "SP_Sklad.exe"), sp_sklad, true);
             CopyList();
@@ -61,6 +63,14 @@ namespace update
         private void button1_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            if (AutoUpdateCheckEdit.Checked)
+            {
+                Close();
+            }
         }
     }
 }

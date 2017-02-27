@@ -50,7 +50,6 @@
         <EntityTypeShape EntityType="BaseModel.MatRemains" Width="1.5" PointX="8.25" PointY="12.75" />
         <EntityTypeShape EntityType="BaseModel.TAXWBDET" Width="1.5" PointX="14.25" PointY="19.75" />
         <AssociationConnector Association="BaseModel.FK_TAXWBDET_TWBID" />
-        <EntityTypeShape EntityType="BaseModel.TechProcess" Width="1.5" PointX="0.5" PointY="12.25" />
         <EntityTypeShape EntityType="BaseModel.MatRecipe" Width="1.5" PointX="19.625" PointY="15.25" />
         <EntityTypeShape EntityType="BaseModel.WayBillMake" Width="1.5" PointX="4.642107151747731" PointY="31.026654645347342" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLMAKE_MATRECIPE" />
@@ -141,9 +140,7 @@
         <AssociationConnector Association="BaseModel.FK_WBDTAXES_TAXID" />
         <EntityTypeShape EntityType="BaseModel.MatRecipeTechProcDet" Width="1.5" PointX="3.2621044550380223" PointY="19.9043157640399" />
         <AssociationConnector Association="BaseModel.FK_MatRecipeTechProcDet_MatRecipe" />
-        <AssociationConnector Association="BaseModel.FK_MatRecipeTechProcDet_TechProcess" />
         <EntityTypeShape EntityType="BaseModel.TechProcDet" Width="1.5" PointX="0.12183602532457376" PointY="26.9955542511286" />
-        <AssociationConnector Association="BaseModel.FK_TECHPROCDET_TECHPROCESS" />
         <EntityTypeShape EntityType="BaseModel.Services" Width="1.5" PointX="19.375" PointY="3.25" />
         <AssociationConnector Association="BaseModel.FK_SVC_CURRID" />
         <AssociationConnector Association="BaseModel.FK_SVC_MID" />
@@ -251,6 +248,9 @@
         <AssociationConnector Association="BaseModel.FK_WayBillMakeProps_Materials" />
         <AssociationConnector Association="BaseModel.FK_WayBillMakeProps_WaybillList" />
         <AssociationConnector Association="BaseModel.FK_WayBillMakeProps_Kagent" />
+        <EntityTypeShape EntityType="BaseModel.TechProcess" Width="1.5" PointX="3.6763583103550408" PointY="19.111063697892735" />
+        <AssociationConnector Association="BaseModel.FK_MatRecipeTechProcDet_TechProcess" />
+        <AssociationConnector Association="BaseModel.FK_TECHPROCDET_TECHPROCESS" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="7.0245045325832924" PointY="12.641712000892364" />

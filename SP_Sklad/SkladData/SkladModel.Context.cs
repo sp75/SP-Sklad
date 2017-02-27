@@ -68,7 +68,6 @@ namespace SP_Sklad.SkladData
         public DbSet<ExtRel> ExtRel { get; set; }
         public DbSet<MatRemains> MatRemains { get; set; }
         public DbSet<TAXWBDET> TAXWBDET { get; set; }
-        public DbSet<TechProcess> TechProcess { get; set; }
         public DbSet<MatRecipe> MatRecipe { get; set; }
         public DbSet<WayBillMake> WayBillMake { get; set; }
         public DbSet<v_TechProcDet> v_TechProcDet { get; set; }
@@ -145,6 +144,7 @@ namespace SP_Sklad.SkladData
         public DbSet<v_DiscCards> v_DiscCards { get; set; }
         public DbSet<DiscCardGrp> DiscCardGrp { get; set; }
         public DbSet<WayBillMakeProps> WayBillMakeProps { get; set; }
+        public DbSet<TechProcess> TechProcess { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)
