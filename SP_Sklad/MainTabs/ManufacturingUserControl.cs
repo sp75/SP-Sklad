@@ -331,21 +331,24 @@ namespace SP_Sklad.MainTabs
 
         private void StopProcesBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var wbl = DB.SkladBase().WaybillList.FirstOrDefault(w=> w.WbillId == focused_row.WbillId);
-            if(wbl == null)
+            using (var db = DB.SkladBase())
             {
-                return;
-            }
-
-            if (wbl.Checked == 2 )
-            {
-                using (var f = new frmWBWriteOn())
+                var wbl = db.WaybillList.FirstOrDefault(w => w.WbillId == focused_row.WbillId);
+                if (wbl == null)
                 {
-                    var result = f._db.ExecuteWayBill(wbl.WbillId, null).ToList().FirstOrDefault();
-                 //   f.NumEdit.Text = new BaseEntities().GetCounter("wb_write_on").FirstOrDefault();
-                    f.doc_id = result.NewDocId;
-                    f.TurnDocCheckBox.Checked = true;
-                    f.ShowDialog();
+                    return;
+                }
+
+                if (wbl.Checked == 2)
+                {
+                    using (var f = new frmWBWriteOn())
+                    {
+                        var result = f._db.ExecuteWayBill(wbl.WbillId, null).ToList().FirstOrDefault();
+                        f.is_new_record = true;
+                        f.doc_id = result.NewDocId;
+                        f.TurnDocCheckBox.Checked = true;
+                        f.ShowDialog();
+                    }
                 }
             }
 

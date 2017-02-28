@@ -789,10 +789,7 @@
             this.PriceEdit.Name = "PriceEdit";
             this.PriceEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.PriceEdit.Properties.DisplayFormat.FormatString = "0.00";
-            this.PriceEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.PriceEdit.Properties.EditFormat.FormatString = "0.00";
-            this.PriceEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.PriceEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.PriceEdit.Size = new System.Drawing.Size(138, 22);
             this.PriceEdit.StyleController = this.styleController1;
             this.PriceEdit.TabIndex = 8;
@@ -816,10 +813,7 @@
             this.BasePriceEdit.Name = "BasePriceEdit";
             this.BasePriceEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.BasePriceEdit.Properties.DisplayFormat.FormatString = "0.00";
-            this.BasePriceEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.BasePriceEdit.Properties.EditFormat.FormatString = "0.00";
-            this.BasePriceEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.BasePriceEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.BasePriceEdit.Size = new System.Drawing.Size(138, 22);
             this.BasePriceEdit.StyleController = this.styleController1;
             this.BasePriceEdit.TabIndex = 6;

@@ -26,7 +26,6 @@ namespace SP_Sklad.WBForm
 
         BaseEntities _db { get; set; }
         private int? _wbill_id { get; set; }
-     //   private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
         public bool is_new_record { get; set; }
         private GetWayBillDetOut_Result wbd_row
@@ -40,7 +39,6 @@ namespace SP_Sklad.WBForm
             is_new_record = false;
             _wbill_id = wbill_id;
             _db = new BaseEntities();
-      //      current_transaction = _db.Database.BeginTransaction();
 
             InitializeComponent();
         }
@@ -51,13 +49,13 @@ namespace SP_Sklad.WBForm
             PersonMakeComboBox.Properties.DataSource = DBHelper.Persons;
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
             WhComboBox.Properties.DataSource = DBHelper.WhList();
-            RecipeComboBox.Properties.DataSource = DB.SkladBase().MatRecipe.Where(w => w.RType == 1).Select(s => new
+            RecipeComboBox.Properties.DataSource = DB.SkladBase().MatRecipe.Where(w => w.RType == 1).Select(s => new 
             {
-                s.RecId,
-                s.Name,
-                s.Amount,
+                RecId = s.RecId,
+                Name = s.Name,
+                Amount = s.Amount,
                 MatName = s.Materials.Name,
-                s.MatId
+                MatId = s.MatId
             }).ToList();
 
             if (_wbill_id == null)
@@ -97,42 +95,15 @@ namespace SP_Sklad.WBForm
                 }
 
                 TurnDocCheckBox.EditValue = wb.Checked;
-                RecipeComboBox.DataBindings.Add(new Binding("EditValue", wb.WayBillMake, "RecId", true, DataSourceUpdateMode.OnPropertyChanged));
-                WhComboBox.DataBindings.Add(new Binding("EditValue", wb.WayBillMake, "SourceWId", true, DataSourceUpdateMode.OnPropertyChanged));
-                AmountMakeEdit.DataBindings.Add(new Binding("EditValue", wb.WayBillMake, "Amount"));
-
-                PersonMakeComboBox.DataBindings.Add(new Binding("EditValue", wb.WayBillMake, "PersonId", true, DataSourceUpdateMode.OnPropertyChanged));
-                KagentComboBox.DataBindings.Add(new Binding("EditValue", wb, "KaId", true, DataSourceUpdateMode.OnPropertyChanged));
-                PersonComboBox.DataBindings.Add(new Binding("EditValue", wb, "PersonId", true, DataSourceUpdateMode.OnPropertyChanged));
-
-                NumEdit.DataBindings.Add(new Binding("EditValue", wb, "Num"));
-                OnDateDBEdit.DataBindings.Add(new Binding("EditValue", wb, "OnDate", true, DataSourceUpdateMode.OnPropertyChanged));
-                ToDateEdit.DataBindings.Add(new Binding("EditValue", wb, "ToDate", true, DataSourceUpdateMode.OnPropertyChanged));
-
-                NotesEdit.DataBindings.Add(new Binding("EditValue", wb, "Notes"));
-                ReasonEdit.DataBindings.Add(new Binding("EditValue", wb, "Reason"));
 
                 checkEdit2.Checked = wb.ToDate != null;
+
+                WaybillListBS.DataSource = wb;
+                WayBillMakeBS.DataSource = wb.WayBillMake;
             }
 
             RefreshDet();
         }
-
-   /*     private void UpdLockWB()
-        {
-            if (wb != null)
-            {
-                _db.Entry<WaybillList>(wb).State = EntityState.Detached;
-            }
-
-            wb = _db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0}", _wbill_id).FirstOrDefault();
-            if (wb != null)
-            {
-                wb.WayBillMake = _db.WayBillMake.Find(_wbill_id);
-            }
-
-            _db.Entry<WaybillList>(wb).State = EntityState.Modified;
-        }*/
 
         private void RefreshDet()
         {
@@ -342,8 +313,6 @@ namespace SP_Sklad.WBForm
                 RsvAllBarBtn.PerformClick();
             }
 
-          
-
             RefreshDet();
         }
 
@@ -364,9 +333,6 @@ namespace SP_Sklad.WBForm
             if (RecipeComboBox.ContainsFocus && row != null)
             {
                 wb.WayBillMake.Amount = row.Amount;
-                AmountMakeEdit.EditValue = row.Amount;
-                wb.WayBillMake.RecId = row.RecId;
-
                 GetOk();
             }
         }

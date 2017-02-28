@@ -56,7 +56,9 @@
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.WayBillMakeBS = new System.Windows.Forms.BindingSource(this.components);
             this.ToDateEdit = new DevExpress.XtraEditors.DateEdit();
+            this.WaybillListBS = new System.Windows.Forms.BindingSource(this.components);
             this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.AmountMakeEdit = new DevExpress.XtraEditors.CalcEdit();
@@ -121,8 +123,10 @@
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WayBillMakeBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ToDateEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ToDateEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillListBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AmountMakeEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WhComboBox.Properties)).BeginInit();
@@ -233,7 +237,7 @@
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
             this.bar1.FloatLocation = new System.Drawing.Point(49, 383);
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.EditMaterialBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.DelMaterialBtn)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
@@ -454,8 +458,13 @@
             this.panelControl1.Size = new System.Drawing.Size(568, 183);
             this.panelControl1.TabIndex = 4;
             // 
+            // WayBillMakeBS
+            // 
+            this.WayBillMakeBS.DataSource = typeof(SP_Sklad.SkladData.WayBillMake);
+            // 
             // ToDateEdit
             // 
+            this.ToDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "ToDate", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.ToDateEdit.EditValue = null;
             this.ToDateEdit.Location = new System.Drawing.Point(380, 145);
             this.ToDateEdit.MenuManager = this.barManager1;
@@ -467,6 +476,10 @@
             this.ToDateEdit.Size = new System.Drawing.Size(148, 22);
             this.ToDateEdit.StyleController = this.styleController1;
             this.ToDateEdit.TabIndex = 30;
+            // 
+            // WaybillListBS
+            // 
+            this.WaybillListBS.DataSource = typeof(SP_Sklad.SkladData.WaybillList);
             // 
             // checkEdit2
             // 
@@ -491,6 +504,7 @@
             // 
             // AmountMakeEdit
             // 
+            this.AmountMakeEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WayBillMakeBS, "Amount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.AmountMakeEdit.Location = new System.Drawing.Point(82, 145);
             this.AmountMakeEdit.MenuManager = this.barManager1;
             this.AmountMakeEdit.Name = "AmountMakeEdit";
@@ -527,6 +541,7 @@
             // 
             // WhComboBox
             // 
+            this.WhComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WayBillMakeBS, "SourceWId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.WhComboBox.Location = new System.Drawing.Point(82, 109);
             this.WhComboBox.Name = "WhComboBox";
             this.WhComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -554,6 +569,7 @@
             // 
             // RecipeComboBox
             // 
+            this.RecipeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WayBillMakeBS, "RecId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.RecipeComboBox.Location = new System.Drawing.Point(82, 74);
             this.RecipeComboBox.Name = "RecipeComboBox";
             this.RecipeComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -621,6 +637,7 @@
             // 
             // NumEdit
             // 
+            this.NumEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "Num", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.NumEdit.Location = new System.Drawing.Point(82, 41);
             this.NumEdit.MenuManager = this.barManager1;
             this.NumEdit.Name = "NumEdit";
@@ -631,6 +648,7 @@
             // 
             // OnDateDBEdit
             // 
+            this.OnDateDBEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "OnDate", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.OnDateDBEdit.EditValue = new System.DateTime(2016, 3, 3, 16, 47, 59, 0);
             this.OnDateDBEdit.Location = new System.Drawing.Point(324, 41);
             this.OnDateDBEdit.MenuManager = this.barManager1;
@@ -706,6 +724,7 @@
             // 
             this.NotesEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.NotesEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "Notes", true));
             this.NotesEdit.Location = new System.Drawing.Point(88, 145);
             this.NotesEdit.MenuManager = this.barManager1;
             this.NotesEdit.Name = "NotesEdit";
@@ -724,6 +743,7 @@
             // 
             // ReasonEdit
             // 
+            this.ReasonEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "Reason", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.ReasonEdit.Location = new System.Drawing.Point(88, 109);
             this.ReasonEdit.MenuManager = this.barManager1;
             this.ReasonEdit.Name = "ReasonEdit";
@@ -735,6 +755,7 @@
             // 
             this.PersonComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.PersonComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "PersonId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.PersonComboBox.Location = new System.Drawing.Point(88, 75);
             this.PersonComboBox.Name = "PersonComboBox";
             this.PersonComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -783,6 +804,7 @@
             // 
             this.KagentComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.KagentComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "KaId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.KagentComboBox.Enabled = false;
             this.KagentComboBox.Location = new System.Drawing.Point(88, 41);
             this.KagentComboBox.Name = "KagentComboBox";
@@ -811,6 +833,7 @@
             // 
             this.PersonMakeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.PersonMakeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WayBillMakeBS, "PersonId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.PersonMakeComboBox.Location = new System.Drawing.Point(88, 8);
             this.PersonMakeComboBox.Name = "PersonMakeComboBox";
             this.PersonMakeComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1158,8 +1181,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WayBillMakeBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ToDateEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ToDateEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillListBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AmountMakeEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WhComboBox.Properties)).EndInit();
@@ -1282,5 +1307,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn45;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn46;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn76;
+        private System.Windows.Forms.BindingSource WayBillMakeBS;
+        private System.Windows.Forms.BindingSource WaybillListBS;
     }
 }

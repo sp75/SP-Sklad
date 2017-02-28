@@ -120,5 +120,10 @@ namespace SP_Sklad.WBDetForm
                 }
             }
         }
+
+        private void frmTechProcDet_Shown(object sender, EventArgs e)
+        {
+            AmountEdit.Focus();
+        }
     }
 }
