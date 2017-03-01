@@ -811,7 +811,7 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("SvcOutDet", svc);
                 total += svc_grp.Sum(s => s.Total);
 
-                var paydoc = db.REP_16(StartDate, EndDate, 0, 0, 1).ToList();
+                var paydoc = db.REP_16(StartDate, EndDate, 0, 0, 0).ToList();
                 data_for_report.Add("DocList", paydoc);
                 total -= paydoc.Sum(s => s.Total);
 
