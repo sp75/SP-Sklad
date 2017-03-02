@@ -91,6 +91,7 @@ namespace SP_Sklad.WBForm
                 if (is_new_record) 
                 {
                     wb.Num = new BaseEntities().GetDocNum("wb_out").FirstOrDefault();
+               //     wb.PersonId = DBHelper.CurrentUser.KaId;
                 }
 
                 WaybillListBS.DataSource = wb;
