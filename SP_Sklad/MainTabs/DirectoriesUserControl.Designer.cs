@@ -315,6 +315,7 @@
             this.ExplorerPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.gridColumn77 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
@@ -2594,7 +2595,8 @@
             this.TechProcessGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
             this.TechProcessGridView.Appearance.Row.Options.UseFont = true;
             this.TechProcessGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn55});
+            this.gridColumn55,
+            this.gridColumn77});
             this.TechProcessGridView.GridControl = this.TechProcessGridControl;
             this.TechProcessGridView.Name = "TechProcessGridView";
             this.TechProcessGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -2611,7 +2613,7 @@
             this.gridColumn55.FieldName = "Name";
             this.gridColumn55.Name = "gridColumn55";
             this.gridColumn55.Visible = true;
-            this.gridColumn55.VisibleIndex = 0;
+            this.gridColumn55.VisibleIndex = 1;
             this.gridColumn55.Width = 527;
             // 
             // xtraTabPage23
@@ -3268,6 +3270,14 @@
             this.MatPopupMenu.Manager = this.barManager1;
             this.MatPopupMenu.Name = "MatPopupMenu";
             // 
+            // gridColumn77
+            // 
+            this.gridColumn77.Caption = "Номер";
+            this.gridColumn77.FieldName = "Num";
+            this.gridColumn77.Name = "gridColumn77";
+            this.gridColumn77.Visible = true;
+            this.gridColumn77.VisibleIndex = 0;
+            // 
             // DirectoriesUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3709,5 +3719,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn74;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn75;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn76;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn77;
     }
 }
