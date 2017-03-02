@@ -1128,14 +1128,14 @@
             this.WhEditBtn.ImageIndex = 7;
             this.WhEditBtn.ImageList = this.BarImageList;
             this.WhEditBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.WhEditBtn.Location = new System.Drawing.Point(563, 10);
+            this.WhEditBtn.Location = new System.Drawing.Point(720, 9);
             this.WhEditBtn.Name = "WhEditBtn";
             this.WhEditBtn.Size = new System.Drawing.Size(22, 22);
             this.WhEditBtn.TabIndex = 19;
             // 
             // WhComboBox
             // 
-            this.WhComboBox.Location = new System.Drawing.Point(339, 12);
+            this.WhComboBox.Location = new System.Drawing.Point(496, 11);
             this.WhComboBox.Name = "WhComboBox";
             this.WhComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1152,7 +1152,7 @@
             // 
             // wbSatusList
             // 
-            this.wbSatusList.Location = new System.Drawing.Point(673, 11);
+            this.wbSatusList.Location = new System.Drawing.Point(836, 12);
             this.wbSatusList.Name = "wbSatusList";
             this.wbSatusList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1167,7 +1167,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(631, 14);
+            this.labelControl4.Location = new System.Drawing.Point(794, 15);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(36, 13);
             this.labelControl4.TabIndex = 7;
@@ -1175,7 +1175,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(313, 14);
+            this.labelControl3.Location = new System.Drawing.Point(466, 15);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(24, 13);
             this.labelControl3.TabIndex = 4;
@@ -1184,20 +1184,23 @@
             // wbEndDate
             // 
             this.wbEndDate.EditValue = null;
-            this.wbEndDate.Location = new System.Drawing.Point(185, 11);
+            this.wbEndDate.Location = new System.Drawing.Point(242, 11);
             this.wbEndDate.Name = "wbEndDate";
             this.wbEndDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.wbEndDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.wbEndDate.Properties.DisplayFormat.FormatString = "g";
+            this.wbEndDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.wbEndDate.Properties.Mask.EditMask = "g";
             this.wbEndDate.Properties.EditValueChanged += new System.EventHandler(this.wbStartDate_Properties_EditValueChanged);
-            this.wbEndDate.Size = new System.Drawing.Size(100, 20);
+            this.wbEndDate.Size = new System.Drawing.Size(149, 20);
             this.wbEndDate.TabIndex = 3;
             this.wbEndDate.EditValueChanged += new System.EventHandler(this.wbStartDate_EditValueChanged);
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(167, 14);
+            this.labelControl2.Location = new System.Drawing.Point(224, 14);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(12, 13);
             this.labelControl2.TabIndex = 2;
@@ -1212,7 +1215,13 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.wbStartDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.wbStartDate.Size = new System.Drawing.Size(100, 20);
+            this.wbStartDate.Properties.DisplayFormat.FormatString = "g";
+            this.wbStartDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.wbStartDate.Properties.EditFormat.FormatString = "g";
+            this.wbStartDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.wbStartDate.Properties.Mask.EditMask = "g";
+            this.wbStartDate.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.wbStartDate.Size = new System.Drawing.Size(140, 20);
             this.wbStartDate.TabIndex = 1;
             this.wbStartDate.EditValueChanged += new System.EventHandler(this.wbStartDate_EditValueChanged);
             // 

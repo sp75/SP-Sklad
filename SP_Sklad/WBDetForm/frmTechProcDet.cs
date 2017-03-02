@@ -36,7 +36,7 @@ namespace SP_Sklad.WBDetForm
 
         private void frmTechProcDet_Load(object sender, EventArgs e)
         {
-            TechProcessCB.Properties.DataSource = _db.TechProcess.Select(s => new { s.ProcId, s.Name }).ToList();
+            TechProcessCB.Properties.DataSource = _db.TechProcess.Select(s => new { s.ProcId, s.Name, s.Num }).ToList();
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
 
             var ext_list =  _db.Materials.Where(w => w.TypeId == 2).Select(s => new { s.MatId, s.Name, s.Artikul }).ToList();
@@ -48,7 +48,7 @@ namespace SP_Sklad.WBDetForm
             {
                 tp_d = _db.TechProcDet.Add(new TechProcDet()
                 {
-                    Num = (_db.TechProcDet.Where(w => w.WbillId == _wbill_id).Select(s => (int?)s.Num).Max() ?? 0) + 1,
+                    Num = 0,//(_db.TechProcDet.Where(w => w.WbillId == _wbill_id).Select(s => (int?)s.Num).Max() ?? 0) + 1,
                     WbillId = _wbill_id,
                     PersonId = DBHelper.CurrentUser.KaId,
                     OnDate = DateTime.Now,
@@ -124,6 +124,15 @@ namespace SP_Sklad.WBDetForm
         private void frmTechProcDet_Shown(object sender, EventArgs e)
         {
             AmountEdit.Focus();
+        }
+
+        private void TechProcessCB_EditValueChanged(object sender, EventArgs e)
+        {
+            var row = TechProcessCB.GetSelectedDataRow() as dynamic;
+            if (row != null)
+            {
+                tp_d.Num = row.Num;
+            }
         }
     }
 }

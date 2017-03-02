@@ -57,7 +57,7 @@ namespace SP_Sklad.Reports
                     break;
 
                 case 4:
-                    WayBillReport(id, db, TemlateList.wb_move);
+                    WayBillMoveReport(id, db, TemlateList.wb_move);
                     break;
 
                 case 7:
@@ -140,6 +140,31 @@ namespace SP_Sklad.Reports
 
             IHelper.Print(dataForReport, template_name);
         }
+
+        public static void WayBillMoveReport(Guid id, BaseEntities db, string template_name)
+        {
+            var dataForReport = new Dictionary<string, IList>();
+
+            var wb = db.v_WaybillList.Where(w => w.Id == id).AsNoTracking().ToList();
+            int wbill_id = wb.First().WbillId;
+            var wb_items = db.GetWaybillDetIn(wbill_id).OrderBy(o => o.Num).ToList();
+            dataForReport.Add("WayBillList", wb);
+            dataForReport.Add("WayBillItems", wb_items.GroupBy(g => new { g.MatId, g.MatName, g.MsrName }).Select((s, index) => new
+            {
+                Num = index + 1,
+                s.Key.MatName,
+                s.Key.MsrName,
+                Amount = s.Sum(sum => sum.Amount)
+            }).ToList());
+            dataForReport.Add("SummaryField", wb_items.GroupBy(g => new {g.MsrName}).Select(s => new
+            {
+                s.Key.MsrName,
+                Amount = s.Sum(a => a.Amount),
+            }).ToList());
+
+            IHelper.Print(dataForReport, template_name);
+        }
+
 
         public static void WayBillInvwntoryReport(Guid id, BaseEntities db, string template_name)
         {

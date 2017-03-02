@@ -248,7 +248,7 @@
         <AssociationConnector Association="BaseModel.FK_WayBillMakeProps_Materials" />
         <AssociationConnector Association="BaseModel.FK_WayBillMakeProps_WaybillList" />
         <AssociationConnector Association="BaseModel.FK_WayBillMakeProps_Kagent" />
-        <EntityTypeShape EntityType="BaseModel.TechProcess" Width="1.5" PointX="3.6763583103550408" PointY="19.111063697892735" />
+        <EntityTypeShape EntityType="BaseModel.TechProcess" Width="1.5" PointX="2.6014108502312614" PointY="22.755673463808222" />
         <AssociationConnector Association="BaseModel.FK_MatRecipeTechProcDet_TechProcess" />
         <AssociationConnector Association="BaseModel.FK_TECHPROCDET_TECHPROCESS" />
         </Diagram>

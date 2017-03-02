@@ -23,6 +23,7 @@ namespace SP_Sklad.SkladData
         public int ProcId { get; set; }
         public string Name { get; set; }
         public string Kod { get; set; }
+        public Nullable<int> Num { get; set; }
     
         public virtual ICollection<MatRecipeTechProcDet> MatRecipeTechProcDet { get; set; }
         public virtual ICollection<TechProcDet> TechProcDet { get; set; }

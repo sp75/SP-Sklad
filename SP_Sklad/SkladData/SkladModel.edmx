@@ -1946,6 +1946,7 @@
           <Property Name="ProcId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" MaxLength="128" />
           <Property Name="Kod" Type="nvarchar" MaxLength="20" />
+          <Property Name="Num" Type="int" />
         </EntityType>
         <EntityType Name="UserAccess">
           <Key>
@@ -5574,10 +5575,10 @@
                 <Property Name="MatName" Type="nvarchar" MaxLength="255" />
                 <Property Name="GrpId" Type="int" />
                 <Property Name="GrpName" Type="varchar" Nullable="false" MaxLength="64" />
-                <Property Name="MsrName" Type="nvarchar" Nullable="false" MaxLength="6" />
-                <Property Name="BarCode" Type="nvarchar" MaxLength="64" />
                 <Property Name="AmountOrd" Type="numeric" Precision="38" Scale="8" />
                 <Property Name="TotalOrd" Type="numeric" Precision="38" Scale="2" />
+                <Property Name="MsrName" Type="nvarchar" Nullable="false" MaxLength="6" />
+                <Property Name="BarCode" Type="nvarchar" MaxLength="64" />
                 <Property Name="AmountOut" Type="numeric" Precision="38" Scale="8" />
                 <Property Name="TotalOut" Type="numeric" Precision="38" Scale="2" />
               </RowType>
@@ -12136,6 +12137,7 @@
           <Property Type="Int32" Name="ProcId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Name" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Kod" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Num" />
           <NavigationProperty Name="MatRecipeTechProcDet" Relationship="BaseModel.FK_MatRecipeTechProcDet_TechProcess" FromRole="TechProcess" ToRole="MatRecipeTechProcDet" />
           <NavigationProperty Name="TechProcDet" Relationship="BaseModel.FK_TECHPROCDET_TECHPROCESS" FromRole="TechProcess" ToRole="TechProcDet" />
         </EntityType>
@@ -15429,6 +15431,7 @@
           <EntitySetMapping Name="TechProcess">
             <EntityTypeMapping TypeName="BaseModel.TechProcess">
               <MappingFragment StoreEntitySet="TechProcess">
+                <ScalarProperty Name="Num" ColumnName="Num" />
                 <ScalarProperty Name="Kod" ColumnName="Kod" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ProcId" ColumnName="ProcId" />

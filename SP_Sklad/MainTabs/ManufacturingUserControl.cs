@@ -56,10 +56,10 @@ namespace SP_Sklad.MainTabs
                 DebSatusList.Properties.DataSource = wbSatusList.Properties.DataSource;
                 DebSatusList.EditValue = -1;
 
-                wbStartDate.EditValue = DateTime.Now.AddDays(-30);
-                wbEndDate.EditValue = DateTime.Now;
-                DebStartDate.EditValue = DateTime.Now.AddDays(-30);
-                DebEndDate.EditValue = DateTime.Now;
+                wbStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
+                wbEndDate.EditValue = DateTime.Now.Date.AddHours(23).AddMinutes(59).AddSeconds(59);
+                DebStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
+                DebEndDate.EditValue = DateTime.Now.Date.AddHours(23).AddMinutes(59).AddSeconds(59);
 
                 DocsTreeList.DataSource = DB.SkladBase().GetManufactureTree(DBHelper.CurrentUser.UserId).ToList();
                 DocsTreeList.ExpandAll(); //ExpandToLevel(0);

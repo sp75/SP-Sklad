@@ -33,14 +33,17 @@
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
-            this.TechProcessDS = new System.Windows.Forms.BindingSource(this.components);
             this.NotesTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.NumEdit = new DevExpress.XtraEditors.CalcEdit();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.TechProcessDS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TechProcessDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TechProcessDS)).BeginInit();
             this.SuspendLayout();
             // 
             // BottomPanel
@@ -48,7 +51,7 @@
             this.BottomPanel.Controls.Add(this.OkButton);
             this.BottomPanel.Controls.Add(this.simpleButton1);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomPanel.Location = new System.Drawing.Point(0, 97);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 127);
             this.BottomPanel.Name = "BottomPanel";
             this.BottomPanel.Size = new System.Drawing.Size(458, 52);
             this.BottomPanel.TabIndex = 18;
@@ -79,16 +82,12 @@
             this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.styleController1.Appearance.Options.UseFont = true;
             // 
-            // TechProcessDS
-            // 
-            this.TechProcessDS.DataSource = typeof(SP_Sklad.SkladData.TechProcess);
-            // 
             // NotesTextEdit
             // 
             this.NotesTextEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.NotesTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.TechProcessDS, "Name", true));
-            this.NotesTextEdit.Location = new System.Drawing.Point(12, 37);
+            this.NotesTextEdit.Location = new System.Drawing.Point(12, 87);
             this.NotesTextEdit.Name = "NotesTextEdit";
             this.NotesTextEdit.Size = new System.Drawing.Size(434, 22);
             this.NotesTextEdit.StyleController = this.styleController1;
@@ -97,17 +96,46 @@
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.labelControl3.Location = new System.Drawing.Point(12, 15);
+            this.labelControl3.Location = new System.Drawing.Point(12, 65);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(40, 16);
+            this.labelControl3.StyleController = this.styleController1;
             this.labelControl3.TabIndex = 37;
             this.labelControl3.Text = "Назва";
+            // 
+            // NumEdit
+            // 
+            this.NumEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.TechProcessDS, "Num", true));
+            this.NumEdit.Location = new System.Drawing.Point(12, 29);
+            this.NumEdit.Name = "NumEdit";
+            this.NumEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.NumEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.NumEdit.Properties.ShowCloseButton = true;
+            this.NumEdit.Size = new System.Drawing.Size(100, 22);
+            this.NumEdit.StyleController = this.styleController1;
+            this.NumEdit.TabIndex = 40;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl1.Location = new System.Drawing.Point(12, 7);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(43, 16);
+            this.labelControl1.TabIndex = 41;
+            this.labelControl1.Text = "Номер";
+            // 
+            // TechProcessDS
+            // 
+            this.TechProcessDS.DataSource = typeof(SP_Sklad.SkladData.TechProcess);
             // 
             // frmTechProcessEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(458, 149);
+            this.ClientSize = new System.Drawing.Size(458, 179);
+            this.Controls.Add(this.labelControl1);
+            this.Controls.Add(this.NumEdit);
             this.Controls.Add(this.NotesTextEdit);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.BottomPanel);
@@ -120,8 +148,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).EndInit();
             this.BottomPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TechProcessDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TechProcessDS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -136,5 +165,7 @@
         private System.Windows.Forms.BindingSource TechProcessDS;
         private DevExpress.XtraEditors.TextEdit NotesTextEdit;
         private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.CalcEdit NumEdit;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }

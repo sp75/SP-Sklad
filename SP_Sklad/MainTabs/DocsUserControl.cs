@@ -73,11 +73,11 @@ namespace SP_Sklad.MainTabs
                 wbStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
                 wbStatusList.EditValue = -1;
 
-                wbStartDate.EditValue = DateTime.Now.AddDays(-30);
-                wbEndDate.EditValue = DateTime.Now;
+                wbStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
+                wbEndDate.EditValue = DateTime.Now.Date.AddHours(23).AddMinutes(59).AddSeconds(59);
 
-                PDStartDate.EditValue = DateTime.Now.AddDays(-30);
-                PDEndDate.EditValue = DateTime.Now;
+                PDStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
+                PDEndDate.EditValue = DateTime.Now.Date.AddHours(23).AddMinutes(59).AddSeconds(59);
 
                 PDKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
                 PDKagentList.EditValue = 0;

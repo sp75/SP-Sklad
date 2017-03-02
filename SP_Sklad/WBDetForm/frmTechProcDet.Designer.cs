@@ -49,7 +49,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.ExtMatComboBox2 = new DevExpress.XtraEditors.LookUpEdit();
-            this.TechProcDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.calcEdit2 = new DevExpress.XtraEditors.CalcEdit();
@@ -75,11 +74,11 @@
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.TechProcDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ExtMatComboBox2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TechProcDetBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExtMatComboBox.Properties)).BeginInit();
@@ -94,6 +93,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TechProcDetBS)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -153,10 +153,6 @@
             this.ExtMatComboBox2.Size = new System.Drawing.Size(299, 22);
             this.ExtMatComboBox2.StyleController = this.styleController1;
             this.ExtMatComboBox2.TabIndex = 46;
-            // 
-            // TechProcDetBS
-            // 
-            this.TechProcDetBS.DataSource = typeof(SP_Sklad.SkladData.TechProcDet);
             // 
             // styleController1
             // 
@@ -278,6 +274,7 @@
             this.NumEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.NumEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.NumEdit.Properties.ReadOnly = true;
             this.NumEdit.Properties.ShowCloseButton = true;
             this.NumEdit.Size = new System.Drawing.Size(100, 22);
             this.NumEdit.StyleController = this.styleController1;
@@ -384,6 +381,7 @@
             this.TechProcessCB.StyleController = this.styleController1;
             this.TechProcessCB.TabIndex = 19;
             this.TechProcessCB.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.TechProcessCB_ButtonClick);
+            this.TechProcessCB.EditValueChanged += new System.EventHandler(this.TechProcessCB_EditValueChanged);
             // 
             // PersonComboBox
             // 
@@ -456,6 +454,10 @@
             this.simpleButton1.TabIndex = 2;
             this.simpleButton1.Text = "Відмінити";
             // 
+            // TechProcDetBS
+            // 
+            this.TechProcDetBS.DataSource = typeof(SP_Sklad.SkladData.TechProcDet);
+            // 
             // frmTechProcDet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -477,7 +479,6 @@
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ExtMatComboBox2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TechProcDetBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExtMatComboBox.Properties)).EndInit();
@@ -492,6 +493,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.TechProcDetBS)).EndInit();
             this.ResumeLayout(false);
 
         }
