@@ -27,7 +27,6 @@ namespace SP_Sklad.WBForm
         public BaseEntities _db { get; set; }
         private int? _wbill_id { get; set; }
         public Guid? doc_id { get; set; }
-   //     private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
         private GetWaybillDetIn_Result wbd_row
         {
@@ -37,6 +36,7 @@ namespace SP_Sklad.WBForm
             }
         }
         public bool is_new_record { get; set; }
+        private UserSettingsRepository user_settings { get; set; }
 
         public frmWayBillIn(int wtype, int? wbill_id = null)
         {
@@ -44,7 +44,7 @@ namespace SP_Sklad.WBForm
             _wtype = wtype;
             _wbill_id = wbill_id;
             _db = new BaseEntities();
-        //    current_transaction = _db.Database.BeginTransaction(/*IsolationLevel.RepeatableRead*/);
+            user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
 
             InitializeComponent();
         }
@@ -134,7 +134,7 @@ namespace SP_Sklad.WBForm
             OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
             NowDateBtn.Enabled = OnDateDBEdit.Enabled;
 
-            PersonComboBox.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
+            PersonComboBox.Enabled = !String.IsNullOrEmpty(user_settings.AccessEditPersonId) && Convert.ToInt32(user_settings.AccessEditPersonId) == 1;
             PersonEditBtn.Enabled = PersonComboBox.Enabled;
         }
 
@@ -158,7 +158,7 @@ namespace SP_Sklad.WBForm
             payDocUserControl1.Execute(wb.WbillId);
             if (TurnDocCheckBox.Checked)
             {
-                var ew = _db.ExecuteWayBill(wb.WbillId, null).ToList();
+                var ew = _db.ExecuteWayBill(wb.WbillId, null, DBHelper.CurrentUser.KaId).ToList();
             }
          //   current_transaction.Commit();
             is_new_record = false;

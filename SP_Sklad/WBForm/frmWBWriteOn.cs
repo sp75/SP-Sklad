@@ -36,13 +36,14 @@ namespace SP_Sklad.WBForm
             get { return WaybillDetInGridView.GetFocusedRow() as GetWaybillDetIn_Result; }
         }
         public bool is_new_record { get; set; }
+        private UserSettingsRepository user_settings { get; set; }
 
         public frmWBWriteOn(int? wbill_id = null)
         {
             is_new_record = false;
             _wbill_id = wbill_id;
             _db = new BaseEntities();
-         //   current_transaction = _db.Database.BeginTransaction();
+            user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
 
             InitializeComponent();
         }
@@ -158,6 +159,9 @@ namespace SP_Sklad.WBForm
         {
             OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
             NowDateBtn.Enabled = OnDateDBEdit.Enabled;
+
+            PersonComboBox.Enabled = !String.IsNullOrEmpty(user_settings.AccessEditPersonId) && Convert.ToInt32(user_settings.AccessEditPersonId) == 1;
+            PersonEditBtn.Enabled = PersonComboBox.Enabled;
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -175,7 +179,7 @@ namespace SP_Sklad.WBForm
 
             if (TurnDocCheckBox.Checked)
             {
-                _db.ExecuteWayBill(wb.WbillId, null);
+                _db.ExecuteWayBill(wb.WbillId, null, DBHelper.CurrentUser.KaId);
             }
 
             is_new_record = false;

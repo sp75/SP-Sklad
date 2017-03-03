@@ -186,7 +186,7 @@ namespace SP_Sklad.WBForm
 
             if (TurnDocCheckBox.Checked)
             {
-                var ex_wb = _db.ExecuteWayBill(wb.WbillId, null).ToList();
+                var ex_wb = _db.ExecuteWayBill(wb.WbillId, null, DBHelper.CurrentUser.KaId).ToList();
             }
 
             is_new_record = false;

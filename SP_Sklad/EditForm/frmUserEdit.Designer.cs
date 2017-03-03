@@ -103,6 +103,7 @@
             this.textEdit3 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.AccessPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.checkEdit6 = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserBS)).BeginInit();
@@ -143,6 +144,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccessPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit6.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -551,6 +553,7 @@
             this.colCanPost,
             this.colUserId,
             this.colWType});
+            this.treeList1.Cursor = System.Windows.Forms.Cursors.Default;
             this.treeList1.DataSource = this.UserTreeAccessBS;
             this.treeList1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeList1.KeyFieldName = "Id";
@@ -810,6 +813,7 @@
             // 
             // xtraTabPage5
             // 
+            this.xtraTabPage5.Controls.Add(this.checkEdit6);
             this.xtraTabPage5.Controls.Add(this.checkEdit4);
             this.xtraTabPage5.Controls.Add(this.checkEdit3);
             this.xtraTabPage5.Controls.Add(this.checkEdit2);
@@ -820,8 +824,7 @@
             // 
             // checkEdit4
             // 
-            this.checkEdit4.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.UserBS, "EnableEditDate", true));
-            this.checkEdit4.Location = new System.Drawing.Point(24, 135);
+            this.checkEdit4.Location = new System.Drawing.Point(24, 148);
             this.checkEdit4.MenuManager = this.barManager1;
             this.checkEdit4.Name = "checkEdit4";
             this.checkEdit4.Properties.Caption = "Дозволити редагувати вагу товара";
@@ -835,7 +838,7 @@
             // checkEdit3
             // 
             this.checkEdit3.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.UserBS, "EnableEditDate", true));
-            this.checkEdit3.Location = new System.Drawing.Point(24, 96);
+            this.checkEdit3.Location = new System.Drawing.Point(24, 84);
             this.checkEdit3.MenuManager = this.barManager1;
             this.checkEdit3.Name = "checkEdit3";
             this.checkEdit3.Properties.Caption = "Дозволити змінювати дату документів";
@@ -848,7 +851,7 @@
             // checkEdit2
             // 
             this.checkEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.UserBS, "ShowBalance", true));
-            this.checkEdit2.Location = new System.Drawing.Point(24, 60);
+            this.checkEdit2.Location = new System.Drawing.Point(24, 53);
             this.checkEdit2.MenuManager = this.barManager1;
             this.checkEdit2.Name = "checkEdit2";
             this.checkEdit2.Properties.Caption = "Показувати користувачеві баланс з контрагентом";
@@ -930,6 +933,19 @@
             this.AccessPopupMenu.Manager = this.barManager1;
             this.AccessPopupMenu.Name = "AccessPopupMenu";
             // 
+            // checkEdit6
+            // 
+            this.checkEdit6.Location = new System.Drawing.Point(24, 116);
+            this.checkEdit6.MenuManager = this.barManager1;
+            this.checkEdit6.Name = "checkEdit6";
+            this.checkEdit6.Properties.Caption = "Дозволити  міняти власника документа";
+            this.checkEdit6.Properties.ValueChecked = 1;
+            this.checkEdit6.Properties.ValueUnchecked = 0;
+            this.checkEdit6.Size = new System.Drawing.Size(352, 20);
+            this.checkEdit6.StyleController = this.styleController1;
+            this.checkEdit6.TabIndex = 5;
+            this.checkEdit6.CheckedChanged += new System.EventHandler(this.checkEdit6_CheckedChanged);
+            // 
             // frmUserEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -991,6 +1007,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccessPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit6.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1071,5 +1088,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl55;
         private DevExpress.XtraEditors.CheckEdit DiscountCheckBox;
         private DevExpress.XtraEditors.CheckEdit checkEdit4;
+        private DevExpress.XtraEditors.CheckEdit checkEdit6;
     }
 }

@@ -4484,6 +4484,7 @@
         </Function>
         <Function Name="DocCopy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="originator_id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="person_id" Type="int" Mode="In" />
         </Function>
         <Function Name="EXECUTESQL_EXAMPLER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IN_MATID" Type="int" Mode="In" />
@@ -4493,6 +4494,7 @@
         <Function Name="ExecuteWayBill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="WBILLID" Type="int" Mode="In" />
           <Parameter Name="NEW_WTYPE" Type="int" Mode="In" />
+          <Parameter Name="person_id" Type="int" Mode="In" />
         </Function>
         <Function Name="GetActualRemainByWh" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="wid" Type="int" Mode="In" />
@@ -7156,18 +7158,11 @@
           <Parameter Name="originator_id" Mode="In" Type="Guid" />
           </FunctionImport>
           <EntitySet Name="DocRels" EntityType="BaseModel.DocRels" />
-          <FunctionImport Name="ExecuteWayBill" ReturnType="Collection(BaseModel.ExecuteWayBill_Result)">
-            <Parameter Name="WBILLID" Mode="In" Type="Int32" />
-            <Parameter Name="NEW_WTYPE" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SetDocRel">
             <Parameter Name="originator_id" Mode="In" Type="Guid" />
             <Parameter Name="rel_originator_id" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="GetManufacturedPos" IsComposable="true" ReturnType="Collection(BaseModel.GetManufacturedPos_Result)">
-          <Parameter Name="originator_id" Mode="In" Type="Guid" />
-          </FunctionImport>
-          <FunctionImport Name="DocCopy" ReturnType="Collection(BaseModel.DocCopy_Result)">
           <Parameter Name="originator_id" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="GetOrdered" IsComposable="true" ReturnType="Collection(BaseModel.GetOrdered_Result)">
@@ -7245,6 +7240,15 @@
             <End Role="TechProcess" EntitySet="TechProcess" />
             <End Role="TechProcDet" EntitySet="TechProcDet" />
           </AssociationSet>
+          <FunctionImport Name="DocCopy" ReturnType="Collection(BaseModel.DocCopy_Result)">
+            <Parameter Name="originator_id" Mode="In" Type="Guid" />
+            <Parameter Name="person_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ExecuteWayBill" ReturnType="Collection(BaseModel.ExecuteWayBill_Result)">
+            <Parameter Name="WBILLID" Mode="In" Type="Int32" />
+            <Parameter Name="NEW_WTYPE" Mode="In" Type="Int32" />
+            <Parameter Name="person_id" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -11816,10 +11820,6 @@
           <Property Type="Guid" Name="OriginatorId" Nullable="false" />
           <Property Type="Guid" Name="RelOriginatorId" Nullable="false" />
         </EntityType>
-        <ComplexType Name="ExecuteWayBill_Result">
-          <Property Type="Int32" Name="Checked" Nullable="true" />
-          <Property Type="Guid" Name="NewDocId" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="GetManufacturedPos_Result">
           <Property Type="Int32" Name="Num" Nullable="false" />
           <Property Type="Int32" Name="PosId" Nullable="false" />
@@ -11838,10 +11838,6 @@
           <Property Type="Decimal" Name="BasePrice" Nullable="true" Precision="15" Scale="4" />
           <Property Type="Decimal" Name="Total" Nullable="true" Precision="15" Scale="2" />
           <Property Type="String" Name="Notes" Nullable="true" MaxLength="100" />
-        </ComplexType>
-        <ComplexType Name="DocCopy_Result">
-          <Property Type="Int32" Name="out_wbill_id" Nullable="true" />
-          <Property Type="Guid" Name="out_doc_id" Nullable="true" />
         </ComplexType>
         <ComplexType Name="GetOrdered_Result">
           <Property Type="Decimal" Name="Remain" Nullable="false" Precision="15" Scale="4" />
@@ -12167,6 +12163,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="DocCopy_Result">
+          <Property Type="Int32" Name="out_wbill_id" Nullable="true" />
+          <Property Type="Guid" Name="out_doc_id" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ExecuteWayBill_Result">
+          <Property Type="Int32" Name="Checked" Nullable="true" />
+          <Property Type="Guid" Name="NewDocId" Nullable="true" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -15151,14 +15155,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="ExecuteWayBill" FunctionName="BaseModel.Store.ExecuteWayBill">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.ExecuteWayBill_Result">
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="NewDocId" ColumnName="NewDocId" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SetDocRel" FunctionName="BaseModel.Store.SetDocRel" />
           <FunctionImportMapping FunctionImportName="GetManufacturedPos" FunctionName="BaseModel.Store.GetManufacturedPos">
             <ResultMapping>
@@ -15180,14 +15176,6 @@
                 <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
                 <ScalarProperty Name="Total" ColumnName="Total" />
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="DocCopy" FunctionName="BaseModel.Store.DocCopy">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.DocCopy_Result">
-                <ScalarProperty Name="out_wbill_id" ColumnName="out_wbill_id" />
-                <ScalarProperty Name="out_doc_id" ColumnName="out_doc_id" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -15438,6 +15426,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DocCopy" FunctionName="BaseModel.Store.DocCopy">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.DocCopy_Result">
+                <ScalarProperty Name="out_wbill_id" ColumnName="out_wbill_id" />
+                <ScalarProperty Name="out_doc_id" ColumnName="out_doc_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ExecuteWayBill" FunctionName="BaseModel.Store.ExecuteWayBill">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.ExecuteWayBill_Result">
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="NewDocId" ColumnName="NewDocId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

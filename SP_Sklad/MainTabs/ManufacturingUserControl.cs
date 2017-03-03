@@ -343,7 +343,7 @@ namespace SP_Sklad.MainTabs
                 {
                     using (var f = new frmWBWriteOn())
                     {
-                        var result = f._db.ExecuteWayBill(wbl.WbillId, null).ToList().FirstOrDefault();
+                        var result = f._db.ExecuteWayBill(wbl.WbillId, null, DBHelper.CurrentUser.KaId).ToList().FirstOrDefault();
                         f.is_new_record = true;
                         f.doc_id = result.NewDocId;
                         f.TurnDocCheckBox.Checked = true;
@@ -389,7 +389,7 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType)
             {
                 case 1:
-                    var doc = DB.SkladBase().DocCopy(focused_row.Id).FirstOrDefault();
+                    var doc = DB.SkladBase().DocCopy(focused_row.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
                     using (var wb_in = new frmWBManufacture(doc.out_wbill_id))
                     {
                         wb_in.is_new_record = true;
@@ -398,7 +398,7 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 3:
-                    var doc2 = DB.SkladBase().DocCopy(focused_row.Id).FirstOrDefault();
+                    var doc2 = DB.SkladBase().DocCopy(focused_row.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
                     using (var wb_in = new frmWBDeboning(doc2.out_wbill_id))
                     {
                         wb_in.is_new_record = true;

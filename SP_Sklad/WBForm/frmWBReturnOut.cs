@@ -167,7 +167,7 @@ namespace SP_Sklad.WBForm
 
             if (TurnDocCheckBox.Checked)
             {
-                _db.ExecuteWayBill(wb.WbillId, null);
+                _db.ExecuteWayBill(wb.WbillId, null, DBHelper.CurrentUser.KaId);
             }
 
             Close();

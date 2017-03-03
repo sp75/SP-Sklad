@@ -243,7 +243,7 @@ namespace SP_Sklad.SkladData
 
         public static ExecuteWayBill_Result ExecuteOrder(BaseEntities db, int wbill_id)
         {
-            var result = db.ExecuteWayBill(wbill_id, null).ToList().FirstOrDefault();
+            var result = db.ExecuteWayBill(wbill_id, null, DBHelper.CurrentUser.KaId).ToList().FirstOrDefault();
             if (result != null && result.Checked == 0)
             {
                 MessageBox.Show(Resources.not_execute_wb, "Проведення документа", MessageBoxButtons.OK, MessageBoxIcon.Information);

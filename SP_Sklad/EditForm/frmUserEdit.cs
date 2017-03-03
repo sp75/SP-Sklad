@@ -29,6 +29,7 @@ namespace SP_Sklad.EditForm
                 return treeList1.GetDataRecordByNode(treeList1.FocusedNode) as GetUserAccessTree_Result;
             }
         }
+        private UserSettingsRepository user_settings  { get; set; }
 
         public frmUserEdit(int? UserId =null)
         {
@@ -38,6 +39,7 @@ namespace SP_Sklad.EditForm
             _db = DB.SkladBase();
             current_transaction = _db.Database.BeginTransaction();
             tree = new List<CatalogTreeList>();
+            user_settings = new UserSettingsRepository(_user_id.Value, _db);
         }
 
         private void frmUserEdit_Load(object sender, EventArgs e)
@@ -78,10 +80,8 @@ namespace SP_Sklad.EditForm
 
             UserGroupLookUpEdit.Properties.DataSource = DB.SkladBase().UsersGroup.AsNoTracking().ToList();
 
-            using (var s = new UserSettingsRepository(_user_id.Value, _db))
-            {
-                checkEdit4.EditValue = s.AccessEditWeight;
-            }
+            checkEdit4.EditValue = !String.IsNullOrEmpty(user_settings.AccessEditWeight) ? Convert.ToInt32(user_settings.AccessEditWeight) : 0;
+            checkEdit6.EditValue = !String.IsNullOrEmpty(user_settings.AccessEditPersonId) ? Convert.ToInt32(user_settings.AccessEditPersonId) : 0;
 
             ValidateForm();
         }
@@ -280,10 +280,12 @@ namespace SP_Sklad.EditForm
 
         private void checkEdit4_CheckedChanged(object sender, EventArgs e)
         {
-            using (var s = new UserSettingsRepository(_user_id.Value, _db))
-            {
-                s.AccessEditWeight = Convert.ToString(checkEdit4.EditValue);
-            }
+            user_settings.AccessEditWeight = Convert.ToString(checkEdit4.EditValue);
+        }
+
+        private void checkEdit6_CheckedChanged(object sender, EventArgs e)
+        {
+            user_settings.AccessEditPersonId = Convert.ToString(checkEdit6.EditValue);
         }
     }
 }

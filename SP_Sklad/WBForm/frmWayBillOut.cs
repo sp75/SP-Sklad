@@ -28,10 +28,8 @@ namespace SP_Sklad.WBForm
         public BaseEntities _db { get; set; }
         public int? _wbill_id { get; set; }
         public Guid? doc_id { get; set; }
-  //      private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
         public bool is_new_record { get; set; }
-
         private GetWayBillDetOut_Result wbd_row
         {
             get
@@ -39,8 +37,8 @@ namespace SP_Sklad.WBForm
                 return  WaybillDetOutGridView.GetFocusedRow() as GetWayBillDetOut_Result;
             }
         }
-
         private List<GetWayBillDetOut_Result> wbd_list { get; set; }
+        private UserSettingsRepository user_settings { get; set; }
 
         public frmWayBillOut(int wtype, int? wbill_id)
         {
@@ -48,7 +46,7 @@ namespace SP_Sklad.WBForm
             _wtype = wtype;
             _wbill_id = wbill_id;
             _db = new BaseEntities();
-        //    current_transaction = _db.Database.BeginTransaction(/*IsolationLevel.RepeatableRead*/);
+            user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
             InitializeComponent();
         }
 
@@ -95,7 +93,6 @@ namespace SP_Sklad.WBForm
                 }
 
                 WaybillListBS.DataSource = wb;
-            //    wb.UpdatedBy = DBHelper.CurrentUser.UserId;
                 checkEdit2.Checked = (wb.ToDate != null);
 
                payDocUserControl1.OnLoad(_db, wb);
@@ -137,7 +134,7 @@ namespace SP_Sklad.WBForm
             OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
             NowDateBtn.Enabled = OnDateDBEdit.Enabled;
 
-            PersonComboBox.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
+            PersonComboBox.Enabled = !String.IsNullOrEmpty(user_settings.AccessEditPersonId) && Convert.ToInt32(user_settings.AccessEditPersonId) == 1;
             PersonEditBtn.Enabled = PersonComboBox.Enabled;
 
             if (TurnDocCheckBox.Checked) Close();
@@ -159,7 +156,7 @@ namespace SP_Sklad.WBForm
 
             if (TurnDocCheckBox.Checked)
             {
-                var ex_wb = _db.ExecuteWayBill(wb.WbillId, null).ToList();
+                var ex_wb = _db.ExecuteWayBill(wb.WbillId, null, DBHelper.CurrentUser.KaId).ToList();
             }
 
             is_new_record = false;

@@ -89,6 +89,15 @@ namespace SP_Sklad.Common
                 set { Set("ACCESS_EDIT_WEIGHT", value); }
             }
 
+            /// <summary>
+            /// External Access: edit personid
+            /// </summary>
+            public string AccessEditPersonId
+            {
+                get { return Get("ACCESS_EDIT_PERSONID"); }
+                set { Set("ACCESS_EDIT_PERSONID", value); }
+            }
+
             #endregion
 
 

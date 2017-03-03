@@ -654,7 +654,7 @@ namespace SP_Sklad.MainTabs
             {
                 using (var f = new frmWBWriteOn())
                 {
-                    var result = f._db.ExecuteWayBill(wbl.WbillId, 5).ToList().FirstOrDefault();
+                    var result = f._db.ExecuteWayBill(wbl.WbillId, 5, DBHelper.CurrentUser.KaId).ToList().FirstOrDefault();
                     f.doc_id = result.NewDocId;
                     f.TurnDocCheckBox.Checked = true;
                     f.ShowDialog();
@@ -676,7 +676,7 @@ namespace SP_Sklad.MainTabs
             {
                 using (var f = new frmWBWriteOff())
                 {
-                    var result = f._db.ExecuteWayBill(wbl.WbillId, -5).ToList().FirstOrDefault();
+                    var result = f._db.ExecuteWayBill(wbl.WbillId, -5, DBHelper.CurrentUser.KaId).ToList().FirstOrDefault();
                     f.doc_id = result.NewDocId;
                     f.TurnDocCheckBox.Checked = true;
                     f.ShowDialog();
@@ -713,7 +713,7 @@ namespace SP_Sklad.MainTabs
             {
                 case 2:
                     var dr = WbGridView.GetFocusedRow() as GetWayBillListWh_Result;
-                    var doc = DB.SkladBase().DocCopy(dr.Id).FirstOrDefault();
+                    var doc = DB.SkladBase().DocCopy(dr.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
 
                     if (cur_wtype == 5) //Ввведення залишків
                     {

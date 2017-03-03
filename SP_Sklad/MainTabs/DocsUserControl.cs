@@ -526,7 +526,7 @@ namespace SP_Sklad.MainTabs
             {
                 case 1:
                     var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
-                    var doc = DB.SkladBase().DocCopy(dr.Id).FirstOrDefault();
+                    var doc = DB.SkladBase().DocCopy(dr.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
 
                     if (cur_wtype == -1 || cur_wtype == -16) //Відаткова , замолення клиента 
                     {
@@ -568,7 +568,7 @@ namespace SP_Sklad.MainTabs
 
                 case 4:
                     var pd = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
-                    var p_doc = DB.SkladBase().DocCopy(pd.Id).FirstOrDefault();
+                    var p_doc = DB.SkladBase().DocCopy(pd.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
 
                     int? w_type = focused_tree_node.WType != -2 ? focused_tree_node.WType / 3 : focused_tree_node.WType;
                     using (var pdf = new frmPayDoc(w_type, p_doc.out_wbill_id))
@@ -646,7 +646,7 @@ namespace SP_Sklad.MainTabs
             {
                 using (var f = new frmWayBillOut(-1, null))
                 {
-                    var result = f._db.ExecuteWayBill(wbl.WbillId, null).ToList().FirstOrDefault();
+                    var result = f._db.ExecuteWayBill(wbl.WbillId, null, DBHelper.CurrentUser.KaId).ToList().FirstOrDefault();
                     f.doc_id = result.NewDocId;
                     f.is_new_record = true;
                     f.ShowDialog();
@@ -668,7 +668,7 @@ namespace SP_Sklad.MainTabs
             {
                 using (var f = new frmWayBillIn(1))
                 {
-                    var result = f._db.ExecuteWayBill(wbl.WbillId, null).ToList().FirstOrDefault();
+                    var result = f._db.ExecuteWayBill(wbl.WbillId, null, DBHelper.CurrentUser.KaId).ToList().FirstOrDefault();
 
                     f.doc_id = result.NewDocId;
                     f.ShowDialog();

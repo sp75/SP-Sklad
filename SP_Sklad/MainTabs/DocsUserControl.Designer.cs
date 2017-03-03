@@ -232,6 +232,8 @@
             this.DocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.row18 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.repositoryItemImageComboBox12 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -329,6 +331,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox12)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -950,6 +953,8 @@
             this.vGridControl1.Location = new System.Drawing.Point(0, 0);
             this.vGridControl1.Name = "vGridControl1";
             this.vGridControl1.RecordWidth = 400;
+            this.vGridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemImageComboBox12});
             this.vGridControl1.RowHeaderWidth = 268;
             this.vGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.row,
@@ -959,7 +964,8 @@
             this.row9,
             this.row10,
             this.row11,
-            this.row12});
+            this.row12,
+            this.row18});
             this.vGridControl1.Size = new System.Drawing.Size(1031, 219);
             this.vGridControl1.TabIndex = 0;
             // 
@@ -1061,6 +1067,7 @@
             this.row12.Name = "row12";
             this.row12.Properties.Caption = "Статус";
             this.row12.Properties.FieldName = "Checked";
+            this.row12.Properties.RowEdit = this.repositoryItemImageComboBox12;
             // 
             // xtraTabPage2
             // 
@@ -2559,6 +2566,24 @@
             this.WbDetPopupMenu.Manager = this.barManager1;
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
             // 
+            // row18
+            // 
+            this.row18.Name = "row18";
+            this.row18.Properties.Caption = "Номер в системі";
+            this.row18.Properties.FieldName = "WbillId";
+            // 
+            // repositoryItemImageComboBox12
+            // 
+            this.repositoryItemImageComboBox12.AutoHeight = false;
+            this.repositoryItemImageComboBox12.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox12.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 24),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 22),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 25)});
+            this.repositoryItemImageComboBox12.Name = "repositoryItemImageComboBox12";
+            this.repositoryItemImageComboBox12.SmallImages = this.GridImageList;
+            // 
             // DocsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2671,6 +2696,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox12)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2880,5 +2906,7 @@
         private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox12;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow row18;
     }
 }

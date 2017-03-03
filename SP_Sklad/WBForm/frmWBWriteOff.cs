@@ -22,7 +22,6 @@ namespace SP_Sklad.WBForm
         public BaseEntities _db { get; set; }
         private int? _wbill_id { get; set; }
         public Guid? doc_id { get; set; }
-     //   private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
         public bool is_new_record { get; set; }
 
@@ -30,14 +29,15 @@ namespace SP_Sklad.WBForm
         private GetWayBillDetOut_Result focused_dr
         {
             get { return WaybillDetOutGridView.GetFocusedRow() as GetWayBillDetOut_Result; }
-        } 
+        }
+        private UserSettingsRepository user_settings { get; set; }
 
         public frmWBWriteOff(int? wbill_id=null)
         {
             is_new_record = false;
             _wbill_id = wbill_id;
             _db = new BaseEntities();
-         //   current_transaction = _db.Database.BeginTransaction();
+            user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
 
             InitializeComponent();
         }
@@ -182,6 +182,9 @@ namespace SP_Sklad.WBForm
         {
             OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
             NowDateBtn.Enabled = OnDateDBEdit.Enabled;
+
+       /*     PersonComboBox.Enabled = !String.IsNullOrEmpty(user_settings.AccessEditPersonId) && Convert.ToInt32(user_settings.AccessEditPersonId) == 1;
+            PersonEditBtn.Enabled = PersonComboBox.Enabled;*/
         }
 
         private void frmWBWriteOff_FormClosed(object sender, FormClosedEventArgs e)
@@ -210,7 +213,7 @@ namespace SP_Sklad.WBForm
 
             if (TurnDocCheckBox.Checked)
             {
-                _db.ExecuteWayBill(wb.WbillId, null);
+                _db.ExecuteWayBill(wb.WbillId, null, DBHelper.CurrentUser.KaId);
             }
 
             is_new_record = false;

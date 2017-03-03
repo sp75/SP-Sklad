@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WarehouseUserControl));
-            this.UserTreeImgList = new System.Windows.Forms.ImageList();
-            this.GridImageList = new System.Windows.Forms.ImageList();
-            this.PageImageList = new System.Windows.Forms.ImageList();
-            this.barManager1 = new DevExpress.XtraBars.BarManager();
+            this.UserTreeImgList = new System.Windows.Forms.ImageList(this.components);
+            this.GridImageList = new System.Windows.Forms.ImageList(this.components);
+            this.PageImageList = new System.Windows.Forms.ImageList(this.components);
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.NewItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.CopyItemBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -67,7 +68,7 @@
             this.standaloneBarDockControl2 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl3 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl5 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.BarImageList = new System.Windows.Forms.ImageList();
+            this.BarImageList = new System.Windows.Forms.ImageList(this.components);
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.RecalcRemainsMatBtn = new DevExpress.XtraBars.BarButtonItem();
             this.RecalcRemainsAllMatBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -86,7 +87,7 @@
             this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl3 = new DevExpress.XtraEditors.SplitContainerControl();
             this.WhMatGridControl = new DevExpress.XtraGrid.GridControl();
-            this.WhMatGetBS = new System.Windows.Forms.BindingSource();
+            this.WhMatGetBS = new System.Windows.Forms.BindingSource(this.components);
             this.WhMatGridView = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
             this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridColumn24 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -139,7 +140,7 @@
             this.bandedGridColumn9 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl5 = new DevExpress.XtraGrid.GridControl();
-            this.GetOrderedBS = new System.Windows.Forms.BindingSource();
+            this.GetOrderedBS = new System.Windows.Forms.BindingSource(this.components);
             this.bandedGridView2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
             this.gridBand7 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridColumn36 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -185,7 +186,7 @@
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.WBGridControl = new DevExpress.XtraGrid.GridControl();
-            this.GetWayBillListWhBS = new System.Windows.Forms.BindingSource();
+            this.GetWayBillListWhBS = new System.Windows.Forms.BindingSource(this.components);
             this.WbGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -215,7 +216,7 @@
             this.gridColumn50 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
-            this.WayBillListInfoBS = new System.Windows.Forms.BindingSource();
+            this.WayBillListInfoBS = new System.Windows.Forms.BindingSource(this.components);
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.row = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row4 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -245,7 +246,7 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.wbStartDate = new DevExpress.XtraEditors.DateEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu();
+            this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.barDockControl5 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl6 = new DevExpress.XtraBars.BarDockControl();
@@ -256,8 +257,8 @@
             this.barDockControl9 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl10 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl11 = new DevExpress.XtraBars.BarDockControl();
-            this.DocsPopupMenu = new DevExpress.XtraBars.PopupMenu();
-            this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu();
+            this.DocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -2205,8 +2206,6 @@
             this.gridColumn5.Caption = "Сума в валюті";
             this.gridColumn5.FieldName = "SummInCurr";
             this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 7;
             this.gridColumn5.Width = 84;
             // 
             // gridColumn6
@@ -2223,8 +2222,6 @@
             this.gridColumn7.Caption = "Валюта";
             this.gridColumn7.FieldName = "CurrName";
             this.gridColumn7.Name = "gridColumn7";
-            this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 8;
             this.gridColumn7.Width = 50;
             // 
             // gridColumn8
@@ -2233,7 +2230,7 @@
             this.gridColumn8.FieldName = "FromWh";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 9;
+            this.gridColumn8.VisibleIndex = 7;
             this.gridColumn8.Width = 149;
             // 
             // gridColumn44
@@ -2242,7 +2239,7 @@
             this.gridColumn44.FieldName = "ToWh";
             this.gridColumn44.Name = "gridColumn44";
             this.gridColumn44.Visible = true;
-            this.gridColumn44.VisibleIndex = 10;
+            this.gridColumn44.VisibleIndex = 8;
             this.gridColumn44.Width = 145;
             // 
             // gridColumn45
@@ -2251,7 +2248,7 @@
             this.gridColumn45.FieldName = "PersonName";
             this.gridColumn45.Name = "gridColumn45";
             this.gridColumn45.Visible = true;
-            this.gridColumn45.VisibleIndex = 11;
+            this.gridColumn45.VisibleIndex = 9;
             this.gridColumn45.Width = 195;
             // 
             // gridColumn76

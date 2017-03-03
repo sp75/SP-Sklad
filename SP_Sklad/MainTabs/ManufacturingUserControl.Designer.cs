@@ -1070,7 +1070,7 @@
             this.gridColumn40.FieldName = "Price";
             this.gridColumn40.Name = "gridColumn40";
             this.gridColumn40.Visible = true;
-            this.gridColumn40.VisibleIndex = 13;
+            this.gridColumn40.VisibleIndex = 12;
             this.gridColumn40.Width = 70;
             // 
             // gridColumn41
@@ -1081,7 +1081,7 @@
             this.gridColumn41.FieldName = "WriteOnDate";
             this.gridColumn41.Name = "gridColumn41";
             this.gridColumn41.Visible = true;
-            this.gridColumn41.VisibleIndex = 14;
+            this.gridColumn41.VisibleIndex = 13;
             this.gridColumn41.Width = 89;
             // 
             // gridColumn65
@@ -1092,7 +1092,7 @@
             this.gridColumn65.FieldName = "ShippedAmount";
             this.gridColumn65.Name = "gridColumn65";
             this.gridColumn65.Visible = true;
-            this.gridColumn65.VisibleIndex = 12;
+            this.gridColumn65.VisibleIndex = 11;
             this.gridColumn65.Width = 53;
             // 
             // gridColumn82
@@ -1102,8 +1102,6 @@
             this.gridColumn82.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn82.FieldName = "AmountBrutto";
             this.gridColumn82.Name = "gridColumn82";
-            this.gridColumn82.Visible = true;
-            this.gridColumn82.VisibleIndex = 11;
             this.gridColumn82.Width = 64;
             // 
             // panelControl2

@@ -1827,19 +1827,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetRelDocList_Result>("[BaseEntities].[GetRelDocList](@originator_id)", originator_idParameter);
         }
     
-        public virtual ObjectResult<ExecuteWayBill_Result> ExecuteWayBill(Nullable<int> wBILLID, Nullable<int> nEW_WTYPE)
-        {
-            var wBILLIDParameter = wBILLID.HasValue ?
-                new ObjectParameter("WBILLID", wBILLID) :
-                new ObjectParameter("WBILLID", typeof(int));
-    
-            var nEW_WTYPEParameter = nEW_WTYPE.HasValue ?
-                new ObjectParameter("NEW_WTYPE", nEW_WTYPE) :
-                new ObjectParameter("NEW_WTYPE", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ExecuteWayBill_Result>("ExecuteWayBill", wBILLIDParameter, nEW_WTYPEParameter);
-        }
-    
         public virtual int SetDocRel(Nullable<System.Guid> originator_id, Nullable<System.Guid> rel_originator_id)
         {
             var originator_idParameter = originator_id.HasValue ?
@@ -1861,15 +1848,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("originator_id", typeof(System.Guid));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetManufacturedPos_Result>("[BaseEntities].[GetManufacturedPos](@originator_id)", originator_idParameter);
-        }
-    
-        public virtual ObjectResult<DocCopy_Result> DocCopy(Nullable<System.Guid> originator_id)
-        {
-            var originator_idParameter = originator_id.HasValue ?
-                new ObjectParameter("originator_id", originator_id) :
-                new ObjectParameter("originator_id", typeof(System.Guid));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocCopy_Result>("DocCopy", originator_idParameter);
         }
     
         [EdmFunction("BaseEntities", "GetOrdered")]
@@ -2003,6 +1981,36 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("wbill_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWaybillDetIn_Result>("[BaseEntities].[GetWaybillDetIn](@wbill_id)", wbill_idParameter);
+        }
+    
+        public virtual ObjectResult<DocCopy_Result> DocCopy(Nullable<System.Guid> originator_id, Nullable<int> person_id)
+        {
+            var originator_idParameter = originator_id.HasValue ?
+                new ObjectParameter("originator_id", originator_id) :
+                new ObjectParameter("originator_id", typeof(System.Guid));
+    
+            var person_idParameter = person_id.HasValue ?
+                new ObjectParameter("person_id", person_id) :
+                new ObjectParameter("person_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocCopy_Result>("DocCopy", originator_idParameter, person_idParameter);
+        }
+    
+        public virtual ObjectResult<ExecuteWayBill_Result> ExecuteWayBill(Nullable<int> wBILLID, Nullable<int> nEW_WTYPE, Nullable<int> person_id)
+        {
+            var wBILLIDParameter = wBILLID.HasValue ?
+                new ObjectParameter("WBILLID", wBILLID) :
+                new ObjectParameter("WBILLID", typeof(int));
+    
+            var nEW_WTYPEParameter = nEW_WTYPE.HasValue ?
+                new ObjectParameter("NEW_WTYPE", nEW_WTYPE) :
+                new ObjectParameter("NEW_WTYPE", typeof(int));
+    
+            var person_idParameter = person_id.HasValue ?
+                new ObjectParameter("person_id", person_id) :
+                new ObjectParameter("person_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ExecuteWayBill_Result>("ExecuteWayBill", wBILLIDParameter, nEW_WTYPEParameter, person_idParameter);
         }
     }
 }

@@ -324,7 +324,13 @@
     <Compile Include="SkladData\DiscCards.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\DocCopy_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\DocRels.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\ExecuteWayBill_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetDocList_Result.cs">
@@ -782,9 +788,6 @@
     <Compile Include="SkladData\DiscountList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\DocCopy_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SkladData\DocType.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -795,9 +798,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\EXECUTESQL_EXAMPLER_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\ExecuteWayBill_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\ExtRel.cs">
