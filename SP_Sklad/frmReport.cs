@@ -29,7 +29,7 @@ namespace SP_Sklad
             OnDateDBEdit.DateTime = dt;
             xtraTabControl1.AppearancePage.PageClient.BackColor = mainPanel.BackColor;
             StartDateEdit.DateTime = DateTimeDayOfMonthExtensions.FirstDayOfMonth(dt);
-            EndDateEdit.DateTime = DateTimeDayOfMonthExtensions.LastDayOfMonth(dt);
+            EndDateEdit.DateTime = DateTimeDayOfMonthExtensions.LastDayOfMonth(dt).SetEndDay();
             MonthEdit.SelectedIndex = dt.Month - 1;
             YearEdit.Value = dt.Year;
             YearEdit2.Value = dt.Year;
@@ -186,23 +186,23 @@ namespace SP_Sklad
                     switch (comboBoxEdit3.SelectedIndex)
                     {
                         case 0: StartDateEdit.DateTime = DateTime.Parse("01.01." + year);
-                            EndDateEdit.DateTime = DateTime.Parse("31.03." + year);
+                            EndDateEdit.DateTime = DateTime.Parse("31.03." + year).SetEndDay();
                             break;
                         case 1: StartDateEdit.DateTime = DateTime.Parse("01.04." + year);
-                            EndDateEdit.DateTime = DateTime.Parse("30.06." + year);
+                            EndDateEdit.DateTime = DateTime.Parse("30.06." + year).SetEndDay();
                             break;
                         case 2: StartDateEdit.DateTime = DateTime.Parse("01.07." + year);
-                            EndDateEdit.DateTime = DateTime.Parse("30.09." + year);
+                            EndDateEdit.DateTime = DateTime.Parse("30.09." + year).SetEndDay();
                             break;
                         case 3: StartDateEdit.DateTime = DateTime.Parse("01.10." + year);
-                            EndDateEdit.DateTime = DateTime.Parse("31.12." + year);
+                            EndDateEdit.DateTime = DateTime.Parse("31.12." + year).SetEndDay();
                             break;
                     }
                     break;
 
                 case 3:
                     StartDateEdit.DateTime = DateTime.Parse("01.01." + Convert.ToString(YearEdit3.Value));
-                    EndDateEdit.DateTime = DateTime.Parse("31.12." + Convert.ToString(YearEdit3.Value));
+                    EndDateEdit.DateTime = DateTime.Parse("31.12." + Convert.ToString(YearEdit3.Value)).SetEndDay();
                     break;
             }
         }

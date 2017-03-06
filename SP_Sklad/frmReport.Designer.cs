@@ -731,7 +731,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.StartDateEdit.Properties.Mask.EditMask = "g";
             this.StartDateEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.StartDateEdit.Size = new System.Drawing.Size(139, 22);
+            this.StartDateEdit.Size = new System.Drawing.Size(152, 22);
             this.StartDateEdit.StyleController = this.styleController1;
             this.StartDateEdit.TabIndex = 25;
             // 
@@ -953,9 +953,9 @@
             this.OnDateDBEdit.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
             this.OnDateDBEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.OnDateDBEdit.Properties.Mask.EditMask = "F";
+            this.OnDateDBEdit.Properties.Mask.EditMask = "g";
             this.OnDateDBEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.OnDateDBEdit.Size = new System.Drawing.Size(189, 22);
+            this.OnDateDBEdit.Size = new System.Drawing.Size(152, 22);
             this.OnDateDBEdit.StyleController = this.styleController1;
             this.OnDateDBEdit.TabIndex = 9;
             // 
