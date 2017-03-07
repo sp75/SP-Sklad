@@ -63,9 +63,9 @@ namespace SP_Sklad.WBDetForm
 
             TechProcDetBS.DataSource = tp_d;
 
-            var r = _db.WaybillList.Where(w => w.WType == -20 && (w.Checked == 0 || w.Checked == 2)).SelectMany(s => s.TechProcDet).Where(w => w.MatId != null).Select(s => s.MatId).ToList();
-            MatComboBox.Properties.DataSource = _db.Materials.Where(w => w.TypeId == 1 && (!r.Contains(w.MatId) || w.MatId == tp_d.MatId)).Select(s => new { s.MatId, s.Name, s.Artikul }).ToList();
-
+            var r = _db.WaybillList.Where(w => w.WType == -20 && (w.Checked == 0 || w.Checked == 2) && w.WbillId != _wbill_id).SelectMany(s => s.TechProcDet).Where(w => w.MatId != null).Select(s => s.MatId).ToList();
+           MatComboBox.Properties.DataSource = _db.Materials.Where(w => w.TypeId == 1 && (!r.Contains(w.MatId) || w.MatId == tp_d.MatId)).Select(s => new { s.MatId, s.Name, s.Artikul }).ToList();
+         //   MatComboBox.Properties.DataSource = _db.Materials.Where(w => w.TypeId == 1 /*&& (!r.Contains(w.MatId) || w.MatId == tp_d.MatId)*/).Select(s => new { s.MatId, s.Name, s.Artikul }).ToList();
 
             if (ext_list.Any())
             {
