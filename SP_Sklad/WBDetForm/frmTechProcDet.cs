@@ -134,5 +134,10 @@ namespace SP_Sklad.WBDetForm
                 tp_d.Num = row.Num;
             }
         }
+
+        private void AmountEdit_MouseUp(object sender, MouseEventArgs e)
+        {
+            AmountEdit.SelectAll();
+        }
     }
 }
