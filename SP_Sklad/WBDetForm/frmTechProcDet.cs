@@ -70,6 +70,10 @@ namespace SP_Sklad.WBDetForm
             if (ext_list.Any())
             {
                 ExtMatComboBox.EditValue = ext_list.FirstOrDefault().MatId;
+                if (ext_list.Count() > 1)
+                {
+                    ExtMatComboBox2.EditValue = ext_list[1].MatId;
+                }
             }
         }
 
@@ -131,7 +135,7 @@ namespace SP_Sklad.WBDetForm
             var row = TechProcessCB.GetSelectedDataRow() as dynamic;
             if (row != null)
             {
-                tp_d.Num = row.Num;
+                tp_d.Num = row.Num != null ? row.Num : (_db.TechProcDet.Where(w => w.WbillId == _wbill_id).Select(s => (int?)s.Num).Max() ?? 0) + 1;
             }
         }
     }
