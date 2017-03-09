@@ -138,5 +138,10 @@ namespace SP_Sklad.WBDetForm
                 tp_d.Num = row.Num != null ? row.Num : (_db.TechProcDet.Where(w => w.WbillId == _wbill_id).Select(s => (int?)s.Num).Max() ?? 0) + 1;
             }
         }
+
+        private void AmountEdit_MouseUp(object sender, MouseEventArgs e)
+        {
+            AmountEdit.SelectAll();
+        }
     }
 }
