@@ -12,6 +12,8 @@ using SP_Sklad.SkladData;
 using SP_Sklad.EditForm;
 using SP_Sklad.Common;
 using DevExpress.XtraTreeList;
+using System.IO;
+using System.Diagnostics;
 
 namespace SP_Sklad.MainTabs
 {
@@ -955,6 +957,20 @@ namespace SP_Sklad.MainTabs
                 }
 
                 BarCodeEdit.Text = "";
+            }
+        }
+
+        private void barButtonItem11_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            switch (focused_tree_node.GType)
+            {
+
+                case 2:
+                    var path = Path.Combine(Application.StartupPath, "expotr.xlsx");
+                    MatGridControl.ExportToXlsx(path);
+
+                    Process.Start(path);
+                    break;
             }
         }
     }

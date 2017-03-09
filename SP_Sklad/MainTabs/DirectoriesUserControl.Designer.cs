@@ -248,6 +248,7 @@
             this.TechProcessDS = new System.Windows.Forms.BindingSource(this.components);
             this.TechProcessGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn55 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn77 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage23 = new DevExpress.XtraTab.XtraTabPage();
             this.PriceTypesGridControl = new DevExpress.XtraGrid.GridControl();
             this.PriceTypesViewBS = new System.Windows.Forms.BindingSource(this.components);
@@ -315,7 +316,8 @@
             this.ExplorerPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.gridColumn77 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
+            this.gridColumn78 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
@@ -633,8 +635,9 @@
             this.barButtonItem13,
             this.showMatArhivedBtn,
             this.barCheckItem1,
-            this.showChildNodeBtn});
-            this.barManager1.MaxItemId = 38;
+            this.showChildNodeBtn,
+            this.barButtonItem11});
+            this.barManager1.MaxItemId = 39;
             // 
             // bar1
             // 
@@ -648,7 +651,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.CopyItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11, true)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.OptionsBar.DrawDragBorder = false;
             this.bar1.OptionsBar.UseWholeRow = true;
@@ -875,6 +879,7 @@
             this.BarImageList.Images.SetKeyName(10, "Рух товар_в.bmp");
             this.BarImageList.Images.SetKeyName(11, "Склади.bmp");
             this.BarImageList.Images.SetKeyName(12, "treeview.png");
+            this.BarImageList.Images.SetKeyName(13, "document-excel-csv.png");
             // 
             // barButtonItem1
             // 
@@ -1593,7 +1598,8 @@
             this.gridColumn28,
             this.AvgMatPriceGridColumn,
             this.gridColumn23,
-            this.gridColumn73});
+            this.gridColumn73,
+            this.gridColumn78});
             this.MatGridView.GridControl = this.MatGridControl;
             this.MatGridView.Name = "MatGridView";
             this.MatGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -1653,7 +1659,7 @@
             this.gridColumn28.FieldName = "MinReserv";
             this.gridColumn28.Name = "gridColumn28";
             this.gridColumn28.Visible = true;
-            this.gridColumn28.VisibleIndex = 4;
+            this.gridColumn28.VisibleIndex = 5;
             this.gridColumn28.Width = 109;
             // 
             // AvgMatPriceGridColumn
@@ -1664,7 +1670,7 @@
             this.AvgMatPriceGridColumn.FieldName = "AvgPrice";
             this.AvgMatPriceGridColumn.Name = "AvgMatPriceGridColumn";
             this.AvgMatPriceGridColumn.Visible = true;
-            this.AvgMatPriceGridColumn.VisibleIndex = 5;
+            this.AvgMatPriceGridColumn.VisibleIndex = 6;
             this.AvgMatPriceGridColumn.Width = 89;
             // 
             // gridColumn23
@@ -1675,7 +1681,7 @@
             this.gridColumn23.FieldName = "Remain";
             this.gridColumn23.Name = "gridColumn23";
             this.gridColumn23.Visible = true;
-            this.gridColumn23.VisibleIndex = 6;
+            this.gridColumn23.VisibleIndex = 7;
             this.gridColumn23.Width = 80;
             // 
             // gridColumn73
@@ -1685,7 +1691,7 @@
             this.gridColumn73.FieldName = "Archived";
             this.gridColumn73.Name = "gridColumn73";
             this.gridColumn73.Visible = true;
-            this.gridColumn73.VisibleIndex = 7;
+            this.gridColumn73.VisibleIndex = 8;
             // 
             // repositoryItemCheckEdit8
             // 
@@ -2616,6 +2622,14 @@
             this.gridColumn55.VisibleIndex = 1;
             this.gridColumn55.Width = 527;
             // 
+            // gridColumn77
+            // 
+            this.gridColumn77.Caption = "Номер";
+            this.gridColumn77.FieldName = "Num";
+            this.gridColumn77.Name = "gridColumn77";
+            this.gridColumn77.Visible = true;
+            this.gridColumn77.VisibleIndex = 0;
+            // 
             // xtraTabPage23
             // 
             this.xtraTabPage23.Controls.Add(this.PriceTypesGridControl);
@@ -3270,13 +3284,21 @@
             this.MatPopupMenu.Manager = this.barManager1;
             this.MatPopupMenu.Name = "MatPopupMenu";
             // 
-            // gridColumn77
+            // barButtonItem11
             // 
-            this.gridColumn77.Caption = "Номер";
-            this.gridColumn77.FieldName = "Num";
-            this.gridColumn77.Name = "gridColumn77";
-            this.gridColumn77.Visible = true;
-            this.gridColumn77.VisibleIndex = 0;
+            this.barButtonItem11.Caption = "Експорт";
+            this.barButtonItem11.Id = 38;
+            this.barButtonItem11.ImageIndex = 13;
+            this.barButtonItem11.Name = "barButtonItem11";
+            this.barButtonItem11.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick_1);
+            // 
+            // gridColumn78
+            // 
+            this.gridColumn78.Caption = "Вага";
+            this.gridColumn78.FieldName = "Weight";
+            this.gridColumn78.Name = "gridColumn78";
+            this.gridColumn78.Visible = true;
+            this.gridColumn78.VisibleIndex = 4;
             // 
             // DirectoriesUserControl
             // 
@@ -3720,5 +3742,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn75;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn76;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn77;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem11;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn78;
     }
 }
