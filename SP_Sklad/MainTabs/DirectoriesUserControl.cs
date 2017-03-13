@@ -80,6 +80,11 @@ namespace SP_Sklad.MainTabs
         {
             focused_tree_node = DirTreeList.GetDataRecordByNode(e.Node) as GetDirTree_Result;
 
+            NewItemBtn.Enabled = focused_tree_node != null && focused_tree_node.CanInsert == 1;
+            DeleteItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanDelete == 1);
+            EditItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanModify == 1);
+            CopyItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanModify == 1);
+
             RefrechItemBtn.PerformClick();
             mainContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
 

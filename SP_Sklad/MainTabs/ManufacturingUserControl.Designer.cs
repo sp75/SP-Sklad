@@ -1506,10 +1506,11 @@
             // 
             this.gridColumn9.Caption = "№";
             this.gridColumn9.FieldName = "Num";
+            this.gridColumn9.MaxWidth = 50;
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 0;
-            this.gridColumn9.Width = 62;
+            this.gridColumn9.Width = 41;
             // 
             // gridColumn10
             // 
@@ -1518,7 +1519,7 @@
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 1;
-            this.gridColumn10.Width = 234;
+            this.gridColumn10.Width = 281;
             // 
             // gridColumn11
             // 
@@ -1529,7 +1530,7 @@
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 3;
-            this.gridColumn11.Width = 112;
+            this.gridColumn11.Width = 133;
             // 
             // gridColumn12
             // 
@@ -1538,7 +1539,7 @@
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 4;
-            this.gridColumn12.Width = 112;
+            this.gridColumn12.Width = 133;
             // 
             // gridColumn13
             // 
@@ -1549,7 +1550,7 @@
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
             this.gridColumn13.VisibleIndex = 5;
-            this.gridColumn13.Width = 120;
+            this.gridColumn13.Width = 159;
             // 
             // gridColumn31
             // 
@@ -1558,7 +1559,7 @@
             this.gridColumn31.Name = "gridColumn31";
             this.gridColumn31.Visible = true;
             this.gridColumn31.VisibleIndex = 2;
-            this.gridColumn31.Width = 233;
+            this.gridColumn31.Width = 279;
             // 
             // gridColumn75
             // 

@@ -209,10 +209,14 @@ namespace SP_Sklad.MainTabs
             var dr = TechProcGridView.GetRow(TechProcGridView.FocusedRowHandle) as v_TechProcDet;
             if (dr != null)
             {
-                var f = new frmTechProcDet(dr.WbillId, dr.DetId);
-                if (f.ShowDialog() == DialogResult.OK)
+                using (var f = new frmTechProcDet(dr.WbillId, dr.DetId))
                 {
-                    RefreshTechProcDet(dr.WbillId);
+                    var row = WbGridView.GetFocusedRow() as WBListMake_Result;
+                    f.OkButton.Enabled = ( row.Checked != 1 );
+                    if (f.ShowDialog() == DialogResult.OK)
+                    {
+                        RefreshTechProcDet(dr.WbillId);
+                    }
                 }
             }
         }
@@ -483,7 +487,7 @@ namespace SP_Sklad.MainTabs
             EditItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanModify == 1);
             AddTechProcBtn.Enabled = (focused_row != null && focused_row.Checked != 1 && focused_tree_node.CanModify == 1);
             DelTechProcBtn.Enabled = (AddTechProcBtn.Enabled && TechProcGridView.DataRowCount > 0);
-            EditTechProcBtn.Enabled = DelTechProcBtn.Enabled;
+            EditTechProcBtn.Enabled = (focused_row != null && focused_tree_node.CanModify == 1 && TechProcGridView.DataRowCount > 0); 
             CopyItemBtn.Enabled = (focused_row != null && focused_tree_node.CanModify == 1);
             //  OkButton->Enabled =  !WayBillList->IsEmpty();
             ExecuteItemBtn.Enabled = (focused_row != null && focused_tree_node.CanPost == 1);

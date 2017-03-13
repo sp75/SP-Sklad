@@ -28,8 +28,8 @@ namespace SP_Sklad
             var dt = DateTime.Now;
             OnDateDBEdit.DateTime = dt;
             xtraTabControl1.AppearancePage.PageClient.BackColor = mainPanel.BackColor;
-            StartDateEdit.DateTime = DateTimeDayOfMonthExtensions.FirstDayOfMonth(dt);
-            EndDateEdit.DateTime = DateTimeDayOfMonthExtensions.LastDayOfMonth(dt).SetEndDay();
+            StartDateEdit.DateTime = dt.Date;
+            EndDateEdit.DateTime = dt.Date.SetEndDay();
             MonthEdit.SelectedIndex = dt.Month - 1;
             YearEdit.Value = dt.Year;
             YearEdit2.Value = dt.Year;

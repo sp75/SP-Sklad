@@ -138,7 +138,7 @@
             // 
             // ExtMatComboBox2
             // 
-            this.ExtMatComboBox2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.TechProcDetBS, "ExtMat2Id", true));
+            this.ExtMatComboBox2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.TechProcDetBS, "ExtMat2Id", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.ExtMatComboBox2.Location = new System.Drawing.Point(15, 228);
             this.ExtMatComboBox2.Name = "ExtMatComboBox2";
             this.ExtMatComboBox2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -170,7 +170,7 @@
             // 
             // calcEdit2
             // 
-            this.calcEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.TechProcDetBS, "ExtMat2Amount", true));
+            this.calcEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.TechProcDetBS, "ExtMat2Amount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.calcEdit2.Location = new System.Drawing.Point(333, 228);
             this.calcEdit2.Name = "calcEdit2";
             this.calcEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -509,7 +509,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.PanelControl panelControl2;
-        private DevExpress.XtraEditors.SimpleButton OkButton;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.StyleController styleController1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
@@ -531,5 +530,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.CalcEdit calcEdit2;
         private DevExpress.XtraEditors.LabelControl labelControl10;
+        public DevExpress.XtraEditors.SimpleButton OkButton;
     }
 }

@@ -667,6 +667,17 @@ namespace SP_Sklad.Common
                 res += "Контрагент: " + split[4] + System.Environment.NewLine;
                 res += "Сума: " + split[3] + System.Environment.NewLine;
             }
+
+            if (!String.IsNullOrEmpty(str) && str.Split(';').Count() == 6)
+            {
+                var split = str.Split(';');
+                res += "Номер: " + split[0] + System.Environment.NewLine;
+                res += "Дата: " + split[1] + System.Environment.NewLine;
+                res += "Користувач: " + split[4] + System.Environment.NewLine;
+                res += "Вихід: " + split[3] + System.Environment.NewLine;
+                res += "Технологічний процес: " + split[5] + System.Environment.NewLine;
+            }
+
             return res;
         }
     }
