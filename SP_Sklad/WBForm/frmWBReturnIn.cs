@@ -267,8 +267,7 @@ namespace SP_Sklad.WBForm
 
             if (dr != null)
             {
-                _db.WaybillDet.Remove(_db.WaybillDet.Find(dr.PosId));
-                _db.SaveChanges();
+                _db.DeleteWhere<WaybillDet>(w => w.PosId == dr.PosId);
 
                 RefreshDet();
             }
