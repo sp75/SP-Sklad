@@ -378,7 +378,8 @@
       [v_TechProcDet].[Num] AS [Num], 
       [v_TechProcDet].[ExtMatAmount] AS [ExtMatAmount], 
       [v_TechProcDet].[RamaName] AS [RamaName], 
-      [v_TechProcDet].[OutNetto] AS [OutNetto]
+      [v_TechProcDet].[OutNetto] AS [OutNetto], 
+      [v_TechProcDet].[TareWeight] AS [TareWeight]
       FROM [dbo].[v_TechProcDet] AS [v_TechProcDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_WaybillList" EntityType="BaseModel.Store.v_WaybillList" store:Type="Views" store:Schema="dbo" store:Name="v_WaybillList">
@@ -1938,6 +1939,7 @@
           <Property Name="ExtMatId" Type="int" />
           <Property Name="ExtMat2Id" Type="int" />
           <Property Name="ExtMat2Amount" Type="int" />
+          <Property Name="TareWeight" Type="numeric" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="TechProcess">
           <Key>
@@ -2592,6 +2594,7 @@
           <Property Name="ExtMatAmount" Type="int" />
           <Property Name="RamaName" Type="nvarchar" MaxLength="255" />
           <Property Name="OutNetto" Type="numeric" Precision="38" Scale="8" />
+          <Property Name="TareWeight" Type="numeric" Precision="15" Scale="4" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -4603,9 +4606,9 @@
           <ReturnType>
             <CollectionType>
               <RowType>
-                <Property Name="AmountOut" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="AmountOut" Type="numeric" Precision="38" Scale="8" />
                 <Property Name="OnDate" Type="datetime" />
-                <Property Name="AmountBrutto" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="AmountBrutto" Type="numeric" Precision="38" Scale="8" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -8264,6 +8267,7 @@
           <Property Type="Int32" Name="ExtMatAmount" />
           <Property Type="String" Name="RamaName" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="Decimal" Name="OutNetto" Precision="38" Scale="8" />
+          <Property Type="Decimal" Name="TareWeight" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="Measures">
           <Key>
@@ -10055,6 +10059,7 @@
           <Property Type="Int32" Name="ExtMat2Id" />
           <Property Type="Int32" Name="ExtMat2Amount" />
           <NavigationProperty Name="TechProcess" Relationship="BaseModel.FK_TECHPROCDET_TECHPROCESS" FromRole="TechProcDet" ToRole="TechProcess" />
+          <Property Type="Decimal" Name="TareWeight" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="Services">
           <Key>
@@ -13018,6 +13023,7 @@
           <EntitySetMapping Name="v_TechProcDet">
             <EntityTypeMapping TypeName="BaseModel.v_TechProcDet">
               <MappingFragment StoreEntitySet="v_TechProcDet">
+                <ScalarProperty Name="TareWeight" ColumnName="TareWeight" />
                 <ScalarProperty Name="OutNetto" ColumnName="OutNetto" />
                 <ScalarProperty Name="RamaName" ColumnName="RamaName" />
                 <ScalarProperty Name="ExtMatAmount" ColumnName="ExtMatAmount" />
@@ -14382,6 +14388,7 @@
           <EntitySetMapping Name="TechProcDet">
             <EntityTypeMapping TypeName="BaseModel.TechProcDet">
               <MappingFragment StoreEntitySet="TechProcDet">
+                <ScalarProperty Name="TareWeight" ColumnName="TareWeight" />
                 <ScalarProperty Name="ExtMat2Amount" ColumnName="ExtMat2Amount" />
                 <ScalarProperty Name="ExtMat2Id" ColumnName="ExtMat2Id" />
                 <ScalarProperty Name="ExtMatId" ColumnName="ExtMatId" />

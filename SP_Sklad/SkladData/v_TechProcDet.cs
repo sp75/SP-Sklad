@@ -27,5 +27,6 @@ namespace SP_Sklad.SkladData
         public Nullable<int> ExtMatAmount { get; set; }
         public string RamaName { get; set; }
         public Nullable<decimal> OutNetto { get; set; }
+        public Nullable<decimal> TareWeight { get; set; }
     }
 }
