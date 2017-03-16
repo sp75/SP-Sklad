@@ -758,7 +758,7 @@
             this.Name = "frmWaybillSvcDet";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmWaybillSvcDet";
+            this.Text = "Добавити/Редагувати послугу";
             this.Load += new System.EventHandler(this.frmWaybillSvcDet_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();

@@ -95,6 +95,7 @@ namespace SP_Sklad.MainTabs
                 case 31:
                 case 32:
                 case 33:
+                case 34:
                     RepBtn.Enabled = true;
                     break;
             }
@@ -306,6 +307,16 @@ namespace SP_Sklad.MainTabs
 
                 case 33: frm.OnDateGroupBox.Visible = false;
                  //   frm.WHGroupBox.Visible = false;
+                    frm.KAGroupBox.Visible = false;
+                    frm.DocTypeGroupBox.Visible = false;
+                    frm.DocTypeGroupBox2.Visible = false;
+                    frm.ChargeGroupBox.Visible = false;
+                    break;
+
+                case 34: frm.PeriodGroupBox.Visible = false;
+                    frm.WHGroupBox.Visible = false;
+                    frm.GRPGroupBox.Visible = false;
+                    frm.MatGroupBox.Visible = false;
                     frm.KAGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
                     frm.DocTypeGroupBox2.Visible = false;

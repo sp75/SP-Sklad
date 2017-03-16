@@ -7,7 +7,6 @@
     <Schema Namespace="BaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="BaseModelStoreContainer">
           <EntitySet Name="AccountType" EntityType="BaseModel.Store.AccountType" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Actives" EntityType="BaseModel.Store.Actives" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Banks" EntityType="BaseModel.Store.Banks" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="BanksPersons" EntityType="BaseModel.Store.BanksPersons" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CashDesks" EntityType="BaseModel.Store.CashDesks" store:Type="Tables" Schema="dbo" />
@@ -199,6 +198,17 @@
       [UserTreeAccess].[UserId] AS [UserId], 
       [UserTreeAccess].[WType] AS [WType]
       FROM [dbo].[UserTreeAccess] AS [UserTreeAccess]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_Actives" EntityType="BaseModel.Store.v_Actives" store:Type="Views" store:Schema="dbo" store:Name="v_Actives">
+            <DefiningQuery>SELECT 
+      [v_Actives].[OnDate] AS [OnDate], 
+      [v_Actives].[WhSumm] AS [WhSumm], 
+      [v_Actives].[Creditors] AS [Creditors], 
+      [v_Actives].[Debitors] AS [Debitors], 
+      [v_Actives].[Cash] AS [Cash], 
+      [v_Actives].[CashLess] AS [CashLess], 
+      [v_Actives].[Active] AS [Active]
+      FROM [dbo].[v_Actives] AS [v_Actives]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_DiscCards" EntityType="BaseModel.Store.v_DiscCards" store:Type="Views" store:Schema="dbo" store:Name="v_DiscCards">
             <DefiningQuery>SELECT 
@@ -455,6 +465,11 @@
       [v_WhMatRemains].[Ordered] AS [Ordered], 
       [v_WhMatRemains].[ORsv] AS [ORsv]
       FROM [dbo].[v_WhMatRemains] AS [v_WhMatRemains]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_WorkDate" EntityType="BaseModel.Store.v_WorkDate" store:Type="Views" store:Schema="dbo" store:Name="v_WorkDate">
+            <DefiningQuery>SELECT 
+      [v_WorkDate].[OnDate] AS [OnDate]
+      FROM [dbo].[v_WorkDate] AS [v_WorkDate]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK__CURRENCYR__CURRI__5EBF139D" Association="BaseModel.Store.FK__CURRENCYR__CURRI__5EBF139D">
             <End Role="Currency" EntitySet="Currency" />
@@ -1033,19 +1048,6 @@
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="64" />
           <Property Name="Def" Type="int" Nullable="false" />
           <Property Name="Deleted" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Actives">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="OnDate" Type="datetime" Nullable="false" />
-          <Property Name="WhSumm" Type="numeric" Nullable="false" Precision="15" Scale="8" />
-          <Property Name="Debitors" Type="numeric" Nullable="false" Precision="15" Scale="8" />
-          <Property Name="Creditors" Type="numeric" Nullable="false" Precision="15" Scale="8" />
-          <Property Name="Cash" Type="numeric" Nullable="false" Precision="15" Scale="8" />
-          <Property Name="CashLess" Type="numeric" Nullable="false" Precision="15" Scale="8" />
-          <Property Name="Active" Type="numeric" Precision="19" Scale="8" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="Banks">
           <Key>
@@ -2327,6 +2329,21 @@
           <Property Name="WType" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
+      warning 6002: The table/view 'sp_base.dbo.v_Actives' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="v_Actives">
+          <Key>
+            <PropertyRef Name="OnDate" />
+          </Key>
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="WhSumm" Type="numeric" Precision="38" Scale="6" />
+          <Property Name="Creditors" Type="numeric" Precision="38" Scale="2" />
+          <Property Name="Debitors" Type="numeric" Precision="38" Scale="2" />
+          <Property Name="Cash" Type="numeric" Precision="38" Scale="2" />
+          <Property Name="CashLess" Type="numeric" Precision="38" Scale="2" />
+          <Property Name="Active" Type="numeric" Precision="38" Scale="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
       warning 6002: The table/view 'sp_base.dbo.v_DiscCards' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="v_DiscCards">
@@ -2685,6 +2702,15 @@
           <Property Name="MaxPrice" Type="numeric" Precision="15" Scale="4" />
           <Property Name="Ordered" Type="numeric" Precision="38" Scale="8" />
           <Property Name="ORsv" Type="numeric" Precision="38" Scale="8" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="v_WorkDate">
+          <Key>
+            <PropertyRef Name="OnDate" />
+          </Key>
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
         </EntityType>
         <Association Name="FK__CURRENCYR__CURRI__5EBF139D">
           <End Role="Currency" Type="BaseModel.Store.Currency" Multiplicity="1" />
@@ -5371,9 +5397,6 @@
             </CollectionType>
           </ReturnType>
         </Function>
-        <Function Name="RecalcActives" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="on_date" Type="datetime" Mode="In" />
-        </Function>
         <Function Name="RecalcRemainsMat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="mat_id" Type="int" Mode="In" />
         </Function>
@@ -5729,23 +5752,6 @@
                 <Property Name="todate" Type="datetime" Nullable="false" />
                 <Property Name="rest" Type="numeric" Precision="15" Scale="8" />
                 <Property Name="summrest" Type="numeric" Precision="15" Scale="8" />
-              </RowType>
-            </CollectionType>
-          </ReturnType>
-        </Function>
-        <Function Name="SP_GET_ACTIVES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="FROMDATE" Type="datetime" Mode="In" />
-          <Parameter Name="TODATE" Type="datetime" Mode="In" />
-          <ReturnType>
-            <CollectionType>
-              <RowType>
-                <Property Name="ActDate" Type="timestamp" Nullable="false" />
-                <Property Name="WhSumm" Type="numeric" Nullable="false" Precision="15" Scale="8" />
-                <Property Name="Debitors" Type="numeric" Nullable="false" Precision="15" Scale="8" />
-                <Property Name="Creditors" Type="numeric" Nullable="false" Precision="15" Scale="8" />
-                <Property Name="Cash" Type="numeric" Nullable="false" Precision="15" Scale="8" />
-                <Property Name="CashLess" Type="numeric" Nullable="false" Precision="15" Scale="8" />
-                <Property Name="Actives" Type="numeric" Precision="19" Scale="8" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -6197,10 +6203,6 @@
           <FunctionImport Name="UpdWaybillDetPrice">
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_GET_ACTIVES" IsComposable="true" ReturnType="Collection(BaseModel.SP_GET_ACTIVES_Result)">
-            <Parameter Name="FROMDATE" Mode="In" Type="DateTime" />
-            <Parameter Name="TODATE" Mode="In" Type="DateTime" />
-          </FunctionImport>
           <EntitySet Name="CashDesks" EntityType="BaseModel.CashDesks" />
           <EntitySet Name="PayType" EntityType="BaseModel.PayType" />
           <EntitySet Name="ChargeType" EntityType="BaseModel.ChargeType" />
@@ -6504,10 +6506,6 @@
             <Parameter Name="ka_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="PayDocType" EntityType="BaseModel.PayDocType" />
-          <EntitySet Name="Actives" EntityType="BaseModel.Actives" />
-          <FunctionImport Name="RecalcActives" ReturnType="Collection(BaseModel.RecalcActives_Result)">
-          <Parameter Name="on_date" Mode="In" Type="DateTime" />
-          </FunctionImport>
           <EntitySet Name="EnterpriseAccount" EntityType="BaseModel.EnterpriseAccount" />
           <FunctionImport Name="REP_3_14" ReturnType="Collection(BaseModel.REP_3_14_Result)">
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
@@ -7252,6 +7250,8 @@
             <Parameter Name="NEW_WTYPE" Mode="In" Type="Int32" />
             <Parameter Name="person_id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="v_Actives" EntityType="BaseModel.v_Actives" />
+          <EntitySet Name="v_WorkDate" EntityType="BaseModel.v_WorkDate" />
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -7598,15 +7598,6 @@
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WMT_POSID" FromRole="WMatTurn" ToRole="WaybillDet" />
           <NavigationProperty Name="WaybillDet1" Relationship="BaseModel.FK_WMT_SRCID" FromRole="WMatTurn" ToRole="WaybillDet" />
           </EntityType>
-        <ComplexType Name="SP_GET_ACTIVES_Result">
-          <Property Type="Binary" Name="ActDate" Nullable="false" MaxLength="8" />
-          <Property Type="Decimal" Name="WhSumm" Nullable="false" Precision="15" Scale="8" />
-          <Property Type="Decimal" Name="Debitors" Nullable="false" Precision="15" Scale="8" />
-          <Property Type="Decimal" Name="Creditors" Nullable="false" Precision="15" Scale="8" />
-          <Property Type="Decimal" Name="Cash" Nullable="false" Precision="15" Scale="8" />
-          <Property Type="Decimal" Name="CashLess" Nullable="false" Precision="15" Scale="8" />
-          <Property Type="Decimal" Name="Actives" Nullable="true" Precision="19" Scale="8" />
-        </ComplexType>
         <EntityType Name="CashDesks">
           <Key>
             <PropertyRef Name="CashId" />
@@ -9127,26 +9118,6 @@
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="String" Name="Name" MaxLength="64" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Actives">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
-          <Property Type="Decimal" Name="WhSumm" Nullable="false" Precision="15" Scale="8" />
-          <Property Type="Decimal" Name="Debitors" Nullable="false" Precision="15" Scale="8" />
-          <Property Type="Decimal" Name="Creditors" Nullable="false" Precision="15" Scale="8" />
-          <Property Type="Decimal" Name="Cash" Nullable="false" Precision="15" Scale="8" />
-          <Property Type="Decimal" Name="CashLess" Nullable="false" Precision="15" Scale="8" />
-          <Property Type="Decimal" Name="Active" Precision="19" Scale="8" annotation:StoreGeneratedPattern="Computed" />
-        </EntityType>
-        <ComplexType Name="RecalcActives_Result">
-          <Property Type="Decimal" Name="WhSumm" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Debitors" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Creditors" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Cash" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="CashLess" Nullable="true" Precision="15" Scale="4" />
-        </ComplexType>
         <EntityType Name="EnterpriseAccount">
           <Key>
             <PropertyRef Name="KaId" />
@@ -12176,6 +12147,24 @@
           <Property Type="Int32" Name="Checked" Nullable="true" />
           <Property Type="Guid" Name="NewDocId" Nullable="true" />
         </ComplexType>
+        <EntityType Name="v_Actives">
+          <Key>
+            <PropertyRef Name="OnDate" />
+          </Key>
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
+          <Property Type="Decimal" Name="WhSumm" Precision="38" Scale="6" />
+          <Property Type="Decimal" Name="Creditors" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="Debitors" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="Cash" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="CashLess" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="Active" Precision="38" Scale="2" />
+        </EntityType>
+        <EntityType Name="v_WorkDate">
+          <Key>
+            <PropertyRef Name="OnDate" />
+          </Key>
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -12529,19 +12518,6 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="UpdWaybillDetPrice" FunctionName="BaseModel.Store.UpdWaybillDetPrice" />
-          <FunctionImportMapping FunctionImportName="SP_GET_ACTIVES" FunctionName="BaseModel.Store.SP_GET_ACTIVES">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.SP_GET_ACTIVES_Result">
-                <ScalarProperty Name="ActDate" ColumnName="ActDate" />
-                <ScalarProperty Name="WhSumm" ColumnName="WhSumm" />
-                <ScalarProperty Name="Debitors" ColumnName="Debitors" />
-                <ScalarProperty Name="Creditors" ColumnName="Creditors" />
-                <ScalarProperty Name="Cash" ColumnName="Cash" />
-                <ScalarProperty Name="CashLess" ColumnName="CashLess" />
-                <ScalarProperty Name="Actives" ColumnName="Actives" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="CashDesks">
             <EntityTypeMapping TypeName="BaseModel.CashDesks">
               <MappingFragment StoreEntitySet="CashDesks">
@@ -13651,31 +13627,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Actives">
-            <EntityTypeMapping TypeName="BaseModel.Actives">
-              <MappingFragment StoreEntitySet="Actives">
-                <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="CashLess" ColumnName="CashLess" />
-                <ScalarProperty Name="Cash" ColumnName="Cash" />
-                <ScalarProperty Name="Creditors" ColumnName="Creditors" />
-                <ScalarProperty Name="Debitors" ColumnName="Debitors" />
-                <ScalarProperty Name="WhSumm" ColumnName="WhSumm" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="RecalcActives" FunctionName="BaseModel.Store.RecalcActives">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.RecalcActives_Result">
-                <ScalarProperty Name="WhSumm" ColumnName="WhSumm" />
-                <ScalarProperty Name="Debitors" ColumnName="Debitors" />
-                <ScalarProperty Name="Creditors" ColumnName="Creditors" />
-                <ScalarProperty Name="Cash" ColumnName="Cash" />
-                <ScalarProperty Name="CashLess" ColumnName="CashLess" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="EnterpriseAccount">
             <EntityTypeMapping TypeName="BaseModel.EnterpriseAccount">
               <MappingFragment StoreEntitySet="EnterpriseAccount">
@@ -15449,6 +15400,26 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="v_Actives">
+            <EntityTypeMapping TypeName="BaseModel.v_Actives">
+              <MappingFragment StoreEntitySet="v_Actives">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="CashLess" ColumnName="CashLess" />
+                <ScalarProperty Name="Cash" ColumnName="Cash" />
+                <ScalarProperty Name="Debitors" ColumnName="Debitors" />
+                <ScalarProperty Name="Creditors" ColumnName="Creditors" />
+                <ScalarProperty Name="WhSumm" ColumnName="WhSumm" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_WorkDate">
+            <EntityTypeMapping TypeName="BaseModel.v_WorkDate">
+              <MappingFragment StoreEntitySet="v_WorkDate">
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -365,6 +365,8 @@ namespace SP_Sklad.Reports
             {
                 var list = db.GetDocList(StartDate, EndDate, (int)Kagent.KaId, 0).OrderBy(o => o.OnDate).Select(s => new
                 {
+                    s.Num,
+                    s.TypeName,
                     s.OnDate,
                     s.SummAll,
                     s.Saldo,
@@ -951,6 +953,34 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("MatList", make.ToList());
 
                 IHelper.Print(data_for_report, TemlateList.rep_33);
+            }
+
+            if (idx == 34)
+            {
+                var r = db.WaybillList.Where(w => w.WType == -20 && (w.Checked == 0 || w.Checked == 2) && w.OnDate <= OnDate).SelectMany(s => s.TechProcDet).Where(w => w.MatId != null).Select(s => new
+                {
+                    s.MatId,
+                    s.WaybillList.WayBillMake.MatRecipe.Materials.Name
+                }).ToList();
+
+                var list = db.Materials.Where(w => w.TypeId == 1).ToList().Select(s => new
+                {
+                    s.Name,
+                    s.Artikul,
+                    s.Weight,
+                    Status = r.Any(a=> a.MatId == s.MatId) ? r.FirstOrDefault(f=> f.MatId == s.MatId).Name : "Вільна"
+                });
+
+
+                if (!list.Any())
+                {
+                    return;
+                }
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("DocList", list.ToList());
+
+                IHelper.Print(data_for_report, TemlateList.rep_34);
             }
 
             db.PrintLog.Add(new PrintLog

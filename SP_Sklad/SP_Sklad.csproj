@@ -465,6 +465,9 @@
     <Compile Include="SkladData\UsersGroup.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_Actives.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_DiscCards.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -490,6 +493,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_WhMatRemains.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_WorkDate.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\WaybillDet.cs">
@@ -730,9 +736,6 @@
     <Compile Include="SkladData\AccountType.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\Actives.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SkladData\Banks.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -969,9 +972,6 @@
     <Compile Include="SkladData\PrintLog.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\RecalcActives_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SkladData\Reports.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1033,9 +1033,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\SP_CONTRACTS_LIST_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\SP_GET_ACTIVES_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\SP_GET_AVG_PRICE_Result.cs">
@@ -1551,6 +1548,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Users.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.UsersGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.UserTreeAccess.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Actives.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_DiscCards.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_KAgentAccount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PriceList.datasource" />

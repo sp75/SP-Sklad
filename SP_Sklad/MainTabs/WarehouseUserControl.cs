@@ -54,6 +54,7 @@ namespace SP_Sklad.MainTabs
         public WarehouseUserControl()
         {
             InitializeComponent();
+            whContentTab.Visible = false;
         }
 
         private void WarehouseUserControl_Load(object sender, EventArgs e)
@@ -78,8 +79,8 @@ namespace SP_Sklad.MainTabs
                 wbSatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
                 wbSatusList.EditValue = -1;
 
-                wbStartDate.EditValue = DateTime.Now.AddDays(-30);
-                wbEndDate.EditValue = DateTime.Now;
+                wbStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
+                wbEndDate.EditValue = DateTime.Now.Date.SetEndDay();
 
                 repositoryItemLookUpEdit1.DataSource = DBHelper.WhList();
                 repositoryItemLookUpEdit2.DataSource = DB.SkladBase().PriceTypes.ToList();
@@ -94,6 +95,8 @@ namespace SP_Sklad.MainTabs
                     GetTree(1);
                 }
             }
+
+            whContentTab.Visible = true;
         }
 
         void GetTree(int type)
@@ -139,7 +142,7 @@ namespace SP_Sklad.MainTabs
             var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
 
             int top_row = WbGridView.TopRowIndex;
-            GetWayBillListWhBS.DataSource = DB.SkladBase().GetWayBillListWh(satrt_date.Date, end_date.Date.AddDays(1), wtyp, (int)wbSatusList.EditValue, WhComboBox.EditValue.ToString()).OrderByDescending(o => o.OnDate).ToList();
+            GetWayBillListWhBS.DataSource = DB.SkladBase().GetWayBillListWh(satrt_date, end_date, wtyp, (int)wbSatusList.EditValue, WhComboBox.EditValue.ToString()).OrderByDescending(o => o.OnDate).ToList();
             WbGridView.TopRowIndex = top_row;
         }
 
@@ -742,8 +745,7 @@ namespace SP_Sklad.MainTabs
                     break;
             }
 
-            GetWayBillList(cur_wtype);
-
+            RefrechItemBtn.PerformClick();
         }
 
         private void wbStartDate_EditValueChanged(object sender, EventArgs e)

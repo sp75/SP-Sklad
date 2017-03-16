@@ -264,7 +264,7 @@
             this.gridBand1.Columns.Add(this.colKaName);
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 759;
+            this.gridBand1.Width = 766;
             // 
             // colWType
             // 
@@ -279,7 +279,7 @@
             this.colWType.OptionsColumn.ShowCaption = false;
             this.colWType.OptionsColumn.ShowInCustomizationForm = false;
             this.colWType.Visible = true;
-            this.colWType.Width = 31;
+            this.colWType.Width = 36;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -347,11 +347,11 @@
             // bandedGridColumn1
             // 
             this.bandedGridColumn1.Caption = "bandedGridColumn1";
-            this.bandedGridColumn1.FieldName = "TypeName";
+            this.bandedGridColumn1.FieldName = "DocShortName";
             this.bandedGridColumn1.Name = "bandedGridColumn1";
             this.bandedGridColumn1.OptionsColumn.ShowCaption = false;
             this.bandedGridColumn1.Visible = true;
-            this.bandedGridColumn1.Width = 226;
+            this.bandedGridColumn1.Width = 73;
             // 
             // colNum
             // 
@@ -359,7 +359,7 @@
             this.colNum.FieldName = "Num";
             this.colNum.Name = "colNum";
             this.colNum.Visible = true;
-            this.colNum.Width = 53;
+            this.colNum.Width = 69;
             // 
             // colOnDate
             // 
@@ -369,7 +369,7 @@
             this.colOnDate.FieldName = "OnDate";
             this.colOnDate.Name = "colOnDate";
             this.colOnDate.Visible = true;
-            this.colOnDate.Width = 119;
+            this.colOnDate.Width = 155;
             // 
             // colKaName
             // 
@@ -377,7 +377,7 @@
             this.colKaName.FieldName = "KaName";
             this.colKaName.Name = "colKaName";
             this.colKaName.Visible = true;
-            this.colKaName.Width = 330;
+            this.colKaName.Width = 433;
             // 
             // gridBand2
             // 
@@ -389,7 +389,7 @@
             this.gridBand2.Columns.Add(this.colSaldo);
             this.gridBand2.Name = "gridBand2";
             this.gridBand2.VisibleIndex = 1;
-            this.gridBand2.Width = 399;
+            this.gridBand2.Width = 392;
             // 
             // colSummAll
             // 
@@ -399,15 +399,14 @@
             this.colSummAll.FieldName = "SummAll";
             this.colSummAll.Name = "colSummAll";
             this.colSummAll.Visible = true;
-            this.colSummAll.Width = 127;
+            this.colSummAll.Width = 237;
             // 
             // colCurrName
             // 
             this.colCurrName.Caption = "Валюта";
             this.colCurrName.FieldName = "CurrName";
             this.colCurrName.Name = "colCurrName";
-            this.colCurrName.Visible = true;
-            this.colCurrName.Width = 52;
+            this.colCurrName.Width = 72;
             // 
             // colOnValue
             // 
@@ -416,8 +415,7 @@
             this.colOnValue.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colOnValue.FieldName = "OnValue";
             this.colOnValue.Name = "colOnValue";
-            this.colOnValue.Visible = true;
-            this.colOnValue.Width = 41;
+            this.colOnValue.Width = 56;
             // 
             // colSummInCurr
             // 
@@ -426,8 +424,7 @@
             this.colSummInCurr.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colSummInCurr.FieldName = "SummInCurr";
             this.colSummInCurr.Name = "colSummInCurr";
-            this.colSummInCurr.Visible = true;
-            this.colSummInCurr.Width = 103;
+            this.colSummInCurr.Width = 145;
             // 
             // colSaldo
             // 
@@ -437,7 +434,7 @@
             this.colSaldo.FieldName = "Saldo";
             this.colSaldo.Name = "colSaldo";
             this.colSaldo.Visible = true;
-            this.colSaldo.Width = 76;
+            this.colSaldo.Width = 155;
             // 
             // panelControl1
             // 

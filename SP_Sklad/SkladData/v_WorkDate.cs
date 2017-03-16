@@ -10,13 +10,10 @@
 namespace SP_Sklad.SkladData
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class RecalcActives_Result
+    public partial class v_WorkDate
     {
-        public Nullable<decimal> WhSumm { get; set; }
-        public Nullable<decimal> Debitors { get; set; }
-        public Nullable<decimal> Creditors { get; set; }
-        public Nullable<decimal> Cash { get; set; }
-        public Nullable<decimal> CashLess { get; set; }
+        public System.DateTime OnDate { get; set; }
     }
 }

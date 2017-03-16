@@ -942,6 +942,7 @@
             // gridColumn4
             // 
             this.gridColumn4.Caption = "Кількість";
+            this.gridColumn4.ColumnEdit = this.repositoryItemCalcEdit1;
             this.gridColumn4.FieldName = "Amount";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;
@@ -952,6 +953,7 @@
             // gridColumn6
             // 
             this.gridColumn6.Caption = "Ціна";
+            this.gridColumn6.ColumnEdit = this.repositoryItemCalcEdit1;
             this.gridColumn6.FieldName = "Price";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.OptionsColumn.AllowEdit = false;
@@ -979,9 +981,11 @@
             // 
             // repositoryItemCalcEdit1
             // 
+            this.repositoryItemCalcEdit1.AllowMouseWheel = false;
             this.repositoryItemCalcEdit1.AutoHeight = false;
             this.repositoryItemCalcEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemCalcEdit1.Mask.UseMaskAsDisplayFormat = true;
             this.repositoryItemCalcEdit1.Name = "repositoryItemCalcEdit1";
             // 
             // bandedGridColumn1
@@ -1005,8 +1009,7 @@
             // bandedGridColumn2
             // 
             this.bandedGridColumn2.Caption = "Різниця";
-            this.bandedGridColumn2.DisplayFormat.FormatString = "0.0000";
-            this.bandedGridColumn2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.bandedGridColumn2.ColumnEdit = this.repositoryItemCalcEdit1;
             this.bandedGridColumn2.FieldName = "AmountAll";
             this.bandedGridColumn2.Name = "bandedGridColumn2";
             this.bandedGridColumn2.OptionsColumn.AllowEdit = false;

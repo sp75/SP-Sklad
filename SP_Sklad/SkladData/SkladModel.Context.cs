@@ -96,7 +96,6 @@ namespace SP_Sklad.SkladData
         public DbSet<Tables> Tables { get; set; }
         public DbSet<MoneySaldo> MoneySaldo { get; set; }
         public DbSet<PayDocType> PayDocType { get; set; }
-        public DbSet<Actives> Actives { get; set; }
         public DbSet<EnterpriseAccount> EnterpriseAccount { get; set; }
         public DbSet<OperLog> OperLog { get; set; }
         public DbSet<Functions> Functions { get; set; }
@@ -145,6 +144,8 @@ namespace SP_Sklad.SkladData
         public DbSet<DiscCardGrp> DiscCardGrp { get; set; }
         public DbSet<WayBillMakeProps> WayBillMakeProps { get; set; }
         public DbSet<TechProcess> TechProcess { get; set; }
+        public DbSet<v_Actives> v_Actives { get; set; }
+        public DbSet<v_WorkDate> v_WorkDate { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)
@@ -603,20 +604,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdWaybillDetPrice", wbill_idParameter);
         }
     
-        [EdmFunction("BaseEntities", "SP_GET_ACTIVES")]
-        public virtual IQueryable<SP_GET_ACTIVES_Result> SP_GET_ACTIVES(Nullable<System.DateTime> fROMDATE, Nullable<System.DateTime> tODATE)
-        {
-            var fROMDATEParameter = fROMDATE.HasValue ?
-                new ObjectParameter("FROMDATE", fROMDATE) :
-                new ObjectParameter("FROMDATE", typeof(System.DateTime));
-    
-            var tODATEParameter = tODATE.HasValue ?
-                new ObjectParameter("TODATE", tODATE) :
-                new ObjectParameter("TODATE", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SP_GET_ACTIVES_Result>("[BaseEntities].[SP_GET_ACTIVES](@FROMDATE, @TODATE)", fROMDATEParameter, tODATEParameter);
-        }
-    
         public virtual ObjectResult<GetMatRemain_Result> GetMatRemain(Nullable<int> wid, Nullable<int> mat_id)
         {
             var widParameter = wid.HasValue ?
@@ -989,15 +976,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("ka_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<MoneyTurnover_Result>("[BaseEntities].[MoneyTurnover](@fun_id, @from_date, @to_date, @turn_type, @curr_id, @ka_id)", fun_idParameter, from_dateParameter, to_dateParameter, turn_typeParameter, curr_idParameter, ka_idParameter);
-        }
-    
-        public virtual ObjectResult<RecalcActives_Result> RecalcActives(Nullable<System.DateTime> on_date)
-        {
-            var on_dateParameter = on_date.HasValue ?
-                new ObjectParameter("on_date", on_date) :
-                new ObjectParameter("on_date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RecalcActives_Result>("RecalcActives", on_dateParameter);
         }
     
         public virtual ObjectResult<REP_3_14_Result> REP_3_14(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> grp_id, Nullable<int> ka_id, string wh, string doc_types)

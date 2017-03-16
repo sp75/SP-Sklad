@@ -99,7 +99,6 @@
         <AssociationConnector Association="BaseModel.FK_MS_CURRID" />
         <AssociationConnector Association="BaseModel.FK_MS_ACCID" />
         <EntityTypeShape EntityType="BaseModel.PayDocType" Width="1.5" PointX="3.1365888356867195" PointY="23.441186111160174" />
-        <EntityTypeShape EntityType="BaseModel.Actives" Width="1.5" PointX="14.125" PointY="13.625" />
         <EntityTypeShape EntityType="BaseModel.EnterpriseAccount" Width="1.5" PointX="12.125" PointY="2.375" />
         <EntityTypeShape EntityType="BaseModel.OperLog" Width="1.5" PointX="7.2719822913743473" PointY="20.707937920795725" />
         <AssociationConnector Association="BaseModel.FK__OPERLOG__TABID__0D44F85C" />
@@ -251,6 +250,8 @@
         <EntityTypeShape EntityType="BaseModel.TechProcess" Width="1.5" PointX="2.6014108502312614" PointY="22.755673463808222" />
         <AssociationConnector Association="BaseModel.FK_MatRecipeTechProcDet_TechProcess" />
         <AssociationConnector Association="BaseModel.FK_TECHPROCDET_TECHPROCESS" />
+        <EntityTypeShape EntityType="BaseModel.v_Actives" Width="1.5" PointX="1.8467574910478468" PointY="12.967575466710876" />
+        <EntityTypeShape EntityType="BaseModel.v_WorkDate" Width="1.5" PointX="0.55420357573507517" PointY="30.3547968409745" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="7.0245045325832924" PointY="12.641712000892364" />

@@ -20,7 +20,6 @@ namespace SP_Sklad.EditForm
         int? _k_type { get; set; }
         private Kagent _ka { get; set; }
         private BaseEntities _db { get; set; }
-   //     private KAgentSaldo k_saldo { get; set; }
         private KADiscount k_discount { get; set; }
         private DbContextTransaction current_transaction { get; set; }
         private List<CatalogTreeList> tree { get; set; }

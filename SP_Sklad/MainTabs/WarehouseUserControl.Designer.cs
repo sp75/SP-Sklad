@@ -211,6 +211,7 @@
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCalcEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn50 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -324,6 +325,7 @@
             this.xtraTabPage15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit2)).BeginInit();
             this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WayBillListInfoBS)).BeginInit();
@@ -2332,6 +2334,8 @@
             this.gridControl2.Location = new System.Drawing.Point(0, 0);
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.Name = "gridControl2";
+            this.gridControl2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemCalcEdit2});
             this.gridControl2.Size = new System.Drawing.Size(972, 219);
             this.gridControl2.TabIndex = 0;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -2372,11 +2376,20 @@
             // gridColumn11
             // 
             this.gridColumn11.Caption = "Кількість";
+            this.gridColumn11.ColumnEdit = this.repositoryItemCalcEdit2;
             this.gridColumn11.FieldName = "Amount";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 3;
             this.gridColumn11.Width = 114;
+            // 
+            // repositoryItemCalcEdit2
+            // 
+            this.repositoryItemCalcEdit2.AutoHeight = false;
+            this.repositoryItemCalcEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemCalcEdit2.Mask.UseMaskAsDisplayFormat = true;
+            this.repositoryItemCalcEdit2.Name = "repositoryItemCalcEdit2";
             // 
             // gridColumn12
             // 
@@ -2678,7 +2691,7 @@
             // 
             // WhComboBox
             // 
-            this.WhComboBox.Location = new System.Drawing.Point(351, 11);
+            this.WhComboBox.Location = new System.Drawing.Point(399, 11);
             this.WhComboBox.Name = "WhComboBox";
             this.WhComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -2695,7 +2708,7 @@
             // 
             // wbSatusList
             // 
-            this.wbSatusList.Location = new System.Drawing.Point(673, 11);
+            this.wbSatusList.Location = new System.Drawing.Point(721, 11);
             this.wbSatusList.Name = "wbSatusList";
             this.wbSatusList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -2710,7 +2723,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(631, 14);
+            this.labelControl4.Location = new System.Drawing.Point(679, 14);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(36, 13);
             this.labelControl4.TabIndex = 7;
@@ -2718,7 +2731,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(313, 14);
+            this.labelControl3.Location = new System.Drawing.Point(361, 14);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(32, 13);
             this.labelControl3.TabIndex = 4;
@@ -2727,19 +2740,22 @@
             // wbEndDate
             // 
             this.wbEndDate.EditValue = null;
-            this.wbEndDate.Location = new System.Drawing.Point(185, 11);
+            this.wbEndDate.Location = new System.Drawing.Point(217, 11);
             this.wbEndDate.Name = "wbEndDate";
             this.wbEndDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.wbEndDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.wbEndDate.Size = new System.Drawing.Size(100, 20);
+            this.wbEndDate.Properties.DisplayFormat.FormatString = "";
+            this.wbEndDate.Properties.EditFormat.FormatString = "";
+            this.wbEndDate.Properties.Mask.EditMask = "g";
+            this.wbEndDate.Size = new System.Drawing.Size(113, 20);
             this.wbEndDate.TabIndex = 3;
             this.wbEndDate.EditValueChanged += new System.EventHandler(this.wbStartDate_EditValueChanged);
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(167, 14);
+            this.labelControl2.Location = new System.Drawing.Point(199, 14);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(12, 13);
             this.labelControl2.TabIndex = 2;
@@ -2754,7 +2770,10 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.wbStartDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.wbStartDate.Size = new System.Drawing.Size(100, 20);
+            this.wbStartDate.Properties.DisplayFormat.FormatString = "";
+            this.wbStartDate.Properties.EditFormat.FormatString = "";
+            this.wbStartDate.Properties.Mask.EditMask = "g";
+            this.wbStartDate.Size = new System.Drawing.Size(132, 20);
             this.wbStartDate.TabIndex = 1;
             this.wbStartDate.EditValueChanged += new System.EventHandler(this.wbStartDate_EditValueChanged);
             // 
@@ -2962,6 +2981,7 @@
             this.xtraTabPage15.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit2)).EndInit();
             this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WayBillListInfoBS)).EndInit();
@@ -3221,5 +3241,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn53;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn54;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit2;
     }
 }

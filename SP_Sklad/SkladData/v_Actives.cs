@@ -12,15 +12,14 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class Actives
+    public partial class v_Actives
     {
-        public int Id { get; set; }
         public System.DateTime OnDate { get; set; }
-        public decimal WhSumm { get; set; }
-        public decimal Debitors { get; set; }
-        public decimal Creditors { get; set; }
-        public decimal Cash { get; set; }
-        public decimal CashLess { get; set; }
+        public Nullable<decimal> WhSumm { get; set; }
+        public Nullable<decimal> Creditors { get; set; }
+        public Nullable<decimal> Debitors { get; set; }
+        public Nullable<decimal> Cash { get; set; }
+        public Nullable<decimal> CashLess { get; set; }
         public Nullable<decimal> Active { get; set; }
     }
 }

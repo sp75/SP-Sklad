@@ -935,6 +935,7 @@
             // 
             // repositoryItemCalcEdit1
             // 
+            this.repositoryItemCalcEdit1.AllowMouseWheel = false;
             this.repositoryItemCalcEdit1.AutoHeight = false;
             this.repositoryItemCalcEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});

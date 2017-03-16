@@ -170,7 +170,6 @@
             this.chartControl1 = new DevExpress.XtraCharts.ChartControl();
             this.ActivesBS = new System.Windows.Forms.BindingSource(this.components);
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
@@ -1536,7 +1535,7 @@
             // 
             // CurActivesBS
             // 
-            this.CurActivesBS.DataSource = typeof(SP_Sklad.SkladData.Actives);
+            this.CurActivesBS.DataSource = typeof(SP_Sklad.SkladData.v_Actives);
             // 
             // categoryRow2
             // 
@@ -1677,11 +1676,10 @@
             // 
             // ActivesBS
             // 
-            this.ActivesBS.DataSource = typeof(SP_Sklad.SkladData.Actives);
+            this.ActivesBS.DataSource = typeof(SP_Sklad.SkladData.v_Actives);
             // 
             // panelControl5
             // 
-            this.panelControl5.Controls.Add(this.simpleButton2);
             this.panelControl5.Controls.Add(this.simpleButton1);
             this.panelControl5.Controls.Add(this.dateEdit1);
             this.panelControl5.Controls.Add(this.labelControl14);
@@ -1692,15 +1690,6 @@
             this.panelControl5.Name = "panelControl5";
             this.panelControl5.Size = new System.Drawing.Size(1024, 44);
             this.panelControl5.TabIndex = 2;
-            // 
-            // simpleButton2
-            // 
-            this.simpleButton2.Location = new System.Drawing.Point(388, 9);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(135, 23);
-            this.simpleButton2.TabIndex = 5;
-            this.simpleButton2.Text = "Перерахувати активи";
-            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // simpleButton1
             // 
@@ -1991,7 +1980,6 @@
         private DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl5;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         public DevExpress.XtraTreeList.TreeList FinancesTreeList;
     }

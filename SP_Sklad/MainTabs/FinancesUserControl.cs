@@ -107,8 +107,10 @@ namespace SP_Sklad.MainTabs
                     RefreshBtnBar();
                     break;
                 case 3:
-                    new BaseEntities().RecalcActives(DateTime.Now.Date).ToList();
-                    CurActivesBS.DataSource = new BaseEntities().Actives.OrderByDescending(o => o.OnDate).Take(1).ToList();
+                   // new BaseEntities().RecalcActives(DateTime.Now.Date).ToList();
+                  //  CurActivesBS.DataSource = new BaseEntities().Actives.OrderByDescending(o => o.OnDate).Take(1).ToList();
+                    var d = DateTime.Now.Date;
+                    CurActivesBS.DataSource = new BaseEntities().v_Actives.Where(w => w.OnDate == d).ToList();
                     break;
             }
         }
@@ -261,23 +263,7 @@ namespace SP_Sklad.MainTabs
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            var start = dateEdit2.DateTime.Date;
-            var end = dateEdit1.DateTime.AddDays(1).Date;
-            ActivesBS.DataSource = new BaseEntities().Actives.Where(w => w.OnDate >= start && w.OnDate <= end).ToList();
-        }
-
-        private void simpleButton2_Click(object sender, EventArgs e)
-        {
-            var end = dateEdit1.DateTime.Date;
-            using (var db = new BaseEntities())
-            {
-                for (var date = dateEdit2.DateTime.Date; date <= end; date = date.AddDays(1))
-                {
-                    db.RecalcActives(date).ToList();
-                }
-            }
-
-            simpleButton1.PerformClick();
+            ActivesBS.DataSource = new BaseEntities().v_Actives.Where(w => w.OnDate >= dateEdit2.DateTime.Date && w.OnDate <= dateEdit1.DateTime.Date).ToList();
         }
 
         private void ExecuteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -310,11 +296,11 @@ namespace SP_Sklad.MainTabs
 
         private void vGridControl3_CellValueChanged(object sender, DevExpress.XtraVerticalGrid.Events.CellValueChangedEventArgs e)
         {
-            var items = CurActivesBS.DataSource as List<Actives>;
+            var items = CurActivesBS.DataSource as List<v_Actives>;
             if (items != null)
             {
                 var d = items.FirstOrDefault().OnDate;
-                CurActivesBS.DataSource = new BaseEntities().Actives.Where(o => o.OnDate == d).ToList();
+                CurActivesBS.DataSource = new BaseEntities().v_Actives.Where(o => o.OnDate == d).ToList();
             }
            
         }

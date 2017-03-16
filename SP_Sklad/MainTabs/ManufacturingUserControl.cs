@@ -57,9 +57,9 @@ namespace SP_Sklad.MainTabs
                 DebSatusList.EditValue = -1;
 
                 wbStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
-                wbEndDate.EditValue = DateTime.Now.Date.AddHours(23).AddMinutes(59).AddSeconds(59);
+                wbEndDate.EditValue = DateTime.Now.Date.SetEndDay();
                 DebStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
-                DebEndDate.EditValue = DateTime.Now.Date.AddHours(23).AddMinutes(59).AddSeconds(59);
+                DebEndDate.EditValue = DateTime.Now.Date.SetEndDay();
 
                 DocsTreeList.DataSource = DB.SkladBase().GetManufactureTree(DBHelper.CurrentUser.UserId).ToList();
                 DocsTreeList.ExpandAll(); //ExpandToLevel(0);
@@ -79,7 +79,7 @@ namespace SP_Sklad.MainTabs
             var dr = WbGridView.GetRow(WbGridView.FocusedRowHandle) as WBListMake_Result;
 
             int top_row = WbGridView.TopRowIndex;
-            WBListMakeBS.DataSource = DB.SkladBase().WBListMake(satrt_date.Date, end_date.Date.AddDays(1), (int)wbSatusList.EditValue, WhComboBox.EditValue.ToString(), focused_tree_node.Num, -20).ToList();
+            WBListMakeBS.DataSource = DB.SkladBase().WBListMake(satrt_date, end_date, (int)wbSatusList.EditValue, WhComboBox.EditValue.ToString(), focused_tree_node.Num, -20).ToList();
             WbGridView.TopRowIndex = top_row;
         }
 
@@ -94,7 +94,7 @@ namespace SP_Sklad.MainTabs
             var end_date = DebEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : DebEndDate.DateTime;
 
             int top_row = DeboningGridView.TopRowIndex;
-            DeboningBS.DataSource = DB.SkladBase().WBListMake(satrt_date.Date, end_date.Date.AddDays(1), (int)DebSatusList.EditValue, DebWhComboBox.EditValue.ToString(), focused_tree_node.Num, -22).ToList();
+            DeboningBS.DataSource = DB.SkladBase().WBListMake(satrt_date, end_date, (int)DebSatusList.EditValue, DebWhComboBox.EditValue.ToString(), focused_tree_node.Num, -22).ToList();
             DeboningGridView.TopRowIndex = top_row;
         }
 

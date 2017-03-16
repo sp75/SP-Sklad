@@ -52,8 +52,8 @@ namespace SP_Sklad
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var path = Path.Combine(Application.StartupPath, "expotr.pdf");
-            gridControl1.ExportToPdf(path);
+            var path = Path.Combine(Application.StartupPath, "expotr.xlsx");
+            gridControl1.ExportToXlsx (path);
 
             Process.Start(path);
         }

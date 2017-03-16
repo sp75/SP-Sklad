@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 using SP_Sklad.Common;
 using SP_Sklad.EditForm;
 using SP_Sklad.SkladData;
@@ -36,10 +37,10 @@ namespace SP_Sklad.WBDetForm
 
         private void frmTechProcDet_Load(object sender, EventArgs e)
         {
-            TechProcessCB.Properties.DataSource = _db.TechProcess.Select(s => new { s.ProcId, s.Name, s.Num }).ToList();
+            TechProcessCB.Properties.DataSource = _db.TechProcess.Select(s => new { s.ProcId, s.Name, s.Num, s.Kod }).ToList();
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
 
-            var ext_list =  _db.Materials.Where(w => w.TypeId == 2).Select(s => new { s.MatId, s.Name, s.Artikul }).ToList();
+            var ext_list = _db.Materials.Where(w => w.TypeId == 2).Select(s => new { s.MatId, s.Name, s.Artikul }).ToList();
             ExtMatComboBox.Properties.DataSource = ext_list;
             ExtMatComboBox2.Properties.DataSource = ext_list;
 
@@ -64,8 +65,8 @@ namespace SP_Sklad.WBDetForm
             TechProcDetBS.DataSource = tp_d;
 
             var r = _db.WaybillList.Where(w => w.WType == -20 && (w.Checked == 0 || w.Checked == 2) && w.WbillId != _wbill_id).SelectMany(s => s.TechProcDet).Where(w => w.MatId != null).Select(s => s.MatId).ToList();
-           MatComboBox.Properties.DataSource = _db.Materials.Where(w => w.TypeId == 1 && (!r.Contains(w.MatId) || w.MatId == tp_d.MatId)).Select(s => new { s.MatId, s.Name, s.Artikul }).ToList();
-         //   MatComboBox.Properties.DataSource = _db.Materials.Where(w => w.TypeId == 1 /*&& (!r.Contains(w.MatId) || w.MatId == tp_d.MatId)*/).Select(s => new { s.MatId, s.Name, s.Artikul }).ToList();
+            MatComboBox.Properties.DataSource = _db.Materials.Where(w => w.TypeId == 1 && (!r.Contains(w.MatId) || w.MatId == tp_d.MatId)).Select(s => new { s.MatId, s.Name, s.Artikul }).ToList();
+            //   MatComboBox.Properties.DataSource = _db.Materials.Where(w => w.TypeId == 1 /*&& (!r.Contains(w.MatId) || w.MatId == tp_d.MatId)*/).Select(s => new { s.MatId, s.Name, s.Artikul }).ToList();
 
             if (ext_list.Any())
             {
@@ -136,12 +137,13 @@ namespace SP_Sklad.WBDetForm
             if (row != null)
             {
                 tp_d.Num = row.Num != null ? row.Num : (_db.TechProcDet.Where(w => w.WbillId == _wbill_id).Select(s => (int?)s.Num).Max() ?? 0) + 1;
+                tp_d.Out = row.Kod == "finish" ? _db.GetMakeAmount(_wbill_id).FirstOrDefault().AmountOut.Value : tp_d.Out;
             }
         }
 
         private void AmountEdit_MouseUp(object sender, MouseEventArgs e)
         {
-            AmountEdit.SelectAll();
+            ((CalcEdit)sender).SelectAll();
         }
     }
 }
