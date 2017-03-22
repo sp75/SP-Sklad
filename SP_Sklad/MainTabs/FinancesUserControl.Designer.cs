@@ -1535,7 +1535,7 @@
             // 
             // CurActivesBS
             // 
-            this.CurActivesBS.DataSource = typeof(SP_Sklad.SkladData.v_Actives);
+            this.CurActivesBS.DataSource = typeof(SP_Sklad.SkladData.GetActives_Result);
             // 
             // categoryRow2
             // 
@@ -1565,7 +1565,7 @@
             this.row7.Height = 21;
             this.row7.Name = "row7";
             this.row7.Properties.Caption = "Активи";
-            this.row7.Properties.FieldName = "Active";
+            this.row7.Properties.FieldName = "Actives";
             this.row7.Properties.ImageIndex = 46;
             // 
             // editorRow10
@@ -1623,10 +1623,10 @@
             // xtraTabPage1
             // 
             this.xtraTabPage1.Controls.Add(this.chartControl1);
-            this.xtraTabPage1.ImageIndex = 0;
+            this.xtraTabPage1.ImageIndex = 17;
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(1018, 220);
-            this.xtraTabPage1.Text = "Обороти";
+            this.xtraTabPage1.Text = "Зростання активів";
             // 
             // chartControl1
             // 
@@ -1636,6 +1636,8 @@
             xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
             this.chartControl1.Diagram = xyDiagram1;
             this.chartControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chartControl1.Legend.Border.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            this.chartControl1.Legend.UseCheckBoxes = true;
             this.chartControl1.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartControl1.Location = new System.Drawing.Point(0, 0);
             this.chartControl1.Name = "chartControl1";
@@ -1646,10 +1648,12 @@
             series2.ArgumentDataMember = "OnDate";
             series2.Name = "Собівартість складу";
             series2.ValueDataMembersSerializable = "WhSumm";
+            lineSeriesView2.Color = System.Drawing.Color.Gold;
             series2.View = lineSeriesView2;
             series3.ArgumentDataMember = "OnDate";
             series3.Name = "Готівка";
             series3.ValueDataMembersSerializable = "Cash";
+            lineSeriesView3.Color = System.Drawing.Color.OliveDrab;
             series3.View = lineSeriesView3;
             series4.ArgumentDataMember = "OnDate";
             series4.Name = "Безготівкові гроші";
@@ -1658,10 +1662,12 @@
             series5.ArgumentDataMember = "OnDate";
             series5.Name = "Дебітори";
             series5.ValueDataMembersSerializable = "Debitors";
+            lineSeriesView5.Color = System.Drawing.Color.Red;
             series5.View = lineSeriesView5;
             series6.ArgumentDataMember = "OnDate";
             series6.Name = "Кредитори";
             series6.ValueDataMembersSerializable = "Creditors";
+            lineSeriesView6.Color = System.Drawing.Color.Blue;
             series6.View = lineSeriesView6;
             this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series1,

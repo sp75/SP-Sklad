@@ -4525,6 +4525,23 @@
           <Parameter Name="NEW_WTYPE" Type="int" Mode="In" />
           <Parameter Name="person_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="GetActives" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="from_date" Type="datetime" Mode="In" />
+          <Parameter Name="to_date" Type="datetime" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="OnDate" Type="datetime" Nullable="false" />
+                <Property Name="WhSumm" Type="numeric" Precision="38" Scale="6" />
+                <Property Name="Debitors" Type="numeric" Precision="38" Scale="2" />
+                <Property Name="Creditors" Type="numeric" Precision="38" Scale="2" />
+                <Property Name="Cash" Type="numeric" Precision="38" Scale="2" />
+                <Property Name="CashLess" Type="numeric" Precision="38" Scale="2" />
+                <Property Name="Actives" Type="numeric" Precision="38" Scale="2" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="GetActualRemainByWh" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="wid" Type="int" Mode="In" />
           <Parameter Name="mat_id" Type="int" Mode="In" />
@@ -7252,6 +7269,10 @@
           </FunctionImport>
           <EntitySet Name="v_Actives" EntityType="BaseModel.v_Actives" />
           <EntitySet Name="v_WorkDate" EntityType="BaseModel.v_WorkDate" />
+          <FunctionImport Name="GetActives" IsComposable="true" ReturnType="Collection(BaseModel.GetActives_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -12165,6 +12186,15 @@
           </Key>
           <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
         </EntityType>
+        <ComplexType Name="GetActives_Result">
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="WhSumm" Nullable="true" Precision="38" Scale="6" />
+          <Property Type="Decimal" Name="Debitors" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="Creditors" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="Cash" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="CashLess" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="Actives" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -15420,6 +15450,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetActives" FunctionName="BaseModel.Store.GetActives">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetActives_Result">
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="WhSumm" ColumnName="WhSumm" />
+                <ScalarProperty Name="Debitors" ColumnName="Debitors" />
+                <ScalarProperty Name="Creditors" ColumnName="Creditors" />
+                <ScalarProperty Name="Cash" ColumnName="Cash" />
+                <ScalarProperty Name="CashLess" ColumnName="CashLess" />
+                <ScalarProperty Name="Actives" ColumnName="Actives" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

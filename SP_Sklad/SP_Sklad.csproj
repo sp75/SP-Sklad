@@ -333,6 +333,9 @@
     <Compile Include="SkladData\ExecuteWayBill_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetActives_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetDocList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1499,6 +1502,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.CommonParams.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Countries.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.DiscCards.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.GetActives_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetDirTree_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetDocList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetMatChange_Result.datasource" />

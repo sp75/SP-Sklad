@@ -1990,5 +1990,19 @@ namespace SP_Sklad.SkladData
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ExecuteWayBill_Result>("ExecuteWayBill", wBILLIDParameter, nEW_WTYPEParameter, person_idParameter);
         }
+    
+        [EdmFunction("BaseEntities", "GetActives")]
+        public virtual IQueryable<GetActives_Result> GetActives(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetActives_Result>("[BaseEntities].[GetActives](@from_date, @to_date)", from_dateParameter, to_dateParameter);
+        }
     }
 }
