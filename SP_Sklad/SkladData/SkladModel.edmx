@@ -389,7 +389,8 @@
       [v_TechProcDet].[ExtMatAmount] AS [ExtMatAmount], 
       [v_TechProcDet].[RamaName] AS [RamaName], 
       [v_TechProcDet].[OutNetto] AS [OutNetto], 
-      [v_TechProcDet].[TareWeight] AS [TareWeight]
+      [v_TechProcDet].[TareWeight] AS [TareWeight], 
+      [v_TechProcDet].[Kod] AS [Kod]
       FROM [dbo].[v_TechProcDet] AS [v_TechProcDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_WaybillList" EntityType="BaseModel.Store.v_WaybillList" store:Type="Views" store:Schema="dbo" store:Name="v_WaybillList">
@@ -2336,7 +2337,7 @@
             <PropertyRef Name="OnDate" />
           </Key>
           <Property Name="OnDate" Type="datetime" Nullable="false" />
-          <Property Name="WhSumm" Type="numeric" Precision="38" Scale="6" />
+          <Property Name="WhSumm" Type="numeric" Precision="15" Scale="2" />
           <Property Name="Creditors" Type="numeric" Precision="38" Scale="2" />
           <Property Name="Debitors" Type="numeric" Precision="38" Scale="2" />
           <Property Name="Cash" Type="numeric" Precision="38" Scale="2" />
@@ -2612,6 +2613,7 @@
           <Property Name="RamaName" Type="nvarchar" MaxLength="255" />
           <Property Name="OutNetto" Type="numeric" Precision="38" Scale="8" />
           <Property Name="TareWeight" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="Kod" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -4745,6 +4747,7 @@
           <Parameter Name="ka_id" Type="int" Mode="In" />
           <Parameter Name="w_type" Type="int" Mode="In" />
           <Parameter Name="wh" Type="nvarchar" Mode="In" />
+          <Parameter Name="ka_grp_id" Type="uniqueidentifier" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
@@ -4773,6 +4776,7 @@
                 <Property Name="AvgPrice" Type="numeric" Precision="15" Scale="8" />
                 <Property Name="TypeName" Type="nvarchar" MaxLength="50" />
                 <Property Name="WhName" Type="nvarchar" MaxLength="250" />
+                <Property Name="KAgentGroupId" Type="uniqueidentifier" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -5348,6 +5352,7 @@
           <Parameter Name="ka_id" Type="int" Mode="In" />
           <Parameter Name="w_type" Type="int" Mode="In" />
           <Parameter Name="active" Type="int" Mode="In" />
+          <Parameter Name="ka_grp_id" Type="uniqueidentifier" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
@@ -5558,6 +5563,7 @@
           <Parameter Name="ka_id" Type="int" Mode="In" />
           <Parameter Name="grp_id" Type="int" Mode="In" />
           <Parameter Name="mat_id" Type="int" Mode="In" />
+          <Parameter Name="ka_grp_id" Type="uniqueidentifier" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
@@ -5667,12 +5673,12 @@
                 <Property Name="MsrName" Type="nvarchar" Nullable="false" MaxLength="6" />
                 <Property Name="MId" Type="int" Nullable="false" />
                 <Property Name="OnDateOut" Type="datetime" />
-                <Property Name="AmountOut" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="AmountOut" Type="numeric" Precision="38" Scale="8" />
                 <Property Name="WriteOnDate" Type="datetime" />
                 <Property Name="Price" Type="numeric" Precision="38" Scale="17" />
-                <Property Name="HeatTreatmentAmount" Type="numeric" Precision="38" Scale="4" />
-                <Property Name="FormationAmount" Type="numeric" Precision="38" Scale="4" />
-                <Property Name="FinishAmount" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="HeatTreatmentAmount" Type="numeric" Precision="38" Scale="8" />
+                <Property Name="FormationAmount" Type="numeric" Precision="38" Scale="8" />
+                <Property Name="FinishAmount" Type="numeric" Precision="38" Scale="8" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -6566,13 +6572,6 @@
             <Parameter Name="ctype" Mode="In" Type="Int32" />
             <Parameter Name="showall" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="REP_27" IsComposable="true" ReturnType="Collection(BaseModel.REP_27_Result)">
-            <Parameter Name="from_date" Mode="In" Type="DateTime" />
-            <Parameter Name="to_date" Mode="In" Type="DateTime" />
-            <Parameter Name="ka_id" Mode="In" Type="Int32" />
-            <Parameter Name="grp_id" Mode="In" Type="Int32" />
-            <Parameter Name="mat_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="REP_29" IsComposable="true" ReturnType="Collection(BaseModel.REP_29_Result)">
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
             <Parameter Name="to_date" Mode="In" Type="DateTime" />
@@ -7149,23 +7148,6 @@
             <Parameter Name="ka_id" Mode="In" Type="Int32" />
             <Parameter Name="w_type" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="GetMatMove" IsComposable="true" ReturnType="Collection(BaseModel.GetMatMove_Result)">
-            <Parameter Name="mat_id" Mode="In" Type="Int32" />
-            <Parameter Name="from_date" Mode="In" Type="DateTime" />
-            <Parameter Name="to_date" Mode="In" Type="DateTime" />
-            <Parameter Name="wid" Mode="In" Type="Int32" />
-            <Parameter Name="ka_id" Mode="In" Type="Int32" />
-            <Parameter Name="w_type" Mode="In" Type="Int32" />
-            <Parameter Name="wh" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="OrderedList" IsComposable="true" ReturnType="Collection(BaseModel.OrderedList_Result)">
-            <Parameter Name="from_date" Mode="In" Type="DateTime" />
-            <Parameter Name="to_date" Mode="In" Type="DateTime" />
-            <Parameter Name="mat_id" Mode="In" Type="Int32" />
-            <Parameter Name="ka_id" Mode="In" Type="Int32" />
-            <Parameter Name="w_type" Mode="In" Type="Int32" />
-            <Parameter Name="active" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="MoneyMoveList" IsComposable="true" ReturnType="Collection(BaseModel.MoneyMoveList_Result)">
             <Parameter Name="doc_type" Mode="In" Type="Int32" />
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
@@ -7272,6 +7254,33 @@
           <FunctionImport Name="GetActives" IsComposable="true" ReturnType="Collection(BaseModel.GetActives_Result)">
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
             <Parameter Name="to_date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="GetMatMove" IsComposable="true" ReturnType="Collection(BaseModel.GetMatMove_Result)">
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="wid" Mode="In" Type="Int32" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="w_type" Mode="In" Type="Int32" />
+            <Parameter Name="wh" Mode="In" Type="String" />
+            <Parameter Name="ka_grp_id" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="REP_27" IsComposable="true" ReturnType="Collection(BaseModel.REP_27_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="grp_id" Mode="In" Type="Int32" />
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
+            <Parameter Name="ka_grp_id" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="OrderedList" IsComposable="true" ReturnType="Collection(BaseModel.OrderedList_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="w_type" Mode="In" Type="Int32" />
+            <Parameter Name="active" Mode="In" Type="Int32" />
+            <Parameter Name="ka_grp_id" Mode="In" Type="Guid" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
@@ -8280,6 +8289,7 @@
           <Property Type="String" Name="RamaName" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="Decimal" Name="OutNetto" Precision="38" Scale="8" />
           <Property Type="Decimal" Name="TareWeight" Precision="15" Scale="4" />
+          <Property Type="String" Name="Kod" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Measures">
           <Key>
@@ -9242,21 +9252,6 @@
           <Property Type="Decimal" Name="Total" Nullable="false" Precision="15" Scale="2" />
           <Property Type="String" Name="ChargeName" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="CTypeId" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="REP_27_Result">
-          <Property Type="Int32" Name="MatId" Nullable="false" />
-          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
-          <Property Type="Decimal" Name="AmountOrd" Nullable="true" Precision="38" Scale="8" />
-          <Property Type="Decimal" Name="TotalOrd" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="Int32" Name="KaId" Nullable="true" />
-          <Property Type="Int32" Name="DocId" Nullable="true" />
-          <Property Type="String" Name="KaName" Nullable="false" MaxLength="64" />
-          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
-          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
-          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="Decimal" Name="TotalOut" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="64" />
-          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
         </ComplexType>
         <ComplexType Name="REP_29_Result">
           <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
@@ -11716,60 +11711,6 @@
           <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="DocShortName" Nullable="true" MaxLength="50" />
         </ComplexType>
-        <ComplexType Name="GetMatMove_Result">
-          <Property Type="Guid" Name="Id" Nullable="true" />
-          <Property Type="Int32" Name="WBillId" Nullable="true" />
-          <Property Type="Int32" Name="WType" Nullable="true" />
-          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
-          <Property Type="String" Name="Num" Nullable="true" MaxLength="20" />
-          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="10" />
-          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="Int32" Name="PosId" Nullable="true" />
-          <Property Type="String" Name="KAgentName" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="FromWh" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="FromWId" Nullable="true" />
-          <Property Type="String" Name="ToWh" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="ToWId" Nullable="true" />
-          <Property Type="Int32" Name="DocId" Nullable="true" />
-          <Property Type="Decimal" Name="Remain" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="String" Name="MsrName" Nullable="true" MaxLength="10" />
-          <Property Type="Decimal" Name="SumIn" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="Decimal" Name="SumOut" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="Decimal" Name="AmountIn" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="Decimal" Name="AvgPrice" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="WhName" Nullable="true" MaxLength="250" />
-        </ComplexType>
-        <ComplexType Name="OrderedList_Result">
-          <Property Type="Guid" Name="Id" Nullable="false" />
-          <Property Type="Int32" Name="PosId" Nullable="false" />
-          <Property Type="Int32" Name="WbillId" Nullable="false" />
-          <Property Type="Int32" Name="WType" Nullable="false" />
-          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" />
-          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
-          <Property Type="Int32" Name="DocId" Nullable="true" />
-          <Property Type="Int32" Name="KaId" Nullable="true" />
-          <Property Type="String" Name="KaName" Nullable="true" MaxLength="64" />
-          <Property Type="Int32" Name="WId" Nullable="false" />
-          <Property Type="String" Name="WhName" Nullable="false" MaxLength="64" />
-          <Property Type="Int32" Name="MatId" Nullable="false" />
-          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
-          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="8" />
-          <Property Type="DateTime" Name="ToDate" Nullable="true" Precision="23" />
-          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="CurrId" Nullable="true" />
-          <Property Type="String" Name="CurrencyName" Nullable="true" MaxLength="3" />
-          <Property Type="Int32" Name="Checked" Nullable="false" />
-          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
-          <Property Type="Int32" Name="GrpId" Nullable="true" />
-          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
-        </ComplexType>
         <ComplexType Name="MoneyMoveList_Result">
           <Property Type="Guid" Name="Id" Nullable="false" />
           <Property Type="Int32" Name="PayDocId" Nullable="false" />
@@ -12173,7 +12114,7 @@
             <PropertyRef Name="OnDate" />
           </Key>
           <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
-          <Property Type="Decimal" Name="WhSumm" Precision="38" Scale="6" />
+          <Property Type="Decimal" Name="WhSumm" Precision="15" Scale="2" />
           <Property Type="Decimal" Name="Creditors" Precision="38" Scale="2" />
           <Property Type="Decimal" Name="Debitors" Precision="38" Scale="2" />
           <Property Type="Decimal" Name="Cash" Precision="38" Scale="2" />
@@ -12194,6 +12135,76 @@
           <Property Type="Decimal" Name="Cash" Nullable="true" Precision="38" Scale="2" />
           <Property Type="Decimal" Name="CashLess" Nullable="true" Precision="38" Scale="2" />
           <Property Type="Decimal" Name="Actives" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetMatMove_Result">
+          <Property Type="Guid" Name="Id" Nullable="true" />
+          <Property Type="Int32" Name="WBillId" Nullable="true" />
+          <Property Type="Int32" Name="WType" Nullable="true" />
+          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Num" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="Int32" Name="PosId" Nullable="true" />
+          <Property Type="String" Name="KAgentName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="FromWh" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="FromWId" Nullable="true" />
+          <Property Type="String" Name="ToWh" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="ToWId" Nullable="true" />
+          <Property Type="Int32" Name="DocId" Nullable="true" />
+          <Property Type="Decimal" Name="Remain" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="String" Name="MsrName" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="SumIn" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="SumOut" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="AmountIn" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="AvgPrice" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="WhName" Nullable="true" MaxLength="250" />
+          <Property Type="Guid" Name="KAgentGroupId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="REP_27_Result">
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="AmountOrd" Nullable="true" Precision="38" Scale="8" />
+          <Property Type="Decimal" Name="TotalOrd" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Int32" Name="KaId" Nullable="true" />
+          <Property Type="Int32" Name="DocId" Nullable="true" />
+          <Property Type="String" Name="KaName" Nullable="false" MaxLength="64" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
+          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="TotalOut" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="64" />
+          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="OrderedList_Result">
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="PosId" Nullable="false" />
+          <Property Type="Int32" Name="WbillId" Nullable="false" />
+          <Property Type="Int32" Name="WType" Nullable="false" />
+          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="DocId" Nullable="true" />
+          <Property Type="Int32" Name="KaId" Nullable="true" />
+          <Property Type="String" Name="KaName" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="WId" Nullable="false" />
+          <Property Type="String" Name="WhName" Nullable="false" MaxLength="64" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="8" />
+          <Property Type="DateTime" Name="ToDate" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="String" Name="CurrencyName" Nullable="true" MaxLength="3" />
+          <Property Type="Int32" Name="Checked" Nullable="false" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="Int32" Name="GrpId" Nullable="true" />
+          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -13029,6 +13040,7 @@
           <EntitySetMapping Name="v_TechProcDet">
             <EntityTypeMapping TypeName="BaseModel.v_TechProcDet">
               <MappingFragment StoreEntitySet="v_TechProcDet">
+                <ScalarProperty Name="Kod" ColumnName="Kod" />
                 <ScalarProperty Name="TareWeight" ColumnName="TareWeight" />
                 <ScalarProperty Name="OutNetto" ColumnName="OutNetto" />
                 <ScalarProperty Name="RamaName" ColumnName="RamaName" />
@@ -13774,25 +13786,6 @@
                 <ScalarProperty Name="Total" ColumnName="Total" />
                 <ScalarProperty Name="ChargeName" ColumnName="ChargeName" />
                 <ScalarProperty Name="CTypeId" ColumnName="CTypeId" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="REP_27" FunctionName="BaseModel.Store.REP_27">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.REP_27_Result">
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="MatName" ColumnName="MatName" />
-                <ScalarProperty Name="AmountOrd" ColumnName="AmountOrd" />
-                <ScalarProperty Name="TotalOrd" ColumnName="TotalOrd" />
-                <ScalarProperty Name="KaId" ColumnName="KaId" />
-                <ScalarProperty Name="DocId" ColumnName="DocId" />
-                <ScalarProperty Name="KaName" ColumnName="KaName" />
-                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
-                <ScalarProperty Name="TotalOut" ColumnName="TotalOut" />
-                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -15026,68 +15019,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetMatMove" FunctionName="BaseModel.Store.GetMatMove">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetMatMove_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="WBillId" ColumnName="WBillId" />
-                <ScalarProperty Name="WType" ColumnName="WType" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
-                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
-                <ScalarProperty Name="PosId" ColumnName="PosId" />
-                <ScalarProperty Name="KAgentName" ColumnName="KAgentName" />
-                <ScalarProperty Name="FromWh" ColumnName="FromWh" />
-                <ScalarProperty Name="FromWId" ColumnName="FromWId" />
-                <ScalarProperty Name="ToWh" ColumnName="ToWh" />
-                <ScalarProperty Name="ToWId" ColumnName="ToWId" />
-                <ScalarProperty Name="DocId" ColumnName="DocId" />
-                <ScalarProperty Name="Remain" ColumnName="Remain" />
-                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
-                <ScalarProperty Name="SumIn" ColumnName="SumIn" />
-                <ScalarProperty Name="SumOut" ColumnName="SumOut" />
-                <ScalarProperty Name="AmountIn" ColumnName="AmountIn" />
-                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
-                <ScalarProperty Name="AvgPrice" ColumnName="AvgPrice" />
-                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
-                <ScalarProperty Name="WhName" ColumnName="WhName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="OrderedList" FunctionName="BaseModel.Store.OrderedList">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.OrderedList_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="PosId" ColumnName="PosId" />
-                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
-                <ScalarProperty Name="WType" ColumnName="WType" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="DocId" ColumnName="DocId" />
-                <ScalarProperty Name="KaId" ColumnName="KaId" />
-                <ScalarProperty Name="KaName" ColumnName="KaName" />
-                <ScalarProperty Name="WId" ColumnName="WId" />
-                <ScalarProperty Name="WhName" ColumnName="WhName" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="MatName" ColumnName="MatName" />
-                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
-                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
-                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
-                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="MoneyMoveList" FunctionName="BaseModel.Store.MoneyMoveList">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.MoneyMoveList_Result">
@@ -15460,6 +15391,88 @@
                 <ScalarProperty Name="Cash" ColumnName="Cash" />
                 <ScalarProperty Name="CashLess" ColumnName="CashLess" />
                 <ScalarProperty Name="Actives" ColumnName="Actives" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetMatMove" FunctionName="BaseModel.Store.GetMatMove">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetMatMove_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WBillId" ColumnName="WBillId" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="KAgentName" ColumnName="KAgentName" />
+                <ScalarProperty Name="FromWh" ColumnName="FromWh" />
+                <ScalarProperty Name="FromWId" ColumnName="FromWId" />
+                <ScalarProperty Name="ToWh" ColumnName="ToWh" />
+                <ScalarProperty Name="ToWId" ColumnName="ToWId" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="SumIn" ColumnName="SumIn" />
+                <ScalarProperty Name="SumOut" ColumnName="SumOut" />
+                <ScalarProperty Name="AmountIn" ColumnName="AmountIn" />
+                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
+                <ScalarProperty Name="AvgPrice" ColumnName="AvgPrice" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
+                <ScalarProperty Name="KAgentGroupId" ColumnName="KAgentGroupId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="REP_27" FunctionName="BaseModel.Store.REP_27">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.REP_27_Result">
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="AmountOrd" ColumnName="AmountOrd" />
+                <ScalarProperty Name="TotalOrd" ColumnName="TotalOrd" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
+                <ScalarProperty Name="TotalOut" ColumnName="TotalOut" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="OrderedList" FunctionName="BaseModel.Store.OrderedList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.OrderedList_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

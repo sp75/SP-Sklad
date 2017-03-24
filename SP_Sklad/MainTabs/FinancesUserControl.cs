@@ -107,9 +107,6 @@ namespace SP_Sklad.MainTabs
                     RefreshBtnBar();
                     break;
                 case 3:
-                   // new BaseEntities().RecalcActives(DateTime.Now.Date).ToList();
-                  //  CurActivesBS.DataSource = new BaseEntities().Actives.OrderByDescending(o => o.OnDate).Take(1).ToList();
-               //     var d = DateTime.Now.Date;
                     CurActivesBS.DataSource = new BaseEntities().GetActives(DateTime.Now.Date,DateTime.Now.Date).OrderByDescending(o=> o.OnDate).FirstOrDefault();  //v_Actives.Where(w => w.OnDate == d).ToList();
                     break;
             }

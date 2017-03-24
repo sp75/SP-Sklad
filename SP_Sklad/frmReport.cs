@@ -82,9 +82,9 @@ namespace SP_Sklad
                 GrpComboBox.Properties.DataSource = new List<object>() { new { GrpId = 0, Name = "Усі" } }.Concat(new BaseEntities().MatGroup.Where(w => w.Deleted == 0).Select(s => new { s.GrpId, s.Name }).ToList());
                 GrpComboBox.EditValue = 0;
             }
-            if (!KAGroupBox.Visible)
+            if (!KontragentPanel.Visible)
             {
-                Height -= KAGroupBox.Height;
+                Height -= KontragentPanel.Height;
             }
             else
             {
@@ -128,6 +128,16 @@ namespace SP_Sklad
                 wbStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
                 wbStatusList.EditValue = 1;
             }
+
+            if (!GroupKontragentPanel.Visible)
+            {
+                Height -= GroupKontragentPanel.Height;
+            }
+            else
+            {
+                GrpKagentLookUpEdit.Properties.DataSource = new List<object>() { new { Id = Guid.Empty, Name = "Усі" } }.Concat(new BaseEntities().KontragentGroup.Select(s => new { s.Id, s.Name })).ToList();
+                GrpKagentLookUpEdit.EditValue = Guid.Empty;
+            }
         }
 
         private void frmReport_Shown(object sender, EventArgs e)
@@ -166,7 +176,8 @@ namespace SP_Sklad
                 DocStr = str,
                 DocType = DocTypeEdit.EditValue,
                 ChType = ChTypeEdit.GetSelectedDataRow(),
-                Status = wbStatusList.EditValue
+                Status = wbStatusList.EditValue,
+                KontragentGroup = GrpKagentLookUpEdit.GetSelectedDataRow()
             };
 
             pr.CreateReport(_rep_id);

@@ -27,6 +27,7 @@ namespace SP_Sklad.Reports
         public object DocType { get; set; }
         public dynamic ChType { get; set; }
         public object Status { get; set; }
+        public dynamic KontragentGroup { get; set; }
 
         private List<object> XLRPARAMS
         {
@@ -42,7 +43,8 @@ namespace SP_Sklad.Reports
                     WH = Warehouse != null ? Warehouse.Name : "",
                     KAID = Kagent != null ? Kagent.Name : "",
                     MatId = Material != null ? Material.Name : "",
-                    CType = ChType!= null ? ChType.Name :""
+                    CType = ChType!= null ? ChType.Name :"",
+                    KontragentGroupName = KontragentGroup !=null ? KontragentGroup.Name :"",
                 });
                 return obj;
             }
@@ -388,8 +390,9 @@ namespace SP_Sklad.Reports
             if (idx == 9)
             {
                 int wid = Warehouse.WId == "*" ? 0 : Convert.ToInt32(Warehouse.WId);
+                Guid kg = KontragentGroup.Id;
 
-                var list = db.GetMatMove((int)this.Material.MatId, StartDate, EndDate, wid, (int)Kagent.KaId, (int)DocType, "*").ToList();
+                var list = db.GetMatMove((int)this.Material.MatId, StartDate, EndDate, wid, (int)Kagent.KaId, (int)DocType, "*", kg).ToList();
 
                 if (!list.Any())
                 {
@@ -519,7 +522,8 @@ namespace SP_Sklad.Reports
             {
                 int wid = Warehouse.WId == "*" ? 0 : Convert.ToInt32(Warehouse.WId);
                 int mat_id = (int)this.Material.MatId;
-                var list = db.GetMatMove((int)this.Material.MatId, StartDate, EndDate, wid, (int)Kagent.KaId, (int)DocType, "*").ToList();
+                Guid grp_kg = KontragentGroup.Id;
+                var list = db.GetMatMove((int)this.Material.MatId, StartDate, EndDate, wid, (int)Kagent.KaId, (int)DocType, "*", grp_kg).ToList();
 
                 if (!list.Any())
                 {
@@ -580,7 +584,8 @@ namespace SP_Sklad.Reports
             if (idx == 28)
             {
                 int grp = Convert.ToInt32(MatGroup.GrpId);
-                var mat = db.OrderedList(StartDate, EndDate, 0, (int)Kagent.KaId, -16, 0).GroupBy(g => new
+                Guid grp_kg = KontragentGroup.Id;
+                var mat = db.OrderedList(StartDate, EndDate, 0, (int)Kagent.KaId, -16, 0, grp_kg).GroupBy(g => new
                 {
                     g.BarCode,
                     g.GrpId,
@@ -675,7 +680,8 @@ namespace SP_Sklad.Reports
 
             if (idx == 27)
             {
-                var mat = db.REP_27(StartDate, EndDate, (int)Kagent.KaId, (int)MatGroup.GrpId, (int)this.Material.MatId).ToList();
+                Guid grp_kg = KontragentGroup.Id;
+                var mat = db.REP_27(StartDate, EndDate, (int)Kagent.KaId, (int)MatGroup.GrpId, (int)this.Material.MatId, grp_kg).ToList();
 
                 if (!mat.Any())
                 {
@@ -686,7 +692,6 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("MatList", mat.ToList());
 
                 IHelper.Print(data_for_report, TemlateList.rep_27);
-
             }
 
             if (idx == 31)
@@ -942,15 +947,25 @@ namespace SP_Sklad.Reports
             {
                 int grp = Convert.ToInt32(MatGroup.GrpId);
                 int mat_id = (int)this.Material.MatId;
-                var make = db.REP_33(StartDate, EndDate, grp, mat_id).ToList();
+                var make = db.REP_33(StartDate, EndDate, grp, mat_id).OrderBy(o=> o.OnDate).ToList();
 
                 if (!make.Any())
                 {
                     return;
                 }
 
+                rel.Add(new
+                {
+                    pk = "MatId",
+                    fk = "MatId",
+                    master_table = "MatList",
+                    child_table = "WBList"
+                });
+
                 data_for_report.Add("XLRPARAMS", XLRPARAMS);
-                data_for_report.Add("MatList", make.ToList());
+                data_for_report.Add("MatList", make.GroupBy(o => new { o.MatId, o.MatName }).Select(s => new { s.Key.MatId, s.Key.MatName }).ToList());
+                data_for_report.Add("WBList", make.ToList());
+                data_for_report.Add("_realation_", rel);
 
                 IHelper.Print(data_for_report, TemlateList.rep_33);
             }

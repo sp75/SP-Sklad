@@ -1519,7 +1519,7 @@
             // 
             // vGridControl3
             // 
-            this.vGridControl3.Cursor = System.Windows.Forms.Cursors.SizeNS;
+            this.vGridControl3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.vGridControl3.DataSource = this.CurActivesBS;
             this.vGridControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl3.ImageList = this.UserTreeImgList;

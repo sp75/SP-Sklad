@@ -420,6 +420,9 @@
     <Compile Include="SkladData\MatRemainByWh_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\OrderedList_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\PayDoc.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -949,9 +952,6 @@
     </Compile>
     <Compile Include="SkladData\ObservableListSource.cs" />
     <Compile Include="SkladData\OperLog.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\OrderedList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\PayDocType.cs">

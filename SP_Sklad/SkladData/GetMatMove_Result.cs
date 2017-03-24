@@ -38,5 +38,6 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> AvgPrice { get; set; }
         public string TypeName { get; set; }
         public string WhName { get; set; }
+        public Nullable<System.Guid> KAgentGroupId { get; set; }
     }
 }

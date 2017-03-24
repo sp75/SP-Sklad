@@ -54,7 +54,7 @@ namespace SP_Sklad
 
         private void GetOrderedList()
         {
-            OrderedListBS.DataSource = new BaseEntities().OrderedList(wbStartDate.DateTime, wbEndDate.DateTime, (int)MatComboBox.EditValue, (int)KagentComboBox.EditValue, (int)wTypeList.EditValue, (int)wbStatusList.EditValue).ToList();
+            OrderedListBS.DataSource = new BaseEntities().OrderedList(wbStartDate.DateTime, wbEndDate.DateTime, (int)MatComboBox.EditValue, (int)KagentComboBox.EditValue, (int)wTypeList.EditValue, (int)wbStatusList.EditValue, Guid.Empty).ToList();
         }
 
         private void frmOrderedList_Shown(object sender, EventArgs e)
@@ -97,7 +97,5 @@ namespace SP_Sklad
                 FindDoc.Find(row.Id, row.WType, row.OnDate);
             }
         }
-
-
     }
 }
