@@ -5677,6 +5677,7 @@
                 <Property Name="WriteOnDate" Type="datetime" />
                 <Property Name="Price" Type="numeric" Precision="38" Scale="17" />
                 <Property Name="HeatTreatmentAmount" Type="numeric" Precision="38" Scale="8" />
+                <Property Name="CookingAmount" Type="numeric" Precision="38" Scale="8" />
                 <Property Name="FormationAmount" Type="numeric" Precision="38" Scale="8" />
                 <Property Name="FinishAmount" Type="numeric" Precision="38" Scale="8" />
               </RowType>
@@ -7028,12 +7029,6 @@
             <End Role="UsersGroup" EntitySet="UsersGroup" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-          <FunctionImport Name="REP_33" IsComposable="true" ReturnType="Collection(BaseModel.REP_33_Result)">
-            <Parameter Name="from_date" Mode="In" Type="DateTime" />
-            <Parameter Name="to_date" Mode="In" Type="DateTime" />
-            <Parameter Name="grp_id" Mode="In" Type="Int32" />
-            <Parameter Name="mat_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="REP_1" ReturnType="Collection(BaseModel.REP_1_Result)">
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
             <Parameter Name="to_date" Mode="In" Type="DateTime" />
@@ -7281,6 +7276,12 @@
             <Parameter Name="w_type" Mode="In" Type="Int32" />
             <Parameter Name="active" Mode="In" Type="Int32" />
             <Parameter Name="ka_grp_id" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="REP_33" IsComposable="true" ReturnType="Collection(BaseModel.REP_33_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="grp_id" Mode="In" Type="Int32" />
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
@@ -11104,24 +11105,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="REP_33_Result">
-          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" />
-          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
-          <Property Type="Decimal" Name="SummAll" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="String" Name="RecipeName" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
-          <Property Type="Decimal" Name="AmountIn" Nullable="false" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="MatId" Nullable="false" />
-          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
-          <Property Type="Int32" Name="MId" Nullable="false" />
-          <Property Type="DateTime" Name="OnDateOut" Nullable="true" Precision="23" />
-          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="DateTime" Name="WriteOnDate" Nullable="true" Precision="23" />
-          <Property Type="Decimal" Name="Price" Nullable="true" Precision="38" Scale="17" />
-          <Property Type="Decimal" Name="HeatTreatmentAmount" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="FormationAmount" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="FinishAmount" Nullable="true" Precision="38" Scale="4" />
-        </ComplexType>
         <ComplexType Name="REP_1_Result">
           <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
           <Property Type="Int32" Name="GrpId" Nullable="true" />
@@ -12205,6 +12188,25 @@
           <Property Type="Int32" Name="GrpId" Nullable="true" />
           <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
           <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="REP_33_Result">
+          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="SummAll" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="String" Name="RecipeName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="AmountIn" Nullable="false" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="Int32" Name="MId" Nullable="false" />
+          <Property Type="DateTime" Name="OnDateOut" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="38" Scale="8" />
+          <Property Type="DateTime" Name="WriteOnDate" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="38" Scale="17" />
+          <Property Type="Decimal" Name="HeatTreatmentAmount" Nullable="true" Precision="38" Scale="8" />
+          <Property Type="Decimal" Name="CookingAmount" Nullable="true" Precision="38" Scale="8" />
+          <Property Type="Decimal" Name="FormationAmount" Nullable="true" Precision="38" Scale="8" />
+          <Property Type="Decimal" Name="FinishAmount" Nullable="true" Precision="38" Scale="8" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -14583,28 +14585,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="REP_33" FunctionName="BaseModel.Store.REP_33">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.REP_33_Result">
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
-                <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
-                <ScalarProperty Name="MatName" ColumnName="MatName" />
-                <ScalarProperty Name="AmountIn" ColumnName="AmountIn" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
-                <ScalarProperty Name="MId" ColumnName="MId" />
-                <ScalarProperty Name="OnDateOut" ColumnName="OnDateOut" />
-                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
-                <ScalarProperty Name="WriteOnDate" ColumnName="WriteOnDate" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="HeatTreatmentAmount" ColumnName="HeatTreatmentAmount" />
-                <ScalarProperty Name="FormationAmount" ColumnName="FormationAmount" />
-                <ScalarProperty Name="FinishAmount" ColumnName="FinishAmount" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="REP_1" FunctionName="BaseModel.Store.REP_1">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.REP_1_Result">
@@ -15473,6 +15453,29 @@
                 <ScalarProperty Name="GrpId" ColumnName="GrpId" />
                 <ScalarProperty Name="BarCode" ColumnName="BarCode" />
                 <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="REP_33" FunctionName="BaseModel.Store.REP_33">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.REP_33_Result">
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="AmountIn" ColumnName="AmountIn" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="MId" ColumnName="MId" />
+                <ScalarProperty Name="OnDateOut" ColumnName="OnDateOut" />
+                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
+                <ScalarProperty Name="WriteOnDate" ColumnName="WriteOnDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="HeatTreatmentAmount" ColumnName="HeatTreatmentAmount" />
+                <ScalarProperty Name="CookingAmount" ColumnName="CookingAmount" />
+                <ScalarProperty Name="FormationAmount" ColumnName="FormationAmount" />
+                <ScalarProperty Name="FinishAmount" ColumnName="FinishAmount" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

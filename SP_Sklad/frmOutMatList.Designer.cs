@@ -249,7 +249,7 @@
             this.gridBand2.Columns.Add(this.bandedGridColumn2);
             this.gridBand2.Name = "gridBand2";
             this.gridBand2.VisibleIndex = 0;
-            this.gridBand2.Width = 578;
+            this.gridBand2.Width = 496;
             // 
             // bandedGridColumn1
             // 
@@ -259,7 +259,7 @@
             this.bandedGridColumn1.Name = "bandedGridColumn1";
             this.bandedGridColumn1.OptionsColumn.ShowCaption = false;
             this.bandedGridColumn1.Visible = true;
-            this.bandedGridColumn1.Width = 29;
+            this.bandedGridColumn1.Width = 20;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -284,7 +284,7 @@
             this.bandedGridColumn4.FieldName = "MatName";
             this.bandedGridColumn4.Name = "bandedGridColumn4";
             this.bandedGridColumn4.Visible = true;
-            this.bandedGridColumn4.Width = 292;
+            this.bandedGridColumn4.Width = 238;
             // 
             // bandedGridColumn6
             // 
@@ -292,7 +292,7 @@
             this.bandedGridColumn6.FieldName = "Measure";
             this.bandedGridColumn6.Name = "bandedGridColumn6";
             this.bandedGridColumn6.Visible = true;
-            this.bandedGridColumn6.Width = 69;
+            this.bandedGridColumn6.Width = 49;
             // 
             // bandedGridColumn2
             // 
@@ -300,7 +300,7 @@
             this.bandedGridColumn2.FieldName = "WhName";
             this.bandedGridColumn2.Name = "bandedGridColumn2";
             this.bandedGridColumn2.Visible = true;
-            this.bandedGridColumn2.Width = 188;
+            this.bandedGridColumn2.Width = 189;
             // 
             // gridBand1
             // 
@@ -314,7 +314,7 @@
             this.gridBand1.Columns.Add(this.bandedGridColumn7);
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = 1;
-            this.gridBand1.Width = 515;
+            this.gridBand1.Width = 597;
             // 
             // bandedGridColumn3
             // 
@@ -346,15 +346,17 @@
             this.colCurrName.FieldName = "Num";
             this.colCurrName.Name = "colCurrName";
             this.colCurrName.Visible = true;
-            this.colCurrName.Width = 59;
+            this.colCurrName.Width = 108;
             // 
             // bandedGridColumn5
             // 
             this.bandedGridColumn5.Caption = "Дата";
+            this.bandedGridColumn5.DisplayFormat.FormatString = "g";
+            this.bandedGridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.bandedGridColumn5.FieldName = "OnDate";
             this.bandedGridColumn5.Name = "bandedGridColumn5";
             this.bandedGridColumn5.Visible = true;
-            this.bandedGridColumn5.Width = 79;
+            this.bandedGridColumn5.Width = 112;
             // 
             // colSaldo
             // 
@@ -364,7 +366,7 @@
             this.colSaldo.FieldName = "Amount";
             this.colSaldo.Name = "colSaldo";
             this.colSaldo.Visible = true;
-            this.colSaldo.Width = 68;
+            this.colSaldo.Width = 91;
             // 
             // colSummAll
             // 
@@ -374,23 +376,27 @@
             this.colSummAll.FieldName = "ReturnAmount";
             this.colSummAll.Name = "colSummAll";
             this.colSummAll.Visible = true;
-            this.colSummAll.Width = 104;
+            this.colSummAll.Width = 91;
             // 
             // bandedGridColumn8
             // 
             this.bandedGridColumn8.Caption = "Залишок";
+            this.bandedGridColumn8.DisplayFormat.FormatString = "0.00";
+            this.bandedGridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.bandedGridColumn8.FieldName = "Remain";
             this.bandedGridColumn8.Name = "bandedGridColumn8";
             this.bandedGridColumn8.Visible = true;
-            this.bandedGridColumn8.Width = 81;
+            this.bandedGridColumn8.Width = 63;
             // 
             // bandedGridColumn7
             // 
             this.bandedGridColumn7.Caption = "Відпускна ціна";
+            this.bandedGridColumn7.DisplayFormat.FormatString = "0.00";
+            this.bandedGridColumn7.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.bandedGridColumn7.FieldName = "Price";
             this.bandedGridColumn7.Name = "bandedGridColumn7";
             this.bandedGridColumn7.Visible = true;
-            this.bandedGridColumn7.Width = 95;
+            this.bandedGridColumn7.Width = 103;
             // 
             // colKaName
             // 
@@ -410,7 +416,7 @@
             this.Name = "frmOutMatList";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmOutMatList";
+            this.Text = "Видаткові партії по контрагенту";
             this.Load += new System.EventHandler(this.frmOutMatList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GetPosOutBS)).EndInit();
