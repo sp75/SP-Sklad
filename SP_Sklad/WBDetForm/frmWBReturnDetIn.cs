@@ -322,5 +322,13 @@ namespace SP_Sklad.WBDetForm
             catch { }
         }
 
+        private void AmountEdit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && OkButton.Enabled)
+            {
+                OkButton.PerformClick();
+            }
+        }
+
     }
 }

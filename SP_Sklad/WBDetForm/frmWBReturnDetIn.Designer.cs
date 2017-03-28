@@ -267,7 +267,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(592, 26);
+            this.barDockControlTop.Size = new System.Drawing.Size(592, 24);
             // 
             // barDockControlBottom
             // 
@@ -280,22 +280,22 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 388);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 390);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(592, 26);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 388);
+            this.barDockControlRight.Location = new System.Drawing.Point(592, 24);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 390);
             // 
             // standaloneBarDockControl1
             // 
             this.standaloneBarDockControl1.AutoSize = true;
             this.standaloneBarDockControl1.CausesValidation = false;
             this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 26);
+            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 24);
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
             this.standaloneBarDockControl1.Size = new System.Drawing.Size(592, 0);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
@@ -379,7 +379,7 @@
             // 
             this.panel1.Controls.Add(this.panelControl1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 26);
+            this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
             this.panel1.Size = new System.Drawing.Size(592, 92);
@@ -491,7 +491,7 @@
             // 
             this.panel2.Controls.Add(this.panelControl3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 118);
+            this.panel2.Location = new System.Drawing.Point(0, 116);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
             this.panel2.Size = new System.Drawing.Size(592, 115);
@@ -656,12 +656,13 @@
             this.AmountEdit.StyleController = this.styleController1;
             this.AmountEdit.TabIndex = 4;
             this.AmountEdit.EditValueChanged += new System.EventHandler(this.AmountEdit_EditValueChanged);
+            this.AmountEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AmountEdit_KeyPress);
             // 
             // panel5
             // 
             this.panel5.Controls.Add(this.groupControl3);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 233);
+            this.panel5.Location = new System.Drawing.Point(0, 231);
             this.panel5.Name = "panel5";
             this.panel5.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
             this.panel5.Size = new System.Drawing.Size(592, 131);
@@ -828,16 +829,16 @@
             this.panelControl2.Controls.Add(this.OkButton);
             this.panelControl2.Controls.Add(this.simpleButton1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(0, 364);
+            this.panelControl2.Location = new System.Drawing.Point(0, 362);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(592, 50);
+            this.panelControl2.Size = new System.Drawing.Size(592, 52);
             this.panelControl2.TabIndex = 28;
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(374, 12);
+            this.OkButton.Location = new System.Drawing.Point(374, 14);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(98, 26);
             this.OkButton.TabIndex = 3;
@@ -848,7 +849,7 @@
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton1.Location = new System.Drawing.Point(481, 12);
+            this.simpleButton1.Location = new System.Drawing.Point(481, 14);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(93, 26);
             this.simpleButton1.TabIndex = 2;
