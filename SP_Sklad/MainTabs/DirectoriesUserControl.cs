@@ -978,5 +978,6 @@ namespace SP_Sklad.MainTabs
                     break;
             }
         }
+
     }
 }

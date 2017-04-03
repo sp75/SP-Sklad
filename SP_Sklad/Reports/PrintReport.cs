@@ -998,6 +998,33 @@ namespace SP_Sklad.Reports
                 IHelper.Print(data_for_report, TemlateList.rep_34);
             }
 
+            if (idx == 35)
+            {
+                int grp = Convert.ToInt32(MatGroup.GrpId);
+                int mat_id = (int)this.Material.MatId;
+                var make = db.REP_33(StartDate, EndDate, grp, mat_id).OrderBy(o => o.OnDate).ToList();
+
+                if (!make.Any())
+                {
+                    return;
+                }
+
+                rel.Add(new
+                {
+                    pk = "MatId",
+                    fk = "MatId",
+                    master_table = "MatList",
+                    child_table = "WBList"
+                });
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("MatList", make.GroupBy(o => new { o.MatId, o.MatName }).Select(s => new { s.Key.MatId, s.Key.MatName }).ToList());
+                data_for_report.Add("WBList", make.ToList());
+                data_for_report.Add("_realation_", rel);
+
+                IHelper.Print(data_for_report, TemlateList.rep_35);
+            }
+
             db.PrintLog.Add(new PrintLog
             {
                 PrintType = 1,

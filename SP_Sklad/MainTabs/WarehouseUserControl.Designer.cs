@@ -2747,7 +2747,9 @@
             this.wbEndDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.wbEndDate.Properties.DisplayFormat.FormatString = "";
+            this.wbEndDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.wbEndDate.Properties.EditFormat.FormatString = "";
+            this.wbEndDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.wbEndDate.Properties.Mask.EditMask = "g";
             this.wbEndDate.Size = new System.Drawing.Size(113, 20);
             this.wbEndDate.TabIndex = 3;
@@ -2771,7 +2773,9 @@
             this.wbStartDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.wbStartDate.Properties.DisplayFormat.FormatString = "";
+            this.wbStartDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.wbStartDate.Properties.EditFormat.FormatString = "";
+            this.wbStartDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.wbStartDate.Properties.Mask.EditMask = "g";
             this.wbStartDate.Size = new System.Drawing.Size(132, 20);
             this.wbStartDate.TabIndex = 1;

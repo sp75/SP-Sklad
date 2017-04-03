@@ -44,6 +44,7 @@
             this.EditItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.DeleteItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.RefrechItemBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
             this.standaloneBarDockControl6 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.DelItem = new DevExpress.XtraBars.BarButtonItem();
@@ -72,8 +73,6 @@
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.KagentBalansBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
@@ -152,6 +151,7 @@
             this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn73 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit8 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.gridColumn78 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.BarCodeEdit = new DevExpress.XtraEditors.TextEdit();
@@ -316,8 +316,6 @@
             this.ExplorerPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
-            this.gridColumn78 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
@@ -623,8 +621,6 @@
             this.barButtonItem8,
             this.KagentBalansBtn,
             this.barButtonItem3,
-            this.barButtonItem7,
-            this.barButtonItem9,
             this.barButtonItem10,
             this.barButtonItem2,
             this.AddItem,
@@ -698,6 +694,14 @@
             this.RefrechItemBtn.ImageIndex = 4;
             this.RefrechItemBtn.Name = "RefrechItemBtn";
             this.RefrechItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RefrechItemBtn_ItemClick);
+            // 
+            // barButtonItem11
+            // 
+            this.barButtonItem11.Caption = "Експорт";
+            this.barButtonItem11.Id = 38;
+            this.barButtonItem11.ImageIndex = 13;
+            this.barButtonItem11.Name = "barButtonItem11";
+            this.barButtonItem11.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick_1);
             // 
             // standaloneBarDockControl6
             // 
@@ -952,18 +956,6 @@
             this.barButtonItem3.ImageIndex = 6;
             this.barButtonItem3.Name = "barButtonItem3";
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
-            // 
-            // barButtonItem7
-            // 
-            this.barButtonItem7.Caption = "Перерахувати баланс";
-            this.barButtonItem7.Id = 23;
-            this.barButtonItem7.Name = "barButtonItem7";
-            // 
-            // barButtonItem9
-            // 
-            this.barButtonItem9.Caption = "Перерахувати баланс для всіх";
-            this.barButtonItem9.Id = 24;
-            this.barButtonItem9.Name = "barButtonItem9";
             // 
             // barButtonItem10
             // 
@@ -1699,6 +1691,14 @@
             this.repositoryItemCheckEdit8.Name = "repositoryItemCheckEdit8";
             this.repositoryItemCheckEdit8.ValueChecked = 1;
             this.repositoryItemCheckEdit8.ValueUnchecked = 0;
+            // 
+            // gridColumn78
+            // 
+            this.gridColumn78.Caption = "Вага";
+            this.gridColumn78.FieldName = "Weight";
+            this.gridColumn78.Name = "gridColumn78";
+            this.gridColumn78.Visible = true;
+            this.gridColumn78.VisibleIndex = 4;
             // 
             // gridView4
             // 
@@ -3260,8 +3260,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.KagentBalansBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
@@ -3283,22 +3281,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
             this.MatPopupMenu.Manager = this.barManager1;
             this.MatPopupMenu.Name = "MatPopupMenu";
-            // 
-            // barButtonItem11
-            // 
-            this.barButtonItem11.Caption = "Експорт";
-            this.barButtonItem11.Id = 38;
-            this.barButtonItem11.ImageIndex = 13;
-            this.barButtonItem11.Name = "barButtonItem11";
-            this.barButtonItem11.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick_1);
-            // 
-            // gridColumn78
-            // 
-            this.gridColumn78.Caption = "Вага";
-            this.gridColumn78.FieldName = "Weight";
-            this.gridColumn78.Name = "gridColumn78";
-            this.gridColumn78.Visible = true;
-            this.gridColumn78.VisibleIndex = 4;
             // 
             // DirectoriesUserControl
             // 
@@ -3575,8 +3557,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn39;
         private DevExpress.XtraBars.BarButtonItem KagentBalansBtn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem9;
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
         private DevExpress.XtraBars.PopupMenu KAgentPopupMenu;
         private System.Windows.Forms.BindingSource KAgentDS;

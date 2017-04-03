@@ -39,7 +39,6 @@ namespace SP_Sklad.EditForm
             _db = DB.SkladBase();
             current_transaction = _db.Database.BeginTransaction();
             tree = new List<CatalogTreeList>();
-            user_settings = new UserSettingsRepository(_user_id.Value, _db);
         }
 
         private void frmUserEdit_Load(object sender, EventArgs e)
@@ -70,6 +69,8 @@ namespace SP_Sklad.EditForm
             {
                 _u = _db.Users.Find(_user_id);
             }
+
+            user_settings = new UserSettingsRepository(_user_id.Value, _db);
 
             if (_u != null)
             {
