@@ -37,6 +37,7 @@ namespace SP_Sklad.Reports
         public static String rep_10 { get { return "Oborotka.xlsx"; } }
         public static String rep_11 { get { return "ReestrDocs.xlsx"; } }
         public static String rep_13 { get { return "RepMatSelPr.xlsx"; } }
+        public static String rep_15 { get { return "DynamicsSsales.xlsx"; } }
         public static String rep_16 { get { return "RepOnExpenditure.xlsx"; } }
         public static String rep_17 { get { return "FinResult(17).xlsx"; } }
         public static String rep_18 { get { return "RepMinMatRest.xlsx"; } }

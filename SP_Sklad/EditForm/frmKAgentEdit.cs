@@ -145,6 +145,19 @@ namespace SP_Sklad.EditForm
                     AddrresUrBS.DataSource = _db.KaAddr.Add(new KaAddr { KaId = _ka.KaId, AddrType = 1 });
                 }
 
+                var _enterprise_list = new BaseEntities().Kagent.Where(w => w.KType == 3 && w.Deleted == 0 && (w.Archived == null || w.Archived == 0)).Select(s => new
+                 {
+                     KaId = s.KaId,
+                     Name = s.Name,
+                     IsWork = s.EnterpriseWorker.Any(a => a.WorkerId == _ka_id)
+
+                 }).ToList();
+
+                foreach (var item in _enterprise_list)
+                {
+                    checkedComboBoxEdit1.Properties.Items.Add(item.KaId, item.Name, item.IsWork ? CheckState.Checked : CheckState.Unchecked, true);
+                }
+
                 GetAccounts();
                 GetPersons();
                 GetDiscountList();
@@ -753,6 +766,22 @@ namespace SP_Sklad.EditForm
         private void KAgentPersonsGridView_DoubleClick(object sender, EventArgs e)
         {
             EditPersonBtn.PerformClick();
+        }
+
+        private void checkedComboBoxEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+            if (checkedComboBoxEdit1.ContainsFocus)
+            {
+                _db.EnterpriseWorker.RemoveRange(_db.EnterpriseWorker.Where(w => w.WorkerId == _ka_id));
+
+                foreach (var item in checkedComboBoxEdit1.Properties.Items.Where(w=> w.CheckState == CheckState.Checked))
+                {
+                    _db.EnterpriseWorker.Add(new EnterpriseWorker { EnterpriseId = (int)item.Value, WorkerId = _ka_id.Value });
+                }
+
+                _db.SaveChanges();
+            }
+           
         }
 
     }

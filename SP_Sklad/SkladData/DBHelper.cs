@@ -139,7 +139,12 @@ namespace SP_Sklad.SkladData
             {
                 if (_enterprise_list == null)
                 {
-                    _enterprise_list = new BaseEntities().Kagent.Where(w => w.KType == 3 && w.Deleted == 0 && (w.Archived == null || w.Archived == 0)).Select(s => new Enterprise { KaId = s.KaId, Name = s.Name, NdsPayer = s.NdsPayer }).ToList();
+                    _enterprise_list = new BaseEntities().Kagent.Where(w => w.KType == 3 && w.Deleted == 0 && (w.Archived == null || w.Archived == 0)).Select(s => new Enterprise
+                    {
+                        KaId = s.KaId,
+                        Name = s.Name,
+                        NdsPayer = s.NdsPayer
+                    }).ToList();
                 }
                 return _enterprise_list;
             }

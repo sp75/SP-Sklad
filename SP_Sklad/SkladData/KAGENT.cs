@@ -42,6 +42,7 @@ namespace SP_Sklad.SkladData
             this.PayDoc1 = new HashSet<PayDoc>();
             this.DiscCards = new HashSet<DiscCards>();
             this.WayBillMakeProps = new HashSet<WayBillMakeProps>();
+            this.EnterpriseWorker = new HashSet<EnterpriseWorker>();
         }
     
         public int KaId { get; set; }
@@ -108,5 +109,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<PayDoc> PayDoc1 { get; set; }
         public virtual ICollection<DiscCards> DiscCards { get; set; }
         public virtual ICollection<WayBillMakeProps> WayBillMakeProps { get; set; }
+        public virtual ICollection<EnterpriseWorker> EnterpriseWorker { get; set; }
     }
 }

@@ -28,6 +28,7 @@
           <EntitySet Name="DiscCards" EntityType="BaseModel.Store.DiscCards" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DocRels" EntityType="BaseModel.Store.DocRels" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DocType" EntityType="BaseModel.Store.DocType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EnterpriseWorker" EntityType="BaseModel.Store.EnterpriseWorker" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ENTPARAMS" EntityType="BaseModel.Store.ENTPARAMS" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ExtRel" EntityType="BaseModel.Store.ExtRel" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Functions" EntityType="BaseModel.Store.Functions" store:Type="Tables" Schema="dbo" />
@@ -700,6 +701,10 @@
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="DiscCards" EntitySet="DiscCards" />
           </AssociationSet>
+          <AssociationSet Name="FK_EnterpriseWorker_Kagent" Association="BaseModel.Store.FK_EnterpriseWorker_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="EnterpriseWorker" EntitySet="EnterpriseWorker" />
+          </AssociationSet>
           <AssociationSet Name="FK_EXTREL_EXTPOSID" Association="BaseModel.Store.FK_EXTREL_EXTPOSID">
             <End Role="WaybillDet" EntitySet="WaybillDet" />
             <End Role="ExtRel" EntitySet="ExtRel" />
@@ -1288,6 +1293,14 @@
           <Property Name="ShortName" Type="nvarchar" MaxLength="50" />
           <Property Name="FunId" Type="int" />
         </EntityType>
+        <EntityType Name="EnterpriseWorker">
+          <Key>
+            <PropertyRef Name="EnterpriseId" />
+            <PropertyRef Name="WorkerId" />
+          </Key>
+          <Property Name="EnterpriseId" Type="int" Nullable="false" />
+          <Property Name="WorkerId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="ENTPARAMS">
           <Key>
             <PropertyRef Name="ID" />
@@ -1635,9 +1648,9 @@
           <Property Name="OnDate" Type="datetime" Nullable="false" />
           <Property Name="AccId" Type="int" />
           <Property Name="CurrId" Type="int" Nullable="false" />
-          <Property Name="Saldo" Type="numeric" Nullable="false" Precision="15" Scale="8" />
+          <Property Name="Saldo" Type="numeric" Nullable="false" Precision="15" Scale="2" />
           <Property Name="CashId" Type="int" />
-          <Property Name="SaldoDef" Type="numeric" Precision="15" Scale="8" />
+          <Property Name="SaldoDef" Type="numeric" Precision="15" Scale="2" />
         </EntityType>
         <EntityType Name="OperLog">
           <Key>
@@ -3423,6 +3436,18 @@
             </Principal>
             <Dependent Role="DiscCards">
               <PropertyRef Name="KaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnterpriseWorker_Kagent">
+          <End Role="Kagent" Type="BaseModel.Store.Kagent" Multiplicity="1" />
+          <End Role="EnterpriseWorker" Type="BaseModel.Store.EnterpriseWorker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="EnterpriseWorker">
+              <PropertyRef Name="EnterpriseId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -5487,6 +5512,25 @@
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="REP_15" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="from_date" Type="datetime" Mode="In" />
+          <Parameter Name="to_date" Type="datetime" Mode="In" />
+          <Parameter Name="ka_id" Type="int" Mode="In" />
+          <Parameter Name="mat_id" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="OnDate" Type="date" />
+                <Property Name="AmountOut" Type="numeric" Precision="38" Scale="8" />
+                <Property Name="SummOut" Type="numeric" Precision="38" Scale="12" />
+                <Property Name="AmountIn" Type="numeric" Precision="38" Scale="8" />
+                <Property Name="SummIn" Type="numeric" Precision="38" Scale="12" />
+                <Property Name="AvgPrice" Type="numeric" Precision="38" Scale="6" />
+                <Property Name="Income" Type="numeric" Precision="38" Scale="6" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="REP_16" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="from_date" Type="datetime" Mode="In" />
           <Parameter Name="to_date" Type="datetime" Mode="In" />
@@ -7283,6 +7327,17 @@
             <Parameter Name="grp_id" Mode="In" Type="Int32" />
             <Parameter Name="mat_id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="EnterpriseWorker" EntityType="BaseModel.EnterpriseWorker" />
+          <AssociationSet Name="FK_EnterpriseWorker_Kagent" Association="BaseModel.FK_EnterpriseWorker_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="EnterpriseWorker" EntitySet="EnterpriseWorker" />
+          </AssociationSet>
+          <FunctionImport Name="REP_15" IsComposable="true" ReturnType="Collection(BaseModel.REP_15_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -9043,9 +9098,9 @@
           <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
           <Property Type="Int32" Name="AccId" />
           <Property Type="Int32" Name="CurrId" Nullable="false" />
-          <Property Type="Decimal" Name="Saldo" Nullable="false" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="Saldo" Nullable="false" Precision="15" Scale="2" />
           <Property Type="Int32" Name="CashId" />
-          <Property Type="Decimal" Name="SaldoDef" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="SaldoDef" Precision="15" Scale="2" />
           <NavigationProperty Name="CashDesks" Relationship="BaseModel.FK_MS_CASHID" FromRole="MoneySaldo" ToRole="CashDesks" />
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK_MS_CURRID" FromRole="MoneySaldo" ToRole="Currency" />
           <NavigationProperty Name="KAgentAccount" Relationship="BaseModel.FK_MS_ACCID" FromRole="MoneySaldo" ToRole="KAgentAccount" />
@@ -10249,6 +10304,7 @@
           <Property Type="Guid" Name="Id" Nullable="false" />
           <NavigationProperty Name="DiscCards" Relationship="BaseModel.FK_DISCCARDS_KAID" FromRole="Kagent" ToRole="DiscCards" />
           <NavigationProperty Name="WayBillMakeProps" Relationship="BaseModel.FK_WayBillMakeProps_Kagent" FromRole="Kagent" ToRole="WayBillMakeProps" />
+          <NavigationProperty Name="EnterpriseWorker" Relationship="BaseModel.FK_EnterpriseWorker_Kagent" FromRole="Kagent" ToRole="EnterpriseWorker" />
         </EntityType>
         <EntityType Name="KontragentGroup">
           <Key>
@@ -12207,6 +12263,36 @@
           <Property Type="Decimal" Name="CookingAmount" Nullable="true" Precision="38" Scale="8" />
           <Property Type="Decimal" Name="FormationAmount" Nullable="true" Precision="38" Scale="8" />
           <Property Type="Decimal" Name="FinishAmount" Nullable="true" Precision="38" Scale="8" />
+        </ComplexType>
+        <EntityType Name="EnterpriseWorker">
+          <Key>
+            <PropertyRef Name="EnterpriseId" />
+            <PropertyRef Name="WorkerId" />
+          </Key>
+          <Property Type="Int32" Name="EnterpriseId" Nullable="false" />
+          <Property Type="Int32" Name="WorkerId" Nullable="false" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_EnterpriseWorker_Kagent" FromRole="EnterpriseWorker" ToRole="Kagent" />
+        </EntityType>
+        <Association Name="FK_EnterpriseWorker_Kagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1" />
+          <End Type="BaseModel.EnterpriseWorker" Role="EnterpriseWorker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="EnterpriseWorker">
+              <PropertyRef Name="EnterpriseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="REP_15_Result">
+          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="10" />
+          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="38" Scale="8" />
+          <Property Type="Decimal" Name="SummOut" Nullable="true" Precision="38" Scale="12" />
+          <Property Type="Decimal" Name="AmountIn" Nullable="true" Precision="38" Scale="8" />
+          <Property Type="Decimal" Name="SummIn" Nullable="true" Precision="38" Scale="12" />
+          <Property Type="Decimal" Name="AvgPrice" Nullable="true" Precision="38" Scale="6" />
+          <Property Type="Decimal" Name="Income" Nullable="true" Precision="38" Scale="6" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -15476,6 +15562,27 @@
                 <ScalarProperty Name="CookingAmount" ColumnName="CookingAmount" />
                 <ScalarProperty Name="FormationAmount" ColumnName="FormationAmount" />
                 <ScalarProperty Name="FinishAmount" ColumnName="FinishAmount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="EnterpriseWorker">
+            <EntityTypeMapping TypeName="BaseModel.EnterpriseWorker">
+              <MappingFragment StoreEntitySet="EnterpriseWorker">
+                <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+                <ScalarProperty Name="EnterpriseId" ColumnName="EnterpriseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="REP_15" FunctionName="BaseModel.Store.REP_15">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.REP_15_Result">
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
+                <ScalarProperty Name="SummOut" ColumnName="SummOut" />
+                <ScalarProperty Name="AmountIn" ColumnName="AmountIn" />
+                <ScalarProperty Name="SummIn" ColumnName="SummIn" />
+                <ScalarProperty Name="AvgPrice" ColumnName="AvgPrice" />
+                <ScalarProperty Name="Income" ColumnName="Income" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

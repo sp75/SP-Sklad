@@ -80,6 +80,7 @@ namespace SP_Sklad.MainTabs
                 case 10:
                 case 11:
                 case 13:
+                case 15:
                 case 18:
                 case 27:
                 case 25:
@@ -233,6 +234,14 @@ namespace SP_Sklad.MainTabs
                     frm.MatGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
+                    break;
+
+                case 15: frm.DocTypeGroupBox2.Visible = false;
+                    frm.OnDateGroupBox.Visible = false;
+                    frm.GRPGroupBox.Visible = false;
+                    frm.DocTypeGroupBox.Visible = false;
+                    frm.ChargeGroupBox.Visible = false;
+                    frm.WHGroupBox.Visible = false;
                     break;
 
                 case 16:

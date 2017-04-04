@@ -503,6 +503,21 @@ namespace SP_Sklad.Reports
                 IHelper.Print(data_for_report, TemlateList.rep_13);
             }
 
+            if (idx == 15)
+            {
+                var wb_list = db.REP_15(StartDate, EndDate, (int)Kagent.KaId, (int)this.Material.MatId).ToList();
+
+                if (!wb_list.Any())
+                {
+                    return;
+                }
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("WbList", wb_list);
+
+                IHelper.Print(data_for_report, TemlateList.rep_15);
+            }
+
             if (idx == 16)
             {
                 var paydoc = db.REP_16(StartDate, EndDate, (int)Kagent.KaId, (int)ChType.CTypeId, 1).ToList();
@@ -696,7 +711,7 @@ namespace SP_Sklad.Reports
 
             if (idx == 31)
             {
-                var mat = db.REP_31(StartDate, EndDate, (int)MatGroup.GrpId, (int)this.Material.MatId).OrderBy(o => o.MatName).ToList();
+                var mat = db.REP_31(StartDate, EndDate, (int)MatGroup.GrpId, (int)this.Material.MatId).ToList().OrderBy(o => o.MatName).ToList();
 
                 if (!mat.Any())
                 {

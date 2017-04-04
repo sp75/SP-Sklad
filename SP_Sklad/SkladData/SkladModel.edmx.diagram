@@ -252,6 +252,8 @@
         <AssociationConnector Association="BaseModel.FK_TECHPROCDET_TECHPROCESS" />
         <EntityTypeShape EntityType="BaseModel.v_Actives" Width="1.5" PointX="1.8467574910478468" PointY="12.967575466710876" />
         <EntityTypeShape EntityType="BaseModel.v_WorkDate" Width="1.5" PointX="0.55420357573507517" PointY="30.3547968409745" />
+        <EntityTypeShape EntityType="BaseModel.EnterpriseWorker" Width="1.5" PointX="25.5" PointY="15.25" />
+        <AssociationConnector Association="BaseModel.FK_EnterpriseWorker_Kagent" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="7.0245045325832924" PointY="12.641712000892364" />

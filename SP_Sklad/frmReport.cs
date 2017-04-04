@@ -46,7 +46,7 @@ namespace SP_Sklad
             }
             else
             {
-                if (_rep_id == 9 || _rep_id == 19)
+                if (_rep_id == 9 || _rep_id == 19 || _rep_id == 15)
                 {
                     var mat = new BaseEntities().Materials.Where(w => w.Deleted == 0).Select(s => new { s.MatId, s.Name }).ToList();
                     MatComboBox.Properties.DataSource = mat;
