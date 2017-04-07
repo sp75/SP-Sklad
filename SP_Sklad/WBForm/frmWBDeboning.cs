@@ -84,7 +84,7 @@ namespace SP_Sklad.WBForm
                         RecId = rec_id
                     },
                     Nds = 0,
-                    UpdatedBy = DBHelper.CurrentUser.UserId
+                    UpdatedBy = DBHelper.CurrentUser.UserId,
                 });
                 _db.SaveChanges();
 

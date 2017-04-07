@@ -28,6 +28,7 @@ namespace SP_Sklad.Reports
         public dynamic ChType { get; set; }
         public object Status { get; set; }
         public dynamic KontragentGroup { get; set; }
+        private int? _person_id { get; set; }
 
         private List<object> XLRPARAMS
         {
@@ -52,7 +53,7 @@ namespace SP_Sklad.Reports
 
         public PrintReport()
         {
-
+            _person_id = DBHelper.CurrentUser.KaId;
         }
 
 
@@ -873,10 +874,10 @@ namespace SP_Sklad.Reports
             {
                 data_for_report.Add("XLRPARAMS", XLRPARAMS);
 
-                data_for_report.Add("DocList1", db.GetPayDocList(1, StartDate, EndDate, 0, 1, -1).ToList());
-                data_for_report.Add("DocList2", db.GetPayDocList(-1, StartDate, EndDate, 0, 1, -1).ToList());
-                data_for_report.Add("DocList3", db.GetPayDocList(-2, StartDate, EndDate, 0, 1, -1).ToList());
-                data_for_report.Add("DocList4", db.GetPayDocList(6, StartDate, EndDate, 0, 1, -1).ToList());
+                data_for_report.Add("DocList1", db.GetPayDocList(1, StartDate, EndDate, 0, 1, -1, _person_id).ToList());
+                data_for_report.Add("DocList2", db.GetPayDocList(-1, StartDate, EndDate, 0, 1, -1, _person_id).ToList());
+                data_for_report.Add("DocList3", db.GetPayDocList(-2, StartDate, EndDate, 0, 1, -1, _person_id).ToList());
+                data_for_report.Add("DocList4", db.GetPayDocList(6, StartDate, EndDate, 0, 1, -1, _person_id).ToList());
 
                 var m = db.MoneyOnDate(EndDate).GroupBy(g => new { g.SaldoType, g.Currency }).Select(s => new { s.Key.SaldoType, s.Key.Currency, Saldo = s.Sum(sum => sum.Saldo) }).ToList();
                 data_for_report.Add("MONEY1", m.Where(w => w.SaldoType == 0).ToList());

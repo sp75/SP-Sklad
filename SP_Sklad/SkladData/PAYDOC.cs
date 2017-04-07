@@ -38,6 +38,7 @@ namespace SP_Sklad.SkladData
         public Nullable<int> UpdatedBy { get; set; }
         public System.Guid Id { get; set; }
         public Nullable<int> ExDocType { get; set; }
+        public Nullable<int> EntId { get; set; }
     
         public virtual CashDesks CashDesks { get; set; }
         public virtual ChargeType ChargeType { get; set; }

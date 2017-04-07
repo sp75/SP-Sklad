@@ -74,7 +74,8 @@ namespace SP_Sklad.FinanseForm
                     MPersonId = DBHelper.CurrentUser.KaId,
                     DocType = _DocType.Value,
                     UpdatedBy = DBHelper.CurrentUser.UserId,
-                    KaId = _ka_id
+                    KaId = _ka_id,
+                    EntId = DBHelper.Enterprise.KaId
                 });
             }
             else
@@ -288,7 +289,7 @@ namespace SP_Sklad.FinanseForm
             }
             var ka_id = KagentComboBox.EditValue == null || KagentComboBox.EditValue == DBNull.Value ? 0 : (int)KagentComboBox.EditValue;
 
-            DocListEdit.Properties.DataSource = DB.SkladBase().GetWayBillList(DateTime.Now.AddYears(-100), DateTime.Now, (int)TypDocsEdit.EditValue, -1, ka_id, 0, "*", 0)
+            DocListEdit.Properties.DataSource = DB.SkladBase().GetWayBillList(DateTime.Now.AddYears(-100), DateTime.Now, (int)TypDocsEdit.EditValue, -1, ka_id, 0, "*", DBHelper.CurrentUser.KaId)
                 .OrderByDescending(o => o.OnDate).Where(w => (w.SummAll - w.SummPay) > 0);
         }
 

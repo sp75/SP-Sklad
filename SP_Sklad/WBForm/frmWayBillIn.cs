@@ -65,7 +65,8 @@ namespace SP_Sklad.WBForm
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
                     Nds = DBHelper.Enterprise.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0,
-                    UpdatedBy = DBHelper.CurrentUser.UserId
+                    UpdatedBy = DBHelper.CurrentUser.UserId,
+                    EntId = DBHelper.Enterprise.KaId,
                 });
 
                 _db.SaveChanges();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -139,12 +140,16 @@ namespace SP_Sklad.SkladData
             {
                 if (_enterprise_list == null)
                 {
-                    _enterprise_list = new BaseEntities().Kagent.Where(w => w.KType == 3 && w.Deleted == 0 && (w.Archived == null || w.Archived == 0)).Select(s => new Enterprise
+                    using (var db = new BaseEntities())
                     {
-                        KaId = s.KaId,
-                        Name = s.Name,
-                        NdsPayer = s.NdsPayer
-                    }).ToList();
+                        _enterprise_list = db.Kagent.Where(w => w.KType == 3 && w.Deleted == 0 && (w.Archived == null || w.Archived == 0))
+                            .Join(db.EnterpriseWorker.Where(ew => ew.WorkerId == CurrentUser.KaId), w => w.KaId, ew => ew.EnterpriseId, (w, ew) => new Enterprise
+                         {
+                             KaId = w.KaId,
+                             Name = w.Name,
+                             NdsPayer = w.NdsPayer
+                         }).ToList();
+                    }
                 }
                 return _enterprise_list;
             }

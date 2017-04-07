@@ -37,6 +37,8 @@ namespace SP_Sklad.SkladData
         public string Schet { get; set; }
         public Nullable<int> UpdatedBy { get; set; }
         public System.Guid Id { get; set; }
+        public Nullable<int> ExDocType { get; set; }
+        public Nullable<int> EntId { get; set; }
         public string CurrName { get; set; }
         public string KaName { get; set; }
         public string KaFullName { get; set; }
@@ -56,5 +58,6 @@ namespace SP_Sklad.SkladData
         public string CashdName { get; set; }
         public string AccNum { get; set; }
         public string BankName { get; set; }
+        public string EntName { get; set; }
     }
 }
