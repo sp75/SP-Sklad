@@ -150,43 +150,16 @@
         <EntityTypeShape EntityType="BaseModel.RepLng" Width="1.5" PointX="3.125" PointY="4.625" />
         <AssociationConnector Association="BaseModel.FK_REPLNG_LANGID" />
         <AssociationConnector Association="BaseModel.FK_REPLNG_REPID" />
-        <EntityTypeShape EntityType="BaseModel.Kagent" Width="1.5" PointX="22.25" PointY="15.5" />
         <EntityTypeShape EntityType="BaseModel.KontragentGroup" Width="1.5" PointX="8.1612118893122343" PointY="16.670762904300709" />
-        <AssociationConnector Association="BaseModel.FK_COMMISSI_REFERENCE_KAGENT" />
-        <AssociationConnector Association="BaseModel.FK_COMMISSION_1" />
-        <AssociationConnector Association="BaseModel.FK_COMMISSION_2" />
-        <AssociationConnector Association="BaseModel.FK_COMMISSION_3" />
-        <AssociationConnector Association="BaseModel.FK_CONTRACT_REF_CONTR_KAGENT" />
-        <AssociationConnector Association="BaseModel.FK_CONTRACT_REFERENCE_KAGENT" />
-        <AssociationConnector Association="BaseModel.FK_Customers_Kagent" />
-        <AssociationConnector Association="BaseModel.FK_KAADDR_KAID" />
-        <AssociationConnector Association="BaseModel.FK_KADiscount_Kagent" />
-        <AssociationConnector Association="BaseModel.FK__KAMATDISCO__KAID__31B762FC" />
-        <AssociationConnector Association="BaseModel.FK__KAMATGROUP__KAID__3A4CA8FD" />
-        <AssociationConnector Association="BaseModel.FK__TAXWB__PERSONID__019E3B86" />
-        <AssociationConnector Association="BaseModel.FK__WAYBILLMO__PERSO__314D4EA8" />
-        <AssociationConnector Association="BaseModel.FK_AACC_KAID" />
-        <AssociationConnector Association="BaseModel.FK_ADOC_KAID" />
-        <AssociationConnector Association="BaseModel.FK_AP_KAID" />
-        <AssociationConnector Association="BaseModel.FK_Kagent_KontragentGroup" />
-        <AssociationConnector Association="BaseModel.FK_Kagent_Routes" />
-        <AssociationConnector Association="BaseModel.FK_Routes_Kagent" />
-        <AssociationConnector Association="BaseModel.FK_TAXWB_REFERENCE_KAGENT" />
-        <AssociationConnector Association="BaseModel.FK_TECHPROCDET_KAGENT" />
-        <AssociationConnector Association="BaseModel.FK_WAYBILLMAKE_KAGENT" />
-        <AssociationConnector Association="BaseModel.FK_WBS_PERSONID" />
         <EntityTypeShape EntityType="BaseModel.UsersGroup" Width="1.5" PointX="21.375" PointY="3.25" />
         <EntityTypeShape EntityType="BaseModel.WaybillDet" Width="1.5" PointX="10.061178657254754" PointY="11.387986903725185" />
-        <EntityTypeShape EntityType="BaseModel.WaybillList" Width="1.5" PointX="8.9277246803640047" PointY="25.508288663583009" />
+        <EntityTypeShape EntityType="BaseModel.WaybillList" Width="1.5" PointX="23.125" PointY="29.25" />
         <AssociationConnector Association="BaseModel.FK_COMMISSION_WBILLID" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLD_REFERENCE_CURRENCY" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLL_FK_WBLIST_CURRENCY" />
         <AssociationConnector Association="BaseModel.FK_DEBONINGDET_WAYBILLLIST" />
         <AssociationConnector Association="BaseModel.FK_EXTREL_EXTPOSID" />
         <AssociationConnector Association="BaseModel.FK_EXTREL_INTPOSID" />
-        <AssociationConnector Association="BaseModel.FK__WAYBILLLI__PERSO__6E01572D" />
-        <AssociationConnector Association="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" />
-        <AssociationConnector Association="BaseModel.FK_WBL_ENTID" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP" />
         <AssociationConnector Association="BaseModel.FK_RETREL_DPOSID" />
@@ -207,7 +180,6 @@
         <AssociationConnector Association="BaseModel.FK_WBS_WBILLID" />
         <AssociationConnector Association="BaseModel.PosRel" />
         <EntityTypeShape EntityType="BaseModel.Users" Width="1.5" PointX="20" PointY="22" />
-        <AssociationConnector Association="BaseModel.FK_Kagent_Users" />
         <AssociationConnector Association="BaseModel.FK_OperLog_Users" />
         <AssociationConnector Association="BaseModel.FK_PRINTLOG_2" />
         <AssociationConnector Association="BaseModel.FK_USERACCESS_1" />
@@ -225,8 +197,6 @@
         <AssociationConnector Association="BaseModel.FK_PD_CASHID" />
         <AssociationConnector Association="BaseModel.FK__PAYDOC__CTYPEID__2334397B" />
         <AssociationConnector Association="BaseModel.FK__PAYDOC__CURRID__214BF109" />
-        <AssociationConnector Association="BaseModel.FK__PAYDOC__KAID__19AACF41" />
-        <AssociationConnector Association="BaseModel.FK__PAYDOC__MPERSONI__22401542" />
         <AssociationConnector Association="BaseModel.FK_PD_ACCID" />
         <AssociationConnector Association="BaseModel.FK__PAYDOC__PTYPEID__2057CCD0" />
         <EntityTypeShape EntityType="BaseModel.PriceList" Width="1.5" PointX="23.75" PointY="0.625" />
@@ -238,7 +208,6 @@
         <AssociationConnector Association="BaseModel.FK_PRICELISTDET_PRICELIST" />
         <EntityTypeShape EntityType="BaseModel.DocRels" Width="1.5" PointX="2.375" PointY="15.5" />
         <EntityTypeShape EntityType="BaseModel.DiscCards" Width="1.5" PointX="4.9849580828961724" PointY="17.977166675951874" />
-        <AssociationConnector Association="BaseModel.FK_DISCCARDS_KAID" />
         <AssociationConnector Association="BaseModel.FK_WBDAP_CARDID" />
         <EntityTypeShape EntityType="BaseModel.v_Docs" Width="1.5" PointX="3.2129388652802158" PointY="22.610328774252128" />
         <EntityTypeShape EntityType="BaseModel.DiscCardGrp" Width="1.5" PointX="0.5" PointY="14.75" />
@@ -246,23 +215,54 @@
         <EntityTypeShape EntityType="BaseModel.WayBillMakeProps" Width="1.5" PointX="0.12153765751120524" PointY="11.881177267004352" />
         <AssociationConnector Association="BaseModel.FK_WayBillMakeProps_Materials" />
         <AssociationConnector Association="BaseModel.FK_WayBillMakeProps_WaybillList" />
-        <AssociationConnector Association="BaseModel.FK_WayBillMakeProps_Kagent" />
         <EntityTypeShape EntityType="BaseModel.TechProcess" Width="1.5" PointX="2.6014108502312614" PointY="22.755673463808222" />
         <AssociationConnector Association="BaseModel.FK_MatRecipeTechProcDet_TechProcess" />
         <AssociationConnector Association="BaseModel.FK_TECHPROCDET_TECHPROCESS" />
         <EntityTypeShape EntityType="BaseModel.v_Actives" Width="1.5" PointX="1.8467574910478468" PointY="12.967575466710876" />
         <EntityTypeShape EntityType="BaseModel.v_WorkDate" Width="1.5" PointX="0.55420357573507517" PointY="30.3547968409745" />
         <EntityTypeShape EntityType="BaseModel.EnterpriseWorker" Width="1.5" PointX="25.5" PointY="15.25" />
+        <EntityTypeShape EntityType="BaseModel.Kagent" Width="1.5" PointX="0.82473224439878579" PointY="1.3537176555738402" />
+        <AssociationConnector Association="BaseModel.FK_COMMISSI_REFERENCE_KAGENT" />
+        <AssociationConnector Association="BaseModel.FK_COMMISSION_1" />
+        <AssociationConnector Association="BaseModel.FK_COMMISSION_2" />
+        <AssociationConnector Association="BaseModel.FK_COMMISSION_3" />
+        <AssociationConnector Association="BaseModel.FK_CONTRACT_REF_CONTR_KAGENT" />
+        <AssociationConnector Association="BaseModel.FK_CONTRACT_REFERENCE_KAGENT" />
+        <AssociationConnector Association="BaseModel.FK_Customers_Kagent" />
+        <AssociationConnector Association="BaseModel.FK_DISCCARDS_KAID" />
         <AssociationConnector Association="BaseModel.FK_EnterpriseWorker_Kagent" />
+        <AssociationConnector Association="BaseModel.FK_KAADDR_KAID" />
+        <AssociationConnector Association="BaseModel.FK_KADiscount_Kagent" />
+        <AssociationConnector Association="BaseModel.FK__KAMATDISCO__KAID__31B762FC" />
+        <AssociationConnector Association="BaseModel.FK__KAMATGROUP__KAID__3A4CA8FD" />
+        <AssociationConnector Association="BaseModel.FK__PAYDOC__KAID__19AACF41" />
+        <AssociationConnector Association="BaseModel.FK__PAYDOC__MPERSONI__22401542" />
+        <AssociationConnector Association="BaseModel.FK__TAXWB__PERSONID__019E3B86" />
+        <AssociationConnector Association="BaseModel.FK__WAYBILLLI__PERSO__6E01572D" />
+        <AssociationConnector Association="BaseModel.FK__WAYBILLMO__PERSO__314D4EA8" />
+        <AssociationConnector Association="BaseModel.FK_AACC_KAID" />
+        <AssociationConnector Association="BaseModel.FK_ADOC_KAID" />
+        <AssociationConnector Association="BaseModel.FK_AP_KAID" />
+        <AssociationConnector Association="BaseModel.FK_Kagent_KontragentGroup" />
+        <AssociationConnector Association="BaseModel.FK_Kagent_Routes" />
+        <AssociationConnector Association="BaseModel.FK_Kagent_Users" />
+        <AssociationConnector Association="BaseModel.FK_Routes_Kagent" />
+        <AssociationConnector Association="BaseModel.FK_TAXWB_REFERENCE_KAGENT" />
+        <AssociationConnector Association="BaseModel.FK_TECHPROCDET_KAGENT" />
+        <AssociationConnector Association="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" />
+        <AssociationConnector Association="BaseModel.FK_WAYBILLMAKE_KAGENT" />
+        <AssociationConnector Association="BaseModel.FK_WayBillMakeProps_Kagent" />
+        <AssociationConnector Association="BaseModel.FK_WBL_ENTID" />
+        <AssociationConnector Association="BaseModel.FK_WBS_PERSONID" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
-        <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="7.0245045325832924" PointY="12.641712000892364" />
-        <EntityTypeShape EntityType="BaseModel.v_TechProcDet" Width="1.5" PointX="4.9644700516781164" PointY="21.376737246930944" />
-        <EntityTypeShape EntityType="BaseModel.KagentList" Width="1.5" PointX="4.75" PointY="2.125" />
+        <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.625" PointY="4.375" />
+        <EntityTypeShape EntityType="BaseModel.v_TechProcDet" Width="1.5" PointX="3" PointY="3.25" />
         <EntityTypeShape EntityType="BaseModel.MaterialsList" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="BaseModel.v_WaybillList" Width="1.5" PointX="6.2854081533315629" PointY="21.536445776716082" />
-        <EntityTypeShape EntityType="BaseModel.v_PayDoc" Width="1.5" PointX="11.295474014848224" PointY="18.886290410014936" />
-        <EntityTypeShape EntityType="BaseModel.v_DiscCards" Width="1.5" PointX="5.5806655853896707" PointY="9.95432654486705" />
+        <EntityTypeShape EntityType="BaseModel.v_WaybillList" Width="1.5" PointX="8.625" PointY="0.5" />
+        <EntityTypeShape EntityType="BaseModel.v_PayDoc" Width="1.5" PointX="5.625" PointY="0.625" />
+        <EntityTypeShape EntityType="BaseModel.v_DiscCards" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="BaseModel.KagentList" Width="1.5" PointX="4.3931778931958494" PointY="19.848859840933635" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

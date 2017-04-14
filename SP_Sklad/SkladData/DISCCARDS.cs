@@ -30,8 +30,8 @@ namespace SP_Sklad.SkladData
         public int Deleted { get; set; }
         public Nullable<decimal> StartSaldo { get; set; }
     
-        public virtual Kagent Kagent { get; set; }
         public virtual ICollection<WayBillDetAddProps> WayBillDetAddProps { get; set; }
         public virtual DiscCardGrp DiscCardGrp { get; set; }
+        public virtual Kagent Kagent { get; set; }
     }
 }

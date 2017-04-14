@@ -80,7 +80,7 @@ namespace SP_Sklad
 
         private void mainForm_Shown(object sender, EventArgs e)
         {
-            var enterprise = new BaseEntities().Kagent.Where(w => w.KType == 3).Select(s => new { s.KaId }).FirstOrDefault();
+            var enterprise = DBHelper.EnterpriseList.FirstOrDefault();// new BaseEntities().Kagent.Where(w => w.KType == 3).Select(s => new { s.KaId }).FirstOrDefault();
             if ((barEditItem3.EditValue == null || barEditItem3.EditValue == DBNull.Value))
             {
                 if (enterprise != null)

@@ -158,6 +158,15 @@ namespace SP_Sklad.EditForm
                     checkedComboBoxEdit1.Properties.Items.Add(item.KaId, item.Name, item.IsWork ? CheckState.Checked : CheckState.Unchecked, true);
                 }
 
+            /*    _db.Kagent.Where(w => w.KType == 3 && w.Deleted == 0 && (w.Archived == null || w.Archived == 0)).Select(s => new
+                {
+                    KaId = s.KaId,
+                    Name = s.Name,
+                    IsOwned = s.EnterpriseKagent.Any(a => a.KaId == _ka_id)
+
+                }).ToList().ForEach(f => checkedComboBoxEdit2.Properties.Items.Add(f.KaId, f.Name, f.IsOwned ? CheckState.Checked : CheckState.Unchecked, true));*/
+
+
                 GetAccounts();
                 GetPersons();
                 GetDiscountList();
@@ -783,6 +792,21 @@ namespace SP_Sklad.EditForm
             }
            
         }
+/*
+        private void checkedComboBoxEdit2_EditValueChanged(object sender, EventArgs e)
+        {
+            if (checkedComboBoxEdit2.ContainsFocus)
+            {
+                _db.EnterpriseKagent.RemoveRange(_db.EnterpriseKagent.Where(w => w.KaId == _ka_id));
+
+                foreach (var item in checkedComboBoxEdit2.Properties.Items.Where(w => w.CheckState == CheckState.Checked))
+                {
+                    _db.EnterpriseKagent.Add(new EnterpriseKagent { EnterpriseId = (int)item.Value, KaId = _ka_id.Value });
+                }
+
+                _db.SaveChanges();
+            }
+        }*/
 
     }
 }

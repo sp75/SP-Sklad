@@ -37,7 +37,7 @@ namespace SP_Sklad
             wTypeList.Properties.DataSource = new List<object>() { new { Id = 0, Name = "Усі" } }.Concat(new BaseEntities().DocType.Where(w => w.Id == 16 || w.Id == -16).Select(s => new { s.Id, s.Name })).ToList();
             wTypeList.EditValue = _w_type;
 
-            KagentComboBox.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(new BaseEntities().Kagent.Where(w => w.Archived == null || w.Archived == 0).Select(s => new { s.KaId, s.Name }));
+            KagentComboBox.Properties.DataSource = DBHelper.KagentsList;// new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(new BaseEntities().Kagent.Where(w => w.Archived == null || w.Archived == 0).Select(s => new { s.KaId, s.Name }));
             KagentComboBox.EditValue = _ka_id;
 
             MatComboBox.Properties.DataSource = new List<object>() { new { MatId = 0, Name = "Усі" } }.Concat(new BaseEntities().Materials.Where(w => w.Deleted == 0).Select(s => new { s.MatId, s.Name }).ToList());

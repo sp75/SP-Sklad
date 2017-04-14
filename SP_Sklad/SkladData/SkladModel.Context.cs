@@ -75,7 +75,6 @@ namespace SP_Sklad.SkladData
         public DbSet<DeboningDet> DeboningDet { get; set; }
         public DbSet<Countries> Countries { get; set; }
         public DbSet<Materials> Materials { get; set; }
-        public DbSet<KagentList> KagentList { get; set; }
         public DbSet<KAgentTyp> KAgentTyp { get; set; }
         public DbSet<KAKInd> KAKInd { get; set; }
         public DbSet<KAgentAccount> KAgentAccount { get; set; }
@@ -122,7 +121,6 @@ namespace SP_Sklad.SkladData
         public DbSet<Routes> Routes { get; set; }
         public DbSet<Jobs> Jobs { get; set; }
         public DbSet<RepLng> RepLng { get; set; }
-        public DbSet<Kagent> Kagent { get; set; }
         public DbSet<KontragentGroup> KontragentGroup { get; set; }
         public DbSet<UsersGroup> UsersGroup { get; set; }
         public DbSet<WaybillDet> WaybillDet { get; set; }
@@ -147,6 +145,8 @@ namespace SP_Sklad.SkladData
         public DbSet<v_Actives> v_Actives { get; set; }
         public DbSet<v_WorkDate> v_WorkDate { get; set; }
         public DbSet<EnterpriseWorker> EnterpriseWorker { get; set; }
+        public DbSet<Kagent> Kagent { get; set; }
+        public DbSet<KagentList> KagentList { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)

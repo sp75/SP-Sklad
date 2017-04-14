@@ -200,7 +200,7 @@ namespace SP_Sklad.WBForm
 
         private void KagentComboBox_EditValueChanged(object sender, EventArgs e)
         {
-            var row = (KagentList)KagentComboBox.GetSelectedDataRow();
+            var row = KagentComboBox.GetSelectedDataRow() as dynamic;
             if (row == null)
             {
                 return;

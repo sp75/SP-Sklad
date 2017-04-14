@@ -43,9 +43,9 @@ namespace SP_Sklad.SkladData
         public virtual CashDesks CashDesks { get; set; }
         public virtual ChargeType ChargeType { get; set; }
         public virtual Currency Currency { get; set; }
-        public virtual Kagent Kagent { get; set; }
-        public virtual Kagent Kagent1 { get; set; }
         public virtual KAgentAccount KAgentAccount { get; set; }
         public virtual PayType PayType { get; set; }
+        public virtual Kagent Kagent { get; set; }
+        public virtual Kagent Kagent1 { get; set; }
     }
 }

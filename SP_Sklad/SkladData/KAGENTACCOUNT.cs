@@ -30,7 +30,7 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<MoneySaldo> MoneySaldo { get; set; }
         public virtual AccountType AccountType { get; set; }
         public virtual Banks Banks { get; set; }
-        public virtual Kagent Kagent { get; set; }
         public virtual ICollection<PayDoc> PayDoc { get; set; }
+        public virtual Kagent Kagent { get; set; }
     }
 }

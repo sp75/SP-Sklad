@@ -149,7 +149,7 @@
             this.gridColumn28 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.AvgMatPriceGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn73 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ArchivedGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit8 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridColumn78 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -1590,7 +1590,7 @@
             this.gridColumn28,
             this.AvgMatPriceGridColumn,
             this.gridColumn23,
-            this.gridColumn73,
+            this.ArchivedGridColumn,
             this.gridColumn78});
             this.MatGridView.GridControl = this.MatGridControl;
             this.MatGridView.Name = "MatGridView";
@@ -1676,14 +1676,12 @@
             this.gridColumn23.VisibleIndex = 7;
             this.gridColumn23.Width = 80;
             // 
-            // gridColumn73
+            // ArchivedGridColumn
             // 
-            this.gridColumn73.Caption = "В архіві";
-            this.gridColumn73.ColumnEdit = this.repositoryItemCheckEdit8;
-            this.gridColumn73.FieldName = "Archived";
-            this.gridColumn73.Name = "gridColumn73";
-            this.gridColumn73.Visible = true;
-            this.gridColumn73.VisibleIndex = 8;
+            this.ArchivedGridColumn.Caption = "В архіві";
+            this.ArchivedGridColumn.ColumnEdit = this.repositoryItemCheckEdit8;
+            this.ArchivedGridColumn.FieldName = "Archived";
+            this.ArchivedGridColumn.Name = "ArchivedGridColumn";
             // 
             // repositoryItemCheckEdit8
             // 
@@ -3657,7 +3655,7 @@
         private DevExpress.XtraBars.BarCheckItem barCheckItem1;
         private DevExpress.XtraGrid.Columns.GridColumn KagentGridColumnArchived;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit7;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn73;
+        private DevExpress.XtraGrid.Columns.GridColumn ArchivedGridColumn;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit8;
         private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl8;

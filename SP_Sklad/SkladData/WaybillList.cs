@@ -56,9 +56,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<Commission> Commission { get; set; }
         public virtual Currency Currency { get; set; }
         public virtual ICollection<DeboningDet> DeboningDet { get; set; }
-        public virtual Kagent Person { get; set; }
-        public virtual Kagent Kontragent { get; set; }
-        public virtual Kagent Enterprise { get; set; }
         public virtual ICollection<TechProcDet> TechProcDet { get; set; }
         public virtual ICollection<WaybillDet> WaybillDet { get; set; }
         public virtual ICollection<WayBillDetAddProps> WayBillDetAddProps { get; set; }
@@ -66,5 +63,8 @@ namespace SP_Sklad.SkladData
         public virtual WaybillMove WaybillMove { get; set; }
         public virtual ICollection<WayBillSvc> WayBillSvc { get; set; }
         public virtual ICollection<WayBillMakeProps> WayBillMakeProps { get; set; }
+        public virtual Kagent Kagent { get; set; }
+        public virtual Kagent Kontragent { get; set; }
+        public virtual Kagent Kagent2 { get; set; }
     }
 }

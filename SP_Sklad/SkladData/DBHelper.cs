@@ -116,18 +116,45 @@ namespace SP_Sklad.SkladData
             {
                 if (_kagents == null)
                 {
-                    _kagents = new BaseEntities().KagentList.ToList();
+                    //_kagents = new BaseEntities().KagentList.ToList();
+                    using (var _db = DB.SkladBase())
+                    {
+                        var ent = DBHelper.EnterpriseList.ToList().Select(s => (int?)s.KaId);
+                        _kagents = (from k in _db.KagentList
+                                    join ew in _db.EnterpriseWorker on k.KaId equals ew.WorkerId into gj
+                                    from subfg in gj.DefaultIfEmpty()
+                                    where (subfg.EnterpriseId == null || ent.Contains(subfg.EnterpriseId)) && (k.Archived == 0 || k.Archived == null) && k.Deleted == 0
+                                    select k
+                                 ).Distinct().ToList();
+                    }
                 }
                 return _kagents;
             }
         }
+
+        public static IEnumerable<object> KagentsList
+        {
+            get
+            {
+                return new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(Kagents.Select(s => new
+                {
+                    s.KaId,
+                    s.Name
+                }));
+            }
+        }
+
         public static List<PersonList> Persons
         {
             get
             {
                 if (_persons == null)
                 {
-                    _persons = new BaseEntities().Kagent.Where(w => w.KType == 2 && w.Deleted == 0 && (w.Archived == null || w.Archived == 0)).Select(s => new PersonList() { KaId = s.KaId, Name = s.Name }).ToList();
+                    _persons = Kagents.Where(w => w.KType == 2).Select(s => new PersonList
+                    {
+                        KaId = s.KaId,
+                        Name = s.Name
+                    }).ToList();
                 }
                 return _persons;
             }
@@ -161,7 +188,12 @@ namespace SP_Sklad.SkladData
             {
                 if (_enterprise == null)
                 {
-                    _enterprise = new BaseEntities().Kagent.Where(w => w.KType == 3 && w.KaId == mainForm.enterprise_id).Select(s => new Enterprise { KaId = s.KaId, Name = s.Name, NdsPayer = s.NdsPayer }).FirstOrDefault();
+                    _enterprise = new BaseEntities().Kagent.Where(w => w.KType == 3 && w.KaId == mainForm.enterprise_id).Select(s => new Enterprise
+                    {
+                        KaId = s.KaId,
+                        Name = s.Name,
+                        NdsPayer = s.NdsPayer
+                    }).FirstOrDefault();
                 }
                 return _enterprise;
             }

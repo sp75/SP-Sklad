@@ -145,7 +145,7 @@ namespace SP_Sklad.Reports
                     return;
                 }
 
-                var kagents = db.Kagent.Where(w => w.Deleted == 0 && (w.KaId == kid || kid == 0)).Select(s => new { s.KaId, s.Name }).ToList();
+                var kagents = DBHelper.Kagents.Where(w =>  w.KaId == kid || kid == 0).Select(s => new { s.KaId, s.Name }).ToList();
 
                 rel.Add(new
                 {
@@ -220,7 +220,7 @@ namespace SP_Sklad.Reports
                     return;
                 }
 
-                var kagents = db.Kagent.Where(w => w.Deleted == 0 && (w.KaId == kid || kid == 0)).Select(s => new { s.KaId, s.Name }).ToList();
+                var kagents = DBHelper.Kagents.Where(w => w.KaId == kid || kid == 0).Select(s => new { s.KaId, s.Name }).ToList();
 
                 rel.Add(new
                 {

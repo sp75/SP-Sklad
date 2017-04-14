@@ -402,6 +402,9 @@
     <Compile Include="SkladData\Kagent.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\KagentList.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\KontragentGroup.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -900,9 +903,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\KAgentDoc.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\KagentList.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\KAgentPersons.cs">

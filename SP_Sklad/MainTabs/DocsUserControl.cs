@@ -67,7 +67,7 @@ namespace SP_Sklad.MainTabs
             {
                 _db = new BaseEntities();
 
-                wbKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
+                wbKagentList.Properties.DataSource = DBHelper.KagentsList;//new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
                 wbKagentList.EditValue = 0;
 
                 wbStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
@@ -79,7 +79,7 @@ namespace SP_Sklad.MainTabs
                 PDStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
                 PDEndDate.EditValue = DateTime.Now.Date.AddHours(23).AddMinutes(59).AddSeconds(59);
 
-                PDKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
+                PDKagentList.Properties.DataSource = DBHelper.KagentsList;// new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
                 PDKagentList.EditValue = 0;
 
                 PDSatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };

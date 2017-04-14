@@ -67,7 +67,7 @@ namespace SP_Sklad.MainTabs
                 whContentTab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
                 OnDateEdit.DateTime = DateTime.Now;
 
-                whKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(new BaseEntities().Kagent.Select(s => new { s.KaId, s.Name }));
+                whKagentList.Properties.DataSource = DBHelper.KagentsList;// new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(new BaseEntities().Kagent.Select(s => new { s.KaId, s.Name }));
                 if (whKagentList.EditValue == null || whKagentList.EditValue == DBNull.Value)
                 {
                     whKagentList.EditValue = 0;

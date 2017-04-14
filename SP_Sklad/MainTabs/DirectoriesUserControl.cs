@@ -32,9 +32,9 @@ namespace SP_Sklad.MainTabs
             get { return MatGridView.GetFocusedRow() as GetMatList_Result; }
         }
 
-        private KagentList focused_kagent
+        private dynamic focused_kagent
         {
-            get { return KaGridView.GetFocusedRow() as KagentList; }
+            get { return KaGridView.GetFocusedRow() as dynamic; }
         }
 
         public class PriceTypesView
@@ -101,9 +101,38 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType)
             {
                 case 1:
-                    //  KAgent->ParamByName("WDATE")->Value = frmMain->WorkDateEdit->Date;
-                    var ka = DB.SkladBase().KagentList.AsNoTracking().AsEnumerable();
-                    if (focused_tree_node.Id != 10) ka = ka.Where(w => w.KType == focused_tree_node.GrpId);
+                    var ent = DBHelper.EnterpriseList.ToList().Select(s => (int?)s.KaId);
+                    //        var ka = DB.SkladBase().KagentList.AsEnumerable();
+
+                /*    var ka = _db.KagentList.GroupJoin(_db.EnterpriseWorker, k => k.KaId, d => d.WorkerId, (k, d) => new { k, d = d.DefaultIfEmpty() })
+                        .SelectMany(k => k.d.Select(w => new { k, EnterpriseId = (int?)w.EnterpriseId }))
+                        .Where(r => r.EnterpriseId == null || ent.Contains(r.EnterpriseId) )
+                        .Select(r => new
+                        {
+                            KaId = r.k.k.KaId,
+                            Name = r.k.k.Name,
+                            FullName = r.k.k.FullName,
+                            KType = r.k.k.KType,
+                            Archived = r.k.k.Archived,
+                            GroupName = r.k.k.GroupName,
+                            KAgentKind = r.k.k.KAgentKind,
+                            KAU = r.k.k.KAU,
+                            Saldo = r.k.k.Saldo
+                        }).Distinct();*/
+                    var ka = (from k in _db.KagentList
+                              join ew in _db.EnterpriseWorker on k.KaId equals ew.WorkerId into gj
+                              from subfg in gj.DefaultIfEmpty()
+                              where subfg.EnterpriseId == null || ent.Contains(subfg.EnterpriseId)
+                              select k 
+                              ).Distinct();
+
+
+
+                    if (focused_tree_node.Id != 10)
+                    {
+                        ka = ka.Where(w => w.KType == focused_tree_node.GrpId);
+                    }
+
                     if (_ka_archived == 0)
                     {
                         ka = ka.Where(w => w.Archived == 0 || w.Archived == null);
@@ -251,8 +280,7 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType)
             {
                 case 1:
-                    var ka = KaGridView.GetFocusedRow() as KagentList;
-                    result = new frmKAgentEdit(null, ka.KaId).ShowDialog();
+                    result = new frmKAgentEdit(null, focused_kagent.KaId).ShowDialog();
                     break;
 
                 case 2:
@@ -435,9 +463,9 @@ namespace SP_Sklad.MainTabs
                 switch (focused_tree_node.GType)
                 {
                     case 1:
-                        var ka = KaGridView.GetFocusedRow() as KagentList;
+                        int KaId = focused_kagent.KaId;
 
-                        var item = db.Kagent.Find(ka.KaId);
+                        var item = db.Kagent.Find(KaId);
                         if (item != null)
                         {
                             item.Deleted = 1;
@@ -635,9 +663,7 @@ namespace SP_Sklad.MainTabs
 
         private void KagentBalansBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var ka = KaGridView.GetFocusedRow() as KagentList;
-
-            IHelper.ShowKABalans(ka.KaId);
+            IHelper.ShowKABalans(focused_kagent.KaId);
         }
 
         private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -653,9 +679,7 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = KaGridView.GetFocusedRow() as KagentList;
-
-            IHelper.ShowOrdered(dr.KaId, 0, 0);
+            IHelper.ShowOrdered(focused_kagent.KaId, 0, 0);
         }
 
 
@@ -757,6 +781,7 @@ namespace SP_Sklad.MainTabs
         private void barCheckItem1_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             _mat_archived = showMatArhivedBtn.Checked ? 1 : 0;
+            ArchivedGridColumn.Visible = showMatArhivedBtn.Checked;
 
             RefrechItemBtn.PerformClick();
         }

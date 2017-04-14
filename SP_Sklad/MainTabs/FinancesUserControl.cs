@@ -43,7 +43,7 @@ namespace SP_Sklad.MainTabs
                 using (var _db = new BaseEntities())
                 {
 
-                    TurnKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name })).ToList();
+                    TurnKagentList.Properties.DataSource = DBHelper.KagentsList;// new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name })).ToList();
                     TurnKagentList.EditValue = 0;
 
                     CurrensyList.Properties.DataSource = new List<object>() { new { Id = 0, Name = "Усі" } }.Concat(_db.Currency.Select(s => new { Id = s.CurrId, Name = s.ShortName })).ToList();

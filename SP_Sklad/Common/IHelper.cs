@@ -297,7 +297,7 @@ namespace SP_Sklad.Common
                         f.Text = "Контрагенти";
                         if (f.ShowDialog() == DialogResult.OK)
                         {
-                            old_id = (f.uc.KaGridView.GetFocusedRow() as KagentList).KaId;
+                            old_id = (f.uc.KaGridView.GetFocusedRow() as dynamic).KaId;
                         }
                     }
 
@@ -323,7 +323,7 @@ namespace SP_Sklad.Common
                         f.Text = "Службовці";
                         if (f.ShowDialog() == DialogResult.OK)
                         {
-                            old_id = (f.uc.KaGridView.GetFocusedRow() as KagentList).KaId;
+                            old_id = (f.uc.KaGridView.GetFocusedRow() as dynamic).KaId;
                         }
                     }
                     break;
