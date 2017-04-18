@@ -77,7 +77,6 @@
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
-            this.checkedComboBoxEdit1 = new DevExpress.XtraEditors.CheckedComboBoxEdit();
             this.lookUpEdit3 = new DevExpress.XtraEditors.LookUpEdit();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.UsersLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
@@ -107,6 +106,7 @@
             this.textEdit16 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.checkedComboBoxEdit1 = new DevExpress.XtraEditors.CheckedComboBoxEdit();
             this.labelControl61 = new DevExpress.XtraEditors.LabelControl();
             this.KaGroupLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl55 = new DevExpress.XtraEditors.LabelControl();
@@ -320,7 +320,6 @@
             this.xtraTabPage10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UsersLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).BeginInit();
@@ -342,6 +341,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit16.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KaGroupLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KaKindLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KTypeLookUpEdit.Properties)).BeginInit();
@@ -984,19 +984,6 @@
             this.panelControl4.Size = new System.Drawing.Size(678, 204);
             this.panelControl4.TabIndex = 43;
             // 
-            // checkedComboBoxEdit1
-            // 
-            this.checkedComboBoxEdit1.EditValue = "";
-            this.checkedComboBoxEdit1.Location = new System.Drawing.Point(344, 88);
-            this.checkedComboBoxEdit1.MenuManager = this.barManager1;
-            this.checkedComboBoxEdit1.Name = "checkedComboBoxEdit1";
-            this.checkedComboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.checkedComboBoxEdit1.Size = new System.Drawing.Size(244, 22);
-            this.checkedComboBoxEdit1.StyleController = this.styleController1;
-            this.checkedComboBoxEdit1.TabIndex = 48;
-            this.checkedComboBoxEdit1.EditValueChanged += new System.EventHandler(this.checkedComboBoxEdit1_EditValueChanged);
-            // 
             // lookUpEdit3
             // 
             this.lookUpEdit3.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "JobType", true));
@@ -1328,14 +1315,27 @@
             this.panelControl1.Size = new System.Drawing.Size(678, 121);
             this.panelControl1.TabIndex = 41;
             // 
+            // checkedComboBoxEdit1
+            // 
+            this.checkedComboBoxEdit1.EditValue = "";
+            this.checkedComboBoxEdit1.Location = new System.Drawing.Point(344, 88);
+            this.checkedComboBoxEdit1.MenuManager = this.barManager1;
+            this.checkedComboBoxEdit1.Name = "checkedComboBoxEdit1";
+            this.checkedComboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.checkedComboBoxEdit1.Size = new System.Drawing.Size(244, 22);
+            this.checkedComboBoxEdit1.StyleController = this.styleController1;
+            this.checkedComboBoxEdit1.TabIndex = 48;
+            this.checkedComboBoxEdit1.EditValueChanged += new System.EventHandler(this.checkedComboBoxEdit1_EditValueChanged);
+            // 
             // labelControl61
             // 
             this.labelControl61.Location = new System.Drawing.Point(344, 66);
             this.labelControl61.Name = "labelControl61";
-            this.labelControl61.Size = new System.Drawing.Size(169, 16);
+            this.labelControl61.Size = new System.Drawing.Size(79, 16);
             this.labelControl61.StyleController = this.styleController1;
             this.labelControl61.TabIndex = 43;
-            this.labelControl61.Text = "Співпрацює з підприємством";
+            this.labelControl61.Text = "Підприємство";
             // 
             // KaGroupLookUpEdit
             // 
@@ -3333,7 +3333,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
             this.panelControl4.ResumeLayout(false);
             this.panelControl4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UsersLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).EndInit();
@@ -3358,6 +3357,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KaGroupLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KaKindLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KTypeLookUpEdit.Properties)).EndInit();

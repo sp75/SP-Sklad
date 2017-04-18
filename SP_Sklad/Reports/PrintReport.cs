@@ -498,7 +498,8 @@ namespace SP_Sklad.Reports
                 {
                     SummIn = s.Sum(r => r.SummIn),
                     SummOut = s.Sum(r => r.SummOut),
-                    Income = s.Sum(r => r.Income)
+                    Income = s.Sum(r => r.Income),
+                    Rentabelnist = s.Average(a => (a.SummOut - a.SummIn - a.Income) > 0 && a.Income > 0 ? a.Income / (a.SummOut - a.SummIn - a.Income) : 0)
                 }).ToList());
 
                 IHelper.Print(data_for_report, TemlateList.rep_13);
