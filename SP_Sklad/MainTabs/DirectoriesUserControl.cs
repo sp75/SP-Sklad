@@ -101,6 +101,9 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType)
             {
                 case 1:
+
+                    LoginGridColumn.Visible = focused_tree_node.GrpId == 2;
+
                     var ent = DBHelper.EnterpriseList.ToList().Select(s => (int?)s.KaId);
                     //        var ka = DB.SkladBase().KagentList.AsEnumerable();
 

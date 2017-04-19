@@ -504,6 +504,9 @@
     <Compile Include="SkladData\v_PriceTypes.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_Users.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_WaybillList.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1564,6 +1567,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PriceList.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Services.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_TechProcDet.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Users.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Warehouse.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WaybillDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WayBillDetAddProps.datasource" />

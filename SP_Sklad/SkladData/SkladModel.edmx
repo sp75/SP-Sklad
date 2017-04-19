@@ -160,7 +160,10 @@
       [KagentList].[ContractDate] AS [ContractDate], 
       [KagentList].[ContractNum] AS [ContractNum], 
       [KagentList].[Saldo] AS [Saldo], 
-      [KagentList].[GroupName] AS [GroupName]
+      [KagentList].[GroupName] AS [GroupName], 
+      [KagentList].[GroupId] AS [GroupId], 
+      [KagentList].[Login] AS [Login], 
+      [KagentList].[UserName] AS [UserName]
       FROM [dbo].[KagentList] AS [KagentList]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="MaterialsList" EntityType="BaseModel.Store.MaterialsList" store:Type="Views" store:Schema="dbo" store:Name="MaterialsList">
@@ -393,6 +396,24 @@
       [v_TechProcDet].[TareWeight] AS [TareWeight], 
       [v_TechProcDet].[Kod] AS [Kod]
       FROM [dbo].[v_TechProcDet] AS [v_TechProcDet]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_Users" EntityType="BaseModel.Store.v_Users" store:Type="Views" store:Schema="dbo" store:Name="v_Users">
+            <DefiningQuery>SELECT 
+      [v_Users].[UserId] AS [UserId], 
+      [v_Users].[Name] AS [Name], 
+      [v_Users].[Pass] AS [Pass], 
+      [v_Users].[FullName] AS [FullName], 
+      [v_Users].[SysName] AS [SysName], 
+      [v_Users].[ShowBalance] AS [ShowBalance], 
+      [v_Users].[ShowPrice] AS [ShowPrice], 
+      [v_Users].[EnableEditDate] AS [EnableEditDate], 
+      [v_Users].[LastLogin] AS [LastLogin], 
+      [v_Users].[IsOnline] AS [IsOnline], 
+      [v_Users].[ReportFormat] AS [ReportFormat], 
+      [v_Users].[GroupId] AS [GroupId], 
+      [v_Users].[InternalEditor] AS [InternalEditor], 
+      [v_Users].[EmployeeName] AS [EmployeeName]
+      FROM [dbo].[v_Users] AS [v_Users]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_WaybillList" EntityType="BaseModel.Store.v_WaybillList" store:Type="Views" store:Schema="dbo" store:Name="v_WaybillList">
             <DefiningQuery>SELECT 
@@ -2292,6 +2313,9 @@
           <Property Name="ContractNum" Type="nvarchar" MaxLength="20" />
           <Property Name="Saldo" Type="numeric" Precision="38" Scale="2" />
           <Property Name="GroupName" Type="nvarchar" MaxLength="50" />
+          <Property Name="GroupId" Type="uniqueidentifier" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="128" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'sp_base.dbo.MaterialsList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -2628,6 +2652,30 @@
           <Property Name="OutNetto" Type="numeric" Precision="38" Scale="8" />
           <Property Name="TareWeight" Type="numeric" Precision="15" Scale="4" />
           <Property Name="Kod" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'sp_base.dbo.v_Users' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="v_Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="SysName" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Pass" Type="nvarchar" MaxLength="50" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="128" />
+          <Property Name="SysName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ShowBalance" Type="int" />
+          <Property Name="ShowPrice" Type="int" />
+          <Property Name="EnableEditDate" Type="int" />
+          <Property Name="LastLogin" Type="datetime" />
+          <Property Name="IsOnline" Type="bit" />
+          <Property Name="ReportFormat" Type="nvarchar" MaxLength="10" />
+          <Property Name="GroupId" Type="uniqueidentifier" />
+          <Property Name="InternalEditor" Type="bit" />
+          <Property Name="EmployeeName" Type="nvarchar" MaxLength="64" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -7341,6 +7389,7 @@
             <End Role="WayBillSvc" EntitySet="WayBillSvc" />
           </AssociationSet>
           <EntitySet Name="KagentList" EntityType="BaseModel.KagentList" />
+          <EntitySet Name="v_Users" EntityType="BaseModel.v_Users" />
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -12300,6 +12349,30 @@
           <Property Type="String" Name="ContractNum" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Type="Decimal" Name="Saldo" Precision="38" Scale="2" />
           <Property Type="String" Name="GroupName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="GroupId" />
+          <Property Type="String" Name="Login" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UserName" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="v_Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="SysName" />
+          </Key>
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Pass" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FullName" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SysName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ShowBalance" />
+          <Property Type="Int32" Name="ShowPrice" />
+          <Property Type="Int32" Name="EnableEditDate" />
+          <Property Type="DateTime" Name="LastLogin" Precision="3" />
+          <Property Type="Boolean" Name="IsOnline" />
+          <Property Type="String" Name="ReportFormat" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="GroupId" />
+          <Property Type="Boolean" Name="InternalEditor" />
+          <Property Type="String" Name="EmployeeName" MaxLength="64" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -15553,6 +15626,9 @@
           <EntitySetMapping Name="KagentList">
             <EntityTypeMapping TypeName="BaseModel.KagentList">
               <MappingFragment StoreEntitySet="KagentList">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
                 <ScalarProperty Name="GroupName" ColumnName="GroupName" />
                 <ScalarProperty Name="Saldo" ColumnName="Saldo" />
                 <ScalarProperty Name="ContractNum" ColumnName="ContractNum" />
@@ -15594,6 +15670,26 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="KAU" ColumnName="KAU" />
                 <ScalarProperty Name="KaId" ColumnName="KaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_Users">
+            <EntityTypeMapping TypeName="BaseModel.v_Users">
+              <MappingFragment StoreEntitySet="v_Users">
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="InternalEditor" ColumnName="InternalEditor" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="ReportFormat" ColumnName="ReportFormat" />
+                <ScalarProperty Name="IsOnline" ColumnName="IsOnline" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+                <ScalarProperty Name="EnableEditDate" ColumnName="EnableEditDate" />
+                <ScalarProperty Name="ShowPrice" ColumnName="ShowPrice" />
+                <ScalarProperty Name="ShowBalance" ColumnName="ShowBalance" />
+                <ScalarProperty Name="SysName" ColumnName="SysName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

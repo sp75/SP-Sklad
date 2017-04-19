@@ -100,6 +100,7 @@
             this.repositoryItemCheckEdit7 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.LoginGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
@@ -1145,7 +1146,8 @@
             this.KagentSaldoGridColumn,
             this.KagentGridColumnArchived,
             this.gridColumn10,
-            this.gridColumn11});
+            this.gridColumn11,
+            this.LoginGridColumn});
             this.KaGridView.GridControl = this.KaGridControl;
             this.KaGridView.Name = "KaGridView";
             this.KaGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -1201,7 +1203,7 @@
             this.KagentSaldoGridColumn.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Saldo", "Всього: {0:0.00}")});
             this.KagentSaldoGridColumn.Visible = true;
-            this.KagentSaldoGridColumn.VisibleIndex = 5;
+            this.KagentSaldoGridColumn.VisibleIndex = 6;
             this.KagentSaldoGridColumn.Width = 100;
             // 
             // KagentGridColumnArchived
@@ -1235,6 +1237,14 @@
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 2;
+            // 
+            // LoginGridColumn
+            // 
+            this.LoginGridColumn.Caption = "Користувач";
+            this.LoginGridColumn.FieldName = "Login";
+            this.LoginGridColumn.Name = "LoginGridColumn";
+            this.LoginGridColumn.Visible = true;
+            this.LoginGridColumn.VisibleIndex = 5;
             // 
             // xtraTabControl2
             // 
@@ -3722,5 +3732,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn77;
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn78;
+        private DevExpress.XtraGrid.Columns.GridColumn LoginGridColumn;
     }
 }

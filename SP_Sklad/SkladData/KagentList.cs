@@ -55,5 +55,8 @@ namespace SP_Sklad.SkladData
         public string ContractNum { get; set; }
         public Nullable<decimal> Saldo { get; set; }
         public string GroupName { get; set; }
+        public Nullable<System.Guid> GroupId { get; set; }
+        public string Login { get; set; }
+        public string UserName { get; set; }
     }
 }

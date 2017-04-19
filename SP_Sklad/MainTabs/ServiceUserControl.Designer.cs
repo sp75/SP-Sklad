@@ -164,6 +164,7 @@
             this.OperLogPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.SessionPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.UsersDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -373,7 +374,7 @@
             // 
             // UsersDS
             // 
-            this.UsersDS.DataSource = typeof(SP_Sklad.SkladData.Users);
+            this.UsersDS.DataSource = typeof(SP_Sklad.SkladData.v_Users);
             // 
             // panelControl1
             // 
@@ -488,7 +489,8 @@
             this.UsersGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn24,
             this.gridColumn25,
-            this.gridColumn5});
+            this.gridColumn5,
+            this.gridColumn15});
             this.UsersGridView.GridControl = this.UsersGridControl;
             this.UsersGridView.Name = "UsersGridView";
             this.UsersGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -1684,6 +1686,15 @@
             this.SessionPopupMenu.Manager = this.barManager1;
             this.SessionPopupMenu.Name = "SessionPopupMenu";
             // 
+            // gridColumn15
+            // 
+            this.gridColumn15.Caption = "Службовець";
+            this.gridColumn15.FieldName = "EmployeeName";
+            this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.Visible = true;
+            this.gridColumn15.VisibleIndex = 3;
+            this.gridColumn15.Width = 219;
+            // 
             // ServiceUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1915,5 +1926,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
         private DevExpress.XtraBars.PopupMenu SessionPopupMenu;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
     }
 }

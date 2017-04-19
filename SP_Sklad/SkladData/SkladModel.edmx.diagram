@@ -256,13 +256,14 @@
         <AssociationConnector Association="BaseModel.FK_WBS_PERSONID" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
-        <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.625" PointY="4.375" />
-        <EntityTypeShape EntityType="BaseModel.v_TechProcDet" Width="1.5" PointX="3" PointY="3.25" />
+        <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />
+        <EntityTypeShape EntityType="BaseModel.v_TechProcDet" Width="1.5" PointX="2.75" PointY="3.25" />
         <EntityTypeShape EntityType="BaseModel.MaterialsList" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="BaseModel.v_WaybillList" Width="1.5" PointX="8.625" PointY="0.5" />
-        <EntityTypeShape EntityType="BaseModel.v_PayDoc" Width="1.5" PointX="5.625" PointY="0.625" />
-        <EntityTypeShape EntityType="BaseModel.v_DiscCards" Width="1.5" PointX="3" PointY="0.75" />
-        <EntityTypeShape EntityType="BaseModel.KagentList" Width="1.5" PointX="4.3931778931958494" PointY="19.848859840933635" />
+        <EntityTypeShape EntityType="BaseModel.v_WaybillList" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BaseModel.v_PayDoc" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BaseModel.v_DiscCards" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BaseModel.KagentList" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BaseModel.v_Users" Width="1.5" PointX="0.61618146887802594" PointY="0.65585337609790884" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

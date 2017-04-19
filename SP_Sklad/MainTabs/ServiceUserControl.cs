@@ -75,7 +75,7 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType)
             {
                 case 1:
-                    var u = UsersGridView.GetFocusedRow() as Users;
+                    var u = UsersGridView.GetFocusedRow() as v_Users;
                     new frmUserEdit(u.UserId).ShowDialog();
 
                     RefrechItemBtn.PerformClick();
@@ -121,7 +121,7 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType)
             {
                 case 1:
-                    UsersDS.DataSource = DB.SkladBase().Users.ToList();
+                    UsersDS.DataSource = DB.SkladBase().v_Users.ToList();
                     break;
 
                 case 2:
@@ -203,7 +203,7 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType)
             {
                 case 1:
-                    var u = UsersGridView.GetFocusedRow() as Users;
+                    var u = UsersGridView.GetFocusedRow() as v_Users;
                     using (var db = DB.SkladBase())
                     {
                         db.DeleteWhere<Users>(w => w.UserId == u.UserId);
