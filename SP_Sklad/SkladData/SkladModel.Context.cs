@@ -148,6 +148,7 @@ namespace SP_Sklad.SkladData
         public DbSet<Kagent> Kagent { get; set; }
         public DbSet<KagentList> KagentList { get; set; }
         public DbSet<v_Users> v_Users { get; set; }
+        public DbSet<ErrorLog> ErrorLog { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)

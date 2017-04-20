@@ -333,6 +333,9 @@
     <Compile Include="SkladData\EnterpriseWorker.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\ErrorLog.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\ExecuteWayBill_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>

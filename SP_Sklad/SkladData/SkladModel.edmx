@@ -30,6 +30,7 @@
           <EntitySet Name="DocType" EntityType="BaseModel.Store.DocType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="EnterpriseWorker" EntityType="BaseModel.Store.EnterpriseWorker" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ENTPARAMS" EntityType="BaseModel.Store.ENTPARAMS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ErrorLog" EntityType="BaseModel.Store.ErrorLog" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ExtRel" EntityType="BaseModel.Store.ExtRel" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Functions" EntityType="BaseModel.Store.Functions" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Jobs" EntityType="BaseModel.Store.Jobs" store:Type="Tables" Schema="dbo" />
@@ -1336,6 +1337,17 @@
           <Property Name="KPP" Type="varchar" MaxLength="32" />
           <Property Name="NDSPAYER" Type="int" Nullable="false" />
           <Property Name="FULLNAME" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OnDate" Type="datetime" />
+          <Property Name="Title" Type="nvarchar" MaxLength="250" />
+          <Property Name="Message" Type="nvarchar" MaxLength="500" />
+          <Property Name="StackTrace" Type="nvarchar(max)" />
+          <Property Name="UserId" Type="int" />
         </EntityType>
         <EntityType Name="ExtRel">
           <Key>
@@ -7390,6 +7402,7 @@
           </AssociationSet>
           <EntitySet Name="KagentList" EntityType="BaseModel.KagentList" />
           <EntitySet Name="v_Users" EntityType="BaseModel.v_Users" />
+          <EntitySet Name="ErrorLog" EntityType="BaseModel.ErrorLog" />
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -12374,6 +12387,17 @@
           <Property Type="Boolean" Name="InternalEditor" />
           <Property Type="String" Name="EmployeeName" MaxLength="64" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="OnDate" Precision="3" />
+          <Property Type="String" Name="Title" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Message" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StackTrace" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="UserId" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -15690,6 +15714,18 @@
                 <ScalarProperty Name="Pass" ColumnName="Pass" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ErrorLog">
+            <EntityTypeMapping TypeName="BaseModel.ErrorLog">
+              <MappingFragment StoreEntitySet="ErrorLog">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -254,6 +254,7 @@
         <AssociationConnector Association="BaseModel.FK_WayBillMakeProps_Kagent" />
         <AssociationConnector Association="BaseModel.FK_WBL_ENTID" />
         <AssociationConnector Association="BaseModel.FK_WBS_PERSONID" />
+        <EntityTypeShape EntityType="BaseModel.ErrorLog" Width="1.5" PointX="6.265295659315445" PointY="24.135572236094426" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

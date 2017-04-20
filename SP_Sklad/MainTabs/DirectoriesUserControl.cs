@@ -127,7 +127,7 @@ namespace SP_Sklad.MainTabs
                               from subfg in gj.DefaultIfEmpty()
                               where subfg.EnterpriseId == null || ent.Contains(subfg.EnterpriseId)
                               select k 
-                              ).Distinct();
+                              );
 
 
 
@@ -141,7 +141,7 @@ namespace SP_Sklad.MainTabs
                         ka = ka.Where(w => w.Archived == 0 || w.Archived == null);
                     }
 
-                    KAgentDS.DataSource = ka.ToList();
+                    KAgentDS.DataSource = ka.Distinct().ToList();
                     break;
 
                 case 2:
