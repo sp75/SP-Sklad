@@ -226,6 +226,7 @@ namespace SP_Sklad.Reports
             data_report.Add("WayBillList", wb);
             data_report.Add("range1", db.GetWayBillDetOut(wb.First().WbillId).ToList());
 
+            var dt = DateTime.Now.Date;
             var w_id = wb.First().WbillId;
             var p = db.WaybillDet.Where(w => w.WbillId == w_id).Select(s => new
             {
@@ -240,7 +241,7 @@ namespace SP_Sklad.Reports
                 s.Materials.CF3,
                 s.Materials.CF4,
                 s.Materials.CF5,
-                OnDate = DbFunctions.AddDays( s.OnDate , -1)
+                OnDate = dt < s.OnDate ? DbFunctions.AddDays(s.OnDate, -1) : s.OnDate
             }).OrderBy(o=> o.Num).ToList();
             data_report.Add("Posvitcheny", p);
 

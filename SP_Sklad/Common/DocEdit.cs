@@ -40,7 +40,7 @@ namespace SP_Sklad.Common
                            return;
                        }
 
-                       if (wb.SessionId != null)
+                       if (!(wb.SessionId == null || wb.SessionId == UserSession.SessionId))
                        {
                            MessageBox.Show(Resources.deadlock);
                            return;

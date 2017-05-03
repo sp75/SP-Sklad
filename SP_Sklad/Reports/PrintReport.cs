@@ -711,8 +711,40 @@ namespace SP_Sklad.Reports
                 IHelper.Print(data_for_report, TemlateList.rep_27);
             }
 
+
             if (idx == 31)
             {
+                var sql = @"  select 
+	    wbd.MatId, 
+		mat.Name MatName,  
+		mat.GrpId, 
+		mg.Name GrpName, 
+		sum(wbd.AMOUNT) AmountOrd, 
+		sum(wbd.TOTAL) TotalOrd, 
+        msr.shortname MsrName,  
+		mat.BarCode, 
+		sum(x.Amount) AmountOut, 
+		sum(x.Total) TotalOut
+      from WAYBILLDET wbd 
+	  join  WAYBILLLIST wbl on wbl.wbillid = wbd.wbillid
+      join MATERIALS mat on mat.matid = wbd.MatId
+	  join MatGroup mg on mat.GrpId = mg.GrpId
+      join measures msr on msr.mid=mat.mid
+      join kagent kaemp on wbl.kaid = kaemp.kaid
+	  outer apply ( select Amount, Total
+                    from WAYBILLDET wbdo , WAYBILLLIST wblo
+                    join DOCRELS dl on wblo.id = dl.OriginatorId
+                    left outer join kagent kaemp on wblo.personid = kaemp.kaid
+                    where wblo.wbillid = wbdo.wbillid  and  wblo.checked = 1 and wblo.wtype = -1
+                          and wblo.id = dl.OriginatorId and dl.RelOriginatorId = wbl.id  and  wbdo.matid =wbd.MATID) x
+      where wbl.wbillid = wbd.wbillid and wbl.wtype = -16
+            and wbl.ondate between {0} and {1}
+            and ( mat.grpid = {2} or {2} = 0 )
+            and ( mat.matid = {3} or {3} = 0 )
+      group by  mat.GrpId, mg.Name ,wbd.MATID, mat.name,   msr.shortname,  mat.barcode";
+
+           //       var mat = db.Database.SqlQuery<REP_31_Result>(sql, StartDate, EndDate, (int)MatGroup.GrpId, (int)this.Material.MatId).ToList().OrderBy(o => o.MatName).ToList();
+
                 var mat = db.REP_31(StartDate, EndDate, (int)MatGroup.GrpId, (int)this.Material.MatId).ToList().OrderBy(o => o.MatName).ToList();
 
                 if (!mat.Any())

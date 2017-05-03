@@ -397,6 +397,18 @@ order by wbd.ondate desc
             }
         }
 
+        public static void ClearSessionWaybill()
+        {
+            using (var db = new BaseEntities())
+            {
+                var wb = db.WaybillList.Where(f => f.SessionId == UserSession.SessionId).ToList();
+                foreach (var item in wb)
+                {
+                    item.SessionId = null;
+                }
+                db.SaveChanges();
+            }
+        }
     }
 
 

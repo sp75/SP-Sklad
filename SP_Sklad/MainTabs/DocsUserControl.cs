@@ -347,7 +347,7 @@ namespace SP_Sklad.MainTabs
                         switch (gtype)
                         {
                             case 1:
-                                var wb = db.WaybillList.FirstOrDefault(w => w.WbillId == dr.WbillId && w.SessionId == null);
+                                var wb = db.WaybillList.FirstOrDefault(w => w.WbillId == dr.WbillId && (w.SessionId == null || w.SessionId == UserSession.SessionId));
                                 if (wb != null)
                                 {
                                     db.WaybillList.Remove(wb);

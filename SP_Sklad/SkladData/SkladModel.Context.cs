@@ -125,7 +125,6 @@ namespace SP_Sklad.SkladData
         public DbSet<UsersGroup> UsersGroup { get; set; }
         public DbSet<WaybillDet> WaybillDet { get; set; }
         public DbSet<WaybillList> WaybillList { get; set; }
-        public DbSet<Users> Users { get; set; }
         public DbSet<Licenses> Licenses { get; set; }
         public DbSet<UserSettings> UserSettings { get; set; }
         public DbSet<v_KAgentSaldo> v_KAgentSaldo { get; set; }
@@ -147,8 +146,9 @@ namespace SP_Sklad.SkladData
         public DbSet<EnterpriseWorker> EnterpriseWorker { get; set; }
         public DbSet<Kagent> Kagent { get; set; }
         public DbSet<KagentList> KagentList { get; set; }
-        public DbSet<v_Users> v_Users { get; set; }
         public DbSet<ErrorLog> ErrorLog { get; set; }
+        public DbSet<Users> Users { get; set; }
+        public DbSet<v_Users> v_Users { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)

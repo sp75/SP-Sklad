@@ -76,6 +76,8 @@ namespace SP_Sklad.WBDetForm
                     ExtMatComboBox2.EditValue = ext_list[1].MatId;
                 }
             }
+
+            ValidateForm();
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -139,11 +141,18 @@ namespace SP_Sklad.WBDetForm
                 tp_d.Num = row.Num != null ? row.Num : (_db.TechProcDet.Where(w => w.WbillId == _wbill_id).Select(s => (int?)s.Num).Max() ?? 0) + 1;
                 tp_d.Out = row.Kod == "finish" ? _db.GetMakeAmount(_wbill_id).FirstOrDefault().AmountOut.Value : tp_d.Out;
             }
+
+            ValidateForm();
         }
 
         private void AmountEdit_MouseUp(object sender, MouseEventArgs e)
         {
             ((CalcEdit)sender).SelectAll();
+        }
+
+        private void ValidateForm()
+        {
+            OkButton.Enabled = TechProcessCB.GetSelectedDataRow() != null;
         }
     }
 }

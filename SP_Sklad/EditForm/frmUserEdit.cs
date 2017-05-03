@@ -58,7 +58,8 @@ namespace SP_Sklad.EditForm
                     Name = "New User" + new Random().Next(0, 100000000).ToString(),
                     SysName = "",
                     ReportFormat = "xlsx",
-                    InternalEditor = true
+                    InternalEditor = true,
+                    IsWorking = true
                 });
 
                 _db.SaveChanges();

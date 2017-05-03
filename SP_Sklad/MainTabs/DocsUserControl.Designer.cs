@@ -125,6 +125,7 @@
             this.gridColumn26 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn28 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn27 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -235,7 +236,6 @@
             this.DocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -1472,6 +1472,14 @@
             this.gridColumn27.VisibleIndex = 6;
             this.gridColumn27.Width = 83;
             // 
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "Підприємство";
+            this.gridColumn8.FieldName = "EntName";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 7;
+            // 
             // repositoryItemImageEdit2
             // 
             this.repositoryItemImageEdit2.AutoHeight = false;
@@ -2597,14 +2605,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10, true)});
             this.WbDetPopupMenu.Manager = this.barManager1;
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
-            // 
-            // gridColumn8
-            // 
-            this.gridColumn8.Caption = "Підприємство";
-            this.gridColumn8.FieldName = "EntName";
-            this.gridColumn8.Name = "gridColumn8";
-            this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 7;
             // 
             // DocsUserControl
             // 

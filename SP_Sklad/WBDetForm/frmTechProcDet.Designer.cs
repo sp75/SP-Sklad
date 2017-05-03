@@ -49,7 +49,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.calcEdit3 = new DevExpress.XtraEditors.CalcEdit();
-            this.TechProcDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.ExtMatComboBox2 = new DevExpress.XtraEditors.LookUpEdit();
@@ -77,11 +76,11 @@
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.TechProcDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TechProcDetBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExtMatComboBox2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit2.Properties)).BeginInit();
@@ -97,6 +96,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TechProcDetBS)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -154,10 +154,6 @@
             this.calcEdit3.StyleController = this.styleController1;
             this.calcEdit3.TabIndex = 48;
             this.calcEdit3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.AmountEdit_MouseUp);
-            // 
-            // TechProcDetBS
-            // 
-            this.TechProcDetBS.DataSource = typeof(SP_Sklad.SkladData.TechProcDet);
             // 
             // styleController1
             // 
@@ -488,6 +484,10 @@
             this.simpleButton1.TabIndex = 2;
             this.simpleButton1.Text = "Відмінити";
             // 
+            // TechProcDetBS
+            // 
+            this.TechProcDetBS.DataSource = typeof(SP_Sklad.SkladData.TechProcDet);
+            // 
             // frmTechProcDet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -509,7 +509,6 @@
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TechProcDetBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExtMatComboBox2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit2.Properties)).EndInit();
@@ -525,6 +524,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.TechProcDetBS)).EndInit();
             this.ResumeLayout(false);
 
         }

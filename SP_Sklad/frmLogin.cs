@@ -22,10 +22,10 @@ namespace SP_Sklad
         public frmLogin()
         {
             InitializeComponent();
-          
+
             try
             {
-                UserIDEdit.Properties.DataSource = new BaseEntities().Users.Select(s => new
+                UserIDEdit.Properties.DataSource = new BaseEntities().Users.Where(w => w.IsWorking).Select(s => new
                 {
                     s.UserId,
                     s.Name,

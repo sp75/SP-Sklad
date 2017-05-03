@@ -54,6 +54,11 @@ namespace SP_Sklad
         private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             var want_to_exit = MessageBox.Show(@"Ви дійсно хочете вийти з програми?", @"Закрити програму", MessageBoxButtons.YesNo) == DialogResult.Yes;
+            if (want_to_exit)
+            {
+                DBHelper.ClearSessionWaybill();
+            }
+
             e.Cancel = !want_to_exit;
         }
 

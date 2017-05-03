@@ -101,7 +101,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<KAgentPersons> KAgentPersons { get; set; }
         public virtual KontragentGroup KontragentGroup { get; set; }
         public virtual Routes Routes { get; set; }
-        public virtual Users Users { get; set; }
         public virtual ICollection<Routes> Routes1 { get; set; }
         public virtual ICollection<TAXWB> TAXWB1 { get; set; }
         public virtual ICollection<TechProcDet> TechProcDet { get; set; }
@@ -110,5 +109,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<WayBillMakeProps> WayBillMakeProps { get; set; }
         public virtual ICollection<WaybillList> WaybillList2 { get; set; }
         public virtual ICollection<WayBillSvc> WayBillSvc { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

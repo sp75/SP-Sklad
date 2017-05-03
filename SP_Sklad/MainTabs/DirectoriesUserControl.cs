@@ -145,7 +145,10 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 2:
+                    int top_row = MatGridView.TopRowIndex;
+           
                     MatListDS.DataSource = _db.GetMatList(focused_tree_node.Id == 6 ? -1 : focused_tree_node.GrpId, 0, _mat_archived, showChildNodeBtn.Down ? 1 : 0);
+                    MatGridView.TopRowIndex = top_row;
                     break;
 
                 case 3:
@@ -478,15 +481,21 @@ namespace SP_Sklad.MainTabs
 
                     case 2:
                         var r = MatGridView.GetFocusedRow() as GetMatList_Result;
-
-                        var mat = db.Materials.Find(r.MatId);
-                        if (mat != null && (r.Remain == 0 || r.Remain == null))
+                        if (r != null)
                         {
-                            mat.Deleted = 1;
+                            var mat = db.Materials.Find(r.MatId);
+                            if (mat != null && (r.Remain == 0 || r.Remain == null))
+                            {
+                                mat.Deleted = 1;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Видаляти заборонено !");
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("Видаляти заборонено !");
+                            MessageBox.Show("Список товарів пустий!");
                         }
 
                         break;

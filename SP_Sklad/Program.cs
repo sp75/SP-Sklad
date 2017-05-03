@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -100,9 +101,9 @@ namespace SP_Sklad
             {
                 try
                 {
-                    MessageBox.Show("Fatal Non-UI Error",
-                        "Fatal Non-UI Error. Could not write the error to the event log. Reason: "
-                        + exc.Message, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Fatal Non-UI Error. Could not write the error to the event log. Reason: "
+                        + exc.Message,"Fatal Non-UI Error",
+                         MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 }
                 finally
                 {
@@ -115,7 +116,8 @@ namespace SP_Sklad
         private static DialogResult ShowThreadExceptionDialog(string title, Exception e)
         {
             string errorMsg = "Сталася помилка в програмі. Будь ласка, зверніться до адміністратора з наступною інформацією:\n\n";
-            errorMsg = errorMsg + e.Message + "\n\nStack Trace:\n" + e.StackTrace;
+
+            errorMsg = errorMsg + e.LastMessage();
 
             using (var db = new BaseEntities())
             {
@@ -123,16 +125,51 @@ namespace SP_Sklad
                 {
                     Message = e.Message,
                     OnDate = DateTime.Now,
-                    StackTrace = e.StackTrace,
+                    StackTrace = e.ToMessageAndCompleteStacktrace(),
                     Title = title,
                     UserId = DBHelper.CurrentUser.UserId
                 });
 
                 db.SaveChanges();
-
             }
 
             return MessageBox.Show(errorMsg, title, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Stop);
+        }
+    }
+
+    public static class ExceptionExtensions
+    {
+        public static string ToMessageAndCompleteStacktrace(this Exception exception)
+        {
+            Exception e = exception;
+            StringBuilder s = new StringBuilder();
+            while (e != null)
+            {
+                s.AppendLine("Exception type: " + e.GetType().FullName);
+                s.AppendLine("Message       : " + e.Message);
+                s.AppendLine("Stacktrace:");
+                s.AppendLine(e.StackTrace);
+                s.AppendLine();
+                e = e.InnerException;
+            }
+            return s.ToString();
+        }
+
+        public static string LastMessage(this Exception exception)
+        {
+            Exception e = exception;
+            String s = "";
+            while (e != null)
+            {
+                s = "Exception type: " + e.GetType().FullName + Environment.NewLine;
+                s += "Message       : " + e.Message + Environment.NewLine;
+                s += "Stacktrace:" + Environment.NewLine;
+                s += e.StackTrace + Environment.NewLine;
+
+                e = e.InnerException;
+            }
+
+            return s;
         }
     }
 }

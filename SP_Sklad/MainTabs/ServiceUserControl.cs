@@ -128,14 +128,16 @@ namespace SP_Sklad.MainTabs
                     using (var db = DB.SkladBase())
                     {
                         UsersOnlineBS.DataSource = db.Users.AsNoTracking().Where(w => w.IsOnline == true).ToList();
-                        gridControl2.DataSource = db.WaybillList.Where(w => w.SessionId != null).Select(s => new
+                        gridControl2.DataSource = db.WaybillList.Join(db.DocType , w=> w.WType, t=> t.Id, (w,t) =>  new
                         {
-                            s.WbillId,
-                            s.Num,
-                            s.OnDate,
-                            s.UpdatedAt,
-                            UserName = db.Users.Where(w => w.UserId == s.UpdatedBy).Select(u => u.Name).FirstOrDefault()
-                        }).ToList();
+                            w.WbillId,
+                            w.Num,
+                            w.OnDate,
+                            w.UpdatedAt,
+                            w.SessionId,
+                            UserName = db.Users.Where(u => u.UserId == w.UpdatedBy).Select(u => u.Name).FirstOrDefault(),
+                            t.Name
+                        }).Where(w => w.SessionId != null).ToList();
                     }
                     break;
 
@@ -161,7 +163,8 @@ namespace SP_Sklad.MainTabs
                         UserId = s.UserId
                     }).ToList();
 
-                    PrintLogGridControl.DataSource = DB.SkladBase().GetPrintLog(wbStartDate.DateTime, wbEndDate.DateTime, (int)UserComboBox.EditValue);
+                    PrintLogGridControl.DataSource = DB.SkladBase().GetPrintLog(wbStartDate.DateTime, wbEndDate.DateTime, (int)UserComboBox.EditValue).ToList();
+                    ErrorLogGridControl.DataSource = DB.SkladBase().ErrorLog.ToList();
                     break;
 
                 case 6:
@@ -200,6 +203,11 @@ namespace SP_Sklad.MainTabs
 
         private void DeleteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (MessageBox.Show("Ви дійсно бажаєте відалити цей запис з довідника?", "Підтвердіть видалення", MessageBoxButtons.YesNo, MessageBoxIcon.Information) != DialogResult.Yes)
+            {
+                return;
+            }
+            
             switch (focused_tree_node.GType)
             {
                 case 1:
@@ -207,7 +215,6 @@ namespace SP_Sklad.MainTabs
                     using (var db = DB.SkladBase())
                     {
                         db.DeleteWhere<Users>(w => w.UserId == u.UserId);
-                        db.SaveChanges();
                     }
                     break;
 

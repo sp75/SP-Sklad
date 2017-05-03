@@ -68,10 +68,7 @@ namespace SP_Sklad.WBDetForm
 
             if (_wbd != null)
             {
-                MatComboBox.DataBindings.Add(new Binding("EditValue", _wbd, "MatId"));
-                WHComboBox.DataBindings.Add(new Binding("EditValue", _wbd, "WId", true, DataSourceUpdateMode.OnPropertyChanged));
-                AmountEdit.DataBindings.Add(new Binding("EditValue", _wbd, "Amount"));
-                BasePriceEdit.DataBindings.Add(new Binding("EditValue", _wbd, "BasePrice", true, DataSourceUpdateMode.OnValidation));
+                WaybillDetBS.DataSource = _wbd;
 
                 if (_db.Entry<WaybillDet>(_wbd).State == EntityState.Unchanged)
                 {
@@ -150,10 +147,11 @@ namespace SP_Sklad.WBDetForm
             if (_wb.WType == -6)
             {
                 var remain_in_wh = _db.MatRemainByWh(_wbd.MatId, 0, _ka_id, DBHelper.ServerDateTime(), "*").ToList();
-                if (remain_in_wh != null)
+                WHComboBox.Properties.DataSource = remain_in_wh;
+
+                if (remain_in_wh != null && WHComboBox.EditValue == DBNull.Value)
                 {
                     WHComboBox.EditValue = remain_in_wh.First().WId;
-                    var fg = _wbd.WId;
                 }
             }
 
@@ -177,7 +175,7 @@ namespace SP_Sklad.WBDetForm
             {
                 _wbd.Price = pos_in.First().Price;
 
-                _wbd.BasePrice = pos_in.First().BasePrice;
+                _wbd.BasePrice = pos_in.First().BasePrice  ; //?? pos_in.First().Price;
                 BasePriceEdit.EditValue = _wbd.BasePrice;
 
                 _wbd.Nds = pos_in.First().Nds;
