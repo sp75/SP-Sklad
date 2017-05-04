@@ -1991,6 +1991,7 @@
           <Property Name="ExtMat2Id" Type="int" />
           <Property Name="ExtMat2Amount" Type="int" />
           <Property Name="TareWeight" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="OutNetto" Type="numeric" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="TechProcess">
           <Key>
@@ -10123,6 +10124,7 @@
           <NavigationProperty Name="TechProcess" Relationship="BaseModel.FK_TECHPROCDET_TECHPROCESS" FromRole="TechProcDet" ToRole="TechProcess" />
           <Property Type="Decimal" Name="TareWeight" Precision="15" Scale="4" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_TECHPROCDET_KAGENT" FromRole="TechProcDet" ToRole="Kagent" />
+          <Property Type="Decimal" Name="OutNetto" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="Services">
           <Key>
@@ -14518,6 +14520,7 @@
           <EntitySetMapping Name="TechProcDet">
             <EntityTypeMapping TypeName="BaseModel.TechProcDet">
               <MappingFragment StoreEntitySet="TechProcDet">
+                <ScalarProperty Name="OutNetto" ColumnName="OutNetto" />
                 <ScalarProperty Name="TareWeight" ColumnName="TareWeight" />
                 <ScalarProperty Name="ExtMat2Amount" ColumnName="ExtMat2Amount" />
                 <ScalarProperty Name="ExtMat2Id" ColumnName="ExtMat2Id" />

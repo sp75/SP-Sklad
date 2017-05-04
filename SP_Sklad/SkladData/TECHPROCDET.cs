@@ -28,6 +28,7 @@ namespace SP_Sklad.SkladData
         public Nullable<int> ExtMat2Id { get; set; }
         public Nullable<int> ExtMat2Amount { get; set; }
         public Nullable<decimal> TareWeight { get; set; }
+        public Nullable<decimal> OutNetto { get; set; }
     
         public virtual WaybillList WaybillList { get; set; }
         public virtual TechProcess TechProcess { get; set; }

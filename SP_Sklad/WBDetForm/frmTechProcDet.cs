@@ -82,7 +82,6 @@ namespace SP_Sklad.WBDetForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            var ss = _db.Entry<TechProcDet>(tp_d).State;
             _db.SaveChanges();
         }
 
