@@ -1074,6 +1074,27 @@ namespace SP_Sklad.Reports
                 IHelper.Print(data_for_report, TemlateList.rep_35);
             }
 
+            if (idx == 36)
+            {
+                var disc = db.DiscCards.Select(s => new
+                {
+                    s.Num,
+                    s.OnValue,
+                    KaName = s.Kagent != null ? s.Kagent.Name : "",
+                    Total = db.WayBillDetAddProps.Where(w => w.CardId == s.CardId && w.WaybillDet.OnDate <= OnDate).Sum(t => t.WaybillDet.Total) 
+                });
+
+                if (!disc.Any())
+                {
+                    return;
+                }
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("DiscCards", disc.ToList());
+
+                IHelper.Print(data_for_report, TemlateList.rep_36);
+            }
+
             db.PrintLog.Add(new PrintLog
             {
                 PrintType = 1,
