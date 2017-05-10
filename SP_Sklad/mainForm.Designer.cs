@@ -322,6 +322,7 @@
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem2),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barEditItem3),
             new DevExpress.XtraBars.LinkPersistInfo(this.CurDateEditBarItem),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem3),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem4),
@@ -408,13 +409,13 @@
             this.barSubItem4.Caption = "Сервіс";
             this.barSubItem4.Id = 14;
             this.barSubItem4.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barEditItem3),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10)});
             this.barSubItem4.Name = "barSubItem4";
             // 
             // barEditItem3
             // 
+            this.barEditItem3.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
             this.barEditItem3.Caption = "Підприємство";
             this.barEditItem3.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", global::SP_Sklad.Properties.Settings.Default, "ent_id", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.barEditItem3.Edit = this.repositoryItemLookUpEdit1;
@@ -485,28 +486,28 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1188, 52);
+            this.barDockControlTop.Size = new System.Drawing.Size(1188, 53);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 678);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1188, 22);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 677);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1188, 23);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 52);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 626);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 53);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 624);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1188, 52);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 626);
+            this.barDockControlRight.Location = new System.Drawing.Point(1188, 53);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 624);
             // 
             // barButtonItem2
             // 
@@ -674,7 +675,7 @@
             this.xtraTabPage1.Controls.Add(this.docsUserControl1);
             this.xtraTabPage1.Image = global::SP_Sklad.Properties.Resources.administration;
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1186, 575);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1182, 572);
             this.xtraTabPage1.TabPageWidth = 100;
             this.xtraTabPage1.Text = "Документи";
             // 
@@ -683,16 +684,16 @@
             this.docsUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.docsUserControl1.Location = new System.Drawing.Point(0, 0);
             this.docsUserControl1.Name = "docsUserControl1";
-            this.docsUserControl1.Size = new System.Drawing.Size(1186, 575);
+            this.docsUserControl1.Size = new System.Drawing.Size(1182, 572);
             this.docsUserControl1.TabIndex = 0;
             // 
             // xtraTabControl1
             // 
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(0, 52);
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 53);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1188, 626);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1188, 624);
             this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,

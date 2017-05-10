@@ -200,7 +200,24 @@ namespace SP_Sklad.MainTabs
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            PersonEdit.EditValue = IHelper.ShowDirectList(PersonEdit.EditValue, 3); 
+           
         }
+
+        private void PTypeComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                CashEditComboBox.EditValue = IHelper.ShowDirectList(CashEditComboBox.EditValue, 4);
+            }
+        }
+
+        private void PersonEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                PersonEdit.EditValue = IHelper.ShowDirectList(PersonEdit.EditValue, 3); 
+            }
+        }
+
     }
 }

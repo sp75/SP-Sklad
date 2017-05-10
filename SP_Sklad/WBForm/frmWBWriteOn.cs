@@ -26,7 +26,6 @@ namespace SP_Sklad.WBForm
         public  BaseEntities _db { get; set; }
         public int? _wbill_id { get; set; }
         public Guid? doc_id { get; set; }
-     //   private DbContextTransaction current_transaction { get; set; }
         private WaybillList wb { get; set; }
         private GetWaybillDetIn_Result wbd_row { get; set; }
         private List<GetWaybillDetIn_Result> wbd_list { get; set; }
