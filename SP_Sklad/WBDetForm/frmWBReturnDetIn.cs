@@ -25,14 +25,16 @@ namespace SP_Sklad.WBDetForm
         private List<GetShippedPosIn_Result> ordered_in_list { get; set; }
         public int? outPosId { get; set; }
         private ComPortHelper com_port { get; set; }
+        private int? _def_wid { get; set; }
 
-        public frmWBReturnDetIn(BaseEntities db, int? PosId, WaybillList wb)
+        public frmWBReturnDetIn(BaseEntities db, int? PosId, WaybillList wb, int? wid)
         {
             InitializeComponent();
 
             _db = db;
             _PosId = PosId;
             _wb = wb;
+            _def_wid = wid;
 
             WHComboBox.Properties.DataSource = DBHelper.WhList();
 
@@ -100,6 +102,8 @@ namespace SP_Sklad.WBDetForm
             {
                 GetPosOutBS.DataSource = row;
 
+                var wid = _def_wid != null ? _def_wid.Value : row.WID;
+
                 _wbd.Price = row.Price;
                 BotPriceEdit.EditValue = row.Price;
                 _wbd.BasePrice = row.Price + row.Price * row.Nds / 100;
@@ -107,12 +111,12 @@ namespace SP_Sklad.WBDetForm
                 _wbd.CurrId = row.CurrId;
                 _wbd.OnValue = row.OnValue;
                 _wbd.OnDate = row.OnDate;
-                _wbd.WId = row.WID;
+                _wbd.WId = wid;
                 _wbd.MatId = row.MatId;
 
                 ordered_in_list = _db.GetShippedPosIn(row.PosId).ToList();
 
-                WHComboBox.EditValue = row.WID;
+                WHComboBox.EditValue = wid;
             }
 
             GetOk();

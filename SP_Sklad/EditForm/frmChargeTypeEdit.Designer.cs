@@ -36,11 +36,13 @@
             this.NotesTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.ChargeTypeBS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.DefCheckBox = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChargeTypeBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DefCheckBox.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // BottomPanel
@@ -48,7 +50,7 @@
             this.BottomPanel.Controls.Add(this.OkButton);
             this.BottomPanel.Controls.Add(this.simpleButton1);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomPanel.Location = new System.Drawing.Point(0, 108);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 158);
             this.BottomPanel.Name = "BottomPanel";
             this.BottomPanel.Size = new System.Drawing.Size(482, 52);
             this.BottomPanel.TabIndex = 21;
@@ -103,11 +105,24 @@
             this.labelControl3.TabIndex = 45;
             this.labelControl3.Text = "Назва";
             // 
+            // DefCheckBox
+            // 
+            this.DefCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ChargeTypeBS, "Def", true));
+            this.DefCheckBox.Location = new System.Drawing.Point(26, 114);
+            this.DefCheckBox.Name = "DefCheckBox";
+            this.DefCheckBox.Properties.Caption = "Використовувати за змовчуванням";
+            this.DefCheckBox.Properties.ValueChecked = 1;
+            this.DefCheckBox.Properties.ValueUnchecked = 0;
+            this.DefCheckBox.Size = new System.Drawing.Size(256, 20);
+            this.DefCheckBox.StyleController = this.styleController1;
+            this.DefCheckBox.TabIndex = 48;
+            // 
             // frmChargeTypeEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(482, 160);
+            this.ClientSize = new System.Drawing.Size(482, 210);
+            this.Controls.Add(this.DefCheckBox);
             this.Controls.Add(this.NotesTextEdit);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.BottomPanel);
@@ -122,6 +137,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChargeTypeBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DefCheckBox.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -136,5 +152,6 @@
         private System.Windows.Forms.BindingSource ChargeTypeBS;
         private DevExpress.XtraEditors.TextEdit NotesTextEdit;
         private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.CheckEdit DefCheckBox;
     }
 }

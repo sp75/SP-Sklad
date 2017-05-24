@@ -46,6 +46,8 @@ namespace SP_Sklad.EditForm
             }
 
             ChargeTypeBS.DataSource = ct;
+
+            DefCheckBox.Enabled = !DefCheckBox.Checked;
         }
 
         private void OkButton_Click(object sender, EventArgs e)

@@ -43,16 +43,21 @@ namespace SP_Sklad
 
         private void GetData()
         {
+            if (StartDate.DateTime.Date <= DateTime.MinValue || EndDate.DateTime <= DateTime.MinValue)
+            {
+                return;
+            }
+
             pos_out_list = _db.GetPosOut(StartDate.DateTime.Date, EndDate.DateTime, (int)MatComboBox.EditValue, _kaId, -1).ToList();
             GetPosOutBS.DataSource = pos_out_list;
         }
 
         private void StartDate_EditValueChanged(object sender, EventArgs e)
         {
-            if (StartDate.ContainsFocus || EndDate.ContainsFocus || MatComboBox.ContainsFocus)
-            {
+        //    if (StartDate.ContainsFocus || EndDate.ContainsFocus || MatComboBox.ContainsFocus)
+       //     {
                 GetData();
-            }
+      //      }
         }
 
         private void bandedGridView1_DoubleClick(object sender, EventArgs e)

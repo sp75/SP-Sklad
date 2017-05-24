@@ -48,12 +48,12 @@
             this.barSubItem7 = new DevExpress.XtraBars.BarSubItem();
             this.barToolbarsListItem1 = new DevExpress.XtraBars.BarToolbarsListItem();
             this.skinBarSubItem1 = new DevExpress.XtraBars.SkinBarSubItem();
+            this.barEditItem3 = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.CurDateEditBarItem = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemDateEdit = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
             this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
-            this.barEditItem3 = new DevExpress.XtraBars.BarEditItem();
-            this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem6 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
@@ -86,10 +86,11 @@
             this.docsUserControl1 = new SP_Sklad.MainTabs.DocsUserControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.sharedImageCollection1 = new DevExpress.Utils.SharedImageCollection(this.components);
+            this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).BeginInit();
@@ -227,9 +228,10 @@
             this.PrevBtn,
             this.NextBtn,
             this.barButtonItem1,
-            this.barButtonItem10});
+            this.barButtonItem10,
+            this.barButtonItem11});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 28;
+            this.barManager1.MaxItemId = 29;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTimeEdit1,
             this.repositoryItemCalcEdit1,
@@ -250,7 +252,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.Text = "Tools";
             this.bar1.Visible = global::SP_Sklad.Properties.Settings.Default.main_toolbar;
@@ -375,6 +378,32 @@
             this.skinBarSubItem1.Id = 21;
             this.skinBarSubItem1.Name = "skinBarSubItem1";
             // 
+            // barEditItem3
+            // 
+            this.barEditItem3.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.barEditItem3.Caption = "Підприємство";
+            this.barEditItem3.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", global::SP_Sklad.Properties.Settings.Default, "ent_id", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.barEditItem3.Edit = this.repositoryItemLookUpEdit1;
+            this.barEditItem3.EditValue = global::SP_Sklad.Properties.Settings.Default.ent_id;
+            this.barEditItem3.EditWidth = 200;
+            this.barEditItem3.Id = 16;
+            this.barEditItem3.ImageIndex = 25;
+            this.barEditItem3.Name = "barEditItem3";
+            this.barEditItem3.EditValueChanged += new System.EventHandler(this.barEditItem3_EditValueChanged);
+            // 
+            // repositoryItemLookUpEdit1
+            // 
+            this.repositoryItemLookUpEdit1.AutoHeight = false;
+            this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEdit1.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name")});
+            this.repositoryItemLookUpEdit1.DisplayMember = "Name";
+            this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
+            this.repositoryItemLookUpEdit1.ShowFooter = false;
+            this.repositoryItemLookUpEdit1.ShowHeader = false;
+            this.repositoryItemLookUpEdit1.ValueMember = "KaId";
+            // 
             // CurDateEditBarItem
             // 
             this.CurDateEditBarItem.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
@@ -412,32 +441,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10)});
             this.barSubItem4.Name = "barSubItem4";
-            // 
-            // barEditItem3
-            // 
-            this.barEditItem3.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.barEditItem3.Caption = "Підприємство";
-            this.barEditItem3.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", global::SP_Sklad.Properties.Settings.Default, "ent_id", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.barEditItem3.Edit = this.repositoryItemLookUpEdit1;
-            this.barEditItem3.EditValue = global::SP_Sklad.Properties.Settings.Default.ent_id;
-            this.barEditItem3.EditWidth = 200;
-            this.barEditItem3.Id = 16;
-            this.barEditItem3.ImageIndex = 25;
-            this.barEditItem3.Name = "barEditItem3";
-            this.barEditItem3.EditValueChanged += new System.EventHandler(this.barEditItem3_EditValueChanged);
-            // 
-            // repositoryItemLookUpEdit1
-            // 
-            this.repositoryItemLookUpEdit1.AutoHeight = false;
-            this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemLookUpEdit1.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name")});
-            this.repositoryItemLookUpEdit1.DisplayMember = "Name";
-            this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
-            this.repositoryItemLookUpEdit1.ShowFooter = false;
-            this.repositoryItemLookUpEdit1.ShowHeader = false;
-            this.repositoryItemLookUpEdit1.ValueMember = "KaId";
             // 
             // barButtonItem10
             // 
@@ -563,7 +566,7 @@
             this.xtraTabPage7.Controls.Add(this.serviceUserControl1);
             this.xtraTabPage7.Image = global::SP_Sklad.Properties.Resources._1324534473_police;
             this.xtraTabPage7.Name = "xtraTabPage7";
-            this.xtraTabPage7.Size = new System.Drawing.Size(1182, 574);
+            this.xtraTabPage7.Size = new System.Drawing.Size(1182, 572);
             this.xtraTabPage7.TabPageWidth = 100;
             this.xtraTabPage7.Text = "Сервіс";
             // 
@@ -572,7 +575,7 @@
             this.serviceUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.serviceUserControl1.Location = new System.Drawing.Point(0, 0);
             this.serviceUserControl1.Name = "serviceUserControl1";
-            this.serviceUserControl1.Size = new System.Drawing.Size(1182, 574);
+            this.serviceUserControl1.Size = new System.Drawing.Size(1182, 572);
             this.serviceUserControl1.TabIndex = 0;
             // 
             // xtraTabPage6
@@ -580,7 +583,7 @@
             this.xtraTabPage6.Controls.Add(this.DirUserControl);
             this.xtraTabPage6.Image = global::SP_Sklad.Properties.Resources._1324534381_findjob;
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(1182, 574);
+            this.xtraTabPage6.Size = new System.Drawing.Size(1182, 572);
             this.xtraTabPage6.TabPageWidth = 100;
             this.xtraTabPage6.Text = "Довідники";
             // 
@@ -592,7 +595,7 @@
             this.DirUserControl.isMatList = false;
             this.DirUserControl.Location = new System.Drawing.Point(0, 0);
             this.DirUserControl.Name = "DirUserControl";
-            this.DirUserControl.Size = new System.Drawing.Size(1182, 574);
+            this.DirUserControl.Size = new System.Drawing.Size(1182, 572);
             this.DirUserControl.TabIndex = 0;
             this.DirUserControl.wb = null;
             // 
@@ -601,7 +604,7 @@
             this.xtraTabPage5.Controls.Add(this.reportUserControl1);
             this.xtraTabPage5.Image = global::SP_Sklad.Properties.Resources.company;
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(1182, 574);
+            this.xtraTabPage5.Size = new System.Drawing.Size(1182, 572);
             this.xtraTabPage5.TabPageWidth = 100;
             this.xtraTabPage5.Text = "Звіти";
             // 
@@ -610,7 +613,7 @@
             this.reportUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.reportUserControl1.Location = new System.Drawing.Point(0, 0);
             this.reportUserControl1.Name = "reportUserControl1";
-            this.reportUserControl1.Size = new System.Drawing.Size(1182, 574);
+            this.reportUserControl1.Size = new System.Drawing.Size(1182, 572);
             this.reportUserControl1.TabIndex = 0;
             // 
             // xtraTabPage4
@@ -618,7 +621,7 @@
             this.xtraTabPage4.Controls.Add(this.financesUserControl1);
             this.xtraTabPage4.Image = global::SP_Sklad.Properties.Resources.bank;
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(1182, 574);
+            this.xtraTabPage4.Size = new System.Drawing.Size(1182, 572);
             this.xtraTabPage4.TabPageWidth = 100;
             this.xtraTabPage4.Text = "Фінанси";
             // 
@@ -627,7 +630,7 @@
             this.financesUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.financesUserControl1.Location = new System.Drawing.Point(0, 0);
             this.financesUserControl1.Name = "financesUserControl1";
-            this.financesUserControl1.Size = new System.Drawing.Size(1182, 574);
+            this.financesUserControl1.Size = new System.Drawing.Size(1182, 572);
             this.financesUserControl1.TabIndex = 0;
             // 
             // xtraTabPage3
@@ -635,7 +638,7 @@
             this.xtraTabPage3.Controls.Add(this.whUserControl);
             this.xtraTabPage3.Image = global::SP_Sklad.Properties.Resources._1324534557_mine_копия;
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(1182, 574);
+            this.xtraTabPage3.Size = new System.Drawing.Size(1182, 572);
             this.xtraTabPage3.TabPageWidth = 100;
             this.xtraTabPage3.Text = "Склад";
             // 
@@ -649,7 +652,7 @@
             this.whUserControl.Name = "whUserControl";
             this.whUserControl.resut = null;
             this.whUserControl.set_tree_node = null;
-            this.whUserControl.Size = new System.Drawing.Size(1182, 574);
+            this.whUserControl.Size = new System.Drawing.Size(1182, 572);
             this.whUserControl.TabIndex = 0;
             this.whUserControl.wb = null;
             // 
@@ -658,7 +661,7 @@
             this.xtraTabPage2.Controls.Add(this.manufacturingUserControl1);
             this.xtraTabPage2.Image = global::SP_Sklad.Properties.Resources.factory;
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1182, 574);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1182, 572);
             this.xtraTabPage2.TabPageWidth = 100;
             this.xtraTabPage2.Text = "Виробництво";
             // 
@@ -667,7 +670,7 @@
             this.manufacturingUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.manufacturingUserControl1.Location = new System.Drawing.Point(0, 0);
             this.manufacturingUserControl1.Name = "manufacturingUserControl1";
-            this.manufacturingUserControl1.Size = new System.Drawing.Size(1182, 574);
+            this.manufacturingUserControl1.Size = new System.Drawing.Size(1182, 572);
             this.manufacturingUserControl1.TabIndex = 0;
             // 
             // xtraTabPage1
@@ -722,6 +725,13 @@
             this.sharedImageCollection1.ImageSource.Images.SetKeyName(8, "Склади.bmp");
             this.sharedImageCollection1.ParentControl = this;
             // 
+            // barButtonItem11
+            // 
+            this.barButtonItem11.Caption = "Продажа товарів";
+            this.barButtonItem11.Id = 28;
+            this.barButtonItem11.Name = "barButtonItem11";
+            this.barButtonItem11.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick);
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -741,9 +751,9 @@
             this.Load += new System.EventHandler(this.mainForm_Load);
             this.Shown += new System.EventHandler(this.mainForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).EndInit();
@@ -822,6 +832,7 @@
         private DevExpress.XtraBars.BarButtonItem NextBtn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem11;
     }
 }
 

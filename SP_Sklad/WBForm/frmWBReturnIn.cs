@@ -46,6 +46,7 @@ namespace SP_Sklad.WBForm
         {
             KagentComboBox.Properties.DataSource = DBHelper.Kagents;
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
+            WHComboBox.Properties.DataSource = DBHelper.WhList();
 
             if (_wbill_id == null)
             {
@@ -70,19 +71,19 @@ namespace SP_Sklad.WBForm
             else
             {
 
-                wb = _db.WaybillList.FirstOrDefault(f =>  f.WbillId == _wbill_id);
+                wb = _db.WaybillList.FirstOrDefault(f => f.WbillId == _wbill_id);
 
-              /*  try
-                {
-                    UpdLockWB();
-                    _db.Entry<WaybillList>(wb).State = System.Data.Entity.EntityState.Modified;
-                    _db.Entry<WaybillList>(wb).Property(f => f.SummPay).IsModified = false;
-                }
-                catch
-                {
+                /*  try
+                  {
+                      UpdLockWB();
+                      _db.Entry<WaybillList>(wb).State = System.Data.Entity.EntityState.Modified;
+                      _db.Entry<WaybillList>(wb).Property(f => f.SummPay).IsModified = false;
+                  }
+                  catch
+                  {
 
-                    Close();
-                }*/
+                      Close();
+                  }*/
 
             }
 
@@ -90,7 +91,7 @@ namespace SP_Sklad.WBForm
             {
                 DBHelper.UpdateSessionWaybill(wb.WbillId);
 
-             //   wb.UpdatedBy = DBHelper.CurrentUser.UserId;
+                //   wb.UpdatedBy = DBHelper.CurrentUser.UserId;
 
                 TurnDocCheckBox.EditValue = wb.Checked;
 
@@ -203,7 +204,7 @@ namespace SP_Sklad.WBForm
 
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var df = new frmWBReturnDetIn(_db, null, wb);
+            var df = new frmWBReturnDetIn(_db, null, wb, (int?)WHComboBox.EditValue);
             if (df.ShowDialog() == DialogResult.OK)
             {
               //  current_transaction = current_transaction.CommitRetaining(_db);
@@ -254,7 +255,7 @@ namespace SP_Sklad.WBForm
 
             if (dr != null)
             {
-                var df = new frmWBReturnDetIn(_db, dr.PosId, wb);
+                var df = new frmWBReturnDetIn(_db, dr.PosId, wb, (int?)WHComboBox.EditValue);
                 if (df.ShowDialog() == DialogResult.OK)
                 {
                     RefreshDet();
@@ -303,7 +304,7 @@ namespace SP_Sklad.WBForm
                     var mat_row = frm.bandedGridView1.GetFocusedRow() as GetPosOut_Result;
                     if (mat_row != null)
                     {
-                        var df = new frmWBReturnDetIn(_db, null, wb)
+                        var df = new frmWBReturnDetIn(_db, null, wb, (int?)WHComboBox.EditValue)
                         {
                             pos_out_list = frm.pos_out_list,
                             outPosId = mat_row.PosId
@@ -356,6 +357,11 @@ namespace SP_Sklad.WBForm
         private void PersonEditBtn_Click(object sender, EventArgs e)
         {
             PersonComboBox.EditValue = IHelper.ShowDirectList(PersonComboBox.EditValue, 3);
+        }
+
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            WHComboBox.EditValue = IHelper.ShowDirectList(WHComboBox.EditValue, 2);
         }
     }
 }

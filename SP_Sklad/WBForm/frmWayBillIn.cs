@@ -169,7 +169,7 @@ namespace SP_Sklad.WBForm
 
         private bool CheckDate()
         {
-            var q = _db.WMatTurn.Where(w => w.WaybillDet.WbillId == _wbill_id).Select(s => new
+            var q = _db.WMatTurn.Where(w => w.WaybillDet.WbillId == _wbill_id && w.TurnType == 2).Select(s => new
             {
                 s.OnDate,
                 s.WaybillDet.Materials.Name
@@ -346,6 +346,19 @@ namespace SP_Sklad.WBForm
             var wbd = _db.WaybillDet.Find(dr.PosId);
 
             wbd.Amount = Convert.ToDecimal(e.Value);
+
+            // удаляем резерв з видаткових документів
+            _db.DeleteWhere<WMatTurn>(w => w.PosId == wbd.PosId);
+            _db.WMatTurn.Add(new WMatTurn()
+            {
+                SourceId = wbd.PosId,
+                PosId = wbd.PosId,
+                WId = wbd.WId.Value,
+                MatId = wbd.MatId,
+                OnDate = wbd.OnDate.Value,
+                TurnType = 3,
+                Amount = wbd.Amount
+            });
 
         //    var dd = WayBillsController.GetWaybillDetIn(_db, _wbill_id);
         }

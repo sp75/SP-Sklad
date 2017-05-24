@@ -324,7 +324,7 @@ namespace SP_Sklad.Reports
                 int grp = Convert.ToInt32(MatGroup.GrpId);
                 int wid = Warehouse.WId == "*" ? 0 : Convert.ToInt32(Warehouse.WId);
 
-                var mat = db.WhMatGet(grp, wid, 0, OnDate, 0, "*", 0, "", 0, 0).Select(s => new
+                var mat = db.WhMatGet(grp, wid, 0, OnDate, 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).Select(s => new
                 {
                     s.BarCode,
                     s.MatName,
@@ -653,7 +653,7 @@ namespace SP_Sklad.Reports
                 int grp = Convert.ToInt32(MatGroup.GrpId);
                 int wid = Warehouse.WId == "*" ? 0 : Convert.ToInt32(Warehouse.WId);
 
-                var mat = db.WhMatGet(grp, wid, 0, OnDate, 0, "*", 0, "", 0, 0).Where(w => w.Remain < w.MinReserv && w.MinReserv != null).ToList();
+                var mat = db.WhMatGet(grp, wid, 0, OnDate, 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).Where(w => w.Remain < w.MinReserv && w.MinReserv != null).ToList();
 
                 if (!mat.Any())
                 {

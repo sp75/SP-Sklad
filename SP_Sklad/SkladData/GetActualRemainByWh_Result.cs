@@ -14,8 +14,8 @@ namespace SP_Sklad.SkladData
     public partial class GetActualRemainByWh_Result
     {
         public System.DateTime OnDate { get; set; }
-        public decimal Remain { get; set; }
-        public decimal Rsv { get; set; }
+        public Nullable<decimal> Remain { get; set; }
+        public Nullable<decimal> Rsv { get; set; }
         public Nullable<decimal> CurRemain { get; set; }
         public Nullable<decimal> AvgPrice { get; set; }
         public Nullable<decimal> MinPrice { get; set; }

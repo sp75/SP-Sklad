@@ -1557,7 +1557,7 @@
             this.bandedGridColumn6.FieldName = "Remain";
             this.bandedGridColumn6.Name = "bandedGridColumn6";
             this.bandedGridColumn6.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Remain", "{0:0.##}")});
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)});
             this.bandedGridColumn6.Visible = true;
             this.bandedGridColumn6.Width = 92;
             // 

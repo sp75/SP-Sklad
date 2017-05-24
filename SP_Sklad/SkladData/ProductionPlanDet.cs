@@ -12,18 +12,16 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class ChargeType
+    public partial class ProductionPlanDet
     {
-        public ChargeType()
-        {
-            this.PayDoc = new HashSet<PayDoc>();
-        }
+        public System.Guid Id { get; set; }
+        public Nullable<int> MatId { get; set; }
+        public Nullable<decimal> Amount { get; set; }
+        public Nullable<System.Guid> ProductionPlanId { get; set; }
+        public Nullable<decimal> Remain { get; set; }
+        public Nullable<decimal> Total { get; set; }
     
-        public int CTypeId { get; set; }
-        public string Name { get; set; }
-        public int Deleted { get; set; }
-        public int Def { get; set; }
-    
-        public virtual ICollection<PayDoc> PayDoc { get; set; }
+        public virtual Materials Materials { get; set; }
+        public virtual ProductionPlans ProductionPlans { get; set; }
     }
 }

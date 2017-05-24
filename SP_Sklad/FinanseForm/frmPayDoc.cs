@@ -65,7 +65,7 @@ namespace SP_Sklad.FinanseForm
                     DocNum = new BaseEntities().GetDocNum(doc_setting_name).FirstOrDefault(),
                     OnDate = DBHelper.ServerDateTime(),
                     Total = _summ_pay == null ? 0 : _summ_pay.Value,
-                    CTypeId = 1,// За товар
+                    CTypeId = DBHelper.ChargeTypes.Any(a => a.Def == 1) ? DBHelper.ChargeTypes.FirstOrDefault(w => w.Def == 1).CTypeId : DBHelper.ChargeTypes.FirstOrDefault().CTypeId,// За товар
                     WithNDS = 1,// З НДС
                     PTypeId = 1,// Наличкой
                     CashId = DBHelper.CashDesks.Where(w => w.Def == 1).Select(s => s.CashId).FirstOrDefault(),// Каса по умолчанию

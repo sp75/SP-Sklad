@@ -111,7 +111,6 @@ namespace SP_Sklad.SkladData
         public DbSet<MatPrices> MatPrices { get; set; }
         public DbSet<DemandGroup> DemandGroup { get; set; }
         public DbSet<MatChange> MatChange { get; set; }
-        public DbSet<v_MatRemains> v_MatRemains { get; set; }
         public DbSet<v_WhMatRemains> v_WhMatRemains { get; set; }
         public DbSet<ProfileDocSetting> ProfileDocSetting { get; set; }
         public DbSet<WayBillDetTaxes> WayBillDetTaxes { get; set; }
@@ -149,6 +148,9 @@ namespace SP_Sklad.SkladData
         public DbSet<ErrorLog> ErrorLog { get; set; }
         public DbSet<Users> Users { get; set; }
         public DbSet<v_Users> v_Users { get; set; }
+        public DbSet<ProductionPlanDet> ProductionPlanDet { get; set; }
+        public DbSet<ProductionPlans> ProductionPlans { get; set; }
+        public DbSet<v_MatRemains> v_MatRemains { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)
@@ -745,19 +747,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("type_tree", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetWhTree_Result>("GetWhTree", user_idParameter, type_treeParameter);
-        }
-    
-        public virtual ObjectResult<GetActualRemainByWh_Result> GetActualRemainByWh(Nullable<int> wid, Nullable<int> mat_id)
-        {
-            var widParameter = wid.HasValue ?
-                new ObjectParameter("wid", wid) :
-                new ObjectParameter("wid", typeof(int));
-    
-            var mat_idParameter = mat_id.HasValue ?
-                new ObjectParameter("mat_id", mat_id) :
-                new ObjectParameter("mat_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetActualRemainByWh_Result>("GetActualRemainByWh", widParameter, mat_idParameter);
         }
     
         public virtual ObjectResult<GetManufactureTree_Result> GetManufactureTree(Nullable<int> user_id)
@@ -2044,6 +2033,19 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("person_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPayDocList_Result>("GetPayDocList", doc_typeParameter, from_dateParameter, to_dateParameter, ka_idParameter, checkedParameter, pay_typeParameter, person_idParameter);
+        }
+    
+        public virtual ObjectResult<GetActualRemainByWh_Result> GetActualRemainByWh(Nullable<int> wid, Nullable<int> mat_id)
+        {
+            var widParameter = wid.HasValue ?
+                new ObjectParameter("wid", wid) :
+                new ObjectParameter("wid", typeof(int));
+    
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetActualRemainByWh_Result>("GetActualRemainByWh", widParameter, mat_idParameter);
         }
     }
 }

@@ -669,7 +669,7 @@ namespace SP_Sklad.MainTabs
                 using (var f = new frmWayBillIn(1))
                 {
                     var result = f._db.ExecuteWayBill(wbl.WbillId, null, DBHelper.CurrentUser.KaId).ToList().FirstOrDefault();
-
+                    f.is_new_record = true;
                     f.doc_id = result.NewDocId;
                     f.ShowDialog();
                 }
@@ -961,7 +961,7 @@ namespace SP_Sklad.MainTabs
             switch (xtraTabControl2.SelectedTabPageIndex)
             {
                 case 0:
-                    gridControl2.DataSource = _db.GetWaybillDetIn(dr.WbillId);
+                    gridControl2.DataSource = _db.GetWaybillDetIn(dr.WbillId).ToList();
                     break;
 
                 case 1:

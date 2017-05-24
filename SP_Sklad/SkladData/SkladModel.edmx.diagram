@@ -132,7 +132,6 @@
         <EntityTypeShape EntityType="BaseModel.MatChange" Width="1.5" PointX="8.25" PointY="30.25" />
         <AssociationConnector Association="BaseModel.FK_MATCHANGE_CHANGEID" />
         <AssociationConnector Association="BaseModel.FK_MATCHANGE_MATID" />
-        <EntityTypeShape EntityType="BaseModel.v_MatRemains" Width="1.5" PointX="12.75" PointY="9.25" />
         <EntityTypeShape EntityType="BaseModel.v_WhMatRemains" Width="1.5" PointX="15.5" PointY="29.25" />
         <EntityTypeShape EntityType="BaseModel.ProfileDocSetting" Width="1.5" PointX="10.354963771232853" PointY="24.666091870826712" />
         <EntityTypeShape EntityType="BaseModel.WayBillDetTaxes" Width="1.5" PointX="19.5" PointY="12.25" />
@@ -255,6 +254,10 @@
         <AssociationConnector Association="BaseModel.FK_UAWH_USERID" />
         <AssociationConnector Association="BaseModel.FK_Users_UsersGroup" />
         <AssociationConnector Association="BaseModel.FK_UserSettings_Users" />
+        <EntityTypeShape EntityType="BaseModel.ProductionPlanDet" Width="1.5" PointX="8.6003941169941776" PointY="19.082154148762186" />
+        <EntityTypeShape EntityType="BaseModel.ProductionPlans" Width="1.5" PointX="9.0676300158107779" PointY="27.027135250636906" />
+        <AssociationConnector Association="BaseModel.FK_ProductionPlanDet_Materials" />
+        <AssociationConnector Association="BaseModel.FK_ProductionPlanDet_ProductionPlans" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />
@@ -265,6 +268,7 @@
         <EntityTypeShape EntityType="BaseModel.v_DiscCards" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.KagentList" Width="1.5" PointX="8.75" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.v_Users" Width="1.5" PointX="0.77737436852295616" PointY="19.076044061722254" />
+        <EntityTypeShape EntityType="BaseModel.v_MatRemains" Width="1.5" PointX="6.6021653202372441" PointY="2.4802597623692173" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

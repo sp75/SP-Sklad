@@ -68,6 +68,8 @@
           <EntitySet Name="PriceListDet" EntityType="BaseModel.Store.PriceListDet" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PriceTypes" EntityType="BaseModel.Store.PriceTypes" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PrintLog" EntityType="BaseModel.Store.PrintLog" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ProductionPlanDet" EntityType="BaseModel.Store.ProductionPlanDet" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ProductionPlans" EntityType="BaseModel.Store.ProductionPlans" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ProfileDocSetting" EntityType="BaseModel.Store.ProfileDocSetting" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="RepLng" EntityType="BaseModel.Store.RepLng" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Reports" EntityType="BaseModel.Store.Reports" store:Type="Tables" Schema="dbo" />
@@ -393,9 +395,9 @@
       [v_TechProcDet].[Num] AS [Num], 
       [v_TechProcDet].[ExtMatAmount] AS [ExtMatAmount], 
       [v_TechProcDet].[RamaName] AS [RamaName], 
-      [v_TechProcDet].[OutNetto] AS [OutNetto], 
       [v_TechProcDet].[TareWeight] AS [TareWeight], 
-      [v_TechProcDet].[Kod] AS [Kod]
+      [v_TechProcDet].[Kod] AS [Kod], 
+      [v_TechProcDet].[OutNetto] AS [OutNetto]
       FROM [dbo].[v_TechProcDet] AS [v_TechProcDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_Users" EntityType="BaseModel.Store.v_Users" store:Type="Views" store:Schema="dbo" store:Name="v_Users">
@@ -852,6 +854,14 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="PrintLog" EntitySet="PrintLog" />
           </AssociationSet>
+          <AssociationSet Name="FK_ProductionPlanDet_Materials" Association="BaseModel.Store.FK_ProductionPlanDet_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="ProductionPlanDet" EntitySet="ProductionPlanDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductionPlanDet_ProductionPlans" Association="BaseModel.Store.FK_ProductionPlanDet_ProductionPlans">
+            <End Role="ProductionPlans" EntitySet="ProductionPlans" />
+            <End Role="ProductionPlanDet" EntitySet="ProductionPlanDet" />
+          </AssociationSet>
           <AssociationSet Name="FK_REPLNG_LANGID" Association="BaseModel.Store.FK_REPLNG_LANGID">
             <End Role="Languages" EntitySet="Languages" />
             <End Role="RepLng" EntitySet="RepLng" />
@@ -1120,6 +1130,7 @@
           <Property Name="CTypeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="128" />
           <Property Name="Deleted" Type="int" Nullable="false" />
+          <Property Name="Def" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="CityType">
           <Key>
@@ -1818,6 +1829,32 @@
           <Property Name="PrintType" Type="int" />
           <Property Name="OriginatorId" Type="uniqueidentifier" />
         </EntityType>
+        <EntityType Name="ProductionPlanDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MatId" Type="int" />
+          <Property Name="Amount" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="ProductionPlanId" Type="uniqueidentifier" />
+          <Property Name="Remain" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="Total" Type="numeric" Precision="16" Scale="4" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="ProductionPlans">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="20" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="Checked" Type="int" Nullable="false" />
+          <Property Name="EntId" Type="int" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="SessionId" Type="uniqueidentifier" />
+        </EntityType>
         <EntityType Name="ProfileDocSetting">
           <Key>
             <PropertyRef Name="DocType" />
@@ -2114,7 +2151,7 @@
           <Property Name="WbillId" Type="int" Nullable="false" />
           <Property Name="MatId" Type="int" Nullable="false" />
           <Property Name="WId" Type="int" />
-          <Property Name="Amount" Type="numeric" Nullable="false" Precision="15" Scale="8" />
+          <Property Name="Amount" Type="numeric" Nullable="false" Precision="15" Scale="4" />
           <Property Name="Price" Type="numeric" Precision="15" Scale="4" />
           <Property Name="Discount" Type="numeric" Precision="15" Scale="4" />
           <Property Name="Nds" Type="numeric" Precision="15" Scale="4" />
@@ -2184,7 +2221,7 @@
           <Property Name="DocId" Type="int" />
           <Property Name="SummInCurr" Type="numeric" Precision="15" Scale="2" />
           <Property Name="EntId" Type="int" />
-          <Property Name="OnValue" Type="numeric" Precision="15" Scale="8" />
+          <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" />
           <Property Name="UpdatedAt" Type="datetime" />
           <Property Name="UpdatedBy" Type="int" />
           <Property Name="SessionId" Type="uniqueidentifier" />
@@ -2250,9 +2287,9 @@
           <Property Name="MatId" Type="int" Nullable="false" />
           <Property Name="OnDate" Type="datetime" Nullable="false" />
           <Property Name="TurnType" Type="int" Nullable="false" />
-          <Property Name="Amount" Type="numeric" Nullable="false" Precision="15" Scale="8" />
+          <Property Name="Amount" Type="numeric" Nullable="false" Precision="15" Scale="4" />
           <Property Name="SourceId" Type="int" />
-          <Property Name="CalcAmount" Type="numeric" Precision="37" Scale="19" StoreGeneratedPattern="Computed" />
+          <Property Name="CalcAmount" Type="numeric" Precision="37" Scale="15" StoreGeneratedPattern="Computed" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'sp_base.dbo.EnterpriseAccount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -2495,13 +2532,13 @@
           </Key>
           <Property Name="MatId" Type="int" Nullable="false" />
           <Property Name="OnDate" Type="datetime" Nullable="false" />
-          <Property Name="Remain" Type="numeric" Precision="38" Scale="19" />
-          <Property Name="Rsv" Type="numeric" Precision="38" Scale="8" />
+          <Property Name="Remain" Type="numeric" Precision="38" Scale="4" />
+          <Property Name="Rsv" Type="numeric" Precision="38" Scale="4" />
           <Property Name="AvgPrice" Type="numeric" Precision="38" Scale="6" />
-          <Property Name="MinPrice" Type="numeric" Precision="15" Scale="4" />
-          <Property Name="MaxPrice" Type="numeric" Precision="15" Scale="4" />
-          <Property Name="Ordered" Type="numeric" Precision="38" Scale="8" />
-          <Property Name="ORsv" Type="numeric" Precision="38" Scale="8" />
+          <Property Name="MinPrice" Type="numeric" Precision="38" Scale="10" />
+          <Property Name="MaxPrice" Type="numeric" Precision="38" Scale="10" />
+          <Property Name="Ordered" Type="numeric" Precision="38" Scale="4" />
+          <Property Name="ORsv" Type="numeric" Precision="38" Scale="4" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'sp_base.dbo.v_PayDoc' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -2664,9 +2701,9 @@
           <Property Name="Num" Type="int" Nullable="false" />
           <Property Name="ExtMatAmount" Type="int" />
           <Property Name="RamaName" Type="nvarchar" MaxLength="255" />
-          <Property Name="OutNetto" Type="numeric" Precision="38" Scale="8" />
           <Property Name="TareWeight" Type="numeric" Precision="15" Scale="4" />
           <Property Name="Kod" Type="nvarchar" MaxLength="20" />
+          <Property Name="OutNetto" Type="numeric" Precision="15" Scale="4" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'sp_base.dbo.v_Users' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -2776,13 +2813,13 @@
           <Property Name="MatId" Type="int" Nullable="false" />
           <Property Name="OnDate" Type="datetime" Nullable="false" />
           <Property Name="WId" Type="int" Nullable="false" />
-          <Property Name="Remain" Type="numeric" Precision="38" Scale="19" />
-          <Property Name="Rsv" Type="numeric" Precision="38" Scale="8" />
+          <Property Name="Remain" Type="numeric" Precision="38" Scale="4" />
+          <Property Name="Rsv" Type="numeric" Precision="38" Scale="4" />
           <Property Name="AvgPrice" Type="numeric" Precision="38" Scale="6" />
-          <Property Name="MinPrice" Type="numeric" Precision="15" Scale="4" />
-          <Property Name="MaxPrice" Type="numeric" Precision="15" Scale="4" />
-          <Property Name="Ordered" Type="numeric" Precision="38" Scale="8" />
-          <Property Name="ORsv" Type="numeric" Precision="38" Scale="8" />
+          <Property Name="MinPrice" Type="numeric" Precision="38" Scale="10" />
+          <Property Name="MaxPrice" Type="numeric" Precision="38" Scale="10" />
+          <Property Name="Ordered" Type="numeric" Precision="38" Scale="4" />
+          <Property Name="ORsv" Type="numeric" Precision="38" Scale="4" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -3914,6 +3951,32 @@
             </Principal>
             <Dependent Role="PrintLog">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductionPlanDet_Materials">
+          <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="0..1" />
+          <End Role="ProductionPlanDet" Type="BaseModel.Store.ProductionPlanDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="ProductionPlanDet">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductionPlanDet_ProductionPlans">
+          <End Role="ProductionPlans" Type="BaseModel.Store.ProductionPlans" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProductionPlanDet" Type="BaseModel.Store.ProductionPlanDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductionPlans">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductionPlanDet">
+              <PropertyRef Name="ProductionPlanId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -6442,10 +6505,6 @@
           </AssociationSet>
           <EntitySet Name="ExtRel" EntityType="BaseModel.ExtRel" />
           <EntitySet Name="MatRemains" EntityType="BaseModel.MatRemains" />
-          <FunctionImport Name="GetActualRemainByWh" ReturnType="Collection(BaseModel.GetActualRemainByWh_Result)">
-            <Parameter Name="wid" Mode="In" Type="Int32" />
-            <Parameter Name="mat_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <EntitySet Name="TAXWBDET" EntityType="BaseModel.TAXWBDET" />
           <AssociationSet Name="FK_TAXWBDET_TWBID" Association="BaseModel.FK_TAXWBDET_TWBID">
             <End Role="TAXWB" EntitySet="TAXWB" />
@@ -6846,7 +6905,6 @@
           <FunctionImport Name="GetMatChange" IsComposable="true" ReturnType="Collection(BaseModel.GetMatChange_Result)">
           <Parameter Name="mat_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="v_MatRemains" EntityType="BaseModel.v_MatRemains" />
           <EntitySet Name="v_WhMatRemains" EntityType="BaseModel.v_WhMatRemains" />
           <FunctionImport Name="GetLastPrice" IsComposable="true" ReturnType="Collection(BaseModel.GetLastPrice_Result)">
             <Parameter Name="mat_id" Mode="In" Type="Int32" />
@@ -7410,6 +7468,21 @@
             <End Role="UserSettings" EntitySet="UserSettings" />
           </AssociationSet>
           <EntitySet Name="v_Users" EntityType="BaseModel.v_Users" />
+          <EntitySet Name="ProductionPlanDet" EntityType="BaseModel.ProductionPlanDet" />
+          <EntitySet Name="ProductionPlans" EntityType="BaseModel.ProductionPlans" />
+          <AssociationSet Name="FK_ProductionPlanDet_Materials" Association="BaseModel.FK_ProductionPlanDet_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="ProductionPlanDet" EntitySet="ProductionPlanDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductionPlanDet_ProductionPlans" Association="BaseModel.FK_ProductionPlanDet_ProductionPlans">
+            <End Role="ProductionPlans" EntitySet="ProductionPlans" />
+            <End Role="ProductionPlanDet" EntitySet="ProductionPlanDet" />
+          </AssociationSet>
+          <FunctionImport Name="GetActualRemainByWh" ReturnType="Collection(BaseModel.GetActualRemainByWh_Result)">
+            <Parameter Name="wid" Mode="In" Type="Int32" />
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="v_MatRemains" EntityType="BaseModel.v_MatRemains" />
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -7748,11 +7821,11 @@
           <Property Type="Int32" Name="MatId" Nullable="false" />
           <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
           <Property Type="Int32" Name="TurnType" Nullable="false" />
-          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="4" />
           <Property Type="Int32" Name="SourceId" />
           <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK__WMATTURN__WID__3BCADD1B" FromRole="WMatTurn" ToRole="Warehouse" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK__WMATTURN__MATID__3AD6B8E2" FromRole="WMatTurn" ToRole="Materials" />
-          <Property Name="CalcAmount" Type="Decimal" Precision="37" Scale="19" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="CalcAmount" Type="Decimal" Precision="37" Scale="15" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WMT_POSID" FromRole="WMatTurn" ToRole="WaybillDet" />
           <NavigationProperty Name="WaybillDet1" Relationship="BaseModel.FK_WMT_SRCID" FromRole="WMatTurn" ToRole="WaybillDet" />
           </EntityType>
@@ -7784,6 +7857,7 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Deleted" Type="Int32" Nullable="false" />
           <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK__PAYDOC__CTYPEID__2334397B" FromRole="ChargeType" ToRole="PayDoc" />
+          <Property Type="Int32" Name="Def" Nullable="false" />
         </EntityType>
         <EntityType Name="Currency">
           <Key>
@@ -8274,18 +8348,6 @@
           <Property Type="Decimal" Name="ORsv" Precision="15" Scale="4" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK__MATREMAIN__MATID__04AFB25B" FromRole="MatRemains" ToRole="Materials" />
         </EntityType>
-        <ComplexType Name="GetActualRemainByWh_Result">
-          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
-          <Property Type="Decimal" Name="Remain" Nullable="false" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Rsv" Nullable="false" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="CurRemain" Nullable="true" Precision="16" Scale="4" />
-          <Property Type="Decimal" Name="AvgPrice" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="MinPrice" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="MaxPrice" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="RemainInWh" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="RsvInWh" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="CurRemainInWh" Nullable="true" Precision="38" Scale="4" />
-        </ComplexType>
         <EntityType Name="TAXWBDET">
           <Key>
             <PropertyRef Name="TWBDETID" />
@@ -8415,7 +8477,7 @@
           <Property Type="Int32" Name="Num" Nullable="false" />
           <Property Type="Int32" Name="ExtMatAmount" />
           <Property Type="String" Name="RamaName" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="Decimal" Name="OutNetto" Precision="38" Scale="8" />
+          <Property Type="Decimal" Name="OutNetto" Precision="15" Scale="4" />
           <Property Type="Decimal" Name="TareWeight" Precision="15" Scale="4" />
           <Property Type="String" Name="Kod" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
@@ -8547,6 +8609,7 @@
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" FromRole="Materials" ToRole="WaybillDet" />
           <NavigationProperty Name="PosRemains" Relationship="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" FromRole="Materials" ToRole="PosRemains" />
           <NavigationProperty Name="WayBillMakeProps" Relationship="BaseModel.FK_WayBillMakeProps_Materials" FromRole="Materials" ToRole="WayBillMakeProps" />
+          <NavigationProperty Name="ProductionPlanDet" Relationship="BaseModel.FK_ProductionPlanDet_Materials" FromRole="Materials" ToRole="ProductionPlanDet" />
         </EntityType>
         <Association Name="FK_CONTRDET_REFERENCE_MATERIAL">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="0..1" />
@@ -9990,21 +10053,6 @@
           <Property Type="String" Name="GrpName" Nullable="false" MaxLength="64" />
           <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
         </ComplexType>
-        <EntityType Name="v_MatRemains">
-          <Key>
-            <PropertyRef Name="MatId" />
-            <PropertyRef Name="OnDate" />
-          </Key>
-          <Property Type="Int32" Name="MatId" Nullable="false" />
-          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
-          <Property Type="Decimal" Name="Remain" Precision="38" Scale="19" />
-          <Property Type="Decimal" Name="Rsv" Precision="38" Scale="8" />
-          <Property Type="Decimal" Name="AvgPrice" Precision="38" Scale="6" />
-          <Property Type="Decimal" Name="MinPrice" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="MaxPrice" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Ordered" Precision="38" Scale="8" />
-          <Property Type="Decimal" Name="ORsv" Precision="38" Scale="8" />
-        </EntityType>
         <EntityType Name="v_WhMatRemains">
           <Key>
             <PropertyRef Name="MatId" />
@@ -10014,13 +10062,13 @@
           <Property Type="Int32" Name="MatId" Nullable="false" />
           <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
           <Property Type="Int32" Name="WId" Nullable="false" />
-          <Property Type="Decimal" Name="Remain" Precision="38" Scale="19" />
-          <Property Type="Decimal" Name="Rsv" Precision="38" Scale="8" />
+          <Property Type="Decimal" Name="Remain" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Rsv" Precision="38" Scale="4" />
           <Property Type="Decimal" Name="AvgPrice" Precision="38" Scale="6" />
-          <Property Type="Decimal" Name="MinPrice" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="MaxPrice" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Ordered" Precision="38" Scale="8" />
-          <Property Type="Decimal" Name="ORsv" Precision="38" Scale="8" />
+          <Property Type="Decimal" Name="MinPrice" Precision="38" Scale="10" />
+          <Property Type="Decimal" Name="MaxPrice" Precision="38" Scale="10" />
+          <Property Type="Decimal" Name="Ordered" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="ORsv" Precision="38" Scale="4" />
         </EntityType>
         <ComplexType Name="GetLastPrice_Result">
           <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
@@ -10283,7 +10331,7 @@
           <Property Type="Int32" Name="WbillId" Nullable="false" />
           <Property Type="Int32" Name="MatId" Nullable="false" />
           <Property Type="Int32" Name="WId" />
-          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="4" />
           <Property Type="Decimal" Name="Price" Precision="15" Scale="4" />
           <Property Type="Decimal" Name="Discount" Precision="15" Scale="4" />
           <Property Type="Decimal" Name="Nds" Precision="15" Scale="4" />
@@ -10348,7 +10396,7 @@
           <Property Type="Int32" Name="DocId" />
           <Property Type="Decimal" Name="SummInCurr" Precision="15" Scale="2" />
           <Property Type="Int32" Name="EntId" />
-          <Property Type="Decimal" Name="OnValue" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="OnValue" Precision="15" Scale="4" />
           <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
           <Property Type="Int32" Name="UpdatedBy" />
           <NavigationProperty Name="Commission" Relationship="BaseModel.FK_COMMISSION_WBILLID" FromRole="WaybillList" ToRole="Commission" />
@@ -12411,6 +12459,88 @@
           <Property Type="Boolean" Name="IsWorking" Nullable="false" />
           <Property Type="String" Name="EmployeeName" MaxLength="64" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="ProductionPlanDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="MatId" />
+          <Property Type="Decimal" Name="Amount" Precision="15" Scale="4" />
+          <Property Type="Guid" Name="ProductionPlanId" />
+          <Property Type="Decimal" Name="Remain" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Total" Precision="16" Scale="4" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_ProductionPlanDet_Materials" FromRole="ProductionPlanDet" ToRole="Materials" />
+          <NavigationProperty Name="ProductionPlans" Relationship="BaseModel.FK_ProductionPlanDet_ProductionPlans" FromRole="ProductionPlanDet" ToRole="ProductionPlans" />
+        </EntityType>
+        <EntityType Name="ProductionPlans">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Num" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="Checked" Nullable="false" />
+          <Property Type="Int32" Name="EntId" />
+          <Property Type="Int32" Name="PersonId" />
+          <Property Type="String" Name="Notes" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" />
+          <NavigationProperty Name="ProductionPlanDet" Relationship="BaseModel.FK_ProductionPlanDet_ProductionPlans" FromRole="ProductionPlans" ToRole="ProductionPlanDet" />
+          <Property Type="Guid" Name="SessionId" />
+        </EntityType>
+        <Association Name="FK_ProductionPlanDet_Materials">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="0..1" />
+          <End Type="BaseModel.ProductionPlanDet" Role="ProductionPlanDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="ProductionPlanDet">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductionPlanDet_ProductionPlans">
+          <End Type="BaseModel.ProductionPlans" Role="ProductionPlans" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.ProductionPlanDet" Role="ProductionPlanDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductionPlans">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductionPlanDet">
+              <PropertyRef Name="ProductionPlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GetActualRemainByWh_Result">
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="Remain" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Rsv" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="CurRemain" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AvgPrice" Nullable="true" Precision="38" Scale="6" />
+          <Property Type="Decimal" Name="MinPrice" Nullable="true" Precision="38" Scale="10" />
+          <Property Type="Decimal" Name="MaxPrice" Nullable="true" Precision="38" Scale="10" />
+          <Property Type="Decimal" Name="RemainInWh" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="RsvInWh" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="CurRemainInWh" Nullable="true" Precision="38" Scale="4" />
+        </ComplexType>
+        <EntityType Name="v_MatRemains">
+          <Key>
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="OnDate" />
+          </Key>
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
+          <Property Type="Decimal" Name="Remain" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Rsv" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AvgPrice" Precision="38" Scale="6" />
+          <Property Type="Decimal" Name="MinPrice" Precision="38" Scale="10" />
+          <Property Type="Decimal" Name="MaxPrice" Precision="38" Scale="10" />
+          <Property Type="Decimal" Name="Ordered" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="ORsv" Precision="38" Scale="4" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -12786,6 +12916,7 @@
           <EntitySetMapping Name="ChargeType">
             <EntityTypeMapping TypeName="BaseModel.ChargeType">
               <MappingFragment StoreEntitySet="ChargeType">
+                <ScalarProperty Name="Def" ColumnName="Def" />
                 <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="CTypeId" ColumnName="CTypeId" />
@@ -13155,22 +13286,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetActualRemainByWh" FunctionName="BaseModel.Store.GetActualRemainByWh">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetActualRemainByWh_Result">
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="Remain" ColumnName="Remain" />
-                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
-                <ScalarProperty Name="CurRemain" ColumnName="CurRemain" />
-                <ScalarProperty Name="AvgPrice" ColumnName="AvgPrice" />
-                <ScalarProperty Name="MinPrice" ColumnName="MinPrice" />
-                <ScalarProperty Name="MaxPrice" ColumnName="MaxPrice" />
-                <ScalarProperty Name="RemainInWh" ColumnName="RemainInWh" />
-                <ScalarProperty Name="RsvInWh" ColumnName="RsvInWh" />
-                <ScalarProperty Name="CurRemainInWh" ColumnName="CurRemainInWh" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="TAXWBDET">
             <EntityTypeMapping TypeName="BaseModel.TAXWBDET">
               <MappingFragment StoreEntitySet="TAXWBDET">
@@ -14424,21 +14539,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="v_MatRemains">
-            <EntityTypeMapping TypeName="BaseModel.v_MatRemains">
-              <MappingFragment StoreEntitySet="v_MatRemains">
-                <ScalarProperty Name="ORsv" ColumnName="ORsv" />
-                <ScalarProperty Name="Ordered" ColumnName="Ordered" />
-                <ScalarProperty Name="MaxPrice" ColumnName="MaxPrice" />
-                <ScalarProperty Name="MinPrice" ColumnName="MinPrice" />
-                <ScalarProperty Name="AvgPrice" ColumnName="AvgPrice" />
-                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
-                <ScalarProperty Name="Remain" ColumnName="Remain" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="v_WhMatRemains">
             <EntityTypeMapping TypeName="BaseModel.v_WhMatRemains">
               <MappingFragment StoreEntitySet="v_WhMatRemains">
@@ -15742,6 +15842,65 @@
                 <ScalarProperty Name="Pass" ColumnName="Pass" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductionPlanDet">
+            <EntityTypeMapping TypeName="BaseModel.ProductionPlanDet">
+              <MappingFragment StoreEntitySet="ProductionPlanDet">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
+                <ScalarProperty Name="ProductionPlanId" ColumnName="ProductionPlanId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductionPlans">
+            <EntityTypeMapping TypeName="BaseModel.ProductionPlans">
+              <MappingFragment StoreEntitySet="ProductionPlans">
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="EntId" ColumnName="EntId" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetActualRemainByWh" FunctionName="BaseModel.Store.GetActualRemainByWh">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetActualRemainByWh_Result">
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
+                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
+                <ScalarProperty Name="CurRemain" ColumnName="CurRemain" />
+                <ScalarProperty Name="AvgPrice" ColumnName="AvgPrice" />
+                <ScalarProperty Name="MinPrice" ColumnName="MinPrice" />
+                <ScalarProperty Name="MaxPrice" ColumnName="MaxPrice" />
+                <ScalarProperty Name="RemainInWh" ColumnName="RemainInWh" />
+                <ScalarProperty Name="RsvInWh" ColumnName="RsvInWh" />
+                <ScalarProperty Name="CurRemainInWh" ColumnName="CurRemainInWh" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="v_MatRemains">
+            <EntityTypeMapping TypeName="BaseModel.v_MatRemains">
+              <MappingFragment StoreEntitySet="v_MatRemains">
+                <ScalarProperty Name="ORsv" ColumnName="ORsv" />
+                <ScalarProperty Name="Ordered" ColumnName="Ordered" />
+                <ScalarProperty Name="MaxPrice" ColumnName="MaxPrice" />
+                <ScalarProperty Name="MinPrice" ColumnName="MinPrice" />
+                <ScalarProperty Name="AvgPrice" ColumnName="AvgPrice" />
+                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -127,8 +127,8 @@ namespace SP_Sklad.WBDetForm
             }
             _db.Save(_wb.WbillId);
 
-            if (_wb.WType == 16)
-            {
+        //    if (_wb.WType == 16)
+         //   {
                 _db.DeleteWhere<WMatTurn>(w => w.PosId == _wbd.PosId);
                 _db.WMatTurn.Add(new WMatTurn()
                 {
@@ -140,7 +140,7 @@ namespace SP_Sklad.WBDetForm
                     TurnType = 3,
                     Amount = _wbd.Amount
                 });
-            }
+        //    }
 
             //   if (Serials->State == dsInsert || Serials->State == dsEdit) Serials->Post();
             //      if (WayBillDetAddProps->State == dsInsert || WayBillDetAddProps->State == dsEdit) WayBillDetAddProps->Post();
@@ -160,7 +160,14 @@ namespace SP_Sklad.WBDetForm
 
             if (_wb.WType == 1)
             {
+               /* var wmt = _db.WMatTurn.FirstOrDefault(w => w.SourceId == _wbd.PosId);
+                if (wmt != null)
+                {
+                    wmt.Amount = _wbd.Amount;
+                }*/
+                
                 _db.UpdWaybillDetPrice(_wb.WbillId);
+
             }
 
             _db.Save(_wb.WbillId);
