@@ -20,8 +20,10 @@ namespace SP_Sklad.SkladData
         public Nullable<System.Guid> ProductionPlanId { get; set; }
         public Nullable<decimal> Remain { get; set; }
         public Nullable<decimal> Total { get; set; }
+        public Nullable<int> WhId { get; set; }
     
         public virtual Materials Materials { get; set; }
         public virtual ProductionPlans ProductionPlans { get; set; }
+        public virtual Warehouse Warehouse { get; set; }
     }
 }

@@ -2047,5 +2047,27 @@ namespace SP_Sklad.SkladData
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetActualRemainByWh_Result>("GetActualRemainByWh", widParameter, mat_idParameter);
         }
+    
+        [EdmFunction("BaseEntities", "ProductionPlansList")]
+        public virtual IQueryable<ProductionPlansList_Result> ProductionPlansList(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> @checked, Nullable<int> person_id)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var checkedParameter = @checked.HasValue ?
+                new ObjectParameter("checked", @checked) :
+                new ObjectParameter("checked", typeof(int));
+    
+            var person_idParameter = person_id.HasValue ?
+                new ObjectParameter("person_id", person_id) :
+                new ObjectParameter("person_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<ProductionPlansList_Result>("[BaseEntities].[ProductionPlansList](@from_date, @to_date, @checked, @person_id)", from_dateParameter, to_dateParameter, checkedParameter, person_idParameter);
+        }
     }
 }

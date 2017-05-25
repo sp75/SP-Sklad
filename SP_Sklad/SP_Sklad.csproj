@@ -450,6 +450,9 @@
     <Compile Include="SkladData\ProductionPlans.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\ProductionPlansList_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\ProfileDocSetting.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1583,6 +1586,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PriceListDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PriceTypes.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ProductionPlans.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.ProductionPlansList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Routes.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Serials.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Services.datasource" />

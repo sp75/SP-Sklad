@@ -66,7 +66,6 @@ namespace SP_Sklad.WBForm
             }
             else
             {
-                //   UpdLockWB();
                 pp = _db.ProductionPlans.FirstOrDefault(f => f.Id == _doc_id );
             }
 
@@ -74,7 +73,10 @@ namespace SP_Sklad.WBForm
             {
                 _doc_id = pp.Id;
 
-       //         DBHelper.UpdateSessionWaybill(wb.WbillId);
+                pp.SessionId =  (Guid?)UserSession.SessionId;
+                pp.UpdatedBy = UserSession.UserId;
+                pp.UpdatedAt = DateTime.Now;
+                _db.SaveChanges();
 
                 if (is_new_record)
                 {

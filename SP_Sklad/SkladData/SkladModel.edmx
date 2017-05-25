@@ -862,6 +862,10 @@
             <End Role="ProductionPlans" EntitySet="ProductionPlans" />
             <End Role="ProductionPlanDet" EntitySet="ProductionPlanDet" />
           </AssociationSet>
+          <AssociationSet Name="FK_ProductionPlanDet_Warehouse" Association="BaseModel.Store.FK_ProductionPlanDet_Warehouse">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="ProductionPlanDet" EntitySet="ProductionPlanDet" />
+          </AssociationSet>
           <AssociationSet Name="FK_REPLNG_LANGID" Association="BaseModel.Store.FK_REPLNG_LANGID">
             <End Role="Languages" EntitySet="Languages" />
             <End Role="RepLng" EntitySet="RepLng" />
@@ -1839,6 +1843,7 @@
           <Property Name="ProductionPlanId" Type="uniqueidentifier" />
           <Property Name="Remain" Type="numeric" Precision="15" Scale="4" />
           <Property Name="Total" Type="numeric" Precision="16" Scale="4" StoreGeneratedPattern="Computed" />
+          <Property Name="WhId" Type="int" />
         </EntityType>
         <EntityType Name="ProductionPlans">
           <Key>
@@ -3980,6 +3985,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ProductionPlanDet_Warehouse">
+          <End Role="Warehouse" Type="BaseModel.Store.Warehouse" Multiplicity="0..1" />
+          <End Role="ProductionPlanDet" Type="BaseModel.Store.ProductionPlanDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
+            </Principal>
+            <Dependent Role="ProductionPlanDet">
+              <PropertyRef Name="WhId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_REPLNG_LANGID">
           <End Role="Languages" Type="BaseModel.Store.Languages" Multiplicity="1" />
           <End Role="RepLng" Type="BaseModel.Store.RepLng" Multiplicity="*" />
@@ -5572,6 +5589,24 @@
                 <Property Name="CertDate" Type="datetime" />
                 <Property Name="Producer" Type="nvarchar" MaxLength="64" />
                 <Property Name="CurRemain" Type="numeric" Precision="15" Scale="4" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="ProductionPlansList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="from_date" Type="datetime" Mode="In" />
+          <Parameter Name="to_date" Type="datetime" Mode="In" />
+          <Parameter Name="checked" Type="int" Mode="In" />
+          <Parameter Name="person_id" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+                <Property Name="Num" Type="nvarchar" MaxLength="20" />
+                <Property Name="OnDate" Type="datetime" Nullable="false" />
+                <Property Name="Checked" Type="int" Nullable="false" />
+                <Property Name="EntName" Type="nvarchar" MaxLength="64" />
+                <Property Name="PersonName" Type="nvarchar" MaxLength="64" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -7483,6 +7518,16 @@
             <Parameter Name="mat_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="v_MatRemains" EntityType="BaseModel.v_MatRemains" />
+          <FunctionImport Name="ProductionPlansList" IsComposable="true" ReturnType="Collection(BaseModel.ProductionPlansList_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="checked" Mode="In" Type="Int32" />
+            <Parameter Name="person_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <AssociationSet Name="FK_ProductionPlanDet_Warehouse" Association="BaseModel.FK_ProductionPlanDet_Warehouse">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="ProductionPlanDet" EntitySet="ProductionPlanDet" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
           <Property Name="MATNAME" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -8086,6 +8131,7 @@
           <NavigationProperty Name="Materials2" Relationship="BaseModel.FK__MATERIALS__WID__65370702" FromRole="Warehouse" ToRole="Materials" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__WAREHOUS" FromRole="Warehouse" ToRole="WaybillDet" />
           <NavigationProperty Name="PosRemains" Relationship="BaseModel.FK__POSREMAINS__WID__2EA5EC27" FromRole="Warehouse" ToRole="PosRemains" />
+          <NavigationProperty Name="ProductionPlanDet" Relationship="BaseModel.FK_ProductionPlanDet_Warehouse" FromRole="Warehouse" ToRole="ProductionPlanDet" />
           </EntityType>
         <Association Name="FK__WMATTURN__WID__3BCADD1B">
           <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="1" />
@@ -12471,6 +12517,8 @@
           <Property Type="Decimal" Name="Total" Precision="16" Scale="4" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK_ProductionPlanDet_Materials" FromRole="ProductionPlanDet" ToRole="Materials" />
           <NavigationProperty Name="ProductionPlans" Relationship="BaseModel.FK_ProductionPlanDet_ProductionPlans" FromRole="ProductionPlanDet" ToRole="ProductionPlans" />
+          <Property Type="Int32" Name="WhId" />
+          <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK_ProductionPlanDet_Warehouse" FromRole="ProductionPlanDet" ToRole="Warehouse" />
         </EntityType>
         <EntityType Name="ProductionPlans">
           <Key>
@@ -12541,6 +12589,26 @@
           <Property Type="Decimal" Name="Ordered" Precision="38" Scale="4" />
           <Property Type="Decimal" Name="ORsv" Precision="38" Scale="4" />
         </EntityType>
+        <ComplexType Name="ProductionPlansList_Result">
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Num" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="Checked" Nullable="false" />
+          <Property Type="String" Name="EntName" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="64" />
+        </ComplexType>
+        <Association Name="FK_ProductionPlanDet_Warehouse">
+          <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="0..1" />
+          <End Type="BaseModel.ProductionPlanDet" Role="ProductionPlanDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
+            </Principal>
+            <Dependent Role="ProductionPlanDet">
+              <PropertyRef Name="WhId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -15848,6 +15916,7 @@
           <EntitySetMapping Name="ProductionPlanDet">
             <EntityTypeMapping TypeName="BaseModel.ProductionPlanDet">
               <MappingFragment StoreEntitySet="ProductionPlanDet">
+                <ScalarProperty Name="WhId" ColumnName="WhId" />
                 <ScalarProperty Name="Total" ColumnName="Total" />
                 <ScalarProperty Name="Remain" ColumnName="Remain" />
                 <ScalarProperty Name="ProductionPlanId" ColumnName="ProductionPlanId" />
@@ -15904,6 +15973,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ProductionPlansList" FunctionName="BaseModel.Store.ProductionPlansList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.ProductionPlansList_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="EntName" ColumnName="EntName" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

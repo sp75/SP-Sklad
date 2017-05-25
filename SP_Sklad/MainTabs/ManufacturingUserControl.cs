@@ -55,11 +55,16 @@ namespace SP_Sklad.MainTabs
                 wbSatusList.EditValue = -1;
                 DebSatusList.Properties.DataSource = wbSatusList.Properties.DataSource;
                 DebSatusList.EditValue = -1;
+                lookUpEdit2.Properties.DataSource = wbSatusList.Properties.DataSource;
+                lookUpEdit2.EditValue = -1;
 
                 wbStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
                 wbEndDate.EditValue = DateTime.Now.Date.SetEndDay();
                 DebStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
                 DebEndDate.EditValue = DateTime.Now.Date.SetEndDay();
+
+                PlanStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
+                PlanEndDate.EditValue = DateTime.Now.Date.SetEndDay();
 
                 DocsTreeList.DataSource = DB.SkladBase().GetManufactureTree(DBHelper.CurrentUser.UserId).ToList();
                 DocsTreeList.ExpandAll(); //ExpandToLevel(0);
@@ -98,6 +103,21 @@ namespace SP_Sklad.MainTabs
             DeboningGridView.TopRowIndex = top_row;
         }
 
+        void GetProductionPlans()
+        {
+            if (lookUpEdit2.EditValue == null /*|| DebWhComboBox.EditValue == null*/ || DocsTreeList.FocusedNode == null)
+            {
+                return;
+            }
+
+            var satrt_date = PlanStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : PlanStartDate.DateTime;
+            var end_date = PlanEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : PlanEndDate.DateTime;
+
+            int top_row = ProductionPlansGridView.TopRowIndex;
+            ProductionPlansBS.DataSource = DB.SkladBase().ProductionPlansList(satrt_date, end_date, (int)lookUpEdit2.EditValue, DBHelper.CurrentUser.KaId).ToList();
+            ProductionPlansGridView.TopRowIndex = top_row;
+        }
+
         private void DocsTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
             DeleteItemBtn.Enabled = false;
@@ -125,9 +145,11 @@ namespace SP_Sklad.MainTabs
                 return;
             }
 
+            bar1.Visible = true;
+
             switch (focused_tree_node.GType.Value)
             {
-                case 1: bar1.Visible = true;
+                case 1:
                     GetWBListMake();
                     break;
 
@@ -139,8 +161,11 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 3:
-                    bar1.Visible = true;
                     GetDeboningList();
+                    break;
+
+                case 4:
+                    GetProductionPlans();
                     break;
             }
         }
@@ -168,6 +193,13 @@ namespace SP_Sklad.MainTabs
                     }
                     break;
 
+                case 4:
+                    using (var wb_pp = new frmProductionPlans(null))
+                    {
+                        wb_pp.ShowDialog();
+                    }
+                    break;
+
             }
 
             RefrechItemBtn.PerformClick();
@@ -185,6 +217,16 @@ namespace SP_Sklad.MainTabs
 
                     case 3:
                         ManufDocEdit.WBEdit(DeboningGridView.GetFocusedRow() as WBListMake_Result);
+                        break;
+
+                    case 4:
+                        var row = ProductionPlansGridView.GetFocusedRow() as ProductionPlansList_Result;
+
+                        using (var f = new frmProductionPlans(row.Id))
+                        {
+                            f.ShowDialog();
+                        }
+
                         break;
 
                 }
