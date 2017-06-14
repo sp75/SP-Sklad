@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SP_Sklad.Common;
 using SP_Sklad.SkladData;
+using SP_Sklad.WBDetForm;
 
 namespace SP_Sklad.WBForm
 {
@@ -82,6 +83,7 @@ namespace SP_Sklad.WBForm
                 {
                     pp.Num = new BaseEntities().GetDocNum("prod_plan").FirstOrDefault();
                 }
+                ProductionPlansBS.DataSource = pp;
 
               //  TurnDocCheckBox.EditValue =
 
@@ -93,7 +95,70 @@ namespace SP_Sklad.WBForm
             //    DelMaterialBtn.Enabled = AddBarSubItem.Enabled;
             }
 
-        //    RefreshDet();
+            RefreshDet();
+        }
+
+        private void RefreshDet()
+        {
+            ProductionPlanDetBS.DataSource = _db.v_ProductionPlanDet.Where(w => w.ProductionPlanId == _doc_id).ToList();
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            new frmProductionPlanDet(_db, Guid.NewGuid()).ShowDialog();
+
+            RefreshDet();
+        }
+
+        private void EditMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var row = WaybillDetInGridView.GetFocusedRow() as v_ProductionPlanDet;
+            new frmProductionPlanDet(_db, row.Id).ShowDialog();
+
+            RefreshDet();
+        }
+
+        private void OkButton_Click(object sender, EventArgs e)
+        {
+            pp.UpdatedAt = DateTime.Now;
+
+            var ProductionPlan = _db.ProductionPlans.Find(_doc_id);
+            if (ProductionPlan != null && ProductionPlan.SessionId != UserSession.SessionId)
+            {
+                throw new Exception("Не можливо зберегти документ, тільки перегляд.");
+            }
+
+            _db.SaveChanges();
+
+
+            if (TurnDocCheckBox.Checked)
+            {
+                //   var ex_wb = _db.ExecuteWayBill(wb.WbillId, null, DBHelper.CurrentUser.KaId).ToList();
+            }
+
+            is_new_record = false;
+
+            Close();
+        }
+
+        private void frmProductionPlans_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            pp.SessionId = (pp.SessionId == UserSession.SessionId ? null : pp.SessionId);
+            pp.UpdatedBy = UserSession.UserId;
+            pp.UpdatedAt = DateTime.Now;
+            _db.SaveChanges();
+
+            if (is_new_record)
+            {
+                _db.DeleteWhere<ProductionPlans>(w => w.Id == _doc_id);
+            }
+
+            _db.Dispose();
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

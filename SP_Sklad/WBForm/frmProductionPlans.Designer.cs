@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProductionPlans));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.WBImgList = new System.Windows.Forms.ImageList(this.components);
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -60,9 +60,6 @@
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.ProductionPlansBS = new System.Windows.Forms.BindingSource(this.components);
-            this.WaybillMoveBS = new System.Windows.Forms.BindingSource(this.components);
-            this.CommissionBS = new System.Windows.Forms.BindingSource(this.components);
-            this.WaybillDetInBS = new System.Windows.Forms.BindingSource(this.components);
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
@@ -83,34 +80,23 @@
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
-            this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
-            this.InventoryDetGridControl = new DevExpress.XtraGrid.GridControl();
-            this.InventoryDetGridView = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
-            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridColumn11 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.gridColumn2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridColumn5 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridColumn4 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.WaybillDetInGridControl = new DevExpress.XtraGrid.GridControl();
+            this.ProductionPlanDetBS = new System.Windows.Forms.BindingSource(this.components);
+            this.WaybillDetInGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
-            this.gridColumn6 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridColumn8 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.bandedGridColumn2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductionPlansBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillMoveBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CommissionBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -126,12 +112,11 @@
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
             this.panelControl5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.InventoryDetGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.InventoryDetGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductionPlanDetBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // WBImgList
@@ -275,6 +260,7 @@
             this.barButtonItem1.ImageIndex = 8;
             this.barButtonItem1.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Insert));
             this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // barButtonItem7
             // 
@@ -292,6 +278,7 @@
             this.EditMaterialBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P));
             this.EditMaterialBtn.Name = "EditMaterialBtn";
             this.EditMaterialBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.EditMaterialBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.EditMaterialBtn_ItemClick);
             // 
             // DelMaterialBtn
             // 
@@ -404,18 +391,6 @@
             // 
             this.ProductionPlansBS.DataSource = typeof(SP_Sklad.SkladData.ProductionPlans);
             // 
-            // WaybillMoveBS
-            // 
-            this.WaybillMoveBS.DataSource = typeof(SP_Sklad.SkladData.WaybillMove);
-            // 
-            // CommissionBS
-            // 
-            this.CommissionBS.DataSource = typeof(SP_Sklad.SkladData.Commission);
-            // 
-            // WaybillDetInBS
-            // 
-            this.WaybillDetInBS.DataSource = typeof(SP_Sklad.SkladData.GetWaybillDetIn_Result);
-            // 
             // panelControl3
             // 
             this.panelControl3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
@@ -478,7 +453,6 @@
             // 
             // WHComboBox
             // 
-            this.WHComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillMoveBS, "SourceWid", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.WHComboBox.Location = new System.Drawing.Point(75, 75);
             this.WHComboBox.Name = "WHComboBox";
             this.WHComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -495,12 +469,12 @@
             // 
             // PersonComboBox
             // 
-            this.PersonComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.CommissionBS, "KaId", true));
+            this.PersonComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ProductionPlansBS, "PersonId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.PersonComboBox.Location = new System.Drawing.Point(75, 108);
             this.PersonComboBox.Name = "PersonComboBox";
             this.PersonComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("lookUpEdit1.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("PersonComboBox.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, true)});
             this.PersonComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name4")});
             this.PersonComboBox.Properties.DisplayMember = "Name";
@@ -549,7 +523,7 @@
             // 
             // TurnDocCheckBox
             // 
-            this.TurnDocCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ProductionPlansBS, "Checked", true));
+            this.TurnDocCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ProductionPlansBS, "Checked", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.TurnDocCheckBox.Location = new System.Drawing.Point(12, 8);
             this.TurnDocCheckBox.Name = "TurnDocCheckBox";
             this.TurnDocCheckBox.Properties.Caption = "Провести документ";
@@ -570,7 +544,7 @@
             // 
             // NumEdit
             // 
-            this.NumEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ProductionPlansBS, "Num", true));
+            this.NumEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ProductionPlansBS, "Num", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.NumEdit.Location = new System.Drawing.Point(75, 41);
             this.NumEdit.Name = "NumEdit";
             this.NumEdit.Size = new System.Drawing.Size(168, 22);
@@ -579,8 +553,8 @@
             // 
             // OnDateDBEdit
             // 
-            this.OnDateDBEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ProductionPlansBS, "OnDate", true));
-            this.OnDateDBEdit.EditValue = new System.DateTime(2016, 3, 3, 16, 47, 59, 0);
+            this.OnDateDBEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ProductionPlansBS, "OnDate", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.OnDateDBEdit.EditValue = null;
             this.OnDateDBEdit.Location = new System.Drawing.Point(324, 41);
             this.OnDateDBEdit.Name = "OnDateDBEdit";
             this.OnDateDBEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -621,6 +595,7 @@
             this.OkButton.Size = new System.Drawing.Size(100, 30);
             this.OkButton.TabIndex = 1;
             this.OkButton.Text = "Застосувати";
+            this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
             // simpleButton1
             // 
@@ -630,103 +605,52 @@
             this.simpleButton1.Size = new System.Drawing.Size(100, 30);
             this.simpleButton1.TabIndex = 0;
             this.simpleButton1.Text = "Відмінити";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // panelControl5
             // 
+            this.panelControl5.Controls.Add(this.WaybillDetInGridControl);
             this.panelControl5.Controls.Add(this.barDockControl1);
-            this.panelControl5.Controls.Add(this.InventoryDetGridControl);
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl5.Location = new System.Drawing.Point(0, 239);
             this.panelControl5.Name = "panelControl5";
             this.panelControl5.Size = new System.Drawing.Size(1058, 282);
             this.panelControl5.TabIndex = 21;
             // 
-            // barDockControl1
+            // WaybillDetInGridControl
             // 
-            this.barDockControl1.CausesValidation = false;
-            this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControl1.Location = new System.Drawing.Point(2, 2);
-            this.barDockControl1.Size = new System.Drawing.Size(1054, 0);
-            // 
-            // InventoryDetGridControl
-            // 
-            this.InventoryDetGridControl.DataSource = this.WaybillDetInBS;
-            this.InventoryDetGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.InventoryDetGridControl.Location = new System.Drawing.Point(2, 2);
-            this.InventoryDetGridControl.MainView = this.InventoryDetGridView;
-            this.InventoryDetGridControl.Name = "InventoryDetGridControl";
-            this.InventoryDetGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.WaybillDetInGridControl.DataSource = this.ProductionPlanDetBS;
+            this.WaybillDetInGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WaybillDetInGridControl.Location = new System.Drawing.Point(2, 2);
+            this.WaybillDetInGridControl.MainView = this.WaybillDetInGridView;
+            this.WaybillDetInGridControl.MenuManager = this.barManager1;
+            this.WaybillDetInGridControl.Name = "WaybillDetInGridControl";
+            this.WaybillDetInGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1,
-            this.repositoryItemImageComboBox2,
-            this.repositoryItemImageComboBox3,
             this.repositoryItemCalcEdit1});
-            this.InventoryDetGridControl.Size = new System.Drawing.Size(1054, 278);
-            this.InventoryDetGridControl.TabIndex = 1;
-            this.InventoryDetGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.InventoryDetGridView});
+            this.WaybillDetInGridControl.Size = new System.Drawing.Size(1054, 278);
+            this.WaybillDetInGridControl.TabIndex = 2;
+            this.WaybillDetInGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.WaybillDetInGridView});
             // 
-            // InventoryDetGridView
+            // ProductionPlanDetBS
             // 
-            this.InventoryDetGridView.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
-            this.gridBand1,
-            this.gridBand2,
-            this.gridBand3,
-            this.gridBand4});
-            this.InventoryDetGridView.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
+            this.ProductionPlanDetBS.DataSource = typeof(SP_Sklad.SkladData.v_ProductionPlanDet);
+            // 
+            // WaybillDetInGridView
+            // 
+            this.WaybillDetInGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn2,
-            this.gridColumn11,
             this.gridColumn3,
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn6,
-            this.gridColumn8,
-            this.bandedGridColumn1,
-            this.bandedGridColumn2,
-            this.bandedGridColumn3});
-            this.InventoryDetGridView.GridControl = this.InventoryDetGridControl;
-            this.InventoryDetGridView.Images = this.WBImgList;
-            this.InventoryDetGridView.Name = "InventoryDetGridView";
-            this.InventoryDetGridView.OptionsView.ShowFooter = true;
-            this.InventoryDetGridView.OptionsView.ShowGroupPanel = false;
-            // 
-            // gridBand1
-            // 
-            this.gridBand1.Caption = "Товар";
-            this.gridBand1.Columns.Add(this.gridColumn11);
-            this.gridBand1.Columns.Add(this.gridColumn2);
-            this.gridBand1.Columns.Add(this.gridColumn3);
-            this.gridBand1.Columns.Add(this.gridColumn5);
-            this.gridBand1.Name = "gridBand1";
-            this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 437;
-            // 
-            // gridColumn11
-            // 
-            this.gridColumn11.Caption = "gridColumn11";
-            this.gridColumn11.ColumnEdit = this.repositoryItemImageComboBox2;
-            this.gridColumn11.FieldName = "Checked";
-            this.gridColumn11.Name = "gridColumn11";
-            this.gridColumn11.OptionsColumn.AllowEdit = false;
-            this.gridColumn11.OptionsColumn.AllowFocus = false;
-            this.gridColumn11.OptionsColumn.AllowMove = false;
-            this.gridColumn11.OptionsColumn.AllowSize = false;
-            this.gridColumn11.OptionsColumn.FixedWidth = true;
-            this.gridColumn11.OptionsColumn.ReadOnly = true;
-            this.gridColumn11.OptionsColumn.ShowCaption = false;
-            this.gridColumn11.OptionsColumn.ShowInCustomizationForm = false;
-            this.gridColumn11.OptionsColumn.TabStop = false;
-            this.gridColumn11.Visible = true;
-            this.gridColumn11.Width = 25;
-            // 
-            // repositoryItemImageComboBox2
-            // 
-            this.repositoryItemImageComboBox2.AutoHeight = false;
-            this.repositoryItemImageComboBox2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBox2.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 16)});
-            this.repositoryItemImageComboBox2.Name = "repositoryItemImageComboBox2";
-            this.repositoryItemImageComboBox2.SmallImages = this.WBImgList;
+            this.gridColumn7,
+            this.gridColumn9});
+            this.WaybillDetInGridView.GridControl = this.WaybillDetInGridControl;
+            this.WaybillDetInGridView.Name = "WaybillDetInGridView";
+            this.WaybillDetInGridView.OptionsView.ShowFooter = true;
+            this.WaybillDetInGridView.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn2
             // 
@@ -736,7 +660,8 @@
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.OptionsColumn.ReadOnly = true;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.Width = 45;
+            this.gridColumn2.VisibleIndex = 0;
+            this.gridColumn2.Width = 39;
             // 
             // gridColumn3
             // 
@@ -746,7 +671,28 @@
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.OptionsColumn.ReadOnly = true;
             this.gridColumn3.Visible = true;
-            this.gridColumn3.Width = 292;
+            this.gridColumn3.VisibleIndex = 1;
+            this.gridColumn3.Width = 306;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Кількість";
+            this.gridColumn4.ColumnEdit = this.repositoryItemCalcEdit1;
+            this.gridColumn4.FieldName = "Amount";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 2;
+            // 
+            // repositoryItemCalcEdit1
+            // 
+            this.repositoryItemCalcEdit1.AutoHeight = false;
+            this.repositoryItemCalcEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemCalcEdit1.DisplayFormat.FormatString = "0.0000";
+            this.repositoryItemCalcEdit1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.repositoryItemCalcEdit1.EditFormat.FormatString = "0.0000";
+            this.repositoryItemCalcEdit1.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.repositoryItemCalcEdit1.Name = "repositoryItemCalcEdit1";
             // 
             // gridColumn5
             // 
@@ -756,107 +702,40 @@
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.OptionsColumn.ReadOnly = true;
             this.gridColumn5.Visible = true;
-            // 
-            // gridBand2
-            // 
-            this.gridBand2.Caption = "Облікова";
-            this.gridBand2.Columns.Add(this.gridColumn4);
-            this.gridBand2.Columns.Add(this.gridColumn6);
-            this.gridBand2.Name = "gridBand2";
-            this.gridBand2.VisibleIndex = 1;
-            this.gridBand2.Width = 157;
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.Caption = "Кількість";
-            this.gridColumn4.ColumnEdit = this.repositoryItemCalcEdit1;
-            this.gridColumn4.FieldName = "Amount";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.OptionsColumn.AllowEdit = false;
-            this.gridColumn4.OptionsColumn.ReadOnly = true;
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.Width = 69;
-            // 
-            // repositoryItemCalcEdit1
-            // 
-            this.repositoryItemCalcEdit1.AllowMouseWheel = false;
-            this.repositoryItemCalcEdit1.AutoHeight = false;
-            this.repositoryItemCalcEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemCalcEdit1.Mask.UseMaskAsDisplayFormat = true;
-            this.repositoryItemCalcEdit1.Name = "repositoryItemCalcEdit1";
+            this.gridColumn5.VisibleIndex = 3;
+            this.gridColumn5.Width = 63;
             // 
             // gridColumn6
             // 
-            this.gridColumn6.Caption = "Ціна";
-            this.gridColumn6.ColumnEdit = this.repositoryItemCalcEdit1;
-            this.gridColumn6.FieldName = "Price";
+            this.gridColumn6.Caption = "Залишок";
+            this.gridColumn6.FieldName = "Remain";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.OptionsColumn.ReadOnly = true;
             this.gridColumn6.Visible = true;
-            this.gridColumn6.Width = 88;
+            this.gridColumn6.VisibleIndex = 5;
+            this.gridColumn6.Width = 82;
             // 
-            // gridBand3
+            // gridColumn7
             // 
-            this.gridBand3.Caption = "Фактична";
-            this.gridBand3.Columns.Add(this.gridColumn8);
-            this.gridBand3.Columns.Add(this.bandedGridColumn1);
-            this.gridBand3.Name = "gridBand3";
-            this.gridBand3.VisibleIndex = 2;
-            this.gridBand3.Width = 151;
+            this.gridColumn7.Caption = "Виробництво";
+            this.gridColumn7.FieldName = "Total";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.OptionsColumn.AllowEdit = false;
+            this.gridColumn7.OptionsColumn.ReadOnly = true;
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 6;
             // 
-            // gridColumn8
+            // gridColumn9
             // 
-            this.gridColumn8.Caption = "Кількість";
-            this.gridColumn8.ColumnEdit = this.repositoryItemCalcEdit1;
-            this.gridColumn8.FieldName = "Discount";
-            this.gridColumn8.Name = "gridColumn8";
-            this.gridColumn8.Visible = true;
-            this.gridColumn8.Width = 70;
-            // 
-            // bandedGridColumn1
-            // 
-            this.bandedGridColumn1.Caption = "Ціна";
-            this.bandedGridColumn1.ColumnEdit = this.repositoryItemCalcEdit1;
-            this.bandedGridColumn1.FieldName = "Nds";
-            this.bandedGridColumn1.Name = "bandedGridColumn1";
-            this.bandedGridColumn1.Visible = true;
-            this.bandedGridColumn1.Width = 81;
-            // 
-            // gridBand4
-            // 
-            this.gridBand4.Caption = "Результат";
-            this.gridBand4.Columns.Add(this.bandedGridColumn2);
-            this.gridBand4.Columns.Add(this.bandedGridColumn3);
-            this.gridBand4.Name = "gridBand4";
-            this.gridBand4.VisibleIndex = 3;
-            this.gridBand4.Width = 202;
-            // 
-            // bandedGridColumn2
-            // 
-            this.bandedGridColumn2.Caption = "Різниця";
-            this.bandedGridColumn2.ColumnEdit = this.repositoryItemCalcEdit1;
-            this.bandedGridColumn2.FieldName = "AmountAll";
-            this.bandedGridColumn2.Name = "bandedGridColumn2";
-            this.bandedGridColumn2.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn2.OptionsColumn.ReadOnly = true;
-            this.bandedGridColumn2.Visible = true;
-            this.bandedGridColumn2.Width = 89;
-            // 
-            // bandedGridColumn3
-            // 
-            this.bandedGridColumn3.Caption = "Сума надлишку/недостачі";
-            this.bandedGridColumn3.DisplayFormat.FormatString = "0.00";
-            this.bandedGridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.bandedGridColumn3.FieldName = "SumAll";
-            this.bandedGridColumn3.Name = "bandedGridColumn3";
-            this.bandedGridColumn3.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn3.OptionsColumn.ReadOnly = true;
-            this.bandedGridColumn3.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SumAll", "{0:0.00}")});
-            this.bandedGridColumn3.Visible = true;
-            this.bandedGridColumn3.Width = 113;
+            this.gridColumn9.Caption = "Склад";
+            this.gridColumn9.FieldName = "WhName";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.OptionsColumn.AllowEdit = false;
+            this.gridColumn9.OptionsColumn.ReadOnly = true;
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 4;
+            this.gridColumn9.Width = 197;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -869,15 +748,12 @@
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.WBImgList;
             // 
-            // repositoryItemImageComboBox3
+            // barDockControl1
             // 
-            this.repositoryItemImageComboBox3.AutoHeight = false;
-            this.repositoryItemImageComboBox3.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBox3.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 16)});
-            this.repositoryItemImageComboBox3.Name = "repositoryItemImageComboBox3";
-            this.repositoryItemImageComboBox3.SmallImages = this.WBImgList;
+            this.barDockControl1.CausesValidation = false;
+            this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControl1.Location = new System.Drawing.Point(2, 2);
+            this.barDockControl1.Size = new System.Drawing.Size(1054, 0);
             // 
             // frmProductionPlans
             // 
@@ -897,15 +773,14 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmProductionPlans";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Планування виробництва";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmProductionPlans_FormClosed);
             this.Load += new System.EventHandler(this.frmProductionPlans_Load);
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductionPlansBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillMoveBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CommissionBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
@@ -923,12 +798,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
             this.panelControl5.ResumeLayout(false);
             this.panelControl5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.InventoryDetGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.InventoryDetGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductionPlanDetBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -962,9 +836,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.PopupMenu WbDetPopupMenu;
         private System.Windows.Forms.BindingSource ProductionPlansBS;
-        private System.Windows.Forms.BindingSource WaybillMoveBS;
-        private System.Windows.Forms.BindingSource CommissionBS;
-        private System.Windows.Forms.BindingSource WaybillDetInBS;
         private DevExpress.XtraEditors.PanelControl panelControl3;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.SimpleButton WhBtn;
@@ -984,27 +855,19 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.PanelControl panelControl5;
         private DevExpress.XtraBars.BarDockControl barDockControl1;
-        private DevExpress.XtraGrid.GridControl InventoryDetGridControl;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView InventoryDetGridView;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn11;
-        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox2;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn2;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn3;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn5;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn4;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn6;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn8;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn1;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn2;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn3;
-        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
-        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox3;
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraEditors.LabelControl labelControl10;
+        private System.Windows.Forms.BindingSource ProductionPlanDetBS;
+        private DevExpress.XtraGrid.GridControl WaybillDetInGridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView WaybillDetInGridView;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
     }
 }

@@ -2793,6 +2793,7 @@
             this.ProductionPlansGridView.OptionsBehavior.Editable = false;
             this.ProductionPlansGridView.OptionsBehavior.ReadOnly = true;
             this.ProductionPlansGridView.OptionsView.ShowGroupPanel = false;
+            this.ProductionPlansGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.ProductionPlansGridView_FocusedRowObjectChanged);
             // 
             // gridColumn88
             // 

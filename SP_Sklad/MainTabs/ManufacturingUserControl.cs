@@ -26,6 +26,7 @@ namespace SP_Sklad.MainTabs
     {
         GetManufactureTree_Result focused_tree_node { get; set; }
         WBListMake_Result focused_row { get; set; }
+        ProductionPlansList_Result pp_focused_row { get; set; }
         int _cur_wtype = 0;
 
         public ManufacturingUserControl()
@@ -629,6 +630,31 @@ namespace SP_Sklad.MainTabs
             WbGridView.ExportToXlsx(path);
 
             Process.Start(path);
+        }
+
+        private void ProductionPlansGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
+        {
+            pp_focused_row = ((GridView)sender).GetRow(e.FocusedRowHandle) as ProductionPlansList_Result;
+
+            if (pp_focused_row != null)
+            {
+                using (var db = DB.SkladBase())
+                {
+                    gridControl6.DataSource = db.v_ProductionPlanDet.Where(w => w.ProductionPlanId == pp_focused_row.Id).ToList();
+                   
+                }
+            }
+            else
+            {
+                gridControl6.DataSource = null;
+              
+            }
+
+            DeleteItemBtn.Enabled = (pp_focused_row != null && pp_focused_row.Checked == 0 && focused_tree_node.CanDelete == 1);
+            EditItemBtn.Enabled = (pp_focused_row != null && pp_focused_row.Checked == 0 && focused_tree_node.CanModify == 1);
+            CopyItemBtn.Enabled = (pp_focused_row != null && focused_tree_node.CanModify == 1);
+            ExecuteItemBtn.Enabled = (pp_focused_row != null && focused_tree_node.CanPost == 1);
+            PrintItemBtn.Enabled = (pp_focused_row != null);
         }
 
     }

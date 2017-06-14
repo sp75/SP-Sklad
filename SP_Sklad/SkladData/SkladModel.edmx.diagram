@@ -259,6 +259,7 @@
         <AssociationConnector Association="BaseModel.FK_ProductionPlanDet_Materials" />
         <AssociationConnector Association="BaseModel.FK_ProductionPlanDet_ProductionPlans" />
         <AssociationConnector Association="BaseModel.FK_ProductionPlanDet_Warehouse" />
+        <EntityTypeShape EntityType="BaseModel.v_ProductionPlanDet" Width="1.5" PointX="3.1652298826562379" PointY="3.1967053130253706" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />
