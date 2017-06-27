@@ -56,12 +56,12 @@
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.WayBillMakeBS = new System.Windows.Forms.BindingSource(this.components);
             this.ToDateEdit = new DevExpress.XtraEditors.DateEdit();
             this.WaybillListBS = new System.Windows.Forms.BindingSource(this.components);
             this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.AmountMakeEdit = new DevExpress.XtraEditors.CalcEdit();
+            this.WayBillMakeBS = new System.Windows.Forms.BindingSource(this.components);
             this.WhInBtn = new DevExpress.XtraEditors.SimpleButton();
             this.ReceptBtn = new DevExpress.XtraEditors.SimpleButton();
             this.WhComboBox = new DevExpress.XtraEditors.LookUpEdit();
@@ -123,12 +123,12 @@
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.WayBillMakeBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ToDateEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ToDateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillListBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AmountMakeEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WayBillMakeBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WhComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RecipeComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TurnDocCheckBox.Properties)).BeginInit();
@@ -458,10 +458,6 @@
             this.panelControl1.Size = new System.Drawing.Size(568, 183);
             this.panelControl1.TabIndex = 4;
             // 
-            // WayBillMakeBS
-            // 
-            this.WayBillMakeBS.DataSource = typeof(SP_Sklad.SkladData.WayBillMake);
-            // 
             // ToDateEdit
             // 
             this.ToDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "ToDate", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -516,6 +512,10 @@
             this.AmountMakeEdit.StyleController = this.styleController1;
             this.AmountMakeEdit.TabIndex = 27;
             this.AmountMakeEdit.EditValueChanged += new System.EventHandler(this.NumEdit_EditValueChanged);
+            // 
+            // WayBillMakeBS
+            // 
+            this.WayBillMakeBS.DataSource = typeof(SP_Sklad.SkladData.WayBillMake);
             // 
             // WhInBtn
             // 
@@ -1181,12 +1181,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.WayBillMakeBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ToDateEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ToDateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillListBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AmountMakeEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WayBillMakeBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WhComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RecipeComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TurnDocCheckBox.Properties)).EndInit();

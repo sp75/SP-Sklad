@@ -56,7 +56,7 @@ namespace SP_Sklad.MainTabs
                 wbSatusList.EditValue = -1;
                 DebSatusList.Properties.DataSource = wbSatusList.Properties.DataSource;
                 DebSatusList.EditValue = -1;
-                lookUpEdit2.Properties.DataSource = wbSatusList.Properties.DataSource;
+                lookUpEdit2.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Розпочато виробництво" }, new { Id = 0, Name = "Актуальний" } };
                 lookUpEdit2.EditValue = -1;
 
                 wbStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
@@ -333,6 +333,40 @@ namespace SP_Sklad.MainTabs
                         }
 
                         break;
+
+                    case 4:
+                        if (pp_focused_row == null)
+                        {
+                            return;
+                        }
+
+                        var pp = db.ProductionPlans.Find(pp_focused_row.Id);
+
+                        if (pp == null)
+                        {
+                            MessageBox.Show(Resources.not_find_wb);
+                            return;
+                        }
+                        if (pp.SessionId != null)
+                        {
+                            MessageBox.Show(Resources.deadlock);
+                            return;
+                        }
+
+                        var rel = db.GetRelDocList(pp_focused_row.Id).OrderBy(o => o.OnDate).ToList();
+                        if (rel.Any())
+                        {
+                            MessageBox.Show(Resources.not_storno_wb, "Відміна проводки", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return;
+                        }
+
+                        if (pp.Checked == 1 )
+                        {
+                            pp.Checked = 0;
+                        }
+
+                        db.SaveChanges();
+                        break;
                 }
             }
 
@@ -341,7 +375,7 @@ namespace SP_Sklad.MainTabs
 
         private void DeleteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (focused_row == null)
+            if (focused_row == null && pp_focused_row == null)
             {
                 return;
             }
@@ -355,6 +389,7 @@ namespace SP_Sklad.MainTabs
                         switch (focused_tree_node.GType)
                         {
                             case 3:
+
                             case 1:
                                 var wb = db.WaybillList.FirstOrDefault(w => w.WbillId == focused_row.WbillId && w.SessionId == null);
                                 if (wb != null)
@@ -365,6 +400,15 @@ namespace SP_Sklad.MainTabs
                                 {
                                     MessageBox.Show(Resources.deadlock);
                                 }
+                                break;
+
+                            case 4:
+                                var pp = db.ProductionPlans.FirstOrDefault(w=> w.Id == pp_focused_row.Id && w.SessionId == null);
+                                if (pp != null)
+                                {
+                                    db.ProductionPlans.Remove(pp);
+                                }
+
                                 break;
                         }
                         db.SaveChanges();
@@ -471,6 +515,10 @@ namespace SP_Sklad.MainTabs
             else if (gridView5.Focus())
             {
                 row = gridView5.GetFocusedRow() as GetRelDocList_Result;
+            }
+            else if (gridView7.Focus())
+            {
+                row = gridView7.GetFocusedRow() as GetRelDocList_Result;
             }
 
             FindDoc.Find(row.Id, row.DocType, row.OnDate);
@@ -640,13 +688,14 @@ namespace SP_Sklad.MainTabs
             {
                 using (var db = DB.SkladBase())
                 {
-                    gridControl6.DataSource = db.v_ProductionPlanDet.Where(w => w.ProductionPlanId == pp_focused_row.Id).ToList();
-                   
+                    gridControl6.DataSource = db.v_ProductionPlanDet.Where(w => w.ProductionPlanId == pp_focused_row.Id).OrderBy(o => o.Num).ToList();
+                    gridControl7.DataSource = db.GetRelDocList(pp_focused_row.Id).OrderBy(o => o.OnDate).ToList();
                 }
             }
             else
             {
                 gridControl6.DataSource = null;
+                gridControl7.DataSource = null;
               
             }
 
@@ -655,6 +704,11 @@ namespace SP_Sklad.MainTabs
             CopyItemBtn.Enabled = (pp_focused_row != null && focused_tree_node.CanModify == 1);
             ExecuteItemBtn.Enabled = (pp_focused_row != null && focused_tree_node.CanPost == 1);
             PrintItemBtn.Enabled = (pp_focused_row != null);
+        }
+
+        private void PlanStartDate_EditValueChanged(object sender, EventArgs e)
+        {
+            GetProductionPlans();
         }
 
     }

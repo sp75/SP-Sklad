@@ -128,16 +128,27 @@ namespace SP_Sklad.MainTabs
                     using (var db = DB.SkladBase())
                     {
                         UsersOnlineBS.DataSource = db.Users.AsNoTracking().Where(w => w.IsOnline == true).ToList();
-                        gridControl2.DataSource = db.WaybillList.Join(db.DocType , w=> w.WType, t=> t.Id, (w,t) =>  new
+                        gridControl2.DataSource = db.WaybillList.Join(db.DocType, w => w.WType, t => t.Id, (w, t) => new
                         {
-                            w.WbillId,
+                            w.Id,
                             w.Num,
                             w.OnDate,
                             w.UpdatedAt,
                             w.SessionId,
                             UserName = db.Users.Where(u => u.UserId == w.UpdatedBy).Select(u => u.Name).FirstOrDefault(),
-                            t.Name
-                        }).Where(w => w.SessionId != null).ToList();
+                            t.Name,
+                            doc_type = t.Id
+                        }).Where(w => w.SessionId != null).ToList().Concat(db.ProductionPlans.Where(w => w.SessionId != null).Select(s => new
+                        {
+                            s.Id,
+                            s.Num,
+                            s.OnDate,
+                            s.UpdatedAt,
+                            s.SessionId,
+                            UserName = db.Users.Where(u => u.UserId == s.UpdatedBy).Select(u => u.Name).FirstOrDefault(),
+                            Name = "Планування виробницва",
+                            doc_type =  20
+                        }).ToList());
                     }
                     break;
 
@@ -283,13 +294,19 @@ namespace SP_Sklad.MainTabs
             dynamic s = gridView2.GetFocusedRow();
             using (var db = DB.SkladBase())
             {
-                int id =  s.WbillId;
-                var wb = db.WaybillList.FirstOrDefault(w => w.WbillId == id);
+                Guid id =  s.Id;
+                var wb = db.WaybillList.FirstOrDefault(w => w.Id == id);
                 if (wb != null)
                 {
                     wb.SessionId = null;
-                    db.SaveChanges();
                 }
+
+                var pp = db.ProductionPlans.Find(id);
+                if (pp != null)
+                {
+                    pp.SessionId = null;
+                }
+                db.SaveChanges();
 
                 RefrechItemBtn.PerformClick();
             }

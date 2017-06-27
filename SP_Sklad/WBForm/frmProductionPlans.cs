@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Infrastructure;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ using System.Windows.Forms;
 using SP_Sklad.Common;
 using SP_Sklad.SkladData;
 using SP_Sklad.WBDetForm;
+using EntityState = System.Data.Entity.EntityState;
 
 namespace SP_Sklad.WBForm
 {
@@ -20,17 +22,17 @@ namespace SP_Sklad.WBForm
         
         public Guid? _doc_id { get; set; }
         private ProductionPlans pp { get; set; }
-     
-        /*private GetWaybillDetIn_Result wbd_row { get; set; }
-        private List<GetWaybillDetIn_Result> wbd_list { get; set; }
-        private List<GetRelDocList_Result> rdl { get; set; }
-        private GetWaybillDetIn_Result focused_dr
-        {
-            get { return WaybillDetInGridView.GetFocusedRow() as GetWaybillDetIn_Result; }
-        }*/
 
         public bool is_new_record { get; set; }
         private UserSettingsRepository user_settings { get; set; }
+
+        private v_ProductionPlanDet pp_det_row
+        {
+            get
+            {
+                return WaybillDetInGridView.GetFocusedRow() as v_ProductionPlanDet;
+            }
+        }
 
         public frmProductionPlans(Guid? doc_id)
         {
@@ -48,6 +50,8 @@ namespace SP_Sklad.WBForm
             var wh_list = DBHelper.WhList();
             WHComboBox.Properties.DataSource = wh_list;
             WHComboBox.EditValue = wh_list.Where(w => w.Def == 1).Select(s => s.WId).FirstOrDefault();
+            ManufactoryEdit.Properties.DataSource = wh_list;
+            ManufactoryEdit.EditValue = wh_list.Where(w => w.Def == 1).Select(s => s.WId).FirstOrDefault();
 
             if (_doc_id == null)
             {
@@ -100,12 +104,16 @@ namespace SP_Sklad.WBForm
 
         private void RefreshDet()
         {
-            ProductionPlanDetBS.DataSource = _db.v_ProductionPlanDet.Where(w => w.ProductionPlanId == _doc_id).ToList();
+            var list = _db.v_ProductionPlanDet.AsNoTracking().Where(w => w.ProductionPlanId == _doc_id).OrderBy(o => o.Num).ToList();
+
+           int top_row = WaybillDetInGridView.TopRowIndex;
+            ProductionPlanDetBS.DataSource = list;
+            WaybillDetInGridView.TopRowIndex = top_row;
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            new frmProductionPlanDet(_db, Guid.NewGuid()).ShowDialog();
+            new frmProductionPlanDet(_db, Guid.NewGuid(), pp).ShowDialog();
 
             RefreshDet();
         }
@@ -113,7 +121,7 @@ namespace SP_Sklad.WBForm
         private void EditMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var row = WaybillDetInGridView.GetFocusedRow() as v_ProductionPlanDet;
-            new frmProductionPlanDet(_db, row.Id).ShowDialog();
+            new frmProductionPlanDet(_db, row.Id, pp).ShowDialog();
 
             RefreshDet();
         }
@@ -133,7 +141,7 @@ namespace SP_Sklad.WBForm
 
             if (TurnDocCheckBox.Checked)
             {
-                //   var ex_wb = _db.ExecuteWayBill(wb.WbillId, null, DBHelper.CurrentUser.KaId).ToList();
+                ExecuteDocument();
             }
 
             is_new_record = false;
@@ -141,8 +149,44 @@ namespace SP_Sklad.WBForm
             Close();
         }
 
+        private void ExecuteDocument()
+        {
+            var list = _db.v_ProductionPlanDet.AsNoTracking().Where(w => w.ProductionPlanId == _doc_id && w.Total > 0).ToList();
+            foreach (var i in list)
+            {
+                var wb = _db.WaybillList.Add(new WaybillList()
+                  {
+                      Id = Guid.NewGuid(),
+                      WType = -20,
+                      OnDate = DBHelper.ServerDateTime(),
+                      Num = new BaseEntities().GetDocNum("wb_make").FirstOrDefault(),
+                      EntId = DBHelper.Enterprise.KaId,
+                      CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
+                      OnValue = 1,
+                      PersonId = DBHelper.CurrentUser.KaId,
+                      KaId = DBHelper.CurrentUser.KaId,
+                      WayBillMake = new WayBillMake { SourceWId = DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId },
+                      UpdatedBy = DBHelper.CurrentUser.UserId,
+                  });
+                _db.SaveChanges();
+
+                _db.SetDocRel(pp.Id, wb.Id);
+
+                wb.WayBillMake.Amount = i.Total;
+                wb.WayBillMake.SourceWId = i.WhId;
+                wb.WayBillMake.RecId = i.RecId;
+
+                _db.SaveChanges();
+
+                var r = _db.GetRecipe(wb.WbillId).ToList();
+                var rez = _db.ReservedAllPosition(wb.WbillId).ToList();
+            }
+        }
+
         private void frmProductionPlans_FormClosed(object sender, FormClosedEventArgs e)
         {
+            _db.UndoAllChanges();
+
             pp.SessionId = (pp.SessionId == UserSession.SessionId ? null : pp.SessionId);
             pp.UpdatedBy = UserSession.UserId;
             pp.UpdatedAt = DateTime.Now;
@@ -159,6 +203,100 @@ namespace SP_Sklad.WBForm
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var row = WaybillDetInGridView.GetFocusedRow() as v_ProductionPlanDet;
+            if (row != null)
+            {
+                var det = _db.ProductionPlanDet.Find(row.Id);
+                if (det != null)
+                {
+                    _db.ProductionPlanDet.Remove(det);
+                }
+            }
+
+            WaybillDetInGridView.DeleteSelectedRows();
+        }
+
+        private void NowDateBtn_Click(object sender, EventArgs e)
+        {
+            pp.OnDate = DBHelper.ServerDateTime();
+            OnDateDBEdit.DateTime = pp.OnDate;
+        }
+
+        private void WaybillDetInGridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            var row = WaybillDetInGridView.GetFocusedRow() as v_ProductionPlanDet;
+            var wbd = _db.ProductionPlanDet.Find(row.Id);
+
+            wbd.Amount = Convert.ToDecimal(e.Value);
+            var real_amount = wbd.Amount.Value - wbd.Remain.Value;
+            var tmp_amount = real_amount + (real_amount - (real_amount * row.ResipeOut / 100));
+            wbd.Total = Math.Ceiling(tmp_amount / row.RecipeAmount) * row.RecipeAmount;
+
+            _db.SaveChanges();
+            RefreshDet();
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (WHComboBox.EditValue != null && WHComboBox.EditValue != DBNull.Value && ManufactoryEdit.EditValue != null && ManufactoryEdit.EditValue != DBNull.Value)
+            {
+                _db.DeleteWhere<ProductionPlanDet>(w => w.ProductionPlanId == pp.Id);
+                var wh_remain = _db.WhMatGet(0, (int)WHComboBox.EditValue, 0, DateTime.Now, 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).ToList();
+                int num = 0;
+                foreach (var item in wh_remain)
+                {
+                    var rec = _db.MatRecipe.FirstOrDefault(w => w.MatId == item.MatId);
+                    if (rec != null)
+                    {
+                        _db.ProductionPlanDet.Add(new ProductionPlanDet
+                        {
+                            Id = Guid.NewGuid(),
+                            Num = ++num,
+                            Amount = 0,
+                            ProductionPlanId = pp.Id,
+                            RecId = rec.RecId,
+                            Remain = item.Remain,
+                            WhId = (int)ManufactoryEdit.EditValue
+                        });
+                    }
+                }
+                _db.SaveChanges();
+
+                RefreshDet();
+            }
+        }
+
+        private void WaybillDetInGridView_DoubleClick(object sender, EventArgs e)
+        {
+            if (IHelper.isRowDublClick(sender)) EditMaterialBtn.PerformClick();
+        }
+
+        private void RsvInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+          /*  if (wbd_row != null)
+            {
+                IHelper.ShowMatRSV(wbd_row.MatId, _db);
+            }*/
+        }
+
+        private void WHComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                WHComboBox.EditValue = IHelper.ShowDirectList(WHComboBox.EditValue, 2);
+            }
+        }
+
+        private void ManufactoryEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                ManufactoryEdit.EditValue = IHelper.ShowDirectList(ManufactoryEdit.EditValue, 2);
+            }
         }
     }
 }

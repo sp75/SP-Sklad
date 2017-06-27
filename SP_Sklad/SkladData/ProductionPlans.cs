@@ -29,6 +29,9 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> UpdatedAt { get; set; }
         public Nullable<int> UpdatedBy { get; set; }
         public Nullable<System.Guid> SessionId { get; set; }
+        public int Deleted { get; set; }
+        public Nullable<int> WhId { get; set; }
+        public Nullable<int> ManufId { get; set; }
     
         public virtual ICollection<ProductionPlanDet> ProductionPlanDet { get; set; }
     }

@@ -563,5 +563,13 @@ namespace SP_Sklad.WBForm
 
             RefreshDet();
         }
+
+        private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (wbd_row != null)
+            {
+                IHelper.ShowMatInfo(wbd_row.MatId);
+            }
+        }
     }
 }

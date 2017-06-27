@@ -347,18 +347,25 @@ namespace SP_Sklad.WBForm
 
             wbd.Amount = Convert.ToDecimal(e.Value);
 
-            // удаляем резерв з видаткових документів
-            _db.DeleteWhere<WMatTurn>(w => w.PosId == wbd.PosId);
-            _db.WMatTurn.Add(new WMatTurn()
+            var wmt = _db.WMatTurn.FirstOrDefault(w => w.SourceId == wbd.PosId && w.TurnType == 3);
+            if (wmt != null)
             {
-                SourceId = wbd.PosId,
-                PosId = wbd.PosId,
-                WId = wbd.WId.Value,
-                MatId = wbd.MatId,
-                OnDate = wbd.OnDate.Value,
-                TurnType = 3,
-                Amount = wbd.Amount
-            });
+              //  if (wb.WType == 16)
+               // {
+                    // удаляем резерв з видаткових документів
+                    _db.DeleteWhere<WMatTurn>(w => w.PosId == wbd.PosId);
+                    _db.WMatTurn.Add(new WMatTurn()
+                    {
+                        SourceId = wbd.PosId,
+                        PosId = wbd.PosId,
+                        WId = wbd.WId.Value,
+                        MatId = wbd.MatId,
+                        OnDate = wbd.OnDate.Value,
+                        TurnType = 3,
+                        Amount = wbd.Amount
+                    });
+               // }
+            }
 
         //    var dd = WayBillsController.GetWaybillDetIn(_db, _wbill_id);
         }
@@ -420,8 +427,14 @@ namespace SP_Sklad.WBForm
 
         private void simpleButton3_Click(object sender, EventArgs e)
         {
-            wb.KaId = (int)IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
-            KagentComboBox.EditValue = wb.KaId;
+         //   wb.KaId = (int)IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
+        //    KagentComboBox.EditValue = wb.KaId;
+            KagentComboBox.EditValue = IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
+            if (KagentComboBox.EditValue != null && KagentComboBox.EditValue != DBNull.Value)
+            {
+                wb.KaId = Convert.ToInt32(KagentComboBox.EditValue);
+            }
+
             GetOk();
         }
 

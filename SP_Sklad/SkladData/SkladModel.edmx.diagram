@@ -39,9 +39,7 @@
         <EntityTypeShape EntityType="BaseModel.DocType" Width="1.5" PointX="6.6585277796995488" PointY="10.164892901743247" />
         <EntityTypeShape EntityType="BaseModel.UserAccess" Width="1.5" PointX="5" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.UserTreeView" Width="1.5" PointX="6.875" PointY="5.25" />
-        <EntityTypeShape EntityType="BaseModel.ViewLng" Width="1.5" PointX="0.51622796641487068" PointY="30.536443456325888" />
         <EntityTypeShape EntityType="BaseModel.UserTreeAccess" Width="1.5" PointX="4.6641136708967919" PointY="18.021311023282497" />
-        <AssociationConnector Association="BaseModel.FK__VIEWLNG__ID__2022C2A6" />
         <EntityTypeShape EntityType="BaseModel.UserAccessWh" Width="1.5" PointX="3.9406520556382141" PointY="30.24417529918448" />
         <EntityTypeShape EntityType="BaseModel.UserTree" Width="1.5" PointX="1.4358053232709902" PointY="31.650536730722774" />
         <AssociationConnector Association="BaseModel.FK_UAWH_WID" />
@@ -87,7 +85,6 @@
         <EntityTypeShape EntityType="BaseModel.PrintLog" Width="1.5" PointX="10.66962207605579" PointY="22.529456059694969" />
         <EntityTypeShape EntityType="BaseModel.Reports" Width="1.5" PointX="8.71207327056307" PointY="27.544989703011229" />
         <EntityTypeShape EntityType="BaseModel.Languages" Width="1.5" PointX="19.375" PointY="7.75" />
-        <AssociationConnector Association="BaseModel.FK__VIEWLNG__LANGID__2116E6DF" />
         <EntityTypeShape EntityType="BaseModel.SvcGroup" Width="1.5" PointX="6.4937014926661281" PointY="20.54977826240928" />
         <EntityTypeShape EntityType="BaseModel.v_Services" Width="1.5" PointX="8.9153784443230268" PointY="8.815120179585703" />
         <EntityTypeShape EntityType="BaseModel.WayBillSvc" Width="1.5" PointX="2.5795977630557481" PointY="20.695075491766946" />
@@ -254,12 +251,15 @@
         <AssociationConnector Association="BaseModel.FK_UAWH_USERID" />
         <AssociationConnector Association="BaseModel.FK_Users_UsersGroup" />
         <AssociationConnector Association="BaseModel.FK_UserSettings_Users" />
-        <EntityTypeShape EntityType="BaseModel.ProductionPlanDet" Width="1.5" PointX="8.6003941169941776" PointY="19.082154148762186" />
         <EntityTypeShape EntityType="BaseModel.ProductionPlans" Width="1.5" PointX="9.0676300158107779" PointY="27.027135250636906" />
-        <AssociationConnector Association="BaseModel.FK_ProductionPlanDet_Materials" />
+        <EntityTypeShape EntityType="BaseModel.v_ProductionPlanDet" Width="1.5" PointX="7.1313695288874994" PointY="13.55405656134433" />
+        <EntityTypeShape EntityType="BaseModel.ViewLng" Width="1.5" PointX="7.88567450264733" PointY="2.908218444747952" />
+        <AssociationConnector Association="BaseModel.FK__VIEWLNG__LANGID__2116E6DF" />
+        <AssociationConnector Association="BaseModel.FK__VIEWLNG__ID__2022C2A6" />
+        <EntityTypeShape EntityType="BaseModel.ProductionPlanDet" Width="1.5" PointX="6.09682299294361" PointY="18.827314653819109" />
+        <AssociationConnector Association="BaseModel.FK_ProductionPlanDet_MatRecipe" />
         <AssociationConnector Association="BaseModel.FK_ProductionPlanDet_ProductionPlans" />
         <AssociationConnector Association="BaseModel.FK_ProductionPlanDet_Warehouse" />
-        <EntityTypeShape EntityType="BaseModel.v_ProductionPlanDet" Width="1.5" PointX="3.1652298826562379" PointY="3.1967053130253706" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

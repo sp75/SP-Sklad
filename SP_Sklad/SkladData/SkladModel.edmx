@@ -92,13 +92,7 @@
           <EntitySet Name="UsersGroup" EntityType="BaseModel.Store.UsersGroup" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserTree" EntityType="BaseModel.Store.UserTree" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserTreeView" EntityType="BaseModel.Store.UserTreeView" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ViewLng" EntityType="BaseModel.Store.ViewLng" store:Type="Tables" store:Schema="dbo" store:Name="ViewLng">
-            <DefiningQuery>SELECT 
-      [ViewLng].[Id] AS [Id], 
-      [ViewLng].[LangId] AS [LangId], 
-      [ViewLng].[Name] AS [Name]
-      FROM [dbo].[ViewLng] AS [ViewLng]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="ViewLng" EntityType="BaseModel.Store.ViewLng" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Warehouse" EntityType="BaseModel.Store.Warehouse" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="WaybillDet" EntityType="BaseModel.Store.WaybillDet" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="WayBillDetAddProps" EntityType="BaseModel.Store.WayBillDetAddProps" store:Type="Tables" Schema="dbo" />
@@ -366,7 +360,6 @@
           <EntitySet Name="v_ProductionPlanDet" EntityType="BaseModel.Store.v_ProductionPlanDet" store:Type="Views" store:Schema="dbo" store:Name="v_ProductionPlanDet">
             <DefiningQuery>SELECT 
       [v_ProductionPlanDet].[Id] AS [Id], 
-      [v_ProductionPlanDet].[MatId] AS [MatId], 
       [v_ProductionPlanDet].[Amount] AS [Amount], 
       [v_ProductionPlanDet].[Remain] AS [Remain], 
       [v_ProductionPlanDet].[ProductionPlanId] AS [ProductionPlanId], 
@@ -374,7 +367,11 @@
       [v_ProductionPlanDet].[WhId] AS [WhId], 
       [v_ProductionPlanDet].[MatName] AS [MatName], 
       [v_ProductionPlanDet].[WhName] AS [WhName], 
-      [v_ProductionPlanDet].[MsrName] AS [MsrName]
+      [v_ProductionPlanDet].[MsrName] AS [MsrName], 
+      [v_ProductionPlanDet].[RecId] AS [RecId], 
+      [v_ProductionPlanDet].[Num] AS [Num], 
+      [v_ProductionPlanDet].[RecipeAmount] AS [RecipeAmount], 
+      [v_ProductionPlanDet].[ResipeOut] AS [ResipeOut]
       FROM [dbo].[v_ProductionPlanDet] AS [v_ProductionPlanDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_Services" EntityType="BaseModel.Store.v_Services" store:Type="Views" store:Schema="dbo" store:Name="v_Services">
@@ -868,8 +865,8 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="PrintLog" EntitySet="PrintLog" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductionPlanDet_Materials" Association="BaseModel.Store.FK_ProductionPlanDet_Materials">
-            <End Role="Materials" EntitySet="Materials" />
+          <AssociationSet Name="FK_ProductionPlanDet_MatRecipe" Association="BaseModel.Store.FK_ProductionPlanDet_MatRecipe">
+            <End Role="MatRecipe" EntitySet="MatRecipe" />
             <End Role="ProductionPlanDet" EntitySet="ProductionPlanDet" />
           </AssociationSet>
           <AssociationSet Name="FK_ProductionPlanDet_ProductionPlans" Association="BaseModel.Store.FK_ProductionPlanDet_ProductionPlans">
@@ -1660,10 +1657,11 @@
           <Property Name="Num" Type="varchar" MaxLength="20" />
           <Property Name="Name" Type="varchar" MaxLength="255" />
           <Property Name="OnDate" Type="datetime" />
-          <Property Name="Amount" Type="numeric" Nullable="false" Precision="15" Scale="8" />
+          <Property Name="Amount" Type="numeric" Nullable="false" Precision="15" Scale="4" />
           <Property Name="Notes" Type="varchar" MaxLength="255" />
           <Property Name="MatId" Type="int" Nullable="false" />
           <Property Name="RType" Type="int" />
+          <Property Name="Out" Type="numeric" Nullable="false" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="MatRecipeTechProcDet">
           <Key>
@@ -1852,12 +1850,13 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="MatId" Type="int" />
+          <Property Name="Num" Type="int" />
+          <Property Name="RecId" Type="int" Nullable="false" />
           <Property Name="Amount" Type="numeric" Precision="15" Scale="4" />
           <Property Name="ProductionPlanId" Type="uniqueidentifier" />
           <Property Name="Remain" Type="numeric" Precision="15" Scale="4" />
-          <Property Name="Total" Type="numeric" Precision="16" Scale="4" StoreGeneratedPattern="Computed" />
-          <Property Name="WhId" Type="int" />
+          <Property Name="Total" Type="numeric" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="WhId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductionPlans">
           <Key>
@@ -1873,6 +1872,9 @@
           <Property Name="UpdatedAt" Type="datetime" />
           <Property Name="UpdatedBy" Type="int" />
           <Property Name="SessionId" Type="uniqueidentifier" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+          <Property Name="WhId" Type="int" />
+          <Property Name="ManufId" Type="int" />
         </EntityType>
         <EntityType Name="ProfileDocSetting">
           <Key>
@@ -2138,14 +2140,10 @@
           <Property Name="Visible" Type="int" Nullable="false" />
           <Property Name="DisabledIndex" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'sp_base.dbo.ViewLng' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
         <EntityType Name="ViewLng">
           <Key>
             <PropertyRef Name="Id" />
             <PropertyRef Name="LangId" />
-            <PropertyRef Name="Name" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="LangId" Type="int" Nullable="false" />
@@ -2675,19 +2673,27 @@
         <EntityType Name="v_ProductionPlanDet">
           <Key>
             <PropertyRef Name="Id" />
+            
+            
             <PropertyRef Name="WhName" />
             <PropertyRef Name="MsrName" />
+            
+            <PropertyRef Name="RecipeAmount" />
+            <PropertyRef Name="ResipeOut" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="MatId" Type="int" />
           <Property Name="Amount" Type="numeric" Precision="15" Scale="4" />
           <Property Name="Remain" Type="numeric" Precision="15" Scale="4" />
           <Property Name="ProductionPlanId" Type="uniqueidentifier" />
-          <Property Name="Total" Type="numeric" Precision="16" Scale="4" />
-          <Property Name="WhId" Type="int" />
+          <Property Name="Total" Type="numeric" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="WhId" Type="int" Nullable="false" />
           <Property Name="MatName" Type="nvarchar" MaxLength="255" />
           <Property Name="WhName" Type="nvarchar" Nullable="false" MaxLength="64" />
-          <Property Name="MsrName" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="MsrName" Type="nvarchar" Nullable="false" MaxLength="6" />
+          <Property Name="RecId" Type="int" Nullable="false" />
+          <Property Name="Num" Type="int" />
+          <Property Name="RecipeAmount" Type="numeric" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="ResipeOut" Type="numeric" Nullable="false" Precision="15" Scale="4" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'sp_base.dbo.v_Services' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -3993,15 +3999,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProductionPlanDet_Materials">
-          <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="0..1" />
+        <Association Name="FK_ProductionPlanDet_MatRecipe">
+          <End Role="MatRecipe" Type="BaseModel.Store.MatRecipe" Multiplicity="1" />
           <End Role="ProductionPlanDet" Type="BaseModel.Store.ProductionPlanDet" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Materials">
-              <PropertyRef Name="MatId" />
+            <Principal Role="MatRecipe">
+              <PropertyRef Name="RecId" />
             </Principal>
             <Dependent Role="ProductionPlanDet">
-              <PropertyRef Name="MatId" />
+              <PropertyRef Name="RecId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -4020,7 +4026,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProductionPlanDet_Warehouse">
-          <End Role="Warehouse" Type="BaseModel.Store.Warehouse" Multiplicity="0..1" />
+          <End Role="Warehouse" Type="BaseModel.Store.Warehouse" Multiplicity="1" />
           <End Role="ProductionPlanDet" Type="BaseModel.Store.ProductionPlanDet" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Warehouse">
@@ -4940,11 +4946,39 @@
             </CollectionType>
           </ReturnType>
         </Function>
-        <Function Name="GetMatList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="GetMatList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="grp" Type="int" Mode="In" />
           <Parameter Name="get_price" Type="int" Mode="In" />
           <Parameter Name="get_archived" Type="int" Mode="In" />
           <Parameter Name="get_child_node" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="MatId" Type="int" Nullable="false" />
+                <Property Name="Name" Type="nvarchar" MaxLength="255" />
+                <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
+                <Property Name="MId" Type="int" Nullable="false" />
+                <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+                <Property Name="GrpId" Type="int" />
+                <Property Name="WId" Type="int" />
+                <Property Name="Num" Type="int" />
+                <Property Name="MinReserv" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="CId" Type="int" />
+                <Property Name="DemandCat" Type="int" />
+                <Property Name="Weight" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="MSize" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="Producer" Type="nvarchar" MaxLength="255" />
+                <Property Name="BarCode" Type="nvarchar" MaxLength="64" />
+                <Property Name="MType" Type="int" Nullable="false" />
+                <Property Name="ShortName" Type="nvarchar" Nullable="false" MaxLength="6" />
+                <Property Name="CName" Type="varchar" MaxLength="128" />
+                <Property Name="Archived" Type="int" />
+                <Property Name="GrpName" Type="varchar" MaxLength="64" />
+                <Property Name="WhName" Type="nvarchar" MaxLength="64" />
+                <Property Name="DemandGroupName" Type="nvarchar" MaxLength="50" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
         </Function>
         <Function Name="GetMatMove" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="mat_id" Type="int" Mode="In" />
@@ -5444,6 +5478,7 @@
           <Parameter Name="w_type" Type="int" Mode="In" />
           <Parameter Name="is_checked" Type="int" Mode="In" />
           <Parameter Name="wh" Type="nvarchar" Mode="In" />
+          <Parameter Name="person_id" Type="int" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
@@ -5506,6 +5541,7 @@
           <Parameter Name="from_date" Type="datetime" Mode="In" />
           <Parameter Name="to_date" Type="datetime" Mode="In" />
           <Parameter Name="is_checked" Type="int" Mode="In" />
+          <Parameter Name="person_id" Type="int" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
@@ -5561,6 +5597,7 @@
           <Parameter Name="turn_type" Type="int" Mode="In" />
           <Parameter Name="curr_id" Type="int" Mode="In" />
           <Parameter Name="ka_id" Type="int" Mode="In" />
+          <Parameter Name="person_id" Type="int" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
@@ -6577,12 +6614,7 @@
           <EntitySet Name="DocType" EntityType="BaseModel.DocType" />
           <EntitySet Name="UserAccess" EntityType="BaseModel.UserAccess" />
           <EntitySet Name="UserTreeView" EntityType="BaseModel.UserTreeView" />
-          <EntitySet Name="ViewLng" EntityType="BaseModel.ViewLng" />
           <EntitySet Name="UserTreeAccess" EntityType="BaseModel.UserTreeAccess" />
-          <AssociationSet Name="FK__VIEWLNG__ID__2022C2A6" Association="BaseModel.FK__VIEWLNG__ID__2022C2A6">
-            <End Role="UserTreeView" EntitySet="UserTreeView" />
-            <End Role="ViewLng" EntitySet="ViewLng" />
-          </AssociationSet>
           <FunctionImport Name="GetWhTree" ReturnType="Collection(BaseModel.GetWhTree_Result)">
             <Parameter Name="user_id" Mode="In" Type="Int32" />
             <Parameter Name="type_tree" Mode="In" Type="Int32" />
@@ -6721,10 +6753,6 @@
           <EntitySet Name="PrintLog" EntityType="BaseModel.PrintLog" />
           <EntitySet Name="Reports" EntityType="BaseModel.Reports" />
           <EntitySet Name="Languages" EntityType="BaseModel.Languages" />
-          <AssociationSet Name="FK__VIEWLNG__LANGID__2116E6DF" Association="BaseModel.FK__VIEWLNG__LANGID__2116E6DF">
-            <End Role="Languages" EntitySet="Languages" />
-            <End Role="ViewLng" EntitySet="ViewLng" />
-          </AssociationSet>
           <FunctionImport Name="GetShippedPosIn" ReturnType="Collection(BaseModel.GetShippedPosIn_Result)">
           <Parameter Name="pos_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -6786,14 +6814,6 @@
             <Parameter Name="user_id" Mode="In" Type="Int32" />
             <Parameter Name="id" Mode="In" Type="Int32" />
             <Parameter Name="on_date" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="MoneyTurnover" IsComposable="true" ReturnType="Collection(BaseModel.MoneyTurnover_Result)">
-            <Parameter Name="fun_id" Mode="In" Type="Int32" />
-            <Parameter Name="from_date" Mode="In" Type="DateTime" />
-            <Parameter Name="to_date" Mode="In" Type="DateTime" />
-            <Parameter Name="turn_type" Mode="In" Type="Int32" />
-            <Parameter Name="curr_id" Mode="In" Type="Int32" />
-            <Parameter Name="ka_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="PayDocType" EntityType="BaseModel.PayDocType" />
           <EntitySet Name="EnterpriseAccount" EntityType="BaseModel.EnterpriseAccount" />
@@ -6977,12 +6997,6 @@
           <Parameter Name="mat_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="DemandGroup" EntityType="BaseModel.DemandGroup" />
-          <FunctionImport Name="GetMatList" ReturnType="Collection(BaseModel.GetMatList_Result)">
-            <Parameter Name="grp" Mode="In" Type="Int32" />
-            <Parameter Name="get_price" Mode="In" Type="Int32" />
-            <Parameter Name="get_archived" Mode="In" Type="Int32" />
-            <Parameter Name="get_child_node" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="GetPrintLog" IsComposable="true" ReturnType="Collection(BaseModel.GetPrintLog_Result)">
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
             <Parameter Name="to_date" Mode="In" Type="DateTime" />
@@ -7212,13 +7226,6 @@
             <End Role="PayType" EntitySet="PayType" />
             <End Role="PayDoc" EntitySet="PayDoc" />
           </AssociationSet>
-          <FunctionImport Name="GetWayBillListWh" IsComposable="true" ReturnType="Collection(BaseModel.GetWayBillListWh_Result)">
-            <Parameter Name="from_date" Mode="In" Type="DateTime" />
-            <Parameter Name="to_date" Mode="In" Type="DateTime" />
-            <Parameter Name="w_type" Mode="In" Type="Int32" />
-            <Parameter Name="is_checked" Mode="In" Type="Int32" />
-            <Parameter Name="wh" Mode="In" Type="String" />
-          </FunctionImport>
           <EntitySet Name="PriceList" EntityType="BaseModel.PriceList" />
           <EntitySet Name="v_PriceList" EntityType="BaseModel.v_PriceList" />
           <AssociationSet Name="FK_PRICELIS_REFERENCE_CURRENCY" Association="BaseModel.FK_PRICELIS_REFERENCE_CURRENCY">
@@ -7247,12 +7254,6 @@
             <Parameter Name="to_date" Mode="In" Type="DateTime" />
             <Parameter Name="ka_id" Mode="In" Type="Int32" />
             <Parameter Name="w_type" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="MoneyMoveList" IsComposable="true" ReturnType="Collection(BaseModel.MoneyMoveList_Result)">
-            <Parameter Name="doc_type" Mode="In" Type="Int32" />
-            <Parameter Name="from_date" Mode="In" Type="DateTime" />
-            <Parameter Name="to_date" Mode="In" Type="DateTime" />
-            <Parameter Name="is_checked" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetRelDocList" IsComposable="true" ReturnType="Collection(BaseModel.GetRelDocList_Result)">
           <Parameter Name="originator_id" Mode="In" Type="Guid" />
@@ -7563,16 +7564,7 @@
             <End Role="UserSettings" EntitySet="UserSettings" />
           </AssociationSet>
           <EntitySet Name="v_Users" EntityType="BaseModel.v_Users" />
-          <EntitySet Name="ProductionPlanDet" EntityType="BaseModel.ProductionPlanDet" />
           <EntitySet Name="ProductionPlans" EntityType="BaseModel.ProductionPlans" />
-          <AssociationSet Name="FK_ProductionPlanDet_Materials" Association="BaseModel.FK_ProductionPlanDet_Materials">
-            <End Role="Materials" EntitySet="Materials" />
-            <End Role="ProductionPlanDet" EntitySet="ProductionPlanDet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductionPlanDet_ProductionPlans" Association="BaseModel.FK_ProductionPlanDet_ProductionPlans">
-            <End Role="ProductionPlans" EntitySet="ProductionPlans" />
-            <End Role="ProductionPlanDet" EntitySet="ProductionPlanDet" />
-          </AssociationSet>
           <FunctionImport Name="GetActualRemainByWh" ReturnType="Collection(BaseModel.GetActualRemainByWh_Result)">
             <Parameter Name="wid" Mode="In" Type="Int32" />
             <Parameter Name="mat_id" Mode="In" Type="Int32" />
@@ -7584,17 +7576,65 @@
             <Parameter Name="checked" Mode="In" Type="Int32" />
             <Parameter Name="person_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <AssociationSet Name="FK_ProductionPlanDet_Warehouse" Association="BaseModel.FK_ProductionPlanDet_Warehouse">
-            <End Role="Warehouse" EntitySet="Warehouse" />
-            <End Role="ProductionPlanDet" EntitySet="ProductionPlanDet" />
-          </AssociationSet>
-          <EntitySet Name="v_ProductionPlanDet" EntityType="BaseModel.v_ProductionPlanDet" />
           <FunctionImport Name="GetPosOut" IsComposable="true" ReturnType="Collection(BaseModel.GetPosOut_Result)">
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
             <Parameter Name="to_date" Mode="In" Type="DateTime" />
             <Parameter Name="mat_id" Mode="In" Type="Int32" />
             <Parameter Name="ka_id" Mode="In" Type="Int32" />
             <Parameter Name="w_type" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="v_ProductionPlanDet" EntityType="BaseModel.v_ProductionPlanDet" />
+          <EntitySet Name="ViewLng" EntityType="BaseModel.ViewLng" />
+          <AssociationSet Name="FK__VIEWLNG__LANGID__2116E6DF" Association="BaseModel.FK__VIEWLNG__LANGID__2116E6DF">
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="ViewLng" EntitySet="ViewLng" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VIEWLNG__ID__2022C2A6" Association="BaseModel.FK__VIEWLNG__ID__2022C2A6">
+            <End Role="UserTreeView" EntitySet="UserTreeView" />
+            <End Role="ViewLng" EntitySet="ViewLng" />
+          </AssociationSet>
+          <EntitySet Name="ProductionPlanDet" EntityType="BaseModel.ProductionPlanDet" />
+          <AssociationSet Name="FK_ProductionPlanDet_MatRecipe" Association="BaseModel.FK_ProductionPlanDet_MatRecipe">
+            <End Role="MatRecipe" EntitySet="MatRecipe" />
+            <End Role="ProductionPlanDet" EntitySet="ProductionPlanDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductionPlanDet_ProductionPlans" Association="BaseModel.FK_ProductionPlanDet_ProductionPlans">
+            <End Role="ProductionPlans" EntitySet="ProductionPlans" />
+            <End Role="ProductionPlanDet" EntitySet="ProductionPlanDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductionPlanDet_Warehouse" Association="BaseModel.FK_ProductionPlanDet_Warehouse">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="ProductionPlanDet" EntitySet="ProductionPlanDet" />
+          </AssociationSet>
+          <FunctionImport Name="GetWayBillListWh" IsComposable="true" ReturnType="Collection(BaseModel.GetWayBillListWh_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="w_type" Mode="In" Type="Int32" />
+            <Parameter Name="is_checked" Mode="In" Type="Int32" />
+            <Parameter Name="wh" Mode="In" Type="String" />
+            <Parameter Name="person_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="MoneyMoveList" IsComposable="true" ReturnType="Collection(BaseModel.MoneyMoveList_Result)">
+            <Parameter Name="doc_type" Mode="In" Type="Int32" />
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="is_checked" Mode="In" Type="Int32" />
+            <Parameter Name="person_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="MoneyTurnover" IsComposable="true" ReturnType="Collection(BaseModel.MoneyTurnover_Result)">
+            <Parameter Name="fun_id" Mode="In" Type="Int32" />
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="turn_type" Mode="In" Type="Int32" />
+            <Parameter Name="curr_id" Mode="In" Type="Int32" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="person_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetMatList" IsComposable="true" ReturnType="Collection(BaseModel.GetMatList_Result)">
+            <Parameter Name="grp" Mode="In" Type="Int32" />
+            <Parameter Name="get_price" Mode="In" Type="Int32" />
+            <Parameter Name="get_archived" Mode="In" Type="Int32" />
+            <Parameter Name="get_child_node" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
@@ -8261,21 +8301,9 @@
           <Property Type="Int32" Name="ShowExpanded" Nullable="false" />
           <Property Type="Int32" Name="Visible" Nullable="false" />
           <Property Type="Int32" Name="DisabledIndex" />
-          <NavigationProperty Name="ViewLng" Relationship="BaseModel.FK__VIEWLNG__ID__2022C2A6" FromRole="UserTreeView" ToRole="ViewLng" />
           <NavigationProperty Name="UserTree" Relationship="BaseModel.FK_USERTREE_FK_USERTR_USERTREE" FromRole="UserTreeView" ToRole="UserTree" />
           <NavigationProperty Name="Functions" Relationship="BaseModel.FK_USERTREE_FK_USERTR_FUNCTION" FromRole="UserTreeView" ToRole="Functions" />
-        </EntityType>
-        <EntityType Name="ViewLng">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="LangId" />
-            <PropertyRef Name="Name" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" />
-          <Property Type="Int32" Name="LangId" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="UserTreeView" Relationship="BaseModel.FK__VIEWLNG__ID__2022C2A6" FromRole="ViewLng" ToRole="UserTreeView" />
-          <NavigationProperty Name="Languages" Relationship="BaseModel.FK__VIEWLNG__LANGID__2116E6DF" FromRole="ViewLng" ToRole="Languages" />
+          <NavigationProperty Name="ViewLng" Relationship="BaseModel.FK__VIEWLNG__ID__2022C2A6" FromRole="UserTreeView" ToRole="ViewLng" />
         </EntityType>
         <EntityType Name="UserTreeAccess">
           <Key>
@@ -8304,18 +8332,6 @@
           <Property Type="Int32" Name="UserId" />
           <Property Type="Int32" Name="WType" />
         </EntityType>
-        <Association Name="FK__VIEWLNG__ID__2022C2A6">
-          <End Type="BaseModel.UserTreeView" Role="UserTreeView" Multiplicity="1" />
-          <End Type="BaseModel.ViewLng" Role="ViewLng" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserTreeView">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ViewLng">
-              <PropertyRef Name="Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <ComplexType Name="GetWhTree_Result">
           <Property Type="Int32" Name="Id" Nullable="true" />
           <Property Type="Int32" Name="FunId" Nullable="true" />
@@ -8489,7 +8505,7 @@
           <Property Type="String" Name="Num" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Name" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="OnDate" Precision="3" />
-          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="4" />
           <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="MatId" Nullable="false" />
           <Property Type="Int32" Name="RType" />
@@ -8497,6 +8513,8 @@
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK_MATRECIPE_1" FromRole="MatRecipe" ToRole="Materials" />
           <NavigationProperty Name="MatRecDet" Relationship="BaseModel.FK_MATRECDET_MATRECIPE" FromRole="MatRecipe" ToRole="MatRecDet" />
           <NavigationProperty Name="MatRecipeTechProcDet" Relationship="BaseModel.FK_MatRecipeTechProcDet_MatRecipe" FromRole="MatRecipe" ToRole="MatRecipeTechProcDet" />
+          <Property Type="Decimal" Name="Out" Nullable="false" Precision="15" Scale="4" />
+          <NavigationProperty Name="ProductionPlanDet" Relationship="BaseModel.FK_ProductionPlanDet_MatRecipe" FromRole="MatRecipe" ToRole="ProductionPlanDet" />
         </EntityType>
         <EntityType Name="WayBillMake">
           <Key>
@@ -8694,7 +8712,6 @@
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" FromRole="Materials" ToRole="WaybillDet" />
           <NavigationProperty Name="PosRemains" Relationship="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" FromRole="Materials" ToRole="PosRemains" />
           <NavigationProperty Name="WayBillMakeProps" Relationship="BaseModel.FK_WayBillMakeProps_Materials" FromRole="Materials" ToRole="WayBillMakeProps" />
-          <NavigationProperty Name="ProductionPlanDet" Relationship="BaseModel.FK_ProductionPlanDet_Materials" FromRole="Materials" ToRole="ProductionPlanDet" />
         </EntityType>
         <Association Name="FK_CONTRDET_REFERENCE_MATERIAL">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="0..1" />
@@ -9052,21 +9069,9 @@
           <Property Type="String" Name="ShortName" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Name" MaxLength="48" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="Flags" />
-          <NavigationProperty Name="ViewLng" Relationship="BaseModel.FK__VIEWLNG__LANGID__2116E6DF" FromRole="Languages" ToRole="ViewLng" />
           <NavigationProperty Name="RepLng" Relationship="BaseModel.FK_REPLNG_LANGID" FromRole="Languages" ToRole="RepLng" />
+          <NavigationProperty Name="ViewLng" Relationship="BaseModel.FK__VIEWLNG__LANGID__2116E6DF" FromRole="Languages" ToRole="ViewLng" />
         </EntityType>
-        <Association Name="FK__VIEWLNG__LANGID__2116E6DF">
-          <End Type="BaseModel.Languages" Role="Languages" Multiplicity="1" />
-          <End Type="BaseModel.ViewLng" Role="ViewLng" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Languages">
-              <PropertyRef Name="LangId" />
-            </Principal>
-            <Dependent Role="ViewLng">
-              <PropertyRef Name="LangId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <ComplexType Name="GetShippedPosIn_Result">
           <Property Type="Int32" Name="PosId" Nullable="false" />
           <Property Type="Int32" Name="WId" Nullable="false" />
@@ -9346,26 +9351,6 @@
           <Property Type="Int32" Name="ImageIndex" Nullable="true" />
           <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
           <Property Type="Decimal" Name="Saldo" Nullable="true" Precision="38" Scale="8" />
-        </ComplexType>
-        <ComplexType Name="MoneyTurnover_Result">
-          <Property Type="Int32" Name="Id" Nullable="false" />
-          <Property Type="Int32" Name="DocType" Nullable="true" />
-          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
-          <Property Type="String" Name="KaName" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="CurrencyName" Nullable="true" MaxLength="10" />
-          <Property Type="Decimal" Name="Total" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="Decimal" Name="TotalDef" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="Int32" Name="PayDocId" Nullable="true" />
-          <Property Type="Int32" Name="Checked" Nullable="true" />
-          <Property Type="String" Name="Num" Nullable="true" MaxLength="15" />
-          <Property Type="Int32" Name="KaId" Nullable="true" />
-          <Property Type="String" Name="PtypeName" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="BankName" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="ChargeName" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="AccNum" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="CashName" Nullable="true" MaxLength="64" />
-          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="Int32" Name="DocId" Nullable="true" />
         </ComplexType>
         <EntityType Name="PayDocType">
           <Key>
@@ -10054,32 +10039,6 @@
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <ComplexType Name="GetMatList_Result">
-          <Property Type="Int32" Name="MatId" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
-          <Property Type="Int32" Name="MId" Nullable="false" />
-          <Property Type="String" Name="Notes" Nullable="true" MaxLength="255" />
-          <Property Type="Int32" Name="GrpId" Nullable="true" />
-          <Property Type="Int32" Name="WId" Nullable="true" />
-          <Property Type="Int32" Name="Num" Nullable="true" />
-          <Property Type="Decimal" Name="MinReserv" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="Int32" Name="CId" Nullable="true" />
-          <Property Type="Int32" Name="DemandCat" Nullable="true" />
-          <Property Type="Decimal" Name="Weight" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="Decimal" Name="MSize" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="String" Name="Producer" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
-          <Property Type="Int32" Name="MType" Nullable="false" />
-          <Property Type="String" Name="ShortName" Nullable="false" MaxLength="6" />
-          <Property Type="String" Name="CName" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="Archived" Nullable="true" />
-          <Property Type="String" Name="GrpName" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="WhName" Nullable="true" MaxLength="64" />
-          <Property Type="Decimal" Name="AvgPrice" Nullable="true" Precision="38" Scale="6" />
-          <Property Type="Decimal" Name="Remain" Nullable="true" Precision="38" Scale="19" />
-          <Property Type="String" Name="DemandGroupName" Nullable="true" MaxLength="50" />
-        </ComplexType>
         <ComplexType Name="GetPrintLog_Result">
           <Property Type="Int32" Name="PrintType" Nullable="true" />
           <Property Type="String" Name="Num" Nullable="true" MaxLength="20" />
@@ -11008,36 +10967,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="GetWayBillListWh_Result">
-          <Property Type="Guid" Name="Id" Nullable="true" />
-          <Property Type="Int32" Name="WBillId" Nullable="true" />
-          <Property Type="String" Name="Num" Nullable="true" MaxLength="20" />
-          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="CurrId" Nullable="true" />
-          <Property Type="String" Name="Reason" Nullable="true" MaxLength="255" />
-          <Property Type="Int32" Name="Checked" Nullable="true" />
-          <Property Type="Decimal" Name="SummAll" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="Int32" Name="WType" Nullable="true" />
-          <Property Type="Decimal" Name="NDS" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="PersonId" Nullable="true" />
-          <Property Type="String" Name="Notes" Nullable="true" MaxLength="255" />
-          <Property Type="Int32" Name="DocId" Nullable="true" />
-          <Property Type="Decimal" Name="SummInCurr" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="Decimal" Name="CurrRate" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
-          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="AttNum" Nullable="true" MaxLength="64" />
-          <Property Type="DateTime" Name="AttDate" Nullable="true" Precision="23" />
-          <Property Type="String" Name="Received" Nullable="true" MaxLength="128" />
-          <Property Type="DateTime" Name="ToDate" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="DefNum" Nullable="true" />
-          <Property Type="String" Name="FromWh" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="FromWId" Nullable="true" />
-          <Property Type="String" Name="ToWh" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="ToWId" Nullable="true" />
-          <Property Type="Int32" Name="WriteOn" Nullable="true" />
-          <Property Type="Int32" Name="WriteOff" Nullable="true" />
-        </ComplexType>
         <EntityType Name="PriceList">
           <Key>
             <PropertyRef Name="PlId" />
@@ -11281,32 +11210,6 @@
           <Property Type="Decimal" Name="Saldo" Nullable="true" Precision="15" Scale="4" />
           <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="DocShortName" Nullable="true" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="MoneyMoveList_Result">
-          <Property Type="Guid" Name="Id" Nullable="false" />
-          <Property Type="Int32" Name="PayDocId" Nullable="false" />
-          <Property Type="Int32" Name="DocType" Nullable="false" />
-          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
-          <Property Type="Decimal" Name="Total" Nullable="false" Precision="15" Scale="2" />
-          <Property Type="String" Name="DocNum" Nullable="false" MaxLength="20" />
-          <Property Type="Int32" Name="Checked" Nullable="false" />
-          <Property Type="String" Name="Reason" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="Notes" Nullable="true" MaxLength="255" />
-          <Property Type="Int32" Name="AccId" Nullable="true" />
-          <Property Type="Int32" Name="CashId" Nullable="true" />
-          <Property Type="Int32" Name="OperId" Nullable="true" />
-          <Property Type="Int32" Name="DocId" Nullable="true" />
-          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
-          <Property Type="String" Name="PayTypeName" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="CashdName" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="AccNum" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="DocTypeName" Nullable="true" MaxLength="64" />
-          <Property Type="Int32" Name="ImgIdx" Nullable="false" />
-          <Property Type="Decimal" Name="FromSumm" Nullable="true" Precision="17" Scale="2" />
-          <Property Type="Decimal" Name="ToSumm" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="String" Name="FromSource" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="ToSource" Nullable="true" MaxLength="128" />
         </ComplexType>
         <ComplexType Name="GetRelDocList_Result">
           <Property Type="Guid" Name="Id" Nullable="true" />
@@ -12544,21 +12447,6 @@
           <Property Type="Boolean" Name="IsWorking" Nullable="false" />
           <Property Type="String" Name="EmployeeName" MaxLength="64" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="ProductionPlanDet">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Guid" Name="Id" Nullable="false" />
-          <Property Type="Int32" Name="MatId" />
-          <Property Type="Decimal" Name="Amount" Precision="15" Scale="4" />
-          <Property Type="Guid" Name="ProductionPlanId" />
-          <Property Type="Decimal" Name="Remain" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Total" Precision="16" Scale="4" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_ProductionPlanDet_Materials" FromRole="ProductionPlanDet" ToRole="Materials" />
-          <NavigationProperty Name="ProductionPlans" Relationship="BaseModel.FK_ProductionPlanDet_ProductionPlans" FromRole="ProductionPlanDet" ToRole="ProductionPlans" />
-          <Property Type="Int32" Name="WhId" />
-          <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK_ProductionPlanDet_Warehouse" FromRole="ProductionPlanDet" ToRole="Warehouse" />
-        </EntityType>
         <EntityType Name="ProductionPlans">
           <Key>
             <PropertyRef Name="Id" />
@@ -12572,35 +12460,12 @@
           <Property Type="String" Name="Notes" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
           <Property Type="Int32" Name="UpdatedBy" />
-          <NavigationProperty Name="ProductionPlanDet" Relationship="BaseModel.FK_ProductionPlanDet_ProductionPlans" FromRole="ProductionPlans" ToRole="ProductionPlanDet" />
           <Property Type="Guid" Name="SessionId" />
+          <Property Type="Int32" Name="Deleted" Nullable="false" />
+          <Property Type="Int32" Name="WhId" />
+          <Property Type="Int32" Name="ManufId" />
+          <NavigationProperty Name="ProductionPlanDet" Relationship="BaseModel.FK_ProductionPlanDet_ProductionPlans" FromRole="ProductionPlans" ToRole="ProductionPlanDet" />
         </EntityType>
-        <Association Name="FK_ProductionPlanDet_Materials">
-          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="0..1" />
-          <End Type="BaseModel.ProductionPlanDet" Role="ProductionPlanDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Materials">
-              <PropertyRef Name="MatId" />
-            </Principal>
-            <Dependent Role="ProductionPlanDet">
-              <PropertyRef Name="MatId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProductionPlanDet_ProductionPlans">
-          <End Type="BaseModel.ProductionPlans" Role="ProductionPlans" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.ProductionPlanDet" Role="ProductionPlanDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ProductionPlans">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ProductionPlanDet">
-              <PropertyRef Name="ProductionPlanId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <ComplexType Name="GetActualRemainByWh_Result">
           <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
           <Property Type="Decimal" Name="Remain" Nullable="true" Precision="38" Scale="4" />
@@ -12636,35 +12501,6 @@
           <Property Type="String" Name="EntName" Nullable="true" MaxLength="64" />
           <Property Type="String" Name="PersonName" Nullable="true" MaxLength="64" />
         </ComplexType>
-        <Association Name="FK_ProductionPlanDet_Warehouse">
-          <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="0..1" />
-          <End Type="BaseModel.ProductionPlanDet" Role="ProductionPlanDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Warehouse">
-              <PropertyRef Name="WId" />
-            </Principal>
-            <Dependent Role="ProductionPlanDet">
-              <PropertyRef Name="WhId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="v_ProductionPlanDet">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="WhName" />
-            <PropertyRef Name="MsrName" />
-          </Key>
-          <Property Type="Guid" Name="Id" Nullable="false" />
-          <Property Type="Int32" Name="MatId" />
-          <Property Type="Decimal" Name="Amount" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Remain" Precision="15" Scale="4" />
-          <Property Type="Guid" Name="ProductionPlanId" />
-          <Property Type="Decimal" Name="Total" Precision="16" Scale="4" />
-          <Property Type="Int32" Name="WhId" />
-          <Property Type="String" Name="MatName" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="WhName" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
-        </EntityType>
         <ComplexType Name="GetPosOut_Result">
           <Property Type="Int32" Name="PosId" Nullable="false" />
           <Property Type="Int32" Name="WbillId" Nullable="false" />
@@ -12693,6 +12529,217 @@
           <Property Type="Decimal" Name="BasePrice" Nullable="true" Precision="15" Scale="4" />
           <Property Type="Decimal" Name="ReturnAmount" Nullable="true" Precision="38" Scale="4" />
           <Property Type="Decimal" Name="Remain" Nullable="true" Precision="38" Scale="4" />
+        </ComplexType>
+        <EntityType Name="v_ProductionPlanDet">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="WhName" />
+            <PropertyRef Name="MsrName" />
+            <PropertyRef Name="RecipeAmount" />
+            <PropertyRef Name="ResipeOut" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="Decimal" Name="Amount" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Remain" Precision="15" Scale="4" />
+          <Property Type="Guid" Name="ProductionPlanId" />
+          <Property Type="Decimal" Name="Total" Precision="15" Scale="4" Nullable="false" />
+          <Property Type="Int32" Name="WhId" Nullable="false" />
+          <Property Type="String" Name="MatName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="WhName" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="RecId" Nullable="false" />
+          <Property Type="Int32" Name="Num" />
+          <Property Type="Decimal" Name="RecipeAmount" Nullable="false" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="ResipeOut" Nullable="false" Precision="15" Scale="4" />
+        </EntityType>
+        <EntityType Name="ViewLng">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="LangId" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="LangId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Languages" Relationship="BaseModel.FK__VIEWLNG__LANGID__2116E6DF" FromRole="ViewLng" ToRole="Languages" />
+          <NavigationProperty Name="UserTreeView" Relationship="BaseModel.FK__VIEWLNG__ID__2022C2A6" FromRole="ViewLng" ToRole="UserTreeView" />
+        </EntityType>
+        <Association Name="FK__VIEWLNG__LANGID__2116E6DF">
+          <End Type="BaseModel.Languages" Role="Languages" Multiplicity="1" />
+          <End Type="BaseModel.ViewLng" Role="ViewLng" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Languages">
+              <PropertyRef Name="LangId" />
+            </Principal>
+            <Dependent Role="ViewLng">
+              <PropertyRef Name="LangId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VIEWLNG__ID__2022C2A6">
+          <End Type="BaseModel.UserTreeView" Role="UserTreeView" Multiplicity="1" />
+          <End Type="BaseModel.ViewLng" Role="ViewLng" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTreeView">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ViewLng">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ProductionPlanDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="Num" />
+          <Property Type="Int32" Name="RecId" Nullable="false" />
+          <Property Type="Decimal" Name="Amount" Precision="15" Scale="4" />
+          <Property Type="Guid" Name="ProductionPlanId" />
+          <Property Type="Decimal" Name="Remain" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Total" Nullable="false" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="WhId" Nullable="false" />
+          <NavigationProperty Name="MatRecipe" Relationship="BaseModel.FK_ProductionPlanDet_MatRecipe" FromRole="ProductionPlanDet" ToRole="MatRecipe" />
+          <NavigationProperty Name="ProductionPlans" Relationship="BaseModel.FK_ProductionPlanDet_ProductionPlans" FromRole="ProductionPlanDet" ToRole="ProductionPlans" />
+          <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK_ProductionPlanDet_Warehouse" FromRole="ProductionPlanDet" ToRole="Warehouse" />
+        </EntityType>
+        <Association Name="FK_ProductionPlanDet_MatRecipe">
+          <End Type="BaseModel.MatRecipe" Role="MatRecipe" Multiplicity="1" />
+          <End Type="BaseModel.ProductionPlanDet" Role="ProductionPlanDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MatRecipe">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="ProductionPlanDet">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductionPlanDet_ProductionPlans">
+          <End Type="BaseModel.ProductionPlans" Role="ProductionPlans" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.ProductionPlanDet" Role="ProductionPlanDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductionPlans">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductionPlanDet">
+              <PropertyRef Name="ProductionPlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductionPlanDet_Warehouse">
+          <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="1" />
+          <End Type="BaseModel.ProductionPlanDet" Role="ProductionPlanDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
+            </Principal>
+            <Dependent Role="ProductionPlanDet">
+              <PropertyRef Name="WhId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GetWayBillListWh_Result">
+          <Property Type="Guid" Name="Id" Nullable="true" />
+          <Property Type="Int32" Name="WBillId" Nullable="true" />
+          <Property Type="String" Name="Num" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="String" Name="Reason" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Checked" Nullable="true" />
+          <Property Type="Decimal" Name="SummAll" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Int32" Name="WType" Nullable="true" />
+          <Property Type="Decimal" Name="NDS" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="PersonId" Nullable="true" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="DocId" Nullable="true" />
+          <Property Type="Decimal" Name="SummInCurr" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="CurrRate" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="AttNum" Nullable="true" MaxLength="64" />
+          <Property Type="DateTime" Name="AttDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Received" Nullable="true" MaxLength="128" />
+          <Property Type="DateTime" Name="ToDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="DefNum" Nullable="true" />
+          <Property Type="String" Name="FromWh" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="FromWId" Nullable="true" />
+          <Property Type="String" Name="ToWh" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="ToWId" Nullable="true" />
+          <Property Type="Int32" Name="WriteOn" Nullable="true" />
+          <Property Type="Int32" Name="WriteOff" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="MoneyMoveList_Result">
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="PayDocId" Nullable="false" />
+          <Property Type="Int32" Name="DocType" Nullable="false" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="Total" Nullable="false" Precision="15" Scale="2" />
+          <Property Type="String" Name="DocNum" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="Checked" Nullable="false" />
+          <Property Type="String" Name="Reason" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="AccId" Nullable="true" />
+          <Property Type="Int32" Name="CashId" Nullable="true" />
+          <Property Type="Int32" Name="OperId" Nullable="true" />
+          <Property Type="Int32" Name="DocId" Nullable="true" />
+          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="PayTypeName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CashdName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="AccNum" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="DocTypeName" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="ImgIdx" Nullable="false" />
+          <Property Type="Decimal" Name="FromSumm" Nullable="true" Precision="17" Scale="2" />
+          <Property Type="Decimal" Name="ToSumm" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="String" Name="FromSource" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="ToSource" Nullable="true" MaxLength="128" />
+        </ComplexType>
+        <ComplexType Name="MoneyTurnover_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="DocType" Nullable="true" />
+          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="KaName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="CurrencyName" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="Total" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="TotalDef" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Int32" Name="PayDocId" Nullable="true" />
+          <Property Type="Int32" Name="Checked" Nullable="true" />
+          <Property Type="String" Name="Num" Nullable="true" MaxLength="15" />
+          <Property Type="Int32" Name="KaId" Nullable="true" />
+          <Property Type="String" Name="PtypeName" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="BankName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="ChargeName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="AccNum" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="CashName" Nullable="true" MaxLength="64" />
+          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="Int32" Name="DocId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetMatList_Result">
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="MId" Nullable="false" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="GrpId" Nullable="true" />
+          <Property Type="Int32" Name="WId" Nullable="true" />
+          <Property Type="Int32" Name="Num" Nullable="true" />
+          <Property Type="Decimal" Name="MinReserv" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="Int32" Name="CId" Nullable="true" />
+          <Property Type="Int32" Name="DemandCat" Nullable="true" />
+          <Property Type="Decimal" Name="Weight" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="MSize" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="String" Name="Producer" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="MType" Nullable="false" />
+          <Property Type="String" Name="ShortName" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="CName" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="Archived" Nullable="true" />
+          <Property Type="String" Name="GrpName" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="WhName" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="DemandGroupName" Nullable="true" MaxLength="50" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -13283,15 +13330,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ViewLng">
-            <EntityTypeMapping TypeName="BaseModel.ViewLng">
-              <MappingFragment StoreEntitySet="ViewLng">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="LangId" ColumnName="LangId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="UserTreeAccess">
             <EntityTypeMapping TypeName="BaseModel.UserTreeAccess">
               <MappingFragment StoreEntitySet="UserTreeAccess">
@@ -13446,6 +13484,7 @@
           <EntitySetMapping Name="MatRecipe">
             <EntityTypeMapping TypeName="BaseModel.MatRecipe">
               <MappingFragment StoreEntitySet="MatRecipe">
+                <ScalarProperty Name="Out" ColumnName="Out" />
                 <ScalarProperty Name="RType" ColumnName="RType" />
                 <ScalarProperty Name="MatId" ColumnName="MatId" />
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
@@ -14030,30 +14069,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="MoneyTurnover" FunctionName="BaseModel.Store.MoneyTurnover">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.MoneyTurnover_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="DocType" ColumnName="DocType" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="KaName" ColumnName="KaName" />
-                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="TotalDef" ColumnName="TotalDef" />
-                <ScalarProperty Name="PayDocId" ColumnName="PayDocId" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="KaId" ColumnName="KaId" />
-                <ScalarProperty Name="PtypeName" ColumnName="PtypeName" />
-                <ScalarProperty Name="BankName" ColumnName="BankName" />
-                <ScalarProperty Name="ChargeName" ColumnName="ChargeName" />
-                <ScalarProperty Name="AccNum" ColumnName="AccNum" />
-                <ScalarProperty Name="CashName" ColumnName="CashName" />
-                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
-                <ScalarProperty Name="DocId" ColumnName="DocId" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="PayDocType">
             <EntityTypeMapping TypeName="BaseModel.PayDocType">
               <MappingFragment StoreEntitySet="PayDocType">
@@ -14591,36 +14606,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetMatList" FunctionName="BaseModel.Store.GetMatList">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetMatList_Result">
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
-                <ScalarProperty Name="MId" ColumnName="MId" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
-                <ScalarProperty Name="WId" ColumnName="WId" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="MinReserv" ColumnName="MinReserv" />
-                <ScalarProperty Name="CId" ColumnName="CId" />
-                <ScalarProperty Name="DemandCat" ColumnName="DemandCat" />
-                <ScalarProperty Name="Weight" ColumnName="Weight" />
-                <ScalarProperty Name="MSize" ColumnName="MSize" />
-                <ScalarProperty Name="Producer" ColumnName="Producer" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="MType" ColumnName="MType" />
-                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
-                <ScalarProperty Name="CName" ColumnName="CName" />
-                <ScalarProperty Name="Archived" ColumnName="Archived" />
-                <ScalarProperty Name="GrpName" ColumnName="GrpName" />
-                <ScalarProperty Name="WhName" ColumnName="WhName" />
-                <ScalarProperty Name="AvgPrice" ColumnName="AvgPrice" />
-                <ScalarProperty Name="Remain" ColumnName="Remain" />
-                <ScalarProperty Name="DemandGroupName" ColumnName="DemandGroupName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetPrintLog" FunctionName="BaseModel.Store.GetPrintLog">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.GetPrintLog_Result">
@@ -15000,40 +14985,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetWayBillListWh" FunctionName="BaseModel.Store.GetWayBillListWh">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetWayBillListWh_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="WBillId" ColumnName="WBillId" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
-                <ScalarProperty Name="Reason" ColumnName="Reason" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
-                <ScalarProperty Name="WType" ColumnName="WType" />
-                <ScalarProperty Name="NDS" ColumnName="NDS" />
-                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="DocId" ColumnName="DocId" />
-                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
-                <ScalarProperty Name="CurrRate" ColumnName="CurrRate" />
-                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
-                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
-                <ScalarProperty Name="AttNum" ColumnName="AttNum" />
-                <ScalarProperty Name="AttDate" ColumnName="AttDate" />
-                <ScalarProperty Name="Received" ColumnName="Received" />
-                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
-                <ScalarProperty Name="DefNum" ColumnName="DefNum" />
-                <ScalarProperty Name="FromWh" ColumnName="FromWh" />
-                <ScalarProperty Name="FromWId" ColumnName="FromWId" />
-                <ScalarProperty Name="ToWh" ColumnName="ToWh" />
-                <ScalarProperty Name="ToWId" ColumnName="ToWId" />
-                <ScalarProperty Name="WriteOn" ColumnName="WriteOn" />
-                <ScalarProperty Name="WriteOff" ColumnName="WriteOff" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="PriceList">
             <EntityTypeMapping TypeName="BaseModel.PriceList">
               <MappingFragment StoreEntitySet="PriceList">
@@ -15223,36 +15174,6 @@
                 <ScalarProperty Name="Saldo" ColumnName="Saldo" />
                 <ScalarProperty Name="TypeName" ColumnName="TypeName" />
                 <ScalarProperty Name="DocShortName" ColumnName="DocShortName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="MoneyMoveList" FunctionName="BaseModel.Store.MoneyMoveList">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.MoneyMoveList_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="PayDocId" ColumnName="PayDocId" />
-                <ScalarProperty Name="DocType" ColumnName="DocType" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="Reason" ColumnName="Reason" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="AccId" ColumnName="AccId" />
-                <ScalarProperty Name="CashId" ColumnName="CashId" />
-                <ScalarProperty Name="OperId" ColumnName="OperId" />
-                <ScalarProperty Name="DocId" ColumnName="DocId" />
-                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
-                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
-                <ScalarProperty Name="PayTypeName" ColumnName="PayTypeName" />
-                <ScalarProperty Name="CashdName" ColumnName="CashdName" />
-                <ScalarProperty Name="AccNum" ColumnName="AccNum" />
-                <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
-                <ScalarProperty Name="ImgIdx" ColumnName="ImgIdx" />
-                <ScalarProperty Name="FromSumm" ColumnName="FromSumm" />
-                <ScalarProperty Name="ToSumm" ColumnName="ToSumm" />
-                <ScalarProperty Name="FromSource" ColumnName="FromSource" />
-                <ScalarProperty Name="ToSource" ColumnName="ToSource" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -15965,22 +15886,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ProductionPlanDet">
-            <EntityTypeMapping TypeName="BaseModel.ProductionPlanDet">
-              <MappingFragment StoreEntitySet="ProductionPlanDet">
-                <ScalarProperty Name="WhId" ColumnName="WhId" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="Remain" ColumnName="Remain" />
-                <ScalarProperty Name="ProductionPlanId" ColumnName="ProductionPlanId" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ProductionPlans">
             <EntityTypeMapping TypeName="BaseModel.ProductionPlans">
               <MappingFragment StoreEntitySet="ProductionPlans">
+                <ScalarProperty Name="ManufId" ColumnName="ManufId" />
+                <ScalarProperty Name="WhId" ColumnName="WhId" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="SessionId" ColumnName="SessionId" />
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
                 <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
@@ -16037,22 +15948,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="v_ProductionPlanDet">
-            <EntityTypeMapping TypeName="BaseModel.v_ProductionPlanDet">
-              <MappingFragment StoreEntitySet="v_ProductionPlanDet">
-                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
-                <ScalarProperty Name="WhName" ColumnName="WhName" />
-                <ScalarProperty Name="MatName" ColumnName="MatName" />
-                <ScalarProperty Name="WhId" ColumnName="WhId" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="ProductionPlanId" ColumnName="ProductionPlanId" />
-                <ScalarProperty Name="Remain" ColumnName="Remain" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="GetPosOut" FunctionName="BaseModel.Store.GetPosOut">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.GetPosOut_Result">
@@ -16083,6 +15978,164 @@
                 <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
                 <ScalarProperty Name="ReturnAmount" ColumnName="ReturnAmount" />
                 <ScalarProperty Name="Remain" ColumnName="Remain" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="v_ProductionPlanDet">
+            <EntityTypeMapping TypeName="BaseModel.v_ProductionPlanDet">
+              <MappingFragment StoreEntitySet="v_ProductionPlanDet">
+                <ScalarProperty Name="ResipeOut" ColumnName="ResipeOut" />
+                <ScalarProperty Name="RecipeAmount" ColumnName="RecipeAmount" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="RecId" ColumnName="RecId" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="WhId" ColumnName="WhId" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="ProductionPlanId" ColumnName="ProductionPlanId" />
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewLng">
+            <EntityTypeMapping TypeName="BaseModel.ViewLng">
+              <MappingFragment StoreEntitySet="ViewLng">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LangId" ColumnName="LangId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductionPlanDet">
+            <EntityTypeMapping TypeName="BaseModel.ProductionPlanDet">
+              <MappingFragment StoreEntitySet="ProductionPlanDet">
+                <ScalarProperty Name="WhId" ColumnName="WhId" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
+                <ScalarProperty Name="ProductionPlanId" ColumnName="ProductionPlanId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="RecId" ColumnName="RecId" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetWayBillListWh" FunctionName="BaseModel.Store.GetWayBillListWh">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetWayBillListWh_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WBillId" ColumnName="WBillId" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="NDS" ColumnName="NDS" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="CurrRate" ColumnName="CurrRate" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="AttNum" ColumnName="AttNum" />
+                <ScalarProperty Name="AttDate" ColumnName="AttDate" />
+                <ScalarProperty Name="Received" ColumnName="Received" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="DefNum" ColumnName="DefNum" />
+                <ScalarProperty Name="FromWh" ColumnName="FromWh" />
+                <ScalarProperty Name="FromWId" ColumnName="FromWId" />
+                <ScalarProperty Name="ToWh" ColumnName="ToWh" />
+                <ScalarProperty Name="ToWId" ColumnName="ToWId" />
+                <ScalarProperty Name="WriteOn" ColumnName="WriteOn" />
+                <ScalarProperty Name="WriteOff" ColumnName="WriteOff" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="MoneyMoveList" FunctionName="BaseModel.Store.MoneyMoveList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.MoneyMoveList_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PayDocId" ColumnName="PayDocId" />
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="AccId" ColumnName="AccId" />
+                <ScalarProperty Name="CashId" ColumnName="CashId" />
+                <ScalarProperty Name="OperId" ColumnName="OperId" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="PayTypeName" ColumnName="PayTypeName" />
+                <ScalarProperty Name="CashdName" ColumnName="CashdName" />
+                <ScalarProperty Name="AccNum" ColumnName="AccNum" />
+                <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
+                <ScalarProperty Name="ImgIdx" ColumnName="ImgIdx" />
+                <ScalarProperty Name="FromSumm" ColumnName="FromSumm" />
+                <ScalarProperty Name="ToSumm" ColumnName="ToSumm" />
+                <ScalarProperty Name="FromSource" ColumnName="FromSource" />
+                <ScalarProperty Name="ToSource" ColumnName="ToSource" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="MoneyTurnover" FunctionName="BaseModel.Store.MoneyTurnover">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.MoneyTurnover_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="TotalDef" ColumnName="TotalDef" />
+                <ScalarProperty Name="PayDocId" ColumnName="PayDocId" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="PtypeName" ColumnName="PtypeName" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="ChargeName" ColumnName="ChargeName" />
+                <ScalarProperty Name="AccNum" ColumnName="AccNum" />
+                <ScalarProperty Name="CashName" ColumnName="CashName" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetMatList" FunctionName="BaseModel.Store.GetMatList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetMatList_Result">
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="MId" ColumnName="MId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="MinReserv" ColumnName="MinReserv" />
+                <ScalarProperty Name="CId" ColumnName="CId" />
+                <ScalarProperty Name="DemandCat" ColumnName="DemandCat" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="MSize" ColumnName="MSize" />
+                <ScalarProperty Name="Producer" ColumnName="Producer" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="MType" ColumnName="MType" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="CName" ColumnName="CName" />
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
+                <ScalarProperty Name="GrpName" ColumnName="GrpName" />
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
+                <ScalarProperty Name="DemandGroupName" ColumnName="DemandGroupName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

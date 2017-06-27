@@ -68,9 +68,6 @@ namespace SP_Sklad.MainTabs
                 DirTreeBS.DataSource = DB.SkladBase().GetDirTree(DBHelper.CurrentUser.UserId).ToList();
                 DirTreeList.ExpandToLevel(1);
 
-                AvgMatPriceGridColumn.Visible = (DBHelper.CurrentUser.ShowPrice == 1);
-                AvgMatPriceGridColumn.OptionsColumn.ShowInCustomizationForm = AvgMatPriceGridColumn.Visible;
-
                 KagentSaldoGridColumn.Visible = (DBHelper.CurrentUser.ShowBalance == 1);
                 KagentSaldoGridColumn.OptionsColumn.ShowInCustomizationForm = KagentSaldoGridColumn.Visible;
             }
@@ -222,7 +219,8 @@ namespace SP_Sklad.MainTabs
                                 s.Amount,
                                 s.Materials.Measures.ShortName,
                                 s.Name,
-                                GrpName = s.Materials.MatGroup.Name
+                                GrpName = s.Materials.MatGroup.Name,
+                                s.Out
                             }).ToList();
 
                             extDirTabControl.SelectedTabPageIndex = 0;
@@ -484,7 +482,9 @@ namespace SP_Sklad.MainTabs
                         if (r != null)
                         {
                             var mat = db.Materials.Find(r.MatId);
-                            if (mat != null && (r.Remain == 0 || r.Remain == null))
+                            var mat_remain = db.v_MatRemains.Where(w => w.MatId == r.MatId).OrderByDescending(o => o.OnDate).FirstOrDefault();
+
+                            if (mat != null && mat_remain != null && (mat_remain.Remain == 0 || mat_remain.Remain == null))
                             {
                                 mat.Deleted = 1;
                             }
@@ -780,8 +780,15 @@ namespace SP_Sklad.MainTabs
                 {
                     if (MessageBox.Show(string.Format("Ви дійсно хочете перемістити матеріал <{0}> в архів?", focused_mat.Name), "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                     {
-                        if (focused_mat.Remain == 0) mat.Archived = 1;
-                        else MessageBox.Show(string.Format("Неможливо перемістити матеріал <{0}> в архів, \nтому що його залишок складає {1} {2}", focused_mat.Name, focused_mat.Remain.Value.ToString(CultureInfo.InvariantCulture), focused_mat.ShortName));
+                        var mat_remain = db.v_MatRemains.Where(w => w.MatId == focused_mat.MatId).OrderByDescending(o => o.OnDate).FirstOrDefault();
+                        if (mat_remain != null && (mat_remain.Remain == null || mat_remain.Remain == 0))
+                        {
+                            mat.Archived = 1;
+                        }
+                        else
+                        {
+                            MessageBox.Show(string.Format("Неможливо перемістити матеріал <{0}> в архів, \nтому що його залишок складає {1} {2}", focused_mat.Name, mat_remain.Remain.Value.ToString(CultureInfo.InvariantCulture), focused_mat.ShortName));
+                        }
                     }
                 }
             }

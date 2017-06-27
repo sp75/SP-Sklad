@@ -142,7 +142,7 @@ namespace SP_Sklad.MainTabs
             var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
 
             int top_row = WbGridView.TopRowIndex;
-            GetWayBillListWhBS.DataSource = DB.SkladBase().GetWayBillListWh(satrt_date, end_date, wtyp, (int)wbSatusList.EditValue, WhComboBox.EditValue.ToString()).OrderByDescending(o => o.OnDate).ToList();
+            GetWayBillListWhBS.DataSource = DB.SkladBase().GetWayBillListWh(satrt_date, end_date, wtyp, (int)wbSatusList.EditValue, WhComboBox.EditValue.ToString(), DBHelper.CurrentUser.KaId).OrderByDescending(o => o.OnDate).ToList();
             WbGridView.TopRowIndex = top_row;
         }
 

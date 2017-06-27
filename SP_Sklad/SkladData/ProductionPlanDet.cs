@@ -15,14 +15,15 @@ namespace SP_Sklad.SkladData
     public partial class ProductionPlanDet
     {
         public System.Guid Id { get; set; }
-        public Nullable<int> MatId { get; set; }
+        public Nullable<int> Num { get; set; }
+        public int RecId { get; set; }
         public Nullable<decimal> Amount { get; set; }
         public Nullable<System.Guid> ProductionPlanId { get; set; }
         public Nullable<decimal> Remain { get; set; }
-        public Nullable<decimal> Total { get; set; }
-        public Nullable<int> WhId { get; set; }
+        public decimal Total { get; set; }
+        public int WhId { get; set; }
     
-        public virtual Materials Materials { get; set; }
+        public virtual MatRecipe MatRecipe { get; set; }
         public virtual ProductionPlans ProductionPlans { get; set; }
         public virtual Warehouse Warehouse { get; set; }
     }

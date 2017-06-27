@@ -195,6 +195,21 @@ namespace SP_Sklad.Common
                         _manufacturing_user_control.DeboningGridView.FocusedRowHandle = rowHandle2;
                     }
                     break;
+                case 20:
+                    PageIndex = 1;
+
+                    if (_manufacturing_user_control.PlanStartDate.DateTime > _on_date) _manufacturing_user_control.PlanStartDate.DateTime = _on_date.Date;
+                    if (_manufacturing_user_control.PlanEndDate.DateTime < _on_date) _manufacturing_user_control.PlanEndDate.DateTime = _on_date;
+                    _manufacturing_user_control.lookUpEdit2.EditValue = -1;
+
+                    _manufacturing_user_control.DocsTreeList.FocusedNode = _manufacturing_user_control.DocsTreeList.FindNodeByFieldValue("Id", 116);
+
+                    int rowHandle3 = _manufacturing_user_control.ProductionPlansGridView.LocateByValue("Id", _doc_id);
+                    if (rowHandle3 != GridControl.InvalidRowHandle)
+                    {
+                        _manufacturing_user_control.ProductionPlansGridView.FocusedRowHandle = rowHandle3;
+                    }
+                    break;
             }
         }
     }

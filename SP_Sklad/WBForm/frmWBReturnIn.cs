@@ -47,6 +47,7 @@ namespace SP_Sklad.WBForm
             KagentComboBox.Properties.DataSource = DBHelper.Kagents;
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
             WHComboBox.Properties.DataSource = DBHelper.WhList();
+            OutDateEdit.DateTime = DateTime.Now.Date.AddDays(-3);
 
             if (_wbill_id == null)
             {
@@ -204,11 +205,9 @@ namespace SP_Sklad.WBForm
 
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var df = new frmWBReturnDetIn(_db, null, wb, (int?)WHComboBox.EditValue);
+            var df = new frmWBReturnDetIn(_db, null, wb, (int?)WHComboBox.EditValue, OutDateEdit.DateTime);
             if (df.ShowDialog() == DialogResult.OK)
             {
-              //  current_transaction = current_transaction.CommitRetaining(_db);
-              //  UpdLockWB();
                 RefreshDet();
             }
         }
@@ -255,7 +254,7 @@ namespace SP_Sklad.WBForm
 
             if (dr != null)
             {
-                var df = new frmWBReturnDetIn(_db, dr.PosId, wb, (int?)WHComboBox.EditValue);
+                var df = new frmWBReturnDetIn(_db, dr.PosId, wb, (int?)WHComboBox.EditValue, OutDateEdit.DateTime);
                 if (df.ShowDialog() == DialogResult.OK)
                 {
                     RefreshDet();
@@ -298,13 +297,13 @@ namespace SP_Sklad.WBForm
                 string kod = BarCodeText[0];
                 var item = _db.Materials.Where(w => w.BarCode == kod).Select(s => s.MatId).FirstOrDefault();
 
-                var frm = new frmOutMatList(_db, DateTime.Now.AddMonths(-1).Date, wb.OnDate, item, wb.KaId.Value);
+                var frm = new frmOutMatList(_db, OutDateEdit.DateTime, wb.OnDate, item, wb.KaId.Value);
                 if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     var mat_row = frm.bandedGridView1.GetFocusedRow() as GetPosOut_Result;
                     if (mat_row != null)
                     {
-                        var df = new frmWBReturnDetIn(_db, null, wb, (int?)WHComboBox.EditValue)
+                        var df = new frmWBReturnDetIn(_db, null, wb, (int?)WHComboBox.EditValue, OutDateEdit.DateTime)
                         {
                             pos_out_list = frm.pos_out_list,
                             outPosId = mat_row.PosId

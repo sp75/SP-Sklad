@@ -60,7 +60,6 @@ namespace SP_Sklad.SkladData
         public DbSet<DocType> DocType { get; set; }
         public DbSet<UserAccess> UserAccess { get; set; }
         public DbSet<UserTreeView> UserTreeView { get; set; }
-        public DbSet<ViewLng> ViewLng { get; set; }
         public DbSet<UserTreeAccess> UserTreeAccess { get; set; }
         public DbSet<v_GetDocsTree> v_GetDocsTree { get; set; }
         public DbSet<UserAccessWh> UserAccessWh { get; set; }
@@ -148,10 +147,11 @@ namespace SP_Sklad.SkladData
         public DbSet<ErrorLog> ErrorLog { get; set; }
         public DbSet<Users> Users { get; set; }
         public DbSet<v_Users> v_Users { get; set; }
-        public DbSet<ProductionPlanDet> ProductionPlanDet { get; set; }
         public DbSet<ProductionPlans> ProductionPlans { get; set; }
         public DbSet<v_MatRemains> v_MatRemains { get; set; }
         public DbSet<v_ProductionPlanDet> v_ProductionPlanDet { get; set; }
+        public DbSet<ViewLng> ViewLng { get; set; }
+        public DbSet<ProductionPlanDet> ProductionPlanDet { get; set; }
     
         [EdmFunction("BaseEntities", "SP_AUTO_RSV_WB_2")]
         public virtual IQueryable<SP_AUTO_RSV_WB_2_Result> SP_AUTO_RSV_WB_2(Nullable<int> wBILLID)
@@ -916,36 +916,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSaldoDetTree_Result>("GetSaldoDetTree", user_idParameter, idParameter, on_dateParameter);
         }
     
-        [EdmFunction("BaseEntities", "MoneyTurnover")]
-        public virtual IQueryable<MoneyTurnover_Result> MoneyTurnover(Nullable<int> fun_id, Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> turn_type, Nullable<int> curr_id, Nullable<int> ka_id)
-        {
-            var fun_idParameter = fun_id.HasValue ?
-                new ObjectParameter("fun_id", fun_id) :
-                new ObjectParameter("fun_id", typeof(int));
-    
-            var from_dateParameter = from_date.HasValue ?
-                new ObjectParameter("from_date", from_date) :
-                new ObjectParameter("from_date", typeof(System.DateTime));
-    
-            var to_dateParameter = to_date.HasValue ?
-                new ObjectParameter("to_date", to_date) :
-                new ObjectParameter("to_date", typeof(System.DateTime));
-    
-            var turn_typeParameter = turn_type.HasValue ?
-                new ObjectParameter("turn_type", turn_type) :
-                new ObjectParameter("turn_type", typeof(int));
-    
-            var curr_idParameter = curr_id.HasValue ?
-                new ObjectParameter("curr_id", curr_id) :
-                new ObjectParameter("curr_id", typeof(int));
-    
-            var ka_idParameter = ka_id.HasValue ?
-                new ObjectParameter("ka_id", ka_id) :
-                new ObjectParameter("ka_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<MoneyTurnover_Result>("[BaseEntities].[MoneyTurnover](@fun_id, @from_date, @to_date, @turn_type, @curr_id, @ka_id)", fun_idParameter, from_dateParameter, to_dateParameter, turn_typeParameter, curr_idParameter, ka_idParameter);
-        }
-    
         public virtual ObjectResult<REP_3_14_Result> REP_3_14(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> grp_id, Nullable<int> ka_id, string wh, string doc_types)
         {
             var from_dateParameter = from_date.HasValue ?
@@ -1334,27 +1304,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatPriceTypes_Result>("[BaseEntities].[GetMatPriceTypes](@mat_id)", mat_idParameter);
         }
     
-        public virtual ObjectResult<GetMatList_Result> GetMatList(Nullable<int> grp, Nullable<int> get_price, Nullable<int> get_archived, Nullable<int> get_child_node)
-        {
-            var grpParameter = grp.HasValue ?
-                new ObjectParameter("grp", grp) :
-                new ObjectParameter("grp", typeof(int));
-    
-            var get_priceParameter = get_price.HasValue ?
-                new ObjectParameter("get_price", get_price) :
-                new ObjectParameter("get_price", typeof(int));
-    
-            var get_archivedParameter = get_archived.HasValue ?
-                new ObjectParameter("get_archived", get_archived) :
-                new ObjectParameter("get_archived", typeof(int));
-    
-            var get_child_nodeParameter = get_child_node.HasValue ?
-                new ObjectParameter("get_child_node", get_child_node) :
-                new ObjectParameter("get_child_node", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetMatList_Result>("GetMatList", grpParameter, get_priceParameter, get_archivedParameter, get_child_nodeParameter);
-        }
-    
         [EdmFunction("BaseEntities", "GetPrintLog")]
         public virtual IQueryable<GetPrintLog_Result> GetPrintLog(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> user_id)
         {
@@ -1488,32 +1437,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("CopyMaterial", mat_idParameter);
         }
     
-        [EdmFunction("BaseEntities", "GetWayBillListWh")]
-        public virtual IQueryable<GetWayBillListWh_Result> GetWayBillListWh(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> w_type, Nullable<int> is_checked, string wh)
-        {
-            var from_dateParameter = from_date.HasValue ?
-                new ObjectParameter("from_date", from_date) :
-                new ObjectParameter("from_date", typeof(System.DateTime));
-    
-            var to_dateParameter = to_date.HasValue ?
-                new ObjectParameter("to_date", to_date) :
-                new ObjectParameter("to_date", typeof(System.DateTime));
-    
-            var w_typeParameter = w_type.HasValue ?
-                new ObjectParameter("w_type", w_type) :
-                new ObjectParameter("w_type", typeof(int));
-    
-            var is_checkedParameter = is_checked.HasValue ?
-                new ObjectParameter("is_checked", is_checked) :
-                new ObjectParameter("is_checked", typeof(int));
-    
-            var whParameter = wh != null ?
-                new ObjectParameter("wh", wh) :
-                new ObjectParameter("wh", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillListWh_Result>("[BaseEntities].[GetWayBillListWh](@from_date, @to_date, @w_type, @is_checked, @wh)", from_dateParameter, to_dateParameter, w_typeParameter, is_checkedParameter, whParameter);
-        }
-    
         [EdmFunction("BaseEntities", "GetMatRsv")]
         public virtual IQueryable<GetMatRsv_Result> GetMatRsv(Nullable<int> mat_id, Nullable<int> ka_id, Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> w_type)
         {
@@ -1560,28 +1483,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("w_type", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetDocList_Result>("[BaseEntities].[GetDocList](@from_date, @to_date, @ka_id, @w_type)", from_dateParameter, to_dateParameter, ka_idParameter, w_typeParameter);
-        }
-    
-        [EdmFunction("BaseEntities", "MoneyMoveList")]
-        public virtual IQueryable<MoneyMoveList_Result> MoneyMoveList(Nullable<int> doc_type, Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> is_checked)
-        {
-            var doc_typeParameter = doc_type.HasValue ?
-                new ObjectParameter("doc_type", doc_type) :
-                new ObjectParameter("doc_type", typeof(int));
-    
-            var from_dateParameter = from_date.HasValue ?
-                new ObjectParameter("from_date", from_date) :
-                new ObjectParameter("from_date", typeof(System.DateTime));
-    
-            var to_dateParameter = to_date.HasValue ?
-                new ObjectParameter("to_date", to_date) :
-                new ObjectParameter("to_date", typeof(System.DateTime));
-    
-            var is_checkedParameter = is_checked.HasValue ?
-                new ObjectParameter("is_checked", is_checked) :
-                new ObjectParameter("is_checked", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<MoneyMoveList_Result>("[BaseEntities].[MoneyMoveList](@doc_type, @from_date, @to_date, @is_checked)", doc_typeParameter, from_dateParameter, to_dateParameter, is_checkedParameter);
         }
     
         [EdmFunction("BaseEntities", "GetRelDocList")]
@@ -2070,6 +1971,118 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("w_type", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetPosOut_Result>("[BaseEntities].[GetPosOut](@from_date, @to_date, @mat_id, @ka_id, @w_type)", from_dateParameter, to_dateParameter, mat_idParameter, ka_idParameter, w_typeParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetWayBillListWh")]
+        public virtual IQueryable<GetWayBillListWh_Result> GetWayBillListWh(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> w_type, Nullable<int> is_checked, string wh, Nullable<int> person_id)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var w_typeParameter = w_type.HasValue ?
+                new ObjectParameter("w_type", w_type) :
+                new ObjectParameter("w_type", typeof(int));
+    
+            var is_checkedParameter = is_checked.HasValue ?
+                new ObjectParameter("is_checked", is_checked) :
+                new ObjectParameter("is_checked", typeof(int));
+    
+            var whParameter = wh != null ?
+                new ObjectParameter("wh", wh) :
+                new ObjectParameter("wh", typeof(string));
+    
+            var person_idParameter = person_id.HasValue ?
+                new ObjectParameter("person_id", person_id) :
+                new ObjectParameter("person_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillListWh_Result>("[BaseEntities].[GetWayBillListWh](@from_date, @to_date, @w_type, @is_checked, @wh, @person_id)", from_dateParameter, to_dateParameter, w_typeParameter, is_checkedParameter, whParameter, person_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "MoneyMoveList")]
+        public virtual IQueryable<MoneyMoveList_Result> MoneyMoveList(Nullable<int> doc_type, Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> is_checked, Nullable<int> person_id)
+        {
+            var doc_typeParameter = doc_type.HasValue ?
+                new ObjectParameter("doc_type", doc_type) :
+                new ObjectParameter("doc_type", typeof(int));
+    
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var is_checkedParameter = is_checked.HasValue ?
+                new ObjectParameter("is_checked", is_checked) :
+                new ObjectParameter("is_checked", typeof(int));
+    
+            var person_idParameter = person_id.HasValue ?
+                new ObjectParameter("person_id", person_id) :
+                new ObjectParameter("person_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<MoneyMoveList_Result>("[BaseEntities].[MoneyMoveList](@doc_type, @from_date, @to_date, @is_checked, @person_id)", doc_typeParameter, from_dateParameter, to_dateParameter, is_checkedParameter, person_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "MoneyTurnover")]
+        public virtual IQueryable<MoneyTurnover_Result> MoneyTurnover(Nullable<int> fun_id, Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> turn_type, Nullable<int> curr_id, Nullable<int> ka_id, Nullable<int> person_id)
+        {
+            var fun_idParameter = fun_id.HasValue ?
+                new ObjectParameter("fun_id", fun_id) :
+                new ObjectParameter("fun_id", typeof(int));
+    
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var turn_typeParameter = turn_type.HasValue ?
+                new ObjectParameter("turn_type", turn_type) :
+                new ObjectParameter("turn_type", typeof(int));
+    
+            var curr_idParameter = curr_id.HasValue ?
+                new ObjectParameter("curr_id", curr_id) :
+                new ObjectParameter("curr_id", typeof(int));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var person_idParameter = person_id.HasValue ?
+                new ObjectParameter("person_id", person_id) :
+                new ObjectParameter("person_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<MoneyTurnover_Result>("[BaseEntities].[MoneyTurnover](@fun_id, @from_date, @to_date, @turn_type, @curr_id, @ka_id, @person_id)", fun_idParameter, from_dateParameter, to_dateParameter, turn_typeParameter, curr_idParameter, ka_idParameter, person_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetMatList")]
+        public virtual IQueryable<GetMatList_Result> GetMatList(Nullable<int> grp, Nullable<int> get_price, Nullable<int> get_archived, Nullable<int> get_child_node)
+        {
+            var grpParameter = grp.HasValue ?
+                new ObjectParameter("grp", grp) :
+                new ObjectParameter("grp", typeof(int));
+    
+            var get_priceParameter = get_price.HasValue ?
+                new ObjectParameter("get_price", get_price) :
+                new ObjectParameter("get_price", typeof(int));
+    
+            var get_archivedParameter = get_archived.HasValue ?
+                new ObjectParameter("get_archived", get_archived) :
+                new ObjectParameter("get_archived", typeof(int));
+    
+            var get_child_nodeParameter = get_child_node.HasValue ?
+                new ObjectParameter("get_child_node", get_child_node) :
+                new ObjectParameter("get_child_node", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatList_Result>("[BaseEntities].[GetMatList](@grp, @get_price, @get_archived, @get_child_node)", grpParameter, get_priceParameter, get_archivedParameter, get_child_nodeParameter);
         }
     }
 }

@@ -449,5 +449,21 @@ namespace SP_Sklad.WBForm
         {
             RecipeComboBox.EditValue = IHelper.ShowDirectList(RecipeComboBox.EditValue, 15);
         }
+
+        private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (wbd_row != null)
+            {
+                IHelper.ShowMatInfo(wbd_row.MatId);
+            }
+        }
+
+        private void RsvInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (wbd_row != null)
+            {
+                IHelper.ShowMatRSV(wbd_row.MatId, _db);
+            }
+        }
     }
 }

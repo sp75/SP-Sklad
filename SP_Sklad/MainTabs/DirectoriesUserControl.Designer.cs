@@ -148,8 +148,6 @@
             this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn26 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn28 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.AvgMatPriceGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ArchivedGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit8 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridColumn78 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -228,6 +226,7 @@
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn38 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn39 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn73 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage20 = new DevExpress.XtraTab.XtraTabPage();
             this.WarehouseGridControl = new DevExpress.XtraGrid.GridControl();
             this.WarehouseBS = new System.Windows.Forms.BindingSource(this.components);
@@ -317,6 +316,7 @@
             this.ExplorerPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
@@ -1598,10 +1598,9 @@
             this.gridColumn25,
             this.gridColumn26,
             this.gridColumn28,
-            this.AvgMatPriceGridColumn,
-            this.gridColumn23,
             this.ArchivedGridColumn,
-            this.gridColumn78});
+            this.gridColumn78,
+            this.gridColumn23});
             this.MatGridView.GridControl = this.MatGridControl;
             this.MatGridView.Name = "MatGridView";
             this.MatGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -1663,28 +1662,6 @@
             this.gridColumn28.Visible = true;
             this.gridColumn28.VisibleIndex = 5;
             this.gridColumn28.Width = 109;
-            // 
-            // AvgMatPriceGridColumn
-            // 
-            this.AvgMatPriceGridColumn.Caption = "Середня ціна";
-            this.AvgMatPriceGridColumn.DisplayFormat.FormatString = "0.00";
-            this.AvgMatPriceGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.AvgMatPriceGridColumn.FieldName = "AvgPrice";
-            this.AvgMatPriceGridColumn.Name = "AvgMatPriceGridColumn";
-            this.AvgMatPriceGridColumn.Visible = true;
-            this.AvgMatPriceGridColumn.VisibleIndex = 6;
-            this.AvgMatPriceGridColumn.Width = 89;
-            // 
-            // gridColumn23
-            // 
-            this.gridColumn23.Caption = "Залишок";
-            this.gridColumn23.DisplayFormat.FormatString = "0.0000";
-            this.gridColumn23.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn23.FieldName = "Remain";
-            this.gridColumn23.Name = "gridColumn23";
-            this.gridColumn23.Visible = true;
-            this.gridColumn23.VisibleIndex = 7;
-            this.gridColumn23.Width = 80;
             // 
             // ArchivedGridColumn
             // 
@@ -2358,7 +2335,8 @@
             this.gridColumn6,
             this.gridColumn7,
             this.gridColumn38,
-            this.gridColumn39});
+            this.gridColumn39,
+            this.gridColumn73});
             this.MatRecipeGridView.GridControl = this.MatRecipeGridControl;
             this.MatRecipeGridView.GroupCount = 1;
             this.MatRecipeGridView.Name = "MatRecipeGridView";
@@ -2408,7 +2386,7 @@
             this.gridColumn7.FieldName = "ShortName";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 3;
+            this.gridColumn7.VisibleIndex = 4;
             // 
             // gridColumn38
             // 
@@ -2416,7 +2394,7 @@
             this.gridColumn38.FieldName = "Name";
             this.gridColumn38.Name = "gridColumn38";
             this.gridColumn38.Visible = true;
-            this.gridColumn38.VisibleIndex = 4;
+            this.gridColumn38.VisibleIndex = 5;
             this.gridColumn38.Width = 151;
             // 
             // gridColumn39
@@ -2426,6 +2404,14 @@
             this.gridColumn39.Name = "gridColumn39";
             this.gridColumn39.Visible = true;
             this.gridColumn39.VisibleIndex = 5;
+            // 
+            // gridColumn73
+            // 
+            this.gridColumn73.Caption = "Вихід, %";
+            this.gridColumn73.FieldName = "Out";
+            this.gridColumn73.Name = "gridColumn73";
+            this.gridColumn73.Visible = true;
+            this.gridColumn73.VisibleIndex = 3;
             // 
             // xtraTabPage20
             // 
@@ -3290,6 +3276,14 @@
             this.MatPopupMenu.Manager = this.barManager1;
             this.MatPopupMenu.Name = "MatPopupMenu";
             // 
+            // gridColumn23
+            // 
+            this.gridColumn23.Caption = "Група товарів";
+            this.gridColumn23.FieldName = "GrpName";
+            this.gridColumn23.Name = "gridColumn23";
+            this.gridColumn23.Visible = true;
+            this.gridColumn23.VisibleIndex = 6;
+            // 
             // DirectoriesUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3512,7 +3506,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn25;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn26;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn28;
-        private DevExpress.XtraGrid.Columns.GridColumn AvgMatPriceGridColumn;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraVerticalGrid.VGridControl vGridControl2;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow1;
@@ -3522,7 +3515,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox2;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox3;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox8;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;
         private DevExpress.XtraVerticalGrid.VGridControl vGridControl3;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow8;
         private DevExpress.XtraGrid.GridControl MatListGridControl;
@@ -3733,5 +3725,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn78;
         private DevExpress.XtraGrid.Columns.GridColumn LoginGridColumn;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn73;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;
     }
 }

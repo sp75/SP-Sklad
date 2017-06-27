@@ -32,8 +32,8 @@ namespace SP_Sklad.SkladData
         public int Visible { get; set; }
         public Nullable<int> DisabledIndex { get; set; }
     
-        public virtual ICollection<ViewLng> ViewLng { get; set; }
         public virtual UserTree UserTree { get; set; }
         public virtual Functions Functions { get; set; }
+        public virtual ICollection<ViewLng> ViewLng { get; set; }
     }
 }

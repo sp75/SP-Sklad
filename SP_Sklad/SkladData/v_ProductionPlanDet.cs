@@ -15,14 +15,17 @@ namespace SP_Sklad.SkladData
     public partial class v_ProductionPlanDet
     {
         public System.Guid Id { get; set; }
-        public Nullable<int> MatId { get; set; }
         public Nullable<decimal> Amount { get; set; }
         public Nullable<decimal> Remain { get; set; }
         public Nullable<System.Guid> ProductionPlanId { get; set; }
-        public Nullable<decimal> Total { get; set; }
-        public Nullable<int> WhId { get; set; }
+        public decimal Total { get; set; }
+        public int WhId { get; set; }
         public string MatName { get; set; }
         public string WhName { get; set; }
         public string MsrName { get; set; }
+        public int RecId { get; set; }
+        public Nullable<int> Num { get; set; }
+        public decimal RecipeAmount { get; set; }
+        public decimal ResipeOut { get; set; }
     }
 }

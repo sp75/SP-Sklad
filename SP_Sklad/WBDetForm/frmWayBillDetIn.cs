@@ -127,7 +127,7 @@ namespace SP_Sklad.WBDetForm
             }
             _db.Save(_wb.WbillId);
 
-            if (_wb.WType == 16)
+         /*   if (_wb.WType == 16)
             {
                 _db.DeleteWhere<WMatTurn>(w => w.PosId == _wbd.PosId);
                 _db.WMatTurn.Add(new WMatTurn()
@@ -140,7 +140,7 @@ namespace SP_Sklad.WBDetForm
                     TurnType = 3,
                     Amount = _wbd.Amount
                 });
-            }
+            }*/
 
             //   if (Serials->State == dsInsert || Serials->State == dsEdit) Serials->Post();
             //      if (WayBillDetAddProps->State == dsInsert || WayBillDetAddProps->State == dsEdit) WayBillDetAddProps->Post();
@@ -160,24 +160,24 @@ namespace SP_Sklad.WBDetForm
 
             if (_wb.WType == 1)
             {
-                var wmt = _db.WMatTurn.FirstOrDefault(w => w.SourceId == _wbd.PosId && w.TurnType == 3);
-                if (wmt != null)
-                {
-                    _db.DeleteWhere<WMatTurn>(w => w.PosId == _wbd.PosId);
-                    _db.WMatTurn.Add(new WMatTurn()
-                    {
-                        SourceId = _wbd.PosId,
-                        PosId = _wbd.PosId,
-                        WId = _wbd.WId.Value,
-                        MatId = _wbd.MatId,
-                        OnDate = _wbd.OnDate.Value,
-                        TurnType = 3,
-                        Amount = _wbd.Amount
-                    });
-                }
-                
                 _db.UpdWaybillDetPrice(_wb.WbillId);
+            }
 
+            //якщо позиція є замовлення в постачальника
+            var wmt = _db.WMatTurn.FirstOrDefault(w => w.SourceId == _wbd.PosId && w.TurnType == 3);
+            if (wmt != null)
+            {
+                _db.DeleteWhere<WMatTurn>(w => w.PosId == _wbd.PosId);
+                _db.WMatTurn.Add(new WMatTurn()
+                {
+                    SourceId = _wbd.PosId,
+                    PosId = _wbd.PosId,
+                    WId = _wbd.WId.Value,
+                    MatId = _wbd.MatId,
+                    OnDate = _wbd.OnDate.Value,
+                    TurnType = 3,
+                    Amount = _wbd.Amount
+                });
             }
 
             _db.Save(_wb.WbillId);

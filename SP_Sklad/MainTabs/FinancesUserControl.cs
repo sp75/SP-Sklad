@@ -103,7 +103,7 @@ namespace SP_Sklad.MainTabs
 
                 case 2:
                  //   MoneyMoveListBS.DataSource = null;
-                    MoneyMoveListBS.DataSource = new BaseEntities().MoneyMoveList(-1, wbStartDate.DateTime, wbEndDate.DateTime.Date.AddDays(1), (int)wbStatusList.EditValue).ToList();
+                    MoneyMoveListBS.DataSource = new BaseEntities().MoneyMoveList(-1, wbStartDate.DateTime, wbEndDate.DateTime.Date.AddDays(1), (int)wbStatusList.EditValue, DBHelper.CurrentUser.KaId).ToList();
                     RefreshBtnBar();
                     break;
                 case 3:
@@ -137,7 +137,7 @@ namespace SP_Sklad.MainTabs
                         }
                         break;
                 }
-                MoneyTurnoverBS.DataSource = new BaseEntities().MoneyTurnover(fun_id, TurnStartDate.DateTime, TurnEndDate.DateTime.Date.AddDays(1), turn_type, (int?)CurrensyList.EditValue, (int?)TurnKagentList.EditValue).ToList();
+                MoneyTurnoverBS.DataSource = new BaseEntities().MoneyTurnover(fun_id, TurnStartDate.DateTime, TurnEndDate.DateTime.Date.AddDays(1), turn_type, (int?)CurrensyList.EditValue, (int?)TurnKagentList.EditValue, DBHelper.CurrentUser.KaId).ToList();
             }
         }
 
@@ -159,7 +159,7 @@ namespace SP_Sklad.MainTabs
             if (wbStartDate.ContainsFocus || wbEndDate.ContainsFocus || wbStatusList.ContainsFocus)
             {
                 MoneyMoveListBS.DataSource = null;
-                MoneyMoveListBS.DataSource = new BaseEntities().MoneyMoveList(-1, wbStartDate.DateTime, wbEndDate.DateTime, (int)wbStatusList.EditValue).ToList();
+                MoneyMoveListBS.DataSource = new BaseEntities().MoneyMoveList(-1, wbStartDate.DateTime, wbEndDate.DateTime, (int)wbStatusList.EditValue, DBHelper.CurrentUser.KaId).ToList();
             }
         }
 

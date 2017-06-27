@@ -64,8 +64,6 @@
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.PersonEditBtn = new DevExpress.XtraEditors.SimpleButton();
             this.PersonComboBox = new DevExpress.XtraEditors.LookUpEdit();
-            this.NotesEdit = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.ReasonEdit = new DevExpress.XtraEditors.TextEdit();
             this.KAgentBtn = new DevExpress.XtraEditors.SimpleButton();
@@ -77,7 +75,6 @@
             this.TurnDocCheckBox = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.NumEdit = new DevExpress.XtraEditors.TextEdit();
-            this.OnDateDBEdit = new DevExpress.XtraEditors.DateEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.payDocUserControl1 = new SP_Sklad.MainTabs.PayDocUserControl();
             this.BarCodeEdit = new DevExpress.XtraEditors.TextEdit();
@@ -100,6 +97,11 @@
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.OutDateEdit = new DevExpress.XtraEditors.DateEdit();
+            this.OnDateDBEdit = new DevExpress.XtraEditors.DateEdit();
+            this.NotesEdit = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
@@ -111,13 +113,10 @@
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WHComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NotesEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReasonEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KagentComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TurnDocCheckBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BarCodeEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
@@ -130,6 +129,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OutDateEdit.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OutDateEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NotesEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -420,13 +424,16 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.NotesEdit);
+            this.panelControl1.Controls.Add(this.labelControl8);
+            this.panelControl1.Controls.Add(this.OnDateDBEdit);
+            this.panelControl1.Controls.Add(this.OutDateEdit);
+            this.panelControl1.Controls.Add(this.labelControl5);
             this.panelControl1.Controls.Add(this.simpleButton4);
             this.panelControl1.Controls.Add(this.WHComboBox);
             this.panelControl1.Controls.Add(this.labelControl6);
             this.panelControl1.Controls.Add(this.PersonEditBtn);
             this.panelControl1.Controls.Add(this.PersonComboBox);
-            this.panelControl1.Controls.Add(this.NotesEdit);
-            this.panelControl1.Controls.Add(this.labelControl8);
             this.panelControl1.Controls.Add(this.labelControl7);
             this.panelControl1.Controls.Add(this.ReasonEdit);
             this.panelControl1.Controls.Add(this.KAgentBtn);
@@ -438,7 +445,6 @@
             this.panelControl1.Controls.Add(this.TurnDocCheckBox);
             this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Controls.Add(this.NumEdit);
-            this.panelControl1.Controls.Add(this.OnDateDBEdit);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(5, 5);
             this.panelControl1.Name = "panelControl1";
@@ -449,7 +455,7 @@
             // 
             this.simpleButton4.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton4.Image")));
             this.simpleButton4.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton4.Location = new System.Drawing.Point(534, 110);
+            this.simpleButton4.Location = new System.Drawing.Point(534, 109);
             this.simpleButton4.Name = "simpleButton4";
             this.simpleButton4.Size = new System.Drawing.Size(22, 22);
             this.simpleButton4.TabIndex = 27;
@@ -457,7 +463,7 @@
             // 
             // WHComboBox
             // 
-            this.WHComboBox.Location = new System.Drawing.Point(347, 110);
+            this.WHComboBox.Location = new System.Drawing.Point(347, 109);
             this.WHComboBox.Name = "WHComboBox";
             this.WHComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -473,7 +479,7 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(301, 112);
+            this.labelControl6.Location = new System.Drawing.Point(301, 111);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(40, 16);
             this.labelControl6.StyleController = this.styleController1;
@@ -484,7 +490,7 @@
             // 
             this.PersonEditBtn.Image = ((System.Drawing.Image)(resources.GetObject("PersonEditBtn.Image")));
             this.PersonEditBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.PersonEditBtn.Location = new System.Drawing.Point(259, 110);
+            this.PersonEditBtn.Location = new System.Drawing.Point(259, 109);
             this.PersonEditBtn.Name = "PersonEditBtn";
             this.PersonEditBtn.Size = new System.Drawing.Size(22, 22);
             this.PersonEditBtn.TabIndex = 24;
@@ -492,7 +498,7 @@
             // 
             // PersonComboBox
             // 
-            this.PersonComboBox.Location = new System.Drawing.Point(75, 110);
+            this.PersonComboBox.Location = new System.Drawing.Point(75, 109);
             this.PersonComboBox.Name = "PersonComboBox";
             this.PersonComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -506,27 +512,9 @@
             this.PersonComboBox.StyleController = this.styleController1;
             this.PersonComboBox.TabIndex = 23;
             // 
-            // NotesEdit
-            // 
-            this.NotesEdit.Location = new System.Drawing.Point(75, 176);
-            this.NotesEdit.MenuManager = this.barManager1;
-            this.NotesEdit.Name = "NotesEdit";
-            this.NotesEdit.Size = new System.Drawing.Size(481, 22);
-            this.NotesEdit.StyleController = this.styleController1;
-            this.NotesEdit.TabIndex = 22;
-            // 
-            // labelControl8
-            // 
-            this.labelControl8.Location = new System.Drawing.Point(12, 179);
-            this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(57, 16);
-            this.labelControl8.StyleController = this.styleController1;
-            this.labelControl8.TabIndex = 21;
-            this.labelControl8.Text = "Примітка:";
-            // 
             // labelControl7
             // 
-            this.labelControl7.Location = new System.Drawing.Point(12, 113);
+            this.labelControl7.Location = new System.Drawing.Point(12, 112);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(55, 16);
             this.labelControl7.StyleController = this.styleController1;
@@ -535,7 +523,7 @@
             // 
             // ReasonEdit
             // 
-            this.ReasonEdit.Location = new System.Drawing.Point(75, 143);
+            this.ReasonEdit.Location = new System.Drawing.Point(75, 142);
             this.ReasonEdit.MenuManager = this.barManager1;
             this.ReasonEdit.Name = "ReasonEdit";
             this.ReasonEdit.Size = new System.Drawing.Size(481, 22);
@@ -556,7 +544,7 @@
             // 
             this.NowDateBtn.Image = ((System.Drawing.Image)(resources.GetObject("NowDateBtn.Image")));
             this.NowDateBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.NowDateBtn.Location = new System.Drawing.Point(534, 41);
+            this.NowDateBtn.Location = new System.Drawing.Point(327, 41);
             this.NowDateBtn.Name = "NowDateBtn";
             this.NowDateBtn.Size = new System.Drawing.Size(22, 22);
             this.NowDateBtn.TabIndex = 10;
@@ -581,7 +569,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(12, 146);
+            this.labelControl4.Location = new System.Drawing.Point(11, 145);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(56, 16);
             this.labelControl4.StyleController = this.styleController1;
@@ -599,7 +587,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(307, 44);
+            this.labelControl2.Location = new System.Drawing.Point(171, 44);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(34, 16);
             this.labelControl2.StyleController = this.styleController1;
@@ -632,30 +620,10 @@
             this.NumEdit.Location = new System.Drawing.Point(75, 41);
             this.NumEdit.MenuManager = this.barManager1;
             this.NumEdit.Name = "NumEdit";
-            this.NumEdit.Size = new System.Drawing.Size(206, 22);
+            this.NumEdit.Size = new System.Drawing.Size(75, 22);
             this.NumEdit.StyleController = this.styleController1;
             this.NumEdit.TabIndex = 0;
             this.NumEdit.EditValueChanged += new System.EventHandler(this.NumEdit_EditValueChanged);
-            // 
-            // OnDateDBEdit
-            // 
-            this.OnDateDBEdit.EditValue = new System.DateTime(2016, 4, 22, 10, 10, 16, 0);
-            this.OnDateDBEdit.Location = new System.Drawing.Point(347, 41);
-            this.OnDateDBEdit.MenuManager = this.barManager1;
-            this.OnDateDBEdit.Name = "OnDateDBEdit";
-            this.OnDateDBEdit.Properties.AllowClickInactiveDays = false;
-            this.OnDateDBEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
-            this.OnDateDBEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.OnDateDBEdit.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
-            this.OnDateDBEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.OnDateDBEdit.Properties.Mask.EditMask = "F";
-            this.OnDateDBEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.OnDateDBEdit.Size = new System.Drawing.Size(181, 22);
-            this.OnDateDBEdit.StyleController = this.styleController1;
-            this.OnDateDBEdit.TabIndex = 8;
-            this.OnDateDBEdit.EditValueChanged += new System.EventHandler(this.OnDateDBEdit_EditValueChanged);
             // 
             // panel1
             // 
@@ -899,6 +867,64 @@
             this.barDockControl1.Location = new System.Drawing.Point(2, 2);
             this.barDockControl1.Size = new System.Drawing.Size(965, 0);
             // 
+            // labelControl5
+            // 
+            this.labelControl5.Location = new System.Drawing.Point(370, 43);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(59, 16);
+            this.labelControl5.StyleController = this.styleController1;
+            this.labelControl5.TabIndex = 28;
+            this.labelControl5.Text = "Відгрузка:";
+            // 
+            // OutDateEdit
+            // 
+            this.OutDateEdit.EditValue = null;
+            this.OutDateEdit.Location = new System.Drawing.Point(435, 41);
+            this.OutDateEdit.MenuManager = this.barManager1;
+            this.OutDateEdit.Name = "OutDateEdit";
+            this.OutDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.OutDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.OutDateEdit.Size = new System.Drawing.Size(121, 22);
+            this.OutDateEdit.StyleController = this.styleController1;
+            this.OutDateEdit.TabIndex = 29;
+            // 
+            // OnDateDBEdit
+            // 
+            this.OnDateDBEdit.EditValue = null;
+            this.OnDateDBEdit.Location = new System.Drawing.Point(211, 41);
+            this.OnDateDBEdit.MenuManager = this.barManager1;
+            this.OnDateDBEdit.Name = "OnDateDBEdit";
+            this.OnDateDBEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.OnDateDBEdit.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
+            this.OnDateDBEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.OnDateDBEdit.Properties.Mask.EditMask = "g";
+            this.OnDateDBEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.OnDateDBEdit.Size = new System.Drawing.Size(110, 22);
+            this.OnDateDBEdit.StyleController = this.styleController1;
+            this.OnDateDBEdit.TabIndex = 30;
+            // 
+            // NotesEdit
+            // 
+            this.NotesEdit.Location = new System.Drawing.Point(75, 175);
+            this.NotesEdit.MenuManager = this.barManager1;
+            this.NotesEdit.Name = "NotesEdit";
+            this.NotesEdit.Size = new System.Drawing.Size(481, 22);
+            this.NotesEdit.StyleController = this.styleController1;
+            this.NotesEdit.TabIndex = 32;
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Location = new System.Drawing.Point(12, 178);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(57, 16);
+            this.labelControl8.StyleController = this.styleController1;
+            this.labelControl8.TabIndex = 31;
+            this.labelControl8.Text = "Примітка:";
+            // 
             // frmWBReturnIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -932,13 +958,10 @@
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WHComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NotesEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReasonEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KagentComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TurnDocCheckBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.BarCodeEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
@@ -952,6 +975,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OutDateEdit.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OutDateEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NotesEdit.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -986,8 +1014,6 @@
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.SimpleButton PersonEditBtn;
         private DevExpress.XtraEditors.LookUpEdit PersonComboBox;
-        private DevExpress.XtraEditors.TextEdit NotesEdit;
-        private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.TextEdit ReasonEdit;
         private DevExpress.XtraEditors.SimpleButton KAgentBtn;
@@ -999,7 +1025,6 @@
         private DevExpress.XtraEditors.CheckEdit TurnDocCheckBox;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.TextEdit NumEdit;
-        private DevExpress.XtraEditors.DateEdit OnDateDBEdit;
         private System.Windows.Forms.Panel panel1;
         private MainTabs.PayDocUserControl payDocUserControl1;
         private DevExpress.XtraEditors.PanelControl panelControl2;
@@ -1029,5 +1054,10 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton4;
         private DevExpress.XtraEditors.LookUpEdit WHComboBox;
         private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraEditors.DateEdit OutDateEdit;
+        private DevExpress.XtraEditors.DateEdit OnDateDBEdit;
+        private DevExpress.XtraEditors.TextEdit NotesEdit;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
     }
 }
