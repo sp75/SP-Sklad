@@ -5783,6 +5783,14 @@
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="REP_14" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="from_date" Type="datetime" Mode="In" />
+          <Parameter Name="to_date" Type="datetime" Mode="In" />
+          <Parameter Name="grp_id" Type="int" Mode="In" />
+          <Parameter Name="ka_id" Type="int" Mode="In" />
+          <Parameter Name="wh" Type="varchar" Mode="In" />
+          <Parameter Name="doc_types" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="REP_15" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="from_date" Type="datetime" Mode="In" />
           <Parameter Name="to_date" Type="datetime" Mode="In" />
@@ -7635,6 +7643,14 @@
             <Parameter Name="get_price" Mode="In" Type="Int32" />
             <Parameter Name="get_archived" Mode="In" Type="Int32" />
             <Parameter Name="get_child_node" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="REP_14" ReturnType="Collection(BaseModel.REP_14_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="grp_id" Mode="In" Type="Int32" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="wh" Mode="In" Type="String" />
+            <Parameter Name="doc_types" Mode="In" Type="String" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_AUTO_RSV_WB_2_Result">
@@ -12741,6 +12757,18 @@
           <Property Type="String" Name="WhName" Nullable="true" MaxLength="64" />
           <Property Type="String" Name="DemandGroupName" Nullable="true" MaxLength="50" />
         </ComplexType>
+        <ComplexType Name="REP_14_Result">
+          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="GrpId" Nullable="true" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Summ" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="String" Name="ShortName" Nullable="false" MaxLength="6" />
+          <Property Type="Decimal" Name="ReturnAmountIn" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="ReturnSummIn" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -16136,6 +16164,22 @@
                 <ScalarProperty Name="GrpName" ColumnName="GrpName" />
                 <ScalarProperty Name="WhName" ColumnName="WhName" />
                 <ScalarProperty Name="DemandGroupName" ColumnName="DemandGroupName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="REP_14" FunctionName="BaseModel.Store.REP_14">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.REP_14_Result">
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Summ" ColumnName="Summ" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="ReturnAmountIn" ColumnName="ReturnAmountIn" />
+                <ScalarProperty Name="ReturnSummIn" ColumnName="ReturnSummIn" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

@@ -468,6 +468,9 @@
     <Compile Include="SkladData\RepLng.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\REP_14_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\REP_15_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>

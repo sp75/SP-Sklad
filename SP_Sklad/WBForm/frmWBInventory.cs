@@ -169,7 +169,7 @@ namespace SP_Sklad.WBForm
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             _db.DeleteWhere<WaybillDet>(w => w.WbillId == _wbill_id);
-            var wh_remain = _db.WhMatGet(0, wb.WaybillMove.SourceWid, 0, wb.OnDate, 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).ToList();
+            var wh_remain = _db.WhMatGet(0, wb.WaybillMove.SourceWid, 0, wb.OnDate, 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).ToList().OrderBy(o =>  o.GrpName);
             int num = 0;
             foreach (var item in wh_remain)
             {

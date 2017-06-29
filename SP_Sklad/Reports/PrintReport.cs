@@ -175,7 +175,7 @@ namespace SP_Sklad.Reports
                 int grp = Convert.ToInt32(MatGroup.GrpId);
                 string wh = Convert.ToString(Warehouse.WId);
                 int kid = Convert.ToInt32(Kagent.KaId);
-                var mat = db.REP_3_14(StartDate, EndDate, grp, kid, wh, "-1,").ToList();
+                var mat = db.REP_3_14(StartDate, EndDate, grp, kid, wh, DocStr).ToList();
 
                 if (!mat.Any())
                 {
@@ -204,7 +204,7 @@ namespace SP_Sklad.Reports
                 }).ToList());
                 data_for_report.Add("_realation_", rel);
 
-                IHelper.Print(data_for_report, TemlateList.rep_3);
+                IHelper.Print(data_for_report, TemlateList.rep_3/*TemlateList.rep_14*/);
             }
 
 
