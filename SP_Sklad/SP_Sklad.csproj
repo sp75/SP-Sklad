@@ -450,6 +450,9 @@
     <Compile Include="SkladData\PayDoc.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\PosGet_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\PriceList.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -487,6 +490,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\REP_33_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\REP_4_25_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\REP_4_5_Result.cs">
@@ -993,9 +999,6 @@
     <Compile Include="SkladData\PayType.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\PosGet_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SkladData\PosRemains.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1035,9 +1038,6 @@
     <Compile Include="SkladData\REP_3_14_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\REP_4_25_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SkladData\ReservedAllPosition_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1063,9 +1063,6 @@
       <DependentUpon>SkladModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="SkladData\Split_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\SP_AUTO_RSV_WB_2_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\SP_CONTRACTS_LIST_Result.cs">

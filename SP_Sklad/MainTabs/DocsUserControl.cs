@@ -905,7 +905,7 @@ namespace SP_Sklad.MainTabs
                                 });
                                 db.SaveChanges();
 
-                                var pos_in = db.GetPosIn(wb.OnDate, _wbd.MatId, _wbd.WId, 0).Where(w => w.CurRemain >= _wbd.Amount && w.PosId == det_item.PosId).FirstOrDefault();
+                                var pos_in = db.GetPosIn(wb.OnDate, _wbd.MatId, _wbd.WId, 0, DBHelper.CurrentUser.UserId).Where(w => w.CurRemain >= _wbd.Amount && w.PosId == det_item.PosId).FirstOrDefault();
                                 if (pos_in != null)
                                 {
                                     db.WMatTurn.Add(new WMatTurn

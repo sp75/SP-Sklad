@@ -500,7 +500,7 @@ namespace SP_Sklad.Common
                     {
                         result.mat_id = (f.uc.WhMatGridView.GetFocusedRow() as WhMatGet_Result).MatId.Value;
                      //   result.wid = (f.uc.WhRemainGridView.GetFocusedRow() as WMatGetByWh_Result).WId;
-                        var remain_in_wh = DB.SkladBase().MatRemainByWh(result.mat_id, old_WID != DBNull.Value ? (int?)old_WID : 0, 0, f.uc.OnDateEdit.DateTime, "*").ToList();
+                        var remain_in_wh = DB.SkladBase().MatRemainByWh(result.mat_id, old_WID != DBNull.Value ? (int?)old_WID : 0, 0, f.uc.OnDateEdit.DateTime, "*", DBHelper.CurrentUser.UserId).ToList();
                         result.wid = remain_in_wh.Any() ? remain_in_wh.First().WId : DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId;
                     }
                     else

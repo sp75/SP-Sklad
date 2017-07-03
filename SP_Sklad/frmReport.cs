@@ -69,7 +69,7 @@ namespace SP_Sklad
             }
             else
             {
-                WhComboBox.Properties.DataSource = new List<object>() { new { WId = "*", Name = "Усі" } }.Concat(new BaseEntities().Warehouse.Select(s => new { WId = s.WId.ToString(), s.Name }).ToList());
+                WhComboBox.Properties.DataSource = new List<object>() { new { WId = "*", Name = "Усі" } }.Concat(new BaseEntities().Warehouse.Where(w=> w.UserAccessWh.Any(a=> a.UserId == DBHelper.CurrentUser.UserId)).Select(s => new { WId = s.WId.ToString(), s.Name }).ToList());
                 WhComboBox.EditValue = "*";
             }
 

@@ -21,7 +21,7 @@ namespace SP_Sklad.ViewsForm
         public frmRemainOnWh(BaseEntities db, int mat_id)
         {
             InitializeComponent();
-            RemainOnWhGrid.DataSource = db.MatRemainByWh(mat_id, 0, 0, DateTime.Now, "*").ToList();
+            RemainOnWhGrid.DataSource = db.MatRemainByWh(mat_id, 0, 0, DateTime.Now, "*", DBHelper.CurrentUser.UserId).ToList();
         }
 
         private void frmRemainOnWh_Load(object sender, EventArgs e)
