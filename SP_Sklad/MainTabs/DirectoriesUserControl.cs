@@ -781,7 +781,7 @@ namespace SP_Sklad.MainTabs
                     if (MessageBox.Show(string.Format("Ви дійсно хочете перемістити матеріал <{0}> в архів?", focused_mat.Name), "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                     {
                         var mat_remain = db.v_MatRemains.Where(w => w.MatId == focused_mat.MatId).OrderByDescending(o => o.OnDate).FirstOrDefault();
-                        if (mat_remain != null && (mat_remain.Remain == null || mat_remain.Remain == 0))
+                        if (mat_remain == null || mat_remain.Remain == null || mat_remain.Remain == 0)
                         {
                             mat.Archived = 1;
                         }

@@ -40,6 +40,11 @@ namespace SP_Sklad.Common
             _serialPort.WriteTimeout = 500;
         }
 
+        public void Dispose()
+        {
+            _serialPort.Dispose();
+        }
+
         public void Close()
         {
             weight = 0;

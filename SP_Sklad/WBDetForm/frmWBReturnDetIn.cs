@@ -87,13 +87,6 @@ namespace SP_Sklad.WBDetForm
             }
 
             GetOk();
-/*
-            try
-            {
-                com_port.Open();
-                timer1.Enabled = true;
-            }
-            catch { }*/
         }
 
         private void MatComboBox_EditValueChanged(object sender, EventArgs e)
@@ -229,6 +222,7 @@ namespace SP_Sklad.WBDetForm
         {
             timer1.Enabled = false;
             com_port.Close();
+            com_port.Dispose();
 
             if (_db.Entry<WaybillDet>(_wbd).State == EntityState.Modified)
             {

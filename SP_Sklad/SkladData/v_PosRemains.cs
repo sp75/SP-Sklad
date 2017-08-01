@@ -12,14 +12,10 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class ErrorLog
+    public partial class v_PosRemains
     {
-        public int Id { get; set; }
-        public Nullable<System.DateTime> OnDate { get; set; }
-        public string Title { get; set; }
-        public string Message { get; set; }
-        public string StackTrace { get; set; }
-        public Nullable<int> UserId { get; set; }
-        public byte[] ScreenShot { get; set; }
+        public int MatId { get; set; }
+        public System.DateTime OnDate { get; set; }
+        public int WId { get; set; }
     }
 }

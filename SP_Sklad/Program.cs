@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -119,19 +122,36 @@ namespace SP_Sklad
 
             errorMsg = errorMsg + e.LastMessage();
 
-            using (var db = new BaseEntities())
+            using (MemoryStream ms = new MemoryStream())
             {
-                var dd = db.ErrorLog.Add(new ErrorLog
+                Rectangle bounds = Screen.GetBounds(Point.Empty);
+                using (Bitmap bitmap = new Bitmap(bounds.Width, bounds.Height))
                 {
-                    Message = e.Message,
-                    OnDate = DateTime.Now,
-                    StackTrace = e.ToMessageAndCompleteStacktrace(),
-                    Title = title,
-                    UserId = DBHelper.CurrentUser.UserId
-                });
+                    using (Graphics g = Graphics.FromImage(bitmap))
+                    {
+                        g.CopyFromScreen(Point.Empty, Point.Empty, bounds.Size);
+                    }
 
-                db.SaveChanges();
+                    bitmap.Save(ms, ImageFormat.Jpeg);
+                }
+
+                using (var db = new BaseEntities())
+                {
+                    var dd = db.ErrorLog.Add(new ErrorLog
+                    {
+                        Message = e.Message,
+                        OnDate = DateTime.Now,
+                        StackTrace = e.ToMessageAndCompleteStacktrace(),
+                        Title = title,
+                        UserId = DBHelper.CurrentUser.UserId,
+                        ScreenShot = ms.ToArray()
+                    });
+
+                    db.SaveChanges();
+                }
             }
+
+     
 
             return MessageBox.Show(errorMsg, title, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Stop);
         }

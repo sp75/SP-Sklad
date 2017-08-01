@@ -22,6 +22,7 @@ using SP_Sklad.ViewsForm;
 
 namespace SP_Sklad.WBForm
 {
+
     public partial class frmWayBillOut : DevExpress.XtraEditors.XtraForm
     {
         private int _wtype { get; set; }
@@ -166,7 +167,7 @@ namespace SP_Sklad.WBForm
 
         private void RefreshDet()
         {
-             wbd_list = _db.GetWayBillDetOut(_wbill_id).AsNoTracking().ToList();
+             wbd_list = _db.GetWayBillDetOut(_wbill_id).AsNoTracking().ToList().OrderBy(o=> o.Num).ToList();
 
             int top_row = WaybillDetOutGridView.TopRowIndex;
             WaybillDetOutBS.DataSource = wbd_list;
@@ -301,7 +302,7 @@ namespace SP_Sklad.WBForm
 
             var r = new ObjectParameter("RSV", typeof(Int32));
 
-            _db.ReservedPosition(wbd_row.PosId, r);
+            _db.ReservedPosition(wbd_row.PosId, r, DBHelper.CurrentUser.UserId);
       //      _db.SaveChanges();
         //    current_transaction = current_transaction.CommitRetaining(_db);
       //      UpdLockWB();
@@ -327,7 +328,7 @@ namespace SP_Sklad.WBForm
         {
             _db.SaveChanges();
 
-            var res = _db.ReservedAllPosition(wb.WbillId);
+            var res = _db.ReservedAllPosition(wb.WbillId, DBHelper.CurrentUser.UserId);
 
             if (res.Any())
             {
@@ -448,17 +449,13 @@ namespace SP_Sklad.WBForm
 
         private void WaybillDetOutGridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-            var wbd = _db.WaybillDet.Find(wbd_row.PosId);
+            var wbd = _db.WaybillDet.FirstOrDefault(w => w.PosId == wbd_row.PosId);
             if (e.Column.FieldName == "Amount")
             {
                 if (wbd_row.Rsv == 0)
                 {
                     wbd.Amount = Convert.ToDecimal(e.Value);
                     wbd.Checked = 1;
-                }
-                else
-                {
-                    wbd_row.Amount = wbd.Amount;
                 }
             }
             else if (e.Column.FieldName == "Notes")
@@ -467,7 +464,8 @@ namespace SP_Sklad.WBForm
             }
 
             _db.SaveChanges();
-            RefreshDet();
+
+           IHelper.MapProp(_db.GetWayBillDetOut(_wbill_id).AsNoTracking().FirstOrDefault(w => w.PosId == wbd_row.PosId), wbd_row);
         }
 
         private void simpleButton3_Click(object sender, EventArgs e)
@@ -528,11 +526,8 @@ namespace SP_Sklad.WBForm
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             _db.SaveChanges();
-            var wbd_list = _db.WaybillDet.Where(w => w.WbillId == _wbill_id && w.Checked != 1);
-            if (wbd_list != null)
-            {
-                _db.WaybillDet.RemoveRange(wbd_list);
-            }
+            _db.DeleteWhere<WaybillDet>(w => w.WbillId == _wbill_id && w.Checked != 1);
+
             RefreshDet();
         }
 

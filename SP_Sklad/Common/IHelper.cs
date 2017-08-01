@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -500,7 +501,7 @@ namespace SP_Sklad.Common
                     {
                         result.mat_id = (f.uc.WhMatGridView.GetFocusedRow() as WhMatGet_Result).MatId.Value;
                      //   result.wid = (f.uc.WhRemainGridView.GetFocusedRow() as WMatGetByWh_Result).WId;
-                        var remain_in_wh = DB.SkladBase().MatRemainByWh(result.mat_id, old_WID != DBNull.Value ? (int?)old_WID : 0, 0, f.uc.OnDateEdit.DateTime, "*").ToList();
+                        var remain_in_wh = DB.SkladBase().MatRemainByWh(result.mat_id, old_WID != DBNull.Value ? (int?)old_WID : 0, 0, f.uc.OnDateEdit.DateTime, "*", DBHelper.CurrentUser.UserId).ToList();
                         result.wid = remain_in_wh.Any() ? remain_in_wh.First().WId : DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId;
                     }
                     else
@@ -680,6 +681,31 @@ namespace SP_Sklad.Common
 
             return res;
         }
+
+        /// <summary>
+        /// map properties
+        /// </summary>
+        /// <param name="sourceObj"></param>
+        /// <param name="targetObj"></param>
+        public static void MapProp(object sourceObj, object targetObj)
+        {
+            Type T1 = sourceObj.GetType();
+            Type T2 = targetObj.GetType();
+
+            PropertyInfo[] sourceProprties = T1.GetProperties(BindingFlags.Instance | BindingFlags.Public);
+            PropertyInfo[] targetProprties = T2.GetProperties(BindingFlags.Instance | BindingFlags.Public);
+
+            foreach (var sourceProp in sourceProprties)
+            {
+                object osourceVal = sourceProp.GetValue(sourceObj, null);
+                int entIndex = Array.IndexOf(targetProprties, sourceProp);
+                if (entIndex >= 0)
+                {
+                    var targetProp = targetProprties[entIndex];
+                    targetProp.SetValue(targetObj, osourceVal);
+                }
+            }
+        }
     }
 
     public class CustomMatList
@@ -724,6 +750,8 @@ namespace SP_Sklad.Common
             return value.AddHours(23).AddMinutes(59).AddSeconds(59);
         }
     }
+
+
 
     
 }

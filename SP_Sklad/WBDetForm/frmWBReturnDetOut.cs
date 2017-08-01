@@ -146,7 +146,7 @@ namespace SP_Sklad.WBDetForm
         {
             if (_wb.WType == -6)
             {
-                var remain_in_wh = _db.MatRemainByWh(_wbd.MatId, 0, _ka_id, DBHelper.ServerDateTime(), "*").ToList();
+                var remain_in_wh = _db.MatRemainByWh(_wbd.MatId, 0, _ka_id, DBHelper.ServerDateTime(), "*", DBHelper.CurrentUser.UserId).ToList();
                 WHComboBox.Properties.DataSource = remain_in_wh;
 
                 if (remain_in_wh != null && WHComboBox.EditValue == DBNull.Value)
@@ -169,7 +169,7 @@ namespace SP_Sklad.WBDetForm
                 CurRemainEdit.EditValue = mat_remain.Remain;
             }
 
-            pos_in = _db.GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, _ka_id).OrderByDescending(o => o.OnDate).ToList();
+            pos_in = _db.GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, _ka_id, DBHelper.CurrentUser.UserId).OrderByDescending(o => o.OnDate).ToList();
 
             if (pos_in.Any())
             {

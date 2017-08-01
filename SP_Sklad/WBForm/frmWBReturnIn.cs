@@ -194,10 +194,12 @@ namespace SP_Sklad.WBForm
 
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var df = new frmWBReturnDetIn(_db, null, wb, (int?)WHComboBox.EditValue, OutDateEdit.DateTime);
-            if (df.ShowDialog() == DialogResult.OK)
+            using (var df = new frmWBReturnDetIn(_db, null, wb, (int?)WHComboBox.EditValue, OutDateEdit.DateTime))
             {
-                RefreshDet();
+                if (df.ShowDialog() == DialogResult.OK)
+                {
+                    RefreshDet();
+                }
             }
         }
 
@@ -240,10 +242,12 @@ namespace SP_Sklad.WBForm
 
             if (dr != null)
             {
-                var df = new frmWBReturnDetIn(_db, dr.PosId, wb, (int?)WHComboBox.EditValue, OutDateEdit.DateTime);
-                if (df.ShowDialog() == DialogResult.OK)
+                using (var df = new frmWBReturnDetIn(_db, dr.PosId, wb, (int?)WHComboBox.EditValue, OutDateEdit.DateTime))
                 {
-                    RefreshDet();
+                    if (df.ShowDialog() == DialogResult.OK)
+                    {
+                        RefreshDet();
+                    }
                 }
             }
         }
@@ -283,21 +287,25 @@ namespace SP_Sklad.WBForm
                 string kod = BarCodeText[0];
                 var item = _db.Materials.Where(w => w.BarCode == kod).Select(s => s.MatId).FirstOrDefault();
 
-                var frm = new frmOutMatList(_db, OutDateEdit.DateTime, wb.OnDate, item, wb.KaId.Value);
-                if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                using (var frm = new frmOutMatList(_db, OutDateEdit.DateTime, wb.OnDate, item, wb.KaId.Value))
                 {
-                    var mat_row = frm.bandedGridView1.GetFocusedRow() as GetPosOut_Result;
-                    if (mat_row != null)
+                    if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
-                        var df = new frmWBReturnDetIn(_db, null, wb, (int?)WHComboBox.EditValue, OutDateEdit.DateTime)
+                        var mat_row = frm.bandedGridView1.GetFocusedRow() as GetPosOut_Result;
+                        if (mat_row != null)
                         {
-                            pos_out_list = frm.pos_out_list,
-                            outPosId = mat_row.PosId
-                        };
-   
-                        if (df.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                        {
-                            RefreshDet();
+                            using (var df = new frmWBReturnDetIn(_db, null, wb, (int?)WHComboBox.EditValue, OutDateEdit.DateTime)
+                            {
+                                pos_out_list = frm.pos_out_list,
+                                outPosId = mat_row.PosId
+                            })
+                            {
+
+                                if (df.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                                {
+                                    RefreshDet();
+                                }
+                            }
                         }
                     }
                 }

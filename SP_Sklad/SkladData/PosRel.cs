@@ -10,11 +10,15 @@
 namespace SP_Sklad.SkladData
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class SP_AUTO_RSV_WB_2_Result
+    public partial class PosRel
     {
-        public string MATNAME { get; set; }
-        public Nullable<int> POSID { get; set; }
-        public Nullable<int> RSV { get; set; }
+        public int Id { get; set; }
+        public int PosId { get; set; }
+        public int CPosId { get; set; }
+    
+        public virtual WaybillDet WaybillDet { get; set; }
+        public virtual WaybillDet WaybillDet1 { get; set; }
     }
 }

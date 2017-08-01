@@ -44,7 +44,7 @@ namespace SP_Sklad
 
         private void GetTurns()
         {
-            DocListBindingSource.DataSource = DB.SkladBase().GetMatMove(_mat_id, wbStartDate.DateTime, wbEndDate.DateTime, 0, (int)KAgentEdit.EditValue, (int)wTypeList.EditValue, "*", Guid.Empty).ToList();
+            DocListBindingSource.DataSource = DB.SkladBase().GetMatMove(_mat_id, wbStartDate.DateTime, wbEndDate.DateTime, 0, (int)KAgentEdit.EditValue, (int)wTypeList.EditValue, "*", Guid.Empty, DBHelper.CurrentUser.UserId).ToList();
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

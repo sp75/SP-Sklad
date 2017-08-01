@@ -26,8 +26,9 @@ namespace SP_Sklad.SkladData
             this.WayBillDetTaxes = new HashSet<WayBillDetTaxes>();
             this.WMatTurn = new HashSet<WMatTurn>();
             this.WMatTurn1 = new HashSet<WMatTurn>();
-            this.WaybillDet1 = new HashSet<WaybillDet>();
             this.PosRemains = new HashSet<PosRemains>();
+            this.PosRel = new HashSet<PosRel>();
+            this.PosRel1 = new HashSet<PosRel>();
         }
     
         public int PosId { get; set; }
@@ -70,8 +71,8 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<WayBillDetTaxes> WayBillDetTaxes { get; set; }
         public virtual ICollection<WMatTurn> WMatTurn { get; set; }
         public virtual ICollection<WMatTurn> WMatTurn1 { get; set; }
-        public virtual ICollection<WaybillDet> WaybillDet1 { get; set; }
-        public virtual WaybillDet WaybillDet2 { get; set; }
         public virtual ICollection<PosRemains> PosRemains { get; set; }
+        public virtual ICollection<PosRel> PosRel { get; set; }
+        public virtual ICollection<PosRel> PosRel1 { get; set; }
     }
 }

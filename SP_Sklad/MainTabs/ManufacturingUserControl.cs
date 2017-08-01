@@ -240,10 +240,17 @@ namespace SP_Sklad.MainTabs
         {
              var dr = WbGridView.GetRow(WbGridView.FocusedRowHandle) as WBListMake_Result;
 
-             var f = new frmTechProcDet(dr.WbillId);
-             if (f.ShowDialog() == DialogResult.OK)
+             if (DB.SkladBase().WaybillList.Any(a => a.WbillId == dr.WbillId))
              {
-                 RefreshTechProcDet(dr.WbillId);
+                 var f = new frmTechProcDet(dr.WbillId);
+                 if (f.ShowDialog() == DialogResult.OK)
+                 {
+                     RefreshTechProcDet(dr.WbillId);
+                 }
+             }
+             else
+             {
+                 RefrechItemBtn.PerformClick();
              }
         }
 
@@ -558,7 +565,7 @@ namespace SP_Sklad.MainTabs
                 using (var db = DB.SkladBase())
                 {
                     RefreshTechProcDet(focused_row.WbillId);
-                    gridControl2.DataSource = db.GetWayBillDetOut(focused_row.WbillId).ToList();
+                    gridControl2.DataSource = db.GetWayBillDetOut(focused_row.WbillId).ToList().OrderBy(o => o.Num).ToList(); 
                     gridView2.ExpandAllGroups();
                     gridControl3.DataSource = db.GetRelDocList(focused_row.Id).OrderBy(o=> o.OnDate).ToList();
                     ManufacturedPosGridControl.DataSource = db.GetManufacturedPos(focused_row.Id).ToList();
@@ -593,7 +600,7 @@ namespace SP_Sklad.MainTabs
             {
                 using (var db = DB.SkladBase())
                 {
-                    gridControl4.DataSource = db.GetWayBillDetOut(focused_row.WbillId).ToList();
+                    gridControl4.DataSource = db.GetWayBillDetOut(focused_row.WbillId).ToList().OrderBy(o => o.Num).ToList(); 
                     gridControl5.DataSource = db.GetRelDocList(focused_row.Id).OrderBy(o => o.OnDate).ToList();
 
                     DeboningDetGridControl.DataSource = db.DeboningDet.Where(w => w.WBillId == focused_row.WbillId).Select(s => new SP_Sklad.WBForm.frmWBDeboning.DeboningDetList

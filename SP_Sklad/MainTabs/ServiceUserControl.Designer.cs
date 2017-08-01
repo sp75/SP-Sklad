@@ -152,7 +152,11 @@
             this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemMemoExEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit();
+            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
+            this.gridColumn26 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox7 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.wTypeList = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
@@ -226,7 +230,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ErrorLogGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorLogGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoExEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wTypeList.Properties)).BeginInit();
@@ -1249,6 +1255,7 @@
             this.xtraTabPage15,
             this.xtraTabPage5,
             this.xtraTabPage13});
+            this.xtraTabControl2.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xtraTabControl2_SelectedPageChanged);
             // 
             // xtraTabPage15
             // 
@@ -1488,7 +1495,9 @@
             this.ErrorLogGridControl.Name = "ErrorLogGridControl";
             this.ErrorLogGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox7,
-            this.repositoryItemMemoExEdit1});
+            this.repositoryItemMemoExEdit1,
+            this.repositoryItemPictureEdit1,
+            this.repositoryItemImageEdit1});
             this.ErrorLogGridControl.Size = new System.Drawing.Size(957, 515);
             this.ErrorLogGridControl.TabIndex = 2;
             this.ErrorLogGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -1501,7 +1510,9 @@
             this.gridColumn20,
             this.gridColumn21,
             this.gridColumn22,
-            this.gridColumn23});
+            this.gridColumn23,
+            this.gridColumn18,
+            this.gridColumn26});
             this.ErrorLogGridView.GridControl = this.ErrorLogGridControl;
             this.ErrorLogGridView.Name = "ErrorLogGridView";
             this.ErrorLogGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -1515,7 +1526,7 @@
             this.gridColumn19.OptionsColumn.ReadOnly = true;
             this.gridColumn19.Visible = true;
             this.gridColumn19.VisibleIndex = 0;
-            this.gridColumn19.Width = 66;
+            this.gridColumn19.Width = 56;
             // 
             // gridColumn20
             // 
@@ -1527,7 +1538,7 @@
             this.gridColumn20.OptionsColumn.ReadOnly = true;
             this.gridColumn20.Visible = true;
             this.gridColumn20.VisibleIndex = 1;
-            this.gridColumn20.Width = 152;
+            this.gridColumn20.Width = 130;
             // 
             // gridColumn21
             // 
@@ -1537,7 +1548,7 @@
             this.gridColumn21.OptionsColumn.ReadOnly = true;
             this.gridColumn21.Visible = true;
             this.gridColumn21.VisibleIndex = 2;
-            this.gridColumn21.Width = 150;
+            this.gridColumn21.Width = 128;
             // 
             // gridColumn22
             // 
@@ -1546,8 +1557,8 @@
             this.gridColumn22.Name = "gridColumn22";
             this.gridColumn22.OptionsColumn.ReadOnly = true;
             this.gridColumn22.Visible = true;
-            this.gridColumn22.VisibleIndex = 3;
-            this.gridColumn22.Width = 323;
+            this.gridColumn22.VisibleIndex = 4;
+            this.gridColumn22.Width = 223;
             // 
             // gridColumn23
             // 
@@ -1557,8 +1568,8 @@
             this.gridColumn23.Name = "gridColumn23";
             this.gridColumn23.OptionsColumn.ReadOnly = true;
             this.gridColumn23.Visible = true;
-            this.gridColumn23.VisibleIndex = 4;
-            this.gridColumn23.Width = 246;
+            this.gridColumn23.VisibleIndex = 5;
+            this.gridColumn23.Width = 139;
             // 
             // repositoryItemMemoExEdit1
             // 
@@ -1566,6 +1577,32 @@
             this.repositoryItemMemoExEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemMemoExEdit1.Name = "repositoryItemMemoExEdit1";
+            // 
+            // gridColumn18
+            // 
+            this.gridColumn18.Caption = "Screen Shot";
+            this.gridColumn18.ColumnEdit = this.repositoryItemImageEdit1;
+            this.gridColumn18.FieldName = "ScreenShot";
+            this.gridColumn18.Name = "gridColumn18";
+            this.gridColumn18.Visible = true;
+            this.gridColumn18.VisibleIndex = 6;
+            this.gridColumn18.Width = 89;
+            // 
+            // repositoryItemImageEdit1
+            // 
+            this.repositoryItemImageEdit1.AutoHeight = false;
+            this.repositoryItemImageEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageEdit1.Name = "repositoryItemImageEdit1";
+            // 
+            // gridColumn26
+            // 
+            this.gridColumn26.Caption = "Користувач";
+            this.gridColumn26.FieldName = "UserName";
+            this.gridColumn26.Name = "gridColumn26";
+            this.gridColumn26.Visible = true;
+            this.gridColumn26.VisibleIndex = 3;
+            this.gridColumn26.Width = 174;
             // 
             // repositoryItemImageComboBox7
             // 
@@ -1578,6 +1615,10 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 3, 2)});
             this.repositoryItemImageComboBox7.Name = "repositoryItemImageComboBox7";
             this.repositoryItemImageComboBox7.SmallImages = this.GridImageList;
+            // 
+            // repositoryItemPictureEdit1
+            // 
+            this.repositoryItemPictureEdit1.Name = "repositoryItemPictureEdit1";
             // 
             // panelControl2
             // 
@@ -1910,7 +1951,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ErrorLogGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorLogGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoExEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
@@ -2088,5 +2131,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit repositoryItemMemoExEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
+        private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageEdit repositoryItemImageEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn26;
     }
 }

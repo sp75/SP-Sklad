@@ -29,6 +29,7 @@ namespace SP_Sklad.Reports
         public object Status { get; set; }
         public dynamic KontragentGroup { get; set; }
         private int? _person_id { get; set; }
+        private int _user_id  { get; set; }
 
         private List<object> XLRPARAMS
         {
@@ -54,6 +55,7 @@ namespace SP_Sklad.Reports
         public PrintReport()
         {
             _person_id = DBHelper.CurrentUser.KaId;
+            _user_id = DBHelper.CurrentUser.UserId;
         }
 
 
@@ -68,7 +70,7 @@ namespace SP_Sklad.Reports
             {
                 int grp = Convert.ToInt32(MatGroup.GrpId);
                 string wh = Convert.ToString(Warehouse.WId);
-                var mat = db.REP_1(StartDate, EndDate, grp, (int)Kagent.KaId, wh, DocStr).ToList();
+                var mat = db.REP_1(StartDate, EndDate, grp, (int)Kagent.KaId, wh, DocStr, _user_id).ToList();
 
                 if (!mat.Any())
                 {
@@ -103,7 +105,7 @@ namespace SP_Sklad.Reports
                 int grp = Convert.ToInt32(MatGroup.GrpId);
                 string wh = Convert.ToString(Warehouse.WId);
                 int status = Convert.ToInt32(Status);
-                var mat = db.REP_2(StartDate, EndDate, grp, (int)Kagent.KaId, wh, DocStr, status).ToList();
+                var mat = db.REP_2(StartDate, EndDate, grp, (int)Kagent.KaId, wh, DocStr, status, _user_id).ToList();
 
                 if (!mat.Any())
                 {
@@ -138,7 +140,7 @@ namespace SP_Sklad.Reports
                 int grp = Convert.ToInt32(MatGroup.GrpId);
                 string wh = Convert.ToString(Warehouse.WId);
                 int kid = Convert.ToInt32(Kagent.KaId);
-                var mat = db.REP_3_14(StartDate, EndDate, grp, kid, wh, "-1,").ToList();
+                var mat = db.REP_3_14(StartDate, EndDate, grp, kid, wh, "-1,", _user_id).ToList();
 
                 if (!mat.Any())
                 {
@@ -175,7 +177,7 @@ namespace SP_Sklad.Reports
                 int grp = Convert.ToInt32(MatGroup.GrpId);
                 string wh = Convert.ToString(Warehouse.WId);
                 int kid = Convert.ToInt32(Kagent.KaId);
-                var mat = db.REP_3_14(StartDate, EndDate, grp, kid, wh, DocStr).ToList();
+                var mat = db.REP_3_14(StartDate, EndDate, grp, kid, wh, DocStr, _user_id).ToList();
 
                 if (!mat.Any())
                 {
@@ -213,7 +215,7 @@ namespace SP_Sklad.Reports
                 int grp = Convert.ToInt32(MatGroup.GrpId);
                 int kid = Convert.ToInt32(Kagent.KaId);
                 string wh = Convert.ToString(Warehouse.WId);
-                var mat = db.REP_4_25(StartDate, EndDate, grp, kid, wh, "1,").ToList();
+                var mat = db.REP_4_25(StartDate, EndDate, grp, kid, wh, "1,", _user_id).ToList();
 
                 if (!mat.Any())
                 {
@@ -248,7 +250,7 @@ namespace SP_Sklad.Reports
                 int grp = Convert.ToInt32(MatGroup.GrpId);
                 int kid = Convert.ToInt32(Kagent.KaId);
                 string wh = Convert.ToString(Warehouse.WId);
-                var mat = db.REP_4_25(StartDate, EndDate, grp, kid, wh, DocStr).ToList();
+                var mat = db.REP_4_25(StartDate, EndDate, grp, kid, wh, DocStr, _user_id).ToList();
 
                 if (!mat.Any())
                 {
@@ -393,7 +395,7 @@ namespace SP_Sklad.Reports
                 int wid = Warehouse.WId == "*" ? 0 : Convert.ToInt32(Warehouse.WId);
                 Guid kg = KontragentGroup.Id;
 
-                var list = db.GetMatMove((int)this.Material.MatId, StartDate, EndDate, wid, (int)Kagent.KaId, (int)DocType, "*", kg).ToList();
+                var list = db.GetMatMove((int)this.Material.MatId, StartDate, EndDate, wid, (int)Kagent.KaId, (int)DocType, "*", kg, _user_id).ToList();
 
                 if (!list.Any())
                 {
@@ -411,7 +413,7 @@ namespace SP_Sklad.Reports
                 int grp = Convert.ToInt32(MatGroup.GrpId);
                 string wid = Convert.ToString(Warehouse.WId);
 
-                var mat = db.REP_10(StartDate, EndDate, grp, wid, 0).ToList();
+                var mat = db.REP_10(StartDate, EndDate, grp, wid, 0, _user_id).ToList();
 
                 if (!mat.Any())
                 {
@@ -540,16 +542,16 @@ namespace SP_Sklad.Reports
                 int wid = Warehouse.WId == "*" ? 0 : Convert.ToInt32(Warehouse.WId);
                 int mat_id = (int)this.Material.MatId;
                 Guid grp_kg = KontragentGroup.Id;
-                var list = db.GetMatMove((int)this.Material.MatId, StartDate, EndDate, wid, (int)Kagent.KaId, (int)DocType, "*", grp_kg).ToList();
+                var list = db.GetMatMove((int)this.Material.MatId, StartDate, EndDate, wid, (int)Kagent.KaId, (int)DocType, "*", grp_kg, _user_id).ToList();
 
                 if (!list.Any())
                 {
                     return;
                 }
 
-                var satrt_remais = db.MatRemainByWh(mat_id, wid, (int)Kagent.KaId, StartDate, "*").Sum(s => s.Remain);
+                var satrt_remais = db.MatRemainByWh(mat_id, wid, (int)Kagent.KaId, StartDate, "*", DBHelper.CurrentUser.UserId).Sum(s => s.Remain);
                 var sart_avg_price = db.v_MatRemains.Where(w => w.MatId == mat_id && w.OnDate <= StartDate).OrderByDescending(o => o.OnDate).Select(s => s.AvgPrice).FirstOrDefault();
-                var end_remais = db.MatRemainByWh(mat_id, wid, (int)Kagent.KaId, EndDate, "*").Sum(s => s.Remain);
+                var end_remais = db.MatRemainByWh(mat_id, wid, (int)Kagent.KaId, EndDate, "*", DBHelper.CurrentUser.UserId).Sum(s => s.Remain);
                 var end_avg_price = db.v_MatRemains.Where(w => w.MatId == mat_id && w.OnDate <= EndDate).OrderByDescending(o => o.OnDate).Select(s => s.AvgPrice).FirstOrDefault();
 
                 var balances = new List<object>();
@@ -602,7 +604,7 @@ namespace SP_Sklad.Reports
             {
                 int grp = Convert.ToInt32(MatGroup.GrpId);
                 Guid grp_kg = KontragentGroup.Id;
-                var mat = db.OrderedList(StartDate, EndDate, 0, (int)Kagent.KaId, -16, 0, grp_kg).GroupBy(g => new
+                var mat = db.OrderedList(StartDate, EndDate, 0, (int)Kagent.KaId, -16, 0, grp_kg).Where(w => w.GrpId == grp || grp == 0).GroupBy(g => new
                 {
                     g.BarCode,
                     g.GrpId,
