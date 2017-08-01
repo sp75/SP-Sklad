@@ -12,7 +12,7 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class ErrorLog
+    public partial class v_ErrorLog
     {
         public int Id { get; set; }
         public Nullable<System.DateTime> OnDate { get; set; }
@@ -21,5 +21,6 @@ namespace SP_Sklad.SkladData
         public string StackTrace { get; set; }
         public Nullable<int> UserId { get; set; }
         public byte[] ScreenShot { get; set; }
+        public string UserName { get; set; }
     }
 }

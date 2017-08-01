@@ -152,6 +152,10 @@ namespace SP_Sklad.SkladData
         public DbSet<v_ProductionPlanDet> v_ProductionPlanDet { get; set; }
         public DbSet<ViewLng> ViewLng { get; set; }
         public DbSet<ProductionPlanDet> ProductionPlanDet { get; set; }
+        public DbSet<PosRel> PosRel { get; set; }
+        public DbSet<v_EnterpriseList> v_EnterpriseList { get; set; }
+        public DbSet<v_PosRemains> v_PosRemains { get; set; }
+        public DbSet<v_ErrorLog> v_ErrorLog { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)
@@ -611,15 +615,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("wbill_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("StornoWayBill", wbill_idParameter);
-        }
-    
-        public virtual ObjectResult<ReservedAllPosition_Result> ReservedAllPosition(Nullable<int> wbill_id)
-        {
-            var wbill_idParameter = wbill_id.HasValue ?
-                new ObjectParameter("wbill_id", wbill_id) :
-                new ObjectParameter("wbill_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReservedAllPosition_Result>("ReservedAllPosition", wbill_idParameter);
         }
     
         public virtual int DeleteAllReservePosition(Nullable<int> wbill_id)
@@ -2133,6 +2128,19 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("user_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ReservedPosition", pos_idParameter, rsv, user_idParameter);
+        }
+    
+        public virtual ObjectResult<ReservedAllPosition_Result> ReservedAllPosition(Nullable<int> wbill_id, Nullable<int> user_id)
+        {
+            var wbill_idParameter = wbill_id.HasValue ?
+                new ObjectParameter("wbill_id", wbill_id) :
+                new ObjectParameter("wbill_id", typeof(int));
+    
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReservedAllPosition_Result>("ReservedAllPosition", wbill_idParameter, user_idParameter);
         }
     }
 }

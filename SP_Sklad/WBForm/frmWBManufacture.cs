@@ -32,7 +32,7 @@ namespace SP_Sklad.WBForm
         {
             get { return WaybillDetOutGridView.GetFocusedRow() as GetWayBillDetOut_Result; }
         }
-        private IQueryable<GetWayBillDetOut_Result> wbd_list { get; set; }
+        private List<GetWayBillDetOut_Result> wbd_list { get; set; }
 
         public frmWBManufacture(int? wbill_id = null)
         {
@@ -107,7 +107,7 @@ namespace SP_Sklad.WBForm
 
         private void RefreshDet()
         {
-            wbd_list = _db.GetWayBillDetOut(_wbill_id);
+            wbd_list = _db.GetWayBillDetOut(_wbill_id).OrderBy(o => o.Num).ToList();
 
             int top_row = WaybillDetOutGridView.TopRowIndex;
             WaybillDetOutBS.DataSource = wbd_list;
@@ -231,7 +231,7 @@ namespace SP_Sklad.WBForm
         {
             var r = new ObjectParameter("RSV", typeof(Int32));
 
-            _db.ReservedPosition(wbd_row.PosId, r);
+            _db.ReservedPosition(wbd_row.PosId, r, DBHelper.CurrentUser.UserId);
         //    current_transaction = current_transaction.CommitRetaining(_db);
          //   UpdLockWB();
 
@@ -260,7 +260,7 @@ namespace SP_Sklad.WBForm
 
         private void RsvAllBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var res = _db.ReservedAllPosition(wb.WbillId);
+            var res = _db.ReservedAllPosition(wb.WbillId, DBHelper.CurrentUser.UserId);
 
             if (res.Any())
             {

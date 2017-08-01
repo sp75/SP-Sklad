@@ -336,7 +336,7 @@ namespace SP_Sklad.MainTabs
                 {
                     switch (gtype)
                     {
-                        case 1: db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK) where WbillId = {0}", dr.WbillId).FirstOrDefault(); break;
+                        //      case 1: db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK) where WbillId = {0}", dr.WbillId).FirstOrDefault(); break;
                         case 4: db.Database.SqlQuery<PayDoc>("SELECT * from PayDoc WITH (UPDLOCK) where PayDocId = {0}", pd_row.PayDocId).FirstOrDefault(); break;
                         //	case 5: PriceList->LockRecord();  break;
                         //	case 6: ContractsList->LockRecord();  break;
@@ -351,6 +351,18 @@ namespace SP_Sklad.MainTabs
                                 if (wb != null)
                                 {
                                     db.WaybillList.Remove(wb);
+
+                                    /*      string commandText = "[sp_base].[dbo].[TestProc]";
+                                          using (SqlConnection connection = new SqlConnection("Data Source=178.136.7.248;Initial Catalog=sp_base;MultipleActiveResultSets=True;Persist Security Info=True;User ID=Developer;Password=z7895123Z"))
+                                          {
+                                              using (SqlCommand command = new SqlCommand(commandText, connection))
+                                              {
+                                                  command.CommandType = CommandType.StoredProcedure;
+                                                  connection.Open();
+                                                  command.ExecuteNonQuery();
+                                              }
+                                          }*/
+
                                 }
                                 else
                                 {
@@ -961,7 +973,7 @@ namespace SP_Sklad.MainTabs
             switch (xtraTabControl2.SelectedTabPageIndex)
             {
                 case 0:
-                    gridControl2.DataSource = _db.GetWaybillDetIn(dr.WbillId).ToList();
+                    gridControl2.DataSource = _db.GetWaybillDetIn(dr.WbillId).ToList().OrderBy(o=> o.Num);
                     break;
 
                 case 1:

@@ -114,6 +114,11 @@ namespace SP_Sklad.MainTabs
 
         void GetMoneyTurnover()
         {
+            if (FinTreeList.FocusedNode == null)
+            {
+                return;
+            }
+
             if (focused_tree_node.GType == 1)
             {
                 var node = FinTreeList.GetDataRecordByNode(FinTreeList.FocusedNode) as GetSaldoDetTree_Result;

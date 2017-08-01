@@ -12,14 +12,13 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class ErrorLog
+    public partial class PosRel
     {
         public int Id { get; set; }
-        public Nullable<System.DateTime> OnDate { get; set; }
-        public string Title { get; set; }
-        public string Message { get; set; }
-        public string StackTrace { get; set; }
-        public Nullable<int> UserId { get; set; }
-        public byte[] ScreenShot { get; set; }
+        public int PosId { get; set; }
+        public int CPosId { get; set; }
+    
+        public virtual WaybillDet WaybillDet { get; set; }
+        public virtual WaybillDet WaybillDet1 { get; set; }
     }
 }

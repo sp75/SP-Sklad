@@ -99,7 +99,7 @@ namespace SP_Sklad.WBForm
 
         private void RefreshDet()
         {
-            wbd_list = _db.GetWayBillDetOut(_wbill_id).ToList();
+            wbd_list = _db.GetWayBillDetOut(_wbill_id).OrderBy(o => o.Num).ToList();
 
             int top_row = WaybillDetOutGridView.TopRowIndex;
             WaybillDetOutBS.DataSource = wbd_list;
@@ -227,7 +227,7 @@ namespace SP_Sklad.WBForm
         {
             var r = new ObjectParameter("RSV", typeof(Int32));
 
-            _db.ReservedPosition(focused_dr.PosId, r);
+            _db.ReservedPosition(focused_dr.PosId, r, DBHelper.CurrentUser.UserId);
 
             if (r.Value != null)
             {
@@ -253,7 +253,7 @@ namespace SP_Sklad.WBForm
 
         private void RsvAllBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var res = _db.ReservedAllPosition(wb.WbillId);
+            var res = _db.ReservedAllPosition(wb.WbillId, DBHelper.CurrentUser.UserId);
 
             if (res.Any())
             {

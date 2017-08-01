@@ -129,7 +129,7 @@ namespace SP_Sklad.Reports
             int wbill_id = wb.First().WbillId;
 
             dataForReport.Add("WayBillList", wb);
-            dataForReport.Add("WayBillItems", db.GetWaybillDetIn(wbill_id).OrderBy(o => o.Num).ToList());
+            dataForReport.Add("WayBillItems", db.GetWaybillDetIn(wbill_id).ToList().OrderBy(o => o.Num).ToList());
             dataForReport.Add("Commission", db.Commission.Where(w => w.WbillId == wbill_id).Select(s => new
             {
                 MainName = s.Kagent.Name,
@@ -224,7 +224,7 @@ namespace SP_Sklad.Reports
             var ent_id = wb.First().EntId;
             data_report.Add("EntAccount", db.EnterpriseAccount.Where(w => w.KaId == ent_id && w.Def == 1).ToList());
             data_report.Add("WayBillList", wb);
-            data_report.Add("range1", db.GetWayBillDetOut(wb.First().WbillId).ToList());
+            data_report.Add("range1", db.GetWayBillDetOut(wb.First().WbillId).ToList().OrderBy(o=> o.Num).ToList());
 
             var dt = DateTime.Now.Date;
             var w_id = wb.First().WbillId;
@@ -320,7 +320,7 @@ namespace SP_Sklad.Reports
             var dataForReport = new Dictionary<string, IList>();
             var wbl = db.WaybillList.Where(w => w.Id == id).Select(s => new { s.OnDate, s.WbillId }).First();
             var wb = db.WBListMake(wbl.OnDate, wbl.OnDate, -1, "*", 0, -20).ToList();
-            var item = db.GetWayBillDetOut(wbl.WbillId).ToList().Select((s, index) => new
+            var item = db.GetWayBillDetOut(wbl.WbillId).ToList().OrderBy(o => o.Num).Select((s, index) => new
             {
                 Num = index + 1,
                 s.Amount,

@@ -604,7 +604,7 @@ namespace SP_Sklad.Reports
             {
                 int grp = Convert.ToInt32(MatGroup.GrpId);
                 Guid grp_kg = KontragentGroup.Id;
-                var mat = db.OrderedList(StartDate, EndDate, 0, (int)Kagent.KaId, -16, 0, grp_kg).GroupBy(g => new
+                var mat = db.OrderedList(StartDate, EndDate, 0, (int)Kagent.KaId, -16, 0, grp_kg).Where(w => w.GrpId == grp || grp == 0).GroupBy(g => new
                 {
                     g.BarCode,
                     g.GrpId,

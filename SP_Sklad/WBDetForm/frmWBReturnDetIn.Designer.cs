@@ -82,6 +82,7 @@
             this.BasePriceEdit = new DevExpress.XtraEditors.CalcEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.AmountEdit = new DevExpress.XtraEditors.CalcEdit();
+            this.PosOutAmountEdit = new DevExpress.XtraEditors.TextEdit();
             this.panel5 = new System.Windows.Forms.Panel();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.labelControl28 = new DevExpress.XtraEditors.LabelControl();
@@ -100,7 +101,6 @@
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.PosOutAmountEdit = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).BeginInit();
@@ -119,6 +119,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ReturnAmountEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BasePriceEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AmountEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PosOutAmountEdit.Properties)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
@@ -129,7 +130,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.BotPriceEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PosOutAmountEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -645,6 +645,20 @@
             this.AmountEdit.EditValueChanged += new System.EventHandler(this.AmountEdit_EditValueChanged);
             this.AmountEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AmountEdit_KeyPress);
             // 
+            // PosOutAmountEdit
+            // 
+            this.PosOutAmountEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PosOutAmountEdit.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.GetPosOutBS, "Amount", true));
+            this.PosOutAmountEdit.Enabled = false;
+            this.PosOutAmountEdit.Location = new System.Drawing.Point(423, 12);
+            this.PosOutAmountEdit.MenuManager = this.barManager1;
+            this.PosOutAmountEdit.Name = "PosOutAmountEdit";
+            this.PosOutAmountEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.PosOutAmountEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.PosOutAmountEdit.Size = new System.Drawing.Size(120, 20);
+            this.PosOutAmountEdit.TabIndex = 10;
+            // 
             // panel5
             // 
             this.panel5.Controls.Add(this.groupControl3);
@@ -847,20 +861,6 @@
             this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // PosOutAmountEdit
-            // 
-            this.PosOutAmountEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PosOutAmountEdit.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.GetPosOutBS, "Amount", true));
-            this.PosOutAmountEdit.Enabled = false;
-            this.PosOutAmountEdit.Location = new System.Drawing.Point(423, 12);
-            this.PosOutAmountEdit.MenuManager = this.barManager1;
-            this.PosOutAmountEdit.Name = "PosOutAmountEdit";
-            this.PosOutAmountEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.PosOutAmountEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.PosOutAmountEdit.Size = new System.Drawing.Size(120, 20);
-            this.PosOutAmountEdit.TabIndex = 10;
-            // 
             // frmWBReturnDetIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -903,6 +903,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ReturnAmountEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BasePriceEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AmountEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PosOutAmountEdit.Properties)).EndInit();
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
@@ -914,7 +915,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.BotPriceEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PosOutAmountEdit.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

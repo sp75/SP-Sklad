@@ -156,26 +156,34 @@ namespace SP_Sklad.MainTabs
                             break;*/
 
                 case 5:
-                    GetOperLogBS.DataSource = DB.SkladBase().GetOperLog(wbStartDate.DateTime, wbEndDate.DateTime, (int)wTypeList.EditValue, (int)UserComboBox.EditValue).OrderByDescending(o => o.OnDate).ToList().Select(s => new GetOperLog_Result
+                    if (xtraTabControl2.SelectedTabPageIndex == 0)
                     {
-                        OpCode = s.OpCode,
-                        OnDate = s.OnDate,
-                        FunName = s.FunName,
-                        Id = s.Id,
-                        DocNum = s.DocNum,
-                        UserName = s.UserName,
-                        TabId = s.TabId,
-                        DataBefore = IHelper.ConvertLogData(s.DataBefore),
-                        DataAfter = IHelper.ConvertLogData(s.DataAfter),
-                        ClassName = s.ClassName,
-                        DocType = s.DocType,
-                        FunId = s.FunId,
-                        OpId = s.OpId,
-                        UserId = s.UserId
-                    }).ToList();
-
-                    PrintLogGridControl.DataSource = DB.SkladBase().GetPrintLog(wbStartDate.DateTime, wbEndDate.DateTime, (int)UserComboBox.EditValue).ToList();
-                    ErrorLogGridControl.DataSource = DB.SkladBase().ErrorLog.ToList();
+                        GetOperLogBS.DataSource = DB.SkladBase().GetOperLog(wbStartDate.DateTime, wbEndDate.DateTime, (int)wTypeList.EditValue, (int)UserComboBox.EditValue).OrderByDescending(o => o.OnDate).ToList().Select(s => new GetOperLog_Result
+                        {
+                            OpCode = s.OpCode,
+                            OnDate = s.OnDate,
+                            FunName = s.FunName,
+                            Id = s.Id,
+                            DocNum = s.DocNum,
+                            UserName = s.UserName,
+                            TabId = s.TabId,
+                            DataBefore = IHelper.ConvertLogData(s.DataBefore),
+                            DataAfter = IHelper.ConvertLogData(s.DataAfter),
+                            ClassName = s.ClassName,
+                            DocType = s.DocType,
+                            FunId = s.FunId,
+                            OpId = s.OpId,
+                            UserId = s.UserId
+                        }).ToList();
+                    }
+                    if (xtraTabControl2.SelectedTabPageIndex == 1)
+                    {
+                        PrintLogGridControl.DataSource = DB.SkladBase().GetPrintLog(wbStartDate.DateTime, wbEndDate.DateTime, (int)UserComboBox.EditValue).ToList();
+                    }
+                    if (xtraTabControl2.SelectedTabPageIndex == 2)
+                    {
+                        ErrorLogGridControl.DataSource = DB.SkladBase().v_ErrorLog.OrderByDescending(o => o.OnDate).Take(100).ToList();
+                    }
                     break;
 
                 case 6:
@@ -218,7 +226,7 @@ namespace SP_Sklad.MainTabs
             {
                 return;
             }
-            
+
             switch (focused_tree_node.GType)
             {
                 case 1:
@@ -229,10 +237,19 @@ namespace SP_Sklad.MainTabs
                     }
                     break;
 
-                /*case 3: SkladData->DBList->Delete(); break ;
-                case 5: if(cxGrid4->ActiveLevel->Index == 0 ) OperLog->Delete();
-                        if(cxGrid4->ActiveLevel->Index == 1) PrintLog->Delete();
-                        break ;*/
+                //case 3: SkladData->DBList->Delete(); break ;
+                case 5: //if(cxGrid4->ActiveLevel->Index == 0 ) OperLog->Delete();
+                    //if(cxGrid4->ActiveLevel->Index == 1) PrintLog->Delete();
+                    if (xtraTabControl2.SelectedTabPageIndex == 2)
+                    {
+                        var er = ErrorLogGridView.GetFocusedRow() as v_ErrorLog;
+                        using (var db = DB.SkladBase())
+                        {
+                            db.DeleteWhere<ErrorLog>(w => w.Id == er.Id);
+                        }
+                    }
+
+                    break;
             }
 
             RefrechItemBtn.PerformClick();
@@ -344,6 +361,11 @@ namespace SP_Sklad.MainTabs
 
                 DBHelper.CommonParam = null;
             }
+        }
+
+        private void xtraTabControl2_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
+        {
+            RefrechItemBtn.PerformClick();
         }
     }
 }

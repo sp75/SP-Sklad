@@ -148,7 +148,7 @@
         <AssociationConnector Association="BaseModel.FK_REPLNG_REPID" />
         <EntityTypeShape EntityType="BaseModel.KontragentGroup" Width="1.5" PointX="8.1612118893122343" PointY="16.670762904300709" />
         <EntityTypeShape EntityType="BaseModel.UsersGroup" Width="1.5" PointX="21.375" PointY="3.25" />
-        <EntityTypeShape EntityType="BaseModel.WaybillDet" Width="1.5" PointX="10.061178657254754" PointY="11.387986903725185" />
+        <EntityTypeShape EntityType="BaseModel.WaybillDet" Width="1.5" PointX="33.5" PointY="11.5" />
         <EntityTypeShape EntityType="BaseModel.WaybillList" Width="1.5" PointX="23.125" PointY="29.25" />
         <AssociationConnector Association="BaseModel.FK_COMMISSION_WBILLID" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLD_REFERENCE_CURRENCY" />
@@ -174,7 +174,6 @@
         <AssociationConnector Association="BaseModel.FK_WAYBILLMAKE_WAYBILLLIST" />
         <AssociationConnector Association="BaseModel.FK_WBM_WBILLID" />
         <AssociationConnector Association="BaseModel.FK_WBS_WBILLID" />
-        <AssociationConnector Association="BaseModel.PosRel" />
         <EntityTypeShape EntityType="BaseModel.Licenses" Width="1.5" PointX="0.22449915121518965" PointY="23.247416909433628" />
         <EntityTypeShape EntityType="BaseModel.UserSettings" Width="1.5" PointX="21.625" PointY="0.625" />
         <EntityTypeShape EntityType="BaseModel.v_KAgentSaldo" Width="1.5" PointX="10.535968673665062" PointY="17.949280389560982" />
@@ -260,6 +259,11 @@
         <AssociationConnector Association="BaseModel.FK_ProductionPlanDet_MatRecipe" />
         <AssociationConnector Association="BaseModel.FK_ProductionPlanDet_ProductionPlans" />
         <AssociationConnector Association="BaseModel.FK_ProductionPlanDet_Warehouse" />
+        <EntityTypeShape EntityType="BaseModel.PosRel" Width="1.5" PointX="2.4587553341215269" PointY="26.584181142311628" />
+        <EntityTypeShape EntityType="BaseModel.v_EnterpriseList" Width="1.5" PointX="5.1526836814138495" PointY="5.1121267253123817" />
+        <EntityTypeShape EntityType="BaseModel.v_PosRemains" Width="1.5" PointX="2.9648153534926545" PointY="31.01670891000736" />
+        <AssociationConnector Association="BaseModel.FK_POSREL_CPOSID" />
+        <AssociationConnector Association="BaseModel.FK_POSREL_POSID" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />
@@ -271,6 +275,7 @@
         <EntityTypeShape EntityType="BaseModel.KagentList" Width="1.5" PointX="8.75" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.v_Users" Width="1.5" PointX="0.77737436852295616" PointY="19.076044061722254" />
         <EntityTypeShape EntityType="BaseModel.v_MatRemains" Width="1.5" PointX="6.6021653202372441" PointY="2.4802597623692173" />
+        <EntityTypeShape EntityType="BaseModel.v_ErrorLog" Width="1.5" PointX="9.1037510843499341" PointY="30.783803641229778" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

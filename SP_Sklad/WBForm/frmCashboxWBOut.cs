@@ -91,7 +91,7 @@ namespace SP_Sklad.WBForm
 
             _db.SaveChanges();
 
-            _db.ReservedAllPosition(wb.WbillId).ToList();
+            _db.ReservedAllPosition(wb.WbillId, DBHelper.CurrentUser.UserId).ToList();
 
             RefreshDet();
 
@@ -100,7 +100,7 @@ namespace SP_Sklad.WBForm
 
         private void RefreshDet()
         {
-            wbd_list = _db.GetWayBillDetOut(_wbill_id).ToList();
+            wbd_list = _db.GetWayBillDetOut(_wbill_id).OrderBy(o => o.Num).ToList();
 
             int top_row = WaybillDetOutGridView.TopRowIndex;
             WaybillDetOutBS.DataSource = wbd_list;
