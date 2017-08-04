@@ -238,20 +238,21 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-             var dr = WbGridView.GetRow(WbGridView.FocusedRowHandle) as WBListMake_Result;
+            var dr = WbGridView.GetRow(WbGridView.FocusedRowHandle) as WBListMake_Result;
 
-             if (DB.SkladBase().WaybillList.Any(a => a.WbillId == dr.WbillId))
-             {
-                 var f = new frmTechProcDet(dr.WbillId);
-                 if (f.ShowDialog() == DialogResult.OK)
-                 {
-                     RefreshTechProcDet(dr.WbillId);
-                 }
-             }
-             else
-             {
-                 RefrechItemBtn.PerformClick();
-             }
+            var f = new frmTechProcDet(dr.WbillId);
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                if (DB.SkladBase().WaybillList.Any(a => a.WbillId == dr.WbillId))
+                {
+                    RefreshTechProcDet(dr.WbillId);
+                }
+                else
+                {
+                    RefrechItemBtn.PerformClick();
+                }
+            }
+
         }
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

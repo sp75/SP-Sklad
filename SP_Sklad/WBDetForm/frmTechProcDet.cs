@@ -82,7 +82,10 @@ namespace SP_Sklad.WBDetForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            _db.SaveChanges();
+            if (_db.WaybillList.Any(a => a.WbillId == _wbill_id))
+            {
+                _db.SaveChanges();
+            }
         }
 
         private void frmTechProcDet_FormClosed(object sender, FormClosedEventArgs e)

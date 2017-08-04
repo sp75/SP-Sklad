@@ -49,7 +49,7 @@ namespace SP_Sklad.WBForm
             PersonMakeComboBox.Properties.DataSource = DBHelper.Persons;
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
             WhComboBox.Properties.DataSource = DBHelper.WhList();
-            RecipeComboBox.Properties.DataSource = DB.SkladBase().MatRecipe.Where(w => w.RType == 1).Select(s => new 
+            RecipeComboBox.Properties.DataSource = DB.SkladBase().MatRecipe.AsNoTracking().Where(w => w.RType == 1).Select(s => new 
             {
                 RecId = s.RecId,
                 Name = s.Name,
@@ -107,13 +107,13 @@ namespace SP_Sklad.WBForm
 
         private void RefreshDet()
         {
-            wbd_list = _db.GetWayBillDetOut(_wbill_id).OrderBy(o => o.Num).ToList();
+            wbd_list = _db.GetWayBillDetOut(_wbill_id).AsNoTracking().OrderBy(o => o.Num).ToList();
 
             int top_row = WaybillDetOutGridView.TopRowIndex;
             WaybillDetOutBS.DataSource = wbd_list;
             WaybillDetOutGridView.TopRowIndex = top_row;
 
-            TechProcGridControl.DataSource = _db.v_TechProcDet.Where(w => w.WbillId == _wbill_id).OrderBy(o => o.Num).ToList();
+            TechProcGridControl.DataSource = _db.v_TechProcDet.AsNoTracking().Where(w => w.WbillId == _wbill_id).OrderBy(o => o.Num).ToList();
             GetOk();
         }
 
@@ -190,11 +190,12 @@ namespace SP_Sklad.WBForm
 
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (new frmWriteOffDet(_db, null, wb).ShowDialog() == DialogResult.OK)
+            using (var frm = new frmWriteOffDet(_db, null, wb))
             {
-             //   current_transaction = current_transaction.CommitRetaining(_db);
-          //      UpdLockWB();
-                RefreshDet();
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    RefreshDet();
+                }
             }
         }
 
@@ -204,11 +205,11 @@ namespace SP_Sklad.WBForm
 
             if (dr != null)
             {
-                new frmWriteOffDet(_db, dr.PosId, wb).ShowDialog();
-
-            //    current_transaction = current_transaction.CommitRetaining(_db);
-            //    UpdLockWB();
-                RefreshDet();
+                using (var frm = new frmWriteOffDet(_db, dr.PosId, wb))
+                {
+                    frm.ShowDialog();
+                    RefreshDet();
+                }
             }
         }
 

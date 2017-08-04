@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -37,7 +38,7 @@ namespace SP_Sklad.WBDetForm
         private void frmWriteOffDet_Load(object sender, EventArgs e)
         {
             WHComboBox.Properties.DataSource = DBHelper.WhList();
-            MatComboBox.Properties.DataSource = _db.MaterialsList.ToList();
+            MatComboBox.Properties.DataSource = _db.MaterialsList.AsNoTracking().ToList();
 
             if (_wb.WType == -5 || _wb.WType == -22)
             {
@@ -163,7 +164,7 @@ namespace SP_Sklad.WBDetForm
                 CurRemainEdit.EditValue = mat_remain.CurRemain;
             }
 
-            pos_in = _db.GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, 0, DBHelper.CurrentUser.UserId).Where(w => w.CurRemain > 0).OrderByDescending(o => o.OnDate).ToList();
+            pos_in = _db.GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, 0, DBHelper.CurrentUser.UserId).AsNoTracking().Where(w => w.CurRemain > 0).OrderByDescending(o => o.OnDate).ToList();
 
             if (pos_in.Any())
             {
