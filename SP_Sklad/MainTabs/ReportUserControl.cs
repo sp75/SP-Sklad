@@ -44,7 +44,7 @@ namespace SP_Sklad.MainTabs
             using (var db = DB.SkladBase())
             {
                 RepGridControl.DataSource = null;
-                RepGridControl.DataSource = db.Reports.Where(w => w.GrpId == focused_tree_node.Id)
+                RepGridControl.DataSource = db.Reports.Where(w => w.GrpId == focused_tree_node.Id && w.Fil == 1)
                 .Join(db.RepLng.Where(r => r.LangId == 2), rep => rep.RepId, lng => lng.RepId, (rep, lng) => new
             {
                 ImgIndex = 23,

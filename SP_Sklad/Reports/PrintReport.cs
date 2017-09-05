@@ -1053,7 +1053,7 @@ namespace SP_Sklad.Reports
             {
                 int grp = Convert.ToInt32(MatGroup.GrpId);
                 int mat_id = (int)this.Material.MatId;
-                var make = db.REP_33(StartDate, EndDate, grp, mat_id).OrderBy(o => o.OnDate).ToList();
+                var make = db.REP_35(StartDate, EndDate, grp, mat_id).OrderBy(o => o.OnDate).ToList();
 
                 if (!make.Any())
                 {

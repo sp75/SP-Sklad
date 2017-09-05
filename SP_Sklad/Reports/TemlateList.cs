@@ -54,7 +54,7 @@ namespace SP_Sklad.Reports
         public static String rep_32 { get { return "RouteList.xlsx"; } }
         public static String rep_33 { get { return "AnalizPlan_fact.xlsx"; } }
         public static String rep_34 { get { return "rami.xlsx"; } }
-        public static String rep_35 { get { return "AnaliticsManufacture.xlsx"; } }
+        public static String rep_35 { get { return "AnalizPlan_fac_kopchenosty.xlsx"; } }
         public static String rep_36 { get { return "DiscountCart.xlsx"; } }
     }
 }

@@ -12,6 +12,7 @@ using SP_Sklad.Common;
 using SP_Sklad.Properties;
 using SP_Sklad.SkladData;
 using EntityState = System.Data.Entity.EntityState;
+using System.Data.Entity;
 
 namespace SP_Sklad.WBDetForm
 {
@@ -226,7 +227,7 @@ namespace SP_Sklad.WBDetForm
             mat_remain = _db.GetMatRemain(WId, MatId).FirstOrDefault();
             GetMatRemainBS.DataSource = mat_remain != null ? mat_remain : new GetMatRemain_Result();
 
-            pos_in = _db.GetPosIn(_wb.OnDate, MatId, WId, 0, DBHelper.CurrentUser.UserId).Where(w => w.FullRemain > 0).OrderBy(o => o.OnDate).ToList();
+            pos_in = _db.GetPosIn(_wb.OnDate, MatId, WId, 0, DBHelper.CurrentUser.UserId).AsNoTracking().Where(w => w.FullRemain > 0).OrderBy(o => o.OnDate).ToList();
         }
 
         private void SetAmount()

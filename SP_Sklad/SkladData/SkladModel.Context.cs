@@ -2142,5 +2142,27 @@ namespace SP_Sklad.SkladData
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReservedAllPosition_Result>("ReservedAllPosition", wbill_idParameter, user_idParameter);
         }
+    
+        [EdmFunction("BaseEntities", "REP_35")]
+        public virtual IQueryable<REP_35_Result> REP_35(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> grp_id, Nullable<int> mat_id)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var grp_idParameter = grp_id.HasValue ?
+                new ObjectParameter("grp_id", grp_id) :
+                new ObjectParameter("grp_id", typeof(int));
+    
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_35_Result>("[BaseEntities].[REP_35](@from_date, @to_date, @grp_id, @mat_id)", from_dateParameter, to_dateParameter, grp_idParameter, mat_idParameter);
+        }
     }
 }
