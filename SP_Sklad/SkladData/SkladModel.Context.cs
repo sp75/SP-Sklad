@@ -2164,5 +2164,23 @@ namespace SP_Sklad.SkladData
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_35_Result>("[BaseEntities].[REP_35](@from_date, @to_date, @grp_id, @mat_id)", from_dateParameter, to_dateParameter, grp_idParameter, mat_idParameter);
         }
+    
+        [EdmFunction("BaseEntities", "REP_37")]
+        public virtual IQueryable<REP_37_Result> REP_37(Nullable<int> wh_id, Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date)
+        {
+            var wh_idParameter = wh_id.HasValue ?
+                new ObjectParameter("wh_id", wh_id) :
+                new ObjectParameter("wh_id", typeof(int));
+    
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_37_Result>("[BaseEntities].[REP_37](@wh_id, @from_date, @to_date)", wh_idParameter, from_dateParameter, to_dateParameter);
+        }
     }
 }

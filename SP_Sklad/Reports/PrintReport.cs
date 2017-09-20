@@ -1097,6 +1097,36 @@ namespace SP_Sklad.Reports
                 IHelper.Print(data_for_report, TemlateList.rep_36);
             }
 
+            if (idx == 37)
+            {
+                int wh_id = Convert.ToInt32(Warehouse.WId);
+                var make = db.REP_37(wh_id, StartDate, EndDate).OrderBy(o => o.Num).ToList();
+
+                if (!make.Any())
+                {
+                    return;
+                }
+
+                rel.Add(new
+                {
+                    pk = "GrpId",
+                    fk = "GrpId",
+                    master_table = "MatGroup",
+                    child_table = "WayBillItems"
+                });
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("MatGroup", make.GroupBy(o => new { o.GrpId, o.GrpName }).Select(s => new { s.Key.GrpId, s.Key.GrpName }).OrderBy(o => o.GrpName).ToList());
+                data_for_report.Add("WayBillItems", make.ToList());
+                data_for_report.Add("_realation_", rel);
+                data_for_report.Add("SummaryField", make.GroupBy(g => 1).Select(s => new
+                {
+                    SummAll = s.Sum(a => a.SumAll),
+                }).ToList());
+
+                IHelper.Print(data_for_report, TemlateList.rep_37);
+            }
+
             db.PrintLog.Add(new PrintLog
             {
                 PrintType = 1,

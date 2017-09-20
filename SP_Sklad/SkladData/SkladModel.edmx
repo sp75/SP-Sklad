@@ -5668,6 +5668,7 @@
                 <Property Name="Remain" Type="numeric" Precision="38" Scale="4" />
                 <Property Name="Rsv" Type="numeric" Precision="38" Scale="4" />
                 <Property Name="CurRemain" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AvgPrice" Type="numeric" Precision="38" Scale="6" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -6174,6 +6175,29 @@
                 <Property Name="InjectionAmount" Type="numeric" Precision="38" Scale="4" />
                 <Property Name="ConcentrationAmount" Type="numeric" Precision="38" Scale="4" />
                 <Property Name="FinishAmount" Type="numeric" Precision="38" Scale="4" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="REP_37" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="wh_id" Type="int" Mode="In" />
+          <Parameter Name="from_date" Type="datetime" Mode="In" />
+          <Parameter Name="to_date" Type="datetime" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Num" Type="int" />
+                <Property Name="MatId" Type="int" Nullable="false" />
+                <Property Name="MatName" Type="nvarchar" MaxLength="255" />
+                <Property Name="GrpId" Type="int" Nullable="false" />
+                <Property Name="GrpName" Type="varchar" Nullable="false" MaxLength="64" />
+                <Property Name="AmountAll" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="SumAll" Type="numeric" Precision="38" Scale="8" />
+                <Property Name="AmountOut" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="Remain" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="MsrName" Type="nvarchar" Nullable="false" MaxLength="6" />
+                <Property Name="AvgPrice" Type="numeric" Precision="38" Scale="6" />
+                <Property Name="Losses" Type="numeric" Precision="38" Scale="6" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -7827,6 +7851,11 @@
             <Parameter Name="to_date" Mode="In" Type="DateTime" />
             <Parameter Name="grp_id" Mode="In" Type="Int32" />
             <Parameter Name="mat_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="REP_37" IsComposable="true" ReturnType="Collection(BaseModel.REP_37_Result)">
+            <Parameter Name="wh_id" Mode="In" Type="Int32" />
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
@@ -13060,6 +13089,20 @@
           <Property Type="Decimal" Name="ConcentrationAmount" Nullable="true" Precision="38" Scale="4" />
           <Property Type="Decimal" Name="FinishAmount" Nullable="true" Precision="38" Scale="4" />
         </ComplexType>
+        <ComplexType Name="REP_37_Result">
+          <Property Type="Int32" Name="Num" Nullable="true" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="GrpId" Nullable="false" />
+          <Property Type="String" Name="GrpName" Nullable="false" MaxLength="64" />
+          <Property Type="Decimal" Name="AmountAll" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="SumAll" Nullable="true" Precision="38" Scale="8" />
+          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Remain" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="Decimal" Name="AvgPrice" Nullable="true" Precision="38" Scale="6" />
+          <Property Type="Decimal" Name="Losses" Nullable="true" Precision="38" Scale="6" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -16547,6 +16590,24 @@
                 <ScalarProperty Name="InjectionAmount" ColumnName="InjectionAmount" />
                 <ScalarProperty Name="ConcentrationAmount" ColumnName="ConcentrationAmount" />
                 <ScalarProperty Name="FinishAmount" ColumnName="FinishAmount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="REP_37" FunctionName="BaseModel.Store.REP_37">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.REP_37_Result">
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="GrpName" ColumnName="GrpName" />
+                <ScalarProperty Name="AmountAll" ColumnName="AmountAll" />
+                <ScalarProperty Name="SumAll" ColumnName="SumAll" />
+                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="AvgPrice" ColumnName="AvgPrice" />
+                <ScalarProperty Name="Losses" ColumnName="Losses" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

@@ -58,7 +58,7 @@ namespace SP_Sklad.Common
             if (view == null)
             {
                 return false;
-            }
+            } 
 
             Point pt = view.GridControl.PointToClient(Control.MousePosition);
             GridHitInfo info = view.CalcHitInfo(pt);
