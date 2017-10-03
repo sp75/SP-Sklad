@@ -90,7 +90,7 @@ namespace SpreadsheetReportBuilder
             // Load a workbook from the stream. 
             using (FileStream stream = new FileStream(Temleyt, FileMode.Open, FileAccess.Read))
             {
-                workbook.LoadDocument(stream, DocumentFormat.OpenXml);
+                workbook.LoadDocument(stream, DevExpress.Spreadsheet.DocumentFormat.OpenXml);
             }
 
             foreach (var sheet in workbook.Worksheets)
@@ -144,7 +144,7 @@ namespace SpreadsheetReportBuilder
 
             if (format == "xlsx")
             {
-                workbook.SaveDocument(ms, DocumentFormat.OpenXml);
+                workbook.SaveDocument(ms, DevExpress.Spreadsheet.DocumentFormat.OpenXml);
             }
             else if (format == "pdf")
             {

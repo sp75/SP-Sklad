@@ -49,6 +49,7 @@
             this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.barStaticItem3 = new DevExpress.XtraBars.BarStaticItem();
             this.standaloneBarDockControl3 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -84,6 +85,7 @@
             this.colPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.BarCodeEdit = new DevExpress.XtraEditors.TextEdit();
             this.MatTreeList = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
@@ -109,6 +111,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PriceListDetBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BarCodeEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatTreeList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
@@ -146,9 +149,10 @@
             this.barButtonItem4,
             this.barButtonItem1,
             this.barButtonItem5,
-            this.barButtonItem9});
+            this.barButtonItem9,
+            this.barStaticItem3});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 25;
+            this.barManager1.MaxItemId = 26;
             // 
             // bar2
             // 
@@ -297,7 +301,8 @@
             this.bar3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem3)});
             this.bar3.OptionsBar.AllowQuickCustomization = false;
             this.bar3.OptionsBar.DrawDragBorder = false;
             this.bar3.OptionsBar.UseWholeRow = true;
@@ -332,6 +337,13 @@
             this.barButtonItem3.Name = "barButtonItem3";
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
+            // barStaticItem3
+            // 
+            this.barStaticItem3.Caption = "Штрих-код";
+            this.barStaticItem3.Id = 25;
+            this.barStaticItem3.Name = "barStaticItem3";
+            this.barStaticItem3.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
             // standaloneBarDockControl3
             // 
             this.standaloneBarDockControl3.AutoSize = true;
@@ -339,7 +351,7 @@
             this.standaloneBarDockControl3.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl3.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl3.Name = "standaloneBarDockControl3";
-            this.standaloneBarDockControl3.Size = new System.Drawing.Size(403, 31);
+            this.standaloneBarDockControl3.Size = new System.Drawing.Size(392, 31);
             this.standaloneBarDockControl3.Text = "standaloneBarDockControl3";
             // 
             // barDockControlTop
@@ -347,14 +359,14 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(912, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(901, 24);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 663);
-            this.barDockControlBottom.Size = new System.Drawing.Size(912, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(901, 0);
             // 
             // barDockControlLeft
             // 
@@ -367,7 +379,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(912, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(901, 24);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 639);
             // 
             // standaloneBarDockControl1
@@ -377,7 +389,7 @@
             this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 24);
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(912, 0);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(901, 0);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // WBImgList
@@ -421,7 +433,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
-            this.panel1.Size = new System.Drawing.Size(912, 94);
+            this.panel1.Size = new System.Drawing.Size(901, 94);
             this.panel1.TabIndex = 24;
             // 
             // panelControl1
@@ -440,7 +452,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(5, 5);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(902, 84);
+            this.panelControl1.Size = new System.Drawing.Size(891, 84);
             this.panelControl1.TabIndex = 0;
             // 
             // labelControl4
@@ -564,7 +576,7 @@
             // 
             // BotAmountEdit
             // 
-            this.BotAmountEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PriceListBS, "Name", true));
+            this.BotAmountEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PriceListBS, "Name", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.BotAmountEdit.Location = new System.Drawing.Point(63, 13);
             this.BotAmountEdit.MenuManager = this.barManager1;
             this.BotAmountEdit.Name = "BotAmountEdit";
@@ -592,10 +604,11 @@
             this.splitContainerControl1.Panel1.Controls.Add(this.gridControl1);
             this.splitContainerControl1.Panel1.Controls.Add(this.standaloneBarDockControl2);
             this.splitContainerControl1.Panel1.Text = "Panel1";
+            this.splitContainerControl1.Panel2.Controls.Add(this.BarCodeEdit);
             this.splitContainerControl1.Panel2.Controls.Add(this.MatTreeList);
             this.splitContainerControl1.Panel2.Controls.Add(this.standaloneBarDockControl3);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(912, 493);
+            this.splitContainerControl1.Size = new System.Drawing.Size(901, 493);
             this.splitContainerControl1.SplitterPosition = 504;
             this.splitContainerControl1.TabIndex = 25;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -704,11 +717,26 @@
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 4;
             // 
+            // BarCodeEdit
+            // 
+            this.BarCodeEdit.Location = new System.Drawing.Point(213, 3);
+            this.BarCodeEdit.MenuManager = this.barManager1;
+            this.BarCodeEdit.Name = "BarCodeEdit";
+            this.BarCodeEdit.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.BarCodeEdit.Properties.Appearance.Options.UseBackColor = true;
+            this.BarCodeEdit.Properties.DisplayFormat.FormatString = "0.0000";
+            this.BarCodeEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.BarCodeEdit.Size = new System.Drawing.Size(162, 22);
+            this.BarCodeEdit.StyleController = this.styleController1;
+            this.BarCodeEdit.TabIndex = 31;
+            this.BarCodeEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit1_KeyPress);
+            // 
             // MatTreeList
             // 
             this.MatTreeList.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.treeListColumn1,
             this.treeListColumn2});
+            this.MatTreeList.Cursor = System.Windows.Forms.Cursors.Default;
             this.MatTreeList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MatTreeList.ImageIndexFieldName = "ImgIndex";
             this.MatTreeList.KeyFieldName = "Id";
@@ -717,7 +745,7 @@
             this.MatTreeList.OptionsBehavior.Editable = false;
             this.MatTreeList.ParentFieldName = "Pid";
             this.MatTreeList.SelectImageList = this.imageList1;
-            this.MatTreeList.Size = new System.Drawing.Size(403, 462);
+            this.MatTreeList.Size = new System.Drawing.Size(392, 462);
             this.MatTreeList.TabIndex = 2;
             this.MatTreeList.PopupMenuShowing += new DevExpress.XtraTreeList.PopupMenuShowingEventHandler(this.treeList1_PopupMenuShowing);
             this.MatTreeList.MouseDown += new System.Windows.Forms.MouseEventHandler(this.treeList1_MouseDown);
@@ -748,13 +776,13 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl2.Location = new System.Drawing.Point(0, 611);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(912, 52);
+            this.panelControl2.Size = new System.Drawing.Size(901, 52);
             this.panelControl2.TabIndex = 26;
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OkButton.Location = new System.Drawing.Point(690, 10);
+            this.OkButton.Location = new System.Drawing.Point(679, 10);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(100, 30);
             this.OkButton.TabIndex = 1;
@@ -764,7 +792,7 @@
             // simpleButton1
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.Location = new System.Drawing.Point(800, 10);
+            this.simpleButton1.Location = new System.Drawing.Point(789, 10);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(100, 30);
             this.simpleButton1.TabIndex = 0;
@@ -783,7 +811,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(912, 663);
+            this.ClientSize = new System.Drawing.Size(901, 663);
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.standaloneBarDockControl1);
@@ -817,6 +845,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PriceListDetBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BarCodeEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatTreeList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
@@ -889,5 +918,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraEditors.TextEdit BarCodeEdit;
+        private DevExpress.XtraBars.BarStaticItem barStaticItem3;
     }
 }

@@ -62,6 +62,7 @@ namespace SP_Sklad
                     MatComboBox.EditValue = 0;
                 }
             }
+
             if (!PeriodGroupBox.Visible) Height -= PeriodGroupBox.Height;
             if (!WHGroupBox.Visible)
             {
@@ -69,8 +70,17 @@ namespace SP_Sklad
             }
             else
             {
-                WhComboBox.Properties.DataSource = new List<object>() { new { WId = "*", Name = "Усі" } }.Concat(new BaseEntities().Warehouse.Where(w=> w.UserAccessWh.Any(a=> a.UserId == DBHelper.CurrentUser.UserId)).Select(s => new { WId = s.WId.ToString(), s.Name }).ToList());
-                WhComboBox.EditValue = "*";
+                var wh = new BaseEntities().Warehouse.Where(w => w.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId)).Select(s => new { WId = s.WId.ToString(), s.Name, s.Def }).ToList();
+                if (_rep_id == 37)
+                {
+                    WhComboBox.Properties.DataSource = wh.Select(s => new { s.WId, s.Name }).ToList();
+                    WhComboBox.EditValue = wh.FirstOrDefault(w => w.Def == 1).WId;
+                }
+                else
+                {
+                    WhComboBox.Properties.DataSource = new List<object>() { new { WId = "*", Name = "Усі" } }.Concat(wh.Select(s => new { s.WId, s.Name }).ToList());
+                    WhComboBox.EditValue = "*";
+                }
             }
 
             if (!GRPGroupBox.Visible)
@@ -164,6 +174,7 @@ namespace SP_Sklad
             if (checkEdit8.Checked) str += ",-22";
             SetDate();
 
+            int grp = ChildGroupCheckEdit.Checked ? Convert.ToInt32((GrpComboBox.GetSelectedDataRow() as dynamic).GrpId) : 0;
             var pr = new PrintReport
             {
                 OnDate = OnDateDBEdit.DateTime,
@@ -177,7 +188,8 @@ namespace SP_Sklad
                 DocType = DocTypeEdit.EditValue,
                 ChType = ChTypeEdit.GetSelectedDataRow(),
                 Status = wbStatusList.EditValue,
-                KontragentGroup = GrpKagentLookUpEdit.GetSelectedDataRow()
+                KontragentGroup = GrpKagentLookUpEdit.GetSelectedDataRow(),
+                GrpStr = ChildGroupCheckEdit.Checked ? String.Join(",", new BaseEntities().GetMatGroupTree(grp).ToList().Select(s => Convert.ToString(s.GrpId))) : ""
             };
 
             pr.CreateReport(_rep_id);

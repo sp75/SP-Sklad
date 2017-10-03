@@ -30,13 +30,14 @@ namespace SP_Sklad.Reports
         public dynamic KontragentGroup { get; set; }
         private int? _person_id { get; set; }
         private int _user_id  { get; set; }
+        public String GrpStr { get; set; }
 
-        private List<object> XLRPARAMS
+        private List<XLRPARAM> XLRPARAMS
         {
             get
             {
-                var obj = new List<object>();
-                obj.Add(new
+                var obj = new List<XLRPARAM>();
+                obj.Add(new XLRPARAM
                 {
                     OnDate = OnDate.ToShortDateString(),
                     StartDate = StartDate.ToShortDateString(),
@@ -45,12 +46,26 @@ namespace SP_Sklad.Reports
                     WH = Warehouse != null ? Warehouse.Name : "",
                     KAID = Kagent != null ? Kagent.Name : "",
                     MatId = Material != null ? Material.Name : "",
-                    CType = ChType!= null ? ChType.Name :"",
-                    KontragentGroupName = KontragentGroup !=null ? KontragentGroup.Name :"",
+                    CType = ChType != null ? ChType.Name : "",
+                    KontragentGroupName = KontragentGroup != null ? KontragentGroup.Name : "",
                 });
                 return obj;
             }
         }
+
+        public class XLRPARAM
+        {
+            public string OnDate { get; set; }
+            public string StartDate { get; set; }
+            public string EndDate { get; set; }
+            public string GRP { get; set; }
+            public string WH { get; set; }
+            public string KAID { get; set; }
+            public string MatId { get; set; }
+            public string CType { get; set; }
+            public string KontragentGroupName { get; set; }
+        }
+
 
         public PrintReport()
         {
@@ -475,14 +490,14 @@ namespace SP_Sklad.Reports
                 int grp = Convert.ToInt32(MatGroup.GrpId);
                 string wid = Convert.ToString(Warehouse.WId);
 
-                var mat = db.REP_13(StartDate, EndDate, grp, (int)Kagent.KaId, (String)Warehouse.WId, 0).ToList();
+                var mat = db.REP_13(StartDate, EndDate, grp, (int)Kagent.KaId, (String)Warehouse.WId, 0, GrpStr).ToList();
 
                 if (!mat.Any())
                 {
                     return;
                 }
-
-                var mat_grp = db.MatGroup.Where(w => w.Deleted == 0 && (w.GrpId == grp || grp == 0)).Select(s => new { s.GrpId, s.Name }).ToList();
+                var gs =  !String.IsNullOrEmpty( GrpStr) ? GrpStr.Split(',').Select(s=> Convert.ToInt32(s)).ToList() : new List<int>();
+                var mat_grp = db.MatGroup.Where(w => w.Deleted == 0 && (w.GrpId == grp || grp == 0 || gs.Contains(w.GrpId))).Select(s => new { s.GrpId, s.Name }).ToList();
 
                 rel.Add(new
                 {
@@ -710,7 +725,7 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("XLRPARAMS", XLRPARAMS);
                 data_for_report.Add("MatList", mat.ToList());
 
-                IHelper.Print(data_for_report, TemlateList.rep_27);
+                IHelper.Print2(data_for_report, TemlateList.rep_27);
             }
 
 
@@ -813,7 +828,7 @@ namespace SP_Sklad.Reports
                 decimal? total = 0;
                 data_for_report.Add("XLRPARAMS", XLRPARAMS);
 
-                var mat = db.REP_13(StartDate, EndDate, 0, 0, "*", 0).ToList();
+                var mat = db.REP_13(StartDate, EndDate, 0, 0, "*", 0, GrpStr).ToList();
                 var mat_grp = mat.GroupBy(g => new { g.GrpName, g.GrpId }).Select(s => new
                 {
                     s.Key.GrpId,
@@ -832,7 +847,7 @@ namespace SP_Sklad.Reports
                 total += mat_grp.Sum(s => s.Income);
 
 
-                var mat2 = db.REP_13(StartDate, EndDate, 0, 0, "*", 1).ToList();
+                var mat2 = db.REP_13(StartDate, EndDate, 0, 0, "*", 1, GrpStr).ToList();
                 var mat_grp2 = mat2.GroupBy(g => new { g.GrpName, g.GrpId }).Select(s => new
                 {
                     s.Key.GrpId,

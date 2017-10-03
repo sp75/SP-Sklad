@@ -23,7 +23,7 @@ namespace SP_Sklad.ViewsForm
 
         private void frmSpreadsheed_Load(object sender, EventArgs e)
         {
-            spreadsheetControl1.LoadDocument(_xlsx, DocumentFormat.OpenXml);
+            spreadsheetControl1.LoadDocument(_xlsx, DevExpress.Spreadsheet.DocumentFormat.OpenXml);
         }
     }
 }

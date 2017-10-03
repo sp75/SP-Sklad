@@ -132,6 +132,10 @@ namespace SP_Sklad.WBForm
                     PlDetType = 0
                 });
             }
+            else
+            {
+                //gridView1.set
+            }
         }
 
         void AddSvc(GetSvcTree_Result row)
@@ -230,7 +234,7 @@ namespace SP_Sklad.WBForm
             int? p_type = PTypeEdit.EditValue == null || PTypeEdit.EditValue == DBNull.Value ? null : (int?)PTypeEdit.EditValue;
             var mat_price = _db.GetListMatPrices(mat_id, pl.CurrId, p_type).FirstOrDefault();
 
-            return mat_price != null ? mat_price.Price.Value : 0.00m;
+            return mat_price != null ? (mat_price.Price != null ? mat_price.Price.Value : 0.00m) : 0.00m;
         }
 
         private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -274,6 +278,29 @@ namespace SP_Sklad.WBForm
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void textEdit1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && AddMaterialBtn.Enabled && !String.IsNullOrEmpty(BarCodeEdit.Text))
+            {
+                var BarCodeText = BarCodeEdit.Text.Split('+');
+                string kod = BarCodeText[0];
+                var item = _db.Materials.Where(w => w.BarCode == kod).Select(s => s.MatId).FirstOrDefault();
+
+                if (item > 0)
+                {
+                    BarCodeEdit.BackColor = Color.PaleGreen;
+                    MatTreeList.FocusedNode = MatTreeList.FindNodeByFieldValue("Id", item);
+                    barButtonItem5.PerformClick();
+                }
+                else
+                {
+                    BarCodeEdit.BackColor = Color.Pink;
+                }
+
+                BarCodeEdit.Text = "";
+            }
         }
     }
 }

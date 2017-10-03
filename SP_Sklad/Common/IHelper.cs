@@ -13,6 +13,8 @@ using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.XtraTreeList.Nodes;
+using DocumentFormat.OpenXml.ReportBuilder;
+using FormulaExcel;
 using SP_Sklad.EditForm;
 using SP_Sklad.Properties;
 using SP_Sklad.SkladData;
@@ -643,6 +645,47 @@ namespace SP_Sklad.Common
                 else
                 {
                     File.WriteAllBytes(result_file, rep);
+
+                    if (File.Exists(result_file))
+                    {
+                        Process.Start(result_file);
+                    }
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Шлях до шаблонів " + template_file + " не знайдено!");
+            }
+        }
+
+        public static void Print2(Dictionary<string, IList> data_for_report, string temlate)
+        {
+            String template_file = Path.Combine(template_path, temlate);
+
+            if (File.Exists(template_file))
+            {
+                var file_format = DBHelper.CurrentUser.ReportFormat;
+
+                String result_file = Path.Combine(rep_path, Path.GetFileNameWithoutExtension(temlate) + "_" + DateTime.Now.Ticks.ToString() + "." + file_format);
+
+                var report = ReportBuilderXLS.GenerateReport(data_for_report, template_file).ToArray();
+          //      var calc = CalculationlFormulaExcel.CalcSpreadsheetDocument(report, true).ToArray();
+
+                if (DBHelper.CurrentUser.InternalEditor != null && DBHelper.CurrentUser.InternalEditor.Value)
+                {
+                    if (file_format == "pdf")
+                    {
+                        new frmPdfView(report).Show();
+                    }
+                    else if (file_format == "xlsx")
+                    {
+                        new frmSpreadsheed(report).Show();
+                    }
+                }
+                else
+                {
+                    File.WriteAllBytes(result_file, report);
 
                     if (File.Exists(result_file))
                     {

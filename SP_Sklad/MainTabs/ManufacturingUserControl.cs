@@ -32,8 +32,6 @@ namespace SP_Sklad.MainTabs
         public ManufacturingUserControl()
         {
             InitializeComponent();
-
-           
         }
 
         private void wbStartDate_Properties_EditValueChanged(object sender, EventArgs e)
@@ -126,6 +124,9 @@ namespace SP_Sklad.MainTabs
             EditItemBtn.Enabled = false;
             CopyItemBtn.Enabled = false;
             PrintItemBtn.Enabled = false;
+            AddTechProcBtn.Enabled = false;
+            DelTechProcBtn.Enabled = false;
+            EditTechProcBtn.Enabled = false; 
             focused_tree_node = DocsTreeList.GetDataRecordByNode(e.Node) as GetManufactureTree_Result;
 
             _cur_wtype = focused_tree_node.WType != null ? focused_tree_node.WType.Value : 0;
@@ -586,7 +587,7 @@ namespace SP_Sklad.MainTabs
             EditItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanModify == 1);
             AddTechProcBtn.Enabled = (focused_row != null && focused_row.Checked != 1 && focused_tree_node.CanModify == 1);
             DelTechProcBtn.Enabled = (AddTechProcBtn.Enabled && TechProcGridView.DataRowCount > 0);
-            EditTechProcBtn.Enabled = (focused_row != null && focused_tree_node.CanModify == 1 && TechProcGridView.DataRowCount > 0); 
+            EditTechProcBtn.Enabled = (focused_row != null && focused_tree_node.CanModify == 1 && TechProcGridView.DataRowCount > 0 /*&& focused_row.Checked != 1*/); 
             CopyItemBtn.Enabled = (focused_row != null && focused_tree_node.CanModify == 1);
             //  OkButton->Enabled =  !WayBillList->IsEmpty();
             ExecuteItemBtn.Enabled = (focused_row != null && focused_tree_node.CanPost == 1);
@@ -717,6 +718,23 @@ namespace SP_Sklad.MainTabs
         private void PlanStartDate_EditValueChanged(object sender, EventArgs e)
         {
             GetProductionPlans();
+        }
+
+        private void TechProcGridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            using (var db = new BaseEntities())
+            {
+                if (e.Column.FieldName == "Notes")
+                {
+                    var row = TechProcGridView.GetFocusedRow() as v_TechProcDet;
+                    var wbd = db.TechProcDet.FirstOrDefault(w => w.DetId == row.DetId);
+                    wbd.Notes = Convert.ToString(e.Value);
+                }
+
+                db.SaveChanges();
+            }
+
+            
         }
 
     }

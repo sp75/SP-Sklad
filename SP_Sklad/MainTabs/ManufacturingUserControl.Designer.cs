@@ -1377,9 +1377,8 @@
             this.TechProcGridView.GridControl = this.TechProcGridControl;
             this.TechProcGridView.Name = "TechProcGridView";
             this.TechProcGridView.OptionsBehavior.AllowIncrementalSearch = true;
-            this.TechProcGridView.OptionsBehavior.Editable = false;
-            this.TechProcGridView.OptionsBehavior.ReadOnly = true;
             this.TechProcGridView.OptionsView.ShowGroupPanel = false;
+            this.TechProcGridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.TechProcGridView_CellValueChanged);
             this.TechProcGridView.DoubleClick += new System.EventHandler(this.TechProcGridView_DoubleClick);
             // 
             // gridColumn42
@@ -1387,6 +1386,7 @@
             this.gridColumn42.Caption = "Назва";
             this.gridColumn42.FieldName = "Name";
             this.gridColumn42.Name = "gridColumn42";
+            this.gridColumn42.OptionsColumn.AllowEdit = false;
             this.gridColumn42.Visible = true;
             this.gridColumn42.VisibleIndex = 1;
             this.gridColumn42.Width = 193;
@@ -1398,6 +1398,7 @@
             this.gridColumn43.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn43.FieldName = "OnDate";
             this.gridColumn43.Name = "gridColumn43";
+            this.gridColumn43.OptionsColumn.AllowEdit = false;
             this.gridColumn43.Visible = true;
             this.gridColumn43.VisibleIndex = 2;
             this.gridColumn43.Width = 96;
@@ -1407,6 +1408,7 @@
             this.gridColumn44.Caption = "Вихід (Брутто)";
             this.gridColumn44.FieldName = "Out";
             this.gridColumn44.Name = "gridColumn44";
+            this.gridColumn44.OptionsColumn.AllowEdit = false;
             this.gridColumn44.Visible = true;
             this.gridColumn44.VisibleIndex = 3;
             this.gridColumn44.Width = 92;
@@ -1416,6 +1418,7 @@
             this.gridColumn45.Caption = "Відповідальний";
             this.gridColumn45.FieldName = "PersonName";
             this.gridColumn45.Name = "gridColumn45";
+            this.gridColumn45.OptionsColumn.AllowEdit = false;
             this.gridColumn45.Visible = true;
             this.gridColumn45.VisibleIndex = 8;
             this.gridColumn45.Width = 176;
@@ -1434,6 +1437,7 @@
             this.gridColumn76.Caption = "#";
             this.gridColumn76.FieldName = "Num";
             this.gridColumn76.Name = "gridColumn76";
+            this.gridColumn76.OptionsColumn.AllowEdit = false;
             this.gridColumn76.Visible = true;
             this.gridColumn76.VisibleIndex = 0;
             this.gridColumn76.Width = 73;
@@ -1445,6 +1449,7 @@
             this.gridColumn83.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn83.FieldName = "OutNetto";
             this.gridColumn83.Name = "gridColumn83";
+            this.gridColumn83.OptionsColumn.AllowEdit = false;
             this.gridColumn83.Visible = true;
             this.gridColumn83.VisibleIndex = 4;
             this.gridColumn83.Width = 84;
@@ -1454,6 +1459,7 @@
             this.gridColumn84.Caption = "Рама";
             this.gridColumn84.FieldName = "RamaName";
             this.gridColumn84.Name = "gridColumn84";
+            this.gridColumn84.OptionsColumn.AllowEdit = false;
             this.gridColumn84.Visible = true;
             this.gridColumn84.VisibleIndex = 5;
             this.gridColumn84.Width = 118;
@@ -1463,6 +1469,7 @@
             this.gridColumn85.Caption = "Вішала, шт";
             this.gridColumn85.FieldName = "ExtMatAmount";
             this.gridColumn85.Name = "gridColumn85";
+            this.gridColumn85.OptionsColumn.AllowEdit = false;
             this.gridColumn85.Visible = true;
             this.gridColumn85.VisibleIndex = 6;
             // 
@@ -1471,6 +1478,7 @@
             this.gridColumn86.Caption = "Тара";
             this.gridColumn86.FieldName = "TareWeight";
             this.gridColumn86.Name = "gridColumn86";
+            this.gridColumn86.OptionsColumn.AllowEdit = false;
             this.gridColumn86.Visible = true;
             this.gridColumn86.VisibleIndex = 7;
             // 
