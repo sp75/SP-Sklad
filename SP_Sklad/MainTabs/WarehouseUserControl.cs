@@ -76,6 +76,9 @@ namespace SP_Sklad.MainTabs
                 WhComboBox.Properties.DataSource = new List<object>() { new { WId = "*", Name = "Усі" } }.Concat(new BaseEntities().Warehouse.Select(s => new { WId = s.WId.ToString(), s.Name }).ToList());
                 WhComboBox.EditValue = "*";
 
+                WhComboBox2.Properties.DataSource = WhComboBox.Properties.DataSource;
+                WhComboBox2.EditValue = "*";
+
                 wbSatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
                 wbSatusList.EditValue = -1;
 
@@ -341,16 +344,10 @@ namespace SP_Sklad.MainTabs
 
                     grp_id = ByGrpBtn.Down ? focused_tree_node.Num : 0;
                     wid = ByGrpBtn.Down ? 0 : focused_tree_node.Num;
-                   /* if (ByGrpBtn.Down)
+                    if (wid == 0 && WhComboBox2.EditValue.ToString() != "*")
                     {
-                        grp_id = focused_tree_node.Num;
-                        wid = 0;
+                        wid = Convert.ToInt32(WhComboBox2.EditValue);
                     }
-                    else
-                    {
-                        wid = focused_tree_node.Num;
-                        grp_id = 0;
-                    }*/
 
                     if (ViewDetailTree.Down && ByGrpBtn.Down && focused_tree_node.Num != 0)
                     {
@@ -359,7 +356,7 @@ namespace SP_Sklad.MainTabs
 
                     int top_row = WhMatGridView.TopRowIndex;
               //      var wh_ids = String.Join(",", DB.SkladBase().UserAccessWh.Where(w => w.UserId == DBHelper.CurrentUser.UserId).Select(s => s.WId).ToList());
-                    WhMatGetBS.DataSource = DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, ShowEmptyItemsCheck.Checked ? 1 : 0, wh_list, ShowAllItemsCheck.Checked ? 1 : 0, grp, DBHelper.CurrentUser.UserId, ViewDetailTree.Down ? 1 : 0).ToList();
+                    WhMatGetBS.DataSource = DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, ShowEmptyItemsCheck.Checked ? 1 : 0,wh_list , ShowAllItemsCheck.Checked ? 1 : 0, grp, DBHelper.CurrentUser.UserId, ViewDetailTree.Down ? 1 : 0).ToList();
                     WhMatGridView.TopRowIndex = top_row;
                     break;
 
@@ -444,7 +441,7 @@ namespace SP_Sklad.MainTabs
 
         private void whKagentList_EditValueChanged(object sender, EventArgs e)
         {
-            if (OnDateEdit.ContainsFocus || whKagentList.ContainsFocus)
+            if (OnDateEdit.ContainsFocus || whKagentList.ContainsFocus || WhComboBox2.ContainsFocus)
             {
                 RefrechItemBtn.PerformClick();
             }
