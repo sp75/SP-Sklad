@@ -97,6 +97,7 @@ namespace SP_Sklad.WBDetForm
                 pos_out_list = _db.Database.SqlQuery<GetPosOut_Result>(sql, _start_date, _wb.OnDate, 0, _wb.KaId, -1).ToList();
 
 
+           //          pos_out_list = _db.GetPosOut(_start_date, _wb.OnDate, 0, _wb.KaId, -1).ToList(); // тормозитьиза параметра _wb.KaId
             }
 
             MatComboBox.Properties.DataSource = pos_out_list;
