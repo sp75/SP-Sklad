@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SP_Sklad", "SP_Sklad\SP_Sklad.csproj", "{A1A2E2A4-9F01-4E90-A921-10B929BF694B}"
 EndProject
@@ -10,8 +10,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "update", "update\update.csproj", "{D7F24763-06CE-4C4C-B47C-1E9E80C4154A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{08BF2DCB-1250-47B4-920D-AB45AEE74DE4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkladData", "SkladData\SkladData.csproj", "{1CBBD5B3-DCED-4B8E-AEA4-4BC5081624AD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SP_Base", "SP_Base\SP_Base.csproj", "{FE619112-FD3E-4ECC-A9CB-01DE7DB42481}"
 EndProject
@@ -37,10 +35,6 @@ Global
 		{08BF2DCB-1250-47B4-920D-AB45AEE74DE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08BF2DCB-1250-47B4-920D-AB45AEE74DE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08BF2DCB-1250-47B4-920D-AB45AEE74DE4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1CBBD5B3-DCED-4B8E-AEA4-4BC5081624AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1CBBD5B3-DCED-4B8E-AEA4-4BC5081624AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1CBBD5B3-DCED-4B8E-AEA4-4BC5081624AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1CBBD5B3-DCED-4B8E-AEA4-4BC5081624AD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FE619112-FD3E-4ECC-A9CB-01DE7DB42481}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FE619112-FD3E-4ECC-A9CB-01DE7DB42481}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE619112-FD3E-4ECC-A9CB-01DE7DB42481}.Release|Any CPU.ActiveCfg = Release|Any CPU

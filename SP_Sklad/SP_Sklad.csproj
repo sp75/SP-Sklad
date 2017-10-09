@@ -1783,13 +1783,13 @@
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SkladData\SkladData.csproj">
-      <Project>{1cbbd5b3-dced-4b8e-aea4-4bc5081624ad}</Project>
-      <Name>SkladData</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SkladEngine\SkladEngine.csproj">
       <Project>{053e5968-b5fb-41bd-9e8f-8f4a9c60d922}</Project>
       <Name>SkladEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SP_Base\SP_Base.csproj">
+      <Project>{fe619112-fd3e-4ecc-a9cb-01de7db42481}</Project>
+      <Name>SP_Base</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
