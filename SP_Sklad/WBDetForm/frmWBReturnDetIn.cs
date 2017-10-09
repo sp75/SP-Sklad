@@ -73,9 +73,8 @@ namespace SP_Sklad.WBDetForm
 
             if (pos_out_list == null)
             {
-                using (var db = Database.SP_BaseModel())
-                {
-                    var sql = @"select item.*, (item.Amount - coalesce( item.ReturnAmount,0 )) Remain from
+
+                var sql = @"select item.*, (item.Amount - coalesce( item.ReturnAmount,0 )) Remain from
 	(
      select wbd.PosId, wbl.WbillId, wbl.WType, wbl.Num, wbl.OnDate, wbl.DocId, ka.KaId, ka.Name KaName, w.WID, w.name WhName, m.MatId, m.name MatName, m.Artikul, 
            wbd.Amount , wbl.ToDate, wbd.Price , wbd.OnValue , wbd.CurrId, c.shortname CurrNmae, wbl.Checked, ms.shortname Measure , wbd.Nds, 
@@ -95,12 +94,11 @@ namespace SP_Sklad.WBDetForm
 		   and {4} in (wbl.wtype , 0) 
      ) item";
 
+                pos_out_list = _db.Database.SqlQuery<GetPosOut_Result>(sql, _start_date, _wb.OnDate, 0, _wb.KaId, -1).ToList();
 
-                    var ff = db.Database.SqlQuery<GetPosOut_Result>("select * from GetPosOut({0},{1},{2},{3},{4})", _start_date, _wb.OnDate, 0, _wb.KaId, -1).ToList();
-                }
 
-                      pos_out_list = _db.GetPosOut(_start_date, _wb.OnDate, 0, _wb.KaId, -1).ToList();
-                }
+                pos_out_list = _db.GetPosOut(_start_date, _wb.OnDate, 0, _wb.KaId, -1).ToList();
+            }
 
             MatComboBox.Properties.DataSource = pos_out_list;
             if (_temp_return_rel != null)
