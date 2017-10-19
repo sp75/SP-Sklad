@@ -1998,7 +1998,9 @@
             this.PriceListGridView.OptionsView.EnableAppearanceEvenRow = true;
             this.PriceListGridView.OptionsView.EnableAppearanceOddRow = true;
             this.PriceListGridView.OptionsView.ShowGroupPanel = false;
+            this.PriceListGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WbGridView_PopupMenuShowing);
             this.PriceListGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.PriceListGridView_FocusedRowObjectChanged);
+            this.PriceListGridView.DoubleClick += new System.EventHandler(this.WbGridView_DoubleClick);
             // 
             // gridColumn46
             // 

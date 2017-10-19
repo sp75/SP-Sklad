@@ -589,37 +589,41 @@ namespace SP_Sklad.MainTabs
                     }
                     break;
 
-                /*        case 5: frmPriceList = new  TfrmPriceList(Application);
-                                frmPriceList->PriceList->Open();
-                                frmPriceList->PriceList->Append();
-                                frmPriceList->ShowModal() ;
-                                delete frmPriceList;
-                                break;
+                case 5:
+                    var pl_row = PriceListGridView.GetFocusedRow() as v_PriceList;
+                    var pl_id = DB.SkladBase().CopyPriceList(pl_row.PlId).FirstOrDefault();
 
-                        case 6: frmContr = new  TfrmContr(Application);
-                                frmContr->CONTRACTS->Open();
-                                frmContr->CONTRACTS->Append();
-                                if(DocsTreeDataID->Value == 47) frmContr->CONTRACTSDOCTYPE->Value = -1;
-                                if(DocsTreeDataID->Value == 46) frmContr->CONTRACTSDOCTYPE->Value = 1;
-                                frmContr->CONTRACTS->Post();
-                                frmContr->CONTRACTS->Edit();
+                    using (var frm = new frmPriceList(pl_id))
+                    {
+                        frm.ShowDialog();
+                    }
 
-                                frmContr->CONTRPARAMS->Append();
-                                frmContr->CONTRPARAMS->Post();
-                                frmContr->CONTRRESULTS->Append();
+                    break;
 
-                                frmContr->ShowModal() ;
-                                delete frmContr;
-                                break;
+                /*           case 6: frmContr = new  TfrmContr(Application);
+                                   frmContr->CONTRACTS->Open();
+                                   frmContr->CONTRACTS->Append();
+                                   if(DocsTreeDataID->Value == 47) frmContr->CONTRACTSDOCTYPE->Value = -1;
+                                   if(DocsTreeDataID->Value == 46) frmContr->CONTRACTSDOCTYPE->Value = 1;
+                                   frmContr->CONTRACTS->Post();
+                                   frmContr->CONTRACTS->Edit();
 
-                        case 7: frmTaxWB = new  TfrmTaxWB(Application);
-                                frmTaxWB->TaxWB->Open();
-                                frmTaxWB->TaxWB->Append();
-                                frmTaxWB->TaxWB->Post();
-                                frmTaxWB->TaxWB->Edit();
-                                frmTaxWB->ShowModal() ;
-                                delete frmTaxWB;
-                                break;*/
+                                   frmContr->CONTRPARAMS->Append();
+                                   frmContr->CONTRPARAMS->Post();
+                                   frmContr->CONTRRESULTS->Append();
+
+                                   frmContr->ShowModal() ;
+                                   delete frmContr;
+                                   break;
+
+                           case 7: frmTaxWB = new  TfrmTaxWB(Application);
+                                   frmTaxWB->TaxWB->Open();
+                                   frmTaxWB->TaxWB->Append();
+                                   frmTaxWB->TaxWB->Post();
+                                   frmTaxWB->TaxWB->Edit();
+                                   frmTaxWB->ShowModal() ;
+                                   delete frmTaxWB;
+                                   break;*/
             }
 
             RefrechItemBtn.PerformClick();

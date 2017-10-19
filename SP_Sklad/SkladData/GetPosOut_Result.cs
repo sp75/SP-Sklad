@@ -31,7 +31,7 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> Price { get; set; }
         public Nullable<decimal> OnValue { get; set; }
         public Nullable<int> CurrId { get; set; }
-        public string CurrNmae { get; set; }
+        public string CurrName { get; set; }
         public int Checked { get; set; }
         public string Measure { get; set; }
         public Nullable<decimal> Nds { get; set; }

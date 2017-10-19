@@ -55,13 +55,13 @@ namespace SP_Sklad.WBForm
             else
             {
                 pl = _db.PriceList.Find(_pl_id);
-
-                if (pl != null)
-                {
-                    PriceListBS.DataSource = pl;
-                }
             }
 
+            if (pl != null)
+            {
+                PriceListBS.DataSource = pl;
+            }
+           
             GetDetail();
             GetMatTree();
         }
@@ -86,8 +86,24 @@ namespace SP_Sklad.WBForm
 
         private void GetMatTree()
         {
+            var sql = @"
+	select mats.matid as Id, -1*mats.grpid as Pid, mats.Name, mats.Artikul as art, msr.shortname as MsrName, 0 as ImgIndex,
+    0.00 Price
+    from  materials mats, measures msr
+    where  msr.mid=mats.mid and mats.deleted=0
+
+    union all
+    select  -1*mg.grpid as id, -1*mg.pid as pid,  mg.name ,'', '', 2 , 0
+    from matgroup mg
+    where mg.deleted=0
+";
+
             int? p_type = PTypeEdit.EditValue == null || PTypeEdit.EditValue == DBNull.Value ? null : (int?)PTypeEdit.EditValue;
-            MatTreeList.DataSource = _db.GetMatTree(p_type, 2).ToList();
+            var list = _db.GetMatTree(p_type, 2).ToList();
+    //        var list = _db.Database.SqlQuery<GetMatTree_Result>(sql).ToList();
+            MatTreeList.BeginUpdate();
+            MatTreeList.DataSource = list;
+            MatTreeList.EndUpdate();
         }
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -127,7 +143,7 @@ namespace SP_Sklad.WBForm
                 {
                     PlId = _pl_id.Value,
                     MatId = row.Id,
-                    Price = row.Price ?? 0,
+                    Price = GetPrice(row.Id.Value),
                     GrpId = row.Pid * -1,
                     PlDetType = 0
                 });
@@ -300,6 +316,148 @@ namespace SP_Sklad.WBForm
                 }
 
                 BarCodeEdit.Text = "";
+            }
+        }
+
+        private void BarCodeEdit1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && !String.IsNullOrEmpty(BarCodeEdit1.Text))
+            {
+                var BarCodeText = BarCodeEdit1.Text.Split('+');
+                string kod = BarCodeText[0];
+
+                int rowHandle = gridView1.LocateByValue("BarCode", kod);
+                if (rowHandle != DevExpress.XtraGrid.GridControl.InvalidRowHandle)
+                {
+                    gridView1.FocusedRowHandle = rowHandle;
+                    gridView1.FocusedColumn = colPrice;
+                    gridView1.ShowEditor();
+
+                    BarCodeEdit1.BackColor = Color.PaleGreen;
+                }
+                else
+                {
+                    BarCodeEdit1.BackColor = Color.Pink;
+                }
+
+                BarCodeEdit1.Text = "";
+            }
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            var f = _db.PriceListDet.Where(w => w.PlId == _pl_id && w.PlDetType == 0).ToList();
+            foreach (var item in f)
+            {
+                item.Price = GetPrice(item.MatId.Value);
+            }
+
+            _db.SaveChanges();
+            GetDetail();
+        }
+
+        private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+           var mat_id = IHelper.ShowDirectList(null, 5);
+           if (mat_id != null)
+           {
+               var id = Convert.ToInt32(mat_id);
+               var mat = _db.Materials.Find(id);
+               if (!_db.PriceListDet.Where(w => w.MatId == id && w.PlDetType == 0 && w.PlId == _pl_id.Value).Any())
+               {
+                   _db.PriceListDet.Add(new PriceListDet
+                   {
+                       PlId = _pl_id.Value,
+                       MatId = id,
+                       Price = GetPrice(id),
+                       GrpId = mat.GrpId,
+                       PlDetType = 0
+                   });
+
+                   _db.SaveChanges();
+                   GetDetail();
+               }
+              
+           }
+        }
+
+        private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var mat_id = IHelper.ShowDirectList(null, 5);
+            if (mat_id != null)
+            {
+                var id = Convert.ToInt32(mat_id);
+                var mat = _db.Materials.Find(id);
+                foreach (var item in _db.Materials.Where(w => w.GrpId == mat.GrpId).ToList())
+                {
+
+                    if (!_db.PriceListDet.Where(w => w.MatId == item.MatId && w.PlDetType == 0 && w.PlId == _pl_id).Any())
+                    {
+                        _db.PriceListDet.Add(new PriceListDet
+                        {
+                            PlId = _pl_id.Value,
+                            MatId = item.MatId,
+                            Price = GetPrice(item.MatId),
+                            GrpId = item.GrpId,
+                            PlDetType = 0
+                        });
+                    }
+                }
+                _db.SaveChanges();
+                GetDetail();
+            }
+        }
+
+        private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var SvcId = IHelper.ShowDirectList(null, 11);
+            if (SvcId != null)
+            {
+                var id = Convert.ToInt32(SvcId);
+                var svc = _db.Services.Find(id);
+                if (!_db.PriceListDet.Where(w => w.MatId == id && w.PlDetType == 1 && w.PlId == _pl_id.Value).Any())
+                {
+                    _db.PriceListDet.Add(new PriceListDet
+                    {
+                        PlId = _pl_id.Value,
+                        MatId = id,
+                        Price = svc.Price ?? 0,
+                        GrpId = svc.GrpId,
+                        PlDetType = 1
+                    });
+
+                    _db.SaveChanges();
+                    GetDetail();
+                }
+
+            }
+        }
+
+        private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var SvcId = IHelper.ShowDirectList(null, 11);
+            if (SvcId != null)
+            {
+                var id = Convert.ToInt32(SvcId);
+                var svc = _db.Services.Find(id);
+                foreach (var item in _db.Services.Where(w => w.GrpId == svc.GrpId).ToList())
+                {
+
+                    if (!_db.PriceListDet.Where(w => w.MatId == item.SvcId && w.PlDetType == 1 && w.PlId == _pl_id.Value).Any())
+                    {
+                        _db.PriceListDet.Add(new PriceListDet
+                        {
+                            PlId = _pl_id.Value,
+                            MatId = item.SvcId,
+                            Price = item.Price ?? 0,
+                            GrpId = svc.GrpId,
+                            PlDetType = 1
+                        });
+                    }
+                }
+
+                _db.SaveChanges();
+                GetDetail();
             }
         }
     }

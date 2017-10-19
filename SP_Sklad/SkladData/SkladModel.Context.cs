@@ -156,6 +156,8 @@ namespace SP_Sklad.SkladData
         public DbSet<v_EnterpriseList> v_EnterpriseList { get; set; }
         public DbSet<v_PosRemains> v_PosRemains { get; set; }
         public DbSet<v_ErrorLog> v_ErrorLog { get; set; }
+        public DbSet<Packaging> Packaging { get; set; }
+        public DbSet<SchedulingOrders> SchedulingOrders { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)
@@ -827,19 +829,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("p_type", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetListMatPrices_Result>("[BaseEntities].[GetListMatPrices](@mat_id, @in_curr_id, @p_type)", mat_idParameter, in_curr_idParameter, p_typeParameter);
-        }
-    
-        public virtual ObjectResult<GetMatTree_Result> GetMatTree(Nullable<int> p_type, Nullable<int> curr_id)
-        {
-            var p_typeParameter = p_type.HasValue ?
-                new ObjectParameter("p_type", p_type) :
-                new ObjectParameter("p_type", typeof(int));
-    
-            var curr_idParameter = curr_id.HasValue ?
-                new ObjectParameter("curr_id", curr_id) :
-                new ObjectParameter("curr_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetMatTree_Result>("GetMatTree", p_typeParameter, curr_idParameter);
         }
     
         public virtual ObjectResult<GetSvcTree_Result> GetSvcTree()
@@ -1622,32 +1611,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<ProductionPlansList_Result>("[BaseEntities].[ProductionPlansList](@from_date, @to_date, @checked, @person_id)", from_dateParameter, to_dateParameter, checkedParameter, person_idParameter);
         }
     
-        [EdmFunction("BaseEntities", "GetPosOut")]
-        public virtual IQueryable<GetPosOut_Result> GetPosOut(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> mat_id, Nullable<int> ka_id, Nullable<int> w_type)
-        {
-            var from_dateParameter = from_date.HasValue ?
-                new ObjectParameter("from_date", from_date) :
-                new ObjectParameter("from_date", typeof(System.DateTime));
-    
-            var to_dateParameter = to_date.HasValue ?
-                new ObjectParameter("to_date", to_date) :
-                new ObjectParameter("to_date", typeof(System.DateTime));
-    
-            var mat_idParameter = mat_id.HasValue ?
-                new ObjectParameter("mat_id", mat_id) :
-                new ObjectParameter("mat_id", typeof(int));
-    
-            var ka_idParameter = ka_id.HasValue ?
-                new ObjectParameter("ka_id", ka_id) :
-                new ObjectParameter("ka_id", typeof(int));
-    
-            var w_typeParameter = w_type.HasValue ?
-                new ObjectParameter("w_type", w_type) :
-                new ObjectParameter("w_type", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetPosOut_Result>("[BaseEntities].[GetPosOut](@from_date, @to_date, @mat_id, @ka_id, @w_type)", from_dateParameter, to_dateParameter, mat_idParameter, ka_idParameter, w_typeParameter);
-        }
-    
         [EdmFunction("BaseEntities", "GetWayBillListWh")]
         public virtual IQueryable<GetWayBillListWh_Result> GetWayBillListWh(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> w_type, Nullable<int> is_checked, string wh, Nullable<int> person_id)
         {
@@ -2185,6 +2148,55 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("grp", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_13_Result>("[BaseEntities].[REP_13](@from_date, @to_date, @grp_id, @ka_id, @wh, @only_return, @grp)", from_dateParameter, to_dateParameter, grp_idParameter, ka_idParameter, whParameter, only_returnParameter, grpParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetPosOut")]
+        public virtual IQueryable<GetPosOut_Result> GetPosOut(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> mat_id, Nullable<int> ka_id, Nullable<int> w_type)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var w_typeParameter = w_type.HasValue ?
+                new ObjectParameter("w_type", w_type) :
+                new ObjectParameter("w_type", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetPosOut_Result>("[BaseEntities].[GetPosOut](@from_date, @to_date, @mat_id, @ka_id, @w_type)", from_dateParameter, to_dateParameter, mat_idParameter, ka_idParameter, w_typeParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetMatTree")]
+        public virtual IQueryable<GetMatTree_Result> GetMatTree(Nullable<int> p_type, Nullable<int> curr_id)
+        {
+            var p_typeParameter = p_type.HasValue ?
+                new ObjectParameter("p_type", p_type) :
+                new ObjectParameter("p_type", typeof(int));
+    
+            var curr_idParameter = curr_id.HasValue ?
+                new ObjectParameter("curr_id", curr_id) :
+                new ObjectParameter("curr_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatTree_Result>("[BaseEntities].[GetMatTree](@p_type, @curr_id)", p_typeParameter, curr_idParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> CopyPriceList(Nullable<int> price_id)
+        {
+            var price_idParameter = price_id.HasValue ?
+                new ObjectParameter("price_id", price_id) :
+                new ObjectParameter("price_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("CopyPriceList", price_idParameter);
         }
     }
 }

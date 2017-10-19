@@ -45,6 +45,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.TotalEdit = new DevExpress.XtraEditors.CalcEdit();
+            this.ProductionPlanDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.OrderedEdit = new DevExpress.XtraEditors.CalcEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
@@ -58,7 +59,6 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.ProductionPlanDetBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
@@ -68,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TotalEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductionPlanDetBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OrderedEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RemainEdit.Properties)).BeginInit();
             this.panel1.SuspendLayout();
@@ -75,7 +76,6 @@
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RecipeComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WHComboBox.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProductionPlanDetBS)).BeginInit();
             this.SuspendLayout();
             // 
             // standaloneBarDockControl1
@@ -156,6 +156,10 @@
             this.TotalEdit.Size = new System.Drawing.Size(126, 22);
             this.TotalEdit.StyleController = this.styleController1;
             this.TotalEdit.TabIndex = 38;
+            // 
+            // ProductionPlanDetBS
+            // 
+            this.ProductionPlanDetBS.DataSource = typeof(SP_Sklad.SkladData.ProductionPlanDet);
             // 
             // labelControl1
             // 
@@ -275,6 +279,7 @@
             this.WHComboBox.StyleController = this.styleController1;
             this.WHComboBox.TabIndex = 22;
             this.WHComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.WHComboBox_ButtonClick);
+            this.WHComboBox.EditValueChanged += new System.EventHandler(this.WHComboBox_EditValueChanged);
             // 
             // labelControl6
             // 
@@ -316,10 +321,6 @@
             this.simpleButton1.TabIndex = 2;
             this.simpleButton1.Text = "Відмінити";
             // 
-            // ProductionPlanDetBS
-            // 
-            this.ProductionPlanDetBS.DataSource = typeof(SP_Sklad.SkladData.ProductionPlanDet);
-            // 
             // frmProductionPlanDet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -342,6 +343,7 @@
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TotalEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductionPlanDetBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OrderedEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RemainEdit.Properties)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -350,7 +352,6 @@
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RecipeComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WHComboBox.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProductionPlanDetBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

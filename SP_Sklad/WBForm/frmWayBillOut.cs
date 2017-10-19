@@ -55,7 +55,7 @@ namespace SP_Sklad.WBForm
         {
             KagentComboBox.Properties.DataSource = DBHelper.Kagents;
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
-            repositoryItemComboBox1.Items.AddRange(_db.WaybillDet.Where(w=> w.Notes != null).Select(s => s.Notes).Distinct().ToList());
+            repositoryItemComboBox1.Items.AddRange(DBHelper.Packaging.Select(s=> s.Name).ToList());
 
             if (_wbill_id == null && doc_id == null)
             {

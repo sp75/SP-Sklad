@@ -26,6 +26,7 @@ namespace SP_Sklad.SkladData
         private static List<Measures> _measures;
         private static List<Countries> _counters;
         private static List<DocType> _doc_type;
+        private static List<Packaging> _packaging;
 
         public static List<Countries> CountersList
         {
@@ -252,6 +253,18 @@ namespace SP_Sklad.SkladData
             return new BaseEntities().Warehouse.Where(w => w.Deleted == 0).Select(s => new WhList { WId = s.WId, Name = s.Name, Def = s.Def }).ToList();
         }
 
+        public static List<Packaging> Packaging
+        {
+            get
+            {
+                if (_packaging == null)
+                {
+                    _packaging = new BaseEntities().Packaging.ToList();
+                }
+                return _packaging;
+            }
+        }
+
         public static List<Currency> Currency
         {
             get
@@ -307,7 +320,9 @@ namespace SP_Sklad.SkladData
                              wmt2.OnDate,
                              m.Name
                          }
-                         ).FirstOrDefault();
+                         ).ToList().FirstOrDefault();
+
+            
 
             /*
                             select first 1 distinct wmt2.ondate, m.name

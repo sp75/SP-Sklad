@@ -216,7 +216,7 @@ namespace SP_Sklad.WBForm
                     _db.ProductionPlanDet.Remove(det);
                 }
             }
-
+            _db.SaveChanges();
             WaybillDetInGridView.DeleteSelectedRows();
         }
 
@@ -233,7 +233,7 @@ namespace SP_Sklad.WBForm
 
             wbd.Amount = Convert.ToDecimal(e.Value);
             var real_amount = wbd.Amount.Value - wbd.Remain.Value;
-            var tmp_amount = real_amount + (real_amount - (real_amount * row.ResipeOut / 100));
+            var tmp_amount = (real_amount / (row.ResipeOut == 0 ? 100.00m : row.ResipeOut)) * 100; // real_amount + (real_amount - (real_amount * row.ResipeOut / 100));
             wbd.Total = Math.Ceiling(tmp_amount / row.RecipeAmount) * row.RecipeAmount;
 
             _db.SaveChanges();
@@ -252,15 +252,21 @@ namespace SP_Sklad.WBForm
                     var rec = _db.MatRecipe.FirstOrDefault(w => w.MatId == item.MatId);
                     if (rec != null)
                     {
+                        var sc_amount = _db.SchedulingOrders.Where(w => w.RecId == rec.RecId).Select(s => s.Amount).FirstOrDefault();
+
+                        var real_amount = sc_amount - item.Remain;
+                        var tmp_amount = (real_amount / (rec.Out == 0 ? 100m : rec.Out)) * 100;// real_amount + (real_amount - (real_amount * rec.Out / 100));
+
                         _db.ProductionPlanDet.Add(new ProductionPlanDet
                         {
                             Id = Guid.NewGuid(),
                             Num = ++num,
-                            Amount = 0,
+                            Amount = sc_amount,
                             ProductionPlanId = pp.Id,
                             RecId = rec.RecId,
                             Remain = item.Remain,
-                            WhId = (int)ManufactoryEdit.EditValue
+                            WhId = (int)ManufactoryEdit.EditValue,
+                            Total = Math.Ceiling(Convert.ToDecimal(tmp_amount / rec.Amount)) * rec.Amount
                         });
                     }
                 }

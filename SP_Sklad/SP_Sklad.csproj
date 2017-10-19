@@ -355,6 +355,19 @@
     <Compile Include="SkladData\ExecuteWayBill_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetMatTree_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetPosOut_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\Packaging.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\SchedulingOrders.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\TableFunctions\funGetPosOut.cs" />
     <Compile Include="SkladData\GetActives_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -398,9 +411,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetPosIn_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\GetPosOut_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetPrintLog_Result.cs">
@@ -682,6 +692,12 @@
     <Compile Include="EditForm\frmSetDiscountCard.Designer.cs">
       <DependentUpon>frmSetDiscountCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewsForm\frmSchedulingOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmSchedulingOrders.Designer.cs">
+      <DependentUpon>frmSchedulingOrders.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewsForm\frmSpreadsheed.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -928,9 +944,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetMatRsv_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\GetMatTree_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetOrderedInSuppliers_Result.cs">
@@ -1417,6 +1430,9 @@
     <EmbeddedResource Include="EditForm\frmSetDiscountCard.resx">
       <DependentUpon>frmSetDiscountCard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmSchedulingOrders.resx">
+      <DependentUpon>frmSchedulingOrders.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmSpreadsheed.resx">
       <DependentUpon>frmSpreadsheed.cs</DependentUpon>
     </EmbeddedResource>
@@ -1632,6 +1648,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ProductionPlans.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ProductionPlansList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Routes.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.SchedulingOrders.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Serials.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Services.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.SvcGroup.datasource" />

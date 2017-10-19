@@ -10,14 +10,14 @@
 namespace SP_Sklad.SkladData
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class GetMatTree_Result
+    public partial class SchedulingOrders
     {
-        public Nullable<int> Id { get; set; }
-        public Nullable<int> Pid { get; set; }
-        public string Name { get; set; }
-        public string art { get; set; }
-        public string MsrName { get; set; }
-        public int ImgIndex { get; set; }
+        public System.Guid Id { get; set; }
+        public int RecId { get; set; }
+        public decimal Amount { get; set; }
+    
+        public virtual MatRecipe MatRecipe { get; set; }
     }
 }

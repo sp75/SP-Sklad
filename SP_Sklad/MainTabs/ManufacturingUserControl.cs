@@ -18,6 +18,7 @@ using SP_Sklad.Properties;
 using SP_Sklad.Reports;
 using System.IO;
 using System.Diagnostics;
+using SP_Sklad.ViewsForm;
 
 
 namespace SP_Sklad.MainTabs
@@ -735,6 +736,14 @@ namespace SP_Sklad.MainTabs
             }
 
             
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            using (var frm = new frmSchedulingOrders())
+            {
+                frm.ShowDialog();
+            }
         }
 
     }

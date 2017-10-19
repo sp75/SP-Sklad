@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SP_Sklad.Common;
+using SP_Sklad.Common.WayBills;
 using SP_Sklad.SkladData;
 
 namespace SP_Sklad
@@ -48,16 +49,17 @@ namespace SP_Sklad
                 return;
             }
 
-            pos_out_list = _db.GetPosOut(StartDate.DateTime.Date, EndDate.DateTime, (int)MatComboBox.EditValue, _kaId, -1).ToList();
+            pos_out_list = pos_out_list = _db.GetPosOut(StartDate.DateTime.Date, EndDate.DateTime, (int)MatComboBox.EditValue, _kaId, -1).ToList();
+           
             GetPosOutBS.DataSource = pos_out_list;
         }
 
         private void StartDate_EditValueChanged(object sender, EventArgs e)
         {
-        //    if (StartDate.ContainsFocus || EndDate.ContainsFocus || MatComboBox.ContainsFocus)
-       //     {
+            if (StartDate.ContainsFocus || EndDate.ContainsFocus || MatComboBox.ContainsFocus)
+            {
                 GetData();
-      //      }
+            }
         }
 
         private void bandedGridView1_DoubleClick(object sender, EventArgs e)

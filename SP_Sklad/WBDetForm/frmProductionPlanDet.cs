@@ -59,7 +59,12 @@ namespace SP_Sklad.WBDetForm
 
             ProductionPlanDetBS.DataSource = det;
 
-            //    GetOk();
+            GetOk();
+        }
+
+        private void  GetOk()
+        {
+            OkButton.Enabled = !String.IsNullOrEmpty(RecipeComboBox.Text) && !String.IsNullOrEmpty(WHComboBox.Text) && OrderedEdit.Value > 0;
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -90,11 +95,14 @@ namespace SP_Sklad.WBDetForm
             }
 
             det.Total = CalcTotal();
+
+            GetOk();
         }
 
         private void OrderedEdit_EditValueChanged(object sender, EventArgs e)
         {
             det.Total = CalcTotal();
+            GetOk();
         }
 
         private decimal CalcTotal()
@@ -107,7 +115,7 @@ namespace SP_Sklad.WBDetForm
             }
 
             var real_amount = OrderedEdit.Value - RemainEdit.Value;
-            var tmp_amount = real_amount + (real_amount - (real_amount * row.Out / 100));
+            var tmp_amount = (real_amount / (row.Out == 0 ? 100m : row.Out)) * 100;// real_amount + (real_amount - (real_amount * row.Out / 100));
 
             return Math.Ceiling(tmp_amount / row.Amount) * row.Amount;
         }
@@ -126,6 +134,11 @@ namespace SP_Sklad.WBDetForm
             {
                 WHComboBox.EditValue = IHelper.ShowDirectList(WHComboBox.EditValue, 2);
             }
+        }
+
+        private void WHComboBox_EditValueChanged(object sender, EventArgs e)
+        {
+            GetOk();
         }
     }
 }

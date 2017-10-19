@@ -243,6 +243,7 @@
             this.gridColumn90 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox5 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.lookUpEdit2 = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.PlanEndDate = new DevExpress.XtraEditors.DateEdit();
@@ -2884,6 +2885,7 @@
             // 
             // panelControl4
             // 
+            this.panelControl4.Controls.Add(this.simpleButton2);
             this.panelControl4.Controls.Add(this.lookUpEdit2);
             this.panelControl4.Controls.Add(this.labelControl9);
             this.panelControl4.Controls.Add(this.PlanEndDate);
@@ -2895,6 +2897,18 @@
             this.panelControl4.Name = "panelControl4";
             this.panelControl4.Size = new System.Drawing.Size(1050, 44);
             this.panelControl4.TabIndex = 1;
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton2.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.Image")));
+            this.simpleButton2.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton2.Location = new System.Drawing.Point(1023, 10);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(22, 22);
+            this.simpleButton2.TabIndex = 41;
+            this.simpleButton2.ToolTip = "Прогноз";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // lookUpEdit2
             // 
@@ -3764,5 +3778,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn87;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn90;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn92;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
     }
 }

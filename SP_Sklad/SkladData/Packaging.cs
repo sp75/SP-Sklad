@@ -10,14 +10,11 @@
 namespace SP_Sklad.SkladData
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class GetMatTree_Result
+    public partial class Packaging
     {
-        public Nullable<int> Id { get; set; }
-        public Nullable<int> Pid { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
-        public string art { get; set; }
-        public string MsrName { get; set; }
-        public int ImgIndex { get; set; }
     }
 }
