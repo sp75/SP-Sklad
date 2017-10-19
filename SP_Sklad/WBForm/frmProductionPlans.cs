@@ -102,6 +102,14 @@ namespace SP_Sklad.WBForm
             RefreshDet();
         }
 
+        private void GetOk()
+        {
+            OkButton.Enabled = ManufactoryEdit.EditValue != DBNull.Value && WHComboBox.EditValue != DBNull.Value && ProductionPlanDetBS.Count > 0;
+            barSubItem1.Enabled = ManufactoryEdit.EditValue != DBNull.Value && WHComboBox.EditValue != DBNull.Value;
+            EditMaterialBtn.Enabled = ProductionPlanDetBS.Count > 0;
+            DelMaterialBtn.Enabled = ProductionPlanDetBS.Count > 0;
+        }
+
         private void RefreshDet()
         {
             var list = _db.v_ProductionPlanDet.AsNoTracking().Where(w => w.ProductionPlanId == _doc_id).OrderBy(o => o.Num).ToList();
@@ -109,6 +117,8 @@ namespace SP_Sklad.WBForm
            int top_row = WaybillDetInGridView.TopRowIndex;
             ProductionPlanDetBS.DataSource = list;
             WaybillDetInGridView.TopRowIndex = top_row;
+
+            GetOk();
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -215,9 +225,10 @@ namespace SP_Sklad.WBForm
                 {
                     _db.ProductionPlanDet.Remove(det);
                 }
+                _db.SaveChanges();
+                WaybillDetInGridView.DeleteSelectedRows();
             }
-            _db.SaveChanges();
-            WaybillDetInGridView.DeleteSelectedRows();
+            GetOk();
         }
 
         private void NowDateBtn_Click(object sender, EventArgs e)
@@ -303,6 +314,11 @@ namespace SP_Sklad.WBForm
             {
                 ManufactoryEdit.EditValue = IHelper.ShowDirectList(ManufactoryEdit.EditValue, 2);
             }
+        }
+
+        private void WHComboBox_EditValueChanged(object sender, EventArgs e)
+        {
+            GetOk();
         }
     }
 }

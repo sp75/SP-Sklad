@@ -37,7 +37,11 @@ namespace SP_Sklad
             wbStartDate.DateTime = DateTimeDayOfMonthExtensions.FirstDayOfMonth(DateTime.Now);
             wbEndDate.DateTime = DateTime.Now.AddDays(1);
 
-            this.Text = "Рух товару: " + new BaseEntities().Materials.Find(_mat_id).Name;
+            var mat =new BaseEntities().Materials.Find(_mat_id);
+            if (mat != null)
+            {
+                this.Text = "Рух товару: " + mat.Name;
+            }
             
             GetTurns();
         }
