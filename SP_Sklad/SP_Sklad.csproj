@@ -1804,10 +1804,6 @@
       <Project>{053e5968-b5fb-41bd-9e8f-8f4a9c60d922}</Project>
       <Name>SkladEngine</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SP_Base\SP_Base.csproj">
-      <Project>{fe619112-fd3e-4ecc-a9cb-01de7db42481}</Project>
-      <Name>SP_Base</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

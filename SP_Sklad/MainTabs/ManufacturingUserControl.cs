@@ -242,16 +242,18 @@ namespace SP_Sklad.MainTabs
         {
             var dr = WbGridView.GetRow(WbGridView.FocusedRowHandle) as WBListMake_Result;
 
-            var f = new frmTechProcDet(dr.WbillId);
-            if (f.ShowDialog() == DialogResult.OK)
+            using (var f = new frmTechProcDet(dr.WbillId))
             {
-                if (DB.SkladBase().WaybillList.Any(a => a.WbillId == dr.WbillId))
+                if (f.ShowDialog() == DialogResult.OK)
                 {
-                    RefreshTechProcDet(dr.WbillId);
-                }
-                else
-                {
-                    RefrechItemBtn.PerformClick();
+                    if (DB.SkladBase().WaybillList.Any(a => a.WbillId == dr.WbillId))
+                    {
+                        RefreshTechProcDet(dr.WbillId);
+                    }
+                    else
+                    {
+                        RefrechItemBtn.PerformClick();
+                    }
                 }
             }
 

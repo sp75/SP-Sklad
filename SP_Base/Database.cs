@@ -48,7 +48,9 @@ namespace SP_Base
 
         public static SP_BaseEntities SP_BaseModel()
         {
-            return new SP_BaseEntities(ConnectionString);
+            var db = new SP_BaseEntities(ConnectionString);
+            db.Database.CommandTimeout = 180;
+            return db;
         }
     }
 

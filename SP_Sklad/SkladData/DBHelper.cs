@@ -444,6 +444,7 @@ order by wbd.ondate desc
     {
         public int? KaId { get; set; }
     }
+
     public class WhList
     {
         public int WId { get; set; }

@@ -20,6 +20,7 @@ using SP_Sklad.Common;
 using SP_Sklad.Reports;
 using DevExpress.XtraBars;
 using SP_Sklad.WBDetForm;
+using SkladEngine.WayBills;
 
 namespace SP_Sklad.MainTabs
 {
@@ -540,7 +541,7 @@ namespace SP_Sklad.MainTabs
                     var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
                     var doc = DB.SkladBase().DocCopy(dr.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
 
-                    if (cur_wtype == -1 || cur_wtype == -16) //Відаткова , замолення клиента 
+                    if (cur_wtype == -1 || cur_wtype == -16) //Відаткова , замовлення клиента 
                     {
                         using (var wb_in = new frmWayBillOut(cur_wtype, doc.out_wbill_id))
                         {
@@ -989,6 +990,73 @@ namespace SP_Sklad.MainTabs
                     break;
             }
           
+        }
+
+        private void PriceListGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                PriceListPopupMenu.ShowPopup(p2);
+            }
+        }
+
+        private void barButtonItem12_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var pl_row = PriceListGridView.GetFocusedRow() as v_PriceList;
+            //var wb_id = new CopyWayBill(DBHelper.CurrentUser.KaId, DBHelper.Enterprise.KaId, DBHelper.CurrentUser.UserId).CopyWithPriceList(pl_row.PlId);
+
+            using (var db = DB.SkladBase())
+            {
+                var pld = db.PriceListDet.Where(w => w.PlId == pl_row.PlId).ToList();
+
+                var _wb = db.WaybillList.Add(new WaybillList()
+                {
+                    Id = Guid.NewGuid(),
+                    WType = -16,
+                    OnDate = DBHelper.ServerDateTime(),
+                    Num = "",
+                    CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
+                    OnValue = 1,
+                    PersonId = DBHelper.CurrentUser.KaId,
+                    EntId = DBHelper.Enterprise.KaId,
+                    UpdatedBy = DBHelper.CurrentUser.UserId
+                });
+                db.SaveChanges();
+
+                foreach (var item in pld.Where(w => w.PlDetType == 0))
+                {
+                    db.WaybillDet.Add(new WaybillDet
+                    {
+                        WbillId = _wb.WbillId,
+                        Amount = 0,
+                        Discount = 0,
+                        Nds = _wb.Nds,
+                        CurrId = _wb.CurrId,
+                        OnDate = _wb.OnDate,
+                        Num = _wb.WaybillDet.Count() + 1,
+                        OnValue = _wb.OnValue,
+                        PosKind = 0,
+                        PosParent = 0,
+                        DiscountKind = 0,
+                        //   PtypeId = db.Kagent.Find(_wb.KaId).PTypeId,
+                        WayBillDetAddProps = new WayBillDetAddProps(),
+                        BasePrice = item.Price,
+                        Price = item.Price,
+                        WId = DBHelper.WhList().FirstOrDefault(f => f.Def == 1).WId,
+                        MatId = item.MatId.Value
+                    });
+                }
+                db.SaveChanges();
+
+                using (var wb_in = new frmWayBillOut(-16, _wb.WbillId))
+                {
+                    wb_in.is_new_record = true;
+                    wb_in.ShowDialog();
+                }
+            }
+
+
         }
     }
 }

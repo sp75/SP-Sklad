@@ -230,12 +230,14 @@
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
             this.xtraTabPage12 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage13 = new DevExpress.XtraTab.XtraTabPage();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.DocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.PriceListPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -334,6 +336,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceListPopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -1998,7 +2001,7 @@
             this.PriceListGridView.OptionsView.EnableAppearanceEvenRow = true;
             this.PriceListGridView.OptionsView.EnableAppearanceOddRow = true;
             this.PriceListGridView.OptionsView.ShowGroupPanel = false;
-            this.PriceListGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WbGridView_PopupMenuShowing);
+            this.PriceListGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.PriceListGridView_PopupMenuShowing);
             this.PriceListGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.PriceListGridView_FocusedRowObjectChanged);
             this.PriceListGridView.DoubleClick += new System.EventHandler(this.WbGridView_DoubleClick);
             // 
@@ -2283,8 +2286,9 @@
             this.barButtonItem9,
             this.barButtonItem10,
             this.barSubItem1,
-            this.barButtonItem11});
-            this.barManager1.MaxItemId = 23;
+            this.barButtonItem11,
+            this.barButtonItem12});
+            this.barManager1.MaxItemId = 24;
             // 
             // bar1
             // 
@@ -2545,6 +2549,13 @@
             this.barButtonItem10.Name = "barButtonItem10";
             this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
             // 
+            // barButtonItem12
+            // 
+            this.barButtonItem12.Caption = "Створити замовлення від кліента";
+            this.barButtonItem12.Id = 23;
+            this.barButtonItem12.Name = "barButtonItem12";
+            this.barButtonItem12.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem12_ItemClick);
+            // 
             // xtraTabPage12
             // 
             this.xtraTabPage12.Name = "xtraTabPage12";
@@ -2607,6 +2618,19 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10, true)});
             this.WbDetPopupMenu.Manager = this.barManager1;
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
+            // 
+            // PriceListPopupMenu
+            // 
+            this.PriceListPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.CopyItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem12, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
+            this.PriceListPopupMenu.Manager = this.barManager1;
+            this.PriceListPopupMenu.Name = "PriceListPopupMenu";
             // 
             // DocsUserControl
             // 
@@ -2721,6 +2745,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceListPopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2934,5 +2959,7 @@
         private DevExpress.XtraVerticalGrid.Rows.EditorRow row18;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraBars.PopupMenu PriceListPopupMenu;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem12;
     }
 }

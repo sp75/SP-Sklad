@@ -11,7 +11,6 @@ using System.Windows.Forms;
 using SP_Sklad.Common;
 using SP_Sklad.SkladData;
 using EntityState = System.Data.Entity.EntityState;
-using SP_Base;
 using SP_Sklad.Common.WayBills;
 
 namespace SP_Sklad.WBDetForm
