@@ -225,17 +225,18 @@ namespace SP_Sklad.WBForm
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             dynamic row = RecipeComboBox.GetSelectedDataRow();
-            var frm = new frmWriteOffDet(_db, null, wb);
-
-            frm.mat_id = row.MatId;
-            frm.amount = row.Amount;
-
-            if (frm.ShowDialog() == DialogResult.OK)
+            using (var frm = new frmWriteOffDet(_db, null, wb))
             {
-              //  current_transaction = current_transaction.CommitRetaining(_db);
-             //   UpdLockWB();
-                RefreshDeboningDet(true);
-                RefreshDet();
+                frm.mat_id = row.MatId;
+                frm.amount = row.Amount;
+
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    //  current_transaction = current_transaction.CommitRetaining(_db);
+                    //   UpdLockWB();
+                    RefreshDeboningDet(true);
+                    RefreshDet();
+                }
             }
         }
 
@@ -243,7 +244,10 @@ namespace SP_Sklad.WBForm
         {
             if (wbd_row != null)
             {
-                new frmWriteOffDet(_db, wbd_row.PosId, wb).ShowDialog();
+               using( var frm = new frmWriteOffDet(_db, wbd_row.PosId, wb))
+               {
+                   frm.ShowDialog();
+               }
 
             //    current_transaction = current_transaction.CommitRetaining(_db);
             //    UpdLockWB();

@@ -32,7 +32,7 @@ namespace SP_Sklad
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
 
             // Add the event handler for handling non-UI thread exceptions to the event. 
-            AppDomain.CurrentDomain.UnhandledException +=              new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
 
 
             Application.EnableVisualStyles();
@@ -43,7 +43,7 @@ namespace SP_Sklad
             Application.Run(new frmLogin());
 
             // Stop the application and all the threads in suspended state.
-            Environment.Exit(-1);        
+            Environment.Exit(-1);
         }
 
         // All exceptions thrown by the main thread are handled over this method
@@ -105,7 +105,7 @@ namespace SP_Sklad
                 try
                 {
                     MessageBox.Show("Fatal Non-UI Error. Could not write the error to the event log. Reason: "
-                        + exc.Message,"Fatal Non-UI Error",
+                        + exc.Message, "Fatal Non-UI Error",
                          MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 }
                 finally
@@ -151,7 +151,7 @@ namespace SP_Sklad
                 }
             }
 
-     
+
 
             return MessageBox.Show(errorMsg, title, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Stop);
         }

@@ -81,20 +81,22 @@ namespace SP_Sklad.WBDetForm
 
                 if (_db.Entry<WaybillDet>(_wbd).State == EntityState.Unchanged)
                 {
-                    var w_mat_turn = _db.WMatTurn.Where(w => w.SourceId == _wbd.PosId).ToList();
+                    var w_mat_turn = _db.WMatTurn.AsNoTracking().Where(w => w.SourceId == _wbd.PosId).ToList();
                     if (w_mat_turn.Count > 0)
                     {
-                        _db.WMatTurn.RemoveRange(w_mat_turn);
-                        _db.SaveChanges();
-                    }
+                       // _db.WMatTurn.RemoveRange(w_mat_turn);
+                     //   _db.SaveChanges();
 
-                    GetContent();
+                        _db.DeleteWhere<WMatTurn>(w => w.SourceId == _wbd.PosId);
 
-                    foreach (var item in w_mat_turn)
-                    {
-                        if (pos_in.Any(a => a.PosId == item.PosId))
+                        GetContent();
+
+                        foreach (var item in w_mat_turn)
                         {
-                            pos_in.FirstOrDefault(a => a.PosId == item.PosId).Amount = item.Amount;
+                            if (pos_in.Any(a => a.PosId == item.PosId))
+                            {
+                                pos_in.FirstOrDefault(a => a.PosId == item.PosId).Amount = item.Amount;
+                            }
                         }
                     }
                 }

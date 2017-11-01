@@ -91,11 +91,12 @@ namespace SP_Sklad.WBDetForm
 
                 if (modified_dataset)
                 {
-                    var w_mat_turn = _db.WMatTurn.Where(w => w.SourceId == _wbd.PosId).ToList();
+                    var w_mat_turn = _db.WMatTurn.AsNoTracking().Where(w => w.SourceId == _wbd.PosId).ToList();
                     if (w_mat_turn.Count > 0)
                     {
-                        _db.WMatTurn.RemoveRange(w_mat_turn);
-                        _db.SaveChanges();
+                     //   _db.WMatTurn.RemoveRange(w_mat_turn);
+                    //    _db.SaveChanges();
+                        _db.DeleteWhere<WMatTurn>(w => w.SourceId == _wbd.PosId);
 
                         GetContent(_wbd.WId, _wbd.MatId);
 
@@ -359,6 +360,11 @@ namespace SP_Sklad.WBDetForm
 
         private void GetMatPrice()
         {
+            if (PriceTypesEdit.EditValue == DBNull.Value)
+            {
+                return;
+            }
+
             var list_price = _db.GetListMatPrices((int)MatComboBox.EditValue, _wb.CurrId, (int?)PriceTypesEdit.EditValue).FirstOrDefault();
             if (list_price != null)
             {

@@ -104,21 +104,16 @@ namespace SP_Sklad.WBForm
 
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //try
-          //  {
-                using (var df = new frmWayBillDetOut(_db, null, wb))
+            using (var df = new frmWayBillDetOut(_db, null, wb))
+            {
+                if (df.ShowDialog() == DialogResult.OK)
                 {
-                    if (df.ShowDialog() == DialogResult.OK)
-                    {
-                        _db.SaveChanges();
-                  //      current_transaction = current_transaction.CommitRetaining(_db);
-                  //      UpdLockWB();
-                        RefreshDet();
-                        WaybillDetOutGridView.MoveLastVisible();
-                    }
+                    _db.SaveChanges();
+
+                    RefreshDet();
+                    WaybillDetOutGridView.MoveLastVisible();
                 }
-        //    }
-        //    catch { }
+            }
         }
 
         private void frmWayBillOut_Shown(object sender, EventArgs e)

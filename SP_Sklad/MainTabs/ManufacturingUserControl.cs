@@ -565,25 +565,7 @@ namespace SP_Sklad.MainTabs
         {
             focused_row = e.Row as WBListMake_Result;
 
-            if (focused_row != null)
-            {
-                using (var db = DB.SkladBase())
-                {
-                    RefreshTechProcDet(focused_row.WbillId);
-                    gridControl2.DataSource = db.GetWayBillDetOut(focused_row.WbillId).ToList().OrderBy(o => o.Num).ToList(); 
-                    gridView2.ExpandAllGroups();
-                    gridControl3.DataSource = db.GetRelDocList(focused_row.Id).OrderBy(o=> o.OnDate).ToList();
-                    ManufacturedPosGridControl.DataSource = db.GetManufacturedPos(focused_row.Id).ToList();
-                    RefreshAtribute(focused_row.WbillId);
-                }
-            }
-            else
-            {
-                TechProcDetBS.DataSource = null;
-                gridControl2.DataSource = null;
-                gridControl3.DataSource = null;
-                ManufacturedPosGridControl.DataSource = null;
-            }
+            xtraTabControl2_SelectedPageChanged(sender, null);
 
             StopProcesBtn.Enabled = (focused_row != null && focused_row.Checked == 2 && focused_tree_node.CanPost == 1);
             DeleteItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanDelete == 1);
@@ -601,32 +583,7 @@ namespace SP_Sklad.MainTabs
         {
             focused_row = ((GridView)sender).GetRow(e.FocusedRowHandle) as WBListMake_Result;
 
-            if (focused_row != null)
-            {
-                using (var db = DB.SkladBase())
-                {
-                    gridControl4.DataSource = db.GetWayBillDetOut(focused_row.WbillId).ToList().OrderBy(o => o.Num).ToList(); 
-                    gridControl5.DataSource = db.GetRelDocList(focused_row.Id).OrderBy(o => o.OnDate).ToList();
-
-                    DeboningDetGridControl.DataSource = db.DeboningDet.Where(w => w.WBillId == focused_row.WbillId).Select(s => new SP_Sklad.WBForm.frmWBDeboning.DeboningDetList
-                    {
-                        DebId = s.DebId,
-                        WBillId = s.WBillId,
-                        MatId = s.MatId,
-                        Amount = s.Amount,
-                        Price = s.Price,
-                        WId = s.WId,
-                        MatName = s.Materials.Name,
-                        Total = s.Amount * s.Price,
-                        WhName = s.Warehouse.Name
-                    }).ToList();
-                }
-            }
-            else
-            {
-                gridControl4.DataSource = null;
-                gridControl5.DataSource = null;
-            }
+            xtraTabControl1_SelectedPageChanged(sender, null);
 
             StopProcesBtn.Enabled = (focused_row != null && focused_row.Checked == 2 && focused_tree_node.CanPost == 1);
             DeleteItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanDelete == 1);
@@ -736,8 +693,6 @@ namespace SP_Sklad.MainTabs
 
                 db.SaveChanges();
             }
-
-            
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
@@ -748,5 +703,82 @@ namespace SP_Sklad.MainTabs
             }
         }
 
+        private void xtraTabControl2_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
+        {
+            if (focused_row == null)
+            {
+                TechProcDetBS.DataSource = null;
+                gridControl2.DataSource = null;
+                gridControl3.DataSource = null;
+                ManufacturedPosGridControl.DataSource = null;
+                return;
+            }
+
+            using (var db = DB.SkladBase())
+            {
+                switch (xtraTabControl2.SelectedTabPageIndex)
+                {
+                    case 0:
+                        RefreshTechProcDet(focused_row.WbillId);
+                        break;
+
+                    case 1:
+                        RefreshAtribute(focused_row.WbillId);
+                        break;
+
+                    case 2:
+                        gridControl2.DataSource = db.GetWayBillDetOut(focused_row.WbillId).ToList().OrderBy(o => o.Num).ToList();
+                        gridView2.ExpandAllGroups();
+                        break;
+
+                    case 3:
+                        gridControl3.DataSource = db.GetRelDocList(focused_row.Id).OrderBy(o => o.OnDate).ToList();
+                        break;
+
+                    case 4:
+                        ManufacturedPosGridControl.DataSource = db.GetManufacturedPos(focused_row.Id).ToList();
+                        break;
+                }
+            }
+        }
+
+        private void xtraTabControl1_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
+        {
+            if (focused_row == null)
+            {
+                gridControl4.DataSource = null;
+                gridControl5.DataSource = null;
+                return;
+            }
+
+            using (var db = DB.SkladBase())
+            {
+                switch (xtraTabControl1.SelectedTabPageIndex)
+                {
+                    case 0:
+                        DeboningDetGridControl.DataSource = db.DeboningDet.Where(w => w.WBillId == focused_row.WbillId).Select(s => new SP_Sklad.WBForm.frmWBDeboning.DeboningDetList
+                        {
+                            DebId = s.DebId,
+                            WBillId = s.WBillId,
+                            MatId = s.MatId,
+                            Amount = s.Amount,
+                            Price = s.Price,
+                            WId = s.WId,
+                            MatName = s.Materials.Name,
+                            Total = s.Amount * s.Price,
+                            WhName = s.Warehouse.Name
+                        }).ToList();
+                        break;
+
+                    case 1:
+                        gridControl4.DataSource = db.GetWayBillDetOut(focused_row.WbillId).ToList().OrderBy(o => o.Num).ToList();
+                        break;
+
+                    case 2:
+                        gridControl5.DataSource = db.GetRelDocList(focused_row.Id).OrderBy(o => o.OnDate).ToList();
+                        break;
+                }
+            }
+        }
     }
 }

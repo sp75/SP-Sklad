@@ -1336,6 +1336,7 @@
             this.xtraTabPage1,
             this.xtraTabPage2,
             this.xtraTabPage9});
+            this.xtraTabControl2.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xtraTabControl2_SelectedPageChanged);
             // 
             // xtraTabPage15
             // 
@@ -2370,6 +2371,7 @@
             this.xtraTabPage3,
             this.xtraTabPage4,
             this.xtraTabPage5});
+            this.xtraTabControl1.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xtraTabControl1_SelectedPageChanged);
             // 
             // xtraTabPage3
             // 

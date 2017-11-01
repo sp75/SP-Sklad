@@ -240,23 +240,24 @@ namespace SP_Sklad.WBForm
 
             if (dr != null)
             {
-                new frmWriteOffDet(_db, dr.PosId, wb).ShowDialog();
-
-            //    current_transaction = current_transaction.CommitRetaining(_db);
-            //    UpdLockWB();
+                using (var frm = new frmWriteOffDet(_db, dr.PosId, wb))
+                {
+                    frm.ShowDialog();
+                }
                 RefreshDet();
 
-                var dd = _db.Entry<WaybillDet>(_db.WaybillDet.FirstOrDefault (w=> w.PosId == dr.PosId)).State;
+                var dd = _db.Entry<WaybillDet>(_db.WaybillDet.FirstOrDefault(w => w.PosId == dr.PosId)).State;
             }
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (new frmWriteOffDet(_db, null, wb).ShowDialog() == DialogResult.OK)
+            using (var frm = new frmWriteOffDet(_db, null, wb))
             {
-           //     current_transaction = current_transaction.CommitRetaining(_db);
-          //      UpdLockWB();
-                RefreshDet();
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    RefreshDet();
+                }
             }
         }
 
