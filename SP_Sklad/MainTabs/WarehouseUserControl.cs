@@ -820,5 +820,11 @@ namespace SP_Sklad.MainTabs
             }
         }
 
+        private void ShowAllItemsCheck_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Settings.Default.show_all_mat = ShowAllItemsCheck.Checked;
+            Settings.Default.Save();
+        }
+
     }
 }

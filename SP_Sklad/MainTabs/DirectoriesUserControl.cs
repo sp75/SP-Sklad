@@ -484,7 +484,7 @@ namespace SP_Sklad.MainTabs
                             var mat = db.Materials.Find(r.MatId);
                             var mat_remain = db.v_MatRemains.Where(w => w.MatId == r.MatId).OrderByDescending(o => o.OnDate).FirstOrDefault();
 
-                            if (mat != null && mat_remain != null && (mat_remain.Remain == 0 || mat_remain.Remain == null))
+                            if (mat != null && mat_remain == null)
                             {
                                 mat.Deleted = 1;
                             }

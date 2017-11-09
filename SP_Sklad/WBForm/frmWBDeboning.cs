@@ -419,6 +419,8 @@ namespace SP_Sklad.WBForm
             }
             dr.Total = dd.Amount * dd.Price;
 
+            _db.SaveChanges();
+
             DeboningDetGridView.RefreshRow(e.RowHandle);
         }
 

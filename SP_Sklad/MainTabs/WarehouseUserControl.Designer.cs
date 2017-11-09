@@ -898,8 +898,11 @@
             // ShowAllItemsCheck
             // 
             this.ShowAllItemsCheck.Caption = "Показати всі позиції";
+            this.ShowAllItemsCheck.Checked = global::SP_Sklad.Properties.Settings.Default.show_all_mat;
+            this.ShowAllItemsCheck.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SP_Sklad.Properties.Settings.Default, "show_all_mat", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.ShowAllItemsCheck.Id = 22;
             this.ShowAllItemsCheck.Name = "ShowAllItemsCheck";
+            this.ShowAllItemsCheck.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.ShowAllItemsCheck_CheckedChanged);
             this.ShowAllItemsCheck.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ShowAllItemsCheck_ItemClick);
             // 
             // barButtonItem2

@@ -38,5 +38,8 @@
     <Setting Name="com_port_speed" Type="System.String" Scope="User">
       <Value Profile="(Default)">4800</Value>
     </Setting>
+    <Setting Name="show_all_mat" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
