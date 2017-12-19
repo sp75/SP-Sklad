@@ -353,18 +353,18 @@ namespace SP_Sklad.WBDetForm
             var row = (MaterialsList)MatComboBox.GetSelectedDataRow();
             if (row != null)
             {
-             //   _wbd.Nds = row.NDS;  треба подумати як правильно
+                //   _wbd.Nds = row.NDS;  треба подумати як правильно
                 _wbd.WId = row.WId;
                 labelControl24.Text = row.MeasuresName;
                 labelControl27.Text = row.MeasuresName;
 
                 GetRemains();
-            }
 
-            if (MatComboBox.ContainsFocus)
-            {
-                ProducerTextEdit.EditValue = row.Produced;
-                SetPrice(row.MatId);
+                if (MatComboBox.ContainsFocus)
+                {
+                    ProducerTextEdit.EditValue = row.Produced;
+                    SetPrice(row.MatId);
+                }
             }
 
             GetOk();

@@ -55,6 +55,7 @@
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.checkEdit5 = new DevExpress.XtraEditors.CheckEdit();
             this.UserGroupLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl55 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -98,13 +99,20 @@
             this.checkEdit3 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
+            this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
+            this.UserAccessCashDesksGridControl = new DevExpress.XtraGrid.GridControl();
+            this.UserAccessCashDesksGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
             this.DiscountCheckBox = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit3 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.AccessPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.checkEdit5 = new DevExpress.XtraEditors.CheckEdit();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserBS)).BeginInit();
@@ -118,6 +126,7 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit5.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserGroupLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ConfirmPassEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
@@ -141,12 +150,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
+            this.xtraTabPage7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UserAccessCashDesksGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserAccessCashDesksGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             this.xtraTabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DiscountCheckBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccessPopupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit5.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -335,7 +348,7 @@
             // 
             this.splitterControl1.Location = new System.Drawing.Point(187, 0);
             this.splitterControl1.Name = "splitterControl1";
-            this.splitterControl1.Size = new System.Drawing.Size(12, 402);
+            this.splitterControl1.Size = new System.Drawing.Size(5, 402);
             this.splitterControl1.TabIndex = 36;
             this.splitterControl1.TabStop = false;
             // 
@@ -344,12 +357,12 @@
             this.xtraTabControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.xtraTabControl1.BorderStylePage = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(199, 0);
+            this.xtraTabControl1.Location = new System.Drawing.Point(192, 0);
             this.xtraTabControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.xtraTabControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(628, 402);
+            this.xtraTabControl1.Size = new System.Drawing.Size(635, 402);
             this.xtraTabControl1.TabIndex = 37;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -360,7 +373,7 @@
             // 
             this.xtraTabPage1.Controls.Add(this.panel1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(628, 380);
+            this.xtraTabPage1.Size = new System.Drawing.Size(635, 380);
             this.xtraTabPage1.Text = "Інформація";
             // 
             // panel1
@@ -369,7 +382,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(628, 380);
+            this.panel1.Size = new System.Drawing.Size(635, 380);
             this.panel1.TabIndex = 29;
             // 
             // groupControl2
@@ -388,10 +401,21 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(628, 380);
+            this.groupControl2.Size = new System.Drawing.Size(635, 380);
             this.groupControl2.TabIndex = 17;
             this.groupControl2.Tag = "";
             this.groupControl2.Text = " Основна інформація ";
+            // 
+            // checkEdit5
+            // 
+            this.checkEdit5.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.UserBS, "IsWorking", true));
+            this.checkEdit5.Location = new System.Drawing.Point(26, 249);
+            this.checkEdit5.MenuManager = this.barManager1;
+            this.checkEdit5.Name = "checkEdit5";
+            this.checkEdit5.Properties.Caption = "Дійсний";
+            this.checkEdit5.Size = new System.Drawing.Size(180, 20);
+            this.checkEdit5.StyleController = this.styleController1;
+            this.checkEdit5.TabIndex = 64;
             // 
             // UserGroupLookUpEdit
             // 
@@ -411,7 +435,7 @@
             this.UserGroupLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.UserGroupLookUpEdit.Properties.ValueMember = "Id";
             this.UserGroupLookUpEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.UserGroupLookUpEdit_Properties_ButtonClick);
-            this.UserGroupLookUpEdit.Size = new System.Drawing.Size(179, 22);
+            this.UserGroupLookUpEdit.Size = new System.Drawing.Size(186, 22);
             this.UserGroupLookUpEdit.StyleController = this.styleController1;
             this.UserGroupLookUpEdit.TabIndex = 63;
             // 
@@ -504,7 +528,7 @@
             // 
             this.xtraTabPage4.Controls.Add(this.xtraTabControl2);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(628, 380);
+            this.xtraTabPage4.Size = new System.Drawing.Size(635, 380);
             this.xtraTabPage4.Text = "Права";
             // 
             // xtraTabControl2
@@ -517,18 +541,19 @@
             this.xtraTabControl2.LookAndFeel.UseDefaultLookAndFeel = false;
             this.xtraTabControl2.Name = "xtraTabControl2";
             this.xtraTabControl2.SelectedTabPage = this.xtraTabPage2;
-            this.xtraTabControl2.Size = new System.Drawing.Size(628, 380);
+            this.xtraTabControl2.Size = new System.Drawing.Size(635, 380);
             this.xtraTabControl2.TabIndex = 38;
             this.xtraTabControl2.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage2,
             this.xtraTabPage3,
-            this.xtraTabPage5});
+            this.xtraTabPage5,
+            this.xtraTabPage7});
             // 
             // xtraTabPage2
             // 
             this.xtraTabPage2.Controls.Add(this.panel2);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(628, 358);
+            this.xtraTabPage2.Size = new System.Drawing.Size(635, 358);
             this.xtraTabPage2.Text = "Основні";
             // 
             // panel2
@@ -537,7 +562,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(628, 358);
+            this.panel2.Size = new System.Drawing.Size(635, 358);
             this.panel2.TabIndex = 29;
             // 
             // treeList1
@@ -567,7 +592,7 @@
             this.treeList1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
             this.treeList1.SelectImageList = this.UserTreeImgList;
-            this.treeList1.Size = new System.Drawing.Size(628, 358);
+            this.treeList1.Size = new System.Drawing.Size(635, 358);
             this.treeList1.TabIndex = 0;
             this.treeList1.PopupMenuShowing += new DevExpress.XtraTreeList.PopupMenuShowingEventHandler(this.treeList1_PopupMenuShowing);
             this.treeList1.Click += new System.EventHandler(this.treeList1_Click);
@@ -755,7 +780,7 @@
             // 
             this.xtraTabPage3.Controls.Add(this.UserAccessWhGridControl);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(628, 358);
+            this.xtraTabPage3.Size = new System.Drawing.Size(635, 358);
             this.xtraTabPage3.Text = "Доступ до сладів";
             // 
             // UserAccessWhGridControl
@@ -767,7 +792,7 @@
             this.UserAccessWhGridControl.Name = "UserAccessWhGridControl";
             this.UserAccessWhGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1});
-            this.UserAccessWhGridControl.Size = new System.Drawing.Size(628, 358);
+            this.UserAccessWhGridControl.Size = new System.Drawing.Size(635, 358);
             this.UserAccessWhGridControl.TabIndex = 8;
             this.UserAccessWhGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.UserAccessWhGridView});
@@ -822,7 +847,7 @@
             this.xtraTabPage5.Controls.Add(this.checkEdit2);
             this.xtraTabPage5.Controls.Add(this.checkEdit1);
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(628, 358);
+            this.xtraTabPage5.Size = new System.Drawing.Size(635, 358);
             this.xtraTabPage5.Text = "Додаткові";
             // 
             // checkEdit6
@@ -890,6 +915,71 @@
             this.checkEdit1.StyleController = this.styleController1;
             this.checkEdit1.TabIndex = 0;
             // 
+            // xtraTabPage7
+            // 
+            this.xtraTabPage7.Controls.Add(this.UserAccessCashDesksGridControl);
+            this.xtraTabPage7.Name = "xtraTabPage7";
+            this.xtraTabPage7.Size = new System.Drawing.Size(635, 358);
+            this.xtraTabPage7.Text = "Доступ до кас";
+            // 
+            // UserAccessCashDesksGridControl
+            // 
+            this.UserAccessCashDesksGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UserAccessCashDesksGridControl.Location = new System.Drawing.Point(0, 0);
+            this.UserAccessCashDesksGridControl.MainView = this.UserAccessCashDesksGridView;
+            this.UserAccessCashDesksGridControl.MenuManager = this.barManager1;
+            this.UserAccessCashDesksGridControl.Name = "UserAccessCashDesksGridControl";
+            this.UserAccessCashDesksGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemImageComboBox2,
+            this.repositoryItemCheckEdit2});
+            this.UserAccessCashDesksGridControl.Size = new System.Drawing.Size(635, 358);
+            this.UserAccessCashDesksGridControl.TabIndex = 9;
+            this.UserAccessCashDesksGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.UserAccessCashDesksGridView});
+            // 
+            // UserAccessCashDesksGridView
+            // 
+            this.UserAccessCashDesksGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn4,
+            this.gridColumn5});
+            this.UserAccessCashDesksGridView.GridControl = this.UserAccessCashDesksGridControl;
+            this.UserAccessCashDesksGridView.Name = "UserAccessCashDesksGridView";
+            this.UserAccessCashDesksGridView.OptionsBehavior.AllowIncrementalSearch = true;
+            this.UserAccessCashDesksGridView.OptionsBehavior.Editable = false;
+            this.UserAccessCashDesksGridView.OptionsView.ShowGroupPanel = false;
+            this.UserAccessCashDesksGridView.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.UserAccessCashDesksGridView_RowCellClick);
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Доступ";
+            this.gridColumn1.ColumnEdit = this.repositoryItemImageComboBox2;
+            this.gridColumn1.FieldName = "Allow";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.Width = 73;
+            // 
+            // repositoryItemImageComboBox2
+            // 
+            this.repositoryItemImageComboBox2.AutoHeight = false;
+            this.repositoryItemImageComboBox2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox2.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 3),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 4)});
+            this.repositoryItemImageComboBox2.Name = "repositoryItemImageComboBox2";
+            this.repositoryItemImageComboBox2.SmallImages = this.ImageList;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Каса";
+            this.gridColumn4.FieldName = "Name";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 1;
+            this.gridColumn4.Width = 463;
+            // 
             // xtraTabPage6
             // 
             this.xtraTabPage6.Controls.Add(this.DiscountCheckBox);
@@ -949,16 +1039,22 @@
             this.AccessPopupMenu.Manager = this.barManager1;
             this.AccessPopupMenu.Name = "AccessPopupMenu";
             // 
-            // checkEdit5
+            // gridColumn5
             // 
-            this.checkEdit5.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.UserBS, "IsWorking", true));
-            this.checkEdit5.Location = new System.Drawing.Point(26, 249);
-            this.checkEdit5.MenuManager = this.barManager1;
-            this.checkEdit5.Name = "checkEdit5";
-            this.checkEdit5.Properties.Caption = "Дійсний";
-            this.checkEdit5.Size = new System.Drawing.Size(180, 20);
-            this.checkEdit5.StyleController = this.styleController1;
-            this.checkEdit5.TabIndex = 64;
+            this.gridColumn5.Caption = "Def";
+            this.gridColumn5.ColumnEdit = this.repositoryItemCheckEdit2;
+            this.gridColumn5.FieldName = "Def";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 2;
+            this.gridColumn5.Width = 81;
+            // 
+            // repositoryItemCheckEdit2
+            // 
+            this.repositoryItemCheckEdit2.AutoHeight = false;
+            this.repositoryItemCheckEdit2.Name = "repositoryItemCheckEdit2";
+            this.repositoryItemCheckEdit2.ValueChecked = 1;
+            this.repositoryItemCheckEdit2.ValueUnchecked = 0;
             // 
             // frmUserEdit
             // 
@@ -993,6 +1089,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit5.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserGroupLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ConfirmPassEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
@@ -1016,13 +1113,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
+            this.xtraTabPage7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.UserAccessCashDesksGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserAccessCashDesksGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
             this.xtraTabPage6.ResumeLayout(false);
             this.xtraTabPage6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DiscountCheckBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccessPopupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit5.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1105,5 +1206,13 @@
         private DevExpress.XtraEditors.CheckEdit checkEdit4;
         private DevExpress.XtraEditors.CheckEdit checkEdit6;
         private DevExpress.XtraEditors.CheckEdit checkEdit5;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage7;
+        private DevExpress.XtraGrid.GridControl UserAccessCashDesksGridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView UserAccessCashDesksGridView;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit2;
     }
 }

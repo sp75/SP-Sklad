@@ -33,5 +33,10 @@ namespace SP_Sklad.EditForm
                 }
             }
         }
+
+        private void frmWhCatalog_Shown(object sender, EventArgs e)
+        {
+            uc.BarCodeEdit.Focus();
+        }
     }
 }

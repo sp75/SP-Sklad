@@ -222,17 +222,19 @@ namespace SP_Sklad.SkladData
             {
                 if (_cash_desks == null)
                 {
-                    var cd_ent = new BaseEntities().CashDesks.Where(w => w.EnterpriseId == Enterprise.KaId).ToList();
-                    if (cd_ent.Any())
+                    _cash_desks = new BaseEntities().GetUserAccessCashDesks(CurrentUser.UserId).ToList().Where(w=> w.Allow == 1)/*.Where(w => w.EnterpriseId == Enterprise.KaId)*/.Select(s => new CashDesks
                     {
-                        var def = cd_ent.FirstOrDefault();
-                        def.Def = 1;
-                        _cash_desks = cd_ent;
-                    }
-                    else
+                        CashId = s.CashId,
+                        Name = s.Name,
+                        Def = s.Def,
+                        EnterpriseId = s.EnterpriseId
+                    }).ToList(); 
+
+                    if (!_cash_desks.Any())
                     {
                         _cash_desks = new BaseEntities().CashDesks.ToList();
                     }
+
                 }
                 return _cash_desks;
             }

@@ -28,13 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.uc = new SP_Sklad.MainTabs.WarehouseUserControl();
             this.BottomPanel = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.uc = new SP_Sklad.MainTabs.WarehouseUserControl();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // BottomPanel
+            // 
+            this.BottomPanel.Controls.Add(this.OkButton);
+            this.BottomPanel.Controls.Add(this.simpleButton1);
+            this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.BottomPanel.Location = new System.Drawing.Point(0, 608);
+            this.BottomPanel.Name = "BottomPanel";
+            this.BottomPanel.Size = new System.Drawing.Size(1443, 52);
+            this.BottomPanel.TabIndex = 16;
+            // 
+            // OkButton
+            // 
+            this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.OkButton.Location = new System.Drawing.Point(1221, 10);
+            this.OkButton.Name = "OkButton";
+            this.OkButton.Size = new System.Drawing.Size(100, 30);
+            this.OkButton.TabIndex = 1;
+            this.OkButton.Text = "Вибрати";
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.simpleButton1.Location = new System.Drawing.Point(1331, 10);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(100, 30);
+            this.simpleButton1.TabIndex = 0;
+            this.simpleButton1.Text = "Відмінити";
             // 
             // uc
             // 
@@ -45,45 +75,16 @@
             this.uc.Location = new System.Drawing.Point(0, 0);
             this.uc.Name = "uc";
             this.uc.resut = null;
-            this.uc.Size = new System.Drawing.Size(1386, 608);
+            this.uc.set_tree_node = null;
+            this.uc.Size = new System.Drawing.Size(1443, 608);
             this.uc.TabIndex = 0;
             this.uc.wb = null;
-            // 
-            // BottomPanel
-            // 
-            this.BottomPanel.Controls.Add(this.OkButton);
-            this.BottomPanel.Controls.Add(this.simpleButton1);
-            this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomPanel.Location = new System.Drawing.Point(0, 608);
-            this.BottomPanel.Name = "BottomPanel";
-            this.BottomPanel.Size = new System.Drawing.Size(1386, 52);
-            this.BottomPanel.TabIndex = 16;
-            // 
-            // OkButton
-            // 
-            this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(1164, 10);
-            this.OkButton.Name = "OkButton";
-            this.OkButton.Size = new System.Drawing.Size(100, 30);
-            this.OkButton.TabIndex = 1;
-            this.OkButton.Text = "Вибрати";
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton1.Location = new System.Drawing.Point(1274, 10);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(100, 30);
-            this.simpleButton1.TabIndex = 0;
-            this.simpleButton1.Text = "Відмінити";
             // 
             // frmWhCatalog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1386, 660);
+            this.ClientSize = new System.Drawing.Size(1443, 660);
             this.Controls.Add(this.uc);
             this.Controls.Add(this.BottomPanel);
             this.Name = "frmWhCatalog";
@@ -91,6 +92,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmWhCatalog";
             this.Load += new System.EventHandler(this.frmWhCatalog_Load);
+            this.Shown += new System.EventHandler(this.frmWhCatalog_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).EndInit();
             this.BottomPanel.ResumeLayout(false);
             this.ResumeLayout(false);

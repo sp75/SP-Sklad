@@ -22,6 +22,7 @@ namespace SP_Sklad.SkladData
             this.UserAccess = new HashSet<UserAccess>();
             this.UserAccessWh = new HashSet<UserAccessWh>();
             this.UserSettings = new HashSet<UserSettings>();
+            this.UserAccessCashDesks = new HashSet<UserAccessCashDesks>();
         }
     
         public int UserId { get; set; }
@@ -46,5 +47,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<UserAccessWh> UserAccessWh { get; set; }
         public virtual UsersGroup UsersGroup { get; set; }
         public virtual ICollection<UserSettings> UserSettings { get; set; }
+        public virtual ICollection<UserAccessCashDesks> UserAccessCashDesks { get; set; }
     }
 }

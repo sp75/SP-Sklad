@@ -158,6 +158,7 @@ namespace SP_Sklad.SkladData
         public DbSet<v_ErrorLog> v_ErrorLog { get; set; }
         public DbSet<Packaging> Packaging { get; set; }
         public DbSet<SchedulingOrders> SchedulingOrders { get; set; }
+        public DbSet<UserAccessCashDesks> UserAccessCashDesks { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)
@@ -2197,6 +2198,16 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("price_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("CopyPriceList", price_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetUserAccessCashDesks")]
+        public virtual IQueryable<GetUserAccessCashDesks_Result> GetUserAccessCashDesks(Nullable<int> user_id)
+        {
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetUserAccessCashDesks_Result>("[BaseEntities].[GetUserAccessCashDesks](@user_id)", user_idParameter);
         }
     }
 }

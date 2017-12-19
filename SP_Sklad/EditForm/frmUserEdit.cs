@@ -94,8 +94,9 @@ namespace SP_Sklad.EditForm
 
             if (focused_tree_node.Id == 1)
             {
-                UserTreeAccessBS.DataSource = _db.GetUserAccessTree( _user_id).ToList();
+                UserTreeAccessBS.DataSource = _db.GetUserAccessTree(_user_id).ToList();
                 UserAccessWhGridControl.DataSource = _db.GetUserAccessWh(_user_id).ToList();
+                UserAccessCashDesksGridControl.DataSource = _db.GetUserAccessCashDesks(_user_id).ToList();
             }
 
             xtraTabControl1.SelectedTabPageIndex = focused_tree_node.TabIdx;
@@ -288,6 +289,55 @@ namespace SP_Sklad.EditForm
         private void checkEdit6_CheckedChanged(object sender, EventArgs e)
         {
             user_settings.AccessEditPersonId = Convert.ToString(checkEdit6.EditValue);
+        }
+
+        private void UserAccessCashDesksGridView_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
+        {
+            if (e.CellValue == null)
+            {
+                return;
+            }
+
+            var row = UserAccessCashDesksGridView.GetFocusedRow() as GetUserAccessCashDesks_Result;
+            
+            if (e.Column.FieldName == "Allow")
+            {
+               
+                if ((int)e.CellValue == 0)
+                {
+                    _db.UserAccessCashDesks.Add(new UserAccessCashDesks { Id = Guid.NewGuid(), UserId = _user_id.Value, CashId = row.CashId, Def = 0 });
+                    row.Allow = 1;
+                }
+                else
+                {
+                    _db.DeleteWhere<UserAccessCashDesks>(w => w.UserId == _user_id.Value && w.CashId == row.CashId);
+                    row.Allow = 0;
+                }
+                _db.SaveChanges();
+           //     UserAccessCashDesksGridView.RefreshRowCell(UserAccessCashDesksGridView.FocusedRowHandle, e.Column);
+                UserAccessCashDesksGridControl.DataSource = _db.GetUserAccessCashDesks(_user_id).ToList();
+            }
+
+            if (e.Column.FieldName == "Def")
+            {
+                if ((int)e.CellValue == 0)
+                {
+                    var list = UserAccessCashDesksGridView.DataSource as List<GetUserAccessCashDesks_Result>;// _db.GetUserAccessCashDesks(_user_id).ToList();
+                    foreach (var item in list.Where(w=> w.Allow == 1))
+                    {
+                        var uacd = _db.UserAccessCashDesks.FirstOrDefault(w => w.CashId == item.CashId && w.UserId == _user_id);
+                        uacd.Def = 0;
+                    }
+
+                    var cur_uacd = _db.UserAccessCashDesks.FirstOrDefault(w => w.CashId == row.CashId && w.UserId == _user_id);
+                    cur_uacd.Def = 1;
+
+                }
+
+
+                _db.SaveChanges();
+                UserAccessCashDesksGridControl.DataSource = _db.GetUserAccessCashDesks(_user_id).ToList();
+            }
         }
     }
 }

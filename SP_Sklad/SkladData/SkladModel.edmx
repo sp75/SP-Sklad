@@ -88,6 +88,7 @@
           <EntitySet Name="TechProcDet" EntityType="BaseModel.Store.TechProcDet" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TechProcess" EntityType="BaseModel.Store.TechProcess" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserAccess" EntityType="BaseModel.Store.UserAccess" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserAccessCashDesks" EntityType="BaseModel.Store.UserAccessCashDesks" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserAccessWh" EntityType="BaseModel.Store.UserAccessWh" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Users" EntityType="BaseModel.Store.Users" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserSettings" EntityType="BaseModel.Store.UserSettings" store:Type="Tables" Schema="dbo" />
@@ -1022,6 +1023,14 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="UserAccess" EntitySet="UserAccess" />
           </AssociationSet>
+          <AssociationSet Name="FK_UserAccessCashDesks_CashDesks" Association="BaseModel.Store.FK_UserAccessCashDesks_CashDesks">
+            <End Role="CashDesks" EntitySet="CashDesks" />
+            <End Role="UserAccessCashDesks" EntitySet="UserAccessCashDesks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAccessCashDesks_Users" Association="BaseModel.Store.FK_UserAccessCashDesks_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserAccessCashDesks" EntitySet="UserAccessCashDesks" />
+          </AssociationSet>
           <AssociationSet Name="FK_Users_UsersGroup" Association="BaseModel.Store.FK_Users_UsersGroup">
             <End Role="UsersGroup" EntitySet="UsersGroup" />
             <End Role="Users" EntitySet="Users" />
@@ -1523,6 +1532,8 @@
           <Property Name="RouteId" Type="int" />
           <Property Name="GroupId" Type="uniqueidentifier" />
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PayTypeId" Type="int" />
+          <Property Name="CashDeskId" Type="int" />
         </EntityType>
         <EntityType Name="KAgentAccount">
           <Key>
@@ -1864,6 +1875,7 @@
           <Property Name="InWay" Type="numeric" Precision="15" Scale="4" />
           <Property Name="Ordered" Type="numeric" Nullable="false" Precision="15" Scale="4" />
           <Property Name="OrderedRsv" Type="numeric" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="ActualRemain" Type="numeric" Precision="17" Scale="4" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="PriceList">
           <Key>
@@ -2150,6 +2162,15 @@
           <Property Name="CanModify" Type="int" Nullable="false" />
           <Property Name="CanDelete" Type="int" Nullable="false" />
           <Property Name="CanPost" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserAccessCashDesks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CashId" Type="int" Nullable="false" />
+          <Property Name="Def" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="UserAccessWh">
           <Key>
@@ -4473,6 +4494,34 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UserAccessCashDesks_CashDesks">
+          <End Role="CashDesks" Type="BaseModel.Store.CashDesks" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserAccessCashDesks" Type="BaseModel.Store.UserAccessCashDesks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CashDesks">
+              <PropertyRef Name="CashId" />
+            </Principal>
+            <Dependent Role="UserAccessCashDesks">
+              <PropertyRef Name="CashId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAccessCashDesks_Users">
+          <End Role="Users" Type="BaseModel.Store.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserAccessCashDesks" Type="BaseModel.Store.UserAccessCashDesks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserAccessCashDesks">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Users_UsersGroup">
           <End Role="UsersGroup" Type="BaseModel.Store.UsersGroup" Multiplicity="0..1" />
           <End Role="Users" Type="BaseModel.Store.Users" Multiplicity="*" />
@@ -4993,7 +5042,7 @@
             <CollectionType>
               <RowType>
                 <Property Name="KaId" Type="int" Nullable="false" />
-                <Property Name="OnDate" Type="date" />
+                <Property Name="OnDate" Type="datetime" />
                 <Property Name="Saldo" Type="numeric" Precision="38" Scale="2" />
               </RowType>
             </CollectionType>
@@ -5496,6 +5545,20 @@
           </ReturnType>
         </Function>
         <Function Name="GetSvcTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetUserAccessCashDesks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_id" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="CashId" Type="int" Nullable="false" />
+                <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="128" />
+                <Property Name="Def" Type="int" />
+                <Property Name="EnterpriseId" Type="int" />
+                <Property Name="Allow" Type="int" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="GetUserAccessTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="user_id" Type="int" Mode="In" />
         </Function>
@@ -7918,6 +7981,18 @@
             <End Role="MatRecipe" EntitySet="MatRecipe" />
             <End Role="SchedulingOrders" EntitySet="SchedulingOrders" />
           </AssociationSet>
+          <EntitySet Name="UserAccessCashDesks" EntityType="BaseModel.UserAccessCashDesks" />
+          <AssociationSet Name="FK_UserAccessCashDesks_CashDesks" Association="BaseModel.FK_UserAccessCashDesks_CashDesks">
+            <End Role="CashDesks" EntitySet="CashDesks" />
+            <End Role="UserAccessCashDesks" EntitySet="UserAccessCashDesks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAccessCashDesks_Users" Association="BaseModel.FK_UserAccessCashDesks_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserAccessCashDesks" EntitySet="UserAccessCashDesks" />
+          </AssociationSet>
+          <FunctionImport Name="GetUserAccessCashDesks" IsComposable="true" ReturnType="Collection(BaseModel.GetUserAccessCashDesks_Result)">
+          <Parameter Name="user_id" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -8270,6 +8345,7 @@
           <NavigationProperty Name="MoneySaldo" Relationship="BaseModel.FK_MS_CASHID" FromRole="CashDesks" ToRole="MoneySaldo" />
           <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK_PD_CASHID" FromRole="CashDesks" ToRole="PayDoc" />
           <Property Type="Int32" Name="EnterpriseId" />
+          <NavigationProperty Name="UserAccessCashDesks" Relationship="BaseModel.FK_UserAccessCashDesks_CashDesks" FromRole="CashDesks" ToRole="UserAccessCashDesks" />
         </EntityType>
         <EntityType Name="PayType">
           <Key>
@@ -10963,6 +11039,7 @@
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" FromRole="PosRemains" ToRole="Materials" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" FromRole="PosRemains" ToRole="WaybillDet" />
           <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK__POSREMAINS__WID__2EA5EC27" FromRole="PosRemains" ToRole="Warehouse" />
+          <Property Type="Decimal" Name="ActualRemain" Precision="17" Scale="4" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <Association Name="FK__POSREMAIN__MATID__2CBDA3B5">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
@@ -11930,6 +12007,8 @@
           <NavigationProperty Name="WaybillList2" Relationship="BaseModel.FK_WBL_ENTID" FromRole="Kagent" ToRole="WaybillList" />
           <NavigationProperty Name="WayBillSvc" Relationship="BaseModel.FK_WBS_PERSONID" FromRole="Kagent" ToRole="WayBillSvc" />
           <NavigationProperty Name="Users" Relationship="BaseModel.FK_Kagent_Users" FromRole="Kagent" ToRole="Users" />
+          <Property Type="Int32" Name="PayTypeId" />
+          <Property Type="Int32" Name="CashDeskId" />
         </EntityType>
         <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
@@ -12410,6 +12489,7 @@
           <NavigationProperty Name="UserAccessWh" Relationship="BaseModel.FK_UAWH_USERID" FromRole="Users" ToRole="UserAccessWh" />
           <NavigationProperty Name="UsersGroup" Relationship="BaseModel.FK_Users_UsersGroup" FromRole="Users" ToRole="UsersGroup" />
           <NavigationProperty Name="UserSettings" Relationship="BaseModel.FK_UserSettings_Users" FromRole="Users" ToRole="UserSettings" />
+          <NavigationProperty Name="UserAccessCashDesks" Relationship="BaseModel.FK_UserAccessCashDesks_Users" FromRole="Users" ToRole="UserAccessCashDesks" />
         </EntityType>
         <Association Name="FK_Kagent_Users">
           <End Type="BaseModel.Users" Role="Users" Multiplicity="0..1" />
@@ -13194,6 +13274,52 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="UserAccessCashDesks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="Int32" Name="CashId" Nullable="false" />
+          <NavigationProperty Name="CashDesks" Relationship="BaseModel.FK_UserAccessCashDesks_CashDesks" FromRole="UserAccessCashDesks" ToRole="CashDesks" />
+          <NavigationProperty Name="Users" Relationship="BaseModel.FK_UserAccessCashDesks_Users" FromRole="UserAccessCashDesks" ToRole="Users" />
+          <Property Type="Int32" Name="Def" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_UserAccessCashDesks_CashDesks">
+          <End Type="BaseModel.CashDesks" Role="CashDesks" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.UserAccessCashDesks" Role="UserAccessCashDesks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CashDesks">
+              <PropertyRef Name="CashId" />
+            </Principal>
+            <Dependent Role="UserAccessCashDesks">
+              <PropertyRef Name="CashId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAccessCashDesks_Users">
+          <End Type="BaseModel.Users" Role="Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.UserAccessCashDesks" Role="UserAccessCashDesks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserAccessCashDesks">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GetUserAccessCashDesks_Result">
+          <Property Type="Int32" Name="CashId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="Def" Nullable="true" />
+          <Property Type="Int32" Name="EnterpriseId" Nullable="true" />
+          <Property Type="Int32" Name="Allow" Nullable="false" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -15188,6 +15314,7 @@
           <EntitySetMapping Name="PosRemains">
             <EntityTypeMapping TypeName="BaseModel.PosRemains">
               <MappingFragment StoreEntitySet="PosRemains">
+                <ScalarProperty Name="ActualRemain" ColumnName="ActualRemain" />
                 <ScalarProperty Name="OrderedRsv" ColumnName="OrderedRsv" />
                 <ScalarProperty Name="Ordered" ColumnName="Ordered" />
                 <ScalarProperty Name="InWay" ColumnName="InWay" />
@@ -15939,6 +16066,8 @@
           <EntitySetMapping Name="Kagent">
             <EntityTypeMapping TypeName="BaseModel.Kagent">
               <MappingFragment StoreEntitySet="Kagent">
+                <ScalarProperty Name="CashDeskId" ColumnName="CashDeskId" />
+                <ScalarProperty Name="PayTypeId" ColumnName="PayTypeId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="GroupId" ColumnName="GroupId" />
                 <ScalarProperty Name="RouteId" ColumnName="RouteId" />
@@ -16719,6 +16848,27 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="UserAccessCashDesks">
+            <EntityTypeMapping TypeName="BaseModel.UserAccessCashDesks">
+              <MappingFragment StoreEntitySet="UserAccessCashDesks">
+                <ScalarProperty Name="Def" ColumnName="Def" />
+                <ScalarProperty Name="CashId" ColumnName="CashId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetUserAccessCashDesks" FunctionName="BaseModel.Store.GetUserAccessCashDesks">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetUserAccessCashDesks_Result">
+                <ScalarProperty Name="CashId" ColumnName="CashId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Def" ColumnName="Def" />
+                <ScalarProperty Name="EnterpriseId" ColumnName="EnterpriseId" />
+                <ScalarProperty Name="Allow" ColumnName="Allow" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

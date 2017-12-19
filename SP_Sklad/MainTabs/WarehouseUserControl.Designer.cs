@@ -3159,7 +3159,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn5;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn3;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn AvgMatPriceGridColumn;
-        private DevExpress.XtraEditors.TextEdit BarCodeEdit;
         private DevExpress.XtraGrid.GridControl PosGridControl;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView bandedGridView1;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn34;
@@ -3282,5 +3281,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit2;
         public DevExpress.XtraEditors.LookUpEdit WhComboBox2;
         private DevExpress.XtraEditors.LabelControl labelControl7;
+        public DevExpress.XtraEditors.TextEdit BarCodeEdit;
     }
 }

@@ -166,6 +166,9 @@ namespace SP_Sklad.EditForm
 
                 }).ToList().ForEach(f => checkedComboBoxEdit2.Properties.Items.Add(f.KaId, f.Name, f.IsOwned ? CheckState.Checked : CheckState.Unchecked, true));*/
 
+                PayTypeEdit.Properties.DataSource = DB.SkladBase().PayType.ToList();
+                CashEditComboBox.Properties.DataSource = DBHelper.CashDesks;
+
 
                 GetAccounts();
                 GetPersons();
@@ -791,6 +794,37 @@ namespace SP_Sklad.EditForm
                 _db.SaveChanges();
             }
            
+        }
+
+        private void lookUpEdit4_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                PayTypeEdit.EditValue = null;
+            }
+        }
+
+        private void PayTypeEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            CashEditComboBox.Visible = false;
+
+            if (PayTypeEdit.EditValue == null || PayTypeEdit.EditValue == DBNull.Value)
+            {
+                return;
+            }
+
+            if ((int)PayTypeEdit.EditValue == 1)
+            {
+                CashEditComboBox.Visible = true;
+            }
+            else
+            {
+                CashEditComboBox.Visible = false;
+                _ka.CashDeskId = null;
+                CashEditComboBox.EditValue = null;
+               
+            }
+
         }
 /*
         private void checkedComboBoxEdit2_EditValueChanged(object sender, EventArgs e)

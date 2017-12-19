@@ -267,6 +267,9 @@
         <EntityTypeShape EntityType="BaseModel.Packaging" Width="1.5" PointX="4.8679639756996016" PointY="17.091218568892785" />
         <EntityTypeShape EntityType="BaseModel.SchedulingOrders" Width="1.5" PointX="7.2712199852202186" PointY="4.53594975384695" />
         <AssociationConnector Association="BaseModel.FK_SchedulingOrders_MatRecipe" />
+        <EntityTypeShape EntityType="BaseModel.UserAccessCashDesks" Width="1.5" PointX="7.7715711909213905" PointY="18.978822359339716" />
+        <AssociationConnector Association="BaseModel.FK_UserAccessCashDesks_CashDesks" />
+        <AssociationConnector Association="BaseModel.FK_UserAccessCashDesks_Users" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

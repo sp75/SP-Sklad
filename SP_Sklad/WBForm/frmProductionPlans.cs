@@ -257,6 +257,7 @@ namespace SP_Sklad.WBForm
             {
                 _db.DeleteWhere<ProductionPlanDet>(w => w.ProductionPlanId == pp.Id);
                 var wh_remain = _db.WhMatGet(0, (int)WHComboBox.EditValue, 0, DateTime.Now, 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).ToList();
+                var maked = _db.WBListMake(DateTime.Now.AddYears(-100), DateTime.Now.AddYears(100), 2, "*", 0, -20).ToList();
                 int num = 0;
                 foreach (var item in wh_remain)
                 {
@@ -264,8 +265,10 @@ namespace SP_Sklad.WBForm
                     if (rec != null)
                     {
                         var sc_amount = _db.SchedulingOrders.Where(w => w.RecId == rec.RecId).Select(s => s.Amount).FirstOrDefault();
+                        var in_process = maked.Where(w => w.MatId == item.MatId).Sum(s => s.AmountOut - (s.ShippedAmount ?? 0));
+                        var reamin = item.Remain + in_process;
 
-                        var real_amount = sc_amount - item.Remain;
+                        var real_amount = sc_amount - reamin;
                         var tmp_amount = (real_amount / (rec.Out == 0 ? 100m : rec.Out)) * 100;// real_amount + (real_amount - (real_amount * rec.Out / 100));
 
                         _db.ProductionPlanDet.Add(new ProductionPlanDet
@@ -275,7 +278,7 @@ namespace SP_Sklad.WBForm
                             Amount = sc_amount,
                             ProductionPlanId = pp.Id,
                             RecId = rec.RecId,
-                            Remain = item.Remain,
+                            Remain = reamin,
                             WhId = (int)ManufactoryEdit.EditValue,
                             Total = Math.Ceiling(Convert.ToDecimal(tmp_amount / rec.Amount)) * rec.Amount
                         });

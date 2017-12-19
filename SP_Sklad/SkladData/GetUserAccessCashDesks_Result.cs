@@ -10,25 +10,13 @@
 namespace SP_Sklad.SkladData
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class CashDesks
+    public partial class GetUserAccessCashDesks_Result
     {
-        public CashDesks()
-        {
-            this.MoneySaldo = new HashSet<MoneySaldo>();
-            this.PayDoc = new HashSet<PayDoc>();
-            this.UserAccessCashDesks = new HashSet<UserAccessCashDesks>();
-        }
-    
         public int CashId { get; set; }
         public string Name { get; set; }
-        public int Deleted { get; set; }
         public Nullable<int> Def { get; set; }
         public Nullable<int> EnterpriseId { get; set; }
-    
-        public virtual ICollection<MoneySaldo> MoneySaldo { get; set; }
-        public virtual ICollection<PayDoc> PayDoc { get; set; }
-        public virtual ICollection<UserAccessCashDesks> UserAccessCashDesks { get; set; }
+        public int Allow { get; set; }
     }
 }

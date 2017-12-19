@@ -126,19 +126,26 @@ namespace SP_Sklad.Reports
             var dataForReport = new Dictionary<string, IList>();
 
             var wb = db.v_WaybillList.Where(w => w.Id == id).AsNoTracking().ToList();
-            int wbill_id = wb.First().WbillId;
-
-            dataForReport.Add("WayBillList", wb);
-            dataForReport.Add("WayBillItems", db.GetWaybillDetIn(wbill_id).ToList().OrderBy(o => o.Num).ToList());
-            dataForReport.Add("Commission", db.Commission.Where(w => w.WbillId == wbill_id).Select(s => new
+            if (wb.Any())
             {
-                MainName = s.Kagent.Name,
-                FirstName = s.Kagent1.Name,
-                SecondName = s.Kagent2.Name,
-                ThirdName = s.Kagent3.Name
-            }).ToList());
+                int wbill_id = wb.First().WbillId;
 
-            IHelper.Print(dataForReport, template_name);
+                dataForReport.Add("WayBillList", wb);
+                dataForReport.Add("WayBillItems", db.GetWaybillDetIn(wbill_id).ToList().OrderBy(o => o.Num).ToList());
+                dataForReport.Add("Commission", db.Commission.Where(w => w.WbillId == wbill_id).Select(s => new
+                {
+                    MainName = s.Kagent.Name,
+                    FirstName = s.Kagent1.Name,
+                    SecondName = s.Kagent2.Name,
+                    ThirdName = s.Kagent3.Name
+                }).ToList());
+
+                IHelper.Print(dataForReport, template_name);
+            }
+            else
+            {
+                MessageBox.Show("Документ відсутній!");
+            }
         }
 
         public static void WayBillMoveReport(Guid id, BaseEntities db, string template_name)

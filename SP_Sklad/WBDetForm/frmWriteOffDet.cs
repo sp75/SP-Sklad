@@ -103,6 +103,7 @@ namespace SP_Sklad.WBDetForm
             }
 
             GetContent();
+            GetOk();
         }
 
         bool GetOk()

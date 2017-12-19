@@ -77,6 +77,8 @@ namespace SP_Sklad.SkladData
         public Nullable<int> RouteId { get; set; }
         public Nullable<System.Guid> GroupId { get; set; }
         public System.Guid Id { get; set; }
+        public Nullable<int> PayTypeId { get; set; }
+        public Nullable<int> CashDeskId { get; set; }
     
         public virtual ICollection<Commission> Commission { get; set; }
         public virtual ICollection<Commission> Commission1 { get; set; }

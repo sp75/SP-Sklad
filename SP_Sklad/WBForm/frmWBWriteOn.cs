@@ -86,7 +86,7 @@ namespace SP_Sklad.WBForm
 
                 DBHelper.UpdateSessionWaybill(wb.WbillId);
 
-                if (is_new_record) 
+                if (is_new_record && String.IsNullOrEmpty( wb.Num)) 
                 {
                     wb.Num = new BaseEntities().GetDocNum("wb_write_on").FirstOrDefault();
                 }

@@ -60,6 +60,14 @@ namespace SP_Sklad.MainTabs
             {
                 ExecPayCheckBox.EditValue = 0;
                 PTypeComboBox.EditValue = 1;
+                if (DBHelper.CashDesks.FirstOrDefault(w => w.Def == 1) != null)
+                {
+                    CashEditComboBox.EditValue = DBHelper.CashDesks.FirstOrDefault(w => w.Def == 1).CashId;
+                }
+                else
+                {
+                    CashEditComboBox.EditValue = DBHelper.CashDesks.FirstOrDefault().CashId;
+                }
             }
 
             PTypeComboBox.Properties.DataSource = DBHelper.PayTypes;
@@ -82,12 +90,30 @@ namespace SP_Sklad.MainTabs
             {
                 NumEdit.EditValue = new BaseEntities().GetDocNum("pay_doc").FirstOrDefault();
             }
-            var cd = _db.CashDesks.FirstOrDefault(w => w.Def == 1);
-            if (cd != null)
+
+       /*     if (DBHelper.CashDesks.FirstOrDefault(w => w.Def == 1) != null)
             {
-                CashEditComboBox.EditValue = cd.CashId; // За товар
+                CashEditComboBox.EditValue = DBHelper.CashDesks.FirstOrDefault(w => w.Def == 1).CashId;
+            }*/
+
+            if (_wb.KaId != null)
+            {
+                var ka = _db.Kagent.Find(_wb.KaId);
+                if (ka.PayTypeId != null)
+                {
+                    PTypeComboBox.EditValue = ka.PayTypeId;
+                    if (ka.PayTypeId == 1)
+                    {
+                        CashEditComboBox.EditValue = ka.CashDeskId;
+                    }
+
+                }
             }
-            PTypeComboBox.EditValue = 1;  // Наличкой
+            else
+            {
+                PTypeComboBox.EditValue = 1;  // Наличкой
+            }
+
            /*добавить текущего пользователя*/ PersonEdit.EditValue = _wb.PersonId ?? _wb.KaId;// Виконавець
         }
 
@@ -175,7 +201,10 @@ namespace SP_Sklad.MainTabs
                 labelControl3.Visible = true;
                 CashEditComboBox.Visible = true;
                 AccountEdit.EditValue = null;
-                CashEditComboBox.EditValue = DBHelper.CashDesks.FirstOrDefault(w => w.Def == 1).CashId;
+                if (DBHelper.CashDesks.Any(w => w.Def == 1))
+                {
+                    CashEditComboBox.EditValue = DBHelper.CashDesks.FirstOrDefault(w => w.Def == 1).CashId;
+                }
             }
 
             if ((int)PTypeComboBox.EditValue == 2)

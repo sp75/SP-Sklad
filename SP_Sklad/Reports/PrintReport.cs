@@ -1142,6 +1142,75 @@ namespace SP_Sklad.Reports
                 IHelper.Print(data_for_report, TemlateList.rep_37);
             }
 
+            if (idx == 38)
+            {
+                var sql_1 = @"
+   select [WayBillMake].WbillId  , [WaybillList].Num, [WaybillList].OnDate, rec.Name as RecipeName, [WayBillMake].Amount
+  from  [sp_base].[dbo].[WayBillMake] 
+  inner join [sp_base].[dbo].[WaybillList] on [WaybillList].WbillId = [WayBillMake].WbillId
+  join [sp_base].[dbo].[MatRecipe] on [MatRecipe].RecId = [WayBillMake].RecId 
+  join [sp_base].[dbo].[Materials] rec on rec.MatId = [MatRecipe].MatId
+  where [WaybillList].OnDate between  {0} and {1} and [WaybillList].WType = -20
+  order by rec.Name , [WaybillList].OnDate
+     ";
+
+                var waybill_list = db.Database.SqlQuery<make_wb>(sql_1, StartDate, EndDate).ToList();
+
+
+                if (!waybill_list.Any())
+                {
+                    return;
+                }
+
+                var sql_2 = @"
+  select [WayBillMake].WbillId , s_mat.Name, [WaybillDet].Amount, ( ROUND( ([WayBillMake].Amount / [MatRecipe].Amount), 0) * [MatRecDet].AMOUNT )  as  RecAmount
+  from  [WayBillMake] 
+  join [sp_base].[dbo].[WaybillList] on [WaybillList].WbillId = [WayBillMake].WbillId
+  join [sp_base].[dbo].[MatRecipe] on [MatRecipe].RecId = [WayBillMake].RecId 
+  join [sp_base].[dbo].[WaybillDet] on [WayBillMake].[WbillId] = [WaybillDet].[WbillId]
+  join [sp_base].[dbo].[Materials] s_mat on s_mat.MatId = [WaybillDet].MatId
+  left outer join [sp_base].[dbo].[MatRecDet] on [MatRecDet].RecId = [WayBillMake].RecId and [WaybillDet].MatId = [MatRecDet].MatId
+  where [WaybillList].OnDate between {0} and {1} and [WaybillList].WType = -20 and [MatRecipe].Amount > 0";
+
+                var use_rec_mat = db.Database.SqlQuery<use_rec_mat>(sql_2, StartDate, EndDate).ToList().OrderBy(o => o.Name).ToList();
+
+                rel.Add(new
+                {
+                    pk = "WbillId",
+                    fk = "WbillId",
+                    master_table = "WaybillList",
+                    child_table = "UseMatRecipe"
+                });
+
+                var sql_3 = @"
+  select [WayBillMake].WbillId , rec_mat.Name, [MatRecDet].Amount as RecAmount 
+  from  [WayBillMake] 
+  inner join [WaybillList] on [WaybillList].WbillId = [WayBillMake].WbillId
+  join [MatRecDet] on [MatRecDet].RecId = [WayBillMake].RecId 
+  join [Materials] rec_mat on rec_mat.MatId = [MatRecDet].MatId
+  where [WaybillList].OnDate between {0} and {1} and [WaybillList].WType = -20 
+  and [MatRecDet].MatId not in (select MatId from [sp_base].[dbo].[WaybillDet] where WbillId = [WayBillMake].WbillId)";
+
+                var not_use_rec_mat = db.Database.SqlQuery<not_use_rec_mat>(sql_3, StartDate, EndDate).ToList().OrderBy(o => o.Name).ToList();
+
+                rel.Add(new
+                {
+                    pk = "WbillId",
+                    fk = "WbillId",
+                    master_table = "WaybillList",
+                    child_table = "NotUseMatRecipe"
+                });
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("WaybillList", waybill_list);
+                data_for_report.Add("UseMatRecipe", use_rec_mat);
+                data_for_report.Add("NotUseMatRecipe", not_use_rec_mat);
+                data_for_report.Add("_realation_", rel);
+               
+                IHelper.Print(data_for_report, TemlateList.rep_38);
+            }
+
+
             db.PrintLog.Add(new PrintLog
             {
                 PrintType = 1,
@@ -1153,6 +1222,30 @@ namespace SP_Sklad.Reports
             db.SaveChanges();
         }
 
+    }
 
+
+    public class make_wb
+    {
+        public int WbillId { get; set; }
+        public string Num { get; set; }
+        public DateTime OnDate { get; set; }
+        public string RecipeName { get; set; }
+        public decimal Amount { get; set; }
+    }
+
+    public class use_rec_mat
+    {
+        public int WbillId { get; set; }
+        public string Name { get; set; }
+        public decimal Amount { get; set; }
+        public decimal? RecAmount { get; set; }
+    }
+
+    public class not_use_rec_mat
+    {
+        public int WbillId { get; set; }
+        public string Name { get; set; }
+        public decimal? RecAmount { get; set; }
     }
 }
