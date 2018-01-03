@@ -47,7 +47,7 @@ namespace SP_Sklad.WBForm
         private void frmProductionPlans_Load(object sender, EventArgs e)
         {
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
-            var wh_list = DBHelper.WhList();
+            var wh_list = DBHelper.WhList;
             WHComboBox.Properties.DataSource = wh_list;
             WHComboBox.EditValue = wh_list.Where(w => w.Def == 1).Select(s => s.WId).FirstOrDefault();
             ManufactoryEdit.Properties.DataSource = wh_list;
@@ -175,7 +175,7 @@ namespace SP_Sklad.WBForm
                       OnValue = 1,
                       PersonId = DBHelper.CurrentUser.KaId,
                       KaId = DBHelper.CurrentUser.KaId,
-                      WayBillMake = new WayBillMake { SourceWId = DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId },
+                      WayBillMake = new WayBillMake { SourceWId = DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId },
                       UpdatedBy = DBHelper.CurrentUser.UserId,
                   });
                 _db.SaveChanges();

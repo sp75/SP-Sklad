@@ -31,7 +31,7 @@ namespace SP_Sklad.WBDetForm
             _PosId = PosId;
             _wb = wb;
 
-            WHComboBox.Properties.DataSource = DBHelper.WhList();
+            WHComboBox.Properties.DataSource = DBHelper.WhList;
           //  MatComboBox.Properties.DataSource = db.MaterialsList.ToList();
           
         }

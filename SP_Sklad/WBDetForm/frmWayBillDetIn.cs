@@ -34,7 +34,7 @@ namespace SP_Sklad.WBDetForm
             _wb = wb;
             _PosId = PosId;
 
-            WHComboBox.Properties.DataSource = DBHelper.WhList();
+            WHComboBox.Properties.DataSource = DBHelper.WhList;
             MatComboBox.Properties.DataSource = db.MaterialsList.ToList();
             ProducerTextEdit.Properties.Items.AddRange(_db.WayBillDetAddProps.Where(w => w.Producer != null).Select(s => s.Producer).Distinct().ToList());
         }

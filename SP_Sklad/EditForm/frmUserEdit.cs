@@ -107,6 +107,7 @@ namespace SP_Sklad.EditForm
             _db.SaveChanges();
             current_transaction.Commit();
             DBHelper.CurrentUser = null;
+            DBHelper.WhList = null;
         }
 
         private void treeList1_PopupMenuShowing(object sender, DevExpress.XtraTreeList.PopupMenuShowingEventArgs e)
@@ -238,22 +239,43 @@ namespace SP_Sklad.EditForm
 
         private void UserAccessWhGridView_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
+            var row = UserAccessWhGridView.GetFocusedRow() as GetUserAccessWh_Result;
             if (e.Column.FieldName == "Allow")
             {
-                var row = UserAccessWhGridView.GetFocusedRow() as GetUserAccessWh_Result;
                 if ((int)e.CellValue == 0)
                 {
-                    _db.UserAccessWh.Add(new UserAccessWh { UserId = _user_id.Value, WId = row.WId });
+                    var uaw = _db.UserAccessWh.Add(new UserAccessWh { UserId = _user_id.Value, WId = row.WId });
                     row.Allow = 1;
+                    _db.SaveChanges();
+                    row.Id = uaw.Id;
                 }
                 else
                 {
                     _db.DeleteWhere<UserAccessWh>(w => w.UserId == _user_id.Value && w.WId == row.WId);
                     row.Allow = 0;
                 }
-                _db.SaveChanges();
+                row.UseReceived = false;
+
                 UserAccessWhGridView.RefreshRowCell(UserAccessWhGridView.FocusedRowHandle, e.Column);
                 //   UserAccessWhGridControl.DataSource = _db.GetUserAccessWh(_user_id).ToList();
+            }
+
+            if (e.Column.FieldName == "UseReceived" && row.Allow ==1)
+            {
+                var uaw = _db.UserAccessWh.Find(row.Id);
+                if (row.UseReceived.Value)
+                {
+                    uaw.UseReceived = false;
+                    row.UseReceived = false;
+                }
+                else
+                {
+                    uaw.UseReceived = true;
+                    row.UseReceived = true;
+                }
+
+                _db.SaveChanges();
+                UserAccessWhGridView.RefreshRowCell(UserAccessWhGridView.FocusedRowHandle, e.Column);
             }
         }
 

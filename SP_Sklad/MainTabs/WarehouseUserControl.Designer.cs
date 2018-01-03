@@ -645,6 +645,7 @@
             this.barButtonItem4.Id = 10;
             this.barButtonItem4.ImageIndex = 13;
             this.barButtonItem4.Name = "barButtonItem4";
+            this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
             // 
             // DeboningMatBtn
             // 

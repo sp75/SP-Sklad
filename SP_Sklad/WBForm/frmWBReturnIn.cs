@@ -46,7 +46,7 @@ namespace SP_Sklad.WBForm
         {
             KagentComboBox.Properties.DataSource = DBHelper.Kagents;
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
-            WHComboBox.Properties.DataSource = DBHelper.WhList();
+            WHComboBox.Properties.DataSource = DBHelper.WhList;
             OutDateEdit.DateTime = DateTime.Now.Date.AddDays(-3);
 
             if (_wbill_id == null)

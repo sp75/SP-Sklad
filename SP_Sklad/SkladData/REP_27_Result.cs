@@ -18,13 +18,10 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> AmountOrd { get; set; }
         public Nullable<decimal> TotalOrd { get; set; }
         public Nullable<int> KaId { get; set; }
-        public Nullable<int> DocId { get; set; }
         public string KaName { get; set; }
         public string MsrName { get; set; }
         public string BarCode { get; set; }
         public Nullable<decimal> AmountOut { get; set; }
         public Nullable<decimal> TotalOut { get; set; }
-        public string PersonName { get; set; }
-        public Nullable<System.DateTime> OnDate { get; set; }
     }
 }

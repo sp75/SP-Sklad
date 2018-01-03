@@ -48,7 +48,7 @@ namespace SP_Sklad.WBForm
             KagentComboBox.Properties.DataSource = DBHelper.Persons;
             PersonMakeComboBox.Properties.DataSource = DBHelper.Persons;
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
-            WhComboBox.Properties.DataSource = DBHelper.WhList();
+            WhComboBox.Properties.DataSource = DBHelper.WhList;
             RecipeComboBox.Properties.DataSource = DB.SkladBase().MatRecipe.AsNoTracking().Where(w => w.RType == 1).Select(s => new 
             {
                 RecId = s.RecId,
@@ -73,7 +73,7 @@ namespace SP_Sklad.WBForm
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
                     KaId = DBHelper.CurrentUser.KaId,
-                    WayBillMake = new WayBillMake { SourceWId = DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId },
+                    WayBillMake = new WayBillMake { SourceWId = DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId },
                     UpdatedBy = DBHelper.CurrentUser.UserId,
                 });
                 _db.SaveChanges();

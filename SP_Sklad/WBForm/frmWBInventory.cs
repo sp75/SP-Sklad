@@ -43,7 +43,7 @@ namespace SP_Sklad.WBForm
 
         private void frmWBInventory_Load(object sender, EventArgs e)
         {
-            WhOutComboBox.Properties.DataSource = DBHelper.WhList();
+            WhOutComboBox.Properties.DataSource = DBHelper.WhList;
 
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
             lookUpEdit1.Properties.DataSource = DBHelper.Persons;
@@ -63,7 +63,7 @@ namespace SP_Sklad.WBForm
                     CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
-                    WaybillMove = new WaybillMove { SourceWid = DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId },
+                    WaybillMove = new WaybillMove { SourceWid = DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId },
                     UpdatedBy = DBHelper.CurrentUser.UserId,
                     EntId = DBHelper.Enterprise.KaId
                 });

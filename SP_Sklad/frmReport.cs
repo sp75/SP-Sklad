@@ -148,6 +148,17 @@ namespace SP_Sklad
                 GrpKagentLookUpEdit.Properties.DataSource = new List<object>() { new { Id = Guid.Empty, Name = "Усі" } }.Concat(new BaseEntities().KontragentGroup.Select(s => new { s.Id, s.Name })).ToList();
                 GrpKagentLookUpEdit.EditValue = Guid.Empty;
             }
+
+            if (!PersonPanel.Visible)
+            {
+                Height -= PersonPanel.Height;
+            }
+            else
+            {
+                PersonLookUpEdit.Properties.DataSource = DBHelper.Persons;
+                PersonLookUpEdit.EditValue = DBHelper.Persons.FirstOrDefault().KaId;
+            }
+  
         }
 
         private void frmReport_Shown(object sender, EventArgs e)
@@ -189,7 +200,8 @@ namespace SP_Sklad
                 ChType = ChTypeEdit.GetSelectedDataRow(),
                 Status = wbStatusList.EditValue,
                 KontragentGroup = GrpKagentLookUpEdit.GetSelectedDataRow(),
-                GrpStr = ChildGroupCheckEdit.Checked ? String.Join(",", new BaseEntities().GetMatGroupTree(grp).ToList().Select(s => Convert.ToString(s.GrpId))) : ""
+                GrpStr = ChildGroupCheckEdit.Checked ? String.Join(",", new BaseEntities().GetMatGroupTree(grp).ToList().Select(s => Convert.ToString(s.GrpId))) : "",
+                Person = PersonLookUpEdit.GetSelectedDataRow()
             };
 
             pr.CreateReport(_rep_id);

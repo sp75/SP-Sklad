@@ -39,7 +39,7 @@ namespace SP_Sklad.WBDetForm
             _def_wid = wid;
             _start_date = start_date;
 
-            WHComboBox.Properties.DataSource = DBHelper.WhList();
+            WHComboBox.Properties.DataSource = DBHelper.WhList;
 
             com_port = new ComPortHelper();
         }

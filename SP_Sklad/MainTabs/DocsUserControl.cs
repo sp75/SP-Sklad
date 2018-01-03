@@ -923,7 +923,7 @@ namespace SP_Sklad.MainTabs
                                 db.SaveChanges();
 
                                 var pos_in = db.GetPosIn(wb.OnDate, _wbd.MatId, _wbd.WId, 0, DBHelper.CurrentUser.UserId).Where(w => w.CurRemain >= _wbd.Amount && w.PosId == det_item.PosId).FirstOrDefault();
-                                if (pos_in != null)
+                                if (pos_in != null && db.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId && a.WId == _wbd.WId && a.UseReceived))
                                 {
                                     db.WMatTurn.Add(new WMatTurn
                                     {
@@ -1043,7 +1043,7 @@ namespace SP_Sklad.MainTabs
                         WayBillDetAddProps = new WayBillDetAddProps(),
                         BasePrice = item.Price,
                         Price = item.Price,
-                        WId = DBHelper.WhList().FirstOrDefault(f => f.Def == 1).WId,
+                        WId = DBHelper.WhList.FirstOrDefault(f => f.Def == 1).WId,
                         MatId = item.MatId.Value
                     });
                 }

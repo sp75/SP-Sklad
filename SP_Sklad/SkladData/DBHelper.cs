@@ -27,6 +27,7 @@ namespace SP_Sklad.SkladData
         private static List<Countries> _counters;
         private static List<DocType> _doc_type;
         private static List<Packaging> _packaging;
+        private static List<WhList> _wh_list;
 
         public static List<Countries> CountersList
         {
@@ -250,9 +251,23 @@ namespace SP_Sklad.SkladData
                 return _charge_type;
             }
         }
-        public static List<WhList> WhList()
+
+        public static List<WhList> WhList
         {
-            return new BaseEntities().Warehouse.Where(w => w.Deleted == 0).Select(s => new WhList { WId = s.WId, Name = s.Name, Def = s.Def }).ToList();
+            get
+            {
+                if (_wh_list == null)
+                {
+                    _wh_list = new BaseEntities().Warehouse.Where(w => w.Deleted == 0  && w.UserAccessWh.Any(u => u.UserId == CurrentUser.UserId) ).Select(s => new WhList { WId = s.WId, Name = s.Name, Def = s.Def }).ToList();
+                }
+                return _wh_list;
+            }
+
+            set
+            {
+                _wh_list = value;
+            }
+
         }
 
         public static List<Packaging> Packaging

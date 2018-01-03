@@ -79,7 +79,7 @@ namespace SP_Sklad.EditForm
                     Archived = 0,
                     Serials = 0,
                     MId = DBHelper.MeasuresList.FirstOrDefault(w => w.Def == 1).MId,
-                    WId = DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId,
+                    WId = DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId,
                     CId = DBHelper.CountersList.FirstOrDefault(w => w.Def == 1).CId,
                     NDS = 0,
                     GrpId = _mat_grp
@@ -97,7 +97,7 @@ namespace SP_Sklad.EditForm
             {
                 GrpIdEdit.Properties.TreeList.DataSource = DB.SkladBase().MatGroup.Select(s => new { s.GrpId, s.PId, s.Name }).ToList();
                 MsrComboBox.Properties.DataSource = DBHelper.MeasuresList;
-                WIdLookUpEdit.Properties.DataSource = DBHelper.WhList();
+                WIdLookUpEdit.Properties.DataSource = DBHelper.WhList;
                 CIdLookUpEdit.Properties.DataSource = DBHelper.CountersList;
 
                 MaterialsBS.DataSource = _mat;

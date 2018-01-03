@@ -49,8 +49,8 @@ namespace SP_Sklad.WBForm
             KagentComboBox.Properties.DataSource = DBHelper.Persons;
             PersonOutComboBox.Properties.DataSource = DBHelper.Persons;
             PersonInComboBox.Properties.DataSource = DBHelper.Persons;
-            WhOutComboBox.Properties.DataSource = DBHelper.WhList();
-            WhInComboBox.Properties.DataSource = DBHelper.WhList();
+            WhOutComboBox.Properties.DataSource = DBHelper.WhList;
+            WhInComboBox.Properties.DataSource = DBHelper.WhList;
 
             if (_wbill_id == null)
             {
@@ -65,7 +65,7 @@ namespace SP_Sklad.WBForm
                     CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
-                    WaybillMove = new WaybillMove { SourceWid = DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId },
+                    WaybillMove = new WaybillMove { SourceWid = DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId },
                     UpdatedBy = DBHelper.CurrentUser.UserId,
                     EntId = DBHelper.Enterprise.KaId
                 });

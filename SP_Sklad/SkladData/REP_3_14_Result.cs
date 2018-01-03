@@ -27,5 +27,6 @@ namespace SP_Sklad.SkladData
         public string TypeName { get; set; }
         public System.DateTime OnDate { get; set; }
         public Nullable<int> KaId { get; set; }
+        public string PersonName { get; set; }
     }
 }

@@ -58,5 +58,6 @@ namespace SP_Sklad.Reports
         public static String rep_36 { get { return "DiscountCart.xlsx"; } }
         public static String rep_37 { get { return "LossesByInventoryAct.xlsx"; } }
         public static String rep_38 { get { return "CheckingRecipes.xlsx"; } }
+        public static String rep_22 { get { return "RepByEmployees.xlsx"; } }
     }
 }

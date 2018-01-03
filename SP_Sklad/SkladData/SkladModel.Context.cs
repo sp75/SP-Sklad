@@ -62,7 +62,6 @@ namespace SP_Sklad.SkladData
         public DbSet<UserTreeView> UserTreeView { get; set; }
         public DbSet<UserTreeAccess> UserTreeAccess { get; set; }
         public DbSet<v_GetDocsTree> v_GetDocsTree { get; set; }
-        public DbSet<UserAccessWh> UserAccessWh { get; set; }
         public DbSet<UserTree> UserTree { get; set; }
         public DbSet<ExtRel> ExtRel { get; set; }
         public DbSet<MatRemains> MatRemains { get; set; }
@@ -159,6 +158,7 @@ namespace SP_Sklad.SkladData
         public DbSet<Packaging> Packaging { get; set; }
         public DbSet<SchedulingOrders> SchedulingOrders { get; set; }
         public DbSet<UserAccessCashDesks> UserAccessCashDesks { get; set; }
+        public DbSet<UserAccessWh> UserAccessWh { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)
@@ -795,15 +795,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserAccessTree_Result>("GetUserAccessTree", user_idParameter);
         }
     
-        public virtual ObjectResult<GetUserAccessWh_Result> GetUserAccessWh(Nullable<int> user_id)
-        {
-            var user_idParameter = user_id.HasValue ?
-                new ObjectParameter("user_id", user_id) :
-                new ObjectParameter("user_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserAccessWh_Result>("GetUserAccessWh", user_idParameter);
-        }
-    
         [EdmFunction("BaseEntities", "GetSvcGroupTree")]
         public virtual IQueryable<GetSvcGroupTree_Result> GetSvcGroupTree(Nullable<int> root_cat_id)
         {
@@ -1398,36 +1389,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetActives_Result>("[BaseEntities].[GetActives](@from_date, @to_date)", from_dateParameter, to_dateParameter);
         }
     
-        [EdmFunction("BaseEntities", "REP_27")]
-        public virtual IQueryable<REP_27_Result> REP_27(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> ka_id, Nullable<int> grp_id, Nullable<int> mat_id, Nullable<System.Guid> ka_grp_id)
-        {
-            var from_dateParameter = from_date.HasValue ?
-                new ObjectParameter("from_date", from_date) :
-                new ObjectParameter("from_date", typeof(System.DateTime));
-    
-            var to_dateParameter = to_date.HasValue ?
-                new ObjectParameter("to_date", to_date) :
-                new ObjectParameter("to_date", typeof(System.DateTime));
-    
-            var ka_idParameter = ka_id.HasValue ?
-                new ObjectParameter("ka_id", ka_id) :
-                new ObjectParameter("ka_id", typeof(int));
-    
-            var grp_idParameter = grp_id.HasValue ?
-                new ObjectParameter("grp_id", grp_id) :
-                new ObjectParameter("grp_id", typeof(int));
-    
-            var mat_idParameter = mat_id.HasValue ?
-                new ObjectParameter("mat_id", mat_id) :
-                new ObjectParameter("mat_id", typeof(int));
-    
-            var ka_grp_idParameter = ka_grp_id.HasValue ?
-                new ObjectParameter("ka_grp_id", ka_grp_id) :
-                new ObjectParameter("ka_grp_id", typeof(System.Guid));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_27_Result>("[BaseEntities].[REP_27](@from_date, @to_date, @ka_id, @grp_id, @mat_id, @ka_grp_id)", from_dateParameter, to_dateParameter, ka_idParameter, grp_idParameter, mat_idParameter, ka_grp_idParameter);
-        }
-    
         [EdmFunction("BaseEntities", "OrderedList")]
         public virtual IQueryable<OrderedList_Result> OrderedList(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> mat_id, Nullable<int> ka_id, Nullable<int> w_type, Nullable<int> active, Nullable<System.Guid> ka_grp_id)
         {
@@ -1992,39 +1953,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_10_Result>("[BaseEntities].[REP_10](@from_date, @to_date, @grp_id, @wh, @show_all_mat, @user_id)", from_dateParameter, to_dateParameter, grp_idParameter, whParameter, show_all_matParameter, user_idParameter);
         }
     
-        public virtual ObjectResult<REP_3_14_Result> REP_3_14(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> grp_id, Nullable<int> ka_id, string wh, string doc_types, Nullable<int> user_id)
-        {
-            var from_dateParameter = from_date.HasValue ?
-                new ObjectParameter("from_date", from_date) :
-                new ObjectParameter("from_date", typeof(System.DateTime));
-    
-            var to_dateParameter = to_date.HasValue ?
-                new ObjectParameter("to_date", to_date) :
-                new ObjectParameter("to_date", typeof(System.DateTime));
-    
-            var grp_idParameter = grp_id.HasValue ?
-                new ObjectParameter("grp_id", grp_id) :
-                new ObjectParameter("grp_id", typeof(int));
-    
-            var ka_idParameter = ka_id.HasValue ?
-                new ObjectParameter("ka_id", ka_id) :
-                new ObjectParameter("ka_id", typeof(int));
-    
-            var whParameter = wh != null ?
-                new ObjectParameter("wh", wh) :
-                new ObjectParameter("wh", typeof(string));
-    
-            var doc_typesParameter = doc_types != null ?
-                new ObjectParameter("doc_types", doc_types) :
-                new ObjectParameter("doc_types", typeof(string));
-    
-            var user_idParameter = user_id.HasValue ?
-                new ObjectParameter("user_id", user_id) :
-                new ObjectParameter("user_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<REP_3_14_Result>("REP_3_14", from_dateParameter, to_dateParameter, grp_idParameter, ka_idParameter, whParameter, doc_typesParameter, user_idParameter);
-        }
-    
         [EdmFunction("BaseEntities", "GetPosIn")]
         public virtual IQueryable<GetPosIn_Result> GetPosIn(Nullable<System.DateTime> on_data, Nullable<int> mat_id, Nullable<int> wid, Nullable<int> ka_id, Nullable<int> user_id)
         {
@@ -2208,6 +2136,78 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("user_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetUserAccessCashDesks_Result>("[BaseEntities].[GetUserAccessCashDesks](@user_id)", user_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "REP_27")]
+        public virtual IQueryable<REP_27_Result> REP_27(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> ka_id, Nullable<int> grp_id, Nullable<int> mat_id, Nullable<System.Guid> ka_grp_id)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var grp_idParameter = grp_id.HasValue ?
+                new ObjectParameter("grp_id", grp_id) :
+                new ObjectParameter("grp_id", typeof(int));
+    
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            var ka_grp_idParameter = ka_grp_id.HasValue ?
+                new ObjectParameter("ka_grp_id", ka_grp_id) :
+                new ObjectParameter("ka_grp_id", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_27_Result>("[BaseEntities].[REP_27](@from_date, @to_date, @ka_id, @grp_id, @mat_id, @ka_grp_id)", from_dateParameter, to_dateParameter, ka_idParameter, grp_idParameter, mat_idParameter, ka_grp_idParameter);
+        }
+    
+        public virtual ObjectResult<REP_3_14_Result> REP_3_14(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> grp_id, Nullable<int> ka_id, string wh, string doc_types, Nullable<int> user_id)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var grp_idParameter = grp_id.HasValue ?
+                new ObjectParameter("grp_id", grp_id) :
+                new ObjectParameter("grp_id", typeof(int));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var whParameter = wh != null ?
+                new ObjectParameter("wh", wh) :
+                new ObjectParameter("wh", typeof(string));
+    
+            var doc_typesParameter = doc_types != null ?
+                new ObjectParameter("doc_types", doc_types) :
+                new ObjectParameter("doc_types", typeof(string));
+    
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<REP_3_14_Result>("REP_3_14", from_dateParameter, to_dateParameter, grp_idParameter, ka_idParameter, whParameter, doc_typesParameter, user_idParameter);
+        }
+    
+        public virtual ObjectResult<GetUserAccessWh_Result> GetUserAccessWh(Nullable<int> user_id)
+        {
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserAccessWh_Result>("GetUserAccessWh", user_idParameter);
         }
     }
 }

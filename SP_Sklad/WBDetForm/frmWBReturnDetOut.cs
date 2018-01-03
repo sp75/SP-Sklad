@@ -36,7 +36,7 @@ namespace SP_Sklad.WBDetForm
 
         private void frmWBReturnDetOut_Load(object sender, EventArgs e)
         {
-            WHComboBox.Properties.DataSource = DBHelper.WhList();
+            WHComboBox.Properties.DataSource = DBHelper.WhList;
 
             int wh_id = _wb.WaybillMove != null ? _wb.WaybillMove.SourceWid : 0;
 
@@ -232,7 +232,7 @@ namespace SP_Sklad.WBDetForm
             int num = _wb.WaybillDet.Count();
             try
             {
-                if (RSVCheckBox.Checked && !_db.WMatTurn.Any(w => w.SourceId == _wbd.PosId))
+                if (RSVCheckBox.Checked && !_db.WMatTurn.Any(w => w.SourceId == _wbd.PosId) && _db.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId && a.WId == _wbd.WId && a.UseReceived))
                 {
                     var sate = _db.Entry<WaybillDet>(_wbd).State;
                     if (sate == EntityState.Modified || sate == EntityState.Unchanged)

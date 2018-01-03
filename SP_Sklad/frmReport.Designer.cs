@@ -67,6 +67,7 @@
             this.MatComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.GRPGroupBox = new System.Windows.Forms.Panel();
+            this.ChildGroupCheckEdit = new DevExpress.XtraEditors.CheckEdit();
             this.GrpComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.WHGroupBox = new System.Windows.Forms.Panel();
@@ -101,7 +102,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textEdit1 = new DevExpress.XtraEditors.MemoEdit();
-            this.ChildGroupCheckEdit = new DevExpress.XtraEditors.CheckEdit();
+            this.PersonPanel = new System.Windows.Forms.Panel();
+            this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
+            this.PersonLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
@@ -132,6 +135,7 @@
             this.MatGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MatComboBox.Properties)).BeginInit();
             this.GRPGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ChildGroupCheckEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrpComboBox.Properties)).BeginInit();
             this.WHGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WhComboBox.Properties)).BeginInit();
@@ -158,7 +162,8 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ChildGroupCheckEdit.Properties)).BeginInit();
+            this.PersonPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PersonLookUpEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // styleController1
@@ -171,7 +176,7 @@
             this.panelControl2.Controls.Add(this.OkButton);
             this.panelControl2.Controls.Add(this.simpleButton1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl2.Location = new System.Drawing.Point(0, 711);
+            this.panelControl2.Location = new System.Drawing.Point(0, 759);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(455, 51);
             this.panelControl2.TabIndex = 29;
@@ -198,6 +203,7 @@
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.PersonPanel);
             this.mainPanel.Controls.Add(this.DocTypeGroupBox2);
             this.mainPanel.Controls.Add(this.StatusPanel);
             this.mainPanel.Controls.Add(this.DocTypeGroupBox);
@@ -213,7 +219,7 @@
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(0, 0);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(455, 711);
+            this.mainPanel.Size = new System.Drawing.Size(455, 759);
             this.mainPanel.TabIndex = 31;
             // 
             // DocTypeGroupBox2
@@ -580,6 +586,15 @@
             this.GRPGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.GRPGroupBox.Size = new System.Drawing.Size(451, 47);
             this.GRPGroupBox.TabIndex = 33;
+            // 
+            // ChildGroupCheckEdit
+            // 
+            this.ChildGroupCheckEdit.Location = new System.Drawing.Point(336, 13);
+            this.ChildGroupCheckEdit.Name = "ChildGroupCheckEdit";
+            this.ChildGroupCheckEdit.Properties.Caption = "З підгрупами";
+            this.ChildGroupCheckEdit.Size = new System.Drawing.Size(101, 20);
+            this.ChildGroupCheckEdit.StyleController = this.styleController1;
+            this.ChildGroupCheckEdit.TabIndex = 31;
             // 
             // GrpComboBox
             // 
@@ -989,7 +1004,7 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.textEdit1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(2, 626);
+            this.panel1.Location = new System.Drawing.Point(2, 674);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(451, 83);
             this.panel1.TabIndex = 41;
@@ -1016,20 +1031,49 @@
             this.textEdit1.Size = new System.Drawing.Size(356, 64);
             this.textEdit1.TabIndex = 39;
             // 
-            // ChildGroupCheckEdit
+            // PersonPanel
             // 
-            this.ChildGroupCheckEdit.Location = new System.Drawing.Point(336, 13);
-            this.ChildGroupCheckEdit.Name = "ChildGroupCheckEdit";
-            this.ChildGroupCheckEdit.Properties.Caption = "З підгрупами";
-            this.ChildGroupCheckEdit.Size = new System.Drawing.Size(101, 20);
-            this.ChildGroupCheckEdit.StyleController = this.styleController1;
-            this.ChildGroupCheckEdit.TabIndex = 31;
+            this.PersonPanel.Controls.Add(this.PersonLookUpEdit);
+            this.PersonPanel.Controls.Add(this.labelControl18);
+            this.PersonPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PersonPanel.Location = new System.Drawing.Point(2, 625);
+            this.PersonPanel.Name = "PersonPanel";
+            this.PersonPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.PersonPanel.Size = new System.Drawing.Size(451, 47);
+            this.PersonPanel.TabIndex = 44;
+            this.PersonPanel.Visible = false;
+            // 
+            // labelControl18
+            // 
+            this.labelControl18.Location = new System.Drawing.Point(10, 15);
+            this.labelControl18.Name = "labelControl18";
+            this.labelControl18.Size = new System.Drawing.Size(60, 16);
+            this.labelControl18.StyleController = this.styleController1;
+            this.labelControl18.TabIndex = 31;
+            this.labelControl18.Text = "Працівник";
+            // 
+            // PersonLookUpEdit
+            // 
+            this.PersonLookUpEdit.Location = new System.Drawing.Point(87, 12);
+            this.PersonLookUpEdit.Name = "PersonLookUpEdit";
+            this.PersonLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.PersonLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.PersonLookUpEdit.Properties.DisplayMember = "Name";
+            this.PersonLookUpEdit.Properties.ShowFooter = false;
+            this.PersonLookUpEdit.Properties.ShowHeader = false;
+            this.PersonLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.PersonLookUpEdit.Properties.ValueMember = "KaId";
+            this.PersonLookUpEdit.Size = new System.Drawing.Size(322, 22);
+            this.PersonLookUpEdit.StyleController = this.styleController1;
+            this.PersonLookUpEdit.TabIndex = 32;
             // 
             // frmReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(455, 762);
+            this.ClientSize = new System.Drawing.Size(455, 810);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.panelControl2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -1076,6 +1120,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatComboBox.Properties)).EndInit();
             this.GRPGroupBox.ResumeLayout(false);
             this.GRPGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ChildGroupCheckEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrpComboBox.Properties)).EndInit();
             this.WHGroupBox.ResumeLayout(false);
             this.WHGroupBox.PerformLayout();
@@ -1110,7 +1155,9 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ChildGroupCheckEdit.Properties)).EndInit();
+            this.PersonPanel.ResumeLayout(false);
+            this.PersonPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PersonLookUpEdit.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1189,5 +1236,8 @@
         private DevExpress.XtraEditors.LookUpEdit GrpKagentLookUpEdit;
         private DevExpress.XtraEditors.LabelControl labelControl17;
         private DevExpress.XtraEditors.CheckEdit ChildGroupCheckEdit;
+        public System.Windows.Forms.Panel PersonPanel;
+        private DevExpress.XtraEditors.LookUpEdit PersonLookUpEdit;
+        private DevExpress.XtraEditors.LabelControl labelControl18;
     }
 }

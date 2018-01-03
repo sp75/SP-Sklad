@@ -38,7 +38,7 @@ namespace SP_Sklad.WBDetForm
 
         private void frmWriteOffDet_Load(object sender, EventArgs e)
         {
-            WHComboBox.Properties.DataSource = DBHelper.WhList();
+            WHComboBox.Properties.DataSource = DBHelper.WhList;
             MatComboBox.Properties.DataSource = _db.MaterialsList.AsNoTracking().ToList();
 
             if (_wb.WType == -5 || _wb.WType == -22)
@@ -60,7 +60,7 @@ namespace SP_Sklad.WBDetForm
                     Num = _wb.WaybillDet.Count() + 1,
                     Amount = amount != null ? (decimal)amount : 0,
                     OnValue = _wb.OnValue,
-                    WId = _wb.WaybillMove != null ? _wb.WaybillMove.SourceWid : _wb.WayBillMake != null ? _wb.WayBillMake.SourceWId : DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId,
+                    WId = _wb.WaybillMove != null ? _wb.WaybillMove.SourceWid : _wb.WayBillMake != null ? _wb.WayBillMake.SourceWId : DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId,
                     Nds = _wb.Nds,
                     CurrId = _wb.CurrId,
                     OnDate = _wb.OnDate,
@@ -247,20 +247,22 @@ namespace SP_Sklad.WBDetForm
             }
             _db.SaveChanges();
 
-            if (RSVCheckBox.Checked && !_db.WMatTurn.Any(w => w.SourceId == _wbd.PosId))
+            if (RSVCheckBox.Checked && !_db.WMatTurn.Any(w => w.SourceId == _wbd.PosId) && _db.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId && a.WId == _wbd.WId && a.UseReceived))
             {
                 foreach (var item in pos_in.Where(w => w.Amount > 0))
                 {
+
                     _db.WMatTurn.Add(new WMatTurn
                     {
                         PosId = item.PosId,
                         WId = item.WId,
                         MatId = item.MatId,
                         OnDate = _wbd.OnDate.Value,
-                        TurnType =  2,
+                        TurnType = 2,
                         Amount = Convert.ToDecimal(item.Amount),
                         SourceId = _wbd.PosId
                     });
+
                 }
             }
       

@@ -34,7 +34,7 @@ namespace SP_Sklad.WBDetForm
             _PosId = PosId;
             _wb = wb;
 
-            WHComboBox.Properties.DataSource = DBHelper.WhList();
+            WHComboBox.Properties.DataSource = DBHelper.WhList;
             MatComboBox.Properties.DataSource = db.MaterialsList.ToList();
             PriceTypesEdit.Properties.DataSource = DB.SkladBase().PriceTypes.ToList();
             ProducerTextEdit.Properties.Items.AddRange(_db.WayBillDetAddProps.Where(w => w.Producer != null).Select(s => s.Producer).Distinct().ToList());
@@ -299,7 +299,7 @@ namespace SP_Sklad.WBDetForm
                 }
                 _db.SaveChanges();
 
-                if (RSVCheckBox.Checked && !_db.WMatTurn.Any(w => w.SourceId == _wbd.PosId))
+                if (RSVCheckBox.Checked && !_db.WMatTurn.Any(w => w.SourceId == _wbd.PosId) && _db.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId && a.WId == _wbd.WId && a.UseReceived))
                 {
                     foreach (var item in pos_in.Where(w => w.Amount > 0))
                     {
@@ -313,16 +313,6 @@ namespace SP_Sklad.WBDetForm
                             Amount = Convert.ToDecimal(item.Amount),
                             SourceId = _wbd.PosId
                         });
-                        /*    _wbd.WMatTurn1.Add(new WMatTurn
-                            {
-                                PosId = item.PosId,
-                                WId = _wbd.WId.Value,
-                                MatId = _wbd.MatId,
-                                OnDate = _wb.OnDate,
-                                TurnType = _wb.WType == -16 ? -16 : 2,
-                                Amount = Convert.ToDecimal(item.Amount),
-                                SourceId = _wbd.PosId
-                            });*/
                     }
                 }
 

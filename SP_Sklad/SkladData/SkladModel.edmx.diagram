@@ -40,9 +40,7 @@
         <EntityTypeShape EntityType="BaseModel.UserAccess" Width="1.5" PointX="5" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.UserTreeView" Width="1.5" PointX="6.875" PointY="5.25" />
         <EntityTypeShape EntityType="BaseModel.UserTreeAccess" Width="1.5" PointX="4.6641136708967919" PointY="18.021311023282497" />
-        <EntityTypeShape EntityType="BaseModel.UserAccessWh" Width="1.5" PointX="3.9406520556382141" PointY="30.24417529918448" />
         <EntityTypeShape EntityType="BaseModel.UserTree" Width="1.5" PointX="1.4358053232709902" PointY="31.650536730722774" />
-        <AssociationConnector Association="BaseModel.FK_UAWH_WID" />
         <AssociationConnector Association="BaseModel.FK_USERTREE_FK_USERTR_USERTREE" />
         <EntityTypeShape EntityType="BaseModel.ExtRel" Width="1.5" PointX="5.5900738190813337" PointY="28.133716864573639" />
         <EntityTypeShape EntityType="BaseModel.MatRemains" Width="1.5" PointX="8.25" PointY="12.75" />
@@ -247,7 +245,6 @@
         <AssociationConnector Association="BaseModel.FK_OperLog_Users" />
         <AssociationConnector Association="BaseModel.FK_PRINTLOG_2" />
         <AssociationConnector Association="BaseModel.FK_USERACCESS_1" />
-        <AssociationConnector Association="BaseModel.FK_UAWH_USERID" />
         <AssociationConnector Association="BaseModel.FK_Users_UsersGroup" />
         <AssociationConnector Association="BaseModel.FK_UserSettings_Users" />
         <EntityTypeShape EntityType="BaseModel.ProductionPlans" Width="1.5" PointX="9.0676300158107779" PointY="27.027135250636906" />
@@ -270,6 +267,9 @@
         <EntityTypeShape EntityType="BaseModel.UserAccessCashDesks" Width="1.5" PointX="7.7715711909213905" PointY="18.978822359339716" />
         <AssociationConnector Association="BaseModel.FK_UserAccessCashDesks_CashDesks" />
         <AssociationConnector Association="BaseModel.FK_UserAccessCashDesks_Users" />
+        <EntityTypeShape EntityType="BaseModel.UserAccessWh" Width="1.5" PointX="7.1020642831465519" PointY="25.560289156418428" />
+        <AssociationConnector Association="BaseModel.FK_UAWH_USERID" />
+        <AssociationConnector Association="BaseModel.FK_UAWH_WID" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

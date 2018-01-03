@@ -20,9 +20,9 @@ namespace SP_Sklad.SkladData
             this.OperLog = new HashSet<OperLog>();
             this.PrintLog = new HashSet<PrintLog>();
             this.UserAccess = new HashSet<UserAccess>();
-            this.UserAccessWh = new HashSet<UserAccessWh>();
             this.UserSettings = new HashSet<UserSettings>();
             this.UserAccessCashDesks = new HashSet<UserAccessCashDesks>();
+            this.UserAccessWh = new HashSet<UserAccessWh>();
         }
     
         public int UserId { get; set; }
@@ -44,9 +44,9 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<OperLog> OperLog { get; set; }
         public virtual ICollection<PrintLog> PrintLog { get; set; }
         public virtual ICollection<UserAccess> UserAccess { get; set; }
-        public virtual ICollection<UserAccessWh> UserAccessWh { get; set; }
         public virtual UsersGroup UsersGroup { get; set; }
         public virtual ICollection<UserSettings> UserSettings { get; set; }
         public virtual ICollection<UserAccessCashDesks> UserAccessCashDesks { get; set; }
+        public virtual ICollection<UserAccessWh> UserAccessWh { get; set; }
     }
 }

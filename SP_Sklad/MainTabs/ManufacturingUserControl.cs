@@ -46,7 +46,7 @@ namespace SP_Sklad.MainTabs
             {
                 wbContentTab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
 
-                WhComboBox.Properties.DataSource = new List<object>() { new { WId = "*", Name = "Усі" } }.Concat(DBHelper.WhList().Select(s => new { WId = s.WId.ToString(), s.Name }).ToList());
+                WhComboBox.Properties.DataSource = new List<object>() { new { WId = "*", Name = "Усі" } }.Concat(DBHelper.WhList.Select(s => new { WId = s.WId.ToString(), s.Name }).ToList());
                 WhComboBox.EditValue = "*";
                 DebWhComboBox.Properties.DataSource = WhComboBox.Properties.DataSource;
                 DebWhComboBox.EditValue = "*";

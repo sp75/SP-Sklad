@@ -50,7 +50,7 @@ namespace SP_Sklad.WBForm
         private void frmWBWriteOn_Load(object sender, EventArgs e)
         {
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
-            var wh_list = DBHelper.WhList();
+            var wh_list = DBHelper.WhList;
             WHComboBox.Properties.DataSource = wh_list;
             WHComboBox.EditValue = wh_list.Where(w => w.Def == 1).Select(s => s.WId).FirstOrDefault();
 

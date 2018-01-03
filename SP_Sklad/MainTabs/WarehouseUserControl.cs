@@ -85,7 +85,7 @@ namespace SP_Sklad.MainTabs
                 wbStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
                 wbEndDate.EditValue = DateTime.Now.Date.SetEndDay();
 
-                repositoryItemLookUpEdit1.DataSource = DBHelper.WhList();
+                repositoryItemLookUpEdit1.DataSource = DBHelper.WhList;
                 repositoryItemLookUpEdit2.DataSource = DB.SkladBase().PriceTypes.ToList();
 
                 AvgMatPriceGridColumn.Visible = (DBHelper.CurrentUser.ShowPrice == 1);
@@ -414,6 +414,11 @@ namespace SP_Sklad.MainTabs
 
         private void AddItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (focused_wh_mat == null)
+            {
+                return;
+            }
+
             var remain_in_wh = DB.SkladBase().MatRemainByWh(focused_wh_mat.MatId.Value, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, wh_list, DBHelper.CurrentUser.UserId).ToList();
             var p_type = (wb.Kontragent != null ? (wb.Kontragent.PTypeId ?? DB.SkladBase().PriceTypes.First(w => w.Def == 1).PTypeId) : DB.SkladBase().PriceTypes.First(w => w.Def == 1).PTypeId);
             var price = DB.SkladBase().GetListMatPrices(focused_wh_mat.MatId, wb.CurrId, p_type).FirstOrDefault();
@@ -425,7 +430,7 @@ namespace SP_Sklad.MainTabs
                 Name = focused_wh_mat.MatName,
                 Amount = 1,
                 Price = price.Price ?? 0,
-                WId = remain_in_wh.Any() ? remain_in_wh.First().WId : DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId,
+                WId = remain_in_wh.Any() ? remain_in_wh.First().WId : DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId,
                 PTypeId = price != null ? price.PType : null,
                 Discount = DB.SkladBase().GetDiscount(wb.KaId, focused_wh_mat.MatId).FirstOrDefault() ?? 0.00m
             });
@@ -477,7 +482,7 @@ namespace SP_Sklad.MainTabs
                                 Name = row.MatName,
                                 Amount = frm.AmountEdit.Value,
                                 Price = frm.PriceEdit.Value,
-                                WId = wh_row != null ? wh_row.WId : DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId,
+                                WId = wh_row != null ? wh_row.WId : DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId,
                                 PTypeId = null,
                                 Discount = DB.SkladBase().GetDiscount(wb.KaId, row.MatId).FirstOrDefault() ?? 0.00m
                             });
@@ -504,16 +509,31 @@ namespace SP_Sklad.MainTabs
 
         private void MatTurnInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (focused_wh_mat == null)
+            {
+                return;
+            }
+
              IHelper.ShowTurnMaterial(focused_wh_mat.MatId);
         }
 
         private void RsvInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (focused_wh_mat == null)
+            {
+                return;
+            }
+
             IHelper.ShowMatRSV(focused_wh_mat.MatId, DB.SkladBase());
         }
 
         private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (focused_wh_mat == null)
+            {
+                return;
+            }
+
             IHelper.ShowMatInfo(focused_wh_mat.MatId);
         }
 
@@ -559,11 +579,16 @@ namespace SP_Sklad.MainTabs
 
         private void DeboningMatBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (focused_wh_mat == null)
+            {
+                return;
+            }
+
             var rec = DB.SkladBase().MatRecipe.FirstOrDefault(w => w.MatId == focused_wh_mat.MatId && w.RType == 2);
             var wh_remain =  WhRemainGridView.GetFocusedRow() as MatRemainByWh_Result ;
             if (rec != null)
             {
-                using (var f = new frmWBDeboning() { rec_id = rec.RecId, source_wid = wh_remain .WId})
+                using (var f = new frmWBDeboning() { rec_id = rec.RecId, source_wid = wh_remain.WId})
                 {
                     f.ShowDialog();
                 }
@@ -824,6 +849,11 @@ namespace SP_Sklad.MainTabs
         {
             Settings.Default.show_all_mat = ShowAllItemsCheck.Checked;
             Settings.Default.Save();
+        }
+
+        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
         }
 
     }

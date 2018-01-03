@@ -31,6 +31,7 @@ namespace SP_Sklad.Reports
         private int? _person_id { get; set; }
         private int _user_id  { get; set; }
         public String GrpStr { get; set; }
+        public dynamic Person { get; set; }
 
         private List<XLRPARAM> XLRPARAMS
         {
@@ -1210,6 +1211,62 @@ namespace SP_Sklad.Reports
                 IHelper.Print(data_for_report, TemlateList.rep_38);
             }
 
+            if (idx == 22)
+            {
+                int person = (int)Person.KaId;
+
+                var sql_1 = @"
+   	            select m.GrpId, m.name Name, wbd.amount Amount, wbd.total Summ, ms.ShortName, wbl.WbillId, person.Name PersonName , person.KaId PersonId , wbl.KaId , ka.Name KontragentName
+
+                from waybilldet wbd
+                join waybilllist wbl on wbl.wbillid = wbd.wbillid
+                join materials m on m.matid = wbd.matid
+                join measures ms on ms.mid = m.mid
+			    join kagent person on person.kaid = wbl.PersonId
+                join kagent ka on ka.kaid = wbl.KaId
+
+                where  wbl.checked = 1 and wbl.WType = -1
+                       and wbl.ondate between {0} and {1}
+                       and person.KaId = {2}
+   
+			    order by  m.name ";
+
+                var waybill_list = db.Database.SqlQuery<rep_22>(sql_1, StartDate, EndDate, person).ToList();
+
+                if (!waybill_list.Any())
+                {
+                    return;
+                }
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("WbList", waybill_list.GroupBy(g => new { g.Name, g.ShortName, g.PersonName }).Select(s => new
+                {
+                    Name = s.Key.Name,
+                    ShortName = s.Key.ShortName,
+                    PersonName = s.Key.PersonName,
+                    Amount = s.Sum(a => a.Amount),
+                    Summ = s.Sum(su => su.Summ)
+                }).ToList());
+
+                data_for_report.Add("MeasuresList", waybill_list.GroupBy(g => new { g.ShortName }).Select(s => new
+                {
+                    ShortName = s.Key.ShortName,
+                    Amount = s.Sum(a => a.Amount),
+                    Summ = s.Sum(su => su.Summ)
+                }).ToList());
+
+
+                data_for_report.Add("KagentList", waybill_list.GroupBy(g => g.KontragentName).Select(s => new
+                {
+                    Name = s.Key,
+                    Amount = s.Select(d => d.WbillId).Distinct().Count(),
+                    Summ = s.Sum(su => su.Summ)
+                }).ToList());
+
+                IHelper.Print2(data_for_report, TemlateList.rep_22);
+            }
+
+
 
             db.PrintLog.Add(new PrintLog
             {
@@ -1247,5 +1304,19 @@ namespace SP_Sklad.Reports
         public int WbillId { get; set; }
         public string Name { get; set; }
         public decimal? RecAmount { get; set; }
+    }
+
+    public class rep_22
+    {
+        public int GrpId { get; set; }
+        public string Name { get; set; }
+        public decimal? Amount { get; set; }
+        public decimal? Summ { get; set; }
+        public string ShortName { get; set; }
+        public int WbillId { get; set; }
+        public string PersonName { get; set; }
+        public int? PersonId { get; set; }
+        public int KaId { get; set; }
+        public string KontragentName { get; set; }
     }
 }

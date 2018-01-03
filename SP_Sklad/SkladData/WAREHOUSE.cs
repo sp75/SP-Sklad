@@ -19,7 +19,6 @@ namespace SP_Sklad.SkladData
             this.WMatTurn = new HashSet<WMatTurn>();
             this.WaybillMove = new HashSet<WaybillMove>();
             this.WaybillMove1 = new HashSet<WaybillMove>();
-            this.UserAccessWh = new HashSet<UserAccessWh>();
             this.WayBillMake = new HashSet<WayBillMake>();
             this.DeboningDet = new HashSet<DeboningDet>();
             this.Materials = new HashSet<Materials>();
@@ -28,6 +27,7 @@ namespace SP_Sklad.SkladData
             this.WaybillDet = new HashSet<WaybillDet>();
             this.PosRemains = new HashSet<PosRemains>();
             this.ProductionPlanDet = new HashSet<ProductionPlanDet>();
+            this.UserAccessWh = new HashSet<UserAccessWh>();
         }
     
         public int WId { get; set; }
@@ -40,7 +40,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<WMatTurn> WMatTurn { get; set; }
         public virtual ICollection<WaybillMove> WaybillMove { get; set; }
         public virtual ICollection<WaybillMove> WaybillMove1 { get; set; }
-        public virtual ICollection<UserAccessWh> UserAccessWh { get; set; }
         public virtual ICollection<WayBillMake> WayBillMake { get; set; }
         public virtual ICollection<DeboningDet> DeboningDet { get; set; }
         public virtual ICollection<Materials> Materials { get; set; }
@@ -49,5 +48,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<WaybillDet> WaybillDet { get; set; }
         public virtual ICollection<PosRemains> PosRemains { get; set; }
         public virtual ICollection<ProductionPlanDet> ProductionPlanDet { get; set; }
+        public virtual ICollection<UserAccessWh> UserAccessWh { get; set; }
     }
 }

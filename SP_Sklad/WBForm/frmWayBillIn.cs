@@ -101,7 +101,7 @@ namespace SP_Sklad.WBForm
             KagentComboBox.Properties.DataSource = DBHelper.Kagents;
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
 
-            var wh_list = DBHelper.WhList();
+            var wh_list = DBHelper.WhList;
             WHComboBox.Properties.DataSource = wh_list;
             WHComboBox.EditValue = wh_list.Where(w => w.Def == 1).Select(s => s.WId).FirstOrDefault();
 

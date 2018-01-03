@@ -28,7 +28,7 @@ namespace SP_Sklad.WBDetForm
 
             InitializeComponent();
 
-            WHComboBox.Properties.DataSource = DBHelper.WhList();
+            WHComboBox.Properties.DataSource = DBHelper.WhList;
 
             RecipeComboBox.Properties.DataSource = DB.SkladBase().MatRecipe.Where(w => w.RType == 1).Select(s => new
             {

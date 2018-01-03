@@ -30,7 +30,7 @@ namespace SP_Sklad.MainTabs
 
                 using (var db = new BaseEntities())
                 {
-                    //      repositoryItemLookUpEdit1.DataSource = DBHelper.WhList();
+                    //      repositoryItemLookUpEdit1.DataSource = DBHelper.WhList;
 
                     DirTreeList.DataSource = db.GetReportTree(DBHelper.CurrentUser.UserId).ToList();
                     DirTreeList.ExpandToLevel(1);
@@ -101,6 +101,7 @@ namespace SP_Sklad.MainTabs
                 case 36:
                 case 37:
                 case 38:
+                case 22:
                     RepBtn.Enabled = true;
                     break;
             }
@@ -379,6 +380,20 @@ namespace SP_Sklad.MainTabs
                     frm.ChargeGroupBox.Visible = false;
                     frm.WHGroupBox.Visible = false;
                     break;
+
+                case 22:
+                    frm.PersonPanel.Visible = true;
+                    frm.OnDateGroupBox.Visible = false;
+                    frm.KontragentPanel.Visible = false;
+                    frm.GRPGroupBox.Visible = false;
+                    frm.KontragentPanel.Visible = false;
+                    frm.MatGroupBox.Visible = false;
+                    frm.DocTypeGroupBox.Visible = false;
+                    frm.DocTypeGroupBox2.Visible = false;
+                    frm.ChargeGroupBox.Visible = false;
+                    frm.WHGroupBox.Visible = false;
+                    break;
+
             }
 
             frm.Text = row.Name;

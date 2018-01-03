@@ -63,7 +63,7 @@ namespace SP_Sklad.MainTabs
                 custom_mat_list = new List<CustomMatList>();
                 MatListGridControl.DataSource = custom_mat_list;
 
-                repositoryItemLookUpEdit1.DataSource = DBHelper.WhList();
+                repositoryItemLookUpEdit1.DataSource = DBHelper.WhList;
 
                 DirTreeBS.DataSource = DB.SkladBase().GetDirTree(DBHelper.CurrentUser.UserId).ToList();
                 DirTreeList.ExpandToLevel(1);
@@ -711,7 +711,7 @@ namespace SP_Sklad.MainTabs
                 Name = row.Name,
                 Amount = 1,
                 Price =GetPrice(row.MatId, wb),
-                WId = row.WId != null ? row.WId.Value : DBHelper.WhList().FirstOrDefault(w => w.Def == 1).WId
+                WId = row.WId != null ? row.WId.Value : DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId
             });
 
             MatListGridView.RefreshData();

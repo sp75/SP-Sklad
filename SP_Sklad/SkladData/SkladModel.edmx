@@ -2179,6 +2179,7 @@
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="WId" Type="int" Nullable="false" />
+          <Property Name="UseReceived" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -6147,17 +6148,14 @@
               <RowType>
                 <Property Name="MatId" Type="int" Nullable="false" />
                 <Property Name="MatName" Type="nvarchar" MaxLength="255" />
-                <Property Name="AmountOrd" Type="numeric" Precision="38" Scale="8" />
+                <Property Name="AmountOrd" Type="numeric" Precision="38" Scale="4" />
                 <Property Name="TotalOrd" Type="numeric" Precision="38" Scale="2" />
                 <Property Name="KaId" Type="int" />
-                <Property Name="DocId" Type="int" />
                 <Property Name="KaName" Type="nvarchar" Nullable="false" MaxLength="64" />
                 <Property Name="MsrName" Type="nvarchar" Nullable="false" MaxLength="6" />
                 <Property Name="BarCode" Type="nvarchar" MaxLength="64" />
-                <Property Name="AmountOut" Type="numeric" Precision="15" Scale="8" />
-                <Property Name="TotalOut" Type="numeric" Precision="15" Scale="2" />
-                <Property Name="PersonName" Type="nvarchar" MaxLength="64" />
-                <Property Name="OnDate" Type="datetime" />
+                <Property Name="AmountOut" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="TotalOut" Type="numeric" Precision="38" Scale="2" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -6910,12 +6908,7 @@
             <Parameter Name="type_tree" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="v_GetDocsTree" EntityType="BaseModel.v_GetDocsTree" />
-          <EntitySet Name="UserAccessWh" EntityType="BaseModel.UserAccessWh" />
           <EntitySet Name="UserTree" EntityType="BaseModel.UserTree" />
-          <AssociationSet Name="FK_UAWH_WID" Association="BaseModel.FK_UAWH_WID">
-            <End Role="Warehouse" EntitySet="Warehouse" />
-            <End Role="UserAccessWh" EntitySet="UserAccessWh" />
-          </AssociationSet>
           <AssociationSet Name="FK_USERTREE_FK_USERTR_USERTREE" Association="BaseModel.FK_USERTREE_FK_USERTR_USERTREE">
             <End Role="UserTree" EntitySet="UserTree" />
             <End Role="UserTreeView" EntitySet="UserTreeView" />
@@ -7054,9 +7047,6 @@
           <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetUserAccessTree" ReturnType="Collection(BaseModel.GetUserAccessTree_Result)">
-          <Parameter Name="user_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="GetUserAccessWh" ReturnType="Collection(BaseModel.GetUserAccessWh_Result)">
           <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="SvcGroup" EntityType="BaseModel.SvcGroup" />
@@ -7561,14 +7551,6 @@
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
             <Parameter Name="to_date" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="REP_27" IsComposable="true" ReturnType="Collection(BaseModel.REP_27_Result)">
-            <Parameter Name="from_date" Mode="In" Type="DateTime" />
-            <Parameter Name="to_date" Mode="In" Type="DateTime" />
-            <Parameter Name="ka_id" Mode="In" Type="Int32" />
-            <Parameter Name="grp_id" Mode="In" Type="Int32" />
-            <Parameter Name="mat_id" Mode="In" Type="Int32" />
-            <Parameter Name="ka_grp_id" Mode="In" Type="Guid" />
-          </FunctionImport>
           <FunctionImport Name="OrderedList" IsComposable="true" ReturnType="Collection(BaseModel.OrderedList_Result)">
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
             <Parameter Name="to_date" Mode="In" Type="DateTime" />
@@ -7754,10 +7736,6 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="UserAccess" EntitySet="UserAccess" />
           </AssociationSet>
-          <AssociationSet Name="FK_UAWH_USERID" Association="BaseModel.FK_UAWH_USERID">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="UserAccessWh" EntitySet="UserAccessWh" />
-          </AssociationSet>
           <AssociationSet Name="FK_Users_UsersGroup" Association="BaseModel.FK_Users_UsersGroup">
             <End Role="UsersGroup" EntitySet="UsersGroup" />
             <End Role="Users" EntitySet="Users" />
@@ -7904,15 +7882,6 @@
             <Parameter Name="show_all_mat" Mode="In" Type="Int32" />
             <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="REP_3_14" ReturnType="Collection(BaseModel.REP_3_14_Result)">
-            <Parameter Name="from_date" Mode="In" Type="DateTime" />
-            <Parameter Name="to_date" Mode="In" Type="DateTime" />
-            <Parameter Name="grp_id" Mode="In" Type="Int32" />
-            <Parameter Name="ka_id" Mode="In" Type="Int32" />
-            <Parameter Name="wh" Mode="In" Type="String" />
-            <Parameter Name="doc_types" Mode="In" Type="String" />
-            <Parameter Name="user_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="GetPosIn" IsComposable="true" ReturnType="Collection(BaseModel.GetPosIn_Result)">
             <Parameter Name="on_data" Mode="In" Type="DateTime" />
             <Parameter Name="mat_id" Mode="In" Type="Int32" />
@@ -7992,6 +7961,35 @@
           </AssociationSet>
           <FunctionImport Name="GetUserAccessCashDesks" IsComposable="true" ReturnType="Collection(BaseModel.GetUserAccessCashDesks_Result)">
           <Parameter Name="user_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="REP_27" IsComposable="true" ReturnType="Collection(BaseModel.REP_27_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="grp_id" Mode="In" Type="Int32" />
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
+            <Parameter Name="ka_grp_id" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="REP_3_14" ReturnType="Collection(BaseModel.REP_3_14_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="grp_id" Mode="In" Type="Int32" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="wh" Mode="In" Type="String" />
+            <Parameter Name="doc_types" Mode="In" Type="String" />
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="UserAccessWh" EntityType="BaseModel.UserAccessWh" />
+          <AssociationSet Name="FK_UAWH_USERID" Association="BaseModel.FK_UAWH_USERID">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserAccessWh" EntitySet="UserAccessWh" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UAWH_WID" Association="BaseModel.FK_UAWH_WID">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="UserAccessWh" EntitySet="UserAccessWh" />
+          </AssociationSet>
+          <FunctionImport Name="GetUserAccessWh" ReturnType="Collection(BaseModel.GetUserAccessWh_Result)">
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
@@ -8550,7 +8548,6 @@
           <NavigationProperty Name="WMatTurn" Relationship="BaseModel.FK__WMATTURN__WID__3BCADD1B" FromRole="Warehouse" ToRole="WMatTurn" />
           <NavigationProperty Name="WaybillMove" Relationship="BaseModel.FK_WAYBILLM_FK_WBM_DE_WAREHOUS" FromRole="Warehouse" ToRole="WaybillMove" />
           <NavigationProperty Name="WaybillMove1" Relationship="BaseModel.FK_WAYBILLM_FK_WBM_SO_WAREHOUS" FromRole="Warehouse" ToRole="WaybillMove" />
-          <NavigationProperty Name="UserAccessWh" Relationship="BaseModel.FK_UAWH_WID" FromRole="Warehouse" ToRole="UserAccessWh" />
           <NavigationProperty Name="WayBillMake" Relationship="BaseModel.FK_WAYBILLMAKE_WAREHOUSE" FromRole="Warehouse" ToRole="WayBillMake" />
           <NavigationProperty Name="DeboningDet" Relationship="BaseModel.FK_DeboningDet_Warehouse" FromRole="Warehouse" ToRole="DeboningDet" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK__MATERIALS__WID__59C55456" FromRole="Warehouse" ToRole="Materials" />
@@ -8559,6 +8556,7 @@
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__WAREHOUS" FromRole="Warehouse" ToRole="WaybillDet" />
           <NavigationProperty Name="PosRemains" Relationship="BaseModel.FK__POSREMAINS__WID__2EA5EC27" FromRole="Warehouse" ToRole="PosRemains" />
           <NavigationProperty Name="ProductionPlanDet" Relationship="BaseModel.FK_ProductionPlanDet_Warehouse" FromRole="Warehouse" ToRole="ProductionPlanDet" />
+          <NavigationProperty Name="UserAccessWh" Relationship="BaseModel.FK_UAWH_WID" FromRole="Warehouse" ToRole="UserAccessWh" />
           </EntityType>
         <Association Name="FK__WMATTURN__WID__3BCADD1B">
           <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="1" />
@@ -8726,16 +8724,6 @@
           <Property Type="Int32" Name="UserId" />
           <Property Type="Int32" Name="WType" />
         </EntityType>
-        <EntityType Name="UserAccessWh">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="UserId" Nullable="false" />
-          <Property Type="Int32" Name="WId" Nullable="false" />
-          <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK_UAWH_WID" FromRole="UserAccessWh" ToRole="Warehouse" />
-          <NavigationProperty Name="Users" Relationship="BaseModel.FK_UAWH_USERID" FromRole="UserAccessWh" ToRole="Users" />
-        </EntityType>
         <EntityType Name="UserTree">
           <Key>
             <PropertyRef Name="TreeId" />
@@ -8744,20 +8732,6 @@
           <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="UserTreeView" Relationship="BaseModel.FK_USERTREE_FK_USERTR_USERTREE" FromRole="UserTree" ToRole="UserTreeView" />
         </EntityType>
-        <Association Name="FK_UAWH_WID">
-          <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.UserAccessWh" Role="UserAccessWh" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Warehouse">
-              <PropertyRef Name="WId" />
-            </Principal>
-            <Dependent Role="UserAccessWh">
-              <PropertyRef Name="WId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_USERTREE_FK_USERTR_USERTREE">
           <End Type="BaseModel.UserTree" Role="UserTree" Multiplicity="1" />
           <End Type="BaseModel.UserTreeView" Role="UserTreeView" Multiplicity="*" />
@@ -9482,11 +9456,6 @@
           <Property Type="Int32" Name="CanModify" Nullable="true" />
           <Property Type="Int32" Name="CanDelete" Nullable="true" />
           <Property Type="Int32" Name="CanPost" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="GetUserAccessWh_Result">
-          <Property Type="Int32" Name="WId" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="64" />
-          <Property Type="Int32" Name="Allow" Nullable="false" />
         </ComplexType>
         <EntityType Name="SvcGroup">
           <Key>
@@ -11771,21 +11740,6 @@
           <Property Type="Decimal" Name="CashLess" Nullable="true" Precision="38" Scale="2" />
           <Property Type="Decimal" Name="Actives" Nullable="true" Precision="38" Scale="2" />
         </ComplexType>
-        <ComplexType Name="REP_27_Result">
-          <Property Type="Int32" Name="MatId" Nullable="false" />
-          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
-          <Property Type="Decimal" Name="AmountOrd" Nullable="true" Precision="38" Scale="8" />
-          <Property Type="Decimal" Name="TotalOrd" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="Int32" Name="KaId" Nullable="true" />
-          <Property Type="Int32" Name="DocId" Nullable="true" />
-          <Property Type="String" Name="KaName" Nullable="false" MaxLength="64" />
-          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
-          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
-          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="Decimal" Name="TotalOut" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="64" />
-          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
-        </ComplexType>
         <ComplexType Name="OrderedList_Result">
           <Property Type="Guid" Name="Id" Nullable="false" />
           <Property Type="Int32" Name="PosId" Nullable="false" />
@@ -12486,10 +12440,10 @@
           <NavigationProperty Name="OperLog" Relationship="BaseModel.FK_OperLog_Users" FromRole="Users" ToRole="OperLog" />
           <NavigationProperty Name="PrintLog" Relationship="BaseModel.FK_PRINTLOG_2" FromRole="Users" ToRole="PrintLog" />
           <NavigationProperty Name="UserAccess" Relationship="BaseModel.FK_USERACCESS_1" FromRole="Users" ToRole="UserAccess" />
-          <NavigationProperty Name="UserAccessWh" Relationship="BaseModel.FK_UAWH_USERID" FromRole="Users" ToRole="UserAccessWh" />
           <NavigationProperty Name="UsersGroup" Relationship="BaseModel.FK_Users_UsersGroup" FromRole="Users" ToRole="UsersGroup" />
           <NavigationProperty Name="UserSettings" Relationship="BaseModel.FK_UserSettings_Users" FromRole="Users" ToRole="UserSettings" />
           <NavigationProperty Name="UserAccessCashDesks" Relationship="BaseModel.FK_UserAccessCashDesks_Users" FromRole="Users" ToRole="UserAccessCashDesks" />
+          <NavigationProperty Name="UserAccessWh" Relationship="BaseModel.FK_UAWH_USERID" FromRole="Users" ToRole="UserAccessWh" />
         </EntityType>
         <Association Name="FK_Kagent_Users">
           <End Type="BaseModel.Users" Role="Users" Multiplicity="0..1" />
@@ -12541,20 +12495,6 @@
               <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="UserAccess">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UAWH_USERID">
-          <End Type="BaseModel.Users" Role="Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.UserAccessWh" Role="UserAccessWh" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="UserAccessWh">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
@@ -13003,22 +12943,6 @@
           <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="38" Scale="4" />
           <Property Type="Decimal" Name="SummOut" Nullable="true" Precision="38" Scale="8" />
         </ComplexType>
-        <ComplexType Name="REP_3_14_Result">
-          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
-          <Property Type="Int32" Name="GrpId" Nullable="true" />
-          <Property Type="Int32" Name="MatId" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
-          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="Summ" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="String" Name="ShortName" Nullable="false" MaxLength="6" />
-          <Property Type="Decimal" Name="ReturnAmountIn" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="ReturnSummIn" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="String" Name="DocNum" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
-          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
-          <Property Type="Int32" Name="KaId" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="GetPosIn_Result">
           <Property Type="Int32" Name="GetAll" Nullable="false" />
           <Property Type="Int32" Name="MatId" Nullable="false" />
@@ -13319,6 +13243,81 @@
           <Property Type="Int32" Name="Def" Nullable="true" />
           <Property Type="Int32" Name="EnterpriseId" Nullable="true" />
           <Property Type="Int32" Name="Allow" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="REP_27_Result">
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="AmountOrd" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="TotalOrd" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Int32" Name="KaId" Nullable="true" />
+          <Property Type="String" Name="KaName" Nullable="false" MaxLength="64" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
+          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="TotalOut" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="REP_3_14_Result">
+          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="GrpId" Nullable="true" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Summ" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="String" Name="ShortName" Nullable="false" MaxLength="6" />
+          <Property Type="Decimal" Name="ReturnAmountIn" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="ReturnSummIn" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="String" Name="DocNum" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="KaId" Nullable="true" />
+          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="64" />
+        </ComplexType>
+        <EntityType Name="UserAccessWh">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="Int32" Name="WId" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="BaseModel.FK_UAWH_USERID" FromRole="UserAccessWh" ToRole="Users" />
+          <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK_UAWH_WID" FromRole="UserAccessWh" ToRole="Warehouse" />
+          <Property Type="Boolean" Name="UseReceived" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_UAWH_USERID">
+          <End Type="BaseModel.Users" Role="Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.UserAccessWh" Role="UserAccessWh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserAccessWh">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UAWH_WID">
+          <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.UserAccessWh" Role="UserAccessWh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
+            </Principal>
+            <Dependent Role="UserAccessWh">
+              <PropertyRef Name="WId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GetUserAccessWh_Result">
+          <Property Type="Int32" Name="WId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="64" />
+          <Property Type="Int32" Name="Allow" Nullable="false" />
+          <Property Type="Boolean" Name="UseReceived" Nullable="true" />
+          <Property Type="Int32" Name="Id" Nullable="true" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -13960,15 +13959,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UserAccessWh">
-            <EntityTypeMapping TypeName="BaseModel.UserAccessWh">
-              <MappingFragment StoreEntitySet="UserAccessWh">
-                <ScalarProperty Name="WId" ColumnName="WId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="UserTree">
             <EntityTypeMapping TypeName="BaseModel.UserTree">
               <MappingFragment StoreEntitySet="UserTree">
@@ -14433,15 +14423,6 @@
                 <ScalarProperty Name="CanModify" ColumnName="CanModify" />
                 <ScalarProperty Name="CanDelete" ColumnName="CanDelete" />
                 <ScalarProperty Name="CanPost" ColumnName="CanPost" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetUserAccessWh" FunctionName="BaseModel.Store.GetUserAccessWh">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetUserAccessWh_Result">
-                <ScalarProperty Name="WId" ColumnName="WId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Allow" ColumnName="Allow" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -15872,25 +15853,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="REP_27" FunctionName="BaseModel.Store.REP_27">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.REP_27_Result">
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="MatName" ColumnName="MatName" />
-                <ScalarProperty Name="AmountOrd" ColumnName="AmountOrd" />
-                <ScalarProperty Name="TotalOrd" ColumnName="TotalOrd" />
-                <ScalarProperty Name="KaId" ColumnName="KaId" />
-                <ScalarProperty Name="DocId" ColumnName="DocId" />
-                <ScalarProperty Name="KaName" ColumnName="KaName" />
-                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
-                <ScalarProperty Name="TotalOut" ColumnName="TotalOut" />
-                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="OrderedList" FunctionName="BaseModel.Store.OrderedList">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.OrderedList_Result">
@@ -16589,26 +16551,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="REP_3_14" FunctionName="BaseModel.Store.REP_3_14">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.REP_3_14_Result">
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Summ" ColumnName="Summ" />
-                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
-                <ScalarProperty Name="ReturnAmountIn" ColumnName="ReturnAmountIn" />
-                <ScalarProperty Name="ReturnSummIn" ColumnName="ReturnSummIn" />
-                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
-                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="KaId" ColumnName="KaId" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetPosIn" FunctionName="BaseModel.Store.GetPosIn">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.GetPosIn_Result">
@@ -16866,6 +16808,64 @@
                 <ScalarProperty Name="Def" ColumnName="Def" />
                 <ScalarProperty Name="EnterpriseId" ColumnName="EnterpriseId" />
                 <ScalarProperty Name="Allow" ColumnName="Allow" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="REP_27" FunctionName="BaseModel.Store.REP_27">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.REP_27_Result">
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="AmountOrd" ColumnName="AmountOrd" />
+                <ScalarProperty Name="TotalOrd" ColumnName="TotalOrd" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
+                <ScalarProperty Name="TotalOut" ColumnName="TotalOut" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="REP_3_14" FunctionName="BaseModel.Store.REP_3_14">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.REP_3_14_Result">
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Summ" ColumnName="Summ" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="ReturnAmountIn" ColumnName="ReturnAmountIn" />
+                <ScalarProperty Name="ReturnSummIn" ColumnName="ReturnSummIn" />
+                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="UserAccessWh">
+            <EntityTypeMapping TypeName="BaseModel.UserAccessWh">
+              <MappingFragment StoreEntitySet="UserAccessWh">
+                <ScalarProperty Name="UseReceived" ColumnName="UseReceived" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetUserAccessWh" FunctionName="BaseModel.Store.GetUserAccessWh">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetUserAccessWh_Result">
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Allow" ColumnName="Allow" />
+                <ScalarProperty Name="UseReceived" ColumnName="UseReceived" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

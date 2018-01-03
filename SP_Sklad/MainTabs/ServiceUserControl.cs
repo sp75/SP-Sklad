@@ -31,7 +31,7 @@ namespace SP_Sklad.MainTabs
             {
                 using (var db = new BaseEntities())
                 {
-                    //      repositoryItemLookUpEdit1.DataSource = DBHelper.WhList();
+                    //      repositoryItemLookUpEdit1.DataSource = DBHelper.WhList;
 
                     DirTreeList.DataSource = db.GetServiceTree(DBHelper.CurrentUser.UserId).ToList();
                     DirTreeList.ExpandToLevel(1);
