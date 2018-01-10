@@ -6143,6 +6143,7 @@
           <Parameter Name="grp_id" Type="int" Mode="In" />
           <Parameter Name="mat_id" Type="int" Mode="In" />
           <Parameter Name="ka_grp_id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="person_id" Type="int" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
@@ -6156,6 +6157,7 @@
                 <Property Name="BarCode" Type="nvarchar" MaxLength="64" />
                 <Property Name="AmountOut" Type="numeric" Precision="38" Scale="4" />
                 <Property Name="TotalOut" Type="numeric" Precision="38" Scale="2" />
+                <Property Name="PersonName" Type="nvarchar" MaxLength="64" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -7962,14 +7964,6 @@
           <FunctionImport Name="GetUserAccessCashDesks" IsComposable="true" ReturnType="Collection(BaseModel.GetUserAccessCashDesks_Result)">
           <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="REP_27" IsComposable="true" ReturnType="Collection(BaseModel.REP_27_Result)">
-            <Parameter Name="from_date" Mode="In" Type="DateTime" />
-            <Parameter Name="to_date" Mode="In" Type="DateTime" />
-            <Parameter Name="ka_id" Mode="In" Type="Int32" />
-            <Parameter Name="grp_id" Mode="In" Type="Int32" />
-            <Parameter Name="mat_id" Mode="In" Type="Int32" />
-            <Parameter Name="ka_grp_id" Mode="In" Type="Guid" />
-          </FunctionImport>
           <FunctionImport Name="REP_3_14" ReturnType="Collection(BaseModel.REP_3_14_Result)">
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
             <Parameter Name="to_date" Mode="In" Type="DateTime" />
@@ -7989,7 +7983,16 @@
             <End Role="UserAccessWh" EntitySet="UserAccessWh" />
           </AssociationSet>
           <FunctionImport Name="GetUserAccessWh" ReturnType="Collection(BaseModel.GetUserAccessWh_Result)">
-            <Parameter Name="user_id" Mode="In" Type="Int32" />
+          <Parameter Name="user_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="REP_27" IsComposable="true" ReturnType="Collection(BaseModel.REP_27_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="grp_id" Mode="In" Type="Int32" />
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
+            <Parameter Name="ka_grp_id" Mode="In" Type="Guid" />
+            <Parameter Name="person_id" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
@@ -13244,18 +13247,6 @@
           <Property Type="Int32" Name="EnterpriseId" Nullable="true" />
           <Property Type="Int32" Name="Allow" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="REP_27_Result">
-          <Property Type="Int32" Name="MatId" Nullable="false" />
-          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
-          <Property Type="Decimal" Name="AmountOrd" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="TotalOrd" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="Int32" Name="KaId" Nullable="true" />
-          <Property Type="String" Name="KaName" Nullable="false" MaxLength="64" />
-          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
-          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
-          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="TotalOut" Nullable="true" Precision="38" Scale="2" />
-        </ComplexType>
         <ComplexType Name="REP_3_14_Result">
           <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
           <Property Type="Int32" Name="GrpId" Nullable="true" />
@@ -13318,6 +13309,19 @@
           <Property Type="Int32" Name="Allow" Nullable="false" />
           <Property Type="Boolean" Name="UseReceived" Nullable="true" />
           <Property Type="Int32" Name="Id" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="REP_27_Result">
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="AmountOrd" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="TotalOrd" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Int32" Name="KaId" Nullable="true" />
+          <Property Type="String" Name="KaName" Nullable="false" MaxLength="64" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
+          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="TotalOut" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="64" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -16811,22 +16815,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="REP_27" FunctionName="BaseModel.Store.REP_27">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.REP_27_Result">
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="MatName" ColumnName="MatName" />
-                <ScalarProperty Name="AmountOrd" ColumnName="AmountOrd" />
-                <ScalarProperty Name="TotalOrd" ColumnName="TotalOrd" />
-                <ScalarProperty Name="KaId" ColumnName="KaId" />
-                <ScalarProperty Name="KaName" ColumnName="KaName" />
-                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
-                <ScalarProperty Name="TotalOut" ColumnName="TotalOut" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="REP_3_14" FunctionName="BaseModel.Store.REP_3_14">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.REP_3_14_Result">
@@ -16866,6 +16854,23 @@
                 <ScalarProperty Name="Allow" ColumnName="Allow" />
                 <ScalarProperty Name="UseReceived" ColumnName="UseReceived" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="REP_27" FunctionName="BaseModel.Store.REP_27">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.REP_27_Result">
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="AmountOrd" ColumnName="AmountOrd" />
+                <ScalarProperty Name="TotalOrd" ColumnName="TotalOrd" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
+                <ScalarProperty Name="TotalOut" ColumnName="TotalOut" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

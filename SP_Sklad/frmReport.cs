@@ -155,8 +155,8 @@ namespace SP_Sklad
             }
             else
             {
-                PersonLookUpEdit.Properties.DataSource = DBHelper.Persons;
-                PersonLookUpEdit.EditValue = DBHelper.Persons.FirstOrDefault().KaId;
+                PersonLookUpEdit.Properties.DataSource = new List<object>() { new PersonList { KaId = 0, Name = "Усі" } }.Concat(DBHelper.Persons);
+                PersonLookUpEdit.EditValue = 0;
             }
   
         }

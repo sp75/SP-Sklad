@@ -242,6 +242,11 @@ namespace SP_Sklad.MainTabs
         {
             var dr = WbGridView.GetRow(WbGridView.FocusedRowHandle) as WBListMake_Result;
 
+            if (dr == null)
+            {
+                return;
+            }
+
             using (var f = new frmTechProcDet(dr.WbillId))
             {
                 if (f.ShowDialog() == DialogResult.OK)

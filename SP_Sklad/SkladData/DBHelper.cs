@@ -156,7 +156,7 @@ namespace SP_Sklad.SkladData
                     {
                         KaId = s.KaId,
                         Name = s.Name
-                    }).ToList();
+                    }).OrderBy(o=> o.Name).ToList();
                 }
                 return _persons;
             }

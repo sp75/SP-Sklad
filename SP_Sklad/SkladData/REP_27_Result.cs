@@ -23,5 +23,6 @@ namespace SP_Sklad.SkladData
         public string BarCode { get; set; }
         public Nullable<decimal> AmountOut { get; set; }
         public Nullable<decimal> TotalOut { get; set; }
+        public string PersonName { get; set; }
     }
 }

@@ -293,6 +293,7 @@ namespace SP_Sklad.MainTabs
                     frm.DocTypeGroupBox2.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
                     frm.GroupKontragentPanel.Visible = true;
+                    frm.PersonPanel.Visible = true;
                     break;
 
                 case 29:

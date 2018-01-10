@@ -716,7 +716,7 @@ namespace SP_Sklad.Reports
             if (idx == 27)
             {
                 Guid grp_kg = KontragentGroup.Id;
-                var mat = db.REP_27(StartDate, EndDate, (int)Kagent.KaId, (int)MatGroup.GrpId, (int)this.Material.MatId, grp_kg).ToList();
+                var mat = db.REP_27(StartDate, EndDate, (int)Kagent.KaId, (int)MatGroup.GrpId, (int)this.Material.MatId, grp_kg, (int)Person.KaId).ToList();
 
                 if (!mat.Any())
                 {
@@ -724,7 +724,18 @@ namespace SP_Sklad.Reports
                 }
 
                 data_for_report.Add("XLRPARAMS", XLRPARAMS);
-                data_for_report.Add("MatList", mat.ToList());
+                data_for_report.Add("MatList", mat.GroupBy(g => new { g.KaName,  g.MatName, g.MsrName, g.BarCode }).Select(s => new
+                {
+                    BarCode = s.Key.BarCode,
+                    MatName = s.Key.MatName,
+                    MsrName = s.Key.MsrName,
+                    KaName = s.Key.KaName,
+                    AmountOrd = s.Sum(su => su.AmountOrd),
+                    TotalOrd = s.Sum(su => su.TotalOrd),
+                    AmountOut = s.Sum(su => su.AmountOut),
+                    TotalOut = s.Sum(su => su.TotalOut),
+                    PersonName = String.Join(", ", s.Select(su=> su.PersonName).Distinct() )
+                }).ToList());
 
                 IHelper.Print2(data_for_report, TemlateList.rep_27);
             }

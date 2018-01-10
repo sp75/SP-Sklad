@@ -13,6 +13,7 @@ using SP_Sklad.Common;
 using SP_Sklad.WBForm;
 using System.IO;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace SP_Sklad
 {
@@ -124,7 +125,8 @@ namespace SP_Sklad
 
         private void GetMainHeder()
         {
-            Text = "SP-Склад [Користувач: " + DBHelper.CurrentUser.Name + ", Підприємство: " + (DBHelper.Enterprise != null ? DBHelper.Enterprise.Name : "") + "]";
+            var date = new FileInfo(Assembly.GetExecutingAssembly().Location).LastWriteTime;
+            Text = "SP-Склад [Користувач: " + DBHelper.CurrentUser.Name + ", Підприємство: " + (DBHelper.Enterprise != null ? DBHelper.Enterprise.Name : "") + "] [v." + date + "]";
         }
 
         private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
