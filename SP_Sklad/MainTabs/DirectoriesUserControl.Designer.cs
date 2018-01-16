@@ -151,6 +151,8 @@
             this.ArchivedGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit8 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridColumn78 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn79 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.BarCodeEdit = new DevExpress.XtraEditors.TextEdit();
@@ -316,7 +318,6 @@
             this.ExplorerPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
@@ -1600,7 +1601,8 @@
             this.gridColumn28,
             this.ArchivedGridColumn,
             this.gridColumn78,
-            this.gridColumn23});
+            this.gridColumn23,
+            this.gridColumn79});
             this.MatGridView.GridControl = this.MatGridControl;
             this.MatGridView.Name = "MatGridView";
             this.MatGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -1684,6 +1686,20 @@
             this.gridColumn78.Name = "gridColumn78";
             this.gridColumn78.Visible = true;
             this.gridColumn78.VisibleIndex = 4;
+            // 
+            // gridColumn23
+            // 
+            this.gridColumn23.Caption = "Група товарів";
+            this.gridColumn23.FieldName = "GrpName";
+            this.gridColumn23.Name = "gridColumn23";
+            this.gridColumn23.Visible = true;
+            this.gridColumn23.VisibleIndex = 6;
+            // 
+            // gridColumn79
+            // 
+            this.gridColumn79.Caption = "Змінено";
+            this.gridColumn79.FieldName = "DateModified";
+            this.gridColumn79.Name = "gridColumn79";
             // 
             // gridView4
             // 
@@ -3276,14 +3292,6 @@
             this.MatPopupMenu.Manager = this.barManager1;
             this.MatPopupMenu.Name = "MatPopupMenu";
             // 
-            // gridColumn23
-            // 
-            this.gridColumn23.Caption = "Група товарів";
-            this.gridColumn23.FieldName = "GrpName";
-            this.gridColumn23.Name = "gridColumn23";
-            this.gridColumn23.Visible = true;
-            this.gridColumn23.VisibleIndex = 6;
-            // 
             // DirectoriesUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3727,5 +3735,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn LoginGridColumn;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn73;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn79;
     }
 }

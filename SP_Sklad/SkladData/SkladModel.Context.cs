@@ -1663,28 +1663,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<MoneyTurnover_Result>("[BaseEntities].[MoneyTurnover](@fun_id, @from_date, @to_date, @turn_type, @curr_id, @ka_id, @person_id)", fun_idParameter, from_dateParameter, to_dateParameter, turn_typeParameter, curr_idParameter, ka_idParameter, person_idParameter);
         }
     
-        [EdmFunction("BaseEntities", "GetMatList")]
-        public virtual IQueryable<GetMatList_Result> GetMatList(Nullable<int> grp, Nullable<int> get_price, Nullable<int> get_archived, Nullable<int> get_child_node)
-        {
-            var grpParameter = grp.HasValue ?
-                new ObjectParameter("grp", grp) :
-                new ObjectParameter("grp", typeof(int));
-    
-            var get_priceParameter = get_price.HasValue ?
-                new ObjectParameter("get_price", get_price) :
-                new ObjectParameter("get_price", typeof(int));
-    
-            var get_archivedParameter = get_archived.HasValue ?
-                new ObjectParameter("get_archived", get_archived) :
-                new ObjectParameter("get_archived", typeof(int));
-    
-            var get_child_nodeParameter = get_child_node.HasValue ?
-                new ObjectParameter("get_child_node", get_child_node) :
-                new ObjectParameter("get_child_node", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatList_Result>("[BaseEntities].[GetMatList](@grp, @get_price, @get_archived, @get_child_node)", grpParameter, get_priceParameter, get_archivedParameter, get_child_nodeParameter);
-        }
-    
         public virtual ObjectResult<REP_14_Result> REP_14(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> grp_id, Nullable<int> ka_id, string wh, string doc_types)
         {
             var from_dateParameter = from_date.HasValue ?
@@ -2212,6 +2190,28 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("person_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_27_Result>("[BaseEntities].[REP_27](@from_date, @to_date, @ka_id, @grp_id, @mat_id, @ka_grp_id, @person_id)", from_dateParameter, to_dateParameter, ka_idParameter, grp_idParameter, mat_idParameter, ka_grp_idParameter, person_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetMatList")]
+        public virtual IQueryable<GetMatList_Result> GetMatList(Nullable<int> grp, Nullable<int> get_price, Nullable<int> get_archived, Nullable<int> get_child_node)
+        {
+            var grpParameter = grp.HasValue ?
+                new ObjectParameter("grp", grp) :
+                new ObjectParameter("grp", typeof(int));
+    
+            var get_priceParameter = get_price.HasValue ?
+                new ObjectParameter("get_price", get_price) :
+                new ObjectParameter("get_price", typeof(int));
+    
+            var get_archivedParameter = get_archived.HasValue ?
+                new ObjectParameter("get_archived", get_archived) :
+                new ObjectParameter("get_archived", typeof(int));
+    
+            var get_child_nodeParameter = get_child_node.HasValue ?
+                new ObjectParameter("get_child_node", get_child_node) :
+                new ObjectParameter("get_child_node", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatList_Result>("[BaseEntities].[GetMatList](@grp, @get_price, @get_archived, @get_child_node)", grpParameter, get_priceParameter, get_archivedParameter, get_child_nodeParameter);
         }
     }
 }

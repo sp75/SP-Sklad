@@ -35,5 +35,7 @@ namespace SP_Sklad.SkladData
         public string GrpName { get; set; }
         public string WhName { get; set; }
         public string DemandGroupName { get; set; }
+        public Nullable<System.DateTime> DateAdded { get; set; }
+        public Nullable<System.DateTime> DateModified { get; set; }
     }
 }
