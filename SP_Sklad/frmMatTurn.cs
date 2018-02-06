@@ -53,10 +53,24 @@ namespace SP_Sklad
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var path = Path.Combine(Application.StartupPath, "expotr.pdf");
-            gridControl1.ExportToPdf(path);
+            var file_format = DBHelper.CurrentUser.ReportFormat;
 
-            Process.Start(path);
+            if (file_format == "pdf")
+            {
+                var path = Path.Combine(Application.StartupPath, "expotr.pdf");
+                gridControl1.ExportToPdf(path);
+
+                Process.Start(path);
+            }
+            else if (file_format == "xlsx")
+            {
+                var path = Path.Combine(Application.StartupPath, "expotr.xlsx");
+                gridControl1.ExportToXlsx(path);
+
+                Process.Start(path);
+            }
+
+          
         }
 
         private void bandedGridView1_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)

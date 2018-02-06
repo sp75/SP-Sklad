@@ -109,6 +109,7 @@
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.progressBarControl1 = new DevExpress.XtraEditors.ProgressBarControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -143,6 +144,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.progressBarControl1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
@@ -182,7 +184,7 @@
             this.WeighBtn,
             this.barButtonItem3});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 22;
+            this.barManager1.MaxItemId = 23;
             // 
             // bar2
             // 
@@ -1049,6 +1051,17 @@
             this.panelControl2.Size = new System.Drawing.Size(968, 52);
             this.panelControl2.TabIndex = 14;
             // 
+            // progressBarControl1
+            // 
+            this.progressBarControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBarControl1.Location = new System.Drawing.Point(686, 246);
+            this.progressBarControl1.MenuManager = this.barManager1;
+            this.progressBarControl1.Name = "progressBarControl1";
+            this.progressBarControl1.Properties.Step = 1;
+            this.progressBarControl1.Size = new System.Drawing.Size(270, 18);
+            this.progressBarControl1.TabIndex = 2;
+            this.progressBarControl1.Visible = false;
+            // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -1093,6 +1106,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(968, 612);
+            this.Controls.Add(this.progressBarControl1);
             this.Controls.Add(this.panelControl5);
             this.Controls.Add(this.standaloneBarDockControl1);
             this.Controls.Add(this.panelControl3);
@@ -1141,6 +1155,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.progressBarControl1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1231,5 +1246,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem WeighBtn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraEditors.ProgressBarControl progressBarControl1;
     }
 }

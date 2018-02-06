@@ -322,16 +322,40 @@ namespace SP_Sklad.WBForm
         private void RsvAllBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             _db.SaveChanges();
+            var list = new List<string>();
 
-            var res = _db.ReservedAllPosition(wb.WbillId, DBHelper.CurrentUser.UserId);
+            var r = new ObjectParameter("RSV", typeof(Int32));
 
-            if (res.Any())
+            var wb_list = _db.GetWayBillDetOut(_wbill_id).ToList().Where(w => w.Rsv != 1).ToList();
+            progressBarControl1.Visible = true;
+            progressBarControl1.Properties.Maximum = wb_list.Count;
+            foreach (var i in wb_list)
             {
-                MessageBox.Show("Не вдалося зарезервувати деякі товари!");
+                _db.ReservedPosition(i.PosId, r, DBHelper.CurrentUser.UserId);
+
+                if (r.Value != null && (int)r.Value == 0)
+                {
+                    list.Add(i.MatName);
+                }
+
+                progressBarControl1.PerformStep();
+                progressBarControl1.Update();
             }
-       //     current_transaction = current_transaction.CommitRetaining(_db);
-      //      UpdLockWB();
-           
+            progressBarControl1.Visible = false;
+
+            if (list.Any())
+            {
+                MessageBox.Show("Не вдалося зарезервувати: " + String.Join(",", list));
+            }
+
+            /*       var res = _db.ReservedAllPosition(wb.WbillId, DBHelper.CurrentUser.UserId);
+
+                   if (res.Any())
+                   {
+                       MessageBox.Show("Не вдалося зарезервувати деякі товари!");
+                   }*/
+
+
             RefreshDet();
         }
 

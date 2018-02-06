@@ -42,7 +42,7 @@ namespace SP_Sklad.EditForm
             CurrLookUpEdit.Properties.DataSource = DBHelper.Currency;
             lookUpEdit4.Properties.DataSource = _db.DemandGroup.AsNoTracking().ToList();
             ProducerLookUpEdit.Properties.Items.AddRange(_db.Materials.Where(w => w.Producer != null).Select(s => s.Producer).Distinct().ToList());
-            MatTypeEdit.Properties.DataSource = new List<object>() { new { Id = 1, Name = "Рама" }, new { Id = 2, Name = "Вішало" }, new { Id = 3, Name = "Тара" } };
+            MatTypeEdit.Properties.DataSource = new List<object>() { new { Id = 1, Name = "Рама" }, new { Id = 2, Name = "Вішало" }, new { Id = 3, Name = "Тара" }, new { Id = 4, Name = "ТМЦ" } };
 
             using (var s = new UserSettingsRepository(UserSession.UserId, new SkladData.BaseEntities()))
             {

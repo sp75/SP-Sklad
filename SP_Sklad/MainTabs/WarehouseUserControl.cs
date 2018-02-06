@@ -28,8 +28,10 @@ namespace SP_Sklad.MainTabs
         public bool isDirectList { get; set; }
         public bool isMatList { get; set; }
         public List<CustomMatListWH> custom_mat_list { get; set; }
+        public List<WhMatGet_Result> wh_mat_list { get; set; }
         public WaybillList wb { get; set; }
         public Object resut { get; set; }
+
         public WhMatGet_Result focused_wh_mat
         {
             get { return WhMatGridView.GetFocusedRow() as WhMatGet_Result; }
@@ -124,10 +126,30 @@ namespace SP_Sklad.MainTabs
             focused_tree_node = WHTreeList.GetDataRecordByNode(e.Node) as GetWhTree_Result;
 
             cur_wtype = focused_tree_node.WType != null ? focused_tree_node.WType.Value : 0;
+
+
+       /*     if (focused_tree_node.GType.Value == 1 && wh_mat_list != null && ByGrpBtn.Down && wh_mat_list.Any())
+            {
+                if (ViewDetailTree.Down && ByGrpBtn.Down && focused_tree_node.Num != 0)
+                {
+                    var grp = DB.SkladBase().GetMatGroupTree(focused_tree_node.Num).ToList().Select(s => s.GrpId);
+                    WhMatGetBS.DataSource = wh_mat_list.Where(w => grp.Contains(w.OutGrpId));
+                }
+                else
+                {
+                    WhMatGetBS.DataSource = wh_mat_list.Where(w => w.OutGrpId == focused_tree_node.Num || focused_tree_node.Num == 0);
+                }
+            }
+            else
+            {
+                RefrechItemBtn.PerformClick();
+            }*/
+
             RefrechItemBtn.PerformClick();
  
             whContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
 
+ 
             if (focused_tree_node.FunId != null)
             {
                 History.AddEntry(new HistoryEntity { FunId = focused_tree_node.FunId.Value, MainTabs = 2 });
@@ -356,7 +378,8 @@ namespace SP_Sklad.MainTabs
 
                     int top_row = WhMatGridView.TopRowIndex;
               //      var wh_ids = String.Join(",", DB.SkladBase().UserAccessWh.Where(w => w.UserId == DBHelper.CurrentUser.UserId).Select(s => s.WId).ToList());
-                    WhMatGetBS.DataSource = DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, ShowEmptyItemsCheck.Checked ? 1 : 0,wh_list , ShowAllItemsCheck.Checked ? 1 : 0, grp, DBHelper.CurrentUser.UserId, ViewDetailTree.Down ? 1 : 0).ToList();
+                    wh_mat_list = DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, ShowEmptyItemsCheck.Checked ? 1 : 0, wh_list, ShowAllItemsCheck.Checked ? 1 : 0, grp, DBHelper.CurrentUser.UserId, ViewDetailTree.Down ? 1 : 0).ToList();
+                    WhMatGetBS.DataSource = wh_mat_list;
                     WhMatGridView.TopRowIndex = top_row;
                     break;
 
