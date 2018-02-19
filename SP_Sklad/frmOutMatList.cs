@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SkladEngine.ModelViews;
 using SP_Sklad.Common;
 using SP_Sklad.Common.WayBills;
 using SP_Sklad.SkladData;
@@ -20,7 +21,7 @@ namespace SP_Sklad
         private DateTime _endDate { get; set; }
         private int _matId { get; set; }
         private int _kaId { get; set; }
-        public List<GetPosOut_Result> pos_out_list { get; set; }
+        public List<GetPosOutView> pos_out_list { get; set; }
 
         public frmOutMatList(BaseEntities db, DateTime startDate, DateTime endDate, int matId, int kaId)
         {

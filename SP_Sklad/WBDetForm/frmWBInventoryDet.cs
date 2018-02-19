@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SkladEngine.ModelViews;
 using SP_Sklad.Common;
 using SP_Sklad.EditForm;
 using SP_Sklad.SkladData;
@@ -19,7 +20,7 @@ namespace SP_Sklad.WBDetForm
         private int? _PosId { get; set; }
         private WaybillList _wb { get; set; }
         private WaybillDet _wbd { get; set; }
-        public List<GetPosOut_Result> pos_out_list { get; set; }
+        public List<GetPosOutView> pos_out_list { get; set; }
         private ReturnRel _temp_return_rel { get; set; }
         private List<GetShippedPosIn_Result> ordered_in_list { get; set; }
         public int? outPosId { get; set; }

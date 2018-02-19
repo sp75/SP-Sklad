@@ -12,6 +12,7 @@ using SP_Sklad.Common;
 using SP_Sklad.SkladData;
 using EntityState = System.Data.Entity.EntityState;
 using SP_Sklad.Common.WayBills;
+using SkladEngine.ModelViews;
 
 namespace SP_Sklad.WBDetForm
 {
@@ -21,7 +22,7 @@ namespace SP_Sklad.WBDetForm
         private int? _PosId { get; set; }
         private WaybillList _wb { get; set; }
         private WaybillDet _wbd { get; set; }
-        public List<GetPosOut_Result> pos_out_list { get; set; }
+        public List<GetPosOutView> pos_out_list { get; set; }
         private ReturnRel _temp_return_rel { get; set; }
         private List<GetShippedPosIn_Result> ordered_in_list { get; set; }
         public int? outPosId { get; set; }
@@ -96,7 +97,7 @@ namespace SP_Sklad.WBDetForm
 
         private void MatComboBox_EditValueChanged(object sender, EventArgs e)
         {
-            var row = (GetPosOut_Result)MatComboBox.GetSelectedDataRow();
+            var row = (GetPosOutView)MatComboBox.GetSelectedDataRow();
 
             if (row != null)
             {
@@ -132,7 +133,7 @@ namespace SP_Sklad.WBDetForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            var pos_out_row = (GetPosOut_Result)MatComboBox.GetSelectedDataRow();
+            var pos_out_row = (GetPosOutView)MatComboBox.GetSelectedDataRow();
             bool stop = false;
             int num = _wbd.Num;
             decimal amount = _wbd.Amount;
@@ -193,7 +194,7 @@ namespace SP_Sklad.WBDetForm
 
         bool GetOk()
         {
-            var pos_out_row = (GetPosOut_Result)MatComboBox.GetSelectedDataRow();
+            var pos_out_row = (GetPosOutView)MatComboBox.GetSelectedDataRow();
 
             bool recult = (pos_out_row != null && AmountEdit.Value <= pos_out_row.Remain && pos_out_list != null && MatComboBox.EditValue != DBNull.Value && WHComboBox.EditValue != DBNull.Value /*&& BasePriceEdit.EditValue != DBNull.Value*/ && AmountEdit.EditValue != DBNull.Value);
 
@@ -261,7 +262,7 @@ namespace SP_Sklad.WBDetForm
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            var row = (GetPosOut_Result)MatComboBox.GetSelectedDataRow();
+            var row = (GetPosOutView)MatComboBox.GetSelectedDataRow();
             int matId = row != null ? row.MatId : 0;
 
             var frm = new frmOutMatList(_db, _start_date, _wb.OnDate, matId, _wb.KaId.Value);
@@ -272,7 +273,7 @@ namespace SP_Sklad.WBDetForm
 
                 if(pos_out_list != null)
                 {
-                    var mat_row = frm.bandedGridView1.GetFocusedRow() as GetPosOut_Result ;
+                    var mat_row = frm.bandedGridView1.GetFocusedRow() as GetPosOutView;
 
                     MatComboBox.EditValue = mat_row.PosId;
                 }

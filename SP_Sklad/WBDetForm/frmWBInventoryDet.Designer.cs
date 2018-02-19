@@ -266,7 +266,7 @@
             // 
             // GetPosOutBS
             // 
-            this.GetPosOutBS.DataSource = typeof(SP_Sklad.SkladData.GetPosOut_Result);
+            this.GetPosOutBS.DataSource = typeof(SkladEngine.ModelViews.GetPosOutView);
             // 
             // panel1
             // 

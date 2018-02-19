@@ -361,9 +361,6 @@
     <Compile Include="SkladData\GetMatTree_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\GetPosOut_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SkladData\GetUserAccessCashDesks_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1610,6 +1607,7 @@
       <DependentUpon>frmWBWriteOn.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\SkladEngine.ModelViews.GetPosOutView.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.MainTabs.DirectoriesUserControl+PriceTypesView.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.AccountType.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Actives.datasource" />

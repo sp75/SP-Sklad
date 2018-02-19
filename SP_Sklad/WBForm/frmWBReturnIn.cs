@@ -15,6 +15,7 @@ using SP_Sklad.WBDetForm;
 using SP_Sklad.Common;
 using System.Windows.Input;
 using SP_Sklad.Reports;
+using SkladEngine.ModelViews;
 
 namespace SP_Sklad.WBForm
 {
@@ -314,7 +315,7 @@ namespace SP_Sklad.WBForm
                 {
                     if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
-                        var mat_row = frm.bandedGridView1.GetFocusedRow() as GetPosOut_Result;
+                        var mat_row = frm.bandedGridView1.GetFocusedRow() as GetPosOutView;
                         if (mat_row != null)
                         {
                             using (var df = new frmWBReturnDetIn(_db, null, wb, (int?)WHComboBox.EditValue, OutDateEdit.DateTime)
