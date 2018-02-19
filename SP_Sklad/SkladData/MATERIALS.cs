@@ -30,6 +30,7 @@ namespace SP_Sklad.SkladData
             this.WaybillDet = new HashSet<WaybillDet>();
             this.PosRemains = new HashSet<PosRemains>();
             this.WayBillMakeProps = new HashSet<WayBillMakeProps>();
+            this.WayBillTmc = new HashSet<WayBillTmc>();
         }
     
         public int MatId { get; set; }
@@ -62,6 +63,7 @@ namespace SP_Sklad.SkladData
         public string CF4 { get; set; }
         public string CF5 { get; set; }
         public byte[] BMP { get; set; }
+        public int DecPlaces { get; set; }
     
         public virtual ICollection<CONTRDET> CONTRDET { get; set; }
         public virtual Countries Countries { get; set; }
@@ -83,5 +85,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<WaybillDet> WaybillDet { get; set; }
         public virtual ICollection<PosRemains> PosRemains { get; set; }
         public virtual ICollection<WayBillMakeProps> WayBillMakeProps { get; set; }
+        public virtual ICollection<WayBillTmc> WayBillTmc { get; set; }
     }
 }

@@ -57,7 +57,7 @@ namespace SP_Sklad.WBDetForm
                     Discount = 0,
                     Nds = _wb.Nds,
                     CurrId = _wb.CurrId.Value,
-                    Num = _wb.WaybillDet.Count() + 1,
+                    Num = _db.GetWaybillDetIn(_wb.WbillId).Count() + 1,
                     SvcToPrice = 0
                 };
             }

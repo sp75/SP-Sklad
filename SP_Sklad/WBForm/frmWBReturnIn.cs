@@ -242,11 +242,26 @@ namespace SP_Sklad.WBForm
 
             if (dr != null)
             {
-                using (var df = new frmWBReturnDetIn(_db, dr.PosId, wb, (int?)WHComboBox.EditValue, OutDateEdit.DateTime))
+                if (dr.PosType == 0)
                 {
-                    if (df.ShowDialog() == DialogResult.OK)
+                    using (var df = new frmWBReturnDetIn(_db, dr.PosId, wb, (int?)WHComboBox.EditValue, OutDateEdit.DateTime))
                     {
-                        RefreshDet();
+                        if (df.ShowDialog() == DialogResult.OK)
+                        {
+                            RefreshDet();
+                        }
+                    }
+                }
+
+
+                if (dr.PosType == 3)
+                {
+                    using (var df = new frmWayBillTMCDet(_db, dr.PosId, wb))
+                    {
+                        if (df.ShowDialog() == DialogResult.OK)
+                        {
+                            RefreshDet();
+                        }
                     }
                 }
             }
@@ -258,7 +273,15 @@ namespace SP_Sklad.WBForm
 
             if (dr != null)
             {
-                _db.DeleteWhere<WaybillDet>(w => w.PosId == dr.PosId);
+                if (dr.PosType == 0)
+                {
+                    _db.DeleteWhere<WaybillDet>(w => w.PosId == dr.PosId);
+                }
+
+                if (dr.PosType == 3)
+                {
+                    _db.DeleteWhere<WayBillTmc>(w => w.PosId == dr.PosId);
+                }
 
                 RefreshDet();
             }
@@ -387,6 +410,15 @@ namespace SP_Sklad.WBForm
             {
                 OnDateDBEdit.DateTime = DBHelper.ServerDateTime();
                 wb.OnDate = OnDateDBEdit.DateTime;
+            }
+        }
+
+        private void barButtonItem1_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var df = new frmWayBillTMCDet(_db, null, wb);
+            if (df.ShowDialog() == DialogResult.OK)
+            {
+                RefreshDet();
             }
         }
     }

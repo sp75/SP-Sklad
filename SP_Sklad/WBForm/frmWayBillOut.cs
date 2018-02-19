@@ -215,14 +215,21 @@ namespace SP_Sklad.WBForm
         {
             if (wbd_row != null)
             {
-                if (wbd_row.PosId > 0)
+                if (wbd_row.PosType == 0)
                 {
                     _db.DeleteWhere<WaybillDet>(w => w.PosId == wbd_row.PosId);
                 }
-                else
+
+                if (wbd_row.PosType == 1)
                 {
                     _db.DeleteWhere<WayBillSvc>(w => w.PosId == wbd_row.PosId * -1);
                 }
+
+                if (wbd_row.PosType == 2)
+                {
+                    _db.DeleteWhere<WayBillTmc>(w => w.PosId == wbd_row.PosId);
+                }
+
                 _db.SaveChanges();
 
                 WaybillDetOutGridView.DeleteSelectedRows();
@@ -258,20 +265,27 @@ namespace SP_Sklad.WBForm
         {
             if (wbd_row != null)
             {
-                if (wbd_row.PosId > 0)
+                if (wbd_row.PosType == 0)
                 {
                     using (var df = new frmWayBillDetOut(_db, wbd_row.PosId, wb))
                     {
                         df.ShowDialog();
-                  //      current_transaction = current_transaction.CommitRetaining(_db);
-            //            UpdLockWB();
                     }
-                    
                 }
-                else
+
+                if (wbd_row.PosType == 1)
                 {
                     new frmWaybillSvcDet(_db, wbd_row.PosId * -1, wb).ShowDialog();
                 }
+
+                if (wbd_row.PosType == 2)
+                {
+                    using (var df = new frmWayBillTMCDet(_db, wbd_row.PosId, wb))
+                    {
+                        df.ShowDialog();
+                    }
+                }
+
 
                 RefreshDet();
             }
@@ -385,23 +399,44 @@ namespace SP_Sklad.WBForm
 
         private void MarkBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var wbd = _db.WaybillDet.Find(wbd_row.PosId);
-            if (wbd == null)
+            if (wbd_row.PosType == 0)
             {
-                return;
+                var wbd = _db.WaybillDet.Find(wbd_row.PosId);
+                if (wbd != null)
+                {
+                    if (wbd.Checked == 1)
+                    {
+                        wbd.Checked = 0;
+                        wbd_row.Checked = 0;
+                    }
+                    else
+                    {
+                        wbd.Checked = 1;
+                        wbd_row.Checked = 1;
+                    }
+                }
             }
 
-            if (wbd.Checked == 1)
+            if (wbd_row.PosType == 2)
             {
-                wbd.Checked = 0;
-                wbd_row.Checked = 0;
+                var wbt = _db.WayBillTmc.Find(wbd_row.PosId);
+                if (wbt != null)
+                {
+                    if (wbt.Checked == 1)
+                    {
+                        wbt.Checked = 0;
+                        wbd_row.Checked = 0;
+                    }
+                    else
+                    {
+                        wbt.Checked = 1;
+                        wbd_row.Checked = 1;
+                    }
+                }
             }
-            else
-            {
-                wbd.Checked = 1;
-                wbd_row.Checked = 1;
-            }
+
             _db.SaveChanges();
+
             WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
         }
 
@@ -471,11 +506,19 @@ namespace SP_Sklad.WBForm
             var wbd = _db.WaybillDet.FirstOrDefault(w => w.PosId == wbd_row.PosId);
             if (e.Column.FieldName == "Amount")
             {
-                if (wbd_row.Rsv == 0)
+                if (wbd_row.Rsv == 0 && wbd_row.PosType == 0)
                 {
                     wbd.Amount = Convert.ToDecimal(e.Value);
                     wbd.Checked = 1;
                 }
+
+                if (wbd_row.PosType == 2)
+                {
+                    var wbt = _db.WayBillTmc.FirstOrDefault(w => w.PosId == wbd_row.PosId);
+                    wbt.Amount = Convert.ToDecimal(e.Value);
+                    wbt.Checked = 1;
+                }
+
             }
             else if (e.Column.FieldName == "Notes")
             {
@@ -583,6 +626,15 @@ namespace SP_Sklad.WBForm
             if (wbd_row != null)
             {
                 IHelper.ShowMatInfo(wbd_row.MatId);
+            }
+        }
+
+        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var df = new frmWayBillTMCDet(_db, null, wb);
+            if (df.ShowDialog() == DialogResult.OK)
+            {
+                RefreshDet();
             }
         }
     }

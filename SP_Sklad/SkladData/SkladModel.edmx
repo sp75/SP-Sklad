@@ -105,6 +105,7 @@
           <EntitySet Name="WayBillMakeProps" EntityType="BaseModel.Store.WayBillMakeProps" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="WaybillMove" EntityType="BaseModel.Store.WaybillMove" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="WayBillSvc" EntityType="BaseModel.Store.WayBillSvc" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WayBillTmc" EntityType="BaseModel.Store.WayBillTmc" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="WMatTurn" EntityType="BaseModel.Store.WMatTurn" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="EnterpriseAccount" EntityType="BaseModel.Store.EnterpriseAccount" store:Type="Views" store:Schema="dbo" store:Name="EnterpriseAccount">
             <DefiningQuery>SELECT 
@@ -870,6 +871,14 @@
           <AssociationSet Name="FK_MGP_PPTYPEID" Association="BaseModel.Store.FK_MGP_PPTYPEID">
             <End Role="PriceTypes" EntitySet="PriceTypes" />
             <End Role="MatGroupPrices" EntitySet="MatGroupPrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MoveInventories_Materials" Association="BaseModel.Store.FK_MoveInventories_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="WayBillTmc" EntitySet="WayBillTmc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MoveInventories_WaybillList" Association="BaseModel.Store.FK_MoveInventories_WaybillList">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="WayBillTmc" EntitySet="WayBillTmc" />
           </AssociationSet>
           <AssociationSet Name="FK_MP_MATID" Association="BaseModel.Store.FK_MP_MATID">
             <End Role="Materials" EntitySet="Materials" />
@@ -1671,6 +1680,7 @@
           <Property Name="CF4" Type="nvarchar" MaxLength="128" />
           <Property Name="CF5" Type="nvarchar" MaxLength="128" />
           <Property Name="BMP" Type="varbinary(max)" />
+          <Property Name="DecPlaces" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="MatGroup">
           <Key>
@@ -2393,6 +2403,19 @@
           <Property Name="SvcToPrice" Type="int" />
           <Property Name="Total" Type="numeric" Precision="15" Scale="2" />
           <Property Name="Notes" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="WayBillTmc">
+          <Key>
+            <PropertyRef Name="PosId" />
+          </Key>
+          <Property Name="PosId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Num" Type="int" Nullable="false" />
+          <Property Name="Checked" Type="int" />
+          <Property Name="WbillId" Type="int" Nullable="false" />
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="numeric" Nullable="false" Precision="15" Scale="2" />
+          <Property Name="TurnType" Type="int" Nullable="false" />
+          <Property Name="CalcAmount" Type="numeric" Precision="26" Scale="2" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="WMatTurn">
           <Key>
@@ -4009,6 +4032,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MoveInventories_Materials">
+          <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="1" />
+          <End Role="WayBillTmc" Type="BaseModel.Store.WayBillTmc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="WayBillTmc">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MoveInventories_WaybillList">
+          <End Role="WaybillList" Type="BaseModel.Store.WaybillList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WayBillTmc" Type="BaseModel.Store.WayBillTmc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="WayBillTmc">
+              <PropertyRef Name="WbillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_MP_MATID">
           <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -5578,7 +5627,7 @@
                 <Property Name="WbillId" Type="int" Nullable="false" />
                 <Property Name="MatId" Type="int" Nullable="false" />
                 <Property Name="Wid" Type="int" />
-                <Property Name="Amount" Type="numeric" Nullable="false" Precision="19" Scale="8" />
+                <Property Name="Amount" Type="numeric" Nullable="false" Precision="17" Scale="4" />
                 <Property Name="Price" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="Discount" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="Nds" Type="numeric" Precision="15" Scale="4" />
@@ -5627,7 +5676,7 @@
                 <Property Name="WbillId" Type="int" Nullable="false" />
                 <Property Name="MatId" Type="int" Nullable="false" />
                 <Property Name="Wid" Type="int" />
-                <Property Name="Amount" Type="numeric" Nullable="false" Precision="19" Scale="8" />
+                <Property Name="Amount" Type="numeric" Nullable="false" Precision="17" Scale="4" />
                 <Property Name="Price" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="Discount" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="NDS" Type="numeric" Precision="15" Scale="4" />
@@ -7996,6 +8045,15 @@
             <Parameter Name="get_archived" Mode="In" Type="Int32" />
             <Parameter Name="get_child_node" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="WayBillTmc" EntityType="BaseModel.WayBillTmc" />
+          <AssociationSet Name="FK_MoveInventories_Materials" Association="BaseModel.FK_MoveInventories_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="WayBillTmc" EntitySet="WayBillTmc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MoveInventories_WaybillList" Association="BaseModel.FK_MoveInventories_WaybillList">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="WayBillTmc" EntitySet="WayBillTmc" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -9040,6 +9098,8 @@
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" FromRole="Materials" ToRole="WaybillDet" />
           <NavigationProperty Name="PosRemains" Relationship="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" FromRole="Materials" ToRole="PosRemains" />
           <NavigationProperty Name="WayBillMakeProps" Relationship="BaseModel.FK_WayBillMakeProps_Materials" FromRole="Materials" ToRole="WayBillMakeProps" />
+          <NavigationProperty Name="WayBillTmc" Relationship="BaseModel.FK_MoveInventories_Materials" FromRole="Materials" ToRole="WayBillTmc" />
+          <Property Type="Int32" Name="DecPlaces" Nullable="false" />
         </EntityType>
         <Association Name="FK_CONTRDET_REFERENCE_MATERIAL">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="0..1" />
@@ -10654,6 +10714,7 @@
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__WAYBILLLI__PERSO__6E01572D" FromRole="WaybillList" ToRole="Kagent" />
           <NavigationProperty Name="Kontragent" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" FromRole="WaybillList" ToRole="Kagent" />
           <NavigationProperty Name="Kagent2" Relationship="BaseModel.FK_WBL_ENTID" FromRole="WaybillList" ToRole="Kagent" />
+          <NavigationProperty Name="WayBillTmc" Relationship="BaseModel.FK_MoveInventories_WaybillList" FromRole="WaybillList" ToRole="WayBillTmc" />
           </EntityType>
         <Association Name="FK_COMMISSION_WBILLID">
           <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
@@ -13327,6 +13388,47 @@
           <Property Type="DateTime" Name="DateAdded" Nullable="true" Precision="23" />
           <Property Type="DateTime" Name="DateModified" Nullable="true" Precision="23" />
         </ComplexType>
+        <EntityType Name="WayBillTmc">
+          <Key>
+            <PropertyRef Name="PosId" />
+          </Key>
+          <Property Type="Int32" Name="PosId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Num" Nullable="false" />
+          <Property Type="Int32" Name="Checked" />
+          <Property Type="Int32" Name="WbillId" Nullable="false" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="2" />
+          <Property Type="Int32" Name="TurnType" Nullable="false" />
+          <Property Type="Decimal" Name="CalcAmount" Precision="26" Scale="2" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_MoveInventories_Materials" FromRole="WayBillTmc" ToRole="Materials" />
+          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_MoveInventories_WaybillList" FromRole="WayBillTmc" ToRole="WaybillList" />
+        </EntityType>
+        <Association Name="FK_MoveInventories_Materials">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
+          <End Type="BaseModel.WayBillTmc" Role="WayBillTmc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="WayBillTmc">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MoveInventories_WaybillList">
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.WayBillTmc" Role="WayBillTmc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="WayBillTmc">
+              <PropertyRef Name="WbillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -14165,6 +14267,7 @@
           <EntitySetMapping Name="Materials">
             <EntityTypeMapping TypeName="BaseModel.Materials">
               <MappingFragment StoreEntitySet="Materials">
+                <ScalarProperty Name="DecPlaces" ColumnName="DecPlaces" />
                 <ScalarProperty Name="BMP" ColumnName="BMP" />
                 <ScalarProperty Name="CF5" ColumnName="CF5" />
                 <ScalarProperty Name="CF4" ColumnName="CF4" />
@@ -16880,6 +16983,20 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="WayBillTmc">
+            <EntityTypeMapping TypeName="BaseModel.WayBillTmc">
+              <MappingFragment StoreEntitySet="WayBillTmc">
+                <ScalarProperty Name="CalcAmount" ColumnName="CalcAmount" />
+                <ScalarProperty Name="TurnType" ColumnName="TurnType" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

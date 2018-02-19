@@ -68,7 +68,7 @@ namespace SP_Sklad.WBDetForm
                     Nds = _wb.Nds,
                     CurrId = _wb.CurrId,
                     OnDate = _wb.OnDate,
-                    Num = _wb.WaybillDet.Count() + 1,
+                    Num = _db.GetWayBillDetOut(_wb.WbillId).Count() + 1 ,
                     OnValue = _wb.OnValue,
                     PosKind = 0,
                     PosParent = 0,

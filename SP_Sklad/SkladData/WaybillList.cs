@@ -23,6 +23,7 @@ namespace SP_Sklad.SkladData
             this.WayBillDetAddProps = new HashSet<WayBillDetAddProps>();
             this.WayBillSvc = new HashSet<WayBillSvc>();
             this.WayBillMakeProps = new HashSet<WayBillMakeProps>();
+            this.WayBillTmc = new HashSet<WayBillTmc>();
         }
     
         public int WbillId { get; set; }
@@ -66,5 +67,6 @@ namespace SP_Sklad.SkladData
         public virtual Kagent Kagent { get; set; }
         public virtual Kagent Kontragent { get; set; }
         public virtual Kagent Kagent2 { get; set; }
+        public virtual ICollection<WayBillTmc> WayBillTmc { get; set; }
     }
 }

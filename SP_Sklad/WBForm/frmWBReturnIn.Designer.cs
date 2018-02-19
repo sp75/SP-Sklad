@@ -54,7 +54,9 @@
             this.RsvInfoBtn = new DevExpress.XtraBars.BarButtonItem();
             this.MatInfoBtn = new DevExpress.XtraBars.BarButtonItem();
             this.bar1 = new DevExpress.XtraBars.Bar();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.AddMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.EditMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
             this.DelMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
@@ -174,9 +176,11 @@
             this.DelAllRsvBarBtn,
             this.MarkBtn,
             this.AddMaterialBtn,
-            this.barStaticItem1});
+            this.barStaticItem1,
+            this.barSubItem1,
+            this.barButtonItem1});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 21;
+            this.barManager1.MaxItemId = 23;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1,
             this.repositoryItemTextEdit2});
@@ -248,7 +252,7 @@
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
             this.bar1.FloatLocation = new System.Drawing.Point(49, 383);
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.AddMaterialBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.EditMaterialBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.DelMaterialBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem1, true)});
@@ -259,15 +263,34 @@
             this.bar1.StandaloneBarDockControl = this.standaloneBarDockControl1;
             this.bar1.Text = "Custom 2";
             // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "Додати";
+            this.barSubItem1.Id = 21;
+            this.barSubItem1.ImageIndex = 5;
+            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.AddMaterialBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
+            this.barSubItem1.Name = "barSubItem1";
+            this.barSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
             // AddMaterialBtn
             // 
-            this.AddMaterialBtn.Caption = "Додати";
+            this.AddMaterialBtn.Caption = "Товар";
             this.AddMaterialBtn.Id = 17;
-            this.AddMaterialBtn.ImageIndex = 5;
+            this.AddMaterialBtn.ImageIndex = 8;
             this.AddMaterialBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Insert));
             this.AddMaterialBtn.Name = "AddMaterialBtn";
             this.AddMaterialBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.AddMaterialBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddMaterialBtn_ItemClick);
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "ТМС";
+            this.barButtonItem1.Id = 22;
+            this.barButtonItem1.ImageIndex = 17;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick_1);
             // 
             // EditMaterialBtn
             // 
@@ -355,6 +378,7 @@
             this.WBImgList.Images.SetKeyName(14, "Зняти з резерву.bmp");
             this.WBImgList.Images.SetKeyName(15, "Зняти з резерву все.bmp");
             this.WBImgList.Images.SetKeyName(16, "позначити.bmp");
+            this.WBImgList.Images.SetKeyName(17, "icons-05.png");
             // 
             // RsvBarBtn
             // 
@@ -680,10 +704,10 @@
             // 
             // BarCodeEdit
             // 
-            this.BarCodeEdit.Location = new System.Drawing.Point(336, 246);
+            this.BarCodeEdit.Location = new System.Drawing.Point(346, 247);
             this.BarCodeEdit.MenuManager = this.barManager1;
             this.BarCodeEdit.Name = "BarCodeEdit";
-            this.BarCodeEdit.Size = new System.Drawing.Size(271, 22);
+            this.BarCodeEdit.Size = new System.Drawing.Size(261, 22);
             this.BarCodeEdit.StyleController = this.styleController1;
             this.BarCodeEdit.TabIndex = 25;
             this.BarCodeEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit1_KeyPress);
@@ -1032,5 +1056,7 @@
         private DevExpress.XtraEditors.DateEdit OnDateDBEdit;
         private DevExpress.XtraEditors.TextEdit NotesEdit;
         private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }

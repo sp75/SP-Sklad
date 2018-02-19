@@ -562,13 +562,14 @@ namespace SP_Sklad.MainTabs
 
         private void RecalcRemainsMatBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-          
+
             using (var db = DB.SkladBase())
             {
-                var pos = db.PosRemains.Where(w => w.MatId == focused_wh_mat.MatId).Select(s => new { s.PosId, s.WId, s.OnDate }).ToList();
+                var pos = db.WaybillDet.Where(w => w.MatId == focused_wh_mat.MatId && w.WaybillList.WType > 0).Select(s => new { s.PosId, s.WId, s.OnDate }).ToList();
+
                 foreach (var item in pos)
                 {
-                    db.SP_RECALC_REMAINS(item.PosId, focused_wh_mat.MatId, item.WId, item.OnDate, 0);
+                    db.SP_RECALC_POSREMAINS(item.PosId, focused_wh_mat.MatId, item.WId, item.OnDate, 0);
                 }
 
                 db.SaveChanges();

@@ -635,6 +635,9 @@
     <Compile Include="SkladData\WayBillMakeProps.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\WayBillTmc.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\WBListMake_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1253,6 +1256,12 @@
     <Compile Include="WBDetForm\frmWaybillSvcDet.Designer.cs">
       <DependentUpon>frmWaybillSvcDet.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBDetForm\frmWayBillTMCDet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBDetForm\frmWayBillTMCDet.Designer.cs">
+      <DependentUpon>frmWayBillTMCDet.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBDetForm\frmWBInventoryDet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1546,6 +1555,9 @@
     <EmbeddedResource Include="WBDetForm\frmWaybillSvcDet.resx">
       <DependentUpon>frmWaybillSvcDet.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WBDetForm\frmWayBillTMCDet.resx">
+      <DependentUpon>frmWayBillTMCDet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBDetForm\frmWBInventoryDet.resx">
       <DependentUpon>frmWBInventoryDet.cs</DependentUpon>
     </EmbeddedResource>
@@ -1678,6 +1690,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WayBillMake.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WayBillMakeProps.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WaybillMove.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.WayBillTmc.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WBListMake_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WhMatGet_Result.datasource" />
     <None Include="Properties\Settings.settings">

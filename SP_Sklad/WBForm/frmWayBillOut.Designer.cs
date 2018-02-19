@@ -46,6 +46,7 @@
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.EditMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
             this.DelMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
@@ -109,9 +110,9 @@
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.progressBarControl1 = new DevExpress.XtraEditors.ProgressBarControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.progressBarControl1 = new DevExpress.XtraEditors.ProgressBarControl();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
@@ -182,9 +183,10 @@
             this.ProcurationBtn,
             this.barButtonItem2,
             this.WeighBtn,
-            this.barButtonItem3});
+            this.barButtonItem3,
+            this.barButtonItem4});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 23;
+            this.barManager1.MaxItemId = 24;
             // 
             // bar2
             // 
@@ -302,8 +304,9 @@
             this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.AddMaterialBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4, true)});
             this.barSubItem1.Name = "barSubItem1";
             this.barSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
@@ -339,6 +342,14 @@
             this.barButtonItem8.Id = 8;
             this.barButtonItem8.ImageIndex = 11;
             this.barButtonItem8.Name = "barButtonItem8";
+            // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Caption = "ТМС";
+            this.barButtonItem4.Id = 23;
+            this.barButtonItem4.ImageIndex = 19;
+            this.barButtonItem4.Name = "barButtonItem4";
+            this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
             // 
             // EditMaterialBtn
             // 
@@ -421,6 +432,7 @@
             this.WBImgList.Images.SetKeyName(16, "позначити.bmp");
             this.WBImgList.Images.SetKeyName(17, "Договор продажу.bmp");
             this.WBImgList.Images.SetKeyName(18, "Дисконтна картка.bmp");
+            this.WBImgList.Images.SetKeyName(19, "icons-05.png");
             // 
             // RsvBarBtn
             // 
@@ -871,7 +883,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Товар", 0, 8),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Послуга", 1, 10)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Послуга", 1, 10),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("ТМС", 2, 19)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.WBImgList;
             // 
@@ -1051,17 +1064,6 @@
             this.panelControl2.Size = new System.Drawing.Size(968, 52);
             this.panelControl2.TabIndex = 14;
             // 
-            // progressBarControl1
-            // 
-            this.progressBarControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBarControl1.Location = new System.Drawing.Point(686, 246);
-            this.progressBarControl1.MenuManager = this.barManager1;
-            this.progressBarControl1.Name = "progressBarControl1";
-            this.progressBarControl1.Properties.Step = 1;
-            this.progressBarControl1.Size = new System.Drawing.Size(270, 18);
-            this.progressBarControl1.TabIndex = 2;
-            this.progressBarControl1.Visible = false;
-            // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -1081,6 +1083,17 @@
             this.simpleButton1.TabIndex = 0;
             this.simpleButton1.Text = "Відмінити";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // progressBarControl1
+            // 
+            this.progressBarControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBarControl1.Location = new System.Drawing.Point(686, 246);
+            this.progressBarControl1.MenuManager = this.barManager1;
+            this.progressBarControl1.Name = "progressBarControl1";
+            this.progressBarControl1.Properties.Step = 1;
+            this.progressBarControl1.Size = new System.Drawing.Size(270, 18);
+            this.progressBarControl1.TabIndex = 2;
+            this.progressBarControl1.Visible = false;
             // 
             // WbDetPopupMenu
             // 
@@ -1247,5 +1260,6 @@
         private DevExpress.XtraBars.BarButtonItem WeighBtn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraEditors.ProgressBarControl progressBarControl1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
     }
 }
