@@ -43,7 +43,10 @@ namespace SP_Sklad.WBDetForm
 
         private void frmWayBillTMCDet_Load(object sender, EventArgs e)
         {
-            MatComboBox.Properties.DataSource = _db.Materials.Where(w => w.TypeId == 4).Select(s => new { s.MatId, s.Name, s.Artikul }).ToList();
+            var list_mat = _db.Materials.Where(w => w.TypeId == 4).Select(s => new { s.MatId, s.Name, s.Artikul }).ToList();
+
+            MatComboBox.Properties.DataSource = list_mat;
+       //     MatComboBox.EditValue = list_mat.Any() ? list_mat.FirstOrDefault().MatId : MatComboBox.EditValue;
 
             if (_PosId == null)
             {
@@ -52,7 +55,8 @@ namespace SP_Sklad.WBDetForm
                     WbillId = _wb.WbillId,
                     Amount = 0,
                     TurnType = _wb.WType > 0 ? 1 : -1,
-                    Num = _db.GetWaybillDetIn(_wb.WbillId).Count() + 1
+                    Num = _db.GetWaybillDetIn(_wb.WbillId).Count() + 1,
+                    MatId = list_mat.Any() ? list_mat.FirstOrDefault().MatId : 0
                 };
             }
             else
@@ -66,6 +70,7 @@ namespace SP_Sklad.WBDetForm
             }
 
             GetOk();
+
         }
 
         bool GetOk()
@@ -80,6 +85,19 @@ namespace SP_Sklad.WBDetForm
         private void MatComboBox_EditValueChanged(object sender, EventArgs e)
         {
             GetOk();
+        }
+
+        private void AmountEdit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && AmountEdit.Value > 0)
+            {
+                OkButton.PerformClick();
+            }
+        }
+
+        private void frmWayBillTMCDet_Shown(object sender, EventArgs e)
+        {
+            AmountEdit.Focus();
         }
     }
 }

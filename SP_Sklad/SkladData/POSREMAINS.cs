@@ -26,6 +26,7 @@ namespace SP_Sklad.SkladData
         public decimal Ordered { get; set; }
         public decimal OrderedRsv { get; set; }
         public Nullable<decimal> ActualRemain { get; set; }
+        public decimal Used { get; set; }
     
         public virtual Materials Materials { get; set; }
         public virtual WaybillDet WaybillDet { get; set; }

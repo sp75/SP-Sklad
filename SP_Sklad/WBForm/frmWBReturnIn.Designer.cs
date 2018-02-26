@@ -289,6 +289,7 @@
             this.barButtonItem1.Caption = "ТМС";
             this.barButtonItem1.Id = 22;
             this.barButtonItem1.ImageIndex = 17;
+            this.barButtonItem1.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T));
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick_1);
             // 

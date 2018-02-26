@@ -300,6 +300,7 @@
             this.AmountEdit.Size = new System.Drawing.Size(90, 22);
             this.AmountEdit.StyleController = this.styleController1;
             this.AmountEdit.TabIndex = 4;
+            this.AmountEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AmountEdit_KeyPress);
             // 
             // panelControl2
             // 
@@ -350,6 +351,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Додати\\Редагувати ТМС";
             this.Load += new System.EventHandler(this.frmWayBillTMCDet_Load);
+            this.Shown += new System.EventHandler(this.frmWayBillTMCDet_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WayBillTmcBS)).EndInit();

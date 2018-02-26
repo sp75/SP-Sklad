@@ -1885,7 +1885,8 @@
           <Property Name="InWay" Type="numeric" Precision="15" Scale="4" />
           <Property Name="Ordered" Type="numeric" Nullable="false" Precision="15" Scale="4" />
           <Property Name="OrderedRsv" Type="numeric" Nullable="false" Precision="15" Scale="4" />
-          <Property Name="ActualRemain" Type="numeric" Precision="17" Scale="4" StoreGeneratedPattern="Computed" />
+          <Property Name="Used" Type="numeric" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="ActualRemain" Type="numeric" Scale="4" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="PriceList">
           <Key>
@@ -5557,6 +5558,19 @@
           </ReturnType>
         </Function>
         <Function Name="GetSvcTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetUsedMaterials" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mat_id" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="KaId" Type="int" />
+                <Property Name="KaName" Type="nvarchar" Nullable="false" MaxLength="64" />
+                <Property Name="Remain" Type="numeric" Precision="38" Scale="2" />
+                <Property Name="MsrName" Type="nvarchar" Nullable="false" MaxLength="6" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="GetUserAccessCashDesks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="user_id" Type="int" Mode="In" />
           <ReturnType>
@@ -5956,6 +5970,7 @@
                 <Property Name="CertDate" Type="datetime" />
                 <Property Name="Producer" Type="nvarchar" MaxLength="64" />
                 <Property Name="CurRemain" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="DocType" Type="int" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -7864,15 +7879,6 @@
             <Parameter Name="ka_grp_id" Mode="In" Type="Guid" />
             <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="PosGet" IsComposable="true" ReturnType="Collection(BaseModel.PosGet_Result)">
-            <Parameter Name="mat_id" Mode="In" Type="Int32" />
-            <Parameter Name="w_id" Mode="In" Type="Int32" />
-            <Parameter Name="ka_id" Mode="In" Type="Int32" />
-            <Parameter Name="on_date" Mode="In" Type="DateTime" />
-            <Parameter Name="get_empty" Mode="In" Type="Int32" />
-            <Parameter Name="wh" Mode="In" Type="String" />
-            <Parameter Name="user_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="MatRemainByWh" IsComposable="true" ReturnType="Collection(BaseModel.MatRemainByWh_Result)">
             <Parameter Name="mat_id" Mode="In" Type="Int32" />
             <Parameter Name="w_id" Mode="In" Type="Int32" />
@@ -8007,6 +8013,18 @@
             <End Role="WaybillList" EntitySet="WaybillList" />
             <End Role="WayBillTmc" EntitySet="WayBillTmc" />
           </AssociationSet>
+          <FunctionImport Name="GetUsedMaterials" IsComposable="true" ReturnType="Collection(BaseModel.GetUsedMaterials_Result)">
+          <Parameter Name="mat_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PosGet" IsComposable="true" ReturnType="Collection(BaseModel.PosGet_Result)">
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
+            <Parameter Name="w_id" Mode="In" Type="Int32" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="on_date" Mode="In" Type="DateTime" />
+            <Parameter Name="get_empty" Mode="In" Type="Int32" />
+            <Parameter Name="wh" Mode="In" Type="String" />
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -11027,7 +11045,8 @@
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" FromRole="PosRemains" ToRole="Materials" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" FromRole="PosRemains" ToRole="WaybillDet" />
           <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK__POSREMAINS__WID__2EA5EC27" FromRole="PosRemains" ToRole="Warehouse" />
-          <Property Type="Decimal" Name="ActualRemain" Precision="17" Scale="4" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="Decimal" Name="ActualRemain" Precision="18" Scale="4" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="Decimal" Name="Used" Nullable="false" Precision="15" Scale="4" />
         </EntityType>
         <Association Name="FK__POSREMAIN__MATID__2CBDA3B5">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
@@ -12890,28 +12909,6 @@
           <Property Type="String" Name="WhName" Nullable="true" MaxLength="250" />
           <Property Type="Guid" Name="KAgentGroupId" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="PosGet_Result">
-          <Property Type="Int32" Name="PosId" Nullable="true" />
-          <Property Type="Decimal" Name="Remain" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Rsv" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="Wid" Nullable="true" />
-          <Property Type="String" Name="Name" Nullable="true" MaxLength="128" />
-          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
-          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="CurrId" Nullable="true" />
-          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="10" />
-          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="String" Name="SN" Nullable="true" MaxLength="64" />
-          <Property Type="Int32" Name="WType" Nullable="true" />
-          <Property Type="String" Name="DocNum" Nullable="true" MaxLength="20" />
-          <Property Type="Int32" Name="WBillId" Nullable="true" />
-          <Property Type="Guid" Name="Id" Nullable="true" />
-          <Property Type="String" Name="GTD" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="CertNum" Nullable="true" MaxLength="64" />
-          <Property Type="DateTime" Name="CertDate" Nullable="true" Precision="23" />
-          <Property Type="String" Name="Producer" Nullable="true" MaxLength="64" />
-          <Property Type="Decimal" Name="CurRemain" Nullable="true" Precision="15" Scale="4" />
-        </ComplexType>
         <ComplexType Name="MatRemainByWh_Result">
           <Property Type="Int32" Name="WId" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="64" />
@@ -13353,6 +13350,35 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="GetUsedMaterials_Result">
+          <Property Type="Int32" Name="KaId" Nullable="true" />
+          <Property Type="String" Name="KaName" Nullable="false" MaxLength="64" />
+          <Property Type="Decimal" Name="Remain" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+        </ComplexType>
+        <ComplexType Name="PosGet_Result">
+          <Property Type="Int32" Name="PosId" Nullable="true" />
+          <Property Type="Decimal" Name="Remain" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Rsv" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="Wid" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="128" />
+          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="String" Name="SN" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="WType" Nullable="true" />
+          <Property Type="String" Name="DocNum" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="WBillId" Nullable="true" />
+          <Property Type="Guid" Name="Id" Nullable="true" />
+          <Property Type="String" Name="GTD" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="CertNum" Nullable="true" MaxLength="64" />
+          <Property Type="DateTime" Name="CertDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Producer" Nullable="true" MaxLength="64" />
+          <Property Type="Decimal" Name="CurRemain" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="DocType" Nullable="true" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -15330,6 +15356,7 @@
           <EntitySetMapping Name="PosRemains">
             <EntityTypeMapping TypeName="BaseModel.PosRemains">
               <MappingFragment StoreEntitySet="PosRemains">
+                <ScalarProperty Name="Used" ColumnName="Used" />
                 <ScalarProperty Name="ActualRemain" ColumnName="ActualRemain" />
                 <ScalarProperty Name="OrderedRsv" ColumnName="OrderedRsv" />
                 <ScalarProperty Name="Ordered" ColumnName="Ordered" />
@@ -16498,32 +16525,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="PosGet" FunctionName="BaseModel.Store.PosGet">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.PosGet_Result">
-                <ScalarProperty Name="PosId" ColumnName="PosId" />
-                <ScalarProperty Name="Remain" ColumnName="Remain" />
-                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
-                <ScalarProperty Name="Wid" ColumnName="Wid" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
-                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
-                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
-                <ScalarProperty Name="SN" ColumnName="SN" />
-                <ScalarProperty Name="WType" ColumnName="WType" />
-                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
-                <ScalarProperty Name="WBillId" ColumnName="WBillId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="GTD" ColumnName="GTD" />
-                <ScalarProperty Name="CertNum" ColumnName="CertNum" />
-                <ScalarProperty Name="CertDate" ColumnName="CertDate" />
-                <ScalarProperty Name="Producer" ColumnName="Producer" />
-                <ScalarProperty Name="CurRemain" ColumnName="CurRemain" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="MatRemainByWh" FunctionName="BaseModel.Store.MatRemainByWh">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.MatRemainByWh_Result">
@@ -16888,6 +16889,43 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetUsedMaterials" FunctionName="BaseModel.Store.GetUsedMaterials">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetUsedMaterials_Result">
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PosGet" FunctionName="BaseModel.Store.PosGet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.PosGet_Result">
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
+                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
+                <ScalarProperty Name="Wid" ColumnName="Wid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="SN" ColumnName="SN" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+                <ScalarProperty Name="WBillId" ColumnName="WBillId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GTD" ColumnName="GTD" />
+                <ScalarProperty Name="CertNum" ColumnName="CertNum" />
+                <ScalarProperty Name="CertDate" ColumnName="CertDate" />
+                <ScalarProperty Name="Producer" ColumnName="Producer" />
+                <ScalarProperty Name="CurRemain" ColumnName="CurRemain" />
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

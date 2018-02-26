@@ -565,7 +565,7 @@ namespace SP_Sklad.MainTabs
 
             using (var db = DB.SkladBase())
             {
-                var pos = db.WaybillDet.Where(w => w.MatId == focused_wh_mat.MatId && w.WaybillList.WType > 0).Select(s => new { s.PosId, s.WId, s.OnDate }).ToList();
+                var pos = db.WMatTurn.Where(w => w.MatId == focused_wh_mat.MatId ).OrderBy(o=> o.OnDate).Select(s => new { s.PosId, s.WId, s.OnDate }).ToList();
 
                 foreach (var item in pos)
                 {
@@ -664,6 +664,10 @@ namespace SP_Sklad.MainTabs
                     break;
                 case 3:
                     MatChangeGridControl.DataSource = DB.SkladBase().GetMatChange(row.MatId).ToList();
+                    break;
+
+                case 5:
+                    gridControl1.DataSource = DB.SkladBase().GetUsedMaterials(row.MatId).ToList();
                     break;
             }
         }
@@ -878,6 +882,43 @@ namespace SP_Sklad.MainTabs
         private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
+        }
+
+        private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var db = DB.SkladBase())
+            {
+                var pos = db.Database.ExecuteSqlCommand(@"
+                         delete from [sp_base].[dbo].[PosRemains]
+                         where PosId IN (
+                           SELECT PosId 
+                           FROM [PosRemains]
+                           where Remain = 0 and Ordered=0 and  MatId = {0} 
+                           group by PosId)", focused_wh_mat.MatId);
+
+                db.SaveChanges();
+            }
+        }
+
+        private void bandedGridView1_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                PosBottomPopupMenu.ShowPopup(p2);
+            }
+        }
+
+        private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var row = bandedGridView1.GetFocusedRow() as PosGet_Result;
+            FindDoc.Find(row.Id, row.DocType, row.OnDate);
+        }
+
+        private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var row = bandedGridView1.GetFocusedRow() as PosGet_Result;
+            PrintDoc.Show(row.Id.Value, row.DocType.Value, DB.SkladBase());
         }
 
     }

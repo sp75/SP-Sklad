@@ -74,11 +74,7 @@ namespace SP_Sklad.WBDetForm
 
             if (pos_out_list == null)
             {
-
-                pos_out_list = _db.GetPosOut(_start_date, _wb.OnDate, 0, _wb.KaId, -1).ToList();
-
-                //   pos_out_list = _db.GetPosOut(_start_date, _wb.OnDate, 0, _wb.KaId); через funGetPosOut
-  
+                pos_out_list = _db.GetPosOut(_start_date, _wb.OnDate, 0, _wb.KaId, -1);
             }
 
             MatComboBox.Properties.DataSource = pos_out_list;

@@ -144,6 +144,7 @@ namespace SP_Sklad.Common
             f.uc.xtraTabPage4.PageVisible = false;
             f.uc.xtraTabPage5.PageVisible = false;
             f.uc.xtraTabPage9.PageVisible = false;
+            f.uc.xtraTabPage11.PageVisible = false;
             f.uc.MatListTabPage.PageVisible = true;
             f.uc.xtraTabControl1.SelectedTabPageIndex = 4;
             f.uc.wb = wb;

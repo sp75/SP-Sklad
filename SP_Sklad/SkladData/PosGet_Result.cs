@@ -33,5 +33,6 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> CertDate { get; set; }
         public string Producer { get; set; }
         public Nullable<decimal> CurRemain { get; set; }
+        public Nullable<int> DocType { get; set; }
     }
 }
