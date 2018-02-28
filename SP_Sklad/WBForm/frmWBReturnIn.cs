@@ -173,9 +173,10 @@ namespace SP_Sklad.WBForm
                 return;
             }
 
+            var SummAll = _db.WaybillDet.Where(w => w.WbillId == _wbill_id).Sum(s => s.Total);
             wb.UpdatedAt = DateTime.Now;
-            wb.SummAll = _db.WaybillDet.Where(w => w.WbillId == _wbill_id).Sum(s => s.Total);
-            wb.SummInCurr = wb.SummAll * wb.OnValue;
+            wb.SummAll = SummAll ?? 0;
+            wb.SummInCurr = wb.SummAll ?? 0 * wb.OnValue;
 
             _db.SaveChanges();
 

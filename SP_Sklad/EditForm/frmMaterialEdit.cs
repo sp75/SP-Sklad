@@ -82,7 +82,8 @@ namespace SP_Sklad.EditForm
                     WId = DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId,
                     CId = DBHelper.CountersList.FirstOrDefault(w => w.Def == 1).CId,
                     NDS = 0,
-                    GrpId = _mat_grp
+                    GrpId = _mat_grp,
+                    DecPlaces = 4
                 });
                 _db.SaveChanges();
                 _mat_id = _mat.MatId;

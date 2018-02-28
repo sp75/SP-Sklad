@@ -152,11 +152,13 @@ namespace SP_Sklad.Common
 
             if (f.ShowDialog() == DialogResult.OK)
             {
+                var num = wb.WaybillDet.Count();
                 foreach (var item in f.uc.custom_mat_list)
                 {
                     var wbd = new WaybillDet
                     {
                         WbillId = wb.WbillId,
+                        Num = ++num,
                         OnDate = wb.OnDate,
                         MatId = item.MatId,
                         WId = item.WId,

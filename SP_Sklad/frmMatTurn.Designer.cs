@@ -125,7 +125,7 @@
             // 
             // barButtonItem1
             // 
-            this.barButtonItem1.Caption = "Звіт по контрагенту";
+            this.barButtonItem1.Caption = "Звіт про рух товару";
             this.barButtonItem1.Id = 0;
             this.barButtonItem1.ImageIndex = 0;
             this.barButtonItem1.Name = "barButtonItem1";

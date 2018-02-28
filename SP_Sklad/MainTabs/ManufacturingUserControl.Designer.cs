@@ -1779,7 +1779,8 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 16, 10),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -16, 9),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 5, 14),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 20, 39)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 20, 39),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 4, 17)});
             this.repositoryItemImageComboBox6.Name = "repositoryItemImageComboBox6";
             this.repositoryItemImageComboBox6.SmallImages = this.GridImageList;
             // 
@@ -2008,6 +2009,7 @@
             this.whUserControl.Size = new System.Drawing.Size(1050, 622);
             this.whUserControl.TabIndex = 0;
             this.whUserControl.wb = null;
+            this.whUserControl.wh_mat_list = null;
             // 
             // xtraTabPage10
             // 

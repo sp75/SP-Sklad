@@ -93,6 +93,7 @@
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
             this.checkEdit6 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit4 = new DevExpress.XtraEditors.CheckEdit();
@@ -113,7 +114,6 @@
             this.textEdit3 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.AccessPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserBS)).BeginInit();
@@ -226,6 +226,9 @@
             this.ImageList.Images.SetKeyName(11, "exec16.png");
             this.ImageList.Images.SetKeyName(12, "info.bmp");
             this.ImageList.Images.SetKeyName(13, "unit_with_grent_option.bmp");
+            this.ImageList.Images.SetKeyName(14, "Наявн_сть на сладах.bmp");
+            this.ImageList.Images.SetKeyName(15, "Каси.bmp");
+            this.ImageList.Images.SetKeyName(16, "Склад+Торговля.bmp");
             // 
             // barButtonItem1
             // 
@@ -841,6 +844,15 @@
             this.gridColumn3.VisibleIndex = 1;
             this.gridColumn3.Width = 446;
             // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "Резервування";
+            this.gridColumn6.FieldName = "UseReceived";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 2;
+            this.gridColumn6.Width = 98;
+            // 
             // xtraTabPage5
             // 
             this.xtraTabPage5.Controls.Add(this.checkEdit6);
@@ -1057,15 +1069,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6)});
             this.AccessPopupMenu.Manager = this.barManager1;
             this.AccessPopupMenu.Name = "AccessPopupMenu";
-            // 
-            // gridColumn6
-            // 
-            this.gridColumn6.Caption = "Резервування";
-            this.gridColumn6.FieldName = "UseReceived";
-            this.gridColumn6.Name = "gridColumn6";
-            this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 2;
-            this.gridColumn6.Width = 98;
             // 
             // frmUserEdit
             // 

@@ -114,6 +114,8 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.progressBarControl1 = new DevExpress.XtraEditors.ProgressBarControl();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
@@ -184,9 +186,10 @@
             this.barButtonItem2,
             this.WeighBtn,
             this.barButtonItem3,
-            this.barButtonItem4});
+            this.barButtonItem4,
+            this.barButtonItem5});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 24;
+            this.barManager1.MaxItemId = 25;
             // 
             // bar2
             // 
@@ -819,7 +822,8 @@
             this.gridColumn7,
             this.gridColumn8,
             this.gridColumn9,
-            this.gridColumn13});
+            this.gridColumn13,
+            this.gridColumn14});
             this.WaybillDetOutGridView.GridControl = this.WaybillDetOutGridControl;
             this.WaybillDetOutGridView.Images = this.WBImgList;
             this.WaybillDetOutGridView.Name = "WaybillDetOutGridView";
@@ -1107,6 +1111,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.DelAllRsvBarBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.MarkBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
             new DevExpress.XtraBars.LinkPersistInfo(this.MatInfoBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.RsvInfoBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.WeighBtn),
@@ -1114,6 +1119,19 @@
             this.WbDetPopupMenu.Manager = this.barManager1;
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
             this.WbDetPopupMenu.Popup += new System.EventHandler(this.WbDetPopupMenu_Popup);
+            // 
+            // gridColumn14
+            // 
+            this.gridColumn14.Caption = "Група";
+            this.gridColumn14.FieldName = "GroupName";
+            this.gridColumn14.Name = "gridColumn14";
+            // 
+            // barButtonItem5
+            // 
+            this.barButtonItem5.Caption = "Перенумеровати";
+            this.barButtonItem5.Id = 24;
+            this.barButtonItem5.Name = "barButtonItem5";
+            this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
             // 
             // frmWayBillOut
             // 
@@ -1262,5 +1280,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraEditors.ProgressBarControl progressBarControl1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
     }
 }

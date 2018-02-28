@@ -637,5 +637,31 @@ namespace SP_Sklad.WBForm
                 RefreshDet();
             }
         }
+
+        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            for (int i = 0; WaybillDetOutGridView.RowCount > i; i++)
+            {
+                var row = WaybillDetOutGridView.GetRow(i) as GetWayBillDetOut_Result;
+                if (row.PosType == 0)
+                {
+                    var wbd = _db.WaybillDet.Find(row.PosId);
+                    wbd.Num = i + 1;
+                }
+                if (row.PosType == 1)
+                {
+                    var wds = _db.WayBillSvc.Find(row.PosId);
+                    wds.Num = i + 1;
+                }
+
+                if (row.PosType == 2)
+                {
+                    var wbt = _db.WayBillTmc.Find(row.PosId);
+                    wbt.Num = i + 1;
+                }
+            }
+            _db.SaveChanges();
+            RefreshDet();
+        }
     }
 }

@@ -44,12 +44,18 @@ namespace SP_Sklad.EditForm
         private void frmUserEdit_Load(object sender, EventArgs e)
         {
             xtraTabControl1.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
+            xtraTabControl2.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
 
             tree.Add(new CatalogTreeList { Id = 0, ParentId = -1, Text = "Основна інформація", ImgIdx = 0, TabIdx = 0 });
             tree.Add(new CatalogTreeList { Id = 1, ParentId = -1, Text = "Права", ImgIdx = 13, TabIdx = 1 });
+            tree.Add(new CatalogTreeList { Id = 3, ParentId = 1, Text = "Основні", ImgIdx = 16, TabIdx = 1 });
+            tree.Add(new CatalogTreeList { Id = 4, ParentId = 1, Text = "Доступ до сладів", ImgIdx = 14, TabIdx = 1 });
+            tree.Add(new CatalogTreeList { Id = 5, ParentId = 1, Text = "Додаткові", ImgIdx = 1, TabIdx = 1 });
+            tree.Add(new CatalogTreeList { Id = 6, ParentId = 1, Text = "Доступ до кас", ImgIdx = 15, TabIdx = 1 });
             tree.Add(new CatalogTreeList { Id = 2, ParentId = -1, Text = "Додаткова інформація", ImgIdx = 12, TabIdx = 2 });
 
             TreeListBindingSource.DataSource = tree;
+            DirTreeList.ExpandAll();
 
             if (_user_id == null)
             {
@@ -92,11 +98,24 @@ namespace SP_Sklad.EditForm
         {
             var focused_tree_node = DirTreeList.GetDataRecordByNode(e.Node) as CatalogTreeList;
 
-            if (focused_tree_node.Id == 1)
+            switch (focused_tree_node.Id)
             {
-                UserTreeAccessBS.DataSource = _db.GetUserAccessTree(_user_id).ToList();
-                UserAccessWhGridControl.DataSource = _db.GetUserAccessWh(_user_id).ToList();
-                UserAccessCashDesksGridControl.DataSource = _db.GetUserAccessCashDesks(_user_id).ToList();
+                case 1:
+                case 3:
+                    UserTreeAccessBS.DataSource = _db.GetUserAccessTree(_user_id).ToList();
+                    xtraTabControl2.SelectedTabPageIndex = 0;
+                    break;
+                case 4:
+                    UserAccessWhGridControl.DataSource = _db.GetUserAccessWh(_user_id).ToList();
+                    xtraTabControl2.SelectedTabPageIndex = 1;
+                    break;
+                case 5:
+                    xtraTabControl2.SelectedTabPageIndex = 2;
+                    break;
+                case 6:
+                    UserAccessCashDesksGridControl.DataSource = _db.GetUserAccessCashDesks(_user_id).ToList();
+                    xtraTabControl2.SelectedTabPageIndex = 3;
+                    break;
             }
 
             xtraTabControl1.SelectedTabPageIndex = focused_tree_node.TabIdx;
