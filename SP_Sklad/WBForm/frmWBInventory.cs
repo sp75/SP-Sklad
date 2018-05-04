@@ -176,7 +176,7 @@ namespace SP_Sklad.WBForm
                 _db.WaybillDet.Add(new WaybillDet
                 {
                     WbillId = _wbill_id.Value,
-                    MatId = item.MatId.Value,
+                    MatId = item.MatId,
                     WId = wb.WaybillMove.SourceWid,
                     Amount = item.Remain.Value,
                     Price = item.AvgPrice,

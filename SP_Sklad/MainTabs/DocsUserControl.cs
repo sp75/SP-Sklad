@@ -95,6 +95,8 @@ namespace SP_Sklad.MainTabs
                 WbSummPayGridColumn.Visible = WbBalansGridColumn.Visible;
                 WbSummPayGridColumn.OptionsColumn.ShowInCustomizationForm = WbBalansGridColumn.Visible;
             }
+
+        //    WbGridView.SaveLayoutToXml(@"D:\Program RES\AVK\t.xml");
         }
 
         void GetWayBillList(int wtyp)
@@ -772,7 +774,7 @@ namespace SP_Sklad.MainTabs
                 row = gridView1.GetFocusedRow() as GetRelDocList_Result;
             }
 
-            PrintDoc.Show(row.Id.Value, row.DocType.Value, DB.SkladBase());
+            PrintDoc.Show(row.Id, row.DocType.Value, DB.SkladBase());
         }
 
         private void WbGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
@@ -1008,7 +1010,7 @@ namespace SP_Sklad.MainTabs
 
             using (var db = DB.SkladBase())
             {
-                var pld = db.PriceListDet.Where(w => w.PlId == pl_row.PlId).ToList();
+                var pld = db.PriceListDet.Where(w => w.PlId == pl_row.PlId).OrderBy(o=> o.Num).ToList();
 
                 var _wb = db.WaybillList.Add(new WaybillList()
                 {
@@ -1020,17 +1022,20 @@ namespace SP_Sklad.MainTabs
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
                     EntId = DBHelper.Enterprise.KaId,
-                    UpdatedBy = DBHelper.CurrentUser.UserId
+                    UpdatedBy = DBHelper.CurrentUser.UserId,
+                    Nds = 0
                 });
                 db.SaveChanges();
 
                 foreach (var item in pld.Where(w => w.PlDetType == 0))
                 {
+                    var DiscountPrice = item.Price - (item.Price * (item.Discount ?? 0) / 100);
+
                     db.WaybillDet.Add(new WaybillDet
                     {
                         WbillId = _wb.WbillId,
                         Amount = 0,
-                        Discount = 0,
+                        Discount = item.Discount ?? 0,
                         Nds = _wb.Nds,
                         CurrId = _wb.CurrId,
                         OnDate = _wb.OnDate,
@@ -1038,15 +1043,16 @@ namespace SP_Sklad.MainTabs
                         OnValue = _wb.OnValue,
                         PosKind = 0,
                         PosParent = 0,
-                        DiscountKind = 0,
+                        DiscountKind = 1,
                         //   PtypeId = db.Kagent.Find(_wb.KaId).PTypeId,
                         WayBillDetAddProps = new WayBillDetAddProps(),
                         BasePrice = item.Price,
-                        Price = item.Price,
+                        Price = DiscountPrice * 100 / (100 + _wb.Nds),
                         WId = DBHelper.WhList.FirstOrDefault(f => f.Def == 1).WId,
                         MatId = item.MatId.Value
                     });
                 }
+
                 db.SaveChanges();
 
                 using (var wb_in = new frmWayBillOut(-16, _wb.WbillId))

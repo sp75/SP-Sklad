@@ -80,6 +80,8 @@
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.WHTreeList = new DevExpress.XtraTreeList.TreeList();
@@ -271,8 +273,6 @@
             this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             this.PosBottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -467,6 +467,7 @@
             this.PageImageList.Images.SetKeyName(16, "Доступ до склад_в.bmp");
             this.PageImageList.Images.SetKeyName(17, "Ф_нанси.bmp");
             this.PageImageList.Images.SetKeyName(18, "_нформац_я про рух товар_в.bmp");
+            this.PageImageList.Images.SetKeyName(19, "Баланс з контрагентом.bmp");
             // 
             // barManager1
             // 
@@ -967,6 +968,22 @@
             this.barButtonItem7.Id = 30;
             this.barButtonItem7.Name = "barButtonItem7";
             this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
+            // 
+            // barButtonItem8
+            // 
+            this.barButtonItem8.Caption = "Перейти до документа";
+            this.barButtonItem8.Id = 31;
+            this.barButtonItem8.ImageIndex = 19;
+            this.barButtonItem8.Name = "barButtonItem8";
+            this.barButtonItem8.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
+            // 
+            // barButtonItem9
+            // 
+            this.barButtonItem9.Caption = "Друк/Попередній перегляд";
+            this.barButtonItem9.Id = 32;
+            this.barButtonItem9.ImageIndex = 6;
+            this.barButtonItem9.Name = "barButtonItem9";
+            this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick);
             // 
             // panelControl1
             // 
@@ -2113,10 +2130,10 @@
             // xtraTabPage11
             // 
             this.xtraTabPage11.Controls.Add(this.gridControl1);
-            this.xtraTabPage11.ImageIndex = 16;
+            this.xtraTabPage11.ImageIndex = 19;
             this.xtraTabPage11.Name = "xtraTabPage11";
             this.xtraTabPage11.Size = new System.Drawing.Size(1161, 219);
-            this.xtraTabPage11.Text = "У використанні";
+            this.xtraTabPage11.Text = "Баланс з контрагентами";
             // 
             // gridControl1
             // 
@@ -2141,6 +2158,7 @@
             this.gridView1.OptionsBehavior.AllowIncrementalSearch = true;
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsBehavior.ReadOnly = true;
+            this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn29
@@ -2157,6 +2175,8 @@
             this.gridColumn55.Caption = "Залишок";
             this.gridColumn55.FieldName = "Remain";
             this.gridColumn55.Name = "gridColumn55";
+            this.gridColumn55.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Remain", "{0:0.##}")});
             this.gridColumn55.Visible = true;
             this.gridColumn55.VisibleIndex = 1;
             this.gridColumn55.Width = 158;
@@ -3033,22 +3053,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9)});
             this.PosBottomPopupMenu.Manager = this.barManager1;
             this.PosBottomPopupMenu.Name = "PosBottomPopupMenu";
-            // 
-            // barButtonItem8
-            // 
-            this.barButtonItem8.Caption = "Перейти до документа";
-            this.barButtonItem8.Id = 31;
-            this.barButtonItem8.ImageIndex = 19;
-            this.barButtonItem8.Name = "barButtonItem8";
-            this.barButtonItem8.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
-            // 
-            // barButtonItem9
-            // 
-            this.barButtonItem9.Caption = "Друк/Попередній перегляд";
-            this.barButtonItem9.Id = 32;
-            this.barButtonItem9.ImageIndex = 6;
-            this.barButtonItem9.Name = "barButtonItem9";
-            this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick);
             // 
             // WarehouseUserControl
             // 

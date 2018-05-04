@@ -563,7 +563,7 @@ namespace SP_Sklad.MainTabs
                 row = gridView5.GetFocusedRow() as GetRelDocList_Result;
             }
 
-            PrintDoc.Show(row.Id.Value, row.DocType.Value, DB.SkladBase());
+            PrintDoc.Show(row.Id, row.DocType.Value, DB.SkladBase());
         }
 
         private void WbGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)

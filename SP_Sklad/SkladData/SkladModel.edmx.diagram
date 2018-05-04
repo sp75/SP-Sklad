@@ -127,7 +127,6 @@
         <EntityTypeShape EntityType="BaseModel.MatChange" Width="1.5" PointX="8.25" PointY="30.25" />
         <AssociationConnector Association="BaseModel.FK_MATCHANGE_CHANGEID" />
         <AssociationConnector Association="BaseModel.FK_MATCHANGE_MATID" />
-        <EntityTypeShape EntityType="BaseModel.v_WhMatRemains" Width="1.5" PointX="15.5" PointY="29.25" />
         <EntityTypeShape EntityType="BaseModel.ProfileDocSetting" Width="1.5" PointX="10.354963771232853" PointY="24.666091870826712" />
         <EntityTypeShape EntityType="BaseModel.WayBillDetTaxes" Width="1.5" PointX="19.5" PointY="12.25" />
         <AssociationConnector Association="BaseModel.FK_WBDTAXES_TAXID" />
@@ -175,10 +174,6 @@
         <EntityTypeShape EntityType="BaseModel.Licenses" Width="1.5" PointX="0.22449915121518965" PointY="23.247416909433628" />
         <EntityTypeShape EntityType="BaseModel.UserSettings" Width="1.5" PointX="21.625" PointY="0.625" />
         <EntityTypeShape EntityType="BaseModel.v_KAgentSaldo" Width="1.5" PointX="10.535968673665062" PointY="17.949280389560982" />
-        <EntityTypeShape EntityType="BaseModel.PosRemains" Width="1.5" PointX="12.375" PointY="14.625" />
-        <AssociationConnector Association="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" />
-        <AssociationConnector Association="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" />
-        <AssociationConnector Association="BaseModel.FK__POSREMAINS__WID__2EA5EC27" />
         <EntityTypeShape EntityType="BaseModel.PayDoc" Width="1.5" PointX="2.8195564964877242" PointY="18.081283354238273" />
         <AssociationConnector Association="BaseModel.FK_PD_CASHID" />
         <AssociationConnector Association="BaseModel.FK__PAYDOC__CTYPEID__2334397B" />
@@ -258,7 +253,6 @@
         <AssociationConnector Association="BaseModel.FK_ProductionPlanDet_Warehouse" />
         <EntityTypeShape EntityType="BaseModel.PosRel" Width="1.5" PointX="2.4587553341215269" PointY="26.584181142311628" />
         <EntityTypeShape EntityType="BaseModel.v_EnterpriseList" Width="1.5" PointX="5.1526836814138495" PointY="5.1121267253123817" />
-        <EntityTypeShape EntityType="BaseModel.v_PosRemains" Width="1.5" PointX="2.9648153534926545" PointY="31.01670891000736" />
         <AssociationConnector Association="BaseModel.FK_POSREL_CPOSID" />
         <AssociationConnector Association="BaseModel.FK_POSREL_POSID" />
         <EntityTypeShape EntityType="BaseModel.Packaging" Width="1.5" PointX="4.8679639756996016" PointY="17.091218568892785" />

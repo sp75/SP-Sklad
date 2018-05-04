@@ -132,7 +132,6 @@ namespace SP_Base.Models
         public virtual DbSet<v_KAgentSaldo> v_KAgentSaldo { get; set; }
         public virtual DbSet<v_MatRemains> v_MatRemains { get; set; }
         public virtual DbSet<v_PayDoc> v_PayDoc { get; set; }
-        public virtual DbSet<v_PosRemains> v_PosRemains { get; set; }
         public virtual DbSet<v_PriceList> v_PriceList { get; set; }
         public virtual DbSet<v_PriceTypes> v_PriceTypes { get; set; }
         public virtual DbSet<v_ProductionPlanDet> v_ProductionPlanDet { get; set; }
@@ -140,7 +139,6 @@ namespace SP_Base.Models
         public virtual DbSet<v_TechProcDet> v_TechProcDet { get; set; }
         public virtual DbSet<v_Users> v_Users { get; set; }
         public virtual DbSet<v_WaybillList> v_WaybillList { get; set; }
-        public virtual DbSet<v_WhMatRemains> v_WhMatRemains { get; set; }
         public virtual DbSet<v_WorkDate> v_WorkDate { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -1562,34 +1560,6 @@ namespace SP_Base.Models
             modelBuilder.Entity<v_WaybillList>()
                 .Property(e => e.AddressBuy)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<v_WhMatRemains>()
-                .Property(e => e.Remain)
-                .HasPrecision(38, 4);
-
-            modelBuilder.Entity<v_WhMatRemains>()
-                .Property(e => e.Rsv)
-                .HasPrecision(38, 4);
-
-            modelBuilder.Entity<v_WhMatRemains>()
-                .Property(e => e.AvgPrice)
-                .HasPrecision(38, 6);
-
-            modelBuilder.Entity<v_WhMatRemains>()
-                .Property(e => e.MinPrice)
-                .HasPrecision(38, 10);
-
-            modelBuilder.Entity<v_WhMatRemains>()
-                .Property(e => e.MaxPrice)
-                .HasPrecision(38, 10);
-
-            modelBuilder.Entity<v_WhMatRemains>()
-                .Property(e => e.Ordered)
-                .HasPrecision(38, 4);
-
-            modelBuilder.Entity<v_WhMatRemains>()
-                .Property(e => e.ORsv)
-                .HasPrecision(38, 4);
         }
     }
 }

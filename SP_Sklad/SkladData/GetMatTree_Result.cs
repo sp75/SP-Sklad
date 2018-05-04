@@ -19,5 +19,6 @@ namespace SP_Sklad.SkladData
         public string art { get; set; }
         public string MsrName { get; set; }
         public int ImgIndex { get; set; }
+        public string Artikul { get; set; }
     }
 }

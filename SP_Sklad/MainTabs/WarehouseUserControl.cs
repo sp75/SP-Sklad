@@ -431,7 +431,7 @@ namespace SP_Sklad.MainTabs
             }
             else
             {
-                IHelper.ShowTurnMaterial(focused_wh_mat.MatId.Value);
+                IHelper.ShowTurnMaterial(focused_wh_mat.MatId);
             }
         }
 
@@ -442,14 +442,14 @@ namespace SP_Sklad.MainTabs
                 return;
             }
 
-            var remain_in_wh = DB.SkladBase().MatRemainByWh(focused_wh_mat.MatId.Value, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, wh_list, DBHelper.CurrentUser.UserId).ToList();
+            var remain_in_wh = DB.SkladBase().MatRemainByWh(focused_wh_mat.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, wh_list, DBHelper.CurrentUser.UserId).ToList();
             var p_type = (wb.Kontragent != null ? (wb.Kontragent.PTypeId ?? DB.SkladBase().PriceTypes.First(w => w.Def == 1).PTypeId) : DB.SkladBase().PriceTypes.First(w => w.Def == 1).PTypeId);
             var price = DB.SkladBase().GetListMatPrices(focused_wh_mat.MatId, wb.CurrId, p_type).FirstOrDefault();
 
             custom_mat_list.Add(new CustomMatListWH
             {
                 Num = custom_mat_list.Count() + 1,
-                MatId = focused_wh_mat.MatId.Value,
+                MatId = focused_wh_mat.MatId,
                 Name = focused_wh_mat.MatName,
                 Amount = 1,
                 Price = price.Price ?? 0,
@@ -501,7 +501,7 @@ namespace SP_Sklad.MainTabs
                             custom_mat_list.Add(new CustomMatListWH
                             {
                                 Num = custom_mat_list.Count() + 1,
-                                MatId = row.MatId.Value,
+                                MatId = row.MatId,
                                 Name = row.MatName,
                                 Amount = frm.AmountEdit.Value,
                                 Price = frm.PriceEdit.Value,
@@ -757,7 +757,7 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            IHelper.ShowOrdered(0, 0, focused_wh_mat.MatId.Value);
+            IHelper.ShowOrdered(0, 0, focused_wh_mat.MatId);
         }
 
         private void CopyItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -824,7 +824,7 @@ namespace SP_Sklad.MainTabs
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var row = gridView3.GetFocusedRow() as GetRelDocList_Result;
-            PrintDoc.Show(row.Id.Value, row.DocType.Value, DB.SkladBase());
+            PrintDoc.Show(row.Id, row.DocType.Value, DB.SkladBase());
         }
 
         private void WbGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)

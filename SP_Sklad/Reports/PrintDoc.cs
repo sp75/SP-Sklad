@@ -49,7 +49,7 @@ namespace SP_Sklad.Reports
                     break;
 
                 case -16:
-                    WayBillReport(id, db, TemlateList.ord_out);
+                    WayBillOrderedOutReport(id, db);
                     break;
 
                 case 16:
@@ -141,6 +141,28 @@ namespace SP_Sklad.Reports
                 }).ToList());
 
                 IHelper.Print(dataForReport, template_name);
+            }
+            else
+            {
+                MessageBox.Show("Документ відсутній!");
+            }
+        }
+
+        public static void WayBillOrderedOutReport(Guid id, BaseEntities db)
+        {
+            var dataForReport = new Dictionary<string, IList>();
+
+            var wb = db.v_WaybillList.Where(w => w.Id == id).AsNoTracking().ToList();
+            if (wb.Any())
+            {
+                int wbill_id = wb.First().WbillId;
+
+                var wb_list = db.GetWaybillDetIn(wbill_id).ToList().OrderBy(o => o.Num).ToList();
+                dataForReport.Add("WayBillList", wb);
+                dataForReport.Add("WayBillItems", wb_list);
+                dataForReport.Add("WayBillItems2", wb_list);
+
+                IHelper.Print(dataForReport, TemlateList.ord_out);
             }
             else
             {

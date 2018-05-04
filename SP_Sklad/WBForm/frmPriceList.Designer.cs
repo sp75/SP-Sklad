@@ -60,6 +60,7 @@
             this.WBImgList = new System.Windows.Forms.ImageList(this.components);
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -80,22 +81,27 @@
             this.BarCodeEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.PriceListDetBS = new System.Windows.Forms.BindingSource(this.components);
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.PriceListGrid = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colPlDetType = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.colMatId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPrice = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.BarCodeEdit = new DevExpress.XtraEditors.TextEdit();
             this.MatTreeList = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn3 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.TreePopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.PriceListPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -113,13 +119,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.BarCodeEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PriceListDetBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceListGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarCodeEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatTreeList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TreePopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceListPopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -155,9 +162,10 @@
             this.barButtonItem5,
             this.barButtonItem9,
             this.barStaticItem3,
-            this.barStaticItem4});
+            this.barStaticItem4,
+            this.barButtonItem10});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 28;
+            this.barManager1.MaxItemId = 29;
             // 
             // bar2
             // 
@@ -438,6 +446,13 @@
             this.barButtonItem9.Name = "barButtonItem9";
             this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick);
             // 
+            // barButtonItem10
+            // 
+            this.barButtonItem10.Caption = "Перенумеровати";
+            this.barButtonItem10.Id = 28;
+            this.barButtonItem10.Name = "barButtonItem10";
+            this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
+            // 
             // styleController1
             // 
             this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
@@ -662,7 +677,7 @@
             this.gridControl1.DataSource = this.PriceListDetBS;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl1.Location = new System.Drawing.Point(0, 31);
-            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.MainView = this.PriceListGrid;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -670,27 +685,30 @@
             this.gridControl1.Size = new System.Drawing.Size(504, 462);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.PriceListGrid});
             // 
             // PriceListDetBS
             // 
             this.PriceListDetBS.DataSource = typeof(SP_Sklad.SkladData.GetPriceListDet_Result);
             // 
-            // gridView1
+            // PriceListGrid
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.PriceListGrid.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colPlDetType,
             this.colMatId,
             this.colPrice,
+            this.gridColumn3,
             this.gridColumn1,
-            this.gridColumn2});
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.GroupCount = 1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            this.gridColumn2,
+            this.gridColumn4,
+            this.gridColumn5});
+            this.PriceListGrid.GridControl = this.gridControl1;
+            this.PriceListGrid.GroupCount = 1;
+            this.PriceListGrid.Name = "PriceListGrid";
+            this.PriceListGrid.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn2, DevExpress.Data.ColumnSortOrder.Ascending)});
-            this.gridView1.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView1_CellValueChanged);
+            this.PriceListGrid.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.PriceListGrid_PopupMenuShowing);
+            this.PriceListGrid.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView1_CellValueChanged);
             // 
             // colPlDetType
             // 
@@ -730,19 +748,28 @@
             this.colMatId.FieldName = "Name";
             this.colMatId.Name = "colMatId";
             this.colMatId.Visible = true;
-            this.colMatId.VisibleIndex = 1;
-            this.colMatId.Width = 222;
+            this.colMatId.VisibleIndex = 2;
+            this.colMatId.Width = 162;
             // 
             // colPrice
             // 
-            this.colPrice.Caption = "Ціна";
+            this.colPrice.Caption = "Ціна без знижки";
             this.colPrice.DisplayFormat.FormatString = "0.00";
             this.colPrice.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colPrice.FieldName = "Price";
             this.colPrice.Name = "colPrice";
             this.colPrice.Visible = true;
-            this.colPrice.VisibleIndex = 3;
-            this.colPrice.Width = 97;
+            this.colPrice.VisibleIndex = 5;
+            this.colPrice.Width = 84;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "Знижка";
+            this.gridColumn3.FieldName = "Discount";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 6;
+            this.gridColumn3.Width = 45;
             // 
             // gridColumn1
             // 
@@ -750,8 +777,8 @@
             this.gridColumn1.FieldName = "MsrName";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 2;
-            this.gridColumn1.Width = 87;
+            this.gridColumn1.VisibleIndex = 4;
+            this.gridColumn1.Width = 62;
             // 
             // gridColumn2
             // 
@@ -760,6 +787,24 @@
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 4;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Артикул";
+            this.gridColumn4.FieldName = "Artikul";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn4.Width = 59;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "#";
+            this.gridColumn5.FieldName = "Num";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 1;
+            this.gridColumn5.Width = 33;
             // 
             // BarCodeEdit
             // 
@@ -779,7 +824,8 @@
             // 
             this.MatTreeList.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.treeListColumn1,
-            this.treeListColumn2});
+            this.treeListColumn2,
+            this.treeListColumn3});
             this.MatTreeList.Cursor = System.Windows.Forms.Cursors.Default;
             this.MatTreeList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MatTreeList.ImageIndexFieldName = "ImgIndex";
@@ -802,7 +848,7 @@
             this.treeListColumn1.Name = "treeListColumn1";
             this.treeListColumn1.Visible = true;
             this.treeListColumn1.VisibleIndex = 0;
-            this.treeListColumn1.Width = 276;
+            this.treeListColumn1.Width = 249;
             // 
             // treeListColumn2
             // 
@@ -810,8 +856,17 @@
             this.treeListColumn2.FieldName = "MsrName";
             this.treeListColumn2.Name = "treeListColumn2";
             this.treeListColumn2.Visible = true;
-            this.treeListColumn2.VisibleIndex = 1;
-            this.treeListColumn2.Width = 107;
+            this.treeListColumn2.VisibleIndex = 2;
+            this.treeListColumn2.Width = 65;
+            // 
+            // treeListColumn3
+            // 
+            this.treeListColumn3.Caption = "Артикул";
+            this.treeListColumn3.FieldName = "Artikul";
+            this.treeListColumn3.Name = "treeListColumn3";
+            this.treeListColumn3.Visible = true;
+            this.treeListColumn3.VisibleIndex = 1;
+            this.treeListColumn3.Width = 63;
             // 
             // panelControl2
             // 
@@ -851,6 +906,15 @@
             this.TreePopupMenu.Manager = this.barManager1;
             this.TreePopupMenu.Name = "TreePopupMenu";
             // 
+            // PriceListPopupMenu
+            // 
+            this.PriceListPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DelMaterialBtn, true)});
+            this.PriceListPopupMenu.Manager = this.barManager1;
+            this.PriceListPopupMenu.Name = "PriceListPopupMenu";
+            // 
             // frmPriceList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -888,13 +952,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.BarCodeEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PriceListDetBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceListGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarCodeEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatTreeList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TreePopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceListPopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -946,7 +1011,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Views.Grid.GridView PriceListGrid;
         private DevExpress.XtraTreeList.TreeList MatTreeList;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private System.Windows.Forms.BindingSource PriceListBS;
@@ -968,5 +1033,11 @@
         private DevExpress.XtraBars.BarStaticItem barStaticItem4;
         private DevExpress.XtraEditors.TextEdit BarCodeEdit1;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn3;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem10;
+        private DevExpress.XtraBars.PopupMenu PriceListPopupMenu;
     }
 }

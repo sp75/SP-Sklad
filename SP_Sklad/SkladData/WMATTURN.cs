@@ -23,6 +23,7 @@ namespace SP_Sklad.SkladData
         public decimal Amount { get; set; }
         public Nullable<int> SourceId { get; set; }
         public Nullable<decimal> CalcAmount { get; set; }
+        public Nullable<int> SupplierId { get; set; }
     
         public virtual Warehouse Warehouse { get; set; }
         public virtual Materials Materials { get; set; }

@@ -13,8 +13,8 @@ namespace SP_Sklad.SkladData
     
     public partial class WhMatGet_Result
     {
-        public Nullable<int> RecNo { get; set; }
-        public Nullable<int> MatId { get; set; }
+        public Nullable<long> RecNo { get; set; }
+        public int MatId { get; set; }
         public Nullable<decimal> Remain { get; set; }
         public Nullable<decimal> Rsv { get; set; }
         public string MatName { get; set; }
@@ -30,8 +30,6 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> Ordered { get; set; }
         public Nullable<decimal> ORsv { get; set; }
         public Nullable<int> IsSerial { get; set; }
-        public string Prices { get; set; }
-        public Nullable<decimal> Dis { get; set; }
         public Nullable<int> OutGrpId { get; set; }
         public Nullable<decimal> CurRemain { get; set; }
         public Nullable<decimal> SumRemain { get; set; }

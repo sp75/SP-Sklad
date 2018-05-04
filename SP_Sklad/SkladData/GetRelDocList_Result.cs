@@ -13,16 +13,16 @@ namespace SP_Sklad.SkladData
     
     public partial class GetRelDocList_Result
     {
-        public Nullable<System.Guid> Id { get; set; }
-        public Nullable<int> DocType { get; set; }
+        public System.Guid Id { get; set; }
         public string Num { get; set; }
-        public Nullable<System.DateTime> OnDate { get; set; }
-        public Nullable<int> Checked { get; set; }
-        public Nullable<int> Deleted { get; set; }
+        public System.DateTime OnDate { get; set; }
         public Nullable<decimal> Summ { get; set; }
-        public string CurrencyName { get; set; }
+        public Nullable<int> Checked { get; set; }
+        public int Deleted { get; set; }
         public Nullable<int> CurrId { get; set; }
-        public Nullable<int> RelType { get; set; }
+        public string CurrencyName { get; set; }
+        public Nullable<int> DocType { get; set; }
+        public int RelType { get; set; }
         public string DocTypeName { get; set; }
     }
 }

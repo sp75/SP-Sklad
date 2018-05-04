@@ -26,6 +26,7 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> AmountOut { get; set; }
         public Nullable<System.DateTime> WriteOnDate { get; set; }
         public Nullable<decimal> Price { get; set; }
+        public decimal OutPlan { get; set; }
         public Nullable<decimal> HeatTreatmentAmount { get; set; }
         public Nullable<decimal> CookingAmount { get; set; }
         public Nullable<decimal> FormationAmount { get; set; }

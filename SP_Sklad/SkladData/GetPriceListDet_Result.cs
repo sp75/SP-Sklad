@@ -22,5 +22,8 @@ namespace SP_Sklad.SkladData
         public Nullable<int> MatId { get; set; }
         public Nullable<int> GrpId { get; set; }
         public string BarCode { get; set; }
+        public Nullable<decimal> Discount { get; set; }
+        public string Artikul { get; set; }
+        public Nullable<int> Num { get; set; }
     }
 }

@@ -12,9 +12,32 @@ namespace SP_Sklad.SkladData
     {
         public static List<GetPosOutView> GetPosOut(this BaseEntities db, DateTime? from_date, DateTime? to_date, int? mat_id, int? ka_id, int? w_type)
         {
-            var sql = @"  select wbd.PosId, wbl.WbillId, wbl.WType, wbl.Num, wbl.OnDate, wbl.DocId, ka.KaId, ka.Name KaName, w.WID, w.name WhName, m.MatId, m.name MatName, m.Artikul, 
-                 wbd.Amount , wbl.ToDate, wbd.Price , wbd.OnValue , wbd.CurrId, c.shortname CurrName, wbl.Checked, ms.shortname Measure , wbd.Nds, 
-		         m.BarCode, wbd.Discount, wbd.BasePrice,
+            var sql = @"  select 
+                 wbd.PosId, 
+                 wbl.WbillId, 
+                 wbl.WType, 
+                 wbl.Num, 
+                 wbl.OnDate, 
+                 wbl.DocId, 
+                 ka.KaId, 
+                 ka.Name KaName, 
+                 w.WID, 
+                 w.name WhName, 
+                 m.MatId, 
+                 m.name MatName, 
+                 m.Artikul, 
+                 wbd.Amount, 
+                 wbl.ToDate, 
+                 wbd.Price, 
+                 wbd.OnValue, 
+                 wbd.CurrId, 
+                 c.shortname CurrName, 
+                 wbl.Checked, 
+                 ms.shortname Measure, 
+                 wbd.Nds, 
+		         m.BarCode, 
+                 wbd.Discount, 
+                 wbd.BasePrice,
 		         sum(wbd_r.amount) ReturnAmount,
      		     (wbd.Amount - coalesce(  sum(wbd_r.amount),0 )) Remain
            from waybilldet wbd

@@ -137,7 +137,7 @@ namespace SP_Sklad.WBForm
 
         bool GetOk()
         {
-            bool recult = (!String.IsNullOrEmpty(NumEdit.Text) && KagentComboBox.EditValue != null && OnDateDBEdit.EditValue != null && WaybillDetOutBS.Count > 0);
+            bool recult = (!String.IsNullOrEmpty(NumEdit.Text) && KagentComboBox.EditValue != null && OnDateDBEdit.EditValue != null && WaybillDetOutBS.Count > 0 && WhInComboBox.EditValue != DBNull.Value );
 
             if (recult && TurnDocCheckBox.Checked)
             {
@@ -231,6 +231,8 @@ namespace SP_Sklad.WBForm
                 _db.SaveChanges();
 
                 WaybillDetOutGridView.DeleteSelectedRows();
+
+                GetOk();
             }
         }
 
@@ -371,6 +373,11 @@ namespace SP_Sklad.WBForm
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void WhInComboBox_EditValueChanged(object sender, EventArgs e)
+        {
+            GetOk();
         }
     }
 }

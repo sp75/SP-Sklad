@@ -120,7 +120,7 @@ namespace SP_Sklad.WBDetForm
             f.uc.isDirectList = true;
             if (f.ShowDialog() == DialogResult.OK)
             {
-                _wbd.MatId = f.uc.focused_wh_mat.MatId.Value;
+                _wbd.MatId = f.uc.focused_wh_mat.MatId;
                 MatComboBox.EditValue = _wbd.MatId;
                 SetValue();
             }
@@ -139,7 +139,7 @@ namespace SP_Sklad.WBDetForm
         {
             var item = MatComboBox.GetSelectedDataRow() as WhMatGet_Result;
 
-            _wbd.MatId = item.MatId.Value;
+            _wbd.MatId = item.MatId;
             _wbd.Amount = item.Remain.Value;
             _wbd.Price = item.AvgPrice;
             _wbd.Discount = item.Remain;

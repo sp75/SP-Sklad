@@ -20,6 +20,8 @@ namespace SP_Sklad.SkladData
         public int PlId { get; set; }
         public Nullable<int> GrpId { get; set; }
         public Nullable<int> PlDetType { get; set; }
+        public Nullable<decimal> Discount { get; set; }
+        public Nullable<int> Num { get; set; }
     
         public virtual PriceList PriceList { get; set; }
     }

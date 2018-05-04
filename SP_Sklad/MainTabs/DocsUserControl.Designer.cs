@@ -53,6 +53,7 @@
             this.WbSummPayGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.WbBalansGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn40 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.wbStatusList = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
@@ -75,6 +76,7 @@
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn37 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn39 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn41 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
             this.WayBillListInfoBS = new System.Windows.Forms.BindingSource(this.components);
@@ -504,7 +506,8 @@
             this.gridColumn6,
             this.WbSummPayGridColumn,
             this.WbBalansGridColumn,
-            this.gridColumn7});
+            this.gridColumn7,
+            this.gridColumn40});
             this.WbGridView.GridControl = this.WBGridControl;
             this.WbGridView.Name = "WbGridView";
             this.WbGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -678,6 +681,14 @@
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 8;
+            // 
+            // gridColumn40
+            // 
+            this.gridColumn40.Caption = "Примітка";
+            this.gridColumn40.FieldName = "Notes";
+            this.gridColumn40.Name = "gridColumn40";
+            this.gridColumn40.Visible = true;
+            this.gridColumn40.VisibleIndex = 9;
             // 
             // panelControl2
             // 
@@ -866,7 +877,8 @@
             this.gridColumn12,
             this.gridColumn13,
             this.gridColumn37,
-            this.gridColumn39});
+            this.gridColumn39,
+            this.gridColumn41});
             this.WaybillDetGridView.GridControl = this.gridControl2;
             this.WaybillDetGridView.Name = "WaybillDetGridView";
             this.WaybillDetGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -950,6 +962,14 @@
             this.gridColumn39.Visible = true;
             this.gridColumn39.VisibleIndex = 2;
             this.gridColumn39.Width = 194;
+            // 
+            // gridColumn41
+            // 
+            this.gridColumn41.Caption = "Добавлно/Змінено";
+            this.gridColumn41.DisplayFormat.FormatString = "g";
+            this.gridColumn41.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.gridColumn41.FieldName = "UpdateAt";
+            this.gridColumn41.Name = "gridColumn41";
             // 
             // xtraTabPage1
             // 
@@ -2961,5 +2981,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraBars.PopupMenu PriceListPopupMenu;
         private DevExpress.XtraBars.BarButtonItem barButtonItem12;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn40;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn41;
     }
 }

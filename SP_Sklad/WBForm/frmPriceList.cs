@@ -145,7 +145,9 @@ namespace SP_Sklad.WBForm
                     MatId = row.Id,
                     Price = GetPrice(row.Id.Value),
                     GrpId = row.Pid * -1,
-                    PlDetType = 0
+                    PlDetType = 0,
+                    Discount = 0,
+                    Num = pl.PriceListDet.Count()
                 });
             }
             else
@@ -156,7 +158,6 @@ namespace SP_Sklad.WBForm
 
         void AddSvc(GetSvcTree_Result row)
         {
-
             if (!_db.PriceListDet.Where(w => w.MatId == row.Id && w.PlDetType == 1).Any())
             {
                 _db.PriceListDet.Add(new PriceListDet
@@ -165,10 +166,10 @@ namespace SP_Sklad.WBForm
                     MatId = row.Id,
                     Price = row.Price ?? 0,
                     GrpId = row.Pid * -1,
-                    PlDetType = 1
+                    PlDetType = 1,
+                    Num = pl.PriceListDet.Count()
                 });
             }
-
         }
 
         private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -208,19 +209,27 @@ namespace SP_Sklad.WBForm
         void GetDetail()
         {
             PriceListDetBS.DataSource = _db.GetPriceListDet(_pl_id);
-            gridView1.ExpandAllGroups();
+            PriceListGrid.ExpandAllGroups();
         }
 
         private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-            var dr = gridView1.GetRow(e.RowHandle) as GetPriceListDet_Result;
+            var dr = PriceListGrid.GetRow(e.RowHandle) as GetPriceListDet_Result;
             var pld = _db.PriceListDet.Find(dr.PlDetId);
-            pld.Price = Convert.ToDecimal(e.Value);
+            if (e.Column.FieldName == "Price")
+            {
+                pld.Price = Convert.ToDecimal(e.Value);
+            }
+
+            if (e.Column.FieldName == "Discount")
+            {
+                pld.Discount = Convert.ToDecimal(e.Value);
+            }
         }
 
         private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = gridView1.GetFocusedRow() as GetPriceListDet_Result;
+            var dr = PriceListGrid.GetFocusedRow() as GetPriceListDet_Result;
             _db.DeleteWhere<PriceListDet>(w => w.PlDetId == dr.PlDetId);
             GetDetail();
         }
@@ -287,7 +296,7 @@ namespace SP_Sklad.WBForm
 
         private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = gridView1.GetFocusedRow() as GetPriceListDet_Result;
+            var dr = PriceListGrid.GetFocusedRow() as GetPriceListDet_Result;
             IHelper.ShowMatInfo(dr.MatId);
         }
 
@@ -326,12 +335,12 @@ namespace SP_Sklad.WBForm
                 var BarCodeText = BarCodeEdit1.Text.Split('+');
                 string kod = BarCodeText[0];
 
-                int rowHandle = gridView1.LocateByValue("BarCode", kod);
+                int rowHandle = PriceListGrid.LocateByValue("BarCode", kod);
                 if (rowHandle != DevExpress.XtraGrid.GridControl.InvalidRowHandle)
                 {
-                    gridView1.FocusedRowHandle = rowHandle;
-                    gridView1.FocusedColumn = colPrice;
-                    gridView1.ShowEditor();
+                    PriceListGrid.FocusedRowHandle = rowHandle;
+                    PriceListGrid.FocusedColumn = colPrice;
+                    PriceListGrid.ShowEditor();
 
                     BarCodeEdit1.BackColor = Color.PaleGreen;
                 }
@@ -458,6 +467,33 @@ namespace SP_Sklad.WBForm
 
                 _db.SaveChanges();
                 GetDetail();
+            }
+        }
+
+        private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            for (int i = 0; PriceListGrid.RowCount > i; i++)
+            {
+                var row = PriceListGrid.GetRow(i) as GetPriceListDet_Result;
+                if (row != null)
+                {
+                    var wbd = _db.PriceListDet.Find(row.PlDetId);
+
+                    wbd.Num = i + 1;
+                }
+            }
+
+            _db.SaveChanges();
+
+            GetDetail();
+        }
+
+        private void PriceListGrid_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                this.PriceListPopupMenu.ShowPopup(p2);
             }
         }
     }

@@ -173,7 +173,7 @@ namespace SP_Sklad.WBForm
 
         bool GetOk()
         {
-            bool recult = (!String.IsNullOrEmpty(NumEdit.Text) && KagentComboBox.EditValue != null && OnDateDBEdit.EditValue != null && wbd_list != null && wbd_list.Any());
+            bool recult = (!String.IsNullOrEmpty(NumEdit.Text) && KagentComboBox.EditValue != null && KagentComboBox.EditValue != DBNull.Value &&  OnDateDBEdit.EditValue != null && wbd_list != null && wbd_list.Any());
 
             if (recult && wb.WType == -1 && TurnDocCheckBox.Checked)
             {

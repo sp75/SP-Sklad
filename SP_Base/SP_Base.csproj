@@ -160,7 +160,6 @@
     <Compile Include="Models\v_KAgentSaldo.cs" />
     <Compile Include="Models\v_MatRemains.cs" />
     <Compile Include="Models\v_PayDoc.cs" />
-    <Compile Include="Models\v_PosRemains.cs" />
     <Compile Include="Models\v_PriceList.cs" />
     <Compile Include="Models\v_PriceTypes.cs" />
     <Compile Include="Models\v_ProductionPlanDet.cs" />
@@ -168,7 +167,6 @@
     <Compile Include="Models\v_TechProcDet.cs" />
     <Compile Include="Models\v_Users.cs" />
     <Compile Include="Models\v_WaybillList.cs" />
-    <Compile Include="Models\v_WhMatRemains.cs" />
     <Compile Include="Models\v_WorkDate.cs" />
     <Compile Include="Models\Warehouse.cs" />
     <Compile Include="Models\WaybillDet.cs" />

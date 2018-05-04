@@ -447,6 +447,7 @@
             this.WhInComboBox.StyleController = this.styleController1;
             this.WhInComboBox.TabIndex = 23;
             this.WhInComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.WhInComboBox_ButtonClick);
+            this.WhInComboBox.EditValueChanged += new System.EventHandler(this.WhInComboBox_EditValueChanged);
             // 
             // ReasonEdit
             // 

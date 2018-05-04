@@ -53,5 +53,6 @@ namespace SP_Sklad.SkladData
         public string GrpName { get; set; }
         public Nullable<decimal> DiscountPrice { get; set; }
         public string Notes { get; set; }
+        public Nullable<System.DateTime> UpdateAt { get; set; }
     }
 }

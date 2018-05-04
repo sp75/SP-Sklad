@@ -336,7 +336,7 @@ namespace SP_Sklad.WBDetForm
             f.uc.isDirectList = true;
             if (f.ShowDialog() == DialogResult.OK)
             {
-                _wbd.MatId = f.uc.focused_wh_mat.MatId.Value;
+                _wbd.MatId = f.uc.focused_wh_mat.MatId;
                 MatComboBox.EditValue = _wbd.MatId;
                 GetContent();
             }

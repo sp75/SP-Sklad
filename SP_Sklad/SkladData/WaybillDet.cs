@@ -26,7 +26,6 @@ namespace SP_Sklad.SkladData
             this.WayBillDetTaxes = new HashSet<WayBillDetTaxes>();
             this.WMatTurn = new HashSet<WMatTurn>();
             this.WMatTurn1 = new HashSet<WMatTurn>();
-            this.PosRemains = new HashSet<PosRemains>();
             this.PosRel = new HashSet<PosRel>();
             this.PosRel1 = new HashSet<PosRel>();
         }
@@ -54,6 +53,7 @@ namespace SP_Sklad.SkladData
         public Nullable<int> DiscountKind { get; set; }
         public Nullable<decimal> AvgInPrice { get; set; }
         public string Notes { get; set; }
+        public Nullable<System.DateTime> UpdateAt { get; set; }
     
         public virtual Currency Currency { get; set; }
         public virtual ICollection<ExtRel> ExtRel { get; set; }
@@ -71,7 +71,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<WayBillDetTaxes> WayBillDetTaxes { get; set; }
         public virtual ICollection<WMatTurn> WMatTurn { get; set; }
         public virtual ICollection<WMatTurn> WMatTurn1 { get; set; }
-        public virtual ICollection<PosRemains> PosRemains { get; set; }
         public virtual ICollection<PosRel> PosRel { get; set; }
         public virtual ICollection<PosRel> PosRel1 { get; set; }
     }
