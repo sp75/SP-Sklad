@@ -713,7 +713,7 @@ namespace SP_Sklad.Reports
                 IHelper.Print(data_for_report, TemlateList.rep_26);
             }
 
-            if (idx == 27)
+            if (idx == 27) 
             {
                 Guid grp_kg = KontragentGroup.Id;
                 var mat = db.REP_27(StartDate, EndDate, (int)Kagent.KaId, (int)MatGroup.GrpId, (int)this.Material.MatId, grp_kg, (int)Person.KaId).ToList();
@@ -1277,7 +1277,43 @@ namespace SP_Sklad.Reports
                 IHelper.Print2(data_for_report, TemlateList.rep_22);
             }
 
+            if (idx == 39)
+            {
+                int grp = Convert.ToInt32(MatGroup.GrpId);
+                string wh = Convert.ToString(Warehouse.WId);
+                int kid = Convert.ToInt32(Kagent.KaId);
+                Guid grp_kg = KontragentGroup.Id;
+                var mat = db.REP_39(StartDate, EndDate, grp, kid, wh, "-1,", _user_id, grp_kg).ToList();
 
+                if (!mat.Any())
+                {
+                    return;
+                }
+
+                var kagents = DBHelper.Kagents.Where(w => w.KaId == kid || kid == 0).Select(s => new { s.KaId, s.Name }).ToList();
+
+                rel.Add(new
+                {
+                    pk = "KaId",
+                    fk = "KaId",
+                    master_table = "MatGroup",
+                    child_table = "MatOutDet"
+                });
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("MatGroup", kagents.Where(w => mat.Select(s => s.KaId).Contains(w.KaId)).ToList());
+                data_for_report.Add("MatOutDet", mat);
+                data_for_report.Add("SummaryField", mat.GroupBy(g => 1).Select(s => new
+                {
+                    Amount = s.Sum(a => a.Amount),
+                    Summ = s.Sum(ss => ss.Summ),
+                    ReturnAmountIn = s.Sum(r => r.ReturnAmountIn),
+                    ReturnSummIn = s.Sum(r => r.ReturnSummIn)
+                }).ToList());
+                data_for_report.Add("_realation_", rel);
+
+                IHelper.Print(data_for_report, TemlateList.rep_39);
+            }
 
             db.PrintLog.Add(new PrintLog
             {

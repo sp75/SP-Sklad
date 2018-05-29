@@ -102,6 +102,7 @@ namespace SP_Sklad.MainTabs
                 case 37:
                 case 38:
                 case 22:
+                case 39:
                     RepBtn.Enabled = true;
                     break;
             }
@@ -131,6 +132,7 @@ namespace SP_Sklad.MainTabs
                     frm.StatusPanel.Visible = true;
                     break;
 
+                case 39:
                 case 3:
                     frm.DocTypeGroupBox2.Visible = false;
                     frm.InDocGroupBox.Visible = false;
@@ -138,6 +140,7 @@ namespace SP_Sklad.MainTabs
                     frm.MatGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
+                    frm.GroupKontragentPanel.Visible = true;
                     break;
 
                 case 14:

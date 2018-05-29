@@ -1048,7 +1048,7 @@ namespace SP_Sklad.MainTabs
                         WayBillDetAddProps = new WayBillDetAddProps(),
                         BasePrice = item.Price,
                         Price = DiscountPrice * 100 / (100 + _wb.Nds),
-                        WId = DBHelper.WhList.FirstOrDefault(f => f.Def == 1).WId,
+                        WId = db.Materials.Find(item.MatId).WId,
                         MatId = item.MatId.Value
                     });
                 }
