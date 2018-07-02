@@ -253,7 +253,7 @@ namespace SP_Sklad.Reports
             var ent_id = wb.First().EntId;
             data_report.Add("EntAccount", db.EnterpriseAccount.Where(w => w.KaId == ent_id && w.Def == 1).ToList());
             data_report.Add("WayBillList", wb);
-            data_report.Add("range1", db.GetWayBillDetOut(wb.First().WbillId).ToList().OrderBy(o=> o.Num).ToList());
+            data_report.Add("range1", db.GetWayBillDetOut(wb.First().WbillId).ToList().OrderBy(o => o.Num).ToList());
 
             var dt = DateTime.Now.Date;
             var w_id = wb.First().WbillId;
@@ -263,7 +263,7 @@ namespace SP_Sklad.Reports
                 s.Amount,
                 s.Price,
                 s.Materials.Name,
-                s.Materials.Measures.ShortName                ,
+                s.Materials.Measures.ShortName,
                 s.Materials.Artikul,
                 s.Materials.CF1,
                 s.Materials.CF2,
@@ -271,7 +271,8 @@ namespace SP_Sklad.Reports
                 s.Materials.CF4,
                 s.Materials.CF5,
                 OnDate = dt < s.OnDate ? DbFunctions.AddDays(s.OnDate, -1) : s.OnDate
-            }).OrderBy(o=> o.Num).ToList();
+            }).OrderBy(o => o.Num).ToList();
+
             data_report.Add("Posvitcheny", p);
 
             IHelper.Print(data_report, template_name);

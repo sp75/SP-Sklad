@@ -134,6 +134,8 @@
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.labelControl62 = new DevExpress.XtraEditors.LabelControl();
+            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
             this.CashEditComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.PayTypeEdit = new DevExpress.XtraEditors.LookUpEdit();
@@ -293,6 +295,7 @@
             this.labelControl34 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl35 = new DevExpress.XtraEditors.LabelControl();
             this.dateEdit3 = new DevExpress.XtraEditors.DateEdit();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KagentBindingSource)).BeginInit();
@@ -366,6 +369,7 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CashEditComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PayTypeEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit10.Properties)).BeginInit();
@@ -1575,6 +1579,9 @@
             // 
             // groupControl4
             // 
+            this.groupControl4.Controls.Add(this.richTextBox1);
+            this.groupControl4.Controls.Add(this.labelControl62);
+            this.groupControl4.Controls.Add(this.memoEdit1);
             this.groupControl4.Controls.Add(this.CashEditComboBox);
             this.groupControl4.Controls.Add(this.labelControl8);
             this.groupControl4.Controls.Add(this.PayTypeEdit);
@@ -1591,6 +1598,24 @@
             this.groupControl4.TabIndex = 16;
             this.groupControl4.Tag = "";
             this.groupControl4.Text = "Додаткова інформація ";
+            // 
+            // labelControl62
+            // 
+            this.labelControl62.Location = new System.Drawing.Point(15, 300);
+            this.labelControl62.Name = "labelControl62";
+            this.labelControl62.Size = new System.Drawing.Size(67, 16);
+            this.labelControl62.StyleController = this.styleController1;
+            this.labelControl62.TabIndex = 50;
+            this.labelControl62.Text = "Декларація";
+            // 
+            // memoEdit1
+            // 
+            this.memoEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "Declaration", true));
+            this.memoEdit1.Location = new System.Drawing.Point(15, 322);
+            this.memoEdit1.MenuManager = this.barManager1;
+            this.memoEdit1.Name = "memoEdit1";
+            this.memoEdit1.Size = new System.Drawing.Size(647, 239);
+            this.memoEdit1.TabIndex = 49;
             // 
             // CashEditComboBox
             // 
@@ -1646,7 +1671,7 @@
             // 
             // textEdit10
             // 
-            this.textEdit10.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.KagentBindingSource, "KAU", true));
+            this.textEdit10.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "KAU", true));
             this.textEdit10.Location = new System.Drawing.Point(15, 260);
             this.textEdit10.Name = "textEdit10";
             this.textEdit10.Size = new System.Drawing.Size(124, 22);
@@ -3339,6 +3364,14 @@
             this.dateEdit3.StyleController = this.styleController1;
             this.dateEdit3.TabIndex = 46;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(43, 262);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(607, 253);
+            this.richTextBox1.TabIndex = 51;
+            this.richTextBox1.Text = "";
+            // 
             // frmKAgentEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3441,6 +3474,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
             this.groupControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CashEditComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PayTypeEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit10.Properties)).EndInit();
@@ -3823,5 +3857,8 @@
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.LookUpEdit PayTypeEdit;
         private DevExpress.XtraEditors.LookUpEdit CashEditComboBox;
+        private DevExpress.XtraEditors.LabelControl labelControl62;
+        private DevExpress.XtraEditors.MemoEdit memoEdit1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

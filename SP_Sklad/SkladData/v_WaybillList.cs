@@ -70,5 +70,6 @@ namespace SP_Sklad.SkladData
         public string AddressBuy { get; set; }
         public string EntOKPO { get; set; }
         public System.Guid Id { get; set; }
+        public string Declaration { get; set; }
     }
 }

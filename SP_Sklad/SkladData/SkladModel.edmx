@@ -538,7 +538,8 @@
       [v_WaybillList].[AddressSel] AS [AddressSel], 
       [v_WaybillList].[AddressBuy] AS [AddressBuy], 
       [v_WaybillList].[EntOKPO] AS [EntOKPO], 
-      [v_WaybillList].[Id] AS [Id]
+      [v_WaybillList].[Id] AS [Id], 
+      [v_WaybillList].[Declaration] AS [Declaration]
       FROM [dbo].[v_WaybillList] AS [v_WaybillList]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_WorkDate" EntityType="BaseModel.Store.v_WorkDate" store:Type="Views" store:Schema="dbo" store:Name="v_WorkDate">
@@ -1509,6 +1510,7 @@
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="PayTypeId" Type="int" />
           <Property Name="CashDeskId" Type="int" />
+          <Property Name="Declaration" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="KAgentAccount">
           <Key>
@@ -2943,7 +2945,7 @@
           <Property Name="DocId" Type="int" />
           <Property Name="SummInCurr" Type="numeric" Precision="15" Scale="2" />
           <Property Name="ShortName" Type="nvarchar" MaxLength="3" />
-          <Property Name="OnValue" Type="numeric" Precision="15" Scale="8" />
+          <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" />
           <Property Name="Name" Type="nvarchar" MaxLength="64" />
           <Property Name="KaId" Type="int" />
           <Property Name="FullName" Type="nvarchar" MaxLength="255" />
@@ -2984,6 +2986,7 @@
           <Property Name="AddressBuy" Type="varchar" MaxLength="502" />
           <Property Name="EntOKPO" Type="nvarchar" MaxLength="64" />
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Declaration" Type="nvarchar(max)" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -11040,7 +11043,7 @@
           <Property Type="Int32" Name="DocId" />
           <Property Type="Decimal" Name="SummInCurr" Precision="15" Scale="2" />
           <Property Type="String" Name="ShortName" MaxLength="3" FixedLength="false" Unicode="true" />
-          <Property Type="Decimal" Name="OnValue" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="OnValue" Precision="15" Scale="4" />
           <Property Type="String" Name="Name" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="KaId" />
           <Property Type="String" Name="FullName" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -11081,6 +11084,7 @@
           <Property Type="String" Name="AddressBuy" MaxLength="502" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="EntOKPO" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Declaration" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="v_PayDoc">
           <Key>
@@ -11683,6 +11687,7 @@
           <NavigationProperty Name="Users" Relationship="BaseModel.FK_Kagent_Users" FromRole="Kagent" ToRole="Users" />
           <Property Type="Int32" Name="PayTypeId" />
           <Property Type="Int32" Name="CashDeskId" />
+          <Property Type="String" Name="Declaration" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
@@ -15162,6 +15167,7 @@
           <EntitySetMapping Name="v_WaybillList">
             <EntityTypeMapping TypeName="BaseModel.v_WaybillList">
               <MappingFragment StoreEntitySet="v_WaybillList">
+                <ScalarProperty Name="Declaration" ColumnName="Declaration" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="EntOKPO" ColumnName="EntOKPO" />
                 <ScalarProperty Name="AddressBuy" ColumnName="AddressBuy" />
@@ -15726,6 +15732,7 @@
           <EntitySetMapping Name="Kagent">
             <EntityTypeMapping TypeName="BaseModel.Kagent">
               <MappingFragment StoreEntitySet="Kagent">
+                <ScalarProperty Name="Declaration" ColumnName="Declaration" />
                 <ScalarProperty Name="CashDeskId" ColumnName="CashDeskId" />
                 <ScalarProperty Name="PayTypeId" ColumnName="PayTypeId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
