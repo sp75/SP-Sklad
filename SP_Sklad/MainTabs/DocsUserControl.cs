@@ -1064,5 +1064,31 @@ namespace SP_Sklad.MainTabs
 
 
         }
+
+        private void barButtonItem13_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            switch (focused_tree_node.GType)
+            {
+                case 1:
+                    for (int i = 0; i < WbGridView.RowCount; i++)
+                    {
+                        var dr = WbGridView.GetRow(i) as GetWayBillList_Result;
+
+                        if (dr != null)
+                        {
+                            if (dr.WType == -1)
+                            {
+                                var data_report = PrintDoc.WayBillOutReport(dr.Id, _db);
+                                IHelper.Print(data_report, TemlateList.wb_out, false);
+                            }
+                        }
+
+                    }
+
+                    MessageBox.Show("Експортовано " + WbGridView.RowCount.ToString() + " документів !");
+
+                    break;
+            }
+        }
     }
 }

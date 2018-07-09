@@ -623,7 +623,7 @@ namespace SP_Sklad.Common
             return rowHandle != GridControl.InvalidRowHandle;
         }
 
-        public static void Print(Dictionary<string, IList> data_for_report, string temlate)
+        public static void Print(Dictionary<string, IList> data_for_report, string temlate, bool show_report = true)
         {
             String template_file = Path.Combine(template_path, temlate);
 
@@ -640,7 +640,7 @@ namespace SP_Sklad.Common
                     {
                         new frmPdfView(rep).Show();
                     }
-                    else if (file_format == "xlsx")
+                    else if (file_format == "xlsx" && show_report)
                     {
                         new frmSpreadsheed(rep).Show();
                     }
@@ -649,7 +649,7 @@ namespace SP_Sklad.Common
                 {
                     File.WriteAllBytes(result_file, rep);
 
-                    if (File.Exists(result_file))
+                    if (File.Exists(result_file) && show_report)
                     {
                         Process.Start(result_file);
                     }

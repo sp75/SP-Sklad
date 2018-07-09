@@ -138,7 +138,15 @@ namespace SP_Sklad.WBForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            if (TurnDocCheckBox.Checked && !DBHelper.CheckOrderedInSuppliers(wb.WbillId, _db)) return;
+          /*  if (!DBHelper.CheckEndCalcPeriod(OnDateDBEdit.DateTime, _db))
+            {
+                return;
+            }*/
+
+            if (TurnDocCheckBox.Checked && !DBHelper.CheckOrderedInSuppliers(wb.WbillId, _db))
+            {
+                return;
+            }
 
             if (!DBHelper.CheckInDate(wb, _db, OnDateDBEdit.DateTime))
             {
@@ -152,7 +160,12 @@ namespace SP_Sklad.WBForm
 
             if (TurnDocCheckBox.Checked)
             {
-                var ex_wb = _db.ExecuteWayBill(wb.WbillId, null, DBHelper.CurrentUser.KaId).ToList();
+                var ex_wb = _db.ExecuteWayBill(wb.WbillId, null, DBHelper.CurrentUser.KaId).FirstOrDefault();
+                if (ex_wb.ErrorMessage != "False")
+                {
+                    MessageBox.Show(ex_wb.ErrorMessage);
+                    return;
+                }
             }
 
             is_new_record = false;

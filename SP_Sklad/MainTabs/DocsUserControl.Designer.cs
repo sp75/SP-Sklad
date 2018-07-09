@@ -233,6 +233,7 @@
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
             this.xtraTabPage12 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage13 = new DevExpress.XtraTab.XtraTabPage();
             this.bar2 = new DevExpress.XtraBars.Bar();
@@ -2307,8 +2308,9 @@
             this.barButtonItem10,
             this.barSubItem1,
             this.barButtonItem11,
-            this.barButtonItem12});
-            this.barManager1.MaxItemId = 24;
+            this.barButtonItem12,
+            this.barButtonItem13});
+            this.barManager1.MaxItemId = 25;
             // 
             // bar1
             // 
@@ -2464,6 +2466,7 @@
             this.BarImageList.Images.SetKeyName(13, "edit.bmp");
             this.BarImageList.Images.SetKeyName(14, "Аналоги.bmp");
             this.BarImageList.Images.SetKeyName(15, "Акти списання товару.bmp");
+            this.BarImageList.Images.SetKeyName(16, "218745_export_16x16.png");
             // 
             // ExecuteInvBtn
             // 
@@ -2576,6 +2579,14 @@
             this.barButtonItem12.Name = "barButtonItem12";
             this.barButtonItem12.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem12_ItemClick);
             // 
+            // barButtonItem13
+            // 
+            this.barButtonItem13.Caption = "Експорт";
+            this.barButtonItem13.Id = 24;
+            this.barButtonItem13.ImageIndex = 16;
+            this.barButtonItem13.Name = "barButtonItem13";
+            this.barButtonItem13.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem13_ItemClick);
+            // 
             // xtraTabPage12
             // 
             this.xtraTabPage12.Name = "xtraTabPage12";
@@ -2613,6 +2624,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem13),
             new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
             this.DocsPopupMenu.Manager = this.barManager1;
             this.DocsPopupMenu.Name = "DocsPopupMenu";
@@ -2983,5 +2995,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem12;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn40;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn41;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem13;
     }
 }

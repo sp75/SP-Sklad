@@ -214,7 +214,13 @@ namespace SP_Sklad.WBForm
 
             if (TurnDocCheckBox.Checked)
             {
-                _db.ExecuteWayBill(wb.WbillId, null, DBHelper.CurrentUser.KaId);
+                var ex_wb = _db.ExecuteWayBill(wb.WbillId, null, DBHelper.CurrentUser.KaId).FirstOrDefault();
+
+                if (ex_wb.ErrorMessage != "False")
+                {
+                    MessageBox.Show(ex_wb.ErrorMessage);
+                    return;
+                }
             }
 
             is_new_record = false;

@@ -367,5 +367,28 @@ namespace SP_Sklad.MainTabs
         {
             RefrechItemBtn.PerformClick();
         }
+
+        private void OnDateDBEdit_EditValueChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void OnDateDBEdit_DateTimeChanged(object sender, EventArgs e)
+        {
+            if (!EndPeriodDateEdit.ContainsFocus)
+            {
+                return;
+            }
+
+            using (var db = DB.SkladBase())
+            {
+                var c = db.CommonParams.FirstOrDefault();
+                if (c != null)
+                {
+                    c.EndCalcPeriod = EndPeriodDateEdit.DateTime;
+                    db.SaveChanges();
+                }
+            }
+        }
     }
 }

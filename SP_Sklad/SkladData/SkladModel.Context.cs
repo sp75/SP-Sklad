@@ -609,15 +609,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetMatRemain_Result>("GetMatRemain", widParameter, mat_idParameter);
         }
     
-        public virtual ObjectResult<Nullable<int>> StornoWayBill(Nullable<int> wbill_id)
-        {
-            var wbill_idParameter = wbill_id.HasValue ?
-                new ObjectParameter("wbill_id", wbill_id) :
-                new ObjectParameter("wbill_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("StornoWayBill", wbill_idParameter);
-        }
-    
         public virtual int DeleteAllReservePosition(Nullable<int> wbill_id)
         {
             var wbill_idParameter = wbill_id.HasValue ?
@@ -1269,23 +1260,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("person_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocCopy_Result>("DocCopy", originator_idParameter, person_idParameter);
-        }
-    
-        public virtual ObjectResult<ExecuteWayBill_Result> ExecuteWayBill(Nullable<int> wBILLID, Nullable<int> nEW_WTYPE, Nullable<int> person_id)
-        {
-            var wBILLIDParameter = wBILLID.HasValue ?
-                new ObjectParameter("WBILLID", wBILLID) :
-                new ObjectParameter("WBILLID", typeof(int));
-    
-            var nEW_WTYPEParameter = nEW_WTYPE.HasValue ?
-                new ObjectParameter("NEW_WTYPE", nEW_WTYPE) :
-                new ObjectParameter("NEW_WTYPE", typeof(int));
-    
-            var person_idParameter = person_id.HasValue ?
-                new ObjectParameter("person_id", person_id) :
-                new ObjectParameter("person_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ExecuteWayBill_Result>("ExecuteWayBill", wBILLIDParameter, nEW_WTYPEParameter, person_idParameter);
         }
     
         [EdmFunction("BaseEntities", "GetActives")]
@@ -2232,6 +2206,32 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("ka_grp_id", typeof(System.Guid));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_39_Result>("[BaseEntities].[REP_39](@from_date, @to_date, @grp_id, @ka_id, @wh, @doc_types, @user_id, @ka_grp_id)", from_dateParameter, to_dateParameter, grp_idParameter, ka_idParameter, whParameter, doc_typesParameter, user_idParameter, ka_grp_idParameter);
+        }
+    
+        public virtual ObjectResult<ExecuteWayBill_Result> ExecuteWayBill(Nullable<int> wBILLID, Nullable<int> nEW_WTYPE, Nullable<int> person_id)
+        {
+            var wBILLIDParameter = wBILLID.HasValue ?
+                new ObjectParameter("WBILLID", wBILLID) :
+                new ObjectParameter("WBILLID", typeof(int));
+    
+            var nEW_WTYPEParameter = nEW_WTYPE.HasValue ?
+                new ObjectParameter("NEW_WTYPE", nEW_WTYPE) :
+                new ObjectParameter("NEW_WTYPE", typeof(int));
+    
+            var person_idParameter = person_id.HasValue ?
+                new ObjectParameter("person_id", person_id) :
+                new ObjectParameter("person_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ExecuteWayBill_Result>("ExecuteWayBill", wBILLIDParameter, nEW_WTYPEParameter, person_idParameter);
+        }
+    
+        public virtual ObjectResult<StornoWayBill_Result> StornoWayBill(Nullable<int> wbill_id)
+        {
+            var wbill_idParameter = wbill_id.HasValue ?
+                new ObjectParameter("wbill_id", wbill_id) :
+                new ObjectParameter("wbill_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<StornoWayBill_Result>("StornoWayBill", wbill_idParameter);
         }
     }
 }

@@ -29,7 +29,8 @@ namespace SP_Sklad.Reports
                     break;
 
                 case -1:
-                    WayBillOutReport(id, db, TemlateList.wb_out);
+                   var data_report = WayBillOutReport(id, db);
+                   IHelper.Print(data_report, TemlateList.wb_out);
                     break;
 
                 case 5:
@@ -238,7 +239,7 @@ namespace SP_Sklad.Reports
             IHelper.Print(dataForReport, template_name);
         }
 
-        public static void WayBillOutReport(Guid id, BaseEntities db, string template_name)
+        public static Dictionary<string, IList> WayBillOutReport(Guid id, BaseEntities db)
         {
             var data_report = new Dictionary<string, IList>();
 
@@ -275,7 +276,7 @@ namespace SP_Sklad.Reports
 
             data_report.Add("Posvitcheny", p);
 
-            IHelper.Print(data_report, template_name);
+            return data_report;
         }
 
         public static void InvoiceReport(Guid id, BaseEntities db, string template_name)

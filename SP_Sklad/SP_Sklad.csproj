@@ -409,6 +409,9 @@
     <Compile Include="SkladData\SchedulingOrders.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\StornoWayBill_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\TableFunctions\funGetPosOut.cs" />
     <Compile Include="SkladData\GetActives_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>

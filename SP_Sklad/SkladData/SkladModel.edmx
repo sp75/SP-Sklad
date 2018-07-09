@@ -1224,6 +1224,7 @@
           <Property Name="DelToBin" Type="int" />
           <Property Name="Ver" Type="nvarchar" MaxLength="50" />
           <Property Name="TemplatePatch" Type="nvarchar" MaxLength="100" />
+          <Property Name="EndCalcPeriod" Type="datetime" />
         </EntityType>
         <EntityType Name="CONTRACTS">
           <Key>
@@ -6802,9 +6803,6 @@
             <Parameter Name="mat_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="CommonParams" EntityType="BaseModel.CommonParams" />
-          <FunctionImport Name="StornoWayBill" ReturnType="Collection(Int32)">
-          <Parameter Name="wbill_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="DeleteAllReservePosition">
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -7446,11 +7444,6 @@
             <Parameter Name="originator_id" Mode="In" Type="Guid" />
             <Parameter Name="person_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="ExecuteWayBill" ReturnType="Collection(BaseModel.ExecuteWayBill_Result)">
-            <Parameter Name="WBILLID" Mode="In" Type="Int32" />
-            <Parameter Name="NEW_WTYPE" Mode="In" Type="Int32" />
-            <Parameter Name="person_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <EntitySet Name="v_Actives" EntityType="BaseModel.v_Actives" />
           <EntitySet Name="v_WorkDate" EntityType="BaseModel.v_WorkDate" />
           <FunctionImport Name="GetActives" IsComposable="true" ReturnType="Collection(BaseModel.GetActives_Result)">
@@ -7936,6 +7929,14 @@
             <Parameter Name="user_id" Mode="In" Type="Int32" />
             <Parameter Name="ka_grp_id" Mode="In" Type="Guid" />
           </FunctionImport>
+          <FunctionImport Name="ExecuteWayBill" ReturnType="Collection(BaseModel.ExecuteWayBill_Result)">
+            <Parameter Name="WBILLID" Mode="In" Type="Int32" />
+            <Parameter Name="NEW_WTYPE" Mode="In" Type="Int32" />
+            <Parameter Name="person_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="StornoWayBill" ReturnType="Collection(BaseModel.StornoWayBill_Result)">
+            <Parameter Name="wbill_id" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -8391,6 +8392,7 @@
           <Property Type="Int32" Name="DelToBin" />
           <Property Type="String" Name="Ver" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="TemplatePatch" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="EndCalcPeriod" Precision="3" />
         </EntityType>
         <ComplexType Name="GetMatExtra_Result">
           <Property Type="Decimal" Name="Extra" Nullable="true" Precision="15" Scale="4" />
@@ -11452,10 +11454,6 @@
           <Property Type="Int32" Name="out_wbill_id" Nullable="true" />
           <Property Type="Guid" Name="out_doc_id" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="ExecuteWayBill_Result">
-          <Property Type="Int32" Name="Checked" Nullable="true" />
-          <Property Type="Guid" Name="NewDocId" Nullable="true" />
-        </ComplexType>
         <EntityType Name="v_Actives">
           <Key>
             <PropertyRef Name="OnDate" />
@@ -13228,6 +13226,15 @@
           <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="KaId" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="ExecuteWayBill_Result">
+          <Property Type="Int32" Name="Checked" Nullable="true" />
+          <Property Type="Guid" Name="NewDocId" Nullable="true" />
+          <Property Type="String" Name="ErrorMessage" Nullable="false" MaxLength="58" />
+        </ComplexType>
+        <ComplexType Name="StornoWayBill_Result">
+          <Property Type="Int32" Name="Checked" Nullable="true" />
+          <Property Type="String" Name="ErrorMessage" Nullable="false" MaxLength="57" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -13631,6 +13638,7 @@
           <EntitySetMapping Name="CommonParams">
             <EntityTypeMapping TypeName="BaseModel.CommonParams">
               <MappingFragment StoreEntitySet="CommonParams">
+                <ScalarProperty Name="EndCalcPeriod" ColumnName="EndCalcPeriod" />
                 <ScalarProperty Name="TemplatePatch" ColumnName="TemplatePatch" />
                 <ScalarProperty Name="Ver" ColumnName="Ver" />
                 <ScalarProperty Name="DelToBin" ColumnName="DelToBin" />
@@ -13642,7 +13650,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="StornoWayBill" FunctionName="BaseModel.Store.StornoWayBill" />
           <FunctionImportMapping FunctionImportName="DeleteAllReservePosition" FunctionName="BaseModel.Store.DeleteAllReservePosition" />
           <FunctionImportMapping FunctionImportName="GetMatExtra" FunctionName="BaseModel.Store.GetMatExtra">
             <ResultMapping>
@@ -15539,14 +15546,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="ExecuteWayBill" FunctionName="BaseModel.Store.ExecuteWayBill">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.ExecuteWayBill_Result">
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="NewDocId" ColumnName="NewDocId" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="v_Actives">
             <EntityTypeMapping TypeName="BaseModel.v_Actives">
               <MappingFragment StoreEntitySet="v_Actives">
@@ -16757,6 +16756,23 @@
                 <ScalarProperty Name="ReturnSummIn" ColumnName="ReturnSummIn" />
                 <ScalarProperty Name="TypeName" ColumnName="TypeName" />
                 <ScalarProperty Name="KaId" ColumnName="KaId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ExecuteWayBill" FunctionName="BaseModel.Store.ExecuteWayBill">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.ExecuteWayBill_Result">
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="NewDocId" ColumnName="NewDocId" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="StornoWayBill" FunctionName="BaseModel.Store.StornoWayBill">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.StornoWayBill_Result">
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

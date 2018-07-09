@@ -295,7 +295,6 @@
             this.labelControl34 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl35 = new DevExpress.XtraEditors.LabelControl();
             this.dateEdit3 = new DevExpress.XtraEditors.DateEdit();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KagentBindingSource)).BeginInit();
@@ -1579,7 +1578,6 @@
             // 
             // groupControl4
             // 
-            this.groupControl4.Controls.Add(this.richTextBox1);
             this.groupControl4.Controls.Add(this.labelControl62);
             this.groupControl4.Controls.Add(this.memoEdit1);
             this.groupControl4.Controls.Add(this.CashEditComboBox);
@@ -3364,14 +3362,6 @@
             this.dateEdit3.StyleController = this.styleController1;
             this.dateEdit3.TabIndex = 46;
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(43, 262);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(607, 253);
-            this.richTextBox1.TabIndex = 51;
-            this.richTextBox1.Text = "";
-            // 
             // frmKAgentEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3859,6 +3849,5 @@
         private DevExpress.XtraEditors.LookUpEdit CashEditComboBox;
         private DevExpress.XtraEditors.LabelControl labelControl62;
         private DevExpress.XtraEditors.MemoEdit memoEdit1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

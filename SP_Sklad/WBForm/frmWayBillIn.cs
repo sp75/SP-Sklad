@@ -159,7 +159,12 @@ namespace SP_Sklad.WBForm
             payDocUserControl1.Execute(wb.WbillId);
             if (TurnDocCheckBox.Checked)
             {
-                var ew = _db.ExecuteWayBill(wb.WbillId, null, DBHelper.CurrentUser.KaId).ToList();
+                var ex_wb = _db.ExecuteWayBill(wb.WbillId, null, DBHelper.CurrentUser.KaId).FirstOrDefault();
+                if (ex_wb.ErrorMessage != "False")
+                {
+                    MessageBox.Show(ex_wb.ErrorMessage);
+                    return;
+                }
             }
          //   current_transaction.Commit();
             is_new_record = false;

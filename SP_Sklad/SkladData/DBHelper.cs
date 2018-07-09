@@ -304,13 +304,19 @@ namespace SP_Sklad.SkladData
         {
             var result = db.StornoWayBill(wbill_id).FirstOrDefault();
 
-
-            if (result != null && result.Value == 1)
+            if (result != null && result.Checked == 1)
             {
-                MessageBox.Show(Resources.not_storno_wb, "Відміна проводки", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (result.ErrorMessage != "False")
+                {
+                    MessageBox.Show(result.ErrorMessage, "Відміна проводки", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show(Resources.not_storno_wb, "Відміна проводки", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
 
-            return result.Value;
+            return result.Checked;
         }
 
         public static ExecuteWayBill_Result ExecuteOrder(BaseEntities db, int wbill_id)
@@ -318,7 +324,14 @@ namespace SP_Sklad.SkladData
             var result = db.ExecuteWayBill(wbill_id, null, DBHelper.CurrentUser.KaId).ToList().FirstOrDefault();
             if (result != null && result.Checked == 0)
             {
-                MessageBox.Show(Resources.not_execute_wb, "Проведення документа", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (result.ErrorMessage != "False")
+                {
+                    MessageBox.Show(result.ErrorMessage, "Проведення документа", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show(Resources.not_execute_wb, "Проведення документа", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             return result;
         }
