@@ -183,6 +183,7 @@
             this.OperLogPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.SessionPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.PeriodChangeBtn = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.UsersDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -1836,6 +1837,7 @@
             // 
             // xtraTabPage9
             // 
+            this.xtraTabPage9.Controls.Add(this.PeriodChangeBtn);
             this.xtraTabPage9.Controls.Add(this.labelControl7);
             this.xtraTabPage9.Controls.Add(this.EndPeriodDateEdit);
             this.xtraTabPage9.Controls.Add(this.AttLabel);
@@ -1843,6 +1845,7 @@
             this.xtraTabPage9.Name = "xtraTabPage9";
             this.xtraTabPage9.Size = new System.Drawing.Size(957, 560);
             this.xtraTabPage9.Text = "Додаткові";
+            this.xtraTabPage9.Paint += new System.Windows.Forms.PaintEventHandler(this.xtraTabPage9_Paint);
             // 
             // labelControl7
             // 
@@ -1867,7 +1870,6 @@
             this.EndPeriodDateEdit.Size = new System.Drawing.Size(194, 22);
             this.EndPeriodDateEdit.StyleController = this.styleController1;
             this.EndPeriodDateEdit.TabIndex = 28;
-            this.EndPeriodDateEdit.DateTimeChanged += new System.EventHandler(this.OnDateDBEdit_DateTimeChanged);
             this.EndPeriodDateEdit.EditValueChanged += new System.EventHandler(this.OnDateDBEdit_EditValueChanged);
             // 
             // CommonParamsBS
@@ -1911,6 +1913,15 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5)});
             this.SessionPopupMenu.Manager = this.barManager1;
             this.SessionPopupMenu.Name = "SessionPopupMenu";
+            // 
+            // PeriodChangeBtn
+            // 
+            this.PeriodChangeBtn.Location = new System.Drawing.Point(231, 117);
+            this.PeriodChangeBtn.Name = "PeriodChangeBtn";
+            this.PeriodChangeBtn.Size = new System.Drawing.Size(66, 22);
+            this.PeriodChangeBtn.TabIndex = 30;
+            this.PeriodChangeBtn.Text = "Перейти";
+            this.PeriodChangeBtn.Click += new System.EventHandler(this.PeriodChangeBtn_Click);
             // 
             // ServiceUserControl
             // 
@@ -2171,5 +2182,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn26;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.DateEdit EndPeriodDateEdit;
+        private DevExpress.XtraEditors.SimpleButton PeriodChangeBtn;
     }
 }

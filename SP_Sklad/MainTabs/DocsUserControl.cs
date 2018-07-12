@@ -486,8 +486,15 @@ namespace SP_Sklad.MainTabs
                     case 4:
                         var pd_row = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
                         var pd = _db.PayDoc.Find(pd_row.PayDocId);
-                        pd.Checked = pd_row.Checked == 0 ? 1 : 0;
-                        _db.SaveChanges();
+                        if (pd.OnDate > _db.CommonParams.First().EndCalcPeriod)
+                        {
+                            pd.Checked = pd_row.Checked == 0 ? 1 : 0;
+                            _db.SaveChanges();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Період вже закритий. Змініть дату документа!", "Відміна/Проведення платіжного документа", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                         break;
                 }
             }

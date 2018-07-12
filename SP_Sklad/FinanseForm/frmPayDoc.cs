@@ -150,6 +150,12 @@ namespace SP_Sklad.FinanseForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
+            if (_pd.OnDate.Date <= _db.CommonParams.First().EndCalcPeriod)
+            {
+                MessageBox.Show("Період вже закритий. Змініть дату документа!", "Відміна/Проведення платіжного документа", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             var rl = _db.GetRelDocList(_pd.Id).ToList();
             foreach (var item in rl)
             {
@@ -168,6 +174,8 @@ namespace SP_Sklad.FinanseForm
             }
 
             current_transaction.Commit();
+
+            Close();
         }
 
         private void frmPayDoc_FormClosed(object sender, FormClosedEventArgs e)

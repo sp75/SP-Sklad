@@ -370,16 +370,21 @@ namespace SP_Sklad.MainTabs
 
         private void OnDateDBEdit_EditValueChanged(object sender, EventArgs e)
         {
-           
-        }
-
-        private void OnDateDBEdit_DateTimeChanged(object sender, EventArgs e)
-        {
             if (!EndPeriodDateEdit.ContainsFocus)
             {
                 return;
             }
 
+            PeriodChangeBtn.PerformClick();
+        }
+
+        private void xtraTabPage9_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void PeriodChangeBtn_Click(object sender, EventArgs e)
+        {
             using (var db = DB.SkladBase())
             {
                 var c = db.CommonParams.FirstOrDefault();
@@ -390,5 +395,6 @@ namespace SP_Sklad.MainTabs
                 }
             }
         }
+
     }
 }
