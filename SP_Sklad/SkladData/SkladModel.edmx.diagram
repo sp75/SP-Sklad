@@ -267,6 +267,7 @@
         <EntityTypeShape EntityType="BaseModel.WayBillTmc" Width="1.5" PointX="6.8033221283943028" PointY="26.097000536554027" />
         <AssociationConnector Association="BaseModel.FK_MoveInventories_Materials" />
         <AssociationConnector Association="BaseModel.FK_MoveInventories_WaybillList" />
+        <EntityTypeShape EntityType="BaseModel.AspNetUsers" Width="1.5" PointX="0.59610825804812284" PointY="7.2373711649502495" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

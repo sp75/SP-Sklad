@@ -431,7 +431,10 @@ namespace SP_Sklad.MainTabs
             }
             else
             {
-                IHelper.ShowTurnMaterial(focused_wh_mat.MatId);
+                if (focused_wh_mat != null)
+                {
+                    IHelper.ShowTurnMaterial(focused_wh_mat.MatId);
+                }
             }
         }
 

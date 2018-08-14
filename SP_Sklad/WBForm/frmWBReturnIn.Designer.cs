@@ -279,7 +279,7 @@
             this.AddMaterialBtn.Caption = "Товар";
             this.AddMaterialBtn.Id = 17;
             this.AddMaterialBtn.ImageIndex = 8;
-            this.AddMaterialBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Insert));
+            this.AddMaterialBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F4);
             this.AddMaterialBtn.Name = "AddMaterialBtn";
             this.AddMaterialBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.AddMaterialBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddMaterialBtn_ItemClick);

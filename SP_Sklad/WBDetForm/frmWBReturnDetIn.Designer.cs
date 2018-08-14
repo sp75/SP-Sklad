@@ -418,11 +418,12 @@
             this.MatComboBox.Properties.ValueMember = "PosId";
             this.MatComboBox.Size = new System.Drawing.Size(442, 22);
             this.MatComboBox.StyleController = this.styleController1;
-            this.MatComboBox.TabIndex = 19;
+            this.MatComboBox.TabIndex = 1;
             this.MatComboBox.EditValueChanged += new System.EventHandler(this.MatComboBox_EditValueChanged);
             // 
             // simpleButton4
             // 
+            this.simpleButton4.AllowFocus = false;
             this.simpleButton4.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton4.Image")));
             this.simpleButton4.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.simpleButton4.Location = new System.Drawing.Point(325, 43);
@@ -447,7 +448,7 @@
             this.WHComboBox.Properties.ValueMember = "WId";
             this.WHComboBox.Size = new System.Drawing.Size(218, 22);
             this.WHComboBox.StyleController = this.styleController1;
-            this.WHComboBox.TabIndex = 17;
+            this.WHComboBox.TabIndex = 10;
             // 
             // WaybillDetBS
             // 
@@ -459,11 +460,12 @@
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(40, 16);
             this.labelControl6.StyleController = this.styleController1;
-            this.labelControl6.TabIndex = 16;
+            this.labelControl6.TabIndex = 1;
             this.labelControl6.Text = "Склад:";
             // 
             // simpleButton2
             // 
+            this.simpleButton2.AllowFocus = false;
             this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton2.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.Image")));
             this.simpleButton2.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
@@ -480,7 +482,7 @@
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(45, 16);
             this.labelControl3.StyleController = this.styleController1;
-            this.labelControl3.TabIndex = 3;
+            this.labelControl3.TabIndex = 0;
             this.labelControl3.Text = "Назва:";
             // 
             // GetPosOutBS
@@ -515,10 +517,11 @@
             this.panelControl3.Location = new System.Drawing.Point(5, 0);
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Size = new System.Drawing.Size(582, 110);
-            this.panelControl3.TabIndex = 8;
+            this.panelControl3.TabIndex = 0;
             // 
             // simpleButton3
             // 
+            this.simpleButton3.AllowFocus = false;
             this.simpleButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton3.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.Image")));
             this.simpleButton3.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
@@ -616,7 +619,7 @@
             this.BasePriceEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.BasePriceEdit.Size = new System.Drawing.Size(138, 22);
             this.BasePriceEdit.StyleController = this.styleController1;
-            this.BasePriceEdit.TabIndex = 6;
+            this.BasePriceEdit.TabIndex = 0;
             // 
             // labelControl4
             // 
@@ -641,7 +644,7 @@
             this.AmountEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.AmountEdit_Properties_ButtonClick);
             this.AmountEdit.Size = new System.Drawing.Size(138, 22);
             this.AmountEdit.StyleController = this.styleController1;
-            this.AmountEdit.TabIndex = 4;
+            this.AmountEdit.TabIndex = 0;
             this.AmountEdit.EditValueChanged += new System.EventHandler(this.AmountEdit_EditValueChanged);
             this.AmountEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AmountEdit_KeyPress);
             // 
@@ -687,7 +690,7 @@
             this.groupControl3.Location = new System.Drawing.Point(5, 0);
             this.groupControl3.Name = "groupControl3";
             this.groupControl3.Size = new System.Drawing.Size(582, 126);
-            this.groupControl3.TabIndex = 16;
+            this.groupControl3.TabIndex = 0;
             this.groupControl3.Tag = "";
             this.groupControl3.Text = "Підсумок";
             // 
@@ -833,7 +836,7 @@
             this.panelControl2.Location = new System.Drawing.Point(0, 362);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(592, 52);
-            this.panelControl2.TabIndex = 28;
+            this.panelControl2.TabIndex = 33;
             // 
             // OkButton
             // 
@@ -842,7 +845,7 @@
             this.OkButton.Location = new System.Drawing.Point(374, 14);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(98, 26);
-            this.OkButton.TabIndex = 3;
+            this.OkButton.TabIndex = 10;
             this.OkButton.Text = "Застосувати";
             this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
@@ -853,7 +856,7 @@
             this.simpleButton1.Location = new System.Drawing.Point(481, 14);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(93, 26);
-            this.simpleButton1.TabIndex = 2;
+            this.simpleButton1.TabIndex = 11;
             this.simpleButton1.Text = "Відмінити";
             // 
             // timer1

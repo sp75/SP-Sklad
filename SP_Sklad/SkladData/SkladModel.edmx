@@ -7,6 +7,7 @@
     <Schema Namespace="BaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="BaseModelStoreContainer">
           <EntitySet Name="AccountType" EntityType="BaseModel.Store.AccountType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AspNetUsers" EntityType="BaseModel.Store.AspNetUsers" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Banks" EntityType="BaseModel.Store.Banks" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="BanksPersons" EntityType="BaseModel.Store.BanksPersons" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CashDesks" EntityType="BaseModel.Store.CashDesks" store:Type="Tables" Schema="dbo" />
@@ -1149,6 +1150,23 @@
           <Property Name="Def" Type="int" Nullable="false" />
           <Property Name="Deleted" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="256" />
+        </EntityType>
         <EntityType Name="Banks">
           <Key>
             <PropertyRef Name="BankId" />
@@ -1478,7 +1496,7 @@
             <PropertyRef Name="KaId" />
           </Key>
           <Property Name="KaId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="FullName" Type="nvarchar" MaxLength="255" />
           <Property Name="INN" Type="nvarchar" MaxLength="64" />
           <Property Name="OKPO" Type="nvarchar" MaxLength="64" />
@@ -1512,6 +1530,7 @@
           <Property Name="PayTypeId" Type="int" />
           <Property Name="CashDeskId" Type="int" />
           <Property Name="Declaration" Type="nvarchar(max)" />
+          <Property Name="AspNetUserId" Type="nvarchar" MaxLength="128" />
         </EntityType>
         <EntityType Name="KAgentAccount">
           <Key>
@@ -2422,7 +2441,7 @@
           </Key>
           <Property Name="KaId" Type="int" Nullable="false" />
           <Property Name="KAU" Type="nvarchar" MaxLength="10" />
-          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="FullName" Type="nvarchar" MaxLength="255" />
           <Property Name="INN" Type="nvarchar" MaxLength="64" />
           <Property Name="OKPO" Type="nvarchar" MaxLength="64" />
@@ -2543,7 +2562,7 @@
           <Property Name="Num" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="ExpireDate" Type="datetime" />
           <Property Name="OnValue" Type="numeric" Nullable="false" Precision="15" Scale="4" />
-          <Property Name="KaName" Type="nvarchar" MaxLength="64" />
+          <Property Name="KaName" Type="nvarchar" MaxLength="100" />
           <Property Name="KaFullName" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -2570,7 +2589,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="KaId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="FullName" Type="nvarchar" MaxLength="255" />
           <Property Name="INN" Type="nvarchar" MaxLength="64" />
           <Property Name="OKPO" Type="nvarchar" MaxLength="64" />
@@ -2739,10 +2758,10 @@
           <Property Name="OnValue" Type="numeric" Precision="15" Scale="8" />
           <Property Name="Schet" Type="varchar" MaxLength="10" />
           <Property Name="CurrName" Type="nvarchar" MaxLength="3" />
-          <Property Name="KaName" Type="nvarchar" MaxLength="64" />
+          <Property Name="KaName" Type="nvarchar" MaxLength="100" />
           <Property Name="KaFullName" Type="nvarchar" MaxLength="255" />
           <Property Name="KaPhone" Type="nvarchar" MaxLength="64" />
-          <Property Name="PersonName" Type="nvarchar" MaxLength="64" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="100" />
           <Property Name="Address" Type="varchar" MaxLength="255" />
           <Property Name="City" Type="varchar" MaxLength="64" />
           <Property Name="District" Type="varchar" MaxLength="64" />
@@ -2884,7 +2903,7 @@
           <Property Name="PersonId" Type="int" />
           <Property Name="OnDate" Type="datetime" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="128" />
-          <Property Name="PersonName" Type="nvarchar" MaxLength="64" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="100" />
           <Property Name="Num" Type="int" Nullable="false" />
           <Property Name="ExtMatAmount" Type="int" />
           <Property Name="RamaName" Type="nvarchar" MaxLength="255" />
@@ -2916,7 +2935,7 @@
           <Property Name="GroupId" Type="uniqueidentifier" />
           <Property Name="InternalEditor" Type="bit" />
           <Property Name="IsWorking" Type="bit" Nullable="false" />
-          <Property Name="EmployeeName" Type="nvarchar" MaxLength="64" />
+          <Property Name="EmployeeName" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -2947,11 +2966,11 @@
           <Property Name="SummInCurr" Type="numeric" Precision="15" Scale="2" />
           <Property Name="ShortName" Type="nvarchar" MaxLength="3" />
           <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" />
-          <Property Name="Name" Type="nvarchar" MaxLength="64" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="KaId" Type="int" />
           <Property Name="FullName" Type="nvarchar" MaxLength="255" />
           <Property Name="Phone" Type="nvarchar" MaxLength="64" />
-          <Property Name="PersonName" Type="nvarchar" MaxLength="64" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="100" />
           <Property Name="Address" Type="varchar" MaxLength="255" />
           <Property Name="City" Type="varchar" MaxLength="64" />
           <Property Name="District" Type="varchar" MaxLength="64" />
@@ -2971,7 +2990,7 @@
           <Property Name="WhName" Type="nvarchar" MaxLength="64" />
           <Property Name="DestWhName" Type="nvarchar" MaxLength="64" />
           <Property Name="KAU" Type="nvarchar" MaxLength="10" />
-          <Property Name="MovPersonName" Type="nvarchar" MaxLength="64" />
+          <Property Name="MovPersonName" Type="nvarchar" MaxLength="100" />
           <Property Name="CType" Type="varchar" MaxLength="20" />
           <Property Name="EntKaFullName" Type="nvarchar" MaxLength="255" />
           <Property Name="EntKaPhone" Type="nvarchar" MaxLength="64" />
@@ -5609,7 +5628,7 @@
                 <Property Name="DocId" Type="int" />
                 <Property Name="SummInCurr" Type="numeric" Precision="15" Scale="2" />
                 <Property Name="CurrName" Type="nvarchar" MaxLength="3" />
-                <Property Name="CurrRate" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="CurrRate" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="KaName" Type="nvarchar" MaxLength="64" />
                 <Property Name="KaId" Type="int" />
                 <Property Name="KaFullName" Type="nvarchar" MaxLength="255" />
@@ -5631,6 +5650,7 @@
                 <Property Name="DefNum" Type="int" Nullable="false" />
                 <Property Name="EntId" Type="int" />
                 <Property Name="EntName" Type="nvarchar" MaxLength="64" />
+                <Property Name="KagentGroupName" Type="nvarchar" MaxLength="50" />
                 <Property Name="Balans" Type="numeric" Precision="17" Scale="2" />
               </RowType>
             </CollectionType>
@@ -7466,16 +7486,6 @@
             <Parameter Name="ka_id" Mode="In" Type="Int32" />
             <Parameter Name="mat_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="GetWayBillList" IsComposable="true" ReturnType="Collection(BaseModel.GetWayBillList_Result)">
-            <Parameter Name="from_date" Mode="In" Type="DateTime" />
-            <Parameter Name="to_date" Mode="In" Type="DateTime" />
-            <Parameter Name="w_type" Mode="In" Type="Int32" />
-            <Parameter Name="checked" Mode="In" Type="Int32" />
-            <Parameter Name="ka_id" Mode="In" Type="Int32" />
-            <Parameter Name="show_null_balance" Mode="In" Type="Int32" />
-            <Parameter Name="wh" Mode="In" Type="String" />
-            <Parameter Name="person_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="GetPayDocList" ReturnType="Collection(BaseModel.GetPayDocList_Result)">
             <Parameter Name="doc_type" Mode="In" Type="Int32" />
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
@@ -7935,8 +7945,19 @@
             <Parameter Name="person_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="StornoWayBill" ReturnType="Collection(BaseModel.StornoWayBill_Result)">
-            <Parameter Name="wbill_id" Mode="In" Type="Int32" />
+          <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="GetWayBillList" IsComposable="true" ReturnType="Collection(BaseModel.GetWayBillList_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="w_type" Mode="In" Type="Int32" />
+            <Parameter Name="checked" Mode="In" Type="Int32" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="show_null_balance" Mode="In" Type="Int32" />
+            <Parameter Name="wh" Mode="In" Type="String" />
+            <Parameter Name="person_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="AspNetUsers" EntityType="BaseModel.AspNetUsers" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -8846,7 +8867,7 @@
           <Property Type="Int32" Name="PersonId" />
           <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
           <Property Type="String" Name="Name" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="PersonName" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PersonName" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="Num" Nullable="false" />
           <Property Type="Int32" Name="ExtMatAmount" />
           <Property Type="String" Name="RamaName" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -11046,11 +11067,11 @@
           <Property Type="Decimal" Name="SummInCurr" Precision="15" Scale="2" />
           <Property Type="String" Name="ShortName" MaxLength="3" FixedLength="false" Unicode="true" />
           <Property Type="Decimal" Name="OnValue" Precision="15" Scale="4" />
-          <Property Type="String" Name="Name" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="KaId" />
           <Property Type="String" Name="FullName" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Phone" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="PersonName" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PersonName" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Address" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="City" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="District" MaxLength="64" FixedLength="false" Unicode="false" />
@@ -11070,7 +11091,7 @@
           <Property Type="String" Name="WhName" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="DestWhName" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="KAU" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="MovPersonName" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MovPersonName" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="CType" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="EntKaFullName" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="EntKaPhone" MaxLength="64" FixedLength="false" Unicode="true" />
@@ -11125,10 +11146,10 @@
           <Property Type="Decimal" Name="OnValue" Precision="15" Scale="8" />
           <Property Type="String" Name="Schet" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="CurrName" MaxLength="3" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="KaName" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="KaName" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="KaFullName" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="KaPhone" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="PersonName" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PersonName" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Address" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="City" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="District" MaxLength="64" FixedLength="false" Unicode="false" />
@@ -11285,7 +11306,7 @@
           <Property Type="String" Name="Num" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="ExpireDate" Precision="3" />
           <Property Type="Decimal" Name="OnValue" Nullable="false" Precision="15" Scale="4" />
-          <Property Type="String" Name="KaName" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="KaName" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="KaFullName" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="DiscCardGrp">
@@ -11526,47 +11547,6 @@
           <Property Type="Decimal" Name="AvgPrice" Nullable="true" Precision="38" Scale="6" />
           <Property Type="Decimal" Name="Income" Nullable="true" Precision="38" Scale="6" />
         </ComplexType>
-        <ComplexType Name="GetWayBillList_Result">
-          <Property Type="Guid" Name="Id" Nullable="false" />
-          <Property Type="Int32" Name="WbillId" Nullable="false" />
-          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" />
-          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
-          <Property Type="Int32" Name="CurrId" Nullable="true" />
-          <Property Type="String" Name="Reason" Nullable="true" MaxLength="255" />
-          <Property Type="Int32" Name="Checked" Nullable="false" />
-          <Property Type="Decimal" Name="SummAll" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="Int32" Name="WType" Nullable="false" />
-          <Property Type="Decimal" Name="nds" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="PersonId" Nullable="true" />
-          <Property Type="Decimal" Name="SummPay" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="String" Name="Notes" Nullable="true" MaxLength="255" />
-          <Property Type="Int32" Name="DocId" Nullable="true" />
-          <Property Type="Decimal" Name="SummInCurr" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
-          <Property Type="Decimal" Name="CurrRate" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="String" Name="KaName" Nullable="true" MaxLength="64" />
-          <Property Type="Int32" Name="KaId" Nullable="true" />
-          <Property Type="String" Name="KaFullName" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="KaPhone" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="Address" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="City" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="District" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="Country" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="PostIndex" Nullable="true" MaxLength="15" />
-          <Property Type="String" Name="Fax" Nullable="true" MaxLength="32" />
-          <Property Type="String" Name="Email" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="www" Nullable="true" MaxLength="64" />
-          <Property Type="Int32" Name="KType" Nullable="true" />
-          <Property Type="String" Name="AttNum" Nullable="true" MaxLength="15" />
-          <Property Type="DateTime" Name="AttDate" Nullable="true" Precision="23" />
-          <Property Type="String" Name="Received" Nullable="true" MaxLength="64" />
-          <Property Type="DateTime" Name="ToDate" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="DefNum" Nullable="false" />
-          <Property Type="Int32" Name="EntId" Nullable="true" />
-          <Property Type="String" Name="EntName" Nullable="true" MaxLength="64" />
-          <Property Type="Decimal" Name="Balans" Nullable="true" Precision="17" Scale="2" />
-        </ComplexType>
         <ComplexType Name="GetPayDocList_Result">
           <Property Type="Int64" Name="Num" Nullable="true" />
           <Property Type="Int32" Name="PayDocId" Nullable="false" />
@@ -11620,7 +11600,7 @@
             <PropertyRef Name="KaId" />
           </Key>
           <Property Type="Int32" Name="KaId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="FullName" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="INN" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="OKPO" MaxLength="64" FixedLength="false" Unicode="true" />
@@ -11686,6 +11666,7 @@
           <Property Type="Int32" Name="PayTypeId" />
           <Property Type="Int32" Name="CashDeskId" />
           <Property Type="String" Name="Declaration" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AspNetUserId" />
         </EntityType>
         <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
@@ -12086,7 +12067,7 @@
           </Key>
           <Property Type="Int32" Name="KaId" Nullable="false" />
           <Property Type="String" Name="KAU" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="FullName" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="INN" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="OKPO" MaxLength="64" FixedLength="false" Unicode="true" />
@@ -12269,7 +12250,7 @@
           <Property Type="Guid" Name="GroupId" />
           <Property Type="Boolean" Name="InternalEditor" />
           <Property Type="Boolean" Name="IsWorking" Nullable="false" />
-          <Property Type="String" Name="EmployeeName" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmployeeName" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ProductionPlans">
           <Key>
@@ -12677,7 +12658,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="KaId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="FullName" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="INN" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="OKPO" MaxLength="64" FixedLength="false" Unicode="true" />
@@ -13235,6 +13216,65 @@
           <Property Type="Int32" Name="Checked" Nullable="true" />
           <Property Type="String" Name="ErrorMessage" Nullable="false" MaxLength="57" />
         </ComplexType>
+        <ComplexType Name="GetWayBillList_Result">
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="WbillId" Nullable="false" />
+          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="String" Name="Reason" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Checked" Nullable="false" />
+          <Property Type="Decimal" Name="SummAll" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Int32" Name="WType" Nullable="false" />
+          <Property Type="Decimal" Name="nds" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="PersonId" Nullable="true" />
+          <Property Type="Decimal" Name="SummPay" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="DocId" Nullable="true" />
+          <Property Type="Decimal" Name="SummInCurr" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
+          <Property Type="Decimal" Name="CurrRate" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="String" Name="KaName" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="KaId" Nullable="true" />
+          <Property Type="String" Name="KaFullName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="KaPhone" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="District" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="PostIndex" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Fax" Nullable="true" MaxLength="32" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="www" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="KType" Nullable="true" />
+          <Property Type="String" Name="AttNum" Nullable="true" MaxLength="15" />
+          <Property Type="DateTime" Name="AttDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Received" Nullable="true" MaxLength="64" />
+          <Property Type="DateTime" Name="ToDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="DefNum" Nullable="false" />
+          <Property Type="Int32" Name="EntId" Nullable="true" />
+          <Property Type="String" Name="EntName" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="KagentGroupName" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Balans" Nullable="true" Precision="17" Scale="2" />
+        </ComplexType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="String" Name="Id" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="EmailConfirmed" Nullable="false" />
+          <Property Type="String" Name="PasswordHash" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SecurityStamp" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PhoneNumber" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="PhoneNumberConfirmed" Nullable="false" />
+          <Property Type="Boolean" Name="TwoFactorEnabled" Nullable="false" />
+          <Property Type="DateTime" Name="LockoutEndDateUtc" Precision="3" />
+          <Property Type="Boolean" Name="LockoutEnabled" Nullable="false" />
+          <Property Type="Int32" Name="AccessFailedCount" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -15631,51 +15671,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetWayBillList" FunctionName="BaseModel.Store.GetWayBillList">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetWayBillList_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
-                <ScalarProperty Name="Reason" ColumnName="Reason" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
-                <ScalarProperty Name="WType" ColumnName="WType" />
-                <ScalarProperty Name="nds" ColumnName="nds" />
-                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
-                <ScalarProperty Name="SummPay" ColumnName="SummPay" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="DocId" ColumnName="DocId" />
-                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
-                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
-                <ScalarProperty Name="CurrRate" ColumnName="CurrRate" />
-                <ScalarProperty Name="KaName" ColumnName="KaName" />
-                <ScalarProperty Name="KaId" ColumnName="KaId" />
-                <ScalarProperty Name="KaFullName" ColumnName="KaFullName" />
-                <ScalarProperty Name="KaPhone" ColumnName="KaPhone" />
-                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="District" ColumnName="District" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="PostIndex" ColumnName="PostIndex" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="www" ColumnName="www" />
-                <ScalarProperty Name="KType" ColumnName="KType" />
-                <ScalarProperty Name="AttNum" ColumnName="AttNum" />
-                <ScalarProperty Name="AttDate" ColumnName="AttDate" />
-                <ScalarProperty Name="Received" ColumnName="Received" />
-                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
-                <ScalarProperty Name="DefNum" ColumnName="DefNum" />
-                <ScalarProperty Name="EntId" ColumnName="EntId" />
-                <ScalarProperty Name="EntName" ColumnName="EntName" />
-                <ScalarProperty Name="Balans" ColumnName="Balans" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetPayDocList" FunctionName="BaseModel.Store.GetPayDocList">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.GetPayDocList_Result">
@@ -15731,6 +15726,7 @@
           <EntitySetMapping Name="Kagent">
             <EntityTypeMapping TypeName="BaseModel.Kagent">
               <MappingFragment StoreEntitySet="Kagent">
+                <ScalarProperty Name="AspNetUserId" ColumnName="AspNetUserId" />
                 <ScalarProperty Name="Declaration" ColumnName="Declaration" />
                 <ScalarProperty Name="CashDeskId" ColumnName="CashDeskId" />
                 <ScalarProperty Name="PayTypeId" ColumnName="PayTypeId" />
@@ -16776,6 +16772,70 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetWayBillList" FunctionName="BaseModel.Store.GetWayBillList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetWayBillList_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="nds" ColumnName="nds" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="SummPay" ColumnName="SummPay" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="CurrRate" ColumnName="CurrRate" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="KaFullName" ColumnName="KaFullName" />
+                <ScalarProperty Name="KaPhone" ColumnName="KaPhone" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="PostIndex" ColumnName="PostIndex" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="www" ColumnName="www" />
+                <ScalarProperty Name="KType" ColumnName="KType" />
+                <ScalarProperty Name="AttNum" ColumnName="AttNum" />
+                <ScalarProperty Name="AttDate" ColumnName="AttDate" />
+                <ScalarProperty Name="Received" ColumnName="Received" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="DefNum" ColumnName="DefNum" />
+                <ScalarProperty Name="EntId" ColumnName="EntId" />
+                <ScalarProperty Name="EntName" ColumnName="EntName" />
+                <ScalarProperty Name="KagentGroupName" ColumnName="KagentGroupName" />
+                <ScalarProperty Name="Balans" ColumnName="Balans" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="BaseModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

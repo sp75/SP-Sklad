@@ -241,6 +241,7 @@
             this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.PriceListPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.gridColumn42 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -508,7 +509,8 @@
             this.WbSummPayGridColumn,
             this.WbBalansGridColumn,
             this.gridColumn7,
-            this.gridColumn40});
+            this.gridColumn40,
+            this.gridColumn42});
             this.WbGridView.GridControl = this.WBGridControl;
             this.WbGridView.Name = "WbGridView";
             this.WbGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -2664,6 +2666,12 @@
             this.PriceListPopupMenu.Manager = this.barManager1;
             this.PriceListPopupMenu.Name = "PriceListPopupMenu";
             // 
+            // gridColumn42
+            // 
+            this.gridColumn42.Caption = "Група контрагентів";
+            this.gridColumn42.FieldName = "KagentGroupName";
+            this.gridColumn42.Name = "gridColumn42";
+            // 
             // DocsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2996,5 +3004,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn40;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn41;
         private DevExpress.XtraBars.BarButtonItem barButtonItem13;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn42;
     }
 }

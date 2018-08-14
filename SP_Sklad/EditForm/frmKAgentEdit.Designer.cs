@@ -134,6 +134,8 @@
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.AspNetUserLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl63 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl62 = new DevExpress.XtraEditors.LabelControl();
             this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
             this.CashEditComboBox = new DevExpress.XtraEditors.LookUpEdit();
@@ -295,6 +297,7 @@
             this.labelControl34 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl35 = new DevExpress.XtraEditors.LabelControl();
             this.dateEdit3 = new DevExpress.XtraEditors.DateEdit();
+            this.aspNetUsersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KagentBindingSource)).BeginInit();
@@ -368,6 +371,7 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AspNetUserLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CashEditComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PayTypeEdit.Properties)).BeginInit();
@@ -476,6 +480,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit20.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aspNetUsersBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemImageComboBox1
@@ -1010,7 +1015,7 @@
             this.lookUpEdit3.Properties.ShowHeader = false;
             this.lookUpEdit3.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.lookUpEdit3.Properties.ValueMember = "Id";
-            this.lookUpEdit3.Size = new System.Drawing.Size(384, 22);
+            this.lookUpEdit3.Size = new System.Drawing.Size(309, 22);
             this.lookUpEdit3.StyleController = this.styleController1;
             this.lookUpEdit3.TabIndex = 46;
             this.lookUpEdit3.EditValueChanged += new System.EventHandler(this.lookUpEdit3_EditValueChanged);
@@ -1020,7 +1025,7 @@
             this.simpleButton5.ImageIndex = 14;
             this.simpleButton5.ImageList = this.ImageList;
             this.simpleButton5.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton5.Location = new System.Drawing.Point(348, 149);
+            this.simpleButton5.Location = new System.Drawing.Point(274, 149);
             this.simpleButton5.Name = "simpleButton5";
             this.simpleButton5.Size = new System.Drawing.Size(22, 22);
             this.simpleButton5.TabIndex = 45;
@@ -1041,13 +1046,13 @@
             this.UsersLookUpEdit.Properties.ShowHeader = false;
             this.UsersLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.UsersLookUpEdit.Properties.ValueMember = "UserId";
-            this.UsersLookUpEdit.Size = new System.Drawing.Size(327, 22);
+            this.UsersLookUpEdit.Size = new System.Drawing.Size(253, 22);
             this.UsersLookUpEdit.StyleController = this.styleController1;
             this.UsersLookUpEdit.TabIndex = 44;
             // 
             // labelControl26
             // 
-            this.labelControl26.Location = new System.Drawing.Point(414, 14);
+            this.labelControl26.Location = new System.Drawing.Point(500, 14);
             this.labelControl26.Name = "labelControl26";
             this.labelControl26.Size = new System.Drawing.Size(106, 16);
             this.labelControl26.StyleController = this.styleController1;
@@ -1058,7 +1063,7 @@
             // 
             this.dateEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "BirthDate", true));
             this.dateEdit2.EditValue = null;
-            this.dateEdit2.Location = new System.Drawing.Point(414, 36);
+            this.dateEdit2.Location = new System.Drawing.Point(500, 36);
             this.dateEdit2.Name = "dateEdit2";
             this.dateEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1067,7 +1072,7 @@
             this.dateEdit2.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.dateEdit2.Properties.Mask.EditMask = "";
             this.dateEdit2.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.dateEdit2.Size = new System.Drawing.Size(244, 22);
+            this.dateEdit2.Size = new System.Drawing.Size(158, 22);
             this.dateEdit2.StyleController = this.styleController1;
             this.dateEdit2.TabIndex = 42;
             // 
@@ -1076,7 +1081,7 @@
             this.textEdit19.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.KagentBindingSource, "Name", true));
             this.textEdit19.Location = new System.Drawing.Point(15, 36);
             this.textEdit19.Name = "textEdit19";
-            this.textEdit19.Size = new System.Drawing.Size(384, 22);
+            this.textEdit19.Size = new System.Drawing.Size(479, 22);
             this.textEdit19.StyleController = this.styleController1;
             this.textEdit19.TabIndex = 41;
             // 
@@ -1103,7 +1108,7 @@
             this.simpleButton3.ImageIndex = 15;
             this.simpleButton3.ImageList = this.ImageList;
             this.simpleButton3.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton3.Location = new System.Drawing.Point(376, 149);
+            this.simpleButton3.Location = new System.Drawing.Point(302, 149);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(22, 22);
             this.simpleButton3.TabIndex = 33;
@@ -1121,12 +1126,12 @@
             // JobLookUpEdit
             // 
             this.JobLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "Job", true));
-            this.JobLookUpEdit.Location = new System.Drawing.Point(414, 89);
+            this.JobLookUpEdit.Location = new System.Drawing.Point(356, 89);
             this.JobLookUpEdit.Name = "JobLookUpEdit";
             this.JobLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.JobLookUpEdit.Properties.PopupSizeable = true;
-            this.JobLookUpEdit.Size = new System.Drawing.Size(244, 22);
+            this.JobLookUpEdit.Size = new System.Drawing.Size(302, 22);
             this.JobLookUpEdit.StyleController = this.styleController1;
             this.JobLookUpEdit.TabIndex = 39;
             // 
@@ -1578,6 +1583,8 @@
             // 
             // groupControl4
             // 
+            this.groupControl4.Controls.Add(this.AspNetUserLookUpEdit);
+            this.groupControl4.Controls.Add(this.labelControl63);
             this.groupControl4.Controls.Add(this.labelControl62);
             this.groupControl4.Controls.Add(this.memoEdit1);
             this.groupControl4.Controls.Add(this.CashEditComboBox);
@@ -1596,6 +1603,35 @@
             this.groupControl4.TabIndex = 16;
             this.groupControl4.Tag = "";
             this.groupControl4.Text = "Додаткова інформація ";
+            // 
+            // AspNetUserLookUpEdit
+            // 
+            this.AspNetUserLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "AspNetUserId", true));
+            this.AspNetUserLookUpEdit.Location = new System.Drawing.Point(380, 64);
+            this.AspNetUserLookUpEdit.Name = "AspNetUserLookUpEdit";
+            this.AspNetUserLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)});
+            this.AspNetUserLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("UserName", "Назва")});
+            this.AspNetUserLookUpEdit.Properties.DisplayMember = "UserName";
+            this.AspNetUserLookUpEdit.Properties.ShowFooter = false;
+            this.AspNetUserLookUpEdit.Properties.ShowHeader = false;
+            this.AspNetUserLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.AspNetUserLookUpEdit.Properties.ValueMember = "Id";
+            this.AspNetUserLookUpEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.AspNetUserLookUpEdit_Properties_ButtonClick);
+            this.AspNetUserLookUpEdit.Size = new System.Drawing.Size(282, 22);
+            this.AspNetUserLookUpEdit.StyleController = this.styleController1;
+            this.AspNetUserLookUpEdit.TabIndex = 52;
+            // 
+            // labelControl63
+            // 
+            this.labelControl63.Location = new System.Drawing.Point(380, 42);
+            this.labelControl63.Name = "labelControl63";
+            this.labelControl63.Size = new System.Drawing.Size(121, 16);
+            this.labelControl63.StyleController = this.styleController1;
+            this.labelControl63.TabIndex = 51;
+            this.labelControl63.Text = "Інтернет користувач";
             // 
             // labelControl62
             // 
@@ -3362,6 +3398,10 @@
             this.dateEdit3.StyleController = this.styleController1;
             this.dateEdit3.TabIndex = 46;
             // 
+            // aspNetUsersBindingSource
+            // 
+            this.aspNetUsersBindingSource.DataSource = typeof(SP_Sklad.SkladData.AspNetUsers);
+            // 
             // frmKAgentEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3464,6 +3504,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
             this.groupControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AspNetUserLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CashEditComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PayTypeEdit.Properties)).EndInit();
@@ -3581,6 +3622,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit20.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aspNetUsersBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3849,5 +3891,8 @@
         private DevExpress.XtraEditors.LookUpEdit CashEditComboBox;
         private DevExpress.XtraEditors.LabelControl labelControl62;
         private DevExpress.XtraEditors.MemoEdit memoEdit1;
+        private System.Windows.Forms.BindingSource aspNetUsersBindingSource;
+        private DevExpress.XtraEditors.LookUpEdit AspNetUserLookUpEdit;
+        private DevExpress.XtraEditors.LabelControl labelControl63;
     }
 }

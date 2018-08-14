@@ -331,6 +331,9 @@
     <Compile Include="Reports\XtraRep\DocListReport.Designer.cs">
       <DependentUpon>DocListReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\AspNetUsers.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\BanksPersons.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -386,6 +389,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetWayBillDetOut_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetWayBillList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\Packaging.cs">
@@ -459,9 +465,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetWayBillListWh_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\GetWayBillList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\Jobs.cs">
@@ -1620,6 +1623,7 @@
     <None Include="Properties\DataSources\SP_Sklad.MainTabs.DirectoriesUserControl+PriceTypesView.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.AccountType.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Actives.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.AspNetUsers.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Banks.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.BanksPersons.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.CashDesks.datasource" />

@@ -106,6 +106,8 @@ namespace SP_Sklad.EditForm
 
                 RouteLookUpEdit.Properties.DataSource = DB.SkladBase().Routes.AsNoTracking().ToList();
                 KaGroupLookUpEdit.Properties.DataSource = DB.SkladBase().KontragentGroup.AsNoTracking().ToList();
+                AspNetUserLookUpEdit.Properties.DataSource = DB.SkladBase().AspNetUsers.AsNoTracking().ToList();
+              //  aspNetUsersBindingSource.DataSource = DB.SkladBase().AspNetUsers.ToList();
 
                 //   GrpIdEdit.Properties.TreeList.DataSource = DB.SkladBase().MatGroup.Select(s => new { s.GrpId, s.PId, s.Name }).ToList();
                 //     ProducerLookUpEdit.Properties.DataSource = DB.SkladBase().Materials.Select(s => new { s.Producer }).Distinct().ToList();
@@ -825,6 +827,14 @@ namespace SP_Sklad.EditForm
                
             }
 
+        }
+
+        private void AspNetUserLookUpEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                AspNetUserLookUpEdit.EditValue = null;
+            }
         }
 /*
         private void checkedComboBoxEdit2_EditValueChanged(object sender, EventArgs e)
