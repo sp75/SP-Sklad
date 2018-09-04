@@ -1226,6 +1226,12 @@
     <Compile Include="ViewsForm\frmManufacturing.Designer.cs">
       <DependentUpon>frmManufacturing.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBDetForm\frmWBMoveDet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBDetForm\frmWBMoveDet.Designer.cs">
+      <DependentUpon>frmWBMoveDet.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBDetForm\frmProductionPlanDet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1545,6 +1551,9 @@
     </Compile>
     <EmbeddedResource Include="ViewsForm\frmManufacturing.resx">
       <DependentUpon>frmManufacturing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WBDetForm\frmWBMoveDet.resx">
+      <DependentUpon>frmWBMoveDet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WBDetForm\frmProductionPlanDet.resx">
       <DependentUpon>frmProductionPlanDet.cs</DependentUpon>

@@ -164,7 +164,9 @@
       [KagentList].[GroupName] AS [GroupName], 
       [KagentList].[GroupId] AS [GroupId], 
       [KagentList].[Login] AS [Login], 
-      [KagentList].[UserName] AS [UserName]
+      [KagentList].[UserName] AS [UserName], 
+      [KagentList].[AspNetUserId] AS [AspNetUserId], 
+      [KagentList].[WebUserName] AS [WebUserName]
       FROM [dbo].[KagentList] AS [KagentList]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="MaterialsList" EntityType="BaseModel.Store.MaterialsList" store:Type="Views" store:Schema="dbo" store:Name="MaterialsList">
@@ -2483,6 +2485,8 @@
           <Property Name="GroupId" Type="uniqueidentifier" />
           <Property Name="Login" Type="nvarchar" MaxLength="50" />
           <Property Name="UserName" Type="nvarchar" MaxLength="128" />
+          <Property Name="AspNetUserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="WebUserName" Type="nvarchar" MaxLength="256" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'sp_base.dbo.MaterialsList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -7620,7 +7624,6 @@
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="WayBillSvc" EntitySet="WayBillSvc" />
           </AssociationSet>
-          <EntitySet Name="KagentList" EntityType="BaseModel.KagentList" />
           <EntitySet Name="ErrorLog" EntityType="BaseModel.ErrorLog" />
           <EntitySet Name="Users" EntityType="BaseModel.Users" />
           <AssociationSet Name="FK_Kagent_Users" Association="BaseModel.FK_Kagent_Users">
@@ -7958,6 +7961,7 @@
             <Parameter Name="person_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="AspNetUsers" EntityType="BaseModel.AspNetUsers" />
+          <EntitySet Name="KagentList" EntityType="BaseModel.KagentList" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -11666,7 +11670,7 @@
           <Property Type="Int32" Name="PayTypeId" />
           <Property Type="Int32" Name="CashDeskId" />
           <Property Type="String" Name="Declaration" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="AspNetUserId" />
+          <Property Type="String" Name="AspNetUserId" MaxLength="128" Unicode="true" FixedLength="false" />
         </EntityType>
         <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
@@ -12056,60 +12060,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="KagentList">
-          <Key>
-            <PropertyRef Name="KaId" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="Deleted" />
-            <PropertyRef Name="NdsPayer" />
-            <PropertyRef Name="KType" />
-            <PropertyRef Name="KaKind" />
-          </Key>
-          <Property Type="Int32" Name="KaId" Nullable="false" />
-          <Property Type="String" Name="KAU" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="FullName" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="INN" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="OKPO" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="CertNum" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Address" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Phone" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Email" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="www" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="City" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="District" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Country" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="PostIndex" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="FullUrADDR" MaxLength="453" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="FullFactADDR" MaxLength="387" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Fax" MaxLength="32" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="Deleted" Nullable="false" />
-          <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="KPP" MaxLength="32" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="NdsPayer" Nullable="false" />
-          <Property Type="DateTime" Name="BirthDate" Precision="3" />
-          <Property Type="Int32" Name="KType" Nullable="false" />
-          <Property Type="Int32" Name="KaKind" Nullable="false" />
-          <Property Type="String" Name="Job" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Type="Decimal" Name="StartSaldo" Precision="15" Scale="8" />
-          <Property Type="DateTime" Name="StartSaldoDate" Precision="3" />
-          <Property Type="Int32" Name="PTypeId" />
-          <Property Type="Int32" Name="JobType" />
-          <Property Type="Int32" Name="Def" />
-          <Property Type="Int32" Name="UserId" />
-          <Property Type="Int32" Name="Archived" />
-          <Property Type="String" Name="TypKAgent" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="KAgentKind" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="PriceName" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="ContractType" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="ContractDate" Precision="3" />
-          <Property Type="String" Name="ContractNum" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="Decimal" Name="Saldo" Precision="38" Scale="2" />
-          <Property Type="String" Name="GroupName" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="Guid" Name="GroupId" />
-          <Property Type="String" Name="Login" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="UserName" MaxLength="128" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="ErrorLog">
           <Key>
             <PropertyRef Name="Id" />
@@ -13274,6 +13224,62 @@
           <Property Type="Boolean" Name="LockoutEnabled" Nullable="false" />
           <Property Type="Int32" Name="AccessFailedCount" Nullable="false" />
           <Property Type="String" Name="UserName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="KagentList">
+          <Key>
+            <PropertyRef Name="KaId" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Deleted" />
+            <PropertyRef Name="NdsPayer" />
+            <PropertyRef Name="KType" />
+            <PropertyRef Name="KaKind" />
+          </Key>
+          <Property Type="Int32" Name="KaId" Nullable="false" />
+          <Property Type="String" Name="KAU" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FullName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="INN" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OKPO" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CertNum" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Phone" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="www" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="City" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="District" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Country" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PostIndex" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FullUrADDR" MaxLength="453" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FullFactADDR" MaxLength="387" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Fax" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Deleted" Nullable="false" />
+          <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="KPP" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="NdsPayer" Nullable="false" />
+          <Property Type="DateTime" Name="BirthDate" Precision="3" />
+          <Property Type="Int32" Name="KType" Nullable="false" />
+          <Property Type="Int32" Name="KaKind" Nullable="false" />
+          <Property Type="String" Name="Job" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="StartSaldo" Precision="15" Scale="8" />
+          <Property Type="DateTime" Name="StartSaldoDate" Precision="3" />
+          <Property Type="Int32" Name="PTypeId" />
+          <Property Type="Int32" Name="JobType" />
+          <Property Type="Int32" Name="Def" />
+          <Property Type="Int32" Name="UserId" />
+          <Property Type="Int32" Name="Archived" />
+          <Property Type="String" Name="TypKAgent" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="KAgentKind" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PriceName" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ContractType" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ContractDate" Precision="3" />
+          <Property Type="String" Name="ContractNum" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Saldo" Precision="38" Scale="2" />
+          <Property Type="String" Name="GroupName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="GroupId" />
+          <Property Type="String" Name="Login" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UserName" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AspNetUserId" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="WebUserName" MaxLength="256" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -15765,56 +15771,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="KagentList">
-            <EntityTypeMapping TypeName="BaseModel.KagentList">
-              <MappingFragment StoreEntitySet="KagentList">
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
-                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
-                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
-                <ScalarProperty Name="ContractNum" ColumnName="ContractNum" />
-                <ScalarProperty Name="ContractDate" ColumnName="ContractDate" />
-                <ScalarProperty Name="ContractType" ColumnName="ContractType" />
-                <ScalarProperty Name="PriceName" ColumnName="PriceName" />
-                <ScalarProperty Name="KAgentKind" ColumnName="KAgentKind" />
-                <ScalarProperty Name="TypKAgent" ColumnName="TypKAgent" />
-                <ScalarProperty Name="Archived" ColumnName="Archived" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Def" ColumnName="Def" />
-                <ScalarProperty Name="JobType" ColumnName="JobType" />
-                <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
-                <ScalarProperty Name="StartSaldoDate" ColumnName="StartSaldoDate" />
-                <ScalarProperty Name="StartSaldo" ColumnName="StartSaldo" />
-                <ScalarProperty Name="Job" ColumnName="Job" />
-                <ScalarProperty Name="KaKind" ColumnName="KaKind" />
-                <ScalarProperty Name="KType" ColumnName="KType" />
-                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-                <ScalarProperty Name="NdsPayer" ColumnName="NdsPayer" />
-                <ScalarProperty Name="KPP" ColumnName="KPP" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
-                <ScalarProperty Name="FullFactADDR" ColumnName="FullFactADDR" />
-                <ScalarProperty Name="FullUrADDR" ColumnName="FullUrADDR" />
-                <ScalarProperty Name="PostIndex" ColumnName="PostIndex" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="District" ColumnName="District" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="www" ColumnName="www" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="CertNum" ColumnName="CertNum" />
-                <ScalarProperty Name="OKPO" ColumnName="OKPO" />
-                <ScalarProperty Name="INN" ColumnName="INN" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="KAU" ColumnName="KAU" />
-                <ScalarProperty Name="KaId" ColumnName="KaId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ErrorLog">
             <EntityTypeMapping TypeName="BaseModel.ErrorLog">
               <MappingFragment StoreEntitySet="ErrorLog">
@@ -16833,6 +16789,58 @@
                 <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KagentList">
+            <EntityTypeMapping TypeName="BaseModel.KagentList">
+              <MappingFragment StoreEntitySet="KagentList">
+                <ScalarProperty Name="WebUserName" ColumnName="WebUserName" />
+                <ScalarProperty Name="AspNetUserId" ColumnName="AspNetUserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="ContractNum" ColumnName="ContractNum" />
+                <ScalarProperty Name="ContractDate" ColumnName="ContractDate" />
+                <ScalarProperty Name="ContractType" ColumnName="ContractType" />
+                <ScalarProperty Name="PriceName" ColumnName="PriceName" />
+                <ScalarProperty Name="KAgentKind" ColumnName="KAgentKind" />
+                <ScalarProperty Name="TypKAgent" ColumnName="TypKAgent" />
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Def" ColumnName="Def" />
+                <ScalarProperty Name="JobType" ColumnName="JobType" />
+                <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
+                <ScalarProperty Name="StartSaldoDate" ColumnName="StartSaldoDate" />
+                <ScalarProperty Name="StartSaldo" ColumnName="StartSaldo" />
+                <ScalarProperty Name="Job" ColumnName="Job" />
+                <ScalarProperty Name="KaKind" ColumnName="KaKind" />
+                <ScalarProperty Name="KType" ColumnName="KType" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="NdsPayer" ColumnName="NdsPayer" />
+                <ScalarProperty Name="KPP" ColumnName="KPP" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="FullFactADDR" ColumnName="FullFactADDR" />
+                <ScalarProperty Name="FullUrADDR" ColumnName="FullUrADDR" />
+                <ScalarProperty Name="PostIndex" ColumnName="PostIndex" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="www" ColumnName="www" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CertNum" ColumnName="CertNum" />
+                <ScalarProperty Name="OKPO" ColumnName="OKPO" />
+                <ScalarProperty Name="INN" ColumnName="INN" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="KAU" ColumnName="KAU" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -276,10 +276,10 @@
         <EntityTypeShape EntityType="BaseModel.v_WaybillList" Width="1.5" PointX="6.75" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.v_PayDoc" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.v_DiscCards" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="BaseModel.KagentList" Width="1.5" PointX="8.75" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.v_Users" Width="1.5" PointX="0.77737436852295616" PointY="19.076044061722254" />
-        <EntityTypeShape EntityType="BaseModel.v_MatRemains" Width="1.5" PointX="6.6021653202372441" PointY="2.4802597623692173" />
+        <EntityTypeShape EntityType="BaseModel.v_MatRemains" Width="1.5" PointX="11.375" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.v_ErrorLog" Width="1.5" PointX="9.1037510843499341" PointY="30.783803641229778" />
+        <EntityTypeShape EntityType="BaseModel.KagentList" Width="1.5" PointX="6.6289880530112359" PointY="29.199814750440332" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

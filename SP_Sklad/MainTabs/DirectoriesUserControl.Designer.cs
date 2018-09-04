@@ -101,6 +101,7 @@
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.LoginGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn80 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
@@ -237,6 +238,7 @@
             this.colAddr = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNotes = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDef = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit11 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.xtraTabPage21 = new DevExpress.XtraTab.XtraTabPage();
             this.MeasuresGridControl = new DevExpress.XtraGrid.GridControl();
             this.MeasuresDS = new System.Windows.Forms.BindingSource(this.components);
@@ -318,7 +320,6 @@
             this.ExplorerPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.repositoryItemCheckEdit11 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
@@ -400,6 +401,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.WarehouseGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WarehouseBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WarehouseGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit11)).BeginInit();
             this.xtraTabPage21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MeasuresGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MeasuresDS)).BeginInit();
@@ -449,7 +451,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ExplorerPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit11)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemImageComboBox1
@@ -1150,7 +1151,8 @@
             this.KagentGridColumnArchived,
             this.gridColumn10,
             this.gridColumn11,
-            this.LoginGridColumn});
+            this.LoginGridColumn,
+            this.gridColumn80});
             this.KaGridView.GridControl = this.KaGridControl;
             this.KaGridView.Name = "KaGridView";
             this.KaGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -1185,7 +1187,7 @@
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 4;
-            this.gridColumn3.Width = 61;
+            this.gridColumn3.Width = 78;
             // 
             // gridColumn4
             // 
@@ -1194,7 +1196,7 @@
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 1;
-            this.gridColumn4.Width = 573;
+            this.gridColumn4.Width = 375;
             // 
             // KagentSaldoGridColumn
             // 
@@ -1206,8 +1208,8 @@
             this.KagentSaldoGridColumn.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Saldo", "Всього: {0:0.00}")});
             this.KagentSaldoGridColumn.Visible = true;
-            this.KagentSaldoGridColumn.VisibleIndex = 6;
-            this.KagentSaldoGridColumn.Width = 100;
+            this.KagentSaldoGridColumn.VisibleIndex = 7;
+            this.KagentSaldoGridColumn.Width = 63;
             // 
             // KagentGridColumnArchived
             // 
@@ -1231,7 +1233,7 @@
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 3;
-            this.gridColumn10.Width = 179;
+            this.gridColumn10.Width = 161;
             // 
             // gridColumn11
             // 
@@ -1240,6 +1242,7 @@
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 2;
+            this.gridColumn11.Width = 85;
             // 
             // LoginGridColumn
             // 
@@ -1248,6 +1251,16 @@
             this.LoginGridColumn.Name = "LoginGridColumn";
             this.LoginGridColumn.Visible = true;
             this.LoginGridColumn.VisibleIndex = 5;
+            this.LoginGridColumn.Width = 97;
+            // 
+            // gridColumn80
+            // 
+            this.gridColumn80.Caption = "Інтернет користувач";
+            this.gridColumn80.FieldName = "WebUserName";
+            this.gridColumn80.Name = "gridColumn80";
+            this.gridColumn80.Visible = true;
+            this.gridColumn80.VisibleIndex = 6;
+            this.gridColumn80.Width = 184;
             // 
             // xtraTabControl2
             // 
@@ -2511,6 +2524,13 @@
             this.colDef.VisibleIndex = 3;
             this.colDef.Width = 69;
             // 
+            // repositoryItemCheckEdit11
+            // 
+            this.repositoryItemCheckEdit11.AutoHeight = false;
+            this.repositoryItemCheckEdit11.Name = "repositoryItemCheckEdit11";
+            this.repositoryItemCheckEdit11.ValueChecked = 1;
+            this.repositoryItemCheckEdit11.ValueUnchecked = 0;
+            // 
             // xtraTabPage21
             // 
             this.xtraTabPage21.Controls.Add(this.MeasuresGridControl);
@@ -3297,13 +3317,6 @@
             this.MatPopupMenu.Manager = this.barManager1;
             this.MatPopupMenu.Name = "MatPopupMenu";
             // 
-            // repositoryItemCheckEdit11
-            // 
-            this.repositoryItemCheckEdit11.AutoHeight = false;
-            this.repositoryItemCheckEdit11.Name = "repositoryItemCheckEdit11";
-            this.repositoryItemCheckEdit11.ValueChecked = 1;
-            this.repositoryItemCheckEdit11.ValueUnchecked = 0;
-            // 
             // DirectoriesUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3404,6 +3417,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.WarehouseGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WarehouseBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WarehouseGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit11)).EndInit();
             this.xtraTabPage21.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MeasuresGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MeasuresDS)).EndInit();
@@ -3453,7 +3467,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ExplorerPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit11)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3750,5 +3763,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn79;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit11;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn80;
     }
 }

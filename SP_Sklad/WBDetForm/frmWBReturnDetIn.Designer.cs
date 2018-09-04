@@ -383,7 +383,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
             this.panel1.Size = new System.Drawing.Size(592, 92);
-            this.panel1.TabIndex = 23;
+            this.panel1.TabIndex = 1;
             // 
             // panelControl1
             // 
@@ -418,7 +418,7 @@
             this.MatComboBox.Properties.ValueMember = "PosId";
             this.MatComboBox.Size = new System.Drawing.Size(442, 22);
             this.MatComboBox.StyleController = this.styleController1;
-            this.MatComboBox.TabIndex = 1;
+            this.MatComboBox.TabIndex = 0;
             this.MatComboBox.EditValueChanged += new System.EventHandler(this.MatComboBox_EditValueChanged);
             // 
             // simpleButton4
@@ -448,7 +448,8 @@
             this.WHComboBox.Properties.ValueMember = "WId";
             this.WHComboBox.Size = new System.Drawing.Size(218, 22);
             this.WHComboBox.StyleController = this.styleController1;
-            this.WHComboBox.TabIndex = 10;
+            this.WHComboBox.TabIndex = 1;
+            this.WHComboBox.TabStop = false;
             // 
             // WaybillDetBS
             // 
@@ -497,7 +498,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
             this.panel2.Size = new System.Drawing.Size(592, 115);
-            this.panel2.TabIndex = 24;
+            this.panel2.TabIndex = 0;
             // 
             // panelControl3
             // 
@@ -670,7 +671,7 @@
             this.panel5.Name = "panel5";
             this.panel5.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
             this.panel5.Size = new System.Drawing.Size(592, 131);
-            this.panel5.TabIndex = 27;
+            this.panel5.TabIndex = 2;
             // 
             // groupControl3
             // 
@@ -836,7 +837,7 @@
             this.panelControl2.Location = new System.Drawing.Point(0, 362);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(592, 52);
-            this.panelControl2.TabIndex = 33;
+            this.panelControl2.TabIndex = 3;
             // 
             // OkButton
             // 
@@ -845,7 +846,7 @@
             this.OkButton.Location = new System.Drawing.Point(374, 14);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(98, 26);
-            this.OkButton.TabIndex = 10;
+            this.OkButton.TabIndex = 0;
             this.OkButton.Text = "Застосувати";
             this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
@@ -856,7 +857,7 @@
             this.simpleButton1.Location = new System.Drawing.Point(481, 14);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(93, 26);
-            this.simpleButton1.TabIndex = 11;
+            this.simpleButton1.TabIndex = 1;
             this.simpleButton1.Text = "Відмінити";
             // 
             // timer1

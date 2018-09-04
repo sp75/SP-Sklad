@@ -140,7 +140,6 @@ namespace SP_Sklad.SkladData
         public DbSet<v_WorkDate> v_WorkDate { get; set; }
         public DbSet<EnterpriseWorker> EnterpriseWorker { get; set; }
         public DbSet<Kagent> Kagent { get; set; }
-        public DbSet<KagentList> KagentList { get; set; }
         public DbSet<ErrorLog> ErrorLog { get; set; }
         public DbSet<Users> Users { get; set; }
         public DbSet<v_Users> v_Users { get; set; }
@@ -158,6 +157,7 @@ namespace SP_Sklad.SkladData
         public DbSet<UserAccessWh> UserAccessWh { get; set; }
         public DbSet<WayBillTmc> WayBillTmc { get; set; }
         public DbSet<AspNetUsers> AspNetUsers { get; set; }
+        public DbSet<KagentList> KagentList { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)

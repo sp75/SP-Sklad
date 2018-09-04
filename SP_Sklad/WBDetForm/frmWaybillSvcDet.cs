@@ -85,7 +85,7 @@ namespace SP_Sklad.WBDetForm
         bool GetOk()
         {
             //bool recult = (!cxDBLookupComboBox4->Text.IsEmpty() && !NDSDBEdit->Text.IsEmpty() && !quantityEdit->Text.IsEmpty() && !BasePriceEdit->Text.IsEmpty());
-            bool recult = (SvcComboBox.EditValue != DBNull.Value && AmountEdit.EditValue != DBNull.Value);
+            bool recult = (SvcComboBox.EditValue != DBNull.Value && (int)SvcComboBox.EditValue > 0 && AmountEdit.EditValue != DBNull.Value && (decimal)AmountEdit.EditValue > 0);
 
             OkButton.Enabled = recult;
 

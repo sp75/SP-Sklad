@@ -58,5 +58,7 @@ namespace SP_Sklad.SkladData
         public Nullable<System.Guid> GroupId { get; set; }
         public string Login { get; set; }
         public string UserName { get; set; }
+        public string AspNetUserId { get; set; }
+        public string WebUserName { get; set; }
     }
 }
