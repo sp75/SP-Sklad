@@ -1315,6 +1315,27 @@ namespace SP_Sklad.Reports
                 IHelper.Print(data_for_report, TemlateList.rep_39);
             }
 
+            if (idx == 40)
+            {
+                var list = DB.SkladBase().GetUsedMaterials((int)this.Material.MatId, OnDate.Date.AddDays(1)).OrderBy(o=> o.KaName).ToList();
+
+                var k = (int)Kagent.KaId;
+                if (k > 0)
+                {
+                    list = list.Where(w => w.KaId == k).ToList();
+                }
+
+                if (!list.Any())
+                {
+                    return;
+                }
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("DiscCards", list.ToList());
+
+                IHelper.Print(data_for_report, TemlateList.rep_40);
+            }
+
             db.PrintLog.Add(new PrintLog
             {
                 PrintType = 1,

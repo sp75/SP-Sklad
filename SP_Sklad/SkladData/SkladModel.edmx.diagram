@@ -171,7 +171,6 @@
         <AssociationConnector Association="BaseModel.FK_WAYBILLMAKE_WAYBILLLIST" />
         <AssociationConnector Association="BaseModel.FK_WBM_WBILLID" />
         <AssociationConnector Association="BaseModel.FK_WBS_WBILLID" />
-        <EntityTypeShape EntityType="BaseModel.Licenses" Width="1.5" PointX="0.22449915121518965" PointY="23.247416909433628" />
         <EntityTypeShape EntityType="BaseModel.UserSettings" Width="1.5" PointX="21.625" PointY="0.625" />
         <EntityTypeShape EntityType="BaseModel.v_KAgentSaldo" Width="1.5" PointX="10.535968673665062" PointY="17.949280389560982" />
         <EntityTypeShape EntityType="BaseModel.PayDoc" Width="1.5" PointX="2.8195564964877242" PointY="18.081283354238273" />
@@ -268,6 +267,7 @@
         <AssociationConnector Association="BaseModel.FK_MoveInventories_Materials" />
         <AssociationConnector Association="BaseModel.FK_MoveInventories_WaybillList" />
         <EntityTypeShape EntityType="BaseModel.AspNetUsers" Width="1.5" PointX="0.59610825804812284" PointY="7.2373711649502495" />
+        <EntityTypeShape EntityType="BaseModel.Licenses" Width="1.5" PointX="11.75" PointY="9.75" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

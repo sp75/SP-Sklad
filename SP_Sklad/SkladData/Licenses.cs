@@ -19,5 +19,6 @@ namespace SP_Sklad.SkladData
         public string MacAddress { get; set; }
         public string IpAddress { get; set; }
         public string MachineName { get; set; }
+        public string UserName { get; set; }
     }
 }

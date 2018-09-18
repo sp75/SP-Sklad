@@ -60,5 +60,6 @@ namespace SP_Sklad.Reports
         public static String rep_38 { get { return "CheckingRecipes.xlsx"; } }
         public static String rep_22 { get { return "RepByEmployees.xlsx"; } }
         public static String rep_39 { get { return "MatOutShort.xlsx"; } }
+        public static String rep_40 { get { return "tmc.xlsx"; } }
     }
 }

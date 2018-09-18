@@ -37,6 +37,8 @@ namespace SP_Sklad
                 MessageBox.Show("Не вдалось підключитись до сервера, зверніться до Админістратора");
             }
 
+        //    CheckTrial();
+
             var ver = new BaseEntities().CommonParams.FirstOrDefault().Ver;
             if (ver != Application.ProductVersion)
             {
@@ -77,15 +79,15 @@ namespace SP_Sklad
                         MacAddress = kay_id,
                         LicencesKay = "",
                         IpAddress = ip_address,
-                        MachineName = Environment. MachineName
+                        MachineName = Environment.MachineName,
                     });
                     is_registered = false;
                 }
                 else
                 {
-                    lic.IpAddress = ip_address;
+                //    lic.IpAddress = ip_address;
                     lic.MachineName = Environment.MachineName;
-                    is_registered = DeCoding(lic.LicencesKay) == lic.MacAddress;
+                    is_registered = DeCoding(lic.LicencesKay) == lic.MacAddress /*&& user_name.ToLower() == lic.UserName.ToLower()*/;
                 }
 
                 if (!is_registered)
@@ -93,6 +95,22 @@ namespace SP_Sklad
                     label1.Text = "Програма не зареєстрована, зверніться до адміністратора!";
                     label1.Visible = true;
                 }
+                db.SaveChanges();
+            }
+
+        }
+
+        private void CheckTrial()
+        {
+            using (var db = new BaseEntities())
+            {
+                var cp = db.CommonParams.First();
+                if (cp.TrialPeriod != null && cp.TrialPeriod < DBHelper.ServerDateTime())
+                {
+                    cp.TrialPeriod = null;
+                    db.Licenses.RemoveRange(db.Licenses.ToList());
+                }
+
                 db.SaveChanges();
             }
 

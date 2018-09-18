@@ -121,7 +121,6 @@ namespace SP_Sklad.SkladData
         public DbSet<UsersGroup> UsersGroup { get; set; }
         public DbSet<WaybillDet> WaybillDet { get; set; }
         public DbSet<WaybillList> WaybillList { get; set; }
-        public DbSet<Licenses> Licenses { get; set; }
         public DbSet<UserSettings> UserSettings { get; set; }
         public DbSet<v_KAgentSaldo> v_KAgentSaldo { get; set; }
         public DbSet<PayDoc> PayDoc { get; set; }
@@ -158,6 +157,7 @@ namespace SP_Sklad.SkladData
         public DbSet<WayBillTmc> WayBillTmc { get; set; }
         public DbSet<AspNetUsers> AspNetUsers { get; set; }
         public DbSet<KagentList> KagentList { get; set; }
+        public DbSet<Licenses> Licenses { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)
@@ -1968,16 +1968,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatList_Result>("[BaseEntities].[GetMatList](@grp, @get_price, @get_archived, @get_child_node)", grpParameter, get_priceParameter, get_archivedParameter, get_child_nodeParameter);
         }
     
-        [EdmFunction("BaseEntities", "GetUsedMaterials")]
-        public virtual IQueryable<GetUsedMaterials_Result> GetUsedMaterials(Nullable<int> mat_id)
-        {
-            var mat_idParameter = mat_id.HasValue ?
-                new ObjectParameter("mat_id", mat_id) :
-                new ObjectParameter("mat_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetUsedMaterials_Result>("[BaseEntities].[GetUsedMaterials](@mat_id)", mat_idParameter);
-        }
-    
         [EdmFunction("BaseEntities", "PosGet")]
         public virtual IQueryable<PosGet_Result> PosGet(Nullable<int> mat_id, Nullable<int> w_id, Nullable<int> ka_id, Nullable<System.DateTime> on_date, Nullable<int> get_empty, string wh, Nullable<int> user_id)
         {
@@ -2233,6 +2223,20 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("person_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillList_Result>("[BaseEntities].[GetWayBillList](@from_date, @to_date, @w_type, @checked, @ka_id, @show_null_balance, @wh, @person_id)", from_dateParameter, to_dateParameter, w_typeParameter, checkedParameter, ka_idParameter, show_null_balanceParameter, whParameter, person_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetUsedMaterials")]
+        public virtual IQueryable<GetUsedMaterials_Result> GetUsedMaterials(Nullable<int> mat_id, Nullable<System.DateTime> on_date)
+        {
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            var on_dateParameter = on_date.HasValue ?
+                new ObjectParameter("on_date", on_date) :
+                new ObjectParameter("on_date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetUsedMaterials_Result>("[BaseEntities].[GetUsedMaterials](@mat_id, @on_date)", mat_idParameter, on_dateParameter);
         }
     }
 }

@@ -394,6 +394,9 @@
     <Compile Include="SkladData\GetWayBillList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\Licenses.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\Packaging.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -477,9 +480,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\KontragentGroup.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\Licenses.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\MatChange.cs">

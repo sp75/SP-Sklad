@@ -1245,6 +1245,7 @@
           <Property Name="Ver" Type="nvarchar" MaxLength="50" />
           <Property Name="TemplatePatch" Type="nvarchar" MaxLength="100" />
           <Property Name="EndCalcPeriod" Type="datetime" />
+          <Property Name="TrialPeriod" Type="datetime" />
         </EntityType>
         <EntityType Name="CONTRACTS">
           <Key>
@@ -1626,6 +1627,7 @@
           <Property Name="MacAddress" Type="nvarchar" MaxLength="50" />
           <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
           <Property Name="MachineName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="MatChange">
           <Key>
@@ -5471,11 +5473,12 @@
         <Function Name="GetSvcTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetUsedMaterials" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="mat_id" Type="int" Mode="In" />
+          <Parameter Name="on_date" Type="datetime" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
                 <Property Name="KaId" Type="int" />
-                <Property Name="KaName" Type="nvarchar" Nullable="false" MaxLength="64" />
+                <Property Name="KaName" Type="nvarchar" Nullable="false" MaxLength="100" />
                 <Property Name="Remain" Type="numeric" Precision="38" Scale="2" />
                 <Property Name="MsrName" Type="nvarchar" Nullable="false" MaxLength="6" />
               </RowType>
@@ -7344,7 +7347,6 @@
             <End Role="WaybillList" EntitySet="WaybillList" />
             <End Role="WayBillSvc" EntitySet="WayBillSvc" />
           </AssociationSet>
-          <EntitySet Name="Licenses" EntityType="BaseModel.Licenses" />
           <EntitySet Name="UserSettings" EntityType="BaseModel.UserSettings" />
           <EntitySet Name="v_KAgentSaldo" EntityType="BaseModel.v_KAgentSaldo" />
           <FunctionImport Name="CopyMaterial" ReturnType="Collection(Int32)">
@@ -7886,9 +7888,6 @@
             <End Role="WaybillList" EntitySet="WaybillList" />
             <End Role="WayBillTmc" EntitySet="WayBillTmc" />
           </AssociationSet>
-          <FunctionImport Name="GetUsedMaterials" IsComposable="true" ReturnType="Collection(BaseModel.GetUsedMaterials_Result)">
-          <Parameter Name="mat_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="PosGet" IsComposable="true" ReturnType="Collection(BaseModel.PosGet_Result)">
             <Parameter Name="mat_id" Mode="In" Type="Int32" />
             <Parameter Name="w_id" Mode="In" Type="Int32" />
@@ -7962,6 +7961,11 @@
           </FunctionImport>
           <EntitySet Name="AspNetUsers" EntityType="BaseModel.AspNetUsers" />
           <EntitySet Name="KagentList" EntityType="BaseModel.KagentList" />
+          <FunctionImport Name="GetUsedMaterials" IsComposable="true" ReturnType="Collection(BaseModel.GetUsedMaterials_Result)">
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
+            <Parameter Name="on_date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <EntitySet Name="Licenses" EntityType="BaseModel.Licenses" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -8418,6 +8422,7 @@
           <Property Type="String" Name="Ver" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="TemplatePatch" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="EndCalcPeriod" Precision="3" />
+          <Property Name="TrialPeriod" Type="DateTime" Precision="3" />
         </EntityType>
         <ComplexType Name="GetMatExtra_Result">
           <Property Type="Decimal" Name="Extra" Nullable="true" Precision="15" Scale="4" />
@@ -10842,16 +10847,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Licenses">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="LicencesKay" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="MacAddress" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="IpAddress" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="MachineName" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="UserSettings">
           <Key>
             <PropertyRef Name="Id" />
@@ -12948,12 +12943,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="GetUsedMaterials_Result">
-          <Property Type="Int32" Name="KaId" Nullable="true" />
-          <Property Type="String" Name="KaName" Nullable="false" MaxLength="64" />
-          <Property Type="Decimal" Name="Remain" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
-        </ComplexType>
         <ComplexType Name="PosGet_Result">
           <Property Type="Int32" Name="PosId" Nullable="true" />
           <Property Type="Decimal" Name="Remain" Nullable="true" Precision="15" Scale="4" />
@@ -13280,6 +13269,23 @@
           <Property Type="String" Name="UserName" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="AspNetUserId" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="WebUserName" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="GetUsedMaterials_Result">
+          <Property Type="Int32" Name="KaId" Nullable="true" />
+          <Property Type="String" Name="KaName" Nullable="false" MaxLength="100" />
+          <Property Type="Decimal" Name="Remain" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+        </ComplexType>
+        <EntityType Name="Licenses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LicencesKay" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MacAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MachineName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -13684,6 +13690,7 @@
           <EntitySetMapping Name="CommonParams">
             <EntityTypeMapping TypeName="BaseModel.CommonParams">
               <MappingFragment StoreEntitySet="CommonParams">
+                <ScalarProperty Name="TrialPeriod" ColumnName="TrialPeriod" />
                 <ScalarProperty Name="EndCalcPeriod" ColumnName="EndCalcPeriod" />
                 <ScalarProperty Name="TemplatePatch" ColumnName="TemplatePatch" />
                 <ScalarProperty Name="Ver" ColumnName="Ver" />
@@ -15122,17 +15129,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Licenses">
-            <EntityTypeMapping TypeName="BaseModel.Licenses">
-              <MappingFragment StoreEntitySet="Licenses">
-                <ScalarProperty Name="MachineName" ColumnName="MachineName" />
-                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
-                <ScalarProperty Name="MacAddress" ColumnName="MacAddress" />
-                <ScalarProperty Name="LicencesKay" ColumnName="LicencesKay" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="UserSettings">
             <EntityTypeMapping TypeName="BaseModel.UserSettings">
               <MappingFragment StoreEntitySet="UserSettings">
@@ -16462,16 +16458,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetUsedMaterials" FunctionName="BaseModel.Store.GetUsedMaterials">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetUsedMaterials_Result">
-                <ScalarProperty Name="KaId" ColumnName="KaId" />
-                <ScalarProperty Name="KaName" ColumnName="KaName" />
-                <ScalarProperty Name="Remain" ColumnName="Remain" />
-                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="PosGet" FunctionName="BaseModel.Store.PosGet">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.PosGet_Result">
@@ -16841,6 +16827,28 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="KAU" ColumnName="KAU" />
                 <ScalarProperty Name="KaId" ColumnName="KaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetUsedMaterials" FunctionName="BaseModel.Store.GetUsedMaterials">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetUsedMaterials_Result">
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Licenses">
+            <EntityTypeMapping TypeName="BaseModel.Licenses">
+              <MappingFragment StoreEntitySet="Licenses">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="MachineName" ColumnName="MachineName" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="MacAddress" ColumnName="MacAddress" />
+                <ScalarProperty Name="LicencesKay" ColumnName="LicencesKay" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

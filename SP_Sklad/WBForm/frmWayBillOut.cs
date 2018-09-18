@@ -55,7 +55,7 @@ namespace SP_Sklad.WBForm
         {
             KagentComboBox.Properties.DataSource = DBHelper.Kagents;
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
-            repositoryItemComboBox1.Items.AddRange(DBHelper.Packaging.Select(s=> s.Name).ToList());
+            repositoryItemComboBox1.Items.AddRange(DBHelper.Packaging.Select(s => s.Name).ToList());
 
             if (_wbill_id == null && doc_id == null)
             {
@@ -87,16 +87,16 @@ namespace SP_Sklad.WBForm
 
                 DBHelper.UpdateSessionWaybill(wb.WbillId);
 
-                if (is_new_record) 
+                if (is_new_record)
                 {
                     wb.Num = new BaseEntities().GetDocNum("wb_out").FirstOrDefault();
-               //     wb.PersonId = DBHelper.CurrentUser.KaId;
+                    //     wb.PersonId = DBHelper.CurrentUser.KaId;
                 }
 
                 WaybillListBS.DataSource = wb;
                 checkEdit2.Checked = (wb.ToDate != null);
 
-               payDocUserControl1.OnLoad(_db, wb);
+                payDocUserControl1.OnLoad(_db, wb);
             }
 
             RefreshDet();

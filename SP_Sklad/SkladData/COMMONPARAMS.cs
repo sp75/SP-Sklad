@@ -23,5 +23,6 @@ namespace SP_Sklad.SkladData
         public string Ver { get; set; }
         public string TemplatePatch { get; set; }
         public Nullable<System.DateTime> EndCalcPeriod { get; set; }
+        public Nullable<System.DateTime> TrialPeriod { get; set; }
     }
 }
