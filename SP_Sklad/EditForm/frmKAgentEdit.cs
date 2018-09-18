@@ -63,6 +63,8 @@ namespace SP_Sklad.EditForm
                 });
 
                 _db.SaveChanges();
+
+                _ka_id = _ka.KaId;
             }
             else
             {
@@ -91,7 +93,8 @@ namespace SP_Sklad.EditForm
                 PTypeEdit.Properties.DataSource = DB.SkladBase().PriceTypes.Select(s => new { s.PTypeId, s.Name }).ToList();
                 MatLookUpEdit.Properties.DataSource = DB.SkladBase().MaterialsList.ToList();
                 GroupLookUpEdit.Properties.DataSource = DB.SkladBase().MatGroup.ToList();
-                UsersLookUpEdit.Properties.DataSource = DB.SkladBase().Users.ToList().Where(w => !w.Kagent.Any() || w.UserId == _ka.UserId).ToList();
+                UsersLookUpEdit.Properties.DataSource = DB.SkladBase().Users.Where(w => !w.Kagent.Any() || w.UserId == _ka.UserId).ToList();
+
                 var pos_list = DB.SkladBase().KAgentPersons.Where(w => w.JobType == 2 && w.Post != null).Select(s => s.Post).Distinct().ToList();
                 JobLookUpEdit.Properties.Items.AddRange(pos_list);
                 comboBoxEdit1.Properties.Items.AddRange(pos_list);
@@ -107,11 +110,6 @@ namespace SP_Sklad.EditForm
                 RouteLookUpEdit.Properties.DataSource = DB.SkladBase().Routes.AsNoTracking().ToList();
                 KaGroupLookUpEdit.Properties.DataSource = DB.SkladBase().KontragentGroup.AsNoTracking().ToList();
                 AspNetUserLookUpEdit.Properties.DataSource = DB.SkladBase().AspNetUsers.AsNoTracking().ToList();
-              //  aspNetUsersBindingSource.DataSource = DB.SkladBase().AspNetUsers.ToList();
-
-                //   GrpIdEdit.Properties.TreeList.DataSource = DB.SkladBase().MatGroup.Select(s => new { s.GrpId, s.PId, s.Name }).ToList();
-                //     ProducerLookUpEdit.Properties.DataSource = DB.SkladBase().Materials.Select(s => new { s.Producer }).Distinct().ToList();
-                //     CIdLookUpEdit.Properties.DataSource = DBHelper.CountersList;
 
                 KagentBindingSource.DataSource = _ka;
                 if (k_discount != null)
@@ -159,14 +157,6 @@ namespace SP_Sklad.EditForm
                 {
                     checkedComboBoxEdit1.Properties.Items.Add(item.KaId, item.Name, item.IsWork ? CheckState.Checked : CheckState.Unchecked, true);
                 }
-
-            /*    _db.Kagent.Where(w => w.KType == 3 && w.Deleted == 0 && (w.Archived == null || w.Archived == 0)).Select(s => new
-                {
-                    KaId = s.KaId,
-                    Name = s.Name,
-                    IsOwned = s.EnterpriseKagent.Any(a => a.KaId == _ka_id)
-
-                }).ToList().ForEach(f => checkedComboBoxEdit2.Properties.Items.Add(f.KaId, f.Name, f.IsOwned ? CheckState.Checked : CheckState.Unchecked, true));*/
 
                 PayTypeEdit.Properties.DataSource = DB.SkladBase().PayType.ToList();
                 CashEditComboBox.Properties.DataSource = DBHelper.CashDesks;

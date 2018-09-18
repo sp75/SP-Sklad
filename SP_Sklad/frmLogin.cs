@@ -37,7 +37,7 @@ namespace SP_Sklad
                 MessageBox.Show("Не вдалось підключитись до сервера, зверніться до Админістратора");
             }
 
-        //    CheckTrial();
+            CheckTrial();
 
             var ver = new BaseEntities().CommonParams.FirstOrDefault().Ver;
             if (ver != Application.ProductVersion)
@@ -65,14 +65,14 @@ namespace SP_Sklad
             {
                 kay_id = "123456789";
             }
-//            var ddd = DeCoding(Coding("77419"));  //test
+            //            var ddd = DeCoding(Coding("77419"));  //test
 
             var ip_address = UniqueID.GetPhysicalIPAdress();
             var user_name = string.IsNullOrEmpty(Environment.UserDomainName) ? Environment.UserName : Environment.UserDomainName + "\\" + Environment.UserName;
 
             using (var db = new BaseEntities())
             {
-                var lic = db.Licenses.FirstOrDefault(w => w.MacAddress == kay_id);
+                var lic = db.Licenses.ToList().FirstOrDefault(w => w.MacAddress == kay_id && user_name.ToLower() == w.UserName.ToLower());
                 if (lic == null)
                 {
                     db.Licenses.Add(new Licenses
@@ -87,9 +87,9 @@ namespace SP_Sklad
                 }
                 else
                 {
-                //    lic.IpAddress = ip_address;
+                    lic.IpAddress = ip_address;
                     lic.MachineName = Environment.MachineName;
-                    is_registered = DeCoding(lic.LicencesKay) == lic.MacAddress /*&& user_name.ToLower() == lic.UserName.ToLower()*/;
+                    is_registered = DeCoding(lic.LicencesKay) == lic.MacAddress && user_name.ToLower() == lic.UserName.ToLower();
                 }
 
                 if (!is_registered)
