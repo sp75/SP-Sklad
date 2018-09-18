@@ -68,6 +68,7 @@ namespace SP_Sklad
 //            var ddd = DeCoding(Coding("77419"));  //test
 
             var ip_address = UniqueID.GetPhysicalIPAdress();
+            var user_name = string.IsNullOrEmpty(Environment.UserDomainName) ? Environment.UserName : Environment.UserDomainName + "\\" + Environment.UserName;
 
             using (var db = new BaseEntities())
             {
@@ -80,6 +81,7 @@ namespace SP_Sklad
                         LicencesKay = "",
                         IpAddress = ip_address,
                         MachineName = Environment.MachineName,
+                        UserName = user_name
                     });
                     is_registered = false;
                 }
