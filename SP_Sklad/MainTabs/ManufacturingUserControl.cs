@@ -648,10 +648,7 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var path = Path.Combine(Application.StartupPath, "expotr.xlsx");
-            WbGridView.ExportToXlsx(path);
-
-            Process.Start(path);
+            IHelper.ExportToXlsx(WBGridControl);
         }
 
         private void ProductionPlansGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)

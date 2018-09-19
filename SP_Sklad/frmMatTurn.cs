@@ -64,10 +64,7 @@ namespace SP_Sklad
             }
             else if (file_format == "xlsx")
             {
-                var path = Path.Combine(Application.StartupPath, "expotr.xlsx");
-                gridControl1.ExportToXlsx(path);
-
-                Process.Start(path);
+                IHelper.ExportToXlsx(gridControl1);
             }
 
           

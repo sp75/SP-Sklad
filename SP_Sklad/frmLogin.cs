@@ -13,6 +13,7 @@ using System.Management;
 using System.Text.RegularExpressions;
 using System.Globalization;
 using SP_Sklad.Common;
+using System.Security.Principal;
 
 namespace SP_Sklad
 {
@@ -70,9 +71,25 @@ namespace SP_Sklad
             var ip_address = UniqueID.GetPhysicalIPAdress();
             var user_name = string.IsNullOrEmpty(Environment.UserDomainName) ? Environment.UserName : Environment.UserDomainName + "\\" + Environment.UserName;
 
+            var identity = WindowsIdentity.GetCurrent();
+            if (SystemInformation.TerminalServerSession && identity.User.IsAccountSid())
+            {
+                var sid = identity.User.Value;
+                int sum = 0;
+                foreach (var item in sid.Split('-'))
+                {
+                    int s;
+                    if (int.TryParse(item, out s))
+                    {
+                        sum += s;
+                    }
+                }
+                kay_id = sum.ToString();
+            }
+
             using (var db = new BaseEntities())
             {
-                var lic = db.Licenses.ToList().FirstOrDefault(w => w.MacAddress == kay_id && user_name.ToLower() == w.UserName.ToLower());
+                var lic = db.Licenses.ToList().FirstOrDefault(w => w.MacAddress == kay_id /*&& user_name.ToLower() == w.UserName.ToLower()*/);
                 if (lic == null)
                 {
                     db.Licenses.Add(new Licenses
@@ -89,7 +106,7 @@ namespace SP_Sklad
                 {
                     lic.IpAddress = ip_address;
                     lic.MachineName = Environment.MachineName;
-                    is_registered = DeCoding(lic.LicencesKay) == lic.MacAddress && user_name.ToLower() == lic.UserName.ToLower();
+                    is_registered = DeCoding(lic.LicencesKay) == lic.MacAddress /*&& user_name.ToLower() == lic.UserName.ToLower()*/;
                 }
 
                 if (!is_registered)

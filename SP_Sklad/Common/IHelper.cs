@@ -703,6 +703,46 @@ namespace SP_Sklad.Common
             }
         }
 
+        public static void ExportToXlsx(GridControl grid)
+        {
+            var file_format = DBHelper.CurrentUser.ReportFormat;
+
+
+            if (DBHelper.CurrentUser.InternalEditor != null && DBHelper.CurrentUser.InternalEditor.Value)
+            {
+                if (file_format == "pdf")
+                {
+                    using (MemoryStream ms_pdf = new MemoryStream())
+                    {
+                        grid.ExportToPdf(ms_pdf);
+                        new frmPdfView(ms_pdf.ToArray()).Show();
+                    }
+                }
+                else if (file_format == "xlsx")
+                {
+                    using (MemoryStream ms_xlsx = new MemoryStream())
+                    {
+                        grid.ExportToXlsx(ms_xlsx);
+                        new frmSpreadsheed(ms_xlsx.ToArray()).Show();
+                    }
+                }
+            }
+            else
+            {
+                String result_file = Path.Combine(rep_path, "expotr" + "_" + DateTime.Now.Ticks.ToString() + "." + file_format);
+                if (file_format == "pdf")
+                {
+                    grid.ExportToPdf(result_file);
+                }
+                else if (file_format == "xlsx")
+                {
+                    grid.ExportToXlsx(result_file);
+                }
+
+                Process.Start(result_file);
+            }
+        }
+
         public static String ConvertLogData(String str)
         {
             var res = "";

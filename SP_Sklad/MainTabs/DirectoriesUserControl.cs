@@ -1011,17 +1011,14 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem11_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var path = Path.Combine(Application.StartupPath, "expotr.xlsx");
             switch (focused_tree_node.GType)
             {
                 case 1:
-                    KaGridControl.ExportToXlsx(path);
-                    Process.Start(path);
+                    IHelper.ExportToXlsx(KaGridControl);
                     break;
 
                 case 2:
-                    MatGridControl.ExportToXlsx(path);
-                    Process.Start(path);
+                    IHelper.ExportToXlsx(MatGridControl);
                     break;
             }
         }

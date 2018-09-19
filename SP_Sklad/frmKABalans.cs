@@ -52,10 +52,7 @@ namespace SP_Sklad
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var path = Path.Combine(Application.StartupPath, "expotr.xlsx");
-            gridControl1.ExportToXlsx (path);
-
-            Process.Start(path);
+            IHelper.ExportToXlsx(gridControl1);
         }
 
         private void bandedGridView1_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
