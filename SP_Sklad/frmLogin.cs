@@ -75,11 +75,11 @@ namespace SP_Sklad
             if (SystemInformation.TerminalServerSession && identity.User.IsAccountSid())
             {
                 var sid = identity.User.Value;
-                int sum = 0;
+                long sum = 0;
                 foreach (var item in sid.Split('-'))
                 {
-                    int s;
-                    if (int.TryParse(item, out s))
+                    long s;
+                    if (long.TryParse(item, out s))
                     {
                         sum += s;
                     }

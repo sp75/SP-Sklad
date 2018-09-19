@@ -569,7 +569,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(933, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(933, 26);
             // 
             // barDockControlBottom
             // 
@@ -582,15 +582,15 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 657);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 655);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(933, 24);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 657);
+            this.barDockControlRight.Location = new System.Drawing.Point(933, 26);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 655);
             // 
             // barButtonItem3
             // 
@@ -688,7 +688,7 @@
             this.DirTreeList.Dock = System.Windows.Forms.DockStyle.Left;
             this.DirTreeList.ImageIndexFieldName = "ImgIdx";
             this.DirTreeList.KeyFieldName = "Id";
-            this.DirTreeList.Location = new System.Drawing.Point(0, 24);
+            this.DirTreeList.Location = new System.Drawing.Point(0, 26);
             this.DirTreeList.Name = "DirTreeList";
             this.DirTreeList.OptionsBehavior.Editable = false;
             this.DirTreeList.OptionsView.ShowColumns = false;
@@ -697,7 +697,7 @@
             this.DirTreeList.OptionsView.ShowVertLines = false;
             this.DirTreeList.ParentFieldName = "ParentId";
             this.DirTreeList.SelectImageList = this.ImageList;
-            this.DirTreeList.Size = new System.Drawing.Size(246, 603);
+            this.DirTreeList.Size = new System.Drawing.Size(246, 601);
             this.DirTreeList.TabIndex = 33;
             this.DirTreeList.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.DirTreeList_FocusedNodeChanged);
             // 
@@ -712,9 +712,9 @@
             // 
             // splitterControl1
             // 
-            this.splitterControl1.Location = new System.Drawing.Point(246, 24);
+            this.splitterControl1.Location = new System.Drawing.Point(246, 26);
             this.splitterControl1.Name = "splitterControl1";
-            this.splitterControl1.Size = new System.Drawing.Size(5, 603);
+            this.splitterControl1.Size = new System.Drawing.Size(12, 601);
             this.splitterControl1.TabIndex = 34;
             this.splitterControl1.TabStop = false;
             // 
@@ -723,12 +723,12 @@
             this.xtraTabControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.xtraTabControl1.BorderStylePage = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(251, 24);
+            this.xtraTabControl1.Location = new System.Drawing.Point(258, 26);
             this.xtraTabControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.xtraTabControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(682, 603);
+            this.xtraTabControl1.Size = new System.Drawing.Size(675, 601);
             this.xtraTabControl1.TabIndex = 35;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -750,7 +750,7 @@
             this.xtraTabPage1.Controls.Add(this.panel5);
             this.xtraTabPage1.Controls.Add(this.panel1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(682, 581);
+            this.xtraTabPage1.Size = new System.Drawing.Size(675, 579);
             this.xtraTabPage1.Text = "Інформація";
             // 
             // panel5
@@ -760,7 +760,7 @@
             this.panel5.Location = new System.Drawing.Point(0, 444);
             this.panel5.Name = "panel5";
             this.panel5.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.panel5.Size = new System.Drawing.Size(682, 137);
+            this.panel5.Size = new System.Drawing.Size(675, 135);
             this.panel5.TabIndex = 28;
             // 
             // panelControl11
@@ -770,7 +770,7 @@
             this.panelControl11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl11.Location = new System.Drawing.Point(0, 5);
             this.panelControl11.Name = "panelControl11";
-            this.panelControl11.Size = new System.Drawing.Size(682, 132);
+            this.panelControl11.Size = new System.Drawing.Size(675, 130);
             this.panelControl11.TabIndex = 41;
             // 
             // StartSaldoPanel
@@ -786,7 +786,7 @@
             this.StartSaldoPanel.Controls.Add(this.StartSaldoDateEdit);
             this.StartSaldoPanel.Location = new System.Drawing.Point(17, 36);
             this.StartSaldoPanel.Name = "StartSaldoPanel";
-            this.StartSaldoPanel.Size = new System.Drawing.Size(645, 75);
+            this.StartSaldoPanel.Size = new System.Drawing.Size(638, 73);
             this.StartSaldoPanel.TabIndex = 43;
             // 
             // KASaldoEdit
@@ -860,7 +860,7 @@
             this.StartSaldoDateEdit.Properties.Mask.EditMask = "";
             this.StartSaldoDateEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
             this.StartSaldoDateEdit.Properties.MinValue = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            this.StartSaldoDateEdit.Size = new System.Drawing.Size(141, 22);
+            this.StartSaldoDateEdit.Size = new System.Drawing.Size(134, 22);
             this.StartSaldoDateEdit.StyleController = this.styleController1;
             this.StartSaldoDateEdit.TabIndex = 45;
             // 
@@ -880,7 +880,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(682, 444);
+            this.panel1.Size = new System.Drawing.Size(675, 444);
             this.panel1.TabIndex = 29;
             // 
             // groupControl2
@@ -891,7 +891,7 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(682, 444);
+            this.groupControl2.Size = new System.Drawing.Size(675, 444);
             this.groupControl2.TabIndex = 17;
             this.groupControl2.Tag = "";
             this.groupControl2.Text = " Основна інформація ";
@@ -904,9 +904,9 @@
             this.panel3.Controls.Add(this.labelControl18);
             this.panel3.Controls.Add(this.checkEdit1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(2, 345);
+            this.panel3.Location = new System.Drawing.Point(2, 346);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(678, 97);
+            this.panel3.Size = new System.Drawing.Size(671, 96);
             this.panel3.TabIndex = 43;
             // 
             // textEdit15
@@ -962,13 +962,13 @@
             // 
             this.xtraTabControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.xtraTabControl2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.xtraTabControl2.Location = new System.Drawing.Point(2, 141);
+            this.xtraTabControl2.Location = new System.Drawing.Point(2, 142);
             this.xtraTabControl2.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
             this.xtraTabControl2.LookAndFeel.UseDefaultLookAndFeel = false;
             this.xtraTabControl2.Name = "xtraTabControl2";
             this.xtraTabControl2.SelectedTabPage = this.xtraTabPage10;
             this.xtraTabControl2.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
-            this.xtraTabControl2.Size = new System.Drawing.Size(678, 204);
+            this.xtraTabControl2.Size = new System.Drawing.Size(671, 204);
             this.xtraTabControl2.TabIndex = 42;
             this.xtraTabControl2.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage8,
@@ -979,7 +979,7 @@
             // 
             this.xtraTabPage10.Controls.Add(this.panelControl4);
             this.xtraTabPage10.Name = "xtraTabPage10";
-            this.xtraTabPage10.Size = new System.Drawing.Size(678, 204);
+            this.xtraTabPage10.Size = new System.Drawing.Size(671, 204);
             this.xtraTabPage10.Text = "xtraTabPage10";
             // 
             // panelControl4
@@ -998,7 +998,7 @@
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl4.Location = new System.Drawing.Point(0, 0);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(678, 204);
+            this.panelControl4.Size = new System.Drawing.Size(671, 204);
             this.panelControl4.TabIndex = 43;
             // 
             // lookUpEdit3
@@ -1327,9 +1327,9 @@
             this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(2, 20);
+            this.panelControl1.Location = new System.Drawing.Point(2, 21);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(678, 121);
+            this.panelControl1.Size = new System.Drawing.Size(671, 121);
             this.panelControl1.TabIndex = 41;
             // 
             // checkedComboBoxEdit1

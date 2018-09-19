@@ -125,7 +125,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADm
-        cwAAAk1TRnQBSQFMAgEBHQEAAdgBCwHYAQsBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        cwAAAk1TRnQBSQFMAgEBHQEAAeABCwHgAQsBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABgAMAAQEBAAEYBgABYB4AA/UD/LcAAdUB2QHUATgBkwEiAXQBngFrAbgBwgG3AesB7AHrA/yrAAHs
         Ae0B7AFBAZMBOwFUAbMBgwHiAfIBxAGzAeMBkAFwAbQBTgFzAZ0BaAGwAbsBsAPoA/2fAAP4AV4BnQFZ
         AXQBlgGsAeMB5AL+Ae4B2gH+AfYB8gH+AfwB5wHtAekBrgGqAcUBYAFmAZsBLAGEAaABfAP6mQAD/gGO
@@ -630,7 +630,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACo
-        ggAAAk1TRnQBSQFMAgEBJwEAAeABCwHgAQsBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        ggAAAk1TRnQBSQFMAgEBJwEAAegBCwHoAQsBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABoAMAAQEBAAEYBgABeCUAAWMCAAFjAgABYwIAAWMCAAFjAgABYwIAAWMCAAFjAgABYwIAAWMHAAP+
         AV8BYQG3AuoB8QYAARABEwGaBgAB7gHvAfQBewF9AcMD/nwAAWsCAAFrBQABawUAAWsFAAFrBQABawoA
         AuUB8AExATUBrgLqAfIDAAEPARQBowMAAe4B7wH0ATcBOgGwAeEB4gHueAABQgEQAQABOQEQAgABewIA
@@ -1198,7 +1198,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABK
-        UgAAAk1TRnQBSQFMAgEBFAEAAegBCwHoAQsBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        UgAAAk1TRnQBSQFMAgEBFAEAAfABCwHwAQsBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABYAMAAQEBAAEYBgABSP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/ACQAAdYBhAFjAf8BewFjAf8BjAFr
         Ad4BjAFaAf8B1gGcAd4BjAFaAe8BewFaAecBWgE5AXsBpQFSAcYB3gG1AdYB5wHGAXMB1gFzAWMBzgFj
         AUIBtQFCDwABUgGcAVoBAAFzAQgBMQGEATEbAAGtAVIBKQGtAVIBGAGtAVIBKS8AAXMCAAFzBgABxgGE
@@ -1558,6 +1558,18 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>91</value>
   </metadata>
+  <metadata name="WhMatGetBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>669, 24</value>
+  </metadata>
+  <metadata name="GetOrderedBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1355, 25</value>
+  </metadata>
+  <metadata name="GetWayBillListWhBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1475, 23</value>
+  </metadata>
+  <metadata name="WayBillListInfoBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1218, 25</value>
+  </metadata>
   <metadata name="BarImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>548, 24</value>
   </metadata>
@@ -1566,7 +1578,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADS
-        UAAAAk1TRnQBSQFMAgEBFQEAAfABCwHwAQsBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        UAAAAk1TRnQBSQFMAgEBFQEAAfgBCwH4AQsBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABYAMAAQEBAAEYBgABSCQAAa0BWgExAZwBMQEIAmsBxgIAAZwCAAGcAgABnAIAAZwCawHGogABrQFa
         ATEBrQFKAQgB3gGcATkCawHGAgABnAEAAQgBrQEAARgBxgEAARgBxgEAAQgBrQIAAZwCawHGmQABrQFa
         ATEBrQFKAQgB3gGcATkB5wG9AWMCawHGAQABCAGtAdYB3gH/AdYB3gH/ARABQgH/ARABQgH/AdYB3gH/
@@ -1913,21 +1925,6 @@
         AQMBAAEBAYEBwwHAAR8B4AEHAcABAAHDAeEB8AF/AfABDwHwAWAB5wH4Av8B/AE/Af8B8QL/Cw==
 </value>
   </data>
-  <metadata name="WhMatGetBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>669, 24</value>
-  </metadata>
-  <metadata name="GetOrderedBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1355, 25</value>
-  </metadata>
-  <metadata name="GetWayBillListWhBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1475, 23</value>
-  </metadata>
-  <metadata name="WayBillListInfoBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1218, 25</value>
-  </metadata>
-  <metadata name="WayBillListInfoBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1218, 25</value>
-  </metadata>
   <metadata name="MatPopupMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>793, 24</value>
   </metadata>
