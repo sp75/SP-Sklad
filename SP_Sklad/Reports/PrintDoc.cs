@@ -252,13 +252,14 @@ namespace SP_Sklad.Reports
             }
 
             var ent_id = wb.First().EntId;
+            var wb_det = db.GetWayBillDetOut(wb.First().WbillId).ToList().OrderBy(o => o.Num).ToList();
             data_report.Add("EntAccount", db.EnterpriseAccount.Where(w => w.KaId == ent_id && w.Def == 1).ToList());
             data_report.Add("WayBillList", wb);
-            data_report.Add("range1", db.GetWayBillDetOut(wb.First().WbillId).ToList().OrderBy(o => o.Num).ToList());
+            data_report.Add("range1", wb_det);
 
             var dt = DateTime.Now.Date;
             var w_id = wb.First().WbillId;
-            var p = db.WaybillDet.Where(w => w.WbillId == w_id).Select(s => new
+            var p = db.WaybillDet.Where(w => w.WbillId == w_id && w.Materials.MatRecipe.Any()).Select(s => new
             {
                 s.Num,
                 s.Amount,
@@ -275,6 +276,14 @@ namespace SP_Sklad.Reports
             }).OrderBy(o => o.Num).ToList();
 
             data_report.Add("Posvitcheny", p);
+
+            var summary = wb_det.Where(w => w.PosType != 2).GroupBy(g => g.MsrName).Select(s => new
+            {
+                MsrName = s.Key,
+                Amount = s.Sum(sum => sum.Amount)
+            });
+
+            data_report.Add("Summary", summary.ToList());
 
             return data_report;
         }
