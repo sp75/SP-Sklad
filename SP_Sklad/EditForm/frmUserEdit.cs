@@ -226,6 +226,27 @@ namespace SP_Sklad.EditForm
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (focused_node.FunId != null && focused_node.CanView == null)
+            {
+                _db.UserAccess.Add(new UserAccess
+                {
+                    UserId = _user_id.Value,
+                    FunId = focused_node.FunId.Value,
+                    CanView = 0,
+                    CanDelete = 0,
+                    CanInsert = 0,
+                    CanModify = 0,
+                    CanPost = 0
+                });
+                _db.SaveChanges();
+
+                focused_node.CanView = 0;
+                focused_node.CanPost = 0;
+                focused_node.CanModify = 0;
+                focused_node.CanInsert = 0;
+                focused_node.CanDelete = 0;
+            }
+
             SetValue(focused_node, 1);
             treeList1.RefreshDataSource();
         }

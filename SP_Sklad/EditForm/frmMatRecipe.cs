@@ -394,5 +394,15 @@ namespace SP_Sklad.EditForm
             TechProcLookUpEdit.EditValue = IHelper.ShowDirectList(TechProcLookUpEdit.EditValue, 14);
         }
 
+        private void textEdit3_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                var main_sum = _db.MatRecDet.Where(w => w.RecId == _mr.RecId && w.Materials.MId == w.MatRecipe.Materials.MId).ToList().Sum(s => s.Amount);
+                var ext_sum = _db.MatRecDet.Where(w => w.RecId == _mr.RecId && w.Materials.MId != w.MatRecipe.Materials.MId).ToList().Sum(s => (s.Materials.Weight ?? 0) * s.Amount);
+                textEdit3.EditValue = main_sum + ext_sum;
+            }
+        }
+
     }
 }

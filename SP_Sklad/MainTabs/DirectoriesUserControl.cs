@@ -223,6 +223,7 @@ namespace SP_Sklad.MainTabs
                                 s.Out
                             }).ToList();
 
+                            MatRecipeGridView.ExpandAllGroups();
                             extDirTabControl.SelectedTabPageIndex = 0;
                             break;
 
@@ -237,6 +238,8 @@ namespace SP_Sklad.MainTabs
                                 s.Name,
                                 GrpName = s.Materials.MatGroup.Name
                             }).ToList();
+
+                            MatRecipeGridView.ExpandAllGroups();
                             extDirTabControl.SelectedTabPageIndex = 0;
                             break;
 
@@ -626,6 +629,7 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+       //     var prev_grp_id = focused_tree_node.GrpId;
             switch (focused_tree_node.GType)
             {
                 case 2: new frmMatGroupEdit(focused_tree_node.GrpId).ShowDialog();
@@ -637,35 +641,65 @@ namespace SP_Sklad.MainTabs
             }
 
             ExplorerRefreshBtn.PerformClick();
+
+     //       DirTreeList.FocusedNode = DirTreeList.FindNodeByFieldValue("Id", prev_grp_id);
         }
 
         private void ExplorerRefreshBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             DirTreeBS.DataSource = DB.SkladBase().GetDirTree(DBHelper.CurrentUser.UserId).ToList();
+            DirTreeList.ExpandToLevel(1);
         }
 
         private void AddGroupMatBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            int? grp_id;
+
             if (focused_tree_node.ImageIndex == 2 && focused_tree_node.GType == 2)
             {
-                new frmMatGroupEdit(null, focused_tree_node.GrpId).ShowDialog();
+                using (var frm = new frmMatGroupEdit(PId: focused_tree_node.GrpId))
+                {
+                    frm.ShowDialog();
+                    grp_id = frm._grp_id;
+                }
             }
-            else new frmMatGroupEdit().ShowDialog();
+            else
+            {
+                using (var frm = new frmMatGroupEdit())
+                {
+                    frm.ShowDialog();
+                    grp_id = frm._grp_id;
+                }
+            }
+
+            //  DirTreeBS.Add(DB.SkladBase().GetDirTree(DBHelper.CurrentUser.UserId).FirstOrDefault(w => w.Id == grp_id * -1));
 
             ExplorerRefreshBtn.PerformClick();
+
+            if (grp_id != null)
+            {
+                DirTreeList.FocusedNode = DirTreeList.FindNodeByFieldValue("Id", grp_id * -1);
+            }
         }
 
         private void DelExplorerBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            int? prev_id = focused_tree_node.PId;  
             switch (focused_tree_node.GType)
             {
-                case 2: DB.SkladBase().DeleteWhere<MatGroup>(w => w.GrpId == focused_tree_node.GrpId).SaveChanges();
+                case 2: 
+                    DB.SkladBase().DeleteWhere<MatGroup>(w => w.GrpId == focused_tree_node.GrpId);
                     break;
-                case 3: DB.SkladBase().DeleteWhere<SvcGroup>(w => w.GrpId == focused_tree_node.GrpId).SaveChanges();
+
+                case 3: 
+                    DB.SkladBase().DeleteWhere<SvcGroup>(w => w.GrpId == focused_tree_node.GrpId).SaveChanges();
                     break;
             }
 
             ExplorerRefreshBtn.PerformClick();
+
+            DirTreeList.FocusedNode = DirTreeList.FindNodeByFieldValue("Id", prev_id);
+            DirTreeList.FocusedNode.Expanded = true;
         }
 
         private void MatRecipeGridView_DoubleClick(object sender, EventArgs e)

@@ -15,7 +15,7 @@ namespace SP_Sklad.EditForm
 {
     public partial class frmMatGroupEdit : DevExpress.XtraEditors.XtraForm
     {
-        int? _grp_id { get; set; }
+        public int? _grp_id { get; set; }
         int? _pid { get; set; }
         private MatGroup _mg { get; set; }
         private BaseEntities _db { get; set; }
@@ -53,12 +53,13 @@ namespace SP_Sklad.EditForm
                 });
                 _db.SaveChanges();
 
+                _grp_id = _mg.GrpId;
                 _mg.PId = _pid ?? _mg.GrpId;
             }
             else
             {
                 _mg = _db.MatGroup.Find(_grp_id);
-             }
+            }
 
             if (_mg != null)
             {

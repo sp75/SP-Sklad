@@ -64,6 +64,8 @@
           <EntitySet Name="PayDoc" EntityType="BaseModel.Store.PayDoc" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PayDocType" EntityType="BaseModel.Store.PayDocType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PayType" EntityType="BaseModel.Store.PayType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PlannedCalculation" EntityType="BaseModel.Store.PlannedCalculation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PlannedCalculationDet" EntityType="BaseModel.Store.PlannedCalculationDet" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PosRel" EntityType="BaseModel.Store.PosRel" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PriceList" EntityType="BaseModel.Store.PriceList" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PriceListDet" EntityType="BaseModel.Store.PriceListDet" store:Type="Tables" Schema="dbo" />
@@ -382,6 +384,35 @@
       [v_PayDoc].[Id] AS [Id]
       FROM [dbo].[v_PayDoc] AS [v_PayDoc]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_PlannedCalculation" EntityType="BaseModel.Store.v_PlannedCalculation" store:Type="Views" store:Schema="dbo" store:Name="v_PlannedCalculation">
+            <DefiningQuery>SELECT 
+      [v_PlannedCalculation].[Id] AS [Id], 
+      [v_PlannedCalculation].[OnDate] AS [OnDate], 
+      [v_PlannedCalculation].[Num] AS [Num], 
+      [v_PlannedCalculation].[PersonName] AS [PersonName], 
+      [v_PlannedCalculation].[EntName] AS [EntName], 
+      [v_PlannedCalculation].[Notes] AS [Notes]
+      FROM [dbo].[v_PlannedCalculation] AS [v_PlannedCalculation]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_PlannedCalculationDetDet" EntityType="BaseModel.Store.v_PlannedCalculationDetDet" store:Type="Views" store:Schema="dbo" store:Name="v_PlannedCalculationDetDet">
+            <DefiningQuery>SELECT 
+      [v_PlannedCalculationDetDet].[Id] AS [Id], 
+      [v_PlannedCalculationDetDet].[RecipeName] AS [RecipeName], 
+      [v_PlannedCalculationDetDet].[MsrName] AS [MsrName], 
+      [v_PlannedCalculationDetDet].[RecId] AS [RecId], 
+      [v_PlannedCalculationDetDet].[ProductionPlan] AS [ProductionPlan], 
+      [v_PlannedCalculationDetDet].[PlannedProfitability] AS [PlannedProfitability], 
+      [v_PlannedCalculationDetDet].[RecipeOut] AS [RecipeOut], 
+      [v_PlannedCalculationDetDet].[Amount] AS [Amount], 
+      [v_PlannedCalculationDetDet].[PlannedCalculationId] AS [PlannedCalculationId], 
+      [v_PlannedCalculationDetDet].[RecipeCount] AS [RecipeCount], 
+      [v_PlannedCalculationDetDet].[RecipePrice] AS [RecipePrice], 
+      [v_PlannedCalculationDetDet].[SalesPrice] AS [SalesPrice], 
+      [v_PlannedCalculationDetDet].[Price] AS [Price], 
+      [v_PlannedCalculationDetDet].[Profitability] AS [Profitability], 
+      [v_PlannedCalculationDetDet].[PlansPrice] AS [PlansPrice]
+      FROM [dbo].[v_PlannedCalculationDetDet] AS [v_PlannedCalculationDetDet]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_PriceList" EntityType="BaseModel.Store.v_PriceList" store:Type="Views" store:Schema="dbo" store:Name="v_PriceList">
             <DefiningQuery>SELECT 
       [v_PriceList].[PlId] AS [PlId], 
@@ -689,6 +720,14 @@
           <AssociationSet Name="FK_BANKSPERSONS_1" Association="BaseModel.Store.FK_BANKSPERSONS_1">
             <End Role="Banks" EntitySet="Banks" />
             <End Role="BanksPersons" EntitySet="BanksPersons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CalcRawMaterialDet_CalcRawMaterials" Association="BaseModel.Store.FK_CalcRawMaterialDet_CalcRawMaterials">
+            <End Role="PlannedCalculation" EntitySet="PlannedCalculation" />
+            <End Role="PlannedCalculationDet" EntitySet="PlannedCalculationDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CalcRawMaterialDet_MatRecipe" Association="BaseModel.Store.FK_CalcRawMaterialDet_MatRecipe">
+            <End Role="MatRecipe" EntitySet="MatRecipe" />
+            <End Role="PlannedCalculationDet" EntitySet="PlannedCalculationDet" />
           </AssociationSet>
           <AssociationSet Name="FK_COMMISSI_REFERENCE_KAGENT" Association="BaseModel.Store.FK_COMMISSI_REFERENCE_KAGENT">
             <End Role="Kagent" EntitySet="Kagent" />
@@ -1854,6 +1893,33 @@
           <Property Name="PTypeId" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
         </EntityType>
+        <EntityType Name="PlannedCalculation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="20" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="EntId" Type="int" />
+          <Property Name="SessionId" Type="uniqueidentifier" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="PlannedCalculationDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RecId" Type="int" Nullable="false" />
+          <Property Name="ProductionPlan" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="PlannedProfitability" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="RecipeOut" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="Amount" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="PlannedCalculationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SalesPrice" Type="numeric" Precision="15" Scale="2" />
+        </EntityType>
         <EntityType Name="PosRel">
           <Key>
             <PropertyRef Name="Id" />
@@ -2786,6 +2852,47 @@
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
+      warning 6002: The table/view 'sp_base.dbo.v_PlannedCalculation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="v_PlannedCalculation">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="OnDate" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="20" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="100" />
+          <Property Name="EntName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'sp_base.dbo.v_PlannedCalculationDetDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="v_PlannedCalculationDetDet">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="MsrName" />
+            <PropertyRef Name="RecId" />
+            <PropertyRef Name="PlannedCalculationId" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RecipeName" Type="nvarchar" MaxLength="255" />
+          <Property Name="MsrName" Type="nvarchar" Nullable="false" MaxLength="6" />
+          <Property Name="RecId" Type="int" Nullable="false" />
+          <Property Name="ProductionPlan" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="PlannedProfitability" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="RecipeOut" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="Amount" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="PlannedCalculationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RecipeCount" Type="numeric" Precision="38" />
+          <Property Name="RecipePrice" Type="numeric" Precision="38" Scale="6" />
+          <Property Name="SalesPrice" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="Price" Type="numeric" Precision="38" Scale="6" />
+          <Property Name="Profitability" Type="numeric" Precision="38" Scale="6" />
+          <Property Name="PlansPrice" Type="numeric" Precision="38" Scale="6" />
+        </EntityType>
+        <!--Errors Found During Generation:
       warning 6002: The table/view 'sp_base.dbo.v_PriceList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="v_PriceList">
@@ -3456,6 +3563,30 @@
             </Principal>
             <Dependent Role="BanksPersons">
               <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CalcRawMaterialDet_CalcRawMaterials">
+          <End Role="PlannedCalculation" Type="BaseModel.Store.PlannedCalculation" Multiplicity="1" />
+          <End Role="PlannedCalculationDet" Type="BaseModel.Store.PlannedCalculationDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlannedCalculation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PlannedCalculationDet">
+              <PropertyRef Name="PlannedCalculationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CalcRawMaterialDet_MatRecipe">
+          <End Role="MatRecipe" Type="BaseModel.Store.MatRecipe" Multiplicity="1" />
+          <End Role="PlannedCalculationDet" Type="BaseModel.Store.PlannedCalculationDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MatRecipe">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="PlannedCalculationDet">
+              <PropertyRef Name="RecId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7966,6 +8097,18 @@
             <Parameter Name="on_date" Mode="In" Type="DateTime" />
           </FunctionImport>
           <EntitySet Name="Licenses" EntityType="BaseModel.Licenses" />
+          <EntitySet Name="v_PlannedCalculation" EntityType="BaseModel.v_PlannedCalculation" />
+          <EntitySet Name="PlannedCalculation" EntityType="BaseModel.PlannedCalculation" />
+          <EntitySet Name="PlannedCalculationDet" EntityType="BaseModel.PlannedCalculationDet" />
+          <EntitySet Name="v_PlannedCalculationDetDet" EntityType="BaseModel.v_PlannedCalculationDetDet" />
+          <AssociationSet Name="FK_CalcRawMaterialDet_MatRecipe" Association="BaseModel.FK_CalcRawMaterialDet_MatRecipe">
+            <End Role="MatRecipe" EntitySet="MatRecipe" />
+            <End Role="PlannedCalculationDet" EntitySet="PlannedCalculationDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CalcRawMaterialDet_CalcRawMaterials" Association="BaseModel.FK_CalcRawMaterialDet_CalcRawMaterials">
+            <End Role="PlannedCalculation" EntitySet="PlannedCalculation" />
+            <End Role="PlannedCalculationDet" EntitySet="PlannedCalculationDet" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -8815,6 +8958,7 @@
           <Property Type="Decimal" Name="Out" Nullable="false" Precision="15" Scale="4" />
           <NavigationProperty Name="ProductionPlanDet" Relationship="BaseModel.FK_ProductionPlanDet_MatRecipe" FromRole="MatRecipe" ToRole="ProductionPlanDet" />
           <NavigationProperty Name="SchedulingOrders" Relationship="BaseModel.FK_SchedulingOrders_MatRecipe" FromRole="MatRecipe" ToRole="SchedulingOrders" />
+          <NavigationProperty Name="PlannedCalculationDet" Relationship="BaseModel.FK_CalcRawMaterialDet_MatRecipe" FromRole="MatRecipe" ToRole="PlannedCalculationDet" />
         </EntityType>
         <EntityType Name="WayBillMake">
           <Key>
@@ -13287,6 +13431,95 @@
           <Property Name="MachineName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="v_PlannedCalculation">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="OnDate" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
+          <Property Type="String" Name="Num" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PersonName" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EntName" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Notes" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PlannedCalculation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Num" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="EntId" />
+          <Property Type="Guid" Name="SessionId" />
+          <Property Type="String" Name="Notes" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="PersonId" />
+          <NavigationProperty Name="PlannedCalculationDet" Relationship="BaseModel.FK_CalcRawMaterialDet_CalcRawMaterials" FromRole="PlannedCalculation" ToRole="PlannedCalculationDet" />
+          <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
+          <Property Type="Int32" Name="UpdatedBy" />
+        </EntityType>
+        <EntityType Name="PlannedCalculationDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="RecId" Nullable="false" />
+          <Property Type="Decimal" Name="ProductionPlan" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="PlannedProfitability" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="RecipeOut" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Amount" Precision="15" Scale="4" />
+          <Property Type="Guid" Name="PlannedCalculationId" Nullable="false" />
+          <Property Type="Decimal" Name="SalesPrice" Precision="15" Scale="2" />
+          <NavigationProperty Name="MatRecipe" Relationship="BaseModel.FK_CalcRawMaterialDet_MatRecipe" FromRole="PlannedCalculationDet" ToRole="MatRecipe" />
+          <NavigationProperty Name="PlannedCalculation" Relationship="BaseModel.FK_CalcRawMaterialDet_CalcRawMaterials" FromRole="PlannedCalculationDet" ToRole="PlannedCalculation" />
+        </EntityType>
+        <EntityType Name="v_PlannedCalculationDetDet">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="MsrName" />
+            <PropertyRef Name="RecId" />
+            <PropertyRef Name="PlannedCalculationId" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="RecipeName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="RecId" Nullable="false" />
+          <Property Type="Decimal" Name="ProductionPlan" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="PlannedProfitability" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="RecipeOut" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Amount" Precision="15" Scale="4" />
+          <Property Type="Guid" Name="PlannedCalculationId" Nullable="false" />
+          <Property Type="Decimal" Name="RecipeCount" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="RecipePrice" Precision="38" Scale="6" />
+          <Property Type="Decimal" Name="SalesPrice" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="Price" Precision="38" Scale="6" />
+          <Property Type="Decimal" Name="Profitability" Precision="38" Scale="6" />
+          <Property Type="Decimal" Name="PlansPrice" Precision="38" Scale="6" />
+        </EntityType>
+        <Association Name="FK_CalcRawMaterialDet_MatRecipe">
+          <End Type="BaseModel.MatRecipe" Role="MatRecipe" Multiplicity="1" />
+          <End Type="BaseModel.PlannedCalculationDet" Role="PlannedCalculationDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MatRecipe">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="PlannedCalculationDet">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CalcRawMaterialDet_CalcRawMaterials">
+          <End Type="BaseModel.PlannedCalculation" Role="PlannedCalculation" Multiplicity="1" />
+          <End Type="BaseModel.PlannedCalculationDet" Role="PlannedCalculationDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlannedCalculation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PlannedCalculationDet">
+              <PropertyRef Name="PlannedCalculationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -16848,6 +17081,68 @@
                 <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
                 <ScalarProperty Name="MacAddress" ColumnName="MacAddress" />
                 <ScalarProperty Name="LicencesKay" ColumnName="LicencesKay" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_PlannedCalculation">
+            <EntityTypeMapping TypeName="BaseModel.v_PlannedCalculation">
+              <MappingFragment StoreEntitySet="v_PlannedCalculation">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="EntName" ColumnName="EntName" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlannedCalculation">
+            <EntityTypeMapping TypeName="BaseModel.PlannedCalculation">
+              <MappingFragment StoreEntitySet="PlannedCalculation">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="EntId" ColumnName="EntId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlannedCalculationDet">
+            <EntityTypeMapping TypeName="BaseModel.PlannedCalculationDet">
+              <MappingFragment StoreEntitySet="PlannedCalculationDet">
+                <ScalarProperty Name="SalesPrice" ColumnName="SalesPrice" />
+                <ScalarProperty Name="PlannedCalculationId" ColumnName="PlannedCalculationId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="RecipeOut" ColumnName="RecipeOut" />
+                <ScalarProperty Name="PlannedProfitability" ColumnName="PlannedProfitability" />
+                <ScalarProperty Name="ProductionPlan" ColumnName="ProductionPlan" />
+                <ScalarProperty Name="RecId" ColumnName="RecId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_PlannedCalculationDetDet">
+            <EntityTypeMapping TypeName="BaseModel.v_PlannedCalculationDetDet">
+              <MappingFragment StoreEntitySet="v_PlannedCalculationDetDet">
+                <ScalarProperty Name="PlansPrice" ColumnName="PlansPrice" />
+                <ScalarProperty Name="Profitability" ColumnName="Profitability" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="SalesPrice" ColumnName="SalesPrice" />
+                <ScalarProperty Name="RecipePrice" ColumnName="RecipePrice" />
+                <ScalarProperty Name="RecipeCount" ColumnName="RecipeCount" />
+                <ScalarProperty Name="PlannedCalculationId" ColumnName="PlannedCalculationId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="RecipeOut" ColumnName="RecipeOut" />
+                <ScalarProperty Name="PlannedProfitability" ColumnName="PlannedProfitability" />
+                <ScalarProperty Name="ProductionPlan" ColumnName="ProductionPlan" />
+                <ScalarProperty Name="RecId" ColumnName="RecId" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

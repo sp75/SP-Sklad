@@ -21,6 +21,7 @@ namespace SP_Sklad.SkladData
             this.MatRecipeTechProcDet = new HashSet<MatRecipeTechProcDet>();
             this.ProductionPlanDet = new HashSet<ProductionPlanDet>();
             this.SchedulingOrders = new HashSet<SchedulingOrders>();
+            this.PlannedCalculationDet = new HashSet<PlannedCalculationDet>();
         }
     
         public int RecId { get; set; }
@@ -39,5 +40,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<MatRecipeTechProcDet> MatRecipeTechProcDet { get; set; }
         public virtual ICollection<ProductionPlanDet> ProductionPlanDet { get; set; }
         public virtual ICollection<SchedulingOrders> SchedulingOrders { get; set; }
+        public virtual ICollection<PlannedCalculationDet> PlannedCalculationDet { get; set; }
     }
 }

@@ -25,10 +25,11 @@ namespace SP_Sklad.MainTabs
 {
     public partial class ManufacturingUserControl : DevExpress.XtraEditors.XtraUserControl
     {
-        GetManufactureTree_Result focused_tree_node { get; set; }
-        WBListMake_Result focused_row { get; set; }
-        ProductionPlansList_Result pp_focused_row { get; set; }
-        int _cur_wtype = 0;
+        private GetManufactureTree_Result focused_tree_node { get; set; }
+        private WBListMake_Result focused_row { get; set; }
+        private ProductionPlansList_Result pp_focused_row { get; set; }
+        private v_PlannedCalculation pc_focused_row { get; set; }
+        private int _cur_wtype = 0;
 
         public ManufacturingUserControl()
         {
@@ -66,6 +67,9 @@ namespace SP_Sklad.MainTabs
                 PlanStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
                 PlanEndDate.EditValue = DateTime.Now.Date.SetEndDay();
 
+                dateEdit2.EditValue = DateTime.Now.Date.AddDays(-30);
+                dateEdit1.EditValue = DateTime.Now.Date.SetEndDay();
+
                 DocsTreeList.DataSource = DB.SkladBase().GetManufactureTree(DBHelper.CurrentUser.UserId).ToList();
                 DocsTreeList.ExpandAll(); //ExpandToLevel(0);
             }
@@ -101,6 +105,16 @@ namespace SP_Sklad.MainTabs
             int top_row = DeboningGridView.TopRowIndex;
             DeboningBS.DataSource = DB.SkladBase().WBListMake(satrt_date, end_date, (int)DebSatusList.EditValue, DebWhComboBox.EditValue.ToString(), focused_tree_node.Num, -22).ToList();
             DeboningGridView.TopRowIndex = top_row;
+        }
+
+        void GetPlannedCalculation()
+        {
+            var satrt_date = dateEdit2.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : dateEdit2.DateTime;
+            var end_date = dateEdit1.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : dateEdit1.DateTime;
+
+            int top_row = PlannedCalculationGridView.TopRowIndex;
+            PlannedCalculationBS.DataSource = DB.SkladBase().v_PlannedCalculation.Where(w=> w.OnDate >=satrt_date && w.OnDate <= end_date).ToList();
+            PlannedCalculationGridView.TopRowIndex = top_row;
         }
 
         void GetProductionPlans()
@@ -170,6 +184,10 @@ namespace SP_Sklad.MainTabs
                 case 4:
                     GetProductionPlans();
                     break;
+
+                case 5:
+                    GetPlannedCalculation();
+                    break;
             }
         }
 
@@ -203,6 +221,13 @@ namespace SP_Sklad.MainTabs
                     }
                     break;
 
+                case 5:
+                    using (var wb_pc = new frmPlannedCalculation())
+                    {
+                        wb_pc.ShowDialog();
+                    }
+                    break;
+
             }
 
             RefrechItemBtn.PerformClick();
@@ -232,6 +257,15 @@ namespace SP_Sklad.MainTabs
 
                         break;
 
+                    case 5:
+                        var pc_row = PlannedCalculationGridView.GetFocusedRow() as v_PlannedCalculation;
+
+                        using (var f = new frmPlannedCalculation(pc_row.Id))
+                        {
+                            f.ShowDialog();
+                        }
+
+                        break;
                 }
             }
 
@@ -424,6 +458,16 @@ namespace SP_Sklad.MainTabs
                                 if (pp != null)
                                 {
                                     db.ProductionPlans.Remove(pp);
+                                }
+
+                                break;
+
+                            case 5:
+                                var pc_row =db.PlannedCalculation.FirstOrDefault(w=> w.Id == pc_focused_row.Id && w.SessionId == null)  ;
+
+                                if (pc_row != null)
+                                {
+                                    db.PlannedCalculation.Remove(pc_row);
                                 }
 
                                 break;
@@ -781,6 +825,34 @@ namespace SP_Sklad.MainTabs
                         break;
                 }
             }
+        }
+
+        private void dateEdit2_EditValueChanged(object sender, EventArgs e)
+        {
+            GetPlannedCalculation();
+        }
+
+        private void PlannedCalculationGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
+        {
+            pc_focused_row = ((GridView)sender).GetRow(e.FocusedRowHandle) as v_PlannedCalculation;
+
+            if (pc_focused_row != null)
+            {
+                using (var db = DB.SkladBase())
+                {
+                    gridControl9.DataSource = db.v_PlannedCalculationDetDet.Where(w => w.PlannedCalculationId == pc_focused_row.Id).OrderBy(o => o.RecipeName).ToList();
+                }
+            }
+            else
+            {
+                gridControl9.DataSource = null;
+            }
+
+            DeleteItemBtn.Enabled = (pc_focused_row != null && focused_tree_node.CanDelete == 1);
+            EditItemBtn.Enabled = (pc_focused_row != null && focused_tree_node.CanModify == 1);
+            CopyItemBtn.Enabled = (pc_focused_row != null && focused_tree_node.CanModify == 1);
+            ExecuteItemBtn.Enabled = (pc_focused_row != null && focused_tree_node.CanPost == 1);
+            PrintItemBtn.Enabled = (pc_focused_row != null);
         }
     }
 }

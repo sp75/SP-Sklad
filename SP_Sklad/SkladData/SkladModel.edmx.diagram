@@ -268,6 +268,12 @@
         <AssociationConnector Association="BaseModel.FK_MoveInventories_WaybillList" />
         <EntityTypeShape EntityType="BaseModel.AspNetUsers" Width="1.5" PointX="0.59610825804812284" PointY="7.2373711649502495" />
         <EntityTypeShape EntityType="BaseModel.Licenses" Width="1.5" PointX="11.75" PointY="9.75" />
+        <EntityTypeShape EntityType="BaseModel.v_PlannedCalculation" Width="1.5" PointX="5.1232473874107232" PointY="25.249463122919884" />
+        <EntityTypeShape EntityType="BaseModel.PlannedCalculation" Width="1.5" PointX="11.019612220590755" PointY="10.505203251962179" />
+        <EntityTypeShape EntityType="BaseModel.PlannedCalculationDet" Width="1.5" PointX="6.4374611687089605" PointY="5.7348507371427724" />
+        <EntityTypeShape EntityType="BaseModel.v_PlannedCalculationDetDet" Width="1.5" PointX="3.5971362272264136" PointY="14.626537806646217" />
+        <AssociationConnector Association="BaseModel.FK_CalcRawMaterialDet_MatRecipe" />
+        <AssociationConnector Association="BaseModel.FK_CalcRawMaterialDet_CalcRawMaterials" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

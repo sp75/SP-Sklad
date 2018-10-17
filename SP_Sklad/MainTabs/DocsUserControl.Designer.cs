@@ -54,6 +54,7 @@
             this.WbBalansGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn40 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn42 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.wbStatusList = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
@@ -241,7 +242,7 @@
             this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.PriceListPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.gridColumn42 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn43 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -692,6 +693,12 @@
             this.gridColumn40.Name = "gridColumn40";
             this.gridColumn40.Visible = true;
             this.gridColumn40.VisibleIndex = 9;
+            // 
+            // gridColumn42
+            // 
+            this.gridColumn42.Caption = "Група контрагентів";
+            this.gridColumn42.FieldName = "KagentGroupName";
+            this.gridColumn42.Name = "gridColumn42";
             // 
             // panelControl2
             // 
@@ -1389,6 +1396,7 @@
             this.gridColumn25,
             this.gridColumn26,
             this.gridColumn28,
+            this.gridColumn43,
             this.gridColumn27,
             this.gridColumn8});
             this.PayDocGridView.GridControl = this.PDgridControl;
@@ -1495,7 +1503,7 @@
             this.gridColumn27.FieldName = "Total";
             this.gridColumn27.Name = "gridColumn27";
             this.gridColumn27.Visible = true;
-            this.gridColumn27.VisibleIndex = 6;
+            this.gridColumn27.VisibleIndex = 7;
             this.gridColumn27.Width = 83;
             // 
             // gridColumn8
@@ -1504,7 +1512,7 @@
             this.gridColumn8.FieldName = "EntName";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 7;
+            this.gridColumn8.VisibleIndex = 8;
             // 
             // repositoryItemImageEdit2
             // 
@@ -2666,11 +2674,13 @@
             this.PriceListPopupMenu.Manager = this.barManager1;
             this.PriceListPopupMenu.Name = "PriceListPopupMenu";
             // 
-            // gridColumn42
+            // gridColumn43
             // 
-            this.gridColumn42.Caption = "Група контрагентів";
-            this.gridColumn42.FieldName = "KagentGroupName";
-            this.gridColumn42.Name = "gridColumn42";
+            this.gridColumn43.Caption = "Каса";
+            this.gridColumn43.FieldName = "CashdName";
+            this.gridColumn43.Name = "gridColumn43";
+            this.gridColumn43.Visible = true;
+            this.gridColumn43.VisibleIndex = 6;
             // 
             // DocsUserControl
             // 
@@ -3005,5 +3015,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn41;
         private DevExpress.XtraBars.BarButtonItem barButtonItem13;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn42;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn43;
     }
 }
