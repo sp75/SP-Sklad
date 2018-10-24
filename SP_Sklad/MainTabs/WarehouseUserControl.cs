@@ -264,7 +264,7 @@ namespace SP_Sklad.MainTabs
                         case 2: db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK) where WbillId = {0}", dr.WBillId).FirstOrDefault();
                             break;
                     }
-                    if (MessageBox.Show(Resources.delete_wb, "Відалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    if (MessageBox.Show(Resources.delete_wb, "Видалити докумен", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                     {
                         switch (focused_tree_node.GType)
                         {
@@ -891,17 +891,20 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (var db = DB.SkladBase())
+            if (MessageBox.Show("Ви дійсно бажаєте видалити історію по залишкам ?", focused_wh_mat.MatName, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
-                var pos = db.Database.ExecuteSqlCommand(@"
-                         delete from [sp_base].[dbo].[PosRemains]
+                using (var db = DB.SkladBase())
+                {
+                    var pos = db.Database.ExecuteSqlCommand(@"
+                         delete from [PosRemains]
                          where PosId IN (
                            SELECT PosId 
                            FROM [PosRemains]
                            where Remain = 0 and Ordered=0 and  MatId = {0} 
                            group by PosId)", focused_wh_mat.MatId);
 
-                db.SaveChanges();
+                    db.SaveChanges();
+                }
             }
         }
 
