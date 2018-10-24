@@ -394,6 +394,9 @@
     <Compile Include="SkladData\GetWayBillList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetWMatTurnRemain_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\Licenses.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1238,6 +1241,12 @@
     <Compile Include="ViewsForm\frmManufacturing.Designer.cs">
       <DependentUpon>frmManufacturing.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBDetForm\frmPlannedCalculationDet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBDetForm\frmPlannedCalculationDet.Designer.cs">
+      <DependentUpon>frmPlannedCalculationDet.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBDetForm\frmWBMoveDet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1570,6 +1579,9 @@
     <EmbeddedResource Include="ViewsForm\frmManufacturing.resx">
       <DependentUpon>frmManufacturing.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WBDetForm\frmPlannedCalculationDet.resx">
+      <DependentUpon>frmPlannedCalculationDet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBDetForm\frmWBMoveDet.resx">
       <DependentUpon>frmWBMoveDet.cs</DependentUpon>
     </EmbeddedResource>
@@ -1701,6 +1713,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.OrderedList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PayDoc.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PlannedCalculation.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.PlannedCalculationDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PriceList.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PriceListDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PriceTypes.datasource" />

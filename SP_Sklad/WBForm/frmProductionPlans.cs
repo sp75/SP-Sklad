@@ -323,5 +323,10 @@ namespace SP_Sklad.WBForm
         {
             GetOk();
         }
+
+        private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
     }
 }

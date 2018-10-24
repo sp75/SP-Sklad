@@ -228,6 +228,8 @@ namespace SP_Sklad.EditForm
         {
             if (focused_node.FunId != null && focused_node.CanView == null)
             {
+                var can_post =  _db.Functions.FirstOrDefault(w => w.FunId == focused_node.FunId).Flags == 0 ? 2 : 0;
+            
                 _db.UserAccess.Add(new UserAccess
                 {
                     UserId = _user_id.Value,
@@ -236,12 +238,12 @@ namespace SP_Sklad.EditForm
                     CanDelete = 0,
                     CanInsert = 0,
                     CanModify = 0,
-                    CanPost = 0
+                    CanPost = can_post
                 });
                 _db.SaveChanges();
 
                 focused_node.CanView = 0;
-                focused_node.CanPost = 0;
+                focused_node.CanPost = can_post;
                 focused_node.CanModify = 0;
                 focused_node.CanInsert = 0;
                 focused_node.CanDelete = 0;

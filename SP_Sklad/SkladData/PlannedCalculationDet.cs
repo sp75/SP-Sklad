@@ -22,6 +22,7 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> Amount { get; set; }
         public System.Guid PlannedCalculationId { get; set; }
         public Nullable<decimal> SalesPrice { get; set; }
+        public Nullable<decimal> RecipePrice { get; set; }
     
         public virtual MatRecipe MatRecipe { get; set; }
         public virtual PlannedCalculation PlannedCalculation { get; set; }

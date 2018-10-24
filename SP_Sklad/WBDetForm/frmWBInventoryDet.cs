@@ -11,6 +11,7 @@ using SkladEngine.ModelViews;
 using SP_Sklad.Common;
 using SP_Sklad.EditForm;
 using SP_Sklad.SkladData;
+using EntityState = System.Data.Entity.EntityState;
 
 namespace SP_Sklad.WBDetForm
 {
@@ -82,6 +83,11 @@ namespace SP_Sklad.WBDetForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
+            if (_db.Entry<WaybillDet>(_wbd).State == EntityState.Detached)
+            {
+                _db.WaybillDet.Add(_wbd);
+            }
+
             _db.SaveChanges();
         }
 

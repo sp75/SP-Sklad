@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using SP_Sklad.SkladData;
 using SP_Sklad.Common;
+using SP_Sklad.WBDetForm;
+using SP_Sklad.Reports;
 
 namespace SP_Sklad.WBForm
 {
@@ -28,7 +30,7 @@ namespace SP_Sklad.WBForm
         {
             get
             {
-                return WaybillDetInGridView.GetFocusedRow() as v_PlannedCalculationDetDet;
+                return gridView8.GetFocusedRow() as v_PlannedCalculationDetDet;
             }
         }
 
@@ -107,9 +109,9 @@ namespace SP_Sklad.WBForm
         {
             var list = _db.v_PlannedCalculationDetDet.AsNoTracking().Where(w => w.PlannedCalculationId == _doc_id).OrderBy(o => o.RecipeName).ToList();
 
-            int top_row = WaybillDetInGridView.TopRowIndex;
+            int top_row = gridView8.TopRowIndex;
             PlannedCalculationDetBS.DataSource = list;
-            WaybillDetInGridView.TopRowIndex = top_row;
+            gridView8.TopRowIndex = top_row;
 
             GetOk();
         }
@@ -133,7 +135,7 @@ namespace SP_Sklad.WBForm
 
             if (is_new_record)
             {
-                _db.DeleteWhere<ProductionPlans>(w => w.Id == _doc_id);
+                _db.DeleteWhere<PlannedCalculation>(w => w.Id == _doc_id);
             }
 
             _db.Dispose();
@@ -156,6 +158,63 @@ namespace SP_Sklad.WBForm
                 pc.OnDate = DBHelper.ServerDateTime();
                 OnDateDBEdit.DateTime = pc.OnDate;
             }
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            new frmPlannedCalculationDet(_db, Guid.NewGuid(), pc).ShowDialog();
+
+            RefreshDet();
+        }
+
+        private void EditMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var row = gridView8.GetFocusedRow() as v_PlannedCalculationDetDet;
+            new frmPlannedCalculationDet(_db, row.Id, pc).ShowDialog();
+
+            RefreshDet();
+        }
+
+        private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var row = gridView8.GetFocusedRow() as v_PlannedCalculationDetDet;
+            if (row != null)
+            {
+                var det = _db.PlannedCalculationDet.Find(row.Id);
+                if (det != null)
+                {
+                    _db.PlannedCalculationDet.Remove(det);
+                }
+                _db.SaveChanges();
+                gridView8.DeleteSelectedRows();
+            }
+            GetOk();
+        }
+
+        private void gridView8_DoubleClick(object sender, EventArgs e)
+        {
+            if (IHelper.isRowDublClick(sender)) EditMaterialBtn.PerformClick();
+        }
+
+        private void RsvInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (pc_det_row != null)
+            {
+                IHelper.ShowMatRSV(pc_det_row.MatId, _db);
+            }
+        }
+
+        private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (pc_det_row != null)
+            {
+                IHelper.ShowMatInfo(pc_det_row.MatId);
+            }
+        }
+
+        private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            PrintDoc.Show(pc.Id, 22, _db);
         }
     }
 }

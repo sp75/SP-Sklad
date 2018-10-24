@@ -426,7 +426,7 @@ namespace SP_Sklad.MainTabs
 
         private void DeleteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (focused_row == null && pp_focused_row == null)
+            if (focused_row == null && pp_focused_row == null && pc_focused_row == null)
             {
                 return;
             }
@@ -467,7 +467,7 @@ namespace SP_Sklad.MainTabs
 
                                 if (pc_row != null)
                                 {
-                                    db.PlannedCalculation.Remove(pc_row);
+                                    db.DeleteWhere<PlannedCalculation>(w => w.Id == pc_focused_row.Id);
                                 }
 
                                 break;
@@ -531,7 +531,23 @@ namespace SP_Sklad.MainTabs
 
         private void PrintItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            PrintDoc.Show(focused_row.Id, focused_row.WType, DB.SkladBase());
+            if (focused_tree_node == null)
+            {
+                return;
+            }
+
+            switch (focused_tree_node.GType.Value)
+            {
+                case 5:
+                    PrintDoc.Show(pc_focused_row.Id, 22, DB.SkladBase());
+                    break;
+
+                default:
+                    PrintDoc.Show(focused_row.Id, focused_row.WType, DB.SkladBase());
+                    break;
+            }
+
+
         }
 
         private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -558,6 +574,16 @@ namespace SP_Sklad.MainTabs
                     {
                         wb_in.is_new_record = true;
                         wb_in.ShowDialog();
+                    }
+                    break;
+
+                case 5:
+                    var pc_copy = DB.SkladBase().DocCopy(pc_focused_row.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
+
+                    using (var pc = new frmPlannedCalculation(pc_copy.out_doc_id))
+                    {
+                        pc.is_new_record = true;
+                        pc.ShowDialog();
                     }
                     break;
             }

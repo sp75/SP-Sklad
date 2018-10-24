@@ -310,26 +310,18 @@
             this.gridColumn116 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCalcEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             this.gridColumn117 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn120 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn118 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn119 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn120 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.xtraTabPage19 = new DevExpress.XtraTab.XtraTabPage();
-            this.vGridControl2 = new DevExpress.XtraVerticalGrid.VGridControl();
-            this.repositoryItemCheckEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.editorRow1 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.editorRow2 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.editorRow3 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.editorRow4 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.editorRow5 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
-            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.gridColumn99 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn121 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn122 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn123 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn124 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn125 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
+            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -458,9 +450,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit3)).BeginInit();
-            this.xtraTabPage19.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.vGridControl2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
             this.SuspendLayout();
@@ -524,7 +513,8 @@
             this.UserTreeImgList.Images.SetKeyName(52, "_нформац_я про рух товар_в.bmp");
             this.UserTreeImgList.Images.SetKeyName(53, "пратнерка.png");
             this.UserTreeImgList.Images.SetKeyName(54, "map_pin-next-16.png");
-            this.UserTreeImgList.Images.SetKeyName(55, "1324474683_interface_preferences.png");
+            this.UserTreeImgList.Images.SetKeyName(55, "prod_plan.png");
+            this.UserTreeImgList.Images.SetKeyName(56, "salesreport2_16x16.png");
             // 
             // GridImageList
             // 
@@ -716,8 +706,9 @@
             // barButtonItem7
             // 
             this.barButtonItem7.Caption = "Експорт";
+            this.barButtonItem7.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.Glyph")));
             this.barButtonItem7.Id = 17;
-            this.barButtonItem7.ImageIndex = 10;
+            this.barButtonItem7.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.LargeGlyph")));
             this.barButtonItem7.Name = "barButtonItem7";
             this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
             // 
@@ -904,7 +895,6 @@
             this.BarImageList.Images.SetKeyName(7, "Склади.bmp");
             this.BarImageList.Images.SetKeyName(8, "Замовлене кл_єнтами.bmp");
             this.BarImageList.Images.SetKeyName(9, "Перейти до  документа.bmp");
-            this.BarImageList.Images.SetKeyName(10, "document-excel-csv.png");
             // 
             // StopProcesBtn
             // 
@@ -3488,6 +3478,7 @@
             this.PlannedCalculationGridView.OptionsBehavior.ReadOnly = true;
             this.PlannedCalculationGridView.OptionsView.ShowGroupPanel = false;
             this.PlannedCalculationGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.PlannedCalculationGridView_FocusedRowObjectChanged);
+            this.PlannedCalculationGridView.DoubleClick += new System.EventHandler(this.WbGridView_DoubleClick);
             // 
             // gridColumn93
             // 
@@ -3644,8 +3635,7 @@
             this.xtraTabControl4.Size = new System.Drawing.Size(1050, 215);
             this.xtraTabControl4.TabIndex = 1;
             this.xtraTabControl4.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.xtraTabPage18,
-            this.xtraTabPage19});
+            this.xtraTabPage18});
             // 
             // xtraTabPage18
             // 
@@ -3724,6 +3714,15 @@
             this.gridColumn117.VisibleIndex = 1;
             this.gridColumn117.Width = 126;
             // 
+            // gridColumn120
+            // 
+            this.gridColumn120.Caption = "Відсоток вихода";
+            this.gridColumn120.FieldName = "RecipeOut";
+            this.gridColumn120.Name = "gridColumn120";
+            this.gridColumn120.Visible = true;
+            this.gridColumn120.VisibleIndex = 4;
+            this.gridColumn120.Width = 120;
+            // 
             // gridColumn118
             // 
             this.gridColumn118.Caption = "План виробництва";
@@ -3741,109 +3740,6 @@
             this.gridColumn119.Visible = true;
             this.gridColumn119.VisibleIndex = 2;
             this.gridColumn119.Width = 225;
-            // 
-            // gridColumn120
-            // 
-            this.gridColumn120.Caption = "Відсоток вихода";
-            this.gridColumn120.FieldName = "RecipeOut";
-            this.gridColumn120.Name = "gridColumn120";
-            this.gridColumn120.Visible = true;
-            this.gridColumn120.VisibleIndex = 4;
-            this.gridColumn120.Width = 120;
-            // 
-            // xtraTabPage19
-            // 
-            this.xtraTabPage19.Controls.Add(this.vGridControl2);
-            this.xtraTabPage19.ImageIndex = 1;
-            this.xtraTabPage19.Name = "xtraTabPage19";
-            this.xtraTabPage19.Size = new System.Drawing.Size(1044, 184);
-            this.xtraTabPage19.Text = "Інформація про документ";
-            // 
-            // vGridControl2
-            // 
-            this.vGridControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.vGridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vGridControl2.Location = new System.Drawing.Point(0, 0);
-            this.vGridControl2.Name = "vGridControl2";
-            this.vGridControl2.RecordWidth = 186;
-            this.vGridControl2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemCheckEdit2});
-            this.vGridControl2.RowHeaderWidth = 294;
-            this.vGridControl2.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
-            this.editorRow1,
-            this.editorRow2,
-            this.editorRow3,
-            this.editorRow4,
-            this.editorRow5});
-            this.vGridControl2.Size = new System.Drawing.Size(1044, 184);
-            this.vGridControl2.TabIndex = 0;
-            // 
-            // repositoryItemCheckEdit2
-            // 
-            this.repositoryItemCheckEdit2.AutoHeight = false;
-            this.repositoryItemCheckEdit2.Name = "repositoryItemCheckEdit2";
-            this.repositoryItemCheckEdit2.ValueChecked = 1;
-            this.repositoryItemCheckEdit2.ValueUnchecked = 0;
-            // 
-            // editorRow1
-            // 
-            this.editorRow1.Name = "editorRow1";
-            this.editorRow1.Properties.Caption = "№";
-            this.editorRow1.Properties.FieldName = "Num";
-            // 
-            // editorRow2
-            // 
-            this.editorRow2.Name = "editorRow2";
-            this.editorRow2.Properties.Caption = "Примітка";
-            this.editorRow2.Properties.FieldName = "Notes";
-            // 
-            // editorRow3
-            // 
-            this.editorRow3.Height = 16;
-            this.editorRow3.Name = "editorRow3";
-            this.editorRow3.Properties.Caption = "Виконавець";
-            this.editorRow3.Properties.FieldName = "PersonName";
-            // 
-            // editorRow4
-            // 
-            this.editorRow4.Name = "editorRow4";
-            this.editorRow4.Properties.Caption = "Стан";
-            this.editorRow4.Properties.FieldName = "Checked";
-            this.editorRow4.Properties.RowEdit = this.repositoryItemCheckEdit2;
-            // 
-            // editorRow5
-            // 
-            this.editorRow5.Name = "editorRow5";
-            this.editorRow5.Properties.Caption = "Підстава";
-            this.editorRow5.Properties.FieldName = "Reason";
-            // 
-            // barDockControl4
-            // 
-            this.barDockControl4.CausesValidation = false;
-            this.barDockControl4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControl4.Location = new System.Drawing.Point(1329, 0);
-            this.barDockControl4.Size = new System.Drawing.Size(0, 685);
-            // 
-            // popupMenu1
-            // 
-            this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.CopyItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.StopProcesBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
-            this.popupMenu1.Manager = this.barManager1;
-            this.popupMenu1.Name = "popupMenu1";
-            // 
-            // BottomPopupMenu
-            // 
-            this.BottomPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
-            this.BottomPopupMenu.Manager = this.barManager1;
-            this.BottomPopupMenu.Name = "BottomPopupMenu";
             // 
             // gridColumn99
             // 
@@ -3892,6 +3788,34 @@
             this.gridColumn125.Name = "gridColumn125";
             this.gridColumn125.Visible = true;
             this.gridColumn125.VisibleIndex = 11;
+            // 
+            // barDockControl4
+            // 
+            this.barDockControl4.CausesValidation = false;
+            this.barDockControl4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControl4.Location = new System.Drawing.Point(1329, 0);
+            this.barDockControl4.Size = new System.Drawing.Size(0, 685);
+            // 
+            // popupMenu1
+            // 
+            this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.CopyItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.StopProcesBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
+            this.popupMenu1.Manager = this.barManager1;
+            this.popupMenu1.Name = "popupMenu1";
+            // 
+            // BottomPopupMenu
+            // 
+            this.BottomPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
+            this.BottomPopupMenu.Manager = this.barManager1;
+            this.BottomPopupMenu.Name = "BottomPopupMenu";
             // 
             // ManufacturingUserControl
             // 
@@ -4042,9 +3966,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit3)).EndInit();
-            this.xtraTabPage19.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.vGridControl2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
             this.ResumeLayout(false);
@@ -4339,14 +4260,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn118;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn119;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn120;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage19;
-        private DevExpress.XtraVerticalGrid.VGridControl vGridControl2;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit2;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow1;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow2;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow3;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow4;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow5;
         private System.Windows.Forms.BindingSource PlannedCalculationBS;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn99;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn121;

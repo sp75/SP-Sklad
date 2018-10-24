@@ -129,7 +129,6 @@
             this.simpleButton9 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton10 = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
-            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit7 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit6 = new DevExpress.XtraEditors.TextEdit();
@@ -214,8 +213,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatChangeGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
             this.xtraTabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
-            this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit7.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit6.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
@@ -1301,34 +1298,23 @@
             // 
             // xtraTabPage5
             // 
-            this.xtraTabPage5.Controls.Add(this.groupControl1);
+            this.xtraTabPage5.Controls.Add(this.labelControl21);
+            this.xtraTabPage5.Controls.Add(this.textEdit7);
+            this.xtraTabPage5.Controls.Add(this.textEdit2);
+            this.xtraTabPage5.Controls.Add(this.textEdit6);
+            this.xtraTabPage5.Controls.Add(this.textEdit3);
+            this.xtraTabPage5.Controls.Add(this.labelControl15);
+            this.xtraTabPage5.Controls.Add(this.labelControl9);
+            this.xtraTabPage5.Controls.Add(this.labelControl14);
+            this.xtraTabPage5.Controls.Add(this.textEdit1);
+            this.xtraTabPage5.Controls.Add(this.labelControl13);
             this.xtraTabPage5.Name = "xtraTabPage5";
             this.xtraTabPage5.Size = new System.Drawing.Size(703, 516);
             this.xtraTabPage5.Text = "Посвідчення";
             // 
-            // groupControl1
-            // 
-            this.groupControl1.Controls.Add(this.labelControl21);
-            this.groupControl1.Controls.Add(this.textEdit7);
-            this.groupControl1.Controls.Add(this.textEdit6);
-            this.groupControl1.Controls.Add(this.labelControl15);
-            this.groupControl1.Controls.Add(this.labelControl14);
-            this.groupControl1.Controls.Add(this.labelControl13);
-            this.groupControl1.Controls.Add(this.textEdit1);
-            this.groupControl1.Controls.Add(this.labelControl9);
-            this.groupControl1.Controls.Add(this.textEdit2);
-            this.groupControl1.Controls.Add(this.textEdit3);
-            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl1.Location = new System.Drawing.Point(0, 0);
-            this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(703, 516);
-            this.groupControl1.TabIndex = 16;
-            this.groupControl1.Tag = "";
-            this.groupControl1.Text = " Дані для посвідчення якості";
-            // 
             // labelControl21
             // 
-            this.labelControl21.Location = new System.Drawing.Point(24, 320);
+            this.labelControl21.Location = new System.Drawing.Point(25, 312);
             this.labelControl21.Name = "labelControl21";
             this.labelControl21.Size = new System.Drawing.Size(136, 16);
             this.labelControl21.StyleController = this.styleController1;
@@ -1340,7 +1326,7 @@
             this.textEdit7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textEdit7.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.MaterialsBS, "CF5", true));
-            this.textEdit7.Location = new System.Drawing.Point(24, 342);
+            this.textEdit7.Location = new System.Drawing.Point(25, 334);
             this.textEdit7.Name = "textEdit7";
             this.textEdit7.Size = new System.Drawing.Size(495, 22);
             this.textEdit7.StyleController = this.styleController1;
@@ -1351,7 +1337,7 @@
             this.textEdit6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textEdit6.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.MaterialsBS, "CF3", true));
-            this.textEdit6.Location = new System.Drawing.Point(24, 192);
+            this.textEdit6.Location = new System.Drawing.Point(25, 184);
             this.textEdit6.Name = "textEdit6";
             this.textEdit6.Size = new System.Drawing.Size(495, 22);
             this.textEdit6.StyleController = this.styleController1;
@@ -1359,7 +1345,7 @@
             // 
             // labelControl15
             // 
-            this.labelControl15.Location = new System.Drawing.Point(24, 243);
+            this.labelControl15.Location = new System.Drawing.Point(25, 235);
             this.labelControl15.Name = "labelControl15";
             this.labelControl15.Size = new System.Drawing.Size(102, 16);
             this.labelControl15.StyleController = this.styleController1;
@@ -1368,7 +1354,7 @@
             // 
             // labelControl14
             // 
-            this.labelControl14.Location = new System.Drawing.Point(24, 102);
+            this.labelControl14.Location = new System.Drawing.Point(25, 94);
             this.labelControl14.Name = "labelControl14";
             this.labelControl14.Size = new System.Drawing.Size(114, 16);
             this.labelControl14.StyleController = this.styleController1;
@@ -1377,7 +1363,7 @@
             // 
             // labelControl13
             // 
-            this.labelControl13.Location = new System.Drawing.Point(24, 170);
+            this.labelControl13.Location = new System.Drawing.Point(25, 162);
             this.labelControl13.Name = "labelControl13";
             this.labelControl13.Size = new System.Drawing.Size(182, 16);
             this.labelControl13.StyleController = this.styleController1;
@@ -1389,7 +1375,7 @@
             this.textEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.MaterialsBS, "CF2", true));
-            this.textEdit1.Location = new System.Drawing.Point(24, 124);
+            this.textEdit1.Location = new System.Drawing.Point(25, 116);
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Size = new System.Drawing.Size(495, 22);
             this.textEdit1.StyleController = this.styleController1;
@@ -1397,7 +1383,7 @@
             // 
             // labelControl9
             // 
-            this.labelControl9.Location = new System.Drawing.Point(24, 31);
+            this.labelControl9.Location = new System.Drawing.Point(25, 23);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(71, 16);
             this.labelControl9.StyleController = this.styleController1;
@@ -1409,7 +1395,7 @@
             this.textEdit2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textEdit2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.MaterialsBS, "CF1", true));
-            this.textEdit2.Location = new System.Drawing.Point(24, 53);
+            this.textEdit2.Location = new System.Drawing.Point(25, 45);
             this.textEdit2.Name = "textEdit2";
             this.textEdit2.Size = new System.Drawing.Size(146, 22);
             this.textEdit2.StyleController = this.styleController1;
@@ -1420,7 +1406,7 @@
             this.textEdit3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textEdit3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.MaterialsBS, "CF4", true));
-            this.textEdit3.Location = new System.Drawing.Point(24, 265);
+            this.textEdit3.Location = new System.Drawing.Point(25, 257);
             this.textEdit3.Name = "textEdit3";
             this.textEdit3.Size = new System.Drawing.Size(495, 22);
             this.textEdit3.StyleController = this.styleController1;
@@ -1839,9 +1825,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatChangeGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
             this.xtraTabPage5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
-            this.groupControl1.ResumeLayout(false);
-            this.groupControl1.PerformLayout();
+            this.xtraTabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit7.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit6.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
@@ -1932,7 +1916,6 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn2;
         private System.Windows.Forms.BindingSource MaterialsBS;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage5;
-        private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.TextEdit textEdit7;
         private DevExpress.XtraEditors.TextEdit textEdit6;
         private DevExpress.XtraEditors.LabelControl labelControl15;

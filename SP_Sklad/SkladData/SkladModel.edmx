@@ -410,7 +410,10 @@
       [v_PlannedCalculationDetDet].[SalesPrice] AS [SalesPrice], 
       [v_PlannedCalculationDetDet].[Price] AS [Price], 
       [v_PlannedCalculationDetDet].[Profitability] AS [Profitability], 
-      [v_PlannedCalculationDetDet].[PlansPrice] AS [PlansPrice]
+      [v_PlannedCalculationDetDet].[PlansPrice] AS [PlansPrice], 
+      [v_PlannedCalculationDetDet].[MatId] AS [MatId], 
+      [v_PlannedCalculationDetDet].[MatGroupName] AS [MatGroupName], 
+      [v_PlannedCalculationDetDet].[GrpId] AS [GrpId]
       FROM [dbo].[v_PlannedCalculationDetDet] AS [v_PlannedCalculationDetDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_PriceList" EntityType="BaseModel.Store.v_PriceList" store:Type="Views" store:Schema="dbo" store:Name="v_PriceList">
@@ -1919,6 +1922,7 @@
           <Property Name="Amount" Type="numeric" Precision="15" Scale="4" />
           <Property Name="PlannedCalculationId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="SalesPrice" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="RecipePrice" Type="numeric" Precision="15" Scale="2" />
         </EntityType>
         <EntityType Name="PosRel">
           <Key>
@@ -2875,6 +2879,9 @@
             <PropertyRef Name="MsrName" />
             <PropertyRef Name="RecId" />
             <PropertyRef Name="PlannedCalculationId" />
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="MatGroupName" />
+            <PropertyRef Name="GrpId" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="RecipeName" Type="nvarchar" MaxLength="255" />
@@ -2886,11 +2893,14 @@
           <Property Name="Amount" Type="numeric" Precision="15" Scale="4" />
           <Property Name="PlannedCalculationId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="RecipeCount" Type="numeric" Precision="38" />
-          <Property Name="RecipePrice" Type="numeric" Precision="38" Scale="6" />
+          <Property Name="RecipePrice" Type="numeric" Precision="15" Scale="2" />
           <Property Name="SalesPrice" Type="numeric" Precision="15" Scale="2" />
-          <Property Name="Price" Type="numeric" Precision="38" Scale="6" />
-          <Property Name="Profitability" Type="numeric" Precision="38" Scale="6" />
-          <Property Name="PlansPrice" Type="numeric" Precision="38" Scale="6" />
+          <Property Name="Price" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="Profitability" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="PlansPrice" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="MatGroupName" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="GrpId" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'sp_base.dbo.v_PriceList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -3567,7 +3577,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CalcRawMaterialDet_CalcRawMaterials">
-          <End Role="PlannedCalculation" Type="BaseModel.Store.PlannedCalculation" Multiplicity="1" />
+          <End Role="PlannedCalculation" Type="BaseModel.Store.PlannedCalculation" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="PlannedCalculationDet" Type="BaseModel.Store.PlannedCalculationDet" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PlannedCalculation">
@@ -5555,6 +5567,16 @@
         <Function Name="GetRecipe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="wbill_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="GetRecipePrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RecId" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="RecipePrice" Type="numeric" Precision="38" Scale="6" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="GetRelDocList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="originator_id" Type="uniqueidentifier" Mode="In" />
           <ReturnType>
@@ -5839,6 +5861,24 @@
         <Function Name="GetWhTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="user_id" Type="int" Mode="In" />
           <Parameter Name="type_tree" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetWMatTurnRemain" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mat_id" Type="int" Mode="In" />
+          <Parameter Name="OnDate" Type="datetime" Mode="In" />
+          <Parameter Name="user_id" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Remain" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="Rsv" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AvgPrice" Type="numeric" Precision="38" Scale="6" />
+                <Property Name="MinPrice" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="MaxPrice" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="Ordered" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="ORsv" Type="numeric" Precision="38" Scale="4" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
         </Function>
         <Function Name="MatRemainByWh" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="mat_id" Type="int" Mode="In" />
@@ -8109,6 +8149,14 @@
             <End Role="PlannedCalculation" EntitySet="PlannedCalculation" />
             <End Role="PlannedCalculationDet" EntitySet="PlannedCalculationDet" />
           </AssociationSet>
+          <FunctionImport Name="GetWMatTurnRemain" IsComposable="true" ReturnType="Collection(BaseModel.GetWMatTurnRemain_Result)">
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
+            <Parameter Name="OnDate" Mode="In" Type="DateTime" />
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetRecipePrice" IsComposable="true" ReturnType="Collection(Decimal)">
+            <Parameter Name="RecId" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -13472,6 +13520,7 @@
           <Property Type="Decimal" Name="SalesPrice" Precision="15" Scale="2" />
           <NavigationProperty Name="MatRecipe" Relationship="BaseModel.FK_CalcRawMaterialDet_MatRecipe" FromRole="PlannedCalculationDet" ToRole="MatRecipe" />
           <NavigationProperty Name="PlannedCalculation" Relationship="BaseModel.FK_CalcRawMaterialDet_CalcRawMaterials" FromRole="PlannedCalculationDet" ToRole="PlannedCalculation" />
+          <Property Type="Decimal" Name="RecipePrice" Precision="15" Scale="2" />
         </EntityType>
         <EntityType Name="v_PlannedCalculationDetDet">
           <Key>
@@ -13479,6 +13528,9 @@
             <PropertyRef Name="MsrName" />
             <PropertyRef Name="RecId" />
             <PropertyRef Name="PlannedCalculationId" />
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="MatGroupName" />
+            <PropertyRef Name="GrpId" />
           </Key>
           <Property Type="Guid" Name="Id" Nullable="false" />
           <Property Type="String" Name="RecipeName" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -13490,11 +13542,14 @@
           <Property Type="Decimal" Name="Amount" Precision="15" Scale="4" />
           <Property Type="Guid" Name="PlannedCalculationId" Nullable="false" />
           <Property Type="Decimal" Name="RecipeCount" Precision="38" Scale="0" />
-          <Property Type="Decimal" Name="RecipePrice" Precision="38" Scale="6" />
+          <Property Type="Decimal" Name="RecipePrice" Precision="15" Scale="2" />
           <Property Type="Decimal" Name="SalesPrice" Precision="15" Scale="2" />
-          <Property Type="Decimal" Name="Price" Precision="38" Scale="6" />
-          <Property Type="Decimal" Name="Profitability" Precision="38" Scale="6" />
-          <Property Type="Decimal" Name="PlansPrice" Precision="38" Scale="6" />
+          <Property Type="Decimal" Name="Price" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="Profitability" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="PlansPrice" Precision="15" Scale="2" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="String" Name="MatGroupName" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="GrpId" Nullable="false" />
         </EntityType>
         <Association Name="FK_CalcRawMaterialDet_MatRecipe">
           <End Type="BaseModel.MatRecipe" Role="MatRecipe" Multiplicity="1" />
@@ -13520,6 +13575,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="GetWMatTurnRemain_Result">
+          <Property Type="Decimal" Name="Remain" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Rsv" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AvgPrice" Nullable="true" Precision="38" Scale="6" />
+          <Property Type="Decimal" Name="MinPrice" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="MaxPrice" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Ordered" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="ORsv" Nullable="true" Precision="38" Scale="4" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -17115,6 +17179,7 @@
           <EntitySetMapping Name="PlannedCalculationDet">
             <EntityTypeMapping TypeName="BaseModel.PlannedCalculationDet">
               <MappingFragment StoreEntitySet="PlannedCalculationDet">
+                <ScalarProperty Name="RecipePrice" ColumnName="RecipePrice" />
                 <ScalarProperty Name="SalesPrice" ColumnName="SalesPrice" />
                 <ScalarProperty Name="PlannedCalculationId" ColumnName="PlannedCalculationId" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
@@ -17129,6 +17194,9 @@
           <EntitySetMapping Name="v_PlannedCalculationDetDet">
             <EntityTypeMapping TypeName="BaseModel.v_PlannedCalculationDetDet">
               <MappingFragment StoreEntitySet="v_PlannedCalculationDetDet">
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="MatGroupName" ColumnName="MatGroupName" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
                 <ScalarProperty Name="PlansPrice" ColumnName="PlansPrice" />
                 <ScalarProperty Name="Profitability" ColumnName="Profitability" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
@@ -17147,6 +17215,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetWMatTurnRemain" FunctionName="BaseModel.Store.GetWMatTurnRemain">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetWMatTurnRemain_Result">
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
+                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
+                <ScalarProperty Name="AvgPrice" ColumnName="AvgPrice" />
+                <ScalarProperty Name="MinPrice" ColumnName="MinPrice" />
+                <ScalarProperty Name="MaxPrice" ColumnName="MaxPrice" />
+                <ScalarProperty Name="Ordered" ColumnName="Ordered" />
+                <ScalarProperty Name="ORsv" ColumnName="ORsv" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetRecipePrice" FunctionName="BaseModel.Store.GetRecipePrice" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

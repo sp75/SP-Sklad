@@ -24,6 +24,7 @@ namespace SP_Sklad.Reports
         public static String pay_doc_in { get { return "PrihOr.xlsx"; } }
         public static String pay_doc_out { get { return "RashOr.xlsx"; } }
         public static String wb_invoice { get { return "Invoice.xlsx"; } }
+        public static String planned_calculation { get { return "PlannedCalculation.xlsx"; } }
 
         public static String rep_1 { get { return "MatInShort(1).xlsx"; } }
         public static String rep_2 { get { return "MatOutShort(2).xlsx"; } }

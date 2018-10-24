@@ -93,6 +93,10 @@ namespace SP_Sklad.Reports
                     InvoiceReport(id, db, TemlateList.wb_invoice);
                     break;
 
+                case 22:
+                    PlannedCalculationReport(id, db);
+                    break;
+
             }
 
             using (var _db = DB.SkladBase())
@@ -445,6 +449,63 @@ namespace SP_Sklad.Reports
             IHelper.Print(dataForReport, TemlateList.p_list);
         }
 
+        public static void PlannedCalculationReport(Guid id, BaseEntities db)
+        {
+            var dataForReport = new Dictionary<string, IList>();
+
+            var pc_list = db.v_PlannedCalculationDetDet.Where(w => w.PlannedCalculationId == id).AsNoTracking().ToList();
+            var grp = pc_list.GroupBy(g => new
+            {
+                g.GrpId,
+                g.MatGroupName
+            }).Select(s => new
+            {
+                s.Key.GrpId,
+                s.Key.MatGroupName
+            }).ToList();
+
+            var rel = new List<object>();
+            rel.Add(new
+            {
+                pk = "GrpId",
+                fk = "GrpId",
+                master_table = "MatGroup",
+                child_table = "MatOutDet"
+            });
+
+            string sql = @"select 
+                             m.Name, 
+                             ms.ShortName Measures ,
+                             sum( mrd.Amount * pc.[RecipeCount]) Amount,
+                             x.AvgPrice as Price
+                        from [dbo].[v_PlannedCalculationDetDet] pc
+                        inner join [dbo].[MatRecDet] mrd on mrd.RecId = pc.RecId
+                        inner join [dbo].[Materials] m on m.MatId = mrd.MatId
+                        inner join  [dbo].[Measures] ms on ms.MId = m.MId
+                        cross apply (SELECT TOP (1) AvgPrice FROM  dbo.GetWMatTurnRemain(m.MatId, GETDATE(), 0)) x
+                        where pc.[PlannedCalculationId] = {0}
+                        group by m.Name, ms.ShortName,x.AvgPrice
+                        order by m.Name";
+
+            var raw_list = db.Database.SqlQuery<PlannedCalculation>(sql, id).Select((s, index) => new
+            {
+                Num = index + 1,
+                s.Name,
+                s.Measures,
+                s.Amount,
+                s.Price
+            }).ToList();
+
+            dataForReport.Add("MatGroup", grp);
+            dataForReport.Add("MatOutDet", pc_list);
+            dataForReport.Add("RawItems", raw_list);
+            dataForReport.Add("_realation_", rel);
+
+            IHelper.Print(dataForReport, TemlateList.planned_calculation);
+        }
+
+
+
         private static string Getlable(Decimal? price , String code)
         {
             var split_price = Math.Round(price.Value, 2).ToString(CultureInfo.CreateSpecificCulture("en-GB")).Split('.');
@@ -452,5 +513,12 @@ namespace SP_Sklad.Reports
             return "*" + code + "+" + split_price[0] + "+" + split_price[1] + "*";
         }
 
+        public class PlannedCalculation
+        {
+            public string Name { get; set; }
+            public string Measures { get; set; }
+            public decimal? Amount { get; set; }
+            public decimal? Price { get; set; }
+        }
     }
 }

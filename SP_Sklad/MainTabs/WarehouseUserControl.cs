@@ -713,6 +713,7 @@ namespace SP_Sklad.MainTabs
                     var result = f._db.ExecuteWayBill(wbl.WbillId, 5, DBHelper.CurrentUser.KaId).ToList().FirstOrDefault();
                     f.doc_id = result.NewDocId;
                     f.TurnDocCheckBox.Checked = true;
+                    f.is_new_record = true;
                     f.ShowDialog();
                 }
             }
@@ -735,6 +736,7 @@ namespace SP_Sklad.MainTabs
                     var result = f._db.ExecuteWayBill(wbl.WbillId, -5, DBHelper.CurrentUser.KaId).ToList().FirstOrDefault();
                     f.doc_id = result.NewDocId;
                     f.TurnDocCheckBox.Checked = true;
+                    f.is_new_record = true;
                     f.ShowDialog();
                 }
             }

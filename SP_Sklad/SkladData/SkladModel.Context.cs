@@ -2242,5 +2242,33 @@ namespace SP_Sklad.SkladData
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetUsedMaterials_Result>("[BaseEntities].[GetUsedMaterials](@mat_id, @on_date)", mat_idParameter, on_dateParameter);
         }
+    
+        [EdmFunction("BaseEntities", "GetWMatTurnRemain")]
+        public virtual IQueryable<GetWMatTurnRemain_Result> GetWMatTurnRemain(Nullable<int> mat_id, Nullable<System.DateTime> onDate, Nullable<int> user_id)
+        {
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            var onDateParameter = onDate.HasValue ?
+                new ObjectParameter("OnDate", onDate) :
+                new ObjectParameter("OnDate", typeof(System.DateTime));
+    
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWMatTurnRemain_Result>("[BaseEntities].[GetWMatTurnRemain](@mat_id, @OnDate, @user_id)", mat_idParameter, onDateParameter, user_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetRecipePrice")]
+        public virtual IQueryable<Nullable<decimal>> GetRecipePrice(Nullable<int> recId)
+        {
+            var recIdParameter = recId.HasValue ?
+                new ObjectParameter("RecId", recId) :
+                new ObjectParameter("RecId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<decimal>>("[BaseEntities].[GetRecipePrice](@RecId)", recIdParameter);
+        }
     }
 }

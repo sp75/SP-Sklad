@@ -703,8 +703,9 @@
             // barButtonItem11
             // 
             this.barButtonItem11.Caption = "Експорт";
+            this.barButtonItem11.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem11.Glyph")));
             this.barButtonItem11.Id = 38;
-            this.barButtonItem11.ImageIndex = 13;
+            this.barButtonItem11.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem11.LargeGlyph")));
             this.barButtonItem11.Name = "barButtonItem11";
             this.barButtonItem11.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick_1);
             // 
@@ -776,10 +777,12 @@
             // 
             // showChildNodeBtn
             // 
+            this.showChildNodeBtn.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
             this.showChildNodeBtn.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check;
             this.showChildNodeBtn.Caption = "Відображати з підпорядкованих груп";
             this.showChildNodeBtn.Id = 37;
             this.showChildNodeBtn.ImageIndex = 12;
+            this.showChildNodeBtn.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("showChildNodeBtn.LargeGlyph")));
             this.showChildNodeBtn.Name = "showChildNodeBtn";
             this.showChildNodeBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick);
             // 
@@ -888,7 +891,6 @@
             this.BarImageList.Images.SetKeyName(10, "Рух товар_в.bmp");
             this.BarImageList.Images.SetKeyName(11, "Склади.bmp");
             this.BarImageList.Images.SetKeyName(12, "treeview.png");
-            this.BarImageList.Images.SetKeyName(13, "document-excel-csv.png");
             // 
             // barButtonItem1
             // 
@@ -1289,7 +1291,7 @@
             // 
             // vGridControl1
             // 
-            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeNS;
+            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeWE;
             this.vGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl1.Location = new System.Drawing.Point(0, 0);
             this.vGridControl1.Name = "vGridControl1";

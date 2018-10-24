@@ -175,6 +175,7 @@
             this.ComPortNameEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.ComPortSpeedEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.xtraTabPage9 = new DevExpress.XtraTab.XtraTabPage();
+            this.PeriodChangeBtn = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.EndPeriodDateEdit = new DevExpress.XtraEditors.DateEdit();
             this.CommonParamsBS = new System.Windows.Forms.BindingSource(this.components);
@@ -183,7 +184,6 @@
             this.OperLogPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.SessionPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.PeriodChangeBtn = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.UsersDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -1094,6 +1094,7 @@
             this.RefrechItemBtn.Caption = "Обновити";
             this.RefrechItemBtn.Id = 4;
             this.RefrechItemBtn.ImageIndex = 4;
+            this.RefrechItemBtn.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("RefrechItemBtn.LargeGlyph")));
             this.RefrechItemBtn.Name = "RefrechItemBtn";
             this.RefrechItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RefrechItemBtn_ItemClick);
             // 
@@ -1847,6 +1848,15 @@
             this.xtraTabPage9.Text = "Додаткові";
             this.xtraTabPage9.Paint += new System.Windows.Forms.PaintEventHandler(this.xtraTabPage9_Paint);
             // 
+            // PeriodChangeBtn
+            // 
+            this.PeriodChangeBtn.Location = new System.Drawing.Point(231, 117);
+            this.PeriodChangeBtn.Name = "PeriodChangeBtn";
+            this.PeriodChangeBtn.Size = new System.Drawing.Size(66, 22);
+            this.PeriodChangeBtn.TabIndex = 30;
+            this.PeriodChangeBtn.Text = "Перейти";
+            this.PeriodChangeBtn.Click += new System.EventHandler(this.PeriodChangeBtn_Click);
+            // 
             // labelControl7
             // 
             this.labelControl7.Location = new System.Drawing.Point(31, 98);
@@ -1913,15 +1923,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5)});
             this.SessionPopupMenu.Manager = this.barManager1;
             this.SessionPopupMenu.Name = "SessionPopupMenu";
-            // 
-            // PeriodChangeBtn
-            // 
-            this.PeriodChangeBtn.Location = new System.Drawing.Point(231, 117);
-            this.PeriodChangeBtn.Name = "PeriodChangeBtn";
-            this.PeriodChangeBtn.Size = new System.Drawing.Size(66, 22);
-            this.PeriodChangeBtn.TabIndex = 30;
-            this.PeriodChangeBtn.Text = "Перейти";
-            this.PeriodChangeBtn.Click += new System.EventHandler(this.PeriodChangeBtn_Click);
             // 
             // ServiceUserControl
             // 
