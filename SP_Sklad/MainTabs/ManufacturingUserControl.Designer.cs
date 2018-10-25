@@ -557,7 +557,7 @@
             this.GridImageList.Images.SetKeyName(34, "Отчеты.bmp");
             this.GridImageList.Images.SetKeyName(35, "Документы16x16.bmp");
             this.GridImageList.Images.SetKeyName(36, "податкова накладна.bmp");
-            this.GridImageList.Images.SetKeyName(37, "1335611633_link_break.png");
+            this.GridImageList.Images.SetKeyName(37, "disabled_link.png");
             this.GridImageList.Images.SetKeyName(38, "1335611569_link.png");
             this.GridImageList.Images.SetKeyName(39, "1324474683_interface_preferences.png");
             // 

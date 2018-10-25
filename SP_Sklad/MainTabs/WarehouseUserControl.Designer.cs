@@ -441,7 +441,7 @@
             this.GridImageList.Images.SetKeyName(34, "Отчеты.bmp");
             this.GridImageList.Images.SetKeyName(35, "Документы16x16.bmp");
             this.GridImageList.Images.SetKeyName(36, "податкова накладна.bmp");
-            this.GridImageList.Images.SetKeyName(37, "1335611633_link_break.png");
+            this.GridImageList.Images.SetKeyName(37, "disabled_link.png");
             this.GridImageList.Images.SetKeyName(38, "1335611569_link.png");
             // 
             // PageImageList
@@ -2133,7 +2133,7 @@
             this.xtraTabPage11.ImageIndex = 19;
             this.xtraTabPage11.Name = "xtraTabPage11";
             this.xtraTabPage11.Size = new System.Drawing.Size(1161, 219);
-            this.xtraTabPage11.Text = "Баланс з контрагентами";
+            this.xtraTabPage11.Text = "Залишки по ТМЦ";
             // 
             // gridControl1
             // 

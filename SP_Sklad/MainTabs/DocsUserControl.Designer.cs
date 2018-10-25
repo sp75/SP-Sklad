@@ -127,6 +127,7 @@
             this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn26 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn28 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn43 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn27 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
@@ -242,7 +243,6 @@
             this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.PriceListPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.gridColumn43 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -592,7 +592,7 @@
             this.GridImageList.Images.SetKeyName(34, "Отчеты.bmp");
             this.GridImageList.Images.SetKeyName(35, "Документы16x16.bmp");
             this.GridImageList.Images.SetKeyName(36, "податкова накладна.bmp");
-            this.GridImageList.Images.SetKeyName(37, "1335611633_link_break.png");
+            this.GridImageList.Images.SetKeyName(37, "disabled_link.png");
             this.GridImageList.Images.SetKeyName(38, "1335611569_link.png");
             this.GridImageList.Images.SetKeyName(39, "Послуги.bmp");
             // 
@@ -1496,6 +1496,14 @@
             this.gridColumn28.Visible = true;
             this.gridColumn28.VisibleIndex = 5;
             this.gridColumn28.Width = 82;
+            // 
+            // gridColumn43
+            // 
+            this.gridColumn43.Caption = "Каса";
+            this.gridColumn43.FieldName = "CashdName";
+            this.gridColumn43.Name = "gridColumn43";
+            this.gridColumn43.Visible = true;
+            this.gridColumn43.VisibleIndex = 6;
             // 
             // gridColumn27
             // 
@@ -2673,14 +2681,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
             this.PriceListPopupMenu.Manager = this.barManager1;
             this.PriceListPopupMenu.Name = "PriceListPopupMenu";
-            // 
-            // gridColumn43
-            // 
-            this.gridColumn43.Caption = "Каса";
-            this.gridColumn43.FieldName = "CashdName";
-            this.gridColumn43.Name = "gridColumn43";
-            this.gridColumn43.Visible = true;
-            this.gridColumn43.VisibleIndex = 6;
             // 
             // DocsUserControl
             // 

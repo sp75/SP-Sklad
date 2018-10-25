@@ -162,6 +162,9 @@ namespace SP_Sklad.Common
                 case 5: SetWhDocFilter(58);
                     break;
 
+                case 7: SetWhDocFilter(104);
+                    break;
+
                 case -20:
                     PageIndex = 1;
 
