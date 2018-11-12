@@ -274,6 +274,7 @@
         <EntityTypeShape EntityType="BaseModel.v_PlannedCalculationDetDet" Width="1.5" PointX="3.5971362272264136" PointY="14.626537806646217" />
         <AssociationConnector Association="BaseModel.FK_CalcRawMaterialDet_MatRecipe" />
         <AssociationConnector Association="BaseModel.FK_CalcRawMaterialDet_CalcRawMaterials" />
+        <AssociationConnector Association="BaseModel.FK_PlannedCalculation_PriceList" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

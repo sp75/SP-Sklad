@@ -30,14 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPlannedCalculation));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.DelMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
             this.MatInfoBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -63,6 +67,8 @@
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
             this.OnDateDBEdit = new DevExpress.XtraEditors.DateEdit();
             this.PersonComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
@@ -100,6 +106,7 @@
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).BeginInit();
@@ -367,6 +374,8 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.labelControl3);
+            this.panelControl1.Controls.Add(this.lookUpEdit1);
             this.panelControl1.Controls.Add(this.OnDateDBEdit);
             this.panelControl1.Controls.Add(this.PersonComboBox);
             this.panelControl1.Controls.Add(this.labelControl10);
@@ -381,6 +390,36 @@
             this.panelControl1.Size = new System.Drawing.Size(1275, 146);
             this.panelControl1.TabIndex = 4;
             // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(460, 17);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(65, 16);
+            this.labelControl3.StyleController = this.styleController1;
+            this.labelControl3.TabIndex = 74;
+            this.labelControl3.Text = "Прайс лист";
+            // 
+            // lookUpEdit1
+            // 
+            this.lookUpEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PlannedCalculationBS, "PlId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.lookUpEdit1.Location = new System.Drawing.Point(531, 14);
+            this.lookUpEdit1.Name = "lookUpEdit1";
+            this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("lookUpEdit1.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, true)});
+            this.lookUpEdit1.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.lookUpEdit1.Properties.DisplayMember = "Name";
+            this.lookUpEdit1.Properties.ShowFooter = false;
+            this.lookUpEdit1.Properties.ShowHeader = false;
+            this.lookUpEdit1.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.lookUpEdit1.Properties.ValueMember = "PlId";
+            this.lookUpEdit1.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.lookUpEdit1_Properties_ButtonClick);
+            this.lookUpEdit1.Size = new System.Drawing.Size(208, 22);
+            this.lookUpEdit1.StyleController = this.styleController1;
+            this.lookUpEdit1.TabIndex = 73;
+            this.lookUpEdit1.EditValueChanged += new System.EventHandler(this.lookUpEdit1_EditValueChanged);
+            // 
             // OnDateDBEdit
             // 
             this.OnDateDBEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PlannedCalculationBS, "OnDate", true));
@@ -390,7 +429,7 @@
             this.OnDateDBEdit.Name = "OnDateDBEdit";
             this.OnDateDBEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("OnDateDBEdit.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("OnDateDBEdit.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, true)});
             this.OnDateDBEdit.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
             this.OnDateDBEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -408,7 +447,7 @@
             this.PersonComboBox.Name = "PersonComboBox";
             this.PersonComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("PersonComboBox.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("PersonComboBox.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, true)});
             this.PersonComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name4")});
             this.PersonComboBox.Properties.DisplayMember = "Name";
@@ -516,8 +555,8 @@
             this.gridColumn125});
             this.gridView8.GridControl = this.gridControl9;
             this.gridView8.Name = "gridView8";
-            this.gridView8.OptionsBehavior.Editable = false;
             this.gridView8.OptionsView.ShowGroupPanel = false;
+            this.gridView8.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView8_CellValueChanged);
             this.gridView8.DoubleClick += new System.EventHandler(this.gridView8_DoubleClick);
             // 
             // gridColumn100
@@ -525,6 +564,7 @@
             this.gridColumn100.Caption = "Назва товару";
             this.gridColumn100.FieldName = "RecipeName";
             this.gridColumn100.Name = "gridColumn100";
+            this.gridColumn100.OptionsColumn.AllowEdit = false;
             this.gridColumn100.Visible = true;
             this.gridColumn100.VisibleIndex = 0;
             this.gridColumn100.Width = 140;
@@ -535,6 +575,7 @@
             this.gridColumn116.ColumnEdit = this.repositoryItemCalcEdit3;
             this.gridColumn116.FieldName = "Amount";
             this.gridColumn116.Name = "gridColumn116";
+            this.gridColumn116.OptionsColumn.AllowEdit = false;
             this.gridColumn116.Visible = true;
             this.gridColumn116.VisibleIndex = 2;
             this.gridColumn116.Width = 65;
@@ -552,6 +593,7 @@
             this.gridColumn117.Caption = "Од. вим.";
             this.gridColumn117.FieldName = "MsrName";
             this.gridColumn117.Name = "gridColumn117";
+            this.gridColumn117.OptionsColumn.AllowEdit = false;
             this.gridColumn117.Visible = true;
             this.gridColumn117.VisibleIndex = 1;
             this.gridColumn117.Width = 55;
@@ -561,12 +603,15 @@
             this.gridColumn120.Caption = "Відсоток вихода";
             this.gridColumn120.FieldName = "RecipeOut";
             this.gridColumn120.Name = "gridColumn120";
+            this.gridColumn120.OptionsColumn.AllowEdit = false;
             this.gridColumn120.Visible = true;
             this.gridColumn120.VisibleIndex = 3;
             this.gridColumn120.Width = 98;
             // 
             // gridColumn118
             // 
+            this.gridColumn118.AppearanceCell.BackColor = System.Drawing.Color.Honeydew;
+            this.gridColumn118.AppearanceCell.Options.UseBackColor = true;
             this.gridColumn118.Caption = "План виробництва";
             this.gridColumn118.FieldName = "ProductionPlan";
             this.gridColumn118.Name = "gridColumn118";
@@ -579,6 +624,7 @@
             this.gridColumn119.Caption = "К-ть закладок";
             this.gridColumn119.FieldName = "RecipeCount";
             this.gridColumn119.Name = "gridColumn119";
+            this.gridColumn119.OptionsColumn.AllowEdit = false;
             this.gridColumn119.Visible = true;
             this.gridColumn119.VisibleIndex = 4;
             this.gridColumn119.Width = 84;
@@ -588,6 +634,7 @@
             this.gridColumn99.Caption = "Вартість закладки";
             this.gridColumn99.FieldName = "RecipePrice";
             this.gridColumn99.Name = "gridColumn99";
+            this.gridColumn99.OptionsColumn.AllowEdit = false;
             this.gridColumn99.Visible = true;
             this.gridColumn99.VisibleIndex = 5;
             this.gridColumn99.Width = 111;
@@ -597,6 +644,7 @@
             this.gridColumn121.Caption = "Собівартість";
             this.gridColumn121.FieldName = "Price";
             this.gridColumn121.Name = "gridColumn121";
+            this.gridColumn121.OptionsColumn.AllowEdit = false;
             this.gridColumn121.Visible = true;
             this.gridColumn121.VisibleIndex = 7;
             this.gridColumn121.Width = 76;
@@ -606,6 +654,7 @@
             this.gridColumn122.Caption = "Рентабельність";
             this.gridColumn122.FieldName = "Profitability";
             this.gridColumn122.Name = "gridColumn122";
+            this.gridColumn122.OptionsColumn.AllowEdit = false;
             this.gridColumn122.Visible = true;
             this.gridColumn122.VisibleIndex = 8;
             this.gridColumn122.Width = 90;
@@ -615,12 +664,15 @@
             this.gridColumn123.Caption = "Ціна (без знижки)";
             this.gridColumn123.FieldName = "SalesPrice";
             this.gridColumn123.Name = "gridColumn123";
+            this.gridColumn123.OptionsColumn.AllowEdit = false;
             this.gridColumn123.Visible = true;
             this.gridColumn123.VisibleIndex = 9;
             this.gridColumn123.Width = 105;
             // 
             // gridColumn124
             // 
+            this.gridColumn124.AppearanceCell.BackColor = System.Drawing.Color.Honeydew;
+            this.gridColumn124.AppearanceCell.Options.UseBackColor = true;
             this.gridColumn124.Caption = "Рентабельність планова";
             this.gridColumn124.FieldName = "PlannedProfitability";
             this.gridColumn124.Name = "gridColumn124";
@@ -633,6 +685,7 @@
             this.gridColumn125.Caption = "Ціна (без знижки) планова";
             this.gridColumn125.FieldName = "PlansPrice";
             this.gridColumn125.Name = "gridColumn125";
+            this.gridColumn125.OptionsColumn.AllowEdit = false;
             this.gridColumn125.Visible = true;
             this.gridColumn125.VisibleIndex = 11;
             this.gridColumn125.Width = 165;
@@ -705,6 +758,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).EndInit();
@@ -778,5 +832,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn123;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn124;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn125;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
     }
 }

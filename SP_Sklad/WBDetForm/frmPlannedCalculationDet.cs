@@ -54,8 +54,7 @@ namespace SP_Sklad.WBDetForm
                 det = new PlannedCalculationDet
                 {
                     Id = Guid.NewGuid(),
-                    PlannedCalculationId = _pc.Id,
-                     
+                    PlannedCalculationId = _pc.Id
                   //  Num = _db.ProductionPlanDet.Count(w => w.ProductionPlanId == _pp.Id) + 1,
                  
                 };
@@ -101,15 +100,17 @@ namespace SP_Sklad.WBDetForm
             {
                 return;
             }
-            int RecId = row.RecId;
+            int rec_id = row.RecId;
+            int mat_id = row.MatId;
             decimal RecipeOut = row.Out == 0 ? 100 : row.Out;
 
-            var main_sum = _db.MatRecDet.Where(w => w.RecId == RecId && w.Materials.MId == w.MatRecipe.Materials.MId).ToList().Sum(s => s.Amount);
-            var ext_sum = _db.MatRecDet.Where(w => w.RecId == RecId && w.Materials.MId != w.MatRecipe.Materials.MId).ToList().Sum(s => (s.Materials.Weight ?? 0) * s.Amount);
+            var main_sum = _db.MatRecDet.Where(w => w.RecId == rec_id && w.Materials.MId == w.MatRecipe.Materials.MId).ToList().Sum(s => s.Amount);
+            var ext_sum = _db.MatRecDet.Where(w => w.RecId == rec_id && w.Materials.MId != w.MatRecipe.Materials.MId).ToList().Sum(s => (s.Materials.Weight ?? 0) * s.Amount);
 
             det.Amount = main_sum + ext_sum;
             det.RecipeOut = RecipeOut;
-            det.RecipePrice = _db.GetRecipePrice(RecId).FirstOrDefault();
+            det.SalesPrice = _db.PriceListDet.Where(w => w.PlId == _pc.PlId && w.MatId == mat_id).Select(s => s.Price).FirstOrDefault();
+            det.RecipePrice = _db.GetRecipePrice(rec_id, _pc.PlId).FirstOrDefault();
 
 
             GetOk();
@@ -117,7 +118,7 @@ namespace SP_Sklad.WBDetForm
 
      /*   private Decimal? GetRecipePrice(int recipe_id)
         {
-            var result = _db.MatRecDet.Where(w => w.RecId == recipe_id).ToList().Sum(s => s.Amount * _db.GetWMatTurnRemain(s.MatId, _pc.OnDate, 0).Select(ss => ss.AvgPrice).FirstOrDefault()) ;
+            var result = _db.MatRecDet.Where(w => w.RecId == recipe_id).ToList().Sum(s => s.Amount * _db.PriceListDet.Where(w => w.PlId == _pc.PlId && w.MatId == s.MatId).Select(ss => ss.Price).FirstOrDefault());
 
             return result > 0 ? Math.Round(result.Value, 2) : (decimal?)null;
         }*/
@@ -132,10 +133,15 @@ namespace SP_Sklad.WBDetForm
                 {
                     return;
                 }
-                int RecId = row.RecId;
+                int rec_id = row.RecId;
 
-                calcEdit2.EditValue = _db.GetRecipePrice(RecId).FirstOrDefault();
+                calcEdit2.EditValue = _db.GetRecipePrice(rec_id, _pc.PlId).FirstOrDefault();
             }
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

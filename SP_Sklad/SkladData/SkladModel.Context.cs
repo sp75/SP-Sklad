@@ -2262,13 +2262,17 @@ namespace SP_Sklad.SkladData
         }
     
         [EdmFunction("BaseEntities", "GetRecipePrice")]
-        public virtual IQueryable<Nullable<decimal>> GetRecipePrice(Nullable<int> recId)
+        public virtual IQueryable<Nullable<decimal>> GetRecipePrice(Nullable<int> recId, Nullable<int> plId)
         {
             var recIdParameter = recId.HasValue ?
                 new ObjectParameter("RecId", recId) :
                 new ObjectParameter("RecId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<decimal>>("[BaseEntities].[GetRecipePrice](@RecId)", recIdParameter);
+            var plIdParameter = plId.HasValue ?
+                new ObjectParameter("PlId", plId) :
+                new ObjectParameter("PlId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<decimal>>("[BaseEntities].[GetRecipePrice](@RecId, @PlId)", recIdParameter, plIdParameter);
         }
     }
 }

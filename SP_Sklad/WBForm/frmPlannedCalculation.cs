@@ -102,6 +102,8 @@ namespace SP_Sklad.WBForm
                 PlannedCalculationBS.DataSource = pc;
             }
 
+            lookUpEdit1.Properties.DataSource = _db.PriceList.Select(s => new { s.PlId, s.Name }).ToList();
+
             RefreshDet();
         }
 
@@ -122,6 +124,8 @@ namespace SP_Sklad.WBForm
 
             EditMaterialBtn.Enabled = PlannedCalculationDetBS.Count > 0;
             DelMaterialBtn.Enabled = PlannedCalculationDetBS.Count > 0;
+
+            barButtonItem3.Enabled = lookUpEdit1.EditValue != null && lookUpEdit1.EditValue != DBNull.Value;
         }
 
         private void frmPlannedCalculation_FormClosed(object sender, FormClosedEventArgs e)
@@ -215,6 +219,44 @@ namespace SP_Sklad.WBForm
         private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             PrintDoc.Show(pc.Id, 22, _db);
+        }
+
+        private void lookUpEdit1_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                foreach (var item in _db.PlannedCalculationDet.Where(w => w.PlannedCalculationId == pc.Id).ToList())
+                {
+                    item.RecipePrice = _db.GetRecipePrice(item.RecId, pc.PlId).FirstOrDefault();
+                    item.SalesPrice = _db.PriceListDet.Where(w => w.PlId == pc.PlId && w.MatId == item.MatRecipe.MatId).Select(s => s.Price).FirstOrDefault();
+                }
+                _db.SaveChanges();
+                RefreshDet();
+            }
+        }
+
+        private void lookUpEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+            GetOk();
+        }
+
+        private void gridView8_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            var wbd = _db.PlannedCalculationDet.FirstOrDefault(w => w.Id == pc_det_row.Id);
+
+            if (e.Column.FieldName == "PlannedProfitability")
+            {
+                wbd.PlannedProfitability = Convert.ToDecimal(e.Value);
+
+
+            }
+            else if (e.Column.FieldName == "ProductionPlan")
+            {
+                wbd.ProductionPlan = Convert.ToDecimal(e.Value);
+            }
+
+            _db.SaveChanges();
+            RefreshDet();
         }
     }
 }

@@ -17,6 +17,7 @@ namespace SP_Sklad.SkladData
         public PriceList()
         {
             this.PriceListDet = new HashSet<PriceListDet>();
+            this.PlannedCalculation = new HashSet<PlannedCalculation>();
         }
     
         public int PlId { get; set; }
@@ -33,5 +34,6 @@ namespace SP_Sklad.SkladData
         public virtual Currency Currency { get; set; }
         public virtual PriceTypes PriceTypes { get; set; }
         public virtual ICollection<PriceListDet> PriceListDet { get; set; }
+        public virtual ICollection<PlannedCalculation> PlannedCalculation { get; set; }
     }
 }

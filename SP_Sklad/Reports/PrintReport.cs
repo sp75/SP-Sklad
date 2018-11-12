@@ -631,6 +631,7 @@ namespace SP_Sklad.Reports
 
                 }).Select(s => new
                 {
+                    s.Key.MatId,
                     s.Key.BarCode,
                     s.Key.GrpId,
                     s.Key.MatName,
@@ -638,7 +639,7 @@ namespace SP_Sklad.Reports
                     Amount = s.Sum(a => a.Amount),
                     OnSum = s.Sum(sum => sum.Price * sum.Amount)
 
-                }).ToList();
+                }).OrderBy(o => o.MatId).ToList();
 
                 if (!mat.Any())
                 {
@@ -657,7 +658,7 @@ namespace SP_Sklad.Reports
 
 
                 data_for_report.Add("XLRPARAMS", XLRPARAMS);
-                data_for_report.Add("MatGroup", mat_grp.Where(w => mat.Select(s => s.GrpId).Contains(w.GrpId)).ToList());
+                data_for_report.Add("MatGroup", mat_grp.Where(w => mat.Select(s => s.GrpId).Contains(w.GrpId)).OrderBy(o=> o.Name).ToList());
                 data_for_report.Add("MatInDet", mat);
                 data_for_report.Add("_realation_", rel);
 

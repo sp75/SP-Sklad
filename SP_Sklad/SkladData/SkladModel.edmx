@@ -920,6 +920,10 @@
             <End Role="CashDesks" EntitySet="CashDesks" />
             <End Role="PayDoc" EntitySet="PayDoc" />
           </AssociationSet>
+          <AssociationSet Name="FK_PlannedCalculation_PriceList" Association="BaseModel.Store.FK_PlannedCalculation_PriceList">
+            <End Role="PriceList" EntitySet="PriceList" />
+            <End Role="PlannedCalculation" EntitySet="PlannedCalculation" />
+          </AssociationSet>
           <AssociationSet Name="FK_POSREL_CPOSID" Association="BaseModel.Store.FK_POSREL_CPOSID">
             <End Role="WaybillDet" EntitySet="WaybillDet" />
             <End Role="PosRel" EntitySet="PosRel" />
@@ -1909,6 +1913,7 @@
           <Property Name="PersonId" Type="int" />
           <Property Name="UpdatedAt" Type="datetime" />
           <Property Name="UpdatedBy" Type="int" />
+          <Property Name="PlId" Type="int" />
         </EntityType>
         <EntityType Name="PlannedCalculationDet">
           <Key>
@@ -4202,6 +4207,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PlannedCalculation_PriceList">
+          <End Role="PriceList" Type="BaseModel.Store.PriceList" Multiplicity="0..1" />
+          <End Role="PlannedCalculation" Type="BaseModel.Store.PlannedCalculation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceList">
+              <PropertyRef Name="PlId" />
+            </Principal>
+            <Dependent Role="PlannedCalculation">
+              <PropertyRef Name="PlId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_POSREL_CPOSID">
           <End Role="WaybillDet" Type="BaseModel.Store.WaybillDet" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -5569,10 +5586,11 @@
         </Function>
         <Function Name="GetRecipePrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="RecId" Type="int" Mode="In" />
+          <Parameter Name="PlId" Type="int" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
-                <Property Name="RecipePrice" Type="numeric" Precision="38" Scale="6" />
+                <Property Name="RecipePrice" Type="numeric" Precision="38" Scale="10" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -8154,8 +8172,13 @@
             <Parameter Name="OnDate" Mode="In" Type="DateTime" />
             <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <AssociationSet Name="FK_PlannedCalculation_PriceList" Association="BaseModel.FK_PlannedCalculation_PriceList">
+            <End Role="PriceList" EntitySet="PriceList" />
+            <End Role="PlannedCalculation" EntitySet="PlannedCalculation" />
+          </AssociationSet>
           <FunctionImport Name="GetRecipePrice" IsComposable="true" ReturnType="Collection(Decimal)">
             <Parameter Name="RecId" Mode="In" Type="Int32" />
+            <Parameter Name="PlId" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
@@ -11171,6 +11194,7 @@
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK_PRICELIS_REFERENCE_CURRENCY" FromRole="PriceList" ToRole="Currency" />
           <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP" FromRole="PriceList" ToRole="PriceTypes" />
           <NavigationProperty Name="PriceListDet" Relationship="BaseModel.FK_PRICELISTDET_PRICELIST" FromRole="PriceList" ToRole="PriceListDet" />
+          <NavigationProperty Name="PlannedCalculation" Relationship="BaseModel.FK_PlannedCalculation_PriceList" FromRole="PriceList" ToRole="PlannedCalculation" />
         </EntityType>
         <EntityType Name="v_PriceList">
           <Key>
@@ -13505,6 +13529,8 @@
           <NavigationProperty Name="PlannedCalculationDet" Relationship="BaseModel.FK_CalcRawMaterialDet_CalcRawMaterials" FromRole="PlannedCalculation" ToRole="PlannedCalculationDet" />
           <Property Type="DateTime" Name="UpdatedAt" Precision="3" />
           <Property Type="Int32" Name="UpdatedBy" />
+          <Property Type="Int32" Name="PlId" />
+          <NavigationProperty Name="PriceList" Relationship="BaseModel.FK_PlannedCalculation_PriceList" FromRole="PlannedCalculation" ToRole="PriceList" />
         </EntityType>
         <EntityType Name="PlannedCalculationDet">
           <Key>
@@ -13584,6 +13610,18 @@
           <Property Type="Decimal" Name="Ordered" Nullable="true" Precision="38" Scale="4" />
           <Property Type="Decimal" Name="ORsv" Nullable="true" Precision="38" Scale="4" />
         </ComplexType>
+        <Association Name="FK_PlannedCalculation_PriceList">
+          <End Type="BaseModel.PriceList" Role="PriceList" Multiplicity="0..1" />
+          <End Type="BaseModel.PlannedCalculation" Role="PlannedCalculation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceList">
+              <PropertyRef Name="PlId" />
+            </Principal>
+            <Dependent Role="PlannedCalculation">
+              <PropertyRef Name="PlId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -17164,6 +17202,7 @@
           <EntitySetMapping Name="PlannedCalculation">
             <EntityTypeMapping TypeName="BaseModel.PlannedCalculation">
               <MappingFragment StoreEntitySet="PlannedCalculation">
+                <ScalarProperty Name="PlId" ColumnName="PlId" />
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
                 <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
                 <ScalarProperty Name="PersonId" ColumnName="PersonId" />

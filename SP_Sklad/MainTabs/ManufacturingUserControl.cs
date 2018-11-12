@@ -113,7 +113,7 @@ namespace SP_Sklad.MainTabs
             var end_date = dateEdit1.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : dateEdit1.DateTime;
 
             int top_row = PlannedCalculationGridView.TopRowIndex;
-            PlannedCalculationBS.DataSource = DB.SkladBase().v_PlannedCalculation.Where(w=> w.OnDate >=satrt_date && w.OnDate <= end_date).ToList();
+            PlannedCalculationBS.DataSource = DB.SkladBase().v_PlannedCalculation.Where(w=> w.OnDate >=satrt_date && w.OnDate <= end_date).OrderByDescending(o=> o.OnDate).ToList();
             PlannedCalculationGridView.TopRowIndex = top_row;
         }
 
