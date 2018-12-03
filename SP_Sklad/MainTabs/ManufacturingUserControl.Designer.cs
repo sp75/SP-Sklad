@@ -88,11 +88,13 @@
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn38 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn82 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn39 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn126 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn40 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn41 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn65 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn82 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn127 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.WhEditBtn = new DevExpress.XtraEditors.SimpleButton();
             this.WhComboBox = new DevExpress.XtraEditors.LookUpEdit();
@@ -1056,11 +1058,13 @@
             this.gridColumn7,
             this.gridColumn8,
             this.gridColumn38,
+            this.gridColumn82,
             this.gridColumn39,
+            this.gridColumn126,
             this.gridColumn40,
             this.gridColumn41,
             this.gridColumn65,
-            this.gridColumn82});
+            this.gridColumn127});
             this.WbGridView.GridControl = this.WBGridControl;
             this.WbGridView.Name = "WbGridView";
             this.WbGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -1127,7 +1131,7 @@
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 94;
+            this.gridColumn3.Width = 87;
             // 
             // gridColumn37
             // 
@@ -1138,7 +1142,7 @@
             this.gridColumn37.Name = "gridColumn37";
             this.gridColumn37.Visible = true;
             this.gridColumn37.VisibleIndex = 5;
-            this.gridColumn37.Width = 49;
+            this.gridColumn37.Width = 45;
             // 
             // gridColumn4
             // 
@@ -1149,7 +1153,7 @@
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
-            this.gridColumn4.Width = 107;
+            this.gridColumn4.Width = 99;
             // 
             // gridColumn5
             // 
@@ -1158,7 +1162,7 @@
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
-            this.gridColumn5.Width = 134;
+            this.gridColumn5.Width = 124;
             // 
             // gridColumn6
             // 
@@ -1167,7 +1171,7 @@
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 6;
-            this.gridColumn6.Width = 34;
+            this.gridColumn6.Width = 31;
             // 
             // gridColumn7
             // 
@@ -1177,7 +1181,7 @@
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 7;
-            this.gridColumn7.Width = 49;
+            this.gridColumn7.Width = 45;
             // 
             // gridColumn8
             // 
@@ -1187,7 +1191,7 @@
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 8;
-            this.gridColumn8.Width = 151;
+            this.gridColumn8.Width = 150;
             // 
             // gridColumn38
             // 
@@ -1196,7 +1200,16 @@
             this.gridColumn38.Name = "gridColumn38";
             this.gridColumn38.Visible = true;
             this.gridColumn38.VisibleIndex = 9;
-            this.gridColumn38.Width = 76;
+            this.gridColumn38.Width = 70;
+            // 
+            // gridColumn82
+            // 
+            this.gridColumn82.Caption = "Вихід (Брутто)";
+            this.gridColumn82.DisplayFormat.FormatString = "0.00";
+            this.gridColumn82.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn82.FieldName = "AmountBrutto";
+            this.gridColumn82.Name = "gridColumn82";
+            this.gridColumn82.Width = 64;
             // 
             // gridColumn39
             // 
@@ -1207,7 +1220,15 @@
             this.gridColumn39.Name = "gridColumn39";
             this.gridColumn39.Visible = true;
             this.gridColumn39.VisibleIndex = 10;
-            this.gridColumn39.Width = 51;
+            this.gridColumn39.Width = 68;
+            // 
+            // gridColumn126
+            // 
+            this.gridColumn126.Caption = "Тара, кг.";
+            this.gridColumn126.DisplayFormat.FormatString = "0.00";
+            this.gridColumn126.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn126.FieldName = "Tara";
+            this.gridColumn126.Name = "gridColumn126";
             // 
             // gridColumn40
             // 
@@ -1217,19 +1238,19 @@
             this.gridColumn40.FieldName = "Price";
             this.gridColumn40.Name = "gridColumn40";
             this.gridColumn40.Visible = true;
-            this.gridColumn40.VisibleIndex = 12;
-            this.gridColumn40.Width = 68;
+            this.gridColumn40.VisibleIndex = 13;
+            this.gridColumn40.Width = 43;
             // 
             // gridColumn41
             // 
-            this.gridColumn41.Caption = "Дата останьої відгрузки";
+            this.gridColumn41.Caption = "Дата останньої відгрузки";
             this.gridColumn41.DisplayFormat.FormatString = "g";
             this.gridColumn41.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn41.FieldName = "WriteOnDate";
             this.gridColumn41.Name = "gridColumn41";
             this.gridColumn41.Visible = true;
-            this.gridColumn41.VisibleIndex = 13;
-            this.gridColumn41.Width = 118;
+            this.gridColumn41.VisibleIndex = 14;
+            this.gridColumn41.Width = 86;
             // 
             // gridColumn65
             // 
@@ -1240,16 +1261,16 @@
             this.gridColumn65.Name = "gridColumn65";
             this.gridColumn65.Visible = true;
             this.gridColumn65.VisibleIndex = 11;
-            this.gridColumn65.Width = 51;
+            this.gridColumn65.Width = 56;
             // 
-            // gridColumn82
+            // gridColumn127
             // 
-            this.gridColumn82.Caption = "Вихід (Брутто)";
-            this.gridColumn82.DisplayFormat.FormatString = "0.00";
-            this.gridColumn82.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn82.FieldName = "AmountBrutto";
-            this.gridColumn82.Name = "gridColumn82";
-            this.gridColumn82.Width = 64;
+            this.gridColumn127.Caption = "Залишок в цеху";
+            this.gridColumn127.FieldName = "SaldoShipped";
+            this.gridColumn127.Name = "gridColumn127";
+            this.gridColumn127.Visible = true;
+            this.gridColumn127.VisibleIndex = 12;
+            this.gridColumn127.Width = 78;
             // 
             // panelControl2
             // 
@@ -4267,5 +4288,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn123;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn124;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn125;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn126;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn127;
     }
 }

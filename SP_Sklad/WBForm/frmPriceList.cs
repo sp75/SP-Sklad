@@ -208,8 +208,10 @@ namespace SP_Sklad.WBForm
 
         void GetDetail()
         {
+            int top_row = PriceListGrid.TopRowIndex;
             PriceListDetBS.DataSource = _db.GetPriceListDet(_pl_id);
             PriceListGrid.ExpandAllGroups();
+            PriceListGrid.TopRowIndex = top_row;
         }
 
         private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
@@ -230,7 +232,16 @@ namespace SP_Sklad.WBForm
         private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var dr = PriceListGrid.GetFocusedRow() as GetPriceListDet_Result;
-            _db.DeleteWhere<PriceListDet>(w => w.PlDetId == dr.PlDetId);
+
+            if (PriceListGrid.IsGroupRow(PriceListGrid.FocusedRowHandle))
+            {
+                _db.DeleteWhere<PriceListDet>(w => w.GrpId == dr.GrpId);
+            }
+            else
+            {
+                _db.DeleteWhere<PriceListDet>(w => w.PlDetId == dr.PlDetId);
+            }
+
             GetDetail();
         }
 
@@ -494,6 +505,31 @@ namespace SP_Sklad.WBForm
             {
                 Point p2 = Control.MousePosition;
                 this.PriceListPopupMenu.ShowPopup(p2);
+            }
+        }
+
+        private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var dr = PriceListGrid.GetFocusedRow() as GetPriceListDet_Result;
+            var pld = _db.PriceListDet.Find(dr.PlDetId);
+            pld.Price = GetPrice(dr.MatId.Value);
+            dr.Price = pld.Price;
+            _db.SaveChanges();
+
+            PriceListGrid.RefreshRow(PriceListGrid.FocusedRowHandle);
+        }
+
+        private void PriceListPopupMenu_BeforePopup(object sender, CancelEventArgs e)
+        {
+            var dr = PriceListGrid.GetFocusedRow() as GetPriceListDet_Result;
+
+            if (PriceListGrid.IsGroupRow(PriceListGrid.FocusedRowHandle))
+            {
+                DelMaterialBtn.Caption = "Видалити групу товарів";
+            }
+            else
+            {
+                DelMaterialBtn.Caption = "Видалити";
             }
         }
     }

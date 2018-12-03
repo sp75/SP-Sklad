@@ -525,7 +525,7 @@ namespace SP_Sklad.Reports
 
             if (idx == 15)
             {
-                var wb_list = db.REP_15(StartDate, EndDate, (int)Kagent.KaId, (int)this.Material.MatId).ToList();
+                var wb_list = db.REP_15(StartDate, EndDate, (int)Kagent.KaId, (int)this.Material.MatId).OrderBy(o => o.OnDate).ToList();
 
                 if (!wb_list.Any())
                 {

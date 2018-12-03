@@ -672,6 +672,10 @@ namespace SP_Sklad.MainTabs
                 case 5:
                     gridControl1.DataSource = DB.SkladBase().GetUsedMaterials(row.MatId, OnDateEdit.DateTime.Date.AddDays(1)).ToList();
                     break;
+
+                case 6: // Dovgo
+                    REP_15BS.DataSource = DB.SkladBase().REP_15(DateTime.Now.AddDays(-90), DateTime.Now, 0, row.MatId).OrderBy(o => o.OnDate).ToList();
+                    break;
             }
         }
 

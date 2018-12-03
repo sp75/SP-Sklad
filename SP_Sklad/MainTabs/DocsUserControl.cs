@@ -354,18 +354,6 @@ namespace SP_Sklad.MainTabs
                                 if (wb != null)
                                 {
                                     db.WaybillList.Remove(wb);
-
-                                    /*      string commandText = "[sp_base].[dbo].[TestProc]";
-                                          using (SqlConnection connection = new SqlConnection("Data Source=178.136.7.248;Initial Catalog=sp_base;MultipleActiveResultSets=True;Persist Security Info=True;User ID=Developer;Password=z7895123Z"))
-                                          {
-                                              using (SqlCommand command = new SqlCommand(commandText, connection))
-                                              {
-                                                  command.CommandType = CommandType.StoredProcedure;
-                                                  connection.Open();
-                                                  command.ExecuteNonQuery();
-                                              }
-                                          }*/
-
                                 }
                                 else
                                 {
@@ -1095,6 +1083,15 @@ namespace SP_Sklad.MainTabs
                     MessageBox.Show("Експортовано " + WbGridView.RowCount.ToString() + " документів !");
 
                     break;
+            }
+        }
+
+        private void PayDocGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                PayDocsPopupMenu.ShowPopup(p2);
             }
         }
     }

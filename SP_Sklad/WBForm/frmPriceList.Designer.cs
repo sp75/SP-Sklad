@@ -61,6 +61,7 @@
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -163,9 +164,10 @@
             this.barButtonItem9,
             this.barStaticItem3,
             this.barStaticItem4,
-            this.barButtonItem10});
+            this.barButtonItem10,
+            this.barButtonItem11});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 29;
+            this.barManager1.MaxItemId = 30;
             // 
             // bar2
             // 
@@ -430,6 +432,8 @@
             this.WBImgList.Images.SetKeyName(6, "Склади.bmp");
             this.WBImgList.Images.SetKeyName(7, "OpenFolder.bmp");
             this.WBImgList.Images.SetKeyName(8, "_нформац_я про пслугу.bmp");
+            this.WBImgList.Images.SetKeyName(9, "renum.png");
+            this.WBImgList.Images.SetKeyName(10, "recalc_money.png");
             // 
             // barButtonItem5
             // 
@@ -450,8 +454,17 @@
             // 
             this.barButtonItem10.Caption = "Перенумеровати";
             this.barButtonItem10.Id = 28;
+            this.barButtonItem10.ImageIndex = 9;
             this.barButtonItem10.Name = "barButtonItem10";
             this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
+            // 
+            // barButtonItem11
+            // 
+            this.barButtonItem11.Caption = "Обновити ціну";
+            this.barButtonItem11.Id = 29;
+            this.barButtonItem11.ImageIndex = 10;
+            this.barButtonItem11.Name = "barButtonItem11";
+            this.barButtonItem11.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick);
             // 
             // styleController1
             // 
@@ -496,7 +509,7 @@
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(22, 22);
             this.simpleButton2.TabIndex = 40;
-            this.simpleButton2.ToolTip = "Обновити ціни згідно категоріїї";
+            this.simpleButton2.ToolTip = "Обновити ціни по категоріїї";
             this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // labelControl4
@@ -910,10 +923,12 @@
             // 
             this.PriceListPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.DelMaterialBtn, true)});
             this.PriceListPopupMenu.Manager = this.barManager1;
             this.PriceListPopupMenu.Name = "PriceListPopupMenu";
+            this.PriceListPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.PriceListPopupMenu_BeforePopup);
             // 
             // frmPriceList
             // 
@@ -1039,5 +1054,6 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
         private DevExpress.XtraBars.PopupMenu PriceListPopupMenu;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem11;
     }
 }

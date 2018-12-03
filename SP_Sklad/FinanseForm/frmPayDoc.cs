@@ -227,7 +227,9 @@ namespace SP_Sklad.FinanseForm
 
         bool GetOk()
         {
-            bool recult = (NumEdit.Text.Any() && PTypeComboBox.EditValue != null && (CashEditComboBox.EditValue != null || AccountEdit.Text.Any()) && SumEdit.Value > 0);
+            bool kg = (_DocType.Value == -2 ) || (KagentComboBox.EditValue != null && KagentComboBox.EditValue != DBNull.Value && (_DocType.Value != -2 ) ) ;
+
+            bool recult = (NumEdit.Text.Any() && PTypeComboBox.EditValue != null && (CashEditComboBox.EditValue != null || AccountEdit.Text.Any()) && SumEdit.Value > 0 && kg);
 
             OkButton.Enabled = recult;
 
@@ -308,6 +310,8 @@ namespace SP_Sklad.FinanseForm
                 GetDocList();
                 DocListEdit.EditValue = null;
             }
+
+            GetOk();
         }
 
         private void CashEditComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)

@@ -1720,6 +1720,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ProductionPlanDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ProductionPlans.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ProductionPlansList_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.REP_15_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Routes.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.SchedulingOrders.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Serials.datasource" />

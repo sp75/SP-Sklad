@@ -6187,12 +6187,11 @@
             <CollectionType>
               <RowType>
                 <Property Name="OnDate" Type="date" />
-                <Property Name="AmountOut" Type="numeric" Precision="38" Scale="8" />
-                <Property Name="SummOut" Type="numeric" Precision="38" Scale="12" />
-                <Property Name="AvgPrice" Type="numeric" Precision="38" Scale="6" />
-                <Property Name="SummIn" Type="numeric" Precision="38" Scale="12" />
-                <Property Name="AmountIn" Type="numeric" Precision="38" Scale="8" />
-                <Property Name="Income" Type="numeric" Precision="38" Scale="6" />
+                <Property Name="AmountOut" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="SummOut" Type="numeric" Precision="38" Scale="2" />
+                <Property Name="Income" Type="numeric" Precision="38" Scale="8" />
+                <Property Name="ReturnSumm" Type="numeric" Precision="38" Scale="2" />
+                <Property Name="ReturnAmount" Type="numeric" Precision="38" Scale="4" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -7631,14 +7630,6 @@
           <FunctionImport Name="GetMakeAmount" IsComposable="true" ReturnType="Collection(BaseModel.GetMakeAmount_Result)">
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="WBListMake" ReturnType="Collection(BaseModel.WBListMake_Result)">
-            <Parameter Name="from_date" Mode="In" Type="DateTime" />
-            <Parameter Name="to_date" Mode="In" Type="DateTime" />
-            <Parameter Name="is_checked" Mode="In" Type="Int32" />
-            <Parameter Name="wh" Mode="In" Type="String" />
-            <Parameter Name="grp_id" Mode="In" Type="Int32" />
-            <Parameter Name="w_type" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="GetKAgentSaldo" IsComposable="true" ReturnType="Collection(BaseModel.GetKAgentSaldo_Result)">
             <Parameter Name="ka_id" Mode="In" Type="Int32" />
             <Parameter Name="on_date" Mode="In" Type="DateTime" />
@@ -7675,12 +7666,6 @@
             <Parameter Name="ka_grp_id" Mode="In" Type="Guid" />
           </FunctionImport>
           <EntitySet Name="EnterpriseWorker" EntityType="BaseModel.EnterpriseWorker" />
-          <FunctionImport Name="REP_15" IsComposable="true" ReturnType="Collection(BaseModel.REP_15_Result)">
-            <Parameter Name="from_date" Mode="In" Type="DateTime" />
-            <Parameter Name="to_date" Mode="In" Type="DateTime" />
-            <Parameter Name="ka_id" Mode="In" Type="Int32" />
-            <Parameter Name="mat_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="GetPayDocList" ReturnType="Collection(BaseModel.GetPayDocList_Result)">
             <Parameter Name="doc_type" Mode="In" Type="Int32" />
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
@@ -8179,6 +8164,20 @@
           <FunctionImport Name="GetRecipePrice" IsComposable="true" ReturnType="Collection(Decimal)">
             <Parameter Name="RecId" Mode="In" Type="Int32" />
             <Parameter Name="PlId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="REP_15" IsComposable="true" ReturnType="Collection(BaseModel.REP_15_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="WBListMake" ReturnType="Collection(BaseModel.WBListMake_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="is_checked" Mode="In" Type="Int32" />
+            <Parameter Name="wh" Mode="In" Type="String" />
+            <Parameter Name="grp_id" Mode="In" Type="Int32" />
+            <Parameter Name="w_type" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
@@ -11598,47 +11597,6 @@
           <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
           <Property Type="Decimal" Name="AmountBrutto" Nullable="true" Precision="15" Scale="4" />
         </ComplexType>
-        <ComplexType Name="WBListMake_Result">
-          <Property Type="Guid" Name="Id" Nullable="false" />
-          <Property Type="Int32" Name="WbillId" Nullable="false" />
-          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" />
-          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
-          <Property Type="Int32" Name="CurrId" Nullable="true" />
-          <Property Type="String" Name="Reason" Nullable="true" MaxLength="255" />
-          <Property Type="Int32" Name="Checked" Nullable="false" />
-          <Property Type="Decimal" Name="SummAll" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="Int32" Name="WType" Nullable="false" />
-          <Property Type="Decimal" Name="Nds" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="PersonId" Nullable="true" />
-          <Property Type="String" Name="Notes" Nullable="true" MaxLength="255" />
-          <Property Type="Int32" Name="DocId" Nullable="true" />
-          <Property Type="Decimal" Name="SummInCurr" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
-          <Property Type="Decimal" Name="CurrRate" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="AttNum" Nullable="true" MaxLength="15" />
-          <Property Type="DateTime" Name="AttDate" Nullable="true" Precision="23" />
-          <Property Type="String" Name="Received" Nullable="true" MaxLength="64" />
-          <Property Type="DateTime" Name="ToDate" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="DefNum" Nullable="false" />
-          <Property Type="String" Name="RecipeName" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
-          <Property Type="Decimal" Name="AmountIn" Nullable="false" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="MatId" Nullable="false" />
-          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
-          <Property Type="String" Name="KaName" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="MakedPerson" Nullable="true" MaxLength="64" />
-          <Property Type="Int32" Name="MId" Nullable="false" />
-          <Property Type="DateTime" Name="OnDateOut" Nullable="true" Precision="23" />
-          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="38" Scale="8" />
-          <Property Type="Decimal" Name="AmountBrutto" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="DateTime" Name="WriteOnDate" Nullable="true" Precision="23" />
-          <Property Type="String" Name="FromWh" Nullable="true" MaxLength="64" />
-          <Property Type="Int32" Name="FromWId" Nullable="true" />
-          <Property Type="String" Name="DocStatus" Nullable="false" MaxLength="21" />
-          <Property Type="Decimal" Name="Price" Nullable="true" Precision="38" Scale="17" />
-          <Property Type="Decimal" Name="ShippedAmount" Nullable="true" Precision="38" Scale="8" />
-        </ComplexType>
         <ComplexType Name="GetKAgentSaldo_Result">
           <Property Type="Int32" Name="KaId" Nullable="false" />
           <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="10" />
@@ -11753,15 +11711,6 @@
           <Property Type="Int32" Name="WorkerId" Nullable="false" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_EnterpriseWorker_Kagent" FromRole="EnterpriseWorker" ToRole="Kagent" />
         </EntityType>
-        <ComplexType Name="REP_15_Result">
-          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="10" />
-          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="38" Scale="8" />
-          <Property Type="Decimal" Name="SummOut" Nullable="true" Precision="38" Scale="12" />
-          <Property Type="Decimal" Name="AmountIn" Nullable="true" Precision="38" Scale="8" />
-          <Property Type="Decimal" Name="SummIn" Nullable="true" Precision="38" Scale="12" />
-          <Property Type="Decimal" Name="AvgPrice" Nullable="true" Precision="38" Scale="6" />
-          <Property Type="Decimal" Name="Income" Nullable="true" Precision="38" Scale="6" />
-        </ComplexType>
         <ComplexType Name="GetPayDocList_Result">
           <Property Type="Int64" Name="Num" Nullable="true" />
           <Property Type="Int32" Name="PayDocId" Nullable="false" />
@@ -13622,6 +13571,57 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="REP_15_Result">
+          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="10" />
+          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="SummOut" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="Income" Nullable="true" Precision="38" Scale="8" />
+          <Property Type="Decimal" Name="ReturnSumm" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="ReturnAmount" Nullable="true" Precision="38" Scale="4" />
+        </ComplexType>
+        <ComplexType Name="WBListMake_Result">
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="WbillId" Nullable="false" />
+          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="String" Name="Reason" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Checked" Nullable="false" />
+          <Property Type="Decimal" Name="SummAll" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Int32" Name="WType" Nullable="false" />
+          <Property Type="Decimal" Name="Nds" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="PersonId" Nullable="true" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="DocId" Nullable="true" />
+          <Property Type="Decimal" Name="SummInCurr" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
+          <Property Type="Decimal" Name="CurrRate" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="AttNum" Nullable="true" MaxLength="15" />
+          <Property Type="DateTime" Name="AttDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Received" Nullable="true" MaxLength="64" />
+          <Property Type="DateTime" Name="ToDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="DefNum" Nullable="false" />
+          <Property Type="String" Name="RecipeName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="AmountIn" Nullable="false" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="KaName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="MakedPerson" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="MId" Nullable="false" />
+          <Property Type="DateTime" Name="OnDateOut" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AmountBrutto" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="DateTime" Name="WriteOnDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="FromWh" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="FromWId" Nullable="true" />
+          <Property Type="String" Name="DocStatus" Nullable="false" MaxLength="21" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="38" Scale="17" />
+          <Property Type="Decimal" Name="ShippedAmount" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Tara" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="SaldoShipped" Nullable="true" Precision="38" Scale="4" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -15842,51 +15842,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="WBListMake" FunctionName="BaseModel.Store.WBListMake">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.WBListMake_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
-                <ScalarProperty Name="Reason" ColumnName="Reason" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
-                <ScalarProperty Name="WType" ColumnName="WType" />
-                <ScalarProperty Name="Nds" ColumnName="Nds" />
-                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="DocId" ColumnName="DocId" />
-                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
-                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
-                <ScalarProperty Name="CurrRate" ColumnName="CurrRate" />
-                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
-                <ScalarProperty Name="AttNum" ColumnName="AttNum" />
-                <ScalarProperty Name="AttDate" ColumnName="AttDate" />
-                <ScalarProperty Name="Received" ColumnName="Received" />
-                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
-                <ScalarProperty Name="DefNum" ColumnName="DefNum" />
-                <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
-                <ScalarProperty Name="MatName" ColumnName="MatName" />
-                <ScalarProperty Name="AmountIn" ColumnName="AmountIn" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
-                <ScalarProperty Name="KaName" ColumnName="KaName" />
-                <ScalarProperty Name="MakedPerson" ColumnName="MakedPerson" />
-                <ScalarProperty Name="MId" ColumnName="MId" />
-                <ScalarProperty Name="OnDateOut" ColumnName="OnDateOut" />
-                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
-                <ScalarProperty Name="AmountBrutto" ColumnName="AmountBrutto" />
-                <ScalarProperty Name="WriteOnDate" ColumnName="WriteOnDate" />
-                <ScalarProperty Name="FromWh" ColumnName="FromWh" />
-                <ScalarProperty Name="FromWId" ColumnName="FromWId" />
-                <ScalarProperty Name="DocStatus" ColumnName="DocStatus" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="ShippedAmount" ColumnName="ShippedAmount" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetKAgentSaldo" FunctionName="BaseModel.Store.GetKAgentSaldo">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.GetKAgentSaldo_Result">
@@ -15995,19 +15950,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="REP_15" FunctionName="BaseModel.Store.REP_15">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.REP_15_Result">
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
-                <ScalarProperty Name="SummOut" ColumnName="SummOut" />
-                <ScalarProperty Name="AmountIn" ColumnName="AmountIn" />
-                <ScalarProperty Name="SummIn" ColumnName="SummIn" />
-                <ScalarProperty Name="AvgPrice" ColumnName="AvgPrice" />
-                <ScalarProperty Name="Income" ColumnName="Income" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetPayDocList" FunctionName="BaseModel.Store.GetPayDocList">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.GetPayDocList_Result">
@@ -17268,6 +17210,65 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetRecipePrice" FunctionName="BaseModel.Store.GetRecipePrice" />
+          <FunctionImportMapping FunctionImportName="REP_15" FunctionName="BaseModel.Store.REP_15">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.REP_15_Result">
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
+                <ScalarProperty Name="SummOut" ColumnName="SummOut" />
+                <ScalarProperty Name="Income" ColumnName="Income" />
+                <ScalarProperty Name="ReturnSumm" ColumnName="ReturnSumm" />
+                <ScalarProperty Name="ReturnAmount" ColumnName="ReturnAmount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="WBListMake" FunctionName="BaseModel.Store.WBListMake">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.WBListMake_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="Nds" ColumnName="Nds" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="CurrRate" ColumnName="CurrRate" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="AttNum" ColumnName="AttNum" />
+                <ScalarProperty Name="AttDate" ColumnName="AttDate" />
+                <ScalarProperty Name="Received" ColumnName="Received" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="DefNum" ColumnName="DefNum" />
+                <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="AmountIn" ColumnName="AmountIn" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="MakedPerson" ColumnName="MakedPerson" />
+                <ScalarProperty Name="MId" ColumnName="MId" />
+                <ScalarProperty Name="OnDateOut" ColumnName="OnDateOut" />
+                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
+                <ScalarProperty Name="AmountBrutto" ColumnName="AmountBrutto" />
+                <ScalarProperty Name="WriteOnDate" ColumnName="WriteOnDate" />
+                <ScalarProperty Name="FromWh" ColumnName="FromWh" />
+                <ScalarProperty Name="FromWId" ColumnName="FromWId" />
+                <ScalarProperty Name="DocStatus" ColumnName="DocStatus" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ShippedAmount" ColumnName="ShippedAmount" />
+                <ScalarProperty Name="Tara" ColumnName="Tara" />
+                <ScalarProperty Name="SaldoShipped" ColumnName="SaldoShipped" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
