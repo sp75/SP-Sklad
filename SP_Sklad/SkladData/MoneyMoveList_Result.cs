@@ -24,7 +24,7 @@ namespace SP_Sklad.SkladData
         public string Notes { get; set; }
         public Nullable<int> AccId { get; set; }
         public Nullable<int> CashId { get; set; }
-        public Nullable<int> OperId { get; set; }
+        public Nullable<System.Guid> OperId { get; set; }
         public Nullable<int> DocId { get; set; }
         public Nullable<decimal> OnValue { get; set; }
         public string CurrName { get; set; }

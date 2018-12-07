@@ -31,7 +31,7 @@ namespace SP_Sklad.SkladData
         public int CTypeId { get; set; }
         public Nullable<int> AccId { get; set; }
         public Nullable<int> CashId { get; set; }
-        public Nullable<int> OperId { get; set; }
+        public Nullable<System.Guid> OperId { get; set; }
         public Nullable<int> DocId { get; set; }
         public Nullable<decimal> OnValue { get; set; }
         public string Schet { get; set; }
@@ -43,9 +43,9 @@ namespace SP_Sklad.SkladData
         public virtual CashDesks CashDesks { get; set; }
         public virtual ChargeType ChargeType { get; set; }
         public virtual Currency Currency { get; set; }
-        public virtual KAgentAccount KAgentAccount { get; set; }
-        public virtual PayType PayType { get; set; }
         public virtual Kagent Kagent { get; set; }
         public virtual Kagent Kagent1 { get; set; }
+        public virtual KAgentAccount KAgentAccount { get; set; }
+        public virtual PayType PayType { get; set; }
     }
 }

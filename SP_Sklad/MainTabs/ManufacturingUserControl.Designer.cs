@@ -2744,7 +2744,8 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -6, 7),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 16, 10),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -16, 9),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 5, 14)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 5, 14),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 4, 17)});
             this.repositoryItemImageComboBox9.Name = "repositoryItemImageComboBox9";
             this.repositoryItemImageComboBox9.SmallImages = this.GridImageList;
             // 

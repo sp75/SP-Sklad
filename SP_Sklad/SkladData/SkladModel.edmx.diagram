@@ -173,12 +173,6 @@
         <AssociationConnector Association="BaseModel.FK_WBS_WBILLID" />
         <EntityTypeShape EntityType="BaseModel.UserSettings" Width="1.5" PointX="21.625" PointY="0.625" />
         <EntityTypeShape EntityType="BaseModel.v_KAgentSaldo" Width="1.5" PointX="10.535968673665062" PointY="17.949280389560982" />
-        <EntityTypeShape EntityType="BaseModel.PayDoc" Width="1.5" PointX="2.8195564964877242" PointY="18.081283354238273" />
-        <AssociationConnector Association="BaseModel.FK_PD_CASHID" />
-        <AssociationConnector Association="BaseModel.FK__PAYDOC__CTYPEID__2334397B" />
-        <AssociationConnector Association="BaseModel.FK__PAYDOC__CURRID__214BF109" />
-        <AssociationConnector Association="BaseModel.FK_PD_ACCID" />
-        <AssociationConnector Association="BaseModel.FK__PAYDOC__PTYPEID__2057CCD0" />
         <EntityTypeShape EntityType="BaseModel.PriceList" Width="1.5" PointX="23.75" PointY="0.625" />
         <EntityTypeShape EntityType="BaseModel.v_PriceList" Width="1.5" PointX="25.75" PointY="0.625" />
         <AssociationConnector Association="BaseModel.FK_PRICELIS_REFERENCE_CURRENCY" ManuallyRouted="false" >
@@ -215,8 +209,6 @@
         <AssociationConnector Association="BaseModel.FK_KADiscount_Kagent" />
         <AssociationConnector Association="BaseModel.FK__KAMATDISCO__KAID__31B762FC" />
         <AssociationConnector Association="BaseModel.FK__KAMATGROUP__KAID__3A4CA8FD" />
-        <AssociationConnector Association="BaseModel.FK__PAYDOC__KAID__19AACF41" />
-        <AssociationConnector Association="BaseModel.FK__PAYDOC__MPERSONI__22401542" />
         <AssociationConnector Association="BaseModel.FK__TAXWB__PERSONID__019E3B86" />
         <AssociationConnector Association="BaseModel.FK__WAYBILLLI__PERSO__6E01572D" />
         <AssociationConnector Association="BaseModel.FK__WAYBILLMO__PERSO__314D4EA8" />
@@ -275,18 +267,26 @@
         <AssociationConnector Association="BaseModel.FK_CalcRawMaterialDet_MatRecipe" />
         <AssociationConnector Association="BaseModel.FK_CalcRawMaterialDet_CalcRawMaterials" />
         <AssociationConnector Association="BaseModel.FK_PlannedCalculation_PriceList" />
+        <EntityTypeShape EntityType="BaseModel.PayDoc" Width="1.5" PointX="0.28183967260729503" PointY="16.074906773900103" />
+        <AssociationConnector Association="BaseModel.FK_PD_CASHID" />
+        <AssociationConnector Association="BaseModel.FK__PAYDOC__CTYPEID__2334397B" />
+        <AssociationConnector Association="BaseModel.FK__PAYDOC__CURRID__214BF109" />
+        <AssociationConnector Association="BaseModel.FK__PAYDOC__KAID__19AACF41" />
+        <AssociationConnector Association="BaseModel.FK__PAYDOC__MPERSONI__22401542" />
+        <AssociationConnector Association="BaseModel.FK_PD_ACCID" />
+        <AssociationConnector Association="BaseModel.FK__PAYDOC__PTYPEID__2057CCD0" />
         </Diagram>
-      <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="73" >
+      <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />
         <EntityTypeShape EntityType="BaseModel.v_TechProcDet" Width="1.5" PointX="2.75" PointY="3.25" />
         <EntityTypeShape EntityType="BaseModel.MaterialsList" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.v_WaybillList" Width="1.5" PointX="6.75" PointY="0.75" />
-        <EntityTypeShape EntityType="BaseModel.v_PayDoc" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.v_DiscCards" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="BaseModel.v_Users" Width="1.5" PointX="0.77737436852295616" PointY="19.076044061722254" />
+        <EntityTypeShape EntityType="BaseModel.v_Users" Width="1.5" PointX="0.75" PointY="9.125" />
         <EntityTypeShape EntityType="BaseModel.v_MatRemains" Width="1.5" PointX="11.375" PointY="0.75" />
-        <EntityTypeShape EntityType="BaseModel.v_ErrorLog" Width="1.5" PointX="9.1037510843499341" PointY="30.783803641229778" />
-        <EntityTypeShape EntityType="BaseModel.KagentList" Width="1.5" PointX="6.6289880530112359" PointY="29.199814750440332" />
+        <EntityTypeShape EntityType="BaseModel.v_ErrorLog" Width="1.5" PointX="11.375" PointY="4" />
+        <EntityTypeShape EntityType="BaseModel.KagentList" Width="1.5" PointX="2.875" PointY="7.75" />
+        <EntityTypeShape EntityType="BaseModel.v_PayDoc" Width="1.5" PointX="9.25" PointY="4.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

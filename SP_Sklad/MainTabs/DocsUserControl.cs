@@ -253,7 +253,10 @@ namespace SP_Sklad.MainTabs
                         break;
                     case 5:
                         var pl_row = PriceListGridView.GetFocusedRow() as v_PriceList;
-                        new frmPriceList(pl_row.PlId).ShowDialog();
+                        using (var pl_frm = new frmPriceList(pl_row.PlId))
+                        {
+                            pl_frm.ShowDialog();
+                        }
                         break;
 
                     /*           case 6: ContractsList->Refresh();
@@ -919,7 +922,7 @@ namespace SP_Sklad.MainTabs
                                 });
                                 db.SaveChanges();
 
-                                var pos_in = db.GetPosIn(wb.OnDate, _wbd.MatId, _wbd.WId, 0, DBHelper.CurrentUser.UserId).Where(w => w.CurRemain >= _wbd.Amount && w.PosId == det_item.PosId).FirstOrDefault();
+                                var pos_in = db.GetPosIn(wb.OnDate, _wbd.MatId, _wbd.WId, 0, DBHelper.CurrentUser.UserId).Where(w => w.CurRemain >= _wbd.Amount && w.PosId == det_item.PosId).OrderBy(o=> o.OnDate).FirstOrDefault();
                                 if (pos_in != null && db.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId && a.WId == _wbd.WId && a.UseReceived))
                                 {
                                     db.WMatTurn.Add(new WMatTurn
@@ -951,12 +954,7 @@ namespace SP_Sklad.MainTabs
 
         private void barSubItem1_Popup(object sender, EventArgs e)
         {
-            if (wb_focused_row == null)
-            {
-                return;
-            }
 
-            barButtonItem11.Enabled = wb_focused_row.WType == 6;
         }
 
         private void xtraTabControl2_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
@@ -1022,7 +1020,8 @@ namespace SP_Sklad.MainTabs
                 });
                 db.SaveChanges();
 
-                foreach (var item in pld.Where(w => w.PlDetType == 0))
+                int count = 0;
+                foreach (var item in pld.Where(w => w.PlDetType == 0).ToList())
                 {
                     var DiscountPrice = item.Price - (item.Price * (item.Discount ?? 0) / 100);
 
@@ -1034,7 +1033,7 @@ namespace SP_Sklad.MainTabs
                         Nds = _wb.Nds,
                         CurrId = _wb.CurrId,
                         OnDate = _wb.OnDate,
-                        Num = _wb.WaybillDet.Count() + 1,
+                        Num = ++count,
                         OnValue = _wb.OnValue,
                         PosKind = 0,
                         PosParent = 0,
@@ -1093,6 +1092,16 @@ namespace SP_Sklad.MainTabs
                 Point p2 = Control.MousePosition;
                 PayDocsPopupMenu.ShowPopup(p2);
             }
+        }
+
+        private void DocsPopupMenu_Popup(object sender, EventArgs e)
+        {
+            if (wb_focused_row == null)
+            {
+                return;
+            }
+
+            barButtonItem11.Enabled = wb_focused_row.WType == 6;
         }
     }
 }

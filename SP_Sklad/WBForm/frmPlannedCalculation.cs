@@ -233,6 +233,14 @@ namespace SP_Sklad.WBForm
                 _db.SaveChanges();
                 RefreshDet();
             }
+
+            if (e.Button.Index == 2 && lookUpEdit1.EditValue != null && lookUpEdit1.EditValue != DBNull.Value)
+            {
+                using (var pl_frm = new frmPriceList((int)lookUpEdit1.EditValue))
+                {
+                    pl_frm.ShowDialog();
+                }
+            }
         }
 
         private void lookUpEdit1_EditValueChanged(object sender, EventArgs e)

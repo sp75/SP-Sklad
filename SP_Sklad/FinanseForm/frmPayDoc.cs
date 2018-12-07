@@ -214,6 +214,7 @@ namespace SP_Sklad.FinanseForm
                 labelControl7.Visible = true;
                 CashEditComboBox.Visible = true;
                 _pd.AccId = null;
+              //  _pd.CashId = 
             }
 
             if ((int)PTypeComboBox.EditValue == 2)
@@ -221,15 +222,19 @@ namespace SP_Sklad.FinanseForm
                 labelControl18.Visible = true;
                 AccountEdit.Visible = true;
                 _pd.CashId = null;
+                 //_pd.AccId =
             }
+
             GetOk();
         }
 
         bool GetOk()
         {
-            bool kg = (_DocType.Value == -2 ) || (KagentComboBox.EditValue != null && KagentComboBox.EditValue != DBNull.Value && (_DocType.Value != -2 ) ) ;
+            bool kg = (_DocType.Value == -2) || (KagentComboBox.EditValue != null && KagentComboBox.EditValue != DBNull.Value && (_DocType.Value != -2));
 
-            bool recult = (NumEdit.Text.Any() && PTypeComboBox.EditValue != null && (CashEditComboBox.EditValue != null || AccountEdit.Text.Any()) && SumEdit.Value > 0 && kg);
+            bool source = PTypeComboBox.EditValue != null && PTypeComboBox.EditValue != DBNull.Value && (((int)PTypeComboBox.EditValue == 1 && CashEditComboBox.EditValue != DBNull.Value) || ((int)PTypeComboBox.EditValue == 2 && AccountEdit.EditValue != DBNull.Value));
+
+            bool recult = (NumEdit.Text.Any() &&  SumEdit.Value > 0 && kg && source);
 
             OkButton.Enabled = recult;
 
@@ -340,6 +345,16 @@ namespace SP_Sklad.FinanseForm
         private void simpleButton2_Click(object sender, EventArgs e)
         {
             OnDateDBEdit.EditValue = DBHelper.ServerDateTime();
+        }
+
+        private void AccountEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            GetOk();
+        }
+
+        private void CashEditComboBox_EditValueChanged(object sender, EventArgs e)
+        {
+            GetOk();
         }
     }
 }

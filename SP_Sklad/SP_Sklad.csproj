@@ -313,6 +313,12 @@
     <Compile Include="EditForm\frmWarehouseEdit.Designer.cs">
       <DependentUpon>frmWarehouseEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="FinanseForm\frmMoneyCorrecting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinanseForm\frmMoneyCorrecting.Designer.cs">
+      <DependentUpon>frmMoneyCorrecting.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAboutAs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -400,7 +406,13 @@
     <Compile Include="SkladData\Licenses.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\MoneyMoveList_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\Packaging.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\PayDoc.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\PlannedCalculation.cs">
@@ -506,16 +518,10 @@
     <Compile Include="SkladData\MatRemainByWh_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\MoneyMoveList_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SkladData\MoneyTurnover_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\OrderedList_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\PayDoc.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\PosRel.cs">
@@ -1441,6 +1447,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmWarehouseEdit.resx">
       <DependentUpon>frmWarehouseEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinanseForm\frmMoneyCorrecting.resx">
+      <DependentUpon>frmMoneyCorrecting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAboutAs.resx">
       <DependentUpon>frmAboutAs.cs</DependentUpon>

@@ -95,8 +95,7 @@ namespace SP_Sklad.WBForm
     union all
     select  -1*mg.grpid as id, -1*mg.pid as pid,  mg.name ,'', '', 2 , 0
     from matgroup mg
-    where mg.deleted=0
-";
+    where mg.deleted=0";
 
             int? p_type = PTypeEdit.EditValue == null || PTypeEdit.EditValue == DBNull.Value ? null : (int?)PTypeEdit.EditValue;
             var list = _db.GetMatTree(p_type, 2).ToList();

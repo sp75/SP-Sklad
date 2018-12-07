@@ -168,7 +168,7 @@ namespace SP_Sklad.WBDetForm
                 CurRemainEdit.EditValue = mat_remain.CurRemain;
             }
 
-            pos_in = _db.GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, 0, DBHelper.CurrentUser.UserId).AsNoTracking().Where(w => w.CurRemain > 0).AsNoTracking().OrderByDescending(o => o.OnDate).ToList();
+            pos_in = _db.GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, 0, DBHelper.CurrentUser.UserId).AsNoTracking().Where(w => w.CurRemain > 0).AsNoTracking().OrderBy(o => o.OnDate).ToList();
 
             if (pos_in.Any())
             {

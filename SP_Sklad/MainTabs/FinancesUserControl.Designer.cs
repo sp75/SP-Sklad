@@ -59,6 +59,8 @@
             this.EditItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.standaloneBarDockControl3 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.standaloneBarDockControl4 = new DevExpress.XtraBars.StandaloneBarDockControl();
@@ -135,6 +137,8 @@
             this.bandedGridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn4 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
+            this.PayDocTypeEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.wbStatusList = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.wbEndDate = new DevExpress.XtraEditors.DateEdit();
@@ -144,15 +148,20 @@
             this.xtraTabControl3 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
+            this.MoneyMoveListInfoBS = new System.Windows.Forms.BindingSource(this.components);
             this.row = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.row9 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.row6 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.category = new DevExpress.XtraVerticalGrid.Rows.CategoryRow();
             this.row1 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row3 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.category1 = new DevExpress.XtraVerticalGrid.Rows.CategoryRow();
             this.row2 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.row10 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row4 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row5 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.row6 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
+            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
             this.xtraTabPage9 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl5 = new DevExpress.XtraEditors.SplitContainerControl();
             this.vGridControl3 = new DevExpress.XtraVerticalGrid.VGridControl();
@@ -218,6 +227,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.CheckedItemImageComboBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PayDocTypeEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbStatusList.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties)).BeginInit();
@@ -227,6 +237,9 @@
             this.xtraTabControl3.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MoneyMoveListInfoBS)).BeginInit();
+            this.xtraTabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
             this.xtraTabPage9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl5)).BeginInit();
             this.splitContainerControl5.SuspendLayout();
@@ -279,9 +292,9 @@
             // 
             // NewItemBtn
             // 
-            this.NewItemBtn.Caption = "Додати";
+            this.NewItemBtn.Caption = "Коригування залишка";
             this.NewItemBtn.Id = 0;
-            this.NewItemBtn.ImageIndex = 0;
+            this.NewItemBtn.ImageIndex = 8;
             this.NewItemBtn.Name = "NewItemBtn";
             this.NewItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewItemBtn_ItemClick);
             // 
@@ -391,8 +404,10 @@
             this.ExecuteInBtn,
             this.NewPayDocBtn,
             this.createTaxWBbtn,
-            this.barButtonItem1});
-            this.barManager1.MaxItemId = 12;
+            this.barButtonItem1,
+            this.barSubItem1,
+            this.barButtonItem2});
+            this.barManager1.MaxItemId = 14;
             // 
             // bar1
             // 
@@ -402,7 +417,7 @@
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
             this.bar1.FloatLocation = new System.Drawing.Point(677, 164);
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.CopyItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
@@ -413,6 +428,25 @@
             this.bar1.OptionsBar.UseWholeRow = true;
             this.bar1.StandaloneBarDockControl = this.standaloneBarDockControl3;
             this.bar1.Text = "Custom 3";
+            // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "Додати фінансовий документ";
+            this.barSubItem1.Id = 12;
+            this.barSubItem1.ImageIndex = 0;
+            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn)});
+            this.barSubItem1.Name = "barSubItem1";
+            this.barSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu;
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Переміщення грошей";
+            this.barButtonItem2.Id = 13;
+            this.barButtonItem2.ImageIndex = 7;
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // standaloneBarDockControl3
             // 
@@ -531,6 +565,8 @@
             this.BarImageList.Images.SetKeyName(4, "refresh.bmp");
             this.BarImageList.Images.SetKeyName(5, "Провести документ.bmp");
             this.BarImageList.Images.SetKeyName(6, "Попередн_й перегляд.bmp");
+            this.BarImageList.Images.SetKeyName(7, "moneymove.png");
+            this.BarImageList.Images.SetKeyName(8, "зарахувати.bmp");
             // 
             // GridImageList
             // 
@@ -558,7 +594,7 @@
             this.GridImageList.Images.SetKeyName(19, "Add.bmp");
             this.GridImageList.Images.SetKeyName(20, "edit.bmp");
             this.GridImageList.Images.SetKeyName(21, "Delete.bmp");
-            this.GridImageList.Images.SetKeyName(22, "Так.bmp");
+            this.GridImageList.Images.SetKeyName(22, "execute.png");
             this.GridImageList.Images.SetKeyName(23, "н_.bmp");
             this.GridImageList.Images.SetKeyName(24, "н_чого.bmp");
             this.GridImageList.Images.SetKeyName(25, "Частково оброблений.bmp");
@@ -575,6 +611,7 @@
             this.GridImageList.Images.SetKeyName(36, "податкова накладна.bmp");
             this.GridImageList.Images.SetKeyName(37, "1335611633_link_break.png");
             this.GridImageList.Images.SetKeyName(38, "1335611569_link.png");
+            this.GridImageList.Images.SetKeyName(39, "moneymove.png");
             // 
             // PageImageList
             // 
@@ -821,6 +858,7 @@
             this.FinTreeList.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.treeListColumn2,
             this.treeListColumn3});
+            this.FinTreeList.Cursor = System.Windows.Forms.Cursors.Default;
             this.FinTreeList.Dock = System.Windows.Forms.DockStyle.Left;
             this.FinTreeList.KeyFieldName = "Id";
             this.FinTreeList.Location = new System.Drawing.Point(2, 2);
@@ -975,7 +1013,10 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 4),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -1, 5),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 6, 30),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -2, 6)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -2, 6),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 3, 39),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -3, 39),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -6, 29)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.GridImageList;
             // 
@@ -1128,7 +1169,7 @@
             this.splitContainerControl4.Panel2.Controls.Add(this.xtraTabControl3);
             this.splitContainerControl4.Panel2.Text = "Panel2";
             this.splitContainerControl4.Size = new System.Drawing.Size(1024, 630);
-            this.splitContainerControl4.SplitterPosition = 440;
+            this.splitContainerControl4.SplitterPosition = 359;
             this.splitContainerControl4.TabIndex = 1;
             this.splitContainerControl4.Text = "splitContainerControl4";
             // 
@@ -1142,7 +1183,7 @@
             this.MoneyMoveGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox2,
             this.CheckedItemImageComboBox});
-            this.MoneyMoveGridControl.Size = new System.Drawing.Size(1024, 365);
+            this.MoneyMoveGridControl.Size = new System.Drawing.Size(1024, 284);
             this.MoneyMoveGridControl.TabIndex = 0;
             this.MoneyMoveGridControl.UseEmbeddedNavigator = true;
             this.MoneyMoveGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -1213,7 +1254,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox2.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 29),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 30)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 30),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 39)});
             this.repositoryItemImageComboBox2.Name = "repositoryItemImageComboBox2";
             this.repositoryItemImageComboBox2.SmallImages = this.GridImageList;
             // 
@@ -1295,7 +1337,7 @@
             // 
             // bandedGridColumn2
             // 
-            this.bandedGridColumn2.Caption = "Сума";
+            this.bandedGridColumn2.Caption = "Списано";
             this.bandedGridColumn2.FieldName = "FromSumm";
             this.bandedGridColumn2.Name = "bandedGridColumn2";
             this.bandedGridColumn2.Visible = true;
@@ -1320,7 +1362,7 @@
             // 
             // bandedGridColumn4
             // 
-            this.bandedGridColumn4.Caption = "Сума";
+            this.bandedGridColumn4.Caption = "Зараховано";
             this.bandedGridColumn4.FieldName = "ToSumm";
             this.bandedGridColumn4.Name = "bandedGridColumn4";
             this.bandedGridColumn4.Visible = true;
@@ -1328,6 +1370,8 @@
             // 
             // panelControl4
             // 
+            this.panelControl4.Controls.Add(this.PayDocTypeEdit);
+            this.panelControl4.Controls.Add(this.labelControl5);
             this.panelControl4.Controls.Add(this.wbStatusList);
             this.panelControl4.Controls.Add(this.labelControl10);
             this.panelControl4.Controls.Add(this.wbEndDate);
@@ -1339,6 +1383,31 @@
             this.panelControl4.Name = "panelControl4";
             this.panelControl4.Size = new System.Drawing.Size(1024, 44);
             this.panelControl4.TabIndex = 1;
+            // 
+            // PayDocTypeEdit
+            // 
+            this.PayDocTypeEdit.Location = new System.Drawing.Point(639, 11);
+            this.PayDocTypeEdit.Name = "PayDocTypeEdit";
+            this.PayDocTypeEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.PayDocTypeEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.PayDocTypeEdit.Properties.DisplayMember = "Name";
+            this.PayDocTypeEdit.Properties.ShowFooter = false;
+            this.PayDocTypeEdit.Properties.ShowHeader = false;
+            this.PayDocTypeEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.PayDocTypeEdit.Properties.ValueMember = "Id";
+            this.PayDocTypeEdit.Size = new System.Drawing.Size(245, 20);
+            this.PayDocTypeEdit.TabIndex = 28;
+            this.PayDocTypeEdit.EditValueChanged += new System.EventHandler(this.wbStartDate_EditValueChanged);
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Location = new System.Drawing.Point(553, 14);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(80, 13);
+            this.labelControl5.TabIndex = 27;
+            this.labelControl5.Text = "Тип документа:";
             // 
             // wbStatusList
             // 
@@ -1412,7 +1481,7 @@
             this.xtraTabControl3.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl3.Name = "xtraTabControl3";
             this.xtraTabControl3.SelectedTabPage = this.xtraTabPage2;
-            this.xtraTabControl3.Size = new System.Drawing.Size(1024, 185);
+            this.xtraTabControl3.Size = new System.Drawing.Size(1024, 266);
             this.xtraTabControl3.TabIndex = 0;
             this.xtraTabControl3.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage2,
@@ -1423,75 +1492,126 @@
             this.xtraTabPage2.Controls.Add(this.vGridControl1);
             this.xtraTabPage2.ImageIndex = 1;
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1018, 154);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1018, 235);
             this.xtraTabPage2.Text = "Інформація про фінансову операцію";
             // 
             // vGridControl1
             // 
             this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeNS;
+            this.vGridControl1.DataSource = this.MoneyMoveListInfoBS;
             this.vGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl1.Location = new System.Drawing.Point(0, 0);
             this.vGridControl1.Name = "vGridControl1";
+            this.vGridControl1.OptionsBehavior.Editable = false;
             this.vGridControl1.RecordWidth = 186;
-            this.vGridControl1.RowHeaderWidth = 376;
+            this.vGridControl1.RowHeaderWidth = 207;
             this.vGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.row,
-            this.category});
-            this.vGridControl1.Size = new System.Drawing.Size(1018, 154);
+            this.row9,
+            this.row6,
+            this.category,
+            this.category1,
+            this.row4,
+            this.row5});
+            this.vGridControl1.Size = new System.Drawing.Size(1018, 235);
             this.vGridControl1.TabIndex = 0;
+            // 
+            // MoneyMoveListInfoBS
+            // 
+            this.MoneyMoveListInfoBS.DataSource = typeof(SP_Sklad.SkladData.MoneyMoveList_Result);
             // 
             // row
             // 
             this.row.Name = "row";
-            this.row.Properties.Caption = "№";
+            this.row.Properties.Caption = "Номер документа";
+            this.row.Properties.FieldName = "DocNum";
+            // 
+            // row9
+            // 
+            this.row9.Name = "row9";
+            this.row9.Properties.Caption = "Дата";
+            this.row9.Properties.FieldName = "OnDate";
+            // 
+            // row6
+            // 
+            this.row6.Name = "row6";
+            this.row6.Properties.Caption = "Тип операції";
+            this.row6.Properties.FieldName = "PayTypeName";
             // 
             // category
             // 
             this.category.ChildRows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.row1,
-            this.row3,
-            this.row2,
-            this.row4,
-            this.row5,
-            this.row6});
+            this.row3});
             this.category.Height = 17;
             this.category.Name = "category";
-            this.category.Properties.Caption = "Дані по контрагенту";
+            this.category.Properties.Caption = "Звітки";
             // 
             // row1
             // 
             this.row1.Height = 17;
             this.row1.Name = "row1";
-            this.row1.Properties.Caption = "П.І.Б";
+            this.row1.Properties.Caption = "З каси (з рахунку)";
+            this.row1.Properties.FieldName = "FromSource";
             // 
             // row3
             // 
+            this.row3.Height = 16;
             this.row3.Name = "row3";
+            this.row3.Properties.Caption = "Списано";
+            this.row3.Properties.FieldName = "FromSumm";
+            // 
+            // category1
+            // 
+            this.category1.ChildRows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
+            this.row2,
+            this.row10});
+            this.category1.Name = "category1";
+            this.category1.Properties.Caption = "Куди";
             // 
             // row2
             // 
             this.row2.Height = 16;
             this.row2.Name = "row2";
+            this.row2.Properties.Caption = "У касу (на рахунок)";
+            this.row2.Properties.FieldName = "ToSource";
+            // 
+            // row10
+            // 
+            this.row10.Name = "row10";
+            this.row10.Properties.Caption = "Зараховано";
+            this.row10.Properties.FieldName = "ToSumm";
             // 
             // row4
             // 
             this.row4.Name = "row4";
+            this.row4.Properties.Caption = "Статус документа";
+            this.row4.Properties.FieldName = "Checked";
             // 
             // row5
             // 
             this.row5.Height = 16;
             this.row5.Name = "row5";
-            // 
-            // row6
-            // 
-            this.row6.Name = "row6";
+            this.row5.Properties.Caption = "Підстава";
+            this.row5.Properties.FieldName = "Reason";
             // 
             // xtraTabPage3
             // 
+            this.xtraTabPage3.Controls.Add(this.memoEdit1);
             this.xtraTabPage3.ImageIndex = 9;
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(1018, 154);
+            this.xtraTabPage3.Size = new System.Drawing.Size(1018, 235);
             this.xtraTabPage3.Text = "Примітка";
+            // 
+            // memoEdit1
+            // 
+            this.memoEdit1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.MoneyMoveListInfoBS, "Notes", true));
+            this.memoEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit1.Location = new System.Drawing.Point(0, 0);
+            this.memoEdit1.MenuManager = this.barManager1;
+            this.memoEdit1.Name = "memoEdit1";
+            this.memoEdit1.Size = new System.Drawing.Size(1018, 235);
+            this.memoEdit1.TabIndex = 0;
             // 
             // xtraTabPage9
             // 
@@ -1809,6 +1929,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
             this.panelControl4.ResumeLayout(false);
             this.panelControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PayDocTypeEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbStatusList.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties)).EndInit();
@@ -1818,6 +1939,9 @@
             this.xtraTabControl3.ResumeLayout(false);
             this.xtraTabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MoneyMoveListInfoBS)).EndInit();
+            this.xtraTabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
             this.xtraTabPage9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl5)).EndInit();
             this.splitContainerControl5.ResumeLayout(false);
@@ -1988,5 +2112,14 @@
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl5;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         public DevExpress.XtraTreeList.TreeList FinancesTreeList;
+        private DevExpress.XtraEditors.LookUpEdit PayDocTypeEdit;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private System.Windows.Forms.BindingSource MoneyMoveListInfoBS;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow row9;
+        private DevExpress.XtraVerticalGrid.Rows.CategoryRow category1;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow row10;
+        private DevExpress.XtraEditors.MemoEdit memoEdit1;
     }
 }

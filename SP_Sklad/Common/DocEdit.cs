@@ -220,6 +220,13 @@ namespace SP_Sklad.Common
                        {
                            pd.Checked = 0;
                            db.Entry<PayDoc>(pd).State = System.Data.Entity.EntityState.Modified;
+
+                           var pd_to = db.PayDoc.FirstOrDefault(w => w.OperId == pd.OperId);
+                           if (pd_to != null)
+                           {
+                               pd_to.Checked = 0;
+                           }
+
                            db.SaveChanges();
                        }
                    }
@@ -227,9 +234,20 @@ namespace SP_Sklad.Common
 
                    if (pd.Checked == 0)
                    {
-                       using (var pd_form = new frmMoneyMove(pd_row.DocType, pd_row.PayDocId))
+                       if (pd.DocType == 6)
                        {
-                           pd_form.ShowDialog();
+                           using (var pd_form = new frmMoneyCorrecting(pd_row.PayDocId))
+                           {
+                               pd_form.ShowDialog();
+                           }
+                       }
+
+                       if (pd.DocType == 3)
+                       {
+                           using (var pd_form = new frmMoneyMove(pd_row.PayDocId))
+                           {
+                               pd_form.ShowDialog();
+                           }
                        }
                    }
 

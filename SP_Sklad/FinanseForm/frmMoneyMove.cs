@@ -15,15 +15,14 @@ namespace SP_Sklad.FinanseForm
 {
     public partial class frmMoneyMove : DevExpress.XtraEditors.XtraForm
     {
-        private int? _DocType { get; set; }
         private BaseEntities _db { get; set; }
         private int? _PayDocId { get; set; }
         private DbContextTransaction current_transaction { get; set; }
-        private PayDoc _pd { get; set; }
+        private PayDoc _pd_from { get; set; }
+        private PayDoc _pd_to { get; set; }
 
-        public frmMoneyMove(int? DocType, int? PayDocId = null)
+        public frmMoneyMove(int? PayDocId = null)
         {
-            _DocType = DocType;
             _PayDocId = PayDocId;
             _db = new BaseEntities();
             current_transaction = _db.Database.BeginTransaction(/*IsolationLevel.RepeatableRead*/);
@@ -33,22 +32,30 @@ namespace SP_Sklad.FinanseForm
 
         private void frmMoneyMove_Load(object sender, EventArgs e)
         {
-            PTypeComboBox.Properties.DataSource = DBHelper.PayTypes;
-            CashEditComboBox.Properties.DataSource = DBHelper.CashDesks;
-            PersonEdit.Properties.DataSource = DBHelper.Persons;
-            PayDocTypeEdit.Properties.DataSource = _db.PayDocType.Where(w=> w.Id == 6).ToList();
+            PTypeFromEdit.Properties.DataSource = DBHelper.PayTypes;
+            PTypeToEdit.Properties.DataSource = DBHelper.PayTypes;
+
+            CashFromEdit.Properties.DataSource = DBHelper.CashDesks;
+            CashToEdit.Properties.DataSource = DBHelper.CashDesks;
 
             var ent_id = DBHelper.Enterprise.KaId ;
-            AccountEdit.Properties.DataSource = _db.EnterpriseAccount.Where(w => w.KaId == ent_id).Select(s=> new {s.AccId, s.AccNum, s.BankName }).ToList();
+            AccountFromEdit.Properties.DataSource = _db.EnterpriseAccount.Where(w => w.KaId == ent_id).Select(s => new { s.AccId, s.AccNum, s.BankName }).ToList();
+            AccountToEdit.Properties.DataSource = AccountFromEdit.Properties.DataSource;
+
+            PersonEdit.Properties.DataSource = DBHelper.Persons;
 
             if (_PayDocId == null)
             {
-                _pd = _db.PayDoc.Add(new PayDoc
+                var doc_num = new BaseEntities().GetDocNum("pay_doc").FirstOrDefault();
+                var on_date =  DBHelper.ServerDateTime();
+                var oper_id = Guid.NewGuid();
+
+                _pd_from = _db.PayDoc.Add(new PayDoc
                 {
                     Id = Guid.NewGuid(),
                     Checked = 1,
-                    DocNum = new BaseEntities().GetDocNum("pay_doc").FirstOrDefault(),
-                    OnDate = DBHelper.ServerDateTime(),
+                    DocNum = doc_num,
+                    OnDate = on_date,
                     Total = 0,
                     CTypeId = 1,// За товар
                     WithNDS = 1,// З НДС
@@ -57,17 +64,42 @@ namespace SP_Sklad.FinanseForm
                     CurrId = DBHelper.Currency.Where(w => w.Def == 1).Select(s => s.CurrId).FirstOrDefault(), //Валюта по умолчанию
                     OnValue = 1,//Курс валюти
                     MPersonId = DBHelper.CurrentUser.KaId,
-                    DocType = Convert.ToInt32(_DocType),
+                    DocType = -3,
                     UpdatedBy = DBHelper.CurrentUser.UserId,
-                    EntId = DBHelper.Enterprise.KaId
+                    EntId = DBHelper.Enterprise.KaId,
+                    OperId = oper_id
+                });
+
+                _pd_to = _db.PayDoc.Add(new PayDoc
+                {
+                    Id = Guid.NewGuid(),
+                    Checked = 1,
+                    DocNum = doc_num,
+                    OnDate = on_date,
+                    Total = 0,
+                    CTypeId = 1,// За товар
+                    WithNDS = 1,// З НДС
+                    PTypeId = 1,// Наличкой
+                    CashId = DBHelper.CashDesks.Where(w => w.Def == 1).Select(s => s.CashId).FirstOrDefault(),// Каса по умолчанию
+                    CurrId = DBHelper.Currency.Where(w => w.Def == 1).Select(s => s.CurrId).FirstOrDefault(), //Валюта по умолчанию
+                    OnValue = 1,//Курс валюти
+                    MPersonId = DBHelper.CurrentUser.KaId,
+                    DocType = 3,
+                    UpdatedBy = DBHelper.CurrentUser.UserId,
+                    EntId = DBHelper.Enterprise.KaId,
+                    OperId = oper_id
                 });
             }
             else
             {
                 try
                 {
-                    _pd = _db.Database.SqlQuery<PayDoc>("SELECT * from PayDoc WITH (UPDLOCK, NOWAIT) where PayDocId = {0}", _PayDocId).FirstOrDefault();
-                    _db.Entry<PayDoc>(_pd).State = System.Data.Entity.EntityState.Modified;
+                    _pd_to = _db.Database.SqlQuery<PayDoc>("SELECT * from PayDoc WITH (UPDLOCK, NOWAIT) where PayDocId = {0}", _PayDocId).FirstOrDefault();
+                    _db.Entry<PayDoc>(_pd_to).State = System.Data.Entity.EntityState.Modified;
+
+                    _pd_from = _db.Database.SqlQuery<PayDoc>("SELECT * from PayDoc WITH (UPDLOCK, NOWAIT) where OperId = {0} and DocType = -3 ", _pd_to.OperId).FirstOrDefault();
+                    _db.Entry<PayDoc>(_pd_from).State = System.Data.Entity.EntityState.Modified;
+
                 }
                 catch
                 {
@@ -75,32 +107,39 @@ namespace SP_Sklad.FinanseForm
                 }
 
             }
-            if (_pd != null)
+
+            if (_pd_from != null)
             {
-                 _pd.UpdatedBy = DBHelper.CurrentUser.UserId;
+                _pd_from.UpdatedBy = DBHelper.CurrentUser.UserId;
 
-                if (_pd.Total < 0)
-                {
-                    SumEdit.Value = _pd.Total * -1;
-                    SumTypeEdit.SelectedIndex = 1;
-                }
-                else
-                {
-                    SumEdit.Value = _pd.Total;
-                }
+                SumEdit.Value = _pd_from.Total;
 
-                PayDocBS.DataSource = _pd;
+                PayDocFromBS.DataSource = _pd_from;
             }
 
-            
+            if (_pd_to != null)
+            {
+                _pd_to.UpdatedBy = DBHelper.CurrentUser.UserId;
+                PayDocToBS.DataSource = _pd_to;
+            }
+
+
         }
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            if (SumTypeEdit.SelectedIndex == 0) _pd.Total = SumEdit.Value;
-            else _pd.Total = SumEdit.Value * -1;
+            _pd_from.Total = SumEdit.Value;
+            _pd_to.Total = SumEdit.Value;
+
+            _pd_to.Checked = _pd_from.Checked;
+            _pd_to.DocNum = _pd_from.DocNum;
+            _pd_to.OnDate = _pd_from.OnDate;
+            _pd_to.MPersonId = _pd_from.MPersonId;
+            _pd_to.Reason = _pd_from.Reason;
+            _pd_to.Notes = _pd_from.Notes;
 
             _db.SaveChanges();
+
             current_transaction.Commit();
         }
 
@@ -117,40 +156,16 @@ namespace SP_Sklad.FinanseForm
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            OnDateDBEdit.DateTime = DBHelper.ServerDateTime();
+           
         }
 
-        private void PTypeComboBox_EditValueChanged(object sender, EventArgs e)
-        {
-            if (PTypeComboBox.EditValue == DBNull.Value )
-            {
-                return;
-            }
-
-            labelControl7.Visible = false;
-            CashEditComboBox.Visible = false;
-            labelControl4.Visible = false;
-            AccountEdit.Visible = false;
-
-            if ((int)PTypeComboBox.EditValue == 1)
-            {
-                labelControl7.Visible = true;
-                CashEditComboBox.Visible = true;
-                _pd.AccId = null;
-            }
-
-            if ((int)PTypeComboBox.EditValue == 2)
-            {
-                labelControl4.Visible = true;
-                AccountEdit.Visible = true;
-                _pd.CashId = null;
-            }
-            GetOk();
-        }
-
+ 
         bool GetOk()
         {
-            bool recult = (NumEdit.Text.Any() && PTypeComboBox.EditValue != null && (CashEditComboBox.EditValue != null || AccountEdit.Text.Any()) && SumEdit.Value > 0);
+            bool source_from = PTypeFromEdit.EditValue != null && PTypeFromEdit.EditValue != DBNull.Value && (((int)PTypeFromEdit.EditValue == 1 && CashFromEdit.EditValue != DBNull.Value) || ((int)PTypeFromEdit.EditValue == 2 && AccountFromEdit.EditValue != DBNull.Value));
+            bool source_to = PTypeToEdit.EditValue != null && PTypeToEdit.EditValue != DBNull.Value && (((int)PTypeToEdit.EditValue == 1 && CashToEdit.EditValue != DBNull.Value) || ((int)PTypeToEdit.EditValue == 2 && AccountToEdit.EditValue != DBNull.Value));
+
+            bool recult = (NumEdit.Text.Any() &&  source_from && source_to && SumEdit.Value > 0);
 
             OkButton.Enabled = recult;
 
@@ -167,11 +182,86 @@ namespace SP_Sklad.FinanseForm
             PersonEdit.EditValue = IHelper.ShowDirectList(PersonEdit.EditValue, 3);
         }
 
-        private void CashEditComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+
+        private void CashFromEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             if (e.Button.Index == 1)
             {
-                CashEditComboBox.EditValue = IHelper.ShowDirectList(CashEditComboBox.EditValue, 4);
+                CashFromEdit.EditValue = IHelper.ShowDirectList(CashFromEdit.EditValue, 4);
+            }
+        }
+
+        private void PTypeFromEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            if (PTypeFromEdit.EditValue == DBNull.Value)
+            {
+                return;
+            }
+
+            labelControl13.Visible = false;
+            CashFromEdit.Visible = false;
+            labelControl12.Visible = false;
+            AccountFromEdit.Visible = false;
+
+            if ((int)PTypeFromEdit.EditValue == 1)
+            {
+                labelControl13.Visible = true;
+                CashFromEdit.Visible = true;
+                _pd_from.AccId = null;
+            }
+
+            if ((int)PTypeFromEdit.EditValue == 2)
+            {
+                labelControl12.Visible = true;
+                AccountFromEdit.Visible = true;
+                _pd_from.CashId = null;
+            }
+
+            GetOk();
+        }
+
+        private void PTypeToEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            if (PTypeToEdit.EditValue == DBNull.Value)
+            {
+                return;
+            }
+
+            labelControl14.Visible = false;
+            CashToEdit.Visible = false;
+            labelControl15.Visible = false;
+            AccountToEdit.Visible = false;
+
+            if ((int)PTypeToEdit.EditValue == 1)
+            {
+                labelControl14.Visible = true;
+                CashToEdit.Visible = true;
+                _pd_to.AccId = null;
+            }
+
+            if ((int)PTypeToEdit.EditValue == 2)
+            {
+                labelControl15.Visible = true;
+                AccountToEdit.Visible = true;
+                _pd_to.CashId = null;
+            }
+
+            GetOk();
+        }
+
+        private void OnDateDBEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                OnDateDBEdit.DateTime = DBHelper.ServerDateTime();
+            }
+        }
+
+        private void CashToEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                CashToEdit.EditValue = IHelper.ShowDirectList(CashToEdit.EditValue, 4);
             }
         }
     }

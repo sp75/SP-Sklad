@@ -1380,10 +1380,9 @@
             this.OnDateEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
             this.OnDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.OnDateEdit.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
+            this.OnDateEdit.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.False;
             this.OnDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.OnDateEdit.Properties.Mask.EditMask = "g";
             this.OnDateEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.OnDateEdit.Size = new System.Drawing.Size(143, 20);
             this.OnDateEdit.TabIndex = 11;

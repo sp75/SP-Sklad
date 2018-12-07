@@ -31,19 +31,16 @@ namespace SP_Sklad.MainTabs
             InitializeComponent();
 
             wbContentTab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
-           
         }
-
 
         private void FinancesUserControl_Load(object sender, EventArgs e)
         {
-         
- if (!DesignMode)
+            if (!DesignMode)
             {
                 using (var _db = new BaseEntities())
                 {
 
-                    TurnKagentList.Properties.DataSource = DBHelper.KagentsList;// new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name })).ToList();
+                    TurnKagentList.Properties.DataSource = DBHelper.KagentsList;
                     TurnKagentList.EditValue = 0;
 
                     CurrensyList.Properties.DataSource = new List<object>() { new { Id = 0, Name = "Усі" } }.Concat(_db.Currency.Select(s => new { Id = s.CurrId, Name = s.ShortName })).ToList();
@@ -63,6 +60,9 @@ namespace SP_Sklad.MainTabs
 
                     FinancesTreeList.DataSource = _db.GetFinancesTree(DBHelper.CurrentUser.UserId).ToList();
                     FinancesTreeList.ExpandAll();
+
+                    PayDocTypeEdit.Properties.DataSource = new List<PayDocType>() { new PayDocType { Id = -1, Name = "Усі" } }.Concat(_db.PayDocType.Where(w => w.Id == 6 || w.Id == 3)).ToList();
+                    PayDocTypeEdit.EditValue = -1;
                 }
             }
             
@@ -103,7 +103,7 @@ namespace SP_Sklad.MainTabs
 
                 case 2:
                  //   MoneyMoveListBS.DataSource = null;
-                    MoneyMoveListBS.DataSource = new BaseEntities().MoneyMoveList(-1, wbStartDate.DateTime, wbEndDate.DateTime.Date.AddDays(1), (int)wbStatusList.EditValue, DBHelper.CurrentUser.KaId).ToList();
+                    MoneyMoveListBS.DataSource = new BaseEntities().MoneyMoveList((int)PayDocTypeEdit.EditValue, wbStartDate.DateTime, wbEndDate.DateTime.Date.AddDays(1), (int)wbStatusList.EditValue, DBHelper.CurrentUser.KaId).ToList();
                     RefreshBtnBar();
                     break;
                 case 3:
@@ -142,7 +142,9 @@ namespace SP_Sklad.MainTabs
                         }
                         break;
                 }
-                MoneyTurnoverBS.DataSource = new BaseEntities().MoneyTurnover(fun_id, TurnStartDate.DateTime, TurnEndDate.DateTime.Date.AddDays(1), turn_type, (int?)CurrensyList.EditValue, (int?)TurnKagentList.EditValue, DBHelper.CurrentUser.KaId).ToList();
+                MoneyTurnoverBS.DataSource = new BaseEntities()
+                    .MoneyTurnover(fun_id, TurnStartDate.DateTime, TurnEndDate.DateTime.Date.AddDays(1), turn_type, (int?)CurrensyList.EditValue, (int?)TurnKagentList.EditValue, DBHelper.CurrentUser.KaId)
+                    .ToList();
             }
         }
 
@@ -161,25 +163,17 @@ namespace SP_Sklad.MainTabs
 
         private void wbStartDate_EditValueChanged(object sender, EventArgs e)
         {
-            if (wbStartDate.ContainsFocus || wbEndDate.ContainsFocus || wbStatusList.ContainsFocus)
+            if (wbStartDate.ContainsFocus || wbEndDate.ContainsFocus || wbStatusList.ContainsFocus || PayDocTypeEdit.CanFocus)
             {
-                MoneyMoveListBS.DataSource = null;
-                MoneyMoveListBS.DataSource = new BaseEntities().MoneyMoveList(-1, wbStartDate.DateTime, wbEndDate.DateTime, (int)wbStatusList.EditValue, DBHelper.CurrentUser.KaId).ToList();
+                RefrechItemBtn.PerformClick();
             }
         }
 
         private void NewItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (focused_tree_node == null)
+            using (var frm = new frmMoneyCorrecting())
             {
-                return;
-            }
-
-            switch (focused_tree_node.GType)
-            {
-                case 2:
-                    new frmMoneyMove(6).ShowDialog();
-                    break;
+                frm.ShowDialog();
             }
 
             RefrechItemBtn.PerformClick();
@@ -220,7 +214,8 @@ namespace SP_Sklad.MainTabs
                         switch (focused_tree_node.GType)
                         {
                             case 2:
-                                db.PayDoc.Remove(db.PayDoc.Find(pd_row.PayDocId));
+                                var pd = db.PayDoc.Find(pd_row.PayDocId);
+                                db.PayDoc.Remove(pd);
                                 break;
                         }
                         db.SaveChanges();
@@ -241,17 +236,16 @@ namespace SP_Sklad.MainTabs
 
             if (dr != null)
             {
-            //    gridControl2.DataSource = _db.GetWaybillDetIn(dr.WbillId);
-         //       gridControl3.DataSource = _db.GetRelDocList(dr.DocId);
+                MoneyMoveListInfoBS.DataSource = dr;
             }
             else
             {
-            //    gridControl2.DataSource = null;
-           //     gridControl3.DataSource = null;
+                MoneyMoveListInfoBS.DataSource = null;
             }
 
             RefreshBtnBar();
         }
+
         private void RefreshBtnBar()
         {
             var dr = MoneyMoveGridView.GetFocusedRow() as MoneyMoveList_Result;
@@ -283,6 +277,13 @@ namespace SP_Sklad.MainTabs
                     {
                         var pd = db.PayDoc.Find(pd_row.PayDocId);
                         pd.Checked = pd_row.Checked == 0 ? 1 : 0;
+
+                        var pd_to = db.PayDoc.FirstOrDefault(w => w.OperId == pd.OperId);
+                        if (pd_to != null)
+                        {
+                            pd_to.Checked = pd.Checked;
+                        }
+
                         db.SaveChanges();
                     }
                     break;
@@ -314,12 +315,34 @@ namespace SP_Sklad.MainTabs
                 case 2:
                     var dr = MoneyMoveGridView.GetFocusedRow() as MoneyMoveList_Result;
                     var doc = DB.SkladBase().DocCopy(dr.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
-                    using (var wb_in = new frmMoneyMove(6, doc.out_wbill_id))
+                    if (dr.DocType == 6)
                     {
-                        wb_in.ShowDialog();
+                        using (var money_corr = new frmMoneyCorrecting(doc.out_wbill_id))
+                        {
+                            money_corr.ShowDialog();
+                        }
                     }
+
+                    if (dr.DocType == 3)
+                    {
+                        using (var money_move = new frmMoneyMove(doc.out_wbill_id))
+                        {
+                            money_move.ShowDialog();
+                        }
+                    }
+
                     break;
             }
+            RefrechItemBtn.PerformClick();
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var frm = new frmMoneyMove())
+            {
+                frm.ShowDialog();
+            }
+
             RefrechItemBtn.PerformClick();
         }
     }

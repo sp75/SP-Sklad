@@ -316,13 +316,14 @@
             this.AccountEdit.Size = new System.Drawing.Size(186, 22);
             this.AccountEdit.StyleController = this.styleController1;
             this.AccountEdit.TabIndex = 40;
+            this.AccountEdit.EditValueChanged += new System.EventHandler(this.AccountEdit_EditValueChanged);
             // 
             // labelControl18
             // 
-            this.labelControl18.Location = new System.Drawing.Point(345, 77);
+            this.labelControl18.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl18.Location = new System.Drawing.Point(340, 78);
             this.labelControl18.Name = "labelControl18";
-            this.labelControl18.Size = new System.Drawing.Size(19, 16);
-            this.labelControl18.StyleController = this.styleController1;
+            this.labelControl18.Size = new System.Drawing.Size(24, 16);
             this.labelControl18.TabIndex = 39;
             this.labelControl18.Text = "р/р";
             // 
@@ -361,6 +362,7 @@
             this.CashEditComboBox.StyleController = this.styleController1;
             this.CashEditComboBox.TabIndex = 25;
             this.CashEditComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.CashEditComboBox_ButtonClick);
+            this.CashEditComboBox.EditValueChanged += new System.EventHandler(this.CashEditComboBox_EditValueChanged);
             // 
             // simpleButton6
             // 
@@ -375,10 +377,10 @@
             // 
             // labelControl7
             // 
-            this.labelControl7.Location = new System.Drawing.Point(332, 77);
+            this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl7.Location = new System.Drawing.Point(328, 78);
             this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(32, 16);
-            this.labelControl7.StyleController = this.styleController1;
+            this.labelControl7.Size = new System.Drawing.Size(36, 16);
             this.labelControl7.TabIndex = 20;
             this.labelControl7.Text = "Каса:";
             // 
