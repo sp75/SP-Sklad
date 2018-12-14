@@ -94,6 +94,7 @@ namespace SP_Sklad.MainTabs
         private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var _db = DB.SkladBase();
+            int top_row;
 
             switch (focused_tree_node.GType)
             {
@@ -142,7 +143,7 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 2:
-                    int top_row = MatGridView.TopRowIndex;
+                    top_row = MatGridView.TopRowIndex;
            
                     MatListDS.DataSource = _db.GetMatList(focused_tree_node.Id == 6 ? -1 : focused_tree_node.GrpId, 0, _mat_archived, showChildNodeBtn.Down ? 1 : 0);
                     MatGridView.TopRowIndex = top_row;
@@ -211,35 +212,20 @@ namespace SP_Sklad.MainTabs
                         //      case 3: cxGridLevel6->GridView = CurrencyGrid; break;
 
                         case 53:
-                            MatRecipeDS.DataSource = _db.MatRecipe.Where(w => w.RType == 1).Select(s => new
-                            {
-                                s.RecId,
-                                MatName = s.Materials.Name,
-                                s.OnDate,
-                                s.Amount,
-                                s.Materials.Measures.ShortName,
-                                s.Name,
-                                GrpName = s.Materials.MatGroup.Name,
-                                s.Out
-                            }).ToList();
+                            top_row = MatRecipeGridView.TopRowIndex;
+                            MatRecipeDS.DataSource = _db.v_MatRecipe.Where(w => w.RType == 1).ToList();
+                            MatRecipeGridView.TopRowIndex = top_row;
+                     //       MatRecipeGridView.ExpandAllGroups();
 
-                            MatRecipeGridView.ExpandAllGroups();
                             extDirTabControl.SelectedTabPageIndex = 0;
                             break;
 
                         case 42:
-                            MatRecipeDS.DataSource = _db.MatRecipe.Where(w => w.RType == 2).Select(s => new
-                            {
-                                s.RecId,
-                                MatName = s.Materials.Name,
-                                s.OnDate,
-                                s.Amount,
-                                s.Materials.Measures.ShortName,
-                                s.Name,
-                                GrpName = s.Materials.MatGroup.Name
-                            }).ToList();
+                            top_row = MatRecipeGridView.TopRowIndex;
+                            MatRecipeDS.DataSource = _db.v_MatRecipe.Where(w => w.RType == 2).ToList();
+                            MatRecipeGridView.TopRowIndex = top_row;
+                    //        MatRecipeGridView.ExpandAllGroups();
 
-                            MatRecipeGridView.ExpandAllGroups();
                             extDirTabControl.SelectedTabPageIndex = 0;
                             break;
 
@@ -287,16 +273,26 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType)
             {
                 case 1:
-                    result = new frmKAgentEdit(null, focused_kagent.KaId).ShowDialog();
+                    if (focused_kagent != null)
+                    {
+                        result = new frmKAgentEdit(null, focused_kagent.KaId).ShowDialog();
+                    }
                     break;
 
                 case 2:
                     var r = MatGridView.GetFocusedRow() as GetMatList_Result;
-                    result = new frmMaterialEdit(r.MatId).ShowDialog();
+                    if (r != null)
+                    {
+                        result = new frmMaterialEdit(r.MatId).ShowDialog();
+                    }
                     break;
 
-                case 3: var svc_row = ServicesGridView.GetFocusedRow() as v_Services;
-                    result = new frmServicesEdit(svc_row.SvcId).ShowDialog();
+                case 3:
+                    var svc_row = ServicesGridView.GetFocusedRow() as v_Services;
+                    if (svc_row != null)
+                    {
+                        result = new frmServicesEdit(svc_row.SvcId).ShowDialog();
+                    }
                     break;
 
                 case 4: switch (focused_tree_node.Id)
@@ -343,13 +339,19 @@ namespace SP_Sklad.MainTabs
                             break;
 
                         case 42:
-                            dynamic r_item = MatRecipeGridView.GetFocusedRow();
-                            result = new frmMatRecipe(2, r_item.RecId).ShowDialog();
+                            if (MatRecipeGridView.FocusedRowHandle >= 0)
+                            {
+                                dynamic ob_item = MatRecipeGridView.GetFocusedRow();
+                                result = new frmMatRecipe(2, ob_item.RecId).ShowDialog();
+                            }
                             break;
 
                         case 53:
-                            dynamic ob_item = MatRecipeGridView.GetFocusedRow();
-                            result = new frmMatRecipe(1, ob_item.RecId).ShowDialog();
+                            if (MatRecipeGridView.FocusedRowHandle >= 0)
+                            {
+                                dynamic r_item  = MatRecipeGridView.GetFocusedRow();
+                                result = new frmMatRecipe(1, r_item.RecId).ShowDialog();
+                            }
                             break;
 
                         case 112:

@@ -272,14 +272,14 @@ namespace SP_Sklad.EditForm
         {
             if (_mr.RType == 1)
             {
-                Text = "Властивості рецепту: " + MatRecLookUpEdit.Text;
+         //       Text = "Властивості рецепту: " + MatRecLookUpEdit.Text;
                 labelControl11.Visible = false;
                 calcEdit1.Visible = false;
                 gridColumn1.Visible = false;
             }
             if (_mr.RType == 2)
             {
-                Text = "Властивості обвалки: " + MatRecLookUpEdit.Text;
+     //           Text = "Властивості обвалки: " + MatRecLookUpEdit.Text;
             }
 
             var isDoc = _db.WayBillMake.Any(a => a.RecId == _mr.RecId);
@@ -398,9 +398,37 @@ namespace SP_Sklad.EditForm
         {
             if (e.Button.Index == 1)
             {
-                var main_sum = _db.MatRecDet.Where(w => w.RecId == _mr.RecId && w.Materials.MId == w.MatRecipe.Materials.MId).ToList().Sum(s => s.Amount);
-                var ext_sum = _db.MatRecDet.Where(w => w.RecId == _mr.RecId && w.Materials.MId != w.MatRecipe.Materials.MId).ToList().Sum(s => (s.Materials.Weight ?? 0) * s.Amount);
+                var main_sum = _db.MatRecDet.Where(w => w.RecId == _mr.RecId && w.Materials.MId == w.MatRecipe.Materials.MId).ToList()
+                    .Sum(s => s.Amount);
+
+                var ext_sum = _db.MatRecDet.Where(w => w.RecId == _mr.RecId && w.Materials.MId != w.MatRecipe.Materials.MId)
+                    .Select(s => new { s.Materials.Weight, s.Amount }).ToList()
+                    .Sum(su => (su.Weight ?? 0) * su.Amount);
+
                 textEdit3.EditValue = main_sum + ext_sum;
+            }
+        }
+
+        private void MatRecLookUpEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            if (MatRecLookUpEdit.EditValue == null || MatRecLookUpEdit.EditValue == DBNull.Value)
+            {
+                MsrLabel.Text = "";
+            }
+            else
+            {
+                var r = MatRecLookUpEdit.GetSelectedDataRow() as MaterialsList;
+
+                MsrLabel.Text = r.MeasuresName;
+
+                if (_mr.RType == 1)
+                {
+                    Text = "Властивості рецепту: " + MatRecLookUpEdit.Text;
+                }
+                if (_mr.RType == 2)
+                {
+                    Text = "Властивості обвалки: " + MatRecLookUpEdit.Text;
+                }
             }
         }
 

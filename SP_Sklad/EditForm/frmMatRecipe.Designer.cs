@@ -125,6 +125,7 @@
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.TechProcLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.MsrLabel = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeBindingSource)).BeginInit();
@@ -406,6 +407,7 @@
             // 
             // groupControl2
             // 
+            this.groupControl2.Controls.Add(this.MsrLabel);
             this.groupControl2.Controls.Add(this.labelControl13);
             this.groupControl2.Controls.Add(this.calcEdit5);
             this.groupControl2.Controls.Add(this.labelControl12);
@@ -518,6 +520,7 @@
             this.MatRecLookUpEdit.Size = new System.Drawing.Size(473, 22);
             this.MatRecLookUpEdit.StyleController = this.styleController1;
             this.MatRecLookUpEdit.TabIndex = 54;
+            this.MatRecLookUpEdit.EditValueChanged += new System.EventHandler(this.MatRecLookUpEdit_EditValueChanged);
             // 
             // labelControl4
             // 
@@ -1159,6 +1162,15 @@
             this.TechProcLookUpEdit.TabIndex = 37;
             this.TechProcLookUpEdit.EditValueChanged += new System.EventHandler(this.TechProcLookUpEdit_EditValueChanged);
             // 
+            // MsrLabel
+            // 
+            this.MsrLabel.Location = new System.Drawing.Point(266, 145);
+            this.MsrLabel.Name = "MsrLabel";
+            this.MsrLabel.Size = new System.Drawing.Size(18, 16);
+            this.MsrLabel.StyleController = this.styleController1;
+            this.MsrLabel.TabIndex = 61;
+            this.MsrLabel.Text = "од.";
+            // 
             // frmMatRecipe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1331,5 +1343,6 @@
         private DevExpress.XtraEditors.LookUpEdit TechProcLookUpEdit;
         private DevExpress.XtraEditors.LabelControl labelControl13;
         private DevExpress.XtraEditors.CalcEdit calcEdit5;
+        private DevExpress.XtraEditors.LabelControl MsrLabel;
     }
 }

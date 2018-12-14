@@ -35,6 +35,9 @@
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.mainPanel = new DevExpress.XtraEditors.PanelControl();
+            this.PersonPanel = new System.Windows.Forms.Panel();
+            this.PersonLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
             this.DocTypeGroupBox2 = new DevExpress.XtraEditors.GroupControl();
             this.OutDocGroupBox = new System.Windows.Forms.Panel();
             this.checkEdit8 = new DevExpress.XtraEditors.CheckEdit();
@@ -102,14 +105,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textEdit1 = new DevExpress.XtraEditors.MemoEdit();
-            this.PersonPanel = new System.Windows.Forms.Panel();
-            this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
-            this.PersonLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).BeginInit();
             this.mainPanel.SuspendLayout();
+            this.PersonPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PersonLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DocTypeGroupBox2)).BeginInit();
             this.DocTypeGroupBox2.SuspendLayout();
             this.OutDocGroupBox.SuspendLayout();
@@ -162,8 +164,6 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            this.PersonPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PersonLookUpEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // styleController1
@@ -221,6 +221,44 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(455, 759);
             this.mainPanel.TabIndex = 31;
+            // 
+            // PersonPanel
+            // 
+            this.PersonPanel.Controls.Add(this.PersonLookUpEdit);
+            this.PersonPanel.Controls.Add(this.labelControl18);
+            this.PersonPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PersonPanel.Location = new System.Drawing.Point(2, 625);
+            this.PersonPanel.Name = "PersonPanel";
+            this.PersonPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.PersonPanel.Size = new System.Drawing.Size(451, 47);
+            this.PersonPanel.TabIndex = 44;
+            this.PersonPanel.Visible = false;
+            // 
+            // PersonLookUpEdit
+            // 
+            this.PersonLookUpEdit.Location = new System.Drawing.Point(87, 12);
+            this.PersonLookUpEdit.Name = "PersonLookUpEdit";
+            this.PersonLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.PersonLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.PersonLookUpEdit.Properties.DisplayMember = "Name";
+            this.PersonLookUpEdit.Properties.ShowFooter = false;
+            this.PersonLookUpEdit.Properties.ShowHeader = false;
+            this.PersonLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.PersonLookUpEdit.Properties.ValueMember = "KaId";
+            this.PersonLookUpEdit.Size = new System.Drawing.Size(322, 22);
+            this.PersonLookUpEdit.StyleController = this.styleController1;
+            this.PersonLookUpEdit.TabIndex = 32;
+            // 
+            // labelControl18
+            // 
+            this.labelControl18.Location = new System.Drawing.Point(10, 15);
+            this.labelControl18.Name = "labelControl18";
+            this.labelControl18.Size = new System.Drawing.Size(60, 16);
+            this.labelControl18.StyleController = this.styleController1;
+            this.labelControl18.TabIndex = 31;
+            this.labelControl18.Text = "Працівник";
             // 
             // DocTypeGroupBox2
             // 
@@ -736,6 +774,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.EndDateEdit.Properties.Mask.EditMask = "g";
             this.EndDateEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.EndDateEdit.Properties.MinValue = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.EndDateEdit.Size = new System.Drawing.Size(139, 22);
             this.EndDateEdit.StyleController = this.styleController1;
             this.EndDateEdit.TabIndex = 27;
@@ -761,6 +800,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.StartDateEdit.Properties.Mask.EditMask = "g";
             this.StartDateEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.StartDateEdit.Properties.MinValue = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.StartDateEdit.Size = new System.Drawing.Size(152, 22);
             this.StartDateEdit.StyleController = this.styleController1;
             this.StartDateEdit.TabIndex = 25;
@@ -985,6 +1025,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.OnDateDBEdit.Properties.Mask.EditMask = "g";
             this.OnDateDBEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.OnDateDBEdit.Properties.MinValue = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.OnDateDBEdit.Size = new System.Drawing.Size(152, 22);
             this.OnDateDBEdit.StyleController = this.styleController1;
             this.OnDateDBEdit.TabIndex = 9;
@@ -1031,44 +1072,6 @@
             this.textEdit1.Size = new System.Drawing.Size(356, 64);
             this.textEdit1.TabIndex = 39;
             // 
-            // PersonPanel
-            // 
-            this.PersonPanel.Controls.Add(this.PersonLookUpEdit);
-            this.PersonPanel.Controls.Add(this.labelControl18);
-            this.PersonPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PersonPanel.Location = new System.Drawing.Point(2, 625);
-            this.PersonPanel.Name = "PersonPanel";
-            this.PersonPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.PersonPanel.Size = new System.Drawing.Size(451, 47);
-            this.PersonPanel.TabIndex = 44;
-            this.PersonPanel.Visible = false;
-            // 
-            // labelControl18
-            // 
-            this.labelControl18.Location = new System.Drawing.Point(10, 15);
-            this.labelControl18.Name = "labelControl18";
-            this.labelControl18.Size = new System.Drawing.Size(60, 16);
-            this.labelControl18.StyleController = this.styleController1;
-            this.labelControl18.TabIndex = 31;
-            this.labelControl18.Text = "Працівник";
-            // 
-            // PersonLookUpEdit
-            // 
-            this.PersonLookUpEdit.Location = new System.Drawing.Point(87, 12);
-            this.PersonLookUpEdit.Name = "PersonLookUpEdit";
-            this.PersonLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.PersonLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
-            this.PersonLookUpEdit.Properties.DisplayMember = "Name";
-            this.PersonLookUpEdit.Properties.ShowFooter = false;
-            this.PersonLookUpEdit.Properties.ShowHeader = false;
-            this.PersonLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.PersonLookUpEdit.Properties.ValueMember = "KaId";
-            this.PersonLookUpEdit.Size = new System.Drawing.Size(322, 22);
-            this.PersonLookUpEdit.StyleController = this.styleController1;
-            this.PersonLookUpEdit.TabIndex = 32;
-            // 
             // frmReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1088,6 +1091,9 @@
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).EndInit();
             this.mainPanel.ResumeLayout(false);
+            this.PersonPanel.ResumeLayout(false);
+            this.PersonPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PersonLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DocTypeGroupBox2)).EndInit();
             this.DocTypeGroupBox2.ResumeLayout(false);
             this.OutDocGroupBox.ResumeLayout(false);
@@ -1155,9 +1161,6 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            this.PersonPanel.ResumeLayout(false);
-            this.PersonPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PersonLookUpEdit.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -557,7 +557,7 @@
             // 
             // OnDateDBEdit
             // 
-            this.OnDateDBEdit.EditValue = new System.DateTime(2016, 3, 3, 16, 47, 59, 0);
+            this.OnDateDBEdit.EditValue = null;
             this.OnDateDBEdit.Location = new System.Drawing.Point(324, 41);
             this.OnDateDBEdit.MenuManager = this.barManager1;
             this.OnDateDBEdit.Name = "OnDateDBEdit";
@@ -568,6 +568,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.OnDateDBEdit.Properties.Mask.EditMask = "F";
             this.OnDateDBEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.OnDateDBEdit.Properties.MinValue = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.OnDateDBEdit.Size = new System.Drawing.Size(204, 22);
             this.OnDateDBEdit.StyleController = this.styleController1;
             this.OnDateDBEdit.TabIndex = 8;
@@ -946,7 +947,7 @@
             this.xtraTabPage2.Controls.Add(this.DeboningDetGridControl);
             this.xtraTabPage2.ImageIndex = 21;
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(962, 241);
+            this.xtraTabPage2.Size = new System.Drawing.Size(962, 240);
             this.xtraTabPage2.Text = "Вихід";
             // 
             // DeboningDetGridControl
@@ -959,7 +960,7 @@
             this.DeboningDetGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemWhEdit,
             this.repositoryItemCalcEdit1});
-            this.DeboningDetGridControl.Size = new System.Drawing.Size(962, 241);
+            this.DeboningDetGridControl.Size = new System.Drawing.Size(962, 240);
             this.DeboningDetGridControl.TabIndex = 3;
             this.DeboningDetGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.DeboningDetGridView});

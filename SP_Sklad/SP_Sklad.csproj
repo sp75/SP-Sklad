@@ -626,6 +626,9 @@
     <Compile Include="SkladData\v_KAgentSaldo.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_MatRecipe.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_MatRemains.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1743,6 +1746,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Actives.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_DiscCards.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_KAgentAccount.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_MatRecipe.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PlannedCalculation.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PlannedCalculationDetDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PriceList.datasource" />

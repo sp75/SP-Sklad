@@ -325,6 +325,19 @@
       [v_KAgentSaldo].[Saldo] AS [Saldo]
       FROM [dbo].[v_KAgentSaldo] AS [v_KAgentSaldo]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_MatRecipe" EntityType="BaseModel.Store.v_MatRecipe" store:Type="Views" store:Schema="dbo" store:Name="v_MatRecipe">
+            <DefiningQuery>SELECT 
+      [v_MatRecipe].[RecId] AS [RecId], 
+      [v_MatRecipe].[MatName] AS [MatName], 
+      [v_MatRecipe].[OnDate] AS [OnDate], 
+      [v_MatRecipe].[Amount] AS [Amount], 
+      [v_MatRecipe].[ShortName] AS [ShortName], 
+      [v_MatRecipe].[Name] AS [Name], 
+      [v_MatRecipe].[GrpName] AS [GrpName], 
+      [v_MatRecipe].[Out] AS [Out], 
+      [v_MatRecipe].[RType] AS [RType]
+      FROM [dbo].[v_MatRecipe] AS [v_MatRecipe]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_MatRemains" EntityType="BaseModel.Store.v_MatRemains" store:Type="Views" store:Schema="dbo" store:Name="v_MatRemains">
             <DefiningQuery>SELECT 
       [v_MatRemains].[MatId] AS [MatId], 
@@ -2780,6 +2793,27 @@
           <Property Name="KaId" Type="int" Nullable="false" />
           <Property Name="OnDate" Type="date" />
           <Property Name="Saldo" Type="numeric" Precision="38" Scale="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'sp_base.dbo.v_MatRecipe' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="v_MatRecipe">
+          <Key>
+            <PropertyRef Name="RecId" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="ShortName" />
+            <PropertyRef Name="GrpName" />
+            <PropertyRef Name="Out" />
+          </Key>
+          <Property Name="RecId" Type="int" Nullable="false" />
+          <Property Name="MatName" Type="nvarchar" MaxLength="255" />
+          <Property Name="OnDate" Type="datetime" />
+          <Property Name="Amount" Type="numeric" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="ShortName" Type="nvarchar" Nullable="false" MaxLength="6" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="GrpName" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="Out" Type="numeric" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="RType" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'sp_base.dbo.v_MatRemains' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -8179,6 +8213,7 @@
             <Parameter Name="person_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="v_PayDoc" EntityType="BaseModel.v_PayDoc" />
+          <EntitySet Name="v_MatRecipe" EntityType="BaseModel.v_MatRecipe" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -13622,6 +13657,24 @@
           <Property Type="String" Name="KAU" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Type="Guid" Name="Id" Nullable="false" />
         </EntityType>
+        <EntityType Name="v_MatRecipe">
+          <Key>
+            <PropertyRef Name="RecId" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="ShortName" />
+            <PropertyRef Name="GrpName" />
+            <PropertyRef Name="Out" />
+          </Key>
+          <Property Type="Int32" Name="RecId" Nullable="false" />
+          <Property Type="String" Name="MatName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="OnDate" Precision="3" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="4" />
+          <Property Type="String" Name="ShortName" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="GrpName" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="Out" Nullable="false" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="RType" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -17266,6 +17319,21 @@
                 <ScalarProperty Name="OnDate" ColumnName="OnDate" />
                 <ScalarProperty Name="DocType" ColumnName="DocType" />
                 <ScalarProperty Name="PayDocId" ColumnName="PayDocId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_MatRecipe">
+            <EntityTypeMapping TypeName="BaseModel.v_MatRecipe">
+              <MappingFragment StoreEntitySet="v_MatRecipe">
+                <ScalarProperty Name="RType" ColumnName="RType" />
+                <ScalarProperty Name="Out" ColumnName="Out" />
+                <ScalarProperty Name="GrpName" ColumnName="GrpName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="RecId" ColumnName="RecId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

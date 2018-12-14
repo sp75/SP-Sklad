@@ -552,6 +552,7 @@ namespace SP_Sklad.EditForm
 
             }
 
+            DirTreeList.RefreshDataSource();
             DirTreeList.ExpandAll();
         }
 
@@ -569,6 +570,11 @@ namespace SP_Sklad.EditForm
         private void simpleButton9_Click(object sender, EventArgs e)
         {
             var f_row = MatChangeGridView.GetFocusedRow() as GetMatChange_Result;
+            if (f_row == null)
+            {
+                return;
+            }
+
             _db.MatChange.Remove(_db.MatChange.Find(f_row.MatId, f_row.ChangeId));
             _db.SaveChanges();
             GetMatChange();

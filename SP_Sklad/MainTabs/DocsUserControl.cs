@@ -402,7 +402,6 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 1:
-                    //GET_RelDocList->DataSource = WayBillListDS;
                     GetWayBillList(cur_wtype);
                     break;
 

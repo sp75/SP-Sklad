@@ -2358,6 +2358,10 @@
             this.MatRecipeGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.MatRecipeGridView});
             // 
+            // MatRecipeDS
+            // 
+            this.MatRecipeDS.DataSource = typeof(SP_Sklad.SkladData.v_MatRecipe);
+            // 
             // MatRecipeGridView
             // 
             this.MatRecipeGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);

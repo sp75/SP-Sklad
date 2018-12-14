@@ -287,6 +287,7 @@
         <EntityTypeShape EntityType="BaseModel.v_ErrorLog" Width="1.5" PointX="11.375" PointY="4" />
         <EntityTypeShape EntityType="BaseModel.KagentList" Width="1.5" PointX="2.875" PointY="7.75" />
         <EntityTypeShape EntityType="BaseModel.v_PayDoc" Width="1.5" PointX="9.25" PointY="4.5" />
+        <EntityTypeShape EntityType="BaseModel.v_MatRecipe" Width="1.5" PointX="4.3142813855382993" PointY="9.3014717145364134" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
