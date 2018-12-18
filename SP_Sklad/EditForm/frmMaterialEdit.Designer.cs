@@ -167,6 +167,8 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
             this.DisCheckBox = new DevExpress.XtraEditors.CheckEdit();
+            this.labelControl24 = new DevExpress.XtraEditors.LabelControl();
+            this.textEdit5 = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeList)).BeginInit();
@@ -243,6 +245,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DisCheckBox.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl2
@@ -377,7 +380,9 @@
             // 
             // groupControl3
             // 
+            this.groupControl3.Controls.Add(this.textEdit5);
             this.groupControl3.Controls.Add(this.CIdLookUpEdit);
+            this.groupControl3.Controls.Add(this.labelControl24);
             this.groupControl3.Controls.Add(this.labelControl10);
             this.groupControl3.Controls.Add(this.simpleButton4);
             this.groupControl3.Controls.Add(this.labelControl11);
@@ -530,7 +535,7 @@
             this.lookUpEdit4.Properties.ShowHeader = false;
             this.lookUpEdit4.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.lookUpEdit4.Properties.ValueMember = "Id";
-            this.lookUpEdit4.Size = new System.Drawing.Size(305, 22);
+            this.lookUpEdit4.Size = new System.Drawing.Size(164, 22);
             this.lookUpEdit4.StyleController = this.styleController1;
             this.lookUpEdit4.TabIndex = 40;
             // 
@@ -602,7 +607,7 @@
             this.barCodeControl1.Name = "barCodeControl1";
             this.barCodeControl1.Padding = new System.Windows.Forms.Padding(10, 2, 10, 0);
             this.barCodeControl1.ShowText = false;
-            this.barCodeControl1.Size = new System.Drawing.Size(305, 82);
+            this.barCodeControl1.Size = new System.Drawing.Size(333, 82);
             this.barCodeControl1.StyleController = this.styleController1;
             code39Generator1.WideNarrowRatio = 3F;
             this.barCodeControl1.Symbology = code39Generator1;
@@ -895,7 +900,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(12, 49);
+            this.labelControl1.Location = new System.Drawing.Point(12, 47);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(52, 16);
             this.labelControl1.StyleController = this.styleController1;
@@ -1756,6 +1761,26 @@
             this.DisCheckBox.TabIndex = 41;
             this.DisCheckBox.CheckedChanged += new System.EventHandler(this.DisCheckBox_CheckedChanged);
             // 
+            // labelControl24
+            // 
+            this.labelControl24.Location = new System.Drawing.Point(534, 108);
+            this.labelControl24.Name = "labelControl24";
+            this.labelControl24.Size = new System.Drawing.Size(62, 16);
+            this.labelControl24.StyleController = this.styleController1;
+            this.labelControl24.TabIndex = 55;
+            this.labelControl24.Text = "Інв. номер";
+            // 
+            // textEdit5
+            // 
+            this.textEdit5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textEdit5.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MaterialsBS, "InvNumber", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textEdit5.Location = new System.Drawing.Point(534, 130);
+            this.textEdit5.Name = "textEdit5";
+            this.textEdit5.Size = new System.Drawing.Size(146, 22);
+            this.textEdit5.StyleController = this.styleController1;
+            this.textEdit5.TabIndex = 56;
+            // 
             // frmMaterialEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1860,6 +1885,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).EndInit();
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DisCheckBox.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1999,6 +2025,8 @@
         private DevExpress.XtraEditors.LookUpEdit MatTypeEdit;
         private DevExpress.XtraEditors.SpinEdit spinEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl23;
+        private DevExpress.XtraEditors.TextEdit textEdit5;
+        private DevExpress.XtraEditors.LabelControl labelControl24;
 
     }
 }

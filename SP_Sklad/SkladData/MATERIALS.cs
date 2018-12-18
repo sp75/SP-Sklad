@@ -63,6 +63,8 @@ namespace SP_Sklad.SkladData
         public string CF5 { get; set; }
         public byte[] BMP { get; set; }
         public int DecPlaces { get; set; }
+        public string InvNumber { get; set; }
+        public string SerialNumber { get; set; }
     
         public virtual ICollection<CONTRDET> CONTRDET { get; set; }
         public virtual Countries Countries { get; set; }

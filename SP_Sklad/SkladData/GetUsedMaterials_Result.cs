@@ -17,5 +17,8 @@ namespace SP_Sklad.SkladData
         public string KaName { get; set; }
         public Nullable<decimal> Remain { get; set; }
         public string MsrName { get; set; }
+        public string MatName { get; set; }
+        public Nullable<decimal> Price { get; set; }
+        public string InvNumber { get; set; }
     }
 }

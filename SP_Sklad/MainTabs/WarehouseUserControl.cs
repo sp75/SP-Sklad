@@ -670,7 +670,7 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 5:
-                    gridControl1.DataSource = DB.SkladBase().GetUsedMaterials(row.MatId, OnDateEdit.DateTime.Date.AddDays(1)).ToList();
+                    gridControl1.DataSource = DB.SkladBase().GetUsedMaterials(row.MatId, OnDateEdit.DateTime.Date.AddDays(1), -1).ToList();
                     break;
 
                 case 6: // Dovgo

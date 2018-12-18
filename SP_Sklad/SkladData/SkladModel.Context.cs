@@ -2153,20 +2153,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillList_Result>("[BaseEntities].[GetWayBillList](@from_date, @to_date, @w_type, @checked, @ka_id, @show_null_balance, @wh, @person_id)", from_dateParameter, to_dateParameter, w_typeParameter, checkedParameter, ka_idParameter, show_null_balanceParameter, whParameter, person_idParameter);
         }
     
-        [EdmFunction("BaseEntities", "GetUsedMaterials")]
-        public virtual IQueryable<GetUsedMaterials_Result> GetUsedMaterials(Nullable<int> mat_id, Nullable<System.DateTime> on_date)
-        {
-            var mat_idParameter = mat_id.HasValue ?
-                new ObjectParameter("mat_id", mat_id) :
-                new ObjectParameter("mat_id", typeof(int));
-    
-            var on_dateParameter = on_date.HasValue ?
-                new ObjectParameter("on_date", on_date) :
-                new ObjectParameter("on_date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetUsedMaterials_Result>("[BaseEntities].[GetUsedMaterials](@mat_id, @on_date)", mat_idParameter, on_dateParameter);
-        }
-    
         [EdmFunction("BaseEntities", "GetWMatTurnRemain")]
         public virtual IQueryable<GetWMatTurnRemain_Result> GetWMatTurnRemain(Nullable<int> mat_id, Nullable<System.DateTime> onDate, Nullable<int> user_id)
         {
@@ -2274,6 +2260,24 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("person_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<MoneyMoveList_Result>("[BaseEntities].[MoneyMoveList](@doc_type, @from_date, @to_date, @is_checked, @person_id)", doc_typeParameter, from_dateParameter, to_dateParameter, is_checkedParameter, person_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetUsedMaterials")]
+        public virtual IQueryable<GetUsedMaterials_Result> GetUsedMaterials(Nullable<int> mat_id, Nullable<System.DateTime> on_date, Nullable<int> ka_id)
+        {
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            var on_dateParameter = on_date.HasValue ?
+                new ObjectParameter("on_date", on_date) :
+                new ObjectParameter("on_date", typeof(System.DateTime));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetUsedMaterials_Result>("[BaseEntities].[GetUsedMaterials](@mat_id, @on_date, @ka_id)", mat_idParameter, on_dateParameter, ka_idParameter);
         }
     }
 }

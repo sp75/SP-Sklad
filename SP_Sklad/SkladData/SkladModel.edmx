@@ -1732,6 +1732,8 @@
           <Property Name="CF5" Type="nvarchar" MaxLength="128" />
           <Property Name="BMP" Type="varbinary(max)" />
           <Property Name="DecPlaces" Type="int" Nullable="false" />
+          <Property Name="InvNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="SerialNumber" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="MatGroup">
           <Key>
@@ -5679,6 +5681,7 @@
         <Function Name="GetUsedMaterials" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="mat_id" Type="int" Mode="In" />
           <Parameter Name="on_date" Type="datetime" Mode="In" />
+          <Parameter Name="ka_id" Type="int" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
@@ -5686,6 +5689,9 @@
                 <Property Name="KaName" Type="nvarchar" Nullable="false" MaxLength="100" />
                 <Property Name="Remain" Type="numeric" Precision="38" Scale="2" />
                 <Property Name="MsrName" Type="nvarchar" Nullable="false" MaxLength="6" />
+                <Property Name="MatName" Type="nvarchar" MaxLength="255" />
+                <Property Name="Price" Type="numeric" Precision="38" Scale="6" />
+                <Property Name="InvNumber" Type="nvarchar" MaxLength="50" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -8132,10 +8138,6 @@
           </FunctionImport>
           <EntitySet Name="AspNetUsers" EntityType="BaseModel.AspNetUsers" />
           <EntitySet Name="KagentList" EntityType="BaseModel.KagentList" />
-          <FunctionImport Name="GetUsedMaterials" IsComposable="true" ReturnType="Collection(BaseModel.GetUsedMaterials_Result)">
-            <Parameter Name="mat_id" Mode="In" Type="Int32" />
-            <Parameter Name="on_date" Mode="In" Type="DateTime" />
-          </FunctionImport>
           <EntitySet Name="Licenses" EntityType="BaseModel.Licenses" />
           <EntitySet Name="v_PlannedCalculation" EntityType="BaseModel.v_PlannedCalculation" />
           <EntitySet Name="PlannedCalculation" EntityType="BaseModel.PlannedCalculation" />
@@ -8214,6 +8216,11 @@
           </FunctionImport>
           <EntitySet Name="v_PayDoc" EntityType="BaseModel.v_PayDoc" />
           <EntitySet Name="v_MatRecipe" EntityType="BaseModel.v_MatRecipe" />
+          <FunctionImport Name="GetUsedMaterials" IsComposable="true" ReturnType="Collection(BaseModel.GetUsedMaterials_Result)">
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
+            <Parameter Name="on_date" Mode="In" Type="DateTime" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -9262,6 +9269,8 @@
           <NavigationProperty Name="WayBillMakeProps" Relationship="BaseModel.FK_WayBillMakeProps_Materials" FromRole="Materials" ToRole="WayBillMakeProps" />
           <NavigationProperty Name="WayBillTmc" Relationship="BaseModel.FK_MoveInventories_Materials" FromRole="Materials" ToRole="WayBillTmc" />
           <Property Type="Int32" Name="DecPlaces" Nullable="false" />
+          <Property Type="String" Name="InvNumber" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SerialNumber" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_CONTRDET_REFERENCE_MATERIAL">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="0..1" />
@@ -13265,12 +13274,6 @@
           <Property Type="String" Name="AspNetUserId" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="WebUserName" MaxLength="256" FixedLength="false" Unicode="true" />
         </EntityType>
-        <ComplexType Name="GetUsedMaterials_Result">
-          <Property Type="Int32" Name="KaId" Nullable="true" />
-          <Property Type="String" Name="KaName" Nullable="false" MaxLength="100" />
-          <Property Type="Decimal" Name="Remain" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
-        </ComplexType>
         <EntityType Name="Licenses">
           <Key>
             <PropertyRef Name="Id" />
@@ -13675,6 +13678,15 @@
           <Property Type="Decimal" Name="Out" Nullable="false" Precision="15" Scale="4" />
           <Property Type="Int32" Name="RType" />
         </EntityType>
+        <ComplexType Name="GetUsedMaterials_Result">
+          <Property Type="Int32" Name="KaId" Nullable="true" />
+          <Property Type="String" Name="KaName" Nullable="false" MaxLength="100" />
+          <Property Type="Decimal" Name="Remain" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="38" Scale="6" />
+          <Property Type="String" Name="InvNumber" Nullable="true" MaxLength="50" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -14515,6 +14527,8 @@
           <EntitySetMapping Name="Materials">
             <EntityTypeMapping TypeName="BaseModel.Materials">
               <MappingFragment StoreEntitySet="Materials">
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="InvNumber" ColumnName="InvNumber" />
                 <ScalarProperty Name="DecPlaces" ColumnName="DecPlaces" />
                 <ScalarProperty Name="BMP" ColumnName="BMP" />
                 <ScalarProperty Name="CF5" ColumnName="CF5" />
@@ -17051,16 +17065,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetUsedMaterials" FunctionName="BaseModel.Store.GetUsedMaterials">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetUsedMaterials_Result">
-                <ScalarProperty Name="KaId" ColumnName="KaId" />
-                <ScalarProperty Name="KaName" ColumnName="KaName" />
-                <ScalarProperty Name="Remain" ColumnName="Remain" />
-                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="Licenses">
             <EntityTypeMapping TypeName="BaseModel.Licenses">
               <MappingFragment StoreEntitySet="Licenses">
@@ -17337,6 +17341,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetUsedMaterials" FunctionName="BaseModel.Store.GetUsedMaterials">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetUsedMaterials_Result">
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="InvNumber" ColumnName="InvNumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -1318,7 +1318,7 @@ namespace SP_Sklad.Reports
 
             if (idx == 40)
             {
-                var list = DB.SkladBase().GetUsedMaterials((int)this.Material.MatId, OnDate.Date.AddDays(1)).OrderBy(o=> o.KaName).ToList();
+                var list = DB.SkladBase().GetUsedMaterials((int)this.Material.MatId, OnDate.Date.AddDays(1), -1).OrderBy(o => o.KaName).ToList();
 
                 var k = (int)Kagent.KaId;
                 if (k > 0)

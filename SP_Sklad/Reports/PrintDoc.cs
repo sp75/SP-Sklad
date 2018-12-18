@@ -281,6 +281,21 @@ namespace SP_Sklad.Reports
 
             data_report.Add("Posvitcheny", p);
 
+            var oz = db.GetUsedMaterials(-1, dt.AddDays(1), wb.First().KaId).ToList()
+                .OrderBy(o => o.MatName)
+                .Select((s, index) => new
+            {
+                Num = index + 1,
+                s.MatName,
+                s.InvNumber,
+                s.Price,
+                s.Remain,
+                s.MsrName
+              }).ToList(); 
+
+            data_report.Add("range_oz", oz);
+
+
             var summary = wb_det.Where(w => w.PosType != 2).GroupBy(g => g.MsrName).Select(s => new
             {
                 MsrName = s.Key,
