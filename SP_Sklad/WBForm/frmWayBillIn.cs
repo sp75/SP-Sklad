@@ -389,7 +389,7 @@ namespace SP_Sklad.WBForm
 
         private void KagentComboBox_EditValueChanged(object sender, EventArgs e)
         {
-            if (!KagentComboBox.ContainsFocus) return;
+            if (!KagentComboBox.ContainsFocus || KagentComboBox.EditValue == null || KagentComboBox.EditValue == DBNull.Value) return;
 
             wb.KaId = (int?)KagentComboBox.EditValue;
             GetOk();

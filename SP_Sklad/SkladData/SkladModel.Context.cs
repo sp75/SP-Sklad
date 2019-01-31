@@ -160,9 +160,10 @@ namespace SP_Sklad.SkladData
         public DbSet<PlannedCalculation> PlannedCalculation { get; set; }
         public DbSet<PlannedCalculationDet> PlannedCalculationDet { get; set; }
         public DbSet<v_PlannedCalculationDetDet> v_PlannedCalculationDetDet { get; set; }
-        public DbSet<PayDoc> PayDoc { get; set; }
         public DbSet<v_PayDoc> v_PayDoc { get; set; }
         public DbSet<v_MatRecipe> v_MatRecipe { get; set; }
+        public DbSet<v_PosRemains> v_PosRemains { get; set; }
+        public DbSet<PayDoc> PayDoc { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)
@@ -1287,39 +1288,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<OrderedList_Result>("[BaseEntities].[OrderedList](@from_date, @to_date, @mat_id, @ka_id, @w_type, @active, @ka_grp_id)", from_dateParameter, to_dateParameter, mat_idParameter, ka_idParameter, w_typeParameter, activeParameter, ka_grp_idParameter);
         }
     
-        public virtual ObjectResult<GetPayDocList_Result> GetPayDocList(Nullable<int> doc_type, Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> ka_id, Nullable<int> @checked, Nullable<int> pay_type, Nullable<int> person_id)
-        {
-            var doc_typeParameter = doc_type.HasValue ?
-                new ObjectParameter("doc_type", doc_type) :
-                new ObjectParameter("doc_type", typeof(int));
-    
-            var from_dateParameter = from_date.HasValue ?
-                new ObjectParameter("from_date", from_date) :
-                new ObjectParameter("from_date", typeof(System.DateTime));
-    
-            var to_dateParameter = to_date.HasValue ?
-                new ObjectParameter("to_date", to_date) :
-                new ObjectParameter("to_date", typeof(System.DateTime));
-    
-            var ka_idParameter = ka_id.HasValue ?
-                new ObjectParameter("ka_id", ka_id) :
-                new ObjectParameter("ka_id", typeof(int));
-    
-            var checkedParameter = @checked.HasValue ?
-                new ObjectParameter("checked", @checked) :
-                new ObjectParameter("checked", typeof(int));
-    
-            var pay_typeParameter = pay_type.HasValue ?
-                new ObjectParameter("pay_type", pay_type) :
-                new ObjectParameter("pay_type", typeof(int));
-    
-            var person_idParameter = person_id.HasValue ?
-                new ObjectParameter("person_id", person_id) :
-                new ObjectParameter("person_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPayDocList_Result>("GetPayDocList", doc_typeParameter, from_dateParameter, to_dateParameter, ka_idParameter, checkedParameter, pay_typeParameter, person_idParameter);
-        }
-    
         public virtual ObjectResult<GetActualRemainByWh_Result> GetActualRemainByWh(Nullable<int> wid, Nullable<int> mat_id)
         {
             var widParameter = wid.HasValue ?
@@ -2185,28 +2153,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<decimal>>("[BaseEntities].[GetRecipePrice](@RecId, @PlId)", recIdParameter, plIdParameter);
         }
     
-        [EdmFunction("BaseEntities", "REP_15")]
-        public virtual IQueryable<REP_15_Result> REP_15(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> ka_id, Nullable<int> mat_id)
-        {
-            var from_dateParameter = from_date.HasValue ?
-                new ObjectParameter("from_date", from_date) :
-                new ObjectParameter("from_date", typeof(System.DateTime));
-    
-            var to_dateParameter = to_date.HasValue ?
-                new ObjectParameter("to_date", to_date) :
-                new ObjectParameter("to_date", typeof(System.DateTime));
-    
-            var ka_idParameter = ka_id.HasValue ?
-                new ObjectParameter("ka_id", ka_id) :
-                new ObjectParameter("ka_id", typeof(int));
-    
-            var mat_idParameter = mat_id.HasValue ?
-                new ObjectParameter("mat_id", mat_id) :
-                new ObjectParameter("mat_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_15_Result>("[BaseEntities].[REP_15](@from_date, @to_date, @ka_id, @mat_id)", from_dateParameter, to_dateParameter, ka_idParameter, mat_idParameter);
-        }
-    
         public virtual ObjectResult<WBListMake_Result> WBListMake(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> is_checked, string wh, Nullable<int> grp_id, Nullable<int> w_type)
         {
             var from_dateParameter = from_date.HasValue ?
@@ -2278,6 +2224,61 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("ka_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetUsedMaterials_Result>("[BaseEntities].[GetUsedMaterials](@mat_id, @on_date, @ka_id)", mat_idParameter, on_dateParameter, ka_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "REP_15")]
+        public virtual IQueryable<REP_15_Result> REP_15(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> ka_id, Nullable<int> mat_id)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_15_Result>("[BaseEntities].[REP_15](@from_date, @to_date, @ka_id, @mat_id)", from_dateParameter, to_dateParameter, ka_idParameter, mat_idParameter);
+        }
+    
+        public virtual ObjectResult<GetPayDocList_Result> GetPayDocList(Nullable<int> doc_type, Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> ka_id, Nullable<int> @checked, Nullable<int> pay_type, Nullable<int> person_id)
+        {
+            var doc_typeParameter = doc_type.HasValue ?
+                new ObjectParameter("doc_type", doc_type) :
+                new ObjectParameter("doc_type", typeof(int));
+    
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var checkedParameter = @checked.HasValue ?
+                new ObjectParameter("checked", @checked) :
+                new ObjectParameter("checked", typeof(int));
+    
+            var pay_typeParameter = pay_type.HasValue ?
+                new ObjectParameter("pay_type", pay_type) :
+                new ObjectParameter("pay_type", typeof(int));
+    
+            var person_idParameter = person_id.HasValue ?
+                new ObjectParameter("person_id", person_id) :
+                new ObjectParameter("person_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPayDocList_Result>("GetPayDocList", doc_typeParameter, from_dateParameter, to_dateParameter, ka_idParameter, checkedParameter, pay_typeParameter, person_idParameter);
         }
     }
 }

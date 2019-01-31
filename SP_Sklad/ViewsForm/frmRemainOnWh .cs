@@ -26,7 +26,7 @@ namespace SP_Sklad.ViewsForm
 
         private void frmRemainOnWh_Load(object sender, EventArgs e)
         {
-
+            OkButton.Enabled = (WhRemainGridView.RowCount > 0);
         }
 
         private void WhRemainGridView_DoubleClick(object sender, EventArgs e)

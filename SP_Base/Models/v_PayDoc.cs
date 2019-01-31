@@ -75,7 +75,7 @@ namespace SP_Base.Models
 
         public int? CashId { get; set; }
 
-        public int? OperId { get; set; }
+        public Guid? OperId { get; set; }
 
         public int? DocId { get; set; }
 

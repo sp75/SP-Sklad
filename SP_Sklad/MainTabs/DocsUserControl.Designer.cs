@@ -243,6 +243,7 @@
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.PriceListPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.PayDocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -2328,8 +2329,9 @@
             this.barButtonItem10,
             this.barButtonItem11,
             this.barButtonItem12,
-            this.barButtonItem13});
-            this.barManager1.MaxItemId = 25;
+            this.barButtonItem13,
+            this.barButtonItem14});
+            this.barManager1.MaxItemId = 26;
             // 
             // bar1
             // 
@@ -2345,7 +2347,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem14)});
             this.bar1.OptionsBar.DrawBorder = false;
             this.bar1.OptionsBar.UseWholeRow = true;
             this.bar1.StandaloneBarDockControl = this.standaloneBarDockControl1;
@@ -2689,6 +2692,15 @@
             this.PayDocsPopupMenu.Manager = this.barManager1;
             this.PayDocsPopupMenu.Name = "PayDocsPopupMenu";
             // 
+            // barButtonItem14
+            // 
+            this.barButtonItem14.Caption = "Експорт";
+            this.barButtonItem14.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem14.Glyph")));
+            this.barButtonItem14.Id = 25;
+            this.barButtonItem14.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem14.LargeGlyph")));
+            this.barButtonItem14.Name = "barButtonItem14";
+            this.barButtonItem14.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem14_ItemClick);
+            // 
             // DocsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3024,5 +3036,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn42;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn43;
         private DevExpress.XtraBars.PopupMenu PayDocsPopupMenu;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem14;
     }
 }

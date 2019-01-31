@@ -429,7 +429,7 @@ namespace SP_Sklad.Reports
                 int grp = Convert.ToInt32(MatGroup.GrpId);
                 string wid = Convert.ToString(Warehouse.WId);
 
-                var mat = db.REP_10(StartDate, EndDate, grp, wid, 0, _user_id).ToList();
+                var mat = db.REP_10(StartDate, EndDate, grp, wid, 0, _user_id).OrderBy(o => o.MatId).ToList();
 
                 if (!mat.Any())
                 {

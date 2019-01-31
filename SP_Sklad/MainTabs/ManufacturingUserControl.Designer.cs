@@ -1214,7 +1214,7 @@
             // gridColumn39
             // 
             this.gridColumn39.Caption = "Вихід (Нетто)";
-            this.gridColumn39.DisplayFormat.FormatString = "0.00";
+            this.gridColumn39.DisplayFormat.FormatString = "0.0000";
             this.gridColumn39.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn39.FieldName = "AmountOut";
             this.gridColumn39.Name = "gridColumn39";
@@ -1239,7 +1239,7 @@
             this.gridColumn40.Name = "gridColumn40";
             this.gridColumn40.Visible = true;
             this.gridColumn40.VisibleIndex = 13;
-            this.gridColumn40.Width = 43;
+            this.gridColumn40.Width = 34;
             // 
             // gridColumn41
             // 
@@ -1250,18 +1250,18 @@
             this.gridColumn41.Name = "gridColumn41";
             this.gridColumn41.Visible = true;
             this.gridColumn41.VisibleIndex = 14;
-            this.gridColumn41.Width = 86;
+            this.gridColumn41.Width = 74;
             // 
             // gridColumn65
             // 
             this.gridColumn65.Caption = "Відгружено";
-            this.gridColumn65.DisplayFormat.FormatString = "0.00";
+            this.gridColumn65.DisplayFormat.FormatString = "0.0000";
             this.gridColumn65.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn65.FieldName = "ShippedAmount";
             this.gridColumn65.Name = "gridColumn65";
             this.gridColumn65.Visible = true;
             this.gridColumn65.VisibleIndex = 11;
-            this.gridColumn65.Width = 56;
+            this.gridColumn65.Width = 91;
             // 
             // gridColumn127
             // 
@@ -1270,7 +1270,7 @@
             this.gridColumn127.Name = "gridColumn127";
             this.gridColumn127.Visible = true;
             this.gridColumn127.VisibleIndex = 12;
-            this.gridColumn127.Width = 78;
+            this.gridColumn127.Width = 64;
             // 
             // panelControl2
             // 

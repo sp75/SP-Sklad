@@ -1102,5 +1102,22 @@ namespace SP_Sklad.MainTabs
 
             barButtonItem11.Enabled = wb_focused_row.WType == 6;
         }
+
+        private void barButtonItem14_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            switch (focused_tree_node.GType)
+            {
+                case 1:
+                    IHelper.ExportToXlsx(WBGridControl);
+                    break;
+
+                case 4:
+                    IHelper.ExportToXlsx(PDgridControl);
+                    break;
+                case 5:
+                    IHelper.ExportToXlsx(PriceListGridControl);
+                    break;
+            }
+        }
     }
 }

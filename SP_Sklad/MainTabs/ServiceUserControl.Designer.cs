@@ -181,6 +181,11 @@
             this.CommonParamsBS = new System.Windows.Forms.BindingSource(this.components);
             this.AttLabel = new DevExpress.XtraEditors.LabelControl();
             this.PatchEdit = new DevExpress.XtraEditors.ButtonEdit();
+            this.xtraTabPage14 = new DevExpress.XtraTab.XtraTabPage();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.delTurnDate = new DevExpress.XtraEditors.DateEdit();
             this.OperLogPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.SessionPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
@@ -256,6 +261,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.EndPeriodDateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CommonParamsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PatchEdit.Properties)).BeginInit();
+            this.xtraTabPage14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.delTurnDate.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.delTurnDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OperLogPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SessionPopupMenu)).BeginInit();
             this.SuspendLayout();
@@ -1749,7 +1757,8 @@
             this.xtraTabControl1.TabIndex = 28;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage8,
-            this.xtraTabPage9});
+            this.xtraTabPage9,
+            this.xtraTabPage14});
             // 
             // xtraTabPage8
             // 
@@ -1906,6 +1915,62 @@
             this.PatchEdit.TabIndex = 26;
             this.PatchEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.PatchEdit_ButtonClick);
             // 
+            // xtraTabPage14
+            // 
+            this.xtraTabPage14.Controls.Add(this.labelControl9);
+            this.xtraTabPage14.Controls.Add(this.simpleButton1);
+            this.xtraTabPage14.Controls.Add(this.labelControl8);
+            this.xtraTabPage14.Controls.Add(this.delTurnDate);
+            this.xtraTabPage14.Name = "xtraTabPage14";
+            this.xtraTabPage14.Size = new System.Drawing.Size(957, 560);
+            this.xtraTabPage14.Text = "Історія по залишкам";
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl9.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl9.Location = new System.Drawing.Point(13, 526);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(543, 16);
+            this.labelControl9.TabIndex = 36;
+            this.labelControl9.Text = "* процес видалення займає деякий час , дочекайтесь повідомлення про закінчення ро" +
+    "боти";
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.simpleButton1.Appearance.Options.UseForeColor = true;
+            this.simpleButton1.Location = new System.Drawing.Point(156, 45);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(151, 22);
+            this.simpleButton1.TabIndex = 35;
+            this.simpleButton1.Text = "Видалити по всім товарам";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Location = new System.Drawing.Point(13, 26);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(96, 13);
+            this.labelControl8.TabIndex = 34;
+            this.labelControl8.Text = "Видалити по дату:";
+            // 
+            // delTurnDate
+            // 
+            this.delTurnDate.EditValue = null;
+            this.delTurnDate.Location = new System.Drawing.Point(13, 45);
+            this.delTurnDate.MenuManager = this.barManager1;
+            this.delTurnDate.Name = "delTurnDate";
+            this.delTurnDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.delTurnDate.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.False;
+            this.delTurnDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.delTurnDate.Size = new System.Drawing.Size(137, 22);
+            this.delTurnDate.StyleController = this.styleController1;
+            this.delTurnDate.TabIndex = 33;
+            // 
             // OperLogPopupMenu
             // 
             this.OperLogPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
@@ -2021,6 +2086,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.EndPeriodDateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CommonParamsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PatchEdit.Properties)).EndInit();
+            this.xtraTabPage14.ResumeLayout(false);
+            this.xtraTabPage14.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.delTurnDate.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.delTurnDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OperLogPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SessionPopupMenu)).EndInit();
             this.ResumeLayout(false);
@@ -2184,5 +2253,10 @@
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.DateEdit EndPeriodDateEdit;
         private DevExpress.XtraEditors.SimpleButton PeriodChangeBtn;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage14;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraEditors.DateEdit delTurnDate;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
     }
 }

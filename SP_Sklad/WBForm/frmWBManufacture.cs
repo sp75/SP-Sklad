@@ -245,7 +245,8 @@ namespace SP_Sklad.WBForm
             if (r.Value != null)
             {
                 wbd_row.Rsv = (int)r.Value;
-                WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
+                //WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
+                RefreshDet();
             }
 
             GetOk();

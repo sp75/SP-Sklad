@@ -200,6 +200,7 @@
             this.gridColumn55 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn56 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage12 = new DevExpress.XtraTab.XtraTabPage();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.chartControl1 = new DevExpress.XtraCharts.ChartControl();
             this.REP_15BS = new System.Windows.Forms.BindingSource(this.components);
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
@@ -2211,11 +2212,23 @@
             // 
             // xtraTabPage12
             // 
+            this.xtraTabPage12.Controls.Add(this.simpleButton1);
             this.xtraTabPage12.Controls.Add(this.chartControl1);
             this.xtraTabPage12.ImageIndex = 20;
             this.xtraTabPage12.Name = "xtraTabPage12";
             this.xtraTabPage12.Size = new System.Drawing.Size(1161, 251);
             this.xtraTabPage12.Text = "Динаміка продажу";
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
+            this.simpleButton1.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton1.Location = new System.Drawing.Point(1111, 205);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(38, 35);
+            this.simpleButton1.TabIndex = 2;
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // chartControl1
             // 
@@ -2232,12 +2245,14 @@
             this.chartControl1.Location = new System.Drawing.Point(0, 0);
             this.chartControl1.Name = "chartControl1";
             series1.ArgumentDataMember = "OnDate";
-            series1.Name = "Відгрузка";
+            series1.LegendText = "Відгрузка";
+            series1.Name = "OutLine";
             series1.ValueDataMembersSerializable = "AmountOut";
             stackedBarSeriesView1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
             series1.View = stackedBarSeriesView1;
             series2.ArgumentDataMember = "OnDate";
-            series2.Name = "Повернення";
+            series2.LegendText = "Повернення";
+            series2.Name = "ReturnLine";
             series2.ValueDataMembersSerializable = "ReturnAmount";
             stackedBarSeriesView2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             series2.View = stackedBarSeriesView2;
@@ -3486,5 +3501,6 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage12;
         private DevExpress.XtraCharts.ChartControl chartControl1;
         private System.Windows.Forms.BindingSource REP_15BS;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }

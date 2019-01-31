@@ -26,6 +26,8 @@ namespace SP_Sklad.MainTabs
         private void ServiceUserControl_Load(object sender, EventArgs e)
         {
             mainContentTab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
+            delTurnDate.DateTime = DateTime.Now;
+
 
             if (!DesignMode)
             {
@@ -393,6 +395,37 @@ namespace SP_Sklad.MainTabs
                     c.EndCalcPeriod = EndPeriodDateEdit.DateTime;
                     db.SaveChanges();
                 }
+            }
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Ви дійсно бажаєте видалити історію залишків по всім товарам ?", "Історія залишків буде видалена по " + delTurnDate.DateTime.Date+" включно !", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                var dt = delTurnDate.DateTime.Date;
+                using (var db = DB.SkladBase())
+                {
+                    foreach (var item in db.Materials.ToList())
+                    {
+                        var min_date_post = db.v_PosRemains.Where(w => w.MatId == item.MatId).Select(s=> s.OnDate).ToList();
+                        if (min_date_post.Count > 0 && min_date_post.Min() < delTurnDate.DateTime.Date)
+                        {
+                            dt = min_date_post.Min().Date.AddDays(-1);
+                        }
+
+                        var pos = db.Database.ExecuteSqlCommand(@"
+                         delete from [PosRemains]
+                         where PosId IN (
+                           SELECT PosId 
+                           FROM [PosRemains]
+                           where Remain = 0 and Ordered=0 and  MatId = {0} and OnDate <= {1}
+                           group by PosId)", item.MatId, dt);
+                    }
+
+                    db.SaveChanges();
+                }
+
+                MessageBox.Show("Історія по залишкам очищена !");
             }
         }
 

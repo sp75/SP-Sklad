@@ -602,7 +602,6 @@ namespace SP_Sklad.WBForm
         {
             _db.SaveChanges();
             _db.DeleteWhere<WaybillDet>(w => w.WbillId == _wbill_id && w.Checked != 1);
-
             RefreshDet();
         }
 

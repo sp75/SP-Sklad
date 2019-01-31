@@ -19,5 +19,6 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> Income { get; set; }
         public Nullable<decimal> ReturnSumm { get; set; }
         public Nullable<decimal> ReturnAmount { get; set; }
+        public Nullable<decimal> OAOnDate { get; set; }
     }
 }

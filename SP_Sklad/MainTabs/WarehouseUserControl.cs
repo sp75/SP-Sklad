@@ -16,6 +16,8 @@ using SP_Sklad.Properties;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using SP_Sklad.EditForm;
 using SP_Sklad.Reports;
+using DevExpress.XtraCharts;
+using DevExpress.XtraCharts.Designer;
 
 namespace SP_Sklad.MainTabs
 {
@@ -674,10 +676,25 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 6: // Dovgo
-                    REP_15BS.DataSource = DB.SkladBase().REP_15(DateTime.Now.AddDays(-90), DateTime.Now, 0, row.MatId).OrderBy(o => o.OnDate).ToList();
+                    var data_chart = DB.SkladBase().REP_15(DateTime.Now.AddDays(-90), DateTime.Now, 0, row.MatId).OrderBy(o => o.OnDate).ToList();
+                    REP_15BS.DataSource = data_chart ;
+
+               /*     if (data_chart.Count > 0)
+                    {
+                        StackedBarSeriesView myView = ((StackedBarSeriesView)chartControl1.Series["OutLine"].View);
+                        TrendLine tl = (TrendLine)myView.Indicators[0];
+                        tl.Point1.Argument = data_chart.Min(m => m.OnDate);
+                        tl.Point2.Argument = data_chart.Max(m => m.OnDate);
+                    }*/
+
+                 
+                  
                     break;
             }
         }
+
+
+
 
         private void DocsPopupMenu_Popup(object sender, EventArgs e)
         {
@@ -899,13 +916,22 @@ namespace SP_Sklad.MainTabs
             {
                 using (var db = DB.SkladBase())
                 {
+                    var dt = DateTime.Now.Date;
+
+                    var min_date_post = db.v_PosRemains.Where(w => w.MatId == focused_wh_mat.MatId).Select(s => s.OnDate).ToList();
+
+                    if (min_date_post.Count > 0 && min_date_post.Min() < dt)
+                    {
+                        dt = min_date_post.Min().Date.AddDays(-1);
+                    }
+
                     var pos = db.Database.ExecuteSqlCommand(@"
                          delete from [PosRemains]
                          where PosId IN (
                            SELECT PosId 
                            FROM [PosRemains]
-                           where Remain = 0 and Ordered=0 and  MatId = {0} 
-                           group by PosId)", focused_wh_mat.MatId);
+                           where Remain = 0 and Ordered=0 and  MatId = {0} and OnDate <= {1}
+                           group by PosId)", focused_wh_mat.MatId, dt);
 
                     db.SaveChanges();
                 }
@@ -931,6 +957,12 @@ namespace SP_Sklad.MainTabs
         {
             var row = bandedGridView1.GetFocusedRow() as PosGet_Result;
             PrintDoc.Show(row.Id.Value, row.DocType.Value, DB.SkladBase());
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            ChartDesigner designer = new ChartDesigner(chartControl1);
+            designer.ShowDialog();
         }
 
     }

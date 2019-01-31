@@ -31,7 +31,7 @@ namespace SP_Sklad.SkladData
         public int CTypeId { get; set; }
         public Nullable<int> AccId { get; set; }
         public Nullable<int> CashId { get; set; }
-        public Nullable<int> OperId { get; set; }
+        public Nullable<System.Guid> OperId { get; set; }
         public Nullable<int> DocId { get; set; }
         public Nullable<decimal> OnValue { get; set; }
         public string Schet { get; set; }
