@@ -365,7 +365,16 @@ namespace SP_Sklad.MainTabs
                                 break;
 
                             case 4:
-                                db.PayDoc.Remove(db.PayDoc.Find(pd_row.PayDocId));
+                                var _pd = db.PayDoc.Find(pd_row.PayDocId);
+
+                                if (_pd != null)
+                                {
+                                    db.PayDoc.Remove(_pd);
+                                }
+                                else
+                                {
+                                    MessageBox.Show(string.Format("Документ #{0} не знайдено", pd_row.DocNum));
+                                }
                                 break;
 
                             case 5:
@@ -476,14 +485,21 @@ namespace SP_Sklad.MainTabs
                     case 4:
                         var pd_row = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
                         var pd = _db.PayDoc.Find(pd_row.PayDocId);
-                        if (pd.OnDate > _db.CommonParams.First().EndCalcPeriod)
+                        if (pd != null)
                         {
-                            pd.Checked = pd_row.Checked == 0 ? 1 : 0;
-                            _db.SaveChanges();
+                            if (pd.OnDate > _db.CommonParams.First().EndCalcPeriod)
+                            {
+                                pd.Checked = pd_row.Checked == 0 ? 1 : 0;
+                                _db.SaveChanges();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Період вже закритий. Змініть дату документа!", "Відміна/Проведення платіжного документа", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("Період вже закритий. Змініть дату документа!", "Відміна/Проведення платіжного документа", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show(string.Format("Документ #{0} не знайдено", pd_row.DocNum));
                         }
                         break;
                 }

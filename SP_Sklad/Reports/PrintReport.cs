@@ -121,7 +121,7 @@ namespace SP_Sklad.Reports
                 int grp = Convert.ToInt32(MatGroup.GrpId);
                 string wh = Convert.ToString(Warehouse.WId);
                 int status = Convert.ToInt32(Status);
-                var mat = db.REP_2(StartDate, EndDate, grp, (int)Kagent.KaId, wh, DocStr, status, _user_id).ToList();
+                var mat = db.REP_2(StartDate, EndDate, grp, (int)Kagent.KaId, wh, DocStr, status, _user_id).OrderBy(o=> o.MatId).ToList();
 
                 if (!mat.Any())
                 {
