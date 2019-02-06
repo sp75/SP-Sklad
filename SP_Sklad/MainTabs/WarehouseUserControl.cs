@@ -458,7 +458,7 @@ namespace SP_Sklad.MainTabs
                 Name = focused_wh_mat.MatName,
                 Amount = 1,
                 Price = price != null ? (price.Price ?? 0) : 0,
-                WId = remain_in_wh.Any() ? remain_in_wh.First().WId : DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId,
+                WId = remain_in_wh.Any() ? remain_in_wh.First().WId : (DBHelper.WhList.Any(w => w.Def == 1) ? DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId : DBHelper.WhList.FirstOrDefault().WId),
                 PTypeId = price != null ? price.PType : null,
                 Discount = DB.SkladBase().GetDiscount(wb.KaId, focused_wh_mat.MatId).FirstOrDefault() ?? 0.00m
             });

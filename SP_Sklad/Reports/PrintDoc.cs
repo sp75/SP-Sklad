@@ -117,7 +117,7 @@ namespace SP_Sklad.Reports
         {
             var dataForReport = new Dictionary<string, IList>();
 
-            var wb = db.v_WaybillList.Where(w => w.Id == id).AsNoTracking().ToList();
+            var wb = db.v_WaybillList.Where(w => w.Id == id).AsNoTracking().OrderBy(o => o.Num).ToList();
             int wbill_id = wb.First().WbillId; 
 
             dataForReport.Add("WayBillList", wb);

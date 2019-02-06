@@ -280,7 +280,7 @@ namespace SP_Sklad.WBForm
             _db.UpdWaybillDetPrice(_wbill_id);
             
             int top_row = WaybillDetInGridView.TopRowIndex;
-            WaybillDetInBS.DataSource = _db.GetWaybillDetIn(_wbill_id).AsNoTracking().ToList();
+            WaybillDetInBS.DataSource = _db.GetWaybillDetIn(_wbill_id).AsNoTracking().OrderBy(o=> o.Num).ToList();
             WaybillDetInGridView.TopRowIndex = top_row;
 
             GetOk();

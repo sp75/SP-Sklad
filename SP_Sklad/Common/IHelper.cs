@@ -87,11 +87,12 @@ namespace SP_Sklad.Common
 
             if (f.ShowDialog() == DialogResult.OK)
             {
-                foreach (var item in f.uc.custom_mat_list)
+                foreach (var item in f.uc.custom_mat_list.OrderBy(o=> o.Num).ToList())
                 {
                     var wbd = db.WaybillDet.Add(new WaybillDet
                       {
                           WbillId = wb.WbillId,
+                          Num = wb.WaybillDet.Count(),
                           MatId = item.MatId,
                           WId = item.WId,
                           Amount = item.Amount,

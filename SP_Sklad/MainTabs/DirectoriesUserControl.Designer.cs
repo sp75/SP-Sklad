@@ -320,6 +320,7 @@
             this.ExplorerPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.gridColumn81 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
@@ -1154,7 +1155,8 @@
             this.gridColumn10,
             this.gridColumn11,
             this.LoginGridColumn,
-            this.gridColumn80});
+            this.gridColumn80,
+            this.gridColumn81});
             this.KaGridView.GridControl = this.KaGridControl;
             this.KaGridView.Name = "KaGridView";
             this.KaGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -1188,8 +1190,8 @@
             this.gridColumn3.FieldName = "KAU";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 4;
-            this.gridColumn3.Width = 78;
+            this.gridColumn3.VisibleIndex = 5;
+            this.gridColumn3.Width = 64;
             // 
             // gridColumn4
             // 
@@ -1198,7 +1200,7 @@
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 1;
-            this.gridColumn4.Width = 375;
+            this.gridColumn4.Width = 349;
             // 
             // KagentSaldoGridColumn
             // 
@@ -1210,8 +1212,8 @@
             this.KagentSaldoGridColumn.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Saldo", "Всього: {0:0.00}")});
             this.KagentSaldoGridColumn.Visible = true;
-            this.KagentSaldoGridColumn.VisibleIndex = 7;
-            this.KagentSaldoGridColumn.Width = 63;
+            this.KagentSaldoGridColumn.VisibleIndex = 8;
+            this.KagentSaldoGridColumn.Width = 57;
             // 
             // KagentGridColumnArchived
             // 
@@ -1234,8 +1236,8 @@
             this.gridColumn10.FieldName = "KAgentKind";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 3;
-            this.gridColumn10.Width = 161;
+            this.gridColumn10.VisibleIndex = 4;
+            this.gridColumn10.Width = 133;
             // 
             // gridColumn11
             // 
@@ -1244,7 +1246,7 @@
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 2;
-            this.gridColumn11.Width = 85;
+            this.gridColumn11.Width = 79;
             // 
             // LoginGridColumn
             // 
@@ -1252,8 +1254,8 @@
             this.LoginGridColumn.FieldName = "Login";
             this.LoginGridColumn.Name = "LoginGridColumn";
             this.LoginGridColumn.Visible = true;
-            this.LoginGridColumn.VisibleIndex = 5;
-            this.LoginGridColumn.Width = 97;
+            this.LoginGridColumn.VisibleIndex = 6;
+            this.LoginGridColumn.Width = 80;
             // 
             // gridColumn80
             // 
@@ -1261,8 +1263,8 @@
             this.gridColumn80.FieldName = "WebUserName";
             this.gridColumn80.Name = "gridColumn80";
             this.gridColumn80.Visible = true;
-            this.gridColumn80.VisibleIndex = 6;
-            this.gridColumn80.Width = 184;
+            this.gridColumn80.VisibleIndex = 7;
+            this.gridColumn80.Width = 152;
             // 
             // xtraTabControl2
             // 
@@ -3323,6 +3325,15 @@
             this.MatPopupMenu.Manager = this.barManager1;
             this.MatPopupMenu.Name = "MatPopupMenu";
             // 
+            // gridColumn81
+            // 
+            this.gridColumn81.Caption = "Категорія цін";
+            this.gridColumn81.FieldName = "PriceName";
+            this.gridColumn81.Name = "gridColumn81";
+            this.gridColumn81.Visible = true;
+            this.gridColumn81.VisibleIndex = 3;
+            this.gridColumn81.Width = 129;
+            // 
             // DirectoriesUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3770,5 +3781,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn79;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit11;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn80;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn81;
     }
 }
