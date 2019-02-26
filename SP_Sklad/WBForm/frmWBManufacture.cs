@@ -168,8 +168,22 @@ namespace SP_Sklad.WBForm
             {
                 return;
             }
-       
-            wb.WayBillMake.Amount = _db.WaybillDet.Where(w => w.WbillId == _wbill_id && w.Materials.MId == w.WaybillList.WayBillMake.MatRecipe.Materials.MId).Sum(s => s.Amount);
+          //  var measure_id = wb.WayBillMake.MatRecipe.Materials.MId;
+
+            var main_sum = _db.WaybillDet.Where(w => w.WbillId == _wbill_id && w.Materials.MId == w.WaybillList.WayBillMake.MatRecipe.Materials.MId).ToList()
+                .Sum(s => s.Amount);
+
+            var ext_sum = _db.WaybillDet.Where(w => w.WbillId == _wbill_id && w.Materials.MId != w.WaybillList.WayBillMake.MatRecipe.Materials.MId)
+                  .Select(s => new { MaterialMeasures = s.Materials.MaterialMeasures.Where(f => f.MId == s.WaybillList.WayBillMake.MatRecipe.Materials.MId), s.Amount }).ToList()
+                  .SelectMany(sm => sm.MaterialMeasures, (k, n) => new { k.Amount, MeasureAmount = n.Amount }).Sum(su => su.MeasureAmount * su.Amount);
+
+            wb.WayBillMake.Amount = main_sum + ext_sum;
+
+            if (main_sum + ext_sum == 0)
+            {
+                MessageBox.Show("Помилка в рецепті ,закладка = 0 " + wb.WayBillMake.MatRecipe.Materials.Measures.ShortName + " !");
+                return;
+            }
 
             wb.UpdatedAt = DateTime.Now;
             _db.SaveChanges();

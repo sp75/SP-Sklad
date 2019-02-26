@@ -275,6 +275,9 @@
         <AssociationConnector Association="BaseModel.FK__PAYDOC__MPERSONI__22401542" />
         <AssociationConnector Association="BaseModel.FK_PD_ACCID" />
         <AssociationConnector Association="BaseModel.FK__PAYDOC__PTYPEID__2057CCD0" />
+        <EntityTypeShape EntityType="BaseModel.MaterialMeasures" Width="1.5" PointX="8.8877618503234181" PointY="0.68478144737183189" />
+        <AssociationConnector Association="BaseModel.FK_MaterialMeasures_Materials" />
+        <AssociationConnector Association="BaseModel.FK_MaterialMeasures_Measures" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

@@ -49,6 +49,7 @@
           <EntitySet Name="Languages" EntityType="BaseModel.Store.Languages" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Licenses" EntityType="BaseModel.Store.Licenses" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MatChange" EntityType="BaseModel.Store.MatChange" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MaterialMeasures" EntityType="BaseModel.Store.MaterialMeasures" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Materials" EntityType="BaseModel.Store.Materials" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MatGroup" EntityType="BaseModel.Store.MatGroup" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MatGroupPrices" EntityType="BaseModel.Store.MatGroupPrices" store:Type="Tables" Schema="dbo" />
@@ -881,6 +882,14 @@
             <End Role="Measures" EntitySet="Measures" />
             <End Role="Materials" EntitySet="Materials" />
           </AssociationSet>
+          <AssociationSet Name="FK_MaterialMeasures_Materials" Association="BaseModel.Store.FK_MaterialMeasures_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="MaterialMeasures" EntitySet="MaterialMeasures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaterialMeasures_Measures" Association="BaseModel.Store.FK_MaterialMeasures_Measures">
+            <End Role="Measures" EntitySet="Measures" />
+            <End Role="MaterialMeasures" EntitySet="MaterialMeasures" />
+          </AssociationSet>
           <AssociationSet Name="FK_MATPRICES_PPTYPEID" Association="BaseModel.Store.FK_MATPRICES_PPTYPEID">
             <End Role="PriceTypes" EntitySet="PriceTypes" />
             <End Role="MatPrices" EntitySet="MatPrices" />
@@ -1712,6 +1721,15 @@
           <Property Name="MatId" Type="int" Nullable="false" />
           <Property Name="ChangeId" Type="int" Nullable="false" />
           <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="MaterialMeasures">
+          <Key>
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="MId" />
+          </Key>
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="MId" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="numeric" Nullable="false" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="Materials">
           <Key>
@@ -4064,6 +4082,32 @@
               <PropertyRef Name="MId" />
             </Principal>
             <Dependent Role="Materials">
+              <PropertyRef Name="MId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaterialMeasures_Materials">
+          <End Role="Materials" Type="BaseModel.Store.Materials" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MaterialMeasures" Type="BaseModel.Store.MaterialMeasures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="MaterialMeasures">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaterialMeasures_Measures">
+          <End Role="Measures" Type="BaseModel.Store.Measures" Multiplicity="1" />
+          <End Role="MaterialMeasures" Type="BaseModel.Store.MaterialMeasures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Measures">
+              <PropertyRef Name="MId" />
+            </Principal>
+            <Dependent Role="MaterialMeasures">
               <PropertyRef Name="MId" />
             </Dependent>
           </ReferentialConstraint>
@@ -8268,6 +8312,15 @@
             <End Role="PayType" EntitySet="PayType" />
             <End Role="PayDoc" EntitySet="PayDoc" />
           </AssociationSet>
+          <EntitySet Name="MaterialMeasures" EntityType="BaseModel.MaterialMeasures" />
+          <AssociationSet Name="FK_MaterialMeasures_Materials" Association="BaseModel.FK_MaterialMeasures_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="MaterialMeasures" EntitySet="MaterialMeasures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaterialMeasures_Measures" Association="BaseModel.FK_MaterialMeasures_Measures">
+            <End Role="Measures" EntitySet="Measures" />
+            <End Role="MaterialMeasures" EntitySet="MaterialMeasures" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -9199,6 +9252,7 @@
           <Property Type="String" Name="Code" MaxLength="14" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK_MATERIAL_REFERENCE_MEASURES" FromRole="Measures" ToRole="Materials" />
           <NavigationProperty Name="Services" Relationship="BaseModel.FK_SVC_MID" FromRole="Measures" ToRole="Services" />
+          <NavigationProperty Name="MaterialMeasures" Relationship="BaseModel.FK_MaterialMeasures_Measures" FromRole="Measures" ToRole="MaterialMeasures" />
         </EntityType>
         <EntityType Name="DeboningDet">
           <Key>
@@ -9318,6 +9372,7 @@
           <Property Type="Int32" Name="DecPlaces" Nullable="false" />
           <Property Type="String" Name="InvNumber" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="SerialNumber" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MaterialMeasures" Relationship="BaseModel.FK_MaterialMeasures_Materials" FromRole="Materials" ToRole="MaterialMeasures" />
         </EntityType>
         <Association Name="FK_CONTRDET_REFERENCE_MATERIAL">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="0..1" />
@@ -13761,6 +13816,43 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="MaterialMeasures">
+          <Key>
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="MId" />
+          </Key>
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="Int32" Name="MId" Nullable="false" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="4" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_MaterialMeasures_Materials" FromRole="MaterialMeasures" ToRole="Materials" />
+          <NavigationProperty Name="Measures" Relationship="BaseModel.FK_MaterialMeasures_Measures" FromRole="MaterialMeasures" ToRole="Measures" />
+        </EntityType>
+        <Association Name="FK_MaterialMeasures_Materials">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.MaterialMeasures" Role="MaterialMeasures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="MaterialMeasures">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaterialMeasures_Measures">
+          <End Type="BaseModel.Measures" Role="Measures" Multiplicity="1" />
+          <End Type="BaseModel.MaterialMeasures" Role="MaterialMeasures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Measures">
+              <PropertyRef Name="MId" />
+            </Principal>
+            <Dependent Role="MaterialMeasures">
+              <PropertyRef Name="MId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -17444,6 +17536,15 @@
                 <ScalarProperty Name="OnDate" ColumnName="OnDate" />
                 <ScalarProperty Name="DocType" ColumnName="DocType" />
                 <ScalarProperty Name="PayDocId" ColumnName="PayDocId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaterialMeasures">
+            <EntityTypeMapping TypeName="BaseModel.MaterialMeasures">
+              <MappingFragment StoreEntitySet="MaterialMeasures">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="MId" ColumnName="MId" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

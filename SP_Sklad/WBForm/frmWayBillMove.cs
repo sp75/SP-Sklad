@@ -182,7 +182,8 @@ namespace SP_Sklad.WBForm
             }
 
             wb.UpdatedAt = DateTime.Now;
-            _db.SaveChanges();
+
+            _db.Save(wb.WbillId);
 
             if (TurnDocCheckBox.Checked)
             {

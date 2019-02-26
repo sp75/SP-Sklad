@@ -733,7 +733,15 @@ namespace SP_Sklad.MainTabs
 
         private void WarehouseGridView_DoubleClick(object sender, EventArgs e)
         {
-            EditItemBtn.PerformClick();
+            if (isDirectList)
+            {
+                var frm = this.Parent as frmCatalog;
+                frm.OkButton.PerformClick();
+            }
+            else
+            {
+                EditItemBtn.PerformClick();
+            }
         }
 
         private void AddItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

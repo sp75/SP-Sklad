@@ -1045,7 +1045,7 @@
             this.barButtonItem4,
             this.barButtonItem3,
             this.barButtonItem5});
-            this.barManager1.MaxItemId = 44;
+            this.barManager1.MaxItemId = 45;
             // 
             // bar1
             // 

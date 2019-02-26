@@ -47,9 +47,11 @@
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
-            this.CIdLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.textEdit5 = new DevExpress.XtraEditors.TextEdit();
             this.MaterialsBS = new System.Windows.Forms.BindingSource(this.components);
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
+            this.CIdLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl24 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
@@ -167,8 +169,15 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
             this.DisCheckBox = new DevExpress.XtraEditors.CheckEdit();
-            this.labelControl24 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit5 = new DevExpress.XtraEditors.TextEdit();
+            this.xtraTabPage9 = new DevExpress.XtraTab.XtraTabPage();
+            this.simpleButton11 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton12 = new DevExpress.XtraEditors.SimpleButton();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.MaterialMeasuresBS = new System.Windows.Forms.BindingSource(this.components);
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeList)).BeginInit();
@@ -179,9 +188,10 @@
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CIdLookUpEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaterialsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CIdLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProducerLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WeightEdit.Properties)).BeginInit();
@@ -245,7 +255,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DisCheckBox.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).BeginInit();
+            this.xtraTabPage9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaterialMeasuresBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl2
@@ -340,6 +354,7 @@
             this.ImageList.Images.SetKeyName(14, "Right.bmp");
             this.ImageList.Images.SetKeyName(15, "Right_gray.png");
             this.ImageList.Images.SetKeyName(16, "Склади.bmp");
+            this.ImageList.Images.SetKeyName(17, "CloseFolder.bmp");
             // 
             // xtraTabControl1
             // 
@@ -358,7 +373,8 @@
             this.xtraTabPage5,
             this.xtraTabPage6,
             this.xtraTabPage7,
-            this.xtraTabPage8});
+            this.xtraTabPage8,
+            this.xtraTabPage9});
             // 
             // xtraTabPage1
             // 
@@ -407,6 +423,26 @@
             this.groupControl3.Tag = "";
             this.groupControl3.Text = " Додаткова інформація про товар";
             // 
+            // textEdit5
+            // 
+            this.textEdit5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textEdit5.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MaterialsBS, "InvNumber", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textEdit5.Location = new System.Drawing.Point(534, 130);
+            this.textEdit5.Name = "textEdit5";
+            this.textEdit5.Size = new System.Drawing.Size(146, 22);
+            this.textEdit5.StyleController = this.styleController1;
+            this.textEdit5.TabIndex = 56;
+            // 
+            // MaterialsBS
+            // 
+            this.MaterialsBS.DataSource = typeof(SP_Sklad.SkladData.Materials);
+            // 
+            // styleController1
+            // 
+            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.styleController1.Appearance.Options.UseFont = true;
+            // 
             // CIdLookUpEdit
             // 
             this.CIdLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MaterialsBS, "CId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -425,14 +461,14 @@
             this.CIdLookUpEdit.StyleController = this.styleController1;
             this.CIdLookUpEdit.TabIndex = 49;
             // 
-            // MaterialsBS
+            // labelControl24
             // 
-            this.MaterialsBS.DataSource = typeof(SP_Sklad.SkladData.Materials);
-            // 
-            // styleController1
-            // 
-            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.styleController1.Appearance.Options.UseFont = true;
+            this.labelControl24.Location = new System.Drawing.Point(534, 108);
+            this.labelControl24.Name = "labelControl24";
+            this.labelControl24.Size = new System.Drawing.Size(62, 16);
+            this.labelControl24.StyleController = this.styleController1;
+            this.labelControl24.TabIndex = 55;
+            this.labelControl24.Text = "Інв. номер";
             // 
             // labelControl10
             // 
@@ -1761,25 +1797,93 @@
             this.DisCheckBox.TabIndex = 41;
             this.DisCheckBox.CheckedChanged += new System.EventHandler(this.DisCheckBox_CheckedChanged);
             // 
-            // labelControl24
+            // xtraTabPage9
             // 
-            this.labelControl24.Location = new System.Drawing.Point(534, 108);
-            this.labelControl24.Name = "labelControl24";
-            this.labelControl24.Size = new System.Drawing.Size(62, 16);
-            this.labelControl24.StyleController = this.styleController1;
-            this.labelControl24.TabIndex = 55;
-            this.labelControl24.Text = "Інв. номер";
+            this.xtraTabPage9.Controls.Add(this.simpleButton11);
+            this.xtraTabPage9.Controls.Add(this.simpleButton12);
+            this.xtraTabPage9.Controls.Add(this.gridControl1);
+            this.xtraTabPage9.Name = "xtraTabPage9";
+            this.xtraTabPage9.Size = new System.Drawing.Size(703, 516);
+            this.xtraTabPage9.Text = "Одиниці виміру";
             // 
-            // textEdit5
+            // simpleButton11
             // 
-            this.textEdit5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.simpleButton11.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton11.Image")));
+            this.simpleButton11.Location = new System.Drawing.Point(13, 18);
+            this.simpleButton11.Name = "simpleButton11";
+            this.simpleButton11.Size = new System.Drawing.Size(106, 23);
+            this.simpleButton11.TabIndex = 17;
+            this.simpleButton11.Text = "Додати...";
+            this.simpleButton11.Click += new System.EventHandler(this.simpleButton11_Click);
+            // 
+            // simpleButton12
+            // 
+            this.simpleButton12.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton12.Image")));
+            this.simpleButton12.Location = new System.Drawing.Point(125, 18);
+            this.simpleButton12.Name = "simpleButton12";
+            this.simpleButton12.Size = new System.Drawing.Size(101, 23);
+            this.simpleButton12.TabIndex = 16;
+            this.simpleButton12.Text = "Видалити";
+            this.simpleButton12.Click += new System.EventHandler(this.simpleButton12_Click);
+            // 
+            // gridControl1
+            // 
+            this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEdit5.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MaterialsBS, "InvNumber", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.textEdit5.Location = new System.Drawing.Point(534, 130);
-            this.textEdit5.Name = "textEdit5";
-            this.textEdit5.Size = new System.Drawing.Size(146, 22);
-            this.textEdit5.StyleController = this.styleController1;
-            this.textEdit5.TabIndex = 56;
+            this.gridControl1.DataSource = this.MaterialMeasuresBS;
+            this.gridControl1.Location = new System.Drawing.Point(13, 47);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.MenuManager = this.barManager1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemCalcEdit1});
+            this.gridControl1.Size = new System.Drawing.Size(677, 452);
+            this.gridControl1.TabIndex = 15;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // MaterialMeasuresBS
+            // 
+            this.MaterialMeasuresBS.DataSource = typeof(SP_Sklad.SkladData.ViewModels.MaterialMeasuresView);
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn9,
+            this.gridColumn12});
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.AllowIncrementalSearch = true;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView1_CellValueChanged);
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "Одиниця виміру";
+            this.gridColumn9.FieldName = "Name";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.OptionsColumn.AllowEdit = false;
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 0;
+            this.gridColumn9.Width = 156;
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "К-ть";
+            this.gridColumn12.ColumnEdit = this.repositoryItemCalcEdit1;
+            this.gridColumn12.FieldName = "Amount";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 1;
+            this.gridColumn12.Width = 252;
+            // 
+            // repositoryItemCalcEdit1
+            // 
+            this.repositoryItemCalcEdit1.AutoHeight = false;
+            this.repositoryItemCalcEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemCalcEdit1.Name = "repositoryItemCalcEdit1";
             // 
             // frmMaterialEdit
             // 
@@ -1813,9 +1917,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             this.groupControl3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CIdLookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaterialsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CIdLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProducerLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WeightEdit.Properties)).EndInit();
@@ -1885,7 +1990,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).EndInit();
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DisCheckBox.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).EndInit();
+            this.xtraTabPage9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaterialMeasuresBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2027,6 +2136,15 @@
         private DevExpress.XtraEditors.LabelControl labelControl23;
         private DevExpress.XtraEditors.TextEdit textEdit5;
         private DevExpress.XtraEditors.LabelControl labelControl24;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage9;
+        private DevExpress.XtraEditors.SimpleButton simpleButton11;
+        private DevExpress.XtraEditors.SimpleButton simpleButton12;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private System.Windows.Forms.BindingSource MaterialMeasuresBS;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
 
     }
 }

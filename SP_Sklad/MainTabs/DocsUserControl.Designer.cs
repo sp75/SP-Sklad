@@ -2415,7 +2415,7 @@
             // 
             // barButtonItem14
             // 
-            this.barButtonItem14.Caption = "Експорт";
+            this.barButtonItem14.Caption = "Експорт списка";
             this.barButtonItem14.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem14.Glyph")));
             this.barButtonItem14.Id = 25;
             this.barButtonItem14.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem14.LargeGlyph")));
@@ -2603,7 +2603,7 @@
             // 
             // barButtonItem13
             // 
-            this.barButtonItem13.Caption = "Експорт";
+            this.barButtonItem13.Caption = "Експорт видаткових накладних";
             this.barButtonItem13.Id = 24;
             this.barButtonItem13.ImageIndex = 16;
             this.barButtonItem13.Name = "barButtonItem13";

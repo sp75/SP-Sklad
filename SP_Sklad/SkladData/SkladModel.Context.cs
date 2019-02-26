@@ -164,6 +164,7 @@ namespace SP_Sklad.SkladData
         public DbSet<v_MatRecipe> v_MatRecipe { get; set; }
         public DbSet<v_PosRemains> v_PosRemains { get; set; }
         public DbSet<PayDoc> PayDoc { get; set; }
+        public DbSet<MaterialMeasures> MaterialMeasures { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)

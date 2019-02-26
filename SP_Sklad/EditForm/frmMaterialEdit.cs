@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using SP_Sklad.Common;
 using SP_Sklad.SkladData;
+using SP_Sklad.SkladData.ViewModels;
 
 namespace SP_Sklad.EditForm
 {
@@ -60,11 +61,13 @@ namespace SP_Sklad.EditForm
           
             TreeListBS.Add(new CatalogTreeList { Id = 0, ParentId = 255, Text = "Основна інформація", ImgIdx = 0, TabIdx = 0 });
             TreeListBS.Add(new CatalogTreeList { Id = 1, ParentId = 255, Text = "Ціноутворення", ImgIdx = 1, TabIdx = 1 });
-            TreeListBS.Add(new CatalogTreeList { Id = 2, ParentId = 255, Text = "Оподаткування", ImgIdx = 2, TabIdx = 2 });
-            TreeListBS.Add(new CatalogTreeList { Id = 3, ParentId = 255, Text = "Взаємозамінність", ImgIdx = 3, TabIdx = 3 });
-            TreeListBS.Add(new CatalogTreeList { Id = 4, ParentId = 255, Text = "Посвідчення якості", ImgIdx = 4, TabIdx = 4 });
-            TreeListBS.Add(new CatalogTreeList { Id = 5, ParentId = 255, Text = "Зображення", ImgIdx = 5, TabIdx = 5 });
-            TreeListBS.Add(new CatalogTreeList { Id = 6, ParentId = 255, Text = "Примітка", ImgIdx = 6, TabIdx = 6 });
+            TreeListBS.Add(new CatalogTreeList { Id = 2, ParentId = 255, Text = "Додаткові одиниці виміру", ImgIdx = 12, TabIdx = 8 });
+            TreeListBS.Add(new CatalogTreeList { Id = 3, ParentId = 255, Text = "Оподаткування", ImgIdx = 2, TabIdx = 2 });
+            TreeListBS.Add(new CatalogTreeList { Id = 4, ParentId = 255, Text = "Взаємозамінність", ImgIdx = 3, TabIdx = 3 });
+            TreeListBS.Add(new CatalogTreeList { Id = 5, ParentId = 255, Text = "Посвідчення якості", ImgIdx = 4, TabIdx = 4 });
+            TreeListBS.Add(new CatalogTreeList { Id = 6, ParentId = 255, Text = "Зображення", ImgIdx = 5, TabIdx = 5 });
+            TreeListBS.Add(new CatalogTreeList { Id = 7, ParentId = 255, Text = "Примітка", ImgIdx = 6, TabIdx = 6 });
+
 
 
             if (_copy_mat_id != null)
@@ -96,7 +99,7 @@ namespace SP_Sklad.EditForm
 
             if (_mat != null)
             {
-                GrpIdEdit.Properties.TreeList.DataSource = DB.SkladBase().MatGroup.Select(s => new { s.GrpId, s.PId, s.Name }).ToList();
+                GrpIdEdit.Properties.TreeList.DataSource = DB.SkladBase().MatGroup.Select(s => new { s.GrpId, s.PId, s.Name, ImageIndex = 17 }).ToList();
                 MsrComboBox.Properties.DataSource = DBHelper.MeasuresList;
                 WIdLookUpEdit.Properties.DataSource = DBHelper.WhList;
                 CIdLookUpEdit.Properties.DataSource = DBHelper.CountersList;
@@ -112,6 +115,7 @@ namespace SP_Sklad.EditForm
 
                 GetTreeMatPrices();
                 GetMatChange();
+                GetMatMeasures();
             }
 
             #region Init
@@ -614,6 +618,52 @@ namespace SP_Sklad.EditForm
                 {
                     WeightEdit.EditValue = frm.AmountEdit.Value;
                 }
+            }
+        }
+
+        private void GetMatMeasures()
+        {
+            MaterialMeasuresBS.DataSource = _db.MaterialMeasures.Where(w => w.MatId == _mat_id.Value).Select(s => new MaterialMeasuresView
+            {
+                MId = s.MId,
+                Name = s.Measures.Name,
+                Amount = s.Amount
+            }).ToList();
+        }
+
+        private void simpleButton11_Click(object sender, EventArgs e)
+        {
+             var ms =   IHelper.ShowDirectList(-1, 12);
+             if (Convert.ToInt32(ms) != -1)
+             {
+                 _db.MaterialMeasures.Add(new MaterialMeasures { MatId = _mat_id.Value, MId = Convert.ToInt32(ms), Amount = 0 });
+                 _db.SaveChanges();
+
+                 GetMatMeasures();
+             }
+        }
+
+        private void simpleButton12_Click(object sender, EventArgs e)
+        {
+            if (gridView1.DataRowCount > 0)
+            {
+                var row = gridView1.GetFocusedRow() as MaterialMeasuresView;
+                _db.DeleteWhere<MaterialMeasures>(w => w.MId == row.MId && w.MatId == _mat_id);
+
+                GetMatMeasures();
+            }
+        }
+
+        private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            var row = gridView1.GetFocusedRow() as MaterialMeasuresView;
+
+            var mm = _db.MaterialMeasures.FirstOrDefault(w => w.MId == row.MId && w.MatId == _mat_id);
+            if (mm != null)
+            {
+                mm.Amount = Convert.ToDecimal(e.Value);
+
+                _db.SaveChanges();
             }
         }
     }

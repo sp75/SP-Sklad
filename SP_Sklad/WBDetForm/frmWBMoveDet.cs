@@ -11,6 +11,7 @@ using SP_Sklad.Common;
 using SP_Sklad.EditForm;
 using SP_Sklad.SkladData;
 using EntityState = System.Data.Entity.EntityState;
+using System.Data.Entity;
 
 namespace SP_Sklad.WBDetForm
 {
@@ -41,7 +42,7 @@ namespace SP_Sklad.WBDetForm
             int wh_id = _wb.WaybillMove != null ? _wb.WaybillMove.SourceWid : 0;
 
             MatComboBox.Properties.DataSource = _db.WhMatGet(0, wh_id, _ka_id, DBHelper.ServerDateTime(), 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).ToList();
-           
+
             if (_PosId == null)
             {
                 _wbd = new WaybillDet()
@@ -51,7 +52,8 @@ namespace SP_Sklad.WBDetForm
                     OnValue = _wb.OnValue,
                     WId = _wb.WaybillMove != null ? (int?)_wb.WaybillMove.SourceWid : null,
                     Discount = 0,
-                    Nds = _wb.Nds
+                    Nds = _wb.Nds,
+                    Num = _wb.WaybillDet.Count() + 1
                 };
             }
             else
@@ -149,7 +151,7 @@ namespace SP_Sklad.WBDetForm
                 CurRemainEdit.EditValue = mat_remain.Remain;
             }
 
-            pos_in = _db.GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, _ka_id, DBHelper.CurrentUser.UserId).OrderBy(o => o.OnDate).ToList();
+            pos_in = new BaseEntities().GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, _ka_id, DBHelper.CurrentUser.UserId).AsNoTracking().OrderBy(o => o.OnDate).ToList();
 
         }
 
@@ -198,20 +200,24 @@ namespace SP_Sklad.WBDetForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            int num = _wb.WaybillDet.Count();
-            try
+        //    int num = _wb.WaybillDet.Count();
+
+            if (RSVCheckBox.Checked && !_db.WMatTurn.Any(w => w.SourceId == _wbd.PosId) && _db.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId && a.WId == _wbd.WId && a.UseReceived))
             {
-                if (RSVCheckBox.Checked && !_db.WMatTurn.Any(w => w.SourceId == _wbd.PosId) && _db.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId && a.WId == _wbd.WId && a.UseReceived))
+                var sate = _db.Entry<WaybillDet>(_wbd).State;
+
+          /*      if (sate == EntityState.Modified || sate == EntityState.Unchanged)
                 {
-                    var sate = _db.Entry<WaybillDet>(_wbd).State;
-                    if (sate == EntityState.Modified || sate == EntityState.Unchanged)
-                    {
-                        _db.WaybillDet.Remove(_wbd);
-                    }
+                    _db.WaybillDet.Remove(_wbd);
+                }*/
+
+                using (var d = new BaseEntities())
+                {
+                    d.DeleteWhere<WaybillDet>(w => w.PosId == _wbd.PosId);
 
                     foreach (var item in pos_in.Where(w => w.Amount > 0))
                     {
-                        var wbd = _db.WaybillDet.Add(new WaybillDet()
+                        var wbd = d.WaybillDet.Add(new WaybillDet()
                         {
                             WbillId = _wb.WbillId,
                             Price = item.Price,
@@ -220,13 +226,13 @@ namespace SP_Sklad.WBDetForm
                             CurrId = item.CurrId,
                             OnDate = _wb.OnDate,
                             WId = item.WId,
-                            Num = ++num,
+                            Num = _wbd.Num,
                             Amount = item.Amount.Value,
                             MatId = item.MatId,
-                        });
-                        _db.SaveChanges();
 
-                        _db.WMatTurn.Add(new WMatTurn
+                        });
+
+                        wbd.WMatTurn1.Add(new WMatTurn
                         {
                             PosId = item.PosId,
                             WId = item.WId,
@@ -234,18 +240,16 @@ namespace SP_Sklad.WBDetForm
                             OnDate = _wb.OnDate,
                             TurnType = 2,
                             Amount = Convert.ToDecimal(item.Amount),
-                            SourceId = wbd.PosId
+                            //  SourceId = wbd.PosId
                         });
-                        _db.SaveChanges();
+
+                        d.SaveChanges();
+
                     }
                 }
+            }
 
-                Close();
-            }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException exp)
-            {
-                MessageBox.Show(exp.InnerException.InnerException.Message);
-            }
+            Close();
         }
 
         private void AmountEdit_EditValueChanged(object sender, EventArgs e)
@@ -267,18 +271,6 @@ namespace SP_Sklad.WBDetForm
             {
                 _db.Entry<WaybillDet>(_wbd).Reload();
             }
-        }
-
-        private void WHComboBox_EditValueChanged(object sender, EventArgs e)
-        {
-      /*      if (!WHComboBox.ContainsFocus)
-            {
-                return;
-            }
-            _wbd.WId = (int)WHComboBox.EditValue;
-
-            GetContent();
-            GetOk();*/
         }
 
         private void simpleButton5_Click(object sender, EventArgs e)
@@ -319,8 +311,6 @@ namespace SP_Sklad.WBDetForm
                 SetAmount();
             }
         }
-
- 
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {

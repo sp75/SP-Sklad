@@ -158,7 +158,7 @@ namespace SP_Sklad.MainTabs
             }
         }
 
-        void GetWayBillList(int? wtyp)
+        public void GetWayBillList(int? wtyp)
         {
             if (wtyp == null && wbSatusList.EditValue == null || WhComboBox.EditValue == null || WHTreeList.FocusedNode == null)
             {

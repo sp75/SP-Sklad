@@ -3263,7 +3263,6 @@
         private DevExpress.XtraBars.BarButtonItem CopyItemBtn;
         private DevExpress.XtraBars.BarButtonItem EditItemBtn;
         private DevExpress.XtraBars.BarButtonItem DeleteItemBtn;
-        private DevExpress.XtraBars.BarButtonItem RefrechItemBtn;
         private DevExpress.XtraBars.BarButtonItem ExecuteItemBtn;
         private DevExpress.XtraBars.BarButtonItem PrintItemBtn;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;
@@ -3502,5 +3501,6 @@
         private DevExpress.XtraCharts.ChartControl chartControl1;
         private System.Windows.Forms.BindingSource REP_15BS;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        public DevExpress.XtraBars.BarButtonItem RefrechItemBtn;
     }
 }

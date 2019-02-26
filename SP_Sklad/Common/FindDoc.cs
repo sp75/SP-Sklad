@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DevExpress.XtraGrid;
 using DevExpress.XtraTreeList.Nodes;
 using SP_Sklad.MainTabs;
+using SP_Sklad.SkladData;
 
 namespace SP_Sklad.Common
 {
@@ -92,6 +93,7 @@ namespace SP_Sklad.Common
             _wh_user_control.wbSatusList.EditValue = -1;
 
             _wh_user_control.WHTreeList.FocusedNode = _wh_user_control.WHTreeList.FindNodeByFieldValue("Id", node_id);
+            _wh_user_control.RefrechItemBtn.PerformClick();
 
             int rowHandle = _wh_user_control.WbGridView.LocateByValue("Id", _doc_id);
             if (rowHandle != GridControl.InvalidRowHandle)

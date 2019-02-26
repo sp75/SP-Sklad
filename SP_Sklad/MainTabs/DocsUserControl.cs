@@ -912,7 +912,8 @@ namespace SP_Sklad.MainTabs
                                    PersonId = DBHelper.CurrentUser.KaId,
                                    WaybillMove = new WaybillMove { SourceWid = wid.Value },
                                    Nds = 0,
-                                   UpdatedBy = DBHelper.CurrentUser.UserId
+                                   UpdatedBy = DBHelper.CurrentUser.UserId,
+                                   EntId = DBHelper.Enterprise.KaId
                                });
 
                             db.SaveChanges();
@@ -962,7 +963,11 @@ namespace SP_Sklad.MainTabs
 
                 foreach (var item in _wbill_ids)
                 {
-                    new frmWBWriteOff(item).ShowDialog();
+                    using (var frm = new frmWBWriteOff(item))
+                    {
+                        frm.is_new_record = true;
+                        frm.ShowDialog();
+                    }
                 }
             }
         }

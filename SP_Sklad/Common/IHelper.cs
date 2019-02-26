@@ -89,6 +89,8 @@ namespace SP_Sklad.Common
             {
                 foreach (var item in f.uc.custom_mat_list.OrderBy(o=> o.Num).ToList())
                 {
+                    var price = (item.Price ?? 0);
+
                     var wbd = db.WaybillDet.Add(new WaybillDet
                       {
                           WbillId = wb.WbillId,
@@ -96,13 +98,13 @@ namespace SP_Sklad.Common
                           MatId = item.MatId,
                           WId = item.WId,
                           Amount = item.Amount,
-                          Price = item.Price,
+                          Price = price,
                           Discount = 0,
                           Nds = wb.Nds,
                           CurrId = wb.CurrId,
                           OnDate = wb.OnDate,
                           OnValue = wb.OnValue,
-                          BasePrice = item.Price + Math.Round(item.Price.Value * wb.Nds.Value / 100, 2),
+                          BasePrice = price + Math.Round(price * wb.Nds.Value / 100, 2),
                           PosKind = 0,
                           PosParent = 0,
                           DiscountKind = 0

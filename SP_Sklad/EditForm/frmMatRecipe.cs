@@ -302,6 +302,8 @@ namespace SP_Sklad.EditForm
         private void simpleButton4_Click(object sender, EventArgs e)
         {
             MatLookUpEdit.EditValue = IHelper.ShowDirectList(MatLookUpEdit.EditValue, 5);
+            _db.SaveChanges();
+            GetRecDetail();
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -398,12 +400,14 @@ namespace SP_Sklad.EditForm
         {
             if (e.Button.Index == 1)
             {
-                var main_sum = _db.MatRecDet.Where(w => w.RecId == _mr.RecId && w.Materials.MId == w.MatRecipe.Materials.MId).ToList()
+                var measure_id = _mr.Materials.MId ;
+
+                var main_sum = _db.MatRecDet.Where(w => w.RecId == _mr.RecId && w.Materials.MId == measure_id).ToList()
                     .Sum(s => s.Amount);
 
                 var ext_sum = _db.MatRecDet.Where(w => w.RecId == _mr.RecId && w.Materials.MId != w.MatRecipe.Materials.MId)
-                    .Select(s => new { s.Materials.Weight, s.Amount }).ToList()
-                    .Sum(su => (su.Weight ?? 0) * su.Amount);
+                    .Select(s => new { MaterialMeasures = s.Materials.MaterialMeasures.Where(f => f.MId == measure_id), s.Amount }).ToList()
+                    .SelectMany(sm => sm.MaterialMeasures, (k, n) => new { k.Amount, MeasureAmount = n.Amount }).Sum(su => su.MeasureAmount * su.Amount);
 
                 textEdit3.EditValue = main_sum + ext_sum;
             }
