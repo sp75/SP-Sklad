@@ -121,7 +121,7 @@
     <value>21, 21</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>79</value>
+    <value>61</value>
   </metadata>
   <metadata name="styleController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>256, 21</value>
@@ -137,7 +137,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACO
-        RAAAAk1TRnQBSQFMAgEBEgEAASgBBwEoAQcBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        RAAAAk1TRnQBSQFMAgEBEgEAATABBwEwAQcBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABUAMAAQEBAAEYBgABPP8ABgAB+AH3AfMB8gHsAdwB/AH7AfoB7gHkAckB7gHkAckB9wH1AfAB7gHk
         AckB7gHkAckB9wH1AfAB7gHkAckB7gHkAckC+wH6AfIB7AHdAfgB9wH0cgAB5wHOAcYBrQFSASkBrQFS
         ARgBrQFSASkB5wHWAc4VAAHnAdABkgHlAccBdgH2AfQB7QHiAbEBLAHiAbEBLAHtAeEBwQHiAbEBLAHi

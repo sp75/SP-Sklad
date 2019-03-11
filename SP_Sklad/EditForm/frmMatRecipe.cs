@@ -259,7 +259,7 @@ namespace SP_Sklad.EditForm
                 var rd = MatRecDetBS.DataSource as MatRecDet;
                 rd.MatId = Convert.ToInt32(MatLookUpEdit.EditValue);
                 _db.SaveChanges();
-                GetRecDetail();
+            //    GetRecDetail();
             }
         }
 

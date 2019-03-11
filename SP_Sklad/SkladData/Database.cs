@@ -76,6 +76,13 @@ namespace SP_Sklad.SkladData
             return db.SaveChanges();
         }
 
+        public static bool IsAnyChanges(this BaseEntities context)
+        {
+            context.ChangeTracker.DetectChanges();
+
+            return context.ChangeTracker.Entries().Where(e => e.State != EntityState.Unchanged).Any();
+        }
+
         public static void UndoAllChanges(this BaseEntities context)
         {
             //detect all changes (probably not required if AutoDetectChanges is set to true)

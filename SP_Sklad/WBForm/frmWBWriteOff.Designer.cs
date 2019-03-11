@@ -1158,6 +1158,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Властивості акту списання";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmWBWriteOff_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmWBWriteOff_FormClosed);
             this.Load += new System.EventHandler(this.frmWBWriteOff_Load);
             this.Shown += new System.EventHandler(this.frmWBWriteOff_Shown);

@@ -1081,6 +1081,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Властивості документу обвалка сировини";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmWBDeboning_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmWBDeboning_FormClosed);
             this.Load += new System.EventHandler(this.frmWBDeboning_Load);
             this.Shown += new System.EventHandler(this.frmWBDeboning_Shown);

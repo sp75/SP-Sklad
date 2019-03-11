@@ -18,6 +18,7 @@ using System.Data.Entity.Core.Objects;
 using SP_Sklad.Common;
 using SP_Sklad.Reports;
 using DevExpress.XtraEditors;
+using SP_Sklad.Properties;
 
 namespace SP_Sklad.WBForm
 {
@@ -385,6 +386,25 @@ namespace SP_Sklad.WBForm
         private void WhInComboBox_EditValueChanged(object sender, EventArgs e)
         {
             GetOk();
+        }
+
+        private void frmWayBillMove_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if ((is_new_record || _db.IsAnyChanges()) && OkButton.Enabled)
+            {
+                var m_recult = MessageBox.Show(Resources.save_wb, "Видаткова накладна №" + wb.Num, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+
+                if (m_recult == DialogResult.Yes)
+                {
+                    OkButton.PerformClick();
+                }
+
+                if (m_recult == DialogResult.Cancel)
+                {
+                    e.Cancel = true;
+                }
+
+            }
         }
     }
 }

@@ -946,6 +946,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Властивості накладної повернення від клієнта";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmWBReturnIn_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmWBReturnIn_FormClosed);
             this.Load += new System.EventHandler(this.frmWBReturnIn_Load);
             this.Shown += new System.EventHandler(this.frmWBReturnIn_Shown);

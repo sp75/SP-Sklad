@@ -786,6 +786,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Властивості документу на введення залишків";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmWBWriteOn_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmWBWriteOn_FormClosed);
             this.Load += new System.EventHandler(this.frmWBWriteOn_Load);
             this.Shown += new System.EventHandler(this.frmWBWriteOn_Shown);

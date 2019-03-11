@@ -195,6 +195,15 @@ namespace SP_Sklad.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Зберегти зміни в документі?.
+        /// </summary>
+        internal static string save_wb {
+            get {
+                return ResourceManager.GetString("save_wb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Банки {

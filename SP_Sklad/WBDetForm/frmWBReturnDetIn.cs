@@ -261,17 +261,19 @@ namespace SP_Sklad.WBDetForm
             var row = (GetPosOutView)MatComboBox.GetSelectedDataRow();
             int matId = row != null ? row.MatId : 0;
 
-            var frm = new frmOutMatList(_db, _start_date, _wb.OnDate, matId, _wb.KaId.Value);
-            if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            using (var frm = new frmOutMatList(_db, _start_date, _wb.OnDate, matId, _wb.KaId.Value))
             {
-                pos_out_list = frm.pos_out_list;
-                MatComboBox.Properties.DataSource = frm.pos_out_list;
-
-                if(pos_out_list != null)
+                if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    var mat_row = frm.bandedGridView1.GetFocusedRow() as GetPosOutView;
+                    pos_out_list = frm.pos_out_list;
+                    MatComboBox.Properties.DataSource = frm.pos_out_list;
 
-                    MatComboBox.EditValue = mat_row.PosId;
+                    if (pos_out_list != null)
+                    {
+                        var mat_row = frm.bandedGridView1.GetFocusedRow() as GetPosOutView;
+
+                        MatComboBox.EditValue = mat_row.PosId;
+                    }
                 }
             }
         }

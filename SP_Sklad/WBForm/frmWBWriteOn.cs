@@ -12,6 +12,7 @@ using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using SP_Sklad.Common;
+using SP_Sklad.Properties;
 using SP_Sklad.Reports;
 using SP_Sklad.SkladData;
 using SP_Sklad.WBDetForm;
@@ -355,6 +356,25 @@ order by  ma.ondate desc */
         private void WaybillDetInGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
             wbd_row = WaybillDetInGridView.GetRow(WaybillDetInGridView.FocusedRowHandle) as GetWaybillDetIn_Result;
+        }
+
+        private void frmWBWriteOn_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if ((is_new_record || _db.IsAnyChanges()) && OkButton.Enabled)
+            {
+                var m_recult = MessageBox.Show(Resources.save_wb, "Видаткова накладна №" + wb.Num, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+
+                if (m_recult == DialogResult.Yes)
+                {
+                    OkButton.PerformClick();
+                }
+
+                if (m_recult == DialogResult.Cancel)
+                {
+                    e.Cancel = true;
+                }
+
+            }
         }
 
     }

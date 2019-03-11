@@ -587,11 +587,6 @@ namespace SP_Sklad.MainTabs
             RefrechItemBtn.PerformClick();
         }
 
-        private void KaGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-            ;
-        }
-
         private void KaGridView_DoubleClick(object sender, EventArgs e)
         {
             if (isDirectList)
@@ -1065,6 +1060,25 @@ namespace SP_Sklad.MainTabs
                     IHelper.ExportToXlsx(MatGridControl);
                     break;
             }
+        }
+
+        private void KaGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
+        {
+
+            var f_row = KaGridView.GetFocusedRow() as KagentList;
+
+             KAgentInfoBS.DataSource = f_row;
+             memoEdit1.Text = f_row.Notes;
+
+             using (var db = DB.SkladBase())
+             {
+                 gridControl3.DataSource = db.KAgentPersons.Where(w => w.KAId == f_row.KaId).Join(db.Jobs,
+                                     person => person.JobType,
+                                     job => job.Id,
+                                     (person, job) => new { person.Name, person.Notes, person.Phone, person.Email, Post = person.JobType == 0 ? person.Post : job.Name }).ToList();
+
+                 gridControl1.DataSource = db.KAgentAccount.Where(w => w.KAId == f_row.KaId).Select(s => new { s.AccNum, s.Banks.MFO, BankName = s.Banks.Name, TypeName = s.AccountType.Name }).ToList();
+             }
         }
 
     }

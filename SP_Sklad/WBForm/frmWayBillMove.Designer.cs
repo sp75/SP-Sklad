@@ -914,6 +914,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Властивості накладної переміщення";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmWayBillMove_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmWayBillMove_FormClosed);
             this.Load += new System.EventHandler(this.frmWayBillMove_Load);
             this.Shown += new System.EventHandler(this.frmWayBillMove_Shown);

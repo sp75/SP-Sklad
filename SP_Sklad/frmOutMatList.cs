@@ -45,14 +45,18 @@ namespace SP_Sklad
 
         private void GetData()
         {
+            OkButton.Enabled = false;
+
             if (StartDate.DateTime.Date <= DateTime.MinValue || EndDate.DateTime <= DateTime.MinValue)
             {
                 return;
             }
 
-            pos_out_list = pos_out_list = _db.GetPosOut(StartDate.DateTime.Date, EndDate.DateTime, (int)MatComboBox.EditValue, _kaId, -1).ToList();
-           
+            pos_out_list = _db.GetPosOut(StartDate.DateTime.Date, EndDate.DateTime, (int)MatComboBox.EditValue, _kaId, -1).ToList();
+            
             GetPosOutBS.DataSource = pos_out_list;
+
+            OkButton.Enabled = pos_out_list.Count > 0;
         }
 
         private void StartDate_EditValueChanged(object sender, EventArgs e)

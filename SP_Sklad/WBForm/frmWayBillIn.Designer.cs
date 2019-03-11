@@ -922,6 +922,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Властивості прибуткової накладної";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmWayBillIn_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmWayBillIn_FormClosed);
             this.Load += new System.EventHandler(this.frmWayBillIn_Load);
             this.Shown += new System.EventHandler(this.frmWayBillIn_Shown);

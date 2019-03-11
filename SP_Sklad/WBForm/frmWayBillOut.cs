@@ -19,6 +19,7 @@ using SP_Sklad.Common;
 using SP_Sklad.EditForm;
 using SP_Sklad.Reports;
 using SP_Sklad.ViewsForm;
+using SP_Sklad.Properties;
 
 namespace SP_Sklad.WBForm
 {
@@ -468,14 +469,7 @@ namespace SP_Sklad.WBForm
         {
             wb.Kontragent = _db.Kagent.Find(wb.KaId);
 
-            if (wb.WType == -16)
-            {
-                IHelper.ShowMatList(_db, wb);
-            }
-            else
-            {
-                IHelper.ShowMatListByWH(_db, wb);
-            }
+            IHelper.ShowMatListByWH(_db, wb);
 
             if (MessageBox.Show("Зарезервувати товар ? ", "Резервування", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
@@ -674,6 +668,25 @@ namespace SP_Sklad.WBForm
             }
             _db.SaveChanges();
             RefreshDet();
+        }
+
+        private void frmWayBillOut_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if ((is_new_record || _db.IsAnyChanges()) && OkButton.Enabled)
+            {
+                var m_recult = MessageBox.Show(Resources.save_wb, "Видаткова накладна №"+wb.Num, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+            
+                if (m_recult == DialogResult.Yes)
+                {
+                    OkButton.PerformClick();
+                }
+
+                if (m_recult == DialogResult.Cancel)
+                {
+                    e.Cancel = true;
+                }
+
+            }
         }
     }
 }
