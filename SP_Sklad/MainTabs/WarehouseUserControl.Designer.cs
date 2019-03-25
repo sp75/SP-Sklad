@@ -2036,6 +2036,7 @@
             this.MatListGridView.GridControl = this.MatListGridControl;
             this.MatListGridView.Name = "MatListGridView";
             this.MatListGridView.OptionsView.ShowGroupPanel = false;
+            this.MatListGridView.CellValueChanging += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.MatListGridView_CellValueChanging);
             // 
             // gridColumn46
             // 

@@ -33,6 +33,7 @@ namespace SP_Sklad.SkladData
         public int MatId { get; set; }
         public Nullable<int> RType { get; set; }
         public decimal Out { get; set; }
+        public bool Archived { get; set; }
     
         public virtual ICollection<WayBillMake> WayBillMake { get; set; }
         public virtual Materials Materials { get; set; }

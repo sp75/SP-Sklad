@@ -101,6 +101,8 @@ namespace SP_Sklad.MainTabs
                 {
                     GetTree(1);
                 }
+
+               
             }
 
             whContentTab.Visible = true;
@@ -671,6 +673,10 @@ namespace SP_Sklad.MainTabs
                     MatChangeGridControl.DataSource = DB.SkladBase().GetMatChange(row.MatId).ToList();
                     break;
 
+                case 4:
+                    gridColumn49.ColumnEdit.ReadOnly = !(new UserSettingsRepository(DBHelper.CurrentUser.UserId, DB.SkladBase()).AccessEditPrice);
+                    break;
+
                 case 5:
                     gridControl1.DataSource = DB.SkladBase().GetUsedMaterials(row.MatId, OnDateEdit.DateTime.Date.AddDays(1), -1).ToList();
                     break;
@@ -963,6 +969,11 @@ namespace SP_Sklad.MainTabs
         {
             ChartDesigner designer = new ChartDesigner(chartControl1);
             designer.ShowDialog();
+        }
+
+        private void MatListGridView_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+
         }
 
     }

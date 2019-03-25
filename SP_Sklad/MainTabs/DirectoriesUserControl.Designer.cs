@@ -81,6 +81,7 @@
             this.barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
             this.showMatArhivedBtn = new DevExpress.XtraBars.BarCheckItem();
             this.barCheckItem1 = new DevExpress.XtraBars.BarCheckItem();
+            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.DirTreeList = new DevExpress.XtraTreeList.TreeList();
@@ -234,6 +235,7 @@
             this.gridColumn38 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn39 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn73 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.RecipeArchivedGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage20 = new DevExpress.XtraTab.XtraTabPage();
             this.WarehouseGridControl = new DevExpress.XtraGrid.GridControl();
             this.WarehouseBS = new System.Windows.Forms.BindingSource(this.components);
@@ -324,6 +326,8 @@
             this.ExplorerPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.RecipePopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.barCheckItem2 = new DevExpress.XtraBars.BarCheckItem();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
@@ -459,6 +463,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ExplorerPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RecipePopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemImageComboBox1
@@ -645,8 +650,10 @@
             this.showMatArhivedBtn,
             this.barCheckItem1,
             this.showChildNodeBtn,
-            this.barButtonItem11});
-            this.barManager1.MaxItemId = 39;
+            this.barButtonItem11,
+            this.barButtonItem7,
+            this.barCheckItem2});
+            this.barManager1.MaxItemId = 41;
             // 
             // bar1
             // 
@@ -1030,6 +1037,13 @@
             this.barCheckItem1.Name = "barCheckItem1";
             this.barCheckItem1.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem1_CheckedChanged_1);
             // 
+            // barButtonItem7
+            // 
+            this.barButtonItem7.Caption = "Перемістити/Відновити з архіву";
+            this.barButtonItem7.Id = 39;
+            this.barButtonItem7.Name = "barButtonItem7";
+            this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
+            // 
             // panelControl1
             // 
             this.panelControl1.Controls.Add(this.splitContainerControl1);
@@ -1308,7 +1322,7 @@
             // 
             // vGridControl1
             // 
-            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeWE;
+            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControl1.DataSource = this.KAgentInfoBS;
             this.vGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl1.Location = new System.Drawing.Point(0, 0);
@@ -2425,7 +2439,8 @@
             this.gridColumn7,
             this.gridColumn38,
             this.gridColumn39,
-            this.gridColumn73});
+            this.gridColumn73,
+            this.RecipeArchivedGridColumn});
             this.MatRecipeGridView.GridControl = this.MatRecipeGridControl;
             this.MatRecipeGridView.GroupCount = 1;
             this.MatRecipeGridView.Name = "MatRecipeGridView";
@@ -2436,6 +2451,7 @@
             this.MatRecipeGridView.OptionsView.EnableAppearanceOddRow = true;
             this.MatRecipeGridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn39, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.MatRecipeGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.MatRecipeGridView_PopupMenuShowing);
             this.MatRecipeGridView.DoubleClick += new System.EventHandler(this.MatRecipeGridView_DoubleClick);
             // 
             // gridColumn8
@@ -2501,6 +2517,12 @@
             this.gridColumn73.Name = "gridColumn73";
             this.gridColumn73.Visible = true;
             this.gridColumn73.VisibleIndex = 3;
+            // 
+            // RecipeArchivedGridColumn
+            // 
+            this.RecipeArchivedGridColumn.Caption = "В архіві";
+            this.RecipeArchivedGridColumn.FieldName = "Archived";
+            this.RecipeArchivedGridColumn.Name = "RecipeArchivedGridColumn";
             // 
             // xtraTabPage20
             // 
@@ -3375,6 +3397,25 @@
             this.MatPopupMenu.Manager = this.barManager1;
             this.MatPopupMenu.Name = "MatPopupMenu";
             // 
+            // RecipePopupMenu
+            // 
+            this.RecipePopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItem2)});
+            this.RecipePopupMenu.Manager = this.barManager1;
+            this.RecipePopupMenu.Name = "RecipePopupMenu";
+            // 
+            // barCheckItem2
+            // 
+            this.barCheckItem2.Caption = "Відображати архівні записи";
+            this.barCheckItem2.Id = 40;
+            this.barCheckItem2.Name = "barCheckItem2";
+            this.barCheckItem2.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem2_CheckedChanged);
+            // 
             // DirectoriesUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3529,6 +3570,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ExplorerPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RecipePopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3830,5 +3872,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn20;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn21;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn82;
+        private DevExpress.XtraBars.PopupMenu RecipePopupMenu;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraGrid.Columns.GridColumn RecipeArchivedGridColumn;
+        private DevExpress.XtraBars.BarCheckItem barCheckItem2;
     }
 }

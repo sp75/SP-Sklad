@@ -114,6 +114,7 @@
             this.textEdit3 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.AccessPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.checkEdit7 = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserBS)).BeginInit();
@@ -161,6 +162,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccessPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit7.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -855,6 +857,7 @@
             // 
             // xtraTabPage5
             // 
+            this.xtraTabPage5.Controls.Add(this.checkEdit7);
             this.xtraTabPage5.Controls.Add(this.checkEdit6);
             this.xtraTabPage5.Controls.Add(this.checkEdit4);
             this.xtraTabPage5.Controls.Add(this.checkEdit3);
@@ -1070,6 +1073,17 @@
             this.AccessPopupMenu.Manager = this.barManager1;
             this.AccessPopupMenu.Name = "AccessPopupMenu";
             // 
+            // checkEdit7
+            // 
+            this.checkEdit7.Location = new System.Drawing.Point(24, 184);
+            this.checkEdit7.MenuManager = this.barManager1;
+            this.checkEdit7.Name = "checkEdit7";
+            this.checkEdit7.Properties.Caption = "Дозволити редагувати ціну товара";
+            this.checkEdit7.Size = new System.Drawing.Size(352, 20);
+            this.checkEdit7.StyleController = this.styleController1;
+            this.checkEdit7.TabIndex = 6;
+            this.checkEdit7.CheckedChanged += new System.EventHandler(this.checkEdit7_CheckedChanged);
+            // 
             // frmUserEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1138,6 +1152,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccessPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit7.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1229,5 +1244,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraEditors.CheckEdit checkEdit7;
     }
 }

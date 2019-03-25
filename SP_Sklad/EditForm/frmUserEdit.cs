@@ -90,6 +90,7 @@ namespace SP_Sklad.EditForm
 
             checkEdit4.EditValue = !String.IsNullOrEmpty(user_settings.AccessEditWeight) ? Convert.ToInt32(user_settings.AccessEditWeight) : 0;
             checkEdit6.EditValue = !String.IsNullOrEmpty(user_settings.AccessEditPersonId) ? Convert.ToInt32(user_settings.AccessEditPersonId) : 0;
+            checkEdit7.EditValue = user_settings.AccessEditPrice;
 
             ValidateForm();
         }
@@ -402,6 +403,11 @@ namespace SP_Sklad.EditForm
                 _db.SaveChanges();
                 UserAccessCashDesksGridControl.DataSource = _db.GetUserAccessCashDesks(_user_id).ToList();
             }
+        }
+
+        private void checkEdit7_CheckedChanged(object sender, EventArgs e)
+        {
+            user_settings.AccessEditPrice = checkEdit7.Checked;
         }
     }
 }

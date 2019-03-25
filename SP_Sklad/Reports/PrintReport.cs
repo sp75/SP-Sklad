@@ -547,8 +547,24 @@ namespace SP_Sklad.Reports
                     return;
                 }
 
+                var ch_t = paydoc.GroupBy(g => new { g.CTypeId, g.ChargeName }).Select(s => new { s.Key.CTypeId, s.Key.ChargeName }).ToList();
+
+                rel.Add(new
+                {
+                    pk = "CTypeId",
+                    fk = "CTypeId",
+                    master_table = "ChargeTypeGroup",
+                    child_table = "DocList"
+                });
+
                 data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("ChargeTypeGroup", ch_t);
                 data_for_report.Add("DocList", paydoc);
+                data_for_report.Add("_realation_", rel);
+                data_for_report.Add("SummaryField", paydoc.GroupBy(g => 1).Select(s => new
+                {
+                    Total = s.Sum(r => r.Total)
+                }).ToList());
 
                 IHelper.Print(data_for_report, TemlateList.rep_16);
             }

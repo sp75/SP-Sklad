@@ -59,6 +59,8 @@
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
+            this.MsrLabel = new DevExpress.XtraEditors.LabelControl();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.calcEdit5 = new DevExpress.XtraEditors.CalcEdit();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
@@ -125,7 +127,6 @@
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.TechProcLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.MsrLabel = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeBindingSource)).BeginInit();
@@ -139,6 +140,7 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit5.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
@@ -407,6 +409,7 @@
             // 
             // groupControl2
             // 
+            this.groupControl2.Controls.Add(this.checkEdit1);
             this.groupControl2.Controls.Add(this.MsrLabel);
             this.groupControl2.Controls.Add(this.labelControl13);
             this.groupControl2.Controls.Add(this.calcEdit5);
@@ -430,6 +433,25 @@
             this.groupControl2.TabIndex = 17;
             this.groupControl2.Tag = "";
             this.groupControl2.Text = " Основна інформація ";
+            // 
+            // checkEdit1
+            // 
+            this.checkEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecipeBindingSource, "Archived", true));
+            this.checkEdit1.Location = new System.Drawing.Point(26, 315);
+            this.checkEdit1.MenuManager = this.barManager1;
+            this.checkEdit1.Name = "checkEdit1";
+            this.checkEdit1.Properties.Caption = "В архіві";
+            this.checkEdit1.Size = new System.Drawing.Size(75, 19);
+            this.checkEdit1.TabIndex = 62;
+            // 
+            // MsrLabel
+            // 
+            this.MsrLabel.Location = new System.Drawing.Point(266, 145);
+            this.MsrLabel.Name = "MsrLabel";
+            this.MsrLabel.Size = new System.Drawing.Size(18, 16);
+            this.MsrLabel.StyleController = this.styleController1;
+            this.MsrLabel.TabIndex = 61;
+            this.MsrLabel.Text = "од.";
             // 
             // labelControl13
             // 
@@ -1162,15 +1184,6 @@
             this.TechProcLookUpEdit.TabIndex = 37;
             this.TechProcLookUpEdit.EditValueChanged += new System.EventHandler(this.TechProcLookUpEdit_EditValueChanged);
             // 
-            // MsrLabel
-            // 
-            this.MsrLabel.Location = new System.Drawing.Point(266, 145);
-            this.MsrLabel.Name = "MsrLabel";
-            this.MsrLabel.Size = new System.Drawing.Size(18, 16);
-            this.MsrLabel.StyleController = this.styleController1;
-            this.MsrLabel.TabIndex = 61;
-            this.MsrLabel.Text = "од.";
-            // 
             // frmMatRecipe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1206,6 +1219,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit5.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
@@ -1344,5 +1358,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl13;
         private DevExpress.XtraEditors.CalcEdit calcEdit5;
         private DevExpress.XtraEditors.LabelControl MsrLabel;
+        private DevExpress.XtraEditors.CheckEdit checkEdit1;
     }
 }

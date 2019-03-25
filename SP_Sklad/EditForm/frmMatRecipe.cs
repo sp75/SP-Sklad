@@ -256,12 +256,23 @@ namespace SP_Sklad.EditForm
         {
             if (MatLookUpEdit.ContainsFocus)
             {
-                var rd = MatRecDetBS.DataSource as MatRecDet;
-                rd.MatId = Convert.ToInt32(MatLookUpEdit.EditValue);
-                _db.SaveChanges();
-            //    GetRecDetail();
+                ChangeName();
             }
         }
+
+        private void ChangeName()
+        {
+            var rd = MatRecDetBS.DataSource as MatRecDet;
+            rd.MatId = Convert.ToInt32(MatLookUpEdit.EditValue);
+            _db.SaveChanges();
+            var det = tree.FirstOrDefault(w => Convert.ToInt32(w.DataSetId) == rd.DetId);
+            if (det != null)
+            {
+                det.Text = _db.Materials.Find(rd.MatId).Name;
+                DirTreeList.RefreshDataSource();
+            }
+        }
+
 
         private void simpleButton11_Click(object sender, EventArgs e)
         {
@@ -303,7 +314,17 @@ namespace SP_Sklad.EditForm
         {
             MatLookUpEdit.EditValue = IHelper.ShowDirectList(MatLookUpEdit.EditValue, 5);
             _db.SaveChanges();
-            GetRecDetail();
+
+            ChangeName();
+
+       /*     var det = tree.FirstOrDefault(w => w.DataSetId == MatLookUpEdit.EditValue);
+            if (det != null)
+            {
+                det.Text = MatLookUpEdit.Text;
+                DirTreeList.RefreshDataSource();
+            }*/
+
+      //      GetRecDetail();
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -435,6 +456,5 @@ namespace SP_Sklad.EditForm
                 }
             }
         }
-
     }
 }

@@ -336,7 +336,8 @@
       [v_MatRecipe].[Name] AS [Name], 
       [v_MatRecipe].[GrpName] AS [GrpName], 
       [v_MatRecipe].[Out] AS [Out], 
-      [v_MatRecipe].[RType] AS [RType]
+      [v_MatRecipe].[RType] AS [RType], 
+      [v_MatRecipe].[Archived] AS [Archived]
       FROM [dbo].[v_MatRecipe] AS [v_MatRecipe]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_MatRemains" EntityType="BaseModel.Store.v_MatRemains" store:Type="Views" store:Schema="dbo" store:Name="v_MatRemains">
@@ -1832,6 +1833,7 @@
           <Property Name="MatId" Type="int" Nullable="false" />
           <Property Name="RType" Type="int" />
           <Property Name="Out" Type="numeric" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="Archived" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="MatRecipeTechProcDet">
           <Key>
@@ -2840,6 +2842,7 @@
             <PropertyRef Name="ShortName" />
             <PropertyRef Name="GrpName" />
             <PropertyRef Name="Out" />
+            <PropertyRef Name="Archived" />
           </Key>
           <Property Name="RecId" Type="int" Nullable="false" />
           <Property Name="MatName" Type="nvarchar" MaxLength="255" />
@@ -2850,6 +2853,7 @@
           <Property Name="GrpName" Type="varchar" Nullable="false" MaxLength="64" />
           <Property Name="Out" Type="numeric" Nullable="false" Precision="15" Scale="4" />
           <Property Name="RType" Type="int" />
+          <Property Name="Archived" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'sp_base.dbo.v_MatRemains' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -9171,6 +9175,7 @@
           <NavigationProperty Name="ProductionPlanDet" Relationship="BaseModel.FK_ProductionPlanDet_MatRecipe" FromRole="MatRecipe" ToRole="ProductionPlanDet" />
           <NavigationProperty Name="SchedulingOrders" Relationship="BaseModel.FK_SchedulingOrders_MatRecipe" FromRole="MatRecipe" ToRole="SchedulingOrders" />
           <NavigationProperty Name="PlannedCalculationDet" Relationship="BaseModel.FK_CalcRawMaterialDet_MatRecipe" FromRole="MatRecipe" ToRole="PlannedCalculationDet" />
+          <Property Type="Boolean" Name="Archived" Nullable="false" />
         </EntityType>
         <EntityType Name="WayBillMake">
           <Key>
@@ -13592,6 +13597,7 @@
             <PropertyRef Name="ShortName" />
             <PropertyRef Name="GrpName" />
             <PropertyRef Name="Out" />
+            <PropertyRef Name="Archived" />
           </Key>
           <Property Type="Int32" Name="RecId" Nullable="false" />
           <Property Type="String" Name="MatName" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -13602,6 +13608,7 @@
           <Property Type="String" Name="GrpName" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Type="Decimal" Name="Out" Nullable="false" Precision="15" Scale="4" />
           <Property Type="Int32" Name="RType" />
+          <Property Type="Boolean" Name="Archived" Nullable="false" />
         </EntityType>
         <ComplexType Name="GetUsedMaterials_Result">
           <Property Type="Int32" Name="KaId" Nullable="true" />
@@ -14569,6 +14576,7 @@
           <EntitySetMapping Name="MatRecipe">
             <EntityTypeMapping TypeName="BaseModel.MatRecipe">
               <MappingFragment StoreEntitySet="MatRecipe">
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
                 <ScalarProperty Name="Out" ColumnName="Out" />
                 <ScalarProperty Name="RType" ColumnName="RType" />
                 <ScalarProperty Name="MatId" ColumnName="MatId" />
@@ -17400,6 +17408,7 @@
           <EntitySetMapping Name="v_MatRecipe">
             <EntityTypeMapping TypeName="BaseModel.v_MatRecipe">
               <MappingFragment StoreEntitySet="v_MatRecipe">
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
                 <ScalarProperty Name="RType" ColumnName="RType" />
                 <ScalarProperty Name="Out" ColumnName="Out" />
                 <ScalarProperty Name="GrpName" ColumnName="GrpName" />

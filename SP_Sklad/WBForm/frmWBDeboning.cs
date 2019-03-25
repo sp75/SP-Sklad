@@ -54,7 +54,7 @@ namespace SP_Sklad.WBForm
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
             WhComboBox.Properties.DataSource = DBHelper.WhList;
             repositoryItemWhEdit.DataSource = DBHelper.WhList;
-            RecipeComboBox.Properties.DataSource = DB.SkladBase().MatRecipe.Where(w => w.RType == 2).Select(s => new
+            RecipeComboBox.Properties.DataSource = DB.SkladBase().MatRecipe.Where(w => w.RType == 2 && !w.Archived).Select(s => new
             {
                 s.RecId,
                 s.Name,

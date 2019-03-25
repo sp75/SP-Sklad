@@ -37,16 +37,18 @@ namespace SP_Sklad.Common
 
             #region Settings
 
-            public void Set(string name, string value)
+            public void Set(string name, object value)
             {
+                var _str_v = Convert.ToString(value);
 
                 var us = _db.UserSettings.FirstOrDefault(f => f.Name == name && f.UserId == _user_id);
                 if (us != null)
                 {
-                    us.Value = value;
+                    us.Value = _str_v;
                 }
-                else{
-                    _db.UserSettings.Add(new UserSettings { Name = name, Value = value, UserId = _user_id });
+                else
+                {
+                    _db.UserSettings.Add(new UserSettings { Name = name, Value = _str_v, UserId = _user_id });
                 }
 
                 _db.SaveChanges();
@@ -96,6 +98,19 @@ namespace SP_Sklad.Common
             {
                 get { return Get("ACCESS_EDIT_PERSONID"); }
                 set { Set("ACCESS_EDIT_PERSONID", value); }
+            }
+
+            /// <summary>
+            /// External Access: edit price
+            /// </summary>
+            public bool AccessEditPrice
+            {
+                get
+                {
+                    var v = Get("ACCESS_EDIT_PRICE");
+                    return string.IsNullOrEmpty(v) ? false :  Convert.ToBoolean(v);
+                }
+                set { Set("ACCESS_EDIT_PRICE", value); }
             }
 
             #endregion

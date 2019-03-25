@@ -23,5 +23,6 @@ namespace SP_Sklad.SkladData
         public string GrpName { get; set; }
         public decimal Out { get; set; }
         public Nullable<int> RType { get; set; }
+        public bool Archived { get; set; }
     }
 }

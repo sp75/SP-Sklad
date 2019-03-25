@@ -26,6 +26,7 @@ namespace SP_Sklad.MainTabs
         public WaybillList wb { get; set; }
         private int _ka_archived { get; set; }
         private int _mat_archived { get; set; }
+        private bool _show_rec_archived { get; set; }
 
         private GetMatList_Result focused_mat
         {
@@ -51,6 +52,7 @@ namespace SP_Sklad.MainTabs
             InitializeComponent();
             _ka_archived = 0;
             _mat_archived = 0;
+            _show_rec_archived = false;
         }
 
         private void DirectoriesUserControl_Load(object sender, EventArgs e)
@@ -105,26 +107,26 @@ namespace SP_Sklad.MainTabs
                     var ent = DBHelper.EnterpriseList.ToList().Select(s => (int?)s.KaId);
                     //        var ka = DB.SkladBase().KagentList.AsEnumerable();
 
-                /*    var ka = _db.KagentList.GroupJoin(_db.EnterpriseWorker, k => k.KaId, d => d.WorkerId, (k, d) => new { k, d = d.DefaultIfEmpty() })
-                        .SelectMany(k => k.d.Select(w => new { k, EnterpriseId = (int?)w.EnterpriseId }))
-                        .Where(r => r.EnterpriseId == null || ent.Contains(r.EnterpriseId) )
-                        .Select(r => new
-                        {
-                            KaId = r.k.k.KaId,
-                            Name = r.k.k.Name,
-                            FullName = r.k.k.FullName,
-                            KType = r.k.k.KType,
-                            Archived = r.k.k.Archived,
-                            GroupName = r.k.k.GroupName,
-                            KAgentKind = r.k.k.KAgentKind,
-                            KAU = r.k.k.KAU,
-                            Saldo = r.k.k.Saldo
-                        }).Distinct();*/
+                    /*    var ka = _db.KagentList.GroupJoin(_db.EnterpriseWorker, k => k.KaId, d => d.WorkerId, (k, d) => new { k, d = d.DefaultIfEmpty() })
+                            .SelectMany(k => k.d.Select(w => new { k, EnterpriseId = (int?)w.EnterpriseId }))
+                            .Where(r => r.EnterpriseId == null || ent.Contains(r.EnterpriseId) )
+                            .Select(r => new
+                            {
+                                KaId = r.k.k.KaId,
+                                Name = r.k.k.Name,
+                                FullName = r.k.k.FullName,
+                                KType = r.k.k.KType,
+                                Archived = r.k.k.Archived,
+                                GroupName = r.k.k.GroupName,
+                                KAgentKind = r.k.k.KAgentKind,
+                                KAU = r.k.k.KAU,
+                                Saldo = r.k.k.Saldo
+                            }).Distinct();*/
                     var ka = (from k in _db.KagentList
                               join ew in _db.EnterpriseWorker on k.KaId equals ew.WorkerId into gj
                               from subfg in gj.DefaultIfEmpty()
                               where subfg.EnterpriseId == null || ent.Contains(subfg.EnterpriseId)
-                              select k 
+                              select k
                               );
 
 
@@ -144,7 +146,7 @@ namespace SP_Sklad.MainTabs
 
                 case 2:
                     top_row = MatGridView.TopRowIndex;
-           
+
                     MatListDS.DataSource = _db.GetMatList(focused_tree_node.Id == 6 ? -1 : focused_tree_node.GrpId, 0, _mat_archived, showChildNodeBtn.Down ? 1 : 0);
                     MatGridView.TopRowIndex = top_row;
                     break;
@@ -213,18 +215,28 @@ namespace SP_Sklad.MainTabs
 
                         case 53:
                             top_row = MatRecipeGridView.TopRowIndex;
-                            MatRecipeDS.DataSource = _db.v_MatRecipe.Where(w => w.RType == 1).ToList();
+                            var recipe_list = _db.v_MatRecipe.Where(w => w.RType == 1);
+                            if (!_show_rec_archived)
+                            {
+                                recipe_list = recipe_list.Where(w => !w.Archived);
+                            }
+                            MatRecipeDS.DataSource = recipe_list.ToList();
                             MatRecipeGridView.TopRowIndex = top_row;
-                     //       MatRecipeGridView.ExpandAllGroups();
+                            //       MatRecipeGridView.ExpandAllGroups();
 
                             extDirTabControl.SelectedTabPageIndex = 0;
                             break;
 
                         case 42:
                             top_row = MatRecipeGridView.TopRowIndex;
-                            MatRecipeDS.DataSource = _db.v_MatRecipe.Where(w => w.RType == 2).ToList();
+                            var recipe_d_list = _db.v_MatRecipe.Where(w => w.RType == 2);
+                            if (!_show_rec_archived)
+                            {
+                                recipe_d_list = recipe_d_list.Where(w => !w.Archived);
+                            }
+                            MatRecipeDS.DataSource = recipe_d_list.ToList();
                             MatRecipeGridView.TopRowIndex = top_row;
-                    //        MatRecipeGridView.ExpandAllGroups();
+                            //        MatRecipeGridView.ExpandAllGroups();
 
                             extDirTabControl.SelectedTabPageIndex = 0;
                             break;
@@ -1079,6 +1091,44 @@ namespace SP_Sklad.MainTabs
 
                  gridControl1.DataSource = db.KAgentAccount.Where(w => w.KAId == f_row.KaId).Select(s => new { s.AccNum, s.Banks.MFO, BankName = s.Banks.Name, TypeName = s.AccountType.Name }).ToList();
              }
+        }
+
+        private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var row = MatRecipeGridView.GetFocusedRow() as v_MatRecipe;
+            using (var db = DB.SkladBase())
+            {
+                var r = db.MatRecipe.Find(row.RecId);
+
+                if (r.Archived)
+                {
+                    r.Archived = false;
+                }
+                else
+                {
+                    if (MessageBox.Show(string.Format("Ви дійсно хочете перемістити рецепт <{0}> в архів?", row.MatName), "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    {
+                        r.Archived = true;
+                    }
+                }
+
+                db.SaveChanges();
+            }
+
+            RefrechItemBtn.PerformClick();
+        }
+
+        private void MatRecipeGridView_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
+        {
+            RecipePopupMenu.ShowPopup(Control.MousePosition); 
+        }
+
+        private void barCheckItem2_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+             _show_rec_archived = barCheckItem2.Checked;
+            RecipeArchivedGridColumn.Visible = barCheckItem2.Checked;
+
+            RefrechItemBtn.PerformClick();
         }
 
     }

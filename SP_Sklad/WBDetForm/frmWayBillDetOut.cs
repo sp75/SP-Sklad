@@ -53,6 +53,8 @@ namespace SP_Sklad.WBDetForm
                 if (barCheckItem2.Checked) barCheckItem2.PerformClick();
                 barCheckItem2.Visibility = BarItemVisibility.Never;
             }
+
+            BasePriceEdit.Enabled =  new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db).AccessEditPrice;
         }
 
         private void frmWayBillDetOut_Load(object sender, EventArgs e)
