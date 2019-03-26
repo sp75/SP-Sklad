@@ -328,6 +328,7 @@ namespace SP_Sklad.MainTabs
 
         private void RefreshTechProcDet(int wbill_id)
         {
+            TechProcDetBS.DataSource = null;
             TechProcDetBS.DataSource = DB.SkladBase().v_TechProcDet.Where(w => w.WbillId == wbill_id).OrderBy(o => o.Num).ToList();
         }
 
@@ -645,13 +646,12 @@ namespace SP_Sklad.MainTabs
             StopProcesBtn.Enabled = (focused_row != null && focused_row.Checked == 2 && focused_tree_node.CanPost == 1);
             DeleteItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanDelete == 1);
             EditItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanModify == 1);
-            AddTechProcBtn.Enabled = (focused_row != null && focused_row.Checked != 1 && focused_tree_node.CanModify == 1);
-            DelTechProcBtn.Enabled = (AddTechProcBtn.Enabled && TechProcGridView.DataRowCount > 0);
-            EditTechProcBtn.Enabled = (focused_row != null && focused_tree_node.CanModify == 1 && TechProcGridView.DataRowCount > 0 /*&& focused_row.Checked != 1*/); 
             CopyItemBtn.Enabled = (focused_row != null && focused_tree_node.CanModify == 1);
             //  OkButton->Enabled =  !WayBillList->IsEmpty();
             ExecuteItemBtn.Enabled = (focused_row != null && focused_tree_node.CanPost == 1);
             PrintItemBtn.Enabled = (focused_row != null);
+
+            AddTechProcBtn.Enabled = (focused_row != null && focused_row.Checked != 1 && focused_tree_node.CanModify == 1);
         }
 
         private void DeboningGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
@@ -879,6 +879,14 @@ namespace SP_Sklad.MainTabs
             CopyItemBtn.Enabled = (pc_focused_row != null && focused_tree_node.CanModify == 1);
             ExecuteItemBtn.Enabled = (pc_focused_row != null && focused_tree_node.CanPost == 1);
             PrintItemBtn.Enabled = (pc_focused_row != null);
+        }
+
+        private void TechProcGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
+        {
+            focused_row = WbGridView.GetFocusedRow() as WBListMake_Result;
+
+            DelTechProcBtn.Enabled = ((focused_row != null && focused_row.Checked != 1 && focused_tree_node.CanModify == 1) && TechProcGridView.DataRowCount > 0);
+            EditTechProcBtn.Enabled = (focused_row != null && focused_tree_node.CanModify == 1 && TechProcGridView.DataRowCount > 0 /*&& focused_row.Checked != 1*/); 
         }
     }
 }

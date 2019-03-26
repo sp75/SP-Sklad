@@ -547,7 +547,7 @@ namespace SP_Sklad.Reports
                     return;
                 }
 
-                var ch_t = paydoc.GroupBy(g => new { g.CTypeId, g.ChargeName }).Select(s => new { s.Key.CTypeId, s.Key.ChargeName }).ToList();
+                var ch_t = paydoc.GroupBy(g => new { g.CTypeId, g.ChargeName }).Select(s => new { s.Key.CTypeId, s.Key.ChargeName }).OrderBy(o => o.ChargeName).ToList();
 
                 rel.Add(new
                 {

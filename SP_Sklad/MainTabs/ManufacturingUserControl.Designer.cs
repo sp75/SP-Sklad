@@ -1458,6 +1458,7 @@
             this.TechProcGridView.Name = "TechProcGridView";
             this.TechProcGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.TechProcGridView.OptionsView.ShowGroupPanel = false;
+            this.TechProcGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.TechProcGridView_FocusedRowObjectChanged);
             this.TechProcGridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.TechProcGridView_CellValueChanged);
             this.TechProcGridView.DoubleClick += new System.EventHandler(this.TechProcGridView_DoubleClick);
             // 
