@@ -6457,6 +6457,7 @@
           <Parameter Name="wh" Type="varchar" Mode="In" />
           <Parameter Name="doc_types" Type="varchar" Mode="In" />
           <Parameter Name="user_id" Type="int" Mode="In" />
+          <Parameter Name="ka_grp_id" Type="uniqueidentifier" Mode="In" />
         </Function>
         <Function Name="REP_31" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="from_date" Type="datetime" Mode="In" />
@@ -8105,15 +8106,6 @@
           <FunctionImport Name="GetUserAccessCashDesks" IsComposable="true" ReturnType="Collection(BaseModel.GetUserAccessCashDesks_Result)">
           <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="REP_3_14" ReturnType="Collection(BaseModel.REP_3_14_Result)">
-            <Parameter Name="from_date" Mode="In" Type="DateTime" />
-            <Parameter Name="to_date" Mode="In" Type="DateTime" />
-            <Parameter Name="grp_id" Mode="In" Type="Int32" />
-            <Parameter Name="ka_id" Mode="In" Type="Int32" />
-            <Parameter Name="wh" Mode="In" Type="String" />
-            <Parameter Name="doc_types" Mode="In" Type="String" />
-            <Parameter Name="user_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <EntitySet Name="UserAccessWh" EntityType="BaseModel.UserAccessWh" />
           <AssociationSet Name="FK_UAWH_USERID" Association="BaseModel.FK_UAWH_USERID">
             <End Role="Users" EntitySet="Users" />
@@ -8325,6 +8317,16 @@
             <End Role="Measures" EntitySet="Measures" />
             <End Role="MaterialMeasures" EntitySet="MaterialMeasures" />
           </AssociationSet>
+          <FunctionImport Name="REP_3_14" ReturnType="Collection(BaseModel.REP_3_14_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="grp_id" Mode="In" Type="Int32" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="wh" Mode="In" Type="String" />
+            <Parameter Name="doc_types" Mode="In" Type="String" />
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
+            <Parameter Name="ka_grp_id" Mode="In" Type="Guid" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -12863,23 +12865,6 @@
           <Property Type="Int32" Name="EnterpriseId" Nullable="true" />
           <Property Type="Int32" Name="Allow" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="REP_3_14_Result">
-          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
-          <Property Type="Int32" Name="GrpId" Nullable="true" />
-          <Property Type="Int32" Name="MatId" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
-          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="Summ" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="String" Name="ShortName" Nullable="false" MaxLength="6" />
-          <Property Type="Decimal" Name="ReturnAmountIn" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="ReturnSummIn" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="String" Name="DocNum" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
-          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
-          <Property Type="Int32" Name="KaId" Nullable="true" />
-          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="64" />
-        </ComplexType>
         <EntityType Name="UserAccessWh">
           <Key>
             <PropertyRef Name="Id" />
@@ -13860,6 +13845,23 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="REP_3_14_Result">
+          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="GrpId" Nullable="true" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Summ" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="String" Name="ShortName" Nullable="false" MaxLength="6" />
+          <Property Type="Decimal" Name="ReturnAmountIn" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="ReturnSummIn" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="String" Name="DocNum" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="KaId" Nullable="true" />
+          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="100" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -16712,27 +16714,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="REP_3_14" FunctionName="BaseModel.Store.REP_3_14">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.REP_3_14_Result">
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Summ" ColumnName="Summ" />
-                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
-                <ScalarProperty Name="ReturnAmountIn" ColumnName="ReturnAmountIn" />
-                <ScalarProperty Name="ReturnSummIn" ColumnName="ReturnSummIn" />
-                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
-                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="KaId" ColumnName="KaId" />
-                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="UserAccessWh">
             <EntityTypeMapping TypeName="BaseModel.UserAccessWh">
               <MappingFragment StoreEntitySet="UserAccessWh">
@@ -17557,6 +17538,27 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="REP_3_14" FunctionName="BaseModel.Store.REP_3_14">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.REP_3_14_Result">
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Summ" ColumnName="Summ" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="ReturnAmountIn" ColumnName="ReturnAmountIn" />
+                <ScalarProperty Name="ReturnSummIn" ColumnName="ReturnSummIn" />
+                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

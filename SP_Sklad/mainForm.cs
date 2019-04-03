@@ -14,6 +14,7 @@ using SP_Sklad.WBForm;
 using System.IO;
 using System.Diagnostics;
 using System.Reflection;
+using System.Data.Entity.Infrastructure;
 
 namespace SP_Sklad
 {

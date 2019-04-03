@@ -275,7 +275,9 @@ namespace SP_Sklad.WBDetForm
             }
             catch (System.Data.Entity.Infrastructure.DbUpdateException exp)
             {
-                MessageBox.Show(exp.InnerException.InnerException.Message);
+                _db.UndoAllChanges();
+
+                throw exp;
             }
         }
 

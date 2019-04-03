@@ -70,7 +70,7 @@ namespace SP_Sklad.WBDetForm
                     PosKind = 0,
                     PosParent = 0,
                     DiscountKind = 0,
-                    Amount =1
+                    Amount = 1
 
                 };
 
@@ -121,66 +121,75 @@ namespace SP_Sklad.WBDetForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            if (!modified_dataset)
+            try
             {
-                _db.WaybillDet.Add(_wbd);
-            }
-            _db.Save(_wb.WbillId);
-
-         /*   if (_wb.WType == 16)
-            {
-                _db.DeleteWhere<WMatTurn>(w => w.PosId == _wbd.PosId);
-                _db.WMatTurn.Add(new WMatTurn()
+                if (!modified_dataset)
                 {
-                    SourceId = _wbd.PosId,
-                    PosId = _wbd.PosId,
-                    WId = _wbd.WId.Value,
-                    MatId = _wbd.MatId,
-                    OnDate = _wbd.OnDate.Value,
-                    TurnType = 3,
-                    Amount = _wbd.Amount
-                });
-            }*/
+                    _db.WaybillDet.Add(_wbd);
+                }
+                _db.Save(_wb.WbillId);
 
-            //   if (Serials->State == dsInsert || Serials->State == dsEdit) Serials->Post();
-            //      if (WayBillDetAddProps->State == dsInsert || WayBillDetAddProps->State == dsEdit) WayBillDetAddProps->Post();
+                /*   if (_wb.WType == 16)
+                   {
+                       _db.DeleteWhere<WMatTurn>(w => w.PosId == _wbd.PosId);
+                       _db.WMatTurn.Add(new WMatTurn()
+                       {
+                           SourceId = _wbd.PosId,
+                           PosId = _wbd.PosId,
+                           WId = _wbd.WId.Value,
+                           MatId = _wbd.MatId,
+                           OnDate = _wbd.OnDate.Value,
+                           TurnType = 3,
+                           Amount = _wbd.Amount
+                       });
+                   }*/
 
-            if (wbdp != null && _db.Entry<WayBillDetAddProps>(wbdp).State == EntityState.Detached)
-            {
-                wbdp.PosId = _wbd.PosId;
-                _db.WayBillDetAddProps.Add(wbdp);
-            }
-            wbdp.Notes = DateTime.Now.ToString();
+                //   if (Serials->State == dsInsert || Serials->State == dsEdit) Serials->Post();
+                //      if (WayBillDetAddProps->State == dsInsert || WayBillDetAddProps->State == dsEdit) WayBillDetAddProps->Post();
 
-            if (serials != null && serials.SerialNo != null && _db.Entry<Serials>(serials).State == EntityState.Detached)
-            {
-                serials.PosId = _wbd.PosId;
-                _db.Serials.Add(serials);
-            }
-
-            if (_wb.WType == 1)
-            {
-                _db.UpdWaybillDetPrice(_wb.WbillId);
-            }
-
-            //якщо позиція є замовлення в постачальника
-            var wmt = _db.WMatTurn.FirstOrDefault(w => w.SourceId == _wbd.PosId && w.TurnType == 3);
-            if (wmt != null)
-            {
-                _db.DeleteWhere<WMatTurn>(w => w.PosId == _wbd.PosId);
-                _db.WMatTurn.Add(new WMatTurn()
+                if (wbdp != null && _db.Entry<WayBillDetAddProps>(wbdp).State == EntityState.Detached)
                 {
-                    SourceId = _wbd.PosId,
-                    PosId = _wbd.PosId,
-                    WId = _wbd.WId.Value,
-                    MatId = _wbd.MatId,
-                    OnDate = _wbd.OnDate.Value,
-                    TurnType = 3,
-                    Amount = _wbd.Amount
-                });
-            }
+                    wbdp.PosId = _wbd.PosId;
+                    _db.WayBillDetAddProps.Add(wbdp);
+                }
+                wbdp.Notes = DateTime.Now.ToString();
 
-            _db.Save(_wb.WbillId);
+                if (serials != null && serials.SerialNo != null && _db.Entry<Serials>(serials).State == EntityState.Detached)
+                {
+                    serials.PosId = _wbd.PosId;
+                    _db.Serials.Add(serials);
+                }
+
+                if (_wb.WType == 1)
+                {
+                    _db.UpdWaybillDetPrice(_wb.WbillId);
+                }
+
+                //якщо позиція є замовлення в постачальника
+                var wmt = _db.WMatTurn.FirstOrDefault(w => w.SourceId == _wbd.PosId && w.TurnType == 3);
+                if (wmt != null)
+                {
+                    _db.DeleteWhere<WMatTurn>(w => w.PosId == _wbd.PosId);
+                    _db.WMatTurn.Add(new WMatTurn()
+                    {
+                        SourceId = _wbd.PosId,
+                        PosId = _wbd.PosId,
+                        WId = _wbd.WId.Value,
+                        MatId = _wbd.MatId,
+                        OnDate = _wbd.OnDate.Value,
+                        TurnType = 3,
+                        Amount = _wbd.Amount
+                    });
+                }
+
+                _db.Save(_wb.WbillId);
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException exp)
+            {
+                _db.UndoAllChanges();
+
+                throw exp;
+            }
 
         }
 

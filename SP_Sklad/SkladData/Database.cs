@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
+using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
@@ -73,7 +74,36 @@ namespace SP_Sklad.SkladData
                 }
             }
 
-            return db.SaveChanges();
+            try
+            {
+                return db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                // Get the current entity values and the values in the database
+                var entry = ex.Entries.Single();
+                var currentValues = entry.CurrentValues;
+                var databaseValues = entry.GetDatabaseValues();
+
+                var cv = EFAuditingHelperMethods.GetAsJson(currentValues);
+                var dbv = EFAuditingHelperMethods.GetAsJson(databaseValues);
+
+                using (var dbl = new BaseEntities())
+                {
+                    var dd = db.ErrorLog.Add(new ErrorLog
+                    {
+                        Message = ex.Message,
+                        OnDate = DateTime.Now,
+                        StackTrace = "currentValues: " + cv + Environment.NewLine + "databaseValues: " + dbv,
+                        Title = "Обработка конфликтов параллелизма",
+                        UserId = DBHelper.CurrentUser.UserId,
+                    });
+
+                    db.SaveChanges();
+                }
+
+                throw ex;
+            }
         }
 
         public static bool IsAnyChanges(this BaseEntities context)

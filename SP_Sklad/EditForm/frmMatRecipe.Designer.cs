@@ -127,6 +127,7 @@
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.TechProcLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeBindingSource)).BeginInit();
@@ -807,6 +808,7 @@
             this.panelControl7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelControl7.Controls.Add(this.labelControl14);
             this.panelControl7.Controls.Add(this.simpleButton4);
             this.panelControl7.Controls.Add(this.calcEdit1);
             this.panelControl7.Controls.Add(this.labelControl11);
@@ -1184,6 +1186,15 @@
             this.TechProcLookUpEdit.TabIndex = 37;
             this.TechProcLookUpEdit.EditValueChanged += new System.EventHandler(this.TechProcLookUpEdit_EditValueChanged);
             // 
+            // labelControl14
+            // 
+            this.labelControl14.Location = new System.Drawing.Point(254, 58);
+            this.labelControl14.Name = "labelControl14";
+            this.labelControl14.Size = new System.Drawing.Size(18, 16);
+            this.labelControl14.StyleController = this.styleController1;
+            this.labelControl14.TabIndex = 62;
+            this.labelControl14.Text = "од.";
+            // 
             // frmMatRecipe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1359,5 +1370,6 @@
         private DevExpress.XtraEditors.CalcEdit calcEdit5;
         private DevExpress.XtraEditors.LabelControl MsrLabel;
         private DevExpress.XtraEditors.CheckEdit checkEdit1;
+        private DevExpress.XtraEditors.LabelControl labelControl14;
     }
 }

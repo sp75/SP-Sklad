@@ -254,6 +254,13 @@ namespace SP_Sklad.EditForm
 
         private void MatLookUpEdit_EditValueChanged(object sender, EventArgs e)
         {
+            if (MatLookUpEdit.EditValue != null && MatLookUpEdit.EditValue != DBNull.Value)
+            {
+                int MatId = Convert.ToInt32(MatLookUpEdit.EditValue);
+
+                labelControl14.Text = _db.Materials.Find(MatId).Measures.ShortName;
+            }
+
             if (MatLookUpEdit.ContainsFocus)
             {
                 ChangeName();
@@ -421,7 +428,7 @@ namespace SP_Sklad.EditForm
         {
             if (e.Button.Index == 1)
             {
-                var measure_id = _mr.Materials.MId ;
+                var measure_id = _db.Materials.Find(_mr.MatId).MId;
 
                 var main_sum = _db.MatRecDet.Where(w => w.RecId == _mr.RecId && w.Materials.MId == measure_id).ToList()
                     .Sum(s => s.Amount);

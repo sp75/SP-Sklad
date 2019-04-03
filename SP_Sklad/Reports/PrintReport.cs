@@ -156,7 +156,8 @@ namespace SP_Sklad.Reports
                 int grp = Convert.ToInt32(MatGroup.GrpId);
                 string wh = Convert.ToString(Warehouse.WId);
                 int kid = Convert.ToInt32(Kagent.KaId);
-                var mat = db.REP_3_14(StartDate, EndDate, grp, kid, wh, "-1,", _user_id).ToList();
+                Guid kg_grp_id = KontragentGroup.Id;
+                var mat = db.REP_3_14(StartDate, EndDate, grp, kid, wh, "-1,", _user_id, kg_grp_id).ToList();
 
                 if (!mat.Any())
                 {
@@ -193,7 +194,8 @@ namespace SP_Sklad.Reports
                 int grp = Convert.ToInt32(MatGroup.GrpId);
                 string wh = Convert.ToString(Warehouse.WId);
                 int kid = Convert.ToInt32(Kagent.KaId);
-                var mat = db.REP_3_14(StartDate, EndDate, grp, kid, wh, DocStr, _user_id).ToList();
+                Guid kg_grp_id = KontragentGroup.Id;
+                var mat = db.REP_3_14(StartDate, EndDate, grp, kid, wh, DocStr, _user_id, kg_grp_id).ToList();
 
                 if (!mat.Any())
                 {
@@ -409,9 +411,9 @@ namespace SP_Sklad.Reports
             if (idx == 9)
             {
                 int wid = Warehouse.WId == "*" ? 0 : Convert.ToInt32(Warehouse.WId);
-                Guid kg = KontragentGroup.Id;
+                Guid kg_grp_id = KontragentGroup.Id;
 
-                var list = db.GetMatMove((int)this.Material.MatId, StartDate, EndDate, wid, (int)Kagent.KaId, (int)DocType, "*", kg, _user_id).ToList();
+                var list = db.GetMatMove((int)this.Material.MatId, StartDate, EndDate, wid, (int)Kagent.KaId, (int)DocType, "*", kg_grp_id, _user_id).ToList();
 
                 if (!list.Any())
                 {

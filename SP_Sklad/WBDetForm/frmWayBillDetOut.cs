@@ -158,6 +158,13 @@ namespace SP_Sklad.WBDetForm
 
             btnShowRemainByWH.Enabled = (MatComboBox.EditValue != null);
 
+            CalcPrice();
+
+            return recult;
+        }
+
+        private void CalcPrice()
+        {
             BotAmountEdit.Text = AmountEdit.Text;
 
             if (DiscountCheckBox.Checked) DiscountPriceEdit.EditValue = BasePriceEdit.Value - (BasePriceEdit.Value * DiscountEdit.Value / 100);
@@ -167,8 +174,6 @@ namespace SP_Sklad.WBDetForm
             TotalSumEdit.EditValue = AmountEdit.Value * Convert.ToDecimal(PriceNotNDSEdit.EditValue);
             SummAllEdit.EditValue = AmountEdit.Value * DiscountPriceEdit.Value;
             TotalNdsEdit.EditValue = Convert.ToDecimal(SummAllEdit.EditValue) - Convert.ToDecimal(TotalSumEdit.EditValue);
-
-            return recult;
         }
 
         private void MatComboBox_EditValueChanged(object sender, EventArgs e)
@@ -206,6 +211,7 @@ namespace SP_Sklad.WBDetForm
             GetDiscount(row.MatId);
             GetContent(_wbd.WId, row.MatId);
             SetAmount();
+            GetOk();
         }
 
         private void GetDiscount(int? MatId)
@@ -284,6 +290,7 @@ namespace SP_Sklad.WBDetForm
         private void AmountEdit_EditValueChanged(object sender, EventArgs e)
         {
             SetAmount();
+            GetOk();
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -325,7 +332,7 @@ namespace SP_Sklad.WBDetForm
             {
                 _db.UndoAllChanges();
 
-                MessageBox.Show(exp.InnerException.InnerException.Message);
+                throw exp;
             }
         }
 

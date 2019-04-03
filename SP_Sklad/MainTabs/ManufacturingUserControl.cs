@@ -808,7 +808,7 @@ namespace SP_Sklad.MainTabs
                         break;
 
                     case 4:
-                        ManufacturedPosGridControl.DataSource = db.GetManufacturedPos(focused_row.Id).ToList();
+                        ManufacturedPosGridControl.DataSource = db.Database.SqlQuery<GetManufacturedPos_Result>(string.Format("select * from GetManufacturedPos('{0}')", focused_row.Id)).ToList();
                         break;
                 }
             }

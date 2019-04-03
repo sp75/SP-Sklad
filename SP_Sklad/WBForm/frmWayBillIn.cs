@@ -150,6 +150,7 @@ namespace SP_Sklad.WBForm
             wb.Notes = NotesEdit.Text;
             wb.UpdatedAt = DateTime.Now;
 
+
             if (!CheckDate())
             {
                 return;
@@ -167,7 +168,7 @@ namespace SP_Sklad.WBForm
                     return;
                 }
             }
-         //   current_transaction.Commit();
+
             is_new_record = false;
 
             Close();
@@ -232,10 +233,12 @@ namespace SP_Sklad.WBForm
 
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var df = new frmWayBillDetIn(_db, null,  wb);
-            if (df.ShowDialog() == DialogResult.OK)
+            using (var df = new frmWayBillDetIn(_db, null, wb))
             {
-                RefreshDet();
+                if (df.ShowDialog() == DialogResult.OK)
+                {
+                    RefreshDet();
+                }
             }
         }
 
@@ -247,11 +250,17 @@ namespace SP_Sklad.WBForm
             {
                 if (dr.PosId > 0)
                 {
-                    new frmWayBillDetIn(_db, dr.PosId, wb).ShowDialog();
+                    using (var wb_det = new frmWayBillDetIn(_db, dr.PosId, wb))
+                    {
+                        wb_det.ShowDialog();
+                    }
                 }
                 else
                 {
-                    new frmWaybillSvcDet(_db, dr.PosId * -1, wb).ShowDialog();
+                    using (var svc_det = new frmWaybillSvcDet(_db, dr.PosId * -1, wb))
+                    {
+                        svc_det.ShowDialog();
+                    }
                 }
 
                 RefreshDet();
