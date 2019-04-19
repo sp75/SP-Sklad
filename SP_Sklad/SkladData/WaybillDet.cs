@@ -28,6 +28,8 @@ namespace SP_Sklad.SkladData
             this.WMatTurn1 = new HashSet<WMatTurn>();
             this.PosRel = new HashSet<PosRel>();
             this.PosRel1 = new HashSet<PosRel>();
+            this.OrderedRels = new HashSet<OrderedRels>();
+            this.OrderedRels1 = new HashSet<OrderedRels>();
         }
     
         public int PosId { get; set; }
@@ -73,5 +75,7 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<WMatTurn> WMatTurn1 { get; set; }
         public virtual ICollection<PosRel> PosRel { get; set; }
         public virtual ICollection<PosRel> PosRel1 { get; set; }
+        public virtual ICollection<OrderedRels> OrderedRels { get; set; }
+        public virtual ICollection<OrderedRels> OrderedRels1 { get; set; }
     }
 }

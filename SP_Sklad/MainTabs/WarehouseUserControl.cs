@@ -663,7 +663,7 @@ namespace SP_Sklad.MainTabs
                     break;
                 case 1:
 
-                    PosGridControl.DataSource = DB.SkladBase().PosGet(row.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list, DBHelper.CurrentUser.UserId).ToList();
+                    PosGridControl.DataSource = DB.SkladBase().PosGet(row.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list, DBHelper.CurrentUser.UserId).OrderBy(o=> o.OnDate).ToList();
                     break;
                 case 2:
 

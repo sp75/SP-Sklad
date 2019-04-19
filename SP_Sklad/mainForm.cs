@@ -272,5 +272,10 @@ namespace SP_Sklad
             new frmAboutAs().ShowDialog();
         }
 
+        private void barButtonItem12_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
     }
 }

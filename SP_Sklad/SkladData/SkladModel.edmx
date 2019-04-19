@@ -61,6 +61,7 @@
           <EntitySet Name="Measures" EntityType="BaseModel.Store.Measures" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MoneySaldo" EntityType="BaseModel.Store.MoneySaldo" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="OperLog" EntityType="BaseModel.Store.OperLog" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrderedRels" EntityType="BaseModel.Store.OrderedRels" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Packaging" EntityType="BaseModel.Store.Packaging" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PayDoc" EntityType="BaseModel.Store.PayDoc" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PayDocType" EntityType="BaseModel.Store.PayDocType" store:Type="Tables" Schema="dbo" />
@@ -950,6 +951,14 @@
           <AssociationSet Name="FK_OperLog_Users" Association="BaseModel.Store.FK_OperLog_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="OperLog" EntitySet="OperLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderedRels_WaybillDet" Association="BaseModel.Store.FK_OrderedRels_WaybillDet">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="OrderedRels" EntitySet="OrderedRels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderedRels_WaybillDet1" Association="BaseModel.Store.FK_OrderedRels_WaybillDet1">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="OrderedRels" EntitySet="OrderedRels" />
           </AssociationSet>
           <AssociationSet Name="FK_PD_ACCID" Association="BaseModel.Store.FK_PD_ACCID">
             <End Role="KAgentAccount" EntitySet="KAgentAccount" />
@@ -1899,6 +1908,14 @@
           <Property Name="FunId" Type="int" />
           <Property Name="DocNum" Type="varchar" MaxLength="24" />
           <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderedRels">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrdPosId" Type="int" Nullable="false" />
+          <Property Name="OutPosId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Packaging">
           <Key>
@@ -4309,6 +4326,32 @@
             </Principal>
             <Dependent Role="OperLog">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderedRels_WaybillDet">
+          <End Role="WaybillDet" Type="BaseModel.Store.WaybillDet" Multiplicity="1" />
+          <End Role="OrderedRels" Type="BaseModel.Store.OrderedRels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="OrderedRels">
+              <PropertyRef Name="OrdPosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderedRels_WaybillDet1">
+          <End Role="WaybillDet" Type="BaseModel.Store.WaybillDet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OrderedRels" Type="BaseModel.Store.OrderedRels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="OrderedRels">
+              <PropertyRef Name="OutPosId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -8327,6 +8370,15 @@
             <Parameter Name="user_id" Mode="In" Type="Int32" />
             <Parameter Name="ka_grp_id" Mode="In" Type="Guid" />
           </FunctionImport>
+          <EntitySet Name="OrderedRels" EntityType="BaseModel.OrderedRels" />
+          <AssociationSet Name="FK_OrderedRels_WaybillDet" Association="BaseModel.FK_OrderedRels_WaybillDet">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="OrderedRels" EntitySet="OrderedRels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderedRels_WaybillDet1" Association="BaseModel.FK_OrderedRels_WaybillDet1">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="OrderedRels" EntitySet="OrderedRels" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -10855,6 +10907,8 @@
           <NavigationProperty Name="PosRel" Relationship="BaseModel.FK_POSREL_CPOSID" FromRole="WaybillDet" ToRole="PosRel" />
           <NavigationProperty Name="PosRel1" Relationship="BaseModel.FK_POSREL_POSID" FromRole="WaybillDet" ToRole="PosRel" />
           <Property Type="DateTime" Name="UpdateAt" Precision="3" />
+          <NavigationProperty Name="OrderedRels" Relationship="BaseModel.FK_OrderedRels_WaybillDet" FromRole="WaybillDet" ToRole="OrderedRels" />
+          <NavigationProperty Name="OrderedRels1" Relationship="BaseModel.FK_OrderedRels_WaybillDet1" FromRole="WaybillDet" ToRole="OrderedRels" />
         </EntityType>
         <EntityType Name="WaybillList">
           <Key>
@@ -13862,6 +13916,42 @@
           <Property Type="Int32" Name="KaId" Nullable="true" />
           <Property Type="String" Name="PersonName" Nullable="true" MaxLength="100" />
         </ComplexType>
+        <EntityType Name="OrderedRels">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="OrdPosId" Nullable="false" />
+          <Property Type="Int32" Name="OutPosId" Nullable="false" />
+          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_OrderedRels_WaybillDet" FromRole="OrderedRels" ToRole="WaybillDet" />
+          <NavigationProperty Name="WaybillDet1" Relationship="BaseModel.FK_OrderedRels_WaybillDet1" FromRole="OrderedRels" ToRole="WaybillDet" />
+        </EntityType>
+        <Association Name="FK_OrderedRels_WaybillDet">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
+          <End Type="BaseModel.OrderedRels" Role="OrderedRels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="OrderedRels">
+              <PropertyRef Name="OrdPosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderedRels_WaybillDet1">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.OrderedRels" Role="OrderedRels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="OrderedRels">
+              <PropertyRef Name="OutPosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -17559,6 +17649,15 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="OrderedRels">
+            <EntityTypeMapping TypeName="BaseModel.OrderedRels">
+              <MappingFragment StoreEntitySet="OrderedRels">
+                <ScalarProperty Name="OutPosId" ColumnName="OutPosId" />
+                <ScalarProperty Name="OrdPosId" ColumnName="OrdPosId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

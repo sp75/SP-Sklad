@@ -278,6 +278,9 @@
         <EntityTypeShape EntityType="BaseModel.MaterialMeasures" Width="1.5" PointX="8.8877618503234181" PointY="0.68478144737183189" />
         <AssociationConnector Association="BaseModel.FK_MaterialMeasures_Materials" />
         <AssociationConnector Association="BaseModel.FK_MaterialMeasures_Measures" />
+        <EntityTypeShape EntityType="BaseModel.OrderedRels" Width="1.5" PointX="11.845339810403686" PointY="22.211698587151105" />
+        <AssociationConnector Association="BaseModel.FK_OrderedRels_WaybillDet" />
+        <AssociationConnector Association="BaseModel.FK_OrderedRels_WaybillDet1" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

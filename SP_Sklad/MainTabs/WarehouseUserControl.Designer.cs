@@ -1489,6 +1489,7 @@
             this.WhRemainGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.WhRemainGridView.OptionsBehavior.Editable = false;
             this.WhRemainGridView.OptionsBehavior.ReadOnly = true;
+            this.WhRemainGridView.OptionsView.ShowFooter = true;
             this.WhRemainGridView.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn30
@@ -1505,6 +1506,8 @@
             this.gridColumn31.Caption = "Залишок";
             this.gridColumn31.FieldName = "Remain";
             this.gridColumn31.Name = "gridColumn31";
+            this.gridColumn31.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)});
             this.gridColumn31.Visible = true;
             this.gridColumn31.VisibleIndex = 1;
             this.gridColumn31.Width = 123;
@@ -1514,6 +1517,8 @@
             this.gridColumn32.Caption = "В резерві";
             this.gridColumn32.FieldName = "Rsv";
             this.gridColumn32.Name = "gridColumn32";
+            this.gridColumn32.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)});
             this.gridColumn32.Visible = true;
             this.gridColumn32.VisibleIndex = 2;
             this.gridColumn32.Width = 121;
@@ -1523,6 +1528,8 @@
             this.gridColumn33.Caption = "Усього на складі";
             this.gridColumn33.FieldName = "CurRemain";
             this.gridColumn33.Name = "gridColumn33";
+            this.gridColumn33.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)});
             this.gridColumn33.Visible = true;
             this.gridColumn33.VisibleIndex = 3;
             this.gridColumn33.Width = 147;

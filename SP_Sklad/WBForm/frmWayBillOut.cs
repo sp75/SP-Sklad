@@ -20,6 +20,7 @@ using SP_Sklad.EditForm;
 using SP_Sklad.Reports;
 using SP_Sklad.ViewsForm;
 using SP_Sklad.Properties;
+using DevExpress.Data;
 
 namespace SP_Sklad.WBForm
 {
@@ -392,9 +393,7 @@ namespace SP_Sklad.WBForm
             if (wbd_row.Rsv == 1 && wbd_row.PosId > 0)
             {
                 _db.DeleteWhere<WMatTurn>(w => w.SourceId == wbd_row.PosId);
-            //    _db.SaveChanges();
-              //  current_transaction = current_transaction.CommitRetaining(_db);
-       //         UpdLockWB();
+            
                 wbd_row.Rsv = 0;
                 WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
             }
@@ -407,7 +406,6 @@ namespace SP_Sklad.WBForm
             _db.DeleteAllReservePosition(wb.WbillId);
        //     current_transaction = current_transaction.CommitRetaining(_db);
   //          UpdLockWB();
-         
             RefreshDet();
         }
 
@@ -687,6 +685,33 @@ namespace SP_Sklad.WBForm
                 }
 
             }
+        }
+
+        private void WaybillDetOutGridView_CustomSummaryCalculate(object sender, DevExpress.Data.CustomSummaryEventArgs e)
+        {
+            if (e.SummaryProcess == CustomSummaryProcess.Finalize)
+            {
+                var def_m = DBHelper.MeasuresList.FirstOrDefault(w=> w.Def == 1);
+
+                GridSummaryItem item = e.Item as GridSummaryItem;
+
+                if (item.FieldName == "MsrName")
+                {
+                    e.TotalValue = def_m.ShortName;
+                }
+
+                if (item.FieldName == "Amount")
+                {
+                    var amount_sum = _db.WaybillDet.Where(w => w.WbillId == _wbill_id && w.Materials.MId == def_m.MId).ToList().Sum(s => s.Amount);
+
+                    var ext_sum = _db.WaybillDet.Where(w => w.WbillId == _wbill_id && w.Materials.MId != def_m.MId)
+                        .Select(s => new { MaterialMeasures = s.Materials.MaterialMeasures.Where(f => f.MId == def_m.MId), s.Amount }).ToList()
+                        .SelectMany(sm => sm.MaterialMeasures, (k, n) => new { k.Amount, MeasureAmount = n.Amount }).Sum(su => su.MeasureAmount * su.Amount);
+
+                    e.TotalValue = Math.Round( amount_sum + ext_sum , 2);
+                }
+            }
+            
         }
     }
 }

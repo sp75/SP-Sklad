@@ -843,6 +843,7 @@
             this.WaybillDetOutGridView.OptionsView.ShowFooter = true;
             this.WaybillDetOutGridView.OptionsView.ShowGroupPanel = false;
             this.WaybillDetOutGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WaybillDetInGridView_PopupMenuShowing);
+            this.WaybillDetOutGridView.CustomSummaryCalculate += new DevExpress.Data.CustomSummaryEventHandler(this.WaybillDetOutGridView_CustomSummaryCalculate);
             this.WaybillDetOutGridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.WaybillDetOutGridView_CellValueChanged);
             this.WaybillDetOutGridView.DoubleClick += new System.EventHandler(this.WaybillDetInGridView_DoubleClick);
             // 
@@ -914,7 +915,7 @@
             this.gridColumn2.OptionsColumn.ReadOnly = true;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 3;
-            this.gridColumn2.Width = 30;
+            this.gridColumn2.Width = 32;
             // 
             // gridColumn11
             // 
@@ -954,7 +955,7 @@
             this.gridColumn3.OptionsColumn.ReadOnly = true;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 4;
-            this.gridColumn3.Width = 200;
+            this.gridColumn3.Width = 216;
             // 
             // gridColumn4
             // 
@@ -962,8 +963,11 @@
             this.gridColumn4.ColumnEdit = this.repositoryItemCalcEdit1;
             this.gridColumn4.FieldName = "Amount";
             this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Custom)});
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 5;
+            this.gridColumn4.Width = 81;
             // 
             // repositoryItemCalcEdit1
             // 
@@ -981,9 +985,11 @@
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.OptionsColumn.ReadOnly = true;
+            this.gridColumn5.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Custom)});
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 6;
-            this.gridColumn5.Width = 44;
+            this.gridColumn5.Width = 47;
             // 
             // gridColumn6
             // 
@@ -996,7 +1002,7 @@
             this.gridColumn6.OptionsColumn.ReadOnly = true;
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 9;
-            this.gridColumn6.Width = 60;
+            this.gridColumn6.Width = 65;
             // 
             // gridColumn10
             // 
@@ -1007,7 +1013,7 @@
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 10;
-            this.gridColumn10.Width = 62;
+            this.gridColumn10.Width = 67;
             // 
             // gridColumn7
             // 
@@ -1020,7 +1026,7 @@
             this.gridColumn7.OptionsColumn.ReadOnly = true;
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 11;
-            this.gridColumn7.Width = 63;
+            this.gridColumn7.Width = 68;
             // 
             // gridColumn8
             // 
@@ -1033,7 +1039,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", "{0:0.##}")});
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 12;
-            this.gridColumn8.Width = 69;
+            this.gridColumn8.Width = 78;
             // 
             // gridColumn9
             // 
@@ -1044,7 +1050,7 @@
             this.gridColumn9.OptionsColumn.ReadOnly = true;
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 8;
-            this.gridColumn9.Width = 110;
+            this.gridColumn9.Width = 119;
             // 
             // gridColumn13
             // 
@@ -1054,7 +1060,7 @@
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
             this.gridColumn13.VisibleIndex = 7;
-            this.gridColumn13.Width = 91;
+            this.gridColumn13.Width = 98;
             // 
             // repositoryItemComboBox1
             // 

@@ -1065,7 +1065,7 @@ namespace SP_Sklad.MainTabs
                         WId = db.Materials.Find(item.MatId).WId,
                         MatId = item.MatId.Value
                     });
-                }
+                } 
 
                 db.SaveChanges();
 

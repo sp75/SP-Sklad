@@ -87,6 +87,7 @@
             this.docsUserControl1 = new SP_Sklad.MainTabs.DocsUserControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.sharedImageCollection1 = new DevExpress.Utils.SharedImageCollection(this.components);
+            this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit)).BeginInit();
@@ -229,9 +230,10 @@
             this.NextBtn,
             this.barButtonItem1,
             this.barButtonItem10,
-            this.barButtonItem11});
+            this.barButtonItem11,
+            this.barButtonItem12});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 29;
+            this.barManager1.MaxItemId = 30;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTimeEdit1,
             this.repositoryItemCalcEdit1,
@@ -446,7 +448,8 @@
             this.barSubItem4.Caption = "Сервіс";
             this.barSubItem4.Id = 14;
             this.barSubItem4.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem12),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10)});
             this.barSubItem4.Name = "barSubItem4";
             // 
@@ -735,6 +738,13 @@
             this.sharedImageCollection1.ImageSource.Images.SetKeyName(8, "Склади.bmp");
             this.sharedImageCollection1.ParentControl = this;
             // 
+            // barButtonItem12
+            // 
+            this.barButtonItem12.Caption = "Касова книга";
+            this.barButtonItem12.Id = 29;
+            this.barButtonItem12.Name = "barButtonItem12";
+            this.barButtonItem12.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem12_ItemClick);
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -836,6 +846,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem12;
     }
 }
 

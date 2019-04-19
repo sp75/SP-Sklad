@@ -416,6 +416,9 @@
     <Compile Include="SkladData\MoneyMoveList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\OrderedRels.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\Packaging.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
