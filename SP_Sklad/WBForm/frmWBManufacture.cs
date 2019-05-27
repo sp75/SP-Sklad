@@ -50,7 +50,7 @@ namespace SP_Sklad.WBForm
             PersonMakeComboBox.Properties.DataSource = DBHelper.Persons;
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
             WhComboBox.Properties.DataSource = DBHelper.WhList;
-            RecipeComboBox.Properties.DataSource = DB.SkladBase().MatRecipe.AsNoTracking().Where(w => w.RType == 1 && !w.Archived).Select(s => new 
+            RecipeComboBox.Properties.DataSource = DB.SkladBase().MatRecipe.AsNoTracking().Where(w => w.RType == 1 && !w.Archived && w.Materials.Archived != 1).Select(s => new 
             {
                 RecId = s.RecId,
                 Name = s.Name,

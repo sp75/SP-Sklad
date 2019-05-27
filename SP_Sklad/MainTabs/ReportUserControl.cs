@@ -150,6 +150,7 @@ namespace SP_Sklad.MainTabs
                     frm.MatGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
+                    frm.GroupKontragentPanel.Visible = true;
                     break;
 
                 case 4:

@@ -54,7 +54,7 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
-            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            this.GetPosButton = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl24 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -339,7 +339,7 @@
             // 
             // panelControl3
             // 
-            this.panelControl3.Controls.Add(this.simpleButton5);
+            this.panelControl3.Controls.Add(this.GetPosButton);
             this.panelControl3.Controls.Add(this.labelControl24);
             this.panelControl3.Controls.Add(this.labelControl8);
             this.panelControl3.Controls.Add(this.labelControl2);
@@ -355,15 +355,15 @@
             this.panelControl3.Size = new System.Drawing.Size(539, 103);
             this.panelControl3.TabIndex = 8;
             // 
-            // simpleButton5
+            // GetPosButton
             // 
-            this.simpleButton5.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton5.Image")));
-            this.simpleButton5.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton5.Location = new System.Drawing.Point(245, 12);
-            this.simpleButton5.Name = "simpleButton5";
-            this.simpleButton5.Size = new System.Drawing.Size(22, 22);
-            this.simpleButton5.TabIndex = 29;
-            this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
+            this.GetPosButton.Image = ((System.Drawing.Image)(resources.GetObject("GetPosButton.Image")));
+            this.GetPosButton.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.GetPosButton.Location = new System.Drawing.Point(245, 12);
+            this.GetPosButton.Name = "GetPosButton";
+            this.GetPosButton.Size = new System.Drawing.Size(22, 22);
+            this.GetPosButton.TabIndex = 29;
+            this.GetPosButton.Click += new System.EventHandler(this.simpleButton5_Click);
             // 
             // labelControl24
             // 
@@ -571,7 +571,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private System.Windows.Forms.Panel panel2;
         private DevExpress.XtraEditors.PanelControl panelControl3;
-        private DevExpress.XtraEditors.SimpleButton simpleButton5;
+        private DevExpress.XtraEditors.SimpleButton GetPosButton;
         private DevExpress.XtraEditors.LabelControl labelControl24;
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.LabelControl labelControl2;

@@ -454,6 +454,16 @@ order by wbd.ondate desc
                 db.SaveChanges();
             }
         }
+
+        public static bool CanViewUserTreeNode(string ClassName)
+        {
+            using (var db = new BaseEntities())
+            {
+                var fun_id = db.Functions.FirstOrDefault(w => w.ClassName == ClassName).FunId;
+
+                return db.UserTreeAccess.Any(w => w.FunId == fun_id && w.UserId == DBHelper.CurrentUser.UserId);
+            }
+        }
     }
 
 

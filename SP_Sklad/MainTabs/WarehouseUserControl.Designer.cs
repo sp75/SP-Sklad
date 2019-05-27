@@ -1156,6 +1156,7 @@
             this.WhMatGridView.OptionsView.ShowGroupPanel = false;
             this.WhMatGridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.WhMatGridView_RowStyle);
             this.WhMatGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WhMatGridView_PopupMenuShowing);
+            this.WhMatGridView.CustomSummaryCalculate += new DevExpress.Data.CustomSummaryEventHandler(this.WhMatGridView_CustomSummaryCalculate);
             this.WhMatGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.WhMatGridView_FocusedRowObjectChanged);
             this.WhMatGridView.DoubleClick += new System.EventHandler(this.WhMatGridView_DoubleClick);
             // 
@@ -1237,6 +1238,8 @@
             this.bandedGridColumn4.Caption = "Залишок на скаді";
             this.bandedGridColumn4.FieldName = "Remain";
             this.bandedGridColumn4.Name = "bandedGridColumn4";
+            this.bandedGridColumn4.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Custom)});
             this.bandedGridColumn4.Visible = true;
             this.bandedGridColumn4.Width = 104;
             // 

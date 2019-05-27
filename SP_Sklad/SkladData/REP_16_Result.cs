@@ -20,5 +20,6 @@ namespace SP_Sklad.SkladData
         public decimal Total { get; set; }
         public string ChargeName { get; set; }
         public int CTypeId { get; set; }
+        public string EmployeeName { get; set; }
     }
 }

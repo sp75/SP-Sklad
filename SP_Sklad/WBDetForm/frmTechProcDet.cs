@@ -41,6 +41,8 @@ namespace SP_Sklad.WBDetForm
             TechProcessCB.Properties.DataSource = _db.TechProcess.Select(s => new { s.ProcId, s.Name, s.Num, s.Kod }).ToList();
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
 
+            TechProcessCB.Properties.Buttons[1].Enabled = DBHelper.CanViewUserTreeNode("frmTechProcessEdit");
+
             var ext_list = _db.Materials.Where(w => w.TypeId == 2).Select(s => new { s.MatId, s.Name, s.Artikul }).ToList();
             ExtMatComboBox.Properties.DataSource = ext_list;
             ExtMatComboBox2.Properties.DataSource = ext_list;

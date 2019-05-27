@@ -18,6 +18,7 @@ using SP_Sklad.EditForm;
 using SP_Sklad.Reports;
 using DevExpress.XtraCharts;
 using DevExpress.XtraCharts.Designer;
+using DevExpress.Data;
 
 namespace SP_Sklad.MainTabs
 {
@@ -974,6 +975,27 @@ namespace SP_Sklad.MainTabs
         private void MatListGridView_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
 
+        }
+
+        private void WhMatGridView_CustomSummaryCalculate(object sender, CustomSummaryEventArgs e)
+        {
+            if (e.SummaryProcess == CustomSummaryProcess.Finalize)
+            {
+                var def_m = DBHelper.MeasuresList.FirstOrDefault(w => w.Def == 1);
+
+                GridSummaryItem item = e.Item as GridSummaryItem;
+
+                if (item.FieldName == "Remain")
+                {
+                    var amount_sum = wh_mat_list.Where(w => w.MId == def_m.MId).Sum(s => s.Remain);
+
+                    /*  var ext_sum = _db.WaybillDet.Where(w => w.WbillId == _wbill_id && w.Materials.MId != def_m.MId)
+                          .Select(s => new { MaterialMeasures = s.Materials.MaterialMeasures.Where(f => f.MId == def_m.MId), s.Amount }).ToList()
+                          .SelectMany(sm => sm.MaterialMeasures, (k, n) => new { k.Amount, MeasureAmount = n.Amount }).Sum(su => su.MeasureAmount * su.Amount);*/
+
+                    e.TotalValue = amount_sum.ToString() + " " + def_m.ShortName;//Math.Round(amount_sum + ext_sum, 2);
+                }
+            }
         }
 
     }

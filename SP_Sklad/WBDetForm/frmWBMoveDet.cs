@@ -15,6 +15,8 @@ using System.Data.Entity;
 
 namespace SP_Sklad.WBDetForm
 {
+
+
     public partial class frmWBMoveDet : DevExpress.XtraEditors.XtraForm
     {
         BaseEntities _db { get; set; }
@@ -24,6 +26,7 @@ namespace SP_Sklad.WBDetForm
         private List<GetPosIn_Result> pos_in { get; set; }
         private GetActualRemainByWh_Result mat_remain { get; set; }
         public int _ka_id { get; set; }
+        private List<MaterialsByWh> _materials_on_wh { get; set; }
 
         public frmWBMoveDet(BaseEntities db, int? PosId, WaybillList wb, int ka_id)
         {
@@ -35,13 +38,48 @@ namespace SP_Sklad.WBDetForm
             _ka_id = ka_id;
         }
 
+        public class MaterialsByWh
+        {
+            public int MatId { get; set; }
+            public int WId { get; set; }
+            public string Name { get; set; }
+            public string MsrName { get; set; }
+            public decimal Remain { get; set; }
+            public decimal Rsv { get; set; }
+        }
+
+        private List<MaterialsByWh> GetMaterialsOnWh()
+        {
+            return _db.Database.SqlQuery<MaterialsByWh>(@"SELECT 
+         m.MatId,
+         pr.WId,
+         m.Name,
+         ms.ShortName as MsrName,
+         sum( pr.remain) Remain,
+        sum( pr.Rsv ) Rsv 
+		 
+  FROM [sp_base].[dbo].[v_PosRemains] pr
+  inner join [dbo].[Materials] m on m.MatId =pr.MatId
+  inner join [dbo].[Measures] ms on ms.MId = m.MId
+  group by m.MatId, m.Name , ms.ShortName ,pr.WId").ToList();
+        }
+
         private void frmWBReturnDetOut_Load(object sender, EventArgs e)
         {
             WHComboBox.Properties.DataSource = DBHelper.WhList;
+            _materials_on_wh = GetMaterialsOnWh();
 
             int wh_id = _wb.WaybillMove != null ? _wb.WaybillMove.SourceWid : 0;
 
-            MatComboBox.Properties.DataSource = _db.WhMatGet(0, wh_id, _ka_id, DBHelper.ServerDateTime(), 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).ToList();
+            MatComboBox.Properties.DataSource = _materials_on_wh.Where(w => w.WId == wh_id && w.Remain > 0).GroupBy(g => new { g.MatId, g.Name, g.MsrName }).Select(s => new WhMatGet_Result
+            {
+                MatId = s.Key.MatId,
+                MatName = s.Key.Name,
+                MsrName = s.Key.MsrName,
+                CurRemain = s.Sum(r => r.Remain) - s.Sum(r => r.Rsv),
+                Rsv = s.Sum(r => r.Rsv),
+                Remain = s.Sum(r => r.Remain)
+            }).ToList(); // _db.WhMatGet(0, wh_id, _ka_id, DBHelper.ServerDateTime(), 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).ToList();
 
             if (_PosId == null)
             {
@@ -96,7 +134,7 @@ namespace SP_Sklad.WBDetForm
 
         bool GetOk()
         {
-            bool recult = (MatComboBox.EditValue != DBNull.Value && WHComboBox.EditValue != DBNull.Value  && AmountEdit.EditValue != DBNull.Value);
+            bool recult = (MatComboBox.EditValue != DBNull.Value && Convert.ToInt32(MatComboBox.EditValue) > 0 && WHComboBox.EditValue != DBNull.Value && AmountEdit.EditValue != DBNull.Value);
 
             OkButton.Enabled = recult;
 
@@ -127,22 +165,31 @@ namespace SP_Sklad.WBDetForm
             if (MatComboBox.ContainsFocus)
             {
                 _wbd.MatId = row.MatId;
-                GetContent();
+                var result =  GetContent();
+                result.Wait();
+
                 SetAmount();
             }
 
             labelControl24.Text = row.MsrName;
         }
 
-        private void GetContent()
+        private async Task GetContent()
         {
-
             if (_wbd.WId == null || _wbd.MatId == 0)
             {
                 return;
             }
+            GetPosButton.Enabled = false;
 
-            mat_remain = _db.GetActualRemainByWh(_wbd.WId, _wbd.MatId).FirstOrDefault();
+            var row = (WhMatGet_Result)MatComboBox.GetSelectedDataRow();
+
+            mat_remain = _materials_on_wh.Where(w => w.WId == _wbd.WId && w.MatId == _wbd.MatId).Select(s => new GetActualRemainByWh_Result
+            {
+                CurRemainInWh = s.Remain - s.Rsv,
+                Rsv = row != null ? row.Rsv : 0,
+                Remain = row != null ? row.Remain : 0
+            }).FirstOrDefault(); // _db.GetActualRemainByWh(_wbd.WId, _wbd.MatId).FirstOrDefault();
 
             if (mat_remain != null)
             {
@@ -151,8 +198,9 @@ namespace SP_Sklad.WBDetForm
                 CurRemainEdit.EditValue = mat_remain.Remain;
             }
 
-            pos_in = new BaseEntities().GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, _ka_id, DBHelper.CurrentUser.UserId).AsNoTracking().OrderBy(o => o.OnDate).ToList();
+            pos_in = await new BaseEntities().GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, _ka_id, DBHelper.CurrentUser.UserId).AsNoTracking().OrderBy(o => o.OnDate).ToListAsync();
 
+            GetPosButton.Enabled = true;
         }
 
         private void SetAmount()
@@ -326,9 +374,6 @@ namespace SP_Sklad.WBDetForm
         {
             IHelper.ShowTurnMaterial(_wbd.MatId);
         }
-
-   
-
 
     }
 }

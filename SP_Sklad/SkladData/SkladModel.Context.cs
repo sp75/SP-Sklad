@@ -862,32 +862,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSaldoDetTree_Result>("GetSaldoDetTree", user_idParameter, idParameter, on_dateParameter);
         }
     
-        [EdmFunction("BaseEntities", "REP_16")]
-        public virtual IQueryable<REP_16_Result> REP_16(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> ka_id, Nullable<int> ctype, Nullable<int> showall)
-        {
-            var from_dateParameter = from_date.HasValue ?
-                new ObjectParameter("from_date", from_date) :
-                new ObjectParameter("from_date", typeof(System.DateTime));
-    
-            var to_dateParameter = to_date.HasValue ?
-                new ObjectParameter("to_date", to_date) :
-                new ObjectParameter("to_date", typeof(System.DateTime));
-    
-            var ka_idParameter = ka_id.HasValue ?
-                new ObjectParameter("ka_id", ka_id) :
-                new ObjectParameter("ka_id", typeof(int));
-    
-            var ctypeParameter = ctype.HasValue ?
-                new ObjectParameter("ctype", ctype) :
-                new ObjectParameter("ctype", typeof(int));
-    
-            var showallParameter = showall.HasValue ?
-                new ObjectParameter("showall", showall) :
-                new ObjectParameter("showall", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_16_Result>("[BaseEntities].[REP_16](@from_date, @to_date, @ka_id, @ctype, @showall)", from_dateParameter, to_dateParameter, ka_idParameter, ctypeParameter, showallParameter);
-        }
-    
         [EdmFunction("BaseEntities", "REP_29")]
         public virtual IQueryable<REP_29_Result> REP_29(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> ka_id, Nullable<int> grp_id, string wh)
         {
@@ -1867,52 +1841,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<PosGet_Result>("[BaseEntities].[PosGet](@mat_id, @w_id, @ka_id, @on_date, @get_empty, @wh, @user_id)", mat_idParameter, w_idParameter, ka_idParameter, on_dateParameter, get_emptyParameter, whParameter, user_idParameter);
         }
     
-        [EdmFunction("BaseEntities", "WhMatGet")]
-        public virtual IQueryable<WhMatGet_Result> WhMatGet(Nullable<int> grp_id, Nullable<int> wid, Nullable<int> ka_id, Nullable<System.DateTime> on_date, Nullable<int> get_empty, string wh, Nullable<int> show_all_mats, string grp, Nullable<int> user_id, Nullable<int> get_child_node)
-        {
-            var grp_idParameter = grp_id.HasValue ?
-                new ObjectParameter("grp_id", grp_id) :
-                new ObjectParameter("grp_id", typeof(int));
-    
-            var widParameter = wid.HasValue ?
-                new ObjectParameter("wid", wid) :
-                new ObjectParameter("wid", typeof(int));
-    
-            var ka_idParameter = ka_id.HasValue ?
-                new ObjectParameter("ka_id", ka_id) :
-                new ObjectParameter("ka_id", typeof(int));
-    
-            var on_dateParameter = on_date.HasValue ?
-                new ObjectParameter("on_date", on_date) :
-                new ObjectParameter("on_date", typeof(System.DateTime));
-    
-            var get_emptyParameter = get_empty.HasValue ?
-                new ObjectParameter("get_empty", get_empty) :
-                new ObjectParameter("get_empty", typeof(int));
-    
-            var whParameter = wh != null ?
-                new ObjectParameter("wh", wh) :
-                new ObjectParameter("wh", typeof(string));
-    
-            var show_all_matsParameter = show_all_mats.HasValue ?
-                new ObjectParameter("show_all_mats", show_all_mats) :
-                new ObjectParameter("show_all_mats", typeof(int));
-    
-            var grpParameter = grp != null ?
-                new ObjectParameter("grp", grp) :
-                new ObjectParameter("grp", typeof(string));
-    
-            var user_idParameter = user_id.HasValue ?
-                new ObjectParameter("user_id", user_id) :
-                new ObjectParameter("user_id", typeof(int));
-    
-            var get_child_nodeParameter = get_child_node.HasValue ?
-                new ObjectParameter("get_child_node", get_child_node) :
-                new ObjectParameter("get_child_node", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<WhMatGet_Result>("[BaseEntities].[WhMatGet](@grp_id, @wid, @ka_id, @on_date, @get_empty, @wh, @show_all_mats, @grp, @user_id, @get_child_node)", grp_idParameter, widParameter, ka_idParameter, on_dateParameter, get_emptyParameter, whParameter, show_all_matsParameter, grpParameter, user_idParameter, get_child_nodeParameter);
-        }
-    
         [EdmFunction("BaseEntities", "REP_33")]
         public virtual IQueryable<REP_33_Result> REP_33(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> grp_id, Nullable<int> mat_id)
         {
@@ -2285,6 +2213,78 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("ka_grp_id", typeof(System.Guid));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<REP_3_14_Result>("REP_3_14", from_dateParameter, to_dateParameter, grp_idParameter, ka_idParameter, whParameter, doc_typesParameter, user_idParameter, ka_grp_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "REP_16")]
+        public virtual IQueryable<REP_16_Result> REP_16(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> ka_id, Nullable<int> ctype, Nullable<int> showall)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var ctypeParameter = ctype.HasValue ?
+                new ObjectParameter("ctype", ctype) :
+                new ObjectParameter("ctype", typeof(int));
+    
+            var showallParameter = showall.HasValue ?
+                new ObjectParameter("showall", showall) :
+                new ObjectParameter("showall", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_16_Result>("[BaseEntities].[REP_16](@from_date, @to_date, @ka_id, @ctype, @showall)", from_dateParameter, to_dateParameter, ka_idParameter, ctypeParameter, showallParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "WhMatGet")]
+        public virtual IQueryable<WhMatGet_Result> WhMatGet(Nullable<int> grp_id, Nullable<int> wid, Nullable<int> ka_id, Nullable<System.DateTime> on_date, Nullable<int> get_empty, string wh, Nullable<int> show_all_mats, string grp, Nullable<int> user_id, Nullable<int> get_child_node)
+        {
+            var grp_idParameter = grp_id.HasValue ?
+                new ObjectParameter("grp_id", grp_id) :
+                new ObjectParameter("grp_id", typeof(int));
+    
+            var widParameter = wid.HasValue ?
+                new ObjectParameter("wid", wid) :
+                new ObjectParameter("wid", typeof(int));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var on_dateParameter = on_date.HasValue ?
+                new ObjectParameter("on_date", on_date) :
+                new ObjectParameter("on_date", typeof(System.DateTime));
+    
+            var get_emptyParameter = get_empty.HasValue ?
+                new ObjectParameter("get_empty", get_empty) :
+                new ObjectParameter("get_empty", typeof(int));
+    
+            var whParameter = wh != null ?
+                new ObjectParameter("wh", wh) :
+                new ObjectParameter("wh", typeof(string));
+    
+            var show_all_matsParameter = show_all_mats.HasValue ?
+                new ObjectParameter("show_all_mats", show_all_mats) :
+                new ObjectParameter("show_all_mats", typeof(int));
+    
+            var grpParameter = grp != null ?
+                new ObjectParameter("grp", grp) :
+                new ObjectParameter("grp", typeof(string));
+    
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            var get_child_nodeParameter = get_child_node.HasValue ?
+                new ObjectParameter("get_child_node", get_child_node) :
+                new ObjectParameter("get_child_node", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<WhMatGet_Result>("[BaseEntities].[WhMatGet](@grp_id, @wid, @ka_id, @on_date, @get_empty, @wh, @show_all_mats, @grp, @user_id, @get_child_node)", grp_idParameter, widParameter, ka_idParameter, on_dateParameter, get_emptyParameter, whParameter, show_all_matsParameter, grpParameter, user_idParameter, get_child_nodeParameter);
         }
     }
 }
