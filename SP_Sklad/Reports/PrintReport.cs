@@ -354,7 +354,7 @@ namespace SP_Sklad.Reports
                     s.AvgPrice,
                     s.OutGrpId,
                     s.GrpName,
-                }).ToList();
+                }).OrderBy(o=> o.MatName).ToList();
 
                 if (!mat.Any())
                 {

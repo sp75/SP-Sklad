@@ -634,7 +634,7 @@
             // 
             // ReasonEdit
             // 
-            this.ReasonEdit.DataBindings.Add(new System.Windows.Forms.Binding("ReadOnly", this.WaybillListBS, "Reason", true));
+            this.ReasonEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "Reason", true));
             this.ReasonEdit.Location = new System.Drawing.Point(92, 140);
             this.ReasonEdit.MenuManager = this.barManager1;
             this.ReasonEdit.Name = "ReasonEdit";

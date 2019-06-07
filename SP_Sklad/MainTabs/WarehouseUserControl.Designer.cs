@@ -203,6 +203,11 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.chartControl1 = new DevExpress.XtraCharts.ChartControl();
             this.REP_15BS = new System.Windows.Forms.BindingSource(this.components);
+            this.xtraTabPage13 = new DevExpress.XtraTab.XtraTabPage();
+            this.vGridControl2 = new DevExpress.XtraVerticalGrid.VGridControl();
+            this.ExtMatIfoBS = new System.Windows.Forms.BindingSource(this.components);
+            this.repositoryItemCheckEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.editorRow1 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
@@ -345,6 +350,10 @@
             ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.REP_15BS)).BeginInit();
+            this.xtraTabPage13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.vGridControl2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExtMatIfoBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).BeginInit();
             this.xtraTabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
             this.splitContainerControl2.SuspendLayout();
@@ -1457,7 +1466,8 @@
             this.xtraTabPage9,
             this.MatListTabPage,
             this.xtraTabPage11,
-            this.xtraTabPage12});
+            this.xtraTabPage12,
+            this.xtraTabPage13});
             this.xtraTabControl1.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xtraTabControl1_SelectedPageChanged);
             // 
             // xtraTabPage3
@@ -2277,6 +2287,48 @@
             // REP_15BS
             // 
             this.REP_15BS.DataSource = typeof(SP_Sklad.SkladData.REP_15_Result);
+            // 
+            // xtraTabPage13
+            // 
+            this.xtraTabPage13.Controls.Add(this.vGridControl2);
+            this.xtraTabPage13.ImageIndex = 1;
+            this.xtraTabPage13.Name = "xtraTabPage13";
+            this.xtraTabPage13.Size = new System.Drawing.Size(1161, 251);
+            this.xtraTabPage13.Text = "Додадкова інформація";
+            // 
+            // vGridControl2
+            // 
+            this.vGridControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.vGridControl2.Cursor = System.Windows.Forms.Cursors.SizeNS;
+            this.vGridControl2.DataSource = this.ExtMatIfoBS;
+            this.vGridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vGridControl2.Location = new System.Drawing.Point(0, 0);
+            this.vGridControl2.Name = "vGridControl2";
+            this.vGridControl2.RecordWidth = 186;
+            this.vGridControl2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemCheckEdit3});
+            this.vGridControl2.RowHeaderWidth = 294;
+            this.vGridControl2.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
+            this.editorRow1});
+            this.vGridControl2.Size = new System.Drawing.Size(1161, 251);
+            this.vGridControl2.TabIndex = 1;
+            // 
+            // ExtMatIfoBS
+            // 
+            this.ExtMatIfoBS.DataSource = typeof(SP_Sklad.MainTabs.WarehouseUserControl.ExtMatIfo);
+            // 
+            // repositoryItemCheckEdit3
+            // 
+            this.repositoryItemCheckEdit3.AutoHeight = false;
+            this.repositoryItemCheckEdit3.Name = "repositoryItemCheckEdit3";
+            this.repositoryItemCheckEdit3.ValueChecked = 1;
+            this.repositoryItemCheckEdit3.ValueUnchecked = 0;
+            // 
+            // editorRow1
+            // 
+            this.editorRow1.Name = "editorRow1";
+            this.editorRow1.Properties.Caption = "Остання ціна продажу";
+            this.editorRow1.Properties.FieldName = "LastPrice";
             // 
             // xtraTabPage6
             // 
@@ -3219,6 +3271,10 @@
             ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.REP_15BS)).EndInit();
+            this.xtraTabPage13.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.vGridControl2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExtMatIfoBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).EndInit();
             this.xtraTabPage7.ResumeLayout(false);
             this.xtraTabPage7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
@@ -3513,5 +3569,10 @@
         private System.Windows.Forms.BindingSource REP_15BS;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         public DevExpress.XtraBars.BarButtonItem RefrechItemBtn;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage13;
+        private DevExpress.XtraVerticalGrid.VGridControl vGridControl2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit3;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow1;
+        private System.Windows.Forms.BindingSource ExtMatIfoBS;
     }
 }

@@ -169,7 +169,7 @@ namespace SP_Sklad.WBForm
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             _db.DeleteWhere<WaybillDet>(w => w.WbillId == _wbill_id);
-            var wh_remain = _db.WhMatGet(0, wb.WaybillMove.SourceWid, 0, wb.OnDate, 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).ToList().OrderBy(o =>  o.GrpName);
+            var wh_remain = _db.WhMatGet(0, wb.WaybillMove.SourceWid, 0, wb.OnDate, 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).OrderBy(o => new { o.GrpName, o.MatName }).ToList();
             int num = 0;
             foreach (var item in wh_remain)
             {
@@ -371,6 +371,20 @@ namespace SP_Sklad.WBForm
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            for (int i = 0; InventoryDetGridView.RowCount > i; i++)
+            {
+                var row = InventoryDetGridView.GetRow(i) as InventoryDet;
+
+                var wbd = _db.WaybillDet.Find(row.PosId);
+                wbd.Num = i + 1;
+
+            }
+            _db.SaveChanges();
+            RefreshDet();
         }
     }
 }

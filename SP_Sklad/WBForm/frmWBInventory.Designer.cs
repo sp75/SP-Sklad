@@ -70,6 +70,7 @@
             this.standaloneBarDockControl3 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl4 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
@@ -217,9 +218,10 @@
             this.RsvInfoBtn,
             this.MatInfoBtn,
             this.barButtonItem2,
-            this.barButtonItem3});
+            this.barButtonItem3,
+            this.barButtonItem4});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 19;
+            this.barManager1.MaxItemId = 20;
             // 
             // bar2
             // 
@@ -424,12 +426,20 @@
             this.barButtonItem3.Name = "barButtonItem3";
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Caption = "Перенумеровати";
+            this.barButtonItem4.Id = 19;
+            this.barButtonItem4.Name = "barButtonItem4";
+            this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
+            // 
             // WbDetPopupMenu
             // 
             this.WbDetPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.DelMaterialBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
             new DevExpress.XtraBars.LinkPersistInfo(this.MatInfoBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.RsvInfoBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.EditMaterialBtn, true)});
@@ -1210,5 +1220,6 @@
         private DevExpress.XtraEditors.LookUpEdit PersonComboBox;
         private DevExpress.XtraEditors.LookUpEdit lookUpEdit2;
         private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
     }
 }

@@ -165,8 +165,7 @@ namespace SP_Sklad.WBDetForm
             if (MatComboBox.ContainsFocus)
             {
                 _wbd.MatId = row.MatId;
-                var result =  GetContent();
-                result.Wait();
+                GetContent();
 
                 SetAmount();
             }
@@ -174,7 +173,7 @@ namespace SP_Sklad.WBDetForm
             labelControl24.Text = row.MsrName;
         }
 
-        private async Task GetContent()
+        private void GetContent()
         {
             if (_wbd.WId == null || _wbd.MatId == 0)
             {
@@ -198,7 +197,7 @@ namespace SP_Sklad.WBDetForm
                 CurRemainEdit.EditValue = mat_remain.Remain;
             }
 
-            pos_in = await new BaseEntities().GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, _ka_id, DBHelper.CurrentUser.UserId).AsNoTracking().OrderBy(o => o.OnDate).ToListAsync();
+            pos_in = new BaseEntities().GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, _ka_id, DBHelper.CurrentUser.UserId).AsNoTracking().OrderBy(o => o.OnDate).ToList();
 
             GetPosButton.Enabled = true;
         }

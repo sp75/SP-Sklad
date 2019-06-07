@@ -19,6 +19,8 @@ using SP_Sklad.Reports;
 using DevExpress.XtraCharts;
 using DevExpress.XtraCharts.Designer;
 using DevExpress.Data;
+using System.Data.Entity;
+
 
 namespace SP_Sklad.MainTabs
 {
@@ -354,6 +356,31 @@ namespace SP_Sklad.MainTabs
 
             RefrechItemBtn.PerformClick();
         }
+        private async Task GetMatOnWh()
+        {
+            int grp_id = 0;
+
+            string grp = "";
+
+            grp_id = ByGrpBtn.Down ? focused_tree_node.Num : 0;
+            wid = ByGrpBtn.Down ? 0 : focused_tree_node.Num;
+            if (wid == 0 && WhComboBox2.EditValue.ToString() != "*")
+            {
+                wid = Convert.ToInt32(WhComboBox2.EditValue);
+            }
+
+            if (ViewDetailTree.Down && ByGrpBtn.Down && focused_tree_node.Num != 0)
+            {
+                grp = focused_tree_node.Num.ToString();
+            }
+
+         //   WhMatGridView.BeginDataUpdate();
+            int top_row = WhMatGridView.TopRowIndex;
+            wh_mat_list = await DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, ShowEmptyItemsCheck.Checked ? 1 : 0, wh_list, ShowAllItemsCheck.Checked ? 1 : 0, grp, DBHelper.CurrentUser.UserId, ViewDetailTree.Down ? 1 : 0).ToListAsync();
+            WhMatGetBS.DataSource = wh_mat_list;
+            WhMatGridView.TopRowIndex = top_row;
+         //   WhMatGridView.EndDataUpdate();
+        }
 
         private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -365,7 +392,7 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType.Value)
             {
                 case 1:
-                    int grp_id = 0;
+                  /*  int grp_id = 0;
 
                     string grp = "";
 
@@ -385,7 +412,8 @@ namespace SP_Sklad.MainTabs
               //      var wh_ids = String.Join(",", DB.SkladBase().UserAccessWh.Where(w => w.UserId == DBHelper.CurrentUser.UserId).Select(s => s.WId).ToList());
                     wh_mat_list = DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, ShowEmptyItemsCheck.Checked ? 1 : 0, wh_list, ShowAllItemsCheck.Checked ? 1 : 0, grp, DBHelper.CurrentUser.UserId, ViewDetailTree.Down ? 1 : 0).ToList();
                     WhMatGetBS.DataSource = wh_mat_list;
-                    WhMatGridView.TopRowIndex = top_row;
+                    WhMatGridView.TopRowIndex = top_row;*/
+                    var result = GetMatOnWh();
                     break;
 
                 case 2:
@@ -664,7 +692,7 @@ namespace SP_Sklad.MainTabs
                     break;
                 case 1:
 
-                    PosGridControl.DataSource = DB.SkladBase().PosGet(row.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list, DBHelper.CurrentUser.UserId).OrderBy(o=> o.OnDate).ToList();
+                    PosGridControl.DataSource = DB.SkladBase().PosGet(row.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list, DBHelper.CurrentUser.UserId).OrderBy(o => o.OnDate).ToList();
                     break;
                 case 2:
 
@@ -684,18 +712,24 @@ namespace SP_Sklad.MainTabs
 
                 case 6: // Dovgo
                     var data_chart = DB.SkladBase().REP_15(DateTime.Now.AddDays(-90), DateTime.Now, 0, row.MatId).OrderBy(o => o.OnDate).ToList();
-                    REP_15BS.DataSource = data_chart ;
+                    REP_15BS.DataSource = data_chart;
 
-               /*     if (data_chart.Count > 0)
+                    /*     if (data_chart.Count > 0)
+                         {
+                             StackedBarSeriesView myView = ((StackedBarSeriesView)chartControl1.Series["OutLine"].View);
+                             TrendLine tl = (TrendLine)myView.Indicators[0];
+                             tl.Point1.Argument = data_chart.Min(m => m.OnDate);
+                             tl.Point2.Argument = data_chart.Max(m => m.OnDate);
+                         }*/
+                    break;
+
+                case 7:
+                    var last_price = DB.SkladBase().GetLastPrice(row.MatId, 0, -1, DateTime.Now).FirstOrDefault();
+                    ExtMatIfoBS.DataSource = new ExtMatIfo
                     {
-                        StackedBarSeriesView myView = ((StackedBarSeriesView)chartControl1.Series["OutLine"].View);
-                        TrendLine tl = (TrendLine)myView.Indicators[0];
-                        tl.Point1.Argument = data_chart.Min(m => m.OnDate);
-                        tl.Point2.Argument = data_chart.Max(m => m.OnDate);
-                    }*/
+                        LastPrice = last_price != null ?  last_price.Price : 0
+                    };
 
-                 
-                  
                     break;
             }
         }
@@ -979,7 +1013,7 @@ namespace SP_Sklad.MainTabs
 
         private void WhMatGridView_CustomSummaryCalculate(object sender, CustomSummaryEventArgs e)
         {
-            if (e.SummaryProcess == CustomSummaryProcess.Finalize)
+            if (e.SummaryProcess == CustomSummaryProcess.Finalize && wh_mat_list != null)
             {
                 var def_m = DBHelper.MeasuresList.FirstOrDefault(w => w.Def == 1);
 
@@ -987,7 +1021,7 @@ namespace SP_Sklad.MainTabs
 
                 if (item.FieldName == "Remain")
                 {
-                    var amount_sum = wh_mat_list.Where(w => w.MId == def_m.MId).Sum(s => s.Remain);
+                    var amount_sum = wh_mat_list.Where(w => w.MId == def_m.MId).Sum(s => s.Remain ?? 0);
 
                     /*  var ext_sum = _db.WaybillDet.Where(w => w.WbillId == _wbill_id && w.Materials.MId != def_m.MId)
                           .Select(s => new { MaterialMeasures = s.Materials.MaterialMeasures.Where(f => f.MId == def_m.MId), s.Amount }).ToList()
@@ -996,6 +1030,11 @@ namespace SP_Sklad.MainTabs
                     e.TotalValue = amount_sum.ToString() + " " + def_m.ShortName;//Math.Round(amount_sum + ext_sum, 2);
                 }
             }
+        }
+
+        public class ExtMatIfo
+        {
+            public decimal? LastPrice { get; set; }
         }
 
     }

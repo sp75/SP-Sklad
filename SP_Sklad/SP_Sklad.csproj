@@ -1686,6 +1686,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\SkladEngine.ModelViews.GetPosOutView.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.MainTabs.DirectoriesUserControl+PriceTypesView.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.MainTabs.WarehouseUserControl+ExtMatIfo.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.AccountType.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Actives.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.AspNetUsers.datasource" />
