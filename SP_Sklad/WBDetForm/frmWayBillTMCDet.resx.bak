@@ -117,56 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="barManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>27, 20</value>
-  </metadata>
   <metadata name="styleController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>149, 21</value>
+    <value>168, 27</value>
   </metadata>
-  <metadata name="WayBillSvcBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>419, 22</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="PersonEditBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////
-        ////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////e617OYQ5AFIAAEIAADkAIUoh
-        SnNKlK2U////////////////////////////QpxCCHsIY7VjlNaUpeelpd6ljMaMY5RjEEIQGEoY////
-        ////////////////////AIwAY96EY++MWueMWt6EUtZ7Wt6Ea9aMlN6cUpRaMVox////////////////
-        ////CJQIWveUUu+MSueEQt57OdZzIbVKEIwhMc5jOcZrCDkI////////////////////MZwhUu97Y/+c
-        WveUUu+MOc5rAGsAEIwpMc5rKbVSKVIp////////////////////nNaUGLUhY/+UY/+cMbWMAGtrAGNS
-        GJxKOdZzEGsYe5x7////////////////////////Qq0xCKUhCHOUCHOtGITWGHvGAGucCGs5MXMx////
-        ////////////////////////////GISMEITGKaX/KZz/MZz/KYzvAGuc////////////////////////
-        ////////////CGucELX/Kb3/MbX/Ma3/MZz/GHu1rc7e////////////////////////////////CHut
-        St7/Ut7/Stb/Qsb/ObX/GHu1rc7e////////////////////////////////GHutc/f/a+//Wuf/Ut7/
-        Ss73CHOl////////////////////////////////////e63Ga9bnhPf/c/f/Y+f3MZy9jL3O////////
-        ////////////////////////////////jL3GIYy1MZy9KYy1////////////////////////////////
-        ////////////////////////////////////////////////////////
-</value>
-  </data>
-  <data name="simpleButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////
-        e617EHMQAGsAAGMAMYQx////////////////////////////////////////KYQpAGsAIaU5Oe+lWveE
-        OcZjEIQQAGsIUpxS////////////////////////IYQhEIwhStZrOd6MGP/eUu+EY/+MY/+cWu+EMbVS
-        CHMIGHMY////////////////AHMAWu+EGJwxEKU5EPfWQt5jQudrUu9zWveMY/+UY/+cUud7IZwxAHMA
-        ////////AHsAWu+MAHsACJw5EPfOOdZaQt5aQt5rSudrUud7WveEY/eUY/+cQs5jEIQI////AIQAWveE
-        AIQACKUxCPfOMc5CMc5SOd5SOd5jSudjSudzUu9zUu+Ea/+UAIQA////AIwAWu+MAIwAAJwxCO/GIb05
-        KcZCMc5KOdZSOdZaQt5jQt5rSudzY/+cCJQI////AIwAY/eMGK0xGKUhAPfnGMZCIb0xKcY5KcZCMc5K
-        MdZSQt5aQt5jY/+UCJwQ////CJwIY/eUOdZSKcZCGM5jCPfeCO/GENaMIcZKKcZCMc5CMc5SOdZSY/eU
-        CKUQ////Sr1KIb0pSu97SudjQrVSOcZCGM5aEN6UAPfWCPfOEN6cKdZSKc5KY/+MCKUI////////a8Zz
-        GK0YOZxCazExY2tKQt5aMc5SKcY5GL1KENaECO/OCPfWKcZKKa0p////////////////pb2UazE5Ulop
-        Ib05OdZSQt5jOcZKQow5KbUxCKUQCKUA////////////////////////azk5czlCnK2MY71rGK0YMYwx
-        azkxKYwpGKUY////////////////////////////////c0I5azE5c0I5lHNze1pSazE5////////////
-        ////////////////////////////////////tZSUjGNjazE5lHNz////////////////////////////
-        ////////////////////////////////////////////////////////
-</value>
-  </data>
   <metadata name="imageCollection1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>276, 22</value>
+    <value>329, 27</value>
   </metadata>
-  <assembly alias="DevExpress.Utils.v15.2" name="DevExpress.Utils.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <assembly alias="DevExpress.Utils.v15.2" name="DevExpress.Utils.v15.2, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="imageCollection1.ImageStream" type="DevExpress.Utils.ImageCollectionStreamer, DevExpress.Utils.v15.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFtEZXZFeHByZXNzLlV0aWxzLnYxNS4yLCBWZXJzaW9uPTE1LjIu
@@ -194,6 +151,31 @@
         EHEdAsiy5lVnQfRd0Hq1rDznanXrKnqVIi1aOF6QHZawMs2rjprfcEvhTvjMSu79U1SO5D0xylpE5YCa
         TpJ2QmYdElvjnDZwNfO+RZzWSJmsd1tyPTss/PxPxInD5Vb9ATDmB2rbO+lSgXLpAAAAAElFTkSuQmCC
         Cw==
+</value>
+  </data>
+  <metadata name="WayBillTmcBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>495, 28</value>
+  </metadata>
+  <metadata name="barManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>36, 26</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="simpleButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////
+        e617EHMQAGsAAGMAMYQx////////////////////////////////////////KYQpAGsAIaU5Oe+lWveE
+        OcZjEIQQAGsIUpxS////////////////////////IYQhEIwhStZrOd6MGP/eUu+EY/+MY/+cWu+EMbVS
+        CHMIGHMY////////////////AHMAWu+EGJwxEKU5EPfWQt5jQudrUu9zWveMY/+UY/+cUud7IZwxAHMA
+        ////////AHsAWu+MAHsACJw5EPfOOdZaQt5aQt5rSudrUud7WveEY/eUY/+cQs5jEIQI////AIQAWveE
+        AIQACKUxCPfOMc5CMc5SOd5SOd5jSudjSudzUu9zUu+Ea/+UAIQA////AIwAWu+MAIwAAJwxCO/GIb05
+        KcZCMc5KOdZSOdZaQt5jQt5rSudzY/+cCJQI////AIwAY/eMGK0xGKUhAPfnGMZCIb0xKcY5KcZCMc5K
+        MdZSQt5aQt5jY/+UCJwQ////CJwIY/eUOdZSKcZCGM5jCPfeCO/GENaMIcZKKcZCMc5CMc5SOdZSY/eU
+        CKUQ////Sr1KIb0pSu97SudjQrVSOcZCGM5aEN6UAPfWCPfOEN6cKdZSKc5KY/+MCKUI////////a8Zz
+        GK0YOZxCazExY2tKQt5aMc5SKcY5GL1KENaECO/OCPfWKcZKKa0p////////////////pb2UazE5Ulop
+        Ib05OdZSQt5jOcZKQow5KbUxCKUQCKUA////////////////////////azk5czlCnK2MY71rGK0YMYwx
+        azkxKYwpGKUY////////////////////////////////c0I5azE5c0I5lHNze1pSazE5////////////
+        ////////////////////////////////////tZSUjGNjazE5lHNz////////////////////////////
+        ////////////////////////////////////////////////////////
 </value>
   </data>
 </root>

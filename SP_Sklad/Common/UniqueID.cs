@@ -103,6 +103,11 @@ namespace SP_Sklad.Common
                 {
                     //    serial = mo["SerialNumber"].ToString();
                     serial = Regex.Replace(mo["SerialNumber"].ToString(), "[^0-9 ]", "").Trim();
+
+                    if (decimal.TryParse(serial, out decimal result))
+                    {
+                        if (result == 0) return "";
+                    }
                 }
                 return serial;
             }
