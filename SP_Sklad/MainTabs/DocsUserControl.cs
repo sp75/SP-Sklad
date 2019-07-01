@@ -815,9 +815,11 @@ namespace SP_Sklad.MainTabs
 
             var tree_row = DocsTreeList.GetDataRecordByNode(DocsTreeList.FocusedNode) as v_GetDocsTree;
 
+            bool isModify = (dr != null && DBHelper.CashDesks.Any(a => a.CashId == dr.CashId));
+
             DeleteItemBtn.Enabled = (dr != null && dr.Checked == 0 && tree_row.CanDelete == 1);
-            ExecuteItemBtn.Enabled = (dr != null && tree_row.CanPost == 1);
-            EditItemBtn.Enabled = (dr != null && tree_row.CanModify == 1);
+            ExecuteItemBtn.Enabled = (dr != null && tree_row.CanPost == 1 && isModify);
+            EditItemBtn.Enabled = (dr != null && tree_row.CanModify == 1 && isModify);
             CopyItemBtn.Enabled = EditItemBtn.Enabled;
             PrintItemBtn.Enabled = (dr != null);
         }

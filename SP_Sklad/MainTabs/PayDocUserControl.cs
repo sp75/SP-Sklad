@@ -24,6 +24,11 @@ namespace SP_Sklad.MainTabs
             InitializeComponent();
         }
 
+        public bool IsPayDoc()
+        {
+            return _pd != null;
+        }
+
         public void OnLoad(BaseEntities db, WaybillList wb)
         {
             _db = db;
@@ -56,7 +61,7 @@ namespace SP_Sklad.MainTabs
 
                 if ( _pd != null )
                 {
-                    _db.Entry<PayDoc>(_pd).State = System.Data.Entity.EntityState.Modified;
+                    _db.Entry(_pd).State = System.Data.Entity.EntityState.Modified;
 
                     ExecPayCheckBox.EditValue = _pd.Checked;
                     NumEdit.EditValue = _pd.DocNum;
@@ -81,7 +86,8 @@ namespace SP_Sklad.MainTabs
                     CashEditComboBox.EditValue = DBHelper.CashDesks.FirstOrDefault().CashId;
                 }
             }
-            panelControl1.Enabled = _user_Access.CanModify == 1 || (_user_Access.CanInsert == 1 && _pd == null);
+
+            panelControl1.Enabled = (_user_Access.CanModify == 1 || (_user_Access.CanInsert == 1 && _pd == null)) && DBHelper.CashDesks.Any(a => a.CashId == Convert.ToInt32(CashEditComboBox.EditValue));
             ExecPayCheckBox.Enabled = _user_Access.CanPost == 1 || (_user_Access.CanInsert == 1 && _pd == null);
 
             PTypeComboBox.Properties.DataSource = DBHelper.PayTypes;
@@ -94,7 +100,7 @@ namespace SP_Sklad.MainTabs
 
         private void ExecPayCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if ( _pd != null )
+            if (_pd != null)
             {
                 return;
             }
@@ -105,11 +111,6 @@ namespace SP_Sklad.MainTabs
                 NumEdit.EditValue = new BaseEntities().GetDocNum("pay_doc").FirstOrDefault();
             }
 
-       /*     if (DBHelper.CashDesks.FirstOrDefault(w => w.Def == 1) != null)
-            {
-                CashEditComboBox.EditValue = DBHelper.CashDesks.FirstOrDefault(w => w.Def == 1).CashId;
-            }*/
-
             if (_wb.KaId != null)
             {
                 var ka = _db.Kagent.Find(_wb.KaId);
@@ -118,7 +119,7 @@ namespace SP_Sklad.MainTabs
                     PTypeComboBox.EditValue = ka.PayTypeId;
                     if (ka.PayTypeId == 1)
                     {
-                        CashEditComboBox.EditValue = ka.CashDeskId;
+                        CashEditComboBox.EditValue = DBHelper.CashDesks.Any(a=> a.CashId == ka.CashDeskId) ? ka.CashDeskId : DBHelper.CashDesks.FirstOrDefault().CashId ;
                     }
 
                 }
@@ -134,7 +135,7 @@ namespace SP_Sklad.MainTabs
         public void Execute(int wbill_id)
         {
             _wb = _db.WaybillList.AsNoTracking().FirstOrDefault(s => s.WbillId == wbill_id);
-            if (_wb == null)
+            if (_wb == null && !panelControl1.Enabled)
             {
                 return;
             }

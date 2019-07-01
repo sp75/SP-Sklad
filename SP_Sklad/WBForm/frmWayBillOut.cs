@@ -99,6 +99,7 @@ namespace SP_Sklad.WBForm
                 checkEdit2.Checked = (wb.ToDate != null);
 
                 payDocUserControl1.OnLoad(_db, wb);
+                KagentComboBox.Enabled = !payDocUserControl1.IsPayDoc();
             }
 
             RefreshDet();
@@ -128,12 +129,8 @@ namespace SP_Sklad.WBForm
             TurnDocCheckBox.Enabled = !checkEdit2.Visible;
 
             ProcurationBtn.Enabled = (_wtype == -1);
-          
             OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
-            NowDateBtn.Enabled = OnDateDBEdit.Enabled;
-
             PersonComboBox.Enabled = !String.IsNullOrEmpty(user_settings.AccessEditPersonId) && Convert.ToInt32(user_settings.AccessEditPersonId) == 1;
-            PersonEditBtn.Enabled = PersonComboBox.Enabled;
 
             if (TurnDocCheckBox.Checked) Close();
         }
@@ -459,8 +456,7 @@ namespace SP_Sklad.WBForm
 
         private void NowDateBtn_Click(object sender, EventArgs e)
         {
-            wb.OnDate = DBHelper.ServerDateTime();
-            OnDateDBEdit.DateTime = wb.OnDate;
+           
         }
 
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -535,12 +531,6 @@ namespace SP_Sklad.WBForm
            IHelper.MapProp(_db.GetWayBillDetOut(_wbill_id).AsNoTracking().FirstOrDefault(w => w.PosId == wbd_row.PosId), wbd_row);
         }
 
-        private void simpleButton3_Click(object sender, EventArgs e)
-        {
-          //  wb.KaId = (int)IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
-            KagentComboBox.EditValue = IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
-        }
-
         private void KagBalBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (KagentComboBox.EditValue == DBNull.Value) return;
@@ -585,12 +575,7 @@ namespace SP_Sklad.WBForm
             }
         }
 
-        private void PersonEditBtn_Click(object sender, EventArgs e)
-        {
-            PersonComboBox.EditValue = IHelper.ShowDirectList(PersonComboBox.EditValue, 3);
-        }
-
-        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             _db.SaveChanges();
             _db.DeleteWhere<WaybillDet>(w => w.WbillId == _wbill_id && w.Checked != 1);
@@ -712,6 +697,31 @@ namespace SP_Sklad.WBForm
                 }
             }
             
+        }
+
+        private void KagentComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                KagentComboBox.EditValue = IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
+            }
+        }
+
+        private void OnDateDBEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                wb.OnDate = DBHelper.ServerDateTime();
+                OnDateDBEdit.DateTime = wb.OnDate;
+            }
+        }
+
+        private void PersonComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                PersonComboBox.EditValue = IHelper.ShowDirectList(PersonComboBox.EditValue, 3);
+            }
         }
     }
 }

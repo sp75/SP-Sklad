@@ -93,6 +93,7 @@ namespace SP_Sklad.WBForm
                 ReasonEdit.DataBindings.Add(new Binding("EditValue", wb, "Reason"));
 
                 payDocUserControl1.OnLoad(_db, wb);
+                KagentComboBox.Enabled = !payDocUserControl1.IsPayDoc();
             }
 
             RefreshDet();

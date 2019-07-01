@@ -122,6 +122,7 @@ namespace SP_Sklad.WBForm
             PersonComboBox.EditValue = wb.PersonId;
 
             payDocUserControl1.OnLoad(_db, wb);
+            KagentComboBox.Enabled = !payDocUserControl1.IsPayDoc();
         }
 
         private void frmWayBillIn_Shown(object sender, EventArgs e)

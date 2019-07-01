@@ -40,7 +40,7 @@ namespace update
 
             if (File.Exists(sp_sklad))
             {
-                Process.Start(sp_sklad);
+                Process.Start(sp_sklad); 
             }
         }
 
