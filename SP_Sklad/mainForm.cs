@@ -40,7 +40,7 @@ namespace SP_Sklad
             CurDateEditBarItem.EditValue = DateTime.Now;
             repositoryItemLookUpEdit1.DataSource = DBHelper.EnterpriseList;
 
-            if (barEditItem3.EditValue == null || barEditItem3.EditValue == DBNull.Value || !DBHelper.EnterpriseList.Any(a=> a.KaId == Convert.ToInt32(barEditItem3.EditValue) ))
+            if (barEditItem3.EditValue == null || barEditItem3.EditValue == DBNull.Value || (barEditItem3.EditValue != null && barEditItem3.EditValue != DBNull.Value && !DBHelper.EnterpriseList.Any(a=> a.KaId == Convert.ToInt32(barEditItem3.EditValue)) ))
             {
                 barEditItem3.EditValue = DBHelper.EnterpriseList.Select(s => s.KaId).FirstOrDefault();
             }
