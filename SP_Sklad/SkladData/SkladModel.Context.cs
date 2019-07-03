@@ -39,7 +39,6 @@ namespace SP_Sklad.SkladData
         public DbSet<CONTRDET> CONTRDET { get; set; }
         public DbSet<CONTRPARAMS> CONTRPARAMS { get; set; }
         public DbSet<CONTRRESULTS> CONTRRESULTS { get; set; }
-        public DbSet<CURRENCYRATE> CURRENCYRATE { get; set; }
         public DbSet<ENTPARAMS> ENTPARAMS { get; set; }
         public DbSet<TAXES> TAXES { get; set; }
         public DbSet<TAXWB> TAXWB { get; set; }
@@ -166,6 +165,7 @@ namespace SP_Sklad.SkladData
         public DbSet<PayDoc> PayDoc { get; set; }
         public DbSet<MaterialMeasures> MaterialMeasures { get; set; }
         public DbSet<OrderedRels> OrderedRels { get; set; }
+        public DbSet<CurrencyRate> CurrencyRate { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)

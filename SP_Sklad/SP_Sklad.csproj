@@ -344,6 +344,9 @@
     <Compile Include="SkladData\BanksPersons.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\CurrencyRate.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\Customers.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -954,9 +957,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\Currency.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\CURRENCYRATE.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\Database.cs" />
@@ -1697,6 +1697,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Commission.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.CommonParams.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Countries.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.Currency.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.DiscCards.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetActives_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetDirTree_Result.datasource" />

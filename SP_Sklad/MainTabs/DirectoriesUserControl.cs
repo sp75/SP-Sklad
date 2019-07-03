@@ -257,6 +257,11 @@ namespace SP_Sklad.MainTabs
                             DiscCardsBS.DataSource = _db.v_DiscCards.ToList();
                             extDirTabControl.SelectedTabPageIndex = 11;
                             break;
+
+                        case 3:
+                            CurrencyBS.DataSource = _db.Currency.ToList();
+                            extDirTabControl.SelectedTabPageIndex = 12;
+                            break;
                     }
                     break;
             }

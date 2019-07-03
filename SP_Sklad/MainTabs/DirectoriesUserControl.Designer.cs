@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DirectoriesUserControl));
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.GridImageList = new System.Windows.Forms.ImageList(this.components);
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -82,6 +83,7 @@
             this.showMatArhivedBtn = new DevExpress.XtraBars.BarCheckItem();
             this.barCheckItem1 = new DevExpress.XtraBars.BarCheckItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.barCheckItem2 = new DevExpress.XtraBars.BarCheckItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.DirTreeList = new DevExpress.XtraTreeList.TreeList();
@@ -322,12 +324,21 @@
             this.gridColumn74 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn75 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn76 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.xtraTabPage17 = new DevExpress.XtraTab.XtraTabPage();
+            this.gridControl2 = new DevExpress.XtraGrid.GridControl();
+            this.CurrencyBS = new System.Windows.Forms.BindingSource(this.components);
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colShortName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colName1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDef1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDeleted = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRepShortName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRepFracName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage11 = new DevExpress.XtraTab.XtraTabPage();
             this.ExplorerPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.RecipePopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.barCheckItem2 = new DevExpress.XtraBars.BarCheckItem();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
@@ -460,6 +471,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.DiscCardsGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DiscCardsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DiscCardsGridView)).BeginInit();
+            this.xtraTabPage17.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrencyBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplorerPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).BeginInit();
@@ -1043,6 +1058,13 @@
             this.barButtonItem7.Id = 39;
             this.barButtonItem7.Name = "barButtonItem7";
             this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
+            // 
+            // barCheckItem2
+            // 
+            this.barCheckItem2.Caption = "Відображати архівні записи";
+            this.barCheckItem2.Id = 40;
+            this.barCheckItem2.Name = "barCheckItem2";
+            this.barCheckItem2.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem2_CheckedChanged);
             // 
             // panelControl1
             // 
@@ -2402,7 +2424,8 @@
             this.xtraTabPage27,
             this.xtraTabPage28,
             this.xtraTabPage29,
-            this.xtraTabPage30});
+            this.xtraTabPage30,
+            this.xtraTabPage17});
             // 
             // xtraTabPage19
             // 
@@ -2415,6 +2438,9 @@
             // 
             this.MatRecipeGridControl.DataSource = this.MatRecipeDS;
             this.MatRecipeGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            gridLevelNode1.RelationName = "Level1";
+            this.MatRecipeGridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode1});
             this.MatRecipeGridControl.Location = new System.Drawing.Point(0, 0);
             this.MatRecipeGridControl.MainView = this.MatRecipeGridView;
             this.MatRecipeGridControl.Name = "MatRecipeGridControl";
@@ -3348,6 +3374,96 @@
             this.gridColumn76.Name = "gridColumn76";
             this.gridColumn76.Width = 131;
             // 
+            // xtraTabPage17
+            // 
+            this.xtraTabPage17.Controls.Add(this.gridControl2);
+            this.xtraTabPage17.Name = "xtraTabPage17";
+            this.xtraTabPage17.Size = new System.Drawing.Size(1086, 558);
+            this.xtraTabPage17.Text = "Валюти";
+            // 
+            // gridControl2
+            // 
+            this.gridControl2.DataSource = this.CurrencyBS;
+            this.gridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl2.Location = new System.Drawing.Point(0, 0);
+            this.gridControl2.MainView = this.gridView2;
+            this.gridControl2.Name = "gridControl2";
+            this.gridControl2.Size = new System.Drawing.Size(1086, 558);
+            this.gridControl2.TabIndex = 6;
+            this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView2});
+            // 
+            // CurrencyBS
+            // 
+            this.CurrencyBS.DataSource = typeof(SP_Sklad.SkladData.Currency);
+            // 
+            // gridView2
+            // 
+            this.gridView2.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.gridView2.Appearance.Row.Options.UseFont = true;
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colShortName,
+            this.colName1,
+            this.colDef1,
+            this.colDeleted,
+            this.colRepShortName,
+            this.colRepFracName});
+            this.gridView2.GridControl = this.gridControl2;
+            this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsBehavior.AllowIncrementalSearch = true;
+            this.gridView2.OptionsBehavior.Editable = false;
+            this.gridView2.OptionsBehavior.ReadOnly = true;
+            this.gridView2.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridView2.OptionsView.EnableAppearanceOddRow = true;
+            this.gridView2.OptionsView.ShowGroupPanel = false;
+            // 
+            // colShortName
+            // 
+            this.colShortName.Caption = "Скорочено";
+            this.colShortName.FieldName = "ShortName";
+            this.colShortName.Name = "colShortName";
+            this.colShortName.Visible = true;
+            this.colShortName.VisibleIndex = 0;
+            // 
+            // colName1
+            // 
+            this.colName1.Caption = "Назва";
+            this.colName1.FieldName = "Name";
+            this.colName1.Name = "colName1";
+            this.colName1.Visible = true;
+            this.colName1.VisibleIndex = 1;
+            // 
+            // colDef1
+            // 
+            this.colDef1.Caption = "За змовчуванням";
+            this.colDef1.FieldName = "Def";
+            this.colDef1.Name = "colDef1";
+            this.colDef1.Visible = true;
+            this.colDef1.VisibleIndex = 5;
+            // 
+            // colDeleted
+            // 
+            this.colDeleted.FieldName = "Deleted";
+            this.colDeleted.Name = "colDeleted";
+            this.colDeleted.Visible = true;
+            this.colDeleted.VisibleIndex = 2;
+            // 
+            // colRepShortName
+            // 
+            this.colRepShortName.Caption = "Скор.  ціле";
+            this.colRepShortName.FieldName = "RepShortName";
+            this.colRepShortName.Name = "colRepShortName";
+            this.colRepShortName.Visible = true;
+            this.colRepShortName.VisibleIndex = 3;
+            // 
+            // colRepFracName
+            // 
+            this.colRepFracName.Caption = "Скор. дробове";
+            this.colRepFracName.FieldName = "RepFracName";
+            this.colRepFracName.Name = "colRepFracName";
+            this.colRepFracName.Visible = true;
+            this.colRepFracName.VisibleIndex = 4;
+            // 
             // xtraTabPage11
             // 
             this.xtraTabPage11.Name = "xtraTabPage11";
@@ -3408,13 +3524,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItem2)});
             this.RecipePopupMenu.Manager = this.barManager1;
             this.RecipePopupMenu.Name = "RecipePopupMenu";
-            // 
-            // barCheckItem2
-            // 
-            this.barCheckItem2.Caption = "Відображати архівні записи";
-            this.barCheckItem2.Id = 40;
-            this.barCheckItem2.Name = "barCheckItem2";
-            this.barCheckItem2.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem2_CheckedChanged);
             // 
             // DirectoriesUserControl
             // 
@@ -3567,6 +3676,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.DiscCardsGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DiscCardsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DiscCardsGridView)).EndInit();
+            this.xtraTabPage17.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrencyBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplorerPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).EndInit();
@@ -3876,5 +3989,15 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;
         private DevExpress.XtraGrid.Columns.GridColumn RecipeArchivedGridColumn;
         private DevExpress.XtraBars.BarCheckItem barCheckItem2;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage17;
+        private DevExpress.XtraGrid.GridControl gridControl2;
+        private System.Windows.Forms.BindingSource CurrencyBS;
+        public DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Columns.GridColumn colShortName;
+        private DevExpress.XtraGrid.Columns.GridColumn colName1;
+        private DevExpress.XtraGrid.Columns.GridColumn colDef1;
+        private DevExpress.XtraGrid.Columns.GridColumn colDeleted;
+        private DevExpress.XtraGrid.Columns.GridColumn colRepShortName;
+        private DevExpress.XtraGrid.Columns.GridColumn colRepFracName;
     }
 }

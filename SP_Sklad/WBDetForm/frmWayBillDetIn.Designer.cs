@@ -125,6 +125,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.CurrencyBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MatComboBox.Properties)).BeginInit();
@@ -174,6 +175,7 @@
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrencyBS)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -684,6 +686,7 @@
             // 
             // labelControl26
             // 
+            this.labelControl26.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.CurrencyBS, "RepShortName", true));
             this.labelControl26.Location = new System.Drawing.Point(245, 78);
             this.labelControl26.Name = "labelControl26";
             this.labelControl26.Size = new System.Drawing.Size(23, 16);
@@ -693,6 +696,7 @@
             // 
             // labelControl25
             // 
+            this.labelControl25.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.CurrencyBS, "RepShortName", true));
             this.labelControl25.Location = new System.Drawing.Point(245, 46);
             this.labelControl25.Name = "labelControl25";
             this.labelControl25.Size = new System.Drawing.Size(23, 16);
@@ -1033,6 +1037,7 @@
             // labelControl28
             // 
             this.labelControl28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelControl28.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.CurrencyBS, "RepShortName", true));
             this.labelControl28.Location = new System.Drawing.Point(541, 95);
             this.labelControl28.Name = "labelControl28";
             this.labelControl28.Size = new System.Drawing.Size(23, 16);
@@ -1213,6 +1218,10 @@
             this.panel5.Size = new System.Drawing.Size(600, 131);
             this.panel5.TabIndex = 26;
             // 
+            // CurrencyBS
+            // 
+            this.CurrencyBS.DataSource = typeof(SP_Sklad.SkladData.Currency);
+            // 
             // frmWayBillDetIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1291,6 +1300,7 @@
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.CurrencyBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1393,5 +1403,6 @@
         private System.Windows.Forms.BindingSource SerialsBS;
         public DevExpress.XtraEditors.SimpleButton OkButton;
         private DevExpress.XtraEditors.ComboBoxEdit ProducerTextEdit;
+        private System.Windows.Forms.BindingSource CurrencyBS;
     }
 }

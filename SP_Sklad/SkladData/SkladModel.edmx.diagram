@@ -9,7 +9,6 @@
         <EntityTypeShape EntityType="BaseModel.CONTRDET" Width="1.5" PointX="13.25" PointY="45.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.CONTRPARAMS" Width="1.5" PointX="8.25" PointY="48.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.CONTRRESULTS" Width="1.5" PointX="8.25" PointY="51.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.CURRENCYRATE" Width="1.5" PointX="11" PointY="58.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.ENTPARAMS" Width="1.5" PointX="2.75" PointY="12.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.TAXES" Width="1.5" PointX="17" PointY="59.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.TAXWB" Width="1.5" PointX="9" PointY="33.375" IsExpanded="true" />
@@ -23,7 +22,6 @@
         <EntityTypeShape EntityType="BaseModel.Currency" Width="1.5" PointX="7.6469049209947251" PointY="22.547881896862705" />
         <AssociationConnector Association="BaseModel.FK_CONTRACT_REFERENCE_CURRENCY" />
         <AssociationConnector Association="BaseModel.FK_CONTRDET_REFERENCE_CURRENCY" />
-        <AssociationConnector Association="BaseModel.FK__CURRENCYR__CURRI__5EBF139D" />
         <EntityTypeShape EntityType="BaseModel.CommonParams" Width="1.5" PointX="18.875" PointY="25.5" />
         <EntityTypeShape EntityType="BaseModel.PriceTypes" Width="1.5" PointX="0.6907472259787597" PointY="24.052519019717593" />
         <EntityTypeShape EntityType="BaseModel.ReturnRel" Width="1.5" PointX="0.30251608430525107" PointY="2.8423101170185534" />
@@ -281,6 +279,8 @@
         <EntityTypeShape EntityType="BaseModel.OrderedRels" Width="1.5" PointX="11.845339810403686" PointY="22.211698587151105" />
         <AssociationConnector Association="BaseModel.FK_OrderedRels_WaybillDet" />
         <AssociationConnector Association="BaseModel.FK_OrderedRels_WaybillDet1" />
+        <EntityTypeShape EntityType="BaseModel.CurrencyRate" Width="1.5" PointX="20.875" PointY="38" />
+        <AssociationConnector Association="BaseModel.FK__CURRENCYR__CURRI__5EBF139D" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

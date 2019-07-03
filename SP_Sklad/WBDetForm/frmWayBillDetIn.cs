@@ -61,12 +61,12 @@ namespace SP_Sklad.WBDetForm
                 _wbd = new WaybillDet()
                 {
                     WbillId = _wb.WbillId,
+                    OnDate = _wb.OnDate,
                     Discount = 0,
                     Nds = _wb.Nds,
                     CurrId = _wb.CurrId,
-                    OnDate = _wb.OnDate,
-                    Num = _wb.WaybillDet.Count() + 1,
                     OnValue = _wb.OnValue,
+                    Num = _wb.WaybillDet.Count() + 1,
                     PosKind = 0,
                     PosParent = 0,
                     DiscountKind = 0,
@@ -106,8 +106,9 @@ namespace SP_Sklad.WBDetForm
                 MatEditBtn.Enabled = MatComboBox.Enabled;
              //   AmountEdit.Enabled = (MatComboBox.Enabled  );
                 ManufEditBtn.Visible = ((wbdp == null || wbdp.WaybillList == null || wbdp.WaybillList.WType == -20) && _wb.WType == 5);
-            }
 
+                CurrencyBS.DataSource = _db.Currency.Where(w => w.CurrId == _wb.CurrId).FirstOrDefault();
+            }
             else
             {
                 AmountEdit.EditValue = 1;

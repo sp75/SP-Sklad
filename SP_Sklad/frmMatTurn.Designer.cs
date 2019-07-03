@@ -67,9 +67,9 @@
             this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.colSaldo = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.colRemain = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.colSummAll = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.colPrice = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colCurrName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
@@ -397,8 +397,8 @@
             this.colOnDate,
             this.colKaName,
             this.colCurrName,
-            this.colSummAll,
-            this.colSaldo,
+            this.colPrice,
+            this.colRemain,
             this.bandedGridColumn1,
             this.bandedGridColumn2,
             this.bandedGridColumn3});
@@ -494,7 +494,7 @@
             this.gridBand3.Caption = "Позиція";
             this.gridBand3.Columns.Add(this.bandedGridColumn3);
             this.gridBand3.Columns.Add(this.bandedGridColumn2);
-            this.gridBand3.Columns.Add(this.colSaldo);
+            this.gridBand3.Columns.Add(this.colRemain);
             this.gridBand3.Name = "gridBand3";
             this.gridBand3.VisibleIndex = 1;
             this.gridBand3.Width = 418;
@@ -517,34 +517,34 @@
             this.bandedGridColumn2.Visible = true;
             this.bandedGridColumn2.Width = 234;
             // 
-            // colSaldo
+            // colRemain
             // 
-            this.colSaldo.Caption = "Поточний залишок";
-            this.colSaldo.DisplayFormat.FormatString = "0.00";
-            this.colSaldo.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colSaldo.FieldName = "Remain";
-            this.colSaldo.Name = "colSaldo";
-            this.colSaldo.Visible = true;
-            this.colSaldo.Width = 114;
+            this.colRemain.Caption = "Поточний залишок";
+            this.colRemain.DisplayFormat.FormatString = "0.00";
+            this.colRemain.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colRemain.FieldName = "Remain";
+            this.colRemain.Name = "colRemain";
+            this.colRemain.Visible = true;
+            this.colRemain.Width = 114;
             // 
             // gridBand2
             // 
             this.gridBand2.Caption = "Ціна";
-            this.gridBand2.Columns.Add(this.colSummAll);
+            this.gridBand2.Columns.Add(this.colPrice);
             this.gridBand2.Columns.Add(this.colCurrName);
             this.gridBand2.Name = "gridBand2";
             this.gridBand2.VisibleIndex = 2;
             this.gridBand2.Width = 154;
             // 
-            // colSummAll
+            // colPrice
             // 
-            this.colSummAll.Caption = "В облік. валюті";
-            this.colSummAll.DisplayFormat.FormatString = "0.00";
-            this.colSummAll.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colSummAll.FieldName = "Price";
-            this.colSummAll.Name = "colSummAll";
-            this.colSummAll.Visible = true;
-            this.colSummAll.Width = 88;
+            this.colPrice.Caption = "В валюті";
+            this.colPrice.DisplayFormat.FormatString = "0.00";
+            this.colPrice.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colPrice.FieldName = "Price";
+            this.colPrice.Name = "colPrice";
+            this.colPrice.Visible = true;
+            this.colPrice.Width = 88;
             // 
             // colCurrName
             // 
@@ -627,9 +627,9 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colNum;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colOnDate;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colKaName;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colSummAll;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colPrice;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colCurrName;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colSaldo;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colRemain;
         private DevExpress.XtraEditors.LookUpEdit KAgentEdit;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;

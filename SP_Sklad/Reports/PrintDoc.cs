@@ -252,7 +252,7 @@ namespace SP_Sklad.Reports
             if (wb != null)
             {
                 var m = new MoneyToStr("UAH", "UKR", "TEXT");
-                wb.First().www = m.convertValue(wb.First().SummAll.Value);
+                wb.First().www = m.convertValue(wb.First().SummInCurr.Value);
             }
 
             var ent_id = wb.First().EntId;
@@ -316,7 +316,7 @@ namespace SP_Sklad.Reports
             if (wb != null)
             {
                 var m = new MoneyToStr("UAH", "UKR", "TEXT");
-                wb.First().www = m.convertValue(wb.First().SummAll.Value);
+                wb.First().www = m.convertValue(wb.First().SummInCurr.Value);
             }
 
             var ent_id = wb.First().EntId;

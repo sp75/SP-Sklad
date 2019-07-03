@@ -56,10 +56,10 @@
             this.colOnDate = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colKaName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.colSummInCurr = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colSummAll = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colCurrName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colOnValue = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.colSummInCurr = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colSaldo = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.wTypeList = new DevExpress.XtraEditors.LookUpEdit();
@@ -264,7 +264,7 @@
             this.gridBand1.Columns.Add(this.colKaName);
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 766;
+            this.gridBand1.Width = 709;
             // 
             // colWType
             // 
@@ -279,7 +279,7 @@
             this.colWType.OptionsColumn.ShowCaption = false;
             this.colWType.OptionsColumn.ShowInCustomizationForm = false;
             this.colWType.Visible = true;
-            this.colWType.Width = 36;
+            this.colWType.Width = 23;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -351,7 +351,7 @@
             this.bandedGridColumn1.Name = "bandedGridColumn1";
             this.bandedGridColumn1.OptionsColumn.ShowCaption = false;
             this.bandedGridColumn1.Visible = true;
-            this.bandedGridColumn1.Width = 73;
+            this.bandedGridColumn1.Width = 55;
             // 
             // colNum
             // 
@@ -359,7 +359,7 @@
             this.colNum.FieldName = "Num";
             this.colNum.Name = "colNum";
             this.colNum.Visible = true;
-            this.colNum.Width = 69;
+            this.colNum.Width = 51;
             // 
             // colOnDate
             // 
@@ -369,7 +369,7 @@
             this.colOnDate.FieldName = "OnDate";
             this.colOnDate.Name = "colOnDate";
             this.colOnDate.Visible = true;
-            this.colOnDate.Width = 155;
+            this.colOnDate.Width = 130;
             // 
             // colKaName
             // 
@@ -377,36 +377,48 @@
             this.colKaName.FieldName = "KaName";
             this.colKaName.Name = "colKaName";
             this.colKaName.Visible = true;
-            this.colKaName.Width = 433;
+            this.colKaName.Width = 450;
             // 
             // gridBand2
             // 
-            this.gridBand2.Caption = "Ціна";
+            this.gridBand2.Caption = "Разом по дукументу";
             this.gridBand2.Columns.Add(this.colSummAll);
-            this.gridBand2.Columns.Add(this.colCurrName);
             this.gridBand2.Columns.Add(this.colOnValue);
+            this.gridBand2.Columns.Add(this.colCurrName);
             this.gridBand2.Columns.Add(this.colSummInCurr);
             this.gridBand2.Columns.Add(this.colSaldo);
             this.gridBand2.Name = "gridBand2";
             this.gridBand2.VisibleIndex = 1;
-            this.gridBand2.Width = 392;
+            this.gridBand2.Width = 449;
+            // 
+            // colSummInCurr
+            // 
+            this.colSummInCurr.AppearanceCell.BackColor = System.Drawing.Color.AliceBlue;
+            this.colSummInCurr.AppearanceCell.Options.UseBackColor = true;
+            this.colSummInCurr.Caption = "Сума в облік. валюті";
+            this.colSummInCurr.DisplayFormat.FormatString = "0.00";
+            this.colSummInCurr.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colSummInCurr.FieldName = "SummInCurr";
+            this.colSummInCurr.Name = "colSummInCurr";
+            this.colSummInCurr.Visible = true;
+            this.colSummInCurr.Width = 123;
             // 
             // colSummAll
             // 
-            this.colSummAll.Caption = "Сума в обліковій валюті";
-            this.colSummAll.DisplayFormat.FormatString = "0.00";
+            this.colSummAll.Caption = "Сума в валюті";
             this.colSummAll.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colSummAll.FieldName = "SummAll";
             this.colSummAll.Name = "colSummAll";
             this.colSummAll.Visible = true;
-            this.colSummAll.Width = 237;
+            this.colSummAll.Width = 105;
             // 
             // colCurrName
             // 
             this.colCurrName.Caption = "Валюта";
             this.colCurrName.FieldName = "CurrName";
             this.colCurrName.Name = "colCurrName";
-            this.colCurrName.Width = 72;
+            this.colCurrName.Visible = true;
+            this.colCurrName.Width = 64;
             // 
             // colOnValue
             // 
@@ -415,26 +427,20 @@
             this.colOnValue.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colOnValue.FieldName = "OnValue";
             this.colOnValue.Name = "colOnValue";
-            this.colOnValue.Width = 56;
-            // 
-            // colSummInCurr
-            // 
-            this.colSummInCurr.Caption = "Сума у валюті";
-            this.colSummInCurr.DisplayFormat.FormatString = "0.00";
-            this.colSummInCurr.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colSummInCurr.FieldName = "SummInCurr";
-            this.colSummInCurr.Name = "colSummInCurr";
-            this.colSummInCurr.Width = 145;
+            this.colOnValue.Visible = true;
+            this.colOnValue.Width = 55;
             // 
             // colSaldo
             // 
+            this.colSaldo.AppearanceCell.BackColor = System.Drawing.Color.AliceBlue;
+            this.colSaldo.AppearanceCell.Options.UseBackColor = true;
             this.colSaldo.Caption = "Залишок";
             this.colSaldo.DisplayFormat.FormatString = "0.00";
             this.colSaldo.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colSaldo.FieldName = "Saldo";
             this.colSaldo.Name = "colSaldo";
             this.colSaldo.Visible = true;
-            this.colSaldo.Width = 155;
+            this.colSaldo.Width = 102;
             // 
             // panelControl1
             // 

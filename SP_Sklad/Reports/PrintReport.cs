@@ -391,7 +391,7 @@ namespace SP_Sklad.Reports
                     s.Num,
                     s.TypeName,
                     s.OnDate,
-                    s.SummAll,
+                    SummAll = s.SummInCurr,
                     s.Saldo,
                     DocName = s.TypeName + " №" + s.Num
 
@@ -470,7 +470,7 @@ namespace SP_Sklad.Reports
                 {
                     s.OnDate,
                     s.KaName,
-                    s.SummAll,
+                    SummAll = s.SummInCurr,
                     s.Saldo,
                     DocName = s.TypeName + " №" + s.Num
                 }).ToList();
@@ -973,15 +973,15 @@ namespace SP_Sklad.Reports
                 {
                     idx = index + 1,
                     s.OnDate,
-                    s.SummAll,
+                    SummAll = s.SummInCurr,
                     s.Saldo,
                     DocName = s.TypeName + " №" + s.Num,
-                    PN = s.WType == 1 ? s.SummAll : null,
-                    VN = s.WType == -1 ? s.SummAll : null,
-                    PKO = s.WType == 3 ? s.SummAll : null,
-                    VKO = s.WType == -3 ? s.SummAll : null,
-                    PDP = s.WType == -6 ? s.SummAll : null,
-                    PVK = s.WType == 6 ? s.SummAll : null,
+                    PN = s.WType == 1 ? s.SummInCurr : null,
+                    VN = s.WType == -1 ? s.SummInCurr : null,
+                    PKO = s.WType == 3 ? s.SummInCurr : null,
+                    VKO = s.WType == -3 ? s.SummInCurr : null,
+                    PDP = s.WType == -6 ? s.SummInCurr : null,
+                    PVK = s.WType == 6 ? s.SummInCurr : null,
                 }).OrderBy(o=> o.OnDate);
 
                 if (!list.Any())

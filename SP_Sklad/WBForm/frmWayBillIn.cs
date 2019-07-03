@@ -74,17 +74,7 @@ namespace SP_Sklad.WBForm
             }
             else
             {
-             /*   try
-                {
-                    UpdLockWB();
-                }
-                catch
-                {
-
-                    Close();
-                }*/
                 wb = _db.WaybillList.FirstOrDefault(f => f.Id == doc_id || f.WbillId == _wbill_id);
-
             }
 
             if (wb != null)
@@ -96,11 +86,14 @@ namespace SP_Sklad.WBForm
                     wb.Num = new BaseEntities().GetDocNum("wb_in").FirstOrDefault();
                 }
 
+                WaybillListBS.DataSource = wb;
+
                 GetDocValue(wb);
             }
 
             KagentComboBox.Properties.DataSource = DBHelper.Kagents;
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
+            CurrencyLookUpEdit.Properties.DataSource = _db.Currency.ToList();
 
             var wh_list = DBHelper.WhList;
             WHComboBox.Properties.DataSource = wh_list;
@@ -135,7 +128,6 @@ namespace SP_Sklad.WBForm
             dateEdit2.Visible = (_wtype == 16);
 
             OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
-            NowDateBtn.Enabled = OnDateDBEdit.Enabled;
 
             PersonComboBox.Enabled = !String.IsNullOrEmpty(user_settings.AccessEditPersonId) && Convert.ToInt32(user_settings.AccessEditPersonId) == 1;
             PersonEditBtn.Enabled = PersonComboBox.Enabled;
@@ -229,7 +221,7 @@ namespace SP_Sklad.WBForm
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            OnDateDBEdit.DateTime = DBHelper.ServerDateTime();
+          
         }
 
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -305,6 +297,9 @@ namespace SP_Sklad.WBForm
             OkButton.Enabled = recult;
             EditMaterialBtn.Enabled = WaybillDetInBS.List.Count > 0;
             DelMaterialBtn.Enabled = WaybillDetInBS.List.Count > 0;
+
+            CurrencyLookUpEdit.Enabled = WaybillDetInBS.List.Count == 0;
+            CurRateEdit.Enabled = WaybillDetInBS.List.Count == 0;
 
             return recult;
         }
@@ -493,5 +488,12 @@ namespace SP_Sklad.WBForm
             }
         }
 
+        private void OnDateDBEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                OnDateDBEdit.DateTime = DBHelper.ServerDateTime();
+            }
+        }
     }
 }

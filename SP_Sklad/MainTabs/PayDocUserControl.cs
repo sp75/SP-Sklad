@@ -69,7 +69,7 @@ namespace SP_Sklad.MainTabs
                     CashEditComboBox.EditValue = _pd.CashId;
                     PersonEdit.EditValue = _pd.MPersonId;
                     SumEdit.EditValue = _pd.Total;
-                    CurrEdit.EditValue = _pd.CurrId;
+                    CurrencyLookUpEdit.EditValue = _pd.CurrId;
                     AccountEdit.EditValue = _pd.AccId;
                 }
             }
@@ -77,6 +77,7 @@ namespace SP_Sklad.MainTabs
             {
                 ExecPayCheckBox.EditValue = 0;
                 PTypeComboBox.EditValue = 1;
+                CurrencyLookUpEdit.EditValue = DBHelper.Currency.Where(w => w.Def == 1).Select(s => s.CurrId).FirstOrDefault(); //Валюта по умолчанию
                 if (DBHelper.CashDesks.FirstOrDefault(w => w.Def == 1) != null)
                 {
                     CashEditComboBox.EditValue = DBHelper.CashDesks.FirstOrDefault(w => w.Def == 1).CashId;
@@ -93,6 +94,7 @@ namespace SP_Sklad.MainTabs
             PTypeComboBox.Properties.DataSource = DBHelper.PayTypes;
             CashEditComboBox.Properties.DataSource = DBHelper.CashDesks;
             PersonEdit.Properties.DataSource = DBHelper.Persons;
+            CurrencyLookUpEdit.Properties.DataSource = _db.Currency.ToList();
 
             var ent_id = DBHelper.Enterprise.KaId;
             AccountEdit.Properties.DataSource = _db.EnterpriseAccount.Where(w => w.KaId == ent_id).Select(s => new { s.AccId, s.AccNum, s.BankName }).ToList();
@@ -105,7 +107,7 @@ namespace SP_Sklad.MainTabs
                 return;
             }
 
-            SumEdit.EditValue = _db.WaybillDet.Where(w => w.WbillId == _wb.WbillId).Sum(s => s.Total);
+            SumEdit.EditValue = _db.WaybillDet.Where(w => w.WbillId == _wb.WbillId).Sum(s => s.Total * s.OnValue);
             if (NumEdit.EditValue == null)
             {
                 NumEdit.EditValue = new BaseEntities().GetDocNum("pay_doc").FirstOrDefault();

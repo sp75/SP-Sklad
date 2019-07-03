@@ -305,7 +305,7 @@ namespace SP_Sklad.FinanseForm
             var ka_id = KagentComboBox.EditValue == null || KagentComboBox.EditValue == DBNull.Value ? 0 : (int)KagentComboBox.EditValue;
 
             DocListEdit.Properties.DataSource = DB.SkladBase().GetWayBillList(DateTime.Now.AddYears(-100), DateTime.Now, (int)TypDocsEdit.EditValue, -1, ka_id, 0, "*", DBHelper.CurrentUser.KaId)
-                .OrderByDescending(o => o.OnDate).Where(w => (w.SummAll - w.SummPay) > 0);
+                .OrderByDescending(o => o.OnDate).Where(w => (w.SummInCurr - w.SummPay) > 0);
         }
 
         private void KagentComboBox_EditValueChanged(object sender, EventArgs e)

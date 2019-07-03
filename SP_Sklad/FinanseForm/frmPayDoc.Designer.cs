@@ -875,7 +875,7 @@
             // gridColumn5
             // 
             this.gridColumn5.Caption = "Сума";
-            this.gridColumn5.FieldName = "SummAll";
+            this.gridColumn5.FieldName = "SummInCurr";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;

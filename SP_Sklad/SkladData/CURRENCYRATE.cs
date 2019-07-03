@@ -12,12 +12,12 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class CURRENCYRATE
+    public partial class CurrencyRate
     {
-        public int CURRID { get; set; }
-        public System.DateTime ONDATE { get; set; }
-        public decimal ONVALUE { get; set; }
-        public int RATEID { get; set; }
+        public int RateId { get; set; }
+        public int CurrId { get; set; }
+        public System.DateTime OnDate { get; set; }
+        public decimal OnValue { get; set; }
     
         public virtual Currency Currency { get; set; }
     }

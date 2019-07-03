@@ -55,10 +55,10 @@
             this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.colCurrName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.colNum = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn5 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.colSaldo = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.colSummAll = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.colAmount = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.colReturnAmount = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn8 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn7 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colKaName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -222,9 +222,9 @@
             this.gridBand2,
             this.gridBand1});
             this.bandedGridView1.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
-            this.colCurrName,
-            this.colSummAll,
-            this.colSaldo,
+            this.colNum,
+            this.colReturnAmount,
+            this.colAmount,
             this.bandedGridColumn1,
             this.bandedGridColumn2,
             this.bandedGridColumn3,
@@ -306,10 +306,10 @@
             // 
             this.gridBand1.Caption = "Товари";
             this.gridBand1.Columns.Add(this.bandedGridColumn3);
-            this.gridBand1.Columns.Add(this.colCurrName);
+            this.gridBand1.Columns.Add(this.colNum);
             this.gridBand1.Columns.Add(this.bandedGridColumn5);
-            this.gridBand1.Columns.Add(this.colSaldo);
-            this.gridBand1.Columns.Add(this.colSummAll);
+            this.gridBand1.Columns.Add(this.colAmount);
+            this.gridBand1.Columns.Add(this.colReturnAmount);
             this.gridBand1.Columns.Add(this.bandedGridColumn8);
             this.gridBand1.Columns.Add(this.bandedGridColumn7);
             this.gridBand1.Name = "gridBand1";
@@ -340,13 +340,13 @@
             this.repositoryItemImageComboBox2.Name = "repositoryItemImageComboBox2";
             this.repositoryItemImageComboBox2.SmallImages = this.GridImageList;
             // 
-            // colCurrName
+            // colNum
             // 
-            this.colCurrName.Caption = "№";
-            this.colCurrName.FieldName = "Num";
-            this.colCurrName.Name = "colCurrName";
-            this.colCurrName.Visible = true;
-            this.colCurrName.Width = 108;
+            this.colNum.Caption = "№";
+            this.colNum.FieldName = "Num";
+            this.colNum.Name = "colNum";
+            this.colNum.Visible = true;
+            this.colNum.Width = 108;
             // 
             // bandedGridColumn5
             // 
@@ -358,25 +358,25 @@
             this.bandedGridColumn5.Visible = true;
             this.bandedGridColumn5.Width = 112;
             // 
-            // colSaldo
+            // colAmount
             // 
-            this.colSaldo.Caption = "Кількість";
-            this.colSaldo.DisplayFormat.FormatString = "0.00";
-            this.colSaldo.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colSaldo.FieldName = "Amount";
-            this.colSaldo.Name = "colSaldo";
-            this.colSaldo.Visible = true;
-            this.colSaldo.Width = 91;
+            this.colAmount.Caption = "Кількість";
+            this.colAmount.DisplayFormat.FormatString = "0.00";
+            this.colAmount.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colAmount.FieldName = "Amount";
+            this.colAmount.Name = "colAmount";
+            this.colAmount.Visible = true;
+            this.colAmount.Width = 91;
             // 
-            // colSummAll
+            // colReturnAmount
             // 
-            this.colSummAll.Caption = "Повернення";
-            this.colSummAll.DisplayFormat.FormatString = "0.00";
-            this.colSummAll.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colSummAll.FieldName = "ReturnAmount";
-            this.colSummAll.Name = "colSummAll";
-            this.colSummAll.Visible = true;
-            this.colSummAll.Width = 91;
+            this.colReturnAmount.Caption = "Повернення";
+            this.colReturnAmount.DisplayFormat.FormatString = "0.00";
+            this.colReturnAmount.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colReturnAmount.FieldName = "ReturnAmount";
+            this.colReturnAmount.Name = "colReturnAmount";
+            this.colReturnAmount.Visible = true;
+            this.colReturnAmount.Width = 91;
             // 
             // bandedGridColumn8
             // 
@@ -456,9 +456,9 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn1;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn3;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn2;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colSaldo;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colSummAll;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colCurrName;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colAmount;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colReturnAmount;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colNum;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn4;
         public System.Windows.Forms.ImageList GridImageList;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn5;
