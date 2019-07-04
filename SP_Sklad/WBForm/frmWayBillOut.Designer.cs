@@ -280,7 +280,6 @@
             this.ContractSaleBtn.Id = 17;
             this.ContractSaleBtn.ImageIndex = 17;
             this.ContractSaleBtn.Name = "ContractSaleBtn";
-            this.ContractSaleBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // barButtonItem3
             // 

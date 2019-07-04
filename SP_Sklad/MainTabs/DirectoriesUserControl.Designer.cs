@@ -2601,7 +2601,7 @@
             this.colName.Name = "colName";
             this.colName.Visible = true;
             this.colName.VisibleIndex = 0;
-            this.colName.Width = 264;
+            this.colName.Width = 338;
             // 
             // colAddr
             // 
@@ -2610,7 +2610,7 @@
             this.colAddr.Name = "colAddr";
             this.colAddr.Visible = true;
             this.colAddr.VisibleIndex = 1;
-            this.colAddr.Width = 230;
+            this.colAddr.Width = 294;
             // 
             // colNotes
             // 
@@ -2619,16 +2619,17 @@
             this.colNotes.Name = "colNotes";
             this.colNotes.Visible = true;
             this.colNotes.VisibleIndex = 2;
-            this.colNotes.Width = 271;
+            this.colNotes.Width = 331;
             // 
             // colDef
             // 
+            this.colDef.Caption = "За змавчуванням";
             this.colDef.ColumnEdit = this.repositoryItemCheckEdit11;
             this.colDef.FieldName = "Def";
             this.colDef.Name = "colDef";
             this.colDef.Visible = true;
             this.colDef.VisibleIndex = 3;
-            this.colDef.Width = 69;
+            this.colDef.Width = 105;
             // 
             // repositoryItemCheckEdit11
             // 

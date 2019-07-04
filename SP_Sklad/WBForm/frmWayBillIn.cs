@@ -81,7 +81,7 @@ namespace SP_Sklad.WBForm
             {
                 DBHelper.UpdateSessionWaybill(wb.WbillId);
 
-                if (is_new_record) //Послі копіювання згенерувати новий номер
+                if (is_new_record) //Після копіювання згенерувати новий номер
                 {
                     wb.Num = new BaseEntities().GetDocNum("wb_in").FirstOrDefault();
                 }
@@ -125,12 +125,11 @@ namespace SP_Sklad.WBForm
 
             TurnDocCheckBox.Enabled = (_wtype != 16);
             checkEdit2.Visible = (_wtype == 16);
-            dateEdit2.Visible = (_wtype == 16);
+            ToDateEdit.Visible = (_wtype == 16);
 
             OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
 
             PersonComboBox.Enabled = !String.IsNullOrEmpty(user_settings.AccessEditPersonId) && Convert.ToInt32(user_settings.AccessEditPersonId) == 1;
-            PersonEditBtn.Enabled = PersonComboBox.Enabled;
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -444,30 +443,6 @@ namespace SP_Sklad.WBForm
             IHelper.ShowOrdered((int)KagentComboBox.EditValue, 16, 0);
         }
 
-        private void simpleButton3_Click(object sender, EventArgs e)
-        {
-         //   wb.KaId = (int)IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
-        //    KagentComboBox.EditValue = wb.KaId;
-            KagentComboBox.EditValue = IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
-            if (KagentComboBox.EditValue != null && KagentComboBox.EditValue != DBNull.Value)
-            {
-                wb.KaId = Convert.ToInt32(KagentComboBox.EditValue);
-            }
-
-            GetOk();
-        }
-
-        private void simpleButton4_Click(object sender, EventArgs e)
-        {
-            WHComboBox.EditValue = IHelper.ShowDirectList(WHComboBox.EditValue, 2);
-
-            UpdateWh();
-        }
-
-        private void PersonEditBtn_Click(object sender, EventArgs e)
-        {
-            PersonComboBox.EditValue = IHelper.ShowDirectList(PersonComboBox.EditValue, 3);
-        }
 
         private void frmWayBillIn_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -493,6 +468,59 @@ namespace SP_Sklad.WBForm
             if(e.Button.Index == 1)
             {
                 OnDateDBEdit.DateTime = DBHelper.ServerDateTime();
+            }
+        }
+
+        private void KagentComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                //   wb.KaId = (int)IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
+                //    KagentComboBox.EditValue = wb.KaId;
+                KagentComboBox.EditValue = IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
+                if (KagentComboBox.EditValue != null && KagentComboBox.EditValue != DBNull.Value)
+                {
+                    wb.KaId = Convert.ToInt32(KagentComboBox.EditValue);
+                }
+
+                GetOk();
+            }
+        }
+
+        private void WHComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                WHComboBox.EditValue = IHelper.ShowDirectList(WHComboBox.EditValue, 2);
+
+                UpdateWh();
+            }
+        }
+
+        private void PersonComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                PersonComboBox.EditValue = IHelper.ShowDirectList(PersonComboBox.EditValue, 3);
+            }
+        }
+
+        private void checkEdit2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!checkEdit2.ContainsFocus)
+            {
+                return;
+            }
+
+            if (checkEdit2.Checked)
+            {
+                ToDateEdit.EditValue = OnDateDBEdit.DateTime.AddDays(3);
+                wb.ToDate = OnDateDBEdit.DateTime.AddDays(3);
+            }
+            else
+            {
+                wb.ToDate = null;
+                ToDateEdit.EditValue = null;
             }
         }
     }

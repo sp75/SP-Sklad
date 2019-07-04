@@ -78,8 +78,10 @@
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn37 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn51 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn39 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn41 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn50 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
             this.WayBillListInfoBS = new System.Windows.Forms.BindingSource(this.components);
@@ -913,8 +915,10 @@
             this.gridColumn12,
             this.gridColumn13,
             this.gridColumn37,
+            this.gridColumn51,
             this.gridColumn39,
-            this.gridColumn41});
+            this.gridColumn41,
+            this.gridColumn50});
             this.WaybillDetGridView.GridControl = this.gridControl2;
             this.WaybillDetGridView.Name = "WaybillDetGridView";
             this.WaybillDetGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -990,6 +994,14 @@
             this.gridColumn37.VisibleIndex = 6;
             this.gridColumn37.Width = 99;
             // 
+            // gridColumn51
+            // 
+            this.gridColumn51.Caption = "Валюта";
+            this.gridColumn51.FieldName = "CurrName";
+            this.gridColumn51.Name = "gridColumn51";
+            this.gridColumn51.Visible = true;
+            this.gridColumn51.VisibleIndex = 7;
+            // 
             // gridColumn39
             // 
             this.gridColumn39.Caption = "Склад";
@@ -1006,6 +1018,18 @@
             this.gridColumn41.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn41.FieldName = "UpdateAt";
             this.gridColumn41.Name = "gridColumn41";
+            // 
+            // gridColumn50
+            // 
+            this.gridColumn50.Caption = "Сума в нац. валюті";
+            this.gridColumn50.DisplayFormat.FormatString = "0.00";
+            this.gridColumn50.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn50.FieldName = "TotalInCurrency";
+            this.gridColumn50.Name = "gridColumn50";
+            this.gridColumn50.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalInCurrency", "{0:0.##}")});
+            this.gridColumn50.Visible = true;
+            this.gridColumn50.VisibleIndex = 8;
             // 
             // xtraTabPage1
             // 
@@ -3063,5 +3087,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem14;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn44;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn45;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn50;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn51;
     }
 }
