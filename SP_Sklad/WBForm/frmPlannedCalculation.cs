@@ -221,17 +221,25 @@ namespace SP_Sklad.WBForm
             PrintDoc.Show(pc.Id, 22, _db);
         }
 
+        private void RefreshPlannedCalculation()
+        {
+            foreach (var item in _db.PlannedCalculationDet.Where(w => w.PlannedCalculationId == pc.Id).ToList())
+            {
+                item.RecipePrice = _db.GetRecipePrice(item.RecId, pc.PlId).FirstOrDefault();
+                item.SalesPrice = _db.PriceListDet.Where(w => w.PlId == pc.PlId && w.MatId == item.MatRecipe.MatId).ToList().Select(s => s.Price).FirstOrDefault();
+
+                var recipe = _db.MatRecipe.FirstOrDefault(w => w.RecId == item.RecId);
+                item.RecipeOut = recipe.Out == 0 ? 100 : recipe.Out;
+            }
+            _db.SaveChanges();
+            RefreshDet();
+        }
+
         private void lookUpEdit1_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             if (e.Button.Index == 1)
             {
-                foreach (var item in _db.PlannedCalculationDet.Where(w => w.PlannedCalculationId == pc.Id).ToList())
-                {
-                    item.RecipePrice = _db.GetRecipePrice(item.RecId, pc.PlId).FirstOrDefault();
-                    item.SalesPrice = _db.PriceListDet.Where(w => w.PlId == pc.PlId && w.MatId == item.MatRecipe.MatId).Select(s => s.Price).FirstOrDefault();
-                }
-                _db.SaveChanges();
-                RefreshDet();
+                RefreshPlannedCalculation();
             }
 
             if (e.Button.Index == 2 && lookUpEdit1.EditValue != null && lookUpEdit1.EditValue != DBNull.Value)
@@ -265,6 +273,20 @@ namespace SP_Sklad.WBForm
 
             _db.SaveChanges();
             RefreshDet();
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            RefreshPlannedCalculation();
+        }
+
+        private void gridView8_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                this.WbDetPopupMenu.ShowPopup(p2);
+            }
         }
     }
 }

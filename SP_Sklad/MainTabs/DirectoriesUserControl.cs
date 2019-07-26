@@ -84,6 +84,11 @@ namespace SP_Sklad.MainTabs
             EditItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanModify == 1);
             CopyItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanModify == 1);
 
+            DelExplorerBtn.Enabled = focused_tree_node.GType.Value == 2 || focused_tree_node.GType.Value == 3;
+            RenameMatGroupBarButtonItem.Enabled = DelExplorerBtn.Enabled;
+            EditExplorerBtn.Enabled = DelExplorerBtn.Enabled;
+
+
             RefrechItemBtn.PerformClick();
             mainContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
 
@@ -105,31 +110,13 @@ namespace SP_Sklad.MainTabs
                     LoginGridColumn.Visible = focused_tree_node.GrpId == 2;
 
                     var ent = DBHelper.EnterpriseList.ToList().Select(s => (int?)s.KaId);
-                    //        var ka = DB.SkladBase().KagentList.AsEnumerable();
 
-                    /*    var ka = _db.KagentList.GroupJoin(_db.EnterpriseWorker, k => k.KaId, d => d.WorkerId, (k, d) => new { k, d = d.DefaultIfEmpty() })
-                            .SelectMany(k => k.d.Select(w => new { k, EnterpriseId = (int?)w.EnterpriseId }))
-                            .Where(r => r.EnterpriseId == null || ent.Contains(r.EnterpriseId) )
-                            .Select(r => new
-                            {
-                                KaId = r.k.k.KaId,
-                                Name = r.k.k.Name,
-                                FullName = r.k.k.FullName,
-                                KType = r.k.k.KType,
-                                Archived = r.k.k.Archived,
-                                GroupName = r.k.k.GroupName,
-                                KAgentKind = r.k.k.KAgentKind,
-                                KAU = r.k.k.KAU,
-                                Saldo = r.k.k.Saldo
-                            }).Distinct();*/
                     var ka = (from k in _db.KagentList
                               join ew in _db.EnterpriseWorker on k.KaId equals ew.WorkerId into gj
                               from subfg in gj.DefaultIfEmpty()
-                              where subfg.EnterpriseId == null || ent.Contains(subfg.EnterpriseId)
+                              where (subfg.EnterpriseId == null || ent.Contains(subfg.EnterpriseId)) && k.Deleted == 0
                               select k
                               );
-
-
 
                     if (focused_tree_node.Id != 10)
                     {
@@ -142,6 +129,8 @@ namespace SP_Sklad.MainTabs
                     }
 
                     KAgentDS.DataSource = ka.Distinct().ToList();
+
+                    DBHelper.ReloadKagents();
                     break;
 
                 case 2:
@@ -400,7 +389,10 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType)
             {
                 case 1:
-                    new frmKAgentEdit(focused_tree_node.GrpId).ShowDialog();
+                    using (var k_frm = new frmKAgentEdit(focused_tree_node.GrpId))
+                    {
+                        k_frm.ShowDialog();
+                    }
                     break;
 
                 case 2:
@@ -490,6 +482,13 @@ namespace SP_Sklad.MainTabs
                 {
                     case 1:
                         int KaId = focused_kagent.KaId;
+                        decimal Saldo = focused_kagent.Saldo;
+
+                        if (Saldo != 0)
+                        {
+                            MessageBox.Show("Не можливо видяляти, є залишок по контрагенту");
+                            break;
+                        }
 
                         var item = db.Kagent.Find(KaId);
                         if (item != null)
@@ -863,8 +862,8 @@ namespace SP_Sklad.MainTabs
 
         private void barCheckItem1_CheckedChanged_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            _ka_archived = barCheckItem1.Checked ? 1 : 0;
-            KagentGridColumnArchived.Visible = barCheckItem1.Checked;
+            _ka_archived = ShowKagentArchiveRecordBarCheckItem.Checked ? 1 : 0;
+            KagentGridColumnArchived.Visible = ShowKagentArchiveRecordBarCheckItem.Checked;
             RefrechItemBtn.PerformClick();
         }
 
@@ -1130,11 +1129,63 @@ namespace SP_Sklad.MainTabs
 
         private void barCheckItem2_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-             _show_rec_archived = barCheckItem2.Checked;
-            RecipeArchivedGridColumn.Visible = barCheckItem2.Checked;
+             _show_rec_archived = ShowRecipeArchiveRecordsbarCheckItem.Checked;
+            RecipeArchivedGridColumn.Visible = ShowRecipeArchiveRecordsbarCheckItem.Checked;
 
             RefrechItemBtn.PerformClick();
         }
 
+        private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if(focused_tree_node != null)
+            {
+                if (DirTreeList.FocusedNode.Expanded)
+                {
+                    DirTreeList.FocusedNode.Expanded = false;
+                }
+                else
+                {
+                    DirTreeList.FocusedNode.Expanded = true;
+                }
+            }
+        }
+
+        private void RenameMatGroupBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            DirTreeList.OptionsBehavior.Editable = true;
+            DirTreeList.ShowEditor();
+
+        }
+
+        private void DirTreeList_HiddenEditor(object sender, EventArgs e)
+        {
+            DirTreeList.OptionsBehavior.Editable = false;
+            using (var db = DB.SkladBase())
+            {
+                if (focused_tree_node.GType.Value == 2)
+                {
+                    var g = db.MatGroup.Find(focused_tree_node.Id * -1);
+
+                    if (g != null)
+                    {
+                        g.Name = DirTreeList.FocusedNode.GetDisplayText("Name");
+                    }
+                }
+
+                if (focused_tree_node.GType.Value == 3)
+                {
+
+                    var g = db.SvcGroup.Find(focused_tree_node.Id * -1);
+
+                    if (g != null)
+                    {
+                        g.Name = DirTreeList.FocusedNode.GetDisplayText("Name");
+                    }
+                }
+
+                db.SaveChanges();
+            }
+
+        }
     }
 }

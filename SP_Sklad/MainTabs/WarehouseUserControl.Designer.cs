@@ -36,7 +36,6 @@
             DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView2 = new DevExpress.XtraCharts.StackedBarSeriesView();
             DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView3 = new DevExpress.XtraCharts.StackedBarSeriesView();
-            this.UserTreeImgList = new System.Windows.Forms.ImageList(this.components);
             this.GridImageList = new System.Windows.Forms.ImageList(this.components);
             this.PageImageList = new System.Windows.Forms.ImageList(this.components);
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -149,6 +148,7 @@
             this.gridBand5 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumn8 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn9 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl5 = new DevExpress.XtraGrid.GridControl();
             this.GetOrderedBS = new System.Windows.Forms.BindingSource(this.components);
@@ -288,6 +288,7 @@
             this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             this.PosBottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.UserTreeImgList = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -393,40 +394,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PosBottomPopupMenu)).BeginInit();
             this.SuspendLayout();
-            // 
-            // UserTreeImgList
-            // 
-            this.UserTreeImgList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("UserTreeImgList.ImageStream")));
-            this.UserTreeImgList.TransparentColor = System.Drawing.Color.White;
-            this.UserTreeImgList.Images.SetKeyName(0, "Склад+Торговля.bmp");
-            this.UserTreeImgList.Images.SetKeyName(1, "Документы16x16.bmp");
-            this.UserTreeImgList.Images.SetKeyName(2, "OpenFolder.bmp");
-            this.UserTreeImgList.Images.SetKeyName(3, "ПриходНакл.bmp");
-            this.UserTreeImgList.Images.SetKeyName(4, "Счета.bmp");
-            this.UserTreeImgList.Images.SetKeyName(5, "РасходНакл.bmp");
-            this.UserTreeImgList.Images.SetKeyName(6, "податкова накладна.bmp");
-            this.UserTreeImgList.Images.SetKeyName(7, "Счет-фактуры.bmp");
-            this.UserTreeImgList.Images.SetKeyName(8, "ВходПлатежи.bmp");
-            this.UserTreeImgList.Images.SetKeyName(9, "ИсходПлатежи.bmp");
-            this.UserTreeImgList.Images.SetKeyName(10, "ДопРасход.bmp");
-            this.UserTreeImgList.Images.SetKeyName(11, "Возврат Поставщику.bmp");
-            this.UserTreeImgList.Images.SetKeyName(12, "Возврат от клиетна.bmp");
-            this.UserTreeImgList.Images.SetKeyName(13, "Заказ от клиента.bmp");
-            this.UserTreeImgList.Images.SetKeyName(14, "Заказ поставщикам.bmp");
-            this.UserTreeImgList.Images.SetKeyName(15, "Договор купли.bmp");
-            this.UserTreeImgList.Images.SetKeyName(16, "Договор продажу.bmp");
-            this.UserTreeImgList.Images.SetKeyName(17, "Прайс лист.bmp");
-            this.UserTreeImgList.Images.SetKeyName(18, "Склади.bmp");
-            this.UserTreeImgList.Images.SetKeyName(19, "Накладн_ перем_щення.bmp");
-            this.UserTreeImgList.Images.SetKeyName(20, "Введення залишк_в товар_в.bmp");
-            this.UserTreeImgList.Images.SetKeyName(21, "Акти списання товару.bmp");
-            this.UserTreeImgList.Images.SetKeyName(22, "Акти iнвентаризацiї.bmp");
-            this.UserTreeImgList.Images.SetKeyName(23, "Отчеты.bmp");
-            this.UserTreeImgList.Images.SetKeyName(24, "Справочники.bmp");
-            this.UserTreeImgList.Images.SetKeyName(25, "Конрагент.bmp");
-            this.UserTreeImgList.Images.SetKeyName(26, "Товари.bmp");
-            this.UserTreeImgList.Images.SetKeyName(27, "Послуги.bmp");
-            this.UserTreeImgList.Images.SetKeyName(28, "korganizer.png");
             // 
             // GridImageList
             // 
@@ -1584,7 +1551,8 @@
             this.bandedGridColumn6,
             this.bandedGridColumn7,
             this.bandedGridColumn8,
-            this.bandedGridColumn9});
+            this.bandedGridColumn9,
+            this.bandedGridColumn2});
             this.bandedGridView1.GridControl = this.PosGridControl;
             this.bandedGridView1.Name = "bandedGridView1";
             this.bandedGridView1.OptionsBehavior.AllowIncrementalSearch = true;
@@ -1602,7 +1570,7 @@
             this.gridBand4.Columns.Add(this.gridColumn22);
             this.gridBand4.Name = "gridBand4";
             this.gridBand4.VisibleIndex = 0;
-            this.gridBand4.Width = 309;
+            this.gridBand4.Width = 402;
             // 
             // gridColumn34
             // 
@@ -1617,7 +1585,7 @@
             this.gridColumn34.OptionsColumn.ReadOnly = true;
             this.gridColumn34.OptionsColumn.ShowCaption = false;
             this.gridColumn34.Visible = true;
-            this.gridColumn34.Width = 25;
+            this.gridColumn34.Width = 30;
             // 
             // repositoryItemImageComboBox10
             // 
@@ -1638,7 +1606,7 @@
             this.gridColumn43.FieldName = "DocNum";
             this.gridColumn43.Name = "gridColumn43";
             this.gridColumn43.Visible = true;
-            this.gridColumn43.Width = 113;
+            this.gridColumn43.Width = 145;
             // 
             // gridColumn22
             // 
@@ -1648,7 +1616,7 @@
             this.gridColumn22.FieldName = "OnDate";
             this.gridColumn22.Name = "gridColumn22";
             this.gridColumn22.Visible = true;
-            this.gridColumn22.Width = 171;
+            this.gridColumn22.Width = 227;
             // 
             // gridBand3
             // 
@@ -1658,7 +1626,7 @@
             this.gridBand3.Columns.Add(this.bandedGridColumn7);
             this.gridBand3.Name = "gridBand3";
             this.gridBand3.VisibleIndex = 1;
-            this.gridBand3.Width = 321;
+            this.gridBand3.Width = 418;
             // 
             // gridColumn23
             // 
@@ -1666,7 +1634,7 @@
             this.gridColumn23.FieldName = "Name";
             this.gridColumn23.Name = "gridColumn23";
             this.gridColumn23.Visible = true;
-            this.gridColumn23.Width = 124;
+            this.gridColumn23.Width = 159;
             // 
             // bandedGridColumn6
             // 
@@ -1676,7 +1644,7 @@
             this.bandedGridColumn6.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)});
             this.bandedGridColumn6.Visible = true;
-            this.bandedGridColumn6.Width = 92;
+            this.bandedGridColumn6.Width = 118;
             // 
             // bandedGridColumn7
             // 
@@ -1686,32 +1654,42 @@
             this.bandedGridColumn7.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Rsv", "{0:0.##}")});
             this.bandedGridColumn7.Visible = true;
-            this.bandedGridColumn7.Width = 105;
+            this.bandedGridColumn7.Width = 141;
             // 
             // gridBand5
             // 
             this.gridBand5.Caption = "Вхідна ціна";
             this.gridBand5.Columns.Add(this.bandedGridColumn8);
             this.gridBand5.Columns.Add(this.bandedGridColumn9);
+            this.gridBand5.Columns.Add(this.bandedGridColumn2);
             this.gridBand5.Name = "gridBand5";
             this.gridBand5.VisibleIndex = 2;
-            this.gridBand5.Width = 258;
+            this.gridBand5.Width = 252;
             // 
             // bandedGridColumn8
             // 
-            this.bandedGridColumn8.Caption = "Вхідна ціна";
-            this.bandedGridColumn8.FieldName = "Price";
+            this.bandedGridColumn8.AppearanceCell.Options.UseTextOptions = true;
+            this.bandedGridColumn8.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.bandedGridColumn8.Caption = "Ціна в обліковій валюті";
+            this.bandedGridColumn8.FieldName = "StrPrice";
             this.bandedGridColumn8.Name = "bandedGridColumn8";
             this.bandedGridColumn8.Visible = true;
-            this.bandedGridColumn8.Width = 159;
+            this.bandedGridColumn8.Width = 135;
             // 
             // bandedGridColumn9
             // 
             this.bandedGridColumn9.Caption = "Валюта";
             this.bandedGridColumn9.FieldName = "CurrName";
             this.bandedGridColumn9.Name = "bandedGridColumn9";
-            this.bandedGridColumn9.Visible = true;
-            this.bandedGridColumn9.Width = 99;
+            this.bandedGridColumn9.Width = 73;
+            // 
+            // bandedGridColumn2
+            // 
+            this.bandedGridColumn2.Caption = "Ціна в нац. валюті";
+            this.bandedGridColumn2.FieldName = "CurrencyPrice";
+            this.bandedGridColumn2.Name = "bandedGridColumn2";
+            this.bandedGridColumn2.Visible = true;
+            this.bandedGridColumn2.Width = 117;
             // 
             // xtraTabPage5
             // 
@@ -3194,6 +3172,66 @@
             this.PosBottomPopupMenu.Manager = this.barManager1;
             this.PosBottomPopupMenu.Name = "PosBottomPopupMenu";
             // 
+            // UserTreeImgList
+            // 
+            this.UserTreeImgList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("UserTreeImgList.ImageStream")));
+            this.UserTreeImgList.TransparentColor = System.Drawing.Color.White;
+            this.UserTreeImgList.Images.SetKeyName(0, "Склад+Торговля.bmp");
+            this.UserTreeImgList.Images.SetKeyName(1, "Документы16x16.bmp");
+            this.UserTreeImgList.Images.SetKeyName(2, "OpenFolder.bmp");
+            this.UserTreeImgList.Images.SetKeyName(3, "ПриходНакл.bmp");
+            this.UserTreeImgList.Images.SetKeyName(4, "Счета.bmp");
+            this.UserTreeImgList.Images.SetKeyName(5, "РасходНакл.bmp");
+            this.UserTreeImgList.Images.SetKeyName(6, "податкова накладна.bmp");
+            this.UserTreeImgList.Images.SetKeyName(7, "Счет-фактуры.bmp");
+            this.UserTreeImgList.Images.SetKeyName(8, "ВходПлатежи.bmp");
+            this.UserTreeImgList.Images.SetKeyName(9, "ИсходПлатежи.bmp");
+            this.UserTreeImgList.Images.SetKeyName(10, "ДопРасход.bmp");
+            this.UserTreeImgList.Images.SetKeyName(11, "Возврат Поставщику.bmp");
+            this.UserTreeImgList.Images.SetKeyName(12, "Возврат от клиетна.bmp");
+            this.UserTreeImgList.Images.SetKeyName(13, "Заказ от клиента.bmp");
+            this.UserTreeImgList.Images.SetKeyName(14, "Заказ поставщикам.bmp");
+            this.UserTreeImgList.Images.SetKeyName(15, "Договор купли.bmp");
+            this.UserTreeImgList.Images.SetKeyName(16, "Договор продажу.bmp");
+            this.UserTreeImgList.Images.SetKeyName(17, "Прайс лист.bmp");
+            this.UserTreeImgList.Images.SetKeyName(18, "Склади.bmp");
+            this.UserTreeImgList.Images.SetKeyName(19, "Накладн_ перем_щення.bmp");
+            this.UserTreeImgList.Images.SetKeyName(20, "Введення залишк_в товар_в.bmp");
+            this.UserTreeImgList.Images.SetKeyName(21, "Акти списання товару.bmp");
+            this.UserTreeImgList.Images.SetKeyName(22, "Акти iнвентаризацiї.bmp");
+            this.UserTreeImgList.Images.SetKeyName(23, "Зв_ти.bmp");
+            this.UserTreeImgList.Images.SetKeyName(24, "Справочники.bmp");
+            this.UserTreeImgList.Images.SetKeyName(25, "Конрагент.bmp");
+            this.UserTreeImgList.Images.SetKeyName(26, "Товари.bmp");
+            this.UserTreeImgList.Images.SetKeyName(27, "Послуги.bmp");
+            this.UserTreeImgList.Images.SetKeyName(28, "korganizer.png");
+            this.UserTreeImgList.Images.SetKeyName(29, "Валюта.bmp");
+            this.UserTreeImgList.Images.SetKeyName(30, "Дисконтна картка.bmp");
+            this.UserTreeImgList.Images.SetKeyName(31, "Склади.bmp");
+            this.UserTreeImgList.Images.SetKeyName(32, "Одиниц_ вим_ру.bmp");
+            this.UserTreeImgList.Images.SetKeyName(33, "Банки.bmp");
+            this.UserTreeImgList.Images.SetKeyName(34, "Ц_нов_ кат.bmp");
+            this.UserTreeImgList.Images.SetKeyName(35, "Типи рахунк_в.bmp");
+            this.UserTreeImgList.Images.SetKeyName(36, "Країни.bmp");
+            this.UserTreeImgList.Images.SetKeyName(37, "Статт_ витрат.bmp");
+            this.UserTreeImgList.Images.SetKeyName(38, "Каси.bmp");
+            this.UserTreeImgList.Images.SetKeyName(39, "Податки.bmp");
+            this.UserTreeImgList.Images.SetKeyName(40, "Серв_с.bmp");
+            this.UserTreeImgList.Images.SetKeyName(41, "Користувач_.bmp");
+            this.UserTreeImgList.Images.SetKeyName(42, "Бази даних.bmp");
+            this.UserTreeImgList.Images.SetKeyName(43, "Редактор SQL-запитiв.bmp");
+            this.UserTreeImgList.Images.SetKeyName(44, "Журнал под_й.bmp");
+            this.UserTreeImgList.Images.SetKeyName(45, "view_settings.bmp");
+            this.UserTreeImgList.Images.SetKeyName(46, "Ф_нанси.bmp");
+            this.UserTreeImgList.Images.SetKeyName(47, "Безгот_вков_ грош_.bmp");
+            this.UserTreeImgList.Images.SetKeyName(48, "iconfinder_General_Office_24_2530784.png");
+            this.UserTreeImgList.Images.SetKeyName(49, "юзер.bmp");
+            this.UserTreeImgList.Images.SetKeyName(50, "exec16.png");
+            this.UserTreeImgList.Images.SetKeyName(51, "korganizer.png");
+            this.UserTreeImgList.Images.SetKeyName(52, "_нформац_я про рух товар_в.bmp");
+            this.UserTreeImgList.Images.SetKeyName(53, "пратнерка.png");
+            this.UserTreeImgList.Images.SetKeyName(54, "map_pin-next-16.png");
+            // 
             // WarehouseUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3321,8 +3359,6 @@
         }
 
         #endregion
-
-        public System.Windows.Forms.ImageList UserTreeImgList;
         public System.Windows.Forms.ImageList GridImageList;
         public System.Windows.Forms.ImageList PageImageList;
         private DevExpress.XtraBars.BarManager barManager1;
@@ -3440,9 +3476,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn6;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn7;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn8;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand5;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn9;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox10;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn44;
@@ -3574,5 +3607,10 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit3;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow1;
         private System.Windows.Forms.BindingSource ExtMatIfoBS;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand5;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn2;
+        public System.Windows.Forms.ImageList UserTreeImgList;
     }
 }

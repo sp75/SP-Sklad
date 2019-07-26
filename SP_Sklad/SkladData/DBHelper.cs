@@ -28,6 +28,7 @@ namespace SP_Sklad.SkladData
         private static List<DocType> _doc_type;
         private static List<Packaging> _packaging;
         private static List<WhList> _wh_list;
+        private static Currency _national_currency;
 
         public static List<Countries> CountersList
         {
@@ -132,6 +133,10 @@ namespace SP_Sklad.SkladData
                 }
                 return _kagents;
             }
+        }
+        public static void ReloadKagents()
+        {
+            _kagents = null;
         }
 
         public static IEnumerable<object> KagentsList
@@ -291,6 +296,18 @@ namespace SP_Sklad.SkladData
                     _currency = new BaseEntities().Currency.ToList();
                 }
                 return _currency;
+            }
+        }
+
+        public static Currency NationalCurrency
+        {
+            get
+            {
+                if (_national_currency == null)
+                {
+                    _national_currency = Currency.FirstOrDefault(w => w.Def == 1);
+                }
+                return _national_currency;
             }
         }
 
@@ -464,6 +481,8 @@ order by wbd.ondate desc
                 return db.UserTreeAccess.Any(w => w.FunId == fun_id && w.UserId == DBHelper.CurrentUser.UserId);
             }
         }
+
+     
     }
 
 

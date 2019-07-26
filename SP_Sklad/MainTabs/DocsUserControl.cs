@@ -94,6 +94,9 @@ namespace SP_Sklad.MainTabs
 
                 WbSummPayGridColumn.Visible = WbBalansGridColumn.Visible;
                 WbSummPayGridColumn.OptionsColumn.ShowInCustomizationForm = WbBalansGridColumn.Visible;
+
+                gridColumn50.Caption = "Сума в нац. валюті, " + DBHelper.NationalCurrency.ShortName;
+                gridColumn44.Caption = gridColumn50.Caption;
             }
 
         //    WbGridView.SaveLayoutToXml(@"D:\Program RES\AVK\t.xml");
@@ -995,6 +998,7 @@ namespace SP_Sklad.MainTabs
             switch (xtraTabControl2.SelectedTabPageIndex)
             {
                 case 0:
+                    gridColumn37.Caption = "Сума в валюті, " + dr.CurrName;
                     gridControl2.DataSource = _db.GetWaybillDetIn(dr.WbillId).ToList().OrderBy(o=> o.Num);
                     break;
 

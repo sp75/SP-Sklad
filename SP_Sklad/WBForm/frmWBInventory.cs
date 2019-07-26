@@ -226,9 +226,12 @@ namespace SP_Sklad.WBForm
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (new frmWBInventoryDet(_db, null, wb).ShowDialog() == DialogResult.OK)
+            using (var frm = new frmWBInventoryDet(_db, null, wb))
             {
-                RefreshDet();
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    RefreshDet();
+                }
             }
         }
 
@@ -236,9 +239,12 @@ namespace SP_Sklad.WBForm
         {
             dynamic dr = InventoryDetGridView.GetFocusedRow();
 
-            if (new frmWBInventoryDet(_db, dr.PosId, wb).ShowDialog() == DialogResult.OK)
+            using (var frm = new frmWBInventoryDet(_db, dr.PosId, wb))
             {
-                RefreshDet();
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    RefreshDet();
+                }
             }
         }
 

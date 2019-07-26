@@ -795,7 +795,23 @@ namespace SP_Sklad.Common
                 }
             }
         }
+
+        public static decimal GetAmounRecipe(BaseEntities db, int mat_id, int rec_id)
+        {
+            var measure_id = db.Materials.Find(mat_id).MId;
+
+            var main_sum = db.MatRecDet.Where(w => w.RecId == rec_id && w.Materials.MId == measure_id).ToList()
+                   .Sum(s => s.Amount);
+
+            var ext_sum = db.MatRecDet.Where(w => w.RecId == rec_id && w.Materials.MId != w.MatRecipe.Materials.MId)
+                .Select(s => new { MaterialMeasures = s.Materials.MaterialMeasures.Where(f => f.MId == measure_id), s.Amount }).ToList()
+                .SelectMany(sm => sm.MaterialMeasures, (k, n) => new { k.Amount, MeasureAmount = n.Amount }).Sum(su => su.MeasureAmount * su.Amount);
+
+            return main_sum + ext_sum;
+        }
     }
+
+
 
     public class CustomMatList
     {

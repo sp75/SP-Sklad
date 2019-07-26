@@ -356,6 +356,7 @@ namespace SP_Sklad.WBForm
             var wbd = _db.WaybillDet.Find(dr.PosId);
 
             wbd.Amount = Convert.ToDecimal(e.Value);
+            wbd.Checked = 1;
 
             var wmt = _db.WMatTurn.FirstOrDefault(w => w.SourceId == wbd.PosId && w.TurnType == 3);
             if (wmt != null)
@@ -376,8 +377,11 @@ namespace SP_Sklad.WBForm
                     });
                // }
             }
+            _db.SaveChanges();
 
-        //    var dd = WayBillsController.GetWaybillDetIn(_db, _wbill_id);
+            IHelper.MapProp(_db.GetWaybillDetIn(_wbill_id).AsNoTracking().FirstOrDefault(w => w.PosId == wbd_row.PosId), wbd_row);
+
+            //    var dd = WayBillsController.GetWaybillDetIn(_db, _wbill_id);
         }
 
         private void PrintBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -521,6 +525,64 @@ namespace SP_Sklad.WBForm
             {
                 wb.ToDate = null;
                 ToDateEdit.EditValue = null;
+            }
+        }
+
+        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (wbd_row.PosType == 0)
+            {
+                var wbd = _db.WaybillDet.Find(wbd_row.PosId);
+                if (wbd != null)
+                {
+                    if (wbd.Checked == 1)
+                    {
+                        wbd.Checked = 0;
+                        wbd_row.Checked = 0;
+                    }
+                    else
+                    {
+                        wbd.Checked = 1;
+                        wbd_row.Checked = 1;
+                    }
+                }
+            }
+            if (wbd_row.PosType == 2)
+            {
+                var wbt = _db.WayBillTmc.Find(wbd_row.PosId);
+                if (wbt != null)
+                {
+                    if (wbt.Checked == 1)
+                    {
+                        wbt.Checked = 0;
+                        wbd_row.Checked = 0;
+                    }
+                    else
+                    {
+                        wbt.Checked = 1;
+                        wbd_row.Checked = 1;
+                    }
+                }
+            }
+
+            _db.SaveChanges();
+
+            WaybillDetInGridView.RefreshRow(WaybillDetInGridView.FocusedRowHandle);
+        }
+
+        private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            _db.SaveChanges();
+            _db.DeleteWhere<WaybillDet>(w => w.WbillId == _wbill_id && w.Checked != 1);
+            RefreshDet();
+        }
+
+        private void WaybillDetInGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                this.WbDetPopupMenu.ShowPopup(p2);
             }
         }
     }

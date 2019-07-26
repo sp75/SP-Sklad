@@ -104,10 +104,18 @@ namespace SP_Sklad.WBDetForm
             int mat_id = row.MatId;
             decimal RecipeOut = row.Out == 0 ? 100 : row.Out;
 
-            var main_sum = _db.MatRecDet.Where(w => w.RecId == rec_id && w.Materials.MId == w.MatRecipe.Materials.MId).ToList().Sum(s => s.Amount);
-            var ext_sum = _db.MatRecDet.Where(w => w.RecId == rec_id && w.Materials.MId != w.MatRecipe.Materials.MId).ToList().Sum(s => (s.Materials.Weight ?? 0) * s.Amount);
+        /*    var measure_id = _db.Materials.Find(mat_id).MId;
 
-            det.Amount = main_sum + ext_sum;
+            var main_sum = _db.MatRecDet.Where(w => w.RecId == rec_id && w.Materials.MId == measure_id).ToList().Sum(s => s.Amount);
+
+            var ext_sum = _db.MatRecDet.Where(w => w.RecId == rec_id && w.Materials.MId != w.MatRecipe.Materials.MId)
+                .Select(s => new { MaterialMeasures = s.Materials.MaterialMeasures.Where(f => f.MId == measure_id), s.Amount }).ToList()
+                .SelectMany(sm => sm.MaterialMeasures, (k, n) => new { k.Amount, MeasureAmount = n.Amount }).Sum(su => su.MeasureAmount * su.Amount);*/
+
+         /*   var main_sum = _db.MatRecDet.Where(w => w.RecId == rec_id && w.Materials.MId == w.MatRecipe.Materials.MId).ToList().Sum(s => s.Amount);
+            var ext_sum = _db.MatRecDet.Where(w => w.RecId == rec_id && w.Materials.MId != w.MatRecipe.Materials.MId).ToList().Sum(s => (s.Materials.Weight ?? 0) * s.Amount);*/
+
+            det.Amount = IHelper.GetAmounRecipe(_db,mat_id, rec_id); // main_sum + ext_sum;
             det.RecipeOut = RecipeOut;
             det.SalesPrice = _db.PriceListDet.Where(w => w.PlId == _pc.PlId && w.MatId == mat_id).Select(s => s.Price).FirstOrDefault();
             det.RecipePrice = _db.GetRecipePrice(rec_id, _pc.PlId).FirstOrDefault();

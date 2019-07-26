@@ -34,5 +34,7 @@ namespace SP_Sklad.SkladData
         public string Producer { get; set; }
         public Nullable<decimal> CurRemain { get; set; }
         public Nullable<int> DocType { get; set; }
+        public string StrPrice { get; set; }
+        public Nullable<decimal> CurrencyPrice { get; set; }
     }
 }

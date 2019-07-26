@@ -78,7 +78,6 @@
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn37 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn51 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn39 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn41 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn50 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -431,12 +430,38 @@
             this.UserTreeImgList.Images.SetKeyName(20, "Введення залишк_в товар_в.bmp");
             this.UserTreeImgList.Images.SetKeyName(21, "Акти списання товару.bmp");
             this.UserTreeImgList.Images.SetKeyName(22, "Акти iнвентаризацiї.bmp");
-            this.UserTreeImgList.Images.SetKeyName(23, "Отчеты.bmp");
+            this.UserTreeImgList.Images.SetKeyName(23, "Зв_ти.bmp");
             this.UserTreeImgList.Images.SetKeyName(24, "Справочники.bmp");
             this.UserTreeImgList.Images.SetKeyName(25, "Конрагент.bmp");
             this.UserTreeImgList.Images.SetKeyName(26, "Товари.bmp");
             this.UserTreeImgList.Images.SetKeyName(27, "Послуги.bmp");
             this.UserTreeImgList.Images.SetKeyName(28, "korganizer.png");
+            this.UserTreeImgList.Images.SetKeyName(29, "Валюта.bmp");
+            this.UserTreeImgList.Images.SetKeyName(30, "Дисконтна картка.bmp");
+            this.UserTreeImgList.Images.SetKeyName(31, "Склади.bmp");
+            this.UserTreeImgList.Images.SetKeyName(32, "Одиниц_ вим_ру.bmp");
+            this.UserTreeImgList.Images.SetKeyName(33, "Банки.bmp");
+            this.UserTreeImgList.Images.SetKeyName(34, "Ц_нов_ кат.bmp");
+            this.UserTreeImgList.Images.SetKeyName(35, "Типи рахунк_в.bmp");
+            this.UserTreeImgList.Images.SetKeyName(36, "Країни.bmp");
+            this.UserTreeImgList.Images.SetKeyName(37, "Статт_ витрат.bmp");
+            this.UserTreeImgList.Images.SetKeyName(38, "Каси.bmp");
+            this.UserTreeImgList.Images.SetKeyName(39, "Податки.bmp");
+            this.UserTreeImgList.Images.SetKeyName(40, "Серв_с.bmp");
+            this.UserTreeImgList.Images.SetKeyName(41, "Користувач_.bmp");
+            this.UserTreeImgList.Images.SetKeyName(42, "Бази даних.bmp");
+            this.UserTreeImgList.Images.SetKeyName(43, "Редактор SQL-запитiв.bmp");
+            this.UserTreeImgList.Images.SetKeyName(44, "Журнал под_й.bmp");
+            this.UserTreeImgList.Images.SetKeyName(45, "view_settings.bmp");
+            this.UserTreeImgList.Images.SetKeyName(46, "Ф_нанси.bmp");
+            this.UserTreeImgList.Images.SetKeyName(47, "Безгот_вков_ грош_.bmp");
+            this.UserTreeImgList.Images.SetKeyName(48, "iconfinder_General_Office_24_2530784.png");
+            this.UserTreeImgList.Images.SetKeyName(49, "юзер.bmp");
+            this.UserTreeImgList.Images.SetKeyName(50, "exec16.png");
+            this.UserTreeImgList.Images.SetKeyName(51, "korganizer.png");
+            this.UserTreeImgList.Images.SetKeyName(52, "_нформац_я про рух товар_в.bmp");
+            this.UserTreeImgList.Images.SetKeyName(53, "пратнерка.png");
+            this.UserTreeImgList.Images.SetKeyName(54, "map_pin-next-16.png");
             // 
             // wbContentTab
             // 
@@ -915,7 +940,6 @@
             this.gridColumn12,
             this.gridColumn13,
             this.gridColumn37,
-            this.gridColumn51,
             this.gridColumn39,
             this.gridColumn41,
             this.gridColumn50});
@@ -935,7 +959,7 @@
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 0;
-            this.gridColumn9.Width = 50;
+            this.gridColumn9.Width = 54;
             // 
             // gridColumn10
             // 
@@ -944,7 +968,7 @@
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 1;
-            this.gridColumn10.Width = 251;
+            this.gridColumn10.Width = 273;
             // 
             // gridColumn11
             // 
@@ -954,6 +978,7 @@
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 3;
+            this.gridColumn11.Width = 81;
             // 
             // repositoryItemCalcEdit1
             // 
@@ -970,37 +995,28 @@
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 4;
-            this.gridColumn12.Width = 69;
             // 
             // gridColumn13
             // 
-            this.gridColumn13.Caption = "Ціна";
+            this.gridColumn13.Caption = "Ціна з ПДВ";
             this.gridColumn13.DisplayFormat.FormatString = "0.00";
             this.gridColumn13.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn13.FieldName = "Price";
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
             this.gridColumn13.VisibleIndex = 5;
-            this.gridColumn13.Width = 42;
+            this.gridColumn13.Width = 83;
             // 
             // gridColumn37
             // 
-            this.gridColumn37.Caption = "Сума з ПДВ";
+            this.gridColumn37.Caption = "Сума в валюті";
             this.gridColumn37.FieldName = "Total";
             this.gridColumn37.Name = "gridColumn37";
             this.gridColumn37.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", "{0:0.##}")});
             this.gridColumn37.Visible = true;
             this.gridColumn37.VisibleIndex = 6;
-            this.gridColumn37.Width = 99;
-            // 
-            // gridColumn51
-            // 
-            this.gridColumn51.Caption = "Валюта";
-            this.gridColumn51.FieldName = "CurrName";
-            this.gridColumn51.Name = "gridColumn51";
-            this.gridColumn51.Visible = true;
-            this.gridColumn51.VisibleIndex = 7;
+            this.gridColumn37.Width = 92;
             // 
             // gridColumn39
             // 
@@ -1009,7 +1025,7 @@
             this.gridColumn39.Name = "gridColumn39";
             this.gridColumn39.Visible = true;
             this.gridColumn39.VisibleIndex = 2;
-            this.gridColumn39.Width = 194;
+            this.gridColumn39.Width = 211;
             // 
             // gridColumn41
             // 
@@ -1029,7 +1045,8 @@
             this.gridColumn50.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalInCurrency", "{0:0.##}")});
             this.gridColumn50.Visible = true;
-            this.gridColumn50.VisibleIndex = 8;
+            this.gridColumn50.VisibleIndex = 7;
+            this.gridColumn50.Width = 77;
             // 
             // xtraTabPage1
             // 
@@ -2907,7 +2924,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
-        public System.Windows.Forms.ImageList UserTreeImgList;
         public System.Windows.Forms.ImageList GridImageList;
         public System.Windows.Forms.ImageList PageImageList;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
@@ -3088,6 +3104,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn44;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn45;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn50;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn51;
+        public System.Windows.Forms.ImageList UserTreeImgList;
     }
 }

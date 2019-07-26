@@ -428,16 +428,18 @@ namespace SP_Sklad.EditForm
         {
             if (e.Button.Index == 1)
             {
-                var measure_id = _db.Materials.Find(_mr.MatId).MId;
+                /*     var measure_id = _db.Materials.Find(_mr.MatId).MId;
 
-                var main_sum = _db.MatRecDet.Where(w => w.RecId == _mr.RecId && w.Materials.MId == measure_id).ToList()
-                    .Sum(s => s.Amount);
+                     var main_sum = _db.MatRecDet.Where(w => w.RecId == _mr.RecId && w.Materials.MId == measure_id).ToList()
+                         .Sum(s => s.Amount);
 
-                var ext_sum = _db.MatRecDet.Where(w => w.RecId == _mr.RecId && w.Materials.MId != w.MatRecipe.Materials.MId)
-                    .Select(s => new { MaterialMeasures = s.Materials.MaterialMeasures.Where(f => f.MId == measure_id), s.Amount }).ToList()
-                    .SelectMany(sm => sm.MaterialMeasures, (k, n) => new { k.Amount, MeasureAmount = n.Amount }).Sum(su => su.MeasureAmount * su.Amount);
+                     var ext_sum = _db.MatRecDet.Where(w => w.RecId == _mr.RecId && w.Materials.MId != w.MatRecipe.Materials.MId)
+                         .Select(s => new { MaterialMeasures = s.Materials.MaterialMeasures.Where(f => f.MId == measure_id), s.Amount }).ToList()
+                         .SelectMany(sm => sm.MaterialMeasures, (k, n) => new { k.Amount, MeasureAmount = n.Amount }).Sum(su => su.MeasureAmount * su.Amount);
 
-                textEdit3.EditValue = main_sum + ext_sum;
+                     textEdit3.EditValue = main_sum + ext_sum;*/
+
+                textEdit3.EditValue = IHelper.GetAmounRecipe(_db,_mr.MatId, _mr.RecId);
             }
         }
 

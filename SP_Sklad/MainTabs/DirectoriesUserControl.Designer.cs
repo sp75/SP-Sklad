@@ -53,6 +53,9 @@
             this.standaloneBarDockControl7 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.showChildNodeBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.AddGroupMatBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.standaloneBarDockControl8 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -64,26 +67,23 @@
             this.standaloneBarDockControl4 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl5 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.BarImageList = new System.Windows.Forms.ImageList(this.components);
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
-            this.AddGroupMatBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
+            this.RenameMatGroupBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.ExplorerRefreshBtn = new DevExpress.XtraBars.BarButtonItem();
             this.DelExplorerBtn = new DevExpress.XtraBars.BarButtonItem();
             this.EditExplorerBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.KagentBalansBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
+            this.MoveKagentArchiveBtnItem = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
+            this.MoveMatToArchiveBarBtnItem = new DevExpress.XtraBars.BarButtonItem();
             this.showMatArhivedBtn = new DevExpress.XtraBars.BarCheckItem();
-            this.barCheckItem1 = new DevExpress.XtraBars.BarCheckItem();
-            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
-            this.barCheckItem2 = new DevExpress.XtraBars.BarCheckItem();
+            this.ShowKagentArchiveRecordBarCheckItem = new DevExpress.XtraBars.BarCheckItem();
+            this.MoveToRecipeArchiveBarBtnItem = new DevExpress.XtraBars.BarButtonItem();
+            this.ShowRecipeArchiveRecordsbarCheckItem = new DevExpress.XtraBars.BarCheckItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.DirTreeList = new DevExpress.XtraTreeList.TreeList();
@@ -644,7 +644,7 @@
             this.EditItemBtn,
             this.DeleteItemBtn,
             this.RefrechItemBtn,
-            this.barButtonItem1,
+            this.RenameMatGroupBarButtonItem,
             this.barSubItem1,
             this.ExplorerRefreshBtn,
             this.DelExplorerBtn,
@@ -654,20 +654,20 @@
             this.barButtonItem8,
             this.KagentBalansBtn,
             this.barButtonItem3,
-            this.barButtonItem10,
+            this.MoveKagentArchiveBtnItem,
             this.barButtonItem2,
             this.AddItem,
             this.DelItem,
             this.barButtonItem4,
             this.barButtonItem5,
             this.barButtonItem12,
-            this.barButtonItem13,
+            this.MoveMatToArchiveBarBtnItem,
             this.showMatArhivedBtn,
-            this.barCheckItem1,
+            this.ShowKagentArchiveRecordBarCheckItem,
             this.showChildNodeBtn,
             this.barButtonItem11,
-            this.barButtonItem7,
-            this.barCheckItem2});
+            this.MoveToRecipeArchiveBarBtnItem,
+            this.ShowRecipeArchiveRecordsbarCheckItem});
             this.barManager1.MaxItemId = 41;
             // 
             // bar1
@@ -798,7 +798,8 @@
             this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
             this.bar3.FloatLocation = new System.Drawing.Point(62, 139);
             this.bar3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.showChildNodeBtn)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.showChildNodeBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1)});
             this.bar3.OptionsBar.AllowQuickCustomization = false;
             this.bar3.OptionsBar.DrawDragBorder = false;
             this.bar3.OptionsBar.UseWholeRow = true;
@@ -811,10 +812,35 @@
             this.showChildNodeBtn.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check;
             this.showChildNodeBtn.Caption = "Відображати з підпорядкованих груп";
             this.showChildNodeBtn.Id = 37;
-            this.showChildNodeBtn.ImageIndex = 12;
+            this.showChildNodeBtn.ImageIndex = 16;
             this.showChildNodeBtn.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("showChildNodeBtn.LargeGlyph")));
             this.showChildNodeBtn.Name = "showChildNodeBtn";
             this.showChildNodeBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick);
+            // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "Додати...";
+            this.barSubItem1.Id = 13;
+            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.AddGroupMatBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8)});
+            this.barSubItem1.Name = "barSubItem1";
+            // 
+            // AddGroupMatBtn
+            // 
+            this.AddGroupMatBtn.Caption = "Групу товарів";
+            this.AddGroupMatBtn.Id = 19;
+            this.AddGroupMatBtn.ImageIndex = 14;
+            this.AddGroupMatBtn.Name = "AddGroupMatBtn";
+            this.AddGroupMatBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddGroupMatBtn_ItemClick);
+            // 
+            // barButtonItem8
+            // 
+            this.barButtonItem8.Caption = "Групу послуг";
+            this.barButtonItem8.Id = 20;
+            this.barButtonItem8.ImageIndex = 13;
+            this.barButtonItem8.Name = "barButtonItem8";
+            this.barButtonItem8.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
             // 
             // standaloneBarDockControl8
             // 
@@ -921,40 +947,24 @@
             this.BarImageList.Images.SetKeyName(10, "Рух товар_в.bmp");
             this.BarImageList.Images.SetKeyName(11, "Склади.bmp");
             this.BarImageList.Images.SetKeyName(12, "treeview.png");
+            this.BarImageList.Images.SetKeyName(13, "Послуги.bmp");
+            this.BarImageList.Images.SetKeyName(14, "Товари.bmp");
+            this.BarImageList.Images.SetKeyName(15, "iconfinder_folder_edit_36067.png");
+            this.BarImageList.Images.SetKeyName(16, "hierarchy_2-512 (1).png");
             // 
-            // barButtonItem1
+            // RenameMatGroupBarButtonItem
             // 
-            this.barButtonItem1.Caption = "Перейменувати";
-            this.barButtonItem1.Id = 12;
-            this.barButtonItem1.Name = "barButtonItem1";
-            // 
-            // barSubItem1
-            // 
-            this.barSubItem1.Caption = "Додати...";
-            this.barSubItem1.Id = 13;
-            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.AddGroupMatBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8)});
-            this.barSubItem1.Name = "barSubItem1";
-            // 
-            // AddGroupMatBtn
-            // 
-            this.AddGroupMatBtn.Caption = "Групу товарів";
-            this.AddGroupMatBtn.Id = 19;
-            this.AddGroupMatBtn.Name = "AddGroupMatBtn";
-            this.AddGroupMatBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddGroupMatBtn_ItemClick);
-            // 
-            // barButtonItem8
-            // 
-            this.barButtonItem8.Caption = "Групу послуг";
-            this.barButtonItem8.Id = 20;
-            this.barButtonItem8.Name = "barButtonItem8";
-            this.barButtonItem8.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
+            this.RenameMatGroupBarButtonItem.Caption = "Перейменувати";
+            this.RenameMatGroupBarButtonItem.Id = 12;
+            this.RenameMatGroupBarButtonItem.ImageIndex = 15;
+            this.RenameMatGroupBarButtonItem.Name = "RenameMatGroupBarButtonItem";
+            this.RenameMatGroupBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RenameMatGroupBarButtonItem_ItemClick);
             // 
             // ExplorerRefreshBtn
             // 
             this.ExplorerRefreshBtn.Caption = "Обновити";
             this.ExplorerRefreshBtn.Id = 15;
+            this.ExplorerRefreshBtn.ImageIndex = 4;
             this.ExplorerRefreshBtn.Name = "ExplorerRefreshBtn";
             this.ExplorerRefreshBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExplorerRefreshBtn_ItemClick);
             // 
@@ -962,6 +972,7 @@
             // 
             this.DelExplorerBtn.Caption = "Видалити";
             this.DelExplorerBtn.Id = 16;
+            this.DelExplorerBtn.ImageIndex = 3;
             this.DelExplorerBtn.Name = "DelExplorerBtn";
             this.DelExplorerBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DelExplorerBtn_ItemClick);
             // 
@@ -969,6 +980,7 @@
             // 
             this.EditExplorerBtn.Caption = "Властивості...";
             this.EditExplorerBtn.Id = 17;
+            this.EditExplorerBtn.ImageIndex = 2;
             this.EditExplorerBtn.Name = "EditExplorerBtn";
             this.EditExplorerBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
             // 
@@ -976,7 +988,9 @@
             // 
             this.barButtonItem6.Caption = "Згорнути\\розгорнути";
             this.barButtonItem6.Id = 18;
+            this.barButtonItem6.ImageIndex = 16;
             this.barButtonItem6.Name = "barButtonItem6";
+            this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
             // 
             // KagentBalansBtn
             // 
@@ -994,12 +1008,12 @@
             this.barButtonItem3.Name = "barButtonItem3";
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
-            // barButtonItem10
+            // MoveKagentArchiveBtnItem
             // 
-            this.barButtonItem10.Caption = "Перемістити в архів";
-            this.barButtonItem10.Id = 25;
-            this.barButtonItem10.Name = "barButtonItem10";
-            this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
+            this.MoveKagentArchiveBtnItem.Caption = "Перемістити/Відновити з архіву";
+            this.MoveKagentArchiveBtnItem.Id = 25;
+            this.MoveKagentArchiveBtnItem.Name = "MoveKagentArchiveBtnItem";
+            this.MoveKagentArchiveBtnItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
             // 
             // barButtonItem2
             // 
@@ -1031,12 +1045,12 @@
             this.barButtonItem12.Name = "barButtonItem12";
             this.barButtonItem12.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem12_ItemClick);
             // 
-            // barButtonItem13
+            // MoveMatToArchiveBarBtnItem
             // 
-            this.barButtonItem13.Caption = "Перемістити в архів";
-            this.barButtonItem13.Id = 33;
-            this.barButtonItem13.Name = "barButtonItem13";
-            this.barButtonItem13.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem13_ItemClick);
+            this.MoveMatToArchiveBarBtnItem.Caption = "Перемістити в архів";
+            this.MoveMatToArchiveBarBtnItem.Id = 33;
+            this.MoveMatToArchiveBarBtnItem.Name = "MoveMatToArchiveBarBtnItem";
+            this.MoveMatToArchiveBarBtnItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem13_ItemClick);
             // 
             // showMatArhivedBtn
             // 
@@ -1045,26 +1059,26 @@
             this.showMatArhivedBtn.Name = "showMatArhivedBtn";
             this.showMatArhivedBtn.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem1_CheckedChanged);
             // 
-            // barCheckItem1
+            // ShowKagentArchiveRecordBarCheckItem
             // 
-            this.barCheckItem1.Caption = "Відображати архівні записи";
-            this.barCheckItem1.Id = 36;
-            this.barCheckItem1.Name = "barCheckItem1";
-            this.barCheckItem1.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem1_CheckedChanged_1);
+            this.ShowKagentArchiveRecordBarCheckItem.Caption = "Відображати архівні записи";
+            this.ShowKagentArchiveRecordBarCheckItem.Id = 36;
+            this.ShowKagentArchiveRecordBarCheckItem.Name = "ShowKagentArchiveRecordBarCheckItem";
+            this.ShowKagentArchiveRecordBarCheckItem.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem1_CheckedChanged_1);
             // 
-            // barButtonItem7
+            // MoveToRecipeArchiveBarBtnItem
             // 
-            this.barButtonItem7.Caption = "Перемістити/Відновити з архіву";
-            this.barButtonItem7.Id = 39;
-            this.barButtonItem7.Name = "barButtonItem7";
-            this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
+            this.MoveToRecipeArchiveBarBtnItem.Caption = "Перемістити/Відновити з архіву";
+            this.MoveToRecipeArchiveBarBtnItem.Id = 39;
+            this.MoveToRecipeArchiveBarBtnItem.Name = "MoveToRecipeArchiveBarBtnItem";
+            this.MoveToRecipeArchiveBarBtnItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
             // 
-            // barCheckItem2
+            // ShowRecipeArchiveRecordsbarCheckItem
             // 
-            this.barCheckItem2.Caption = "Відображати архівні записи";
-            this.barCheckItem2.Id = 40;
-            this.barCheckItem2.Name = "barCheckItem2";
-            this.barCheckItem2.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem2_CheckedChanged);
+            this.ShowRecipeArchiveRecordsbarCheckItem.Caption = "Відображати архівні записи";
+            this.ShowRecipeArchiveRecordsbarCheckItem.Id = 40;
+            this.ShowRecipeArchiveRecordsbarCheckItem.Name = "ShowRecipeArchiveRecordsbarCheckItem";
+            this.ShowRecipeArchiveRecordsbarCheckItem.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem2_CheckedChanged);
             // 
             // panelControl1
             // 
@@ -1097,12 +1111,14 @@
             this.DirTreeList.Appearance.FocusedCell.Options.UseBackColor = true;
             this.DirTreeList.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.treeListColumn1});
+            this.DirTreeList.Cursor = System.Windows.Forms.Cursors.Default;
             this.DirTreeList.DataSource = this.DirTreeBS;
             this.DirTreeList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DirTreeList.KeyFieldName = "Id";
             this.DirTreeList.Location = new System.Drawing.Point(0, 31);
             this.DirTreeList.Name = "DirTreeList";
             this.DirTreeList.OptionsBehavior.Editable = false;
+            this.DirTreeList.OptionsBehavior.ImmediateEditor = false;
             this.DirTreeList.OptionsView.ShowColumns = false;
             this.DirTreeList.OptionsView.ShowHorzLines = false;
             this.DirTreeList.OptionsView.ShowIndicator = false;
@@ -1112,6 +1128,7 @@
             this.DirTreeList.Size = new System.Drawing.Size(323, 608);
             this.DirTreeList.TabIndex = 1;
             this.DirTreeList.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.DirTreeList_FocusedNodeChanged);
+            this.DirTreeList.HiddenEditor += new System.EventHandler(this.DirTreeList_HiddenEditor);
             this.DirTreeList.PopupMenuShowing += new DevExpress.XtraTreeList.PopupMenuShowingEventHandler(this.DirTreeList_PopupMenuShowing);
             this.DirTreeList.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DirTreeList_MouseDown);
             // 
@@ -3476,7 +3493,7 @@
             this.ExplorerPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RenameMatGroupBarButtonItem),
             new DevExpress.XtraBars.LinkPersistInfo(this.ExplorerRefreshBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.DelExplorerBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.EditExplorerBtn, true)});
@@ -3492,8 +3509,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.KagentBalansBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.MoveKagentArchiveBtnItem, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ShowKagentArchiveRecordBarCheckItem),
             new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
             this.KAgentPopupMenu.Manager = this.barManager1;
             this.KAgentPopupMenu.Name = "KAgentPopupMenu";
@@ -3508,7 +3525,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem12),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem13, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.MoveMatToArchiveBarBtnItem, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.showMatArhivedBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
             this.MatPopupMenu.Manager = this.barManager1;
@@ -3521,8 +3538,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItem2)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.MoveToRecipeArchiveBarBtnItem, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ShowRecipeArchiveRecordsbarCheckItem)});
             this.RecipePopupMenu.Manager = this.barManager1;
             this.RecipePopupMenu.Name = "RecipePopupMenu";
             // 
@@ -3778,7 +3795,7 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage16;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage18;
         private DevExpress.XtraBars.PopupMenu ExplorerPopupMenu;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem RenameMatGroupBarButtonItem;
         private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraBars.BarButtonItem AddGroupMatBtn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;
@@ -3798,7 +3815,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn39;
         private DevExpress.XtraBars.BarButtonItem KagentBalansBtn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem10;
+        private DevExpress.XtraBars.BarButtonItem MoveKagentArchiveBtnItem;
         private DevExpress.XtraBars.PopupMenu KAgentPopupMenu;
         private System.Windows.Forms.BindingSource KAgentDS;
         private System.Windows.Forms.BindingSource MatListDS;
@@ -3893,9 +3910,9 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
         private DevExpress.XtraBars.BarButtonItem barButtonItem12;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem13;
+        private DevExpress.XtraBars.BarButtonItem MoveMatToArchiveBarBtnItem;
         private DevExpress.XtraBars.BarCheckItem showMatArhivedBtn;
-        private DevExpress.XtraBars.BarCheckItem barCheckItem1;
+        private DevExpress.XtraBars.BarCheckItem ShowKagentArchiveRecordBarCheckItem;
         private DevExpress.XtraGrid.Columns.GridColumn KagentGridColumnArchived;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit7;
         private DevExpress.XtraGrid.Columns.GridColumn ArchivedGridColumn;
@@ -3987,9 +4004,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn21;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn82;
         private DevExpress.XtraBars.PopupMenu RecipePopupMenu;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraBars.BarButtonItem MoveToRecipeArchiveBarBtnItem;
         private DevExpress.XtraGrid.Columns.GridColumn RecipeArchivedGridColumn;
-        private DevExpress.XtraBars.BarCheckItem barCheckItem2;
+        private DevExpress.XtraBars.BarCheckItem ShowRecipeArchiveRecordsbarCheckItem;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage17;
         private DevExpress.XtraGrid.GridControl gridControl2;
         private System.Windows.Forms.BindingSource CurrencyBS;

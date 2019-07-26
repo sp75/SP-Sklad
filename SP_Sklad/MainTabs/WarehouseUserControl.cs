@@ -105,7 +105,7 @@ namespace SP_Sklad.MainTabs
                     GetTree(1);
                 }
 
-               
+                bandedGridColumn2.Caption = $"{bandedGridColumn2.Caption}, {DBHelper.NationalCurrency.ShortName}";
             }
 
             whContentTab.Visible = true;
