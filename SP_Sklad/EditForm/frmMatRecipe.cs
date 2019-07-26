@@ -455,6 +455,8 @@ namespace SP_Sklad.EditForm
 
                 MsrLabel.Text = r.MeasuresName;
 
+                textEdit3.Properties.Buttons[1].Enabled = r.AutoCalcRecipe.Value;
+
                 if (_mr.RType == 1)
                 {
                     Text = "Властивості рецепту: " + MatRecLookUpEdit.Text;

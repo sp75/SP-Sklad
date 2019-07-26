@@ -131,7 +131,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADc
-        UQAAAk1TRnQBSQFMAgEBFgEAASgBCAEoAQgBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        UQAAAk1TRnQBSQFMAgEBFgEAATABCAEwAQgBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABYAMAAQEBAAEYBgABSEUAAa0BUgEpAa0BUgEYAa0BUgEptAABrQFSASkB3gKEAd4ChAHeAoQBrQFS
         ASmTAAGtAWMBOQGlATkBCAGtAVIBKQHGAZQBexIAAbUBYwFCAVoBrQFKAVoBvQFjAVoBrQFKAbUBYwFC
         jQABrQFjATkBrQFSARAB1gGcAUIB5wG9AXMB9wHGAZQBzgGMAVoBrQFKARABtQFaASkBzgGcAXsMAAEI
@@ -486,11 +486,11 @@
   <metadata name="WaybillDetOutBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>598, 24</value>
   </metadata>
-  <metadata name="WaybillListBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>872, 24</value>
-  </metadata>
   <metadata name="styleController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>457, 21</value>
+  </metadata>
+  <metadata name="WaybillListBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>872, 24</value>
   </metadata>
   <metadata name="WayBillMakeBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>735, 24</value>

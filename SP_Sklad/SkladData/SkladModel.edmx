@@ -648,6 +648,7 @@
           <Property Name="Def" Type="int" Nullable="false" />
           <Property Name="Deleted" Type="int" Nullable="false" />
           <Property Name="Code" Type="varchar" MaxLength="14" />
+          <Property Name="AutoCalcRecipe" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="MoneySaldo">
           <Key>
@@ -1409,7 +1410,7 @@ warning 6002: The table/view 'sp_base.dbo.MaterialsList' does not have a primary
           <Property Name="MatId" Type="int" Nullable="false" />
           <Property Name="Num" Type="int" />
           <Property Name="Produced" Type="nvarchar" MaxLength="255" />
-          <Property Name="NDS" Type="numeric" Precision="15" Scale="8" />
+          <Property Name="NDS" Type="numeric" Precision="15" Scale="2" />
           <Property Name="Serials" Type="int" />
           <Property Name="Name" Type="nvarchar" MaxLength="255" />
           <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
@@ -1417,6 +1418,7 @@ warning 6002: The table/view 'sp_base.dbo.MaterialsList' does not have a primary
           <Property Name="MeasuresName" Type="nvarchar" MaxLength="6" />
           <Property Name="Deleted" Type="int" Nullable="false" />
           <Property Name="Archived" Type="int" />
+          <Property Name="AutoCalcRecipe" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.UserTreeAccess' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -5948,7 +5950,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [MaterialsList].[WId] AS [WId], 
     [MaterialsList].[MeasuresName] AS [MeasuresName], 
     [MaterialsList].[Deleted] AS [Deleted], 
-    [MaterialsList].[Archived] AS [Archived]
+    [MaterialsList].[Archived] AS [Archived], 
+    [MaterialsList].[AutoCalcRecipe] AS [AutoCalcRecipe]
     FROM [dbo].[MaterialsList] AS [MaterialsList]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="UserTreeAccess" EntityType="Self.UserTreeAccess" store:Type="Views" store:Schema="dbo">
@@ -9269,6 +9272,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK_MATERIAL_REFERENCE_MEASURES" FromRole="Measures" ToRole="Materials" />
           <NavigationProperty Name="Services" Relationship="BaseModel.FK_SVC_MID" FromRole="Measures" ToRole="Services" />
           <NavigationProperty Name="MaterialMeasures" Relationship="BaseModel.FK_MaterialMeasures_Measures" FromRole="Measures" ToRole="MaterialMeasures" />
+          <Property Name="AutoCalcRecipe" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="DeboningDet">
           <Key>
@@ -9771,7 +9775,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="MatId" Type="Int32" Nullable="false" />
           <Property Name="Num" Type="Int32" />
           <Property Name="Produced" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="NDS" Type="Decimal" Precision="15" Scale="8" />
+          <Property Name="NDS" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="Serials" Type="Int32" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Artikul" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -9779,6 +9783,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="MeasuresName" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
           <Property Name="Deleted" Type="Int32" Nullable="false" />
           <Property Name="Archived" Type="Int32" />
+          <Property Name="AutoCalcRecipe" Type="Boolean" />
         </EntityType>
         <ComplexType Name="GetServiceTree_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -14699,6 +14704,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="Measures">
             <EntityTypeMapping TypeName="BaseModel.Measures">
               <MappingFragment StoreEntitySet="Measures">
+                <ScalarProperty Name="AutoCalcRecipe" ColumnName="AutoCalcRecipe" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="Def" ColumnName="Def" />
@@ -14985,6 +14991,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="MaterialsList">
             <EntityTypeMapping TypeName="BaseModel.MaterialsList">
               <MappingFragment StoreEntitySet="MaterialsList">
+                <ScalarProperty Name="AutoCalcRecipe" ColumnName="AutoCalcRecipe" />
                 <ScalarProperty Name="Archived" ColumnName="Archived" />
                 <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="MeasuresName" ColumnName="MeasuresName" />

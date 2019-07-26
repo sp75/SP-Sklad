@@ -50,13 +50,15 @@ namespace SP_Sklad.WBForm
             PersonMakeComboBox.Properties.DataSource = DBHelper.Persons;
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
             WhComboBox.Properties.DataSource = DBHelper.WhList;
-            RecipeComboBox.Properties.DataSource = DB.SkladBase().MatRecipe.AsNoTracking().Where(w => w.RType == 1 && !w.Archived && w.Materials.Archived != 1).Select(s => new 
+            RecipeComboBox.Properties.DataSource = DB.SkladBase().MatRecipe.AsNoTracking().Where(w => w.RType == 1 && !w.Archived && w.Materials.Archived != 1).Select(s => new
             {
-                RecId = s.RecId,
-                Name = s.Name,
-                Amount = s.Amount,
+                s.RecId,
+                s.Name,
+                s.Amount,
                 MatName = s.Materials.Name,
-                MatId = s.MatId
+                s.MatId,
+                MsrName = s.Materials.Measures.ShortName,
+                s.Materials.Measures.AutoCalcRecipe
             }).ToList();
 
             if (_wbill_id == null)
@@ -80,10 +82,13 @@ namespace SP_Sklad.WBForm
                 _db.SaveChanges();
 
                 _wbill_id = wb.WbillId;
+
+                MsrLabel.Text = "";
             }
             else
             {
                 wb = _db.WaybillList.FirstOrDefault(f =>  f.WbillId == _wbill_id);
+                MsrLabel.Text = wb.WayBillMake.MatRecipe.Materials.Measures.ShortName;
             }
 
             if (wb != null && wb.WayBillMake != null)
@@ -169,21 +174,26 @@ namespace SP_Sklad.WBForm
             {
                 return;
             }
-          //  var measure_id = wb.WayBillMake.MatRecipe.Materials.MId;
+            //  var measure_id = wb.WayBillMake.MatRecipe.Materials.MId;
 
-            var main_sum = _db.WaybillDet.Where(w => w.WbillId == _wbill_id && w.Materials.MId == w.WaybillList.WayBillMake.MatRecipe.Materials.MId).ToList()
-                .Sum(s => s.Amount);
-
-            var ext_sum = _db.WaybillDet.Where(w => w.WbillId == _wbill_id && w.Materials.MId != w.WaybillList.WayBillMake.MatRecipe.Materials.MId)
-                  .Select(s => new { MaterialMeasures = s.Materials.MaterialMeasures.Where(f => f.MId == s.WaybillList.WayBillMake.MatRecipe.Materials.MId), s.Amount }).ToList()
-                  .SelectMany(sm => sm.MaterialMeasures, (k, n) => new { k.Amount, MeasureAmount = n.Amount }).Sum(su => su.MeasureAmount * su.Amount);
-
-            wb.WayBillMake.Amount = main_sum + ext_sum;
-
-            if (main_sum + ext_sum == 0)
+            dynamic row = RecipeComboBox.GetSelectedDataRow();
+            if (row.AutoCalcRecipe)
             {
-                MessageBox.Show("Помилка в рецепті ,закладка = 0 " + wb.WayBillMake.MatRecipe.Materials.Measures.ShortName + " !");
-                return;
+
+                var main_sum = _db.WaybillDet.Where(w => w.WbillId == _wbill_id && w.Materials.MId == w.WaybillList.WayBillMake.MatRecipe.Materials.MId).ToList()
+                    .Sum(s => s.Amount);
+
+                var ext_sum = _db.WaybillDet.Where(w => w.WbillId == _wbill_id && w.Materials.MId != w.WaybillList.WayBillMake.MatRecipe.Materials.MId)
+                      .Select(s => new { MaterialMeasures = s.Materials.MaterialMeasures.Where(f => f.MId == s.WaybillList.WayBillMake.MatRecipe.Materials.MId), s.Amount }).ToList()
+                      .SelectMany(sm => sm.MaterialMeasures, (k, n) => new { k.Amount, MeasureAmount = n.Amount }).Sum(su => su.MeasureAmount * su.Amount);
+
+                wb.WayBillMake.Amount = main_sum + ext_sum;
+
+                if (wb.WayBillMake.Amount == 0)
+                {
+                    MessageBox.Show("Помилка в рецепті ,закладка = 0 " + wb.WayBillMake.MatRecipe.Materials.Measures.ShortName + " !");
+                    return;
+                }
             }
 
             wb.UpdatedAt = DateTime.Now;
@@ -356,6 +366,7 @@ namespace SP_Sklad.WBForm
             if (RecipeComboBox.ContainsFocus && row != null)
             {
                 wb.WayBillMake.Amount = row.Amount;
+                MsrLabel.Text = row.MsrName;
                 GetOk();
             }
         }

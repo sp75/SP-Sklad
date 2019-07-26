@@ -116,6 +116,7 @@
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
+            this.MsrLabel = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
@@ -436,6 +437,7 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.MsrLabel);
             this.panelControl1.Controls.Add(this.ToDateEdit);
             this.panelControl1.Controls.Add(this.checkEdit2);
             this.panelControl1.Controls.Add(this.labelControl4);
@@ -1154,6 +1156,15 @@
             this.xtraTabPage1,
             this.xtraTabPage2});
             // 
+            // MsrLabel
+            // 
+            this.MsrLabel.Location = new System.Drawing.Point(228, 148);
+            this.MsrLabel.Name = "MsrLabel";
+            this.MsrLabel.Size = new System.Drawing.Size(18, 16);
+            this.MsrLabel.StyleController = this.styleController1;
+            this.MsrLabel.TabIndex = 62;
+            this.MsrLabel.Text = "од.";
+            // 
             // frmWBManufacture
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1311,5 +1322,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn76;
         private System.Windows.Forms.BindingSource WayBillMakeBS;
         private System.Windows.Forms.BindingSource WaybillListBS;
+        private DevExpress.XtraEditors.LabelControl MsrLabel;
     }
 }

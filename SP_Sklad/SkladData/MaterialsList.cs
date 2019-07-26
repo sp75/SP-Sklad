@@ -25,5 +25,6 @@ namespace SP_Sklad.SkladData
         public string MeasuresName { get; set; }
         public int Deleted { get; set; }
         public Nullable<int> Archived { get; set; }
+        public Nullable<bool> AutoCalcRecipe { get; set; }
     }
 }

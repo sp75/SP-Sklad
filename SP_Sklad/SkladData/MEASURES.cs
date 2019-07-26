@@ -27,6 +27,7 @@ namespace SP_Sklad.SkladData
         public int Def { get; set; }
         public int Deleted { get; set; }
         public string Code { get; set; }
+        public bool AutoCalcRecipe { get; set; }
     
         public virtual ICollection<Materials> Materials { get; set; }
         public virtual ICollection<Services> Services { get; set; }
