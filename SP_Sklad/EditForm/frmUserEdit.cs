@@ -114,12 +114,16 @@ namespace SP_Sklad.EditForm
                     xtraTabControl2.SelectedTabPageIndex = 2;
                     break;
                 case 6:
-                    UserAccessCashDesksGridControl.DataSource = _db.GetUserAccessCashDesks(_user_id).ToList();
+                    RefreshUserAccessCashDesks();
                     xtraTabControl2.SelectedTabPageIndex = 3;
                     break;
             }
 
             xtraTabControl1.SelectedTabPageIndex = focused_tree_node.TabIdx;
+        }
+        private void RefreshUserAccessCashDesks()
+        {
+            UserAccessCashDesksBS.DataSource = _db.GetUserAccessCashDesks(_user_id).ToList();
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -379,16 +383,25 @@ namespace SP_Sklad.EditForm
                     _db.DeleteWhere<UserAccessCashDesks>(w => w.UserId == _user_id.Value && w.CashId == row.CashId);
                     row.Allow = 0;
                 }
+
                 _db.SaveChanges();
-           //     UserAccessCashDesksGridView.RefreshRowCell(UserAccessCashDesksGridView.FocusedRowHandle, e.Column);
-                UserAccessCashDesksGridControl.DataSource = _db.GetUserAccessCashDesks(_user_id).ToList();
+
+                if (_db.UserAccessCashDesks.Any(w => w.UserId == _user_id.Value) && !_db.UserAccessCashDesks.Any(w => w.UserId == _user_id.Value && w.Def == 1))
+                {
+                    var c = _db.UserAccessCashDesks.FirstOrDefault(w => w.UserId == _user_id.Value);
+                    c.Def = 1;
+                }
+                _db.SaveChanges();
+
+                //     UserAccessCashDesksGridView.RefreshRowCell(UserAccessCashDesksGridView.FocusedRowHandle, e.Column);
+                RefreshUserAccessCashDesks();
             }
 
             if (e.Column.FieldName == "Def")
             {
                 if ((int)e.CellValue == 0)
                 {
-                    var list = UserAccessCashDesksGridView.DataSource as List<GetUserAccessCashDesks_Result>;// _db.GetUserAccessCashDesks(_user_id).ToList();
+                    var list = UserAccessCashDesksBS.DataSource as List<GetUserAccessCashDesks_Result>;// _db.GetUserAccessCashDesks(_user_id).ToList();
                     foreach (var item in list.Where(w=> w.Allow == 1))
                     {
                         var uacd = _db.UserAccessCashDesks.FirstOrDefault(w => w.CashId == item.CashId && w.UserId == _user_id);
@@ -402,7 +415,7 @@ namespace SP_Sklad.EditForm
 
 
                 _db.SaveChanges();
-                UserAccessCashDesksGridControl.DataSource = _db.GetUserAccessCashDesks(_user_id).ToList();
+                RefreshUserAccessCashDesks();
             }
         }
 

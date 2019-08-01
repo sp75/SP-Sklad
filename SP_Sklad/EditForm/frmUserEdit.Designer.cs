@@ -113,8 +113,9 @@
             this.DiscountCheckBox = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit3 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.UsersBS = new System.Windows.Forms.BindingSource(this.components);
             this.AccessPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.UserAccessCashDesksBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserBS)).BeginInit();
@@ -161,8 +162,9 @@
             this.xtraTabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DiscountCheckBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UsersBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccessPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserAccessCashDesksBS)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -952,6 +954,7 @@
             // 
             // UserAccessCashDesksGridControl
             // 
+            this.UserAccessCashDesksGridControl.DataSource = this.UserAccessCashDesksBS;
             this.UserAccessCashDesksGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UserAccessCashDesksGridControl.Location = new System.Drawing.Point(0, 0);
             this.UserAccessCashDesksGridControl.MainView = this.UserAccessCashDesksGridView;
@@ -1068,9 +1071,9 @@
             this.textEdit3.Size = new System.Drawing.Size(181, 20);
             this.textEdit3.TabIndex = 46;
             // 
-            // bindingSource2
+            // UsersBS
             // 
-            this.bindingSource2.DataSource = typeof(SP_Sklad.SkladData.Users);
+            this.UsersBS.DataSource = typeof(SP_Sklad.SkladData.Users);
             // 
             // AccessPopupMenu
             // 
@@ -1083,6 +1086,10 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6)});
             this.AccessPopupMenu.Manager = this.barManager1;
             this.AccessPopupMenu.Name = "AccessPopupMenu";
+            // 
+            // UserAccessCashDesksBS
+            // 
+            this.UserAccessCashDesksBS.DataSource = typeof(SP_Sklad.SkladData.GetUserAccessCashDesks_Result);
             // 
             // frmUserEdit
             // 
@@ -1151,8 +1158,9 @@
             this.xtraTabPage6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DiscountCheckBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UsersBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccessPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserAccessCashDesksBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1210,7 +1218,7 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn colUserId;
         private DevExpress.XtraTreeList.Columns.TreeListColumn colWType;
         private System.Windows.Forms.BindingSource UserTreeAccessBS;
-        private System.Windows.Forms.BindingSource bindingSource2;
+        private System.Windows.Forms.BindingSource UsersBS;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private DevExpress.XtraBars.PopupMenu AccessPopupMenu;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
@@ -1245,5 +1253,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraEditors.CheckEdit checkEdit7;
+        private System.Windows.Forms.BindingSource UserAccessCashDesksBS;
     }
 }

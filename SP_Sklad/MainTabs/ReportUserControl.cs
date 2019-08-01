@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using SP_Sklad.Common;
 using SP_Sklad.SkladData;
 
 namespace SP_Sklad.MainTabs
@@ -112,6 +106,12 @@ namespace SP_Sklad.MainTabs
         private void RepBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             dynamic row = RepGridView.GetFocusedRow();
+
+            if(row == null)
+            {
+                return;
+            }
+
             var frm = new frmReport((int)row.RepId);
 
             switch ((int)row.RepId)

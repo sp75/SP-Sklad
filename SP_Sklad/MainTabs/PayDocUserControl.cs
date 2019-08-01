@@ -78,17 +78,17 @@ namespace SP_Sklad.MainTabs
                 ExecPayCheckBox.EditValue = 0;
                 PTypeComboBox.EditValue = 1;
                 CurrencyLookUpEdit.EditValue = DBHelper.Currency.Where(w => w.Def == 1).Select(s => s.CurrId).FirstOrDefault(); //Валюта по умолчанию
-                if (DBHelper.CashDesks.FirstOrDefault(w => w.Def == 1) != null)
+                if (DBHelper.CashDesks.Any(w => w.Def == 1) )
                 {
                     CashEditComboBox.EditValue = DBHelper.CashDesks.FirstOrDefault(w => w.Def == 1).CashId;
                 }
-                else
+                else if(DBHelper.CashDesks.Any())
                 {
                     CashEditComboBox.EditValue = DBHelper.CashDesks.FirstOrDefault().CashId;
                 }
             }
 
-            panelControl1.Enabled = (_user_Access.CanModify == 1 || (_user_Access.CanInsert == 1 && _pd == null)) && DBHelper.CashDesks.Any(a => a.CashId == Convert.ToInt32(CashEditComboBox.EditValue));
+            panelControl1.Enabled = (_user_Access.CanModify == 1 || (_user_Access.CanInsert == 1 && _pd == null)) && DBHelper.CashDesks.Any() && DBHelper.CashDesks.Any(a => a.CashId == Convert.ToInt32(CashEditComboBox.EditValue));
             ExecPayCheckBox.Enabled = _user_Access.CanPost == 1 || (_user_Access.CanInsert == 1 && _pd == null);
 
             PTypeComboBox.Properties.DataSource = DBHelper.PayTypes;
