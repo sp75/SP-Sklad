@@ -128,6 +128,7 @@ namespace SP_Sklad.EditForm
             current_transaction.Commit();
             DBHelper.CurrentUser = null;
             DBHelper.WhList = null;
+            DBHelper.CashDesks = null;
         }
 
         private void treeList1_PopupMenuShowing(object sender, DevExpress.XtraTreeList.PopupMenuShowingEventArgs e)

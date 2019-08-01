@@ -236,15 +236,29 @@ namespace SP_Sklad.SkladData
                         EnterpriseId = s.EnterpriseId
                     }).ToList(); 
 
-                    if (!_cash_desks.Any())
+                  /*  if (!_cash_desks.Any())
                     {
                         _cash_desks = new BaseEntities().CashDesks.ToList();
-                    }
+                    }*/
 
                 }
                 return _cash_desks;
             }
+
+            set
+            {
+                _cash_desks = value;
+            }
         }
+        public static List<CashDesks> AllCashDesks
+        {
+            get
+            {
+                return new BaseEntities().CashDesks.ToList();
+            }
+        }
+
+
         public static List<ChargeType> ChargeTypes
         {
             get

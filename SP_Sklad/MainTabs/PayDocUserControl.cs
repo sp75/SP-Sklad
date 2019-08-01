@@ -92,7 +92,7 @@ namespace SP_Sklad.MainTabs
             ExecPayCheckBox.Enabled = _user_Access.CanPost == 1 || (_user_Access.CanInsert == 1 && _pd == null);
 
             PTypeComboBox.Properties.DataSource = DBHelper.PayTypes;
-            CashEditComboBox.Properties.DataSource = DBHelper.CashDesks;
+            CashEditComboBox.Properties.DataSource =  panelControl1.Enabled ? DBHelper.CashDesks : DBHelper.AllCashDesks;
             PersonEdit.Properties.DataSource = DBHelper.Persons;
             CurrencyLookUpEdit.Properties.DataSource = _db.Currency.ToList();
 

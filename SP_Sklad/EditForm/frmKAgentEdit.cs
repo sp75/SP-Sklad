@@ -159,7 +159,7 @@ namespace SP_Sklad.EditForm
                 }
 
                 PayTypeEdit.Properties.DataSource = DB.SkladBase().PayType.ToList();
-                CashEditComboBox.Properties.DataSource = DBHelper.CashDesks;
+                CashEditComboBox.Properties.DataSource = DBHelper.AllCashDesks;
 
 
                 GetAccounts();

@@ -146,6 +146,7 @@
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.textEdit8 = new DevExpress.XtraEditors.MemoEdit();
             this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
+            this.DelIdividualMatPriceBtn = new DevExpress.XtraEditors.SimpleButton();
             this.CommentLabel = new DevExpress.XtraEditors.LabelControl();
             this.PricePanel = new System.Windows.Forms.Panel();
             this.CustomPricePanel = new System.Windows.Forms.Panel();
@@ -167,7 +168,7 @@
             this.checkEdit3 = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
+            this.GoTopMatPricesBtn = new DevExpress.XtraEditors.SimpleButton();
             this.DisCheckBox = new DevExpress.XtraEditors.CheckEdit();
             this.xtraTabPage9 = new DevExpress.XtraTab.XtraTabPage();
             this.simpleButton11 = new DevExpress.XtraEditors.SimpleButton();
@@ -355,6 +356,7 @@
             this.ImageList.Images.SetKeyName(15, "Right_gray.png");
             this.ImageList.Images.SetKeyName(16, "Склади.bmp");
             this.ImageList.Images.SetKeyName(17, "CloseFolder.bmp");
+            this.ImageList.Images.SetKeyName(18, "Delete.bmp");
             // 
             // xtraTabControl1
             // 
@@ -1497,6 +1499,18 @@
             this.xtraTabPage8.Size = new System.Drawing.Size(703, 516);
             this.xtraTabPage8.Text = "Ціна";
             // 
+            // DelIdividualMatPriceBtn
+            // 
+            this.DelIdividualMatPriceBtn.ImageIndex = 18;
+            this.DelIdividualMatPriceBtn.ImageList = this.ImageList;
+            this.DelIdividualMatPriceBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.DelIdividualMatPriceBtn.Location = new System.Drawing.Point(563, 11);
+            this.DelIdividualMatPriceBtn.Name = "DelIdividualMatPriceBtn";
+            this.DelIdividualMatPriceBtn.Size = new System.Drawing.Size(22, 22);
+            this.DelIdividualMatPriceBtn.TabIndex = 60;
+            this.DelIdividualMatPriceBtn.ToolTip = "Видалити відпускну ціну";
+            this.DelIdividualMatPriceBtn.Click += new System.EventHandler(this.simpleButton13_Click);
+            // 
             // CommentLabel
             // 
             this.CommentLabel.Appearance.ForeColor = System.Drawing.Color.Blue;
@@ -1766,7 +1780,8 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.simpleButton7);
+            this.panel4.Controls.Add(this.DelIdividualMatPriceBtn);
+            this.panel4.Controls.Add(this.GoTopMatPricesBtn);
             this.panel4.Controls.Add(this.DisCheckBox);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
@@ -1774,17 +1789,17 @@
             this.panel4.Size = new System.Drawing.Size(703, 45);
             this.panel4.TabIndex = 46;
             // 
-            // simpleButton7
+            // GoTopMatPricesBtn
             // 
-            this.simpleButton7.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton7.Image")));
-            this.simpleButton7.ImageList = this.ImageList;
-            this.simpleButton7.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton7.Location = new System.Drawing.Point(563, 11);
-            this.simpleButton7.Name = "simpleButton7";
-            this.simpleButton7.Size = new System.Drawing.Size(22, 22);
-            this.simpleButton7.TabIndex = 53;
-            this.simpleButton7.ToolTip = "Повернутися до списку";
-            this.simpleButton7.Click += new System.EventHandler(this.simpleButton7_Click);
+            this.GoTopMatPricesBtn.Image = ((System.Drawing.Image)(resources.GetObject("GoTopMatPricesBtn.Image")));
+            this.GoTopMatPricesBtn.ImageList = this.ImageList;
+            this.GoTopMatPricesBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.GoTopMatPricesBtn.Location = new System.Drawing.Point(535, 11);
+            this.GoTopMatPricesBtn.Name = "GoTopMatPricesBtn";
+            this.GoTopMatPricesBtn.Size = new System.Drawing.Size(22, 22);
+            this.GoTopMatPricesBtn.TabIndex = 53;
+            this.GoTopMatPricesBtn.ToolTip = "Повернутися до списку";
+            this.GoTopMatPricesBtn.Click += new System.EventHandler(this.simpleButton7_Click);
             // 
             // DisCheckBox
             // 
@@ -2100,7 +2115,7 @@
         private DevExpress.XtraEditors.SimpleButton EditPriceBtn;
         private System.Windows.Forms.BindingSource TreeListBS;
         private System.Windows.Forms.BindingSource MatPriceForGridBS;
-        private DevExpress.XtraEditors.SimpleButton simpleButton7;
+        private DevExpress.XtraEditors.SimpleButton GoTopMatPricesBtn;
         private DevExpress.XtraEditors.LookUpEdit lookUpEdit4;
         private DevExpress.XtraEditors.CalcEdit calcEdit4;
         private DevExpress.XtraEditors.CalcEdit WeightEdit;
@@ -2145,6 +2160,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private System.Windows.Forms.BindingSource MaterialMeasuresBS;
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
-
+        private DevExpress.XtraEditors.SimpleButton DelIdividualMatPriceBtn;
     }
 }

@@ -189,20 +189,23 @@ namespace SP_Sklad.EditForm
                 if (_mat_prices == null)
                 {
                     _mat_prices = new MatPrices
-                   {
-                       PTypeId = data_set_id,
-                       MatId = _mat_id.Value,
-                       OnValue = 0,
-                       Dis = 0,
-                       WithNds = 0,
-                       ExtraType = pt.ExtraType.Value,
-                       PPTypeId = pt.PPTypeId,
-                       Currency = null
-                   };
+                    {
+                     //   Id = _mat_prices.Id,
+                        PTypeId = data_set_id,
+                        MatId = _mat_id.Value,
+                        OnValue = 0,
+                        Dis = 0,
+                        WithNds = 0,
+                        ExtraType = pt.ExtraType.Value,
+                        PPTypeId = pt.PPTypeId,
+                        Currency = null
+                    };
                 }
                
                 MatPriceTypesBS.DataSource = _mat_prices;
-              
+                DelIdividualMatPriceBtn.Enabled = _mat_prices.Id > 0;
+
+
 
                 lookUpEdit2.Properties.DataSource = _db.PriceTypes.Where(w => w.PTypeId != pt.PTypeId).Select(s => new { s.PTypeId, s.Name }).ToList();
                 lookUpEdit3.Properties.DataSource = lookUpEdit2.Properties.DataSource;
@@ -665,6 +668,16 @@ namespace SP_Sklad.EditForm
 
                 _db.SaveChanges();
             }
+        }
+
+        private void simpleButton13_Click(object sender, EventArgs e)
+        {
+            var ds = MatPriceTypesBS.DataSource as dynamic;
+
+            _db.MatPrices.Remove(_db.MatPrices.Find(ds.Id));
+            _db.SaveChanges();
+
+            GoTopMatPricesBtn.PerformClick();
         }
     }
 
