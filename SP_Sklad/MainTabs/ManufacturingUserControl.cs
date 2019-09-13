@@ -43,6 +43,9 @@ namespace SP_Sklad.MainTabs
 
         private void ManufacturingUserControl_Load(object sender, EventArgs e)
         {
+            WbGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "ManufacturingUserControl\\WbGridView");
+            DeboningGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "ManufacturingUserControl\\DeboningGridView");
+
             if (!DesignMode)
             {
                 wbContentTab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
@@ -887,6 +890,12 @@ namespace SP_Sklad.MainTabs
 
             DelTechProcBtn.Enabled = ((focused_row != null && focused_row.Checked != 1 && focused_tree_node.CanModify == 1) && TechProcGridView.DataRowCount > 0);
             EditTechProcBtn.Enabled = (focused_row != null && focused_tree_node.CanModify == 1 && TechProcGridView.DataRowCount > 0 /*&& focused_row.Checked != 1*/); 
+        }
+
+        public void SaveGridLayouts()
+        {
+            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "ManufacturingUserControl\\WbGridView");
+            DeboningGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "ManufacturingUserControl\\DeboningGridView");
         }
     }
 }

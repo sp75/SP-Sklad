@@ -67,6 +67,10 @@ namespace SP_Sklad
 
         private void mainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            docsUserControl1.SaveGridLayouts();
+            whUserControl.SaveGridLayouts();
+            manufacturingUserControl1.SaveGridLayouts();
+
             using (var db = new BaseEntities())
             {
                 var user = db.Users.Find(user_id);

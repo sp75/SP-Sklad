@@ -77,6 +77,7 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl26 = new DevExpress.XtraEditors.LabelControl();
+            this.CurrencyBS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl25 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl24 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
@@ -125,7 +126,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.CurrencyBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MatComboBox.Properties)).BeginInit();
@@ -144,6 +144,7 @@
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrencyBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CurRemainEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RsvEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RemainEdit.Properties)).BeginInit();
@@ -175,7 +176,6 @@
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CurrencyBS)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -693,6 +693,10 @@
             this.labelControl26.StyleController = this.styleController1;
             this.labelControl26.TabIndex = 26;
             this.labelControl26.Text = "грн.";
+            // 
+            // CurrencyBS
+            // 
+            this.CurrencyBS.DataSource = typeof(SP_Sklad.SkladData.Currency);
             // 
             // labelControl25
             // 
@@ -1218,10 +1222,6 @@
             this.panel5.Size = new System.Drawing.Size(600, 131);
             this.panel5.TabIndex = 26;
             // 
-            // CurrencyBS
-            // 
-            this.CurrencyBS.DataSource = typeof(SP_Sklad.SkladData.Currency);
-            // 
             // frmWayBillDetIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1266,6 +1266,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrencyBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CurRemainEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RsvEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RemainEdit.Properties)).EndInit();
@@ -1300,7 +1301,6 @@
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.CurrencyBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

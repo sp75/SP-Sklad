@@ -239,6 +239,7 @@
             this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem15 = new DevExpress.XtraBars.BarButtonItem();
             this.xtraTabPage12 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage13 = new DevExpress.XtraTab.XtraTabPage();
             this.bar2 = new DevExpress.XtraBars.Bar();
@@ -823,6 +824,7 @@
             this.wbEndDate.Name = "wbEndDate";
             this.wbEndDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.wbEndDate.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
             this.wbEndDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.wbEndDate.Properties.DisplayFormat.FormatString = "";
@@ -850,6 +852,7 @@
             this.wbStartDate.Name = "wbStartDate";
             this.wbStartDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.wbStartDate.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
             this.wbStartDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.wbStartDate.Properties.DisplayFormat.FormatString = "";
@@ -2395,8 +2398,9 @@
             this.barButtonItem11,
             this.barButtonItem12,
             this.barButtonItem13,
-            this.barButtonItem14});
-            this.barManager1.MaxItemId = 26;
+            this.barButtonItem14,
+            this.barButtonItem15});
+            this.barManager1.MaxItemId = 27;
             // 
             // bar1
             // 
@@ -2546,6 +2550,7 @@
             this.BarImageList.Images.SetKeyName(14, "Аналоги.bmp");
             this.BarImageList.Images.SetKeyName(15, "Акти списання товару.bmp");
             this.BarImageList.Images.SetKeyName(16, "218745_export_16x16.png");
+            this.BarImageList.Images.SetKeyName(17, "printer (1).png");
             // 
             // ExecuteInvBtn
             // 
@@ -2668,11 +2673,19 @@
             // 
             // barButtonItem13
             // 
-            this.barButtonItem13.Caption = "Експорт видаткових накладних";
+            this.barButtonItem13.Caption = "Експорт документів у файл";
             this.barButtonItem13.Id = 24;
             this.barButtonItem13.ImageIndex = 16;
             this.barButtonItem13.Name = "barButtonItem13";
             this.barButtonItem13.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem13_ItemClick);
+            // 
+            // barButtonItem15
+            // 
+            this.barButtonItem15.Caption = "Друк вибраних документів";
+            this.barButtonItem15.Id = 26;
+            this.barButtonItem15.ImageIndex = 17;
+            this.barButtonItem15.Name = "barButtonItem15";
+            this.barButtonItem15.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem15_ItemClick);
             // 
             // xtraTabPage12
             // 
@@ -2713,6 +2726,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem13),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem15),
             new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
             this.DocsPopupMenu.Manager = this.barManager1;
             this.DocsPopupMenu.Name = "DocsPopupMenu";
@@ -3105,5 +3119,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn45;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn50;
         public System.Windows.Forms.ImageList UserTreeImgList;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem15;
     }
 }

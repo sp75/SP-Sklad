@@ -25,5 +25,11 @@ namespace SP_Sklad.ViewsForm
         {
             spreadsheetControl1.LoadDocument(_xlsx, DevExpress.Spreadsheet.DocumentFormat.OpenXml);
         }
+
+        public void Print()
+        {
+            spreadsheetControl1.LoadDocument(_xlsx, DevExpress.Spreadsheet.DocumentFormat.OpenXml);
+            spreadsheetControl1.Print();
+        }
     }
 }

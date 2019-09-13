@@ -50,7 +50,8 @@ namespace SP_Sklad.Reports
                     break;
 
                 case -16:
-                    WayBillOrderedOutReport(id, db);
+                    var ord_out =  WayBillOrderedOutReport(id, db);
+                    IHelper.Print(ord_out, TemlateList.ord_out);
                     break;
 
                 case 16:
@@ -153,7 +154,7 @@ namespace SP_Sklad.Reports
             }
         }
 
-        public static void WayBillOrderedOutReport(Guid id, BaseEntities db)
+        public static Dictionary<string, IList> WayBillOrderedOutReport(Guid id, BaseEntities db)
         {
             var dataForReport = new Dictionary<string, IList>();
 
@@ -166,13 +167,13 @@ namespace SP_Sklad.Reports
                 dataForReport.Add("WayBillList", wb);
                 dataForReport.Add("WayBillItems", wb_list);
                 dataForReport.Add("WayBillItems2", wb_list);
-
-                IHelper.Print(dataForReport, TemlateList.ord_out);
             }
             else
             {
                 MessageBox.Show("Документ відсутній!");
             }
+
+            return dataForReport;
         }
 
         public static void WayBillMoveReport(Guid id, BaseEntities db, string template_name)

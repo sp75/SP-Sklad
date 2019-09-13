@@ -118,6 +118,8 @@ namespace SP_Sklad.WBDetForm
 
 
             GetOk();
+
+            groupControl1.Text = $"{groupControl1.Text}, {DBHelper.NationalCurrency.ShortName}";
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -168,7 +170,7 @@ namespace SP_Sklad.WBDetForm
 
                 //якщо позиція є замовлення в постачальника
                 var wmt = _db.WMatTurn.FirstOrDefault(w => w.SourceId == _wbd.PosId && w.TurnType == 3);
-                if (wmt != null)
+                if (wmt != null || _wb.WType == 16)
                 {
                     _db.DeleteWhere<WMatTurn>(w => w.PosId == _wbd.PosId);
                     _db.WMatTurn.Add(new WMatTurn()
@@ -385,7 +387,7 @@ namespace SP_Sklad.WBDetForm
             var get_last_price_result = _db.GetLastPrice(mat_id, _wb.KaId, 1, _wb.OnDate).FirstOrDefault();
             if (get_last_price_result != null)
             {
-                _wbd.Price = get_last_price_result.Price ?? 0;
+                _wbd.Price = (get_last_price_result.Price ?? 0) / _wb.OnValue;
                 _wbd.BasePrice = _wbd.Nds > 0 ? Math.Round(_wbd.Price.Value + (PriceEdit.Value * Convert.ToDecimal(_wbd.Nds) / 100), 2) : _wbd.Price.Value;
             }
             else

@@ -21,6 +21,7 @@ using SP_Sklad.Reports;
 using DevExpress.XtraBars;
 using SP_Sklad.WBDetForm;
 using SkladEngine.WayBills;
+using System.IO;
 
 namespace SP_Sklad.MainTabs
 {
@@ -63,6 +64,8 @@ namespace SP_Sklad.MainTabs
         private void DocumentsPanel_Load(object sender, EventArgs e)
         {
             wbContentTab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
+
+            WbGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "DocsUserControl\\WbGridView");
 
             if (!DesignMode)
             {
@@ -113,7 +116,7 @@ namespace SP_Sklad.MainTabs
             var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
 
             int top_row = WbGridView.TopRowIndex;
-            GetWayBillListBS.DataSource = _db.GetWayBillList(satrt_date.Date, end_date.Date.AddDays(1), wtyp, (int)wbStatusList.EditValue, (int)wbKagentList.EditValue, show_null_balance, "*", DBHelper.CurrentUser.KaId).OrderByDescending(o => o.OnDate).ToList();
+            GetWayBillListBS.DataSource = _db.GetWayBillList(satrt_date, end_date, wtyp, (int)wbStatusList.EditValue, (int)wbKagentList.EditValue, show_null_balance, "*", DBHelper.CurrentUser.KaId).OrderByDescending(o => o.OnDate).ToList();
             WbGridView.TopRowIndex = top_row;
         }
 
@@ -1101,6 +1104,12 @@ namespace SP_Sklad.MainTabs
                                 var data_report = PrintDoc.WayBillOutReport(dr.Id, _db);
                                 IHelper.Print(data_report, TemlateList.wb_out, false);
                             }
+
+                            if (dr.WType == -16)
+                            {
+                                var ord_out = PrintDoc.WayBillOrderedOutReport(dr.Id, _db);
+                                IHelper.Print(ord_out, TemlateList.ord_out, false);
+                            }
                         }
 
                     }
@@ -1144,6 +1153,42 @@ namespace SP_Sklad.MainTabs
                 case 5:
                     IHelper.ExportToXlsx(PriceListGridControl);
                     break;
+            }
+        }
+        public void SaveGridLayouts()
+        {
+            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "\\DocsUserControl\\WbGridView");
+        }
+
+        private void barButtonItem15_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (MessageBox.Show("Ви бажаєте роздрукувати " + WbGridView.RowCount.ToString() + " документів!", "Друк документів", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                switch (focused_tree_node.GType)
+                {
+                    case 1:
+                        for (int i = 0; i < WbGridView.RowCount; i++)
+                        {
+                            var dr = WbGridView.GetRow(i) as GetWayBillList_Result;
+
+                            if (dr != null)
+                            {
+                                if (dr.WType == -1)
+                                {
+                                    var data_report = PrintDoc.WayBillOutReport(dr.Id, _db);
+                                    IHelper.Print(data_report, TemlateList.wb_out, false, true);
+                                }
+
+                                if (dr.WType == -16)
+                                {
+                                    var ord_out = PrintDoc.WayBillOrderedOutReport(dr.Id, _db);
+                                    IHelper.Print(ord_out, TemlateList.wb_vidgruzka, false, true);
+                                }
+                            }
+
+                        }
+                        break;
+                }
             }
         }
     }

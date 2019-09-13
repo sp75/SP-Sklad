@@ -53,6 +53,11 @@ namespace SP_Sklad.Common
 #endif
             }
         }
+        static public string reg_layout_path
+        {
+            get { return "SP_Sklad\\XtraGrid\\Layouts\\"; }
+
+        }
 
         static public bool isRowDublClick(object grid_view)
         {
@@ -179,6 +184,21 @@ namespace SP_Sklad.Common
 
                     };
                     db.WaybillDet.Add(wbd);
+                    db.SaveChanges();
+
+                    if(wb.WType == 16)
+                    {
+                        db.WMatTurn.Add(new WMatTurn()
+                        {
+                            SourceId = wbd.PosId,
+                            PosId = wbd.PosId,
+                            WId = wbd.WId.Value,
+                            MatId = wbd.MatId,
+                            OnDate = wbd.OnDate.Value,
+                            TurnType = 3,
+                            Amount = wbd.Amount
+                        });
+                    }
                 }
                 db.SaveChanges();
             }
@@ -626,7 +646,7 @@ namespace SP_Sklad.Common
             return rowHandle != GridControl.InvalidRowHandle;
         }
 
-        public static void Print(Dictionary<string, IList> data_for_report, string temlate, bool show_report = true)
+        public static void Print(Dictionary<string, IList> data_for_report, string temlate, bool show_report = true, bool print = false)
         {
             String template_file = Path.Combine(template_path, temlate);
 
@@ -637,9 +657,17 @@ namespace SP_Sklad.Common
                 String result_file = Path.Combine(rep_path, Path.GetFileNameWithoutExtension(temlate) + "_" + DateTime.Now.Ticks.ToString() + "." + file_format);
                 var rep = ReportBuilder.GenerateReport(data_for_report, template_file, false, file_format);
 
-                if (DBHelper.CurrentUser.InternalEditor != null && DBHelper.CurrentUser.InternalEditor.Value)
+
+                if (print)
                 {
-                    if (file_format == "pdf")
+                    using (var p_f = new frmSpreadsheed(rep))
+                    {
+                        p_f.Print();
+                    }
+                }
+                else if (DBHelper.CurrentUser.InternalEditor != null && DBHelper.CurrentUser.InternalEditor.Value)
+                {
+                    if (file_format == "pdf" && show_report)
                     {
                         new frmPdfView(rep).Show();
                     }

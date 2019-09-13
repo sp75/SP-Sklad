@@ -55,6 +55,8 @@ namespace SP_Sklad.WBForm
 
         private void frmWayBillOut_Load(object sender, EventArgs e)
         {
+            WaybillDetOutGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "frmWayBillOut\\WaybillDetOutGridView");
+
             KagentComboBox.Properties.DataSource = DBHelper.Kagents;
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
             repositoryItemComboBox1.Items.AddRange(DBHelper.Packaging.Select(s => s.Name).ToList());
@@ -205,6 +207,8 @@ namespace SP_Sklad.WBForm
 
         private void frmWayBillOut_FormClosed(object sender, FormClosedEventArgs e)
         {
+            WaybillDetOutGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "frmWayBillOut\\WaybillDetOutGridView");
+
             DBHelper.UpdateSessionWaybill(_wbill_id.Value, true);
 
             if (is_new_record)

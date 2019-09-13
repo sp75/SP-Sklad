@@ -52,6 +52,8 @@ namespace SP_Sklad.WBForm
 
         private void frmWayBillIn_Load(object sender, EventArgs e)
         {
+            WaybillDetInGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "frmWayBillIn\\WaybillDetInGridView");
+
             if (_wbill_id == null && doc_id == null)
             {
                 is_new_record = true;
@@ -200,6 +202,8 @@ namespace SP_Sklad.WBForm
 
         private void frmWayBillIn_FormClosed(object sender, FormClosedEventArgs e)
         {
+            WaybillDetInGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "frmWayBillIn\\WaybillDetInGridView");
+
             DBHelper.UpdateSessionWaybill(_wbill_id.Value, true);
 
             if (is_new_record)

@@ -143,7 +143,8 @@ namespace SP_Sklad.FinanseForm
                 DocListEdit.EditValue = rl.Id;
 
                 var row = DocListEdit.GetSelectedDataRow() as GetWayBillList_Result;
-                textEdit4.EditValue = row.Balans - SumEdit.Value;
+
+                textEdit4.EditValue = (row == null ? 0 : row.Balans) - SumEdit.Value;
             }
 
         }

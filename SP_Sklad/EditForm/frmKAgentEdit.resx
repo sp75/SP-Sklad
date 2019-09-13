@@ -120,15 +120,12 @@
   <metadata name="ImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>151, 19</value>
   </metadata>
-  <metadata name="ImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>151, 19</value>
-  </metadata>
   <data name="ImageList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADI
-        OAAAAk1TRnQBSQFMAgEBEAEAAZABCwGQAQsBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        OAAAAk1TRnQBSQFMAgEBEAEAAZgBCwGYAQsBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABUAMAAQEBAAEYBgABPP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AI0AAdYBnAF7Aa0BUgEpAdYBtQGU
         AwABhAG1AXsBAAFrAQABEAF7ARABnAHGAZxIAAGtAoQBnAJjAaUCewHGAq1UAAGlAUIBEAHGAXsBSgGl
         AUIBEAGtAVIBIQEIAXsBEAEhAb0BKQFjAf8BnAEAAWsQAAI5AZwCGAGUHgACWgGcAhABewkAAaUCewGl
@@ -385,49 +382,10 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>100</value>
   </metadata>
-  <metadata name="TreeListBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>417, 23</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="dropDownButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAsdEVYdFRpdGxlAEFkZDtJdGVtO0FkZEl0ZW07QmFy
-        cztSaWJib247SXRlbTtQbHVzTjLvgQAAAG5JREFUOE/VjNEJgDAMBbOTc7iU5LvzuIyL+GFMpJXX0laD
-        iHhwNLTNkYg88hyYWTpu8Rxw2cwCPew9hLCUEVdAWcuIK4AqvgDy08A4zYeG/dX5w4BxK5CWWiovBxBY
-        pKRe54GWxmWgJn5WKwGhHZsDINkhyk7EAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <metadata name="popupMenu1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>29, 50</value>
-  </metadata>
-  <data name="dropDownButton3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAsdEVYdFRpdGxlAEFkZDtJdGVtO0FkZEl0ZW07QmFy
-        cztSaWJib247SXRlbTtQbHVzTjLvgQAAAG5JREFUOE/VjNEJgDAMBbOTc7iU5LvzuIyL+GFMpJXX0laD
-        iHhwNLTNkYg88hyYWTpu8Rxw2cwCPew9hLCUEVdAWcuIK4AqvgDy08A4zYeG/dX5w4BxK5CWWiovBxBY
-        pKRe54GWxmWgJn5WKwGhHZsDINkhyk7EAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <metadata name="popupMenu1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>29, 50</value>
-  </metadata>
-  <data name="dropDownButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAsdEVYdFRpdGxlAEFkZDtJdGVtO0FkZEl0ZW07QmFy
-        cztSaWJib247SXRlbTtQbHVzTjLvgQAAAG5JREFUOE/VjNEJgDAMBbOTc7iU5LvzuIyL+GFMpJXX0laD
-        iHhwNLTNkYg88hyYWTpu8Rxw2cwCPew9hLCUEVdAWcuIK4AqvgDy08A4zYeG/dX5w4BxK5CWWiovBxBY
-        pKRe54GWxmWgJn5WKwGhHZsDINkhyk7EAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <metadata name="TreeListBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>417, 23</value>
-  </metadata>
   <metadata name="KAgentDocDS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1034, 18</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="CashEditComboBox.Properties.Buttons" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////
@@ -474,6 +432,18 @@
         udEILAgclodkfv7wuh5XCzORF+SOHfOnn6e4Ey/uLg9k3eVrWYSThKW60/gsCBxnusjh4Oz33W7mkguu
         jrJgiok3h8skjBM2g7HNFDnsRXO0ILAm+G2zCDoq9pJNdDbUjrGNBJekuNuyfB8Z+w99GDbHAksdOQAA
         AABJRU5ErkJggg==
+</value>
+  </data>
+  <metadata name="popupMenu1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>29, 50</value>
+  </metadata>
+  <data name="dropDownButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAsdEVYdFRpdGxlAEFkZDtJdGVtO0FkZEl0ZW07QmFy
+        cztSaWJib247SXRlbTtQbHVzTjLvgQAAAG5JREFUOE/VjNEJgDAMBbOTc7iU5LvzuIyL+GFMpJXX0laD
+        iHhwNLTNkYg88hyYWTpu8Rxw2cwCPew9hLCUEVdAWcuIK4AqvgDy08A4zYeG/dX5w4BxK5CWWiovBxBY
+        pKRe54GWxmWgJn5WKwGhHZsDINkhyk7EAAAAAElFTkSuQmCC
 </value>
   </data>
   <metadata name="DiscountBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -673,6 +643,9 @@
         Zv6LVHtQFGxa97Qgue84/38I/wDOZ0et2+2heQAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="MatDiscountDS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>730, 19</value>
+  </metadata>
   <data name="simpleButton9.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
@@ -683,9 +656,15 @@
         Ak4LtDeAJC+gYxBA1gAyDN1AuAG4MFBRGlQxPP2D2BAxlzQA4kErhH0QtpkAAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="MatDiscountDS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>730, 19</value>
-  </metadata>
+  <data name="dropDownButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAsdEVYdFRpdGxlAEFkZDtJdGVtO0FkZEl0ZW07QmFy
+        cztSaWJib247SXRlbTtQbHVzTjLvgQAAAG5JREFUOE/VjNEJgDAMBbOTc7iU5LvzuIyL+GFMpJXX0laD
+        iHhwNLTNkYg88hyYWTpu8Rxw2cwCPew9hLCUEVdAWcuIK4AqvgDy08A4zYeG/dX5w4BxK5CWWiovBxBY
+        pKRe54GWxmWgJn5WKwGhHZsDINkhyk7EAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="simpleButton16.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAA90RVh0VGl0
@@ -706,6 +685,9 @@
         Zv6LVHtQFGxa97Qgue84/38I/wDOZ0et2+2heQAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="KAMatGroupDiscountDS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>867, 19</value>
+  </metadata>
   <data name="simpleButton10.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
@@ -716,8 +698,17 @@
         Ak4LtDeAJC+gYxBA1gAyDN1AuAG4MFBRGlQxPP2D2BAxlzQA4kErhH0QtpkAAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="KAMatGroupDiscountDS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>867, 19</value>
+  <data name="dropDownButton3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAsdEVYdFRpdGxlAEFkZDtJdGVtO0FkZEl0ZW07QmFy
+        cztSaWJib247SXRlbTtQbHVzTjLvgQAAAG5JREFUOE/VjNEJgDAMBbOTc7iU5LvzuIyL+GFMpJXX0laD
+        iHhwNLTNkYg88hyYWTpu8Rxw2cwCPew9hLCUEVdAWcuIK4AqvgDy08A4zYeG/dX5w4BxK5CWWiovBxBY
+        pKRe54GWxmWgJn5WKwGhHZsDINkhyk7EAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <metadata name="TreeListBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>417, 23</value>
   </metadata>
   <metadata name="aspNetUsersBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>151, 55</value>

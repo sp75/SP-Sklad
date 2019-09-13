@@ -66,6 +66,9 @@ namespace SP_Sklad.MainTabs
 
         private void WarehouseUserControl_Load(object sender, EventArgs e)
         {
+            WbGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "WarehouseUserControl\\WbGridView");
+            WhMatGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "WarehouseUserControl\\WhMatGridView");
+
             if (!DesignMode)
             {
                 custom_mat_list = new List<CustomMatListWH>();
@@ -1035,6 +1038,11 @@ namespace SP_Sklad.MainTabs
         public class ExtMatIfo
         {
             public decimal? LastPrice { get; set; }
+        }
+        public void SaveGridLayouts()
+        {
+            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "WarehouseUserControl\\WbGridView");
+            WhMatGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "WarehouseUserControl\\WhMatGridView");
         }
 
     }

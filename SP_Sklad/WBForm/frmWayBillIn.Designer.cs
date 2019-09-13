@@ -470,7 +470,7 @@
             // 
             // CurrencyLookUpEdit
             // 
-            this.CurrencyLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "CurrId", true));
+            this.CurrencyLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "CurrId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.CurrencyLookUpEdit.Location = new System.Drawing.Point(89, 108);
             this.CurrencyLookUpEdit.Name = "CurrencyLookUpEdit";
             this.CurrencyLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -519,7 +519,7 @@
             // 
             // CurRateEdit
             // 
-            this.CurRateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "OnValue", true));
+            this.CurRateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "OnValue", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.CurRateEdit.Location = new System.Drawing.Point(201, 108);
             this.CurRateEdit.MenuManager = this.barManager1;
             this.CurRateEdit.Name = "CurRateEdit";
