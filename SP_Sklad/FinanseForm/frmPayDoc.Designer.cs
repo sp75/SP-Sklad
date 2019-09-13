@@ -111,6 +111,7 @@
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -153,6 +154,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ReasonEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -813,6 +815,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.DocListEdit.Properties.DisplayMember = "Num";
             this.DocListEdit.Properties.PopupFormSize = new System.Drawing.Size(450, 200);
+            this.DocListEdit.Properties.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemCheckEdit1});
             this.DocListEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.DocListEdit.Properties.ValueMember = "Id";
             this.DocListEdit.Properties.View = this.gridLookUpEdit1View;
@@ -838,6 +842,7 @@
             // gridColumn1
             // 
             this.gridColumn1.Caption = "gridColumn1";
+            this.gridColumn1.ColumnEdit = this.repositoryItemCheckEdit1;
             this.gridColumn1.FieldName = "Checked";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.OptionsColumn.ShowCaption = false;
@@ -979,6 +984,13 @@
             this.simpleButton5.TabIndex = 0;
             this.simpleButton5.Text = "Відмінити";
             // 
+            // repositoryItemCheckEdit1
+            // 
+            this.repositoryItemCheckEdit1.AutoHeight = false;
+            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+            this.repositoryItemCheckEdit1.ValueChecked = 1;
+            this.repositoryItemCheckEdit1.ValueUnchecked = 0;
+            // 
             // frmPayDoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1049,6 +1061,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ReasonEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
             this.panelControl4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1129,5 +1142,6 @@
         public DevExpress.XtraEditors.LookUpEdit KagentComboBox;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         public DevExpress.XtraEditors.CalcEdit SumEdit;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
     }
 }
