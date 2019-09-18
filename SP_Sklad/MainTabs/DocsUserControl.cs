@@ -1176,7 +1176,7 @@ namespace SP_Sklad.MainTabs
                                 if (dr.WType == -1)
                                 {
                                     var data_report = PrintDoc.WayBillOutReport(dr.Id, _db);
-                                    IHelper.Print(data_report, TemlateList.wb_out, false, true);
+                                    IHelper.Print(data_report, TemlateList.wb_out_print, false, true);
                                 }
 
                                 if (dr.WType == -16)

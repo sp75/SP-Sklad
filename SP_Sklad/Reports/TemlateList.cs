@@ -26,6 +26,7 @@ namespace SP_Sklad.Reports
         public static String wb_invoice { get { return "Invoice.xlsx"; } }
         public static String planned_calculation { get { return "PlannedCalculation.xlsx"; } }
         public static String wb_vidgruzka { get { return "vidgruzka.xlsx"; } }
+        public static String wb_out_print { get { return "WayBill_Out_Print.xlsx"; } }
 
         public static String rep_1 { get { return "MatInShort(1).xlsx"; } }
         public static String rep_2 { get { return "MatOutShort(2).xlsx"; } }
