@@ -14,6 +14,7 @@ using System.Text.RegularExpressions;
 using System.Globalization;
 using SP_Sklad.Common;
 using System.Security.Principal;
+using DevExpress.LookAndFeel;
 
 namespace SP_Sklad
 {
@@ -23,6 +24,8 @@ namespace SP_Sklad
         public frmLogin()
         {
             InitializeComponent();
+
+            UserLookAndFeel.Default.SkinName = Properties.Settings.Default["ApplicationSkinName"].ToString();
 
             try
             {
@@ -257,6 +260,7 @@ namespace SP_Sklad
 
         private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Properties.Settings.Default.ApplicationSkinName = UserLookAndFeel.Default.SkinName;
             Properties.Settings.Default.Save();
         }
 

@@ -94,6 +94,10 @@ namespace SP_Sklad.Reports
                     InvoiceReport(id, db, TemlateList.wb_invoice);
                     break;
 
+                case 21:
+                    ProductionPlansReport(id, db, TemlateList.wb_prod_plan);
+                    break;
+
                 case 22:
                     PlannedCalculationReport(id, db);
                     break;
@@ -520,6 +524,34 @@ namespace SP_Sklad.Reports
             IHelper.Print(dataForReport, TemlateList.planned_calculation);
         }
 
+        public static void ProductionPlansReport(Guid id, BaseEntities db, string template_name)
+        {
+            var dataForReport = new Dictionary<string, IList>();
+
+            var wb = db.ProductionPlans.Where(w => w.Id == id).AsNoTracking().Select(s => new
+            {
+                s.Num,
+                s.OnDate,
+                s.Notes,
+                WhName = s.Warehouse.Name,
+                ManufactoryName = s.Warehouse1.Name,
+                PersonName = s.Kagent.Name,
+                EntName = s.Kagent1.Name
+            }).ToList();
+
+            var wb_items = db.v_ProductionPlanDet.AsNoTracking().Where(w => w.ProductionPlanId == id).OrderBy(o => o.Num).ToList();
+
+
+            dataForReport.Add("WayBillList", wb);
+            dataForReport.Add("WayBillItems", wb_items);
+            dataForReport.Add("SummaryField", wb_items.GroupBy(g => new { g.MsrName }).Select(s => new
+            {
+                s.Key.MsrName,
+                Total = s.Sum(a => a.Total),
+            }).ToList());
+
+            IHelper.Print(dataForReport, template_name);
+        }
 
 
         private static string Getlable(Decimal? price , String code)

@@ -41,5 +41,8 @@
     <Setting Name="show_all_mat" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="ApplicationSkinName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Visual Studio 2013 Light</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

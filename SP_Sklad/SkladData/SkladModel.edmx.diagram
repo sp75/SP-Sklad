@@ -281,6 +281,14 @@
         <AssociationConnector Association="BaseModel.FK_OrderedRels_WaybillDet1" />
         <EntityTypeShape EntityType="BaseModel.CurrencyRate" Width="1.5" PointX="20.875" PointY="38" />
         <AssociationConnector Association="BaseModel.FK__CURRENCYR__CURRI__5EBF139D" />
+        <EntityTypeShape EntityType="BaseModel.PosRemains" Width="1.5" PointX="35.75" PointY="16.875" />
+        <AssociationConnector Association="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" />
+        <AssociationConnector Association="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" />
+        <AssociationConnector Association="BaseModel.FK__POSREMAINS__WID__2EA5EC27" />
+        <AssociationConnector Association="BaseModel.FK_ProductionPlans_Kagent" />
+        <AssociationConnector Association="BaseModel.FK_ProductionPlans_Kagent1" />
+        <AssociationConnector Association="BaseModel.FK_ProductionPlans_Warehouse" />
+        <AssociationConnector Association="BaseModel.FK_ProductionPlans_Warehouse1" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

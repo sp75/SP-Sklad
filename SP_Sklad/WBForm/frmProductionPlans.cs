@@ -168,7 +168,7 @@ namespace SP_Sklad.WBForm
                   {
                       Id = Guid.NewGuid(),
                       WType = -20,
-                      OnDate = DBHelper.ServerDateTime(),
+                      OnDate = pp.OnDate,
                       Num = new BaseEntities().GetDocNum("wb_make").FirstOrDefault(),
                       EntId = DBHelper.Enterprise.KaId,
                       CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
@@ -241,11 +241,19 @@ namespace SP_Sklad.WBForm
         {
             var row = WaybillDetInGridView.GetFocusedRow() as v_ProductionPlanDet;
             var wbd = _db.ProductionPlanDet.Find(row.Id);
+            if (e.Column.FieldName == "Amount")
+            {
 
-            wbd.Amount = Convert.ToDecimal(e.Value);
-            var real_amount = wbd.Amount.Value - wbd.Remain.Value;
-            var tmp_amount = (real_amount / (row.ResipeOut == 0 ? 100.00m : row.ResipeOut)) * 100; // real_amount + (real_amount - (real_amount * row.ResipeOut / 100));
-            wbd.Total = Math.Ceiling(tmp_amount / row.RecipeAmount) * row.RecipeAmount;
+                wbd.Amount = Convert.ToDecimal(e.Value);
+                var real_amount = wbd.Amount.Value - wbd.Remain.Value;
+                var tmp_amount = (real_amount / (row.ResipeOut == 0 ? 100.00m : row.ResipeOut)) * 100; // real_amount + (real_amount - (real_amount * row.ResipeOut / 100));
+                wbd.Total = Math.Ceiling(tmp_amount / row.RecipeAmount) * row.RecipeAmount;
+            }
+
+            if (e.Column.FieldName == "Total")
+            {
+                wbd.Total = Convert.ToDecimal(e.Value);
+            }
 
             _db.SaveChanges();
             RefreshDet();
@@ -253,40 +261,43 @@ namespace SP_Sklad.WBForm
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (WHComboBox.EditValue != null && WHComboBox.EditValue != DBNull.Value && ManufactoryEdit.EditValue != null && ManufactoryEdit.EditValue != DBNull.Value)
+            if (MessageBox.Show("Ви дійсно бажаєте заповнити по залишками зі складу ?", "Планування виробництва", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
-                _db.DeleteWhere<ProductionPlanDet>(w => w.ProductionPlanId == pp.Id);
-                var wh_remain = _db.WhMatGet(0, (int)WHComboBox.EditValue, 0, DateTime.Now, 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).ToList();
-                var maked = _db.WBListMake(DateTime.Now.AddYears(-100), DateTime.Now.AddYears(100), 2, "*", 0, -20).ToList();
-                int num = 0;
-                foreach (var item in wh_remain)
+                if (WHComboBox.EditValue != null && WHComboBox.EditValue != DBNull.Value && ManufactoryEdit.EditValue != null && ManufactoryEdit.EditValue != DBNull.Value)
                 {
-                    var rec = _db.MatRecipe.FirstOrDefault(w => w.MatId == item.MatId);
-                    if (rec != null)
+                    _db.DeleteWhere<ProductionPlanDet>(w => w.ProductionPlanId == pp.Id);
+                    var wh_remain = _db.WhMatGet(0, (int)WHComboBox.EditValue, 0, DateTime.Now, 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).ToList();
+                    var maked = _db.WBListMake(DateTime.Now.AddYears(-100), DateTime.Now.AddYears(100), 2, "*", 0, -20).ToList();
+                    int num = 0;
+                    foreach (var item in wh_remain)
                     {
-                        var sc_amount = _db.SchedulingOrders.Where(w => w.RecId == rec.RecId).Select(s => s.Amount).FirstOrDefault();
-                        var in_process = maked.Where(w => w.MatId == item.MatId).Sum(s => s.AmountOut - (s.ShippedAmount ?? 0));
-                        var reamin = item.Remain + in_process;
-
-                        var real_amount = sc_amount - reamin;
-                        var tmp_amount = (real_amount / (rec.Out == 0 ? 100m : rec.Out)) * 100;// real_amount + (real_amount - (real_amount * rec.Out / 100));
-
-                        _db.ProductionPlanDet.Add(new ProductionPlanDet
+                        var rec = _db.MatRecipe.FirstOrDefault(w => w.MatId == item.MatId);
+                        if (rec != null)
                         {
-                            Id = Guid.NewGuid(),
-                            Num = ++num,
-                            Amount = sc_amount,
-                            ProductionPlanId = pp.Id,
-                            RecId = rec.RecId,
-                            Remain = reamin,
-                            WhId = (int)ManufactoryEdit.EditValue,
-                            Total = Math.Ceiling(Convert.ToDecimal(tmp_amount / rec.Amount)) * rec.Amount
-                        });
-                    }
-                }
-                _db.SaveChanges();
+                            var sc_amount = _db.SchedulingOrders.Where(w => w.RecId == rec.RecId).Select(s => s.Amount).FirstOrDefault();
+                            var in_process = maked.Where(w => w.MatId == item.MatId).Sum(s => s.AmountOut - (s.ShippedAmount ?? 0));
+                            var reamin = item.Remain + in_process;
 
-                RefreshDet();
+                            var real_amount = sc_amount - reamin;
+                            var tmp_amount = (real_amount / (rec.Out == 0 ? 100m : rec.Out)) * 100;// real_amount + (real_amount - (real_amount * rec.Out / 100));
+
+                            _db.ProductionPlanDet.Add(new ProductionPlanDet
+                            {
+                                Id = Guid.NewGuid(),
+                                Num = ++num,
+                                Amount = sc_amount,
+                                ProductionPlanId = pp.Id,
+                                RecId = rec.RecId,
+                                Remain = reamin,
+                                WhId = (int)ManufactoryEdit.EditValue,
+                                Total = Math.Ceiling(Convert.ToDecimal(tmp_amount / rec.Amount)) * rec.Amount
+                            });
+                        }
+                    }
+                    _db.SaveChanges();
+
+                    RefreshDet();
+                }
             }
         }
 

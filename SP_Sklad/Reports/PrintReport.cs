@@ -49,6 +49,7 @@ namespace SP_Sklad.Reports
                     MatId = Material != null ? Material.Name : "",
                     CType = ChType != null ? ChType.Name : "",
                     KontragentGroupName = KontragentGroup != null ? KontragentGroup.Name : "",
+                    Year = StartDate.Year.ToString()
                 });
                 return obj;
             }
@@ -65,6 +66,7 @@ namespace SP_Sklad.Reports
             public string MatId { get; set; }
             public string CType { get; set; }
             public string KontragentGroupName { get; set; }
+            public string Year { get; set; }
         }
 
 
@@ -1302,14 +1304,23 @@ namespace SP_Sklad.Reports
                 string wh = Convert.ToString(Warehouse.WId);
                 int kid = Convert.ToInt32(Kagent.KaId);
                 Guid grp_kg = KontragentGroup.Id;
-                var mat = db.REP_39(StartDate, EndDate, grp, kid, wh, "-1,", _user_id, grp_kg).ToList();
+                var mat = db.REP_39(StartDate, EndDate, grp, kid, wh, "-1,", _user_id, grp_kg).OrderByDescending(o=> o.Amount).ToList();
 
                 if (!mat.Any())
                 {
                     return;
                 }
 
-                var kagents = DBHelper.Kagents.Where(w => w.KaId == kid || kid == 0).Select(s => new { s.KaId, s.Name }).ToList();
+                var kagents = mat.GroupBy(g=> new
+                {
+                    g.KaId,
+                    g.KaName
+                }).Select(s=> new
+                {
+                    s.Key.KaId,
+                    Name = s.Key.KaName,
+                    TotalAmount = s.Sum(a => a.Amount)
+                }).OrderByDescending(o=> o.TotalAmount).ToList();// DBHelper.Kagents.Where(w => w.KaId == kid || kid == 0).Select(s => new { s.KaId, s.Name }).ToList();
 
                 rel.Add(new
                 {
@@ -1320,7 +1331,7 @@ namespace SP_Sklad.Reports
                 });
 
                 data_for_report.Add("XLRPARAMS", XLRPARAMS);
-                data_for_report.Add("MatGroup", kagents.Where(w => mat.Select(s => s.KaId).Contains(w.KaId)).ToList());
+                data_for_report.Add("MatGroup", kagents/*.Where(w => mat.Select(s => s.KaId).Contains(w.KaId)).ToList()*/);
                 data_for_report.Add("MatOutDet", mat);
                 data_for_report.Add("SummaryField", mat.GroupBy(g => 1).Select(s => new
                 {
@@ -1353,6 +1364,23 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("DiscCards", list.ToList());
 
                 IHelper.Print(data_for_report, TemlateList.rep_40);
+            }
+
+
+            if (idx == 41)
+            {
+                Guid grp_kg = KontragentGroup.Id;
+                var kagent = db.REP_41(new DateTime(StartDate.Year, 1, 1), grp_kg).OrderByDescending(o=> o.Amount_Total).ToList();
+
+                if (!kagent.Any())
+                {
+                    return;
+                }
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("KagentRange", kagent.ToList());
+
+                IHelper.Print(data_for_report, TemlateList.rep_41);
             }
 
             db.PrintLog.Add(new PrintLog

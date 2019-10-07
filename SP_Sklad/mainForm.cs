@@ -330,7 +330,15 @@ namespace SP_Sklad
 
         private void barButtonItem13_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-           Process.Start("http://178.136.7.248/web-sklad/sp_sklad/SP_Sklad.rar");
+            //           Process.Start("http://178.136.7.248/web-sklad/sp_sklad/SP_Sklad.rar");
+            Application.Exit();
+
+            var update = Path.Combine(Application.StartupPath, "update.exe");
+
+            if (File.Exists(update))
+            {
+                Process.Start(update, "true");
+            }
         }
     }
 }

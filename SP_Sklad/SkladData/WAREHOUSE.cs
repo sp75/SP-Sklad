@@ -27,6 +27,9 @@ namespace SP_Sklad.SkladData
             this.WaybillDet = new HashSet<WaybillDet>();
             this.ProductionPlanDet = new HashSet<ProductionPlanDet>();
             this.UserAccessWh = new HashSet<UserAccessWh>();
+            this.PosRemains = new HashSet<PosRemains>();
+            this.ProductionPlans = new HashSet<ProductionPlans>();
+            this.ProductionPlans1 = new HashSet<ProductionPlans>();
         }
     
         public int WId { get; set; }
@@ -47,5 +50,8 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<WaybillDet> WaybillDet { get; set; }
         public virtual ICollection<ProductionPlanDet> ProductionPlanDet { get; set; }
         public virtual ICollection<UserAccessWh> UserAccessWh { get; set; }
+        public virtual ICollection<PosRemains> PosRemains { get; set; }
+        public virtual ICollection<ProductionPlans> ProductionPlans { get; set; }
+        public virtual ICollection<ProductionPlans> ProductionPlans1 { get; set; }
     }
 }

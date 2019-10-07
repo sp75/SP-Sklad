@@ -774,6 +774,24 @@
           <Property Name="PosId" Type="int" Nullable="false" />
           <Property Name="CPosId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="PosRemains">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PosId" Type="int" Nullable="false" />
+          <Property Name="WId" Type="int" Nullable="false" />
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="Remain" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="Rsv" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="AvgPrice" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="InWay" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="Ordered" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="OrderedRsv" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="ActualRemain" Type="numeric" Precision="17" Scale="4" StoreGeneratedPattern="Computed" />
+          <Property Name="SupplierId" Type="int" />
+        </EntityType>
         <EntityType Name="PriceList">
           <Key>
             <PropertyRef Name="PlId" />
@@ -2281,6 +2299,42 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__POSREMAIN__MATID__2CBDA3B5">
+          <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+          <End Role="PosRemains" Type="Self.PosRemains" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="PosRemains">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__POSREMAIN__POSID__2DB1C7EE">
+          <End Role="WaybillDet" Type="Self.WaybillDet" Multiplicity="1" />
+          <End Role="PosRemains" Type="Self.PosRemains" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="PosRemains">
+              <PropertyRef Name="PosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__POSREMAINS__WID__2EA5EC27">
+          <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="1" />
+          <End Role="PosRemains" Type="Self.PosRemains" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
+            </Principal>
+            <Dependent Role="PosRemains">
+              <PropertyRef Name="WId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__TAXWB__PERSONID__019E3B86">
           <End Role="Kagent" Type="Self.Kagent" Multiplicity="0..1" />
           <End Role="TAXWB" Type="Self.TAXWB" Multiplicity="*" />
@@ -3248,6 +3302,54 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Principal>
             <Dependent Role="ProductionPlanDet">
               <PropertyRef Name="WhId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductionPlans_Kagent">
+          <End Role="Kagent" Type="Self.Kagent" Multiplicity="0..1" />
+          <End Role="ProductionPlans" Type="Self.ProductionPlans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="ProductionPlans">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductionPlans_Kagent1">
+          <End Role="Kagent" Type="Self.Kagent" Multiplicity="0..1" />
+          <End Role="ProductionPlans" Type="Self.ProductionPlans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="ProductionPlans">
+              <PropertyRef Name="EntId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductionPlans_Warehouse">
+          <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="0..1" />
+          <End Role="ProductionPlans" Type="Self.ProductionPlans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
+            </Principal>
+            <Dependent Role="ProductionPlans">
+              <PropertyRef Name="WhId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductionPlans_Warehouse1">
+          <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="0..1" />
+          <End Role="ProductionPlans" Type="Self.ProductionPlans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
+            </Principal>
+            <Dependent Role="ProductionPlans">
+              <PropertyRef Name="ManufId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -5398,6 +5500,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="ReturnSummIn" Type="numeric" Precision="38" Scale="2" />
                 <Property Name="TypeName" Type="nvarchar" MaxLength="50" />
                 <Property Name="KaId" Type="int" />
+                <Property Name="KaName" Type="nvarchar" MaxLength="100" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -5419,6 +5522,30 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="N" Type="bigint" />
                 <Property Name="Name" Type="nvarchar" MaxLength="64" Nullable="false" />
                 <Property Name="Saldo" Type="numeric" Precision="38" Scale="2" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="REP_41" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="from_date" Type="datetime" Mode="In" />
+          <Parameter Name="ka_grp_id" Type="uniqueidentifier" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Name" Type="nvarchar" MaxLength="100" />
+                <Property Name="Amount_1" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="Amount_2" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="Amount_3" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="Amount_4" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="Amount_5" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="Amount_6" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="Amount_7" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="Amount_8" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="Amount_9" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="Amount_10" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="Amount_11" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="Amount_12" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="Amount_Total" Type="numeric" Precision="38" Scale="4" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -5834,6 +5961,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="PlannedCalculation" EntityType="Self.PlannedCalculation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PlannedCalculationDet" EntityType="Self.PlannedCalculationDet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PosRel" EntityType="Self.PosRel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PosRemains" EntityType="Self.PosRemains" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PriceList" EntityType="Self.PriceList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PriceListDet" EntityType="Self.PriceListDet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PriceTypes" EntityType="Self.PriceTypes" Schema="dbo" store:Type="Tables" />
@@ -6470,6 +6598,18 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="PayType" EntitySet="PayType" />
             <End Role="PayDoc" EntitySet="PayDoc" />
           </AssociationSet>
+          <AssociationSet Name="FK__POSREMAIN__MATID__2CBDA3B5" Association="Self.FK__POSREMAIN__MATID__2CBDA3B5">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="PosRemains" EntitySet="PosRemains" />
+          </AssociationSet>
+          <AssociationSet Name="FK__POSREMAIN__POSID__2DB1C7EE" Association="Self.FK__POSREMAIN__POSID__2DB1C7EE">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="PosRemains" EntitySet="PosRemains" />
+          </AssociationSet>
+          <AssociationSet Name="FK__POSREMAINS__WID__2EA5EC27" Association="Self.FK__POSREMAINS__WID__2EA5EC27">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="PosRemains" EntitySet="PosRemains" />
+          </AssociationSet>
           <AssociationSet Name="FK__TAXWB__PERSONID__019E3B86" Association="Self.FK__TAXWB__PERSONID__019E3B86">
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="TAXWB" EntitySet="TAXWB" />
@@ -6773,6 +6913,22 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <AssociationSet Name="FK_ProductionPlanDet_Warehouse" Association="Self.FK_ProductionPlanDet_Warehouse">
             <End Role="Warehouse" EntitySet="Warehouse" />
             <End Role="ProductionPlanDet" EntitySet="ProductionPlanDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductionPlans_Kagent" Association="Self.FK_ProductionPlans_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="ProductionPlans" EntitySet="ProductionPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductionPlans_Kagent1" Association="Self.FK_ProductionPlans_Kagent1">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="ProductionPlans" EntitySet="ProductionPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductionPlans_Warehouse" Association="Self.FK_ProductionPlans_Warehouse">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="ProductionPlans" EntitySet="ProductionPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductionPlans_Warehouse1" Association="Self.FK_ProductionPlans_Warehouse1">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="ProductionPlans" EntitySet="ProductionPlans" />
           </AssociationSet>
           <AssociationSet Name="FK_REPLNG_LANGID" Association="Self.FK_REPLNG_LANGID">
             <End Role="Languages" EntitySet="Languages" />
@@ -8174,16 +8330,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="p_type" Mode="In" Type="Int32" />
             <Parameter Name="curr_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="REP_39" IsComposable="true" ReturnType="Collection(BaseModel.REP_39_Result)">
-            <Parameter Name="from_date" Mode="In" Type="DateTime" />
-            <Parameter Name="to_date" Mode="In" Type="DateTime" />
-            <Parameter Name="grp_id" Mode="In" Type="Int32" />
-            <Parameter Name="ka_id" Mode="In" Type="Int32" />
-            <Parameter Name="wh" Mode="In" Type="String" />
-            <Parameter Name="doc_types" Mode="In" Type="String" />
-            <Parameter Name="user_id" Mode="In" Type="Int32" />
-            <Parameter Name="ka_grp_id" Mode="In" Type="Guid" />
-          </FunctionImport>
           <FunctionImport Name="ExecuteWayBill" ReturnType="Collection(BaseModel.ExecuteWayBill_Result)">
             <Parameter Name="WBILLID" Mode="In" Type="Int32" />
             <Parameter Name="NEW_WTYPE" Mode="In" Type="Int32" />
@@ -8360,6 +8506,49 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="get_empty" Mode="In" Type="Int32" />
             <Parameter Name="wh" Mode="In" Type="String" />
             <Parameter Name="user_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="PosRemains" EntityType="BaseModel.PosRemains" />
+          <AssociationSet Name="FK__POSREMAIN__MATID__2CBDA3B5" Association="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="PosRemains" EntitySet="PosRemains" />
+          </AssociationSet>
+          <AssociationSet Name="FK__POSREMAIN__POSID__2DB1C7EE" Association="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="PosRemains" EntitySet="PosRemains" />
+          </AssociationSet>
+          <AssociationSet Name="FK__POSREMAINS__WID__2EA5EC27" Association="BaseModel.FK__POSREMAINS__WID__2EA5EC27">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="PosRemains" EntitySet="PosRemains" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductionPlans_Kagent" Association="BaseModel.FK_ProductionPlans_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="ProductionPlans" EntitySet="ProductionPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductionPlans_Kagent1" Association="BaseModel.FK_ProductionPlans_Kagent1">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="ProductionPlans" EntitySet="ProductionPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductionPlans_Warehouse" Association="BaseModel.FK_ProductionPlans_Warehouse">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="ProductionPlans" EntitySet="ProductionPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductionPlans_Warehouse1" Association="BaseModel.FK_ProductionPlans_Warehouse1">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="ProductionPlans" EntitySet="ProductionPlans" />
+          </AssociationSet>
+          <FunctionImport Name="REP_41" IsComposable="true" ReturnType="Collection(BaseModel.REP_41_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="ka_grp_id" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="REP_39" IsComposable="true" ReturnType="Collection(BaseModel.REP_39_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="grp_id" Mode="In" Type="Int32" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="wh" Mode="In" Type="String" />
+            <Parameter Name="doc_types" Mode="In" Type="String" />
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
+            <Parameter Name="ka_grp_id" Mode="In" Type="Guid" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
@@ -8907,6 +9096,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__WAREHOUS" FromRole="Warehouse" ToRole="WaybillDet" />
           <NavigationProperty Name="ProductionPlanDet" Relationship="BaseModel.FK_ProductionPlanDet_Warehouse" FromRole="Warehouse" ToRole="ProductionPlanDet" />
           <NavigationProperty Name="UserAccessWh" Relationship="BaseModel.FK_UAWH_WID" FromRole="Warehouse" ToRole="UserAccessWh" />
+          <NavigationProperty Name="PosRemains" Relationship="BaseModel.FK__POSREMAINS__WID__2EA5EC27" FromRole="Warehouse" ToRole="PosRemains" />
+          <NavigationProperty Name="ProductionPlans" Relationship="BaseModel.FK_ProductionPlans_Warehouse" FromRole="Warehouse" ToRole="ProductionPlans" />
+          <NavigationProperty Name="ProductionPlans1" Relationship="BaseModel.FK_ProductionPlans_Warehouse1" FromRole="Warehouse" ToRole="ProductionPlans" />
           </EntityType>
         <Association Name="FK__WMATTURN__WID__3BCADD1B">
           <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="1" />
@@ -9393,6 +9585,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="InvNumber" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="SerialNumber" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="MaterialMeasures" Relationship="BaseModel.FK_MaterialMeasures_Materials" FromRole="Materials" ToRole="MaterialMeasures" />
+          <NavigationProperty Name="PosRemains" Relationship="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" FromRole="Materials" ToRole="PosRemains" />
         </EntityType>
         <Association Name="FK_CONTRDET_REFERENCE_MATERIAL">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="0..1" />
@@ -10862,6 +11055,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="DateTime" Name="UpdateAt" Precision="3" />
           <NavigationProperty Name="OrderedRels" Relationship="BaseModel.FK_OrderedRels_WaybillDet" FromRole="WaybillDet" ToRole="OrderedRels" />
           <NavigationProperty Name="OrderedRels1" Relationship="BaseModel.FK_OrderedRels_WaybillDet1" FromRole="WaybillDet" ToRole="OrderedRels" />
+          <NavigationProperty Name="PosRemains" Relationship="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" FromRole="WaybillDet" ToRole="PosRemains" />
         </EntityType>
         <EntityType Name="WaybillList">
           <Key>
@@ -11788,6 +11982,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="AspNetUserId" MaxLength="128" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK__PAYDOC__KAID__19AACF41" FromRole="Kagent" ToRole="PayDoc" />
           <NavigationProperty Name="PayDoc1" Relationship="BaseModel.FK__PAYDOC__MPERSONI__22401542" FromRole="Kagent" ToRole="PayDoc" />
+          <NavigationProperty Name="ProductionPlans" Relationship="BaseModel.FK_ProductionPlans_Kagent" FromRole="Kagent" ToRole="ProductionPlans" />
+          <NavigationProperty Name="ProductionPlans1" Relationship="BaseModel.FK_ProductionPlans_Kagent1" FromRole="Kagent" ToRole="ProductionPlans" />
         </EntityType>
         <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
@@ -12313,6 +12509,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Int32" Name="WhId" />
           <Property Type="Int32" Name="ManufId" />
           <NavigationProperty Name="ProductionPlanDet" Relationship="BaseModel.FK_ProductionPlanDet_ProductionPlans" FromRole="ProductionPlans" ToRole="ProductionPlanDet" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_ProductionPlans_Kagent" FromRole="ProductionPlans" ToRole="Kagent" />
+          <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_ProductionPlans_Kagent1" FromRole="ProductionPlans" ToRole="Kagent" />
+          <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK_ProductionPlans_Warehouse" FromRole="ProductionPlans" ToRole="Warehouse" />
+          <NavigationProperty Name="Warehouse1" Relationship="BaseModel.FK_ProductionPlans_Warehouse1" FromRole="ProductionPlans" ToRole="Warehouse" />
         </EntityType>
         <ComplexType Name="GetActualRemainByWh_Result">
           <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
@@ -13098,20 +13298,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
           <Property Type="Int32" Name="ImgIndex" Nullable="false" />
           <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
-        </ComplexType>
-        <ComplexType Name="REP_39_Result">
-          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
-          <Property Type="Int32" Name="GrpId" Nullable="true" />
-          <Property Type="Int32" Name="MatId" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
-          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="Summ" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="String" Name="ShortName" Nullable="false" MaxLength="6" />
-          <Property Type="Decimal" Name="ReturnAmountIn" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="ReturnSummIn" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="KaId" Nullable="true" />
         </ComplexType>
         <ComplexType Name="ExecuteWayBill_Result">
           <Property Type="Int32" Name="Checked" Nullable="true" />
@@ -13940,6 +14126,142 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Int32" Name="DocType" Nullable="true" />
           <Property Type="String" Name="StrPrice" Nullable="true" MaxLength="128" />
           <Property Type="Decimal" Name="CurrencyPrice" Nullable="true" Precision="15" Scale="4" />
+        </ComplexType>
+        <EntityType Name="PosRemains">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PosId" Type="Int32" Nullable="false" />
+          <Property Name="WId" Type="Int32" Nullable="false" />
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Remain" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="Rsv" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="AvgPrice" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="InWay" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="Ordered" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="OrderedRsv" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="ActualRemain" Type="Decimal" Precision="17" Scale="4" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="SupplierId" Type="Int32" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" FromRole="PosRemains" ToRole="Materials" />
+          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" FromRole="PosRemains" ToRole="WaybillDet" />
+          <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK__POSREMAINS__WID__2EA5EC27" FromRole="PosRemains" ToRole="Warehouse" />
+        </EntityType>
+        <Association Name="FK__POSREMAIN__MATID__2CBDA3B5">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
+          <End Type="BaseModel.PosRemains" Role="PosRemains" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="PosRemains">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__POSREMAIN__POSID__2DB1C7EE">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
+          <End Type="BaseModel.PosRemains" Role="PosRemains" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="PosRemains">
+              <PropertyRef Name="PosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__POSREMAINS__WID__2EA5EC27">
+          <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="1" />
+          <End Type="BaseModel.PosRemains" Role="PosRemains" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
+            </Principal>
+            <Dependent Role="PosRemains">
+              <PropertyRef Name="WId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductionPlans_Kagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.ProductionPlans" Role="ProductionPlans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="ProductionPlans">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductionPlans_Kagent1">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.ProductionPlans" Role="ProductionPlans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="ProductionPlans">
+              <PropertyRef Name="EntId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductionPlans_Warehouse">
+          <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="0..1" />
+          <End Type="BaseModel.ProductionPlans" Role="ProductionPlans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
+            </Principal>
+            <Dependent Role="ProductionPlans">
+              <PropertyRef Name="WhId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductionPlans_Warehouse1">
+          <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="0..1" />
+          <End Type="BaseModel.ProductionPlans" Role="ProductionPlans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="WId" />
+            </Principal>
+            <Dependent Role="ProductionPlans">
+              <PropertyRef Name="ManufId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="REP_41_Result">
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+          <Property Type="Decimal" Name="Amount_1" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Amount_2" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Amount_3" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Amount_4" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Amount_5" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Amount_6" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Amount_7" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Amount_8" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Amount_9" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Amount_10" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Amount_11" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Amount_12" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Amount_Total" Nullable="true" Precision="38" Scale="4" />
+        </ComplexType>
+        <ComplexType Name="REP_39_Result">
+          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="GrpId" Nullable="true" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Summ" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="String" Name="ShortName" Nullable="false" MaxLength="6" />
+          <Property Type="Decimal" Name="ReturnAmountIn" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="ReturnSummIn" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="KaId" Nullable="true" />
+          <Property Type="String" Name="KaName" Nullable="true" MaxLength="100" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -16975,24 +17297,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="REP_39" FunctionName="BaseModel.Store.REP_39">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.REP_39_Result">
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Summ" ColumnName="Summ" />
-                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
-                <ScalarProperty Name="ReturnAmountIn" ColumnName="ReturnAmountIn" />
-                <ScalarProperty Name="ReturnSummIn" ColumnName="ReturnSummIn" />
-                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
-                <ScalarProperty Name="KaId" ColumnName="KaId" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="ExecuteWayBill" FunctionName="BaseModel.Store.ExecuteWayBill">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.ExecuteWayBill_Result">
@@ -17651,6 +17955,64 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="DocType" ColumnName="DocType" />
                 <ScalarProperty Name="StrPrice" ColumnName="StrPrice" />
                 <ScalarProperty Name="CurrencyPrice" ColumnName="CurrencyPrice" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="PosRemains">
+            <EntityTypeMapping TypeName="BaseModel.PosRemains">
+              <MappingFragment StoreEntitySet="PosRemains">
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="ActualRemain" ColumnName="ActualRemain" />
+                <ScalarProperty Name="OrderedRsv" ColumnName="OrderedRsv" />
+                <ScalarProperty Name="Ordered" ColumnName="Ordered" />
+                <ScalarProperty Name="InWay" ColumnName="InWay" />
+                <ScalarProperty Name="AvgPrice" ColumnName="AvgPrice" />
+                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="REP_41" FunctionName="BaseModel.Store.REP_41">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.REP_41_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Amount_1" ColumnName="Amount_1" />
+                <ScalarProperty Name="Amount_2" ColumnName="Amount_2" />
+                <ScalarProperty Name="Amount_3" ColumnName="Amount_3" />
+                <ScalarProperty Name="Amount_4" ColumnName="Amount_4" />
+                <ScalarProperty Name="Amount_5" ColumnName="Amount_5" />
+                <ScalarProperty Name="Amount_6" ColumnName="Amount_6" />
+                <ScalarProperty Name="Amount_7" ColumnName="Amount_7" />
+                <ScalarProperty Name="Amount_8" ColumnName="Amount_8" />
+                <ScalarProperty Name="Amount_9" ColumnName="Amount_9" />
+                <ScalarProperty Name="Amount_10" ColumnName="Amount_10" />
+                <ScalarProperty Name="Amount_11" ColumnName="Amount_11" />
+                <ScalarProperty Name="Amount_12" ColumnName="Amount_12" />
+                <ScalarProperty Name="Amount_Total" ColumnName="Amount_Total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="REP_39" FunctionName="BaseModel.Store.REP_39">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.REP_39_Result">
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Summ" ColumnName="Summ" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="ReturnAmountIn" ColumnName="ReturnAmountIn" />
+                <ScalarProperty Name="ReturnSummIn" ColumnName="ReturnSummIn" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

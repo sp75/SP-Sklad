@@ -29,6 +29,7 @@ namespace SP_Sklad.MainTabs
         private WBListMake_Result focused_row { get; set; }
         private ProductionPlansList_Result pp_focused_row { get; set; }
         private v_PlannedCalculation pc_focused_row { get; set; }
+
         private int _cur_wtype = 0;
 
         public ManufacturingUserControl()
@@ -137,15 +138,17 @@ namespace SP_Sklad.MainTabs
 
         private void DocsTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
+            focused_tree_node = DocsTreeList.GetDataRecordByNode(e.Node) as GetManufactureTree_Result;
+
+            NewItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanInsert == 1);
+            CopyItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanInsert == 1);
             DeleteItemBtn.Enabled = false;
             ExecuteItemBtn.Enabled = false;
             EditItemBtn.Enabled = false;
-            CopyItemBtn.Enabled = false;
             PrintItemBtn.Enabled = false;
             AddTechProcBtn.Enabled = false;
             DelTechProcBtn.Enabled = false;
             EditTechProcBtn.Enabled = false; 
-            focused_tree_node = DocsTreeList.GetDataRecordByNode(e.Node) as GetManufactureTree_Result;
 
             _cur_wtype = focused_tree_node.WType != null ? focused_tree_node.WType.Value : 0;
             RefrechItemBtn.PerformClick();
@@ -542,12 +545,20 @@ namespace SP_Sklad.MainTabs
 
             switch (focused_tree_node.GType.Value)
             {
-                case 5:
-                    PrintDoc.Show(pc_focused_row.Id, 22, DB.SkladBase());
+                case 1:
+                    PrintDoc.Show(focused_row.Id, focused_row.WType, DB.SkladBase());
                     break;
 
-                default:
+                case 3:
                     PrintDoc.Show(focused_row.Id, focused_row.WType, DB.SkladBase());
+                    break;
+
+                case 4:
+                    PrintDoc.Show(pp_focused_row.Id, 21, DB.SkladBase());
+                    break;
+
+                case 5:
+                    PrintDoc.Show(pc_focused_row.Id, 22, DB.SkladBase());
                     break;
             }
 
@@ -581,6 +592,15 @@ namespace SP_Sklad.MainTabs
                     }
                     break;
 
+                case 4:
+                    var new_pp = DB.SkladBase().DocCopy(pp_focused_row.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
+                    using (var wb_in = new frmProductionPlans(new_pp.out_doc_id))
+                    {
+                        wb_in.is_new_record = true;
+                        wb_in.ShowDialog();
+                    }
+
+                    break;
                 case 5:
                     var pc_copy = DB.SkladBase().DocCopy(pc_focused_row.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
 
@@ -645,12 +665,11 @@ namespace SP_Sklad.MainTabs
             focused_row = e.Row as WBListMake_Result;
 
             xtraTabControl2_SelectedPageChanged(sender, null);
-
+       
             StopProcesBtn.Enabled = (focused_row != null && focused_row.Checked == 2 && focused_tree_node.CanPost == 1);
             DeleteItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanDelete == 1);
             EditItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanModify == 1);
-            CopyItemBtn.Enabled = (focused_row != null && focused_tree_node.CanModify == 1);
-            //  OkButton->Enabled =  !WayBillList->IsEmpty();
+                //  OkButton->Enabled =  !WayBillList->IsEmpty();
             ExecuteItemBtn.Enabled = (focused_row != null && focused_tree_node.CanPost == 1);
             PrintItemBtn.Enabled = (focused_row != null);
 
@@ -666,7 +685,6 @@ namespace SP_Sklad.MainTabs
             StopProcesBtn.Enabled = (focused_row != null && focused_row.Checked == 2 && focused_tree_node.CanPost == 1);
             DeleteItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanDelete == 1);
             EditItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanModify == 1);
-            CopyItemBtn.Enabled = (focused_row != null && focused_tree_node.CanModify == 1);
             ExecuteItemBtn.Enabled = (focused_row != null && focused_tree_node.CanPost == 1);
             PrintItemBtn.Enabled = (focused_row != null);
         }
@@ -740,12 +758,11 @@ namespace SP_Sklad.MainTabs
             {
                 gridControl6.DataSource = null;
                 gridControl7.DataSource = null;
-              
+
             }
 
             DeleteItemBtn.Enabled = (pp_focused_row != null && pp_focused_row.Checked == 0 && focused_tree_node.CanDelete == 1);
             EditItemBtn.Enabled = (pp_focused_row != null && pp_focused_row.Checked == 0 && focused_tree_node.CanModify == 1);
-            CopyItemBtn.Enabled = (pp_focused_row != null && focused_tree_node.CanModify == 1);
             ExecuteItemBtn.Enabled = (pp_focused_row != null && focused_tree_node.CanPost == 1);
             PrintItemBtn.Enabled = (pp_focused_row != null);
         }
@@ -879,7 +896,6 @@ namespace SP_Sklad.MainTabs
 
             DeleteItemBtn.Enabled = (pc_focused_row != null && focused_tree_node.CanDelete == 1);
             EditItemBtn.Enabled = (pc_focused_row != null && focused_tree_node.CanModify == 1);
-            CopyItemBtn.Enabled = (pc_focused_row != null && focused_tree_node.CanModify == 1);
             ExecuteItemBtn.Enabled = (pc_focused_row != null && focused_tree_node.CanPost == 1);
             PrintItemBtn.Enabled = (pc_focused_row != null);
         }

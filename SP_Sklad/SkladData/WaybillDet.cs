@@ -30,6 +30,7 @@ namespace SP_Sklad.SkladData
             this.PosRel1 = new HashSet<PosRel>();
             this.OrderedRels = new HashSet<OrderedRels>();
             this.OrderedRels1 = new HashSet<OrderedRels>();
+            this.PosRemains = new HashSet<PosRemains>();
         }
     
         public int PosId { get; set; }
@@ -77,5 +78,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<PosRel> PosRel1 { get; set; }
         public virtual ICollection<OrderedRels> OrderedRels { get; set; }
         public virtual ICollection<OrderedRels> OrderedRels1 { get; set; }
+        public virtual ICollection<PosRemains> PosRemains { get; set; }
     }
 }

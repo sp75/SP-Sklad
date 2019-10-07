@@ -25,5 +25,6 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> ReturnSummIn { get; set; }
         public string TypeName { get; set; }
         public Nullable<int> KaId { get; set; }
+        public string KaName { get; set; }
     }
 }

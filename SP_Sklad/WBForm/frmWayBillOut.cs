@@ -248,7 +248,8 @@ namespace SP_Sklad.WBForm
 
                 _db.SaveChanges();
 
-                WaybillDetOutGridView.DeleteSelectedRows();
+           //     WaybillDetOutGridView.DeleteSelectedRows();
+                RefreshDet();
                 GetOk();
             }
         }

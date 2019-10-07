@@ -205,7 +205,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private System.Windows.Forms.Label label1;
         private DevExpress.XtraEditors.LookUpEdit UserIDEdit;
-        private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        public DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
     }
 }

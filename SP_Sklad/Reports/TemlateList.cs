@@ -27,6 +27,7 @@ namespace SP_Sklad.Reports
         public static String planned_calculation { get { return "PlannedCalculation.xlsx"; } }
         public static String wb_vidgruzka { get { return "vidgruzka.xlsx"; } }
         public static String wb_out_print { get { return "WayBill_Out_Print.xlsx"; } }
+        public static String wb_prod_plan { get { return "ProductionPlans.xlsx"; } }
 
         public static String rep_1 { get { return "MatInShort(1).xlsx"; } }
         public static String rep_2 { get { return "MatOutShort(2).xlsx"; } }
@@ -64,5 +65,6 @@ namespace SP_Sklad.Reports
         public static String rep_22 { get { return "RepByEmployees.xlsx"; } }
         public static String rep_39 { get { return "MatOutShort.xlsx"; } }
         public static String rep_40 { get { return "tmc.xlsx"; } }
+        public static String rep_41 { get { return "MatOutByMonth(41).xlsx"; } }
     }
 }

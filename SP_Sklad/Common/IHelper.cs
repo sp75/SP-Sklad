@@ -486,7 +486,11 @@ namespace SP_Sklad.Common
                         f.Text = "Техпроцеси";
                         if (f.ShowDialog() == DialogResult.OK)
                         {
-                            old_id = (f.uc.TechProcessGridView.GetFocusedRow() as TechProcess).ProcId;
+                            var tp = f.uc.TechProcessGridView.GetFocusedRow() as TechProcess;
+                            if (tp != null)
+                            {
+                                old_id = tp.ProcId;
+                            }
                         }
                     }
                     break;

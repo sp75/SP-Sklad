@@ -8,5 +8,8 @@
     <Setting Name="auto_update" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+    <Setting Name="NewVersionURL" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://178.136.7.248/web-sklad/sp_sklad/</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

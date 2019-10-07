@@ -604,7 +604,9 @@ namespace SP_Sklad.MainTabs
 
             using (var db = DB.SkladBase())
             {
-                var pos = db.WMatTurn.Where(w => w.MatId == focused_wh_mat.MatId ).OrderBy(o=> o.OnDate).Select(s => new { s.PosId, s.WId, s.OnDate }).ToList();
+                db.DeleteWhere<PosRemains>(w => w.MatId == focused_wh_mat.MatId);
+
+                var pos = db.WMatTurn.Where(w => w.MatId == focused_wh_mat.MatId).OrderBy(o => o.OnDate).Select(s => new { s.PosId, s.WId, s.OnDate }).ToList().Distinct();
 
                 foreach (var item in pos)
                 {
@@ -613,8 +615,8 @@ namespace SP_Sklad.MainTabs
 
                 db.SaveChanges();
             }
-            
-       //     DB.SkladBase().RecalcRemainsMat(focused_wh_mat.MatId);
+
+            //     DB.SkladBase().RecalcRemainsMat(focused_wh_mat.MatId);
             RefreshWhBtn.PerformClick();
         }
 

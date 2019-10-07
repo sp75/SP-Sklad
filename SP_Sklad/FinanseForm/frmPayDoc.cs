@@ -233,9 +233,10 @@ namespace SP_Sklad.FinanseForm
         {
             bool kg = (_DocType.Value == -2) || (KagentComboBox.EditValue != null && KagentComboBox.EditValue != DBNull.Value && (_DocType.Value != -2));
 
-            bool source = PTypeComboBox.EditValue != null && PTypeComboBox.EditValue != DBNull.Value && (((int)PTypeComboBox.EditValue == 1 && CashEditComboBox.EditValue != DBNull.Value) || ((int)PTypeComboBox.EditValue == 2 && AccountEdit.EditValue != DBNull.Value));
+            bool source = PTypeComboBox.EditValue != null && PTypeComboBox.EditValue != DBNull.Value
+                && (((int)PTypeComboBox.EditValue == 1 && CashEditComboBox.EditValue != DBNull.Value && Convert.ToInt32(CashEditComboBox.EditValue) > 0) || ((int)PTypeComboBox.EditValue == 2 && AccountEdit.EditValue != DBNull.Value));
 
-            bool recult = (NumEdit.Text.Any() &&  SumEdit.Value > 0 && kg && source);
+            bool recult = (NumEdit.Text.Any() && SumEdit.Value > 0 && kg && source);
 
             OkButton.Enabled = recult;
 

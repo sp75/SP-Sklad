@@ -53,7 +53,9 @@ namespace SP_Sklad.WBDetForm
                     Id = Guid.NewGuid(),
                     Num = _db.ProductionPlanDet.Count(w => w.ProductionPlanId == _pp.Id) + 1,
                     ProductionPlanId = _pp.Id,
-                    Total = 0
+                    WhId = _pp.ManufId.Value,
+                    Total = 0,
+                    Amount = 0
                 };
             }
 
@@ -64,7 +66,7 @@ namespace SP_Sklad.WBDetForm
 
         private void  GetOk()
         {
-            OkButton.Enabled = !String.IsNullOrEmpty(RecipeComboBox.Text) && !String.IsNullOrEmpty(WHComboBox.Text) && OrderedEdit.Value > 0;
+            OkButton.Enabled = !String.IsNullOrEmpty(RecipeComboBox.Text) && !String.IsNullOrEmpty(WHComboBox.Text)/* && OrderedEdit.Value > 0*/;
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -94,14 +96,14 @@ namespace SP_Sklad.WBDetForm
               det.Remain = mat_remain.Remain;
             }
 
-            det.Total = CalcTotal();
+       //     det.Total = CalcTotal();
 
             GetOk();
         }
 
         private void OrderedEdit_EditValueChanged(object sender, EventArgs e)
         {
-            det.Total = CalcTotal();
+        //    det.Total = CalcTotal();
             GetOk();
         }
 
@@ -139,6 +141,19 @@ namespace SP_Sklad.WBDetForm
         private void WHComboBox_EditValueChanged(object sender, EventArgs e)
         {
             GetOk();
+        }
+
+        private void TotalEdit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                OkButton.PerformClick();
+            }
+        }
+
+        private void frmProductionPlanDet_Shown(object sender, EventArgs e)
+        {
+            RecipeComboBox.Focus();
         }
     }
 }

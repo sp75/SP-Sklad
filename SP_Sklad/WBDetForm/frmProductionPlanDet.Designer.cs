@@ -149,13 +149,14 @@
             // TotalEdit
             // 
             this.TotalEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ProductionPlanDetBS, "Total", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.TotalEdit.Location = new System.Drawing.Point(101, 50);
+            this.TotalEdit.Location = new System.Drawing.Point(109, 13);
             this.TotalEdit.Name = "TotalEdit";
             this.TotalEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.TotalEdit.Size = new System.Drawing.Size(126, 22);
             this.TotalEdit.StyleController = this.styleController1;
             this.TotalEdit.TabIndex = 38;
+            this.TotalEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TotalEdit_KeyPress);
             // 
             // labelControl1
             // 
@@ -169,18 +170,20 @@
             // OrderedEdit
             // 
             this.OrderedEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ProductionPlanDetBS, "Amount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.OrderedEdit.Location = new System.Drawing.Point(101, 12);
+            this.OrderedEdit.Location = new System.Drawing.Point(438, 50);
             this.OrderedEdit.Name = "OrderedEdit";
             this.OrderedEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.OrderedEdit.Size = new System.Drawing.Size(126, 22);
+            this.OrderedEdit.Properties.ReadOnly = true;
+            this.OrderedEdit.Size = new System.Drawing.Size(150, 22);
             this.OrderedEdit.StyleController = this.styleController1;
             this.OrderedEdit.TabIndex = 29;
+            this.OrderedEdit.TabStop = false;
             this.OrderedEdit.EditValueChanged += new System.EventHandler(this.OrderedEdit_EditValueChanged);
             // 
             // labelControl7
             // 
-            this.labelControl7.Location = new System.Drawing.Point(12, 53);
+            this.labelControl7.Location = new System.Drawing.Point(12, 16);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(81, 16);
             this.labelControl7.StyleController = this.styleController1;
@@ -189,10 +192,10 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.labelControl4.Location = new System.Drawing.Point(12, 15);
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl4.Location = new System.Drawing.Point(363, 53);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(80, 16);
+            this.labelControl4.Size = new System.Drawing.Size(69, 16);
             this.labelControl4.StyleController = this.styleController1;
             this.labelControl4.TabIndex = 5;
             this.labelControl4.Text = "Замовлено:";
@@ -212,6 +215,7 @@
             this.RemainEdit.Properties.ReadOnly = true;
             this.RemainEdit.Size = new System.Drawing.Size(150, 20);
             this.RemainEdit.TabIndex = 35;
+            this.RemainEdit.TabStop = false;
             // 
             // panel1
             // 
@@ -259,6 +263,7 @@
             // WHComboBox
             // 
             this.WHComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ProductionPlanDetBS, "WhId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.WHComboBox.Enabled = false;
             this.WHComboBox.Location = new System.Drawing.Point(74, 44);
             this.WHComboBox.Name = "WHComboBox";
             this.WHComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -333,6 +338,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Додати позицію";
             this.Load += new System.EventHandler(this.frmProductionPlanDet_Load);
+            this.Shown += new System.EventHandler(this.frmProductionPlanDet_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();

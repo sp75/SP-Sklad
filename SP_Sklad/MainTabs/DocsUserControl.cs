@@ -137,13 +137,15 @@ namespace SP_Sklad.MainTabs
 
         private void DocsTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
+            focused_tree_node = DocsTreeList.GetDataRecordByNode(e.Node) as v_GetDocsTree;
+
+            NewItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanInsert == 1); 
+
             DeleteItemBtn.Enabled = false;
             ExecuteItemBtn.Enabled = false;
             EditItemBtn.Enabled = false;
             CopyItemBtn.Enabled = false;
             PrintItemBtn.Enabled = false;
-
-            focused_tree_node = DocsTreeList.GetDataRecordByNode(e.Node) as v_GetDocsTree;
 
             cur_wtype = focused_tree_node.WType != null ? focused_tree_node.WType.Value : 0;
             RefrechItemBtn.PerformClick();

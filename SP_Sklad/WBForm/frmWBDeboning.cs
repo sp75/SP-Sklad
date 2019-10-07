@@ -43,7 +43,6 @@ namespace SP_Sklad.WBForm
             _wbill_id = wbill_id;
             _db = new BaseEntities();
     //        current_transaction = _db.Database.BeginTransaction();
-
             InitializeComponent();
         }
 
