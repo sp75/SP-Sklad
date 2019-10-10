@@ -24,6 +24,7 @@ namespace SP_Sklad.SkladData
             this.WayBillSvc = new HashSet<WayBillSvc>();
             this.WayBillMakeProps = new HashSet<WayBillMakeProps>();
             this.WayBillTmc = new HashSet<WayBillTmc>();
+            this.IntermediateWeighing = new HashSet<IntermediateWeighing>();
         }
     
         public int WbillId { get; set; }
@@ -68,5 +69,6 @@ namespace SP_Sklad.SkladData
         public virtual Kagent Kontragent { get; set; }
         public virtual Kagent Kagent2 { get; set; }
         public virtual ICollection<WayBillTmc> WayBillTmc { get; set; }
+        public virtual ICollection<IntermediateWeighing> IntermediateWeighing { get; set; }
     }
 }

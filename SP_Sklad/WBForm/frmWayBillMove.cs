@@ -213,20 +213,15 @@ namespace SP_Sklad.WBForm
 
             if (dr != null)
             {
-                new frmWBMoveDet(_db, dr.PosId, wb, 0).ShowDialog();
-
-             //   current_transaction = current_transaction.CommitRetaining(_db);
-            //    UpdLockWB();
+                new frmWBMoveDet(_db, dr.PosId, wb).ShowDialog();
                 RefreshDet();
             }
         }
 
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (new frmWBMoveDet(_db, null, wb, 0).ShowDialog() == DialogResult.OK)
+            if (new frmWBMoveDet(_db, null, wb).ShowDialog() == DialogResult.OK)
             {
-            //    current_transaction = current_transaction.CommitRetaining(_db);
-            //    UpdLockWB();
                 RefreshDet();
             }
         }

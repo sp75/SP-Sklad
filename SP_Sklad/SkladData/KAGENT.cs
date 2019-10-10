@@ -45,6 +45,7 @@ namespace SP_Sklad.SkladData
             this.PayDoc1 = new HashSet<PayDoc>();
             this.ProductionPlans = new HashSet<ProductionPlans>();
             this.ProductionPlans1 = new HashSet<ProductionPlans>();
+            this.IntermediateWeighing = new HashSet<IntermediateWeighing>();
         }
     
         public int KaId { get; set; }
@@ -118,5 +119,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<PayDoc> PayDoc1 { get; set; }
         public virtual ICollection<ProductionPlans> ProductionPlans { get; set; }
         public virtual ICollection<ProductionPlans> ProductionPlans1 { get; set; }
+        public virtual ICollection<IntermediateWeighing> IntermediateWeighing { get; set; }
     }
 }

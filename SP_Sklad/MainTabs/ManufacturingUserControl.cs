@@ -148,7 +148,11 @@ namespace SP_Sklad.MainTabs
             PrintItemBtn.Enabled = false;
             AddTechProcBtn.Enabled = false;
             DelTechProcBtn.Enabled = false;
-            EditTechProcBtn.Enabled = false; 
+            EditTechProcBtn.Enabled = false;
+
+            AddIntermediateWeighing.Enabled = false;
+            EditIntermediateWeighing.Enabled = false;
+            DelIntermediateWeighing.Enabled = false;
 
             _cur_wtype = focused_tree_node.WType != null ? focused_tree_node.WType.Value : 0;
             RefrechItemBtn.PerformClick();
@@ -674,6 +678,8 @@ namespace SP_Sklad.MainTabs
             PrintItemBtn.Enabled = (focused_row != null);
 
             AddTechProcBtn.Enabled = (focused_row != null && focused_row.Checked != 1 && focused_tree_node.CanModify == 1);
+
+            AddIntermediateWeighing.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanModify == 1);
         }
 
         private void DeboningGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
@@ -830,7 +836,26 @@ namespace SP_Sklad.MainTabs
                     case 4:
                         ManufacturedPosGridControl.DataSource = db.Database.SqlQuery<GetManufacturedPos_Result>(string.Format("select * from GetManufacturedPos('{0}')", focused_row.Id)).ToList();
                         break;
+
+                    case 5:
+                        RefreshIntermediateWeighing();
+                        break;
                 }
+            }
+        }
+
+        private void RefreshIntermediateWeighing()
+        {
+            using (var db = DB.SkladBase())
+            {
+                IntermediateWeighingGridControl.DataSource = db.IntermediateWeighing.Where(w => w.WbillId == focused_row.WbillId).Select(s => new
+                {
+                    s.Id,
+                    s.OnDate,
+                    s.Checked,
+                    s.Num,
+                    PersonName = s.Kagent.Name
+                }).ToList();
             }
         }
 
@@ -912,6 +937,61 @@ namespace SP_Sklad.MainTabs
         {
             WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "ManufacturingUserControl\\WbGridView");
             DeboningGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "ManufacturingUserControl\\DeboningGridView");
+        }
+
+        private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            
+        }
+
+        private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            dynamic dr = IntermediateWeighingGridView.GetFocusedRow() ;
+            if (dr != null)
+            {
+                using (var wb_iw = new frmIntermediateWeighing(focused_row.WbillId, dr.Id))
+                {
+                    if(wb_iw.ShowDialog() == DialogResult.OK)
+                    {
+                        RefreshIntermediateWeighing();
+                    }
+                }
+            }
+        }
+
+        private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (MessageBox.Show("Ви дійсно бажаєте видалити проміжкове зважування!", "Видалення запису", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                dynamic dr = IntermediateWeighingGridView.GetFocusedRow();
+                if (dr != null)
+                {
+                    Guid id = dr.Id;
+                    DB.SkladBase().DeleteWhere<IntermediateWeighing>(w => w.Id == id);
+                    RefreshIntermediateWeighing();
+                }
+            }
+        }
+
+        private void IntermediateWeighingGridView_DoubleClick(object sender, EventArgs e)
+        {
+            if (IHelper.isRowDublClick(sender)) EditIntermediateWeighing.PerformClick();
+        }
+
+        private void AddIntermediateWeighing_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var wb_iw = new frmIntermediateWeighing(focused_row.WbillId, null))
+            {
+                wb_iw.ShowDialog();
+            }
+        }
+
+        private void IntermediateWeighingGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
+        {
+            focused_row = WbGridView.GetFocusedRow() as WBListMake_Result;
+
+            DelIntermediateWeighing.Enabled = ((focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanModify == 1) && IntermediateWeighingGridView.DataRowCount > 0);
+            EditIntermediateWeighing.Enabled = (focused_row != null &&  focused_row.Checked == 0 && focused_tree_node.CanModify == 1 && IntermediateWeighingGridView.DataRowCount > 0 );
         }
     }
 }

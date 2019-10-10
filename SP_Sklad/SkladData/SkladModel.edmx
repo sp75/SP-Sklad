@@ -325,6 +325,31 @@
           <Property Name="Logging" Type="int" Nullable="false" />
           <Property Name="Flags" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="IntermediateWeighing">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="Checked" Type="int" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="256" />
+          <Property Name="PersonId" Type="int" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="SessionId" Type="uniqueidentifier" />
+          <Property Name="WbillId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IntermediateWeighingDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="IntermediateWeighingId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Amount" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="Jobs">
           <Key>
             <PropertyRef Name="Id" />
@@ -1596,6 +1621,33 @@ warning 6002: The table/view 'sp_base.dbo.v_GetDocsTree' does not have a primary
           <Property Name="WType" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighingDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_IntermediateWeighingDet">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="IntermediateWeighingId" />
+            <PropertyRef Name="MsrName" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="PersonName" />
+            <PropertyRef Name="WbillId" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MatName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Amount" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="IntermediateWeighingId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="Checked" Type="int" Nullable="false" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="WbillId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_KAgentAccount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_KAgentAccount">
           <Key>
@@ -2800,6 +2852,58 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Principal>
             <Dependent Role="ExtRel">
               <PropertyRef Name="IntPosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntermediateWeighing_Kagent">
+          <End Role="Kagent" Type="Self.Kagent" Multiplicity="1" />
+          <End Role="IntermediateWeighing" Type="Self.IntermediateWeighing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="IntermediateWeighing">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntermediateWeighing_WaybillList">
+          <End Role="WaybillList" Type="Self.WaybillList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="IntermediateWeighing" Type="Self.IntermediateWeighing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="IntermediateWeighing">
+              <PropertyRef Name="WbillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntermediateWeighingDet_IntermediateWeighing">
+          <End Role="IntermediateWeighing" Type="Self.IntermediateWeighing" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="IntermediateWeighingDet" Type="Self.IntermediateWeighingDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IntermediateWeighing">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IntermediateWeighingDet">
+              <PropertyRef Name="IntermediateWeighingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntermediateWeighingDet_Materials">
+          <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+          <End Role="IntermediateWeighingDet" Type="Self.IntermediateWeighingDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="IntermediateWeighingDet">
+              <PropertyRef Name="MatId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -4090,6 +4194,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
         <Function Name="DocCopy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="originator_id" Type="uniqueidentifier" Mode="In" />
           <Parameter Name="person_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ExecuteIntermediateWeighing" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="wbill_id" Type="int" Mode="In" />
         </Function>
         <Function Name="EXECUTESQL_EXAMPLER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IN_MATID" Type="int" Mode="In" />
@@ -5926,6 +6033,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ExtRel" EntityType="Self.ExtRel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Functions" EntityType="Self.Functions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IntermediateWeighing" EntityType="Self.IntermediateWeighing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IntermediateWeighingDet" EntityType="Self.IntermediateWeighingDet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Jobs" EntityType="Self.Jobs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KaAddr" EntityType="Self.KaAddr" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KADiscount" EntityType="Self.KADiscount" Schema="dbo" store:Type="Tables" />
@@ -6200,6 +6309,22 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_GetDocsTree].[UserId] AS [UserId], 
     [v_GetDocsTree].[WType] AS [WType]
     FROM [dbo].[v_GetDocsTree] AS [v_GetDocsTree]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_IntermediateWeighingDet" EntityType="Self.v_IntermediateWeighingDet" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_IntermediateWeighingDet].[Id] AS [Id], 
+    [v_IntermediateWeighingDet].[MatName] AS [MatName], 
+    [v_IntermediateWeighingDet].[Amount] AS [Amount], 
+    [v_IntermediateWeighingDet].[MatId] AS [MatId], 
+    [v_IntermediateWeighingDet].[IntermediateWeighingId] AS [IntermediateWeighingId], 
+    [v_IntermediateWeighingDet].[MsrName] AS [MsrName], 
+    [v_IntermediateWeighingDet].[CreatedDate] AS [CreatedDate], 
+    [v_IntermediateWeighingDet].[Num] AS [Num], 
+    [v_IntermediateWeighingDet].[OnDate] AS [OnDate], 
+    [v_IntermediateWeighingDet].[Checked] AS [Checked], 
+    [v_IntermediateWeighingDet].[PersonName] AS [PersonName], 
+    [v_IntermediateWeighingDet].[WbillId] AS [WbillId]
+    FROM [dbo].[v_IntermediateWeighingDet] AS [v_IntermediateWeighingDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_KAgentAccount" EntityType="Self.v_KAgentAccount" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -6757,6 +6882,22 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <AssociationSet Name="FK_EXTREL_INTPOSID" Association="Self.FK_EXTREL_INTPOSID">
             <End Role="WaybillDet" EntitySet="WaybillDet" />
             <End Role="ExtRel" EntitySet="ExtRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntermediateWeighing_Kagent" Association="Self.FK_IntermediateWeighing_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="IntermediateWeighing" EntitySet="IntermediateWeighing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntermediateWeighing_WaybillList" Association="Self.FK_IntermediateWeighing_WaybillList">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="IntermediateWeighing" EntitySet="IntermediateWeighing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntermediateWeighingDet_IntermediateWeighing" Association="Self.FK_IntermediateWeighingDet_IntermediateWeighing">
+            <End Role="IntermediateWeighing" EntitySet="IntermediateWeighing" />
+            <End Role="IntermediateWeighingDet" EntitySet="IntermediateWeighingDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntermediateWeighingDet_Materials" Association="Self.FK_IntermediateWeighingDet_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="IntermediateWeighingDet" EntitySet="IntermediateWeighingDet" />
           </AssociationSet>
           <AssociationSet Name="FK_KAADDR_KAID" Association="Self.FK_KAADDR_KAID">
             <End Role="Kagent" EntitySet="Kagent" />
@@ -8550,6 +8691,28 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="user_id" Mode="In" Type="Int32" />
             <Parameter Name="ka_grp_id" Mode="In" Type="Guid" />
           </FunctionImport>
+          <EntitySet Name="IntermediateWeighing" EntityType="BaseModel.IntermediateWeighing" />
+          <AssociationSet Name="FK_IntermediateWeighing_Kagent" Association="BaseModel.FK_IntermediateWeighing_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="IntermediateWeighing" EntitySet="IntermediateWeighing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntermediateWeighing_WaybillList" Association="BaseModel.FK_IntermediateWeighing_WaybillList">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="IntermediateWeighing" EntitySet="IntermediateWeighing" />
+          </AssociationSet>
+          <EntitySet Name="IntermediateWeighingDet" EntityType="BaseModel.IntermediateWeighingDet" />
+          <EntitySet Name="v_IntermediateWeighingDet" EntityType="BaseModel.v_IntermediateWeighingDet" />
+          <AssociationSet Name="FK_IntermediateWeighingDet_IntermediateWeighing" Association="BaseModel.FK_IntermediateWeighingDet_IntermediateWeighing">
+            <End Role="IntermediateWeighing" EntitySet="IntermediateWeighing" />
+            <End Role="IntermediateWeighingDet" EntitySet="IntermediateWeighingDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntermediateWeighingDet_Materials" Association="BaseModel.FK_IntermediateWeighingDet_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="IntermediateWeighingDet" EntitySet="IntermediateWeighingDet" />
+          </AssociationSet>
+          <FunctionImport Name="ExecuteIntermediateWeighing">
+            <Parameter Name="wbill_id" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -9586,6 +9749,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="SerialNumber" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="MaterialMeasures" Relationship="BaseModel.FK_MaterialMeasures_Materials" FromRole="Materials" ToRole="MaterialMeasures" />
           <NavigationProperty Name="PosRemains" Relationship="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" FromRole="Materials" ToRole="PosRemains" />
+          <NavigationProperty Name="IntermediateWeighingDet" Relationship="BaseModel.FK_IntermediateWeighingDet_Materials" FromRole="Materials" ToRole="IntermediateWeighingDet" />
         </EntityType>
         <Association Name="FK_CONTRDET_REFERENCE_MATERIAL">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="0..1" />
@@ -11102,6 +11266,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="Kontragent" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" FromRole="WaybillList" ToRole="Kagent" />
           <NavigationProperty Name="Kagent2" Relationship="BaseModel.FK_WBL_ENTID" FromRole="WaybillList" ToRole="Kagent" />
           <NavigationProperty Name="WayBillTmc" Relationship="BaseModel.FK_MoveInventories_WaybillList" FromRole="WaybillList" ToRole="WayBillTmc" />
+          <NavigationProperty Name="IntermediateWeighing" Relationship="BaseModel.FK_IntermediateWeighing_WaybillList" FromRole="WaybillList" ToRole="IntermediateWeighing" />
           </EntityType>
         <Association Name="FK_COMMISSION_WBILLID">
           <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
@@ -11984,6 +12149,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="PayDoc1" Relationship="BaseModel.FK__PAYDOC__MPERSONI__22401542" FromRole="Kagent" ToRole="PayDoc" />
           <NavigationProperty Name="ProductionPlans" Relationship="BaseModel.FK_ProductionPlans_Kagent" FromRole="Kagent" ToRole="ProductionPlans" />
           <NavigationProperty Name="ProductionPlans1" Relationship="BaseModel.FK_ProductionPlans_Kagent1" FromRole="Kagent" ToRole="ProductionPlans" />
+          <NavigationProperty Name="IntermediateWeighing" Relationship="BaseModel.FK_IntermediateWeighing_Kagent" FromRole="Kagent" ToRole="IntermediateWeighing" />
         </EntityType>
         <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
@@ -14263,6 +14429,113 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Int32" Name="KaId" Nullable="true" />
           <Property Type="String" Name="KaName" Nullable="true" MaxLength="100" />
         </ComplexType>
+        <EntityType Name="IntermediateWeighing">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PersonId" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="SessionId" Type="Guid" />
+          <Property Name="WbillId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_IntermediateWeighing_Kagent" FromRole="IntermediateWeighing" ToRole="Kagent" />
+          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_IntermediateWeighing_WaybillList" FromRole="IntermediateWeighing" ToRole="WaybillList" />
+          <NavigationProperty Name="IntermediateWeighingDet" Relationship="BaseModel.FK_IntermediateWeighingDet_IntermediateWeighing" FromRole="IntermediateWeighing" ToRole="IntermediateWeighingDet" />
+        </EntityType>
+        <Association Name="FK_IntermediateWeighing_Kagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1" />
+          <End Type="BaseModel.IntermediateWeighing" Role="IntermediateWeighing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="IntermediateWeighing">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntermediateWeighing_WaybillList">
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.IntermediateWeighing" Role="IntermediateWeighing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="IntermediateWeighing">
+              <PropertyRef Name="WbillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="IntermediateWeighingDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="IntermediateWeighingId" Type="Guid" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <NavigationProperty Name="IntermediateWeighing" Relationship="BaseModel.FK_IntermediateWeighingDet_IntermediateWeighing" FromRole="IntermediateWeighingDet" ToRole="IntermediateWeighing" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_IntermediateWeighingDet_Materials" FromRole="IntermediateWeighingDet" ToRole="Materials" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="v_IntermediateWeighingDet">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="IntermediateWeighingId" />
+            <PropertyRef Name="MsrName" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="PersonName" />
+            <PropertyRef Name="WbillId" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="IntermediateWeighingId" Type="Guid" Nullable="false" />
+          <Property Name="MsrName" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="PersonName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WbillId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_IntermediateWeighingDet_IntermediateWeighing">
+          <End Type="BaseModel.IntermediateWeighing" Role="IntermediateWeighing" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.IntermediateWeighingDet" Role="IntermediateWeighingDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IntermediateWeighing">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IntermediateWeighingDet">
+              <PropertyRef Name="IntermediateWeighingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntermediateWeighingDet_Materials">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
+          <End Type="BaseModel.IntermediateWeighingDet" Role="IntermediateWeighingDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="IntermediateWeighingDet">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -18016,6 +18289,52 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="IntermediateWeighing">
+            <EntityTypeMapping TypeName="BaseModel.IntermediateWeighing">
+              <MappingFragment StoreEntitySet="IntermediateWeighing">
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IntermediateWeighingDet">
+            <EntityTypeMapping TypeName="BaseModel.IntermediateWeighingDet">
+              <MappingFragment StoreEntitySet="IntermediateWeighingDet">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="IntermediateWeighingId" ColumnName="IntermediateWeighingId" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_IntermediateWeighingDet">
+            <EntityTypeMapping TypeName="BaseModel.v_IntermediateWeighingDet">
+              <MappingFragment StoreEntitySet="v_IntermediateWeighingDet">
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="IntermediateWeighingId" ColumnName="IntermediateWeighingId" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ExecuteIntermediateWeighing" FunctionName="BaseModel.Store.ExecuteIntermediateWeighing" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

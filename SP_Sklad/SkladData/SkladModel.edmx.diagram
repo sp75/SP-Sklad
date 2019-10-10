@@ -289,6 +289,13 @@
         <AssociationConnector Association="BaseModel.FK_ProductionPlans_Kagent1" />
         <AssociationConnector Association="BaseModel.FK_ProductionPlans_Warehouse" />
         <AssociationConnector Association="BaseModel.FK_ProductionPlans_Warehouse1" />
+        <EntityTypeShape EntityType="BaseModel.IntermediateWeighing" Width="1.5" PointX="26.75" PointY="18.375" />
+        <AssociationConnector Association="BaseModel.FK_IntermediateWeighing_Kagent" />
+        <AssociationConnector Association="BaseModel.FK_IntermediateWeighing_WaybillList" />
+        <EntityTypeShape EntityType="BaseModel.IntermediateWeighingDet" Width="1.5" PointX="29" PointY="19.5" />
+        <EntityTypeShape EntityType="BaseModel.v_IntermediateWeighingDet" Width="1.5" PointX="13.375" PointY="12.75" />
+        <AssociationConnector Association="BaseModel.FK_IntermediateWeighingDet_IntermediateWeighing" />
+        <AssociationConnector Association="BaseModel.FK_IntermediateWeighingDet_Materials" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

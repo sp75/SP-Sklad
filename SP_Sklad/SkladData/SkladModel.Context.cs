@@ -167,6 +167,9 @@ namespace SP_Sklad.SkladData
         public DbSet<OrderedRels> OrderedRels { get; set; }
         public DbSet<CurrencyRate> CurrencyRate { get; set; }
         public DbSet<PosRemains> PosRemains { get; set; }
+        public DbSet<IntermediateWeighing> IntermediateWeighing { get; set; }
+        public DbSet<IntermediateWeighingDet> IntermediateWeighingDet { get; set; }
+        public DbSet<v_IntermediateWeighingDet> v_IntermediateWeighingDet { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)
@@ -2300,6 +2303,15 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("ka_grp_id", typeof(System.Guid));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_39_Result>("[BaseEntities].[REP_39](@from_date, @to_date, @grp_id, @ka_id, @wh, @doc_types, @user_id, @ka_grp_id)", from_dateParameter, to_dateParameter, grp_idParameter, ka_idParameter, whParameter, doc_typesParameter, user_idParameter, ka_grp_idParameter);
+        }
+    
+        public virtual int ExecuteIntermediateWeighing(Nullable<int> wbill_id)
+        {
+            var wbill_idParameter = wbill_id.HasValue ?
+                new ObjectParameter("wbill_id", wbill_id) :
+                new ObjectParameter("wbill_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ExecuteIntermediateWeighing", wbill_idParameter);
         }
     }
 }

@@ -32,6 +32,7 @@ namespace SP_Sklad.SkladData
             this.WayBillTmc = new HashSet<WayBillTmc>();
             this.MaterialMeasures = new HashSet<MaterialMeasures>();
             this.PosRemains = new HashSet<PosRemains>();
+            this.IntermediateWeighingDet = new HashSet<IntermediateWeighingDet>();
         }
     
         public int MatId { get; set; }
@@ -90,5 +91,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<WayBillTmc> WayBillTmc { get; set; }
         public virtual ICollection<MaterialMeasures> MaterialMeasures { get; set; }
         public virtual ICollection<PosRemains> PosRemains { get; set; }
+        public virtual ICollection<IntermediateWeighingDet> IntermediateWeighingDet { get; set; }
     }
 }

@@ -410,6 +410,12 @@
     <Compile Include="SkladData\GetWMatTurnRemain_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\IntermediateWeighing.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\IntermediateWeighingDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\Licenses.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -638,6 +644,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_ErrorLog.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_IntermediateWeighingDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_KAgentSaldo.cs">
@@ -1267,6 +1276,12 @@
     <Compile Include="ViewsForm\frmManufacturing.Designer.cs">
       <DependentUpon>frmManufacturing.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBDetForm\frmIntermediateWeighingDet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBDetForm\frmIntermediateWeighingDet.Designer.cs">
+      <DependentUpon>frmIntermediateWeighingDet.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBDetForm\frmPlannedCalculationDet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1362,6 +1377,12 @@
     </Compile>
     <Compile Include="WBForm\frmPriceList.Designer.cs">
       <DependentUpon>frmPriceList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WBForm\frmIntermediateWeighing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\frmIntermediateWeighing.Designer.cs">
+      <DependentUpon>frmIntermediateWeighing.cs</DependentUpon>
     </Compile>
     <Compile Include="WBForm\frmProductionPlans.cs">
       <SubType>Form</SubType>
@@ -1608,6 +1629,9 @@
     <EmbeddedResource Include="ViewsForm\frmManufacturing.resx">
       <DependentUpon>frmManufacturing.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WBDetForm\frmIntermediateWeighingDet.resx">
+      <DependentUpon>frmIntermediateWeighingDet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBDetForm\frmPlannedCalculationDet.resx">
       <DependentUpon>frmPlannedCalculationDet.cs</DependentUpon>
     </EmbeddedResource>
@@ -1655,6 +1679,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmPriceList.resx">
       <DependentUpon>frmPriceList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\frmIntermediateWeighing.resx">
+      <DependentUpon>frmIntermediateWeighing.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmProductionPlans.resx">
       <DependentUpon>frmProductionPlans.cs</DependentUpon>
@@ -1723,6 +1750,8 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetWayBillDetOut_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetWayBillListWh_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetWayBillList_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.IntermediateWeighing.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.IntermediateWeighingDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KaAddr.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KADiscount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Kagent.datasource" />
@@ -1766,6 +1795,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ViewModels.MaterialMeasuresView.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Actives.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_DiscCards.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_IntermediateWeighingDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_KAgentAccount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_MatRecipe.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PlannedCalculation.datasource" />

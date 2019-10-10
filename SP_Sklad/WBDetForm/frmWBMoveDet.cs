@@ -28,14 +28,14 @@ namespace SP_Sklad.WBDetForm
         public int _ka_id { get; set; }
         private List<MaterialsByWh> _materials_on_wh { get; set; }
 
-        public frmWBMoveDet(BaseEntities db, int? PosId, WaybillList wb, int ka_id)
+        public frmWBMoveDet(BaseEntities db, int? PosId, WaybillList wb)
         {
             InitializeComponent();
 
             _db = db;
             _PosId = PosId;
             _wb = wb;
-            _ka_id = ka_id;
+            _ka_id = 0;
         }
 
         public class MaterialsByWh
@@ -136,8 +136,6 @@ namespace SP_Sklad.WBDetForm
         {
             bool recult = (MatComboBox.EditValue != DBNull.Value && Convert.ToInt32(MatComboBox.EditValue) > 0 && WHComboBox.EditValue != DBNull.Value && AmountEdit.EditValue != DBNull.Value);
 
-            OkButton.Enabled = recult;
-
             RSVCheckBox.Checked = (OkButton.Enabled && pos_in != null && mat_remain != null && pos_in.Count > 0 && AmountEdit.Value <= mat_remain.CurRemainInWh && pos_in.Sum(s => s.FullRemain) >= AmountEdit.Value);
             if (RSVCheckBox.Checked)
             {
@@ -150,6 +148,8 @@ namespace SP_Sklad.WBDetForm
                     }
                 }
             }
+
+            OkButton.Enabled = recult && RSVCheckBox.Checked;
 
             return recult;
         }
@@ -197,7 +197,7 @@ namespace SP_Sklad.WBDetForm
                 CurRemainEdit.EditValue = mat_remain.Remain;
             }
 
-            pos_in = new BaseEntities().GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, _ka_id, DBHelper.CurrentUser.UserId).AsNoTracking().OrderBy(o => o.OnDate).ToList();
+            pos_in = new BaseEntities().GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, _ka_id, DBHelper.CurrentUser.UserId).OrderBy(o => o.OnDate).ToList();
 
             GetPosButton.Enabled = true;
         }
@@ -238,9 +238,15 @@ namespace SP_Sklad.WBDetForm
                 RSVCheckBox.Checked = (sum_amount <= 0);
 
             }
-            else RSVCheckBox.Checked = false;
+            else
+            {
+                RSVCheckBox.Checked = false;
+            }
 
-            if (AmountEdit.Value <= sum_full_remain) RSVCheckBox.Checked = false;
+            if (AmountEdit.Value <= sum_full_remain)
+            {
+                RSVCheckBox.Checked = false;
+            }
 
             GetOk();
         }
