@@ -2313,5 +2313,15 @@ namespace SP_Sklad.SkladData
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ExecuteIntermediateWeighing", wbill_idParameter);
         }
+    
+        [EdmFunction("BaseEntities", "GetWayBillMakeDet")]
+        public virtual IQueryable<GetWayBillMakeDet_Result> GetWayBillMakeDet(Nullable<int> wbill_id)
+        {
+            var wbill_idParameter = wbill_id.HasValue ?
+                new ObjectParameter("wbill_id", wbill_id) :
+                new ObjectParameter("wbill_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillMakeDet_Result>("[BaseEntities].[GetWayBillMakeDet](@wbill_id)", wbill_idParameter);
+        }
     }
 }

@@ -29,11 +29,11 @@ namespace SP_Sklad.WBForm
         private int? _wbill_id { get; set; }
         private WaybillList wb { get; set; }
         public bool is_new_record { get; set; }
-        private GetWayBillDetOut_Result wbd_row
+        private GetWayBillMakeDet_Result wbd_row
         {
-            get { return WaybillDetOutGridView.GetFocusedRow() as GetWayBillDetOut_Result; }
+            get { return WaybillDetOutGridView.GetFocusedRow() as GetWayBillMakeDet_Result; }
         }
-        private List<GetWayBillDetOut_Result> wbd_list { get; set; }
+        private List<GetWayBillMakeDet_Result> wbd_list { get; set; }
 
         public frmWBManufacture(int? wbill_id = null)
         {
@@ -113,10 +113,10 @@ namespace SP_Sklad.WBForm
 
         private void RefreshDet()
         {
-            wbd_list = _db.GetWayBillDetOut(_wbill_id).AsNoTracking().OrderBy(o => o.Num).ToList();
+            wbd_list = _db.GetWayBillMakeDet(_wbill_id).AsNoTracking().OrderBy(o => o.Num).ToList();
 
             int top_row = WaybillDetOutGridView.TopRowIndex;
-            WaybillDetOutBS.DataSource = wbd_list;
+            GetWayBillMakeDetBS.DataSource = wbd_list;
             WaybillDetOutGridView.TopRowIndex = top_row;
 
             TechProcGridControl.DataSource = _db.v_TechProcDet.AsNoTracking().Where(w => w.WbillId == _wbill_id).OrderBy(o => o.Num).ToList();
@@ -126,14 +126,14 @@ namespace SP_Sklad.WBForm
 
         bool GetOk()
         {
-            bool recult = (!String.IsNullOrEmpty(NumEdit.Text) && RecipeComboBox.EditValue != null && WhComboBox.EditValue != null && OnDateDBEdit.EditValue != null && WaybillDetOutBS.Count > 0);
+            bool recult = (!String.IsNullOrEmpty(NumEdit.Text) && RecipeComboBox.EditValue != null && WhComboBox.EditValue != null && OnDateDBEdit.EditValue != null && GetWayBillMakeDetBS.Count > 0);
 
             if (recult && TurnDocCheckBox.Checked)
             {
-                recult = !wbd_list.Any(w => w.Rsv == 0 && w.PosType == 0);
+                recult = !wbd_list.Any(w => w.Rsv == 0);
             }
 
-            RecipeComboBox.Enabled = WaybillDetOutBS.Count == 0;
+            RecipeComboBox.Enabled = GetWayBillMakeDetBS.Count == 0;
             ReceptBtn.Enabled = RecipeComboBox.Enabled;
             WhComboBox.Enabled = RecipeComboBox.Enabled;
             WhInBtn.Enabled = RecipeComboBox.Enabled;
@@ -141,7 +141,7 @@ namespace SP_Sklad.WBForm
 
             barSubItem1.Enabled = (WhComboBox.EditValue != null && RecipeComboBox.EditValue != null && AmountMakeEdit.Value > 0);
 
-            EditMaterialBtn.Enabled = WaybillDetOutBS.Count > 0;
+            EditMaterialBtn.Enabled = GetWayBillMakeDetBS.Count > 0;
             DelMaterialBtn.Enabled = EditMaterialBtn.Enabled;
             RsvInfoBtn.Enabled = EditMaterialBtn.Enabled;
             MatInfoBtn.Enabled = EditMaterialBtn.Enabled;
@@ -232,7 +232,7 @@ namespace SP_Sklad.WBForm
 
         private void EditMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = WaybillDetOutGridView.GetRow(WaybillDetOutGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
+            var dr = WaybillDetOutGridView.GetRow(WaybillDetOutGridView.FocusedRowHandle) as GetWayBillMakeDet_Result;
 
             if (dr != null)
             {
@@ -246,7 +246,7 @@ namespace SP_Sklad.WBForm
 
         private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = WaybillDetOutGridView.GetRow(WaybillDetOutGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
+            var dr = WaybillDetOutGridView.GetRow(WaybillDetOutGridView.FocusedRowHandle) as GetWayBillMakeDet_Result;
 
             if (dr != null)
             {

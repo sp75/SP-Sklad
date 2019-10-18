@@ -80,7 +80,6 @@
             this.WaybillDetInGridControl = new DevExpress.XtraGrid.GridControl();
             this.IntermediateWeighingDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.WaybillDetInGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
@@ -566,8 +565,9 @@
             // 
             // WaybillDetInGridView
             // 
+            this.WaybillDetInGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.WaybillDetInGridView.Appearance.Row.Options.UseFont = true;
             this.WaybillDetInGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn2,
             this.gridColumn3,
             this.gridColumn4,
             this.gridColumn5,
@@ -576,21 +576,9 @@
             this.WaybillDetInGridView.Name = "WaybillDetInGridView";
             this.WaybillDetInGridView.OptionsView.ShowFooter = true;
             this.WaybillDetInGridView.OptionsView.ShowGroupPanel = false;
+            this.WaybillDetInGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.WaybillDetInGridView_FocusedRowObjectChanged);
             this.WaybillDetInGridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.WaybillDetInGridView_CellValueChanged);
             this.WaybillDetInGridView.DoubleClick += new System.EventHandler(this.WaybillDetInGridView_DoubleClick);
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.Caption = "#";
-            this.gridColumn2.FieldName = "Num";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.OptionsColumn.AllowEdit = false;
-            this.gridColumn2.OptionsColumn.ReadOnly = true;
-            this.gridColumn2.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Num", "{0}")});
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 0;
-            this.gridColumn2.Width = 59;
             // 
             // gridColumn3
             // 
@@ -600,7 +588,7 @@
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.OptionsColumn.ReadOnly = true;
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.VisibleIndex = 1;
             this.gridColumn3.Width = 602;
             // 
             // gridColumn4
@@ -614,7 +602,7 @@
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.OptionsColumn.ReadOnly = true;
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 4;
+            this.gridColumn4.VisibleIndex = 3;
             this.gridColumn4.Width = 152;
             // 
             // repositoryItemCalcEdit1
@@ -636,16 +624,20 @@
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.OptionsColumn.ReadOnly = true;
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 3;
+            this.gridColumn5.VisibleIndex = 2;
             this.gridColumn5.Width = 123;
             // 
             // gridColumn1
             // 
             this.gridColumn1.Caption = "Дата зважування";
+            this.gridColumn1.DisplayFormat.FormatString = "g";
+            this.gridColumn1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn1.FieldName = "CreatedDate";
             this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
+            this.gridColumn1.OptionsColumn.ReadOnly = true;
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 1;
+            this.gridColumn1.VisibleIndex = 0;
             this.gridColumn1.Width = 130;
             // 
             // repositoryItemImageComboBox1
@@ -772,7 +764,6 @@
         private System.Windows.Forms.BindingSource IntermediateWeighingDetBS;
         private DevExpress.XtraGrid.GridControl WaybillDetInGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView WaybillDetInGridView;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;

@@ -141,7 +141,7 @@ namespace SP_Sklad.MainTabs
             focused_tree_node = DocsTreeList.GetDataRecordByNode(e.Node) as GetManufactureTree_Result;
 
             NewItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanInsert == 1);
-            CopyItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanInsert == 1);
+            CopyItemBtn.Enabled = false;
             DeleteItemBtn.Enabled = false;
             ExecuteItemBtn.Enabled = false;
             EditItemBtn.Enabled = false;
@@ -673,13 +673,15 @@ namespace SP_Sklad.MainTabs
             StopProcesBtn.Enabled = (focused_row != null && focused_row.Checked == 2 && focused_tree_node.CanPost == 1);
             DeleteItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanDelete == 1);
             EditItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanModify == 1);
-                //  OkButton->Enabled =  !WayBillList->IsEmpty();
+            CopyItemBtn.Enabled = (focused_tree_node.CanInsert == 1 && focused_row != null);
+            //  OkButton->Enabled =  !WayBillList->IsEmpty();
             ExecuteItemBtn.Enabled = (focused_row != null && focused_tree_node.CanPost == 1);
             PrintItemBtn.Enabled = (focused_row != null);
 
             AddTechProcBtn.Enabled = (focused_row != null && focused_row.Checked != 1 && focused_tree_node.CanModify == 1);
 
             AddIntermediateWeighing.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanModify == 1);
+           
         }
 
         private void DeboningGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
@@ -691,6 +693,7 @@ namespace SP_Sklad.MainTabs
             StopProcesBtn.Enabled = (focused_row != null && focused_row.Checked == 2 && focused_tree_node.CanPost == 1);
             DeleteItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanDelete == 1);
             EditItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanModify == 1);
+            CopyItemBtn.Enabled = (focused_tree_node.CanInsert == 1 && focused_row != null);
             ExecuteItemBtn.Enabled = (focused_row != null && focused_tree_node.CanPost == 1);
             PrintItemBtn.Enabled = (focused_row != null);
         }
@@ -771,6 +774,7 @@ namespace SP_Sklad.MainTabs
             EditItemBtn.Enabled = (pp_focused_row != null && pp_focused_row.Checked == 0 && focused_tree_node.CanModify == 1);
             ExecuteItemBtn.Enabled = (pp_focused_row != null && focused_tree_node.CanPost == 1);
             PrintItemBtn.Enabled = (pp_focused_row != null);
+            CopyItemBtn.Enabled = (focused_tree_node.CanInsert == 1 && pp_focused_row != null);
         }
 
         private void PlanStartDate_EditValueChanged(object sender, EventArgs e)
@@ -825,7 +829,7 @@ namespace SP_Sklad.MainTabs
                         break;
 
                     case 2:
-                        gridControl2.DataSource = db.GetWayBillDetOut(focused_row.WbillId).ToList().OrderBy(o => o.Num).ToList();
+                        gridControl2.DataSource = db.GetWayBillMakeDet(focused_row.WbillId).ToList().OrderBy(o => o.Num).ToList();
                         gridView2.ExpandAllGroups();
                         break;
 
@@ -921,6 +925,7 @@ namespace SP_Sklad.MainTabs
 
             DeleteItemBtn.Enabled = (pc_focused_row != null && focused_tree_node.CanDelete == 1);
             EditItemBtn.Enabled = (pc_focused_row != null && focused_tree_node.CanModify == 1);
+            CopyItemBtn.Enabled = (focused_tree_node.CanInsert == 1 && pc_focused_row != null);
             ExecuteItemBtn.Enabled = (pc_focused_row != null && focused_tree_node.CanPost == 1);
             PrintItemBtn.Enabled = (pc_focused_row != null);
         }
@@ -982,7 +987,10 @@ namespace SP_Sklad.MainTabs
         {
             using (var wb_iw = new frmIntermediateWeighing(focused_row.WbillId, null))
             {
-                wb_iw.ShowDialog();
+                if (wb_iw.ShowDialog() == DialogResult.OK)
+                {
+                    RefreshIntermediateWeighing();
+                }
             }
         }
 

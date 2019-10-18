@@ -27,7 +27,7 @@ namespace SP_Sklad.WBForm
         private UserSettingsRepository user_settings { get; set; }
         private int _wb_id { get; set; }
 
-        private v_IntermediateWeighingDet pp_det_row
+        private v_IntermediateWeighingDet iw_det_row
         {
             get
             {
@@ -102,7 +102,7 @@ namespace SP_Sklad.WBForm
 
         private void RefreshDet()
         {
-            var list = _db.v_IntermediateWeighingDet.AsNoTracking().Where(w => w.IntermediateWeighingId == _doc_id).ToList();
+            var list = _db.v_IntermediateWeighingDet.AsNoTracking().Where(w => w.IntermediateWeighingId == _doc_id).OrderBy(o=> o.CreatedDate).ToList();
 
             int top_row = WaybillDetInGridView.TopRowIndex;
             IntermediateWeighingDetBS.DataSource = list;
@@ -118,8 +118,17 @@ namespace SP_Sklad.WBForm
 
         private void EditMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-        //    var row = WaybillDetInGridView.GetFocusedRow() as v_ProductionPlanDet;
-       //     new frmProductionPlanDet(_db, row.Id, iw).ShowDialog();
+            if (iw_det_row != null && _db.GetWayBillMakeDet(iw_det_row.WbillId).Any(a => a.MatId == iw_det_row.MatId && a.Rsv == 0))
+            {
+                using (var f = new frmIntermediateWeighingDet(_db, iw_det_row.Id, iw))
+                {
+                    f.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Редагувати заборонено, сировина вже зарезервована");
+            }
 
             RefreshDet();
         }
@@ -168,17 +177,22 @@ namespace SP_Sklad.WBForm
 
         private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var row = WaybillDetInGridView.GetFocusedRow() as v_IntermediateWeighingDet;
-            if (row != null)
+            if (iw_det_row != null &&   _db.GetWayBillMakeDet(iw_det_row.WbillId).Any(a => a.MatId == iw_det_row.MatId && a.Rsv == 0))
             {
-                var det = _db.IntermediateWeighingDet.Find(row.Id);
+                var det = _db.IntermediateWeighingDet.Find(iw_det_row.Id);
                 if (det != null)
                 {
                     _db.IntermediateWeighingDet.Remove(det);
                 }
                 _db.SaveChanges();
+
                 WaybillDetInGridView.DeleteSelectedRows();
             }
+            else
+            {
+                MessageBox.Show("Видаляти заборонено, сировина вже зарезервована");
+            }
+
             GetOk();
         }
 
@@ -245,5 +259,11 @@ namespace SP_Sklad.WBForm
             RefreshDet();
         }
 
+        private void WaybillDetInGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
+        {
+            EditMaterialBtn.Enabled = iw_det_row != null ;
+
+            DelMaterialBtn.Enabled = iw_det_row != null;
+        }
     }
 }

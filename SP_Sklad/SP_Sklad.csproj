@@ -407,6 +407,9 @@
     <Compile Include="SkladData\GetWayBillList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetWayBillMakeDet_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetWMatTurnRemain_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -792,6 +795,12 @@
     </Compile>
     <Compile Include="ViewsForm\frmSpreadsheed.Designer.cs">
       <DependentUpon>frmSpreadsheed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewsForm\frmIntermediateWeighingList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmIntermediateWeighingList.Designer.cs">
+      <DependentUpon>frmIntermediateWeighingList.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewsForm\frmUserGroup.cs">
       <SubType>Form</SubType>
@@ -1543,6 +1552,9 @@
     <EmbeddedResource Include="ViewsForm\frmSpreadsheed.resx">
       <DependentUpon>frmSpreadsheed.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmIntermediateWeighingList.resx">
+      <DependentUpon>frmIntermediateWeighingList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmUserGroup.resx">
       <DependentUpon>frmUserGroup.cs</DependentUpon>
     </EmbeddedResource>
@@ -1750,6 +1762,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetWayBillDetOut_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetWayBillListWh_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetWayBillList_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.GetWayBillMakeDet_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.IntermediateWeighing.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.IntermediateWeighingDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KaAddr.datasource" />

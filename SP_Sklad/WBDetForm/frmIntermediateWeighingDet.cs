@@ -6,6 +6,8 @@ using EntityState = System.Data.Entity.EntityState;
 using SP_Sklad.Common;
 using DevExpress.XtraEditors;
 using SP_Sklad.EditForm;
+using SP_Sklad.ViewsForm;
+using System.Collections.Generic;
 
 namespace SP_Sklad.WBDetForm
 {
@@ -15,6 +17,7 @@ namespace SP_Sklad.WBDetForm
         private Guid? _id { get; set; }
         private IntermediateWeighingDet det { get; set; }
         private IntermediateWeighing _iw { get; set; }
+        private List<GetWayBillMakeDet_Result> mat_list { get; set; }
 
         public frmIntermediateWeighingDet(BaseEntities db, Guid? id, IntermediateWeighing iw)
         {
@@ -24,7 +27,10 @@ namespace SP_Sklad.WBDetForm
 
             InitializeComponent();
 
-            MatComboBox.Properties.DataSource = DB.SkladBase().GetWayBillDetOut(_iw.WbillId).OrderBy(o => o.Num).ToList();
+            var wh_list = DB.SkladBase().UserAccessWh.Where(w => w.UserId == DBHelper.CurrentUser.UserId).Select(s => s.WId).ToList();
+            mat_list = DB.SkladBase().GetWayBillMakeDet(_iw.WbillId).Where(w => wh_list.Contains(w.wid.Value) && w.Rsv == 0).OrderBy(o => o.Num).ToList();
+
+            MatComboBox.Properties.DataSource = mat_list;
         }
 
         private void frmPlannedCalculationDetDet_Load(object sender, EventArgs e)
@@ -40,16 +46,33 @@ namespace SP_Sklad.WBDetForm
                     IntermediateWeighingId = _iw.Id,
                     CreatedDate = DBHelper.ServerDateTime()
                 };
+
+
+                using (var f = new frmIntermediateWeighingList(mat_list))
+                {
+                    if (f.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        det.MatId = f.focused_row.MatId;
+                    }
+                }
             }
 
             IntermediateWeighingDetBS.DataSource = det;
-
             GetOk();
         }
 
         private void GetOk()
         {
             OkButton.Enabled = !String.IsNullOrEmpty(MatComboBox.Text) ;
+
+            var row = MatComboBox.GetSelectedDataRow() as GetWayBillMakeDet_Result;
+
+            if (row != null)
+            {
+                ByRecipeEdit.EditValue = row.AmountByRecipe;
+                IntermediateWeighingEdit.EditValue = row.AmountIntermediateWeighing;
+                TotalEdit.EditValue = row.AmountByRecipe - (row.AmountIntermediateWeighing ?? 0);
+            }
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -76,20 +99,20 @@ namespace SP_Sklad.WBDetForm
                 return;
             }
 
-            dynamic row = MatComboBox.GetSelectedDataRow();
+            var row = MatComboBox.GetSelectedDataRow() as GetWayBillMakeDet_Result;
 
             if (row == null)
             {
                 return;
             }
 
-            int mat_id = row.MatId;
-            det.MatId = mat_id;
+            det.MatId = row.MatId;
 
+         
             GetOk();
         }
 
-         private void simpleButton1_Click(object sender, EventArgs e)
+        private void simpleButton1_Click(object sender, EventArgs e)
         {
 
         }
@@ -110,6 +133,34 @@ namespace SP_Sklad.WBDetForm
         private void AmountEdit_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             ((CalcEdit)sender).SelectAll();
+        }
+
+        private void MatComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index ==1 )
+            {
+                using (var f = new frmIntermediateWeighingList(mat_list))
+                {
+                    if (f.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        MatComboBox.EditValue = f.focused_row.MatId;
+                        AmountEdit.Focus();
+                    }
+                }
+            }
+        }
+
+        private void frmIntermediateWeighingDet_Shown(object sender, EventArgs e)
+        {
+            AmountEdit.Focus();
+        }
+
+        private void AmountEdit_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && MatComboBox.EditValue != null)
+            {
+                OkButton.PerformClick();
+            }
         }
     }
 }

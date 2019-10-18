@@ -56,6 +56,7 @@
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.MsrLabel = new DevExpress.XtraEditors.LabelControl();
             this.ToDateEdit = new DevExpress.XtraEditors.DateEdit();
             this.WaybillListBS = new System.Windows.Forms.BindingSource(this.components);
             this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
@@ -103,7 +104,7 @@
             this.gridColumn76 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.WaybillDetOutGridControl = new DevExpress.XtraGrid.GridControl();
-            this.WaybillDetOutBS = new System.Windows.Forms.BindingSource(this.components);
+            this.GetWayBillMakeDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.WaybillDetOutGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -113,10 +114,10 @@
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
-            this.MsrLabel = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
@@ -151,10 +152,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.TechProcGridView)).BeginInit();
             this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GetWayBillMakeDetBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
@@ -370,6 +370,7 @@
             this.WBImgList.Images.SetKeyName(19, "Службовц_.bmp");
             this.WBImgList.Images.SetKeyName(20, "Товари.bmp");
             this.WBImgList.Images.SetKeyName(21, "_нформац_я про рух товар_в.ico");
+            this.WBImgList.Images.SetKeyName(22, "weighing-scale.png");
             // 
             // RsvBarBtn
             // 
@@ -459,6 +460,15 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(568, 183);
             this.panelControl1.TabIndex = 4;
+            // 
+            // MsrLabel
+            // 
+            this.MsrLabel.Location = new System.Drawing.Point(228, 148);
+            this.MsrLabel.Name = "MsrLabel";
+            this.MsrLabel.Size = new System.Drawing.Size(18, 16);
+            this.MsrLabel.StyleController = this.styleController1;
+            this.MsrLabel.TabIndex = 62;
+            this.MsrLabel.Text = "од.";
             // 
             // ToDateEdit
             // 
@@ -991,14 +1001,13 @@
             // 
             // WaybillDetOutGridControl
             // 
-            this.WaybillDetOutGridControl.DataSource = this.WaybillDetOutBS;
+            this.WaybillDetOutGridControl.DataSource = this.GetWayBillMakeDetBS;
             this.WaybillDetOutGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WaybillDetOutGridControl.Location = new System.Drawing.Point(0, 0);
             this.WaybillDetOutGridControl.MainView = this.WaybillDetOutGridView;
             this.WaybillDetOutGridControl.MenuManager = this.barManager1;
             this.WaybillDetOutGridControl.Name = "WaybillDetOutGridControl";
             this.WaybillDetOutGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemImageComboBox1,
             this.repositoryItemImageComboBox2,
             this.repositoryItemImageComboBox3});
             this.WaybillDetOutGridControl.Size = new System.Drawing.Size(965, 242);
@@ -1006,9 +1015,9 @@
             this.WaybillDetOutGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WaybillDetOutGridView});
             // 
-            // WaybillDetOutBS
+            // GetWayBillMakeDetBS
             // 
-            this.WaybillDetOutBS.DataSource = typeof(SP_Sklad.SkladData.GetWayBillDetOut_Result);
+            this.GetWayBillMakeDetBS.DataSource = typeof(SP_Sklad.SkladData.GetWayBillMakeDet_Result);
             // 
             // WaybillDetOutGridView
             // 
@@ -1019,7 +1028,9 @@
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn6,
-            this.gridColumn8});
+            this.gridColumn8,
+            this.gridColumn1,
+            this.gridColumn7});
             this.WaybillDetOutGridView.GridControl = this.WaybillDetOutGridControl;
             this.WaybillDetOutGridView.Images = this.WBImgList;
             this.WaybillDetOutGridView.Name = "WaybillDetOutGridView";
@@ -1036,7 +1047,7 @@
             this.gridColumn2.OptionsColumn.ReadOnly = true;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 0;
-            this.gridColumn2.Width = 49;
+            this.gridColumn2.Width = 42;
             // 
             // gridColumn11
             // 
@@ -1075,8 +1086,8 @@
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.OptionsColumn.ReadOnly = true;
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 323;
+            this.gridColumn3.VisibleIndex = 3;
+            this.gridColumn3.Width = 291;
             // 
             // gridColumn4
             // 
@@ -1086,8 +1097,8 @@
             this.gridColumn4.FieldName = "Amount";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 3;
-            this.gridColumn4.Width = 123;
+            this.gridColumn4.VisibleIndex = 6;
+            this.gridColumn4.Width = 101;
             // 
             // gridColumn5
             // 
@@ -1098,7 +1109,7 @@
             this.gridColumn5.OptionsColumn.ReadOnly = true;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
-            this.gridColumn5.Width = 147;
+            this.gridColumn5.Width = 103;
             // 
             // gridColumn6
             // 
@@ -1108,8 +1119,8 @@
             this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.OptionsColumn.ReadOnly = true;
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 5;
-            this.gridColumn6.Width = 123;
+            this.gridColumn6.VisibleIndex = 7;
+            this.gridColumn6.Width = 101;
             // 
             // gridColumn8
             // 
@@ -1119,19 +1130,29 @@
             this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.OptionsColumn.ReadOnly = true;
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 6;
-            this.gridColumn8.Width = 135;
+            this.gridColumn8.VisibleIndex = 8;
+            this.gridColumn8.Width = 147;
             // 
-            // repositoryItemImageComboBox1
+            // gridColumn1
             // 
-            this.repositoryItemImageComboBox1.AutoHeight = false;
-            this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 8),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 10)});
-            this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
-            this.repositoryItemImageComboBox1.SmallImages = this.WBImgList;
+            this.gridColumn1.Caption = "gridColumn1";
+            this.gridColumn1.ColumnEdit = this.repositoryItemImageComboBox3;
+            this.gridColumn1.FieldName = "IsIntermediateWeighing";
+            this.gridColumn1.ImageAlignment = System.Drawing.StringAlignment.Center;
+            this.gridColumn1.ImageIndex = 22;
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
+            this.gridColumn1.OptionsColumn.AllowFocus = false;
+            this.gridColumn1.OptionsColumn.AllowMove = false;
+            this.gridColumn1.OptionsColumn.AllowSize = false;
+            this.gridColumn1.OptionsColumn.FixedWidth = true;
+            this.gridColumn1.OptionsColumn.ReadOnly = true;
+            this.gridColumn1.OptionsColumn.ShowCaption = false;
+            this.gridColumn1.OptionsColumn.ShowInCustomizationForm = false;
+            this.gridColumn1.OptionsColumn.TabStop = false;
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 2;
+            this.gridColumn1.Width = 25;
             // 
             // repositoryItemImageComboBox3
             // 
@@ -1139,9 +1160,20 @@
             this.repositoryItemImageComboBox3.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox3.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 16)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 22)});
             this.repositoryItemImageComboBox3.Name = "repositoryItemImageComboBox3";
             this.repositoryItemImageComboBox3.SmallImages = this.WBImgList;
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "За рецептом";
+            this.gridColumn7.FieldName = "AmountByRecipe";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.OptionsColumn.AllowEdit = false;
+            this.gridColumn7.OptionsColumn.ReadOnly = true;
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 5;
+            this.gridColumn7.Width = 112;
             // 
             // xtraTabControl1
             // 
@@ -1155,15 +1187,6 @@
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
             this.xtraTabPage2});
-            // 
-            // MsrLabel
-            // 
-            this.MsrLabel.Location = new System.Drawing.Point(228, 148);
-            this.MsrLabel.Name = "MsrLabel";
-            this.MsrLabel.Size = new System.Drawing.Size(18, 16);
-            this.MsrLabel.StyleController = this.styleController1;
-            this.MsrLabel.TabIndex = 62;
-            this.MsrLabel.Text = "од.";
             // 
             // frmWBManufacture
             // 
@@ -1222,10 +1245,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.TechProcGridView)).EndInit();
             this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GetWayBillMakeDetBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
@@ -1302,7 +1324,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
-        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox3;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.CalcEdit AmountMakeEdit;
@@ -1311,7 +1332,7 @@
         private DevExpress.XtraBars.BarButtonItem ByRecipeBtn;
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
-        private System.Windows.Forms.BindingSource WaybillDetOutBS;
+        private System.Windows.Forms.BindingSource GetWayBillMakeDetBS;
         private DevExpress.XtraGrid.GridControl TechProcGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView TechProcGridView;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn42;
@@ -1323,5 +1344,7 @@
         private System.Windows.Forms.BindingSource WayBillMakeBS;
         private System.Windows.Forms.BindingSource WaybillListBS;
         private DevExpress.XtraEditors.LabelControl MsrLabel;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
     }
 }

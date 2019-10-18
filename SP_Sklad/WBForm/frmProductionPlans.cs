@@ -17,12 +17,9 @@ namespace SP_Sklad.WBForm
 {
     public partial class frmProductionPlans : DevExpress.XtraEditors.XtraForm
     {
-
         public BaseEntities _db { get; set; }
-        
         public Guid? _doc_id { get; set; }
         private ProductionPlans pp { get; set; }
-
         public bool is_new_record { get; set; }
         private UserSettingsRepository user_settings { get; set; }
 
@@ -161,23 +158,23 @@ namespace SP_Sklad.WBForm
 
         private void ExecuteDocument()
         {
-            var list = _db.v_ProductionPlanDet.AsNoTracking().Where(w => w.ProductionPlanId == _doc_id && w.Total > 0).ToList();
+            var list = _db.v_ProductionPlanDet.Where(w => w.ProductionPlanId == _doc_id && w.Total > 0).OrderBy(o => o.Num).ToList();
             foreach (var i in list)
             {
                 var wb = _db.WaybillList.Add(new WaybillList()
-                  {
-                      Id = Guid.NewGuid(),
-                      WType = -20,
-                      OnDate = pp.OnDate,
-                      Num = new BaseEntities().GetDocNum("wb_make").FirstOrDefault(),
-                      EntId = DBHelper.Enterprise.KaId,
-                      CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
-                      OnValue = 1,
-                      PersonId = DBHelper.CurrentUser.KaId,
-                      KaId = DBHelper.CurrentUser.KaId,
-                      WayBillMake = new WayBillMake { SourceWId = DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId },
-                      UpdatedBy = DBHelper.CurrentUser.UserId,
-                  });
+                {
+                    Id = Guid.NewGuid(),
+                    WType = -20,
+                    OnDate = pp.OnDate,
+                    Num = new BaseEntities().GetDocNum("wb_make").FirstOrDefault() + "_" + pp.Num,
+                    EntId = DBHelper.Enterprise.KaId,
+                    CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
+                    OnValue = 1,
+                    PersonId = DBHelper.CurrentUser.KaId,
+                    KaId = DBHelper.CurrentUser.KaId,
+                    WayBillMake = new WayBillMake { SourceWId = DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId },
+                    UpdatedBy = DBHelper.CurrentUser.UserId,
+                });
                 _db.SaveChanges();
 
                 _db.SetDocRel(pp.Id, wb.Id);

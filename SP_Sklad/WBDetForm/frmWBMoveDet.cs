@@ -56,7 +56,7 @@ namespace SP_Sklad.WBDetForm
          m.Name,
          ms.ShortName as MsrName,
          sum( pr.remain) Remain,
-        sum( pr.Rsv ) Rsv 
+         sum( pr.Rsv ) Rsv 
 		 
   FROM [sp_base].[dbo].[v_PosRemains] pr
   inner join [dbo].[Materials] m on m.MatId =pr.MatId
@@ -113,6 +113,7 @@ namespace SP_Sklad.WBDetForm
                     }
 
                     GetContent();
+                    GetPos();
 
                     foreach (var item in w_mat_turn)
                     {
@@ -136,20 +137,24 @@ namespace SP_Sklad.WBDetForm
         {
             bool recult = (MatComboBox.EditValue != DBNull.Value && Convert.ToInt32(MatComboBox.EditValue) > 0 && WHComboBox.EditValue != DBNull.Value && AmountEdit.EditValue != DBNull.Value);
 
-            RSVCheckBox.Checked = (OkButton.Enabled && pos_in != null && mat_remain != null && pos_in.Count > 0 && AmountEdit.Value <= mat_remain.CurRemainInWh && pos_in.Sum(s => s.FullRemain) >= AmountEdit.Value);
+            RSVCheckBox.Checked = (recult  && mat_remain != null  && AmountEdit.Value <= mat_remain.CurRemainInWh /*&& pos_in.Sum(s => s.FullRemain) >= AmountEdit.Value*/);
+
             if (RSVCheckBox.Checked)
             {
-                foreach (var item in pos_in)
+                if (pos_in != null)
                 {
-                    if (item.FullRemain < item.Amount)
+                    foreach (var item in pos_in)
                     {
-                        RSVCheckBox.Checked = false;
-                        break;
+                        if (item.FullRemain < item.Amount)
+                        {
+                            RSVCheckBox.Checked = false;
+                            break;
+                        }
                     }
                 }
             }
 
-            OkButton.Enabled = recult && RSVCheckBox.Checked;
+            OkButton.Enabled = recult;
 
             return recult;
         }
@@ -166,8 +171,9 @@ namespace SP_Sklad.WBDetForm
             {
                 _wbd.MatId = row.MatId;
                 GetContent();
-
-                SetAmount();
+                pos_in = null;
+            //    GetPos();
+            //  SetAmount();
             }
 
             labelControl24.Text = row.MsrName;
@@ -179,8 +185,7 @@ namespace SP_Sklad.WBDetForm
             {
                 return;
             }
-            GetPosButton.Enabled = false;
-
+  
             var row = (WhMatGet_Result)MatComboBox.GetSelectedDataRow();
 
             mat_remain = _materials_on_wh.Where(w => w.WId == _wbd.WId && w.MatId == _wbd.MatId).Select(s => new GetActualRemainByWh_Result
@@ -196,9 +201,12 @@ namespace SP_Sklad.WBDetForm
                 RsvEdit.EditValue = mat_remain.Rsv;
                 CurRemainEdit.EditValue = mat_remain.Remain;
             }
+        }
 
+        private void GetPos()
+        {
+            GetPosButton.Enabled = false;
             pos_in = new BaseEntities().GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, _ka_id, DBHelper.CurrentUser.UserId).OrderBy(o => o.OnDate).ToList();
-
             GetPosButton.Enabled = true;
         }
 
@@ -253,7 +261,11 @@ namespace SP_Sklad.WBDetForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-        //    int num = _wb.WaybillDet.Count();
+            if (pos_in == null)
+            {
+                GetPos();
+                SetAmount();
+            }
 
             if (RSVCheckBox.Checked && !_db.WMatTurn.Any(w => w.SourceId == _wbd.PosId) && _db.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId && a.WId == _wbd.WId && a.UseReceived))
             {
@@ -308,6 +320,7 @@ namespace SP_Sklad.WBDetForm
         private void AmountEdit_EditValueChanged(object sender, EventArgs e)
         {
             SetAmount();
+            GetOk();
         }
 
         private void RSVCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -330,38 +343,44 @@ namespace SP_Sklad.WBDetForm
         {
             if (pos_in == null)
             {
-                return;
+                GetPos();
+                SetAmount();
             }
 
-            var pos = new frmInParty(pos_in);
-            pos.Text = "Прибуткові партії: " + MatComboBox.Text;
-            pos.ShowDialog();
-            _wbd.Amount = pos_in.Sum(s => s.Amount).Value;
-            AmountEdit.Value = _wbd.Amount;
+            using (var pos = new frmInParty(pos_in))
+            {
+                pos.Text = "Прибуткові партії: " + MatComboBox.Text;
+                pos.ShowDialog();
+                _wbd.Amount = pos_in.Sum(s => s.Amount).Value;
+                AmountEdit.Value = _wbd.Amount;
+            }
 
             GetOk();
         }
 
         private void MatEditBtn_Click(object sender, EventArgs e)
         {
-            var f = new frmWhCatalog(1);
-
-            f.uc.whKagentList.EditValue = _ka_id;
-            f.uc.whKagentList.Enabled = false;
-            f.uc.OnDateEdit.Enabled = false;
-            f.uc.bar3.Visible = false;
-            f.uc.ByWhBtn.Down = true;
-            f.uc.splitContainerControl1.SplitterPosition = 0;
-            f.uc.WHTreeList.DataSource = new BaseEntities().GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w => w.GType == 1 && w.Num == _wbd.WId).ToList();
-            f.uc.GrpNameGridColumn.GroupIndex = 0;
-
-            f.uc.isDirectList = true;
-            if (f.ShowDialog() == DialogResult.OK)
+            using (var f = new frmWhCatalog(1))
             {
-                _wbd.MatId = f.uc.focused_wh_mat.MatId;
-                MatComboBox.EditValue = _wbd.MatId;
-                GetContent();
-                SetAmount();
+                f.uc.whKagentList.EditValue = _ka_id;
+                f.uc.whKagentList.Enabled = false;
+                f.uc.OnDateEdit.Enabled = false;
+                f.uc.bar3.Visible = false;
+                f.uc.ByWhBtn.Down = true;
+                f.uc.splitContainerControl1.SplitterPosition = 0;
+                f.uc.WHTreeList.DataSource = new BaseEntities().GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w => w.GType == 1 && w.Num == _wbd.WId).ToList();
+                f.uc.GrpNameGridColumn.GroupIndex = 0;
+
+                f.uc.isDirectList = true;
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    _wbd.MatId = f.uc.focused_wh_mat.MatId;
+                    MatComboBox.EditValue = _wbd.MatId;
+
+                    GetContent();
+                    GetPos();
+                    SetAmount();
+                }
             }
         }
 
