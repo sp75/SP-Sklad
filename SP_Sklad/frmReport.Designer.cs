@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReport));
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.mainPanel = new DevExpress.XtraEditors.PanelControl();
@@ -173,13 +174,24 @@
             // 
             // panelControl2
             // 
+            this.panelControl2.Controls.Add(this.simpleButton4);
             this.panelControl2.Controls.Add(this.OkButton);
             this.panelControl2.Controls.Add(this.simpleButton1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl2.Location = new System.Drawing.Point(0, 759);
+            this.panelControl2.Location = new System.Drawing.Point(0, 765);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(455, 51);
             this.panelControl2.TabIndex = 29;
+            // 
+            // simpleButton4
+            // 
+            this.simpleButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton4.Location = new System.Drawing.Point(12, 10);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(92, 30);
+            this.simpleButton4.TabIndex = 4;
+            this.simpleButton4.Text = "Сортування";
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
             // 
             // OkButton
             // 
@@ -219,7 +231,7 @@
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(0, 0);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(455, 759);
+            this.mainPanel.Size = new System.Drawing.Size(455, 765);
             this.mainPanel.TabIndex = 31;
             // 
             // PersonPanel
@@ -227,7 +239,7 @@
             this.PersonPanel.Controls.Add(this.PersonLookUpEdit);
             this.PersonPanel.Controls.Add(this.labelControl18);
             this.PersonPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PersonPanel.Location = new System.Drawing.Point(2, 625);
+            this.PersonPanel.Location = new System.Drawing.Point(2, 628);
             this.PersonPanel.Name = "PersonPanel";
             this.PersonPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.PersonPanel.Size = new System.Drawing.Size(451, 47);
@@ -265,7 +277,7 @@
             this.DocTypeGroupBox2.Controls.Add(this.OutDocGroupBox);
             this.DocTypeGroupBox2.Controls.Add(this.InDocGroupBox);
             this.DocTypeGroupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DocTypeGroupBox2.Location = new System.Drawing.Point(2, 503);
+            this.DocTypeGroupBox2.Location = new System.Drawing.Point(2, 506);
             this.DocTypeGroupBox2.Name = "DocTypeGroupBox2";
             this.DocTypeGroupBox2.Size = new System.Drawing.Size(451, 122);
             this.DocTypeGroupBox2.TabIndex = 38;
@@ -372,7 +384,7 @@
             this.StatusPanel.Controls.Add(this.wbStatusList);
             this.StatusPanel.Controls.Add(this.labelControl16);
             this.StatusPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.StatusPanel.Location = new System.Drawing.Point(2, 456);
+            this.StatusPanel.Location = new System.Drawing.Point(2, 459);
             this.StatusPanel.Name = "StatusPanel";
             this.StatusPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.StatusPanel.Size = new System.Drawing.Size(451, 47);
@@ -410,7 +422,7 @@
             this.DocTypeGroupBox.Controls.Add(this.DocTypeEdit);
             this.DocTypeGroupBox.Controls.Add(this.labelControl15);
             this.DocTypeGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DocTypeGroupBox.Location = new System.Drawing.Point(2, 409);
+            this.DocTypeGroupBox.Location = new System.Drawing.Point(2, 412);
             this.DocTypeGroupBox.Name = "DocTypeGroupBox";
             this.DocTypeGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.DocTypeGroupBox.Size = new System.Drawing.Size(451, 47);
@@ -447,7 +459,7 @@
             this.ChargeGroupBox.Controls.Add(this.ChTypeEdit);
             this.ChargeGroupBox.Controls.Add(this.labelControl14);
             this.ChargeGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ChargeGroupBox.Location = new System.Drawing.Point(2, 362);
+            this.ChargeGroupBox.Location = new System.Drawing.Point(2, 365);
             this.ChargeGroupBox.Name = "ChargeGroupBox";
             this.ChargeGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.ChargeGroupBox.Size = new System.Drawing.Size(451, 47);
@@ -484,7 +496,7 @@
             this.GroupKontragentPanel.Controls.Add(this.GrpKagentLookUpEdit);
             this.GroupKontragentPanel.Controls.Add(this.labelControl17);
             this.GroupKontragentPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.GroupKontragentPanel.Location = new System.Drawing.Point(2, 315);
+            this.GroupKontragentPanel.Location = new System.Drawing.Point(2, 318);
             this.GroupKontragentPanel.Name = "GroupKontragentPanel";
             this.GroupKontragentPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.GroupKontragentPanel.Size = new System.Drawing.Size(451, 47);
@@ -523,7 +535,7 @@
             this.KontragentPanel.Controls.Add(this.KagentComboBox);
             this.KontragentPanel.Controls.Add(this.labelControl12);
             this.KontragentPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.KontragentPanel.Location = new System.Drawing.Point(2, 268);
+            this.KontragentPanel.Location = new System.Drawing.Point(2, 271);
             this.KontragentPanel.Name = "KontragentPanel";
             this.KontragentPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.KontragentPanel.Size = new System.Drawing.Size(451, 47);
@@ -571,7 +583,7 @@
             this.MatGroupBox.Controls.Add(this.MatComboBox);
             this.MatGroupBox.Controls.Add(this.simpleButton2);
             this.MatGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.MatGroupBox.Location = new System.Drawing.Point(2, 221);
+            this.MatGroupBox.Location = new System.Drawing.Point(2, 224);
             this.MatGroupBox.Name = "MatGroupBox";
             this.MatGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.MatGroupBox.Size = new System.Drawing.Size(451, 47);
@@ -619,7 +631,7 @@
             this.GRPGroupBox.Controls.Add(this.GrpComboBox);
             this.GRPGroupBox.Controls.Add(this.labelControl11);
             this.GRPGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.GRPGroupBox.Location = new System.Drawing.Point(2, 174);
+            this.GRPGroupBox.Location = new System.Drawing.Point(2, 177);
             this.GRPGroupBox.Name = "GRPGroupBox";
             this.GRPGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.GRPGroupBox.Size = new System.Drawing.Size(451, 47);
@@ -666,7 +678,7 @@
             this.WHGroupBox.Controls.Add(this.WhComboBox);
             this.WHGroupBox.Controls.Add(this.labelControl10);
             this.WHGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.WHGroupBox.Location = new System.Drawing.Point(2, 127);
+            this.WHGroupBox.Location = new System.Drawing.Point(2, 130);
             this.WHGroupBox.Name = "WHGroupBox";
             this.WHGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.WHGroupBox.Size = new System.Drawing.Size(451, 47);
@@ -717,21 +729,13 @@
             this.PeriodGroupBox.Location = new System.Drawing.Point(2, 49);
             this.PeriodGroupBox.Name = "PeriodGroupBox";
             this.PeriodGroupBox.Padding = new System.Windows.Forms.Padding(5);
-            this.PeriodGroupBox.Size = new System.Drawing.Size(451, 78);
+            this.PeriodGroupBox.Size = new System.Drawing.Size(451, 81);
             this.PeriodGroupBox.TabIndex = 31;
             // 
             // xtraTabControl1
             // 
-            this.xtraTabControl1.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.xtraTabControl1.Appearance.Options.UseBackColor = true;
-            this.xtraTabControl1.AppearancePage.PageClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(237)))), ((int)(((byte)(241)))));
-            this.xtraTabControl1.AppearancePage.PageClient.Options.UseBackColor = true;
-            this.xtraTabControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.xtraTabControl1.BorderStylePage = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.xtraTabControl1.Location = new System.Drawing.Point(5, 31);
-            this.xtraTabControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
-            this.xtraTabControl1.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.xtraTabControl1.Location = new System.Drawing.Point(5, 34);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
             this.xtraTabControl1.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
@@ -750,7 +754,7 @@
             this.xtraTabPage1.Controls.Add(this.labelControl1);
             this.xtraTabPage1.Controls.Add(this.StartDateEdit);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(441, 42);
+            this.xtraTabPage1.Size = new System.Drawing.Size(435, 36);
             this.xtraTabPage1.Text = "xtraTabPage1";
             // 
             // labelControl4
@@ -812,7 +816,7 @@
             this.xtraTabPage2.Controls.Add(this.MonthEdit);
             this.xtraTabPage2.Controls.Add(this.YearEdit);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(441, 42);
+            this.xtraTabPage2.Size = new System.Drawing.Size(435, 36);
             this.xtraTabPage2.Text = "xtraTabPage2";
             // 
             // labelControl6
@@ -883,7 +887,7 @@
             this.xtraTabPage3.Controls.Add(this.comboBoxEdit3);
             this.xtraTabPage3.Controls.Add(this.YearEdit2);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(441, 42);
+            this.xtraTabPage3.Size = new System.Drawing.Size(435, 36);
             this.xtraTabPage3.Text = "xtraTabPage3";
             // 
             // labelControl7
@@ -944,7 +948,7 @@
             this.xtraTabPage4.Controls.Add(this.labelControl9);
             this.xtraTabPage4.Controls.Add(this.YearEdit3);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(441, 42);
+            this.xtraTabPage4.Size = new System.Drawing.Size(435, 36);
             this.xtraTabPage4.Text = "xtraTabPage4";
             // 
             // labelControl9
@@ -997,7 +1001,7 @@
             "За місяць",
             "За квартал ",
             "За рік"});
-            this.PeriodComboBoxEdit.Size = new System.Drawing.Size(350, 22);
+            this.PeriodComboBoxEdit.Size = new System.Drawing.Size(354, 22);
             this.PeriodComboBoxEdit.StyleController = this.styleController1;
             this.PeriodComboBoxEdit.TabIndex = 20;
             this.PeriodComboBoxEdit.EditValueChanged += new System.EventHandler(this.PeriodComboBoxEdit_EditValueChanged);
@@ -1045,7 +1049,7 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.textEdit1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(2, 674);
+            this.panel1.Location = new System.Drawing.Point(2, 680);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(451, 83);
             this.panel1.TabIndex = 41;
@@ -1076,7 +1080,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(455, 810);
+            this.ClientSize = new System.Drawing.Size(455, 816);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.panelControl2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -1242,5 +1246,6 @@
         public System.Windows.Forms.Panel PersonPanel;
         private DevExpress.XtraEditors.LookUpEdit PersonLookUpEdit;
         private DevExpress.XtraEditors.LabelControl labelControl18;
+        private DevExpress.XtraEditors.SimpleButton simpleButton4;
     }
 }

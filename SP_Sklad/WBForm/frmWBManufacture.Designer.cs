@@ -1054,6 +1054,8 @@
             this.gridColumn11.Caption = "gridColumn11";
             this.gridColumn11.ColumnEdit = this.repositoryItemImageComboBox2;
             this.gridColumn11.FieldName = "Rsv";
+            this.gridColumn11.ImageAlignment = System.Drawing.StringAlignment.Center;
+            this.gridColumn11.ImageIndex = 12;
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.OptionsColumn.AllowEdit = false;
             this.gridColumn11.OptionsColumn.AllowFocus = false;

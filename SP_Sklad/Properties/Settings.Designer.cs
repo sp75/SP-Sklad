@@ -188,5 +188,29 @@ namespace SP_Sklad.Properties {
                 this["ApplicationSkinName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int LastTabPage {
+            get {
+                return ((int)(this["LastTabPage"]));
+            }
+            set {
+                this["LastTabPage"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int LastFunId {
+            get {
+                return ((int)(this["LastFunId"]));
+            }
+            set {
+                this["LastFunId"] = value;
+            }
+        }
     }
 }

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using SP_Sklad.Common;
 using SP_Sklad.Reports;
 using SP_Sklad.SkladData;
+using SP_Sklad.ViewsForm;
 
 namespace SP_Sklad
 {
@@ -177,12 +178,12 @@ namespace SP_Sklad
                 PersonLookUpEdit.Properties.DataSource = new List<object>() { new PersonList { KaId = 0, Name = "Усі" } }.Concat(DBHelper.Persons);
                 PersonLookUpEdit.EditValue = 0;
             }
-  
+
         }
 
         private void frmReport_Shown(object sender, EventArgs e)
         {
-            
+
         }
 
         private void PeriodComboBoxEdit_EditValueChanged(object sender, EventArgs e)
@@ -239,16 +240,20 @@ namespace SP_Sklad
                     string year = Convert.ToString(YearEdit2.Value);
                     switch (comboBoxEdit3.SelectedIndex)
                     {
-                        case 0: StartDateEdit.DateTime = DateTime.Parse("01.01." + year);
+                        case 0:
+                            StartDateEdit.DateTime = DateTime.Parse("01.01." + year);
                             EndDateEdit.DateTime = DateTime.Parse("31.03." + year).SetEndDay();
                             break;
-                        case 1: StartDateEdit.DateTime = DateTime.Parse("01.04." + year);
+                        case 1:
+                            StartDateEdit.DateTime = DateTime.Parse("01.04." + year);
                             EndDateEdit.DateTime = DateTime.Parse("30.06." + year).SetEndDay();
                             break;
-                        case 2: StartDateEdit.DateTime = DateTime.Parse("01.07." + year);
+                        case 2:
+                            StartDateEdit.DateTime = DateTime.Parse("01.07." + year);
                             EndDateEdit.DateTime = DateTime.Parse("30.09." + year).SetEndDay();
                             break;
-                        case 3: StartDateEdit.DateTime = DateTime.Parse("01.10." + year);
+                        case 3:
+                            StartDateEdit.DateTime = DateTime.Parse("01.10." + year);
                             EndDateEdit.DateTime = DateTime.Parse("31.12." + year).SetEndDay();
                             break;
                     }
@@ -275,5 +280,14 @@ namespace SP_Sklad
         {
             MatComboBox.EditValue = IHelper.ShowDirectList(MatComboBox.EditValue, 5);
         }
+
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            using (var frm = new frmEditSortingReport(_rep_id))
+            {
+                frm.ShowDialog();
+            }
+        }
     }
+    
 }

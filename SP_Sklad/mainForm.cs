@@ -112,6 +112,9 @@ namespace SP_Sklad
             }
 
             GetMainHeder();
+
+            xtraTabControl1.SelectedTabPageIndex = Properties.Settings.Default.LastTabPage;
+            SetNode(new HistoryEntity { FunId = Properties.Settings.Default.LastFunId, MainTabs = Properties.Settings.Default.LastTabPage } );
         }
 
         private void barEditItem3_EditValueChanged(object sender, EventArgs e)
@@ -180,6 +183,8 @@ namespace SP_Sklad
         private void xtraTabControl1_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
             History.AddEntry(new HistoryEntity { FunId = 0, MainTabs = xtraTabControl1.SelectedTabPageIndex });
+
+            Properties.Settings.Default.LastTabPage = xtraTabControl1.SelectedTabPageIndex;
         }
 
         private void xtraTabControl1_SelectedPageChanging(object sender, DevExpress.XtraTab.TabPageChangingEventArgs e)

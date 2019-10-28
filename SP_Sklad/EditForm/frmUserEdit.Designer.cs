@@ -103,6 +103,7 @@
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.UserAccessCashDesksGridControl = new DevExpress.XtraGrid.GridControl();
+            this.UserAccessCashDesksBS = new System.Windows.Forms.BindingSource(this.components);
             this.UserAccessCashDesksGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -115,7 +116,7 @@
             this.textEdit3 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.UsersBS = new System.Windows.Forms.BindingSource(this.components);
             this.AccessPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.UserAccessCashDesksBS = new System.Windows.Forms.BindingSource(this.components);
+            this.sharedImageCollection1 = new DevExpress.Utils.SharedImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserBS)).BeginInit();
@@ -156,6 +157,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
             this.xtraTabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UserAccessCashDesksGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserAccessCashDesksBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserAccessCashDesksGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
@@ -164,7 +166,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UsersBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccessPopupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UserAccessCashDesksBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -968,6 +971,10 @@
             this.UserAccessCashDesksGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.UserAccessCashDesksGridView});
             // 
+            // UserAccessCashDesksBS
+            // 
+            this.UserAccessCashDesksBS.DataSource = typeof(SP_Sklad.SkladData.GetUserAccessCashDesks_Result);
+            // 
             // UserAccessCashDesksGridView
             // 
             this.UserAccessCashDesksGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
@@ -1087,9 +1094,14 @@
             this.AccessPopupMenu.Manager = this.barManager1;
             this.AccessPopupMenu.Name = "AccessPopupMenu";
             // 
-            // UserAccessCashDesksBS
+            // sharedImageCollection1
             // 
-            this.UserAccessCashDesksBS.DataSource = typeof(SP_Sklad.SkladData.GetUserAccessCashDesks_Result);
+            // 
+            // 
+            // 
+            this.sharedImageCollection1.ImageSource.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("sharedImageCollection1.ImageSource.ImageStream")));
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(0, "sortfilter_16x16.png");
+            this.sharedImageCollection1.ParentControl = this;
             // 
             // frmUserEdit
             // 
@@ -1151,6 +1163,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
             this.xtraTabPage7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.UserAccessCashDesksGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserAccessCashDesksBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserAccessCashDesksGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
@@ -1160,7 +1173,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UsersBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccessPopupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UserAccessCashDesksBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1254,5 +1268,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraEditors.CheckEdit checkEdit7;
         private System.Windows.Forms.BindingSource UserAccessCashDesksBS;
+        private DevExpress.Utils.SharedImageCollection sharedImageCollection1;
     }
 }

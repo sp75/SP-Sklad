@@ -156,6 +156,7 @@
             this.TotalEdit.Size = new System.Drawing.Size(126, 22);
             this.TotalEdit.StyleController = this.styleController1;
             this.TotalEdit.TabIndex = 38;
+            this.TotalEdit.EditValueChanged += new System.EventHandler(this.TotalEdit_EditValueChanged);
             this.TotalEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TotalEdit_KeyPress);
             // 
             // labelControl1
@@ -179,7 +180,6 @@
             this.OrderedEdit.StyleController = this.styleController1;
             this.OrderedEdit.TabIndex = 29;
             this.OrderedEdit.TabStop = false;
-            this.OrderedEdit.EditValueChanged += new System.EventHandler(this.OrderedEdit_EditValueChanged);
             // 
             // labelControl7
             // 
@@ -241,7 +241,7 @@
             // 
             // RecipeComboBox
             // 
-            this.RecipeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ProductionPlanDetBS, "RecId", true));
+            this.RecipeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ProductionPlanDetBS, "RecId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.RecipeComboBox.Location = new System.Drawing.Point(74, 15);
             this.RecipeComboBox.Name = "RecipeComboBox";
             this.RecipeComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -280,7 +280,6 @@
             this.WHComboBox.StyleController = this.styleController1;
             this.WHComboBox.TabIndex = 22;
             this.WHComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.WHComboBox_ButtonClick);
-            this.WHComboBox.EditValueChanged += new System.EventHandler(this.WHComboBox_EditValueChanged);
             // 
             // labelControl6
             // 

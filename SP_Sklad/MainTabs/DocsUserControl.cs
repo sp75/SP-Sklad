@@ -105,7 +105,7 @@ namespace SP_Sklad.MainTabs
         //    WbGridView.SaveLayoutToXml(@"D:\Program RES\AVK\t.xml");
         }
 
-        void GetWayBillList(int wtyp)
+        void GetWayBillList(string wtyp)
         {
             if (wbStatusList.EditValue == null || wbKagentList.EditValue == null || DocsTreeList.FocusedNode == null)
             {
@@ -120,7 +120,7 @@ namespace SP_Sklad.MainTabs
             WbGridView.TopRowIndex = top_row;
         }
 
-        void GetPayDocList(int doc_typ)
+        void GetPayDocList(string doc_typ)
         {
             if (PDSatusList.EditValue == null || PDKagentList.EditValue == null || DocsTreeList.FocusedNode == null)
             {
@@ -152,15 +152,24 @@ namespace SP_Sklad.MainTabs
 
             wbContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
 
-            if (focused_tree_node.FunId != null)
+            if (focused_tree_node.FunId != null )
             {
-                History.AddEntry(new HistoryEntity { FunId = focused_tree_node.FunId.Value, MainTabs = 0 });
+                History.AddEntry(new HistoryEntity
+                {
+                    FunId = focused_tree_node.FunId.Value,
+                    MainTabs = 0
+                });
+
+                if (DocsTreeList.ContainsFocus)
+                {
+                    Settings.Default.LastFunId = focused_tree_node.FunId.Value;
+                }
             }
         }
 
         private void wbStartDate_Properties_EditValueChanged(object sender, EventArgs e)
         {
-            GetWayBillList(cur_wtype);
+            RefrechItemBtn.PerformClick();
         }
 
         private void NewItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -419,12 +428,37 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 1:
-                    GetWayBillList(cur_wtype);
+                    if (focused_tree_node.Id == 32)
+                    {
+                        GetWayBillList("-1,1,2,-7");
+                    }
+                    else if(focused_tree_node.Id == 106)
+                    {
+                        GetWayBillList("-16,16");
+                    }
+                    else if (focused_tree_node.Id == 55)
+                    {
+                        GetWayBillList("-6,6");
+                    }
+                    else
+                    {
+                        GetWayBillList(cur_wtype.ToString());
+                    }
                     break;
 
                 case 4:
-                    if (cur_wtype == -2) GetPayDocList(-2);
-                    else GetPayDocList(cur_wtype / 3);
+                    if (cur_wtype == -2)
+                    {
+                        GetPayDocList("-2");
+                    }
+                    else if (cur_wtype == -3 || cur_wtype == 3)
+                    {
+                        GetPayDocList((cur_wtype / 3).ToString());
+                    }
+                    else if (focused_tree_node.Id == 31)
+                    {
+                        GetPayDocList("-1,1,-2");
+                    }
                     break;
 
 
@@ -544,11 +578,6 @@ namespace SP_Sklad.MainTabs
                 //      case 6: frmReportModule->PrintWB(ContractsListDOCID->AsVariant, ContractsListDOCTYPE->Value * 8, DocPAnelTransaction);
                 //      case 7: frmReportModule->PrintWB(TaxWBListDOCID->AsVariant, -7, DocPAnelTransaction);
             }
-        }
-
-        private void PayDocGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-
         }
 
         private void PDStartDate_EditValueChanged(object sender, EventArgs e)

@@ -11,6 +11,7 @@ using SP_Sklad.Reports.XtraRep;
 using SP_Sklad.SkladData;
 using SpreadsheetReportBuilder;
 using DevExpress.XtraReports.UI;
+using System.Linq.Dynamic;
 
 namespace SP_Sklad.Reports
 {
@@ -123,7 +124,8 @@ namespace SP_Sklad.Reports
                 int grp = Convert.ToInt32(MatGroup.GrpId);
                 string wh = Convert.ToString(Warehouse.WId);
                 int status = Convert.ToInt32(Status);
-                var mat = db.REP_2(StartDate, EndDate, grp, (int)Kagent.KaId, wh, DocStr, status, _user_id).OrderBy(o=> o.MatId).ToList();
+
+                var mat = db.REP_2(StartDate, EndDate, grp, (int)Kagent.KaId, wh, DocStr, status, _user_id).AsQueryable().OrderBy(GetSortedList(idx)).ToList();
 
                 if (!mat.Any())
                 {
@@ -957,10 +959,10 @@ namespace SP_Sklad.Reports
             {
                 data_for_report.Add("XLRPARAMS", XLRPARAMS);
 
-                data_for_report.Add("DocList1", db.GetPayDocList(1, StartDate, EndDate, 0, 1, -1, _person_id).ToList());
-                data_for_report.Add("DocList2", db.GetPayDocList(-1, StartDate, EndDate, 0, 1, -1, _person_id).ToList());
-                data_for_report.Add("DocList3", db.GetPayDocList(-2, StartDate, EndDate, 0, 1, -1, _person_id).ToList());
-                data_for_report.Add("DocList4", db.GetPayDocList(6, StartDate, EndDate, 0, 1, -1, _person_id).ToList());
+                data_for_report.Add("DocList1", db.GetPayDocList("1", StartDate, EndDate, 0, 1, -1, _person_id).ToList());
+                data_for_report.Add("DocList2", db.GetPayDocList("-1", StartDate, EndDate, 0, 1, -1, _person_id).ToList());
+                data_for_report.Add("DocList3", db.GetPayDocList("-2", StartDate, EndDate, 0, 1, -1, _person_id).ToList());
+                data_for_report.Add("DocList4", db.GetPayDocList("6", StartDate, EndDate, 0, 1, -1, _person_id).ToList());
 
                 var m = db.MoneyOnDate(EndDate).GroupBy(g => new { g.SaldoType, g.Currency }).Select(s => new { s.Key.SaldoType, s.Key.Currency, Saldo = s.Sum(sum => sum.Saldo) }).ToList();
                 data_for_report.Add("MONEY1", m.Where(w => w.SaldoType == 0).ToList());
@@ -1304,7 +1306,7 @@ namespace SP_Sklad.Reports
                 string wh = Convert.ToString(Warehouse.WId);
                 int kid = Convert.ToInt32(Kagent.KaId);
                 Guid grp_kg = KontragentGroup.Id;
-                var mat = db.REP_39(StartDate, EndDate, grp, kid, wh, "-1,", _user_id, grp_kg).OrderByDescending(o=> o.Amount).ToList();
+                var mat = db.REP_39(StartDate, EndDate, grp, kid, wh, "-1,", _user_id, grp_kg).OrderBy(GetSortedList(idx)).ToList();
 
                 if (!mat.Any())
                 {
@@ -1320,7 +1322,7 @@ namespace SP_Sklad.Reports
                     s.Key.KaId,
                     Name = s.Key.KaName,
                     TotalAmount = s.Sum(a => a.Amount)
-                }).OrderByDescending(o=> o.TotalAmount).ToList();// DBHelper.Kagents.Where(w => w.KaId == kid || kid == 0).Select(s => new { s.KaId, s.Name }).ToList();
+                }).OrderByDescending(o=> o.TotalAmount).ToList();
 
                 rel.Add(new
                 {
@@ -1331,7 +1333,7 @@ namespace SP_Sklad.Reports
                 });
 
                 data_for_report.Add("XLRPARAMS", XLRPARAMS);
-                data_for_report.Add("MatGroup", kagents/*.Where(w => mat.Select(s => s.KaId).Contains(w.KaId)).ToList()*/);
+                data_for_report.Add("MatGroup", kagents);
                 data_for_report.Add("MatOutDet", mat);
                 data_for_report.Add("SummaryField", mat.GroupBy(g => 1).Select(s => new
                 {
@@ -1392,6 +1394,22 @@ namespace SP_Sklad.Reports
             });
 
             db.SaveChanges();
+        }
+
+        private string GetSortedList(int rep_id)
+        {
+            using (var db = DB.SkladBase())
+            {
+                string result = "";
+                var list = db.ReportSortedFields.Where(w => w.RepId == rep_id && w.OrderDirection != 0).OrderBy(o => o.Idx).ToList();
+
+                foreach (var i in list)
+                {
+                    result += $"{i.FieldName} {(i.OrderDirection == 2 ? "desc" : "asc")},";
+                }
+
+                return result.Trim(',');
+            }
         }
 
     }

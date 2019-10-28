@@ -163,6 +163,12 @@ namespace SP_Sklad.MainTabs
             if (focused_tree_node.FunId != null)
             {
                 History.AddEntry(new HistoryEntity { FunId = focused_tree_node.FunId.Value, MainTabs = 2 });
+
+
+                if (WHTreeList.ContainsFocus)
+                {
+                    Settings.Default.LastFunId = focused_tree_node.FunId.Value;
+                }
             }
         }
 

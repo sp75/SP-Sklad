@@ -44,5 +44,11 @@
     <Setting Name="ApplicationSkinName" Type="System.String" Scope="User">
       <Value Profile="(Default)">Visual Studio 2013 Light</Value>
     </Setting>
+    <Setting Name="LastTabPage" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="LastFunId" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

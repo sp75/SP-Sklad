@@ -541,16 +541,44 @@ namespace SP_Sklad.Reports
 
             var wb_items = db.v_ProductionPlanDet.AsNoTracking().Where(w => w.ProductionPlanId == id).OrderBy(o => o.Num).ToList();
 
+            var item = db.DocRels.Where(w => w.OriginatorId == id)
+                .Join(db.WaybillList, p => p.RelOriginatorId, t => t.Id, (p, t) => t).SelectMany(sm => sm.WaybillDet).GroupBy(g => new
+                {
+                    g.MatId,
+                    g.Materials.Name,
+                    g.Materials.Measures.ShortName
+                }).Select(s => new
+                {
+                    s.Key.MatId,
+                    MatName = s.Key.Name,
+                    MsrName = s.Key.ShortName,
+                    TotalAmount = s.Sum(su => su.Amount)
+                }).ToList().Select((s, index) => new
+                {
+                    Num = index + 1,
+                    s.MatId,
+                    s.MatName,
+                    s.MsrName,
+                    s.TotalAmount
+                }).ToList();
 
             dataForReport.Add("WayBillList", wb);
             dataForReport.Add("WayBillItems", wb_items);
+            dataForReport.Add("WayBillItems2", item);
             dataForReport.Add("SummaryField", wb_items.GroupBy(g => new { g.MsrName }).Select(s => new
             {
                 s.Key.MsrName,
                 Total = s.Sum(a => a.Total),
             }).ToList());
 
-            IHelper.Print(dataForReport, template_name);
+            IHelper.Print2(dataForReport, template_name);
+        }
+
+        private class ProductionPlansReportRep
+        {
+            public string MatName { get; set; }
+            public string MsrName { get; set; }
+            public decimal TotalAmount { get; set; }
         }
 
 

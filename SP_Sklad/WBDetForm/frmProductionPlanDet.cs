@@ -66,7 +66,7 @@ namespace SP_Sklad.WBDetForm
 
         private void  GetOk()
         {
-            OkButton.Enabled = !String.IsNullOrEmpty(RecipeComboBox.Text) && !String.IsNullOrEmpty(WHComboBox.Text)/* && OrderedEdit.Value > 0*/;
+            OkButton.Enabled = !String.IsNullOrEmpty(RecipeComboBox.Text) && !String.IsNullOrEmpty(WHComboBox.Text) && TotalEdit.Value > 0;
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -88,22 +88,16 @@ namespace SP_Sklad.WBDetForm
                 return;
             }
 
+            det.RecId = Convert.ToInt32(RecipeComboBox.EditValue);
+
             int mat_id = row.MatId;
             var mat_remain = _db.v_MatRemains.Where(w => w.MatId == mat_id).OrderByDescending(o => o.OnDate).FirstOrDefault();
 
-            if (mat_remain != null)
-            {
-              det.Remain = mat_remain.Remain;
-            }
+            det.Remain = mat_remain != null ? mat_remain.Remain : 0;
+            OrderedEdit.EditValue = det.Remain + TotalEdit.Value;
 
-       //     det.Total = CalcTotal();
+            //     det.Total = CalcTotal();
 
-            GetOk();
-        }
-
-        private void OrderedEdit_EditValueChanged(object sender, EventArgs e)
-        {
-        //    det.Total = CalcTotal();
             GetOk();
         }
 
@@ -138,11 +132,6 @@ namespace SP_Sklad.WBDetForm
             }
         }
 
-        private void WHComboBox_EditValueChanged(object sender, EventArgs e)
-        {
-            GetOk();
-        }
-
         private void TotalEdit_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
@@ -154,6 +143,13 @@ namespace SP_Sklad.WBDetForm
         private void frmProductionPlanDet_Shown(object sender, EventArgs e)
         {
             RecipeComboBox.Focus();
+        }
+
+        private void TotalEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            det.Amount = RemainEdit.Value + TotalEdit.Value;
+
+            GetOk();
         }
     }
 }

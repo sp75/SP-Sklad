@@ -199,6 +199,9 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Linq.Dynamic, Version=2.1.0.0, Culture=neutral, PublicKeyToken=667e828eb982ff2d, processorArchitecture=MSIL">
+      <HintPath>..\packages\AlanWay.System.Linq.Dynamic.0.0.1\lib\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
     <Reference Include="System.Management" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.WebRequest" />
@@ -447,6 +450,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\PosRemains.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\ReportSortedFields.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\REP_15_Result.cs">
@@ -771,6 +777,12 @@
     </Compile>
     <Compile Include="ViewsForm\frmPdfView.Designer.cs">
       <DependentUpon>frmPdfView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewsForm\frmEditSortingReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmEditSortingReport.Designer.cs">
+      <DependentUpon>frmEditSortingReport.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewsForm\frmRemainOnWh .cs">
       <SubType>Form</SubType>
@@ -1540,6 +1552,9 @@
     <EmbeddedResource Include="ViewsForm\frmPdfView.resx">
       <DependentUpon>frmPdfView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmEditSortingReport.resx">
+      <DependentUpon>frmEditSortingReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmRemainOnWh .resx">
       <DependentUpon>frmRemainOnWh .cs</DependentUpon>
     </EmbeddedResource>
@@ -1794,6 +1809,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ProductionPlanDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ProductionPlans.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ProductionPlansList_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.ReportSortedFields.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.REP_15_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Routes.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.SchedulingOrders.datasource" />

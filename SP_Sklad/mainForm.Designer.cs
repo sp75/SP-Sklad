@@ -518,28 +518,28 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1188, 52);
+            this.barDockControlTop.Size = new System.Drawing.Size(1188, 53);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 678);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1188, 22);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 677);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1188, 23);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 52);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 626);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 53);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 624);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1188, 52);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 626);
+            this.barDockControlRight.Location = new System.Drawing.Point(1188, 53);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 624);
             // 
             // barButtonItem2
             // 
@@ -595,7 +595,7 @@
             this.xtraTabPage7.Controls.Add(this.serviceUserControl1);
             this.xtraTabPage7.Image = global::SP_Sklad.Properties.Resources._1324534473_police;
             this.xtraTabPage7.Name = "xtraTabPage7";
-            this.xtraTabPage7.Size = new System.Drawing.Size(1186, 577);
+            this.xtraTabPage7.Size = new System.Drawing.Size(1182, 572);
             this.xtraTabPage7.TabPageWidth = 100;
             this.xtraTabPage7.Text = "Сервіс";
             // 
@@ -604,7 +604,7 @@
             this.serviceUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.serviceUserControl1.Location = new System.Drawing.Point(0, 0);
             this.serviceUserControl1.Name = "serviceUserControl1";
-            this.serviceUserControl1.Size = new System.Drawing.Size(1186, 577);
+            this.serviceUserControl1.Size = new System.Drawing.Size(1182, 572);
             this.serviceUserControl1.TabIndex = 0;
             // 
             // xtraTabPage6
@@ -612,7 +612,7 @@
             this.xtraTabPage6.Controls.Add(this.DirUserControl);
             this.xtraTabPage6.Image = global::SP_Sklad.Properties.Resources._1324534381_findjob;
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(1186, 577);
+            this.xtraTabPage6.Size = new System.Drawing.Size(1182, 572);
             this.xtraTabPage6.TabPageWidth = 100;
             this.xtraTabPage6.Text = "Довідники";
             // 
@@ -624,7 +624,7 @@
             this.DirUserControl.isMatList = false;
             this.DirUserControl.Location = new System.Drawing.Point(0, 0);
             this.DirUserControl.Name = "DirUserControl";
-            this.DirUserControl.Size = new System.Drawing.Size(1186, 577);
+            this.DirUserControl.Size = new System.Drawing.Size(1182, 572);
             this.DirUserControl.TabIndex = 0;
             this.DirUserControl.wb = null;
             // 
@@ -633,7 +633,7 @@
             this.xtraTabPage5.Controls.Add(this.reportUserControl1);
             this.xtraTabPage5.Image = global::SP_Sklad.Properties.Resources.company;
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(1186, 577);
+            this.xtraTabPage5.Size = new System.Drawing.Size(1182, 572);
             this.xtraTabPage5.TabPageWidth = 100;
             this.xtraTabPage5.Text = "Звіти";
             // 
@@ -642,7 +642,7 @@
             this.reportUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.reportUserControl1.Location = new System.Drawing.Point(0, 0);
             this.reportUserControl1.Name = "reportUserControl1";
-            this.reportUserControl1.Size = new System.Drawing.Size(1186, 577);
+            this.reportUserControl1.Size = new System.Drawing.Size(1182, 572);
             this.reportUserControl1.TabIndex = 0;
             // 
             // xtraTabPage4
@@ -650,7 +650,7 @@
             this.xtraTabPage4.Controls.Add(this.financesUserControl1);
             this.xtraTabPage4.Image = global::SP_Sklad.Properties.Resources.bank;
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(1186, 577);
+            this.xtraTabPage4.Size = new System.Drawing.Size(1182, 572);
             this.xtraTabPage4.TabPageWidth = 100;
             this.xtraTabPage4.Text = "Фінанси";
             // 
@@ -659,7 +659,7 @@
             this.financesUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.financesUserControl1.Location = new System.Drawing.Point(0, 0);
             this.financesUserControl1.Name = "financesUserControl1";
-            this.financesUserControl1.Size = new System.Drawing.Size(1186, 577);
+            this.financesUserControl1.Size = new System.Drawing.Size(1182, 572);
             this.financesUserControl1.TabIndex = 0;
             // 
             // xtraTabPage3
@@ -667,7 +667,7 @@
             this.xtraTabPage3.Controls.Add(this.whUserControl);
             this.xtraTabPage3.Image = global::SP_Sklad.Properties.Resources._1324534557_mine_копия;
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(1186, 577);
+            this.xtraTabPage3.Size = new System.Drawing.Size(1182, 572);
             this.xtraTabPage3.TabPageWidth = 100;
             this.xtraTabPage3.Text = "Склад";
             // 
@@ -681,7 +681,7 @@
             this.whUserControl.Name = "whUserControl";
             this.whUserControl.resut = null;
             this.whUserControl.set_tree_node = null;
-            this.whUserControl.Size = new System.Drawing.Size(1186, 577);
+            this.whUserControl.Size = new System.Drawing.Size(1182, 572);
             this.whUserControl.TabIndex = 0;
             this.whUserControl.wb = null;
             this.whUserControl.wh_mat_list = null;
@@ -691,7 +691,7 @@
             this.xtraTabPage2.Controls.Add(this.manufacturingUserControl1);
             this.xtraTabPage2.Image = global::SP_Sklad.Properties.Resources.factory;
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1186, 577);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1182, 572);
             this.xtraTabPage2.TabPageWidth = 100;
             this.xtraTabPage2.Text = "Виробництво";
             // 
@@ -700,7 +700,7 @@
             this.manufacturingUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.manufacturingUserControl1.Location = new System.Drawing.Point(0, 0);
             this.manufacturingUserControl1.Name = "manufacturingUserControl1";
-            this.manufacturingUserControl1.Size = new System.Drawing.Size(1186, 577);
+            this.manufacturingUserControl1.Size = new System.Drawing.Size(1182, 572);
             this.manufacturingUserControl1.TabIndex = 0;
             // 
             // xtraTabPage1
@@ -708,7 +708,7 @@
             this.xtraTabPage1.Controls.Add(this.docsUserControl1);
             this.xtraTabPage1.Image = global::SP_Sklad.Properties.Resources.administration;
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1186, 575);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1182, 572);
             this.xtraTabPage1.TabPageWidth = 100;
             this.xtraTabPage1.Text = "Документи";
             // 
@@ -717,16 +717,16 @@
             this.docsUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.docsUserControl1.Location = new System.Drawing.Point(0, 0);
             this.docsUserControl1.Name = "docsUserControl1";
-            this.docsUserControl1.Size = new System.Drawing.Size(1186, 575);
+            this.docsUserControl1.Size = new System.Drawing.Size(1182, 572);
             this.docsUserControl1.TabIndex = 0;
             // 
             // xtraTabControl1
             // 
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(0, 52);
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 53);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1188, 626);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1188, 624);
             this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -744,15 +744,61 @@
             // 
             // 
             this.sharedImageCollection1.ImageSource.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("sharedImageCollection1.ImageSource.ImageStream")));
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(0, "_нформац_я про товар.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(1, "Рух товар_в.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(2, "_нформац_я про резерв товару.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(3, "Аналоги.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(4, "Заказ поставщикам.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(5, "view_settings.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(6, "Наявн_сть на сладах.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(7, "Парт_ї.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(8, "Склади.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(0, "Склад+Торговля.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(1, "Документы16x16.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(2, "OpenFolder.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(3, "ПриходНакл.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(4, "Счета.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(5, "РасходНакл.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(6, "податкова накладна.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(7, "Счет-фактуры.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(8, "ВходПлатежи.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(9, "ИсходПлатежи.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(10, "ДопРасход.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(11, "Возврат Поставщику.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(12, "Возврат от клиетна.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(13, "Заказ от клиента.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(14, "Заказ поставщикам.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(15, "Договор купли.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(16, "Договор продажу.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(17, "Прайс лист.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(18, "Склади.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(19, "Накладн_ перем_щення.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(20, "Введення залишк_в товар_в.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(21, "Акти списання товару.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(22, "Акти iнвентаризацiї.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(23, "Зв_ти.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(24, "Справочники.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(25, "Конрагент.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(26, "Товари.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(27, "Послуги.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(28, "korganizer.png");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(29, "Валюта.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(30, "Дисконтна картка.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(31, "Склади.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(32, "Одиниц_ вим_ру.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(33, "Банки.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(34, "Ц_нов_ кат.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(35, "Типи рахунк_в.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(36, "Країни.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(37, "Статт_ витрат.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(38, "Каси.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(39, "Податки.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(40, "Серв_с.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(41, "Користувач_.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(42, "Бази даних.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(43, "Редактор SQL-запитiв.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(44, "Журнал под_й.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(45, "view_settings.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(46, "Ф_нанси.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(47, "Безгот_вков_ грош_.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(48, "iconfinder_General_Office_24_2530784.png");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(49, "юзер.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(50, "exec16.png");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(51, "korganizer.png");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(52, "_нформац_я про рух товар_в.bmp");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(53, "пратнерка.png");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(54, "map_pin-next-16.png");
             this.sharedImageCollection1.ParentControl = this;
             // 
             // mainForm

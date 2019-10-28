@@ -14,6 +14,7 @@ using SP_Sklad.Common;
 using DevExpress.XtraTreeList;
 using System.IO;
 using System.Diagnostics;
+using SP_Sklad.Properties;
 
 namespace SP_Sklad.MainTabs
 {
@@ -95,6 +96,11 @@ namespace SP_Sklad.MainTabs
             if (focused_tree_node.FunId != null)
             {
                 History.AddEntry(new HistoryEntity { FunId = focused_tree_node.FunId.Value, MainTabs = 5 });
+
+                if (DirTreeList.ContainsFocus)
+                {
+                    Settings.Default.LastFunId = focused_tree_node.FunId.Value;
+                }
             }
         }
 

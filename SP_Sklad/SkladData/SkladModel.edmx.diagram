@@ -296,6 +296,7 @@
         <EntityTypeShape EntityType="BaseModel.v_IntermediateWeighingDet" Width="1.5" PointX="13.375" PointY="12.75" />
         <AssociationConnector Association="BaseModel.FK_IntermediateWeighingDet_IntermediateWeighing" />
         <AssociationConnector Association="BaseModel.FK_IntermediateWeighingDet_Materials" />
+        <EntityTypeShape EntityType="BaseModel.ReportSortedFields" Width="1.5" PointX="19.375" PointY="20.75" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />
