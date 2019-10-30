@@ -91,7 +91,6 @@
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.WHTreeList = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.UserTreeImgList = new System.Windows.Forms.ImageList(this.components);
             this.whContentTab = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl3 = new DevExpress.XtraEditors.SplitContainerControl();
@@ -288,6 +287,7 @@
             this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             this.PosBottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.UserTreeImgList = new DevExpress.Utils.SharedImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -392,6 +392,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PosBottomPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).BeginInit();
             this.SuspendLayout();
             // 
             // GridImageList
@@ -783,7 +785,7 @@
             this.standaloneBarDockControl7.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl7.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl7.Name = "standaloneBarDockControl7";
-            this.standaloneBarDockControl7.Size = new System.Drawing.Size(1158, 31);
+            this.standaloneBarDockControl7.Size = new System.Drawing.Size(1161, 31);
             this.standaloneBarDockControl7.Text = "standaloneBarDockControl7";
             // 
             // barDockControlTop
@@ -1034,66 +1036,6 @@
             this.treeListColumn1.Name = "treeListColumn1";
             this.treeListColumn1.Visible = true;
             this.treeListColumn1.VisibleIndex = 0;
-            // 
-            // UserTreeImgList
-            // 
-            this.UserTreeImgList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("UserTreeImgList.ImageStream")));
-            this.UserTreeImgList.TransparentColor = System.Drawing.Color.White;
-            this.UserTreeImgList.Images.SetKeyName(0, "Склад+Торговля.bmp");
-            this.UserTreeImgList.Images.SetKeyName(1, "Документы16x16.bmp");
-            this.UserTreeImgList.Images.SetKeyName(2, "OpenFolder.bmp");
-            this.UserTreeImgList.Images.SetKeyName(3, "ПриходНакл.bmp");
-            this.UserTreeImgList.Images.SetKeyName(4, "Счета.bmp");
-            this.UserTreeImgList.Images.SetKeyName(5, "РасходНакл.bmp");
-            this.UserTreeImgList.Images.SetKeyName(6, "податкова накладна.bmp");
-            this.UserTreeImgList.Images.SetKeyName(7, "Счет-фактуры.bmp");
-            this.UserTreeImgList.Images.SetKeyName(8, "ВходПлатежи.bmp");
-            this.UserTreeImgList.Images.SetKeyName(9, "ИсходПлатежи.bmp");
-            this.UserTreeImgList.Images.SetKeyName(10, "ДопРасход.bmp");
-            this.UserTreeImgList.Images.SetKeyName(11, "Возврат Поставщику.bmp");
-            this.UserTreeImgList.Images.SetKeyName(12, "Возврат от клиетна.bmp");
-            this.UserTreeImgList.Images.SetKeyName(13, "Заказ от клиента.bmp");
-            this.UserTreeImgList.Images.SetKeyName(14, "Заказ поставщикам.bmp");
-            this.UserTreeImgList.Images.SetKeyName(15, "Договор купли.bmp");
-            this.UserTreeImgList.Images.SetKeyName(16, "Договор продажу.bmp");
-            this.UserTreeImgList.Images.SetKeyName(17, "Прайс лист.bmp");
-            this.UserTreeImgList.Images.SetKeyName(18, "Склади.bmp");
-            this.UserTreeImgList.Images.SetKeyName(19, "Накладн_ перем_щення.bmp");
-            this.UserTreeImgList.Images.SetKeyName(20, "Введення залишк_в товар_в.bmp");
-            this.UserTreeImgList.Images.SetKeyName(21, "Акти списання товару.bmp");
-            this.UserTreeImgList.Images.SetKeyName(22, "Акти iнвентаризацiї.bmp");
-            this.UserTreeImgList.Images.SetKeyName(23, "Зв_ти.bmp");
-            this.UserTreeImgList.Images.SetKeyName(24, "Справочники.bmp");
-            this.UserTreeImgList.Images.SetKeyName(25, "Конрагент.bmp");
-            this.UserTreeImgList.Images.SetKeyName(26, "Товари.bmp");
-            this.UserTreeImgList.Images.SetKeyName(27, "Послуги.bmp");
-            this.UserTreeImgList.Images.SetKeyName(28, "korganizer.png");
-            this.UserTreeImgList.Images.SetKeyName(29, "Валюта.bmp");
-            this.UserTreeImgList.Images.SetKeyName(30, "Дисконтна картка.bmp");
-            this.UserTreeImgList.Images.SetKeyName(31, "Склади.bmp");
-            this.UserTreeImgList.Images.SetKeyName(32, "Одиниц_ вим_ру.bmp");
-            this.UserTreeImgList.Images.SetKeyName(33, "Банки.bmp");
-            this.UserTreeImgList.Images.SetKeyName(34, "Ц_нов_ кат.bmp");
-            this.UserTreeImgList.Images.SetKeyName(35, "Типи рахунк_в.bmp");
-            this.UserTreeImgList.Images.SetKeyName(36, "Країни.bmp");
-            this.UserTreeImgList.Images.SetKeyName(37, "Статт_ витрат.bmp");
-            this.UserTreeImgList.Images.SetKeyName(38, "Каси.bmp");
-            this.UserTreeImgList.Images.SetKeyName(39, "Податки.bmp");
-            this.UserTreeImgList.Images.SetKeyName(40, "Серв_с.bmp");
-            this.UserTreeImgList.Images.SetKeyName(41, "Користувач_.bmp");
-            this.UserTreeImgList.Images.SetKeyName(42, "Бази даних.bmp");
-            this.UserTreeImgList.Images.SetKeyName(43, "Редактор SQL-запитiв.bmp");
-            this.UserTreeImgList.Images.SetKeyName(44, "Журнал под_й.bmp");
-            this.UserTreeImgList.Images.SetKeyName(45, "view_settings.bmp");
-            this.UserTreeImgList.Images.SetKeyName(46, "Ф_нанси.bmp");
-            this.UserTreeImgList.Images.SetKeyName(47, "Безгот_вков_ грош_.bmp");
-            this.UserTreeImgList.Images.SetKeyName(48, "iconfinder_General_Office_24_2530784.png");
-            this.UserTreeImgList.Images.SetKeyName(49, "юзер.bmp");
-            this.UserTreeImgList.Images.SetKeyName(50, "exec16.png");
-            this.UserTreeImgList.Images.SetKeyName(51, "korganizer.png");
-            this.UserTreeImgList.Images.SetKeyName(52, "_нформац_я про рух товар_в.bmp");
-            this.UserTreeImgList.Images.SetKeyName(53, "пратнерка.png");
-            this.UserTreeImgList.Images.SetKeyName(54, "map_pin-next-16.png");
             // 
             // whContentTab
             // 
@@ -1570,7 +1512,7 @@
             this.xtraTabPage4.Controls.Add(this.PosGridControl);
             this.xtraTabPage4.ImageIndex = 4;
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(1158, 251);
+            this.xtraTabPage4.Size = new System.Drawing.Size(1161, 251);
             this.xtraTabPage4.Text = "Партії";
             // 
             // PosGridControl
@@ -1581,7 +1523,7 @@
             this.PosGridControl.Name = "PosGridControl";
             this.PosGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox10});
-            this.PosGridControl.Size = new System.Drawing.Size(1158, 251);
+            this.PosGridControl.Size = new System.Drawing.Size(1161, 251);
             this.PosGridControl.TabIndex = 1;
             this.PosGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView1});
@@ -1747,7 +1689,7 @@
             this.xtraTabPage5.Controls.Add(this.gridControl5);
             this.xtraTabPage5.ImageIndex = 5;
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(1158, 251);
+            this.xtraTabPage5.Size = new System.Drawing.Size(1161, 251);
             this.xtraTabPage5.Text = "Замовлене";
             // 
             // gridControl5
@@ -1761,7 +1703,7 @@
             this.repositoryItemImageComboBox9,
             this.repositoryItemImageComboBox8,
             this.repositoryItemImageComboBox5});
-            this.gridControl5.Size = new System.Drawing.Size(1158, 251);
+            this.gridControl5.Size = new System.Drawing.Size(1161, 251);
             this.gridControl5.TabIndex = 0;
             this.gridControl5.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView2});
@@ -1972,7 +1914,7 @@
             this.xtraTabPage9.Controls.Add(this.MatChangeGridControl);
             this.xtraTabPage9.ImageIndex = 6;
             this.xtraTabPage9.Name = "xtraTabPage9";
-            this.xtraTabPage9.Size = new System.Drawing.Size(1158, 251);
+            this.xtraTabPage9.Size = new System.Drawing.Size(1161, 251);
             this.xtraTabPage9.Text = "Взаємозамінність";
             // 
             // MatChangeGridControl
@@ -1984,7 +1926,7 @@
             this.MatChangeGridControl.Name = "MatChangeGridControl";
             this.MatChangeGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit2});
-            this.MatChangeGridControl.Size = new System.Drawing.Size(1158, 251);
+            this.MatChangeGridControl.Size = new System.Drawing.Size(1161, 251);
             this.MatChangeGridControl.TabIndex = 10;
             this.MatChangeGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.MatChangeGridView});
@@ -2052,7 +1994,7 @@
             this.MatListTabPage.ImageIndex = 14;
             this.MatListTabPage.Name = "MatListTabPage";
             this.MatListTabPage.PageVisible = false;
-            this.MatListTabPage.Size = new System.Drawing.Size(1158, 251);
+            this.MatListTabPage.Size = new System.Drawing.Size(1161, 251);
             this.MatListTabPage.Text = "Список товарів";
             // 
             // MatListGridControl
@@ -2065,7 +2007,7 @@
             this.repositoryItemCalcEdit1,
             this.repositoryItemLookUpEdit1,
             this.repositoryItemLookUpEdit2});
-            this.MatListGridControl.Size = new System.Drawing.Size(1158, 220);
+            this.MatListGridControl.Size = new System.Drawing.Size(1161, 220);
             this.MatListGridControl.TabIndex = 3;
             this.MatListGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.MatListGridView,
@@ -2202,7 +2144,7 @@
             this.xtraTabPage11.Controls.Add(this.gridControl1);
             this.xtraTabPage11.ImageIndex = 19;
             this.xtraTabPage11.Name = "xtraTabPage11";
-            this.xtraTabPage11.Size = new System.Drawing.Size(1158, 251);
+            this.xtraTabPage11.Size = new System.Drawing.Size(1161, 251);
             this.xtraTabPage11.Text = "Залишки по ТМЦ";
             // 
             // gridControl1
@@ -2211,7 +2153,7 @@
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1158, 251);
+            this.gridControl1.Size = new System.Drawing.Size(1161, 251);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -2266,7 +2208,7 @@
             this.xtraTabPage12.Controls.Add(this.chartControl1);
             this.xtraTabPage12.ImageIndex = 20;
             this.xtraTabPage12.Name = "xtraTabPage12";
-            this.xtraTabPage12.Size = new System.Drawing.Size(1158, 251);
+            this.xtraTabPage12.Size = new System.Drawing.Size(1161, 251);
             this.xtraTabPage12.Text = "Динаміка продажу";
             // 
             // simpleButton1
@@ -2310,7 +2252,7 @@
         series1,
         series2};
             this.chartControl1.SeriesTemplate.View = stackedBarSeriesView3;
-            this.chartControl1.Size = new System.Drawing.Size(1158, 251);
+            this.chartControl1.Size = new System.Drawing.Size(1161, 251);
             this.chartControl1.TabIndex = 1;
             // 
             // REP_15BS
@@ -2322,7 +2264,7 @@
             this.xtraTabPage13.Controls.Add(this.vGridControl2);
             this.xtraTabPage13.ImageIndex = 1;
             this.xtraTabPage13.Name = "xtraTabPage13";
-            this.xtraTabPage13.Size = new System.Drawing.Size(1158, 251);
+            this.xtraTabPage13.Size = new System.Drawing.Size(1161, 251);
             this.xtraTabPage13.Text = "Додадкова інформація";
             // 
             // vGridControl2
@@ -2339,7 +2281,7 @@
             this.vGridControl2.RowHeaderWidth = 294;
             this.vGridControl2.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.editorRow1});
-            this.vGridControl2.Size = new System.Drawing.Size(1158, 251);
+            this.vGridControl2.Size = new System.Drawing.Size(1161, 251);
             this.vGridControl2.TabIndex = 1;
             // 
             // ExtMatIfoBS
@@ -3223,6 +3165,71 @@
             this.PosBottomPopupMenu.Manager = this.barManager1;
             this.PosBottomPopupMenu.Name = "PosBottomPopupMenu";
             // 
+            // UserTreeImgList
+            // 
+            // 
+            // 
+            // 
+            this.UserTreeImgList.ImageSource.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("UserTreeImgList.ImageSource.ImageStream")));
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(0, "Склад+Торговля.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(1, "Документи.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(2, "OpenFolder.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(3, "прибуткова.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(4, "Счета.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(5, "РасходНакл.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(6, "податкова накладна.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(7, "Счет-фактуры.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(8, "ВходПлатежи.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(9, "ИсходПлатежи.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(10, "ДопРасход.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(11, "Возврат Поставщику.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(12, "Возврат от клиетна.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(13, "Заказ от клиента.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(14, "Заказ поставщикам.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(15, "Договор купли.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(16, "Договор продажу.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(17, "Прайс лист.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(18, "Склади.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(19, "Накладні переміщення.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(20, "Введення залишків товарів.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(21, "Акти списання товару.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(22, "Акти iнвентаризацiї.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(23, "Звіти.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(24, "Справочники.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(25, "Конрагент.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(26, "Товари.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(27, "Послуги.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(28, "korganizer.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(29, "Валюта.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(30, "Дисконтна картка.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(31, "Склади.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(32, "Одиниці виміру.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(33, "Банки.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(34, "Цінові кат.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(35, "Типи рахунків.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(36, "Країни.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(37, "Статті витрат.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(38, "Каси.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(39, "Податки.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(40, "Сервіс.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(41, "Користувачі.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(42, "Бази даних.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(43, "Редактор SQL-запитiв.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(44, "Журнал подій.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(45, "view_settings.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(46, "Фінанси.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(47, "Безготівкові гроші.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(48, "iconfinder_General_Office_24_2530784.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(49, "юзер.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(50, "exec16.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(51, "korganizer.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(52, "Інформація про рух товарів.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(53, "пратнерка.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(54, "map_pin-next-16.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(55, "prod_plan.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(56, "salesreport2_16x16.png");
+            this.UserTreeImgList.ParentControl = this;
+            // 
             // WarehouseUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3344,6 +3351,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PosBottomPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3601,6 +3610,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand5;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn2;
-        public System.Windows.Forms.ImageList UserTreeImgList;
+        private DevExpress.Utils.SharedImageCollection UserTreeImgList;
     }
 }
