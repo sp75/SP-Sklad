@@ -52,7 +52,7 @@ namespace SP_Sklad.MainTabs
 
         private void RepGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            dynamic row = RepGridView.GetFocusedRow();
+          /*  dynamic row = RepGridView.GetFocusedRow();
             if (row == null)
             {
                 return;
@@ -99,9 +99,10 @@ namespace SP_Sklad.MainTabs
                 case 39:
                 case 40:
                 case 41:
+                case 42:
                     RepBtn.Enabled = true;
                     break;
-            }
+            }*/
         }
 
         private void RepBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -421,6 +422,16 @@ namespace SP_Sklad.MainTabs
                     frm.DocTypeGroupBox.Visible = false;
                     frm.DocTypeGroupBox2.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
+                    frm.WHGroupBox.Visible = false;
+                    frm.KontragentPanel.Visible = false;
+                    break;
+
+                case 42:
+                    frm.InDocGroupBox.Visible = false;
+                    frm.OnDateGroupBox.Visible = false;
+                    frm.DocTypeGroupBox.Visible = false;
+                    frm.ChargeGroupBox.Visible = false;
+                    frm.DocTypeGroupBox2.Visible = false;
                     frm.WHGroupBox.Visible = false;
                     frm.KontragentPanel.Visible = false;
                     break;

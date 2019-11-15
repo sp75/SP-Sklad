@@ -323,6 +323,18 @@
     <Compile Include="FinanseForm\frmMoneyCorrecting.Designer.cs">
       <DependentUpon>frmMoneyCorrecting.cs</DependentUpon>
     </Compile>
+    <Compile Include="FinanseForm\frmMoneySalaryOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinanseForm\frmMoneySalaryOut.Designer.cs">
+      <DependentUpon>frmMoneySalaryOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FinanseForm\frmMoneySalaryIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinanseForm\frmMoneySalaryIn.Designer.cs">
+      <DependentUpon>frmMoneySalaryIn.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAboutAs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1512,6 +1524,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FinanseForm\frmMoneyCorrecting.resx">
       <DependentUpon>frmMoneyCorrecting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinanseForm\frmMoneySalaryOut.resx">
+      <DependentUpon>frmMoneySalaryOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinanseForm\frmMoneySalaryIn.resx">
+      <DependentUpon>frmMoneySalaryIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAboutAs.resx">
       <DependentUpon>frmAboutAs.cs</DependentUpon>

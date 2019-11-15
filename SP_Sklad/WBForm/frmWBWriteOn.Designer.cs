@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWBWriteOn));
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.PrevievBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -571,6 +572,9 @@
             // 
             this.WaybillDetInGridControl.DataSource = this.WaybillDetInBS;
             this.WaybillDetInGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            gridLevelNode1.RelationName = "Level1";
+            this.WaybillDetInGridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode1});
             this.WaybillDetInGridControl.Location = new System.Drawing.Point(2, 2);
             this.WaybillDetInGridControl.MainView = this.WaybillDetInGridView;
             this.WaybillDetInGridControl.MenuManager = this.barManager1;

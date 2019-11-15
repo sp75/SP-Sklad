@@ -58,5 +58,13 @@ namespace SP_Sklad.EditForm
         {
 
         }
+
+        private void KagentComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1 )
+            {
+                KagentComboBox.EditValue = null;
+            }
+        }
     }
 }

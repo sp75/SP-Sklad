@@ -37,5 +37,6 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> ToSumm { get; set; }
         public string FromSource { get; set; }
         public string ToSource { get; set; }
+        public Nullable<int> DocTypeFrom { get; set; }
     }
 }

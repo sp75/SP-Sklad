@@ -1385,6 +1385,70 @@ namespace SP_Sklad.Reports
                 IHelper.Print(data_for_report, TemlateList.rep_41);
             }
 
+
+            if (idx == 42)
+            {
+                int grp = Convert.ToInt32(MatGroup.GrpId);
+                int mat_id = (int)Material.MatId;
+
+                var report_query = db.WaybillDet.Where(w => w.WaybillList.WType == -20 && w.WaybillList.OnDate >= StartDate && w.WaybillList.OnDate < EndDate).Select(s => new
+                {
+                    s.WaybillList.Num,
+                    RecipeName = s.WaybillList.WayBillMake.MatRecipe.Materials.Name,
+                    s.WaybillList.OnDate,
+                    RawMatName = s.Materials.Name,
+                    MsrName = s.Materials.Measures.ShortName,
+                    s.Amount,
+                    s.Total,
+                    s.Price,
+                    s.MatId,
+                    PersonName = s.WaybillList.Kagent.Name,
+                    s.Materials.GrpId
+                });
+
+                if (GrpStr.Any())
+                {
+                    var groups = GrpStr.Split(',').Select(s => (int?)Convert.ToInt32(s)).ToList();
+
+                    report_query = report_query.Where(w => groups.Contains(w.GrpId));
+                }
+                else if (grp > 0)
+                {
+                    report_query = report_query.Where(w => w.GrpId == grp);
+                }
+
+                if(mat_id > 0 )
+                {
+                    report_query = report_query.Where(w => w.MatId == mat_id);
+                }
+
+               var report = report_query.OrderBy(o => o.OnDate).ToList();
+
+                var recipe = report.GroupBy(g => new {g.MatId, g.RawMatName }).Select(s => new
+                {
+                    s.Key.MatId,
+                    s.Key.RawMatName,
+                    TotalAmount = s.Sum(sa => sa.Amount)
+                }).ToList();
+
+
+                rel.Add(new
+                {
+                    pk = "MatId",
+                    fk = "MatId",
+                    master_table = "MatGroup",
+                    child_table = "MatOutDet"
+                });
+
+                data_for_report.Add("_realation_", rel);
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("MatGroup", recipe);
+                data_for_report.Add("MatOutDet", report);
+    
+                IHelper.Print(data_for_report, TemlateList.rep_42);
+            }
+
             db.PrintLog.Add(new PrintLog
             {
                 PrintType = 1,

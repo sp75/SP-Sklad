@@ -144,9 +144,9 @@ namespace SP_Sklad.Common
             }
         }
 
-        static public void ShowMatListByWH(BaseEntities db, WaybillList wb)
+        static public void ShowMatListByWH(BaseEntities db, WaybillList wb, DiscCards disc_card = null)
         {
-            var f = new frmWhCatalog(1);
+            var f = new frmWhCatalog(1, disc_card);
 
             //   f.uc.xtraTabPage3.PageVisible = false;
             f.uc.xtraTabPage4.PageVisible = false;
@@ -180,7 +180,7 @@ namespace SP_Sklad.Common
                         BasePrice = item.Price + Math.Round(item.Price.Value * wb.Nds.Value / 100, 2),
                         PosKind = 0,
                         PosParent = 0,
-                        DiscountKind = 0
+                        DiscountKind = disc_card != null ? 2 : 0,
 
                     };
                     db.WaybillDet.Add(wbd);

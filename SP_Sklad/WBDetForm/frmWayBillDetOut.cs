@@ -25,14 +25,16 @@ namespace SP_Sklad.WBDetForm
         private List<GetPosIn_Result> pos_in { get; set; }
         private GetMatRemain_Result mat_remain { get; set; }
         private bool modified_dataset { get; set; }
+        private DiscCards _cart { get; set; }
 
-        public frmWayBillDetOut(BaseEntities db, int? PosId, WaybillList wb)
+        public frmWayBillDetOut(BaseEntities db, int? PosId, WaybillList wb, DiscCards cart)
         {
             InitializeComponent();
 
             _db = db;
             _PosId = PosId;
             _wb = wb;
+            _cart = cart;
 
             WHComboBox.Properties.DataSource = DBHelper.WhList;
             MatComboBox.Properties.DataSource = db.MaterialsList.ToList();
@@ -59,25 +61,26 @@ namespace SP_Sklad.WBDetForm
 
         private void frmWayBillDetOut_Load(object sender, EventArgs e)
         {
-            
+
             if (_PosId == null)
             {
                 _wbd = new WaybillDet()
                 {
                     WbillId = _wb.WbillId,
                     Amount = 0,
-                    Discount = 0,
+                    Discount = _cart != null ? _cart.OnValue : 0,
                     Nds = _wb.Nds,
                     CurrId = _wb.CurrId,
                     OnDate = _wb.OnDate,
-                    Num = _db.GetWayBillDetOut(_wb.WbillId).Count() + 1 ,
+                    Num = _db.GetWayBillDetOut(_wb.WbillId).Count() + 1,
                     OnValue = _wb.OnValue,
                     PosKind = 0,
                     PosParent = 0,
-                    DiscountKind = 0,
+                    DiscountKind = _cart != null ? 2 : 0,
                     PtypeId = _db.Kagent.Find(_wb.KaId).PTypeId,
-                    WayBillDetAddProps = new WayBillDetAddProps()
+                    WayBillDetAddProps = new WayBillDetAddProps { CardId = _cart != null ? (int?)_cart.CardId : null }
                 };
+
                 modified_dataset = false;
             }
             else
@@ -122,12 +125,13 @@ namespace SP_Sklad.WBDetForm
                 {
                     WayBillDetAddPropsBS.DataSource = _wbd.WayBillDetAddProps;
 
-                    if (_wbd.WayBillDetAddProps.DiscCards != null)
+                    if (_wbd.WayBillDetAddProps.CardId != null)
                     {
-                        DiscNumEdit.Text = _wbd.WayBillDetAddProps.DiscCards.Num;
-                        if (_wbd.WayBillDetAddProps.DiscCards.Kagent != null)
+                        var disc_card = _db.DiscCards.Find(_wbd.WayBillDetAddProps.CardId);
+                        DiscNumEdit.Text = disc_card.Num;
+                        if (disc_card.Kagent != null)
                         {
-                            textEdit6.Text = _wbd.WayBillDetAddProps.DiscCards.Kagent.Name;
+                            textEdit6.Text = disc_card.Kagent.Name;
                         }
                     }
                 }

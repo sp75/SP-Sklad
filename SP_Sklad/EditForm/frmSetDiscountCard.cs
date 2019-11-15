@@ -14,14 +14,17 @@ namespace SP_Sklad.ViewsForm
 {
     public partial class frmSetDiscountCard : DevExpress.XtraEditors.XtraForm
     {
-        BaseEntities _db { get; set; }
-        int _waybill_id { get; set; }
+        public DiscCards cart { get; set; }
 
-        public frmSetDiscountCard(BaseEntities db, int waybill_id)
+        private BaseEntities _db { get; set; }
+        private WaybillList _wb { get; set; }
+
+
+        public frmSetDiscountCard(BaseEntities db, WaybillList wb)
         {
             InitializeComponent();
             _db = db;
-            _waybill_id = waybill_id;
+            _wb = wb;
         }
 
         private void AmountEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -33,8 +36,7 @@ namespace SP_Sklad.ViewsForm
         {
             if (e.KeyChar == 13)
             {
-                SetDiscount();
-                Close();
+                OkButton.PerformClick();
             }
 
         }
@@ -51,10 +53,15 @@ namespace SP_Sklad.ViewsForm
 
         private void SetDiscount()
         {
-            var cart = DB.SkladBase().DiscCards.FirstOrDefault(w => w.Num == AmountEdit.Text && w.Deleted == 0 && w.ExpireDate >= DateTime.Now);
+            cart = DB.SkladBase().DiscCards.FirstOrDefault(w => w.Num == AmountEdit.Text && w.Deleted == 0 && w.ExpireDate >= DateTime.Now);
             if (cart != null)
             {
-                foreach (var item in _db.WaybillDet.Where(w => w.WbillId == _waybill_id))
+                if (cart.KaId != null)
+                {
+                    _wb.KaId = cart.KaId;
+                }
+
+                foreach (var item in _db.WaybillDet.Where(w => w.WbillId == _wb.WbillId))
                 {
                     var DiscountPrice = item.BasePrice - (item.BasePrice * cart.OnValue / 100);
                     item.Price = DiscountPrice * 100 / (100 + item.Nds.Value);
@@ -75,7 +82,8 @@ namespace SP_Sklad.ViewsForm
                     }
 
                 }
-                _db.Save(_waybill_id);
+
+                _db.Save(_wb.WbillId);
             }
             else
             {

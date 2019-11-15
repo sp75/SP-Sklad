@@ -359,7 +359,6 @@
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DocsTreeList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbContentTab)).BeginInit();
             this.wbContentTab.SuspendLayout();
             this.xtraTabPage7.SuspendLayout();
@@ -1081,6 +1080,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(54, "map_pin-next-16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(55, "prod_plan.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(56, "salesreport2_16x16.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(57, "money-bag.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(58, "cash.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab
@@ -2360,6 +2361,7 @@
             // whUserControl
             // 
             this.whUserControl.custom_mat_list = null;
+            this.whUserControl.disc_card = null;
             this.whUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.whUserControl.isDirectList = false;
             this.whUserControl.isMatList = false;
@@ -4205,7 +4207,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DocsTreeList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbContentTab)).EndInit();
             this.wbContentTab.ResumeLayout(false);

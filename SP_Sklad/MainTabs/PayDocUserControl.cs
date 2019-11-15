@@ -29,6 +29,15 @@ namespace SP_Sklad.MainTabs
             return _pd != null;
         }
 
+        private class user_acc
+        {
+            public int AccId { get; set; }
+            public string AccNum { get; set; }
+            public string Name { get; set; }
+            public int ExtDocType { get; set; }
+        }
+        private List<user_acc> user_acc_list { get; set; }
+
         public void OnLoad(BaseEntities db, WaybillList wb)
         {
             _db = db;
@@ -59,7 +68,7 @@ namespace SP_Sklad.MainTabs
                     panelControl1.Enabled = false;
                 }
 
-                if ( _pd != null )
+                if (_pd != null)
                 {
                     _db.Entry(_pd).State = System.Data.Entity.EntityState.Modified;
 
@@ -67,7 +76,7 @@ namespace SP_Sklad.MainTabs
                     NumEdit.EditValue = _pd.DocNum;
                     PTypeComboBox.EditValue = _pd.PTypeId;
                     CashEditComboBox.EditValue = _pd.CashId;
-                    PersonEdit.EditValue = _pd.MPersonId;
+                    ChargeTypesEdit.EditValue = _pd.CTypeId;
                     SumEdit.EditValue = _pd.Total;
                     CurrencyLookUpEdit.EditValue = _pd.CurrId;
                     AccountEdit.EditValue = _pd.AccId;
@@ -78,11 +87,11 @@ namespace SP_Sklad.MainTabs
                 ExecPayCheckBox.EditValue = 0;
                 PTypeComboBox.EditValue = 1;
                 CurrencyLookUpEdit.EditValue = DBHelper.Currency.Where(w => w.Def == 1).Select(s => s.CurrId).FirstOrDefault(); //Валюта по умолчанию
-                if (DBHelper.CashDesks.Any(w => w.Def == 1) )
+                if (DBHelper.CashDesks.Any(w => w.Def == 1))
                 {
                     CashEditComboBox.EditValue = DBHelper.CashDesks.FirstOrDefault(w => w.Def == 1).CashId;
                 }
-                else if(DBHelper.CashDesks.Any())
+                else if (DBHelper.CashDesks.Any())
                 {
                     CashEditComboBox.EditValue = DBHelper.CashDesks.FirstOrDefault().CashId;
                 }
@@ -92,17 +101,42 @@ namespace SP_Sklad.MainTabs
             ExecPayCheckBox.Enabled = _user_Access.CanPost == 1 || (_user_Access.CanInsert == 1 && _pd == null);
 
             PTypeComboBox.Properties.DataSource = DBHelper.PayTypes;
-            CashEditComboBox.Properties.DataSource =  panelControl1.Enabled ? DBHelper.CashDesks : DBHelper.AllCashDesks;
-            PersonEdit.Properties.DataSource = DBHelper.Persons;
+            CashEditComboBox.Properties.DataSource = panelControl1.Enabled ? DBHelper.CashDesks : DBHelper.AllCashDesks;
+
+            ChargeTypesEdit.Properties.DataSource = DBHelper.ChargeTypes;
+            if (DBHelper.ChargeTypes.Any(a => a.Def == 1))
+            {
+                ChargeTypesEdit.EditValue = DBHelper.ChargeTypes.FirstOrDefault(f => f.Def == 1).CTypeId;
+            }
+
             CurrencyLookUpEdit.Properties.DataSource = _db.Currency.ToList();
 
+
             var ent_id = DBHelper.Enterprise.KaId;
-            AccountEdit.Properties.DataSource = _db.EnterpriseAccount.Where(w => w.KaId == ent_id).Select(s => new { s.AccId, s.AccNum, s.BankName }).ToList();
+            user_acc_list = _db.EnterpriseAccount.Where(w => w.KaId == ent_id).Select(s => new user_acc
+            {
+                AccId = s.AccId,
+                AccNum = s.AccNum,
+                Name = s.BankName,
+                ExtDocType = 1
+            }).ToList()/*.Concat(_db.KAgentAccount.Where(w => w.KAId == _wb.KaId).Select(s => new user_acc
+            {
+                AccId = s.AccId,
+                AccNum = s.AccNum,
+                Name = s.Kagent.Name,
+                ExtDocType = -1
+            }).ToList()).ToList()*/;
+
+            AccountEdit.Properties.DataSource = user_acc_list;
+
         }
+
 
         private void ExecPayCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (_pd != null)
+            _db.SaveChanges();
+
+            if (_pd != null || _wb.KaId == null)
             {
                 return;
             }
@@ -121,7 +155,7 @@ namespace SP_Sklad.MainTabs
                     PTypeComboBox.EditValue = ka.PayTypeId;
                     if (ka.PayTypeId == 1)
                     {
-                        CashEditComboBox.EditValue = DBHelper.CashDesks.Any(a=> a.CashId == ka.CashDeskId) ? ka.CashDeskId : DBHelper.CashDesks.FirstOrDefault().CashId ;
+                        CashEditComboBox.EditValue = DBHelper.CashDesks.Any(a => a.CashId == ka.CashDeskId) ? ka.CashDeskId : DBHelper.CashDesks.FirstOrDefault().CashId;
                     }
 
                 }
@@ -131,7 +165,6 @@ namespace SP_Sklad.MainTabs
                 PTypeComboBox.EditValue = 1;  // Наличкой
             }
 
-           /*добавить текущего пользователя*/ PersonEdit.EditValue = _wb.PersonId ?? _wb.KaId;// Виконавець
         }
 
         public void Execute(int wbill_id)
@@ -157,10 +190,10 @@ namespace SP_Sklad.MainTabs
                         PTypeId = Convert.ToInt32(PTypeComboBox.EditValue),  // Вид оплати
                         CashId = (int)PTypeComboBox.EditValue == 1 ? (int?)CashEditComboBox.EditValue : null,  // Каса 
                         AccId = (int)PTypeComboBox.EditValue == 2 ? (int?)AccountEdit.EditValue : null, // Acount
-                        CTypeId = 1, // За товар
+                        CTypeId = (int)ChargeTypesEdit.EditValue,
                         CurrId = 2,  //Валюта по умолчанию
                         OnValue = 1,  //Курс валюти
-                        MPersonId = Convert.ToInt32(PersonEdit.EditValue),
+                        MPersonId = _wb.PersonId,
                         KaId = _wb.KaId,
                         UpdatedBy = DBHelper.CurrentUser.UserId,
                         EntId = DBHelper.Enterprise.KaId
@@ -168,6 +201,12 @@ namespace SP_Sklad.MainTabs
 
                     if (new int[] { 1, 6, 16 }.Contains(_wb.WType)) _pd.DocType = -1;   // Вихідний платіж
                     if (new int[] { -1, -6, 2, -16 }.Contains(_wb.WType)) _pd.DocType = 1;  // Вхідний платіж
+
+                 /*   if ((int)PTypeComboBox.EditValue == 2)
+                    {
+                        var acc = AccountEdit.GetSelectedDataRow() as user_acc;
+                        _pd.DocType = _pd.DocType * acc.ExtDocType;
+                    }*/
 
                     _db.SaveChanges();
 
@@ -195,7 +234,7 @@ namespace SP_Sklad.MainTabs
                     _pd.DocNum = NumEdit.EditValue.ToString();
                     _pd.Total = Convert.ToDecimal(SumEdit.EditValue);
                     _pd.PTypeId = Convert.ToInt32(PTypeComboBox.EditValue);
-                    _pd.MPersonId = Convert.ToInt32(PersonEdit.EditValue);
+                    _pd.MPersonId = _wb.PersonId;
                     _pd.CashId = (int)PTypeComboBox.EditValue == 1 ? (int?)CashEditComboBox.EditValue : null;  // Каса 
                     _pd.AccId = (int)PTypeComboBox.EditValue == 2 ? (int?)AccountEdit.EditValue : null; // Acount
                 }
@@ -217,8 +256,9 @@ namespace SP_Sklad.MainTabs
             {
                 return;
             }
+            int PType = (int)PTypeComboBox.EditValue;
 
-            if ((int)PTypeComboBox.EditValue == 1)
+            if (PType == 1)
             {
                 labelControl3.Visible = true;
                 CashEditComboBox.Visible = true;
@@ -229,14 +269,15 @@ namespace SP_Sklad.MainTabs
                 }
             }
 
-            if ((int)PTypeComboBox.EditValue == 2)
+            if (PType == 2)
             {
                 labelControl18.Visible = true;
                 AccountEdit.Visible = true;
                 CashEditComboBox.EditValue = null;
-                if(_db.EnterpriseAccount.Any())
+
+                if (user_acc_list != null && user_acc_list.Any())
                 {
-                    AccountEdit.EditValue = _db.EnterpriseAccount.FirstOrDefault(w => w.Def == 1).AccId;
+                    AccountEdit.EditValue = user_acc_list.FirstOrDefault().AccId;
                 }
             }
         }
@@ -246,27 +287,6 @@ namespace SP_Sklad.MainTabs
             if (e.Button.Index == 1)
             {
                 CashEditComboBox.EditValue = IHelper.ShowDirectList(CashEditComboBox.EditValue, 4);
-            }
-        }
-
-        private void simpleButton1_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void PTypeComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            if (e.Button.Index == 1)
-            {
-                CashEditComboBox.EditValue = IHelper.ShowDirectList(CashEditComboBox.EditValue, 4);
-            }
-        }
-
-        private void PersonEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            if (e.Button.Index == 1)
-            {
-                PersonEdit.EditValue = IHelper.ShowDirectList(PersonEdit.EditValue, 3); 
             }
         }
 

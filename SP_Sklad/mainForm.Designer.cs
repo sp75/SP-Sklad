@@ -107,7 +107,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).BeginInit();
             this.SuspendLayout();
             // 
             // barManagerImgList
@@ -674,6 +673,7 @@
             // whUserControl
             // 
             this.whUserControl.custom_mat_list = null;
+            this.whUserControl.disc_card = null;
             this.whUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.whUserControl.isDirectList = false;
             this.whUserControl.isMatList = false;
@@ -801,6 +801,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(54, "map_pin-next-16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(55, "prod_plan.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(56, "salesreport2_16x16.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(57, "money-bag.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(58, "cash.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // mainForm
@@ -838,7 +840,6 @@
             this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

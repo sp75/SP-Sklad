@@ -350,5 +350,25 @@ namespace SP_Sklad.MainTabs
 
             RefrechItemBtn.PerformClick();
         }
+
+        private void btnAddSalary_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var frm = new frmMoneySalaryIn())
+            {
+                frm.ShowDialog();
+            }
+
+            RefrechItemBtn.PerformClick();
+        }
+
+        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var frm = new frmMoneySalaryOut())
+            {
+                frm.ShowDialog();
+            }
+
+            RefrechItemBtn.PerformClick();
+        }
     }
 }

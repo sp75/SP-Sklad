@@ -42,6 +42,7 @@ namespace SP_Sklad.WBForm
         }
         private List<GetWayBillDetOut_Result> wbd_list { get; set; }
         private UserSettingsRepository user_settings { get; set; }
+        private DiscCards disc_card { get; set; }
 
         public frmWayBillOut(int wtype, int? wbill_id)
         {
@@ -109,7 +110,7 @@ namespace SP_Sklad.WBForm
 
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (var df = new frmWayBillDetOut(_db, null, wb))
+            using (var df = new frmWayBillDetOut(_db, null, wb, disc_card))
             {
                 if (df.ShowDialog() == DialogResult.OK)
                 {
@@ -123,9 +124,8 @@ namespace SP_Sklad.WBForm
 
         private void frmWayBillOut_Shown(object sender, EventArgs e)
         {
-            if (_wtype == -1) Text = "Властивості видаткової накладної, Продавець: " + DBHelper.Enterprise.Name;
-            if (_wtype == 2) Text = "Властивості рахунка, Продавець: " + DBHelper.Enterprise.Name;
-            if (_wtype == -16) Text = "Замовлення від клієнтів, Продавець: " + DBHelper.Enterprise.Name;
+            SetFormCaption();
+
             checkEdit2.Visible = (_wtype == 2 || _wtype == -16);
             ToDateEdit.Visible = checkEdit2.Visible;
             TurnDocCheckBox.Enabled = !checkEdit2.Visible;
@@ -135,6 +135,13 @@ namespace SP_Sklad.WBForm
             PersonComboBox.Enabled = !String.IsNullOrEmpty(user_settings.AccessEditPersonId) && Convert.ToInt32(user_settings.AccessEditPersonId) == 1;
 
             if (TurnDocCheckBox.Checked) Close();
+        }
+
+        private void SetFormCaption()
+        {
+            if (_wtype == -1) Text = "Властивості видаткової накладної, Продавець: " + DBHelper.Enterprise.Name + (disc_card != null ? ", Дисконтна картка " + disc_card.Num : "");
+            if (_wtype == 2) Text = "Властивості рахунка, Продавець: " + DBHelper.Enterprise.Name;
+            if (_wtype == -16) Text = "Замовлення від клієнтів, Продавець: " + DBHelper.Enterprise.Name;
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -177,6 +184,10 @@ namespace SP_Sklad.WBForm
         private void RefreshDet()
         {
              wbd_list = _db.GetWayBillDetOut(_wbill_id).AsNoTracking().ToList().OrderBy(o=> o.Num).ToList();
+            if(disc_card != null)
+            {
+                wbd_list.Add(new GetWayBillDetOut_Result { Discount = disc_card.OnValue, MatName = "Дисконтна картка", Num = wbd_list.Count() + 1, CardNum = disc_card.Num , PosType = 3});
+            }
 
             int top_row = WaybillDetOutGridView.TopRowIndex;
             WaybillDetOutBS.DataSource = wbd_list;
@@ -200,6 +211,8 @@ namespace SP_Sklad.WBForm
             DelMaterialBtn.Enabled = EditMaterialBtn.Enabled;
             RsvInfoBtn.Enabled = EditMaterialBtn.Enabled;
             MatInfoBtn.Enabled = EditMaterialBtn.Enabled;
+
+            payDocUserControl1.panelControl1.Enabled = recult;
 
             OkButton.Enabled = recult;
             return recult;
@@ -284,7 +297,7 @@ namespace SP_Sklad.WBForm
             {
                 if (wbd_row.PosType == 0)
                 {
-                    using (var df = new frmWayBillDetOut(_db, wbd_row.PosId, wb))
+                    using (var df = new frmWayBillDetOut(_db, wbd_row.PosId, wb, disc_card))
                     {
                         df.ShowDialog();
                     }
@@ -348,6 +361,7 @@ namespace SP_Sklad.WBForm
             DelRsvBarBtn.Enabled = (wbd_row.Rsv == 1 && wbd_row.PosId > 0);
             RsvAllBarBtn.Enabled = (WaybillDetOutGridView.FocusedRowHandle >= 0);
             DelAllRsvBarBtn.Enabled = (WaybillDetOutGridView.FocusedRowHandle >= 0);
+            WeighBtn.Enabled = (WaybillDetOutGridView.FocusedRowHandle >= 0);
         }
 
         private void RsvAllBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -468,7 +482,7 @@ namespace SP_Sklad.WBForm
         {
             wb.Kontragent = _db.Kagent.Find(wb.KaId);
 
-            IHelper.ShowMatListByWH(_db, wb);
+            IHelper.ShowMatListByWH(_db, wb, disc_card);
 
             if (MessageBox.Show("Зарезервувати товар ? ", "Резервування", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
@@ -589,30 +603,45 @@ namespace SP_Sklad.WBForm
 
         private void WeighBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-  
-            var frm = new frmMatListEdit(wbd_row.MatName);
-            frm.PriceEdit.EditValue = wbd_row.Price;
-
-            if (frm.ShowDialog() == DialogResult.OK)
+            if(wbd_list == null || !wbd_list.Any())
             {
-                var wbd = _db.WaybillDet.Find(wbd_row.PosId);
+                return;
+            }
 
-                if (wbd_row.Rsv == 0)
+            using (var frm = new frmMatListEdit(wbd_row.MatName))
+            {
+                frm.PriceEdit.EditValue = wbd_row.Price;
+
+                if (frm.ShowDialog() == DialogResult.OK)
                 {
-                    wbd.Amount = frm.AmountEdit.Value;
-                    wbd.Checked = 1;
-                }
-                _db.SaveChanges();
+                    var wbd = _db.WaybillDet.Find(wbd_row.PosId);
 
-                RefreshDet();
+                    if (wbd_row.Rsv == 0)
+                    {
+                        wbd.Amount = frm.AmountEdit.Value;
+                        wbd.Checked = 1;
+                    }
+                    _db.SaveChanges();
+
+                    RefreshDet();
+                }
             }
         }
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            new frmSetDiscountCard( _db, _wbill_id.Value).ShowDialog();
+            using (var frm = new frmSetDiscountCard(_db, wb))
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    disc_card = frm.cart;
+                    KagentComboBox.EditValue = wb.KaId;
 
-            RefreshDet();
+                    SetFormCaption();
+
+                    RefreshDet();
+                }
+            }
         }
 
         private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

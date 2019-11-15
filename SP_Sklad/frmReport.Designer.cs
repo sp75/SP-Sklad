@@ -593,10 +593,10 @@
             // 
             this.labelControl13.Location = new System.Drawing.Point(10, 16);
             this.labelControl13.Name = "labelControl13";
-            this.labelControl13.Size = new System.Drawing.Size(41, 16);
+            this.labelControl13.Size = new System.Drawing.Size(59, 16);
             this.labelControl13.StyleController = this.styleController1;
             this.labelControl13.TabIndex = 22;
-            this.labelControl13.Text = "Товар:";
+            this.labelControl13.Text = "Матеріал:";
             // 
             // MatComboBox
             // 

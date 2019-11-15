@@ -852,7 +852,7 @@ namespace SP_Sklad.MainTabs
 
             var tree_row = DocsTreeList.GetDataRecordByNode(DocsTreeList.FocusedNode) as v_GetDocsTree;
 
-            bool isModify = (dr != null && DBHelper.CashDesks.Any(a => a.CashId == dr.CashId));
+            bool isModify = (dr != null && (DBHelper.CashDesks.Any(a => a.CashId == dr.CashId) || dr.CashId == null));
 
             DeleteItemBtn.Enabled = (dr != null && dr.Checked == 0 && tree_row.CanDelete == 1);
             ExecuteItemBtn.Enabled = (dr != null && tree_row.CanPost == 1 && isModify);
@@ -1219,6 +1219,34 @@ namespace SP_Sklad.MainTabs
 
                         }
                         break;
+                }
+            }
+        }
+
+        private void NewMoneySalaryOutBtn_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if ((wb_focused_row.SummInCurr - wb_focused_row.SummPay) <= 0)
+            {
+                MessageBox.Show("Документ вже оплачено!");
+                return;
+            }
+
+            if (new[] { 27, 56, 39, 107 }.Any(a => a == focused_tree_node.Id))
+            {
+                var frm = new frmMoneySalaryOut(null, wb_focused_row.SummInCurr)
+                {
+                    PayDocCheckEdit = { Checked = true },
+                    TypDocsEdit = { EditValue = wb_focused_row.WType },
+                    _ka_id = wb_focused_row.KaId,
+                //    PersonFromEdit = { EditValue = wb_focused_row.KaId }
+                };
+
+                frm.GetDocList();
+                frm.DocListEdit.EditValue = wb_focused_row.Id;
+
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    RefrechItemBtn.PerformClick();
                 }
             }
         }

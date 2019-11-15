@@ -15,6 +15,7 @@ using DevExpress.XtraTreeList;
 using System.IO;
 using System.Diagnostics;
 using SP_Sklad.Properties;
+using DevExpress.XtraTreeList.Nodes;
 
 namespace SP_Sklad.MainTabs
 {
@@ -85,9 +86,11 @@ namespace SP_Sklad.MainTabs
             EditItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanModify == 1);
             CopyItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanModify == 1);
 
-            DelExplorerBtn.Enabled = focused_tree_node.GType.Value == 2 || focused_tree_node.GType.Value == 3;
+            DelExplorerBtn.Enabled = focused_tree_node.FunId == null && ( focused_tree_node.GType.Value == 2 || focused_tree_node.GType.Value == 3);
             RenameMatGroupBarButtonItem.Enabled = DelExplorerBtn.Enabled;
             EditExplorerBtn.Enabled = DelExplorerBtn.Enabled;
+            btnMoveDown.Enabled = DelExplorerBtn.Enabled;
+            btnMoveUp.Enabled = DelExplorerBtn.Enabled;
 
 
             RefrechItemBtn.PerformClick();
@@ -1192,6 +1195,45 @@ namespace SP_Sklad.MainTabs
                 db.SaveChanges();
             }
 
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MoveMatgroup(false);
+        }
+
+        private void btnMoveDown_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MoveMatgroup(true);
+        }
+
+        private void MoveMatgroup(bool isDown)
+        {
+            using (var db = DB.SkladBase())
+            {
+                DirTreeList.SetNodeIndex(DirTreeList.FocusedNode, DirTreeList.GetNodeIndex(DirTreeList.FocusedNode) + (isDown ? 1 : -1));
+
+                int idx = 0;
+                foreach (TreeListNode item in DirTreeList.FocusedNode.ParentNode.Nodes)
+                {
+                    var node = DirTreeList.GetDataRecordByNode(item) as GetDirTree_Result;
+                    if (focused_tree_node.GType == 2)
+                    {
+                        var mg = db.MatGroup.Find(node.GrpId);
+                        mg.Num = ++idx;
+                    }
+
+                    if (focused_tree_node.GType == 3)
+                    {
+                        var mgs = db.SvcGroup.Find(node.GrpId);
+                        mgs.Num = ++idx;
+                    }
+
+                }
+
+                db.SaveChanges();
+
+            }
         }
     }
 }

@@ -39,12 +39,12 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.sharedImageCollection1 = new DevExpress.Utils.SharedImageCollection(this.components);
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.TotalEdit = new DevExpress.XtraEditors.CalcEdit();
+            this.ProductionPlanDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.OrderedEdit = new DevExpress.XtraEditors.CalcEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
@@ -58,9 +58,6 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.ProductionPlanDetBS = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
@@ -68,6 +65,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TotalEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductionPlanDetBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OrderedEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RemainEdit.Properties)).BeginInit();
             this.panel1.SuspendLayout();
@@ -75,7 +73,6 @@
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RecipeComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WHComboBox.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProductionPlanDetBS)).BeginInit();
             this.SuspendLayout();
             // 
             // standaloneBarDockControl1
@@ -87,23 +84,6 @@
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
             this.standaloneBarDockControl1.Size = new System.Drawing.Size(613, 0);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
-            // 
-            // sharedImageCollection1
-            // 
-            // 
-            // 
-            // 
-            this.sharedImageCollection1.ImageSource.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("sharedImageCollection1.ImageSource.ImageStream")));
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(0, "_нформац_я про товар.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(1, "Рух товар_в.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(2, "_нформац_я про резерв товару.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(3, "Аналоги.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(4, "Заказ поставщикам.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(5, "view_settings.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(6, "Наявн_сть на сладах.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(7, "Парт_ї.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(8, "Склади.bmp");
-            this.sharedImageCollection1.ParentControl = this;
             // 
             // styleController1
             // 
@@ -158,6 +138,10 @@
             this.TotalEdit.TabIndex = 38;
             this.TotalEdit.EditValueChanged += new System.EventHandler(this.TotalEdit_EditValueChanged);
             this.TotalEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TotalEdit_KeyPress);
+            // 
+            // ProductionPlanDetBS
+            // 
+            this.ProductionPlanDetBS.DataSource = typeof(SP_Sklad.SkladData.ProductionPlanDet);
             // 
             // labelControl1
             // 
@@ -321,10 +305,6 @@
             this.simpleButton1.TabIndex = 2;
             this.simpleButton1.Text = "Відмінити";
             // 
-            // ProductionPlanDetBS
-            // 
-            this.ProductionPlanDetBS.DataSource = typeof(SP_Sklad.SkladData.ProductionPlanDet);
-            // 
             // frmProductionPlanDet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -338,8 +318,6 @@
             this.Text = "Додати позицію";
             this.Load += new System.EventHandler(this.frmProductionPlanDet_Load);
             this.Shown += new System.EventHandler(this.frmProductionPlanDet_Shown);
-            ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
@@ -348,6 +326,7 @@
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TotalEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductionPlanDetBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OrderedEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RemainEdit.Properties)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -356,7 +335,6 @@
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RecipeComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WHComboBox.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProductionPlanDetBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -365,7 +343,6 @@
         #endregion
 
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;
-        private DevExpress.Utils.SharedImageCollection sharedImageCollection1;
         private DevExpress.XtraEditors.StyleController styleController1;
         private System.Windows.Forms.BindingSource ProductionPlanDetBS;
         private DevExpress.XtraEditors.PanelControl panelControl2;

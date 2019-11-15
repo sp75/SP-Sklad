@@ -133,6 +133,8 @@
             this.gridColumn43 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn27 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn51 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn52 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -156,13 +158,14 @@
             this.editorRow2 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.editorRow3 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.editorRow4 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.editorRow5 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.editorRow6 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.editorRow7 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row14 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row15 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.row16 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.editorRow5 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.row19 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row17 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.row16 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
             this.RelPayDocGridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -240,6 +243,7 @@
             this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem15 = new DevExpress.XtraBars.BarButtonItem();
+            this.NewMoneySalaryOutBtn = new DevExpress.XtraBars.BarButtonItem();
             this.xtraTabPage12 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage13 = new DevExpress.XtraTab.XtraTabPage();
             this.bar2 = new DevExpress.XtraBars.Bar();
@@ -469,6 +473,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(54, "map_pin-next-16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(55, "prod_plan.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(56, "salesreport2_16x16.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(57, "cash.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(58, "money-bag.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab
@@ -588,7 +594,8 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 6, 8),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -6, 7),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -16, 9),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 16, 10)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 16, 10),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 1)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.GridImageList;
             // 
@@ -636,6 +643,7 @@
             this.GridImageList.Images.SetKeyName(37, "disabled_link.png");
             this.GridImageList.Images.SetKeyName(38, "1335611569_link.png");
             this.GridImageList.Images.SetKeyName(39, "Послуги.bmp");
+            this.GridImageList.Images.SetKeyName(40, "moneymove.png");
             // 
             // gridColumn2
             // 
@@ -1069,7 +1077,7 @@
             // vGridControl1
             // 
             this.vGridControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeWE;
+            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.vGridControl1.DataSource = this.WayBillListInfoBS;
             this.vGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl1.Location = new System.Drawing.Point(0, 0);
@@ -1318,7 +1326,9 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -20, 26),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -22, 33),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -5, 15),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 5, 14)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 5, 14),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 9, 40)});
             this.repositoryItemImageComboBox6.Name = "repositoryItemImageComboBox6";
             this.repositoryItemImageComboBox6.SmallImages = this.GridImageList;
             // 
@@ -1347,7 +1357,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox2.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 24),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 22)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 22),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 25)});
             this.repositoryItemImageComboBox2.Name = "repositoryItemImageComboBox2";
             this.repositoryItemImageComboBox2.SmallImages = this.GridImageList;
             // 
@@ -1475,7 +1486,9 @@
             this.gridColumn28,
             this.gridColumn43,
             this.gridColumn27,
-            this.gridColumn8});
+            this.gridColumn8,
+            this.gridColumn51,
+            this.gridColumn52});
             this.PayDocGridView.GridControl = this.PDgridControl;
             this.PayDocGridView.Name = "PayDocGridView";
             this.PayDocGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -1546,7 +1559,7 @@
             this.gridColumn24.Name = "gridColumn24";
             this.gridColumn24.Visible = true;
             this.gridColumn24.VisibleIndex = 2;
-            this.gridColumn24.Width = 61;
+            this.gridColumn24.Width = 68;
             // 
             // gridColumn25
             // 
@@ -1555,7 +1568,7 @@
             this.gridColumn25.Name = "gridColumn25";
             this.gridColumn25.Visible = true;
             this.gridColumn25.VisibleIndex = 3;
-            this.gridColumn25.Width = 83;
+            this.gridColumn25.Width = 93;
             // 
             // gridColumn26
             // 
@@ -1564,7 +1577,7 @@
             this.gridColumn26.Name = "gridColumn26";
             this.gridColumn26.Visible = true;
             this.gridColumn26.VisibleIndex = 4;
-            this.gridColumn26.Width = 257;
+            this.gridColumn26.Width = 233;
             // 
             // gridColumn28
             // 
@@ -1573,7 +1586,7 @@
             this.gridColumn28.Name = "gridColumn28";
             this.gridColumn28.Visible = true;
             this.gridColumn28.VisibleIndex = 5;
-            this.gridColumn28.Width = 82;
+            this.gridColumn28.Width = 103;
             // 
             // gridColumn43
             // 
@@ -1581,7 +1594,8 @@
             this.gridColumn43.FieldName = "CashdName";
             this.gridColumn43.Name = "gridColumn43";
             this.gridColumn43.Visible = true;
-            this.gridColumn43.VisibleIndex = 6;
+            this.gridColumn43.VisibleIndex = 7;
+            this.gridColumn43.Width = 94;
             // 
             // gridColumn27
             // 
@@ -1589,8 +1603,8 @@
             this.gridColumn27.FieldName = "Total";
             this.gridColumn27.Name = "gridColumn27";
             this.gridColumn27.Visible = true;
-            this.gridColumn27.VisibleIndex = 7;
-            this.gridColumn27.Width = 83;
+            this.gridColumn27.VisibleIndex = 9;
+            this.gridColumn27.Width = 66;
             // 
             // gridColumn8
             // 
@@ -1598,7 +1612,26 @@
             this.gridColumn8.FieldName = "EntName";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 8;
+            this.gridColumn8.VisibleIndex = 10;
+            this.gridColumn8.Width = 117;
+            // 
+            // gridColumn51
+            // 
+            this.gridColumn51.Caption = "Рахунок";
+            this.gridColumn51.FieldName = "AccNum";
+            this.gridColumn51.Name = "gridColumn51";
+            this.gridColumn51.Visible = true;
+            this.gridColumn51.VisibleIndex = 8;
+            this.gridColumn51.Width = 126;
+            // 
+            // gridColumn52
+            // 
+            this.gridColumn52.Caption = "Вид оплати";
+            this.gridColumn52.FieldName = "PayTypeName";
+            this.gridColumn52.Name = "gridColumn52";
+            this.gridColumn52.Visible = true;
+            this.gridColumn52.VisibleIndex = 6;
+            this.gridColumn52.Width = 69;
             // 
             // repositoryItemImageEdit2
             // 
@@ -1774,7 +1807,15 @@
             this.vGridControl2.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.editorRow1,
             this.row13,
-            this.categoryRow1});
+            this.categoryRow1,
+            this.editorRow6,
+            this.editorRow7,
+            this.row14,
+            this.row15,
+            this.editorRow5,
+            this.row19,
+            this.row17,
+            this.row16});
             this.vGridControl2.Size = new System.Drawing.Size(1031, 187);
             this.vGridControl2.TabIndex = 0;
             // 
@@ -1806,14 +1847,7 @@
             this.categoryRow1.ChildRows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.editorRow2,
             this.editorRow3,
-            this.editorRow4,
-            this.editorRow5,
-            this.editorRow6,
-            this.editorRow7,
-            this.row14,
-            this.row15,
-            this.row16,
-            this.row17});
+            this.editorRow4});
             this.categoryRow1.Name = "categoryRow1";
             this.categoryRow1.Properties.Caption = "Дані по контрагенту";
             // 
@@ -1835,12 +1869,6 @@
             this.editorRow4.Name = "editorRow4";
             this.editorRow4.Properties.Caption = "Тел.";
             this.editorRow4.Properties.FieldName = "KaPhone";
-            // 
-            // editorRow5
-            // 
-            this.editorRow5.Name = "editorRow5";
-            this.editorRow5.Properties.Caption = "Сума";
-            this.editorRow5.Properties.FieldName = "Total";
             // 
             // editorRow6
             // 
@@ -1868,17 +1896,29 @@
             this.row15.Properties.Caption = "Стаття витрат";
             this.row15.Properties.FieldName = "ChargeName";
             // 
-            // row16
+            // editorRow5
             // 
-            this.row16.Name = "row16";
-            this.row16.Properties.Caption = "Прийняв";
-            this.row16.Properties.FieldName = "PersonName";
+            this.editorRow5.Name = "editorRow5";
+            this.editorRow5.Properties.Caption = "Сума";
+            this.editorRow5.Properties.FieldName = "Total";
+            // 
+            // row19
+            // 
+            this.row19.Name = "row19";
+            this.row19.Properties.Caption = "Рахунок";
+            this.row19.Properties.FieldName = "AccNum";
             // 
             // row17
             // 
             this.row17.Name = "row17";
             this.row17.Properties.Caption = "Підстава";
             this.row17.Properties.FieldName = "Reason";
+            // 
+            // row16
+            // 
+            this.row16.Name = "row16";
+            this.row16.Properties.Caption = "Прийняв";
+            this.row16.Properties.FieldName = "PersonName";
             // 
             // xtraTabPage5
             // 
@@ -2406,8 +2446,9 @@
             this.barButtonItem12,
             this.barButtonItem13,
             this.barButtonItem14,
-            this.barButtonItem15});
-            this.barManager1.MaxItemId = 27;
+            this.barButtonItem15,
+            this.NewMoneySalaryOutBtn});
+            this.barManager1.MaxItemId = 28;
             // 
             // bar1
             // 
@@ -2694,6 +2735,13 @@
             this.barButtonItem15.Name = "barButtonItem15";
             this.barButtonItem15.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem15_ItemClick);
             // 
+            // NewMoneySalaryOutBtn
+            // 
+            this.NewMoneySalaryOutBtn.Caption = "Взаєморозрахунок";
+            this.NewMoneySalaryOutBtn.Id = 27;
+            this.NewMoneySalaryOutBtn.Name = "NewMoneySalaryOutBtn";
+            this.NewMoneySalaryOutBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewMoneySalaryOutBtn_ItemClick);
+            // 
             // xtraTabPage12
             // 
             this.xtraTabPage12.Name = "xtraTabPage12";
@@ -2727,6 +2775,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteInvBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteInBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.NewPayDocBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewMoneySalaryOutBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.createTaxWBbtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1, true),
@@ -3129,5 +3178,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn50;
         private DevExpress.XtraBars.BarButtonItem barButtonItem15;
         private DevExpress.Utils.SharedImageCollection UserTreeImgList;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn51;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn52;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow row19;
+        private DevExpress.XtraBars.BarButtonItem NewMoneySalaryOutBtn;
     }
 }

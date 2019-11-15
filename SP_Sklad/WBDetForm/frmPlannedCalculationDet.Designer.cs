@@ -57,7 +57,6 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.RecipeComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.sharedImageCollection1 = new DevExpress.Utils.SharedImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -73,8 +72,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RecipeComboBox.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).BeginInit();
             this.SuspendLayout();
             // 
             // OkButton
@@ -281,23 +278,6 @@
             this.labelControl3.TabIndex = 3;
             this.labelControl3.Text = "Рецепт:";
             // 
-            // sharedImageCollection1
-            // 
-            // 
-            // 
-            // 
-            this.sharedImageCollection1.ImageSource.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("sharedImageCollection1.ImageSource.ImageStream")));
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(0, "_нформац_я про товар.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(1, "Рух товар_в.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(2, "_нформац_я про резерв товару.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(3, "Аналоги.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(4, "Заказ поставщикам.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(5, "view_settings.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(6, "Наявн_сть на сладах.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(7, "Парт_ї.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(8, "Склади.bmp");
-            this.sharedImageCollection1.ParentControl = this;
-            // 
             // frmPlannedCalculationDet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -326,8 +306,6 @@
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RecipeComboBox.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -351,7 +329,6 @@
         private System.Windows.Forms.BindingSource PlannedCalculationDetBS;
         private DevExpress.XtraEditors.StyleController styleController1;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.Utils.SharedImageCollection sharedImageCollection1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.CalcEdit calcEdit2;
     }

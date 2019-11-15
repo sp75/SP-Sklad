@@ -25,6 +25,16 @@ namespace SP_Sklad.FinanseForm
         public int? _ka_id { get; set; }
         private decimal? _summ_pay { get; set; }
 
+        private class user_acc
+        {
+            public int AccId { get; set; }
+            public string AccNum { get; set; }
+            public string Name { get; set; }
+            public int ExtDocType { get; set; }
+            public int KaId { get; set; }
+        }
+        private List<user_acc> user_acc_list { get; set; }
+
         public frmPayDoc(int? DocType, int? PayDocId, decimal? SummPay = 0)
         {
             _DocType = DocType;
@@ -34,11 +44,6 @@ namespace SP_Sklad.FinanseForm
             current_transaction = _db.Database.BeginTransaction(/*IsolationLevel.RepeatableRead*/);
 
             InitializeComponent();
-        }
-
-        private void textEdit2_EditValueChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void frmPayDoc_Load(object sender, EventArgs e)
@@ -52,7 +57,14 @@ namespace SP_Sklad.FinanseForm
 
 
             var ent_id = DBHelper.Enterprise.KaId;
-            AccountEdit.Properties.DataSource = _db.EnterpriseAccount.Where(w => w.KaId == ent_id).Select(s => new { s.AccId, s.AccNum, s.BankName }).ToList();
+            user_acc_list = _db.EnterpriseAccount.Where(w => w.KaId == ent_id).Select(s => new user_acc
+            {
+                AccId = s.AccId,
+                AccNum = s.AccNum,
+                Name = s.BankName,
+                ExtDocType = 1
+            }).ToList();
+
 
             if (_PayDocId == null)
             {
@@ -91,6 +103,15 @@ namespace SP_Sklad.FinanseForm
                 }
 
             }
+
+            AccountEdit.Properties.DataSource = user_acc_list.Concat(_db.KAgentAccount.Where(w => w.KAId == _pd.KaId).Select(s => new user_acc
+            {
+                AccId = s.AccId,
+                AccNum = s.AccNum,
+                Name = s.Kagent.Name,
+                ExtDocType = -1,
+                KaId = s.KAId
+            }).ToList()).ToList();
 
             if (_pd != null)
             {
@@ -147,6 +168,7 @@ namespace SP_Sklad.FinanseForm
                 textEdit4.EditValue = (row == null ? 0 : row.Balans) - SumEdit.Value;
             }
 
+          
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -215,7 +237,6 @@ namespace SP_Sklad.FinanseForm
                 labelControl7.Visible = true;
                 CashEditComboBox.Visible = true;
                 _pd.AccId = null;
-              //  _pd.CashId = 
             }
 
             if ((int)PTypeComboBox.EditValue == 2)
@@ -223,7 +244,6 @@ namespace SP_Sklad.FinanseForm
                 labelControl18.Visible = true;
                 AccountEdit.Visible = true;
                 _pd.CashId = null;
-                 //_pd.AccId =
             }
 
             GetOk();
@@ -306,7 +326,7 @@ namespace SP_Sklad.FinanseForm
             }
             var ka_id = KagentComboBox.EditValue == null || KagentComboBox.EditValue == DBNull.Value ? 0 : (int)KagentComboBox.EditValue;
 
-            DocListEdit.Properties.DataSource = DB.SkladBase().GetWayBillList(DateTime.Now.AddYears(-100), DateTime.Now, (string)TypDocsEdit.EditValue, -1, ka_id, 0, "*", DBHelper.CurrentUser.KaId)
+            DocListEdit.Properties.DataSource = DB.SkladBase().GetWayBillList(DateTime.Now.AddYears(-100), DateTime.Now, Convert.ToString(TypDocsEdit.EditValue), -1, ka_id, 0, "*", DBHelper.CurrentUser.KaId)
                 .OrderByDescending(o => o.OnDate).Where(w => (w.SummInCurr - w.SummPay) > 0);
         }
 
@@ -316,6 +336,20 @@ namespace SP_Sklad.FinanseForm
             {
                 GetDocList();
                 DocListEdit.EditValue = null;
+
+             /*   int ka_id = (int)KagentComboBox.EditValue;
+
+                AccountEdit.Properties.DataSource = user_acc_list.Concat(_db.KAgentAccount.Where(w => w.KAId == ka_id).Select(s => new user_acc
+                {
+                    AccId = s.AccId,
+                    AccNum = s.AccNum,
+                    Name = s.Kagent.Name,
+                    ExtDocType = -1,
+                    KaId = s.KAId
+                }).ToList()).ToList();*/
+
+           //     AccountEdit.EditValue = null;
+          //      _pd.AccId = null;
             }
 
             GetOk();
@@ -351,6 +385,20 @@ namespace SP_Sklad.FinanseForm
 
         private void AccountEdit_EditValueChanged(object sender, EventArgs e)
         {
+            if (AccountEdit.ContainsFocus)
+            {
+                var row = AccountEdit.GetSelectedDataRow() as user_acc;
+                if (row != null && row.ExtDocType == -1)
+                {
+                    KagentComboBox.EditValue = row.KaId;
+                    KagentComboBox.Enabled = false;
+                }
+                else
+                {
+                    KagentComboBox.Enabled = true;
+                }
+            }
+
             GetOk();
         }
 

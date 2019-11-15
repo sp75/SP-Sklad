@@ -48,11 +48,10 @@
             this.ByRecipeEdit = new DevExpress.XtraEditors.TextEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.AmountEdit = new DevExpress.XtraEditors.CalcEdit();
+            this.IntermediateWeighingDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.MatComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.sharedImageCollection1 = new DevExpress.Utils.SharedImageCollection(this.components);
-            this.IntermediateWeighingDetBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -65,10 +64,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AmountEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MatComboBox.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingDetBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatComboBox.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // OkButton
@@ -231,6 +228,10 @@
             this.AmountEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AmountEdit_KeyPress);
             this.AmountEdit.MouseUp += new System.Windows.Forms.MouseEventHandler(this.AmountEdit_MouseUp);
             // 
+            // IntermediateWeighingDetBS
+            // 
+            this.IntermediateWeighingDetBS.DataSource = typeof(SP_Sklad.SkladData.IntermediateWeighingDet);
+            // 
             // MatComboBox
             // 
             this.MatComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.IntermediateWeighingDetBS, "MatId", true));
@@ -272,27 +273,6 @@
             this.labelControl1.TabIndex = 39;
             this.labelControl1.Text = "Кі-сть";
             // 
-            // sharedImageCollection1
-            // 
-            // 
-            // 
-            // 
-            this.sharedImageCollection1.ImageSource.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("sharedImageCollection1.ImageSource.ImageStream")));
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(0, "_нформац_я про товар.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(1, "Рух товар_в.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(2, "_нформац_я про резерв товару.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(3, "Аналоги.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(4, "Заказ поставщикам.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(5, "view_settings.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(6, "Наявн_сть на сладах.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(7, "Парт_ї.bmp");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(8, "Склади.bmp");
-            this.sharedImageCollection1.ParentControl = this;
-            // 
-            // IntermediateWeighingDetBS
-            // 
-            this.IntermediateWeighingDetBS.DataSource = typeof(SP_Sklad.SkladData.IntermediateWeighingDet);
-            // 
             // frmIntermediateWeighingDet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -319,10 +299,8 @@
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AmountEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MatComboBox.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingDetBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatComboBox.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -339,7 +317,6 @@
         private System.Windows.Forms.BindingSource IntermediateWeighingDetBS;
         private DevExpress.XtraEditors.StyleController styleController1;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.Utils.SharedImageCollection sharedImageCollection1;
         private DevExpress.XtraEditors.CalcEdit AmountEdit;
         private DevExpress.XtraEditors.GroupControl groupControl3;
         private DevExpress.XtraEditors.LabelControl labelControl18;
