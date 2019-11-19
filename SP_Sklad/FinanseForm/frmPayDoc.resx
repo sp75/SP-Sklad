@@ -134,7 +134,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADq
-        IwAAAk1TRnQBSQFMAgEBCQEAAVgBBQFYAQUBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        IwAAAk1TRnQBSQFMAgEBCQEAAWABBQFgAQUBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABMAMAAQEBAAEYBgABJP8AnwABewGtAXsBOQGEATkBAAFSAgABQgIAATkBAAEhAUoBIQFKAXMBSgGU
         Aa0BlKUAAUIBnAFCAQgBewEIAWMBtQFjAZQB1gGUAaUB5wKlAd4BpQGMAcYBjAFjAZQBYwEQAUIBEAEY
         AUoBGKMAAYwBAAFjAd4BhAFjAe8BjAFaAecBjAFaAd4BhAFSAdYBewFaAd4BhAFrAdYBjAGUAd4BnAFS
@@ -291,6 +291,19 @@
 </value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="KagentComboBox.Properties.Buttons" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAGsSURBVDhPrZItjIQwEEaRyJVYJLKythKJxFYikbWVSGQtsrISi0QisUgk8t3sHsnlfsSK+5JJ
+        oemb+abT7F9VJ0MRC+pZc2+9L5M07a4YL4sKGu0t+368n6gYc9xmacKADRut3/HTznrCfFyk/WKR9T7+
+        W5XXKDfhEwjHJOB4gRXIzCfluKMkvHzfyHeFtKD6lXAgTi480G8n9bhS9guPdiZ/hp1pxeGNfWkTi6pb
+        BLqwEkoOPZpEVgUeOmDsiG5HMhXITKQXmzf6JSObdRK7UjFTkwADaQkch+fYOs6jZ4mW0gwvRzf2qVrg
+        Z4JCXORSxcfAxQBHxyYTiv7BsTSwNfTOirv4PUElF1S6lUxHxlHA3XJKJF+wCziPFdHlnKmg7Sym++Hg
+        ecN5naTXget0LKEUSMmqmPrslWSdlCTMqRrHvPyYRhPkUnQSe05st9KzlYoPZkmwRs0ySgtzhWks7q8p
+        RHkxmYo0nVyYPOVrM5xbK1UL+S+ZXIE20r+M9UZ+y/TSl55obcfkS5K0MDhNXdeviUzxjaf9rFC2kaIO
+        lE2g6RMh/THz/1GWfQD2Vnln5qUyUAAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="AccountEdit.Properties.Buttons" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////

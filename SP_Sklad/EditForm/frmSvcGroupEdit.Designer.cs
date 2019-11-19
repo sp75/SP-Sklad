@@ -48,9 +48,7 @@
             this.checkEdit4 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit3 = new DevExpress.XtraEditors.CheckEdit();
             this.textEdit10 = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.NumEdit = new DevExpress.XtraEditors.SpinEdit();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
             this.textEdit1 = new DevExpress.XtraEditors.MemoEdit();
@@ -69,7 +67,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit10.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).BeginInit();
             this.xtraTabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.groupControl5.SuspendLayout();
@@ -128,7 +125,7 @@
             // 
             this.splitterControl1.Location = new System.Drawing.Point(210, 0);
             this.splitterControl1.Name = "splitterControl1";
-            this.splitterControl1.Size = new System.Drawing.Size(6, 274);
+            this.splitterControl1.Size = new System.Drawing.Size(5, 274);
             this.splitterControl1.TabIndex = 42;
             this.splitterControl1.TabStop = false;
             // 
@@ -192,9 +189,7 @@
             this.groupControl2.Controls.Add(this.checkEdit4);
             this.groupControl2.Controls.Add(this.checkEdit3);
             this.groupControl2.Controls.Add(this.textEdit10);
-            this.groupControl2.Controls.Add(this.labelControl2);
             this.groupControl2.Controls.Add(this.labelControl3);
-            this.groupControl2.Controls.Add(this.NumEdit);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.Name = "groupControl2";
@@ -284,15 +279,6 @@
             this.textEdit10.StyleController = this.styleController1;
             this.textEdit10.TabIndex = 34;
             // 
-            // labelControl2
-            // 
-            this.labelControl2.Location = new System.Drawing.Point(452, 34);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(82, 16);
-            this.labelControl2.StyleController = this.styleController1;
-            this.labelControl2.TabIndex = 35;
-            this.labelControl2.Text = "Прядковий №";
-            // 
             // labelControl3
             // 
             this.labelControl3.Location = new System.Drawing.Point(19, 34);
@@ -301,36 +287,6 @@
             this.labelControl3.StyleController = this.styleController1;
             this.labelControl3.TabIndex = 31;
             this.labelControl3.Text = "Найменування";
-            // 
-            // NumEdit
-            // 
-            this.NumEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.NumEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.SvcGroupDS, "Num", true));
-            this.NumEdit.EditValue = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.NumEdit.Location = new System.Drawing.Point(452, 56);
-            this.NumEdit.Name = "NumEdit";
-            this.NumEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.NumEdit.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
-            this.NumEdit.Properties.MaxValue = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.NumEdit.Properties.MinValue = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.NumEdit.Properties.NullText = "[EditValue is null]";
-            this.NumEdit.Size = new System.Drawing.Size(113, 22);
-            this.NumEdit.StyleController = this.styleController1;
-            this.NumEdit.TabIndex = 40;
             // 
             // xtraTabPage4
             // 
@@ -393,7 +349,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit10.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).EndInit();
             this.xtraTabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
             this.groupControl5.ResumeLayout(false);
@@ -422,11 +377,9 @@
         private DevExpress.XtraEditors.CheckEdit checkEdit4;
         private DevExpress.XtraEditors.CheckEdit checkEdit3;
         private DevExpress.XtraEditors.TextEdit textEdit10;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage4;
         private DevExpress.XtraEditors.GroupControl groupControl5;
         private DevExpress.XtraEditors.MemoEdit textEdit1;
-        private DevExpress.XtraEditors.SpinEdit NumEdit;
     }
 }

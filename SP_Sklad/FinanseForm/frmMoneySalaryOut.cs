@@ -19,7 +19,7 @@ namespace SP_Sklad.FinanseForm
         private int? _PayDocId { get; set; }
         private DbContextTransaction current_transaction { get; set; }
         private PayDoc _pd_from { get; set; }
-        private PayDoc _pd_to { get; set; }
+
         private decimal? _summ_pay { get; set; }
         public int? _ka_id { get; internal set; }
 
@@ -65,28 +65,7 @@ namespace SP_Sklad.FinanseForm
                     CurrId = DBHelper.Currency.Where(w => w.Def == 1).Select(s => s.CurrId).FirstOrDefault(), //Валюта по умолчанию
                     OnValue = 1,//Курс валюти
                     MPersonId = DBHelper.CurrentUser.KaId,
-                    DocType = -10, // Списання зарплати з карточки працівника
-                    UpdatedBy = DBHelper.CurrentUser.UserId,
-                    EntId = DBHelper.Enterprise.KaId,
-                    OperId = oper_id,
-                    KaId = _ka_id
-                });
-
-                _pd_to = _db.PayDoc.Add(new PayDoc
-                {
-                    Id = Guid.NewGuid(),
-                    Checked = 1,
-                    DocNum = new BaseEntities().GetDocNum("pay_doc").FirstOrDefault(),
-                    OnDate = on_date,
-                    Total = 0,
-                    CTypeId = 1,// За товар
-                    WithNDS = 1,// З НДС
-                    PTypeId = 1,// Наличкой
-                    CashId = DBHelper.CashDesks.Where(w => w.Def == 1).Select(s => s.CashId).FirstOrDefault(),// Каса по умолчанию
-                    CurrId = DBHelper.Currency.Where(w => w.Def == 1).Select(s => s.CurrId).FirstOrDefault(), //Валюта по умолчанию
-                    OnValue = 1,//Курс валюти
-                    MPersonId = DBHelper.CurrentUser.KaId,
-                    DocType = 3, //Зарахування коштів в касу
+                    DocType = 10, // Списання зарплати з карточки працівника
                     UpdatedBy = DBHelper.CurrentUser.UserId,
                     EntId = DBHelper.Enterprise.KaId,
                     OperId = oper_id,
@@ -100,11 +79,8 @@ namespace SP_Sklad.FinanseForm
                 var pd = _db.PayDoc.AsNoTracking().FirstOrDefault(w => w.PayDocId == _PayDocId);
                 if (pd != null)
                 {
-                    _pd_from = _db.Database.SqlQuery<PayDoc>("SELECT * from PayDoc WITH (UPDLOCK, NOWAIT) where OperId = {0} and DocType = -10 ", pd.OperId).FirstOrDefault();
+                    _pd_from = _db.Database.SqlQuery<PayDoc>("SELECT * from PayDoc WITH (UPDLOCK, NOWAIT) where PayDocId = {0}", _PayDocId).FirstOrDefault();
                     _db.Entry<PayDoc>(_pd_from).State = System.Data.Entity.EntityState.Modified;
-
-                    _pd_to = _db.Database.SqlQuery<PayDoc>("SELECT * from PayDoc WITH (UPDLOCK, NOWAIT) where OperId = {0} and DocType = 3", pd.OperId).FirstOrDefault();
-                    _db.Entry<PayDoc>(_pd_to).State = System.Data.Entity.EntityState.Modified;
                 }
                 else
                 {
@@ -120,17 +96,11 @@ namespace SP_Sklad.FinanseForm
                 PayDocFromBS.DataSource = _pd_from;
             }
 
-            if (_pd_to != null)
-            {
-                _pd_to.UpdatedBy = DBHelper.CurrentUser.UserId;
-                PayDocToBS.DataSource = _pd_to;
-            }
-
             TypDocsEdit.Properties.DataSource = DBHelper.DocTypeList.Where(w => new int[] { -1, -6, 2, -16, -8, }.Any(a => a.Equals(w.Id))).ToList();
 
             if (TypDocsEdit.EditValue == null) TypDocsEdit.EditValue = -1;
 
-            var rl = _db.GetRelDocList(_pd_to.Id).FirstOrDefault();
+            var rl = _db.GetRelDocList(_pd_from.Id).FirstOrDefault();
             if (rl != null)
             {
                 PayDocCheckEdit.Checked = true;
@@ -160,31 +130,19 @@ namespace SP_Sklad.FinanseForm
         private void OkButton_Click(object sender, EventArgs e)
         {
             _pd_from.Total = SumEdit.Value;
-            _pd_to.Total = SumEdit.Value;
+          
 
-            _pd_to.Checked = _pd_from.Checked;
-          //  _pd_to.DocNum = _pd_from.DocNum;
-            _pd_to.OnDate = _pd_from.OnDate;
-            _pd_to.MPersonId = _pd_from.MPersonId;
-            _pd_to.Reason = _pd_from.Reason;
-            _pd_to.Notes = _pd_from.Notes;
-            _pd_to.CTypeId = _pd_from.CTypeId;
-            _pd_to.KaId = _pd_from.KaId;
-
-           var rl = _db.GetRelDocList(_pd_to.Id).ToList();
+           var rl = _db.GetRelDocList(_pd_from.Id).ToList();
             foreach (var item in rl)
             {
-                _db.DeleteWhere<DocRels>(w => w.OriginatorId == item.Id && w.RelOriginatorId == _pd_to.Id);
+                _db.DeleteWhere<DocRels>(w => w.OriginatorId == item.Id && w.RelOriginatorId == _pd_from.Id);
             }
             _db.SaveChanges();
 
             if (PayDocCheckEdit.Checked && DocListEdit.EditValue != null)
             {
                 var row = DocListEdit.GetSelectedDataRow() as GetWayBillList_Result;
-
-       //         _pd = _db.PayDoc.AsNoTracking().FirstOrDefault(w => w.PayDocId == _pd_to.PayDocId);
-                _db.SetDocRel(row.Id, _pd_to.Id);
-
+                _db.SetDocRel(row.Id, _pd_from.Id);
                 _db.SaveChanges();
             }
 
@@ -206,7 +164,7 @@ namespace SP_Sklad.FinanseForm
         bool GetOk()
         {
             bool source_from = PTypeToEdit.EditValue != null && PTypeToEdit.EditValue != DBNull.Value && (((int)PTypeToEdit.EditValue == 1 && CashToEdit.EditValue != DBNull.Value) || ((int)PTypeToEdit.EditValue == 2 && AccountToEdit.EditValue != DBNull.Value));
-            bool source_to = PersonFromEdit.EditValue != null && PersonFromEdit.EditValue != DBNull.Value && AccountFromEdit.EditValue != DBNull.Value;
+            bool source_to = PersonFromEdit.EditValue != null && PersonFromEdit.EditValue != DBNull.Value ;
 
             bool recult = (NumEdit.Text.Any() &&  source_from && source_to && SumEdit.Value > 0);
 
@@ -244,14 +202,14 @@ namespace SP_Sklad.FinanseForm
             {
                 labelControl13.Visible = true;
                 CashToEdit.Visible = true;
-                _pd_to.AccId = null;
+                _pd_from.AccId = null;
             }
 
             if ((int)PTypeToEdit.EditValue == 2)
             {
                 labelControl12.Visible = true;
                 AccountToEdit.Visible = true;
-                _pd_to.CashId = null;
+                _pd_from.CashId = null;
             }
 
             GetOk();
@@ -272,11 +230,6 @@ namespace SP_Sklad.FinanseForm
             {
                 return;
             }
-
-            int ka_id = (int)PersonFromEdit.EditValue;
-
-            AccountFromEdit.Properties.DataSource = _db.KAgentAccount.Where(w => w.Kagent.KType == 2 && w.KAId == ka_id).Select(s => new { s.AccId, s.AccNum, BankName = s.Kagent.Name }).ToList();
-
 
             if (PersonFromEdit.ContainsFocus)
             {

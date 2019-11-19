@@ -146,11 +146,6 @@ namespace SP_Sklad.WBForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-          /*  if (!DBHelper.CheckEndCalcPeriod(OnDateDBEdit.DateTime, _db))
-            {
-                return;
-            }*/
-
             if (TurnDocCheckBox.Checked && !DBHelper.CheckOrderedInSuppliers(wb.WbillId, _db))
             {
                 return;
@@ -161,10 +156,11 @@ namespace SP_Sklad.WBForm
                 return;
             }
 
-            payDocUserControl1.Execute(wb.WbillId);
-
             wb.UpdatedAt = DateTime.Now;
+
             _db.Save(wb.WbillId);
+
+            payDocUserControl1.Execute(wb.WbillId);
 
             if (TurnDocCheckBox.Checked)
             {

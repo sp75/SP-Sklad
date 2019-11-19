@@ -249,23 +249,6 @@ namespace SP_Sklad.Common
                                pd_form.ShowDialog();
                            }
                        }
-
-                        if (pd.DocType == 10 && pd_row.DocTypeFrom == -3)
-                        {
-                            using (var pd_form = new frmMoneySalaryIn(pd_row.PayDocId))
-                            {
-                                pd_form.ShowDialog();
-                            }
-                        }
-
-                        if (pd.DocType == 3 && pd_row.DocTypeFrom == -10)
-                        {
-                            using (var pd_form = new frmMoneySalaryOut(pd_row.PayDocId))
-                            {
-                                pd_form.ShowDialog();
-                            }
-                        }
-
                     }
 
                }

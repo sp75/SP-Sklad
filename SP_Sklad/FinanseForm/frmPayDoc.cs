@@ -166,6 +166,8 @@ namespace SP_Sklad.FinanseForm
                 var row = DocListEdit.GetSelectedDataRow() as GetWayBillList_Result;
 
                 textEdit4.EditValue = (row == null ? 0 : row.Balans) - SumEdit.Value;
+
+                KagentComboBox.Enabled = false;
             }
 
           
@@ -375,7 +377,7 @@ namespace SP_Sklad.FinanseForm
 
         private void simpleButton7_Click(object sender, EventArgs e)
         {
-            KagentComboBox.EditValue = IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
+          
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
@@ -405,6 +407,14 @@ namespace SP_Sklad.FinanseForm
         private void CashEditComboBox_EditValueChanged(object sender, EventArgs e)
         {
             GetOk();
+        }
+
+        private void KagentComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                KagentComboBox.EditValue = IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
+            }
         }
     }
 }

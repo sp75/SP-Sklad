@@ -61,7 +61,6 @@
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.btnAddSalary = new DevExpress.XtraBars.BarButtonItem();
             this.standaloneBarDockControl3 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.standaloneBarDockControl4 = new DevExpress.XtraBars.StandaloneBarDockControl();
@@ -74,7 +73,6 @@
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl2 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.BarImageList = new System.Windows.Forms.ImageList(this.components);
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.GridImageList = new System.Windows.Forms.ImageList(this.components);
             this.PageImageList = new System.Windows.Forms.ImageList(this.components);
             this.MoneyTurnoverBS = new System.Windows.Forms.BindingSource(this.components);
@@ -187,7 +185,6 @@
             this.dateEdit2 = new DevExpress.XtraEditors.DateEdit();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MoneyTurnoverBS)).BeginInit();
@@ -411,10 +408,7 @@
             this.createTaxWBbtn,
             this.barButtonItem1,
             this.barSubItem1,
-            this.barButtonItem2,
-            this.btnAddSalary,
-            this.barButtonItem3,
-            this.barButtonItem4});
+            this.barButtonItem2});
             this.barManager1.MaxItemId = 17;
             // 
             // bar1
@@ -444,9 +438,7 @@
             this.barSubItem1.ImageIndex = 0;
             this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
-            new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnAddSalary),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn)});
             this.barSubItem1.Name = "barSubItem1";
             this.barSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu;
             // 
@@ -457,14 +449,6 @@
             this.barButtonItem2.ImageIndex = 7;
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
-            // 
-            // btnAddSalary
-            // 
-            this.btnAddSalary.Caption = "Зарахування зарплати";
-            this.btnAddSalary.Id = 14;
-            this.btnAddSalary.ImageIndex = 9;
-            this.btnAddSalary.Name = "btnAddSalary";
-            this.btnAddSalary.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAddSalary_ItemClick);
             // 
             // standaloneBarDockControl3
             // 
@@ -586,12 +570,6 @@
             this.BarImageList.Images.SetKeyName(7, "moneymove.png");
             this.BarImageList.Images.SetKeyName(8, "зарахувати.bmp");
             this.BarImageList.Images.SetKeyName(9, "salary.png");
-            // 
-            // barButtonItem3
-            // 
-            this.barButtonItem3.Caption = "barButtonItem3";
-            this.barButtonItem3.Id = 15;
-            this.barButtonItem3.Name = "barButtonItem3";
             // 
             // GridImageList
             // 
@@ -783,8 +761,9 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(54, "map_pin-next-16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(55, "prod_plan.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(56, "salesreport2_16x16.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(57, "cash.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(58, "money-bag.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(57, "money-bag.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(58, "cash.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(59, "Фінанси.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab
@@ -1529,7 +1508,7 @@
             // 
             // vGridControl1
             // 
-            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeWE;
+            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControl1.DataSource = this.MoneyMoveListInfoBS;
             this.vGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl1.Location = new System.Drawing.Point(0, 0);
@@ -1903,13 +1882,6 @@
             this.xtraTabPage10.Size = new System.Drawing.Size(1024, 630);
             this.xtraTabPage10.Text = "Платіжні документи";
             // 
-            // barButtonItem4
-            // 
-            this.barButtonItem4.Caption = "Списання зарплати";
-            this.barButtonItem4.Id = 16;
-            this.barButtonItem4.Name = "barButtonItem4";
-            this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
-            // 
             // FinancesUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2162,7 +2134,6 @@
         private DevExpress.XtraEditors.MemoEdit memoEdit1;
         private DevExpress.Utils.SharedImageCollection UserTreeImgList;
         private DevExpress.XtraBars.BarButtonItem btnAddSalary;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
     }
 }

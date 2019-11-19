@@ -125,7 +125,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADq
-        IwAAAk1TRnQBSQFMAgEBCQEAAagBBQGoAQUBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        IwAAAk1TRnQBSQFMAgEBCQEAAbABBQGwAQUBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABMAMAAQEBAAEYBgABJP8AnwABewGtAXsBOQGEATkBAAFSAgABQgIAATkBAAEhAUoBIQFKAXMBSgGU
         Aa0BlKUAAUIBnAFCAQgBewEIAWMBtQFjAZQB1gGUAaUB5wKlAd4BpQGMAcYBjAFjAZQBYwEQAUIBEAEY
         AUoBGKMAAYwBAAFjAd4BhAFjAe8BjAFaAecBjAFaAd4BhAFSAdYBewFaAd4BhAFrAdYBjAGUAd4BnAFS
@@ -284,8 +284,8 @@
   <metadata name="styleController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>170, 27</value>
   </metadata>
-  <metadata name="PayDocFromBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>307, 27</value>
+  <metadata name="PayDocToBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>444, 27</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="ChargeTypesEdit.Properties.Buttons" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -304,8 +304,8 @@
   <metadata name="styleController2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>564, 27</value>
   </metadata>
-  <metadata name="PayDocToBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>444, 27</value>
+  <metadata name="styleController2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>564, 27</value>
   </metadata>
   <data name="OnDateDBEdit.Properties.Buttons" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -327,40 +327,6 @@
         treL4SQzW1kRTNuz0bxuDWpjRe1bnnqSVP8+qro4MWP+C2rCWW4SSZhXGRNdUhMrun4iThSkBBwXi4Kf
         iGOuq6KX8J7nz+ZF+DSn2adiehInY8WzENG+0NOjBN7fAsITs8xjvh9x9OmlTEBMNCGa/QP0BTe7WAX1
         rAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
-        EAAAjBIAAP1NAACBPgAAWesAARIPAAA85gAAGc66ySIyAAABK2lDQ1BQaG90b3Nob3AgSUNDIHByb2Zp
-        bGUAACjPY2BgMnB0cXJlEmBgyM0rKQpyd1KIiIxSYD/PwMbAzAAGicnFBY4BAT4gdl5+XioDBvh2jYER
-        RF/WBZnFQBrgSi4oKgHSf4DYKCW1OJmBgdEAyM4uLykAijPOAbJFkrLB7A0gdlFIkDOQfQTI5kuHsK+A
-        2EkQ9hMQuwjoCSD7C0h9OpjNxAE2B8KWAbFLUitA9jI45xdUFmWmZ5QoGFpaWio4puQnpSoEVxaXpOYW
-        K3jmJecXFeQXJZakpgDVQtwHBoIQhaAQ0wBqtNBkoDIAxQOE9TkQHL6MYmcQYgiQXFpUBmUyMhkT5iPM
-        mCPBwOC/lIGB5Q9CzKSXgWGBDgMD/1SEmJohA4OAPgPDvjkAwMZP/eeaqagAAAAJcEhZcwAACxEAAAsR
-        AX9kX5EAAADfSURBVFhHxdLRCcMwEIPhLNilOlVX6AhdoUu41YPBuH8Vn3PYDx8EBU4i5CilbIXhShiu
-        hKFzuz/K8/X+PvL7KAwdDcgcgaFTB2SNwNBpB2SMwNDpB1wdgaFDA2R2BIYOlVczIzB0qLgVHYGhQ6W9
-        yAgMhQ5HjI7AUOho1MgIDIUOzjgbgaHQsVluBIZCh674N+InqOjIrK1fYOs/cFYuGAodjBgpFwwdKuuN
-        lguGDhW2IuWCoUOlVbRcMHSoWGbKBUMns1wwdDLLBUMns1wwdDLLBUMns1wwXAnDdcrxAaBjj2qA6XeJ
-        AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="AccountToEdit.Properties.Buttons" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////
-        ////////////////////////////////c61zMYQxMYQxc61z////////////////////////////////
-        ////////////UpxaGHsYc9aEa857GHsYlL2U////////////////////////rVopvXNK3s7OQoxCSq1S
-        pf+1jPelpf+1vf/GSq1Src6t////////////////xpyUvWspzpRSjEIQAGMASs5zOc5aKa1CIa0xSs5z
-        vf/GQoxC////////////////rUoQ9961/+/Gxt61KWsQAFoIAGMAIZQpKbVjSs5zpf+1MYQx////////
-        ////zpRrzpRS/+/G/86c/9altb2MAHshAN69AO+1OeeMSudzUr1rlL2U////////////vWMY/+/G/9al
-        /86c/86cMYQxAOfGGNaEGL1CIa0xAGMACGsIlL2U////////zpRr3qVr/+e9/86c/9al/9alKXspAP/v
-        Ia0xEJQhEJQhIZQpEIwYAGMA////////vWsp//fO/9alvWsp57Vr786cQoxCAMaUAO+1GL1CGL1COc5a
-        EIwYMYQx////zpRr572M/+e9572MrUoQ/9alnDkAjEIQKXspAKVaANalEM6EAHMQGHsY////////xnsp
-        ///W/+e9vWsp3qVrxoRKvXNKrVop572Mc61zKXspKWsQY5xj////////3qVr786c/+e9/+e9/+/G//fO
-        rUoQrVopvWsp///e///e3qVr1q2U////////////xnsp//fO/+/G//fO//fO//fW/+/GvXNK79at///e
-        79atxoRK////////////////3pQ5zpRS786c//fO///W///e58alrUoQvWsp3qVrxoRK////////////
-        ////////////////3qVr3pQ557Vr/+e9xoRKxnsp3pQ53pQ5////////////////////////////////
-        ////////58alzpRS3pQ557Vr////////////////////////////////
 </value>
   </data>
   <data name="AccountFromEdit.Properties.Buttons" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -400,6 +366,17 @@
 </value>
   </data>
   <data name="PersonEdit.Properties.Buttons" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAUtJREFUOE/F
+        kiGMhDAQRSuRSGwlsrIWWYnEIpHI2srKyloksnItEonEIpHIfx+CPHbXXG6Sn2kI/3VmOuLPYnp5JC/x
+        ioq5xP35u5hGi23pgMNRPY6tvUAzofcv72O0xWXETsjWAGuNYzYY+uxbQEaTuYxYmKcKSBqJ4HUeP0Ni
+        R0DKgVfJrICROmfxLcC7ApMjYCAgnlLYOcjYic9mNVaQQ4bAfkdqOWG8+TRrVqZ69QwJS4RMBQJaRMqz
+        /I7GuhUwsUC/aBRdDhvt7xDJUu1eX+ZwNPA8d7OGIKT0Oc8KdSpR1g97kQWWfhvdZmDX6rrVJAlJQEtA
+        N2lk+uk5vYBbWfpO8f3d2sAuhDF7LlZcA5pQQzUPc6hihYw70Ca2sAQM24BhHeAnjza0yKschSmeh3iG
+        5Rprx75rPllFaQFpJExvEMbw3vwPIcQP+YgTzpR+mFoAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="lookUpEdit1.Properties.Buttons" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAUtJREFUOE/F
         kiGMhDAQRSuRSGwlsrIWWYnEIpHI2srKyloksnItEonEIpHIfx+CPHbXXG6Sn2kI/3VmOuLPYnp5JC/x

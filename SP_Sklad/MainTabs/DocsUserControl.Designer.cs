@@ -243,7 +243,6 @@
             this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem15 = new DevExpress.XtraBars.BarButtonItem();
-            this.NewMoneySalaryOutBtn = new DevExpress.XtraBars.BarButtonItem();
             this.xtraTabPage12 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage13 = new DevExpress.XtraTab.XtraTabPage();
             this.bar2 = new DevExpress.XtraBars.Bar();
@@ -2446,8 +2445,7 @@
             this.barButtonItem12,
             this.barButtonItem13,
             this.barButtonItem14,
-            this.barButtonItem15,
-            this.NewMoneySalaryOutBtn});
+            this.barButtonItem15});
             this.barManager1.MaxItemId = 28;
             // 
             // bar1
@@ -2735,13 +2733,6 @@
             this.barButtonItem15.Name = "barButtonItem15";
             this.barButtonItem15.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem15_ItemClick);
             // 
-            // NewMoneySalaryOutBtn
-            // 
-            this.NewMoneySalaryOutBtn.Caption = "Взаєморозрахунок";
-            this.NewMoneySalaryOutBtn.Id = 27;
-            this.NewMoneySalaryOutBtn.Name = "NewMoneySalaryOutBtn";
-            this.NewMoneySalaryOutBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewMoneySalaryOutBtn_ItemClick);
-            // 
             // xtraTabPage12
             // 
             this.xtraTabPage12.Name = "xtraTabPage12";
@@ -2775,7 +2766,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteInvBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteInBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.NewPayDocBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.NewMoneySalaryOutBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.createTaxWBbtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1, true),
@@ -3181,6 +3171,5 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn51;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn52;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow row19;
-        private DevExpress.XtraBars.BarButtonItem NewMoneySalaryOutBtn;
     }
 }

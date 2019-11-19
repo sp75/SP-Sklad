@@ -66,5 +66,13 @@ namespace SP_Sklad.EditForm
                 KagentComboBox.EditValue = null;
             }
         }
+
+        private void dateEdit2_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                dateEdit2.EditValue = null;
+            }
+        }
     }
 }

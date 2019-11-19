@@ -53,7 +53,7 @@ namespace SP_Sklad.ViewsForm
 
         private void SetDiscount()
         {
-            cart = DB.SkladBase().DiscCards.FirstOrDefault(w => w.Num == AmountEdit.Text && w.Deleted == 0 && w.ExpireDate >= DateTime.Now);
+            cart = DB.SkladBase().DiscCards.FirstOrDefault(w => w.Num == AmountEdit.Text && w.Deleted == 0 && ( w.ExpireDate >= DateTime.Now || w.ExpireDate == null));
             if (cart != null)
             {
                 if (cart.KaId != null)

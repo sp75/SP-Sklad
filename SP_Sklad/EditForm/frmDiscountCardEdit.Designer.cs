@@ -34,6 +34,7 @@
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.DiscCardsBS = new System.Windows.Forms.BindingSource(this.components);
             this.textEdit2 = new DevExpress.XtraEditors.MemoEdit();
             this.BottomPanel = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
@@ -43,9 +44,9 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.KASaldoEdit = new DevExpress.XtraEditors.CalcEdit();
             this.KagentComboBox = new DevExpress.XtraEditors.LookUpEdit();
-            this.DiscCardsBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DiscCardsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
@@ -53,7 +54,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KASaldoEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KagentComboBox.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DiscCardsBS)).BeginInit();
             this.SuspendLayout();
             // 
             // styleController1
@@ -96,6 +96,10 @@
             this.textEdit1.Size = new System.Drawing.Size(295, 22);
             this.textEdit1.StyleController = this.styleController1;
             this.textEdit1.TabIndex = 61;
+            // 
+            // DiscCardsBS
+            // 
+            this.DiscCardsBS.DataSource = typeof(SP_Sklad.SkladData.DiscCards);
             // 
             // textEdit2
             // 
@@ -146,7 +150,8 @@
             this.dateEdit2.Location = new System.Drawing.Point(325, 37);
             this.dateEdit2.Name = "dateEdit2";
             this.dateEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)});
             this.dateEdit2.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEdit2.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
@@ -155,6 +160,7 @@
             this.dateEdit2.Size = new System.Drawing.Size(176, 22);
             this.dateEdit2.StyleController = this.styleController1;
             this.dateEdit2.TabIndex = 69;
+            this.dateEdit2.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.dateEdit2_ButtonClick);
             // 
             // labelControl1
             // 
@@ -209,10 +215,6 @@
             this.KagentComboBox.TabIndex = 73;
             this.KagentComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.KagentComboBox_ButtonClick);
             // 
-            // DiscCardsBS
-            // 
-            this.DiscCardsBS.DataSource = typeof(SP_Sklad.SkladData.DiscCards);
-            // 
             // frmDiscountCardEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -236,6 +238,7 @@
             this.Load += new System.EventHandler(this.frmDiscountCardEdit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DiscCardsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).EndInit();
             this.BottomPanel.ResumeLayout(false);
@@ -243,7 +246,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KASaldoEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KagentComboBox.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DiscCardsBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

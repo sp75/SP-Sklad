@@ -741,7 +741,7 @@
           <Property Name="CashId" Type="int" />
           <Property Name="OperId" Type="uniqueidentifier" />
           <Property Name="DocId" Type="int" />
-          <Property Name="OnValue" Type="numeric" Precision="15" Scale="8" />
+          <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" />
           <Property Name="Schet" Type="varchar" MaxLength="10" />
           <Property Name="UpdatedBy" Type="int" />
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
@@ -5111,7 +5111,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="CashId" Type="int" />
                 <Property Name="OperId" Type="uniqueidentifier" />
                 <Property Name="DocId" Type="int" />
-                <Property Name="OnValue" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="CurrName" Type="nvarchar" MaxLength="3" />
                 <Property Name="PayTypeName" Type="nvarchar" MaxLength="50" />
                 <Property Name="CashdName" Type="nvarchar" MaxLength="128" />
@@ -5122,7 +5122,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="ToSumm" Type="numeric" Precision="15" Scale="2" />
                 <Property Name="FromSource" Type="nvarchar" MaxLength="128" />
                 <Property Name="ToSource" Type="nvarchar" MaxLength="128" />
-                <Property Name="DocTypeFrom" Type="int" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -13912,7 +13911,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Int32" Name="CashId" />
           <Property Type="Guid" Name="OperId" />
           <Property Type="Int32" Name="DocId" />
-          <Property Type="Decimal" Name="OnValue" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="OnValue" Precision="15" Scale="4" />
           <Property Type="String" Name="Schet" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="UpdatedBy" />
           <Property Type="Guid" Name="Id" Nullable="false" />
@@ -14605,7 +14604,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Int32" Name="CashId" Nullable="true" />
           <Property Type="Guid" Name="OperId" Nullable="true" />
           <Property Type="Int32" Name="DocId" Nullable="true" />
-          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="4" />
           <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
           <Property Type="String" Name="PayTypeName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="CashdName" Nullable="true" MaxLength="128" />
@@ -14616,7 +14615,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Decimal" Name="ToSumm" Nullable="true" Precision="15" Scale="2" />
           <Property Type="String" Name="FromSource" Nullable="true" MaxLength="128" />
           <Property Type="String" Name="ToSource" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="DocTypeFrom" Nullable="true" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -18453,7 +18451,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="ToSumm" ColumnName="ToSumm" />
                 <ScalarProperty Name="FromSource" ColumnName="FromSource" />
                 <ScalarProperty Name="ToSource" ColumnName="ToSource" />
-                <ScalarProperty Name="DocTypeFrom" ColumnName="DocTypeFrom" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
