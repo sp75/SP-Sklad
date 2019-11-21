@@ -106,7 +106,7 @@
             this.textEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.DiscCardsBS, "Notes", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textEdit2.Location = new System.Drawing.Point(12, 184);
             this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Size = new System.Drawing.Size(489, 42);
+            this.textEdit2.Size = new System.Drawing.Size(489, 47);
             this.textEdit2.StyleController = this.styleController1;
             this.textEdit2.TabIndex = 62;
             // 
@@ -115,16 +115,16 @@
             this.BottomPanel.Controls.Add(this.OkButton);
             this.BottomPanel.Controls.Add(this.simpleButton1);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomPanel.Location = new System.Drawing.Point(0, 265);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 246);
             this.BottomPanel.Name = "BottomPanel";
-            this.BottomPanel.Size = new System.Drawing.Size(530, 52);
+            this.BottomPanel.Size = new System.Drawing.Size(514, 52);
             this.BottomPanel.TabIndex = 68;
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(308, 10);
+            this.OkButton.Location = new System.Drawing.Point(292, 10);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(100, 30);
             this.OkButton.TabIndex = 1;
@@ -135,7 +135,7 @@
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton1.Location = new System.Drawing.Point(418, 10);
+            this.simpleButton1.Location = new System.Drawing.Point(402, 10);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(100, 30);
             this.simpleButton1.TabIndex = 0;
@@ -143,8 +143,6 @@
             // 
             // dateEdit2
             // 
-            this.dateEdit2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dateEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.DiscCardsBS, "ExpireDate", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.dateEdit2.EditValue = null;
             this.dateEdit2.Location = new System.Drawing.Point(325, 37);
@@ -219,7 +217,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(530, 317);
+            this.ClientSize = new System.Drawing.Size(514, 298);
             this.Controls.Add(this.KagentComboBox);
             this.Controls.Add(this.KASaldoEdit);
             this.Controls.Add(this.labelControl3);

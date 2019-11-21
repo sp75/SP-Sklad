@@ -471,9 +471,9 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(54, "map_pin-next-16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(55, "prod_plan.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(56, "salesreport2_16x16.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(57, "money-bag.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(58, "cash.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(59, "Фінанси.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(57, "ROI-PNG-Clipart.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(58, "3.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(59, "finance_process2.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // mainContentTab

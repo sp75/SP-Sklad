@@ -1,18 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SP_Sklad.SkladData;
 using SP_Sklad.WBDetForm;
-using EntityState = System.Data.Entity.EntityState;
 using DevExpress.XtraGrid.Views.Grid;
-using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using System.Data.Entity.Core.Objects;
 using DevExpress.XtraGrid;
 using SP_Sklad.Common;
@@ -94,7 +89,14 @@ namespace SP_Sklad.WBForm
 
                 if (is_new_record)
                 {
-                    wb.Num = new BaseEntities().GetDocNum("wb_out").FirstOrDefault();
+                    if (wb.WType == 2)
+                    {
+                        wb.Num = new BaseEntities().GetDocNum("wb_invoice").FirstOrDefault();
+                    }
+                    else
+                    {
+                        wb.Num = new BaseEntities().GetDocNum("wb_out").FirstOrDefault();
+                    }
                     //     wb.PersonId = DBHelper.CurrentUser.KaId;
                 }
 

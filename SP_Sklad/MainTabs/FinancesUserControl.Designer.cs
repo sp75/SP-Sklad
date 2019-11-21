@@ -639,6 +639,8 @@
             this.PageImageList.Images.SetKeyName(16, "Доступ до склад_в.bmp");
             this.PageImageList.Images.SetKeyName(17, "Ф_нанси.bmp");
             this.PageImageList.Images.SetKeyName(18, "_нформац_я про рух товар_в.bmp");
+            this.PageImageList.Images.SetKeyName(19, "current_assets-512.png");
+            this.PageImageList.Images.SetKeyName(20, "high-productivity-icon.png");
             // 
             // MoneyTurnoverBS
             // 
@@ -761,9 +763,9 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(54, "map_pin-next-16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(55, "prod_plan.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(56, "salesreport2_16x16.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(57, "money-bag.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(58, "cash.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(59, "Фінанси.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(57, "ROI-PNG-Clipart.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(58, "3.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(59, "finance_process2.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab
@@ -915,7 +917,7 @@
             // xtraTabPage15
             // 
             this.xtraTabPage15.Controls.Add(this.MoneyTurnGridControl);
-            this.xtraTabPage15.ImageIndex = 0;
+            this.xtraTabPage15.ImageIndex = 19;
             this.xtraTabPage15.Name = "xtraTabPage15";
             this.xtraTabPage15.Size = new System.Drawing.Size(1018, 220);
             this.xtraTabPage15.Text = "Обороти";
@@ -1650,7 +1652,7 @@
             // 
             // vGridControl3
             // 
-            this.vGridControl3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.vGridControl3.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControl3.DataSource = this.CurActivesBS;
             this.vGridControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl3.Location = new System.Drawing.Point(0, 31);
@@ -1753,7 +1755,7 @@
             // xtraTabPage1
             // 
             this.xtraTabPage1.Controls.Add(this.chartControl1);
-            this.xtraTabPage1.ImageIndex = 17;
+            this.xtraTabPage1.ImageIndex = 20;
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(1018, 220);
             this.xtraTabPage1.Text = "Зростання активів";
