@@ -295,6 +295,7 @@
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WHTreeList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.whContentTab)).BeginInit();
             this.whContentTab.SuspendLayout();
             this.xtraTabPage8.SuspendLayout();
@@ -868,7 +869,7 @@
             this.BarImageList.Images.SetKeyName(6, "Попередн_й перегляд.bmp");
             this.BarImageList.Images.SetKeyName(7, "Склади.bmp");
             this.BarImageList.Images.SetKeyName(8, "Товари.bmp");
-            this.BarImageList.Images.SetKeyName(9, "treeview.png");
+            this.BarImageList.Images.SetKeyName(9, "tree.png");
             this.BarImageList.Images.SetKeyName(10, "_нформац_я про товар.bmp");
             this.BarImageList.Images.SetKeyName(11, "Рух товар_в.bmp");
             this.BarImageList.Images.SetKeyName(12, "_нформац_я про резерв товару.ico");
@@ -3249,6 +3250,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.WHTreeList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.whContentTab)).EndInit();
             this.whContentTab.ResumeLayout(false);

@@ -141,7 +141,7 @@ namespace SP_Sklad.WBForm
 
         private void SetFormCaption()
         {
-            if (_wtype == -1) Text = "Властивості видаткової накладної, Продавець: " + DBHelper.Enterprise.Name + (disc_card != null ? ", Дисконтна картка " + disc_card.Num : "");
+            if (_wtype == -1) Text = "Властивості видаткової накладної, Продавець: " + DBHelper.Enterprise.Name ;
             if (_wtype == 2) Text = "Властивості рахунка, Продавець: " + DBHelper.Enterprise.Name;
             if (_wtype == -16) Text = "Замовлення від клієнтів, Продавець: " + DBHelper.Enterprise.Name;
         }
@@ -255,6 +255,34 @@ namespace SP_Sklad.WBForm
                 if (wbd_row.PosType == 2)
                 {
                     _db.DeleteWhere<WayBillTmc>(w => w.PosId == wbd_row.PosId);
+                }
+
+                if (wbd_row.PosType == 3)
+                {
+                    disc_card = null;
+
+                    foreach (var item in _db.WaybillDet.Where(w => w.WbillId == wb.WbillId))
+                    {
+                        if (item.DiscountKind == 2)
+                        {
+                            var DiscountPrice = item.BasePrice;
+                            item.Price = DiscountPrice * 100 / (100 + item.Nds.Value);
+                            item.Discount = 0;
+                            item.DiscountKind = 0;
+                            if (item.WayBillDetAddProps != null)
+                            {
+                                item.WayBillDetAddProps.CardId = null;
+                            }
+                            else
+                            {
+                                _db.WayBillDetAddProps.Add(new WayBillDetAddProps
+                                {
+                                    CardId = null,
+                                    PosId = item.PosId
+                                });
+                            }
+                        }
+                    }
                 }
 
                 _db.SaveChanges();
@@ -634,8 +662,6 @@ namespace SP_Sklad.WBForm
                 {
                     disc_card = frm.cart;
                     KagentComboBox.EditValue = wb.KaId;
-
-                    SetFormCaption();
 
                     RefreshDet();
                 }

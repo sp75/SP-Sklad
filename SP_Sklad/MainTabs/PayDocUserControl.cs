@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SP_Sklad.SkladData;
 using SP_Sklad.Common;
+using SP_Sklad.ViewsForm;
 
 namespace SP_Sklad.MainTabs
 {
@@ -290,5 +291,29 @@ namespace SP_Sklad.MainTabs
             }
         }
 
+        private void PTypeComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                using (var frm = new frmFinancesView(null, 117))
+                {
+                    frm.fin_uc.isDirectList = true;
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        PTypeComboBox.EditValue = frm.PayTypeId;
+                        if(frm.PayTypeId == 1)
+                        {
+                            CashEditComboBox.EditValue = frm.Id;
+                        }
+
+                        if(frm.PayTypeId == 2)
+                        {
+                            AccountEdit.EditValue = frm.Id;
+                        }
+                    }
+                }
+
+            }
+        }
     }
 }

@@ -414,6 +414,8 @@ namespace SP_Sklad.WBDetForm
 
             if (!CheckCustomEdit.Checked && CheckCustomEdit.ContainsFocus)
             {
+
+
                 GetDiscount(Convert.ToInt32( MatComboBox.EditValue));
             }
         }

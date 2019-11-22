@@ -404,6 +404,9 @@
     <Compile Include="SkladData\GetRelDocList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetSaldoDetTree_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetUsedMaterials_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -778,6 +781,12 @@
     <Compile Include="EditForm\frmUserEdit.Designer.cs">
       <DependentUpon>frmUserEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewsForm\frmFinancesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmFinancesView.Designer.cs">
+      <DependentUpon>frmFinancesView.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewsForm\frmKaGroup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1072,9 +1081,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetReportTree_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\GetSaldoDetTree_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetServiceTree_Result.cs">
@@ -1563,6 +1569,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmUserEdit.resx">
       <DependentUpon>frmUserEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmFinancesView.resx">
+      <DependentUpon>frmFinancesView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmKaGroup.resx">
       <DependentUpon>frmKaGroup.cs</DependentUpon>

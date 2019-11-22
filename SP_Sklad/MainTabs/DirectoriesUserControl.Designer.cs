@@ -352,6 +352,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainContentTab)).BeginInit();
             this.mainContentTab.SuspendLayout();
             this.xtraTabPage7.SuspendLayout();
@@ -893,7 +894,7 @@
             this.BarImageList.Images.SetKeyName(13, "Послуги.bmp");
             this.BarImageList.Images.SetKeyName(14, "Товари.bmp");
             this.BarImageList.Images.SetKeyName(15, "iconfinder_folder_edit_36067.png");
-            this.BarImageList.Images.SetKeyName(16, "hierarchy_2-512 (1).png");
+            this.BarImageList.Images.SetKeyName(16, "tree.png");
             // 
             // RenameMatGroupBarButtonItem
             // 
@@ -3593,6 +3594,7 @@
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainContentTab)).EndInit();
             this.mainContentTab.ResumeLayout(false);

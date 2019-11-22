@@ -1223,5 +1223,20 @@ namespace SP_Sklad.MainTabs
             }
         }
 
+        private void wbKagentList_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                wbKagentList.EditValue = IHelper.ShowDirectList(wbKagentList.EditValue, 1);
+            }
+        }
+
+        private void PDKagentList_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                PDKagentList.EditValue = IHelper.ShowDirectList(PDKagentList.EditValue, 1);
+            }
+        }
     }
 }

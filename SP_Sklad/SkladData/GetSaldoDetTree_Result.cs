@@ -19,5 +19,6 @@ namespace SP_Sklad.SkladData
         public Nullable<int> ImageIndex { get; set; }
         public string Name { get; set; }
         public Nullable<decimal> Saldo { get; set; }
+        public int OriginalId { get; set; }
     }
 }

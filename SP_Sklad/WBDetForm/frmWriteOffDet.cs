@@ -44,12 +44,10 @@ namespace SP_Sklad.WBDetForm
             if (_wb.WType == -5 || _wb.WType == -22)
             {
                 WHComboBox.Enabled = false;
-                WhEditBtn.Enabled = false;
             }
             if (_wb.WType == -22)
             {
                 MatComboBox.Enabled = false;
-                MatEditBtn.Enabled = false;
             }
 
             if (_PosId == null)
@@ -309,48 +307,6 @@ namespace SP_Sklad.WBDetForm
             }
         }
 
-        private void PosInfoBtn_Click(object sender, EventArgs e)
-        {
-            using (var pos = new frmInParty(pos_in))
-            {
-                pos.Text = "Прибуткові партії: " + MatComboBox.Text;
-                pos.ShowDialog();
-                _wbd.Amount = pos_in.Sum(s => s.Amount).Value;
-                AmountEdit.Value = _wbd.Amount;
-
-                SetAmount();
-                GetOk();
-            }
-        }
-
-        private void MatEditBtn_Click(object sender, EventArgs e)
-        {
-            var f = new frmWhCatalog(1);
-
-            f.uc.whKagentList.Enabled = false;
-            f.uc.OnDateEdit.Enabled = false;
-            f.uc.bar3.Visible = false;
-            f.uc.ByWhBtn.Down = true;
-            f.uc.splitContainerControl1.SplitterPosition = 0;
-            f.uc.WHTreeList.DataSource = new BaseEntities().GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w => w.GType == 1 && w.Num == _wbd.WId).ToList();
-            f.uc.GrpNameGridColumn.GroupIndex = 0;
-
-            f.uc.isDirectList = true;
-            if (f.ShowDialog() == DialogResult.OK)
-            {
-                _wbd.MatId = f.uc.focused_wh_mat.MatId;
-                MatComboBox.EditValue = _wbd.MatId;
-                GetContent();
-            }
-        }
-
-        private void WhEditBtn_Click(object sender, EventArgs e)
-        {
-            WHComboBox.EditValue = IHelper.ShowDirectList(WHComboBox.EditValue, 2);
-
-            GetContent();
-        }
-
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             IHelper.ShowMatInfo(_wbd.MatId);
@@ -366,5 +322,64 @@ namespace SP_Sklad.WBDetForm
             IHelper.ShowTurnMaterial(_wbd.MatId);
         }
 
+        private void MatComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                var f = new frmWhCatalog(1);
+
+                f.uc.whKagentList.Enabled = false;
+                f.uc.OnDateEdit.Enabled = false;
+                f.uc.bar3.Visible = false;
+                f.uc.ByWhBtn.Down = true;
+                f.uc.splitContainerControl1.SplitterPosition = 0;
+                f.uc.WHTreeList.DataSource = new BaseEntities().GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w => w.GType == 1 && w.Num == _wbd.WId).ToList();
+                f.uc.GrpNameGridColumn.GroupIndex = 0;
+
+                f.uc.isDirectList = true;
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    _wbd.MatId = f.uc.focused_wh_mat.MatId;
+                    MatComboBox.EditValue = _wbd.MatId;
+                    GetContent();
+                }
+            }
+          
+        }
+
+        private void WHComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                WHComboBox.EditValue = IHelper.ShowDirectList(WHComboBox.EditValue, 2);
+
+                GetContent();
+            }
+
+            if (e.Button.Index == 2)
+            {
+                var result = IHelper.ShowRemainByWH(MatComboBox.EditValue, WHComboBox.EditValue, 2);
+                WHComboBox.EditValue = result.wid;
+
+                GetContent();
+            }
+        }
+
+        private void AmountEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                using (var pos = new frmInParty(pos_in))
+                {
+                    pos.Text = "Прибуткові партії: " + MatComboBox.Text;
+                    pos.ShowDialog();
+                    _wbd.Amount = pos_in.Sum(s => s.Amount).Value;
+                    AmountEdit.Value = _wbd.Amount;
+
+                    SetAmount();
+                    GetOk();
+                }
+            }
+        }
     }
 }

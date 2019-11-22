@@ -77,7 +77,7 @@ namespace SP_Sklad.Common
             else return false;
         }
 
-        static public void ShowMatList(BaseEntities db, WaybillList wb)
+         static public void ShowMatList(BaseEntities db, WaybillList wb)
         {
             var f = new frmCatalog(2);
 
@@ -506,6 +506,7 @@ namespace SP_Sklad.Common
                         }
                     }
                     break;
+
             }
 
             return old_id;

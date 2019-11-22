@@ -763,9 +763,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(54, "map_pin-next-16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(55, "prod_plan.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(56, "salesreport2_16x16.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(57, "ROI-PNG-Clipart.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(58, "3.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(59, "finance_process2.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(57, "cash.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(58, "money-bag.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab
@@ -877,10 +876,19 @@
             this.FinTreeList.KeyFieldName = "Id";
             this.FinTreeList.Location = new System.Drawing.Point(2, 2);
             this.FinTreeList.Name = "FinTreeList";
+            this.FinTreeList.OptionsBehavior.AllowIncrementalSearch = true;
+            this.FinTreeList.OptionsBehavior.Editable = false;
+            this.FinTreeList.OptionsBehavior.ExpandNodesOnIncrementalSearch = true;
+            this.FinTreeList.OptionsBehavior.ReadOnly = true;
+            this.FinTreeList.OptionsView.EnableAppearanceEvenRow = true;
+            this.FinTreeList.OptionsView.EnableAppearanceOddRow = true;
+            this.FinTreeList.OptionsView.ShowHorzLines = false;
             this.FinTreeList.OptionsView.ShowIndicator = false;
+            this.FinTreeList.OptionsView.ShowVertLines = false;
             this.FinTreeList.ParentFieldName = "PId";
             this.FinTreeList.Size = new System.Drawing.Size(706, 295);
             this.FinTreeList.TabIndex = 0;
+            this.FinTreeList.TreeLineStyle = DevExpress.XtraTreeList.LineStyle.Solid;
             this.FinTreeList.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.FinTreeList_FocusedNodeChanged);
             // 
             // treeListColumn2
@@ -2042,7 +2050,6 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraTreeList.TreeList FinTreeList;
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.LookUpEdit CurrensyList;
         private DevExpress.XtraEditors.LabelControl labelControl4;
@@ -2137,5 +2144,6 @@
         private DevExpress.Utils.SharedImageCollection UserTreeImgList;
         private DevExpress.XtraBars.BarButtonItem btnAddSalary;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        public DevExpress.XtraTreeList.TreeList FinTreeList;
     }
 }
