@@ -36,10 +36,10 @@
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.PrevBtn = new DevExpress.XtraBars.BarButtonItem();
             this.NextBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
+            this.AddWBInBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.AddWBOutBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.AddManufacturingBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.AddDeboningBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
@@ -107,6 +107,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).BeginInit();
             this.SuspendLayout();
             // 
             // barManagerImgList
@@ -214,10 +215,10 @@
             this.barButtonItem3,
             this.barButtonItem4,
             this.barSubItem3,
-            this.barButtonItem5,
-            this.barButtonItem6,
-            this.barButtonItem7,
-            this.barButtonItem8,
+            this.AddWBOutBtn,
+            this.AddWBInBtn,
+            this.AddManufacturingBtn,
+            this.AddDeboningBtn,
             this.barSubItem4,
             this.barSubItem5,
             this.barEditItem3,
@@ -251,10 +252,10 @@
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.PrevBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.NextBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8),
+            new DevExpress.XtraBars.LinkPersistInfo(this.AddWBInBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.AddWBOutBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.AddManufacturingBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.AddDeboningBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
@@ -279,37 +280,37 @@
             this.NextBtn.Name = "NextBtn";
             this.NextBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NextBtn_ItemClick);
             // 
-            // barButtonItem5
+            // AddWBInBtn
             // 
-            this.barButtonItem5.Caption = "Видаткова накладна";
-            this.barButtonItem5.Id = 10;
-            this.barButtonItem5.ImageIndex = 32;
-            this.barButtonItem5.Name = "barButtonItem5";
-            this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
+            this.AddWBInBtn.Caption = "Прибуткова накладна";
+            this.AddWBInBtn.Id = 11;
+            this.AddWBInBtn.ImageIndex = 31;
+            this.AddWBInBtn.Name = "AddWBInBtn";
+            this.AddWBInBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
             // 
-            // barButtonItem6
+            // AddWBOutBtn
             // 
-            this.barButtonItem6.Caption = "Прибуткова накладна";
-            this.barButtonItem6.Id = 11;
-            this.barButtonItem6.ImageIndex = 31;
-            this.barButtonItem6.Name = "barButtonItem6";
-            this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
+            this.AddWBOutBtn.Caption = "Видаткова накладна";
+            this.AddWBOutBtn.Id = 10;
+            this.AddWBOutBtn.ImageIndex = 32;
+            this.AddWBOutBtn.Name = "AddWBOutBtn";
+            this.AddWBOutBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
             // 
-            // barButtonItem7
+            // AddManufacturingBtn
             // 
-            this.barButtonItem7.Caption = "Виготовлення продукції";
-            this.barButtonItem7.Id = 12;
-            this.barButtonItem7.ImageIndex = 30;
-            this.barButtonItem7.Name = "barButtonItem7";
-            this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
+            this.AddManufacturingBtn.Caption = "Виготовлення продукції";
+            this.AddManufacturingBtn.Id = 12;
+            this.AddManufacturingBtn.ImageIndex = 30;
+            this.AddManufacturingBtn.Name = "AddManufacturingBtn";
+            this.AddManufacturingBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
             // 
-            // barButtonItem8
+            // AddDeboningBtn
             // 
-            this.barButtonItem8.Caption = "Обвалка";
-            this.barButtonItem8.Id = 13;
-            this.barButtonItem8.ImageIndex = 29;
-            this.barButtonItem8.Name = "barButtonItem8";
-            this.barButtonItem8.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
+            this.AddDeboningBtn.Caption = "Обвалка";
+            this.AddDeboningBtn.Id = 13;
+            this.AddDeboningBtn.ImageIndex = 29;
+            this.AddDeboningBtn.Name = "AddDeboningBtn";
+            this.AddDeboningBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
             // 
             // barButtonItem3
             // 
@@ -438,10 +439,10 @@
             this.barSubItem3.Caption = "Створити документ";
             this.barSubItem3.Id = 9;
             this.barSubItem3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.AddWBOutBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.AddWBInBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.AddManufacturingBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.AddDeboningBtn)});
             this.barSubItem3.Name = "barSubItem3";
             // 
             // barSubItem4
@@ -656,6 +657,7 @@
             // financesUserControl1
             // 
             this.financesUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.financesUserControl1.isDirectList = false;
             this.financesUserControl1.Location = new System.Drawing.Point(0, 0);
             this.financesUserControl1.Name = "financesUserControl1";
             this.financesUserControl1.Size = new System.Drawing.Size(1182, 572);
@@ -790,7 +792,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(43, "Редактор SQL-запитiв.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(44, "Журнал подій.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(45, "view_settings.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(46, "Фінанси.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(46, "finance.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(47, "Безготівкові гроші.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(48, "iconfinder_General_Office_24_2530784.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(49, "юзер.png");
@@ -801,8 +803,11 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(54, "map_pin-next-16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(55, "prod_plan.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(56, "salesreport2_16x16.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(57, "money-bag.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(58, "cash.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(57, "ROI-PNG-Clipart.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(58, "savings-money-pngrepo-com.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(59, "finance_process2.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(60, "Фінанси.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(61, "3.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // mainForm
@@ -840,6 +845,7 @@
             this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -881,10 +887,10 @@
         private MainTabs.FinancesUserControl financesUserControl1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.BarSubItem barSubItem3;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem8;
+        private DevExpress.XtraBars.BarButtonItem AddWBOutBtn;
+        private DevExpress.XtraBars.BarButtonItem AddWBInBtn;
+        private DevExpress.XtraBars.BarButtonItem AddManufacturingBtn;
+        private DevExpress.XtraBars.BarButtonItem AddDeboningBtn;
         private DevExpress.XtraBars.BarSubItem barSubItem4;
         private DevExpress.XtraBars.BarEditItem barEditItem3;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;

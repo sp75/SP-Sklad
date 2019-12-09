@@ -106,6 +106,7 @@
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.CurrensyList = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
@@ -185,6 +186,7 @@
             this.dateEdit2 = new DevExpress.XtraEditors.DateEdit();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
+            this.docsUserControl1 = new SP_Sklad.MainTabs.DocsUserControl();
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MoneyTurnoverBS)).BeginInit();
@@ -272,6 +274,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).BeginInit();
+            this.xtraTabPage10.SuspendLayout();
             this.SuspendLayout();
             // 
             // DocsPopupMenu
@@ -639,8 +642,6 @@
             this.PageImageList.Images.SetKeyName(16, "Доступ до склад_в.bmp");
             this.PageImageList.Images.SetKeyName(17, "Ф_нанси.bmp");
             this.PageImageList.Images.SetKeyName(18, "_нформац_я про рух товар_в.bmp");
-            this.PageImageList.Images.SetKeyName(19, "current_assets-512.png");
-            this.PageImageList.Images.SetKeyName(20, "high-productivity-icon.png");
             // 
             // MoneyTurnoverBS
             // 
@@ -752,7 +753,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(43, "Редактор SQL-запитiв.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(44, "Журнал подій.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(45, "view_settings.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(46, "Фінанси.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(46, "money-bag.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(47, "Безготівкові гроші.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(48, "iconfinder_General_Office_24_2530784.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(49, "юзер.png");
@@ -763,8 +764,10 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(54, "map_pin-next-16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(55, "prod_plan.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(56, "salesreport2_16x16.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(57, "cash.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(58, "money-bag.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(57, "ROI-PNG-Clipart.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(58, "3.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(59, "finance_process2.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(60, "Фінанси.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab
@@ -925,7 +928,7 @@
             // xtraTabPage15
             // 
             this.xtraTabPage15.Controls.Add(this.MoneyTurnGridControl);
-            this.xtraTabPage15.ImageIndex = 19;
+            this.xtraTabPage15.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPage15.Image")));
             this.xtraTabPage15.Name = "xtraTabPage15";
             this.xtraTabPage15.Size = new System.Drawing.Size(1018, 220);
             this.xtraTabPage15.Text = "Обороти";
@@ -955,7 +958,8 @@
             this.gridColumn13,
             this.gridColumn3,
             this.gridColumn4,
-            this.gridColumn5});
+            this.gridColumn5,
+            this.gridColumn17});
             this.MoneyTurnGridView.GridControl = this.MoneyTurnGridControl;
             this.MoneyTurnGridView.Name = "MoneyTurnGridView";
             this.MoneyTurnGridView.OptionsView.ShowGroupPanel = false;
@@ -1006,7 +1010,7 @@
             this.gridColumn13.FieldName = "PtypeName";
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 5;
+            this.gridColumn13.VisibleIndex = 6;
             this.gridColumn13.Width = 182;
             // 
             // gridColumn3
@@ -1047,7 +1051,7 @@
             this.gridColumn4.FieldName = "CashName";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 6;
+            this.gridColumn4.VisibleIndex = 7;
             this.gridColumn4.Width = 84;
             // 
             // gridColumn5
@@ -1056,8 +1060,16 @@
             this.gridColumn5.FieldName = "AccNum";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 7;
+            this.gridColumn5.VisibleIndex = 8;
             this.gridColumn5.Width = 98;
+            // 
+            // gridColumn17
+            // 
+            this.gridColumn17.Caption = "Валюта";
+            this.gridColumn17.FieldName = "CurrencyName";
+            this.gridColumn17.Name = "gridColumn17";
+            this.gridColumn17.Visible = true;
+            this.gridColumn17.VisibleIndex = 5;
             // 
             // panelControl2
             // 
@@ -1660,7 +1672,7 @@
             // 
             // vGridControl3
             // 
-            this.vGridControl3.Cursor = System.Windows.Forms.Cursors.SizeNS;
+            this.vGridControl3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.vGridControl3.DataSource = this.CurActivesBS;
             this.vGridControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl3.Location = new System.Drawing.Point(0, 31);
@@ -1763,7 +1775,7 @@
             // xtraTabPage1
             // 
             this.xtraTabPage1.Controls.Add(this.chartControl1);
-            this.xtraTabPage1.ImageIndex = 20;
+            this.xtraTabPage1.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPage1.Image")));
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(1018, 220);
             this.xtraTabPage1.Text = "Зростання активів";
@@ -1888,9 +1900,19 @@
             // 
             // xtraTabPage10
             // 
+            this.xtraTabPage10.Controls.Add(this.docsUserControl1);
             this.xtraTabPage10.Name = "xtraTabPage10";
             this.xtraTabPage10.Size = new System.Drawing.Size(1024, 630);
             this.xtraTabPage10.Text = "Платіжні документи";
+            // 
+            // docsUserControl1
+            // 
+            this.docsUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.docsUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.docsUserControl1.Name = "docsUserControl1";
+            this.docsUserControl1.set_tree_node = null;
+            this.docsUserControl1.Size = new System.Drawing.Size(1024, 630);
+            this.docsUserControl1.TabIndex = 0;
             // 
             // FinancesUserControl
             // 
@@ -1995,6 +2017,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).EndInit();
+            this.xtraTabPage10.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2145,5 +2168,7 @@
         private DevExpress.XtraBars.BarButtonItem btnAddSalary;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         public DevExpress.XtraTreeList.TreeList FinTreeList;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
+        private DocsUserControl docsUserControl1;
     }
 }

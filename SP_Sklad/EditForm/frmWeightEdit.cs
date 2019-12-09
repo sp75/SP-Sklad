@@ -12,11 +12,11 @@ using SP_Sklad.Common;
 
 namespace SP_Sklad.EditForm
 {
-    public partial class frmMatListEdit : DevExpress.XtraEditors.XtraForm
+    public partial class frmWeightEdit : DevExpress.XtraEditors.XtraForm
     {
         private ComPortHelper com_port { get; set; }
 
-        public frmMatListEdit(String MatName)
+        public frmWeightEdit(String MatName)
         {
             InitializeComponent();
             AmountEdit.EditValue = 0;

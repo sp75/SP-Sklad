@@ -383,7 +383,7 @@ namespace SP_Sklad.Reports
         {
             var dataForReport = new Dictionary<string, IList>();
             var wbl = db.WaybillList.Where(w => w.Id == id).Select(s => new { s.OnDate, s.WbillId }).First();
-            var wb = db.WBListMake(wbl.OnDate, wbl.OnDate, -1, "*", 0, -20).ToList();
+            var wb = db.WBListMake(wbl.OnDate, wbl.OnDate, -1, "*", 0, -20).Where(w=> w.Id == id).ToList();
             var item = db.GetWayBillDetOut(wbl.WbillId).ToList().OrderBy(o => o.Num).Select((s, index) => new
             {
                 Num = index + 1,

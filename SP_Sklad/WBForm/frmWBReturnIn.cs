@@ -1,19 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
-using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using SP_Sklad.SkladData;
 using SP_Sklad.WBDetForm;
 using SP_Sklad.Common;
-using System.Windows.Input;
 using SP_Sklad.Reports;
 using SkladEngine.ModelViews;
 using SP_Sklad.Properties;
@@ -303,16 +298,6 @@ namespace SP_Sklad.WBForm
             if (IHelper.isRowDublClick(sender)) EditMaterialBtn.PerformClick();
         }
 
-        private void barManager1_EditorKeyPress(object sender, KeyPressEventArgs e)
-        {
-            
-        }
-
-        private void barManager1_EditorKeyPress_1(object sender, KeyPressEventArgs e)
-        {
-          
-        }
-
         private void textEdit1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13 && AddMaterialBtn.Enabled && !String.IsNullOrEmpty(BarCodeEdit.Text))
@@ -375,20 +360,6 @@ namespace SP_Sklad.WBForm
             IHelper.ShowOrdered((int)KagentComboBox.EditValue, -16, 0);
         }
 
-        private void KAgentBtn_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void PersonEditBtn_Click(object sender, EventArgs e)
-        {
-          
-        }
-
-        private void simpleButton4_Click(object sender, EventArgs e)
-        {
-           
-        }
 
         private void PersonComboBox_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
@@ -410,8 +381,7 @@ namespace SP_Sklad.WBForm
         {
             if (e.Button.Index == 1)
             {
-                wb.KaId = (int)IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
-                KagentComboBox.EditValue = wb.KaId;
+                KagentComboBox.EditValue = IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
             }
         }
 

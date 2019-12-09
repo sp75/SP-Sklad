@@ -19,6 +19,8 @@ namespace SP_Sklad.SkladData
         public System.Guid IntermediateWeighingId { get; set; }
         public decimal Amount { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
+        public Nullable<decimal> TaraAmount { get; set; }
+        public Nullable<decimal> Total { get; set; }
     
         public virtual IntermediateWeighing IntermediateWeighing { get; set; }
         public virtual Materials Materials { get; set; }

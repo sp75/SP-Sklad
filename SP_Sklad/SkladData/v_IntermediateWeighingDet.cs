@@ -26,5 +26,7 @@ namespace SP_Sklad.SkladData
         public int Checked { get; set; }
         public string PersonName { get; set; }
         public int WbillId { get; set; }
+        public Nullable<decimal> TaraAmount { get; set; }
+        public Nullable<decimal> Total { get; set; }
     }
 }

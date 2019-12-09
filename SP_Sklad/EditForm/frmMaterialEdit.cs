@@ -615,7 +615,7 @@ namespace SP_Sklad.EditForm
         {
             if (e.Button.Index == 1)
             {
-                var frm = new frmMatListEdit(_mat.Name);
+                var frm = new frmWeightEdit(_mat.Name);
 
                 if (frm.ShowDialog() == DialogResult.OK)
                 {

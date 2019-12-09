@@ -299,7 +299,22 @@ namespace SP_Sklad.WBDetForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            if (!DiscountCheckBox.Checked) _wbd.Discount = 0;
+            if (!DiscountCheckBox.Checked)
+            {
+                _wbd.Discount = 0;
+
+                if (_wbd.WayBillDetAddProps != null)
+                {
+                    _wbd.WayBillDetAddProps.CardId = null;
+                }
+            }
+            else if (CheckCustomEdit.Checked)
+            {
+                if (_wbd.WayBillDetAddProps != null)
+                {
+                    _wbd.WayBillDetAddProps.CardId = null;
+                }
+            }
 
             _wbd.Price = Convert.ToDecimal(PriceNotNDSEdit.EditValue);
 
@@ -414,8 +429,6 @@ namespace SP_Sklad.WBDetForm
 
             if (!CheckCustomEdit.Checked && CheckCustomEdit.ContainsFocus)
             {
-
-
                 GetDiscount(Convert.ToInt32( MatComboBox.EditValue));
             }
         }

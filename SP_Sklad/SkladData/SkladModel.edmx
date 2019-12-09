@@ -349,6 +349,8 @@
           <Property Name="IntermediateWeighingId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Amount" Type="numeric" Precision="15" Scale="4" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="TaraAmount" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="Total" Type="numeric" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="Jobs">
           <Key>
@@ -1657,6 +1659,8 @@ warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighingDet' does not ha
           <Property Name="Checked" Type="int" Nullable="false" />
           <Property Name="PersonName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="WbillId" Type="int" Nullable="false" />
+          <Property Name="TaraAmount" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="Total" Type="numeric" Precision="15" Scale="4" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_KAgentAccount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -6365,7 +6369,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_IntermediateWeighingDet].[OnDate] AS [OnDate], 
     [v_IntermediateWeighingDet].[Checked] AS [Checked], 
     [v_IntermediateWeighingDet].[PersonName] AS [PersonName], 
-    [v_IntermediateWeighingDet].[WbillId] AS [WbillId]
+    [v_IntermediateWeighingDet].[WbillId] AS [WbillId], 
+    [v_IntermediateWeighingDet].[TaraAmount] AS [TaraAmount], 
+    [v_IntermediateWeighingDet].[Total] AS [Total]
     FROM [dbo].[v_IntermediateWeighingDet] AS [v_IntermediateWeighingDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_KAgentAccount" EntityType="Self.v_KAgentAccount" store:Type="Views" store:Schema="dbo">
@@ -14406,6 +14412,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="IntermediateWeighing" Relationship="BaseModel.FK_IntermediateWeighingDet_IntermediateWeighing" FromRole="IntermediateWeighingDet" ToRole="IntermediateWeighing" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK_IntermediateWeighingDet_Materials" FromRole="IntermediateWeighingDet" ToRole="Materials" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="TaraAmount" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="Total" Type="Decimal" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="v_IntermediateWeighingDet">
           <Key>
@@ -14431,6 +14439,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Checked" Type="Int32" Nullable="false" />
           <Property Name="PersonName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="WbillId" Type="Int32" Nullable="false" />
+          <Property Name="TaraAmount" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="Total" Type="Decimal" Precision="15" Scale="4" />
         </EntityType>
         <Association Name="FK_IntermediateWeighingDet_IntermediateWeighing">
           <End Type="BaseModel.IntermediateWeighing" Role="IntermediateWeighing" Multiplicity="1">
@@ -18249,6 +18259,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="IntermediateWeighingDet">
             <EntityTypeMapping TypeName="BaseModel.IntermediateWeighingDet">
               <MappingFragment StoreEntitySet="IntermediateWeighingDet">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="TaraAmount" ColumnName="TaraAmount" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="IntermediateWeighingId" ColumnName="IntermediateWeighingId" />
@@ -18260,6 +18272,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_IntermediateWeighingDet">
             <EntityTypeMapping TypeName="BaseModel.v_IntermediateWeighingDet">
               <MappingFragment StoreEntitySet="v_IntermediateWeighingDet">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="TaraAmount" ColumnName="TaraAmount" />
                 <ScalarProperty Name="WbillId" ColumnName="WbillId" />
                 <ScalarProperty Name="PersonName" ColumnName="PersonName" />
                 <ScalarProperty Name="Checked" ColumnName="Checked" />

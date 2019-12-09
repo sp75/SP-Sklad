@@ -124,7 +124,7 @@ namespace SP_Sklad.WBDetForm
         {
             if (e.Button.Index == 1)
             {
-                var frm = new frmMatListEdit(TechProcessCB.Text);
+                var frm = new frmWeightEdit(TechProcessCB.Text);
 
                 if (frm.ShowDialog() == DialogResult.OK)
                 {

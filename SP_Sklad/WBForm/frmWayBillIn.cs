@@ -300,6 +300,7 @@ namespace SP_Sklad.WBForm
             OkButton.Enabled = recult;
             EditMaterialBtn.Enabled = WaybillDetInBS.List.Count > 0;
             DelMaterialBtn.Enabled = WaybillDetInBS.List.Count > 0;
+            barButtonItem5.Enabled = WaybillDetInBS.List.Count > 0;
 
             CurrencyLookUpEdit.Enabled = WaybillDetInBS.List.Count == 0;
             CurRateEdit.Enabled = WaybillDetInBS.List.Count == 0;

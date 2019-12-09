@@ -453,6 +453,11 @@ namespace SP_Sklad.WBForm
 
         private void MarkBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (wbd_row == null)
+            {
+                return;
+            }
+
             if (wbd_row.PosType == 0)
             {
                 var wbd = _db.WaybillDet.Find(wbd_row.PosId);
@@ -634,7 +639,7 @@ namespace SP_Sklad.WBForm
                 return;
             }
 
-            using (var frm = new frmMatListEdit(wbd_row.MatName))
+            using (var frm = new frmWeightEdit(wbd_row.MatName))
             {
                 frm.PriceEdit.EditValue = wbd_row.Price;
 

@@ -281,11 +281,11 @@
     <Compile Include="EditForm\frmDiscountCardEdit.Designer.cs">
       <DependentUpon>frmDiscountCardEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditForm\frmMatListEdit.cs">
+    <Compile Include="EditForm\frmWeightEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditForm\frmMatListEdit.Designer.cs">
-      <DependentUpon>frmMatListEdit.cs</DependentUpon>
+    <Compile Include="EditForm\frmWeightEdit.Designer.cs">
+      <DependentUpon>frmWeightEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="EditForm\frmMeasuresEdit.cs">
       <SubType>Form</SubType>
@@ -1510,8 +1510,8 @@
     <EmbeddedResource Include="EditForm\frmDiscountCardEdit.resx">
       <DependentUpon>frmDiscountCardEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditForm\frmMatListEdit.resx">
-      <DependentUpon>frmMatListEdit.cs</DependentUpon>
+    <EmbeddedResource Include="EditForm\frmWeightEdit.resx">
+      <DependentUpon>frmWeightEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmMeasuresEdit.resx">
       <DependentUpon>frmMeasuresEdit.cs</DependentUpon>
@@ -1993,6 +1993,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="BMP\PNG\finance32.png" />
     <Content Include="main_ico.ico" />
     <Content Include="Склади.ico" />
   </ItemGroup>

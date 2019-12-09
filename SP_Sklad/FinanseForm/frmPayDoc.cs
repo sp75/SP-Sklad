@@ -125,7 +125,7 @@ namespace SP_Sklad.FinanseForm
                 PersonEdit.DataBindings.Add(new Binding("EditValue", _pd, "MPersonId", true, DataSourceUpdateMode.OnPropertyChanged));
                 SumEdit.DataBindings.Add(new Binding("EditValue", _pd, "Total"));
                 CurrEdit.DataBindings.Add(new Binding("EditValue", _pd, "CurrId"));
-                CurrValueEdit.DataBindings.Add(new Binding("EditValue", _pd, "OnValue"));
+                CurrValueEdit.DataBindings.Add(new Binding("EditValue", _pd, "OnValue", true, DataSourceUpdateMode.OnPropertyChanged));
                 SchetEdit.DataBindings.Add(new Binding("EditValue", _pd, "Schet"));
                 WithNDScheckEdit.DataBindings.Add(new Binding("EditValue", _pd, "WithNDS"));
                 ReasonEdit.DataBindings.Add(new Binding("EditValue", _pd, "Reason"));
@@ -314,7 +314,7 @@ namespace SP_Sklad.FinanseForm
              }
              else
              {
-                 textEdit4.EditValue = row.Balans - SumEdit.Value;
+                textEdit4.EditValue = row.Balans - (SumEdit.Value * CurrValueEdit.Value);
              }
 
              GetOk();

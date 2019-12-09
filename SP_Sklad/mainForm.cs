@@ -113,6 +113,12 @@ namespace SP_Sklad
 
             GetMainHeder();
 
+            var user_acc = DB.SkladBase().UserAccess.Where(w => w.UserId == DBHelper.CurrentUser.UserId).ToList();
+            AddDeboningBtn.Enabled = user_acc.Any(w =>  w.FunId == 72 && w.CanInsert == 1);
+            AddManufacturingBtn.Enabled = user_acc.Any(w =>  w.FunId == 68 && w.CanInsert == 1);
+            AddWBOutBtn.Enabled = user_acc.Any(w =>  w.FunId == 23 && w.CanInsert == 1);
+            AddWBInBtn.Enabled = user_acc.Any(w => w.FunId == 21 && w.CanInsert == 1);
+
             xtraTabControl1.SelectedTabPageIndex = Properties.Settings.Default.LastTabPage;
             SetNode(new HistoryEntity { FunId = Properties.Settings.Default.LastFunId, MainTabs = Properties.Settings.Default.LastTabPage } );
         }
@@ -158,7 +164,7 @@ namespace SP_Sklad
 
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (var wb_in = new frmWayBillOut(1, null))
+            using (var wb_in = new frmWayBillIn(1, null))
             {
                 wb_in.ShowDialog();
             }

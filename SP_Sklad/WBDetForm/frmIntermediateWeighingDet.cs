@@ -44,7 +44,8 @@ namespace SP_Sklad.WBDetForm
                     Id = Guid.NewGuid(),
                     Amount = 0,
                     IntermediateWeighingId = _iw.Id,
-                    CreatedDate = DBHelper.ServerDateTime()
+                    CreatedDate = DBHelper.ServerDateTime(),
+                    TaraAmount = 0
                 };
 
 
@@ -70,13 +71,15 @@ namespace SP_Sklad.WBDetForm
             if (row != null)
             {
                 ByRecipeEdit.EditValue = row.AmountByRecipe;
-                IntermediateWeighingEdit.EditValue = row.AmountIntermediateWeighing;
+                IntermediateWeighingEdit.EditValue = row.AmountIntermediateWeighing ;
                 TotalEdit.EditValue = row.AmountByRecipe - (row.AmountIntermediateWeighing ?? 0);
             }
         }
 
         private void OkButton_Click(object sender, EventArgs e)
         {
+            det.Total = det.Amount - det.TaraAmount;
+
             if (_db.Entry<IntermediateWeighingDet>(det).State == EntityState.Detached)
             {
                 _db.IntermediateWeighingDet.Add(det);
@@ -121,7 +124,7 @@ namespace SP_Sklad.WBDetForm
         {
             if (e.Button.Index == 1)
             {
-                var frm = new frmMatListEdit(MatComboBox.Text);
+                var frm = new frmWeightEdit(MatComboBox.Text);
 
                 if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {

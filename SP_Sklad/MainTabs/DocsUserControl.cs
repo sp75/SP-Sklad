@@ -31,6 +31,7 @@ namespace SP_Sklad.MainTabs
         int show_null_balance = 1;
         BaseEntities _db { get; set; }
         v_GetDocsTree focused_tree_node { get; set; }
+        public int? set_tree_node { get; set; }
 
         private GetWayBillList_Result wb_focused_row
         {
@@ -90,6 +91,13 @@ namespace SP_Sklad.MainTabs
                 PDSatusList.EditValue = -1;
 
                 DocsTreeList.DataSource = _db.v_GetDocsTree.Where(w => w.UserId == null || w.UserId == DBHelper.CurrentUser.UserId).OrderBy(o => o.Num).ToList();
+                if (set_tree_node != null)
+                {
+                    DocsTreeList.FocusedNode = DocsTreeList.FindNodeByFieldValue("Id", set_tree_node);
+                    set_tree_node = null;
+                }
+
+
                 DocsTreeList.ExpandAll();
 
                 WbBalansGridColumn.Visible = (DBHelper.CurrentUser.ShowBalance == 1);

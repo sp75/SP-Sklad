@@ -144,6 +144,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeAccessBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).BeginInit();
             this.xtraTabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UserAccessWhGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserAccessWhGridView)).BeginInit();
@@ -833,8 +834,8 @@
             this.gridColumn2.FieldName = "Allow";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 0;
-            this.gridColumn2.Width = 73;
+            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.Width = 93;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -853,8 +854,8 @@
             this.gridColumn3.FieldName = "Name";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 1;
-            this.gridColumn3.Width = 446;
+            this.gridColumn3.VisibleIndex = 0;
+            this.gridColumn3.Width = 421;
             // 
             // gridColumn6
             // 
@@ -863,7 +864,7 @@
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 2;
-            this.gridColumn6.Width = 98;
+            this.gridColumn6.Width = 103;
             // 
             // xtraTabPage5
             // 
@@ -1146,6 +1147,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeAccessBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).EndInit();
             this.xtraTabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.UserAccessWhGridControl)).EndInit();

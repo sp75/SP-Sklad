@@ -288,6 +288,7 @@ namespace SP_Sklad.EditForm
         private void UserAccessWhGridView_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
             var row = UserAccessWhGridView.GetFocusedRow() as GetUserAccessWh_Result;
+
             if (e.Column.FieldName == "Allow")
             {
                 if ((int)e.CellValue == 0)
@@ -305,7 +306,6 @@ namespace SP_Sklad.EditForm
                 row.UseReceived = false;
 
                 UserAccessWhGridView.RefreshRowCell(UserAccessWhGridView.FocusedRowHandle, e.Column);
-                //   UserAccessWhGridControl.DataSource = _db.GetUserAccessWh(_user_id).ToList();
             }
 
             if (e.Column.FieldName == "UseReceived" && row.Allow ==1)

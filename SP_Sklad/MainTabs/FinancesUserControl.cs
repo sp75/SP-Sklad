@@ -11,6 +11,7 @@ using SP_Sklad.SkladData;
 using SP_Sklad.FinanseForm;
 using SP_Sklad.Common;
 using SP_Sklad.Properties;
+using DevExpress.XtraEditors;
 
 namespace SP_Sklad.MainTabs
 {
@@ -104,6 +105,7 @@ namespace SP_Sklad.MainTabs
             {
                 case 1:
                     FinTreeList.DataSource = new BaseEntities().GetSaldoDetTree(DBHelper.CurrentUser.UserId, focused_tree_node.Id, DateTime.Now).ToList();
+                    FinTreeList.FocusedNode = FinTreeList.Nodes.FirstNode;
                     gridControl1.DataSource = new BaseEntities().MoneyOnDate(DateTime.Now).GroupBy(g => new { g.Currency }).Select(s => new { s.Key.Currency, Saldo = s.Sum(m => m.Saldo) }).ToList();
                     break;
 
@@ -114,6 +116,12 @@ namespace SP_Sklad.MainTabs
                     break;
                 case 3:
                     CurActivesBS.DataSource = new BaseEntities().GetActives(DateTime.Now.Date,DateTime.Now.Date).OrderByDescending(o=> o.OnDate).FirstOrDefault();  //v_Actives.Where(w => w.OnDate == d).ToList();
+                    break;
+
+                case 4:
+                    docsUserControl1.set_tree_node = focused_tree_node.Id;
+                    docsUserControl1.DocsTreeList.FocusedNode = docsUserControl1.DocsTreeList.FindNodeByFieldValue("Id", focused_tree_node.Id);
+                    docsUserControl1.splitContainerControl1.PanelVisibility = SplitPanelVisibility.Panel2;
                     break;
             }
         }

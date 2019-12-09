@@ -48,10 +48,12 @@
             this.ByRecipeEdit = new DevExpress.XtraEditors.TextEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.AmountEdit = new DevExpress.XtraEditors.CalcEdit();
-            this.IntermediateWeighingDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.MatComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.calcEdit1 = new DevExpress.XtraEditors.CalcEdit();
+            this.IntermediateWeighingDetBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -64,15 +66,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AmountEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingDetBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatComboBox.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingDetBS)).BeginInit();
             this.SuspendLayout();
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(394, 202);
+            this.OkButton.Location = new System.Drawing.Point(394, 238);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(98, 26);
             this.OkButton.TabIndex = 5;
@@ -83,7 +86,7 @@
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton1.Location = new System.Drawing.Point(498, 202);
+            this.simpleButton1.Location = new System.Drawing.Point(498, 238);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(93, 26);
             this.simpleButton1.TabIndex = 4;
@@ -98,7 +101,7 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(598, 244);
+            this.panelControl2.Size = new System.Drawing.Size(598, 280);
             this.panelControl2.TabIndex = 31;
             // 
             // panel1
@@ -109,7 +112,7 @@
             this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
-            this.panel1.Size = new System.Drawing.Size(594, 188);
+            this.panel1.Size = new System.Drawing.Size(594, 221);
             this.panel1.TabIndex = 25;
             // 
             // groupControl3
@@ -121,9 +124,9 @@
             this.groupControl3.Controls.Add(this.IntermediateWeighingEdit);
             this.groupControl3.Controls.Add(this.ByRecipeEdit);
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl3.Location = new System.Drawing.Point(5, 64);
+            this.groupControl3.Location = new System.Drawing.Point(5, 90);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(584, 119);
+            this.groupControl3.Size = new System.Drawing.Size(584, 126);
             this.groupControl3.TabIndex = 26;
             this.groupControl3.Tag = "";
             this.groupControl3.Text = "Підсумок";
@@ -201,6 +204,8 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.calcEdit1);
+            this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.AmountEdit);
             this.panelControl1.Controls.Add(this.MatComboBox);
             this.panelControl1.Controls.Add(this.labelControl3);
@@ -208,7 +213,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(5, 5);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(584, 59);
+            this.panelControl1.Size = new System.Drawing.Size(584, 85);
             this.panelControl1.TabIndex = 0;
             // 
             // AmountEdit
@@ -228,10 +233,6 @@
             this.AmountEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AmountEdit_KeyPress);
             this.AmountEdit.MouseUp += new System.Windows.Forms.MouseEventHandler(this.AmountEdit_MouseUp);
             // 
-            // IntermediateWeighingDetBS
-            // 
-            this.IntermediateWeighingDetBS.DataSource = typeof(SP_Sklad.SkladData.IntermediateWeighingDet);
-            // 
             // MatComboBox
             // 
             this.MatComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.IntermediateWeighingDetBS, "MatId", true));
@@ -248,7 +249,7 @@
             this.MatComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.MatComboBox.Properties.ValueMember = "MatId";
             this.MatComboBox.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.RecipeComboBox_Properties_ButtonClick);
-            this.MatComboBox.Size = new System.Drawing.Size(293, 22);
+            this.MatComboBox.Size = new System.Drawing.Size(280, 22);
             this.MatComboBox.StyleController = this.styleController1;
             this.MatComboBox.TabIndex = 23;
             this.MatComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.MatComboBox_ButtonClick);
@@ -273,11 +274,37 @@
             this.labelControl1.TabIndex = 39;
             this.labelControl1.Text = "Кі-сть";
             // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(411, 53);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(29, 16);
+            this.labelControl2.StyleController = this.styleController1;
+            this.labelControl2.TabIndex = 44;
+            this.labelControl2.Text = "Тара";
+            // 
+            // calcEdit1
+            // 
+            this.calcEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.IntermediateWeighingDetBS, "TaraAmount", true));
+            this.calcEdit1.Location = new System.Drawing.Point(446, 50);
+            this.calcEdit1.Name = "calcEdit1";
+            this.calcEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.calcEdit1.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.calcEdit1.Properties.ShowCloseButton = true;
+            this.calcEdit1.Size = new System.Drawing.Size(126, 22);
+            this.calcEdit1.StyleController = this.styleController1;
+            this.calcEdit1.TabIndex = 45;
+            // 
+            // IntermediateWeighingDetBS
+            // 
+            this.IntermediateWeighingDetBS.DataSource = typeof(SP_Sklad.SkladData.IntermediateWeighingDet);
+            // 
             // frmIntermediateWeighingDet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(598, 244);
+            this.ClientSize = new System.Drawing.Size(598, 280);
             this.Controls.Add(this.panelControl2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmIntermediateWeighingDet";
@@ -299,8 +326,9 @@
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AmountEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingDetBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatComboBox.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingDetBS)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -325,5 +353,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl29;
         private DevExpress.XtraEditors.TextEdit IntermediateWeighingEdit;
         private DevExpress.XtraEditors.TextEdit ByRecipeEdit;
+        private DevExpress.XtraEditors.CalcEdit calcEdit1;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
     }
 }
