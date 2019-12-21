@@ -638,6 +638,7 @@
           <Property Name="RType" Type="int" />
           <Property Name="Out" Type="numeric" Precision="15" Scale="4" Nullable="false" />
           <Property Name="Archived" Type="bit" Nullable="false" />
+          <Property Name="Deviation" Type="numeric" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="MatRecipeTechProcDet">
           <Key>
@@ -4417,6 +4418,27 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="GetMatGroupPriceTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="grp_id" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="PTypeId" Type="int" Nullable="false" />
+                <Property Name="Name" Type="varchar" MaxLength="64" Nullable="false" />
+                <Property Name="OnValue" Type="numeric" Precision="19" Scale="8" />
+                <Property Name="PPTypeId" Type="int" />
+                <Property Name="ExtraType" Type="int" />
+                <Property Name="WithNds" Type="int" />
+                <Property Name="Dis" Type="int" />
+                <Property Name="CurrId" Type="int" />
+                <Property Name="GrpId" Type="int" />
+                <Property Name="IsIndividually" Type="int" Nullable="false" />
+                <Property Name="PtName" Type="nvarchar" MaxLength="128" />
+                <Property Name="TypeName" Type="varchar" MaxLength="17" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="GetMatGroupTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="root_cat_id" Type="int" Mode="In" />
           <ReturnType>
@@ -4504,6 +4526,18 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="TypeName" Type="nvarchar" MaxLength="50" />
                 <Property Name="WhName" Type="nvarchar" MaxLength="250" />
                 <Property Name="KAgentGroupId" Type="uniqueidentifier" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="GetMatNds" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MATID" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="NDS" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="GRPNAME" Type="nvarchar" MaxLength="64" />
+                <Property Name="GRPID" Type="int" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -5776,30 +5810,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
         </Function>
         <Function Name="SP_GET_AVG_PRICE_TEST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="numeric">
           <Parameter Name="IN_POSID" Type="int" Mode="In" />
-        </Function>
-        <Function Name="SP_GET_MAT_NDS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="MATID" Type="int" Mode="In" />
-          <ReturnType>
-            <CollectionType>
-              <RowType>
-                <Property Name="NDS" Type="numeric" Precision="15" Scale="8" />
-                <Property Name="GRPNAME" Type="nvarchar" MaxLength="64" />
-                <Property Name="GRPID" Type="int" />
-              </RowType>
-            </CollectionType>
-          </ReturnType>
-        </Function>
-        <Function Name="SP_GET_MATGRP_NDS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="GRPID" Type="int" Mode="In" />
-          <ReturnType>
-            <CollectionType>
-              <RowType>
-                <Property Name="ANDS" Type="numeric" Precision="15" Scale="8" />
-                <Property Name="AGRPID" Type="int" />
-                <Property Name="AGRPNAME" Type="nvarchar" MaxLength="64" />
-              </RowType>
-            </CollectionType>
-          </ReturnType>
         </Function>
         <Function Name="SP_GET_POS_STATUS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
           <Parameter Name="WBILLID" Type="int" Mode="In" />
@@ -7490,9 +7500,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <FunctionImport Name="WBDGetOutP2" IsComposable="true" ReturnType="Collection(BaseModel.WBDGetOutP2_Result)">
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_GET_MAT_NDS" IsComposable="true" ReturnType="Collection(BaseModel.SP_GET_MAT_NDS_Result)">
-          <Parameter Name="MATID" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SP_MAT_REMAIN_GET_SIMPLE" IsComposable="true" ReturnType="Collection(BaseModel.SP_MAT_REMAIN_GET_SIMPLE_Result)">
             <Parameter Name="MatId" Mode="In" Type="Int32" />
             <Parameter Name="OnDate" Mode="In" Type="DateTime" />
@@ -8550,14 +8557,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="RecId" Mode="In" Type="Int32" />
             <Parameter Name="PlId" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="WBListMake" ReturnType="Collection(BaseModel.WBListMake_Result)">
-            <Parameter Name="from_date" Mode="In" Type="DateTime" />
-            <Parameter Name="to_date" Mode="In" Type="DateTime" />
-            <Parameter Name="is_checked" Mode="In" Type="Int32" />
-            <Parameter Name="wh" Mode="In" Type="String" />
-            <Parameter Name="grp_id" Mode="In" Type="Int32" />
-            <Parameter Name="w_type" Mode="In" Type="Int32" />
-          </FunctionImport>
           <EntitySet Name="v_PayDoc" EntityType="BaseModel.v_PayDoc" />
           <EntitySet Name="v_MatRecipe" EntityType="BaseModel.v_MatRecipe" />
           <FunctionImport Name="GetUsedMaterials" IsComposable="true" ReturnType="Collection(BaseModel.GetUsedMaterials_Result)">
@@ -8764,6 +8763,20 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="user_id" Mode="In" Type="Int32" />
             <Parameter Name="id" Mode="In" Type="Int32" />
             <Parameter Name="on_date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="WBListMake" ReturnType="Collection(BaseModel.WBListMake_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="is_checked" Mode="In" Type="Int32" />
+            <Parameter Name="wh" Mode="In" Type="String" />
+            <Parameter Name="grp_id" Mode="In" Type="Int32" />
+            <Parameter Name="w_type" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetMatGroupPriceTypes" IsComposable="true" ReturnType="Collection(BaseModel.GetMatGroupPriceTypes_Result)">
+          <Parameter Name="grp_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetMatNds" IsComposable="true" ReturnType="Collection(BaseModel.GetMatNds_Result)">
+            <Parameter Name="MATID" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
@@ -9063,11 +9076,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="MsrCode" Nullable="true" MaxLength="14" />
           <Property Type="String" Name="Notes" Nullable="true" MaxLength="255" />
           <Property Type="String" Name="SerialNo" Nullable="true" MaxLength="64" />
-        </ComplexType>
-        <ComplexType Name="SP_GET_MAT_NDS_Result">
-          <Property Type="Decimal" Name="NDS" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="String" Name="GRPNAME" Nullable="true" MaxLength="64" />
-          <Property Type="Int32" Name="GRPID" Nullable="true" />
         </ComplexType>
         <ComplexType Name="SP_MAT_REMAIN_GET_SIMPLE_Result">
           <Property Type="Decimal" Name="Remain" Nullable="true" Precision="15" Scale="4" />
@@ -9597,6 +9605,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="SchedulingOrders" Relationship="BaseModel.FK_SchedulingOrders_MatRecipe" FromRole="MatRecipe" ToRole="SchedulingOrders" />
           <NavigationProperty Name="PlannedCalculationDet" Relationship="BaseModel.FK_CalcRawMaterialDet_MatRecipe" FromRole="MatRecipe" ToRole="PlannedCalculationDet" />
           <Property Type="Boolean" Name="Archived" Nullable="false" />
+          <Property Name="Deviation" Type="Decimal" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="WayBillMake">
           <Key>
@@ -13721,49 +13730,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="WBListMake_Result">
-          <Property Type="Guid" Name="Id" Nullable="false" />
-          <Property Type="Int32" Name="WbillId" Nullable="false" />
-          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" />
-          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
-          <Property Type="Int32" Name="CurrId" Nullable="true" />
-          <Property Type="String" Name="Reason" Nullable="true" MaxLength="255" />
-          <Property Type="Int32" Name="Checked" Nullable="false" />
-          <Property Type="Decimal" Name="SummAll" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="Int32" Name="WType" Nullable="false" />
-          <Property Type="Decimal" Name="Nds" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="PersonId" Nullable="true" />
-          <Property Type="String" Name="Notes" Nullable="true" MaxLength="255" />
-          <Property Type="Int32" Name="DocId" Nullable="true" />
-          <Property Type="Decimal" Name="SummInCurr" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
-          <Property Type="Decimal" Name="CurrRate" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="AttNum" Nullable="true" MaxLength="15" />
-          <Property Type="DateTime" Name="AttDate" Nullable="true" Precision="23" />
-          <Property Type="String" Name="Received" Nullable="true" MaxLength="64" />
-          <Property Type="DateTime" Name="ToDate" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="DefNum" Nullable="false" />
-          <Property Type="String" Name="RecipeName" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
-          <Property Type="Decimal" Name="AmountIn" Nullable="false" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="MatId" Nullable="false" />
-          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
-          <Property Type="String" Name="KaName" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="MakedPerson" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="MId" Nullable="false" />
-          <Property Type="DateTime" Name="OnDateOut" Nullable="true" Precision="23" />
-          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="AmountBrutto" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="DateTime" Name="WriteOnDate" Nullable="true" Precision="23" />
-          <Property Type="String" Name="FromWh" Nullable="true" MaxLength="64" />
-          <Property Type="Int32" Name="FromWId" Nullable="true" />
-          <Property Type="String" Name="DocStatus" Nullable="false" MaxLength="21" />
-          <Property Type="Decimal" Name="Price" Nullable="true" Precision="38" Scale="17" />
-          <Property Type="Decimal" Name="ShippedAmount" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="Tara" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="SaldoShipped" Nullable="true" Precision="38" Scale="4" />
-        </ComplexType>
         <EntityType Name="v_PayDoc">
           <Key>
             <PropertyRef Name="PayDocId" />
@@ -14627,6 +14593,71 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Decimal" Name="Saldo" Nullable="true" Precision="38" Scale="2" />
           <Property Type="Int32" Name="OriginalId" Nullable="false" />
         </ComplexType>
+        <ComplexType Name="WBListMake_Result">
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="WbillId" Nullable="false" />
+          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="String" Name="Reason" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Checked" Nullable="false" />
+          <Property Type="Decimal" Name="SummAll" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Int32" Name="WType" Nullable="false" />
+          <Property Type="Decimal" Name="Nds" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="PersonId" Nullable="true" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="DocId" Nullable="true" />
+          <Property Type="Decimal" Name="SummInCurr" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
+          <Property Type="Decimal" Name="CurrRate" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="AttNum" Nullable="true" MaxLength="15" />
+          <Property Type="DateTime" Name="AttDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Received" Nullable="true" MaxLength="64" />
+          <Property Type="DateTime" Name="ToDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="DefNum" Nullable="false" />
+          <Property Type="String" Name="RecipeName" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="MatRecipeOut" Nullable="false" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Deviation" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="AmountIn" Nullable="false" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="KaName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="MakedPerson" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="MId" Nullable="false" />
+          <Property Type="DateTime" Name="OnDateOut" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AmountBrutto" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="DateTime" Name="WriteOnDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="FromWh" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="FromWId" Nullable="true" />
+          <Property Type="String" Name="DocStatus" Nullable="false" MaxLength="21" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="38" Scale="17" />
+          <Property Type="Decimal" Name="ShippedAmount" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Tara" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="SaldoShipped" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="MatOut" Nullable="true" Precision="38" Scale="6" />
+        </ComplexType>
+        <ComplexType Name="GetMatGroupPriceTypes_Result">
+          <Property Type="Int32" Name="PTypeId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="64" />
+          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="19" Scale="8" />
+          <Property Type="Int32" Name="PPTypeId" Nullable="true" />
+          <Property Type="Int32" Name="ExtraType" Nullable="true" />
+          <Property Type="Int32" Name="WithNds" Nullable="true" />
+          <Property Type="Int32" Name="Dis" Nullable="true" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="Int32" Name="GrpId" Nullable="true" />
+          <Property Type="Int32" Name="IsIndividually" Nullable="false" />
+          <Property Type="String" Name="PtName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="TypeName" Nullable="false" MaxLength="17" />
+        </ComplexType>
+        <ComplexType Name="GetMatNds_Result">
+          <Property Type="Decimal" Name="NDS" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="String" Name="GRPNAME" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="GRPID" Nullable="true" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -14796,15 +14827,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="BaseModel.Store.SP_GET_MATGRP_NDS" FunctionImportName="SP_GET_MATGRP_NDS">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.SP_GET_MATGRP_NDS_Result">
-                <ScalarProperty Name="ANDS" ColumnName="ANDS" />
-                <ScalarProperty Name="AGRPID" ColumnName="AGRPID" />
-                <ScalarProperty Name="AGRPNAME" ColumnName="AGRPNAME" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionName="BaseModel.Store.SP_MATCHANGE_GET_WP" FunctionImportName="SP_MATCHANGE_GET_WP">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.SP_MATCHANGE_GET_WP_Result">
@@ -14919,15 +14941,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="MsrCode" ColumnName="MsrCode" />
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
                 <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_GET_MAT_NDS" FunctionName="BaseModel.Store.SP_GET_MAT_NDS">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.SP_GET_MAT_NDS_Result">
-                <ScalarProperty Name="NDS" ColumnName="NDS" />
-                <ScalarProperty Name="GRPNAME" ColumnName="GRPNAME" />
-                <ScalarProperty Name="GRPID" ColumnName="GRPID" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -15333,6 +15346,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="MatRecipe">
             <EntityTypeMapping TypeName="BaseModel.MatRecipe">
               <MappingFragment StoreEntitySet="MatRecipe">
+                <ScalarProperty Name="Deviation" ColumnName="Deviation" />
                 <ScalarProperty Name="Archived" ColumnName="Archived" />
                 <ScalarProperty Name="Out" ColumnName="Out" />
                 <ScalarProperty Name="RType" ColumnName="RType" />
@@ -17829,53 +17843,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetRecipePrice" FunctionName="BaseModel.Store.GetRecipePrice" />
-          <FunctionImportMapping FunctionImportName="WBListMake" FunctionName="BaseModel.Store.WBListMake">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.WBListMake_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
-                <ScalarProperty Name="Reason" ColumnName="Reason" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
-                <ScalarProperty Name="WType" ColumnName="WType" />
-                <ScalarProperty Name="Nds" ColumnName="Nds" />
-                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="DocId" ColumnName="DocId" />
-                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
-                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
-                <ScalarProperty Name="CurrRate" ColumnName="CurrRate" />
-                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
-                <ScalarProperty Name="AttNum" ColumnName="AttNum" />
-                <ScalarProperty Name="AttDate" ColumnName="AttDate" />
-                <ScalarProperty Name="Received" ColumnName="Received" />
-                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
-                <ScalarProperty Name="DefNum" ColumnName="DefNum" />
-                <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
-                <ScalarProperty Name="MatName" ColumnName="MatName" />
-                <ScalarProperty Name="AmountIn" ColumnName="AmountIn" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
-                <ScalarProperty Name="KaName" ColumnName="KaName" />
-                <ScalarProperty Name="MakedPerson" ColumnName="MakedPerson" />
-                <ScalarProperty Name="MId" ColumnName="MId" />
-                <ScalarProperty Name="OnDateOut" ColumnName="OnDateOut" />
-                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
-                <ScalarProperty Name="AmountBrutto" ColumnName="AmountBrutto" />
-                <ScalarProperty Name="WriteOnDate" ColumnName="WriteOnDate" />
-                <ScalarProperty Name="FromWh" ColumnName="FromWh" />
-                <ScalarProperty Name="FromWId" ColumnName="FromWId" />
-                <ScalarProperty Name="DocStatus" ColumnName="DocStatus" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="ShippedAmount" ColumnName="ShippedAmount" />
-                <ScalarProperty Name="Tara" ColumnName="Tara" />
-                <ScalarProperty Name="SaldoShipped" ColumnName="SaldoShipped" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="v_PayDoc">
             <EntityTypeMapping TypeName="BaseModel.v_PayDoc">
               <MappingFragment StoreEntitySet="v_PayDoc">
@@ -18467,6 +18434,83 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Saldo" ColumnName="Saldo" />
                 <ScalarProperty Name="OriginalId" ColumnName="OriginalId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="WBListMake" FunctionName="BaseModel.Store.WBListMake">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.WBListMake_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="Nds" ColumnName="Nds" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="CurrRate" ColumnName="CurrRate" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="AttNum" ColumnName="AttNum" />
+                <ScalarProperty Name="AttDate" ColumnName="AttDate" />
+                <ScalarProperty Name="Received" ColumnName="Received" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="DefNum" ColumnName="DefNum" />
+                <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
+                <ScalarProperty Name="MatRecipeOut" ColumnName="MatRecipeOut" />
+                <ScalarProperty Name="Deviation" ColumnName="Deviation" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="AmountIn" ColumnName="AmountIn" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="MakedPerson" ColumnName="MakedPerson" />
+                <ScalarProperty Name="MId" ColumnName="MId" />
+                <ScalarProperty Name="OnDateOut" ColumnName="OnDateOut" />
+                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
+                <ScalarProperty Name="AmountBrutto" ColumnName="AmountBrutto" />
+                <ScalarProperty Name="WriteOnDate" ColumnName="WriteOnDate" />
+                <ScalarProperty Name="FromWh" ColumnName="FromWh" />
+                <ScalarProperty Name="FromWId" ColumnName="FromWId" />
+                <ScalarProperty Name="DocStatus" ColumnName="DocStatus" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ShippedAmount" ColumnName="ShippedAmount" />
+                <ScalarProperty Name="Tara" ColumnName="Tara" />
+                <ScalarProperty Name="SaldoShipped" ColumnName="SaldoShipped" />
+                <ScalarProperty Name="MatOut" ColumnName="MatOut" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetMatGroupPriceTypes" FunctionName="BaseModel.Store.GetMatGroupPriceTypes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetMatGroupPriceTypes_Result">
+                <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="PPTypeId" ColumnName="PPTypeId" />
+                <ScalarProperty Name="ExtraType" ColumnName="ExtraType" />
+                <ScalarProperty Name="WithNds" ColumnName="WithNds" />
+                <ScalarProperty Name="Dis" ColumnName="Dis" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="IsIndividually" ColumnName="IsIndividually" />
+                <ScalarProperty Name="PtName" ColumnName="PtName" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetMatNds" FunctionName="BaseModel.Store.GetMatNds">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetMatNds_Result">
+                <ScalarProperty Name="NDS" ColumnName="NDS" />
+                <ScalarProperty Name="GRPNAME" ColumnName="GRPNAME" />
+                <ScalarProperty Name="GRPID" ColumnName="GRPID" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

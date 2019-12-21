@@ -57,8 +57,7 @@ namespace SP_Sklad.EditForm
         private void frmMaterialEdit_Load(object sender, EventArgs e)
         {
             xtraTabControl1.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
-
-          
+         
             TreeListBS.Add(new CatalogTreeList { Id = 0, ParentId = 255, Text = "Основна інформація", ImgIdx = 0, TabIdx = 0 });
             TreeListBS.Add(new CatalogTreeList { Id = 1, ParentId = 255, Text = "Ціноутворення", ImgIdx = 1, TabIdx = 1 });
             TreeListBS.Add(new CatalogTreeList { Id = 2, ParentId = 255, Text = "Додаткові одиниці виміру", ImgIdx = 12, TabIdx = 8 });
@@ -67,8 +66,6 @@ namespace SP_Sklad.EditForm
             TreeListBS.Add(new CatalogTreeList { Id = 5, ParentId = 255, Text = "Посвідчення якості", ImgIdx = 4, TabIdx = 4 });
             TreeListBS.Add(new CatalogTreeList { Id = 6, ParentId = 255, Text = "Зображення", ImgIdx = 5, TabIdx = 5 });
             TreeListBS.Add(new CatalogTreeList { Id = 7, ParentId = 255, Text = "Примітка", ImgIdx = 6, TabIdx = 6 });
-
-
 
             if (_copy_mat_id != null)
             {
@@ -119,11 +116,13 @@ namespace SP_Sklad.EditForm
             }
 
             #region Init
+
             checkEdit3_CheckedChanged(sender, e);
             PricePanel.Enabled = false;
             NdsCheckEdit.Checked = _mat.NDS != -1;
             NdsEdit.EditValue = _mat.NDS == -1 ? null : _mat.NDS;
             GetNdsInfo();
+
             #endregion
         }
 
@@ -549,7 +548,7 @@ namespace SP_Sklad.EditForm
                 var node = new CatalogTreeList
                   {
                       Id = tree.Max(m => m.Id) + 1,
-                      ParentId = 3,
+                      ParentId = 4,
                       Text = item.MatChangeName,
                       ImgIdx = 14,
                       TabIdx = 3,
@@ -595,6 +594,13 @@ namespace SP_Sklad.EditForm
             }
 
             var img = pictureEdit1.EditValue as Bitmap;
+
+            if (img == null)
+            {
+                _mat.BMP = null;
+
+                return;
+            }
 
             MemoryStream ms = new MemoryStream();
             img.Save(ms, ImageFormat.Jpeg);

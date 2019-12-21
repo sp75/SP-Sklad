@@ -36,6 +36,8 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> ToDate { get; set; }
         public int DefNum { get; set; }
         public string RecipeName { get; set; }
+        public decimal MatRecipeOut { get; set; }
+        public Nullable<decimal> Deviation { get; set; }
         public string MatName { get; set; }
         public decimal AmountIn { get; set; }
         public int MatId { get; set; }
@@ -54,5 +56,6 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> ShippedAmount { get; set; }
         public Nullable<decimal> Tara { get; set; }
         public Nullable<decimal> SaldoShipped { get; set; }
+        public Nullable<decimal> MatOut { get; set; }
     }
 }

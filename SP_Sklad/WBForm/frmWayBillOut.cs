@@ -207,7 +207,7 @@ namespace SP_Sklad.WBForm
 
             EditMaterialBtn.Enabled = (wbd_list != null && wbd_list.Any());
             DelMaterialBtn.Enabled = EditMaterialBtn.Enabled;
-            RsvInfoBtn.Enabled = EditMaterialBtn.Enabled;
+            RsvInfoBtn.Enabled = EditMaterialBtn.Enabled ;
             MatInfoBtn.Enabled = EditMaterialBtn.Enabled;
 
             payDocUserControl1.panelControl1.Enabled = recult;
@@ -526,7 +526,7 @@ namespace SP_Sklad.WBForm
 
         private void RsvInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (wbd_row != null)
+            if (wbd_row != null && wbd_row.PosType  == 0)
             {
                 IHelper.ShowMatRSV(wbd_row.MatId, _db);
             }
@@ -675,7 +675,7 @@ namespace SP_Sklad.WBForm
 
         private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (wbd_row != null)
+            if (wbd_row != null && wbd_row.PosType == 0)
             {
                 IHelper.ShowMatInfo(wbd_row.MatId);
             }

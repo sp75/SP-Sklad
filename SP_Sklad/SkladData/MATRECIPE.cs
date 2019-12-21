@@ -34,6 +34,7 @@ namespace SP_Sklad.SkladData
         public Nullable<int> RType { get; set; }
         public decimal Out { get; set; }
         public bool Archived { get; set; }
+        public Nullable<decimal> Deviation { get; set; }
     
         public virtual ICollection<WayBillMake> WayBillMake { get; set; }
         public virtual Materials Materials { get; set; }

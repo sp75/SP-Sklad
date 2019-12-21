@@ -1007,5 +1007,24 @@ namespace SP_Sklad.MainTabs
             DelIntermediateWeighing.Enabled = ((focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanModify == 1) && IntermediateWeighingGridView.DataRowCount > 0);
             EditIntermediateWeighing.Enabled = (focused_row != null &&  focused_row.Checked == 0 && focused_tree_node.CanModify == 1 && IntermediateWeighingGridView.DataRowCount > 0 );
         }
+
+        private void WbGridView_RowStyle(object sender, RowStyleEventArgs e)
+        {
+            if (e.RowHandle < 0)
+            {
+                return;
+            }
+
+            var wh_row = WbGridView.GetRow(e.RowHandle) as WBListMake_Result;
+
+            if (wh_row != null )
+            {
+              //  var mat_out = wh_row.AmountIn > 0 ? (wh_row.AmountOut / wh_row.AmountIn) * 100.00m : 0;
+                if ((Math.Abs(wh_row.MatRecipeOut - wh_row.MatOut.Value) > wh_row.Deviation) && wh_row.WType != 0)
+                {
+                    e.Appearance.ForeColor = Color.Red;
+                }
+            }
+        }
     }
 }

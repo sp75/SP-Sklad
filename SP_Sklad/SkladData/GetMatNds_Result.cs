@@ -11,7 +11,7 @@ namespace SP_Sklad.SkladData
 {
     using System;
     
-    public partial class SP_GET_MAT_NDS_Result
+    public partial class GetMatNds_Result
     {
         public Nullable<decimal> NDS { get; set; }
         public string GRPNAME { get; set; }

@@ -184,14 +184,22 @@ namespace SP_Sklad.WBForm
                     .Sum(s => s.Amount);
 
                 var ext_sum = _db.WaybillDet.Where(w => w.WbillId == _wbill_id && w.Materials.MId != w.WaybillList.WayBillMake.MatRecipe.Materials.MId)
-                      .Select(s => new { MaterialMeasures = s.Materials.MaterialMeasures.Where(f => f.MId == s.WaybillList.WayBillMake.MatRecipe.Materials.MId), s.Amount }).ToList()
-                      .SelectMany(sm => sm.MaterialMeasures, (k, n) => new { k.Amount, MeasureAmount = n.Amount }).Sum(su => su.MeasureAmount * su.Amount);
+                      .Select(s => new
+                      {
+                          MaterialMeasures = s.Materials.MaterialMeasures.Where(f => f.MId == s.WaybillList.WayBillMake.MatRecipe.Materials.MId),
+                          s.Amount
+                      }).ToList()
+                      .SelectMany(sm => sm.MaterialMeasures, (k, n) => new
+                      {
+                          k.Amount,
+                          MeasureAmount = n.Amount
+                      }).Sum(su => su.MeasureAmount * su.Amount);
 
                 wb.WayBillMake.Amount = main_sum + ext_sum;
 
                 if (wb.WayBillMake.Amount == 0)
                 {
-                    MessageBox.Show("Помилка в рецепті ,закладка = 0 " + wb.WayBillMake.MatRecipe.Materials.Measures.ShortName + " !");
+                    MessageBox.Show("Помилка в рецепті ,закладка = 0 " + MsrLabel.Text + " !");
                     return;
                 }
             }

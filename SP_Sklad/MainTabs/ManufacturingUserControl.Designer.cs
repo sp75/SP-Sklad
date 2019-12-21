@@ -352,6 +352,7 @@
             this.bar7 = new DevExpress.XtraBars.Bar();
             this.bar6 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
+            this.gridColumn136 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -1168,13 +1169,15 @@
             this.gridColumn40,
             this.gridColumn41,
             this.gridColumn65,
-            this.gridColumn127});
+            this.gridColumn127,
+            this.gridColumn136});
             this.WbGridView.GridControl = this.WBGridControl;
             this.WbGridView.Name = "WbGridView";
             this.WbGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.WbGridView.OptionsBehavior.Editable = false;
             this.WbGridView.OptionsBehavior.ReadOnly = true;
             this.WbGridView.OptionsView.ShowGroupPanel = false;
+            this.WbGridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.WbGridView_RowStyle);
             this.WbGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WbGridView_PopupMenuShowing);
             this.WbGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.WbGridView_FocusedRowObjectChanged);
             this.WbGridView.DoubleClick += new System.EventHandler(this.WbGridView_DoubleClick);
@@ -1353,7 +1356,7 @@
             this.gridColumn41.FieldName = "WriteOnDate";
             this.gridColumn41.Name = "gridColumn41";
             this.gridColumn41.Visible = true;
-            this.gridColumn41.VisibleIndex = 14;
+            this.gridColumn41.VisibleIndex = 15;
             this.gridColumn41.Width = 74;
             // 
             // gridColumn65
@@ -4186,6 +4189,14 @@
             this.bar5.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar5.Text = "Tools";
             // 
+            // gridColumn136
+            // 
+            this.gridColumn136.Caption = "Вихід, %";
+            this.gridColumn136.FieldName = "MatOut";
+            this.gridColumn136.Name = "gridColumn136";
+            this.gridColumn136.Visible = true;
+            this.gridColumn136.VisibleIndex = 14;
+            // 
             // ManufacturingUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4680,5 +4691,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit3;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox18;
         private DevExpress.Utils.SharedImageCollection UserTreeImgList;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn136;
     }
 }

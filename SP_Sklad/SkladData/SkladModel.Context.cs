@@ -577,16 +577,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<WBDGetOutP2_Result>("[BaseEntities].[WBDGetOutP2](@wbill_id)", wbill_idParameter);
         }
     
-        [EdmFunction("BaseEntities", "SP_GET_MAT_NDS")]
-        public virtual IQueryable<SP_GET_MAT_NDS_Result> SP_GET_MAT_NDS(Nullable<int> mATID)
-        {
-            var mATIDParameter = mATID.HasValue ?
-                new ObjectParameter("MATID", mATID) :
-                new ObjectParameter("MATID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SP_GET_MAT_NDS_Result>("[BaseEntities].[SP_GET_MAT_NDS](@MATID)", mATIDParameter);
-        }
-    
         [EdmFunction("BaseEntities", "SP_MAT_REMAIN_GET_SIMPLE")]
         public virtual IQueryable<SP_MAT_REMAIN_GET_SIMPLE_Result> SP_MAT_REMAIN_GET_SIMPLE(Nullable<int> matId, Nullable<System.DateTime> onDate)
         {
@@ -1918,35 +1908,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<decimal>>("[BaseEntities].[GetRecipePrice](@RecId, @PlId)", recIdParameter, plIdParameter);
         }
     
-        public virtual ObjectResult<WBListMake_Result> WBListMake(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> is_checked, string wh, Nullable<int> grp_id, Nullable<int> w_type)
-        {
-            var from_dateParameter = from_date.HasValue ?
-                new ObjectParameter("from_date", from_date) :
-                new ObjectParameter("from_date", typeof(System.DateTime));
-    
-            var to_dateParameter = to_date.HasValue ?
-                new ObjectParameter("to_date", to_date) :
-                new ObjectParameter("to_date", typeof(System.DateTime));
-    
-            var is_checkedParameter = is_checked.HasValue ?
-                new ObjectParameter("is_checked", is_checked) :
-                new ObjectParameter("is_checked", typeof(int));
-    
-            var whParameter = wh != null ?
-                new ObjectParameter("wh", wh) :
-                new ObjectParameter("wh", typeof(string));
-    
-            var grp_idParameter = grp_id.HasValue ?
-                new ObjectParameter("grp_id", grp_id) :
-                new ObjectParameter("grp_id", typeof(int));
-    
-            var w_typeParameter = w_type.HasValue ?
-                new ObjectParameter("w_type", w_type) :
-                new ObjectParameter("w_type", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WBListMake_Result>("WBListMake", from_dateParameter, to_dateParameter, is_checkedParameter, whParameter, grp_idParameter, w_typeParameter);
-        }
-    
         [EdmFunction("BaseEntities", "GetUsedMaterials")]
         public virtual IQueryable<GetUsedMaterials_Result> GetUsedMaterials(Nullable<int> mat_id, Nullable<System.DateTime> on_date, Nullable<int> ka_id)
         {
@@ -2323,6 +2284,55 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("on_date", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSaldoDetTree_Result>("GetSaldoDetTree", user_idParameter, idParameter, on_dateParameter);
+        }
+    
+        public virtual ObjectResult<WBListMake_Result> WBListMake(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> is_checked, string wh, Nullable<int> grp_id, Nullable<int> w_type)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var is_checkedParameter = is_checked.HasValue ?
+                new ObjectParameter("is_checked", is_checked) :
+                new ObjectParameter("is_checked", typeof(int));
+    
+            var whParameter = wh != null ?
+                new ObjectParameter("wh", wh) :
+                new ObjectParameter("wh", typeof(string));
+    
+            var grp_idParameter = grp_id.HasValue ?
+                new ObjectParameter("grp_id", grp_id) :
+                new ObjectParameter("grp_id", typeof(int));
+    
+            var w_typeParameter = w_type.HasValue ?
+                new ObjectParameter("w_type", w_type) :
+                new ObjectParameter("w_type", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WBListMake_Result>("WBListMake", from_dateParameter, to_dateParameter, is_checkedParameter, whParameter, grp_idParameter, w_typeParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetMatGroupPriceTypes")]
+        public virtual IQueryable<GetMatGroupPriceTypes_Result> GetMatGroupPriceTypes(Nullable<int> grp_id)
+        {
+            var grp_idParameter = grp_id.HasValue ?
+                new ObjectParameter("grp_id", grp_id) :
+                new ObjectParameter("grp_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatGroupPriceTypes_Result>("[BaseEntities].[GetMatGroupPriceTypes](@grp_id)", grp_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetMatNds")]
+        public virtual IQueryable<GetMatNds_Result> GetMatNds(Nullable<int> mATID)
+        {
+            var mATIDParameter = mATID.HasValue ?
+                new ObjectParameter("MATID", mATID) :
+                new ObjectParameter("MATID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatNds_Result>("[BaseEntities].[GetMatNds](@MATID)", mATIDParameter);
         }
     }
 }
