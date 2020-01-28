@@ -46,6 +46,9 @@ namespace SP_Sklad.SkladData
             this.ProductionPlans = new HashSet<ProductionPlans>();
             this.ProductionPlans1 = new HashSet<ProductionPlans>();
             this.IntermediateWeighing = new HashSet<IntermediateWeighing>();
+            this.KAgentAdjustment = new HashSet<KAgentAdjustment>();
+            this.KAgentAdjustment1 = new HashSet<KAgentAdjustment>();
+            this.KAgentAdjustment2 = new HashSet<KAgentAdjustment>();
         }
     
         public int KaId { get; set; }
@@ -120,5 +123,8 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<ProductionPlans> ProductionPlans { get; set; }
         public virtual ICollection<ProductionPlans> ProductionPlans1 { get; set; }
         public virtual ICollection<IntermediateWeighing> IntermediateWeighing { get; set; }
+        public virtual ICollection<KAgentAdjustment> KAgentAdjustment { get; set; }
+        public virtual ICollection<KAgentAdjustment> KAgentAdjustment1 { get; set; }
+        public virtual ICollection<KAgentAdjustment> KAgentAdjustment2 { get; set; }
     }
 }

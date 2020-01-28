@@ -336,5 +336,10 @@ namespace SP_Sklad.WBForm
         {
 
         }
+
+        private void frmProductionPlans_Shown(object sender, EventArgs e)
+        {
+            WaybillDetInGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
+        }
     }
 }

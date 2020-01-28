@@ -178,7 +178,7 @@
             this.panelControl2.Controls.Add(this.OkButton);
             this.panelControl2.Controls.Add(this.simpleButton1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl2.Location = new System.Drawing.Point(0, 765);
+            this.panelControl2.Location = new System.Drawing.Point(0, 760);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(455, 51);
             this.panelControl2.TabIndex = 29;
@@ -231,7 +231,7 @@
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(0, 0);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(455, 765);
+            this.mainPanel.Size = new System.Drawing.Size(455, 760);
             this.mainPanel.TabIndex = 31;
             // 
             // PersonPanel
@@ -1049,7 +1049,7 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.textEdit1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(2, 680);
+            this.panel1.Location = new System.Drawing.Point(2, 675);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(451, 83);
             this.panel1.TabIndex = 41;
@@ -1080,7 +1080,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(455, 816);
+            this.ClientSize = new System.Drawing.Size(455, 811);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.panelControl2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;

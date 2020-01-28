@@ -1095,6 +1095,7 @@
             this.Text = "Властивості акту інвентаризації";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmWBInventory_FormClosed);
             this.Load += new System.EventHandler(this.frmWBInventory_Load);
+            this.Shown += new System.EventHandler(this.frmWBInventory_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();

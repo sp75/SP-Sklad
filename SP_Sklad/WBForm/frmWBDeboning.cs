@@ -33,6 +33,7 @@ namespace SP_Sklad.WBForm
         {
             get { return WaybillDetOutGridView.GetFocusedRow() as GetWayBillDetOut_Result; }
         }
+        private UserSettingsRepository user_settings { get; set; }
         private List<GetWayBillDetOut_Result> wbd_list { get; set; }
         public int? rec_id { get; set; }
         public int? source_wid { get; set; }
@@ -42,7 +43,7 @@ namespace SP_Sklad.WBForm
             is_new_record = false;
             _wbill_id = wbill_id;
             _db = new BaseEntities();
-    //        current_transaction = _db.Database.BeginTransaction();
+            user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
             InitializeComponent();
         }
 
@@ -195,6 +196,8 @@ namespace SP_Sklad.WBForm
         {
             OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
             NowDateBtn.Enabled = OnDateDBEdit.Enabled;
+
+            WaybillDetOutGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
         }
 
         private void OkButton_Click(object sender, EventArgs e)

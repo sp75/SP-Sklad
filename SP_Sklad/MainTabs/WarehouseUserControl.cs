@@ -101,7 +101,7 @@ namespace SP_Sklad.MainTabs
                 repositoryItemLookUpEdit2.DataSource = DB.SkladBase().PriceTypes.ToList();
 
                 AvgMatPriceGridColumn.Visible = (DBHelper.CurrentUser.ShowPrice == 1);
-                AvgMatPriceGridColumn.OptionsColumn.ShowInCustomizationForm  = AvgMatPriceGridColumn.Visible;
+                AvgMatPriceGridColumn.OptionsColumn.ShowInCustomizationForm = AvgMatPriceGridColumn.Visible;
                 SumMatRemainGridColumn.Visible = AvgMatPriceGridColumn.Visible;
                 SumMatRemainGridColumn.OptionsColumn.ShowInCustomizationForm = AvgMatPriceGridColumn.Visible;
 
@@ -111,6 +111,11 @@ namespace SP_Sklad.MainTabs
                 }
 
                 bandedGridColumn2.Caption = $"{bandedGridColumn2.Caption}, {DBHelper.NationalCurrency.ShortName}";
+
+                var user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, new BaseEntities());
+
+                WbGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
+                WhMatGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
             }
 
             whContentTab.Visible = true;

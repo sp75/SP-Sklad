@@ -815,6 +815,7 @@
             this.Text = "Планування виробництва";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmProductionPlans_FormClosed);
             this.Load += new System.EventHandler(this.frmProductionPlans_Load);
+            this.Shown += new System.EventHandler(this.frmProductionPlans_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();

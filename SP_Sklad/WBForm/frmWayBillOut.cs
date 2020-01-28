@@ -108,6 +108,9 @@ namespace SP_Sklad.WBForm
             }
 
             RefreshDet();
+
+
+         
         }
 
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -135,6 +138,7 @@ namespace SP_Sklad.WBForm
             ProcurationBtn.Enabled = (_wtype == -1);
             OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
             PersonComboBox.Enabled = !String.IsNullOrEmpty(user_settings.AccessEditPersonId) && Convert.ToInt32(user_settings.AccessEditPersonId) == 1;
+            WaybillDetOutGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
 
             if (TurnDocCheckBox.Checked) Close();
         }
@@ -502,11 +506,6 @@ namespace SP_Sklad.WBForm
         private void NumEdit_Validated(object sender, EventArgs e)
         {
             GetOk();
-        }
-
-        private void NowDateBtn_Click(object sender, EventArgs e)
-        {
-           
         }
 
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

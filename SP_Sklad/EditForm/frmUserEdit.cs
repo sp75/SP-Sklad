@@ -83,7 +83,7 @@ namespace SP_Sklad.EditForm
             {
                 UserBS.DataSource = _u;
                 ConfirmPassEdit.Text = _u.Pass;
-                Text += string.Format( @" {0}", _u.Name );
+                Text += string.Format(@" {0}", _u.Name);
             }
 
             UserGroupLookUpEdit.Properties.DataSource = DB.SkladBase().UsersGroup.AsNoTracking().ToList();
@@ -91,6 +91,9 @@ namespace SP_Sklad.EditForm
             checkEdit4.EditValue = !String.IsNullOrEmpty(user_settings.AccessEditWeight) ? Convert.ToInt32(user_settings.AccessEditWeight) : 0;
             checkEdit6.EditValue = !String.IsNullOrEmpty(user_settings.AccessEditPersonId) ? Convert.ToInt32(user_settings.AccessEditPersonId) : 0;
             checkEdit7.EditValue = user_settings.AccessEditPrice;
+
+            comboBoxEdit2.Text = user_settings.GridFontName;
+            comboBoxEdit1.Value = user_settings.GridFontSize;
 
             ValidateForm();
         }
@@ -422,6 +425,16 @@ namespace SP_Sklad.EditForm
         private void checkEdit7_CheckedChanged(object sender, EventArgs e)
         {
             user_settings.AccessEditPrice = checkEdit7.Checked;
+        }
+
+        private void comboBoxEdit2_EditValueChanged(object sender, EventArgs e)
+        {
+            user_settings.GridFontName = comboBoxEdit2.Text;
+        }
+
+        private void comboBoxEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+            user_settings.GridFontSize = comboBoxEdit1.Value;
         }
     }
 }

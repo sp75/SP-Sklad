@@ -293,10 +293,23 @@
         <AssociationConnector Association="BaseModel.FK_IntermediateWeighing_Kagent" />
         <AssociationConnector Association="BaseModel.FK_IntermediateWeighing_WaybillList" />
         <EntityTypeShape EntityType="BaseModel.IntermediateWeighingDet" Width="1.5" PointX="29" PointY="19.5" />
-        <EntityTypeShape EntityType="BaseModel.v_IntermediateWeighingDet" Width="1.5" PointX="13.375" PointY="12.75" />
         <AssociationConnector Association="BaseModel.FK_IntermediateWeighingDet_IntermediateWeighing" />
         <AssociationConnector Association="BaseModel.FK_IntermediateWeighingDet_Materials" />
         <EntityTypeShape EntityType="BaseModel.ReportSortedFields" Width="1.5" PointX="19.375" PointY="20.75" />
+        <EntityTypeShape EntityType="BaseModel.KAgentAdjustment" Width="1.5" PointX="5.125" PointY="0.75" />
+        <EntityTypeShape EntityType="BaseModel.OperationTypes" Width="1.5" PointX="2.875" PointY="47.375" />
+        <EntityTypeShape EntityType="BaseModel.WriteOffTypes" Width="1.5" PointX="2.875" PointY="49.625" />
+        <EntityTypeShape EntityType="BaseModel.v_KAgentAdjustment" Width="1.5" PointX="22.375" PointY="20.375" />
+        <AssociationConnector Association="BaseModel.FK_KAgentAdjustment_Kagent" />
+        <AssociationConnector Association="BaseModel.FK_KAgentAdjustment_Kagent1" />
+        <AssociationConnector Association="BaseModel.FK_KAgentAdjustment_Kagent2" />
+        <AssociationConnector Association="BaseModel.FK_KAgentAdjustment_OperationTypes" />
+        <AssociationConnector Association="BaseModel.FK_KAgentAdjustment_WriteOffTypes" />
+        <EntityTypeShape EntityType="BaseModel.v_KAgentDocs" Width="1.5" PointX="24.375" PointY="22.75" />
+        <EntityTypeShape EntityType="BaseModel.v_IntermediateWeighingDet" Width="1.5" PointX="13.375" PointY="12.75" />
+        <EntityTypeShape EntityType="BaseModel.v_KAgentAdjustmentDet" Width="1.5" PointX="22.375" PointY="13.75" />
+        <EntityTypeShape EntityType="BaseModel.KAgentAdjustmentDet" Width="1.5" PointX="7.375" PointY="54.625" />
+        <AssociationConnector Association="BaseModel.FK_KAgentAdjustmentDet_KAgentAdjustment" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

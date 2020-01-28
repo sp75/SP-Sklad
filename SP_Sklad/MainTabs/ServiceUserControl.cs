@@ -48,8 +48,7 @@ namespace SP_Sklad.MainTabs
                     wTypeList.Properties.DataSource = new List<object>() { new { FunId = (int?)-1, Name = "Усі" } }
                         .Concat(new BaseEntities().ViewLng.Where(w => w.LangId == 2 && (w.UserTreeView.Functions.TabId == 24 || w.UserTreeView.Functions.TabId == 27 || w.UserTreeView.Functions.TabId == 51)).Select(s => new { s.UserTreeView.FunId, s.Name })).ToList();
                     wTypeList.EditValue = -1;
-
-                }
+               }
 
            /*     using (var s = new UserSettingsRepository(UserSession.UserId))
                 {
@@ -433,8 +432,6 @@ namespace SP_Sklad.MainTabs
                 MessageBox.Show("Історія по залишкам очищена !");
             }
         }
-
-
 
     }
 }

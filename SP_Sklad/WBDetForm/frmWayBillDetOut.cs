@@ -56,7 +56,9 @@ namespace SP_Sklad.WBDetForm
                 barCheckItem2.Visibility = BarItemVisibility.Never;
             }
 
-            BasePriceEdit.Enabled =  new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db).AccessEditPrice;
+            BasePriceEdit.Enabled = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db).AccessEditPrice;
+            PriceTypesEdit.Enabled = BasePriceEdit.Enabled;
+            panelControl4.Enabled = BasePriceEdit.Enabled;
         }
 
         private void frmWayBillDetOut_Load(object sender, EventArgs e)
@@ -99,8 +101,8 @@ namespace SP_Sklad.WBDetForm
                     var w_mat_turn = _db.WMatTurn.AsNoTracking().Where(w => w.SourceId == _wbd.PosId).ToList();
                     if (w_mat_turn.Count > 0)
                     {
-                     //   _db.WMatTurn.RemoveRange(w_mat_turn);
-                    //    _db.SaveChanges();
+                        //   _db.WMatTurn.RemoveRange(w_mat_turn);
+                        //    _db.SaveChanges();
                         _db.DeleteWhere<WMatTurn>(w => w.SourceId == _wbd.PosId);
 
                         GetContent(_wbd.WId, _wbd.MatId);
@@ -138,7 +140,7 @@ namespace SP_Sklad.WBDetForm
 
                 GetOk();
             }
- 
+
         }
 
         bool GetOk()
@@ -159,8 +161,6 @@ namespace SP_Sklad.WBDetForm
                     }
                 }
             }
-
-            btnShowRemainByWH.Enabled = (MatComboBox.EditValue != null);
 
             CalcPrice();
 
@@ -359,7 +359,7 @@ namespace SP_Sklad.WBDetForm
         {
             if (WHComboBox.EditValue == DBNull.Value || !WHComboBox.ContainsFocus) return;
 
-         //   _wbd.WId = (int)WHComboBox.EditValue;
+            //   _wbd.WId = (int)WHComboBox.EditValue;
             GetContent((int?)WHComboBox.EditValue, (int?)MatComboBox.EditValue);
             SetAmount();
             GetOk();
@@ -398,7 +398,7 @@ namespace SP_Sklad.WBDetForm
                 return;
             }
             _wbd.BasePrice = BasePriceEdit.Value;
-       //     _wbd.PtypeId = null;
+            //     _wbd.PtypeId = null;
             PriceTypesEdit.EditValue = null;
 
             GetOk();
@@ -429,7 +429,7 @@ namespace SP_Sklad.WBDetForm
 
             if (!CheckCustomEdit.Checked && CheckCustomEdit.ContainsFocus)
             {
-                GetDiscount(Convert.ToInt32( MatComboBox.EditValue));
+                GetDiscount(Convert.ToInt32(MatComboBox.EditValue));
             }
         }
 
@@ -453,45 +453,17 @@ namespace SP_Sklad.WBDetForm
 
         private void PosInfoBtn_Click(object sender, EventArgs e)
         {
-            var pos = new frmInParty(pos_in);
-            pos.Text = "Прибуткові партії: " + MatComboBox.Text;
-            pos.ShowDialog();
-            _wbd.Amount = pos_in.Sum(s => s.Amount).Value;
-            AmountEdit.Value = _wbd.Amount;
 
-            GetOk();
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            if (_wb.WType == -16)
-            {
-                MatComboBox.EditValue = IHelper.ShowDirectList(MatComboBox.EditValue, 5);
-                _wbd.MatId = MatComboBox.EditValue != null && MatComboBox.EditValue != DBNull.Value ? (int)MatComboBox.EditValue : _wbd.MatId;
-            }
-            else
-            {
-                var result = IHelper.ShowRemainByWH(MatComboBox.EditValue, WHComboBox.EditValue, 1);
-                _wbd.WId = result.wid;
-                WHComboBox.EditValue = result.wid;
-                _wbd.MatId = result.mat_id;
-                MatComboBox.EditValue = result.mat_id;
-            }
+
         }
 
         private void btnShowRemainByWH_Click(object sender, EventArgs e)
         {
-            var result = IHelper.ShowRemainByWH(MatComboBox.EditValue, WHComboBox.EditValue, 2);
-            WHComboBox.EditValue = result.wid;
-            GetContent(result.wid, (int?)MatComboBox.EditValue);
-            SetAmount();
-            GetOk();
-
-         /*   Variant savePoint = MatComboBox->EditValue;// 06.12.12
-
-            WayBIllDetWID->Value = frmMain->ShowRemainByWH(MatComboBox->EditValue, WHComboBox->EditValue, 2, MatComboBox->EditValue)->WID;
-
-            if (!savePoint.IsEmpty() && !savePoint.IsNull()) WayBIllDetMATID->Value = savePoint;  // 06.12.12*/
+           
 
         }
 
@@ -505,9 +477,7 @@ namespace SP_Sklad.WBDetForm
 
         private void simpleButton6_Click(object sender, EventArgs e)
         {
-            PriceTypesEdit.EditValue = IHelper.ShowDirectList(PriceTypesEdit.EditValue, 8);
-            GetMatPrice();
-            GetOk();
+
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -565,5 +535,62 @@ namespace SP_Sklad.WBDetForm
             DiscountCheckBox.Checked = true;
         }
 
+        private void PriceTypesEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                PriceTypesEdit.EditValue = IHelper.ShowDirectList(PriceTypesEdit.EditValue, 8);
+                GetMatPrice();
+                GetOk();
+            }
+        }
+
+        private void AmountEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                var pos = new frmInParty(pos_in);
+                pos.Text = "Прибуткові партії: " + MatComboBox.Text;
+                pos.ShowDialog();
+                _wbd.Amount = pos_in.Sum(s => s.Amount).Value;
+                AmountEdit.Value = _wbd.Amount;
+
+                GetOk();
+            }
+        }
+
+        private void MatComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                if (_wb.WType == -16)
+                {
+                    MatComboBox.EditValue = IHelper.ShowDirectList(MatComboBox.EditValue, 5);
+                    _wbd.MatId = MatComboBox.EditValue != null && MatComboBox.EditValue != DBNull.Value ? (int)MatComboBox.EditValue : _wbd.MatId;
+                }
+                else
+                {
+                    var result = IHelper.ShowRemainByWH(MatComboBox.EditValue, WHComboBox.EditValue, 1);
+                    _wbd.WId = result.wid;
+                    WHComboBox.EditValue = result.wid;
+                    _wbd.MatId = result.mat_id;
+                    MatComboBox.EditValue = result.mat_id;
+                }
+            }
+
+            if (e.Button.Index == 2)
+            {
+                if (MatComboBox.EditValue == null)
+                {
+                    return;
+                }
+
+                var result = IHelper.ShowRemainByWH(MatComboBox.EditValue, WHComboBox.EditValue, 2);
+                WHComboBox.EditValue = result.wid;
+                GetContent(result.wid, (int?)MatComboBox.EditValue);
+                SetAmount();
+                GetOk();
+            }
+        }
     }
 }

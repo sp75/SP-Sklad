@@ -435,6 +435,41 @@
           <Property Name="AccNum" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="Def" Type="int" />
         </EntityType>
+        <EntityType Name="KAgentAdjustment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="DebtKaId" Type="int" />
+          <Property Name="CreditKaId" Type="int" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="255" />
+          <Property Name="Checked" Type="int" Nullable="false" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+          <Property Name="SummAll" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+          <Property Name="CurrId" Type="int" />
+          <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="SessionId" Type="uniqueidentifier" />
+          <Property Name="WriteOffType" Type="int" Nullable="false" />
+          <Property Name="OperationType" Type="int" Nullable="false" />
+          <Property Name="SummInCurr" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="WType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KAgentAdjustmentDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Idx" Type="int" />
+          <Property Name="KAgentAdjustmentId" Type="uniqueidentifier" />
+          <Property Name="DocId" Type="uniqueidentifier" />
+          <Property Name="Saldo" Type="numeric" Precision="15" Scale="2" />
+        </EntityType>
         <EntityType Name="KAgentDoc">
           <Key>
             <PropertyRef Name="KAId" />
@@ -691,6 +726,13 @@
           <Property Name="CashId" Type="int" />
           <Property Name="SaldoDef" Type="numeric" Precision="15" Scale="2" />
         </EntityType>
+        <EntityType Name="OperationTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="OperLog">
           <Key>
             <PropertyRef Name="OpId" />
@@ -705,6 +747,7 @@
           <Property Name="FunId" Type="int" />
           <Property Name="DocNum" Type="varchar" MaxLength="24" />
           <Property Name="UserId" Type="int" />
+          <Property Name="OriginatorId" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="OrderedRels">
           <Key>
@@ -1379,6 +1422,13 @@
           <Property Name="CalcAmount" Type="numeric" Precision="37" Scale="15" StoreGeneratedPattern="Computed" />
           <Property Name="SupplierId" Type="int" />
         </EntityType>
+        <EntityType Name="WriteOffTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.EnterpriseAccount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="EnterpriseAccount">
@@ -1682,6 +1732,81 @@ warning 6002: The table/view 'sp_base.dbo.v_KAgentAccount' does not have a prima
           <Property Name="MFO" Type="nvarchar" MaxLength="50" />
           <Property Name="BankName" Type="nvarchar" MaxLength="128" />
           <Property Name="TypeName" Type="nvarchar" MaxLength="64" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_KAgentAdjustment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_KAgentAdjustment">
+          <Key>
+            <PropertyRef Name="Id" />
+            
+            
+            <PropertyRef Name="CurrName" />
+            <PropertyRef Name="WType" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" />
+          <Property Name="Checked" Type="int" Nullable="false" />
+          <Property Name="SummAll" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="SummInCurr" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="DebtKaName" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreditKaName" Type="nvarchar" MaxLength="100" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="100" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="CurrName" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+          <Property Name="WType" Type="int" Nullable="false" />
+          <Property Name="WriteOffTypeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="OperationTypeName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_KAgentAdjustmentDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_KAgentAdjustmentDet">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Num" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WType" Type="int" />
+          <Property Name="Num" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="OnDate" Type="datetime" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="SummAll" Type="numeric" Precision="21" Scale="8" />
+          <Property Name="SummInCurr" Type="numeric" Precision="33" Scale="8" />
+          <Property Name="SummPay" Type="numeric" Precision="33" Scale="8" />
+          <Property Name="KAgentAdjustmentId" Type="uniqueidentifier" />
+          <Property Name="DocId" Type="uniqueidentifier" />
+          <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="CurrName" Type="nvarchar" MaxLength="3" />
+          <Property Name="DocShortName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DocTypeName" Type="nvarchar" MaxLength="64" />
+          <Property Name="Saldo" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="Idx" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_KAgentDocs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_KAgentDocs">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="Num" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WType" Type="int" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OnDate" Type="datetime" />
+          <Property Name="KaId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Checked" Type="int" Nullable="false" />
+          <Property Name="Nds" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="SummAll" Type="numeric" Precision="21" Scale="8" />
+          <Property Name="SummInCurr" Type="numeric" Precision="33" Scale="8" />
+          <Property Name="ShortName" Type="nvarchar" MaxLength="3" />
+          <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="CurrId" Type="int" />
+          <Property Name="ToDate" Type="datetime" />
+          <Property Name="SummPay" Type="numeric" Precision="33" Scale="8" />
+          <Property Name="DocShortName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DocTypeName" Type="nvarchar" MaxLength="64" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_KAgentSaldo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -2987,6 +3112,80 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_KAgentAdjustment_Kagent">
+          <End Role="Kagent" Type="Self.Kagent" Multiplicity="0..1" />
+          <End Role="KAgentAdjustment" Type="Self.KAgentAdjustment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KAgentAdjustment">
+              <PropertyRef Name="DebtKaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KAgentAdjustment_Kagent1">
+          <End Role="Kagent" Type="Self.Kagent" Multiplicity="0..1" />
+          <End Role="KAgentAdjustment" Type="Self.KAgentAdjustment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KAgentAdjustment">
+              <PropertyRef Name="CreditKaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KAgentAdjustment_Kagent2">
+          <End Role="Kagent" Type="Self.Kagent" Multiplicity="0..1" />
+          <End Role="KAgentAdjustment" Type="Self.KAgentAdjustment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KAgentAdjustment">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KAgentAdjustment_OperationTypes">
+          <End Role="OperationTypes" Type="Self.OperationTypes" Multiplicity="1" />
+          <End Role="KAgentAdjustment" Type="Self.KAgentAdjustment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KAgentAdjustment">
+              <PropertyRef Name="OperationType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KAgentAdjustment_WriteOffTypes">
+          <End Role="WriteOffTypes" Type="Self.WriteOffTypes" Multiplicity="1" />
+          <End Role="KAgentAdjustment" Type="Self.KAgentAdjustment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WriteOffTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KAgentAdjustment">
+              <PropertyRef Name="WriteOffType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KAgentAdjustmentDet_KAgentAdjustment">
+          <End Role="KAgentAdjustment" Type="Self.KAgentAdjustment" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="KAgentAdjustmentDet" Type="Self.KAgentAdjustmentDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KAgentAdjustment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KAgentAdjustmentDet">
+              <PropertyRef Name="KAgentAdjustmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_MATCHANGE_CHANGEID">
           <End Role="Materials" Type="Self.Materials" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -4257,7 +4456,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <ReturnType>
             <CollectionType>
               <RowType>
-                <Property Name="Discount" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="Discount" Type="numeric" Precision="15" Scale="4" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -4633,6 +4832,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="FunId" Type="int" />
                 <Property Name="DocNum" Type="varchar" MaxLength="24" />
                 <Property Name="UserId" Type="int" />
+                <Property Name="OriginatorId" Type="uniqueidentifier" />
                 <Property Name="FunName" Type="nvarchar" MaxLength="255" Nullable="false" />
                 <Property Name="ClassName" Type="varchar" MaxLength="24" Nullable="false" />
                 <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -4901,6 +5101,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="Notes" Type="nvarchar" MaxLength="100" />
                 <Property Name="UpdateAt" Type="datetime" />
                 <Property Name="TotalInCurrency" Type="numeric" Precision="31" Scale="6" />
+                <Property Name="MId" Type="int" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -6095,6 +6296,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="KADiscount" EntityType="Self.KADiscount" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kagent" EntityType="Self.Kagent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KAgentAccount" EntityType="Self.KAgentAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KAgentAdjustment" EntityType="Self.KAgentAdjustment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KAgentAdjustmentDet" EntityType="Self.KAgentAdjustmentDet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KAgentDoc" EntityType="Self.KAgentDoc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KAgentPersons" EntityType="Self.KAgentPersons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KAgentTyp" EntityType="Self.KAgentTyp" Schema="dbo" store:Type="Tables" />
@@ -6116,6 +6319,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="MatRemains" EntityType="Self.MatRemains" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Measures" EntityType="Self.Measures" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MoneySaldo" EntityType="Self.MoneySaldo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OperationTypes" EntityType="Self.OperationTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OperLog" EntityType="Self.OperLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderedRels" EntityType="Self.OrderedRels" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Packaging" EntityType="Self.Packaging" Schema="dbo" store:Type="Tables" />
@@ -6169,6 +6373,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="WayBillSvc" EntityType="Self.WayBillSvc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WayBillTmc" EntityType="Self.WayBillTmc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WMatTurn" EntityType="Self.WMatTurn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WriteOffTypes" EntityType="Self.WriteOffTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EnterpriseAccount" EntityType="Self.EnterpriseAccount" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [EnterpriseAccount].[KaId] AS [KaId], 
@@ -6396,6 +6601,65 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_KAgentAccount].[BankName] AS [BankName], 
     [v_KAgentAccount].[TypeName] AS [TypeName]
     FROM [dbo].[v_KAgentAccount] AS [v_KAgentAccount]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_KAgentAdjustment" EntityType="Self.v_KAgentAdjustment" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_KAgentAdjustment].[Id] AS [Id], 
+    [v_KAgentAdjustment].[Num] AS [Num], 
+    [v_KAgentAdjustment].[Checked] AS [Checked], 
+    [v_KAgentAdjustment].[SummAll] AS [SummAll], 
+    [v_KAgentAdjustment].[SummInCurr] AS [SummInCurr], 
+    [v_KAgentAdjustment].[DebtKaName] AS [DebtKaName], 
+    [v_KAgentAdjustment].[CreditKaName] AS [CreditKaName], 
+    [v_KAgentAdjustment].[PersonName] AS [PersonName], 
+    [v_KAgentAdjustment].[OnDate] AS [OnDate], 
+    [v_KAgentAdjustment].[CurrName] AS [CurrName], 
+    [v_KAgentAdjustment].[Notes] AS [Notes], 
+    [v_KAgentAdjustment].[WType] AS [WType], 
+    [v_KAgentAdjustment].[WriteOffTypeName] AS [WriteOffTypeName], 
+    [v_KAgentAdjustment].[OperationTypeName] AS [OperationTypeName]
+    FROM [dbo].[v_KAgentAdjustment] AS [v_KAgentAdjustment]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_KAgentAdjustmentDet" EntityType="Self.v_KAgentAdjustmentDet" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_KAgentAdjustmentDet].[Id] AS [Id], 
+    [v_KAgentAdjustmentDet].[WType] AS [WType], 
+    [v_KAgentAdjustmentDet].[Num] AS [Num], 
+    [v_KAgentAdjustmentDet].[OnDate] AS [OnDate], 
+    [v_KAgentAdjustmentDet].[Name] AS [Name], 
+    [v_KAgentAdjustmentDet].[SummAll] AS [SummAll], 
+    [v_KAgentAdjustmentDet].[SummInCurr] AS [SummInCurr], 
+    [v_KAgentAdjustmentDet].[SummPay] AS [SummPay], 
+    [v_KAgentAdjustmentDet].[KAgentAdjustmentId] AS [KAgentAdjustmentId], 
+    [v_KAgentAdjustmentDet].[DocId] AS [DocId], 
+    [v_KAgentAdjustmentDet].[OnValue] AS [OnValue], 
+    [v_KAgentAdjustmentDet].[CurrName] AS [CurrName], 
+    [v_KAgentAdjustmentDet].[DocShortName] AS [DocShortName], 
+    [v_KAgentAdjustmentDet].[DocTypeName] AS [DocTypeName], 
+    [v_KAgentAdjustmentDet].[Saldo] AS [Saldo], 
+    [v_KAgentAdjustmentDet].[Idx] AS [Idx]
+    FROM [dbo].[v_KAgentAdjustmentDet] AS [v_KAgentAdjustmentDet]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_KAgentDocs" EntityType="Self.v_KAgentDocs" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_KAgentDocs].[Id] AS [Id], 
+    [v_KAgentDocs].[WType] AS [WType], 
+    [v_KAgentDocs].[Num] AS [Num], 
+    [v_KAgentDocs].[OnDate] AS [OnDate], 
+    [v_KAgentDocs].[KaId] AS [KaId], 
+    [v_KAgentDocs].[Name] AS [Name], 
+    [v_KAgentDocs].[Checked] AS [Checked], 
+    [v_KAgentDocs].[Nds] AS [Nds], 
+    [v_KAgentDocs].[SummAll] AS [SummAll], 
+    [v_KAgentDocs].[SummInCurr] AS [SummInCurr], 
+    [v_KAgentDocs].[ShortName] AS [ShortName], 
+    [v_KAgentDocs].[OnValue] AS [OnValue], 
+    [v_KAgentDocs].[CurrId] AS [CurrId], 
+    [v_KAgentDocs].[ToDate] AS [ToDate], 
+    [v_KAgentDocs].[SummPay] AS [SummPay], 
+    [v_KAgentDocs].[DocShortName] AS [DocShortName], 
+    [v_KAgentDocs].[DocTypeName] AS [DocTypeName]
+    FROM [dbo].[v_KAgentDocs] AS [v_KAgentDocs]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_KAgentSaldo" EntityType="Self.v_KAgentSaldo" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -6976,6 +7240,30 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <AssociationSet Name="FK_Kagent_Users" Association="Self.FK_Kagent_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Kagent" EntitySet="Kagent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KAgentAdjustment_Kagent" Association="Self.FK_KAgentAdjustment_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KAgentAdjustment" EntitySet="KAgentAdjustment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KAgentAdjustment_Kagent1" Association="Self.FK_KAgentAdjustment_Kagent1">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KAgentAdjustment" EntitySet="KAgentAdjustment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KAgentAdjustment_Kagent2" Association="Self.FK_KAgentAdjustment_Kagent2">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KAgentAdjustment" EntitySet="KAgentAdjustment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KAgentAdjustment_OperationTypes" Association="Self.FK_KAgentAdjustment_OperationTypes">
+            <End Role="OperationTypes" EntitySet="OperationTypes" />
+            <End Role="KAgentAdjustment" EntitySet="KAgentAdjustment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KAgentAdjustment_WriteOffTypes" Association="Self.FK_KAgentAdjustment_WriteOffTypes">
+            <End Role="WriteOffTypes" EntitySet="WriteOffTypes" />
+            <End Role="KAgentAdjustment" EntitySet="KAgentAdjustment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KAgentAdjustmentDet_KAgentAdjustment" Association="Self.FK_KAgentAdjustmentDet_KAgentAdjustment">
+            <End Role="KAgentAdjustment" EntitySet="KAgentAdjustment" />
+            <End Role="KAgentAdjustmentDet" EntitySet="KAgentAdjustmentDet" />
           </AssociationSet>
           <AssociationSet Name="FK_MATCHANGE_CHANGEID" Association="Self.FK_MATCHANGE_CHANGEID">
             <End Role="Materials" EntitySet="Materials" />
@@ -7810,12 +8098,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="BanksPersons" EntitySet="BanksPersons" />
           </AssociationSet>
           <EntitySet Name="Customers" EntityType="BaseModel.Customers" />
-          <FunctionImport Name="GetOperLog" IsComposable="true" ReturnType="Collection(BaseModel.GetOperLog_Result)">
-            <Parameter Name="from_date" Mode="In" Type="DateTime" />
-            <Parameter Name="to_date" Mode="In" Type="DateTime" />
-            <Parameter Name="fun_id" Mode="In" Type="Int32" />
-            <Parameter Name="user_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <EntitySet Name="MatGroupPrices" EntityType="BaseModel.MatGroupPrices" />
           <EntitySet Name="MatPrices" EntityType="BaseModel.MatPrices" />
           <AssociationSet Name="FK__MATGROUPP__CURRI__6EC0713C" Association="BaseModel.FK__MATGROUPP__CURRI__6EC0713C">
@@ -8055,12 +8337,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="ka_id" Mode="In" Type="Int32" />
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
             <Parameter Name="to_date" Mode="In" Type="DateTime" />
-            <Parameter Name="w_type" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="GetDocList" IsComposable="true" ReturnType="Collection(BaseModel.GetDocList_Result)">
-            <Parameter Name="from_date" Mode="In" Type="DateTime" />
-            <Parameter Name="to_date" Mode="In" Type="DateTime" />
-            <Parameter Name="ka_id" Mode="In" Type="Int32" />
             <Parameter Name="w_type" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="DocRels" EntityType="BaseModel.DocRels" />
@@ -8652,9 +8928,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Currency" EntitySet="Currency" />
             <End Role="CurrencyRate" EntitySet="CurrencyRate" />
           </AssociationSet>
-          <FunctionImport Name="GetWaybillDetIn" IsComposable="true" ReturnType="Collection(BaseModel.GetWaybillDetIn_Result)">
-          <Parameter Name="wbill_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="PosGet" IsComposable="true" ReturnType="Collection(BaseModel.PosGet_Result)">
             <Parameter Name="mat_id" Mode="In" Type="Int32" />
             <Parameter Name="w_id" Mode="In" Type="Int32" />
@@ -8717,7 +8990,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="IntermediateWeighing" EntitySet="IntermediateWeighing" />
           </AssociationSet>
           <EntitySet Name="IntermediateWeighingDet" EntityType="BaseModel.IntermediateWeighingDet" />
-          <EntitySet Name="v_IntermediateWeighingDet" EntityType="BaseModel.v_IntermediateWeighingDet" />
           <AssociationSet Name="FK_IntermediateWeighingDet_IntermediateWeighing" Association="BaseModel.FK_IntermediateWeighingDet_IntermediateWeighing">
             <End Role="IntermediateWeighing" EntitySet="IntermediateWeighing" />
             <End Role="IntermediateWeighingDet" EntitySet="IntermediateWeighingDet" />
@@ -8776,7 +9048,54 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Parameter Name="grp_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetMatNds" IsComposable="true" ReturnType="Collection(BaseModel.GetMatNds_Result)">
-            <Parameter Name="MATID" Mode="In" Type="Int32" />
+          <Parameter Name="MATID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetDocList" IsComposable="true" ReturnType="Collection(BaseModel.GetDocList_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="w_type" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="KAgentAdjustment" EntityType="BaseModel.KAgentAdjustment" />
+          <EntitySet Name="OperationTypes" EntityType="BaseModel.OperationTypes" />
+          <EntitySet Name="WriteOffTypes" EntityType="BaseModel.WriteOffTypes" />
+          <EntitySet Name="v_KAgentAdjustment" EntityType="BaseModel.v_KAgentAdjustment" />
+          <AssociationSet Name="FK_KAgentAdjustment_Kagent" Association="BaseModel.FK_KAgentAdjustment_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KAgentAdjustment" EntitySet="KAgentAdjustment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KAgentAdjustment_Kagent1" Association="BaseModel.FK_KAgentAdjustment_Kagent1">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KAgentAdjustment" EntitySet="KAgentAdjustment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KAgentAdjustment_Kagent2" Association="BaseModel.FK_KAgentAdjustment_Kagent2">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KAgentAdjustment" EntitySet="KAgentAdjustment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KAgentAdjustment_OperationTypes" Association="BaseModel.FK_KAgentAdjustment_OperationTypes">
+            <End Role="OperationTypes" EntitySet="OperationTypes" />
+            <End Role="KAgentAdjustment" EntitySet="KAgentAdjustment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KAgentAdjustment_WriteOffTypes" Association="BaseModel.FK_KAgentAdjustment_WriteOffTypes">
+            <End Role="WriteOffTypes" EntitySet="WriteOffTypes" />
+            <End Role="KAgentAdjustment" EntitySet="KAgentAdjustment" />
+          </AssociationSet>
+          <EntitySet Name="v_KAgentDocs" EntityType="BaseModel.v_KAgentDocs" />
+          <EntitySet Name="v_IntermediateWeighingDet" EntityType="BaseModel.v_IntermediateWeighingDet" />
+          <EntitySet Name="v_KAgentAdjustmentDet" EntityType="BaseModel.v_KAgentAdjustmentDet" />
+          <EntitySet Name="KAgentAdjustmentDet" EntityType="BaseModel.KAgentAdjustmentDet" />
+          <AssociationSet Name="FK_KAgentAdjustmentDet_KAgentAdjustment" Association="BaseModel.FK_KAgentAdjustmentDet_KAgentAdjustment">
+            <End Role="KAgentAdjustment" EntitySet="KAgentAdjustment" />
+            <End Role="KAgentAdjustmentDet" EntitySet="KAgentAdjustmentDet" />
+          </AssociationSet>
+          <FunctionImport Name="GetOperLog" IsComposable="true" ReturnType="Collection(BaseModel.GetOperLog_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="fun_id" Mode="In" Type="Int32" />
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetWaybillDetIn" IsComposable="true" ReturnType="Collection(BaseModel.GetWaybillDetIn_Result)">
+            <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
@@ -10505,6 +10824,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Int32" Name="UserId" />
           <NavigationProperty Name="Tables" Relationship="BaseModel.FK__OPERLOG__TABID__0D44F85C" FromRole="OperLog" ToRole="Tables" />
           <NavigationProperty Name="Users" Relationship="BaseModel.FK_OperLog_Users" FromRole="OperLog" ToRole="Users" />
+          <Property Name="OriginatorId" Type="Guid" />
         </EntityType>
         <Association Name="FK__OPERLOG__TABID__0D44F85C">
           <End Type="BaseModel.Tables" Role="Tables" Multiplicity="0..1" />
@@ -10740,22 +11060,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Boolean" Name="IsOnline" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_Customers_Kagent" FromRole="Customers" ToRole="Kagent" />
         </EntityType>
-        <ComplexType Name="GetOperLog_Result">
-          <Property Type="Int32" Name="OpId" Nullable="false" />
-          <Property Type="String" Name="OpCode" Nullable="false" MaxLength="1" />
-          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
-          <Property Type="Int32" Name="TabId" Nullable="true" />
-          <Property Type="Int32" Name="Id" Nullable="true" />
-          <Property Type="String" Name="DataBefore" Nullable="true" MaxLength="512" />
-          <Property Type="String" Name="DataAfter" Nullable="true" MaxLength="512" />
-          <Property Type="Int32" Name="FunId" Nullable="true" />
-          <Property Type="String" Name="DocNum" Nullable="true" MaxLength="24" />
-          <Property Type="Int32" Name="UserId" Nullable="true" />
-          <Property Type="String" Name="FunName" Nullable="false" MaxLength="255" />
-          <Property Type="String" Name="ClassName" Nullable="false" MaxLength="24" />
-          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="DocType" Nullable="true" />
-        </ComplexType>
         <EntityType Name="MatGroupPrices">
           <Key>
             <PropertyRef Name="Id" />
@@ -11818,27 +12122,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
           <Property Type="Guid" Name="Id" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="GetDocList_Result">
-          <Property Type="Guid" Name="Id" Nullable="true" />
-          <Property Type="Int32" Name="WbillId" Nullable="true" />
-          <Property Type="Int32" Name="WType" Nullable="true" />
-          <Property Type="String" Name="Num" Nullable="true" MaxLength="24" />
-          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
-          <Property Type="DateTime" Name="ToDate" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="KaId" Nullable="true" />
-          <Property Type="String" Name="KaName" Nullable="true" MaxLength="255" />
-          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="Int32" Name="CurrId" Nullable="true" />
-          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="15" />
-          <Property Type="Int32" Name="Checked" Nullable="true" />
-          <Property Type="Int32" Name="DocId" Nullable="true" />
-          <Property Type="Decimal" Name="NDS" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="SummAll" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="SummInCurr" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Saldo" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="DocShortName" Nullable="true" MaxLength="50" />
-        </ComplexType>
         <EntityType Name="DocRels">
           <Key>
             <PropertyRef Name="OriginatorId" />
@@ -12203,6 +12486,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="ProductionPlans" Relationship="BaseModel.FK_ProductionPlans_Kagent" FromRole="Kagent" ToRole="ProductionPlans" />
           <NavigationProperty Name="ProductionPlans1" Relationship="BaseModel.FK_ProductionPlans_Kagent1" FromRole="Kagent" ToRole="ProductionPlans" />
           <NavigationProperty Name="IntermediateWeighing" Relationship="BaseModel.FK_IntermediateWeighing_Kagent" FromRole="Kagent" ToRole="IntermediateWeighing" />
+          <NavigationProperty Name="KAgentAdjustment" Relationship="BaseModel.FK_KAgentAdjustment_Kagent" FromRole="Kagent" ToRole="KAgentAdjustment" />
+          <NavigationProperty Name="KAgentAdjustment1" Relationship="BaseModel.FK_KAgentAdjustment_Kagent1" FromRole="Kagent" ToRole="KAgentAdjustment" />
+          <NavigationProperty Name="KAgentAdjustment2" Relationship="BaseModel.FK_KAgentAdjustment_Kagent2" FromRole="Kagent" ToRole="KAgentAdjustment" />
         </EntityType>
         <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
@@ -14118,50 +14404,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="GetWaybillDetIn_Result">
-          <Property Type="Int32" Name="Num" Nullable="false" />
-          <Property Type="Int32" Name="PosId" Nullable="true" />
-          <Property Type="Int32" Name="WbillId" Nullable="false" />
-          <Property Type="Int32" Name="MatId" Nullable="false" />
-          <Property Type="Int32" Name="Wid" Nullable="true" />
-          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="17" Scale="4" />
-          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Discount" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Nds" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="CurrId" Nullable="true" />
-          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="PtypeId" Nullable="true" />
-          <Property Type="Int32" Name="Checked" Nullable="true" />
-          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
-          <Property Type="String" Name="WhName" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
-          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="Int32" Name="PosType" Nullable="false" />
-          <Property Type="Decimal" Name="Norm" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="String" Name="Producer" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="Gtd" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="CertNum" Nullable="true" MaxLength="64" />
-          <Property Type="DateTime" Name="CertDate" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="Serials" Nullable="true" />
-          <Property Type="String" Name="Barcode" Nullable="true" MaxLength="64" />
-          <Property Type="Int32" Name="GrpId" Nullable="true" />
-          <Property Type="String" Name="Country" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="Archived" Nullable="true" />
-          <Property Type="String" Name="SerialNo" Nullable="true" MaxLength="64" />
-          <Property Type="Decimal" Name="FullPrice" Nullable="true" Precision="19" Scale="8" />
-          <Property Type="Int32" Name="SvcToPrice" Nullable="true" />
-          <Property Type="Int32" Name="WbMaked" Nullable="true" />
-          <Property Type="Decimal" Name="Total" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="Decimal" Name="BasePrice" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="SumNds" Nullable="true" Precision="35" Scale="10" />
-          <Property Type="String" Name="GrpName" Nullable="false" MaxLength="64" />
-          <Property Type="Decimal" Name="DiscountPrice" Nullable="true" Precision="38" Scale="6" />
-          <Property Type="String" Name="Notes" Nullable="true" MaxLength="100" />
-          <Property Type="DateTime" Name="UpdateAt" Nullable="true" Precision="23" />
-          <Property Type="Decimal" Name="TotalInCurrency" Nullable="true" Precision="31" Scale="6" />
-        </ComplexType>
         <ComplexType Name="PosGet_Result">
           <Property Type="Int32" Name="PosId" Nullable="true" />
           <Property Type="Decimal" Name="Remain" Nullable="true" Precision="15" Scale="4" />
@@ -14378,33 +14620,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="IntermediateWeighing" Relationship="BaseModel.FK_IntermediateWeighingDet_IntermediateWeighing" FromRole="IntermediateWeighingDet" ToRole="IntermediateWeighing" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK_IntermediateWeighingDet_Materials" FromRole="IntermediateWeighingDet" ToRole="Materials" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="TaraAmount" Type="Decimal" Precision="15" Scale="4" />
-          <Property Name="Total" Type="Decimal" Precision="15" Scale="4" />
-        </EntityType>
-        <EntityType Name="v_IntermediateWeighingDet">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Amount" />
-            <PropertyRef Name="MatId" />
-            <PropertyRef Name="IntermediateWeighingId" />
-            <PropertyRef Name="MsrName" />
-            <PropertyRef Name="OnDate" />
-            <PropertyRef Name="Checked" />
-            <PropertyRef Name="PersonName" />
-            <PropertyRef Name="WbillId" />
-          </Key>
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
-          <Property Name="MatId" Type="Int32" Nullable="false" />
-          <Property Name="IntermediateWeighingId" Type="Guid" Nullable="false" />
-          <Property Name="MsrName" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Checked" Type="Int32" Nullable="false" />
-          <Property Name="PersonName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="WbillId" Type="Int32" Nullable="false" />
           <Property Name="TaraAmount" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="Total" Type="Decimal" Precision="15" Scale="4" />
         </EntityType>
@@ -14657,6 +14872,315 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Decimal" Name="NDS" Nullable="true" Precision="15" Scale="8" />
           <Property Type="String" Name="GRPNAME" Nullable="true" MaxLength="64" />
           <Property Type="Int32" Name="GRPID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetDocList_Result">
+          <Property Type="Guid" Name="Id" Nullable="true" />
+          <Property Type="Int32" Name="WbillId" Nullable="true" />
+          <Property Type="Int32" Name="WType" Nullable="true" />
+          <Property Type="String" Name="Num" Nullable="true" MaxLength="24" />
+          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ToDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="KaId" Nullable="true" />
+          <Property Type="String" Name="KaName" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="15" />
+          <Property Type="Int32" Name="Checked" Nullable="true" />
+          <Property Type="Int32" Name="DocId" Nullable="true" />
+          <Property Type="Decimal" Name="NDS" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="SummAll" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="SummInCurr" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Saldo" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DocShortName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="KAgentAdjustment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="DebtKaId" Type="Int32" />
+          <Property Name="CreditKaId" Type="Int32" />
+          <Property Name="Reason" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <Property Name="SummAll" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CurrId" Type="Int32" />
+          <Property Name="OnValue" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="SessionId" Type="Guid" />
+          <Property Name="WriteOffType" Type="Int32" Nullable="false" />
+          <Property Name="OperationType" Type="Int32" Nullable="false" />
+          <Property Name="SummInCurr" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="WType" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_KAgentAdjustment_Kagent" FromRole="KAgentAdjustment" ToRole="Kagent" />
+          <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_KAgentAdjustment_Kagent1" FromRole="KAgentAdjustment" ToRole="Kagent" />
+          <NavigationProperty Name="Kagent2" Relationship="BaseModel.FK_KAgentAdjustment_Kagent2" FromRole="KAgentAdjustment" ToRole="Kagent" />
+          <NavigationProperty Name="OperationTypes" Relationship="BaseModel.FK_KAgentAdjustment_OperationTypes" FromRole="KAgentAdjustment" ToRole="OperationTypes" />
+          <NavigationProperty Name="WriteOffTypes" Relationship="BaseModel.FK_KAgentAdjustment_WriteOffTypes" FromRole="KAgentAdjustment" ToRole="WriteOffTypes" />
+          <NavigationProperty Name="KAgentAdjustmentDet" Relationship="BaseModel.FK_KAgentAdjustmentDet_KAgentAdjustment" FromRole="KAgentAdjustment" ToRole="KAgentAdjustmentDet" />
+        </EntityType>
+        <EntityType Name="OperationTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="KAgentAdjustment" Relationship="BaseModel.FK_KAgentAdjustment_OperationTypes" FromRole="OperationTypes" ToRole="KAgentAdjustment" />
+        </EntityType>
+        <EntityType Name="WriteOffTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="KAgentAdjustment" Relationship="BaseModel.FK_KAgentAdjustment_WriteOffTypes" FromRole="WriteOffTypes" ToRole="KAgentAdjustment" />
+        </EntityType>
+        <EntityType Name="v_KAgentAdjustment">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="CurrName" />
+            <PropertyRef Name="WType" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="SummAll" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="SummInCurr" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="DebtKaName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreditKaName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PersonName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="CurrName" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="WType" Type="Int32" Nullable="false" />
+          <Property Name="WriteOffTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OperationTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_KAgentAdjustment_Kagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.KAgentAdjustment" Role="KAgentAdjustment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KAgentAdjustment">
+              <PropertyRef Name="DebtKaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KAgentAdjustment_Kagent1">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.KAgentAdjustment" Role="KAgentAdjustment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KAgentAdjustment">
+              <PropertyRef Name="CreditKaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KAgentAdjustment_Kagent2">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.KAgentAdjustment" Role="KAgentAdjustment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KAgentAdjustment">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KAgentAdjustment_OperationTypes">
+          <End Type="BaseModel.OperationTypes" Role="OperationTypes" Multiplicity="1" />
+          <End Type="BaseModel.KAgentAdjustment" Role="KAgentAdjustment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KAgentAdjustment">
+              <PropertyRef Name="OperationType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KAgentAdjustment_WriteOffTypes">
+          <End Type="BaseModel.WriteOffTypes" Role="WriteOffTypes" Multiplicity="1" />
+          <End Type="BaseModel.KAgentAdjustment" Role="KAgentAdjustment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WriteOffTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KAgentAdjustment">
+              <PropertyRef Name="WriteOffType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="v_KAgentDocs">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="Checked" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="WType" Type="Int32" />
+          <Property Name="Num" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Precision="3" />
+          <Property Name="KaId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="Nds" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="SummAll" Type="Decimal" Precision="21" Scale="8" />
+          <Property Name="SummInCurr" Type="Decimal" Precision="33" Scale="8" />
+          <Property Name="ShortName" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="OnValue" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="CurrId" Type="Int32" />
+          <Property Name="ToDate" Type="DateTime" Precision="3" />
+          <Property Name="SummPay" Type="Decimal" Precision="33" Scale="8" />
+          <Property Name="DocShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DocTypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="v_IntermediateWeighingDet">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="IntermediateWeighingId" />
+            <PropertyRef Name="MsrName" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="PersonName" />
+            <PropertyRef Name="WbillId" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="IntermediateWeighingId" Type="Guid" Nullable="false" />
+          <Property Name="MsrName" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="PersonName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WbillId" Type="Int32" Nullable="false" />
+          <Property Name="TaraAmount" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="Total" Type="Decimal" Precision="15" Scale="4" />
+        </EntityType>
+        <EntityType Name="v_KAgentAdjustmentDet">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Num" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="WType" Type="Int32" />
+          <Property Name="Num" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Precision="3" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SummAll" Type="Decimal" Precision="21" Scale="8" />
+          <Property Name="SummInCurr" Type="Decimal" Precision="33" Scale="8" />
+          <Property Name="SummPay" Type="Decimal" Precision="33" Scale="8" />
+          <Property Name="KAgentAdjustmentId" Type="Guid" />
+          <Property Name="DocId" Type="Guid" />
+          <Property Name="OnValue" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="CurrName" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="DocShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DocTypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Saldo" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Idx" Type="Int32" />
+        </EntityType>
+        <EntityType Name="KAgentAdjustmentDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Idx" Type="Int32" />
+          <Property Name="KAgentAdjustmentId" Type="Guid" />
+          <Property Name="DocId" Type="Guid" />
+          <Property Name="Saldo" Type="Decimal" Precision="15" Scale="2" />
+          <NavigationProperty Name="KAgentAdjustment" Relationship="BaseModel.FK_KAgentAdjustmentDet_KAgentAdjustment" FromRole="KAgentAdjustmentDet" ToRole="KAgentAdjustment" />
+        </EntityType>
+        <Association Name="FK_KAgentAdjustmentDet_KAgentAdjustment">
+          <End Type="BaseModel.KAgentAdjustment" Role="KAgentAdjustment" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.KAgentAdjustmentDet" Role="KAgentAdjustmentDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KAgentAdjustment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KAgentAdjustmentDet">
+              <PropertyRef Name="KAgentAdjustmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GetOperLog_Result">
+          <Property Type="Int32" Name="OpId" Nullable="false" />
+          <Property Type="String" Name="OpCode" Nullable="false" MaxLength="1" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="TabId" Nullable="true" />
+          <Property Type="Int32" Name="Id" Nullable="true" />
+          <Property Type="String" Name="DataBefore" Nullable="true" MaxLength="512" />
+          <Property Type="String" Name="DataAfter" Nullable="true" MaxLength="512" />
+          <Property Type="Int32" Name="FunId" Nullable="true" />
+          <Property Type="String" Name="DocNum" Nullable="true" MaxLength="24" />
+          <Property Type="Int32" Name="UserId" Nullable="true" />
+          <Property Type="Guid" Name="OriginatorId" Nullable="true" />
+          <Property Type="String" Name="FunName" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="ClassName" Nullable="false" MaxLength="24" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="DocType" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetWaybillDetIn_Result">
+          <Property Type="Int32" Name="Num" Nullable="false" />
+          <Property Type="Int32" Name="PosId" Nullable="true" />
+          <Property Type="Int32" Name="WbillId" Nullable="false" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="Int32" Name="Wid" Nullable="true" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="17" Scale="4" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Discount" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Nds" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="PtypeId" Nullable="true" />
+          <Property Type="Int32" Name="Checked" Nullable="true" />
+          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="WhName" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
+          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="19" Scale="8" />
+          <Property Type="Int32" Name="PosType" Nullable="false" />
+          <Property Type="Decimal" Name="Norm" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="String" Name="Producer" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Gtd" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="CertNum" Nullable="true" MaxLength="64" />
+          <Property Type="DateTime" Name="CertDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Serials" Nullable="true" />
+          <Property Type="String" Name="Barcode" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="GrpId" Nullable="true" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="Archived" Nullable="true" />
+          <Property Type="String" Name="SerialNo" Nullable="true" MaxLength="64" />
+          <Property Type="Decimal" Name="FullPrice" Nullable="true" Precision="19" Scale="8" />
+          <Property Type="Int32" Name="SvcToPrice" Nullable="true" />
+          <Property Type="Int32" Name="WbMaked" Nullable="true" />
+          <Property Type="Decimal" Name="Total" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="BasePrice" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="SumNds" Nullable="true" Precision="35" Scale="10" />
+          <Property Type="String" Name="GrpName" Nullable="false" MaxLength="64" />
+          <Property Type="Decimal" Name="DiscountPrice" Nullable="true" Precision="38" Scale="6" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="UpdateAt" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="TotalInCurrency" Nullable="true" Precision="31" Scale="6" />
+          <Property Type="Int32" Name="MId" Nullable="true" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -15975,6 +16499,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="OperLog">
             <EntityTypeMapping TypeName="BaseModel.OperLog">
               <MappingFragment StoreEntitySet="OperLog">
+                <ScalarProperty Name="OriginatorId" ColumnName="OriginatorId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="DocNum" ColumnName="DocNum" />
                 <ScalarProperty Name="FunId" ColumnName="FunId" />
@@ -16117,26 +16642,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetOperLog" FunctionName="BaseModel.Store.GetOperLog">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetOperLog_Result">
-                <ScalarProperty Name="OpId" ColumnName="OpId" />
-                <ScalarProperty Name="OpCode" ColumnName="OpCode" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="TabId" ColumnName="TabId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="DataBefore" ColumnName="DataBefore" />
-                <ScalarProperty Name="DataAfter" ColumnName="DataAfter" />
-                <ScalarProperty Name="FunId" ColumnName="FunId" />
-                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="FunName" ColumnName="FunName" />
-                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="DocType" ColumnName="DocType" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="MatGroupPrices">
             <EntityTypeMapping TypeName="BaseModel.MatGroupPrices">
               <MappingFragment StoreEntitySet="MatGroupPrices">
@@ -16590,31 +17095,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="MatName" ColumnName="MatName" />
                 <ScalarProperty Name="TypeName" ColumnName="TypeName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetDocList" FunctionName="BaseModel.Store.GetDocList">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetDocList_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
-                <ScalarProperty Name="WType" ColumnName="WType" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
-                <ScalarProperty Name="KaId" ColumnName="KaId" />
-                <ScalarProperty Name="KaName" ColumnName="KaName" />
-                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
-                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
-                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="DocId" ColumnName="DocId" />
-                <ScalarProperty Name="NDS" ColumnName="NDS" />
-                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
-                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
-                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
-                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
-                <ScalarProperty Name="DocShortName" ColumnName="DocShortName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -18072,54 +18552,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetWaybillDetIn" FunctionName="BaseModel.Store.GetWaybillDetIn">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetWaybillDetIn_Result">
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="PosId" ColumnName="PosId" />
-                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="Wid" ColumnName="Wid" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="Nds" ColumnName="Nds" />
-                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="PtypeId" ColumnName="PtypeId" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="MatName" ColumnName="MatName" />
-                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
-                <ScalarProperty Name="WhName" ColumnName="WhName" />
-                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
-                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
-                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
-                <ScalarProperty Name="PosType" ColumnName="PosType" />
-                <ScalarProperty Name="Norm" ColumnName="Norm" />
-                <ScalarProperty Name="Producer" ColumnName="Producer" />
-                <ScalarProperty Name="Gtd" ColumnName="Gtd" />
-                <ScalarProperty Name="CertNum" ColumnName="CertNum" />
-                <ScalarProperty Name="CertDate" ColumnName="CertDate" />
-                <ScalarProperty Name="Serials" ColumnName="Serials" />
-                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
-                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="Archived" ColumnName="Archived" />
-                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
-                <ScalarProperty Name="FullPrice" ColumnName="FullPrice" />
-                <ScalarProperty Name="SvcToPrice" ColumnName="SvcToPrice" />
-                <ScalarProperty Name="WbMaked" ColumnName="WbMaked" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
-                <ScalarProperty Name="SumNds" ColumnName="SumNds" />
-                <ScalarProperty Name="GrpName" ColumnName="GrpName" />
-                <ScalarProperty Name="DiscountPrice" ColumnName="DiscountPrice" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
-                <ScalarProperty Name="TotalInCurrency" ColumnName="TotalInCurrency" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="PosGet" FunctionName="BaseModel.Store.PosGet">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.PosGet_Result">
@@ -18232,26 +18664,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="IntermediateWeighingId" ColumnName="IntermediateWeighingId" />
                 <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="v_IntermediateWeighingDet">
-            <EntityTypeMapping TypeName="BaseModel.v_IntermediateWeighingDet">
-              <MappingFragment StoreEntitySet="v_IntermediateWeighingDet">
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="TaraAmount" ColumnName="TaraAmount" />
-                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
-                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
-                <ScalarProperty Name="IntermediateWeighingId" ColumnName="IntermediateWeighingId" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="MatName" ColumnName="MatName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -18511,6 +18923,239 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="NDS" ColumnName="NDS" />
                 <ScalarProperty Name="GRPNAME" ColumnName="GRPNAME" />
                 <ScalarProperty Name="GRPID" ColumnName="GRPID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetDocList" FunctionName="BaseModel.Store.GetDocList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetDocList_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="NDS" ColumnName="NDS" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="DocShortName" ColumnName="DocShortName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="KAgentAdjustment">
+            <EntityTypeMapping TypeName="BaseModel.KAgentAdjustment">
+              <MappingFragment StoreEntitySet="KAgentAdjustment">
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="OperationType" ColumnName="OperationType" />
+                <ScalarProperty Name="WriteOffType" ColumnName="WriteOffType" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="CreditKaId" ColumnName="CreditKaId" />
+                <ScalarProperty Name="DebtKaId" ColumnName="DebtKaId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OperationTypes">
+            <EntityTypeMapping TypeName="BaseModel.OperationTypes">
+              <MappingFragment StoreEntitySet="OperationTypes">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WriteOffTypes">
+            <EntityTypeMapping TypeName="BaseModel.WriteOffTypes">
+              <MappingFragment StoreEntitySet="WriteOffTypes">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_KAgentAdjustment">
+            <EntityTypeMapping TypeName="BaseModel.v_KAgentAdjustment">
+              <MappingFragment StoreEntitySet="v_KAgentAdjustment">
+                <ScalarProperty Name="OperationTypeName" ColumnName="OperationTypeName" />
+                <ScalarProperty Name="WriteOffTypeName" ColumnName="WriteOffTypeName" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="CreditKaName" ColumnName="CreditKaName" />
+                <ScalarProperty Name="DebtKaName" ColumnName="DebtKaName" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_KAgentDocs">
+            <EntityTypeMapping TypeName="BaseModel.v_KAgentDocs">
+              <MappingFragment StoreEntitySet="v_KAgentDocs">
+                <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
+                <ScalarProperty Name="DocShortName" ColumnName="DocShortName" />
+                <ScalarProperty Name="SummPay" ColumnName="SummPay" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="Nds" ColumnName="Nds" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_IntermediateWeighingDet">
+            <EntityTypeMapping TypeName="BaseModel.v_IntermediateWeighingDet">
+              <MappingFragment StoreEntitySet="v_IntermediateWeighingDet">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="TaraAmount" ColumnName="TaraAmount" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="IntermediateWeighingId" ColumnName="IntermediateWeighingId" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_KAgentAdjustmentDet">
+            <EntityTypeMapping TypeName="BaseModel.v_KAgentAdjustmentDet">
+              <MappingFragment StoreEntitySet="v_KAgentAdjustmentDet">
+                <ScalarProperty Name="Idx" ColumnName="Idx" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
+                <ScalarProperty Name="DocShortName" ColumnName="DocShortName" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="KAgentAdjustmentId" ColumnName="KAgentAdjustmentId" />
+                <ScalarProperty Name="SummPay" ColumnName="SummPay" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KAgentAdjustmentDet">
+            <EntityTypeMapping TypeName="BaseModel.KAgentAdjustmentDet">
+              <MappingFragment StoreEntitySet="KAgentAdjustmentDet">
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="KAgentAdjustmentId" ColumnName="KAgentAdjustmentId" />
+                <ScalarProperty Name="Idx" ColumnName="Idx" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetOperLog" FunctionName="BaseModel.Store.GetOperLog">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetOperLog_Result">
+                <ScalarProperty Name="OpId" ColumnName="OpId" />
+                <ScalarProperty Name="OpCode" ColumnName="OpCode" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="TabId" ColumnName="TabId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DataBefore" ColumnName="DataBefore" />
+                <ScalarProperty Name="DataAfter" ColumnName="DataAfter" />
+                <ScalarProperty Name="FunId" ColumnName="FunId" />
+                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="OriginatorId" ColumnName="OriginatorId" />
+                <ScalarProperty Name="FunName" ColumnName="FunName" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetWaybillDetIn" FunctionName="BaseModel.Store.GetWaybillDetIn">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetWaybillDetIn_Result">
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="Wid" ColumnName="Wid" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Nds" ColumnName="Nds" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="PtypeId" ColumnName="PtypeId" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="PosType" ColumnName="PosType" />
+                <ScalarProperty Name="Norm" ColumnName="Norm" />
+                <ScalarProperty Name="Producer" ColumnName="Producer" />
+                <ScalarProperty Name="Gtd" ColumnName="Gtd" />
+                <ScalarProperty Name="CertNum" ColumnName="CertNum" />
+                <ScalarProperty Name="CertDate" ColumnName="CertDate" />
+                <ScalarProperty Name="Serials" ColumnName="Serials" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="FullPrice" ColumnName="FullPrice" />
+                <ScalarProperty Name="SvcToPrice" ColumnName="SvcToPrice" />
+                <ScalarProperty Name="WbMaked" ColumnName="WbMaked" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
+                <ScalarProperty Name="SumNds" ColumnName="SumNds" />
+                <ScalarProperty Name="GrpName" ColumnName="GrpName" />
+                <ScalarProperty Name="DiscountPrice" ColumnName="DiscountPrice" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
+                <ScalarProperty Name="TotalInCurrency" ColumnName="TotalInCurrency" />
+                <ScalarProperty Name="MId" ColumnName="MId" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

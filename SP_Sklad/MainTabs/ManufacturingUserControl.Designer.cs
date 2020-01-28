@@ -100,6 +100,7 @@
             this.gridColumn41 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn65 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn127 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn136 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.WhEditBtn = new DevExpress.XtraEditors.SimpleButton();
             this.WhComboBox = new DevExpress.XtraEditors.LookUpEdit();
@@ -352,7 +353,6 @@
             this.bar7 = new DevExpress.XtraBars.Bar();
             this.bar6 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
-            this.gridColumn136 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -1086,6 +1086,9 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(58, "3.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(59, "finance_process2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(60, "Фінанси.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(61, "Debt adjustment.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(62, "credit adjustment.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(63, "акт інвентаризації з контрагентом.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab
@@ -1378,6 +1381,14 @@
             this.gridColumn127.Visible = true;
             this.gridColumn127.VisibleIndex = 12;
             this.gridColumn127.Width = 64;
+            // 
+            // gridColumn136
+            // 
+            this.gridColumn136.Caption = "Вихід, %";
+            this.gridColumn136.FieldName = "MatOut";
+            this.gridColumn136.Name = "gridColumn136";
+            this.gridColumn136.Visible = true;
+            this.gridColumn136.VisibleIndex = 14;
             // 
             // panelControl2
             // 
@@ -4188,14 +4199,6 @@
             this.bar5.DockCol = 0;
             this.bar5.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar5.Text = "Tools";
-            // 
-            // gridColumn136
-            // 
-            this.gridColumn136.Caption = "Вихід, %";
-            this.gridColumn136.FieldName = "MatOut";
-            this.gridColumn136.Name = "gridColumn136";
-            this.gridColumn136.Visible = true;
-            this.gridColumn136.VisibleIndex = 14;
             // 
             // ManufacturingUserControl
             // 

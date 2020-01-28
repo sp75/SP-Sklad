@@ -95,6 +95,10 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            this.comboBoxEdit1 = new DevExpress.XtraEditors.CalcEdit();
+            this.comboBoxEdit2 = new DevExpress.XtraEditors.FontEdit();
             this.checkEdit7 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit6 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit4 = new DevExpress.XtraEditors.CheckEdit();
@@ -150,6 +154,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.UserAccessWhGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             this.xtraTabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit7.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit6.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit4.Properties)).BeginInit();
@@ -778,7 +784,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(43, "Редактор SQL-запитiв.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(44, "Журнал подій.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(45, "view_settings.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(46, "Фінанси.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(46, "money-bag.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(47, "Безготівкові гроші.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(48, "iconfinder_General_Office_24_2530784.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(49, "юзер.png");
@@ -789,8 +795,13 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(54, "map_pin-next-16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(55, "prod_plan.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(56, "salesreport2_16x16.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(57, "money-bag.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(58, "cash.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(57, "ROI-PNG-Clipart.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(58, "3.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(59, "finance_process2.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(60, "Фінанси.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(61, "Debt adjustment.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(62, "credit adjustment.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(63, "акт інвентаризації з контрагентом.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // xtraTabPage3
@@ -868,6 +879,10 @@
             // 
             // xtraTabPage5
             // 
+            this.xtraTabPage5.Controls.Add(this.labelControl11);
+            this.xtraTabPage5.Controls.Add(this.labelControl10);
+            this.xtraTabPage5.Controls.Add(this.comboBoxEdit1);
+            this.xtraTabPage5.Controls.Add(this.comboBoxEdit2);
             this.xtraTabPage5.Controls.Add(this.checkEdit7);
             this.xtraTabPage5.Controls.Add(this.checkEdit6);
             this.xtraTabPage5.Controls.Add(this.checkEdit4);
@@ -877,6 +892,54 @@
             this.xtraTabPage5.Name = "xtraTabPage5";
             this.xtraTabPage5.Size = new System.Drawing.Size(635, 358);
             this.xtraTabPage5.Text = "Додаткові";
+            // 
+            // labelControl11
+            // 
+            this.labelControl11.Location = new System.Drawing.Point(24, 226);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(42, 16);
+            this.labelControl11.StyleController = this.styleController1;
+            this.labelControl11.TabIndex = 38;
+            this.labelControl11.Text = "Шрифт";
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Location = new System.Drawing.Point(247, 226);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(38, 16);
+            this.labelControl10.StyleController = this.styleController1;
+            this.labelControl10.TabIndex = 36;
+            this.labelControl10.Text = "Розмір";
+            // 
+            // comboBoxEdit1
+            // 
+            this.comboBoxEdit1.EditValue = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.comboBoxEdit1.Location = new System.Drawing.Point(247, 248);
+            this.comboBoxEdit1.MenuManager = this.barManager1;
+            this.comboBoxEdit1.Name = "comboBoxEdit1";
+            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.comboBoxEdit1.Size = new System.Drawing.Size(163, 20);
+            this.comboBoxEdit1.TabIndex = 37;
+            this.comboBoxEdit1.EditValueChanged += new System.EventHandler(this.comboBoxEdit1_EditValueChanged);
+            // 
+            // comboBoxEdit2
+            // 
+            this.comboBoxEdit2.EditValue = "Tahoma";
+            this.comboBoxEdit2.Location = new System.Drawing.Point(24, 248);
+            this.comboBoxEdit2.MenuManager = this.barManager1;
+            this.comboBoxEdit2.Name = "comboBoxEdit2";
+            this.comboBoxEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEdit2.Properties.DropDownRows = 7;
+            this.comboBoxEdit2.Size = new System.Drawing.Size(186, 20);
+            this.comboBoxEdit2.TabIndex = 39;
+            this.comboBoxEdit2.EditValueChanged += new System.EventHandler(this.comboBoxEdit2_EditValueChanged);
             // 
             // checkEdit7
             // 
@@ -1154,6 +1217,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.UserAccessWhGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             this.xtraTabPage5.ResumeLayout(false);
+            this.xtraTabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit7.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit6.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit4.Properties)).EndInit();
@@ -1265,5 +1331,9 @@
         private DevExpress.XtraEditors.CheckEdit checkEdit7;
         private System.Windows.Forms.BindingSource UserAccessCashDesksBS;
         private DevExpress.Utils.SharedImageCollection UserTreeImgList;
+        private DevExpress.XtraEditors.LabelControl labelControl11;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
+        private DevExpress.XtraEditors.CalcEdit comboBoxEdit1;
+        private DevExpress.XtraEditors.FontEdit comboBoxEdit2;
     }
 }

@@ -24,6 +24,7 @@ namespace SP_Sklad.SkladData
         public Nullable<int> FunId { get; set; }
         public string DocNum { get; set; }
         public Nullable<int> UserId { get; set; }
+        public Nullable<System.Guid> OriginatorId { get; set; }
     
         public virtual Tables Tables { get; set; }
         public virtual Users Users { get; set; }

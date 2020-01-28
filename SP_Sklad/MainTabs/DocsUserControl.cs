@@ -22,6 +22,7 @@ using DevExpress.XtraBars;
 using SP_Sklad.WBDetForm;
 using SkladEngine.WayBills;
 using System.IO;
+using DevExpress.Data;
 
 namespace SP_Sklad.MainTabs
 {
@@ -78,11 +79,17 @@ namespace SP_Sklad.MainTabs
                 wbStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
                 wbStatusList.EditValue = -1;
 
+                kaaStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
+                kaaStatusList.EditValue = -1;
+
                 wbStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
-                wbEndDate.EditValue = DateTime.Now.Date.AddHours(23).AddMinutes(59).AddSeconds(59);
+                wbEndDate.EditValue = DateTime.Now.Date.SetEndDay();
 
                 PDStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
-                PDEndDate.EditValue = DateTime.Now.Date.AddHours(23).AddMinutes(59).AddSeconds(59);
+                PDEndDate.EditValue = DateTime.Now.Date.SetEndDay();
+
+                kaaStartDate.EditValue = DateTime.Now.Date.FirstDayOfMonth();
+                kaaEndDate.EditValue = DateTime.Now.Date.SetEndDay();
 
                 PDKagentList.Properties.DataSource = DBHelper.KagentsList;// new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
                 PDKagentList.EditValue = 0;
@@ -108,6 +115,9 @@ namespace SP_Sklad.MainTabs
 
                 gridColumn50.Caption = "Сума в нац. валюті, " + DBHelper.NationalCurrency.ShortName;
                 gridColumn44.Caption = gridColumn50.Caption;
+
+                var  user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
+                WbGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
             }
 
         //    WbGridView.SaveLayoutToXml(@"D:\Program RES\AVK\t.xml");
@@ -141,6 +151,25 @@ namespace SP_Sklad.MainTabs
             int top_row = PayDocGridView.TopRowIndex;
             GetPayDocListBS.DataSource = _db.GetPayDocList(doc_typ, satrt_date.Date, end_date.Date.AddDays(1), (int)PDKagentList.EditValue, (int)PDSatusList.EditValue, -1, DBHelper.CurrentUser.KaId).OrderByDescending(o => o.OnDate).ToList();
             PayDocGridView.TopRowIndex = top_row;
+        }
+
+        void GetKAgentAdjustment(string wtyp)
+        {
+            if (kaaStatusList.EditValue == null || DocsTreeList.FocusedNode == null)
+            {
+                return;
+            }
+
+            var satrt_date = kaaStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : kaaStartDate.DateTime;
+            var end_date = kaaEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : kaaEndDate.DateTime;
+            int status = (int)kaaStatusList.EditValue;
+
+            int top_row = KAgentAdjustmentGridView.TopRowIndex;
+            using (var db = new BaseEntities())
+            {
+                KAgentAdjustmentBS.DataSource = db.v_KAgentAdjustment.Where(w => w.OnDate >= satrt_date && w.OnDate <= end_date && (status == -1 || w.Checked == status)).OrderByDescending(o => o.OnDate).ToList();
+            }
+            KAgentAdjustmentGridView.TopRowIndex = top_row;
         }
 
         private void DocsTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
@@ -256,6 +285,11 @@ namespace SP_Sklad.MainTabs
                                    frmTaxWB->ShowModal() ;
                                    delete frmTaxWB;
                                    break;*/
+                case 8:
+                    new frmKAgentAdjustment().ShowDialog();
+
+                    break;
+
             }
 
             RefrechItemBtn.PerformClick();
@@ -282,6 +316,7 @@ namespace SP_Sklad.MainTabs
                         {
                             pl_frm.ShowDialog();
                         }
+
                         break;
 
                     /*           case 6: ContractsList->Refresh();
@@ -341,8 +376,15 @@ namespace SP_Sklad.MainTabs
                                        }
                                        break;*/
 
+                    case 8:
+                        var kaa_row = KAgentAdjustmentGridView.GetFocusedRow() as v_KAgentAdjustment;
+                        using (var kaa_frm = new frmKAgentAdjustment(kaa_row.Id))
+                        {
+                            kaa_frm.ShowDialog();
+                        }
+                        break;
+
                 }
-                //    current_transaction.Rollback();
             }
 
             RefrechItemBtn.PerformClick();
@@ -358,6 +400,7 @@ namespace SP_Sklad.MainTabs
             int gtype = (int)DocsTreeList.FocusedNode.GetValue("GType");
             var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
             var pd_row = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
+            var adj_row = KAgentAdjustmentGridView.GetFocusedRow() as v_KAgentAdjustment;
 
             //    var trans = _db.Database.BeginTransaction(IsolationLevel.RepeatableRead);
             using (var db = new BaseEntities())
@@ -408,6 +451,18 @@ namespace SP_Sklad.MainTabs
 
                             //	   case 6: ContractsList->Delete();  break;
                             //	   case 7: TaxWBList->Delete();  break;
+                            case 8:
+                                var adj = db.KAgentAdjustment.Find(adj_row.Id);
+
+                                if (adj != null)
+                                {
+                                    db.KAgentAdjustment.Remove(adj);
+                                }
+                                else
+                                {
+                                    MessageBox.Show(string.Format("Документ #{0} не знайдено", pd_row.DocNum));
+                                }
+                                break;
                         }
                         db.SaveChanges();
                     }
@@ -485,8 +540,13 @@ namespace SP_Sklad.MainTabs
                           TaxWBList->FullRefresh();
                           TaxWBDet->FullRefresh();
                           break;*/
+
+                case 8:
+
+                    GetKAgentAdjustment("");
+                    break;
             }
-            //    GET_RelDocList->CloseOpen(true);
+           
         }
 
         private void ExecuteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -550,6 +610,28 @@ namespace SP_Sklad.MainTabs
                         else
                         {
                             MessageBox.Show(string.Format("Документ #{0} не знайдено", pd_row.DocNum));
+                        }
+                        break;
+
+                    case 8:
+
+                        var kadjustment_row = KAgentAdjustmentGridView.GetFocusedRow() as v_KAgentAdjustment;
+                        var kadj = db.KAgentAdjustment.Find(kadjustment_row.Id);
+                        if (kadj != null)
+                        {
+                            if (kadj.OnDate > db.CommonParams.First().EndCalcPeriod)
+                            {
+                                kadj.Checked = kadjustment_row.Checked == 0 ? 1 : 0;
+                                db.SaveChanges();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Період вже закритий. Змініть дату документа!", "Відміна/Проведення корегуючого документа", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show(string.Format("Документ #{0} не знайдено", kadjustment_row.Num));
                         }
                         break;
                 }
@@ -1244,6 +1326,79 @@ namespace SP_Sklad.MainTabs
             if (e.Button.Index == 1)
             {
                 PDKagentList.EditValue = IHelper.ShowDirectList(PDKagentList.EditValue, 1);
+            }
+        }
+
+        private void kaaStartDate_EditValueChanged(object sender, EventArgs e)
+        {
+            RefrechItemBtn.PerformClick();
+        }
+
+        private void KAgentAdjustmentGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
+        {
+            var dr = e.Row as v_KAgentAdjustment;
+
+            xtraTabControl4_SelectedPageChanged(sender, null);
+
+            DeleteItemBtn.Enabled = (dr != null && dr.Checked == 0 && focused_tree_node.CanDelete == 1);
+            ExecuteItemBtn.Enabled = (dr != null && focused_tree_node.CanPost == 1);
+            EditItemBtn.Enabled = (dr != null && focused_tree_node.CanModify == 1 && dr.Checked == 0);
+            CopyItemBtn.Enabled = (dr != null && focused_tree_node.CanModify == 1);
+            PrintItemBtn.Enabled = (dr != null);
+        }
+
+        private void KAgentAdjustmentGridView_DoubleClick(object sender, EventArgs e)
+        {
+            if (IHelper.isRowDublClick(sender)) EditItemBtn.PerformClick();
+        }
+
+        private void xtraTabControl4_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
+        {
+            var dr = KAgentAdjustmentGridView.GetFocusedRow() as v_KAgentAdjustment;
+
+            if (dr == null)
+            {
+                gridControl5.DataSource = null;
+                gridControl6.DataSource = null;
+          //      WayBillListInfoBS.DataSource = null;
+
+                return;
+            }
+
+            switch (xtraTabControl2.SelectedTabPageIndex)
+            {
+                case 0:
+
+                    gridControl5.DataSource = _db.v_KAgentAdjustmentDet.Where(w=> w.KAgentAdjustmentId == dr.Id).OrderBy(o => o.Idx).ToList();
+                    break;
+
+                case 1:
+             //       WayBillListInfoBS.DataSource = dr;
+                    break;
+
+                case 2:
+                    gridControl3.DataSource = _db.GetRelDocList(dr.Id).OrderBy(o => o.OnDate).ToList();
+                    break;
+            }
+
+        }
+
+        private void WaybillDetGridView_CustomSummaryCalculate(object sender, DevExpress.Data.CustomSummaryEventArgs e)
+        {
+
+            if (e.SummaryProcess == CustomSummaryProcess.Finalize && gridControl2.DataSource != null)
+            {
+                var def_m = DBHelper.MeasuresList.FirstOrDefault(w => w.Def == 1);
+
+                GridSummaryItem item = e.Item as GridSummaryItem;
+
+                if (item.FieldName == "Amount")
+                {
+                    var mat_list = gridControl2.DataSource as IOrderedEnumerable<GetWaybillDetIn_Result>;
+                    var amount_sum = mat_list.Where(w => w.MId == def_m.MId).Sum(s => s.Amount);
+
+                    e.TotalValue = amount_sum.ToString() + " " + def_m.ShortName;//Math.Round(amount_sum + ext_sum, 2);
+                }
             }
         }
     }

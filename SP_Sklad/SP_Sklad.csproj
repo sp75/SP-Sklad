@@ -389,6 +389,9 @@
     <Compile Include="SkladData\ExecuteWayBill_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetDocList_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetMatGroupPriceTypes_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -443,6 +446,12 @@
     <Compile Include="SkladData\IntermediateWeighingDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\KAgentAdjustment.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\KAgentAdjustmentDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\Licenses.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -450,6 +459,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\MoneyMoveList_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\OperationTypes.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\OrderedRels.cs">
@@ -505,9 +517,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetActualRemainByWh_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\GetDocList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetKAgentSaldo_Result.cs">
@@ -679,6 +688,15 @@
     <Compile Include="SkladData\v_IntermediateWeighingDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_KAgentAdjustment.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_KAgentAdjustmentDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_KAgentDocs.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_KAgentSaldo.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -737,6 +755,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\WhMatGet_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\WriteOffTypes.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewsForm\frmCatalog.cs">
@@ -1402,6 +1423,12 @@
     <Compile Include="WBDetForm\frmWriteOffDet.Designer.cs">
       <DependentUpon>frmWriteOffDet.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBForm\frmKAgentActReconciliation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\frmKAgentActReconciliation.Designer.cs">
+      <DependentUpon>frmKAgentActReconciliation.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBForm\frmPlannedCalculation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1425,6 +1452,12 @@
     </Compile>
     <Compile Include="WBForm\frmIntermediateWeighing.Designer.cs">
       <DependentUpon>frmIntermediateWeighing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WBForm\frmKAgentAdjustment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\frmKAgentAdjustment.Designer.cs">
+      <DependentUpon>frmKAgentAdjustment.cs</DependentUpon>
     </Compile>
     <Compile Include="WBForm\frmProductionPlans.cs">
       <SubType>Form</SubType>
@@ -1728,6 +1761,9 @@
     <EmbeddedResource Include="WBDetForm\frmWriteOffDet.resx">
       <DependentUpon>frmWriteOffDet.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\frmKAgentActReconciliation.resx">
+      <DependentUpon>frmKAgentActReconciliation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmPlannedCalculation.resx">
       <DependentUpon>frmPlannedCalculation.cs</DependentUpon>
     </EmbeddedResource>
@@ -1739,6 +1775,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmIntermediateWeighing.resx">
       <DependentUpon>frmIntermediateWeighing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\frmKAgentAdjustment.resx">
+      <DependentUpon>frmKAgentAdjustment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmProductionPlans.resx">
       <DependentUpon>frmProductionPlans.cs</DependentUpon>
@@ -1814,6 +1853,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KADiscount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Kagent.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KAgentAccount.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.KAgentAdjustment.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KAgentDoc.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KagentList.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KAgentPersons.datasource" />
@@ -1857,6 +1897,8 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_DiscCards.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_IntermediateWeighingDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_KAgentAccount.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_KAgentAdjustment.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_KAgentAdjustmentDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_MatRecipe.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PlannedCalculation.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PlannedCalculationDetDet.datasource" />

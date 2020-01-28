@@ -28,7 +28,9 @@ namespace SP_Sklad.WBForm
         private InventoryDet focused_dr
         {
             get { return InventoryDetGridView.GetFocusedRow() as InventoryDet; }
-        } 
+        }
+
+        private UserSettingsRepository user_settings { get; set; }
 
         public frmWBInventory(int? wbill_id = null)
         {
@@ -36,7 +38,7 @@ namespace SP_Sklad.WBForm
 
             _wbill_id = wbill_id;
             _db = new BaseEntities();
-         //   current_transaction = _db.Database.BeginTransaction();
+            user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
 
             InitializeComponent();
         }
@@ -391,6 +393,11 @@ namespace SP_Sklad.WBForm
             }
             _db.SaveChanges();
             RefreshDet();
+        }
+
+        private void frmWBInventory_Shown(object sender, EventArgs e)
+        {
+            InventoryDetGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
         }
     }
 }

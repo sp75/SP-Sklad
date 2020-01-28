@@ -33,14 +33,16 @@ namespace SP_Sklad.WBForm
         private GetWayBillDetOut_Result focused_dr
         {
             get { return WaybillDetOutGridView.GetFocusedRow() as GetWayBillDetOut_Result; }
-        } 
+        }
+
+        private UserSettingsRepository user_settings { get; set; }
 
         public frmWayBillMove(int? wbill_id = null)
         {
             is_new_record = false;
             _wbill_id = wbill_id;
             _db = new BaseEntities();
-    //        current_transaction = _db.Database.BeginTransaction();
+            user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
 
             InitializeComponent();
         }
@@ -173,6 +175,7 @@ namespace SP_Sklad.WBForm
         private void frmWayBillMove_Shown(object sender, EventArgs e)
         {
             OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
+            WaybillDetOutGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
         }
 
         private void OkButton_Click(object sender, EventArgs e)

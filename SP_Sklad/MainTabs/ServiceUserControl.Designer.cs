@@ -475,6 +475,9 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(58, "3.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(59, "finance_process2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(60, "Фінанси.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(61, "Debt adjustment.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(62, "credit adjustment.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(63, "акт інвентаризації з контрагентом.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // mainContentTab
@@ -1819,7 +1822,7 @@
             "COM6",
             "COM7",
             "COM8"});
-            this.ComPortNameEdit.Size = new System.Drawing.Size(163, 22);
+            this.ComPortNameEdit.Size = new System.Drawing.Size(186, 22);
             this.ComPortNameEdit.StyleController = this.styleController1;
             this.ComPortNameEdit.TabIndex = 30;
             this.ComPortNameEdit.EditValueChanged += new System.EventHandler(this.ComPortNameEdit_EditValueChanged);

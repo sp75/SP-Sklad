@@ -320,7 +320,7 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("XLRPARAMS", XLRPARAMS);
                 data_for_report.Add("Kagent", kagents.ToList());
 
-                IHelper.Print(data_for_report, TemlateList.rep_5);
+                IHelper.Print2(data_for_report, TemlateList.rep_5);
             }
 
             if (idx == 6)
@@ -340,7 +340,7 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("XLRPARAMS", XLRPARAMS);
                 data_for_report.Add("Kagent", kagents.ToList());
 
-                IHelper.Print(data_for_report, TemlateList.rep_6);
+                IHelper.Print2(data_for_report, TemlateList.rep_6);
             }
 
             if (idx == 7)
@@ -973,7 +973,7 @@ namespace SP_Sklad.Reports
 
             if (idx == 30)
             {
-                var list = db.GetDocList(StartDate, EndDate, (int)Kagent.KaId, 0).OrderBy(o => o.OnDate).ToList().Where(w => new int[] { 1, -1, 3, -3, -6, 6 }.Any(a => a == w.WType)).Select((s, index) => new
+                var list = db.GetDocList(StartDate, EndDate, (int)Kagent.KaId, 0).OrderBy(o => o.OnDate).ToList().Where(w => new int[] { 1, -1, 3, -3, -6, 6, -23, 23 }.Any(a => a == w.WType)).Select((s, index) => new
                 {
                     idx = index + 1,
                     s.OnDate,
@@ -986,7 +986,9 @@ namespace SP_Sklad.Reports
                     VKO = s.WType == -3 ? s.SummInCurr : null,
                     PDP = s.WType == -6 ? s.SummInCurr : null,
                     PVK = s.WType == 6 ? s.SummInCurr : null,
-                }).OrderBy(o=> o.OnDate);
+                    SZP = s.WType == -23 ? s.SummInCurr : null,
+                    SZK = s.WType == 23 ? s.SummInCurr : null
+                }).OrderBy(o => o.OnDate);
 
                 if (!list.Any())
                 {
@@ -996,7 +998,7 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("XLRPARAMS", XLRPARAMS);
                 data_for_report.Add("KADocList", list.ToList());
 
-                IHelper.Print(data_for_report, TemlateList.rep_30);
+                IHelper.Print2(data_for_report, TemlateList.rep_30);
             }
 
             if (idx == 32)
