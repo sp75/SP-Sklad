@@ -538,321 +538,6 @@ namespace SP_Sklad.Reports
                 IHelper.Print(data_for_report, TemlateList.rep_16);
             }
 
-            if (idx == 19)
-            {
-                int wid = Warehouse.WId == "*" ? 0 : Convert.ToInt32(Warehouse.WId);
-                int mat_id = (int)this.Material.MatId;
-                Guid grp_kg = KontragentGroup.Id;
-                var list = db.GetMatMove((int)this.Material.MatId, StartDate, EndDate, wid, (int)Kagent.KaId, (int)DocType, "*", grp_kg, _user_id).ToList();
-
-                if (!list.Any())
-                {
-                    return;
-                }
-
-                var satrt_remais = db.MatRemainByWh(mat_id, wid, (int)Kagent.KaId, StartDate, "*", DBHelper.CurrentUser.UserId).Sum(s => s.Remain);
-                var sart_avg_price = db.v_MatRemains.Where(w => w.MatId == mat_id && w.OnDate <= StartDate).OrderByDescending(o => o.OnDate).Select(s => s.AvgPrice).FirstOrDefault();
-                var end_remais = db.MatRemainByWh(mat_id, wid, (int)Kagent.KaId, EndDate, "*", DBHelper.CurrentUser.UserId).Sum(s => s.Remain);
-                var end_avg_price = db.v_MatRemains.Where(w => w.MatId == mat_id && w.OnDate <= EndDate).OrderByDescending(o => o.OnDate).Select(s => s.AvgPrice).FirstOrDefault();
-
-                var balances = new List<object>();
-                balances.Add(new
-                {
-                    SARTREMAIN = satrt_remais,
-                    SARTAVGPRICE = sart_avg_price,
-                    ENDREMAIN = end_remais,
-                    ENDAVGPRICE = end_avg_price
-
-                });
-
-                data_for_report.Add("XLRPARAMS", XLRPARAMS);
-                data_for_report.Add("Balances", balances);
-                data_for_report.Add("MatList", list.ToList());
-
-                IHelper.Print(data_for_report, TemlateList.rep_19);
-            }
-
-            if (idx == 20)
-            {
-                int grp = Convert.ToInt32(MatGroup.GrpId);
-
-                var svc = db.REP_20(StartDate, EndDate, grp, (int)Kagent.KaId).ToList();
-
-                if (!svc.Any())
-                {
-                    return;
-                }
-
-                var svc_grp = db.SvcGroup.Where(w => w.Deleted == 0 && (w.GrpId == grp || grp == 0)).Select(s => new { s.GrpId, s.Name }).ToList();
-
-                rel.Add(new
-                {
-                    pk = "GrpId",
-                    fk = "GrpId",
-                    master_table = "SvcGroup",
-                    child_table = "SvcOutDet"
-                });
-
-                data_for_report.Add("XLRPARAMS", XLRPARAMS);
-                data_for_report.Add("SvcGroup", svc_grp.Where(w => svc.Select(s => s.GrpId).Contains(w.GrpId)).ToList());
-                data_for_report.Add("SvcOutDet", svc);
-                data_for_report.Add("_realation_", rel);
-
-                IHelper.Print(data_for_report, TemlateList.rep_20);
-            }
-
-            if (idx == 25)
-            {
-                int grp = Convert.ToInt32(MatGroup.GrpId);
-                int kid = Convert.ToInt32(Kagent.KaId);
-                string wh = Convert.ToString(Warehouse.WId);
-                var mat = db.REP_4_25(StartDate, EndDate, grp, kid, wh, DocStr, _user_id).ToList();
-
-                if (!mat.Any())
-                {
-                    return;
-                }
-
-                var mat_grp = db.MatGroup.Where(w => w.Deleted == 0 && (w.GrpId == grp || grp == 0)).Select(s => new { s.GrpId, s.Name }).ToList();
-
-                rel.Add(new
-                {
-                    pk = "GrpId",
-                    fk = "GrpId",
-                    master_table = "MatGroup",
-                    child_table = "MatInDet"
-                });
-
-                data_for_report.Add("XLRPARAMS", XLRPARAMS);
-                data_for_report.Add("MatGroup", mat_grp.Where(w => mat.Select(s => s.GrpId).Contains(w.GrpId)).ToList());
-                data_for_report.Add("MatInDet", mat);
-                data_for_report.Add("SummaryField", mat.GroupBy(g => 1).Select(s => new
-                {
-                    SummPrice = s.Sum(r => r.SummPrice),
-                    ReturnSummPriceOut = s.Sum(r => r.ReturnSummPriceOut)
-                }).ToList());
-                data_for_report.Add("_realation_", rel);
-
-                IHelper.Print(data_for_report, TemlateList.rep_4);
-            }
-
-            if (idx == 28)
-            {
-                int grp = Convert.ToInt32(MatGroup.GrpId);
-                Guid grp_kg = KontragentGroup.Id;
-                var mat = db.OrderedList(StartDate, EndDate, 0, (int)Kagent.KaId, -16, 0, grp_kg).Where(w => w.GrpId == grp || grp == 0).GroupBy(g => new
-                {
-                    g.BarCode,
-                    g.GrpId,
-                    g.MatId,
-                    g.MatName,
-                    g.CurrencyName,
-                    g.MsrName
-
-                }).Select(s => new
-                {
-                    s.Key.MatId,
-                    s.Key.BarCode,
-                    s.Key.GrpId,
-                    s.Key.MatName,
-                    s.Key.MsrName,
-                    Amount = s.Sum(a => a.Amount),
-                    OnSum = s.Sum(sum => sum.Price * sum.Amount)
-
-                }).OrderBy(o => o.MatId).ToList();
-
-                if (!mat.Any())
-                {
-                    return;
-                }
-
-                var mat_grp = db.MatGroup.Where(w => w.Deleted == 0 && (w.GrpId == grp || grp == 0)).Select(s => new { s.GrpId, s.Name }).ToList();
-
-                rel.Add(new
-                {
-                    pk = "GrpId",
-                    fk = "GrpId",
-                    master_table = "MatGroup",
-                    child_table = "MatInDet"
-                });
-
-
-                data_for_report.Add("XLRPARAMS", XLRPARAMS);
-                data_for_report.Add("MatGroup", mat_grp.Where(w => mat.Select(s => s.GrpId).Contains(w.GrpId)).OrderBy(o=> o.Name).ToList());
-                data_for_report.Add("MatInDet", mat);
-                data_for_report.Add("_realation_", rel);
-
-                IHelper.Print(data_for_report, TemlateList.rep_28);
-            }
-
-            if (idx == 18)
-            {
-
-                int grp = Convert.ToInt32(MatGroup.GrpId);
-                int wid = Warehouse.WId == "*" ? 0 : Convert.ToInt32(Warehouse.WId);
-
-                var mat = db.WhMatGet(grp, wid, 0, OnDate, 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).Where(w => w.Remain < w.MinReserv && w.MinReserv != null).ToList();
-
-                if (!mat.Any())
-                {
-                    return;
-                }
-
-                var mat_grp = db.MatGroup.Where(w => w.Deleted == 0 && (w.GrpId == grp || grp == 0)).Select(s => new { s.GrpId, s.Name }).ToList();
-
-                rel.Add(new
-                {
-                    pk = "GrpId",
-                    fk = "OutGrpId",
-                    master_table = "MatGroup",
-                    child_table = "MatList"
-                });
-
-                data_for_report.Add("XLRPARAMS", XLRPARAMS);
-                data_for_report.Add("MatGroup", mat_grp.Where(w => mat.Select(s => s.OutGrpId).Contains(w.GrpId)).ToList());
-                data_for_report.Add("MatList", mat);
-                data_for_report.Add("_realation_", rel);
-
-                IHelper.Print(data_for_report, TemlateList.rep_18);
-            }
-
-            if (idx == 26)
-            {
-                int grp = Convert.ToInt32(MatGroup.GrpId);
-                string wid = Convert.ToString(Warehouse.WId);
-                var make = db.WBListMake(StartDate, EndDate, 1, wid, grp, -20).ToList().Concat(db.WBListMake(StartDate, EndDate, 1, wid, grp, -22).ToList());
-
-                if (!make.Any())
-                {
-                    return;
-                }
-
-                data_for_report.Add("XLRPARAMS", XLRPARAMS);
-                data_for_report.Add("MakedProduct", make.ToList());
-
-                IHelper.Print(data_for_report, TemlateList.rep_26);
-            }
-
-            if (idx == 27) 
-            {
-                Guid grp_kg = KontragentGroup.Id;
-                var mat = db.REP_27(StartDate, EndDate, (int)Kagent.KaId, (int)MatGroup.GrpId, (int)this.Material.MatId, grp_kg, (int)Person.KaId).ToList();
-
-                if (!mat.Any())
-                {
-                    return;
-                }
-
-                data_for_report.Add("XLRPARAMS", XLRPARAMS);
-                data_for_report.Add("MatList", mat.GroupBy(g => new { g.KaName,  g.MatName, g.MsrName, g.BarCode }).Select(s => new
-                {
-                    BarCode = s.Key.BarCode,
-                    MatName = s.Key.MatName,
-                    MsrName = s.Key.MsrName,
-                    KaName = s.Key.KaName,
-                    AmountOrd = s.Sum(su => su.AmountOrd),
-                    TotalOrd = s.Sum(su => su.TotalOrd),
-                    AmountOut = s.Sum(su => su.AmountOut),
-                    TotalOut = s.Sum(su => su.TotalOut),
-                    PersonName = String.Join(", ", s.Select(su=> su.PersonName).Distinct() )
-                }).ToList());
-
-                IHelper.Print2(data_for_report, TemlateList.rep_27);
-            }
-
-            if (idx == 31)
-            {
-                var sql = @"  select 
-	    wbd.MatId, 
-		mat.Name MatName,  
-		mat.GrpId, 
-		mg.Name GrpName, 
-		sum(wbd.AMOUNT) AmountOrd, 
-		sum(wbd.TOTAL) TotalOrd, 
-        msr.shortname MsrName,  
-		mat.BarCode, 
-		sum(x.Amount) AmountOut, 
-		sum(x.Total) TotalOut
-      from WAYBILLDET wbd 
-	  join  WAYBILLLIST wbl on wbl.wbillid = wbd.wbillid
-      join MATERIALS mat on mat.matid = wbd.MatId
-	  join MatGroup mg on mat.GrpId = mg.GrpId
-      join measures msr on msr.mid=mat.mid
-      join kagent kaemp on wbl.kaid = kaemp.kaid
-	  outer apply ( select Amount, Total
-                    from WAYBILLDET wbdo , WAYBILLLIST wblo
-                    join DOCRELS dl on wblo.id = dl.OriginatorId
-                    left outer join kagent kaemp on wblo.personid = kaemp.kaid
-                    where wblo.wbillid = wbdo.wbillid  and  wblo.checked = 1 and wblo.wtype = -1
-                          and wblo.id = dl.OriginatorId and dl.RelOriginatorId = wbl.id  and  wbdo.matid =wbd.MATID) x
-      where wbl.wbillid = wbd.wbillid and wbl.wtype = -16
-            and wbl.ondate between {0} and {1}
-            and ( mat.grpid = {2} or {2} = 0 )
-            and ( mat.matid = {3} or {3} = 0 )
-      group by  mat.GrpId, mg.Name ,wbd.MATID, mat.name,   msr.shortname,  mat.barcode";
-
-           //       var mat = db.Database.SqlQuery<REP_31_Result>(sql, StartDate, EndDate, (int)MatGroup.GrpId, (int)this.Material.MatId).ToList().OrderBy(o => o.MatName).ToList();
-
-                var mat = db.REP_31(StartDate, EndDate, (int)MatGroup.GrpId, (int)this.Material.MatId).ToList().OrderBy(o => o.MatName).ToList();
-
-                if (!mat.Any())
-                {
-                    return;
-                }
-
-                var mat_grp = mat.GroupBy(g => new { g.GrpName, g.GrpId }).Select(s => new
-                {
-                    s.Key.GrpId,
-                    Name = s.Key.GrpName,
-                    TotalOrd = s.Sum(xs => xs.TotalOrd),
-                    TotalOut = s.Sum(xs => xs.TotalOut)
-                }).OrderBy(o => o.Name).ToList();
-
-                rel.Add(new
-                {
-                    pk = "GrpId",
-                    fk = "GrpId",
-                    master_table = "MatGroup",
-                    child_table = "MatList"
-                });
-
-                data_for_report.Add("XLRPARAMS", XLRPARAMS);
-                data_for_report.Add("MatGroup", mat_grp);
-                data_for_report.Add("MatList", mat);
-                data_for_report.Add("_realation_", rel);
-
-                IHelper.Print(data_for_report, TemlateList.rep_31);
-            }
-
-            if (idx == 29)
-            {
-                int grp = Convert.ToInt32(MatGroup.GrpId);
-                string wh = Convert.ToString(Warehouse.WId);
-                var mat = db.REP_29(StartDate, EndDate, (int)Kagent.KaId, grp, wh).ToList();
-
-                if (!mat.Any())
-                {
-                    return;
-                }
-
-                var mat_grp = db.MatGroup.Where(w => w.Deleted == 0 && (w.GrpId == grp || grp == 0)).Select(s => new { s.GrpId, s.Name }).ToList();
-
-                rel.Add(new
-                {
-                    pk = "GrpId",
-                    fk = "GrpId",
-                    master_table = "MatGroup",
-                    child_table = "MatInDet"
-                });
-
-                data_for_report.Add("XLRPARAMS", XLRPARAMS);
-                data_for_report.Add("MatGroup", mat_grp.Where(w => mat.Select(s => s.GrpId).Contains(w.GrpId)).ToList());
-                data_for_report.Add("MatInDet", mat);
-                data_for_report.Add("_realation_", rel);
-
-                IHelper.Print(data_for_report, TemlateList.rep_29);
-            }
-
             if (idx == 17)
             {
                 decimal? total = 0;
@@ -950,6 +635,155 @@ namespace SP_Sklad.Reports
                 IHelper.Print(data_for_report, TemlateList.rep_17);
             }
 
+            if (idx == 19)
+            {
+                int wid = Warehouse.WId == "*" ? 0 : Convert.ToInt32(Warehouse.WId);
+                int mat_id = (int)this.Material.MatId;
+                Guid grp_kg = KontragentGroup.Id;
+                var list = db.GetMatMove((int)this.Material.MatId, StartDate, EndDate, wid, (int)Kagent.KaId, (int)DocType, "*", grp_kg, _user_id).ToList();
+
+                if (!list.Any())
+                {
+                    return;
+                }
+
+                var satrt_remais = db.MatRemainByWh(mat_id, wid, (int)Kagent.KaId, StartDate, "*", DBHelper.CurrentUser.UserId).Sum(s => s.Remain);
+                var sart_avg_price = db.v_MatRemains.Where(w => w.MatId == mat_id && w.OnDate <= StartDate).OrderByDescending(o => o.OnDate).Select(s => s.AvgPrice).FirstOrDefault();
+                var end_remais = db.MatRemainByWh(mat_id, wid, (int)Kagent.KaId, EndDate, "*", DBHelper.CurrentUser.UserId).Sum(s => s.Remain);
+                var end_avg_price = db.v_MatRemains.Where(w => w.MatId == mat_id && w.OnDate <= EndDate).OrderByDescending(o => o.OnDate).Select(s => s.AvgPrice).FirstOrDefault();
+
+                var balances = new List<object>();
+                balances.Add(new
+                {
+                    SARTREMAIN = satrt_remais,
+                    SARTAVGPRICE = sart_avg_price,
+                    ENDREMAIN = end_remais,
+                    ENDAVGPRICE = end_avg_price
+
+                });
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("Balances", balances);
+                data_for_report.Add("MatList", list.ToList());
+
+                IHelper.Print(data_for_report, TemlateList.rep_19);
+            }
+
+            if (idx == 18)
+            {
+
+                int grp = Convert.ToInt32(MatGroup.GrpId);
+                int wid = Warehouse.WId == "*" ? 0 : Convert.ToInt32(Warehouse.WId);
+
+                var mat = db.WhMatGet(grp, wid, 0, OnDate, 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).Where(w => w.Remain < w.MinReserv && w.MinReserv != null).ToList();
+
+                if (!mat.Any())
+                {
+                    return;
+                }
+
+                var mat_grp = db.MatGroup.Where(w => w.Deleted == 0 && (w.GrpId == grp || grp == 0)).Select(s => new { s.GrpId, s.Name }).ToList();
+
+                rel.Add(new
+                {
+                    pk = "GrpId",
+                    fk = "OutGrpId",
+                    master_table = "MatGroup",
+                    child_table = "MatList"
+                });
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("MatGroup", mat_grp.Where(w => mat.Select(s => s.OutGrpId).Contains(w.GrpId)).ToList());
+                data_for_report.Add("MatList", mat);
+                data_for_report.Add("_realation_", rel);
+
+                IHelper.Print(data_for_report, TemlateList.rep_18);
+            }
+
+            if (idx == 20)
+            {
+                int grp = Convert.ToInt32(MatGroup.GrpId);
+
+                var svc = db.REP_20(StartDate, EndDate, grp, (int)Kagent.KaId).ToList();
+
+                if (!svc.Any())
+                {
+                    return;
+                }
+
+                var svc_grp = db.SvcGroup.Where(w => w.Deleted == 0 && (w.GrpId == grp || grp == 0)).Select(s => new { s.GrpId, s.Name }).ToList();
+
+                rel.Add(new
+                {
+                    pk = "GrpId",
+                    fk = "GrpId",
+                    master_table = "SvcGroup",
+                    child_table = "SvcOutDet"
+                });
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("SvcGroup", svc_grp.Where(w => svc.Select(s => s.GrpId).Contains(w.GrpId)).ToList());
+                data_for_report.Add("SvcOutDet", svc);
+                data_for_report.Add("_realation_", rel);
+
+                IHelper.Print(data_for_report, TemlateList.rep_20);
+            }
+
+            if (idx == 22)
+            {
+                int person = (int)Person.KaId;
+
+                var sql_1 = @"
+   	            select m.GrpId, m.name Name, wbd.amount Amount, wbd.total Summ, ms.ShortName, wbl.WbillId, person.Name PersonName , person.KaId PersonId , wbl.KaId , ka.Name KontragentName
+
+                from waybilldet wbd
+                join waybilllist wbl on wbl.wbillid = wbd.wbillid
+                join materials m on m.matid = wbd.matid
+                join measures ms on ms.mid = m.mid
+			    join kagent person on person.kaid = wbl.PersonId
+                join kagent ka on ka.kaid = wbl.KaId
+
+                where  wbl.checked = 1 and wbl.WType = -1
+                       and wbl.ondate between {0} and {1}
+                       and person.KaId = {2}
+   
+			    order by  m.name ";
+
+                var waybill_list = db.Database.SqlQuery<rep_22>(sql_1, StartDate, EndDate, person).ToList();
+
+                if (!waybill_list.Any())
+                {
+                    return;
+                }
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("WbList", waybill_list.GroupBy(g => new { g.Name, g.ShortName, g.PersonName }).Select(s => new
+                {
+                    Name = s.Key.Name,
+                    ShortName = s.Key.ShortName,
+                    PersonName = s.Key.PersonName,
+                    Amount = s.Sum(a => a.Amount),
+                    Summ = s.Sum(su => su.Summ)
+                }).ToList());
+
+                data_for_report.Add("MeasuresList", waybill_list.GroupBy(g => new { g.ShortName }).Select(s => new
+                {
+                    ShortName = s.Key.ShortName,
+                    Amount = s.Sum(a => a.Amount),
+                    Summ = s.Sum(su => su.Summ)
+                }).ToList());
+
+
+                data_for_report.Add("KagentList", waybill_list.GroupBy(g => g.KontragentName).Select(s => new
+                {
+                    Name = s.Key,
+                    Amount = s.Select(d => d.WbillId).Distinct().Count(),
+                    Summ = s.Sum(su => su.Summ)
+                }).ToList());
+
+                IHelper.Print2(data_for_report, TemlateList.rep_22);
+            }
+
             if (idx == 23)
             {
                 data_for_report.Add("XLRPARAMS", XLRPARAMS);
@@ -964,6 +798,163 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("MONEY2", m.Where(w => w.SaldoType == 1).ToList());
 
                 IHelper.Print(data_for_report, TemlateList.rep_23);
+            }
+
+            if (idx == 25)
+            {
+                int grp = Convert.ToInt32(MatGroup.GrpId);
+                int kid = Convert.ToInt32(Kagent.KaId);
+                string wh = Convert.ToString(Warehouse.WId);
+                var mat = db.REP_4_25(StartDate, EndDate, grp, kid, wh, DocStr, _user_id).ToList();
+
+                if (!mat.Any())
+                {
+                    return;
+                }
+
+                var mat_grp = db.MatGroup.Where(w => w.Deleted == 0 && (w.GrpId == grp || grp == 0)).Select(s => new { s.GrpId, s.Name }).ToList();
+
+                rel.Add(new
+                {
+                    pk = "GrpId",
+                    fk = "GrpId",
+                    master_table = "MatGroup",
+                    child_table = "MatInDet"
+                });
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("MatGroup", mat_grp.Where(w => mat.Select(s => s.GrpId).Contains(w.GrpId)).ToList());
+                data_for_report.Add("MatInDet", mat);
+                data_for_report.Add("SummaryField", mat.GroupBy(g => 1).Select(s => new
+                {
+                    SummPrice = s.Sum(r => r.SummPrice),
+                    ReturnSummPriceOut = s.Sum(r => r.ReturnSummPriceOut)
+                }).ToList());
+                data_for_report.Add("_realation_", rel);
+
+                IHelper.Print(data_for_report, TemlateList.rep_4);
+            }
+
+            if (idx == 26)
+            {
+                int grp = Convert.ToInt32(MatGroup.GrpId);
+                string wid = Convert.ToString(Warehouse.WId);
+                var make = db.WBListMake(StartDate, EndDate, 1, wid, grp, -20).ToList().Concat(db.WBListMake(StartDate, EndDate, 1, wid, grp, -22).ToList());
+
+                if (!make.Any())
+                {
+                    return;
+                }
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("MakedProduct", make.ToList());
+
+                IHelper.Print(data_for_report, TemlateList.rep_26);
+            }
+
+            if (idx == 27)
+            {
+                Guid grp_kg = KontragentGroup.Id;
+                var mat = db.REP_27(StartDate, EndDate, (int)Kagent.KaId, (int)MatGroup.GrpId, (int)this.Material.MatId, grp_kg, (int)Person.KaId).ToList();
+
+                if (!mat.Any())
+                {
+                    return;
+                }
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("MatList", mat.GroupBy(g => new { g.KaName, g.MatName, g.MsrName, g.BarCode }).Select(s => new
+                {
+                    s.Key.BarCode,
+                    s.Key.MatName,
+                    s.Key.MsrName,
+                    s.Key.KaName,
+                    AmountOrd = s.Sum(su => su.AmountOrd),
+                    TotalOrd = s.Sum(su => su.TotalOrd),
+                    AmountOut = s.Sum(su => su.AmountOut),
+                    TotalOut = s.Sum(su => su.TotalOut),
+                    PersonName = String.Join(", ", s.Select(su => su.PersonName).Distinct())
+                }).ToList());
+
+                IHelper.Print2(data_for_report, TemlateList.rep_27);
+            }
+
+            if (idx == 28)
+            {
+                int grp = Convert.ToInt32(MatGroup.GrpId);
+                Guid grp_kg = KontragentGroup.Id;
+                var mat = db.OrderedList(StartDate, EndDate, 0, (int)Kagent.KaId, -16, 0, grp_kg).Where(w => w.GrpId == grp || grp == 0).GroupBy(g => new
+                {
+                    g.BarCode,
+                    g.GrpId,
+                    g.MatId,
+                    g.MatName,
+                    g.CurrencyName,
+                    g.MsrName
+
+                }).Select(s => new
+                {
+                    s.Key.MatId,
+                    s.Key.BarCode,
+                    s.Key.GrpId,
+                    s.Key.MatName,
+                    s.Key.MsrName,
+                    Amount = s.Sum(a => a.Amount),
+                    OnSum = s.Sum(sum => sum.Price * sum.Amount)
+
+                }).OrderBy(o => o.MatId).ToList();
+
+                if (!mat.Any())
+                {
+                    return;
+                }
+
+                var mat_grp = db.MatGroup.Where(w => w.Deleted == 0 && (w.GrpId == grp || grp == 0)).Select(s => new { s.GrpId, s.Name }).ToList();
+
+                rel.Add(new
+                {
+                    pk = "GrpId",
+                    fk = "GrpId",
+                    master_table = "MatGroup",
+                    child_table = "MatInDet"
+                });
+
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("MatGroup", mat_grp.Where(w => mat.Select(s => s.GrpId).Contains(w.GrpId)).OrderBy(o => o.Name).ToList());
+                data_for_report.Add("MatInDet", mat);
+                data_for_report.Add("_realation_", rel);
+
+                IHelper.Print(data_for_report, TemlateList.rep_28);
+            }
+
+            if (idx == 29)
+            {
+                int grp = Convert.ToInt32(MatGroup.GrpId);
+                string wh = Convert.ToString(Warehouse.WId);
+                var mat = db.REP_29(StartDate, EndDate, (int)Kagent.KaId, grp, wh).ToList();
+
+                if (!mat.Any())
+                {
+                    return;
+                }
+
+                var mat_grp = db.MatGroup.Where(w => w.Deleted == 0 && (w.GrpId == grp || grp == 0)).Select(s => new { s.GrpId, s.Name }).ToList();
+
+                rel.Add(new
+                {
+                    pk = "GrpId",
+                    fk = "GrpId",
+                    master_table = "MatGroup",
+                    child_table = "MatInDet"
+                });
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("MatGroup", mat_grp.Where(w => mat.Select(s => s.GrpId).Contains(w.GrpId)).ToList());
+                data_for_report.Add("MatInDet", mat);
+                data_for_report.Add("_realation_", rel);
+
+                IHelper.Print(data_for_report, TemlateList.rep_29);
             }
 
             if (idx == 30)
@@ -994,6 +985,70 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("KADocList", list.ToList());
 
                 IHelper.Print2(data_for_report, TemlateList.rep_30);
+            }
+
+            if (idx == 31)
+            {
+                var sql = @"  select 
+	    wbd.MatId, 
+		mat.Name MatName,  
+		mat.GrpId, 
+		mg.Name GrpName, 
+		sum(wbd.AMOUNT) AmountOrd, 
+		sum(wbd.TOTAL) TotalOrd, 
+        msr.shortname MsrName,  
+		mat.BarCode, 
+		sum(x.Amount) AmountOut, 
+		sum(x.Total) TotalOut
+      from WAYBILLDET wbd 
+	  join  WAYBILLLIST wbl on wbl.wbillid = wbd.wbillid
+      join MATERIALS mat on mat.matid = wbd.MatId
+	  join MatGroup mg on mat.GrpId = mg.GrpId
+      join measures msr on msr.mid=mat.mid
+      join kagent kaemp on wbl.kaid = kaemp.kaid
+	  outer apply ( select Amount, Total
+                    from WAYBILLDET wbdo , WAYBILLLIST wblo
+                    join DOCRELS dl on wblo.id = dl.OriginatorId
+                    left outer join kagent kaemp on wblo.personid = kaemp.kaid
+                    where wblo.wbillid = wbdo.wbillid  and  wblo.checked = 1 and wblo.wtype = -1
+                          and wblo.id = dl.OriginatorId and dl.RelOriginatorId = wbl.id  and  wbdo.matid =wbd.MATID) x
+      where wbl.wbillid = wbd.wbillid and wbl.wtype = -16
+            and wbl.ondate between {0} and {1}
+            and ( mat.grpid = {2} or {2} = 0 )
+            and ( mat.matid = {3} or {3} = 0 )
+      group by  mat.GrpId, mg.Name ,wbd.MATID, mat.name,   msr.shortname,  mat.barcode";
+
+                //       var mat = db.Database.SqlQuery<REP_31_Result>(sql, StartDate, EndDate, (int)MatGroup.GrpId, (int)this.Material.MatId).ToList().OrderBy(o => o.MatName).ToList();
+
+                var mat = db.REP_31(StartDate, EndDate, (int)MatGroup.GrpId, (int)this.Material.MatId).ToList().OrderBy(o => o.MatName).ToList();
+
+                if (!mat.Any())
+                {
+                    return;
+                }
+
+                var mat_grp = mat.GroupBy(g => new { g.GrpName, g.GrpId }).Select(s => new
+                {
+                    s.Key.GrpId,
+                    Name = s.Key.GrpName,
+                    TotalOrd = s.Sum(xs => xs.TotalOrd),
+                    TotalOut = s.Sum(xs => xs.TotalOut)
+                }).OrderBy(o => o.Name).ToList();
+
+                rel.Add(new
+                {
+                    pk = "GrpId",
+                    fk = "GrpId",
+                    master_table = "MatGroup",
+                    child_table = "MatList"
+                });
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("MatGroup", mat_grp);
+                data_for_report.Add("MatList", mat);
+                data_for_report.Add("_realation_", rel);
+
+                IHelper.Print(data_for_report, TemlateList.rep_31);
             }
 
             if (idx == 32)
@@ -1240,61 +1295,6 @@ namespace SP_Sklad.Reports
                 data_for_report.Add("_realation_", rel);
                
                 IHelper.Print(data_for_report, TemlateList.rep_38);
-            }
-
-            if (idx == 22)
-            {
-                int person = (int)Person.KaId;
-
-                var sql_1 = @"
-   	            select m.GrpId, m.name Name, wbd.amount Amount, wbd.total Summ, ms.ShortName, wbl.WbillId, person.Name PersonName , person.KaId PersonId , wbl.KaId , ka.Name KontragentName
-
-                from waybilldet wbd
-                join waybilllist wbl on wbl.wbillid = wbd.wbillid
-                join materials m on m.matid = wbd.matid
-                join measures ms on ms.mid = m.mid
-			    join kagent person on person.kaid = wbl.PersonId
-                join kagent ka on ka.kaid = wbl.KaId
-
-                where  wbl.checked = 1 and wbl.WType = -1
-                       and wbl.ondate between {0} and {1}
-                       and person.KaId = {2}
-   
-			    order by  m.name ";
-
-                var waybill_list = db.Database.SqlQuery<rep_22>(sql_1, StartDate, EndDate, person).ToList();
-
-                if (!waybill_list.Any())
-                {
-                    return;
-                }
-
-                data_for_report.Add("XLRPARAMS", XLRPARAMS);
-                data_for_report.Add("WbList", waybill_list.GroupBy(g => new { g.Name, g.ShortName, g.PersonName }).Select(s => new
-                {
-                    Name = s.Key.Name,
-                    ShortName = s.Key.ShortName,
-                    PersonName = s.Key.PersonName,
-                    Amount = s.Sum(a => a.Amount),
-                    Summ = s.Sum(su => su.Summ)
-                }).ToList());
-
-                data_for_report.Add("MeasuresList", waybill_list.GroupBy(g => new { g.ShortName }).Select(s => new
-                {
-                    ShortName = s.Key.ShortName,
-                    Amount = s.Sum(a => a.Amount),
-                    Summ = s.Sum(su => su.Summ)
-                }).ToList());
-
-
-                data_for_report.Add("KagentList", waybill_list.GroupBy(g => g.KontragentName).Select(s => new
-                {
-                    Name = s.Key,
-                    Amount = s.Select(d => d.WbillId).Distinct().Count(),
-                    Summ = s.Sum(su => su.Summ)
-                }).ToList());
-
-                IHelper.Print2(data_for_report, TemlateList.rep_22);
             }
 
             if (idx == 39)

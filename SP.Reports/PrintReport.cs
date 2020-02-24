@@ -27,7 +27,7 @@ namespace SP.Reports
         public MatComboBoxItem Material { get; set; }
         public String DocStr { get; set; }
         public object DocType { get; set; }
-        public dynamic ChType { get; set; }
+        public ChTypeComboBoxItem ChType { get; set; }
         public object Status { get; set; }
         public GrpKagentComboBoxItem KontragentGroup { get; set; }
         public String GrpStr { get; set; }
@@ -126,6 +126,61 @@ namespace SP.Reports
                     break;
                 case 14:
                     REP_14();
+                    break;
+                case 15:
+                    REP_15();
+                    report_mode = 1;
+                    break;
+                case 16:
+                    REP_16();
+                    break;
+                case 17:
+                    REP_17();
+                    break;
+                case 18:
+                    REP_18();
+                    break;
+                case 19:
+                    REP_19();
+                    break;
+                case 20:
+                    REP_20();
+                    break;
+                case 22:
+                    REP_22();
+                    break;
+                case 23:
+                    REP_23();
+                    report_mode = 1;
+                    break;
+                case 25:
+                    REP_25();
+                    break;
+                case 26:
+                    REP_26();
+                    report_mode = 1;
+                    break;
+
+                case 27:
+                    REP_27();
+                    report_mode = 1;
+                    break;
+
+                case 28:
+                    REP_28();
+                    break;
+                case 29:
+                    REP_29();
+                    break;
+                case 30:
+                    REP_30();
+                    report_mode = 1;
+                    break;
+                case 31:
+                    REP_31();
+                    break;
+                case 32:
+                    REP_32();
                     break;
 
                 default:
@@ -440,6 +495,464 @@ namespace SP.Reports
 
             data_for_report.Add("_realation_", realation);
         }
+        private void REP_15()
+        {
+            var wb_list = _db.REP_15(StartDate, EndDate, Kagent.KaId, Material.MatId).OrderBy(o => o.OnDate).ToList();
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("WbList", wb_list);
+        }
+        private void REP_16()
+        {
+            var paydoc = _db.REP_16(StartDate, EndDate, Kagent.KaId, ChType.CTypeId, 1).ToList();
+
+            var ch_t = paydoc.GroupBy(g => new { g.CTypeId, g.ChargeName }).Select(s => new { s.Key.CTypeId, s.Key.ChargeName }).OrderBy(o => o.ChargeName).ToList();
+
+            realation.Add(new
+            {
+                pk = "CTypeId",
+                fk = "CTypeId",
+                master_table = "ChargeTypeGroup",
+                child_table = "DocList"
+            });
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("ChargeTypeGroup", ch_t);
+            data_for_report.Add("DocList", paydoc);
+            data_for_report.Add("_realation_", realation);
+            data_for_report.Add("SummaryField", paydoc.GroupBy(g => 1).Select(s => new
+            {
+                Total = s.Sum(r => r.Total)
+            }).ToList());
+        }
+        private void REP_17()
+        {
+            decimal? total = 0;
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+
+            var mat = _db.REP_13(StartDate, EndDate, 0, 0, "*", 0, GrpStr).ToList();
+            var mat_grp = mat.GroupBy(g => new { g.GrpName, g.GrpId }).Select(s => new
+            {
+                s.Key.GrpId,
+                Name = s.Key.GrpName,
+                Income = s.Sum(xs => xs.SummOut - (xs.AmountOut * xs.AvgPrice))
+            }).OrderBy(o => o.Name).ToList();
+            realation.Add(new
+            {
+                pk = "GrpId",
+                fk = "GrpId",
+                master_table = "MatGroup",
+                child_table = "MatList"
+            });
+            data_for_report.Add("MatGroup", mat_grp);
+            data_for_report.Add("MatList", mat);
+            total += mat_grp.Sum(s => s.Income);
+
+
+            var mat2 = _db.REP_13(StartDate, EndDate, 0, 0, "*", 1, GrpStr).ToList();
+            var mat_grp2 = mat2.GroupBy(g => new { g.GrpName, g.GrpId }).Select(s => new
+            {
+                s.Key.GrpId,
+                Name = s.Key.GrpName,
+                Income = s.Sum(xs => xs.SummIn - (xs.AmountIn * xs.AvgPrice))
+            }).OrderBy(o => o.Name).ToList();
+            realation.Add(new
+            {
+                pk = "GrpId",
+                fk = "GrpId",
+                master_table = "MatGroup2",
+                child_table = "MatSelPr"
+            });
+            data_for_report.Add("MatGroup2", mat_grp2);
+            data_for_report.Add("MatSelPr", mat2);
+            total -= mat_grp2.Sum(s => s.Income);
+
+
+            var svc = _db.REP_20(StartDate, EndDate, 0, 0).ToList();
+            var svc_grp = svc.GroupBy(g => new { g.GrpName, g.GrpId }).Select(s => new
+            {
+                s.Key.GrpId,
+                Name = s.Key.GrpName,
+                Total = s.Sum(xs => xs.Summ)
+            }).OrderBy(o => o.Name).ToList();
+            realation.Add(new
+            {
+                pk = "GrpId",
+                fk = "GrpId",
+                master_table = "SvcGroup",
+                child_table = "SvcOutDet"
+            });
+            data_for_report.Add("SvcGroup", svc_grp.Where(w => svc.Select(s => s.GrpId).Contains(w.GrpId)).ToList());
+            data_for_report.Add("SvcOutDet", svc);
+            total += svc_grp.Sum(s => s.Total);
+
+            var paydoc = _db.REP_16(StartDate, EndDate, 0, 0, 0).ToList();
+            data_for_report.Add("DocList", paydoc);
+            total -= paydoc.Sum(s => s.Total);
+
+
+            var mat3 = _db.REP_17(StartDate, EndDate, 0, 0).ToList();
+            var mat_grp3 = mat3.GroupBy(g => new { g.GrpName, g.GrpId }).Select(s => new
+            {
+                s.Key.GrpId,
+                Name = s.Key.GrpName,
+                Summ = s.Sum(xs => xs.Summ)
+            }).OrderBy(o => o.Name).ToList();
+            realation.Add(new
+            {
+                pk = "GrpId",
+                fk = "GrpId",
+                master_table = "MatGroup3",
+                child_table = "WBWriteOff"
+            });
+            data_for_report.Add("MatGroup3", mat_grp3);
+            data_for_report.Add("WBWriteOff", mat3);
+            total -= mat_grp3.Sum(s => s.Summ);
+
+            data_for_report.Add("_realation_", realation);
+
+
+            var obj = new List<object>();
+            obj.Add(new
+            {
+                Total = total  //=K12-K22+K32-K39-K49
+            });
+            data_for_report.Add("Summary", obj);
+        }
+        private void REP_18()
+        {
+            int grp = Convert.ToInt32(MatGroup.GrpId);
+            int wid = Warehouse.WId == "*" ? 0 : Convert.ToInt32(Warehouse.WId);
+
+            var mat = _db.WhMatGet(grp, wid, 0, OnDate, 0, "*", 0, "", _user_id, 0).Where(w => w.Remain < w.MinReserv && w.MinReserv != null).ToList();
+
+             var mat_grp = _db.MatGroup.Where(w => w.Deleted == 0 && (w.GrpId == grp || grp == 0)).Select(s => new { s.GrpId, s.Name }).ToList();
+
+            realation.Add(new
+            {
+                pk = "GrpId",
+                fk = "OutGrpId",
+                master_table = "MatGroup",
+                child_table = "MatList"
+            });
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("MatGroup", mat_grp.Where(w => mat.Select(s => s.OutGrpId).Contains(w.GrpId)).ToList());
+            data_for_report.Add("MatList", mat);
+            data_for_report.Add("_realation_", realation);
+        }
+        private void REP_19()
+        {
+            int wid = Warehouse.WId == "*" ? 0 : Convert.ToInt32(Warehouse.WId);
+            int mat_id = (int)this.Material.MatId;
+            Guid grp_kg = KontragentGroup.Id;
+            var list = _db.GetMatMove((int)this.Material.MatId, StartDate, EndDate, wid, (int)Kagent.KaId, (int)DocType, "*", grp_kg, _user_id).ToList();
+
+            var satrt_remais = _db.MatRemainByWh(mat_id, wid, (int)Kagent.KaId, StartDate, "*", _user_id).Sum(s => s.Remain);
+            var sart_avg_price = _db.v_MatRemains.Where(w => w.MatId == mat_id && w.OnDate <= StartDate).OrderByDescending(o => o.OnDate).Select(s => s.AvgPrice).FirstOrDefault();
+            var end_remais = _db.MatRemainByWh(mat_id, wid, (int)Kagent.KaId, EndDate, "*", _user_id).Sum(s => s.Remain);
+            var end_avg_price = _db.v_MatRemains.Where(w => w.MatId == mat_id && w.OnDate <= EndDate).OrderByDescending(o => o.OnDate).Select(s => s.AvgPrice).FirstOrDefault();
+
+            var balances = new List<object>();
+            balances.Add(new
+            {
+                SARTREMAIN = satrt_remais,
+                SARTAVGPRICE = sart_avg_price,
+                ENDREMAIN = end_remais,
+                ENDAVGPRICE = end_avg_price
+
+            });
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("Balances", balances);
+            data_for_report.Add("MatList", list.ToList());
+        }
+        private void REP_20()
+        {
+            var svc = _db.REP_20(StartDate, EndDate, MatGroup.GrpId, (int)Kagent.KaId).ToList();
+
+            var svc_grp = _db.SvcGroup.Where(w => w.Deleted == 0 && (w.GrpId == MatGroup.GrpId || MatGroup.GrpId == 0)).Select(s => new { s.GrpId, s.Name }).ToList();
+
+            realation.Add(new
+            {
+                pk = "GrpId",
+                fk = "GrpId",
+                master_table = "SvcGroup",
+                child_table = "SvcOutDet"
+            });
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("SvcGroup", svc_grp.Where(w => svc.Select(s => s.GrpId).Contains(w.GrpId)).ToList());
+            data_for_report.Add("SvcOutDet", svc);
+            data_for_report.Add("_realation_", realation);
+        }
+        private void REP_22()
+        {
+            int person = (int)Person.KaId;
+
+            var sql_1 = @"
+   	            select m.GrpId, m.name Name, wbd.amount Amount, wbd.total Summ, ms.ShortName, wbl.WbillId, person.Name PersonName , person.KaId PersonId , wbl.KaId , ka.Name KontragentName
+
+                from waybilldet wbd
+                join waybilllist wbl on wbl.wbillid = wbd.wbillid
+                join materials m on m.matid = wbd.matid
+                join measures ms on ms.mid = m.mid
+			    join kagent person on person.kaid = wbl.PersonId
+                join kagent ka on ka.kaid = wbl.KaId
+
+                where  wbl.checked = 1 and wbl.WType = -1
+                       and wbl.ondate between {0} and {1}
+                       and person.KaId = {2}
+   
+			    order by  m.name ";
+
+            var waybill_list = _db.Database.SqlQuery<rep_22>(sql_1, StartDate, EndDate, person).ToList();
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("WbList", waybill_list.GroupBy(g => new { g.Name, g.ShortName, g.PersonName }).Select(s => new
+            {
+                Name = s.Key.Name,
+                ShortName = s.Key.ShortName,
+                PersonName = s.Key.PersonName,
+                Amount = s.Sum(a => a.Amount),
+                Summ = s.Sum(su => su.Summ)
+            }).ToList());
+
+            data_for_report.Add("MeasuresList", waybill_list.GroupBy(g => new { g.ShortName }).Select(s => new
+            {
+                ShortName = s.Key.ShortName,
+                Amount = s.Sum(a => a.Amount),
+                Summ = s.Sum(su => su.Summ)
+            }).ToList());
+
+
+            data_for_report.Add("KagentList", waybill_list.GroupBy(g => g.KontragentName).Select(s => new
+            {
+                Name = s.Key,
+                Amount = s.Select(d => d.WbillId).Distinct().Count(),
+                Summ = s.Sum(su => su.Summ)
+            }).ToList());
+        }
+        private void REP_23()
+        {
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+
+            data_for_report.Add("DocList1", _db.GetPayDocList("1", StartDate, EndDate, 0, 1, -1, _person_id).ToList());
+            data_for_report.Add("DocList2", _db.GetPayDocList("-1", StartDate, EndDate, 0, 1, -1, _person_id).ToList());
+            data_for_report.Add("DocList3", _db.GetPayDocList("-2", StartDate, EndDate, 0, 1, -1, _person_id).ToList());
+            data_for_report.Add("DocList4", _db.GetPayDocList("6", StartDate, EndDate, 0, 1, -1, _person_id).ToList());
+
+            var m = _db.MoneyOnDate(EndDate).GroupBy(g => new { g.SaldoType, g.Currency }).Select(s => new { s.Key.SaldoType, s.Key.Currency, Saldo = s.Sum(sum => sum.Saldo) }).ToList();
+            data_for_report.Add("MONEY1", m.Where(w => w.SaldoType == 0).ToList());
+            data_for_report.Add("MONEY2", m.Where(w => w.SaldoType == 1).ToList());
+        }
+        private void REP_25()
+        {
+            var mat = _db.REP_4_25(StartDate, EndDate, MatGroup.GrpId, Kagent.KaId, Warehouse.WId, DocStr, _user_id).ToList();
+
+            var mat_grp = _db.MatGroup.Where(w => w.Deleted == 0 && (w.GrpId == MatGroup.GrpId || MatGroup.GrpId == 0)).Select(s => new { s.GrpId, s.Name }).ToList();
+
+            realation.Add(new
+            {
+                pk = "GrpId",
+                fk = "GrpId",
+                master_table = "MatGroup",
+                child_table = "MatInDet"
+            });
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("MatGroup", mat_grp.Where(w => mat.Select(s => s.GrpId).Contains(w.GrpId)).ToList());
+            data_for_report.Add("MatInDet", mat);
+            data_for_report.Add("SummaryField", mat.GroupBy(g => 1).Select(s => new
+            {
+                SummPrice = s.Sum(r => r.SummPrice),
+                ReturnSummPriceOut = s.Sum(r => r.ReturnSummPriceOut)
+            }).ToList());
+            data_for_report.Add("_realation_", realation);
+        }
+        private void REP_26()
+        {
+            var make = _db.WBListMake(StartDate, EndDate, 1, Warehouse.WId, MatGroup.GrpId, -20).ToList().Concat(_db.WBListMake(StartDate, EndDate, 1, Warehouse.WId, MatGroup.GrpId, -22).ToList());
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("MakedProduct", make.ToList());
+        }
+        private void REP_27()
+        {
+            var mat = _db.REP_27(StartDate, EndDate, Kagent.KaId, MatGroup.GrpId, Material.MatId, KontragentGroup.Id, (int)Person.KaId).ToList();
+
+            if (!mat.Any())
+            {
+                return;
+            }
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("MatList", mat.GroupBy(g => new
+            {
+                g.KaName,
+                g.MatName,
+                g.MsrName,
+                g.BarCode
+            }).Select(s => new
+            {
+                s.Key.BarCode,
+                s.Key.MatName,
+                s.Key.MsrName,
+                s.Key.KaName,
+                AmountOrd = s.Sum(su => su.AmountOrd),
+                TotalOrd = s.Sum(su => su.TotalOrd),
+                AmountOut = s.Sum(su => su.AmountOut),
+                TotalOut = s.Sum(su => su.TotalOut),
+                PersonName = String.Join(", ", s.Select(su => su.PersonName).Distinct())
+            }).ToList());
+        }
+        private void REP_28()
+        {
+            var mat = _db.OrderedList(StartDate, EndDate, 0, Kagent.KaId, -16, 0, KontragentGroup.Id).Where(w => w.GrpId == MatGroup.GrpId || MatGroup.GrpId == 0).GroupBy(g => new
+            {
+                g.BarCode,
+                g.GrpId,
+                g.MatId,
+                g.MatName,
+                g.CurrencyName,
+                g.MsrName
+
+            }).Select(s => new
+            {
+                s.Key.MatId,
+                s.Key.BarCode,
+                s.Key.GrpId,
+                s.Key.MatName,
+                s.Key.MsrName,
+                Amount = s.Sum(a => a.Amount),
+                OnSum = s.Sum(sum => sum.Price * sum.Amount)
+
+            }).OrderBy(o => o.MatId).ToList();
+
+            var mat_grp = _db.MatGroup.Where(w => w.Deleted == 0 && (w.GrpId == MatGroup.GrpId || MatGroup.GrpId == 0)).Select(s => new { s.GrpId, s.Name }).ToList();
+
+            realation.Add(new
+            {
+                pk = "GrpId",
+                fk = "GrpId",
+                master_table = "MatGroup",
+                child_table = "MatInDet"
+            });
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("MatGroup", mat_grp.Where(w => mat.Select(s => s.GrpId).Contains(w.GrpId)).OrderBy(o => o.Name).ToList());
+            data_for_report.Add("MatInDet", mat);
+            data_for_report.Add("_realation_", realation);
+        }
+        private void REP_29()
+        {
+            var mat = _db.REP_29(StartDate, EndDate, Kagent.KaId, MatGroup.GrpId, Warehouse.WId).ToList();
+
+            var mat_grp = _db.MatGroup.Where(w => w.Deleted == 0 && (w.GrpId == MatGroup.GrpId || MatGroup.GrpId == 0)).Select(s => new { s.GrpId, s.Name }).ToList();
+
+            realation.Add(new
+            {
+                pk = "GrpId",
+                fk = "GrpId",
+                master_table = "MatGroup",
+                child_table = "MatInDet"
+            });
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("MatGroup", mat_grp.Where(w => mat.Select(s => s.GrpId).Contains(w.GrpId)).ToList());
+            data_for_report.Add("MatInDet", mat);
+            data_for_report.Add("_realation_", realation);
+
+        }
+        private void REP_30()
+        {
+            var list = _db.GetDocList(StartDate, EndDate, Kagent.KaId, 0).OrderBy(o => o.OnDate).ToList().Where(w => new int[] { 1, -1, 3, -3, -6, 6, -23, 23 }.Any(a => a == w.WType)).Select((s, index) => new
+            {
+                idx = index + 1,
+                s.OnDate,
+                SummAll = s.SummInCurr,
+                s.Saldo,
+                DocName = s.TypeName + " №" + s.Num,
+                PN = s.WType == 1 ? s.SummInCurr : null,
+                VN = s.WType == -1 ? s.SummInCurr : null,
+                PKO = s.WType == 3 ? s.SummInCurr : null,
+                VKO = s.WType == -3 ? s.SummInCurr : null,
+                PDP = s.WType == -6 ? s.SummInCurr : null,
+                PVK = s.WType == 6 ? s.SummInCurr : null,
+                SZP = s.WType == -23 ? s.SummInCurr : null,
+                SZK = s.WType == 23 ? s.SummInCurr : null
+            }).OrderBy(o => o.OnDate);
+
+            if (!list.Any())
+            {
+                return;
+            }
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("KADocList", list.ToList());
+        }
+
+        private void REP_31()
+        {
+            var mat = _db.REP_31(StartDate, EndDate, MatGroup.GrpId, Material.MatId).ToList().OrderBy(o => o.MatName).ToList();
+
+            var mat_grp = mat.GroupBy(g => new { g.GrpName, g.GrpId }).Select(s => new
+            {
+                s.Key.GrpId,
+                Name = s.Key.GrpName,
+                TotalOrd = s.Sum(xs => xs.TotalOrd),
+                TotalOut = s.Sum(xs => xs.TotalOut)
+            }).OrderBy(o => o.Name).ToList();
+
+            realation.Add(new
+            {
+                pk = "GrpId",
+                fk = "GrpId",
+                master_table = "MatGroup",
+                child_table = "MatList"
+            });
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("MatGroup", mat_grp);
+            data_for_report.Add("MatList", mat);
+            data_for_report.Add("_realation_", realation);
+        }
+
+        private void REP_32()
+        {
+            var mat = _db.REP_32(StartDate, EndDate).ToList();
+
+            var drivers = mat.Select(s => new { s.DriverId, s.DriverName }).Distinct().ToList();
+            var routes = mat.Select(s => new { s.DriverId, s.RouteName }).Distinct().ToList();
+            var mat_out = mat.GroupBy(g => new { g.DriverId, g.DriverName, g.MatName }).Select(s => new
+            {
+                s.Key.DriverId,
+                s.Key.MatName,
+                Amount = s.Sum(sum => sum.Amount)
+            }).ToList();
+
+            realation.Add(new
+            {
+                pk = "DriverId",
+                fk = "DriverId",
+                master_table = "Drivers",
+                child_table = "Routes"
+            });
+
+            realation.Add(new
+            {
+                pk = "DriverId",
+                fk = "DriverId",
+                master_table = "Drivers",
+                child_table = "MatList"
+            });
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("Drivers", drivers);
+            data_for_report.Add("Routes", routes);
+            data_for_report.Add("MatList", mat_out);
+            data_for_report.Add("_realation_", realation);
+        }
 
         private string GetSortedList(int rep_id)
         {
@@ -455,6 +968,7 @@ namespace SP.Reports
             return result.Trim(',');
 
         }
+
         private List<Enterprise> EnterpriseList(int? currentuser_kaid)
         {
 

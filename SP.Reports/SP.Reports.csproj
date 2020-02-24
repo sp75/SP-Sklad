@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comon\BaseReport.cs" />
+    <Compile Include="Models\Views\ChTypeComboBoxItem.cs" />
     <Compile Include="Models\Views\Enterprise.cs" />
     <Compile Include="Models\Views\GrpComboBoxItem.cs" />
     <Compile Include="Models\Views\GrpKagentComboBoxItem.cs" />

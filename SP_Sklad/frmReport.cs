@@ -158,7 +158,7 @@ namespace SP_Sklad
             }
             else
             {
-                ChTypeEdit.Properties.DataSource = new List<object>() { new { CTypeId = 0, Name = "Усі" } }.Concat(new BaseEntities().ChargeType.Where(w => w.Deleted == 0).Select(s => new { s.CTypeId, s.Name }));
+                ChTypeEdit.Properties.DataSource = new List<object>() { new ChTypeComboBoxItem { CTypeId = 0, Name = "Усі" } }.Concat(new BaseEntities().ChargeType.Where(w => w.Deleted == 0).Select(s => new ChTypeComboBoxItem { CTypeId = s.CTypeId, Name = s.Name }));
                 ChTypeEdit.EditValue = 0;
             }
 
@@ -238,9 +238,9 @@ namespace SP_Sklad
                 Person = PersonLookUpEdit.GetSelectedDataRow()
             };
 
-            pr.CreateReport(_rep_id);
+        //    pr.CreateReport(_rep_id);
 
-            /*       var pr2 = new PrintReportv2(_rep_id, DBHelper.CurrentUser.KaId, DBHelper.CurrentUser.UserId)
+                   var pr2 = new PrintReportv2(_rep_id, DBHelper.CurrentUser.KaId, DBHelper.CurrentUser.UserId)
                    {
                        OnDate = OnDateDBEdit.DateTime,
                        StartDate = StartDateEdit.DateTime,
@@ -251,7 +251,7 @@ namespace SP_Sklad
                        Material = MatComboBox.GetSelectedDataRow() as MatComboBoxItem,
                        DocStr = str,
                        DocType = DocTypeEdit.EditValue,
-                       ChType = ChTypeEdit.GetSelectedDataRow(),
+                       ChType = ChTypeEdit.GetSelectedDataRow() as ChTypeComboBoxItem,
                        Status = wbStatusList.EditValue,
                        KontragentGroup = GrpKagentLookUpEdit.GetSelectedDataRow() as GrpKagentComboBoxItem,
                        GrpStr = ChildGroupCheckEdit.Checked ? String.Join(",", new BaseEntities().GetMatGroupTree(grp).ToList().Select(s => Convert.ToString(s.GrpId))) : "",
@@ -275,7 +275,7 @@ namespace SP_Sklad
                    else
                    {
                        MessageBox.Show("Шлях до шаблонів " + template_file + " не знайдено!");
-                   }*/
+                   }
 
 
         }
