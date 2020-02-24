@@ -23,6 +23,11 @@ namespace SP_Base.Models
 
         public int? PlDetType { get; set; }
 
+        [Column(TypeName = "numeric")]
+        public decimal? Discount { get; set; }
+
+        public int? Num { get; set; }
+
         public virtual PriceList PriceList { get; set; }
     }
 }

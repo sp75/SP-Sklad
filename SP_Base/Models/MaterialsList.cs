@@ -41,5 +41,7 @@ namespace SP_Base.Models
         public int Deleted { get; set; }
 
         public int? Archived { get; set; }
+
+        public bool? AutoCalcRecipe { get; set; }
     }
 }

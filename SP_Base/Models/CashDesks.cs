@@ -13,6 +13,7 @@ namespace SP_Base.Models
         {
             MoneySaldo = new HashSet<MoneySaldo>();
             PayDoc = new HashSet<PayDoc>();
+            UserAccessCashDesks = new HashSet<UserAccessCashDesks>();
         }
 
         [Key]
@@ -33,5 +34,8 @@ namespace SP_Base.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PayDoc> PayDoc { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserAccessCashDesks> UserAccessCashDesks { get; set; }
     }
 }

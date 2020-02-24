@@ -14,7 +14,7 @@ namespace SP_Base.Models
         {
             CONTRACTS = new HashSet<CONTRACTS>();
             CONTRDET = new HashSet<CONTRDET>();
-            CURRENCYRATE = new HashSet<CURRENCYRATE>();
+            CurrencyRate = new HashSet<CurrencyRate>();
             MatGroupPrices = new HashSet<MatGroupPrices>();
             MatPrices = new HashSet<MatPrices>();
             PayDoc = new HashSet<PayDoc>();
@@ -57,7 +57,7 @@ namespace SP_Base.Models
         public virtual ICollection<CONTRDET> CONTRDET { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CURRENCYRATE> CURRENCYRATE { get; set; }
+        public virtual ICollection<CurrencyRate> CurrencyRate { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MatGroupPrices> MatGroupPrices { get; set; }

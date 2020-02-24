@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SP.Base.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -63,7 +64,7 @@ namespace Test
                 return;
             }
 
-            _serialPort.Open();
+    //        _serialPort.Open();
         }
 
         private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
@@ -110,6 +111,14 @@ namespace Test
         private void button1_Click(object sender, EventArgs e)
         {
             listBox1.Items.Add("sdsdsdsd");
+
+            using (var db = new SPBaseModel("SPBaseModel"))
+            {
+                var ddd = db.Banks.ToList();
+            }
+
+
+
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)

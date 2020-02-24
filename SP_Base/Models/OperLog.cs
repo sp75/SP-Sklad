@@ -35,6 +35,8 @@ namespace SP_Base.Models
 
         public int? UserId { get; set; }
 
+        public Guid? OriginatorId { get; set; }
+
         public virtual Tables Tables { get; set; }
 
         public virtual Users Users { get; set; }

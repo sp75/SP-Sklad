@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CodeFirstStoreFunctions, Version=1.1.3.0, Culture=neutral, PublicKeyToken=46c4868af4307d2c, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.CodeFirstStoreFunctions.1.1.3\lib\net45\CodeFirstStoreFunctions.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -51,6 +54,10 @@
   <ItemGroup>
     <Compile Include="Database.cs" />
     <Compile Include="Models\AccountType.cs" />
+    <Compile Include="Models\AspNetRoles.cs" />
+    <Compile Include="Models\AspNetUserClaims.cs" />
+    <Compile Include="Models\AspNetUserLogins.cs" />
+    <Compile Include="Models\AspNetUsers.cs" />
     <Compile Include="Models\Banks.cs" />
     <Compile Include="Models\BanksPersons.cs" />
     <Compile Include="Models\CashDesks.cs" />
@@ -66,6 +73,7 @@
     <Compile Include="Models\Currency.cs" />
     <Compile Include="Models\CURRENCYRATE.cs" />
     <Compile Include="Models\Customers.cs" />
+    <Compile Include="Models\C__MigrationHistory.cs" />
     <Compile Include="Models\DeboningDet.cs" />
     <Compile Include="Models\DemandGroup.cs" />
     <Compile Include="Models\DiscCardGrp.cs" />
@@ -79,11 +87,16 @@
     <Compile Include="Models\ErrorLog.cs" />
     <Compile Include="Models\ExtRel.cs" />
     <Compile Include="Models\Functions.cs" />
+    <Compile Include="Models\IntermediateWeighing.cs" />
+    <Compile Include="Models\IntermediateWeighingDet.cs" />
     <Compile Include="Models\Jobs.cs" />
     <Compile Include="Models\KaAddr.cs" />
     <Compile Include="Models\KADiscount.cs" />
     <Compile Include="Models\Kagent.cs" />
     <Compile Include="Models\KAgentAccount.cs" />
+    <Compile Include="Models\KAgentActReconciliation.cs" />
+    <Compile Include="Models\KAgentAdjustment.cs" />
+    <Compile Include="Models\KAgentAdjustmentDet.cs" />
     <Compile Include="Models\KAgentDoc.cs" />
     <Compile Include="Models\KagentList.cs" />
     <Compile Include="Models\KAgentPersons.cs" />
@@ -96,6 +109,7 @@
     <Compile Include="Models\Languages.cs" />
     <Compile Include="Models\Licenses.cs" />
     <Compile Include="Models\MatChange.cs" />
+    <Compile Include="Models\MaterialMeasures.cs" />
     <Compile Include="Models\Materials.cs" />
     <Compile Include="Models\MaterialsList.cs" />
     <Compile Include="Models\MatGroup.cs" />
@@ -107,10 +121,15 @@
     <Compile Include="Models\MatRemains.cs" />
     <Compile Include="Models\Measures.cs" />
     <Compile Include="Models\MoneySaldo.cs" />
+    <Compile Include="Models\OperationTypes.cs" />
     <Compile Include="Models\OperLog.cs" />
+    <Compile Include="Models\OrderedRels.cs" />
+    <Compile Include="Models\Packaging.cs" />
     <Compile Include="Models\PayDoc.cs" />
     <Compile Include="Models\PayDocType.cs" />
     <Compile Include="Models\PayType.cs" />
+    <Compile Include="Models\PlannedCalculation.cs" />
+    <Compile Include="Models\PlannedCalculationDet.cs" />
     <Compile Include="Models\PosRel.cs" />
     <Compile Include="Models\PosRemains.cs" />
     <Compile Include="Models\PriceList.cs" />
@@ -125,10 +144,13 @@
     <Compile Include="Models\PROFINTF.cs" />
     <Compile Include="Models\RepLng.cs" />
     <Compile Include="Models\Reports.cs" />
+    <Compile Include="Models\ReportModels\REP_1_Result.cs" />
+    <Compile Include="Models\ReportSortedFields.cs" />
     <Compile Include="Models\ReturnRel.cs" />
     <Compile Include="Models\RouteList.cs" />
     <Compile Include="Models\RouteListDet.cs" />
     <Compile Include="Models\Routes.cs" />
+    <Compile Include="Models\SchedulingOrders.cs" />
     <Compile Include="Models\Serials.cs" />
     <Compile Include="Models\Services.cs" />
     <Compile Include="Models\SettingApp.cs" />
@@ -142,6 +164,7 @@
     <Compile Include="Models\TechProcDet.cs" />
     <Compile Include="Models\TechProcess.cs" />
     <Compile Include="Models\UserAccess.cs" />
+    <Compile Include="Models\UserAccessCashDesks.cs" />
     <Compile Include="Models\UserAccessWh.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Models\UserSettings.cs" />
@@ -156,10 +179,18 @@
     <Compile Include="Models\v_EnterpriseList.cs" />
     <Compile Include="Models\v_ErrorLog.cs" />
     <Compile Include="Models\v_GetDocsTree.cs" />
+    <Compile Include="Models\v_IntermediateWeighingDet.cs" />
     <Compile Include="Models\v_KAgentAccount.cs" />
+    <Compile Include="Models\v_KAgentAdjustment.cs" />
+    <Compile Include="Models\v_KAgentAdjustmentDet.cs" />
+    <Compile Include="Models\v_KAgentDocs.cs" />
     <Compile Include="Models\v_KAgentSaldo.cs" />
+    <Compile Include="Models\v_MatRecipe.cs" />
     <Compile Include="Models\v_MatRemains.cs" />
     <Compile Include="Models\v_PayDoc.cs" />
+    <Compile Include="Models\v_PlannedCalculation.cs" />
+    <Compile Include="Models\v_PlannedCalculationDetDet.cs" />
+    <Compile Include="Models\v_PosRemains.cs" />
     <Compile Include="Models\v_PriceList.cs" />
     <Compile Include="Models\v_PriceTypes.cs" />
     <Compile Include="Models\v_ProductionPlanDet.cs" />
@@ -177,7 +208,10 @@
     <Compile Include="Models\WayBillMakeProps.cs" />
     <Compile Include="Models\WaybillMove.cs" />
     <Compile Include="Models\WayBillSvc.cs" />
+    <Compile Include="Models\WayBillTmc.cs" />
+    <Compile Include="Models\WhMatRemains.cs" />
     <Compile Include="Models\WMatTurn.cs" />
+    <Compile Include="Models\WriteOffTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

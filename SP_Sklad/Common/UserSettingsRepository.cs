@@ -15,9 +15,13 @@ namespace SP_Sklad.Common
         {
             _user_id = user_id;
             _db = db;
-            _settings_collection = _db.UserSettings.Where(w => w.UserId == user_id).ToList();
+            _settings_collection = _db.UserSettings.Where(w => w.UserId == _user_id).ToList();
         }
 
+        public UserSettingsRepository()
+            : this(UserSession.UserId, new BaseEntities())
+        {
+        }
 
         #endregion
 
@@ -123,7 +127,7 @@ namespace SP_Sklad.Common
             set { Set("GRID_FONT_SIZE", value); }
         }
 
-       public string GridFontName
+        public string GridFontName
         {
             get
             {
@@ -132,6 +136,20 @@ namespace SP_Sklad.Common
             }
             set { Set("GRID_FONT_NAME", value); }
         }
+
+        /// <summary>
+        /// not show message copy documents
+        /// </summary>
+        public bool NotShowMessageCopyDocuments
+        {
+            get
+            {
+                var v = Get("NOT_SHOW_MESSAGE_COPY_DOCUMENTS");
+                return string.IsNullOrEmpty(v) ? false : Convert.ToBoolean(v);
+            }
+            set { Set("NOT_SHOW_MESSAGE_COPY_DOCUMENTS", value); }
+        }
+
         #endregion
 
 

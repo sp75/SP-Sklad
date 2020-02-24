@@ -30,6 +30,8 @@ namespace SP_Base.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public decimal? CalcAmount { get; set; }
 
+        public int? SupplierId { get; set; }
+
         public virtual Materials Materials { get; set; }
 
         public virtual Warehouse Warehouse { get; set; }

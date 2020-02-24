@@ -123,6 +123,7 @@ namespace SP_Sklad.SkladData
                     using (var _db = DB.SkladBase())
                     {
                         var ent = DBHelper.EnterpriseList.ToList().Select(s => (int?)s.KaId);
+
                         _kagents = (from k in _db.KagentList
                                     join ew in _db.EnterpriseWorker on k.KaId equals ew.WorkerId into gj
                                     from subfg in gj.DefaultIfEmpty()
@@ -139,14 +140,14 @@ namespace SP_Sklad.SkladData
             _kagents = null;
         }
 
-        public static IEnumerable<object> KagentsList
+        public static IEnumerable<Kontragent> KagentsList
         {
             get
             {
-                return new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(Kagents.Select(s => new
+                return new List<Kontragent>() { new Kontragent { KaId = 0, Name = "Усі" } }.Concat(Kagents.Select(s => new Kontragent
                 {
-                    s.KaId,
-                    s.Name
+                    KaId = s.KaId,
+                    Name = s.Name
                 }));
             }
         }
@@ -524,4 +525,13 @@ order by wbd.ondate desc
         public String Name { get; set; }
         public int Def { get; set; }
     }
+
+    public class Kontragent
+    { 
+        public int KaId { get; set; }
+        public String Name { get; set; }
+    }
+
+
+
 }

@@ -17,6 +17,7 @@ namespace SP_Base.Models
             RouteList = new HashSet<RouteList>();
             RouteListDet = new HashSet<RouteListDet>();
             UserAccess = new HashSet<UserAccess>();
+            UserAccessCashDesks = new HashSet<UserAccessCashDesks>();
             UserAccessWh = new HashSet<UserAccessWh>();
             UserSettings = new HashSet<UserSettings>();
         }
@@ -74,6 +75,9 @@ namespace SP_Base.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserAccess> UserAccess { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserAccessCashDesks> UserAccessCashDesks { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserAccessWh> UserAccessWh { get; set; }

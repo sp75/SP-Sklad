@@ -5920,6 +5920,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <CollectionType>
               <RowType>
                 <Property Name="Name" Type="nvarchar" MaxLength="100" />
+                <Property Name="KontragentGroupName" Type="nvarchar" MaxLength="50" />
                 <Property Name="Amount_1" Type="numeric" Precision="38" Scale="4" />
                 <Property Name="Amount_2" Type="numeric" Precision="38" Scale="4" />
                 <Property Name="Amount_3" Type="numeric" Precision="38" Scale="4" />
@@ -8966,10 +8967,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Warehouse" EntitySet="Warehouse" />
             <End Role="ProductionPlans" EntitySet="ProductionPlans" />
           </AssociationSet>
-          <FunctionImport Name="REP_41" IsComposable="true" ReturnType="Collection(BaseModel.REP_41_Result)">
-            <Parameter Name="from_date" Mode="In" Type="DateTime" />
-            <Parameter Name="ka_grp_id" Mode="In" Type="Guid" />
-          </FunctionImport>
           <FunctionImport Name="REP_39" IsComposable="true" ReturnType="Collection(BaseModel.REP_39_Result)">
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
             <Parameter Name="to_date" Mode="In" Type="DateTime" />
@@ -9095,7 +9092,11 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetWaybillDetIn" IsComposable="true" ReturnType="Collection(BaseModel.GetWaybillDetIn_Result)">
-            <Parameter Name="wbill_id" Mode="In" Type="Int32" />
+          <Parameter Name="wbill_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="REP_41" IsComposable="true" ReturnType="Collection(BaseModel.REP_41_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="ka_grp_id" Mode="In" Type="Guid" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
@@ -14534,22 +14535,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="REP_41_Result">
-          <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
-          <Property Type="Decimal" Name="Amount_1" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="Amount_2" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="Amount_3" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="Amount_4" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="Amount_5" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="Amount_6" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="Amount_7" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="Amount_8" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="Amount_9" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="Amount_10" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="Amount_11" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="Amount_12" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="Amount_Total" Nullable="true" Precision="38" Scale="4" />
-        </ComplexType>
         <ComplexType Name="REP_39_Result">
           <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
           <Property Type="Int32" Name="GrpId" Nullable="true" />
@@ -15181,6 +15166,23 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="DateTime" Name="UpdateAt" Nullable="true" Precision="23" />
           <Property Type="Decimal" Name="TotalInCurrency" Nullable="true" Precision="31" Scale="6" />
           <Property Type="Int32" Name="MId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="REP_41_Result">
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="KontragentGroupName" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Amount_1" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Amount_2" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Amount_3" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Amount_4" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Amount_5" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Amount_6" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Amount_7" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Amount_8" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Amount_9" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Amount_10" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Amount_11" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Amount_12" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Amount_Total" Nullable="true" Precision="38" Scale="4" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -18600,26 +18602,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="REP_41" FunctionName="BaseModel.Store.REP_41">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.REP_41_Result">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Amount_1" ColumnName="Amount_1" />
-                <ScalarProperty Name="Amount_2" ColumnName="Amount_2" />
-                <ScalarProperty Name="Amount_3" ColumnName="Amount_3" />
-                <ScalarProperty Name="Amount_4" ColumnName="Amount_4" />
-                <ScalarProperty Name="Amount_5" ColumnName="Amount_5" />
-                <ScalarProperty Name="Amount_6" ColumnName="Amount_6" />
-                <ScalarProperty Name="Amount_7" ColumnName="Amount_7" />
-                <ScalarProperty Name="Amount_8" ColumnName="Amount_8" />
-                <ScalarProperty Name="Amount_9" ColumnName="Amount_9" />
-                <ScalarProperty Name="Amount_10" ColumnName="Amount_10" />
-                <ScalarProperty Name="Amount_11" ColumnName="Amount_11" />
-                <ScalarProperty Name="Amount_12" ColumnName="Amount_12" />
-                <ScalarProperty Name="Amount_Total" ColumnName="Amount_Total" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="REP_39" FunctionName="BaseModel.Store.REP_39">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.REP_39_Result">
@@ -19156,6 +19138,27 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
                 <ScalarProperty Name="TotalInCurrency" ColumnName="TotalInCurrency" />
                 <ScalarProperty Name="MId" ColumnName="MId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="REP_41" FunctionName="BaseModel.Store.REP_41">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.REP_41_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="KontragentGroupName" ColumnName="KontragentGroupName" />
+                <ScalarProperty Name="Amount_1" ColumnName="Amount_1" />
+                <ScalarProperty Name="Amount_2" ColumnName="Amount_2" />
+                <ScalarProperty Name="Amount_3" ColumnName="Amount_3" />
+                <ScalarProperty Name="Amount_4" ColumnName="Amount_4" />
+                <ScalarProperty Name="Amount_5" ColumnName="Amount_5" />
+                <ScalarProperty Name="Amount_6" ColumnName="Amount_6" />
+                <ScalarProperty Name="Amount_7" ColumnName="Amount_7" />
+                <ScalarProperty Name="Amount_8" ColumnName="Amount_8" />
+                <ScalarProperty Name="Amount_9" ColumnName="Amount_9" />
+                <ScalarProperty Name="Amount_10" ColumnName="Amount_10" />
+                <ScalarProperty Name="Amount_11" ColumnName="Amount_11" />
+                <ScalarProperty Name="Amount_12" ColumnName="Amount_12" />
+                <ScalarProperty Name="Amount_Total" ColumnName="Amount_Total" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

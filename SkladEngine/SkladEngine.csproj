@@ -59,12 +59,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SP_Base\SP_Base.csproj">
-      <Project>{fe619112-fd3e-4ecc-a9cb-01de7db42481}</Project>
-      <Name>SP_Base</Name>
+    <ProjectReference Include="..\SP.Base\SP.Base.csproj">
+      <Project>{8258D419-4330-4123-B455-A72DF0EFE4F2}</Project>
+      <Name>SP.Base</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

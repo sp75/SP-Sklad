@@ -24,7 +24,7 @@ namespace SP_Base.Models
         [Column(Order = 2, TypeName = "numeric")]
         public decimal OnValue { get; set; }
 
-        [StringLength(64)]
+        [StringLength(100)]
         public string KaName { get; set; }
 
         [StringLength(255)]

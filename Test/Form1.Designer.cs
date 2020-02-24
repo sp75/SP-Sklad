@@ -33,11 +33,13 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.WaybillDetBS = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetBS)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(469, 206);
+            this.button1.Location = new System.Drawing.Point(468, 404);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -66,11 +68,15 @@
             this.textBox1.Size = new System.Drawing.Size(395, 98);
             this.textBox1.TabIndex = 2;
             // 
+            // WaybillDetBS
+            // 
+            this.WaybillDetBS.DataSource = typeof(SP.Base.Models.Banks);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(556, 252);
+            this.ClientSize = new System.Drawing.Size(556, 439);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button1);
@@ -78,6 +84,7 @@
             this.Text = "Form1";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -89,6 +96,7 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.BindingSource WaybillDetBS;
     }
 }
 

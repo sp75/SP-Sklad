@@ -489,34 +489,17 @@ namespace SP_Sklad.MainTabs
 
         private void AddItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (focused_wh_mat == null)
-            {
-                return;
-            }
-
-            var remain_in_wh = DB.SkladBase().MatRemainByWh(focused_wh_mat.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, wh_list, DBHelper.CurrentUser.UserId).ToList();
-            var p_type = (wb.Kontragent != null ? (wb.Kontragent.PTypeId ?? DB.SkladBase().PriceTypes.First(w => w.Def == 1).PTypeId) : DB.SkladBase().PriceTypes.First(w => w.Def == 1).PTypeId);
-            var price = DB.SkladBase().GetListMatPrices(focused_wh_mat.MatId, wb.CurrId, p_type).FirstOrDefault();
-
-            custom_mat_list.Add(new CustomMatListWH
-            {
-                Num = custom_mat_list.Count() + 1,
-                MatId = focused_wh_mat.MatId,
-                Name = focused_wh_mat.MatName,
-                Amount = 1,
-                Price = price != null ? (price.Price ?? 0) : 0,
-                WId = remain_in_wh.Any() ? remain_in_wh.First().WId : (DBHelper.WhList.Any(w => w.Def == 1) ? DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId : DBHelper.WhList.FirstOrDefault().WId),
-                PTypeId = price != null ? price.PType : null,
-                Discount = disc_card != null ? disc_card.OnValue : (DB.SkladBase().GetDiscount(wb.KaId, focused_wh_mat.MatId).FirstOrDefault() ?? 0.00m)
-            });
-
-            MatListGridView.RefreshData();
-            MatListGridView.MoveLast();
+            AddMatToCustomList();
         }
 
         private void DelItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            MatListGridView.DeleteSelectedRows();
+            MatListGridView.CloseEditor();
+
+            var list = custom_mat_list.Where(w => w.Check).ToList();
+            list.ForEach(f => { custom_mat_list.Remove(f); });
+
+            MatListGridView.RefreshData();
         }
 
         private void whKagentList_EditValueChanged(object sender, EventArgs e)
@@ -1060,5 +1043,42 @@ namespace SP_Sklad.MainTabs
             WhMatGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "WarehouseUserControl\\WhMatGridView");
         }
 
+        private void repositoryItemButtonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+
+            MatListGridView.DeleteSelectedRows();
+        }
+
+        private void AddMatItem_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            AddMatToCustomList();
+        }
+
+        private void AddMatToCustomList()
+        {
+            if (focused_wh_mat == null)
+            {
+                return;
+            }
+
+            var remain_in_wh = DB.SkladBase().MatRemainByWh(focused_wh_mat.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, wh_list, DBHelper.CurrentUser.UserId).ToList();
+            var p_type = (wb.Kontragent != null ? (wb.Kontragent.PTypeId ?? DB.SkladBase().PriceTypes.First(w => w.Def == 1).PTypeId) : DB.SkladBase().PriceTypes.First(w => w.Def == 1).PTypeId);
+            var price = DB.SkladBase().GetListMatPrices(focused_wh_mat.MatId, wb.CurrId, p_type).FirstOrDefault();
+
+            custom_mat_list.Add(new CustomMatListWH
+            {
+                Num = custom_mat_list.Count() + 1,
+                MatId = focused_wh_mat.MatId,
+                Name = focused_wh_mat.MatName,
+                Amount = 1,
+                Price = price != null ? (price.Price ?? 0) : 0,
+                WId = remain_in_wh.Any() ? remain_in_wh.First().WId : (DBHelper.WhList.Any(w => w.Def == 1) ? DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId : DBHelper.WhList.FirstOrDefault().WId),
+                PTypeId = price != null ? price.PType : null,
+                Discount = disc_card != null ? disc_card.OnValue : (DB.SkladBase().GetDiscount(wb.KaId, focused_wh_mat.MatId).FirstOrDefault() ?? 0.00m)
+            });
+
+            MatListGridView.RefreshData();
+            MatListGridView.MoveLast();
+        }
     }
 }

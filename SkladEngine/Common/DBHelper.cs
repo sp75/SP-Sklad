@@ -1,20 +1,21 @@
-﻿using System;
+﻿using SP.Base;
+using SP.Base.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SP_Base;
-using SP_Base.Models;
 
 namespace SkladEngine.Common
 {
     public static class DBHelper
     {
         private static List<Currency> _currency;
+        private static List<KagentList> _kagents;
 
         public static DateTime ServerDateTime()
         {
-            return Database.SP_BaseModel().Database.SqlQuery<DateTime>("SELECT getdate()").FirstOrDefault();
+            return Database.SPBase().Database.SqlQuery<DateTime>("SELECT getdate()").FirstOrDefault();
         }
 
         public static List<Currency> Currency
@@ -23,7 +24,7 @@ namespace SkladEngine.Common
             {
                 if (_currency == null)
                 {
-                    using (var db = Database.SP_BaseModel())
+                    using (var db = Database.SPBase())
                     {
                         _currency = db.Currency.ToList();
                     }
@@ -31,5 +32,6 @@ namespace SkladEngine.Common
                 return _currency;
             }
         }
-    }
+     }
+   
 }

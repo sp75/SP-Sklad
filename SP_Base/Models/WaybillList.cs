@@ -14,9 +14,11 @@ namespace SP_Base.Models
         {
             Commission = new HashSet<Commission>();
             DeboningDet = new HashSet<DeboningDet>();
+            IntermediateWeighing = new HashSet<IntermediateWeighing>();
             TechProcDet = new HashSet<TechProcDet>();
             WaybillDet = new HashSet<WaybillDet>();
             WayBillDetAddProps = new HashSet<WayBillDetAddProps>();
+            WayBillTmc = new HashSet<WayBillTmc>();
             WayBillMakeProps = new HashSet<WayBillMakeProps>();
             WayBillSvc = new HashSet<WayBillSvc>();
         }
@@ -95,6 +97,9 @@ namespace SP_Base.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DeboningDet> DeboningDet { get; set; }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<IntermediateWeighing> IntermediateWeighing { get; set; }
+
         public virtual Kagent Kagent { get; set; }
 
         public virtual Kagent Kagent1 { get; set; }
@@ -109,6 +114,9 @@ namespace SP_Base.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WayBillDetAddProps> WayBillDetAddProps { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<WayBillTmc> WayBillTmc { get; set; }
 
         public virtual WayBillMake WayBillMake { get; set; }
 

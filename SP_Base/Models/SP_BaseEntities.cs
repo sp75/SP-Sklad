@@ -4,16 +4,23 @@ namespace SP_Base.Models
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using System.Data.Entity.Core.Objects;
+    using System.Data.Entity.Infrastructure;
+    using SP_Base.Models.ReportModels;
 
     public partial class SP_BaseEntities : DbContext
     {
         public SP_BaseEntities(string connection_string)
-            : base(connection_string)
+         : base(connection_string)
         {
-
         }
 
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<AccountType> AccountType { get; set; }
+        public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<Banks> Banks { get; set; }
         public virtual DbSet<BanksPersons> BanksPersons { get; set; }
         public virtual DbSet<CashDesks> CashDesks { get; set; }
@@ -27,7 +34,7 @@ namespace SP_Base.Models
         public virtual DbSet<CONTRRESULTS> CONTRRESULTS { get; set; }
         public virtual DbSet<Countries> Countries { get; set; }
         public virtual DbSet<Currency> Currency { get; set; }
-        public virtual DbSet<CURRENCYRATE> CURRENCYRATE { get; set; }
+        public virtual DbSet<CurrencyRate> CurrencyRate { get; set; }
         public virtual DbSet<Customers> Customers { get; set; }
         public virtual DbSet<DeboningDet> DeboningDet { get; set; }
         public virtual DbSet<DemandGroup> DemandGroup { get; set; }
@@ -41,11 +48,16 @@ namespace SP_Base.Models
         public virtual DbSet<ErrorLog> ErrorLog { get; set; }
         public virtual DbSet<ExtRel> ExtRel { get; set; }
         public virtual DbSet<Functions> Functions { get; set; }
+        public virtual DbSet<IntermediateWeighing> IntermediateWeighing { get; set; }
+        public virtual DbSet<IntermediateWeighingDet> IntermediateWeighingDet { get; set; }
         public virtual DbSet<Jobs> Jobs { get; set; }
         public virtual DbSet<KaAddr> KaAddr { get; set; }
         public virtual DbSet<KADiscount> KADiscount { get; set; }
         public virtual DbSet<Kagent> Kagent { get; set; }
         public virtual DbSet<KAgentAccount> KAgentAccount { get; set; }
+        public virtual DbSet<KAgentActReconciliation> KAgentActReconciliation { get; set; }
+        public virtual DbSet<KAgentAdjustment> KAgentAdjustment { get; set; }
+        public virtual DbSet<KAgentAdjustmentDet> KAgentAdjustmentDet { get; set; }
         public virtual DbSet<KAgentDoc> KAgentDoc { get; set; }
         public virtual DbSet<KAgentPersons> KAgentPersons { get; set; }
         public virtual DbSet<KAgentSaldo> KAgentSaldo { get; set; }
@@ -57,6 +69,7 @@ namespace SP_Base.Models
         public virtual DbSet<Languages> Languages { get; set; }
         public virtual DbSet<Licenses> Licenses { get; set; }
         public virtual DbSet<MatChange> MatChange { get; set; }
+        public virtual DbSet<MaterialMeasures> MaterialMeasures { get; set; }
         public virtual DbSet<Materials> Materials { get; set; }
         public virtual DbSet<MatGroup> MatGroup { get; set; }
         public virtual DbSet<MatGroupPrices> MatGroupPrices { get; set; }
@@ -67,10 +80,15 @@ namespace SP_Base.Models
         public virtual DbSet<MatRemains> MatRemains { get; set; }
         public virtual DbSet<Measures> Measures { get; set; }
         public virtual DbSet<MoneySaldo> MoneySaldo { get; set; }
+        public virtual DbSet<OperationTypes> OperationTypes { get; set; }
         public virtual DbSet<OperLog> OperLog { get; set; }
+        public virtual DbSet<OrderedRels> OrderedRels { get; set; }
+        public virtual DbSet<Packaging> Packaging { get; set; }
         public virtual DbSet<PayDoc> PayDoc { get; set; }
         public virtual DbSet<PayDocType> PayDocType { get; set; }
         public virtual DbSet<PayType> PayType { get; set; }
+        public virtual DbSet<PlannedCalculation> PlannedCalculation { get; set; }
+        public virtual DbSet<PlannedCalculationDet> PlannedCalculationDet { get; set; }
         public virtual DbSet<PosRel> PosRel { get; set; }
         public virtual DbSet<PosRemains> PosRemains { get; set; }
         public virtual DbSet<PriceList> PriceList { get; set; }
@@ -79,13 +97,17 @@ namespace SP_Base.Models
         public virtual DbSet<PrintLog> PrintLog { get; set; }
         public virtual DbSet<ProductionPlanDet> ProductionPlanDet { get; set; }
         public virtual DbSet<ProductionPlans> ProductionPlans { get; set; }
+        public virtual DbSet<PROFCOMMON> PROFCOMMON { get; set; }
         public virtual DbSet<ProfileDocSetting> ProfileDocSetting { get; set; }
+        public virtual DbSet<ProfilesSetting> ProfilesSetting { get; set; }
         public virtual DbSet<RepLng> RepLng { get; set; }
         public virtual DbSet<Reports> Reports { get; set; }
+        public virtual DbSet<ReportSortedFields> ReportSortedFields { get; set; }
         public virtual DbSet<ReturnRel> ReturnRel { get; set; }
         public virtual DbSet<RouteList> RouteList { get; set; }
         public virtual DbSet<RouteListDet> RouteListDet { get; set; }
         public virtual DbSet<Routes> Routes { get; set; }
+        public virtual DbSet<SchedulingOrders> SchedulingOrders { get; set; }
         public virtual DbSet<Serials> Serials { get; set; }
         public virtual DbSet<Services> Services { get; set; }
         public virtual DbSet<SettingApp> SettingApp { get; set; }
@@ -98,6 +120,7 @@ namespace SP_Base.Models
         public virtual DbSet<TechProcDet> TechProcDet { get; set; }
         public virtual DbSet<TechProcess> TechProcess { get; set; }
         public virtual DbSet<UserAccess> UserAccess { get; set; }
+        public virtual DbSet<UserAccessCashDesks> UserAccessCashDesks { get; set; }
         public virtual DbSet<UserAccessWh> UserAccessWh { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<UserSettings> UserSettings { get; set; }
@@ -114,9 +137,10 @@ namespace SP_Base.Models
         public virtual DbSet<WayBillMakeProps> WayBillMakeProps { get; set; }
         public virtual DbSet<WaybillMove> WaybillMove { get; set; }
         public virtual DbSet<WayBillSvc> WayBillSvc { get; set; }
+        public virtual DbSet<WayBillTmc> WayBillTmc { get; set; }
+        public virtual DbSet<WhMatRemains> WhMatRemains { get; set; }
         public virtual DbSet<WMatTurn> WMatTurn { get; set; }
-        public virtual DbSet<PROFCOMMON> PROFCOMMON { get; set; }
-        public virtual DbSet<ProfilesSetting> ProfilesSetting { get; set; }
+        public virtual DbSet<WriteOffTypes> WriteOffTypes { get; set; }
         public virtual DbSet<PROFINTF> PROFINTF { get; set; }
         public virtual DbSet<EnterpriseAccount> EnterpriseAccount { get; set; }
         public virtual DbSet<KagentList> KagentList { get; set; }
@@ -128,10 +152,18 @@ namespace SP_Base.Models
         public virtual DbSet<v_EnterpriseList> v_EnterpriseList { get; set; }
         public virtual DbSet<v_ErrorLog> v_ErrorLog { get; set; }
         public virtual DbSet<v_GetDocsTree> v_GetDocsTree { get; set; }
+        public virtual DbSet<v_IntermediateWeighingDet> v_IntermediateWeighingDet { get; set; }
         public virtual DbSet<v_KAgentAccount> v_KAgentAccount { get; set; }
+        public virtual DbSet<v_KAgentAdjustment> v_KAgentAdjustment { get; set; }
+        public virtual DbSet<v_KAgentAdjustmentDet> v_KAgentAdjustmentDet { get; set; }
+        public virtual DbSet<v_KAgentDocs> v_KAgentDocs { get; set; }
         public virtual DbSet<v_KAgentSaldo> v_KAgentSaldo { get; set; }
+        public virtual DbSet<v_MatRecipe> v_MatRecipe { get; set; }
         public virtual DbSet<v_MatRemains> v_MatRemains { get; set; }
         public virtual DbSet<v_PayDoc> v_PayDoc { get; set; }
+        public virtual DbSet<v_PlannedCalculation> v_PlannedCalculation { get; set; }
+        public virtual DbSet<v_PlannedCalculationDetDet> v_PlannedCalculationDetDet { get; set; }
+        public virtual DbSet<v_PosRemains> v_PosRemains { get; set; }
         public virtual DbSet<v_PriceList> v_PriceList { get; set; }
         public virtual DbSet<v_PriceTypes> v_PriceTypes { get; set; }
         public virtual DbSet<v_ProductionPlanDet> v_ProductionPlanDet { get; set; }
@@ -141,12 +173,62 @@ namespace SP_Base.Models
         public virtual DbSet<v_WaybillList> v_WaybillList { get; set; }
         public virtual DbSet<v_WorkDate> v_WorkDate { get; set; }
 
+        [DbFunction("SP_BaseEntities", "REP_1")]
+        public virtual IQueryable<REP_1_Result> REP_1(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> grp_id, Nullable<int> ka_id, string wh, string doc_types, Nullable<int> user_id)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+
+            var grp_idParameter = grp_id.HasValue ?
+                new ObjectParameter("grp_id", grp_id) :
+                new ObjectParameter("grp_id", typeof(int));
+
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+
+            var whParameter = wh != null ?
+                new ObjectParameter("wh", wh) :
+                new ObjectParameter("wh", typeof(string));
+
+            var doc_typesParameter = doc_types != null ?
+                new ObjectParameter("doc_types", doc_types) :
+                new ObjectParameter("doc_types", typeof(string));
+
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_1_Result>("[SP_BaseEntities].[REP_1]( @from_date, @to_date, @grp_id, @ka_id, @wh, @doc_types, @user_id)", from_dateParameter, to_dateParameter, grp_idParameter, ka_idParameter, whParameter, doc_typesParameter, user_idParameter);
+
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<AccountType>()
                 .HasMany(e => e.KAgentAccount)
                 .WithRequired(e => e.AccountType)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<AspNetRoles>()
+                .HasMany(e => e.AspNetUsers)
+                .WithMany(e => e.AspNetRoles)
+                .Map(m => m.ToTable("AspNetUserRoles").MapLeftKey("RoleId").MapRightKey("UserId"));
+
+            modelBuilder.Entity<AspNetUsers>()
+                .HasMany(e => e.AspNetUserClaims)
+                .WithRequired(e => e.AspNetUsers)
+                .HasForeignKey(e => e.UserId);
+
+            modelBuilder.Entity<AspNetUsers>()
+                .HasMany(e => e.AspNetUserLogins)
+                .WithRequired(e => e.AspNetUsers)
+                .HasForeignKey(e => e.UserId);
 
             modelBuilder.Entity<Banks>()
                 .HasMany(e => e.KAgentAccount)
@@ -233,7 +315,7 @@ namespace SP_Base.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Currency>()
-                .HasMany(e => e.CURRENCYRATE)
+                .HasMany(e => e.CurrencyRate)
                 .WithRequired(e => e.Currency)
                 .WillCascadeOnDelete(false);
 
@@ -257,9 +339,9 @@ namespace SP_Base.Models
                 .WithRequired(e => e.Currency)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<CURRENCYRATE>()
-                .Property(e => e.ONVALUE)
-                .HasPrecision(15, 8);
+            modelBuilder.Entity<CurrencyRate>()
+                .Property(e => e.OnValue)
+                .HasPrecision(15, 4);
 
             modelBuilder.Entity<DeboningDet>()
                 .Property(e => e.Amount)
@@ -321,6 +403,18 @@ namespace SP_Base.Models
             modelBuilder.Entity<Functions>()
                 .Property(e => e.ClassName)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<IntermediateWeighingDet>()
+                .Property(e => e.Amount)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<IntermediateWeighingDet>()
+                .Property(e => e.TaraAmount)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<IntermediateWeighingDet>()
+                .Property(e => e.Total)
+                .HasPrecision(15, 4);
 
             modelBuilder.Entity<KaAddr>()
                 .Property(e => e.Country)
@@ -397,6 +491,12 @@ namespace SP_Base.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Kagent>()
+                .HasMany(e => e.IntermediateWeighing)
+                .WithRequired(e => e.Kagent)
+                .HasForeignKey(e => e.PersonId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Kagent>()
                 .HasOptional(e => e.KADiscount)
                 .WithRequired(e => e.Kagent)
                 .WillCascadeOnDelete();
@@ -430,6 +530,46 @@ namespace SP_Base.Models
                 .HasOptional(e => e.KAgentDoc)
                 .WithRequired(e => e.Kagent)
                 .WillCascadeOnDelete();
+
+            modelBuilder.Entity<Kagent>()
+                .HasMany(e => e.KAgentActReconciliation)
+                .WithOptional(e => e.Kagent)
+                .HasForeignKey(e => e.DebtKaId);
+
+            modelBuilder.Entity<Kagent>()
+                .HasMany(e => e.KAgentActReconciliation1)
+                .WithOptional(e => e.Kagent1)
+                .HasForeignKey(e => e.CreditKaId);
+
+            modelBuilder.Entity<Kagent>()
+                .HasMany(e => e.KAgentActReconciliation2)
+                .WithOptional(e => e.Kagent2)
+                .HasForeignKey(e => e.PersonId);
+
+            modelBuilder.Entity<Kagent>()
+                .HasMany(e => e.KAgentAdjustment)
+                .WithOptional(e => e.Kagent)
+                .HasForeignKey(e => e.DebtKaId);
+
+            modelBuilder.Entity<Kagent>()
+                .HasMany(e => e.KAgentAdjustment1)
+                .WithOptional(e => e.Kagent1)
+                .HasForeignKey(e => e.CreditKaId);
+
+            modelBuilder.Entity<Kagent>()
+                .HasMany(e => e.KAgentAdjustment2)
+                .WithOptional(e => e.Kagent2)
+                .HasForeignKey(e => e.PersonId);
+
+            modelBuilder.Entity<Kagent>()
+                .HasMany(e => e.ProductionPlans)
+                .WithOptional(e => e.Kagent)
+                .HasForeignKey(e => e.PersonId);
+
+            modelBuilder.Entity<Kagent>()
+                .HasMany(e => e.ProductionPlans1)
+                .WithOptional(e => e.Kagent1)
+                .HasForeignKey(e => e.EntId);
 
             modelBuilder.Entity<Kagent>()
                 .HasMany(e => e.Routes1)
@@ -476,6 +616,39 @@ namespace SP_Base.Models
             modelBuilder.Entity<KAgentAccount>()
                 .Property(e => e.AccNum)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<KAgentActReconciliation>()
+                .Property(e => e.SummAll)
+                .HasPrecision(15, 2);
+
+            modelBuilder.Entity<KAgentActReconciliation>()
+                .Property(e => e.OnValue)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<KAgentActReconciliation>()
+                .Property(e => e.SummInCurr)
+                .HasPrecision(15, 2);
+
+            modelBuilder.Entity<KAgentAdjustment>()
+                .Property(e => e.SummAll)
+                .HasPrecision(15, 2);
+
+            modelBuilder.Entity<KAgentAdjustment>()
+                .Property(e => e.OnValue)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<KAgentAdjustment>()
+                .Property(e => e.SummInCurr)
+                .HasPrecision(15, 2);
+
+            modelBuilder.Entity<KAgentAdjustment>()
+                .HasMany(e => e.KAgentAdjustmentDet)
+                .WithOptional(e => e.KAgentAdjustment)
+                .WillCascadeOnDelete();
+
+            modelBuilder.Entity<KAgentAdjustmentDet>()
+                .Property(e => e.Saldo)
+                .HasPrecision(15, 2);
 
             modelBuilder.Entity<KAgentDoc>()
                 .Property(e => e.DocName)
@@ -548,24 +721,33 @@ namespace SP_Base.Models
                 .WithRequired(e => e.Languages)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<MaterialMeasures>()
+                .Property(e => e.Amount)
+                .HasPrecision(15, 4);
+
             modelBuilder.Entity<Materials>()
                 .Property(e => e.MinReserv)
-                .HasPrecision(15, 8);
+                .HasPrecision(15, 2);
 
             modelBuilder.Entity<Materials>()
                 .Property(e => e.Weight)
-                .HasPrecision(15, 8);
+                .HasPrecision(15, 4);
 
             modelBuilder.Entity<Materials>()
                 .Property(e => e.MSize)
-                .HasPrecision(15, 8);
+                .HasPrecision(15, 4);
 
             modelBuilder.Entity<Materials>()
                 .Property(e => e.NDS)
-                .HasPrecision(15, 8);
+                .HasPrecision(15, 2);
 
             modelBuilder.Entity<Materials>()
                 .HasMany(e => e.DeboningDet)
+                .WithRequired(e => e.Materials)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Materials>()
+                .HasMany(e => e.IntermediateWeighingDet)
                 .WithRequired(e => e.Materials)
                 .WillCascadeOnDelete(false);
 
@@ -597,6 +779,11 @@ namespace SP_Base.Models
 
             modelBuilder.Entity<Materials>()
                 .HasMany(e => e.MatRecDet)
+                .WithRequired(e => e.Materials)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Materials>()
+                .HasMany(e => e.WayBillTmc)
                 .WithRequired(e => e.Materials)
                 .WillCascadeOnDelete(false);
 
@@ -668,6 +855,15 @@ namespace SP_Base.Models
                 .HasPrecision(15, 4);
 
             modelBuilder.Entity<MatRecipe>()
+                .Property(e => e.Deviation)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<MatRecipe>()
+                .HasMany(e => e.PlannedCalculationDet)
+                .WithRequired(e => e.MatRecipe)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<MatRecipe>()
                 .HasMany(e => e.ProductionPlanDet)
                 .WithRequired(e => e.MatRecipe)
                 .WillCascadeOnDelete(false);
@@ -713,6 +909,11 @@ namespace SP_Base.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Measures>()
+                .HasMany(e => e.MaterialMeasures)
+                .WithRequired(e => e.Measures)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Measures>()
                 .HasMany(e => e.Materials)
                 .WithRequired(e => e.Measures)
                 .WillCascadeOnDelete(false);
@@ -724,6 +925,12 @@ namespace SP_Base.Models
             modelBuilder.Entity<MoneySaldo>()
                 .Property(e => e.SaldoDef)
                 .HasPrecision(15, 2);
+
+            modelBuilder.Entity<OperationTypes>()
+                .HasMany(e => e.KAgentAdjustment)
+                .WithRequired(e => e.OperationTypes)
+                .HasForeignKey(e => e.OperationType)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<OperLog>()
                 .Property(e => e.OpCode)
@@ -752,7 +959,7 @@ namespace SP_Base.Models
 
             modelBuilder.Entity<PayDoc>()
                 .Property(e => e.OnValue)
-                .HasPrecision(15, 8);
+                .HasPrecision(15, 4);
 
             modelBuilder.Entity<PayDoc>()
                 .Property(e => e.Schet)
@@ -762,6 +969,30 @@ namespace SP_Base.Models
                 .HasMany(e => e.PayDoc)
                 .WithRequired(e => e.PayType)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<PlannedCalculationDet>()
+                .Property(e => e.ProductionPlan)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<PlannedCalculationDet>()
+                .Property(e => e.PlannedProfitability)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<PlannedCalculationDet>()
+                .Property(e => e.RecipeOut)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<PlannedCalculationDet>()
+                .Property(e => e.Amount)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<PlannedCalculationDet>()
+                .Property(e => e.SalesPrice)
+                .HasPrecision(15, 2);
+
+            modelBuilder.Entity<PlannedCalculationDet>()
+                .Property(e => e.RecipePrice)
+                .HasPrecision(15, 2);
 
             modelBuilder.Entity<PosRemains>()
                 .Property(e => e.Remain)
@@ -787,9 +1018,17 @@ namespace SP_Base.Models
                 .Property(e => e.OrderedRsv)
                 .HasPrecision(15, 4);
 
+            modelBuilder.Entity<PosRemains>()
+                .Property(e => e.ActualRemain)
+                .HasPrecision(17, 4);
+
             modelBuilder.Entity<PriceListDet>()
                 .Property(e => e.Price)
                 .HasPrecision(15, 4);
+
+            modelBuilder.Entity<PriceListDet>()
+                .Property(e => e.Discount)
+                .HasPrecision(15, 2);
 
             modelBuilder.Entity<PriceTypes>()
                 .Property(e => e.Name)
@@ -843,6 +1082,10 @@ namespace SP_Base.Models
                 .Property(e => e.DefAmount)
                 .HasPrecision(15, 8);
 
+            modelBuilder.Entity<ProfilesSetting>()
+                .Property(e => e.Name)
+                .IsUnicode(false);
+
             modelBuilder.Entity<RepLng>()
                 .Property(e => e.Name)
                 .IsUnicode(false);
@@ -866,6 +1109,10 @@ namespace SP_Base.Models
                 .WithRequired(e => e.Routes)
                 .HasForeignKey(e => e.RouteId)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<SchedulingOrders>()
+                .Property(e => e.Amount)
+                .HasPrecision(15, 4);
 
             modelBuilder.Entity<Services>()
                 .Property(e => e.Price)
@@ -1056,6 +1303,16 @@ namespace SP_Base.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Warehouse>()
+                .HasMany(e => e.ProductionPlans)
+                .WithOptional(e => e.Warehouse)
+                .HasForeignKey(e => e.WhId);
+
+            modelBuilder.Entity<Warehouse>()
+                .HasMany(e => e.ProductionPlans1)
+                .WithOptional(e => e.Warehouse1)
+                .HasForeignKey(e => e.ManufId);
+
+            modelBuilder.Entity<Warehouse>()
                 .HasMany(e => e.WMatTurn)
                 .WithRequired(e => e.Warehouse)
                 .WillCascadeOnDelete(false);
@@ -1119,6 +1376,17 @@ namespace SP_Base.Models
                 .HasMany(e => e.ExtRel1)
                 .WithRequired(e => e.WaybillDet1)
                 .HasForeignKey(e => e.IntPosId);
+
+            modelBuilder.Entity<WaybillDet>()
+                .HasMany(e => e.OrderedRels)
+                .WithRequired(e => e.WaybillDet)
+                .HasForeignKey(e => e.OrdPosId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<WaybillDet>()
+                .HasMany(e => e.OrderedRels1)
+                .WithRequired(e => e.WaybillDet1)
+                .HasForeignKey(e => e.OutPosId);
 
             modelBuilder.Entity<WaybillDet>()
                 .HasMany(e => e.PosRel)
@@ -1253,6 +1521,42 @@ namespace SP_Base.Models
                 .Property(e => e.Total)
                 .HasPrecision(15, 2);
 
+            modelBuilder.Entity<WayBillTmc>()
+                .Property(e => e.Amount)
+                .HasPrecision(15, 2);
+
+            modelBuilder.Entity<WayBillTmc>()
+                .Property(e => e.CalcAmount)
+                .HasPrecision(26, 2);
+
+            modelBuilder.Entity<WhMatRemains>()
+                .Property(e => e.Remain)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<WhMatRemains>()
+                .Property(e => e.Rsv)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<WhMatRemains>()
+                .Property(e => e.AvgPrice)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<WhMatRemains>()
+                .Property(e => e.MinPrice)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<WhMatRemains>()
+                .Property(e => e.MaxPrice)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<WhMatRemains>()
+                .Property(e => e.Ordered)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<WhMatRemains>()
+                .Property(e => e.ORsv)
+                .HasPrecision(15, 4);
+
             modelBuilder.Entity<WMatTurn>()
                 .Property(e => e.Amount)
                 .HasPrecision(15, 4);
@@ -1261,9 +1565,11 @@ namespace SP_Base.Models
                 .Property(e => e.CalcAmount)
                 .HasPrecision(37, 15);
 
-            modelBuilder.Entity<ProfilesSetting>()
-                .Property(e => e.Name)
-                .IsUnicode(false);
+            modelBuilder.Entity<WriteOffTypes>()
+                .HasMany(e => e.KAgentAdjustment)
+                .WithRequired(e => e.WriteOffTypes)
+                .HasForeignKey(e => e.WriteOffType)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<EnterpriseAccount>()
                 .Property(e => e.AccNum)
@@ -1311,7 +1617,7 @@ namespace SP_Base.Models
 
             modelBuilder.Entity<MaterialsList>()
                 .Property(e => e.NDS)
-                .HasPrecision(15, 8);
+                .HasPrecision(15, 2);
 
             modelBuilder.Entity<v_Actives>()
                 .Property(e => e.WhSumm)
@@ -1345,13 +1651,89 @@ namespace SP_Base.Models
                 .Property(e => e.StartSaldo)
                 .HasPrecision(15, 8);
 
+            modelBuilder.Entity<v_IntermediateWeighingDet>()
+                .Property(e => e.Amount)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<v_IntermediateWeighingDet>()
+                .Property(e => e.TaraAmount)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<v_IntermediateWeighingDet>()
+                .Property(e => e.Total)
+                .HasPrecision(15, 4);
+
             modelBuilder.Entity<v_KAgentAccount>()
                 .Property(e => e.AccNum)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<v_KAgentAdjustment>()
+                .Property(e => e.SummAll)
+                .HasPrecision(15, 2);
+
+            modelBuilder.Entity<v_KAgentAdjustment>()
+                .Property(e => e.SummInCurr)
+                .HasPrecision(15, 2);
+
+            modelBuilder.Entity<v_KAgentAdjustmentDet>()
+                .Property(e => e.SummAll)
+                .HasPrecision(21, 8);
+
+            modelBuilder.Entity<v_KAgentAdjustmentDet>()
+                .Property(e => e.SummInCurr)
+                .HasPrecision(33, 8);
+
+            modelBuilder.Entity<v_KAgentAdjustmentDet>()
+                .Property(e => e.SummPay)
+                .HasPrecision(33, 8);
+
+            modelBuilder.Entity<v_KAgentAdjustmentDet>()
+                .Property(e => e.OnValue)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<v_KAgentAdjustmentDet>()
+                .Property(e => e.Saldo)
+                .HasPrecision(15, 2);
+
+            modelBuilder.Entity<v_KAgentDocs>()
+                .Property(e => e.Nds)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<v_KAgentDocs>()
+                .Property(e => e.SummAll)
+                .HasPrecision(21, 8);
+
+            modelBuilder.Entity<v_KAgentDocs>()
+                .Property(e => e.SummInCurr)
+                .HasPrecision(33, 8);
+
+            modelBuilder.Entity<v_KAgentDocs>()
+                .Property(e => e.OnValue)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<v_KAgentDocs>()
+                .Property(e => e.SummPay)
+                .HasPrecision(33, 8);
+
             modelBuilder.Entity<v_KAgentSaldo>()
                 .Property(e => e.Saldo)
                 .HasPrecision(38, 2);
+
+            modelBuilder.Entity<v_MatRecipe>()
+                .Property(e => e.Amount)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<v_MatRecipe>()
+                .Property(e => e.Name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<v_MatRecipe>()
+                .Property(e => e.GrpName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<v_MatRecipe>()
+                .Property(e => e.Out)
+                .HasPrecision(15, 4);
 
             modelBuilder.Entity<v_MatRemains>()
                 .Property(e => e.Remain)
@@ -1367,11 +1749,11 @@ namespace SP_Base.Models
 
             modelBuilder.Entity<v_MatRemains>()
                 .Property(e => e.MinPrice)
-                .HasPrecision(38, 10);
+                .HasPrecision(15, 4);
 
             modelBuilder.Entity<v_MatRemains>()
                 .Property(e => e.MaxPrice)
-                .HasPrecision(38, 10);
+                .HasPrecision(15, 4);
 
             modelBuilder.Entity<v_MatRemains>()
                 .Property(e => e.Ordered)
@@ -1428,6 +1810,74 @@ namespace SP_Base.Models
             modelBuilder.Entity<v_PayDoc>()
                 .Property(e => e.AccNum)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<v_PlannedCalculationDetDet>()
+                .Property(e => e.ProductionPlan)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<v_PlannedCalculationDetDet>()
+                .Property(e => e.PlannedProfitability)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<v_PlannedCalculationDetDet>()
+                .Property(e => e.RecipeOut)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<v_PlannedCalculationDetDet>()
+                .Property(e => e.Amount)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<v_PlannedCalculationDetDet>()
+                .Property(e => e.RecipeCount)
+                .HasPrecision(38, 0);
+
+            modelBuilder.Entity<v_PlannedCalculationDetDet>()
+                .Property(e => e.RecipePrice)
+                .HasPrecision(15, 2);
+
+            modelBuilder.Entity<v_PlannedCalculationDetDet>()
+                .Property(e => e.SalesPrice)
+                .HasPrecision(15, 2);
+
+            modelBuilder.Entity<v_PlannedCalculationDetDet>()
+                .Property(e => e.Price)
+                .HasPrecision(15, 2);
+
+            modelBuilder.Entity<v_PlannedCalculationDetDet>()
+                .Property(e => e.Profitability)
+                .HasPrecision(15, 2);
+
+            modelBuilder.Entity<v_PlannedCalculationDetDet>()
+                .Property(e => e.PlansPrice)
+                .HasPrecision(15, 2);
+
+            modelBuilder.Entity<v_PlannedCalculationDetDet>()
+                .Property(e => e.MatGroupName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<v_PosRemains>()
+                .Property(e => e.Remain)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<v_PosRemains>()
+                .Property(e => e.Rsv)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<v_PosRemains>()
+                .Property(e => e.AvgPrice)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<v_PosRemains>()
+                .Property(e => e.Ordered)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<v_PosRemains>()
+                .Property(e => e.OrderedRsv)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<v_PosRemains>()
+                .Property(e => e.ActualRemain)
+                .HasPrecision(17, 4);
 
             modelBuilder.Entity<v_PriceTypes>()
                 .Property(e => e.Name)

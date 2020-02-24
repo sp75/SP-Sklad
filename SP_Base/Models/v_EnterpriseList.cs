@@ -14,7 +14,7 @@ namespace SP_Base.Models
 
         [Key]
         [Column(Order = 1)]
-        [StringLength(64)]
+        [StringLength(100)]
         public string Name { get; set; }
 
         [StringLength(255)]

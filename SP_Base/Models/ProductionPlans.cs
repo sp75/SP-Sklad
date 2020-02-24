@@ -41,7 +41,15 @@ namespace SP_Base.Models
 
         public int? ManufId { get; set; }
 
+        public virtual Kagent Kagent { get; set; }
+
+        public virtual Kagent Kagent1 { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductionPlanDet> ProductionPlanDet { get; set; }
+
+        public virtual Warehouse Warehouse { get; set; }
+
+        public virtual Warehouse Warehouse1 { get; set; }
     }
 }

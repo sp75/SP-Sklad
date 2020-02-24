@@ -15,6 +15,8 @@ namespace SP_Base.Models
 
         public int WId { get; set; }
 
+        public bool UseReceived { get; set; }
+
         public virtual Users Users { get; set; }
 
         public virtual Warehouse Warehouse { get; set; }

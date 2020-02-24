@@ -216,7 +216,11 @@ namespace SP_Sklad.WBForm
 
             if (dr != null)
             {
-                new frmWBMoveDet(_db, dr.PosId, wb).ShowDialog();
+                using (var frm = new frmWBMoveDet(_db, dr.PosId, wb))
+                {
+                    frm.ShowDialog();
+                }
+
                 RefreshDet();
             }
         }

@@ -193,45 +193,6 @@ namespace SP_Sklad.Reports
                 IHelper.Print(data_for_report, TemlateList.rep_3);
             }
 
-            if (idx == 14)
-            {
-                int grp = Convert.ToInt32(MatGroup.GrpId);
-                string wh = Convert.ToString(Warehouse.WId);
-                int kid = Convert.ToInt32(Kagent.KaId);
-                Guid kg_grp_id = KontragentGroup.Id;
-                var mat = db.REP_3_14(StartDate, EndDate, grp, kid, wh, DocStr, _user_id, kg_grp_id).ToList();
-
-                if (!mat.Any())
-                {
-                    return;
-                }
-
-                var mat_grp = db.MatGroup.Where(w => w.Deleted == 0 && (w.GrpId == grp || grp == 0)).Select(s => new { s.GrpId, s.Name }).ToList();
-
-                rel.Add(new
-                {
-                    pk = "GrpId",
-                    fk = "GrpId",
-                    master_table = "MatGroup",
-                    child_table = "MatOutDet"
-                });
-
-                data_for_report.Add("XLRPARAMS", XLRPARAMS);
-                data_for_report.Add("MatGroup", mat_grp.Where(w => mat.Select(s => s.GrpId).Contains(w.GrpId)).ToList());
-                data_for_report.Add("MatOutDet", mat);
-                data_for_report.Add("SummaryField", mat.GroupBy(g => 1).Select(s => new
-                {
-                    Amount = s.Sum(a => a.Amount),
-                    Summ = s.Sum(ss => ss.Summ),
-                    ReturnAmountIn = s.Sum(r => r.ReturnAmountIn),
-                    ReturnSummIn = s.Sum(r => r.ReturnSummIn)
-                }).ToList());
-                data_for_report.Add("_realation_", rel);
-
-                IHelper.Print(data_for_report, TemlateList.rep_3/*TemlateList.rep_14*/);
-            }
-
-
             if (idx == 4)
             {
                 int grp = Convert.ToInt32(MatGroup.GrpId);
@@ -266,42 +227,6 @@ namespace SP_Sklad.Reports
 
                 IHelper.Print(data_for_report, TemlateList.rep_4);
             }
-
-            if (idx == 25)
-            {
-                int grp = Convert.ToInt32(MatGroup.GrpId);
-                int kid = Convert.ToInt32(Kagent.KaId);
-                string wh = Convert.ToString(Warehouse.WId);
-                var mat = db.REP_4_25(StartDate, EndDate, grp, kid, wh, DocStr, _user_id).ToList();
-
-                if (!mat.Any())
-                {
-                    return;
-                }
-
-                var mat_grp = db.MatGroup.Where(w => w.Deleted == 0 && (w.GrpId == grp || grp == 0)).Select(s => new { s.GrpId, s.Name }).ToList();
-
-                rel.Add(new
-                {
-                    pk = "GrpId",
-                    fk = "GrpId",
-                    master_table = "MatGroup",
-                    child_table = "MatInDet"
-                });
-
-                data_for_report.Add("XLRPARAMS", XLRPARAMS);
-                data_for_report.Add("MatGroup", mat_grp.Where(w => mat.Select(s => s.GrpId).Contains(w.GrpId)).ToList());
-                data_for_report.Add("MatInDet", mat);
-                data_for_report.Add("SummaryField", mat.GroupBy(g => 1).Select(s => new
-                {
-                    SummPrice = s.Sum(r => r.SummPrice),
-                    ReturnSummPriceOut = s.Sum(r => r.ReturnSummPriceOut)
-                }).ToList());
-                data_for_report.Add("_realation_", rel);
-
-                IHelper.Print(data_for_report, TemlateList.rep_4);
-            }
-
 
             if (idx == 5)
             {
@@ -529,6 +454,44 @@ namespace SP_Sklad.Reports
                 IHelper.Print(data_for_report, TemlateList.rep_13);
             }
 
+            if (idx == 14)
+            {
+                int grp = Convert.ToInt32(MatGroup.GrpId);
+                string wh = Convert.ToString(Warehouse.WId);
+                int kid = Convert.ToInt32(Kagent.KaId);
+                Guid kg_grp_id = KontragentGroup.Id;
+                var mat = db.REP_3_14(StartDate, EndDate, grp, kid, wh, DocStr, _user_id, kg_grp_id).ToList();
+
+                if (!mat.Any())
+                {
+                    return;
+                }
+
+                var mat_grp = db.MatGroup.Where(w => w.Deleted == 0 && (w.GrpId == grp || grp == 0)).Select(s => new { s.GrpId, s.Name }).ToList();
+
+                rel.Add(new
+                {
+                    pk = "GrpId",
+                    fk = "GrpId",
+                    master_table = "MatGroup",
+                    child_table = "MatOutDet"
+                });
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("MatGroup", mat_grp.Where(w => mat.Select(s => s.GrpId).Contains(w.GrpId)).ToList());
+                data_for_report.Add("MatOutDet", mat);
+                data_for_report.Add("SummaryField", mat.GroupBy(g => 1).Select(s => new
+                {
+                    Amount = s.Sum(a => a.Amount),
+                    Summ = s.Sum(ss => ss.Summ),
+                    ReturnAmountIn = s.Sum(r => r.ReturnAmountIn),
+                    ReturnSummIn = s.Sum(r => r.ReturnSummIn)
+                }).ToList());
+                data_for_report.Add("_realation_", rel);
+
+                IHelper.Print(data_for_report, TemlateList.rep_3/*TemlateList.rep_14*/);
+            }
+
             if (idx == 15)
             {
                 var wb_list = db.REP_15(StartDate, EndDate, (int)Kagent.KaId, (int)this.Material.MatId).OrderBy(o => o.OnDate).ToList();
@@ -638,6 +601,41 @@ namespace SP_Sklad.Reports
                 IHelper.Print(data_for_report, TemlateList.rep_20);
             }
 
+            if (idx == 25)
+            {
+                int grp = Convert.ToInt32(MatGroup.GrpId);
+                int kid = Convert.ToInt32(Kagent.KaId);
+                string wh = Convert.ToString(Warehouse.WId);
+                var mat = db.REP_4_25(StartDate, EndDate, grp, kid, wh, DocStr, _user_id).ToList();
+
+                if (!mat.Any())
+                {
+                    return;
+                }
+
+                var mat_grp = db.MatGroup.Where(w => w.Deleted == 0 && (w.GrpId == grp || grp == 0)).Select(s => new { s.GrpId, s.Name }).ToList();
+
+                rel.Add(new
+                {
+                    pk = "GrpId",
+                    fk = "GrpId",
+                    master_table = "MatGroup",
+                    child_table = "MatInDet"
+                });
+
+                data_for_report.Add("XLRPARAMS", XLRPARAMS);
+                data_for_report.Add("MatGroup", mat_grp.Where(w => mat.Select(s => s.GrpId).Contains(w.GrpId)).ToList());
+                data_for_report.Add("MatInDet", mat);
+                data_for_report.Add("SummaryField", mat.GroupBy(g => 1).Select(s => new
+                {
+                    SummPrice = s.Sum(r => r.SummPrice),
+                    ReturnSummPriceOut = s.Sum(r => r.ReturnSummPriceOut)
+                }).ToList());
+                data_for_report.Add("_realation_", rel);
+
+                IHelper.Print(data_for_report, TemlateList.rep_4);
+            }
+
             if (idx == 28)
             {
                 int grp = Convert.ToInt32(MatGroup.GrpId);
@@ -686,7 +684,6 @@ namespace SP_Sklad.Reports
 
                 IHelper.Print(data_for_report, TemlateList.rep_28);
             }
-
 
             if (idx == 18)
             {
@@ -762,7 +759,6 @@ namespace SP_Sklad.Reports
 
                 IHelper.Print2(data_for_report, TemlateList.rep_27);
             }
-
 
             if (idx == 31)
             {
@@ -856,7 +852,6 @@ namespace SP_Sklad.Reports
 
                 IHelper.Print(data_for_report, TemlateList.rep_29);
             }
-
 
             if (idx == 17)
             {
@@ -1370,11 +1365,10 @@ namespace SP_Sklad.Reports
                 IHelper.Print(data_for_report, TemlateList.rep_40);
             }
 
-
             if (idx == 41)
             {
                 Guid grp_kg = KontragentGroup.Id;
-                var kagent = db.REP_41(new DateTime(StartDate.Year, 1, 1), grp_kg).OrderByDescending(o=> o.Amount_Total).ToList();
+                var kagent = db.REP_41(new DateTime(StartDate.Year, 1, 1), grp_kg).OrderBy(GetSortedList(idx)).ToList();
 
                 if (!kagent.Any())
                 {
@@ -1386,7 +1380,6 @@ namespace SP_Sklad.Reports
 
                 IHelper.Print(data_for_report, TemlateList.rep_41);
             }
-
 
             if (idx == 42)
             {

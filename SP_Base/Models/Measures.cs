@@ -11,6 +11,7 @@ namespace SP_Base.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Measures()
         {
+            MaterialMeasures = new HashSet<MaterialMeasures>();
             Materials = new HashSet<Materials>();
             Services = new HashSet<Services>();
         }
@@ -32,6 +33,11 @@ namespace SP_Base.Models
 
         [StringLength(14)]
         public string Code { get; set; }
+
+        public bool AutoCalcRecipe { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MaterialMeasures> MaterialMeasures { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Materials> Materials { get; set; }

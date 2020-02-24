@@ -23,6 +23,7 @@ using SP_Sklad.WBDetForm;
 using SkladEngine.WayBills;
 using System.IO;
 using DevExpress.Data;
+using SP_Sklad.ViewsForm;
 
 namespace SP_Sklad.MainTabs
 {
@@ -33,6 +34,7 @@ namespace SP_Sklad.MainTabs
         BaseEntities _db { get; set; }
         v_GetDocsTree focused_tree_node { get; set; }
         public int? set_tree_node { get; set; }
+        private UserSettingsRepository user_settings { get; set; }
 
         private GetWayBillList_Result wb_focused_row
         {
@@ -116,7 +118,7 @@ namespace SP_Sklad.MainTabs
                 gridColumn50.Caption = "Сума в нац. валюті, " + DBHelper.NationalCurrency.ShortName;
                 gridColumn44.Caption = gridColumn50.Caption;
 
-                var  user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
+                user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
                 WbGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
             }
 
@@ -677,6 +679,15 @@ namespace SP_Sklad.MainTabs
 
         private void CopyItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            //user_settings.Reload();
+            using (var frm = new frmMessageBox("Інформація", Resources.wb_copy))
+            {
+                if (!frm.user_settings.NotShowMessageCopyDocuments && frm.ShowDialog() != DialogResult.Yes)
+                {
+                    return;
+                }
+            }
+
             switch (focused_tree_node.GType)
             {
                 case 1:
@@ -743,30 +754,30 @@ namespace SP_Sklad.MainTabs
 
                     break;
 
-                /*           case 6: frmContr = new  TfrmContr(Application);
-                                   frmContr->CONTRACTS->Open();
-                                   frmContr->CONTRACTS->Append();
-                                   if(DocsTreeDataID->Value == 47) frmContr->CONTRACTSDOCTYPE->Value = -1;
-                                   if(DocsTreeDataID->Value == 46) frmContr->CONTRACTSDOCTYPE->Value = 1;
-                                   frmContr->CONTRACTS->Post();
-                                   frmContr->CONTRACTS->Edit();
+                    /*           case 6: frmContr = new  TfrmContr(Application);
+                                       frmContr->CONTRACTS->Open();
+                                       frmContr->CONTRACTS->Append();
+                                       if(DocsTreeDataID->Value == 47) frmContr->CONTRACTSDOCTYPE->Value = -1;
+                                       if(DocsTreeDataID->Value == 46) frmContr->CONTRACTSDOCTYPE->Value = 1;
+                                       frmContr->CONTRACTS->Post();
+                                       frmContr->CONTRACTS->Edit();
 
-                                   frmContr->CONTRPARAMS->Append();
-                                   frmContr->CONTRPARAMS->Post();
-                                   frmContr->CONTRRESULTS->Append();
+                                       frmContr->CONTRPARAMS->Append();
+                                       frmContr->CONTRPARAMS->Post();
+                                       frmContr->CONTRRESULTS->Append();
 
-                                   frmContr->ShowModal() ;
-                                   delete frmContr;
-                                   break;
+                                       frmContr->ShowModal() ;
+                                       delete frmContr;
+                                       break;
 
-                           case 7: frmTaxWB = new  TfrmTaxWB(Application);
-                                   frmTaxWB->TaxWB->Open();
-                                   frmTaxWB->TaxWB->Append();
-                                   frmTaxWB->TaxWB->Post();
-                                   frmTaxWB->TaxWB->Edit();
-                                   frmTaxWB->ShowModal() ;
-                                   delete frmTaxWB;
-                                   break;*/
+                               case 7: frmTaxWB = new  TfrmTaxWB(Application);
+                                       frmTaxWB->TaxWB->Open();
+                                       frmTaxWB->TaxWB->Append();
+                                       frmTaxWB->TaxWB->Post();
+                                       frmTaxWB->TaxWB->Edit();
+                                       frmTaxWB->ShowModal() ;
+                                       delete frmTaxWB;
+                                       break;*/
             }
 
             RefrechItemBtn.PerformClick();

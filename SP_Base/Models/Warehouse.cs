@@ -18,6 +18,8 @@ namespace SP_Base.Models
             Materials2 = new HashSet<Materials>();
             PosRemains = new HashSet<PosRemains>();
             ProductionPlanDet = new HashSet<ProductionPlanDet>();
+            ProductionPlans = new HashSet<ProductionPlans>();
+            ProductionPlans1 = new HashSet<ProductionPlans>();
             UserAccessWh = new HashSet<UserAccessWh>();
             WMatTurn = new HashSet<WMatTurn>();
             WaybillDet = new HashSet<WaybillDet>();
@@ -60,6 +62,12 @@ namespace SP_Base.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductionPlanDet> ProductionPlanDet { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductionPlans> ProductionPlans { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductionPlans> ProductionPlans1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserAccessWh> UserAccessWh { get; set; }

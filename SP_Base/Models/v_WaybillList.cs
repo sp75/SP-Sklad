@@ -62,7 +62,7 @@ namespace SP_Base.Models
         [Column(TypeName = "numeric")]
         public decimal? OnValue { get; set; }
 
-        [StringLength(64)]
+        [StringLength(100)]
         public string Name { get; set; }
 
         public int? KaId { get; set; }
@@ -73,7 +73,7 @@ namespace SP_Base.Models
         [StringLength(64)]
         public string Phone { get; set; }
 
-        [StringLength(64)]
+        [StringLength(100)]
         public string PersonName { get; set; }
 
         [StringLength(255)]
@@ -131,7 +131,7 @@ namespace SP_Base.Models
         [StringLength(10)]
         public string KAU { get; set; }
 
-        [StringLength(64)]
+        [StringLength(100)]
         public string MovPersonName { get; set; }
 
         [StringLength(20)]
@@ -179,5 +179,7 @@ namespace SP_Base.Models
         [Key]
         [Column(Order = 6)]
         public Guid Id { get; set; }
+
+        public string Declaration { get; set; }
     }
 }

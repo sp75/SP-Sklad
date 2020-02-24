@@ -36,6 +36,12 @@ namespace SP_Base.Models
         [Column(TypeName = "numeric")]
         public decimal OrderedRsv { get; set; }
 
+        [Column(TypeName = "numeric")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public decimal? ActualRemain { get; set; }
+
+        public int? SupplierId { get; set; }
+
         public virtual Materials Materials { get; set; }
 
         public virtual WaybillDet WaybillDet { get; set; }

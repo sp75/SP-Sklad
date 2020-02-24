@@ -13,8 +13,10 @@ namespace SP_Base.Models
         public MatRecipe()
         {
             MatRecDet = new HashSet<MatRecDet>();
+            PlannedCalculationDet = new HashSet<PlannedCalculationDet>();
             MatRecipeTechProcDet = new HashSet<MatRecipeTechProcDet>();
             ProductionPlanDet = new HashSet<ProductionPlanDet>();
+            SchedulingOrders = new HashSet<SchedulingOrders>();
             WayBillMake = new HashSet<WayBillMake>();
         }
 
@@ -42,16 +44,27 @@ namespace SP_Base.Models
         [Column(TypeName = "numeric")]
         public decimal Out { get; set; }
 
+        public bool Archived { get; set; }
+
+        [Column(TypeName = "numeric")]
+        public decimal? Deviation { get; set; }
+
         public virtual Materials Materials { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MatRecDet> MatRecDet { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PlannedCalculationDet> PlannedCalculationDet { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MatRecipeTechProcDet> MatRecipeTechProcDet { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductionPlanDet> ProductionPlanDet { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SchedulingOrders> SchedulingOrders { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WayBillMake> WayBillMake { get; set; }

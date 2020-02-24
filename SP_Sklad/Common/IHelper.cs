@@ -739,6 +739,35 @@ namespace SP_Sklad.Common
             }
         }
 
+
+        public static void ShowReport(byte[] report, string temlate)
+        {
+            var file_format = DBHelper.CurrentUser.ReportFormat;
+
+            if (DBHelper.CurrentUser.InternalEditor != null && DBHelper.CurrentUser.InternalEditor.Value)
+            {
+                if (file_format == "pdf")
+                {
+                    new frmPdfView(report).Show();
+                }
+                else if (file_format == "xlsx")
+                {
+                    new frmSpreadsheed(report).Show();
+                }
+            }
+            else
+            {
+                String result_file = Path.Combine(rep_path, Path.GetFileNameWithoutExtension(temlate) + "_" + DateTime.Now.Ticks.ToString() + "." + file_format);
+
+                File.WriteAllBytes(result_file, report);
+
+                if (File.Exists(result_file))
+                {
+                    Process.Start(result_file);
+                }
+            }
+        }
+
         public static void ExportToXlsx(GridControl grid)
         {
             var file_format = DBHelper.CurrentUser.ReportFormat;
@@ -848,6 +877,7 @@ namespace SP_Sklad.Common
 
     public class CustomMatList
     {
+        public bool Check { get; set; }
         public int Num { get; set; }
         public int MatId { get; set; }
         public string Name { get; set; }

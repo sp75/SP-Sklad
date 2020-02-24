@@ -88,7 +88,7 @@ namespace SP_Base.Models
         [StringLength(3)]
         public string CurrName { get; set; }
 
-        [StringLength(64)]
+        [StringLength(100)]
         public string KaName { get; set; }
 
         [StringLength(255)]
@@ -97,7 +97,7 @@ namespace SP_Base.Models
         [StringLength(64)]
         public string KaPhone { get; set; }
 
-        [StringLength(64)]
+        [StringLength(100)]
         public string PersonName { get; set; }
 
         [StringLength(255)]

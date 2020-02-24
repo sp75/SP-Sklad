@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SkladEngine.Common;
-using SP_Base;
-using SP_Base.Models;
+using SP.Base;
+using SP.Base.Models;
 
 namespace SkladEngine.WayBills
 {
@@ -24,7 +24,7 @@ namespace SkladEngine.WayBills
 
         public int CopyWithPriceList(int price_id)
         {
-            using (var db = Database.SP_BaseModel())
+            using (var db = Database.SPBase())
             {
                 var pld = db.PriceListDet.Where(w => w.PlId == price_id).ToList();
 

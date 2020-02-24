@@ -13,14 +13,17 @@ namespace SP_Base.Models
         {
             CONTRDET = new HashSet<CONTRDET>();
             DeboningDet = new HashSet<DeboningDet>();
+            IntermediateWeighingDet = new HashSet<IntermediateWeighingDet>();
             KAMatDiscount = new HashSet<KAMatDiscount>();
             MatChange = new HashSet<MatChange>();
             MatChange1 = new HashSet<MatChange>();
+            MaterialMeasures = new HashSet<MaterialMeasures>();
             MatRemains = new HashSet<MatRemains>();
             PosRemains = new HashSet<PosRemains>();
             WMatTurn = new HashSet<WMatTurn>();
             MatRecDet = new HashSet<MatRecDet>();
             MatRecipe = new HashSet<MatRecipe>();
+            WayBillTmc = new HashSet<WayBillTmc>();
             MatPrices = new HashSet<MatPrices>();
             TAXWBDET = new HashSet<TAXWBDET>();
             WaybillDet = new HashSet<WaybillDet>();
@@ -103,6 +106,14 @@ namespace SP_Base.Models
 
         public byte[] BMP { get; set; }
 
+        public int DecPlaces { get; set; }
+
+        [StringLength(50)]
+        public string InvNumber { get; set; }
+
+        [StringLength(50)]
+        public string SerialNumber { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CONTRDET> CONTRDET { get; set; }
 
@@ -112,6 +123,9 @@ namespace SP_Base.Models
         public virtual ICollection<DeboningDet> DeboningDet { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<IntermediateWeighingDet> IntermediateWeighingDet { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KAMatDiscount> KAMatDiscount { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -119,6 +133,9 @@ namespace SP_Base.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MatChange> MatChange1 { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MaterialMeasures> MaterialMeasures { get; set; }
 
         public virtual MatGroup MatGroup { get; set; }
 
@@ -144,6 +161,9 @@ namespace SP_Base.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MatRecipe> MatRecipe { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<WayBillTmc> WayBillTmc { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MatPrices> MatPrices { get; set; }

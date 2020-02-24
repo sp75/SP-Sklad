@@ -22,6 +22,7 @@ namespace SP_Base.Models
             DiscCards = new HashSet<DiscCards>();
             EnterpriseKagent = new HashSet<EnterpriseKagent>();
             EnterpriseWorker = new HashSet<EnterpriseWorker>();
+            IntermediateWeighing = new HashSet<IntermediateWeighing>();
             KaAddr = new HashSet<KaAddr>();
             KAMatDiscount = new HashSet<KAMatDiscount>();
             KAMatGroupDiscount = new HashSet<KAMatGroupDiscount>();
@@ -32,7 +33,15 @@ namespace SP_Base.Models
             WaybillMove = new HashSet<WaybillMove>();
             KAgentAccount = new HashSet<KAgentAccount>();
             KAgentPersons = new HashSet<KAgentPersons>();
+            KAgentActReconciliation = new HashSet<KAgentActReconciliation>();
+            KAgentActReconciliation1 = new HashSet<KAgentActReconciliation>();
+            KAgentActReconciliation2 = new HashSet<KAgentActReconciliation>();
+            KAgentAdjustment = new HashSet<KAgentAdjustment>();
+            KAgentAdjustment1 = new HashSet<KAgentAdjustment>();
+            KAgentAdjustment2 = new HashSet<KAgentAdjustment>();
             KAgentSaldo = new HashSet<KAgentSaldo>();
+            ProductionPlans = new HashSet<ProductionPlans>();
+            ProductionPlans1 = new HashSet<ProductionPlans>();
             Routes1 = new HashSet<Routes>();
             TAXWB1 = new HashSet<TAXWB>();
             TechProcDet = new HashSet<TechProcDet>();
@@ -47,7 +56,7 @@ namespace SP_Base.Models
         public int KaId { get; set; }
 
         [Required]
-        [StringLength(64)]
+        [StringLength(100)]
         public string Name { get; set; }
 
         [StringLength(255)]
@@ -125,6 +134,15 @@ namespace SP_Base.Models
 
         public Guid Id { get; set; }
 
+        public int? PayTypeId { get; set; }
+
+        public int? CashDeskId { get; set; }
+
+        public string Declaration { get; set; }
+
+        [StringLength(128)]
+        public string AspNetUserId { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Commission> Commission { get; set; }
 
@@ -154,6 +172,9 @@ namespace SP_Base.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EnterpriseWorker> EnterpriseWorker { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<IntermediateWeighing> IntermediateWeighing { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KaAddr> KaAddr { get; set; }
@@ -196,7 +217,31 @@ namespace SP_Base.Models
         public virtual Users Users { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KAgentActReconciliation> KAgentActReconciliation { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KAgentActReconciliation> KAgentActReconciliation1 { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KAgentActReconciliation> KAgentActReconciliation2 { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KAgentAdjustment> KAgentAdjustment { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KAgentAdjustment> KAgentAdjustment1 { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KAgentAdjustment> KAgentAdjustment2 { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KAgentSaldo> KAgentSaldo { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductionPlans> ProductionPlans { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductionPlans> ProductionPlans1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Routes> Routes1 { get; set; }

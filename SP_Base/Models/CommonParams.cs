@@ -27,5 +27,9 @@ namespace SP_Base.Models
 
         [StringLength(100)]
         public string TemplatePatch { get; set; }
+
+        public DateTime? EndCalcPeriod { get; set; }
+
+        public DateTime? TrialPeriod { get; set; }
     }
 }

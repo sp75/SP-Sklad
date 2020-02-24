@@ -50,7 +50,7 @@ namespace SP_Base.Models
         [Column(Order = 3)]
         public bool IsWorking { get; set; }
 
-        [StringLength(64)]
+        [StringLength(100)]
         public string EmployeeName { get; set; }
     }
 }

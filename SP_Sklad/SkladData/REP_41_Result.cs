@@ -14,6 +14,7 @@ namespace SP_Sklad.SkladData
     public partial class REP_41_Result
     {
         public string Name { get; set; }
+        public string KontragentGroupName { get; set; }
         public Nullable<decimal> Amount_1 { get; set; }
         public Nullable<decimal> Amount_2 { get; set; }
         public Nullable<decimal> Amount_3 { get; set; }

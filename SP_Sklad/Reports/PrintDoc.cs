@@ -2,17 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Diagnostics;
 using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraRichEdit.Model;
 using SP_Sklad.Common;
 using SP_Sklad.SkladData;
-using SpreadsheetReportBuilder;
 
 namespace SP_Sklad.Reports
 {

@@ -14,6 +14,8 @@ namespace SP_Base.Models
         {
             ExtRel = new HashSet<ExtRel>();
             ExtRel1 = new HashSet<ExtRel>();
+            OrderedRels = new HashSet<OrderedRels>();
+            OrderedRels1 = new HashSet<OrderedRels>();
             PosRel = new HashSet<PosRel>();
             PosRel1 = new HashSet<PosRel>();
             PosRemains = new HashSet<PosRemains>();
@@ -83,6 +85,8 @@ namespace SP_Base.Models
         [StringLength(100)]
         public string Notes { get; set; }
 
+        public DateTime? UpdateAt { get; set; }
+
         public virtual Currency Currency { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -92,6 +96,12 @@ namespace SP_Base.Models
         public virtual ICollection<ExtRel> ExtRel1 { get; set; }
 
         public virtual Materials Materials { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrderedRels> OrderedRels { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrderedRels> OrderedRels1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PosRel> PosRel { get; set; }

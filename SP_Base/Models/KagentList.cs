@@ -19,7 +19,7 @@ namespace SP_Base.Models
 
         [Key]
         [Column(Order = 1)]
-        [StringLength(64)]
+        [StringLength(100)]
         public string Name { get; set; }
 
         [StringLength(255)]
@@ -143,5 +143,11 @@ namespace SP_Base.Models
 
         [StringLength(128)]
         public string UserName { get; set; }
+
+        [StringLength(128)]
+        public string AspNetUserId { get; set; }
+
+        [StringLength(256)]
+        public string WebUserName { get; set; }
     }
 }

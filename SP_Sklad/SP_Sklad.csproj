@@ -820,6 +820,12 @@
     <Compile Include="ViewsForm\frmKaGroup.Designer.cs">
       <DependentUpon>frmKaGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewsForm\frmMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmMessageBox.Designer.cs">
+      <DependentUpon>frmMessageBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewsForm\frmPdfView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1612,6 +1618,9 @@
     <EmbeddedResource Include="ViewsForm\frmKaGroup.resx">
       <DependentUpon>frmKaGroup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmMessageBox.resx">
+      <DependentUpon>frmMessageBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmPdfView.resx">
       <DependentUpon>frmPdfView.cs</DependentUpon>
     </EmbeddedResource>
@@ -2047,6 +2056,10 @@
     <ProjectReference Include="..\SkladEngine\SkladEngine.csproj">
       <Project>{053e5968-b5fb-41bd-9e8f-8f4a9c60d922}</Project>
       <Name>SkladEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SP.Reports\SP.Reports.csproj">
+      <Project>{883fd91d-bb03-4aa6-b846-6f196cd0e6b4}</Project>
+      <Name>SP.Reports</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

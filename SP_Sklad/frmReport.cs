@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SP.Reports;
+using SP.Reports.Models.Views;
 using SP_Sklad.Common;
 using SP_Sklad.Reports;
 using SP_Sklad.SkladData;
@@ -49,7 +52,7 @@ namespace SP_Sklad
             {
                 if (_rep_id == 9 || _rep_id == 19 || _rep_id == 15)
                 {
-                    var mat = new BaseEntities().Materials.Where(w => w.Deleted == 0).Select(s => new { s.MatId, s.Name }).ToList();
+                    var mat = new BaseEntities().Materials.Where(w => w.Deleted == 0).Select(s => new MatComboBoxItem { MatId= s.MatId, Name = s.Name }).ToList();
                     MatComboBox.Properties.DataSource = mat;
                     var first_or_default = mat.FirstOrDefault();
                     if (first_or_default != null)
@@ -59,7 +62,7 @@ namespace SP_Sklad
                 }
                 else
                 {
-                    MatComboBox.Properties.DataSource = new List<object>() { new { MatId = 0, Name = "Усі" } }.Concat(new BaseEntities().Materials.Where(w => w.Deleted == 0).Select(s => new { s.MatId, s.Name }).ToList());
+                    MatComboBox.Properties.DataSource = new List<object>() { new MatComboBoxItem { MatId = 0, Name = "Усі" } }.Concat(new BaseEntities().Materials.Where(w => w.Deleted == 0).Select(s => new MatComboBoxItem { MatId = s.MatId, Name = s.Name }).ToList());
                     MatComboBox.EditValue = 0;
                 }
             }
@@ -85,12 +88,22 @@ namespace SP_Sklad
                 var wh = new BaseEntities().Warehouse.Where(w => w.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId)).Select(s => new { WId = s.WId.ToString(), s.Name, s.Def }).ToList();
                 if (_rep_id == 37)
                 {
-                    WhComboBox.Properties.DataSource = wh.Select(s => new { s.WId, s.Name }).ToList();
+                    WhComboBox.Properties.DataSource = wh.Select(s => new WhComboBoxItem
+                    {
+                        WId = s.WId,
+                        Name = s.Name
+                    }).ToList();
+
                     WhComboBox.EditValue = wh.FirstOrDefault(w => w.Def == 1).WId;
                 }
                 else
                 {
-                    WhComboBox.Properties.DataSource = new List<object>() { new { WId = "*", Name = "Усі" } }.Concat(wh.Select(s => new { s.WId, s.Name }).ToList());
+                    WhComboBox.Properties.DataSource = new List<WhComboBoxItem>() { new WhComboBoxItem { WId = "*", Name = "Усі" } }.Concat(wh.Select(s => new WhComboBoxItem
+                    {
+                        WId = s.WId,
+                        Name = s.Name
+                    }).ToList());
+
                     WhComboBox.EditValue = "*";
                 }
             }
@@ -101,7 +114,7 @@ namespace SP_Sklad
             }
             else
             {
-                GrpComboBox.Properties.DataSource = new List<object>() { new { GrpId = 0, Name = "Усі" } }.Concat(new BaseEntities().MatGroup.Where(w => w.Deleted == 0).Select(s => new { s.GrpId, s.Name }).ToList());
+                GrpComboBox.Properties.DataSource = new List<GrpComboBoxItem>() { new GrpComboBoxItem { GrpId = 0, Name = "Усі" } }.Concat(new BaseEntities().MatGroup.Where(w => w.Deleted == 0).Select(s => new GrpComboBoxItem { GrpId = s.GrpId, Name = s.Name }).ToList());
                 GrpComboBox.EditValue = 0;
             }
             if (!KontragentPanel.Visible)
@@ -112,12 +125,12 @@ namespace SP_Sklad
             {
                 if (_rep_id == 3)
                 {
-                    KagentComboBox.Properties.DataSource = DBHelper.Kagents.Select(s => new { s.KaId, s.Name });
+                    KagentComboBox.Properties.DataSource = DBHelper.Kagents.Select(s => new KagentComboBoxItem { KaId = s.KaId, Name = s.Name });
                     KagentComboBox.EditValue = DBHelper.Kagents.FirstOrDefault().KaId;
                 }
                 else
                 {
-                    KagentComboBox.Properties.DataSource = DBHelper.KagentsList;// new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(new BaseEntities().Kagent.Where(w => w.Archived == null || w.Archived == 0).Select(s => new { s.KaId, s.Name }));
+                    KagentComboBox.Properties.DataSource = DBHelper.KagentsList.Select(s=> new KagentComboBoxItem { KaId = s.KaId, Name = s.Name });// new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(new BaseEntities().Kagent.Where(w => w.Archived == null || w.Archived == 0).Select(s => new { s.KaId, s.Name }));
                     KagentComboBox.EditValue = 0;
                 }
             }
@@ -165,7 +178,7 @@ namespace SP_Sklad
             }
             else
             {
-                GrpKagentLookUpEdit.Properties.DataSource = new List<object>() { new { Id = Guid.Empty, Name = "Усі" } }.Concat(new BaseEntities().KontragentGroup.Select(s => new { s.Id, s.Name })).ToList();
+                GrpKagentLookUpEdit.Properties.DataSource = new List<object>() { new GrpKagentComboBoxItem { Id = Guid.Empty, Name = "Усі" } }.Concat(new BaseEntities().KontragentGroup.Select(s => new GrpKagentComboBoxItem { Id = s.Id, Name = s.Name })).ToList();
                 GrpKagentLookUpEdit.EditValue = Guid.Empty;
             }
 
@@ -206,6 +219,7 @@ namespace SP_Sklad
             SetDate();
 
             int grp = ChildGroupCheckEdit.Checked ? Convert.ToInt32((GrpComboBox.GetSelectedDataRow() as dynamic).GrpId) : 0;
+
             var pr = new PrintReport
             {
                 OnDate = OnDateDBEdit.DateTime,
@@ -225,6 +239,45 @@ namespace SP_Sklad
             };
 
             pr.CreateReport(_rep_id);
+
+            /*       var pr2 = new PrintReportv2(_rep_id, DBHelper.CurrentUser.KaId, DBHelper.CurrentUser.UserId)
+                   {
+                       OnDate = OnDateDBEdit.DateTime,
+                       StartDate = StartDateEdit.DateTime,
+                       EndDate = EndDateEdit.DateTime,
+                       MatGroup = GrpComboBox.GetSelectedDataRow() as GrpComboBoxItem,
+                       Kagent = KagentComboBox.GetSelectedDataRow() as KagentComboBoxItem,
+                       Warehouse = WhComboBox.GetSelectedDataRow() as WhComboBoxItem,
+                       Material = MatComboBox.GetSelectedDataRow() as MatComboBoxItem,
+                       DocStr = str,
+                       DocType = DocTypeEdit.EditValue,
+                       ChType = ChTypeEdit.GetSelectedDataRow(),
+                       Status = wbStatusList.EditValue,
+                       KontragentGroup = GrpKagentLookUpEdit.GetSelectedDataRow() as GrpKagentComboBoxItem,
+                       GrpStr = ChildGroupCheckEdit.Checked ? String.Join(",", new BaseEntities().GetMatGroupTree(grp).ToList().Select(s => Convert.ToString(s.GrpId))) : "",
+                       Person = PersonLookUpEdit.GetSelectedDataRow()
+                   };
+
+                   var template_name = pr2.GetTemlate(_rep_id);
+                   var template_file = Path.Combine(IHelper.template_path, template_name);
+                   if (File.Exists(template_file))
+                   {
+                       var report_data = pr2.CreateReport( template_file, DBHelper.CurrentUser.ReportFormat);
+                       if (report_data != null)
+                       {
+                           IHelper.ShowReport(report_data, template_name);
+                       }
+                       else
+                       {
+                           MessageBox.Show("За обраний період звіт не містить даних !");
+                       }
+                   }
+                   else
+                   {
+                       MessageBox.Show("Шлях до шаблонів " + template_file + " не знайдено!");
+                   }*/
+
+
         }
 
         private void SetDate()
@@ -288,6 +341,8 @@ namespace SP_Sklad
                 frm.ShowDialog();
             }
         }
+
     }
-    
 }
+
+

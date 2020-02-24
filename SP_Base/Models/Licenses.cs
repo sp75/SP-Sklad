@@ -21,5 +21,8 @@ namespace SP_Base.Models
 
         [StringLength(50)]
         public string MachineName { get; set; }
+
+        [StringLength(50)]
+        public string UserName { get; set; }
     }
 }

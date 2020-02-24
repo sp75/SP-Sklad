@@ -39,7 +39,7 @@ namespace SP_Base.Models
         [StringLength(128)]
         public string Name { get; set; }
 
-        [StringLength(64)]
+        [StringLength(100)]
         public string PersonName { get; set; }
 
         [Key]
