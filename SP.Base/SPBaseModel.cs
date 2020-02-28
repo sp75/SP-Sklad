@@ -823,6 +823,146 @@ namespace SP.Base.Models
         }
 
 
+
+        public virtual DbSet<REP_33_Result> REP_33_Result { get; set; }
+        [DbFunction("SPBaseModel", "REP_33")]
+        public virtual IQueryable<REP_33_Result> REP_33(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> grp_id, Nullable<int> mat_id)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+
+            var grp_idParameter = grp_id.HasValue ?
+                new ObjectParameter("grp_id", grp_id) :
+                new ObjectParameter("grp_id", typeof(int));
+
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_33_Result>("[SPBaseModel].[REP_33](@from_date, @to_date, @grp_id, @mat_id)", from_dateParameter, to_dateParameter, grp_idParameter, mat_idParameter);
+        }
+
+        public virtual DbSet<REP_35_Result> REP_35_Result { get; set; }
+        [DbFunction("SPBaseModel", "REP_35")]
+        public virtual IQueryable<REP_35_Result> REP_35(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> grp_id, Nullable<int> mat_id)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+
+            var grp_idParameter = grp_id.HasValue ?
+                new ObjectParameter("grp_id", grp_id) :
+                new ObjectParameter("grp_id", typeof(int));
+
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_35_Result>("[SPBaseModel].[REP_35](@from_date, @to_date, @grp_id, @mat_id)", from_dateParameter, to_dateParameter, grp_idParameter, mat_idParameter);
+        }
+
+        public virtual DbSet<REP_37_Result> REP_37_Result { get; set; }
+        [DbFunction("SPBaseModel", "REP_37")]
+        public virtual IQueryable<REP_37_Result> REP_37(Nullable<int> wh_id, Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date)
+        {
+            var wh_idParameter = wh_id.HasValue ?
+                new ObjectParameter("wh_id", wh_id) :
+                new ObjectParameter("wh_id", typeof(int));
+
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_37_Result>("[SPBaseModel].[REP_37](@wh_id, @from_date, @to_date)", wh_idParameter, from_dateParameter, to_dateParameter);
+        }
+
+        public virtual DbSet<REP_39_Result> REP_39_Result { get; set; }
+        [DbFunction("SPBaseModel", "REP_39")]
+        public virtual IQueryable<REP_39_Result> REP_39(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> grp_id, Nullable<int> ka_id, string wh, string doc_types, Nullable<int> user_id, Nullable<System.Guid> ka_grp_id)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+
+            var grp_idParameter = grp_id.HasValue ?
+                new ObjectParameter("grp_id", grp_id) :
+                new ObjectParameter("grp_id", typeof(int));
+
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+
+            var whParameter = wh != null ?
+                new ObjectParameter("wh", wh) :
+                new ObjectParameter("wh", typeof(string));
+
+            var doc_typesParameter = doc_types != null ?
+                new ObjectParameter("doc_types", doc_types) :
+                new ObjectParameter("doc_types", typeof(string));
+
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+
+            var ka_grp_idParameter = ka_grp_id.HasValue ?
+                new ObjectParameter("ka_grp_id", ka_grp_id) :
+                new ObjectParameter("ka_grp_id", typeof(System.Guid));
+
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_39_Result>("[SPBaseModel].[REP_39](@from_date, @to_date, @grp_id, @ka_id, @wh, @doc_types, @user_id, @ka_grp_id)", from_dateParameter, to_dateParameter, grp_idParameter, ka_idParameter, whParameter, doc_typesParameter, user_idParameter, ka_grp_idParameter);
+        }
+
+        public virtual DbSet<REP_41_Result> REP_41_Result { get; set; }
+        [DbFunction("SPBaseModel", "REP_41")]
+        public virtual IQueryable<REP_41_Result> REP_41(DateTime? from_date, Guid? ka_grp_id)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+
+            var ka_grp_idParameter = ka_grp_id.HasValue ?
+                new ObjectParameter("ka_grp_id", ka_grp_id) :
+                new ObjectParameter("ka_grp_id", typeof(System.Guid));
+
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_41_Result>("[SPBaseModel].[REP_41](@from_date, @ka_grp_id)", from_dateParameter, ka_grp_idParameter);
+        }
+
+        public virtual DbSet<GetUsedMaterials_Result> GetUsedMaterials_Result { get; set; }
+        [DbFunction("SPBaseModel", "GetUsedMaterials")]
+        public virtual IQueryable<GetUsedMaterials_Result> GetUsedMaterials(Nullable<int> mat_id, Nullable<System.DateTime> on_date, Nullable<int> ka_id)
+        {
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+
+            var on_dateParameter = on_date.HasValue ?
+                new ObjectParameter("on_date", on_date) :
+                new ObjectParameter("on_date", typeof(System.DateTime));
+
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetUsedMaterials_Result>("[SPBaseModel].[GetUsedMaterials](@mat_id, @on_date, @ka_id)", mat_idParameter, on_dateParameter, ka_idParameter);
+        }
+
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Add(new CodeFirstStoreFunctions.FunctionsConvention<SPBaseModel>("dbo"));

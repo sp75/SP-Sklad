@@ -60,6 +60,16 @@ namespace SP_Sklad
                         MatComboBox.EditValue = first_or_default.MatId;
                     }
                 }
+                if(_rep_id == 40)
+                {
+                    var tmc = new BaseEntities().Materials.Where(w => w.Deleted == 0 && w.TypeId == 4/*"ТМЦ"*/).Select(s => new MatComboBoxItem { MatId = s.MatId, Name = s.Name }).ToList();
+                    MatComboBox.Properties.DataSource = tmc;
+                    var first_or_default = tmc.FirstOrDefault();
+                    if (first_or_default != null)
+                    {
+                        MatComboBox.EditValue = first_or_default.MatId;
+                    }
+                }
                 else
                 {
                     MatComboBox.Properties.DataSource = new List<object>() { new MatComboBoxItem { MatId = 0, Name = "Усі" } }.Concat(new BaseEntities().Materials.Where(w => w.Deleted == 0).Select(s => new MatComboBoxItem { MatId = s.MatId, Name = s.Name }).ToList());
@@ -220,7 +230,7 @@ namespace SP_Sklad
 
             int grp = ChildGroupCheckEdit.Checked ? Convert.ToInt32((GrpComboBox.GetSelectedDataRow() as dynamic).GrpId) : 0;
 
-            var pr = new PrintReport
+        /*    var pr = new PrintReport
             {
                 OnDate = OnDateDBEdit.DateTime,
                 StartDate = StartDateEdit.DateTime,
@@ -238,7 +248,7 @@ namespace SP_Sklad
                 Person = PersonLookUpEdit.GetSelectedDataRow()
             };
 
-        //    pr.CreateReport(_rep_id);
+           pr.CreateReport(_rep_id);*/
 
                    var pr2 = new PrintReportv2(_rep_id, DBHelper.CurrentUser.KaId, DBHelper.CurrentUser.UserId)
                    {
@@ -276,8 +286,6 @@ namespace SP_Sklad
                    {
                        MessageBox.Show("Шлях до шаблонів " + template_file + " не знайдено!");
                    }
-
-
         }
 
         private void SetDate()

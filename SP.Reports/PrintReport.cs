@@ -97,11 +97,11 @@ namespace SP.Reports
                     break;
                 case 5:
                     REP_5();
-                    report_mode = 1;
+            //        report_mode = 1;
                     break;
                 case 6:
                     REP_6();
-                    report_mode = 1;
+           //         report_mode = 1;
                     break;
                 case 7:
                     REP_7();
@@ -181,6 +181,39 @@ namespace SP.Reports
                     break;
                 case 32:
                     REP_32();
+                    break;
+                case 33:
+                    REP_33();
+                    break;
+                case 34:
+                    REP_34();
+                    report_mode = 1;
+                    break;
+                case 35:
+                    REP_35();
+                    break;
+                case 36:
+                    REP_36();
+                    report_mode = 1;
+                    break;
+                case 37:
+                    REP_37();
+                    break;
+                case 38:
+                    REP_38();
+                    break;
+                case 39:
+                    REP_39();
+                    break;
+                case 40:
+                    REP_40();
+                    report_mode = 1;
+                    break;
+                case 41:
+                    REP_41();
+                    break;
+                case 42:
+                    REP_42();
                     break;
 
                 default:
@@ -891,7 +924,6 @@ namespace SP.Reports
             data_for_report.Add("XLRPARAMS", XLR_PARAMS);
             data_for_report.Add("KADocList", list.ToList());
         }
-
         private void REP_31()
         {
             var mat = _db.REP_31(StartDate, EndDate, MatGroup.GrpId, Material.MatId).ToList().OrderBy(o => o.MatName).ToList();
@@ -917,7 +949,6 @@ namespace SP.Reports
             data_for_report.Add("MatList", mat);
             data_for_report.Add("_realation_", realation);
         }
-
         private void REP_32()
         {
             var mat = _db.REP_32(StartDate, EndDate).ToList();
@@ -953,10 +984,294 @@ namespace SP.Reports
             data_for_report.Add("MatList", mat_out);
             data_for_report.Add("_realation_", realation);
         }
+        private void REP_33()
+        {
+            var make = _db.REP_33(StartDate, EndDate, MatGroup.GrpId, Material.MatId).OrderBy(o => o.OnDate).ToList();
+
+            realation.Add(new
+            {
+                pk = "MatId",
+                fk = "MatId",
+                master_table = "MatList",
+                child_table = "WBList"
+            });
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("MatList", make.GroupBy(o => new
+            {
+                o.MatId,
+                o.MatName
+            }).Select(s => new { s.Key.MatId, s.Key.MatName }).ToList());
+            data_for_report.Add("WBList", make.ToList());
+            data_for_report.Add("_realation_", realation);
+        }
+        private void REP_34()
+        {
+            var r = _db.WaybillList.Where(w => w.WType == -20 && (w.Checked == 0 || w.Checked == 2) && w.OnDate <= OnDate).SelectMany(s => s.TechProcDet).Where(w => w.MatId != null).Select(s => new
+            {
+                s.MatId,
+                s.WaybillList.WayBillMake.MatRecipe.Materials.Name
+            }).ToList();
+
+            var list = _db.Materials.Where(w => w.TypeId == 1).ToList().Select(s => new
+            {
+                s.Name,
+                s.Artikul,
+                s.Weight,
+                Status = r.Any(a => a.MatId == s.MatId) ? r.FirstOrDefault(f => f.MatId == s.MatId).Name : "Вільна"
+            });
+
+
+            if (!list.Any())
+            {
+                return;
+            }
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("DocList", list.ToList());
+        }
+        private void REP_35()
+        {
+            var make = _db.REP_35(StartDate, EndDate, MatGroup.GrpId, Material.MatId).OrderBy(o => o.OnDate).ToList();
+
+            realation.Add(new
+            {
+                pk = "MatId",
+                fk = "MatId",
+                master_table = "MatList",
+                child_table = "WBList"
+            });
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("MatList", make.GroupBy(o => new { o.MatId, o.MatName }).Select(s => new { s.Key.MatId, s.Key.MatName }).ToList());
+            data_for_report.Add("WBList", make.ToList());
+            data_for_report.Add("_realation_", realation);
+        }
+        private void REP_36()
+        {
+            var disc = _db.DiscCards.Select(s => new
+            {
+                s.Num,
+                s.OnValue,
+                KaName = s.Kagent != null ? s.Kagent.Name : "",
+                Total = _db.WayBillDetAddProps.Where(w => w.CardId == s.CardId && w.WaybillDet.OnDate <= OnDate).Sum(t => t.WaybillDet.Total)
+            });
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("DiscCards", disc.ToList());
+        }
+        private void REP_37()
+        {
+            int wh_id = Convert.ToInt32(Warehouse.WId);
+            var make = _db.REP_37(wh_id, StartDate, EndDate).OrderBy(o => o.Num).ToList();
+
+            realation.Add(new
+            {
+                pk = "GrpId",
+                fk = "GrpId",
+                master_table = "MatGroup",
+                child_table = "WayBillItems"
+            });
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("MatGroup", make.GroupBy(o => new { o.GrpId, o.GrpName }).Select(s => new { s.Key.GrpId, s.Key.GrpName }).OrderBy(o => o.GrpName).ToList());
+            data_for_report.Add("WayBillItems", make.ToList());
+            data_for_report.Add("_realation_", realation);
+            data_for_report.Add("SummaryField", make.GroupBy(g => 1).Select(s => new
+            {
+                SummAll = s.Sum(a => a.SumAll),
+            }).ToList());
+        }
+        private void REP_38()
+        {
+            var sql_1 = @"
+   select [WayBillMake].WbillId  , [WaybillList].Num, [WaybillList].OnDate, rec.Name as RecipeName, [WayBillMake].Amount
+  from  [sp_base].[dbo].[WayBillMake] 
+  inner join [sp_base].[dbo].[WaybillList] on [WaybillList].WbillId = [WayBillMake].WbillId
+  join [sp_base].[dbo].[MatRecipe] on [MatRecipe].RecId = [WayBillMake].RecId 
+  join [sp_base].[dbo].[Materials] rec on rec.MatId = [MatRecipe].MatId
+  where [WaybillList].OnDate between  {0} and {1} and [WaybillList].WType = -20
+  order by rec.Name , [WaybillList].OnDate
+     ";
+
+            var waybill_list = _db.Database.SqlQuery<make_wb>(sql_1, StartDate, EndDate).ToList();
+
+
+            if (!waybill_list.Any())
+            {
+                return;
+            }
+
+            var sql_2 = @"
+  select [WayBillMake].WbillId , s_mat.Name, [WaybillDet].Amount, ( ROUND( ([WayBillMake].Amount / [MatRecipe].Amount), 0) * [MatRecDet].AMOUNT )  as  RecAmount
+  from  [WayBillMake] 
+  join [sp_base].[dbo].[WaybillList] on [WaybillList].WbillId = [WayBillMake].WbillId
+  join [sp_base].[dbo].[MatRecipe] on [MatRecipe].RecId = [WayBillMake].RecId 
+  join [sp_base].[dbo].[WaybillDet] on [WayBillMake].[WbillId] = [WaybillDet].[WbillId]
+  join [sp_base].[dbo].[Materials] s_mat on s_mat.MatId = [WaybillDet].MatId
+  left outer join [sp_base].[dbo].[MatRecDet] on [MatRecDet].RecId = [WayBillMake].RecId and [WaybillDet].MatId = [MatRecDet].MatId
+  where [WaybillList].OnDate between {0} and {1} and [WaybillList].WType = -20 and [MatRecipe].Amount > 0";
+
+            var use_rec_mat = _db.Database.SqlQuery<use_rec_mat>(sql_2, StartDate, EndDate).ToList().OrderBy(o => o.Name).ToList();
+
+            realation.Add(new
+            {
+                pk = "WbillId",
+                fk = "WbillId",
+                master_table = "WaybillList",
+                child_table = "UseMatRecipe"
+            });
+
+            var sql_3 = @"
+  select [WayBillMake].WbillId , rec_mat.Name, [MatRecDet].Amount as RecAmount 
+  from  [WayBillMake] 
+  inner join [WaybillList] on [WaybillList].WbillId = [WayBillMake].WbillId
+  join [MatRecDet] on [MatRecDet].RecId = [WayBillMake].RecId 
+  join [Materials] rec_mat on rec_mat.MatId = [MatRecDet].MatId
+  where [WaybillList].OnDate between {0} and {1} and [WaybillList].WType = -20 
+  and [MatRecDet].MatId not in (select MatId from [sp_base].[dbo].[WaybillDet] where WbillId = [WayBillMake].WbillId)";
+
+            var not_use_rec_mat = _db.Database.SqlQuery<not_use_rec_mat>(sql_3, StartDate, EndDate).ToList().OrderBy(o => o.Name).ToList();
+
+            realation.Add(new
+            {
+                pk = "WbillId",
+                fk = "WbillId",
+                master_table = "WaybillList",
+                child_table = "NotUseMatRecipe"
+            });
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("WaybillList", waybill_list);
+            data_for_report.Add("UseMatRecipe", use_rec_mat);
+            data_for_report.Add("NotUseMatRecipe", not_use_rec_mat);
+            data_for_report.Add("_realation_", realation);
+        }
+        private void REP_39()
+        {
+            int grp = Convert.ToInt32(MatGroup.GrpId);
+            string wh = Convert.ToString(Warehouse.WId);
+            int kid = Convert.ToInt32(Kagent.KaId);
+            Guid grp_kg = KontragentGroup.Id;
+            var mat = _db.REP_39(StartDate, EndDate, grp, kid, wh, "-1,", _user_id, grp_kg).OrderBy(GetSortedList(_rep_id)).ToList();
+
+            if (!mat.Any())
+            {
+                return;
+            }
+
+            var kagents = mat.GroupBy(g => new
+            {
+                g.KaId,
+                g.KaName
+            }).Select(s => new
+            {
+                s.Key.KaId,
+                Name = s.Key.KaName,
+                TotalAmount = s.Sum(a => a.Amount)
+            }).OrderByDescending(o => o.TotalAmount).ToList();
+
+            realation.Add(new
+            {
+                pk = "KaId",
+                fk = "KaId",
+                master_table = "MatGroup",
+                child_table = "MatOutDet"
+            });
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("MatGroup", kagents);
+            data_for_report.Add("MatOutDet", mat);
+            data_for_report.Add("SummaryField", mat.GroupBy(g => 1).Select(s => new
+            {
+                Amount = s.Sum(a => a.Amount),
+                Summ = s.Sum(ss => ss.Summ),
+                ReturnAmountIn = s.Sum(r => r.ReturnAmountIn),
+                ReturnSummIn = s.Sum(r => r.ReturnSummIn)
+            }).ToList());
+            data_for_report.Add("_realation_", realation);
+        }
+        private void REP_40()
+        {
+            var list = _db.GetUsedMaterials(Material.MatId, OnDate.Date.AddDays(1), -1).OrderBy(o => o.KaName).ToList();
+
+            var k = Kagent.KaId;
+            if (k > 0)
+            {
+                list = list.Where(w => w.KaId == k).ToList();
+            }
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("DiscCards", list.ToList());
+        }
+        private void REP_41()
+        {
+            var kagent = _db.REP_41(new DateTime(StartDate.Year, 1, 1), KontragentGroup.Id).OrderBy(GetSortedList(_rep_id)).ToList();
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("KagentRange", kagent.ToList());
+        }
+
+        private void REP_42()
+        {
+            var report_query = _db.WaybillDet.Where(w => w.WaybillList.WType == -20 && w.WaybillList.OnDate >= StartDate && w.WaybillList.OnDate < EndDate).Select(s => new
+            {
+                s.WaybillList.Num,
+                RecipeName = s.WaybillList.WayBillMake.MatRecipe.Materials.Name,
+                s.WaybillList.OnDate,
+                RawMatName = s.Materials.Name,
+                MsrName = s.Materials.Measures.ShortName,
+                s.Amount,
+                s.Total,
+                s.Price,
+                s.MatId,
+                PersonName = s.WaybillList.Kagent.Name,
+                s.Materials.GrpId
+            });
+
+            if (GrpStr.Any())
+            {
+                var groups = GrpStr.Split(',').Select(s => (int?)Convert.ToInt32(s)).ToList();
+
+                report_query = report_query.Where(w => groups.Contains(w.GrpId));
+            }
+            else if (MatGroup.GrpId > 0)
+            {
+                report_query = report_query.Where(w => w.GrpId == MatGroup.GrpId);
+            }
+
+            if (Material.MatId > 0)
+            {
+                report_query = report_query.Where(w => w.MatId == Material.MatId);
+            }
+
+            var report = report_query.OrderBy(o => o.OnDate).ToList();
+
+            var recipe = report.GroupBy(g => new { g.MatId, g.RawMatName }).Select(s => new
+            {
+                s.Key.MatId,
+                s.Key.RawMatName,
+                TotalAmount = s.Sum(sa => sa.Amount)
+            }).ToList();
+
+            realation.Add(new
+            {
+                pk = "MatId",
+                fk = "MatId",
+                master_table = "MatGroup",
+                child_table = "MatOutDet"
+            });
+
+            data_for_report.Add("_realation_", realation);
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("MatGroup", recipe);
+            data_for_report.Add("MatOutDet", report);
+        }
+
 
         private string GetSortedList(int rep_id)
         {
-
             string result = "";
             var list = _db.ReportSortedFields.Where(w => w.RepId == rep_id && w.OrderDirection != 0).OrderBy(o => o.Idx).ToList();
 
@@ -966,7 +1281,6 @@ namespace SP.Reports
             }
 
             return result.Trim(',');
-
         }
 
         private List<Enterprise> EnterpriseList(int? currentuser_kaid)
