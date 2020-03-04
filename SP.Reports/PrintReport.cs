@@ -814,11 +814,6 @@ namespace SP.Reports
         {
             var mat = _db.REP_27(StartDate, EndDate, Kagent.KaId, MatGroup.GrpId, Material.MatId, KontragentGroup.Id, (int)Person.KaId).ToList();
 
-            if (!mat.Any())
-            {
-                return;
-            }
-
             data_for_report.Add("XLRPARAMS", XLR_PARAMS);
             data_for_report.Add("MatList", mat.GroupBy(g => new
             {
