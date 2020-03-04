@@ -23,6 +23,7 @@ namespace SP_Sklad.SkladData
         public int GrpId { get; set; }
         public int Fil { get; set; }
         public Nullable<int> Num { get; set; }
+        public string TemlateName { get; set; }
     
         public virtual ICollection<RepLng> RepLng { get; set; }
     }

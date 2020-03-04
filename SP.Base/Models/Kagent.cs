@@ -50,6 +50,7 @@ namespace SP.Base.Models
             WayBillMakeProps = new HashSet<WayBillMakeProps>();
             WaybillList2 = new HashSet<WaybillList>();
             WayBillSvc = new HashSet<WayBillSvc>();
+            PriceList = new HashSet<PriceList>();
         }
 
         [Key]
@@ -266,5 +267,8 @@ namespace SP.Base.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WayBillSvc> WayBillSvc { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PriceList> PriceList { get; set; }
     }
 }

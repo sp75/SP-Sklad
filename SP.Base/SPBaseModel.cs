@@ -962,6 +962,45 @@ namespace SP.Base.Models
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetUsedMaterials_Result>("[SPBaseModel].[GetUsedMaterials](@mat_id, @on_date, @ka_id)", mat_idParameter, on_dateParameter, ka_idParameter);
         }
 
+        public virtual DbSet<GetWayBillList_Result> GetWayBillList_Result { get; set; }
+        [DbFunction("SPBaseModel", "GetWayBillList")]
+        public virtual IQueryable<GetWayBillList_Result> GetWayBillList(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, string w_type, Nullable<int> @checked, Nullable<int> ka_id, Nullable<int> show_null_balance, string wh, Nullable<int> person_id)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+
+            var w_typeParameter = w_type != null ?
+                new ObjectParameter("w_type", w_type) :
+                new ObjectParameter("w_type", typeof(string));
+
+            var checkedParameter = @checked.HasValue ?
+                new ObjectParameter("checked", @checked) :
+                new ObjectParameter("checked", typeof(int));
+
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+
+            var show_null_balanceParameter = show_null_balance.HasValue ?
+                new ObjectParameter("show_null_balance", show_null_balance) :
+                new ObjectParameter("show_null_balance", typeof(int));
+
+            var whParameter = wh != null ?
+                new ObjectParameter("wh", wh) :
+                new ObjectParameter("wh", typeof(string));
+
+            var person_idParameter = person_id.HasValue ?
+                new ObjectParameter("person_id", person_id) :
+                new ObjectParameter("person_id", typeof(int));
+
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillList_Result>("[SPBaseModel].[GetWayBillList](@from_date, @to_date, @w_type, @checked, @ka_id, @show_null_balance, @wh, @person_id)", from_dateParameter, to_dateParameter, w_typeParameter, checkedParameter, ka_idParameter, show_null_balanceParameter, whParameter, person_idParameter);
+        }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -1369,6 +1408,11 @@ namespace SP.Base.Models
                 .HasMany(e => e.WayBillSvc)
                 .WithOptional(e => e.Kagent)
                 .HasForeignKey(e => e.PersonId);
+
+            modelBuilder.Entity<Kagent>()
+              .HasMany(e => e.PriceList)
+              .WithMany(e => e.Kagent)
+              .Map(m => m.ToTable("PriceListKagent").MapLeftKey("KagentId").MapRightKey("PriceListId"));
 
             modelBuilder.Entity<KAgentAccount>()
                 .Property(e => e.AccNum)

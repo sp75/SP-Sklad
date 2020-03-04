@@ -61,13 +61,28 @@ namespace SP_Sklad.WBForm
             {
                 PriceListBS.DataSource = pl;
             }
-           
+
+            foreach (var item in _db.Kagent.Where(w => w.Deleted == 0 && (w.Archived == 0 || w.Archived == null)).OrderBy(o => o.Name).Select(s => new { s.KaId, s.Name, IsWork = s.PriceList.Any(a => a.PlId == _pl_id), s.PriceList }))
+            {
+                checkedComboBoxEdit1.Properties.Items.Add(item.KaId, item.Name, item.IsWork ? CheckState.Checked : CheckState.Unchecked, !item.PriceList.Where(wp => wp.PlId != _pl_id).Any());
+            }
+
+
             GetDetail();
             GetMatTree();
         }
 
         private void OkButton_Click(object sender, EventArgs e)
         {
+            var pl = _db.PriceList.Find(_pl_id);
+            pl.Kagent.Clear();
+
+            foreach (var item in checkedComboBoxEdit1.Properties.Items.Where(w => w.CheckState == CheckState.Checked))
+            {
+                var kaid = (int)item.Value;
+                pl.Kagent.Add(_db.Kagent.Find(kaid));
+            }
+
             _db.SaveChanges();
             current_transaction.Commit();
             Close();
@@ -531,5 +546,23 @@ namespace SP_Sklad.WBForm
                 DelMaterialBtn.Caption = "Видалити";
             }
         }
+
+        private void checkedComboBoxEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+          /*  if (checkedComboBoxEdit1.ContainsFocus)
+            {
+                var pl = _db.PriceList.Find(_pl_id); 
+                pl.Kagent.Clear();
+
+                foreach (var item in checkedComboBoxEdit1.Properties.Items.Where(w => w.CheckState == CheckState.Checked))
+                {
+                    var kaid = (int)item.Value;
+                    pl.Kagent.Add(_db.Kagent.Find(kaid));
+                }
+
+                _db.SaveChanges();
+            }*/
+        }
+
     }
 }

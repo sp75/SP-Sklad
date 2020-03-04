@@ -18,6 +18,7 @@ namespace SP_Sklad.SkladData
         {
             this.PriceListDet = new HashSet<PriceListDet>();
             this.PlannedCalculation = new HashSet<PlannedCalculation>();
+            this.Kagent = new HashSet<Kagent>();
         }
     
         public int PlId { get; set; }
@@ -35,5 +36,6 @@ namespace SP_Sklad.SkladData
         public virtual PriceTypes PriceTypes { get; set; }
         public virtual ICollection<PriceListDet> PriceListDet { get; set; }
         public virtual ICollection<PlannedCalculation> PlannedCalculation { get; set; }
+        public virtual ICollection<Kagent> Kagent { get; set; }
     }
 }

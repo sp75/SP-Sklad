@@ -5,9 +5,10 @@ namespace SP.Base.Models
 {
     public partial class REP_4_25_Result
     {
+        [Key]
+        public int PosId { get; set; }
         public string BarCode { get; set; }
         public Nullable<int> GrpId { get; set; }
-        [Key]
         public int MatId { get; set; }
         public string Name { get; set; }
         public string Artikul { get; set; }

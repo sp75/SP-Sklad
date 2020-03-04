@@ -95,6 +95,7 @@
     <Compile Include="Models\Functions.cs" />
     <Compile Include="Models\GetPayDocList_Result.cs" />
     <Compile Include="Models\GetUsedMaterials_Result.cs" />
+    <Compile Include="Models\GetWayBillList_Result.cs" />
     <Compile Include="Models\IntermediateWeighing.cs" />
     <Compile Include="Models\IntermediateWeighingDet.cs" />
     <Compile Include="Models\Jobs.cs" />

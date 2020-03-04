@@ -14,6 +14,7 @@ namespace SP.Base.Models
         {
             PlannedCalculation = new HashSet<PlannedCalculation>();
             PriceListDet = new HashSet<PriceListDet>();
+            Kagent = new HashSet<Kagent>();
         }
 
         [Key]
@@ -48,5 +49,7 @@ namespace SP.Base.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PriceListDet> PriceListDet { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Kagent> Kagent { get; set; }
     }
 }

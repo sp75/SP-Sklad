@@ -891,6 +891,14 @@
           <Property Name="Discount" Type="numeric" Precision="15" Scale="2" />
           <Property Name="Num" Type="int" />
         </EntityType>
+        <EntityType Name="PriceListKagent">
+          <Key>
+            <PropertyRef Name="PriceListId" />
+            <PropertyRef Name="KagentId" />
+          </Key>
+          <Property Name="PriceListId" Type="int" Nullable="false" />
+          <Property Name="KagentId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="PriceTypes">
           <Key>
             <PropertyRef Name="PTypeId" />
@@ -979,6 +987,7 @@
           <Property Name="GrpId" Type="int" Nullable="false" />
           <Property Name="Fil" Type="int" Nullable="false" />
           <Property Name="Num" Type="int" />
+          <Property Name="TemlateName" Type="nvarchar" MaxLength="128" />
         </EntityType>
         <EntityType Name="ReportSortedFields">
           <Key>
@@ -3572,6 +3581,34 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PriceListKagent_Kagent">
+          <End Role="Kagent" Type="Self.Kagent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PriceListKagent" Type="Self.PriceListKagent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="PriceListKagent">
+              <PropertyRef Name="KagentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceListKagent_PriceList">
+          <End Role="PriceList" Type="Self.PriceList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PriceListKagent" Type="Self.PriceListKagent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceList">
+              <PropertyRef Name="PlId" />
+            </Principal>
+            <Dependent Role="PriceListKagent">
+              <PropertyRef Name="PriceListId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PRINTLOG_2">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -5370,13 +5407,14 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <ReturnType>
             <CollectionType>
               <RowType>
+                <Property Name="Id" Type="int" Nullable="false" />
                 <Property Name="SaldoType" Type="int" Nullable="false" />
                 <Property Name="OnDate" Type="datetime" Nullable="false" />
                 <Property Name="AccId" Type="int" />
                 <Property Name="CurrId" Type="int" Nullable="false" />
-                <Property Name="Saldo" Type="numeric" Precision="15" Scale="8" Nullable="false" />
+                <Property Name="Saldo" Type="numeric" Precision="15" Scale="2" Nullable="false" />
                 <Property Name="CashId" Type="int" />
-                <Property Name="SaldoDef" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="SaldoDef" Type="numeric" Precision="15" Scale="2" />
                 <Property Name="Currency" Type="nvarchar" MaxLength="30" Nullable="false" />
               </RowType>
             </CollectionType>
@@ -5618,6 +5656,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <ReturnType>
             <CollectionType>
               <RowType>
+                <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
                 <Property Name="DocNum" Type="varchar" MaxLength="20" Nullable="false" />
                 <Property Name="OnDate" Type="datetime" Nullable="false" />
                 <Property Name="KaId" Type="int" />
@@ -5767,15 +5806,16 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <ReturnType>
             <CollectionType>
               <RowType>
-                <Property Name="Amount" Type="numeric" Precision="15" Scale="8" Nullable="false" />
+                <Property Name="PosId" Type="int" Nullable="false" />
+                <Property Name="Amount" Type="numeric" Precision="15" Scale="4" Nullable="false" />
                 <Property Name="Total" Type="numeric" Precision="15" Scale="2" />
                 <Property Name="MatName" Type="nvarchar" MaxLength="255" />
                 <Property Name="RouteName" Type="nvarchar" MaxLength="50" />
-                <Property Name="DriverName" Type="nvarchar" MaxLength="64" Nullable="false" />
+                <Property Name="DriverName" Type="nvarchar" MaxLength="100" Nullable="false" />
                 <Property Name="DriverId" Type="int" Nullable="false" />
                 <Property Name="RouteId" Type="int" Nullable="false" />
                 <Property Name="KaId" Type="int" Nullable="false" />
-                <Property Name="KaName" Type="nvarchar" MaxLength="64" Nullable="false" />
+                <Property Name="KaName" Type="nvarchar" MaxLength="100" Nullable="false" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -5788,6 +5828,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <ReturnType>
             <CollectionType>
               <RowType>
+                <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
                 <Property Name="Num" Type="nvarchar" MaxLength="20" Nullable="false" />
                 <Property Name="OnDate" Type="datetime" Nullable="false" />
                 <Property Name="SummAll" Type="numeric" Precision="15" Scale="2" />
@@ -5818,6 +5859,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <ReturnType>
             <CollectionType>
               <RowType>
+                <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
                 <Property Name="Num" Type="nvarchar" MaxLength="20" Nullable="false" />
                 <Property Name="OnDate" Type="datetime" Nullable="false" />
                 <Property Name="SummAll" Type="numeric" Precision="15" Scale="2" />
@@ -5847,6 +5889,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <ReturnType>
             <CollectionType>
               <RowType>
+                <Property Name="PosId" Type="int" Nullable="false" />
                 <Property Name="Num" Type="int" Nullable="false" />
                 <Property Name="MatId" Type="int" Nullable="false" />
                 <Property Name="MatName" Type="nvarchar" MaxLength="255" />
@@ -5906,9 +5949,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <ReturnType>
             <CollectionType>
               <RowType>
-                <Property Name="N" Type="bigint" />
-                <Property Name="Name" Type="nvarchar" MaxLength="64" Nullable="false" />
+                <Property Name="KaId" Type="int" Nullable="false" />
+                <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
                 <Property Name="Saldo" Type="numeric" Precision="38" Scale="2" />
+                <Property Name="N" Type="bigint" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -5919,6 +5963,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <ReturnType>
             <CollectionType>
               <RowType>
+                <Property Name="KaId" Type="int" />
                 <Property Name="Name" Type="nvarchar" MaxLength="100" />
                 <Property Name="KontragentGroupName" Type="nvarchar" MaxLength="50" />
                 <Property Name="Amount_1" Type="numeric" Precision="38" Scale="4" />
@@ -6333,6 +6378,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="PosRemains" EntityType="Self.PosRemains" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PriceList" EntityType="Self.PriceList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PriceListDet" EntityType="Self.PriceListDet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PriceListKagent" EntityType="Self.PriceListKagent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PriceTypes" EntityType="Self.PriceTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PrintLog" EntityType="Self.PrintLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductionPlanDet" EntityType="Self.ProductionPlanDet" Schema="dbo" store:Type="Tables" />
@@ -7385,6 +7431,14 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <AssociationSet Name="FK_PRICELISTDET_PRICELIST" Association="Self.FK_PRICELISTDET_PRICELIST">
             <End Role="PriceList" EntitySet="PriceList" />
             <End Role="PriceListDet" EntitySet="PriceListDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceListKagent_Kagent" Association="Self.FK_PriceListKagent_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="PriceListKagent" EntitySet="PriceListKagent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceListKagent_PriceList" Association="Self.FK_PriceListKagent_PriceList">
+            <End Role="PriceList" EntitySet="PriceList" />
+            <End Role="PriceListKagent" EntitySet="PriceListKagent" />
           </AssociationSet>
           <AssociationSet Name="FK_PRINTLOG_2" Association="Self.FK_PRINTLOG_2">
             <End Role="Users" EntitySet="Users" />
@@ -9098,6 +9152,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
             <Parameter Name="ka_grp_id" Mode="In" Type="Guid" />
           </FunctionImport>
+          <AssociationSet Name="PriceListKagent" Association="BaseModel.PriceListKagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -10479,6 +10537,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Int32" Name="Fil" Nullable="false" />
           <Property Type="Int32" Name="Num" />
           <NavigationProperty Name="RepLng" Relationship="BaseModel.FK_REPLNG_REPID" FromRole="Reports" ToRole="RepLng" />
+          <Property Name="TemlateName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Languages">
           <Key>
@@ -11974,6 +12033,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP" FromRole="PriceList" ToRole="PriceTypes" />
           <NavigationProperty Name="PriceListDet" Relationship="BaseModel.FK_PRICELISTDET_PRICELIST" FromRole="PriceList" ToRole="PriceListDet" />
           <NavigationProperty Name="PlannedCalculation" Relationship="BaseModel.FK_PlannedCalculation_PriceList" FromRole="PriceList" ToRole="PlannedCalculation" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.PriceListKagent" FromRole="PriceList" ToRole="Kagent" />
         </EntityType>
         <EntityType Name="v_PriceList">
           <Key>
@@ -12490,6 +12550,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="KAgentAdjustment" Relationship="BaseModel.FK_KAgentAdjustment_Kagent" FromRole="Kagent" ToRole="KAgentAdjustment" />
           <NavigationProperty Name="KAgentAdjustment1" Relationship="BaseModel.FK_KAgentAdjustment_Kagent1" FromRole="Kagent" ToRole="KAgentAdjustment" />
           <NavigationProperty Name="KAgentAdjustment2" Relationship="BaseModel.FK_KAgentAdjustment_Kagent2" FromRole="Kagent" ToRole="KAgentAdjustment" />
+          <NavigationProperty Name="PriceList" Relationship="BaseModel.PriceListKagent" FromRole="Kagent" ToRole="PriceList" />
         </EntityType>
         <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
@@ -15184,6 +15245,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Decimal" Name="Amount_12" Nullable="true" Precision="38" Scale="4" />
           <Property Type="Decimal" Name="Amount_Total" Nullable="true" Precision="38" Scale="4" />
         </ComplexType>
+        <Association Name="PriceListKagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="*" />
+          <End Type="BaseModel.PriceList" Role="PriceList" Multiplicity="*" />
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -16179,6 +16244,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="Reports">
             <EntityTypeMapping TypeName="BaseModel.Reports">
               <MappingFragment StoreEntitySet="Reports">
+                <ScalarProperty Name="TemlateName" ColumnName="TemlateName" />
                 <ScalarProperty Name="Num" ColumnName="Num" />
                 <ScalarProperty Name="Fil" ColumnName="Fil" />
                 <ScalarProperty Name="GrpId" ColumnName="GrpId" />
@@ -19162,6 +19228,14 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <AssociationSetMapping Name="PriceListKagent" TypeName="BaseModel.PriceListKagent" StoreEntitySet="PriceListKagent">
+            <EndProperty Name="PriceList">
+              <ScalarProperty Name="PlId" ColumnName="PriceListId" />
+            </EndProperty>
+            <EndProperty Name="Kagent">
+              <ScalarProperty Name="KaId" ColumnName="KagentId" />
+            </EndProperty>
+          </AssociationSetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
