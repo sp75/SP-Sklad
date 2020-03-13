@@ -10,7 +10,11 @@ namespace SP.Base.Models
     public partial class SPBaseModel : DbContext  
     {
         public SPBaseModel(string connection_string)
-            : base(connection_string) //"name=BaseEntities"
+            : base(connection_string) 
+        {
+        }
+        public SPBaseModel()
+           : base("name=SPBaseModel")
         {
         }
 
