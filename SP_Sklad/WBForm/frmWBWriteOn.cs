@@ -15,6 +15,7 @@ using SP_Sklad.Common;
 using SP_Sklad.Properties;
 using SP_Sklad.Reports;
 using SP_Sklad.SkladData;
+using SP_Sklad.ViewsForm;
 using SP_Sklad.WBDetForm;
 using EntityState = System.Data.Entity.EntityState;
 
@@ -378,5 +379,53 @@ order by  ma.ondate desc */
             }
         }
 
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var frm = new frmManufacturing(_db))
+            {
+                frm.xtraTabPage14.PageVisible = true;
+                frm.xtraTabControl1.SelectedTabPageIndex = 1;
+
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    foreach (var item in frm.manuf_list.ToList())
+                    {
+                        var price = (item.Price ?? 0);
+
+                        var wbd = _db.WaybillDet.Add(new WaybillDet
+                        {
+                            WbillId = wb.WbillId,
+                            Num = wb.WaybillDet.Count(),
+                            MatId = item.MatId,
+                            WId = Convert.ToInt32(WHComboBox.EditValue),
+                            Amount = item.Amount,
+                            Price = price,
+                            Discount = 0,
+                            Nds = wb.Nds,
+                            CurrId = wb.CurrId,
+                            OnDate = wb.OnDate,
+                            OnValue = wb.OnValue,
+                            BasePrice = price + Math.Round(price * wb.Nds.Value / 100, 2),
+                            PosKind = 0,
+                            PosParent = 0,
+                            DiscountKind = 0
+                        });
+                        _db.SaveChanges();
+
+                        wbd.WayBillDetAddProps = new WayBillDetAddProps { PosId = wbd.PosId, WbMaked = item.WbillId };
+                        _db.Serials.Add(new Serials
+                        {
+                            PosId = wbd.PosId,
+                            SerialNo = item.Num,
+                            InvNumb = item.BarCode
+                        });
+
+                    }
+
+                    _db.SaveChanges();
+                    RefreshDet();
+                }
+            }
+        }
     }
 }

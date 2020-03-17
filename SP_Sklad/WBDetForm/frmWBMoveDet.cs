@@ -64,7 +64,7 @@ namespace SP_Sklad.WBDetForm
   group by m.MatId, m.Name , ms.ShortName ,pr.WId").ToList();
         }
 
-        private void frmWBReturnDetOut_Load(object sender, EventArgs e)
+        private void frmWBMoveDet_Load(object sender, EventArgs e)
         {
             WHComboBox.Properties.DataSource = DBHelper.WhList;
             _materials_on_wh = GetMaterialsOnWh();

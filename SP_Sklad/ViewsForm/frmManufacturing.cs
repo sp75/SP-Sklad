@@ -13,6 +13,7 @@ namespace SP_Sklad.ViewsForm
 {
     public partial class frmManufacturing : DevExpress.XtraEditors.XtraForm
     {
+        public List<CustomWBListMake> manuf_list { get; set; }
 
         public WBListMake_Result wb_focused_row
         {
@@ -29,18 +30,118 @@ namespace SP_Sklad.ViewsForm
             var satrt_date = DateTime.Now.AddYears(-100);
             var end_date = DateTime.Now.AddYears(100);
 
-            WBGridControl.DataSource = db.WBListMake(satrt_date.Date, end_date.Date.AddDays(1), 2, "*", 0, -20).ToList();
+
+            WBListMakeBS.DataSource = db.WBListMake(satrt_date.Date, end_date.Date.AddDays(1), 2, "*", 0, -20).ToList();
 
         }
 
         private void frmManufacturing_Load(object sender, EventArgs e)
         {
-
+            manuf_list = new List<CustomWBListMake>();
+            ManufListGridControl.DataSource = manuf_list;
         }
 
         private void WbGridView_DoubleClick(object sender, EventArgs e)
         {
-            OkButton.PerformClick();
+            if (xtraTabPage14.PageVisible)
+            {
+                AddItem.PerformClick();
+            }
+            else
+            {
+                OkButton.PerformClick();
+            }
+        }
+
+        private void OkButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var amount = (wb_focused_row.AmountOut ?? 0) - (wb_focused_row.ShippedAmount ?? 0);
+
+            AddWBMake(amount, $"{wb_focused_row.WbillId.ToString()}+{Math.Truncate(amount)}+{(int)(amount * 1000m) % 1000}+{wb_focused_row.MatId}");
+        }
+
+        private void AddWBMake(decimal Amount, string bar_code)
+        {
+            manuf_list.Add(new CustomWBListMake
+            {
+                Id = wb_focused_row.Id,
+                Amount = Amount,
+                MatId = wb_focused_row.MatId,
+                MatName = wb_focused_row.MatName,
+                MsrName = wb_focused_row.MsrName,
+                Num = wb_focused_row.Num,
+                OnDate = wb_focused_row.OnDate,
+                Price = wb_focused_row.Price,
+                WbillId = wb_focused_row.WbillId,
+                BarCode = bar_code
+            });
+
+            ManufListGridView.RefreshData();
+        }
+
+        public partial class CustomWBListMake
+        {
+            public System.Guid Id { get; set; }
+            public int WbillId { get; set; }
+            public string Num { get; set; }
+            public DateTime OnDate { get; set; }
+            public string MatName { get; set; }
+            public decimal Amount { get; set; }
+            public int MatId { get; set; }
+            public string MsrName { get; set; }
+            public decimal? Price { get; set; }
+            public string BarCode { get; set; }
+        }
+
+        private void BarCodeEdit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && !String.IsNullOrEmpty(BarCodeEdit.Text))
+            {
+                var BarCodeSplit = BarCodeEdit.Text.Split('+');
+                String kod = BarCodeSplit[0];
+
+                var row = WBListMakeBS.List.OfType<WBListMake_Result>().ToList().Find(f => f.WbillId == Convert.ToInt32(kod));
+                var pos = WBListMakeBS.IndexOf(row);
+                WBListMakeBS.Position = pos;
+                var amount = wb_focused_row.AmountOut ?? 0;
+
+                if (BarCodeSplit.Count() >= 3)
+                {
+                    amount = Convert.ToDecimal(BarCodeSplit[1] + "," + BarCodeSplit[2]);
+                }
+
+                if (row != null && xtraTabPage14.PageVisible)
+                {
+                    AddWBMake(amount, BarCodeEdit.Text);
+                }
+
+
+                BarCodeEdit.Text = "";
+            }
+        }
+
+        private void DelItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var r = ManufListGridView.GetFocusedRow() as CustomWBListMake;
+            manuf_list.Remove(r);
+
+            ManufListGridView.RefreshData();
+        }
+
+        private void ManufListGridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            if (e.Column.FieldName == "Amount")
+            {
+                var amount = Convert.ToDecimal(e.Value);
+                var r = ManufListGridView.GetRow(e.RowHandle) as CustomWBListMake;
+
+                r.BarCode = $"{r.WbillId.ToString()}+{Math.Truncate(amount)}+{(int)(amount * 1000m) % 1000}+{r.MatId}";
+            }
         }
     }
 }

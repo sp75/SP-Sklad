@@ -227,9 +227,12 @@ namespace SP_Sklad.WBForm
 
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (new frmWBMoveDet(_db, null, wb).ShowDialog() == DialogResult.OK)
+            using (var frm = new frmWBMoveDet(_db, null, wb))
             {
-                RefreshDet();
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    RefreshDet();
+                }
             }
         }
 

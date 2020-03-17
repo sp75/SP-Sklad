@@ -84,9 +84,11 @@ namespace SP_Sklad.WBDetForm
 
             if (_wbd != null)
             {
+                var wid = _wbd.WId;
                 WaybillDetBS.DataSource = _wbd;
+                WHComboBox.EditValue = wid;
 
-                wbdp = _db.WayBillDetAddProps.FirstOrDefault(w => w.PosId == _wbd.PosId);
+                   wbdp = _db.WayBillDetAddProps.FirstOrDefault(w => w.PosId == _wbd.PosId);
                 if (wbdp == null)
                 {
                     wbdp = new WayBillDetAddProps();
@@ -108,6 +110,8 @@ namespace SP_Sklad.WBDetForm
                 ManufEditBtn.Visible = ((wbdp == null || wbdp.WaybillList == null || wbdp.WaybillList.WType == -20) && _wb.WType == 5);
 
                 CurrencyBS.DataSource = _db.Currency.Where(w => w.CurrId == _wb.CurrId).FirstOrDefault();
+
+              
             }
             else
             {
@@ -115,7 +119,6 @@ namespace SP_Sklad.WBDetForm
                 PriceEdit.EditValue = 0;
                 ManufEditBtn.Visible = (_wb.WType == 5);
             }
-
 
             GetOk();
 
@@ -335,13 +338,13 @@ namespace SP_Sklad.WBDetForm
         {
             using (var frm = new frmManufacturing(_db))
             {
-                if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                if (frm.ShowDialog() == DialogResult.OK)
                 {
                     wbdp.WbMaked = frm.wb_focused_row.WbillId;
                     serials.SerialNo = frm.wb_focused_row.Num;
 
                     MatComboBox.EditValue = frm.wb_focused_row.MatId;
-                    AmountEdit.EditValue = frm.wb_focused_row.AmountOut ?? 0;
+                    AmountEdit.EditValue = (frm.wb_focused_row.AmountOut ?? 0) - (frm.wb_focused_row.ShippedAmount ?? 0);
                     BasePriceEdit.EditValue = Math.Round((frm.wb_focused_row.SummAll / frm.wb_focused_row.AmountOut) ?? 0, 4);
                     PriceEdit.EditValue = _wbd.BasePrice;
 
@@ -357,7 +360,7 @@ namespace SP_Sklad.WBDetForm
 
         private void simpleButton4_Click(object sender, EventArgs e)
         {
-            WHComboBox.EditValue = IHelper.ShowDirectList(WHComboBox.EditValue, 2);
+         
         }
 
         private void MatComboBox_EditValueChanged(object sender, EventArgs e)
@@ -415,6 +418,14 @@ namespace SP_Sklad.WBDetForm
         private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
         {
             IHelper.ShowOrdered(_wb.KaId.Value, 16, _wbd.MatId);
+        }
+
+        private void WHComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                WHComboBox.EditValue = IHelper.ShowDirectList(WHComboBox.EditValue, 2);
+            }
         }
     }
 }

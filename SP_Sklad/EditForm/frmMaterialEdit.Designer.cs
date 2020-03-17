@@ -146,7 +146,6 @@
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.textEdit8 = new DevExpress.XtraEditors.MemoEdit();
             this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
-            this.DelIdividualMatPriceBtn = new DevExpress.XtraEditors.SimpleButton();
             this.CommentLabel = new DevExpress.XtraEditors.LabelControl();
             this.PricePanel = new System.Windows.Forms.Panel();
             this.CustomPricePanel = new System.Windows.Forms.Panel();
@@ -168,6 +167,7 @@
             this.checkEdit3 = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.DelIdividualMatPriceBtn = new DevExpress.XtraEditors.SimpleButton();
             this.GoTopMatPricesBtn = new DevExpress.XtraEditors.SimpleButton();
             this.DisCheckBox = new DevExpress.XtraEditors.CheckEdit();
             this.xtraTabPage9 = new DevExpress.XtraTab.XtraTabPage();
@@ -1465,11 +1465,13 @@
             // 
             // pictureEdit1
             // 
+            this.pictureEdit1.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureEdit1.Location = new System.Drawing.Point(0, 0);
             this.pictureEdit1.MenuManager = this.barManager1;
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
             this.pictureEdit1.Size = new System.Drawing.Size(703, 516);
             this.pictureEdit1.TabIndex = 2;
             this.pictureEdit1.EditValueChanged += new System.EventHandler(this.pictureEdit1_EditValueChanged);
@@ -1498,18 +1500,6 @@
             this.xtraTabPage8.Name = "xtraTabPage8";
             this.xtraTabPage8.Size = new System.Drawing.Size(703, 516);
             this.xtraTabPage8.Text = "Ціна";
-            // 
-            // DelIdividualMatPriceBtn
-            // 
-            this.DelIdividualMatPriceBtn.ImageIndex = 18;
-            this.DelIdividualMatPriceBtn.ImageList = this.ImageList;
-            this.DelIdividualMatPriceBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.DelIdividualMatPriceBtn.Location = new System.Drawing.Point(563, 11);
-            this.DelIdividualMatPriceBtn.Name = "DelIdividualMatPriceBtn";
-            this.DelIdividualMatPriceBtn.Size = new System.Drawing.Size(22, 22);
-            this.DelIdividualMatPriceBtn.TabIndex = 60;
-            this.DelIdividualMatPriceBtn.ToolTip = "Видалити відпускну ціну";
-            this.DelIdividualMatPriceBtn.Click += new System.EventHandler(this.simpleButton13_Click);
             // 
             // CommentLabel
             // 
@@ -1788,6 +1778,18 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(703, 45);
             this.panel4.TabIndex = 46;
+            // 
+            // DelIdividualMatPriceBtn
+            // 
+            this.DelIdividualMatPriceBtn.ImageIndex = 18;
+            this.DelIdividualMatPriceBtn.ImageList = this.ImageList;
+            this.DelIdividualMatPriceBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.DelIdividualMatPriceBtn.Location = new System.Drawing.Point(563, 11);
+            this.DelIdividualMatPriceBtn.Name = "DelIdividualMatPriceBtn";
+            this.DelIdividualMatPriceBtn.Size = new System.Drawing.Size(22, 22);
+            this.DelIdividualMatPriceBtn.TabIndex = 60;
+            this.DelIdividualMatPriceBtn.ToolTip = "Видалити відпускну ціну";
+            this.DelIdividualMatPriceBtn.Click += new System.EventHandler(this.simpleButton13_Click);
             // 
             // GoTopMatPricesBtn
             // 

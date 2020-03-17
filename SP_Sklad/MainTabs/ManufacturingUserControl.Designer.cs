@@ -101,6 +101,7 @@
             this.gridColumn65 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn127 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn136 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn137 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.WhEditBtn = new DevExpress.XtraEditors.SimpleButton();
             this.WhComboBox = new DevExpress.XtraEditors.LookUpEdit();
@@ -1173,7 +1174,8 @@
             this.gridColumn41,
             this.gridColumn65,
             this.gridColumn127,
-            this.gridColumn136});
+            this.gridColumn136,
+            this.gridColumn137});
             this.WbGridView.GridControl = this.WBGridControl;
             this.WbGridView.Name = "WbGridView";
             this.WbGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -1389,6 +1391,12 @@
             this.gridColumn136.Name = "gridColumn136";
             this.gridColumn136.Visible = true;
             this.gridColumn136.VisibleIndex = 14;
+            // 
+            // gridColumn137
+            // 
+            this.gridColumn137.Caption = "Штрих-Код";
+            this.gridColumn137.FieldName = "WbillId";
+            this.gridColumn137.Name = "gridColumn137";
             // 
             // panelControl2
             // 
@@ -4695,5 +4703,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox18;
         private DevExpress.Utils.SharedImageCollection UserTreeImgList;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn136;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn137;
     }
 }

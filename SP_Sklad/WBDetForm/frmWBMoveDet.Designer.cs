@@ -513,7 +513,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Властивості позиції по документу";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmWBReturnDetOut_FormClosed);
-            this.Load += new System.EventHandler(this.frmWBReturnDetOut_Load);
+            this.Load += new System.EventHandler(this.frmWBMoveDet_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             this.panel1.ResumeLayout(false);

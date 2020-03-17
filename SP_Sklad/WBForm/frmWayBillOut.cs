@@ -93,6 +93,10 @@ namespace SP_Sklad.WBForm
                     {
                         wb.Num = new BaseEntities().GetDocNum("wb_invoice").FirstOrDefault();
                     }
+                    else if (wb.WType == -16)
+                    {
+                        wb.Num = new BaseEntities().GetDocNum("wb(-16)").FirstOrDefault();
+                    }
                     else
                     {
                         wb.Num = new BaseEntities().GetDocNum("wb_out").FirstOrDefault();

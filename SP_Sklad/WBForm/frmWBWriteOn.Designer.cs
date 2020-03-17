@@ -40,6 +40,7 @@
             this.AddBarSubItem = new DevExpress.XtraBars.BarSubItem();
             this.AddMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.EditMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
             this.DelMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
@@ -136,9 +137,10 @@
             this.AddMaterialBtn,
             this.barButtonItem6,
             this.RsvInfoBtn,
-            this.MatInfoBtn});
+            this.MatInfoBtn,
+            this.barButtonItem1});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 17;
+            this.barManager1.MaxItemId = 18;
             // 
             // bar2
             // 
@@ -205,7 +207,8 @@
             this.AddBarSubItem.ImageIndex = 5;
             this.AddBarSubItem.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.AddMaterialBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
             this.AddBarSubItem.Name = "AddBarSubItem";
             this.AddBarSubItem.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
@@ -226,6 +229,14 @@
             this.barButtonItem6.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L));
             this.barButtonItem6.Name = "barButtonItem6";
             this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Виробницва списком";
+            this.barButtonItem1.Id = 17;
+            this.barButtonItem1.ImageIndex = 17;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // EditMaterialBtn
             // 
@@ -887,5 +898,6 @@
         public DevExpress.XtraEditors.CheckEdit TurnDocCheckBox;
         public DevExpress.XtraEditors.TextEdit NumEdit;
         private System.Windows.Forms.BindingSource WaybillDetInBS;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }
