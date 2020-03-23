@@ -65,13 +65,18 @@
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.PriceListlookUp = new DevExpress.XtraEditors.LookUpEdit();
+            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.PriceListBS = new System.Windows.Forms.BindingSource(this.components);
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.checkedComboBoxEdit1 = new DevExpress.XtraEditors.CheckedComboBoxEdit();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.lookUpEdit2 = new DevExpress.XtraEditors.LookUpEdit();
             this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
-            this.PriceListBS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.PTypeEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
@@ -104,17 +109,17 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.TreePopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.PriceListPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceListlookUp.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceListBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PriceListBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PTypeEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties)).BeginInit();
@@ -132,7 +137,6 @@
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TreePopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PriceListPopupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -442,7 +446,7 @@
             // 
             // barButtonItem5
             // 
-            this.barButtonItem5.Caption = "Додати";
+            this.barButtonItem5.Caption = "Додати товар / групу";
             this.barButtonItem5.Id = 23;
             this.barButtonItem5.ImageIndex = 2;
             this.barButtonItem5.Name = "barButtonItem5";
@@ -450,7 +454,7 @@
             // 
             // barButtonItem9
             // 
-            this.barButtonItem9.Caption = "Додати все";
+            this.barButtonItem9.Caption = "Додати всі позиції";
             this.barButtonItem9.Id = 24;
             this.barButtonItem9.Name = "barButtonItem9";
             this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick);
@@ -488,6 +492,9 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.simpleButton3);
+            this.panelControl1.Controls.Add(this.labelControl8);
+            this.panelControl1.Controls.Add(this.PriceListlookUp);
             this.panelControl1.Controls.Add(this.textEdit1);
             this.panelControl1.Controls.Add(this.labelControl7);
             this.panelControl1.Controls.Add(this.labelControl5);
@@ -509,14 +516,75 @@
             this.panelControl1.Size = new System.Drawing.Size(894, 169);
             this.panelControl1.TabIndex = 0;
             // 
+            // simpleButton3
+            // 
+            this.simpleButton3.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.Image")));
+            this.simpleButton3.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton3.Location = new System.Drawing.Point(464, 131);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(22, 22);
+            this.simpleButton3.TabIndex = 55;
+            this.simpleButton3.ToolTip = "Обновити ціни за прайс листом";
+            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Location = new System.Drawing.Point(12, 109);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(212, 16);
+            this.labelControl8.StyleController = this.styleController1;
+            this.labelControl8.TabIndex = 54;
+            this.labelControl8.Text = "Синхронизувати ціну з прайс листа:";
+            // 
+            // PriceListlookUp
+            // 
+            this.PriceListlookUp.Location = new System.Drawing.Point(12, 131);
+            this.PriceListlookUp.Name = "PriceListlookUp";
+            this.PriceListlookUp.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.PriceListlookUp.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.PriceListlookUp.Properties.DisplayMember = "Name";
+            this.PriceListlookUp.Properties.ShowFooter = false;
+            this.PriceListlookUp.Properties.ShowHeader = false;
+            this.PriceListlookUp.Properties.ValueMember = "PlId";
+            this.PriceListlookUp.Size = new System.Drawing.Size(446, 22);
+            this.PriceListlookUp.StyleController = this.styleController1;
+            this.PriceListlookUp.TabIndex = 53;
+            // 
+            // textEdit1
+            // 
+            this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PriceListBS, "Notes", true));
+            this.textEdit1.Location = new System.Drawing.Point(528, 130);
+            this.textEdit1.MenuManager = this.barManager1;
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Properties.DisplayFormat.FormatString = "0.0000";
+            this.textEdit1.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.textEdit1.Size = new System.Drawing.Size(351, 22);
+            this.textEdit1.StyleController = this.styleController1;
+            this.textEdit1.TabIndex = 52;
+            // 
+            // PriceListBS
+            // 
+            this.PriceListBS.DataSource = typeof(SP_Sklad.SkladData.PriceList);
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Location = new System.Drawing.Point(528, 109);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(52, 16);
+            this.labelControl7.StyleController = this.styleController1;
+            this.labelControl7.TabIndex = 51;
+            this.labelControl7.Text = "Примітка";
+            // 
             // labelControl5
             // 
             this.labelControl5.Location = new System.Drawing.Point(12, 56);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(156, 16);
+            this.labelControl5.Size = new System.Drawing.Size(172, 16);
             this.labelControl5.StyleController = this.styleController1;
             this.labelControl5.TabIndex = 50;
-            this.labelControl5.Text = "Шаблон для контрагентів:";
+            this.labelControl5.Text = "Як шаблон для контрагентів:";
             // 
             // checkedComboBoxEdit1
             // 
@@ -565,7 +633,7 @@
             this.lookUpEdit2.Properties.ShowFooter = false;
             this.lookUpEdit2.Properties.ShowHeader = false;
             this.lookUpEdit2.Properties.ValueMember = "KaId";
-            this.lookUpEdit2.Size = new System.Drawing.Size(127, 22);
+            this.lookUpEdit2.Size = new System.Drawing.Size(155, 22);
             this.lookUpEdit2.StyleController = this.styleController1;
             this.lookUpEdit2.TabIndex = 38;
             // 
@@ -583,13 +651,9 @@
             this.lookUpEdit1.Properties.ShowFooter = false;
             this.lookUpEdit1.Properties.ShowHeader = false;
             this.lookUpEdit1.Properties.ValueMember = "KaId";
-            this.lookUpEdit1.Size = new System.Drawing.Size(151, 22);
+            this.lookUpEdit1.Size = new System.Drawing.Size(172, 22);
             this.lookUpEdit1.StyleController = this.styleController1;
             this.lookUpEdit1.TabIndex = 37;
-            // 
-            // PriceListBS
-            // 
-            this.PriceListBS.DataSource = typeof(SP_Sklad.SkladData.PriceList);
             // 
             // labelControl1
             // 
@@ -939,7 +1003,7 @@
             // 
             this.TreePopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9, true)});
             this.TreePopupMenu.Manager = this.barManager1;
             this.TreePopupMenu.Name = "TreePopupMenu";
             // 
@@ -953,27 +1017,6 @@
             this.PriceListPopupMenu.Manager = this.barManager1;
             this.PriceListPopupMenu.Name = "PriceListPopupMenu";
             this.PriceListPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.PriceListPopupMenu_BeforePopup);
-            // 
-            // labelControl7
-            // 
-            this.labelControl7.Location = new System.Drawing.Point(12, 109);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(52, 16);
-            this.labelControl7.StyleController = this.styleController1;
-            this.labelControl7.TabIndex = 51;
-            this.labelControl7.Text = "Примітка";
-            // 
-            // textEdit1
-            // 
-            this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PriceListBS, "Notes", true));
-            this.textEdit1.Location = new System.Drawing.Point(12, 131);
-            this.textEdit1.MenuManager = this.barManager1;
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Properties.DisplayFormat.FormatString = "0.0000";
-            this.textEdit1.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.textEdit1.Size = new System.Drawing.Size(474, 22);
-            this.textEdit1.StyleController = this.styleController1;
-            this.textEdit1.TabIndex = 52;
             // 
             // frmPriceList
             // 
@@ -1000,10 +1043,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceListlookUp.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceListBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PriceListBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PTypeEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties)).EndInit();
@@ -1021,7 +1066,6 @@
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TreePopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PriceListPopupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1105,5 +1149,8 @@
         private DevExpress.XtraEditors.CheckedComboBoxEdit checkedComboBoxEdit1;
         private DevExpress.XtraEditors.TextEdit textEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl7;
+        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraEditors.LookUpEdit PriceListlookUp;
     }
 }

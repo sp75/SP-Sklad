@@ -36,6 +36,7 @@ namespace SP_Sklad.WBForm
         private void frmPriceList_Load(object sender, EventArgs e)
         {
             PTypeEdit.Properties.DataSource = DB.SkladBase().PriceTypes.Select(s => new { s.PTypeId, s.Name }).ToList();
+            PriceListlookUp.Properties.DataSource = DB.SkladBase().PriceList.Select(s => new { s.PlId, s.Name }).ToList();
 
             if (_pl_id == null)
             {
@@ -194,12 +195,17 @@ namespace SP_Sklad.WBForm
                 if (row.Id < 0)
                 {
                     var grp = MatTreeList.DataSource as List<GetMatTree_Result>;
-                    foreach (var item in grp.Where(w => w.Pid == row.Id))
+                    var grp_ids = _db.GetMatGroupTree(row.Id * -1).ToList().Select(s => s.GrpId * -1).ToList();
+
+                    foreach (var item in grp.Where(w => grp_ids.Contains(w.Pid)))
                     {
                         AddMat(item);
                     }
                 }
-                else AddMat(row);
+                else
+                {
+                    AddMat(row);
+                }
             }
 
             if (barButtonItem3.Down)
@@ -213,10 +219,14 @@ namespace SP_Sklad.WBForm
                         AddSvc(item);
                     }
                 }
-                else AddSvc(row);
+                else
+                {
+                    AddSvc(row);
+                }
             }
 
             _db.SaveChanges();
+
             GetDetail();
         }
 
@@ -336,7 +346,7 @@ namespace SP_Sklad.WBForm
             {
                 var BarCodeText = BarCodeEdit.Text.Split('+');
                 string kod = BarCodeText[0];
-                var item = _db.Materials.Where(w => w.BarCode == kod).Select(s => s.MatId).FirstOrDefault();
+                var item = _db.Materials.Where(w => w.BarCode == kod|| w.Name.Contains(kod)).Select(s => s.MatId).FirstOrDefault();
 
                 if (item > 0)
                 {
@@ -564,5 +574,24 @@ namespace SP_Sklad.WBForm
             }*/
         }
 
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            int? PlId = PriceListlookUp.EditValue == null || PriceListlookUp.EditValue == DBNull.Value ? null : (int?)PriceListlookUp.EditValue;
+            if(PlId == null)
+            {
+                return;
+            }
+
+            foreach(var item in _db.PriceListDet.Where(w=> w.PlId == PlId))
+            {
+                var pld = _db.PriceListDet.Where(w => w.MatId == item.MatId && w.PlDetType == 0).FirstOrDefault();
+                if(pld != null)
+                {
+                    pld.Price = item.Price;
+                }
+            }
+            _db.SaveChanges();
+            GetDetail();
+        }
     }
 }

@@ -11,7 +11,6 @@ namespace SkladEngine.Common
     public static class DBHelper
     {
         private static List<Currency> _currency;
-        private static List<KagentList> _kagents;
 
         public static DateTime ServerDateTime()
         {
@@ -32,6 +31,31 @@ namespace SkladEngine.Common
                 return _currency;
             }
         }
-     }
-   
+
+
+        public static List<Enterprise> EnterpriseList(int current_user_kaid)
+        {
+
+            using (var db = Database.SPBase())
+            {
+                return db.Kagent.Where(w => w.KType == 3 && w.Deleted == 0 && (w.Archived == null || w.Archived == 0))
+                        .Join(db.EnterpriseWorker.Where(ew => ew.WorkerId == current_user_kaid), w => w.KaId, ew => ew.EnterpriseId, (w, ew) => new Enterprise
+                        {
+                            KaId = w.KaId,
+                            Name = w.Name,
+                            NdsPayer = w.NdsPayer
+                        }).ToList();
+            }
+        }
+
+
+
+        public class Enterprise
+        {
+            public int KaId { get; set; }
+            public String Name { get; set; }
+            public int NdsPayer { get; set; }
+        }
+    }
+
 }

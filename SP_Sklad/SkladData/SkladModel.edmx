@@ -1352,6 +1352,7 @@
           <Property Name="UpdatedBy" Type="int" />
           <Property Name="SessionId" Type="uniqueidentifier" />
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WebUserId" Type="nvarchar" MaxLength="128" />
         </EntityType>
         <EntityType Name="WayBillMake">
           <Key>
@@ -11684,6 +11685,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="Kagent2" Relationship="BaseModel.FK_WBL_ENTID" FromRole="WaybillList" ToRole="Kagent" />
           <NavigationProperty Name="WayBillTmc" Relationship="BaseModel.FK_MoveInventories_WaybillList" FromRole="WaybillList" ToRole="WayBillTmc" />
           <NavigationProperty Name="IntermediateWeighing" Relationship="BaseModel.FK_IntermediateWeighing_WaybillList" FromRole="WaybillList" ToRole="IntermediateWeighing" />
+          <Property Name="WebUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           </EntityType>
         <Association Name="FK_COMMISSION_WBILLID">
           <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
@@ -16996,6 +16998,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="WaybillList">
             <EntityTypeMapping TypeName="BaseModel.WaybillList">
               <MappingFragment StoreEntitySet="WaybillList">
+                <ScalarProperty Name="WebUserId" ColumnName="WebUserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="SessionId" ColumnName="SessionId" />
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />

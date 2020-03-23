@@ -54,6 +54,7 @@ namespace SP_Sklad.SkladData
         public Nullable<int> UpdatedBy { get; set; }
         public Nullable<System.Guid> SessionId { get; set; }
         public System.Guid Id { get; set; }
+        public string WebUserId { get; set; }
     
         public virtual ICollection<Commission> Commission { get; set; }
         public virtual Currency Currency { get; set; }
