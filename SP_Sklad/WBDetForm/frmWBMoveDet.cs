@@ -205,9 +205,12 @@ namespace SP_Sklad.WBDetForm
 
         private void GetPos()
         {
-            GetPosButton.Enabled = false;
-            pos_in = new BaseEntities().GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, _ka_id, DBHelper.CurrentUser.UserId).OrderBy(o => o.OnDate).ToList();
-            GetPosButton.Enabled = true;
+            using (var db = new BaseEntities())
+            {
+                GetPosButton.Enabled = false;
+                pos_in = db.GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, _ka_id, DBHelper.CurrentUser.UserId).OrderBy(o => o.OnDate).ToList();
+                GetPosButton.Enabled = true;
+            }
         }
 
         private void SetAmount()
