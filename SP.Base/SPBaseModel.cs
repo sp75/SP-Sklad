@@ -680,6 +680,56 @@ namespace SP.Base.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WBListMake_Result>("WBListMake", from_dateParameter, to_dateParameter, is_checkedParameter, whParameter, grp_idParameter, w_typeParameter);
         }
 
+        public virtual DbSet<StornoWayBill_Result> StornoWayBill_Result { get; set; }
+        public virtual ObjectResult<StornoWayBill_Result> StornoWayBill(Nullable<int> wbill_id)
+        {
+            var wbill_idParameter = wbill_id.HasValue ?
+                new ObjectParameter("wbill_id", wbill_id) :
+                new ObjectParameter("wbill_id", typeof(int));
+
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<StornoWayBill_Result>("StornoWayBill", wbill_idParameter);
+        }
+
+        public virtual DbSet<ExecuteWayBill_Result> ExecuteWayBill_Result { get; set; }
+        public virtual ObjectResult<ExecuteWayBill_Result> ExecuteWayBill(Nullable<int> wBILLID, Nullable<int> nEW_WTYPE, Nullable<int> person_id)
+        {
+            var wBILLIDParameter = wBILLID.HasValue ?
+                new ObjectParameter("WBILLID", wBILLID) :
+                new ObjectParameter("WBILLID", typeof(int));
+
+            var nEW_WTYPEParameter = nEW_WTYPE.HasValue ?
+                new ObjectParameter("NEW_WTYPE", nEW_WTYPE) :
+                new ObjectParameter("NEW_WTYPE", typeof(int));
+
+            var person_idParameter = person_id.HasValue ?
+                new ObjectParameter("person_id", person_id) :
+                new ObjectParameter("person_id", typeof(int));
+
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ExecuteWayBill_Result>("ExecuteWayBill", wBILLIDParameter, nEW_WTYPEParameter, person_idParameter);
+        }
+
+        public virtual DbSet<GetOrderedInSuppliers_Result> GetOrderedInSuppliers_Result { get; set; }
+        public virtual ObjectResult<GetOrderedInSuppliers_Result> GetOrderedInSuppliers(Nullable<int> wbill_id)
+        {
+            var wbill_idParameter = wbill_id.HasValue ?
+                new ObjectParameter("wbill_id", wbill_id) :
+                new ObjectParameter("wbill_id", typeof(int));
+
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetOrderedInSuppliers_Result>("GetOrderedInSuppliers", wbill_idParameter);
+        }
+
+
+        public virtual DbSet<GetUserAccessCashDesks_Result> GetUserAccessCashDesks_Result { get; set; }
+        [DbFunction("SPBaseModel", "GetUserAccessCashDesks")]
+        public virtual IQueryable<GetUserAccessCashDesks_Result> GetUserAccessCashDesks(Nullable<int> user_id)
+        {
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetUserAccessCashDesks_Result>("[SPBaseModel].[GetUserAccessCashDesks](@user_id)", user_idParameter);
+        }
+
         public virtual DbSet<REP_27_Result> REP_27_Result { get; set; }
         [DbFunction("SPBaseModel", "REP_27")]
         public virtual IQueryable<REP_27_Result> REP_27(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> ka_id, Nullable<int> grp_id, Nullable<int> mat_id, Nullable<System.Guid> ka_grp_id, Nullable<int> person_id)

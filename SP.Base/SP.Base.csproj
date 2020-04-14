@@ -91,10 +91,13 @@
     <Compile Include="Models\EnterpriseWorker.cs" />
     <Compile Include="Models\ENTPARAMS.cs" />
     <Compile Include="Models\ErrorLog.cs" />
+    <Compile Include="Models\ExecuteWayBill_Result.cs" />
     <Compile Include="Models\ExtRel.cs" />
     <Compile Include="Models\Functions.cs" />
+    <Compile Include="Models\GetOrderedInSuppliers_Result.cs" />
     <Compile Include="Models\GetPayDocList_Result.cs" />
     <Compile Include="Models\GetUsedMaterials_Result.cs" />
+    <Compile Include="Models\GetUserAccessCashDesks_Result.cs" />
     <Compile Include="Models\GetWayBillList_Result.cs" />
     <Compile Include="Models\IntermediateWeighing.cs" />
     <Compile Include="Models\IntermediateWeighingDet.cs" />
@@ -188,6 +191,7 @@
     <Compile Include="Models\Serials.cs" />
     <Compile Include="Models\Services.cs" />
     <Compile Include="Models\SettingApp.cs" />
+    <Compile Include="Models\StornoWayBill_Result.cs" />
     <Compile Include="Models\WBListMake_Result.cs" />
     <Compile Include="SPBaseModel.cs" />
     <Compile Include="Models\SvcGroup.cs" />
