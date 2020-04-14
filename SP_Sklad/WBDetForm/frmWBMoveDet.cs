@@ -67,19 +67,8 @@ namespace SP_Sklad.WBDetForm
         private void frmWBMoveDet_Load(object sender, EventArgs e)
         {
             WHComboBox.Properties.DataSource = DBHelper.WhList;
-            _materials_on_wh = GetMaterialsOnWh();
+            var w_mat_turn = new List<WMatTurn>();
 
-            int wh_id = _wb.WaybillMove != null ? _wb.WaybillMove.SourceWid : 0;
-
-            MatComboBox.Properties.DataSource = _materials_on_wh.Where(w => w.WId == wh_id && w.Remain > 0).GroupBy(g => new { g.MatId, g.Name, g.MsrName }).Select(s => new WhMatGet_Result
-            {
-                MatId = s.Key.MatId,
-                MatName = s.Key.Name,
-                MsrName = s.Key.MsrName,
-                CurRemain = s.Sum(r => r.Remain) - s.Sum(r => r.Rsv),
-                Rsv = s.Sum(r => r.Rsv),
-                Remain = s.Sum(r => r.Remain)
-            }).ToList(); // _db.WhMatGet(0, wh_id, _ka_id, DBHelper.ServerDateTime(), 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).ToList();
 
             if (_PosId == null)
             {
@@ -97,7 +86,29 @@ namespace SP_Sklad.WBDetForm
             else
             {
                 _wbd = _db.WaybillDet.Find(_PosId);
+
+                w_mat_turn = _db.WMatTurn.Where(w => w.SourceId == _wbd.PosId).ToList();
+                if (w_mat_turn.Count > 0)
+                {
+                    _db.WMatTurn.RemoveRange(w_mat_turn);
+                    _db.SaveChanges();
+                }
             }
+
+            _materials_on_wh = GetMaterialsOnWh();
+
+            int wh_id = _wb.WaybillMove != null ? _wb.WaybillMove.SourceWid : 0;
+
+            MatComboBox.Properties.DataSource = _materials_on_wh.Where(w => w.WId == wh_id && w.Remain > 0).GroupBy(g => new { g.MatId, g.Name, g.MsrName }).Select(s => new WhMatGet_Result
+            {
+                MatId = s.Key.MatId,
+                MatName = s.Key.Name,
+                MsrName = s.Key.MsrName,
+                CurRemain = s.Sum(r => r.Remain) - s.Sum(r => r.Rsv),
+                Rsv = s.Sum(r => r.Rsv),
+                Remain = s.Sum(r => r.Remain)
+            }).ToList(); // _db.WhMatGet(0, wh_id, _ka_id, DBHelper.ServerDateTime(), 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).ToList();
+
 
             if (_wbd != null)
             {
@@ -105,16 +116,9 @@ namespace SP_Sklad.WBDetForm
 
                 if (_db.Entry<WaybillDet>(_wbd).State == EntityState.Unchanged)
                 {
-                    var w_mat_turn = _db.WMatTurn.Where(w => w.SourceId == _wbd.PosId).ToList();
-                    if (w_mat_turn.Count > 0)
-                    {
-                        _db.WMatTurn.RemoveRange(w_mat_turn);
-                        _db.SaveChanges();
-                    }
-
                     GetContent();
-                    GetPos();
 
+                    GetPos();
                     foreach (var item in w_mat_turn)
                     {
                         if (pos_in.Any(a => a.PosId == item.PosId))
