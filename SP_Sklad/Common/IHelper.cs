@@ -915,7 +915,7 @@ namespace SP_Sklad.Common
 
         public static DateTime SetEndDay(this DateTime value)
         {
-            return value.AddHours(23).AddMinutes(59).AddSeconds(59);
+            return value.Date.AddHours(23).AddMinutes(59).AddSeconds(59);
         }
     }
 

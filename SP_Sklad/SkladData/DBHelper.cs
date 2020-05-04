@@ -278,7 +278,21 @@ namespace SP_Sklad.SkladData
             {
                 if (_wh_list == null)
                 {
-                    _wh_list = new BaseEntities().Warehouse.Where(w => w.Deleted == 0  && w.UserAccessWh.Any(u => u.UserId == CurrentUser.UserId) ).Select(s => new WhList { WId = s.WId, Name = s.Name, Def = s.Def }).ToList();
+                    _wh_list = new BaseEntities().Warehouse.Where(w => w.Deleted == 0  && w.UserAccessWh.Any(u => u.UserId == CurrentUser.UserId) ).Select(s => new WhList
+                    {
+                        WId = s.WId,
+                        Name = s.Name,
+                        Def = s.Def
+                    }).ToList();
+
+                    if(!_wh_list.Any(a=> a.Def == 1) )
+                    {
+                        var w = _wh_list.FirstOrDefault();
+                        if (w != null)
+                        {
+                            w.Def = 1;
+                        }
+                    }
                 }
                 return _wh_list;
             }

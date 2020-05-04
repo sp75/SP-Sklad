@@ -10,5 +10,6 @@ namespace SP.Reports.Models.Views
     {
         public int MatId { get; set; }
         public string Name { get; set; }
+        public string MsrName { get; set; }
     }
 }

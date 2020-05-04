@@ -18,5 +18,6 @@ namespace SP.Reports.Models
         public string CType { get; set; }
         public string KontragentGroupName { get; set; }
         public string Year { get; set; }
+        public string MsrName { get; set; }
     }
 }

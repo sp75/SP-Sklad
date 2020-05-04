@@ -53,6 +53,7 @@ namespace SP.Reports
                         WH = Warehouse != null ? Warehouse.Name : "",
                         KAID = Kagent != null ? Kagent.Name : "",
                         MatId = Material != null ? Material.Name : "",
+                        MsrName =  Material != null ? Material.MsrName : "",
                         CType = ChType != null ? ChType.Name : "",
                         KontragentGroupName = KontragentGroup != null ? KontragentGroup.Name : "",
                         Year = StartDate.Year.ToString()
@@ -112,7 +113,7 @@ namespace SP.Reports
                     break;
                 case 9:
                     REP_9();
-                    report_mode = 1;
+            //        report_mode = 1;
                     break;
                 case 10:
                     REP_10();

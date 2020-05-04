@@ -50,7 +50,7 @@ namespace SP_Sklad
         private void GetTurns()
         {
             var start_date = wbStartDate.DateTime < SqlDateTime.MinValue.Value ? SqlDateTime.MinValue.Value : wbStartDate.DateTime;
-            var end_date = wbEndDate.DateTime < SqlDateTime.MinValue.Value ? SqlDateTime.MaxValue.Value : wbEndDate.DateTime;
+            var end_date = wbEndDate.DateTime < SqlDateTime.MinValue.Value ? SqlDateTime.MaxValue.Value : wbEndDate.DateTime.SetEndDay();
 
             DocListBindingSource.DataSource = DB.SkladBase().GetMatMove(_mat_id, start_date, end_date, 0, (int)KAgentEdit.EditValue, (int)wTypeList.EditValue, "*", Guid.Empty, DBHelper.CurrentUser.UserId).ToList();
         }

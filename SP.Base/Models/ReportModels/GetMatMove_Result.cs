@@ -5,7 +5,6 @@ namespace SP.Base.Models
 {
     public partial class GetMatMove_Result
     {
-        [Key]
         public Nullable<System.Guid> Id { get; set; }
         public Nullable<int> WBillId { get; set; }
         public Nullable<int> WType { get; set; }
@@ -15,6 +14,7 @@ namespace SP.Base.Models
         public Nullable<decimal> Price { get; set; }
         public string CurrName { get; set; }
         public Nullable<decimal> OnValue { get; set; }
+        [Key]
         public Nullable<int> PosId { get; set; }
         public string KAgentName { get; set; }
         public string FromWh { get; set; }

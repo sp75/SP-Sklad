@@ -52,7 +52,12 @@ namespace SP_Sklad
             {
                 if (_rep_id == 9 || _rep_id == 19 || _rep_id == 15)
                 {
-                    var mat = new BaseEntities().Materials.Where(w => w.Deleted == 0).Select(s => new MatComboBoxItem { MatId= s.MatId, Name = s.Name }).ToList();
+                    var mat = new BaseEntities().Materials.Where(w => w.Deleted == 0).Select(s => new MatComboBoxItem
+                    {
+                        MatId = s.MatId,
+                        Name = s.Name,
+                        MsrName = s.Measures.ShortName
+                    }).ToList();
                     MatComboBox.Properties.DataSource = mat;
                     var first_or_default = mat.FirstOrDefault();
                     if (first_or_default != null)
@@ -62,7 +67,12 @@ namespace SP_Sklad
                 }
                 if(_rep_id == 40)
                 {
-                    var tmc = new BaseEntities().Materials.Where(w => w.Deleted == 0 && w.TypeId == 4/*"ТМЦ"*/).Select(s => new MatComboBoxItem { MatId = s.MatId, Name = s.Name }).ToList();
+                    var tmc = new BaseEntities().Materials.Where(w => w.Deleted == 0 && w.TypeId == 4/*"ТМЦ"*/).Select(s => new MatComboBoxItem
+                    {
+                        MatId = s.MatId,
+                        Name = s.Name,
+                        MsrName = s.Measures.ShortName
+                    }).ToList();
                     MatComboBox.Properties.DataSource = tmc;
                     var first_or_default = tmc.FirstOrDefault();
                     if (first_or_default != null)
@@ -72,7 +82,12 @@ namespace SP_Sklad
                 }
                 else
                 {
-                    MatComboBox.Properties.DataSource = new List<object>() { new MatComboBoxItem { MatId = 0, Name = "Усі" } }.Concat(new BaseEntities().Materials.Where(w => w.Deleted == 0).Select(s => new MatComboBoxItem { MatId = s.MatId, Name = s.Name }).ToList());
+                    MatComboBox.Properties.DataSource = new List<object>() { new MatComboBoxItem { MatId = 0, Name = "Усі" } }.Concat(new BaseEntities().Materials.Where(w => w.Deleted == 0).Select(s => new MatComboBoxItem
+                    {
+                        MatId = s.MatId,
+                        Name = s.Name,
+                        MsrName = s.Measures.ShortName
+                    }).ToList());
                     MatComboBox.EditValue = 0;
                 }
             }
