@@ -38,7 +38,7 @@ namespace SP_Sklad.WBDetForm
 
         private void frmTechProcDet_Load(object sender, EventArgs e)
         {
-            TechProcessCB.Properties.DataSource = _db.TechProcess.Select(s => new { s.ProcId, s.Name, s.Num, s.Kod }).ToList();
+            TechProcessCB.Properties.DataSource = _db.TechProcess.OrderBy(o => o.Num).Select(s => new { s.ProcId, s.Name, s.Num, s.Kod }).ToList();
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
 
             TechProcessCB.Properties.Buttons[1].Enabled = DBHelper.CanViewUserTreeNode("frmTechProcessEdit");

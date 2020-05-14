@@ -187,9 +187,6 @@
         <EntityTypeShape EntityType="BaseModel.WayBillMakeProps" Width="1.5" PointX="0.12153765751120524" PointY="11.881177267004352" />
         <AssociationConnector Association="BaseModel.FK_WayBillMakeProps_Materials" />
         <AssociationConnector Association="BaseModel.FK_WayBillMakeProps_WaybillList" />
-        <EntityTypeShape EntityType="BaseModel.TechProcess" Width="1.5" PointX="2.6014108502312614" PointY="22.755673463808222" />
-        <AssociationConnector Association="BaseModel.FK_MatRecipeTechProcDet_TechProcess" />
-        <AssociationConnector Association="BaseModel.FK_TECHPROCDET_TECHPROCESS" />
         <EntityTypeShape EntityType="BaseModel.v_Actives" Width="1.5" PointX="1.8467574910478468" PointY="12.967575466710876" />
         <EntityTypeShape EntityType="BaseModel.v_WorkDate" Width="1.5" PointX="0.55420357573507517" PointY="30.3547968409745" />
         <EntityTypeShape EntityType="BaseModel.EnterpriseWorker" Width="1.5" PointX="25.5" PointY="15.25" />
@@ -311,6 +308,9 @@
         <EntityTypeShape EntityType="BaseModel.KAgentAdjustmentDet" Width="1.5" PointX="7.375" PointY="54.625" />
         <AssociationConnector Association="BaseModel.FK_KAgentAdjustmentDet_KAgentAdjustment" />
         <AssociationConnector Association="BaseModel.PriceListKagent" />
+        <EntityTypeShape EntityType="BaseModel.TechProcess" Width="1.5" PointX="25.375" PointY="5.875" />
+        <AssociationConnector Association="BaseModel.FK_MatRecipeTechProcDet_TechProcess" />
+        <AssociationConnector Association="BaseModel.FK_TECHPROCDET_TECHPROCESS" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

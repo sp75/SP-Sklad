@@ -1010,7 +1010,7 @@ namespace SP_Sklad.MainTabs
 
         private void WbGridView_RowStyle(object sender, RowStyleEventArgs e)
         {
-            if (e.RowHandle < 0)
+      /*      if (e.RowHandle < 0)
             {
                 return;
             }
@@ -1024,7 +1024,7 @@ namespace SP_Sklad.MainTabs
                 {
                     e.Appearance.ForeColor = Color.Red;
                 }
-            }
+            }*/
         }
     }
 }

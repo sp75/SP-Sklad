@@ -35,6 +35,8 @@ namespace SP_Sklad.SkladData
         public decimal Out { get; set; }
         public bool Archived { get; set; }
         public Nullable<decimal> Deviation { get; set; }
+        public Nullable<decimal> ThermoLossOut { get; set; }
+        public Nullable<decimal> ThermoLossDeviation { get; set; }
     
         public virtual ICollection<WayBillMake> WayBillMake { get; set; }
         public virtual Materials Materials { get; set; }

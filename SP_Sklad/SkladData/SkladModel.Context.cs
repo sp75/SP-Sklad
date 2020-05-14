@@ -131,7 +131,6 @@ namespace SP_Sklad.SkladData
         public DbSet<v_DiscCards> v_DiscCards { get; set; }
         public DbSet<DiscCardGrp> DiscCardGrp { get; set; }
         public DbSet<WayBillMakeProps> WayBillMakeProps { get; set; }
-        public DbSet<TechProcess> TechProcess { get; set; }
         public DbSet<v_Actives> v_Actives { get; set; }
         public DbSet<v_WorkDate> v_WorkDate { get; set; }
         public DbSet<EnterpriseWorker> EnterpriseWorker { get; set; }
@@ -178,6 +177,7 @@ namespace SP_Sklad.SkladData
         public DbSet<v_IntermediateWeighingDet> v_IntermediateWeighingDet { get; set; }
         public DbSet<v_KAgentAdjustmentDet> v_KAgentAdjustmentDet { get; set; }
         public DbSet<KAgentAdjustmentDet> KAgentAdjustmentDet { get; set; }
+        public DbSet<TechProcess> TechProcess { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)

@@ -25,5 +25,8 @@ namespace SP.Base.Models
         public Nullable<decimal> CookingAmount { get; set; }
         public Nullable<decimal> FormationAmount { get; set; }
         public Nullable<decimal> FinishAmount { get; set; }
+        public decimal? ThermoLossOut { get; set; }
+        public decimal? ThermoLossDeviation { get; set; }
+        public decimal? Deviation { get; set; }
     }
 }

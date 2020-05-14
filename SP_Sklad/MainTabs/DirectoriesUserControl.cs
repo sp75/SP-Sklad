@@ -242,7 +242,7 @@ namespace SP_Sklad.MainTabs
                         //       case 68: cxGridLevel6->GridView = TaxesGrid; break;
 
                         case 112:
-                            TechProcessDS.DataSource = _db.TechProcess.ToList();
+                            TechProcessDS.DataSource = _db.TechProcess.OrderBy(o=> o.Num).ToList();
                             extDirTabControl.SelectedTabPageIndex = 3;
                             break;
 
