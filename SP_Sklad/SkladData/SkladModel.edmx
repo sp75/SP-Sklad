@@ -674,6 +674,8 @@
           <Property Name="Out" Type="numeric" Precision="15" Scale="4" Nullable="false" />
           <Property Name="Archived" Type="bit" Nullable="false" />
           <Property Name="Deviation" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="ThermoLossOut" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="ThermoLossDeviation" Type="numeric" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="MatRecipeTechProcDet">
           <Key>
@@ -5115,7 +5117,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="WhName" Type="nvarchar" MaxLength="64" />
                 <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
                 <Property Name="CurrName" Type="nvarchar" MaxLength="3" />
-                <Property Name="OnValue" Type="numeric" Precision="19" Scale="8" />
+                <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="PosType" Type="int" Nullable="false" />
                 <Property Name="Norm" Type="numeric" Precision="15" Scale="8" />
                 <Property Name="Producer" Type="nvarchar" MaxLength="255" />
@@ -5848,6 +5850,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="CookingAmount" Type="numeric" Precision="38" Scale="4" />
                 <Property Name="FormationAmount" Type="numeric" Precision="38" Scale="4" />
                 <Property Name="FinishAmount" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="ThermoLossOut" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="ThermoLossDeviation" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="Deviation" Type="numeric" Precision="15" Scale="4" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -8442,15 +8447,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <FunctionImport Name="REP_4_5" IsComposable="true" ReturnType="Collection(BaseModel.REP_4_5_Result)">
           <Parameter Name="on_date" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <EntitySet Name="TechProcess" EntityType="BaseModel.TechProcess" />
-          <AssociationSet Name="FK_MatRecipeTechProcDet_TechProcess" Association="BaseModel.FK_MatRecipeTechProcDet_TechProcess">
-            <End Role="TechProcess" EntitySet="TechProcess" />
-            <End Role="MatRecipeTechProcDet" EntitySet="MatRecipeTechProcDet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TECHPROCDET_TECHPROCESS" Association="BaseModel.FK_TECHPROCDET_TECHPROCESS">
-            <End Role="TechProcess" EntitySet="TechProcess" />
-            <End Role="TechProcDet" EntitySet="TechProcDet" />
-          </AssociationSet>
           <FunctionImport Name="DocCopy" ReturnType="Collection(BaseModel.DocCopy_Result)">
             <Parameter Name="originator_id" Mode="In" Type="Guid" />
             <Parameter Name="person_id" Mode="In" Type="Int32" />
@@ -9156,6 +9152,15 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <AssociationSet Name="PriceListKagent" Association="BaseModel.PriceListKagent">
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <EntitySet Name="TechProcess" EntityType="BaseModel.TechProcess" />
+          <AssociationSet Name="FK_MatRecipeTechProcDet_TechProcess" Association="BaseModel.FK_MatRecipeTechProcDet_TechProcess">
+            <End Role="TechProcess" EntitySet="TechProcess" />
+            <End Role="MatRecipeTechProcDet" EntitySet="MatRecipeTechProcDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TECHPROCDET_TECHPROCESS" Association="BaseModel.FK_TECHPROCDET_TECHPROCESS">
+            <End Role="TechProcess" EntitySet="TechProcess" />
+            <End Role="TechProcDet" EntitySet="TechProcDet" />
           </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
@@ -9985,6 +9990,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="PlannedCalculationDet" Relationship="BaseModel.FK_CalcRawMaterialDet_MatRecipe" FromRole="MatRecipe" ToRole="PlannedCalculationDet" />
           <Property Type="Boolean" Name="Archived" Nullable="false" />
           <Property Name="Deviation" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="ThermoLossOut" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="ThermoLossDeviation" Type="Decimal" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="WayBillMake">
           <Key>
@@ -11435,10 +11442,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Int32" Name="ExtMatId" />
           <Property Type="Int32" Name="ExtMat2Id" />
           <Property Type="Int32" Name="ExtMat2Amount" />
-          <NavigationProperty Name="TechProcess" Relationship="BaseModel.FK_TECHPROCDET_TECHPROCESS" FromRole="TechProcDet" ToRole="TechProcess" />
           <Property Type="Decimal" Name="TareWeight" Precision="15" Scale="4" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_TECHPROCDET_KAGENT" FromRole="TechProcDet" ToRole="Kagent" />
           <Property Type="Decimal" Name="OutNetto" Precision="15" Scale="4" />
+          <NavigationProperty Name="TechProcess" Relationship="BaseModel.FK_TECHPROCDET_TECHPROCESS" FromRole="TechProcDet" ToRole="TechProcess" />
         </EntityType>
         <EntityType Name="Services">
           <Key>
@@ -12370,43 +12377,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="Name" Nullable="false" MaxLength="64" />
           <Property Type="Decimal" Name="Saldo" Nullable="true" Precision="38" Scale="2" />
         </ComplexType>
-        <EntityType Name="TechProcess">
-          <Key>
-            <PropertyRef Name="ProcId" />
-          </Key>
-          <Property Type="Int32" Name="ProcId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Name" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Kod" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="Num" />
-          <NavigationProperty Name="MatRecipeTechProcDet" Relationship="BaseModel.FK_MatRecipeTechProcDet_TechProcess" FromRole="TechProcess" ToRole="MatRecipeTechProcDet" />
-          <NavigationProperty Name="TechProcDet" Relationship="BaseModel.FK_TECHPROCDET_TECHPROCESS" FromRole="TechProcess" ToRole="TechProcDet" />
-        </EntityType>
-        <Association Name="FK_MatRecipeTechProcDet_TechProcess">
-          <End Type="BaseModel.TechProcess" Role="TechProcess" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.MatRecipeTechProcDet" Role="MatRecipeTechProcDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TechProcess">
-              <PropertyRef Name="ProcId" />
-            </Principal>
-            <Dependent Role="MatRecipeTechProcDet">
-              <PropertyRef Name="ProcId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TECHPROCDET_TECHPROCESS">
-          <End Type="BaseModel.TechProcess" Role="TechProcess" Multiplicity="1" />
-          <End Type="BaseModel.TechProcDet" Role="TechProcDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TechProcess">
-              <PropertyRef Name="ProcId" />
-            </Principal>
-            <Dependent Role="TechProcDet">
-              <PropertyRef Name="ProcId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <ComplexType Name="DocCopy_Result">
           <Property Type="Int32" Name="out_wbill_id" Nullable="true" />
           <Property Type="Guid" Name="out_doc_id" Nullable="true" />
@@ -15251,6 +15221,43 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="*" />
           <End Type="BaseModel.PriceList" Role="PriceList" Multiplicity="*" />
         </Association>
+        <EntityType Name="TechProcess">
+          <Key>
+            <PropertyRef Name="ProcId" />
+          </Key>
+          <Property Name="ProcId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Kod" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Num" Type="Int32" />
+          <NavigationProperty Name="MatRecipeTechProcDet" Relationship="BaseModel.FK_MatRecipeTechProcDet_TechProcess" FromRole="TechProcess" ToRole="MatRecipeTechProcDet" />
+          <NavigationProperty Name="TechProcDet" Relationship="BaseModel.FK_TECHPROCDET_TECHPROCESS" FromRole="TechProcess" ToRole="TechProcDet" />
+        </EntityType>
+        <Association Name="FK_MatRecipeTechProcDet_TechProcess">
+          <End Type="BaseModel.TechProcess" Role="TechProcess" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.MatRecipeTechProcDet" Role="MatRecipeTechProcDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechProcess">
+              <PropertyRef Name="ProcId" />
+            </Principal>
+            <Dependent Role="MatRecipeTechProcDet">
+              <PropertyRef Name="ProcId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TECHPROCDET_TECHPROCESS">
+          <End Type="BaseModel.TechProcess" Role="TechProcess" Multiplicity="1" />
+          <End Type="BaseModel.TechProcDet" Role="TechProcDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechProcess">
+              <PropertyRef Name="ProcId" />
+            </Principal>
+            <Dependent Role="TechProcDet">
+              <PropertyRef Name="ProcId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -15939,6 +15946,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="MatRecipe">
             <EntityTypeMapping TypeName="BaseModel.MatRecipe">
               <MappingFragment StoreEntitySet="MatRecipe">
+                <ScalarProperty Name="ThermoLossDeviation" ColumnName="ThermoLossDeviation" />
+                <ScalarProperty Name="ThermoLossOut" ColumnName="ThermoLossOut" />
                 <ScalarProperty Name="Deviation" ColumnName="Deviation" />
                 <ScalarProperty Name="Archived" ColumnName="Archived" />
                 <ScalarProperty Name="Out" ColumnName="Out" />
@@ -17321,16 +17330,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="TechProcess">
-            <EntityTypeMapping TypeName="BaseModel.TechProcess">
-              <MappingFragment StoreEntitySet="TechProcess">
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="Kod" ColumnName="Kod" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ProcId" ColumnName="ProcId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="DocCopy" FunctionName="BaseModel.Store.DocCopy">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.DocCopy_Result">
@@ -19239,6 +19238,16 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               <ScalarProperty Name="KaId" ColumnName="KagentId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="TechProcess">
+            <EntityTypeMapping TypeName="BaseModel.TechProcess">
+              <MappingFragment StoreEntitySet="TechProcess">
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Kod" ColumnName="Kod" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProcId" ColumnName="ProcId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
