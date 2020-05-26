@@ -511,7 +511,130 @@ order by wbd.ondate desc
             }
         }
 
-     
+        public static List<MaterialsByWh> GetMaterialOnWh(int mat_id, int wid, BaseEntities db)
+        {
+            return db.Database.SqlQuery<MaterialsByWh>(@"SELECT 
+         m.MatId,
+         pr.WId,
+         m.Name,
+         ms.ShortName as MsrName,
+         sum( pr.remain) Remain,
+         sum( pr.Rsv ) Rsv 
+		 
+  FROM [sp_base].[dbo].[v_PosRemains] pr
+  inner join [dbo].[Materials] m on m.MatId =pr.MatId
+  inner join [dbo].[Measures] ms on ms.MId = m.MId
+  where m.MatId = {0} and pr.WId = {1}
+  group by m.MatId, m.Name , ms.ShortName ,pr.WId", mat_id, wid).ToList();
+        }
+
+
+        public static bool RsvItem(int pos_id, BaseEntities _db)
+        {
+            var cur_wbd = _db.WaybillDet.FirstOrDefault(w => w.PosId == pos_id);
+
+            bool is_rsv = true;
+
+            var pos_in = _db.GetPosIn(cur_wbd.OnDate, cur_wbd.MatId, cur_wbd.WId, 0, DBHelper.CurrentUser.UserId).OrderBy(o => o.OnDate).ToList();
+
+            var mat_remain = DBHelper.GetMaterialOnWh(cur_wbd.MatId, cur_wbd.WId.Value, _db).Select(s => new GetActualRemainByWh_Result
+            {
+                CurRemainInWh = s.Remain - s.Rsv,
+            }).FirstOrDefault();
+
+            if (mat_remain == null || pos_in == null)
+            {
+                return false;
+            }
+
+            decimal? sum_amount = pos_in.Sum(s => s.Amount);
+            decimal? sum_full_remain = pos_in.Sum(s => s.FullRemain);
+
+            if (pos_in.Count > 0 && cur_wbd.Amount <= mat_remain.CurRemainInWh && sum_amount != cur_wbd.Amount)
+            {
+                sum_amount = cur_wbd.Amount;
+                bool stop = false;
+                foreach (var item in pos_in)
+                {
+                    decimal? remain = item.FullRemain;
+                    if (!stop)
+                    {
+                        if (remain >= sum_amount)
+                        {
+                            item.Amount = sum_amount;
+                            sum_amount -= remain;
+                            stop = true;
+                        }
+                        else
+                        {
+                            item.Amount = remain;
+                            sum_amount -= remain;
+                        }
+                    }
+                    else item.Amount = 0;
+                }
+
+                is_rsv = (sum_amount <= 0);
+            }
+            else
+            {
+                is_rsv = false;
+            }
+
+
+            if (is_rsv && !_db.WMatTurn.Any(w => w.SourceId == cur_wbd.PosId) && _db.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId && a.WId == cur_wbd.WId && a.UseReceived))
+            {
+                using (var d = new BaseEntities())
+                {
+                    d.DeleteWhere<WaybillDet>(w => w.PosId == cur_wbd.PosId);
+
+                    foreach (var item in pos_in.Where(w => w.Amount > 0))
+                    {
+                        var wbd = d.WaybillDet.Add(new WaybillDet()
+                        {
+                            WbillId = cur_wbd.WbillId,
+                            Price = item.Price,
+                            BasePrice = item.BasePrice,
+                            Nds = item.Nds,
+                            CurrId = item.CurrId,
+                            OnDate = cur_wbd.OnDate,
+                            WId = item.WId,
+                            Num = cur_wbd.Num,
+                            Amount = item.Amount.Value,
+                            MatId = item.MatId,
+
+                        });
+
+                        wbd.WMatTurn1.Add(new WMatTurn
+                        {
+                            PosId = item.PosId,
+                            WId = item.WId,
+                            MatId = item.MatId,
+                            OnDate = cur_wbd.OnDate.Value,
+                            TurnType = 2,
+                            Amount = Convert.ToDecimal(item.Amount),
+                            //  SourceId = wbd.PosId
+                        });
+
+                        d.SaveChanges();
+
+                    }
+                }
+            }
+
+            return is_rsv;
+        }
+
+
+    }
+    public class MaterialsByWh
+    {
+        public int MatId { get; set; }
+        public int WId { get; set; }
+        public string Name { get; set; }
+        public string MsrName { get; set; }
+        public decimal Remain { get; set; }
+        public decimal Rsv { get; set; }
     }
 
 

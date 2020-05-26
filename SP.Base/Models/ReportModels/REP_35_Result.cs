@@ -24,5 +24,9 @@ namespace SP.Base.Models
         public Nullable<decimal> InjectionAmount { get; set; }
         public Nullable<decimal> ConcentrationAmount { get; set; }
         public Nullable<decimal> FinishAmount { get; set; }
+        public decimal? ThermoLossOut { get; set; }
+        public decimal? ThermoLossDeviation { get; set; }
+        public decimal? Deviation { get; set; }
+        public decimal OutPlan { get; set; }
     }
 }

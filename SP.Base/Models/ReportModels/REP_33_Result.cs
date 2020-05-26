@@ -28,5 +28,7 @@ namespace SP.Base.Models
         public decimal? ThermoLossOut { get; set; }
         public decimal? ThermoLossDeviation { get; set; }
         public decimal? Deviation { get; set; }
+        public Nullable<decimal> OsadkaAmount { get; set; }
+        public Nullable<decimal> AmountWater { get; set; }
     }
 }

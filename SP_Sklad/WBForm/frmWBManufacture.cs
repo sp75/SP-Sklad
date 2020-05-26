@@ -272,18 +272,22 @@ namespace SP_Sklad.WBForm
 
         private void RsvBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var r = new ObjectParameter("RSV", typeof(Int32));
+            /*  var r = new ObjectParameter("RSV", typeof(Int32));
 
-            _db.ReservedPosition(wbd_row.PosId, r, DBHelper.CurrentUser.UserId);
-        //    current_transaction = current_transaction.CommitRetaining(_db);
-         //   UpdLockWB();
+              _db.ReservedPosition(wbd_row.PosId, r, DBHelper.CurrentUser.UserId);
 
-            if (r.Value != null)
+              if (r.Value != null)
+              {
+                  wbd_row.Rsv = (int)r.Value;
+                  RefreshDet();
+              }*/
+
+            if (!DBHelper.RsvItem(wbd_row.PosId, _db))
             {
-                wbd_row.Rsv = (int)r.Value;
-                //WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
-                RefreshDet();
+                MessageBox.Show("Не вдалося зарезервувати товар!");
             }
+
+            RefreshDet();
 
             GetOk();
         }
@@ -304,25 +308,35 @@ namespace SP_Sklad.WBForm
 
         private void RsvAllBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var res = _db.ReservedAllPosition(wb.WbillId, DBHelper.CurrentUser.UserId);
+            /*     var res = _db.ReservedAllPosition(wb.WbillId, DBHelper.CurrentUser.UserId);
 
-            if (res.Any())
+                 if (res.Any())
+                 {
+                     MessageBox.Show("Не вдалося зарезервувати деякі товари!");
+                 }*/
+
+            List<bool> rsv_items = new List<bool>();
+
+            foreach (var item in _db.GetWayBillMakeDet(_wbill_id).OrderBy(o => o.Num).ToList())
+            {
+                if (item.Rsv != 1)
+                {
+                    rsv_items.Add(DBHelper.RsvItem(item.PosId, _db));
+                }
+            }
+
+            if (rsv_items.Any(a => !a))
             {
                 MessageBox.Show("Не вдалося зарезервувати деякі товари!");
             }
 
-          //  current_transaction = current_transaction.CommitRetaining(_db);
-          //  UpdLockWB();
-
             RefreshDet();
+
         }
 
         private void DelAllRsvBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             _db.DeleteAllReservePosition(wb.WbillId);
-       //     current_transaction = current_transaction.CommitRetaining(_db);
-       //     UpdLockWB();
-
             RefreshDet();
         }
 

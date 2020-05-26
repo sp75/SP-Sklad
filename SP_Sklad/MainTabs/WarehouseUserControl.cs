@@ -53,6 +53,7 @@ namespace SP_Sklad.MainTabs
         {
             public decimal? Discount { get; set; }
             public int? PTypeId { get; set; }
+            public decimal? AvgPrice { get; set; }
         }
 
         GetWhTree_Result focused_tree_node { get; set; }
@@ -1061,9 +1062,10 @@ namespace SP_Sklad.MainTabs
                 return;
             }
 
+
             var remain_in_wh = DB.SkladBase().MatRemainByWh(focused_wh_mat.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, wh_list, DBHelper.CurrentUser.UserId).ToList();
             var p_type = (wb.Kontragent != null ? (wb.Kontragent.PTypeId ?? DB.SkladBase().PriceTypes.First(w => w.Def == 1).PTypeId) : DB.SkladBase().PriceTypes.First(w => w.Def == 1).PTypeId);
-            var price = DB.SkladBase().GetListMatPrices(focused_wh_mat.MatId, wb.CurrId, p_type).FirstOrDefault();
+            var mat_price = DB.SkladBase().GetListMatPrices(focused_wh_mat.MatId, wb.CurrId, p_type).FirstOrDefault();
 
             custom_mat_list.Add(new CustomMatListWH
             {
@@ -1071,10 +1073,11 @@ namespace SP_Sklad.MainTabs
                 MatId = focused_wh_mat.MatId,
                 Name = focused_wh_mat.MatName,
                 Amount = 1,
-                Price = price != null ? (price.Price ?? 0) : 0,
+                Price = mat_price != null ? (mat_price.Price ?? 0) : 0,
                 WId = remain_in_wh.Any() ? remain_in_wh.First().WId : (DBHelper.WhList.Any(w => w.Def == 1) ? DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId : DBHelper.WhList.FirstOrDefault().WId),
-                PTypeId = price != null ? price.PType : null,
-                Discount = disc_card != null ? disc_card.OnValue : (DB.SkladBase().GetDiscount(wb.KaId, focused_wh_mat.MatId).FirstOrDefault() ?? 0.00m)
+                PTypeId = mat_price != null ? mat_price.PType : null,
+                Discount = disc_card != null ? disc_card.OnValue : (DB.SkladBase().GetDiscount(wb.KaId, focused_wh_mat.MatId).FirstOrDefault() ?? 0.00m),
+                AvgPrice = focused_wh_mat.AvgPrice
             });
 
             MatListGridView.RefreshData();

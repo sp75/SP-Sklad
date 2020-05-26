@@ -276,13 +276,6 @@ namespace SP_Sklad.WBDetForm
 
             if (RSVCheckBox.Checked && !_db.WMatTurn.Any(w => w.SourceId == _wbd.PosId) && _db.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId && a.WId == _wbd.WId && a.UseReceived))
             {
-                var sate = _db.Entry<WaybillDet>(_wbd).State;
-
-          /*      if (sate == EntityState.Modified || sate == EntityState.Unchanged)
-                {
-                    _db.WaybillDet.Remove(_wbd);
-                }*/
-
                 using (var d = new BaseEntities())
                 {
                     d.DeleteWhere<WaybillDet>(w => w.PosId == _wbd.PosId);
