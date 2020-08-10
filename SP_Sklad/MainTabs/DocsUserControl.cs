@@ -672,7 +672,7 @@ namespace SP_Sklad.MainTabs
                         return;
                     }
 
-                    if (dr.WType == -1)
+                  /*  if (dr.WType == -1)
                     {
                         var print = new SP.Reports.PrintDoc();
                         var template_name = print.GetWBTemlate(dr.WType);
@@ -692,10 +692,10 @@ namespace SP_Sklad.MainTabs
                             }
                         }
                     }
-                    else
-                    {
+                    else*/
+               //     {
                         PrintDoc.Show(dr.Id, dr.WType, _db);
-                    }
+                //    }
                     break;
 
                 case 4:
