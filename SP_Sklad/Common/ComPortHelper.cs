@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
@@ -105,6 +106,15 @@ namespace SP_Sklad.Common
                     }
                 }
             }
+
+     /*       try
+            {
+                File.AppendAllText(Path.Combine(Application.StartupPath, "com_port.log"), received);
+            }
+            catch
+            {
+                ;
+            }*/
          }
 
     }

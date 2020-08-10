@@ -453,6 +453,18 @@ namespace SP.Base.Models
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatMove_Result>("[SPBaseModel].[GetMatMove](@mat_id, @from_date, @to_date, @wid, @ka_id, @w_type, @wh, @ka_grp_id, @user_id)", mat_idParameter, from_dateParameter, to_dateParameter, widParameter, ka_idParameter, w_typeParameter, whParameter, ka_grp_idParameter, user_idParameter);
         }
 
+      
+        public virtual DbSet<GetWayBillDetOut_Result> GetWayBillDetOut_Result { get; set; }
+        [DbFunction("SPBaseModel", "GetWayBillDetOut")]
+        public virtual IQueryable<GetWayBillDetOut_Result> GetWayBillDetOut(Nullable<int> wbill_id)
+        {
+            var wbill_idParameter = wbill_id.HasValue ?
+                new ObjectParameter("wbill_id", wbill_id) :
+                new ObjectParameter("wbill_id", typeof(int));
+
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillDetOut_Result>("[SPBaseModel].[GetWayBillDetOut](@wbill_id)", wbill_idParameter);
+        }
+
         public virtual DbSet<REP_13_Result> REP_13_Result { get; set; }
         [DbFunction("SPBaseModel", "REP_13")]
         public virtual IQueryable<REP_13_Result> REP_13(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> grp_id, Nullable<int> ka_id, string wh, Nullable<int> only_return, string grp)

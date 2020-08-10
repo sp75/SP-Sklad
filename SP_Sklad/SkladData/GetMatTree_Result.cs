@@ -20,5 +20,6 @@ namespace SP_Sklad.SkladData
         public string MsrName { get; set; }
         public int ImgIndex { get; set; }
         public string Artikul { get; set; }
+        public Nullable<int> WId { get; set; }
     }
 }

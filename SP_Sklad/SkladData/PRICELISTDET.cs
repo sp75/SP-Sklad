@@ -22,6 +22,8 @@ namespace SP_Sklad.SkladData
         public Nullable<int> PlDetType { get; set; }
         public Nullable<decimal> Discount { get; set; }
         public Nullable<int> Num { get; set; }
+        public string Notes { get; set; }
+        public Nullable<int> WId { get; set; }
     
         public virtual PriceList PriceList { get; set; }
     }

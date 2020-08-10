@@ -257,56 +257,7 @@ namespace SP_Sklad.WBDetForm
             }
             _db.SaveChanges();
 
-            if (pos_in == null)
-            {
-                GetPos();
-                SetAmount();
-            }
-
-            if (RSVCheckBox.Checked && !_db.WMatTurn.Any(w => w.SourceId == _wbd.PosId) && _db.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId && a.WId == _wbd.WId && a.UseReceived))
-            {
-                using (var d = new BaseEntities())
-                {
-                    d.DeleteWhere<WaybillDet>(w => w.PosId == _wbd.PosId);
-
-                    foreach (var item in pos_in.Where(w => w.Amount > 0))
-                    {
-                        var wbd = d.WaybillDet.Add(new WaybillDet()
-                        {
-                            WbillId = _wb.WbillId,
-                            Price = item.Price,
-                            BasePrice = item.BasePrice,
-                            Nds = item.Nds,
-                            CurrId = item.CurrId,
-                            OnDate = _wb.OnDate,
-                            WId = item.WId,
-                            Num = _wbd.Num,
-                            Amount = item.Amount.Value,
-                            MatId = item.MatId,
-
-                        });
-
-                        wbd.WMatTurn1.Add(new WMatTurn
-                        {
-                            PosId = item.PosId,
-                            WId = item.WId,
-                            MatId = item.MatId,
-                            OnDate = _wb.OnDate,
-                            TurnType = 2,
-                            Amount = Convert.ToDecimal(item.Amount),
-                            //  SourceId = wbd.PosId
-                        });
-
-                        d.SaveChanges();
-
-                    }
-                }
-            }
-
-            Close();
-
-
-            /* if (RSVCheckBox.Checked && !_db.WMatTurn.Any(w => w.SourceId == _wbd.PosId) && _db.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId && a.WId == _wbd.WId && a.UseReceived))
+             if (RSVCheckBox.Checked && !_db.WMatTurn.Any(w => w.SourceId == _wbd.PosId) && _db.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId && a.WId == _wbd.WId && a.UseReceived))
              {
                  foreach (var item in pos_in.Where(w => w.Amount > 0))
                  {
@@ -335,7 +286,7 @@ namespace SP_Sklad.WBDetForm
                  _db.UndoAllChanges();
 
                  throw exp;
-             }*/
+             }
         }
 
         private void AmountEdit_EditValueChanged(object sender, EventArgs e)

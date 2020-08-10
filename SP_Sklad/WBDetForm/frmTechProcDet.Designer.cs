@@ -376,6 +376,7 @@
             this.AmountEdit.StyleController = this.styleController1;
             this.AmountEdit.TabIndex = 24;
             this.AmountEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.AmountEdit_ButtonClick);
+            this.AmountEdit.EditValueChanged += new System.EventHandler(this.AmountEdit_EditValueChanged);
             this.AmountEdit.MouseUp += new System.Windows.Forms.MouseEventHandler(this.AmountEdit_MouseUp);
             // 
             // labelControl2

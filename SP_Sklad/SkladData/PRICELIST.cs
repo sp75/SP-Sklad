@@ -31,6 +31,8 @@ namespace SP_Sklad.SkladData
         public Nullable<int> DocId { get; set; }
         public Nullable<int> PTypeId { get; set; }
         public System.Guid Id { get; set; }
+        public Nullable<int> UpdatedBy { get; set; }
+        public Nullable<System.DateTime> UpdatedAt { get; set; }
     
         public virtual Currency Currency { get; set; }
         public virtual PriceTypes PriceTypes { get; set; }

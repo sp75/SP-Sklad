@@ -22,5 +22,10 @@ namespace SP.Reports.Comon
         {
             return _db.Reports.FirstOrDefault(w => w.RepId == rep_id).TemlateName;
         }
+
+        public string GetWBTemlate(int w_type)
+        {
+            return _db.DocType.FirstOrDefault(w => w.Id == w_type).TemlateName;
+        }
     }
 }

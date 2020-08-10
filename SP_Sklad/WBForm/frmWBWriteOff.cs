@@ -282,21 +282,15 @@ namespace SP_Sklad.WBForm
 
         private void RsvBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            /*   var r = new ObjectParameter("RSV", typeof(Int32));
+            var r = new ObjectParameter("RSV", typeof(Int32));
 
-               _db.ReservedPosition(focused_dr.PosId, r, DBHelper.CurrentUser.UserId);
+            _db.ReservedPosition(focused_dr.PosId, r, DBHelper.CurrentUser.UserId);
 
-               if (r.Value != null)
-               {
-                   focused_dr.Rsv = (int)r.Value;
-                   WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
-               }*/
-            if (!DBHelper.RsvItem(focused_dr.PosId.Value, _db))
+            if (r.Value != null)
             {
-                MessageBox.Show("Не вдалося зарезервувати товар!");
+                focused_dr.Rsv = (int)r.Value;
+                WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
             }
-
-            RefreshDet();
 
             GetOk();
         }
@@ -317,24 +311,9 @@ namespace SP_Sklad.WBForm
 
         private void RsvAllBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            /*   var res = _db.ReservedAllPosition(wb.WbillId, DBHelper.CurrentUser.UserId);
+            var res = _db.ReservedAllPosition(wb.WbillId, DBHelper.CurrentUser.UserId);
 
-               if (res.Any())
-               {
-                   MessageBox.Show("Не вдалося зарезервувати деякі товари!");
-               }*/
-
-           List<bool> rsv_items = new List<bool>(); 
-
-            foreach (var item in _db.GetWayBillDetOut(_wbill_id).OrderBy(o => o.Num).ToList())
-            {
-                if (item.Rsv != 1)
-                {
-                    rsv_items.Add(DBHelper.RsvItem(item.PosId.Value, _db));
-                }
-            }
-
-            if(rsv_items.Any(a=> !a))
+            if (res.Any())
             {
                 MessageBox.Show("Не вдалося зарезервувати деякі товари!");
             }

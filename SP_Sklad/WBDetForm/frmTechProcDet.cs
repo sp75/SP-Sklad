@@ -157,10 +157,15 @@ namespace SP_Sklad.WBDetForm
 
         private void ValidateForm()
         {
-            OkButton.Enabled = (TechProcessCB.GetSelectedDataRow() != null) && (OnDateEdit.DateTime > SqlDateTime.MinValue.Value);
+            OkButton.Enabled = (TechProcessCB.GetSelectedDataRow() != null) && (OnDateEdit.DateTime > SqlDateTime.MinValue.Value) && AmountEdit.Value > 0;
         }
 
         private void OnDateEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            ValidateForm();
+        }
+
+        private void AmountEdit_EditValueChanged(object sender, EventArgs e)
         {
             ValidateForm();
         }

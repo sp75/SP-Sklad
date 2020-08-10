@@ -1633,7 +1633,7 @@
             // 
             // gridColumn46
             // 
-            this.gridColumn46.Caption = "Пимітка";
+            this.gridColumn46.Caption = "Примітка";
             this.gridColumn46.FieldName = "Notes";
             this.gridColumn46.Name = "gridColumn46";
             this.gridColumn46.Visible = true;

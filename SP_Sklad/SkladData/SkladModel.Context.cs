@@ -1790,29 +1790,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillDetOut_Result>("[BaseEntities].[GetWayBillDetOut](@wbill_id)", wbill_idParameter);
         }
     
-        public virtual ObjectResult<GetPriceListDet_Result> GetPriceListDet(Nullable<int> pl_id)
-        {
-            var pl_idParameter = pl_id.HasValue ?
-                new ObjectParameter("pl_id", pl_id) :
-                new ObjectParameter("pl_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPriceListDet_Result>("GetPriceListDet", pl_idParameter);
-        }
-    
-        [EdmFunction("BaseEntities", "GetMatTree")]
-        public virtual IQueryable<GetMatTree_Result> GetMatTree(Nullable<int> p_type, Nullable<int> curr_id)
-        {
-            var p_typeParameter = p_type.HasValue ?
-                new ObjectParameter("p_type", p_type) :
-                new ObjectParameter("p_type", typeof(int));
-    
-            var curr_idParameter = curr_id.HasValue ?
-                new ObjectParameter("curr_id", curr_id) :
-                new ObjectParameter("curr_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatTree_Result>("[BaseEntities].[GetMatTree](@p_type, @curr_id)", p_typeParameter, curr_idParameter);
-        }
-    
         public virtual ObjectResult<ExecuteWayBill_Result> ExecuteWayBill(Nullable<int> wBILLID, Nullable<int> nEW_WTYPE, Nullable<int> person_id)
         {
             var wBILLIDParameter = wBILLID.HasValue ?
@@ -2318,16 +2295,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetOperLog_Result>("[BaseEntities].[GetOperLog](@from_date, @to_date, @fun_id, @user_id)", from_dateParameter, to_dateParameter, fun_idParameter, user_idParameter);
         }
     
-        [EdmFunction("BaseEntities", "GetWaybillDetIn")]
-        public virtual IQueryable<GetWaybillDetIn_Result> GetWaybillDetIn(Nullable<int> wbill_id)
-        {
-            var wbill_idParameter = wbill_id.HasValue ?
-                new ObjectParameter("wbill_id", wbill_id) :
-                new ObjectParameter("wbill_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWaybillDetIn_Result>("[BaseEntities].[GetWaybillDetIn](@wbill_id)", wbill_idParameter);
-        }
-    
         [EdmFunction("BaseEntities", "REP_41")]
         public virtual IQueryable<REP_41_Result> REP_41(Nullable<System.DateTime> from_date, Nullable<System.Guid> ka_grp_id)
         {
@@ -2340,6 +2307,52 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("ka_grp_id", typeof(System.Guid));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_41_Result>("[BaseEntities].[REP_41](@from_date, @ka_grp_id)", from_dateParameter, ka_grp_idParameter);
+        }
+    
+        public virtual int CreateOrderByPriceList(Nullable<int> wbillId, Nullable<int> plId)
+        {
+            var wbillIdParameter = wbillId.HasValue ?
+                new ObjectParameter("WbillId", wbillId) :
+                new ObjectParameter("WbillId", typeof(int));
+    
+            var plIdParameter = plId.HasValue ?
+                new ObjectParameter("PlId", plId) :
+                new ObjectParameter("PlId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CreateOrderByPriceList", wbillIdParameter, plIdParameter);
+        }
+    
+        public virtual ObjectResult<GetPriceListDet_Result> GetPriceListDet(Nullable<int> pl_id)
+        {
+            var pl_idParameter = pl_id.HasValue ?
+                new ObjectParameter("pl_id", pl_id) :
+                new ObjectParameter("pl_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPriceListDet_Result>("GetPriceListDet", pl_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetMatTree")]
+        public virtual IQueryable<GetMatTree_Result> GetMatTree(Nullable<int> p_type, Nullable<int> curr_id)
+        {
+            var p_typeParameter = p_type.HasValue ?
+                new ObjectParameter("p_type", p_type) :
+                new ObjectParameter("p_type", typeof(int));
+    
+            var curr_idParameter = curr_id.HasValue ?
+                new ObjectParameter("curr_id", curr_id) :
+                new ObjectParameter("curr_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatTree_Result>("[BaseEntities].[GetMatTree](@p_type, @curr_id)", p_typeParameter, curr_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetWaybillDetIn")]
+        public virtual IQueryable<GetWaybillDetIn_Result> GetWaybillDetIn(Nullable<int> wbill_id)
+        {
+            var wbill_idParameter = wbill_id.HasValue ?
+                new ObjectParameter("wbill_id", wbill_id) :
+                new ObjectParameter("wbill_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWaybillDetIn_Result>("[BaseEntities].[GetWaybillDetIn](@wbill_id)", wbill_idParameter);
         }
     }
 }

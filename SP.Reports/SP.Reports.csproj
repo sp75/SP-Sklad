@@ -56,6 +56,9 @@
     <Reference Include="NCalc">
       <HintPath>..\..\..\MyWebApplication\OpenXml.ReportBuilderXLS\OpenXml.ReportBuilderXLS\bin\Debug\NCalc.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -72,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comon\BaseReport.cs" />
+    <Compile Include="Comon\MoneyToStr.cs" />
     <Compile Include="Models\Views\ChTypeComboBoxItem.cs" />
     <Compile Include="Models\Views\Enterprise.cs" />
     <Compile Include="Models\Views\GrpComboBoxItem.cs" />
@@ -84,6 +88,7 @@
     <Compile Include="Models\Views\use_rec_mat.cs" />
     <Compile Include="Models\Views\WhComboBoxItem.cs" />
     <Compile Include="Models\Views\XLRPARAMS.cs" />
+    <Compile Include="PrintDoc.cs" />
     <Compile Include="PrintReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportBuilder\ReportBuilder.cs" />

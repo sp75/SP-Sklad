@@ -19,5 +19,6 @@ namespace SP.Base.Models
         public string ShortName { get; set; }
 
         public int? FunId { get; set; }
+        public string TemlateName { get; set; }
     }
 }

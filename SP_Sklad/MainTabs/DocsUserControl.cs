@@ -24,6 +24,7 @@ using SkladEngine.WayBills;
 using System.IO;
 using DevExpress.Data;
 using SP_Sklad.ViewsForm;
+using System.Diagnostics;
 
 namespace SP_Sklad.MainTabs
 {
@@ -671,7 +672,30 @@ namespace SP_Sklad.MainTabs
                         return;
                     }
 
-                    PrintDoc.Show(dr.Id, dr.WType, _db);
+                    if (dr.WType == -1)
+                    {
+                        var print = new SP.Reports.PrintDoc();
+                        var template_name = print.GetWBTemlate(dr.WType);
+
+                        var template_file = Path.Combine(IHelper.template_path, template_name);
+                        if (File.Exists(template_file))
+                        {
+
+                            var rep = print.CreateReport(dr.Id, dr.WType, template_file);
+
+                            String result_file = Path.Combine(Path.Combine(Application.StartupPath, "Rep"), Path.GetFileNameWithoutExtension(template_name) + "_" + DateTime.Now.Ticks.ToString() + "." + "xlsx");
+                            File.WriteAllBytes(result_file, rep);
+
+                            if (File.Exists(result_file))
+                            {
+                                Process.Start(result_file);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        PrintDoc.Show(dr.Id, dr.WType, _db);
+                    }
                     break;
 
                 case 4:
@@ -1208,9 +1232,8 @@ namespace SP_Sklad.MainTabs
             var pl_row = PriceListGridView.GetFocusedRow() as v_PriceList;
             using (var db = DB.SkladBase())
             {
-                var pld = db.PriceListDet.Where(w => w.PlId == pl_row.PlId).OrderBy(o => o.Num).ToList();
                 int wb_count = 0;
-                foreach (var kagent in ka_template_list.Where(w=> w.Check) /*db.PriceList.First(w => w.Id == pl_row.Id).Kagent.ToList()*/)
+                foreach (var kagent in ka_template_list.Where(w=> w.Check) )
                 {
                     var _wb = db.WaybillList.Add(new WaybillList()
                     {
@@ -1229,48 +1252,47 @@ namespace SP_Sklad.MainTabs
                     });
                     db.SaveChanges();
 
-                    int count = 0;
-                    foreach (var item in pld.Where(w => w.PlDetType == 0).ToList())
-                    {
-                        var DiscountPrice = item.Price - (item.Price * (item.Discount ?? 0) / 100);
+                    db.CreateOrderByPriceList(_wb.WbillId, pl_row.PlId);
 
-                        db.WaybillDet.Add(new WaybillDet
-                        {
-                            WbillId = _wb.WbillId,
-                            Amount = 0,
-                            Discount = item.Discount ?? 0,
-                            Nds = _wb.Nds,
-                            CurrId = _wb.CurrId,
-                            OnDate = _wb.OnDate,
-                            Num = ++count,
-                            OnValue = _wb.OnValue,
-                            PosKind = 0,
-                            PosParent = 0,
-                            DiscountKind = 1,
-                            //   PtypeId = db.Kagent.Find(_wb.KaId).PTypeId,
-                            WayBillDetAddProps = new WayBillDetAddProps(),
-                            BasePrice = item.Price,
-                            Price = DiscountPrice * 100 / (100 + _wb.Nds),
-                            WId = db.Materials.Find(item.MatId).WId,
-                            MatId = item.MatId.Value
-                        });
-                    }
+                    /*  int count = 0;
+                      var pld = db.PriceListDet.Where(w => w.PlId == pl_row.PlId).OrderBy(o => o.Num).ToList();
 
-                    db.SaveChanges();
+                      foreach (var item in pld.Where(w => w.PlDetType == 0).ToList())
+                      {
+                          var DiscountPrice = item.Price - (item.Price * (item.Discount ?? 0) / 100);
+
+                          db.WaybillDet.Add(new WaybillDet
+                          {
+                              WbillId = _wb.WbillId,
+                              Amount = 0,
+                              Discount = item.Discount ?? 0,
+                              Nds = _wb.Nds,
+                              CurrId = _wb.CurrId,
+                              OnDate = _wb.OnDate,
+                              Num = ++count,
+                              OnValue = _wb.OnValue,
+                              PosKind = 0,
+                              PosParent = 0,
+                              DiscountKind = 1,
+                              //   PtypeId = db.Kagent.Find(_wb.KaId).PTypeId,
+                              WayBillDetAddProps = new WayBillDetAddProps(),
+                              BasePrice = item.Price,
+                              Price = DiscountPrice * 100 / (100 + _wb.Nds),
+                              WId = db.Materials.Find(item.MatId).WId,
+                              MatId = item.MatId.Value,
+                              Notes = item.Notes
+                          });
+                      }
+
+                      db.SaveChanges();*/
+
+
 
                     ++wb_count;
                 }
 
                 MessageBox.Show(string.Format( "Створено {0} замовлень !", wb_count));
-
-          /*     using (var wb_in = new frmWayBillOut(-16, _wb.WbillId))
-                {
-                    wb_in.is_new_record = true;
-                    wb_in.ShowDialog();
-                }*/
             }
-
-
         }
 
         private void barButtonItem13_ItemClick(object sender, ItemClickEventArgs e)

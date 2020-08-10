@@ -212,6 +212,14 @@ namespace SP_Sklad.WBForm
 
             if (TurnDocCheckBox.Checked)
             {
+                RefreshDet();
+                if(wbd_list.Any(w => w.Rsv == 0))
+                {
+                    MessageBox.Show("Не всі позиції зарезервовано");
+                    return;
+                }
+
+
                 var ex_wb = _db.ExecuteWayBill(wb.WbillId, null, DBHelper.CurrentUser.KaId).FirstOrDefault();
 
                 if (ex_wb.ErrorMessage != "False")
@@ -272,22 +280,15 @@ namespace SP_Sklad.WBForm
 
         private void RsvBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            /*  var r = new ObjectParameter("RSV", typeof(Int32));
+            var r = new ObjectParameter("RSV", typeof(Int32));
 
-              _db.ReservedPosition(wbd_row.PosId, r, DBHelper.CurrentUser.UserId);
+            _db.ReservedPosition(wbd_row.PosId, r, DBHelper.CurrentUser.UserId);
 
-              if (r.Value != null)
-              {
-                  wbd_row.Rsv = (int)r.Value;
-                  RefreshDet();
-              }*/
-
-            if (!DBHelper.RsvItem(wbd_row.PosId, _db))
+            if (r.Value != null)
             {
-                MessageBox.Show("Не вдалося зарезервувати товар!");
+                wbd_row.Rsv = (int)r.Value;
+                RefreshDet();
             }
-
-            RefreshDet();
 
             GetOk();
         }
@@ -308,30 +309,14 @@ namespace SP_Sklad.WBForm
 
         private void RsvAllBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            /*     var res = _db.ReservedAllPosition(wb.WbillId, DBHelper.CurrentUser.UserId);
+            var res = _db.ReservedAllPosition(wb.WbillId, DBHelper.CurrentUser.UserId);
 
-                 if (res.Any())
-                 {
-                     MessageBox.Show("Не вдалося зарезервувати деякі товари!");
-                 }*/
-
-            List<bool> rsv_items = new List<bool>();
-
-            foreach (var item in _db.GetWayBillMakeDet(_wbill_id).OrderBy(o => o.Num).ToList())
-            {
-                if (item.Rsv != 1)
-                {
-                    rsv_items.Add(DBHelper.RsvItem(item.PosId, _db));
-                }
-            }
-
-            if (rsv_items.Any(a => !a))
+            if (res.Any())
             {
                 MessageBox.Show("Не вдалося зарезервувати деякі товари!");
             }
 
             RefreshDet();
-
         }
 
         private void DelAllRsvBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

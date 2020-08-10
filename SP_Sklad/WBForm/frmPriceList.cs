@@ -37,6 +37,7 @@ namespace SP_Sklad.WBForm
         {
             PTypeEdit.Properties.DataSource = DB.SkladBase().PriceTypes.Select(s => new { s.PTypeId, s.Name }).ToList();
             PriceListlookUp.Properties.DataSource = DB.SkladBase().PriceList.Select(s => new { s.PlId, s.Name }).ToList();
+            repositoryItemLookUpEdit1.DataSource = DBHelper.WhList;
 
             if (_pl_id == null)
             {
@@ -46,7 +47,10 @@ namespace SP_Sklad.WBForm
                     Deleted = 0,
                     UseLogo = 0,
                     CurrId = 2,
-                    OnDate = DateTime.Now
+                    OnDate = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
+                    UpdatedBy = DBHelper.CurrentUser.UserId
+
                 });
 
                 _db.SaveChanges();
@@ -83,6 +87,8 @@ namespace SP_Sklad.WBForm
                 var kaid = (int)item.Value;
                 pl.Kagent.Add(_db.Kagent.Find(kaid));
             }
+            pl.UpdatedAt = DateTime.Now;
+            pl.UpdatedBy = DBHelper.CurrentUser.UserId;
 
             _db.SaveChanges();
             current_transaction.Commit();
@@ -162,7 +168,8 @@ namespace SP_Sklad.WBForm
                     GrpId = row.Pid * -1,
                     PlDetType = 0,
                     Discount = 0,
-                    Num = pl.PriceListDet.Count()
+                    Num = pl.PriceListDet.Count(),
+                    WId = row.WId
                 });
             }
             else
@@ -250,6 +257,16 @@ namespace SP_Sklad.WBForm
             if (e.Column.FieldName == "Discount")
             {
                 pld.Discount = Convert.ToDecimal(e.Value);
+            }
+
+            if (e.Column.FieldName == "Notes")
+            {
+                pld.Notes = Convert.ToString(e.Value);
+            }
+
+            if(e.Column.FieldName == "WId")
+            {
+                pld.WId = Convert.ToInt32(e.Value);
             }
         }
 
