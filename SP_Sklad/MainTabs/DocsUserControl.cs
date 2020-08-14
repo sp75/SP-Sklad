@@ -672,30 +672,30 @@ namespace SP_Sklad.MainTabs
                         return;
                     }
 
-                  /*  if (dr.WType == -1)
-                    {
-                        var print = new SP.Reports.PrintDoc();
-                        var template_name = print.GetWBTemlate(dr.WType);
+                    /*  if (dr.WType == -1)
+                      {
+                          var print = new SP.Reports.PrintDoc();
+                          var template_name = print.GetWBTemlate(dr.WType);
 
-                        var template_file = Path.Combine(IHelper.template_path, template_name);
-                        if (File.Exists(template_file))
-                        {
+                          var template_file = Path.Combine(IHelper.template_path, template_name);
+                          if (File.Exists(template_file))
+                          {
 
-                            var rep = print.CreateReport(dr.Id, dr.WType, template_file);
+                              var rep = print.CreateReport(dr.Id, dr.WType, template_file);
 
-                            String result_file = Path.Combine(Path.Combine(Application.StartupPath, "Rep"), Path.GetFileNameWithoutExtension(template_name) + "_" + DateTime.Now.Ticks.ToString() + "." + "xlsx");
-                            File.WriteAllBytes(result_file, rep);
+                              String result_file = Path.Combine(Path.Combine(Application.StartupPath, "Rep"), Path.GetFileNameWithoutExtension(template_name) + "_" + DateTime.Now.Ticks.ToString() + "." + "xlsx");
+                              File.WriteAllBytes(result_file, rep);
 
-                            if (File.Exists(result_file))
-                            {
-                                Process.Start(result_file);
-                            }
-                        }
-                    }
-                    else*/
-               //     {
-                        PrintDoc.Show(dr.Id, dr.WType, _db);
-                //    }
+                              if (File.Exists(result_file))
+                              {
+                                  Process.Start(result_file);
+                              }
+                          }
+                      }
+                      else*/
+                    //     {
+                    PrintDoc.Show(dr.Id, dr.WType, _db);
+                    //    }
                     break;
 
                 case 4:

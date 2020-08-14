@@ -1087,23 +1087,29 @@ namespace SP_Sklad.MainTabs
             }
         }
 
-        private void KaGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
+        private void GetKontragentDetail()
         {
-
             var f_row = KaGridView.GetFocusedRow() as KagentList;
 
-             KAgentInfoBS.DataSource = f_row;
-             memoEdit1.Text = f_row.Notes;
+            KAgentInfoBS.DataSource = f_row;
+            memoEdit1.Text = f_row.Notes;
 
-             using (var db = DB.SkladBase())
-             {
-                 gridControl3.DataSource = db.KAgentPersons.Where(w => w.KAId == f_row.KaId).Join(db.Jobs,
-                                     person => person.JobType,
-                                     job => job.Id,
-                                     (person, job) => new { person.Name, person.Notes, person.Phone, person.Email, Post = person.JobType == 0 ? person.Post : job.Name }).ToList();
+            using (var db = DB.SkladBase())
+            {
+                gridControl3.DataSource = db.KAgentPersons.Where(w => w.KAId == f_row.KaId).Join(db.Jobs,
+                                    person => person.JobType,
+                                    job => job.Id,
+                                    (person, job) => new { person.Name, person.Notes, person.Phone, person.Email, Post = person.JobType == 0 ? person.Post : job.Name }).ToList();
 
-                 gridControl1.DataSource = db.KAgentAccount.Where(w => w.KAId == f_row.KaId).Select(s => new { s.AccNum, s.Banks.MFO, BankName = s.Banks.Name, TypeName = s.AccountType.Name }).ToList();
-             }
+                gridControl1.DataSource = db.KAgentAccount.Where(w => w.KAId == f_row.KaId).Select(s => new { s.AccNum, s.Banks.MFO, BankName = s.Banks.Name, TypeName = s.AccountType.Name }).ToList();
+
+                gridControl4.DataSource = db.EnterpriseWorker.Where(w => w.EnterpriseId == f_row.KaId).Join(db.Kagent, p => p.WorkerId, k => k.KaId, (p, k) => new { k.KaId, k.Name }).ToList();
+            }
+        }
+
+        private void KaGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
+        {
+            GetKontragentDetail();
         }
 
         private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -1233,6 +1239,18 @@ namespace SP_Sklad.MainTabs
 
                 db.SaveChanges();
 
+            }
+        }
+
+        private void gridView5_DoubleClick(object sender, EventArgs e)
+        {
+            var row = gridView5.GetFocusedRow() as dynamic;
+            using (var frm = new frmKAgentEdit(null, row.KaId))
+            {
+              if(  frm.ShowDialog() == DialogResult.OK)
+                {
+                    GetKontragentDetail();
+                }
             }
         }
     }

@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DirectoriesUserControl));
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.GridImageList = new System.Windows.Forms.ImageList(this.components);
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -146,6 +146,10 @@
             this.gridColumn82 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage18 = new DevExpress.XtraTab.XtraTabPage();
             this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
+            this.xtraTabPage31 = new DevExpress.XtraTab.XtraTabPage();
+            this.gridControl4 = new DevExpress.XtraGrid.GridControl();
+            this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn83 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl3 = new DevExpress.XtraEditors.SplitContainerControl();
@@ -377,6 +381,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.xtraTabPage18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
+            this.xtraTabPage31.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
             this.xtraTabPage10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl3)).BeginInit();
             this.splitContainerControl3.SuspendLayout();
@@ -1375,7 +1382,8 @@
             this.xtraTabPage1,
             this.xtraTabPage2,
             this.xtraTabPage16,
-            this.xtraTabPage18});
+            this.xtraTabPage18,
+            this.xtraTabPage31});
             // 
             // xtraTabPage1
             // 
@@ -1387,7 +1395,7 @@
             // 
             // vGridControl1
             // 
-            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeNS;
+            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeWE;
             this.vGridControl1.DataSource = this.KAgentInfoBS;
             this.vGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl1.Location = new System.Drawing.Point(0, 0);
@@ -1686,6 +1694,43 @@
             this.memoEdit1.Name = "memoEdit1";
             this.memoEdit1.Size = new System.Drawing.Size(1080, 194);
             this.memoEdit1.TabIndex = 0;
+            // 
+            // xtraTabPage31
+            // 
+            this.xtraTabPage31.Controls.Add(this.gridControl4);
+            this.xtraTabPage31.Name = "xtraTabPage31";
+            this.xtraTabPage31.Size = new System.Drawing.Size(1080, 194);
+            this.xtraTabPage31.Text = "Контрагенти/Службовці";
+            // 
+            // gridControl4
+            // 
+            this.gridControl4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl4.Location = new System.Drawing.Point(0, 0);
+            this.gridControl4.MainView = this.gridView5;
+            this.gridControl4.Name = "gridControl4";
+            this.gridControl4.Size = new System.Drawing.Size(1080, 194);
+            this.gridControl4.TabIndex = 1;
+            this.gridControl4.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView5});
+            // 
+            // gridView5
+            // 
+            this.gridView5.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn83});
+            this.gridView5.GridControl = this.gridControl4;
+            this.gridView5.Name = "gridView5";
+            this.gridView5.OptionsBehavior.Editable = false;
+            this.gridView5.OptionsBehavior.ReadOnly = true;
+            this.gridView5.OptionsView.ShowGroupPanel = false;
+            this.gridView5.DoubleClick += new System.EventHandler(this.gridView5_DoubleClick);
+            // 
+            // gridColumn83
+            // 
+            this.gridColumn83.Caption = "П.І.Б";
+            this.gridColumn83.FieldName = "Name";
+            this.gridColumn83.Name = "gridColumn83";
+            this.gridColumn83.Visible = true;
+            this.gridColumn83.VisibleIndex = 0;
             // 
             // xtraTabPage6
             // 
@@ -2481,9 +2526,9 @@
             // 
             this.MatRecipeGridControl.DataSource = this.MatRecipeDS;
             this.MatRecipeGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.RelationName = "Level1";
             this.MatRecipeGridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.MatRecipeGridControl.Location = new System.Drawing.Point(0, 0);
             this.MatRecipeGridControl.MainView = this.MatRecipeGridView;
             this.MatRecipeGridControl.Name = "MatRecipeGridControl";
@@ -3625,6 +3670,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.xtraTabPage18.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
+            this.xtraTabPage31.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
             this.xtraTabPage10.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl3)).EndInit();
             this.splitContainerControl3.ResumeLayout(false);
@@ -4047,5 +4095,9 @@
         private DevExpress.Utils.SharedImageCollection UserTreeImgList;
         private DevExpress.XtraBars.BarButtonItem btnMoveUp;
         private DevExpress.XtraBars.BarButtonItem btnMoveDown;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage31;
+        private DevExpress.XtraGrid.GridControl gridControl4;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn83;
     }
 }
