@@ -65,7 +65,7 @@ namespace SP_Sklad
                         MatComboBox.EditValue = first_or_default.MatId;
                     }
                 }
-                if(_rep_id == 40)
+                if (_rep_id == 40 || _rep_id == 43)
                 {
                     var tmc = new BaseEntities().Materials.Where(w => w.Deleted == 0 && w.TypeId == 4/*"ТМЦ"*/).Select(s => new MatComboBoxItem
                     {

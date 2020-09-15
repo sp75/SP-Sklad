@@ -401,6 +401,7 @@ namespace SP_Sklad.MainTabs
                     frm.ChargeGroupBox.Visible = false;
                     frm.WHGroupBox.Visible = false;
                     break;
+
                 case 40:
 
                     frm.PersonPanel.Visible = false;
@@ -433,6 +434,20 @@ namespace SP_Sklad.MainTabs
                     frm.ChargeGroupBox.Visible = false;
                     frm.DocTypeGroupBox2.Visible = false;
                     frm.WHGroupBox.Visible = false;
+                    frm.KontragentPanel.Visible = false;
+                    break;
+
+
+                case 43:
+                    frm.OnDateGroupBox.Visible = false;
+                    frm.PersonPanel.Visible = false;
+                    frm.GRPGroupBox.Visible = false;
+                    //   frm.MatGroupBox.Visible = false;
+                    frm.DocTypeGroupBox.Visible = false;
+                    frm.DocTypeGroupBox2.Visible = false;
+                    frm.ChargeGroupBox.Visible = false;
+                    frm.WHGroupBox.Visible = false;
+                    frm.GroupKontragentPanel.Visible = true;
                     frm.KontragentPanel.Visible = false;
                     break;
             }

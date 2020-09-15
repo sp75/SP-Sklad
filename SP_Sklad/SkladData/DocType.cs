@@ -18,5 +18,6 @@ namespace SP_Sklad.SkladData
         public string Name { get; set; }
         public string ShortName { get; set; }
         public Nullable<int> FunId { get; set; }
+        public string TemlateName { get; set; }
     }
 }

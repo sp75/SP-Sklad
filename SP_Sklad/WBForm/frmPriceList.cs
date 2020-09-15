@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraTreeList;
 using SP_Sklad.Common;
+using SP_Sklad.Properties;
 using SP_Sklad.Reports;
 using SP_Sklad.SkladData;
 
@@ -276,7 +277,10 @@ namespace SP_Sklad.WBForm
 
             if (PriceListGrid.IsGroupRow(PriceListGrid.FocusedRowHandle))
             {
-                _db.DeleteWhere<PriceListDet>(w => w.GrpId == dr.GrpId);
+                if (MessageBox.Show($"Ви дійсно бажаєте відалити групу товарів {dr.GrpName} ?", "Підтвердіть видалення", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                {
+                    _db.DeleteWhere<PriceListDet>(w => w.GrpId == dr.GrpId && w.PlId == _pl_id);
+                }
             }
             else
             {

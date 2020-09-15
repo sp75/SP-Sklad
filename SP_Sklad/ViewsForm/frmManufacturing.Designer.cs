@@ -623,11 +623,11 @@
             // labelControl5
             // 
             this.labelControl5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl5.Location = new System.Drawing.Point(961, 14);
+            this.labelControl5.Location = new System.Drawing.Point(918, 14);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(57, 13);
+            this.labelControl5.Size = new System.Drawing.Size(100, 13);
             this.labelControl5.TabIndex = 7;
-            this.labelControl5.Text = "Штрих-код";
+            this.labelControl5.Text = "Штрих-код (EAN13)";
             // 
             // xtraTabControl1
             // 

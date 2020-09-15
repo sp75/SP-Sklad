@@ -56,6 +56,7 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> ShippedAmount { get; set; }
         public Nullable<decimal> Tara { get; set; }
         public Nullable<decimal> SaldoShipped { get; set; }
+        public string Artikul { get; set; }
         public Nullable<decimal> MatOut { get; set; }
     }
 }

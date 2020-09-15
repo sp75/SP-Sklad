@@ -217,6 +217,10 @@ namespace SP.Reports
                     REP_42();
                     break;
 
+                case 43:
+                    REP_43();
+                    break;
+
                 default:
                     break;
             }
@@ -1265,8 +1269,69 @@ namespace SP.Reports
             data_for_report.Add("MatOutDet", report);
         }
 
+        private void REP_43()
+        {
+            var list = _db.Database.SqlQuery<rep_43>(@"  SELECT
+       wbl.KaId 
+      ,ka.Name KaName
+      ,(case when wbl.WType = -1 then 'Видано' else 'Повернуто' end)  TurnType
+	  ,wbl.Num
+	  ,wbl.OnDate
+      ,tmc.CalcAmount TurnAmount
+	  , ms.ShortName as MsrName
+	  , m.Name as MatName
 
-        private string GetSortedList(int rep_id)
+  FROM  [WayBillTmc] tmc
+  inner join WaybillList wbl on wbl.WbillId = tmc.[WbillId]
+  inner join Kagent ka on ka.KaId = wbl.KaId 
+  inner join Materials m on m.MatId = tmc.[MatId]
+  inner join Measures ms on ms.MId = m.MId
+  left outer join KontragentGroup kag on kag.Id = ka.GroupId
+  
+  where tmc.[MatId] = {0} and ka.GroupId = {1} and wbl.WType in (-1, 6) and wbl.Checked = 1 and wbl.OnDate between {2} and {3}
+  order by wbl.OnDate", Material.MatId, KontragentGroup.Id, StartDate.Date, EndDate.Date.AddDays(1)).ToList();
+
+            var list2 = _db.Database.SqlQuery<rep_43>(@"  
+  SELECT ka.KaId, ka.Name KaName, sum(tmc.CalcAmount) TurnAmount
+  FROM  [WayBillTmc] tmc
+  inner join WaybillList wbl on wbl.WbillId = tmc.[WbillId]
+  inner join Kagent ka on ka.KaId = wbl.KaId 
+  left outer join KontragentGroup kag on kag.Id = ka.GroupId
+  where tmc.[MatId] = {0} and ka.GroupId = {1} and wbl.WType in (-1, 6) and wbl.Checked = 1 and wbl.OnDate < {2} 
+  group by ka.KaId, ka.Name", Material.MatId, KontragentGroup.Id, StartDate.Date ).ToList();
+
+
+            realation.Add(new
+            {
+                pk = "KaId",
+                fk = "KaId",
+                master_table = "MatGroup",
+                child_table = "MatOutDet"
+            });
+
+            data_for_report.Add("_realation_", realation);
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("MatGroup", list2.Where(w=> list.Any(a=> a.KaId == w.KaId )).ToList());
+            data_for_report.Add("MatOutDet", list);
+         
+        }
+
+        public class rep_43
+        {
+            public int? KaId { get; set; }
+            public string KaName { get; set; }
+            public string Num { get; set; }
+            public DateTime OnDate { get; set; }
+            public decimal TurnAmount { get; set; }
+            public string MsrName { get; set; }
+            public string MatName { get; set; }
+            public string TurnType { get; set; }
+
+        }
+
+
+            private string GetSortedList(int rep_id)
         {
             string result = "";
             var list = _db.ReportSortedFields.Where(w => w.RepId == rep_id && w.OrderDirection != 0).OrderBy(o => o.Idx).ToList();

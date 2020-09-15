@@ -62,7 +62,7 @@ namespace SP_Sklad.ViewsForm
         {
             var amount = (wb_focused_row.AmountOut ?? 0) - (wb_focused_row.ShippedAmount ?? 0);
 
-            AddWBMake(amount, $"{wb_focused_row.WbillId.ToString()}+{Math.Truncate(amount)}+{(int)(amount * 1000m) % 1000}+{wb_focused_row.MatId}");
+            AddWBMake(amount, $"{wb_focused_row.OnDate.Day}{wb_focused_row.OnDate.Month}{wb_focused_row.Artikul}{Convert.ToInt32( Math.Round( amount, 3) * 1000)}{0}");
         }
 
         private void AddWBMake(decimal Amount, string bar_code)
@@ -100,20 +100,17 @@ namespace SP_Sklad.ViewsForm
 
         private void BarCodeEdit_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13 && !String.IsNullOrEmpty(BarCodeEdit.Text))
+            if (e.KeyChar == 13 && !String.IsNullOrEmpty(BarCodeEdit.Text) && BarCodeEdit.Text.Count() == 13)
             {
-                var BarCodeSplit = BarCodeEdit.Text.Split('+');
-                String kod = BarCodeSplit[0];
+                var day = BarCodeEdit.Text.Substring(0, 2);
+                var mounth = BarCodeEdit.Text.Substring(2, 2);
+                var artikul = BarCodeEdit.Text.Substring(4, 3);
+                decimal amount = Convert.ToInt32(BarCodeEdit.Text.Substring(7, 5)) / 1000.00m;
 
-                var row = WBListMakeBS.List.OfType<WBListMake_Result>().ToList().Find(f => f.WbillId == Convert.ToInt32(kod));
+                var row = WBListMakeBS.List.OfType<WBListMake_Result>().ToList().FirstOrDefault(f => f.Artikul == artikul);
                 var pos = WBListMakeBS.IndexOf(row);
                 WBListMakeBS.Position = pos;
-                var amount = wb_focused_row.AmountOut ?? 0;
-
-                if (BarCodeSplit.Count() >= 3)
-                {
-                    amount = Convert.ToDecimal(BarCodeSplit[1] + "," + BarCodeSplit[2]);
-                }
+                //  var amount = wb_focused_row.AmountOut ?? 0;
 
                 if (row != null && xtraTabPage14.PageVisible)
                 {
