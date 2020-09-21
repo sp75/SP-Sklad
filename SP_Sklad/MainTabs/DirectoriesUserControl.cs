@@ -260,6 +260,11 @@ namespace SP_Sklad.MainTabs
                             CurrencyBS.DataSource = _db.Currency.ToList();
                             extDirTabControl.SelectedTabPageIndex = 12;
                             break;
+
+                        case 124:
+                            PreparationMatRecipeGridControl.DataSource = _db.MatRecipe.Where(w => w.RType == 3).ToList();
+                            extDirTabControl.SelectedTabPageIndex = 13;
+                            break;
                     }
                     break;
             }
@@ -381,6 +386,16 @@ namespace SP_Sklad.MainTabs
                             var dc = DiscCardsGridView.GetFocusedRow() as v_DiscCards;
                             result = new frmDiscountCardEdit(dc.CardId).ShowDialog();
                             break;
+
+                        case 124:
+                            if (PreparationMatRecipeGridView.FocusedRowHandle >= 0)
+                            {
+                                dynamic r_item = PreparationMatRecipeGridView.GetFocusedRow();
+                                result = new frmPreparationMatRecipe(r_item.RecId).ShowDialog();
+                            }
+                            break;
+
+                            
                     }
                     break;
 
@@ -412,20 +427,23 @@ namespace SP_Sklad.MainTabs
                     }
                     break;
 
-                case 3: if (DB.SkladBase().SvcGroup.Any())
+                case 3:
+                    if (DB.SkladBase().SvcGroup.Any())
                     {
                         var svc_edit = new frmServicesEdit(null, focused_tree_node.Id < 0 ? focused_tree_node.Id * -1 : DB.SkladBase().SvcGroup.First().GrpId);
                         svc_edit.ShowDialog();
                     }
                     break;
 
-                case 4: switch (focused_tree_node.Id)
+                case 4:
+                    switch (focused_tree_node.Id)
                     {
                         case 25:
                             new frmWarehouseEdit().ShowDialog();
                             break;
 
-                        case 11: new frmBanksEdit().ShowDialog();
+                        case 11:
+                            new frmBanksEdit().ShowDialog();
                             break;
 
                         case 2:
@@ -448,7 +466,8 @@ namespace SP_Sklad.MainTabs
                             new frmChargeTypeEdit().ShowDialog();
                             break;
 
-                        case 64: new frmCashdesksEdit().ShowDialog();
+                        case 64:
+                            new frmCashdesksEdit().ShowDialog();
                             break;
 
                         case 42:
@@ -469,6 +488,10 @@ namespace SP_Sklad.MainTabs
 
                         case 109:
                             new frmDiscountCardEdit().ShowDialog();
+                            break;
+
+                        case 124:
+                            new frmPreparationMatRecipe().ShowDialog();
                             break;
 
                     }

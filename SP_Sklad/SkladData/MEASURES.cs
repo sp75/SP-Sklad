@@ -19,6 +19,7 @@ namespace SP_Sklad.SkladData
             this.Materials = new HashSet<Materials>();
             this.Services = new HashSet<Services>();
             this.MaterialMeasures = new HashSet<MaterialMeasures>();
+            this.MatRecipe = new HashSet<MatRecipe>();
         }
     
         public int MId { get; set; }
@@ -32,5 +33,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<Materials> Materials { get; set; }
         public virtual ICollection<Services> Services { get; set; }
         public virtual ICollection<MaterialMeasures> MaterialMeasures { get; set; }
+        public virtual ICollection<MatRecipe> MatRecipe { get; set; }
     }
 }

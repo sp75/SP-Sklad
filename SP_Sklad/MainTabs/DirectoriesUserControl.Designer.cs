@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DirectoriesUserControl));
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.GridImageList = new System.Windows.Forms.ImageList(this.components);
@@ -339,6 +340,17 @@
             this.colDeleted = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRepShortName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRepFracName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.xtraTabPage32 = new DevExpress.XtraTab.XtraTabPage();
+            this.PreparationMatRecipeGridControl = new DevExpress.XtraGrid.GridControl();
+            this.PreparationMatRecipeGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn84 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn85 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn86 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn87 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn88 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn89 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn90 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn91 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage11 = new DevExpress.XtraTab.XtraTabPage();
             this.ExplorerPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -485,6 +497,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CurrencyBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            this.xtraTabPage32.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PreparationMatRecipeGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PreparationMatRecipeGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplorerPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).BeginInit();
@@ -2513,7 +2528,8 @@
             this.xtraTabPage28,
             this.xtraTabPage29,
             this.xtraTabPage30,
-            this.xtraTabPage17});
+            this.xtraTabPage17,
+            this.xtraTabPage32});
             // 
             // xtraTabPage19
             // 
@@ -2526,9 +2542,9 @@
             // 
             this.MatRecipeGridControl.DataSource = this.MatRecipeDS;
             this.MatRecipeGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode2.RelationName = "Level1";
+            gridLevelNode1.RelationName = "Level1";
             this.MatRecipeGridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
+            gridLevelNode1});
             this.MatRecipeGridControl.Location = new System.Drawing.Point(0, 0);
             this.MatRecipeGridControl.MainView = this.MatRecipeGridView;
             this.MatRecipeGridControl.Name = "MatRecipeGridControl";
@@ -3553,6 +3569,119 @@
             this.colRepFracName.Visible = true;
             this.colRepFracName.VisibleIndex = 4;
             // 
+            // xtraTabPage32
+            // 
+            this.xtraTabPage32.Controls.Add(this.PreparationMatRecipeGridControl);
+            this.xtraTabPage32.Name = "xtraTabPage32";
+            this.xtraTabPage32.Size = new System.Drawing.Size(1086, 558);
+            this.xtraTabPage32.Text = "Рецепты для підготовка сировини";
+            // 
+            // PreparationMatRecipeGridControl
+            // 
+            this.PreparationMatRecipeGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            gridLevelNode2.RelationName = "Level1";
+            this.PreparationMatRecipeGridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode2});
+            this.PreparationMatRecipeGridControl.Location = new System.Drawing.Point(0, 0);
+            this.PreparationMatRecipeGridControl.MainView = this.PreparationMatRecipeGridView;
+            this.PreparationMatRecipeGridControl.Name = "PreparationMatRecipeGridControl";
+            this.PreparationMatRecipeGridControl.Size = new System.Drawing.Size(1086, 558);
+            this.PreparationMatRecipeGridControl.TabIndex = 2;
+            this.PreparationMatRecipeGridControl.UseEmbeddedNavigator = true;
+            this.PreparationMatRecipeGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.PreparationMatRecipeGridView});
+            // 
+            // PreparationMatRecipeGridView
+            // 
+            this.PreparationMatRecipeGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.PreparationMatRecipeGridView.Appearance.Row.Options.UseFont = true;
+            this.PreparationMatRecipeGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn84,
+            this.gridColumn85,
+            this.gridColumn86,
+            this.gridColumn87,
+            this.gridColumn88,
+            this.gridColumn89,
+            this.gridColumn90,
+            this.gridColumn91});
+            this.PreparationMatRecipeGridView.GridControl = this.PreparationMatRecipeGridControl;
+            this.PreparationMatRecipeGridView.Name = "PreparationMatRecipeGridView";
+            this.PreparationMatRecipeGridView.OptionsBehavior.AllowIncrementalSearch = true;
+            this.PreparationMatRecipeGridView.OptionsBehavior.Editable = false;
+            this.PreparationMatRecipeGridView.OptionsBehavior.ReadOnly = true;
+            this.PreparationMatRecipeGridView.OptionsView.EnableAppearanceEvenRow = true;
+            this.PreparationMatRecipeGridView.OptionsView.EnableAppearanceOddRow = true;
+            this.PreparationMatRecipeGridView.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn84
+            // 
+            this.gridColumn84.Caption = "Назва процукції";
+            this.gridColumn84.FieldName = "MatName";
+            this.gridColumn84.Name = "gridColumn84";
+            this.gridColumn84.Width = 400;
+            // 
+            // gridColumn85
+            // 
+            this.gridColumn85.Caption = "Дата складання";
+            this.gridColumn85.DisplayFormat.FormatString = "d";
+            this.gridColumn85.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.gridColumn85.FieldName = "OnDate";
+            this.gridColumn85.Name = "gridColumn85";
+            this.gridColumn85.Visible = true;
+            this.gridColumn85.VisibleIndex = 1;
+            this.gridColumn85.Width = 144;
+            // 
+            // gridColumn86
+            // 
+            this.gridColumn86.Caption = "Кількість";
+            this.gridColumn86.DisplayFormat.FormatString = "0.00";
+            this.gridColumn86.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn86.FieldName = "Amount";
+            this.gridColumn86.Name = "gridColumn86";
+            this.gridColumn86.Visible = true;
+            this.gridColumn86.VisibleIndex = 2;
+            this.gridColumn86.Width = 102;
+            // 
+            // gridColumn87
+            // 
+            this.gridColumn87.Caption = "Од. виміру";
+            this.gridColumn87.FieldName = "ShortName";
+            this.gridColumn87.Name = "gridColumn87";
+            this.gridColumn87.Visible = true;
+            this.gridColumn87.VisibleIndex = 4;
+            this.gridColumn87.Width = 79;
+            // 
+            // gridColumn88
+            // 
+            this.gridColumn88.Caption = "Назва рецепта";
+            this.gridColumn88.FieldName = "Name";
+            this.gridColumn88.Name = "gridColumn88";
+            this.gridColumn88.Visible = true;
+            this.gridColumn88.VisibleIndex = 0;
+            this.gridColumn88.Width = 165;
+            // 
+            // gridColumn89
+            // 
+            this.gridColumn89.Caption = "Група товарів";
+            this.gridColumn89.FieldName = "GrpName";
+            this.gridColumn89.Name = "gridColumn89";
+            this.gridColumn89.Width = 99;
+            // 
+            // gridColumn90
+            // 
+            this.gridColumn90.Caption = "Вихід, %";
+            this.gridColumn90.FieldName = "Out";
+            this.gridColumn90.Name = "gridColumn90";
+            this.gridColumn90.Visible = true;
+            this.gridColumn90.VisibleIndex = 3;
+            this.gridColumn90.Width = 79;
+            // 
+            // gridColumn91
+            // 
+            this.gridColumn91.Caption = "В архіві";
+            this.gridColumn91.FieldName = "Archived";
+            this.gridColumn91.Name = "gridColumn91";
+            // 
             // xtraTabPage11
             // 
             this.xtraTabPage11.Name = "xtraTabPage11";
@@ -3776,6 +3905,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CurrencyBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            this.xtraTabPage32.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PreparationMatRecipeGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PreparationMatRecipeGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplorerPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).EndInit();
@@ -4099,5 +4231,16 @@
         private DevExpress.XtraGrid.GridControl gridControl4;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn83;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage32;
+        private DevExpress.XtraGrid.GridControl PreparationMatRecipeGridControl;
+        public DevExpress.XtraGrid.Views.Grid.GridView PreparationMatRecipeGridView;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn84;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn85;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn86;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn87;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn88;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn89;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn90;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn91;
     }
 }

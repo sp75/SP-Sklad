@@ -29,6 +29,7 @@ namespace SP_Sklad.MainTabs
         private WBListMake_Result focused_row { get; set; }
         private ProductionPlansList_Result pp_focused_row { get; set; }
         private v_PlannedCalculation pc_focused_row { get; set; }
+        private PreparationRawMaterialsList_Result focused_prep_raw_mat_row { get; set; }
 
         private int _cur_wtype = 0;
 
@@ -55,11 +56,16 @@ namespace SP_Sklad.MainTabs
                 WhComboBox.EditValue = "*";
                 DebWhComboBox.Properties.DataSource = WhComboBox.Properties.DataSource;
                 DebWhComboBox.EditValue = "*";
+                PrepRawMatWhList.Properties.DataSource = WhComboBox.Properties.DataSource;
+                PrepRawMatWhList.EditValue = "*";
 
                 wbSatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 0, Name = "Актуальний" }, new { Id = 2, Name = "Розпочато виробництво" }, new { Id = 1, Name = "Закінчено виробництво" } };
                 wbSatusList.EditValue = -1;
                 DebSatusList.Properties.DataSource = wbSatusList.Properties.DataSource;
                 DebSatusList.EditValue = -1;
+                PrepRawMatStatusList.Properties.DataSource = wbSatusList.Properties.DataSource;
+                PrepRawMatStatusList.EditValue = -1;
+
                 lookUpEdit2.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Розпочато виробництво" }, new { Id = 0, Name = "Актуальний" } };
                 lookUpEdit2.EditValue = -1;
 
@@ -67,6 +73,8 @@ namespace SP_Sklad.MainTabs
                 wbEndDate.EditValue = DateTime.Now.Date.SetEndDay();
                 DebStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
                 DebEndDate.EditValue = DateTime.Now.Date.SetEndDay();
+                PrepRawMatStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
+                PrepRawMatEndDate.EditValue = DateTime.Now.Date.SetEndDay();
 
                 PlanStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
                 PlanEndDate.EditValue = DateTime.Now.Date.SetEndDay();
@@ -110,6 +118,22 @@ namespace SP_Sklad.MainTabs
             DeboningBS.DataSource = DB.SkladBase().WBListMake(satrt_date, end_date, (int)DebSatusList.EditValue, DebWhComboBox.EditValue.ToString(), focused_tree_node.Num, -22).ToList();
             DeboningGridView.TopRowIndex = top_row;
         }
+
+        void PreparationRawMaterials()
+        {
+            if (PrepRawMatStatusList.EditValue == null || PrepRawMatWhList.EditValue == null || DocsTreeList.FocusedNode == null)
+            {
+                return;
+            }
+
+            var satrt_date = PrepRawMatStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : PrepRawMatStartDate.DateTime;
+            var end_date = PrepRawMatEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : PrepRawMatEndDate.DateTime;
+
+            int top_row = PreparationRawMaterialsGridView.TopRowIndex;
+            PreparationRawMaterialsBS.DataSource = DB.SkladBase().PreparationRawMaterialsList(satrt_date, end_date, (int)DebSatusList.EditValue, DebWhComboBox.EditValue.ToString()).ToList();
+            PreparationRawMaterialsGridView.TopRowIndex = top_row;
+        }
+
 
         void GetPlannedCalculation()
         {
@@ -204,6 +228,11 @@ namespace SP_Sklad.MainTabs
                 case 5:
                     GetPlannedCalculation();
                     break;
+
+                case 6:
+                    PreparationRawMaterials();
+                    break;
+
             }
         }
 
@@ -244,6 +273,13 @@ namespace SP_Sklad.MainTabs
                     }
                     break;
 
+                case 6:
+                    using (var wb_make = new frmPreparationRawMaterials(null))
+                    {
+                        wb_make.ShowDialog();
+                    }
+                    break;
+
             }
 
             RefrechItemBtn.PerformClick();
@@ -256,11 +292,11 @@ namespace SP_Sklad.MainTabs
                 switch (focused_tree_node.GType)
                 {
                     case 1:
-                        ManufDocEdit.WBEdit(WbGridView.GetFocusedRow() as WBListMake_Result);
+                        ManufDocEdit.WBEdit(focused_row.WType, focused_row.WbillId);
                         break;
 
                     case 3:
-                        ManufDocEdit.WBEdit(DeboningGridView.GetFocusedRow() as WBListMake_Result);
+                        ManufDocEdit.WBEdit(focused_row.WType, focused_row.WbillId);
                         break;
 
                     case 4:
@@ -280,6 +316,11 @@ namespace SP_Sklad.MainTabs
                         {
                             f.ShowDialog();
                         }
+
+                        break;
+
+                    case 6:
+                        ManufDocEdit.WBEdit(focused_prep_raw_mat_row.WType, focused_prep_raw_mat_row.WbillId);
 
                         break;
                 }
@@ -428,12 +469,43 @@ namespace SP_Sklad.MainTabs
                             return;
                         }
 
-                        if (pp.Checked == 1 )
+                        if (pp.Checked == 1)
                         {
                             pp.Checked = 0;
                         }
 
                         db.SaveChanges();
+                        break;
+
+                    case 6:
+                        if (focused_prep_raw_mat_row == null)
+                        {
+                            return;
+                        }
+
+                        var wbpm = db.WaybillList.Find(focused_prep_raw_mat_row.WbillId);
+                        if (wbpm == null)
+                        {
+                            MessageBox.Show(Resources.not_find_wb);
+                            return;
+                        }
+                        if (wbpm.SessionId != null)
+                        {
+                            MessageBox.Show(Resources.deadlock);
+                            return;
+                        }
+
+
+                        if (wbpm.Checked == 2)
+                        {
+                            DBHelper.StornoOrder(db, focused_prep_raw_mat_row.WbillId);
+
+                        }
+                        else
+                        {
+                            DBHelper.ExecuteOrder(db, focused_prep_raw_mat_row.WbillId);
+                        }
+
                         break;
                 }
             }
@@ -443,7 +515,7 @@ namespace SP_Sklad.MainTabs
 
         private void DeleteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (focused_row == null && pp_focused_row == null && pc_focused_row == null)
+            if (focused_row == null && pp_focused_row == null && pc_focused_row == null && focused_prep_raw_mat_row == null)
             {
                 return;
             }
@@ -456,8 +528,8 @@ namespace SP_Sklad.MainTabs
                     {
                         switch (focused_tree_node.GType)
                         {
+                           
                             case 3:
-
                             case 1:
                                 var wb = db.WaybillList.FirstOrDefault(w => w.WbillId == focused_row.WbillId && w.SessionId == null);
                                 if (wb != null)
@@ -488,6 +560,18 @@ namespace SP_Sklad.MainTabs
                                 }
 
                                 break;
+
+                            case 6:
+                                var wbp = db.WaybillList.FirstOrDefault(w => w.WbillId == focused_prep_raw_mat_row.WbillId && w.SessionId == null);
+                                if (wbp != null)
+                                {
+                                    db.WaybillList.Remove(wbp);
+                                }
+                                else
+                                {
+                                    MessageBox.Show(Resources.deadlock);
+                                }
+                                break;
                         }
                         db.SaveChanges();
                     }
@@ -505,7 +589,21 @@ namespace SP_Sklad.MainTabs
         {
             using (var db = DB.SkladBase())
             {
-                var wbl = db.WaybillList.FirstOrDefault(w => w.WbillId == focused_row.WbillId);
+                var wb_id = 0;
+                switch (focused_tree_node.GType)
+                {
+                    case 1:
+                    case 3:
+                        wb_id = focused_row.WbillId;
+                        break;
+
+                    case 6:
+                        wb_id = focused_prep_raw_mat_row.WbillId;
+                        break;
+
+                }
+
+                var wbl = db.WaybillList.FirstOrDefault(w => w.WbillId == wb_id);
                 if (wbl == null)
                 {
                     return;
@@ -640,6 +738,10 @@ namespace SP_Sklad.MainTabs
             else if (gridView7.Focus())
             {
                 row = gridView7.GetFocusedRow() as GetRelDocList_Result;
+            }
+            else if (gridView12.Focus())
+            {
+                row = gridView12.GetFocusedRow() as GetRelDocList_Result;
             }
 
             FindDoc.Find(row.Id, row.DocType, row.OnDate);
@@ -1025,6 +1127,91 @@ namespace SP_Sklad.MainTabs
                     e.Appearance.ForeColor = Color.Red;
                 }
             }*/
+        }
+
+        private void PreparationRawMaterialsGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
+        {
+            focused_prep_raw_mat_row = e.Row as PreparationRawMaterialsList_Result;
+
+            xtraTabControl5_SelectedPageChanged(sender, null);
+
+            StopProcesBtn.Enabled = (focused_prep_raw_mat_row != null && focused_prep_raw_mat_row.Checked == 2 && focused_tree_node.CanPost == 1);
+            DeleteItemBtn.Enabled = (focused_prep_raw_mat_row != null && focused_prep_raw_mat_row.Checked == 0 && focused_tree_node.CanDelete == 1);
+            EditItemBtn.Enabled = (focused_prep_raw_mat_row != null && focused_prep_raw_mat_row.Checked == 0 && focused_tree_node.CanModify == 1);
+            CopyItemBtn.Enabled = (focused_tree_node.CanInsert == 1 && focused_prep_raw_mat_row != null);
+            ExecuteItemBtn.Enabled = (focused_prep_raw_mat_row != null && focused_tree_node.CanPost == 1);
+            PrintItemBtn.Enabled = (focused_prep_raw_mat_row != null);
+
+            AddTechProcBtn.Enabled = (focused_prep_raw_mat_row != null && focused_prep_raw_mat_row.Checked != 1 && focused_tree_node.CanModify == 1);
+        }
+
+        private void xtraTabControl5_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
+        {
+            if (focused_prep_raw_mat_row == null)
+            {
+                // TechProcDetBS.DataSource = null;
+                gridControl13.DataSource = null;
+                gridControl14.DataSource = null;
+                return;
+            }
+
+            using (var db = DB.SkladBase())
+            {
+                switch (xtraTabControl5.SelectedTabPageIndex)
+                {
+                    case 0:
+                        RefreshTechProcDet(focused_prep_raw_mat_row.WbillId);
+                        break;
+                    case 1:
+                        gridControl13.DataSource = db.GetWayBillMakeDet(focused_prep_raw_mat_row.WbillId).ToList().OrderBy(o => o.Num).ToList();
+                        gridView11.ExpandAllGroups();
+                        break;
+
+                    case 2:
+                        gridControl15.DataSource = db.DeboningDet.Where(w => w.WBillId == focused_prep_raw_mat_row.WbillId).Select(s => new SP_Sklad.WBForm.frmWBDeboning.DeboningDetList
+                        {
+                            DebId = s.DebId,
+                            WBillId = s.WBillId,
+                            MatId = s.MatId,
+                            Amount = s.Amount,
+                            Price = s.Price,
+                            WId = s.WId,
+                            MatName = s.Materials.Name,
+                            Total = s.Amount * s.Price,
+                            WhName = s.Warehouse.Name
+                        }).ToList();
+                        break;
+
+                    case 3:
+                        gridControl14.DataSource = db.GetRelDocList(focused_prep_raw_mat_row.Id).OrderBy(o => o.OnDate).ToList();
+                        break;
+
+                
+                }
+            }
+        }
+
+        private void PrepRawMatStartDate_EditValueChanged(object sender, EventArgs e)
+        {
+            PreparationRawMaterials();
+        }
+
+        private void PreparationRawMaterialsGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                popupMenu1.ShowPopup(p2);
+            }
+        }
+
+        private void gridView12_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                BottomPopupMenu.ShowPopup(p2);
+            }
         }
     }
 }

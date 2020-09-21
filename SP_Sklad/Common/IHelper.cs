@@ -507,6 +507,18 @@ namespace SP_Sklad.Common
                     }
                     break;
 
+                case 16:
+                    using (var f = new frmCatalog(null, 123))
+                    {
+                        f.uc.isDirectList = true;
+                        f.Text = "Підготовка сировини";
+                        if (f.ShowDialog() == DialogResult.OK)
+                        {
+                            old_id = (f.uc.MatRecipeGridView.GetFocusedRow() as dynamic).RecId;
+                        }
+                    }
+                    break;
+
             }
 
             return old_id;
@@ -866,6 +878,18 @@ namespace SP_Sklad.Common
                    .Sum(s => s.Amount);
 
             var ext_sum = db.MatRecDet.Where(w => w.RecId == rec_id && w.Materials.MId != w.MatRecipe.Materials.MId)
+                .Select(s => new { MaterialMeasures = s.Materials.MaterialMeasures.Where(f => f.MId == measure_id), s.Amount }).ToList()
+                .SelectMany(sm => sm.MaterialMeasures, (k, n) => new { k.Amount, MeasureAmount = n.Amount }).Sum(su => su.MeasureAmount * su.Amount);
+
+            return main_sum + ext_sum;
+        }
+
+        public static decimal GetAmounPreparationMatRecipe(BaseEntities db, int measure_id, int rec_id)
+        {
+            var main_sum = db.MatRecDet.Where(w => w.RecId == rec_id && w.Materials.MId == measure_id && w.TurnType == -1).ToList()
+                   .Sum(s => s.Amount);
+
+            var ext_sum = db.MatRecDet.Where(w => w.RecId == rec_id && w.Materials.MId != w.MatRecipe.Materials.MId && w.TurnType == -1)
                 .Select(s => new { MaterialMeasures = s.Materials.MaterialMeasures.Where(f => f.MId == measure_id), s.Amount }).ToList()
                 .SelectMany(sm => sm.MaterialMeasures, (k, n) => new { k.Amount, MeasureAmount = n.Amount }).Sum(su => su.MeasureAmount * su.Amount);
 

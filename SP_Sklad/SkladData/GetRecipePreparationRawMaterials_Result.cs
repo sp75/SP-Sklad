@@ -10,18 +10,11 @@
 namespace SP_Sklad.SkladData
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class MatRecDet
+    public partial class GetRecipePreparationRawMaterials_Result
     {
-        public int DetId { get; set; }
-        public int RecId { get; set; }
-        public int MatId { get; set; }
-        public decimal Amount { get; set; }
-        public Nullable<decimal> Coefficient { get; set; }
-        public int TurnType { get; set; }
-    
-        public virtual Materials Materials { get; set; }
-        public virtual MatRecipe MatRecipe { get; set; }
+        public string MatName { get; set; }
+        public Nullable<int> PosId { get; set; }
+        public Nullable<int> Rsv { get; set; }
     }
 }

@@ -18,20 +18,20 @@ namespace SP_Sklad.Common
         private const int LockingErrorNumber = 1222;
         private const int UpdateConflictErrorNumber = 3960;
 
-        public static void WBEdit(WBListMake_Result dr)
+        public static void WBEdit(int WType, int WbillId)
         {
             int? result = 0;
 
-            if (dr == null)
+          /*  if (dr == null)
             {
                 return;
-            }
+            }*/
 
             using (var db = new BaseEntities())
             {
                 try
                 {
-                    var wb = db.WaybillList.FirstOrDefault(f => f.WbillId == dr.WbillId);
+                    var wb = db.WaybillList.FirstOrDefault(f => f.WbillId == WbillId);
 
                     if (wb == null)
                     {
@@ -49,7 +49,7 @@ namespace SP_Sklad.Common
                     {
                         if (MessageBox.Show(Resources.edit_info, "Відміна проводки", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                         {
-                            result = DBHelper.StornoOrder(db, dr.WbillId);
+                            result = DBHelper.StornoOrder(db, WbillId);
                         }
                         else
                         {
@@ -63,17 +63,25 @@ namespace SP_Sklad.Common
                     }
                
 
-                    if (dr.WType == -20)
+                    if (WType == -20)
                     {
-                        using (var wb_make = new frmWBManufacture(dr.WbillId))
+                        using (var wb_make = new frmWBManufacture(WbillId))
                         {
                             wb_make.ShowDialog();
                         }
                     }
 
-                    if (dr.WType == -22)
+                    if (WType == -22)
                     {
-                        using (var wb_make = new frmWBDeboning(dr.WbillId))
+                        using (var wb_make = new frmWBDeboning(WbillId))
+                        {
+                            wb_make.ShowDialog();
+                        }
+                    }
+
+                    if (WType == -24)
+                    {
+                        using (var wb_make = new frmPreparationRawMaterials(WbillId))
                         {
                             wb_make.ShowDialog();
                         }

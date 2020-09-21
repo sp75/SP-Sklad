@@ -311,6 +311,7 @@
         <EntityTypeShape EntityType="BaseModel.TechProcess" Width="1.5" PointX="25.375" PointY="5.875" />
         <AssociationConnector Association="BaseModel.FK_MatRecipeTechProcDet_TechProcess" />
         <AssociationConnector Association="BaseModel.FK_TECHPROCDET_TECHPROCESS" />
+        <AssociationConnector Association="BaseModel.FK_MatRecipe_MeasureId" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

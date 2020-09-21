@@ -280,6 +280,12 @@
     <Compile Include="EditForm\frmDiscountCardEdit.Designer.cs">
       <DependentUpon>frmDiscountCardEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditForm\frmPreparationMatRecipe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmPreparationMatRecipe.Designer.cs">
+      <DependentUpon>frmPreparationMatRecipe.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditForm\frmWeightEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -409,6 +415,9 @@
     <Compile Include="SkladData\GetPriceListDet_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetRecipePreparationRawMaterials_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetRelDocList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -482,6 +491,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\PosRemains.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\PreparationRawMaterialsList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\ReportSortedFields.cs">
@@ -1500,6 +1512,12 @@
     <Compile Include="WBForm\frmWBInventory.Designer.cs">
       <DependentUpon>frmWBInventory.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBForm\frmPreparationRawMaterials.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\frmPreparationRawMaterials.Designer.cs">
+      <DependentUpon>frmPreparationRawMaterials.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBForm\frmWBManufacture.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1550,6 +1568,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmDiscountCardEdit.resx">
       <DependentUpon>frmDiscountCardEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmPreparationMatRecipe.resx">
+      <DependentUpon>frmPreparationMatRecipe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmWeightEdit.resx">
       <DependentUpon>frmWeightEdit.cs</DependentUpon>
@@ -1805,6 +1826,9 @@
     <EmbeddedResource Include="WBForm\frmWBInventory.resx">
       <DependentUpon>frmWBInventory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\frmPreparationRawMaterials.resx">
+      <DependentUpon>frmPreparationRawMaterials.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWBManufacture.resx">
       <DependentUpon>frmWBManufacture.cs</DependentUpon>
     </EmbeddedResource>
@@ -1882,6 +1906,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PayDoc.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PlannedCalculation.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PlannedCalculationDet.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.PreparationRawMaterialsList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PriceList.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PriceListDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PriceTypes.datasource" />

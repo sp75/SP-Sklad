@@ -321,7 +321,7 @@
             <PropertyRef Name="FunId" />
           </Key>
           <Property Name="FunId" Type="int" Nullable="false" />
-          <Property Name="ClassName" Type="varchar" MaxLength="24" Nullable="false" />
+          <Property Name="ClassName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="TabId" Type="int" />
           <Property Name="Logging" Type="int" Nullable="false" />
           <Property Name="Flags" Type="int" Nullable="false" />
@@ -659,6 +659,7 @@
           <Property Name="MatId" Type="int" Nullable="false" />
           <Property Name="Amount" Type="numeric" Precision="15" Scale="6" Nullable="false" />
           <Property Name="Coefficient" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="TurnType" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="MatRecipe">
           <Key>
@@ -677,6 +678,7 @@
           <Property Name="Deviation" Type="numeric" Precision="15" Scale="4" />
           <Property Name="ThermoLossOut" Type="numeric" Precision="15" Scale="4" />
           <Property Name="ThermoLossDeviation" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="MeasureId" Type="int" />
         </EntityType>
         <EntityType Name="MatRecipeTechProcDet">
           <Key>
@@ -3319,6 +3321,18 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MatRecipe_MeasureId">
+          <End Role="Measures" Type="Self.Measures" Multiplicity="0..1" />
+          <End Role="MatRecipe" Type="Self.MatRecipe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Measures">
+              <PropertyRef Name="MId" />
+            </Principal>
+            <Dependent Role="MatRecipe">
+              <PropertyRef Name="MeasureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_MatRecipeTechProcDet_MatRecipe">
           <End Role="MatRecipe" Type="Self.MatRecipe" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -5008,6 +5022,12 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
         <Function Name="GetRecipe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="wbill_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="GetRecipePreparationRawMaterials" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="wbill_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetRecipePreparationRawMaterialsOut" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="wbill_id" Type="int" Mode="In" />
+        </Function>
         <Function Name="GetRecipePrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="RecId" Type="int" Mode="In" />
           <Parameter Name="PlId" Type="int" Mode="In" />
@@ -5544,6 +5564,12 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </RowType>
             </CollectionType>
           </ReturnType>
+        </Function>
+        <Function Name="PreparationRawMaterialsList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="from_date" Type="datetime" Mode="In" />
+          <Parameter Name="to_date" Type="datetime" Mode="In" />
+          <Parameter Name="is_checked" Type="int" Mode="In" />
+          <Parameter Name="wh" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="ProductionPlansList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="from_date" Type="datetime" Mode="In" />
@@ -7371,6 +7397,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Materials" EntitySet="Materials" />
             <End Role="MatRecipe" EntitySet="MatRecipe" />
           </AssociationSet>
+          <AssociationSet Name="FK_MatRecipe_MeasureId" Association="Self.FK_MatRecipe_MeasureId">
+            <End Role="Measures" EntitySet="Measures" />
+            <End Role="MatRecipe" EntitySet="MatRecipe" />
+          </AssociationSet>
           <AssociationSet Name="FK_MatRecipeTechProcDet_MatRecipe" Association="Self.FK_MatRecipeTechProcDet_MatRecipe">
             <End Role="MatRecipe" EntitySet="MatRecipe" />
             <End Role="MatRecipeTechProcDet" EntitySet="MatRecipeTechProcDet" />
@@ -9183,6 +9213,22 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="grp_id" Mode="In" Type="Int32" />
             <Parameter Name="w_type" Mode="In" Type="Int32" />
           </FunctionImport>
+          <AssociationSet Name="FK_MatRecipe_MeasureId" Association="BaseModel.FK_MatRecipe_MeasureId">
+            <End Role="Measures" EntitySet="Measures" />
+            <End Role="MatRecipe" EntitySet="MatRecipe" />
+          </AssociationSet>
+          <FunctionImport Name="PreparationRawMaterialsList" ReturnType="Collection(BaseModel.PreparationRawMaterialsList_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="is_checked" Mode="In" Type="Int32" />
+            <Parameter Name="wh" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetRecipePreparationRawMaterials" ReturnType="Collection(BaseModel.GetRecipePreparationRawMaterials_Result)">
+          <Parameter Name="wbill_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetRecipePreparationRawMaterialsOut">
+            <Parameter Name="wbill_id" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -10014,6 +10060,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Deviation" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="ThermoLossOut" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="ThermoLossDeviation" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="MeasureId" Type="Int32" />
+          <NavigationProperty Name="Measures" Relationship="BaseModel.FK_MatRecipe_MeasureId" FromRole="MatRecipe" ToRole="Measures" />
         </EntityType>
         <EntityType Name="WayBillMake">
           <Key>
@@ -10097,6 +10145,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="Services" Relationship="BaseModel.FK_SVC_MID" FromRole="Measures" ToRole="Services" />
           <NavigationProperty Name="MaterialMeasures" Relationship="BaseModel.FK_MaterialMeasures_Measures" FromRole="Measures" ToRole="MaterialMeasures" />
           <Property Name="AutoCalcRecipe" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="MatRecipe" Relationship="BaseModel.FK_MatRecipe_MeasureId" FromRole="Measures" ToRole="MatRecipe" />
         </EntityType>
         <EntityType Name="DeboningDet">
           <Key>
@@ -10501,6 +10550,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Decimal" Name="Coefficient" Precision="15" Scale="4" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK_MatRecDet_Materials" FromRole="MatRecDet" ToRole="Materials" />
           <NavigationProperty Name="MatRecipe" Relationship="BaseModel.FK_MATRECDET_MATRECIPE" FromRole="MatRecDet" ToRole="MatRecipe" />
+          <Property Name="TurnType" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_MatRecDet_Materials">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
@@ -10935,7 +10985,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <PropertyRef Name="FunId" />
           </Key>
           <Property Type="Int32" Name="FunId" Nullable="false" />
-          <Property Type="String" Name="ClassName" Nullable="false" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ClassName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="TabId" />
           <Property Type="Int32" Name="Logging" Nullable="false" />
           <Property Type="Int32" Name="Flags" Nullable="false" />
@@ -15289,6 +15339,66 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
           <Property Type="Decimal" Name="MatOut" Nullable="true" Precision="15" Scale="2" />
         </ComplexType>
+        <Association Name="FK_MatRecipe_MeasureId">
+          <End Type="BaseModel.Measures" Role="Measures" Multiplicity="0..1" />
+          <End Type="BaseModel.MatRecipe" Role="MatRecipe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Measures">
+              <PropertyRef Name="MId" />
+            </Principal>
+            <Dependent Role="MatRecipe">
+              <PropertyRef Name="MeasureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="PreparationRawMaterialsList_Result">
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="WbillId" Nullable="false" />
+          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="String" Name="Reason" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Checked" Nullable="false" />
+          <Property Type="Decimal" Name="SummAll" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Int32" Name="WType" Nullable="false" />
+          <Property Type="Decimal" Name="Nds" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="PersonId" Nullable="true" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="DocId" Nullable="true" />
+          <Property Type="Decimal" Name="SummInCurr" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
+          <Property Type="Decimal" Name="CurrRate" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="AttNum" Nullable="true" MaxLength="15" />
+          <Property Type="DateTime" Name="AttDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Received" Nullable="true" MaxLength="64" />
+          <Property Type="DateTime" Name="ToDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="DefNum" Nullable="false" />
+          <Property Type="String" Name="RecipeName" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="MatRecipeOut" Nullable="false" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Deviation" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="AmountIn" Nullable="false" Precision="15" Scale="4" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="KaName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="MakedPerson" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="OnDateOut" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AmountBrutto" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="DateTime" Name="WriteOnDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="FromWh" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="FromWId" Nullable="true" />
+          <Property Type="String" Name="DocStatus" Nullable="false" MaxLength="21" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="38" Scale="17" />
+          <Property Type="Decimal" Name="ShippedAmount" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Tara" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="SaldoShipped" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="MatOut" Nullable="true" Precision="15" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetRecipePreparationRawMaterials_Result">
+          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="PosId" Nullable="true" />
+          <Property Type="Int32" Name="Rsv" Nullable="true" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -15978,6 +16088,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="MatRecipe">
             <EntityTypeMapping TypeName="BaseModel.MatRecipe">
               <MappingFragment StoreEntitySet="MatRecipe">
+                <ScalarProperty Name="MeasureId" ColumnName="MeasureId" />
                 <ScalarProperty Name="ThermoLossDeviation" ColumnName="ThermoLossDeviation" />
                 <ScalarProperty Name="ThermoLossOut" ColumnName="ThermoLossOut" />
                 <ScalarProperty Name="Deviation" ColumnName="Deviation" />
@@ -16242,6 +16353,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="MatRecDet">
             <EntityTypeMapping TypeName="BaseModel.MatRecDet">
               <MappingFragment StoreEntitySet="MatRecDet">
+                <ScalarProperty Name="TurnType" ColumnName="TurnType" />
                 <ScalarProperty Name="Coefficient" ColumnName="Coefficient" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="MatId" ColumnName="MatId" />
@@ -19290,6 +19402,63 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PreparationRawMaterialsList" FunctionName="BaseModel.Store.PreparationRawMaterialsList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.PreparationRawMaterialsList_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="Nds" ColumnName="Nds" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="CurrRate" ColumnName="CurrRate" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="AttNum" ColumnName="AttNum" />
+                <ScalarProperty Name="AttDate" ColumnName="AttDate" />
+                <ScalarProperty Name="Received" ColumnName="Received" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="DefNum" ColumnName="DefNum" />
+                <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
+                <ScalarProperty Name="MatRecipeOut" ColumnName="MatRecipeOut" />
+                <ScalarProperty Name="Deviation" ColumnName="Deviation" />
+                <ScalarProperty Name="AmountIn" ColumnName="AmountIn" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="MakedPerson" ColumnName="MakedPerson" />
+                <ScalarProperty Name="OnDateOut" ColumnName="OnDateOut" />
+                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
+                <ScalarProperty Name="AmountBrutto" ColumnName="AmountBrutto" />
+                <ScalarProperty Name="WriteOnDate" ColumnName="WriteOnDate" />
+                <ScalarProperty Name="FromWh" ColumnName="FromWh" />
+                <ScalarProperty Name="FromWId" ColumnName="FromWId" />
+                <ScalarProperty Name="DocStatus" ColumnName="DocStatus" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ShippedAmount" ColumnName="ShippedAmount" />
+                <ScalarProperty Name="Tara" ColumnName="Tara" />
+                <ScalarProperty Name="SaldoShipped" ColumnName="SaldoShipped" />
+                <ScalarProperty Name="MatOut" ColumnName="MatOut" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetRecipePreparationRawMaterials" FunctionName="BaseModel.Store.GetRecipePreparationRawMaterials">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetRecipePreparationRawMaterials_Result">
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetRecipePreparationRawMaterialsOut" FunctionName="BaseModel.Store.GetRecipePreparationRawMaterialsOut" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -12,28 +12,27 @@ using SP_Sklad.Common;
 using SP_Sklad.SkladData;
 namespace SP_Sklad.EditForm
 {
-    public partial class frmMatRecipe : DevExpress.XtraEditors.XtraForm
+    public partial class frmPreparationMatRecipe : DevExpress.XtraEditors.XtraForm
     {
         int? _rec_id { get; set; }
-        int? _r_type { get; set; }
+      
         private MatRecipe _mr { get; set; }
         private MatRecDet mat_rec_det { get; set; }
         private BaseEntities _db { get; set; }
         private DbContextTransaction current_transaction { get; set; }
         private List<CatalogTreeList> tree { get; set; }
 
-        public frmMatRecipe(int? RType = null ,int? RecId = null )
+        public frmPreparationMatRecipe(int? RecId = null )
         {
             InitializeComponent();
 
             _rec_id = RecId;
-            _r_type = RType;
             _db = DB.SkladBase();
             current_transaction = _db.Database.BeginTransaction();
             tree = new List<CatalogTreeList>();
             TechProcLookUpEdit.Properties.DataSource = _db.TechProcess.ToList();
 
-        } 
+        }
 
         private void frmMatRecipe_Load(object sender, EventArgs e)
         {
@@ -41,11 +40,7 @@ namespace SP_Sklad.EditForm
 
             tree.Add(new CatalogTreeList { Id = -2, ParentId = -255, Text = "Основна інформація", ImgIdx = 0, TabIdx = 0 });
             tree.Add(new CatalogTreeList { Id = 0, ParentId = -255, Text = "Позиції", ImgIdx = 1, TabIdx = 1 });
-            if (_r_type == 1)
-            {
-                tree.Add(new CatalogTreeList { Id = 1, ParentId = -255, Text = "Технологічні процеси", ImgIdx = 7, TabIdx = 3 });
-            }
-
+            tree.Add(new CatalogTreeList { Id = 1, ParentId = -255, Text = "Технологічні процеси", ImgIdx = 7, TabIdx = 3 });
 
             TreeListBindingSource.DataSource = tree;
 
@@ -56,7 +51,8 @@ namespace SP_Sklad.EditForm
                     Amount = 0,
                     MatId = _db.Materials.FirstOrDefault().MatId,
                     OnDate = DateTime.Now,
-                    RType = _r_type
+                    RType = 3,
+                    MeasureId = DBHelper.MeasuresList.FirstOrDefault(w => w.Def == 1).MId
                 });
 
                 _db.SaveChanges();
@@ -69,7 +65,9 @@ namespace SP_Sklad.EditForm
             if (_mr != null)
             {
                 MatLookUpEdit.Properties.DataSource = DB.SkladBase().MaterialsList.ToList();
-                MatRecLookUpEdit.Properties.DataSource = MatLookUpEdit.Properties.DataSource;
+                TurnTypeLookUpEdit.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Списати" }, new { Id = 1, Name= "Оприходувати"} };
+                MsrComboBox.Properties.DataSource = DBHelper.MeasuresList;
+
 
                 MatRecipeBindingSource.DataSource = _mr;
                 GetRecDetail();
@@ -94,7 +92,7 @@ namespace SP_Sklad.EditForm
 
             var focused_tree_node = DirTreeList.GetDataRecordByNode(e.Node) as CatalogTreeList;
 
-            if(focused_tree_node.ParentId ==0)
+            if (focused_tree_node.ParentId == 0)
             {
                 MatRecDetBS.DataSource = _db.MatRecDet.Find(focused_tree_node.DataSetId);
             }
@@ -112,7 +110,8 @@ namespace SP_Sklad.EditForm
                     s.Materials.Name,
                     s.Materials.Measures.ShortName,
                     s.Amount,
-                    s.Coefficient
+                    s.Coefficient,
+                    s.TurnType
 
                 }).ToList();
             }
@@ -126,7 +125,7 @@ namespace SP_Sklad.EditForm
                     s.ExpectedOut,
                     s.TechProcess.Name,
                     s.ProcId
-                }).OrderBy(o => o.Num).ToList(); 
+                }).OrderBy(o => o.Num).ToList();
             }
 
 
@@ -206,8 +205,7 @@ namespace SP_Sklad.EditForm
                 RecId = _mr.RecId,
                 Amount = 0,
                 Coefficient = 0,
-                MatId = DB.SkladBase().MaterialsList.FirstOrDefault().MatId,
-                TurnType = _mr.RType == 1 ? -1 : 1
+                MatId = DB.SkladBase().MaterialsList.FirstOrDefault().MatId
             });
             MatRecDetBS.DataSource = new_det;
             _db.SaveChanges();
@@ -289,21 +287,9 @@ namespace SP_Sklad.EditForm
 
         private void frmMatRecipe_Shown(object sender, EventArgs e)
         {
-            if (_mr.RType == 1)
-            {
-         //       Text = "Властивості рецепту: " + MatRecLookUpEdit.Text;
-                labelControl11.Visible = false;
+             /*   labelControl11.Visible = false;
                 calcEdit1.Visible = false;
-                gridColumn1.Visible = false;
-            }
-            if (_mr.RType == 2)
-            {
-     //           Text = "Властивості обвалки: " + MatRecLookUpEdit.Text;
-            }
-
-            var isDoc = _db.WayBillMake.Any(a => a.RecId == _mr.RecId);
-            MatRecLookUpEdit.Enabled = !isDoc;
-            simpleButton2.Enabled = !isDoc;
+                gridColumn1.Visible = false;*/
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -315,7 +301,7 @@ namespace SP_Sklad.EditForm
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            MatRecLookUpEdit.EditValue = IHelper.ShowDirectList(MatRecLookUpEdit.EditValue, 5);
+         
         }
 
         private void simpleButton4_Click(object sender, EventArgs e)
@@ -337,17 +323,17 @@ namespace SP_Sklad.EditForm
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            IHelper.ShowMatInfo((int)MatRecLookUpEdit.EditValue);
+          //  IHelper.ShowMatInfo((int)MatRecLookUpEdit.EditValue);
         }
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            IHelper.ShowTurnMaterial((int)MatRecLookUpEdit.EditValue);
+          //  IHelper.ShowTurnMaterial((int)MatRecLookUpEdit.EditValue);
         }
 
         private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            IHelper.ShowMatRSV((int)MatRecLookUpEdit.EditValue, _db);
+       //     IHelper.ShowMatRSV((int)MatRecLookUpEdit.EditValue, _db);
         }
 
         private void EditTecProcDetBtn_Click(object sender, EventArgs e)
@@ -440,33 +426,13 @@ namespace SP_Sklad.EditForm
 
                      textEdit3.EditValue = main_sum + ext_sum;*/
 
-                textEdit3.EditValue = IHelper.GetAmounRecipe(_db,_mr.MatId, _mr.RecId);
+                textEdit3.EditValue = IHelper.GetAmounPreparationMatRecipe(_db, _mr.MeasureId.Value, _mr.RecId);
             }
         }
 
         private void MatRecLookUpEdit_EditValueChanged(object sender, EventArgs e)
         {
-            if (MatRecLookUpEdit.EditValue == null || MatRecLookUpEdit.EditValue == DBNull.Value)
-            {
-                MsrLabel.Text = "";
-            }
-            else
-            {
-                var r = MatRecLookUpEdit.GetSelectedDataRow() as MaterialsList;
 
-                MsrLabel.Text = r.MeasuresName;
-
-                textEdit3.Properties.Buttons[1].Enabled = r.AutoCalcRecipe.Value;
-
-                if (_mr.RType == 1)
-                {
-                    Text = "Властивості рецепту: " + MatRecLookUpEdit.Text;
-                }
-                if (_mr.RType == 2)
-                {
-                    Text = "Властивості обвалки: " + MatRecLookUpEdit.Text;
-                }
-            }
         }
     }
 }
