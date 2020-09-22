@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReport));
-            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
+            this.styleController1 = new DevExpress.XtraEditors.StyleController();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
@@ -106,6 +105,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textEdit1 = new DevExpress.XtraEditors.MemoEdit();
+            this.checkEdit9 = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
@@ -165,6 +165,7 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit9.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // styleController1
@@ -285,6 +286,7 @@
             // 
             // OutDocGroupBox
             // 
+            this.OutDocGroupBox.Controls.Add(this.checkEdit9);
             this.OutDocGroupBox.Controls.Add(this.checkEdit8);
             this.OutDocGroupBox.Controls.Add(this.checkEdit7);
             this.OutDocGroupBox.Controls.Add(this.checkEdit6);
@@ -1076,6 +1078,15 @@
             this.textEdit1.Size = new System.Drawing.Size(356, 64);
             this.textEdit1.TabIndex = 39;
             // 
+            // checkEdit9
+            // 
+            this.checkEdit9.Location = new System.Drawing.Point(209, 66);
+            this.checkEdit9.Name = "checkEdit9";
+            this.checkEdit9.Properties.Caption = "Піготовка сировини";
+            this.checkEdit9.Size = new System.Drawing.Size(154, 20);
+            this.checkEdit9.StyleController = this.styleController1;
+            this.checkEdit9.TabIndex = 36;
+            // 
             // frmReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1165,6 +1176,7 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit9.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1247,5 +1259,6 @@
         private DevExpress.XtraEditors.LookUpEdit PersonLookUpEdit;
         private DevExpress.XtraEditors.LabelControl labelControl18;
         private DevExpress.XtraEditors.SimpleButton simpleButton4;
+        private DevExpress.XtraEditors.CheckEdit checkEdit9;
     }
 }

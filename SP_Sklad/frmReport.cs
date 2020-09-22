@@ -241,6 +241,7 @@ namespace SP_Sklad
             if (checkEdit6.Checked) str += ",-5";
             if (checkEdit7.Checked) str += ",-20";
             if (checkEdit8.Checked) str += ",-22";
+            if (checkEdit9.Checked) str += ",-24";
             SetDate();
 
             int grp = ChildGroupCheckEdit.Checked ? Convert.ToInt32((GrpComboBox.GetSelectedDataRow() as dynamic).GrpId) : 0;
