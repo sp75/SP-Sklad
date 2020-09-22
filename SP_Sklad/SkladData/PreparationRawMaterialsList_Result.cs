@@ -42,17 +42,13 @@ namespace SP_Sklad.SkladData
         public string MsrName { get; set; }
         public string KaName { get; set; }
         public string MakedPerson { get; set; }
-        public Nullable<System.DateTime> OnDateOut { get; set; }
-        public Nullable<decimal> AmountOut { get; set; }
-        public Nullable<decimal> AmountBrutto { get; set; }
         public Nullable<System.DateTime> WriteOnDate { get; set; }
         public string FromWh { get; set; }
         public Nullable<int> FromWId { get; set; }
         public string DocStatus { get; set; }
         public Nullable<decimal> Price { get; set; }
         public Nullable<decimal> ShippedAmount { get; set; }
-        public Nullable<decimal> Tara { get; set; }
-        public Nullable<decimal> SaldoShipped { get; set; }
+        public Nullable<decimal> AmountOut { get; set; }
         public Nullable<decimal> MatOut { get; set; }
     }
 }

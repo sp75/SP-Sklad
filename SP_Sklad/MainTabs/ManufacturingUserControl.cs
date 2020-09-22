@@ -130,7 +130,7 @@ namespace SP_Sklad.MainTabs
             var end_date = PrepRawMatEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : PrepRawMatEndDate.DateTime;
 
             int top_row = PreparationRawMaterialsGridView.TopRowIndex;
-            PreparationRawMaterialsBS.DataSource = DB.SkladBase().PreparationRawMaterialsList(satrt_date, end_date, (int)DebSatusList.EditValue, DebWhComboBox.EditValue.ToString()).ToList();
+            PreparationRawMaterialsBS.DataSource = DB.SkladBase().PreparationRawMaterialsList(satrt_date, end_date, (int)PrepRawMatStatusList.EditValue, PrepRawMatWhList.EditValue.ToString()).ToList();
             PreparationRawMaterialsGridView.TopRowIndex = top_row;
         }
 
@@ -668,6 +668,10 @@ namespace SP_Sklad.MainTabs
                 case 5:
                     PrintDoc.Show(pc_focused_row.Id, 22, DB.SkladBase());
                     break;
+
+                case 6:
+                    PrintDoc.Show(focused_prep_raw_mat_row.Id, focused_prep_raw_mat_row.WType, DB.SkladBase());
+                    break;
             }
 
 
@@ -1160,14 +1164,11 @@ namespace SP_Sklad.MainTabs
                 switch (xtraTabControl5.SelectedTabPageIndex)
                 {
                     case 0:
-                        RefreshTechProcDet(focused_prep_raw_mat_row.WbillId);
-                        break;
-                    case 1:
                         gridControl13.DataSource = db.GetWayBillMakeDet(focused_prep_raw_mat_row.WbillId).ToList().OrderBy(o => o.Num).ToList();
                         gridView11.ExpandAllGroups();
                         break;
 
-                    case 2:
+                    case 1:
                         gridControl15.DataSource = db.DeboningDet.Where(w => w.WBillId == focused_prep_raw_mat_row.WbillId).Select(s => new SP_Sklad.WBForm.frmWBDeboning.DeboningDetList
                         {
                             DebId = s.DebId,
@@ -1182,11 +1183,9 @@ namespace SP_Sklad.MainTabs
                         }).ToList();
                         break;
 
-                    case 3:
+                    case 2:
                         gridControl14.DataSource = db.GetRelDocList(focused_prep_raw_mat_row.Id).OrderBy(o => o.OnDate).ToList();
                         break;
-
-                
                 }
             }
         }

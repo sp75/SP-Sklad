@@ -60,6 +60,10 @@ namespace SP_Sklad.Reports
                     WayBillInvwntoryReport(id, db, TemlateList.wb_inv);
                     break;
 
+                case -24:
+                    PreparationRawMaterialsReport(id, db);
+                    break;
+
                 case -22:
                     DeboningReport(id, db);
                     break;
@@ -424,6 +428,63 @@ namespace SP_Sklad.Reports
             dataForReport.Add("_realation_", rel);
 
              IHelper.Print(dataForReport, TemlateList.wb_maked);
+        }
+
+        public static void PreparationRawMaterialsReport(Guid id, BaseEntities db)
+        {
+            var dataForReport = new Dictionary<string, IList>();
+            var wbl = db.WaybillList.Where(w => w.Id == id).Select(s => new { s.OnDate, s.WbillId }).First();
+            var wb = db.PreparationRawMaterialsList(wbl.OnDate, wbl.OnDate, -1, "*").ToList();
+
+            var item = db.GetWayBillDetOut(wbl.WbillId).ToList().OrderBy(o => o.Num).Select((s, index) => new
+            {
+                Num = index + 1,
+                s.Amount,
+                s.Price,
+                s.MatName,
+                s.WhName,
+                s.MsrName,
+                s.GrpId,
+                GrpName = s.GroupName
+            }).ToList();
+
+            var grp = item.GroupBy(g => new { g.GrpName, g.GrpId }).Select(s => new
+            {
+                s.Key.GrpId,
+                s.Key.GrpName,
+                Amount = s.Sum(sa => sa.Amount),
+                Summ = s.Sum(sum => sum.Amount * sum.Price)
+            }).ToList();
+
+
+            var debonin_item = db.DeboningDet.Where(w => w.WBillId == wbl.WbillId).AsNoTracking().ToList().Select((s, index) => new
+            {
+                Num = index + 1,
+                s.Amount,
+                s.Price,
+                s.Materials.Name,
+                WhName = s.Warehouse.Name,
+                MsrName = s.Materials.Measures.ShortName,
+                s.Materials.GrpId,
+                GrpName = s.Materials.MatGroup.Name
+            }).ToList();
+
+            var rel = new List<object>();
+            rel.Add(new
+            {
+                pk = "GrpId",
+                fk = "GrpId",
+                master_table = "MGRP",
+                child_table = "WayBillItems"
+            });
+
+            dataForReport.Add("WayBillList", wb);
+            dataForReport.Add("MGRP", grp);
+            dataForReport.Add("WayBillItems", item);
+            dataForReport.Add("DeboningItems", debonin_item);
+            dataForReport.Add("_realation_", rel);
+
+            IHelper.Print(dataForReport, TemlateList.wb_prep_raw_mat);
         }
 
         public static void PayDocReport(Guid id, BaseEntities db, string template_name)

@@ -65,7 +65,6 @@
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl4 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl5 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.standaloneBarDockControl8 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.BarImageList = new System.Windows.Forms.ImageList(this.components);
             this.StopProcesBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
@@ -361,13 +360,10 @@
             this.gridColumn145 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn146 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn147 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn148 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn149 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn150 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn151 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn152 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn153 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn154 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn155 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn156 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl6 = new DevExpress.XtraEditors.PanelControl();
@@ -381,19 +377,6 @@
             this.PrepRawMatStartDate = new DevExpress.XtraEditors.DateEdit();
             this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabControl5 = new DevExpress.XtraTab.XtraTabControl();
-            this.xtraTabPage21 = new DevExpress.XtraTab.XtraTabPage();
-            this.gridControl11 = new DevExpress.XtraGrid.GridControl();
-            this.gridView9 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn157 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn158 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn159 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn160 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn161 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn162 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn163 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn164 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn165 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn166 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage23 = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl13 = new DevExpress.XtraGrid.GridControl();
             this.gridView11 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -599,9 +582,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.PrepRawMatStartDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl5)).BeginInit();
             this.xtraTabControl5.SuspendLayout();
-            this.xtraTabPage21.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView9)).BeginInit();
             this.xtraTabPage23.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView11)).BeginInit();
@@ -716,7 +696,6 @@
             this.barManager1.DockControls.Add(this.standaloneBarDockControl5);
             this.barManager1.DockControls.Add(this.standaloneBarDockControl6);
             this.barManager1.DockControls.Add(this.standaloneBarDockControl7);
-            this.barManager1.DockControls.Add(this.standaloneBarDockControl8);
             this.barManager1.Form = this;
             this.barManager1.Images = this.BarImageList;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
@@ -1049,16 +1028,6 @@
             this.standaloneBarDockControl5.Name = "standaloneBarDockControl5";
             this.standaloneBarDockControl5.Size = new System.Drawing.Size(1124, 29);
             this.standaloneBarDockControl5.Text = "standaloneBarDockControl5";
-            // 
-            // standaloneBarDockControl8
-            // 
-            this.standaloneBarDockControl8.AutoSize = true;
-            this.standaloneBarDockControl8.CausesValidation = false;
-            this.standaloneBarDockControl8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl8.Location = new System.Drawing.Point(0, 0);
-            this.standaloneBarDockControl8.Name = "standaloneBarDockControl8";
-            this.standaloneBarDockControl8.Size = new System.Drawing.Size(1044, 0);
-            this.standaloneBarDockControl8.Text = "standaloneBarDockControl8";
             // 
             // BarImageList
             // 
@@ -4319,13 +4288,10 @@
             this.gridColumn145,
             this.gridColumn146,
             this.gridColumn147,
-            this.gridColumn148,
             this.gridColumn149,
-            this.gridColumn150,
             this.gridColumn151,
             this.gridColumn152,
             this.gridColumn153,
-            this.gridColumn154,
             this.gridColumn155,
             this.gridColumn156});
             this.PreparationRawMaterialsGridView.GridControl = this.PreparationRawMaterialsGridControl;
@@ -4465,15 +4431,6 @@
             this.gridColumn147.VisibleIndex = 9;
             this.gridColumn147.Width = 70;
             // 
-            // gridColumn148
-            // 
-            this.gridColumn148.Caption = "Вихід (Брутто)";
-            this.gridColumn148.DisplayFormat.FormatString = "0.00";
-            this.gridColumn148.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn148.FieldName = "AmountBrutto";
-            this.gridColumn148.Name = "gridColumn148";
-            this.gridColumn148.Width = 64;
-            // 
             // gridColumn149
             // 
             this.gridColumn149.Caption = "Вихід (Нетто)";
@@ -4485,14 +4442,6 @@
             this.gridColumn149.VisibleIndex = 10;
             this.gridColumn149.Width = 68;
             // 
-            // gridColumn150
-            // 
-            this.gridColumn150.Caption = "Тара, кг.";
-            this.gridColumn150.DisplayFormat.FormatString = "0.00";
-            this.gridColumn150.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn150.FieldName = "Tara";
-            this.gridColumn150.Name = "gridColumn150";
-            // 
             // gridColumn151
             // 
             this.gridColumn151.Caption = "Собівартість";
@@ -4501,7 +4450,7 @@
             this.gridColumn151.FieldName = "Price";
             this.gridColumn151.Name = "gridColumn151";
             this.gridColumn151.Visible = true;
-            this.gridColumn151.VisibleIndex = 13;
+            this.gridColumn151.VisibleIndex = 12;
             this.gridColumn151.Width = 34;
             // 
             // gridColumn152
@@ -4512,7 +4461,7 @@
             this.gridColumn152.FieldName = "WriteOnDate";
             this.gridColumn152.Name = "gridColumn152";
             this.gridColumn152.Visible = true;
-            this.gridColumn152.VisibleIndex = 15;
+            this.gridColumn152.VisibleIndex = 14;
             this.gridColumn152.Width = 74;
             // 
             // gridColumn153
@@ -4526,22 +4475,13 @@
             this.gridColumn153.VisibleIndex = 11;
             this.gridColumn153.Width = 91;
             // 
-            // gridColumn154
-            // 
-            this.gridColumn154.Caption = "Залишок в цеху";
-            this.gridColumn154.FieldName = "SaldoShipped";
-            this.gridColumn154.Name = "gridColumn154";
-            this.gridColumn154.Visible = true;
-            this.gridColumn154.VisibleIndex = 12;
-            this.gridColumn154.Width = 64;
-            // 
             // gridColumn155
             // 
             this.gridColumn155.Caption = "Вихід, %";
             this.gridColumn155.FieldName = "MatOut";
             this.gridColumn155.Name = "gridColumn155";
             this.gridColumn155.Visible = true;
-            this.gridColumn155.VisibleIndex = 14;
+            this.gridColumn155.VisibleIndex = 13;
             // 
             // gridColumn156
             // 
@@ -4682,155 +4622,14 @@
             this.xtraTabControl5.Images = this.PageImageList;
             this.xtraTabControl5.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl5.Name = "xtraTabControl5";
-            this.xtraTabControl5.SelectedTabPage = this.xtraTabPage21;
+            this.xtraTabControl5.SelectedTabPage = this.xtraTabPage23;
             this.xtraTabControl5.Size = new System.Drawing.Size(1050, 239);
             this.xtraTabControl5.TabIndex = 0;
             this.xtraTabControl5.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.xtraTabPage21,
             this.xtraTabPage23,
             this.xtraTabPage25,
             this.xtraTabPage24});
             this.xtraTabControl5.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xtraTabControl5_SelectedPageChanged);
-            // 
-            // xtraTabPage21
-            // 
-            this.xtraTabPage21.Controls.Add(this.gridControl11);
-            this.xtraTabPage21.Controls.Add(this.standaloneBarDockControl8);
-            this.xtraTabPage21.ImageIndex = 18;
-            this.xtraTabPage21.Name = "xtraTabPage21";
-            this.xtraTabPage21.Size = new System.Drawing.Size(1044, 208);
-            this.xtraTabPage21.Text = "Технологічні процеси";
-            // 
-            // gridControl11
-            // 
-            this.gridControl11.DataSource = this.TechProcDetBS;
-            this.gridControl11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl11.Location = new System.Drawing.Point(0, 0);
-            this.gridControl11.MainView = this.gridView9;
-            this.gridControl11.Name = "gridControl11";
-            this.gridControl11.Size = new System.Drawing.Size(1044, 208);
-            this.gridControl11.TabIndex = 2;
-            this.gridControl11.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView9});
-            // 
-            // gridView9
-            // 
-            this.gridView9.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn157,
-            this.gridColumn158,
-            this.gridColumn159,
-            this.gridColumn160,
-            this.gridColumn161,
-            this.gridColumn162,
-            this.gridColumn163,
-            this.gridColumn164,
-            this.gridColumn165,
-            this.gridColumn166});
-            this.gridView9.GridControl = this.gridControl11;
-            this.gridView9.Name = "gridView9";
-            this.gridView9.OptionsBehavior.AllowIncrementalSearch = true;
-            this.gridView9.OptionsView.ShowGroupPanel = false;
-            // 
-            // gridColumn157
-            // 
-            this.gridColumn157.Caption = "Назва";
-            this.gridColumn157.FieldName = "Name";
-            this.gridColumn157.Name = "gridColumn157";
-            this.gridColumn157.OptionsColumn.AllowEdit = false;
-            this.gridColumn157.Visible = true;
-            this.gridColumn157.VisibleIndex = 1;
-            this.gridColumn157.Width = 193;
-            // 
-            // gridColumn158
-            // 
-            this.gridColumn158.Caption = "Дата";
-            this.gridColumn158.DisplayFormat.FormatString = "g";
-            this.gridColumn158.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.gridColumn158.FieldName = "OnDate";
-            this.gridColumn158.Name = "gridColumn158";
-            this.gridColumn158.OptionsColumn.AllowEdit = false;
-            this.gridColumn158.Visible = true;
-            this.gridColumn158.VisibleIndex = 2;
-            this.gridColumn158.Width = 96;
-            // 
-            // gridColumn159
-            // 
-            this.gridColumn159.Caption = "Вихід (Брутто)";
-            this.gridColumn159.FieldName = "Out";
-            this.gridColumn159.Name = "gridColumn159";
-            this.gridColumn159.OptionsColumn.AllowEdit = false;
-            this.gridColumn159.Visible = true;
-            this.gridColumn159.VisibleIndex = 3;
-            this.gridColumn159.Width = 92;
-            // 
-            // gridColumn160
-            // 
-            this.gridColumn160.Caption = "Відповідальний";
-            this.gridColumn160.FieldName = "PersonName";
-            this.gridColumn160.Name = "gridColumn160";
-            this.gridColumn160.OptionsColumn.AllowEdit = false;
-            this.gridColumn160.Visible = true;
-            this.gridColumn160.VisibleIndex = 8;
-            this.gridColumn160.Width = 176;
-            // 
-            // gridColumn161
-            // 
-            this.gridColumn161.Caption = "Примітка";
-            this.gridColumn161.FieldName = "Notes";
-            this.gridColumn161.Name = "gridColumn161";
-            this.gridColumn161.Visible = true;
-            this.gridColumn161.VisibleIndex = 9;
-            this.gridColumn161.Width = 194;
-            // 
-            // gridColumn162
-            // 
-            this.gridColumn162.Caption = "#";
-            this.gridColumn162.FieldName = "Num";
-            this.gridColumn162.Name = "gridColumn162";
-            this.gridColumn162.OptionsColumn.AllowEdit = false;
-            this.gridColumn162.Visible = true;
-            this.gridColumn162.VisibleIndex = 0;
-            this.gridColumn162.Width = 73;
-            // 
-            // gridColumn163
-            // 
-            this.gridColumn163.Caption = "Вихід (Нетто)";
-            this.gridColumn163.DisplayFormat.FormatString = "0.00";
-            this.gridColumn163.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn163.FieldName = "OutNetto";
-            this.gridColumn163.Name = "gridColumn163";
-            this.gridColumn163.OptionsColumn.AllowEdit = false;
-            this.gridColumn163.Visible = true;
-            this.gridColumn163.VisibleIndex = 4;
-            this.gridColumn163.Width = 84;
-            // 
-            // gridColumn164
-            // 
-            this.gridColumn164.Caption = "Рама";
-            this.gridColumn164.FieldName = "RamaName";
-            this.gridColumn164.Name = "gridColumn164";
-            this.gridColumn164.OptionsColumn.AllowEdit = false;
-            this.gridColumn164.Visible = true;
-            this.gridColumn164.VisibleIndex = 5;
-            this.gridColumn164.Width = 118;
-            // 
-            // gridColumn165
-            // 
-            this.gridColumn165.Caption = "Вішала, шт";
-            this.gridColumn165.FieldName = "ExtMatAmount";
-            this.gridColumn165.Name = "gridColumn165";
-            this.gridColumn165.OptionsColumn.AllowEdit = false;
-            this.gridColumn165.Visible = true;
-            this.gridColumn165.VisibleIndex = 6;
-            // 
-            // gridColumn166
-            // 
-            this.gridColumn166.Caption = "Тара";
-            this.gridColumn166.FieldName = "TareWeight";
-            this.gridColumn166.Name = "gridColumn166";
-            this.gridColumn166.OptionsColumn.AllowEdit = false;
-            this.gridColumn166.Visible = true;
-            this.gridColumn166.VisibleIndex = 7;
             // 
             // xtraTabPage23
             // 
@@ -5577,10 +5376,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.PrepRawMatStartDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl5)).EndInit();
             this.xtraTabControl5.ResumeLayout(false);
-            this.xtraTabPage21.ResumeLayout(false);
-            this.xtraTabPage21.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView9)).EndInit();
             this.xtraTabPage23.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView11)).EndInit();
@@ -5930,7 +5725,6 @@
         private DevExpress.Utils.SharedImageCollection UserTreeImgList;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn136;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn137;
-        private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl8;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage20;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl6;
         private DevExpress.XtraGrid.GridControl PreparationRawMaterialsGridControl;
@@ -5947,13 +5741,10 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn145;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn146;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn147;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn148;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn149;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn150;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn151;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn152;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn153;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn154;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn155;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn156;
         private DevExpress.XtraEditors.PanelControl panelControl6;
@@ -5967,19 +5758,6 @@
         public DevExpress.XtraEditors.DateEdit PrepRawMatStartDate;
         private DevExpress.XtraEditors.LabelControl labelControl17;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl5;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage21;
-        private DevExpress.XtraGrid.GridControl gridControl11;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView9;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn157;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn158;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn159;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn160;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn161;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn162;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn163;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn164;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn165;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn166;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage23;
         private DevExpress.XtraGrid.GridControl gridControl13;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView11;

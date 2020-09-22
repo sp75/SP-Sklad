@@ -9217,17 +9217,17 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Measures" EntitySet="Measures" />
             <End Role="MatRecipe" EntitySet="MatRecipe" />
           </AssociationSet>
+          <FunctionImport Name="GetRecipePreparationRawMaterials" ReturnType="Collection(BaseModel.GetRecipePreparationRawMaterials_Result)">
+          <Parameter Name="wbill_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetRecipePreparationRawMaterialsOut">
+          <Parameter Name="wbill_id" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="PreparationRawMaterialsList" ReturnType="Collection(BaseModel.PreparationRawMaterialsList_Result)">
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
             <Parameter Name="to_date" Mode="In" Type="DateTime" />
             <Parameter Name="is_checked" Mode="In" Type="Int32" />
             <Parameter Name="wh" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="GetRecipePreparationRawMaterials" ReturnType="Collection(BaseModel.GetRecipePreparationRawMaterials_Result)">
-          <Parameter Name="wbill_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="GetRecipePreparationRawMaterialsOut">
-            <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
@@ -15351,6 +15351,11 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="GetRecipePreparationRawMaterials_Result">
+          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="PosId" Nullable="true" />
+          <Property Type="Int32" Name="Rsv" Nullable="true" />
+        </ComplexType>
         <ComplexType Name="PreparationRawMaterialsList_Result">
           <Property Type="Guid" Name="Id" Nullable="false" />
           <Property Type="Int32" Name="WbillId" Nullable="false" />
@@ -15381,23 +15386,14 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
           <Property Type="String" Name="KaName" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="MakedPerson" Nullable="true" MaxLength="100" />
-          <Property Type="DateTime" Name="OnDateOut" Nullable="true" Precision="23" />
-          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="AmountBrutto" Nullable="true" Precision="38" Scale="4" />
           <Property Type="DateTime" Name="WriteOnDate" Nullable="true" Precision="23" />
           <Property Type="String" Name="FromWh" Nullable="true" MaxLength="64" />
           <Property Type="Int32" Name="FromWId" Nullable="true" />
           <Property Type="String" Name="DocStatus" Nullable="false" MaxLength="21" />
           <Property Type="Decimal" Name="Price" Nullable="true" Precision="38" Scale="17" />
           <Property Type="Decimal" Name="ShippedAmount" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="Tara" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="SaldoShipped" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="38" Scale="8" />
           <Property Type="Decimal" Name="MatOut" Nullable="true" Precision="15" Scale="2" />
-        </ComplexType>
-        <ComplexType Name="GetRecipePreparationRawMaterials_Result">
-          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
-          <Property Type="Int32" Name="PosId" Nullable="true" />
-          <Property Type="Int32" Name="Rsv" Nullable="true" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -19402,6 +19398,16 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetRecipePreparationRawMaterials" FunctionName="BaseModel.Store.GetRecipePreparationRawMaterials">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetRecipePreparationRawMaterials_Result">
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetRecipePreparationRawMaterialsOut" FunctionName="BaseModel.Store.GetRecipePreparationRawMaterialsOut" />
           <FunctionImportMapping FunctionImportName="PreparationRawMaterialsList" FunctionName="BaseModel.Store.PreparationRawMaterialsList">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.PreparationRawMaterialsList_Result">
@@ -19434,31 +19440,17 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="MsrName" ColumnName="MsrName" />
                 <ScalarProperty Name="KaName" ColumnName="KaName" />
                 <ScalarProperty Name="MakedPerson" ColumnName="MakedPerson" />
-                <ScalarProperty Name="OnDateOut" ColumnName="OnDateOut" />
-                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
-                <ScalarProperty Name="AmountBrutto" ColumnName="AmountBrutto" />
                 <ScalarProperty Name="WriteOnDate" ColumnName="WriteOnDate" />
                 <ScalarProperty Name="FromWh" ColumnName="FromWh" />
                 <ScalarProperty Name="FromWId" ColumnName="FromWId" />
                 <ScalarProperty Name="DocStatus" ColumnName="DocStatus" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="ShippedAmount" ColumnName="ShippedAmount" />
-                <ScalarProperty Name="Tara" ColumnName="Tara" />
-                <ScalarProperty Name="SaldoShipped" ColumnName="SaldoShipped" />
+                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
                 <ScalarProperty Name="MatOut" ColumnName="MatOut" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetRecipePreparationRawMaterials" FunctionName="BaseModel.Store.GetRecipePreparationRawMaterials">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetRecipePreparationRawMaterials_Result">
-                <ScalarProperty Name="MatName" ColumnName="MatName" />
-                <ScalarProperty Name="PosId" ColumnName="PosId" />
-                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetRecipePreparationRawMaterialsOut" FunctionName="BaseModel.Store.GetRecipePreparationRawMaterialsOut" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
