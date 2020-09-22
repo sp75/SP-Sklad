@@ -771,6 +771,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(61, "Debt adjustment.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(62, "credit adjustment.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(63, "акт інвентаризації з контрагентом.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(64, "preparation.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab
