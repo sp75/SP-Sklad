@@ -52,15 +52,15 @@ namespace SP_Sklad.WBForm
             PersonMakeComboBox.Properties.DataSource = DBHelper.Persons;
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
             WhComboBox.Properties.DataSource = DBHelper.WhList;
-            RecipeComboBox.Properties.DataSource = DB.SkladBase().MatRecipe.AsNoTracking().Where(w => w.RType == 1 && !w.Archived && w.Materials.Archived != 1).Select(s => new
+            RecipeComboBox.Properties.DataSource = DB.SkladBase().MatRecipe.AsNoTracking().Where(w => w.RType == 1 && !w.Archived && w.Materials.Archived != 1).Select(s => new RecipeList
             {
-                s.RecId,
-                s.Name,
-                s.Amount,
+                RecId = s.RecId,
+                Name = s.Name,
+                Amount = s.Amount,
                 MatName = s.Materials.Name,
-                s.MatId,
+                MatId = s.MatId,
                 MsrName = s.Materials.Measures.ShortName,
-                s.Materials.Measures.AutoCalcRecipe
+                AutoCalcRecipe = s.Materials.Measures.AutoCalcRecipe
             }).ToList();
 
             if (_wbill_id == null)
@@ -111,6 +111,16 @@ namespace SP_Sklad.WBForm
             }
 
             RefreshDet();
+        }
+        public class RecipeList
+        {
+            public int RecId { get; set; }
+            public string Name { get; set; }
+            public decimal Amount { get; set; }
+            public string MatName { get; set; }
+            public int MatId { get; set; }
+            public string MsrName { get; set; }
+            public bool AutoCalcRecipe { get; set; }
         }
 
         private void RefreshDet()
@@ -179,7 +189,7 @@ namespace SP_Sklad.WBForm
             }
             //  var measure_id = wb.WayBillMake.MatRecipe.Materials.MId;
 
-            dynamic row = RecipeComboBox.GetSelectedDataRow();
+            var row = RecipeComboBox.GetSelectedDataRow() as RecipeList;
             if (row.AutoCalcRecipe)
             {
 
@@ -197,8 +207,27 @@ namespace SP_Sklad.WBForm
                           k.Amount,
                           MeasureAmount = n.Amount
                       }).Sum(su => su.MeasureAmount * su.Amount);
-
                 wb.WayBillMake.Amount = main_sum + ext_sum;
+
+                var main_sum_rec = _db.WaybillDet.Where(w => w.WbillId == _wbill_id && w.Materials.MId == w.WaybillList.WayBillMake.MatRecipe.Materials.MId).ToList()
+                    .Sum(s => s.Discount);
+
+                var ext_sum_rec = _db.WaybillDet.Where(w => w.WbillId == _wbill_id && w.Materials.MId != w.WaybillList.WayBillMake.MatRecipe.Materials.MId)
+                      .Select(s => new
+                      {
+                          MaterialMeasures = s.Materials.MaterialMeasures.Where(f => f.MId == s.WaybillList.WayBillMake.MatRecipe.Materials.MId),
+                          s.Discount
+                      }).ToList()
+                      .SelectMany(sm => sm.MaterialMeasures, (k, n) => new
+                      {
+                          k.Discount,
+                          MeasureAmount = n.Amount
+                      }).Sum(su => su.MeasureAmount * su.Discount);
+
+                wb.WayBillMake.AmountByRecipe = main_sum_rec/* + ext_sum_rec*/;
+
+                wb.WayBillMake.RecipeCount = Convert.ToInt32( Math.Ceiling( wb.WayBillMake.AmountByRecipe.Value /  row.Amount ));
+
 
                 if (wb.WayBillMake.Amount == 0)
                 {

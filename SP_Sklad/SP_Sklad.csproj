@@ -138,6 +138,7 @@
     <Reference Include="DevExpress.XtraPdfViewer.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
+    <Reference Include="DevExpress.XtraPivotGrid.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
@@ -1951,6 +1952,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WayBillTmc.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WBListMake_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WhMatGet_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.WBDetForm.frmIntermediateWeighingDet+make_det.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

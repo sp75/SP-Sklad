@@ -19,6 +19,8 @@ namespace SP_Sklad.SkladData
         public Nullable<int> RecId { get; set; }
         public Nullable<int> PersonId { get; set; }
         public decimal Amount { get; set; }
+        public Nullable<decimal> AmountByRecipe { get; set; }
+        public Nullable<int> RecipeCount { get; set; }
     
         public virtual MatRecipe MatRecipe { get; set; }
         public virtual Warehouse Warehouse { get; set; }

@@ -52,7 +52,7 @@ namespace SP_Sklad
             var start_date = wbStartDate.DateTime < SqlDateTime.MinValue.Value ? SqlDateTime.MinValue.Value : wbStartDate.DateTime;
             var end_date = wbEndDate.DateTime < SqlDateTime.MinValue.Value ? SqlDateTime.MaxValue.Value : wbEndDate.DateTime.SetEndDay();
 
-            DocListBindingSource.DataSource = DB.SkladBase().GetMatMove(_mat_id, start_date, end_date, 0, (int)KAgentEdit.EditValue, (int)wTypeList.EditValue, "*", Guid.Empty, DBHelper.CurrentUser.UserId).ToList();
+            DocListBindingSource.DataSource = DB.SkladBase().GetMatMove(_mat_id, start_date, end_date, 0, (int)KAgentEdit.EditValue, (int)wTypeList.EditValue, "*", Guid.Empty, DBHelper.CurrentUser.UserId).ToList().OrderBy(o=> o.OnDate).ToList();
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

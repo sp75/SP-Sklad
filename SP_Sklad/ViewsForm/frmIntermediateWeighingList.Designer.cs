@@ -32,18 +32,29 @@
             this.BottomPanel = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.UsersGroupGrid = new DevExpress.XtraGrid.GridControl();
             this.GetWayBillMakeDetBS = new System.Windows.Forms.BindingSource(this.components);
-            this.UsersGroupGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn30 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.pivotGridControl1 = new DevExpress.XtraPivotGrid.PivotGridControl();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.pivotGridField1 = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.pivotGridField2 = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.pivotGridField3 = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.pivotGridField4 = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
+            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.UsersGroupGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GetWayBillMakeDetBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UsersGroupGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pivotGridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // BottomPanel
@@ -51,16 +62,16 @@
             this.BottomPanel.Controls.Add(this.OkButton);
             this.BottomPanel.Controls.Add(this.simpleButton1);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomPanel.Location = new System.Drawing.Point(0, 516);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 509);
             this.BottomPanel.Name = "BottomPanel";
-            this.BottomPanel.Size = new System.Drawing.Size(774, 52);
+            this.BottomPanel.Size = new System.Drawing.Size(1021, 52);
             this.BottomPanel.TabIndex = 19;
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(552, 10);
+            this.OkButton.Location = new System.Drawing.Point(799, 10);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(100, 30);
             this.OkButton.TabIndex = 1;
@@ -70,92 +81,169 @@
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton1.Location = new System.Drawing.Point(662, 10);
+            this.simpleButton1.Location = new System.Drawing.Point(909, 10);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(100, 30);
             this.simpleButton1.TabIndex = 0;
             this.simpleButton1.Text = "Відмінити";
             // 
-            // UsersGroupGrid
-            // 
-            this.UsersGroupGrid.DataSource = this.GetWayBillMakeDetBS;
-            this.UsersGroupGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UsersGroupGrid.Location = new System.Drawing.Point(0, 0);
-            this.UsersGroupGrid.MainView = this.UsersGroupGridView;
-            this.UsersGroupGrid.Name = "UsersGroupGrid";
-            this.UsersGroupGrid.Size = new System.Drawing.Size(774, 516);
-            this.UsersGroupGrid.TabIndex = 20;
-            this.UsersGroupGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.UsersGroupGridView});
-            // 
             // GetWayBillMakeDetBS
             // 
-            this.GetWayBillMakeDetBS.DataSource = typeof(SP_Sklad.SkladData.GetWayBillMakeDet_Result);
+            this.GetWayBillMakeDetBS.DataSource = typeof(SP_Sklad.WBDetForm.frmIntermediateWeighingDet.make_det);
             // 
-            // UsersGroupGridView
+            // panelControl1
             // 
-            this.UsersGroupGridView.Appearance.HeaderPanel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            this.UsersGroupGridView.Appearance.HeaderPanel.Options.UseFont = true;
-            this.UsersGroupGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.UsersGroupGridView.Appearance.Row.Options.UseFont = true;
-            this.UsersGroupGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn30,
-            this.gridColumn1,
-            this.gridColumn2,
-            this.gridColumn3});
-            this.UsersGroupGridView.GridControl = this.UsersGroupGrid;
-            this.UsersGroupGridView.Name = "UsersGroupGridView";
-            this.UsersGroupGridView.OptionsBehavior.AllowIncrementalSearch = true;
-            this.UsersGroupGridView.OptionsBehavior.Editable = false;
-            this.UsersGroupGridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
-            this.UsersGroupGridView.OptionsBehavior.ReadOnly = true;
-            this.UsersGroupGridView.OptionsFind.AlwaysVisible = true;
-            this.UsersGroupGridView.OptionsView.ShowGroupPanel = false;
+            this.panelControl1.Controls.Add(this.pivotGridControl1);
+            this.panelControl1.Controls.Add(this.textEdit3);
+            this.panelControl1.Controls.Add(this.labelControl4);
+            this.panelControl1.Controls.Add(this.textEdit1);
+            this.panelControl1.Controls.Add(this.labelControl3);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl1.Location = new System.Drawing.Point(0, 0);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(1021, 509);
+            this.panelControl1.TabIndex = 23;
             // 
-            // gridColumn30
+            // pivotGridControl1
             // 
-            this.gridColumn30.Caption = "Сировина";
-            this.gridColumn30.FieldName = "MatName";
-            this.gridColumn30.Name = "gridColumn30";
-            this.gridColumn30.Visible = true;
-            this.gridColumn30.VisibleIndex = 0;
-            this.gridColumn30.Width = 350;
+            this.pivotGridControl1.Appearance.Cell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.pivotGridControl1.Appearance.Cell.Options.UseFont = true;
+            this.pivotGridControl1.Appearance.DataHeaderArea.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.pivotGridControl1.Appearance.DataHeaderArea.Options.UseFont = true;
+            this.pivotGridControl1.Appearance.FocusedCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.pivotGridControl1.Appearance.FocusedCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.pivotGridControl1.Appearance.FocusedCell.Options.UseBackColor = true;
+            this.pivotGridControl1.Appearance.FocusedCell.Options.UseFont = true;
+            this.pivotGridControl1.Appearance.RowHeaderArea.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.pivotGridControl1.Appearance.RowHeaderArea.Options.UseFont = true;
+            this.pivotGridControl1.Appearance.SelectedCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.pivotGridControl1.Appearance.SelectedCell.Options.UseFont = true;
+            this.pivotGridControl1.DataSource = this.bindingSource1;
+            this.pivotGridControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pivotGridControl1.Fields.AddRange(new DevExpress.XtraPivotGrid.PivotGridField[] {
+            this.pivotGridField1,
+            this.pivotGridField2,
+            this.pivotGridField3,
+            this.pivotGridField4});
+            this.pivotGridControl1.Location = new System.Drawing.Point(2, 53);
+            this.pivotGridControl1.Name = "pivotGridControl1";
+            this.pivotGridControl1.OptionsSelection.MultiSelect = false;
+            this.pivotGridControl1.OptionsView.ShowColumnHeaders = false;
+            this.pivotGridControl1.OptionsView.ShowDataHeaders = false;
+            this.pivotGridControl1.OptionsView.ShowFilterHeaders = false;
+            this.pivotGridControl1.OptionsView.ShowRowGrandTotalHeader = false;
+            this.pivotGridControl1.OptionsView.ShowRowGrandTotals = false;
+            this.pivotGridControl1.Size = new System.Drawing.Size(1017, 454);
+            this.pivotGridControl1.TabIndex = 36;
+            this.pivotGridControl1.CellDoubleClick += new DevExpress.XtraPivotGrid.PivotCellEventHandler(this.pivotGridControl1_CellDoubleClick);
+            this.pivotGridControl1.CellClick += new DevExpress.XtraPivotGrid.PivotCellEventHandler(this.pivotGridControl1_CellClick);
+            this.pivotGridControl1.FocusedCellChanged += new System.EventHandler(this.pivotGridControl1_FocusedCellChanged);
             // 
-            // gridColumn1
+            // bindingSource1
             // 
-            this.gridColumn1.Caption = "Од.";
-            this.gridColumn1.FieldName = "MsrName";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 1;
-            this.gridColumn1.Width = 78;
+            this.bindingSource1.DataSource = typeof(SP_Sklad.WBDetForm.frmIntermediateWeighingDet.make_det);
             // 
-            // gridColumn2
+            // pivotGridField1
             // 
-            this.gridColumn2.Caption = "За рецептом";
-            this.gridColumn2.FieldName = "AmountByRecipe";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 2;
-            this.gridColumn2.Width = 97;
+            this.pivotGridField1.AllowedAreas = DevExpress.XtraPivotGrid.PivotGridAllowedAreas.RowArea;
+            this.pivotGridField1.Appearance.Header.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.pivotGridField1.Appearance.Header.Options.UseFont = true;
+            this.pivotGridField1.Appearance.Value.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.pivotGridField1.Appearance.Value.Options.UseFont = true;
+            this.pivotGridField1.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea;
+            this.pivotGridField1.AreaIndex = 0;
+            this.pivotGridField1.Caption = "Сировина";
+            this.pivotGridField1.FieldName = "MatName";
+            this.pivotGridField1.Name = "pivotGridField1";
+            this.pivotGridField1.Options.ReadOnly = true;
+            this.pivotGridField1.Width = 358;
             // 
-            // gridColumn3
+            // pivotGridField2
             // 
-            this.gridColumn3.AppearanceCell.BackColor = System.Drawing.Color.Azure;
-            this.gridColumn3.AppearanceCell.Options.UseBackColor = true;
-            this.gridColumn3.Caption = "Зважено";
-            this.gridColumn3.FieldName = "AmountIntermediateWeighing";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 3;
-            this.gridColumn3.Width = 102;
+            this.pivotGridField2.Appearance.Cell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.pivotGridField2.Appearance.Cell.Options.UseFont = true;
+            this.pivotGridField2.Appearance.Header.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.pivotGridField2.Appearance.Header.Options.UseFont = true;
+            this.pivotGridField2.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea;
+            this.pivotGridField2.AreaIndex = 1;
+            this.pivotGridField2.Caption = "Од.";
+            this.pivotGridField2.FieldName = "MsrName";
+            this.pivotGridField2.Name = "pivotGridField2";
+            this.pivotGridField2.Width = 60;
+            // 
+            // pivotGridField3
+            // 
+            this.pivotGridField3.Appearance.Cell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.pivotGridField3.Appearance.Cell.Options.UseFont = true;
+            this.pivotGridField3.Appearance.Header.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.pivotGridField3.Appearance.Header.Options.UseFont = true;
+            this.pivotGridField3.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea;
+            this.pivotGridField3.AreaIndex = 0;
+            this.pivotGridField3.Caption = "Зважено";
+            this.pivotGridField3.CellFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.pivotGridField3.FieldName = "AmountIntermediateWeighing";
+            this.pivotGridField3.Name = "pivotGridField3";
+            // 
+            // pivotGridField4
+            // 
+            this.pivotGridField4.Appearance.Cell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.pivotGridField4.Appearance.Cell.Options.UseFont = true;
+            this.pivotGridField4.Appearance.Header.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.pivotGridField4.Appearance.Header.Options.UseFont = true;
+            this.pivotGridField4.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
+            this.pivotGridField4.AreaIndex = 0;
+            this.pivotGridField4.Caption = "#";
+            this.pivotGridField4.FieldName = "Rn";
+            this.pivotGridField4.Name = "pivotGridField4";
+            this.pivotGridField4.Width = 90;
+            // 
+            // textEdit3
+            // 
+            this.textEdit3.Location = new System.Drawing.Point(491, 16);
+            this.textEdit3.Name = "textEdit3";
+            this.textEdit3.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.textEdit3.Properties.Appearance.Options.UseFont = true;
+            this.textEdit3.Size = new System.Drawing.Size(86, 22);
+            this.textEdit3.StyleController = this.styleController1;
+            this.textEdit3.TabIndex = 35;
+            // 
+            // styleController1
+            // 
+            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.styleController1.Appearance.Options.UseFont = true;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(375, 19);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(110, 16);
+            this.labelControl4.StyleController = this.styleController1;
+            this.labelControl4.TabIndex = 34;
+            this.labelControl4.Text = "Кількість закладок";
+            // 
+            // textEdit1
+            // 
+            this.textEdit1.Location = new System.Drawing.Point(64, 16);
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Size = new System.Drawing.Size(278, 22);
+            this.textEdit1.StyleController = this.styleController1;
+            this.textEdit1.TabIndex = 32;
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(12, 19);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(46, 16);
+            this.labelControl3.StyleController = this.styleController1;
+            this.labelControl3.TabIndex = 27;
+            this.labelControl3.Text = "Рецепт:";
             // 
             // frmIntermediateWeighingList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(774, 568);
-            this.Controls.Add(this.UsersGroupGrid);
+            this.ClientSize = new System.Drawing.Size(1021, 561);
+            this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.BottomPanel);
             this.Name = "frmIntermediateWeighingList";
             this.ShowInTaskbar = false;
@@ -165,9 +253,15 @@
             this.Load += new System.EventHandler(this.frmUserGroup_Load);
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).EndInit();
             this.BottomPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.UsersGroupGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GetWayBillMakeDetBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UsersGroupGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pivotGridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -177,12 +271,18 @@
         private DevExpress.XtraEditors.PanelControl BottomPanel;
         public DevExpress.XtraEditors.SimpleButton OkButton;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraGrid.GridControl UsersGroupGrid;
-        public DevExpress.XtraGrid.Views.Grid.GridView UsersGroupGridView;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn30;
         private System.Windows.Forms.BindingSource GetWayBillMakeDetBS;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.TextEdit textEdit3;
+        private DevExpress.XtraEditors.StyleController styleController1;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraPivotGrid.PivotGridControl pivotGridControl1;
+        private DevExpress.XtraPivotGrid.PivotGridField pivotGridField1;
+        private DevExpress.XtraPivotGrid.PivotGridField pivotGridField2;
+        private DevExpress.XtraPivotGrid.PivotGridField pivotGridField3;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private DevExpress.XtraPivotGrid.PivotGridField pivotGridField4;
     }
 }

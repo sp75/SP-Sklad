@@ -85,9 +85,12 @@ namespace SP_Sklad.WBForm
             {
                 DBHelper.UpdateSessionWaybill(wb.WbillId);
 
-                if (is_new_record) 
+                if (is_new_record)
                 {
-                    wb.Num = new BaseEntities().GetDocNum("wb_inventory").FirstOrDefault();
+                    using (var db = new BaseEntities())
+                    {
+                        wb.Num = db.GetDocNum("wb_inventory").FirstOrDefault();
+                    }
                 }
 
                 WaybillListBS.DataSource = wb;

@@ -443,6 +443,7 @@
             this.PayDocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
+            this.gridColumn99 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -1985,7 +1986,8 @@
             this.gridColumn27,
             this.gridColumn8,
             this.gridColumn51,
-            this.gridColumn52});
+            this.gridColumn52,
+            this.gridColumn99});
             this.PayDocGridView.GridControl = this.PayDocGridControl;
             this.PayDocGridView.Name = "PayDocGridView";
             this.PayDocGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -5161,6 +5163,12 @@
             this.bar5.OptionsBar.UseWholeRow = true;
             this.bar5.Text = "Custom 5";
             // 
+            // gridColumn99
+            // 
+            this.gridColumn99.Caption = "Підстава";
+            this.gridColumn99.FieldName = "Reason";
+            this.gridColumn99.Name = "gridColumn99";
+            // 
             // DocsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5765,5 +5773,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox32;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn94;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox33;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn99;
     }
 }

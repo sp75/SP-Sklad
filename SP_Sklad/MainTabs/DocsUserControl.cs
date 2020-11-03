@@ -73,6 +73,7 @@ namespace SP_Sklad.MainTabs
             wbContentTab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
 
             WbGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "DocsUserControl\\WbGridView");
+            PayDocGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "DocsUserControl\\PayDocGridView");
 
             if (!DesignMode)
             {
@@ -123,6 +124,7 @@ namespace SP_Sklad.MainTabs
 
                 user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
                 WbGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
+                PayDocGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
             }
 
             //    WbGridView.SaveLayoutToXml(@"D:\Program RES\AVK\t.xml");
@@ -1365,6 +1367,7 @@ namespace SP_Sklad.MainTabs
         public void SaveGridLayouts()
         {
             WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "\\DocsUserControl\\WbGridView");
+            PayDocGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "\\DocsUserControl\\PayDocGridView");
         }
 
         private void barButtonItem15_ItemClick(object sender, ItemClickEventArgs e)

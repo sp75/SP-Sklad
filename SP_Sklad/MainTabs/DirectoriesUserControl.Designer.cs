@@ -3613,6 +3613,7 @@
             this.PreparationMatRecipeGridView.OptionsView.EnableAppearanceEvenRow = true;
             this.PreparationMatRecipeGridView.OptionsView.EnableAppearanceOddRow = true;
             this.PreparationMatRecipeGridView.OptionsView.ShowGroupPanel = false;
+            this.PreparationMatRecipeGridView.DoubleClick += new System.EventHandler(this.PreparationMatRecipeGridView_DoubleClick);
             // 
             // gridColumn84
             // 

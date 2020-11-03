@@ -40,7 +40,7 @@ namespace SP_Sklad.EditForm
 
             tree.Add(new CatalogTreeList { Id = -2, ParentId = -255, Text = "Основна інформація", ImgIdx = 0, TabIdx = 0 });
             tree.Add(new CatalogTreeList { Id = 0, ParentId = -255, Text = "Позиції", ImgIdx = 1, TabIdx = 1 });
-            tree.Add(new CatalogTreeList { Id = 1, ParentId = -255, Text = "Технологічні процеси", ImgIdx = 7, TabIdx = 3 });
+       //     tree.Add(new CatalogTreeList { Id = 1, ParentId = -255, Text = "Технологічні процеси", ImgIdx = 7, TabIdx = 3 });
 
             TreeListBindingSource.DataSource = tree;
 

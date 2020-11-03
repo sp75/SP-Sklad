@@ -625,6 +625,11 @@ namespace SP_Sklad.MainTabs
                                 var dc = DiscCardsGridView.GetFocusedRow() as v_DiscCards;
                                 db.DeleteWhere<DiscCards>(w => w.CardId == dc.CardId);
                                 break;
+
+                            case 124:
+                                int prop_mat_rec = ((dynamic)PreparationMatRecipeGridView.GetFocusedRow()).RecId;
+                                db.DeleteWhere<MatRecipe>(w => w.RecId == prop_mat_rec);
+                                break;
                         }
                         break;
 
@@ -1275,6 +1280,11 @@ namespace SP_Sklad.MainTabs
                     GetKontragentDetail();
                 }
             }
+        }
+
+        private void PreparationMatRecipeGridView_DoubleClick(object sender, EventArgs e)
+        {
+            EditItemBtn.PerformClick();
         }
     }
 }

@@ -259,58 +259,64 @@ namespace SP_Sklad.Common
 
         static public void ShowMatListByWH3(BaseEntities db, WaybillList wb, String WID)
         {
-            var f = new frmWhCatalog(1);
-
-            f.uc.xtraTabPage4.PageVisible = false;
-            f.uc.xtraTabPage5.PageVisible = false;
-            f.uc.xtraTabPage9.PageVisible = false;
-            f.uc.MatListTabPage.PageVisible = true;
-            f.uc.xtraTabControl1.SelectedTabPageIndex = 4;
-            f.uc.gridColumn49.Visible = false;
-            f.uc.gridColumn51.Visible = false;
-            f.uc.gridColumn52.Visible = false;
-            f.uc.MatListGridColumnWh.Visible = (WID == "*");
-            f.uc.bar3.Visible = false;
-            f.uc.ByWhBtn.Down = true;
-            f.uc.splitContainerControl1.SplitterPosition = 0;
-
-            int wid;
-            if (int.TryParse(WID, out wid))
+            using (var f = new frmWhCatalog(1))
             {
-                f.uc.WHTreeList.DataSource = new BaseEntities().GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w => w.GType == 1 && w.Num == wid).ToList();
-            }
-            else
-            {
-                f.uc.WHTreeList.DataSource = new BaseEntities().GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w => w.GType == 1).ToList();
-            }
-            f.uc.GrpNameGridColumn.GroupIndex = 0;
 
-            f.uc.wb = wb;
-            f.uc.isMatList = true;
-            if (f.ShowDialog() == DialogResult.OK)
-            {
-                foreach (var item in f.uc.custom_mat_list)
+                f.uc.xtraTabPage4.PageVisible = false;
+                f.uc.xtraTabPage5.PageVisible = false;
+                f.uc.xtraTabPage9.PageVisible = false;
+                f.uc.MatListTabPage.PageVisible = true;
+                f.uc.xtraTabControl1.SelectedTabPageIndex = 4;
+                f.uc.gridColumn49.Visible = false;
+                f.uc.gridColumn51.Visible = false;
+                f.uc.gridColumn52.Visible = false;
+                f.uc.MatListGridColumnWh.Visible = (WID == "*");
+                f.uc.bar3.Visible = false;
+                f.uc.ByWhBtn.Down = true;
+                f.uc.splitContainerControl1.SplitterPosition = 0;
+
+
+                using (var _db = new BaseEntities())
                 {
-                    var wbd = db.WaybillDet.Add(new WaybillDet
+                    int wid;
+                    if (int.TryParse(WID, out wid))
                     {
-                        WbillId = wb.WbillId,
-                        OnDate = wb.OnDate,
-                        MatId = item.MatId,
-                        WId =  (WID != "*") ? Convert.ToInt32(WID) : item.WId,
-                        Amount = item.Amount,
-                        Price = item.AvgPrice,// item.Price ,
-                        Discount = 0,
-                        Nds = wb.Nds,
-                        CurrId = wb.CurrId,
-                        OnValue = wb.OnValue,
-                        BasePrice = item.AvgPrice,// item.Price,
-                        PosKind = 0,
-                        PosParent = 0,
-                        DiscountKind = 0
-
-                    });
+                        f.uc.WHTreeList.DataSource = _db.GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w => w.GType == 1 && w.Num == wid).ToList();
+                    }
+                    else
+                    {
+                        f.uc.WHTreeList.DataSource = _db.GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w => w.GType == 1).ToList();
+                    }
+                    f.uc.GrpNameGridColumn.GroupIndex = 0;
                 }
-                db.SaveChanges();
+
+                f.uc.wb = wb;
+                f.uc.isMatList = true;
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    foreach (var item in f.uc.custom_mat_list)
+                    {
+                        var wbd = db.WaybillDet.Add(new WaybillDet
+                        {
+                            WbillId = wb.WbillId,
+                            OnDate = wb.OnDate,
+                            MatId = item.MatId,
+                            WId = (WID != "*") ? Convert.ToInt32(WID) : item.WId,
+                            Amount = item.Amount,
+                            Price = item.AvgPrice,// item.Price ,
+                            Discount = 0,
+                            Nds = wb.Nds,
+                            CurrId = wb.CurrId,
+                            OnValue = wb.OnValue,
+                            BasePrice = item.AvgPrice,// item.Price,
+                            PosKind = 0,
+                            PosParent = 0,
+                            DiscountKind = 0
+
+                        });
+                    }
+                    db.SaveChanges();
+                }
             }
         }
 
