@@ -340,6 +340,7 @@
           <Property Name="UpdatedBy" Type="int" />
           <Property Name="SessionId" Type="uniqueidentifier" />
           <Property Name="WbillId" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="numeric" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="IntermediateWeighingDet">
           <Key>
@@ -660,6 +661,7 @@
           <Property Name="Amount" Type="numeric" Precision="15" Scale="6" Nullable="false" />
           <Property Name="Coefficient" Type="numeric" Precision="15" Scale="4" />
           <Property Name="TurnType" Type="int" Nullable="false" />
+          <Property Name="Deviation" Type="numeric" Precision="15" Scale="6" Nullable="false" />
         </EntityType>
         <EntityType Name="MatRecipe">
           <Key>
@@ -5355,6 +5357,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="AmountIntermediateWeighing" Type="numeric" Precision="38" Scale="4" />
                 <Property Name="Notes" Type="nvarchar" MaxLength="100" />
                 <Property Name="UpdateAt" Type="datetime" />
+                <Property Name="MatDefWId" Type="int" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -9091,9 +9094,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <FunctionImport Name="ExecuteIntermediateWeighing">
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="GetWayBillMakeDet" IsComposable="true" ReturnType="Collection(BaseModel.GetWayBillMakeDet_Result)">
-          <Parameter Name="wbill_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <EntitySet Name="ReportSortedFields" EntityType="BaseModel.ReportSortedFields" />
           <FunctionImport Name="GetWayBillList" IsComposable="true" ReturnType="Collection(BaseModel.GetWayBillList_Result)">
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
@@ -9197,9 +9197,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="WbillId" Mode="In" Type="Int32" />
             <Parameter Name="PlId" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="GetPriceListDet" ReturnType="Collection(BaseModel.GetPriceListDet_Result)">
-          <Parameter Name="pl_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="GetMatTree" IsComposable="true" ReturnType="Collection(BaseModel.GetMatTree_Result)">
             <Parameter Name="p_type" Mode="In" Type="Int32" />
             <Parameter Name="curr_id" Mode="In" Type="Int32" />
@@ -9230,6 +9227,12 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="wh" Mode="In" Type="String" />
             <Parameter Name="grp_id" Mode="In" Type="Int32" />
             <Parameter Name="w_type" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetWayBillMakeDet" IsComposable="true" ReturnType="Collection(BaseModel.GetWayBillMakeDet_Result)">
+          <Parameter Name="wbill_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetPriceListDet" ReturnType="Collection(BaseModel.GetPriceListDet_Result)">
+            <Parameter Name="pl_id" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
@@ -10555,6 +10558,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK_MatRecDet_Materials" FromRole="MatRecDet" ToRole="Materials" />
           <NavigationProperty Name="MatRecipe" Relationship="BaseModel.FK_MATRECDET_MATRECIPE" FromRole="MatRecDet" ToRole="MatRecipe" />
           <Property Name="TurnType" Type="Int32" Nullable="false" />
+          <Property Name="Deviation" Type="Decimal" Nullable="false" Precision="15" Scale="6" />
         </EntityType>
         <Association Name="FK_MatRecDet_Materials">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
@@ -14657,6 +14661,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_IntermediateWeighing_Kagent" FromRole="IntermediateWeighing" ToRole="Kagent" />
           <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_IntermediateWeighing_WaybillList" FromRole="IntermediateWeighing" ToRole="WaybillList" />
           <NavigationProperty Name="IntermediateWeighingDet" Relationship="BaseModel.FK_IntermediateWeighingDet_IntermediateWeighing" FromRole="IntermediateWeighing" ToRole="IntermediateWeighingDet" />
+          <Property Name="Amount" Type="Decimal" Precision="15" Scale="4" />
         </EntityType>
         <Association Name="FK_IntermediateWeighing_Kagent">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1" />
@@ -14724,29 +14729,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="GetWayBillMakeDet_Result">
-          <Property Type="Int32" Name="Num" Nullable="false" />
-          <Property Type="Int32" Name="PosId" Nullable="false" />
-          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="Checked" Nullable="true" />
-          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
-          <Property Type="Int32" Name="MatId" Nullable="false" />
-          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
-          <Property Type="String" Name="WhName" Nullable="true" MaxLength="64" />
-          <Property Type="Int32" Name="wid" Nullable="true" />
-          <Property Type="Int32" Name="GrpId" Nullable="true" />
-          <Property Type="String" Name="GroupName" Nullable="false" MaxLength="64" />
-          <Property Type="Decimal" Name="BasePrice" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Total" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="Decimal" Name="AmountByRecipe" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="Rsv" Nullable="true" />
-          <Property Type="Int32" Name="IsIntermediateWeighing" Nullable="false" />
-          <Property Type="Decimal" Name="AmountIntermediateWeighing" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="String" Name="Notes" Nullable="true" MaxLength="100" />
-          <Property Type="DateTime" Name="UpdateAt" Nullable="true" Precision="23" />
-        </ComplexType>
         <EntityType Name="ReportSortedFields">
           <Key>
             <PropertyRef Name="Id" />
@@ -15224,22 +15206,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="GetPriceListDet_Result">
-          <Property Type="Int32" Name="PlDetId" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
-          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="PlDetType" Nullable="true" />
-          <Property Type="String" Name="GrpName" Nullable="false" MaxLength="64" />
-          <Property Type="Int32" Name="MatId" Nullable="true" />
-          <Property Type="Int32" Name="GrpId" Nullable="true" />
-          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="80" />
-          <Property Type="Decimal" Name="Discount" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
-          <Property Type="Int32" Name="Num" Nullable="true" />
-          <Property Type="String" Name="Notes" Nullable="true" MaxLength="150" />
-          <Property Type="Int32" Name="WId" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="GetMatTree_Result">
           <Property Type="Int32" Name="Id" Nullable="true" />
           <Property Type="Int32" Name="Pid" Nullable="true" />
@@ -15400,6 +15366,47 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Int32" Name="RecipeCount" Nullable="true" />
           <Property Type="Decimal" Name="AmountByRecipe" Nullable="true" Precision="15" Scale="4" />
           <Property Type="Decimal" Name="MatOut" Nullable="true" Precision="15" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetWayBillMakeDet_Result">
+          <Property Type="Int32" Name="Num" Nullable="false" />
+          <Property Type="Int32" Name="PosId" Nullable="false" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Checked" Nullable="true" />
+          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="WhName" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="wid" Nullable="true" />
+          <Property Type="Int32" Name="GrpId" Nullable="true" />
+          <Property Type="String" Name="GroupName" Nullable="false" MaxLength="64" />
+          <Property Type="Decimal" Name="BasePrice" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Total" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="AmountByRecipe" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="Rsv" Nullable="true" />
+          <Property Type="Int32" Name="IsIntermediateWeighing" Nullable="false" />
+          <Property Type="Decimal" Name="AmountIntermediateWeighing" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="UpdateAt" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="MatDefWId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetPriceListDet_Result">
+          <Property Type="Int32" Name="PlDetId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="PlDetType" Nullable="true" />
+          <Property Type="String" Name="GrpName" Nullable="false" MaxLength="64" />
+          <Property Type="Int32" Name="MatId" Nullable="true" />
+          <Property Type="Int32" Name="GrpId" Nullable="true" />
+          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="80" />
+          <Property Type="Decimal" Name="Discount" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Num" Nullable="true" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="150" />
+          <Property Type="Int32" Name="WId" Nullable="true" />
+          <Property Type="Decimal" Name="LastInPrice" Nullable="true" Precision="15" Scale="4" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -16357,6 +16364,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="MatRecDet">
             <EntityTypeMapping TypeName="BaseModel.MatRecDet">
               <MappingFragment StoreEntitySet="MatRecDet">
+                <ScalarProperty Name="Deviation" ColumnName="Deviation" />
                 <ScalarProperty Name="TurnType" ColumnName="TurnType" />
                 <ScalarProperty Name="Coefficient" ColumnName="Coefficient" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
@@ -18813,6 +18821,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="IntermediateWeighing">
             <EntityTypeMapping TypeName="BaseModel.IntermediateWeighing">
               <MappingFragment StoreEntitySet="IntermediateWeighing">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="WbillId" ColumnName="WbillId" />
                 <ScalarProperty Name="SessionId" ColumnName="SessionId" />
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
@@ -18840,33 +18849,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="ExecuteIntermediateWeighing" FunctionName="BaseModel.Store.ExecuteIntermediateWeighing" />
-          <FunctionImportMapping FunctionImportName="GetWayBillMakeDet" FunctionName="BaseModel.Store.GetWayBillMakeDet">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetWayBillMakeDet_Result">
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="PosId" ColumnName="PosId" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="MatName" ColumnName="MatName" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
-                <ScalarProperty Name="WhName" ColumnName="WhName" />
-                <ScalarProperty Name="wid" ColumnName="wid" />
-                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
-                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
-                <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="AmountByRecipe" ColumnName="AmountByRecipe" />
-                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
-                <ScalarProperty Name="IsIntermediateWeighing" ColumnName="IsIntermediateWeighing" />
-                <ScalarProperty Name="AmountIntermediateWeighing" ColumnName="AmountIntermediateWeighing" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="ReportSortedFields">
             <EntityTypeMapping TypeName="BaseModel.ReportSortedFields">
               <MappingFragment StoreEntitySet="ReportSortedFields">
@@ -19271,26 +19253,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="CreateOrderByPriceList" FunctionName="BaseModel.Store.CreateOrderByPriceList" />
-          <FunctionImportMapping FunctionImportName="GetPriceListDet" FunctionName="BaseModel.Store.GetPriceListDet">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetPriceListDet_Result">
-                <ScalarProperty Name="PlDetId" ColumnName="PlDetId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="PlDetType" ColumnName="PlDetType" />
-                <ScalarProperty Name="GrpName" ColumnName="GrpName" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="WId" ColumnName="WId" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetMatTree" FunctionName="BaseModel.Store.GetMatTree">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.GetMatTree_Result">
@@ -19458,6 +19420,55 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="RecipeCount" ColumnName="RecipeCount" />
                 <ScalarProperty Name="AmountByRecipe" ColumnName="AmountByRecipe" />
                 <ScalarProperty Name="MatOut" ColumnName="MatOut" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetWayBillMakeDet" FunctionName="BaseModel.Store.GetWayBillMakeDet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetWayBillMakeDet_Result">
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
+                <ScalarProperty Name="wid" ColumnName="wid" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="AmountByRecipe" ColumnName="AmountByRecipe" />
+                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
+                <ScalarProperty Name="IsIntermediateWeighing" ColumnName="IsIntermediateWeighing" />
+                <ScalarProperty Name="AmountIntermediateWeighing" ColumnName="AmountIntermediateWeighing" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
+                <ScalarProperty Name="MatDefWId" ColumnName="MatDefWId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetPriceListDet" FunctionName="BaseModel.Store.GetPriceListDet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetPriceListDet_Result">
+                <ScalarProperty Name="PlDetId" ColumnName="PlDetId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="PlDetType" ColumnName="PlDetType" />
+                <ScalarProperty Name="GrpName" ColumnName="GrpName" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="LastInPrice" ColumnName="LastInPrice" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

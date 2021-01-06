@@ -142,5 +142,15 @@ namespace SP_Sklad.WBForm
         {
             textEdit4.Text = "";
         }
+
+        private void simpleButton5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
     }
 }

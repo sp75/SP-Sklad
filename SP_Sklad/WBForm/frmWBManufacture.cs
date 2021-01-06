@@ -224,9 +224,22 @@ namespace SP_Sklad.WBForm
                           MeasureAmount = n.Amount
                       }).Sum(su => su.MeasureAmount * su.Discount);
 
-                wb.WayBillMake.AmountByRecipe = main_sum_rec/* + ext_sum_rec*/;
+                var prod_plan = _db.GetRelDocList(wb.Id).FirstOrDefault(a => a.DocType == 20);
+                if (prod_plan != null)
+                {
+                    var prod_plan_det = _db.ProductionPlanDet.FirstOrDefault(w => w.ProductionPlanId == prod_plan.Id && w.RecId == wb.WayBillMake.RecId);
+                    if (prod_plan_det != null)
+                    {
+                        wb.WayBillMake.AmountByRecipe = prod_plan_det.Total;
+                        wb.WayBillMake.RecipeCount = Convert.ToInt32(Math.Ceiling(wb.WayBillMake.AmountByRecipe.Value / row.Amount));
+                    }
 
-                wb.WayBillMake.RecipeCount = Convert.ToInt32( Math.Ceiling( wb.WayBillMake.AmountByRecipe.Value /  row.Amount ));
+                }
+                else
+                {
+                    wb.WayBillMake.AmountByRecipe = main_sum_rec/* + ext_sum_rec*/;
+                    wb.WayBillMake.RecipeCount = Convert.ToInt32(Math.Ceiling(wb.WayBillMake.AmountByRecipe.Value / row.Amount));
+                }
 
 
                 if (wb.WayBillMake.Amount == 0)

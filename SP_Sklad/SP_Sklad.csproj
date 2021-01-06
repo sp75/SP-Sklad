@@ -227,6 +227,7 @@
   <ItemGroup>
     <Compile Include="Common\ComPortHelper.cs" />
     <Compile Include="Common\DocEdit.cs" />
+    <Compile Include="Common\EAN13.cs" />
     <Compile Include="Common\EFAuditingHelperMethods.cs" />
     <Compile Include="Common\FindDoc.cs" />
     <Compile Include="Common\History.cs" />
@@ -1848,6 +1849,7 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\SkladEngine.ModelViews.GetPosOutView.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.EditForm.frmMatRecipe+MatRecDetList.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.MainTabs.DirectoriesUserControl+PriceTypesView.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.MainTabs.WarehouseUserControl+ExtMatIfo.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.AccountType.datasource" />

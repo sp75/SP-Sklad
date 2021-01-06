@@ -29,6 +29,7 @@ namespace SP_Sklad.SkladData
         public Nullable<int> UpdatedBy { get; set; }
         public Nullable<System.Guid> SessionId { get; set; }
         public int WbillId { get; set; }
+        public Nullable<decimal> Amount { get; set; }
     
         public virtual Kagent Kagent { get; set; }
         public virtual WaybillList WaybillList { get; set; }

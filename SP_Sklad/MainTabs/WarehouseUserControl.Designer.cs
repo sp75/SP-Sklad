@@ -91,6 +91,7 @@
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.WHTreeList = new DevExpress.XtraTreeList.TreeList();
@@ -527,9 +528,10 @@
             this.barSubItem1,
             this.barButtonItem7,
             this.barButtonItem8,
-            this.barButtonItem9});
+            this.barButtonItem9,
+            this.barButtonItem10});
             this.barManager1.MainMenu = this.bar3;
-            this.barManager1.MaxItemId = 33;
+            this.barManager1.MaxItemId = 34;
             // 
             // bar1
             // 
@@ -890,6 +892,7 @@
             this.BarImageList.Images.SetKeyName(18, "Замовлене кл_єнтами.bmp");
             this.BarImageList.Images.SetKeyName(19, "Перейти до  документа.bmp");
             this.BarImageList.Images.SetKeyName(20, "Акти списання товару.bmp");
+            this.BarImageList.Images.SetKeyName(21, "exec16.png");
             // 
             // barButtonItem1
             // 
@@ -990,6 +993,14 @@
             this.barButtonItem9.ImageIndex = 6;
             this.barButtonItem9.Name = "barButtonItem9";
             this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick);
+            // 
+            // barButtonItem10
+            // 
+            this.barButtonItem10.Caption = "Інформація про виробництво товару";
+            this.barButtonItem10.Id = 33;
+            this.barButtonItem10.ImageIndex = 21;
+            this.barButtonItem10.Name = "barButtonItem10";
+            this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
             // 
             // panelControl1
             // 
@@ -1460,20 +1471,20 @@
             // 
             // BarCodeEdit
             // 
-            this.BarCodeEdit.Location = new System.Drawing.Point(933, 11);
+            this.BarCodeEdit.Location = new System.Drawing.Point(973, 11);
             this.BarCodeEdit.MenuManager = this.barManager1;
             this.BarCodeEdit.Name = "BarCodeEdit";
-            this.BarCodeEdit.Size = new System.Drawing.Size(204, 20);
+            this.BarCodeEdit.Size = new System.Drawing.Size(191, 20);
             this.BarCodeEdit.TabIndex = 9;
             this.BarCodeEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BarCodeEdit_KeyPress);
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(870, 14);
+            this.labelControl5.Location = new System.Drawing.Point(866, 14);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(57, 13);
+            this.labelControl5.Size = new System.Drawing.Size(99, 13);
             this.labelControl5.TabIndex = 7;
-            this.labelControl5.Text = "Штрих-код";
+            this.labelControl5.Text = "Штрих-код / EAN13";
             // 
             // labelControl6
             // 
@@ -3161,6 +3172,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.RsvInfoBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.MatInfoBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
             new DevExpress.XtraBars.LinkPersistInfo(this.DeboningMatBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.RecalcRemainsMatBtn, true),
@@ -3665,5 +3677,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand6;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit4;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem10;
     }
 }

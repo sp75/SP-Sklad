@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -685,6 +686,20 @@ namespace SP_Sklad.EditForm
 
             GoTopMatPricesBtn.PerformClick();
         }
+
+        private void simpleButton7_Click_1(object sender, EventArgs e)
+        {
+            var data_for_report = new Dictionary<string, IList>();
+
+
+            var list = _db.Materials.Where(w => w.MatId == _mat_id).ToList();
+
+            data_for_report.Add("range1", list);
+
+
+            IHelper.Print(data_for_report, "BarCode.xlsx");
+        }
+            
     }
 
 

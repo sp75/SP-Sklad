@@ -34,5 +34,6 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> AmountIntermediateWeighing { get; set; }
         public string Notes { get; set; }
         public Nullable<System.DateTime> UpdateAt { get; set; }
+        public Nullable<int> MatDefWId { get; set; }
     }
 }

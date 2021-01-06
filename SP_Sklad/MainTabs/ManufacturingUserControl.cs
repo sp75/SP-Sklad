@@ -19,7 +19,7 @@ using SP_Sklad.Reports;
 using System.IO;
 using System.Diagnostics;
 using SP_Sklad.ViewsForm;
-
+using static SP_Sklad.WBDetForm.frmIntermediateWeighingDet;
 
 namespace SP_Sklad.MainTabs
 {
@@ -174,7 +174,7 @@ namespace SP_Sklad.MainTabs
             DelTechProcBtn.Enabled = false;
             EditTechProcBtn.Enabled = false;
 
-            AddIntermediateWeighing.Enabled = false;
+      //      AddIntermediateWeighing.Enabled = false;
             EditIntermediateWeighing.Enabled = false;
             DelIntermediateWeighing.Enabled = false;
 
@@ -792,7 +792,7 @@ namespace SP_Sklad.MainTabs
 
             AddTechProcBtn.Enabled = (focused_row != null && focused_row.Checked != 1 && focused_tree_node.CanModify == 1);
 
-            AddIntermediateWeighing.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanModify == 1);
+         //  AddIntermediateWeighing.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanModify == 1);
            
         }
 
@@ -925,6 +925,7 @@ namespace SP_Sklad.MainTabs
                 gridControl2.DataSource = null;
                 gridControl3.DataSource = null;
                 ManufacturedPosGridControl.DataSource = null;
+                IntermediateWeighingBS.DataSource = null;
                 return;
             }
 
@@ -962,17 +963,32 @@ namespace SP_Sklad.MainTabs
 
         private void RefreshIntermediateWeighing()
         {
+            int top_row = IntermediateWeighingGridView.TopRowIndex;
+
             using (var db = DB.SkladBase())
             {
-                IntermediateWeighingGridControl.DataSource = db.IntermediateWeighing.Where(w => w.WbillId == focused_row.WbillId).Select(s => new
+                IntermediateWeighingBS.DataSource = db.IntermediateWeighing.Where(w => w.WbillId == focused_row.WbillId).OrderBy(o => o.OnDate).Select(s => new IntermediateWeighingView
                 {
-                    s.Id,
-                    s.OnDate,
-                    s.Checked,
-                    s.Num,
-                    PersonName = s.Kagent.Name
+                    Id = s.Id,
+                    OnDate = s.OnDate,
+                    Checked = s.Checked,
+                    Num = s.Num,
+                    PersonName = s.Kagent.Name,
+                    Amount = s.Amount
                 }).ToList();
             }
+
+            IntermediateWeighingGridView.TopRowIndex = top_row;
+        }
+
+        public class IntermediateWeighingView
+        {
+            public Guid Id { get; set; }
+            public DateTime OnDate { get; set; }
+            public int Checked { get; set; }
+            public string Num { get; set; }
+            public string PersonName { get; set; }
+            public Decimal? Amount { get; set; }
         }
 
         private void xtraTabControl1_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
@@ -1110,8 +1126,8 @@ namespace SP_Sklad.MainTabs
         {
             focused_row = WbGridView.GetFocusedRow() as WBListMake_Result;
 
-            DelIntermediateWeighing.Enabled = ((focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanModify == 1) && IntermediateWeighingGridView.DataRowCount > 0);
-            EditIntermediateWeighing.Enabled = (focused_row != null &&  focused_row.Checked == 0 && focused_tree_node.CanModify == 1 && IntermediateWeighingGridView.DataRowCount > 0 );
+            DelIntermediateWeighing.Enabled = (/*(focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanModify == 1) &&*/ IntermediateWeighingGridView.DataRowCount > 0);
+            EditIntermediateWeighing.Enabled = (/*focused_row != null &&  focused_row.Checked == 0 && focused_tree_node.CanModify == 1 &&*/ IntermediateWeighingGridView.DataRowCount > 0 );
         }
 
         private void WbGridView_RowStyle(object sender, RowStyleEventArgs e)
@@ -1210,6 +1226,30 @@ namespace SP_Sklad.MainTabs
             {
                 Point p2 = Control.MousePosition;
                 BottomPopupMenu.ShowPopup(p2);
+            }
+        }
+
+        private void barButtonItem8_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var mat_list = DB.SkladBase().GetWayBillMakeDet(focused_row.WbillId).OrderBy(o => o.Num).ToList().Select(s => new make_det
+            {
+                MatName = s.MatName,
+                MsrName = s.MsrName,
+                AmountByRecipe = s.AmountByRecipe,
+                AmountIntermediateWeighing = s.AmountIntermediateWeighing,
+                MatId = s.MatId,
+                WbillId = focused_row.WbillId,
+          //      RecipeCount = wbm.RecipeCount,
+                IntermediateWeighingCount = DB.SkladBase().v_IntermediateWeighingDet.Where(w => w.WbillId == focused_row.WbillId && w.MatId == s.MatId).Count(),
+          //      TotalWeightByRecipe = wbm.AmountByRecipe
+            }).ToList();
+
+            using (var f = new frmIntermediateWeighingList(mat_list))
+            {
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                   ;
+                }
             }
         }
     }

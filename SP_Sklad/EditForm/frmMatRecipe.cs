@@ -88,6 +88,17 @@ namespace SP_Sklad.EditForm
             current_transaction.Dispose();
         }
 
+        public class MatRecDetList
+        {
+            public int DetId { get; set; }
+            public string Name { get; set; }
+            public string ShortName { get; set; }
+            public decimal Amount { get; set; }
+            public decimal? Coefficient { get; set; }
+            public decimal Deviation { get; set; }
+            public string MatGroupName { get; set; }
+        }
+
         private void DirTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
             _db.SaveChanges();
@@ -106,15 +117,17 @@ namespace SP_Sklad.EditForm
 
             if (focused_tree_node.Id == 0)
             {
-                MatRecDetGridControl.DataSource = _db.MatRecDet.Where(w => w.RecId == _mr.RecId).Select(s => new
+                MatRecDetListBS.DataSource = _db.MatRecDet.Where(w => w.RecId == _mr.RecId).Select(s => new MatRecDetList
                 {
-                    s.DetId,
-                    s.Materials.Name,
-                    s.Materials.Measures.ShortName,
-                    s.Amount,
-                    s.Coefficient
-
+                    DetId = s.DetId,
+                    Name = s.Materials.Name,
+                    ShortName = s.Materials.Measures.ShortName,
+                    Amount = s.Amount,
+                    Coefficient = s.Coefficient,
+                    Deviation = s.Deviation,
+                    MatGroupName = s.Materials.MatGroup.Name
                 }).ToList();
+                MatRecDetGridView.ExpandAllGroups();
             }
 
             if (focused_tree_node.Id == 1)
@@ -135,16 +148,19 @@ namespace SP_Sklad.EditForm
 
         private void GetRecDetail()
         {
-            var list = _db.MatRecDet.Where(w => w.RecId == _mr.RecId).Select(s => new
+            var list = _db.MatRecDet.Where(w => w.RecId == _mr.RecId).Select(s => new MatRecDetList
             {
-                s.DetId,
-                s.Materials.Name,
-                s.Materials.Measures.ShortName,
-                s.Amount,
-                s.Coefficient
+                DetId = s.DetId,
+                Name = s.Materials.Name,
+                ShortName = s.Materials.Measures.ShortName,
+                Amount = s.Amount,
+                Coefficient = s.Coefficient,
+                Deviation = s.Deviation,
+                MatGroupName = s.Materials.MatGroup.Name
 
             }).ToList();
-            MatRecDetGridControl.DataSource = list;
+            MatRecDetListBS.DataSource = list;
+            MatRecDetGridView.ExpandAllGroups();
 
             tree.RemoveAll(r => r.ParentId == 0);
             foreach (var item in list)
@@ -260,6 +276,7 @@ namespace SP_Sklad.EditForm
                 int MatId = Convert.ToInt32(MatLookUpEdit.EditValue);
 
                 labelControl14.Text = _db.Materials.Find(MatId).Measures.ShortName;
+                labelControl18.Text = labelControl14.Text;
             }
 
             if (MatLookUpEdit.ContainsFocus)
@@ -467,6 +484,33 @@ namespace SP_Sklad.EditForm
                     Text = "Властивості обвалки: " + MatRecLookUpEdit.Text;
                 }
             }
+        }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            IHelper.ExportToXlsx(MatRecDetGridControl);
+        }
+
+        private void MatRecDetGridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            dynamic det_item = MatRecDetGridView.GetFocusedRow();
+            if (det_item == null) return;
+
+            var rec_det = _db.MatRecDet.Find(det_item.DetId);
+
+            if (e.Column.FieldName == "Amount")
+            {
+                rec_det.Amount = Convert.ToDecimal(e.Value);
+             
+            }
+            else if (e.Column.FieldName == "Deviation")
+            {
+                rec_det.Deviation = Convert.ToDecimal(e.Value);
+            }
+
+            _db.SaveChanges();
+
+         
         }
     }
 }

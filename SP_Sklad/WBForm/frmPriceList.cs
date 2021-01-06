@@ -252,6 +252,7 @@ namespace SP_Sklad.WBForm
             var pld = _db.PriceListDet.Find(dr.PlDetId);
             if (e.Column.FieldName == "Price")
             {
+                //dr.MatId
                 pld.Price = Convert.ToDecimal(e.Value);
             }
 
@@ -613,6 +614,21 @@ namespace SP_Sklad.WBForm
             }
             _db.SaveChanges();
             GetDetail();
+        }
+
+        private void PriceListGrid_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
+        {
+            if (e.RowHandle < 0)
+            {
+                return;
+            }
+
+            var wh_row = PriceListGrid.GetRow(e.RowHandle) as GetPriceListDet_Result;
+
+            if (wh_row != null && wh_row.Price < wh_row.LastInPrice)
+            {
+                e.Appearance.ForeColor = Color.Red;
+            }
         }
     }
 }

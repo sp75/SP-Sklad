@@ -183,6 +183,10 @@ namespace SP_Sklad.WBForm
                 wb.WayBillMake.SourceWId = i.WhId;
                 wb.WayBillMake.RecId = i.RecId;
 
+                
+                wb.WayBillMake.AmountByRecipe = i.Total;
+                wb.WayBillMake.RecipeCount = Convert.ToInt32(Math.Ceiling(wb.WayBillMake.AmountByRecipe.Value / _db.MatRecipe.FirstOrDefault(w => w.RecId == i.RecId).Amount));
+
                 _db.SaveChanges();
 
                 var r = _db.GetRecipe(wb.WbillId).ToList();

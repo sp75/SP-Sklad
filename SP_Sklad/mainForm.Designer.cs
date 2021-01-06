@@ -719,6 +719,7 @@
             this.docsUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.docsUserControl1.Location = new System.Drawing.Point(0, 0);
             this.docsUserControl1.Name = "docsUserControl1";
+            this.docsUserControl1.set_tree_node = null;
             this.docsUserControl1.Size = new System.Drawing.Size(1182, 572);
             this.docsUserControl1.TabIndex = 0;
             // 
@@ -792,7 +793,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(43, "Редактор SQL-запитiв.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(44, "Журнал подій.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(45, "view_settings.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(46, "finance.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(46, "money-bag.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(47, "Безготівкові гроші.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(48, "iconfinder_General_Office_24_2530784.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(49, "юзер.png");
@@ -804,10 +805,13 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(55, "prod_plan.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(56, "salesreport2_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(57, "ROI-PNG-Clipart.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(58, "savings-money-pngrepo-com.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(58, "3.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(59, "finance_process2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(60, "Фінанси.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(61, "3.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(61, "Debt adjustment.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(62, "credit adjustment.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(63, "акт інвентаризації з контрагентом.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(64, "preparation.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // mainForm

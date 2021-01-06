@@ -490,7 +490,7 @@ namespace SP_Sklad.MainTabs
 
         private void AddItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            AddMatToCustomList();
+            AddMatToCustomList(1);
         }
 
         private void DelItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -556,6 +556,25 @@ namespace SP_Sklad.MainTabs
                     }
 
                 }
+                else
+                {
+                    if (e.KeyChar == 13 && !String.IsNullOrEmpty(BarCodeEdit.Text) && BarCodeEdit.Text.Count() == 13)
+                    {
+                        var ean13 = new EAN13(BarCodeEdit.Text);
+
+                        var row2 = WhMatGetBS.List.OfType<WhMatGet_Result>().ToList().Find(f => f.Artikul == ean13.artikul);
+                        var pos2 = WhMatGetBS.IndexOf(row2);
+                        WhMatGetBS.Position = pos2;
+
+                        if (row2 != null && MatListTabPage.PageVisible)
+                        {
+                            AddMatToCustomList(ean13.amount);
+                        }
+                    }
+                }
+
+
+
 
                 BarCodeEdit.Text = "";
             }
@@ -1052,10 +1071,10 @@ namespace SP_Sklad.MainTabs
 
         private void AddMatItem_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            AddMatToCustomList();
+            AddMatToCustomList(1);
         }
 
-        private void AddMatToCustomList()
+        private void AddMatToCustomList(decimal amount)
         {
             if (focused_wh_mat == null)
             {
@@ -1072,7 +1091,7 @@ namespace SP_Sklad.MainTabs
                 Num = custom_mat_list.Count() + 1,
                 MatId = focused_wh_mat.MatId,
                 Name = focused_wh_mat.MatName,
-                Amount = 1,
+                Amount = amount,
                 Price = mat_price != null ? (mat_price.Price ?? 0) : 0,
                 WId = remain_in_wh.Any() ? remain_in_wh.First().WId : (DBHelper.WhList.Any(w => w.Def == 1) ? DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId : DBHelper.WhList.FirstOrDefault().WId),
                 PTypeId = mat_price != null ? mat_price.PType : null,
@@ -1082,6 +1101,16 @@ namespace SP_Sklad.MainTabs
 
             MatListGridView.RefreshData();
             MatListGridView.MoveLast();
+        }
+
+        private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (focused_wh_mat == null)
+            {
+                return;
+            }
+
+            IHelper.ShowManufacturingMaterial(focused_wh_mat.MatId);
         }
     }
 }

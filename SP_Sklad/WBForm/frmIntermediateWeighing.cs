@@ -94,10 +94,15 @@ namespace SP_Sklad.WBForm
 
         private void GetOk()
         {
-       /*     OkButton.Enabled = ManufactoryEdit.EditValue != DBNull.Value && WHComboBox.EditValue != DBNull.Value && ProductionPlanDetBS.Count > 0;
-            barSubItem1.Enabled = ManufactoryEdit.EditValue != DBNull.Value && WHComboBox.EditValue != DBNull.Value;
-            EditMaterialBtn.Enabled = ProductionPlanDetBS.Count > 0;
-            DelMaterialBtn.Enabled = ProductionPlanDetBS.Count > 0;*/
+
+            barButtonItem2.Enabled = AmountEdit.Value > 0;
+
+            AmountEdit.Enabled = IntermediateWeighingDetBS.Count == 0;
+
+            /*     OkButton.Enabled = ManufactoryEdit.EditValue != DBNull.Value && WHComboBox.EditValue != DBNull.Value && ProductionPlanDetBS.Count > 0;
+                 barSubItem1.Enabled = ManufactoryEdit.EditValue != DBNull.Value && WHComboBox.EditValue != DBNull.Value;
+                 EditMaterialBtn.Enabled = ProductionPlanDetBS.Count > 0;
+                 DelMaterialBtn.Enabled = ProductionPlanDetBS.Count > 0;*/
         }
 
         private void RefreshDet()
@@ -251,6 +256,19 @@ namespace SP_Sklad.WBForm
 
         private void barButtonItem2_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            _db.SaveChanges();
+
+            var total = _db.IntermediateWeighing.Where(w => w.WbillId == iw.WbillId).Sum(s => s.Amount);
+            var amount_by_recipe = _db.WayBillMake.FirstOrDefault(w => w.WbillId == iw.WbillId).AmountByRecipe;
+
+            if ((total ?? 0) > (amount_by_recipe ?? 0))
+            {
+                MessageBox.Show("Вага закладок по виробництву більша запланованої");
+
+                return;
+            }
+
+
             using (var f = new frmIntermediateWeighingDet(_db, Guid.NewGuid(), iw))
             {
                 f.ShowDialog();
@@ -264,6 +282,11 @@ namespace SP_Sklad.WBForm
             EditMaterialBtn.Enabled = iw_det_row != null ;
 
             DelMaterialBtn.Enabled = iw_det_row != null;
+        }
+
+        private void AmountEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            GetOk();
         }
     }
 }

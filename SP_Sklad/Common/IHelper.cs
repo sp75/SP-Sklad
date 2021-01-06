@@ -606,6 +606,16 @@ namespace SP_Sklad.Common
             new frmMatTurn(mat_id.Value).ShowDialog();
 
         }
+        static public void ShowManufacturingMaterial(int? mat_id)
+        {
+            if (mat_id == null)
+            {
+                return;
+            }
+
+            new frmManufacturing(DB.SkladBase() , mat_id.Value).ShowDialog();
+        }
+
         static public void ShowMatRSV(int? mat_id, BaseEntities db)
         {
             if (mat_id == null)

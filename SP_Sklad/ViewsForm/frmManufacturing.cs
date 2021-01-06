@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SP_Sklad.Common;
 using SP_Sklad.SkladData;
 
 namespace SP_Sklad.ViewsForm
@@ -23,15 +24,23 @@ namespace SP_Sklad.ViewsForm
             }
         }
 
-        public frmManufacturing(BaseEntities db)
+        public frmManufacturing(BaseEntities db, int? mat_id = null)
         {
             InitializeComponent();
 
             var satrt_date = DateTime.Now.AddYears(-100);
             var end_date = DateTime.Now.AddYears(100);
 
+            var list = db.WBListMake(satrt_date.Date, end_date.Date.AddDays(1), 2, "*", 0, -20).ToList();
 
-            WBListMakeBS.DataSource = db.WBListMake(satrt_date.Date, end_date.Date.AddDays(1), 2, "*", 0, -20).ToList();
+            if (mat_id != null)
+            {
+                WBListMakeBS.DataSource = list.Where(w=> w.MatId == mat_id);
+            }
+            else
+            {
+                WBListMakeBS.DataSource = list;
+            }
 
         }
 
@@ -102,19 +111,16 @@ namespace SP_Sklad.ViewsForm
         {
             if (e.KeyChar == 13 && !String.IsNullOrEmpty(BarCodeEdit.Text) && BarCodeEdit.Text.Count() == 13)
             {
-                var day = BarCodeEdit.Text.Substring(0, 2);
-                var mounth = BarCodeEdit.Text.Substring(2, 2);
-                var artikul = BarCodeEdit.Text.Substring(4, 3);
-                decimal amount = Convert.ToInt32(BarCodeEdit.Text.Substring(7, 5)) / 1000.00m;
+                var ean13 = new EAN13(BarCodeEdit.Text);
 
-                var row = WBListMakeBS.List.OfType<WBListMake_Result>().ToList().FirstOrDefault(f => f.Artikul == artikul);
+                var row = WBListMakeBS.List.OfType<WBListMake_Result>().ToList().Where(w=> w.Artikul == ean13.artikul).OrderBy(o=> o.OnDate).FirstOrDefault();
                 var pos = WBListMakeBS.IndexOf(row);
                 WBListMakeBS.Position = pos;
                 //  var amount = wb_focused_row.AmountOut ?? 0;
 
                 if (row != null && xtraTabPage14.PageVisible)
                 {
-                    AddWBMake(amount, BarCodeEdit.Text);
+                    AddWBMake(ean13.amount, BarCodeEdit.Text);
                 }
 
 

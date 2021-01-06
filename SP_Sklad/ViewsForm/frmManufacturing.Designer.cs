@@ -167,7 +167,7 @@
             this.WBGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1,
             this.CheckedItemImageComboBox});
-            this.WBGridControl.Size = new System.Drawing.Size(1268, 351);
+            this.WBGridControl.Size = new System.Drawing.Size(1268, 322);
             this.WBGridControl.TabIndex = 18;
             this.WBGridControl.UseEmbeddedNavigator = true;
             this.WBGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -401,7 +401,7 @@
             this.splitContainerControl2.Panel2.Controls.Add(this.standaloneBarDockControl8);
             this.splitContainerControl2.Panel2.Text = "Panel2";
             this.splitContainerControl2.Size = new System.Drawing.Size(1268, 603);
-            this.splitContainerControl2.SplitterPosition = 395;
+            this.splitContainerControl2.SplitterPosition = 366;
             this.splitContainerControl2.TabIndex = 19;
             this.splitContainerControl2.Text = "splitContainerControl2";
             // 
@@ -635,7 +635,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage4;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1268, 203);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1268, 232);
             this.xtraTabControl1.TabIndex = 16;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage4,
@@ -722,7 +722,7 @@
             this.xtraTabPage14.ImageIndex = 14;
             this.xtraTabPage14.Name = "xtraTabPage14";
             this.xtraTabPage14.PageVisible = false;
-            this.xtraTabPage14.Size = new System.Drawing.Size(1262, 175);
+            this.xtraTabPage14.Size = new System.Drawing.Size(1262, 204);
             this.xtraTabPage14.Text = "Список товарів";
             // 
             // ManufListGridControl
@@ -733,7 +733,7 @@
             this.ManufListGridControl.Name = "ManufListGridControl";
             this.ManufListGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCalcEdit1});
-            this.ManufListGridControl.Size = new System.Drawing.Size(1262, 144);
+            this.ManufListGridControl.Size = new System.Drawing.Size(1262, 173);
             this.ManufListGridControl.TabIndex = 2;
             this.ManufListGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.ManufListGridView,
@@ -750,6 +750,7 @@
             this.gridColumn11});
             this.ManufListGridView.GridControl = this.ManufListGridControl;
             this.ManufListGridView.Name = "ManufListGridView";
+            this.ManufListGridView.OptionsView.ShowFooter = true;
             this.ManufListGridView.OptionsView.ShowGroupPanel = false;
             this.ManufListGridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.ManufListGridView_CellValueChanged);
             // 
@@ -789,6 +790,8 @@
             this.gridColumn42.ColumnEdit = this.repositoryItemCalcEdit1;
             this.gridColumn42.FieldName = "Amount";
             this.gridColumn42.Name = "gridColumn42";
+            this.gridColumn42.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Amount", "{0:0.##}")});
             this.gridColumn42.Visible = true;
             this.gridColumn42.VisibleIndex = 3;
             this.gridColumn42.Width = 172;

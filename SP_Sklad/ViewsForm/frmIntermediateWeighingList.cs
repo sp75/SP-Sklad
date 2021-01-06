@@ -34,8 +34,6 @@ namespace SP_Sklad.ViewsForm
             var wb_maked = DB.SkladBase().WayBillMake.Where(w => w.WbillId == wb_id).Select(s => new { s.RecipeCount, s.MatRecipe.Materials.Name }).FirstOrDefault();
 
             textEdit1.EditValue = wb_maked.Name;
-            textEdit3.EditValue = wb_maked.RecipeCount;
-
 
             var det_list = DB.SkladBase().v_IntermediateWeighingDet.Where(w => w.WbillId == wb_id).ToList();
 

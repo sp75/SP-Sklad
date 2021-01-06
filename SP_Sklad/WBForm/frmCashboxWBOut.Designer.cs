@@ -104,9 +104,9 @@
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
@@ -194,6 +194,7 @@
             this.barButtonItem3.ImageIndex = 18;
             this.barButtonItem3.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F9);
             this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -522,7 +523,7 @@
             this.WaybillDetOutGridView.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Black;
             this.WaybillDetOutGridView.Appearance.FocusedRow.Options.UseBackColor = true;
             this.WaybillDetOutGridView.Appearance.FocusedRow.Options.UseForeColor = true;
-            this.WaybillDetOutGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.WaybillDetOutGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 12F);
             this.WaybillDetOutGridView.Appearance.Row.Options.UseFont = true;
             this.WaybillDetOutGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
@@ -714,7 +715,7 @@
             this.simpleButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton4.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.simpleButton4.Appearance.Options.UseFont = true;
-            this.simpleButton4.Location = new System.Drawing.Point(165, 265);
+            this.simpleButton4.Location = new System.Drawing.Point(165, 264);
             this.simpleButton4.Name = "simpleButton4";
             this.simpleButton4.Size = new System.Drawing.Size(71, 65);
             this.simpleButton4.TabIndex = 39;
@@ -872,6 +873,7 @@
             this.simpleButton5.Size = new System.Drawing.Size(71, 65);
             this.simpleButton5.TabIndex = 26;
             this.simpleButton5.Text = "Кіль-сть";
+            this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
             // 
             // btn8
             // 
@@ -939,15 +941,6 @@
             this.panel4.Size = new System.Drawing.Size(713, 109);
             this.panel4.TabIndex = 13;
             // 
-            // panel3
-            // 
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(718, 5);
-            this.panel3.Name = "panel3";
-            this.panel3.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.panel3.Size = new System.Drawing.Size(320, 109);
-            this.panel3.TabIndex = 12;
-            // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.Color.White;
@@ -972,6 +965,15 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "20 Х 4 шт. = 80 грн.";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // panel3
+            // 
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel3.Location = new System.Drawing.Point(718, 5);
+            this.panel3.Name = "panel3";
+            this.panel3.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.panel3.Size = new System.Drawing.Size(320, 109);
+            this.panel3.TabIndex = 12;
             // 
             // frmCashboxWBOut
             // 

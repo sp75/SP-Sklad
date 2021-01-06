@@ -1495,5 +1495,10 @@ namespace SP_Sklad.MainTabs
         {
 
         }
+
+        private void barButtonItem16_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            IHelper.ShowManufacturingMaterial(wb_det_focused_row.MatId);
+        }
     }
 }

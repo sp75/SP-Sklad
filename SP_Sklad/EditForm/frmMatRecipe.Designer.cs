@@ -59,6 +59,10 @@
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.calcEdit7 = new DevExpress.XtraEditors.CalcEdit();
+            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
+            this.calcEdit8 = new DevExpress.XtraEditors.CalcEdit();
             this.calcEdit6 = new DevExpress.XtraEditors.CalcEdit();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
@@ -81,25 +85,32 @@
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
             this.DiscPanel = new System.Windows.Forms.Panel();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.AddRecDetBtn = new DevExpress.XtraEditors.SimpleButton();
             this.DelRecDetBtn = new DevExpress.XtraEditors.SimpleButton();
             this.EditRecDetBtn = new DevExpress.XtraEditors.SimpleButton();
             this.MatRecDetGridControl = new DevExpress.XtraGrid.GridControl();
+            this.MatRecDetListBS = new System.Windows.Forms.BindingSource(this.components);
             this.MatRecDetGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage14 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl6 = new DevExpress.XtraEditors.GroupControl();
             this.simpleButton11 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl7 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
+            this.calcEdit9 = new DevExpress.XtraEditors.CalcEdit();
+            this.MatRecDetBS = new System.Windows.Forms.BindingSource(this.components);
+            this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.calcEdit1 = new DevExpress.XtraEditors.CalcEdit();
-            this.MatRecDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.calcEdit2 = new DevExpress.XtraEditors.CalcEdit();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
@@ -130,10 +141,6 @@
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.TechProcLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.calcEdit7 = new DevExpress.XtraEditors.CalcEdit();
-            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
-            this.calcEdit8 = new DevExpress.XtraEditors.CalcEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeBindingSource)).BeginInit();
@@ -147,6 +154,8 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit7.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit8.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit6.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit5.Properties)).BeginInit();
@@ -162,14 +171,16 @@
             this.groupControl5.SuspendLayout();
             this.DiscPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecDetGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatRecDetListBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecDetGridView)).BeginInit();
             this.xtraTabPage14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).BeginInit();
             this.groupControl6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).BeginInit();
             this.panelControl7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit9.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecDetBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatLookUpEdit.Properties)).BeginInit();
             this.xtraTabPage2.SuspendLayout();
@@ -186,8 +197,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeTechProcDetBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TechProcLookUpEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit7.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit8.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -450,6 +459,46 @@
             this.groupControl2.Tag = "";
             this.groupControl2.Text = " Основна інформація ";
             // 
+            // calcEdit7
+            // 
+            this.calcEdit7.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecipeBindingSource, "ThermoLossDeviation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.calcEdit7.Location = new System.Drawing.Point(458, 245);
+            this.calcEdit7.Name = "calcEdit7";
+            this.calcEdit7.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.calcEdit7.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.calcEdit7.Size = new System.Drawing.Size(132, 20);
+            this.calcEdit7.TabIndex = 68;
+            // 
+            // labelControl16
+            // 
+            this.labelControl16.Location = new System.Drawing.Point(281, 246);
+            this.labelControl16.Name = "labelControl16";
+            this.labelControl16.Size = new System.Drawing.Size(171, 16);
+            this.labelControl16.StyleController = this.styleController1;
+            this.labelControl16.TabIndex = 67;
+            this.labelControl16.Text = "Термовтрати відхилення, %:";
+            // 
+            // labelControl17
+            // 
+            this.labelControl17.Location = new System.Drawing.Point(316, 215);
+            this.labelControl17.Name = "labelControl17";
+            this.labelControl17.Size = new System.Drawing.Size(136, 16);
+            this.labelControl17.StyleController = this.styleController1;
+            this.labelControl17.TabIndex = 66;
+            this.labelControl17.Text = "Термовтрати Вихід, %:";
+            // 
+            // calcEdit8
+            // 
+            this.calcEdit8.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecipeBindingSource, "ThermoLossOut", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.calcEdit8.Location = new System.Drawing.Point(458, 214);
+            this.calcEdit8.Name = "calcEdit8";
+            this.calcEdit8.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.calcEdit8.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.calcEdit8.Size = new System.Drawing.Size(132, 20);
+            this.calcEdit8.TabIndex = 65;
+            // 
             // calcEdit6
             // 
             this.calcEdit6.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecipeBindingSource, "Deviation", true));
@@ -680,6 +729,7 @@
             // 
             // DiscPanel
             // 
+            this.DiscPanel.Controls.Add(this.simpleButton3);
             this.DiscPanel.Controls.Add(this.AddRecDetBtn);
             this.DiscPanel.Controls.Add(this.DelRecDetBtn);
             this.DiscPanel.Controls.Add(this.EditRecDetBtn);
@@ -689,6 +739,16 @@
             this.DiscPanel.Name = "DiscPanel";
             this.DiscPanel.Size = new System.Drawing.Size(614, 382);
             this.DiscPanel.TabIndex = 44;
+            // 
+            // simpleButton3
+            // 
+            this.simpleButton3.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.Image")));
+            this.simpleButton3.Location = new System.Drawing.Point(497, 11);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(101, 23);
+            this.simpleButton3.TabIndex = 12;
+            this.simpleButton3.Text = "Перегляд";
+            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
             // 
             // AddRecDetBtn
             // 
@@ -725,6 +785,7 @@
             this.MatRecDetGridControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.MatRecDetGridControl.DataSource = this.MatRecDetListBS;
             this.MatRecDetGridControl.Location = new System.Drawing.Point(18, 47);
             this.MatRecDetGridControl.MainView = this.MatRecDetGridView;
             this.MatRecDetGridControl.MenuManager = this.barManager1;
@@ -734,18 +795,27 @@
             this.MatRecDetGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.MatRecDetGridView});
             // 
+            // MatRecDetListBS
+            // 
+            this.MatRecDetListBS.DataSource = typeof(SP_Sklad.EditForm.frmMatRecipe.MatRecDetList);
+            // 
             // MatRecDetGridView
             // 
             this.MatRecDetGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn2,
             this.gridColumn3,
             this.gridColumn4,
-            this.gridColumn1});
+            this.gridColumn1,
+            this.gridColumn9,
+            this.gridColumn10});
             this.MatRecDetGridView.GridControl = this.MatRecDetGridControl;
+            this.MatRecDetGridView.GroupCount = 1;
             this.MatRecDetGridView.Name = "MatRecDetGridView";
             this.MatRecDetGridView.OptionsBehavior.AllowIncrementalSearch = true;
-            this.MatRecDetGridView.OptionsBehavior.Editable = false;
             this.MatRecDetGridView.OptionsView.ShowGroupPanel = false;
+            this.MatRecDetGridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn10, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.MatRecDetGridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.MatRecDetGridView_CellValueChanged);
             this.MatRecDetGridView.DoubleClick += new System.EventHandler(this.MatRecDetGridView_DoubleClick);
             // 
             // gridColumn2
@@ -753,9 +823,10 @@
             this.gridColumn2.Caption = "Сировина";
             this.gridColumn2.FieldName = "Name";
             this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 0;
-            this.gridColumn2.Width = 274;
+            this.gridColumn2.Width = 190;
             // 
             // gridColumn3
             // 
@@ -764,25 +835,45 @@
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 1;
-            this.gridColumn3.Width = 89;
+            this.gridColumn3.Width = 61;
             // 
             // gridColumn4
             // 
             this.gridColumn4.Caption = "Од. виміру";
             this.gridColumn4.FieldName = "ShortName";
             this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 2;
-            this.gridColumn4.Width = 96;
+            this.gridColumn4.Width = 66;
             // 
             // gridColumn1
             // 
             this.gridColumn1.Caption = "Коефіцієнт";
             this.gridColumn1.FieldName = "Coefficient";
             this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 3;
-            this.gridColumn1.Width = 119;
+            this.gridColumn1.Width = 82;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "Відхилення";
+            this.gridColumn9.FieldName = "Deviation";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 4;
+            this.gridColumn9.Width = 57;
+            // 
+            // gridColumn10
+            // 
+            this.gridColumn10.Caption = "Група";
+            this.gridColumn10.FieldName = "MatGroupName";
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 1;
+            this.gridColumn10.Width = 106;
             // 
             // xtraTabPage14
             // 
@@ -843,6 +934,9 @@
             this.panelControl7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelControl7.Controls.Add(this.labelControl18);
+            this.panelControl7.Controls.Add(this.calcEdit9);
+            this.panelControl7.Controls.Add(this.labelControl19);
             this.panelControl7.Controls.Add(this.labelControl14);
             this.panelControl7.Controls.Add(this.simpleButton4);
             this.panelControl7.Controls.Add(this.calcEdit1);
@@ -855,6 +949,40 @@
             this.panelControl7.Name = "panelControl7";
             this.panelControl7.Size = new System.Drawing.Size(577, 314);
             this.panelControl7.TabIndex = 49;
+            // 
+            // labelControl18
+            // 
+            this.labelControl18.Location = new System.Drawing.Point(254, 95);
+            this.labelControl18.Name = "labelControl18";
+            this.labelControl18.Size = new System.Drawing.Size(18, 16);
+            this.labelControl18.StyleController = this.styleController1;
+            this.labelControl18.TabIndex = 65;
+            this.labelControl18.Text = "од.";
+            // 
+            // calcEdit9
+            // 
+            this.calcEdit9.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecDetBS, "Deviation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.calcEdit9.Location = new System.Drawing.Point(99, 92);
+            this.calcEdit9.Name = "calcEdit9";
+            this.calcEdit9.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.calcEdit9.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.calcEdit9.Size = new System.Drawing.Size(149, 22);
+            this.calcEdit9.StyleController = this.styleController1;
+            this.calcEdit9.TabIndex = 64;
+            // 
+            // MatRecDetBS
+            // 
+            this.MatRecDetBS.DataSource = typeof(SP_Sklad.SkladData.MatRecDet);
+            // 
+            // labelControl19
+            // 
+            this.labelControl19.Location = new System.Drawing.Point(23, 95);
+            this.labelControl19.Name = "labelControl19";
+            this.labelControl19.Size = new System.Drawing.Size(70, 16);
+            this.labelControl19.StyleController = this.styleController1;
+            this.labelControl19.TabIndex = 63;
+            this.labelControl19.Text = "Відхилення:";
             // 
             // labelControl14
             // 
@@ -880,23 +1008,19 @@
             // 
             // calcEdit1
             // 
-            this.calcEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecDetBS, "Coefficient", true));
-            this.calcEdit1.Location = new System.Drawing.Point(97, 91);
+            this.calcEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecDetBS, "Coefficient", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.calcEdit1.Location = new System.Drawing.Point(99, 130);
             this.calcEdit1.Name = "calcEdit1";
             this.calcEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.calcEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.calcEdit1.Size = new System.Drawing.Size(151, 22);
+            this.calcEdit1.Size = new System.Drawing.Size(149, 22);
             this.calcEdit1.StyleController = this.styleController1;
             this.calcEdit1.TabIndex = 48;
             // 
-            // MatRecDetBS
-            // 
-            this.MatRecDetBS.DataSource = typeof(SP_Sklad.SkladData.MatRecDet);
-            // 
             // labelControl11
             // 
-            this.labelControl11.Location = new System.Drawing.Point(23, 94);
+            this.labelControl11.Location = new System.Drawing.Point(23, 133);
             this.labelControl11.Name = "labelControl11";
             this.labelControl11.Size = new System.Drawing.Size(68, 16);
             this.labelControl11.StyleController = this.styleController1;
@@ -905,13 +1029,13 @@
             // 
             // calcEdit2
             // 
-            this.calcEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecDetBS, "Amount", true));
-            this.calcEdit2.Location = new System.Drawing.Point(97, 55);
+            this.calcEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecDetBS, "Amount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.calcEdit2.Location = new System.Drawing.Point(99, 55);
             this.calcEdit2.Name = "calcEdit2";
             this.calcEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.calcEdit2.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.calcEdit2.Size = new System.Drawing.Size(151, 22);
+            this.calcEdit2.Size = new System.Drawing.Size(149, 22);
             this.calcEdit2.StyleController = this.styleController1;
             this.calcEdit2.TabIndex = 46;
             // 
@@ -938,7 +1062,7 @@
             this.MatLookUpEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MatLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecDetBS, "MatId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.MatLookUpEdit.Location = new System.Drawing.Point(97, 19);
+            this.MatLookUpEdit.Location = new System.Drawing.Point(99, 19);
             this.MatLookUpEdit.Name = "MatLookUpEdit";
             this.MatLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -951,7 +1075,7 @@
             this.MatLookUpEdit.Properties.ShowHeader = false;
             this.MatLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.MatLookUpEdit.Properties.ValueMember = "MatId";
-            this.MatLookUpEdit.Size = new System.Drawing.Size(434, 22);
+            this.MatLookUpEdit.Size = new System.Drawing.Size(432, 22);
             this.MatLookUpEdit.StyleController = this.styleController1;
             this.MatLookUpEdit.TabIndex = 37;
             this.MatLookUpEdit.EditValueChanged += new System.EventHandler(this.MatLookUpEdit_EditValueChanged);
@@ -1230,46 +1354,6 @@
             this.TechProcLookUpEdit.TabIndex = 37;
             this.TechProcLookUpEdit.EditValueChanged += new System.EventHandler(this.TechProcLookUpEdit_EditValueChanged);
             // 
-            // calcEdit7
-            // 
-            this.calcEdit7.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecipeBindingSource, "ThermoLossDeviation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.calcEdit7.Location = new System.Drawing.Point(458, 245);
-            this.calcEdit7.Name = "calcEdit7";
-            this.calcEdit7.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcEdit7.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.calcEdit7.Size = new System.Drawing.Size(132, 20);
-            this.calcEdit7.TabIndex = 68;
-            // 
-            // labelControl16
-            // 
-            this.labelControl16.Location = new System.Drawing.Point(281, 246);
-            this.labelControl16.Name = "labelControl16";
-            this.labelControl16.Size = new System.Drawing.Size(171, 16);
-            this.labelControl16.StyleController = this.styleController1;
-            this.labelControl16.TabIndex = 67;
-            this.labelControl16.Text = "Термовтрати відхилення, %:";
-            // 
-            // labelControl17
-            // 
-            this.labelControl17.Location = new System.Drawing.Point(316, 215);
-            this.labelControl17.Name = "labelControl17";
-            this.labelControl17.Size = new System.Drawing.Size(136, 16);
-            this.labelControl17.StyleController = this.styleController1;
-            this.labelControl17.TabIndex = 66;
-            this.labelControl17.Text = "Термовтрати Вихід, %:";
-            // 
-            // calcEdit8
-            // 
-            this.calcEdit8.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecipeBindingSource, "ThermoLossOut", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.calcEdit8.Location = new System.Drawing.Point(458, 214);
-            this.calcEdit8.Name = "calcEdit8";
-            this.calcEdit8.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcEdit8.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.calcEdit8.Size = new System.Drawing.Size(132, 20);
-            this.calcEdit8.TabIndex = 65;
-            // 
             // frmMatRecipe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1305,6 +1389,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit7.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit8.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit6.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit5.Properties)).EndInit();
@@ -1320,6 +1406,7 @@
             this.groupControl5.ResumeLayout(false);
             this.DiscPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MatRecDetGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatRecDetListBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecDetGridView)).EndInit();
             this.xtraTabPage14.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).EndInit();
@@ -1327,8 +1414,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).EndInit();
             this.panelControl7.ResumeLayout(false);
             this.panelControl7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit9.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecDetBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatLookUpEdit.Properties)).EndInit();
             this.xtraTabPage2.ResumeLayout(false);
@@ -1346,8 +1434,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeTechProcDetBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TechProcLookUpEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit7.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit8.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1455,5 +1541,12 @@
         private DevExpress.XtraEditors.LabelControl labelControl16;
         private DevExpress.XtraEditors.LabelControl labelControl17;
         private DevExpress.XtraEditors.CalcEdit calcEdit8;
+        private DevExpress.XtraEditors.LabelControl labelControl18;
+        private DevExpress.XtraEditors.CalcEdit calcEdit9;
+        private DevExpress.XtraEditors.LabelControl labelControl19;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private System.Windows.Forms.BindingSource MatRecDetListBS;
     }
 }
