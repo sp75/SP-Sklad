@@ -66,7 +66,12 @@ namespace SP_Sklad.MainTabs
             InitializeComponent();
             whContentTab.Visible = false;
         }
-
+        public class checkedWhList
+        {
+            public string WId { get; set; }
+            public string Name { get; set; }
+            public bool IsChecked { get; set; }
+        }
         private void WarehouseUserControl_Load(object sender, EventArgs e)
         {
             WbGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "WarehouseUserControl\\WbGridView");
@@ -86,11 +91,15 @@ namespace SP_Sklad.MainTabs
                     whKagentList.EditValue = 0;
                 }
 
-                WhComboBox.Properties.DataSource = new List<object>() { new { WId = "*", Name = "Усі" } }.Concat(new BaseEntities().Warehouse.Select(s => new { WId = s.WId.ToString(), s.Name }).ToList());
+                WhComboBox.Properties.DataSource = new List<checkedWhList>() { new checkedWhList { WId = "*", Name = "Усі", IsChecked = false } }.Concat(new BaseEntities().Warehouse.Select(s => new checkedWhList { WId = s.WId.ToString(), Name = s.Name, IsChecked = false }).ToList());
                 WhComboBox.EditValue = "*";
 
-                WhComboBox2.Properties.DataSource = WhComboBox.Properties.DataSource;
-                WhComboBox2.EditValue = "*";
+
+                var whlist = new BaseEntities().Warehouse.Select(s => new checkedWhList { WId = s.WId.ToString(), Name = s.Name, IsChecked = false }).ToList();
+                foreach (var item in whlist)
+                {
+                    checkedComboBoxEdit1.Properties.Items.Add(item.WId, item.Name, item.IsChecked ? CheckState.Checked : CheckState.Unchecked, true);
+                }
 
                 wbSatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
                 wbSatusList.EditValue = -1;
@@ -381,9 +390,10 @@ namespace SP_Sklad.MainTabs
 
             grp_id = ByGrpBtn.Down ? focused_tree_node.Num : 0;
             wid = ByGrpBtn.Down ? 0 : focused_tree_node.Num;
-            if (wid == 0 && WhComboBox2.EditValue.ToString() != "*")
+           
+            if(wh_list != "*")
             {
-                wid = Convert.ToInt32(WhComboBox2.EditValue);
+                wid = -1;
             }
 
             if (ViewDetailTree.Down && ByGrpBtn.Down && focused_tree_node.Num != 0)
@@ -505,7 +515,7 @@ namespace SP_Sklad.MainTabs
 
         private void whKagentList_EditValueChanged(object sender, EventArgs e)
         {
-            if (OnDateEdit.ContainsFocus || whKagentList.ContainsFocus || WhComboBox2.ContainsFocus)
+            if (OnDateEdit.ContainsFocus || whKagentList.ContainsFocus )
             {
                 RefrechItemBtn.PerformClick();
             }
@@ -1111,6 +1121,32 @@ namespace SP_Sklad.MainTabs
             }
 
             IHelper.ShowManufacturingMaterial(focused_wh_mat.MatId);
+        }
+
+        private void checkedComboBoxEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+            if (checkedComboBoxEdit1.ContainsFocus)
+            {
+                wh_list = checkedComboBoxEdit1.Properties.Items.Any(w => w.CheckState == CheckState.Checked) ? "" : "*";
+
+                foreach (var item in checkedComboBoxEdit1.Properties.Items.Where(w => w.CheckState == CheckState.Checked))
+                {
+                    wh_list += item.Value.ToString() + ",";
+                }
+
+                RefrechItemBtn.PerformClick();
+            }
+        }
+
+        private void checkedComboBoxEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                for (int i = 0; i < checkedComboBoxEdit1.Properties.Items.Count; i++)
+                    checkedComboBoxEdit1.Properties.Items[i].CheckState = CheckState.Unchecked;
+
+                RefrechItemBtn.PerformClick();
+            }
         }
     }
 }

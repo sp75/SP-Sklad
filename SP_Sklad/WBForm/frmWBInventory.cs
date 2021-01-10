@@ -174,7 +174,15 @@ namespace SP_Sklad.WBForm
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             _db.DeleteWhere<WaybillDet>(w => w.WbillId == _wbill_id);
-            var wh_remain = _db.WhMatGet(0, wb.WaybillMove.SourceWid, 0, wb.OnDate, 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).OrderBy(o => new { o.GrpName, o.MatName }).ToList();
+
+            int is_empty = 0;
+            if (MessageBox.Show("Загружати позиції з нульовими залишками ?", "Залишки на складі", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                is_empty = 1;
+            }
+
+            var wh_remain = _db.WhMatGet(0, wb.WaybillMove.SourceWid, 0, wb.OnDate, is_empty, "*", 0, "", DBHelper.CurrentUser.UserId, 0).OrderBy(o => new { o.GrpName, o.MatName }).ToList();
+
             int num = 0;
             foreach (var item in wh_remain)
             {
@@ -183,7 +191,7 @@ namespace SP_Sklad.WBForm
                     WbillId = _wbill_id.Value,
                     MatId = item.MatId,
                     WId = wb.WaybillMove.SourceWid,
-                    Amount = item.Remain.Value,
+                    Amount = item.Remain.HasValue ? item.Remain.Value : 0,
                     Price = item.AvgPrice,
                     Discount = item.Remain,
                     Nds = item.AvgPrice,
