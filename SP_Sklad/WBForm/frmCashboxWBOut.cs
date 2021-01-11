@@ -152,5 +152,10 @@ namespace SP_Sklad.WBForm
         {
 
         }
+
+        private void simpleButton5_Click_1(object sender, EventArgs e)
+        {
+            textEdit4.Text = "dfsdfsdf";
+        }
     }
 }
