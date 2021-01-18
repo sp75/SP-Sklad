@@ -72,7 +72,9 @@ namespace SP_Sklad.Common
 
         private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
-            received += _serialPort.ReadExisting();
+            string read_existing = _serialPort.ReadExisting();
+
+            received += read_existing;
             if (received != null && received.Length >= 10 && received.IndexOf('<') != -1 && received.IndexOf('>') != -1)
             {
                 var rez = Regex.Replace(received, "[^0-9 ]", "");
@@ -102,20 +104,44 @@ namespace SP_Sklad.Common
                             weight = display;
                         }
                         else weight = 0;
-                      
+
+                        received = "";
                     }
                 }
             }
 
-     /*       try
+            if (received != null)
             {
-                File.AppendAllText(Path.Combine(Application.StartupPath, "com_port.log"), received);
+                //   String ss = "=00535.0(kg)";
+                int amount = new Regex("=").Matches(received).Count;
+                int amount2 = new Regex("(kg)").Matches(received).Count;
+                if (amount >= 1 && amount2 >=1)
+                {
+                    var sp = received.Split(new[] { "=", "(kg)" }, StringSplitOptions.RemoveEmptyEntries);
+                    if (sp.Count() >= 1)
+                    {
+                        if (decimal.TryParse(sp[0].Trim(), System.Globalization.NumberStyles.Number | System.Globalization.NumberStyles.AllowCurrencySymbol, CultureInfo.CreateSpecificCulture("en-GB"), out decimal display))
+                        {
+                            weight = display;
+                        }
+                        else weight = 0;
+
+                        received = "";
+                    }
+                  
+                }
             }
-            catch
-            {
-                ;
-            }*/
-         }
+
+                /*   try
+                   {
+                       File.AppendAllText(Path.Combine(Application.StartupPath, "com_port.log"), read_existing);
+                       read_existing = "";
+                   }
+                   catch
+                   {
+                       ;
+                   }*/
+        }
 
     }
 }

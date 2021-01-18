@@ -49,7 +49,7 @@
             this.IntermediateWeighingEdit = new DevExpress.XtraEditors.TextEdit();
             this.ByRecipeEdit = new DevExpress.XtraEditors.TextEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.calcEdit1 = new DevExpress.XtraEditors.CalcEdit();
+            this.TaraCalcEdit = new DevExpress.XtraEditors.CalcEdit();
             this.IntermediateWeighingDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.AmountEdit = new DevExpress.XtraEditors.CalcEdit();
@@ -68,7 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ByRecipeEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TaraCalcEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingDetBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AmountEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatComboBox.Properties)).BeginInit();
@@ -142,7 +142,7 @@
             this.labelControl4.Appearance.ForeColor = System.Drawing.Color.Red;
             this.labelControl4.Location = new System.Drawing.Point(12, 32);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(154, 16);
+            this.labelControl4.Size = new System.Drawing.Size(203, 21);
             this.labelControl4.StyleController = this.styleController1;
             this.labelControl4.TabIndex = 29;
             this.labelControl4.Text = "В середньому на закладку";
@@ -165,7 +165,7 @@
             this.CalcAmount.Properties.Appearance.Options.UseForeColor = true;
             this.CalcAmount.Properties.DisplayFormat.FormatString = "0.0000";
             this.CalcAmount.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.CalcAmount.Size = new System.Drawing.Size(126, 22);
+            this.CalcAmount.Size = new System.Drawing.Size(126, 28);
             this.CalcAmount.StyleController = this.styleController1;
             this.CalcAmount.TabIndex = 28;
             // 
@@ -173,7 +173,7 @@
             // 
             this.labelControl18.Location = new System.Drawing.Point(309, 97);
             this.labelControl18.Name = "labelControl18";
-            this.labelControl18.Size = new System.Drawing.Size(131, 16);
+            this.labelControl18.Size = new System.Drawing.Size(172, 21);
             this.labelControl18.StyleController = this.styleController1;
             this.labelControl18.TabIndex = 27;
             this.labelControl18.Text = "Залишилось зважити:";
@@ -187,7 +187,7 @@
             this.TotalEdit.Name = "TotalEdit";
             this.TotalEdit.Properties.DisplayFormat.FormatString = "0.00";
             this.TotalEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.TotalEdit.Size = new System.Drawing.Size(126, 22);
+            this.TotalEdit.Size = new System.Drawing.Size(126, 28);
             this.TotalEdit.StyleController = this.styleController1;
             this.TotalEdit.TabIndex = 26;
             // 
@@ -195,7 +195,7 @@
             // 
             this.labelControl17.Location = new System.Drawing.Point(341, 65);
             this.labelControl17.Name = "labelControl17";
-            this.labelControl17.Size = new System.Drawing.Size(99, 16);
+            this.labelControl17.Size = new System.Drawing.Size(129, 21);
             this.labelControl17.StyleController = this.styleController1;
             this.labelControl17.TabIndex = 24;
             this.labelControl17.Text = "Всього зважено:";
@@ -204,7 +204,7 @@
             // 
             this.labelControl29.Location = new System.Drawing.Point(347, 32);
             this.labelControl29.Name = "labelControl29";
-            this.labelControl29.Size = new System.Drawing.Size(93, 16);
+            this.labelControl29.Size = new System.Drawing.Size(124, 21);
             this.labelControl29.StyleController = this.styleController1;
             this.labelControl29.TabIndex = 23;
             this.labelControl29.Text = "По виробницву:";
@@ -218,7 +218,7 @@
             this.IntermediateWeighingEdit.Name = "IntermediateWeighingEdit";
             this.IntermediateWeighingEdit.Properties.DisplayFormat.FormatString = "0.00";
             this.IntermediateWeighingEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.IntermediateWeighingEdit.Size = new System.Drawing.Size(126, 22);
+            this.IntermediateWeighingEdit.Size = new System.Drawing.Size(126, 28);
             this.IntermediateWeighingEdit.StyleController = this.styleController1;
             this.IntermediateWeighingEdit.TabIndex = 21;
             // 
@@ -231,13 +231,13 @@
             this.ByRecipeEdit.Name = "ByRecipeEdit";
             this.ByRecipeEdit.Properties.DisplayFormat.FormatString = "0.00";
             this.ByRecipeEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.ByRecipeEdit.Size = new System.Drawing.Size(126, 22);
+            this.ByRecipeEdit.Size = new System.Drawing.Size(126, 28);
             this.ByRecipeEdit.StyleController = this.styleController1;
             this.ByRecipeEdit.TabIndex = 20;
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.calcEdit1);
+            this.panelControl1.Controls.Add(this.TaraCalcEdit);
             this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.AmountEdit);
             this.panelControl1.Controls.Add(this.MatComboBox);
@@ -249,18 +249,18 @@
             this.panelControl1.Size = new System.Drawing.Size(584, 85);
             this.panelControl1.TabIndex = 0;
             // 
-            // calcEdit1
+            // TaraCalcEdit
             // 
-            this.calcEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.IntermediateWeighingDetBS, "TaraAmount", true));
-            this.calcEdit1.Location = new System.Drawing.Point(446, 50);
-            this.calcEdit1.Name = "calcEdit1";
-            this.calcEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.TaraCalcEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.IntermediateWeighingDetBS, "TaraAmount", true));
+            this.TaraCalcEdit.Location = new System.Drawing.Point(446, 50);
+            this.TaraCalcEdit.Name = "TaraCalcEdit";
+            this.TaraCalcEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcEdit1.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.calcEdit1.Properties.ShowCloseButton = true;
-            this.calcEdit1.Size = new System.Drawing.Size(126, 22);
-            this.calcEdit1.StyleController = this.styleController1;
-            this.calcEdit1.TabIndex = 45;
+            this.TaraCalcEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.TaraCalcEdit.Properties.ShowCloseButton = true;
+            this.TaraCalcEdit.Size = new System.Drawing.Size(126, 28);
+            this.TaraCalcEdit.StyleController = this.styleController1;
+            this.TaraCalcEdit.TabIndex = 45;
             // 
             // IntermediateWeighingDetBS
             // 
@@ -270,7 +270,7 @@
             // 
             this.labelControl2.Location = new System.Drawing.Point(411, 53);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(29, 16);
+            this.labelControl2.Size = new System.Drawing.Size(37, 21);
             this.labelControl2.StyleController = this.styleController1;
             this.labelControl2.TabIndex = 44;
             this.labelControl2.Text = "Тара";
@@ -285,7 +285,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("AmountEdit.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.F12), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, true)});
             this.AmountEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.AmountEdit.Properties.ShowCloseButton = true;
-            this.AmountEdit.Size = new System.Drawing.Size(126, 22);
+            this.AmountEdit.Size = new System.Drawing.Size(126, 28);
             this.AmountEdit.StyleController = this.styleController1;
             this.AmountEdit.TabIndex = 43;
             this.AmountEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.AmountEdit_ButtonClick);
@@ -309,7 +309,7 @@
             this.MatComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.MatComboBox.Properties.ValueMember = "MatId";
             this.MatComboBox.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.RecipeComboBox_Properties_ButtonClick);
-            this.MatComboBox.Size = new System.Drawing.Size(280, 22);
+            this.MatComboBox.Size = new System.Drawing.Size(280, 28);
             this.MatComboBox.StyleController = this.styleController1;
             this.MatComboBox.TabIndex = 23;
             this.MatComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.MatComboBox_ButtonClick);
@@ -320,7 +320,7 @@
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl3.Location = new System.Drawing.Point(12, 18);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(67, 16);
+            this.labelControl3.Size = new System.Drawing.Size(92, 21);
             this.labelControl3.StyleController = this.styleController1;
             this.labelControl3.TabIndex = 3;
             this.labelControl3.Text = "Сировина:";
@@ -329,7 +329,7 @@
             // 
             this.labelControl1.Location = new System.Drawing.Point(406, 18);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(34, 16);
+            this.labelControl1.Size = new System.Drawing.Size(45, 21);
             this.labelControl1.StyleController = this.styleController1;
             this.labelControl1.TabIndex = 39;
             this.labelControl1.Text = "Кі-сть";
@@ -360,7 +360,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TaraCalcEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingDetBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AmountEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatComboBox.Properties)).EndInit();
@@ -388,7 +388,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl29;
         private DevExpress.XtraEditors.TextEdit IntermediateWeighingEdit;
         private DevExpress.XtraEditors.TextEdit ByRecipeEdit;
-        private DevExpress.XtraEditors.CalcEdit calcEdit1;
+        private DevExpress.XtraEditors.CalcEdit TaraCalcEdit;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.TextEdit CalcAmount;

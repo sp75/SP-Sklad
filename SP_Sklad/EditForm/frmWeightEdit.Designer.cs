@@ -99,7 +99,7 @@
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
             this.labelControl5.Location = new System.Drawing.Point(283, 17);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(64, 33);
+            this.labelControl5.Size = new System.Drawing.Size(79, 40);
             this.labelControl5.TabIndex = 11;
             this.labelControl5.Text = "Ціна:";
             // 
@@ -112,7 +112,7 @@
             this.PriceEdit.Properties.Appearance.Options.UseFont = true;
             this.PriceEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.PriceEdit.Size = new System.Drawing.Size(174, 40);
+            this.PriceEdit.Size = new System.Drawing.Size(174, 46);
             this.PriceEdit.TabIndex = 10;
             // 
             // labelControl4
@@ -120,7 +120,7 @@
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
             this.labelControl4.Location = new System.Drawing.Point(23, 17);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(65, 33);
+            this.labelControl4.Size = new System.Drawing.Size(79, 40);
             this.labelControl4.TabIndex = 9;
             this.labelControl4.Text = "Вага:";
             // 
@@ -133,7 +133,7 @@
             this.AmountEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.AmountEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.AmountEdit_Properties_ButtonClick);
-            this.AmountEdit.Size = new System.Drawing.Size(169, 40);
+            this.AmountEdit.Size = new System.Drawing.Size(169, 46);
             this.AmountEdit.TabIndex = 8;
             this.AmountEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AmountEdit_KeyPress);
             // 
@@ -150,20 +150,21 @@
             this.OkButton.Size = new System.Drawing.Size(98, 46);
             this.OkButton.TabIndex = 3;
             this.OkButton.Text = "Так";
+            this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
             // timer1
             // 
-            this.timer1.Interval = 500;
+            this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // frmMatListEdit
+            // frmWeightEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 209);
             this.Controls.Add(this.panelControl2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmMatListEdit";
+            this.Name = "frmWeightEdit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Редагувати позицію";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMatListEdit_FormClosed);

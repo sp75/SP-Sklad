@@ -68,6 +68,9 @@ namespace SP_Sklad.EditForm
 
         private void simpleButton3_Click(object sender, EventArgs e)
         {
+            timer1.Stop();
+            com_port.Close();
+
             GetWeight();
         }
 
@@ -82,6 +85,11 @@ namespace SP_Sklad.EditForm
             {
                 OkButton.PerformClick();
             }
+        }
+
+        private void OkButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

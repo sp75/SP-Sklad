@@ -289,6 +289,12 @@
     <Compile Include="EditForm\frmPreparationMatRecipe.Designer.cs">
       <DependentUpon>frmPreparationMatRecipe.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditForm\frmSetCustomDiscount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmSetCustomDiscount.Designer.cs">
+      <DependentUpon>frmSetCustomDiscount.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditForm\frmWeightEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1574,6 +1580,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmPreparationMatRecipe.resx">
       <DependentUpon>frmPreparationMatRecipe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmSetCustomDiscount.resx">
+      <DependentUpon>frmSetCustomDiscount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmWeightEdit.resx">
       <DependentUpon>frmWeightEdit.cs</DependentUpon>

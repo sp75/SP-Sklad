@@ -56,7 +56,7 @@ namespace SP_Sklad.ViewsForm
            {
                MsrName = c.v.MsrName,
                MatName = c.v.MatName,
-               AmountIntermediateWeighing = c.v.Amount,
+               AmountIntermediateWeighing = c.v.Total,
                MatId = c.v.MatId,
                WbillId = c.v.WbillId,
                IntermediateWeighingCount = det_list.Count(co => co.MatId == c.v.MatId),

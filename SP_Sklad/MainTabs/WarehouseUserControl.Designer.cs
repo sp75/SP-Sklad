@@ -238,6 +238,7 @@
             this.repositoryItemImageComboBox16 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn77 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox17 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.gridColumn58 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage15 = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
@@ -1421,7 +1422,7 @@
             this.checkedComboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)});
-            this.checkedComboBoxEdit1.Size = new System.Drawing.Size(252, 22);
+            this.checkedComboBoxEdit1.Size = new System.Drawing.Size(236, 22);
             this.checkedComboBoxEdit1.TabIndex = 49;
             this.checkedComboBoxEdit1.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.checkedComboBoxEdit1_ButtonClick);
             this.checkedComboBoxEdit1.EditValueChanged += new System.EventHandler(this.checkedComboBoxEdit1_EditValueChanged);
@@ -1469,7 +1470,7 @@
             // 
             // BarCodeEdit
             // 
-            this.BarCodeEdit.Location = new System.Drawing.Point(1035, 11);
+            this.BarCodeEdit.Location = new System.Drawing.Point(982, 11);
             this.BarCodeEdit.MenuManager = this.barManager1;
             this.BarCodeEdit.Name = "BarCodeEdit";
             this.BarCodeEdit.Size = new System.Drawing.Size(191, 22);
@@ -1478,11 +1479,11 @@
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(930, 15);
+            this.labelControl5.Location = new System.Drawing.Point(919, 15);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(99, 13);
+            this.labelControl5.Size = new System.Drawing.Size(57, 13);
             this.labelControl5.TabIndex = 7;
-            this.labelControl5.Text = "Штрих-код / EAN13";
+            this.labelControl5.Text = "Штрих-код";
             // 
             // labelControl6
             // 
@@ -2493,7 +2494,8 @@
             this.gridColumn44,
             this.gridColumn45,
             this.gridColumn76,
-            this.gridColumn77});
+            this.gridColumn77,
+            this.gridColumn58});
             this.WbGridView.GridControl = this.WBGridControl;
             this.WbGridView.Name = "WbGridView";
             this.WbGridView.OptionsBehavior.Editable = false;
@@ -2679,6 +2681,12 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 15)});
             this.repositoryItemImageComboBox17.Name = "repositoryItemImageComboBox17";
             this.repositoryItemImageComboBox17.SmallImages = this.GridImageList;
+            // 
+            // gridColumn58
+            // 
+            this.gridColumn58.Caption = "Примітка";
+            this.gridColumn58.FieldName = "Notes";
+            this.gridColumn58.Name = "gridColumn58";
             // 
             // xtraTabControl2
             // 
@@ -3676,5 +3684,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit4;
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
         private DevExpress.XtraEditors.CheckedComboBoxEdit checkedComboBoxEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn58;
     }
 }

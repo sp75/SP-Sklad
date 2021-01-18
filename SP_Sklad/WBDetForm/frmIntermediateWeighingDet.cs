@@ -121,7 +121,7 @@ namespace SP_Sklad.WBDetForm
                 //  var wb = _db.WayBillMake.we
                 var rec_det = _db.MatRecDet.FirstOrDefault(w => w.MatId == row.MatId && w.RecId == row.RecId);
 
-                OkButton.Enabled = !String.IsNullOrEmpty(MatComboBox.Text) && Convert.ToDecimal(CalcAmount.EditValue) + rec_det.Deviation >= AmountEdit.Value && Convert.ToDecimal(CalcAmount.EditValue) - rec_det.Deviation <= AmountEdit.Value;
+                OkButton.Enabled = !String.IsNullOrEmpty(MatComboBox.Text) && Convert.ToDecimal(CalcAmount.EditValue) + rec_det.Deviation >= (AmountEdit.Value - TaraCalcEdit.Value) && Convert.ToDecimal(CalcAmount.EditValue)  - rec_det.Deviation <= (AmountEdit.Value - TaraCalcEdit.Value);
             }
             else
             {

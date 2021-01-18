@@ -533,7 +533,14 @@ namespace SP_Sklad.MainTabs
                 var pos = WhMatGetBS.IndexOf(row);
                 WhMatGetBS.Position = pos;
 
-                if (row != null && MatListTabPage.PageVisible)
+                if (row == null)
+                {
+                    MessageBox.Show("Товар не знайдено !");
+                    BarCodeEdit.Text = "";
+                    return;
+                }
+
+                if (MatListTabPage.PageVisible)
                 {
                     if (BarCodeSplit.Count() > 2)
                     {
@@ -565,9 +572,9 @@ namespace SP_Sklad.MainTabs
                     {
                         AddItem.PerformClick();
                     }
-
                 }
-                else
+
+              /*  else
                 {
                     if (e.KeyChar == 13 && !String.IsNullOrEmpty(BarCodeEdit.Text) && BarCodeEdit.Text.Count() == 13)
                     {
@@ -582,7 +589,7 @@ namespace SP_Sklad.MainTabs
                             AddMatToCustomList(ean13.amount);
                         }
                     }
-                }
+                }*/
 
 
 
