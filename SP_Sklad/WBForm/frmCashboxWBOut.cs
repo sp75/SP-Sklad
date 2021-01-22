@@ -351,5 +351,10 @@ namespace SP_Sklad.WBForm
                 }
             }
         }
+
+        private void simpleButton19_Click(object sender, EventArgs e)
+        {
+            var pay = new frmCashboxCheckoutcs();
+        }
     }
 }

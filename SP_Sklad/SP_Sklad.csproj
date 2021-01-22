@@ -1449,6 +1449,12 @@
     <Compile Include="WBDetForm\frmWriteOffDet.Designer.cs">
       <DependentUpon>frmWriteOffDet.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBForm\frmCashboxCheckoutcs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\frmCashboxCheckoutcs.Designer.cs">
+      <DependentUpon>frmCashboxCheckoutcs.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBForm\frmKAgentActReconciliation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1801,6 +1807,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WBDetForm\frmWriteOffDet.resx">
       <DependentUpon>frmWriteOffDet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\frmCashboxCheckoutcs.resx">
+      <DependentUpon>frmCashboxCheckoutcs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmKAgentActReconciliation.resx">
       <DependentUpon>frmKAgentActReconciliation.cs</DependentUpon>

@@ -1131,6 +1131,7 @@
             this.simpleButton19.TabIndex = 42;
             this.simpleButton19.TabStop = false;
             this.simpleButton19.Text = "Оплата";
+            this.simpleButton19.Click += new System.EventHandler(this.simpleButton19_Click);
             // 
             // simpleButton20
             // 
