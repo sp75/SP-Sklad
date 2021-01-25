@@ -1422,7 +1422,7 @@
             this.checkedComboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)});
-            this.checkedComboBoxEdit1.Size = new System.Drawing.Size(236, 22);
+            this.checkedComboBoxEdit1.Size = new System.Drawing.Size(217, 22);
             this.checkedComboBoxEdit1.TabIndex = 49;
             this.checkedComboBoxEdit1.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.checkedComboBoxEdit1_ButtonClick);
             this.checkedComboBoxEdit1.EditValueChanged += new System.EventHandler(this.checkedComboBoxEdit1_EditValueChanged);
@@ -1470,16 +1470,16 @@
             // 
             // BarCodeEdit
             // 
-            this.BarCodeEdit.Location = new System.Drawing.Point(982, 11);
+            this.BarCodeEdit.Location = new System.Drawing.Point(964, 11);
             this.BarCodeEdit.MenuManager = this.barManager1;
             this.BarCodeEdit.Name = "BarCodeEdit";
-            this.BarCodeEdit.Size = new System.Drawing.Size(191, 22);
+            this.BarCodeEdit.Size = new System.Drawing.Size(167, 22);
             this.BarCodeEdit.TabIndex = 9;
             this.BarCodeEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BarCodeEdit_KeyPress);
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(919, 15);
+            this.labelControl5.Location = new System.Drawing.Point(901, 15);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(57, 13);
             this.labelControl5.TabIndex = 7;
