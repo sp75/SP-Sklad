@@ -137,6 +137,47 @@ namespace SP_Sklad.Common
             set { Set("GRID_FONT_NAME", value); }
         }
 
+        public int DefaultBuyer
+        {
+            get
+            {
+                var v = Get("DEFAULT_BUYER");
+                return string.IsNullOrEmpty(v) ? DBHelper.Kagents.FirstOrDefault().KaId : Convert.ToInt32(v);
+            }
+            set { Set("DEFAULT_BUYER", value); }
+        }
+
+        public int DefaultChargeTypeByRMK
+        {
+            get
+            {
+                var v = Get("DEFAULT_CHARGE_TYPE_RMK");
+                return string.IsNullOrEmpty(v) ? DBHelper.ChargeTypes.FirstOrDefault(f => f.Def == 1).CTypeId : Convert.ToInt32(v);
+            }
+            set { Set("DEFAULT_CHARGE_TYPE_RMK", value); }
+        }
+
+        public int CashDesksDefaultRMK
+        {
+            get
+            {
+                var v = Get("CASHDESK_DEFAULT_RMK");
+                return string.IsNullOrEmpty(v) ? 0 : Convert.ToInt32(v);
+            }
+            set { Set("CASHDESK_DEFAULT_RMK", value); }
+        }
+
+        public int AccountDefaultRMK
+        {
+            get
+            {
+                var v = Get("ACCOUNT_DEFAULT_RMK");
+                return string.IsNullOrEmpty(v) ? 0 : Convert.ToInt32(v);
+            }
+            set { Set("ACCOUNT_DEFAULT_RMK", value); }
+        }
+
+
         /// <summary>
         /// not show message copy documents
         /// </summary>

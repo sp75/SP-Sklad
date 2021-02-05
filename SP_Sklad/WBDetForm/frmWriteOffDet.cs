@@ -12,7 +12,6 @@ using SP_Sklad.Common;
 using SP_Sklad.EditForm;
 using SP_Sklad.SkladData;
 using EntityState = System.Data.Entity.EntityState;
-using System.Data.Entity;
 
 namespace SP_Sklad.WBDetForm
 {
@@ -251,7 +250,12 @@ namespace SP_Sklad.WBDetForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            if (_db.Entry<WaybillDet>(_wbd).State == EntityState.Detached)
+            if (_wb.WType == -20)
+            {
+                _wbd.Discount = _wbd.Amount;
+            }
+
+                if (_db.Entry<WaybillDet>(_wbd).State == EntityState.Detached)
             {
                 _db.WaybillDet.Add(_wbd);
             }
@@ -261,7 +265,6 @@ namespace SP_Sklad.WBDetForm
              {
                  foreach (var item in pos_in.Where(w => w.Amount > 0))
                  {
-
                      _db.WMatTurn.Add(new WMatTurn
                      {
                          PosId = item.PosId,

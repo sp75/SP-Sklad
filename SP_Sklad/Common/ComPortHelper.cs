@@ -20,15 +20,20 @@ namespace SP_Sklad.Common
         private String test { get; set; }
         public decimal weight { get; set; }
 
-        public ComPortHelper()
+        public ComPortHelper() 
+            : this(Settings.Default.com_port_name, Convert.ToInt32(Settings.Default.com_port_speed))
+        {
+        }
+
+        public ComPortHelper(string port_name, int baud_rate)
         {
             _serialPort = new SerialPort();
             _serialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
 
             // Allow the user to set the appropriate properties.
 
-            _serialPort.PortName = Settings.Default.com_port_name;// "COM1";
-            _serialPort.BaudRate = Convert.ToInt32(Settings.Default.com_port_speed); // 4800;
+            _serialPort.PortName = port_name;// Settings.Default.com_port_name;// "COM1";
+            _serialPort.BaudRate = baud_rate;// Convert.ToInt32(Settings.Default.com_port_speed); // 4800;
 
 
             _serialPort.Parity = (Parity)Enum.Parse(typeof(Parity), "None", true); ;

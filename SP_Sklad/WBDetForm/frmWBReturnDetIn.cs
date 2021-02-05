@@ -13,6 +13,7 @@ using SP_Sklad.SkladData;
 using EntityState = System.Data.Entity.EntityState;
 using SP_Sklad.Common.WayBills;
 using SkladEngine.ModelViews;
+using SP_Sklad.Properties;
 
 namespace SP_Sklad.WBDetForm
 {
@@ -42,7 +43,7 @@ namespace SP_Sklad.WBDetForm
 
             WHComboBox.Properties.DataSource = DBHelper.WhList;
 
-            com_port = new ComPortHelper();
+            com_port = new ComPortHelper(Settings.Default.com_port_name, Convert.ToInt32(Settings.Default.com_port_speed));
         }
 
         private void frmWBReturnDetIn_Load(object sender, EventArgs e)

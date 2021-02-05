@@ -212,5 +212,41 @@ namespace SP_Sklad.Properties {
                 this["LastFunId"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("COM2")]
+        public string com_port_name_2 {
+            get {
+                return ((string)(this["com_port_name_2"]));
+            }
+            set {
+                this["com_port_name_2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("4800")]
+        public string com_port_speed_2 {
+            get {
+                return ((string)(this["com_port_speed_2"]));
+            }
+            set {
+                this["com_port_speed_2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string barcode_scanner_name {
+            get {
+                return ((string)(this["barcode_scanner_name"]));
+            }
+            set {
+                this["barcode_scanner_name"] = value;
+            }
+        }
     }
 }

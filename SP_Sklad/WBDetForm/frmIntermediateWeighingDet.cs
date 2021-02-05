@@ -96,6 +96,9 @@ namespace SP_Sklad.WBDetForm
             }
 
             IntermediateWeighingDetBS.DataSource = det;
+
+            TaraMatEdit.Properties.DataSource = _db.Materials.Where(w => w.TypeId == 5).Select(s => new { s.MatId, s.Name, s.Artikul, s.Weight }).ToList();
+
             GetOk();
         }
 
@@ -112,7 +115,7 @@ namespace SP_Sklad.WBDetForm
                     TotalEdit.EditValue = row.AmountByRecipe - (row.AmountIntermediateWeighing ?? 0);
                     textEdit1.EditValue = row.AmountByRecipe / wb_maked.RecipeCount;*/
 
-                CalcAmount.EditValue = Math.Round(Convert.ToDecimal((row.AmountByRecipe * _iw.Amount) / row.TotalWeightByRecipe), 2);
+                CalcAmount.EditValue = Math.Round(Convert.ToDecimal((row.AmountByRecipe * _iw.Amount) / row.TotalWeightByRecipe), 2) ;
 
                 ByRecipeEdit.EditValue = row.AmountByRecipe;
                 IntermediateWeighingEdit.EditValue = row.AmountIntermediateWeighing;
@@ -120,8 +123,10 @@ namespace SP_Sklad.WBDetForm
 
                 //  var wb = _db.WayBillMake.we
                 var rec_det = _db.MatRecDet.FirstOrDefault(w => w.MatId == row.MatId && w.RecId == row.RecId);
+                var vizok = (dynamic)TaraMatEdit.GetSelectedDataRow();
+                var netto_amount = AmountEdit.Value - TaraCalcEdit.Value - (vizok != null ? vizok.Weight : 0 ) ;
 
-                OkButton.Enabled = !String.IsNullOrEmpty(MatComboBox.Text) && Convert.ToDecimal(CalcAmount.EditValue) + rec_det.Deviation >= (AmountEdit.Value - TaraCalcEdit.Value) && Convert.ToDecimal(CalcAmount.EditValue)  - rec_det.Deviation <= (AmountEdit.Value - TaraCalcEdit.Value);
+                OkButton.Enabled = !String.IsNullOrEmpty(MatComboBox.Text) && (rec_det == null || (CalcAmount.Value + (rec_det != null ? rec_det.Deviation : 0)) >= netto_amount && (CalcAmount.Value - (rec_det != null ? rec_det.Deviation : 0)) <= netto_amount);
             }
             else
             {
@@ -131,7 +136,9 @@ namespace SP_Sklad.WBDetForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            det.Total = det.Amount - det.TaraAmount;
+            var vizok = (dynamic)TaraMatEdit.GetSelectedDataRow();
+
+            det.Total = det.Amount - det.TaraAmount - (vizok != null ? (decimal)vizok.Weight : 0);
 
             if (_db.Entry<IntermediateWeighingDet>(det).State == EntityState.Detached)
             {
@@ -177,11 +184,29 @@ namespace SP_Sklad.WBDetForm
         {
             if (e.Button.Index == 1)
             {
-                var frm = new frmWeightEdit(MatComboBox.Text);
-
-                if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                using (var frm = new frmWeightEdit(MatComboBox.Text, 1))
                 {
-                    AmountEdit.EditValue = frm.AmountEdit.Value;
+
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        AmountEdit.EditValue = frm.AmountEdit.Value;
+
+                        GetOk();
+                    }
+                }
+            }
+
+            if (e.Button.Index == 2)
+            {
+                using (var frm = new frmWeightEdit(MatComboBox.Text, 2))
+                {
+
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        AmountEdit.EditValue = frm.AmountEdit.Value;
+
+                        GetOk();
+                    }
                 }
             }
         }
@@ -226,6 +251,14 @@ namespace SP_Sklad.WBDetForm
         private void AmountEdit_EditValueChanged(object sender, EventArgs e)
         {
             GetOk();
+        }
+
+        private void TaraMatEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1 )
+            {
+                TaraMatEdit.EditValue = null;
+            }
         }
     }
 }

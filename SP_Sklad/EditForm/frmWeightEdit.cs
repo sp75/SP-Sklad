@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using SP_Sklad.Common;
+using SP_Sklad.Properties;
 
 namespace SP_Sklad.EditForm
 {
@@ -16,12 +17,19 @@ namespace SP_Sklad.EditForm
     {
         private ComPortHelper com_port { get; set; }
 
-        public frmWeightEdit(String MatName)
+        public frmWeightEdit(String MatName, int weigher_index = 1)
         {
             InitializeComponent();
             AmountEdit.EditValue = 0;
             PriceEdit.EditValue = 0;
-            com_port = new ComPortHelper();
+            if (weigher_index == 1)
+            {
+                com_port = new ComPortHelper(Settings.Default.com_port_name, Convert.ToInt32(Settings.Default.com_port_speed));
+            }
+            else if (weigher_index == 2)
+            {
+                com_port = new ComPortHelper(Settings.Default.com_port_name_2, Convert.ToInt32(Settings.Default.com_port_speed_2));
+            }
             Text = MatName;
         }
 
@@ -85,11 +93,6 @@ namespace SP_Sklad.EditForm
             {
                 OkButton.PerformClick();
             }
-        }
-
-        private void OkButton_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

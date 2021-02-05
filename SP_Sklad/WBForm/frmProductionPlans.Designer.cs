@@ -101,6 +101,7 @@
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
+            this.ReservedAllСheck = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
@@ -129,6 +130,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReservedAllСheck.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // WBImgList
@@ -412,6 +414,7 @@
             // 
             // panelControl4
             // 
+            this.panelControl4.Controls.Add(this.ReservedAllСheck);
             this.panelControl4.Controls.Add(this.NotesEdit);
             this.panelControl4.Controls.Add(this.labelControl8);
             this.panelControl4.Controls.Add(this.labelControl10);
@@ -793,6 +796,18 @@
             this.barDockControl1.Location = new System.Drawing.Point(2, 2);
             this.barDockControl1.Size = new System.Drawing.Size(1084, 0);
             // 
+            // ReservedAllСheck
+            // 
+            this.ReservedAllСheck.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ProductionPlansBS, "Checked", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ReservedAllСheck.Location = new System.Drawing.Point(15, 8);
+            this.ReservedAllСheck.Name = "ReservedAllСheck";
+            this.ReservedAllСheck.Properties.Caption = "Зарезервувати сировину";
+            this.ReservedAllСheck.Properties.ValueChecked = 1;
+            this.ReservedAllСheck.Properties.ValueUnchecked = 0;
+            this.ReservedAllСheck.Size = new System.Drawing.Size(203, 20);
+            this.ReservedAllСheck.StyleController = this.styleController1;
+            this.ReservedAllСheck.TabIndex = 34;
+            // 
             // frmProductionPlans
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -847,6 +862,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReservedAllСheck.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -913,5 +929,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.PanelControl panelControl4;
         private System.Windows.Forms.Panel panel1;
+        private DevExpress.XtraEditors.CheckEdit ReservedAllСheck;
     }
 }

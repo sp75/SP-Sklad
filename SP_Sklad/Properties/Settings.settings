@@ -50,5 +50,14 @@
     <Setting Name="LastFunId" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+    <Setting Name="com_port_name_2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">COM2</Value>
+    </Setting>
+    <Setting Name="com_port_speed_2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">4800</Value>
+    </Setting>
+    <Setting Name="barcode_scanner_name" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

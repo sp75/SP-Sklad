@@ -195,6 +195,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />
+    <Reference Include="RawInput">
+      <HintPath>Lib\RawInput.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -259,6 +262,12 @@
     <Compile Include="EditForm\frmBanksEdit.Designer.cs">
       <DependentUpon>frmBanksEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditForm\frmAddBarCodeScanner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmAddBarCodeScanner.Designer.cs">
+      <DependentUpon>frmAddBarCodeScanner.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditForm\frmCashdesksEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -288,6 +297,12 @@
     </Compile>
     <Compile Include="EditForm\frmPreparationMatRecipe.Designer.cs">
       <DependentUpon>frmPreparationMatRecipe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditForm\frmBarCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmBarCode.Designer.cs">
+      <DependentUpon>frmBarCode.cs</DependentUpon>
     </Compile>
     <Compile Include="EditForm\frmSetCustomDiscount.cs">
       <SubType>Form</SubType>
@@ -1449,11 +1464,11 @@
     <Compile Include="WBDetForm\frmWriteOffDet.Designer.cs">
       <DependentUpon>frmWriteOffDet.cs</DependentUpon>
     </Compile>
-    <Compile Include="WBForm\frmCashboxCheckoutcs.cs">
+    <Compile Include="WBForm\frmCashboxCheckout.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WBForm\frmCashboxCheckoutcs.Designer.cs">
-      <DependentUpon>frmCashboxCheckoutcs.cs</DependentUpon>
+    <Compile Include="WBForm\frmCashboxCheckout.Designer.cs">
+      <DependentUpon>frmCashboxCheckout.cs</DependentUpon>
     </Compile>
     <Compile Include="WBForm\frmKAgentActReconciliation.cs">
       <SubType>Form</SubType>
@@ -1572,6 +1587,9 @@
     <EmbeddedResource Include="EditForm\frmBanksEdit.resx">
       <DependentUpon>frmBanksEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmAddBarCodeScanner.resx">
+      <DependentUpon>frmAddBarCodeScanner.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmCashdesksEdit.resx">
       <DependentUpon>frmCashdesksEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -1586,6 +1604,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmPreparationMatRecipe.resx">
       <DependentUpon>frmPreparationMatRecipe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmBarCode.resx">
+      <DependentUpon>frmBarCode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmSetCustomDiscount.resx">
       <DependentUpon>frmSetCustomDiscount.cs</DependentUpon>
@@ -1808,8 +1829,8 @@
     <EmbeddedResource Include="WBDetForm\frmWriteOffDet.resx">
       <DependentUpon>frmWriteOffDet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WBForm\frmCashboxCheckoutcs.resx">
-      <DependentUpon>frmCashboxCheckoutcs.cs</DependentUpon>
+    <EmbeddedResource Include="WBForm\frmCashboxCheckout.resx">
+      <DependentUpon>frmCashboxCheckout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmKAgentActReconciliation.resx">
       <DependentUpon>frmKAgentActReconciliation.cs</DependentUpon>

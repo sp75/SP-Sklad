@@ -280,7 +280,12 @@ namespace SP_Sklad
 
         private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            new frmCashboxWBOut().ShowDialog();
+            using (var frm = new frmCashboxWBOut())
+            {
+                frm.ShowDialog();
+
+                docsUserControl1.RefrechItemBtn.PerformClick();
+            }
         }
 
         private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

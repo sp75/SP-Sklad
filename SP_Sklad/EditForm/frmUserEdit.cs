@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraTreeList;
 using SP_Sklad.Common;
+using SP_Sklad.Properties;
 using SP_Sklad.SkladData;
 using SP_Sklad.ViewsForm;
 
@@ -30,16 +28,19 @@ namespace SP_Sklad.EditForm
             }
         }
         private UserSettingsRepository user_settings  { get; set; }
+     
 
         public frmUserEdit(int? UserId =null)
         {
             InitializeComponent();
+        
 
             _user_id = UserId;
             _db = DB.SkladBase();
             current_transaction = _db.Database.BeginTransaction();
             tree = new List<CatalogTreeList>();
         }
+       
 
         private void frmUserEdit_Load(object sender, EventArgs e)
         {
@@ -52,7 +53,9 @@ namespace SP_Sklad.EditForm
             tree.Add(new CatalogTreeList { Id = 4, ParentId = 1, Text = "Доступ до сладів", ImgIdx = 14, TabIdx = 1 });
             tree.Add(new CatalogTreeList { Id = 5, ParentId = 1, Text = "Додаткові", ImgIdx = 1, TabIdx = 1 });
             tree.Add(new CatalogTreeList { Id = 6, ParentId = 1, Text = "Доступ до кас", ImgIdx = 15, TabIdx = 1 });
-            tree.Add(new CatalogTreeList { Id = 2, ParentId = -1, Text = "Додаткова інформація", ImgIdx = 12, TabIdx = 2 });
+            tree.Add(new CatalogTreeList { Id = 7, ParentId = -1, Text = "Робоче місце касира", ImgIdx = 15, TabIdx = 2 });
+            tree.Add(new CatalogTreeList { Id = 2, ParentId = -1, Text = "Додаткова інформація", ImgIdx = 12, TabIdx = 3 });
+            
 
             TreeListBindingSource.DataSource = tree;
             DirTreeList.ExpandAll();
@@ -95,6 +98,26 @@ namespace SP_Sklad.EditForm
             comboBoxEdit2.Text = user_settings.GridFontName;
             comboBoxEdit1.Value = user_settings.GridFontSize;
 
+            KagentComboBox.Properties.DataSource = DBHelper.Kagents;
+            KagentComboBox.EditValue = user_settings.DefaultBuyer;
+
+            ChargeTypesEdit.Properties.DataSource = DBHelper.ChargeTypes;
+            ChargeTypesEdit.EditValue = user_settings.DefaultChargeTypeByRMK;
+
+            CashEditComboBox.Properties.DataSource = DBHelper.AllCashDesks;
+            CashEditComboBox.EditValue = user_settings.CashDesksDefaultRMK;
+
+            AccountEdit.Properties.DataSource = _db.EnterpriseAccount.Select(s => new
+            {
+                AccId = s.AccId,
+                AccNum = s.AccNum,
+                Name = s.BankName
+            }).ToList();
+
+            AccountEdit.EditValue = user_settings.AccountDefaultRMK;
+
+
+
             ValidateForm();
         }
 
@@ -136,6 +159,8 @@ namespace SP_Sklad.EditForm
             DBHelper.CurrentUser = null;
             DBHelper.WhList = null;
             DBHelper.CashDesks = null;
+
+            Settings.Default.Save();
         }
 
         private void treeList1_PopupMenuShowing(object sender, DevExpress.XtraTreeList.PopupMenuShowingEventArgs e)
@@ -435,6 +460,60 @@ namespace SP_Sklad.EditForm
         private void comboBoxEdit1_EditValueChanged(object sender, EventArgs e)
         {
             user_settings.GridFontSize = comboBoxEdit1.Value;
+        }
+
+        private void KagentComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                KagentComboBox.EditValue = IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
+            }
+        }
+
+        private void KagentComboBox_EditValueChanged(object sender, EventArgs e)
+        {
+            user_settings.DefaultBuyer = (int)KagentComboBox.EditValue;
+        }
+
+        private void ChargeTypesEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            user_settings.DefaultChargeTypeByRMK = (int)ChargeTypesEdit.EditValue;
+        }
+
+        private void ChargeTypesEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                ChargeTypesEdit.EditValue = IHelper.ShowDirectList(ChargeTypesEdit.EditValue, 6);
+            }
+        }
+
+        private void frmUserEdit_FormClosed(object sender, FormClosedEventArgs e)
+        {
+           
+        }
+
+        private void CashEditComboBox_EditValueChanged(object sender, EventArgs e)
+        {
+            user_settings.CashDesksDefaultRMK = (int)CashEditComboBox.EditValue;
+        }
+
+        private void AccountEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            user_settings.AccountDefaultRMK = (int)AccountEdit.EditValue;
+        }
+
+        private void CashEditComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                CashEditComboBox.EditValue = IHelper.ShowDirectList(CashEditComboBox.EditValue, 4);
+            }
+        }
+
+        private void AccountEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+          
         }
     }
 }

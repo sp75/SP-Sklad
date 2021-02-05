@@ -11,6 +11,7 @@ using SP_Sklad.SkladData;
 using SP_Sklad.EditForm;
 using SP_Sklad.Common;
 using SP_Sklad.Properties;
+using SP_Sklad.ViewsForm;
 
 namespace SP_Sklad.MainTabs
 {
@@ -48,14 +49,16 @@ namespace SP_Sklad.MainTabs
                     wTypeList.Properties.DataSource = new List<object>() { new { FunId = (int?)-1, Name = "Усі" } }
                         .Concat(new BaseEntities().ViewLng.Where(w => w.LangId == 2 && (w.UserTreeView.Functions.TabId == 24 || w.UserTreeView.Functions.TabId == 27 || w.UserTreeView.Functions.TabId == 51)).Select(s => new { s.UserTreeView.FunId, s.Name })).ToList();
                     wTypeList.EditValue = -1;
-               }
+                }
 
-           /*     using (var s = new UserSettingsRepository(UserSession.UserId))
-                {
-                    ComPortNameEdit.Text = s.ComPortName;
-                    ComPortSpeedEdit.Text = s.ComPortSpeed;
-                }*/
+                /*     using (var s = new UserSettingsRepository(UserSession.UserId))
+                     {
+                         ComPortNameEdit.Text = s.ComPortName;
+                         ComPortSpeedEdit.Text = s.ComPortSpeed;
+                     }*/
             }
+
+            DeviceNameRMKTextEdit.Text = Settings.Default.barcode_scanner_name;
         }
 
         private void DirTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
@@ -433,5 +436,15 @@ namespace SP_Sklad.MainTabs
             }
         }
 
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            using (var frm = new frmAddBarCodeScanner())
+            {
+                if(frm.ShowDialog() == DialogResult.OK)
+                {
+                    DeviceNameRMKTextEdit.Text = frm.DeviceName;
+                }
+            }
+        }
     }
 }

@@ -304,7 +304,7 @@ namespace SP_Sklad.Common
                             WId = (WID != "*") ? Convert.ToInt32(WID) : item.WId,
                             Amount = item.Amount,
                             Price = item.AvgPrice,// item.Price ,
-                            Discount = 0,
+                            Discount = wb.WType == -20 ? item.Amount : 0,
                             Nds = wb.Nds,
                             CurrId = wb.CurrId,
                             OnValue = wb.OnValue,
@@ -312,7 +312,6 @@ namespace SP_Sklad.Common
                             PosKind = 0,
                             PosParent = 0,
                             DiscountKind = 0
-
                         });
                     }
                     db.SaveChanges();

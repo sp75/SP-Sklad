@@ -21,6 +21,7 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<decimal> TaraAmount { get; set; }
         public Nullable<decimal> Total { get; set; }
+        public Nullable<int> TaraMatId { get; set; }
     
         public virtual IntermediateWeighing IntermediateWeighing { get; set; }
         public virtual Materials Materials { get; set; }

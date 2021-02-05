@@ -117,14 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="barManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>132, 17</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>53</value>
+  <metadata name="styleController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>938, 17</value>
   </metadata>
   <metadata name="WaybillDetOutBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1075, 17</value>
+  </metadata>
+  <metadata name="WaybillListBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1220, 17</value>
   </metadata>
   <metadata name="WBImgList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1366, 17</value>
@@ -134,7 +134,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABe
-        TQAAAk1TRnQBSQFMAgEBFAEAAQgBDAEIAQwBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        TQAAAk1TRnQBSQFMAgEBFAEAAWABDQFgAQ0BEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABYAMAAQEBAAEYBgABSP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AHIAAXMBZgFMAZMBggFzqAABqgFW
         AScBtwF2AVIMAAGhAYoBgAGTAYIBcwFoAVQBPgFoAVQBPjMAAfgB9wHzAfIB7AHcAfwB+wH6Ae4B5AHJ
         Ae4B5AHJAfcB9QHwAe4B5AHJAe4B5AHJAfcB9QHwAe4B5AHJAe4B5AHJAvsB+gHyAewB3QH4AfcB9BIA
@@ -467,10 +467,7 @@
         Af8B8QH/AcABgws=
 </value>
   </data>
-  <metadata name="styleController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>938, 17</value>
-  </metadata>
-  <metadata name="WaybillListBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1220, 17</value>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>53</value>
   </metadata>
 </root>

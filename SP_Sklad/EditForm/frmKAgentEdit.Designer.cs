@@ -968,7 +968,7 @@
             this.xtraTabControl2.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
             this.xtraTabControl2.LookAndFeel.UseDefaultLookAndFeel = false;
             this.xtraTabControl2.Name = "xtraTabControl2";
-            this.xtraTabControl2.SelectedTabPage = this.xtraTabPage9;
+            this.xtraTabControl2.SelectedTabPage = this.xtraTabPage10;
             this.xtraTabControl2.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
             this.xtraTabControl2.Size = new System.Drawing.Size(678, 204);
             this.xtraTabControl2.TabIndex = 42;

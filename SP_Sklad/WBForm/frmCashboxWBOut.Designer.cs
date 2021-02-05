@@ -30,35 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCashboxWBOut));
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
-            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.PrevievBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.EditMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.DelMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
-            this.AddMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
-            this.RsvInfoBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.MatInfoBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.WeighBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
-            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.WaybillDetOutBS = new System.Windows.Forms.BindingSource(this.components);
             this.WaybillListBS = new System.Windows.Forms.BindingSource(this.components);
             this.panelControl7 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.WhListBtn = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.simpleButton24 = new DevExpress.XtraEditors.SimpleButton();
+            this.BarCodeBtn = new DevExpress.XtraEditors.SimpleButton();
+            this.KAgentBtn = new DevExpress.XtraEditors.SimpleButton();
+            this.DiscountBtn = new DevExpress.XtraEditors.SimpleButton();
             this.DisCartButton = new DevExpress.XtraEditors.SimpleButton();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -87,8 +70,6 @@
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.BarCodeTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -110,13 +91,9 @@
             this.repositoryItemImageComboBox5 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.simpleButton23 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton22 = new DevExpress.XtraEditors.SimpleButton();
             this.AmountEdit = new DevExpress.XtraEditors.CalcEdit();
-            this.simpleButton11 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton19 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton20 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton21 = new DevExpress.XtraEditors.SimpleButton();
+            this.PrintDocBtn = new DevExpress.XtraEditors.SimpleButton();
+            this.PayDocBtn = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton12 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton13 = new DevExpress.XtraEditors.SimpleButton();
@@ -137,8 +114,6 @@
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillListBS)).BeginInit();
@@ -162,7 +137,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BarCodeTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).BeginInit();
@@ -180,60 +154,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
             this.SuspendLayout();
             // 
-            // barManager1
-            // 
-            this.barManager1.DockControls.Add(this.barDockControlTop);
-            this.barManager1.DockControls.Add(this.barDockControlBottom);
-            this.barManager1.DockControls.Add(this.barDockControlLeft);
-            this.barManager1.DockControls.Add(this.barDockControlRight);
-            this.barManager1.DockControls.Add(this.standaloneBarDockControl1);
-            this.barManager1.Form = this;
-            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.PrevievBtn,
-            this.EditMaterialBtn,
-            this.DelMaterialBtn,
-            this.barSubItem1,
-            this.AddMaterialBtn,
-            this.barButtonItem6,
-            this.barButtonItem7,
-            this.RsvInfoBtn,
-            this.MatInfoBtn,
-            this.WeighBtn,
-            this.barButtonItem3,
-            this.barEditItem1,
-            this.barStaticItem1});
-            this.barManager1.MaxItemId = 24;
-            this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemTextEdit1});
-            // 
-            // barDockControlTop
-            // 
-            this.barDockControlTop.CausesValidation = false;
-            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1362, 0);
-            // 
-            // barDockControlBottom
-            // 
-            this.barDockControlBottom.CausesValidation = false;
-            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 838);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1362, 0);
-            // 
-            // barDockControlLeft
-            // 
-            this.barDockControlLeft.CausesValidation = false;
-            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 838);
-            // 
-            // barDockControlRight
-            // 
-            this.barDockControlRight.CausesValidation = false;
-            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1362, 0);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 838);
-            // 
             // standaloneBarDockControl1
             // 
             this.standaloneBarDockControl1.AutoSize = true;
@@ -243,115 +163,6 @@
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
             this.standaloneBarDockControl1.Size = new System.Drawing.Size(1362, 0);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
-            // 
-            // PrevievBtn
-            // 
-            this.PrevievBtn.Caption = "Переглянути друковану форму накладної";
-            this.PrevievBtn.Id = 0;
-            this.PrevievBtn.ImageIndex = 0;
-            this.PrevievBtn.Name = "PrevievBtn";
-            // 
-            // EditMaterialBtn
-            // 
-            this.EditMaterialBtn.Caption = "Властивості";
-            this.EditMaterialBtn.Id = 2;
-            this.EditMaterialBtn.ImageIndex = 6;
-            this.EditMaterialBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P));
-            this.EditMaterialBtn.Name = "EditMaterialBtn";
-            this.EditMaterialBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
-            // DelMaterialBtn
-            // 
-            this.DelMaterialBtn.Caption = "Видалити";
-            this.DelMaterialBtn.Id = 3;
-            this.DelMaterialBtn.ImageIndex = 7;
-            this.DelMaterialBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Delete));
-            this.DelMaterialBtn.Name = "DelMaterialBtn";
-            this.DelMaterialBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
-            // barSubItem1
-            // 
-            this.barSubItem1.Caption = "Додати";
-            this.barSubItem1.Id = 4;
-            this.barSubItem1.ImageIndex = 5;
-            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.AddMaterialBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7)});
-            this.barSubItem1.Name = "barSubItem1";
-            this.barSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
-            // AddMaterialBtn
-            // 
-            this.AddMaterialBtn.Caption = "Товар";
-            this.AddMaterialBtn.Id = 5;
-            this.AddMaterialBtn.ImageIndex = 8;
-            this.AddMaterialBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Insert));
-            this.AddMaterialBtn.Name = "AddMaterialBtn";
-            // 
-            // barButtonItem6
-            // 
-            this.barButtonItem6.Caption = "Товари списком";
-            this.barButtonItem6.Id = 6;
-            this.barButtonItem6.ImageIndex = 9;
-            this.barButtonItem6.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L));
-            this.barButtonItem6.Name = "barButtonItem6";
-            // 
-            // barButtonItem7
-            // 
-            this.barButtonItem7.Caption = "Послугу";
-            this.barButtonItem7.Id = 7;
-            this.barButtonItem7.ImageIndex = 10;
-            this.barButtonItem7.Name = "barButtonItem7";
-            // 
-            // RsvInfoBtn
-            // 
-            this.RsvInfoBtn.Caption = "Інформація про резерв товару";
-            this.RsvInfoBtn.Id = 10;
-            this.RsvInfoBtn.ImageIndex = 3;
-            this.RsvInfoBtn.Name = "RsvInfoBtn";
-            // 
-            // MatInfoBtn
-            // 
-            this.MatInfoBtn.Caption = "Інформація про товар";
-            this.MatInfoBtn.Id = 11;
-            this.MatInfoBtn.ImageIndex = 4;
-            this.MatInfoBtn.Name = "MatInfoBtn";
-            // 
-            // WeighBtn
-            // 
-            this.WeighBtn.Caption = "Зважити";
-            this.WeighBtn.Id = 20;
-            this.WeighBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F12);
-            this.WeighBtn.Name = "WeighBtn";
-            // 
-            // barButtonItem3
-            // 
-            this.barButtonItem3.Caption = "Дисконтна картка";
-            this.barButtonItem3.Id = 21;
-            this.barButtonItem3.ImageIndex = 18;
-            this.barButtonItem3.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F9);
-            this.barButtonItem3.Name = "barButtonItem3";
-            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
-            // 
-            // barEditItem1
-            // 
-            this.barEditItem1.Caption = "barEditItem1";
-            this.barEditItem1.Edit = this.repositoryItemTextEdit1;
-            this.barEditItem1.Id = 22;
-            this.barEditItem1.Name = "barEditItem1";
-            // 
-            // repositoryItemTextEdit1
-            // 
-            this.repositoryItemTextEdit1.AutoHeight = false;
-            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
-            // 
-            // barStaticItem1
-            // 
-            this.barStaticItem1.Caption = "Штрих код";
-            this.barStaticItem1.Id = 23;
-            this.barStaticItem1.Name = "barStaticItem1";
-            this.barStaticItem1.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // styleController1
             // 
@@ -371,7 +182,7 @@
             this.panelControl7.Controls.Add(this.labelControl4);
             this.panelControl7.Controls.Add(this.textEdit1);
             this.panelControl7.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelControl7.Location = new System.Drawing.Point(332, 5);
+            this.panelControl7.Location = new System.Drawing.Point(336, 5);
             this.panelControl7.Name = "panelControl7";
             this.panelControl7.Size = new System.Drawing.Size(338, 79);
             this.panelControl7.TabIndex = 13;
@@ -381,7 +192,7 @@
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.labelControl4.Location = new System.Drawing.Point(9, 5);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(64, 21);
+            this.labelControl4.Size = new System.Drawing.Size(49, 16);
             this.labelControl4.StyleController = this.styleController1;
             this.labelControl4.TabIndex = 8;
             this.labelControl4.Text = "Знижка:";
@@ -392,7 +203,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textEdit1.Enabled = false;
             this.textEdit1.Location = new System.Drawing.Point(9, 27);
-            this.textEdit1.MenuManager = this.barManager1;
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.textEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 16F);
@@ -401,76 +211,108 @@
             this.textEdit1.Properties.Appearance.Options.UseFont = true;
             this.textEdit1.Properties.Appearance.Options.UseForeColor = true;
             this.textEdit1.Properties.ReadOnly = true;
-            this.textEdit1.Size = new System.Drawing.Size(318, 40);
+            this.textEdit1.Size = new System.Drawing.Size(324, 32);
             this.textEdit1.StyleController = this.styleController1;
             this.textEdit1.TabIndex = 7;
             this.textEdit1.TabStop = false;
             // 
-            // simpleButton2
+            // WhListBtn
             // 
-            this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton2.Location = new System.Drawing.Point(720, 10);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(100, 30);
-            this.simpleButton2.TabIndex = 23;
-            this.simpleButton2.Text = "Додати списком";
-            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
+            this.WhListBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.WhListBtn.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.WhListBtn.Appearance.Options.UseFont = true;
+            this.WhListBtn.Location = new System.Drawing.Point(333, 6);
+            this.WhListBtn.Name = "WhListBtn";
+            this.WhListBtn.Size = new System.Drawing.Size(108, 49);
+            this.WhListBtn.TabIndex = 23;
+            this.WhListBtn.Text = "Додати списком\r\n(F5)";
+            this.WhListBtn.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // panelControl2
             // 
-            this.panelControl2.Controls.Add(this.simpleButton24);
+            this.panelControl2.Controls.Add(this.BarCodeBtn);
+            this.panelControl2.Controls.Add(this.KAgentBtn);
+            this.panelControl2.Controls.Add(this.DiscountBtn);
             this.panelControl2.Controls.Add(this.DisCartButton);
-            this.panelControl2.Controls.Add(this.simpleButton2);
+            this.panelControl2.Controls.Add(this.WhListBtn);
             this.panelControl2.Controls.Add(this.OkButton);
             this.panelControl2.Controls.Add(this.simpleButton1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl2.Location = new System.Drawing.Point(0, 786);
+            this.panelControl2.Location = new System.Drawing.Point(0, 778);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1362, 52);
+            this.panelControl2.Size = new System.Drawing.Size(1362, 60);
             this.panelControl2.TabIndex = 15;
             // 
-            // simpleButton24
+            // BarCodeBtn
             // 
-            this.simpleButton24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton24.Appearance.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.simpleButton24.Appearance.Options.UseFont = true;
-            this.simpleButton24.Location = new System.Drawing.Point(145, 10);
-            this.simpleButton24.Name = "simpleButton24";
-            this.simpleButton24.Size = new System.Drawing.Size(112, 30);
-            this.simpleButton24.TabIndex = 25;
-            this.simpleButton24.Text = "Знижка, %";
-            this.simpleButton24.Click += new System.EventHandler(this.simpleButton24_Click);
+            this.BarCodeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BarCodeBtn.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.BarCodeBtn.Appearance.Options.UseFont = true;
+            this.BarCodeBtn.Location = new System.Drawing.Point(447, 6);
+            this.BarCodeBtn.Name = "BarCodeBtn";
+            this.BarCodeBtn.Size = new System.Drawing.Size(94, 49);
+            this.BarCodeBtn.TabIndex = 27;
+            this.BarCodeBtn.Text = "Штрихкод\r\n(F7)";
+            this.BarCodeBtn.Click += new System.EventHandler(this.simpleButton11_Click_1);
+            // 
+            // KAgentBtn
+            // 
+            this.KAgentBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.KAgentBtn.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.KAgentBtn.Appearance.Options.UseFont = true;
+            this.KAgentBtn.Location = new System.Drawing.Point(10, 5);
+            this.KAgentBtn.Name = "KAgentBtn";
+            this.KAgentBtn.Size = new System.Drawing.Size(92, 49);
+            this.KAgentBtn.TabIndex = 26;
+            this.KAgentBtn.Text = "Покупець \r\n(F2)";
+            this.KAgentBtn.Click += new System.EventHandler(this.simpleButton25_Click);
+            // 
+            // DiscountBtn
+            // 
+            this.DiscountBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.DiscountBtn.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.DiscountBtn.Appearance.Options.UseFont = true;
+            this.DiscountBtn.Location = new System.Drawing.Point(108, 6);
+            this.DiscountBtn.Name = "DiscountBtn";
+            this.DiscountBtn.Size = new System.Drawing.Size(92, 49);
+            this.DiscountBtn.TabIndex = 25;
+            this.DiscountBtn.Text = "Знижка, %\r\n (F8)";
+            this.DiscountBtn.Click += new System.EventHandler(this.simpleButton24_Click);
             // 
             // DisCartButton
             // 
-            this.DisCartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DisCartButton.Appearance.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.DisCartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.DisCartButton.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.DisCartButton.Appearance.Options.UseFont = true;
-            this.DisCartButton.Location = new System.Drawing.Point(15, 10);
+            this.DisCartButton.Location = new System.Drawing.Point(208, 6);
             this.DisCartButton.Name = "DisCartButton";
-            this.DisCartButton.Size = new System.Drawing.Size(124, 30);
+            this.DisCartButton.Size = new System.Drawing.Size(119, 49);
             this.DisCartButton.TabIndex = 24;
-            this.DisCartButton.Text = "Дисконтна картка";
+            this.DisCartButton.Text = "Дисконтна картка \r\n(F4)";
             this.DisCartButton.Click += new System.EventHandler(this.DisCartButton_Click);
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OkButton.Location = new System.Drawing.Point(1144, 10);
+            this.OkButton.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.OkButton.Appearance.Options.UseFont = true;
+            this.OkButton.Location = new System.Drawing.Point(1137, 5);
             this.OkButton.Name = "OkButton";
-            this.OkButton.Size = new System.Drawing.Size(100, 30);
-            this.OkButton.TabIndex = 1;
-            this.OkButton.Text = "Застосувати";
+            this.OkButton.Size = new System.Drawing.Size(107, 49);
+            this.OkButton.TabIndex = 0;
+            this.OkButton.Text = "Застосувати\r\n(F10)";
             this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
             // simpleButton1
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.Location = new System.Drawing.Point(1250, 10);
+            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.simpleButton1.Appearance.Options.UseFont = true;
+            this.simpleButton1.Location = new System.Drawing.Point(1250, 6);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(100, 30);
-            this.simpleButton1.TabIndex = 0;
-            this.simpleButton1.Text = "Відмінити";
+            this.simpleButton1.Size = new System.Drawing.Size(100, 49);
+            this.simpleButton1.TabIndex = 1;
+            this.simpleButton1.Text = "Відмінити\r\n(F11)";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // panelControl4
@@ -481,7 +323,7 @@
             this.panelControl4.Location = new System.Drawing.Point(0, 89);
             this.panelControl4.Name = "panelControl4";
             this.panelControl4.Padding = new System.Windows.Forms.Padding(5);
-            this.panelControl4.Size = new System.Drawing.Size(1038, 126);
+            this.panelControl4.Size = new System.Drawing.Size(1038, 100);
             this.panelControl4.TabIndex = 22;
             // 
             // panel4
@@ -493,7 +335,7 @@
             this.panel4.Location = new System.Drawing.Point(5, 5);
             this.panel4.Name = "panel4";
             this.panel4.Padding = new System.Windows.Forms.Padding(5);
-            this.panel4.Size = new System.Drawing.Size(1028, 116);
+            this.panel4.Size = new System.Drawing.Size(1028, 90);
             this.panel4.TabIndex = 13;
             // 
             // textBox1
@@ -506,7 +348,7 @@
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(1018, 75);
+            this.textBox1.Size = new System.Drawing.Size(1018, 49);
             this.textBox1.TabIndex = 14;
             this.textBox1.TabStop = false;
             // 
@@ -514,7 +356,7 @@
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label1.Font = new System.Drawing.Font("Tahoma", 16F);
-            this.label1.Location = new System.Drawing.Point(5, 80);
+            this.label1.Location = new System.Drawing.Point(5, 54);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(1018, 31);
             this.label1.TabIndex = 15;
@@ -529,7 +371,7 @@
             this.panelControl6.Location = new System.Drawing.Point(0, 0);
             this.panelControl6.Name = "panelControl6";
             this.panelControl6.Padding = new System.Windows.Forms.Padding(5);
-            this.panelControl6.Size = new System.Drawing.Size(1362, 786);
+            this.panelControl6.Size = new System.Drawing.Size(1362, 778);
             this.panelControl6.TabIndex = 28;
             // 
             // panel5
@@ -542,15 +384,15 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(5, 5);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1038, 776);
+            this.panel5.Size = new System.Drawing.Size(1038, 768);
             this.panel5.TabIndex = 0;
             // 
             // splitterControl1
             // 
             this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitterControl1.Location = new System.Drawing.Point(0, 654);
+            this.splitterControl1.Location = new System.Drawing.Point(0, 492);
             this.splitterControl1.Name = "splitterControl1";
-            this.splitterControl1.Size = new System.Drawing.Size(1038, 6);
+            this.splitterControl1.Size = new System.Drawing.Size(1038, 5);
             this.splitterControl1.TabIndex = 37;
             this.splitterControl1.TabStop = false;
             // 
@@ -558,10 +400,10 @@
             // 
             this.panel8.Controls.Add(this.WaybillDetOutGridControl);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(0, 215);
+            this.panel8.Location = new System.Drawing.Point(0, 189);
             this.panel8.Name = "panel8";
             this.panel8.Padding = new System.Windows.Forms.Padding(5);
-            this.panel8.Size = new System.Drawing.Size(1038, 445);
+            this.panel8.Size = new System.Drawing.Size(1038, 308);
             this.panel8.TabIndex = 24;
             // 
             // WaybillDetOutGridControl
@@ -570,7 +412,6 @@
             this.WaybillDetOutGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WaybillDetOutGridControl.Location = new System.Drawing.Point(5, 5);
             this.WaybillDetOutGridControl.MainView = this.WaybillDetOutGridView;
-            this.WaybillDetOutGridControl.MenuManager = this.barManager1;
             this.WaybillDetOutGridControl.Name = "WaybillDetOutGridControl";
             this.WaybillDetOutGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1,
@@ -578,7 +419,7 @@
             this.repositoryItemImageComboBox3,
             this.repositoryItemCalcEdit1,
             this.repositoryItemComboBox1});
-            this.WaybillDetOutGridControl.Size = new System.Drawing.Size(1028, 435);
+            this.WaybillDetOutGridControl.Size = new System.Drawing.Size(1028, 298);
             this.WaybillDetOutGridControl.TabIndex = 23;
             this.WaybillDetOutGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WaybillDetOutGridView});
@@ -736,6 +577,8 @@
             this.gridColumn10.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn10.FieldName = "Discount";
             this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.OptionsColumn.AllowEdit = false;
+            this.gridColumn10.OptionsColumn.ReadOnly = true;
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 6;
             this.gridColumn10.Width = 68;
@@ -780,8 +623,6 @@
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.labelControl2);
-            this.panel6.Controls.Add(this.BarCodeTextEdit);
             this.panel6.Controls.Add(this.panelControl7);
             this.panel6.Controls.Add(this.panel3);
             this.panel6.Controls.Add(this.panelControl1);
@@ -792,32 +633,10 @@
             this.panel6.Size = new System.Drawing.Size(1038, 89);
             this.panel6.TabIndex = 1;
             // 
-            // labelControl2
-            // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl2.Location = new System.Drawing.Point(678, 10);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(82, 21);
-            this.labelControl2.StyleController = this.styleController1;
-            this.labelControl2.TabIndex = 16;
-            this.labelControl2.Text = "Штрих код";
-            // 
-            // BarCodeTextEdit
-            // 
-            this.BarCodeTextEdit.Location = new System.Drawing.Point(678, 35);
-            this.BarCodeTextEdit.MenuManager = this.barManager1;
-            this.BarCodeTextEdit.Name = "BarCodeTextEdit";
-            this.BarCodeTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
-            this.BarCodeTextEdit.Properties.Appearance.Options.UseFont = true;
-            this.BarCodeTextEdit.Size = new System.Drawing.Size(266, 46);
-            this.BarCodeTextEdit.StyleController = this.styleController1;
-            this.BarCodeTextEdit.TabIndex = 15;
-            this.BarCodeTextEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BarCodeTextEdit_KeyPress);
-            // 
             // panel3
             // 
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(322, 5);
+            this.panel3.Location = new System.Drawing.Point(326, 5);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(10, 79);
             this.panel3.TabIndex = 14;
@@ -829,7 +648,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelControl1.Location = new System.Drawing.Point(5, 5);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(317, 79);
+            this.panelControl1.Size = new System.Drawing.Size(321, 79);
             this.panelControl1.TabIndex = 4;
             // 
             // labelControl1
@@ -837,7 +656,7 @@
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.labelControl1.Location = new System.Drawing.Point(9, 5);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(138, 21);
+            this.labelControl1.Size = new System.Drawing.Size(105, 16);
             this.labelControl1.StyleController = this.styleController1;
             this.labelControl1.TabIndex = 8;
             this.labelControl1.Text = "Сума без знижки:";
@@ -848,7 +667,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textEdit5.Enabled = false;
             this.textEdit5.Location = new System.Drawing.Point(9, 27);
-            this.textEdit5.MenuManager = this.barManager1;
             this.textEdit5.Name = "textEdit5";
             this.textEdit5.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.textEdit5.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 16F);
@@ -857,7 +675,7 @@
             this.textEdit5.Properties.Appearance.Options.UseFont = true;
             this.textEdit5.Properties.Appearance.Options.UseForeColor = true;
             this.textEdit5.Properties.ReadOnly = true;
-            this.textEdit5.Size = new System.Drawing.Size(301, 40);
+            this.textEdit5.Size = new System.Drawing.Size(306, 32);
             this.textEdit5.StyleController = this.styleController1;
             this.textEdit5.TabIndex = 7;
             this.textEdit5.TabStop = false;
@@ -866,11 +684,12 @@
             // 
             this.panel9.Controls.Add(this.WhMatGridControl);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel9.Location = new System.Drawing.Point(0, 660);
+            this.panel9.Location = new System.Drawing.Point(0, 497);
             this.panel9.Name = "panel9";
             this.panel9.Padding = new System.Windows.Forms.Padding(5);
-            this.panel9.Size = new System.Drawing.Size(1038, 116);
+            this.panel9.Size = new System.Drawing.Size(1038, 271);
             this.panel9.TabIndex = 25;
+            this.panel9.Visible = false;
             // 
             // WhMatGridControl
             // 
@@ -881,7 +700,7 @@
             this.WhMatGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox4,
             this.repositoryItemImageComboBox5});
-            this.WhMatGridControl.Size = new System.Drawing.Size(1028, 106);
+            this.WhMatGridControl.Size = new System.Drawing.Size(1028, 261);
             this.WhMatGridControl.TabIndex = 1;
             this.WhMatGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WhMatGridView});
@@ -903,12 +722,17 @@
             this.bandedGridColumn4,
             this.bandedGridColumn5});
             this.WhMatGridView.GridControl = this.WhMatGridControl;
+            this.WhMatGridView.GroupCount = 1;
             this.WhMatGridView.Name = "WhMatGridView";
             this.WhMatGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.WhMatGridView.OptionsBehavior.Editable = false;
+            this.WhMatGridView.OptionsFind.AlwaysVisible = true;
             this.WhMatGridView.OptionsView.EnableAppearanceEvenRow = true;
             this.WhMatGridView.OptionsView.EnableAppearanceOddRow = true;
             this.WhMatGridView.OptionsView.ShowGroupPanel = false;
+            this.WhMatGridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.GrpNameGridColumn, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.WhMatGridView.DoubleClick += new System.EventHandler(this.WhMatGridView_DoubleClick);
             // 
             // gridBand1
             // 
@@ -920,7 +744,7 @@
             this.gridBand1.Columns.Add(this.GrpNameGridColumn);
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 351;
+            this.gridBand1.Width = 355;
             // 
             // gridColumn24
             // 
@@ -928,7 +752,7 @@
             this.gridColumn24.FieldName = "RecNo";
             this.gridColumn24.Name = "gridColumn24";
             this.gridColumn24.Visible = true;
-            this.gridColumn24.Width = 37;
+            this.gridColumn24.Width = 41;
             // 
             // gridColumn25
             // 
@@ -1029,18 +853,14 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel7.Location = new System.Drawing.Point(1043, 5);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(314, 776);
+            this.panel7.Size = new System.Drawing.Size(314, 768);
             this.panel7.TabIndex = 17;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.simpleButton23);
-            this.panel2.Controls.Add(this.simpleButton22);
             this.panel2.Controls.Add(this.AmountEdit);
-            this.panel2.Controls.Add(this.simpleButton11);
-            this.panel2.Controls.Add(this.simpleButton19);
-            this.panel2.Controls.Add(this.simpleButton20);
-            this.panel2.Controls.Add(this.simpleButton21);
+            this.panel2.Controls.Add(this.PrintDocBtn);
+            this.panel2.Controls.Add(this.PayDocBtn);
             this.panel2.Controls.Add(this.simpleButton4);
             this.panel2.Controls.Add(this.simpleButton12);
             this.panel2.Controls.Add(this.simpleButton13);
@@ -1061,37 +881,13 @@
             this.panel2.Location = new System.Drawing.Point(0, 89);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.panel2.Size = new System.Drawing.Size(314, 687);
+            this.panel2.Size = new System.Drawing.Size(314, 679);
             this.panel2.TabIndex = 30;
-            // 
-            // simpleButton23
-            // 
-            this.simpleButton23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton23.Appearance.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.simpleButton23.Appearance.Options.UseFont = true;
-            this.simpleButton23.Location = new System.Drawing.Point(5, 380);
-            this.simpleButton23.Name = "simpleButton23";
-            this.simpleButton23.Size = new System.Drawing.Size(148, 65);
-            this.simpleButton23.TabIndex = 46;
-            this.simpleButton23.TabStop = false;
-            this.simpleButton23.Text = "- Кіль-сть";
-            // 
-            // simpleButton22
-            // 
-            this.simpleButton22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton22.Appearance.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.simpleButton22.Appearance.Options.UseFont = true;
-            this.simpleButton22.Location = new System.Drawing.Point(159, 380);
-            this.simpleButton22.Name = "simpleButton22";
-            this.simpleButton22.Size = new System.Drawing.Size(148, 65);
-            this.simpleButton22.TabIndex = 45;
-            this.simpleButton22.TabStop = false;
-            this.simpleButton22.Text = "+ Кіль-сть";
             // 
             // AmountEdit
             // 
-            this.AmountEdit.Location = new System.Drawing.Point(5, 48);
-            this.AmountEdit.MenuManager = this.barManager1;
+            this.AmountEdit.Enabled = false;
+            this.AmountEdit.Location = new System.Drawing.Point(5, 51);
             this.AmountEdit.Name = "AmountEdit";
             this.AmountEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
             this.AmountEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
@@ -1100,60 +896,38 @@
             this.AmountEdit.Properties.DisplayFormat.FormatString = "0.0000";
             this.AmountEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.AmountEdit.Properties.ShowCloseButton = true;
-            this.AmountEdit.Size = new System.Drawing.Size(302, 46);
+            this.AmountEdit.Size = new System.Drawing.Size(302, 40);
             this.AmountEdit.StyleController = this.styleController1;
             this.AmountEdit.TabIndex = 44;
             this.AmountEdit.TabStop = false;
             // 
-            // simpleButton11
+            // PrintDocBtn
             // 
-            this.simpleButton11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton11.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.simpleButton11.Appearance.Options.UseFont = true;
-            this.simpleButton11.Location = new System.Drawing.Point(159, 6);
-            this.simpleButton11.Name = "simpleButton11";
-            this.simpleButton11.Size = new System.Drawing.Size(71, 39);
-            this.simpleButton11.TabIndex = 43;
-            this.simpleButton11.TabStop = false;
-            this.simpleButton11.Text = "Друк";
-            this.simpleButton11.Click += new System.EventHandler(this.simpleButton11_Click);
+            this.PrintDocBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.PrintDocBtn.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.PrintDocBtn.Appearance.Options.UseFont = true;
+            this.PrintDocBtn.Location = new System.Drawing.Point(159, 6);
+            this.PrintDocBtn.Name = "PrintDocBtn";
+            this.PrintDocBtn.Size = new System.Drawing.Size(71, 39);
+            this.PrintDocBtn.TabIndex = 43;
+            this.PrintDocBtn.TabStop = false;
+            this.PrintDocBtn.Text = "Видакова\r\n(F3)";
+            this.PrintDocBtn.Click += new System.EventHandler(this.simpleButton11_Click);
             // 
-            // simpleButton19
+            // PayDocBtn
             // 
-            this.simpleButton19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton19.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.simpleButton19.Appearance.ForeColor = System.Drawing.Color.OrangeRed;
-            this.simpleButton19.Appearance.Options.UseFont = true;
-            this.simpleButton19.Appearance.Options.UseForeColor = true;
-            this.simpleButton19.Location = new System.Drawing.Point(236, 6);
-            this.simpleButton19.Name = "simpleButton19";
-            this.simpleButton19.Size = new System.Drawing.Size(71, 39);
-            this.simpleButton19.TabIndex = 42;
-            this.simpleButton19.TabStop = false;
-            this.simpleButton19.Text = "Оплата";
-            this.simpleButton19.Click += new System.EventHandler(this.simpleButton19_Click);
-            // 
-            // simpleButton20
-            // 
-            this.simpleButton20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton20.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
-            this.simpleButton20.Appearance.Options.UseFont = true;
-            this.simpleButton20.Location = new System.Drawing.Point(82, 6);
-            this.simpleButton20.Name = "simpleButton20";
-            this.simpleButton20.Size = new System.Drawing.Size(71, 39);
-            this.simpleButton20.TabIndex = 41;
-            this.simpleButton20.TabStop = false;
-            // 
-            // simpleButton21
-            // 
-            this.simpleButton21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton21.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
-            this.simpleButton21.Appearance.Options.UseFont = true;
-            this.simpleButton21.Location = new System.Drawing.Point(5, 6);
-            this.simpleButton21.Name = "simpleButton21";
-            this.simpleButton21.Size = new System.Drawing.Size(71, 39);
-            this.simpleButton21.TabIndex = 40;
-            this.simpleButton21.TabStop = false;
+            this.PayDocBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.PayDocBtn.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.PayDocBtn.Appearance.ForeColor = System.Drawing.Color.OrangeRed;
+            this.PayDocBtn.Appearance.Options.UseFont = true;
+            this.PayDocBtn.Appearance.Options.UseForeColor = true;
+            this.PayDocBtn.Location = new System.Drawing.Point(236, 6);
+            this.PayDocBtn.Name = "PayDocBtn";
+            this.PayDocBtn.Size = new System.Drawing.Size(71, 39);
+            this.PayDocBtn.TabIndex = 42;
+            this.PayDocBtn.TabStop = false;
+            this.PayDocBtn.Text = "Оплата\r\n(F9)";
+            this.PayDocBtn.Click += new System.EventHandler(this.simpleButton19_Click);
             // 
             // simpleButton4
             // 
@@ -1166,6 +940,7 @@
             this.simpleButton4.TabIndex = 39;
             this.simpleButton4.TabStop = false;
             this.simpleButton4.Text = "Пошук";
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
             // 
             // simpleButton12
             // 
@@ -1191,7 +966,7 @@
             this.simpleButton13.TabIndex = 37;
             this.simpleButton13.TabStop = false;
             this.simpleButton13.Text = ",";
-            this.simpleButton13.Click += new System.EventHandler(this.simpleButton3_Click);
+            this.simpleButton13.Click += new System.EventHandler(this.simpleButton13_Click);
             // 
             // simpleButton14
             // 
@@ -1386,7 +1161,7 @@
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.labelControl5.Location = new System.Drawing.Point(10, 3);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(80, 21);
+            this.labelControl5.Size = new System.Drawing.Size(60, 16);
             this.labelControl5.StyleController = this.styleController1;
             this.labelControl5.TabIndex = 12;
             this.labelControl5.Text = "До сплати";
@@ -1395,7 +1170,6 @@
             // 
             this.textEdit2.Enabled = false;
             this.textEdit2.Location = new System.Drawing.Point(10, 25);
-            this.textEdit2.MenuManager = this.barManager1;
             this.textEdit2.Name = "textEdit2";
             this.textEdit2.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.textEdit2.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 20F, System.Drawing.FontStyle.Bold);
@@ -1404,7 +1178,7 @@
             this.textEdit2.Properties.Appearance.Options.UseFont = true;
             this.textEdit2.Properties.Appearance.Options.UseForeColor = true;
             this.textEdit2.Properties.ReadOnly = true;
-            this.textEdit2.Size = new System.Drawing.Size(285, 46);
+            this.textEdit2.Size = new System.Drawing.Size(285, 40);
             this.textEdit2.StyleController = this.styleController1;
             this.textEdit2.TabIndex = 11;
             this.textEdit2.TabStop = false;
@@ -1417,17 +1191,15 @@
             this.Controls.Add(this.panelControl6);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.standaloneBarDockControl1);
-            this.Controls.Add(this.barDockControlLeft);
-            this.Controls.Add(this.barDockControlRight);
-            this.Controls.Add(this.barDockControlBottom);
-            this.Controls.Add(this.barDockControlTop);
+            this.KeyPreview = true;
             this.Name = "frmCashboxWBOut";
             this.Text = "РМК";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCashboxWBOut_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmCashboxWBOut_FormClosed);
             this.Load += new System.EventHandler(this.frmCashboxWBOut_Load);
+            this.Shown += new System.EventHandler(this.frmCashboxWBOut_Shown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmCashboxWBOut_KeyPress);
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillListBS)).EndInit();
@@ -1453,8 +1225,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
             this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BarCodeTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
@@ -1478,34 +1248,14 @@
         }
 
         #endregion
-
-        private DevExpress.XtraBars.BarManager barManager1;
-        private DevExpress.XtraBars.BarButtonItem PrevievBtn;
-        private DevExpress.XtraBars.BarButtonItem RsvInfoBtn;
-        private DevExpress.XtraBars.BarButtonItem MatInfoBtn;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
-        private DevExpress.XtraBars.BarSubItem barSubItem1;
-        private DevExpress.XtraBars.BarButtonItem AddMaterialBtn;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
-        private DevExpress.XtraBars.BarButtonItem EditMaterialBtn;
-        private DevExpress.XtraBars.BarButtonItem DelMaterialBtn;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;
-        private DevExpress.XtraBars.BarDockControl barDockControlTop;
-        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
-        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
-        private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraBars.BarButtonItem WeighBtn;
         private DevExpress.XtraEditors.StyleController styleController1;
         private System.Windows.Forms.BindingSource WaybillDetOutBS;
         private System.Windows.Forms.BindingSource WaybillListBS;
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.SimpleButton OkButton;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraBars.BarEditItem barEditItem1;
-        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
-        private DevExpress.XtraBars.BarStaticItem barStaticItem1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton WhListBtn;
         private DevExpress.XtraEditors.PanelControl panelControl4;
         private System.Windows.Forms.Panel panel4;
         private DevExpress.XtraEditors.PanelControl panelControl7;
@@ -1558,10 +1308,8 @@
         private DevExpress.XtraEditors.LabelControl labelControl5;
         public DevExpress.XtraEditors.TextEdit textEdit2;
         private System.Windows.Forms.Panel panel8;
-        private DevExpress.XtraEditors.SimpleButton simpleButton11;
-        private DevExpress.XtraEditors.SimpleButton simpleButton19;
-        private DevExpress.XtraEditors.SimpleButton simpleButton20;
-        private DevExpress.XtraEditors.SimpleButton simpleButton21;
+        private DevExpress.XtraEditors.SimpleButton PrintDocBtn;
+        private DevExpress.XtraEditors.SimpleButton PayDocBtn;
         private System.Windows.Forms.Panel panel9;
         private DevExpress.XtraGrid.GridControl WhMatGridControl;
         public DevExpress.XtraGrid.Views.BandedGrid.BandedGridView WhMatGridView;
@@ -1578,13 +1326,11 @@
         private DevExpress.XtraEditors.SplitterControl splitterControl1;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
-        public DevExpress.XtraEditors.TextEdit BarCodeTextEdit;
         private DevExpress.XtraEditors.SimpleButton DisCartButton;
         public System.Windows.Forms.ImageList WBImgList;
         private DevExpress.XtraEditors.CalcEdit AmountEdit;
-        private DevExpress.XtraEditors.SimpleButton simpleButton23;
-        private DevExpress.XtraEditors.SimpleButton simpleButton22;
-        private DevExpress.XtraEditors.SimpleButton simpleButton24;
+        private DevExpress.XtraEditors.SimpleButton DiscountBtn;
+        private DevExpress.XtraEditors.SimpleButton KAgentBtn;
+        private DevExpress.XtraEditors.SimpleButton BarCodeBtn;
     }
 }

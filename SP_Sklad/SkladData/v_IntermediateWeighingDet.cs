@@ -28,5 +28,7 @@ namespace SP_Sklad.SkladData
         public int WbillId { get; set; }
         public Nullable<decimal> TaraAmount { get; set; }
         public Nullable<decimal> Total { get; set; }
+        public string VizokName { get; set; }
+        public Nullable<decimal> VizokWeight { get; set; }
     }
 }

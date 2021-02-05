@@ -190,7 +190,11 @@ namespace SP_Sklad.WBForm
                 _db.SaveChanges();
 
                 var r = _db.GetRecipe(wb.WbillId).ToList();
-                var rez = _db.ReservedAllPosition(wb.WbillId, DBHelper.CurrentUser.UserId).ToList();
+
+                if (ReservedAllСheck.Checked)
+                {
+                    var rez = _db.ReservedAllPosition(wb.WbillId, DBHelper.CurrentUser.UserId).ToList();
+                }
             }
         }
 
