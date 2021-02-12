@@ -111,7 +111,8 @@ namespace SP_Sklad.EditForm
             {
                 AccId = s.AccId,
                 AccNum = s.AccNum,
-                Name = s.BankName
+                Name = s.BankName,
+                s.KaName
             }).ToList();
 
             AccountEdit.EditValue = user_settings.AccountDefaultRMK;

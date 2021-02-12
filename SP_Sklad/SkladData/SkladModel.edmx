@@ -1463,6 +1463,7 @@ warning 6002: The table/view 'sp_base.dbo.EnterpriseAccount' does not have a pri
             <PropertyRef Name="AccNum" />
             <PropertyRef Name="BankName" />
             <PropertyRef Name="MFO" />
+            <PropertyRef Name="KaName" />
           </Key>
           <Property Name="KaId" Type="int" Nullable="false" />
           <Property Name="AccId" Type="int" Nullable="false" />
@@ -1472,6 +1473,7 @@ warning 6002: The table/view 'sp_base.dbo.EnterpriseAccount' does not have a pri
           <Property Name="MFO" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="OKPO" Type="nvarchar" MaxLength="64" />
           <Property Name="Def" Type="int" />
+          <Property Name="KaName" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.KagentList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -6487,7 +6489,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [EnterpriseAccount].[BankName] AS [BankName], 
     [EnterpriseAccount].[MFO] AS [MFO], 
     [EnterpriseAccount].[OKPO] AS [OKPO], 
-    [EnterpriseAccount].[Def] AS [Def]
+    [EnterpriseAccount].[Def] AS [Def], 
+    [EnterpriseAccount].[KaName] AS [KaName]
     FROM [dbo].[EnterpriseAccount] AS [EnterpriseAccount]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="KagentList" EntityType="Self.KagentList" store:Type="Views" store:Schema="dbo">
@@ -10921,6 +10924,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <PropertyRef Name="AccNum" />
             <PropertyRef Name="BankName" />
             <PropertyRef Name="MFO" />
+            <PropertyRef Name="KaName" />
           </Key>
           <Property Name="KaId" Type="Int32" Nullable="false" />
           <Property Name="AccId" Type="Int32" Nullable="false" />
@@ -10930,6 +10934,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="MFO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="OKPO" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="Def" />
+          <Property Name="KaName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <ComplexType Name="REP_29_Result">
           <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
@@ -16686,6 +16691,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="EnterpriseAccount">
             <EntityTypeMapping TypeName="BaseModel.EnterpriseAccount">
               <MappingFragment StoreEntitySet="EnterpriseAccount">
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
                 <ScalarProperty Name="Def" ColumnName="Def" />
                 <ScalarProperty Name="OKPO" ColumnName="OKPO" />
                 <ScalarProperty Name="MFO" ColumnName="MFO" />

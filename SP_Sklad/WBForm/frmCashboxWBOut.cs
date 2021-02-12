@@ -215,6 +215,10 @@ namespace SP_Sklad.WBForm
 
         private void OnKeyPressed(object sender, RawInputEventArg e)
         {
+            if (!this.IsActive)
+            {
+                return;
+            }
 
             if (e.KeyPressEvent.DeviceName == Settings.Default.barcode_scanner_name && e.KeyPressEvent.Message == Win32.WM_KEYDOWN)
             {
@@ -229,7 +233,7 @@ namespace SP_Sklad.WBForm
 
                 }
 
-                if (e.KeyPressEvent.VKey == 13)
+                if (e.KeyPressEvent.VKey == 13 && BarCodeStr != null)
                 {
                     var mat = _db.Materials.FirstOrDefault(w => w.BarCode == BarCodeStr);
 
@@ -577,13 +581,14 @@ namespace SP_Sklad.WBForm
         {
             if (!panel9.Visible)
             {
-
+                splitterControl1.Visible = true;
                 panel9.Visible = true;
                 WhMatGridControl.DataSource = DB.SkladBase().WhMatGet(0, 0, 0, DateTime.Now, 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).ToList();
                 WhMatGridView.ExpandAllGroups();
             }
             else
             {
+                splitterControl1.Visible = false;
                 panel9.Visible = false;
             }
         }
@@ -656,5 +661,18 @@ namespace SP_Sklad.WBForm
                 AmountEdit.Text += ",";
             }
         }
+
+        private void simpleButton2_Click_1(object sender, EventArgs e)
+        {
+            if(NumPadPanel.Visible)
+            {
+                NumPadPanel.Visible = false;
+            }
+            else
+            {
+                NumPadPanel.Visible = true;
+            }
+        }
+
     }
 }

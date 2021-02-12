@@ -30,8 +30,8 @@
         {
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
-            this.AmountEdit = new DevExpress.XtraEditors.TextEdit();
-            ((System.ComponentModel.ISupportInitialize)(this.AmountEdit.Properties)).BeginInit();
+            this.DiscountCartEdit = new DevExpress.XtraEditors.TextEdit();
+            ((System.ComponentModel.ISupportInitialize)(this.DiscountCartEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl4
@@ -58,16 +58,16 @@
             this.OkButton.Text = "Так";
             this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
-            // AmountEdit
+            // DiscountCartEdit
             // 
-            this.AmountEdit.EditValue = "";
-            this.AmountEdit.Location = new System.Drawing.Point(12, 51);
-            this.AmountEdit.Name = "AmountEdit";
-            this.AmountEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
-            this.AmountEdit.Properties.Appearance.Options.UseFont = true;
-            this.AmountEdit.Size = new System.Drawing.Size(434, 40);
-            this.AmountEdit.TabIndex = 11;
-            this.AmountEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AmountEdit_KeyPress);
+            this.DiscountCartEdit.EditValue = "";
+            this.DiscountCartEdit.Location = new System.Drawing.Point(12, 51);
+            this.DiscountCartEdit.Name = "DiscountCartEdit";
+            this.DiscountCartEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
+            this.DiscountCartEdit.Properties.Appearance.Options.UseFont = true;
+            this.DiscountCartEdit.Size = new System.Drawing.Size(434, 40);
+            this.DiscountCartEdit.TabIndex = 11;
+            this.DiscountCartEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AmountEdit_KeyPress);
             // 
             // frmSetDiscountCard
             // 
@@ -76,13 +76,13 @@
             this.ClientSize = new System.Drawing.Size(459, 175);
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.OkButton);
-            this.Controls.Add(this.AmountEdit);
+            this.Controls.Add(this.DiscountCartEdit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmSetDiscountCard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Вибір дисконтної картки";
             this.Shown += new System.EventHandler(this.frmSetDiscountCard_Shown);
-            ((System.ComponentModel.ISupportInitialize)(this.AmountEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DiscountCartEdit.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -92,6 +92,6 @@
 
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.SimpleButton OkButton;
-        private DevExpress.XtraEditors.TextEdit AmountEdit;
+        private DevExpress.XtraEditors.TextEdit DiscountCartEdit;
     }
 }

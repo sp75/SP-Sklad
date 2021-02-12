@@ -1195,7 +1195,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("AccountEdit.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, true)});
             this.AccountEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("AccNum", "Номер")});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("AccNum", "Номер"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("KaName", "Підприємство")});
             this.AccountEdit.Properties.DisplayMember = "AccNum";
             this.AccountEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.AccountEdit.Properties.ValueMember = "AccId";

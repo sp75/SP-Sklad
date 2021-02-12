@@ -22,5 +22,6 @@ namespace SP_Sklad.SkladData
         public string MFO { get; set; }
         public string OKPO { get; set; }
         public Nullable<int> Def { get; set; }
+        public string KaName { get; set; }
     }
 }

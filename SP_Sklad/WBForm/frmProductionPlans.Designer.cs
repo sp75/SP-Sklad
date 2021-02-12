@@ -69,6 +69,7 @@
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
+            this.ReservedAllСheck = new DevExpress.XtraEditors.CheckEdit();
             this.NotesEdit = new DevExpress.XtraEditors.TextEdit();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
@@ -101,7 +102,6 @@
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
-            this.ReservedAllСheck = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
@@ -111,6 +111,7 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ReservedAllСheck.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -130,7 +131,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ReservedAllСheck.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // WBImgList
@@ -424,6 +424,17 @@
             this.panelControl4.Name = "panelControl4";
             this.panelControl4.Size = new System.Drawing.Size(500, 146);
             this.panelControl4.TabIndex = 13;
+            // 
+            // ReservedAllСheck
+            // 
+            this.ReservedAllСheck.Location = new System.Drawing.Point(15, 8);
+            this.ReservedAllСheck.Name = "ReservedAllСheck";
+            this.ReservedAllСheck.Properties.Caption = "Зарезервувати сировину";
+            this.ReservedAllСheck.Properties.ValueChecked = 1;
+            this.ReservedAllСheck.Properties.ValueUnchecked = 0;
+            this.ReservedAllСheck.Size = new System.Drawing.Size(203, 20);
+            this.ReservedAllСheck.StyleController = this.styleController1;
+            this.ReservedAllСheck.TabIndex = 34;
             // 
             // NotesEdit
             // 
@@ -796,18 +807,6 @@
             this.barDockControl1.Location = new System.Drawing.Point(2, 2);
             this.barDockControl1.Size = new System.Drawing.Size(1084, 0);
             // 
-            // ReservedAllСheck
-            // 
-            this.ReservedAllСheck.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ProductionPlansBS, "Checked", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.ReservedAllСheck.Location = new System.Drawing.Point(15, 8);
-            this.ReservedAllСheck.Name = "ReservedAllСheck";
-            this.ReservedAllСheck.Properties.Caption = "Зарезервувати сировину";
-            this.ReservedAllСheck.Properties.ValueChecked = 1;
-            this.ReservedAllСheck.Properties.ValueUnchecked = 0;
-            this.ReservedAllСheck.Size = new System.Drawing.Size(203, 20);
-            this.ReservedAllСheck.StyleController = this.styleController1;
-            this.ReservedAllСheck.TabIndex = 34;
-            // 
             // frmProductionPlans
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -841,6 +840,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
             this.panelControl4.ResumeLayout(false);
             this.panelControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ReservedAllСheck.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
@@ -862,7 +862,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ReservedAllСheck.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
