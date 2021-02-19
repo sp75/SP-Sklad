@@ -62,6 +62,11 @@ namespace SP_Sklad.WBDetForm
             }).ToList();
 
             MatComboBox.Properties.DataSource = mat_list;
+
+            using (var s = new UserSettingsRepository(UserSession.UserId, _db))
+            {
+                AmountEdit.ReadOnly = !(s.AccessEditWeight == "1");
+            }
         }
 
         private void frmPlannedCalculationDetDet_Load(object sender, EventArgs e)
@@ -97,7 +102,7 @@ namespace SP_Sklad.WBDetForm
 
             IntermediateWeighingDetBS.DataSource = det;
 
-            TaraMatEdit.Properties.DataSource = _db.Materials.Where(w => w.TypeId == 5).Select(s => new { s.MatId, s.Name, s.Artikul, s.Weight }).ToList();
+            TareMatEdit.Properties.DataSource = _db.Materials.Where(w => w.TypeId == 5).Select(s => new { s.MatId, s.Name, s.Artikul, s.Weight }).ToList();
 
             GetOk();
         }
@@ -123,7 +128,7 @@ namespace SP_Sklad.WBDetForm
 
                 //  var wb = _db.WayBillMake.we
                 var rec_det = _db.MatRecDet.FirstOrDefault(w => w.MatId == row.MatId && w.RecId == row.RecId);
-                var vizok = (dynamic)TaraMatEdit.GetSelectedDataRow();
+                var vizok = (dynamic)TareMatEdit.GetSelectedDataRow();
                 var netto_amount = AmountEdit.Value - TaraCalcEdit.Value - (vizok != null ? vizok.Weight : 0 ) ;
 
                 OkButton.Enabled = !String.IsNullOrEmpty(MatComboBox.Text) && (rec_det == null || (CalcAmount.Value + (rec_det != null ? rec_det.Deviation : 0)) >= netto_amount && (CalcAmount.Value - (rec_det != null ? rec_det.Deviation : 0)) <= netto_amount);
@@ -136,7 +141,7 @@ namespace SP_Sklad.WBDetForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            var vizok = (dynamic)TaraMatEdit.GetSelectedDataRow();
+            var vizok = (dynamic)TareMatEdit.GetSelectedDataRow();
 
             det.Total = det.Amount - det.TaraAmount - (vizok != null ? (decimal)vizok.Weight : 0);
 
@@ -257,7 +262,7 @@ namespace SP_Sklad.WBDetForm
         {
             if(e.Button.Index == 1 )
             {
-                TaraMatEdit.EditValue = null;
+                TareMatEdit.EditValue = null;
             }
         }
     }

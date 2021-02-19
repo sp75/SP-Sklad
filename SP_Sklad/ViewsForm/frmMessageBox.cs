@@ -16,13 +16,15 @@ namespace SP_Sklad.ViewsForm
     {
         public UserSettingsRepository user_settings { get; set; }
 
-        public frmMessageBox(string caption, string Text)
+        public frmMessageBox(string caption, string Text, bool show_check_message = true)
         {
             InitializeComponent();
 
             this.Text = caption;
             MessageText.Text = Text;
             user_settings = new UserSettingsRepository();
+
+            checkEdit5.Visible = show_check_message;
         }
 
         private void frmMessageBox_FormClosed(object sender, FormClosedEventArgs e)

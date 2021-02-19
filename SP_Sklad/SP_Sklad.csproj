@@ -310,6 +310,12 @@
     <Compile Include="EditForm\frmSetCustomDiscount.Designer.cs">
       <DependentUpon>frmSetCustomDiscount.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditForm\frmSetWBNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmSetWBNote.Designer.cs">
+      <DependentUpon>frmSetWBNote.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditForm\frmWeightEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -848,6 +854,12 @@
     </Compile>
     <Compile Include="ViewsForm\frmFinancesView.Designer.cs">
       <DependentUpon>frmFinancesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewsForm\frmKagents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmKagents.Designer.cs">
+      <DependentUpon>frmKagents.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewsForm\frmKaGroup.cs">
       <SubType>Form</SubType>
@@ -1611,6 +1623,9 @@
     <EmbeddedResource Include="EditForm\frmSetCustomDiscount.resx">
       <DependentUpon>frmSetCustomDiscount.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmSetWBNote.resx">
+      <DependentUpon>frmSetWBNote.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmWeightEdit.resx">
       <DependentUpon>frmWeightEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -1673,6 +1688,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmFinancesView.resx">
       <DependentUpon>frmFinancesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmKagents.resx">
+      <DependentUpon>frmKagents.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmKaGroup.resx">
       <DependentUpon>frmKaGroup.cs</DependentUpon>

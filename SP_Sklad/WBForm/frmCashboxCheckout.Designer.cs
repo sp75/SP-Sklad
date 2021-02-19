@@ -79,7 +79,7 @@
             // 
             // calcEdit2
             // 
-            this.calcEdit2.Location = new System.Drawing.Point(243, 27);
+            this.calcEdit2.Location = new System.Drawing.Point(231, 27);
             this.calcEdit2.Name = "calcEdit2";
             this.calcEdit2.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.calcEdit2.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 16F);
@@ -91,7 +91,7 @@
             this.calcEdit2.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.calcEdit2.Properties.ReadOnly = true;
             this.calcEdit2.Properties.ShowCloseButton = true;
-            this.calcEdit2.Size = new System.Drawing.Size(210, 32);
+            this.calcEdit2.Size = new System.Drawing.Size(222, 32);
             this.calcEdit2.TabIndex = 46;
             this.calcEdit2.TabStop = false;
             // 
@@ -107,14 +107,14 @@
             this.SumAllEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.SumAllEdit.Properties.ReadOnly = true;
             this.SumAllEdit.Properties.ShowCloseButton = true;
-            this.SumAllEdit.Size = new System.Drawing.Size(214, 32);
+            this.SumAllEdit.Size = new System.Drawing.Size(211, 32);
             this.SumAllEdit.TabIndex = 45;
             this.SumAllEdit.TabStop = false;
             // 
             // labelControl2
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl2.Location = new System.Drawing.Point(243, 5);
+            this.labelControl2.Location = new System.Drawing.Point(231, 5);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(42, 16);
             this.labelControl2.TabIndex = 9;
@@ -188,6 +188,7 @@
             this.simpleButton5.Size = new System.Drawing.Size(211, 64);
             this.simpleButton5.TabIndex = 82;
             this.simpleButton5.Text = "В кредит";
+            this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
             // 
             // simpleButton4
             // 
@@ -447,6 +448,6 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
         public DevExpress.XtraEditors.SimpleButton simpleButton2;
         public DevExpress.XtraEditors.SimpleButton simpleButton4;
-        public DevExpress.XtraEditors.SimpleButton simpleButton5;
+        private DevExpress.XtraEditors.SimpleButton simpleButton5;
     }
 }

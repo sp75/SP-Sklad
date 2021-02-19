@@ -614,7 +614,15 @@ namespace SP_Sklad.WBForm
 
         private void simpleButton25_Click(object sender, EventArgs e)
         {
-            wb.KaId = (int)IHelper.ShowDirectList(wb.KaId, 1);
+            using (var frm = new frmKagents())
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    wb.KaId = frm.focused_row.KaId;
+                }
+
+                //   wb.KaId = (int)IHelper.ShowDirectList(wb.KaId, 1);
+            }
 
             Text = string.Format("РМК [Касир: {0}, Продавець: {1}, Покупець: {2} ]", DBHelper.CurrentUser.Name, (DBHelper.Enterprise != null ? DBHelper.Enterprise.Name : ""), DBHelper.Kagents.FirstOrDefault(w => w.KaId == wb.KaId).Name);
         }

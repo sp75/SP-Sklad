@@ -319,13 +319,13 @@
         <EntityTypeShape EntityType="BaseModel.MaterialsList" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.v_WaybillList" Width="1.5" PointX="6.75" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.v_DiscCards" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="BaseModel.v_Users" Width="1.5" PointX="0.75" PointY="9.125" />
-        <EntityTypeShape EntityType="BaseModel.v_MatRemains" Width="1.5" PointX="11.375" PointY="0.75" />
-        <EntityTypeShape EntityType="BaseModel.v_ErrorLog" Width="1.5" PointX="11.375" PointY="4" />
-        <EntityTypeShape EntityType="BaseModel.KagentList" Width="1.5" PointX="2.875" PointY="7.75" />
-        <EntityTypeShape EntityType="BaseModel.v_PayDoc" Width="1.5" PointX="9.25" PointY="4.5" />
-        <EntityTypeShape EntityType="BaseModel.v_MatRecipe" Width="1.5" PointX="4.3142813855382993" PointY="9.3014717145364134" />
-        <EntityTypeShape EntityType="BaseModel.v_PosRemains" Width="1.5" PointX="3.6893121114416569" PointY="18.552746185358963" />
+        <EntityTypeShape EntityType="BaseModel.v_Users" Width="1.5" PointX="0.75" PointY="9" />
+        <EntityTypeShape EntityType="BaseModel.v_MatRemains" Width="1.5" PointX="10.875" PointY="0.75" />
+        <EntityTypeShape EntityType="BaseModel.v_ErrorLog" Width="1.5" PointX="10.875" PointY="4" />
+        <EntityTypeShape EntityType="BaseModel.v_PayDoc" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BaseModel.v_MatRecipe" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BaseModel.v_PosRemains" Width="1.5" PointX="4.75" PointY="3.875" />
+        <EntityTypeShape EntityType="BaseModel.KagentList" Width="1.5" PointX="12.875" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

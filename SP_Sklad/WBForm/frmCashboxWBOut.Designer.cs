@@ -408,6 +408,8 @@
             this.WaybillDetOutGridView.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Black;
             this.WaybillDetOutGridView.Appearance.FocusedRow.Options.UseBackColor = true;
             this.WaybillDetOutGridView.Appearance.FocusedRow.Options.UseForeColor = true;
+            this.WaybillDetOutGridView.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.WaybillDetOutGridView.Appearance.HeaderPanel.Options.UseFont = true;
             this.WaybillDetOutGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 12F);
             this.WaybillDetOutGridView.Appearance.Row.Options.UseFont = true;
             this.WaybillDetOutGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {

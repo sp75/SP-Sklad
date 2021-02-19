@@ -1411,7 +1411,7 @@
             // 
             // vGridControl1
             // 
-            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeWE;
+            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControl1.DataSource = this.KAgentInfoBS;
             this.vGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl1.Location = new System.Drawing.Point(0, 0);
@@ -1440,6 +1440,7 @@
             // 
             // row3
             // 
+            this.row3.Height = 16;
             this.row3.Name = "row3";
             this.row3.Properties.Caption = "Фактична адреса";
             this.row3.Properties.FieldName = "FullFactADDR";

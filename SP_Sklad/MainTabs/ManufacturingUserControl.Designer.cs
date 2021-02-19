@@ -431,6 +431,7 @@
             this.bar7 = new DevExpress.XtraBars.Bar();
             this.bar6 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
+            this.gridColumn154 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -1716,7 +1717,8 @@
             this.gridColumn83,
             this.gridColumn84,
             this.gridColumn85,
-            this.gridColumn86});
+            this.gridColumn86,
+            this.gridColumn154});
             this.TechProcGridView.GridControl = this.TechProcGridControl;
             this.TechProcGridView.Name = "TechProcGridView";
             this.TechProcGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -1764,7 +1766,7 @@
             this.gridColumn45.Name = "gridColumn45";
             this.gridColumn45.OptionsColumn.AllowEdit = false;
             this.gridColumn45.Visible = true;
-            this.gridColumn45.VisibleIndex = 8;
+            this.gridColumn45.VisibleIndex = 9;
             this.gridColumn45.Width = 176;
             // 
             // gridColumn46
@@ -1773,7 +1775,7 @@
             this.gridColumn46.FieldName = "Notes";
             this.gridColumn46.Name = "gridColumn46";
             this.gridColumn46.Visible = true;
-            this.gridColumn46.VisibleIndex = 9;
+            this.gridColumn46.VisibleIndex = 10;
             this.gridColumn46.Width = 194;
             // 
             // gridColumn76
@@ -1815,7 +1817,7 @@
             this.gridColumn85.Name = "gridColumn85";
             this.gridColumn85.OptionsColumn.AllowEdit = false;
             this.gridColumn85.Visible = true;
-            this.gridColumn85.VisibleIndex = 6;
+            this.gridColumn85.VisibleIndex = 7;
             // 
             // gridColumn86
             // 
@@ -1824,7 +1826,7 @@
             this.gridColumn86.Name = "gridColumn86";
             this.gridColumn86.OptionsColumn.AllowEdit = false;
             this.gridColumn86.Visible = true;
-            this.gridColumn86.VisibleIndex = 7;
+            this.gridColumn86.VisibleIndex = 8;
             // 
             // xtraTabPage11
             // 
@@ -5233,6 +5235,15 @@
             this.bar5.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar5.Text = "Tools";
             // 
+            // gridColumn154
+            // 
+            this.gridColumn154.Caption = "Візок";
+            this.gridColumn154.FieldName = "TareName";
+            this.gridColumn154.Name = "gridColumn154";
+            this.gridColumn154.Visible = true;
+            this.gridColumn154.VisibleIndex = 6;
+            this.gridColumn154.Width = 105;
+            // 
             // ManufacturingUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5842,5 +5853,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn150;
         private System.Windows.Forms.BindingSource IntermediateWeighingBS;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn154;
     }
 }

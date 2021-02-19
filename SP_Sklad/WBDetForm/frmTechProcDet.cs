@@ -47,6 +47,7 @@ namespace SP_Sklad.WBDetForm
             ExtMatComboBox.Properties.DataSource = ext_list;
             ExtMatComboBox2.Properties.DataSource = ext_list;
 
+            TareMatEdit.Properties.DataSource = _db.Materials.Where(w => w.TypeId == 5).Select(s => new { s.MatId, s.Name, s.Artikul, s.Weight }).ToList();
 
             if (_DetId == null)
             {
@@ -144,7 +145,7 @@ namespace SP_Sklad.WBDetForm
             if (row != null)
             {
                 tp_d.Num = row.Num != null ? row.Num : (_db.TechProcDet.Where(w => w.WbillId == _wbill_id).Select(s => (int?)s.Num).Max() ?? 0) + 1;
-                tp_d.Out = row.Kod == "finish" ? _db.GetMakeAmount(_wbill_id).FirstOrDefault().AmountOut.Value : tp_d.Out;
+                tp_d.Out = row.Kod == "finish" && tp_d.Out == 0 ? _db.GetMakeAmount(_wbill_id).FirstOrDefault().AmountOut.Value : tp_d.Out;
             }
 
             ValidateForm();

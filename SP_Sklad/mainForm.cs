@@ -16,6 +16,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Data.Entity.Infrastructure;
 using System.Collections;
+using SP_Sklad.ViewsForm;
 
 namespace SP_Sklad
 {
@@ -56,13 +57,16 @@ namespace SP_Sklad
 
         private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            var want_to_exit = MessageBox.Show(@"Ви дійсно хочете вийти з програми?", @"Закрити програму", MessageBoxButtons.YesNo) == DialogResult.Yes;
-            if (want_to_exit)
+            using (var frm = new frmMessageBox(@"Закрити програму", @"Ви дійсно хочете вийти з програми?", false))
             {
-                DBHelper.ClearSessionWaybill();
-            }
+                var want_to_exit = /*MessageBox.Show(@"Ви дійсно хочете вийти з програми?", @"Закрити програму", MessageBoxButtons.YesNo)*/frm.ShowDialog() == DialogResult.Yes;
+                if (want_to_exit)
+                {
+                    DBHelper.ClearSessionWaybill();
+                }
 
-            e.Cancel = !want_to_exit;
+                e.Cancel = !want_to_exit;
+            }
         }
 
         private void mainForm_FormClosed(object sender, FormClosedEventArgs e)

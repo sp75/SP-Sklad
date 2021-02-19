@@ -2451,26 +2451,6 @@ namespace SP.Base.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<KagentList>()
-                .Property(e => e.Address)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<KagentList>()
-                .Property(e => e.City)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<KagentList>()
-                .Property(e => e.District)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<KagentList>()
-                .Property(e => e.Country)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<KagentList>()
-                .Property(e => e.PostIndex)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<KagentList>()
                 .Property(e => e.FullUrADDR)
                 .IsUnicode(false);
 

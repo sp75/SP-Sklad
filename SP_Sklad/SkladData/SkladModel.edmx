@@ -1160,6 +1160,7 @@
           <Property Name="ExtMat2Amount" Type="int" />
           <Property Name="TareWeight" Type="numeric" Precision="15" Scale="4" />
           <Property Name="OutNetto" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="TareMatId" Type="int" />
         </EntityType>
         <EntityType Name="TechProcess">
           <Key>
@@ -1493,16 +1494,11 @@ warning 6002: The table/view 'sp_base.dbo.KagentList' does not have a primary ke
           <Property Name="INN" Type="nvarchar" MaxLength="64" />
           <Property Name="OKPO" Type="nvarchar" MaxLength="64" />
           <Property Name="CertNum" Type="nvarchar" MaxLength="64" />
-          <Property Name="Address" Type="varchar" MaxLength="255" />
           <Property Name="Phone" Type="nvarchar" MaxLength="64" />
           <Property Name="Email" Type="nvarchar" MaxLength="64" />
           <Property Name="www" Type="nvarchar" MaxLength="64" />
-          <Property Name="City" Type="varchar" MaxLength="64" />
-          <Property Name="District" Type="varchar" MaxLength="64" />
-          <Property Name="Country" Type="varchar" MaxLength="64" />
-          <Property Name="PostIndex" Type="varchar" MaxLength="15" />
           <Property Name="FullUrADDR" Type="varchar" MaxLength="453" />
-          <Property Name="FullFactADDR" Type="varchar" MaxLength="387" />
+          <Property Name="FullFactADDR" Type="varchar" MaxLength="453" />
           <Property Name="Fax" Type="nvarchar" MaxLength="32" />
           <Property Name="Deleted" Type="int" Nullable="false" />
           <Property Name="Notes" Type="nvarchar" MaxLength="255" />
@@ -2144,6 +2140,7 @@ warning 6002: The table/view 'sp_base.dbo.v_TechProcDet' does not have a primary
           <Property Name="TareWeight" Type="numeric" Precision="15" Scale="4" />
           <Property Name="Kod" Type="nvarchar" MaxLength="20" />
           <Property Name="OutNetto" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="TareName" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_Users' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -6502,14 +6499,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [KagentList].[INN] AS [INN], 
     [KagentList].[OKPO] AS [OKPO], 
     [KagentList].[CertNum] AS [CertNum], 
-    [KagentList].[Address] AS [Address], 
     [KagentList].[Phone] AS [Phone], 
     [KagentList].[Email] AS [Email], 
     [KagentList].[www] AS [www], 
-    [KagentList].[City] AS [City], 
-    [KagentList].[District] AS [District], 
-    [KagentList].[Country] AS [Country], 
-    [KagentList].[PostIndex] AS [PostIndex], 
     [KagentList].[FullUrADDR] AS [FullUrADDR], 
     [KagentList].[FullFactADDR] AS [FullFactADDR], 
     [KagentList].[Fax] AS [Fax], 
@@ -6978,7 +6970,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_TechProcDet].[RamaName] AS [RamaName], 
     [v_TechProcDet].[TareWeight] AS [TareWeight], 
     [v_TechProcDet].[Kod] AS [Kod], 
-    [v_TechProcDet].[OutNetto] AS [OutNetto]
+    [v_TechProcDet].[OutNetto] AS [OutNetto], 
+    [v_TechProcDet].[TareName] AS [TareName]
     FROM [dbo].[v_TechProcDet] AS [v_TechProcDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_Users" EntityType="Self.v_Users" store:Type="Views" store:Schema="dbo">
@@ -8911,7 +8904,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="AspNetUsers" EntityType="BaseModel.AspNetUsers" />
-          <EntitySet Name="KagentList" EntityType="BaseModel.KagentList" />
           <EntitySet Name="Licenses" EntityType="BaseModel.Licenses" />
           <EntitySet Name="v_PlannedCalculation" EntityType="BaseModel.v_PlannedCalculation" />
           <EntitySet Name="PlannedCalculation" EntityType="BaseModel.PlannedCalculation" />
@@ -9242,6 +9234,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <FunctionImport Name="GetPriceListDet" ReturnType="Collection(BaseModel.GetPriceListDet_Result)">
           <Parameter Name="pl_id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="KagentList" EntityType="BaseModel.KagentList" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -10145,6 +10138,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Decimal" Name="OutNetto" Precision="15" Scale="4" />
           <Property Type="Decimal" Name="TareWeight" Precision="15" Scale="4" />
           <Property Type="String" Name="Kod" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TareName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Measures">
           <Key>
@@ -11538,6 +11532,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_TECHPROCDET_KAGENT" FromRole="TechProcDet" ToRole="Kagent" />
           <Property Type="Decimal" Name="OutNetto" Precision="15" Scale="4" />
           <NavigationProperty Name="TechProcess" Relationship="BaseModel.FK_TECHPROCDET_TECHPROCESS" FromRole="TechProcDet" ToRole="TechProcess" />
+          <Property Name="TareMatId" Type="Int32" />
         </EntityType>
         <EntityType Name="Services">
           <Key>
@@ -13935,62 +13930,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Int32" Name="AccessFailedCount" Nullable="false" />
           <Property Type="String" Name="UserName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="KagentList">
-          <Key>
-            <PropertyRef Name="KaId" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="Deleted" />
-            <PropertyRef Name="NdsPayer" />
-            <PropertyRef Name="KType" />
-            <PropertyRef Name="KaKind" />
-          </Key>
-          <Property Type="Int32" Name="KaId" Nullable="false" />
-          <Property Type="String" Name="KAU" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="FullName" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="INN" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="OKPO" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="CertNum" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Address" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Phone" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Email" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="www" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="City" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="District" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Country" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="PostIndex" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="FullUrADDR" MaxLength="453" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="FullFactADDR" MaxLength="387" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Fax" MaxLength="32" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="Deleted" Nullable="false" />
-          <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="KPP" MaxLength="32" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="NdsPayer" Nullable="false" />
-          <Property Type="DateTime" Name="BirthDate" Precision="3" />
-          <Property Type="Int32" Name="KType" Nullable="false" />
-          <Property Type="Int32" Name="KaKind" Nullable="false" />
-          <Property Type="String" Name="Job" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Type="Decimal" Name="StartSaldo" Precision="15" Scale="8" />
-          <Property Type="DateTime" Name="StartSaldoDate" Precision="3" />
-          <Property Type="Int32" Name="PTypeId" />
-          <Property Type="Int32" Name="JobType" />
-          <Property Type="Int32" Name="Def" />
-          <Property Type="Int32" Name="UserId" />
-          <Property Type="Int32" Name="Archived" />
-          <Property Type="String" Name="TypKAgent" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="KAgentKind" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="PriceName" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="ContractType" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="ContractDate" Precision="3" />
-          <Property Type="String" Name="ContractNum" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="Decimal" Name="Saldo" Precision="38" Scale="2" />
-          <Property Type="String" Name="GroupName" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="Guid" Name="GroupId" />
-          <Property Type="String" Name="Login" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="UserName" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="AspNetUserId" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="WebUserName" MaxLength="256" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="Licenses">
           <Key>
             <PropertyRef Name="Id" />
@@ -15421,6 +15360,57 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Int32" Name="WId" Nullable="true" />
           <Property Type="Decimal" Name="LastInPrice" Nullable="true" Precision="15" Scale="4" />
         </ComplexType>
+        <EntityType Name="KagentList">
+          <Key>
+            <PropertyRef Name="KaId" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Deleted" />
+            <PropertyRef Name="NdsPayer" />
+            <PropertyRef Name="KType" />
+            <PropertyRef Name="KaKind" />
+          </Key>
+          <Property Name="KaId" Type="Int32" Nullable="false" />
+          <Property Name="KAU" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="INN" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="OKPO" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="CertNum" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="www" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="FullUrADDR" Type="String" MaxLength="453" FixedLength="false" Unicode="false" />
+          <Property Name="FullFactADDR" Type="String" MaxLength="453" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="KPP" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="NdsPayer" Type="Int32" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="KType" Type="Int32" Nullable="false" />
+          <Property Name="KaKind" Type="Int32" Nullable="false" />
+          <Property Name="Job" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="StartSaldo" Type="Decimal" Precision="15" Scale="8" />
+          <Property Name="StartSaldoDate" Type="DateTime" Precision="3" />
+          <Property Name="PTypeId" Type="Int32" />
+          <Property Name="JobType" Type="Int32" />
+          <Property Name="Def" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Archived" Type="Int32" />
+          <Property Name="TypKAgent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KAgentKind" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PriceName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="ContractType" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="ContractDate" Type="DateTime" Precision="3" />
+          <Property Name="ContractNum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Saldo" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="GroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GroupId" Type="Guid" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="AspNetUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="WebUserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -16152,6 +16142,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_TechProcDet">
             <EntityTypeMapping TypeName="BaseModel.v_TechProcDet">
               <MappingFragment StoreEntitySet="v_TechProcDet">
+                <ScalarProperty Name="TareName" ColumnName="TareName" />
                 <ScalarProperty Name="Kod" ColumnName="Kod" />
                 <ScalarProperty Name="TareWeight" ColumnName="TareWeight" />
                 <ScalarProperty Name="OutNetto" ColumnName="OutNetto" />
@@ -17052,6 +17043,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="TechProcDet">
             <EntityTypeMapping TypeName="BaseModel.TechProcDet">
               <MappingFragment StoreEntitySet="TechProcDet">
+                <ScalarProperty Name="TareMatId" ColumnName="TareMatId" />
                 <ScalarProperty Name="OutNetto" ColumnName="OutNetto" />
                 <ScalarProperty Name="TareWeight" ColumnName="TareWeight" />
                 <ScalarProperty Name="ExtMat2Amount" ColumnName="ExtMat2Amount" />
@@ -18391,58 +18383,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="KagentList">
-            <EntityTypeMapping TypeName="BaseModel.KagentList">
-              <MappingFragment StoreEntitySet="KagentList">
-                <ScalarProperty Name="WebUserName" ColumnName="WebUserName" />
-                <ScalarProperty Name="AspNetUserId" ColumnName="AspNetUserId" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
-                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
-                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
-                <ScalarProperty Name="ContractNum" ColumnName="ContractNum" />
-                <ScalarProperty Name="ContractDate" ColumnName="ContractDate" />
-                <ScalarProperty Name="ContractType" ColumnName="ContractType" />
-                <ScalarProperty Name="PriceName" ColumnName="PriceName" />
-                <ScalarProperty Name="KAgentKind" ColumnName="KAgentKind" />
-                <ScalarProperty Name="TypKAgent" ColumnName="TypKAgent" />
-                <ScalarProperty Name="Archived" ColumnName="Archived" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Def" ColumnName="Def" />
-                <ScalarProperty Name="JobType" ColumnName="JobType" />
-                <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
-                <ScalarProperty Name="StartSaldoDate" ColumnName="StartSaldoDate" />
-                <ScalarProperty Name="StartSaldo" ColumnName="StartSaldo" />
-                <ScalarProperty Name="Job" ColumnName="Job" />
-                <ScalarProperty Name="KaKind" ColumnName="KaKind" />
-                <ScalarProperty Name="KType" ColumnName="KType" />
-                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-                <ScalarProperty Name="NdsPayer" ColumnName="NdsPayer" />
-                <ScalarProperty Name="KPP" ColumnName="KPP" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
-                <ScalarProperty Name="FullFactADDR" ColumnName="FullFactADDR" />
-                <ScalarProperty Name="FullUrADDR" ColumnName="FullUrADDR" />
-                <ScalarProperty Name="PostIndex" ColumnName="PostIndex" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="District" ColumnName="District" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="www" ColumnName="www" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="CertNum" ColumnName="CertNum" />
-                <ScalarProperty Name="OKPO" ColumnName="OKPO" />
-                <ScalarProperty Name="INN" ColumnName="INN" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="KAU" ColumnName="KAU" />
-                <ScalarProperty Name="KaId" ColumnName="KaId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Licenses">
             <EntityTypeMapping TypeName="BaseModel.Licenses">
               <MappingFragment StoreEntitySet="Licenses">
@@ -19489,6 +19429,53 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="KagentList">
+            <EntityTypeMapping TypeName="BaseModel.KagentList">
+              <MappingFragment StoreEntitySet="KagentList">
+                <ScalarProperty Name="WebUserName" ColumnName="WebUserName" />
+                <ScalarProperty Name="AspNetUserId" ColumnName="AspNetUserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="ContractNum" ColumnName="ContractNum" />
+                <ScalarProperty Name="ContractDate" ColumnName="ContractDate" />
+                <ScalarProperty Name="ContractType" ColumnName="ContractType" />
+                <ScalarProperty Name="PriceName" ColumnName="PriceName" />
+                <ScalarProperty Name="KAgentKind" ColumnName="KAgentKind" />
+                <ScalarProperty Name="TypKAgent" ColumnName="TypKAgent" />
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Def" ColumnName="Def" />
+                <ScalarProperty Name="JobType" ColumnName="JobType" />
+                <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
+                <ScalarProperty Name="StartSaldoDate" ColumnName="StartSaldoDate" />
+                <ScalarProperty Name="StartSaldo" ColumnName="StartSaldo" />
+                <ScalarProperty Name="Job" ColumnName="Job" />
+                <ScalarProperty Name="KaKind" ColumnName="KaKind" />
+                <ScalarProperty Name="KType" ColumnName="KType" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="NdsPayer" ColumnName="NdsPayer" />
+                <ScalarProperty Name="KPP" ColumnName="KPP" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="FullFactADDR" ColumnName="FullFactADDR" />
+                <ScalarProperty Name="FullUrADDR" ColumnName="FullUrADDR" />
+                <ScalarProperty Name="www" ColumnName="www" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="CertNum" ColumnName="CertNum" />
+                <ScalarProperty Name="OKPO" ColumnName="OKPO" />
+                <ScalarProperty Name="INN" ColumnName="INN" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="KAU" ColumnName="KAU" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

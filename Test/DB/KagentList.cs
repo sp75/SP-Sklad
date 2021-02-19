@@ -1,4 +1,4 @@
-namespace SP.Base.Models
+namespace Test.DB
 {
     using System;
     using System.Collections.Generic;

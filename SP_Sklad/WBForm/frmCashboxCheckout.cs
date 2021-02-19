@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraEditors;
 using SP_Sklad.Common;
 using SP_Sklad.SkladData;
+using SP_Sklad.ViewsForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -174,6 +175,14 @@ namespace SP_Sklad.WBForm
 
             // Call the base class
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void simpleButton5_Click(object sender, EventArgs e)
+        {
+            using (var frm = new frmSetWBNote(_wb))
+            {
+                frm.ShowDialog();
+            }
         }
     }
 }

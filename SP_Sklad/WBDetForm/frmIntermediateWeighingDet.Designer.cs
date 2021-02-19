@@ -69,7 +69,7 @@
             this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl29 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.TaraMatEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.TareMatEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.TaraCalcEdit = new DevExpress.XtraEditors.CalcEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -90,7 +90,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.CalcAmount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TaraMatEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TareMatEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TaraCalcEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AmountEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatComboBox.Properties)).BeginInit();
@@ -256,7 +256,7 @@
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.TaraMatEdit);
+            this.panelControl1.Controls.Add(this.TareMatEdit);
             this.panelControl1.Controls.Add(this.labelControl7);
             this.panelControl1.Controls.Add(this.TaraCalcEdit);
             this.panelControl1.Controls.Add(this.labelControl2);
@@ -270,27 +270,27 @@
             this.panelControl1.Size = new System.Drawing.Size(482, 122);
             this.panelControl1.TabIndex = 0;
             // 
-            // TaraMatEdit
+            // TareMatEdit
             // 
-            this.TaraMatEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.IntermediateWeighingDetBS, "TaraMatId", true));
-            this.TaraMatEdit.Location = new System.Drawing.Point(12, 88);
-            this.TaraMatEdit.Name = "TaraMatEdit";
-            this.TaraMatEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.TareMatEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.IntermediateWeighingDetBS, "TaraMatId", true));
+            this.TareMatEdit.Location = new System.Drawing.Point(12, 88);
+            this.TareMatEdit.Name = "TareMatEdit";
+            this.TareMatEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)});
-            this.TaraMatEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            this.TareMatEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва"),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Weight", "Вага")});
-            this.TaraMatEdit.Properties.DisplayMember = "Name";
-            this.TaraMatEdit.Properties.ShowFooter = false;
-            this.TaraMatEdit.Properties.ShowHeader = false;
-            this.TaraMatEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.TaraMatEdit.Properties.ValueMember = "MatId";
-            this.TaraMatEdit.Size = new System.Drawing.Size(259, 22);
-            this.TaraMatEdit.StyleController = this.styleController1;
-            this.TaraMatEdit.TabIndex = 47;
-            this.TaraMatEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.TaraMatEdit_ButtonClick);
-            this.TaraMatEdit.EditValueChanged += new System.EventHandler(this.AmountEdit_EditValueChanged);
+            this.TareMatEdit.Properties.DisplayMember = "Name";
+            this.TareMatEdit.Properties.ShowFooter = false;
+            this.TareMatEdit.Properties.ShowHeader = false;
+            this.TareMatEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.TareMatEdit.Properties.ValueMember = "MatId";
+            this.TareMatEdit.Size = new System.Drawing.Size(259, 22);
+            this.TareMatEdit.StyleController = this.styleController1;
+            this.TareMatEdit.TabIndex = 47;
+            this.TareMatEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.TaraMatEdit_ButtonClick);
+            this.TareMatEdit.EditValueChanged += new System.EventHandler(this.AmountEdit_EditValueChanged);
             // 
             // labelControl7
             // 
@@ -414,7 +414,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TaraMatEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TareMatEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TaraCalcEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AmountEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatComboBox.Properties)).EndInit();
@@ -444,7 +444,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.CalcEdit CalcAmount;
-        private DevExpress.XtraEditors.LookUpEdit TaraMatEdit;
+        private DevExpress.XtraEditors.LookUpEdit TareMatEdit;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.CalcEdit TotalEdit;
         private DevExpress.XtraEditors.CalcEdit IntermediateWeighingEdit;
