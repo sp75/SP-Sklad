@@ -125,7 +125,8 @@ namespace SP_Sklad.Common
                     var sp = received.Split(new[] { "=", "(kg)" }, StringSplitOptions.RemoveEmptyEntries);
                     if (sp.Count() >= 1)
                     {
-                        if (decimal.TryParse(sp[0].Trim(), System.Globalization.NumberStyles.Number | System.Globalization.NumberStyles.AllowCurrencySymbol, CultureInfo.CreateSpecificCulture("en-GB"), out decimal display))
+                        var number = sp[0].Trim().Replace(',', '.');
+                        if (decimal.TryParse(number, NumberStyles.AllowDecimalPoint, CultureInfo.CreateSpecificCulture("en-US"), out decimal display) )
                         {
                             weight = display;
                         }

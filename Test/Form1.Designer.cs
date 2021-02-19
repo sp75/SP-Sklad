@@ -34,6 +34,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.WaybillDetBS = new System.Windows.Forms.BindingSource(this.components);
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetBS)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,11 +73,21 @@
             // 
             this.WaybillDetBS.DataSource = typeof(SP.Base.Models.Banks);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(12, 404);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(556, 439);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button1);
@@ -97,6 +108,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.BindingSource WaybillDetBS;
+        private System.Windows.Forms.Button button2;
     }
 }
 
