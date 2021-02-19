@@ -120,13 +120,13 @@ namespace SP_Sklad.Common
                 //   String ss = "=00535.0(kg)";
                 int amount = new Regex("=").Matches(received).Count;
                 int amount2 = new Regex("(kg)").Matches(received).Count;
-                if (amount >= 1 && amount2 >=1)
+                if (amount >= 1 && amount2 >= 1)
                 {
                     var sp = received.Split(new[] { "=", "(kg)" }, StringSplitOptions.RemoveEmptyEntries);
                     if (sp.Count() >= 1)
                     {
                         var number = sp[0].Trim().Replace(',', '.');
-                        if (decimal.TryParse(number, NumberStyles.AllowDecimalPoint, CultureInfo.CreateSpecificCulture("en-US"), out decimal display) )
+                        if (decimal.TryParse(number, NumberStyles.AllowDecimalPoint, CultureInfo.CreateSpecificCulture("en-US"), out decimal display))
                         {
                             weight = display;
                         }
@@ -134,7 +134,7 @@ namespace SP_Sklad.Common
 
                         received = "";
                     }
-                  
+
                 }
             }
 

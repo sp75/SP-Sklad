@@ -33,8 +33,8 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.WaybillDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.button2 = new System.Windows.Forms.Button();
+            this.WaybillDetBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetBS)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,10 +69,6 @@
             this.textBox1.Size = new System.Drawing.Size(395, 98);
             this.textBox1.TabIndex = 2;
             // 
-            // WaybillDetBS
-            // 
-            this.WaybillDetBS.DataSource = typeof(SP.Base.Models.Banks);
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(12, 404);
@@ -81,6 +77,11 @@
             this.button2.TabIndex = 3;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // WaybillDetBS
+            // 
+            this.WaybillDetBS.DataSource = typeof(SP.Base.Models.Banks);
             // 
             // Form1
             // 

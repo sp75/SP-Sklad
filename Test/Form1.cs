@@ -125,5 +125,27 @@ namespace Test
         {
             Close();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            String received = "=00535.0(kg)";
+            int amount = new Regex("=").Matches(received).Count;
+            int amount2 = new Regex("(kg)").Matches(received).Count;
+            if (amount >= 1 && amount2 >= 1)
+            {
+                var sp = received.Split(new[] { "=", "(kg)" }, StringSplitOptions.RemoveEmptyEntries);
+                if (sp.Count() >= 1)
+                {
+                    var number = sp[0].Trim().Replace(',', '.');
+                    if (decimal.TryParse(number, NumberStyles.AllowDecimalPoint, CultureInfo.CreateSpecificCulture("en-US"), out decimal display))
+                    {
+                        weight = display;
+                    }
+                    else weight = 0;
+
+                    received = "";
+                }
+            }
+        }
     }
 }
