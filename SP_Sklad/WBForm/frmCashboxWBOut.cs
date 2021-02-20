@@ -121,7 +121,7 @@ namespace SP_Sklad.WBForm
         {
             wb.Kontragent = _db.Kagent.Find(wb.KaId);
 
-            IHelper.ShowMatListByWH(_db, wb);
+            IHelper.ShowMatListByWH(_db, wb, disc_card);
 
             _db.SaveChanges();
 
@@ -138,7 +138,14 @@ namespace SP_Sklad.WBForm
 
             if (disc_card != null)
             {
-                wbd_list.Add(new GetWayBillDetOut_Result { Discount = disc_card.OnValue, MatName = "Дисконтна картка", Num = wbd_list.Count() + 1, CardNum = disc_card.Num, PosType = 3 });
+                wbd_list.Add(new GetWayBillDetOut_Result
+                {
+                    Discount = disc_card.OnValue,
+                    MatName = "Дисконтна картка" + (disc_card.KaId != null ? " [" + disc_card.Kagent.Name + "]" : ""),
+                    Num = wbd_list.Count() + 1,
+                    CardNum = disc_card.Num,
+                    PosType = 3
+                });
             }
 
             int top_row = WaybillDetOutGridView.TopRowIndex;
@@ -150,6 +157,8 @@ namespace SP_Sklad.WBForm
             textEdit5.Text = Math.Round(Convert.ToDouble(wbd_list.Sum(s => s.Amount * s.BasePrice)), 2).ToString();
             textEdit1.Text = Math.Round(Convert.ToDouble(wbd_list.Sum(s => (s.Amount * s.BasePrice) - s.Total)), 2).ToString();
             textEdit2.Text = wbd_list.Sum(s => s.Total).ToString();
+
+            KAgentBtn.Enabled = disc_card == null || disc_card.KaId == null;
 
             //  GetOk();
         }
@@ -394,9 +403,10 @@ namespace SP_Sklad.WBForm
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     disc_card = frm.cart;
-                    //  KagentComboBox.EditValue = wb.KaId;
-
+                    
                     RefreshDet();
+
+                    SetFormTitle();
                 }
             }
         }
@@ -492,6 +502,11 @@ namespace SP_Sklad.WBForm
 
         private void WaybillDetOutGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
+            if(wbd_row == null)
+            {
+                return;
+            }
+
             if (wbd_row.PosType == 0)
             {
                 textBox1.Text = wbd_row.MatName;
@@ -619,14 +634,17 @@ namespace SP_Sklad.WBForm
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     wb.KaId = frm.focused_row.KaId;
+
+                    SetFormTitle();
                 }
-
-                //   wb.KaId = (int)IHelper.ShowDirectList(wb.KaId, 1);
             }
-
-            Text = string.Format("РМК [Касир: {0}, Продавець: {1}, Покупець: {2} ]", DBHelper.CurrentUser.Name, (DBHelper.Enterprise != null ? DBHelper.Enterprise.Name : ""), DBHelper.Kagents.FirstOrDefault(w => w.KaId == wb.KaId).Name);
         }
 
+        private void SetFormTitle()
+        {
+            Text = string.Format("РМК [Касир: {0}, Продавець: {1}, Покупець: {2} ]", DBHelper.CurrentUser.Name, (DBHelper.Enterprise != null ? DBHelper.Enterprise.Name : ""), DBHelper.Kagents.FirstOrDefault(w => w.KaId == wb.KaId).Name);
+        }
+             
         private void simpleButton11_Click_1(object sender, EventArgs e)
         {
             using (var frm = new frmBarCode())

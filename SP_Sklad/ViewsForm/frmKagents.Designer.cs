@@ -96,7 +96,7 @@
             // 
             // KontragentBS
             // 
-            this.KontragentBS.DataSource = typeof(SP_Sklad.SkladData.Kagent);
+            this.KontragentBS.DataSource = typeof(SP_Sklad.SkladData.KagentList);
             // 
             // KontragentGroupGridView
             // 
@@ -159,7 +159,7 @@
             // gridColumn1
             // 
             this.gridColumn1.Caption = "Група контрагентів";
-            this.gridColumn1.FieldName = "KontragentGroup.Name";
+            this.gridColumn1.FieldName = "GroupName";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 2;

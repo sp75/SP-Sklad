@@ -43,7 +43,7 @@ namespace Test
             _serialPort.Encoding = new ASCIIEncoding();       
         }
 
-        public void Close()
+        public void ClosePort()
         {
             weight = 0;
             if (_serialPort.IsOpen)
@@ -123,7 +123,7 @@ namespace Test
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Close();
+            ClosePort();
         }
 
         private void button2_Click(object sender, EventArgs e)

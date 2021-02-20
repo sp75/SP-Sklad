@@ -16,11 +16,11 @@ namespace SP_Sklad.ViewsForm
     public partial class frmKagents : DevExpress.XtraEditors.XtraForm
     {
         private BaseEntities _db { get; set; }
-        public Kagent focused_row
+        public KagentList focused_row
         {
             get
             {
-                return (KontragentGroupGridView.GetFocusedRow() as Kagent);
+                return (KontragentGroupGridView.GetFocusedRow() as KagentList);
             }
         }
 
@@ -32,7 +32,7 @@ namespace SP_Sklad.ViewsForm
 
         private void frmKaGroup_Load(object sender, EventArgs e)
         {
-            KontragentBS.DataSource = _db.Kagent.ToList();
+            KontragentBS.DataSource = DBHelper.Kagents;
         }
 
         private void frmKaGroup_FormClosed(object sender, FormClosedEventArgs e)
