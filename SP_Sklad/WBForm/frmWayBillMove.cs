@@ -261,23 +261,25 @@ namespace SP_Sklad.WBForm
 
         private void RsvBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            /*  var r = new ObjectParameter("RSV", typeof(Int32));
+            _db.SaveChanges();
+            var r = new ObjectParameter("RSV", typeof(Int32));
 
-              _db.ReservedPosition(focused_dr.PosId, r, DBHelper.CurrentUser.UserId);
+            _db.ReservedPosition(focused_dr.PosId, r, DBHelper.CurrentUser.UserId);
 
 
-              if (r.Value != null)
-              {
-                  focused_dr.Rsv = (int)r.Value;
-                  WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
-              }*/
+            if (r.Value != null)
+            {
+                focused_dr.Rsv = (int)r.Value;
+                WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
+            }
 
+            /*
             if (!DBHelper.RsvItem(focused_dr.PosId.Value, _db))
             {
                 MessageBox.Show("Не вдалося зарезервувати товар!");
             }
-
-            RefreshDet();
+            
+            RefreshDet();*/
 
             GetOk();
         }
@@ -305,15 +307,44 @@ namespace SP_Sklad.WBForm
                      MessageBox.Show("Не вдалося зарезервувати деякі товари!");
                  }*/
 
-            foreach (var item in _db.GetWayBillDetOut(_wbill_id).OrderBy(o => o.Num).ToList())
+        /*    foreach (var item in _db.GetWayBillDetOut(_wbill_id).OrderBy(o => o.Num).ToList())
             {
                 if (item.Rsv != 1)
                 {
                     DBHelper.RsvItem(item.PosId.Value, _db);
                 }
+            }*/
+
+            _db.SaveChanges();
+            var list = new List<string>();
+
+            var r = new ObjectParameter("RSV", typeof(Int32));
+
+            var wb_list = _db.GetWayBillDetOut(_wbill_id).ToList().Where(w => w.Rsv != 1).ToList();
+            progressBarControl1.Visible = true;
+            progressBarControl1.Properties.Maximum = wb_list.Count;
+            foreach (var i in wb_list)
+            {
+                _db.ReservedPosition(i.PosId, r, DBHelper.CurrentUser.UserId);
+
+                if (r.Value != null && (int)r.Value == 0)
+                {
+                    list.Add(i.MatName);
+                }
+
+                progressBarControl1.PerformStep();
+                progressBarControl1.Update();
+            }
+            progressBarControl1.Visible = false;
+
+            if (list.Any())
+            {
+                MessageBox.Show("Не вдалося зарезервувати: " + String.Join(",", list));
             }
 
+
             RefreshDet();
+
         }
 
         private void DelAllRsvBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

@@ -824,6 +824,7 @@
             this.WaybillDetOutGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.WaybillDetOutGridView.OptionsView.ShowFooter = true;
             this.WaybillDetOutGridView.OptionsView.ShowGroupPanel = false;
+            this.WaybillDetOutGridView.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.WaybillDetOutGridView_RowCellStyle);
             this.WaybillDetOutGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WaybillDetInGridView_PopupMenuShowing);
             this.WaybillDetOutGridView.CustomSummaryCalculate += new DevExpress.Data.CustomSummaryEventHandler(this.WaybillDetOutGridView_CustomSummaryCalculate);
             this.WaybillDetOutGridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.WaybillDetOutGridView_CellValueChanged);

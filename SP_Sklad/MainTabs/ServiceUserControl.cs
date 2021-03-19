@@ -446,5 +446,21 @@ namespace SP_Sklad.MainTabs
                 }
             }
         }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            using (var frm = new frmTestComPort(ComPortNameEdit.Text,  Convert.ToInt32( ComPortSpeedEdit.Text)))
+            {
+                frm.ShowDialog();
+            }
+        }
+
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            using (var frm = new frmTestComPort(ComPortName2Edit.Text, Convert.ToInt32(ComPortSpeed2Edit.Text)))
+            {
+                frm.ShowDialog();
+            }
+        }
     }
 }

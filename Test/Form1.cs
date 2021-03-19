@@ -128,23 +128,28 @@ namespace Test
 
         private void button2_Click(object sender, EventArgs e)
         {
-            String received = "=00535.0(kg)";
-            int amount = new Regex("=").Matches(received).Count;
-            int amount2 = new Regex("(kg)").Matches(received).Count;
-            if (amount >= 1 && amount2 >= 1)
+            received = ".56R01W  12.56 R01W 12";
+            var R01W = new Regex("R01W").Matches(received);
+          //  int amount = new Regex("R01W").Matches(received).Count;
+            if (R01W.Count >= 2)
             {
-                var sp = received.Split(new[] { "=", "(kg)" }, StringSplitOptions.RemoveEmptyEntries);
-                if (sp.Count() >= 1)
-                {
-                    var number = sp[0].Trim().Replace(',', '.');
-                    if (decimal.TryParse(number, NumberStyles.AllowDecimalPoint, CultureInfo.CreateSpecificCulture("en-US"), out decimal display))
+                string str_weight = received.Substring(R01W[0].Index + R01W[0].Length, R01W[1].Index - R01W[0].Index - R01W[1].Length).Trim();
+
+            //    var sp = received.Split(new[] { "R01W" }, StringSplitOptions.RemoveEmptyEntries);
+            //    if (sp.Count() >= 1)
+          //      {
+                    decimal display;
+                    if (decimal.TryParse(str_weight, System.Globalization.NumberStyles.Number | System.Globalization.NumberStyles.AllowCurrencySymbol, CultureInfo.CreateSpecificCulture("en-GB"), out display))
                     {
                         weight = display;
                     }
                     else weight = 0;
 
+                   
                     received = "";
-                }
+
+                    return;
+             //   }
             }
         }
     }

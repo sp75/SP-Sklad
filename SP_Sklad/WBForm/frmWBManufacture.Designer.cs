@@ -118,6 +118,13 @@
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
+            this.MatRecipeAdditionalCostsGridControl = new DevExpress.XtraGrid.GridControl();
+            this.MatRecipeAdditionalCostsView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
@@ -158,6 +165,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
+            this.xtraTabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsView)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -371,6 +381,7 @@
             this.WBImgList.Images.SetKeyName(20, "Товари.bmp");
             this.WBImgList.Images.SetKeyName(21, "_нформац_я про рух товар_в.ico");
             this.WBImgList.Images.SetKeyName(22, "weighing-scale.png");
+            this.WBImgList.Images.SetKeyName(23, "ДопРасход.png");
             // 
             // RsvBarBtn
             // 
@@ -1188,7 +1199,76 @@
             this.xtraTabControl1.TabIndex = 17;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
-            this.xtraTabPage2});
+            this.xtraTabPage2,
+            this.xtraTabPage3});
+            // 
+            // xtraTabPage3
+            // 
+            this.xtraTabPage3.Controls.Add(this.MatRecipeAdditionalCostsGridControl);
+            this.xtraTabPage3.ImageIndex = 23;
+            this.xtraTabPage3.Name = "xtraTabPage3";
+            this.xtraTabPage3.Size = new System.Drawing.Size(965, 242);
+            this.xtraTabPage3.Text = "Додаткові витрати";
+            // 
+            // MatRecipeAdditionalCostsGridControl
+            // 
+            this.MatRecipeAdditionalCostsGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MatRecipeAdditionalCostsGridControl.Location = new System.Drawing.Point(0, 0);
+            this.MatRecipeAdditionalCostsGridControl.MainView = this.MatRecipeAdditionalCostsView;
+            this.MatRecipeAdditionalCostsGridControl.MenuManager = this.barManager1;
+            this.MatRecipeAdditionalCostsGridControl.Name = "MatRecipeAdditionalCostsGridControl";
+            this.MatRecipeAdditionalCostsGridControl.Size = new System.Drawing.Size(965, 242);
+            this.MatRecipeAdditionalCostsGridControl.TabIndex = 9;
+            this.MatRecipeAdditionalCostsGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.MatRecipeAdditionalCostsView});
+            // 
+            // MatRecipeAdditionalCostsView
+            // 
+            this.MatRecipeAdditionalCostsView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn9,
+            this.gridColumn12,
+            this.gridColumn13,
+            this.gridColumn14});
+            this.MatRecipeAdditionalCostsView.GridControl = this.MatRecipeAdditionalCostsGridControl;
+            this.MatRecipeAdditionalCostsView.Name = "MatRecipeAdditionalCostsView";
+            this.MatRecipeAdditionalCostsView.OptionsBehavior.AllowIncrementalSearch = true;
+            this.MatRecipeAdditionalCostsView.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "Назва";
+            this.gridColumn9.FieldName = "AdditionalCosts.Name";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.OptionsColumn.AllowEdit = false;
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 1;
+            this.gridColumn9.Width = 720;
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "К-сть, грн";
+            this.gridColumn12.FieldName = "Amount";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 2;
+            this.gridColumn12.Width = 146;
+            // 
+            // gridColumn13
+            // 
+            this.gridColumn13.Caption = "Од. виміру";
+            this.gridColumn13.FieldName = "ShortName";
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.Width = 86;
+            // 
+            // gridColumn14
+            // 
+            this.gridColumn14.Caption = "#";
+            this.gridColumn14.FieldName = "AdditionalCosts.Kod";
+            this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.OptionsColumn.AllowEdit = false;
+            this.gridColumn14.Visible = true;
+            this.gridColumn14.VisibleIndex = 0;
+            this.gridColumn14.Width = 81;
             // 
             // frmWBManufacture
             // 
@@ -1253,6 +1333,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
+            this.xtraTabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1348,5 +1431,12 @@
         private DevExpress.XtraEditors.LabelControl MsrLabel;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
+        private DevExpress.XtraGrid.GridControl MatRecipeAdditionalCostsGridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView MatRecipeAdditionalCostsView;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
     }
 }

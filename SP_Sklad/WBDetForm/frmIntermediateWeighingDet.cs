@@ -33,8 +33,8 @@ namespace SP_Sklad.WBDetForm
             public decimal? TotalWeightByRecipe { get; set; }
             public int? RecId { get; set; }
 
-
         }
+        private bool isNewRecord { get; set; }
 
         public frmIntermediateWeighingDet(BaseEntities db, Guid? id, IntermediateWeighing iw)
         {
@@ -43,25 +43,6 @@ namespace SP_Sklad.WBDetForm
             _iw = iw;
 
             InitializeComponent();
-
-            var wh_list = DB.SkladBase().UserAccessWh.Where(w => w.UserId == DBHelper.CurrentUser.UserId).Select(s => s.WId).ToList();
-            var wbm = _db.WayBillMake.FirstOrDefault(w => w.WbillId == _iw.WbillId);
-
-            mat_list = DB.SkladBase().GetWayBillMakeDet(_iw.WbillId).Where(w => wh_list.Contains(w.MatDefWId.Value) && w.Rsv == 0).OrderBy(o => o.Num).ToList().Select(s=> new make_det
-            {
-                MatName = s.MatName,
-                MsrName = s.MsrName,
-                AmountByRecipe = s.AmountByRecipe,
-                AmountIntermediateWeighing = s.AmountIntermediateWeighing,
-                MatId = s.MatId,
-                WbillId = _iw.WbillId,
-                RecipeCount = wbm.RecipeCount,
-                IntermediateWeighingCount = _db.v_IntermediateWeighingDet.Where(w => w.WbillId == _iw.WbillId && w.MatId == s.MatId).Count(),
-                TotalWeightByRecipe = wbm.AmountByRecipe,
-                RecId = wbm.RecId
-            }).ToList();
-
-            MatComboBox.Properties.DataSource = mat_list;
 
             using (var s = new UserSettingsRepository(UserSession.UserId, _db))
             {
@@ -84,13 +65,36 @@ namespace SP_Sklad.WBDetForm
                     TaraAmount = 0
                 };
 
+                isNewRecord = true;
+            }
+
+
+            var wh_list = DB.SkladBase().UserAccessWh.Where(w => w.UserId == DBHelper.CurrentUser.UserId).Select(s => s.WId).ToList();
+            var wbm = _db.WayBillMake.FirstOrDefault(w => w.WbillId == _iw.WbillId);
+
+            mat_list = DB.SkladBase().GetWayBillMakeDet(_iw.WbillId).Where(w => wh_list.Contains(w.MatDefWId.Value) && w.Rsv == 0).OrderBy(o => o.Num).ToList().Select(s => new make_det
+            {
+                MatName = s.MatName,
+                MsrName = s.MsrName,
+                AmountByRecipe = s.AmountByRecipe,
+                AmountIntermediateWeighing = _db.v_IntermediateWeighingDet.Where(w => w.WbillId == _iw.WbillId && w.MatId == s.MatId && w.Id != det.Id).Sum(st=> st.Total),
+                MatId = s.MatId,
+                WbillId = _iw.WbillId,
+                RecipeCount = wbm.RecipeCount,
+                IntermediateWeighingCount = _db.v_IntermediateWeighingDet.Where(w => w.WbillId == _iw.WbillId && w.MatId == s.MatId && w.Id != det.Id).Count(),
+                TotalWeightByRecipe = wbm.AmountByRecipe,
+                RecId = wbm.RecId
+            }).ToList();
+
+            if (isNewRecord)
+            {
                 if (mat_list.Any())
                 {
                     using (var f = new frmIntermediateWeighingList(mat_list))
                     {
-                        if (f.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                        if (f.ShowDialog() == DialogResult.OK)
                         {
-                            det.MatId = f.focused_row.MatId;
+                            det.MatId = f.focused_row != null ? f.focused_row.MatId : det.MatId;
                         }
                     }
                 }
@@ -100,9 +104,13 @@ namespace SP_Sklad.WBDetForm
                 }
             }
 
+
+            MatComboBox.Properties.DataSource = mat_list;
+
             IntermediateWeighingDetBS.DataSource = det;
 
             TareMatEdit.Properties.DataSource = _db.Materials.Where(w => w.TypeId == 5).Select(s => new { s.MatId, s.Name, s.Artikul, s.Weight }).ToList();
+
 
             GetOk();
         }
@@ -113,25 +121,21 @@ namespace SP_Sklad.WBDetForm
 
             if (row != null)
             {
-                /*    var wb_maked = DB.SkladBase().WayBillMake.Where(w => w.WbillId == _iw.WbillId).Select(s => new { s.RecipeCount }).FirstOrDefault();
 
-                    ByRecipeEdit.EditValue = row.AmountByRecipe;
-                    IntermediateWeighingEdit.EditValue = row.AmountIntermediateWeighing ;
-                    TotalEdit.EditValue = row.AmountByRecipe - (row.AmountIntermediateWeighing ?? 0);
-                    textEdit1.EditValue = row.AmountByRecipe / wb_maked.RecipeCount;*/
-
-                CalcAmount.EditValue = Math.Round(Convert.ToDecimal((row.AmountByRecipe * _iw.Amount) / row.TotalWeightByRecipe), 2) ;
+                CalcAmount.EditValue = Math.Round(Convert.ToDecimal((row.AmountByRecipe * _iw.Amount) / row.TotalWeightByRecipe), 2);
 
                 ByRecipeEdit.EditValue = row.AmountByRecipe;
                 IntermediateWeighingEdit.EditValue = row.AmountIntermediateWeighing;
                 TotalEdit.EditValue = row.AmountByRecipe - (row.AmountIntermediateWeighing ?? 0);
 
-                //  var wb = _db.WayBillMake.we
-                var rec_det = _db.MatRecDet.FirstOrDefault(w => w.MatId == row.MatId && w.RecId == row.RecId);
+                var deviation = _db.MatRecDet.FirstOrDefault(w => w.MatId == row.MatId && w.RecId == row.RecId)?.Deviation ?? 1000000;
                 var vizok = (dynamic)TareMatEdit.GetSelectedDataRow();
-                var netto_amount = AmountEdit.Value - TaraCalcEdit.Value - (vizok != null ? vizok.Weight : 0 ) ;
+                var netto_amount = AmountEdit.Value - TaraCalcEdit.Value - (vizok != null ? vizok.Weight : 0);
 
-                OkButton.Enabled = !String.IsNullOrEmpty(MatComboBox.Text) && (rec_det == null || (CalcAmount.Value + (rec_det != null ? rec_det.Deviation : 0)) >= netto_amount && (CalcAmount.Value - (rec_det != null ? rec_det.Deviation : 0)) <= netto_amount);
+
+                OkButton.Enabled = !String.IsNullOrEmpty(MatComboBox.Text)
+                    && ((CalcAmount.Value + deviation) >= netto_amount && (CalcAmount.Value - deviation) <= netto_amount);
+                //    && (TotalEdit.Value + deviation) >= netto_amount;
             }
             else
             {
@@ -227,9 +231,9 @@ namespace SP_Sklad.WBDetForm
             {
                 using (var f = new frmIntermediateWeighingList(mat_list))
                 {
-                    if (f.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    if (f.ShowDialog() == DialogResult.OK)
                     {
-                        MatComboBox.EditValue = f.focused_row.MatId;
+                        MatComboBox.EditValue = f.focused_row != null ? f.focused_row.MatId : MatComboBox.EditValue;
                         AmountEdit.Focus();
                     }
                 }

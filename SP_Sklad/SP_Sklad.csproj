@@ -388,6 +388,12 @@
     <Compile Include="Reports\XtraRep\DocListReport.Designer.cs">
       <DependentUpon>DocListReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\AdditionalCosts.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\AdditionalCostsDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\AspNetUsers.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -494,6 +500,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\MaterialMeasures.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\MatRecipeAdditionalCosts.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\MoneyMoveList_Result.cs">
@@ -861,11 +870,23 @@
     <Compile Include="ViewsForm\frmKagents.Designer.cs">
       <DependentUpon>frmKagents.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewsForm\frmAdditionalCosts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmAdditionalCosts.Designer.cs">
+      <DependentUpon>frmAdditionalCosts.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewsForm\frmKaGroup.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ViewsForm\frmKaGroup.Designer.cs">
       <DependentUpon>frmKaGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewsForm\frmTestComPort.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmTestComPort.Designer.cs">
+      <DependentUpon>frmTestComPort.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewsForm\frmMessageBox.cs">
       <SubType>Form</SubType>
@@ -1692,8 +1713,14 @@
     <EmbeddedResource Include="ViewsForm\frmKagents.resx">
       <DependentUpon>frmKagents.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmAdditionalCosts.resx">
+      <DependentUpon>frmAdditionalCosts.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmKaGroup.resx">
       <DependentUpon>frmKaGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmTestComPort.resx">
+      <DependentUpon>frmTestComPort.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmMessageBox.resx">
       <DependentUpon>frmMessageBox.cs</DependentUpon>
@@ -1911,6 +1938,7 @@
     <None Include="Properties\DataSources\SP_Sklad.MainTabs.WarehouseUserControl+ExtMatIfo.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.AccountType.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Actives.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.AdditionalCosts.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.AspNetUsers.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Banks.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.BanksPersons.datasource" />
@@ -1959,6 +1987,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatPrices.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatRecDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatRecipe.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.MatRecipeAdditionalCosts.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatRecipeTechProcDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Measures.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MoneyMoveList_Result.datasource" />

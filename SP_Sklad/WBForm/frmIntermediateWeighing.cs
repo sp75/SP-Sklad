@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SP_Sklad.Common;
 using SP_Sklad.SkladData;
+using SP_Sklad.ViewsForm;
 using SP_Sklad.WBDetForm;
 using EntityState = System.Data.Entity.EntityState;
 
@@ -148,13 +149,27 @@ namespace SP_Sklad.WBForm
                 throw new Exception("Не можливо зберегти документ, тільки перегляд.");
             }
 
-            _db.SaveChanges();
 
-            _db.ExecuteIntermediateWeighing(iw.WbillId);
+            var wh_list = DB.SkladBase().UserAccessWh.Where(w => w.UserId == DBHelper.CurrentUser.UserId).Select(s => s.WId).ToList();
+
+            var mat_list = DB.SkladBase().WaybillDet.Where(w => wh_list.Contains(w.WId.Value) && w.WbillId == iw.WbillId).Count();
+
+            if (mat_list != _db.IntermediateWeighingDet.Where(w => w.IntermediateWeighingId == _doc_id).Count() && TurnDocCheckBox.Checked)
+            {
+                using (var frm = new frmMessageBox(@"Попередження", @"Не всі позиці зважені, Ви дійсно хочете провести документ ?", false))
+                {
+                    if(frm.ShowDialog() != DialogResult.Yes)
+                    {
+                        TurnDocCheckBox.Checked = false;
+                    }
+                }
+            }
+
+            _db.SaveChanges();
 
             is_new_record = false;
 
-            Close();
+            _db.ExecuteIntermediateWeighing(iw.WbillId);
         }
 
 

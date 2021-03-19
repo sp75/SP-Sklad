@@ -119,13 +119,15 @@ namespace SP_Sklad.WBForm
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
+            _rawinput.KeyPressed -= OnKeyPressed;
+
             wb.Kontragent = _db.Kagent.Find(wb.KaId);
 
             IHelper.ShowMatListByWH(_db, wb, disc_card);
 
             _db.SaveChanges();
 
-            //     _db.ReservedAllPosition(wb.WbillId, DBHelper.CurrentUser.UserId).ToList();
+            _rawinput.KeyPressed += OnKeyPressed;
 
             RefreshDet();
 
@@ -224,10 +226,10 @@ namespace SP_Sklad.WBForm
 
         private void OnKeyPressed(object sender, RawInputEventArg e)
         {
-            if (!this.IsActive)
+      /*      if (!this.IsActive)
             {
                 return;
-            }
+            }*/
 
             if (e.KeyPressEvent.DeviceName == Settings.Default.barcode_scanner_name && e.KeyPressEvent.Message == Win32.WM_KEYDOWN)
             {
@@ -242,7 +244,7 @@ namespace SP_Sklad.WBForm
 
                 }
 
-                if (e.KeyPressEvent.VKey == 13 && BarCodeStr != null)
+                if (e.KeyPressEvent.VKey == 13 && !string.IsNullOrEmpty(BarCodeStr))
                 {
                     var mat = _db.Materials.FirstOrDefault(w => w.BarCode == BarCodeStr);
 
@@ -398,17 +400,21 @@ namespace SP_Sklad.WBForm
 
         private void DisCartButton_Click(object sender, EventArgs e)
         {
+            _rawinput.KeyPressed -= OnKeyPressed;
+
             using (var frm = new frmSetDiscountCard(_db, wb))
             {
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     disc_card = frm.cart;
-                    
+
                     RefreshDet();
 
                     SetFormTitle();
                 }
             }
+
+            _rawinput.KeyPressed += OnKeyPressed;
         }
 
         private void simpleButton12_Click_1(object sender, EventArgs e)
@@ -522,6 +528,8 @@ namespace SP_Sklad.WBForm
 
         private void simpleButton24_Click(object sender, EventArgs e)
         {
+            _rawinput.KeyPressed -= OnKeyPressed;
+
             using (var frm = new frmSetCustomDiscount(_db, wb))
             {
                 if (frm.ShowDialog() == DialogResult.OK)
@@ -529,6 +537,7 @@ namespace SP_Sklad.WBForm
                     RefreshDet();
                 }
             }
+            _rawinput.KeyPressed += OnKeyPressed;
         }
 
         private void simpleButton19_Click(object sender, EventArgs e)
@@ -629,6 +638,8 @@ namespace SP_Sklad.WBForm
 
         private void simpleButton25_Click(object sender, EventArgs e)
         {
+            _rawinput.KeyPressed -= OnKeyPressed;
+
             using (var frm = new frmKagents())
             {
                 if (frm.ShowDialog() == DialogResult.OK)
@@ -638,6 +649,8 @@ namespace SP_Sklad.WBForm
                     SetFormTitle();
                 }
             }
+
+            _rawinput.KeyPressed += OnKeyPressed;
         }
 
         private void SetFormTitle()
@@ -647,6 +660,8 @@ namespace SP_Sklad.WBForm
              
         private void simpleButton11_Click_1(object sender, EventArgs e)
         {
+            _rawinput.KeyPressed -= OnKeyPressed;
+
             using (var frm = new frmBarCode())
             {
                 if (frm.ShowDialog() == DialogResult.OK)
@@ -659,6 +674,8 @@ namespace SP_Sklad.WBForm
                     }
                 }
             }
+
+            _rawinput.KeyPressed += OnKeyPressed;
         }
 
         private void frmCashboxWBOut_FormClosing(object sender, FormClosingEventArgs e)

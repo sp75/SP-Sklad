@@ -13,14 +13,15 @@ using SP_Sklad.Properties;
 
 namespace SP_Sklad.Common
 {
-   public class ComPortHelper
+    public class ComPortHelper
     {
         private SerialPort _serialPort;
         private String received { get; set; }
+        public String received_tmp { get; set; }
         private String test { get; set; }
         public decimal weight { get; set; }
 
-        public ComPortHelper() 
+        public ComPortHelper()
             : this(Settings.Default.com_port_name, Convert.ToInt32(Settings.Default.com_port_speed))
         {
         }
@@ -71,7 +72,7 @@ namespace SP_Sklad.Common
                 MessageBox.Show("Не знайдено жодного СОМ порта!");
                 return;
             }
-          
+
             _serialPort.Open();
         }
 
@@ -80,6 +81,17 @@ namespace SP_Sklad.Common
             string read_existing = _serialPort.ReadExisting();
 
             received += read_existing;
+
+            /*   try
+                 {
+                     File.AppendAllText(Path.Combine(Application.StartupPath, "com_port.log"), read_existing);
+                     read_existing = "";
+                 }
+                 catch
+                 {
+                     ;
+                 }*/
+
             if (received != null && received.Length >= 10 && received.IndexOf('<') != -1 && received.IndexOf('>') != -1)
             {
                 var rez = Regex.Replace(received, "[^0-9 ]", "");
@@ -91,33 +103,36 @@ namespace SP_Sklad.Common
                 else weight = 0;
 
                 received = "";
+
+                return;
             }
-           
 
             if (received != null)
             {
-             //   String ss = "R01W  12.56 R01W";
-                int amount = new Regex("R01W").Matches(received).Count;
-                if (amount >= 2)
+                //   String ss = "R01W  12.56 R01W";
+                var R01W = new Regex("R01W").Matches(received);
+                if (R01W.Count >= 2)
                 {
-                    var sp = received.Split(new[] { "R01W" }, StringSplitOptions.RemoveEmptyEntries);
-                    if (sp.Count() >= 1)
-                    {
-                        decimal display;
-                        if (decimal.TryParse(sp[0].Trim(), System.Globalization.NumberStyles.Number | System.Globalization.NumberStyles.AllowCurrencySymbol, CultureInfo.CreateSpecificCulture("en-GB"), out display))
-                        {
-                            weight = display;
-                        }
-                        else weight = 0;
+                    string str_weight = received.Substring(R01W[0].Index + R01W[0].Length, R01W[1].Index - R01W[0].Index - R01W[1].Length).Trim();
 
-                        received = "";
+                    decimal display;
+                    if (decimal.TryParse(str_weight, System.Globalization.NumberStyles.Number | System.Globalization.NumberStyles.AllowCurrencySymbol, CultureInfo.CreateSpecificCulture("en-GB"), out display))
+                    {
+                        weight = display;
                     }
+                    else weight = 0;
+
+                    received_tmp = received;
+                    received = "";
+
+                    return;
                 }
             }
 
             if (received != null)
             {
                 //   String ss = "=00535.0(kg)";
+
                 int amount = new Regex("=").Matches(received).Count;
                 int amount2 = new Regex("(kg)").Matches(received).Count;
                 if (amount >= 1 && amount2 >= 1)
@@ -132,21 +147,15 @@ namespace SP_Sklad.Common
                         }
                         else weight = 0;
 
+                        received_tmp = received;
                         received = "";
+
+                        return;
                     }
 
                 }
             }
 
-                /*   try
-                   {
-                       File.AppendAllText(Path.Combine(Application.StartupPath, "com_port.log"), read_existing);
-                       read_existing = "";
-                   }
-                   catch
-                   {
-                       ;
-                   }*/
         }
 
     }

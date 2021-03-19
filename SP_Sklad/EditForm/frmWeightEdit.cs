@@ -44,6 +44,7 @@ namespace SP_Sklad.EditForm
             {
                 timer1.Stop();
                 AmountEdit.EditValue = com_port.weight;
+            //    textBox1.Text = com_port.received_tmp;
                 com_port.Close();
             }
         }

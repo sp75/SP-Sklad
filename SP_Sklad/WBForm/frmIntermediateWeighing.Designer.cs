@@ -90,11 +90,11 @@
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
@@ -705,6 +705,24 @@
             this.gridColumn7.VisibleIndex = 3;
             this.gridColumn7.Width = 61;
             // 
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "Візок";
+            this.gridColumn8.FieldName = "VizokName";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 5;
+            this.gridColumn8.Width = 61;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "Вага візка";
+            this.gridColumn9.FieldName = "VizokWeight";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 6;
+            this.gridColumn9.Width = 79;
+            // 
             // repositoryItemImageComboBox1
             // 
             this.repositoryItemImageComboBox1.AutoHeight = false;
@@ -731,24 +749,6 @@
             this.barButtonItem1.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Insert));
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
-            // 
-            // gridColumn8
-            // 
-            this.gridColumn8.Caption = "Візок";
-            this.gridColumn8.FieldName = "VizokName";
-            this.gridColumn8.Name = "gridColumn8";
-            this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 5;
-            this.gridColumn8.Width = 61;
-            // 
-            // gridColumn9
-            // 
-            this.gridColumn9.Caption = "Вага візка";
-            this.gridColumn9.FieldName = "VizokWeight";
-            this.gridColumn9.Name = "gridColumn9";
-            this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 6;
-            this.gridColumn9.Width = 79;
             // 
             // frmIntermediateWeighing
             // 

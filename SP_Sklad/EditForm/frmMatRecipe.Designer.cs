@@ -141,6 +141,17 @@
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.TechProcLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
+            this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.MatRecipeAdditionalCostsGridControl = new DevExpress.XtraGrid.GridControl();
+            this.MatRecipeAdditionalCostsBS = new System.Windows.Forms.BindingSource(this.components);
+            this.MatRecipeAdditionalCostsView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeBindingSource)).BeginInit();
@@ -197,6 +208,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeTechProcDetBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TechProcLookUpEdit.Properties)).BeginInit();
+            this.xtraTabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
+            this.groupControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsView)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -298,6 +315,7 @@
             this.ImageList.Images.SetKeyName(5, "Рух товар_в.bmp");
             this.ImageList.Images.SetKeyName(6, "_нформац_я про резерв товару.ico");
             this.ImageList.Images.SetKeyName(7, "_нформац_я про рух товар_в.ico");
+            this.ImageList.Images.SetKeyName(8, "ДопРасход.png");
             // 
             // barButtonItem3
             // 
@@ -408,7 +426,8 @@
             this.xtraTabPage4,
             this.xtraTabPage14,
             this.xtraTabPage2,
-            this.xtraTabPage3});
+            this.xtraTabPage3,
+            this.xtraTabPage5});
             // 
             // xtraTabPage1
             // 
@@ -1354,6 +1373,112 @@
             this.TechProcLookUpEdit.TabIndex = 37;
             this.TechProcLookUpEdit.EditValueChanged += new System.EventHandler(this.TechProcLookUpEdit_EditValueChanged);
             // 
+            // xtraTabPage5
+            // 
+            this.xtraTabPage5.Controls.Add(this.groupControl4);
+            this.xtraTabPage5.Name = "xtraTabPage5";
+            this.xtraTabPage5.Size = new System.Drawing.Size(618, 404);
+            this.xtraTabPage5.Text = "Додаткові витрати";
+            // 
+            // groupControl4
+            // 
+            this.groupControl4.Controls.Add(this.MatRecipeAdditionalCostsGridControl);
+            this.groupControl4.Controls.Add(this.simpleButton5);
+            this.groupControl4.Controls.Add(this.simpleButton8);
+            this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl4.Location = new System.Drawing.Point(0, 0);
+            this.groupControl4.Name = "groupControl4";
+            this.groupControl4.Size = new System.Drawing.Size(618, 404);
+            this.groupControl4.TabIndex = 16;
+            this.groupControl4.Text = "Додаткові витрати";
+            // 
+            // MatRecipeAdditionalCostsGridControl
+            // 
+            this.MatRecipeAdditionalCostsGridControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MatRecipeAdditionalCostsGridControl.DataSource = this.MatRecipeAdditionalCostsBS;
+            this.MatRecipeAdditionalCostsGridControl.Location = new System.Drawing.Point(20, 71);
+            this.MatRecipeAdditionalCostsGridControl.MainView = this.MatRecipeAdditionalCostsView;
+            this.MatRecipeAdditionalCostsGridControl.MenuManager = this.barManager1;
+            this.MatRecipeAdditionalCostsGridControl.Name = "MatRecipeAdditionalCostsGridControl";
+            this.MatRecipeAdditionalCostsGridControl.Size = new System.Drawing.Size(580, 311);
+            this.MatRecipeAdditionalCostsGridControl.TabIndex = 8;
+            this.MatRecipeAdditionalCostsGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.MatRecipeAdditionalCostsView});
+            // 
+            // MatRecipeAdditionalCostsBS
+            // 
+            this.MatRecipeAdditionalCostsBS.DataSource = typeof(SP_Sklad.SkladData.MatRecipeAdditionalCosts);
+            // 
+            // MatRecipeAdditionalCostsView
+            // 
+            this.MatRecipeAdditionalCostsView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn11,
+            this.gridColumn12,
+            this.gridColumn13,
+            this.gridColumn14});
+            this.MatRecipeAdditionalCostsView.GridControl = this.MatRecipeAdditionalCostsGridControl;
+            this.MatRecipeAdditionalCostsView.Name = "MatRecipeAdditionalCostsView";
+            this.MatRecipeAdditionalCostsView.OptionsBehavior.AllowIncrementalSearch = true;
+            this.MatRecipeAdditionalCostsView.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn11
+            // 
+            this.gridColumn11.Caption = "Назва";
+            this.gridColumn11.FieldName = "AdditionalCosts.Name";
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.OptionsColumn.AllowEdit = false;
+            this.gridColumn11.Visible = true;
+            this.gridColumn11.VisibleIndex = 1;
+            this.gridColumn11.Width = 348;
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "К-сть, грн";
+            this.gridColumn12.FieldName = "Amount";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 2;
+            this.gridColumn12.Width = 149;
+            // 
+            // gridColumn13
+            // 
+            this.gridColumn13.Caption = "Од. виміру";
+            this.gridColumn13.FieldName = "ShortName";
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.Width = 86;
+            // 
+            // gridColumn14
+            // 
+            this.gridColumn14.Caption = "#";
+            this.gridColumn14.FieldName = "AdditionalCosts.Kod";
+            this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.OptionsColumn.AllowEdit = false;
+            this.gridColumn14.Visible = true;
+            this.gridColumn14.VisibleIndex = 0;
+            this.gridColumn14.Width = 62;
+            // 
+            // simpleButton5
+            // 
+            this.simpleButton5.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton5.Image")));
+            this.simpleButton5.Location = new System.Drawing.Point(20, 32);
+            this.simpleButton5.Name = "simpleButton5";
+            this.simpleButton5.Size = new System.Drawing.Size(106, 23);
+            this.simpleButton5.TabIndex = 14;
+            this.simpleButton5.Text = "Додати...";
+            this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
+            // 
+            // simpleButton8
+            // 
+            this.simpleButton8.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton8.Image")));
+            this.simpleButton8.Location = new System.Drawing.Point(132, 32);
+            this.simpleButton8.Name = "simpleButton8";
+            this.simpleButton8.Size = new System.Drawing.Size(101, 23);
+            this.simpleButton8.TabIndex = 13;
+            this.simpleButton8.Text = "Видалити";
+            this.simpleButton8.Click += new System.EventHandler(this.simpleButton8_Click);
+            // 
             // frmMatRecipe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1434,6 +1559,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeTechProcDetBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TechProcLookUpEdit.Properties)).EndInit();
+            this.xtraTabPage5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
+            this.groupControl4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1548,5 +1679,16 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private System.Windows.Forms.BindingSource MatRecDetListBS;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage5;
+        private DevExpress.XtraEditors.GroupControl groupControl4;
+        private DevExpress.XtraGrid.GridControl MatRecipeAdditionalCostsGridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView MatRecipeAdditionalCostsView;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
+        private DevExpress.XtraEditors.SimpleButton simpleButton5;
+        private DevExpress.XtraEditors.SimpleButton simpleButton8;
+        private System.Windows.Forms.BindingSource MatRecipeAdditionalCostsBS;
     }
 }

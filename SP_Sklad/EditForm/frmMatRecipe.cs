@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SP_Sklad.Common;
 using SP_Sklad.SkladData;
+using SP_Sklad.ViewsForm;
+
 namespace SP_Sklad.EditForm
 {
     public partial class frmMatRecipe : DevExpress.XtraEditors.XtraForm
@@ -45,6 +47,7 @@ namespace SP_Sklad.EditForm
             {
                 tree.Add(new CatalogTreeList { Id = 1, ParentId = -255, Text = "Технологічні процеси", ImgIdx = 7, TabIdx = 3 });
             }
+            tree.Add(new CatalogTreeList { Id = 2, ParentId = -255, Text = "Додаткові витрати", ImgIdx = 8, TabIdx = 5 });
 
 
             TreeListBindingSource.DataSource = tree;
@@ -74,6 +77,7 @@ namespace SP_Sklad.EditForm
                 MatRecipeBindingSource.DataSource = _mr;
                 GetRecDetail();
                 GetTechProcDetail();
+                RefreshMatRecipeAdditionalCosts();
             }
         }
 
@@ -511,6 +515,43 @@ namespace SP_Sklad.EditForm
             _db.SaveChanges();
 
          
+        }
+
+        private void simpleButton5_Click(object sender, EventArgs e)
+        {
+            using (var frm = new frmAdditionalCosts())
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    var item = _db.MatRecipeAdditionalCosts.Add(new MatRecipeAdditionalCosts
+                    {
+                        Amount = 0,
+                        RecId = _mr.RecId,
+                        AdditionalCosts = _db.AdditionalCosts.Find(frm.focused_row.Id)
+                   
+                    });
+
+                    _db.SaveChanges();
+
+                    RefreshMatRecipeAdditionalCosts();
+                }
+            }
+        }
+
+        private void RefreshMatRecipeAdditionalCosts()
+        {
+            MatRecipeAdditionalCostsBS.DataSource = _db.MatRecipeAdditionalCosts.Where(w => w.RecId == _mr.RecId).ToList();
+        }
+
+        private void simpleButton8_Click(object sender, EventArgs e)
+        {
+            dynamic det_item = MatRecipeAdditionalCostsView.GetFocusedRow();
+            if (det_item == null) return;
+
+            _db.MatRecipeAdditionalCosts.Remove(_db.MatRecipeAdditionalCosts.Find(det_item.Id));
+            _db.SaveChanges();
+
+            RefreshMatRecipeAdditionalCosts();
         }
     }
 }

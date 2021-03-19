@@ -376,9 +376,6 @@ namespace SP_Sklad.WBForm
             var r = new ObjectParameter("RSV", typeof(Int32));
 
             _db.ReservedPosition(wbd_row.PosId, r, DBHelper.CurrentUser.UserId);
-      //      _db.SaveChanges();
-        //    current_transaction = current_transaction.CommitRetaining(_db);
-      //      UpdLockWB();
 
             if (r.Value != null)
             {
@@ -788,6 +785,24 @@ namespace SP_Sklad.WBForm
             if (e.Button.Index == 1)
             {
                 PersonComboBox.EditValue = IHelper.ShowDirectList(PersonComboBox.EditValue, 3);
+            }
+        }
+
+        private void WaybillDetOutGridView_RowCellStyle(object sender, RowCellStyleEventArgs e)
+        {
+            if (e.RowHandle < 0)
+            {
+                return;
+            }
+
+            var wh_row = WaybillDetOutGridView.GetRow(e.RowHandle) as GetWayBillDetOut_Result;
+
+            if (wh_row != null && e.Column.FieldName == "Price")
+            {
+                if (wh_row.AvgInPrice > wh_row.Price)
+                {
+                    e.Appearance.ForeColor = Color.Red;
+                }
             }
         }
     }

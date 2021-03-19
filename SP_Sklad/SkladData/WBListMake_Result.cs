@@ -59,6 +59,8 @@ namespace SP_Sklad.SkladData
         public string Artikul { get; set; }
         public Nullable<int> RecipeCount { get; set; }
         public Nullable<decimal> AmountByRecipe { get; set; }
+        public Nullable<decimal> AdditionalCostsAmount { get; set; }
+        public Nullable<decimal> AdditionalCosts { get; set; }
         public Nullable<decimal> MatOut { get; set; }
     }
 }

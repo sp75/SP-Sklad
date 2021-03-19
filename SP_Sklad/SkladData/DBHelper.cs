@@ -511,6 +511,20 @@ order by wbd.ondate desc
             }
         }
 
+        public static bool CheckIntermediateWeighing(int wbill_id, BaseEntities db)
+        {
+            bool r = true;
+
+            if (db.IntermediateWeighing.Any(a => a.WbillId == wbill_id && a.Checked == 0))
+            {
+                MessageBox.Show("Не всі проміжкові зважування проведені !");
+                r = false;
+            }
+
+         
+            return r;
+        }
+
         public static List<MaterialsByWh> GetMaterialOnWh(int mat_id, int wid, BaseEntities db)
         {
             return db.Database.SqlQuery<MaterialsByWh>(@"SELECT 

@@ -174,7 +174,7 @@ namespace SP_Sklad.MainTabs
             DelTechProcBtn.Enabled = false;
             EditTechProcBtn.Enabled = false;
 
-      //      AddIntermediateWeighing.Enabled = false;
+            AddIntermediateWeighing.Enabled = false;
             EditIntermediateWeighing.Enabled = false;
             DelIntermediateWeighing.Enabled = false;
 
@@ -792,7 +792,7 @@ namespace SP_Sklad.MainTabs
 
             AddTechProcBtn.Enabled = (focused_row != null && focused_row.Checked != 1 && focused_tree_node.CanModify == 1);
 
-         //  AddIntermediateWeighing.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanModify == 1);
+           AddIntermediateWeighing.Enabled = (focused_row != null && focused_row.Checked == 0 /*&& focused_tree_node.CanModify == 1*/);
            
         }
 
@@ -1126,8 +1126,8 @@ namespace SP_Sklad.MainTabs
         {
             focused_row = WbGridView.GetFocusedRow() as WBListMake_Result;
 
-            DelIntermediateWeighing.Enabled = (/*(focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanModify == 1) &&*/ IntermediateWeighingGridView.DataRowCount > 0);
-            EditIntermediateWeighing.Enabled = (/*focused_row != null &&  focused_row.Checked == 0 && focused_tree_node.CanModify == 1 &&*/ IntermediateWeighingGridView.DataRowCount > 0 );
+            DelIntermediateWeighing.Enabled = ((focused_row != null && focused_row.Checked == 0/* && focused_tree_node.CanModify == 1*/) && IntermediateWeighingGridView.DataRowCount > 0);
+            EditIntermediateWeighing.Enabled = (focused_row != null &&  focused_row.Checked == 0/* && focused_tree_node.CanModify == 1*/ && IntermediateWeighingGridView.DataRowCount > 0 );
         }
 
         private void WbGridView_RowStyle(object sender, RowStyleEventArgs e)

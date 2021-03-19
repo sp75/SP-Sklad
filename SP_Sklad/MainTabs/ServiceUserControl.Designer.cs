@@ -170,16 +170,18 @@
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.ComPortSpeed2Edit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
-            this.ComPortNameEdit = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.ComPortName2Edit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.ComPortSpeedEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.ComPortName2Edit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.ComPortNameEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.xtraTabPage9 = new DevExpress.XtraTab.XtraTabPage();
             this.PeriodChangeBtn = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
@@ -269,11 +271,11 @@
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ComPortSpeed2Edit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ComPortNameEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ComPortName2Edit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ComPortSpeedEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ComPortName2Edit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ComPortNameEdit.Properties)).BeginInit();
             this.xtraTabPage9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EndPeriodDateEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EndPeriodDateEdit.Properties)).BeginInit();
@@ -1801,6 +1803,7 @@
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.simpleButton4);
             this.groupControl1.Controls.Add(this.ComPortSpeed2Edit);
             this.groupControl1.Controls.Add(this.labelControl10);
             this.groupControl1.Controls.Add(this.ComPortName2Edit);
@@ -1811,6 +1814,15 @@
             this.groupControl1.TabIndex = 33;
             this.groupControl1.Tag = "";
             this.groupControl1.Text = "Ваги №2";
+            // 
+            // simpleButton4
+            // 
+            this.simpleButton4.Location = new System.Drawing.Point(335, 97);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(66, 22);
+            this.simpleButton4.TabIndex = 33;
+            this.simpleButton4.Text = "Тест";
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
             // 
             // ComPortSpeed2Edit
             // 
@@ -1854,16 +1866,16 @@
             this.labelControl10.TabIndex = 29;
             this.labelControl10.Text = "Швидкість";
             // 
-            // ComPortNameEdit
+            // ComPortName2Edit
             // 
-            this.ComPortNameEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", global::SP_Sklad.Properties.Settings.Default, "com_port_name", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.ComPortNameEdit.EditValue = global::SP_Sklad.Properties.Settings.Default.com_port_name;
-            this.ComPortNameEdit.Location = new System.Drawing.Point(15, 56);
-            this.ComPortNameEdit.MenuManager = this.barManager1;
-            this.ComPortNameEdit.Name = "ComPortNameEdit";
-            this.ComPortNameEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.ComPortName2Edit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", global::SP_Sklad.Properties.Settings.Default, "com_port_name_2", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ComPortName2Edit.EditValue = global::SP_Sklad.Properties.Settings.Default.com_port_name_2;
+            this.ComPortName2Edit.Location = new System.Drawing.Point(15, 56);
+            this.ComPortName2Edit.MenuManager = this.barManager1;
+            this.ComPortName2Edit.Name = "ComPortName2Edit";
+            this.ComPortName2Edit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ComPortNameEdit.Properties.Items.AddRange(new object[] {
+            this.ComPortName2Edit.Properties.Items.AddRange(new object[] {
             "COM1",
             "COM2",
             "COM3",
@@ -1872,9 +1884,10 @@
             "COM6",
             "COM7",
             "COM8"});
-            this.ComPortNameEdit.Size = new System.Drawing.Size(186, 22);
-            this.ComPortNameEdit.StyleController = this.styleController1;
-            this.ComPortNameEdit.TabIndex = 30;
+            this.ComPortName2Edit.Size = new System.Drawing.Size(186, 22);
+            this.ComPortName2Edit.StyleController = this.styleController1;
+            this.ComPortName2Edit.TabIndex = 30;
+            this.ComPortName2Edit.EditValueChanged += new System.EventHandler(this.ComPortNameEdit_EditValueChanged);
             // 
             // labelControl11
             // 
@@ -1887,6 +1900,7 @@
             // 
             // groupControl3
             // 
+            this.groupControl3.Controls.Add(this.simpleButton3);
             this.groupControl3.Controls.Add(this.ComPortSpeedEdit);
             this.groupControl3.Controls.Add(this.labelControl5);
             this.groupControl3.Controls.Add(this.labelControl4);
@@ -1897,6 +1911,15 @@
             this.groupControl3.TabIndex = 32;
             this.groupControl3.Tag = "";
             this.groupControl3.Text = "Ваги №1";
+            // 
+            // simpleButton3
+            // 
+            this.simpleButton3.Location = new System.Drawing.Point(335, 97);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(66, 22);
+            this.simpleButton3.TabIndex = 32;
+            this.simpleButton3.Text = "Тест";
+            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
             // 
             // ComPortSpeedEdit
             // 
@@ -1936,29 +1959,6 @@
             this.labelControl5.TabIndex = 29;
             this.labelControl5.Text = "Швидкість";
             // 
-            // ComPortName2Edit
-            // 
-            this.ComPortName2Edit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", global::SP_Sklad.Properties.Settings.Default, "com_port_name_2", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.ComPortName2Edit.EditValue = global::SP_Sklad.Properties.Settings.Default.com_port_name_2;
-            this.ComPortName2Edit.Location = new System.Drawing.Point(15, 56);
-            this.ComPortName2Edit.MenuManager = this.barManager1;
-            this.ComPortName2Edit.Name = "ComPortName2Edit";
-            this.ComPortName2Edit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ComPortName2Edit.Properties.Items.AddRange(new object[] {
-            "COM1",
-            "COM2",
-            "COM3",
-            "COM4",
-            "COM5",
-            "COM6",
-            "COM7",
-            "COM8"});
-            this.ComPortName2Edit.Size = new System.Drawing.Size(186, 22);
-            this.ComPortName2Edit.StyleController = this.styleController1;
-            this.ComPortName2Edit.TabIndex = 30;
-            this.ComPortName2Edit.EditValueChanged += new System.EventHandler(this.ComPortNameEdit_EditValueChanged);
-            // 
             // labelControl4
             // 
             this.labelControl4.Location = new System.Drawing.Point(15, 34);
@@ -1967,6 +1967,28 @@
             this.labelControl4.StyleController = this.styleController1;
             this.labelControl4.TabIndex = 28;
             this.labelControl4.Text = "Порт";
+            // 
+            // ComPortNameEdit
+            // 
+            this.ComPortNameEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", global::SP_Sklad.Properties.Settings.Default, "com_port_name", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ComPortNameEdit.EditValue = global::SP_Sklad.Properties.Settings.Default.com_port_name;
+            this.ComPortNameEdit.Location = new System.Drawing.Point(15, 56);
+            this.ComPortNameEdit.MenuManager = this.barManager1;
+            this.ComPortNameEdit.Name = "ComPortNameEdit";
+            this.ComPortNameEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ComPortNameEdit.Properties.Items.AddRange(new object[] {
+            "COM1",
+            "COM2",
+            "COM3",
+            "COM4",
+            "COM5",
+            "COM6",
+            "COM7",
+            "COM8"});
+            this.ComPortNameEdit.Size = new System.Drawing.Size(186, 22);
+            this.ComPortNameEdit.StyleController = this.styleController1;
+            this.ComPortNameEdit.TabIndex = 30;
             // 
             // xtraTabPage9
             // 
@@ -2243,12 +2265,12 @@
             this.groupControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ComPortSpeed2Edit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ComPortNameEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ComPortName2Edit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             this.groupControl3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ComPortSpeedEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ComPortName2Edit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ComPortNameEdit.Properties)).EndInit();
             this.xtraTabPage9.ResumeLayout(false);
             this.xtraTabPage9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EndPeriodDateEdit.Properties.CalendarTimeProperties)).EndInit();
@@ -2440,5 +2462,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl12;
         private DevExpress.XtraEditors.TextEdit DeviceNameRMKTextEdit;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton4;
+        private DevExpress.XtraEditors.SimpleButton simpleButton3;
     }
 }

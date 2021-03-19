@@ -312,6 +312,12 @@
         <AssociationConnector Association="BaseModel.FK_MatRecipeTechProcDet_TechProcess" />
         <AssociationConnector Association="BaseModel.FK_TECHPROCDET_TECHPROCESS" />
         <AssociationConnector Association="BaseModel.FK_MatRecipe_MeasureId" />
+        <EntityTypeShape EntityType="BaseModel.AdditionalCosts" Width="1.5" PointX="26.125" PointY="10.375" />
+        <EntityTypeShape EntityType="BaseModel.MatRecipeAdditionalCosts" Width="1.5" PointX="22.125" PointY="26.5" />
+        <AssociationConnector Association="BaseModel.FK_MatRecipeAdditionalCosts_AdditionalCosts" />
+        <EntityTypeShape EntityType="BaseModel.AdditionalCostsDet" Width="1.5" PointX="25.375" PointY="33.25" />
+        <AssociationConnector Association="BaseModel.FK_AdditionalCostsDet_WaybillList" />
+        <AssociationConnector Association="BaseModel.FK_AdditionalCostsDet_AdditionalCosts" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

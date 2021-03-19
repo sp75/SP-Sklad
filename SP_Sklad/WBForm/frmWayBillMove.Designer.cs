@@ -118,6 +118,7 @@
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
+            this.progressBarControl1 = new DevExpress.XtraEditors.ProgressBarControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
@@ -149,6 +150,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.progressBarControl1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -897,11 +899,23 @@
             this.barDockControl1.Location = new System.Drawing.Point(2, 2);
             this.barDockControl1.Size = new System.Drawing.Size(968, 0);
             // 
+            // progressBarControl1
+            // 
+            this.progressBarControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBarControl1.Location = new System.Drawing.Point(697, 224);
+            this.progressBarControl1.MenuManager = this.barManager1;
+            this.progressBarControl1.Name = "progressBarControl1";
+            this.progressBarControl1.Properties.Step = 1;
+            this.progressBarControl1.Size = new System.Drawing.Size(270, 18);
+            this.progressBarControl1.TabIndex = 22;
+            this.progressBarControl1.Visible = false;
+            // 
             // frmWayBillMove
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(972, 546);
+            this.Controls.Add(this.progressBarControl1);
             this.Controls.Add(this.panelControl5);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.standaloneBarDockControl1);
@@ -952,6 +966,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.progressBarControl1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1023,5 +1038,6 @@
         private DevExpress.XtraEditors.LookUpEdit PersonOutComboBox;
         private DevExpress.XtraEditors.LabelControl labelControl12;
         private System.Windows.Forms.BindingSource WaybillDetOutBS;
+        private DevExpress.XtraEditors.ProgressBarControl progressBarControl1;
     }
 }

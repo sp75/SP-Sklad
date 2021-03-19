@@ -26,7 +26,6 @@ namespace SP_Sklad
         public static int enterprise_id { get; set; }
         public static mainForm main_form { get; set; }
 
-
         public mainForm(int UserId)
         {
             InitializeComponent();
@@ -47,6 +46,7 @@ namespace SP_Sklad
             }
 
             History.AddEntry(new HistoryEntity { FunId = 0, MainTabs = xtraTabControl1.SelectedTabPageIndex });
+
         }
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -57,16 +57,17 @@ namespace SP_Sklad
 
         private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            using (var frm = new frmMessageBox(@"Закрити програму", @"Ви дійсно хочете вийти з програми?", false))
-            {
-                var want_to_exit = /*MessageBox.Show(@"Ви дійсно хочете вийти з програми?", @"Закрити програму", MessageBoxButtons.YesNo)*/frm.ShowDialog() == DialogResult.Yes;
-                if (want_to_exit)
-                {
-                    DBHelper.ClearSessionWaybill();
-                }
+            //   using (var frm = new frmMessageBox(@"Закрити програму", @"Ви дійсно хочете вийти з програми?", false))
+            //   {
+            var want_to_exit = MessageBox.Show(@"Ви дійсно хочете вийти з програми?", @"Закрити програму", MessageBoxButtons.YesNo) == DialogResult.Yes;/*frm.ShowDialog() == DialogResult.Yes;*/
 
-                e.Cancel = !want_to_exit;
+            if (want_to_exit)
+            {
+                DBHelper.ClearSessionWaybill();
             }
+
+            e.Cancel = !want_to_exit;
+            //    }
         }
 
         private void mainForm_FormClosed(object sender, FormClosedEventArgs e)

@@ -132,6 +132,9 @@ namespace SP_Sklad.WBForm
             WaybillDetOutGridView.TopRowIndex = top_row;
 
             TechProcGridControl.DataSource = _db.v_TechProcDet.AsNoTracking().Where(w => w.WbillId == _wbill_id).OrderBy(o => o.Num).ToList();
+
+            MatRecipeAdditionalCostsGridControl.DataSource = _db.AdditionalCostsDet.Where(w => w.WbillId == _wbill_id).ToList();
+
             GetOk();
         }
 
@@ -254,13 +257,12 @@ namespace SP_Sklad.WBForm
 
             if (TurnDocCheckBox.Checked)
             {
-                RefreshDet();
-                if(wbd_list.Any(w => w.Rsv == 0))
+                wbd_list = new BaseEntities().GetWayBillMakeDet(_wbill_id).AsNoTracking().OrderBy(o => o.Num).ToList();
+                if (wbd_list.Any(w => w.Rsv == 0))
                 {
                     MessageBox.Show("Не всі позиції зарезервовано");
                     return;
                 }
-
 
                 var ex_wb = _db.ExecuteWayBill(wb.WbillId, null, DBHelper.CurrentUser.KaId).FirstOrDefault();
 
@@ -322,6 +324,12 @@ namespace SP_Sklad.WBForm
 
         private void RsvBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+
+            if (!DBHelper.CheckIntermediateWeighing(_wbill_id.Value, _db))
+            {
+                return;
+            }
+
             var r = new ObjectParameter("RSV", typeof(Int32));
 
             _db.ReservedPosition(wbd_row.PosId, r, DBHelper.CurrentUser.UserId);
@@ -351,6 +359,11 @@ namespace SP_Sklad.WBForm
 
         private void RsvAllBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (!DBHelper.CheckIntermediateWeighing(_wbill_id.Value, _db))
+            {
+                return;
+            }
+
             var res = _db.ReservedAllPosition(wb.WbillId, DBHelper.CurrentUser.UserId);
 
             if (res.Any())
