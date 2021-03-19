@@ -121,8 +121,7 @@ namespace SP_Sklad.WBDetForm
 
             if (row != null)
             {
-
-                CalcAmount.EditValue = Math.Round(Convert.ToDecimal((row.AmountByRecipe * _iw.Amount) / row.TotalWeightByRecipe), 2);
+                var plan_weighing = Math.Round(Convert.ToDecimal((row.AmountByRecipe * _iw.Amount) / row.TotalWeightByRecipe), 2);
 
                 ByRecipeEdit.EditValue = row.AmountByRecipe;
                 IntermediateWeighingEdit.EditValue = row.AmountIntermediateWeighing;
@@ -132,9 +131,11 @@ namespace SP_Sklad.WBDetForm
                 var vizok = (dynamic)TareMatEdit.GetSelectedDataRow();
                 var netto_amount = AmountEdit.Value - TaraCalcEdit.Value - (vizok != null ? vizok.Weight : 0);
 
+                CalcAmount.EditValue = plan_weighing + TaraCalcEdit.Value + (vizok != null ? vizok.Weight : 0);
 
-                OkButton.Enabled = !String.IsNullOrEmpty(MatComboBox.Text)
-                    && ((CalcAmount.Value + deviation) >= netto_amount && (CalcAmount.Value - deviation) <= netto_amount);
+
+               OkButton.Enabled = !String.IsNullOrEmpty(MatComboBox.Text)
+                    && ((plan_weighing + deviation) >= netto_amount && (plan_weighing - deviation) <= netto_amount);
                 //    && (TotalEdit.Value + deviation) >= netto_amount;
             }
             else
@@ -148,6 +149,7 @@ namespace SP_Sklad.WBDetForm
             var vizok = (dynamic)TareMatEdit.GetSelectedDataRow();
 
             det.Total = det.Amount - det.TaraAmount - (vizok != null ? (decimal)vizok.Weight : 0);
+            det.TaraTotal = det.TaraAmount + (vizok != null ? (decimal)vizok.Weight : 0);
 
             if (_db.Entry<IntermediateWeighingDet>(det).State == EntityState.Detached)
             {

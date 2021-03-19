@@ -1086,10 +1086,10 @@ namespace SP.Reports
         {
             var sql_1 = @"
    select [WayBillMake].WbillId  , [WaybillList].Num, [WaybillList].OnDate, rec.Name as RecipeName, [WayBillMake].Amount
-  from  [sp_base].[dbo].[WayBillMake] 
-  inner join [sp_base].[dbo].[WaybillList] on [WaybillList].WbillId = [WayBillMake].WbillId
-  join [sp_base].[dbo].[MatRecipe] on [MatRecipe].RecId = [WayBillMake].RecId 
-  join [sp_base].[dbo].[Materials] rec on rec.MatId = [MatRecipe].MatId
+  from [WayBillMake] 
+  inner join [WaybillList] on [WaybillList].WbillId = [WayBillMake].WbillId
+  join [MatRecipe] on [MatRecipe].RecId = [WayBillMake].RecId 
+  join [Materials] rec on rec.MatId = [MatRecipe].MatId
   where [WaybillList].OnDate between  {0} and {1} and [WaybillList].WType = -20
   order by rec.Name , [WaybillList].OnDate
      ";
@@ -1103,13 +1103,13 @@ namespace SP.Reports
             }
 
             var sql_2 = @"
-  select [WayBillMake].WbillId , s_mat.Name, [WaybillDet].Amount, ( ROUND( ([WayBillMake].Amount / [MatRecipe].Amount), 0) * [MatRecDet].AMOUNT )  as  RecAmount
+  select [WayBillMake].WbillId , s_mat.Name, [WaybillDet].Amount, [WaybillDet].Discount  as  RecAmount
   from  [WayBillMake] 
-  join [sp_base].[dbo].[WaybillList] on [WaybillList].WbillId = [WayBillMake].WbillId
-  join [sp_base].[dbo].[MatRecipe] on [MatRecipe].RecId = [WayBillMake].RecId 
-  join [sp_base].[dbo].[WaybillDet] on [WayBillMake].[WbillId] = [WaybillDet].[WbillId]
-  join [sp_base].[dbo].[Materials] s_mat on s_mat.MatId = [WaybillDet].MatId
-  left outer join [sp_base].[dbo].[MatRecDet] on [MatRecDet].RecId = [WayBillMake].RecId and [WaybillDet].MatId = [MatRecDet].MatId
+  join [WaybillList] on [WaybillList].WbillId = [WayBillMake].WbillId
+  join [MatRecipe] on [MatRecipe].RecId = [WayBillMake].RecId 
+  join [WaybillDet] on [WayBillMake].[WbillId] = [WaybillDet].[WbillId]
+  join [Materials] s_mat on s_mat.MatId = [WaybillDet].MatId
+  left outer join [MatRecDet] on [MatRecDet].RecId = [WayBillMake].RecId and [WaybillDet].MatId = [MatRecDet].MatId
   where [WaybillList].OnDate between {0} and {1} and [WaybillList].WType = -20 and [MatRecipe].Amount > 0";
 
             var use_rec_mat = _db.Database.SqlQuery<use_rec_mat>(sql_2, StartDate, EndDate).ToList().OrderBy(o => o.Name).ToList();
@@ -1147,6 +1147,7 @@ namespace SP.Reports
             data_for_report.Add("NotUseMatRecipe", not_use_rec_mat);
             data_for_report.Add("_realation_", realation);
         }
+
         private void REP_39()
         {
             int grp = Convert.ToInt32(MatGroup.GrpId);

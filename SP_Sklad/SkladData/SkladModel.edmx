@@ -371,6 +371,7 @@
           <Property Name="TaraAmount" Type="numeric" Precision="15" Scale="4" />
           <Property Name="Total" Type="numeric" Precision="15" Scale="4" />
           <Property Name="TaraMatId" Type="int" />
+          <Property Name="TaraTotal" Type="numeric" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="Jobs">
           <Key>
@@ -5295,7 +5296,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="DiscountPrice" Type="numeric" Precision="38" Scale="6" />
                 <Property Name="Notes" Type="nvarchar" MaxLength="100" />
                 <Property Name="UpdateAt" Type="datetime" />
-                <Property Name="AvgInPrice" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="AvgInPrice" Type="numeric" Precision="38" Scale="6" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -9328,7 +9329,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="w_type" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetWayBillDetOut" IsComposable="true" ReturnType="Collection(BaseModel.GetWayBillDetOut_Result)">
-            <Parameter Name="wbill_id" Mode="In" Type="Int32" />
+          <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
@@ -14703,6 +14704,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="TaraAmount" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="Total" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="TaraMatId" Type="Int32" />
+          <Property Name="TaraTotal" Type="Decimal" Precision="15" Scale="4" />
         </EntityType>
         <Association Name="FK_IntermediateWeighingDet_IntermediateWeighing">
           <End Type="BaseModel.IntermediateWeighing" Role="IntermediateWeighing" Multiplicity="1">
@@ -18911,6 +18913,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="IntermediateWeighingDet">
             <EntityTypeMapping TypeName="BaseModel.IntermediateWeighingDet">
               <MappingFragment StoreEntitySet="IntermediateWeighingDet">
+                <ScalarProperty Name="TaraTotal" ColumnName="TaraTotal" />
                 <ScalarProperty Name="TaraMatId" ColumnName="TaraMatId" />
                 <ScalarProperty Name="Total" ColumnName="Total" />
                 <ScalarProperty Name="TaraAmount" ColumnName="TaraAmount" />
