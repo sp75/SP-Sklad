@@ -43,11 +43,11 @@ namespace SP_Sklad.WBDetForm
 
             TechProcessCB.Properties.Buttons[1].Enabled = DBHelper.CanViewUserTreeNode("frmTechProcessEdit");
 
-            var ext_list = _db.Materials.Where(w => w.TypeId == 2).Select(s => new { s.MatId, s.Name, s.Artikul }).ToList();
+            var ext_list = _db.Tara.Where(w => w.TypeId == 2).Select(s => new { MatId = s.TaraId, s.Name, s.Artikul }).ToList();
             ExtMatComboBox.Properties.DataSource = ext_list;
             ExtMatComboBox2.Properties.DataSource = ext_list;
 
-            TareMatEdit.Properties.DataSource = _db.Materials.Where(w => w.TypeId == 5).Select(s => new { s.MatId, s.Name, s.Artikul, s.Weight }).ToList();
+            TareMatEdit.Properties.DataSource = _db.Tara.Where(w => w.TypeId == 5).Select(s => new { MatId = s.TaraId, s.Name, s.Artikul, s.Weight }).ToList();
 
             if (_DetId == null)
             {
@@ -69,7 +69,7 @@ namespace SP_Sklad.WBDetForm
             TechProcDetBS.DataSource = tp_d;
 
             var r = _db.WaybillList.Where(w => w.WType == -20 && (w.Checked == 0 || w.Checked == 2) && w.WbillId != _wbill_id).SelectMany(s => s.TechProcDet).Where(w => w.MatId != null).Select(s => s.MatId).ToList();
-            MatComboBox.Properties.DataSource = _db.Materials.Where(w => w.TypeId == 1 && (!r.Contains(w.MatId) || w.MatId == tp_d.MatId)).Select(s => new { s.MatId, s.Name, s.Artikul }).ToList();
+            MatComboBox.Properties.DataSource = _db.Tara.Where(w => w.TypeId == 1 && (!r.Contains(w.TaraId) || w.TaraId == tp_d.MatId)).Select(s => new { MatId = s.TaraId, s.Name, s.Artikul }).ToList();
             //   MatComboBox.Properties.DataSource = _db.Materials.Where(w => w.TypeId == 1 /*&& (!r.Contains(w.MatId) || w.MatId == tp_d.MatId)*/).Select(s => new { s.MatId, s.Name, s.Artikul }).ToList();
 
             if (ext_list.Any())

@@ -1110,6 +1110,34 @@
           <Property Name="TableName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="KeyName" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Tara">
+          <Key>
+            <PropertyRef Name="TaraId" />
+          </Key>
+          <Property Name="TaraId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
+          <Property Name="Num" Type="int" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+          <Property Name="GrpId" Type="int" />
+          <Property Name="WId" Type="int" />
+          <Property Name="Weight" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="TypeId" Type="int" />
+          <Property Name="DateAdded" Type="datetime" />
+          <Property Name="DateModified" Type="datetime" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+          <Property Name="InvNumber" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TaraGroup">
+          <Key>
+            <PropertyRef Name="GrpId" />
+          </Key>
+          <Property Name="GrpId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+          <Property Name="Num" Type="int" />
+        </EntityType>
         <EntityType Name="TAXES">
           <Key>
             <PropertyRef Name="TAXID" />
@@ -5157,6 +5185,29 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </ReturnType>
         </Function>
         <Function Name="GetSvcTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetTaraList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="grp" Type="int" Mode="In" />
+          <Parameter Name="get_child_node" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="TaraId" Type="int" Nullable="false" />
+                <Property Name="Name" Type="nvarchar" MaxLength="255" />
+                <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
+                <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+                <Property Name="GrpId" Type="int" />
+                <Property Name="WId" Type="int" />
+                <Property Name="Num" Type="int" />
+                <Property Name="Weight" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="GrpName" Type="nvarchar" MaxLength="100" />
+                <Property Name="WhName" Type="nvarchar" MaxLength="64" />
+                <Property Name="DateAdded" Type="datetime" />
+                <Property Name="DateModified" Type="datetime" />
+                <Property Name="InvNumber" Type="nvarchar" MaxLength="50" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="GetUsedMaterials" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="mat_id" Type="int" Mode="In" />
           <Parameter Name="on_date" Type="datetime" Mode="In" />
@@ -6519,6 +6570,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SvcGroup" EntityType="Self.SvcGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tables" EntityType="Self.Tables" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tara" EntityType="Self.Tara" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaraGroup" EntityType="Self.TaraGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TAXES" EntityType="Self.TAXES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TAXREESTRTYPE" EntityType="Self.TAXREESTRTYPE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TAXWB" EntityType="Self.TAXWB" Schema="dbo" store:Type="Tables" />
@@ -9330,6 +9383,12 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </FunctionImport>
           <FunctionImport Name="GetWayBillDetOut" IsComposable="true" ReturnType="Collection(BaseModel.GetWayBillDetOut_Result)">
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Tara" EntityType="BaseModel.Tara" />
+          <EntitySet Name="TaraGroup" EntityType="BaseModel.TaraGroup" />
+          <FunctionImport Name="GetTaraList" IsComposable="true" ReturnType="Collection(BaseModel.GetTaraList_Result)">
+            <Parameter Name="grp" Mode="In" Type="Int32" />
+            <Parameter Name="get_child_node" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
@@ -15581,6 +15640,49 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="DateTime" Name="UpdateAt" Nullable="true" Precision="23" />
           <Property Type="Decimal" Name="AvgInPrice" Nullable="true" Precision="15" Scale="4" />
         </ComplexType>
+        <EntityType Name="Tara">
+          <Key>
+            <PropertyRef Name="TaraId" />
+          </Key>
+          <Property Name="TaraId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Artikul" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Num" Type="Int32" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <Property Name="GrpId" Type="Int32" />
+          <Property Name="WId" Type="Int32" />
+          <Property Name="Weight" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="TypeId" Type="Int32" />
+          <Property Name="DateAdded" Type="DateTime" Precision="3" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="InvNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TaraGroup">
+          <Key>
+            <PropertyRef Name="GrpId" />
+          </Key>
+          <Property Name="GrpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Num" Type="Int32" />
+        </EntityType>
+        <ComplexType Name="GetTaraList_Result">
+          <Property Type="Int32" Name="TaraId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="GrpId" Nullable="true" />
+          <Property Type="Int32" Name="WId" Nullable="true" />
+          <Property Type="Int32" Name="Num" Nullable="true" />
+          <Property Type="Decimal" Name="Weight" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="String" Name="GrpName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="WhName" Nullable="true" MaxLength="64" />
+          <Property Type="DateTime" Name="DateAdded" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="DateModified" Nullable="true" Precision="23" />
+          <Property Type="String" Name="InvNumber" Nullable="true" MaxLength="50" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -19676,6 +19778,55 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
                 <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
                 <ScalarProperty Name="AvgInPrice" ColumnName="AvgInPrice" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Tara">
+            <EntityTypeMapping TypeName="BaseModel.Tara">
+              <MappingFragment StoreEntitySet="Tara">
+                <ScalarProperty Name="InvNumber" ColumnName="InvNumber" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TaraId" ColumnName="TaraId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaraGroup">
+            <EntityTypeMapping TypeName="BaseModel.TaraGroup">
+              <MappingFragment StoreEntitySet="TaraGroup">
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PId" ColumnName="PId" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetTaraList" FunctionName="BaseModel.Store.GetTaraList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetTaraList_Result">
+                <ScalarProperty Name="TaraId" ColumnName="TaraId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="GrpName" ColumnName="GrpName" />
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="InvNumber" ColumnName="InvNumber" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

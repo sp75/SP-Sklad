@@ -56,6 +56,7 @@
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.AddGroupMatBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.standaloneBarDockControl8 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -351,6 +352,18 @@
             this.gridColumn89 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn90 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn91 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.xtraTabPage33 = new DevExpress.XtraTab.XtraTabPage();
+            this.TaraGridControl = new DevExpress.XtraGrid.GridControl();
+            this.TaraListDS = new System.Windows.Forms.BindingSource(this.components);
+            this.TaraGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn93 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn94 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn95 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn98 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn99 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn100 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit12 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.gridView9 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtraTabPage11 = new DevExpress.XtraTab.XtraTabPage();
             this.ExplorerPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -500,6 +513,12 @@
             this.xtraTabPage32.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PreparationMatRecipeGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PreparationMatRecipeGridView)).BeginInit();
+            this.xtraTabPage33.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TaraGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TaraListDS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TaraGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplorerPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).BeginInit();
@@ -633,8 +652,9 @@
             this.MoveToRecipeArchiveBarBtnItem,
             this.ShowRecipeArchiveRecordsbarCheckItem,
             this.btnMoveUp,
-            this.btnMoveDown});
-            this.barManager1.MaxItemId = 43;
+            this.btnMoveDown,
+            this.barButtonItem1});
+            this.barManager1.MaxItemId = 44;
             // 
             // bar1
             // 
@@ -789,7 +809,8 @@
             this.barSubItem1.Id = 13;
             this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.AddGroupMatBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
             this.barSubItem1.Name = "barSubItem1";
             // 
             // AddGroupMatBtn
@@ -807,6 +828,14 @@
             this.barButtonItem8.ImageIndex = 13;
             this.barButtonItem8.Name = "barButtonItem8";
             this.barButtonItem8.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Група контейнерів";
+            this.barButtonItem1.Id = 43;
+            this.barButtonItem1.ImageIndex = 17;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick_1);
             // 
             // standaloneBarDockControl8
             // 
@@ -917,6 +946,7 @@
             this.BarImageList.Images.SetKeyName(14, "Товари.bmp");
             this.BarImageList.Images.SetKeyName(15, "iconfinder_folder_edit_36067.png");
             this.BarImageList.Images.SetKeyName(16, "tree.png");
+            this.BarImageList.Images.SetKeyName(17, "tara.png");
             // 
             // RenameMatGroupBarButtonItem
             // 
@@ -1192,6 +1222,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(62, "credit adjustment.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(63, "акт інвентаризації з контрагентом.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(64, "preparation.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(65, "tara.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // mainContentTab
@@ -1208,6 +1239,7 @@
             this.xtraTabPage10,
             this.xtraTabPage8,
             this.xtraTabPage9,
+            this.xtraTabPage33,
             this.xtraTabPage11});
             // 
             // xtraTabPage7
@@ -3685,6 +3717,113 @@
             this.gridColumn91.FieldName = "Archived";
             this.gridColumn91.Name = "gridColumn91";
             // 
+            // xtraTabPage33
+            // 
+            this.xtraTabPage33.Controls.Add(this.TaraGridControl);
+            this.xtraTabPage33.Name = "xtraTabPage33";
+            this.xtraTabPage33.Size = new System.Drawing.Size(1086, 580);
+            this.xtraTabPage33.Text = "Тара";
+            // 
+            // TaraGridControl
+            // 
+            this.TaraGridControl.DataSource = this.TaraListDS;
+            this.TaraGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TaraGridControl.Location = new System.Drawing.Point(0, 0);
+            this.TaraGridControl.MainView = this.TaraGridView;
+            this.TaraGridControl.Name = "TaraGridControl";
+            this.TaraGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemCheckEdit12});
+            this.TaraGridControl.Size = new System.Drawing.Size(1086, 580);
+            this.TaraGridControl.TabIndex = 1;
+            this.TaraGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.TaraGridView,
+            this.gridView9});
+            // 
+            // TaraListDS
+            // 
+            this.TaraListDS.DataSource = typeof(SP_Sklad.SkladData.GetTaraList_Result);
+            // 
+            // TaraGridView
+            // 
+            this.TaraGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.TaraGridView.Appearance.Row.Options.UseFont = true;
+            this.TaraGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn93,
+            this.gridColumn94,
+            this.gridColumn95,
+            this.gridColumn98,
+            this.gridColumn99,
+            this.gridColumn100});
+            this.TaraGridView.GridControl = this.TaraGridControl;
+            this.TaraGridView.Name = "TaraGridView";
+            this.TaraGridView.OptionsBehavior.AllowIncrementalSearch = true;
+            this.TaraGridView.OptionsBehavior.Editable = false;
+            this.TaraGridView.OptionsView.EnableAppearanceEvenRow = true;
+            this.TaraGridView.OptionsView.EnableAppearanceOddRow = true;
+            this.TaraGridView.OptionsView.ShowGroupPanel = false;
+            this.TaraGridView.DoubleClick += new System.EventHandler(this.TaraGridView_DoubleClick);
+            // 
+            // gridColumn93
+            // 
+            this.gridColumn93.Caption = "Найменування";
+            this.gridColumn93.FieldName = "Name";
+            this.gridColumn93.Name = "gridColumn93";
+            this.gridColumn93.Visible = true;
+            this.gridColumn93.VisibleIndex = 0;
+            this.gridColumn93.Width = 270;
+            // 
+            // gridColumn94
+            // 
+            this.gridColumn94.Caption = "Артикул";
+            this.gridColumn94.FieldName = "Artikul";
+            this.gridColumn94.Name = "gridColumn94";
+            this.gridColumn94.Visible = true;
+            this.gridColumn94.VisibleIndex = 1;
+            this.gridColumn94.Width = 188;
+            // 
+            // gridColumn95
+            // 
+            this.gridColumn95.Caption = "Інв. №";
+            this.gridColumn95.FieldName = "InvNumber";
+            this.gridColumn95.Name = "gridColumn95";
+            this.gridColumn95.Visible = true;
+            this.gridColumn95.VisibleIndex = 2;
+            this.gridColumn95.Width = 74;
+            // 
+            // gridColumn98
+            // 
+            this.gridColumn98.Caption = "Вага";
+            this.gridColumn98.FieldName = "Weight";
+            this.gridColumn98.Name = "gridColumn98";
+            this.gridColumn98.Visible = true;
+            this.gridColumn98.VisibleIndex = 3;
+            // 
+            // gridColumn99
+            // 
+            this.gridColumn99.Caption = "Група товарів";
+            this.gridColumn99.FieldName = "GrpName";
+            this.gridColumn99.Name = "gridColumn99";
+            this.gridColumn99.Visible = true;
+            this.gridColumn99.VisibleIndex = 4;
+            // 
+            // gridColumn100
+            // 
+            this.gridColumn100.Caption = "Змінено";
+            this.gridColumn100.FieldName = "DateModified";
+            this.gridColumn100.Name = "gridColumn100";
+            // 
+            // repositoryItemCheckEdit12
+            // 
+            this.repositoryItemCheckEdit12.AutoHeight = false;
+            this.repositoryItemCheckEdit12.Name = "repositoryItemCheckEdit12";
+            this.repositoryItemCheckEdit12.ValueChecked = 1;
+            this.repositoryItemCheckEdit12.ValueUnchecked = 0;
+            // 
+            // gridView9
+            // 
+            this.gridView9.GridControl = this.TaraGridControl;
+            this.gridView9.Name = "gridView9";
+            // 
             // xtraTabPage11
             // 
             this.xtraTabPage11.Name = "xtraTabPage11";
@@ -3911,6 +4050,12 @@
             this.xtraTabPage32.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PreparationMatRecipeGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PreparationMatRecipeGridView)).EndInit();
+            this.xtraTabPage33.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.TaraGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TaraListDS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TaraGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplorerPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).EndInit();
@@ -4245,5 +4390,18 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn89;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn90;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn91;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage33;
+        private DevExpress.XtraGrid.GridControl TaraGridControl;
+        private System.Windows.Forms.BindingSource TaraListDS;
+        public DevExpress.XtraGrid.Views.Grid.GridView TaraGridView;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn93;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn94;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn95;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit12;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn98;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn99;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn100;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView9;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }

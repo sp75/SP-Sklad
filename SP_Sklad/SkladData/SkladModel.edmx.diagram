@@ -318,6 +318,8 @@
         <EntityTypeShape EntityType="BaseModel.AdditionalCostsDet" Width="1.5" PointX="25.375" PointY="33.25" />
         <AssociationConnector Association="BaseModel.FK_AdditionalCostsDet_WaybillList" />
         <AssociationConnector Association="BaseModel.FK_AdditionalCostsDet_AdditionalCosts" />
+        <EntityTypeShape EntityType="BaseModel.Tara" Width="1.5" PointX="27" PointY="24.25" />
+        <EntityTypeShape EntityType="BaseModel.TaraGroup" Width="1.5" PointX="28" PointY="5.25" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

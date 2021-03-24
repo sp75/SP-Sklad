@@ -70,6 +70,11 @@
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.NdsLabel = new DevExpress.XtraEditors.LabelControl();
+            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
+            this.NdsEdit = new DevExpress.XtraEditors.CalcEdit();
+            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
+            this.NdsCheckEdit = new DevExpress.XtraEditors.CheckEdit();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
             this.textEdit1 = new DevExpress.XtraEditors.MemoEdit();
             this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
@@ -98,11 +103,6 @@
             this.GoTopMatPricesBtn = new DevExpress.XtraEditors.SimpleButton();
             this.DisCheckBox = new DevExpress.XtraEditors.CheckEdit();
             this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
-            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
-            this.NdsEdit = new DevExpress.XtraEditors.CalcEdit();
-            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
-            this.NdsCheckEdit = new DevExpress.XtraEditors.CheckEdit();
-            this.NdsLabel = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeList)).BeginInit();
@@ -125,6 +125,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             this.xtraTabPage3.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NdsEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NdsCheckEdit.Properties)).BeginInit();
             this.xtraTabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             this.xtraTabPage5.SuspendLayout();
@@ -148,8 +150,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DisCheckBox.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NdsEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NdsCheckEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -219,6 +219,7 @@
             this.ImageList.Images.SetKeyName(4, "Right.bmp");
             this.ImageList.Images.SetKeyName(5, "Right_gray.png");
             this.ImageList.Images.SetKeyName(6, "Delete.bmp");
+            this.ImageList.Images.SetKeyName(7, "CloseFolder.bmp");
             // 
             // barButtonItem3
             // 
@@ -556,6 +557,62 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(587, 388);
             this.panel4.TabIndex = 29;
+            // 
+            // NdsLabel
+            // 
+            this.NdsLabel.Appearance.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.NdsLabel.Location = new System.Drawing.Point(20, 352);
+            this.NdsLabel.Name = "NdsLabel";
+            this.NdsLabel.Size = new System.Drawing.Size(6, 13);
+            this.NdsLabel.StyleController = this.styleController1;
+            this.NdsLabel.TabIndex = 50;
+            this.NdsLabel.Text = "*";
+            // 
+            // simpleButton6
+            // 
+            this.simpleButton6.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton6.Image")));
+            this.simpleButton6.ImageList = this.ImageList;
+            this.simpleButton6.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton6.Location = new System.Drawing.Point(293, 64);
+            this.simpleButton6.Name = "simpleButton6";
+            this.simpleButton6.Size = new System.Drawing.Size(22, 22);
+            this.simpleButton6.TabIndex = 49;
+            this.simpleButton6.Click += new System.EventHandler(this.simpleButton6_Click);
+            // 
+            // NdsEdit
+            // 
+            this.NdsEdit.Location = new System.Drawing.Point(148, 64);
+            this.NdsEdit.Name = "NdsEdit";
+            this.NdsEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.NdsEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.NdsEdit.Properties.ReadOnly = true;
+            this.NdsEdit.Properties.ShowCloseButton = true;
+            this.NdsEdit.Size = new System.Drawing.Size(139, 22);
+            this.NdsEdit.StyleController = this.styleController1;
+            this.NdsEdit.TabIndex = 48;
+            // 
+            // labelControl20
+            // 
+            this.labelControl20.Location = new System.Drawing.Point(53, 67);
+            this.labelControl20.Name = "labelControl20";
+            this.labelControl20.Size = new System.Drawing.Size(89, 16);
+            this.labelControl20.StyleController = this.styleController1;
+            this.labelControl20.TabIndex = 47;
+            this.labelControl20.Text = "Ставка ПДВ, %";
+            // 
+            // NdsCheckEdit
+            // 
+            this.NdsCheckEdit.Location = new System.Drawing.Point(20, 26);
+            this.NdsCheckEdit.MenuManager = this.barManager1;
+            this.NdsCheckEdit.Name = "NdsCheckEdit";
+            this.NdsCheckEdit.Properties.Caption = "Товар обкладаеться ПДВ";
+            this.NdsCheckEdit.Properties.ValueChecked = 1;
+            this.NdsCheckEdit.Properties.ValueUnchecked = 0;
+            this.NdsCheckEdit.Size = new System.Drawing.Size(219, 20);
+            this.NdsCheckEdit.StyleController = this.styleController1;
+            this.NdsCheckEdit.TabIndex = 46;
+            this.NdsCheckEdit.CheckedChanged += new System.EventHandler(this.NdsCheckEdit_CheckedChanged);
             // 
             // xtraTabPage4
             // 
@@ -903,62 +960,6 @@
             this.splitterControl1.TabIndex = 41;
             this.splitterControl1.TabStop = false;
             // 
-            // simpleButton6
-            // 
-            this.simpleButton6.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton6.Image")));
-            this.simpleButton6.ImageList = this.ImageList;
-            this.simpleButton6.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton6.Location = new System.Drawing.Point(293, 64);
-            this.simpleButton6.Name = "simpleButton6";
-            this.simpleButton6.Size = new System.Drawing.Size(22, 22);
-            this.simpleButton6.TabIndex = 49;
-            this.simpleButton6.Click += new System.EventHandler(this.simpleButton6_Click);
-            // 
-            // NdsEdit
-            // 
-            this.NdsEdit.Location = new System.Drawing.Point(148, 64);
-            this.NdsEdit.Name = "NdsEdit";
-            this.NdsEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.NdsEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.NdsEdit.Properties.ReadOnly = true;
-            this.NdsEdit.Properties.ShowCloseButton = true;
-            this.NdsEdit.Size = new System.Drawing.Size(139, 22);
-            this.NdsEdit.StyleController = this.styleController1;
-            this.NdsEdit.TabIndex = 48;
-            // 
-            // labelControl20
-            // 
-            this.labelControl20.Location = new System.Drawing.Point(53, 67);
-            this.labelControl20.Name = "labelControl20";
-            this.labelControl20.Size = new System.Drawing.Size(89, 16);
-            this.labelControl20.StyleController = this.styleController1;
-            this.labelControl20.TabIndex = 47;
-            this.labelControl20.Text = "Ставка ПДВ, %";
-            // 
-            // NdsCheckEdit
-            // 
-            this.NdsCheckEdit.Location = new System.Drawing.Point(20, 26);
-            this.NdsCheckEdit.MenuManager = this.barManager1;
-            this.NdsCheckEdit.Name = "NdsCheckEdit";
-            this.NdsCheckEdit.Properties.Caption = "Товар обкладаеться ПДВ";
-            this.NdsCheckEdit.Properties.ValueChecked = 1;
-            this.NdsCheckEdit.Properties.ValueUnchecked = 0;
-            this.NdsCheckEdit.Size = new System.Drawing.Size(219, 20);
-            this.NdsCheckEdit.StyleController = this.styleController1;
-            this.NdsCheckEdit.TabIndex = 46;
-            this.NdsCheckEdit.CheckedChanged += new System.EventHandler(this.NdsCheckEdit_CheckedChanged);
-            // 
-            // NdsLabel
-            // 
-            this.NdsLabel.Appearance.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.NdsLabel.Location = new System.Drawing.Point(20, 352);
-            this.NdsLabel.Name = "NdsLabel";
-            this.NdsLabel.Size = new System.Drawing.Size(6, 13);
-            this.NdsLabel.StyleController = this.styleController1;
-            this.NdsLabel.TabIndex = 50;
-            this.NdsLabel.Text = "*";
-            // 
             // frmMatGroupEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1004,6 +1005,8 @@
             this.xtraTabPage3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NdsEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NdsCheckEdit.Properties)).EndInit();
             this.xtraTabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             this.xtraTabPage5.ResumeLayout(false);
@@ -1030,8 +1033,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DisCheckBox.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NdsEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NdsCheckEdit.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

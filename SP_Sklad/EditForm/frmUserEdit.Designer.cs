@@ -268,7 +268,7 @@
             this.ImageList.Images.SetKeyName(11, "exec16.png");
             this.ImageList.Images.SetKeyName(12, "info.bmp");
             this.ImageList.Images.SetKeyName(13, "unit_with_grent_option.bmp");
-            this.ImageList.Images.SetKeyName(14, "Наявн_сть на сладах.bmp");
+            this.ImageList.Images.SetKeyName(14, "grant_rights_wh.png");
             this.ImageList.Images.SetKeyName(15, "Каси.bmp");
             this.ImageList.Images.SetKeyName(16, "Склад+Торговля.bmp");
             // 
@@ -834,6 +834,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(62, "credit adjustment.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(63, "акт інвентаризації з контрагентом.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(64, "preparation.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(65, "tara.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // xtraTabPage3

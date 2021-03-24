@@ -46,11 +46,10 @@ namespace SP_Sklad.EditForm
             ProducerLookUpEdit.Properties.Items.AddRange(_db.Materials.Where(w => w.Producer != null).Select(s => s.Producer).Distinct().ToList());
             MatTypeEdit.Properties.DataSource = new List<object>()
             {
-                new { Id = 1, Name = "Рама" },
-                new { Id = 2, Name = "Вішало" },
-                new { Id = 3, Name = "Тара" },
+         //       new { Id = 1, Name = "Рама" },
+         //       new { Id = 2, Name = "Вішало" },
                 new { Id = 4, Name = "ТМЦ" },
-                new { Id = 5, Name = "Візок" }
+       //         new { Id = 5, Name = "Візок" }
             };
 
             using (var s = new UserSettingsRepository(UserSession.UserId, new SkladData.BaseEntities()))

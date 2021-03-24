@@ -181,6 +181,8 @@ namespace SP_Sklad.SkladData
         public DbSet<AdditionalCosts> AdditionalCosts { get; set; }
         public DbSet<MatRecipeAdditionalCosts> MatRecipeAdditionalCosts { get; set; }
         public DbSet<AdditionalCostsDet> AdditionalCostsDet { get; set; }
+        public DbSet<Tara> Tara { get; set; }
+        public DbSet<TaraGroup> TaraGroup { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)
@@ -2395,6 +2397,20 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("wbill_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillDetOut_Result>("[BaseEntities].[GetWayBillDetOut](@wbill_id)", wbill_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetTaraList")]
+        public virtual IQueryable<GetTaraList_Result> GetTaraList(Nullable<int> grp, Nullable<int> get_child_node)
+        {
+            var grpParameter = grp.HasValue ?
+                new ObjectParameter("grp", grp) :
+                new ObjectParameter("grp", typeof(int));
+    
+            var get_child_nodeParameter = get_child_node.HasValue ?
+                new ObjectParameter("get_child_node", get_child_node) :
+                new ObjectParameter("get_child_node", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetTaraList_Result>("[BaseEntities].[GetTaraList](@grp, @get_child_node)", grpParameter, get_child_nodeParameter);
         }
     }
 }

@@ -1013,12 +1013,12 @@ namespace SP.Reports
                 s.WaybillList.WayBillMake.MatRecipe.Materials.Name
             }).ToList();
 
-            var list = _db.Materials.Where(w => w.TypeId == 1).ToList().Select(s => new
+            var list = _db.Tara.Where(w => w.TypeId == 1).ToList().Select(s => new
             {
                 s.Name,
                 s.Artikul,
                 s.Weight,
-                Status = r.Any(a => a.MatId == s.MatId) ? r.FirstOrDefault(f => f.MatId == s.MatId).Name : "Вільна"
+                Status = r.Any(a => a.MatId == s.TaraId) ? r.FirstOrDefault(f => f.MatId == s.TaraId).Name : "Вільна"
             });
 
 

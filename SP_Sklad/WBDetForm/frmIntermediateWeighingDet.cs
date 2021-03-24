@@ -109,7 +109,7 @@ namespace SP_Sklad.WBDetForm
 
             IntermediateWeighingDetBS.DataSource = det;
 
-            TareMatEdit.Properties.DataSource = _db.Materials.Where(w => w.TypeId == 5).Select(s => new { s.MatId, s.Name, s.Artikul, s.Weight }).ToList();
+            TareMatEdit.Properties.DataSource = _db.Tara.Where(w => w.TypeId == 5).Select(s => new { MatId = s.TaraId, s.Name, s.Artikul, s.Weight }).ToList();
 
 
             GetOk();

@@ -193,6 +193,8 @@
     <Compile Include="Models\Services.cs" />
     <Compile Include="Models\SettingApp.cs" />
     <Compile Include="Models\StornoWayBill_Result.cs" />
+    <Compile Include="Models\Tara.cs" />
+    <Compile Include="Models\TaraGroup.cs" />
     <Compile Include="Models\WBListMake_Result.cs" />
     <Compile Include="SPBaseModel.cs" />
     <Compile Include="Models\SvcGroup.cs" />

@@ -178,6 +178,9 @@ namespace SP.Base.Models
         public virtual DbSet<REP_1_Result> REP_1_Result { get; set; }
       
         public virtual DbSet<REP_2_Result> REP_2_Result { get; set; }
+        public virtual DbSet<Tara> Tara { get; set; }
+        public virtual DbSet<TaraGroup> TaraGroup { get; set; }
+
 
 
 
@@ -2865,6 +2868,10 @@ namespace SP.Base.Models
             modelBuilder.Entity<v_WaybillList>()
                 .Property(e => e.AddressBuy)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Tara>()
+               .Property(e => e.Weight)
+               .HasPrecision(15, 4);
         }
     }
 }

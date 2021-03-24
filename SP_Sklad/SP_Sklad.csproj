@@ -304,6 +304,12 @@
     <Compile Include="EditForm\frmBarCode.Designer.cs">
       <DependentUpon>frmBarCode.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditForm\frmTaraEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmTaraEdit.Designer.cs">
+      <DependentUpon>frmTaraEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditForm\frmSetCustomDiscount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -315,6 +321,12 @@
     </Compile>
     <Compile Include="EditForm\frmSetWBNote.Designer.cs">
       <DependentUpon>frmSetWBNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditForm\frmTaraGroupEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmTaraGroupEdit.Designer.cs">
+      <DependentUpon>frmTaraGroupEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="EditForm\frmWeightEdit.cs">
       <SubType>Form</SubType>
@@ -458,6 +470,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetSaldoDetTree_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetTaraList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetUsedMaterials_Result.cs">
@@ -696,6 +711,12 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\Services.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\Tara.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\TaraGroup.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\TechProcDet.cs">
@@ -1641,11 +1662,17 @@
     <EmbeddedResource Include="EditForm\frmBarCode.resx">
       <DependentUpon>frmBarCode.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmTaraEdit.resx">
+      <DependentUpon>frmTaraEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmSetCustomDiscount.resx">
       <DependentUpon>frmSetCustomDiscount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmSetWBNote.resx">
       <DependentUpon>frmSetWBNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmTaraGroupEdit.resx">
+      <DependentUpon>frmTaraGroupEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmWeightEdit.resx">
       <DependentUpon>frmWeightEdit.cs</DependentUpon>
@@ -1962,6 +1989,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPayDocList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPosOut_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPriceListDet_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.GetTaraList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetUserAccessCashDesks_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetWaybillDetIn_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetWayBillDetOut_Result.datasource" />
@@ -2010,6 +2038,8 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Serials.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Services.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.SvcGroup.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.Tara.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.TaraGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.TechProcDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.TechProcess.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Users.datasource" />

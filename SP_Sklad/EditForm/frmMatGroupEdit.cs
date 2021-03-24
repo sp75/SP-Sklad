@@ -71,7 +71,7 @@ namespace SP_Sklad.EditForm
             {
                 checkEdit4.Checked = (_mg.GrpId == _mg.PId);
 
-                GrpIdEdit.Properties.TreeList.DataSource = DB.SkladBase().MatGroup.Select(s => new { s.GrpId, s.PId, s.Name, ImageIndex = 8 }).ToList();
+                GrpIdEdit.Properties.TreeList.DataSource = DB.SkladBase().MatGroup.Select(s => new { s.GrpId, s.PId, s.Name, ImageIndex = 7 }).ToList();
 
                 MatGroupDS.DataSource = _mg;
             }
