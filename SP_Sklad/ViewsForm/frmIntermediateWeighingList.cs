@@ -33,11 +33,11 @@ namespace SP_Sklad.ViewsForm
         {
             var wb_maked = DB.SkladBase().WayBillMake.Where(w => w.WbillId == wb_id).Select(s => new { s.RecipeCount, s.MatRecipe.Materials.Name }).FirstOrDefault();
 
-            textEdit1.EditValue = wb_maked.Name;
+           Text = "Список сировини для зважування, Рецепт: "+ wb_maked.Name;
 
             var det_list = DB.SkladBase().v_IntermediateWeighingDet.Where(w => w.WbillId == wb_id).ToList();
 
-            var ddddd = _list.Where(w => !det_list.Any(a => a.MatId == w.MatId)).Select(ss => new make_det
+            var empty_list = _list.Where(w => !det_list.Any(a => a.MatId == w.MatId)).Select(ss => new make_det
             {
                 MsrName = ss.MsrName,
                 MatName = ss.MatName,
@@ -62,11 +62,13 @@ namespace SP_Sklad.ViewsForm
                IntermediateWeighingCount = det_list.Count(co => co.MatId == c.v.MatId),
                RecipeCount = wb_maked.RecipeCount,
                Rn = c.i + 1
-           })
-           .ToList();
-            list.AddRange(ddddd);
+           }).ToList();
+
+            list.AddRange(empty_list);
 
             bindingSource1.DataSource = list;
+
+            WaybillDetInGridControl.DataSource = det_list.OrderBy(o => o.CreatedDate).ToList();
         }
 
         private void frmUserGroup_FormClosed(object sender, FormClosedEventArgs e)

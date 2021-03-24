@@ -381,7 +381,7 @@ order by  ma.ondate desc */
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (var frm = new frmManufacturing(_db))
+            using (var frm = new frmManufacturing(_db, 2))
             {
                 frm.xtraTabPage14.PageVisible = true;
                 frm.xtraTabControl1.SelectedTabPageIndex = 1;

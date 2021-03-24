@@ -88,6 +88,14 @@ namespace SP_Sklad.WBForm
                     iw.Num = new BaseEntities().GetDocNum("intermediate_weighing").FirstOrDefault();
                 }
                 IntermediateWeighingBS.DataSource = iw;
+
+                ManufLookUpEdit.Properties.DataSource = _db.WaybillList.Where(w => w.Checked == 0 && w.WType == -20).OrderBy(o => o.OnDate).Select(s=> new
+                {
+                    s.WbillId,
+                    s.Num,
+                    s.OnDate,
+                    RecipeName = s.WayBillMake.MatRecipe.Materials.Name
+                }).ToList();
             }
 
             RefreshDet();
@@ -99,6 +107,7 @@ namespace SP_Sklad.WBForm
             barButtonItem2.Enabled = AmountEdit.Value > 0;
 
             AmountEdit.Enabled = IntermediateWeighingDetBS.Count == 0;
+            ManufLookUpEdit.Enabled = IntermediateWeighingDetBS.Count == 0;
 
             /*     OkButton.Enabled = ManufactoryEdit.EditValue != DBNull.Value && WHComboBox.EditValue != DBNull.Value && ProductionPlanDetBS.Count > 0;
                  barSubItem1.Enabled = ManufactoryEdit.EditValue != DBNull.Value && WHComboBox.EditValue != DBNull.Value;
@@ -302,6 +311,20 @@ namespace SP_Sklad.WBForm
         private void AmountEdit_EditValueChanged(object sender, EventArgs e)
         {
             GetOk();
+        }
+
+        private void ManufLookUpEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                using (var frm = new frmManufacturing(_db, 0))
+                {
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        iw.WbillId = frm.wb_focused_row.WbillId;
+                    }
+                }
+            }
         }
     }
 }

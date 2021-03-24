@@ -214,7 +214,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
+            this.panel1.Padding = new System.Windows.Forms.Padding(5);
             this.panel1.Size = new System.Drawing.Size(610, 225);
             this.panel1.TabIndex = 29;
             // 
@@ -237,9 +237,9 @@
             this.panelControl1.Controls.Add(this.simpleButton2);
             this.panelControl1.Controls.Add(this.GrpIdEdit);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(5, 0);
+            this.panelControl1.Location = new System.Drawing.Point(5, 5);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(600, 220);
+            this.panelControl1.Size = new System.Drawing.Size(600, 215);
             this.panelControl1.TabIndex = 1;
             // 
             // WeightEdit
@@ -465,16 +465,17 @@
             // 
             this.xtraTabPage7.Controls.Add(this.textEdit8);
             this.xtraTabPage7.Name = "xtraTabPage7";
-            this.xtraTabPage7.Size = new System.Drawing.Size(610, 207);
+            this.xtraTabPage7.Padding = new System.Windows.Forms.Padding(5);
+            this.xtraTabPage7.Size = new System.Drawing.Size(610, 225);
             this.xtraTabPage7.Text = "Примітка";
             // 
             // textEdit8
             // 
             this.textEdit8.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.TaraBS, "Notes", true));
             this.textEdit8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textEdit8.Location = new System.Drawing.Point(0, 0);
+            this.textEdit8.Location = new System.Drawing.Point(5, 5);
             this.textEdit8.Name = "textEdit8";
-            this.textEdit8.Size = new System.Drawing.Size(610, 207);
+            this.textEdit8.Size = new System.Drawing.Size(600, 215);
             this.textEdit8.TabIndex = 35;
             // 
             // frmTaraEdit

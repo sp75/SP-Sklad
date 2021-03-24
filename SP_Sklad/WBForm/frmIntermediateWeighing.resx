@@ -125,7 +125,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAA4
-        SAAAAk1TRnQBSQFMAgEBEwEAARABCQEQAQkBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        SAAAAk1TRnQBSQFMAgEBEwEAATgBCQE4AQkBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABUAMAAQEBAAEYBgABPF0AAb0CrQGMAloBxgK1GAAD9QP8mQABjAFSAUoB3gG9AYQBnAFzAVoBhAJS
         Ab0CpQ8AAdUB2QHUATcBkwEiAXQBnQFrAbgBwgG3AesB7AHrA/xUAAHnAc4BxgGtAVIBKQGtAVIBGAGt
         AVIBKQHnAdYBzhwAAWsCAAFrAQABYwGcAWMGAAGlAmMB5wHGAYwB7wG1AYwB9wHGAYwB5wHGAYQBtQGM
@@ -468,6 +468,23 @@
         Ss73CHOl////////////////////////////////////e63Ga9bnhPf/c/f/Y+f3MZy9jL3O////////
         ////////////////////////////////jL3GIYy1MZy9KYy1////////////////////////////////
         ////////////////////////////////////////////////////////
+</value>
+  </data>
+  <data name="ManufLookUpEdit.Properties.Buttons" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAKBSURBVDhPY0ACTB4eHgogxtqVa5fr6+ubGRgYCCgrK4uBZQkBXl5ekTNnLj5fumLT6cNHL/3f
+        tfvo7evX77z08vIpgirBDZKTM5LmzVuyduW6A/937L3w//Cx62B87uLD//MWLD/e2TlzIlAZH0Q1FmBp
+        6VBw6Nid/+s2Hvu/Y8/F//MWbvm7buPR/9t2ngMadO9/UUnLWaAyJohqTCBUWdW2fNmqI0DNV/9n5zVe
+        BYqpmVu5z9249fz/6bO2/29uW/BYW9vICaIcDfDx8Zm1ds3/unDZ4f87dl/939U9+zRIPDExs3H3vuv/
+        Fy078L+pbdF/BQXNMrAGbEBLyyRn/aaL//fuv/b/2vXX/+/cef365s1Xv0+evAt01bX/QWHZh6FKsQNj
+        c+epaRl1rw8cvv7/2bOv/x/c+/j/8eOv/+/e+/C/rLL/vaNzGCgMRKZNm+UCpDm0tLTYwBqRASsrq0Fx
+        +ZS/02au/bv/8NX/K1fv+9vQOv+/iLhCQWxUbM3sucsOnjp9/euqtVsONzS1zodqQwECvLzCCUBax8zK
+        97S0rHo/kO1QUdG0e9O2w09fv/3x/+u3f2B88dLdz7n5lZOB8pgugQJQihQCMfLyqlbfvvvx/7oNh757
+        +EQeBbrs5+Vrr//HxOetBsnjBaKiUjaz5m39vmf/rf+NzVNAscPU1Dr96rKVx/43NM/6KCwuBQoTvIAp
+        Prn88PLVp0DR+XfdhsOP5y7Y/XfW/H3/vfzjdwLlWSDKcAMmGTmliryi9odrNp75v2DJ/v9LVh39X1TW
+        +1JMQg6ULnCGAQqQklIs0dQ2nZ2SUffSyNR+rZSMSiNUilTAagIkeCBsEGBgAACdqzH/SD3LWgAAAABJ
+        RU5ErkJggg==
 </value>
   </data>
   <data name="OnDateDBEdit.Properties.Buttons" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

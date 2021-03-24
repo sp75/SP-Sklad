@@ -336,7 +336,7 @@ namespace SP_Sklad.WBDetForm
 
         private void ManufEditBtn_Click(object sender, EventArgs e)
         {
-            using (var frm = new frmManufacturing(_db))
+            using (var frm = new frmManufacturing(_db,2))
             {
                 if (frm.ShowDialog() == DialogResult.OK)
                 {

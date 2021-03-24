@@ -24,14 +24,14 @@ namespace SP_Sklad.ViewsForm
             }
         }
 
-        public frmManufacturing(BaseEntities db, int? mat_id = null)
+        public frmManufacturing(BaseEntities db, int status , int? mat_id = null )
         {
             InitializeComponent();
 
             var satrt_date = DateTime.Now.AddYears(-100);
             var end_date = DateTime.Now.AddYears(100);
 
-            var list = db.WBListMake(satrt_date.Date, end_date.Date.AddDays(1), 2, "*", 0, -20).ToList();
+            var list = db.WBListMake(satrt_date.Date, end_date.Date.AddDays(1), status, "*", 0, -20).ToList();
 
             if (mat_id != null)
             {
