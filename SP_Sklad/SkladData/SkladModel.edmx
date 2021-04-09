@@ -256,6 +256,7 @@
           <Property Name="CurrNum" Type="int" />
           <Property Name="Suffix" Type="nvarchar" MaxLength="50" />
           <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+          <Property Name="Num" Type="int" />
         </EntityType>
         <EntityType Name="DiscCards">
           <Key>
@@ -1654,6 +1655,8 @@ warning 6002: The table/view 'sp_base.dbo.v_DiscCards' does not have a primary k
             <PropertyRef Name="CardId" />
             <PropertyRef Name="Num" />
             <PropertyRef Name="OnValue" />
+            <PropertyRef Name="GrpName" />
+            <PropertyRef Name="GrpId" />
           </Key>
           <Property Name="CardId" Type="int" Nullable="false" />
           <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -1661,6 +1664,8 @@ warning 6002: The table/view 'sp_base.dbo.v_DiscCards' does not have a primary k
           <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" Nullable="false" />
           <Property Name="KaName" Type="nvarchar" MaxLength="100" />
           <Property Name="KaFullName" Type="nvarchar" MaxLength="255" />
+          <Property Name="GrpName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="GrpId" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_Docs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -1907,6 +1912,7 @@ warning 6002: The table/view 'sp_base.dbo.v_MatRecipe' does not have a primary k
             <PropertyRef Name="GrpName" />
             <PropertyRef Name="Out" />
             <PropertyRef Name="Archived" />
+            <PropertyRef Name="GrpId" />
           </Key>
           <Property Name="RecId" Type="int" Nullable="false" />
           <Property Name="MatName" Type="nvarchar" MaxLength="255" />
@@ -1918,6 +1924,8 @@ warning 6002: The table/view 'sp_base.dbo.v_MatRecipe' does not have a primary k
           <Property Name="Out" Type="numeric" Precision="15" Scale="4" Nullable="false" />
           <Property Name="RType" Type="int" />
           <Property Name="Archived" Type="bit" Nullable="false" />
+          <Property Name="GrpId" Type="int" Nullable="false" />
+          <Property Name="Num" Type="numeric" Precision="5" Scale="1" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_MatRemains' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -6713,7 +6721,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_DiscCards].[ExpireDate] AS [ExpireDate], 
     [v_DiscCards].[OnValue] AS [OnValue], 
     [v_DiscCards].[KaName] AS [KaName], 
-    [v_DiscCards].[KaFullName] AS [KaFullName]
+    [v_DiscCards].[KaFullName] AS [KaFullName], 
+    [v_DiscCards].[GrpName] AS [GrpName], 
+    [v_DiscCards].[GrpId] AS [GrpId]
     FROM [dbo].[v_DiscCards] AS [v_DiscCards]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_Docs" EntityType="Self.v_Docs" store:Type="Views" store:Schema="dbo">
@@ -6902,7 +6912,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_MatRecipe].[GrpName] AS [GrpName], 
     [v_MatRecipe].[Out] AS [Out], 
     [v_MatRecipe].[RType] AS [RType], 
-    [v_MatRecipe].[Archived] AS [Archived]
+    [v_MatRecipe].[Archived] AS [Archived], 
+    [v_MatRecipe].[GrpId] AS [GrpId], 
+    [v_MatRecipe].[Num] AS [Num]
     FROM [dbo].[v_MatRecipe] AS [v_MatRecipe]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_MatRemains" EntityType="Self.v_MatRemains" store:Type="Views" store:Schema="dbo">
@@ -12530,6 +12542,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <PropertyRef Name="CardId" />
             <PropertyRef Name="Num" />
             <PropertyRef Name="OnValue" />
+            <PropertyRef Name="GrpName" />
+            <PropertyRef Name="GrpId" />
           </Key>
           <Property Type="Int32" Name="CardId" Nullable="false" />
           <Property Type="String" Name="Num" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -12537,6 +12551,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Decimal" Name="OnValue" Nullable="false" Precision="15" Scale="4" />
           <Property Type="String" Name="KaName" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="KaFullName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="GrpName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="GrpId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="DiscCardGrp">
           <Key>
@@ -12554,6 +12570,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="Suffix" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="DiscCards" Relationship="BaseModel.FK_DISCCARDS_GRPID" FromRole="DiscCardGrp" ToRole="DiscCards" />
+          <Property Name="Num" Type="Int32" />
         </EntityType>
         <Association Name="FK_DISCCARDS_GRPID">
           <End Type="BaseModel.DiscCardGrp" Role="DiscCardGrp" Multiplicity="1" />
@@ -14237,6 +14254,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <PropertyRef Name="GrpName" />
             <PropertyRef Name="Out" />
             <PropertyRef Name="Archived" />
+            <PropertyRef Name="GrpId" />
           </Key>
           <Property Type="Int32" Name="RecId" Nullable="false" />
           <Property Type="String" Name="MatName" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -14248,6 +14266,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Decimal" Name="Out" Nullable="false" Precision="15" Scale="4" />
           <Property Type="Int32" Name="RType" />
           <Property Type="Boolean" Name="Archived" Nullable="false" />
+          <Property Name="GrpId" Type="Int32" Nullable="false" />
+          <Property Name="Num" Type="Decimal" Precision="5" Scale="1" />
         </EntityType>
         <ComplexType Name="GetUsedMaterials_Result">
           <Property Type="Int32" Name="KaId" Nullable="true" />
@@ -17703,6 +17723,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_DiscCards">
             <EntityTypeMapping TypeName="BaseModel.v_DiscCards">
               <MappingFragment StoreEntitySet="v_DiscCards">
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="GrpName" ColumnName="GrpName" />
                 <ScalarProperty Name="KaFullName" ColumnName="KaFullName" />
                 <ScalarProperty Name="KaName" ColumnName="KaName" />
                 <ScalarProperty Name="OnValue" ColumnName="OnValue" />
@@ -17715,6 +17737,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="DiscCardGrp">
             <EntityTypeMapping TypeName="BaseModel.DiscCardGrp">
               <MappingFragment StoreEntitySet="DiscCardGrp">
+                <ScalarProperty Name="Num" ColumnName="Num" />
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
                 <ScalarProperty Name="Suffix" ColumnName="Suffix" />
                 <ScalarProperty Name="CurrNum" ColumnName="CurrNum" />
@@ -18750,6 +18773,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_MatRecipe">
             <EntityTypeMapping TypeName="BaseModel.v_MatRecipe">
               <MappingFragment StoreEntitySet="v_MatRecipe">
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
                 <ScalarProperty Name="Archived" ColumnName="Archived" />
                 <ScalarProperty Name="RType" ColumnName="RType" />
                 <ScalarProperty Name="Out" ColumnName="Out" />

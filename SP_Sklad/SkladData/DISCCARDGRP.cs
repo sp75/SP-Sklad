@@ -30,6 +30,7 @@ namespace SP_Sklad.SkladData
         public Nullable<int> CurrNum { get; set; }
         public string Suffix { get; set; }
         public string Notes { get; set; }
+        public Nullable<int> Num { get; set; }
     
         public virtual ICollection<DiscCards> DiscCards { get; set; }
     }

@@ -96,18 +96,7 @@
             this.ImageList.TransparentColor = System.Drawing.Color.White;
             this.ImageList.Images.SetKeyName(0, "UserInfo.bmp");
             this.ImageList.Images.SetKeyName(1, "Ц_нов_ кат.bmp");
-            this.ImageList.Images.SetKeyName(2, "Податки.bmp");
-            this.ImageList.Images.SetKeyName(3, "Взаемозам_н_сть.bmp");
-            this.ImageList.Images.SetKeyName(4, "Посв_дчення якост_.bmp");
-            this.ImageList.Images.SetKeyName(5, "image.bmp");
-            this.ImageList.Images.SetKeyName(6, "edit.bmp");
-            this.ImageList.Images.SetKeyName(7, "_нформац_я про резерв товару.bmp");
-            this.ImageList.Images.SetKeyName(8, "Рух товар_в.bmp");
-            this.ImageList.Images.SetKeyName(9, "down.bmp");
-            this.ImageList.Images.SetKeyName(10, "Up.bmp");
-            this.ImageList.Images.SetKeyName(11, "Ц_нов_ кат.bmp");
-            this.ImageList.Images.SetKeyName(12, "Одиниц_ вим_ру.bmp");
-            this.ImageList.Images.SetKeyName(13, "Країни.bmp");
+            this.ImageList.Images.SetKeyName(2, "CloseFolder.bmp");
             // 
             // styleController1
             // 
@@ -490,7 +479,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmTaraEdit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmServicesEdit";
+            this.Text = "frmTaraEdit";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmServicesEdit_FormClosed);
             this.Load += new System.EventHandler(this.frmServicesEdit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();

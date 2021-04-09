@@ -57,6 +57,7 @@
             this.AddGroupMatBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.standaloneBarDockControl8 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -327,10 +328,7 @@
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn27 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn72 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn74 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn75 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn76 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn92 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage17 = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
             this.CurrencyBS = new System.Windows.Forms.BindingSource(this.components);
@@ -653,8 +651,9 @@
             this.ShowRecipeArchiveRecordsbarCheckItem,
             this.btnMoveUp,
             this.btnMoveDown,
-            this.barButtonItem1});
-            this.barManager1.MaxItemId = 44;
+            this.barButtonItem1,
+            this.barButtonItem2});
+            this.barManager1.MaxItemId = 45;
             // 
             // bar1
             // 
@@ -810,7 +809,8 @@
             this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.AddGroupMatBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
             this.barSubItem1.Name = "barSubItem1";
             // 
             // AddGroupMatBtn
@@ -836,6 +836,14 @@
             this.barButtonItem1.ImageIndex = 17;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick_1);
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Групу дисконтних карт";
+            this.barButtonItem2.Id = 44;
+            this.barButtonItem2.ImageIndex = 18;
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // standaloneBarDockControl8
             // 
@@ -947,6 +955,7 @@
             this.BarImageList.Images.SetKeyName(15, "iconfinder_folder_edit_36067.png");
             this.BarImageList.Images.SetKeyName(16, "tree.png");
             this.BarImageList.Images.SetKeyName(17, "tara.png");
+            this.BarImageList.Images.SetKeyName(18, "Дисконтна картка.bmp");
             // 
             // RenameMatGroupBarButtonItem
             // 
@@ -2606,15 +2615,12 @@
             this.gridColumn73,
             this.RecipeArchivedGridColumn});
             this.MatRecipeGridView.GridControl = this.MatRecipeGridControl;
-            this.MatRecipeGridView.GroupCount = 1;
             this.MatRecipeGridView.Name = "MatRecipeGridView";
             this.MatRecipeGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.MatRecipeGridView.OptionsBehavior.Editable = false;
             this.MatRecipeGridView.OptionsBehavior.ReadOnly = true;
             this.MatRecipeGridView.OptionsView.EnableAppearanceEvenRow = true;
             this.MatRecipeGridView.OptionsView.EnableAppearanceOddRow = true;
-            this.MatRecipeGridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn39, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.MatRecipeGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.MatRecipeGridView_PopupMenuShowing);
             this.MatRecipeGridView.DoubleClick += new System.EventHandler(this.MatRecipeGridView_DoubleClick);
             // 
@@ -2625,7 +2631,7 @@
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 0;
-            this.gridColumn8.Width = 377;
+            this.gridColumn8.Width = 286;
             // 
             // gridColumn2
             // 
@@ -2635,8 +2641,8 @@
             this.gridColumn2.FieldName = "OnDate";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
-            this.gridColumn2.Width = 136;
+            this.gridColumn2.VisibleIndex = 2;
+            this.gridColumn2.Width = 126;
             // 
             // gridColumn6
             // 
@@ -2646,8 +2652,8 @@
             this.gridColumn6.FieldName = "Amount";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 2;
-            this.gridColumn6.Width = 96;
+            this.gridColumn6.VisibleIndex = 3;
+            this.gridColumn6.Width = 88;
             // 
             // gridColumn7
             // 
@@ -2655,7 +2661,8 @@
             this.gridColumn7.FieldName = "ShortName";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 4;
+            this.gridColumn7.VisibleIndex = 5;
+            this.gridColumn7.Width = 67;
             // 
             // gridColumn38
             // 
@@ -2663,8 +2670,8 @@
             this.gridColumn38.FieldName = "Name";
             this.gridColumn38.Name = "gridColumn38";
             this.gridColumn38.Visible = true;
-            this.gridColumn38.VisibleIndex = 5;
-            this.gridColumn38.Width = 151;
+            this.gridColumn38.VisibleIndex = 6;
+            this.gridColumn38.Width = 176;
             // 
             // gridColumn39
             // 
@@ -2672,7 +2679,8 @@
             this.gridColumn39.FieldName = "GrpName";
             this.gridColumn39.Name = "gridColumn39";
             this.gridColumn39.Visible = true;
-            this.gridColumn39.VisibleIndex = 5;
+            this.gridColumn39.VisibleIndex = 1;
+            this.gridColumn39.Width = 258;
             // 
             // gridColumn73
             // 
@@ -2680,7 +2688,8 @@
             this.gridColumn73.FieldName = "Out";
             this.gridColumn73.Name = "gridColumn73";
             this.gridColumn73.Visible = true;
-            this.gridColumn73.VisibleIndex = 3;
+            this.gridColumn73.VisibleIndex = 4;
+            this.gridColumn73.Width = 67;
             // 
             // RecipeArchivedGridColumn
             // 
@@ -3437,10 +3446,7 @@
             this.gridColumn12,
             this.gridColumn13,
             this.gridColumn27,
-            this.gridColumn72,
-            this.gridColumn74,
-            this.gridColumn75,
-            this.gridColumn76});
+            this.gridColumn92});
             this.DiscCardsGridView.GridControl = this.DiscCardsGridControl;
             this.DiscCardsGridView.Name = "DiscCardsGridView";
             this.DiscCardsGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -3449,7 +3455,7 @@
             this.DiscCardsGridView.OptionsView.EnableAppearanceEvenRow = true;
             this.DiscCardsGridView.OptionsView.EnableAppearanceOddRow = true;
             this.DiscCardsGridView.OptionsView.ShowGroupPanel = false;
-            this.DiscCardsGridView.DoubleClick += new System.EventHandler(this.WarehouseGridView_DoubleClick);
+            this.DiscCardsGridView.DoubleClick += new System.EventHandler(this.MatRecipeGridView_DoubleClick);
             // 
             // gridColumn5
             // 
@@ -3458,7 +3464,7 @@
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 0;
-            this.gridColumn5.Width = 301;
+            this.gridColumn5.Width = 262;
             // 
             // gridColumn12
             // 
@@ -3467,7 +3473,7 @@
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 1;
-            this.gridColumn12.Width = 179;
+            this.gridColumn12.Width = 110;
             // 
             // gridColumn13
             // 
@@ -3476,7 +3482,7 @@
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
             this.gridColumn13.VisibleIndex = 2;
-            this.gridColumn13.Width = 444;
+            this.gridColumn13.Width = 327;
             // 
             // gridColumn27
             // 
@@ -3487,31 +3493,16 @@
             this.gridColumn27.Name = "gridColumn27";
             this.gridColumn27.Visible = true;
             this.gridColumn27.VisibleIndex = 3;
-            this.gridColumn27.Width = 224;
+            this.gridColumn27.Width = 161;
             // 
-            // gridColumn72
+            // gridColumn92
             // 
-            this.gridColumn72.Caption = "gridColumn72";
-            this.gridColumn72.Name = "gridColumn72";
-            this.gridColumn72.Width = 117;
-            // 
-            // gridColumn74
-            // 
-            this.gridColumn74.Caption = "gridColumn74";
-            this.gridColumn74.Name = "gridColumn74";
-            this.gridColumn74.Width = 117;
-            // 
-            // gridColumn75
-            // 
-            this.gridColumn75.Caption = "gridColumn75";
-            this.gridColumn75.Name = "gridColumn75";
-            this.gridColumn75.Width = 117;
-            // 
-            // gridColumn76
-            // 
-            this.gridColumn76.Caption = "gridColumn76";
-            this.gridColumn76.Name = "gridColumn76";
-            this.gridColumn76.Width = 131;
+            this.gridColumn92.Caption = "Група";
+            this.gridColumn92.FieldName = "GrpName";
+            this.gridColumn92.Name = "gridColumn92";
+            this.gridColumn92.Visible = true;
+            this.gridColumn92.VisibleIndex = 4;
+            this.gridColumn92.Width = 208;
             // 
             // xtraTabPage17
             // 
@@ -4329,10 +4320,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn27;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn72;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn74;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn75;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn76;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn77;
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn78;
@@ -4403,5 +4390,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn100;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView9;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn92;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
     }
 }

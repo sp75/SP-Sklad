@@ -156,11 +156,6 @@ namespace SP_Sklad.WBForm
 
             barSubItem1.Enabled = (WhComboBox.EditValue != null && RecipeComboBox.EditValue != null && AmountMakeEdit.Value > 0);
 
-            EditMaterialBtn.Enabled = GetWayBillMakeDetBS.Count > 0;
-            DelMaterialBtn.Enabled = EditMaterialBtn.Enabled;
-            RsvInfoBtn.Enabled = EditMaterialBtn.Enabled;
-            MatInfoBtn.Enabled = EditMaterialBtn.Enabled;
-
             OkButton.Enabled = recult;
             return recult;
         }
@@ -498,6 +493,14 @@ namespace SP_Sklad.WBForm
                 }
 
             }
+        }
+
+        private void WaybillDetOutGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
+        {
+            EditMaterialBtn.Enabled = GetWayBillMakeDetBS.Count > 0 /*&& wbd_row.IsIntermediateWeighing != 1*/;
+            DelMaterialBtn.Enabled = EditMaterialBtn.Enabled /*&& wbd_row.IsIntermediateWeighing != 1*/;
+            RsvInfoBtn.Enabled = GetWayBillMakeDetBS.Count > 0;
+            MatInfoBtn.Enabled = GetWayBillMakeDetBS.Count > 0;
         }
     }
 }

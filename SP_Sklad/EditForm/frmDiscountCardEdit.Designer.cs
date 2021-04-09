@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDiscountCardEdit));
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
@@ -44,6 +45,11 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.KASaldoEdit = new DevExpress.XtraEditors.CalcEdit();
             this.KagentComboBox = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.GrpIdEdit = new DevExpress.XtraEditors.TreeListLookUpEdit();
+            this.treeListLookUpEdit1TreeList = new DevExpress.XtraTreeList.TreeList();
+            this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.ImageList = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DiscCardsBS)).BeginInit();
@@ -54,6 +60,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KASaldoEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KagentComboBox.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GrpIdEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).BeginInit();
             this.SuspendLayout();
             // 
             // styleController1
@@ -63,7 +71,7 @@
             // 
             // labelControl12
             // 
-            this.labelControl12.Location = new System.Drawing.Point(12, 162);
+            this.labelControl12.Location = new System.Drawing.Point(12, 195);
             this.labelControl12.Name = "labelControl12";
             this.labelControl12.Size = new System.Drawing.Size(52, 16);
             this.labelControl12.StyleController = this.styleController1;
@@ -81,7 +89,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(330, 15);
+            this.labelControl2.Location = new System.Drawing.Point(325, 15);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(97, 16);
             this.labelControl2.StyleController = this.styleController1;
@@ -104,7 +112,7 @@
             // textEdit2
             // 
             this.textEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.DiscCardsBS, "Notes", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.textEdit2.Location = new System.Drawing.Point(12, 184);
+            this.textEdit2.Location = new System.Drawing.Point(12, 217);
             this.textEdit2.Name = "textEdit2";
             this.textEdit2.Size = new System.Drawing.Size(489, 47);
             this.textEdit2.StyleController = this.styleController1;
@@ -115,7 +123,7 @@
             this.BottomPanel.Controls.Add(this.OkButton);
             this.BottomPanel.Controls.Add(this.simpleButton1);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomPanel.Location = new System.Drawing.Point(0, 246);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 282);
             this.BottomPanel.Name = "BottomPanel";
             this.BottomPanel.Size = new System.Drawing.Size(514, 52);
             this.BottomPanel.TabIndex = 68;
@@ -162,7 +170,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(12, 86);
+            this.labelControl1.Location = new System.Drawing.Point(12, 76);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(48, 16);
             this.labelControl1.StyleController = this.styleController1;
@@ -171,7 +179,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(330, 86);
+            this.labelControl3.Location = new System.Drawing.Point(325, 76);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(64, 16);
             this.labelControl3.StyleController = this.styleController1;
@@ -181,7 +189,7 @@
             // KASaldoEdit
             // 
             this.KASaldoEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.DiscCardsBS, "OnValue", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.KASaldoEdit.Location = new System.Drawing.Point(325, 108);
+            this.KASaldoEdit.Location = new System.Drawing.Point(325, 98);
             this.KASaldoEdit.Name = "KASaldoEdit";
             this.KASaldoEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -196,7 +204,7 @@
             // KagentComboBox
             // 
             this.KagentComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.DiscCardsBS, "KaId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.KagentComboBox.Location = new System.Drawing.Point(12, 108);
+            this.KagentComboBox.Location = new System.Drawing.Point(12, 98);
             this.KagentComboBox.Name = "KagentComboBox";
             this.KagentComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
@@ -213,11 +221,72 @@
             this.KagentComboBox.TabIndex = 73;
             this.KagentComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.KagentComboBox_ButtonClick);
             // 
+            // labelControl5
+            // 
+            this.labelControl5.Location = new System.Drawing.Point(12, 139);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(91, 16);
+            this.labelControl5.StyleController = this.styleController1;
+            this.labelControl5.TabIndex = 74;
+            this.labelControl5.Text = "Належить групі";
+            // 
+            // GrpIdEdit
+            // 
+            this.GrpIdEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.GrpIdEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.DiscCardsBS, "GrpId", true));
+            this.GrpIdEdit.Location = new System.Drawing.Point(12, 161);
+            this.GrpIdEdit.Name = "GrpIdEdit";
+            this.GrpIdEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.GrpIdEdit.Properties.DisplayMember = "Name";
+            this.GrpIdEdit.Properties.NullText = "";
+            this.GrpIdEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.GrpIdEdit.Properties.TreeList = this.treeListLookUpEdit1TreeList;
+            this.GrpIdEdit.Properties.ValueMember = "GrpId";
+            this.GrpIdEdit.Size = new System.Drawing.Size(489, 22);
+            this.GrpIdEdit.StyleController = this.styleController1;
+            this.GrpIdEdit.TabIndex = 75;
+            // 
+            // treeListLookUpEdit1TreeList
+            // 
+            this.treeListLookUpEdit1TreeList.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
+            this.treeListColumn2});
+            this.treeListLookUpEdit1TreeList.KeyFieldName = "GrpId";
+            this.treeListLookUpEdit1TreeList.Location = new System.Drawing.Point(-22, 68);
+            this.treeListLookUpEdit1TreeList.Name = "treeListLookUpEdit1TreeList";
+            this.treeListLookUpEdit1TreeList.OptionsBehavior.EnableFiltering = true;
+            this.treeListLookUpEdit1TreeList.OptionsView.ShowColumns = false;
+            this.treeListLookUpEdit1TreeList.OptionsView.ShowHorzLines = false;
+            this.treeListLookUpEdit1TreeList.OptionsView.ShowIndicator = false;
+            this.treeListLookUpEdit1TreeList.OptionsView.ShowVertLines = false;
+            this.treeListLookUpEdit1TreeList.ParentFieldName = "PId";
+            this.treeListLookUpEdit1TreeList.SelectImageList = this.ImageList;
+            this.treeListLookUpEdit1TreeList.Size = new System.Drawing.Size(400, 200);
+            this.treeListLookUpEdit1TreeList.TabIndex = 0;
+            // 
+            // treeListColumn2
+            // 
+            this.treeListColumn2.Caption = "treeListColumn2";
+            this.treeListColumn2.FieldName = "Name";
+            this.treeListColumn2.MinWidth = 34;
+            this.treeListColumn2.Name = "treeListColumn2";
+            this.treeListColumn2.Visible = true;
+            this.treeListColumn2.VisibleIndex = 0;
+            this.treeListColumn2.Width = 93;
+            // 
+            // ImageList
+            // 
+            this.ImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ImageList.ImageStream")));
+            this.ImageList.TransparentColor = System.Drawing.Color.White;
+            this.ImageList.Images.SetKeyName(0, "CloseFolder.bmp");
+            // 
             // frmDiscountCardEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(514, 298);
+            this.ClientSize = new System.Drawing.Size(514, 334);
+            this.Controls.Add(this.labelControl5);
+            this.Controls.Add(this.GrpIdEdit);
             this.Controls.Add(this.KagentComboBox);
             this.Controls.Add(this.KASaldoEdit);
             this.Controls.Add(this.labelControl3);
@@ -244,6 +313,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KASaldoEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KagentComboBox.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GrpIdEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeListLookUpEdit1TreeList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -266,5 +337,10 @@
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.CalcEdit KASaldoEdit;
         private DevExpress.XtraEditors.LookUpEdit KagentComboBox;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraEditors.TreeListLookUpEdit GrpIdEdit;
+        private DevExpress.XtraTreeList.TreeList treeListLookUpEdit1TreeList;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn2;
+        public System.Windows.Forms.ImageList ImageList;
     }
 }

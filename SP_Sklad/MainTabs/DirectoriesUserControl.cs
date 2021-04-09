@@ -86,13 +86,13 @@ namespace SP_Sklad.MainTabs
             EditItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanModify == 1);
             CopyItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanModify == 1);
 
-            DelExplorerBtn.Enabled = focused_tree_node.FunId == null && (focused_tree_node.GType.Value == 2 || focused_tree_node.GType.Value == 3 || focused_tree_node.GType.Value == 5);
+            DelExplorerBtn.Enabled = (focused_tree_node.FunId == 6 || focused_tree_node.FunId == 38 || focused_tree_node.FunId == 82 || focused_tree_node.FunId == 66);
             RenameMatGroupBarButtonItem.Enabled = DelExplorerBtn.Enabled;
             EditExplorerBtn.Enabled = DelExplorerBtn.Enabled;
             btnMoveDown.Enabled = DelExplorerBtn.Enabled;
             btnMoveUp.Enabled = DelExplorerBtn.Enabled;
 
-
+            
             RefrechItemBtn.PerformClick();
             mainContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
 
@@ -155,9 +155,9 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 4:
-                    switch (focused_tree_node.Id)
+                    switch (focused_tree_node.FunId/*focused_tree_node.Id < 0 ? focused_tree_node.PId : focused_tree_node.Id*/)
                     {
-                        case 25:
+                        case 20:
                             WarehouseBS.DataSource = DB.SkladBase().Warehouse.ToList();
                             extDirTabControl.SelectedTabPageIndex = 1;
                             break;
@@ -177,7 +177,7 @@ namespace SP_Sklad.MainTabs
                             extDirTabControl.SelectedTabPageIndex = 5;
                             break;
 
-                        case 43:
+                        case 32:
                             var top = CountriesGridView.TopRowIndex;
                             CountriesBS.DataSource = DB.SkladBase().Countries.ToList();
                             CountriesGridView.TopRowIndex = top;
@@ -185,7 +185,7 @@ namespace SP_Sklad.MainTabs
                             extDirTabControl.SelectedTabPageIndex = 8;
                             break;
 
-                        case 40:
+                        case 31:
                             PriceTypesViewBS.DataSource = _db.v_PriceTypes.ToList().Select(s => new PriceTypesView
                             {
                                 PTypeId = s.PTypeId,
@@ -200,25 +200,30 @@ namespace SP_Sklad.MainTabs
                             extDirTabControl.SelectedTabPageIndex = 4;
                             break;
 
-                        case 102:
+                        case 51:
                             ChargeTypeBS.DataSource = DB.SkladBase().ChargeType.ToList();
                             extDirTabControl.SelectedTabPageIndex = 6;
                             break;
 
-                        case 64:
+                        case 56:
                             CashDesksBS.DataSource = DB.SkladBase().CashDesks.ToList().Where(w => DBHelper.CashDesks.Select(s => s.CashId).Contains(w.CashId)).ToList();
                             extDirTabControl.SelectedTabPageIndex = 7;
                             break;
 
                         //      case 3: cxGridLevel6->GridView = CurrencyGrid; break;
 
-                        case 53:
+                        case 40:
                             top_row = MatRecipeGridView.TopRowIndex;
                             var recipe_list = _db.v_MatRecipe.Where(w => w.RType == 1);
                             if (!_show_rec_archived)
                             {
                                 recipe_list = recipe_list.Where(w => !w.Archived);
                             }
+                            if(focused_tree_node.Id < 0)
+                            {
+                                recipe_list = recipe_list.Where(w => w.GrpId == focused_tree_node.GrpId);
+                            }
+
                             MatRecipeDS.DataSource = recipe_list.ToList();
                             MatRecipeGridView.TopRowIndex = top_row;
                             //       MatRecipeGridView.ExpandAllGroups();
@@ -226,13 +231,20 @@ namespace SP_Sklad.MainTabs
                             extDirTabControl.SelectedTabPageIndex = 0;
                             break;
 
-                        case 42:
+                        case 28:
                             top_row = MatRecipeGridView.TopRowIndex;
                             var recipe_d_list = _db.v_MatRecipe.Where(w => w.RType == 2);
+
                             if (!_show_rec_archived)
                             {
                                 recipe_d_list = recipe_d_list.Where(w => !w.Archived);
                             }
+
+                            if (focused_tree_node.Id < 0)
+                            {
+                                recipe_d_list = recipe_d_list.Where(w => w.GrpId == focused_tree_node.GrpId);
+                            }
+
                             MatRecipeDS.DataSource = recipe_d_list.ToList();
                             MatRecipeGridView.TopRowIndex = top_row;
                             //        MatRecipeGridView.ExpandAllGroups();
@@ -242,18 +254,25 @@ namespace SP_Sklad.MainTabs
 
                         //       case 68: cxGridLevel6->GridView = TaxesGrid; break;
 
-                        case 112:
+                        case 69:
                             TechProcessDS.DataSource = _db.TechProcess.OrderBy(o => o.Num).ToList();
                             extDirTabControl.SelectedTabPageIndex = 3;
                             break;
 
-                        case 115:
+                        case 73:
                             RoutesBS.DataSource = _db.Routes.ToList();
                             extDirTabControl.SelectedTabPageIndex = 10;
                             break;
 
-                        case 109:
-                            DiscCardsBS.DataSource = _db.v_DiscCards.ToList();
+                        case 66:
+                            var disc_cards = _db.v_DiscCards.AsQueryable();
+                         
+                            if (focused_tree_node.Id < 0)
+                            {
+                                disc_cards = disc_cards.Where(w => w.GrpId == focused_tree_node.GrpId);
+                            }
+
+                            DiscCardsBS.DataSource = disc_cards.ToList();
                             extDirTabControl.SelectedTabPageIndex = 11;
                             break;
 
@@ -262,8 +281,8 @@ namespace SP_Sklad.MainTabs
                             extDirTabControl.SelectedTabPageIndex = 12;
                             break;
 
-                        case 124:
-                            PreparationMatRecipeGridControl.DataSource = _db.MatRecipe.Where(w => w.RType == 3).ToList();
+                        case 81:
+                            PreparationMatRecipeGridControl.DataSource = _db.v_MatRecipe.Where(w => w.RType == 3).ToList();
                             extDirTabControl.SelectedTabPageIndex = 13;
                             break;
                     }
@@ -336,9 +355,9 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 4:
-                    switch (focused_tree_node.Id)
+                    switch (focused_tree_node.FunId)
                     {
-                        case 25:
+                        case 20:
                             result = new frmWarehouseEdit((WarehouseGridView.GetFocusedRow() as Warehouse).WId).ShowDialog();
                             break;
 
@@ -350,7 +369,7 @@ namespace SP_Sklad.MainTabs
                             result = new frmMeasuresEdit((MeasuresGridView.GetFocusedRow() as Measures).MId).ShowDialog();
                             break;
 
-                        case 40:
+                        case 31:
                             result = new frmPricetypesEdit((PriceTypesGridView.GetFocusedRow() as PriceTypesView).PTypeId).ShowDialog();
                             break;
 
@@ -358,7 +377,7 @@ namespace SP_Sklad.MainTabs
                             result = new frmAccountTypeEdit((AccountTypeGridView.GetFocusedRow() as AccountType).TypeId).ShowDialog();
                             break;
 
-                        case 43:
+                        case 32:
                             var c_row = (CountriesGridView.GetFocusedRow() as Countries);
                             result = new frmCountriesEdit(c_row.CId).ShowDialog();
                             /* if (result == DialogResult.OK)
@@ -375,15 +394,15 @@ namespace SP_Sklad.MainTabs
 
                             break;
 
-                        case 102:
+                        case 51:
                             result = new frmChargeTypeEdit((ChargeTypeGridView.GetFocusedRow() as ChargeType).CTypeId).ShowDialog();
                             break;
 
-                        case 64:
+                        case 56:
                             result = new frmCashdesksEdit((CashDesksGridView.GetFocusedRow() as CashDesks).CashId).ShowDialog();
                             break;
 
-                        case 42:
+                        case 28:
                             if (MatRecipeGridView.FocusedRowHandle >= 0)
                             {
                                 dynamic ob_item = MatRecipeGridView.GetFocusedRow();
@@ -391,7 +410,7 @@ namespace SP_Sklad.MainTabs
                             }
                             break;
 
-                        case 53:
+                        case 40:
                             if (MatRecipeGridView.FocusedRowHandle >= 0)
                             {
                                 dynamic r_item = MatRecipeGridView.GetFocusedRow();
@@ -399,20 +418,20 @@ namespace SP_Sklad.MainTabs
                             }
                             break;
 
-                        case 112:
+                        case 69:
                             result = new frmTechProcessEdit((TechProcessGridView.GetFocusedRow() as TechProcess).ProcId).ShowDialog();
                             break;
 
-                        case 115:
+                        case 73:
                             result = new frmRouteEdit((RouteGridView.GetFocusedRow() as Routes).Id).ShowDialog();
                             break;
 
-                        case 109:
+                        case 66:
                             var dc = DiscCardsGridView.GetFocusedRow() as v_DiscCards;
                             result = new frmDiscountCardEdit(dc.CardId).ShowDialog();
                             break;
 
-                        case 124:
+                        case 81:
                             if (PreparationMatRecipeGridView.FocusedRowHandle >= 0)
                             {
                                 dynamic r_item = PreparationMatRecipeGridView.GetFocusedRow();
@@ -471,9 +490,9 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 4:
-                    switch (focused_tree_node.Id)
+                    switch (focused_tree_node.FunId)
                     {
-                        case 25:
+                        case 20:
                             new frmWarehouseEdit().ShowDialog();
                             break;
 
@@ -485,7 +504,7 @@ namespace SP_Sklad.MainTabs
                             new frmMeasuresEdit().ShowDialog();
                             break;
 
-                        case 40:
+                        case 31:
                             new frmPricetypesEdit().ShowDialog();
                             break;
 
@@ -493,39 +512,39 @@ namespace SP_Sklad.MainTabs
                             new frmAccountTypeEdit().ShowDialog();
                             break;
 
-                        case 43:
+                        case 32:
                             new frmCountriesEdit().ShowDialog();
                             break;
 
-                        case 102:
+                        case 51:
                             new frmChargeTypeEdit().ShowDialog();
                             break;
 
-                        case 64:
+                        case 56:
                             new frmCashdesksEdit().ShowDialog();
                             break;
 
-                        case 42:
+                        case 28:
                             new frmMatRecipe(2).ShowDialog();
                             break;
 
-                        case 53:
+                        case 40:
                             new frmMatRecipe(1).ShowDialog();
                             break;
 
-                        case 112:
+                        case 69:
                             new frmTechProcessEdit().ShowDialog();
                             break;
 
-                        case 115:
+                        case 73:
                             new frmRouteEdit().ShowDialog();
                             break;
 
-                        case 109:
+                        case 66:
                             new frmDiscountCardEdit().ShowDialog();
                             break;
 
-                        case 124:
+                        case 81:
                             new frmPreparationMatRecipe().ShowDialog();
                             break;
 
@@ -610,9 +629,9 @@ namespace SP_Sklad.MainTabs
                         break;
 
                     case 4:
-                        switch (focused_tree_node.Id)
+                        switch (focused_tree_node.FunId)
                         {
-                            case 25:
+                            case 20:
                                 var wh = WarehouseGridView.GetFocusedRow() as Warehouse;
                                 db.DeleteWhere<Warehouse>(w => w.WId == wh.WId);
                                 break;
@@ -627,7 +646,7 @@ namespace SP_Sklad.MainTabs
                                 db.DeleteWhere<Measures>(w => w.MId == m.MId);
                                 break;
 
-                            case 40:
+                            case 31:
                                 var pt = PriceTypesGridView.GetFocusedRow() as PriceTypesView;
                                 db.DeleteWhere<PriceTypes>(w => w.PTypeId == pt.PTypeId);
                                 break;
@@ -637,43 +656,43 @@ namespace SP_Sklad.MainTabs
                                 db.DeleteWhere<AccountType>(w => w.TypeId == at.TypeId);
                                 break;
 
-                            case 102:
+                            case 51:
                                 var ct = ChargeTypeGridView.GetFocusedRow() as ChargeType;
                                 db.DeleteWhere<ChargeType>(w => w.CTypeId == ct.CTypeId);
                                 break;
 
-                            case 64:
+                            case 56:
                                 var cd = CashDesksGridView.GetFocusedRow() as CashDesks;
                                 db.DeleteWhere<CashDesks>(w => w.CashId == cd.CashId);
                                 break;
 
-                            case 43:
+                            case 32:
                                 var c = CountriesGridView.GetFocusedRow() as Countries;
                                 db.DeleteWhere<Countries>(w => w.CId == c.CId);
                                 break;
 
-                            case 42:
-                            case 53:
+                            case 28:
+                            case 40:
                                 int mat_rec = ((dynamic)MatRecipeGridView.GetFocusedRow()).RecId;
                                 db.DeleteWhere<MatRecipe>(w => w.RecId == mat_rec);
                                 break;
 
-                            case 112:
+                            case 69:
                                 var tp = TechProcessGridView.GetFocusedRow() as TechProcess;
                                 db.DeleteWhere<TechProcess>(w => w.ProcId == tp.ProcId);
                                 break;
 
-                            case 115:
+                            case 73:
                                 var rou = (RouteGridView.GetFocusedRow() as Routes);
                                 db.DeleteWhere<Routes>(w => w.Id == rou.Id);
                                 break;
 
-                            case 109:
+                            case 66:
                                 var dc = DiscCardsGridView.GetFocusedRow() as v_DiscCards;
                                 db.DeleteWhere<DiscCards>(w => w.CardId == dc.CardId);
                                 break;
 
-                            case 124:
+                            case 81:
                                 int prop_mat_rec = ((dynamic)PreparationMatRecipeGridView.GetFocusedRow()).RecId;
                                 db.DeleteWhere<MatRecipe>(w => w.RecId == prop_mat_rec);
                                 break;
@@ -726,21 +745,23 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //     var prev_grp_id = focused_tree_node.GrpId;
-            switch (focused_tree_node.GType)
+            switch (focused_tree_node.FunId)
             {
-                case 2:
+                case 6:
                     new frmMatGroupEdit(focused_tree_node.GrpId).ShowDialog();
                     break;
 
-                case 3:
+                case 38:
                     new frmSvcGroupEdit(focused_tree_node.GrpId).ShowDialog();
 
                     break;
 
-                case 5:
+                case 82:
                     new frmTaraGroupEdit(focused_tree_node.GrpId).ShowDialog();
+                    break;
 
+                case 66:
+                    new frmDiscCardGroupEdit(focused_tree_node.GrpId).ShowDialog();
                     break;
             }
 
@@ -1263,7 +1284,7 @@ namespace SP_Sklad.MainTabs
             DirTreeList.OptionsBehavior.Editable = false;
             using (var db = DB.SkladBase())
             {
-                if (focused_tree_node.GType.Value == 2)
+                if (focused_tree_node.FunId == 6)
                 {
                     var g = db.MatGroup.Find(focused_tree_node.GrpId);
 
@@ -1273,7 +1294,7 @@ namespace SP_Sklad.MainTabs
                     }
                 }
 
-                if (focused_tree_node.GType.Value == 3)
+                if (focused_tree_node.FunId == 38)
                 {
 
                     var g = db.SvcGroup.Find(focused_tree_node.GrpId);
@@ -1284,10 +1305,21 @@ namespace SP_Sklad.MainTabs
                     }
                 }
 
-                if (focused_tree_node.GType.Value == 5)
+                if (focused_tree_node.FunId == 82)
                 {
 
                     var g = db.TaraGroup.Find(focused_tree_node.GrpId);
+
+                    if (g != null)
+                    {
+                        g.Name = DirTreeList.FocusedNode.GetDisplayText("Name");
+                    }
+                }
+
+                if (focused_tree_node.FunId == 66)
+                {
+
+                    var g = db.DiscCardGrp.Find(focused_tree_node.GrpId);
 
                     if (g != null)
                     {
@@ -1376,6 +1408,17 @@ namespace SP_Sklad.MainTabs
         private void TaraGridView_DoubleClick(object sender, EventArgs e)
         {
             EditItemBtn.PerformClick();
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (focused_tree_node.FunId == 66)
+            {
+                new frmDiscCardGroupEdit(null, focused_tree_node.GrpId).ShowDialog();
+            }
+            else new frmDiscCardGroupEdit().ShowDialog();
+
+            ExplorerRefreshBtn.PerformClick();
         }
     }
 }

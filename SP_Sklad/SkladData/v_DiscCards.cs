@@ -20,5 +20,7 @@ namespace SP_Sklad.SkladData
         public decimal OnValue { get; set; }
         public string KaName { get; set; }
         public string KaFullName { get; set; }
+        public string GrpName { get; set; }
+        public int GrpId { get; set; }
     }
 }

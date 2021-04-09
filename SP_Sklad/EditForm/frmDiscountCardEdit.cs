@@ -51,6 +51,7 @@ namespace SP_Sklad.EditForm
 
             DiscCardsBS.DataSource = dc;
 
+            GrpIdEdit.Properties.TreeList.DataSource = DB.SkladBase().DiscCardGrp.Select(s => new { s.GrpId, s.PId, s.Name }).ToList();
             KagentComboBox.Properties.DataSource = DBHelper.Kagents;
         }
 

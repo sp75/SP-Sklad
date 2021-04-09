@@ -304,6 +304,12 @@
     <Compile Include="EditForm\frmBarCode.Designer.cs">
       <DependentUpon>frmBarCode.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditForm\frmSvcGroupEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmSvcGroupEdit.Designer.cs">
+      <DependentUpon>frmSvcGroupEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditForm\frmTaraEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -867,11 +873,11 @@
     <Compile Include="EditForm\frmServicesEdit.Designer.cs">
       <DependentUpon>frmServicesEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditForm\frmSvcGroupEdit.cs">
+    <Compile Include="EditForm\frmDiscCardGroupEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditForm\frmSvcGroupEdit.Designer.cs">
-      <DependentUpon>frmSvcGroupEdit.cs</DependentUpon>
+    <Compile Include="EditForm\frmDiscCardGroupEdit.Designer.cs">
+      <DependentUpon>frmDiscCardGroupEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="EditForm\frmUserEdit.cs">
       <SubType>Form</SubType>
@@ -1662,6 +1668,9 @@
     <EmbeddedResource Include="EditForm\frmBarCode.resx">
       <DependentUpon>frmBarCode.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmSvcGroupEdit.resx">
+      <DependentUpon>frmSvcGroupEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmTaraEdit.resx">
       <DependentUpon>frmTaraEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -1728,8 +1737,8 @@
     <EmbeddedResource Include="EditForm\frmServicesEdit.resx">
       <DependentUpon>frmServicesEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditForm\frmSvcGroupEdit.resx">
-      <DependentUpon>frmSvcGroupEdit.cs</DependentUpon>
+    <EmbeddedResource Include="EditForm\frmDiscCardGroupEdit.resx">
+      <DependentUpon>frmDiscCardGroupEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmUserEdit.resx">
       <DependentUpon>frmUserEdit.cs</DependentUpon>
