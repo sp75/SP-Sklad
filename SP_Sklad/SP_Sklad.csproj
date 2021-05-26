@@ -707,9 +707,6 @@
     <Compile Include="SkladData\REP_4_25_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\REP_4_5_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SkladData\ReservedAllPosition_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1102,7 +1099,6 @@
       <DependentUpon>frmMatTurn.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\PrintDoc.cs" />
-    <Compile Include="Reports\PrintReport.cs" />
     <Compile Include="Reports\ReportBuilder.cs" />
     <Compile Include="Reports\TemlateList.cs" />
     <Compile Include="SkladData\AccountType.cs">

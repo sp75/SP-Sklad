@@ -161,6 +161,7 @@
     <Compile Include="Models\ReportModels\GetWayBillDetOut_Result.cs" />
     <Compile Include="Models\ReportModels\REP_10_Result.cs" />
     <Compile Include="Models\ReportModels\REP_15_Result.cs" />
+    <Compile Include="Models\ReportModels\REP_23_Result.cs" />
     <Compile Include="Models\ReportModels\REP_16_Result.cs" />
     <Compile Include="Models\ReportModels\REP_17_Result.cs" />
     <Compile Include="Models\ReportModels\REP_1_Result.cs" />

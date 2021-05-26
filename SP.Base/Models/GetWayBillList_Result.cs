@@ -48,5 +48,6 @@ namespace SP.Base.Models
         public string EntName { get; set; }
         public string KagentGroupName { get; set; }
         public Nullable<decimal> Balans { get; set; }
+        public string DocType { get; set; }
     }
 }

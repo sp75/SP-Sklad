@@ -264,7 +264,7 @@ namespace SP_Sklad.MainTabs
                 case 4:
 
                     int? w_type = focused_tree_node.WType != -2 ? focused_tree_node.WType / 3 : focused_tree_node.WType;
-                    using (var pd = new frmPayDoc(w_type, null))
+                    using (var pd = new frmPayDoc(w_type, null) { _ka_id = (int)PDKagentList.EditValue == 0 ? null : (int?)PDKagentList.EditValue })
                     {
                         pd.ShowDialog();
                     }

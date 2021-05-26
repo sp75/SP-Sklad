@@ -32,6 +32,7 @@ namespace SP.Reports
         public GrpKagentComboBoxItem KontragentGroup { get; set; }
         public String GrpStr { get; set; }
         public dynamic Person { get; set; }
+  public object RsvStatus { get; set; }
 
 
         private int? _person_id { get; set; }
@@ -221,6 +222,14 @@ namespace SP.Reports
                     REP_43();
                     break;
 
+                case 44:
+                    REP_44();
+                    break;
+
+                case 45:
+                    REP_45();
+                    break;
+
                 default:
                     break;
             }
@@ -350,7 +359,7 @@ namespace SP.Reports
         }
         private void REP_5()
         {
-            var kagents = _db.REP_4_5(OnDate).Where(w => w.Saldo > 0).ToList().Select((s, index) => new
+            var kagents = _db.REP_5_6(OnDate).Where(w => w.Saldo > 0).ToList().Select((s, index) => new
             {
                 N = index + 1,
                 s.Name,
@@ -362,7 +371,7 @@ namespace SP.Reports
         }
         private void REP_6()
         {
-            var kagents = _db.REP_4_5(OnDate).Where(w => w.Saldo < 0).ToList().Select((s, index) => new
+            var kagents = _db.REP_5_6(OnDate).Where(w => w.Saldo < 0).ToList().Select((s, index) => new
             {
                 N = index + 1,
                 s.Name,
@@ -775,15 +784,18 @@ namespace SP.Reports
         {
             data_for_report.Add("XLRPARAMS", XLR_PARAMS);
 
-            data_for_report.Add("DocList1", _db.GetPayDocList("1", StartDate, EndDate, 0, 1, -1, _person_id).ToList());
-            data_for_report.Add("DocList2", _db.GetPayDocList("-1", StartDate, EndDate, 0, 1, -1, _person_id).ToList());
-            data_for_report.Add("DocList3", _db.GetPayDocList("-2", StartDate, EndDate, 0, 1, -1, _person_id).ToList());
+            var paydoc = _db.REP_23(StartDate, EndDate, Kagent.KaId, ChType.CTypeId, KontragentGroup.Id).OrderBy(o => o.OnDate).ToList();
+
+            data_for_report.Add("DocList1", paydoc.Where(w => w.DocType == 1).ToList() /* _db.GetPayDocList("1", StartDate, EndDate, 0, 1, -1, _person_id).ToList()*/);
+            data_for_report.Add("DocList2", paydoc.Where(w => w.DocType == -1).ToList()/*_db.GetPayDocList("-1", StartDate, EndDate, 0, 1, -1, _person_id).ToList()*/);
+            data_for_report.Add("DocList3", paydoc.Where(w => w.DocType == -2).ToList()/* _db.GetPayDocList("-2", StartDate, EndDate, 0, 1, -1, _person_id).ToList()*/);
             data_for_report.Add("DocList4", _db.GetPayDocList("6", StartDate, EndDate, 0, 1, -1, _person_id).ToList());
 
             var m = _db.MoneyOnDate(EndDate).GroupBy(g => new { g.SaldoType, g.Currency }).Select(s => new { s.Key.SaldoType, s.Key.Currency, Saldo = s.Sum(sum => sum.Saldo) }).ToList();
             data_for_report.Add("MONEY1", m.Where(w => w.SaldoType == 0).ToList());
             data_for_report.Add("MONEY2", m.Where(w => w.SaldoType == 1).ToList());
         }
+
         private void REP_25()
         {
             var mat = _db.REP_4_25(StartDate, EndDate, MatGroup.GrpId, Kagent.KaId, Warehouse.WId, DocStr, _user_id).ToList();
@@ -1215,6 +1227,9 @@ namespace SP.Reports
 
         private void REP_42()
         {
+            int status = Convert.ToInt32(Status);
+            int rsvstatus = Convert.ToInt32(RsvStatus);
+
             var report_query = _db.WaybillDet.Where(w => w.WaybillList.WType == -20 && w.WaybillList.OnDate >= StartDate && w.WaybillList.OnDate < EndDate).Select(s => new
             {
                 s.WaybillList.Num,
@@ -1227,7 +1242,11 @@ namespace SP.Reports
                 s.Price,
                 s.MatId,
                 PersonName = s.WaybillList.Kagent.Name,
-                s.Materials.GrpId
+                s.Materials.GrpId,
+                s.WaybillList.Checked,
+                //(select(case when sum(amount) = wbd.Amount then 1 else 0 end) from wmatturn where sourceid = wbd.PosId and turntype in(2, -16)) Rsv
+                Rsv = _db.WMatTurn.Where(ww => ww.SourceId == s.PosId && ww.TurnType == 2).Sum(su => su.Amount) == s.Amount,
+            //    ddd = _db.WMatTurn.Where(ww => ww.SourceId == s.PosId && ww.TurnType == 2).Sum(su => su.Amount)
             });
 
             if (GrpStr.Any())
@@ -1244,6 +1263,18 @@ namespace SP.Reports
             if (Material.MatId > 0)
             {
                 report_query = report_query.Where(w => w.MatId == Material.MatId);
+            }
+
+            if(status != -1)
+            {
+                report_query = report_query.Where(w => w.Checked == status);
+            }
+
+            if(rsvstatus != -1)
+            {
+                var _rsv = rsvstatus == 1 ? true : false;
+
+                report_query = report_query.Where(w => w.Rsv == _rsv);
             }
 
             var report = report_query.OrderBy(o => o.OnDate).ToList();
@@ -1301,6 +1332,13 @@ namespace SP.Reports
   where tmc.[MatId] = {0} and ka.GroupId = {1} and wbl.WType in (-1, 6) and wbl.Checked = 1 and wbl.OnDate < {2} 
   group by ka.KaId, ka.Name", Material.MatId, KontragentGroup.Id, StartDate.Date ).ToList();
 
+            list2 = list2.Concat(list.Where(w => !list2.Any(a => a.KaId == w.KaId)).GroupBy(g=> new { g.KaId, g.KaName}).Select(s=> new rep_43
+            {
+                KaId = s.Key.KaId,
+                KaName = s.Key.KaName,
+                TurnAmount = 0
+            })).ToList(); 
+
 
             realation.Add(new
             {
@@ -1328,11 +1366,57 @@ namespace SP.Reports
             public string MsrName { get; set; }
             public string MatName { get; set; }
             public string TurnType { get; set; }
-
         }
 
+        private void REP_44()
+        {
+            int status = Convert.ToInt32(Status);
+            var doc =  _db.GetWayBillList(StartDate, EndDate, DocStr, status, Kagent.KaId, 1, "*", _person_id).OrderByDescending(o => o.OnDate).ToList();
 
-            private string GetSortedList(int rep_id)
+            realation.Add(new
+            {
+                pk = "KaId",
+                fk = "KaId",
+                master_table = "MatGroup",
+                child_table = "MatInDet"
+            });
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("MatGroup", doc.GroupBy(g=> new { g.KaId, g.KaName}).Select(s=> new { s.Key.KaId, s.Key.KaName , SummAll  = s.Sum(ss=> ss.SummAll) }).ToList());
+            data_for_report.Add("MatInDet", doc);
+
+            data_for_report.Add("_realation_", realation);
+        }
+
+        private void REP_45()
+        {
+            var kagents = _db.Database.SqlQuery<rep_45>(@"
+select x.*, ROW_NUMBER() over ( order by x.Name) as N from 
+ (
+    select
+
+        k.[KaId],
+      k.Name,
+        (select top 1 Saldo from GetKAgentSaldo(k.KaId, {0})) Saldo,
+      (SELECT TOP 1 pd.OnDate FROM PayDoc pd WHERE pd.CTypeId = 58 and  pd.KaId = k.KaId ORDER BY pd.OnDate desc) LastCorectDate
+  from[dbo].[Kagent] k
+    
+  )x
+  WHERE x.Saldo< 0", OnDate);
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("Kagent", kagents.ToList());
+        }
+
+        public class rep_45
+        {
+            public long? N { get; set; }
+            public string Name { get; set; }
+            public decimal? Saldo { get; set; }
+            public DateTime? LastCorectDate { get; set; }
+        }
+
+        private string GetSortedList(int rep_id)
         {
             string result = "";
             var list = _db.ReportSortedFields.Where(w => w.RepId == rep_id && w.OrderDirection != 0).OrderBy(o => o.Idx).ToList();

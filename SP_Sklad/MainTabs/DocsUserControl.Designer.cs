@@ -445,6 +445,7 @@
             this.PayDocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
+            this.gridColumn102 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -1989,7 +1990,8 @@
             this.gridColumn8,
             this.gridColumn51,
             this.gridColumn52,
-            this.gridColumn99});
+            this.gridColumn99,
+            this.gridColumn102});
             this.PayDocGridView.GridControl = this.PayDocGridControl;
             this.PayDocGridView.Name = "PayDocGridView";
             this.PayDocGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -5182,6 +5184,12 @@
             this.bar5.OptionsBar.UseWholeRow = true;
             this.bar5.Text = "Custom 5";
             // 
+            // gridColumn102
+            // 
+            this.gridColumn102.Caption = "Примітка";
+            this.gridColumn102.FieldName = "Notes";
+            this.gridColumn102.Name = "gridColumn102";
+            // 
             // DocsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5788,5 +5796,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox33;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn99;
         private DevExpress.XtraBars.BarButtonItem barButtonItem16;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn102;
     }
 }

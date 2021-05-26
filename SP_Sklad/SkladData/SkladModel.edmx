@@ -6125,19 +6125,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Parameter Name="doc_types" Type="varchar" Mode="In" />
           <Parameter Name="user_id" Type="int" Mode="In" />
         </Function>
-        <Function Name="REP_4_5" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="on_date" Type="datetime" Mode="In" />
-          <ReturnType>
-            <CollectionType>
-              <RowType>
-                <Property Name="KaId" Type="int" Nullable="false" />
-                <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
-                <Property Name="Saldo" Type="numeric" Precision="38" Scale="2" />
-                <Property Name="N" Type="bigint" />
-              </RowType>
-            </CollectionType>
-          </ReturnType>
-        </Function>
         <Function Name="REP_41" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="from_date" Type="datetime" Mode="In" />
           <Parameter Name="ka_grp_id" Type="uniqueidentifier" Mode="In" />
@@ -8642,9 +8629,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <FunctionImport Name="GetKAgentSaldo" IsComposable="true" ReturnType="Collection(BaseModel.GetKAgentSaldo_Result)">
             <Parameter Name="ka_id" Mode="In" Type="Int32" />
             <Parameter Name="on_date" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="REP_4_5" IsComposable="true" ReturnType="Collection(BaseModel.REP_4_5_Result)">
-          <Parameter Name="on_date" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="DocCopy" ReturnType="Collection(BaseModel.DocCopy_Result)">
             <Parameter Name="originator_id" Mode="In" Type="Guid" />
@@ -12632,11 +12616,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
         <ComplexType Name="GetKAgentSaldo_Result">
           <Property Type="Int32" Name="KaId" Nullable="false" />
           <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="10" />
-          <Property Type="Decimal" Name="Saldo" Nullable="true" Precision="38" Scale="2" />
-        </ComplexType>
-        <ComplexType Name="REP_4_5_Result">
-          <Property Type="Int64" Name="N" Nullable="true" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="64" />
           <Property Type="Decimal" Name="Saldo" Nullable="true" Precision="38" Scale="2" />
         </ComplexType>
         <ComplexType Name="DocCopy_Result">
@@ -17778,15 +17757,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               <ComplexTypeMapping TypeName="BaseModel.GetKAgentSaldo_Result">
                 <ScalarProperty Name="KaId" ColumnName="KaId" />
                 <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="REP_4_5" FunctionName="BaseModel.Store.REP_4_5">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.REP_4_5_Result">
-                <ScalarProperty Name="N" ColumnName="N" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Saldo" ColumnName="Saldo" />
               </ComplexTypeMapping>
             </ResultMapping>

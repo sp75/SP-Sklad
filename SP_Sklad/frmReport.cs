@@ -25,6 +25,315 @@ namespace SP_Sklad
         {
             InitializeComponent();
             _rep_id = rep_id;
+
+            switch (_rep_id)
+            {
+                case 1:
+                    this.OutDocGroupBox.Visible = false;
+                    this.MatGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    this.DocTypeGroupBox2.Visible = true;
+                    break;
+
+                case 2:
+                    this.InDocGroupBox.Visible = false;
+                    this.MatGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    this.StatusPanel.Visible = true;
+                    this.DocTypeGroupBox2.Visible = true;
+                    break;
+
+                case 39:
+                case 3:
+                    this.InDocGroupBox.Visible = false;
+                    this.MatGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    this.GroupKontragentPanel.Visible = true;
+                    break;
+
+                case 14:
+                    this.DocTypeGroupBox2.Visible = true;
+                    this.InDocGroupBox.Visible = false;
+                    this.MatGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    this.GroupKontragentPanel.Visible = true;
+                    break;
+
+                case 4:
+                    this.OutDocGroupBox.Visible = false;
+                    this.MatGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    break;
+
+                case 25:
+                    this.DocTypeGroupBox2.Visible = true;
+                    this.OutDocGroupBox.Visible = false;
+                    this.MatGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    break;
+
+                case 26:
+                    this.KontragentPanel.Visible = false;
+                    this.MatGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    break;
+
+                case 30:
+                case 8:
+                    this.WHGroupBox.Visible = false;
+                    this.GRPGroupBox.Visible = false;
+                    this.MatGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    break;
+
+                case 5:
+                case 6:
+                case 45:
+                    this.OnDateGroupBox.Visible = true;
+                    this.KontragentPanel.Visible = false;
+                    this.PeriodGroupBox.Visible = false;
+                    this.WHGroupBox.Visible = false;
+                    this.GRPGroupBox.Visible = false;
+                    this.KontragentPanel.Visible = false;
+                    this.MatGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    break;
+
+                case 18:
+                case 7:
+                    this.PeriodGroupBox.Visible = false;
+                    this.KontragentPanel.Visible = false;
+                    this.MatGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    this.OnDateGroupBox.Visible = true;
+                    break;
+
+                case 9:
+                case 19:
+                    this.GRPGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    this.GroupKontragentPanel.Visible = true;
+                    break;
+
+                case 10:
+                    this.MatGroupBox.Visible = false;
+                    this.KontragentPanel.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    break;
+
+                case 11:
+                    this.KontragentPanel.Visible = false;
+                    this.WHGroupBox.Visible = false;
+                    this.GRPGroupBox.Visible = false;
+                    this.KontragentPanel.Visible = false;
+                    this.MatGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    break;
+
+                case 13:
+                    this.MatGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    break;
+
+                case 15:
+                    this.GRPGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    this.WHGroupBox.Visible = false;
+                    break;
+
+                case 16:
+                    this.MatGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.WHGroupBox.Visible = false;
+                    this.GRPGroupBox.Visible = false;
+                    break;
+
+                case 17:
+                case 23:
+                    this.WHGroupBox.Visible = false;
+                    this.GRPGroupBox.Visible = false;
+                    this.MatGroupBox.Visible = false;
+                    this.GroupKontragentPanel.Visible = true;
+                    this.DocTypeGroupBox.Visible = false;
+                    break;
+
+                case 20:
+                    this.MatGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.WHGroupBox.Visible = false;
+                    this.GrpComboBox.Properties.DataSource = new List<object>() { new { GrpId = 0, Name = "Усі" } }.Concat(new BaseEntities().SvcGroup.Where(w => w.Deleted == 0).Select(s => new { s.GrpId, s.Name }).ToList());
+                    this.ChargeGroupBox.Visible = false;
+                    break;
+
+                case 28:
+                    this.WHGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    this.GroupKontragentPanel.Visible = true;
+                    break;
+
+                case 27:
+                    this.WHGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    this.GroupKontragentPanel.Visible = true;
+                    this.PersonPanel.Visible = true;
+                    break;
+
+                case 29:
+                    this.OutDocGroupBox.Visible = false;
+                    this.MatGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    break;
+
+                case 31:
+                    this.KontragentPanel.Visible = false;
+                    this.WHGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    break;
+
+                case 32:
+                    this.GRPGroupBox.Visible = false;
+                    this.MatGroupBox.Visible = false;
+                    this.KontragentPanel.Visible = false;
+                    this.WHGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    break;
+
+                case 33:
+                    this.KontragentPanel.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    break;
+
+                case 34:
+                    this.OnDateGroupBox.Visible = true;
+                    this.PeriodGroupBox.Visible = false;
+                    this.WHGroupBox.Visible = false;
+                    this.GRPGroupBox.Visible = false;
+                    this.MatGroupBox.Visible = false;
+                    this.KontragentPanel.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    break;
+
+                case 35:
+                    this.KontragentPanel.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    break;
+
+                case 36:
+                    this.OnDateGroupBox.Visible = true;
+                    this.KontragentPanel.Visible = false;
+                    this.PeriodGroupBox.Visible = false;
+                    this.WHGroupBox.Visible = false;
+                    this.GRPGroupBox.Visible = false;
+                    this.KontragentPanel.Visible = false;
+                    this.MatGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    break;
+
+                case 37:
+                    this.KontragentPanel.Visible = false;
+                    this.GRPGroupBox.Visible = false;
+                    this.KontragentPanel.Visible = false;
+                    this.MatGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    break;
+
+                case 38:
+                    this.KontragentPanel.Visible = false;
+                    this.GRPGroupBox.Visible = false;
+                    this.KontragentPanel.Visible = false;
+                    this.MatGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    this.WHGroupBox.Visible = false;
+                    break;
+
+                case 22:
+                    this.PersonPanel.Visible = true;
+                    this.KontragentPanel.Visible = false;
+                    this.GRPGroupBox.Visible = false;
+                    this.KontragentPanel.Visible = false;
+                    this.MatGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    this.WHGroupBox.Visible = false;
+                    break;
+
+                case 40:
+                    this.OnDateGroupBox.Visible = true;
+                    this.PersonPanel.Visible = false;
+                    this.GRPGroupBox.Visible = false;
+                    //   this.MatGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    this.WHGroupBox.Visible = false;
+                    this.PeriodGroupBox.Visible = false;
+                    break;
+
+                case 41:
+                    this.GroupKontragentPanel.Visible = true;
+                    this.PersonPanel.Visible = false;
+                    this.GRPGroupBox.Visible = false;
+                    this.MatGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    this.WHGroupBox.Visible = false;
+                    this.KontragentPanel.Visible = false;
+                    break;
+
+                case 42:
+                    this.InDocGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    this.WHGroupBox.Visible = false;
+                    this.KontragentPanel.Visible = false;
+                    this.StatusPanel.Visible = true;
+                    this.wmatturnStatusPanel.Visible = true;
+                    break;
+
+
+                case 43:
+                    this.PersonPanel.Visible = false;
+                    this.GRPGroupBox.Visible = false;
+                    //   this.MatGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    this.WHGroupBox.Visible = false;
+                    this.GroupKontragentPanel.Visible = true;
+                    this.KontragentPanel.Visible = false;
+                    break;
+
+                case 44:
+                    this.DocTypeGroupBox2.Visible = true;
+                    this.MatGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    this.StatusPanel.Visible = true;
+                    this.GRPGroupBox.Visible = false;
+                    break;
+            }
         }
 
         private void frmReport_Load(object sender, EventArgs e)
@@ -43,13 +352,20 @@ namespace SP_Sklad
 
             if (InDocGroupBox.Visible) checkEdit2.Checked = true;
             if (OutDocGroupBox.Visible) checkEdit4.Checked = true;
-            if (!OnDateGroupBox.Visible) Height -= OnDateGroupBox.Height;
-            if (!MatGroupBox.Visible)
+
+            Height = 0;
+            Height = Height + panelControl2.Size.Height + panel1.Size.Height + 10;
+
+            if (OnDateGroupBox.Visible)
             {
-                Height -= MatGroupBox.Height;
+                Height += OnDateGroupBox.Height;
             }
-            else
+ 
+            if (MatGroupBox.Visible)
             {
+      Height += MatGroupBox.Height;
+               
+
                 if (_rep_id == 9 || _rep_id == 19 || _rep_id == 15)
                 {
                     var mat = new BaseEntities().Materials.Where(w => w.Deleted == 0).Select(s => new MatComboBoxItem
@@ -92,24 +408,20 @@ namespace SP_Sklad
                 }
             }
 
-            if (!PeriodGroupBox.Visible)
+            if (PeriodGroupBox.Visible)
             {
-                Height -= PeriodGroupBox.Height;
-            }
-            else
-            {
+                Height += PeriodGroupBox.Height;
+
                 if (_rep_id == 41)
                 {
                     PeriodComboBoxEdit.EditValue = "За рік";
                 }
             }
 
-            if (!WHGroupBox.Visible)
+            if (WHGroupBox.Visible)
             {
-                Height -= WHGroupBox.Height;
-            }
-            else
-            {
+                Height += WHGroupBox.Height;
+
                 var wh = new BaseEntities().Warehouse.Where(w => w.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId)).Select(s => new { WId = s.WId.ToString(), s.Name, s.Def }).ToList();
                 if (_rep_id == 37)
                 {
@@ -133,21 +445,18 @@ namespace SP_Sklad
                 }
             }
 
-            if (!GRPGroupBox.Visible)
+            if (GRPGroupBox.Visible)
             {
-                Height -= GRPGroupBox.Height;
-            }
-            else
-            {
+                Height += GRPGroupBox.Height;
+
                 GrpComboBox.Properties.DataSource = new List<GrpComboBoxItem>() { new GrpComboBoxItem { GrpId = 0, Name = "Усі" } }.Concat(new BaseEntities().MatGroup.Where(w => w.Deleted == 0).Select(s => new GrpComboBoxItem { GrpId = s.GrpId, Name = s.Name }).ToList());
                 GrpComboBox.EditValue = 0;
             }
-            if (!KontragentPanel.Visible)
+
+            if (KontragentPanel.Visible)
             {
-                Height -= KontragentPanel.Height;
-            }
-            else
-            {
+                Height += KontragentPanel.Height;
+
                 if (_rep_id == 3)
                 {
                     KagentComboBox.Properties.DataSource = DBHelper.Kagents.Select(s => new KagentComboBoxItem { KaId = s.KaId, Name = s.Name });
@@ -160,61 +469,59 @@ namespace SP_Sklad
                 }
             }
 
-            if (!DocTypeGroupBox.Visible)
+            if (DocTypeGroupBox.Visible)
             {
-                Height -= DocTypeGroupBox.Height;
-            }
-            else
-            {
+                Height += DocTypeGroupBox.Height;
+
                 DocTypeEdit.Properties.DataSource = new List<object>() { new { Id = 0, Name = "Усі" } }.Concat(new BaseEntities().DocType.Select(s => new { s.Id, s.Name }));
                 DocTypeEdit.EditValue = 0;
             }
 
             //       if (!cxGroupBox1.Visible) Height -= cxGroupBox1.Height;
-            if (!DocTypeGroupBox2.Visible)
+            if (DocTypeGroupBox2.Visible)
             {
-                Height -= DocTypeGroupBox2.Height;
+                Height += DocTypeGroupBox2.Height;
             }
 
 
-            if (!ChargeGroupBox.Visible)
+            if (ChargeGroupBox.Visible)
             {
-                Height -= ChargeGroupBox.Height;
-            }
-            else
-            {
+                Height += ChargeGroupBox.Height;
+
                 ChTypeEdit.Properties.DataSource = new List<object>() { new ChTypeComboBoxItem { CTypeId = 0, Name = "Усі" } }.Concat(new BaseEntities().ChargeType.Where(w => w.Deleted == 0).Select(s => new ChTypeComboBoxItem { CTypeId = s.CTypeId, Name = s.Name }));
                 ChTypeEdit.EditValue = 0;
             }
 
-            if (!wbStatusList.Visible)
+            if (StatusPanel.Visible)
             {
-                Height -= wbStatusList.Height;
-            }
-            else
-            {
-                wbStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
+                Height += StatusPanel.Height;
+
+                wbStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені / Закінчене виробництво" }, new { Id = 0, Name = "Непроведені / Актуалні" }, new { Id = 2, Name = "Розпочато виробництво" } };
                 wbStatusList.EditValue = 1;
             }
 
-            if (!GroupKontragentPanel.Visible)
+            if (GroupKontragentPanel.Visible)
             {
-                Height -= GroupKontragentPanel.Height;
-            }
-            else
-            {
+                Height += GroupKontragentPanel.Height;
+
                 GrpKagentLookUpEdit.Properties.DataSource = new List<object>() { new GrpKagentComboBoxItem { Id = Guid.Empty, Name = "Усі" } }.Concat(new BaseEntities().KontragentGroup.Select(s => new GrpKagentComboBoxItem { Id = s.Id, Name = s.Name })).ToList();
                 GrpKagentLookUpEdit.EditValue = Guid.Empty;
             }
 
-            if (!PersonPanel.Visible)
+            if (PersonPanel.Visible)
             {
-                Height -= PersonPanel.Height;
-            }
-            else
-            {
+                Height += PersonPanel.Height;
+
                 PersonLookUpEdit.Properties.DataSource = new List<object>() { new PersonList { KaId = 0, Name = "Усі" } }.Concat(DBHelper.Persons);
                 PersonLookUpEdit.EditValue = 0;
+            }
+
+            if (wmatturnStatusPanel.Visible)
+            {
+                Height += wmatturnStatusPanel.Height;
+
+                wmatturnStatus.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Так" }, new { Id = 0, Name = "Ні" } };
+                wmatturnStatus.EditValue = 0;
             }
 
         }
@@ -281,7 +588,8 @@ namespace SP_Sklad
                        Status = wbStatusList.EditValue,
                        KontragentGroup = GrpKagentLookUpEdit.GetSelectedDataRow() as GrpKagentComboBoxItem,
                        GrpStr = ChildGroupCheckEdit.Checked ? String.Join(",", new BaseEntities().GetMatGroupTree(grp).ToList().Select(s => Convert.ToString(s.GrpId))) : "",
-                       Person = PersonLookUpEdit.GetSelectedDataRow()
+                       Person = PersonLookUpEdit.GetSelectedDataRow(),
+                       RsvStatus = wmatturnStatus.EditValue
                    };
 
                    var template_name = pr2.GetTemlate(_rep_id);

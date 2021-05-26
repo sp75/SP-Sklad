@@ -115,31 +115,29 @@ namespace SP_Sklad.MainTabs
             }
 
             var frm = new frmReport((int)row.RepId);
-
+/*
             switch ((int)row.RepId)
             {
                 case 1:
                     frm.OutDocGroupBox.Visible = false;
-                    frm.OnDateGroupBox.Visible = false;
                     frm.MatGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
+                    frm.DocTypeGroupBox2.Visible = true;
                     break;
 
                 case 2:
                     frm.InDocGroupBox.Visible = false;
-                    frm.OnDateGroupBox.Visible = false;
                     frm.MatGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
                     frm.StatusPanel.Visible = true;
+                    frm.DocTypeGroupBox2.Visible = true;
                     break;
 
                 case 39:
                 case 3:
-                    frm.DocTypeGroupBox2.Visible = false;
                     frm.InDocGroupBox.Visible = false;
-                    frm.OnDateGroupBox.Visible = false;
                     frm.MatGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
@@ -147,8 +145,8 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 14:
+                    frm.DocTypeGroupBox2.Visible = true;
                     frm.InDocGroupBox.Visible = false;
-                    frm.OnDateGroupBox.Visible = false;
                     frm.MatGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
@@ -156,42 +154,39 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 4:
-                    frm.DocTypeGroupBox2.Visible = false;
                     frm.OutDocGroupBox.Visible = false;
-                    frm.OnDateGroupBox.Visible = false;
                     frm.MatGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
                     break;
 
                 case 25:
+                    frm.DocTypeGroupBox2.Visible = true;
                     frm.OutDocGroupBox.Visible = false;
-                    frm.OnDateGroupBox.Visible = false;
                     frm.MatGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
                     break;
 
-                case 26: frm.OnDateGroupBox.Visible = false;
+                case 26: 
                     frm.KontragentPanel.Visible = false;
                     frm.MatGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
-                    frm.DocTypeGroupBox2.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
                     break;
 
                 case 30:
-                case 8: frm.OnDateGroupBox.Visible = false;
+                case 8: 
                     frm.WHGroupBox.Visible = false;
                     frm.GRPGroupBox.Visible = false;
                     frm.MatGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
-                    frm.DocTypeGroupBox2.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
                     break;
 
                 case 5:
                 case 6:
+                    frm.OnDateGroupBox.Visible = true;
                     frm.KontragentPanel.Visible = false;
                     frm.PeriodGroupBox.Visible = false;
                     frm.WHGroupBox.Visible = false;
@@ -199,40 +194,35 @@ namespace SP_Sklad.MainTabs
                     frm.KontragentPanel.Visible = false;
                     frm.MatGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
-                    frm.DocTypeGroupBox2.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
                     break;
 
                 case 18:
-                case 7: frm.PeriodGroupBox.Visible = false;
+                case 7:
+                    frm.OnDateGroupBox.Visible = true;
+                    frm.PeriodGroupBox.Visible = false;
                     frm.KontragentPanel.Visible = false;
                     frm.MatGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
-                    frm.DocTypeGroupBox2.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
                     break;
 
                 case 9:
                 case 19:
-                    frm.OnDateGroupBox.Visible = false;
                     frm.GRPGroupBox.Visible = false;
-                    frm.DocTypeGroupBox2.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
                     frm.GroupKontragentPanel.Visible = true;
                     break;
 
                 case 10:
-                    frm.DocTypeGroupBox2.Visible = false;
-                    frm.OnDateGroupBox.Visible = false;
                     frm.MatGroupBox.Visible = false;
                     frm.KontragentPanel.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
                     break;
 
-                case 11: frm.DocTypeGroupBox2.Visible = false;
+                case 11: 
                     frm.KontragentPanel.Visible = false;
-                    frm.OnDateGroupBox.Visible = false;
                     frm.WHGroupBox.Visible = false;
                     frm.GRPGroupBox.Visible = false;
                     frm.KontragentPanel.Visible = false;
@@ -240,15 +230,13 @@ namespace SP_Sklad.MainTabs
                     frm.ChargeGroupBox.Visible = false;
                     break;
 
-                case 13: frm.DocTypeGroupBox2.Visible = false;
-                    frm.OnDateGroupBox.Visible = false;
+                case 13: 
                     frm.MatGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
                     break;
 
-                case 15: frm.DocTypeGroupBox2.Visible = false;
-                    frm.OnDateGroupBox.Visible = false;
+                case 15: 
                     frm.GRPGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
@@ -256,8 +244,6 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 16:
-                    frm.DocTypeGroupBox2.Visible = false;
-                    frm.OnDateGroupBox.Visible = false;
                     frm.MatGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
                     frm.WHGroupBox.Visible = false;
@@ -265,20 +251,16 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 17:
-                case 23: frm.DocTypeGroupBox2.Visible = false;
-                    frm.KontragentPanel.Visible = false;
-                    frm.OnDateGroupBox.Visible = false;
+                case 23: 
+              //      frm.KontragentPanel.Visible = false;
                     frm.WHGroupBox.Visible = false;
                     frm.GRPGroupBox.Visible = false;
-                    frm.KontragentPanel.Visible = false;
                     frm.MatGroupBox.Visible = false;
-                    frm.ChargeGroupBox.Visible = false;
+                 //   frm.ChargeGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
                     break;
 
                 case 20:
-                    frm.DocTypeGroupBox2.Visible = false;
-                    frm.OnDateGroupBox.Visible = false;
                     frm.MatGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
                     frm.WHGroupBox.Visible = false;
@@ -286,18 +268,16 @@ namespace SP_Sklad.MainTabs
                     frm.ChargeGroupBox.Visible = false;
                     break;
 
-                case 28: frm.OnDateGroupBox.Visible = false;
+                case 28: 
                     frm.WHGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
-                    frm.DocTypeGroupBox2.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
                     frm.GroupKontragentPanel.Visible = true;
                     break;
 
-                case 27: frm.OnDateGroupBox.Visible = false;
+                case 27: 
                     frm.WHGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
-                    frm.DocTypeGroupBox2.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
                     frm.GroupKontragentPanel.Visible = true;
                     frm.PersonPanel.Visible = true;
@@ -305,56 +285,52 @@ namespace SP_Sklad.MainTabs
 
                 case 29:
                     frm.OutDocGroupBox.Visible = false;
-                    frm.OnDateGroupBox.Visible = false;
                     frm.MatGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
-                    frm.DocTypeGroupBox2.Visible = false;
                     break;
 
-                case 31: frm.OnDateGroupBox.Visible = false;
+                case 31: 
                     frm.KontragentPanel.Visible = false;
                     frm.WHGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
-                    frm.DocTypeGroupBox2.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
                     break;
 
-                case 32: frm.OnDateGroupBox.Visible = false;
+                case 32: 
                     frm.GRPGroupBox.Visible = false;
                     frm.MatGroupBox.Visible = false;
                     frm.KontragentPanel.Visible = false;
                     frm.WHGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
-                    frm.DocTypeGroupBox2.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
                     break;
 
-                case 33: frm.OnDateGroupBox.Visible = false;
+                case 33:
                     frm.KontragentPanel.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
-                    frm.DocTypeGroupBox2.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
                     break;
 
-                case 34: frm.PeriodGroupBox.Visible = false;
+                case 34:
+                    frm.OnDateGroupBox.Visible = true;
+                    frm.PeriodGroupBox.Visible = false;
                     frm.WHGroupBox.Visible = false;
                     frm.GRPGroupBox.Visible = false;
                     frm.MatGroupBox.Visible = false;
                     frm.KontragentPanel.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
-                    frm.DocTypeGroupBox2.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
                     break;
 
-                case 35: frm.OnDateGroupBox.Visible = false;
+                case 35: 
                     frm.KontragentPanel.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
-                    frm.DocTypeGroupBox2.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
                     break;
 
                 case 36:
+                    frm.OnDateGroupBox.Visible = true;
                     frm.KontragentPanel.Visible = false;
                     frm.PeriodGroupBox.Visible = false;
                     frm.WHGroupBox.Visible = false;
@@ -362,66 +338,56 @@ namespace SP_Sklad.MainTabs
                     frm.KontragentPanel.Visible = false;
                     frm.MatGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
-                    frm.DocTypeGroupBox2.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
                     break;
 
                 case 37:
-                    frm.OnDateGroupBox.Visible = false;
                     frm.KontragentPanel.Visible = false;
                     frm.GRPGroupBox.Visible = false;
                     frm.KontragentPanel.Visible = false;
                     frm.MatGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
-                    frm.DocTypeGroupBox2.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
                     break;
 
                 case 38:
-                    frm.OnDateGroupBox.Visible = false;
                     frm.KontragentPanel.Visible = false;
                     frm.GRPGroupBox.Visible = false;
                     frm.KontragentPanel.Visible = false;
                     frm.MatGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
-                    frm.DocTypeGroupBox2.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
                     frm.WHGroupBox.Visible = false;
                     break;
 
                 case 22:
                     frm.PersonPanel.Visible = true;
-                    frm.OnDateGroupBox.Visible = false;
                     frm.KontragentPanel.Visible = false;
                     frm.GRPGroupBox.Visible = false;
                     frm.KontragentPanel.Visible = false;
                     frm.MatGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
-                    frm.DocTypeGroupBox2.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
                     frm.WHGroupBox.Visible = false;
                     break;
 
                 case 40:
-
+                    frm.OnDateGroupBox.Visible = true;
                     frm.PersonPanel.Visible = false;
                     frm.GRPGroupBox.Visible = false;
                  //   frm.MatGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
-                    frm.DocTypeGroupBox2.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
                     frm.WHGroupBox.Visible = false;
                     frm.PeriodGroupBox.Visible = false;
                     break;
 
                 case 41:
-                    frm.OnDateGroupBox.Visible = false;
                     frm.GroupKontragentPanel.Visible = true;
                     frm.PersonPanel.Visible = false;
                     frm.GRPGroupBox.Visible = false;
                     frm.MatGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
-                    frm.DocTypeGroupBox2.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
                     frm.WHGroupBox.Visible = false;
                     frm.KontragentPanel.Visible = false;
@@ -429,28 +395,35 @@ namespace SP_Sklad.MainTabs
 
                 case 42:
                     frm.InDocGroupBox.Visible = false;
-                    frm.OnDateGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
-                    frm.DocTypeGroupBox2.Visible = false;
                     frm.WHGroupBox.Visible = false;
                     frm.KontragentPanel.Visible = false;
+                    frm.StatusPanel.Visible = true;
+                    frm.wmatturnStatusPanel.Visible = true;
                     break;
 
 
                 case 43:
-                    frm.OnDateGroupBox.Visible = false;
                     frm.PersonPanel.Visible = false;
                     frm.GRPGroupBox.Visible = false;
                     //   frm.MatGroupBox.Visible = false;
                     frm.DocTypeGroupBox.Visible = false;
-                    frm.DocTypeGroupBox2.Visible = false;
                     frm.ChargeGroupBox.Visible = false;
                     frm.WHGroupBox.Visible = false;
                     frm.GroupKontragentPanel.Visible = true;
                     frm.KontragentPanel.Visible = false;
                     break;
-            }
+
+                case 44:
+                    frm.DocTypeGroupBox2.Visible = true;
+                    frm.MatGroupBox.Visible = false;
+                    frm.DocTypeGroupBox.Visible = false;
+                    frm.ChargeGroupBox.Visible = false;
+                    frm.StatusPanel.Visible = true;
+                    frm.GRPGroupBox.Visible = false;
+                    break;
+            }*/
 
             frm.Text = row.Name;
             frm.ShowDialog();

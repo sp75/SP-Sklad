@@ -1139,16 +1139,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetKAgentSaldo_Result>("[BaseEntities].[GetKAgentSaldo](@ka_id, @on_date)", ka_idParameter, on_dateParameter);
         }
     
-        [EdmFunction("BaseEntities", "REP_4_5")]
-        public virtual IQueryable<REP_4_5_Result> REP_4_5(Nullable<System.DateTime> on_date)
-        {
-            var on_dateParameter = on_date.HasValue ?
-                new ObjectParameter("on_date", on_date) :
-                new ObjectParameter("on_date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_4_5_Result>("[BaseEntities].[REP_4_5](@on_date)", on_dateParameter);
-        }
-    
         public virtual ObjectResult<DocCopy_Result> DocCopy(Nullable<System.Guid> originator_id, Nullable<int> person_id)
         {
             var originator_idParameter = originator_id.HasValue ?
