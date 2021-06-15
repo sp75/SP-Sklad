@@ -59,5 +59,6 @@ namespace SP_Sklad.SkladData
         public string AccNum { get; set; }
         public string BankName { get; set; }
         public string EntName { get; set; }
+        public string KaGroupName { get; set; }
     }
 }

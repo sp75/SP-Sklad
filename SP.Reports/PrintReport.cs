@@ -359,11 +359,12 @@ namespace SP.Reports
         }
         private void REP_5()
         {
-            var kagents = _db.REP_5_6(OnDate).Where(w => w.Saldo > 0).ToList().Select((s, index) => new
+            var kagents = _db.REP_5_6(OnDate, KontragentGroup.Id).Where(w => w.Saldo > 0).ToList().Select((s, index) => new
             {
                 N = index + 1,
                 s.Name,
-                s.Saldo
+                s.Saldo,
+                s.GroupName
             });
 
             data_for_report.Add("XLRPARAMS", XLR_PARAMS);
@@ -371,11 +372,12 @@ namespace SP.Reports
         }
         private void REP_6()
         {
-            var kagents = _db.REP_5_6(OnDate).Where(w => w.Saldo < 0).ToList().Select((s, index) => new
+            var kagents = _db.REP_5_6(OnDate, KontragentGroup.Id).Where(w => w.Saldo < 0).ToList().Select((s, index) => new
             {
                 N = index + 1,
                 s.Name,
-                s.Saldo
+                s.Saldo,
+                s.GroupName
             });
 
             data_for_report.Add("XLRPARAMS", XLR_PARAMS);
@@ -1394,15 +1396,16 @@ namespace SP.Reports
 select x.*, ROW_NUMBER() over ( order by x.Name) as N from 
  (
     select
-
         k.[KaId],
-      k.Name,
+        k.Name,
         (select top 1 Saldo from GetKAgentSaldo(k.KaId, {0})) Saldo,
-      (SELECT TOP 1 pd.OnDate FROM PayDoc pd WHERE pd.CTypeId = 58 and  pd.KaId = k.KaId ORDER BY pd.OnDate desc) LastCorectDate
-  from[dbo].[Kagent] k
-    
+        (SELECT TOP 1 pd.OnDate FROM PayDoc pd WHERE pd.CTypeId = 58 and  pd.KaId = k.KaId ORDER BY pd.OnDate desc) LastCorectDate,
+        kg.Name GroupName
+    from[dbo].[Kagent] k
+    left outer join [KontragentGroup] kg on kg.[Id] =  k.GroupId
+	where {1} in ( k.GroupId , '00000000-0000-0000-0000-000000000000' ) 
   )x
-  WHERE x.Saldo< 0", OnDate);
+  WHERE x.Saldo < 0", OnDate, KontragentGroup.Id);
 
             data_for_report.Add("XLRPARAMS", XLR_PARAMS);
             data_for_report.Add("Kagent", kagents.ToList());
@@ -1414,6 +1417,7 @@ select x.*, ROW_NUMBER() over ( order by x.Name) as N from
             public string Name { get; set; }
             public decimal? Saldo { get; set; }
             public DateTime? LastCorectDate { get; set; }
+            public string GroupName { get; set; }
         }
 
         private string GetSortedList(int rep_id)

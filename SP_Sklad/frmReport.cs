@@ -106,6 +106,7 @@ namespace SP_Sklad
                     this.MatGroupBox.Visible = false;
                     this.DocTypeGroupBox.Visible = false;
                     this.ChargeGroupBox.Visible = false;
+                    this.GroupKontragentPanel.Visible = true;
                     break;
 
                 case 18:

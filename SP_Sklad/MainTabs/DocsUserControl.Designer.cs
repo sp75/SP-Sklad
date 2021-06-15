@@ -166,6 +166,8 @@
             this.gridColumn51 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn52 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn99 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn102 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn103 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -445,7 +447,6 @@
             this.PayDocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
-            this.gridColumn102 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -752,6 +753,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(63, "акт інвентаризації з контрагентом.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(64, "preparation.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(65, "tara.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(66, "weighing-scale.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab
@@ -1991,7 +1993,8 @@
             this.gridColumn51,
             this.gridColumn52,
             this.gridColumn99,
-            this.gridColumn102});
+            this.gridColumn102,
+            this.gridColumn103});
             this.PayDocGridView.GridControl = this.PayDocGridControl;
             this.PayDocGridView.Name = "PayDocGridView";
             this.PayDocGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -2141,6 +2144,19 @@
             this.gridColumn99.Caption = "Підстава";
             this.gridColumn99.FieldName = "Reason";
             this.gridColumn99.Name = "gridColumn99";
+            // 
+            // gridColumn102
+            // 
+            this.gridColumn102.Caption = "Примітка";
+            this.gridColumn102.FieldName = "Notes";
+            this.gridColumn102.Name = "gridColumn102";
+            // 
+            // gridColumn103
+            // 
+            this.gridColumn103.Caption = "Група контрагентів";
+            this.gridColumn103.FieldName = "KaGroupName";
+            this.gridColumn103.Name = "gridColumn103";
+            this.gridColumn103.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.CheckedList;
             // 
             // repositoryItemImageEdit2
             // 
@@ -5184,12 +5200,6 @@
             this.bar5.OptionsBar.UseWholeRow = true;
             this.bar5.Text = "Custom 5";
             // 
-            // gridColumn102
-            // 
-            this.gridColumn102.Caption = "Примітка";
-            this.gridColumn102.FieldName = "Notes";
-            this.gridColumn102.Name = "gridColumn102";
-            // 
             // DocsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5797,5 +5807,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn99;
         private DevExpress.XtraBars.BarButtonItem barButtonItem16;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn102;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn103;
     }
 }

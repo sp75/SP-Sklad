@@ -759,6 +759,9 @@
     <Compile Include="SkladData\v_ErrorLog.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_IntermediateWeighing.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_IntermediateWeighingDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -2053,6 +2056,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ViewModels.MaterialMeasuresView.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Actives.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_DiscCards.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_IntermediateWeighing.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_IntermediateWeighingDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_KAgentAccount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_KAgentAdjustment.datasource" />

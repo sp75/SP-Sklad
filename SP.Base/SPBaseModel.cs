@@ -350,13 +350,17 @@ namespace SP.Base.Models
 
         public virtual DbSet<REP_4_5_Result> REP_4_5_Result { get; set; }
         [DbFunction("SPBaseModel", "REP_5_6")]
-        public virtual IQueryable<REP_4_5_Result> REP_5_6(Nullable<System.DateTime> on_date)
+        public virtual IQueryable<REP_4_5_Result> REP_5_6(Nullable<System.DateTime> on_date, Nullable<System.Guid> ka_grp_id)
         {
             var on_dateParameter = on_date.HasValue ?
                 new ObjectParameter("on_date", on_date) :
                 new ObjectParameter("on_date", typeof(System.DateTime));
 
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_4_5_Result>("[SPBaseModel].[REP_5_6](@on_date)", on_dateParameter);
+            var ka_grp_idParameter = ka_grp_id.HasValue ?
+new ObjectParameter("ka_grp_id", ka_grp_id) :
+new ObjectParameter("ka_grp_id", typeof(System.Guid));
+
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_4_5_Result>("[SPBaseModel].[REP_5_6](@on_date, @ka_grp_id)", on_dateParameter, ka_grp_idParameter);
         }
 
         public virtual DbSet<REP_10_Result> REP_10_Result { get; set; }

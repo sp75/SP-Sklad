@@ -9,5 +9,6 @@ namespace SP.Base.Models
         public Nullable<long> N { get; set; }
         public string Name { get; set; }
         public Nullable<decimal> Saldo { get; set; }
+        public string GroupName { get; set; }
     }
 }
