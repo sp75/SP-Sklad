@@ -91,6 +91,8 @@ namespace SP.Base.Models
 
         public string WebUserId { get; set; }
 
+        public int? PTypeId { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Commission> Commission { get; set; }
 

@@ -87,7 +87,8 @@ namespace SP_Sklad.FinanseForm
                     DocType = _DocType.Value,
                     UpdatedBy = DBHelper.CurrentUser.UserId,
                     KaId = _ka_id,
-                    EntId = DBHelper.Enterprise.KaId
+                    EntId = DBHelper.Enterprise.KaId,
+                    ReportingDate = DBHelper.ServerDateTime()
                 });
             }
             else
@@ -131,6 +132,7 @@ namespace SP_Sklad.FinanseForm
                 ReasonEdit.DataBindings.Add(new Binding("EditValue", _pd, "Reason"));
                 NotesEdit.DataBindings.Add(new Binding("EditValue", _pd, "Notes"));
                 AccountEdit.DataBindings.Add(new Binding("EditValue", _pd, "AccId", true, DataSourceUpdateMode.OnPropertyChanged));
+                ReportingDateEdit.DataBindings.Add(new Binding("EditValue", _pd, "ReportingDate", true, DataSourceUpdateMode.OnPropertyChanged));
             }
 
             if (_DocType < 0)

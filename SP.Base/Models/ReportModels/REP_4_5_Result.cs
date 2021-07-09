@@ -10,5 +10,7 @@ namespace SP.Base.Models
         public string Name { get; set; }
         public Nullable<decimal> Saldo { get; set; }
         public string GroupName { get; set; }
+        public Nullable<decimal> CashSaldo { get; set; }
+        public Nullable<decimal> CashlessSaldo { get; set; }
     }
 }

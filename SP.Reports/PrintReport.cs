@@ -364,7 +364,9 @@ namespace SP.Reports
                 N = index + 1,
                 s.Name,
                 s.Saldo,
-                s.GroupName
+                s.GroupName,
+                s.CashSaldo,
+                s.CashlessSaldo
             });
 
             data_for_report.Add("XLRPARAMS", XLR_PARAMS);
@@ -913,13 +915,48 @@ namespace SP.Reports
         }
         private void REP_30()
         {
-            var list = _db.GetDocList(StartDate, EndDate, Kagent.KaId, 0).OrderBy(o => o.OnDate).ToList().Where(w => new int[] { 1, -1, 3, -3, -6, 6, -23, 23 }.Any(a => a == w.WType)).Select((s, index) => new
+            /*  var list = _db.GetDocList(StartDate, EndDate, Kagent.KaId, 0).OrderBy(o => o.OnDate).ToList().Where(w => new int[] { 1, -1, 3, -3, -6, 6, -23, 23 }.Any(a => a == w.WType)).Select((s, index) => new
+              {
+                  idx = index + 1,
+                  s.OnDate,
+                  SummAll = s.SummInCurr,
+                  s.Saldo,
+                  DocName = s.TypeName + " №" + s.Num,
+                  PN = s.WType == 1 ? s.SummInCurr : null,
+                  VN = s.WType == -1 ? s.SummInCurr : null,
+                  PKO = s.WType == 3 ? s.SummInCurr : null,
+                  VKO = s.WType == -3 ? s.SummInCurr : null,
+                  PDP = s.WType == -6 ? s.SummInCurr : null,
+                  PVK = s.WType == 6 ? s.SummInCurr : null,
+                  SZP = s.WType == -23 ? s.SummInCurr : null,
+                  SZK = s.WType == 23 ? s.SummInCurr : null
+              }).OrderBy(o => o.OnDate);*/
+
+            var list = _db.Database.SqlQuery<v_KAgentDocs>(@"SELECT        x.Id, x.WType, x.Num, x.OnDate, x.KaId, x.Name, x.Checked, x.Nds, x.SummAll, x.SummInCurr, x.ShortName, x.OnValue, x.CurrId, x.ToDate, x.SummPay, dbo.DocType.ShortName AS DocShortName, 
+                         dbo.DocType.Name AS DocTypeName
+FROM            (
+                          SELECT        wbl.Id, wbl.WType, wbl.Num, wbl.OnDate, ka.KaId, ka.Name, wbl.Checked, wbl.Nds, wbl.SummAll, wbl.SummInCurr, c.ShortName, wbl.OnValue, wbl.CurrId, wbl.ToDate, wbl.SummPay
+                          FROM            dbo.WaybillList AS wbl LEFT OUTER JOIN
+                                                    dbo.Kagent AS ka ON ka.KaId = wbl.KaId LEFT OUTER JOIN
+                                                    dbo.Currency AS c ON c.CurrId = wbl.CurrId
+                          WHERE        (wbl.Checked = 1)
+                          UNION
+                          SELECT        pd.Id, pd.ExDocType, pd.DocNum, pd.ReportingDate, ka.KaId, ka.Name, pd.Checked, NULL AS Expr1, pd.Total, pd.Total * pd.OnValue AS Expr2, c.ShortName, pd.OnValue, pd.CurrId, NULL AS Expr3, 
+                                                   pd.Total * pd.OnValue AS Expr4
+                          FROM            dbo.PayDoc AS pd LEFT OUTER JOIN
+                                                   dbo.Kagent AS ka ON ka.KaId = pd.KaId LEFT OUTER JOIN
+                                                   dbo.Currency AS c ON c.CurrId = pd.CurrId
+                          WHERE        (pd.Checked = 1)
+                        
+                          ) AS x 
+						  LEFT OUTER JOIN dbo.DocType ON x.WType = dbo.DocType.Id
+						  where x.WType in ( 1, -1, 3, -3, -6, 6, -23, 23) and x.KaId = {0} and x.OnDate between {1} and {2}", Kagent.KaId, StartDate, EndDate).ToList()
+                          .Select((s, index) => new
             {
                 idx = index + 1,
                 s.OnDate,
                 SummAll = s.SummInCurr,
-                s.Saldo,
-                DocName = s.TypeName + " №" + s.Num,
+                DocName = s.DocTypeName + " №" + s.Num,
                 PN = s.WType == 1 ? s.SummInCurr : null,
                 VN = s.WType == -1 ? s.SummInCurr : null,
                 PKO = s.WType == 3 ? s.SummInCurr : null,
@@ -928,7 +965,8 @@ namespace SP.Reports
                 PVK = s.WType == 6 ? s.SummInCurr : null,
                 SZP = s.WType == -23 ? s.SummInCurr : null,
                 SZK = s.WType == 23 ? s.SummInCurr : null
-            }).OrderBy(o => o.OnDate);
+            }).OrderBy(o => o.OnDate); ;
+
 
             if (!list.Any())
             {

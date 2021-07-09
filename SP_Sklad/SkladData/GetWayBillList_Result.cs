@@ -52,6 +52,8 @@ namespace SP_Sklad.SkladData
         public Nullable<int> EntId { get; set; }
         public string EntName { get; set; }
         public string KagentGroupName { get; set; }
+        public string DocType { get; set; }
+        public string PTypeName { get; set; }
         public Nullable<decimal> Balans { get; set; }
     }
 }

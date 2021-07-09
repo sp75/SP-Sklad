@@ -447,6 +447,7 @@
             this.PayDocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
+            this.gridColumn104 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -839,7 +840,8 @@
             this.gridColumn40,
             this.gridColumn42,
             this.gridColumn44,
-            this.gridColumn45});
+            this.gridColumn45,
+            this.gridColumn104});
             this.WbGridView.GridControl = this.WBGridControl;
             this.WbGridView.Name = "WbGridView";
             this.WbGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -5200,6 +5202,14 @@
             this.bar5.OptionsBar.UseWholeRow = true;
             this.bar5.Text = "Custom 5";
             // 
+            // gridColumn104
+            // 
+            this.gridColumn104.Caption = "Вид оплати";
+            this.gridColumn104.FieldName = "PTypeName";
+            this.gridColumn104.Name = "gridColumn104";
+            this.gridColumn104.Visible = true;
+            this.gridColumn104.VisibleIndex = 12;
+            // 
             // DocsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5808,5 +5818,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem16;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn102;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn103;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn104;
     }
 }

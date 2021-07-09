@@ -112,9 +112,6 @@ namespace SP_Sklad.WBForm
             }
 
             RefreshDet();
-
-
-         
         }
 
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

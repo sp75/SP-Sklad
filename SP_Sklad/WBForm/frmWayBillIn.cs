@@ -70,6 +70,7 @@ namespace SP_Sklad.WBForm
                     Nds = DBHelper.Enterprise.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0,
                     UpdatedBy = DBHelper.CurrentUser.UserId,
                     EntId = DBHelper.Enterprise.KaId,
+                    PTypeId = 1
                 });
 
                 _db.SaveChanges();
@@ -96,6 +97,7 @@ namespace SP_Sklad.WBForm
             KagentComboBox.Properties.DataSource = DBHelper.Kagents;
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
             CurrencyLookUpEdit.Properties.DataSource = _db.Currency.ToList();
+            PTypeComboBox.Properties.DataSource = DBHelper.PayTypes;
 
             var wh_list = DBHelper.WhList;
             WHComboBox.Properties.DataSource = wh_list;
@@ -128,6 +130,8 @@ namespace SP_Sklad.WBForm
             TurnDocCheckBox.Enabled = (_wtype != 16);
             checkEdit2.Visible = (_wtype == 16);
             ToDateEdit.Visible = (_wtype == 16);
+            labelControl5.Visible = (_wtype == 1);
+            PTypeComboBox.Visible = (_wtype == 1);
 
             OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
 
