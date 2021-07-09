@@ -157,7 +157,7 @@ namespace SP_Sklad.MainTabs
                         break;
                 }
                 MoneyTurnoverBS.DataSource = new BaseEntities()
-                    .MoneyTurnover(fun_id, TurnStartDate.DateTime.Date, TurnEndDate.DateTime.Date.AddDays(1), turn_type, (int?)CurrensyList.EditValue, (int?)TurnKagentList.EditValue, DBHelper.CurrentUser.KaId)
+                    .MoneyTurnover(fun_id, TurnStartDate.DateTime.Date, TurnEndDate.DateTime.Date, turn_type, (int?)CurrensyList.EditValue, (int?)TurnKagentList.EditValue, DBHelper.CurrentUser.KaId)
                     .ToList();
             }
         }
