@@ -274,6 +274,8 @@ namespace SP_Sklad.FinanseForm
 
         private void frmPayDoc_Shown(object sender, EventArgs e)
         {
+            OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
+
             GetOk();
         }
 
