@@ -16,7 +16,7 @@ using SP.Reports.Models.Views;
 
 namespace SP.Reports
 {
-    public class PrintReportv2: BaseReport
+    public class PrintReportv2 : BaseReport
     {
         public DateTime OnDate { get; set; }
         public DateTime StartDate { get; set; }
@@ -32,7 +32,8 @@ namespace SP.Reports
         public GrpKagentComboBoxItem KontragentGroup { get; set; }
         public String GrpStr { get; set; }
         public dynamic Person { get; set; }
-  public object RsvStatus { get; set; }
+        public object RsvStatus { get; set; }
+        public CashDesksList CashDesk { get; set; }
 
 
         private int? _person_id { get; set; }
@@ -67,11 +68,11 @@ namespace SP.Reports
 
         private Dictionary<string, IList> data_for_report { get; set; }
         private List<object> realation { get; set; }
-        private int  _rep_id { get; set; }
+        private int _rep_id { get; set; }
 
-        public PrintReportv2(int rep_id,  int? person_id, int user_id)
+        public PrintReportv2(int rep_id, int? person_id, int user_id)
         {
-            _person_id = person_id; 
+            _person_id = person_id;
             _user_id = user_id;
             _rep_id = rep_id;
 
@@ -79,7 +80,7 @@ namespace SP.Reports
             realation = new List<object>();
         }
 
-        public byte[] CreateReport( string template_file, string file_format)
+        public byte[] CreateReport(string template_file, string file_format)
         {
             int report_mode = 0;
 
@@ -99,11 +100,11 @@ namespace SP.Reports
                     break;
                 case 5:
                     REP_5();
-            //        report_mode = 1;
+                    //        report_mode = 1;
                     break;
                 case 6:
                     REP_6();
-           //         report_mode = 1;
+                    //         report_mode = 1;
                     break;
                 case 7:
                     REP_7();
@@ -114,7 +115,7 @@ namespace SP.Reports
                     break;
                 case 9:
                     REP_9();
-            //        report_mode = 1;
+                    //        report_mode = 1;
                     break;
                 case 10:
                     REP_10();
@@ -303,7 +304,7 @@ namespace SP.Reports
             var kagents = (from k in _db.KagentList
                            join ew in _db.EnterpriseWorker on k.KaId equals ew.WorkerId into gj
                            from subfg in gj.DefaultIfEmpty()
-                           where (subfg.EnterpriseId == null || enterprise_list.Contains(subfg.EnterpriseId)) 
+                           where (subfg.EnterpriseId == null || enterprise_list.Contains(subfg.EnterpriseId))
                            select k
                       ).Distinct().ToList().Where(w => w.KaId == Kagent.KaId || Kagent.KaId == 0).Select(s => new { s.KaId, s.Name }).ToList();
 
@@ -677,7 +678,7 @@ namespace SP.Reports
 
             var mat = _db.WhMatGet(grp, wid, 0, OnDate, 0, "*", 0, "", _user_id, 0).Where(w => w.Remain < w.MinReserv && w.MinReserv != null).ToList();
 
-             var mat_grp = _db.MatGroup.Where(w => w.Deleted == 0 && (w.GrpId == grp || grp == 0)).Select(s => new { s.GrpId, s.Name }).ToList();
+            var mat_grp = _db.MatGroup.Where(w => w.Deleted == 0 && (w.GrpId == grp || grp == 0)).Select(s => new { s.GrpId, s.Name }).ToList();
 
             realation.Add(new
             {
@@ -788,14 +789,14 @@ namespace SP.Reports
         {
             data_for_report.Add("XLRPARAMS", XLR_PARAMS);
 
-            var paydoc = _db.REP_23(StartDate, EndDate, Kagent.KaId, ChType.CTypeId, KontragentGroup.Id).OrderBy(o => o.OnDate).ToList();
+            var paydoc = _db.REP_23(StartDate, EndDate, Kagent.KaId, ChType.CTypeId, KontragentGroup.Id, CashDesk.CashId).OrderBy(o => o.OnDate).ToList();
 
             data_for_report.Add("DocList1", paydoc.Where(w => w.DocType == 1).ToList() /* _db.GetPayDocList("1", StartDate, EndDate, 0, 1, -1, _person_id).ToList()*/);
             data_for_report.Add("DocList2", paydoc.Where(w => w.DocType == -1).ToList()/*_db.GetPayDocList("-1", StartDate, EndDate, 0, 1, -1, _person_id).ToList()*/);
             data_for_report.Add("DocList3", paydoc.Where(w => w.DocType == -2).ToList()/* _db.GetPayDocList("-2", StartDate, EndDate, 0, 1, -1, _person_id).ToList()*/);
-            data_for_report.Add("DocList4", _db.GetPayDocList("6", StartDate, EndDate, 0, 1, -1, _person_id).ToList());
+            data_for_report.Add("DocList4", _db.GetPayDocList("6", StartDate, EndDate, 0, 1, -1, _person_id).Where(w => w.CashId == CashDesk.CashId || CashDesk.CashId == -1).ToList());
 
-            var m = _db.MoneyOnDate(EndDate).GroupBy(g => new { g.SaldoType, g.Currency }).Select(s => new { s.Key.SaldoType, s.Key.Currency, Saldo = s.Sum(sum => sum.Saldo) }).ToList();
+            var m = _db.MoneyOnDate(EndDate).Where(w=> w.CashId == CashDesk.CashId || CashDesk.CashId ==-1).GroupBy(g => new { g.SaldoType, g.Currency }).Select(s => new { s.Key.SaldoType, s.Key.Currency, Saldo = s.Sum(sum => sum.Saldo), SaldoDef = s.Sum(sum => sum.SaldoDef) }).ToList();
             data_for_report.Add("MONEY1", m.Where(w => w.SaldoType == 0).ToList());
             data_for_report.Add("MONEY2", m.Where(w => w.SaldoType == 1).ToList());
         }
@@ -1325,7 +1326,7 @@ FROM            (
                 s.WaybillList.Checked,
                 //(select(case when sum(amount) = wbd.Amount then 1 else 0 end) from wmatturn where sourceid = wbd.PosId and turntype in(2, -16)) Rsv
                 Rsv = _db.WMatTurn.Where(ww => ww.SourceId == s.PosId && ww.TurnType == 2).Sum(su => su.Amount) == s.Amount,
-            //    ddd = _db.WMatTurn.Where(ww => ww.SourceId == s.PosId && ww.TurnType == 2).Sum(su => su.Amount)
+                //    ddd = _db.WMatTurn.Where(ww => ww.SourceId == s.PosId && ww.TurnType == 2).Sum(su => su.Amount)
             });
 
             if (GrpStr.Any())
@@ -1344,12 +1345,12 @@ FROM            (
                 report_query = report_query.Where(w => w.MatId == Material.MatId);
             }
 
-            if(status != -1)
+            if (status != -1)
             {
                 report_query = report_query.Where(w => w.Checked == status);
             }
 
-            if(rsvstatus != -1)
+            if (rsvstatus != -1)
             {
                 var _rsv = rsvstatus == 1 ? true : false;
 
@@ -1409,14 +1410,14 @@ FROM            (
   inner join Kagent ka on ka.KaId = wbl.KaId 
   left outer join KontragentGroup kag on kag.Id = ka.GroupId
   where tmc.[MatId] = {0} and ka.GroupId = {1} and wbl.WType in (-1, 6) and wbl.Checked = 1 and wbl.OnDate < {2} 
-  group by ka.KaId, ka.Name", Material.MatId, KontragentGroup.Id, StartDate.Date ).ToList();
+  group by ka.KaId, ka.Name", Material.MatId, KontragentGroup.Id, StartDate.Date).ToList();
 
-            list2 = list2.Concat(list.Where(w => !list2.Any(a => a.KaId == w.KaId)).GroupBy(g=> new { g.KaId, g.KaName}).Select(s=> new rep_43
+            list2 = list2.Concat(list.Where(w => !list2.Any(a => a.KaId == w.KaId)).GroupBy(g => new { g.KaId, g.KaName }).Select(s => new rep_43
             {
                 KaId = s.Key.KaId,
                 KaName = s.Key.KaName,
                 TurnAmount = 0
-            })).ToList(); 
+            })).ToList();
 
 
             realation.Add(new
@@ -1430,9 +1431,9 @@ FROM            (
             data_for_report.Add("_realation_", realation);
 
             data_for_report.Add("XLRPARAMS", XLR_PARAMS);
-            data_for_report.Add("MatGroup", list2.Where(w=> list.Any(a=> a.KaId == w.KaId )).ToList());
+            data_for_report.Add("MatGroup", list2.Where(w => list.Any(a => a.KaId == w.KaId)).ToList());
             data_for_report.Add("MatOutDet", list);
-         
+
         }
 
         public class rep_43
@@ -1450,7 +1451,7 @@ FROM            (
         private void REP_44()
         {
             int status = Convert.ToInt32(Status);
-            var doc =  _db.GetWayBillList(StartDate, EndDate, DocStr, status, Kagent.KaId, 1, "*", _person_id).OrderByDescending(o => o.OnDate).ToList();
+            var doc = _db.GetWayBillList(StartDate, EndDate, DocStr, status, Kagent.KaId, 1, "*", _person_id).OrderByDescending(o => o.OnDate).ToList();
 
             realation.Add(new
             {
@@ -1461,7 +1462,7 @@ FROM            (
             });
 
             data_for_report.Add("XLRPARAMS", XLR_PARAMS);
-            data_for_report.Add("MatGroup", doc.GroupBy(g=> new { g.KaId, g.KaName}).Select(s=> new { s.Key.KaId, s.Key.KaName , SummAll  = s.Sum(ss=> ss.SummAll) }).ToList());
+            data_for_report.Add("MatGroup", doc.GroupBy(g => new { g.KaId, g.KaName }).Select(s => new { s.Key.KaId, s.Key.KaName, SummAll = s.Sum(ss => ss.SummAll) }).ToList());
             data_for_report.Add("MatInDet", doc);
 
             data_for_report.Add("_realation_", realation);
@@ -1529,10 +1530,10 @@ select x.*, ROW_NUMBER() over ( order by x.Name) as N from
     }
 
 
-   
 
 
-   
 
-    
+
+
+
 }

@@ -18,6 +18,7 @@ using DevExpress.XtraGrid;
 using SP_Sklad.Common;
 using SP_Sklad.Reports;
 using SP_Sklad.Properties;
+using SP_Sklad.ViewsForm;
 
 namespace SP_Sklad.WBForm
 {
@@ -501,6 +502,35 @@ namespace SP_Sklad.WBForm
             DelMaterialBtn.Enabled = EditMaterialBtn.Enabled /*&& wbd_row.IsIntermediateWeighing != 1*/;
             RsvInfoBtn.Enabled = GetWayBillMakeDetBS.Count > 0;
             MatInfoBtn.Enabled = GetWayBillMakeDetBS.Count > 0;
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var frm = new frmAdditionalCosts())
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    var item = _db.AdditionalCostsDet.Add(new AdditionalCostsDet
+                    {
+                        Amount = 0,
+                        AdditionalCosts = _db.AdditionalCosts.Find(frm.focused_row.Id),
+                        WaybillList = wb
+                    });
+
+                    _db.SaveChanges();
+
+                    MatRecipeAdditionalCostsGridControl.DataSource = _db.AdditionalCostsDet.Where(w => w.WbillId == _wbill_id).ToList();
+                }
+            }
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var row = MatRecipeAdditionalCostsView.GetFocusedRow() as AdditionalCostsDet;
+
+            _db.DeleteWhere<AdditionalCostsDet>(w => w.Id == row.Id);
+
+            MatRecipeAdditionalCostsGridControl.DataSource = _db.AdditionalCostsDet.Where(w => w.WbillId == _wbill_id).ToList();
         }
     }
 }

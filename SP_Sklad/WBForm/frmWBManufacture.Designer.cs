@@ -43,6 +43,10 @@
             this.EditMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
             this.DelMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.bar4 = new DevExpress.XtraBars.Bar();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.standaloneBarDockControl2 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -125,6 +129,9 @@
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControl2 = new DevExpress.XtraBars.BarDockControl();
+            this.bar3 = new DevExpress.XtraBars.Bar();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
@@ -174,12 +181,14 @@
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
             this.bar2,
-            this.bar1});
+            this.bar1,
+            this.bar4});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.DockControls.Add(this.standaloneBarDockControl1);
+            this.barManager1.DockControls.Add(this.standaloneBarDockControl2);
             this.barManager1.Form = this;
             this.barManager1.Images = this.WBImgList;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
@@ -195,9 +204,11 @@
             this.RsvAllBarBtn,
             this.DelRsvBarBtn,
             this.DelAllRsvBarBtn,
-            this.ByRecipeBtn});
+            this.ByRecipeBtn,
+            this.barButtonItem1,
+            this.barButtonItem2});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 18;
+            this.barManager1.MaxItemId = 20;
             // 
             // bar2
             // 
@@ -325,6 +336,48 @@
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
             this.standaloneBarDockControl1.Size = new System.Drawing.Size(971, 31);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
+            // 
+            // bar4
+            // 
+            this.bar4.BarName = "Custom 4";
+            this.bar4.DockCol = 0;
+            this.bar4.DockRow = 0;
+            this.bar4.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
+            this.bar4.FloatLocation = new System.Drawing.Point(190, 447);
+            this.bar4.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
+            this.bar4.OptionsBar.DisableCustomization = true;
+            this.bar4.OptionsBar.DrawBorder = false;
+            this.bar4.OptionsBar.MultiLine = true;
+            this.bar4.OptionsBar.UseWholeRow = true;
+            this.bar4.StandaloneBarDockControl = this.standaloneBarDockControl2;
+            this.bar4.Text = "Custom 4";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Додати";
+            this.barButtonItem1.Id = 18;
+            this.barButtonItem1.ImageIndex = 5;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Видалити";
+            this.barButtonItem2.Id = 19;
+            this.barButtonItem2.ImageIndex = 7;
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
+            // 
+            // standaloneBarDockControl2
+            // 
+            this.standaloneBarDockControl2.CausesValidation = false;
+            this.standaloneBarDockControl2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.standaloneBarDockControl2.Location = new System.Drawing.Point(0, 0);
+            this.standaloneBarDockControl2.Name = "standaloneBarDockControl2";
+            this.standaloneBarDockControl2.Size = new System.Drawing.Size(965, 31);
+            this.standaloneBarDockControl2.Text = "standaloneBarDockControl2";
             // 
             // barDockControlTop
             // 
@@ -1206,6 +1259,9 @@
             // xtraTabPage3
             // 
             this.xtraTabPage3.Controls.Add(this.MatRecipeAdditionalCostsGridControl);
+            this.xtraTabPage3.Controls.Add(this.standaloneBarDockControl2);
+            this.xtraTabPage3.Controls.Add(this.barDockControl1);
+            this.xtraTabPage3.Controls.Add(this.barDockControl2);
             this.xtraTabPage3.ImageIndex = 23;
             this.xtraTabPage3.Name = "xtraTabPage3";
             this.xtraTabPage3.Size = new System.Drawing.Size(965, 242);
@@ -1214,12 +1270,13 @@
             // MatRecipeAdditionalCostsGridControl
             // 
             this.MatRecipeAdditionalCostsGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MatRecipeAdditionalCostsGridControl.Location = new System.Drawing.Point(0, 0);
+            this.MatRecipeAdditionalCostsGridControl.Location = new System.Drawing.Point(0, 31);
             this.MatRecipeAdditionalCostsGridControl.MainView = this.MatRecipeAdditionalCostsView;
             this.MatRecipeAdditionalCostsGridControl.MenuManager = this.barManager1;
             this.MatRecipeAdditionalCostsGridControl.Name = "MatRecipeAdditionalCostsGridControl";
-            this.MatRecipeAdditionalCostsGridControl.Size = new System.Drawing.Size(965, 242);
+            this.MatRecipeAdditionalCostsGridControl.Size = new System.Drawing.Size(965, 211);
             this.MatRecipeAdditionalCostsGridControl.TabIndex = 9;
+            this.MatRecipeAdditionalCostsGridControl.UseEmbeddedNavigator = true;
             this.MatRecipeAdditionalCostsGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.MatRecipeAdditionalCostsView});
             // 
@@ -1270,6 +1327,39 @@
             this.gridColumn14.Visible = true;
             this.gridColumn14.VisibleIndex = 0;
             this.gridColumn14.Width = 81;
+            // 
+            // barDockControl1
+            // 
+            this.barDockControl1.CausesValidation = false;
+            this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControl1.Location = new System.Drawing.Point(0, 0);
+            this.barDockControl1.Size = new System.Drawing.Size(965, 0);
+            // 
+            // barDockControl2
+            // 
+            this.barDockControl2.CausesValidation = false;
+            this.barDockControl2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControl2.Location = new System.Drawing.Point(0, 0);
+            this.barDockControl2.Size = new System.Drawing.Size(965, 0);
+            // 
+            // bar3
+            // 
+            this.bar3.BarName = "Custom 2";
+            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Standalone;
+            this.bar3.DockCol = 0;
+            this.bar3.DockRow = 0;
+            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
+            this.bar3.FloatLocation = new System.Drawing.Point(49, 383);
+            this.bar3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditMaterialBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DelMaterialBtn)});
+            this.bar3.OptionsBar.AllowQuickCustomization = false;
+            this.bar3.OptionsBar.AllowRename = true;
+            this.bar3.OptionsBar.DrawDragBorder = false;
+            this.bar3.OptionsBar.UseWholeRow = true;
+            this.bar3.StandaloneBarDockControl = this.standaloneBarDockControl1;
+            this.bar3.Text = "Custom 2";
             // 
             // frmWBManufacture
             // 
@@ -1335,6 +1425,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage3.ResumeLayout(false);
+            this.xtraTabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsView)).EndInit();
             this.ResumeLayout(false);
@@ -1439,5 +1530,12 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
+        private DevExpress.XtraBars.Bar bar4;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.Bar bar3;
+        private DevExpress.XtraBars.BarDockControl barDockControl1;
+        private DevExpress.XtraBars.BarDockControl barDockControl2;
+        private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl2;
     }
 }

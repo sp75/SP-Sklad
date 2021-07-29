@@ -30,6 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReport));
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
@@ -110,6 +114,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textEdit1 = new DevExpress.XtraEditors.MemoEdit();
+            this.CashDesksPanel = new System.Windows.Forms.Panel();
+            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
+            this.CashEditComboBox = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
@@ -172,6 +179,8 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            this.CashDesksPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CashEditComboBox.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // styleController1
@@ -185,7 +194,7 @@
             this.panelControl2.Controls.Add(this.OkButton);
             this.panelControl2.Controls.Add(this.simpleButton1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl2.Location = new System.Drawing.Point(0, 453);
+            this.panelControl2.Location = new System.Drawing.Point(0, 961);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(458, 51);
             this.panelControl2.TabIndex = 29;
@@ -222,6 +231,7 @@
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.CashDesksPanel);
             this.mainPanel.Controls.Add(this.wmatturnStatusPanel);
             this.mainPanel.Controls.Add(this.PersonPanel);
             this.mainPanel.Controls.Add(this.DocTypeGroupBox2);
@@ -239,7 +249,7 @@
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(0, 0);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(458, 453);
+            this.mainPanel.Size = new System.Drawing.Size(458, 961);
             this.mainPanel.TabIndex = 31;
             // 
             // wmatturnStatusPanel
@@ -1108,7 +1118,7 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.textEdit1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(2, 368);
+            this.panel1.Location = new System.Drawing.Point(2, 876);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(454, 83);
             this.panel1.TabIndex = 41;
@@ -1135,11 +1145,50 @@
             this.textEdit1.Size = new System.Drawing.Size(359, 64);
             this.textEdit1.TabIndex = 39;
             // 
+            // CashDesksPanel
+            // 
+            this.CashDesksPanel.Controls.Add(this.CashEditComboBox);
+            this.CashDesksPanel.Controls.Add(this.labelControl20);
+            this.CashDesksPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CashDesksPanel.Location = new System.Drawing.Point(2, 822);
+            this.CashDesksPanel.Name = "CashDesksPanel";
+            this.CashDesksPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.CashDesksPanel.Size = new System.Drawing.Size(454, 47);
+            this.CashDesksPanel.TabIndex = 46;
+            this.CashDesksPanel.Visible = false;
+            // 
+            // labelControl20
+            // 
+            this.labelControl20.Location = new System.Drawing.Point(10, 15);
+            this.labelControl20.Name = "labelControl20";
+            this.labelControl20.Size = new System.Drawing.Size(27, 16);
+            this.labelControl20.StyleController = this.styleController1;
+            this.labelControl20.TabIndex = 31;
+            this.labelControl20.Text = "Каса";
+            // 
+            // CashEditComboBox
+            // 
+            this.CashEditComboBox.Location = new System.Drawing.Point(87, 12);
+            this.CashEditComboBox.Name = "CashEditComboBox";
+            this.CashEditComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("CashEditComboBox.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, true)});
+            this.CashEditComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.CashEditComboBox.Properties.DisplayMember = "Name";
+            this.CashEditComboBox.Properties.ShowFooter = false;
+            this.CashEditComboBox.Properties.ShowHeader = false;
+            this.CashEditComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.CashEditComboBox.Properties.ValueMember = "CashId";
+            this.CashEditComboBox.Size = new System.Drawing.Size(322, 22);
+            this.CashEditComboBox.StyleController = this.styleController1;
+            this.CashEditComboBox.TabIndex = 32;
+            // 
             // frmReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(458, 504);
+            this.ClientSize = new System.Drawing.Size(458, 1012);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.panelControl2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
@@ -1229,6 +1278,9 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            this.CashDesksPanel.ResumeLayout(false);
+            this.CashDesksPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CashEditComboBox.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1315,5 +1367,8 @@
         public System.Windows.Forms.Panel wmatturnStatusPanel;
         public DevExpress.XtraEditors.LookUpEdit wmatturnStatus;
         private DevExpress.XtraEditors.LabelControl labelControl19;
+        public System.Windows.Forms.Panel CashDesksPanel;
+        private DevExpress.XtraEditors.LabelControl labelControl20;
+        private DevExpress.XtraEditors.LookUpEdit CashEditComboBox;
     }
 }

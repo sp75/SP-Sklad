@@ -163,12 +163,20 @@ namespace SP_Sklad
                     break;
 
                 case 17:
+                    this.WHGroupBox.Visible = false;
+                    this.GRPGroupBox.Visible = false;
+                    this.MatGroupBox.Visible = false;
+                    this.GroupKontragentPanel.Visible = true;
+                    this.DocTypeGroupBox.Visible = false;
+                    break;
+
                 case 23:
                     this.WHGroupBox.Visible = false;
                     this.GRPGroupBox.Visible = false;
                     this.MatGroupBox.Visible = false;
                     this.GroupKontragentPanel.Visible = true;
                     this.DocTypeGroupBox.Visible = false;
+                    this.CashDesksPanel.Visible = true;
                     break;
 
                 case 20:
@@ -525,6 +533,14 @@ namespace SP_Sklad
                 wmatturnStatus.EditValue = 0;
             }
 
+            if(CashDesksPanel.Visible)
+            {
+                Height += CashDesksPanel.Height;
+
+                CashEditComboBox.Properties.DataSource = new List<object>() { new CashDesksList { CashId = -1, Name = "Усі" } }.Concat(DBHelper.CashDesks.Select(s => new CashDesksList { CashId = s.CashId, Name = s.Name }));
+                CashEditComboBox.EditValue = -1;
+            }
+
         }
 
         private void frmReport_Shown(object sender, EventArgs e)
@@ -590,7 +606,8 @@ namespace SP_Sklad
                        KontragentGroup = GrpKagentLookUpEdit.GetSelectedDataRow() as GrpKagentComboBoxItem,
                        GrpStr = ChildGroupCheckEdit.Checked ? String.Join(",", new BaseEntities().GetMatGroupTree(grp).ToList().Select(s => Convert.ToString(s.GrpId))) : "",
                        Person = PersonLookUpEdit.GetSelectedDataRow(),
-                       RsvStatus = wmatturnStatus.EditValue
+                       RsvStatus = wmatturnStatus.EditValue,
+                       CashDesk = CashEditComboBox.GetSelectedDataRow() as CashDesksList
                    };
 
                    var template_name = pr2.GetTemlate(_rep_id);

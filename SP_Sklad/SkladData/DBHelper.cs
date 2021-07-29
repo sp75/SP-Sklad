@@ -162,7 +162,7 @@ namespace SP_Sklad.SkladData
                     {
                         KaId = s.KaId,
                         Name = s.Name
-                    }).OrderBy(o=> o.Name).ToList();
+                    }).OrderBy(o => o.Name).ToList();
                 }
                 return _persons;
             }
@@ -179,11 +179,11 @@ namespace SP_Sklad.SkladData
                     {
                         _enterprise_list = db.Kagent.Where(w => w.KType == 3 && w.Deleted == 0 && (w.Archived == null || w.Archived == 0))
                             .Join(db.EnterpriseWorker.Where(ew => ew.WorkerId == CurrentUser.KaId), w => w.KaId, ew => ew.EnterpriseId, (w, ew) => new Enterprise
-                         {
-                             KaId = w.KaId,
-                             Name = w.Name,
-                             NdsPayer = w.NdsPayer
-                         }).ToList();
+                            {
+                                KaId = w.KaId,
+                                Name = w.Name,
+                                NdsPayer = w.NdsPayer
+                            }).ToList();
                     }
                 }
                 return _enterprise_list;
@@ -229,18 +229,18 @@ namespace SP_Sklad.SkladData
             {
                 if (_cash_desks == null)
                 {
-                    _cash_desks = new BaseEntities().GetUserAccessCashDesks(CurrentUser.UserId).ToList().Where(w=> w.Allow == 1)/*.Where(w => w.EnterpriseId == Enterprise.KaId)*/.Select(s => new CashDesks
+                    _cash_desks = new BaseEntities().GetUserAccessCashDesks(CurrentUser.UserId).ToList().Where(w => w.Allow == 1)/*.Where(w => w.EnterpriseId == Enterprise.KaId)*/.Select(s => new CashDesks
                     {
                         CashId = s.CashId,
                         Name = s.Name,
                         Def = s.Def,
                         EnterpriseId = s.EnterpriseId
-                    }).ToList(); 
+                    }).ToList();
 
-                  /*  if (!_cash_desks.Any())
-                    {
-                        _cash_desks = new BaseEntities().CashDesks.ToList();
-                    }*/
+                    /*  if (!_cash_desks.Any())
+                      {
+                          _cash_desks = new BaseEntities().CashDesks.ToList();
+                      }*/
 
                 }
                 return _cash_desks;
@@ -278,14 +278,14 @@ namespace SP_Sklad.SkladData
             {
                 if (_wh_list == null)
                 {
-                    _wh_list = new BaseEntities().Warehouse.Where(w => w.Deleted == 0  && w.UserAccessWh.Any(u => u.UserId == CurrentUser.UserId) ).Select(s => new WhList
+                    _wh_list = new BaseEntities().Warehouse.Where(w => w.Deleted == 0 && w.UserAccessWh.Any(u => u.UserId == CurrentUser.UserId)).Select(s => new WhList
                     {
                         WId = s.WId,
                         Name = s.Name,
                         Def = s.Def
                     }).ToList();
 
-                    if(!_wh_list.Any(a=> a.Def == 1) )
+                    if (!_wh_list.Any(a => a.Def == 1))
                     {
                         var w = _wh_list.FirstOrDefault();
                         if (w != null)
@@ -398,7 +398,7 @@ namespace SP_Sklad.SkladData
                          }
                          ).ToList().FirstOrDefault();
 
-            
+
 
             /*
                             select first 1 distinct wmt2.ondate, m.name
@@ -478,9 +478,9 @@ order by wbd.ondate desc
             using (var db = new BaseEntities())
             {
                 var wb = db.WaybillList.FirstOrDefault(f => f.WbillId == wb_id);
-                if (wb != null )
+                if (wb != null)
                 {
-                    wb.SessionId = clear == true ? ( wb.SessionId == UserSession.SessionId ? null : wb.SessionId) : (Guid?)UserSession.SessionId;
+                    wb.SessionId = clear == true ? (wb.SessionId == UserSession.SessionId ? null : wb.SessionId) : (Guid?)UserSession.SessionId;
                     wb.UpdatedBy = UserSession.UserId;
                     wb.UpdatedAt = DateTime.Now;
                     db.SaveChanges();
@@ -521,7 +521,7 @@ order by wbd.ondate desc
                 r = false;
             }
 
-         
+
             return r;
         }
 
@@ -678,11 +678,9 @@ order by wbd.ondate desc
     }
 
     public class Kontragent
-    { 
+    {
         public int KaId { get; set; }
         public String Name { get; set; }
     }
-
-
 
 }
