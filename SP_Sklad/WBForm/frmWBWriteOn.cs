@@ -165,6 +165,8 @@ namespace SP_Sklad.WBForm
             PersonComboBox.Enabled = !String.IsNullOrEmpty(user_settings.AccessEditPersonId) && Convert.ToInt32(user_settings.AccessEditPersonId) == 1;
             PersonEditBtn.Enabled = PersonComboBox.Enabled;
             WaybillDetInGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
+
+            NumEdit.Enabled = user_settings.AccessEditDocNum;
         }
 
         private void OkButton_Click(object sender, EventArgs e)

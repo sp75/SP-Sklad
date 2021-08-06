@@ -24,6 +24,7 @@ namespace SP_Sklad.FinanseForm
         public PayDoc _pd { get; set; }
         public int? _ka_id { get; set; }
         private decimal? _summ_pay { get; set; }
+        private UserSettingsRepository user_settings { get; set; }
 
         private class user_acc
         {
@@ -42,6 +43,8 @@ namespace SP_Sklad.FinanseForm
             _summ_pay = SummPay;
             _db = new BaseEntities();
             current_transaction = _db.Database.BeginTransaction(/*IsolationLevel.RepeatableRead*/);
+
+            user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
 
             InitializeComponent();
         }
@@ -275,6 +278,7 @@ namespace SP_Sklad.FinanseForm
         private void frmPayDoc_Shown(object sender, EventArgs e)
         {
             OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
+            NumEdit.Enabled = user_settings.AccessEditDocNum;
 
             GetOk();
         }

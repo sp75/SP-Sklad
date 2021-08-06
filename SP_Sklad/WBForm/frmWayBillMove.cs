@@ -176,6 +176,8 @@ namespace SP_Sklad.WBForm
         {
             OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
             WaybillDetOutGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
+
+            NumEdit.Enabled = user_settings.AccessEditDocNum;
         }
 
         private void OkButton_Click(object sender, EventArgs e)

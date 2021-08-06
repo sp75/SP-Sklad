@@ -140,6 +140,7 @@ namespace SP_Sklad.WBForm
             OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
             PersonComboBox.Enabled = !String.IsNullOrEmpty(user_settings.AccessEditPersonId) && Convert.ToInt32(user_settings.AccessEditPersonId) == 1;
             WaybillDetOutGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
+            NumEdit.Enabled = user_settings.AccessEditDocNum;
 
             if (TurnDocCheckBox.Checked) Close();
         }

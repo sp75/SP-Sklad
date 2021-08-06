@@ -117,6 +117,23 @@ namespace SP_Sklad.Common
             set { Set("ACCESS_EDIT_PRICE", value); }
         }
 
+
+        /// <summary>
+        /// External Access: edit doc_num
+        /// </summary>
+        public bool AccessEditDocNum
+        {
+            get
+            {
+                var v = Get("ACCESS_EDIT_DOCNUM");
+                return string.IsNullOrEmpty(v) ? false : Convert.ToBoolean(v);
+            }
+            set
+            {
+                Set("ACCESS_EDIT_DOCNUM", value);
+            }
+        }
+
         public decimal GridFontSize
         {
             get

@@ -1477,7 +1477,8 @@ select x.*, ROW_NUMBER() over ( order by x.Name) as N from
         k.[KaId],
         k.Name,
         (select top 1 Saldo from GetKAgentSaldo(k.KaId, {0})) Saldo,
-        (SELECT TOP 1 pd.OnDate FROM PayDoc pd WHERE pd.CTypeId = 58 and  pd.KaId = k.KaId ORDER BY pd.OnDate desc) LastCorectDate,
+        (select top 1 Saldo from GetKAgentSaldoByReportingDate(k.KaId, {0})) ReportingSaldo,
+        (SELECT TOP 1 pd.ReportingDate FROM PayDoc pd WHERE pd.CTypeId = 58 and  pd.KaId = k.KaId ORDER BY pd.ReportingDate desc) LastCorectDate,
         kg.Name GroupName
     from[dbo].[Kagent] k
     left outer join [KontragentGroup] kg on kg.[Id] =  k.GroupId
@@ -1496,6 +1497,7 @@ select x.*, ROW_NUMBER() over ( order by x.Name) as N from
             public decimal? Saldo { get; set; }
             public DateTime? LastCorectDate { get; set; }
             public string GroupName { get; set; }
+            public decimal? ReportingSaldo { get; set; }
         }
 
         private string GetSortedList(int rep_id)

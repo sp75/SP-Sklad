@@ -111,6 +111,7 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
+            this.checkEdit8 = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.comboBoxEdit1 = new DevExpress.XtraEditors.CalcEdit();
@@ -179,6 +180,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.UserAccessWhGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             this.xtraTabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit8.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit7.Properties)).BeginInit();
@@ -913,6 +915,7 @@
             // 
             // xtraTabPage5
             // 
+            this.xtraTabPage5.Controls.Add(this.checkEdit8);
             this.xtraTabPage5.Controls.Add(this.labelControl11);
             this.xtraTabPage5.Controls.Add(this.labelControl10);
             this.xtraTabPage5.Controls.Add(this.comboBoxEdit1);
@@ -927,9 +930,20 @@
             this.xtraTabPage5.Size = new System.Drawing.Size(635, 358);
             this.xtraTabPage5.Text = "Додаткові";
             // 
+            // checkEdit8
+            // 
+            this.checkEdit8.Location = new System.Drawing.Point(24, 114);
+            this.checkEdit8.MenuManager = this.barManager1;
+            this.checkEdit8.Name = "checkEdit8";
+            this.checkEdit8.Properties.Caption = "Дозволити змінювати номер документів";
+            this.checkEdit8.Size = new System.Drawing.Size(352, 20);
+            this.checkEdit8.StyleController = this.styleController1;
+            this.checkEdit8.TabIndex = 40;
+            this.checkEdit8.CheckedChanged += new System.EventHandler(this.checkEdit8_CheckedChanged);
+            // 
             // labelControl11
             // 
-            this.labelControl11.Location = new System.Drawing.Point(24, 226);
+            this.labelControl11.Location = new System.Drawing.Point(24, 263);
             this.labelControl11.Name = "labelControl11";
             this.labelControl11.Size = new System.Drawing.Size(42, 16);
             this.labelControl11.StyleController = this.styleController1;
@@ -938,7 +952,7 @@
             // 
             // labelControl10
             // 
-            this.labelControl10.Location = new System.Drawing.Point(247, 226);
+            this.labelControl10.Location = new System.Drawing.Point(249, 263);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(38, 16);
             this.labelControl10.StyleController = this.styleController1;
@@ -952,7 +966,7 @@
             0,
             0,
             0});
-            this.comboBoxEdit1.Location = new System.Drawing.Point(247, 248);
+            this.comboBoxEdit1.Location = new System.Drawing.Point(249, 285);
             this.comboBoxEdit1.MenuManager = this.barManager1;
             this.comboBoxEdit1.Name = "comboBoxEdit1";
             this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -965,7 +979,7 @@
             // comboBoxEdit2
             // 
             this.comboBoxEdit2.EditValue = "Tahoma";
-            this.comboBoxEdit2.Location = new System.Drawing.Point(24, 248);
+            this.comboBoxEdit2.Location = new System.Drawing.Point(24, 285);
             this.comboBoxEdit2.MenuManager = this.barManager1;
             this.comboBoxEdit2.Name = "comboBoxEdit2";
             this.comboBoxEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -977,7 +991,7 @@
             // 
             // checkEdit7
             // 
-            this.checkEdit7.Location = new System.Drawing.Point(24, 184);
+            this.checkEdit7.Location = new System.Drawing.Point(24, 212);
             this.checkEdit7.MenuManager = this.barManager1;
             this.checkEdit7.Name = "checkEdit7";
             this.checkEdit7.Properties.Caption = "Дозволити редагувати ціну товара";
@@ -988,7 +1002,7 @@
             // 
             // checkEdit6
             // 
-            this.checkEdit6.Location = new System.Drawing.Point(24, 116);
+            this.checkEdit6.Location = new System.Drawing.Point(24, 144);
             this.checkEdit6.MenuManager = this.barManager1;
             this.checkEdit6.Name = "checkEdit6";
             this.checkEdit6.Properties.Caption = "Дозволити  міняти власника документа";
@@ -1001,7 +1015,7 @@
             // 
             // checkEdit4
             // 
-            this.checkEdit4.Location = new System.Drawing.Point(24, 148);
+            this.checkEdit4.Location = new System.Drawing.Point(24, 177);
             this.checkEdit4.MenuManager = this.barManager1;
             this.checkEdit4.Name = "checkEdit4";
             this.checkEdit4.Properties.Caption = "Дозволити редагувати вагу товара";
@@ -1028,7 +1042,7 @@
             // checkEdit2
             // 
             this.checkEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.UserBS, "ShowBalance", true));
-            this.checkEdit2.Location = new System.Drawing.Point(24, 53);
+            this.checkEdit2.Location = new System.Drawing.Point(24, 54);
             this.checkEdit2.MenuManager = this.barManager1;
             this.checkEdit2.Name = "checkEdit2";
             this.checkEdit2.Properties.Caption = "Показувати користувачеві баланс з контрагентом";
@@ -1392,6 +1406,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             this.xtraTabPage5.ResumeLayout(false);
             this.xtraTabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit8.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit7.Properties)).EndInit();
@@ -1524,5 +1539,6 @@
         private DevExpress.XtraEditors.LookUpEdit CashEditComboBox;
         private DevExpress.XtraEditors.LookUpEdit AccountEdit;
         private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.CheckEdit checkEdit8;
     }
 }

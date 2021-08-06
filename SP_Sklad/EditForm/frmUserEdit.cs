@@ -94,6 +94,7 @@ namespace SP_Sklad.EditForm
             checkEdit4.EditValue = !String.IsNullOrEmpty(user_settings.AccessEditWeight) ? Convert.ToInt32(user_settings.AccessEditWeight) : 0;
             checkEdit6.EditValue = !String.IsNullOrEmpty(user_settings.AccessEditPersonId) ? Convert.ToInt32(user_settings.AccessEditPersonId) : 0;
             checkEdit7.EditValue = user_settings.AccessEditPrice;
+            checkEdit8.EditValue = user_settings.AccessEditDocNum;
 
             comboBoxEdit2.Text = user_settings.GridFontName;
             comboBoxEdit1.Value = user_settings.GridFontSize;
@@ -515,6 +516,11 @@ namespace SP_Sklad.EditForm
         private void AccountEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
           
+        }
+
+        private void checkEdit8_CheckedChanged(object sender, EventArgs e)
+        {
+            user_settings.AccessEditDocNum = checkEdit8.Checked;
         }
     }
 }

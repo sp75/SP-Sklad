@@ -1191,6 +1191,10 @@ namespace SP_Sklad.MainTabs
                 case 2:
                     IHelper.ExportToXlsx(MatGridControl);
                     break;
+
+                case 5:
+                    IHelper.ExportToXlsx(TaraGridControl);
+                    break;
             }
         }
 

@@ -409,6 +409,7 @@ namespace SP_Sklad.WBForm
         private void frmWBInventory_Shown(object sender, EventArgs e)
         {
             InventoryDetGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
+            NumEdit.Enabled = user_settings.AccessEditDocNum;
         }
     }
 }

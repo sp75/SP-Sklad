@@ -186,9 +186,7 @@ namespace SP_Sklad.WBForm
             NowDateBtn.Enabled = OnDateDBEdit.Enabled;
 
             WaybillDetOutGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
-
-            /*     PersonComboBox.Enabled = !String.IsNullOrEmpty(user_settings.AccessEditPersonId) && Convert.ToInt32(user_settings.AccessEditPersonId) == 1;
-                 PersonEditBtn.Enabled = PersonComboBox.Enabled;*/
+            NumEdit.Enabled = user_settings.AccessEditDocNum;
         }
 
         private void frmWBWriteOff_FormClosed(object sender, FormClosedEventArgs e)
