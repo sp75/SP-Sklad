@@ -934,6 +934,7 @@ namespace SP.Reports
             public string DocShortName { get; set; }
             public string DocTypeName { get; set; }
             public decimal? Saldo { get; set; }
+            public decimal? CumulativeSaldo { get; set; }
         }
 
         public class KAgentSaldo
@@ -959,11 +960,12 @@ namespace SP.Reports
                   SZP = s.WType == -23 ? s.SummInCurr : null,
                   SZK = s.WType == 23 ? s.SummInCurr : null
               }).OrderBy(o => o.OnDate);*/
-            var start_saldo = _db.Database.SqlQuery<KAgentSaldo>(@"select Saldo from GetKAgentSaldo({0}, DATEADD(day, -1, {1}))", Kagent.KaId, StartDate).First();
+            var start_saldo = _db.Database.SqlQuery<KAgentSaldo>(@"select Saldo from GetKAgentSaldoByReportingDate({0}, DATEADD(day, -1, {1}))", Kagent.KaId, StartDate).First();
 
             var list = _db.Database.SqlQuery<rep_30>(@"
-SELECT        x.Id, x.WType, x.Num, x.OnDate, x.KaId, x.Name, x.Checked, x.Nds, x.SummAll, x.SummInCurr, x.ShortName, x.OnValue, x.CurrId, x.ToDate, x.SummPay, dbo.DocType.ShortName AS DocShortName, 
-              dbo.DocType.Name AS DocTypeName
+SELECT        x.Id, x.WType, x.Num, x.OnDate, x.KaId, x.Name, x.Checked, x.Nds, x.SummAll, x.SummInCurr, x.ShortName, x.OnValue, x.CurrId, x.ToDate, x.SummPay, 
+              dbo.DocType.ShortName AS DocShortName, dbo.DocType.Name AS DocTypeName,
+              (SELECT top 1 Saldo FROM GetKAgentSaldoByReportingDate (   x.KaId  , cast(OnDate as date) )) Saldo
 FROM            (
                           SELECT        wbl.Id, wbl.WType, wbl.Num, wbl.OnDate, ka.KaId, ka.Name, wbl.Checked, wbl.Nds, wbl.SummAll, wbl.SummInCurr, c.ShortName, wbl.OnValue, wbl.CurrId, wbl.ToDate, wbl.SummPay
                           FROM            dbo.WaybillList AS wbl LEFT OUTER JOIN
@@ -985,8 +987,8 @@ FROM            (
 
             list.ForEach(f =>
             {
-                f.Saldo = start_saldo.Saldo + f.SummInCurr * f.WType / Math.Abs(f.WType.Value);
-                start_saldo.Saldo = f.Saldo;
+                f.CumulativeSaldo = start_saldo.Saldo + f.SummInCurr * f.WType / Math.Abs(f.WType.Value);
+                start_saldo.Saldo = f.CumulativeSaldo;
             });
 
 
@@ -1004,6 +1006,7 @@ FROM            (
                 s.OnDate,
                 SummAll = s.SummInCurr,
                 s.Saldo,
+                s.CumulativeSaldo,
                 DocName = s.DocTypeName + " №" + s.Num,
                 PN = s.WType == 1 ? s.SummInCurr : null,
                 VN = s.WType == -1 ? s.SummInCurr : null,

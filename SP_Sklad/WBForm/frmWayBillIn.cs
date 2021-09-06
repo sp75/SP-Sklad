@@ -19,6 +19,7 @@ using SP_Sklad.Reports;
 using SP_Sklad.Common;
 using SP_Sklad.Common.WayBills;
 using SP_Sklad.Properties;
+using SP_Sklad.EditForm;
 
 namespace SP_Sklad.WBForm
 {
@@ -594,6 +595,39 @@ namespace SP_Sklad.WBForm
             {
                 Point p2 = Control.MousePosition;
                 this.WbDetPopupMenu.ShowPopup(p2);
+            }
+        }
+
+        private void CurrencyLookUpEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            if (CurrencyLookUpEdit.Focused)
+            {
+                var cur_id = Convert.ToInt32(CurrencyLookUpEdit.EditValue);
+
+                var last_curr = _db.CurrencyRate.Where(w => w.OnDate <= OnDateDBEdit.DateTime.Date && w.CurrId == cur_id).OrderByDescending(o => o.OnDate).FirstOrDefault();
+                if (last_curr != null)
+                {
+                    wb.OnValue = last_curr.OnValue;
+                }
+                else
+                {
+                    wb.OnValue = 1;
+                }
+
+                var curr_on_date = _db.CurrencyRate.FirstOrDefault(w => w.OnDate == OnDateDBEdit.DateTime.Date && w.CurrId == cur_id);
+
+                if (curr_on_date == null && cur_id != 2)
+                {
+                    using (var frm = new frmCurrencyRate(cur_id, OnDateDBEdit.DateTime.Date))
+                    {
+                        if (frm.ShowDialog() == DialogResult.OK)
+                        {
+                            wb.OnValue = frm.SumEdit.Value;
+                        }
+                    }
+                }
+                
+
             }
         }
     }

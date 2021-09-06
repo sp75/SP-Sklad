@@ -625,8 +625,10 @@ namespace SP_Sklad.WBForm
 
          private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+//            _db.SaveChanges();
+            _db.WaybillDet.RemoveRange(_db.WaybillDet.Where((w => w.WbillId == _wbill_id && w.Checked != 1)));
             _db.SaveChanges();
-            _db.DeleteWhere<WaybillDet>(w => w.WbillId == _wbill_id && w.Checked != 1);
+            //_db.DeleteWhere<WaybillDet>(w => w.WbillId == _wbill_id && w.Checked != 1);
             RefreshDet();
         }
 

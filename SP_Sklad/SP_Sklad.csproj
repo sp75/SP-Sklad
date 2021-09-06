@@ -256,6 +256,12 @@
     <Compile Include="EditForm\frmAttEdit.Designer.cs">
       <DependentUpon>frmAttEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditForm\frmCurrencyRate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmCurrencyRate.Designer.cs">
+      <DependentUpon>frmCurrencyRate.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditForm\frmBanksEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1643,6 +1649,9 @@
     <EmbeddedResource Include="EditForm\frmAttEdit.resx">
       <DependentUpon>frmAttEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmCurrencyRate.resx">
+      <DependentUpon>frmCurrencyRate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmBanksEdit.resx">
       <DependentUpon>frmBanksEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -1983,6 +1992,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.CommonParams.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Countries.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Currency.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.CurrencyRate.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.DiscCards.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetActives_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetDirTree_Result.datasource" />

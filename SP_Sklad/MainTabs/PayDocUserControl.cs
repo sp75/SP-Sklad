@@ -197,7 +197,8 @@ namespace SP_Sklad.MainTabs
                         MPersonId = _wb.PersonId,
                         KaId = _wb.KaId,
                         UpdatedBy = DBHelper.CurrentUser.UserId,
-                        EntId = DBHelper.Enterprise.KaId
+                        EntId = DBHelper.Enterprise.KaId,
+                        ReportingDate = _wb.OnDate
                     });
 
                     if (new int[] { 1, 6, 16 }.Contains(_wb.WType)) _pd.DocType = -1;   // Вихідний платіж

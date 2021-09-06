@@ -170,6 +170,8 @@
             this.gridColumn102 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn103 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn105 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn106 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn107 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -2006,7 +2008,9 @@
             this.gridColumn99,
             this.gridColumn102,
             this.gridColumn103,
-            this.gridColumn105});
+            this.gridColumn105,
+            this.gridColumn106,
+            this.gridColumn107});
             this.PayDocGridView.GridControl = this.PayDocGridControl;
             this.PayDocGridView.Name = "PayDocGridView";
             this.PayDocGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -2121,7 +2125,7 @@
             this.gridColumn27.FieldName = "Total";
             this.gridColumn27.Name = "gridColumn27";
             this.gridColumn27.Visible = true;
-            this.gridColumn27.VisibleIndex = 9;
+            this.gridColumn27.VisibleIndex = 10;
             this.gridColumn27.Width = 66;
             // 
             // gridColumn8
@@ -2130,7 +2134,7 @@
             this.gridColumn8.FieldName = "EntName";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 10;
+            this.gridColumn8.VisibleIndex = 12;
             this.gridColumn8.Width = 117;
             // 
             // gridColumn51
@@ -2175,6 +2179,22 @@
             this.gridColumn105.Caption = "Дата звітності";
             this.gridColumn105.FieldName = "ReportingDate";
             this.gridColumn105.Name = "gridColumn105";
+            // 
+            // gridColumn106
+            // 
+            this.gridColumn106.Caption = "Валюта";
+            this.gridColumn106.FieldName = "CurrName";
+            this.gridColumn106.Name = "gridColumn106";
+            this.gridColumn106.Visible = true;
+            this.gridColumn106.VisibleIndex = 9;
+            // 
+            // gridColumn107
+            // 
+            this.gridColumn107.Caption = "Сума в нац. валюті";
+            this.gridColumn107.FieldName = "SummInCurr";
+            this.gridColumn107.Name = "gridColumn107";
+            this.gridColumn107.Visible = true;
+            this.gridColumn107.VisibleIndex = 11;
             // 
             // repositoryItemImageEdit2
             // 
@@ -5828,5 +5848,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn103;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn104;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn105;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn106;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn107;
     }
 }

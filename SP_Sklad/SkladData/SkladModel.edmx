@@ -207,7 +207,7 @@
           <Key>
             <PropertyRef Name="RateId" />
           </Key>
-          <Property Name="RateId" Type="int" Nullable="false" />
+          <Property Name="RateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CurrId" Type="int" Nullable="false" />
           <Property Name="OnDate" Type="datetime" Nullable="false" />
           <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" Nullable="false" />
@@ -830,6 +830,7 @@
           <Property Name="ExDocType" Type="int" StoreGeneratedPattern="Computed" />
           <Property Name="EntId" Type="int" />
           <Property Name="ReportingDate" Type="datetime" />
+          <Property Name="SummInCurr" Type="numeric" Precision="15" Scale="2" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="PayDocType">
           <Key>
@@ -1512,8 +1513,8 @@
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.EnterpriseAccount" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.EnterpriseAccount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="EnterpriseAccount">
           <Key>
             <PropertyRef Name="KaId" />
@@ -1534,8 +1535,8 @@
           <Property Name="Def" Type="int" />
           <Property Name="KaName" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.KagentList" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.KagentList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="KagentList">
           <Key>
             <PropertyRef Name="KaId" />
@@ -1587,8 +1588,8 @@
           <Property Name="AspNetUserId" Type="nvarchar" MaxLength="128" />
           <Property Name="WebUserName" Type="nvarchar" MaxLength="256" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.MaterialsList" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.MaterialsList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="MaterialsList">
           <Key>
             <PropertyRef Name="MatId" />
@@ -1607,8 +1608,8 @@
           <Property Name="Archived" Type="int" />
           <Property Name="AutoCalcRecipe" Type="bit" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.UserTreeAccess" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.UserTreeAccess' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="UserTreeAccess">
           <Key>
             <PropertyRef Name="Id" />
@@ -1636,8 +1637,8 @@
           <Property Name="UserId" Type="int" />
           <Property Name="WType" Type="int" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.v_Actives" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_Actives' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_Actives">
           <Key>
             <PropertyRef Name="OnDate" />
@@ -1650,8 +1651,8 @@
           <Property Name="CashLess" Type="numeric" Precision="38" Scale="2" />
           <Property Name="Active" Type="numeric" Precision="38" Scale="2" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.v_DiscCards" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_DiscCards' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_DiscCards">
           <Key>
             <PropertyRef Name="CardId" />
@@ -1669,8 +1670,8 @@
           <Property Name="GrpName" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="GrpId" Type="int" Nullable="false" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.v_Docs" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_Docs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_Docs">
           <Key>
             <PropertyRef Name="DocId" />
@@ -1678,8 +1679,8 @@
           <Property Name="DocId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="DocType" Type="int" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.v_EnterpriseList" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_EnterpriseList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_EnterpriseList">
           <Key>
             <PropertyRef Name="KaId" />
@@ -1723,8 +1724,8 @@
           <Property Name="GroupId" Type="uniqueidentifier" />
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.v_ErrorLog" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_ErrorLog' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_ErrorLog">
           <Key>
             <PropertyRef Name="Id" />
@@ -1739,8 +1740,8 @@
           <Property Name="ScreenShot" Type="image" />
           <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.v_GetDocsTree" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_GetDocsTree' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_GetDocsTree">
           <Key>
             <PropertyRef Name="Id" />
@@ -1768,8 +1769,8 @@
           <Property Name="UserId" Type="int" />
           <Property Name="WType" Type="int" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.v_IntermediateWeighing" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighing' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_IntermediateWeighing">
           <Key>
             <PropertyRef Name="Id" />
@@ -1797,8 +1798,8 @@
           <Property Name="PersonName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="WbChecked" Type="int" Nullable="false" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.v_IntermediateWeighingDet" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighingDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_IntermediateWeighingDet">
           <Key>
             <PropertyRef Name="Id" />
@@ -1828,8 +1829,8 @@
           <Property Name="VizokName" Type="nvarchar" MaxLength="255" />
           <Property Name="VizokWeight" Type="numeric" Precision="15" Scale="4" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.v_KAgentAccount" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_KAgentAccount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_KAgentAccount">
           <Key>
             <PropertyRef Name="AccId" />
@@ -1848,8 +1849,8 @@
           <Property Name="BankName" Type="nvarchar" MaxLength="128" />
           <Property Name="TypeName" Type="nvarchar" MaxLength="64" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.v_KAgentAdjustment" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_KAgentAdjustment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_KAgentAdjustment">
           <Key>
             <PropertyRef Name="Id" />
@@ -1873,8 +1874,8 @@
           <Property Name="WriteOffTypeName" Type="nvarchar" MaxLength="50" />
           <Property Name="OperationTypeName" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.v_KAgentAdjustmentDet" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_KAgentAdjustmentDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_KAgentAdjustmentDet">
           <Key>
             <PropertyRef Name="Id" />
@@ -1882,7 +1883,7 @@
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="WType" Type="int" />
-          <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="OnDate" Type="datetime" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="SummAll" Type="numeric" Precision="21" Scale="8" />
@@ -1897,8 +1898,8 @@
           <Property Name="Saldo" Type="numeric" Precision="15" Scale="2" />
           <Property Name="Idx" Type="int" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.v_KAgentDocs" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_KAgentDocs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_KAgentDocs">
           <Key>
             <PropertyRef Name="Id" />
@@ -1923,8 +1924,8 @@
           <Property Name="DocShortName" Type="nvarchar" MaxLength="50" />
           <Property Name="DocTypeName" Type="nvarchar" MaxLength="64" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.v_KAgentSaldo" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_KAgentSaldo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_KAgentSaldo">
           <Key>
             <PropertyRef Name="KaId" />
@@ -1933,8 +1934,8 @@
           <Property Name="OnDate" Type="date" />
           <Property Name="Saldo" Type="numeric" Precision="38" Scale="2" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.v_MatRecipe" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_MatRecipe' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_MatRecipe">
           <Key>
             <PropertyRef Name="RecId" />
@@ -1958,8 +1959,8 @@
           <Property Name="GrpId" Type="int" Nullable="false" />
           <Property Name="Num" Type="numeric" Precision="5" Scale="1" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.v_MatRemains" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_MatRemains' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_MatRemains">
           <Key>
             <PropertyRef Name="MatId" />
@@ -1975,8 +1976,8 @@
           <Property Name="Ordered" Type="numeric" Precision="38" Scale="4" />
           <Property Name="ORsv" Type="numeric" Precision="38" Scale="4" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.v_PayDoc" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_PayDoc' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_PayDoc">
           <Key>
             <PropertyRef Name="PayDocId" />
@@ -2034,9 +2035,10 @@
           <Property Name="BankName" Type="nvarchar" MaxLength="128" />
           <Property Name="KAU" Type="nvarchar" MaxLength="10" />
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SummInCurr" Type="numeric" Precision="31" Scale="6" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.v_PlannedCalculation" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_PlannedCalculation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_PlannedCalculation">
           <Key>
             <PropertyRef Name="Id" />
@@ -2049,8 +2051,8 @@
           <Property Name="EntName" Type="nvarchar" MaxLength="100" />
           <Property Name="Notes" Type="nvarchar(max)" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.v_PlannedCalculationDetDet" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_PlannedCalculationDetDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_PlannedCalculationDetDet">
           <Key>
             <PropertyRef Name="Id" />
@@ -2080,8 +2082,8 @@
           <Property Name="MatGroupName" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="GrpId" Type="int" Nullable="false" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.v_PosRemains" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_PosRemains' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_PosRemains">
           <Key>
             <PropertyRef Name="Id" />
@@ -2108,8 +2110,8 @@
           <Property Name="Num" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="OnDate" Type="datetime" Nullable="false" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.v_PriceList" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_PriceList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_PriceList">
           <Key>
             <PropertyRef Name="PlId" />
@@ -2132,8 +2134,8 @@
           <Property Name="CurrName" Type="nvarchar" MaxLength="3" Nullable="false" />
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.v_PriceTypes" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_PriceTypes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_PriceTypes">
           <Key>
             <PropertyRef Name="PTypeId" />
@@ -2155,8 +2157,8 @@
           <Property Name="PtName" Type="nvarchar" MaxLength="128" />
           <Property Name="TypeName" Type="varchar" MaxLength="7" Nullable="false" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.v_ProductionPlanDet" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_ProductionPlanDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_ProductionPlanDet">
           <Key>
             <PropertyRef Name="Id" />
@@ -2182,8 +2184,8 @@
           <Property Name="RecipeAmount" Type="numeric" Precision="15" Scale="4" Nullable="false" />
           <Property Name="ResipeOut" Type="numeric" Precision="15" Scale="4" Nullable="false" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.v_Services" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_Services' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_Services">
           <Key>
             <PropertyRef Name="SvcId" />
@@ -2208,8 +2210,8 @@
           <Property Name="MeasuresName" Type="nvarchar" MaxLength="64" />
           <Property Name="SvcGroupName" Type="nvarchar" MaxLength="64" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.v_TechProcDet" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_TechProcDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_TechProcDet">
           <Key>
             <PropertyRef Name="DetId" />
@@ -2236,8 +2238,8 @@
           <Property Name="OutNetto" Type="numeric" Precision="15" Scale="4" />
           <Property Name="TareName" Type="nvarchar" MaxLength="255" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.v_Users" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_Users' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_Users">
           <Key>
             <PropertyRef Name="UserId" />
@@ -2261,8 +2263,8 @@
           <Property Name="IsWorking" Type="bit" Nullable="false" />
           <Property Name="EmployeeName" Type="nvarchar" MaxLength="100" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.v_WaybillList" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_WaybillList">
           <Key>
             <PropertyRef Name="WbillId" />
@@ -2331,8 +2333,8 @@
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Declaration" Type="nvarchar(max)" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "sp_base.dbo.v_WorkDate" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_WorkDate">
           <Key>
             <PropertyRef Name="OnDate" />
@@ -5112,7 +5114,7 @@
                 <Property Name="OnDate" Type="datetime" />
                 <Property Name="Price" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="CurrId" Type="int" />
-                <Property Name="OnValue" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="Nds" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="Discount" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="CurrName" Type="nvarchar" MaxLength="3" />
@@ -5588,7 +5590,7 @@
                 <Property Name="CashId" Type="int" />
                 <Property Name="OperId" Type="uniqueidentifier" />
                 <Property Name="DocId" Type="int" />
-                <Property Name="OnValue" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="CurrName" Type="nvarchar" MaxLength="3" />
                 <Property Name="PayTypeName" Type="nvarchar" MaxLength="50" />
                 <Property Name="CashdName" Type="nvarchar" MaxLength="128" />
@@ -5997,11 +5999,11 @@
                 <Property Name="MatName" Type="nvarchar" MaxLength="255" />
                 <Property Name="GrpId" Type="int" />
                 <Property Name="GrpName" Type="varchar" MaxLength="64" Nullable="false" />
-                <Property Name="AmountOrd" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountOrd" Type="numeric" Precision="38" Scale="8" />
                 <Property Name="TotalOrd" Type="numeric" Precision="38" Scale="2" />
                 <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
                 <Property Name="BarCode" Type="nvarchar" MaxLength="64" />
-                <Property Name="AmountOut" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountOut" Type="numeric" Precision="38" Scale="8" />
                 <Property Name="TotalOut" Type="numeric" Precision="38" Scale="2" />
               </RowType>
             </CollectionType>
@@ -7014,7 +7016,8 @@
     [v_PayDoc].[AccNum] AS [AccNum], 
     [v_PayDoc].[BankName] AS [BankName], 
     [v_PayDoc].[KAU] AS [KAU], 
-    [v_PayDoc].[Id] AS [Id]
+    [v_PayDoc].[Id] AS [Id], 
+    [v_PayDoc].[SummInCurr] AS [SummInCurr]
     FROM [dbo].[v_PayDoc] AS [v_PayDoc]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_PlannedCalculation" EntityType="Self.v_PlannedCalculation" store:Type="Views" store:Schema="dbo">
@@ -9201,11 +9204,6 @@
             <Parameter Name="user_id" Mode="In" Type="Int32" />
             <Parameter Name="get_child_node" Mode="In" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="CurrencyRate" EntityType="BaseModel.CurrencyRate" />
-          <AssociationSet Name="FK__CURRENCYR__CURRI__5EBF139D" Association="BaseModel.FK__CURRENCYR__CURRI__5EBF139D">
-            <End Role="Currency" EntitySet="Currency" />
-            <End Role="CurrencyRate" EntitySet="CurrencyRate" />
-          </AssociationSet>
           <FunctionImport Name="PosGet" IsComposable="true" ReturnType="Collection(BaseModel.PosGet_Result)">
             <Parameter Name="mat_id" Mode="In" Type="Int32" />
             <Parameter Name="w_id" Mode="In" Type="Int32" />
@@ -9293,12 +9291,6 @@
           </FunctionImport>
           <FunctionImport Name="GetMatNds" IsComposable="true" ReturnType="Collection(BaseModel.GetMatNds_Result)">
           <Parameter Name="MATID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="GetDocList" IsComposable="true" ReturnType="Collection(BaseModel.GetDocList_Result)">
-            <Parameter Name="from_date" Mode="In" Type="DateTime" />
-            <Parameter Name="to_date" Mode="In" Type="DateTime" />
-            <Parameter Name="ka_id" Mode="In" Type="Int32" />
-            <Parameter Name="w_type" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="KAgentAdjustment" EntityType="BaseModel.KAgentAdjustment" />
           <EntitySet Name="OperationTypes" EntityType="BaseModel.OperationTypes" />
@@ -9441,6 +9433,17 @@
             <Parameter Name="pay_type" Mode="In" Type="Int32" />
             <Parameter Name="person_id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="GetDocList" IsComposable="true" ReturnType="Collection(BaseModel.GetDocList_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="w_type" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="CurrencyRate" EntityType="BaseModel.CurrencyRate" />
+          <AssociationSet Name="FK__CURRENCYR__CURRI__5EBF139D" Association="BaseModel.FK__CURRENCYR__CURRI__5EBF139D">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="CurrencyRate" EntitySet="CurrencyRate" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -14280,6 +14283,7 @@
           <Property Type="String" Name="BankName" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="KAU" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Name="SummInCurr" Type="Decimal" Precision="31" Scale="6" />
         </EntityType>
         <EntityType Name="v_MatRecipe">
           <Key>
@@ -14385,6 +14389,7 @@
           <NavigationProperty Name="KAgentAccount" Relationship="BaseModel.FK_PD_ACCID" FromRole="PayDoc" ToRole="KAgentAccount" />
           <NavigationProperty Name="PayType" Relationship="BaseModel.FK__PAYDOC__PTYPEID__2057CCD0" FromRole="PayDoc" ToRole="PayType" />
           <Property Name="ReportingDate" Type="DateTime" Precision="3" />
+          <Property Name="SummInCurr" Type="Decimal" Precision="15" Scale="2" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <Association Name="FK_PD_CASHID">
           <End Type="BaseModel.CashDesks" Role="CashDesks" Multiplicity="0..1" />
@@ -14593,28 +14598,6 @@
           <Property Type="Decimal" Name="SumRemain" Nullable="true" Precision="15" Scale="2" />
           <Property Type="Int32" Name="MId" Nullable="false" />
         </ComplexType>
-        <EntityType Name="CurrencyRate">
-          <Key>
-            <PropertyRef Name="RateId" />
-          </Key>
-          <Property Name="RateId" Type="Int32" Nullable="false" />
-          <Property Name="CurrId" Type="Int32" Nullable="false" />
-          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="OnValue" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
-          <NavigationProperty Name="Currency" Relationship="BaseModel.FK__CURRENCYR__CURRI__5EBF139D" FromRole="CurrencyRate" ToRole="Currency" />
-        </EntityType>
-        <Association Name="FK__CURRENCYR__CURRI__5EBF139D">
-          <End Type="BaseModel.Currency" Role="Currency" Multiplicity="1" />
-          <End Type="BaseModel.CurrencyRate" Role="CurrencyRate" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Currency">
-              <PropertyRef Name="CurrId" />
-            </Principal>
-            <Dependent Role="CurrencyRate">
-              <PropertyRef Name="CurrId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <ComplexType Name="PosGet_Result">
           <Property Type="Int32" Name="PosId" Nullable="true" />
           <Property Type="Decimal" Name="Remain" Nullable="true" Precision="15" Scale="4" />
@@ -14912,27 +14895,6 @@
           <Property Type="String" Name="GRPNAME" Nullable="true" MaxLength="64" />
           <Property Type="Int32" Name="GRPID" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="GetDocList_Result">
-          <Property Type="Guid" Name="Id" Nullable="true" />
-          <Property Type="Int32" Name="WbillId" Nullable="true" />
-          <Property Type="Int32" Name="WType" Nullable="true" />
-          <Property Type="String" Name="Num" Nullable="true" MaxLength="24" />
-          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
-          <Property Type="DateTime" Name="ToDate" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="KaId" Nullable="true" />
-          <Property Type="String" Name="KaName" Nullable="true" MaxLength="255" />
-          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="Int32" Name="CurrId" Nullable="true" />
-          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="15" />
-          <Property Type="Int32" Name="Checked" Nullable="true" />
-          <Property Type="Int32" Name="DocId" Nullable="true" />
-          <Property Type="Decimal" Name="NDS" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="SummAll" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="SummInCurr" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Saldo" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="DocShortName" Nullable="true" MaxLength="50" />
-        </ComplexType>
         <EntityType Name="KAgentAdjustment">
           <Key>
             <PropertyRef Name="Id" />
@@ -15121,7 +15083,7 @@
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="WType" Type="Int32" />
-          <Property Name="Num" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Num" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="OnDate" Type="DateTime" Precision="3" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SummAll" Type="Decimal" Precision="21" Scale="8" />
@@ -15748,6 +15710,7 @@
           <Property Type="Int32" Name="ExDocType" Nullable="true" />
           <Property Type="Int32" Name="EntId" Nullable="true" />
           <Property Type="DateTime" Name="ReportingDate" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="SummInCurr" Nullable="true" Precision="31" Scale="6" />
           <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
           <Property Type="String" Name="KaName" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="KaFullName" Nullable="true" MaxLength="255" />
@@ -15770,6 +15733,49 @@
           <Property Type="String" Name="EntName" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="KaGroupName" Nullable="true" MaxLength="50" />
         </ComplexType>
+        <ComplexType Name="GetDocList_Result">
+          <Property Type="Guid" Name="Id" Nullable="true" />
+          <Property Type="Int32" Name="WbillId" Nullable="true" />
+          <Property Type="Int32" Name="WType" Nullable="true" />
+          <Property Type="String" Name="Num" Nullable="true" MaxLength="24" />
+          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ToDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="KaId" Nullable="true" />
+          <Property Type="String" Name="KaName" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="15" />
+          <Property Type="Int32" Name="Checked" Nullable="true" />
+          <Property Type="Int32" Name="DocId" Nullable="true" />
+          <Property Type="Decimal" Name="NDS" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="SummAll" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="SummInCurr" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Saldo" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DocShortName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="CurrencyRate">
+          <Key>
+            <PropertyRef Name="RateId" />
+          </Key>
+          <Property Name="RateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CurrId" Type="Int32" Nullable="false" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OnValue" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <NavigationProperty Name="Currency" Relationship="BaseModel.FK__CURRENCYR__CURRI__5EBF139D" FromRole="CurrencyRate" ToRole="Currency" />
+        </EntityType>
+        <Association Name="FK__CURRENCYR__CURRI__5EBF139D">
+          <End Type="BaseModel.Currency" Role="Currency" Multiplicity="1" />
+          <End Type="BaseModel.CurrencyRate" Role="CurrencyRate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrId" />
+            </Principal>
+            <Dependent Role="CurrencyRate">
+              <PropertyRef Name="CurrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -18784,6 +18790,7 @@
           <EntitySetMapping Name="v_PayDoc">
             <EntityTypeMapping TypeName="BaseModel.v_PayDoc">
               <MappingFragment StoreEntitySet="v_PayDoc">
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="KAU" ColumnName="KAU" />
                 <ScalarProperty Name="BankName" ColumnName="BankName" />
@@ -18894,6 +18901,7 @@
           <EntitySetMapping Name="PayDoc">
             <EntityTypeMapping TypeName="BaseModel.PayDoc">
               <MappingFragment StoreEntitySet="PayDoc">
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
                 <ScalarProperty Name="ReportingDate" ColumnName="ReportingDate" />
                 <ScalarProperty Name="EntId" ColumnName="EntId" />
                 <ScalarProperty Name="ExDocType" ColumnName="ExDocType" />
@@ -19003,16 +19011,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="CurrencyRate">
-            <EntityTypeMapping TypeName="BaseModel.CurrencyRate">
-              <MappingFragment StoreEntitySet="CurrencyRate">
-                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
-                <ScalarProperty Name="RateId" ColumnName="RateId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="PosGet" FunctionName="BaseModel.Store.PosGet">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.PosGet_Result">
@@ -19192,31 +19190,6 @@
                 <ScalarProperty Name="NDS" ColumnName="NDS" />
                 <ScalarProperty Name="GRPNAME" ColumnName="GRPNAME" />
                 <ScalarProperty Name="GRPID" ColumnName="GRPID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetDocList" FunctionName="BaseModel.Store.GetDocList">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetDocList_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
-                <ScalarProperty Name="WType" ColumnName="WType" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
-                <ScalarProperty Name="KaId" ColumnName="KaId" />
-                <ScalarProperty Name="KaName" ColumnName="KaName" />
-                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
-                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
-                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="DocId" ColumnName="DocId" />
-                <ScalarProperty Name="NDS" ColumnName="NDS" />
-                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
-                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
-                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
-                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
-                <ScalarProperty Name="DocShortName" ColumnName="DocShortName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -19916,6 +19889,7 @@
                 <ScalarProperty Name="ExDocType" ColumnName="ExDocType" />
                 <ScalarProperty Name="EntId" ColumnName="EntId" />
                 <ScalarProperty Name="ReportingDate" ColumnName="ReportingDate" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
                 <ScalarProperty Name="CurrName" ColumnName="CurrName" />
                 <ScalarProperty Name="KaName" ColumnName="KaName" />
                 <ScalarProperty Name="KaFullName" ColumnName="KaFullName" />
@@ -19940,6 +19914,41 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetDocList" FunctionName="BaseModel.Store.GetDocList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetDocList_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="NDS" ColumnName="NDS" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="DocShortName" ColumnName="DocShortName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="CurrencyRate">
+            <EntityTypeMapping TypeName="BaseModel.CurrencyRate">
+              <MappingFragment StoreEntitySet="CurrencyRate">
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="RateId" ColumnName="RateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

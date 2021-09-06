@@ -56,10 +56,10 @@
             this.colOnDate = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colKaName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.colSummInCurr = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colSummAll = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.colCurrName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colOnValue = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.colCurrName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.colSummInCurr = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colSaldo = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.wTypeList = new DevExpress.XtraEditors.LookUpEdit();
@@ -264,7 +264,7 @@
             this.gridBand1.Columns.Add(this.colKaName);
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 709;
+            this.gridBand1.Width = 634;
             // 
             // colWType
             // 
@@ -279,7 +279,7 @@
             this.colWType.OptionsColumn.ShowCaption = false;
             this.colWType.OptionsColumn.ShowInCustomizationForm = false;
             this.colWType.Visible = true;
-            this.colWType.Width = 23;
+            this.colWType.Width = 20;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -351,7 +351,7 @@
             this.bandedGridColumn1.Name = "bandedGridColumn1";
             this.bandedGridColumn1.OptionsColumn.ShowCaption = false;
             this.bandedGridColumn1.Visible = true;
-            this.bandedGridColumn1.Width = 55;
+            this.bandedGridColumn1.Width = 47;
             // 
             // colNum
             // 
@@ -359,7 +359,7 @@
             this.colNum.FieldName = "Num";
             this.colNum.Name = "colNum";
             this.colNum.Visible = true;
-            this.colNum.Width = 51;
+            this.colNum.Width = 44;
             // 
             // colOnDate
             // 
@@ -369,7 +369,7 @@
             this.colOnDate.FieldName = "OnDate";
             this.colOnDate.Name = "colOnDate";
             this.colOnDate.Visible = true;
-            this.colOnDate.Width = 130;
+            this.colOnDate.Width = 115;
             // 
             // colKaName
             // 
@@ -377,7 +377,7 @@
             this.colKaName.FieldName = "KaName";
             this.colKaName.Name = "colKaName";
             this.colKaName.Visible = true;
-            this.colKaName.Width = 450;
+            this.colKaName.Width = 408;
             // 
             // gridBand2
             // 
@@ -389,7 +389,34 @@
             this.gridBand2.Columns.Add(this.colSaldo);
             this.gridBand2.Name = "gridBand2";
             this.gridBand2.VisibleIndex = 1;
-            this.gridBand2.Width = 449;
+            this.gridBand2.Width = 421;
+            // 
+            // colSummAll
+            // 
+            this.colSummAll.Caption = "Сума в валюті";
+            this.colSummAll.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colSummAll.FieldName = "SummAll";
+            this.colSummAll.Name = "colSummAll";
+            this.colSummAll.Visible = true;
+            this.colSummAll.Width = 95;
+            // 
+            // colOnValue
+            // 
+            this.colOnValue.Caption = "Курс";
+            this.colOnValue.DisplayFormat.FormatString = "0.00";
+            this.colOnValue.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colOnValue.FieldName = "OnValue";
+            this.colOnValue.Name = "colOnValue";
+            this.colOnValue.Visible = true;
+            this.colOnValue.Width = 66;
+            // 
+            // colCurrName
+            // 
+            this.colCurrName.Caption = "Валюта";
+            this.colCurrName.FieldName = "CurrName";
+            this.colCurrName.Name = "colCurrName";
+            this.colCurrName.Visible = true;
+            this.colCurrName.Width = 57;
             // 
             // colSummInCurr
             // 
@@ -401,34 +428,7 @@
             this.colSummInCurr.FieldName = "SummInCurr";
             this.colSummInCurr.Name = "colSummInCurr";
             this.colSummInCurr.Visible = true;
-            this.colSummInCurr.Width = 123;
-            // 
-            // colSummAll
-            // 
-            this.colSummAll.Caption = "Сума в валюті";
-            this.colSummAll.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colSummAll.FieldName = "SummAll";
-            this.colSummAll.Name = "colSummAll";
-            this.colSummAll.Visible = true;
-            this.colSummAll.Width = 105;
-            // 
-            // colCurrName
-            // 
-            this.colCurrName.Caption = "Валюта";
-            this.colCurrName.FieldName = "CurrName";
-            this.colCurrName.Name = "colCurrName";
-            this.colCurrName.Visible = true;
-            this.colCurrName.Width = 64;
-            // 
-            // colOnValue
-            // 
-            this.colOnValue.Caption = "Курс";
-            this.colOnValue.DisplayFormat.FormatString = "0.00";
-            this.colOnValue.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colOnValue.FieldName = "OnValue";
-            this.colOnValue.Name = "colOnValue";
-            this.colOnValue.Visible = true;
-            this.colOnValue.Width = 55;
+            this.colSummInCurr.Width = 108;
             // 
             // colSaldo
             // 
@@ -440,7 +440,7 @@
             this.colSaldo.FieldName = "Saldo";
             this.colSaldo.Name = "colSaldo";
             this.colSaldo.Visible = true;
-            this.colSaldo.Width = 102;
+            this.colSaldo.Width = 95;
             // 
             // panelControl1
             // 
@@ -586,9 +586,7 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colCurrName;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colOnValue;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colSaldo;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn1;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
         public System.Windows.Forms.ImageList GridImageList;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
@@ -600,5 +598,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.DateEdit wbStartDate;
         private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
     }
 }

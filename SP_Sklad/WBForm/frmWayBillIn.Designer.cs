@@ -72,13 +72,13 @@
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.PTypeComboBox = new DevExpress.XtraEditors.LookUpEdit();
+            this.WaybillListBS = new System.Windows.Forms.BindingSource(this.components);
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.ReasonEdit = new DevExpress.XtraEditors.TextEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.CurrencyLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.WaybillListBS = new System.Windows.Forms.BindingSource(this.components);
             this.NotesEdit = new DevExpress.XtraEditors.TextEdit();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
@@ -126,10 +126,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PTypeComboBox.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillListBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReasonEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CurrencyLookUpEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillListBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CurRateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).BeginInit();
@@ -460,6 +460,10 @@
             this.PTypeComboBox.TabIndex = 30;
             this.PTypeComboBox.Visible = false;
             // 
+            // WaybillListBS
+            // 
+            this.WaybillListBS.DataSource = typeof(SP_Sklad.SkladData.WaybillList);
+            // 
             // styleController1
             // 
             this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
@@ -519,10 +523,7 @@
             this.CurrencyLookUpEdit.Size = new System.Drawing.Size(60, 22);
             this.CurrencyLookUpEdit.StyleController = this.styleController1;
             this.CurrencyLookUpEdit.TabIndex = 28;
-            // 
-            // WaybillListBS
-            // 
-            this.WaybillListBS.DataSource = typeof(SP_Sklad.SkladData.WaybillList);
+            this.CurrencyLookUpEdit.EditValueChanged += new System.EventHandler(this.CurrencyLookUpEdit_EditValueChanged);
             // 
             // NotesEdit
             // 
@@ -1074,10 +1075,10 @@
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PTypeComboBox.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillListBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReasonEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CurrencyLookUpEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillListBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CurRateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).EndInit();

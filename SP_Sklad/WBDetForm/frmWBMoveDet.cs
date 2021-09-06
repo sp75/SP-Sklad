@@ -285,15 +285,16 @@ namespace SP_Sklad.WBDetForm
                         var wbd = d.WaybillDet.Add(new WaybillDet()
                         {
                             WbillId = _wb.WbillId,
-                            Price = item.Price,
-                            BasePrice = item.BasePrice,
+                            Price = item.Price * item.OnValue,
+                            BasePrice = item.BasePrice * item.OnValue,
                             Nds = item.Nds,
-                            CurrId = item.CurrId,
+                            CurrId = _wb.CurrId,
                             OnDate = _wb.OnDate,
                             WId = item.WId,
                             Num = _wbd.Num,
                             Amount = item.Amount.Value,
                             MatId = item.MatId,
+                            OnValue = _wb.OnValue
 
                         });
 

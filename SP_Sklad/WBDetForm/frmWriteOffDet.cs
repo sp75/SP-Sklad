@@ -171,8 +171,8 @@ namespace SP_Sklad.WBDetForm
 
             if (pos_in.Any())
             {
-                _wbd.Price = pos_in.First().Price;
-                _wbd.BasePrice = pos_in.First().BasePrice;
+                _wbd.Price = pos_in.First().Price * pos_in.First().OnValue;
+                _wbd.BasePrice = pos_in.First().BasePrice * pos_in.First().OnValue;
                 _wbd.Nds = pos_in.First().Nds;
             }
 
@@ -230,12 +230,12 @@ namespace SP_Sklad.WBDetForm
 
           
             decimal? selamount = pos_in.Sum(s => s.Amount);
-            decimal? sum = pos_in.Sum(s => s.Amount * s.Price);
+            decimal? sum = pos_in.Sum(s => s.Amount * s.Price * s.OnValue);
 
             if (selamount > 0)
             {
                 _wbd.Price = sum / selamount;
-                _wbd.BasePrice = _wbd.Price;
+                _wbd.BasePrice = _wbd.Price * _wbd.OnValue;
             }
             else
             {
