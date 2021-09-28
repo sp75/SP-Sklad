@@ -681,6 +681,7 @@
             this.CurrEdit.Size = new System.Drawing.Size(58, 22);
             this.CurrEdit.StyleController = this.styleController1;
             this.CurrEdit.TabIndex = 29;
+            this.CurrEdit.EditValueChanged += new System.EventHandler(this.CurrEdit_EditValueChanged);
             // 
             // SumEdit
             // 

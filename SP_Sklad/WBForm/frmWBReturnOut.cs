@@ -327,6 +327,8 @@ namespace SP_Sklad.WBForm
         {
             wb.OnDate = DBHelper.ServerDateTime();
             OnDateDBEdit.DateTime = wb.OnDate;
+
+            _db.SaveChanges();
         }
 
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

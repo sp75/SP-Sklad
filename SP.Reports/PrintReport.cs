@@ -34,6 +34,7 @@ namespace SP.Reports
         public dynamic Person { get; set; }
         public object RsvStatus { get; set; }
         public CashDesksList CashDesk { get; set; }
+        public CarList Car { get; set; }
 
 
         private int? _person_id { get; set; }
@@ -229,6 +230,10 @@ namespace SP.Reports
 
                 case 45:
                     REP_45();
+                    break;
+
+                case 46:
+                    REP_46();
                     break;
 
                 default:
@@ -496,7 +501,7 @@ namespace SP.Reports
         }
         private void REP_13()
         {
-            var mat = _db.REP_13(StartDate, EndDate, MatGroup.GrpId, Kagent.KaId, Warehouse.WId, 0, GrpStr).ToList();
+            var mat = _db.REP_13(StartDate, EndDate, MatGroup.GrpId, Kagent.KaId, Warehouse.WId, 0, GrpStr, KontragentGroup.Id).ToList();
 
             var gs = !String.IsNullOrEmpty(GrpStr) ? GrpStr.Split(',').Select(s => Convert.ToInt32(s)).ToList() : new List<int>();
             var mat_grp = _db.MatGroup.Where(w => w.Deleted == 0 && (w.GrpId == MatGroup.GrpId || MatGroup.GrpId == 0 || gs.Contains(w.GrpId))).Select(s => new { s.GrpId, s.Name }).ToList();
@@ -582,7 +587,7 @@ namespace SP.Reports
             decimal? total = 0;
             data_for_report.Add("XLRPARAMS", XLR_PARAMS);
 
-            var mat = _db.REP_13(StartDate, EndDate, 0, 0, "*", 0, GrpStr).ToList();
+            var mat = _db.REP_13(StartDate, EndDate, 0, 0, "*", 0, GrpStr, KontragentGroup.Id).ToList();
             var mat_grp = mat.GroupBy(g => new { g.GrpName, g.GrpId }).Select(s => new
             {
                 s.Key.GrpId,
@@ -601,7 +606,7 @@ namespace SP.Reports
             total += mat_grp.Sum(s => s.Income);
 
 
-            var mat2 = _db.REP_13(StartDate, EndDate, 0, 0, "*", 1, GrpStr).ToList();
+            var mat2 = _db.REP_13(StartDate, EndDate, 0, 0, "*", 1, GrpStr, KontragentGroup.Id).ToList();
             var mat_grp2 = mat2.GroupBy(g => new { g.GrpName, g.GrpId }).Select(s => new
             {
                 s.Key.GrpId,
@@ -1491,6 +1496,10 @@ select x.*, ROW_NUMBER() over ( order by x.Name) as N from
 
             data_for_report.Add("XLRPARAMS", XLR_PARAMS);
             data_for_report.Add("Kagent", kagents.ToList());
+        }
+
+        private void REP_46()
+        {
         }
 
         public class rep_45

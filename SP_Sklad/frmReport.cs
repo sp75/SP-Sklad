@@ -146,6 +146,7 @@ namespace SP_Sklad
                     this.MatGroupBox.Visible = false;
                     this.DocTypeGroupBox.Visible = false;
                     this.ChargeGroupBox.Visible = false;
+                    this.GroupKontragentPanel.Visible = true;
                     break;
 
                 case 15:
@@ -341,6 +342,17 @@ namespace SP_Sklad
                     this.ChargeGroupBox.Visible = false;
                     this.StatusPanel.Visible = true;
                     this.GRPGroupBox.Visible = false;
+                    break;
+
+                case 46:
+                    this.WHGroupBox.Visible = false;
+                    this.MatGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    this.GRPGroupBox.Visible = false;
+                    this.KontragentPanel.Visible = false;
+                    this.CarPanel.Visible = true;
+                 
                     break;
             }
         }
@@ -541,6 +553,13 @@ namespace SP_Sklad
                 CashEditComboBox.EditValue = -1;
             }
 
+            if (CarPanel.Visible)
+            {
+                Height += CarPanel.Height;
+
+                CarsLookUpEdit.Properties.DataSource = new BaseEntities().Cars.Select(s=> new CarList {  Id = s.Id, Number = s.Number, Name = s.Name}).ToList();
+               // CarsLookUpEdit.EditValue = -1;
+            }
         }
 
         private void frmReport_Shown(object sender, EventArgs e)
@@ -607,7 +626,8 @@ namespace SP_Sklad
                        GrpStr = ChildGroupCheckEdit.Checked ? String.Join(",", new BaseEntities().GetMatGroupTree(grp).ToList().Select(s => Convert.ToString(s.GrpId))) : "",
                        Person = PersonLookUpEdit.GetSelectedDataRow(),
                        RsvStatus = wmatturnStatus.EditValue,
-                       CashDesk = CashEditComboBox.GetSelectedDataRow() as CashDesksList
+                       CashDesk = CashEditComboBox.GetSelectedDataRow() as CashDesksList,
+                       Car = CarsLookUpEdit.GetSelectedDataRow() as CarList
                    };
 
                    var template_name = pr2.GetTemlate(_rep_id);
@@ -692,6 +712,10 @@ namespace SP_Sklad
             }
         }
 
+        private void ChTypeEdit_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

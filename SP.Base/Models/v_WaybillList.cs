@@ -181,5 +181,7 @@ namespace SP.Base.Models
         public Guid Id { get; set; }
 
         public string Declaration { get; set; }
+        public string CarNumber { get; set; }
+        public string CarName { get; set; }
     }
 }

@@ -75,8 +75,9 @@ namespace SP_Sklad.WBDetForm
                     var w_mat_turn = _db.WMatTurn.Where(w => w.SourceId == _wbd.PosId).ToList();
                     if (w_mat_turn.Count > 0)
                     {
-                        _db.WMatTurn.RemoveRange(w_mat_turn);
-                        _db.SaveChanges();
+                        //  _db.WMatTurn.RemoveRange(w_mat_turn);
+                        //  _db.SaveChanges();
+                        _db.DeleteWhere<WMatTurn>(w => w.SourceId == _wbd.PosId);
                     }
 
                     GetContent();
@@ -173,9 +174,9 @@ namespace SP_Sklad.WBDetForm
 
             if (pos_in.Any())
             {
-                _wbd.Price = pos_in.First().Price;
+                _wbd.Price = pos_in.First().Price * pos_in.First().OnValue;
 
-                _wbd.BasePrice = pos_in.First().BasePrice  ; //?? pos_in.First().Price;
+                _wbd.BasePrice = pos_in.First().BasePrice * pos_in.First().OnValue;
                 BasePriceEdit.EditValue = _wbd.BasePrice;
 
                 _wbd.Nds = pos_in.First().Nds;
@@ -245,15 +246,16 @@ namespace SP_Sklad.WBDetForm
                         var wbd = _db.WaybillDet.Add(new WaybillDet()
                         {
                             WbillId = _wb.WbillId,
-                            Price = item.Price,
-                            BasePrice = item.BasePrice,
+                            Price = item.Price * item.OnValue,
+                            BasePrice = item.BasePrice * item.OnValue,
                             Nds = item.Nds,
-                            CurrId = item.CurrId,
+                            CurrId = _wb.CurrId,
                             OnDate = _wb.OnDate,
                             WId = item.WId,
                             Num = ++num,
                             Amount = item.Amount.Value,
                             MatId = item.MatId,
+                            OnValue = _wb.OnValue
                         });
                         _db.SaveChanges();
 

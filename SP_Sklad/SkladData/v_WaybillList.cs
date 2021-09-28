@@ -71,5 +71,7 @@ namespace SP_Sklad.SkladData
         public string EntOKPO { get; set; }
         public System.Guid Id { get; set; }
         public string Declaration { get; set; }
+        public string CarNumber { get; set; }
+        public string CarName { get; set; }
     }
 }

@@ -320,6 +320,8 @@
         <EntityTypeShape EntityType="BaseModel.TaraGroup" Width="1.5" PointX="28" PointY="5.25" />
         <EntityTypeShape EntityType="BaseModel.CurrencyRate" Width="1.5" PointX="9.875" PointY="41" />
         <AssociationConnector Association="BaseModel.FK__CURRENCYR__CURRI__5EBF139D" />
+        <EntityTypeShape EntityType="BaseModel.Cars" Width="1.5" PointX="28.375" PointY="1.5" />
+        <AssociationConnector Association="BaseModel.FK_Routes_Cars" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

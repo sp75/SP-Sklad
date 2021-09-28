@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SP_Sklad.Common;
+using SP_Sklad.EditForm;
 using SP_Sklad.Reports;
 using SP_Sklad.SkladData;
 
@@ -170,7 +171,7 @@ namespace SP_Sklad.FinanseForm
 
                 var row = DocListEdit.GetSelectedDataRow() as GetWayBillList_Result;
 
-                textEdit4.EditValue = (row == null ? 0 : row.Balans) - SumEdit.Value;
+                textEdit4.EditValue = (row == null ? 0 : row.Balans) - (SumEdit.Value * CurrValueEdit.Value);
 
                 KagentComboBox.Enabled = false;
             }
@@ -422,6 +423,39 @@ namespace SP_Sklad.FinanseForm
             if(e.Button.Index == 1)
             {
                 KagentComboBox.EditValue = IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
+            }
+        }
+
+        private void CurrEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            if (CurrEdit.Focused)
+            {
+                var cur_id = Convert.ToInt32(CurrEdit.EditValue);
+
+                var last_curr = _db.CurrencyRate.Where(w => w.OnDate <= OnDateDBEdit.DateTime.Date && w.CurrId == cur_id).OrderByDescending(o => o.OnDate).FirstOrDefault();
+                if (last_curr != null)
+                {
+                    _pd.OnValue = last_curr.OnValue;
+                }
+                else
+                {
+                    _pd.OnValue = 1;
+                }
+
+                var curr_on_date = _db.CurrencyRate.FirstOrDefault(w => w.OnDate == OnDateDBEdit.DateTime.Date && w.CurrId == cur_id);
+
+                if (curr_on_date == null && cur_id != 2)
+                {
+                    using (var frm = new frmCurrencyRate(cur_id, OnDateDBEdit.DateTime.Date))
+                    {
+                        if (frm.ShowDialog() == DialogResult.OK)
+                        {
+                            _pd.OnValue = frm.SumEdit.Value;
+                        }
+                    }
+                }
+
+
             }
         }
     }

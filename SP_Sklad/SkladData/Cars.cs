@@ -12,20 +12,17 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class Routes
+    public partial class Cars
     {
-        public Routes()
+        public Cars()
         {
-            this.Kagent = new HashSet<Kagent>();
+            this.Routes = new HashSet<Routes>();
         }
     
-        public int Id { get; set; }
+        public System.Guid Id { get; set; }
         public string Name { get; set; }
-        public Nullable<int> DriverId { get; set; }
-        public Nullable<System.Guid> CarId { get; set; }
+        public string Number { get; set; }
     
-        public virtual ICollection<Kagent> Kagent { get; set; }
-        public virtual Kagent Kagent1 { get; set; }
-        public virtual Cars Cars { get; set; }
+        public virtual ICollection<Routes> Routes { get; set; }
     }
 }

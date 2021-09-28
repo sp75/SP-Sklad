@@ -33,21 +33,24 @@
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
-            this.WaybillListBS = new System.Windows.Forms.BindingSource(this.components);
             this.ReceivedTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.WaybillListBS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.AttDateEdit = new DevExpress.XtraEditors.DateEdit();
+            this.CarsLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillListBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReceivedTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillListBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AttDateEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AttDateEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CarsLookUpEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // BottomPanel
@@ -55,7 +58,7 @@
             this.BottomPanel.Controls.Add(this.OkButton);
             this.BottomPanel.Controls.Add(this.simpleButton1);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomPanel.Location = new System.Drawing.Point(0, 149);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 195);
             this.BottomPanel.Name = "BottomPanel";
             this.BottomPanel.Size = new System.Drawing.Size(455, 52);
             this.BottomPanel.TabIndex = 21;
@@ -86,10 +89,6 @@
             this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.styleController1.Appearance.Options.UseFont = true;
             // 
-            // WaybillListBS
-            // 
-            this.WaybillListBS.DataSource = typeof(SP_Sklad.SkladData.WaybillList);
-            // 
             // ReceivedTextEdit
             // 
             this.ReceivedTextEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -100,6 +99,10 @@
             this.ReceivedTextEdit.Size = new System.Drawing.Size(406, 22);
             this.ReceivedTextEdit.StyleController = this.styleController1;
             this.ReceivedTextEdit.TabIndex = 45;
+            // 
+            // WaybillListBS
+            // 
+            this.WaybillListBS.DataSource = typeof(SP_Sklad.SkladData.WaybillList);
             // 
             // labelControl3
             // 
@@ -153,11 +156,44 @@
             this.AttDateEdit.StyleController = this.styleController1;
             this.AttDateEdit.TabIndex = 49;
             // 
+            // CarsLookUpEdit
+            // 
+            this.CarsLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "CarId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.CarsLookUpEdit.Location = new System.Drawing.Point(24, 159);
+            this.CarsLookUpEdit.Name = "CarsLookUpEdit";
+            this.CarsLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search)});
+            this.CarsLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Number", "Номер")});
+            this.CarsLookUpEdit.Properties.DisplayMember = "Name";
+            this.CarsLookUpEdit.Properties.ShowFooter = false;
+            this.CarsLookUpEdit.Properties.ShowHeader = false;
+            this.CarsLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.CarsLookUpEdit.Properties.ValueMember = "Id";
+            this.CarsLookUpEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.CarsLookUpEdit_Properties_ButtonClick);
+            this.CarsLookUpEdit.Size = new System.Drawing.Size(406, 22);
+            this.CarsLookUpEdit.StyleController = this.styleController1;
+            this.CarsLookUpEdit.TabIndex = 51;
+            this.CarsLookUpEdit.EditValueChanged += new System.EventHandler(this.CarsLookUpEdit_EditValueChanged);
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(24, 137);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(48, 16);
+            this.labelControl2.StyleController = this.styleController1;
+            this.labelControl2.TabIndex = 50;
+            this.labelControl2.Text = "Машина";
+            // 
             // frmAttEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(455, 201);
+            this.ClientSize = new System.Drawing.Size(455, 247);
+            this.Controls.Add(this.CarsLookUpEdit);
+            this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.AttDateEdit);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.labelControl7);
@@ -174,11 +210,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).EndInit();
             this.BottomPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillListBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReceivedTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillListBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AttDateEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AttDateEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CarsLookUpEdit.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,5 +234,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.DateEdit AttDateEdit;
+        private DevExpress.XtraEditors.LookUpEdit CarsLookUpEdit;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
     }
 }

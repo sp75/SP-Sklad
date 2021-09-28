@@ -274,6 +274,8 @@ order by  ma.ondate desc */
         {
             wb.OnDate = DBHelper.ServerDateTime();
             OnDateDBEdit.DateTime = wb.OnDate;
+
+            _db.SaveChanges();
         }
 
         private void TurnDocCheckBox_EditValueChanged(object sender, EventArgs e)

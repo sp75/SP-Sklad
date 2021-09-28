@@ -73,6 +73,14 @@
           <Property Name="Email" Type="nvarchar" MaxLength="64" />
           <Property Name="Notes" Type="nvarchar" MaxLength="255" />
         </EntityType>
+        <EntityType Name="Cars">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Number" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="CashDesks">
           <Key>
             <PropertyRef Name="CashId" />
@@ -1059,6 +1067,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="DriverId" Type="int" />
+          <Property Name="CarId" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="SchedulingOrders">
           <Key>
@@ -1425,6 +1434,7 @@
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="WebUserId" Type="nvarchar" MaxLength="128" />
           <Property Name="PTypeId" Type="int" />
+          <Property Name="CarId" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="WayBillMake">
           <Key>
@@ -2332,6 +2342,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary
           <Property Name="EntOKPO" Type="nvarchar" MaxLength="64" />
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Declaration" Type="nvarchar(max)" />
+          <Property Name="CarNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="CarName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -3942,6 +3954,18 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Principal>
             <Dependent Role="ReturnRel">
               <PropertyRef Name="PPosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Routes_Cars">
+          <End Role="Cars" Type="Self.Cars" Multiplicity="0..1" />
+          <End Role="Routes" Type="Self.Routes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cars">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Routes">
+              <PropertyRef Name="CarId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -5809,6 +5833,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Parameter Name="wh" Type="varchar" Mode="In" />
           <Parameter Name="only_return" Type="int" Mode="In" />
           <Parameter Name="grp" Type="varchar" Mode="In" />
+          <Parameter Name="ka_grp_id" Type="uniqueidentifier" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
@@ -6518,6 +6543,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Banks" EntityType="Self.Banks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BanksPersons" EntityType="Self.BanksPersons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cars" EntityType="Self.Cars" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CashDesks" EntityType="Self.CashDesks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChargeType" EntityType="Self.ChargeType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CityType" EntityType="Self.CityType" Schema="dbo" store:Type="Tables" />
@@ -7229,7 +7255,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_WaybillList].[AddressBuy] AS [AddressBuy], 
     [v_WaybillList].[EntOKPO] AS [EntOKPO], 
     [v_WaybillList].[Id] AS [Id], 
-    [v_WaybillList].[Declaration] AS [Declaration]
+    [v_WaybillList].[Declaration] AS [Declaration], 
+    [v_WaybillList].[CarNumber] AS [CarNumber], 
+    [v_WaybillList].[CarName] AS [CarName]
     FROM [dbo].[v_WaybillList] AS [v_WaybillList]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_WorkDate" EntityType="Self.v_WorkDate" store:Type="Views" store:Schema="dbo">
@@ -7744,6 +7772,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <AssociationSet Name="FK_RETREL_PPOSID" Association="Self.FK_RETREL_PPOSID">
             <End Role="WaybillDet" EntitySet="WaybillDet" />
             <End Role="ReturnRel" EntitySet="ReturnRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Routes_Cars" Association="Self.FK_Routes_Cars">
+            <End Role="Cars" EntitySet="Cars" />
+            <End Role="Routes" EntitySet="Routes" />
           </AssociationSet>
           <AssociationSet Name="FK_Routes_Kagent" Association="Self.FK_Routes_Kagent">
             <End Role="Kagent" EntitySet="Kagent" />
@@ -9012,6 +9044,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="wh" Mode="In" Type="String" />
             <Parameter Name="only_return" Mode="In" Type="Int32" />
             <Parameter Name="grp" Mode="In" Type="String" />
+            <Parameter Name="ka_grp_id" Mode="In" Type="Guid" />
           </FunctionImport>
           <EntitySet Name="Packaging" EntityType="BaseModel.Packaging" />
           <FunctionImport Name="CopyPriceList" ReturnType="Collection(Int32)">
@@ -9443,6 +9476,11 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <AssociationSet Name="FK__CURRENCYR__CURRI__5EBF139D" Association="BaseModel.FK__CURRENCYR__CURRI__5EBF139D">
             <End Role="Currency" EntitySet="Currency" />
             <End Role="CurrencyRate" EntitySet="CurrencyRate" />
+          </AssociationSet>
+          <EntitySet Name="Cars" EntityType="BaseModel.Cars" />
+          <AssociationSet Name="FK_Routes_Cars" Association="BaseModel.FK_Routes_Cars">
+            <End Role="Cars" EntitySet="Cars" />
+            <End Role="Routes" EntitySet="Routes" />
           </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
@@ -11821,6 +11859,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Int32" Name="DriverId" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_Kagent_Routes" FromRole="Routes" ToRole="Kagent" />
           <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_Routes_Kagent" FromRole="Routes" ToRole="Kagent" />
+          <Property Name="CarId" Type="Guid" />
+          <NavigationProperty Name="Cars" Relationship="BaseModel.FK_Routes_Cars" FromRole="Routes" ToRole="Cars" />
           </EntityType>
         <EntityType Name="Jobs">
           <Key>
@@ -11991,6 +12031,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="WebUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AdditionalCostsDet" Relationship="BaseModel.FK_AdditionalCostsDet_WaybillList" FromRole="WaybillList" ToRole="AdditionalCostsDet" />
           <Property Name="PTypeId" Type="Int32" />
+          <Property Name="CarId" Type="Guid" />
           </EntityType>
         <Association Name="FK_COMMISSION_WBILLID">
           <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
@@ -12471,6 +12512,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="EntOKPO" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Type="Guid" Name="Id" Nullable="false" />
           <Property Type="String" Name="Declaration" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CarNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CarName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <ComplexType Name="GetMatRsv_Result">
           <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="8" />
@@ -15776,6 +15819,27 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Cars">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Routes" Relationship="BaseModel.FK_Routes_Cars" FromRole="Cars" ToRole="Routes" />
+        </EntityType>
+        <Association Name="FK_Routes_Cars">
+          <End Type="BaseModel.Cars" Role="Cars" Multiplicity="0..1" />
+          <End Type="BaseModel.Routes" Role="Routes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cars">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Routes">
+              <PropertyRef Name="CarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -17448,6 +17512,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="Routes">
             <EntityTypeMapping TypeName="BaseModel.Routes">
               <MappingFragment StoreEntitySet="Routes">
+                <ScalarProperty Name="CarId" ColumnName="CarId" />
                 <ScalarProperty Name="DriverId" ColumnName="DriverId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -17536,6 +17601,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="WaybillList">
             <EntityTypeMapping TypeName="BaseModel.WaybillList">
               <MappingFragment StoreEntitySet="WaybillList">
+                <ScalarProperty Name="CarId" ColumnName="CarId" />
                 <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
                 <ScalarProperty Name="WebUserId" ColumnName="WebUserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -17626,6 +17692,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_WaybillList">
             <EntityTypeMapping TypeName="BaseModel.v_WaybillList">
               <MappingFragment StoreEntitySet="v_WaybillList">
+                <ScalarProperty Name="CarName" ColumnName="CarName" />
+                <ScalarProperty Name="CarNumber" ColumnName="CarNumber" />
                 <ScalarProperty Name="Declaration" ColumnName="Declaration" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="EntOKPO" ColumnName="EntOKPO" />
@@ -19946,6 +20014,15 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="OnDate" ColumnName="OnDate" />
                 <ScalarProperty Name="CurrId" ColumnName="CurrId" />
                 <ScalarProperty Name="RateId" ColumnName="RateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cars">
+            <EntityTypeMapping TypeName="BaseModel.Cars">
+              <MappingFragment StoreEntitySet="Cars">
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

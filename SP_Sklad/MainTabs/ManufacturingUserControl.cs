@@ -576,9 +576,26 @@ namespace SP_Sklad.MainTabs
                     {
                         switch (focused_tree_node.GType)
                         {
+                            case 1:
+                                var wb1 = db.WaybillList.FirstOrDefault(w => w.WbillId == focused_row.WbillId && w.SessionId == null);
+                                if (wb1 != null)
+                                {
+                                    if (!db.IntermediateWeighing.Any(w => w.WbillId == wb1.WbillId))
+                                    {
+                                        db.WaybillList.Remove(wb1);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show(Resources.not_storno_wb);
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show(Resources.deadlock);
+                                }
+                                break;
 
                             case 3:
-                            case 1:
                                 var wb = db.WaybillList.FirstOrDefault(w => w.WbillId == focused_row.WbillId && w.SessionId == null);
                                 if (wb != null)
                                 {

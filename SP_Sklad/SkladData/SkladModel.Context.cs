@@ -184,6 +184,7 @@ namespace SP_Sklad.SkladData
         public DbSet<TaraGroup> TaraGroup { get; set; }
         public DbSet<v_IntermediateWeighing> v_IntermediateWeighing { get; set; }
         public DbSet<CurrencyRate> CurrencyRate { get; set; }
+        public DbSet<Cars> Cars { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)
@@ -1627,7 +1628,7 @@ namespace SP_Sklad.SkladData
         }
     
         [EdmFunction("BaseEntities", "REP_13")]
-        public virtual IQueryable<REP_13_Result> REP_13(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> grp_id, Nullable<int> ka_id, string wh, Nullable<int> only_return, string grp)
+        public virtual IQueryable<REP_13_Result> REP_13(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> grp_id, Nullable<int> ka_id, string wh, Nullable<int> only_return, string grp, Nullable<System.Guid> ka_grp_id)
         {
             var from_dateParameter = from_date.HasValue ?
                 new ObjectParameter("from_date", from_date) :
@@ -1657,7 +1658,11 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("grp", grp) :
                 new ObjectParameter("grp", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_13_Result>("[BaseEntities].[REP_13](@from_date, @to_date, @grp_id, @ka_id, @wh, @only_return, @grp)", from_dateParameter, to_dateParameter, grp_idParameter, ka_idParameter, whParameter, only_returnParameter, grpParameter);
+            var ka_grp_idParameter = ka_grp_id.HasValue ?
+                new ObjectParameter("ka_grp_id", ka_grp_id) :
+                new ObjectParameter("ka_grp_id", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_13_Result>("[BaseEntities].[REP_13](@from_date, @to_date, @grp_id, @ka_id, @wh, @only_return, @grp, @ka_grp_id)", from_dateParameter, to_dateParameter, grp_idParameter, ka_idParameter, whParameter, only_returnParameter, grpParameter, ka_grp_idParameter);
         }
     
         public virtual ObjectResult<Nullable<int>> CopyPriceList(Nullable<int> price_id)

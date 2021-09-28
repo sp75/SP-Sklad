@@ -424,6 +424,9 @@
     <Compile Include="SkladData\BanksPersons.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\Cars.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\CurrencyRate.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -908,6 +911,12 @@
     </Compile>
     <Compile Include="ViewsForm\frmAdditionalCosts.Designer.cs">
       <DependentUpon>frmAdditionalCosts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewsForm\frmCars.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmCars.Designer.cs">
+      <DependentUpon>frmCars.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewsForm\frmKaGroup.cs">
       <SubType>Form</SubType>
@@ -1760,6 +1769,9 @@
     <EmbeddedResource Include="ViewsForm\frmAdditionalCosts.resx">
       <DependentUpon>frmAdditionalCosts.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmCars.resx">
+      <DependentUpon>frmCars.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmKaGroup.resx">
       <DependentUpon>frmKaGroup.cs</DependentUpon>
     </EmbeddedResource>
@@ -1986,6 +1998,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.AspNetUsers.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Banks.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.BanksPersons.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.Cars.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.CashDesks.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ChargeType.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Commission.datasource" />

@@ -87,12 +87,13 @@ namespace SP_Sklad.WBDetForm
             {
                 _wbd = _db.WaybillDet.Find(_PosId);
 
-                w_mat_turn = _db.WMatTurn.Where(w => w.SourceId == _wbd.PosId).ToList();
-                if (w_mat_turn.Count > 0)
-                {
-                    _db.WMatTurn.RemoveRange(w_mat_turn);
-                    _db.SaveChanges();
-                }
+           //     w_mat_turn = _db.WMatTurn.Where(w => w.SourceId == _wbd.PosId).ToList();
+          //      if (w_mat_turn.Count > 0)
+          //      {
+                    //    _db.WMatTurn.RemoveRange(w_mat_turn);
+                    //     _db.SaveChanges();
+                    _db.DeleteWhere<WMatTurn>(w => w.SourceId == _wbd.PosId);
+         //       }
             }
 
             _materials_on_wh = GetMaterialsOnWh();

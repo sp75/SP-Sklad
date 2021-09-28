@@ -76,6 +76,7 @@
   <ItemGroup>
     <Compile Include="Comon\BaseReport.cs" />
     <Compile Include="Comon\MoneyToStr.cs" />
+    <Compile Include="Models\Views\CarList.cs" />
     <Compile Include="Models\Views\ChTypeComboBoxItem.cs" />
     <Compile Include="Models\Views\CashDesksList.cs" />
     <Compile Include="Models\Views\Enterprise.cs" />

@@ -350,7 +350,7 @@ namespace SP_Sklad.SkladData
         {
             var result = db.StornoWayBill(wbill_id).FirstOrDefault();
 
-            if (result != null && result.Checked == 1)
+            if (result != null && (result.Checked == 1 || result.Checked == 2))
             {
                 if (result.ErrorMessage != "False")
                 {
