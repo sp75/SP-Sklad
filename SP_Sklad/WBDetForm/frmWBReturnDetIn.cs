@@ -43,7 +43,7 @@ namespace SP_Sklad.WBDetForm
 
             WHComboBox.Properties.DataSource = DBHelper.WhList;
 
-            com_port = new ComPortHelper(Settings.Default.com_port_name, Convert.ToInt32(Settings.Default.com_port_speed));
+            com_port = new ComPortHelper();
         }
 
         private void frmWBReturnDetIn_Load(object sender, EventArgs e)

@@ -168,20 +168,28 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
-            this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
+            this.xtraTabPage16 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
+            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
+            this.WeighingScalesLookUpEdit2 = new DevExpress.XtraEditors.LookUpEdit();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.ComPortSpeed2Edit = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.ComPortName2Edit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.WeighingScalesLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.ComPortSpeedEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.ComPortNameEdit = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
+            this.DeviceNameRMKTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.xtraTabPage9 = new DevExpress.XtraTab.XtraTabPage();
             this.PeriodChangeBtn = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
@@ -194,10 +202,6 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.delTurnDate = new DevExpress.XtraEditors.DateEdit();
-            this.xtraTabPage16 = new DevExpress.XtraTab.XtraTabPage();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
-            this.DeviceNameRMKTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.OperLogPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.SessionPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
@@ -266,16 +270,19 @@
             this.xtraTabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
-            this.xtraTabPage8.SuspendLayout();
+            this.xtraTabPage16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ComPortSpeed2Edit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WeighingScalesLookUpEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ComPortSpeed2Edit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComPortName2Edit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WeighingScalesLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComPortSpeedEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComPortNameEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeviceNameRMKTextEdit.Properties)).BeginInit();
             this.xtraTabPage9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EndPeriodDateEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EndPeriodDateEdit.Properties)).BeginInit();
@@ -284,8 +291,6 @@
             this.xtraTabPage14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.delTurnDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.delTurnDate.Properties)).BeginInit();
-            this.xtraTabPage16.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DeviceNameRMKTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OperLogPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SessionPopupMenu)).BeginInit();
             this.SuspendLayout();
@@ -1786,40 +1791,79 @@
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
-            this.xtraTabControl1.SelectedTabPage = this.xtraTabPage8;
+            this.xtraTabControl1.SelectedTabPage = this.xtraTabPage16;
             this.xtraTabControl1.Size = new System.Drawing.Size(963, 588);
             this.xtraTabControl1.TabIndex = 28;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.xtraTabPage8,
+            this.xtraTabPage16,
             this.xtraTabPage9,
-            this.xtraTabPage14,
-            this.xtraTabPage16});
+            this.xtraTabPage14});
             // 
-            // xtraTabPage8
+            // xtraTabPage16
             // 
-            this.xtraTabPage8.Controls.Add(this.groupControl1);
-            this.xtraTabPage8.Controls.Add(this.groupControl3);
-            this.xtraTabPage8.Name = "xtraTabPage8";
-            this.xtraTabPage8.Size = new System.Drawing.Size(957, 560);
-            this.xtraTabPage8.Text = "COM Port";
+            this.xtraTabPage16.Controls.Add(this.groupControl1);
+            this.xtraTabPage16.Controls.Add(this.groupControl3);
+            this.xtraTabPage16.Controls.Add(this.labelControl13);
+            this.xtraTabPage16.Controls.Add(this.simpleButton2);
+            this.xtraTabPage16.Controls.Add(this.labelControl12);
+            this.xtraTabPage16.Controls.Add(this.DeviceNameRMKTextEdit);
+            this.xtraTabPage16.Name = "xtraTabPage16";
+            this.xtraTabPage16.Size = new System.Drawing.Size(957, 560);
+            this.xtraTabPage16.Text = "Торгове обладнання";
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.labelControl15);
+            this.groupControl1.Controls.Add(this.WeighingScalesLookUpEdit2);
             this.groupControl1.Controls.Add(this.simpleButton4);
             this.groupControl1.Controls.Add(this.ComPortSpeed2Edit);
             this.groupControl1.Controls.Add(this.labelControl10);
             this.groupControl1.Controls.Add(this.ComPortName2Edit);
             this.groupControl1.Controls.Add(this.labelControl11);
-            this.groupControl1.Location = new System.Drawing.Point(13, 154);
+            this.groupControl1.Location = new System.Drawing.Point(446, 101);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(433, 133);
-            this.groupControl1.TabIndex = 33;
+            this.groupControl1.Size = new System.Drawing.Size(414, 189);
+            this.groupControl1.TabIndex = 84;
             this.groupControl1.Tag = "";
             this.groupControl1.Text = "Ваги №2";
             // 
+            // labelControl15
+            // 
+            this.labelControl15.Location = new System.Drawing.Point(15, 97);
+            this.labelControl15.Name = "labelControl15";
+            this.labelControl15.Size = new System.Drawing.Size(45, 16);
+            this.labelControl15.StyleController = this.styleController1;
+            this.labelControl15.TabIndex = 85;
+            this.labelControl15.Text = "Модель";
+            // 
+            // styleController1
+            // 
+            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.styleController1.Appearance.Options.UseFont = true;
+            // 
+            // WeighingScalesLookUpEdit2
+            // 
+            this.WeighingScalesLookUpEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", global::SP_Sklad.Properties.Settings.Default, "weighing_scales_2", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.WeighingScalesLookUpEdit2.EditValue = global::SP_Sklad.Properties.Settings.Default.weighing_scales_2;
+            this.WeighingScalesLookUpEdit2.Location = new System.Drawing.Point(15, 119);
+            this.WeighingScalesLookUpEdit2.Name = "WeighingScalesLookUpEdit2";
+            this.WeighingScalesLookUpEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.WeighingScalesLookUpEdit2.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name1")});
+            this.WeighingScalesLookUpEdit2.Properties.DisplayMember = "Name";
+            this.WeighingScalesLookUpEdit2.Properties.NullText = "";
+            this.WeighingScalesLookUpEdit2.Properties.PopupSizeable = false;
+            this.WeighingScalesLookUpEdit2.Properties.ShowFooter = false;
+            this.WeighingScalesLookUpEdit2.Properties.ShowHeader = false;
+            this.WeighingScalesLookUpEdit2.Properties.ValueMember = "Id";
+            this.WeighingScalesLookUpEdit2.Size = new System.Drawing.Size(386, 22);
+            this.WeighingScalesLookUpEdit2.StyleController = this.styleController1;
+            this.WeighingScalesLookUpEdit2.TabIndex = 84;
+            // 
             // simpleButton4
             // 
-            this.simpleButton4.Location = new System.Drawing.Point(335, 97);
+            this.simpleButton4.Location = new System.Drawing.Point(335, 151);
             this.simpleButton4.Name = "simpleButton4";
             this.simpleButton4.Size = new System.Drawing.Size(66, 22);
             this.simpleButton4.TabIndex = 33;
@@ -1854,11 +1898,6 @@
             this.ComPortSpeed2Edit.StyleController = this.styleController1;
             this.ComPortSpeed2Edit.TabIndex = 31;
             // 
-            // styleController1
-            // 
-            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.styleController1.Appearance.Options.UseFont = true;
-            // 
             // labelControl10
             // 
             this.labelControl10.Location = new System.Drawing.Point(238, 34);
@@ -1889,7 +1928,6 @@
             this.ComPortName2Edit.Size = new System.Drawing.Size(186, 22);
             this.ComPortName2Edit.StyleController = this.styleController1;
             this.ComPortName2Edit.TabIndex = 30;
-            this.ComPortName2Edit.EditValueChanged += new System.EventHandler(this.ComPortNameEdit_EditValueChanged);
             // 
             // labelControl11
             // 
@@ -1902,26 +1940,57 @@
             // 
             // groupControl3
             // 
+            this.groupControl3.Controls.Add(this.labelControl14);
             this.groupControl3.Controls.Add(this.simpleButton3);
+            this.groupControl3.Controls.Add(this.WeighingScalesLookUpEdit);
             this.groupControl3.Controls.Add(this.ComPortSpeedEdit);
             this.groupControl3.Controls.Add(this.labelControl5);
             this.groupControl3.Controls.Add(this.labelControl4);
             this.groupControl3.Controls.Add(this.ComPortNameEdit);
-            this.groupControl3.Location = new System.Drawing.Point(13, 15);
+            this.groupControl3.Location = new System.Drawing.Point(12, 101);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(433, 133);
-            this.groupControl3.TabIndex = 32;
+            this.groupControl3.Size = new System.Drawing.Size(415, 189);
+            this.groupControl3.TabIndex = 83;
             this.groupControl3.Tag = "";
             this.groupControl3.Text = "Ваги №1";
             // 
+            // labelControl14
+            // 
+            this.labelControl14.Location = new System.Drawing.Point(15, 97);
+            this.labelControl14.Name = "labelControl14";
+            this.labelControl14.Size = new System.Drawing.Size(45, 16);
+            this.labelControl14.StyleController = this.styleController1;
+            this.labelControl14.TabIndex = 83;
+            this.labelControl14.Text = "Модель";
+            // 
             // simpleButton3
             // 
-            this.simpleButton3.Location = new System.Drawing.Point(335, 97);
+            this.simpleButton3.Location = new System.Drawing.Point(335, 151);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(66, 22);
             this.simpleButton3.TabIndex = 32;
             this.simpleButton3.Text = "Тест";
             this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
+            // 
+            // WeighingScalesLookUpEdit
+            // 
+            this.WeighingScalesLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", global::SP_Sklad.Properties.Settings.Default, "weighing_scales", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.WeighingScalesLookUpEdit.EditValue = global::SP_Sklad.Properties.Settings.Default.weighing_scales;
+            this.WeighingScalesLookUpEdit.Location = new System.Drawing.Point(15, 119);
+            this.WeighingScalesLookUpEdit.Name = "WeighingScalesLookUpEdit";
+            this.WeighingScalesLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.WeighingScalesLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name1")});
+            this.WeighingScalesLookUpEdit.Properties.DisplayMember = "Name";
+            this.WeighingScalesLookUpEdit.Properties.NullText = "";
+            this.WeighingScalesLookUpEdit.Properties.PopupSizeable = false;
+            this.WeighingScalesLookUpEdit.Properties.ShowFooter = false;
+            this.WeighingScalesLookUpEdit.Properties.ShowHeader = false;
+            this.WeighingScalesLookUpEdit.Properties.ValueMember = "Id";
+            this.WeighingScalesLookUpEdit.Size = new System.Drawing.Size(386, 22);
+            this.WeighingScalesLookUpEdit.StyleController = this.styleController1;
+            this.WeighingScalesLookUpEdit.TabIndex = 82;
             // 
             // ComPortSpeedEdit
             // 
@@ -1950,7 +2019,6 @@
             this.ComPortSpeedEdit.Size = new System.Drawing.Size(163, 22);
             this.ComPortSpeedEdit.StyleController = this.styleController1;
             this.ComPortSpeedEdit.TabIndex = 31;
-            this.ComPortSpeedEdit.EditValueChanged += new System.EventHandler(this.ComPortSpeedEdit_EditValueChanged);
             // 
             // labelControl5
             // 
@@ -1991,6 +2059,43 @@
             this.ComPortNameEdit.Size = new System.Drawing.Size(186, 22);
             this.ComPortNameEdit.StyleController = this.styleController1;
             this.ComPortNameEdit.TabIndex = 30;
+            // 
+            // labelControl13
+            // 
+            this.labelControl13.Location = new System.Drawing.Point(12, 79);
+            this.labelControl13.Name = "labelControl13";
+            this.labelControl13.Size = new System.Drawing.Size(31, 16);
+            this.labelControl13.StyleController = this.styleController1;
+            this.labelControl13.TabIndex = 81;
+            this.labelControl13.Text = "Ваги:";
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Location = new System.Drawing.Point(794, 34);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(66, 22);
+            this.simpleButton2.TabIndex = 80;
+            this.simpleButton2.Text = "Змінити";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
+            // 
+            // labelControl12
+            // 
+            this.labelControl12.Location = new System.Drawing.Point(12, 12);
+            this.labelControl12.Name = "labelControl12";
+            this.labelControl12.Size = new System.Drawing.Size(118, 16);
+            this.labelControl12.StyleController = this.styleController1;
+            this.labelControl12.TabIndex = 79;
+            this.labelControl12.Text = "Сканер штрих кода:";
+            // 
+            // DeviceNameRMKTextEdit
+            // 
+            this.DeviceNameRMKTextEdit.Location = new System.Drawing.Point(12, 34);
+            this.DeviceNameRMKTextEdit.Name = "DeviceNameRMKTextEdit";
+            this.DeviceNameRMKTextEdit.Properties.NullText = "для налаштування відскануйте будь який штрих код";
+            this.DeviceNameRMKTextEdit.Properties.ReadOnly = true;
+            this.DeviceNameRMKTextEdit.Size = new System.Drawing.Size(776, 22);
+            this.DeviceNameRMKTextEdit.StyleController = this.styleController1;
+            this.DeviceNameRMKTextEdit.TabIndex = 78;
             // 
             // xtraTabPage9
             // 
@@ -2118,43 +2223,6 @@
             this.delTurnDate.StyleController = this.styleController1;
             this.delTurnDate.TabIndex = 33;
             // 
-            // xtraTabPage16
-            // 
-            this.xtraTabPage16.Controls.Add(this.simpleButton2);
-            this.xtraTabPage16.Controls.Add(this.labelControl12);
-            this.xtraTabPage16.Controls.Add(this.DeviceNameRMKTextEdit);
-            this.xtraTabPage16.Name = "xtraTabPage16";
-            this.xtraTabPage16.Size = new System.Drawing.Size(957, 560);
-            this.xtraTabPage16.Text = "Торгове обладнання";
-            // 
-            // simpleButton2
-            // 
-            this.simpleButton2.Location = new System.Drawing.Point(628, 34);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(66, 22);
-            this.simpleButton2.TabIndex = 80;
-            this.simpleButton2.Text = "Змінити";
-            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
-            // 
-            // labelControl12
-            // 
-            this.labelControl12.Location = new System.Drawing.Point(12, 12);
-            this.labelControl12.Name = "labelControl12";
-            this.labelControl12.Size = new System.Drawing.Size(118, 16);
-            this.labelControl12.StyleController = this.styleController1;
-            this.labelControl12.TabIndex = 79;
-            this.labelControl12.Text = "Сканер штрих кода:";
-            // 
-            // DeviceNameRMKTextEdit
-            // 
-            this.DeviceNameRMKTextEdit.Location = new System.Drawing.Point(12, 34);
-            this.DeviceNameRMKTextEdit.Name = "DeviceNameRMKTextEdit";
-            this.DeviceNameRMKTextEdit.Properties.NullText = "для налаштування відскануйте будь який штрих код";
-            this.DeviceNameRMKTextEdit.Properties.ReadOnly = true;
-            this.DeviceNameRMKTextEdit.Size = new System.Drawing.Size(610, 22);
-            this.DeviceNameRMKTextEdit.StyleController = this.styleController1;
-            this.DeviceNameRMKTextEdit.TabIndex = 78;
-            // 
             // OperLogPopupMenu
             // 
             this.OperLogPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
@@ -2261,18 +2329,22 @@
             this.xtraTabPage7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
-            this.xtraTabPage8.ResumeLayout(false);
+            this.xtraTabPage16.ResumeLayout(false);
+            this.xtraTabPage16.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ComPortSpeed2Edit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WeighingScalesLookUpEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ComPortSpeed2Edit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComPortName2Edit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             this.groupControl3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WeighingScalesLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComPortSpeedEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComPortNameEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeviceNameRMKTextEdit.Properties)).EndInit();
             this.xtraTabPage9.ResumeLayout(false);
             this.xtraTabPage9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EndPeriodDateEdit.Properties.CalendarTimeProperties)).EndInit();
@@ -2283,9 +2355,6 @@
             this.xtraTabPage14.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.delTurnDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.delTurnDate.Properties)).EndInit();
-            this.xtraTabPage16.ResumeLayout(false);
-            this.xtraTabPage16.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DeviceNameRMKTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OperLogPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SessionPopupMenu)).EndInit();
             this.ResumeLayout(false);
@@ -2407,13 +2476,8 @@
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl20;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage8;
-        private DevExpress.XtraEditors.LabelControl labelControl5;
-        private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage9;
         private DevExpress.XtraEditors.StyleController styleController1;
-        private DevExpress.XtraEditors.ComboBoxEdit ComPortName2Edit;
-        private DevExpress.XtraEditors.ComboBoxEdit ComPortSpeedEdit;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl3;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage11;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage12;
@@ -2454,17 +2518,26 @@
         private DevExpress.XtraEditors.DateEdit delTurnDate;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.Utils.SharedImageCollection UserTreeImgList;
-        private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraEditors.ComboBoxEdit ComPortSpeed2Edit;
-        private DevExpress.XtraEditors.LabelControl labelControl10;
-        private DevExpress.XtraEditors.ComboBoxEdit ComPortNameEdit;
-        private DevExpress.XtraEditors.LabelControl labelControl11;
-        private DevExpress.XtraEditors.GroupControl groupControl3;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage16;
         private DevExpress.XtraEditors.LabelControl labelControl12;
         private DevExpress.XtraEditors.TextEdit DeviceNameRMKTextEdit;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
-        private DevExpress.XtraEditors.SimpleButton simpleButton4;
+        private DevExpress.XtraEditors.LabelControl labelControl13;
+        private DevExpress.XtraEditors.LookUpEdit WeighingScalesLookUpEdit;
+        private DevExpress.XtraEditors.GroupControl groupControl3;
+        private DevExpress.XtraEditors.LabelControl labelControl14;
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private DevExpress.XtraEditors.ComboBoxEdit ComPortSpeedEdit;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.ComboBoxEdit ComPortNameEdit;
+        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraEditors.LabelControl labelControl15;
+        private DevExpress.XtraEditors.LookUpEdit WeighingScalesLookUpEdit2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton4;
+        private DevExpress.XtraEditors.ComboBoxEdit ComPortSpeed2Edit;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
+        private DevExpress.XtraEditors.ComboBoxEdit ComPortName2Edit;
+        private DevExpress.XtraEditors.LabelControl labelControl11;
     }
 }

@@ -22,14 +22,7 @@ namespace SP_Sklad.EditForm
             InitializeComponent();
             AmountEdit.EditValue = 0;
             PriceEdit.EditValue = 0;
-            if (weigher_index == 1)
-            {
-                com_port = new ComPortHelper(Settings.Default.com_port_name, Convert.ToInt32(Settings.Default.com_port_speed));
-            }
-            else if (weigher_index == 2)
-            {
-                com_port = new ComPortHelper(Settings.Default.com_port_name_2, Convert.ToInt32(Settings.Default.com_port_speed_2));
-            }
+            com_port = new ComPortHelper(weigher_index);
             Text = MatName;
         }
 

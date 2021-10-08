@@ -9,7 +9,9 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
+using ScalesCOMServerLib;
 using SP_Sklad.Properties;
+using SP_Sklad.SkladData;
 
 namespace SP_Sklad.Common
 {
@@ -20,21 +22,34 @@ namespace SP_Sklad.Common
         public String received_tmp { get; set; }
         private String test { get; set; }
         public decimal weight { get; set; }
+        public WeighingScales weighing_scales { get; set; }
+
+        private ScalesServerBTA _bta { get; set; }
 
         public ComPortHelper()
-            : this(Settings.Default.com_port_name, Convert.ToInt32(Settings.Default.com_port_speed))
+            : this(1)
         {
         }
 
-        public ComPortHelper(string port_name, int baud_rate)
+        public ComPortHelper(int weigher_index)
         {
             _serialPort = new SerialPort();
             _serialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
 
             // Allow the user to set the appropriate properties.
 
-            _serialPort.PortName = port_name;// Settings.Default.com_port_name;// "COM1";
-            _serialPort.BaudRate = baud_rate;// Convert.ToInt32(Settings.Default.com_port_speed); // 4800;
+            if (weigher_index == 1)
+            {
+                _serialPort.PortName = Settings.Default.com_port_name;
+                _serialPort.BaudRate = Convert.ToInt32(Settings.Default.com_port_speed);
+                weighing_scales = new BaseEntities().WeighingScales.FirstOrDefault(f => f.Id == Settings.Default.weighing_scales);
+            }
+            else if (weigher_index == 2)
+            {
+                _serialPort.PortName = Settings.Default.com_port_name_2;
+                _serialPort.BaudRate = Convert.ToInt32(Settings.Default.com_port_speed_2);
+                weighing_scales = new BaseEntities().WeighingScales.FirstOrDefault(f => f.Id == Settings.Default.weighing_scales_2);
+            }
 
 
             _serialPort.Parity = (Parity)Enum.Parse(typeof(Parity), "None", true); ;
@@ -45,6 +60,8 @@ namespace SP_Sklad.Common
             // Set the read/write timeouts
             _serialPort.ReadTimeout = 500;
             _serialPort.WriteTimeout = 500;
+
+            var _bta = new ScalesServerBTA();
         }
 
         public void Dispose()
@@ -62,6 +79,11 @@ namespace SP_Sklad.Common
                 _serialPort.DiscardInBuffer();
                 _serialPort.Close();
             }
+
+            if (weighing_scales.ExternalLibrary == "ScalesCOMServer.dll")
+            {
+                _bta.CloseComPort(out int close_a);
+            }
         }
 
         public void Open()
@@ -73,7 +95,16 @@ namespace SP_Sklad.Common
                 return;
             }
 
-            _serialPort.Open();
+            if (weighing_scales.ExternalLibrary == "ScalesCOMServer.dll")
+            {
+                _bta.OpenComPort(_serialPort.PortName, out int a);
+                _bta.GetInfo(out int w, out int p, out int c, out int err);
+                weight = w / 1000;
+            }
+            else
+            {
+                _serialPort.Open();
+            }
         }
 
         private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)

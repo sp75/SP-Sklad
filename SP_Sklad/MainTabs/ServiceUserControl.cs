@@ -49,6 +49,9 @@ namespace SP_Sklad.MainTabs
                     wTypeList.Properties.DataSource = new List<object>() { new { FunId = (int?)-1, Name = "Усі" } }
                         .Concat(new BaseEntities().ViewLng.Where(w => w.LangId == 2 && (w.UserTreeView.Functions.TabId == 24 || w.UserTreeView.Functions.TabId == 27 || w.UserTreeView.Functions.TabId == 51)).Select(s => new { s.UserTreeView.FunId, s.Name })).ToList();
                     wTypeList.EditValue = -1;
+
+                    WeighingScalesLookUpEdit.Properties.DataSource = new BaseEntities().WeighingScales.ToList();
+                    WeighingScalesLookUpEdit2.Properties.DataSource = new BaseEntities().WeighingScales.ToList();
                 }
 
                 /*     using (var s = new UserSettingsRepository(UserSession.UserId))
@@ -264,11 +267,6 @@ namespace SP_Sklad.MainTabs
             RefrechItemBtn.PerformClick();
         }
 
-        private void barCheckItem1_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-          
-        }
-
         private void OprLogGridView_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
         {
             if (e.HitInfo.InRow)
@@ -345,11 +343,6 @@ namespace SP_Sklad.MainTabs
                 Point p2 = Control.MousePosition;
                 SessionPopupMenu.ShowPopup(p2);
             }
-        }
-
-        private void LocalaTemplatePatchEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-           
         }
 
         private void PatchEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -449,7 +442,7 @@ namespace SP_Sklad.MainTabs
 
         private void simpleButton3_Click(object sender, EventArgs e)
         {
-            using (var frm = new frmTestComPort(ComPortNameEdit.Text,  Convert.ToInt32( ComPortSpeedEdit.Text)))
+            using (var frm = new frmTestComPort(ComPortNameEdit.Text, Convert.ToInt32(ComPortSpeedEdit.Text)))
             {
                 frm.ShowDialog();
             }

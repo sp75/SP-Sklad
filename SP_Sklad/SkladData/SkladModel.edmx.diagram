@@ -322,6 +322,7 @@
         <AssociationConnector Association="BaseModel.FK__CURRENCYR__CURRI__5EBF139D" />
         <EntityTypeShape EntityType="BaseModel.Cars" Width="1.5" PointX="28.375" PointY="1.5" />
         <AssociationConnector Association="BaseModel.FK_Routes_Cars" />
+        <EntityTypeShape EntityType="BaseModel.WeighingScales" Width="1.5" PointX="28.375" PointY="8.75" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

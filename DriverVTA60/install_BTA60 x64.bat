@@ -1,0 +1,1 @@
+%systemroot%\SysWoW64\regsvr32 c:\WinVSProjects\SP-Sklad\DriverVTA60\ScalesCOMServer.dll

@@ -248,5 +248,29 @@ namespace SP_Sklad.Properties {
                 this["barcode_scanner_name"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int weighing_scales {
+            get {
+                return ((int)(this["weighing_scales"]));
+            }
+            set {
+                this["weighing_scales"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int weighing_scales_2 {
+            get {
+                return ((int)(this["weighing_scales_2"]));
+            }
+            set {
+                this["weighing_scales_2"] = value;
+            }
+        }
     }
 }

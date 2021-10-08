@@ -1501,6 +1501,16 @@
           <Property Name="TurnType" Type="int" Nullable="false" />
           <Property Name="CalcAmount" Type="numeric" Precision="26" Scale="2" StoreGeneratedPattern="Computed" />
         </EntityType>
+        <EntityType Name="WeighingScales">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Prefix" Type="nvarchar" MaxLength="100" />
+          <Property Name="Suffix" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExternalLibrary" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="WMatTurn">
           <Key>
             <PropertyRef Name="Id" />
@@ -6655,6 +6665,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="WaybillMove" EntityType="Self.WaybillMove" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WayBillSvc" EntityType="Self.WayBillSvc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WayBillTmc" EntityType="Self.WayBillTmc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WeighingScales" EntityType="Self.WeighingScales" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WMatTurn" EntityType="Self.WMatTurn" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WriteOffTypes" EntityType="Self.WriteOffTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EnterpriseAccount" EntityType="Self.EnterpriseAccount" store:Type="Views" store:Schema="dbo">
@@ -9482,6 +9493,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Cars" EntitySet="Cars" />
             <End Role="Routes" EntitySet="Routes" />
           </AssociationSet>
+          <EntitySet Name="WeighingScales" EntityType="BaseModel.WeighingScales" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -15840,6 +15852,16 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="WeighingScales">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prefix" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Suffix" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ExternalLibrary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -20021,6 +20043,17 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <EntityTypeMapping TypeName="BaseModel.Cars">
               <MappingFragment StoreEntitySet="Cars">
                 <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WeighingScales">
+            <EntityTypeMapping TypeName="BaseModel.WeighingScales">
+              <MappingFragment StoreEntitySet="WeighingScales">
+                <ScalarProperty Name="ExternalLibrary" ColumnName="ExternalLibrary" />
+                <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+                <ScalarProperty Name="Prefix" ColumnName="Prefix" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
