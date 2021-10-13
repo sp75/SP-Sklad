@@ -50,6 +50,7 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
@@ -99,9 +100,8 @@
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -128,7 +128,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.BotPriceEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -298,6 +297,19 @@
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
             this.standaloneBarDockControl1.Size = new System.Drawing.Size(592, 0);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
+            // 
+            // imageCollection1
+            // 
+            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
+            this.imageCollection1.TransparentColor = System.Drawing.Color.White;
+            this.imageCollection1.Images.SetKeyName(0, "_нформац_я про товар.bmp");
+            this.imageCollection1.Images.SetKeyName(1, "Рух товар_в.bmp");
+            this.imageCollection1.Images.SetKeyName(2, "_нформац_я про резерв товару.bmp");
+            this.imageCollection1.Images.SetKeyName(3, "Аналоги.bmp");
+            this.imageCollection1.Images.SetKeyName(4, "Заказ поставщикам.bmp");
+            this.imageCollection1.Images.SetKeyName(5, "view_settings.bmp");
+            this.imageCollection1.Images.SetKeyName(6, "Наявн_сть на сладах.bmp");
+            this.imageCollection1.Images.SetKeyName(7, "Парт_ї.bmp");
             // 
             // barButtonItem3
             // 
@@ -842,24 +854,6 @@
             this.simpleButton1.TabIndex = 1;
             this.simpleButton1.Text = "Відмінити";
             // 
-            // timer1
-            // 
-            this.timer1.Interval = 500;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // imageCollection1
-            // 
-            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
-            this.imageCollection1.TransparentColor = System.Drawing.Color.White;
-            this.imageCollection1.Images.SetKeyName(0, "_нформац_я про товар.bmp");
-            this.imageCollection1.Images.SetKeyName(1, "Рух товар_в.bmp");
-            this.imageCollection1.Images.SetKeyName(2, "_нформац_я про резерв товару.bmp");
-            this.imageCollection1.Images.SetKeyName(3, "Аналоги.bmp");
-            this.imageCollection1.Images.SetKeyName(4, "Заказ поставщикам.bmp");
-            this.imageCollection1.Images.SetKeyName(5, "view_settings.bmp");
-            this.imageCollection1.Images.SetKeyName(6, "Наявн_сть на сладах.bmp");
-            this.imageCollection1.Images.SetKeyName(7, "Парт_ї.bmp");
-            // 
             // frmWBReturnDetIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -883,6 +877,7 @@
             this.Load += new System.EventHandler(this.frmWBReturnDetIn_Load);
             this.Shown += new System.EventHandler(this.frmWBReturnDetIn_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
@@ -912,7 +907,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.BotPriceEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -983,7 +977,6 @@
         private System.Windows.Forms.BindingSource WaybillDetBS;
         private System.Windows.Forms.BindingSource GetPosOutBS;
         public DevExpress.XtraEditors.LookUpEdit MatComboBox;
-        private System.Windows.Forms.Timer timer1;
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private DevExpress.XtraEditors.TextEdit PosOutAmountEdit;
         private DevExpress.Utils.ImageCollection imageCollection1;

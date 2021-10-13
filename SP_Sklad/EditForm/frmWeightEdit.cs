@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using SP_Sklad.Common;
 using SP_Sklad.Properties;
+using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace SP_Sklad.EditForm
 {
@@ -54,12 +56,14 @@ namespace SP_Sklad.EditForm
 
         void GetWeight()
         {
-            timer1.Start();
+           
             try
             {
                 com_port.Open();
             }
             catch { }
+
+            timer1.Start();
         }
 
         private void frmMatListEdit_FormClosed(object sender, FormClosedEventArgs e)
@@ -87,6 +91,11 @@ namespace SP_Sklad.EditForm
             {
                 OkButton.PerformClick();
             }
+        }
+
+        private void OkButton_Click(object sender, EventArgs e)
+        {
+            com_port.Test();
         }
     }
 }

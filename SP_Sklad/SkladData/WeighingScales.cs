@@ -19,5 +19,7 @@ namespace SP_Sklad.SkladData
         public string Prefix { get; set; }
         public string Suffix { get; set; }
         public string ExternalLibrary { get; set; }
+        public string Note { get; set; }
+        public int AccuracyScales { get; set; }
     }
 }

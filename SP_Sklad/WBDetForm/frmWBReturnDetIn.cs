@@ -14,6 +14,7 @@ using EntityState = System.Data.Entity.EntityState;
 using SP_Sklad.Common.WayBills;
 using SkladEngine.ModelViews;
 using SP_Sklad.Properties;
+using SP_Sklad.EditForm;
 
 namespace SP_Sklad.WBDetForm
 {
@@ -27,7 +28,6 @@ namespace SP_Sklad.WBDetForm
         private ReturnRel _temp_return_rel { get; set; }
         private List<GetShippedPosIn_Result> ordered_in_list { get; set; }
         public int? outPosId { get; set; }
-        private ComPortHelper com_port { get; set; }
         private int? _def_wid { get; set; }
         private DateTime _start_date { get; set; }
 
@@ -42,8 +42,6 @@ namespace SP_Sklad.WBDetForm
             _start_date = start_date;
 
             WHComboBox.Properties.DataSource = DBHelper.WhList;
-
-            com_port = new ComPortHelper();
         }
 
         private void frmWBReturnDetIn_Load(object sender, EventArgs e)
@@ -223,9 +221,6 @@ namespace SP_Sklad.WBDetForm
 
         private void frmWBReturnDetIn_FormClosed(object sender, FormClosedEventArgs e)
         {
-            timer1.Enabled = false;
-            com_port.Close();
-            com_port.Dispose();
 
             if (_db.Entry<WaybillDet>(_wbd).State == EntityState.Modified)
             {
@@ -244,17 +239,7 @@ namespace SP_Sklad.WBDetForm
             GetOk();
             this.Text = this.Text + " " + MatComboBox.Text;
             AmountEdit.Focus();
-            /*
-                try
-                {
-                    ComPort->Open();
-                    ComPort->ClearBuffer(true, true);
-                    Timer1->Enabled = true;
-                }
-                catch(...)  {}
 
-                if(showOutList) cxButton3->Click();
-            */
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
@@ -299,32 +284,15 @@ namespace SP_Sklad.WBDetForm
             IHelper.ShowTurnMaterial(_wbd.MatId);
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            if (com_port.weight > 0)
-            {
-                timer1.Stop();
-                AmountEdit.EditValue = com_port.weight;
-                com_port.Close();
-            }
-            /* if (com_port.received != null && com_port.received.IndexOf('<') != -1 && com_port.received.IndexOf('>') != -1)
-            {
-                timer1.Enabled = false;
-                com_port.Close();
-                var val = Convert.ToDecimal(Regex.Replace(com_port.received, "[^0-9 ]", ""));
-
-                AmountEdit.EditValue = (val / 100);
-            }*/
-        }
-
         private void simpleButton3_Click(object sender, EventArgs e)
         {
-            timer1.Enabled = true;
-            try
+            var frm = new frmWeightEdit(MatComboBox.Text, 1);
+
+            if (frm.ShowDialog() == DialogResult.OK)
             {
-                com_port.Open();
+                AmountEdit.EditValue = frm.AmountEdit.Value;
             }
-            catch { }
+
         }
 
         private void AmountEdit_KeyPress(object sender, KeyPressEventArgs e)

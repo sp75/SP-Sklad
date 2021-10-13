@@ -1510,6 +1510,8 @@
           <Property Name="Prefix" Type="nvarchar" MaxLength="100" />
           <Property Name="Suffix" Type="nvarchar" MaxLength="100" />
           <Property Name="ExternalLibrary" Type="nvarchar" MaxLength="50" />
+          <Property Name="Note" Type="nvarchar" MaxLength="100" />
+          <Property Name="AccuracyScales" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="WMatTurn">
           <Key>
@@ -15861,6 +15863,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Prefix" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Suffix" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ExternalLibrary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AccuracyScales" Type="Int32" Nullable="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -20051,6 +20055,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="WeighingScales">
             <EntityTypeMapping TypeName="BaseModel.WeighingScales">
               <MappingFragment StoreEntitySet="WeighingScales">
+                <ScalarProperty Name="AccuracyScales" ColumnName="AccuracyScales" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
                 <ScalarProperty Name="ExternalLibrary" ColumnName="ExternalLibrary" />
                 <ScalarProperty Name="Suffix" ColumnName="Suffix" />
                 <ScalarProperty Name="Prefix" ColumnName="Prefix" />
