@@ -1435,6 +1435,7 @@
           <Property Name="WebUserId" Type="nvarchar" MaxLength="128" />
           <Property Name="PTypeId" Type="int" />
           <Property Name="CarId" Type="uniqueidentifier" />
+          <Property Name="RouteId" Type="int" />
         </EntityType>
         <EntityType Name="WayBillMake">
           <Key>
@@ -1609,6 +1610,7 @@ warning 6002: The table/view 'sp_base.dbo.KagentList' does not have a primary ke
           <Property Name="UserName" Type="nvarchar" MaxLength="128" />
           <Property Name="AspNetUserId" Type="nvarchar" MaxLength="128" />
           <Property Name="WebUserName" Type="nvarchar" MaxLength="256" />
+          <Property Name="RouteId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.MaterialsList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -5484,6 +5486,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="KagentGroupName" Type="nvarchar" MaxLength="50" />
                 <Property Name="DocType" Type="nvarchar" MaxLength="64" />
                 <Property Name="PTypeName" Type="nvarchar" MaxLength="50" />
+                <Property Name="RouteName" Type="nvarchar" MaxLength="50" />
+                <Property Name="CarName" Type="nvarchar" MaxLength="50" />
                 <Property Name="Balans" Type="numeric" Precision="17" Scale="2" />
               </RowType>
             </CollectionType>
@@ -6725,7 +6729,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [KagentList].[Login] AS [Login], 
     [KagentList].[UserName] AS [UserName], 
     [KagentList].[AspNetUserId] AS [AspNetUserId], 
-    [KagentList].[WebUserName] AS [WebUserName]
+    [KagentList].[WebUserName] AS [WebUserName], 
+    [KagentList].[RouteId] AS [RouteId]
     FROM [dbo].[KagentList] AS [KagentList]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="MaterialsList" EntityType="Self.MaterialsList" store:Type="Views" store:Schema="dbo">
@@ -9460,16 +9465,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="get_child_node" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="v_IntermediateWeighing" EntityType="BaseModel.v_IntermediateWeighing" />
-          <FunctionImport Name="GetWayBillList" IsComposable="true" ReturnType="Collection(BaseModel.GetWayBillList_Result)">
-            <Parameter Name="from_date" Mode="In" Type="DateTime" />
-            <Parameter Name="to_date" Mode="In" Type="DateTime" />
-            <Parameter Name="w_type" Mode="In" Type="String" />
-            <Parameter Name="checked" Mode="In" Type="Int32" />
-            <Parameter Name="ka_id" Mode="In" Type="Int32" />
-            <Parameter Name="show_null_balance" Mode="In" Type="Int32" />
-            <Parameter Name="wh" Mode="In" Type="String" />
-            <Parameter Name="person_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="GetPayDocList" ReturnType="Collection(BaseModel.GetPayDocList_Result)">
             <Parameter Name="doc_type" Mode="In" Type="String" />
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
@@ -9496,6 +9491,16 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Routes" EntitySet="Routes" />
           </AssociationSet>
           <EntitySet Name="WeighingScales" EntityType="BaseModel.WeighingScales" />
+          <FunctionImport Name="GetWayBillList" IsComposable="true" ReturnType="Collection(BaseModel.GetWayBillList_Result)">
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="w_type" Mode="In" Type="String" />
+            <Parameter Name="checked" Mode="In" Type="Int32" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="show_null_balance" Mode="In" Type="Int32" />
+            <Parameter Name="wh" Mode="In" Type="String" />
+            <Parameter Name="person_id" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -12046,6 +12051,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="AdditionalCostsDet" Relationship="BaseModel.FK_AdditionalCostsDet_WaybillList" FromRole="WaybillList" ToRole="AdditionalCostsDet" />
           <Property Name="PTypeId" Type="Int32" />
           <Property Name="CarId" Type="Guid" />
+          <Property Name="RouteId" Type="Int32" />
           </EntityType>
         <Association Name="FK_COMMISSION_WBILLID">
           <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
@@ -15458,6 +15464,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="UserName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="AspNetUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="WebUserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="RouteId" Type="Int32" />
         </EntityType>
         <EntityType Name="AdditionalCosts">
           <Key>
@@ -15695,50 +15702,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="PersonName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="WbChecked" Type="Int32" Nullable="false" />
         </EntityType>
-        <ComplexType Name="GetWayBillList_Result">
-          <Property Type="Guid" Name="Id" Nullable="false" />
-          <Property Type="Int32" Name="WbillId" Nullable="false" />
-          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" />
-          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
-          <Property Type="Int32" Name="CurrId" Nullable="true" />
-          <Property Type="String" Name="Reason" Nullable="true" MaxLength="255" />
-          <Property Type="Int32" Name="Checked" Nullable="false" />
-          <Property Type="Decimal" Name="SummAll" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="Int32" Name="WType" Nullable="false" />
-          <Property Type="Decimal" Name="nds" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="PersonId" Nullable="true" />
-          <Property Type="Decimal" Name="SummPay" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="String" Name="Notes" Nullable="true" MaxLength="255" />
-          <Property Type="Int32" Name="DocId" Nullable="true" />
-          <Property Type="Decimal" Name="SummInCurr" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
-          <Property Type="Decimal" Name="CurrRate" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="String" Name="KaName" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="KaId" Nullable="true" />
-          <Property Type="String" Name="KaFullName" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="KaPhone" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Address" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="City" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="District" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="Country" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="PostIndex" Nullable="true" MaxLength="15" />
-          <Property Type="String" Name="Fax" Nullable="true" MaxLength="32" />
-          <Property Type="String" Name="Email" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="www" Nullable="true" MaxLength="64" />
-          <Property Type="Int32" Name="KType" Nullable="true" />
-          <Property Type="String" Name="AttNum" Nullable="true" MaxLength="15" />
-          <Property Type="DateTime" Name="AttDate" Nullable="true" Precision="23" />
-          <Property Type="String" Name="Received" Nullable="true" MaxLength="64" />
-          <Property Type="DateTime" Name="ToDate" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="DefNum" Nullable="false" />
-          <Property Type="Int32" Name="EntId" Nullable="true" />
-          <Property Type="String" Name="EntName" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="KagentGroupName" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="DocType" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="PTypeName" Nullable="true" MaxLength="50" />
-          <Property Type="Decimal" Name="Balans" Nullable="true" Precision="17" Scale="2" />
-        </ComplexType>
         <ComplexType Name="GetPayDocList_Result">
           <Property Type="Int64" Name="Num" Nullable="true" />
           <Property Type="Int32" Name="PayDocId" Nullable="false" />
@@ -15866,6 +15829,52 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Note" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="AccuracyScales" Type="Int32" Nullable="false" />
         </EntityType>
+        <ComplexType Name="GetWayBillList_Result">
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="WbillId" Nullable="false" />
+          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="String" Name="Reason" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Checked" Nullable="false" />
+          <Property Type="Decimal" Name="SummAll" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Int32" Name="WType" Nullable="false" />
+          <Property Type="Decimal" Name="nds" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="PersonId" Nullable="true" />
+          <Property Type="Decimal" Name="SummPay" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="DocId" Nullable="true" />
+          <Property Type="Decimal" Name="SummInCurr" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
+          <Property Type="Decimal" Name="CurrRate" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="String" Name="KaName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="KaId" Nullable="true" />
+          <Property Type="String" Name="KaFullName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="KaPhone" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="District" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="PostIndex" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Fax" Nullable="true" MaxLength="32" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="www" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="KType" Nullable="true" />
+          <Property Type="String" Name="AttNum" Nullable="true" MaxLength="15" />
+          <Property Type="DateTime" Name="AttDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Received" Nullable="true" MaxLength="64" />
+          <Property Type="DateTime" Name="ToDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="DefNum" Nullable="false" />
+          <Property Type="Int32" Name="EntId" Nullable="true" />
+          <Property Type="String" Name="EntName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="KagentGroupName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DocType" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="PTypeName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RouteName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CarName" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Balans" Nullable="true" Precision="17" Scale="2" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -17627,6 +17636,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="WaybillList">
             <EntityTypeMapping TypeName="BaseModel.WaybillList">
               <MappingFragment StoreEntitySet="WaybillList">
+                <ScalarProperty Name="RouteId" ColumnName="RouteId" />
                 <ScalarProperty Name="CarId" ColumnName="CarId" />
                 <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
                 <ScalarProperty Name="WebUserId" ColumnName="WebUserId" />
@@ -19657,6 +19667,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="KagentList">
             <EntityTypeMapping TypeName="BaseModel.KagentList">
               <MappingFragment StoreEntitySet="KagentList">
+                <ScalarProperty Name="RouteId" ColumnName="RouteId" />
                 <ScalarProperty Name="WebUserName" ColumnName="WebUserName" />
                 <ScalarProperty Name="AspNetUserId" ColumnName="AspNetUserId" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -19905,54 +19916,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetWayBillList" FunctionName="BaseModel.Store.GetWayBillList">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetWayBillList_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
-                <ScalarProperty Name="Reason" ColumnName="Reason" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
-                <ScalarProperty Name="WType" ColumnName="WType" />
-                <ScalarProperty Name="nds" ColumnName="nds" />
-                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
-                <ScalarProperty Name="SummPay" ColumnName="SummPay" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="DocId" ColumnName="DocId" />
-                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
-                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
-                <ScalarProperty Name="CurrRate" ColumnName="CurrRate" />
-                <ScalarProperty Name="KaName" ColumnName="KaName" />
-                <ScalarProperty Name="KaId" ColumnName="KaId" />
-                <ScalarProperty Name="KaFullName" ColumnName="KaFullName" />
-                <ScalarProperty Name="KaPhone" ColumnName="KaPhone" />
-                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="District" ColumnName="District" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="PostIndex" ColumnName="PostIndex" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="www" ColumnName="www" />
-                <ScalarProperty Name="KType" ColumnName="KType" />
-                <ScalarProperty Name="AttNum" ColumnName="AttNum" />
-                <ScalarProperty Name="AttDate" ColumnName="AttDate" />
-                <ScalarProperty Name="Received" ColumnName="Received" />
-                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
-                <ScalarProperty Name="DefNum" ColumnName="DefNum" />
-                <ScalarProperty Name="EntId" ColumnName="EntId" />
-                <ScalarProperty Name="EntName" ColumnName="EntName" />
-                <ScalarProperty Name="KagentGroupName" ColumnName="KagentGroupName" />
-                <ScalarProperty Name="DocType" ColumnName="DocType" />
-                <ScalarProperty Name="PTypeName" ColumnName="PTypeName" />
-                <ScalarProperty Name="Balans" ColumnName="Balans" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetPayDocList" FunctionName="BaseModel.Store.GetPayDocList">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.GetPayDocList_Result">
@@ -20065,6 +20028,56 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetWayBillList" FunctionName="BaseModel.Store.GetWayBillList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetWayBillList_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="nds" ColumnName="nds" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="SummPay" ColumnName="SummPay" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="CurrRate" ColumnName="CurrRate" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="KaFullName" ColumnName="KaFullName" />
+                <ScalarProperty Name="KaPhone" ColumnName="KaPhone" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="PostIndex" ColumnName="PostIndex" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="www" ColumnName="www" />
+                <ScalarProperty Name="KType" ColumnName="KType" />
+                <ScalarProperty Name="AttNum" ColumnName="AttNum" />
+                <ScalarProperty Name="AttDate" ColumnName="AttDate" />
+                <ScalarProperty Name="Received" ColumnName="Received" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="DefNum" ColumnName="DefNum" />
+                <ScalarProperty Name="EntId" ColumnName="EntId" />
+                <ScalarProperty Name="EntName" ColumnName="EntName" />
+                <ScalarProperty Name="KagentGroupName" ColumnName="KagentGroupName" />
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+                <ScalarProperty Name="PTypeName" ColumnName="PTypeName" />
+                <ScalarProperty Name="RouteName" ColumnName="RouteName" />
+                <ScalarProperty Name="CarName" ColumnName="CarName" />
+                <ScalarProperty Name="Balans" ColumnName="Balans" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

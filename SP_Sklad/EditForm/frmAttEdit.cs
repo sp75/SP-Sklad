@@ -23,10 +23,11 @@ namespace SP_Sklad.EditForm
 
             WaybillListBS.DataSource = wb;
         }
+       
 
         private void frmAttEdit_Load(object sender, EventArgs e)
         {
-            CarsLookUpEdit.Properties.DataSource = DB.SkladBase().Cars.ToList();
+            CarsLookUpEdit.Properties.DataSource = GetCars();
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -46,21 +47,45 @@ namespace SP_Sklad.EditForm
                 {
                     CarsLookUpEdit.EditValue = frm.focused_row != null ? (Guid?)frm.focused_row.Id : null;
 
-                    CarsLookUpEdit.Properties.DataSource = DB.SkladBase().Cars.AsNoTracking().ToList();
+                    CarsLookUpEdit.Properties.DataSource = GetCars();
                 }
             }
         }
 
         private void CarsLookUpEdit_EditValueChanged(object sender, EventArgs e)
         {
-            if (CarsLookUpEdit.EditValue == null || CarsLookUpEdit.EditValue == DBNull.Value)
+            if (CarsLookUpEdit.EditValue == null || CarsLookUpEdit.EditValue == DBNull.Value || CarsLookUpEdit.GetSelectedDataRow() == null)
             {
                 return;
             }
 
-            var car_id = (Guid)(CarsLookUpEdit.EditValue);
+            var sr = CarsLookUpEdit.GetSelectedDataRow() as CarsList;
 
-            _wb.Received = DB.SkladBase().Routes.Where(w => w.CarId == car_id).Select(s => s.Kagent1.Name).FirstOrDefault();
+            _wb.Received = sr.DriverName;
+            _wb.RouteId = sr.RouteId;
+        }
+
+        private List<CarsList> GetCars()
+        {
+            return DB.SkladBase().Cars.Where(w => w.Routes.Any()).Select(s => new CarsList
+            {
+                Id = s.Id,
+                Name = s.Name,
+                RouteName = s.Routes.FirstOrDefault().Name,
+                RouteId = s.Routes.FirstOrDefault().Id,
+                DriverName = s.Routes.FirstOrDefault().Kagent1.Name,
+                Number = s.Number
+            }).ToList();
+        }
+
+        public class CarsList
+        {
+            public Guid Id { get; set; }
+            public string Name { get; set; }
+            public string RouteName { get; set; }
+            public int? RouteId { get; set; }
+            public string DriverName { get; set; }
+            public string Number { get; set; }
         }
     }
 }

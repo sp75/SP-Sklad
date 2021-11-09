@@ -58,6 +58,7 @@ namespace SP_Sklad.SkladData
         public string WebUserId { get; set; }
         public Nullable<int> PTypeId { get; set; }
         public Nullable<System.Guid> CarId { get; set; }
+        public Nullable<int> RouteId { get; set; }
     
         public virtual ICollection<Commission> Commission { get; set; }
         public virtual Currency Currency { get; set; }

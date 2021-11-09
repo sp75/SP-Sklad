@@ -977,6 +977,16 @@ FROM            (
                                                     dbo.Kagent AS ka ON ka.KaId = wbl.KaId LEFT OUTER JOIN
                                                     dbo.Currency AS c ON c.CurrId = wbl.CurrId
                           WHERE        (wbl.Checked = 1)
+
+						  UNION
+						  SELECT        wbl.Id, wbl.WType, wbl.Num, wbl.OnDate, COALESCE (debtka.KaId, creditka.KaId) AS KaId, COALESCE (debtka.Name, creditka.Name) AS Name, wbl.Checked, NULL , wbl.SummAll, 
+                                                   wbl.SummInCurr, c.ShortName, wbl.OnValue, wbl.CurrId, NULL , 0 
+                          FROM            dbo.KAgentAdjustment AS wbl LEFT OUTER JOIN
+                                                   dbo.Kagent AS debtka ON debtka.KaId = wbl.DebtKaId LEFT OUTER JOIN
+                                                   dbo.Kagent AS creditka ON creditka.KaId = wbl.CreditKaId LEFT OUTER JOIN
+                                                   dbo.Currency AS c ON c.CurrId = wbl.CurrId
+                          WHERE        (wbl.Checked = 1)
+
                           UNION
                           SELECT        pd.Id, pd.ExDocType, pd.DocNum, pd.ReportingDate, ka.KaId, ka.Name, pd.Checked, NULL AS Expr1, pd.Total, pd.Total * pd.OnValue AS Expr2, c.ShortName, pd.OnValue, pd.CurrId, NULL AS Expr3, 
                                                    pd.Total * pd.OnValue AS Expr4
@@ -1498,8 +1508,59 @@ select x.*, ROW_NUMBER() over ( order by x.Name) as N from
             data_for_report.Add("Kagent", kagents.ToList());
         }
 
+        public class rep_46
+        {
+            public string Num { get; set; }
+            public Guid CarId { get; set; }
+            public string CarName { get; set; }
+            public string CarNumber { get; set; }
+            public int KaName { get; set; }
+            public int KaId { get; set; }
+            public decimal? TotalKg { get; set; }
+            public decimal? TotalTmc { get; set; }
+
+        }
+
         private void REP_46()
         {
+            var id = Car != null ? Car.Id : Guid.Empty;
+
+            var sql_1 = @"
+   	            select wbl.Num , c.Id CarId , c.Name CarName, c.Number CarNumber , wbl.KaId , k.[Name] KaName,
+                    (select sum([Amount]) from  [dbo].[WaybillDet], [dbo].[Materials] where [Materials].MatId = [WaybillDet].MatId and [WbillId] = wbl.WbillId and [Materials].MId = 2 ) TotalKg,
+                    (select sum([Amount]) from  [dbo].WayBillTmc where [WbillId] = wbl.WbillId ) TotalTmc
+                from [dbo].[WaybillList] wbl
+                inner join [dbo].[Cars] c on c.Id = wbl.CarId
+                inner join [dbo].[Kagent] k on k.KaId = wbl.KaId
+                where wbl.ondate between {0} and {1} and {2} in (c.Id , '00000000-0000-0000-0000-000000000000' ) 
+                order by k.[Name] ";
+
+            var waybill_list = _db.Database.SqlQuery<rep_46>(sql_1, StartDate, EndDate, id).ToList();
+
+            data_for_report.Add("MatInDet", waybill_list);
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("CarGroup", waybill_list.GroupBy(g => new
+            {
+                g.CarId,
+                g.CarName,
+                g.CarNumber
+            }).Select(s => new
+            {
+                s.Key.CarId,
+                Name = s.Key.CarName,
+                ShortName = s.Key.CarNumber
+            }).ToList());
+
+            realation.Add(new
+            {
+                pk = "CarId",
+                fk = "CarId",
+                master_table = "CarGroup",
+                child_table = "WaybillList"
+            });
+
+             data_for_report.Add("_realation_", realation);
+
         }
 
         public class rep_45

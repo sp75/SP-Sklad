@@ -93,9 +93,5 @@ namespace SP_Sklad.EditForm
             }
         }
 
-        private void OkButton_Click(object sender, EventArgs e)
-        {
-            com_port.Test();
-        }
     }
 }

@@ -70,6 +70,9 @@
             this.gridColumn44 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn45 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn104 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn108 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn109 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn110 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.wbStatusList = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
@@ -108,13 +111,17 @@
             this.row4 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row5 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row6 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.category1 = new DevExpress.XtraVerticalGrid.Rows.CategoryRow();
+            this.row20 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.row21 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.row22 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row7 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.row8 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.row9 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.row10 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.row11 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.row12 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row18 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.row12 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.row11 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.row10 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.row9 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.row8 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl3 = new DevExpress.XtraGrid.GridControl();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -844,7 +851,10 @@
             this.gridColumn42,
             this.gridColumn44,
             this.gridColumn45,
-            this.gridColumn104});
+            this.gridColumn104,
+            this.gridColumn108,
+            this.gridColumn109,
+            this.gridColumn110});
             this.WbGridView.GridControl = this.WBGridControl;
             this.WbGridView.Name = "WbGridView";
             this.WbGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -1065,6 +1075,24 @@
             this.gridColumn104.Name = "gridColumn104";
             this.gridColumn104.Visible = true;
             this.gridColumn104.VisibleIndex = 12;
+            // 
+            // gridColumn108
+            // 
+            this.gridColumn108.Caption = "Маршрут";
+            this.gridColumn108.FieldName = "RouteName";
+            this.gridColumn108.Name = "gridColumn108";
+            // 
+            // gridColumn109
+            // 
+            this.gridColumn109.Caption = "Машина";
+            this.gridColumn109.FieldName = "CarName";
+            this.gridColumn109.Name = "gridColumn109";
+            // 
+            // gridColumn110
+            // 
+            this.gridColumn110.Caption = "Водій";
+            this.gridColumn110.FieldName = "Received";
+            this.gridColumn110.Name = "gridColumn110";
             // 
             // panelControl2
             // 
@@ -1410,6 +1438,7 @@
             // vGridControl1
             // 
             this.vGridControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControl1.DataSource = this.WayBillListInfoBS;
             this.vGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl1.Location = new System.Drawing.Point(0, 0);
@@ -1421,13 +1450,14 @@
             this.vGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.row,
             this.category,
+            this.category1,
             this.row7,
-            this.row8,
-            this.row9,
-            this.row10,
-            this.row11,
+            this.row18,
             this.row12,
-            this.row18});
+            this.row11,
+            this.row10,
+            this.row9,
+            this.row8});
             this.vGridControl1.Size = new System.Drawing.Size(1031, 225);
             this.vGridControl1.TabIndex = 0;
             // 
@@ -1506,6 +1536,33 @@
             this.row6.Properties.Caption = "Сторінка в Интернеті";
             this.row6.Properties.FieldName = "www";
             // 
+            // category1
+            // 
+            this.category1.ChildRows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
+            this.row20,
+            this.row21,
+            this.row22});
+            this.category1.Name = "category1";
+            this.category1.Properties.Caption = "Доставка";
+            // 
+            // row20
+            // 
+            this.row20.Name = "row20";
+            this.row20.Properties.Caption = "Маршрут";
+            this.row20.Properties.FieldName = "RouteName";
+            // 
+            // row21
+            // 
+            this.row21.Name = "row21";
+            this.row21.Properties.Caption = "Машина";
+            this.row21.Properties.FieldName = "CarName";
+            // 
+            // row22
+            // 
+            this.row22.Name = "row22";
+            this.row22.Properties.Caption = "Водіій";
+            this.row22.Properties.FieldName = "Received";
+            // 
             // row7
             // 
             this.row7.Height = 16;
@@ -1513,29 +1570,11 @@
             this.row7.Properties.Caption = "Підприємство";
             this.row7.Properties.FieldName = "EntName";
             // 
-            // row8
+            // row18
             // 
-            this.row8.Name = "row8";
-            this.row8.Properties.Caption = "Сума";
-            this.row8.Properties.FieldName = "SummAll";
-            // 
-            // row9
-            // 
-            this.row9.Name = "row9";
-            this.row9.Properties.Caption = "Підстава";
-            this.row9.Properties.FieldName = "Reason";
-            // 
-            // row10
-            // 
-            this.row10.Name = "row10";
-            this.row10.Properties.Caption = "Виконавець";
-            this.row10.Properties.FieldName = "PersonName";
-            // 
-            // row11
-            // 
-            this.row11.Name = "row11";
-            this.row11.Properties.Caption = "Примітка";
-            this.row11.Properties.FieldName = "Notes";
+            this.row18.Name = "row18";
+            this.row18.Properties.Caption = "Номер в системі";
+            this.row18.Properties.FieldName = "WbillId";
             // 
             // row12
             // 
@@ -1544,11 +1583,29 @@
             this.row12.Properties.FieldName = "Checked";
             this.row12.Properties.RowEdit = this.repositoryItemImageComboBox12;
             // 
-            // row18
+            // row11
             // 
-            this.row18.Name = "row18";
-            this.row18.Properties.Caption = "Номер в системі";
-            this.row18.Properties.FieldName = "WbillId";
+            this.row11.Name = "row11";
+            this.row11.Properties.Caption = "Примітка";
+            this.row11.Properties.FieldName = "Notes";
+            // 
+            // row10
+            // 
+            this.row10.Name = "row10";
+            this.row10.Properties.Caption = "Виконавець";
+            this.row10.Properties.FieldName = "PersonName";
+            // 
+            // row9
+            // 
+            this.row9.Name = "row9";
+            this.row9.Properties.Caption = "Підстава";
+            this.row9.Properties.FieldName = "Reason";
+            // 
+            // row8
+            // 
+            this.row8.Name = "row8";
+            this.row8.Properties.Caption = "Сума";
+            this.row8.Properties.FieldName = "SummAll";
             // 
             // xtraTabPage2
             // 
@@ -5850,5 +5907,12 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn105;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn106;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn107;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn108;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn109;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn110;
+        private DevExpress.XtraVerticalGrid.Rows.CategoryRow category1;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow row20;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow row21;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow row22;
     }
 }

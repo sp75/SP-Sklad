@@ -113,7 +113,7 @@ namespace SP_Sklad.Common
 
             received += read_existing;
 
-            weight = GetWeight(received);
+       //     weight = GetWeight(received);
 
             /*   try
                  {
@@ -124,7 +124,7 @@ namespace SP_Sklad.Common
                  {
                      ;
                  }*/
-/*
+
             if (received != null && received.Length >= 10 && received.IndexOf('<') != -1 && received.IndexOf('>') != -1)
             {
                 var rez = Regex.Replace(received, "[^0-9 ]", "");
@@ -187,7 +187,7 @@ namespace SP_Sklad.Common
                         return;
                     }
                 }
-            }*/
+            }
 
         }
 
@@ -216,13 +216,6 @@ namespace SP_Sklad.Common
             }
 
             return 0;
-        }
-
-        public void Test()
-        {
-            received = "R01W  12.56 R01W";
-
-            weight = GetWeight( received);
         }
 
     }

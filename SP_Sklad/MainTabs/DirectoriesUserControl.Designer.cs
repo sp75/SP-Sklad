@@ -169,6 +169,7 @@
             this.gridColumn78 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn79 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn72 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.BarCodeEdit = new DevExpress.XtraEditors.TextEdit();
@@ -1453,7 +1454,6 @@
             // 
             // vGridControl1
             // 
-            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControl1.DataSource = this.KAgentInfoBS;
             this.vGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl1.Location = new System.Drawing.Point(0, 0);
@@ -1853,7 +1853,8 @@
             this.ArchivedGridColumn,
             this.gridColumn78,
             this.gridColumn23,
-            this.gridColumn79});
+            this.gridColumn79,
+            this.gridColumn72});
             this.MatGridView.GridControl = this.MatGridControl;
             this.MatGridView.Name = "MatGridView";
             this.MatGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -1951,6 +1952,14 @@
             this.gridColumn79.Caption = "Змінено";
             this.gridColumn79.FieldName = "DateModified";
             this.gridColumn79.Name = "gridColumn79";
+            // 
+            // gridColumn72
+            // 
+            this.gridColumn72.Caption = "Склад по замовчуванню";
+            this.gridColumn72.FieldName = "WhName";
+            this.gridColumn72.Name = "gridColumn72";
+            this.gridColumn72.Visible = true;
+            this.gridColumn72.VisibleIndex = 7;
             // 
             // gridView4
             // 
@@ -4393,5 +4402,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn92;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn72;
     }
 }

@@ -150,7 +150,6 @@
             this.OkButton.Size = new System.Drawing.Size(98, 46);
             this.OkButton.TabIndex = 3;
             this.OkButton.Text = "Так";
-            this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
             // timer1
             // 

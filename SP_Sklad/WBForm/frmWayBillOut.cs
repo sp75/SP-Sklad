@@ -306,7 +306,7 @@ namespace SP_Sklad.WBForm
 
         private void KagentComboBox_EditValueChanged(object sender, EventArgs e)
         {
-            var row = KagentComboBox.GetSelectedDataRow() as dynamic;
+            var row = KagentComboBox.GetSelectedDataRow() as KagentList;
             if (row == null)
             {
                 return;
@@ -314,6 +314,14 @@ namespace SP_Sklad.WBForm
             wb.KaId = row.KaId;
 
             wb.Nds = row.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0;
+           if(row.RouteId.HasValue)
+            {
+                var r = _db.Routes.FirstOrDefault(w => w.Id == row.RouteId.Value);
+
+                wb.CarId = r.CarId;
+                wb.RouteId = row.RouteId;
+                wb.Received = r.Kagent1.Name;
+            }
 
             GetOk();
         }
