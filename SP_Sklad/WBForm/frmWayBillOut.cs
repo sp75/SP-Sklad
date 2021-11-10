@@ -314,7 +314,8 @@ namespace SP_Sklad.WBForm
             wb.KaId = row.KaId;
 
             wb.Nds = row.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0;
-           if(row.RouteId.HasValue)
+
+            if (row.RouteId.HasValue && wb.WType == -1)
             {
                 var r = _db.Routes.FirstOrDefault(w => w.Id == row.RouteId.Value);
 

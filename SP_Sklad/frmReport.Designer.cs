@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReport));
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -44,6 +40,9 @@
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.mainPanel = new DevExpress.XtraEditors.PanelControl();
+            this.CarPanel = new System.Windows.Forms.Panel();
+            this.CarsLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
             this.CashDesksPanel = new System.Windows.Forms.Panel();
             this.CashEditComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
@@ -121,14 +120,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textEdit1 = new DevExpress.XtraEditors.MemoEdit();
-            this.CarPanel = new System.Windows.Forms.Panel();
-            this.CarsLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).BeginInit();
             this.mainPanel.SuspendLayout();
+            this.CarPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CarsLookUpEdit.Properties)).BeginInit();
             this.CashDesksPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CashEditComboBox.Properties)).BeginInit();
             this.wmatturnStatusPanel.SuspendLayout();
@@ -188,8 +186,6 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            this.CarPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CarsLookUpEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // styleController1
@@ -262,6 +258,45 @@
             this.mainPanel.Size = new System.Drawing.Size(458, 1010);
             this.mainPanel.TabIndex = 31;
             // 
+            // CarPanel
+            // 
+            this.CarPanel.Controls.Add(this.CarsLookUpEdit);
+            this.CarPanel.Controls.Add(this.labelControl21);
+            this.CarPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CarPanel.Location = new System.Drawing.Point(2, 869);
+            this.CarPanel.Name = "CarPanel";
+            this.CarPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.CarPanel.Size = new System.Drawing.Size(454, 47);
+            this.CarPanel.TabIndex = 47;
+            this.CarPanel.Visible = false;
+            // 
+            // CarsLookUpEdit
+            // 
+            this.CarsLookUpEdit.Location = new System.Drawing.Point(87, 12);
+            this.CarsLookUpEdit.Name = "CarsLookUpEdit";
+            this.CarsLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.CarsLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Number", "Номер")});
+            this.CarsLookUpEdit.Properties.DisplayMember = "Name";
+            this.CarsLookUpEdit.Properties.ShowFooter = false;
+            this.CarsLookUpEdit.Properties.ShowHeader = false;
+            this.CarsLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.CarsLookUpEdit.Properties.ValueMember = "Id";
+            this.CarsLookUpEdit.Size = new System.Drawing.Size(322, 22);
+            this.CarsLookUpEdit.StyleController = this.styleController1;
+            this.CarsLookUpEdit.TabIndex = 32;
+            // 
+            // labelControl21
+            // 
+            this.labelControl21.Location = new System.Drawing.Point(10, 15);
+            this.labelControl21.Name = "labelControl21";
+            this.labelControl21.Size = new System.Drawing.Size(67, 16);
+            this.labelControl21.StyleController = this.styleController1;
+            this.labelControl21.TabIndex = 31;
+            this.labelControl21.Text = "Автомобіль";
+            // 
             // CashDesksPanel
             // 
             this.CashDesksPanel.Controls.Add(this.CashEditComboBox);
@@ -280,7 +315,7 @@
             this.CashEditComboBox.Name = "CashEditComboBox";
             this.CashEditComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("CashEditComboBox.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("CashEditComboBox.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, true)});
             this.CashEditComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.CashEditComboBox.Properties.DisplayMember = "Name";
@@ -1119,7 +1154,7 @@
             "За місяць",
             "За квартал ",
             "За рік"});
-            this.PeriodComboBoxEdit.Size = new System.Drawing.Size(354, 22);
+            this.PeriodComboBoxEdit.Size = new System.Drawing.Size(351, 22);
             this.PeriodComboBoxEdit.StyleController = this.styleController1;
             this.PeriodComboBoxEdit.TabIndex = 20;
             this.PeriodComboBoxEdit.EditValueChanged += new System.EventHandler(this.PeriodComboBoxEdit_EditValueChanged);
@@ -1195,46 +1230,6 @@
             this.textEdit1.Size = new System.Drawing.Size(359, 64);
             this.textEdit1.TabIndex = 39;
             // 
-            // CarPanel
-            // 
-            this.CarPanel.Controls.Add(this.CarsLookUpEdit);
-            this.CarPanel.Controls.Add(this.labelControl21);
-            this.CarPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CarPanel.Location = new System.Drawing.Point(2, 869);
-            this.CarPanel.Name = "CarPanel";
-            this.CarPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.CarPanel.Size = new System.Drawing.Size(454, 47);
-            this.CarPanel.TabIndex = 47;
-            this.CarPanel.Visible = false;
-            // 
-            // CarsLookUpEdit
-            // 
-            this.CarsLookUpEdit.Location = new System.Drawing.Point(87, 12);
-            this.CarsLookUpEdit.Name = "CarsLookUpEdit";
-            this.CarsLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("lookUpEdit1.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, true)});
-            this.CarsLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Number", "Номер")});
-            this.CarsLookUpEdit.Properties.DisplayMember = "Name";
-            this.CarsLookUpEdit.Properties.ShowFooter = false;
-            this.CarsLookUpEdit.Properties.ShowHeader = false;
-            this.CarsLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.CarsLookUpEdit.Properties.ValueMember = "Id";
-            this.CarsLookUpEdit.Size = new System.Drawing.Size(322, 22);
-            this.CarsLookUpEdit.StyleController = this.styleController1;
-            this.CarsLookUpEdit.TabIndex = 32;
-            // 
-            // labelControl21
-            // 
-            this.labelControl21.Location = new System.Drawing.Point(10, 15);
-            this.labelControl21.Name = "labelControl21";
-            this.labelControl21.Size = new System.Drawing.Size(67, 16);
-            this.labelControl21.StyleController = this.styleController1;
-            this.labelControl21.TabIndex = 31;
-            this.labelControl21.Text = "Автомобіль";
-            // 
             // frmReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1255,6 +1250,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).EndInit();
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
+            this.CarPanel.ResumeLayout(false);
+            this.CarPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CarsLookUpEdit.Properties)).EndInit();
             this.CashDesksPanel.ResumeLayout(false);
             this.CashDesksPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CashEditComboBox.Properties)).EndInit();
@@ -1332,9 +1330,6 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            this.CarPanel.ResumeLayout(false);
-            this.CarPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CarsLookUpEdit.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

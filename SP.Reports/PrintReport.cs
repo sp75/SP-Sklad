@@ -1514,31 +1514,34 @@ select x.*, ROW_NUMBER() over ( order by x.Name) as N from
             public Guid CarId { get; set; }
             public string CarName { get; set; }
             public string CarNumber { get; set; }
-            public int KaName { get; set; }
+            public string KaName { get; set; }
             public int KaId { get; set; }
             public decimal? TotalKg { get; set; }
             public decimal? TotalTmc { get; set; }
+            public DateTime OnDate { get; set; }
+            public int Checked { get; set; }
 
         }
 
         private void REP_46()
         {
-            var id = Car != null ? Car.Id : Guid.Empty;
+            var car_id = Car != null ? Car.Id : Guid.Empty;
+            int status = Convert.ToInt32(Status);
 
             var sql_1 = @"
-   	            select wbl.Num , c.Id CarId , c.Name CarName, c.Number CarNumber , wbl.KaId , k.[Name] KaName,
-                    (select sum([Amount]) from  [dbo].[WaybillDet], [dbo].[Materials] where [Materials].MatId = [WaybillDet].MatId and [WbillId] = wbl.WbillId and [Materials].MId = 2 ) TotalKg,
-                    (select sum([Amount]) from  [dbo].WayBillTmc where [WbillId] = wbl.WbillId ) TotalTmc
-                from [dbo].[WaybillList] wbl
+   	            select wbl.Num , c.Id CarId , c.Name CarName, c.Number CarNumber , wbl.KaId , k.[Name] KaName, wbl.OnDate , wbl.Checked,
+                    (select sum([Amount]) from [WaybillDet], [Materials] where [Materials].MatId = [WaybillDet].MatId and [WbillId] = wbl.WbillId and [Materials].MId = 2 ) TotalKg,
+                    (select sum([Amount]) from WayBillTmc where [WbillId] = wbl.WbillId ) TotalTmc
+                from [WaybillList] wbl
                 inner join [dbo].[Cars] c on c.Id = wbl.CarId
                 inner join [dbo].[Kagent] k on k.KaId = wbl.KaId
-                where wbl.ondate between {0} and {1} and {2} in (c.Id , '00000000-0000-0000-0000-000000000000' ) 
+                where wbl.ondate between {0} and {1} and {2} in (c.Id , '00000000-0000-0000-0000-000000000000' ) and {3} in (wbl.Checked, -1)
                 order by k.[Name] ";
 
-            var waybill_list = _db.Database.SqlQuery<rep_46>(sql_1, StartDate, EndDate, id).ToList();
+            var waybill_list = _db.Database.SqlQuery<rep_46>(sql_1, StartDate, EndDate, car_id, status).ToList();
 
-            data_for_report.Add("MatInDet", waybill_list);
             data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("WaybillList", waybill_list);
             data_for_report.Add("CarGroup", waybill_list.GroupBy(g => new
             {
                 g.CarId,
@@ -1547,8 +1550,8 @@ select x.*, ROW_NUMBER() over ( order by x.Name) as N from
             }).Select(s => new
             {
                 s.Key.CarId,
-                Name = s.Key.CarName,
-                ShortName = s.Key.CarNumber
+                s.Key.CarName,
+                s.Key.CarNumber
             }).ToList());
 
             realation.Add(new
@@ -1559,7 +1562,14 @@ select x.*, ROW_NUMBER() over ( order by x.Name) as N from
                 child_table = "WaybillList"
             });
 
-             data_for_report.Add("_realation_", realation);
+
+            data_for_report.Add("SummaryField", waybill_list.GroupBy(g => 1).Select(s => new
+            {
+                TotalKg = s.Sum(a => a.TotalKg),
+                TotalTmc = s.Sum(a => a.TotalTmc),
+            }).ToList());
+
+            data_for_report.Add("_realation_", realation);
 
         }
 

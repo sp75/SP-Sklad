@@ -36,6 +36,7 @@ namespace SP_Sklad.EditForm
             _wb.AttNum = null;
             _wb.Received = null;
             _wb.CarId = null;
+            _wb.RouteId = null;
         }
 
         private void CarsLookUpEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)

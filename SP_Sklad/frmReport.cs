@@ -352,7 +352,8 @@ namespace SP_Sklad
                     this.GRPGroupBox.Visible = false;
                     this.KontragentPanel.Visible = false;
                     this.CarPanel.Visible = true;
-                 
+                    this.StatusPanel.Visible = true;
+
                     break;
             }
         }
