@@ -27,7 +27,7 @@ namespace SP_Sklad.EditForm
 
         private void frmAttEdit_Load(object sender, EventArgs e)
         {
-            CarsLookUpEdit.Properties.DataSource = GetCars();
+            CarsLookUpEdit.Properties.DataSource = GetRoute();
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -41,16 +41,16 @@ namespace SP_Sklad.EditForm
 
         private void CarsLookUpEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            if (e.Button.Index == 1)
+         /*   if (e.Button.Index == 1)
             {
                 var frm = new frmCars();
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     CarsLookUpEdit.EditValue = frm.focused_row != null ? (Guid?)frm.focused_row.Id : null;
 
-                    CarsLookUpEdit.Properties.DataSource = GetCars();
+                    CarsLookUpEdit.Properties.DataSource = GetRoute();
                 }
-            }
+            }*/
         }
 
         private void CarsLookUpEdit_EditValueChanged(object sender, EventArgs e)
@@ -64,18 +64,19 @@ namespace SP_Sklad.EditForm
 
             _wb.Received = sr.DriverName;
             _wb.RouteId = sr.RouteId;
+            _wb.CarId = sr.Id;
         }
 
-        private List<CarsList> GetCars()
+        private List<CarsList> GetRoute()
         {
-            return DB.SkladBase().Cars.Where(w => w.Routes.Any()).Select(s => new CarsList
+            return DB.SkladBase().Routes.Where(w=> w.CarId != null).Select(s => new CarsList
             {
-                Id = s.Id,
-                Name = s.Name,
-                RouteName = s.Routes.FirstOrDefault().Name,
-                RouteId = s.Routes.FirstOrDefault().Id,
-                DriverName = s.Routes.FirstOrDefault().Kagent1.Name,
-                Number = s.Number
+                Id = s.Cars.Id,
+                Name = s.Cars.Name,
+                RouteId = s.Id,
+                RouteName = s.Name,
+                DriverName = s.Kagent1.Name,
+                Number = s.Cars.Number
             }).ToList();
         }
 
@@ -84,7 +85,7 @@ namespace SP_Sklad.EditForm
             public Guid Id { get; set; }
             public string Name { get; set; }
             public string RouteName { get; set; }
-            public int? RouteId { get; set; }
+            public int RouteId { get; set; }
             public string DriverName { get; set; }
             public string Number { get; set; }
         }

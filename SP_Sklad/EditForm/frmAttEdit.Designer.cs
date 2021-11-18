@@ -154,20 +154,21 @@
             // 
             // CarsLookUpEdit
             // 
-            this.CarsLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "CarId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.CarsLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "RouteId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.CarsLookUpEdit.Location = new System.Drawing.Point(24, 159);
             this.CarsLookUpEdit.Name = "CarsLookUpEdit";
             this.CarsLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search)});
             this.CarsLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RouteName", "Маршрут"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва машини"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("RouteName", 40, "Маршрут"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", 40, "Назва машини"),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Number", "Номер машини")});
             this.CarsLookUpEdit.Properties.DisplayMember = "RouteName";
+            this.CarsLookUpEdit.Properties.PopupWidth = 600;
             this.CarsLookUpEdit.Properties.ShowFooter = false;
             this.CarsLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.CarsLookUpEdit.Properties.ValueMember = "Id";
+            this.CarsLookUpEdit.Properties.ValueMember = "RouteId";
             this.CarsLookUpEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.CarsLookUpEdit_Properties_ButtonClick);
             this.CarsLookUpEdit.Size = new System.Drawing.Size(406, 22);
             this.CarsLookUpEdit.StyleController = this.styleController1;

@@ -362,7 +362,7 @@ namespace SP_Sklad
         {
             var dt = DateTime.Now;
             OnDateDBEdit.DateTime = dt;
-            xtraTabControl1.AppearancePage.PageClient.BackColor = mainPanel.BackColor;
+            //xtraTabControl1.AppearancePage.PageClient.BackColor = mainPanel.BackColor;
             StartDateEdit.DateTime = dt.Date;
             EndDateEdit.DateTime = dt.Date.SetEndDay();
             MonthEdit.SelectedIndex = dt.Month - 1;
@@ -570,7 +570,31 @@ namespace SP_Sklad
 
         private void PeriodComboBoxEdit_EditValueChanged(object sender, EventArgs e)
         {
-            xtraTabControl1.SelectedTabPageIndex = PeriodComboBoxEdit.SelectedIndex;
+            //xtraTabControl1.SelectedTabPageIndex = PeriodComboBoxEdit.SelectedIndex;
+            CustomPeriodPanel.Visible = false;
+            PerMonthPanel.Visible = false;
+            PerQuarterPanel.Visible = false;
+            PerYearPanel.Visible = false;
+
+            switch (PeriodComboBoxEdit.SelectedIndex)
+            {
+                case 0:
+                    CustomPeriodPanel.Visible = true;
+                    break;
+
+                case 1:
+                    PerMonthPanel.Visible = true;
+                    break;
+
+                case 2:
+                    PerQuarterPanel.Visible = true;
+                    break;
+
+                case 3:
+                    PerYearPanel.Visible = true;
+                    break;
+            }
+
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -653,7 +677,7 @@ namespace SP_Sklad
 
         private void SetDate()
         {
-            switch (xtraTabControl1.SelectedTabPageIndex)
+            switch (PeriodComboBoxEdit.SelectedIndex)
             {
                 case 1:
                     StartDateEdit.DateTime = DateTime.Parse("01." + Convert.ToString(MonthEdit.SelectedIndex + 1) + "." + Convert.ToString(YearEdit.Value));
