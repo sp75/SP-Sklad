@@ -53,9 +53,11 @@ namespace SP_Sklad.EditForm
             tree.Add(new CatalogTreeList { Id = 4, ParentId = 1, Text = "Доступ до сладів", ImgIdx = 14, TabIdx = 1 });
             tree.Add(new CatalogTreeList { Id = 5, ParentId = 1, Text = "Додаткові", ImgIdx = 1, TabIdx = 1 });
             tree.Add(new CatalogTreeList { Id = 6, ParentId = 1, Text = "Доступ до кас", ImgIdx = 15, TabIdx = 1 });
+            tree.Add(new CatalogTreeList { Id = 8, ParentId = 1, Text = "Доступ до груп товарів", ImgIdx = 17, TabIdx = 1 });
             tree.Add(new CatalogTreeList { Id = 7, ParentId = -1, Text = "Робоче місце касира", ImgIdx = 15, TabIdx = 2 });
             tree.Add(new CatalogTreeList { Id = 2, ParentId = -1, Text = "Додаткова інформація", ImgIdx = 12, TabIdx = 3 });
-            
+
+
 
             TreeListBindingSource.DataSource = tree;
             DirTreeList.ExpandAll();
@@ -145,13 +147,24 @@ namespace SP_Sklad.EditForm
                     RefreshUserAccessCashDesks();
                     xtraTabControl2.SelectedTabPageIndex = 3;
                     break;
+
+                case 8:
+                    RefreshUserAccessMatGroup();
+                    xtraTabControl2.SelectedTabPageIndex = 4;
+                    break;
             }
 
             xtraTabControl1.SelectedTabPageIndex = focused_tree_node.TabIdx;
         }
+
         private void RefreshUserAccessCashDesks()
         {
             UserAccessCashDesksBS.DataSource = _db.GetUserAccessCashDesks(_user_id).ToList();
+        }
+
+        private void RefreshUserAccessMatGroup()
+        {
+            UserAccessMatGroupBS.DataSource = _db.GetUserAccessMatGroup(_user_id).ToList();
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -521,6 +534,38 @@ namespace SP_Sklad.EditForm
         private void checkEdit8_CheckedChanged(object sender, EventArgs e)
         {
             user_settings.AccessEditDocNum = checkEdit8.Checked;
+        }
+
+        private void UserAccessMatGroupGridView_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
+        {
+            if (e.CellValue == null)
+            {
+                return;
+            }
+
+            var row = UserAccessMatGroupGridView.GetFocusedRow() as GetUserAccessMatGroup_Result;
+
+            if (e.Column.FieldName == "Allow")
+            {
+
+                if ((int)e.CellValue == 0)
+                {
+                    _db.UserAccessMatGroup.Add(new UserAccessMatGroup { UserId = _user_id.Value,  GrpId  = row.GrpId });
+                    row.Allow = 1;
+                }
+                else
+                {
+                    _db.DeleteWhere<UserAccessMatGroup>(w => w.UserId == _user_id.Value && w.GrpId == row.GrpId);
+                    row.Allow = 0;
+                }
+
+                _db.SaveChanges();
+
+                UserAccessMatGroupGridView.RefreshRow(UserAccessMatGroupGridView.FocusedRowHandle);
+
+               // RefreshUserAccessMatGroup();
+            }
+
         }
     }
 }

@@ -1260,6 +1260,14 @@
           <Property Name="CashId" Type="int" Nullable="false" />
           <Property Name="Def" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="UserAccessMatGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="GrpId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="UserAccessWh">
           <Key>
             <PropertyRef Name="Id" />
@@ -1448,6 +1456,8 @@
           <Property Name="Amount" Type="numeric" Precision="15" Scale="4" Nullable="false" />
           <Property Name="AmountByRecipe" Type="numeric" Precision="15" Scale="4" />
           <Property Name="RecipeCount" Type="int" />
+          <Property Name="EndProductionDate" Type="datetime" />
+          <Property Name="ShippedAmount" Type="numeric" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="WayBillMakeProps">
           <Key>
@@ -5321,6 +5331,18 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="GetUserAccessMatGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_id" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="GrpId" Type="int" Nullable="false" />
+                <Property Name="Name" Type="varchar" MaxLength="64" Nullable="false" />
+                <Property Name="Allow" Type="int" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="GetUserAccessTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="user_id" Type="int" Mode="In" />
         </Function>
@@ -6654,6 +6676,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="TechProcess" EntityType="Self.TechProcess" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserAccess" EntityType="Self.UserAccess" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserAccessCashDesks" EntityType="Self.UserAccessCashDesks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserAccessMatGroup" EntityType="Self.UserAccessMatGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserAccessWh" EntityType="Self.UserAccessWh" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserSettings" EntityType="Self.UserSettings" Schema="dbo" store:Type="Tables" />
@@ -9501,6 +9524,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="wh" Mode="In" Type="String" />
             <Parameter Name="person_id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="UserAccessMatGroup" EntityType="BaseModel.UserAccessMatGroup" />
+          <FunctionImport Name="GetUserAccessMatGroup" IsComposable="true" ReturnType="Collection(BaseModel.GetUserAccessMatGroup_Result)">
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -10350,6 +10377,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_WAYBILLMAKE_KAGENT" FromRole="WayBillMake" ToRole="Kagent" />
           <Property Name="AmountByRecipe" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="RecipeCount" Type="Int32" />
+          <Property Name="EndProductionDate" Type="DateTime" Precision="3" />
+          <Property Name="ShippedAmount" Type="Decimal" Precision="15" Scale="4" />
         </EntityType>
         <Association Name="FK_WAYBILLMAKE_MATRECIPE">
           <End Type="BaseModel.MatRecipe" Role="MatRecipe" Multiplicity="0..1" />
@@ -15875,6 +15904,19 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="CarName" Nullable="true" MaxLength="50" />
           <Property Type="Decimal" Name="Balans" Nullable="true" Precision="17" Scale="2" />
         </ComplexType>
+        <EntityType Name="UserAccessMatGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="GrpId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <ComplexType Name="GetUserAccessMatGroup_Result">
+          <Property Type="Int32" Name="GrpId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="64" />
+          <Property Type="Int32" Name="Allow" Nullable="false" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -16584,6 +16626,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="WayBillMake">
             <EntityTypeMapping TypeName="BaseModel.WayBillMake">
               <MappingFragment StoreEntitySet="WayBillMake">
+                <ScalarProperty Name="ShippedAmount" ColumnName="ShippedAmount" />
+                <ScalarProperty Name="EndProductionDate" ColumnName="EndProductionDate" />
                 <ScalarProperty Name="RecipeCount" ColumnName="RecipeCount" />
                 <ScalarProperty Name="AmountByRecipe" ColumnName="AmountByRecipe" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
@@ -20075,6 +20119,24 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="RouteName" ColumnName="RouteName" />
                 <ScalarProperty Name="CarName" ColumnName="CarName" />
                 <ScalarProperty Name="Balans" ColumnName="Balans" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="UserAccessMatGroup">
+            <EntityTypeMapping TypeName="BaseModel.UserAccessMatGroup">
+              <MappingFragment StoreEntitySet="UserAccessMatGroup">
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetUserAccessMatGroup" FunctionName="BaseModel.Store.GetUserAccessMatGroup">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetUserAccessMatGroup_Result">
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Allow" ColumnName="Allow" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

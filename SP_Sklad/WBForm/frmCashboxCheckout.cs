@@ -129,6 +129,9 @@ namespace SP_Sklad.WBForm
 
         private void frmCashboxCheckout_Shown(object sender, EventArgs e)
         {
+            simpleButton2.Enabled = user_settings.CashDesksDefaultRMK != 0;
+            simpleButton4.Enabled = user_settings.AccountDefaultRMK != 0;
+
             PutSumEdit.Focus();
         }
 

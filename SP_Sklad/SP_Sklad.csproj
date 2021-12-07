@@ -496,6 +496,9 @@
     <Compile Include="SkladData\GetUserAccessCashDesks_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetUserAccessMatGroup_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetUserAccessWh_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -735,6 +738,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\UserAccessCashDesks.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\UserAccessMatGroup.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\UserAccessWh.cs">
@@ -2025,6 +2031,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPriceListDet_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetTaraList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetUserAccessCashDesks_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.GetUserAccessMatGroup_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetWaybillDetIn_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetWayBillDetOut_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetWayBillListWh_Result.datasource" />
@@ -2076,6 +2083,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.TaraGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.TechProcDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.TechProcess.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.UserAccessMatGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Users.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.UsersGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.UserTreeAccess.datasource" />

@@ -186,6 +186,7 @@ namespace SP_Sklad.SkladData
         public DbSet<CurrencyRate> CurrencyRate { get; set; }
         public DbSet<Cars> Cars { get; set; }
         public DbSet<WeighingScales> WeighingScales { get; set; }
+        public DbSet<UserAccessMatGroup> UserAccessMatGroup { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)
@@ -2408,6 +2409,16 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("person_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillList_Result>("[BaseEntities].[GetWayBillList](@from_date, @to_date, @w_type, @checked, @ka_id, @show_null_balance, @wh, @person_id)", from_dateParameter, to_dateParameter, w_typeParameter, checkedParameter, ka_idParameter, show_null_balanceParameter, whParameter, person_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetUserAccessMatGroup")]
+        public virtual IQueryable<GetUserAccessMatGroup_Result> GetUserAccessMatGroup(Nullable<int> user_id)
+        {
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetUserAccessMatGroup_Result>("[BaseEntities].[GetUserAccessMatGroup](@user_id)", user_idParameter);
         }
     }
 }

@@ -69,10 +69,11 @@ namespace SP_Sklad.WBDetForm
             }
 
 
-            var wh_list = DB.SkladBase().UserAccessWh.Where(w => w.UserId == DBHelper.CurrentUser.UserId).Select(s => s.WId).ToList();
+        //    var wh_list = DB.SkladBase().UserAccessWh.Where(w => w.UserId == DBHelper.CurrentUser.UserId).Select(s => s.WId).ToList();
+            var group_list =  DB.SkladBase().UserAccessMatGroup.Where(w => w.UserId == DBHelper.CurrentUser.UserId).Select(s => s.GrpId).ToList();
             var wbm = _db.WayBillMake.FirstOrDefault(w => w.WbillId == _iw.WbillId);
 
-            mat_list = DB.SkladBase().GetWayBillMakeDet(_iw.WbillId).Where(w => wh_list.Contains(w.MatDefWId.Value) && w.Rsv == 0).OrderBy(o => o.Num).ToList().Select(s => new make_det
+            mat_list = DB.SkladBase().GetWayBillMakeDet(_iw.WbillId).Where(w =>/* wh_list.Contains(w.MatDefWId.Value)*/ group_list.Contains(w.GrpId.Value) && w.Rsv == 0).OrderBy(o => o.Num).ToList().Select(s => new make_det
             {
                 MatName = s.MatName,
                 MsrName = s.MsrName,

@@ -21,6 +21,8 @@ namespace SP_Sklad.SkladData
         public decimal Amount { get; set; }
         public Nullable<decimal> AmountByRecipe { get; set; }
         public Nullable<int> RecipeCount { get; set; }
+        public Nullable<System.DateTime> EndProductionDate { get; set; }
+        public Nullable<decimal> ShippedAmount { get; set; }
     
         public virtual MatRecipe MatRecipe { get; set; }
         public virtual Warehouse Warehouse { get; set; }

@@ -131,6 +131,14 @@
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.xtraTabPage9 = new DevExpress.XtraTab.XtraTabPage();
+            this.UserAccessMatGroupGridControl = new DevExpress.XtraGrid.GridControl();
+            this.UserAccessMatGroupBS = new System.Windows.Forms.BindingSource(this.components);
+            this.UserAccessMatGroupGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.CashEditComboBox = new DevExpress.XtraEditors.LookUpEdit();
@@ -195,6 +203,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.UserAccessCashDesksGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
+            this.xtraTabPage9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UserAccessMatGroupGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserAccessMatGroupBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserAccessMatGroupGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).BeginInit();
             this.xtraTabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CashEditComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountEdit.Properties)).BeginInit();
@@ -273,6 +287,7 @@
             this.ImageList.Images.SetKeyName(14, "grant_rights_wh.png");
             this.ImageList.Images.SetKeyName(15, "Каси.bmp");
             this.ImageList.Images.SetKeyName(16, "Склад+Торговля.bmp");
+            this.ImageList.Images.SetKeyName(17, "iconfinder_folder_edit_36067.png");
             // 
             // barButtonItem1
             // 
@@ -596,7 +611,8 @@
             this.xtraTabPage2,
             this.xtraTabPage3,
             this.xtraTabPage5,
-            this.xtraTabPage7});
+            this.xtraTabPage7,
+            this.xtraTabPage9});
             // 
             // xtraTabPage2
             // 
@@ -1152,6 +1168,82 @@
             this.repositoryItemCheckEdit2.ValueChecked = 1;
             this.repositoryItemCheckEdit2.ValueUnchecked = 0;
             // 
+            // xtraTabPage9
+            // 
+            this.xtraTabPage9.Controls.Add(this.UserAccessMatGroupGridControl);
+            this.xtraTabPage9.Name = "xtraTabPage9";
+            this.xtraTabPage9.Size = new System.Drawing.Size(635, 358);
+            this.xtraTabPage9.Text = "Доступ до  груп товарів";
+            // 
+            // UserAccessMatGroupGridControl
+            // 
+            this.UserAccessMatGroupGridControl.DataSource = this.UserAccessMatGroupBS;
+            this.UserAccessMatGroupGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UserAccessMatGroupGridControl.Location = new System.Drawing.Point(0, 0);
+            this.UserAccessMatGroupGridControl.MainView = this.UserAccessMatGroupGridView;
+            this.UserAccessMatGroupGridControl.MenuManager = this.barManager1;
+            this.UserAccessMatGroupGridControl.Name = "UserAccessMatGroupGridControl";
+            this.UserAccessMatGroupGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemImageComboBox3,
+            this.repositoryItemCheckEdit3});
+            this.UserAccessMatGroupGridControl.Size = new System.Drawing.Size(635, 358);
+            this.UserAccessMatGroupGridControl.TabIndex = 10;
+            this.UserAccessMatGroupGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.UserAccessMatGroupGridView});
+            // 
+            // UserAccessMatGroupBS
+            // 
+            this.UserAccessMatGroupBS.DataSource = typeof(SP_Sklad.SkladData.GetUserAccessMatGroup_Result);
+            // 
+            // UserAccessMatGroupGridView
+            // 
+            this.UserAccessMatGroupGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn7,
+            this.gridColumn8});
+            this.UserAccessMatGroupGridView.GridControl = this.UserAccessMatGroupGridControl;
+            this.UserAccessMatGroupGridView.Name = "UserAccessMatGroupGridView";
+            this.UserAccessMatGroupGridView.OptionsBehavior.AllowIncrementalSearch = true;
+            this.UserAccessMatGroupGridView.OptionsBehavior.Editable = false;
+            this.UserAccessMatGroupGridView.OptionsView.ShowGroupPanel = false;
+            this.UserAccessMatGroupGridView.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.UserAccessMatGroupGridView_RowCellClick);
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "Доступ";
+            this.gridColumn7.ColumnEdit = this.repositoryItemImageComboBox3;
+            this.gridColumn7.FieldName = "Allow";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 0;
+            this.gridColumn7.Width = 73;
+            // 
+            // repositoryItemImageComboBox3
+            // 
+            this.repositoryItemImageComboBox3.AutoHeight = false;
+            this.repositoryItemImageComboBox3.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox3.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 3),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 4)});
+            this.repositoryItemImageComboBox3.Name = "repositoryItemImageComboBox3";
+            this.repositoryItemImageComboBox3.SmallImages = this.ImageList;
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "Група товарів";
+            this.gridColumn8.FieldName = "Name";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 1;
+            this.gridColumn8.Width = 463;
+            // 
+            // repositoryItemCheckEdit3
+            // 
+            this.repositoryItemCheckEdit3.AutoHeight = false;
+            this.repositoryItemCheckEdit3.Name = "repositoryItemCheckEdit3";
+            this.repositoryItemCheckEdit3.ValueChecked = 1;
+            this.repositoryItemCheckEdit3.ValueUnchecked = 0;
+            // 
             // xtraTabPage8
             // 
             this.xtraTabPage8.Controls.Add(this.labelControl5);
@@ -1421,6 +1513,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.UserAccessCashDesksGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
+            this.xtraTabPage9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.UserAccessMatGroupGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserAccessMatGroupBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserAccessMatGroupGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).EndInit();
             this.xtraTabPage8.ResumeLayout(false);
             this.xtraTabPage8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CashEditComboBox.Properties)).EndInit();
@@ -1540,5 +1638,13 @@
         private DevExpress.XtraEditors.LookUpEdit AccountEdit;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.CheckEdit checkEdit8;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage9;
+        private DevExpress.XtraGrid.GridControl UserAccessMatGroupGridControl;
+        private System.Windows.Forms.BindingSource UserAccessMatGroupBS;
+        private DevExpress.XtraGrid.Views.Grid.GridView UserAccessMatGroupGridView;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit3;
     }
 }

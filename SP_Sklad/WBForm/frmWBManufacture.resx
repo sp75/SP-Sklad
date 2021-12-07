@@ -131,7 +131,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAC
-        WwAAAk1TRnQBSQFMAgEBGAEAAcABCAHAAQgBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        WwAAAk1TRnQBSQFMAgEBGAEAAcgBCAHIAQgBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABcAMAAQEBAAEYBgABVP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AFEAAa0BUgEpAa0BUgEYAa0BUgEp
         ZgACjAHWAgABnAEAAQgBnAKMAdZCAAGtAVIBKQHeAoQB3gKEAd4ChAGtAVIBKSEAAvEB8AHaAdkB1wHa
         AdkB1wHaAdkB1wHaAdkB1wHaAdkB1wHaAdkB1wHaAdkB1wHaAdkB1wHaAdkB1wHaAdkB1wHaAdkB1wHa
@@ -522,8 +522,11 @@
         AeABPwIAAfkB/wHnAf8B8QH/AcABgws=
 </value>
   </data>
-  <metadata name="GetWayBillMakeDetBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>598, 24</value>
+  <metadata name="styleController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>457, 21</value>
+  </metadata>
+  <metadata name="WbDetPopupMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>26, 29</value>
   </metadata>
   <metadata name="styleController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>457, 21</value>
@@ -545,7 +548,7 @@
         njkf1winPqQYQjpLzKBXX4YsAL7/mX5Hmjfh6HbzAvf6qQAAAABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="WbDetPopupMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>26, 29</value>
+  <metadata name="GetWayBillMakeDetBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>598, 24</value>
   </metadata>
 </root>

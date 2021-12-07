@@ -534,5 +534,21 @@ namespace SP_Sklad.WBForm
 
             MatRecipeAdditionalCostsGridControl.DataSource = _db.AdditionalCostsDet.Where(w => w.WbillId == _wbill_id).ToList();
         }
+
+        private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (wbd_row != null)
+            {
+                IHelper.ShowMatInfo(wbd_row.MatId);
+            }
+        }
+
+        private void RsvInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (wbd_row != null)
+            {
+                IHelper.ShowMatRSV(wbd_row.MatId, _db);
+            }
+        }
     }
 }

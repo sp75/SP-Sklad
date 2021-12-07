@@ -159,9 +159,10 @@ namespace SP_Sklad.WBForm
             }
 
 
-            var wh_list = DB.SkladBase().UserAccessWh.Where(w => w.UserId == DBHelper.CurrentUser.UserId).Select(s => s.WId).ToList();
+            //  var wh_list = DB.SkladBase().UserAccessWh.Where(w => w.UserId == DBHelper.CurrentUser.UserId).Select(s => s.WId).ToList();
+            var group_list = DB.SkladBase().UserAccessMatGroup.Where(w => w.UserId == DBHelper.CurrentUser.UserId).Select(s => s.GrpId).ToList();
 
-            var mat_list = DB.SkladBase().WaybillDet.Where(w => wh_list.Contains(w.WId.Value) && w.WbillId == iw.WbillId).Count();
+            var mat_list = DB.SkladBase().WaybillDet.Where(w =>/* wh_list.Contains(w.WId.Value)*/group_list.Contains(w.Materials.GrpId.Value) && w.WbillId == iw.WbillId).Count();
 
             if (mat_list != _db.IntermediateWeighingDet.Where(w => w.IntermediateWeighingId == _doc_id).Count() && TurnDocCheckBox.Checked)
             {
