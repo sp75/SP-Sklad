@@ -30,6 +30,7 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> TareWeight { get; set; }
         public Nullable<decimal> OutNetto { get; set; }
         public Nullable<int> TareMatId { get; set; }
+        public Nullable<int> SausageSyringeId { get; set; }
     
         public virtual WaybillList WaybillList { get; set; }
         public virtual Kagent Kagent { get; set; }

@@ -799,7 +799,7 @@ namespace SP.Reports
             data_for_report.Add("DocList1", paydoc.Where(w => w.DocType == 1).ToList() /* _db.GetPayDocList("1", StartDate, EndDate, 0, 1, -1, _person_id).ToList()*/);
             data_for_report.Add("DocList2", paydoc.Where(w => w.DocType == -1).ToList()/*_db.GetPayDocList("-1", StartDate, EndDate, 0, 1, -1, _person_id).ToList()*/);
             data_for_report.Add("DocList3", paydoc.Where(w => w.DocType == -2).ToList()/* _db.GetPayDocList("-2", StartDate, EndDate, 0, 1, -1, _person_id).ToList()*/);
-            data_for_report.Add("DocList4", _db.GetPayDocList("6", StartDate, EndDate, 0, 1, -1, _person_id).Where(w => w.CashId == CashDesk.CashId || CashDesk.CashId == -1).ToList());
+            data_for_report.Add("DocList4", _db.GetPayDocList("6,3,-3", StartDate, EndDate, 0, 1, -1, _person_id).Where(w => w.CashId == CashDesk.CashId || CashDesk.CashId == -1).ToList());
 
             var m = _db.MoneyOnDate(EndDate).Where(w=> w.CashId == CashDesk.CashId || CashDesk.CashId ==-1).GroupBy(g => new { g.SaldoType, g.Currency }).Select(s => new { s.Key.SaldoType, s.Key.Currency, Saldo = s.Sum(sum => sum.Saldo), SaldoDef = s.Sum(sum => sum.SaldoDef) }).ToList();
             data_for_report.Add("MONEY1", m.Where(w => w.SaldoType == 0).ToList());

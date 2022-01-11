@@ -94,9 +94,9 @@
             // 
             this.ImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ImageList.ImageStream")));
             this.ImageList.TransparentColor = System.Drawing.Color.White;
-            this.ImageList.Images.SetKeyName(0, "UserInfo.bmp");
-            this.ImageList.Images.SetKeyName(1, "Ц_нов_ кат.bmp");
-            this.ImageList.Images.SetKeyName(2, "CloseFolder.bmp");
+            this.ImageList.Images.SetKeyName(0, "CloseFolder.bmp");
+            this.ImageList.Images.SetKeyName(1, "Up.bmp");
+            this.ImageList.Images.SetKeyName(2, "down.bmp");
             // 
             // styleController1
             // 
@@ -374,7 +374,7 @@
             // UpTextBtn
             // 
             this.UpTextBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.UpTextBtn.ImageIndex = 10;
+            this.UpTextBtn.ImageIndex = 1;
             this.UpTextBtn.ImageList = this.ImageList;
             this.UpTextBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.UpTextBtn.Location = new System.Drawing.Point(565, 46);
@@ -395,7 +395,7 @@
             // simpleButton2
             // 
             this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton2.ImageIndex = 9;
+            this.simpleButton2.ImageIndex = 2;
             this.simpleButton2.ImageList = this.ImageList;
             this.simpleButton2.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.simpleButton2.Location = new System.Drawing.Point(565, 11);

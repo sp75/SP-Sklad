@@ -73,5 +73,6 @@ namespace SP_Sklad.SkladData
         public string Declaration { get; set; }
         public string CarNumber { get; set; }
         public string CarName { get; set; }
+        public Nullable<decimal> Balans { get; set; }
     }
 }

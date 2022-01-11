@@ -41,6 +41,7 @@ namespace SP_Sklad.SkladData
         public Nullable<int> EntId { get; set; }
         public Nullable<System.DateTime> ReportingDate { get; set; }
         public Nullable<decimal> SummInCurr { get; set; }
+        public Nullable<decimal> ActualSummInCurr { get; set; }
     
         public virtual CashDesks CashDesks { get; set; }
         public virtual ChargeType ChargeType { get; set; }

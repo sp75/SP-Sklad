@@ -191,7 +191,7 @@ namespace SP_Sklad.WBDetForm
             if (MatComboBox.ContainsFocus)
             {
                 _wbd.WId = row.WId;
-                _wbd.Nds = row.NDS == 1 ? DBHelper.CommonParam.Nds : 0;
+                _wbd.Nds = _wb.Nds > 0 ? row.NDS : _wb.Nds;
                 _wbd.MatId = row.MatId;
                 ProducerTextEdit.EditValue = row.Produced;
             }

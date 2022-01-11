@@ -48,6 +48,8 @@ namespace SP_Sklad.WBDetForm
             ExtMatComboBox2.Properties.DataSource = ext_list;
 
             TareMatEdit.Properties.DataSource = _db.Tara.Where(w => w.TypeId == 5).Select(s => new { MatId = s.TaraId, s.Name, s.Artikul, s.Weight }).ToList();
+            TareMatEdit6.Properties.DataSource = _db.Tara.Where(w => w.TypeId == 6).Select(s => new { MatId = s.TaraId, s.Name, s.Artikul, s.Weight }).ToList();
+            TareMatEdit6.Enabled = false;
 
             if (_DetId == null)
             {
@@ -156,6 +158,8 @@ namespace SP_Sklad.WBDetForm
             {
                 tp_d.Num = row.Num != null ? row.Num : (_db.TechProcDet.Where(w => w.WbillId == _wbill_id).Select(s => (int?)s.Num).Max() ?? 0) + 1;
                 tp_d.Out = row.Kod == "finish" && tp_d.Out == 0 ? _db.GetMakeAmount(_wbill_id).FirstOrDefault().AmountOut.Value : tp_d.Out;
+
+                TareMatEdit6.Enabled = row.Kod == "osadka";
             }
 
             ValidateForm();
@@ -168,7 +172,9 @@ namespace SP_Sklad.WBDetForm
 
         private void ValidateForm()
         {
-            OkButton.Enabled = (TechProcessCB.GetSelectedDataRow() != null) && (OnDateEdit.DateTime > SqlDateTime.MinValue.Value) && AmountEdit.Value > 0;
+            var teh_proc = TechProcessCB.GetSelectedDataRow() as dynamic;
+
+            OkButton.Enabled = (teh_proc != null) && (OnDateEdit.DateTime > SqlDateTime.MinValue.Value) && AmountEdit.Value > 0 && (teh_proc.Kod != "osadka" || (TareMatEdit6.EditValue != DBNull.Value && teh_proc.Kod == "osadka"));
         }
 
         private void OnDateEdit_EditValueChanged(object sender, EventArgs e)
@@ -177,6 +183,11 @@ namespace SP_Sklad.WBDetForm
         }
 
         private void AmountEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            ValidateForm();
+        }
+
+        private void TareMatEdit6_EditValueChanged(object sender, EventArgs e)
         {
             ValidateForm();
         }

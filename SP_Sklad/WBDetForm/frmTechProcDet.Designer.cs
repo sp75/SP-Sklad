@@ -53,7 +53,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.TareMatEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.TechProcDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.calcEdit3 = new DevExpress.XtraEditors.CalcEdit();
@@ -83,11 +82,13 @@
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
+            this.TareMatEdit6 = new DevExpress.XtraEditors.LookUpEdit();
+            this.TechProcDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TareMatEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TechProcDetBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExtMatComboBox2.Properties)).BeginInit();
@@ -104,6 +105,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TareMatEdit6.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TechProcDetBS)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -113,11 +116,13 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
-            this.panel1.Size = new System.Drawing.Size(515, 451);
+            this.panel1.Size = new System.Drawing.Size(515, 513);
             this.panel1.TabIndex = 24;
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.TareMatEdit6);
+            this.panelControl1.Controls.Add(this.labelControl13);
             this.panelControl1.Controls.Add(this.TareMatEdit);
             this.panelControl1.Controls.Add(this.labelControl12);
             this.panelControl1.Controls.Add(this.calcEdit3);
@@ -147,7 +152,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(5, 5);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(505, 441);
+            this.panelControl1.Size = new System.Drawing.Size(505, 503);
             this.panelControl1.TabIndex = 0;
             // 
             // TareMatEdit
@@ -169,10 +174,6 @@
             this.TareMatEdit.Size = new System.Drawing.Size(299, 22);
             this.TareMatEdit.StyleController = this.styleController1;
             this.TareMatEdit.TabIndex = 50;
-            // 
-            // TechProcDetBS
-            // 
-            this.TechProcDetBS.DataSource = typeof(SP_Sklad.SkladData.TechProcDet);
             // 
             // styleController1
             // 
@@ -362,7 +363,7 @@
             // NotesTextEdit
             // 
             this.NotesTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.TechProcDetBS, "Notes", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.NotesTextEdit.Location = new System.Drawing.Point(15, 406);
+            this.NotesTextEdit.Location = new System.Drawing.Point(15, 461);
             this.NotesTextEdit.Name = "NotesTextEdit";
             this.NotesTextEdit.Size = new System.Drawing.Size(475, 22);
             this.NotesTextEdit.StyleController = this.styleController1;
@@ -420,7 +421,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(15, 323);
+            this.labelControl2.Location = new System.Drawing.Point(15, 378);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(53, 16);
             this.labelControl2.StyleController = this.styleController1;
@@ -429,7 +430,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(16, 384);
+            this.labelControl1.Location = new System.Drawing.Point(16, 439);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(52, 16);
             this.labelControl1.StyleController = this.styleController1;
@@ -461,7 +462,7 @@
             // 
             this.PersonComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.TechProcDetBS, "PersonId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.PersonComboBox.Enabled = false;
-            this.PersonComboBox.Location = new System.Drawing.Point(15, 345);
+            this.PersonComboBox.Location = new System.Drawing.Point(15, 400);
             this.PersonComboBox.Name = "PersonComboBox";
             this.PersonComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
@@ -503,16 +504,16 @@
             this.panelControl2.Controls.Add(this.OkButton);
             this.panelControl2.Controls.Add(this.simpleButton1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(0, 451);
+            this.panelControl2.Location = new System.Drawing.Point(0, 513);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(515, 52);
+            this.panelControl2.Size = new System.Drawing.Size(515, 47);
             this.panelControl2.TabIndex = 29;
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(297, 11);
+            this.OkButton.Location = new System.Drawing.Point(297, 6);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(98, 30);
             this.OkButton.TabIndex = 3;
@@ -523,17 +524,49 @@
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton1.Location = new System.Drawing.Point(404, 11);
+            this.simpleButton1.Location = new System.Drawing.Point(404, 6);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(93, 30);
             this.simpleButton1.TabIndex = 2;
             this.simpleButton1.Text = "Відмінити";
             // 
+            // labelControl13
+            // 
+            this.labelControl13.Location = new System.Drawing.Point(17, 323);
+            this.labelControl13.Name = "labelControl13";
+            this.labelControl13.Size = new System.Drawing.Size(40, 16);
+            this.labelControl13.StyleController = this.styleController1;
+            this.labelControl13.TabIndex = 51;
+            this.labelControl13.Text = "Шприц";
+            // 
+            // TareMatEdit6
+            // 
+            this.TareMatEdit6.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.TechProcDetBS, "SausageSyringeId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.TareMatEdit6.Location = new System.Drawing.Point(17, 345);
+            this.TareMatEdit6.Name = "TareMatEdit6";
+            this.TareMatEdit6.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.TareMatEdit6.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.TareMatEdit6.Properties.DisplayMember = "Name";
+            this.TareMatEdit6.Properties.ShowFooter = false;
+            this.TareMatEdit6.Properties.ShowHeader = false;
+            this.TareMatEdit6.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.TareMatEdit6.Properties.ValueMember = "MatId";
+            this.TareMatEdit6.Size = new System.Drawing.Size(297, 22);
+            this.TareMatEdit6.StyleController = this.styleController1;
+            this.TareMatEdit6.TabIndex = 53;
+            this.TareMatEdit6.EditValueChanged += new System.EventHandler(this.TareMatEdit6_EditValueChanged);
+            // 
+            // TechProcDetBS
+            // 
+            this.TechProcDetBS.DataSource = typeof(SP_Sklad.SkladData.TechProcDet);
+            // 
             // frmTechProcDet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(515, 503);
+            this.ClientSize = new System.Drawing.Size(515, 560);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -550,7 +583,6 @@
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TareMatEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TechProcDetBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExtMatComboBox2.Properties)).EndInit();
@@ -567,6 +599,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.TareMatEdit6.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TechProcDetBS)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -606,5 +640,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl11;
         private DevExpress.XtraEditors.LookUpEdit TareMatEdit;
         private DevExpress.XtraEditors.LabelControl labelControl12;
+        private DevExpress.XtraEditors.LabelControl labelControl13;
+        private DevExpress.XtraEditors.LookUpEdit TareMatEdit6;
     }
 }

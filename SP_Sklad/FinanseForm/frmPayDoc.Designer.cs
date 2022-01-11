@@ -572,11 +572,11 @@
             this.KagentComboBox.Properties.ShowHeader = false;
             this.KagentComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.KagentComboBox.Properties.ValueMember = "KaId";
+            this.KagentComboBox.Properties.EditValueChanged += new System.EventHandler(this.KagentComboBox_Properties_EditValueChanged);
             this.KagentComboBox.Size = new System.Drawing.Size(446, 22);
             this.KagentComboBox.StyleController = this.styleController1;
             this.KagentComboBox.TabIndex = 9;
             this.KagentComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.KagentComboBox_ButtonClick);
-            this.KagentComboBox.EditValueChanged += new System.EventHandler(this.KagentComboBox_EditValueChanged);
             // 
             // labelControl6
             // 
@@ -803,6 +803,7 @@
             this.PayDocCheckEdit.Size = new System.Drawing.Size(203, 20);
             this.PayDocCheckEdit.StyleController = this.styleController1;
             this.PayDocCheckEdit.TabIndex = 4;
+            this.PayDocCheckEdit.CheckedChanged += new System.EventHandler(this.PayDocCheckEdit_CheckedChanged);
             // 
             // DocListEdit
             // 

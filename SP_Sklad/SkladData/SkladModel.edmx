@@ -839,6 +839,7 @@
           <Property Name="EntId" Type="int" />
           <Property Name="ReportingDate" Type="datetime" />
           <Property Name="SummInCurr" Type="numeric" Precision="15" Scale="2" StoreGeneratedPattern="Computed" />
+          <Property Name="ActualSummInCurr" Type="numeric" Precision="15" Scale="2" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="PayDocType">
           <Key>
@@ -1228,6 +1229,7 @@
           <Property Name="TareWeight" Type="numeric" Precision="15" Scale="4" />
           <Property Name="OutNetto" Type="numeric" Precision="15" Scale="4" />
           <Property Name="TareMatId" Type="int" />
+          <Property Name="SausageSyringeId" Type="int" />
         </EntityType>
         <EntityType Name="TechProcess">
           <Key>
@@ -2271,6 +2273,7 @@ warning 6002: The table/view 'sp_base.dbo.v_TechProcDet' does not have a primary
           <Property Name="Kod" Type="nvarchar" MaxLength="20" />
           <Property Name="OutNetto" Type="numeric" Precision="15" Scale="4" />
           <Property Name="TareName" Type="nvarchar" MaxLength="255" />
+          <Property Name="SausageSyringe" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_Users' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -2368,6 +2371,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary
           <Property Name="Declaration" Type="nvarchar(max)" />
           <Property Name="CarNumber" Type="nvarchar" MaxLength="50" />
           <Property Name="CarName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Balans" Type="numeric" Precision="17" Scale="2" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -5509,7 +5513,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="DocType" Type="nvarchar" MaxLength="64" />
                 <Property Name="PTypeName" Type="nvarchar" MaxLength="50" />
                 <Property Name="RouteName" Type="nvarchar" MaxLength="50" />
-                <Property Name="CarName" Type="nvarchar" MaxLength="50" />
+                <Property Name="CarName" Type="nvarchar" MaxLength="103" />
                 <Property Name="Balans" Type="numeric" Precision="17" Scale="2" />
               </RowType>
             </CollectionType>
@@ -7216,7 +7220,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_TechProcDet].[TareWeight] AS [TareWeight], 
     [v_TechProcDet].[Kod] AS [Kod], 
     [v_TechProcDet].[OutNetto] AS [OutNetto], 
-    [v_TechProcDet].[TareName] AS [TareName]
+    [v_TechProcDet].[TareName] AS [TareName], 
+    [v_TechProcDet].[SausageSyringe] AS [SausageSyringe]
     FROM [dbo].[v_TechProcDet] AS [v_TechProcDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_Users" EntityType="Self.v_Users" store:Type="Views" store:Schema="dbo">
@@ -7298,7 +7303,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_WaybillList].[Id] AS [Id], 
     [v_WaybillList].[Declaration] AS [Declaration], 
     [v_WaybillList].[CarNumber] AS [CarNumber], 
-    [v_WaybillList].[CarName] AS [CarName]
+    [v_WaybillList].[CarName] AS [CarName], 
+    [v_WaybillList].[Balans] AS [Balans]
     FROM [dbo].[v_WaybillList] AS [v_WaybillList]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_WorkDate" EntityType="Self.v_WorkDate" store:Type="Views" store:Schema="dbo">
@@ -9526,7 +9532,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </FunctionImport>
           <EntitySet Name="UserAccessMatGroup" EntityType="BaseModel.UserAccessMatGroup" />
           <FunctionImport Name="GetUserAccessMatGroup" IsComposable="true" ReturnType="Collection(BaseModel.GetUserAccessMatGroup_Result)">
-            <Parameter Name="user_id" Mode="In" Type="Int32" />
+          <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
@@ -10434,6 +10440,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Decimal" Name="TareWeight" Precision="15" Scale="4" />
           <Property Type="String" Name="Kod" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="TareName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SausageSyringe" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Measures">
           <Key>
@@ -11828,6 +11835,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Decimal" Name="OutNetto" Precision="15" Scale="4" />
           <NavigationProperty Name="TechProcess" Relationship="BaseModel.FK_TECHPROCDET_TECHPROCESS" FromRole="TechProcDet" ToRole="TechProcess" />
           <Property Name="TareMatId" Type="Int32" />
+          <Property Name="SausageSyringeId" Type="Int32" />
         </EntityType>
         <EntityType Name="Services">
           <Key>
@@ -12563,6 +12571,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="Declaration" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CarNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CarName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Balans" Type="Decimal" Precision="17" Scale="2" />
         </EntityType>
         <ComplexType Name="GetMatRsv_Result">
           <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="8" />
@@ -14482,6 +14491,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="PayType" Relationship="BaseModel.FK__PAYDOC__PTYPEID__2057CCD0" FromRole="PayDoc" ToRole="PayType" />
           <Property Name="ReportingDate" Type="DateTime" Precision="3" />
           <Property Name="SummInCurr" Type="Decimal" Precision="15" Scale="2" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ActualSummInCurr" Type="Decimal" Precision="15" Scale="2" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <Association Name="FK_PD_CASHID">
           <End Type="BaseModel.CashDesks" Role="CashDesks" Multiplicity="0..1" />
@@ -16650,6 +16660,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_TechProcDet">
             <EntityTypeMapping TypeName="BaseModel.v_TechProcDet">
               <MappingFragment StoreEntitySet="v_TechProcDet">
+                <ScalarProperty Name="SausageSyringe" ColumnName="SausageSyringe" />
                 <ScalarProperty Name="TareName" ColumnName="TareName" />
                 <ScalarProperty Name="Kod" ColumnName="Kod" />
                 <ScalarProperty Name="TareWeight" ColumnName="TareWeight" />
@@ -17551,6 +17562,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="TechProcDet">
             <EntityTypeMapping TypeName="BaseModel.TechProcDet">
               <MappingFragment StoreEntitySet="TechProcDet">
+                <ScalarProperty Name="SausageSyringeId" ColumnName="SausageSyringeId" />
                 <ScalarProperty Name="TareMatId" ColumnName="TareMatId" />
                 <ScalarProperty Name="OutNetto" ColumnName="OutNetto" />
                 <ScalarProperty Name="TareWeight" ColumnName="TareWeight" />
@@ -17772,6 +17784,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_WaybillList">
             <EntityTypeMapping TypeName="BaseModel.v_WaybillList">
               <MappingFragment StoreEntitySet="v_WaybillList">
+                <ScalarProperty Name="Balans" ColumnName="Balans" />
                 <ScalarProperty Name="CarName" ColumnName="CarName" />
                 <ScalarProperty Name="CarNumber" ColumnName="CarNumber" />
                 <ScalarProperty Name="Declaration" ColumnName="Declaration" />
@@ -19049,6 +19062,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="PayDoc">
             <EntityTypeMapping TypeName="BaseModel.PayDoc">
               <MappingFragment StoreEntitySet="PayDoc">
+                <ScalarProperty Name="ActualSummInCurr" ColumnName="ActualSummInCurr" />
                 <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
                 <ScalarProperty Name="ReportingDate" ColumnName="ReportingDate" />
                 <ScalarProperty Name="EntId" ColumnName="EntId" />

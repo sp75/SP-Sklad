@@ -30,5 +30,6 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> TareWeight { get; set; }
         public string Kod { get; set; }
         public string TareName { get; set; }
+        public string SausageSyringe { get; set; }
     }
 }

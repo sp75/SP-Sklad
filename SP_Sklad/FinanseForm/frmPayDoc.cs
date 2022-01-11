@@ -337,33 +337,12 @@ namespace SP_Sklad.FinanseForm
             }
             var ka_id = KagentComboBox.EditValue == null || KagentComboBox.EditValue == DBNull.Value ? 0 : (int)KagentComboBox.EditValue;
 
-            DocListEdit.Properties.DataSource = DB.SkladBase().GetWayBillList(DateTime.Now.AddYears(-100), DateTime.Now, Convert.ToString(TypDocsEdit.EditValue), -1, ka_id, 0, "*", DBHelper.CurrentUser.KaId)
-                .OrderByDescending(o => o.OnDate).Where(w => (w.SummInCurr - w.SummPay) > 0);
-        }
+            var doc_type = Convert.ToInt32(TypDocsEdit.EditValue);
 
-        private void KagentComboBox_EditValueChanged(object sender, EventArgs e)
-        {
-            if (KagentComboBox.ContainsFocus)
-            {
-                GetDocList();
-                DocListEdit.EditValue = null;
+            //    DocListEdit.Properties.DataSource = _db.v_WaybillList.Where(w => w.WType == doc_type && w.KaId == ka_id && (w.SummInCurr - w.SummPay) > 0).OrderByDescending(o => o.OnDate).ToList();
 
-             /*   int ka_id = (int)KagentComboBox.EditValue;
-
-                AccountEdit.Properties.DataSource = user_acc_list.Concat(_db.KAgentAccount.Where(w => w.KAId == ka_id).Select(s => new user_acc
-                {
-                    AccId = s.AccId,
-                    AccNum = s.AccNum,
-                    Name = s.Kagent.Name,
-                    ExtDocType = -1,
-                    KaId = s.KAId
-                }).ToList()).ToList();*/
-
-           //     AccountEdit.EditValue = null;
-          //      _pd.AccId = null;
-            }
-
-            GetOk();
+            DocListEdit.Properties.DataSource = _db.GetWayBillList(DateTime.Now.AddYears(-100), DateTime.Now, Convert.ToString(TypDocsEdit.EditValue), -1, ka_id, 0, "*", DBHelper.CurrentUser.KaId)
+                  .OrderByDescending(o => o.OnDate).Where(w => (w.SummInCurr - w.SummPay) > 0);
         }
 
         private void CashEditComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -456,6 +435,33 @@ namespace SP_Sklad.FinanseForm
                 }
 
 
+            }
+        }
+
+        private void KagentComboBox_Properties_EditValueChanged(object sender, EventArgs e)
+        {
+            if (KagentComboBox.ContainsFocus)
+            {
+                if (PayDocCheckEdit.Checked)
+                {
+                    PayDocCheckEdit.Checked = false;
+
+                    DocListEdit.Properties.DataSource = null;
+                    DocListEdit.EditValue = null;
+                }
+            }
+
+            GetOk();
+        }
+
+  
+        private void PayDocCheckEdit_CheckedChanged(object sender, EventArgs e)
+        {
+            if(PayDocCheckEdit.Checked && PayDocCheckEdit.ContainsFocus)
+            {
+                GetDocList();
+
+                DocListEdit.EditValue = null;
             }
         }
     }

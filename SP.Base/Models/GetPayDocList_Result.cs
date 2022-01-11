@@ -52,5 +52,9 @@ namespace SP.Base.Models
         public string AccNum { get; set; }
         public string BankName { get; set; }
         public string EntName { get; set; }
+        public string DocTypeName { get; set; }
+        public decimal ActualSummInCurr { get; set; }
+        public decimal SummInCurr { get; set; }
+        public string SourceType { get; set; }
     }
 }
